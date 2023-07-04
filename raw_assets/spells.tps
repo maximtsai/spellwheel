@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data version="1.0">
+    <struct type="Settings">
+        <key>fileFormatVersion</key>
+        <int>5</int>
+        <key>texturePackerVersion</key>
+        <string>6.0.2</string>
+        <key>autoSDSettings</key>
+        <array>
+            <struct type="AutoSDSettings">
+                <key>scale</key>
+                <double>1</double>
+                <key>extension</key>
+                <string></string>
+                <key>spriteFilter</key>
+                <string></string>
+                <key>acceptFractionalValues</key>
+                <false/>
+                <key>maxTextureSize</key>
+                <QSize>
+                    <key>width</key>
+                    <int>-1</int>
+                    <key>height</key>
+                    <int>-1</int>
+                </QSize>
+            </struct>
+        </array>
+        <key>allowRotation</key>
+        <false/>
+        <key>shapeDebug</key>
+        <false/>
+        <key>dpi</key>
+        <uint>72</uint>
+        <key>dataFormat</key>
+        <string>phaser</string>
+        <key>textureFileName</key>
+        <filename></filename>
+        <key>flipPVR</key>
+        <false/>
+        <key>pvrQualityLevel</key>
+        <uint>3</uint>
+        <key>astcQualityLevel</key>
+        <uint>2</uint>
+        <key>basisUniversalQualityLevel</key>
+        <uint>2</uint>
+        <key>etc1QualityLevel</key>
+        <uint>70</uint>
+        <key>etc2QualityLevel</key>
+        <uint>70</uint>
+        <key>dxtCompressionMode</key>
+        <enum type="SettingsBase::DxtCompressionMode">DXT_PERCEPTUAL</enum>
+        <key>ditherType</key>
+        <enum type="SettingsBase::DitherType">Atkinson</enum>
+        <key>backgroundColor</key>
+        <uint>0</uint>
+        <key>libGdx</key>
+        <struct type="LibGDX">
+            <key>filtering</key>
+            <struct type="LibGDXFiltering">
+                <key>x</key>
+                <enum type="LibGDXFiltering::Filtering">Linear</enum>
+                <key>y</key>
+                <enum type="LibGDXFiltering::Filtering">Linear</enum>
+            </struct>
+        </struct>
+        <key>shapePadding</key>
+        <uint>0</uint>
+        <key>jpgQuality</key>
+        <uint>80</uint>
+        <key>pngOptimizationLevel</key>
+        <uint>1</uint>
+        <key>webpQualityLevel</key>
+        <uint>88</uint>
+        <key>textureSubPath</key>
+        <string></string>
+        <key>textureFormat</key>
+        <enum type="SettingsBase::TextureFormat">webp</enum>
+        <key>borderPadding</key>
+        <uint>0</uint>
+        <key>maxTextureSize</key>
+        <QSize>
+            <key>width</key>
+            <int>2048</int>
+            <key>height</key>
+            <int>2048</int>
+        </QSize>
+        <key>fixedTextureSize</key>
+        <QSize>
+            <key>width</key>
+            <int>-1</int>
+            <key>height</key>
+            <int>-1</int>
+        </QSize>
+        <key>algorithmSettings</key>
+        <struct type="AlgorithmSettings">
+            <key>algorithm</key>
+            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
+            <key>freeSizeMode</key>
+            <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
+            <key>sizeConstraints</key>
+            <enum type="AlgorithmSettings::SizeConstraints">AnySize</enum>
+            <key>forceSquared</key>
+            <false/>
+            <key>maxRects</key>
+            <struct type="AlgorithmMaxRectsSettings">
+                <key>heuristic</key>
+                <enum type="AlgorithmMaxRectsSettings::Heuristic">Best</enum>
+            </struct>
+            <key>basic</key>
+            <struct type="AlgorithmBasicSettings">
+                <key>sortBy</key>
+                <enum type="AlgorithmBasicSettings::SortBy">Best</enum>
+                <key>order</key>
+                <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
+            </struct>
+            <key>polygon</key>
+            <struct type="AlgorithmPolygonSettings">
+                <key>alignToGrid</key>
+                <uint>1</uint>
+            </struct>
+        </struct>
+        <key>dataFileNames</key>
+        <map type="GFileNameMap">
+            <key>json</key>
+            <struct type="DataFile">
+                <key>name</key>
+                <filename>../sprites/spells.json</filename>
+            </struct>
+        </map>
+        <key>multiPack</key>
+        <true/>
+        <key>forceIdenticalLayout</key>
+        <false/>
+        <key>outputFormat</key>
+        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
+        <key>alphaHandling</key>
+        <enum type="SettingsBase::AlphaHandling">ClearTransparentPixels</enum>
+        <key>contentProtection</key>
+        <struct type="ContentProtection">
+            <key>key</key>
+            <string></string>
+        </struct>
+        <key>autoAliasEnabled</key>
+        <true/>
+        <key>trimSpriteNames</key>
+        <false/>
+        <key>prependSmartFolderName</key>
+        <false/>
+        <key>autodetectAnimations</key>
+        <true/>
+        <key>globalSpriteSettings</key>
+        <struct type="SpriteSettings">
+            <key>scale</key>
+            <double>1</double>
+            <key>scaleMode</key>
+            <enum type="ScaleMode">Smooth</enum>
+            <key>extrude</key>
+            <uint>1</uint>
+            <key>trimThreshold</key>
+            <uint>1</uint>
+            <key>trimMargin</key>
+            <uint>1</uint>
+            <key>trimMode</key>
+            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <key>tracerTolerance</key>
+            <int>200</int>
+            <key>heuristicMask</key>
+            <false/>
+            <key>defaultPivotPoint</key>
+            <point_f>0.5,0.5</point_f>
+            <key>writePivotPoints</key>
+            <false/>
+        </struct>
+        <key>individualSpriteSettings</key>
+        <map type="IndividualSpriteSettingsMap">
+            <key type="filename">spells/bigRock.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>38,38,75,75</rect>
+                <key>scale9Paddings</key>
+                <rect>38,38,75,75</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/blackBolt.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>13,25,25,50</rect>
+                <key>scale9Paddings</key>
+                <rect>13,25,25,50</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/blackCircle.png</key>
+            <key type="filename">spells/energy_particle.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>10,10,20,20</rect>
+                <key>scale9Paddings</key>
+                <rect>10,10,20,20</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/blackHoleArms.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>250,175,500,350</rect>
+                <key>scale9Paddings</key>
+                <rect>250,175,500,350</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/blackHoleBig.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,76,150,151</rect>
+                <key>scale9Paddings</key>
+                <rect>75,76,150,151</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/blackHolePre.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>41,41,83,83</rect>
+                <key>scale9Paddings</key>
+                <rect>41,41,83,83</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/blackHoleSmall.png</key>
+            <key type="filename">spells/clock.png</key>
+            <key type="filename">spells/rock.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>19,19,37,37</rect>
+                <key>scale9Paddings</key>
+                <rect>19,19,37,37</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/brickPattern1.png</key>
+            <key type="filename">spells/brickPattern2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>213,100,425,200</rect>
+                <key>scale9Paddings</key>
+                <rect>213,100,425,200</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/clockShield.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>56,67,113,133</rect>
+                <key>scale9Paddings</key>
+                <rect>56,67,113,133</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/clock_arm_large.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>72,7,143,14</rect>
+                <key>scale9Paddings</key>
+                <rect>72,7,143,14</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/clock_back_large.png</key>
+            <key type="filename">spells/clock_back_large_red.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>170,170,339,339</rect>
+                <key>scale9Paddings</key>
+                <rect>170,170,339,339</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/damageEffect.png</key>
+            <key type="filename">spells/shockEffect.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>31,31,63,63</rect>
+                <key>scale9Paddings</key>
+                <rect>31,31,63,63</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/darkSlice.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,75,100,150</rect>
+                <key>scale9Paddings</key>
+                <rect>50,75,100,150</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/eye.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>87,47,174,93</rect>
+                <key>scale9Paddings</key>
+                <rect>87,47,174,93</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/eyeCircle.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>30,30,60,60</rect>
+                <key>scale9Paddings</key>
+                <rect>30,30,60,60</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/eyeShield.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>58,43,115,85</rect>
+                <key>scale9Paddings</key>
+                <rect>58,43,115,85</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/green_plus.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>9,9,17,17</rect>
+                <key>scale9Paddings</key>
+                <rect>9,9,17,17</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/impact.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>20,18,41,35</rect>
+                <key>scale9Paddings</key>
+                <rect>20,18,41,35</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/laserCircle.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>4,16,8,32</rect>
+                <key>scale9Paddings</key>
+                <rect>4,16,8,32</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/laserCore.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,20,100,40</rect>
+                <key>scale9Paddings</key>
+                <rect>50,20,100,40</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/lightningBolt.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>13,50,25,100</rect>
+                <key>scale9Paddings</key>
+                <rect>13,50,25,100</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/matter_boost.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,130,45,260</rect>
+                <key>scale9Paddings</key>
+                <rect>23,130,45,260</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/matter_boost_2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>40,158,80,315</rect>
+                <key>scale9Paddings</key>
+                <rect>40,158,80,315</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/mindBurn.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>63,63,125,125</rect>
+                <key>scale9Paddings</key>
+                <rect>63,63,125,125</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/mindEffect.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>25,25,50,51</rect>
+                <key>scale9Paddings</key>
+                <rect>25,25,50,51</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/mind_boost.png</key>
+            <key type="filename">spells/mind_boost_2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>175,175,350,350</rect>
+                <key>scale9Paddings</key>
+                <rect>175,175,350,350</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/needlePattern.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>115,115,230,230</rect>
+                <key>scale9Paddings</key>
+                <rect>115,115,230,230</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/rockCircle.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>150,150,300,300</rect>
+                <key>scale9Paddings</key>
+                <rect>150,150,300,300</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/rock_chip.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>5,5,10,10</rect>
+                <key>scale9Paddings</key>
+                <rect>5,5,10,10</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/shield.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>125,110,250,220</rect>
+                <key>scale9Paddings</key>
+                <rect>125,110,250,220</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/stalagmite.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>33,81,65,163</rect>
+                <key>scale9Paddings</key>
+                <rect>33,81,65,163</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/stoneShield.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>58,60,115,120</rect>
+                <key>scale9Paddings</key>
+                <rect>58,60,115,120</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/timeGreen.png</key>
+            <key type="filename">spells/timeRed.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,50,100,100</rect>
+                <key>scale9Paddings</key>
+                <rect>50,50,100,100</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/time_red_mini.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>6,6,13,13</rect>
+                <key>scale9Paddings</key>
+                <rect>6,6,13,13</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/usage_hover.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>101,101,202,202</rect>
+                <key>scale9Paddings</key>
+                <rect>101,101,202,202</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/voidCharge.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,10,150,20</rect>
+                <key>scale9Paddings</key>
+                <rect>75,10,150,20</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/voidParticle.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>4,4,7,7</rect>
+                <key>scale9Paddings</key>
+                <rect>4,4,7,7</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/weakenLines_00.png</key>
+            <key type="filename">spells/weakenLines_01.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>18,13,35,25</rect>
+                <key>scale9Paddings</key>
+                <rect>18,13,35,25</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+        </map>
+        <key>fileList</key>
+        <array>
+            <filename>spells</filename>
+        </array>
+        <key>ignoreFileList</key>
+        <array/>
+        <key>replaceList</key>
+        <array/>
+        <key>ignoredWarnings</key>
+        <array/>
+        <key>commonDivisorX</key>
+        <uint>1</uint>
+        <key>commonDivisorY</key>
+        <uint>1</uint>
+        <key>packNormalMaps</key>
+        <false/>
+        <key>autodetectNormalMaps</key>
+        <true/>
+        <key>normalMapFilter</key>
+        <string></string>
+        <key>normalMapSuffix</key>
+        <string></string>
+        <key>normalMapSheetFileName</key>
+        <filename></filename>
+        <key>exporterProperties</key>
+        <map type="ExporterProperties"/>
+    </struct>
+</data>

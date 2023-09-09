@@ -4,8 +4,8 @@
 			"image": "sprites/enemies.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1496,
-				"h": 1660
+				"w": 1881,
+				"h": 1656
 			},
 			"scale": 1,
 			"frames": [
@@ -21,34 +21,76 @@
 						"x": 29,
 						"y": 62,
 						"w": 967,
-						"h": 788
+						"h": 715
 					},
 					"frame": {
 						"x": 1,
 						"y": 1,
 						"w": 967,
-						"h": 788
+						"h": 715
 					}
 				},
 				{
-					"filename": "gobboDead.png",
+					"filename": "max_death_1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 1024,
-						"h": 1024
+						"w": 795,
+						"h": 610
 					},
 					"spriteSourceSize": {
-						"x": 148,
-						"y": 56,
-						"w": 749,
-						"h": 868
+						"x": 12,
+						"y": 16,
+						"w": 642,
+						"h": 587
+					},
+					"frame": {
+						"x": 970,
+						"y": 1,
+						"w": 642,
+						"h": 587
+					}
+				},
+				{
+					"filename": "max_death_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 570,
+						"h": 520
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 2,
+						"w": 559,
+						"h": 511
+					},
+					"frame": {
+						"x": 970,
+						"y": 590,
+						"w": 559,
+						"h": 511
+					}
+				},
+				{
+					"filename": "max_death_3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 700,
+						"h": 540
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 26,
+						"w": 564,
+						"h": 499
 					},
 					"frame": {
 						"x": 1,
-						"y": 791,
-						"w": 749,
-						"h": 868
+						"y": 718,
+						"w": 564,
+						"h": 499
 					}
 				},
 				{
@@ -66,8 +108,8 @@
 						"h": 436
 					},
 					"frame": {
-						"x": 752,
-						"y": 791,
+						"x": 567,
+						"y": 718,
 						"w": 376,
 						"h": 436
 					}
@@ -87,31 +129,52 @@
 						"h": 385
 					},
 					"frame": {
-						"x": 752,
-						"y": 1229,
+						"x": 945,
+						"y": 1103,
 						"w": 392,
 						"h": 385
 					}
 				},
 				{
-					"filename": "dummybrows.png",
+					"filename": "gobboDead.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 400,
-						"h": 400
+						"w": 512,
+						"h": 512
 					},
 					"spriteSourceSize": {
-						"x": 167,
-						"y": 134,
-						"w": 65,
-						"h": 30
+						"x": 73,
+						"y": 27,
+						"w": 376,
+						"h": 436
 					},
 					"frame": {
-						"x": 752,
-						"y": 1616,
-						"w": 65,
-						"h": 30
+						"x": 567,
+						"y": 1156,
+						"w": 376,
+						"h": 436
+					}
+				},
+				{
+					"filename": "warning.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 10,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 10,
+						"h": 200
+					},
+					"frame": {
+						"x": 945,
+						"y": 718,
+						"w": 10,
+						"h": 200
 					}
 				},
 				{
@@ -129,31 +192,10 @@
 						"h": 436
 					},
 					"frame": {
-						"x": 970,
-						"y": 1,
+						"x": 1339,
+						"y": 1103,
 						"w": 349,
 						"h": 436
-					}
-				},
-				{
-					"filename": "dummy.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 400,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 94,
-						"y": 139,
-						"w": 214,
-						"h": 243
-					},
-					"frame": {
-						"x": 970,
-						"y": 439,
-						"w": 214,
-						"h": 243
 					}
 				},
 				{
@@ -171,8 +213,8 @@
 						"h": 436
 					},
 					"frame": {
-						"x": 1130,
-						"y": 684,
+						"x": 1531,
+						"y": 590,
 						"w": 349,
 						"h": 436
 					}
@@ -192,31 +234,52 @@
 						"h": 436
 					},
 					"frame": {
-						"x": 1146,
-						"y": 1122,
+						"x": 1,
+						"y": 1219,
 						"w": 349,
 						"h": 436
 					}
 				},
 				{
-					"filename": "warning.png",
+					"filename": "dummybrows.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 7,
-						"h": 200
+						"w": 400,
+						"h": 400
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 7,
-						"h": 200
+						"x": 167,
+						"y": 134,
+						"w": 65,
+						"h": 30
 					},
 					"frame": {
-						"x": 1481,
+						"x": 1531,
+						"y": 1028,
+						"w": 65,
+						"h": 30
+					}
+				},
+				{
+					"filename": "dummy.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 400,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 94,
+						"y": 139,
+						"w": 214,
+						"h": 243
+					},
+					"frame": {
+						"x": 1614,
 						"y": 1,
-						"w": 7,
-						"h": 200
+						"w": 214,
+						"h": 243
 					}
 				}
 			]
@@ -225,6 +288,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:7af2b889f8ed82aa0874e1bb9041c832:bc890ddaa4d1fc7478eeedccdaad1888:264b477116fdeb9e9185aa7ac4c01a7d$"
+		"smartupdate": "$TexturePacker:SmartUpdate:dbc30a2051da0f31e7e79f77a2552df1:f3314a82df9f5a96e61efd3b48d8929d:264b477116fdeb9e9185aa7ac4c01a7d$"
 	}
 }

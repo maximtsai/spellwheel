@@ -71,14 +71,16 @@ function setupLoadingBar(scene) {
     });
 }
 
-let MAGIC_CIRCLE_HEIGHT = 0
+let MAGIC_CIRCLE_HEIGHT = 0;
 
 function setupGame() {
+
     createAnimations(PhaserScene);
     PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'background');
     MAGIC_CIRCLE_HEIGHT = gameConsts.height - 124;
 
     globalObjects.gameStats = new GameStats();
+    globalObjects.hoverTextManager = new InternalHoverTextManager(PhaserScene);
     globalObjects.textPopupManager = new TextPopupManager(PhaserScene);
     globalObjects.spellManager = new SpellManager(PhaserScene);
     globalObjects.spellRecorder = new SpellRecorder(PhaserScene);
@@ -89,7 +91,9 @@ function setupGame() {
 
 
     globalObjects.player = new Player(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
-    globalObjects.dummyEnemy = new Wall(PhaserScene, gameConsts.halfWidth, 165);
+    // globalObjects.dummyEnemy = new Wall(PhaserScene, gameConsts.halfWidth, 165);
+    // globalObjects.dummyEnemy = new Death(PhaserScene, gameConsts.halfWidth, 173);
+    globalObjects.dummyEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 173);
 
 
     // globalObjects.optionsButton = new Button(

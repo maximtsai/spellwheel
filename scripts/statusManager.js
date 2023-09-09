@@ -29,6 +29,7 @@ class StatusManager {
             statusObj = this.createStatusObj(spellID, this.getPlayerStatusXPos(), this.getPlayerStatusYPos(), spriteSrc1, spriteSrc2, displayAmt);
             this.playerStatusDisplayList.push(statusObj);
         }
+        statusObj.setAmtText(newObj.displayAmt);
         statusObj.setDurationText(newObj.duration);
         statusObj.statusOrig = newObj;
         newObj.statusObj = statusObj;
@@ -86,6 +87,9 @@ class StatusManager {
             status.duration -= 1;
             if (status.displayAmt !== undefined && status.displayAmt.toString() != statusDisplayObj.amtText.text) {
                 statusDisplayObj.setAmtText(status.displayAmt);
+            }
+            if (status.onUpdate) {
+                status.onUpdate();
             }
 
             statusDisplayObj.setDurationText(status.duration);

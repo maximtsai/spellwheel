@@ -11,6 +11,18 @@ function createAnimations(scene) {
     //     repeat: -1
     // });
     scene.anims.create({
+        key: 'mindBurn',
+        frames: scene.anims.generateFrameNames('spells', {
+            prefix: 'mindBurn',
+            suffix: '.png',
+            start: 1,
+            end: 3,
+            zeroPad: 0,
+        }),
+        frameRate: 10,
+        repeat: -1
+    });
+    scene.anims.create({
         key: 'weaken',
         frames: scene.anims.generateFrameNames('spells', {
             prefix: 'weakenLines_',

@@ -2,9 +2,9 @@
 <data version="1.0">
     <struct type="Settings">
         <key>fileFormatVersion</key>
-        <int>5</int>
+        <int>6</int>
         <key>texturePackerVersion</key>
-        <string>6.0.2</string>
+        <string>7.0.3</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -127,8 +127,8 @@
                 <filename>../sprites/spells.json</filename>
             </struct>
         </map>
-        <key>multiPack</key>
-        <true/>
+        <key>multiPackMode</key>
+        <enum type="SettingsBase::MultiPackMode">MultiPackAuto</enum>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -205,6 +205,7 @@
             </struct>
             <key type="filename">spells/blackCircle.png</key>
             <key type="filename">spells/energy_particle.png</key>
+            <key type="filename">spells/whiteCircle.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -216,6 +217,36 @@
                 <rect>10,10,20,20</rect>
                 <key>scale9Paddings</key>
                 <rect>10,10,20,20</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/blackCircleLarge.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>63,63,125,125</rect>
+                <key>scale9Paddings</key>
+                <rect>63,63,125,125</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/blackCirclePlain.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,11,22,22</rect>
+                <key>scale9Paddings</key>
+                <rect>11,11,22,22</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -278,6 +309,21 @@
                 <rect>19,19,37,37</rect>
                 <key>scale9Paddings</key>
                 <rect>19,19,37,37</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/blast.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>31,50,63,100</rect>
+                <key>scale9Paddings</key>
+                <rect>31,50,63,100</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -389,21 +435,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">spells/eyeCircle.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>30,30,60,60</rect>
-                <key>scale9Paddings</key>
-                <rect>30,30,60,60</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">spells/eyeShield.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -416,6 +447,21 @@
                 <rect>58,43,115,85</rect>
                 <key>scale9Paddings</key>
                 <rect>58,43,115,85</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/eye_small.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>28,15,55,31</rect>
+                <key>scale9Paddings</key>
+                <rect>28,15,55,31</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -524,12 +570,14 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">spells/mindBurn.png</key>
+            <key type="filename">spells/mindBurn1.png</key>
+            <key type="filename">spells/mindBurn2.png</key>
+            <key type="filename">spells/mindBurn3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.75</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -570,7 +618,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">spells/needlePattern.png</key>
+            <key type="filename">spells/reticle.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -579,9 +627,24 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>115,115,230,230</rect>
+                <rect>70,70,140,140</rect>
                 <key>scale9Paddings</key>
-                <rect>115,115,230,230</rect>
+                <rect>70,70,140,140</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/reticleArrow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>28,28,55,55</rect>
+                <key>scale9Paddings</key>
+                <rect>28,28,55,55</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -753,10 +816,16 @@
                 <false/>
             </struct>
         </map>
-        <key>fileList</key>
-        <array>
-            <filename>spells</filename>
-        </array>
+        <key>fileLists</key>
+        <map type="SpriteSheetMap">
+            <key>default</key>
+            <struct type="SpriteSheet">
+                <key>files</key>
+                <array>
+                    <filename>spells</filename>
+                </array>
+            </struct>
+        </map>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>

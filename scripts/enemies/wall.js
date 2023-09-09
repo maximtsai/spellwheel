@@ -1,7 +1,7 @@
  class Wall extends Enemy {
      constructor(scene, x, y) {
          super(scene, x, y);
-         this.initSprite('wall.png', 0.62);
+         this.initSprite('wall.png', 0.60);
          this.shieldAdded = false;
      }
 

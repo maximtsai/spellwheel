@@ -14,7 +14,12 @@ class Player {
             messageBus.subscribe("selfTakeTrueDamage", this.takeTrueDamage.bind(this)),
             messageBus.subscribe('clearSpellMultiplier', this.clearSpellMultiplier.bind(this)),
             messageBus.subscribe('clearAttackMultiplier', this.clearAttackMultiplier.bind(this)),
-            messageBus.subscribe('clearDamageAdder', this.clearDamageAdder.bind(this))
+            messageBus.subscribe('clearDamageAdder', this.clearDamageAdder.bind(this)),
+
+            messageBus.subscribe('startVoidForm', this.handleVoidForm.bind(this)),
+            messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this)),
+
+
         ];
         //             messageBus.subscribe("selfClearEffect", this.clearEffects.bind(this)),
         updateManager.addFunction(this.update.bind(this));
@@ -217,6 +222,28 @@ class Player {
         //         this.statuses[statusName] = null;
         //     }
         // }
+        if (this.blackBalls) {
+            for (let i = 0; i < this.blackBalls.length - 3; i++) {
+                if (this.blackBalls[i].origX) {
+                    let newOffsetX = (Math.random() - 0.5) * 2;
+                    let newOffsetY = (Math.random() - 0.5) * 1.88;
+                    this.blackBalls[i].x = this.blackBalls[i].origX * 0.05 + this.blackBalls[i].x * 0.95 + newOffsetX;
+                    this.blackBalls[i].y = this.blackBalls[i].origY * 0.05 + this.blackBalls[i].y * 0.95 + newOffsetY;
+                }
+            }
+        }
+    }
+
+    handleVoidForm(balls) {
+        this.blackBalls = balls;
+        for (let i = 0; i < this.blackBalls.length; i++) {
+            this.blackBalls[i].origX = this.blackBalls[i].x;
+            this.blackBalls[i].origY = this.blackBalls[i].y;
+        }
+    }
+
+    clearVoidForm() {
+        this.blackBalls = null;
     }
 
     adjustDamageTaken(amt) {
@@ -293,6 +320,29 @@ class Player {
 
         let playerStatuses = this.getStatuses();
         let shieldObjects = [];
+
+        if (this.statuses['voidReinforce']) {
+            hurtAmt = 0;
+
+            let blackBall = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 190, 'spells', 'blackCircleLarge.png').setDepth(997).setScale(0.3);
+            let blackBall2 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 190, 'spells', 'blackCircleLarge.png').setDepth(997).setScale(0.3);
+            let xShift = (Math.random() - 0.5) * 150;
+            let yShift = Math.random() * 100;
+            this.scene.tweens.add({
+                targets: [blackBall, blackBall2],
+                duration: 600,
+                scaleX: 0,
+                scaleY: 0,
+                y: "-=" + yShift,
+                x: "+=" + xShift,
+                ease: 'Quad.easeOut',
+                onComplete: () => {
+                    blackBall.destroy();
+                    blackBall2.destroy();
+                }
+            });
+        }
+
         for (let i = 0; i < 10; i++) {
             if (playerStatuses['shield' + i]) {
                 shieldObjects.push(playerStatuses['shield' + i]);
@@ -347,6 +397,19 @@ class Player {
                     break;
                 case 'time':
                     // TODO
+                    if (hurtAmt > 1 && shieldObj.active) {
+                        messageBus.publish('playerAddDelayedDamage', hurtAmt);
+                        shieldObj.shakeAmt = 0.05 + hurtAmt * 0.005;
+                        shieldObj.alpha = 1;
+                        this.scene.tweens.add({
+                            targets: shieldObj,
+                            duration: 300,
+                            alpha: 0.85,
+                            ease: 'Quad.easeIn'
+                        });
+                        messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 200, hurtAmt, 0.5 + Math.sqrt(hurtAmt) * 0.125);
+                        hurtAmt = 0;
+                    }
                     break;
                 case 'void':
                     // completely negates the attack
@@ -409,25 +472,9 @@ class Player {
                 hurtAmt = Math.max(0, hurtAmt - this.statuses['matterReinforce'].protection);
                 messageBus.publish('enemyTakeDamage', this.statuses['matterReinforce'].damage, false);
             } else if (this.statuses['mindReinforce']) {
-                let needleObj = this.statuses['mindReinforce'].animObj[0];
-                needleObj.setScale(0.98);
-                needleObj.setAlpha(0.8);
-                this.scene.tweens.add({
-                    targets: needleObj,
-                    delay: 20,
-                    duration: 380,
-                    scaleX: 1.05,
-                    scaleY: 1.05,
-                    ease: 'Cubic.easeIn',
-                    alpha: 0.35,
-                });
-                hurtAmt = hurtAmt + this.statuses['mindReinforce'].weakness;
+                // TODO: HURT SELF
+                messageBus.publish('selfImplode');
             }
-        }
-
-        if (hurtAmt > 1 && this.statuses['timeProtect']) {
-            messageBus.publish('playerAddDelayedDamage', hurtAmt);
-            hurtAmt = 0;
         }
 
         return hurtAmt;

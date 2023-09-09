@@ -97,11 +97,11 @@ class Enemy {
         let chargeBarLength = Math.floor(this.nextAttackChargeNeeded * 0.2);
         this.chargeBarWarningBig = this.scene.add.sprite(gameConsts.halfWidth, 0, 'enemies', 'warning.png');
         this.chargeBarWarningBig.setOrigin(0.5, 0);
-        this.chargeBarWarningBig.setScale(300, 0.65);
+        this.chargeBarWarningBig.setScale(gameConsts.width * 0.1, 0.65);
         this.chargeBarWarningBig.alpha = 0
         this.chargeBarWarningBig.setDepth(1);
 
-        this.chargeBarMax = this.scene.add.sprite(x, 314, 'blackPixel');
+        this.chargeBarMax = this.scene.add.sprite(x, 326, 'blackPixel');
         this.chargeBarMax.setScale(chargeBarLength + 2, 8);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;
@@ -128,7 +128,7 @@ class Enemy {
         this.chargeBarAngry.setDepth(10);
         this.chargeBarAngry.visible = false;
 
-        this.attackName = this.scene.add.bitmapText(this.x, this.chargeBarMax.y - 22, 'normal', '', 20);
+        this.attackName = this.scene.add.bitmapText(this.x, this.chargeBarMax.y - 23, 'normal', '', 20);
         this.attackName.setDepth(10);
         this.attackName.setOrigin(0.5, 0.5);
     }
@@ -595,7 +595,7 @@ class Enemy {
         }
     }
 
-    takeTrueDamage(amt, isAttack = true) {
+    takeTrueDamage(amt, isAttack = true, extraOffsetY = 0) {
         let origHealth = this.health;
         if (this.storeDamage) {
             // time storage
@@ -619,7 +619,7 @@ class Enemy {
         let healthLoss = origHealth - this.health;
         if (healthLoss > 0) {
             this.animateShake();
-            let offsetY = -30 - damageTaken * 0.8;
+            let offsetY = -30 - damageTaken * 0.1 + extraOffsetY;
             this.animateDamageNum(healthLoss, true, offsetY);
             if (isAttack) {
                 this.timeSinceLastAttacked = 0;

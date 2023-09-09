@@ -9,7 +9,7 @@ const ENABLE_KEYBOARD = true;
         this.reset(x, y);
         this.buildCircles(x, y, scene);
         this.createTimeStopObjs();
-        this.createLaserEye(x, y);
+        this.createMindSniper(x, y);
         if (ENABLE_KEYBOARD) {
             this.setupKeyPresses(scene);
         }
@@ -27,7 +27,6 @@ const ENABLE_KEYBOARD = true;
         messageBus.subscribe('attackLaunched', this.attackLaunched.bind(this));
         messageBus.subscribe('manualSetTimeSlowRatio', this.manualSetTimeSlowRatio.bind(this));
         messageBus.subscribe('refreshRandomRunes', this.refreshRandomRunes.bind(this));
-        messageBus.subscribe('setTimeShieldAlpha', this.setTimeShieldAlpha.bind(this));
         messageBus.subscribe('statusesTicked', this.handleStatusesTicked.bind(this));
         messageBus.subscribe('playerAddDelayedDamage', this.addDelayedDamage.bind(this));
         messageBus.subscribe('enableVoidArm', this.enableVoidArm.bind(this));
@@ -35,7 +34,11 @@ const ENABLE_KEYBOARD = true;
         messageBus.subscribe('manualResetElements', this.manualResetElements.bind(this));
         messageBus.subscribe('manualResetEmbodiments', this.manualResetEmbodiments.bind(this));
         messageBus.subscribe('fireLaserEyes', this.fireLaserEyes.bind(this));
-
+        messageBus.subscribe('inflictVoidBurn', this.applyVoidBurn.bind(this));
+        messageBus.subscribe('startVoidForm', this.handleVoidForm.bind(this));
+        messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this));
+        messageBus.subscribe('selfClearEffect', this.clearMindForm.bind(this));
+        messageBus.subscribe('selfImplode', this.selfImplode.bind(this));
 
     }
 
@@ -58,13 +61,11 @@ const ENABLE_KEYBOARD = true;
 
     update(dt) {
         let mindReinforceStatus = globalObjects.player.getStatuses()['mindReinforce'];
-        if (this.lastDragTime > 100) {
+        if (this.lastDragTime > 40) {
             gameVars.playerNotMoved = true;
-            this.laserCircle1.alpha = 0.9;
         } else {
             gameVars.playerNotMoved = false;
             if (mindReinforceStatus && !this.laserIsFiring) {
-                this.laserCircle1.alpha = 1;
                 let chargeAmt = dt * 0.015 + Math.min(0.03, Math.abs(this.innerCircle.rotVel) + Math.abs(this.outerCircle.rotVel)) * dt;
                 chargeAmt *= mindReinforceStatus.multiplier * 0.5 * gameVars.timeSlowRatio;
                 let oldLaserCharge = this.laserCharge;
@@ -72,41 +73,77 @@ const ENABLE_KEYBOARD = true;
                     this.popupLaserInitial();
                 }
 
-                let bonusCharge = this.laserCharge < 4 ? 2.5 : 1;
-                this.laserCharge += chargeAmt * bonusCharge;
+                let bonusCharge = this.calculateBonusCharge(this.laserCharge);
+                let totalChargeAmt = chargeAmt * bonusCharge;
+                this.laserCharge += totalChargeAmt;
                 if (this.laserCharge >= 1) {
+                    this.mindSniperReticle.velX = this.mindSniperReticle.velX * 0.998 + (Math.random() - 0.5) * 0.024;
+                    this.mindSniperReticle.velY = this.mindSniperReticle.velY * 0.995 + (Math.random() - 0.497) * 0.02;
+                    this.mindSniperReticle.x += this.mindSniperReticle.velX * dt;
+                    this.mindSniperReticle.y += this.mindSniperReticle.velY * dt;
+                    this.mindSniperReticle.x += (this.mindSniperReticle.startX - this.mindSniperReticle.x) * 0.01 * dt;
+                    this.mindSniperReticle.y += (this.mindSniperReticle.startY - this.mindSniperReticle.y) * 0.01 * dt;
+                    this.mindChargeText.x = this.mindSniperReticle.x;
+                    this.mindChargeText.y = this.mindSniperReticle.y;
+
                     let flooredLaserCharge = Math.floor(this.laserCharge);
-                    let sqrtLaserCharge = Math.sqrt(this.laserCharge);
-                    this.laserCircle1.rotation += chargeAmt;
                     if (flooredLaserCharge - Math.floor(oldLaserCharge) > 0) {
-                        let energyParticle = poolManager.getItemFromPool('energyParticle');
-                        if (!energyParticle) {
-                            energyParticle = this.scene.add.sprite(this.laserEye1.x, this.laserEye1.y, 'spells', 'energy_particle.png');
-                        }
-                        energyParticle.setScale(0);
-                        energyParticle.setAlpha(1.5);
-                        let offsetX = Math.random() * -300 - 20;
-                        let offsetY = Math.random() * 200;
-                        energyParticle.setPosition(this.laserEye1.x + offsetX, this.laserEye1.y + offsetY);
+                        this.mindChargeText.setText(flooredLaserCharge);
+                    }
+                    if (oldLaserCharge < 10 && flooredLaserCharge >= 10) {
+                        let newScale = 0.43;
+                        this.mindChargeText.setScale(this.mindChargeText.scaleX * 0.99);
+                        this.mindSniperReticle.setScale(this.mindChargeText.scaleX * 0.99);
                         this.scene.tweens.add({
-                            targets: energyParticle,
-                            ease: 'Cubic.easeInOut',
-                            x: '-=' + (offsetX * 0.9),
-                            y: '-=' + (offsetY * 0.9),
-                            scaleX: 1,
-                            scaleY: 1,
-                            duration: 400,
-                            alpha: 0.1,
+                            targets: [this.mindChargeText, this.mindSniperReticle],
+                            ease: 'Back.easeOut', scaleX: newScale, scaleY: newScale, alpha: 0.6, duration: 250,
+                        });
+                    } else if (oldLaserCharge < 25 && flooredLaserCharge >= 25) {
+                        let newScale = 0.55;
+                        this.mindChargeText.setScale(this.mindChargeText.scaleX * 0.98);
+                        this.mindSniperReticle.setScale(this.mindChargeText.scaleX * 0.98);
+                        this.scene.tweens.add({
+                            targets: [this.mindChargeText, this.mindSniperReticle],
+                            ease: 'Back.easeOut', scaleX: newScale, scaleY: newScale, alpha: 0.7, duration: 325,
+                        });
+                    } else if (oldLaserCharge < 40 && flooredLaserCharge >= 40) {
+                        let newScale = 0.68;
+                        this.mindChargeText.setScale(this.mindChargeText.scaleX * 0.98);
+                        this.mindSniperReticle.setScale(this.mindChargeText.scaleX * 0.98);
+                        this.scene.tweens.add({
+                            targets: [this.mindChargeText, this.mindSniperReticle],
+                            ease: 'Back.easeOut', scaleX: newScale, scaleY: newScale, alpha: 0.8, duration: 450,
+                        });
+                    } else if (oldLaserCharge < 65 && flooredLaserCharge >= 65) {
+                        let newScale = 0.79;
+                        this.mindChargeText.setScale(this.mindChargeText.scaleX * 0.98);
+                        this.mindSniperReticle.setScale(this.mindChargeText.scaleX * 0.98);
+                        this.scene.tweens.add({
+                            targets: [this.mindChargeText, this.mindSniperReticle],
+                            ease: 'Back.easeOut', scaleX: newScale, scaleY: newScale, alpha: 0.9, duration: 600,
                             onComplete: () => {
-                                poolManager.returnItemToPool(energyParticle, 'energyParticle');
+                                zoomTemp(1.005);
                             }
                         });
-
-                        this.laser1Text.setText(flooredLaserCharge);
-                        this.laser1Text.setScale(0.4 + sqrtLaserCharge * 0.1)
+                    } else if (oldLaserCharge < 100 && flooredLaserCharge >= 100) {
+                        let newScale = 0.88;
+                        this.mindChargeText.setScale(this.mindChargeText.scaleX * 1.02);
+                        this.mindSniperReticle.setScale(this.mindChargeText.scaleX * 1.02);
+                        this.scene.tweens.add({
+                            targets: [this.mindChargeText, this.mindSniperReticle],
+                            ease: 'Quart.easeOut', scaleX: newScale*1.2, scaleY: newScale*1.2, alpha: 0.95, duration: 300,
+                            onComplete: () => {
+                                this.scene.tweens.add({
+                                    targets: [this.mindChargeText, this.mindSniperReticle],
+                                    ease: 'Cubic.easeIn', scaleX: newScale, scaleY: newScale, duration: 400,
+                                    onComplete: () => {
+                                        zoomTemp(1.01);
+                                    }
+                                });
+                            }
+                        });
                     }
-                    let newLaserCircleScale = 0.3 + sqrtLaserCharge * 0.1;
-                    this.laserCircle1.setScale(newLaserCircleScale * 0.2 + this.laserCircle1.scaleX * 0.8);
+
                 }
             }
         }
@@ -254,7 +291,7 @@ const ENABLE_KEYBOARD = true;
             let horizForce = -dragPointYOrigin * dragDistXOrigin;
 
             let dragForceSqr = horizForce + vertForce;
-            let torqueConst = gameVars.wasTouch ? 0.021 : 0.0075;
+            let torqueConst = gameVars.wasTouch ? 0.015 : 0.0075;
             // castDisable
 
             if (dragForceSqr < 0) {
@@ -357,12 +394,6 @@ const ENABLE_KEYBOARD = true;
         this.aura.rotVel = 0;
         this.aura.alpha = 0.02;
 
-        this.timeShield = scene.add.sprite(x, y, 'spells', 'clock_back_large.png');
-        this.timeShield.setDepth(100);
-        this.timeShield.setScale(0.7);
-        this.timeShield.rotVel = 0;
-        this.timeShield.setAlpha(0);
-
         this.timeArm = scene.add.sprite(x, y, 'spells', 'clock_arm_large.png');
         this.timeArm.setDepth(103);
         this.timeArm.setOrigin(0.01, 0.5);
@@ -400,6 +431,7 @@ const ENABLE_KEYBOARD = true;
         this.outerCircle.rotVel = 0;
         this.innerCircleSize = 145;
         this.innerCircle = scene.add.sprite(x, y, 'circle', 'element_normal.png');
+        this.innerCircle.setOrigin(0.5003, 0.5003);
         this.innerCircle.setDepth(102);
         this.innerCircle.torque = 0;
         this.innerCircle.torqueOnRelease = 0;
@@ -407,7 +439,7 @@ const ENABLE_KEYBOARD = true;
 
         this.castButtonSize = 83;
         this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png');
-        this.castButton.setDepth(103);
+        this.castButton.setDepth(105);
         this.focusLines = scene.add.sprite(x, y - 137, 'circle', 'focus_lines.png');
         this.focusLines.setDepth(120);
 
@@ -418,6 +450,42 @@ const ENABLE_KEYBOARD = true;
         this.errorBoxEmbodiment.setDepth(121);
         this.errorBoxEmbodiment.alpha = 0;
 
+        this.spellNameText = this.scene.add.bitmapText(this.x, this.y - 222, 'normal', 'MATTER STRIKE', 20);
+        this.spellNameText.setOrigin(0.5, 0.5);
+        this.spellNameText.setDepth(120);
+        this.spellNameText.alpha = 0.5;
+
+        this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth, 150, 'spells', 'darkSlice.png').setDepth(1).setRotation(1).setAlpha(0);
+        this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0);
+
+        // this.spellDescBox = scene.add.sprite(gameConsts.width, gameConsts.height, 'circle', 'descBox.png');
+        // this.spellDescBox.setOrigin(1, 1);
+        // this.spellDescBox.setDepth(120);
+        //
+        // this.spellDescText = this.scene.add.bitmapText(this.x + 204, this.y + 2, 'plain', '', 15);
+        // this.spellDescText.setOrigin(0, 0);
+        // this.spellDescText.setDepth(120);
+
+        this.spellNameHover = new HoverText(
+        {
+            x: this.x,
+            y: this.spellNameText.y,
+            width: this.spellNameText.width + 10,
+            height: this.spellNameText.height + 6,
+            text: "",
+            displayX: gameConsts.width - 8,
+            displayY: this.spellNameText.y + 3,
+            displayOrigin: {
+                x: 1,
+                y: 0.5
+            },
+            onHover: () => {
+                this.spellNameText.alpha = 0.85;
+            },
+            onHoverOut: () => {
+                this.spellNameText.alpha = 0.5;
+            }
+        });
 
         this.dragArrow = scene.add.sprite(x, y, 'circle', 'drag_arrow.png');
         this.dragArrow.setDepth(100001);
@@ -449,44 +517,32 @@ const ENABLE_KEYBOARD = true;
         this.gear4.setDepth(1);
     }
 
-     createLaserEye(x, y) {
-         this.laserCircle1 = this.scene.add.sprite(x + 250, y - 225, 'spells', 'eyeCircle.png').setDepth(10);
-         this.laserCircle1.setVisible(false);
-
-         this.laserEye1 = this.scene.add.sprite(x + 250, y - 225, 'spells', 'eye.png').setDepth(10);
-         this.laserBeam1 = this.scene.add.sprite(x + 250, y - 225, 'spells', 'laserCore.png').setDepth(10);
-         this.laserBeam1.setOrigin(0.5, 1.02);
-         this.laserBeam1.setScale(0.5, 3);
-         this.laserEye1.rotation = -0.84;
-         this.laserBeam1.rotation = -0.84;
-         this.laserEye1.setVisible(false);
-         this.laserBeam1.setVisible(false);
-
-         this.laser1Text = this.scene.add.bitmapText(x + 250, y - 227, 'block', '15', 40).setDepth(10);
-         this.laser1Text.setOrigin(0.5, 0.53);
-         this.laser1Text.setVisible(false);
+     createMindSniper(x, y) {
+         this.mindChargeText = this.scene.add.bitmapText(x, y, 'bonus', ' ', 44).setDepth(200);
+         this.mindChargeText.setScale(0.35);
+         this.mindChargeText.setOrigin(0.5, 0.57);
+         this.mindChargeText.setVisible(false);
      }
 
      popupLaserInitial() {
-         this.laser1Text.setText(0);
-         this.laser1Text.setVisible(true);
-         this.laser1Text.setScale(0.1);
-
-         this.laserCircle1.setVisible(true);
-         this.laserCircle1.setScale(0.1);
+         this.mindChargeText.setText(0);
+         this.mindChargeText.setVisible(true);
+         this.mindChargeText.setScale(0.25);
+         this.mindSniperReticle = globalObjects.player.getStatuses()['mindReinforce'].animObj[0];
+         this.mindSniperReticle.setVisible(true);
+         this.mindSniperReticle.alpha = 0.5;
+         this.mindSniperReticle.startX = this.mindSniperReticle.x;
+         this.mindSniperReticle.startY = this.mindSniperReticle.y;
+         this.mindSniperReticle.velX = 0;
+         this.mindSniperReticle.velY = 0.25;
+         this.mindChargeText.alpha = 0.5;
+         this.mindChargeText.setPosition(this.mindSniperReticle.x, this.mindSniperReticle.y);
          this.scene.tweens.add({
-             targets: this.laser1Text,
+             targets: this.mindChargeText,
              ease: 'Back.easeOut',
-             scaleX: 0.4,
-             scaleY: 0.4,
-             duration: 250,
-         });
-         this.scene.tweens.add({
-             targets: this.laserCircle1,
-             ease: 'Back.easeOut',
-             scaleX: 0.3,
-             scaleY: 0.3,
-             duration: 250,
+             scaleX: 0.35,
+             scaleY: 0.35,
+             duration: 200,
          });
      }
 
@@ -496,67 +552,156 @@ const ENABLE_KEYBOARD = true;
         }
         let lastLaserCharge = Math.floor(this.laserCharge);
          this.laserIsFiring = true;
-         let goalScale = this.laserCircle1.scaleX * 0.95;
-         this.laserEye1.setVisible(true);
-         this.laserEye1.setScale(goalScale * 0.8, 0);
-         this.laserEye1.setAlpha(0.5);
-         this.laserEye1.rotation = 0;
+         let startingSniperScale = this.mindSniperReticle.scaleX;
+
 
          this.scene.tweens.add({
-             targets: this.laserEye1,
-             delay: 300,
-             ease: 'Quart.easeOut',
-             scaleX: goalScale * 0.68,
-             scaleY: goalScale * 0.75,
-             alpha: 0.8,
-             rotation: -0.84,
-             duration: 400 + lastLaserCharge * 4,
+             targets: [this.mindSniperReticle, this.mindChargeText],
+             ease: 'Cubic.easeOut',
+             alpha: this.mindSniperReticle.alpha + 0.2,
+             x: this.mindSniperReticle.startX,
+             y: this.mindSniperReticle.startY,
+             scaleX: startingSniperScale * 0.9,
+             scaleY: startingSniperScale * 0.9,
+             duration: 400 + Math.min(200, lastLaserCharge * 2),
+             completeDelay: 200,
              onComplete: () => {
-                 this.laserEye1.setScale(goalScale * 0.75, goalScale * 0.8);
-                 this.laserEye1.setAlpha(1);
-                 this.laserBeam1.setVisible(true);
-                 this.laserBeam1.scaleX = goalScale * 2 - 0.25;
-                 this.laserBeam1.alpha = 1;
+                 this.mindChargeText.alpha = 0;
+                 this.finishUpMindDamage(lastLaserCharge);
                  this.scene.tweens.add({
-                     targets: this.laserBeam1,
-                     scaleX: goalScale * 1.5 - 0.25,
-                     alpha: 0.8,
-                     duration: 120 + lastLaserCharge,
+                     targets: this.mindSniperReticle,
+                     ease: 'Quad.easeOut',
+                     alpha: 0,
+                     duration: 275,
                      onComplete: () => {
-                         this.laserBeam1.scaleX = goalScale * 2.25 - 0.25;
-                         this.laserBeam1.alpha = 1;
-                         messageBus.publish('enemyTakeTrueDamage', Math.floor(lastLaserCharge), false);
-                         this.scene.tweens.add({
-                             targets: [this.laserCircle1, this.laser1Text],
-                             scaleX: 0,
-                             scaleY: 0,
-                             ease: 'Quad.easeIn',
-                             duration: 300 + lastLaserCharge * 6
-                         });
-                         this.scene.tweens.add({
-                             targets: this.laserBeam1,
-                             scaleX: 0,
-                             ease: 'Quad.easeIn',
-                             duration: 300 + lastLaserCharge * 6,
-                             onComplete: () => {
-                                 this.scene.tweens.add({
-                                     targets: this.laserEye1,
-                                     scaleY: 0,
-                                     duration: 200,
-                                     onComplete: () => {
-                                         this.laserIsFiring = false;
-                                         this.laserCharge = -0.2;
-                                     }
-                                 });
-                             }
-                         });
+                         this.resetMindSniperReticle();
                      }
                  });
              }
-         });
+         })
 
          this.laserCharge = -0.2;
+     }
 
+     finishUpMindDamage(charge) {
+         this.laserIsFiring = false;
+
+         if (charge < 25) {
+             let hitEffect = this.scene.add.sprite(this.mindSniperReticle.x, this.mindSniperReticle.y, 'spells', 'mindEffect.png');
+             hitEffect.setDepth(10);
+             messageBus.publish('enemyTakeTrueDamage', Math.floor(charge), false, -50);
+             let hitEffectStartScale = 0.4 + Math.sqrt(charge) * 0.1;
+             hitEffect.setScale(hitEffectStartScale);
+             this.scene.tweens.add({
+                 targets: hitEffect,
+                 scaleX: hitEffectStartScale * 0.95,
+                 scaleY: hitEffectStartScale * 0.95,
+                 ease: 'Quad.easeOut',
+                 duration: 250,
+                 onComplete: () => {
+                     hitEffect.destroy();
+                 }
+             });
+             this.scene.tweens.add({
+                 targets: this.mindSniperReticle,
+                 ease: 'Cubic.easeOut',
+                 scaleX: this.mindSniperReticle.scaleX * 1.25,
+                 scaleY: this.mindSniperReticle.scaleX * 1.25,
+                 rotation: -0.5,
+                 alpha: 0,
+                 duration: 250,
+                 onComplete: () => {
+                     this.mindSniperReticle.rotation = 0;
+                 }
+             });
+         } else {
+             let blueStreak = this.scene.add.sprite(this.mindSniperReticle.x, this.mindSniperReticle.y, 'pixels', 'blue_pixel.png');
+             blueStreak.setScale(0, 4 + charge * 0.01);
+             setTimeout(() => {
+                 messageBus.publish('enemyTakeTrueDamage', Math.floor(charge), false, -50);
+             }, 70);
+
+             this.scene.tweens.add({
+                 targets: this.mindSniperReticle,
+                 ease: 'Cubic.easeOut',
+                 scaleX: this.mindSniperReticle.scaleX * 1.3,
+                 scaleY: this.mindSniperReticle.scaleX * 1.3,
+                 rotation: -1,
+                 alpha: 0,
+                 duration: 300,
+                 onComplete: () => {
+                     this.mindSniperReticle.rotation = 0;
+                 }
+             });
+             if (charge < 65) {
+                 this.scene.tweens.add({
+                     targets: blueStreak,
+                     ease: 'Cubic.easeOut',
+                     scaleX: 500,
+                     scaleY: 0,
+                     alpha: 0,
+                     duration: 250,
+                     onComplete: () => {
+                         blueStreak.destroy();
+                     }
+                 });
+             } else {
+                 this.scene.tweens.add({
+                     targets: blueStreak,
+                     ease: 'Cubic.easeOut',
+                     scaleX: 500,
+                     duration: 200,
+                 });
+                 this.scene.tweens.add({
+                     targets: blueStreak,
+                     ease: 'Quint.easeIn',
+                     scaleY: 150,
+                     duration: 500,
+                     onComplete: () => {
+                         blueStreak.destroy();
+                     }
+                 });
+                 this.scene.tweens.add({
+                     targets: blueStreak,
+                     ease: 'Quad.easeOut',
+                     alpha: 0,
+                     duration: 500,
+                 });
+             }
+         }
+     }
+
+     resetMindSniperReticle() {
+         this.scene.tweens.add({
+             targets: this.mindSniperReticle,
+             delay: 300,
+             ease: 'Cubic.easeOut',
+             alpha: 0,
+             scaleX: this.mindSniperReticle.scaleX * 2,
+             scaleY: this.mindSniperReticle.scaleX * 2,
+             duration: 200,
+             onComplete: () => {
+                 this.mindSniperReticle.setScale(0.4);
+                 this.mindSniperReticle.alpha = 0;
+                 if (globalObjects.player.getStatuses()['mindReinforce']) {
+                     this.mindChargeText.setVisible(true);
+                     this.mindSniperReticle.setVisible(true);
+                     this.scene.tweens.add({
+                         targets: [this.mindSniperReticle, this.mindChargeText],
+                         delay: 250,
+                         ease: 'Cubic.easeIn',
+                         alpha: 0.5,
+                         scaleX: 0.4,
+                         scaleY: 0.4,
+                         duration: 200,
+                     });
+                 }
+             }
+         });
+
+         this.mindChargeText.setText(0);
+         this.mindChargeText.visible = false;
+         this.mindChargeText.setScale(0.4);
      }
 
     handleTimeSlow(dt) {
@@ -663,7 +808,7 @@ const ENABLE_KEYBOARD = true;
         for (let i = 0; i < ELEMENT_ARRAY.length; i++) {
             this.elements[i] = scene.add.sprite(x, y, 'circle', ELEMENT_ARRAY[i] + '.png');
             this.elements[i].setOrigin(0.5, 0.85);
-            this.elements[i].setDepth(110);
+            this.elements[i].setDepth(103);
             this.elements[i].rotation = (Math.PI * 2)/ELEMENT_ARRAY.length * i;
             this.elements[i].startRotation = this.elements[i].rotation
             this.elements[i].runeName = ELEMENT_ARRAY[i];
@@ -671,13 +816,13 @@ const ENABLE_KEYBOARD = true;
 
             this.elements[i].glow = scene.add.sprite(x, y, 'circle', ELEMENT_ARRAY[i] + '_glow.png');
             this.elements[i].glow.setOrigin(0.5, 0.85);
-            this.elements[i].glow.setDepth(110);
+            this.elements[i].glow.setDepth(103);
             this.elements[i].glow.rotation = this.elements[i].rotation;
         }
         for (let i = 0; i < EMBODIMENT_ARRAY.length; i++) {
             this.embodiments[i] = scene.add.sprite(x, y, 'circle', EMBODIMENT_ARRAY[i] + '.png');
             this.embodiments[i].setOrigin(0.5, 1.18);
-            this.embodiments[i].setDepth(110);
+            this.embodiments[i].setDepth(103);
             this.embodiments[i].rotation = (Math.PI * 2)/EMBODIMENT_ARRAY.length * i;
             this.embodiments[i].startRotation = this.embodiments[i].rotation;
             this.embodiments[i].runeName = EMBODIMENT_ARRAY[i];
@@ -685,7 +830,7 @@ const ENABLE_KEYBOARD = true;
 
             this.embodiments[i].glow = scene.add.sprite(x, y, 'circle', EMBODIMENT_ARRAY[i] + '_glow.png');
             this.embodiments[i].glow.setOrigin(0.5, 1.18);
-            this.embodiments[i].glow.setDepth(110);
+            this.embodiments[i].glow.setDepth(103);
             this.embodiments[i].glow.rotation = this.embodiments[i].rotation;
         }
         // const ELEMENT_ARRAY = ['rune_time', 'rune_mind', 'rune_matter', 'rune_void'];
@@ -707,29 +852,28 @@ const ENABLE_KEYBOARD = true;
         let distToRuneElem = 999;
         let distToRuneEmbodi = 999;
         let closestElement = null;
+        let closestEmbodiment = null;
         for (let i = 0; i < this.elements.length; i++) {
-            distToRuneElem = this.getRotationDiff(this.innerCircle.rotation, this.elements[i].startRotation);
+            distToRuneElem = this.getRotationDiff(this.innerCircle.rotation, -this.elements[i].startRotation);
             if (Math.abs(distToRuneElem) < Math.abs(distToClosestRuneElement)) {
                 distToClosestRuneElement = distToRuneElem;
                 closestElement = this.elements[i];
             }
         }
         for (let i = 0; i < this.embodiments.length; i++) {
-            distToRuneEmbodi = this.getRotationDiff(this.outerCircle.rotation, this.embodiments[i].startRotation);
+            distToRuneEmbodi = this.getRotationDiff(this.outerCircle.rotation, -this.embodiments[i].startRotation);
             if (Math.abs(distToRuneEmbodi) < Math.abs(distToClosestRuneEmbodiment)) {
                 distToClosestRuneEmbodiment = distToRuneEmbodi;
-                closestElement = this.embodiments[i];
+                closestEmbodiment = this.embodiments[i];
             }
         }
+
+        this.updateSpellHover(closestElement, closestEmbodiment, distToClosestRuneElement, distToClosestRuneEmbodiment);
 
         this.aura.rotVel += this.innerCircle.rotVel * 0.006 * dt + this.outerCircle.rotVel * 0.008 * dt;
         this.aura.rotVel *= 1 - 0.07 * dt;
         this.aura.rotation += dt * 0.001 + this.aura.rotVel;
         this.aura.setScale(0.9 + Math.abs(this.aura.rotVel));
-
-        if (this.timeShield.alpha > 0) {
-            this.timeShield.rotation += dt * 0.001 + this.timeShield.alpha * 0.004;
-        }
 
         // very low friction when far away from rune elem
         if (Math.abs(distToClosestRuneElement) > 0.1) {
@@ -1063,7 +1207,7 @@ const ENABLE_KEYBOARD = true;
                                      alpha: 0,
                                      ease: 'Quartic.easeIn',
                                  });
-                                 this.applyMindBurn(6);
+                                 this.applyMindBurn(7);
                                  zoomTemp(1.01 + shieldObj.multiplier * 0.0006);
                              } else if (shieldObj.warmup >= 7 + Math.ceil(shieldObj.multiplier * 0.33)) {
                                  // very heavy lasering
@@ -1185,6 +1329,43 @@ const ENABLE_KEYBOARD = true;
                          }
                      }
                      break;
+                 case 'time':
+                     const blockTimeStartRot = 0.52 + shieldObj.multiplier * 0.03;
+                     let goalRotTime = shieldObj.lockRotation + this.outerCircle.rotation;
+                     shieldObj.animObj[0].rotation = goalRotTime;
+
+                     distFromCenter = Math.abs(shieldObj.animObj[0].rotation);
+                     if (shieldObj.shakeAmt > 0) {
+                         let shakeOffset = shieldObj.shakeAmt * (Math.random() - 0.5);
+                         shieldObj.shakeAmt = Math.max(0, shieldObj.shakeAmt - dScale * 0.012);
+                         shieldObj.animObj[0].rotation += shakeOffset;
+                     }
+                     if (distFromCenter < blockTimeStartRot) {
+                         if (!shieldObj.active) {
+                             shieldObj.active = true;
+                             shieldObj.animObj[0].alpha = 0.85;
+                             this.scene.tweens.add({
+                                 targets: shieldObj.animObj[0],
+                                 duration: 250,
+                                 scaleX: shieldObj.animObj[0].origScaleX,
+                                 scaleY: 0.965,
+                                 ease: 'Cubic.easeOut',
+                             });
+                         }
+                     } else if (distFromCenter > blockTimeStartRot * 1.1) {
+                         if (shieldObj.active) {
+                             shieldObj.active = false;
+                             shieldObj.animObj[0].alpha = 0.5;
+                             this.scene.tweens.add({
+                                 targets: shieldObj.animObj[0],
+                                 duration: 250,
+                                 scaleX: shieldObj.animObj[0].origScaleX - 0.35,
+                                 scaleY: 0.95,
+                                 ease: 'Cubic.easeOut',
+                             });
+                         }
+                     }
+                     break;
                  case 'void':
                      let goalRotVoid = shieldObj.lockRotation + this.outerCircle.rotation;
 
@@ -1256,14 +1437,6 @@ const ENABLE_KEYBOARD = true;
         return diffAmt;
     }
 
-     getTimeShield() {
-        return this.timeShield;
-     }
-
-     setTimeShieldAlpha(alpha = 0.25) {
-        this.timeShield.alpha = alpha;
-     }
-
     castSpell() {
         this.castDisabled = true;
         this.useBufferedSpellCast = false;
@@ -1330,6 +1503,17 @@ const ENABLE_KEYBOARD = true;
 
             this.createElementCast(closestElement);
             this.createEmbodimentCast(closestEmbodiment);
+
+            if (this.spellNameTextAnim) {
+                this.spellNameTextAnim.stop();
+            }
+            this.spellNameTextAnim = this.scene.tweens.add({
+                targets: this.spellNameText,
+                delay: 50,
+                ease: 'Cubic.easeIn',
+                alpha: 0,
+                duration: 400,
+            });
             PhaserScene.time.delayedCall(1250, () => {
                 this.trueCastSpell(closestElement, closestEmbodiment, shieldId, closestEmbodiment.startRotation);
             });
@@ -1657,6 +1841,15 @@ const ENABLE_KEYBOARD = true;
                                 let reEnableDelay = this.keyboardCasted ? 400 : 0;
                                 PhaserScene.time.delayedCall(reEnableDelay, () => {
                                     this.castDisabled = false;
+                                    if (this.spellNameTextAnim) {
+                                        this.spellNameTextAnim.stop();
+                                    }
+                                    this.spellNameTextAnim = this.scene.tweens.add({
+                                        targets: this.spellNameText,
+                                        delay: 1400,
+                                        alpha: 0.7,
+                                        duration: 150,
+                                    });
                                     this.bufferedCastAvailable = false;
                                     if (this.useBufferedSpellCast) {
                                         this.castSpell();
@@ -1882,15 +2075,199 @@ const ENABLE_KEYBOARD = true;
         this.tempLockRot = rotation;
      }
 
+     updateSpellHover(closestElement, closestEmbodiment, closestElementDist, closestEmbodimentDist) {
+         switch (closestElement.runeName) {
+             case RUNE_MATTER:
+                 switch (closestEmbodiment.runeName) {
+                     case RUNE_STRIKE:
+                         this.spellNameText.setText('MATTER STRIKE');
+                         this.spellNameHover.setText('DEAL 12 DAMAGE.');
+                         break;
+                     case RUNE_REINFORCE:
+                         this.spellNameText.setText('THORN FORM');
+                         this.spellNameHover.setText('GAIN 2 THORNS.\nTHORNS BLOCK AND\nREFLECT DAMAGE.');
+                         break;
+                     case RUNE_ENHANCE:
+                         this.spellNameText.setText('ADD STRONGER ATTACK');
+                         this.spellNameHover.setText('NEXT ATTACK\nDEALS +10\nEXTRA DAMAGE.');
+                         break;
+                     case RUNE_PROTECT:
+                         this.spellNameText.setText('SHIELD OF STONE');
+                         this.spellNameHover.setText('CREATES A SHIELD\nTHAT BLOCKS 12\nDAMAGE.');
+                         break;
+                     case RUNE_UNLOAD:
+                         this.spellNameText.setText('EARTH PILLAR');
+                         this.spellNameHover.setText('DEAL 25 DAMAGE.');
+                         break;
+                     default:
+                         this.spellNameText.setText('');
+                         break;
+                 }
+                 break;
+             case RUNE_TIME:
+                 switch (closestEmbodiment.runeName) {
+                     case RUNE_STRIKE:
+                         this.spellNameText.setText('TIME STRIKE');
+                         this.spellNameHover.setText('DEAL 10 DAMAGE.\nCONVERT DAMAGE YOU\nDEAL OVER THE NEXT\n6 SECONDS INTO A\nSINGLE POWERFUL HIT.');
+                         break;
+                     case RUNE_REINFORCE:
+                         this.spellNameText.setText('ACCELERATED FORM');
+                         this.spellNameHover.setText('SLOW DOWN TIME\nUNTIL YOUR NEXT\nATTACK.');
+                         break;
+                     case RUNE_ENHANCE:
+                         this.spellNameText.setText('ADD PAUSING ATTACK');
+                         this.spellNameHover.setText('NEXT ATTACK\nPAUSES ENEMY FOR\n1.5 SECONDS.');
+                         break;
+                     case RUNE_PROTECT:
+                         this.spellNameText.setText('SHIELD OF DELAY');
+                         this.spellNameHover.setText('CREATES A SHIELD\nTHAT DELAYS ALL\nDAMAGE.');
+                         break;
+                     case RUNE_UNLOAD:
+                         this.spellNameText.setText('REWIND HEALTH');
+                         this.spellNameHover.setText('HEAL 12% OF YOUR\nMISSING HEALTH.\nTHEN HEAL 12\nMORE HEALTH.');
+                         break;
+                     default:
+                         this.spellNameText.setText('');
+                         break;
+                 }
+                 break;
+             case RUNE_MIND:
+                 switch (closestEmbodiment.runeName) {
+                     case RUNE_STRIKE:
+                         this.spellNameText.setText('MIND STRIKE');
+                         this.spellNameHover.setText('DEAL 8 DAMAGE.\nENEMY TAKES 50%\nMORE DAMAGE FROM\nNEXT ATTACK.');
+                         break;
+                     case RUNE_REINFORCE:
+                         this.spellNameText.setText('FOCUS FORM');
+                         this.spellNameHover.setText('CHARGE UP POWER\nTHAT IS RELEASED ON\nYOUR NEXT ATTACK.\nTHIS IS RESET\nIF YOU GET HIT.');
+                         break;
+                     case RUNE_ENHANCE:
+                         this.spellNameText.setText('ADD EXTRA ATTACK');
+                         this.spellNameHover.setText('NEXT ATTACK\nIS CAST AN\nEXTRA TIME.');
+                         break;
+                     case RUNE_PROTECT:
+                         this.spellNameText.setText('GAZE OF PAIN');
+                         this.spellNameHover.setText('FIRES A CONTINUOUS\nBEAM OF DAMAGE THAT\nALSO BURNS THE ENEMY.');
+                         break;
+                     case RUNE_UNLOAD:
+                         this.spellNameText.setText('TRIPLIFY MAGIC');
+                         this.spellNameHover.setText('NEXT NON-ATTACK\nSPELL HAS TRIPLE\nEFFECTIVENESS.');
+                         break;
+                     default:
+                         this.spellNameText.setText('');
+                         break;
+                 }
+                 break;
+             case RUNE_VOID:
+                 switch (closestEmbodiment.runeName) {
+                     case RUNE_STRIKE:
+                         this.spellNameText.setText('VOID STRIKE');
+                         this.spellNameHover.setText('DEAL 20 DAMAGE\nOVER 4 SECONDS.');
+                         break;
+                     case RUNE_REINFORCE:
+                         this.spellNameText.setText('VOID FORM');
+                         this.spellNameHover.setText('BECOME INTANGIBLE\nFOR 7 SECONDS.\nLOSE 7 HEALTH.');
+                         break;
+                     case RUNE_ENHANCE:
+                         this.spellNameText.setText('ADD DISRUPTIVE ATTACK');
+                         this.spellNameHover.setText('NEXT ATTACK\nDISRUPTS ENEMY\'S\nCURRENT ACTION.');
+                         break;
+                     case RUNE_PROTECT:
+                         this.spellNameText.setText('SHIELD OF NEGATION');
+                         this.spellNameHover.setText('CREATES A SHIELD\nTHAT FULLY NEGATES\nONE ATTACK.');
+                         break;
+                     case RUNE_UNLOAD:
+                         this.spellNameText.setText('UN-MAKE');
+                         this.spellNameHover.setText('DEAL DAMAGE EQUAL TO\n20% OF THE ENEMY\'s\nCURENT HEALTH.');
+                         break;
+                     default:
+                         this.spellNameText.setText('');
+                         break;
+                 }
+                 break;
+             default:
+                 this.spellNameText.setText('');
+                 break;
+         }
+     }
+
      applyMindBurn(amt) {
          let effectName = 'mindBurn';
          let effectObj;
+         if (this.mindBurnTween) {
+             this.mindBurnTween.stop();
+         }
+         this.mindBurnAnim.alpha = 0.7;
+         this.mindBurnAnim.setScale(0.5 + 0.15 * amt);
          effectObj = {
              name: effectName,
              duration: amt,
              onUpdate: () => {
                  if (effectObj && effectObj.duration < amt) {
+                     this.mindBurnAnim.setScale(0.5 + 0.15 * effectObj.duration);
                      messageBus.publish('enemyTakeTrueDamage', 1, false);
+                 }
+             },
+             cleanUp: (statuses) => {
+                 this.mindBurnTween = this.scene.tweens.add({
+                     targets: [this.mindBurnAnim],
+                     alpha: 0,
+                     scaleX: 1,
+                     scaleY: 1,
+                     duration: 250,
+                     ease: 'Quad.easeOut'
+                 });
+                 statuses[effectName] = null;
+             }
+         };
+         messageBus.publish('enemyTakeEffect', effectObj);
+     }
+
+     applyVoidBurn(power = 4) {
+        let baseScale = 1 + (power - 4) * 0.1;
+         if (this.voidBurnTween) {
+             this.voidBurnTween.stop();
+         }
+         if (this.voidBurnTween2) {
+             this.voidBurnTween2.stop();
+         }
+         this.voidSliceImage1.alpha = 1;
+         this.voidSliceImage1.setScale(0.2, 0.85).setRotation(0.9 + Math.random() * 0.2);
+
+         this.scene.tweens.add({
+             targets: [this.voidSliceImage1],
+             ease: 'Cubic.easeOut',
+             scaleX: baseScale * 0.55,
+             scaleY: baseScale * 0.9,
+             duration: 30,
+         });
+         this.voidBurnTween = this.scene.tweens.add({
+             delay: 30,
+             targets: [this.voidSliceImage1],
+             scaleX: baseScale * 0.25,
+             scaleY: baseScale * 1.5,
+             duration: 4000,
+         });
+
+         let effectName = 'voidBurn';
+         let effectObj;
+         effectObj = {
+             name: effectName,
+             duration: 4,
+             power: power,
+             onUpdate: () => {
+                 if (effectObj && effectObj.duration > 0) {
+                     console.log(effectObj.duration);
+                     messageBus.publish('enemyTakeTrueDamage', power, false);
+                     if (effectObj.duration <= 1) {
+                         this.voidBurnTween2 = this.scene.tweens.add({
+                             targets: [this.voidSliceImage1],
+                             scaleX: 0,
+                             scaleY: baseScale * 2,
+                             alpha: 0,
+                             duration: 250,
+                         });
+                     }
                  }
              },
              cleanUp: (statuses) => {
@@ -1898,5 +2275,88 @@ const ENABLE_KEYBOARD = true;
              }
          };
          messageBus.publish('enemyTakeEffect', effectObj);
+     }
+
+     handleVoidForm() {
+         this.castDisabled = true;
+         this.bufferedCastAvailable = false;
+         this.outerDragDisabled = true;
+         this.innerDragDisabled = true;
+         this.lastDragTime = Math.min(this.lastDragTime, -9999);
+         gameVars.playerNotMoved = false;
+         this.spellNameText.visible = false;
+     }
+
+     clearVoidForm() {
+         this.castDisabled = false;
+         this.outerDragDisabled = false;
+         this.innerDragDisabled = false;
+         this.lastDragTime = 0
+         this.spellNameText.visible = true;
+     }
+
+     clearMindForm(id) {
+        if (!id && !this.laserIsFiring) {
+            this.laserCharge = 0;
+            this.laserIsFiring = false;
+            this.mindChargeText.visible = false
+            this.mindChargeText.setScale(0.35);
+            this.scene.tweens.add({
+                targets: this.mindSniperReticle,
+                alpha: 0,
+                duration: 250,
+                scaleX: this.mindSniperReticle.scaleX * 2,
+                scaleY: this.mindSniperReticle.scaleX * 2
+            });
+        }
+     }
+
+     selfImplode() {
+        if (!this.laserIsFiring) {
+            this.clearMindForm();
+        }
+     }
+
+     calculateBonusCharge(laserCharge) {
+        let chargeBonus = 1;
+        if (laserCharge < 8) {
+            chargeBonus = 1.75;
+        } else if (this.laserCharge < 10) {
+            if (this.laserCharge > 9) {
+                chargeBonus = 0.5;
+            } else {
+                chargeBonus = 1.25;
+            }
+        } else if (this.laserCharge < 25) {
+            if (this.laserCharge > 24) {
+                chargeBonus = 0.35;
+            } else {
+                chargeBonus = 1;
+            }
+        } else if (this.laserCharge < 40) {
+            if (this.laserCharge > 39) {
+                chargeBonus = 0.3;
+            } else {
+                chargeBonus = 0.8;
+            }
+        } else if (this.laserCharge < 65) {
+            if (this.laserCharge > 64) {
+                chargeBonus = 0.25;
+            } else {
+                chargeBonus = 0.65;
+            }
+        } else if (this.laserCharge < 100.5) {
+            if (this.laserCharge > 99) {
+                chargeBonus = 0.15;
+            } else {
+                chargeBonus = 0.5;
+            }
+        } else {
+            chargeBonus = 0.3;
+            if (Math.random() < 0.02) {
+                zoomTemp(1.004);
+            }
+        }
+        return chargeBonus;
      }
  }

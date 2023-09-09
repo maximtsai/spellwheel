@@ -55,8 +55,8 @@ class StatusObj {
         if (amt) {
             this.amtText.setText(amt);
             this.amtText.setPosition(x + 9, y+9);
-            this.amtText.visible = true;
         }
+        this.amtText.visible = true;
     }
 
     setDurationText(text = ' ') {

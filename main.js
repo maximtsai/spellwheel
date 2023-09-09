@@ -1,14 +1,18 @@
 let config = {
     type: Phaser.CANVAS,
     scale: {
-        parent: 'phaser-app',
+        parent: 'spellwheel',
         width: 620,
         height: 720
     },
+    mode: Phaser.Scale.FIT,
     antialias: true,
     transparent: true,
     roundPixels: false,
-    parent: 'phaser-example',
+    parent: 'spellwheel',
+    loader: {
+        baseURL: '' // Where we begin looking for files
+    },
     scene: {
         preload: preload,
         create: create,
@@ -40,7 +44,9 @@ let gameVars = {
     mouseposy: 0,
     lastmousedown: {x: 0, y: 0},
     timeSlowRatio: 1,
-    playerSpeed: 1
+    playerSpeed: 1,
+    gameScale: 1,
+    canvasXOffset: 0
 };
 let globalObjects = {};
 let updateFunctions = {};
@@ -52,6 +58,7 @@ let timeUpdateCounterMax = 5;
 
 function preload ()
 {
+    resizeGame();
     loadFileList(this, imageFilesPreload, 'image');
 }
 

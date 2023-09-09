@@ -129,7 +129,7 @@ class SpellManager {
                 rockObj = this.scene.add.sprite(xPos, yPos, 'spells', 'rock.png');
             }
             rockObj.setPosition(xPos, yPos);
-            rockObj.setDepth(10);
+            rockObj.setDepth(11);
             rockObj.rotation = Math.random() - 0.5;
             rockObjects.push(rockObj);
             rockObj.setScale(0.1);
@@ -548,13 +548,10 @@ class SpellManager {
             }
         });
          */
-        let spellName = "SHIELD OF PROTECTION";
+        let spellName = "SHIELD OF STONE";
         let bonusSize = 0;
-        if (spellMultiplier >= 6) {
-            spellName = "FORTRESS OF PROTECTION";
-            bonusSize = 0.2;
-        } else if (spellMultiplier >= 3) {
-            spellName = "BULWARK OF PROTECTION";
+        if (spellMultiplier >= 3) {
+            spellName = "SHIELD OF STONE X" + spellMultiplier;
             bonusSize = 0.1;
         }
         this.postNonAttackCast(spellID, spellName, bonusSize);
@@ -827,7 +824,7 @@ class SpellManager {
         });
 
 
-        let spellName = "ADD FREEZING ATTACK";
+        let spellName = "ADD PAUSING ATTACK";
         if (multiplier > 1) {
             spellName += " X" + multiplier;
         }
@@ -844,39 +841,54 @@ class SpellManager {
             statusObj = existingBuff.statusObj;
         }
 
+        let animation1 = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', 'clockShield.png');
+        animation1.setDepth(118);
+        animation1.setOrigin(0.5, 1);
+        animation1.setScale(0.75);
+        animation1.origScaleX = 0.95;
+        animation1.rotation = rotation;
+
+        messageBus.publish('setTempRotObjs', [animation1], rotation);
+
         let multiplier = globalObjects.player.spellMultiplier();
-        messageBus.publish("setTimeShieldAlpha", 0.3 + multiplier * 0.08);
-        let timeShield = globalObjects.magicCircle.getTimeShield();
-        timeShield.setScale(0.64);
+
+        // TODO Remove timeshield
+
         this.scene.tweens.add({
-            targets: timeShield,
+            targets: animation1,
             duration: 400,
-            ease: 'Back.easeOut',
-            scaleX: 0.7 + multiplier * 0.008,
-            scaleY: 0.7 + multiplier * 0.008,
+            ease: 'Cubic.easeOut',
+            scaleX: 0.95,
+            scaleY: 0.965,
             onStart: () => {
                 messageBus.publish("selfTakeEffect", {
-                    name: spellID,
+                    name: shieldID,
                     spellID: shieldID,
-                    animObj: [timeShield],
-                    duration: 30,
+                    type: 'time',
+                    animObj: [animation1],
+                    lockRotation: rotation,
+                    duration: 30 * multiplier,
                     spriteSrc1: 'rune_protect_glow.png',
                     spriteSrc2: 'rune_time_glow.png',
                     displayAmt: 0,
+                    active: true,
+                    multiplier: multiplier,
                     statusObj: statusObj,
                     cleanUp: (statuses) => {
-                        if (statuses[spellID] && !statuses[spellID].currentAnim) {
-                            statuses[spellID].currentAnim = this.scene.tweens.add({
-                                targets: timeShield,
+                        if (statuses[shieldID] && !statuses[shieldID].currentAnim) {
+                            statuses[shieldID].currentAnim = this.scene.tweens.add({
+                                targets: animation1,
                                 duration: 250,
                                 scaleX: 0.55,
                                 scaleY: 0.55,
                                 alpha: 0,
                                 ease: 'Quad.easeOut',
                                 onComplete: () => {
-                                    statuses[spellID] = null;
+                                    animation1.destroy();
                                 }
                             });
+                            messageBus.publish('selfClearEffect', shieldID, true);
+                            statuses[shieldID] = null;
                         }
                     }
                 });
@@ -885,10 +897,6 @@ class SpellManager {
 
         let boost = 0;
         let spellName = "SHIELD OF DELAY";
-        if (multiplier > 3) {
-            spellName = "LIVE TODAY\nDIE TOMORROW";
-            boost = 0.15;
-        }
         this.postNonAttackCast(spellID, spellName, boost);
     }
     castTimeUnload() {
@@ -1053,54 +1061,59 @@ class SpellManager {
     castMindReinforce() {
         const spellID = 'mindReinforce';
         let multiplier = globalObjects.player.spellMultiplier();
-        let needleObj;
+        let sniperReticle;
         let existingBuff = globalObjects.player.getStatuses()[spellID];
         let statusObj;
         if (existingBuff) {
             // already got a buff in place
-            needleObj = existingBuff.animObj[0];
+            sniperReticle = existingBuff.animObj[0];
             statusObj = existingBuff.statusObj;
         } else {
             this.cleanseForms();
-            needleObj = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'needlePattern.png');
-            needleObj.setDepth(120);
+            let headPosX = gameVars.enemyHeadX || gameConsts.halfWidth;
+            let headPosY = gameVars.enemyHeadY || 90;
+            sniperReticle = this.scene.add.sprite(headPosX, headPosY, 'spells', 'reticle.png');
+            sniperReticle.setDepth(9);
         }
-        needleObj.setAlpha(0.25);
-        needleObj.setScale(1.25);
+        sniperReticle.setAlpha(0.25);
+        sniperReticle.setScale(1);
         this.scene.tweens.add({
-            targets: needleObj,
+            targets: sniperReticle,
             duration: 400,
-            scaleX: 1.05,
-            scaleY: 1.05,
-            alpha: 0.75,
+            scaleX: 0.4,
+            scaleY: 0.4,
+            alpha: 0.85,
             ease: 'Cubic.easeIn',
              onComplete: () => {
-                 needleObj.setAlpha(1);
+                 sniperReticle.setAlpha(1);
                  this.scene.tweens.add({
-                     targets: needleObj,
+                     targets: sniperReticle,
                      duration: 400,
-                     alpha: 0.35
+                     alpha: 0.5
                  });
              }
         });
 
-        let weakness = 3 * multiplier;
+        let displayedNum;
+        if (multiplier >= 3) {
+            displayedNum = multiplier;
+        }
         messageBus.publish('selfTakeEffect', {
             name: spellID,
             spellID: spellID,
-            animObj: [needleObj],
-            weakness: weakness,
+            animObj: [sniperReticle],
             multiplier: multiplier,
             spriteSrc1: 'rune_reinforce_glow.png',
             spriteSrc2: 'rune_mind_glow.png',
+            displayAmt: displayedNum,
             statusObj: statusObj,
             cleanUp: (statuses) => {
                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
                     statuses[spellID].currentAnim = this.scene.tweens.add({
                         targets: statuses[spellID].animObj,
                         duration: 300,
-                        scaleX: 1.25,
-                        scaleY: 1.25,
+                        scaleX: 0.55,
+                        scaleY: 0.55,
                         alpha: 0,
                         ease: 'Cubic.easeOut',
                         onComplete: () => {
@@ -1120,9 +1133,9 @@ class SpellManager {
 
         let spellName = "FOCUS FORM";
         if (multiplier >= 3) {
-            spellName = "DEEP FOCUS FORM";
-            if (overloadAmt >= 2) {
-                spellName += " X" + overloadAmt;
+            spellName = "RAPID FOCUS FORM";
+            if (multiplier >= 2) {
+                spellName += " X" + multiplier;
             }
         }
         this.postNonAttackCast(spellID, spellName);
@@ -1410,6 +1423,7 @@ class SpellManager {
         const spellID = 'voidStrike';
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let additionalDamage = globalObjects.player.attackDamageAdder();
+        let fifthSplitAdditionalDamage = Math.floor(additionalDamage * 0.2);
 
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
@@ -1439,16 +1453,9 @@ class SpellManager {
                         scaleY: 0.6 + additionalDamage * 0.007,
                         ease: 'Quad.easeIn',
                         onComplete: () => {
-                            let sliceImage = this.createDamageEffect(strikeObj.x, strikeObj.y, strikeObj.depth, 'darkSlice.png', {
-                                duration: 350,
-                                scaleX: 1,
-                                scaleY: 1,
-                                ease: 'Quad.easeIn',
-                                alpha: 0
-                            });
-                            sliceImage.setScale(0.5)
-                            sliceImage.setRotation(Math.random() - 0.5);
-                            messageBus.publish('enemyTakeDamagePercent', 7, additionalDamage);
+                            let damagePerTick = 4 + fifthSplitAdditionalDamage;
+                            messageBus.publish('enemyTakeDamage', damagePerTick);
+                            messageBus.publish('inflictVoidBurn', damagePerTick);
                             strikeObj.destroy();
                         }
                     });
@@ -1474,15 +1481,13 @@ class SpellManager {
     castVoidReinforce(elem, embodi) {
         const spellID = 'voidReinforce';
         let multiplier = globalObjects.player.spellMultiplier();
-        messageBus.publish("manualResetElements", elem);
         this.cleanseForms();
-        if (multiplier >= 3) {
-            messageBus.publish("manualResetEmbodiments", embodi);
-        }
+
         let shieldObj = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blackHoleBig.png');
         shieldObj.setDepth(10);
-        shieldObj.setScale(2.32);
+        shieldObj.setScale(2.2);
 
+        messageBus.publish("selfClearEffect");
         this.scene.tweens.add({
             targets: shieldObj,
             duration: 1000,
@@ -1493,10 +1498,137 @@ class SpellManager {
                 shieldObj.destroy();
             }
         });
+        let whiteFade = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setDepth(99).setScale(500, 500);
+        whiteFade.setAlpha(0);
+        this.scene.tweens.add({
+            targets: whiteFade,
+            duration: 1200,
+            alpha: 0.25,
+        });
+        let blackBalls = [];
+        for (let i = 0; i < 9; i++) {
+            setTimeout(() => {
+                let randAngle = (Math.random() - 0.5) * 4.5;
+                let dist = 235 + Math.random() * 80;
+                let randX = gameConsts.halfWidth + Math.sin(randAngle) * dist;
+                let randY = globalObjects.player.getY() - Math.cos(randAngle) * dist;
+                let blackBall = this.scene.add.sprite(randX, randY, 'spells', 'blackCircleLarge.png').setDepth(998).setScale(0,0);
+                blackBall.setRotation(Math.random() * 6);
 
-        let spellName = "REFRESH ELEMENTS";
+                this.scene.tweens.add({
+                    targets: blackBall,
+                    duration: 530,
+                    scaleX: 1.42 + i * 0.03,
+                    scaleY: 1.42 + i * 0.03,
+                    ease: 'Quint.easeIn',
+                });
+                this.scene.tweens.add({
+                    targets: blackBall,
+                    duration: 540,
+                    x: gameConsts.halfWidth,
+                    y: globalObjects.player.getY(),
+                    ease: 'Cubic.easeIn',
+                    onComplete: () => {
+                        blackBalls.push(blackBall);
+                        let fades = [];
+                        if (i == 2) {
+                            let startTime = 7 * multiplier;
+                            let timeText = this.scene.add.bitmapText(gameConsts.halfWidth, globalObjects.player.getY() - 20, 'block', startTime, 48).setDepth(999).setOrigin(0.5, 0.5);
+                            let whiteBall = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'whiteCircle.png').setDepth(99).setScale(6,6).setAlpha(0.6);
+                            let blackFade = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(99).setScale(500, 500).setAlpha(0);
+                            fades.push(whiteBall);
+                            fades.push(blackFade);
+                            fades.push(whiteFade);
+                            this.scene.tweens.add({
+                                targets: whiteBall,
+                                duration: 250,
+                                scaleX: 40,
+                                scaleY: 40
+                            });
+                            this.scene.tweens.add({
+                                targets: fades,
+                                duration: 300,
+                                ease: 'Cubic.easeIn',
+                                alpha: 0.43
+                            });
+                            messageBus.publish("startVoidForm", blackBalls);
+                            let effectObj = {
+                                name: spellID,
+                                spellID: spellID,
+                                duration: startTime,
+                                multiplier: multiplier,
+                                cleanUp: (statuses) => {
+                                    if (statuses[spellID] && !statuses[spellID].currentAnim) {
+                                        for (let i = 0; i < blackBalls.length; i++) {
+                                            let ball = blackBalls[i];
+                                            let randDir = (Math.random() - 0.5) * 4;
+                                            let randDist = 270 + Math.random() * 70;
+                                            let randX = ball.x + Math.sin(randDir) * randDist;
+                                            let randY = ball.y - Math.cos(randDir) * randDist;
+                                            this.scene.tweens.add({
+                                                targets: ball,
+                                                duration: 450,
+                                                ease: 'Cubic.easeOut',
+                                                x: randX,
+                                                y: randY,
+                                            });
+                                            this.scene.tweens.add({
+                                                targets: ball,
+                                                duration: 450 + Math.random() * 100,
+                                                ease: 'Quad.easeOut',
+                                                scaleX: 0,
+                                                scaleY: 0,
+                                            });
+                                        }
+
+                                        statuses[spellID].currentAnim = this.scene.tweens.add({
+                                            targets: fades,
+                                            duration: 25,
+                                            alpha: 0,
+                                            ease: 'Quad.easeIn',
+                                            onComplete: () => {
+                                                messageBus.publish("stopVoidForm");
+                                                statuses[spellID] = null;
+                                                for (let i = 0; i < fades.length; i++) {
+                                                    fades[i].destroy();
+                                                }
+                                            }
+                                        });
+                                    }
+                                    timeText.destroy();
+                                },
+                                onUpdate: () => {
+                                    messageBus.publish("selfTakeTrueDamage", 1);
+                                    if (effectObj) {
+                                        if (fades && fades[1]) {
+                                            fades[1].setAlpha(0.42 + 0.02 * (8 - effectObj.duration))
+                                        }
+                                        timeText.setText(effectObj.duration.toString());
+                                    }
+                                }
+                            };
+                            messageBus.publish("selfTakeEffect", effectObj);
+                        } else if (i == 8) {
+                            for (let j = 0; j < 8; j++) {
+                                blackBalls[j].setScale(blackBalls[8].scaleX + 0.08);
+                            }
+                            this.scene.tweens.add({
+                                targets: blackBalls,
+                                duration: 250,
+                                ease: 'Quad.easeOut',
+                                scaleX: blackBalls[8].scaleX,
+                                scaleY: blackBalls[8].scaleX,
+                            });
+                        }
+                    }
+                });
+            }, i * 20);
+        }
+
+
+        let spellName = "VOID FORM";
         if (multiplier >= 3) {
-            spellName = "REFRESH ALL";
+            spellName += " X"+multiplier;
         }
         this.postNonAttackCast(spellID, spellName);
     }
@@ -1633,7 +1765,7 @@ class SpellManager {
             let rotationPos = (i - ((numCircleParticles - 1) / 2)) * 0.12;
             let blackShieldPiece = poolManager.getItemFromPool('blackCircle');
             if (!blackShieldPiece) {
-                blackShieldPiece = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', 'blackCircle.png');
+                blackShieldPiece = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', 'blackCirclePlain.png');
             }
             blackShieldPiece.startX = gameConsts.halfWidth; blackShieldPiece.startY = MAGIC_CIRCLE_HEIGHT;
             let xPos = gameConsts.halfWidth + startDist * Math.sin(rotationPos);
@@ -1832,7 +1964,6 @@ class SpellManager {
             PhaserScene.time.delayedCall(Math.max(0, initialDelay * 0.1 + thisDurationDelay * 0.85 - 280), () => {
                 PhaserScene.time.delayedCall(200, () => {
                     zoomTemp(1.005 + numTotalAttacks * 0.002);
-                    messageBus.publish('enemyClearEffect');
                     messageBus.publish('enemyTakeDamagePercent', 20, additionalDamage);
                 });
                 if (additionalDamage > 1) {
@@ -1853,7 +1984,7 @@ class SpellManager {
             });
         }
 
-        let spellName = "BLACK HOLE";
+        let spellName = "UN-MAKE";
         this.postAttackCast(spellID, 220, spellName);
     }
 

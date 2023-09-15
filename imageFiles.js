@@ -1,10 +1,10 @@
 const imageFilesPreload = [
     {name: 'whitePixel', src: 'sprites/preload/white_pixel.png'},
     {name: 'blackPixel', src: 'sprites/preload/black_pixel.png'},
-    {name: 'background', src: 'sprites/preload/background.png'},
-    {name: 'loadingSpinner', src: 'sprites/preload/loading_spinner.png'},
+    {name: 'background', src: 'sprites/preload/background.webp'},
+    {name: 'loadingSpinner', src: 'sprites/preload/loading_spinner.webp'},
     {name: 'shadeCircle', src: 'sprites/preload/shade_circle.png'},
-    {name: 'castNormal', src: 'sprites/preload/cast_normal.png'},
+    {name: 'castNormal', src: 'sprites/preload/cast_normal.webp'},
     {name: 'runeEnhancePre', src: 'sprites/preload/rune_enhance_glow.png'},
     {name: 'runeMatterPre', src: 'sprites/preload/rune_matter_glow.png'},
     {name: 'runeMindPre', src: 'sprites/preload/rune_mind_glow.png'},

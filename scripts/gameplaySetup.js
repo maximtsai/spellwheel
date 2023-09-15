@@ -37,16 +37,17 @@ function setupLoadingBar(scene) {
 
     // Setup loading bar logic
     scene.load.on('progress', function (value) {
-        loadingSpinner.goalRot = value * Math.PI * 1.95;
+        loadingSpinner.goalRot = value * Math.PI * 1.55;
     });
     scene.load.on('complete', () => {
         console.log("complt")
         loadingText.setText('BEGINNING MAGIC SEQUENCE')
         loadingSpinner.goalRot = null;
         // Animate out the loading bar
+        let finalRotation = loadingSpinner.rotation > 0 ? Math.PI * 2 : 0;
         scene.tweens.add({
-            targets: [loadingSpinner],
-            rotation: Math.PI * 2,
+            targets: loadingSpinner,
+            rotation: finalRotation,
             duration: 450,
             ease: 'Cubic.easeInOut'
         });

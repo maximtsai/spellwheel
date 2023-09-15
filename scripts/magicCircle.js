@@ -438,10 +438,28 @@ const ENABLE_KEYBOARD = true;
         this.innerCircle.rotVel = 0;
 
         this.castButtonSize = 83;
-        this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png');
-        this.castButton.setDepth(105);
-        this.focusLines = scene.add.sprite(x, y - 137, 'circle', 'focus_lines.png');
-        this.focusLines.setDepth(120);
+        this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png').setDepth(105);
+        this.castButtonSpare = scene.add.sprite(x, y, 'circle', 'cast_disabled.png').setDepth(106).setAlpha(0);
+        this.castGlow = scene.add.sprite(x, y, 'circle', 'cast_glow.png').setDepth(106).setAlpha(0);
+        this.focusLines = scene.add.sprite(x, y - 137, 'circle', 'focus_lines.png').setDepth(120);
+
+        this.castTriangles = [];
+        let triangle1 = scene.add.sprite(x - 35, y - 113.5, 'circle', 'cast_triangle.png');
+        triangle1.setDepth(120).setScale(0.8, 0.7);
+        this.castTriangles.push(triangle1)
+        let triangle2 = scene.add.sprite(x + 35, y - 113.5, 'circle', 'cast_triangle.png');
+        triangle2.setDepth(120).setScale(-0.8, 0.7);
+        this.castTriangles.push(triangle2)
+        let triangle3 = scene.add.sprite(x + 34, y - 167, 'circle', 'cast_triangle.png');
+        triangle3.setDepth(120).setScale(-0.8, 0.7);
+        this.castTriangles.push(triangle3)
+        let triangle4 = scene.add.sprite(x - 34, y - 167, 'circle', 'cast_triangle.png');
+        triangle4.setDepth(120).setScale(0.8, 0.7);
+        this.castTriangles.push(triangle4)
+        for (let i = 0; i < this.castTriangles.length; i++) {
+            this.castTriangles[i].startScaleX = this.castTriangles[i].scaleX;
+            this.castTriangles[i].startScaleY = this.castTriangles[i].scaleY;
+        }
 
         this.errorBoxElement = scene.add.sprite(x, y - 115, 'circle', 'error_box.png');
         this.errorBoxElement.setDepth(121);
@@ -1117,8 +1135,26 @@ const ENABLE_KEYBOARD = true;
     updateFramesLazy() {
         const key = 'circle';
         if (this.castDisabled) {
-            this.castButton.setTexture(key, 'cast_press.png');
+            if (this.castButton.frame.name !== 'cast_disabled.png') {
+                this.castGlow.alpha = 0.5;
+                this.scene.tweens.add({
+                    targets: this.castGlow,
+                    duration: 1000,
+                    ease: 'Quint.easeOut',
+                    alpha: 0,
+                });
+                this.castButton.setTexture(key, 'cast_disabled.png');
+            }
         } else if (this.castButton.frame.customData.filename !== this.castButton.lazyFrame) {
+            if (this.castButton.frame.customData.filename == 'cast_disabled.png' && this.castButton.lazyFrame == 'cast_normal.png') {
+                this.castButtonSpare.alpha = 0.8;
+                this.scene.tweens.add({
+                    targets: this.castButtonSpare,
+                    duration: 300,
+                    ease: 'Cubic.easeOut',
+                    alpha: 0,
+                });
+            }
             this.castButton.setTexture(key, this.castButton.lazyFrame);
         }
         if (this.innerCircle.frame.customData.filename !== this.innerCircle.lazyFrame) {
@@ -1205,7 +1241,7 @@ const ENABLE_KEYBOARD = true;
                                      duration: 200,
                                      scaleX: 0,
                                      alpha: 0,
-                                     ease: 'Quartic.easeIn',
+                                     ease: 'Quart.easeIn',
                                  });
                                  this.applyMindBurn(7);
                                  zoomTemp(1.01 + shieldObj.multiplier * 0.0006);
@@ -1716,7 +1752,7 @@ const ENABLE_KEYBOARD = true;
             castCircle.setDepth(120);
         }
         castCircle.alpha = 0;
-        castCircle.setScale(1.75);
+        castCircle.setScale(1.25);
         castCircle.rotation = 0;
 
         sprite.setPosition(this.x + Math.sin(elem.rotation) * 114, this.y - Math.cos(elem.rotation) * 114);
@@ -1788,7 +1824,7 @@ const ENABLE_KEYBOARD = true;
             castCircle.setDepth(120);
         }
         castCircle.alpha = 0;
-        castCircle.setScale(1.75);
+        castCircle.setScale(1.25);
         castCircle.rotation = 0;
 
         sprite.setPosition(this.x + Math.sin(elem.rotation) * 168, this.y - Math.cos(elem.rotation) * 168);
@@ -1799,6 +1835,12 @@ const ENABLE_KEYBOARD = true;
             targets: castCircle,
             duration: 250,
             alpha: 0.85,
+        });
+
+        this.scene.tweens.add({
+            targets: this.castTriangles,
+            duration: 200,
+            alpha: 0
         });
 
         this.scene.tweens.add({
@@ -1814,11 +1856,27 @@ const ENABLE_KEYBOARD = true;
                     rotation: 1.57,
                     alpha: 0.5
                 });
-
+                this.scene.tweens.add({
+                    delay: 340,
+                    targets: this.castTriangles[0],
+                    duration: 300,
+                    alpha: 0.6,
+                    ease: 'Cubic.easeOut'
+                });
+                this.scene.tweens.add({
+                    delay: 600,
+                    targets: this.castTriangles[1],
+                    duration: 200,
+                    alpha: 0.6,
+                    ease: 'Cubic.easeOut'
+                });
                 this.scene.tweens.add({
                     targets: [sprite, castCircle],
                     ease: 'Quart.easeInOut',
                     delay: 60,
+                    duration: 840,
+                    x: this.x + 28,
+                    y: this.y - 224,
                     onStart: () => {
                         let stopForceAlignmentDelay = this.keyboardCasted ? 350 : 0;
                         PhaserScene.time.delayedCall(stopForceAlignmentDelay, () => {
@@ -1830,6 +1888,19 @@ const ENABLE_KEYBOARD = true;
                             this.bufferedCastAvailable = true;
                         });
                         this.scene.tweens.add({
+                            targets: this.castTriangles[2],
+                            duration: 200,
+                            alpha: 0.6,
+                            ease: 'Cubic.easeOut'
+                        });
+                        this.scene.tweens.add({
+                            delay: 450,
+                            targets: this.castTriangles,
+                            duration: 100,
+                            alpha: 1,
+                            ease: 'Cubic.easeOut'
+                        });
+                        this.scene.tweens.add({
                             targets: [sprite, castCircle],
                             alpha: 0,
                             scaleX: 1.5,
@@ -1839,6 +1910,7 @@ const ENABLE_KEYBOARD = true;
                                 poolManager.returnItemToPool(castCircle, 'castCircle');
                                 sprite.setScale(1, 1);
                                 let reEnableDelay = this.keyboardCasted ? 400 : 0;
+
                                 PhaserScene.time.delayedCall(reEnableDelay, () => {
                                     this.castDisabled = false;
                                     if (this.spellNameTextAnim) {
@@ -1857,10 +1929,7 @@ const ENABLE_KEYBOARD = true;
                                 });
                             }
                         });
-                    },
-                    duration: 840,
-                    x: this.x + 28,
-                    y: this.y - 224
+                    }
                 });
             },
             duration: 250,

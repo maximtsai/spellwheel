@@ -1842,7 +1842,7 @@ class SpellManager {
                             duration: 500,
                             x: "-=" + randX,
                             y: "-=" + randY,
-                            ease: 'Quartic.easeOut',
+                            ease: 'Quart.easeOut',
                             onComplete: () => {
                                 poolManager.returnItemToPool(shieldObjDarkBall, 'blackCircle');
                             }

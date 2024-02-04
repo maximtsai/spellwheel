@@ -3,12 +3,20 @@ let config = {
     scale: {
         parent: 'spellwheel',
         width: 620,
-        height: 720
+        height: 720,
+        autoRound: true,
+        mode: Phaser.Scale.FIT,
     },
-    mode: Phaser.Scale.FIT,
+    render: {
+        // Leave on to prevent pixelated graphics
+        antialias: true,
+        roundPixels: true,
+    },
     antialias: true,
     transparent: true,
     roundPixels: false,
+    expandParent: true,
+    clearBeforeRender: false,
     parent: 'spellwheel',
     loader: {
         baseURL: '' // Where we begin looking for files
@@ -59,6 +67,8 @@ let timeUpdateCounterMax = 5;
 function preload ()
 {
     resizeGame();
+    let gameDiv = document.getElementById('preload-notice');
+    gameDiv.innerHTML = "";
     loadFileList(this, imageFilesPreload, 'image');
 }
 

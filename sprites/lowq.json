@@ -1,0 +1,83 @@
+{
+	"textures": [
+		{
+			"image": "lowq-0.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 1404,
+				"h": 1604
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "star_black.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 800,
+						"h": 800
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 800,
+						"h": 800
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 800,
+						"h": 800
+					}
+				},
+				{
+					"filename": "star_white.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 800,
+						"h": 800
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 800,
+						"h": 800
+					},
+					"frame": {
+						"x": 1,
+						"y": 803,
+						"w": 800,
+						"h": 800
+					}
+				},
+				{
+					"filename": "stars.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 600,
+						"h": 506
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 600,
+						"h": 506
+					},
+					"frame": {
+						"x": 803,
+						"y": 1,
+						"w": 600,
+						"h": 506
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:1274916ff1858cd31477ec56b1db4c02:a18adcbfe639c6ee94ca795195c8e359:0644d9afadc5ec39d626109554d3f3bc$"
+	}
+}

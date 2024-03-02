@@ -47,10 +47,9 @@
              [
                  // 0
                  {
-                     name: "SURPRISE STAB }10 ",
-                     chargeAmt: 150,
-                     chargeMult: 5,
-                     damage: 12,
+                     name: "NERVOUS POKE }5 ",
+                     chargeAmt: 300,
+                     damage: 5,
                      function: () => {
                          if (this.currentAttackSetIndex === 0) {
                              this.currentAttackSetIndex = 1;

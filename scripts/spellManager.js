@@ -120,6 +120,21 @@ class SpellManager {
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let additionalDamage = globalObjects.player.attackDamageAdder();
 
+        let pebbles = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.height - 360, 'spells', 'rockCircle.png');
+        pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalDamage * 0.015).setRotation(Math.random() * 3)
+        this.scene.tweens.add({
+            targets: pebbles,
+            duration: 300,
+            scaleX: 0,
+            scaleY: 0,
+        });
+        this.scene.tweens.add({
+            targets: pebbles,
+            duration: 300,
+            alpha: 1,
+            ease: 'Cubic.easeOut'
+        });
+
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
@@ -132,13 +147,21 @@ class SpellManager {
             rockObj.setDepth(11);
             rockObj.rotation = Math.random() - 0.5;
             rockObjects.push(rockObj);
-            rockObj.setScale(0.1);
+            rockObj.setScale(0.0);
             this.scene.tweens.add({
                 targets: rockObj,
-                duration: 400 + additionalDamage * 1.5,
-                scaleX: 0.9 + additionalDamage * 0.0175,
-                scaleY: 0.9 + additionalDamage * 0.0175,
-                ease: 'Cubic.easeOut'
+                delay: 150,
+                duration: 400 + additionalDamage * 2,
+                scaleX: 0.5 + additionalDamage * 0.01,
+                scaleY: 0.5 + additionalDamage * 0.01,
+                ease: 'Back.easeOut'
+            });
+            this.scene.tweens.add({
+                targets: rockObj,
+                delay: 150,
+                duration: 450 + additionalDamage * 2,
+                rotation: (Math.random() - 0.5) * 3,
+                ease: 'Quart.easeOut'
             });
         }
 
@@ -146,12 +169,12 @@ class SpellManager {
             let rockObj = rockObjects[i];
             this.scene.tweens.add({
                 targets: rockObj,
-                delay: 300 + i * (220 - i * 12),
+                delay: 600 + i * (220 - i * 12) + additionalDamage * 2,
                 x: gameConsts.halfWidth + (Math.random() - 0.5) * 20,
-                y: 140 + (Math.random() - 0.5) * 20,
-                duration: 450 + additionalDamage * 3,
-                scaleX: 0.5 + additionalDamage * 0.012,
-                scaleY: 0.5 + additionalDamage * 0.012,
+                y: 140 + (Math.random() - 0.5) * 20 - Math.floor(Math.sqrt(additionalDamage) * 2),
+                duration: 500 + additionalDamage * 5,
+                scaleX: 0.25 + additionalDamage * 0.006,
+                scaleY: 0.25 + additionalDamage * 0.006,
                 rotation: (Math.random() - 0.5) * 2,
                 ease: 'Quad.easeIn',
                 onComplete: () => {
@@ -673,15 +696,12 @@ class SpellManager {
         for (let i in strikeObjects) {
             let strikeObject = strikeObjects[i];
             let delayAmt = i * 150;
-
-
             this.scene.tweens.add({
                 delay: delayAmt,
                 targets: strikeObject,
                 duration: 550,
                 rotation: (Math.random() - 0.5) * 10,
                 ease: 'Quad.easeOut',
-
             });
 
             this.scene.tweens.add({
@@ -1842,7 +1862,7 @@ class SpellManager {
                             duration: 500,
                             x: "-=" + randX,
                             y: "-=" + randY,
-                            ease: 'Quartic.easeOut',
+                            ease: 'Quart.easeOut',
                             onComplete: () => {
                                 poolManager.returnItemToPool(shieldObjDarkBall, 'blackCircle');
                             }

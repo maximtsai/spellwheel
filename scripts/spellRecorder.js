@@ -12,19 +12,19 @@ class SpellRecorder {
         this.spellAnnounceBG.alpha = 0;
         this.spellAnnounceBG.setScale(2, 1);
 
-        this.spellAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight, 'bonus', 'dfbfdb', 36, 1);
+        this.spellAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight + 11, 'bonus', 'dfbfdb', 36, 1);
         this.spellAnnounceText.setOrigin(0.5, 0.5);
         this.spellAnnounceText.setDepth(99999);
         this.spellAnnounceText.alpha = 0;
 
-        this.attackAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight, 'damage', 'dfbfdb', 36, 1);
+        this.attackAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight + 11, 'damage', 'dfbfdb', 36, 1);
         this.attackAnnounceText.setOrigin(0.5, 0.5);
         this.attackAnnounceText.setDepth(99999);
         this.attackAnnounceText.alpha = 0;
     }
 
     handleRecordAttack(spellID, spellName, bonusSize = 0) {
-        console.log("handle attack",spellID);
+        // console.log("handle attack",spellID);
         this.handleRecordSpell(this.attackAnnounceText, spellID, spellName, bonusSize);
     }
 

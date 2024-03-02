@@ -2150,7 +2150,7 @@ const ENABLE_KEYBOARD = true;
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
                          this.spellNameText.setText('MATTER STRIKE');
-                         this.spellNameHover.setText('DEAL 12 DAMAGE.');
+                         this.spellNameHover.setText(getLangText('matter_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
                          this.spellNameText.setText('THORN FORM');
@@ -2162,7 +2162,7 @@ const ENABLE_KEYBOARD = true;
                          break;
                      case RUNE_PROTECT:
                          this.spellNameText.setText('SHIELD OF STONE');
-                         this.spellNameHover.setText('CREATES A SHIELD\nTHAT BLOCKS 12\nDAMAGE.');
+                         this.spellNameHover.setText(getLangText('matter_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
                          this.spellNameText.setText('EARTH PILLAR');
@@ -2189,7 +2189,7 @@ const ENABLE_KEYBOARD = true;
                          break;
                      case RUNE_PROTECT:
                          this.spellNameText.setText('SHIELD OF DELAY');
-                         this.spellNameHover.setText('CREATES A SHIELD\nTHAT DELAYS ALL\nDAMAGE.');
+                         this.spellNameHover.setText(getLangText('time_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
                          this.spellNameText.setText('REWIND HEALTH');
@@ -2243,7 +2243,7 @@ const ENABLE_KEYBOARD = true;
                          break;
                      case RUNE_PROTECT:
                          this.spellNameText.setText('SHIELD OF NEGATION');
-                         this.spellNameHover.setText('CREATES A SHIELD\nTHAT FULLY NEGATES\nONE ATTACK.');
+                         this.spellNameHover.setText(getLangText('void_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
                          this.spellNameText.setText('UN-MAKE');

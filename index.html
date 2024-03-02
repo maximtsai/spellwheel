@@ -6,6 +6,11 @@
     <title>Spell Wheel</title>
     <link rel="icon" type="image/x-icon" href="/sprites/favicon.png">
     <script src="phaser.min.js"></script>
+    <script src="audioFiles.js"></script>
+    <script src="imageFiles.js"></script>
+    <script src="fontFiles.js"></script>
+    <script src="textData1.js"></script>
+    <script src="textData2.js"></script>
 
     <script src="util/messageBus.js"></script>
     <script src="util/buttonManager.js"></script>
@@ -35,9 +40,7 @@
     <script src="scripts/enemies/wall.js"></script>
     <script src="scripts/enemies/death.js"></script>
 
-    <script src="audioFiles.js"></script>
-    <script src="imageFiles.js"></script>
-    <script src="fontFiles.js"></script>
+    <noscript>Please enable javascript to play this game.</noscript>
     <style type="text/css">
         body {
             margin: 0;
@@ -53,11 +56,12 @@
             max-height: 100%;
         }
 		canvas {
-            display:block;
+            display: block;
             margin: 0;
             position: absolute;
             left: 50%;
-            transform: translate(-50%, 0%);
+            top: 50%;
+            transform: translate(-50%, -50%);
 		}
         #oldcanvas {
             display:block;

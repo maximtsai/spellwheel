@@ -12,9 +12,7 @@ let config = {
         antialias: true,
         roundPixels: true,
     },
-    antialias: true,
     transparent: true,
-    roundPixels: false,
     expandParent: true,
     clearBeforeRender: false,
     parent: 'spellwheel',
@@ -25,7 +23,10 @@ let config = {
         preload: preload,
         create: create,
         update: update
-    }
+    },
+    dom: {
+        createContainer: true,
+    },
 };
 
 function isSafariIOS() {

@@ -4,6 +4,8 @@ let loadingText;
 let icons = [];
 
 function setupLoadingBar(scene) {
+    PhaserScene.cameras.main.setZoom(0.875);
+
     // Basic loading bar visual
     loadingSpinner = scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'loadingSpinner');
     castButton = scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'castNormal');
@@ -74,10 +76,29 @@ function setupLoadingBar(scene) {
 
 let MAGIC_CIRCLE_HEIGHT = 0;
 
-function setupGame() {
+function resetGame() {
+    for (let i in globalObjects) {
+        globalObjects[i].destroy();
+    }
+}
 
+function setupGame() {
+    PhaserScene.tweens.add({
+        targets: [globalObjects.tempBG],
+        alpha: 0,
+        duration: 400,
+        onComplete: () => {
+            globalObjects.tempBG.destroy();
+        }
+    });
+    PhaserScene.tweens.add({
+        targets: PhaserScene.cameras.main,
+        zoom: 1,
+        ease: "Quart.easeInOut",
+        duration: 850
+    });
     createAnimations(PhaserScene);
-    PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'background');
+    fadeInBackground('background', 5000)
     MAGIC_CIRCLE_HEIGHT = gameConsts.height - 124;
 
     globalObjects.gameStats = new GameStats();
@@ -92,9 +113,43 @@ function setupGame() {
 
 
     globalObjects.player = new Player(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
+
+
+    // globalObjects.startButton = new Button({
+    //     normal: {
+    //         "ref": "blackPixel",
+    //         x: x,
+    //         y: y,
+    //         alpha: 0.65
+    //     },
+    //     hover: {
+    //         "ref": "blackPixel",
+    //         alpha: 0.75
+    //     },
+    //     press: {
+    //         "ref": "blackPixel",
+    //         alpha: 0.45
+    //     },
+    //     disable: {
+    //         "ref": "blackPixel",
+    //         alpha: 0.001
+    //     },
+    //     onMouseUp: () => {
+    //         messageBus.publish("clearBranchOptions");
+    //         if (this.publishMessage) {
+    //             messageBus.publish(this.publishMessage, this.publishParam);
+    //         }
+    //         if (this.destNode) {
+    //             messageBus.publish('gotoDialogNode', this.destNode);
+    //         } else {
+    //             messageBus.publish("hideAllDialog");
+    //         }
+    //     }
+    // });
+
     // globalObjects.dummyEnemy = new Wall(PhaserScene, gameConsts.halfWidth, 165);
     // globalObjects.dummyEnemy = new Death(PhaserScene, gameConsts.halfWidth, 173);
-    globalObjects.dummyEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 173);
+    //globalObjects.dummyEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 173);
 
 
     // globalObjects.optionsButton = new Button(

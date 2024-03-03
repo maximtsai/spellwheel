@@ -196,7 +196,7 @@ class SpellManager {
         } else if (additionalDamage > 1) {
             spellName = "HEAVY " + spellName;
         }
-        this.postAttackCast(spellID, 300, spellName);
+        this.postAttackCast(spellID, 0, spellName);
     }
     castMatterReinforce() {
         const spellID = 'matterReinforce';

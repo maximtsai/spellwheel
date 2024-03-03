@@ -82,6 +82,7 @@ function create ()
 
 function onPreloadComplete (scene)
 {
+    globalObjects.tempBG = scene.add.sprite(0, 0, 'blackPixel').setScale(1000, 1000);
     setupMouseInteraction(scene);
     setupLoadingBar(scene);
 

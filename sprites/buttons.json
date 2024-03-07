@@ -1,0 +1,188 @@
+{
+	"textures": [
+		{
+			"image": "sprites/buttons.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 759,
+				"h": 261
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "continue_game.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 400,
+						"h": 62
+					},
+					"spriteSourceSize": {
+						"x": 24,
+						"y": 0,
+						"w": 352,
+						"h": 62
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 352,
+						"h": 62
+					}
+				},
+				{
+					"filename": "continue_game_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 400,
+						"h": 62
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 400,
+						"h": 62
+					},
+					"frame": {
+						"x": 357,
+						"y": 2,
+						"w": 400,
+						"h": 62
+					}
+				},
+				{
+					"filename": "credits.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 400,
+						"h": 62
+					},
+					"spriteSourceSize": {
+						"x": 24,
+						"y": 0,
+						"w": 352,
+						"h": 62
+					},
+					"frame": {
+						"x": 2,
+						"y": 67,
+						"w": 352,
+						"h": 62
+					}
+				},
+				{
+					"filename": "credits_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 400,
+						"h": 62
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 400,
+						"h": 62
+					},
+					"frame": {
+						"x": 357,
+						"y": 67,
+						"w": 400,
+						"h": 62
+					}
+				},
+				{
+					"filename": "level_select.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 400,
+						"h": 62
+					},
+					"spriteSourceSize": {
+						"x": 24,
+						"y": 0,
+						"w": 352,
+						"h": 62
+					},
+					"frame": {
+						"x": 2,
+						"y": 132,
+						"w": 352,
+						"h": 62
+					}
+				},
+				{
+					"filename": "level_select_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 400,
+						"h": 62
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 400,
+						"h": 62
+					},
+					"frame": {
+						"x": 357,
+						"y": 132,
+						"w": 400,
+						"h": 62
+					}
+				},
+				{
+					"filename": "new_game.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 400,
+						"h": 62
+					},
+					"spriteSourceSize": {
+						"x": 24,
+						"y": 0,
+						"w": 352,
+						"h": 62
+					},
+					"frame": {
+						"x": 2,
+						"y": 197,
+						"w": 352,
+						"h": 62
+					}
+				},
+				{
+					"filename": "new_game_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 400,
+						"h": 62
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 400,
+						"h": 62
+					},
+					"frame": {
+						"x": 357,
+						"y": 197,
+						"w": 400,
+						"h": 62
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:435283e4b2fd21f050be546b9c94908f:dd5a34d98ca8955b8f6a9c860bc12f53:76d98c9e3f665caad5fa5a5151215d9e$"
+	}
+}

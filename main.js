@@ -36,8 +36,12 @@ function isSafariIOS() {
     var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
     return iOSSafari;
 }
+let game;
 
-let game = new Phaser.Game(config); // var canvas = game.canvas;
+function onloadFunc() {
+    game = new Phaser.Game(config); // var canvas = game.canvas;
+}
+
 let gameConsts = {
     width: config.scale.width,
     halfWidth: config.scale.width * 0.5,

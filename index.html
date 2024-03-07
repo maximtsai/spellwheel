@@ -22,6 +22,7 @@
     <script src="util/helperFunction.js"></script>
     <script src="util/poolManager.js"></script>
 
+    <script src="scripts/bgHandler.js"></script>
     <script src="scripts/gameConsts.js"></script>
     <script src="scripts/gameAnims.js"></script>
     <script src="scripts/gameplaySetup.js"></script>
@@ -33,8 +34,10 @@
     <script src="scripts/spellRecorder.js"></script>
     <script src="scripts/magicCircle.js"></script>
     <script src="scripts/player.js"></script>
-    <script src="scripts/bgHandler.js"></script>
+    <script src="scripts/menuButtons.js"></script>
 
+
+    <script src="scripts/enemies/enemyHandler.js"></script>
     <script src="scripts/enemies/enemy.js"></script>
     <script src="scripts/enemies/dummy.js"></script>
     <script src="scripts/enemies/goblin.js"></script>
@@ -76,7 +79,7 @@
 		}
     </style>
 </head>
-<body onresize="resizeGame()">
+<body onload="onloadFunc()" onresize="resizeGame()">
     <div id="preload-notice">Loading Preloader...</div>
     <script src="main.js"></script>
 </body>

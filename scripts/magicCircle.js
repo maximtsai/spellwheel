@@ -439,7 +439,8 @@ const ENABLE_KEYBOARD = true;
 
         this.castButtonSize = 83;
         this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png').setDepth(105);
-        this.castButtonSpare = scene.add.sprite(x, y, 'circle', 'cast_disabled.png').setDepth(106).setAlpha(0);
+        this.castButtonSpare = scene.add.sprite(x, y, 'circle', 'cast_press.png').setDepth(106).setAlpha(0);
+        // this.castButtonFlash = scene.add.sprite(x, y, 'circle', 'cast_flash.png').setDepth(106).setAlpha(0);
         this.castGlow = scene.add.sprite(x, y, 'circle', 'cast_glow.png').setDepth(106).setAlpha(0);
         this.focusLines = scene.add.sprite(x, y - 137, 'circle', 'focus_lines.png').setDepth(120);
 
@@ -1147,13 +1148,20 @@ const ENABLE_KEYBOARD = true;
             }
         } else if (this.castButton.frame.customData.filename !== this.castButton.lazyFrame) {
             if (this.castButton.frame.customData.filename == 'cast_disabled.png' && this.castButton.lazyFrame == 'cast_normal.png') {
-                this.castButtonSpare.alpha = 0.8;
+                this.castButtonSpare.alpha = 0.6;
                 this.scene.tweens.add({
                     targets: this.castButtonSpare,
-                    duration: 300,
+                    duration: 400,
                     ease: 'Cubic.easeOut',
                     alpha: 0,
                 });
+                // this.castButtonFlash.alpha = 0.15;
+                // this.scene.tweens.add({
+                //     targets: this.castButtonFlash,
+                //     duration: 300,
+                //     ease: 'Quad.easeOut',
+                //     alpha: 0,
+                // });
             }
             this.castButton.setTexture(key, this.castButton.lazyFrame);
         }

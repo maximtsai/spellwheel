@@ -22,6 +22,7 @@ const imageAtlases = [
     {name: 'circle', src: 'sprites/circle.json'},
     {name: 'spells', src: 'sprites/spells.json'},
     {name: 'enemies', src: 'sprites/enemies.json'},
+    {name: 'buttons', src: 'sprites/buttons.json'},
     {name: 'misc', src: 'sprites/misc.json'},
 ];
 

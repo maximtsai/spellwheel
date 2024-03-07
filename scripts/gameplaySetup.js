@@ -4,7 +4,7 @@ let loadingText;
 let icons = [];
 
 function setupLoadingBar(scene) {
-    PhaserScene.cameras.main.setZoom(0.875);
+    PhaserScene.cameras.main.setZoom(0.9);
 
     // Basic loading bar visual
     loadingSpinner = scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'loadingSpinner');
@@ -42,7 +42,6 @@ function setupLoadingBar(scene) {
         loadingSpinner.goalRot = value * Math.PI * 1.55;
     });
     scene.load.on('complete', () => {
-        console.log("complt")
         loadingText.setText('BEGINNING MAGIC SEQUENCE')
         loadingSpinner.goalRot = null;
         // Animate out the loading bar
@@ -94,8 +93,8 @@ function setupGame() {
     PhaserScene.tweens.add({
         targets: PhaserScene.cameras.main,
         zoom: 1,
-        ease: "Quart.easeInOut",
-        duration: 850
+        ease: "Quint.easeInOut",
+        duration: 900,
     });
     createAnimations(PhaserScene);
     fadeInBackground('background', 5000)
@@ -114,38 +113,7 @@ function setupGame() {
 
     globalObjects.player = new Player(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
 
-
-    // globalObjects.startButton = new Button({
-    //     normal: {
-    //         "ref": "blackPixel",
-    //         x: x,
-    //         y: y,
-    //         alpha: 0.65
-    //     },
-    //     hover: {
-    //         "ref": "blackPixel",
-    //         alpha: 0.75
-    //     },
-    //     press: {
-    //         "ref": "blackPixel",
-    //         alpha: 0.45
-    //     },
-    //     disable: {
-    //         "ref": "blackPixel",
-    //         alpha: 0.001
-    //     },
-    //     onMouseUp: () => {
-    //         messageBus.publish("clearBranchOptions");
-    //         if (this.publishMessage) {
-    //             messageBus.publish(this.publishMessage, this.publishParam);
-    //         }
-    //         if (this.destNode) {
-    //             messageBus.publish('gotoDialogNode', this.destNode);
-    //         } else {
-    //             messageBus.publish("hideAllDialog");
-    //         }
-    //     }
-    // });
+    createMenuButtons();
 
     // globalObjects.dummyEnemy = new Wall(PhaserScene, gameConsts.halfWidth, 165);
     // globalObjects.dummyEnemy = new Death(PhaserScene, gameConsts.halfWidth, 173);

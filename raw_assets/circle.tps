@@ -204,6 +204,7 @@
                 <false/>
             </struct>
             <key type="filename">circle/cast_disabled.png</key>
+            <key type="filename">circle/cast_flash.png</key>
             <key type="filename">circle/cast_glow.png</key>
             <key type="filename">circle/cast_hover.png</key>
             <key type="filename">circle/cast_normal.png</key>

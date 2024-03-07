@@ -1,6 +1,6 @@
 let useFirstBG = true;
 function fadeInBackground(name, duration = 15000) {
-    let nextObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'background').setDepth(-1).setScale(1.08).setAlpha(0).setOrigin(0.5, 0.5);
+    let nextObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'background').setDepth(-1).setScale(1.1).setAlpha(0).setOrigin(0.5, 0.5);
     PhaserScene.tweens.add({
         targets: nextObj,
         alpha: 1,

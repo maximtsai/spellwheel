@@ -1,14 +1,77 @@
 {
 	"textures": [
 		{
-			"image": "lowq-0.webp",
+			"image": "sprites/lowq-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1404,
-				"h": 1604
+				"w": 1604,
+				"h": 1310
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "flash.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 400,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 44,
+						"w": 339,
+						"h": 113
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 339,
+						"h": 113
+					}
+				},
+				{
+					"filename": "flashbg.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 400,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 394,
+						"h": 200
+					},
+					"frame": {
+						"x": 342,
+						"y": 1,
+						"w": 394,
+						"h": 200
+					}
+				},
+				{
+					"filename": "stars.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 600,
+						"h": 506
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 600,
+						"h": 506
+					},
+					"frame": {
+						"x": 738,
+						"y": 1,
+						"w": 600,
+						"h": 506
+					}
+				},
 				{
 					"filename": "star_black.png",
 					"rotated": false,
@@ -25,7 +88,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 1,
+						"y": 509,
 						"w": 800,
 						"h": 800
 					}
@@ -45,31 +108,10 @@
 						"h": 800
 					},
 					"frame": {
-						"x": 1,
-						"y": 803,
+						"x": 803,
+						"y": 509,
 						"w": 800,
 						"h": 800
-					}
-				},
-				{
-					"filename": "stars.jpg",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 600,
-						"h": 506
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 600,
-						"h": 506
-					},
-					"frame": {
-						"x": 803,
-						"y": 1,
-						"w": 600,
-						"h": 506
 					}
 				}
 			]
@@ -78,6 +120,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:1274916ff1858cd31477ec56b1db4c02:a18adcbfe639c6ee94ca795195c8e359:0644d9afadc5ec39d626109554d3f3bc$"
+		"smartupdate": "$TexturePacker:SmartUpdate:83412c6d095bd33ecafefa1be9475214:5914d36fd31d584041a65647e41049e1:0644d9afadc5ec39d626109554d3f3bc$"
 	}
 }

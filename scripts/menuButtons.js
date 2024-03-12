@@ -9,7 +9,7 @@ function clearMenuButtons() {
 
 function createMenuButtons() {
     let hasContinue = false;
-    
+
     if (hasContinue) {
         globalObjects.continueButton = new Button({
             normal: {
@@ -34,7 +34,7 @@ function createMenuButtons() {
             },
             onMouseUp: () => {
                 clearMenuButtons();
-                createEnemy(1);
+                beginLevel(1);
             }
         });
     }
@@ -61,7 +61,7 @@ function createMenuButtons() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            createEnemy(0);
+            beginLevel(0);
         }
     });
     globalObjects.levelSelectButton = new Button({

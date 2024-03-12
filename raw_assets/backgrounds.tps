@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>phaser</string>
         <key>textureFileName</key>
-        <filename>../sprites/lowq-{n}.webp</filename>
+        <filename>../sprites/backgrounds-{n}.webp</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrQualityLevel</key>
@@ -64,19 +64,19 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>0</uint>
+        <uint>1</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>60</uint>
+        <uint>75</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">webp</enum>
         <key>borderPadding</key>
-        <uint>0</uint>
+        <uint>1</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -124,7 +124,7 @@
             <key>json</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../sprites/lowq.json</filename>
+                <filename>../sprites/backgrounds.json</filename>
             </struct>
         </map>
         <key>multiPackMode</key>
@@ -173,8 +173,9 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">lowq/flash.webp</key>
-            <key type="filename">lowq/flashbg.webp</key>
+            <key type="filename">backgrounds/background0.webp</key>
+            <key type="filename">backgrounds/background2.webp</key>
+            <key type="filename">backgrounds/background3.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -183,13 +184,13 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>100,50,200,100</rect>
+                <rect>160,185,320,370</rect>
                 <key>scale9Paddings</key>
-                <rect>100,50,200,100</rect>
+                <rect>160,185,320,370</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">lowq/star_black.png</key>
+            <key type="filename">backgrounds/background1.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -198,28 +199,14 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>200,200,400,400</rect>
+                <rect>160,188,320,375</rect>
                 <key>scale9Paddings</key>
-                <rect>200,200,400,400</rect>
+                <rect>160,188,320,375</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">lowq/star_white.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.5</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>400,400,800,800</rect>
-                <key>scale9Paddings</key>
-                <rect>400,400,800,800</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">lowq/stars.jpg</key>
+            <key type="filename">backgrounds/background5.webp</key>
+            <key type="filename">backgrounds/background6.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -228,9 +215,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>150,127,300,253</rect>
+                <rect>208,256,416,512</rect>
                 <key>scale9Paddings</key>
-                <rect>150,127,300,253</rect>
+                <rect>208,256,416,512</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -241,7 +228,7 @@
             <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
-                    <filename>lowq</filename>
+                    <filename>backgrounds</filename>
                 </array>
             </struct>
         </map>

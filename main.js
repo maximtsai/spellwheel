@@ -86,7 +86,7 @@ function create ()
 
 function onPreloadComplete (scene)
 {
-    globalObjects.tempBG = scene.add.sprite(0, 0, 'blackPixel').setScale(1000, 1000);
+    globalObjects.tempBG = scene.add.sprite(0, 0, 'blackPixel').setScale(1000, 1000).setDepth(-1);
     setupMouseInteraction(scene);
     setupLoadingBar(scene);
 
@@ -104,13 +104,17 @@ function onLoadComplete(scene) {
 }
 
 function update(time, delta) {
-    if (loadingSpinner && loadingSpinner.goalRot) {
-        let adjustedSpinnerRot = loadingSpinner.rotation;
-        if (adjustedSpinnerRot < 0) {
-            adjustedSpinnerRot += Math.PI * 2;
+    if (loadObjects.loadingSpinner && loadObjects.loadingSpinner.goalRot) {
+        let adjustedSpinnerRot = loadObjects.loadingSpinner.rotation;
+        if (adjustedSpinnerRot > 0) {
+            adjustedSpinnerRot -= Math.PI * 2;
         }
-        let rotDiff = loadingSpinner.goalRot - adjustedSpinnerRot;
-        loadingSpinner.rotation += rotDiff * Math.min(0.3, delta * 0.005);
+        let rotDiff = loadObjects.loadingSpinner.goalRot - adjustedSpinnerRot;
+        loadObjects.loadingSpinner.rotation += rotDiff * Math.min(0.4, delta * 0.01);
+        for (let i = 0; i < icons.length; i++) {
+            icons[i].rotation = icons[i].startRotation + loadObjects.loadingSpinner.rotation;
+        }
+
     }
     // check mouse
     if (timeUpdateCounter >= timeUpdateCounterMax) {

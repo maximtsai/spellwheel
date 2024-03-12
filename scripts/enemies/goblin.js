@@ -1,5 +1,6 @@
  class Goblin extends Enemy {
      constructor(scene, x, y) {
+         console.log("Making goblin")
          super(scene, x, y);
          this.initSprite('gobbo0.png', 0.56);
          this.shieldAdded = false;

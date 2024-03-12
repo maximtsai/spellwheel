@@ -48,6 +48,7 @@ class Enemy {
         this.dead = false;
 
         this.initStatsCustom();
+        console.log("after init stats custom");
 
         this.prevHealth = this.health;
         this.healthMax = this.health;
@@ -147,7 +148,15 @@ class Enemy {
     initSprite(name, scale = 1) {
         this.sprite = this.scene.add.sprite(this.x, this.y, 'enemies', name);
         this.sprite.setDepth(0);
-        this.sprite.setScale(scale);
+        this.sprite.setAlpha(0);
+        this.sprite.setScale(scale * 0.98, scale * 0.95);
+        this.scene.tweens.add({
+            targets: this.sprite,
+            duration: 750,
+            scaleX: scale,
+            scaleY: scale,
+            alpha: 1
+        });
         this.sprite.startScale = scale;
 
         this.clockLarge = this.scene.add.sprite(this.x, this.y, 'spells', 'clock_back_large_red.png');

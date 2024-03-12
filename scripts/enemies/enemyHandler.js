@@ -4,7 +4,7 @@ function createEnemy(num) {
     }
     switch(num) {
     case 0:
-        globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 173);
+        globalObjects.currentEnemy = new Dummy(PhaserScene, gameConsts.halfWidth, 173);
         break;
     case 1:
         globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 173);

@@ -1,0 +1,157 @@
+{
+	"textures": [
+		{
+			"image": "sprites/backgrounds-0.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 1930,
+				"h": 1781
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "background5.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 832,
+						"h": 1024
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 832,
+						"h": 1024
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 832,
+						"h": 1024
+					}
+				},
+				{
+					"filename": "background1.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 640,
+						"h": 750
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 640,
+						"h": 750
+					},
+					"frame": {
+						"x": 2,
+						"y": 1029,
+						"w": 640,
+						"h": 750
+					}
+				},
+				{
+					"filename": "background0.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 640,
+						"h": 740
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 640,
+						"h": 740
+					},
+					"frame": {
+						"x": 645,
+						"y": 1029,
+						"w": 640,
+						"h": 740
+					}
+				},
+				{
+					"filename": "background6.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 832,
+						"h": 1024
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 832,
+						"h": 1024
+					},
+					"frame": {
+						"x": 837,
+						"y": 2,
+						"w": 832,
+						"h": 1024
+					}
+				},
+				{
+					"filename": "background2.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 640,
+						"h": 740
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 640,
+						"h": 740
+					},
+					"frame": {
+						"x": 1288,
+						"y": 1029,
+						"w": 640,
+						"h": 740
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/backgrounds-1.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 644,
+				"h": 744
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "background3.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 640,
+						"h": 740
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 640,
+						"h": 740
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 640,
+						"h": 740
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:778d14f9732786935fa93a038152ff52:fa7fddeaf39c2bdd86ca92f74dde52f6:fdb8b4b70ff82569ea2cd8b4c4ba67a8$"
+	}
+}

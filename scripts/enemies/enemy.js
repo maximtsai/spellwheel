@@ -13,6 +13,7 @@ class Enemy {
             messageBus.subscribe("enemyTakeDamage", this.takeDamage.bind(this)),
             messageBus.subscribe("enemyTakeTrueDamage", this.takeTrueDamage.bind(this)),
             messageBus.subscribe("enemyTakeDamagePercent", this.takeDamagePercent.bind(this)),
+            messageBus.subscribe("enemyTakeDamagePercentTotal", this.takeDamagePercentTotal.bind(this)),
             messageBus.subscribe("refreshEnemyDisplay", this.refreshEnemyDisplay.bind(this)),
             messageBus.subscribe("setSlowMult", this.setSlowMult.bind(this)),
             messageBus.subscribe("disruptOpponentAttack", this.disruptOpponentAttack.bind(this)),
@@ -655,6 +656,12 @@ class Enemy {
         this.takeDamage(healthRemoved);
     }
 
+    takeDamagePercentTotal(amt, bonusDamage = 0) {
+        let origHealth = this.healthMax;
+        let healthRemoved = Math.ceil(amt * 0.01 * origHealth) + bonusDamage;
+        this.takeDamage(healthRemoved);
+    }
+
     refreshEnemyDisplay() {
         if (this.statuses['mindProtect']) {
 
@@ -745,7 +752,7 @@ class Enemy {
         if (isTrueDamage) {
             messageBus.publish("animateTrueDamageNum", this.x + randX, this.y + randY + offsetY, '-' + val, scale);
         } else {
-            messageBus.publish("animateDamageNum", this.x + randX, this.y + randY + offsetY, '-' + val, scale);
+            messageBus.publish("animateDamageNumAccumulate", val);
         }
     }
 

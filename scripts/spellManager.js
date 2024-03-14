@@ -1443,56 +1443,89 @@ class SpellManager {
         const spellID = 'voidStrike';
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let additionalDamage = globalObjects.player.attackDamageAdder();
-        let fifthSplitAdditionalDamage = Math.floor(additionalDamage * 0.2);
+        let fifthSplitAdditionalDamage = Math.round(additionalDamage * 0.2);
+        let allStrikeObjects = [];
+        let isNormalDir = Math.random() < 0.6 ? 0 : 1;
 
+        // First build the strike objects
         for (let i = 0; i < numAdditionalAttacks; i++) {
-            let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
-            let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
-            let yPos = gameConsts.height - 360 + Math.abs(halfwayIdx - i) * 10;
+            let isLeftStrike = i % 2 == isNormalDir;
+            let xPos = gameConsts.halfWidth + (isLeftStrike ? -10 : 10);
+            let yPos = gameConsts.height - 260;
 
-            let strikeObj = this.scene.add.sprite(xPos, yPos, 'spells', 'blackBolt.png');
+            let strikeObj = this.scene.add.sprite(xPos, yPos, 'spells', 'dark_tentacle.png');
+            strikeObj.setOrigin(0.1, 1)
             strikeObj.setDepth(10);
             strikeObj.setScale(0);
-            strikeObj.setRotation(0);
+            strikeObj.setRotation(isLeftStrike ? -2 : 2 + (Math.random() - 0.5) * 0.1);
+            allStrikeObjects.push(strikeObj)
+        }
 
+        for (let i = 0; i < allStrikeObjects.length; i++) {
+            let currStrikeObj = allStrikeObjects[i];
+            let isLeftStrike = i % 2 == isNormalDir;
+            let scaleXMult = isLeftStrike ? 1 : -1;
             this.scene.tweens.add({
-                targets: strikeObj,
-                delay: i * 150,
-                duration: 350,
-                scaleX: 0.85 + additionalDamage * 0.01,
-                scaleY: 0.85 + additionalDamage * 0.01,
-                rotation: -Math.atan2(yPos, gameConsts.halfWidth - xPos) + 1.57,
-                ease: 'Cubic.easeOut',
+                delay: i * 165,
+                targets: currStrikeObj,
+                rotation: currStrikeObj.rotation * 0.9,
+                duration: 500,
+                ease: 'Cubic.easeOut'
+            });
+            this.scene.tweens.add({
+                delay: i * 165,
+                targets: currStrikeObj,
+                scaleX: 0.75 * scaleXMult,
+                scaleY: 0.75,
+                duration: 600,
+                ease: 'Back.easeOut',
                 onComplete: () => {
                     this.scene.tweens.add({
-                        targets: strikeObj,
-                        x: gameConsts.halfWidth,
-                        y: 150,
-                        duration: 350 + additionalDamage * 2,
-                        scaleX: 0.5 + additionalDamage * 0.007,
-                        scaleY: 0.6 + additionalDamage * 0.007,
-                        ease: 'Quad.easeIn',
+                        targets: currStrikeObj,
+                        rotation: isLeftStrike ? 0.13 : -0.13,
+                        scaleX: (0.95 + additionalDamage * 0.01) * scaleXMult,
+                        scaleY: 1.05 + additionalDamage * 0.01,
+                        duration: 700,
+                        ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            let damagePerTick = 4 + fifthSplitAdditionalDamage;
-                            messageBus.publish('enemyTakeDamage', damagePerTick);
-                            messageBus.publish('inflictVoidBurn', damagePerTick);
-                            strikeObj.destroy();
+                            messageBus.publish('enemyTakeDamagePercentTotal', 0.5, additionalDamage, false);
+                            messageBus.publish('inflictVoidBurn', 0, 5);
+                            currStrikeObj.setScale(currStrikeObj.scaleX * 1.04, currStrikeObj.scaleY * 1.04);
+                            this.scene.tweens.add({
+                                targets: currStrikeObj,
+                                rotation: isLeftStrike ? 2.2 : -2.2,
+                                scaleX: 0,
+                                scaleY: 0,
+                                duration: 550,
+                                ease: 'Cubic.easeOut',
+                                onComplete: () => {
+                                    currStrikeObj.destroy();
+                                }
+                            });
+                            this.scene.tweens.add({
+                                targets: currStrikeObj,
+                                scaleX: 0,
+                                scaleY: 0,
+                                duration: 600,
+                                ease: 'Quad.easeOut',
+                            });
                         }
                     });
                 }
             });
         }
 
+
         let spellName = 'VOID STRIKE';
         if (numAdditionalAttacks > 1) {
             spellName += " X" + numAdditionalAttacks;
         }
         if (additionalDamage >= 60) {
-            spellName = "DISINTEGRATING " + spellName;
+            spellName = "DEMOLISHING " + spellName;
         } else if (additionalDamage >= 30) {
             spellName = "DESTRUCTIVE " + spellName;
         } else if (additionalDamage > 1) {
-            spellName = "DARK " + spellName;
+            spellName = "DAMAGING " + spellName;
         }
 
         this.postAttackCast(spellID, 0, spellName);

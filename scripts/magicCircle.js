@@ -474,7 +474,8 @@ const ENABLE_KEYBOARD = true;
         this.spellNameText.setDepth(120);
         this.spellNameText.alpha = 0.5;
 
-        this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth, 150, 'spells', 'darkSlice.png').setDepth(1).setRotation(1).setAlpha(0);
+        this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth, 150, 'spells', 'darkSlice.png').setDepth(0).setRotation(1.618).setAlpha(0);
+        this.voidSliceImage2 = scene.add.sprite(gameConsts.halfWidth, 150, 'spells', 'darkSliceFront.png').setDepth(1).setRotation(1.618).setAlpha(0);
         this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0);
 
         // this.spellDescBox = scene.add.sprite(gameConsts.width, gameConsts.height, 'circle', 'descBox.png');
@@ -2239,7 +2240,7 @@ const ENABLE_KEYBOARD = true;
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
                          this.spellNameText.setText('VOID STRIKE');
-                         this.spellNameHover.setText('DEAL 20 DAMAGE\nOVER 4 SECONDS.');
+                         this.spellNameHover.setText('DEAL 3% OF ENEMY\'s\nTOTAL HEALTH OVER\n4 SECONDS.');
                          break;
                      case RUNE_REINFORCE:
                          this.spellNameText.setText('VOID FORM');
@@ -2255,7 +2256,7 @@ const ENABLE_KEYBOARD = true;
                          break;
                      case RUNE_UNLOAD:
                          this.spellNameText.setText('UN-MAKE');
-                         this.spellNameHover.setText('DEAL DAMAGE EQUAL TO\n20% OF THE ENEMY\'s\nCURENT HEALTH.');
+                         this.spellNameHover.setText('DEAL DAMAGE EQUAL TO\n20% OF THE ENEMY\'s\nCURRENT HEALTH.');
                          break;
                      default:
                          this.spellNameText.setText('');
@@ -2300,19 +2301,24 @@ const ENABLE_KEYBOARD = true;
          messageBus.publish('enemyTakeEffect', effectObj);
      }
 
-     applyVoidBurn(power = 4) {
-        let baseScale = 1 + (power - 4) * 0.1;
+     applyVoidBurn(extraPower = 0, number = 5) {
+
+        if (!globalObjects.currentEnemy) {
+            return;
+        }
+        let baseScale = 1 + extraPower * 0.1;
          if (this.voidBurnTween) {
              this.voidBurnTween.stop();
          }
          if (this.voidBurnTween2) {
              this.voidBurnTween2.stop();
          }
-         this.voidSliceImage1.alpha = 1;
-         this.voidSliceImage1.setScale(0.2, 0.85).setRotation(0.9 + Math.random() * 0.2);
 
+         this.voidSliceImage1.alpha = 1;
+         this.voidSliceImage2.alpha = 1;
+         this.voidSliceImage1.setScale(baseScale * 0.5, baseScale * 0.5);
          this.scene.tweens.add({
-             targets: [this.voidSliceImage1],
+             targets: [this.voidSliceImage1, this.voidSliceImage2],
              ease: 'Cubic.easeOut',
              scaleX: baseScale * 0.55,
              scaleY: baseScale * 0.9,
@@ -2320,25 +2326,27 @@ const ENABLE_KEYBOARD = true;
          });
          this.voidBurnTween = this.scene.tweens.add({
              delay: 30,
-             targets: [this.voidSliceImage1],
+             targets: [this.voidSliceImage1, this.voidSliceImage2],
              scaleX: baseScale * 0.25,
              scaleY: baseScale * 1.5,
-             duration: 4000,
+             duration: 5000
          });
 
          let effectName = 'voidBurn';
          let effectObj;
          effectObj = {
              name: effectName,
-             duration: 4,
-             power: power,
+             duration: 5,
+             power: extraPower,
              onUpdate: () => {
                  if (effectObj && effectObj.duration > 0) {
-                     console.log(effectObj.duration);
-                     messageBus.publish('enemyTakeTrueDamage', power, false);
+                     messageBus.publish('enemyTakeDamagePercentTotal', 0.5, extraPower, false);
                      if (effectObj.duration <= 1) {
+                         if (this.voidBurnTween) {
+                             this.voidBurnTween.stop();
+                         }
                          this.voidBurnTween2 = this.scene.tweens.add({
-                             targets: [this.voidSliceImage1],
+                             targets: [this.voidSliceImage1, this.voidSliceImage2],
                              scaleX: 0,
                              scaleY: baseScale * 2,
                              alpha: 0,

@@ -5,7 +5,7 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 2041,
-				"h": 2029
+				"h": 2023
 			},
 			"scale": 1,
 			"frames": [
@@ -220,24 +220,24 @@
 					}
 				},
 				{
-					"filename": "blackBolt.png",
+					"filename": "mindEffect.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 50,
-						"h": 100
+						"w": 100,
+						"h": 101
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 50,
-						"h": 100
+						"x": 1,
+						"y": 1,
+						"w": 98,
+						"h": 99
 					},
 					"frame": {
 						"x": 1683,
 						"y": 919,
-						"w": 50,
-						"h": 100
+						"w": 98,
+						"h": 99
 					}
 				},
 				{
@@ -256,51 +256,9 @@
 					},
 					"frame": {
 						"x": 1683,
-						"y": 1021,
+						"y": 1020,
 						"w": 81,
 						"h": 70
-					}
-				},
-				{
-					"filename": "blackCirclePlain.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 44,
-						"h": 44
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 44,
-						"h": 44
-					},
-					"frame": {
-						"x": 1735,
-						"y": 919,
-						"w": 44,
-						"h": 44
-					}
-				},
-				{
-					"filename": "energy_particle.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 40,
-						"h": 40
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 40,
-						"h": 40
-					},
-					"frame": {
-						"x": 1735,
-						"y": 965,
-						"w": 40,
-						"h": 40
 					}
 				},
 				{
@@ -319,7 +277,7 @@
 					},
 					"frame": {
 						"x": 1766,
-						"y": 1007,
+						"y": 1020,
 						"w": 20,
 						"h": 20
 					}
@@ -340,7 +298,7 @@
 					},
 					"frame": {
 						"x": 1766,
-						"y": 1029,
+						"y": 1042,
 						"w": 15,
 						"h": 15
 					}
@@ -392,20 +350,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 240,
+						"w": 245,
 						"h": 240
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 5,
-						"w": 240,
-						"h": 69
+						"y": 3,
+						"w": 245,
+						"h": 73
 					},
 					"frame": {
 						"x": 1784,
 						"y": 605,
-						"w": 240,
-						"h": 69
+						"w": 245,
+						"h": 73
 					}
 				},
 				{
@@ -424,7 +382,7 @@
 					},
 					"frame": {
 						"x": 1801,
-						"y": 676,
+						"y": 680,
 						"w": 200,
 						"h": 200
 					}
@@ -451,6 +409,27 @@
 					}
 				},
 				{
+					"filename": "dark_spike.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 25
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 25
+					},
+					"frame": {
+						"x": 1863,
+						"y": 326,
+						"w": 100,
+						"h": 25
+					}
+				},
+				{
 					"filename": "laserCircle.png",
 					"rotated": false,
 					"trimmed": true,
@@ -465,31 +444,10 @@
 						"h": 14
 					},
 					"frame": {
-						"x": 1863,
+						"x": 1965,
 						"y": 326,
 						"w": 62,
 						"h": 14
-					}
-				},
-				{
-					"filename": "time_red_mini.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 25,
-						"h": 25
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 25,
-						"h": 25
-					},
-					"frame": {
-						"x": 1927,
-						"y": 326,
-						"w": 25,
-						"h": 25
 					}
 				},
 				{
@@ -514,6 +472,216 @@
 					}
 				},
 				{
+					"filename": "blackCircleGlow.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 44,
+						"h": 44
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 44,
+						"h": 44
+					},
+					"frame": {
+						"x": 1991,
+						"y": 200,
+						"w": 44,
+						"h": 44
+					}
+				},
+				{
+					"filename": "blackCirclePlain.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 44,
+						"h": 44
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 44,
+						"h": 44
+					},
+					"frame": {
+						"x": 1991,
+						"y": 246,
+						"w": 44,
+						"h": 44
+					}
+				},
+				{
+					"filename": "time_red_mini.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 25,
+						"h": 25
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 25,
+						"h": 25
+					},
+					"frame": {
+						"x": 1991,
+						"y": 292,
+						"w": 25,
+						"h": 25
+					}
+				},
+				{
+					"filename": "darkSliceFront.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 100,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 13,
+						"w": 77,
+						"h": 352
+					},
+					"frame": {
+						"x": 1905,
+						"y": 1091,
+						"w": 77,
+						"h": 352
+					}
+				},
+				{
+					"filename": "dark_tentacle.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 90,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 13,
+						"w": 78,
+						"h": 286
+					},
+					"frame": {
+						"x": 1905,
+						"y": 1445,
+						"w": 78,
+						"h": 286
+					}
+				},
+				{
+					"filename": "laserCore.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 80,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 0,
+						"w": 65,
+						"h": 200
+					},
+					"frame": {
+						"x": 1905,
+						"y": 1733,
+						"w": 65,
+						"h": 200
+					}
+				},
+				{
+					"filename": "eye_small.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 111,
+						"h": 61
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 111,
+						"h": 61
+					},
+					"frame": {
+						"x": 1905,
+						"y": 1935,
+						"w": 111,
+						"h": 61
+					}
+				},
+				{
+					"filename": "clock.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 75,
+						"h": 75
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 5,
+						"w": 55,
+						"h": 64
+					},
+					"frame": {
+						"x": 1972,
+						"y": 1733,
+						"w": 55,
+						"h": 64
+					}
+				},
+				{
+					"filename": "weakenLines_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 70,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 6,
+						"w": 68,
+						"h": 40
+					},
+					"frame": {
+						"x": 1972,
+						"y": 1799,
+						"w": 68,
+						"h": 40
+					}
+				},
+				{
+					"filename": "energy_particle.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 40,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 40,
+						"h": 40
+					},
+					"frame": {
+						"x": 1972,
+						"y": 1841,
+						"w": 40,
+						"h": 40
+					}
+				},
+				{
 					"filename": "whiteCircle.png",
 					"rotated": false,
 					"trimmed": false,
@@ -528,8 +696,8 @@
 						"h": 40
 					},
 					"frame": {
-						"x": 1991,
-						"y": 200,
+						"x": 1972,
+						"y": 1883,
 						"w": 40,
 						"h": 40
 					}
@@ -549,8 +717,8 @@
 						"h": 35
 					},
 					"frame": {
-						"x": 1991,
-						"y": 242,
+						"x": 1984,
+						"y": 1091,
 						"w": 35,
 						"h": 35
 					}
@@ -571,7 +739,7 @@
 					},
 					"frame": {
 						"x": 1991,
-						"y": 279,
+						"y": 882,
 						"w": 34,
 						"h": 34
 					}
@@ -724,48 +892,6 @@
 					}
 				},
 				{
-					"filename": "laserCore.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 80,
-						"h": 200
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 0,
-						"w": 65,
-						"h": 200
-					},
-					"frame": {
-						"x": 887,
-						"y": 1781,
-						"w": 65,
-						"h": 200
-					}
-				},
-				{
-					"filename": "eye_small.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 111,
-						"h": 61
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 111,
-						"h": 61
-					},
-					"frame": {
-						"x": 724,
-						"y": 1939,
-						"w": 111,
-						"h": 61
-					}
-				},
-				{
 					"filename": "eyeShield.png",
 					"rotated": false,
 					"trimmed": true,
@@ -780,115 +906,10 @@
 						"h": 47
 					},
 					"frame": {
-						"x": 539,
-						"y": 1962,
+						"x": 724,
+						"y": 1939,
 						"w": 170,
 						"h": 47
-					}
-				},
-				{
-					"filename": "weakenLines_00.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 70,
-						"h": 50
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 69,
-						"h": 45
-					},
-					"frame": {
-						"x": 837,
-						"y": 1983,
-						"w": 69,
-						"h": 45
-					}
-				},
-				{
-					"filename": "weakenLines_01.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 70,
-						"h": 50
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 6,
-						"w": 68,
-						"h": 40
-					},
-					"frame": {
-						"x": 908,
-						"y": 1983,
-						"w": 68,
-						"h": 40
-					}
-				},
-				{
-					"filename": "blast.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 125,
-						"h": 200
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 125,
-						"h": 198
-					},
-					"frame": {
-						"x": 1905,
-						"y": 1091,
-						"w": 125,
-						"h": 198
-					}
-				},
-				{
-					"filename": "matter_boost_2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 160,
-						"h": 630
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 4,
-						"w": 126,
-						"h": 178
-					},
-					"frame": {
-						"x": 1905,
-						"y": 1291,
-						"w": 126,
-						"h": 178
-					}
-				},
-				{
-					"filename": "rock.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 150,
-						"h": 150
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 7,
-						"w": 135,
-						"h": 138
-					},
-					"frame": {
-						"x": 1905,
-						"y": 1471,
-						"w": 135,
-						"h": 138
 					}
 				},
 				{
@@ -906,52 +927,10 @@
 						"h": 122
 					},
 					"frame": {
-						"x": 1905,
-						"y": 1611,
+						"x": 887,
+						"y": 1781,
 						"w": 112,
 						"h": 122
-					}
-				},
-				{
-					"filename": "shockEffect.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 125,
-						"h": 125
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 5,
-						"w": 111,
-						"h": 113
-					},
-					"frame": {
-						"x": 1905,
-						"y": 1735,
-						"w": 111,
-						"h": 113
-					}
-				},
-				{
-					"filename": "mindEffect.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 100,
-						"h": 101
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 98,
-						"h": 99
-					},
-					"frame": {
-						"x": 1905,
-						"y": 1850,
-						"w": 98,
-						"h": 99
 					}
 				},
 				{
@@ -969,31 +948,52 @@
 						"h": 70
 					},
 					"frame": {
-						"x": 1905,
-						"y": 1951,
+						"x": 896,
+						"y": 1905,
 						"w": 70,
 						"h": 70
 					}
 				},
 				{
-					"filename": "clock.png",
+					"filename": "weakenLines_00.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 75,
-						"h": 75
+						"w": 70,
+						"h": 50
 					},
 					"spriteSourceSize": {
-						"x": 10,
-						"y": 5,
-						"w": 55,
-						"h": 64
+						"x": 0,
+						"y": 1,
+						"w": 69,
+						"h": 45
 					},
 					"frame": {
-						"x": 1977,
-						"y": 1951,
-						"w": 55,
-						"h": 64
+						"x": 896,
+						"y": 1977,
+						"w": 69,
+						"h": 45
+					}
+				},
+				{
+					"filename": "earthJut.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 122,
+						"h": 60
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 122,
+						"h": 60
+					},
+					"frame": {
+						"x": 539,
+						"y": 1962,
+						"w": 122,
+						"h": 60
 					}
 				}
 			]
@@ -1050,6 +1050,90 @@
 					}
 				},
 				{
+					"filename": "shockEffect.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 125,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 5,
+						"w": 111,
+						"h": 113
+					},
+					"frame": {
+						"x": 892,
+						"y": 1,
+						"w": 111,
+						"h": 113
+					}
+				},
+				{
+					"filename": "rock.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 7,
+						"w": 135,
+						"h": 138
+					},
+					"frame": {
+						"x": 614,
+						"y": 279,
+						"w": 135,
+						"h": 138
+					}
+				},
+				{
+					"filename": "matter_boost_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 160,
+						"h": 630
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 4,
+						"w": 126,
+						"h": 178
+					},
+					"frame": {
+						"x": 751,
+						"y": 279,
+						"w": 126,
+						"h": 178
+					}
+				},
+				{
+					"filename": "blast.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 125,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 125,
+						"h": 198
+					},
+					"frame": {
+						"x": 614,
+						"y": 419,
+						"w": 125,
+						"h": 198
+					}
+				},
+				{
 					"filename": "rockCircle.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1071,27 +1155,6 @@
 					}
 				},
 				{
-					"filename": "brickPattern1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 471,
-						"h": 471
-					},
-					"spriteSourceSize": {
-						"x": 14,
-						"y": 13,
-						"w": 443,
-						"h": 446
-					},
-					"frame": {
-						"x": 569,
-						"y": 614,
-						"w": 443,
-						"h": 446
-					}
-				},
-				{
 					"filename": "brickPattern2.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1110,6 +1173,27 @@
 						"y": 1209,
 						"w": 461,
 						"h": 455
+					}
+				},
+				{
+					"filename": "brickPattern1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 471,
+						"h": 471
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 13,
+						"w": 443,
+						"h": 446
+					},
+					"frame": {
+						"x": 569,
+						"y": 619,
+						"w": 443,
+						"h": 446
 					}
 				},
 				{
@@ -1139,6 +1223,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:88b7615acf79802759ef5a03ffd2c952:aa52dd2edecbd7482cf9cbde5af1242c:5e62eb201321ea33b301bbf963063802$"
+		"smartupdate": "$TexturePacker:SmartUpdate:eba1dc181efb09ccf4d7d197f29e932e:0caeb862d846776a6b818588056d3541:5e62eb201321ea33b301bbf963063802$"
 	}
 }

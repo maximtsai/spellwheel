@@ -1451,15 +1451,17 @@ class SpellManager {
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let isLeftStrike = i % 2 == isNormalDir;
             let xPos = gameConsts.halfWidth + (isLeftStrike ? -10 : 10);
-            let yPos = gameConsts.height - 260;
+            let yPos = gameConsts.height - 265;
 
             let strikeObj = this.scene.add.sprite(xPos, yPos, 'spells', 'dark_tentacle.png');
-            strikeObj.setOrigin(0.1, 1)
+            strikeObj.setOrigin(0.15, 1)
             strikeObj.setDepth(10);
             strikeObj.setScale(0);
             strikeObj.setRotation(isLeftStrike ? -2 : 2 + (Math.random() - 0.5) * 0.1);
             allStrikeObjects.push(strikeObj)
         }
+
+        let yOffset = Math.floor(additionalDamage * 0.25);
 
         for (let i = 0; i < allStrikeObjects.length; i++) {
             let currStrikeObj = allStrikeObjects[i];
@@ -1467,6 +1469,7 @@ class SpellManager {
             let scaleXMult = isLeftStrike ? 1 : -1;
             this.scene.tweens.add({
                 delay: i * 165,
+                y: "+=" + yOffset,
                 targets: currStrikeObj,
                 rotation: currStrikeObj.rotation * 0.9,
                 duration: 500,
@@ -1475,8 +1478,8 @@ class SpellManager {
             this.scene.tweens.add({
                 delay: i * 165,
                 targets: currStrikeObj,
-                scaleX: 0.75 * scaleXMult,
-                scaleY: 0.75,
+                scaleX: (0.75 + additionalDamage * 0.002) * scaleXMult,
+                scaleY: (0.75 + additionalDamage * 0.002),
                 duration: 600,
                 ease: 'Back.easeOut',
                 onComplete: () => {
@@ -1485,7 +1488,7 @@ class SpellManager {
                         rotation: isLeftStrike ? 0.13 : -0.13,
                         scaleX: (0.95 + additionalDamage * 0.01) * scaleXMult,
                         scaleY: 1.05 + additionalDamage * 0.01,
-                        duration: 700,
+                        duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
                             messageBus.publish('enemyTakeDamagePercentTotal', 0.5, additionalDamage, false);
@@ -1496,7 +1499,7 @@ class SpellManager {
                                 rotation: isLeftStrike ? 2.2 : -2.2,
                                 scaleX: 0,
                                 scaleY: 0,
-                                duration: 550,
+                                duration: 550 + additionalDamage,
                                 ease: 'Cubic.easeOut',
                                 onComplete: () => {
                                     currStrikeObj.destroy();

@@ -2229,7 +2229,7 @@ const ENABLE_KEYBOARD = true;
                          break;
                      case RUNE_UNLOAD:
                          this.spellNameText.setText('TRIPLIFY MAGIC');
-                         this.spellNameHover.setText('NEXT NON-ATTACK\nSPELL HAS TRIPLE\nEFFECTIVENESS.');
+                         this.spellNameHover.setText('NEXT NON-ATTACK\nSPELL HAS X3\nEFFECTIVENESS.');
                          break;
                      default:
                          this.spellNameText.setText('');

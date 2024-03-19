@@ -4,7 +4,7 @@ class StatusManager {
     constructor(scene) {
         this.scene = scene;
         this.enemyStatusDisplay = [];
-        this.playerStatusDisplayList = [];
+        this.playerStatusDisplayStack = [];
         this.listOfFreeStatuses = [];
         this.lastUpdateTime = 0;
         messageBus.subscribe('selfTakeEffect', this.manualUpdateSelf.bind(this));
@@ -18,6 +18,7 @@ class StatusManager {
         if (newObj.ignoreBuff) {
             return;
         }
+        console.log("manualUpdateSelf", newObj.spellID)
         let spriteSrc1 = newObj.spriteSrc1;
         let spriteSrc2 = newObj.spriteSrc2;
         let displayAmt = newObj.displayAmt;
@@ -25,9 +26,11 @@ class StatusManager {
         let statusObj;
         if (newObj.statusObj) {
             statusObj = newObj.statusObj;
+            console.log("New Status Obj");
         } else {
             statusObj = this.createStatusObj(spellID, this.getPlayerStatusXPos(), this.getPlayerStatusYPos(), spriteSrc1, spriteSrc2, displayAmt);
-            this.playerStatusDisplayList.push(statusObj);
+            this.playerStatusDisplayStack.push(statusObj);
+            console.log("not new status obj")
         }
         statusObj.setAmtText(newObj.displayAmt);
         statusObj.setDurationText(newObj.duration);
@@ -44,7 +47,7 @@ class StatusManager {
     }
 
     getPlayerStatusYPos() {
-        return gameConsts.height - 45 - this.playerStatusDisplayList.length * 45;
+        return gameConsts.height - 45 - this.playerStatusDisplayStack.length * 45;
     }
 
     createStatusObj(spellID, x, y, spriteSrc1, spriteSrc2, displayAmt) {
@@ -58,9 +61,9 @@ class StatusManager {
     }
 
     recycleStatusObj(statusObj) {
-        for (let i = 0; i < this.playerStatusDisplayList.length; i++) {
-            if (this.playerStatusDisplayList[i] == statusObj) {
-                this.playerStatusDisplayList.splice(i, 1);
+        for (let i = 0; i < this.playerStatusDisplayStack.length; i++) {
+            if (this.playerStatusDisplayStack[i] == statusObj) {
+                this.playerStatusDisplayStack.splice(i, 1);
                 break;
             }
         }
@@ -68,6 +71,8 @@ class StatusManager {
         statusObj.statusOrig = null;
         this.listOfFreeStatuses.push(statusObj);
     }
+
+
 
     update(dt) {
         this.lastUpdateTime += dt * gameVars.timeSlowRatio;
@@ -78,8 +83,8 @@ class StatusManager {
     }
 
     tickPlayerStatuses() {
-        for (let i in this.playerStatusDisplayList) {
-            let statusDisplayObj = this.playerStatusDisplayList[i]
+        for (let i in this.playerStatusDisplayStack) {
+            let statusDisplayObj = this.playerStatusDisplayStack[i]
             let status = statusDisplayObj.statusOrig;
             if (status == null || status.duration === undefined) {
                 continue;
@@ -105,8 +110,9 @@ class StatusManager {
     }
 
     clearEffects(spellId = null, skipCleanup = false) {
-        for (let i in this.playerStatusDisplayList) {
-            let statusDisplayObj = this.playerStatusDisplayList[i]
+        console.log("clear effects", spellId, skipCleanup);
+        for (let i in this.playerStatusDisplayStack) {
+            let statusDisplayObj = this.playerStatusDisplayStack[i]
             let status = statusDisplayObj.statusOrig;
             if (status == null) {
                 continue;
@@ -115,6 +121,7 @@ class StatusManager {
                 let statuses = globalObjects.player.getStatuses();
                 this.recycleStatusObj(statusDisplayObj);
                 if (status.cleanUp && !skipCleanup) {
+                    console.log("cleanuped ", i)
                     status.cleanUp(statuses);
                 }
             }

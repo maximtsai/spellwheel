@@ -46,12 +46,12 @@ class TextPopupManager {
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 this.scene.tweens.add({
-                    delay: 350,
+                    delay: 500,
                     targets: this.damageNum,
                     scaleX: 0,
                     scaleY: 0,
-                    duration: 400,
-                    ease: 'Cubic.easeIn',
+                    duration: 350,
+                    ease: 'Quart.easeIn',
                 });
             }
         }

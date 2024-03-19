@@ -422,21 +422,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">spells/earthJut.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>31,15,61,30</rect>
-                <key>scale9Paddings</key>
-                <rect>31,15,61,30</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">spells/eye.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -479,6 +464,21 @@
                 <rect>28,15,55,31</rect>
                 <key>scale9Paddings</key>
                 <rect>28,15,55,31</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/greatRock.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>103,103,205,205</rect>
+                <key>scale9Paddings</key>
+                <rect>103,103,205,205</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -725,6 +725,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">spells/stoneCircle.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>166,166,332,332</rect>
+                <key>scale9Paddings</key>
+                <rect>166,166,332,332</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">spells/stoneShield.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -768,21 +783,6 @@
                 <rect>6,6,13,13</rect>
                 <key>scale9Paddings</key>
                 <rect>6,6,13,13</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">spells/usage_hover.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>101,101,202,202</rect>
-                <key>scale9Paddings</key>
-                <rect>101,101,202,202</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

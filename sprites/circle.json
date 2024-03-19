@@ -4,8 +4,8 @@
 			"image": "sprites/circle.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1850,
-				"h": 1741
+				"w": 2026,
+				"h": 1609
 			},
 			"scale": 1,
 			"frames": [
@@ -73,27 +73,6 @@
 					}
 				},
 				{
-					"filename": "usage_hover.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 404,
-						"h": 404
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 404,
-						"h": 404
-					},
-					"frame": {
-						"x": 1445,
-						"y": 1,
-						"w": 404,
-						"h": 404
-					}
-				},
-				{
 					"filename": "circle.png",
 					"rotated": false,
 					"trimmed": false,
@@ -115,6 +94,27 @@
 					}
 				},
 				{
+					"filename": "usage_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 404,
+						"h": 404
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 404,
+						"h": 404
+					},
+					"frame": {
+						"x": 1027,
+						"y": 419,
+						"w": 404,
+						"h": 404
+					}
+				},
+				{
 					"filename": "usage_normal.png",
 					"rotated": false,
 					"trimmed": false,
@@ -130,7 +130,7 @@
 					},
 					"frame": {
 						"x": 1445,
-						"y": 407,
+						"y": 1,
 						"w": 404,
 						"h": 404
 					}
@@ -151,9 +151,30 @@
 					},
 					"frame": {
 						"x": 1027,
-						"y": 419,
+						"y": 825,
 						"w": 401,
 						"h": 401
+					}
+				},
+				{
+					"filename": "cast_flash.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 179,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 3,
+						"w": 174,
+						"h": 173
+					},
+					"frame": {
+						"x": 1851,
+						"y": 1,
+						"w": 174,
+						"h": 173
 					}
 				},
 				{
@@ -171,8 +192,8 @@
 						"h": 310
 					},
 					"frame": {
-						"x": 1027,
-						"y": 822,
+						"x": 1018,
+						"y": 1228,
 						"w": 310,
 						"h": 310
 					}
@@ -192,8 +213,8 @@
 						"h": 296
 					},
 					"frame": {
-						"x": 1018,
-						"y": 1134,
+						"x": 1330,
+						"y": 1228,
 						"w": 296,
 						"h": 296
 					}
@@ -213,8 +234,8 @@
 						"h": 296
 					},
 					"frame": {
-						"x": 606,
-						"y": 1439,
+						"x": 1433,
+						"y": 419,
 						"w": 295,
 						"h": 296
 					}
@@ -234,8 +255,8 @@
 						"h": 296
 					},
 					"frame": {
-						"x": 903,
-						"y": 1439,
+						"x": 1730,
+						"y": 407,
 						"w": 295,
 						"h": 296
 					}
@@ -255,8 +276,8 @@
 						"h": 295
 					},
 					"frame": {
-						"x": 1200,
-						"y": 1432,
+						"x": 1730,
+						"y": 705,
 						"w": 295,
 						"h": 295
 					}
@@ -276,8 +297,8 @@
 						"h": 200
 					},
 					"frame": {
-						"x": 1339,
-						"y": 822,
+						"x": 1433,
+						"y": 717,
 						"w": 200,
 						"h": 200
 					}
@@ -297,52 +318,31 @@
 						"h": 182
 					},
 					"frame": {
-						"x": 1541,
-						"y": 813,
+						"x": 1430,
+						"y": 919,
 						"w": 177,
 						"h": 182
 					}
 				},
 				{
-					"filename": "cast_disabled.png",
+					"filename": "cast_glow.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
 						"w": 179,
 						"h": 179
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 179,
-						"h": 179
+						"x": 14,
+						"y": 12,
+						"w": 151,
+						"h": 151
 					},
 					"frame": {
-						"x": 1339,
-						"y": 1024,
-						"w": 179,
-						"h": 179
-					}
-				},
-				{
-					"filename": "cast_hover.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 179,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 179,
-						"h": 179
-					},
-					"frame": {
-						"x": 1316,
-						"y": 1205,
-						"w": 179,
-						"h": 179
+						"x": 606,
+						"y": 1439,
+						"w": 151,
+						"h": 151
 					}
 				},
 				{
@@ -360,8 +360,8 @@
 						"h": 132
 					},
 					"frame": {
-						"x": 1720,
-						"y": 813,
+						"x": 1851,
+						"y": 176,
 						"w": 110,
 						"h": 132
 					}
@@ -381,94 +381,10 @@
 						"h": 128
 					},
 					"frame": {
-						"x": 1,
-						"y": 1610,
+						"x": 1635,
+						"y": 717,
 						"w": 90,
 						"h": 128
-					}
-				},
-				{
-					"filename": "cast_normal.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 179,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 179,
-						"h": 179
-					},
-					"frame": {
-						"x": 1541,
-						"y": 997,
-						"w": 179,
-						"h": 179
-					}
-				},
-				{
-					"filename": "cast_press.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 179,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 179,
-						"h": 179
-					},
-					"frame": {
-						"x": 1497,
-						"y": 1205,
-						"w": 179,
-						"h": 179
-					}
-				},
-				{
-					"filename": "chargeCircle.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 179,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 179,
-						"h": 179
-					},
-					"frame": {
-						"x": 1497,
-						"y": 1386,
-						"w": 179,
-						"h": 179
-					}
-				},
-				{
-					"filename": "cast_flash.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 179,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 3,
-						"w": 174,
-						"h": 173
-					},
-					"frame": {
-						"x": 1497,
-						"y": 1567,
-						"w": 174,
-						"h": 173
 					}
 				},
 				{
@@ -486,8 +402,8 @@
 						"h": 107
 					},
 					"frame": {
-						"x": 93,
-						"y": 1610,
+						"x": 1430,
+						"y": 1103,
 						"w": 88,
 						"h": 107
 					}
@@ -507,8 +423,8 @@
 						"h": 90
 					},
 					"frame": {
-						"x": 183,
-						"y": 1610,
+						"x": 759,
+						"y": 1439,
 						"w": 91,
 						"h": 90
 					}
@@ -528,8 +444,8 @@
 						"h": 90
 					},
 					"frame": {
-						"x": 276,
-						"y": 1610,
+						"x": 1851,
+						"y": 310,
 						"w": 91,
 						"h": 90
 					}
@@ -549,8 +465,8 @@
 						"h": 89
 					},
 					"frame": {
-						"x": 369,
-						"y": 1610,
+						"x": 852,
+						"y": 1439,
 						"w": 91,
 						"h": 89
 					}
@@ -570,73 +486,115 @@
 						"h": 89
 					},
 					"frame": {
-						"x": 462,
-						"y": 1610,
+						"x": 1520,
+						"y": 1103,
 						"w": 90,
 						"h": 89
 					}
 				},
 				{
-					"filename": "cast_glow.png",
+					"filename": "cast_disabled.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
 						"w": 179,
 						"h": 179
 					},
 					"spriteSourceSize": {
-						"x": 14,
-						"y": 12,
-						"w": 151,
-						"h": 151
+						"x": 0,
+						"y": 0,
+						"w": 179,
+						"h": 179
 					},
 					"frame": {
-						"x": 1678,
-						"y": 1178,
-						"w": 151,
-						"h": 151
+						"x": 1612,
+						"y": 1002,
+						"w": 179,
+						"h": 179
 					}
 				},
 				{
-					"filename": "rune_enhance.png",
+					"filename": "cast_hover.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 52,
-						"h": 162
+						"w": 179,
+						"h": 179
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 52,
-						"h": 44
+						"w": 179,
+						"h": 179
 					},
 					"frame": {
-						"x": 1316,
-						"y": 1386,
-						"w": 52,
-						"h": 44
+						"x": 1793,
+						"y": 1002,
+						"w": 179,
+						"h": 179
 					}
 				},
 				{
-					"filename": "rune_enhance_glow.png",
+					"filename": "cast_normal.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 50,
-						"h": 162
+						"w": 179,
+						"h": 179
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 50,
-						"h": 42
+						"w": 179,
+						"h": 179
 					},
 					"frame": {
-						"x": 554,
-						"y": 1610,
-						"w": 50,
-						"h": 42
+						"x": 1628,
+						"y": 1183,
+						"w": 179,
+						"h": 179
+					}
+				},
+				{
+					"filename": "cast_press.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 179,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 179,
+						"h": 179
+					},
+					"frame": {
+						"x": 1809,
+						"y": 1183,
+						"w": 179,
+						"h": 179
+					}
+				},
+				{
+					"filename": "chargeCircle.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 179,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 179,
+						"h": 179
+					},
+					"frame": {
+						"x": 1628,
+						"y": 1364,
+						"w": 179,
+						"h": 179
 					}
 				},
 				{
@@ -654,8 +612,8 @@
 						"h": 55
 					},
 					"frame": {
-						"x": 1678,
-						"y": 1331,
+						"x": 759,
+						"y": 1531,
 						"w": 80,
 						"h": 55
 					}
@@ -675,8 +633,8 @@
 						"h": 17
 					},
 					"frame": {
-						"x": 1720,
-						"y": 947,
+						"x": 1809,
+						"y": 1364,
 						"w": 102,
 						"h": 17
 					}
@@ -696,52 +654,10 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 1678,
-						"y": 1388,
+						"x": 1963,
+						"y": 176,
 						"w": 61,
 						"h": 50
-					}
-				},
-				{
-					"filename": "rune_reinforce.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 1,
-						"w": 41,
-						"h": 38
-					},
-					"frame": {
-						"x": 183,
-						"y": 1702,
-						"w": 41,
-						"h": 38
-					}
-				},
-				{
-					"filename": "rune_reinforce_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 1,
-						"w": 41,
-						"h": 38
-					},
-					"frame": {
-						"x": 226,
-						"y": 1702,
-						"w": 41,
-						"h": 38
 					}
 				},
 				{
@@ -759,14 +675,56 @@
 						"h": 22
 					},
 					"frame": {
-						"x": 1370,
-						"y": 1386,
+						"x": 1635,
+						"y": 847,
 						"w": 75,
 						"h": 22
 					}
 				},
 				{
-					"filename": "rune_unload_glow.png",
+					"filename": "rune_enhance.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 52,
+						"h": 162
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 52,
+						"h": 44
+					},
+					"frame": {
+						"x": 945,
+						"y": 1439,
+						"w": 52,
+						"h": 44
+					}
+				},
+				{
+					"filename": "rune_enhance_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 162
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 50,
+						"h": 42
+					},
+					"frame": {
+						"x": 1974,
+						"y": 1002,
+						"w": 50,
+						"h": 42
+					}
+				},
+				{
+					"filename": "rune_unload.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -774,15 +732,15 @@
 						"h": 160
 					},
 					"spriteSourceSize": {
-						"x": 0,
+						"x": 2,
 						"y": 0,
-						"w": 48,
+						"w": 46,
 						"h": 42
 					},
 					"frame": {
-						"x": 1447,
-						"y": 1386,
-						"w": 48,
+						"x": 1809,
+						"y": 1383,
+						"w": 46,
 						"h": 42
 					}
 				},
@@ -801,8 +759,8 @@
 						"h": 39
 					},
 					"frame": {
-						"x": 369,
-						"y": 1701,
+						"x": 1963,
+						"y": 228,
 						"w": 48,
 						"h": 39
 					}
@@ -822,8 +780,8 @@
 						"h": 39
 					},
 					"frame": {
-						"x": 419,
-						"y": 1701,
+						"x": 1635,
+						"y": 871,
 						"w": 48,
 						"h": 39
 					}
@@ -843,29 +801,8 @@
 						"h": 41
 					},
 					"frame": {
-						"x": 554,
-						"y": 1654,
-						"w": 44,
-						"h": 41
-					}
-				},
-				{
-					"filename": "rune_mind_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 0,
-						"w": 44,
-						"h": 41
-					},
-					"frame": {
-						"x": 1760,
-						"y": 1331,
+						"x": 945,
+						"y": 1485,
 						"w": 44,
 						"h": 41
 					}
@@ -885,8 +822,8 @@
 						"h": 41
 					},
 					"frame": {
-						"x": 1678,
-						"y": 1440,
+						"x": 1974,
+						"y": 1046,
 						"w": 44,
 						"h": 41
 					}
@@ -906,14 +843,14 @@
 						"h": 41
 					},
 					"frame": {
-						"x": 1678,
-						"y": 1483,
+						"x": 1809,
+						"y": 1427,
 						"w": 44,
 						"h": 41
 					}
 				},
 				{
-					"filename": "rune_unload.png",
+					"filename": "rune_unload_glow.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -921,16 +858,37 @@
 						"h": 160
 					},
 					"spriteSourceSize": {
-						"x": 5,
+						"x": 3,
 						"y": 0,
-						"w": 40,
-						"h": 40
+						"w": 44,
+						"h": 41
 					},
 					"frame": {
-						"x": 1678,
-						"y": 1526,
-						"w": 40,
-						"h": 40
+						"x": 1857,
+						"y": 1383,
+						"w": 44,
+						"h": 41
+					}
+				},
+				{
+					"filename": "healthbar_sixteenth.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 162,
+						"y": 88,
+						"w": 16,
+						"h": 46
+					},
+					"frame": {
+						"x": 1712,
+						"y": 847,
+						"w": 16,
+						"h": 46
 					}
 				},
 				{
@@ -948,8 +906,8 @@
 						"h": 41
 					},
 					"frame": {
-						"x": 1673,
-						"y": 1568,
+						"x": 1974,
+						"y": 1089,
 						"w": 40,
 						"h": 41
 					}
@@ -969,8 +927,8 @@
 						"h": 41
 					},
 					"frame": {
-						"x": 1673,
-						"y": 1611,
+						"x": 1809,
+						"y": 1470,
 						"w": 40,
 						"h": 41
 					}
@@ -990,14 +948,14 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 1673,
-						"y": 1654,
+						"x": 1974,
+						"y": 1132,
 						"w": 36,
 						"h": 45
 					}
 				},
 				{
-					"filename": "rune_time.png",
+					"filename": "rune_reinforce.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1005,20 +963,20 @@
 						"h": 160
 					},
 					"spriteSourceSize": {
-						"x": 7,
-						"y": 3,
-						"w": 36,
-						"h": 36
+						"x": 5,
+						"y": 1,
+						"w": 41,
+						"h": 38
 					},
 					"frame": {
-						"x": 269,
-						"y": 1702,
-						"w": 36,
-						"h": 36
+						"x": 1963,
+						"y": 269,
+						"w": 41,
+						"h": 38
 					}
 				},
 				{
-					"filename": "rune_time_glow.png",
+					"filename": "rune_reinforce_glow.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1026,16 +984,16 @@
 						"h": 160
 					},
 					"spriteSourceSize": {
-						"x": 7,
-						"y": 3,
-						"w": 36,
-						"h": 36
+						"x": 5,
+						"y": 1,
+						"w": 41,
+						"h": 38
 					},
 					"frame": {
-						"x": 469,
-						"y": 1701,
-						"w": 36,
-						"h": 36
+						"x": 1809,
+						"y": 1513,
+						"w": 41,
+						"h": 38
 					}
 				},
 				{
@@ -1053,31 +1011,31 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 554,
-						"y": 1697,
+						"x": 1609,
+						"y": 919,
 						"w": 32,
 						"h": 43
 					}
 				},
 				{
-					"filename": "cast_triangle.png",
+					"filename": "rune_time.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 13,
-						"h": 25
+						"w": 50,
+						"h": 160
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 13,
-						"h": 25
+						"x": 7,
+						"y": 3,
+						"w": 36,
+						"h": 36
 					},
 					"frame": {
-						"x": 1430,
-						"y": 419,
-						"w": 13,
-						"h": 25
+						"x": 1609,
+						"y": 964,
+						"w": 36,
+						"h": 36
 					}
 				},
 				{
@@ -1095,31 +1053,10 @@
 						"h": 40
 					},
 					"frame": {
-						"x": 1806,
-						"y": 1331,
+						"x": 1643,
+						"y": 912,
 						"w": 36,
 						"h": 40
-					}
-				},
-				{
-					"filename": "healthbar_sixteenth.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 180,
-						"h": 180
-					},
-					"spriteSourceSize": {
-						"x": 162,
-						"y": 88,
-						"w": 16,
-						"h": 46
-					},
-					"frame": {
-						"x": 1316,
-						"y": 1134,
-						"w": 16,
-						"h": 46
 					}
 				},
 				{
@@ -1137,10 +1074,73 @@
 						"h": 40
 					},
 					"frame": {
-						"x": 1741,
-						"y": 1388,
+						"x": 1647,
+						"y": 954,
 						"w": 36,
 						"h": 40
+					}
+				},
+				{
+					"filename": "rune_mind_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 0,
+						"w": 26,
+						"h": 43
+					},
+					"frame": {
+						"x": 1944,
+						"y": 310,
+						"w": 26,
+						"h": 43
+					}
+				},
+				{
+					"filename": "rune_time_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 3,
+						"w": 36,
+						"h": 36
+					},
+					"frame": {
+						"x": 1972,
+						"y": 309,
+						"w": 36,
+						"h": 36
+					}
+				},
+				{
+					"filename": "cast_triangle.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 13,
+						"h": 25
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 25
+					},
+					"frame": {
+						"x": 2012,
+						"y": 1132,
+						"w": 13,
+						"h": 25
 					}
 				},
 				{
@@ -1158,8 +1158,8 @@
 						"h": 15
 					},
 					"frame": {
-						"x": 588,
-						"y": 1697,
+						"x": 606,
+						"y": 1592,
 						"w": 16,
 						"h": 15
 					}
@@ -1179,8 +1179,8 @@
 						"h": 15
 					},
 					"frame": {
-						"x": 588,
-						"y": 1697,
+						"x": 606,
+						"y": 1592,
 						"w": 16,
 						"h": 15
 					}
@@ -1200,8 +1200,8 @@
 						"h": 13
 					},
 					"frame": {
-						"x": 1520,
-						"y": 1024,
+						"x": 1430,
+						"y": 1212,
 						"w": 15,
 						"h": 13
 					}
@@ -1212,6 +1212,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:1c36a14016aeca7f7e55ccea0d4a42cc:b679c7947eead6b31a5a7fa6fb58b4d6:9a90585c5b43d68de58739bf36e3c98d$"
+		"smartupdate": "$TexturePacker:SmartUpdate:78c00dfc508b4bc16df2981ab8333812:ed4aa39d3ffa2a688037e9a4ca9e169d:9a90585c5b43d68de58739bf36e3c98d$"
 	}
 }

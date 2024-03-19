@@ -43,6 +43,10 @@ class Player {
         this.statuses = {};
     }
 
+    getX() {
+        return this.x;
+    }
+
     getY() {
         return this.y;
     }
@@ -342,6 +346,40 @@ class Player {
                 }
             });
         }
+        if (this.statuses['matterUnload']) {
+            let shieldedDamage = 0;
+            if (this.statuses['matterUnload'].health > hurtAmt) {
+                this.statuses['matterUnload'].health = this.statuses['matterUnload'].health - hurtAmt;
+                shieldedDamage = hurtAmt;
+                hurtAmt = 0;
+                this.statuses['matterUnload'].animObj[1].setText(this.statuses['matterUnload'].health);
+                this.statuses['matterUnload'].animObj[1].setScale(1.3);
+                this.scene.tweens.add({
+                    targets: this.statuses['matterUnload'].animObj[1],
+                    duration: 250,
+                    scaleX: 1,
+                    scaleY: 1,
+                    ease: 'Quad.easeOut'
+                });
+                this.statuses['matterUnload'].animObj[0].y += 3;
+                this.scene.tweens.add({
+                    targets: this.statuses['matterUnload'].animObj[0],
+                    duration: 250,
+                    y: "-=3",
+                    ease: 'Cubic.easeOut'
+                });
+            } else {
+                hurtAmt = hurtAmt - this.statuses['matterUnload'].health;
+                shieldedDamage = this.statuses['matterUnload'].health;
+                this.statuses['matterUnload'].health = 0;
+                this.statuses['matterUnload'].animObj[1].setScale(1.1);
+                this.statuses['matterUnload'].animObj[1].setText(this.statuses['matterUnload'].health);
+                this.statuses['matterUnload'].cleanUp(this.statuses);
+            }
+            messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 40, -shieldedDamage, 0.5 + Math.sqrt(shieldedDamage) * 0.125);
+
+
+        }
 
         for (let i = 0; i < 10; i++) {
             if (playerStatuses['shield' + i]) {
@@ -364,7 +402,7 @@ class Player {
                             hurtAmt = hurtAmt - shieldObj.health;
                             blockedDmg = shieldObj.health;
                             shieldObj.health = 0;
-                            let rockAnim =  this.scene.add.sprite(shieldObj.animObj[1].x, shieldObj.animObj[1].y, 'spells', 'rockCircle.png');
+                            let rockAnim = this.scene.add.sprite(shieldObj.animObj[1].x, shieldObj.animObj[1].y, 'spells', 'rockCircle.png');
                             rockAnim.setScale(0.1);
                             rockAnim.setDepth(999);
                             rockAnim.setAlpha(1.4);

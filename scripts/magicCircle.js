@@ -469,7 +469,7 @@ const ENABLE_KEYBOARD = true;
         this.errorBoxEmbodiment.setDepth(121);
         this.errorBoxEmbodiment.alpha = 0;
 
-        this.spellNameText = this.scene.add.bitmapText(this.x, this.y - 222, 'normal', 'MATTER STRIKE', 20);
+        this.spellNameText = this.scene.add.bitmapText(this.x, this.y - 243, 'normal', 'MATTER STRIKE', 20);
         this.spellNameText.setOrigin(0.5, 0.5);
         this.spellNameText.setDepth(120);
         this.spellNameText.alpha = 0.5;
@@ -2163,19 +2163,19 @@ const ENABLE_KEYBOARD = true;
                          break;
                      case RUNE_REINFORCE:
                          this.spellNameText.setText('THORN FORM');
-                         this.spellNameHover.setText('GAIN 2 THORNS.\nTHORNS BLOCK AND\nREFLECT DAMAGE.');
+                         this.spellNameHover.setText(getLangText('matter_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
                          this.spellNameText.setText('ADD STRONGER ATTACK');
-                         this.spellNameHover.setText('NEXT ATTACK\nDEALS +10\nEXTRA DAMAGE.');
+                         this.spellNameHover.setText(getLangText('matter_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
                          this.spellNameText.setText('SHIELD OF STONE');
                          this.spellNameHover.setText(getLangText('matter_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         this.spellNameText.setText('EARTH PILLAR');
-                         this.spellNameHover.setText('DEAL 25 DAMAGE.');
+                         this.spellNameText.setText('EARTH FORCE');
+                         this.spellNameHover.setText(getLangText('matter_unload_desc'));
                          break;
                      default:
                          this.spellNameText.setText('');
@@ -2186,15 +2186,15 @@ const ENABLE_KEYBOARD = true;
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
                          this.spellNameText.setText('TIME STRIKE');
-                         this.spellNameHover.setText('DEAL 10 DAMAGE.\nCONVERT DAMAGE YOU\nDEAL OVER THE NEXT\n6 SECONDS INTO A\nSINGLE POWERFUL HIT.');
+                         this.spellNameHover.setText(getLangText('time_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
                          this.spellNameText.setText('ACCELERATED FORM');
-                         this.spellNameHover.setText('SLOW DOWN TIME\nUNTIL YOUR NEXT\nATTACK.');
+                         this.spellNameHover.setText(getLangText('time_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
                          this.spellNameText.setText('ADD PAUSING ATTACK');
-                         this.spellNameHover.setText('NEXT ATTACK\nPAUSES ENEMY FOR\n1.5 SECONDS.');
+                         this.spellNameHover.setText(getLangText('time_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
                          this.spellNameText.setText('SHIELD OF DELAY');
@@ -2202,7 +2202,7 @@ const ENABLE_KEYBOARD = true;
                          break;
                      case RUNE_UNLOAD:
                          this.spellNameText.setText('REWIND HEALTH');
-                         this.spellNameHover.setText('HEAL 12% OF YOUR\nMISSING HEALTH.\nTHEN HEAL 12\nMORE HEALTH.');
+                         this.spellNameHover.setText(getLangText('time_unload_desc'));
                          break;
                      default:
                          this.spellNameText.setText('');
@@ -2213,23 +2213,23 @@ const ENABLE_KEYBOARD = true;
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
                          this.spellNameText.setText('MIND STRIKE');
-                         this.spellNameHover.setText('DEAL 8 DAMAGE.\nENEMY TAKES 50%\nMORE DAMAGE FROM\nNEXT ATTACK.');
+                         this.spellNameHover.setText(getLangText('mind_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
                          this.spellNameText.setText('FOCUS FORM');
-                         this.spellNameHover.setText('CHARGE UP POWER\nTHAT IS RELEASED ON\nYOUR NEXT ATTACK.\nTHIS IS RESET\nIF YOU GET HIT.');
+                         this.spellNameHover.setText(getLangText('mind_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
                          this.spellNameText.setText('ADD EXTRA ATTACK');
-                         this.spellNameHover.setText('NEXT ATTACK\nIS CAST AN\nEXTRA TIME.');
+                         this.spellNameHover.setText(getLangText('mind_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
                          this.spellNameText.setText('GAZE OF PAIN');
-                         this.spellNameHover.setText('FIRES A CONTINUOUS\nBEAM OF DAMAGE THAT\nALSO BURNS THE ENEMY.');
+                         this.spellNameHover.setText(getLangText('mind_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
                          this.spellNameText.setText('TRIPLIFY MAGIC');
-                         this.spellNameHover.setText('NEXT NON-ATTACK\nSPELL HAS X3\nEFFECTIVENESS.');
+                         this.spellNameHover.setText(getLangText('mind_unload_desc'));
                          break;
                      default:
                          this.spellNameText.setText('');
@@ -2240,15 +2240,15 @@ const ENABLE_KEYBOARD = true;
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
                          this.spellNameText.setText('VOID STRIKE');
-                         this.spellNameHover.setText('DEAL 3% OF ENEMY\'s\nTOTAL HEALTH OVER\n4 SECONDS.');
+                         this.spellNameHover.setText(getLangText('void_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
                          this.spellNameText.setText('VOID FORM');
-                         this.spellNameHover.setText('BECOME INTANGIBLE\nFOR 7 SECONDS.\nLOSE 7 HEALTH.');
+                         this.spellNameHover.setText(getLangText('void_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
                          this.spellNameText.setText('ADD DISRUPTIVE ATTACK');
-                         this.spellNameHover.setText('NEXT ATTACK\nDISRUPTS ENEMY\'S\nCURRENT ACTION.');
+                         this.spellNameHover.setText(getLangText('void_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
                          this.spellNameText.setText('SHIELD OF NEGATION');
@@ -2256,7 +2256,7 @@ const ENABLE_KEYBOARD = true;
                          break;
                      case RUNE_UNLOAD:
                          this.spellNameText.setText('UN-MAKE');
-                         this.spellNameHover.setText('DEAL DAMAGE EQUAL TO\n20% OF THE ENEMY\'s\nCURRENT HEALTH.');
+                         this.spellNameHover.setText(getLangText('void_unload_desc'));
                          break;
                      default:
                          this.spellNameText.setText('');
@@ -2302,7 +2302,6 @@ const ENABLE_KEYBOARD = true;
      }
 
      applyVoidBurn(extraPower = 0, number = 5) {
-
         if (!globalObjects.currentEnemy) {
             return;
         }
@@ -2340,7 +2339,7 @@ const ENABLE_KEYBOARD = true;
              power: extraPower,
              onUpdate: () => {
                  if (effectObj && effectObj.duration > 0) {
-                     messageBus.publish('enemyTakeDamagePercentTotal', 0.5, extraPower, false);
+                     messageBus.publish('enemyTakeDamagePercentTotal', 0.8, extraPower, false);
                      if (effectObj.duration <= 1) {
                          if (this.voidBurnTween) {
                              this.voidBurnTween.stop();

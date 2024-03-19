@@ -17,8 +17,6 @@ class InternalPoolManager {
     }
 
     returnItemToPool(item, poolName) {
-        console.log("return item");
-        console.log(item);
         if (this.poolList[poolName] == undefined) {
             this.poolList[poolName] = [];
         }

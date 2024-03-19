@@ -93,13 +93,21 @@ class SpellManager {
         }
     }
 
-    createDamageEffect(x, y, depth, sprite = 'damageEffect.png', customTween = {}) {
-        let dmgEffect = this.scene.add.sprite(x, y, 'spells', sprite);
+    createDamageEffect(x, y, depth, sprite = null, customTween = {}) {
+        let dmgEffect;
+        let extraDur = 0;
+        if (sprite === null) {
+            dmgEffect = this.scene.add.sprite(x, y, 'spells').play('damageEffect');
+            extraDur = 100;
+        } else {
+            dmgEffect = this.scene.add.sprite(x, y, 'spells', sprite);
+        }
+
         dmgEffect.setDepth(depth);
         let defaultTweenObj = {
             targets: dmgEffect,
-            scaleY: 1.0001,
-            duration: 150,
+            scaleY: 1.005,
+            duration: 150 + extraDur,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 dmgEffect.destroy();
@@ -466,6 +474,9 @@ class SpellManager {
             ease: 'Cubic.easeOut',
         });
 
+        if (animation1.currAnim) {
+            animation1.currAnim.stop();
+        }
         this.scene.tweens.add({
             targets: animation1,
             duration: 300,
@@ -475,12 +486,15 @@ class SpellManager {
             onComplete: () => {
                 animation2.setDepth(117);
                 animation1.setDepth(117);
-                this.scene.tweens.add({
+                animation1.currAnim = this.scene.tweens.add({
                     targets: animation1,
                     duration: 350,
                     scaleX: 1,
                     scaleY: 1,
-                    ease: 'Cubic.easeIn'
+                    ease: 'Cubic.easeIn',
+                    onComplete: () => {
+                        animation1.currAnim = null;
+                    }
                 });
                 messageBus.publish("selfTakeEffect", {
                     name: shieldID,
@@ -521,7 +535,7 @@ class SpellManager {
                 });
             }
         });
-        
+
         let spellName = "SHIELD OF STONE";
         let bonusSize = 0;
         if (spellMultiplier >= 3) {

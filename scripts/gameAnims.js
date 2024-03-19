@@ -23,6 +23,17 @@ function createAnimations(scene) {
         repeat: -1
     });
     scene.anims.create({
+        key: 'damageEffect',
+        frames: scene.anims.generateFrameNames('spells', {
+            prefix: 'damageEffect',
+            suffix: '.png',
+            start: 2,
+            end: 5,
+            zeroPad: 0,
+        }),
+        frameRate: 20
+    });
+    scene.anims.create({
         key: 'weaken',
         frames: scene.anims.generateFrameNames('spells', {
             prefix: 'weakenLines_',

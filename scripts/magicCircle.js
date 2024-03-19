@@ -1352,7 +1352,7 @@ const ENABLE_KEYBOARD = true;
                              shieldObj.animObj[1].alpha = 1;
                              this.scene.tweens.add({
                                  targets: shieldObj.animObj[0],
-                                 duration: 250,
+                                 duration: 275,
                                  scaleX: shieldObj.animObj[0].origScaleX,
                                  easeParams: [3],
                                  scaleY: 1,
@@ -1364,9 +1364,12 @@ const ENABLE_KEYBOARD = true;
                              shieldObj.active = false;
                              shieldObj.animObj[0].alpha = 0.75;
                              shieldObj.animObj[1].alpha = 0.75;
+                             if (shieldObj.animObj[0].currAnim) {
+                                 shieldObj.animObj[0].currAnim.stop();
+                             }
                              this.scene.tweens.add({
                                  targets: shieldObj.animObj[0],
-                                 duration: 250,
+                                 duration: 275,
                                  scaleX: shieldObj.animObj[0].origScaleX - 0.06,
                                  scaleY: 0.99,
                                  ease: 'Cubic.easeOut',

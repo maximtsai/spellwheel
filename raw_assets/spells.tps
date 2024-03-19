@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>phaser</string>
+        <string>phaser-maxim</string>
         <key>textureFileName</key>
         <filename></filename>
         <key>flipPVR</key>
@@ -360,8 +360,11 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">spells/damageEffect.png</key>
-            <key type="filename">spells/shockEffect.png</key>
+            <key type="filename">spells/damageEffect1.png</key>
+            <key type="filename">spells/damageEffect2.png</key>
+            <key type="filename">spells/damageEffect3.png</key>
+            <key type="filename">spells/damageEffect4.png</key>
+            <key type="filename">spells/damageEffect5.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -370,9 +373,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>31,31,63,63</rect>
+                <rect>25,25,50,50</rect>
                 <key>scale9Paddings</key>
-                <rect>31,31,63,63</rect>
+                <rect>25,25,50,50</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -707,6 +710,21 @@
                 <rect>125,110,250,220</rect>
                 <key>scale9Paddings</key>
                 <rect>125,110,250,220</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/shockEffect.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>31,31,63,63</rect>
+                <key>scale9Paddings</key>
+                <rect>31,31,63,63</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

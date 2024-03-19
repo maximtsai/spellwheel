@@ -26,11 +26,24 @@ class StatusManager {
         let statusObj;
         if (newObj.statusObj) {
             statusObj = newObj.statusObj;
-            console.log("New Status Obj");
         } else {
-            statusObj = this.createStatusObj(spellID, this.getPlayerStatusXPos(), this.getPlayerStatusYPos(), spriteSrc1, spriteSrc2, displayAmt);
-            this.playerStatusDisplayStack.push(statusObj);
-            console.log("not new status obj")
+            let indexFound = -1;
+            for (let i = 0; i < this.playerStatusDisplayStack.length; i++) {
+                if (this.playerStatusDisplayStack[i] === null) {
+                    indexFound = i;
+                    break;
+                }
+            }
+
+
+            if (indexFound === -1) {
+                indexFound = this.playerStatusDisplayStack.length;
+                statusObj = this.createStatusObj(spellID, this.getPlayerStatusXPos(), this.getPlayerStatusYPos(indexFound), spriteSrc1, spriteSrc2, displayAmt);
+                this.playerStatusDisplayStack.push(statusObj);
+            } else {
+                statusObj = this.createStatusObj(spellID, this.getPlayerStatusXPos(), this.getPlayerStatusYPos(indexFound), spriteSrc1, spriteSrc2, displayAmt);
+                this.playerStatusDisplayStack[indexFound] = statusObj;
+            }
         }
         statusObj.setAmtText(newObj.displayAmt);
         statusObj.setDurationText(newObj.duration);
@@ -46,8 +59,8 @@ class StatusManager {
         return 30;
     }
 
-    getPlayerStatusYPos() {
-        return gameConsts.height - 45 - this.playerStatusDisplayStack.length * 45;
+    getPlayerStatusYPos(index) {
+        return gameConsts.height - 40 - index * 45;
     }
 
     createStatusObj(spellID, x, y, spriteSrc1, spriteSrc2, displayAmt) {
@@ -63,7 +76,7 @@ class StatusManager {
     recycleStatusObj(statusObj) {
         for (let i = 0; i < this.playerStatusDisplayStack.length; i++) {
             if (this.playerStatusDisplayStack[i] == statusObj) {
-                this.playerStatusDisplayStack.splice(i, 1);
+                this.playerStatusDisplayStack[i] = null;
                 break;
             }
         }
@@ -85,6 +98,9 @@ class StatusManager {
     tickPlayerStatuses() {
         for (let i in this.playerStatusDisplayStack) {
             let statusDisplayObj = this.playerStatusDisplayStack[i]
+            if (statusDisplayObj === null) {
+                continue;
+            }
             let status = statusDisplayObj.statusOrig;
             if (status == null || status.duration === undefined) {
                 continue;
@@ -113,6 +129,9 @@ class StatusManager {
         console.log("clear effects", spellId, skipCleanup);
         for (let i in this.playerStatusDisplayStack) {
             let statusDisplayObj = this.playerStatusDisplayStack[i]
+            if (statusDisplayObj == null) {
+                continue;
+            }
             let status = statusDisplayObj.statusOrig;
             if (status == null) {
                 continue;

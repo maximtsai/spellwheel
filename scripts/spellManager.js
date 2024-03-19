@@ -1893,7 +1893,7 @@ class SpellManager {
             let xPos = gameConsts.halfWidth + startDist * Math.sin(rotationPos);
             let yPos = MAGIC_CIRCLE_HEIGHT - 30 - startDist * Math.cos(rotationPos);
             blackShieldPiece.setPosition(xPos, yPos);
-            blackShieldPiece.setDepth(1);
+            blackShieldPiece.setDepth(11);
             blackShieldPiece.scaleVel = (Math.random() - 0.45) * 0.2;
             blackShieldPiece.setScale(0);
             blackShieldPiece.rotationOffset = rotationPos;
@@ -1911,7 +1911,7 @@ class SpellManager {
             eyeAnim.rotationOffset = rotationPos;
             eyeAnim.rotVel = 0;
             eyeAnim.setPosition(xPos, yPos);
-            eyeAnim.setDepth(1);
+            eyeAnim.setDepth(12);
             eyeAnim.setScale(1, 0);
             voidEyes.push(eyeAnim);
         }
@@ -2219,6 +2219,7 @@ class SpellManager {
         console.log(existingBuff);
         if (existingBuff) {
             // already got a shield in place
+            console.log("possibly unneeded");
             messageBus.publish('selfClearEffect', shieldID);
         }
     }

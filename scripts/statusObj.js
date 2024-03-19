@@ -26,7 +26,9 @@ class StatusObj {
 
     setPosition(x, y) {
         this.sprite.setPosition(x, y);
-        this.sprite2.setPosition(x-10, y+10);
+        this.sprite2.setPosition(x-10, y + 8);
+        this.timeLeftText.setPosition(x + 27, y);
+        this.amtText.setPosition(x + 9, y+9)
 
     }
 

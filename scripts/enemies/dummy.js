@@ -150,6 +150,19 @@
         this.x += 10;
          this.y += this.sprite.height * this.sprite.scaleY * 0.45; this.sprite.y = this.y;
          this.sprite.setOrigin(0.5, 0.95);
+         // this.dieClickBlocker = new Button({
+         //     normal: {
+         //         ref: "blackPixel",
+         //         x: gameConsts.halfWidth,
+         //         y: gameConsts.halfHeight,
+         //         alpha: 0.001,
+         //         scaleX: 1000,
+         //         scaleY: 1000
+         //     },
+         //     onMouseUp: () => {
+         //
+         //     }
+         // });
          PhaserScene.tweens.add({
              targets: this.sprite,
              rotation: -1.25,
@@ -193,30 +206,49 @@
                      ease: "Cubic.easeOut",
                      duration: 1500,
                      onComplete: () => {
-                         let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'lowq', 'rune_reinforce_glow.png').setScale(100, 1).setDepth(998).setAlpha(0);
-                         let runeAcquired = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 75, 'NEW RUNE ACQUIRED').setAlpha(0);
+                         let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(998).setAlpha(0);
+                         let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(998).setAlpha(0);
+                         let runeAcquired = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight - 5, 'NEW RUNE ACQUIRED').setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(998).setFontSize(22);
                          PhaserScene.tweens.add({
-                             targets: [banner, runeAcquired],
-                             alpha: 0.6,
+                             targets: banner,
+                             alpha: 0.75,
+                             duration: 500,
+                         });
+                         PhaserScene.tweens.add({
+                             targets: [victoryText, runeAcquired],
+                             alpha: 1,
                              ease: 'Quad.easeOut',
                              duration: 500,
                          });
                          PhaserScene.tweens.add({
-                             targets: rune,
+                             targets: victoryText,
                              scaleX: 1,
                              scaleY: 1,
                              duration: 800,
                          });
                          PhaserScene.tweens.add({
                              targets: rune,
-                             y: gameConsts.halfHeight + 100,
-                             alpha: 0,
-                             ease: "Cubic.easeIn",
-                             duration: 800,
-                             onComplete: () => {
-                                 rune.destroy();
-                             }
+                             y: "+=10",
+                             ease: 'Cubic.easeOut',
+                             duration: 400,
                          });
+                         // PhaserScene.tweens.add({
+                         //     targets: rune,
+                         //     scaleX: 1.5,
+                         //     scaleY: 1.5,
+                         //     ease: "Cubic.easeInOut",
+                         //     duration: 800,
+                         // });
+                         // PhaserScene.tweens.add({
+                         //     targets: rune,
+                         //     y: gameConsts.halfHeight + 100,
+                         //     alpha: 0,
+                         //     ease: "Cubic.easeIn",
+                         //     duration: 800,
+                         //     onComplete: () => {
+                         //         rune.destroy();
+                         //     }
+                         // });
                      }
                  });
 

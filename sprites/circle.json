@@ -850,6 +850,27 @@
 					}
 				},
 				{
+					"filename": "rune_time.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 0,
+						"w": 42,
+						"h": 42
+					},
+					"frame": {
+						"x": 1857,
+						"y": 1383,
+						"w": 42,
+						"h": 42
+					}
+				},
+				{
 					"filename": "healthbar_sixteenth.png",
 					"rotated": false,
 					"trimmed": true,
@@ -885,8 +906,8 @@
 						"h": 41
 					},
 					"frame": {
-						"x": 1857,
-						"y": 1383,
+						"x": 1974,
+						"y": 1089,
 						"w": 40,
 						"h": 41
 					}
@@ -906,8 +927,8 @@
 						"h": 41
 					},
 					"frame": {
-						"x": 1974,
-						"y": 1089,
+						"x": 1809,
+						"y": 1470,
 						"w": 40,
 						"h": 41
 					}
@@ -927,8 +948,8 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 1809,
-						"y": 1470,
+						"x": 1974,
+						"y": 1132,
 						"w": 36,
 						"h": 45
 					}
@@ -969,8 +990,8 @@
 						"h": 38
 					},
 					"frame": {
-						"x": 1974,
-						"y": 1132,
+						"x": 1855,
+						"y": 1427,
 						"w": 41,
 						"h": 38
 					}
@@ -1033,7 +1054,7 @@
 					},
 					"frame": {
 						"x": 1809,
-						"y": 1517,
+						"y": 1513,
 						"w": 36,
 						"h": 40
 					}
@@ -1081,7 +1102,7 @@
 					}
 				},
 				{
-					"filename": "rune_time.png",
+					"filename": "rune_time_glow.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1102,27 +1123,6 @@
 					}
 				},
 				{
-					"filename": "rune_time_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 3,
-						"w": 36,
-						"h": 36
-					},
-					"frame": {
-						"x": 1913,
-						"y": 1364,
-						"w": 36,
-						"h": 36
-					}
-				},
-				{
 					"filename": "cast_triangle.png",
 					"rotated": false,
 					"trimmed": false,
@@ -1137,8 +1137,8 @@
 						"h": 25
 					},
 					"frame": {
-						"x": 999,
-						"y": 1439,
+						"x": 2012,
+						"y": 1132,
 						"w": 13,
 						"h": 25
 					}
@@ -1212,6 +1212,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:436ad9d58a7a3d1140bf520044620e10:20efa2e3bbcde791535be53bcbce278c:9a90585c5b43d68de58739bf36e3c98d$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1fe1adfb56c6a3f0c26d593de8774474:6187d930dabda1e23190385d63f3cc5f:9a90585c5b43d68de58739bf36e3c98d$"
 	}
 }

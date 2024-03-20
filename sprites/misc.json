@@ -4,30 +4,177 @@
 			"image": "sprites/misc.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 504,
-				"h": 963
+				"w": 1021,
+				"h": 1309
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "scythe2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 850,
+						"h": 780
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 139,
+						"w": 524,
+						"h": 631
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 524,
+						"h": 631
+					}
+				},
+				{
+					"filename": "scythe3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 850,
+						"h": 780
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 139,
+						"w": 524,
+						"h": 631
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 524,
+						"h": 631
+					}
+				},
+				{
+					"filename": "scythe4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 850,
+						"h": 780
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 139,
+						"w": 524,
+						"h": 631
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 524,
+						"h": 631
+					}
+				},
+				{
+					"filename": "scythe6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 850,
+						"h": 780
+					},
+					"spriteSourceSize": {
+						"x": 68,
+						"y": 313,
+						"w": 456,
+						"h": 466
+					},
+					"frame": {
+						"x": 527,
+						"y": 1,
+						"w": 456,
+						"h": 466
+					}
+				},
+				{
+					"filename": "victory_banner.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 10,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 10,
+						"h": 197
+					},
+					"frame": {
+						"x": 985,
+						"y": 1,
+						"w": 10,
+						"h": 197
+					}
+				},
+				{
+					"filename": "floating_death.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 375
+					},
+					"spriteSourceSize": {
+						"x": 65,
+						"y": 0,
+						"w": 435,
+						"h": 370
+					},
+					"frame": {
+						"x": 527,
+						"y": 469,
+						"w": 435,
+						"h": 370
+					}
+				},
+				{
+					"filename": "scythe5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 850,
+						"h": 780
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 331,
+						"w": 515,
+						"h": 449
+					},
+					"frame": {
+						"x": 1,
+						"y": 634,
+						"w": 515,
+						"h": 449
+					}
+				},
 				{
 					"filename": "scythe.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 504,
-						"h": 420
+						"w": 850,
+						"h": 780
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 0,
+						"y": 109,
 						"w": 502,
-						"h": 420
+						"h": 422
 					},
 					"frame": {
-						"x": 1,
-						"y": 1,
+						"x": 518,
+						"y": 841,
 						"w": 502,
-						"h": 420
+						"h": 422
 					}
 				},
 				{
@@ -46,30 +193,30 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 423,
+						"y": 1085,
 						"w": 500,
 						"h": 167
 					}
 				},
 				{
-					"filename": "floating_death.png",
+					"filename": "victory_text.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 500,
-						"h": 375
+						"w": 297,
+						"h": 54
 					},
 					"spriteSourceSize": {
-						"x": 65,
+						"x": 0,
 						"y": 0,
-						"w": 435,
-						"h": 370
+						"w": 297,
+						"h": 54
 					},
 					"frame": {
 						"x": 1,
-						"y": 592,
-						"w": 435,
-						"h": 370
+						"y": 1254,
+						"w": 297,
+						"h": 54
 					}
 				}
 			]
@@ -78,6 +225,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:7e58eb0fbde53fa4ed68bf26807b1ac7:06300df37976c3ebb19453ee81d3627c:612dcbdb08476a0aba06aeca925f16b2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:9481b670f3247105a17b75a2bf46bef5:2daec4f36cc24d9fe391fc8431df34d2:612dcbdb08476a0aba06aeca925f16b2$"
 	}
 }

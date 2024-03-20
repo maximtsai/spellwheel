@@ -4,74 +4,11 @@
 			"image": "sprites/lowq-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1604,
-				"h": 1310
+				"w": 1404,
+				"h": 1604
 			},
 			"scale": 1,
 			"frames": [
-				{
-					"filename": "flash.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 400,
-						"h": 200
-					},
-					"spriteSourceSize": {
-						"x": 29,
-						"y": 44,
-						"w": 339,
-						"h": 113
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 339,
-						"h": 113
-					}
-				},
-				{
-					"filename": "flashbg.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 400,
-						"h": 200
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 0,
-						"w": 394,
-						"h": 200
-					},
-					"frame": {
-						"x": 342,
-						"y": 1,
-						"w": 394,
-						"h": 200
-					}
-				},
-				{
-					"filename": "stars.jpg",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 600,
-						"h": 506
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 600,
-						"h": 506
-					},
-					"frame": {
-						"x": 738,
-						"y": 1,
-						"w": 600,
-						"h": 506
-					}
-				},
 				{
 					"filename": "star_black.png",
 					"rotated": false,
@@ -88,7 +25,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 509,
+						"y": 1,
 						"w": 800,
 						"h": 800
 					}
@@ -108,10 +45,115 @@
 						"h": 800
 					},
 					"frame": {
-						"x": 803,
-						"y": 509,
+						"x": 1,
+						"y": 803,
 						"w": 800,
 						"h": 800
+					}
+				},
+				{
+					"filename": "stars.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 600,
+						"h": 506
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 600,
+						"h": 506
+					},
+					"frame": {
+						"x": 803,
+						"y": 1,
+						"w": 600,
+						"h": 506
+					}
+				},
+				{
+					"filename": "flash.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 400,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 394,
+						"h": 200
+					},
+					"frame": {
+						"x": 803,
+						"y": 509,
+						"w": 394,
+						"h": 200
+					}
+				},
+				{
+					"filename": "flashbg.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 400,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 394,
+						"h": 200
+					},
+					"frame": {
+						"x": 803,
+						"y": 711,
+						"w": 394,
+						"h": 200
+					}
+				},
+				{
+					"filename": "flashplain.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 400,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 44,
+						"w": 339,
+						"h": 113
+					},
+					"frame": {
+						"x": 803,
+						"y": 913,
+						"w": 339,
+						"h": 113
+					}
+				},
+				{
+					"filename": "victory_banner.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 10,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 10,
+						"h": 197
+					},
+					"frame": {
+						"x": 1144,
+						"y": 913,
+						"w": 10,
+						"h": 197
 					}
 				}
 			]
@@ -120,6 +162,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:83412c6d095bd33ecafefa1be9475214:5914d36fd31d584041a65647e41049e1:0644d9afadc5ec39d626109554d3f3bc$"
+		"smartupdate": "$TexturePacker:SmartUpdate:8737266c39db98e7fd808497e633a354:fba397a36c178edaa48a112aee66df66:0644d9afadc5ec39d626109554d3f3bc$"
 	}
 }

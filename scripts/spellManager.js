@@ -564,7 +564,7 @@ class SpellManager {
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
             let yPos = gameConsts.height - 330 + Math.abs(halfwayIdx - i) * 10;
             let rockObj = this.scene.add.sprite(xPos, yPos, 'spells', 'stalagmite.png');
-            rockObj.setDepth(10);
+            rockObj.setDepth(9);
             rockObj.setOrigin(0.5, 0.98);
             rockObj.rotation = 0;
             attackObjects.push(rockObj);
@@ -598,7 +598,7 @@ class SpellManager {
             textHealth.startY = textHealth.y;
         }
         textHealth.setDepth(120).setOrigin(0.5, 0.5).setScale(0);
-        stoneCircle.setDepth(0);
+        stoneCircle.setDepth(10);
         let shieldHealth = 18 * multiplier;
         this.scene.tweens.add({
             targets: stoneCircle,
@@ -1088,11 +1088,12 @@ class SpellManager {
                 ease: 'Quad.easeIn',
                 duration: 400 + additionalDamage * 3,
                 onComplete: () => {
-                    let dmgEffect = this.scene.add.sprite(attackObj.x, attackObj.y, 'spells').play('shockEffect').setDepth(attackObj.depth).setScale(0.5);
+                    let dmgEffect = this.scene.add.sprite(attackObj.x, attackObj.y, 'spells').play('shockEffect').setDepth(attackObj.depth).setScale(0.5).setRotation(Math.random() * 6);
+                    let randScale = 1.15 + 0.1 * Math.random();
                     this.scene.tweens.add({
                         targets: dmgEffect,
-                        scaleX: 1.2,
-                        scaleY: 1.2,
+                        scaleX: randScale,
+                        scaleY: randScale,
                         duration: 300,
                         ease: 'Cubic.easeOut',
                         onComplete: () => {
@@ -1101,35 +1102,38 @@ class SpellManager {
                     });
 
                     messageBus.publish('enemyTakeDamage', 8 + additionalDamage);
-                    let animation1 = this.scene.add.sprite(attackObj.x - 55, attackObj.y, 'spells').play('weaken');
-                    animation1.setDepth(10);
-                    animation1.rotation = -1.58;
-                    animation1.setOrigin(0.5, 1);
-                    let animation2 = this.scene.add.sprite(attackObj.x + 55, attackObj.y, 'spells').play('weaken');
-                    animation2.setDepth(10);
-                    animation2.rotation = 1.58;
-                    animation2.setOrigin(0.5, 1);
-                    messageBus.publish('enemyTakeEffect', {
-                        name: spellID,
-                        cleanUp: (statuses) => {
-                            console.log("clean up mind effect");
-                            if (statuses[spellID] && !statuses[spellID].currentAnim) {
-                                statuses[spellID].currentAnim = this.scene.tweens.add({
-                                    targets: [animation1,animation2],
-                                    duration: 300,
-                                    scaleX: 1.4,
-                                    scaleY: 1.4,
-                                    alpha: 0,
-                                    ease: 'Quad.easeOut',
-                                    onComplete: () => {
-                                        animation1.destroy();
-                                        animation2.destroy();
-                                    }
-                                });
-                                statuses[spellID] = null;
+                    if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
+                        let animation1 = this.scene.add.sprite(attackObj.x - 55, attackObj.y, 'spells').play('weaken');
+                        animation1.setDepth(10);
+                        animation1.rotation = -1.58;
+                        animation1.setOrigin(0.5, 1);
+                        let animation2 = this.scene.add.sprite(attackObj.x + 55, attackObj.y, 'spells').play('weaken');
+                        animation2.setDepth(10);
+                        animation2.rotation = 1.58;
+                        animation2.setOrigin(0.5, 1);
+                        messageBus.publish('enemyTakeEffect', {
+                            name: spellID,
+                            cleanUp: (statuses) => {
+                                console.log("clean up mind effect");
+                                if (statuses[spellID] && !statuses[spellID].currentAnim) {
+                                    statuses[spellID].currentAnim = this.scene.tweens.add({
+                                        targets: [animation1,animation2],
+                                        duration: 300,
+                                        scaleX: 1.4,
+                                        scaleY: 1.4,
+                                        alpha: 0,
+                                        ease: 'Quad.easeOut',
+                                        onComplete: () => {
+                                            animation1.destroy();
+                                            animation2.destroy();
+                                        }
+                                    });
+                                    statuses[spellID] = null;
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
+
                     this.scene.tweens.add({
                         targets: attackObj,
                         alpha: 0,

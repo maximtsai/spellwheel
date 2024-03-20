@@ -24,7 +24,7 @@ function fadeInBackground(name, duration = 15000, scale = 1) {
     return nextObj;
 }
 
-function fadeInBackgroundAtlas(atlas, name, duration = 15000, scale = 1.1, endScale, ease, delay) {
+function fadeInBackgroundAtlas(atlas, name, duration = 15000, scale = 1.1, endScale, ease, delay, extra) {
     let nextObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight * 0.7, atlas, name).setDepth(-1).setScale(scale).setAlpha(0).setOrigin(0.5, 0.35);
     PhaserScene.tweens.add({
         delay: delay,
@@ -39,8 +39,19 @@ function fadeInBackgroundAtlas(atlas, name, duration = 15000, scale = 1.1, endSc
             targets: nextObj,
             scaleX: endScale,
             scaleY: endScale,
-            ease: 'Cubic.easeOut',
-            duration: duration + 1000
+            ease: ease ? ease : 'Cubic.easeOut',
+            duration: duration + 1000,
+            onComplete: () => {
+                if (extra) {
+                    PhaserScene.tweens.add({
+                        targets: nextObj,
+                        scaleX: endScale - 0.1,
+                        scaleY: endScale - 0.1,
+                        ease: 'Cubic.easeOut',
+                        duration: 500
+                    });
+                }
+            }
         });
     }
 

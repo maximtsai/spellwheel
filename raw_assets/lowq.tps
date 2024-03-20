@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>phaser</string>
+        <string>phaser-maxim</string>
         <key>textureFileName</key>
         <filename>../sprites/lowq-{n}.webp</filename>
         <key>flipPVR</key>
@@ -175,6 +175,7 @@
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">lowq/flash.webp</key>
             <key type="filename">lowq/flashbg.webp</key>
+            <key type="filename">lowq/flashplain.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -231,6 +232,21 @@
                 <rect>150,127,300,253</rect>
                 <key>scale9Paddings</key>
                 <rect>150,127,300,253</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">lowq/victory_banner.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>3,50,5,100</rect>
+                <key>scale9Paddings</key>
+                <rect>3,50,5,100</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

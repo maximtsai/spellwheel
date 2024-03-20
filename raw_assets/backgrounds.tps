@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>phaser</string>
+        <string>phaser-maxim</string>
         <key>textureFileName</key>
         <filename>../sprites/backgrounds-{n}.webp</filename>
         <key>flipPVR</key>
@@ -64,7 +64,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>1</uint>
+        <uint>0</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -76,7 +76,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">webp</enum>
         <key>borderPadding</key>
-        <uint>1</uint>
+        <uint>0</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -218,6 +218,21 @@
                 <rect>208,256,416,512</rect>
                 <key>scale9Paddings</key>
                 <rect>208,256,416,512</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">backgrounds/backgroundx.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>175,200,350,400</rect>
+                <key>scale9Paddings</key>
+                <rect>175,200,350,400</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

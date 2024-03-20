@@ -19,6 +19,8 @@ class Player {
             messageBus.subscribe('startVoidForm', this.handleVoidForm.bind(this)),
             messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this)),
 
+            messageBus.subscribe('enemyHasDied', this.clearEffects.bind(this)),
+
 
         ];
         //             messageBus.subscribe("selfClearEffect", this.clearEffects.bind(this)),

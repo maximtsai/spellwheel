@@ -7,7 +7,7 @@ function beginLevel(lvl) {
     switch(lvl) {
         case 0:
             zoomInCurrBackground(1500, 2, 'Cubic.easeIn');
-            fadeInBackgroundAtlas('backgrounds', 'background1.webp', 1500, 1.3, 1, 'Quart.easeIn');
+            fadeInBackgroundAtlas('backgrounds', 'background1.webp', 1500, 5, 1, 'Quart.easeIn', 0, true);
             break;
         case 1:
             break;

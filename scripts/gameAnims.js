@@ -34,6 +34,17 @@ function createAnimations(scene) {
         frameRate: 20
     });
     scene.anims.create({
+        key: 'shockEffect',
+        frames: scene.anims.generateFrameNames('spells', {
+            prefix: 'shockEffect',
+            suffix: '.png',
+            start: 1,
+            end: 10,
+            zeroPad: 0,
+        }),
+        frameRate: 30
+    });
+    scene.anims.create({
         key: 'weaken',
         frames: scene.anims.generateFrameNames('spells', {
             prefix: 'weakenLines_',

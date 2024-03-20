@@ -93,12 +93,15 @@ class SpellManager {
         }
     }
 
-    createDamageEffect(x, y, depth, sprite = null, customTween = {}) {
+    createDamageEffect(x, y, depth, sprite = null, customTween = {}, isAnim) {
         let dmgEffect;
         let extraDur = 0;
         if (sprite === null) {
             dmgEffect = this.scene.add.sprite(x, y, 'spells').play('damageEffect');
             extraDur = 100;
+        } else if (isAnim) {
+            dmgEffect = this.scene.add.sprite(x, y, 'spells').play(sprite);
+            extraDur = 150;
         } else {
             dmgEffect = this.scene.add.sprite(x, y, 'spells', sprite);
         }
@@ -1085,7 +1088,18 @@ class SpellManager {
                 ease: 'Quad.easeIn',
                 duration: 400 + additionalDamage * 3,
                 onComplete: () => {
-                    this.createDamageEffect(attackObj.x, attackObj.y, attackObj.depth, 'shockEffect.png');
+                    let dmgEffect = this.scene.add.sprite(attackObj.x, attackObj.y, 'spells').play('shockEffect').setDepth(attackObj.depth).setScale(0.5);
+                    this.scene.tweens.add({
+                        targets: dmgEffect,
+                        scaleX: 1.2,
+                        scaleY: 1.2,
+                        duration: 300,
+                        ease: 'Cubic.easeOut',
+                        onComplete: () => {
+                            dmgEffect.destroy();
+                        }
+                    });
+
                     messageBus.publish('enemyTakeDamage', 8 + additionalDamage);
                     let animation1 = this.scene.add.sprite(attackObj.x - 55, attackObj.y, 'spells').play('weaken');
                     animation1.setDepth(10);

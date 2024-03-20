@@ -28,6 +28,7 @@ class Enemy {
     initStats() {
         this.health = 1000;
         this.shield = 0;
+        this.isAsleep = false;
         this.timeSinceLastAttacked = 9999;
         this.healthBarLengthMax = 101;
         this.statuses = [];
@@ -146,7 +147,9 @@ class Enemy {
     }
 
 
-    initSprite(name, scale = 1) {
+    initSprite(name, scale = 1, xOffset = 0, yOffset = 0) {
+        this.x += xOffset;
+        this.y += yOffset;
         this.sprite = this.scene.add.sprite(this.x, this.y, 'enemies', name);
         this.sprite.setDepth(0);
         this.sprite.setAlpha(0);
@@ -252,6 +255,9 @@ class Enemy {
         }
 
         let chargeMult = 1;
+        if (!this.isAsleep) {
+
+        }
         if (this.attackCooldown <= 0) {
             if (this.isAngry) {
                 this.attackCharge += timeChange * 1.25 * this.slowMult;

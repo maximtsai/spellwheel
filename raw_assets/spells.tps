@@ -714,6 +714,16 @@
                 <false/>
             </struct>
             <key type="filename">spells/shockEffect.png</key>
+            <key type="filename">spells/shockEffect1.png</key>
+            <key type="filename">spells/shockEffect10.png</key>
+            <key type="filename">spells/shockEffect2.png</key>
+            <key type="filename">spells/shockEffect3.png</key>
+            <key type="filename">spells/shockEffect4.png</key>
+            <key type="filename">spells/shockEffect5.png</key>
+            <key type="filename">spells/shockEffect6.png</key>
+            <key type="filename">spells/shockEffect7.png</key>
+            <key type="filename">spells/shockEffect8.png</key>
+            <key type="filename">spells/shockEffect9.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

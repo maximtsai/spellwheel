@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>phaser</string>
+        <string>phaser-maxim</string>
         <key>textureFileName</key>
         <filename></filename>
         <key>flipPVR</key>
@@ -128,7 +128,7 @@
             </struct>
         </map>
         <key>multiPackMode</key>
-        <enum type="SettingsBase::MultiPackMode">MultiPackOff</enum>
+        <enum type="SettingsBase::MultiPackMode">MultiPackAuto</enum>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -169,12 +169,28 @@
             <key>defaultPivotPoint</key>
             <point_f>0.5,0.5</point_f>
             <key>writePivotPoints</key>
-            <false/>
+            <true/>
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">enemies/battle_paint_over.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>296,227,591,455</rect>
+                <key>scale9Paddings</key>
+                <rect>296,227,591,455</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/dummy.png</key>
             <key type="filename">enemies/dummybrows.png</key>
+            <key type="filename">enemies/gobbo0.png</key>
             <key type="filename">enemies/tree.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -190,7 +206,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/gobbo0.png</key>
+            <key type="filename">enemies/dummy_broken.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,75,150,150</rect>
+                <key>scale9Paddings</key>
+                <rect>75,75,150,150</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/gobbo1.png</key>
             <key type="filename">enemies/gobbo2.png</key>
             <key type="filename">enemies/gobbo3.png</key>
@@ -266,6 +296,54 @@
                 <rect>175,135,350,270</rect>
                 <key>scale9Paddings</key>
                 <rect>175,135,350,270</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/time_magi.png</key>
+            <key type="filename">enemies/time_magi_cast.png</key>
+            <key type="filename">enemies/time_magi_nervous.png</key>
+            <key type="filename">enemies/time_magi_nervous_cast.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>80,80,160,160</rect>
+                <key>scale9Paddings</key>
+                <rect>80,80,160,160</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/tree_eye.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>8,23,15,45</rect>
+                <key>scale9Paddings</key>
+                <rect>8,23,15,45</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/void_knight.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>94,109,189,217</rect>
+                <key>scale9Paddings</key>
+                <rect>94,109,189,217</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -10,6 +10,7 @@ class Player {
             messageBus.subscribe("selfTakeDamage", this.takeDamage.bind(this)),
             messageBus.subscribe("selfHeal", this.selfHeal.bind(this)),
             messageBus.subscribe("selfHealPercent", this.selfHealPercent.bind(this)),
+            messageBus.subscribe("selfHealRecent", this.selfHealRecent.bind(this)),
 
             messageBus.subscribe("selfTakeTrueDamage", this.takeTrueDamage.bind(this)),
             messageBus.subscribe('clearSpellMultiplier', this.clearSpellMultiplier.bind(this)),
@@ -20,6 +21,8 @@ class Player {
             messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this)),
 
             messageBus.subscribe('enemyHasDied', this.clearEffects.bind(this)),
+            messageBus.subscribe('enemyMadeAttack', this.enemyMadeAttack.bind(this)),
+
 
 
         ];
@@ -39,8 +42,9 @@ class Player {
     initStats(x, y) {
         this.x = x;
         this.y = y;
-        this.health = 100;
-        this.healthMax = 100;
+        this.health = 80;
+        this.healthMax = 80;
+        this.recentlyTakenDamageAmt = 0;
         this.initStatsCustom();
         this.statuses = {};
     }
@@ -261,13 +265,7 @@ class Player {
     }
 
     clearEffects() {
-        for (let i in this.statuses) {
-            let effect = this.statuses[i];
-            if (effect) {
-                effect.cleanUp(this.statuses);
-            }
-        }
-        this.statuses = [];
+        messageBus.publish('selfClearStatuses');
     }
 
     takeEnemyEffect(newEffect) {
@@ -279,11 +277,21 @@ class Player {
         zoomTemp(1.006);
     }
 
+    enemyMadeAttack() {
+        this.recentlyTakenDamageAmt = 0;
+    }
+
+    getrecentlyTakenDamageAmt() {
+        return this.recentlyTakenDamageAmt;
+    }
+
     takeDamage(amt) {
         let actualAmt = this.handleDamageStatuses(amt);
         let origHealth = this.health;
         let damageTaken = this.adjustDamageTaken(actualAmt);
         if (damageTaken > 1) {
+            this.recentlyTakenDamageAmt += damageTaken;
+
             this.bleedObj.alpha = Math.sqrt(damageTaken - 1) * 0.04;
             this.scene.tweens.add({
                 targets: this.bleedObj,
@@ -310,6 +318,12 @@ class Player {
     selfHealPercent(percent) {
         let healthToHeal = Math.ceil((this.healthMax - this.health) * percent * 0.01);
         this.selfHeal(healthToHeal);
+    }
+
+    selfHealRecent(amount = 0.1) {
+        let healAmt = Math.ceil(amount * this.recentlyTakenDamageAmt);
+        this.selfHeal(healAmt);
+        this.recentlyTakenDamageAmt -= healAmt;
     }
 
     takeTrueDamage(amt) {

@@ -1,6 +1,6 @@
 const DECAY = 0.00006;
 const STATIC = 0.006;
-const INFINITE_CAST = true;
+const INFINITE_CAST = false;
 const ENABLE_KEYBOARD = true;
 
  class MagicCircle {
@@ -24,21 +24,24 @@ const ENABLE_KEYBOARD = true;
         this.tempRotObjs = [];
         this.tempLockRot = 0;
         this.lastDragTime = 0;
-        messageBus.subscribe('attackLaunched', this.attackLaunched.bind(this));
-        messageBus.subscribe('manualSetTimeSlowRatio', this.manualSetTimeSlowRatio.bind(this));
-        messageBus.subscribe('refreshRandomRunes', this.refreshRandomRunes.bind(this));
-        messageBus.subscribe('statusesTicked', this.handleStatusesTicked.bind(this));
-        messageBus.subscribe('playerAddDelayedDamage', this.addDelayedDamage.bind(this));
-        messageBus.subscribe('enableVoidArm', this.enableVoidArm.bind(this));
-        messageBus.subscribe('setTempRotObjs', this.setTempRotObjs.bind(this));
-        messageBus.subscribe('manualResetElements', this.manualResetElements.bind(this));
-        messageBus.subscribe('manualResetEmbodiments', this.manualResetEmbodiments.bind(this));
-        messageBus.subscribe('fireLaserEyes', this.fireLaserEyes.bind(this));
-        messageBus.subscribe('inflictVoidBurn', this.applyVoidBurn.bind(this));
-        messageBus.subscribe('startVoidForm', this.handleVoidForm.bind(this));
-        messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this));
-        messageBus.subscribe('selfClearEffect', this.clearMindForm.bind(this));
-        messageBus.subscribe('selfImplode', this.selfImplode.bind(this));
+        this.subscriptions = [
+            messageBus.subscribe('attackLaunched', this.attackLaunched.bind(this)),
+            messageBus.subscribe('manualSetTimeSlowRatio', this.manualSetTimeSlowRatio.bind(this)),
+            messageBus.subscribe('refreshRandomRunes', this.refreshRandomRunes.bind(this)),
+            messageBus.subscribe('statusesTicked', this.handleStatusesTicked.bind(this)),
+            messageBus.subscribe('playerAddDelayedDamage', this.addDelayedDamage.bind(this)),
+            messageBus.subscribe('enableVoidArm', this.enableVoidArm.bind(this)),
+            messageBus.subscribe('setTempRotObjs', this.setTempRotObjs.bind(this)),
+            messageBus.subscribe('manualResetElements', this.manualResetElements.bind(this)),
+            messageBus.subscribe('manualResetEmbodiments', this.manualResetEmbodiments.bind(this)),
+            messageBus.subscribe('fireLaserEyes', this.fireLaserEyes.bind(this)),
+            messageBus.subscribe('inflictVoidBurn', this.applyVoidBurn.bind(this)),
+            messageBus.subscribe('startVoidForm', this.handleVoidForm.bind(this)),
+            messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this)),
+            messageBus.subscribe('selfClearEffect', this.clearMindForm.bind(this)),
+            messageBus.subscribe('selfImplode', this.selfImplode.bind(this)),
+            messageBus.subscribe('enemyHasDied', this.clearEffects.bind(this))
+        ];
 
     }
 
@@ -56,12 +59,11 @@ const ENABLE_KEYBOARD = true;
         this.keyDown = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
         this.keyEnter = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
         this.keySpace = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-
     }
 
     update(dt) {
         let mindReinforceStatus = globalObjects.player.getStatuses()['mindReinforce'];
-        if (this.lastDragTime > 40) {
+        if (this.lastDragTime > 30) {
             gameVars.playerNotMoved = true;
         } else {
             gameVars.playerNotMoved = false;
@@ -475,7 +477,7 @@ const ENABLE_KEYBOARD = true;
         this.spellNameText.alpha = 0.5;
 
         this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth, 150, 'spells', 'darkSlice.png').setDepth(0).setRotation(1.618).setAlpha(0);
-        this.voidSliceImage2 = scene.add.sprite(gameConsts.halfWidth, 150, 'spells', 'darkSliceFront.png').setDepth(1).setRotation(1.618).setAlpha(0);
+        this.voidSliceImage2 = scene.add.sprite(gameConsts.halfWidth, 150, 'spells', 'darkSliceFront.png').setDepth(5).setRotation(1.618).setAlpha(0);
         this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0);
 
         // this.spellDescBox = scene.add.sprite(gameConsts.width, gameConsts.height, 'circle', 'descBox.png');
@@ -888,7 +890,12 @@ const ENABLE_KEYBOARD = true;
             }
         }
 
-        this.updateSpellHover(closestElement, closestEmbodiment, distToClosestRuneElement, distToClosestRuneEmbodiment);
+        if (!this.recentlyUpdatedSpellHover) {
+            this.recentlyUpdatedSpellHover = true;
+            this.updateSpellHover(closestElement, closestEmbodiment, distToClosestRuneElement, distToClosestRuneEmbodiment);
+        } else {
+            this.recentlyUpdatedSpellHover = false;
+        }
 
         this.aura.rotVel += this.innerCircle.rotVel * 0.006 * dt + this.outerCircle.rotVel * 0.008 * dt;
         this.aura.rotVel *= 1 - 0.07 * dt;
@@ -2192,8 +2199,9 @@ const ENABLE_KEYBOARD = true;
                          this.spellNameHover.setText(getLangText('time_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
-                         this.spellNameText.setText('ACCELERATED FORM');
-                         this.spellNameHover.setText(getLangText('time_reinforce_desc'));
+                         let healAmt = Math.ceil(globalObjects.player.getrecentlyTakenDamageAmt() * (1 - (0.5 ** globalObjects.player.spellMultiplier())));
+                         this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS ('+ healAmt + ")")
+                         this.updateTextIfDifferent(this.spellNameHover, getLangText('time_reinforce_desc'))
                          break;
                      case RUNE_ENHANCE:
                          this.spellNameText.setText('ADD PAUSING ATTACK');
@@ -2204,7 +2212,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellNameHover.setText(getLangText('time_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         this.spellNameText.setText('REWIND HEALTH');
+                         this.spellNameText.setText('ACCELERATED FORM');
                          this.spellNameHover.setText(getLangText('time_unload_desc'));
                          break;
                      default:
@@ -2258,11 +2266,11 @@ const ENABLE_KEYBOARD = true;
                          this.spellNameHover.setText(getLangText('void_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         this.spellNameText.setText('UN-MAKE');
-                         this.spellNameHover.setText(getLangText('void_unload_desc'));
+                         this.updateTextIfDifferent(this.spellNameText, 'UN-MAKE')
+                         this.updateTextIfDifferent(this.spellNameHover, getLangText('void_unload_desc'))
                          break;
                      default:
-                         this.spellNameText.setText('');
+                         this.updateTextIfDifferent(this.spellNameText, '')
                          break;
                  }
                  break;
@@ -2270,6 +2278,12 @@ const ENABLE_KEYBOARD = true;
                  this.spellNameText.setText('');
                  break;
          }
+     }
+
+     updateTextIfDifferent(textObj, newTextStr) {
+        if (textObj.text !== newTextStr) {
+            textObj.setText(newTextStr);
+        }
      }
 
      applyMindBurn(amt) {
@@ -2445,5 +2459,15 @@ const ENABLE_KEYBOARD = true;
             }
         }
         return chargeBonus;
+     }
+
+     clearEffects() {
+         this.voidSliceImage1.alpha = 0;
+         this.voidSliceImage2.alpha = 0;
+         this.mindBurnAnim.alpha = 0;
+         this.mindChargeText.visible = false;
+         if (this.mindSniperReticle) {
+             this.mindSniperReticle.destroy();
+         }
      }
  }

@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "scythe.png",
+					"filename": "scythe1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -225,6 +225,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:9481b670f3247105a17b75a2bf46bef5:2daec4f36cc24d9fe391fc8431df34d2:612dcbdb08476a0aba06aeca925f16b2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:d7216cba192b8428e3e832a67f9a6256:2daec4f36cc24d9fe391fc8431df34d2:612dcbdb08476a0aba06aeca925f16b2$"
 	}
 }

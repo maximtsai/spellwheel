@@ -18,9 +18,13 @@ class Button {
         this.hover = data.hover || data.normal;
         this.press = data.press || data.normal;
         this.disable = data.disable || data.normal;
+        this.onMouseDownFunc = data.onMouseDown;
         this.onMouseUpFunc = data.onMouseUp;
+        this.onDragFunc = data.onDrag;
         this.onHoverFunc = data.onHover || null;
+        this.onHoverOutFunc = data.onHoverOut || null;
         this.onDropFunc = data.onDrop || null;
+        this.cursorInteractive = data.cursorInteractive;
 
         this.imageRefs = {};
         this.oldImageRef = null;
@@ -72,10 +76,16 @@ class Button {
                 let oldImage = this.imageRefs[this.oldImageRef];
                 if (oldImage) {
                     newImage.setOrigin(oldImage.originX, oldImage.originY);
+                    newImage.scrollFactorX = oldImage.scrollFactorX;
+                    newImage.scrollFactorY = oldImage.scrollFactorY;
                 }
+                // if (this.cursorInteractive) {
+                //     newImage.setInteractive({ useHandCursor: 'pointer' });
+                // }
                 newImage.setDepth(this.depth);
                 this.imageRefs[stateData.ref] = newImage;
             }
+
             newImage.visible = true;
         } else {
             stateData.ref = this.normal.ref;
@@ -110,6 +120,10 @@ class Button {
         } else {
             this.imageRefs[stateData.ref].scaleY = stateData.scaleY;
         }
+        if (stateData.origin !== undefined) {
+            this.setOrigin(origin.x, origin.y);
+        }
+
         if (stateData.tint === undefined) {
             this.imageRefs[stateData.ref].setTint(oldImage.tint) || 0xFFFFFF;
         } else {
@@ -117,10 +131,15 @@ class Button {
         }
     }
 
-    checkCoordOver(x, y) {
+    checkCoordOver(valX, valY) {
         if (this.state === DISABLE) {
             return false;
         }
+        let scrollFactorX = this.normal.scrollFactorX !== undefined ? this.normal.scrollFactorX : 1;
+        let scrollFactorY = this.normal.scrollFactorY !== undefined ? this.normal.scrollFactorY : 1;
+        //let scrollFactorY = this.normal.scrollFactorY !== undefined ? this.normal.scrollFactorY : 1;
+        let x = valX + PhaserScene.cameras.main.scrollX * scrollFactorX;
+        let y = valY + PhaserScene.cameras.main.scrollY * scrollFactorY; //  + PhaserScene.cameras.main.scrollY
         let currImage = this.imageRefs[this.currImageRef];
         let width = currImage.width * Math.abs(currImage.scaleX);
         let height = currImage.height * Math.abs(currImage.scaleY);
@@ -147,6 +166,9 @@ class Button {
     }
 
     onHoverOut() {
+        if (this.onHoverOutFunc) {
+            this.onHoverOutFunc();
+        }
         this.setState(NORMAL);
     }
 
@@ -159,7 +181,7 @@ class Button {
             if (this.isDraggable) {
                 // Add to update
                 if (!this.isDragged) {
-                    this.setPos(gameVars.mouseposx, gameVars.mouseposy);
+                    this.setPos(gameVars.mouseposx + PhaserScene.cameras.main.scrollX, gameVars.mouseposy + PhaserScene.cameras.main.scrollY);
                     this.isDragged = true;
                     let oldDraggedObj = buttonManager.getDraggedObj();
                     if (oldDraggedObj) {
@@ -168,6 +190,12 @@ class Button {
                     buttonManager.setDraggedObj(this);
                 }
             }
+        }
+    }
+
+    onDrag() {
+        if (this.onDragFunc) {
+            this.onDragFunc();
         }
     }
 
@@ -193,6 +221,13 @@ class Button {
         for (let i in this.imageRefs) {
             this.imageRefs[i].setDepth(depth);
         }
+    }
+
+    setRotation(rot) {
+        this.normal.rotation = rot;
+        this.hover.rotation = rot;
+        this.press.rotation = rot;
+        this.disable.rotation = rot;
     }
 
     getPosX() {
@@ -256,7 +291,7 @@ class Button {
     }
 
     setOnHoverOutFunc(func) {
-        this.onHoverOut = func;
+        this.onHoverOutFunc = func;
     }
 
     setNormalRef(ref) {
@@ -320,6 +355,28 @@ class Button {
         }
     }
 
+    // Agnostic to window's position
+    setScrollFactor(x, y) {
+        if (x !== undefined) {
+            this.normal.scrollFactorX = x;
+            this.hover.scrollFactorX = x;
+            this.press.scrollFactorX = x;
+            this.disable.scrollFactorX = x;
+            for (let i in this.imageRefs) {
+                this.imageRefs[i].scrollFactorX = x;
+            }
+        }
+        if (y !== undefined) {
+            this.normal.scrollFactorY = y;
+            this.hover.scrollFactorY = y;
+            this.press.scrollFactorY = y;
+            this.disable.scrollFactorY = y;
+            for (let i in this.imageRefs) {
+                this.imageRefs[i].scrollFactorY = y;
+            }
+        }
+    }
+
     setAlpha(alpha = 1) {
         for (let i in this.imageRefs) {
             this.imageRefs[i].alpha = alpha;
@@ -337,9 +394,9 @@ class Button {
     }
 
     bringToTop() {
-        for (let i in this.imageRefs) {
-            this.container.bringToTop(this.imageRefs[i]);
-        }
+        // for (let i in this.imageRefs) {
+        //     this.container.bringToTop(this.imageRefs[i]);
+        // }
     }
 
     setOrigin(origX, origY) {
@@ -348,11 +405,12 @@ class Button {
         }
     }
 
-    tweenToPos(x, y, duration, ease) {
+    tweenToPos(x, y, duration, ease, onUpdate) {
         let tweenObj = {
             targets: this.imageRefs[this.currImageRef],
             ease: ease,
             duration: duration,
+            onUpdate: onUpdate,
             onComplete: () => {
                 this.setPos(x, y);
             }
@@ -362,6 +420,44 @@ class Button {
         }
         if (y !== undefined) {
             tweenObj.y = y;
+        }
+        this.scene.tweens.add(tweenObj);
+    }
+
+    tweenToScale(x, y, duration, ease, onUpdate, onComplete) {
+        let tweenObj = {
+            targets: this.imageRefs[this.currImageRef],
+            ease: ease,
+            duration: duration,
+            onUpdate: onUpdate,
+            onComplete: () => {
+                this.setScale(x, y);
+                if (onComplete) {
+                    onComplete();
+                }
+            }
+        }
+        if (x !== undefined) {
+            tweenObj.scaleX = x;
+        }
+        if (y !== undefined) {
+            tweenObj.scaleY = y;
+        }
+        this.scene.tweens.add(tweenObj);
+    }
+
+    tweenToAlpha(alpha, duration, ease, onComplete) {
+        let tweenObj = {
+            targets: this.imageRefs[this.currImageRef],
+            ease: ease,
+            duration: duration,
+            alpha: alpha,
+            onComplete: () => {
+                this.setAlpha(alpha);
+                if (onComplete) {
+                    onComplete();
+                }
+            }
         }
         this.scene.tweens.add(tweenObj);
     }

@@ -9,7 +9,7 @@ class StatusManager {
         this.lastUpdateTime = 0;
         messageBus.subscribe('selfTakeEffect', this.manualUpdateSelf.bind(this));
         messageBus.subscribe('enemyTakeEffect', this.manualUpdateEnemy.bind(this));
-        messageBus.subscribe("selfClearEffect", this.clearEffects.bind(this)),
+        messageBus.subscribe("selfClearStatuses", this.clearPlayerStatuses.bind(this)),
         updateManager.addFunction(this.update.bind(this));
 
     }
@@ -125,7 +125,7 @@ class StatusManager {
         messageBus.publish("statusesTicked");
     }
 
-    clearEffects(spellId = null, skipCleanup = false) {
+    clearPlayerStatuses(spellId = null, skipCleanup = false) {
         console.log("clear effects", spellId, skipCleanup);
         for (let i in this.playerStatusDisplayStack) {
             let statusDisplayObj = this.playerStatusDisplayStack[i]

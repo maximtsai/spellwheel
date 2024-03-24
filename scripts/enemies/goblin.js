@@ -2,7 +2,7 @@
      constructor(scene, x, y) {
          console.log("Making goblin")
          super(scene, x, y);
-         this.initSprite('gobbo0.png', 0.56);
+         this.initSprite('gobbo0.png', 0.8);
          this.shieldAdded = false;
      }
 
@@ -35,7 +35,7 @@
          if (this.shieldAdded && this.currentAttackSetIndex == 3) {
              if (this.shield == 0) {
                  // shield must have broke
-                 this.setSprite('gobbo2.png', 0.56);
+                 this.setDefaultSprite('gobbo2.png', 0.8);
                  this.interruptCurrentAttack();
                  this.currentAttackSetIndex = 4;
                  this.nextAttackIndex = 0;
@@ -49,7 +49,7 @@
                  // 0
                  {
                      name: "NERVOUS POKE }5 ",
-                     chargeAmt: 300,
+                     chargeAmt: 250,
                      damage: 5,
                      function: () => {
                          if (this.currentAttackSetIndex === 0) {
@@ -75,11 +75,11 @@
              [
                  // 2
                  {
-                     name: "PREPARING SHIELD {40",
+                     name: "READYING FANCY SHIELD {40",
                      block: 40,
-                     chargeAmt: 250,
+                     chargeAmt: 180,
                      function: () => {
-                         this.setSprite('gobbo1.png', 0.56);
+                         this.setDefaultSprite('gobbo1.png', 0.8);
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
                          this.shieldAdded = true;
@@ -89,7 +89,7 @@
              [
                  // 3 - attacks from behind shield
                  {
-                     name: "SHIELD BASH }10",
+                     name: "SHIELD SMACK }10",
                      chargeAmt: 400,
                      damage: 10
                  },
@@ -97,13 +97,33 @@
              [
                  // 4
                  {
+                     name: "REALIZING SHIELD IS BROKEN",
+                     chargeAmt: 200,
+                     chargeMult: 2
+                 },
+                 {
                      name: "TAKING OUT KNIVES (uh oh!)",
-                     chargeAmt: 400,
+                     chargeAmt: 250,
                      chargeMult: 5,
+                     startFunction: () => {
+                         this.setDefaultSprite('gobbo3.png', 0.8);
+                     },
                      function: () => {
                          this.currentAttackSetIndex = 5;
                          this.nextAttackIndex = 0;
-                         this.setSprite('gobbo3.png', 0.56);
+                         this.setDefaultSprite('gobbo4.png', 0.8);
+                         let oldScale = this.sprite.scaleX;
+                         this.sprite.setScale(this.sprite.scaleX * 1.01);
+                         this.currAnim = PhaserScene.tweens.add({
+                             targets: this.sprite,
+                             scaleX: oldScale,
+                             scaleY: oldScale,
+                             duration: 600,
+                             completeDelay: 100,
+                             onComplete: () => {
+                                 this.setDefaultSprite('gobbo5.png', 0.8);
+                             }
+                         });
                      }
                  }
              ],
@@ -113,32 +133,37 @@
                      name: "MULTI STAB }5x2",
                      chargeAmt: 120,
                      damage: 5,
-                     attackTimes: 2
+                     attackTimes: 2,
+                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
                  },
                  {
                      name: "MULTI STAB }5x3",
                      chargeAmt: 140,
                      damage: 5,
-                     attackTimes: 3
+                     attackTimes: 3,
+                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
                  },
                  {
                      name: "MULTI STAB }5x4",
                      chargeAmt: 160,
                      damage: 5,
-                     attackTimes: 4
+                     attackTimes: 4,
+                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
                  },
                  {
                      name: "MULTI STAB }5x5",
                      chargeAmt: 180,
                      damage: 5,
-                     attackTimes: 5
+                     attackTimes: 5,
+                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
                  },
                  {
                      name: "SPIT IN YOUR FACE }2",
                      chargeAmt: 200,
                      chargeMult: 5,
                      damage: 2,
-                     tease: true
+                     tease: true,
+                     attackSprites: ['gobbo4.png']
                  }
              ],
          ];

@@ -82,7 +82,6 @@
                                              duration: 450,
                                              ease: 'Quart.easeIn',
                                              onComplete: () => {
-                                                 this.canPlayDeathAnimation = true;
                                                  zoomTemp(1.03);
                                                  if (newHealth <= 0) {
                                                      this.playDeathAnimation();
@@ -117,8 +116,8 @@
              });
          }
 
-         if (prevHealthPercent >= 0.85) {
-             if (currHealthPercent < 0.85) {
+         if (prevHealthPercent >= 0.92) {
+             if (currHealthPercent < 0.92) {
                  this.canAngryEyes = true;
                  this.eyes = this.scene.add.sprite(this.x - 3, this.y - 79, 'enemies', 'dummyeyes.png').setOrigin(0.5, 0.75).setScale(this.sprite.startScale, 0);
                  PhaserScene.tweens.add({
@@ -133,6 +132,10 @@
      }
 
      playDeathAnimation() {
+        if (this.isPlayingDeathAnim) {
+            return;
+        }
+        this.isPlayingDeathAnim = true;
          if (this.eyes) {
              this.eyes.destroy();
          }
@@ -150,19 +153,19 @@
         this.x += 10;
          this.y += this.sprite.height * this.sprite.scaleY * 0.45; this.sprite.y = this.y;
          this.sprite.setOrigin(0.5, 0.95);
-         // this.dieClickBlocker = new Button({
-         //     normal: {
-         //         ref: "blackPixel",
-         //         x: gameConsts.halfWidth,
-         //         y: gameConsts.halfHeight,
-         //         alpha: 0.001,
-         //         scaleX: 1000,
-         //         scaleY: 1000
-         //     },
-         //     onMouseUp: () => {
-         //
-         //     }
-         // });
+         this.dieClickBlocker = new Button({
+             normal: {
+                 ref: "blackPixel",
+                 x: gameConsts.halfWidth,
+                 y: gameConsts.halfHeight,
+                 alpha: 0.001,
+                 scaleX: 1000,
+                 scaleY: 1000
+             },
+             onMouseUp: () => {
+
+             }
+         });
          PhaserScene.tweens.add({
              targets: this.sprite,
              rotation: -1.25,
@@ -208,18 +211,25 @@
                      onComplete: () => {
                          let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(998).setAlpha(0);
                          let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(998).setAlpha(0);
-                         let runeAcquired = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight - 5, 'NEW RUNE ACQUIRED').setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(998).setFontSize(22);
+                         let runeAcquired = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 2, 'NEW RUNE ACQUIRED').setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(998).setFontSize(22);
+                         let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(998).setFontSize(22);
+
                          PhaserScene.tweens.add({
                              targets: banner,
                              alpha: 0.75,
                              duration: 500,
                          });
+
                          PhaserScene.tweens.add({
                              targets: [victoryText, runeAcquired],
                              alpha: 1,
                              ease: 'Quad.easeOut',
                              duration: 500,
                          });
+                         setTimeout(() => {
+                             continueText.alpha = 1;
+                         }, 1000);
+
                          PhaserScene.tweens.add({
                              targets: victoryText,
                              scaleX: 1,
@@ -228,9 +238,39 @@
                          });
                          PhaserScene.tweens.add({
                              targets: rune,
-                             y: "+=10",
+                             y: "+=23",
                              ease: 'Cubic.easeOut',
                              duration: 400,
+                             onComplete: () => {
+                                 this.dieClickBlocker.setOnMouseUpFunc(() => {
+                                     PhaserScene.tweens.add({
+                                         targets: [victoryText, runeAcquired, banner],
+                                         alpha: 0,
+                                         duration: 400,
+                                         onComplete: () => {
+                                             victoryText.destroy();
+                                             runeAcquired.destroy();
+                                             banner.destroy();
+                                             continueText.destroy();
+                                             playReaperAnim(this);
+                                         }
+                                     });
+                                     PhaserScene.tweens.add({
+                                         targets: rune,
+                                         y: "+=90",
+                                         ease: 'Quad.easeOut',
+                                         duration: 400,
+                                         onComplete: () => {
+                                             rune.destroy();
+                                         }
+                                     });
+                                     PhaserScene.tweens.add({
+                                         targets: rune,
+                                         alpha: 0,
+                                         duration: 400,
+                                     });
+                                 })
+                             }
                          });
                          // PhaserScene.tweens.add({
                          //     targets: rune,
@@ -287,7 +327,55 @@
                      }
                  },
                  {
-                     name: "ULTIMATE ATTACK }50 (WATCH OUT!)",
+                     name: "ULTIMATE ATTACK }40 (WATCH OUT!)",
+                     chargeAmt: 600,
+                     damage: 50,
+                     function: () => {
+                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 110, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                         PhaserScene.tweens.add({
+                             targets: dmgEffect,
+                             rotation: 1,
+                             alpha: 0,
+                             duration: 800,
+                             onComplete: () => {
+                                 dmgEffect.destroy();
+                             }
+                         });
+                     }
+                 },
+                 {
+                     name: "TAKING A BREAK",
+                     chargeAmt: 250,
+                     damage: 0
+                 },
+                 {
+                     name: "TACKLE }10 ",
+                     chargeAmt: 250,
+                     damage: 10,
+                     hitAnimFunc: () => {
+                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 150, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
+                         setTimeout(() => {
+                             dmgEffect.destroy();
+                         }, 150)
+                     }
+                 },
+                 {
+                     name: "HEADBUTT }15",
+                     chargeAmt: 350,
+                     damage: 15,
+                     function: () => {
+                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 150, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
+                         setTimeout(() => {
+                             dmgEffect.x += 30;
+                             dmgEffect.y += 10;
+                             setTimeout(() => {
+                                 dmgEffect.destroy();
+                             }, 150)
+                         }, 75)
+                     }
+                 },
+                 {
+                     name: "ULTIMATE ATTACK }40 (WATCH OUT!)",
                      chargeAmt: 600,
                      damage: 50,
                      function: () => {

@@ -10,8 +10,8 @@ const textData = {
     time_strike_desc: {en_us: 'DEAL 10 DAMAGE.\nCONVERT DAMAGE YOU\nDEAL OVER THE NEXT\n6 SECONDS INTO A\nSINGLE POWERFUL HIT.', fr_FR: ''},
     time_enhance_desc: {en_us: 'NEXT ATTACK\nPAUSES ENEMY FOR\n1.5 SECONDS.', fr_FR: ''},
     time_protect_desc: {en_us: 'CREATES A SHIELD\nTHAT DELAYS ALL\nDAMAGE.', fr_FR: ''},
-    time_reinforce_desc: {en_us: 'SLOW DOWN TIME\nUNTIL YOUR NEXT\nATTACK.', fr_FR: ''},
-    time_unload_desc: {en_us: 'HEAL 12% OF YOUR\nMISSING HEALTH.\nTHEN HEAL 12\nMORE HEALTH.', fr_FR: ''},
+    time_reinforce_desc: {en_us: 'HEAL HALF OF\nTHE DAMAGE YOU\nTOOK FROM THE\nLAST ATTACK.', fr_FR: ''},
+    time_unload_desc: {en_us: 'FREEZE TIME FOR\nTHE NEXT 6 SPELLS', fr_FR: ''},
 
     void_strike_desc: {en_us: 'DEAL 4% OF ENEMY\'s\nTOTAL HEALTH OVER\n4 SECONDS.', fr_FR: ''},
     void_enhance_desc: {en_us: 'NEXT ATTACK\nDISRUPTS ENEMY\'S\nCURRENT ACTION.', fr_FR: ''},

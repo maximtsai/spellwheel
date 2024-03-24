@@ -215,20 +215,28 @@ class Enemy {
         this.shieldText.visible = false;
     }
 
-    setSprite(name, scale = 1) {
-        if (this.sprite) {
-            this.sprite.destroy();
+    setSprite(name, scale) {
+        let newScale = scale ? scale : 1;
+        if (!this.sprite) {
+            this.sprite = this.scene.add.sprite(this.x, this.y, 'enemies', name);
+            this.sprite.setDepth(1);
+        } else {
+            newScale = scale ? scale : this.sprite.startScale;
+            this.sprite.setFrame(name);
         }
-        this.sprite = this.scene.add.sprite(this.x, this.y, 'enemies', name);
-        this.sprite.setDepth(1);
-        this.sprite.setScale(scale * 1.02);
+        this.sprite.startScale = newScale;
+        this.sprite.setScale(newScale * 1.02);
         this.scene.tweens.add({
             targets: this.sprite,
             duration: 300,
-            scaleX: scale,
-            scaleY: scale,
+            scaleX: newScale,
+            scaleY: newScale,
         });
-        this.sprite.startScale = scale;
+    }
+
+    setDefaultSprite(name, scale = 1) {
+        this.defaultSprite = name;
+        this.setSprite(name, scale);
     }
 
     update(dt) {
@@ -277,7 +285,7 @@ class Enemy {
         }
         if (this.attackCooldown <= 0) {
             if (this.isAngry) {
-                this.attackCharge += timeChange * 1.25 * this.slowMult;
+                this.attackCharge += timeChange * 1.75 * this.slowMult;
             } else {
                 chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
                 if (gameVars.playerNotMoved && chargeMult === 1) {
@@ -413,7 +421,7 @@ class Enemy {
         this.chargeBarAngry.alpha = 1;
 
         if (this.nextAttack.damage > 0) {
-            this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.tease);
+            this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.attackSprites);
         } else {
             if (this.nextAttack.message) {
                 messageBus.publish(this.nextAttack.message, this.nextAttack.messageDetail);
@@ -441,6 +449,9 @@ class Enemy {
         this.nextAttackChargeNeeded = this.nextAttack.chargeAmt || 250;
         this.nextAttackMultiples = this.nextAttack.attackMultiplier || 1;
         let atkName = this.nextAttack.name;
+        if (this.nextAttack.startFunction) {
+            this.nextAttack.startFunction();
+        }
         this.attackName.setText(atkName);
         this.prepareChargeBar();
         this.nextAttackIndex++;
@@ -702,6 +713,26 @@ class Enemy {
         this.attackName.visible = false;
     }
 
+    destroy() {
+        this.chargeBarWarningBig.destroy();
+        this.chargeBarWarning.destroy();
+        this.chargeBarAngry.destroy();
+        this.chargeBarCurr.destroy();
+        this.slowSprite.destroy();
+        this.healthBarCurr.destroy();
+        this.healthBarText.destroy();
+        this.sprite.destroy();
+        this.attackName.destroy();
+
+        this.clockLarge.destroy();
+        this.clockLargeHand.destroy();
+        this.delayedDamageText.destroy();
+        this.slowSprite.destroy();
+        this.shieldSprite.destroy();
+        this.shieldText.destroy();
+
+    }
+
     die() {
         this.dead = true;
         this.healthBarCurr.scaleX = 0;
@@ -714,9 +745,12 @@ class Enemy {
             this.sprite.setScale(this.sprite.startScale);
         }
         this.animateShake(3);
-        this.chargeBarWarningBig.visible = false;
-        this.chargeBarWarning.visible = false;
-        this.chargeBarAngry.visible = false;
+        this.chargeBarWarningBig.visible = false; this.chargeBarWarningBig.scaleY = 100;
+        this.chargeBarWarning.visible = false; this.chargeBarWarning.scaleY = 100;
+        this.chargeBarAngry.visible = false; this.chargeBarAngry.scaleY = 100;
+        this.chargeBarCurr.visible = false; this.chargeBarCurr.scaleY = 100;
+        this.slowSprite.visible = false;
+
         this.attackName.visible = false;
         messageBus.publish('enemyHasDied');
 
@@ -859,7 +893,11 @@ class Enemy {
         this.chargeBarCurr.alpha = 1;
     }
 
-    launchAttack(attackTimes = 1, tease = false) {
+    triggerVoidFeedback() {
+
+    }
+
+    launchAttack(attackTimes = 1, attackSprites = [], isRepeatedAttack = false) {
         let extraTimeMult = 2 - gameVars.timeSlowRatio;
         this.attackAnim = this.scene.tweens.add({
             targets: this.sprite,
@@ -869,15 +907,43 @@ class Enemy {
             duration: 200 * extraTimeMult,
             ease: 'Cubic.easeOut',
             onComplete: () => {
-                let attackScale = tease ? 1.02 * this.sprite.startScale : 1.09 * this.sprite.startScale
+                if (this.dead){
+                    return;
+                }
+                let attackScale = 1.09 * this.sprite.startScale
                 this.attackAnim = this.scene.tweens.add({
                     targets: this.sprite,
                     scaleX: attackScale,
                     scaleY: attackScale,
                     duration: 300 * extraTimeMult,
-                    rotation: tease ? 0.12 : 0,
+                    rotation: 0,
                     ease: 'Cubic.easeIn',
                     onComplete: () => {
+                        if (this.dead){
+                            return;
+                        }
+                        if (!isRepeatedAttack) {
+                            messageBus.publish("enemyMadeAttack");
+                        }
+                        this.triggerVoidFeedback();
+                        if (this.dead){
+                            return;
+                        }
+                        if (attackSprites.length > 0) {
+                            if (this.sprite.attackNum === undefined) {
+                                this.sprite.attackNum = 0;
+                            } else {
+                                this.sprite.attackNum = (this.sprite.attackNum + 1) % attackSprites.length;
+                            }
+                            this.setSprite(attackSprites[this.sprite.attackNum], this.sprite.startScale);
+                            this.sprite.setScale(this.sprite.startScale)
+                            setTimeout(() => {
+                                if (!this.dead) {
+                                    this.setSprite(this.defaultSprite, this.sprite.startScale);
+                                }
+                            }, 200)
+
+                        }
                         if (this.health > 0) {
                             messageBus.publish("selfTakeDamage", this.nextAttack.damage);
                             if (this.nextAttack.message) {
@@ -888,7 +954,7 @@ class Enemy {
                             }
                         }
                         if (attackTimes > 1) {
-                            this.launchAttack(attackTimes - 1);
+                            this.launchAttack(attackTimes - 1, attackSprites, true);
                         } else {
                             this.attackAnim = this.scene.tweens.add({
                                 targets: this.sprite,

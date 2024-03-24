@@ -86,8 +86,8 @@ function createMenuButtons() {
             alpha: 0.001
         },
         onMouseUp: () => {
-            // clearMenuButtons();
-            // createEnemy(0);
+            clearMenuButtons();
+            beginLevel(1);
         }
     });
     globalObjects.levelSelectButton.setScale(0.6);

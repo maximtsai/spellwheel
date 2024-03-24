@@ -511,9 +511,9 @@ class SpellManager {
                     multiplier: spellMultiplier,
                     health: shieldHealth,
                     displayAmt: shieldHealth,
-                    duration: 60,
                     lockRotation: rotation,
                     active: true,
+                    ignoreBuff: true,
                     cleanUp: (statuses) => {
                         if (statuses[shieldID] && !statuses[shieldID].currentAnim) {
                             animation2.setDepth(1);
@@ -838,19 +838,60 @@ class SpellManager {
     castTimeReinforce() {
         const spellID = 'timeReinforce';
         let multiplier = globalObjects.player.spellMultiplier();
-        this.cleanseForms();
+        let healthRewoundPercent = 1 - 0.5 ** multiplier;
+        let bigClock = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large.png');
+        bigClock.setDepth(120);
+        bigClock.setScale(0.72);
+        bigClock.alpha = 0;
+        let clockArm = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_arm_large.png');
+        clockArm.setDepth(120);
+        clockArm.setOrigin(0.01, 0.5);
+        clockArm.setScale(0.72);
+        clockArm.alpha = 0;
+        clockArm.rotation = -Math.PI * 0.5;
 
-        messageBus.publish('manualSetTimeSlowRatio', 0.1, multiplier);
-        let spellName = "ACCELERATED FORM";
-        let boost = 0;
-        if (multiplier > 3) {
-            spellName = "A SINGLE MOMENT\nOF FOREVER";
-            boost = 0.2;
-        } else if (multiplier > 1) {
-            spellName = "ACCELERATED FORM x" + multiplier;
-            boost = 0.1;
+        this.scene.tweens.add({
+            targets: [bigClock, clockArm],
+            duration: 300,
+            alpha: 0.4 + multiplier * 0.1,
+            scaleX: 0.67,
+            scaleY: 0.67,
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                messageBus.publish('selfHealRecent', healthRewoundPercent);
+            }
+        });
+
+        this.scene.tweens.add({
+            targets: [clockArm],
+            duration: 1200,
+            rotation: -Math.PI * 0.5 - (Math.PI * 2 * healthRewoundPercent),
+            ease: 'Cubic.easeInOut'
+
+        });
+
+        this.scene.tweens.add({
+            targets: [bigClock],
+            duration: 1200,
+            rotation: 0.05,
+            ease: 'Cubic.easeInOut'
+        });
+
+        this.scene.tweens.add({
+            targets: [bigClock, clockArm],
+            delay: 900,
+            duration: 500,
+            scaleX: 0.75,
+            scaleY: 0.75,
+            alpha: 0
+        });
+
+        let spellName = "UNDO WOUNDS";
+        if (multiplier > 1) {
+            spellName += " X" + multiplier;
         }
-        this.postNonAttackCast(spellID, spellName, boost);
+
+        this.postNonAttackCast(spellID, spellName);
     }
     castTimeEnhance() {
         // Slows down opponent drastically for brief moment
@@ -990,61 +1031,21 @@ class SpellManager {
     }
     castTimeUnload() {
         const spellID = 'timeUnload';
+
         let multiplier = globalObjects.player.spellMultiplier();
+        this.cleanseForms();
 
-        let bigClock = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large.png');
-        bigClock.setDepth(120);
-        bigClock.setScale(0.72);
-        bigClock.alpha = 0;
-        let clockArm = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_arm_large.png');
-        clockArm.setDepth(120);
-        clockArm.setOrigin(0.01, 0.5);
-        clockArm.setScale(0.72);
-        clockArm.alpha = 0;
-        clockArm.rotation = -Math.PI * 0.5
-
-        this.scene.tweens.add({
-            targets: [bigClock, clockArm],
-            duration: 300,
-            alpha: 0.4 + multiplier * 0.1,
-            scaleX: 0.67,
-            scaleY: 0.67,
-            ease: 'Cubic.easeOut',
-            onComplete: () => {
-                messageBus.publish('selfHealPercent', 12 * multiplier);
-            }
-        });
-
-        this.scene.tweens.add({
-            targets: [clockArm],
-            duration: 1500,
-            rotation: -Math.PI * 2.5,
-            ease: 'Cubic.easeInOut',
-            onComplete: () => {
-                messageBus.publish('selfHeal', 12 * multiplier);
-            }
-        });
-
-        this.scene.tweens.add({
-            targets: [bigClock],
-            duration: 1500,
-            rotation: 0.05,
-            ease: 'Cubic.easeInOut'
-        });
-
-        this.scene.tweens.add({
-            targets: [bigClock, clockArm],
-            delay: 1200,
-            duration: 500,
-            scaleX: 0.75,
-            scaleY: 0.75,
-            alpha: 0
-        });
-
-        let spellName = "REWIND HEALTH";
-        if (multiplier > 1) {
-            spellName += " X" + multiplier;
+        messageBus.publish('manualSetTimeSlowRatio', 0.1, multiplier);
+        let spellName = "ACCELERATED FORM";
+        let boost = 0;
+        if (multiplier > 3) {
+            spellName = "A SINGLE MOMENT\nOF FOREVER";
+            boost = 0.2;
+        } else if (multiplier > 1) {
+            spellName = "ACCELERATED FORM x" + multiplier;
+            boost = 0.1;
         }
+
         this.postNonAttackCast(spellID, spellName);
     }
 
@@ -1964,8 +1965,8 @@ class SpellManager {
             multiplier: spellMultiplier,
             health: shieldHealth,
             displayAmt: shieldHealth,
-            duration: 60,
             lockRotation: rotation,
+            ignoreBuff: true,
             active: true,
             cleanUp: (statuses) => {
                 if (statuses[shieldID] && !statuses[shieldID].currentAnim) {

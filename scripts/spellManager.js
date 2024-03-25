@@ -338,7 +338,6 @@ class SpellManager {
         this.postNonAttackCast(spellID, spellName)
     }
     castMatterEnhance() {
-        // your next attack happens twice
         let newSpike;
         const spellID = 'matterEnhance';
 
@@ -1102,7 +1101,7 @@ class SpellManager {
                         }
                     });
 
-                    messageBus.publish('enemyTakeDamage', 8 + additionalDamage);
+                    messageBus.publish('enemyTakeDamage', 6 + additionalDamage);
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
                         let animation1 = this.scene.add.sprite(attackObj.x - 55, attackObj.y, 'spells').play('weaken');
                         animation1.setDepth(10);
@@ -1115,7 +1114,6 @@ class SpellManager {
                         messageBus.publish('enemyTakeEffect', {
                             name: spellID,
                             cleanUp: (statuses) => {
-                                console.log("clean up mind effect");
                                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
                                     statuses[spellID].currentAnim = this.scene.tweens.add({
                                         targets: [animation1,animation2],
@@ -1166,51 +1164,55 @@ class SpellManager {
     castMindReinforce() {
         const spellID = 'mindReinforce';
         let multiplier = globalObjects.player.spellMultiplier();
-        let sniperReticle;
         let existingBuff = globalObjects.player.getStatuses()[spellID];
         let statusObj;
         if (existingBuff) {
             // already got a buff in place
-            sniperReticle = existingBuff.animObj[0];
             statusObj = existingBuff.statusObj;
         } else {
             this.cleanseForms();
-            let headPosX = gameVars.enemyHeadX || gameConsts.halfWidth;
-            let headPosY = gameVars.enemyHeadY || 90;
-            sniperReticle = this.scene.add.sprite(headPosX, headPosY, 'spells', 'reticle.png');
-            sniperReticle.setDepth(9);
         }
-        sniperReticle.setAlpha(0.25);
-        sniperReticle.setScale(1);
+        let electricCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells').play('powerEffect').setScale(3.4).setDepth(117);
+        let repeatCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells').play('powerEffectRepeat').setScale(1.5).setDepth(117);
+
+
         this.scene.tweens.add({
-            targets: sniperReticle,
+            targets: repeatCircle,
             duration: 400,
-            scaleX: 0.4,
-            scaleY: 0.4,
-            alpha: 0.85,
-            ease: 'Cubic.easeIn',
-             onComplete: () => {
-                 sniperReticle.setAlpha(1);
-                 this.scene.tweens.add({
-                     targets: sniperReticle,
-                     duration: 400,
-                     alpha: 0.5
-                 });
-             }
+            scaleX: 1.9,
+            scaleY: 1.9,
+            alpha: 0.8,
+            ease: 'Cubic.easeOut',
+            completeDelay: 250,
+            onComplete: () => {
+                repeatCircle.setScale(1.6);
+            }
         });
 
-        let displayedNum;
-        if (multiplier >= 3) {
-            displayedNum = multiplier;
+        //shockEffect
+        this.scene.tweens.add({
+            targets: electricCircle,
+            duration: 500,
+            scaleX: 3.55,
+            scaleY: 3.55,
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                electricCircle.destroy();
+            }
+        });
+
+        let buffAmt = 2;
+        if (multiplier > 1) {
+            buffAmt = 2 * multiplier;
         }
         messageBus.publish('selfTakeEffect', {
             name: spellID,
             spellID: spellID,
-            animObj: [sniperReticle],
+            animObj: [repeatCircle],
             multiplier: multiplier,
             spriteSrc1: 'rune_reinforce_glow.png',
             spriteSrc2: 'rune_mind_glow.png',
-            displayAmt: displayedNum,
+            displayAmt: buffAmt,
             statusObj: statusObj,
             cleanUp: (statuses) => {
                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
@@ -1236,9 +1238,12 @@ class SpellManager {
         });
 
 
-        let spellName = "FOCUS FORM";
+        let spellName = "POWER FORM";
         if (multiplier >= 3) {
-            spellName = "RAPID FOCUS FORM";
+            spellName = "SUPER POWER FORM";
+            if (multiplier >= 6) {
+                spellName = "ULTRA POWER FORM";
+            }
             if (multiplier >= 2) {
                 spellName += " X" + multiplier;
             }

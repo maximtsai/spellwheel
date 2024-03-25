@@ -23,18 +23,6 @@ function createAnimations(scene) {
         repeat: -1
     });
     scene.anims.create({
-        key: 'mindBurn',
-        frames: scene.anims.generateFrameNames('spells', {
-            prefix: 'mindBurn',
-            suffix: '.png',
-            start: 1,
-            end: 3,
-            zeroPad: 0,
-        }),
-        frameRate: 10,
-        repeat: -1
-    });
-    scene.anims.create({
         key: 'damageEffect',
         frames: scene.anims.generateFrameNames('spells', {
             prefix: 'damageEffect',
@@ -55,6 +43,30 @@ function createAnimations(scene) {
             zeroPad: 0,
         }),
         frameRate: 30
+    });
+    scene.anims.create({
+        key: 'powerEffect',
+        frames: scene.anims.generateFrameNames('spells', {
+            prefix: 'shockEffect',
+            suffix: '.png',
+            start: 1,
+            end: 10,
+            zeroPad: 0,
+        }),
+        frameRate: 20
+    });
+    scene.anims.create({
+        key: 'powerEffectRepeat',
+        frames: scene.anims.generateFrameNames('spells', {
+            prefix: 'shockEffect',
+            suffix: '.png',
+            start: 5,
+            end: 10,
+            zeroPad: 0,
+        }),
+        frameRate: 20,
+        repeat: -1,
+        repeatDelay: 1000
     });
     scene.anims.create({
         key: 'scytheReap',

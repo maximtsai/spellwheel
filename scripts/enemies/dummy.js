@@ -72,14 +72,14 @@
                                      targets: this.sprite,
                                      scaleX: this.sprite.startScale + 0.2,
                                      scaleY: this.sprite.startScale + 0.2,
-                                     duration: 700,
+                                     duration: 500,
                                      ease: 'Quart.easeOut',
                                      onComplete: () => {
                                          this.currAnim = PhaserScene.tweens.add({
                                              targets: this.sprite,
                                              scaleX: this.sprite.startScale,
                                              scaleY: this.sprite.startScale,
-                                             duration: 450,
+                                             duration: 375,
                                              ease: 'Quart.easeIn',
                                              onComplete: () => {
                                                  zoomTemp(1.03);
@@ -91,19 +91,19 @@
                                                      this.nextAttackIndex = 0;
                                                  }
 
-                                                 let shinePattern = this.scene.add.sprite(this.x, this.y, 'spells', 'brickPattern2.png').setScale(this.sprite.startScale + 0.25);
+                                                 let shinePattern = this.scene.add.sprite(this.x, this.y, 'spells', 'brickPattern2.png').setScale(this.sprite.startScale + 0.25).setDepth(-1);
                                                  PhaserScene.tweens.add({
                                                      targets: shinePattern,
                                                      scaleX: this.sprite.startScale * 0.5,
                                                      scaleY: this.sprite.startScale * 0.5,
-                                                     duration: 1200,
+                                                     duration: 1000,
                                                      ease: 'Cubic.easeIn'
                                                  });
                                                  PhaserScene.tweens.add({
                                                      targets: shinePattern,
                                                      alpha: 0,
                                                      ease: 'Cubic.easeIn',
-                                                     duration: 1200,
+                                                     duration: 1000,
                                                  });
                                              }
                                          });

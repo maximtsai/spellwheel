@@ -378,7 +378,7 @@ class Enemy {
     adjustDamageTaken(amt, isAttack, isTrue = false) {
         if (isAttack && this.statuses['mindStrike'] && amt > 0 && !isTrue) {
             this.statuses['mindStrike'].cleanUp(this.statuses);
-            let damageToTake = Math.ceil(amt * 0.5);
+            let damageToTake = Math.round(amt * 2);
             setTimeout(() => {
                 this.takeTrueDamage(damageToTake);
             }, 0);

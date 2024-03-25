@@ -895,68 +895,111 @@ class SpellManager {
     castTimeEnhance() {
         // Slows down opponent drastically for brief moment
         const spellID = 'timeEnhance';
+
         let existingBuff = globalObjects.player.getStatuses()[spellID];
-        let timeObj;
-        let multiplier = globalObjects.player.spellMultiplier();
+        let timeObjects = [];
         if (existingBuff) {
-            multiplier += existingBuff.multiplier;
-            let newScale = 1 + multiplier * 0.5;
-            timeObj = existingBuff.animObj;
-            this.scene.tweens.add({
-                targets: timeObj,
-                duration: 300,
-                ease: 'back.easeOut',
-                scaleX: newScale,
-                scaleY: newScale,
-            });
+            timeObjects = existingBuff.animObj;
+        }
+
+        let numAdditionalAttacks = globalObjects.player.spellMultiplier();
+        let addedActualAttacks = numAdditionalAttacks;
+        let numTotalAttacks = numAdditionalAttacks + timeObjects.length;
+
+        if (timeObjects.length > 0) {
+            // shift to the left the existing mind objects
+            for (let i = 0; i < timeObjects.length; i++) {
+                let xPos = gameConsts.halfWidth + (numTotalAttacks - 1) * -25 + 50 * i;
+                let halfwayIdx = (numTotalAttacks - 1) * 0.5;
+                let yPos = gameConsts.height - 360 + Math.abs(halfwayIdx - i) * 10;
+                this.scene.tweens.add({
+                    targets: timeObjects[i],
+                    duration: 300,
+                    x: xPos,
+                    y: yPos,
+                    ease: 'Cubic.easeOut',
+                    onComplete: () => {
+                    }
+                });
+            }
         } else {
-            timeObj = this.scene.add.sprite(gameConsts.halfWidth + 195, gameConsts.height - 285, 'spells', 'clock.png');
-            timeObj.setScale(0);
-            timeObj.setDepth(10);
-            let newScale = 0.66 + multiplier * 0.33;
+            numAdditionalAttacks++;
+            numTotalAttacks = numAdditionalAttacks + timeObjects.length;
+        }
+        let timeObjectsLength = timeObjects.length;
+        for (let i = timeObjects.length; i < timeObjectsLength + numAdditionalAttacks; i++) {
+            // set up new ones
+            let xPos = gameConsts.halfWidth + (numTotalAttacks - 1) * -25 + 50 * i;
+            let halfwayIdx = (numTotalAttacks - 1) * 0.5;
+            let yPos = gameConsts.height - 360 + Math.abs(halfwayIdx - i) * 10;
+            let mindObj = this.scene.add.sprite(xPos, yPos, 'spells', 'timeEffect.png');
+            let mindObj2 = this.scene.add.sprite(xPos, yPos, 'spells', 'timeEffect2.png');
+            mindObj.setDepth(10);
+            mindObj.rotation = Math.random() - 0.5;
+            timeObjects.push(mindObj);
+            mindObj.setScale(0);
+
+            mindObj2.setDepth(10);
+            mindObj2.rotation = (Math.random() - 0.5) * 10;
+            timeObjects.push(mindObj2);
+            mindObj2.setScale(0);
+
             this.scene.tweens.add({
-                targets: timeObj,
-                duration: 250,
-                ease: 'back.easeOut',
-                scaleX: newScale,
-                scaleY: newScale,
+                targets: [mindObj, mindObj2],
+                duration: 300,
+                scaleX: 1,
+                scaleY: 1,
+                ease: 'Cubic.easeOut'
+            });
+
+            this.scene.tweens.add({
+                targets: mindObj,
+                duration: 5200,
+                rotation: "+=6.283",
+                repeat: -1
             });
             this.scene.tweens.add({
-                targets: timeObj,
-                duration: 12000,
-                rotation: 6.283,
+                targets: mindObj2,
+                duration: 5200,
+                rotation: "-=3.14",
                 repeat: -1
             });
         }
-
-        messageBus.publish("selfTakeEffect", {
-            ignoreBuff: true,
-            name: spellID,
-            spellID: spellID,
-            animObj: timeObj,
-            multiplier: multiplier,
-            cleanUp: (statuses) => {
-                if (statuses[spellID] && !statuses[spellID].currentAnim) {
-                    timeObj.setScale(timeObj.scaleX * 1.3);
-                    statuses[spellID].currentAnim = this.scene.tweens.add({
-                        targets: timeObj,
-                        duration: 150,
-                        alpha: 0,
-                        ease: 'Quad.easeOut',
-                        onComplete: () => {
-                            statuses[spellID] = null;
-                            timeObj.destroy();
+        this.scene.tweens.add({
+            targets: timeObjects[0],
+            duration: 300,
+            alpha: 0.99,
+            onComplete: () => {
+                messageBus.publish("selfTakeEffect", {
+                    name: spellID,
+                    spellID: spellID,
+                    animObj: timeObjects,
+                    multiplier: Math.round(timeObjects.length * 0.5),
+                    ignoreBuff: true,
+                    cleanUp: (statuses) => {
+                        // do we even need multiplier?
+                        if (statuses[spellID] && !statuses[spellID].currentAnim) {
+                            statuses[spellID].currentAnim = this.scene.tweens.add({
+                                targets: timeObjects,
+                                duration: 150,
+                                scaleX: 0,
+                                scaleY: 0,
+                                ease: 'Quad.easeOut',
+                                onComplete: () => {
+                                    for (let i = 0; i < timeObjects.length; i++) {
+                                        timeObjects[i].destroy();
+                                    }
+                                    statuses[spellID] = null;
+                                }
+                            });
                         }
-                    });
-                }
+                    }
+                });
             }
         });
 
+        let spellName = "ADD EXTRA ATTACK +"+addedActualAttacks;
 
-        let spellName = "ADD PAUSING ATTACK";
-        if (multiplier > 1) {
-            spellName += " X" + multiplier;
-        }
         this.postNonAttackCast(spellID, spellName);
     }
     castTimeProtect(shieldID, rotation) {
@@ -1254,95 +1297,69 @@ class SpellManager {
         const spellID = 'mindEnhance';
         // next attack hits +1 time
         let existingBuff = globalObjects.player.getStatuses()[spellID];
-        let mindObjects = [];
+        let timeObj;
+        let multiplier = globalObjects.player.spellMultiplier();
         if (existingBuff) {
-            mindObjects = existingBuff.animObj;
-        }
-
-        let numAdditionalAttacks = globalObjects.player.spellMultiplier();
-        let addedActualAttacks = numAdditionalAttacks;
-        let numTotalAttacks = numAdditionalAttacks + mindObjects.length;
-
-        if (mindObjects.length > 0) {
-            // shift to the left the existing mind objects
-            for (let i = 0; i < mindObjects.length; i++) {
-                let xPos = gameConsts.halfWidth + (numTotalAttacks - 1) * -25 + 50 * i;
-                let halfwayIdx = (numTotalAttacks - 1) * 0.5;
-                let yPos = gameConsts.height - 360 + Math.abs(halfwayIdx - i) * 10;
-                this.scene.tweens.add({
-                    targets: mindObjects[i],
-                    duration: 300,
-                    x: xPos,
-                    y: yPos,
-                    ease: 'Cubic.easeOut',
-                    onComplete: () => {
-                    }
-                });
-            }
-        } else {
-            numAdditionalAttacks++;
-            numTotalAttacks = numAdditionalAttacks + mindObjects.length;
-        }
-        let mindObjectsLength = mindObjects.length;
-        for (let i = mindObjects.length; i < mindObjectsLength + numAdditionalAttacks; i++) {
-            // set up new ones
-            let xPos = gameConsts.halfWidth + (numTotalAttacks - 1) * -25 + 50 * i;
-            let halfwayIdx = (numTotalAttacks - 1) * 0.5;
-            let yPos = gameConsts.height - 360 + Math.abs(halfwayIdx - i) * 10;
-            let mindObj = this.scene.add.sprite(xPos, yPos, 'spells', 'mindEffect.png');
-            mindObj.setDepth(10);
-            mindObj.rotation = Math.random() - 0.5;
-            mindObjects.push(mindObj);
-            mindObj.setScale(0);
+            multiplier += existingBuff.multiplier;
+            let newScale = 0.5 + multiplier * 0.25;
+            timeObj = existingBuff.animObj;
             this.scene.tweens.add({
-                targets: mindObj,
+                targets: timeObj,
                 duration: 300,
-                scaleX: 1,
-                scaleY: 1,
-                ease: 'Cubic.easeOut'
+                ease: 'back.easeOut',
+                scaleX: newScale,
+                scaleY: newScale,
             });
-
+        } else {
+            timeObj = this.scene.add.sprite(gameConsts.halfWidth + 195, gameConsts.height - 285, 'spells', 'mindEffect.png');
+            timeObj.setScale(0);
+            timeObj.setDepth(10);
+            let newScale = 0.5 + multiplier * 0.25;
             this.scene.tweens.add({
-                targets: mindObj,
-                duration: 4200 / (gameVars.timeSlowRatio * 0.5 + 0.5),
-                rotation: "+=6.283",
+                targets: timeObj,
+                duration: 250,
+                ease: 'back.easeOut',
+                scaleX: newScale,
+                scaleY: newScale,
+            });
+            this.scene.tweens.add({
+                targets: timeObj,
+                duration: 12000,
+                rotation: 6.283,
                 repeat: -1
             });
         }
-        this.scene.tweens.add({
-            targets: mindObjects[0],
-            duration: 300,
-            alpha: 0.99,
-            onComplete: () => {
-                messageBus.publish("selfTakeEffect", {
-                    name: spellID,
-                    spellID: spellID,
-                    animObj: mindObjects,
-                    multiplier: mindObjects.length,
-                    ignoreBuff: true,
-                    cleanUp: (statuses) => {
-                        // do we even need multiplier?
-                        if (statuses[spellID] && !statuses[spellID].currentAnim) {
-                            statuses[spellID].currentAnim = this.scene.tweens.add({
-                                targets: mindObjects,
-                                duration: 150,
-                                scaleX: 0,
-                                scaleY: 0,
-                                ease: 'Quad.easeOut',
-                                onComplete: () => {
-                                    for (let i = 0; i < mindObjects.length; i++) {
-                                        mindObjects[i].destroy();
-                                    }
-                                    statuses[spellID] = null;
-                                }
-                            });
+
+        messageBus.publish("selfTakeEffect", {
+            ignoreBuff: true,
+            name: spellID,
+            spellID: spellID,
+            animObj: timeObj,
+            multiplier: multiplier,
+            cleanUp: (statuses) => {
+                if (statuses[spellID] && !statuses[spellID].currentAnim) {
+                    timeObj.setScale(timeObj.scaleX * 1.3);
+                    statuses[spellID].currentAnim = this.scene.tweens.add({
+                        targets: timeObj,
+                        duration: 150,
+                        alpha: 0,
+                        ease: 'Quad.easeOut',
+                        onComplete: () => {
+                            statuses[spellID] = null;
+                            timeObj.destroy();
                         }
-                    }
-                });
+                    });
+                }
             }
         });
 
-        let spellName = "ADD EXTRA ATTACK +"+addedActualAttacks;
+
+        let spellName = "ADD SHOCKING ATTACK";
+        if (multiplier > 1) {
+            spellName += " X" + multiplier;
+        }
+
+
         this.postNonAttackCast(spellID, spellName);
 
     }

@@ -2204,7 +2204,7 @@ const ENABLE_KEYBOARD = true;
                          this.updateTextIfDifferent(this.spellNameHover, getLangText('time_reinforce_desc'))
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD PAUSING ATTACK');
+                         this.spellNameText.setText('ADD EXTRA ATTACK');
                          this.spellNameHover.setText(getLangText('time_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
@@ -2231,7 +2231,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellNameHover.setText(getLangText('mind_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD EXTRA ATTACK');
+                         this.spellNameText.setText('ADD SHOCKING ATTACK');
                          this.spellNameHover.setText(getLangText('mind_enhance_desc'));
                          break;
                      case RUNE_PROTECT:

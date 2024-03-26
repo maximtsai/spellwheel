@@ -70,8 +70,8 @@ class Player {
     }
 
     attackEnhanceMultiplier() {
-        if (this.statuses['mindEnhance']) {
-            return this.statuses['mindEnhance'].multiplier ? this.statuses['mindEnhance'].multiplier : 2;
+        if (this.statuses['timeEnhance']) {
+            return this.statuses['timeEnhance'].multiplier ? this.statuses['timeEnhance'].multiplier : 2;
         } else {
             return 1;
         }
@@ -97,9 +97,9 @@ class Player {
     }
 
     clearAttackMultiplier() {
-        if (this.statuses['mindEnhance']) {
-            this.statuses['mindEnhance'].cleanUp(this.statuses);
-            this.statuses['mindEnhance'] = null;
+        if (this.statuses['timeEnhance']) {
+            this.statuses['timeEnhance'].cleanUp(this.statuses);
+            this.statuses['timeEnhance'] = null;
         }
     }
 

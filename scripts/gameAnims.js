@@ -16,10 +16,23 @@ function createAnimations(scene) {
             prefix: 'mindBurn',
             suffix: '.png',
             start: 1,
-            end: 3,
+            end: 4,
             zeroPad: 0,
         }),
         frameRate: 10,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: 'mindBurnSlow',
+        frames: scene.anims.generateFrameNames('spells', {
+            prefix: 'mindBurn',
+            suffix: '.png',
+            start: 1,
+            end: 4,
+            zeroPad: 0,
+            yoyo: true,
+        }),
+        frameRate: 5,
         repeat: -1
     });
     scene.anims.create({

@@ -237,7 +237,7 @@ class SpellManager {
         brickObj.setScale(0.8);
         brickObj2.setScale(0.8);
         let protectionAmt = 2;
-        let damageAmt = 2;
+        let damageAmt = 4;
         this.scene.tweens.add({
             targets: brickObj,
             duration: 400 + 50 * spellMult,
@@ -644,7 +644,7 @@ class SpellManager {
             statusObj: statusObj,
             shakeAmt: 0,
             impactVisibleTime: 0,
-            duration: 6,
+            duration: 5,
             active: true,
             cleanUp: (statuses) => {
                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
@@ -743,8 +743,7 @@ class SpellManager {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
             let yPos = gameConsts.height - 350 + Math.abs(halfwayIdx - i) * 10;
-            let strikeObj = this.scene.add.sprite(xPos, yPos, 'spells', 'clock.png');
-            strikeObj.setDepth(10);
+            let strikeObj = this.scene.add.sprite(xPos, yPos, 'spells', 'clock.png').setDepth(10);
             strikeObj.rotation = Math.random() - 0.5;
             strikeObj.setScale(1);
             strikeObjects.push(strikeObj);
@@ -760,27 +759,59 @@ class SpellManager {
 
         let additionalDamage = globalObjects.player.attackDamageAdder();
         let goalScale = 0.6 + additionalDamage * 0.02;
-        let spellDamage = 10 + additionalDamage;
+        let spellDamage = 6 + additionalDamage;
+        let halfSpellDamage = spellDamage * 0.5;
         for (let i in strikeObjects) {
             let strikeObject = strikeObjects[i];
+            let delayedStrikeObject = this.scene.add.sprite(strikeObject.x, strikeObject.y, 'spells', 'clock_red.png').setDepth(10).setRotation(strikeObject.rotation).setScale(strikeObject.scaleX).setAlpha(0.75);
             let delayAmt = i * 150;
+            let randRotation = (Math.random() - 0.5) * 10;
             this.scene.tweens.add({
                 delay: delayAmt,
-                targets: strikeObject,
+                targets: [strikeObject, delayedStrikeObject],
                 duration: 550,
-                rotation: (Math.random() - 0.5) * 10,
+                rotation: randRotation,
                 ease: 'Quad.easeOut',
             });
 
+            let offsetX = (Math.random() - 0.5) * 200;
+            let offsetGoal = gameConsts.halfWidth + offsetX;
+            let randXGoal = gameConsts.halfWidth + (Math.random()) - 0.5 * 5;
+            let randY = 120 + (Math.random()) - 0.5 * 5;
             this.scene.tweens.add({
                 delay: delayAmt,
                 targets: strikeObject,
-                y: 120 + (Math.random()) - 0.5 * 5,
+                y: randY,
                 duration: 550,
                 scaleX: goalScale,
                 scaleY: goalScale,
                 ease: 'Back.easeOut',
                 easeParams: [0.25],
+                onStart: () => {
+                    this.scene.tweens.add({
+                        targets: strikeObject,
+                        x: offsetGoal,
+                        duration: 200,
+                        ease: 'Quad.easeOut',
+                        onComplete: () => {
+                            this.scene.tweens.add({
+                                targets: strikeObject,
+                                x: gameConsts.halfWidth * 0.8 + offsetGoal * 0.2,
+                                duration: 200,
+                                ease: 'Quad.easeIn',
+                                onComplete: () => {
+                                    this.scene.tweens.add({
+                                        targets: strikeObject,
+                                        x: randXGoal,
+                                        duration: 150,
+                                        easeParams: [0.5],
+                                        ease: 'Back.easeOut'
+                                    });
+                                }
+                            });
+                        }
+                    });
+                },
                 onComplete: () => {
                     this.scene.tweens.add({
                         targets: strikeObject,
@@ -793,34 +824,58 @@ class SpellManager {
                         }
                     });
 
-                    messageBus.publish('enemyStartDamageCountdown');
+                    // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', spellDamage);
                 }
             });
-            let offsetX = (Math.random() - 0.5) * 150;
-            let offsetGoal = gameConsts.halfWidth + offsetX;
             this.scene.tweens.add({
-                delay: delayAmt,
-                targets: strikeObject,
-                x: offsetGoal,
-                duration: 200,
-                ease: 'Quad.easeOut',
-                onComplete: () => {
+                delay: delayAmt + 175,
+                targets: delayedStrikeObject,
+                y: randY,
+                duration: 550,
+                scaleX: goalScale,
+                scaleY: goalScale,
+                ease: 'Back.easeOut',
+                easeParams: [0.25],
+                onStart: () => {
                     this.scene.tweens.add({
-                        targets: strikeObject,
-                        x: gameConsts.halfWidth * 0.8 + offsetGoal * 0.2,
+                        targets: delayedStrikeObject,
+                        x: offsetGoal,
                         duration: 200,
-                        ease: 'Quad.easeIn',
+                        ease: 'Quad.easeOut',
                         onComplete: () => {
                             this.scene.tweens.add({
-                                targets: strikeObject,
-                                x: gameConsts.halfWidth + (Math.random()) - 0.5 * 5,
-                                duration: 150,
-                                easeParams: [0.5],
-                                ease: 'Back.easeOut'
+                                targets: delayedStrikeObject,
+                                x: gameConsts.halfWidth * 0.8 + offsetGoal * 0.2,
+                                duration: 200,
+                                ease: 'Quad.easeIn',
+                                onComplete: () => {
+                                    this.scene.tweens.add({
+                                        targets: delayedStrikeObject,
+                                        x: randXGoal,
+                                        duration: 150,
+                                        easeParams: [0.5],
+                                        ease: 'Back.easeOut'
+                                    });
+                                }
                             });
                         }
                     });
+                },
+                onComplete: () => {
+                    this.scene.tweens.add({
+                        targets: delayedStrikeObject,
+                        duration: 200,
+                        scaleX: goalScale + 0.4,
+                        scaleY: goalScale + 0.4,
+                        alpha: 0,
+                        onComplete: () => {
+                            delayedStrikeObject.destroy();
+                        }
+                    });
+
+                    // messageBus.publish('enemyStartDamageCountdown');
+                    messageBus.publish('enemyTakeDamage', halfSpellDamage);
                 }
             });
         }
@@ -893,7 +948,7 @@ class SpellManager {
         this.postNonAttackCast(spellID, spellName);
     }
     castTimeEnhance() {
-        // Slows down opponent drastically for brief moment
+        // Creates additional instance of attack
         const spellID = 'timeEnhance';
 
         let existingBuff = globalObjects.player.getStatuses()[spellID];
@@ -981,15 +1036,18 @@ class SpellManager {
                         if (statuses[spellID] && !statuses[spellID].currentAnim) {
                             statuses[spellID].currentAnim = this.scene.tweens.add({
                                 targets: timeObjects,
-                                duration: 150,
+                                delay: 25,
+                                duration: 200,
                                 scaleX: 0,
                                 scaleY: 0,
                                 ease: 'Quad.easeOut',
+                                onStart: () => {
+                                    statuses[spellID] = null;
+                                },
                                 onComplete: () => {
                                     for (let i = 0; i < timeObjects.length; i++) {
                                         timeObjects[i].destroy();
                                     }
-                                    statuses[spellID] = null;
                                 }
                             });
                         }
@@ -1297,36 +1355,28 @@ class SpellManager {
         const spellID = 'mindEnhance';
         // next attack hits +1 time
         let existingBuff = globalObjects.player.getStatuses()[spellID];
-        let timeObj;
+        let mindObj;
         let multiplier = globalObjects.player.spellMultiplier();
         if (existingBuff) {
             multiplier += existingBuff.multiplier;
-            let newScale = 0.5 + multiplier * 0.25;
-            timeObj = existingBuff.animObj;
+            let newScale = 0.25 + multiplier * 0.1;
+            mindObj = existingBuff.animObj;
             this.scene.tweens.add({
-                targets: timeObj,
+                targets: mindObj,
                 duration: 300,
                 ease: 'back.easeOut',
                 scaleX: newScale,
                 scaleY: newScale,
             });
         } else {
-            timeObj = this.scene.add.sprite(gameConsts.halfWidth + 195, gameConsts.height - 285, 'spells', 'mindEffect.png');
-            timeObj.setScale(0);
-            timeObj.setDepth(10);
-            let newScale = 0.5 + multiplier * 0.25;
+            mindObj = this.scene.add.sprite(gameConsts.halfWidth + 195, gameConsts.height - 285, 'spells').play('mindBurnSlow').setDepth(10).setScale(0);
+            let newScale = 0.25 + multiplier * 0.1;
             this.scene.tweens.add({
-                targets: timeObj,
+                targets: mindObj,
                 duration: 250,
                 ease: 'back.easeOut',
                 scaleX: newScale,
                 scaleY: newScale,
-            });
-            this.scene.tweens.add({
-                targets: timeObj,
-                duration: 12000,
-                rotation: 6.283,
-                repeat: -1
             });
         }
 
@@ -1334,19 +1384,19 @@ class SpellManager {
             ignoreBuff: true,
             name: spellID,
             spellID: spellID,
-            animObj: timeObj,
+            animObj: mindObj,
             multiplier: multiplier,
             cleanUp: (statuses) => {
                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
-                    timeObj.setScale(timeObj.scaleX * 1.3);
+                    mindObj.setScale(mindObj.scaleX * 1.3);
                     statuses[spellID].currentAnim = this.scene.tweens.add({
-                        targets: timeObj,
+                        targets: mindObj,
                         duration: 150,
                         alpha: 0,
                         ease: 'Quad.easeOut',
                         onComplete: () => {
                             statuses[spellID] = null;
-                            timeObj.destroy();
+                            mindObj.destroy();
                         }
                     });
                 }
@@ -1354,7 +1404,7 @@ class SpellManager {
         });
 
 
-        let spellName = "ADD SHOCKING ATTACK";
+        let spellName = "ADD BURNING ATTACK";
         if (multiplier > 1) {
             spellName += " X" + multiplier;
         }
@@ -2125,9 +2175,12 @@ class SpellManager {
                 thisDurationDelay = voidDuration * 0.75;
             }
             PhaserScene.time.delayedCall(Math.max(0, initialDelay * 0.1 + thisDurationDelay * 0.85 - 280), () => {
-                PhaserScene.time.delayedCall(200, () => {
+                PhaserScene.time.delayedCall(180, () => {
                     zoomTemp(1.005 + numTotalAttacks * 0.002);
                     messageBus.publish('enemyTakeDamagePercent', 15, additionalDamage);
+                    messageBus.publish('disruptOpponentAttackPercent', 0.667);
+                    messageBus.publish('setSlowMult', 0.01, 40);
+
                 });
                 if (additionalDamage > 1) {
                     let rockObj = this.scene.add.sprite(gameConsts.halfWidth, 250, 'spells', 'stoneCircle.png');
@@ -2201,25 +2254,23 @@ class SpellManager {
     postAttackCast(spellID, delayAmt = 0, spellName = "UNNAMED ATTACK") {
         PhaserScene.time.delayedCall(delayAmt, () => {
             messageBus.publish('attackLaunched', spellID);
-
-            let timeAttackBuff = globalObjects.player.getStatuses()['timeEnhance'];
-            if (timeAttackBuff) {
-                let animObj = timeAttackBuff.animObj;
+            let mindAttackBuff = globalObjects.player.getStatuses()['mindEnhance'];
+            if (mindAttackBuff) {
+                let animObj = mindAttackBuff.animObj;
                 this.scene.tweens.add({
                     targets: animObj,
                     y: 140,
-                    duration: 500,
-                    rotation: "-=3",
+                    duration: 400,
                     onComplete: () => {
-                        messageBus.publish('setSlowMult', 0.1, 30 + 60 * timeAttackBuff.multiplier);
-                        timeAttackBuff.cleanUp(globalObjects.player.getStatuses());
+                        messageBus.publish('applyMindBurn', 4 * mindAttackBuff.multiplier);
+                        mindAttackBuff.cleanUp(globalObjects.player.getStatuses());
                     }
                 });
                 this.scene.tweens.add({
                     targets: animObj,
                     ease: 'Cubic.easeIn',
-                    x: gameConsts.halfWidth,
-                    duration: 500,
+                    x: gameConsts.halfWidth - 10,
+                    duration: 400,
                 });
             }
 
@@ -2229,10 +2280,10 @@ class SpellManager {
                 this.scene.tweens.add({
                     targets: animObj,
                     y: 140,
-                    duration: 200,
+                    duration: 250,
                     rotation: "+=3",
                     onComplete: () => {
-                        messageBus.publish('disruptOpponentAttack', 150 * voidAttackBuff.multiplier);
+                        // messageBus.publish('disruptOpponentAttack', 150 * voidAttackBuff.multiplier);
                         voidAttackBuff.cleanUp(globalObjects.player.getStatuses());
                     }
                 });
@@ -2240,7 +2291,7 @@ class SpellManager {
                     targets: animObj,
                     ease: 'Quad.easeIn',
                     x: gameConsts.halfWidth,
-                    duration: 200,
+                    duration: 250,
                 });
             }
             messageBus.publish('fireLaserEyes');

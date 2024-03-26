@@ -14,7 +14,9 @@ class Enemy {
             messageBus.subscribe("enemyTakeDamagePercent", this.takeDamagePercent.bind(this)),
             messageBus.subscribe("enemyTakeDamagePercentTotal", this.takeDamagePercentTotal.bind(this)),
             messageBus.subscribe("setSlowMult", this.setSlowMult.bind(this)),
+
             messageBus.subscribe("disruptOpponentAttack", this.disruptOpponentAttack.bind(this)),
+            messageBus.subscribe("disruptOpponentAttackPercent", this.disruptOpponentAttackPercent.bind(this)),
             messageBus.subscribe("statusesTicked", this.updateStatuses.bind(this)),
             messageBus.subscribe("enemyStartDamageCountdown", this.startDamageCountdown.bind(this)),
             messageBus.subscribe("enemyAddShield", this.addShield.bind(this)),
@@ -123,6 +125,12 @@ class Enemy {
         this.chargeBarMax.visible = false;
         this.chargeBarMax.setDepth(10);
 
+        this.voidPause = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'purple_pixel.png');
+        this.voidPause.alpha = 0;
+        this.voidPause.setScale(chargeBarLength + 2, 8);
+        this.voidPause.setOrigin(0.5, 0.5);
+        this.voidPause.setDepth(10);
+
         this.chargeBarWarning = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
         this.chargeBarWarning.alphaMult = 1;
         this.chargeBarWarning.setScale(chargeBarLength + 4, 10);
@@ -197,11 +205,6 @@ class Enemy {
         this.delayedDamageText.setOrigin(0.5, 0.6);
         this.delayedDamageText.setDepth(2);
 
-        this.slowSprite = this.scene.add.sprite(this.x, this.y, 'spells', 'timeRed.png');
-        this.slowSprite.alpha = 0;
-        this.slowSprite.setDepth(2);
-
-
         this.shieldSprite = this.scene.add.sprite(this.x, this.y + 20, 'spells', 'shield.png');
         this.shieldSprite.alpha = 0.75;
         this.shieldSprite.setScale(0.5);
@@ -244,9 +247,7 @@ class Enemy {
             return;
         }
         let timeChange = dt * gameVars.timeSlowRatio;
-        if (this.slowMult < 0.99) {
-            this.slowSprite.rotation += timeChange * 0.005;
-        }
+
         if (this.storeDamage) {
             this.damageCountdown += timeChange;
             if (this.damageCountdown < 600) {
@@ -354,21 +355,8 @@ class Enemy {
             this.slowMultDuration -= timeChange;
             this.chargeBarAngry.alpha = 0.6;
             this.chargeBarCurr.alpha = 0.55;
-            this.slowSprite.alpha = Math.min(0.5, this.slowMultDuration * 0.008 + 0.2);
             if (this.slowMultDuration <= 0) {
                 this.slowMult = 1;
-                this.scene.tweens.add({
-                    targets: this.slowSprite,
-                    duration: 150,
-                    alpha: 0,
-                    scaleX: 1.1,
-                    scaleY: 1.1,
-                    onComplete: () => {
-                        if (this.slowMultDuration > 0) {
-                            this.slowSprite.setScale(1);
-                        }
-                    }
-                });
                 this.chargeBarAngry.alpha = 0.9;
                 this.chargeBarCurr.alpha = 0.9;
             }
@@ -378,7 +366,7 @@ class Enemy {
     adjustDamageTaken(amt, isAttack, isTrue = false) {
         if (isAttack && this.statuses['mindStrike'] && amt > 0 && !isTrue) {
             this.statuses['mindStrike'].cleanUp(this.statuses);
-            let damageToTake = Math.round(amt * 2);
+            let damageToTake = Math.round(amt);
             setTimeout(() => {
                 this.takeTrueDamage(damageToTake);
             }, 0);
@@ -460,17 +448,38 @@ class Enemy {
     setSlowMult(amt = 0, duration = 90) {
         this.slowMult = amt;
         this.slowMultDuration = duration;
-        this.slowSprite.alpha = 0.5;
-        this.slowSprite.setScale(1)
+        console.log(this.chargeBarMax);
+        if (this.chargeBarMax.visible && this.chargeBarMax.alpha > 0) {
+            this.voidPause.alpha = 1;
+            this.voidPause.setScale(this.chargeBarMax.scaleX, this.chargeBarMax.scaleY);
+            this.scene.tweens.add({
+                targets: this.voidPause,
+                duration: 200,
+                alpha: 0,
+                scaleY: 0,
+            });
+            this.scene.tweens.add({
+                targets: this.voidPause,
+                duration: 200,
+                scaleX: this.healthBarMax.scaleX + 40,
+                ease: 'Quad.easeOut',
+            });
+
+        }
+    }
+
+    disruptOpponentAttackPercent(amt = 0.5) {
+        let disruptAmt = this.attackCharge * amt;
+        this.disruptOpponentAttack(disruptAmt);
     }
 
     disruptOpponentAttack(amt = 1) {
         this.attackCharge -= amt; // Math.max(0, this.attackCharge - amt);
-        if (this.attackCharge < 0) {
-            this.nextAttackChargeNeeded -= 0.33 * this.attackCharge;
-            this.attackCharge = 0;
-            this.prepareChargeBar(false);
-        }
+        // if (this.attackCharge < 0) {
+        //     this.nextAttackChargeNeeded -= 0.33 * this.attackCharge;
+        //     this.attackCharge = 0;
+        //     this.prepareChargeBar(false);
+        // }
 
     }
 
@@ -718,7 +727,7 @@ class Enemy {
         this.chargeBarWarning.destroy();
         this.chargeBarAngry.destroy();
         this.chargeBarCurr.destroy();
-        this.slowSprite.destroy();
+        this.voidPause.destroy();
         this.healthBarCurr.destroy();
         this.healthBarText.destroy();
         this.sprite.destroy();
@@ -727,7 +736,7 @@ class Enemy {
         this.clockLarge.destroy();
         this.clockLargeHand.destroy();
         this.delayedDamageText.destroy();
-        this.slowSprite.destroy();
+        this.voidPause.destroy();
         this.shieldSprite.destroy();
         this.shieldText.destroy();
 
@@ -749,7 +758,7 @@ class Enemy {
         this.chargeBarWarning.visible = false; this.chargeBarWarning.scaleY = 100;
         this.chargeBarAngry.visible = false; this.chargeBarAngry.scaleY = 100;
         this.chargeBarCurr.visible = false; this.chargeBarCurr.scaleY = 100;
-        this.slowSprite.visible = false;
+        this.voidPause.visible = false;
 
         this.attackName.visible = false;
         messageBus.publish('enemyHasDied');

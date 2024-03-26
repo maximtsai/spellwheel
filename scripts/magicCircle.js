@@ -40,7 +40,8 @@ const ENABLE_KEYBOARD = true;
             messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this)),
             messageBus.subscribe('selfClearEffect', this.clearMindForm.bind(this)),
             messageBus.subscribe('selfImplode', this.selfImplode.bind(this)),
-            messageBus.subscribe('enemyHasDied', this.clearEffects.bind(this))
+            messageBus.subscribe('enemyHasDied', this.clearEffects.bind(this)),
+            messageBus.subscribe("applyMindBurn", this.applyMindBurn.bind(this)),
         ];
 
     }
@@ -2231,7 +2232,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellNameHover.setText(getLangText('mind_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD SHOCKING ATTACK');
+                         this.spellNameText.setText('ADD BURNING ATTACK');
                          this.spellNameHover.setText(getLangText('mind_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
@@ -2286,21 +2287,24 @@ const ENABLE_KEYBOARD = true;
         }
      }
 
-     applyMindBurn(amt) {
+     applyMindBurn(damage = 4) {
+        if (!globalObjects.currentEnemy || globalObjects.currentEnemy.dead) {
+            return;
+        }
          let effectName = 'mindBurn';
          let effectObj;
          if (this.mindBurnTween) {
              this.mindBurnTween.stop();
          }
          this.mindBurnAnim.alpha = 0.7;
-         this.mindBurnAnim.setScale(0.5 + 0.15 * amt);
+         this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(damage) + 0.2);
          effectObj = {
              name: effectName,
-             duration: amt,
+             duration: 4,
              onUpdate: () => {
-                 if (effectObj && effectObj.duration < amt) {
-                     this.mindBurnAnim.setScale(0.5 + 0.15 * effectObj.duration);
-                     messageBus.publish('enemyTakeTrueDamage', 1, false);
+                 if (effectObj && effectObj.duration < 4) {
+                     this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(damage) + 0.05 * effectObj.duration);
+                     messageBus.publish('enemyTakeTrueDamage', damage, false);
                  }
              },
              cleanUp: (statuses) => {

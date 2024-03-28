@@ -237,7 +237,7 @@ class SpellManager {
         brickObj.setScale(0.8);
         brickObj2.setScale(0.8);
         let protectionAmt = 2;
-        let damageAmt = 4;
+        let damageAmt = 3;
         this.scene.tweens.add({
             targets: brickObj,
             duration: 400 + 50 * spellMult,
@@ -894,6 +894,8 @@ class SpellManager {
         let multiplier = globalObjects.player.spellMultiplier();
         let healthRewoundPercent = 1 - 0.5 ** multiplier;
         let bigClock = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large.png');
+        this.cleanseForms();
+
         bigClock.setDepth(120);
         bigClock.setScale(0.72);
         bigClock.alpha = 0;
@@ -921,7 +923,6 @@ class SpellManager {
             duration: 1200,
             rotation: -Math.PI * 0.5 - (Math.PI * 2 * healthRewoundPercent),
             ease: 'Cubic.easeInOut'
-
         });
 
         this.scene.tweens.add({
@@ -958,47 +959,47 @@ class SpellManager {
         }
 
         let numAdditionalAttacks = globalObjects.player.spellMultiplier();
+        let existingAttacksAmt = Math.round(timeObjects.length * 0.5);
         let addedActualAttacks = numAdditionalAttacks;
-        let numTotalAttacks = numAdditionalAttacks + timeObjects.length;
+        let numTotalAttacks = existingAttacksAmt + numAdditionalAttacks;
 
         if (timeObjects.length > 0) {
             // shift to the left the existing mind objects
-            for (let i = 0; i < timeObjects.length; i++) {
-                let xPos = gameConsts.halfWidth + (numTotalAttacks - 1) * -25 + 50 * i;
+            for (let i = 0; i < timeObjects.length; i += 2) {
+                let xPos = gameConsts.halfWidth + (numTotalAttacks - 1) * -25 + 25 * i;
                 let halfwayIdx = (numTotalAttacks - 1) * 0.5;
-                let yPos = gameConsts.height - 360 + Math.abs(halfwayIdx - i) * 10;
+                let yPos = gameConsts.height - 360 + Math.abs(halfwayIdx - i * 0.5) * 10;
                 this.scene.tweens.add({
-                    targets: timeObjects[i],
+                    targets: [timeObjects[i], timeObjects[i+1]],
                     duration: 300,
                     x: xPos,
                     y: yPos,
-                    ease: 'Cubic.easeOut',
-                    onComplete: () => {
-                    }
+                    ease: 'Cubic.easeOut'
                 });
             }
         } else {
             numAdditionalAttacks++;
-            numTotalAttacks = numAdditionalAttacks + timeObjects.length;
+            numTotalAttacks = existingAttacksAmt + numAdditionalAttacks;
         }
-        let timeObjectsLength = timeObjects.length;
-        for (let i = timeObjects.length; i < timeObjectsLength + numAdditionalAttacks; i++) {
+
+        for (let i = existingAttacksAmt; i < numTotalAttacks; i++) {
             // set up new ones
             let xPos = gameConsts.halfWidth + (numTotalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numTotalAttacks - 1) * 0.5;
             let yPos = gameConsts.height - 360 + Math.abs(halfwayIdx - i) * 10;
             let mindObj = this.scene.add.sprite(xPos, yPos, 'spells', 'timeEffect.png');
             let mindObj2 = this.scene.add.sprite(xPos, yPos, 'spells', 'timeEffect2.png');
+
             mindObj.setDepth(10);
             mindObj.rotation = Math.random() - 0.5;
-            timeObjects.push(mindObj);
             mindObj.setScale(0);
 
             mindObj2.setDepth(10);
             mindObj2.rotation = (Math.random() - 0.5) * 10;
-            timeObjects.push(mindObj2);
             mindObj2.setScale(0);
 
+            timeObjects.push(mindObj);
+            timeObjects.push(mindObj2);
             this.scene.tweens.add({
                 targets: [mindObj, mindObj2],
                 duration: 300,
@@ -1092,12 +1093,12 @@ class SpellManager {
             scaleY: 0.965,
             onStart: () => {
                 messageBus.publish("selfTakeEffect", {
+                    ignoreBuff: true,
                     name: shieldID,
                     spellID: shieldID,
                     type: 'time',
                     animObj: [animation1],
                     lockRotation: rotation,
-                    duration: 30 * multiplier,
                     spriteSrc1: 'rune_protect_glow.png',
                     spriteSrc2: 'rune_time_glow.png',
                     displayAmt: 0,
@@ -1106,6 +1107,7 @@ class SpellManager {
                     statusObj: statusObj,
                     cleanUp: (statuses) => {
                         if (statuses[shieldID] && !statuses[shieldID].currentAnim) {
+                            console.log("Cleanued up time shield")
                             statuses[shieldID].currentAnim = this.scene.tweens.add({
                                 targets: animation1,
                                 duration: 250,
@@ -1745,8 +1747,7 @@ class SpellManager {
                         blackBalls.push(blackBall);
                         let fades = [];
                         if (i == 2) {
-                            let startTime = 7 * multiplier;
-                            let timeText = this.scene.add.bitmapText(gameConsts.halfWidth, globalObjects.player.getY() - 20, 'block', startTime, 48).setDepth(999).setOrigin(0.5, 0.5);
+                            let healPerTick = Math.floor((globalObjects.player.getHealthMax() - globalObjects.player.getHealth()) / 6);
                             let whiteBall = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'whiteCircle.png').setDepth(99).setScale(6,6).setAlpha(0.6);
                             let blackFade = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(99).setScale(500, 500).setAlpha(0);
                             fades.push(whiteBall);
@@ -1765,13 +1766,15 @@ class SpellManager {
                                 alpha: 0.43
                             });
                             messageBus.publish("startVoidForm", blackBalls);
-                            let effectObj = {
-                                name: spellID,
-                                spellID: spellID,
-                                duration: startTime,
-                                multiplier: multiplier,
-                                cleanUp: (statuses) => {
-                                    if (statuses[spellID] && !statuses[spellID].currentAnim) {
+                            setTimeout(() => {
+                                messageBus.publish("selfHeal", healPerTick);
+                                setTimeout(() => {
+                                    messageBus.publish("selfHeal", healPerTick);
+                                    setTimeout(() => {
+                                        messageBus.publish("selfHeal", healPerTick);
+                                        let newMaxHealth = Math.ceil(globalObjects.player.getHealthMax() * 0.8);
+                                        globalObjects.player.setHealth(newMaxHealth);
+                                        globalObjects.player.setHealthMaxTemp(newMaxHealth);
                                         for (let i = 0; i < blackBalls.length; i++) {
                                             let ball = blackBalls[i];
                                             let randDir = (Math.random() - 0.5) * 4;
@@ -1791,36 +1794,28 @@ class SpellManager {
                                                 ease: 'Quad.easeOut',
                                                 scaleX: 0,
                                                 scaleY: 0,
+                                                onComplete: () => {
+                                                    ball.destroy();
+                                                }
                                             });
                                         }
-
-                                        statuses[spellID].currentAnim = this.scene.tweens.add({
+                                        this.scene.tweens.add({
                                             targets: fades,
                                             duration: 25,
                                             alpha: 0,
                                             ease: 'Quad.easeIn',
                                             onComplete: () => {
-                                                messageBus.publish("stopVoidForm");
-                                                statuses[spellID] = null;
                                                 for (let i = 0; i < fades.length; i++) {
                                                     fades[i].destroy();
                                                 }
                                             }
                                         });
-                                    }
-                                    timeText.destroy();
-                                },
-                                onUpdate: () => {
-                                    messageBus.publish("selfTakeTrueDamage", 1);
-                                    if (effectObj) {
-                                        if (fades && fades[1]) {
-                                            fades[1].setAlpha(0.42 + 0.02 * (8 - effectObj.duration))
-                                        }
-                                        timeText.setText(effectObj.duration.toString());
-                                    }
-                                }
-                            };
-                            messageBus.publish("selfTakeEffect", effectObj);
+
+                                        messageBus.publish("stopVoidForm");
+
+                                    }, 750)
+                                }, 750)
+                            }, 250)
                         } else if (i == 8) {
                             for (let j = 0; j < 8; j++) {
                                 blackBalls[j].setScale(blackBalls[8].scaleX + 0.08);
@@ -2294,7 +2289,6 @@ class SpellManager {
                     duration: 250,
                 });
             }
-            messageBus.publish('fireLaserEyes');
         });
         messageBus.publish('recordSpellAttack', spellID, spellName);
         messageBus.publish('clearAttackMultiplier');
@@ -2318,14 +2312,14 @@ class SpellManager {
 
     cleanseForms() {
         let existingBuff1 = globalObjects.player.getStatuses()['mindReinforce'];
-        let existingBuff2 = globalObjects.player.getStatuses()['timeReinforce'];
+        // let existingBuff2 = globalObjects.player.getStatuses()['timeReinforce'];
         let existingBuff3 = globalObjects.player.getStatuses()['matterReinforce'];
         if (existingBuff1) {
             messageBus.publish('selfClearEffect', 'mindReinforce');
         }
-        if (existingBuff2) {
-            messageBus.publish('selfClearEffect', 'timeReinforce');
-        }
+        // if (existingBuff2) {
+        //     messageBus.publish('selfClearEffect', 'timeReinforce');
+        // }
         if (existingBuff3) {
             messageBus.publish('selfClearEffect', 'matterReinforce');
         }

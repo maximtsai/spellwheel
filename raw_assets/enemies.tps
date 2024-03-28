@@ -173,6 +173,66 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">enemies/clock1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>5,5,9,9</rect>
+                <key>scale9Paddings</key>
+                <rect>5,5,9,9</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/clock2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>10,10,19,19</rect>
+                <key>scale9Paddings</key>
+                <rect>10,10,19,19</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/clock3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>15,15,29,29</rect>
+                <key>scale9Paddings</key>
+                <rect>15,15,29,29</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/clock4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>20,20,39,39</rect>
+                <key>scale9Paddings</key>
+                <rect>20,20,39,39</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/dummy.png</key>
             <key type="filename">enemies/dummybrows.png</key>
             <key type="filename">enemies/tree.png</key>
@@ -268,6 +328,36 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/gobbo0_atk.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>113,89,225,177</rect>
+                <key>scale9Paddings</key>
+                <rect>113,89,225,177</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/gobbo1_alt.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>76,81,151,161</rect>
+                <key>scale9Paddings</key>
+                <rect>76,81,151,161</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/gobbo4.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -305,7 +395,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.8</double>
+                <double>0.75</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -377,9 +467,22 @@
                 <false/>
             </struct>
             <key type="filename">enemies/time_magi.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.95</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>80,80,160,160</rect>
+                <key>scale9Paddings</key>
+                <rect>80,80,160,160</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/time_magi_cast.png</key>
             <key type="filename">enemies/time_magi_nervous.png</key>
-            <key type="filename">enemies/time_magi_nervous_cast.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -391,6 +494,22 @@
                 <rect>80,80,160,160</rect>
                 <key>scale9Paddings</key>
                 <rect>80,80,160,160</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/time_magi_cast_big.png</key>
+            <key type="filename">enemies/time_magi_terrified.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>78,100,155,200</rect>
+                <key>scale9Paddings</key>
+                <rect>78,100,155,200</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

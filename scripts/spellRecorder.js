@@ -6,11 +6,11 @@ class SpellRecorder {
         this.castHistory = [];
         this.castCount = {};
 
-        this.spellAnnounceBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 4, 'misc', 'announceBg.png');
+        this.spellAnnounceBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 1, 'misc', 'announceBg.png');
         this.spellAnnounceBG.setOrigin(0.5);
         this.spellAnnounceBG.setDepth(99999);
         this.spellAnnounceBG.alpha = 0;
-        this.spellAnnounceBG.setScale(2, 1);
+        this.spellAnnounceBG.setScale(2, 1.1);
 
         this.spellAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight - 5, 'bonus', 'dfbfdb', 36, 1);
         this.spellAnnounceText.setOrigin(0.5, 0.5);
@@ -41,7 +41,7 @@ class SpellRecorder {
         this.spellAnnounceBG.setScale(textObj.width / 350 + 0.1, 0.5 + extraScale * 0.25);
         let origSpellAnnounceBGScale = this.spellAnnounceBG.scaleX;
         textObj.setAlpha(0.5);
-        this.spellAnnounceBG.setAlpha(0.75);
+        this.spellAnnounceBG.setAlpha(0.7);
         if (this.currAnim) {
             this.currAnim.stop();
             if (this.currAnimObj != textObj) {
@@ -58,7 +58,7 @@ class SpellRecorder {
             targets: this.spellAnnounceBG,
             scaleX: origSpellAnnounceBGScale * 1.25,
             scaleY: 0.6 + extraScale * 0.25,
-            alpha: 0.6,
+            alpha: 0.8,
             duration: 300,
             ease: 'Quad.easeOut'
         });

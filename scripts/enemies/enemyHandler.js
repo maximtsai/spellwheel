@@ -12,6 +12,7 @@ function createEnemy(num) {
     case 2:
         break;
     case 3:
+        globalObjects.currentEnemy = new Magician(PhaserScene, gameConsts.halfWidth, 173);
         break;
     case 4:
         break;

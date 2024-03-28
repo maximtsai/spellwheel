@@ -2,12 +2,12 @@
      constructor(scene, x, y) {
          console.log("Making goblin")
          super(scene, x, y);
-         this.initSprite('gobbo0.png', 0.8);
+         this.initSprite('gobbo0.png', 0.75);
          this.shieldAdded = false;
      }
 
      initStatsCustom() {
-         this.health = 100;
+         this.health = gameVars.isHardMode ? 110 : 90;
      }
 
      // update(dt) {}
@@ -25,19 +25,19 @@
              // dead, can't do anything
              return;
          }
-         if (prevHealthPercent >= 0.98) {
-             if (currHealthPercent < 0.98) {
-                 this.currentAttackSetIndex = 2;
+         if (prevHealthPercent >= 0.99) {
+             if (currHealthPercent < 0.99) {
+                 this.currentAttackSetIndex = 1;
                  this.nextAttackIndex = 0;
                  // Going to shield
              }
          }
-         if (this.shieldAdded && this.currentAttackSetIndex == 3) {
+         if (this.shieldAdded && this.currentAttackSetIndex == 2) {
              if (this.shield == 0) {
                  // shield must have broke
-                 this.setDefaultSprite('gobbo2.png', 0.8);
+                 this.setDefaultSprite('gobbo2.png', 0.75);
                  this.interruptCurrentAttack();
-                 this.currentAttackSetIndex = 4;
+                 this.currentAttackSetIndex = 3;
                  this.nextAttackIndex = 0;
              }
          }
@@ -48,70 +48,57 @@
              [
                  // 0
                  {
-                     name: "NERVOUS POKE }5 ",
+                     name: gameVars.isHardMode ? "}8 " : "}5 ",
+                     desc: "The goblin waves his\nlittle knife in front\nof your face",
                      chargeAmt: 250,
-                     damage: 5,
-                     function: () => {
-                         if (this.currentAttackSetIndex === 0) {
-                             this.currentAttackSetIndex = 1;
-                             this.nextAttackIndex = 0;
-                         }
-                     }
+                     damage: gameVars.isHardMode ? 8 : 5,
+                     attackSprites: ['gobbo0_atk.png']
                  }
              ],
              [
                  // 1
                  {
-                     name: "CAUTIOUS STAB }5",
+                     name: gameVars.isHardMode ? "READYING FANCY SHIELD {50 " : "READYING FANCY SHIELD {40 ",
+                     desc: "The goblin hoists his\ntrusty shield (which\nwas definitely not stolen)",
+                     block: gameVars.isHardMode ? 50 : 40,
                      chargeAmt: 180,
-                     damage: 5
-                 },
-                 {
-                     name: "HASTY STAB }6",
-                     chargeAmt: 240,
-                     damage: 6
-                 },
-             ],
-             [
-                 // 2
-                 {
-                     name: "READYING FANCY SHIELD {40",
-                     block: 40,
-                     chargeAmt: 180,
-                     function: () => {
-                         this.setDefaultSprite('gobbo1.png', 0.8);
-                         this.currentAttackSetIndex = 3;
+                     attackFinishFunction: () => {
+                         this.setDefaultSprite('gobbo1.png', 0.75);
+                         this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
                          this.shieldAdded = true;
                      }
                  }
              ],
              [
-                 // 3 - attacks from behind shield
+                 // 2 - attacks from behind shield
                  {
-                     name: "SHIELD SMACK }10",
+                     name: gameVars.isHardMode ? "}12 " : "}10 ",
+                     desc: "Goblin rams you with\nhis shield",
                      chargeAmt: 400,
-                     damage: 10
+                     damage: gameVars.isHardMode ? 12 : 10
                  },
              ],
              [
-                 // 4
+                 // 3
                  {
                      name: "REALIZING SHIELD IS BROKEN",
-                     chargeAmt: 200,
-                     chargeMult: 2
+                     desc: "Goblin rams you with\nhis shield",
+                     chargeAmt: gameVars.isHardMode ? 180 : 200,
+                     chargeMult: 2,
+                     damage: 0
                  },
                  {
                      name: "TAKING OUT KNIVES (uh oh!)",
-                     chargeAmt: 250,
+                     chargeAmt: gameVars.isHardMode ? 225 : 250,
                      chargeMult: 5,
                      startFunction: () => {
-                         this.setDefaultSprite('gobbo3.png', 0.8);
+                         this.setDefaultSprite('gobbo3.png', 0.75);
                      },
-                     function: () => {
-                         this.currentAttackSetIndex = 5;
+                     attackFinishFunction: () => {
+                         this.currentAttackSetIndex = 4;
                          this.nextAttackIndex = 0;
-                         this.setDefaultSprite('gobbo4.png', 0.8);
+                         this.setDefaultSprite('gobbo4.png', 0.75);
                          let oldScale = this.sprite.scaleX;
                          this.sprite.setScale(this.sprite.scaleX * 1.01);
                          this.currAnim = PhaserScene.tweens.add({
@@ -121,47 +108,47 @@
                              duration: 600,
                              completeDelay: 100,
                              onComplete: () => {
-                                 this.setDefaultSprite('gobbo5.png', 0.8);
+                                 this.setDefaultSprite('gobbo5.png', 0.75);
                              }
                          });
                      }
                  }
              ],
              [
-                 // 5 - dual wield attacks
+                 // 4 - dual wield attacks
                  {
-                     name: "MULTI STAB }5x2",
-                     chargeAmt: 120,
+                     name: "}5x2 ",
+                     chargeAmt: gameVars.isHardMode ? 100 : 150,
                      damage: 5,
                      attackTimes: 2,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
                  },
                  {
-                     name: "MULTI STAB }5x3",
-                     chargeAmt: 140,
+                     name: "}5x3 ",
+                     chargeAmt: gameVars.isHardMode ? 110 : 160,
                      damage: 5,
                      attackTimes: 3,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
                  },
                  {
-                     name: "MULTI STAB }5x4",
-                     chargeAmt: 160,
+                     name: "}5x4 ",
+                     chargeAmt: gameVars.isHardMode ? 120 : 170,
                      damage: 5,
                      attackTimes: 4,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
                  },
                  {
-                     name: "MULTI STAB }5x5",
-                     chargeAmt: 180,
+                     name: "}5x5 ",
+                     chargeAmt: gameVars.isHardMode ? 130 : 180,
                      damage: 5,
                      attackTimes: 5,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
                  },
                  {
-                     name: "SPIT IN YOUR FACE }2",
+                     name: "LAUGH IN YOUR FACE",
                      chargeAmt: 200,
                      chargeMult: 5,
-                     damage: 2,
+                     damage: -1,
                      tease: true,
                      attackSprites: ['gobbo4.png']
                  }

@@ -3,6 +3,7 @@ class TextPopupManager {
         this.scene = scene;
         this.damageNums = []; // Depreciated, currently just using one damage num
         this.damageNum = this.scene.add.bitmapText(gameConsts.halfWidth, 200, 'damage', '', 32).setDepth(99999).setOrigin(0.5, 0.5);
+        this.damageNum.startY = this.damageNum.y;
         this.damageTween = null;
         this.damageNumber = 0;
         this.bonusNums = [];
@@ -23,7 +24,7 @@ class TextPopupManager {
         this.animateNum(textObj, this.damageNums, param);
     }
 
-    animateDamageNumAccumulate(val) {
+    animateDamageNumAccumulate(val, offsetY = 0) {
         // let textObj = this.getTextObjFromArray(x, y, text, this.damageNums, 'damage');
         // textObj.setScale(scale);
         if (this.damageTween) {
@@ -33,24 +34,26 @@ class TextPopupManager {
             this.damageNumber = 0;
         }
         this.damageNumber += val;
-        console.log(this.damageNumber);
         this.damageNum.setText('-' + this.damageNumber);
         let newScale = 0.6 + Math.sqrt(val) * 0.2;
         this.damageNum.setScale(newScale)
+        this.damageNum.y = this.damageNum.startY + offsetY;
+        this.damageNum.alpha = 1;
 
         let tweenParams = {
             targets: this.damageNum,
-            scaleX: newScale * 0.95,
-            scaleY: newScale * 0.95,
-            duration: 550,
+            scaleX: newScale * 0.98,
+            scaleY: newScale * 0.98,
+            duration: 500,
             ease: 'Cubic.easeOut',
             onComplete: () => {
-                this.scene.tweens.add({
-                    delay: 500,
+                this.damageTween = this.scene.tweens.add({
+                    delay: 600,
                     targets: this.damageNum,
                     scaleX: 0,
                     scaleY: 0,
-                    duration: 350,
+                    alpha: 0,
+                    duration: 250,
                     ease: 'Quart.easeIn',
                 });
             }

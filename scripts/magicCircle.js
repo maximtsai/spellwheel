@@ -1,6 +1,6 @@
 const DECAY = 0.00006;
 const STATIC = 0.006;
-const INFINITE_CAST = false;
+const INFINITE_CAST = true;
 const ENABLE_KEYBOARD = true;
 
  class MagicCircle {
@@ -30,11 +30,11 @@ const ENABLE_KEYBOARD = true;
             messageBus.subscribe('refreshRandomRunes', this.refreshRandomRunes.bind(this)),
             messageBus.subscribe('statusesTicked', this.handleStatusesTicked.bind(this)),
             messageBus.subscribe('playerAddDelayedDamage', this.addDelayedDamage.bind(this)),
+            messageBus.subscribe('playerReduceDelayedDamage', this.reduceDelayedDamage.bind(this)),
             messageBus.subscribe('enableVoidArm', this.enableVoidArm.bind(this)),
             messageBus.subscribe('setTempRotObjs', this.setTempRotObjs.bind(this)),
             messageBus.subscribe('manualResetElements', this.manualResetElements.bind(this)),
             messageBus.subscribe('manualResetEmbodiments', this.manualResetEmbodiments.bind(this)),
-            messageBus.subscribe('fireLaserEyes', this.fireLaserEyes.bind(this)),
             messageBus.subscribe('inflictVoidBurn', this.applyVoidBurn.bind(this)),
             messageBus.subscribe('startVoidForm', this.handleVoidForm.bind(this)),
             messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this)),
@@ -68,87 +68,6 @@ const ENABLE_KEYBOARD = true;
             gameVars.playerNotMoved = true;
         } else {
             gameVars.playerNotMoved = false;
-            if (mindReinforceStatus && !this.laserIsFiring) {
-                let chargeAmt = dt * 0.015 + Math.min(0.03, Math.abs(this.innerCircle.rotVel) + Math.abs(this.outerCircle.rotVel)) * dt;
-                chargeAmt *= mindReinforceStatus.multiplier * 0.5 * gameVars.timeSlowRatio;
-                let oldLaserCharge = this.laserCharge;
-                if (oldLaserCharge == 0) {
-                    this.popupLaserInitial();
-                }
-
-                let bonusCharge = this.calculateBonusCharge(this.laserCharge);
-                let totalChargeAmt = chargeAmt * bonusCharge;
-                this.laserCharge += totalChargeAmt;
-                if (this.laserCharge >= 1) {
-                    this.mindSniperReticle.velX = this.mindSniperReticle.velX * 0.998 + (Math.random() - 0.5) * 0.024;
-                    this.mindSniperReticle.velY = this.mindSniperReticle.velY * 0.995 + (Math.random() - 0.497) * 0.02;
-                    this.mindSniperReticle.x += this.mindSniperReticle.velX * dt;
-                    this.mindSniperReticle.y += this.mindSniperReticle.velY * dt;
-                    this.mindSniperReticle.x += (this.mindSniperReticle.startX - this.mindSniperReticle.x) * 0.01 * dt;
-                    this.mindSniperReticle.y += (this.mindSniperReticle.startY - this.mindSniperReticle.y) * 0.01 * dt;
-                    this.mindChargeText.x = this.mindSniperReticle.x;
-                    this.mindChargeText.y = this.mindSniperReticle.y;
-
-                    let flooredLaserCharge = Math.floor(this.laserCharge);
-                    if (flooredLaserCharge - Math.floor(oldLaserCharge) > 0) {
-                        this.mindChargeText.setText(flooredLaserCharge);
-                    }
-                    if (oldLaserCharge < 10 && flooredLaserCharge >= 10) {
-                        let newScale = 0.43;
-                        this.mindChargeText.setScale(this.mindChargeText.scaleX * 0.99);
-                        this.mindSniperReticle.setScale(this.mindChargeText.scaleX * 0.99);
-                        this.scene.tweens.add({
-                            targets: [this.mindChargeText, this.mindSniperReticle],
-                            ease: 'Back.easeOut', scaleX: newScale, scaleY: newScale, alpha: 0.6, duration: 250,
-                        });
-                    } else if (oldLaserCharge < 25 && flooredLaserCharge >= 25) {
-                        let newScale = 0.55;
-                        this.mindChargeText.setScale(this.mindChargeText.scaleX * 0.98);
-                        this.mindSniperReticle.setScale(this.mindChargeText.scaleX * 0.98);
-                        this.scene.tweens.add({
-                            targets: [this.mindChargeText, this.mindSniperReticle],
-                            ease: 'Back.easeOut', scaleX: newScale, scaleY: newScale, alpha: 0.7, duration: 325,
-                        });
-                    } else if (oldLaserCharge < 40 && flooredLaserCharge >= 40) {
-                        let newScale = 0.68;
-                        this.mindChargeText.setScale(this.mindChargeText.scaleX * 0.98);
-                        this.mindSniperReticle.setScale(this.mindChargeText.scaleX * 0.98);
-                        this.scene.tweens.add({
-                            targets: [this.mindChargeText, this.mindSniperReticle],
-                            ease: 'Back.easeOut', scaleX: newScale, scaleY: newScale, alpha: 0.8, duration: 450,
-                        });
-                    } else if (oldLaserCharge < 65 && flooredLaserCharge >= 65) {
-                        let newScale = 0.79;
-                        this.mindChargeText.setScale(this.mindChargeText.scaleX * 0.98);
-                        this.mindSniperReticle.setScale(this.mindChargeText.scaleX * 0.98);
-                        this.scene.tweens.add({
-                            targets: [this.mindChargeText, this.mindSniperReticle],
-                            ease: 'Back.easeOut', scaleX: newScale, scaleY: newScale, alpha: 0.9, duration: 600,
-                            onComplete: () => {
-                                zoomTemp(1.005);
-                            }
-                        });
-                    } else if (oldLaserCharge < 100 && flooredLaserCharge >= 100) {
-                        let newScale = 0.88;
-                        this.mindChargeText.setScale(this.mindChargeText.scaleX * 1.02);
-                        this.mindSniperReticle.setScale(this.mindChargeText.scaleX * 1.02);
-                        this.scene.tweens.add({
-                            targets: [this.mindChargeText, this.mindSniperReticle],
-                            ease: 'Quart.easeOut', scaleX: newScale*1.2, scaleY: newScale*1.2, alpha: 0.95, duration: 300,
-                            onComplete: () => {
-                                this.scene.tweens.add({
-                                    targets: [this.mindChargeText, this.mindSniperReticle],
-                                    ease: 'Cubic.easeIn', scaleX: newScale, scaleY: newScale, duration: 400,
-                                    onComplete: () => {
-                                        zoomTemp(1.01);
-                                    }
-                                });
-                            }
-                        });
-                    }
-
-                }
-            }
         }
         this.lastDragTime += dt;
         this.handleTimeSlow(dt);
@@ -519,9 +438,9 @@ const ENABLE_KEYBOARD = true;
 
     createTimeStopObjs() {
         this.gearBonusSpeed = 5;
-        this.timeStopLight = this.scene.add.sprite(this.x, this.y, 'blackPixel');
-        this.timeStopLight.alpha = 0;
-        this.timeStopLight.setScale(999);
+        // this.timeStopLight = this.scene.add.sprite(this.x, this.y, 'blackPixel');
+        // this.timeStopLight.alpha = 0;
+        // this.timeStopLight.setScale(999);
         this.timeStopHeavy = this.scene.add.sprite(this.x, this.y, 'circle', 'time_stop.png');
         this.timeStopHeavy.alpha = 0;
         this.timeStopHeavy.setScale(1.95);
@@ -547,184 +466,8 @@ const ENABLE_KEYBOARD = true;
          this.mindChargeText.setVisible(false);
      }
 
-     popupLaserInitial() {
-         this.mindChargeText.setText(0);
-         this.mindChargeText.setVisible(true);
-         this.mindChargeText.setScale(0.25);
-         this.mindSniperReticle = globalObjects.player.getStatuses()['mindReinforce'].animObj[0];
-         this.mindSniperReticle.setVisible(true);
-         this.mindSniperReticle.alpha = 0.5;
-         this.mindSniperReticle.startX = this.mindSniperReticle.x;
-         this.mindSniperReticle.startY = this.mindSniperReticle.y;
-         this.mindSniperReticle.velX = 0;
-         this.mindSniperReticle.velY = 0.25;
-         this.mindChargeText.alpha = 0.5;
-         this.mindChargeText.setPosition(this.mindSniperReticle.x, this.mindSniperReticle.y);
-         this.scene.tweens.add({
-             targets: this.mindChargeText,
-             ease: 'Back.easeOut',
-             scaleX: 0.35,
-             scaleY: 0.35,
-             duration: 200,
-         });
-     }
-
-     fireLaserEyes() {
-        if (this.laserCharge < 1) {
-            return;
-        }
-        let lastLaserCharge = Math.floor(this.laserCharge);
-         this.laserIsFiring = true;
-         let startingSniperScale = this.mindSniperReticle.scaleX;
-
-
-         this.scene.tweens.add({
-             targets: [this.mindSniperReticle, this.mindChargeText],
-             ease: 'Cubic.easeOut',
-             alpha: this.mindSniperReticle.alpha + 0.2,
-             x: this.mindSniperReticle.startX,
-             y: this.mindSniperReticle.startY,
-             scaleX: startingSniperScale * 0.9,
-             scaleY: startingSniperScale * 0.9,
-             duration: 400 + Math.min(200, lastLaserCharge * 2),
-             completeDelay: 200,
-             onComplete: () => {
-                 this.mindChargeText.alpha = 0;
-                 this.finishUpMindDamage(lastLaserCharge);
-                 this.scene.tweens.add({
-                     targets: this.mindSniperReticle,
-                     ease: 'Quad.easeOut',
-                     alpha: 0,
-                     duration: 275,
-                     onComplete: () => {
-                         this.resetMindSniperReticle();
-                     }
-                 });
-             }
-         })
-
-         this.laserCharge = -0.2;
-     }
-
      finishUpMindDamage(charge) {
          this.laserIsFiring = false;
-
-         if (charge < 25) {
-             let hitEffect = this.scene.add.sprite(this.mindSniperReticle.x, this.mindSniperReticle.y, 'spells', 'mindEffect.png');
-             hitEffect.setDepth(10);
-             messageBus.publish('enemyTakeTrueDamage', Math.floor(charge), false, -50);
-             let hitEffectStartScale = 0.4 + Math.sqrt(charge) * 0.1;
-             hitEffect.setScale(hitEffectStartScale);
-             this.scene.tweens.add({
-                 targets: hitEffect,
-                 scaleX: hitEffectStartScale * 0.95,
-                 scaleY: hitEffectStartScale * 0.95,
-                 ease: 'Quad.easeOut',
-                 duration: 250,
-                 onComplete: () => {
-                     hitEffect.destroy();
-                 }
-             });
-             this.scene.tweens.add({
-                 targets: this.mindSniperReticle,
-                 ease: 'Cubic.easeOut',
-                 scaleX: this.mindSniperReticle.scaleX * 1.25,
-                 scaleY: this.mindSniperReticle.scaleX * 1.25,
-                 rotation: -0.5,
-                 alpha: 0,
-                 duration: 250,
-                 onComplete: () => {
-                     this.mindSniperReticle.rotation = 0;
-                 }
-             });
-         } else {
-             let blueStreak = this.scene.add.sprite(this.mindSniperReticle.x, this.mindSniperReticle.y, 'pixels', 'blue_pixel.png');
-             blueStreak.setScale(0, 4 + charge * 0.01);
-             setTimeout(() => {
-                 messageBus.publish('enemyTakeTrueDamage', Math.floor(charge), false, -50);
-             }, 70);
-
-             this.scene.tweens.add({
-                 targets: this.mindSniperReticle,
-                 ease: 'Cubic.easeOut',
-                 scaleX: this.mindSniperReticle.scaleX * 1.3,
-                 scaleY: this.mindSniperReticle.scaleX * 1.3,
-                 rotation: -1,
-                 alpha: 0,
-                 duration: 300,
-                 onComplete: () => {
-                     this.mindSniperReticle.rotation = 0;
-                 }
-             });
-             if (charge < 65) {
-                 this.scene.tweens.add({
-                     targets: blueStreak,
-                     ease: 'Cubic.easeOut',
-                     scaleX: 500,
-                     scaleY: 0,
-                     alpha: 0,
-                     duration: 250,
-                     onComplete: () => {
-                         blueStreak.destroy();
-                     }
-                 });
-             } else {
-                 this.scene.tweens.add({
-                     targets: blueStreak,
-                     ease: 'Cubic.easeOut',
-                     scaleX: 500,
-                     duration: 200,
-                 });
-                 this.scene.tweens.add({
-                     targets: blueStreak,
-                     ease: 'Quint.easeIn',
-                     scaleY: 150,
-                     duration: 500,
-                     onComplete: () => {
-                         blueStreak.destroy();
-                     }
-                 });
-                 this.scene.tweens.add({
-                     targets: blueStreak,
-                     ease: 'Quad.easeOut',
-                     alpha: 0,
-                     duration: 500,
-                 });
-             }
-         }
-     }
-
-     resetMindSniperReticle() {
-         this.scene.tweens.add({
-             targets: this.mindSniperReticle,
-             delay: 300,
-             ease: 'Cubic.easeOut',
-             alpha: 0,
-             scaleX: this.mindSniperReticle.scaleX * 2,
-             scaleY: this.mindSniperReticle.scaleX * 2,
-             duration: 200,
-             onComplete: () => {
-                 this.mindSniperReticle.setScale(0.4);
-                 this.mindSniperReticle.alpha = 0;
-                 if (globalObjects.player.getStatuses()['mindReinforce']) {
-                     this.mindChargeText.setVisible(true);
-                     this.mindSniperReticle.setVisible(true);
-                     this.scene.tweens.add({
-                         targets: [this.mindSniperReticle, this.mindChargeText],
-                         delay: 250,
-                         ease: 'Cubic.easeIn',
-                         alpha: 0.5,
-                         scaleX: 0.4,
-                         scaleY: 0.4,
-                         duration: 200,
-                     });
-                 }
-             }
-         });
-
-         this.mindChargeText.setText(0);
-         this.mindChargeText.visible = false;
-         this.mindChargeText.setScale(0.4);
      }
 
     handleTimeSlow(dt) {
@@ -763,8 +506,65 @@ const ENABLE_KEYBOARD = true;
         }
     }
 
+    timeSlowFromEnemy() {
+        // this.setTimeSlowRatio(slowRatio / multiplier, true);
+        gameVars.timeSlowRatio = 0.9;
+        this.timeStopHeavy.setScale(1.95);
+        this.timeStopHeavy.setAlpha(1);
+        this.timeStopHeavy.y = 150;
+        this.scene.tweens.add({
+            targets: this.timeStopHeavy,
+            scaleX: 8,
+            scaleY: 8,
+            alpha: 0.8,
+            ease: 'Cubic.easeIn',
+            duration: 280,
+        });
+
+        this.scene.tweens.add({
+            targets: this.clockbg,
+            alpha: 0.1,
+            scaleX: 0.73,
+            scaleY: 0.73,
+            duration: 250,
+        });
+        this.scene.tweens.add({
+            targets: [this.gear1, this.gear2, this.gear3, this.gear4],
+            ease: 'Quart.easeOut',
+            alpha: 0.5,
+            duration: 1000,
+        });
+    }
+
+    cancelTimeSlowFromEnemy() {
+        if (gameVars.timeSlowRatio !== 1) {
+            gameVars.timeSlowRatio = 1;
+            this.scene.tweens.add({
+                // this.timeStopLight,
+                targets: [this.timeStopHeavy],
+                ease: 'Quint.easeOut',
+                alpha: 0.01,
+                duration: 700,
+                onComplete: () => {
+                    this.scene.tweens.add({
+                        targets: [this.timeStopHeavy],
+                        alpha: 0,
+                        duration: 500
+                    });
+                }
+            });
+            this.scene.tweens.add({
+                targets: [this.gear1, this.gear2, this.gear3, this.gear4, this.clockbg],
+                ease: 'Quad.easeIn',
+                alpha: 0,
+                duration: 300,
+            });
+        }
+    }
+
      manualSetTimeSlowRatio(slowRatio, multiplier = 1) {
         this.setTimeSlowRatio(slowRatio / multiplier, true);
+         this.timeStopHeavy.y = this.y;
          this.timeStopHeavy.setScale(1.95);
          this.timeStopHeavy.setAlpha(1);
          let multiplierAddition = Math.max(0, (multiplier - 2) / multiplier);
@@ -799,13 +599,14 @@ const ENABLE_KEYBOARD = true;
             messageBus.publish('setTimeSlowRatio', ratio);
             if (ratio == 1) {
                 this.scene.tweens.add({
-                    targets: [this.timeStopLight, this.timeStopHeavy],
+                    // this.timeStopLight,
+                    targets: [this.timeStopHeavy],
                     ease: 'Quint.easeOut',
                     alpha: 0.01,
                     duration: 700,
                     onComplete: () => {
                         this.scene.tweens.add({
-                            targets: [this.timeStopLight, this.timeStopHeavy],
+                            targets: [this.timeStopHeavy],
                             alpha: 0,
                             duration: 500
                         });
@@ -822,7 +623,7 @@ const ENABLE_KEYBOARD = true;
     }
 
     attackLaunched() {
-        this.setTimeSlowRatio();
+        // this.setTimeSlowRatio(); // deprecated
     }
 
     buildRunes(x, y, scene) {
@@ -2000,9 +1801,7 @@ const ENABLE_KEYBOARD = true;
                 } else {
                     this.tickDelayedDamage(2);
                 }
-                if (this.delayedDamage > this.delayedDamageCurrCap * 1.25) {
 
-                }
                 this.delayedDamageShouldTick = false;
                 if (this.delayedDamage <= 0) {
                     this.scene.tweens.add({
@@ -2094,6 +1893,8 @@ const ENABLE_KEYBOARD = true;
      addDelayedDamage(amt) {
         let oldDelayedDamage = this.delayedDamage;
          this.delayedDamage += amt;
+         globalObjects.player.recentlyTakenTimeDamageAmt += amt;
+
          if (this.delayedDamage > 0) {
              this.delayDamageText.setText(this.delayedDamage);
              if (this.delayedDamage > this.delayedDamageCurrMax) {
@@ -2156,6 +1957,26 @@ const ENABLE_KEYBOARD = true;
              if (this.delayedDamage > 100) {
                  this.delayDamageSand.setAlpha(1);
              }
+         }
+     }
+
+     reduceDelayedDamage(amt) {
+         this.delayedDamage = Math.max(0, this.delayedDamage - amt);
+
+         this.delayDamageText.setText(this.delayedDamage);
+         this.delayDamageSand.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageCurrCap));
+
+         if (this.delayedDamage <= 0) {
+             this.scene.tweens.add({
+                 delay: 100,
+                 targets: [this.delayDamageHourglass, this.delayDamageSand, this.delayDamageText],
+                 ease: 'Back.easeIn',
+                 scaleX: 0,
+                 scaleY: 0,
+                 duration: 400,
+                 alpha: 0
+             });
+             this.delayedDamageCurrMax = this.delayedDamageCurrCap * 0.5;
          }
      }
 
@@ -2401,19 +2222,7 @@ const ENABLE_KEYBOARD = true;
      }
 
      clearMindForm(id) {
-        if (!id && !this.laserIsFiring) {
-            this.laserCharge = 0;
-            this.laserIsFiring = false;
-            this.mindChargeText.visible = false
-            this.mindChargeText.setScale(0.35);
-            this.scene.tweens.add({
-                targets: this.mindSniperReticle,
-                alpha: 0,
-                duration: 250,
-                scaleX: this.mindSniperReticle.scaleX * 2,
-                scaleY: this.mindSniperReticle.scaleX * 2
-            });
-        }
+
      }
 
      selfImplode() {
@@ -2470,8 +2279,5 @@ const ENABLE_KEYBOARD = true;
          this.voidSliceImage2.alpha = 0;
          this.mindBurnAnim.alpha = 0;
          this.mindChargeText.visible = false;
-         if (this.mindSniperReticle) {
-             this.mindSniperReticle.destroy();
-         }
      }
  }

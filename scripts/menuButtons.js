@@ -113,8 +113,8 @@ function createMenuButtons() {
             alpha: 0.001
         },
         onMouseUp: () => {
-            // clearMenuButtons();
-            // createEnemy(0);
+            clearMenuButtons();
+            beginLevel(3);
         }
     });
     globalObjects.creditsButton.setScale(0.6);

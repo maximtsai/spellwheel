@@ -16,10 +16,10 @@ const textData = {
     void_strike_desc: {en_us: 'DEAL 4% OF ENEMY\'s\nTOTAL HEALTH OVER\n4 SECONDS', fr_FR: ''},
     void_enhance_desc: {en_us: 'CURSE THE ENEMY.\nNEXT ATTACK THEY\NMAKE WILL HURT THEM\NFOR 12% CURRENT HP', fr_FR: ''},
     void_protect_desc: {en_us: 'CREATES A SHIELD\nTHAT FULLY NEGATES\nONE ATTACK', fr_FR: ''},
-    void_reinforce_desc: {en_us: 'BECOME INTANGIBLE\nFOR 7 SECONDS.\nLOSE 7 HEALTH', fr_FR: ''},
+    void_reinforce_desc: {en_us: 'HEAL TO FULL, BUT\nAT THE COST OF\n20% MAX HEALTH', fr_FR: ''},
     void_unload_desc: {en_us: 'DAMAGE 15% OF ENEMY\'S\nCURRENT HEALTH AND\nDISRUPT THEIR CURRENT\nACTION BY 66%', fr_FR: ''},
 
-    mind_strike_desc: {en_us: 'DEAL 6 DAMAGE.\nENEMY TAKES X2\nDAMAGE FROM NEXT\nATTACK HIT', fr_FR: ''},
+    mind_strike_desc: {en_us: 'DEAL 6 DAMAGE.\nENEMY TAKES 50%\nBONUS DAMAGE FROM\nNEXT ATTACK HIT', fr_FR: ''},
     mind_enhance_desc: {en_us: 'NEXT ATTACK SETS\nENEMY ON FIRE\nFOR 16 DAMAGE OVER\n4 SECONDS', fr_FR: ''},
     mind_protect_desc: {en_us: 'HALVE THE DAMAGE\nFROM ATTACKS AND INFLICT\nIT ONTO THE ENEMY\nX2', fr_FR: ''},
     mind_reinforce_desc: {en_us: 'ATTACKS DEAL +2\nDAMAGE', fr_FR: ''},

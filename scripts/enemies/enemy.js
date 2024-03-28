@@ -44,6 +44,7 @@ class Enemy {
         this.shield = 0;
         this.isAsleep = false;
         this.timeSinceLastAttacked = 9999;
+        this.damageNumOffset = 0;
         this.healthBarLengthMax = 101;
         this.extraSprites = [];
         this.statuses = [];
@@ -61,6 +62,7 @@ class Enemy {
         this.timeWhenLastDamageTaken = 0;
         this.damageCountdown = 0;
         this.accumulatedTimeDamage = 0;
+        this.specialDamageAbsorptionActive = false;
         this.storeDamage = false;
         this.dead = false;
 
@@ -119,7 +121,7 @@ class Enemy {
         this.chargeBarWarningBig.alpha = 0
         this.chargeBarWarningBig.setDepth(1);
 
-        this.chargeBarMax = this.scene.add.sprite(x, 326, 'blackPixel');
+        this.chargeBarMax = this.scene.add.sprite(x, 335, 'blackPixel');
         this.chargeBarMax.setScale(chargeBarLength + 2, 8);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;
@@ -152,7 +154,7 @@ class Enemy {
         this.chargeBarAngry.setDepth(10);
         this.chargeBarAngry.visible = false;
 
-        this.attackName = this.scene.add.bitmapText(this.x, this.chargeBarMax.y - 23, 'normal', '', 20);
+        this.attackName = this.scene.add.bitmapText(this.x, this.chargeBarMax.y - 25, 'normal', '', 25);
         this.attackName.setDepth(10);
         this.attackName.setOrigin(0.5, 0.5);
     }
@@ -179,6 +181,8 @@ class Enemy {
         this.sprite.setDepth(0);
         this.sprite.setAlpha(0);
         this.sprite.setScale(scale * 0.98, scale * 0.95);
+        this.defaultSprite = name;
+
         this.scene.tweens.add({
             targets: this.sprite,
             duration: 750,
@@ -285,10 +289,11 @@ class Enemy {
             return;
         }
         if (this.attackCooldown <= 0) {
+            chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
             if (this.isAngry) {
-                this.attackCharge += timeChange * 1.75 * this.slowMult;
+                let increaseMult = Math.max(1.75, 0.3 / 1.75 * chargeMult);
+                this.attackCharge += timeChange * increaseMult * this.slowMult;
             } else {
-                chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
                 if (gameVars.playerNotMoved && chargeMult === 1) {
                     // this.attackCharge += timeChange * 0.02 * this.slowMult;
                     this.chargeBarCurr.alpha = 0.55;
@@ -300,7 +305,7 @@ class Enemy {
             this.chargeBarCurr.scaleX = Math.min(this.nextAttackChargeNeeded * 0.2, this.attackCharge * 0.2 + 1);
             this.chargeBarAngry.scaleX = this.chargeBarCurr.scaleX;
             if (this.attackCharge >= this.nextAttackChargeNeeded) {
-                this.useAttack();
+                this.useMove();
                 this.chargeBarWarning.visible = true;
                 this.chargeBarWarning.alpha = 0.8;
                 this.chargeBarWarningBig.alpha = Math.min(0.5, this.chargeBarWarningBig.alpha + timeChange * 0.05);
@@ -335,7 +340,7 @@ class Enemy {
             }
         }
         this.timeSinceLastAttacked += timeChange;
-        if (this.timeSinceLastAttacked < 300) {
+        if (this.timeSinceLastAttacked < 270) {
             if (!this.isAngry) {
                 this.isAngry = true;
                 this.chargeBarAngry.visible = true;
@@ -366,7 +371,7 @@ class Enemy {
     adjustDamageTaken(amt, isAttack, isTrue = false) {
         if (isAttack && this.statuses['mindStrike'] && amt > 0 && !isTrue) {
             this.statuses['mindStrike'].cleanUp(this.statuses);
-            let damageToTake = Math.round(amt);
+            let damageToTake = Math.ceil(amt * 0.5);
             setTimeout(() => {
                 this.takeTrueDamage(damageToTake);
             }, 0);
@@ -399,7 +404,7 @@ class Enemy {
         return amt;
     }
 
-    useAttack() {
+    useMove() {
         if (this.health <= 0) {
             return;
         }
@@ -408,14 +413,15 @@ class Enemy {
         this.chargeBarCurr.alpha = 1;
         this.chargeBarAngry.alpha = 1;
 
-        if (this.nextAttack.damage > 0) {
-            this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.attackSprites);
+        this.timeSinceLastAttacked += 150;
+        if (this.nextAttack.damage !== 0) {
+            this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.prepareSprite, this.nextAttack.attackSprites);
         } else {
             if (this.nextAttack.message) {
                 messageBus.publish(this.nextAttack.message, this.nextAttack.messageDetail);
             }
-            if (this.nextAttack.function) {
-                this.nextAttack.function();
+            if (this.nextAttack.attackFinishFunction) {
+                this.nextAttack.attackFinishFunction();
             }
         }
         if (this.nextAttack.block) {
@@ -441,6 +447,11 @@ class Enemy {
             this.nextAttack.startFunction();
         }
         this.attackName.setText(atkName);
+        if (atkName.length > 5) {
+            this.attackName.setScale(0.85);
+        } else {
+            this.attackName.setScale(1);
+        }
         this.prepareChargeBar();
         this.nextAttackIndex++;
     }
@@ -448,7 +459,6 @@ class Enemy {
     setSlowMult(amt = 0, duration = 90) {
         this.slowMult = amt;
         this.slowMultDuration = duration;
-        console.log(this.chargeBarMax);
         if (this.chargeBarMax.visible && this.chargeBarMax.alpha > 0) {
             this.voidPause.alpha = 1;
             this.voidPause.setScale(this.chargeBarMax.scaleX, this.chargeBarMax.scaleY);
@@ -596,6 +606,10 @@ class Enemy {
         });
     }
 
+    handleSpecialDamageAbsorption(amt) {
+        return amt;
+    }
+
     takeDamage(amt, isAttack = true) {
         let origHealth = this.health;
         if (this.storeDamage) {
@@ -626,14 +640,17 @@ class Enemy {
         }
 
         let damageTaken = this.adjustDamageTaken(amt, isAttack);
+        if (this.specialDamageAbsorptionActive) {
+            damageTaken = this.handleSpecialDamageAbsorption(damageTaken);
+        }
         this.setHealth(Math.max(0, this.health - damageTaken));
         let healthLoss = origHealth - this.health;
         if (healthLoss > 0) {
             this.animateShake();
-            this.animateDamageNum(healthLoss);
-            if (isAttack) {
-                this.timeSinceLastAttacked = 0;
-            }
+            this.animateDamageNum(healthLoss, undefined, this.damageNumOffset);
+        }
+        if (isAttack) {
+            this.timeSinceLastAttacked = 0;
         }
         let healthBarRatio = 1 + this.healthBarLengthMax * this.health / this.healthMax;
         this.healthBarCurr.scaleX = healthBarRatio;
@@ -744,6 +761,9 @@ class Enemy {
 
     die() {
         this.dead = true;
+        gameVars.timeSlowRatio = 1;
+        // undo any time magic
+        globalObjects.magicCircle.setTimeSlowRatio(1);
         this.healthBarCurr.scaleX = 0;
         this.healthBarText.setText('0');
         for (let i = 0; i < this.subscriptions.length; i++) {
@@ -867,7 +887,7 @@ class Enemy {
         if (isTrueDamage) {
             messageBus.publish("animateTrueDamageNum", this.x + randX, this.y + randY + offsetY, '-' + val, scale);
         } else {
-            messageBus.publish("animateDamageNumAccumulate", val);
+            messageBus.publish("animateDamageNumAccumulate", val, offsetY);
         }
     }
 
@@ -906,25 +926,39 @@ class Enemy {
 
     }
 
-    launchAttack(attackTimes = 1, attackSprites = [], isRepeatedAttack = false) {
+    launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false) {
+        if (this.dead){
+            return;
+        }
         let extraTimeMult = 2 - gameVars.timeSlowRatio;
+        if (prepareSprite) {
+            this.setSprite(prepareSprite, this.sprite.startScale);
+        }
+        if (this.nextAttack.attackStartFunction) {
+            this.nextAttack.attackStartFunction();
+        }
+        let pullbackScale = 0.9 * this.sprite.startScale;
         this.attackAnim = this.scene.tweens.add({
             targets: this.sprite,
-            scaleX: 0.93 * this.sprite.startScale,
-            scaleY: 0.93 * this.sprite.startScale,
+            scaleX: pullbackScale,
+            scaleY: pullbackScale,
             rotation: 0,
-            duration: 200 * extraTimeMult,
+            duration: isRepeatedAttack ? 200 * extraTimeMult : 300 * extraTimeMult,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 if (this.dead){
                     return;
+                }
+                if (!prepareSprite) {
+                    this.setSprite(this.defaultSprite);
+                    this.sprite.setScale(pullbackScale);
                 }
                 let attackScale = 1.09 * this.sprite.startScale
                 this.attackAnim = this.scene.tweens.add({
                     targets: this.sprite,
                     scaleX: attackScale,
                     scaleY: attackScale,
-                    duration: 300 * extraTimeMult,
+                    duration: isRepeatedAttack ? 300 * extraTimeMult : 350 * extraTimeMult,
                     rotation: 0,
                     ease: 'Cubic.easeIn',
                     onComplete: () => {
@@ -945,25 +979,18 @@ class Enemy {
                                 this.sprite.attackNum = (this.sprite.attackNum + 1) % attackSprites.length;
                             }
                             this.setSprite(attackSprites[this.sprite.attackNum], this.sprite.startScale);
-                            this.sprite.setScale(this.sprite.startScale)
-                            setTimeout(() => {
-                                if (!this.dead) {
-                                    this.setSprite(this.defaultSprite, this.sprite.startScale);
-                                }
-                            }, 200)
-
                         }
                         if (this.health > 0) {
                             messageBus.publish("selfTakeDamage", this.nextAttack.damage);
                             if (this.nextAttack.message) {
                                 messageBus.publish(this.nextAttack.message, this.nextAttack.messageDetail);
                             }
-                            if (this.nextAttack.function) {
-                                this.nextAttack.function();
+                            if (this.nextAttack.attackFinishFunction) {
+                                this.nextAttack.attackFinishFunction();
                             }
                         }
                         if (attackTimes > 1) {
-                            this.launchAttack(attackTimes - 1, attackSprites, true);
+                            this.launchAttack(attackTimes - 1, prepareSprite, attackSprites, true);
                         } else {
                             this.attackAnim = this.scene.tweens.add({
                                 targets: this.sprite,
@@ -973,6 +1000,11 @@ class Enemy {
                                 duration: 500 * extraTimeMult,
                                 ease: 'Cubic.easeInOut'
                             });
+                            setTimeout(() => {
+                                if (!this.dead) {
+                                    this.setSprite(this.defaultSprite);
+                                }
+                            }, 500 * extraTimeMult * 0.65);
                         }
                     }
                 });

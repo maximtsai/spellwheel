@@ -17,7 +17,7 @@ body void - Remove all status effects from yourself.
 
 strike time - Deal 9 damage, opponent's attacks are slowed down by 25% for 15 seconds.
 strike matter - Deal 12 damage
-strike mind - Deal 8 damage, opponent takes 50% more damage from next attack
+strike mind - Deal 6 damage, opponent takes 50% more damage from next attack
 strike void - Deal 10% current health damage
 
 overload time - Reset your HP to where it was 7 seconds ago.

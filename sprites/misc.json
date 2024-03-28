@@ -4,11 +4,32 @@
 			"image": "sprites/misc.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1021,
-				"h": 1309
+				"w": 1745,
+				"h": 1416
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "slash2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 750,
+						"h": 750
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 750,
+						"h": 747
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 750,
+						"h": 747
+					}
+				},
 				{
 					"filename": "scythe2.png",
 					"rotated": false,
@@ -25,7 +46,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 1,
+						"y": 750,
 						"w": 524,
 						"h": 631
 					}
@@ -46,7 +67,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 1,
+						"y": 750,
 						"w": 524,
 						"h": 631
 					}
@@ -67,30 +88,72 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 1,
+						"y": 750,
 						"w": 524,
 						"h": 631
 					}
 				},
 				{
-					"filename": "scythe6.png",
+					"filename": "slash1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 850,
-						"h": 780
+						"w": 750,
+						"h": 750
 					},
 					"spriteSourceSize": {
-						"x": 68,
-						"y": 313,
-						"w": 456,
-						"h": 466
+						"x": 74,
+						"y": 71,
+						"w": 603,
+						"h": 596
 					},
 					"frame": {
 						"x": 527,
+						"y": 750,
+						"w": 603,
+						"h": 596
+					}
+				},
+				{
+					"filename": "victory_text.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 297,
+						"h": 54
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 297,
+						"h": 54
+					},
+					"frame": {
+						"x": 527,
+						"y": 1348,
+						"w": 297,
+						"h": 54
+					}
+				},
+				{
+					"filename": "announceBg.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 600,
+						"h": 167
+					},
+					"frame": {
+						"x": 1132,
 						"y": 1,
-						"w": 456,
-						"h": 466
+						"w": 600,
+						"h": 167
 					}
 				},
 				{
@@ -108,31 +171,31 @@
 						"h": 197
 					},
 					"frame": {
-						"x": 985,
+						"x": 1734,
 						"y": 1,
 						"w": 10,
 						"h": 197
 					}
 				},
 				{
-					"filename": "floating_death.png",
+					"filename": "scythe6.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 500,
-						"h": 375
+						"w": 850,
+						"h": 780
 					},
 					"spriteSourceSize": {
-						"x": 65,
-						"y": 0,
-						"w": 435,
-						"h": 370
+						"x": 68,
+						"y": 313,
+						"w": 456,
+						"h": 466
 					},
 					"frame": {
-						"x": 527,
-						"y": 469,
-						"w": 435,
-						"h": 370
+						"x": 753,
+						"y": 200,
+						"w": 456,
+						"h": 466
 					}
 				},
 				{
@@ -150,8 +213,8 @@
 						"h": 449
 					},
 					"frame": {
-						"x": 1,
-						"y": 634,
+						"x": 1211,
+						"y": 170,
 						"w": 515,
 						"h": 449
 					}
@@ -171,52 +234,31 @@
 						"h": 422
 					},
 					"frame": {
-						"x": 518,
-						"y": 841,
+						"x": 1211,
+						"y": 621,
 						"w": 502,
 						"h": 422
 					}
 				},
 				{
-					"filename": "announceBg.png",
+					"filename": "floating_death.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
 						"w": 500,
-						"h": 180
+						"h": 375
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 7,
-						"w": 500,
-						"h": 167
-					},
-					"frame": {
-						"x": 1,
-						"y": 1085,
-						"w": 500,
-						"h": 167
-					}
-				},
-				{
-					"filename": "victory_text.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 297,
-						"h": 54
-					},
-					"spriteSourceSize": {
-						"x": 0,
+						"x": 65,
 						"y": 0,
-						"w": 297,
-						"h": 54
+						"w": 435,
+						"h": 370
 					},
 					"frame": {
-						"x": 1,
-						"y": 1254,
-						"w": 297,
-						"h": 54
+						"x": 1132,
+						"y": 1045,
+						"w": 435,
+						"h": 370
 					}
 				}
 			]
@@ -225,6 +267,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:d7216cba192b8428e3e832a67f9a6256:2daec4f36cc24d9fe391fc8431df34d2:612dcbdb08476a0aba06aeca925f16b2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:e3c475689d6a4e223c7974c8023909c5:844b2973ec2c64447d8778ab4a8fb509:612dcbdb08476a0aba06aeca925f16b2$"
 	}
 }

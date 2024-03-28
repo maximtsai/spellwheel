@@ -43,8 +43,10 @@ class Player {
         this.x = x;
         this.y = y;
         this.health = 80;
+        this.trueHealthMax = 80;
         this.healthMax = 80;
         this.recentlyTakenDamageAmt = 0;
+        this.recentlyTakenTimeDamageAmt = 0;
         this.initStatsCustom();
         this.statuses = {};
     }
@@ -59,6 +61,23 @@ class Player {
 
     getStatuses() {
         return this.statuses;
+    }
+
+    getHealth() {
+        return this.health;
+    }
+
+    getHealthMax() {
+        return this.healthMax;
+    }
+
+    setHealth(amt = 80) {
+        this.health = amt;
+    }
+
+    setHealthMaxTemp(amt = 80) {
+        this.healthMax = amt;
+        this.refreshHealthBar();
     }
 
     spellMultiplier() {
@@ -213,6 +232,7 @@ class Player {
     }
 
     resetStats() {
+        this.healthMax = this.trueHealthMax;
         this.health = this.healthMax;
     }
 
@@ -279,13 +299,17 @@ class Player {
 
     enemyMadeAttack() {
         this.recentlyTakenDamageAmt = 0;
+        this.recentlyTakenTimeDamageAmt = 0;
     }
 
     getrecentlyTakenDamageAmt() {
-        return this.recentlyTakenDamageAmt;
+        return this.recentlyTakenDamageAmt + this.recentlyTakenTimeDamageAmt;
     }
 
     takeDamage(amt) {
+        if (amt < 0) {
+            amt = 0;
+        }
         let actualAmt = this.handleDamageStatuses(amt);
         let origHealth = this.health;
         let damageTaken = this.adjustDamageTaken(actualAmt);
@@ -299,6 +323,8 @@ class Player {
                 alpha: 0,
                 ease: 'Quad.easeOut'
             });
+        } else if (damageTaken === undefined) {
+            return;
         }
 
         this.health = Math.max(0, this.health - damageTaken);
@@ -309,8 +335,16 @@ class Player {
         }
     }
 
-    selfHeal(amt) {
-        this.health = Math.min(this.healthMax, this.health + amt);
+    selfHeal(amt, timeOverflow = false) {
+        let overflow = 0;
+        let newHealthAmt = this.health + amt;
+        if (newHealthAmt > this.healthMax) {
+            overflow = newHealthAmt - this.healthMax;
+        }
+        this.health = Math.min(this.healthMax, newHealthAmt);
+        if (timeOverflow) {
+            messageBus.publish('playerReduceDelayedDamage', overflow);
+        }
         this.animateHealthChange(amt);
         this.refreshHealthBar();
     }
@@ -324,6 +358,10 @@ class Player {
         let healAmt = Math.ceil(amount * this.recentlyTakenDamageAmt);
         this.selfHeal(healAmt);
         this.recentlyTakenDamageAmt -= healAmt;
+
+        let timeHealAmt = Math.ceil(amount * this.recentlyTakenTimeDamageAmt);
+        this.selfHeal(timeHealAmt, true);
+        this.recentlyTakenTimeDamageAmt -= timeHealAmt;
     }
 
     takeTrueDamage(amt) {
@@ -450,9 +488,9 @@ class Player {
                     }
                     break;
                 case 'time':
-                    // TODO
                     if (hurtAmt > 1 && shieldObj.active) {
                         messageBus.publish('playerAddDelayedDamage', hurtAmt);
+
                         shieldObj.shakeAmt = 0.05 + hurtAmt * 0.005;
                         shieldObj.alpha = 1;
                         this.scene.tweens.add({

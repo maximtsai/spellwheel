@@ -5,7 +5,7 @@
     }
 
      initStatsCustom() {
-         this.health = 80;
+         this.health = gameVars.isHardMode ? 120 : 80;
          this.isAsleep = true;
      }
 
@@ -175,7 +175,8 @@
                  this.x -= 80;
                  this.y += 39;
                  this.setSprite('dummy_broken.png', this.sprite.scaleX);
-                 this.sprite.setOrigin(0.5, 0.95);
+                 this.sprite.setRotation(0);
+                 this.sprite.setOrigin(0.85, 0.8);
                  this.flash = this.scene.add.sprite(this.x, this.y - 75, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.5).setDepth(999);
 
                  PhaserScene.tweens.add({
@@ -301,7 +302,7 @@
              [
                  // 0
                  {
-                     name: "TACKLE }10 ",
+                     name: "}10 ",
                      chargeAmt: 250,
                      damage: 10,
                     hitAnimFunc: () => {
@@ -312,10 +313,10 @@
                     }
                  },
                  {
-                     name: "HEADBUTT }15",
+                     name: "}15 ",
                      chargeAmt: 350,
                      damage: 15,
-                     function: () => {
+                     attackFinishFunction: () => {
                          let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 150, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
                          setTimeout(() => {
                              dmgEffect.x += 30;
@@ -329,8 +330,8 @@
                  {
                      name: "ULTIMATE ATTACK }40 (WATCH OUT!)",
                      chargeAmt: 600,
-                     damage: 50,
-                     function: () => {
+                     damage: 40,
+                     attackFinishFunction: () => {
                          let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 110, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
                          PhaserScene.tweens.add({
                              targets: dmgEffect,
@@ -345,11 +346,17 @@
                  },
                  {
                      name: "TAKING A BREAK",
-                     chargeAmt: 250,
-                     damage: 0
+                     chargeAmt: 350,
+                     damage: 0,
+                     startattackFinishFunction: () => {
+                         this.setDefaultSprite('dummy.png', 0.75);
+                     },
+                     attackFinishFunction: () => {
+                         this.setDefaultSprite('dummy_angry.png', 0.75);
+                     }
                  },
                  {
-                     name: "TACKLE }10 ",
+                     name: "}10 ",
                      chargeAmt: 250,
                      damage: 10,
                      hitAnimFunc: () => {
@@ -360,10 +367,10 @@
                      }
                  },
                  {
-                     name: "HEADBUTT }15",
+                     name: "}15",
                      chargeAmt: 350,
                      damage: 15,
-                     function: () => {
+                     attackFinishFunction: () => {
                          let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 150, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
                          setTimeout(() => {
                              dmgEffect.x += 30;
@@ -375,10 +382,10 @@
                      }
                  },
                  {
-                     name: "ULTIMATE ATTACK }40 (WATCH OUT!)",
+                     name: "ULTIMATE-ER ATTACK }50 (REALLY WATCH OUT!)",
                      chargeAmt: 600,
                      damage: 50,
-                     function: () => {
+                     attackFinishFunction: () => {
                          let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 110, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
                          PhaserScene.tweens.add({
                              targets: dmgEffect,
@@ -395,7 +402,7 @@
                      name: "GOING BACK TO SLEEP...",
                      chargeAmt: 250,
                      damage: 0,
-                     function: () => {
+                     attackFinishFunction: () => {
                          this.setSprite('dummy.png', 0.75);
                          this.setAsleep();
                      }

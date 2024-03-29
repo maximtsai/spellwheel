@@ -4,7 +4,6 @@
         this.initSprite('time_magi.png', 0.75,0, 5);
         ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, RUNE_MATTER, null, null , RUNE_MATTER];
         EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_ENHANCE, RUNE_PROTECT, null, null, null, RUNE_REINFORCE, RUNE_PROTECT, RUNE_ENHANCE];
-        globalObjects.magicCircle.buildRunes();
     }
 
      initStatsCustom() {
@@ -132,15 +131,13 @@
 
      }
 
-     playDeathAnimation() {
-        if (this.isPlayingDeathAnim) {
-            return;
-        }
-        this.isPlayingDeathAnim = true;
-        if (this.currAnim) {
-            this.currAnim.stop();
-        }
-         this.setDefaultSprite('time_magi_terrified.png', 0.75);
+     die() {
+        super.die();
+
+         if (this.currAnim) {
+             this.currAnim.stop();
+         }
+         this.setDefaultSprite('time_magi_terrified.png', 0.72);
          globalObjects.magicCircle.cancelTimeSlowFromEnemy();
          if (this.clockShield) {
              this.clockShield.alpha += 0.15;

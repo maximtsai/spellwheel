@@ -731,6 +731,7 @@ class SpellManager {
         } else if (additionalDamage > 1) {
             spellName = "HEAVY " + spellName;
         }
+        messageBus.publish('clearSpellMultiplier');
         this.postAttackCast(spellID, 300, spellName);
 
     }

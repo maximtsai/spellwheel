@@ -760,8 +760,10 @@ class Enemy {
     }
 
     die() {
+        if (this.dead) {
+            return;
+        }
         this.dead = true;
-        gameVars.timeSlowRatio = 1;
         // undo any time magic
         globalObjects.magicCircle.setTimeSlowRatio(1);
         this.healthBarCurr.scaleX = 0;
@@ -769,6 +771,7 @@ class Enemy {
         for (let i = 0; i < this.subscriptions.length; i++) {
             this.subscriptions[i].unsubscribe();
         }
+        this.subscriptions = [];
         if (this.attackAnim) {
             this.attackAnim.stop();
             this.sprite.setScale(this.sprite.startScale);

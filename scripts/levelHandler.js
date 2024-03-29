@@ -3,6 +3,12 @@ let levelTimeoutID = null;
 
 function beginLevel(lvl) {
     CURRENT_LEVEL = lvl;
+    globalObjects.player.resetStats();
+    messageBus.publish('manualResetElements');
+    messageBus.publish('manualResetEmbodiments', undefined, true); // with long delay
+
+    globalObjects.magicCircle.buildRunes();
+
     createEnemyAfterDelay(lvl);
     switch(lvl) {
         case 0:

@@ -58,6 +58,17 @@ function createAnimations(scene) {
         frameRate: 30
     });
     scene.anims.create({
+        key: 'circleEffect',
+        frames: scene.anims.generateFrameNames('circle', {
+            prefix: 'circleEffect',
+            suffix: '.png',
+            start: 1,
+            end: 10,
+            zeroPad: 0,
+        }),
+        frameRate: 10
+    });
+    scene.anims.create({
         key: 'powerEffect',
         frames: scene.anims.generateFrameNames('spells', {
             prefix: 'shockEffect',

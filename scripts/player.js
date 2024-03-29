@@ -20,10 +20,12 @@ class Player {
             messageBus.subscribe('startVoidForm', this.handleVoidForm.bind(this)),
             messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this)),
 
-            messageBus.subscribe('enemyHasDied', this.clearEffects.bind(this)),
             messageBus.subscribe('enemyMadeAttack', this.enemyMadeAttack.bind(this)),
-            messageBus.subscribe("selfClearEffect", this.clearSpecificEffect.bind(this))
+            messageBus.subscribe("selfClearEffect", this.clearSpecificEffect.bind(this)),
 
+            messageBus.subscribe("recordSpellAttack", this.incrementSpellsCast.bind(this)),
+            messageBus.subscribe("recordSpell", this.incrementSpellsCast.bind(this)),
+            messageBus.subscribe("enemyHasDied", this.clearAllEffects.bind(this)),
 
         ];
         updateManager.addFunction(this.update.bind(this));
@@ -46,6 +48,7 @@ class Player {
         this.healthMax = 80;
         this.recentlyTakenDamageAmt = 0;
         this.recentlyTakenTimeDamageAmt = 0;
+        this.playerCastSpells = 0;
         this.initStatsCustom();
         this.statuses = {};
     }
@@ -77,6 +80,10 @@ class Player {
     setHealthMaxTemp(amt = 80) {
         this.healthMax = amt;
         this.refreshHealthBar();
+    }
+
+    incrementSpellsCast() {
+        this.playerCastSpells++;
     }
 
     spellMultiplier() {
@@ -233,6 +240,8 @@ class Player {
     resetStats() {
         this.healthMax = this.trueHealthMax;
         this.health = this.healthMax;
+        this.playerCastSpells = 0;
+        this.clearAllEffects();
     }
 
 
@@ -287,10 +296,16 @@ class Player {
         if (this.statuses[effect]) {
             this.statuses[effect].cleanUp(this.statuses);
         }
-
     }
 
-    clearEffects() {
+    clearAllEffects() {
+        for (let effect in this.statuses) {
+            if (this.statuses[effect]) {
+                this.statuses[effect].cleanUp(this.statuses);
+            }
+        }
+        this.statuses = {};
+
         messageBus.publish('selfClearStatuses');
     }
 

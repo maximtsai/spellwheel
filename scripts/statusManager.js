@@ -11,6 +11,7 @@ class StatusManager {
             messageBus.subscribe('selfTakeEffect', this.manualUpdateSelf.bind(this)),
             messageBus.subscribe('enemyTakeEffect', this.manualUpdateEnemy.bind(this)),
             messageBus.subscribe("selfClearStatuses", this.clearPlayerStatuses.bind(this)),
+            messageBus.subscribe("enemyHasDied", this.clearPlayerStatuses.bind(this)),
         ];
 
 

@@ -631,7 +631,6 @@ const ENABLE_KEYBOARD = true;
         let y = this.y;
         if (this.elements) {
             for (let i = 0; i < this.elements.length; i++) {
-                console.log("DestroyElem", i);
                 this.elements[i].destroy();
                 this.elements[i].glow.destroy();
             }
@@ -1517,7 +1516,7 @@ const ENABLE_KEYBOARD = true;
     }
 
 
-     manualResetEmbodiments(embodiUsed) {
+     manualResetEmbodiments(embodiUsed, useLongDelay = false) {
          this.outerDragDisabled = true;
          this.castDisabled = true;
          this.recharging = true;
@@ -1535,11 +1534,33 @@ const ENABLE_KEYBOARD = true;
                  this.resetEmbodiments(embodiUsed);
                  this.outerDragDisabled = false;
                  if (!this.innerDragDisabled && !this.outerDragDisabled) {
-                     this.castDisabled = false;
-                     this.recharging = false;
-                     this.bufferedCastAvailable = false;
-                     if (this.useBufferedSpellCast) {
-                         this.castSpell();
+                     if (useLongDelay) {
+                         setTimeout(() => {
+                             this.castDisabled = false;
+                             this.recharging = false;
+                             this.bufferedCastAvailable = false;
+                             if (this.useBufferedSpellCast) {
+                                 this.castSpell();
+                             }
+                             let readySprite = this.scene.add.sprite(this.x, this.y, 'circle').play('circleEffect').setScale(1.1).setDepth(999999);
+                             this.scene.tweens.add({
+                                 targets: readySprite,
+                                 scaleX: 2,
+                                 scaleY: 2,
+                                 duration: 1200,
+                                 ease: 'Cubic.easeOut',
+                                 onComplete: () => {
+                                     readySprite.destroy();
+                                 }
+                             });
+                         }, 1200)
+                     } else {
+                         this.castDisabled = false;
+                         this.recharging = false;
+                         this.bufferedCastAvailable = false;
+                         if (this.useBufferedSpellCast) {
+                             this.castSpell();
+                         }
                      }
                  }
              },

@@ -251,6 +251,7 @@
                 <false/>
             </struct>
             <key type="filename">enemies/dummy_angry.png</key>
+            <key type="filename">enemies/dummy_w_eyes.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

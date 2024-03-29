@@ -22,11 +22,10 @@ class Player {
 
             messageBus.subscribe('enemyHasDied', this.clearEffects.bind(this)),
             messageBus.subscribe('enemyMadeAttack', this.enemyMadeAttack.bind(this)),
-
+            messageBus.subscribe("selfClearEffect", this.clearSpecificEffect.bind(this))
 
 
         ];
-        //             messageBus.subscribe("selfClearEffect", this.clearEffects.bind(this)),
         updateManager.addFunction(this.update.bind(this));
         // Handles weird phaser initial lag issue. TODO: replace with something else later
         this.bleedObj = this.scene.add.sprite(x, y, 'pixels', 'red_pixel.png');
@@ -282,6 +281,13 @@ class Player {
 
     takeEffect(newEffect) {
         this.statuses[newEffect.name] = newEffect;
+    }
+
+    clearSpecificEffect(effect) {
+        if (this.statuses[effect]) {
+            this.statuses[effect].cleanUp(this.statuses);
+        }
+
     }
 
     clearEffects() {

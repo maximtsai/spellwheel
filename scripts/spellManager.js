@@ -1083,8 +1083,6 @@ class SpellManager {
 
         let multiplier = globalObjects.player.spellMultiplier();
 
-        // TODO Remove timeshield
-
         this.scene.tweens.add({
             targets: animation1,
             duration: 400,
@@ -2302,10 +2300,9 @@ class SpellManager {
 
     cleanUpExistingShield(shieldID) {
         let existingBuff = globalObjects.player.getStatuses()[shieldID];
-        console.log(existingBuff);
         if (existingBuff) {
             // already got a shield in place
-            console.log("possibly unneeded");
+            console.log("clear effect", shieldID);
             messageBus.publish('selfClearEffect', shieldID);
         }
     }

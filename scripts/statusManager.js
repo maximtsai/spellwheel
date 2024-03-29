@@ -7,9 +7,13 @@ class StatusManager {
         this.playerStatusDisplayStack = [];
         this.listOfFreeStatuses = [];
         this.lastUpdateTime = 0;
-        messageBus.subscribe('selfTakeEffect', this.manualUpdateSelf.bind(this));
-        messageBus.subscribe('enemyTakeEffect', this.manualUpdateEnemy.bind(this));
-        messageBus.subscribe("selfClearStatuses", this.clearPlayerStatuses.bind(this)),
+        this.subscriptions = [
+            messageBus.subscribe('selfTakeEffect', this.manualUpdateSelf.bind(this)),
+            messageBus.subscribe('enemyTakeEffect', this.manualUpdateEnemy.bind(this)),
+            messageBus.subscribe("selfClearStatuses", this.clearPlayerStatuses.bind(this)),
+        ];
+
+
         updateManager.addFunction(this.update.bind(this));
 
     }
@@ -34,7 +38,6 @@ class StatusManager {
                     break;
                 }
             }
-
 
             if (indexFound === -1) {
                 indexFound = this.playerStatusDisplayStack.length;

@@ -1,6 +1,6 @@
 const DECAY = 0.00006;
 const STATIC = 0.006;
-const INFINITE_CAST = true;
+const INFINITE_CAST = false;
 const ENABLE_KEYBOARD = true;
 
  class MagicCircle {
@@ -433,7 +433,7 @@ const ENABLE_KEYBOARD = true;
         this.dragArrow.setDepth(100001);
         this.dragArrow.setOrigin(0, 0.5);
         this.dragArrow.visible = false;
-        this.buildRunes(x, y, scene);
+        this.buildRunes();
     }
 
     createTimeStopObjs() {
@@ -626,11 +626,26 @@ const ENABLE_KEYBOARD = true;
         // this.setTimeSlowRatio(); // deprecated
     }
 
-    buildRunes(x, y, scene) {
+    buildRunes() {
+        let x = this.x;
+        let y = this.y;
+        if (this.elements) {
+            for (let i = 0; i < this.elements.length; i++) {
+                console.log("DestroyElem", i);
+                this.elements[i].destroy();
+                this.elements[i].glow.destroy();
+            }
+        }
+        if (this.embodiments) {
+            for (let i = 0; i < this.embodiments.length; i++) {
+                this.embodiments[i].destroy();
+                this.embodiments[i].glow.destroy();
+            }
+        }
         this.elements = [];
         this.embodiments = [];
         for (let i = 0; i < ELEMENT_ARRAY.length; i++) {
-            this.elements[i] = scene.add.sprite(x, y, 'circle', ELEMENT_ARRAY[i] + '.png');
+            this.elements[i] = this.scene.add.sprite(x, y, 'circle', ELEMENT_ARRAY[i] + '.png');
             this.elements[i].setOrigin(0.5, 0.85);
             this.elements[i].setDepth(103);
             this.elements[i].rotation = (Math.PI * 2)/ELEMENT_ARRAY.length * i;
@@ -638,13 +653,13 @@ const ENABLE_KEYBOARD = true;
             this.elements[i].runeName = ELEMENT_ARRAY[i];
             this.elements[i].alpha = 0.5;
 
-            this.elements[i].glow = scene.add.sprite(x, y, 'circle', ELEMENT_ARRAY[i] + '_glow.png');
+            this.elements[i].glow = this.scene.add.sprite(x, y, 'circle', ELEMENT_ARRAY[i] + '_glow.png');
             this.elements[i].glow.setOrigin(0.5, 0.85);
             this.elements[i].glow.setDepth(103);
             this.elements[i].glow.rotation = this.elements[i].rotation;
         }
         for (let i = 0; i < EMBODIMENT_ARRAY.length; i++) {
-            this.embodiments[i] = scene.add.sprite(x, y, 'circle', EMBODIMENT_ARRAY[i] + '.png');
+            this.embodiments[i] = this.scene.add.sprite(x, y, 'circle', EMBODIMENT_ARRAY[i] + '.png');
             this.embodiments[i].setOrigin(0.5, 1.18);
             this.embodiments[i].setDepth(103);
             this.embodiments[i].rotation = (Math.PI * 2)/EMBODIMENT_ARRAY.length * i;
@@ -652,14 +667,13 @@ const ENABLE_KEYBOARD = true;
             this.embodiments[i].runeName = EMBODIMENT_ARRAY[i];
             this.embodiments[i].alpha = 0.5;
 
-            this.embodiments[i].glow = scene.add.sprite(x, y, 'circle', EMBODIMENT_ARRAY[i] + '_glow.png');
+            this.embodiments[i].glow = this.scene.add.sprite(x, y, 'circle', EMBODIMENT_ARRAY[i] + '_glow.png');
             this.embodiments[i].glow.setOrigin(0.5, 1.18);
             this.embodiments[i].glow.setDepth(103);
             this.embodiments[i].glow.rotation = this.embodiments[i].rotation;
         }
         // const ELEMENT_ARRAY = ['rune_time', 'rune_mind', 'rune_matter', 'rune_void'];
         // const EMBODIMENT_ARRAY = ['rune_enhance', 'rune_protect', 'rune_reinforce', 'rune_strike', 'rune_unload'];
-
     }
 
     setFrameLazy(item, frame) {

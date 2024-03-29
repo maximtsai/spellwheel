@@ -1481,11 +1481,6 @@ const ENABLE_KEYBOARD = true;
             onComplete: () => {
                 this.resetElements(elemUsed);
                 this.innerDragDisabled = false;
-                if (!this.innerDragDisabled && !this.outerDragDisabled) {
-                    this.castDisabled = false;
-                    this.recharging = false;
-                    this.bufferedCastAvailable = false;
-                }
             },
             duration: 1200,
             rotation: "+=6.283"
@@ -1533,36 +1528,34 @@ const ENABLE_KEYBOARD = true;
              onComplete: () => {
                  this.resetEmbodiments(embodiUsed);
                  this.outerDragDisabled = false;
-                 if (!this.innerDragDisabled && !this.outerDragDisabled) {
-                     if (useLongDelay) {
-                         setTimeout(() => {
-                             this.castDisabled = false;
-                             this.recharging = false;
-                             this.bufferedCastAvailable = false;
-                             if (this.useBufferedSpellCast) {
-                                 this.castSpell();
-                             }
-                             let readySprite = this.scene.add.sprite(this.x, this.y, 'circle').play('circleEffect').setScale(1.1).setDepth(999999);
-                             this.scene.tweens.add({
-                                 targets: readySprite,
-                                 scaleX: 2,
-                                 scaleY: 2,
-                                 duration: 1200,
-                                 ease: 'Cubic.easeOut',
-                                 onComplete: () => {
-                                     readySprite.destroy();
-                                 }
-                             });
-                         }, 1200)
-                     } else {
+                 setTimeout(() => {
+                     if (!this.outerDragDisabled) {
                          this.castDisabled = false;
                          this.recharging = false;
                          this.bufferedCastAvailable = false;
                          if (this.useBufferedSpellCast) {
                              this.castSpell();
                          }
+                         if (!this.readySprite) {
+                             this.readySprite = this.scene.add.sprite(this.x, this.y, 'circle').play('circleEffect').setScale(1.1).setDepth(999999);
+                         } else {
+                             this.readySprite.visible = true;
+                             this.readySprite.play(useLongDelay ? 'circleEffect' : 'circleEffectSmall');
+                         }
+                         console.log("can click")
+
+                         this.scene.tweens.add({
+                             targets: this.readySprite,
+                             scaleX: useLongDelay ? 2.2 : 1.75,
+                             scaleY: useLongDelay ? 2.2 : 1.75,
+                             duration: useLongDelay ? 1200 : 600,
+                             ease: 'Cubic.easeOut',
+                             onComplete: () => {
+                                 this.readySprite.visible = false;
+                             }
+                         });
                      }
-                 }
+                 }, useLongDelay ? 1200 : 200)
              },
              duration: 1400,
              rotation: "+=6.283"
@@ -1577,6 +1570,7 @@ const ENABLE_KEYBOARD = true;
                 this.embodiments[i].burnedOut = false;
             }
         }
+        console.log("resetting embodi")
         let sprite = this.scene.add.sprite(this.x, this.y, 'circle', 'circle.png');
         sprite.setScale(1.05);
         sprite.setDepth(100);
@@ -1768,7 +1762,9 @@ const ENABLE_KEYBOARD = true;
                                 let reEnableDelay = this.keyboardCasted ? 400 : 0;
 
                                 PhaserScene.time.delayedCall(reEnableDelay, () => {
-                                    this.castDisabled = false;
+                                    if (!this.outerDragDisabled) {
+                                        this.castDisabled = false;
+                                    }
                                     if (this.spellNameTextAnim) {
                                         this.spellNameTextAnim.stop();
                                     }

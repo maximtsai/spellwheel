@@ -1,0 +1,209 @@
+{
+	"textures": [
+		{
+			"image": "sprites/ui-0.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 1443,
+				"h": 496
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "locket2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 550,
+						"h": 551
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 43,
+						"w": 530,
+						"h": 494
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 530,
+						"h": 494
+					}
+				},
+				{
+					"filename": "battleOverScreen.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 460,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 460,
+						"h": 400
+					},
+					"frame": {
+						"x": 533,
+						"y": 1,
+						"w": 460,
+						"h": 400
+					}
+				},
+				{
+					"filename": "locket1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 550,
+						"h": 551
+					},
+					"spriteSourceSize": {
+						"x": 103,
+						"y": 43,
+						"w": 447,
+						"h": 494
+					},
+					"frame": {
+						"x": 995,
+						"y": 1,
+						"w": 447,
+						"h": 494
+					}
+				},
+				{
+					"filename": "nextLevel.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 180,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 180,
+						"h": 51
+					},
+					"frame": {
+						"x": 533,
+						"y": 403,
+						"w": 180,
+						"h": 51
+					}
+				},
+				{
+					"filename": "nextLevel_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 180,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 180,
+						"h": 51
+					},
+					"frame": {
+						"x": 533,
+						"y": 403,
+						"w": 180,
+						"h": 51
+					}
+				},
+				{
+					"filename": "nextLevel_press.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 180,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 180,
+						"h": 51
+					},
+					"frame": {
+						"x": 533,
+						"y": 403,
+						"w": 180,
+						"h": 51
+					}
+				},
+				{
+					"filename": "retry.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 139,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 139,
+						"h": 51
+					},
+					"frame": {
+						"x": 715,
+						"y": 403,
+						"w": 139,
+						"h": 51
+					}
+				},
+				{
+					"filename": "retry_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 139,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 139,
+						"h": 51
+					},
+					"frame": {
+						"x": 715,
+						"y": 403,
+						"w": 139,
+						"h": 51
+					}
+				},
+				{
+					"filename": "retry_press.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 139,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 139,
+						"h": 51
+					},
+					"frame": {
+						"x": 715,
+						"y": 403,
+						"w": 139,
+						"h": 51
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:61f6398447314a38f8d02ab8475548b6:c6d65343956fd9c2e5807487fb28779e:6af6d199855d1c5980a61db04791f8fb$"
+	}
+}

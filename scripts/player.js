@@ -280,6 +280,10 @@ class Player {
         }
     }
 
+    getPlayerCastSpellsCount() {
+        return this.playerCastSpells;
+    }
+
     clearVoidForm() {
         this.blackBalls = null;
     }

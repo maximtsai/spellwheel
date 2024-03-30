@@ -5,7 +5,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 120 : 80;
+         this.health = gameVars.isHardMode ? 120 : 5;
          this.isAsleep = true;
          this.initTutorial();
      }
@@ -146,6 +146,9 @@
      }
 
      die() {
+         if (this.dead) {
+             return;
+         }
         super.die();
          if (this.eyes) {
              this.removeExtraSprite(this.eyes);
@@ -181,7 +184,7 @@
          });
          PhaserScene.tweens.add({
              targets: this.sprite,
-             rotation: -1.25,
+             rotation: -1.31,
              ease: "Cubic.easeIn",
              duration: 1000,
              onComplete: () => {
@@ -189,7 +192,7 @@
                  this.y += 39;
                  this.setSprite('dummy_broken.png', this.sprite.scaleX);
                  this.sprite.setRotation(0);
-                 this.sprite.setOrigin(0.85, 0.8);
+                 this.sprite.setOrigin(0.85, 0.78);
                  this.flash = this.scene.add.sprite(this.x, this.y - 75, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.5).setDepth(999);
 
                  PhaserScene.tweens.add({
@@ -232,10 +235,12 @@
      }
 
      showVictory(rune) {
+        console.log("Show victory");
          let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(998).setAlpha(0);
          let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(998).setAlpha(0);
          let runeAcquired = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 2, 'NEW RUNE ACQUIRED').setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(998).setFontSize(22);
          let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(998).setFontSize(22);
+         swirlInReaperFog();
 
          PhaserScene.tweens.add({
              targets: banner,

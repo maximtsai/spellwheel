@@ -1,6 +1,6 @@
 let useFirstBG = true;
 function fadeInBackground(name, duration = 15000, scale = 1) {
-    let nextObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight * 0.7, name).setDepth(-1).setScale(1.1).setAlpha(0).setOrigin(0.5, 0.35);
+    let nextObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight * 0.7, name).setDepth(-10).setScale(1.1).setAlpha(0).setOrigin(0.5, 0.35);
     nextObj.setScale(scale);
     PhaserScene.tweens.add({
         targets: nextObj,
@@ -25,7 +25,7 @@ function fadeInBackground(name, duration = 15000, scale = 1) {
 }
 
 function fadeInBackgroundAtlas(atlas, name, duration = 15000, scale = 1.1, endScale, ease, delay, extra) {
-    let nextObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight * 0.7, atlas, name).setDepth(-1).setScale(scale).setAlpha(0).setOrigin(0.5, 0.35);
+    let nextObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight * 0.7, atlas, name).setDepth(-10).setScale(scale).setAlpha(0).setOrigin(0.5, 0.35);
     PhaserScene.tweens.add({
         delay: delay,
         targets: nextObj,
@@ -58,7 +58,7 @@ function fadeInBackgroundAtlas(atlas, name, duration = 15000, scale = 1.1, endSc
 
     if (useFirstBG) {
         if (globalObjects.background2) {
-            globalObjects.background2.setDepth(-2);
+            globalObjects.background2.setDepth(-11);
         }
         if (globalObjects.background1) {
             globalObjects.background1.destroy();
@@ -66,7 +66,7 @@ function fadeInBackgroundAtlas(atlas, name, duration = 15000, scale = 1.1, endSc
         globalObjects.background1 = nextObj;
     } else {
         if (globalObjects.background1) {
-            globalObjects.background1.setDepth(-2);
+            globalObjects.background1.setDepth(-11);
         }
         if (globalObjects.background2) {
             globalObjects.background2.destroy();

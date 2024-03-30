@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>phaser-maxim</string>
         <key>textureFileName</key>
-        <filename>../sprites/backgrounds-{n}.webp</filename>
+        <filename></filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrQualityLevel</key>
@@ -50,7 +50,7 @@
         <key>dxtCompressionMode</key>
         <enum type="SettingsBase::DxtCompressionMode">DXT_PERCEPTUAL</enum>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">Linear</enum>
+        <enum type="SettingsBase::DitherType">Atkinson</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>75</uint>
+        <uint>101</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -124,7 +124,7 @@
             <key>json</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../sprites/backgrounds.json</filename>
+                <filename>../sprites/ui.json</filename>
             </struct>
         </map>
         <key>multiPackMode</key>
@@ -169,13 +169,11 @@
             <key>defaultPivotPoint</key>
             <point_f>0.5,0.5</point_f>
             <key>writePivotPoints</key>
-            <true/>
+            <false/>
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">backgrounds/background0.webp</key>
-            <key type="filename">backgrounds/background2.webp</key>
-            <key type="filename">backgrounds/background3.webp</key>
+            <key type="filename">ui/battleOverScreen.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -184,13 +182,14 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>160,185,320,370</rect>
+                <rect>115,100,230,200</rect>
                 <key>scale9Paddings</key>
-                <rect>160,185,320,370</rect>
+                <rect>115,100,230,200</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">backgrounds/background1.webp</key>
+            <key type="filename">ui/locket1.png</key>
+            <key type="filename">ui/locket2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -199,14 +198,15 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>160,188,320,375</rect>
+                <rect>138,138,275,275</rect>
                 <key>scale9Paddings</key>
-                <rect>160,188,320,375</rect>
+                <rect>138,138,275,275</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">backgrounds/background5.webp</key>
-            <key type="filename">backgrounds/background6.webp</key>
+            <key type="filename">ui/nextLevel.png</key>
+            <key type="filename">ui/nextLevel_hover.png</key>
+            <key type="filename">ui/nextLevel_press.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -215,13 +215,15 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>208,256,416,512</rect>
+                <rect>45,13,90,25</rect>
                 <key>scale9Paddings</key>
-                <rect>208,256,416,512</rect>
+                <rect>45,13,90,25</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">backgrounds/backgroundx.webp</key>
+            <key type="filename">ui/retry.png</key>
+            <key type="filename">ui/retry_hover.png</key>
+            <key type="filename">ui/retry_press.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -230,40 +232,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>175,200,350,400</rect>
+                <rect>35,13,69,25</rect>
                 <key>scale9Paddings</key>
-                <rect>175,200,350,400</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/fog_slice.jpg</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>323,376,645,752</rect>
-                <key>scale9Paddings</key>
-                <rect>323,376,645,752</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/fog_swirl.png</key>
-            <key type="filename">backgrounds/fog_swirl_glow.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.9</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>300,371,600,741</rect>
-                <key>scale9Paddings</key>
-                <rect>300,371,600,741</rect>
+                <rect>35,13,69,25</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -274,7 +245,7 @@
             <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
-                    <filename>backgrounds</filename>
+                    <filename>ui</filename>
                 </array>
             </struct>
         </map>

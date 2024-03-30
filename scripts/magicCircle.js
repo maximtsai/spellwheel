@@ -1537,12 +1537,11 @@ const ENABLE_KEYBOARD = true;
                              this.castSpell();
                          }
                          if (!this.readySprite) {
-                             this.readySprite = this.scene.add.sprite(this.x, this.y, 'circle').play('circleEffect').setScale(1.1).setDepth(999999);
+                             this.readySprite = this.scene.add.sprite(this.x, this.y, 'circle').play('circleEffect').setScale(1.1).setDepth(100000);
                          } else {
                              this.readySprite.visible = true;
                              this.readySprite.play(useLongDelay ? 'circleEffect' : 'circleEffectSmall');
                          }
-                         console.log("can click")
 
                          this.scene.tweens.add({
                              targets: this.readySprite,
@@ -1555,7 +1554,7 @@ const ENABLE_KEYBOARD = true;
                              }
                          });
                      }
-                 }, useLongDelay ? 1200 : 200)
+                 }, useLongDelay ? 1000 : 200)
              },
              duration: 1400,
              rotation: "+=6.283"
@@ -1758,7 +1757,7 @@ const ENABLE_KEYBOARD = true;
                             duration: 500,
                             onComplete: () => {
                                 poolManager.returnItemToPool(castCircle, 'castCircle');
-                                sprite.setScale(1, 1);
+                                sprite.setScale(1);
                                 let reEnableDelay = this.keyboardCasted ? 400 : 0;
 
                                 PhaserScene.time.delayedCall(reEnableDelay, () => {

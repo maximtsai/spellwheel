@@ -250,6 +250,7 @@ function setupGame() {
     updateManager.addFunction(globalObjects.magicCircle.update.bind(globalObjects.magicCircle));
 
     globalObjects.statusManager = new StatusManager(PhaserScene);
+    globalObjects.postFightScreen = new PostFightScreen(PhaserScene);
 
 
     globalObjects.player = new Player(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);

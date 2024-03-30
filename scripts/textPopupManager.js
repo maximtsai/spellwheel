@@ -9,6 +9,8 @@ class TextPopupManager {
         this.bonusNums = [];
         this.healNums = [];
         this.blockNums = [];
+        this.infoBox = this.scene.add.image(0, 0, 'blackPixel').setAlpha(0).setDepth(100001);
+        this.infoText = this.scene.add.text(0, 0, 'WELCOME').setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setFontSize(22).setDepth(100001);
         messageBus.subscribe('animateDamageNum', this.animateDamageNum.bind(this));
         messageBus.subscribe('animateDamageNumAccumulate', this.animateDamageNumAccumulate.bind(this));
         messageBus.subscribe('animateTrueDamageNum', this.animateTrueDamageNum.bind(this));
@@ -17,6 +19,34 @@ class TextPopupManager {
 
     }
 
+    setInfoText(x, y, newText) {
+        this.infoText.x = x; this.infoText.y = y;
+        this.infoText.setAlpha(0);
+        this.infoBox.setAlpha(0);
+        this.infoBox.x = x; this.infoBox.y = y;
+        this.infoText.setText(newText);
+        let boxWidth = this.infoText.width * 0.5 + 8;
+        let boxHeight = this.infoText.height * 0.5 + 6;
+        this.infoBox.setScale(boxWidth, boxHeight);
+        this.scene.tweens.add({
+            targets: [this.infoText],
+            alpha: 1,
+            duration: 300,
+        });
+        this.scene.tweens.add({
+            targets: [this.infoBox],
+            alpha: 0.7,
+            duration: 300,
+        });
+    }
+
+    hideInfoText() {
+        this.scene.tweens.add({
+            targets: [this.infoText, this.infoBox],
+            alpha: 0,
+            duration: 300,
+        });
+    }
 
     animateDamageNum(x, y, text, scale, param) {
         let textObj = this.getTextObjFromArray(x, y, text, this.damageNums, 'damage');

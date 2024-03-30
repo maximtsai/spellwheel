@@ -2,6 +2,14 @@
     constructor(scene, x, y) {
         super(scene, x, y);
         this.initSprite('dummy.png', 0.75,0, 5);
+        this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+            if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
+                this.initTutorial2();
+            } else if (globalObjects.player.getPlayerCastSpellsCount() > 1) {
+                this.initTutorial3();
+                this.playerSpellCastSub.unsubscribe();
+            }
+        });
     }
 
      initStatsCustom() {
@@ -11,8 +19,74 @@
      }
 
      initTutorial() {
+        setTimeout(() => {
+            if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
+                setTimeout(() => {
+                    globalObjects.magicCircle.showReadySprite();
+                }, 400);
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 40, "Click to cast\na spell");
+                let spellListener = messageBus.subscribe('playerCastedSpell', () => {
+                    globalObjects.textPopupManager.hideInfoText();
+                    spellListener.unsubscribe();
+                });
+                setTimeout(() => {
+                    if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
+                        globalObjects.magicCircle.showReadySprite();
+                        setTimeout(() => {
+                            if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
+                                globalObjects.magicCircle.showReadySprite();
+                            }
+                        }, 6000)
+                    }
+                }, 4000)
+            }
+        }, 3500)
+    }
 
-     }
+    initTutorial2() {
+        setTimeout(() => {
+            if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
+                // player only casted 1 spell so far
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 340, "Switch spells by spinning\n<== the two wheels ==>");
+                let spellListener = messageBus.subscribe('playerCastedSpell', () => {
+                    globalObjects.textPopupManager.hideInfoText();
+                    spellListener.unsubscribe();
+                });
+            }
+        }, 4200);
+    }
+
+    initTutorial3() {
+        setTimeout(() => {
+            if (!this.dead) {
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 200, gameConsts.halfHeight - 30, "Hover over\nspell names\nfor more\ninfo  ==>");
+                setTimeout(() => {
+                    let spellListener = messageBus.subscribe('playerCastedSpell', () => {
+                        globalObjects.textPopupManager.hideInfoText();
+                        spellListener.unsubscribe();
+                        setTimeout(() => {
+                            this.finishedTut3 = true;
+                            this.tryInitTutorial4();
+                        }, 3000);
+                    });
+                }, 1500);
+            }
+        }, 3000);
+    }
+
+    tryInitTutorial4() {
+        if (!this.dead && !this.isAsleep && this.finishedTut3) {
+            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 190, gameConsts.halfHeight - 60, "Watch out for\nenemy attacks!\n<==       ");
+
+            setTimeout(() => {
+                let spellListener = messageBus.subscribe('playerCastedSpell', () => {
+                    globalObjects.textPopupManager.hideInfoText();
+                    spellListener.unsubscribe();
+                });
+            }, 1500);
+        }
+    }
+
 
      setHealth(newHealth) {
          super.setHealth(newHealth);
@@ -76,6 +150,8 @@
                                          ease: 'Quart.easeIn',
                                          duration: 700,
                                          onComplete: () => {
+                                            this.tryInitTutorial4();
+
                                              this.setDefaultSprite('dummy_angry.png', 0.75);
                                              this.brows.destroy();
                                              this.brows = null;
@@ -165,6 +241,7 @@
             this.currAnim.stop();
         }
         this.sprite.setScale(this.sprite.startScale);
+        globalObjects.textPopupManager.hideInfoText();
 
         this.x += 10;
          this.y += this.sprite.height * this.sprite.scaleY * 0.45; this.sprite.y = this.y;
@@ -271,6 +348,7 @@
              duration: 400,
              onComplete: () => {
                  this.dieClickBlocker.setOnMouseUpFunc(() => {
+                    this.dieClickBlocker.destroy();
                      PhaserScene.tweens.add({
                          targets: [victoryText, runeAcquired, banner],
                          alpha: 0,

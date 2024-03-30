@@ -387,7 +387,7 @@ const ENABLE_KEYBOARD = true;
         this.errorBoxElement = scene.add.sprite(x, y - 115, 'circle', 'error_box.png');
         this.errorBoxElement.setDepth(121);
         this.errorBoxElement.alpha = 0;
-        this.errorBoxEmbodiment = scene.add.sprite(x, y - 171, 'circle', 'error_box.png');
+        this.errorBoxEmbodiment = scene.add.sprite(x, y - 170, 'circle', 'error_box.png');
         this.errorBoxEmbodiment.setDepth(121);
         this.errorBoxEmbodiment.alpha = 0;
 
@@ -1541,6 +1541,7 @@ const ENABLE_KEYBOARD = true;
                          } else {
                              this.readySprite.visible = true;
                              this.readySprite.play(useLongDelay ? 'circleEffect' : 'circleEffectSmall');
+                             this.readySprite.setScale(1.1);
                          }
 
                          this.scene.tweens.add({
@@ -1789,6 +1790,24 @@ const ENABLE_KEYBOARD = true;
         });
     }
 
+    showReadySprite(light = true) {
+        if (this.readySprite) {
+            this.readySprite.setScale(1.15);
+            this.readySprite.play(light ? 'circleEffect' : 'circleEffectSmall');
+            this.readySprite.visible = true;
+            this.scene.tweens.add({
+                targets: this.readySprite,
+                scaleX: light ? 2.2 : 1.75,
+                scaleY: light ? 2.2 : 1.75,
+                duration: light ? 1200 : 650,
+                ease: 'Cubic.easeOut',
+                onComplete: () => {
+                    this.readySprite.visible = false;
+                }
+            });
+        }
+    }
+
     trueCastSpell(elem, embodi, shieldId = -1, rotation) {
         let actualShieldId = shieldId != -1 ? 'shield' + shieldId : 'undefinedShield';
         messageBus.publish('castSpell', elem, embodi, actualShieldId, rotation);
@@ -1806,12 +1825,12 @@ const ENABLE_KEYBOARD = true;
                 this.scene.tweens.add({
                     targets: elem,
                     ease: 'Cubic.easeOut',
-                    duration: 500,
+                    duration: 600,
                     alpha: 0
                 });
             },
-            duration: 0,
-            alpha: 0.4
+            duration: 50,
+            alpha: 0.6
         });
     }
 

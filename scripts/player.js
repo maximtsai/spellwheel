@@ -84,6 +84,7 @@ class Player {
 
     incrementSpellsCast() {
         this.playerCastSpells++;
+        messageBus.publish("playerCastedSpell");
     }
 
     spellMultiplier() {

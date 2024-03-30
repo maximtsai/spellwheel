@@ -5,7 +5,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 120 : 5;
+         this.health = gameVars.isHardMode ? 120 : 80;
          this.isAsleep = true;
          this.initTutorial();
      }

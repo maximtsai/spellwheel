@@ -24,7 +24,7 @@ function swirlInReaperFog() {
 
 function getFogSlice() {
     if (!globalObjects.fogSlice) {
-        globalObjects.fogSlice = PhaserScene.add.sprite(gameConsts.halfWidth, 170, 'backgrounds', 'fog_slice.jpg').setDepth(-2).setOrigin(0.5, 0.4);
+        globalObjects.fogSlice = PhaserScene.add.sprite(gameConsts.halfWidth, 170, 'backgrounds', 'fog_slice.png').setDepth(-2).setOrigin(0.5, 0.4);
     }
     globalObjects.fogSlice.setAlpha(0).setScale(0.6).setRotation(-0.45);
     return globalObjects.fogSlice;

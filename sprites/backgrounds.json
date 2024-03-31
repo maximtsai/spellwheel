@@ -60,7 +60,7 @@
 					}
 				},
 				{
-					"filename": "fog_slice.jpg",
+					"filename": "fog_slice.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -287,6 +287,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:bd3d6d973814542f86ca3989aca4c713:6cd4027f65cf0f5a5182b56bd634dfc9:8733dbb53606bf76dda81645ffc6dc8b$"
+		"smartupdate": "$TexturePacker:SmartUpdate:b6f9ed670292466d6c97967c9dd0e89a:f43dbdc93f4611f3c8d34e0367856396:8733dbb53606bf76dda81645ffc6dc8b$"
 	}
 }

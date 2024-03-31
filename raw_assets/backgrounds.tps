@@ -236,7 +236,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">backgrounds/fog_slice.jpg</key>
+            <key type="filename">backgrounds/fog_slice.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -245,9 +245,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>323,376,645,752</rect>
+                <rect>180,210,360,420</rect>
                 <key>scale9Paddings</key>
-                <rect>323,376,645,752</rect>
+                <rect>180,210,360,420</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

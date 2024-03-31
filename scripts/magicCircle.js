@@ -411,9 +411,9 @@ const ENABLE_KEYBOARD = true;
         this.spellNameHover = new HoverText(
         {
             x: this.x,
-            y: this.spellNameText.y,
+            y: this.spellNameText.y + 14,
             width: this.spellNameText.width + 10,
-            height: this.spellNameText.height + 6,
+            height: this.spellNameText.height + 7,
             text: "",
             displayX: gameConsts.width - 8,
             displayY: this.spellNameText.y + 3,
@@ -2157,7 +2157,7 @@ const ENABLE_KEYBOARD = true;
         }
      }
 
-     applyMindBurn(damage = 4) {
+     applyMindBurn(damage = 3) {
         if (!globalObjects.currentEnemy || globalObjects.currentEnemy.dead) {
             return;
         }
@@ -2167,12 +2167,12 @@ const ENABLE_KEYBOARD = true;
              this.mindBurnTween.stop();
          }
          this.mindBurnAnim.alpha = 0.7;
-         this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(damage) + 0.2);
+         this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(damage) + 0.24);
          effectObj = {
              name: effectName,
-             duration: 4,
+             duration: 6,
              onUpdate: () => {
-                 if (effectObj && effectObj.duration < 4) {
+                 if (effectObj && effectObj.duration < 6) {
                      this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(damage) + 0.05 * effectObj.duration);
                      messageBus.publish('enemyTakeTrueDamage', damage, false);
                  }

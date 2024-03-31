@@ -20,7 +20,7 @@ const textData = {
     void_unload_desc: {en_us: 'DAMAGE 15% OF ENEMY\'S\nCURRENT HEALTH AND\nDISRUPT THEIR CURRENT\nACTION BY 66%', fr_FR: ''},
 
     mind_strike_desc: {en_us: 'DEAL 6 DAMAGE.\nENEMY TAKES 50%\nBONUS DAMAGE FROM\nNEXT ATTACK HIT', fr_FR: ''},
-    mind_enhance_desc: {en_us: 'NEXT ATTACK SETS\nENEMY ON FIRE\nFOR 16 DAMAGE OVER\n4 SECONDS', fr_FR: ''},
+    mind_enhance_desc: {en_us: 'NEXT ATTACK SETS\nENEMY ON FIRE\nFOR 15 DAMAGE OVER\n5 SECONDS', fr_FR: ''},
     mind_protect_desc: {en_us: 'HALVE THE DAMAGE\nFROM ATTACKS AND INFLICT\nIT ONTO THE ENEMY\nX2', fr_FR: ''},
     mind_reinforce_desc: {en_us: 'ATTACKS DEAL +2\nDAMAGE', fr_FR: ''},
     mind_unload_desc: {en_us: 'NEXT NON-ATTACK\nSPELL HAS X3\nEFFECTIVENESS', fr_FR: ''},

@@ -26,6 +26,7 @@ const imageAtlases = [
     {name: 'buttons', src: 'sprites/buttons.json'},
     {name: 'lowq', src: 'sprites/lowq.json'},
     {name: 'misc', src: 'sprites/misc.json'},
+    {name: 'ui', src: 'sprites/ui.json'},
 ];
 
 const imageFiles = [

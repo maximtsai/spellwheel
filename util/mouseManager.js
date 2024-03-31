@@ -72,6 +72,7 @@ function setupMouseInteraction(scene) {
 }
 
 function resizeGame() {
+    return;
     if (!game || !game.canvas) {
         return;
     }

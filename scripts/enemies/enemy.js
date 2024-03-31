@@ -1,6 +1,7 @@
 class Enemy {
-    constructor(scene, x, y) {
+    constructor(scene, x, y, level = 1) {
         this.scene = scene;
+        this.level = level;
         this.initStats();
         this.initAttacks();
         this.resetStats(x, y);
@@ -23,6 +24,10 @@ class Enemy {
 
         ];
         updateManager.addFunction(this.update.bind(this));
+    }
+
+    getLevel() {
+        return this.level;
     }
 
     removeExtraSprite(sprite) {
@@ -81,17 +86,18 @@ class Enemy {
         this.healthBarLengthMax = 20 + Math.floor(Math.sqrt(this.healthMax) * 5);
         this.healthBarMax = this.scene.add.sprite(x, 20, 'blackPixel');
         let healthBarMaxGoalScale = this.healthBarLengthMax + 3;
-        this.healthBarMax.setScale(0, 10);
+        this.healthBarMax.setScale(0, 12);
+        this.healthBarMax.startScaleY = this.healthBarMax.scaleY;
         this.healthBarMax.setOrigin(0.5, 0.5);
         this.healthBarMax.setDepth(10);
 
         this.healthBarCurr = this.scene.add.sprite(x - this.healthBarLengthMax - 1, this.healthBarMax.y, 'pixels', 'green_pixel.png');
-        this.healthBarCurr.setScale(this.healthBarLengthMax + 1, 9);
+        this.healthBarCurr.setScale(this.healthBarLengthMax + 1, 10);
         this.healthBarCurr.setOrigin(0, 0.5);
         this.healthBarCurr.alpha = 0;
         this.healthBarCurr.setDepth(10);
 
-        this.healthBarText = this.scene.add.bitmapText(x, this.healthBarMax.y - 3, 'plainBold', 'zxcv', 17);
+        this.healthBarText = this.scene.add.bitmapText(x, this.healthBarMax.y - 3, 'plainBold', 'zxcv', 20);
         this.healthBarText.setDepth(10);
         this.healthBarText.setOrigin(0.5, 0.5);
         this.healthBarText.alpha = 0;
@@ -99,14 +105,13 @@ class Enemy {
 
         this.scene.tweens.add({
             targets: [this.healthBarMax],
-            delay: 100,
+            delay: 200,
             duration: 100 + this.healthBarLengthMax * 5,
             scaleX: healthBarMaxGoalScale,
-            scaleY: 11,
             ease: 'Quint.easeInOut'
         });
         this.scene.tweens.add({
-            delay: this.healthBarLengthMax * 5,
+            delay: this.healthBarLengthMax * 5 + 150,
             targets: [this.healthBarCurr, this.healthBarText],
             duration: 250,
             alpha: 1
@@ -122,7 +127,7 @@ class Enemy {
         this.chargeBarWarningBig.setDepth(1);
 
         this.chargeBarMax = this.scene.add.sprite(x, 335, 'blackPixel');
-        this.chargeBarMax.setScale(chargeBarLength + 2, 8);
+        this.chargeBarMax.setScale(chargeBarLength + 2, 10);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;
         this.chargeBarMax.setDepth(10);
@@ -142,13 +147,13 @@ class Enemy {
         this.chargeBarWarning.setAlpha(0.35);
 
         this.chargeBarCurr = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'yellow_pixel.png');
-        this.chargeBarCurr.setScale(0, 6);
+        this.chargeBarCurr.setScale(0, 8);
         this.chargeBarCurr.setOrigin(0.5, 0.5);
         this.chargeBarCurr.alpha = 0.9;
         this.chargeBarCurr.setDepth(10);
 
         this.chargeBarAngry = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
-        this.chargeBarAngry.setScale(0, 6);
+        this.chargeBarAngry.setScale(0, 8);
         this.chargeBarAngry.setOrigin(0.5, 0.5);
         this.chargeBarAngry.alpha = 0.9;
         this.chargeBarAngry.setDepth(10);
@@ -652,8 +657,13 @@ class Enemy {
         if (isAttack) {
             this.timeSinceLastAttacked = 0;
         }
-        let healthBarRatio = 1 + this.healthBarLengthMax * this.health / this.healthMax;
-        this.healthBarCurr.scaleX = healthBarRatio;
+
+        if (this.health <= 0) {
+            this.healthBarCurr.scaleX = 0;
+        } else {
+            let healthBarRatio = 1 + this.healthBarLengthMax * this.health / this.healthMax;
+            this.healthBarCurr.scaleX = healthBarRatio;
+        }
         this.healthBarText.setText(this.health);
 
         if (this.health <= 0) {
@@ -691,8 +701,12 @@ class Enemy {
                 this.timeSinceLastAttacked = 0;
             }
         }
-        let healthBarRatio = 1 + this.healthBarLengthMax * this.health / this.healthMax;
-        this.healthBarCurr.scaleX = healthBarRatio;
+        if (this.health <= 0) {
+            this.healthBarCurr.scaleX = 0;
+        } else {
+            let healthBarRatio = 1 + this.healthBarLengthMax * this.health / this.healthMax;
+            this.healthBarCurr.scaleX = healthBarRatio;
+        }
         this.healthBarText.setText(this.health);
 
         if (this.health <= 0) {
@@ -809,7 +823,7 @@ class Enemy {
                          duration: 400,
                          onComplete: () => {
                              PhaserScene.tweens.add({
-                                 targets: [this.healthBarMax, this.healthBarCurr, this.healthBarText],
+                                 targets: [this.healthBarMax, this.healthBarText],
                                  scaleX: 0,
                                  duration: 1000
                              });

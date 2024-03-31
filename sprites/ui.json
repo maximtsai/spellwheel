@@ -4,51 +4,51 @@
 			"image": "sprites/ui-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1443,
-				"h": 496
+				"w": 943,
+				"h": 996
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "battleOverScreen.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 510,
+						"h": 560
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 510,
+						"h": 560
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 510,
+						"h": 560
+					}
+				},
 				{
 					"filename": "locket2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
 						"w": 550,
-						"h": 551
+						"h": 500
 					},
 					"spriteSourceSize": {
-						"x": 20,
-						"y": 43,
-						"w": 530,
-						"h": 494
+						"x": 2,
+						"y": 64,
+						"w": 548,
+						"h": 432
 					},
 					"frame": {
 						"x": 1,
-						"y": 1,
-						"w": 530,
-						"h": 494
-					}
-				},
-				{
-					"filename": "battleOverScreen.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 460,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 460,
-						"h": 400
-					},
-					"frame": {
-						"x": 533,
-						"y": 1,
-						"w": 460,
-						"h": 400
+						"y": 563,
+						"w": 548,
+						"h": 432
 					}
 				},
 				{
@@ -57,19 +57,40 @@
 					"trimmed": true,
 					"sourceSize": {
 						"w": 550,
-						"h": 551
+						"h": 500
 					},
 					"spriteSourceSize": {
-						"x": 103,
-						"y": 43,
-						"w": 447,
-						"h": 494
+						"x": 149,
+						"y": 64,
+						"w": 401,
+						"h": 433
 					},
 					"frame": {
-						"x": 995,
+						"x": 513,
 						"y": 1,
-						"w": 447,
-						"h": 494
+						"w": 401,
+						"h": 433
+					}
+				},
+				{
+					"filename": "locket3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 550,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 167,
+						"w": 391,
+						"h": 329
+					},
+					"frame": {
+						"x": 551,
+						"y": 436,
+						"w": 391,
+						"h": 329
 					}
 				},
 				{
@@ -87,8 +108,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 533,
-						"y": 403,
+						"x": 551,
+						"y": 767,
 						"w": 180,
 						"h": 51
 					}
@@ -108,8 +129,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 533,
-						"y": 403,
+						"x": 733,
+						"y": 767,
 						"w": 180,
 						"h": 51
 					}
@@ -129,8 +150,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 533,
-						"y": 403,
+						"x": 551,
+						"y": 820,
 						"w": 180,
 						"h": 51
 					}
@@ -150,8 +171,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 715,
-						"y": 403,
+						"x": 733,
+						"y": 820,
 						"w": 139,
 						"h": 51
 					}
@@ -171,8 +192,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 715,
-						"y": 403,
+						"x": 733,
+						"y": 820,
 						"w": 139,
 						"h": 51
 					}
@@ -192,8 +213,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 715,
-						"y": 403,
+						"x": 733,
+						"y": 820,
 						"w": 139,
 						"h": 51
 					}
@@ -204,6 +225,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:61f6398447314a38f8d02ab8475548b6:c6d65343956fd9c2e5807487fb28779e:6af6d199855d1c5980a61db04791f8fb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:de7c4087ee2c55d1a16986fb7601cf1e:bed2f5740f54ea58b89ce26f415910e0:6af6d199855d1c5980a61db04791f8fb$"
 	}
 }

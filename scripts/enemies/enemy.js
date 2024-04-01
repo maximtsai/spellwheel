@@ -23,7 +23,9 @@ class Enemy {
             messageBus.subscribe("enemyAddShield", this.addShield.bind(this)),
 
         ];
-        updateManager.addFunction(this.update.bind(this));
+
+        this.boundUpdateFunc = this.update.bind(this);
+        updateManager.addFunction(this.boundUpdateFunc);
     }
 
     getLevel() {
@@ -45,6 +47,7 @@ class Enemy {
     }
 
     initStats() {
+        this.destructibles = [];
         this.health = 1000;
         this.shield = 0;
         this.isAsleep = false;
@@ -127,33 +130,33 @@ class Enemy {
         this.chargeBarWarningBig.setDepth(1);
 
         this.chargeBarMax = this.scene.add.sprite(x, 335, 'blackPixel');
-        this.chargeBarMax.setScale(chargeBarLength + 2, 10);
+        this.chargeBarMax.setScale(chargeBarLength + 2, 9);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;
         this.chargeBarMax.setDepth(10);
 
         this.voidPause = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'purple_pixel.png');
         this.voidPause.alpha = 0;
-        this.voidPause.setScale(chargeBarLength + 2, 8);
+        this.voidPause.setScale(chargeBarLength + 2, 7);
         this.voidPause.setOrigin(0.5, 0.5);
         this.voidPause.setDepth(10);
 
         this.chargeBarWarning = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
         this.chargeBarWarning.alphaMult = 1;
-        this.chargeBarWarning.setScale(chargeBarLength + 4, 10);
+        this.chargeBarWarning.setScale(chargeBarLength + 4, 9);
         this.chargeBarWarning.setOrigin(0.5, 0.5);
         this.chargeBarWarning.visible = false;
         this.chargeBarWarning.setDepth(10);
         this.chargeBarWarning.setAlpha(0.35);
 
         this.chargeBarCurr = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'yellow_pixel.png');
-        this.chargeBarCurr.setScale(0, 8);
+        this.chargeBarCurr.setScale(0, 7);
         this.chargeBarCurr.setOrigin(0.5, 0.5);
         this.chargeBarCurr.alpha = 0.9;
         this.chargeBarCurr.setDepth(10);
 
         this.chargeBarAngry = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
-        this.chargeBarAngry.setScale(0, 8);
+        this.chargeBarAngry.setScale(0, 7.5);
         this.chargeBarAngry.setOrigin(0.5, 0.5);
         this.chargeBarAngry.alpha = 0.9;
         this.chargeBarAngry.setDepth(10);
@@ -754,23 +757,31 @@ class Enemy {
     }
 
     destroy() {
+        this.healthBarMax.destroy();
+        this.healthBarCurr.destroy();
+        this.healthBarText.destroy();
+
         this.chargeBarWarningBig.destroy();
+        this.chargeBarMax.destroy();
         this.chargeBarWarning.destroy();
         this.chargeBarAngry.destroy();
         this.chargeBarCurr.destroy();
         this.voidPause.destroy();
-        this.healthBarCurr.destroy();
-        this.healthBarText.destroy();
-        this.sprite.destroy();
         this.attackName.destroy();
+
+        this.sprite.destroy();
 
         this.clockLarge.destroy();
         this.clockLargeHand.destroy();
         this.delayedDamageText.destroy();
-        this.voidPause.destroy();
         this.shieldSprite.destroy();
         this.shieldText.destroy();
 
+        for (let i = 0; i < this.destructibles.length; i++) {
+            this.destructibles[i].destroy();
+        }
+
+        updateManager.removeFunction(this.boundUpdateFunc);
     }
 
     die() {
@@ -823,9 +834,15 @@ class Enemy {
                          duration: 400,
                          onComplete: () => {
                              PhaserScene.tweens.add({
-                                 targets: [this.healthBarMax, this.healthBarText],
+                                 targets: [this.healthBarMax],
                                  scaleX: 0,
                                  duration: 1000
+                             });
+                             PhaserScene.tweens.add({
+                                 delay: 400,
+                                 targets: [this.healthBarText],
+                                 alpha: 0,
+                                 duration: 300
                              });
                          }
                      });

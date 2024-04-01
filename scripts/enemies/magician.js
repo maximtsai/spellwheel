@@ -47,13 +47,13 @@
                 },
                 onComplete: () => {
                     currObj.destroy();
-                    let dur = 250 - Math.sqrt(totalTimeObjects) * 40;
+                    let dur = 280 - Math.sqrt(totalTimeObjects) * 40;
                     let rot = dur * 0.004;
-                    let hitEffect = PhaserScene.add.sprite(currObj.x, currObj.y, 'spells', 'timeRed.png').setRotation((Math.random() - 0.5) * 3).setScale(0.25).setDepth(195);
+                    let hitEffect = PhaserScene.add.sprite(currObj.x, currObj.y, 'spells').play('timeRed').setRotation((Math.random() - 0.5) * 3).setScale(0.35).setDepth(195);
                     this.scene.tweens.add({
                         targets: hitEffect,
-                        scaleX: 0.75,
-                        scaleY: 0.75,
+                        scaleX: 0.7,
+                        scaleY: 0.7,
                         ease: 'Cubic.easeOut',
                         duration: dur,
                         onComplete: () => {

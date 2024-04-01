@@ -25,7 +25,7 @@
                     globalObjects.magicCircle.showReadySprite();
                 }, 400);
                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Click to cast\na spell");
-                let spellListener = messageBus.subscribe('playerCastedSpell', () => {
+                let spellListener = messageBus.subscribe('spellClicked', () => {
                     globalObjects.textPopupManager.hideInfoText();
                     spellListener.unsubscribe();
                 });
@@ -40,7 +40,7 @@
                     }
                 }, 4000)
             }
-        }, 3500)
+        }, 2000)
     }
 
      showArrowRotate() {
@@ -96,20 +96,21 @@
 
     initTutorial2() {
         setTimeout(() => {
-            if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
+            if (globalObjects.player.getPlayerCastSpellsCount() === 1 && !this.dead) {
                 // player only casted 1 spell so far
                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Switch spells by spinning\n<== the two wheels ==>");
                 this.arrowRotate1 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
                 this.arrowRotate2 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
-
+                this.destructibles.push(this.arrowRotate1);
+                this.destructibles.push(this.arrowRotate2);
                 this.showArrowRotate();
 
-                let spellListener = messageBus.subscribe('playerCastedSpell', () => {
+                let spellListener = messageBus.subscribe('spellClicked', () => {
                     globalObjects.textPopupManager.hideInfoText();
                     spellListener.unsubscribe();
                 });
             }
-        }, 4200);
+        }, 3000);
     }
 
     initTutorial3() {
@@ -117,7 +118,7 @@
             if (!this.dead) {
                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 200, gameConsts.halfHeight - 30, "Hover over\nspell names\nfor more\ninfo  ==>");
                 setTimeout(() => {
-                    let spellListener = messageBus.subscribe('playerCastedSpell', () => {
+                    let spellListener = messageBus.subscribe('spellClicked', () => {
                         globalObjects.textPopupManager.hideInfoText();
                         spellListener.unsubscribe();
                         setTimeout(() => {
@@ -127,16 +128,16 @@
                     });
                 }, 1500);
             }
-        }, 3000);
+        }, 2500);
     }
 
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && this.finishedTut3 && !this.shownTut4) {
             this.shownTut4 = true;
-            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 225, gameConsts.halfHeight - 60, "Watch out for\nenemy attacks!\n<==       ");
-
+            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 229, gameConsts.halfHeight - 60, "Watch out for\nenemy attacks!");
+            let glowBar = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
             setTimeout(() => {
-                let spellListener = messageBus.subscribe('playerCastedSpell', () => {
+                let spellListener = messageBus.subscribe('spellClicked', () => {
                     setTimeout(() => {
                         globalObjects.textPopupManager.hideInfoText();
                         setTimeout(() => {
@@ -231,22 +232,21 @@
                                  }
                              });
 
-                             let snort = this.scene.add.sprite(this.x - 3, this.y - 101, 'enemies', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(999);
+                             this.snort = this.scene.add.sprite(this.x - 3, this.y - 101, 'enemies', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(999);
+                             this.destructibles.push(this.snort);
+
                              PhaserScene.tweens.add({
-                                 targets: snort,
+                                 targets: this.snort,
                                  scaleX: this.sprite.startScale * 1.1,
                                  scaleY: this.sprite.startScale * 1.1,
                                  duration: 400,
                                  ease: 'Cubic.easeOut'
                              });
                              PhaserScene.tweens.add({
-                                 targets: snort,
+                                 targets: this.snort,
                                  duration: 400,
                                  alpha: 0,
                                  ease: 'Quad.easeIn',
-                                 onComplete: () => {
-                                     snort.destroy();
-                                 }
                              });
 
                              let shinePattern = this.scene.add.sprite(this.x, this.y, 'spells', 'brickPattern2.png').setScale(this.sprite.startScale + 0.25).setDepth(-1);
@@ -262,6 +262,9 @@
                                  alpha: 0,
                                  ease: 'Cubic.easeIn',
                                  duration: 1000,
+                                 onComplete: () => {
+                                     shinePattern.destroy();
+                                 }
                              });
                          }
                      });
@@ -313,6 +316,7 @@
         }
         this.sprite.setScale(this.sprite.startScale);
         globalObjects.textPopupManager.hideInfoText();
+        console.log("Hide info text");
 
         this.x += 10;
          this.y += this.sprite.height * this.sprite.scaleY * 0.45; this.sprite.y = this.y;
@@ -458,8 +462,8 @@
                      name: "}10 ",
                      chargeAmt: 330,
                      damage: 10,
-                    hitAnimFunc: () => {
-                        let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 150, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
+                    attackFinishFunction: () => {
+                        let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
                         setTimeout(() => {
                             dmgEffect.destroy();
                         }, 150)
@@ -470,14 +474,29 @@
                      chargeAmt: 400,
                      damage: 15,
                      attackFinishFunction: () => {
-                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 150, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
+                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
                          setTimeout(() => {
                              dmgEffect.x += 30;
                              dmgEffect.y += 10;
                              setTimeout(() => {
                                  dmgEffect.destroy();
                              }, 150)
-                         }, 75)
+                         }, 75);
+
+                         this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
+                         PhaserScene.tweens.add({
+                             targets: this.snort,
+                             scaleX: this.sprite.startScale * 1.1,
+                             scaleY: this.sprite.startScale * 1.1,
+                             duration: 400,
+                             ease: 'Cubic.easeOut'
+                         });
+                         PhaserScene.tweens.add({
+                             targets: this.snort,
+                             duration: 400,
+                             alpha: 0,
+                             ease: 'Quad.easeIn',
+                         });
                      }
                  },
                  {
@@ -485,7 +504,7 @@
                      chargeAmt: 700,
                      damage: 30,
                      attackFinishFunction: () => {
-                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 110, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
                          PhaserScene.tweens.add({
                              targets: dmgEffect,
                              rotation: 1,
@@ -494,6 +513,20 @@
                              onComplete: () => {
                                  dmgEffect.destroy();
                              }
+                         });
+                         this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
+                         PhaserScene.tweens.add({
+                             targets: this.snort,
+                             scaleX: this.sprite.startScale * 1.1,
+                             scaleY: this.sprite.startScale * 1.1,
+                             duration: 400,
+                             ease: 'Cubic.easeOut'
+                         });
+                         PhaserScene.tweens.add({
+                             targets: this.snort,
+                             duration: 400,
+                             alpha: 0,
+                             ease: 'Quad.easeIn',
                          });
                      }
                  },
@@ -512,11 +545,25 @@
                      name: "}10 ",
                      chargeAmt: 330,
                      damage: 10,
-                     hitAnimFunc: () => {
-                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 150, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
+                     attackFinishFunction: () => {
+                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
                          setTimeout(() => {
                              dmgEffect.destroy();
                          }, 150)
+                         this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
+                         PhaserScene.tweens.add({
+                             targets: this.snort,
+                             scaleX: this.sprite.startScale * 1.1,
+                             scaleY: this.sprite.startScale * 1.1,
+                             duration: 400,
+                             ease: 'Cubic.easeOut'
+                         });
+                         PhaserScene.tweens.add({
+                             targets: this.snort,
+                             duration: 400,
+                             alpha: 0,
+                             ease: 'Quad.easeIn',
+                         });
                      }
                  },
                  {
@@ -524,7 +571,7 @@
                      chargeAmt: 400,
                      damage: 15,
                      attackFinishFunction: () => {
-                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 150, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
+                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
                          setTimeout(() => {
                              dmgEffect.x += 30;
                              dmgEffect.y += 10;
@@ -532,6 +579,20 @@
                                  dmgEffect.destroy();
                              }, 150)
                          }, 75)
+                         this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
+                         PhaserScene.tweens.add({
+                             targets: this.snort,
+                             scaleX: this.sprite.startScale * 1.1,
+                             scaleY: this.sprite.startScale * 1.1,
+                             duration: 400,
+                             ease: 'Cubic.easeOut'
+                         });
+                         PhaserScene.tweens.add({
+                             targets: this.snort,
+                             duration: 400,
+                             alpha: 0,
+                             ease: 'Quad.easeIn',
+                         });
                      }
                  },
                  {
@@ -563,12 +624,4 @@
              ]
          ];
      }
-
-    // update(dt) {}
-
-    // reset(x, y) {
-    //     this.x = x;
-    //     this.y = y;
-    // }
-
 }

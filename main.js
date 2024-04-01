@@ -5,6 +5,7 @@ let config = {
         width: 630,
         height: 735,
         autoRound: true,
+
     },
     render: {
         // Leave on to prevent pixelated graphics

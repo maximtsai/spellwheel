@@ -170,6 +170,7 @@ function playReaperAnim(enemy) {
                                             floatingDeath.destroy();
                                             scythe.destroy();
                                             globalObjects.postFightScreen.createWinScreen(enemy.getLevel());
+                                            enemy.destroy();
                                         }
                                     });
                                 }

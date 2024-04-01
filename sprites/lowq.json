@@ -141,19 +141,82 @@
 					"trimmed": true,
 					"sourceSize": {
 						"w": 10,
-						"h": 200
+						"h": 180
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 3,
+						"y": 0,
 						"w": 10,
-						"h": 197
+						"h": 178
 					},
 					"frame": {
 						"x": 1144,
 						"y": 913,
 						"w": 10,
-						"h": 197
+						"h": 178
+					}
+				},
+				{
+					"filename": "glow_flat.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 50
+					},
+					"frame": {
+						"x": 803,
+						"y": 1028,
+						"w": 200,
+						"h": 50
+					}
+				},
+				{
+					"filename": "glow_flat_green.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 50
+					},
+					"frame": {
+						"x": 803,
+						"y": 1080,
+						"w": 200,
+						"h": 50
+					}
+				},
+				{
+					"filename": "glow_flat_red.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 50
+					},
+					"frame": {
+						"x": 1005,
+						"y": 1093,
+						"w": 200,
+						"h": 50
 					}
 				}
 			]
@@ -162,6 +225,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:8737266c39db98e7fd808497e633a354:fba397a36c178edaa48a112aee66df66:0644d9afadc5ec39d626109554d3f3bc$"
+		"smartupdate": "$TexturePacker:SmartUpdate:ee5ef6d021b9592b8bdace4f1b1713d5:3159cbd682ad18924285d12c0fd0f216:0644d9afadc5ec39d626109554d3f3bc$"
 	}
 }

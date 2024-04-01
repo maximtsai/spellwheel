@@ -785,7 +785,14 @@
                 <false/>
             </struct>
             <key type="filename">spells/timeGreen.png</key>
-            <key type="filename">spells/timeRed.png</key>
+            <key type="filename">spells/timeRed1.png</key>
+            <key type="filename">spells/timeRed2.png</key>
+            <key type="filename">spells/timeRed3.png</key>
+            <key type="filename">spells/timeRed4.png</key>
+            <key type="filename">spells/timeRed5.png</key>
+            <key type="filename">spells/timeRed6.png</key>
+            <key type="filename">spells/timeRed7.png</key>
+            <key type="filename">spells/timeRed8.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

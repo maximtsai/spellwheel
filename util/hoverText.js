@@ -10,7 +10,7 @@ class InternalHoverTextManager {
         this.hoverBacking.setOrigin(0, 0);
         this.hoverBacking.alpha = 0.6;
 
-        this.hoverTextDisplay = this.scene.add.bitmapText(0, 0, 'plain', '', 15);
+        this.hoverTextDisplay = this.scene.add.text(0, 0, 'desc.', {fontFamily: 'Trebuchet MS', fontSize: 16, color: '#FFFFFF', align: 'left'});
         this.hoverTextDisplay.visible = false;
         this.hoverTextDisplay.setDepth(999);
         this.hoverTextDisplay.setOrigin(0, 0);
@@ -54,13 +54,13 @@ class InternalHoverTextManager {
                 let posY = hoverTextObj.displayY ? hoverTextObj.displayY : mouseY;
                 this.hoverBacking.x = posX; this.hoverBacking.y = posY;
                 this.hoverBacking.setOrigin(hoverTextObj.displayOriginX, hoverTextObj.displayOriginY);
-                this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - hoverTextObj.displayOriginX * 2);
-                this.hoverTextDisplay.y = this.hoverBacking.y - 1 * (1 + hoverTextObj.displayOriginX * 2);
+                this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - hoverTextObj.displayOriginX * 2 - 2);
+                this.hoverTextDisplay.y = this.hoverBacking.y - 1 * (hoverTextObj.displayOriginX * 2 - 1);
                 this.hoverTextDisplay.setText(hoverTextObj.text);
                 this.hoverTextDisplay.visible = true;
                 this.hoverTextDisplay.setOrigin(hoverTextObj.displayOriginX, hoverTextObj.displayOriginY);
                 this.hoverBacking.visible = true;
-                this.hoverBacking.setScale((this.hoverTextDisplay.width + 6) * 0.5, (this.hoverTextDisplay.height + 4) * 0.5);
+                this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX, (this.hoverTextDisplay.height + 10) * 0.5 * this.hoverTextDisplay.scaleY);
                 break;
             }
         }

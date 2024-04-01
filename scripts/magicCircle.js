@@ -44,6 +44,7 @@ const ENABLE_KEYBOARD = true;
             messageBus.subscribe("applyMindBurn", this.applyMindBurn.bind(this)),
         ];
 
+        updateManager.addFunction(this.update.bind(this));
     }
 
     setupKeyPresses(scene) {
@@ -363,7 +364,9 @@ const ENABLE_KEYBOARD = true;
         this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png').setDepth(105);
         this.castButtonSpare = scene.add.sprite(x, y, 'circle', 'cast_press.png').setDepth(106).setAlpha(0);
         // this.castButtonFlash = scene.add.sprite(x, y, 'circle', 'cast_flash.png').setDepth(106).setAlpha(0);
+        this.castHoverTemp = scene.add.sprite(x, y, 'circle', 'cast_press.png').setDepth(106).setAlpha(0);
         this.castGlow = scene.add.sprite(x, y, 'circle', 'cast_glow.png').setDepth(106).setAlpha(0);
+
         this.focusLines = scene.add.sprite(x, y - 137, 'circle', 'focus_lines.png').setDepth(120);
 
         this.castTriangles = [];
@@ -391,7 +394,8 @@ const ENABLE_KEYBOARD = true;
         this.errorBoxEmbodiment.setDepth(121);
         this.errorBoxEmbodiment.alpha = 0;
 
-        this.spellNameText = this.scene.add.bitmapText(this.x, this.y - 243, 'normal', 'MATTER STRIKE', 20);
+        this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 243, 'normal', 'MATTER STRIKE', 30);
+        this.spellNameText.setScale(0.667);
         this.spellNameText.setOrigin(0.5, 0.5);
         this.spellNameText.setDepth(120);
         this.spellNameText.alpha = 0.5;
@@ -410,19 +414,19 @@ const ENABLE_KEYBOARD = true;
 
         this.spellNameHover = new HoverText(
         {
-            x: this.x,
-            y: this.spellNameText.y + 14,
-            width: this.spellNameText.width + 10,
+            x: this.spellNameText.x - 4,
+            y: this.spellNameText.y + 6,
+            width: this.spellNameText.width + 18,
             height: this.spellNameText.height + 7,
             text: "",
-            displayX: gameConsts.width - 8,
+            displayX: gameConsts.width - 7,
             displayY: this.spellNameText.y + 3,
             displayOrigin: {
                 x: 1,
                 y: 0.5
             },
             onHover: () => {
-                this.spellNameText.alpha = 0.85;
+                this.spellNameText.alpha = 1;
             },
             onHoverOut: () => {
                 this.spellNameText.alpha = 0.5;
@@ -1307,7 +1311,7 @@ const ENABLE_KEYBOARD = true;
         return diffAmt;
     }
 
-    castSpell() {
+    castSpell(wasBuffered = false) {
         this.castDisabled = true;
         this.useBufferedSpellCast = false;
         this.bufferedCastAvailable = false;
@@ -1315,7 +1319,20 @@ const ENABLE_KEYBOARD = true;
         let distToClosestRuneEmbodiment = 999;
         let closestElement = null;
         let closestEmbodiment = null;
+
         let shieldId = 0;
+        if (wasBuffered) {
+            if (this.castHoverTempAnim) {
+                this.castHoverTempAnim.stop();
+            }
+            this.castHoverTemp.alpha = 1;
+            this.castHoverTempAnim = this.scene.tweens.add({
+                targets: this.castHoverTemp,
+                duration: 500,
+                ease: 'Cubic.easeOut',
+                alpha: 0,
+            });
+        }
         for (let i = 0; i < this.elements.length; i++) {
             let distToRune = this.getRotationDiff(this.innerCircle.rotation, this.elements[i].startRotation);
             if (Math.abs(distToRune) < Math.abs(distToClosestRuneElement)) {
@@ -1384,6 +1401,7 @@ const ENABLE_KEYBOARD = true;
                 alpha: 0,
                 duration: 400,
             });
+            messageBus.publish('spellClicked');
             PhaserScene.time.delayedCall(1250, () => {
                 this.trueCastSpell(closestElement, closestEmbodiment, shieldId, closestEmbodiment.startRotation);
             });
@@ -1396,7 +1414,7 @@ const ENABLE_KEYBOARD = true;
                     this.castDisabled = false;
                     this.bufferedCastAvailable = false;
                     if (this.useBufferedSpellCast) {
-                        this.castSpell();
+                        this.castSpell(true);
                     }
                 });
             });
@@ -1534,7 +1552,7 @@ const ENABLE_KEYBOARD = true;
                          this.recharging = false;
                          this.bufferedCastAvailable = false;
                          if (this.useBufferedSpellCast) {
-                             this.castSpell();
+                             this.castSpell(true);
                          }
                          if (!this.readySprite) {
                              this.readySprite = this.scene.add.sprite(this.x, this.y, 'circle').play('circleEffect').setScale(1.1).setDepth(100000);
@@ -1776,7 +1794,7 @@ const ENABLE_KEYBOARD = true;
                                     });
                                     this.bufferedCastAvailable = false;
                                     if (this.useBufferedSpellCast) {
-                                        this.castSpell();
+                                        this.castSpell(true);
                                     }
                                 });
                             }
@@ -2328,5 +2346,16 @@ const ENABLE_KEYBOARD = true;
          this.voidSliceImage2.alpha = 0;
          this.mindBurnAnim.alpha = 0;
          this.mindChargeText.visible = false;
+     }
+
+     disableMovement() {
+         this.castDisabled = true;
+         this.outerDragDisabled = true;
+         this.innerDragDisabled = true;
+     }
+     enableMovement() {
+         this.castDisabled = false;
+         this.outerDragDisabled = false;
+         this.innerDragDisabled = false;
      }
  }

@@ -5,6 +5,8 @@ let loadingIconsFlash = [];
 let icons = [];
 let canFinishLoading = false;
 let loadLevel = 0;
+let MAGIC_CIRCLE_HEIGHT = 0;
+let canvas;
 
 function setupLoadingBar(scene) {
     PhaserScene.cameras.main.setZoom(0.98);
@@ -223,7 +225,7 @@ function setupLoadingBar(scene) {
     });
 }
 
-let MAGIC_CIRCLE_HEIGHT = 0;
+
 
 function resetGame() {
     for (let i in globalObjects) {
@@ -232,6 +234,13 @@ function resetGame() {
 }
 
 function setupGame() {
+    canvas = game.canvas;
+    if (gameVars.started) {
+        return;
+    }
+
+    gameVars.started = true;
+
     PhaserScene.tweens.add({
         targets: PhaserScene.cameras.main,
         zoom: 1,
@@ -247,7 +256,6 @@ function setupGame() {
     globalObjects.spellManager = new SpellManager(PhaserScene);
     globalObjects.spellRecorder = new SpellRecorder(PhaserScene);
     globalObjects.magicCircle = new MagicCircle(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
-    updateManager.addFunction(globalObjects.magicCircle.update.bind(globalObjects.magicCircle));
 
     globalObjects.statusManager = new StatusManager(PhaserScene);
     globalObjects.postFightScreen = new PostFightScreen(PhaserScene);

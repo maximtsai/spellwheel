@@ -58,6 +58,17 @@ function createAnimations(scene) {
         frameRate: 30
     });
     scene.anims.create({
+        key: 'timeRed',
+        frames: scene.anims.generateFrameNames('spells', {
+            prefix: 'timeRed',
+            suffix: '.png',
+            start: 1,
+            end: 8,
+            zeroPad: 0,
+        }),
+        frameRate: 12
+    });
+    scene.anims.create({
         key: 'circleEffect',
         frames: scene.anims.generateFrameNames('circle', {
             prefix: 'circleEffect',

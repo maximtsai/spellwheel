@@ -37,20 +37,18 @@ function fadeInBackgroundAtlas(atlas, name, duration = 15000, scale = 1.1, endSc
         PhaserScene.tweens.add({
             delay: delay,
             targets: nextObj,
-            scaleX: endScale,
-            scaleY: endScale,
+            scaleX: extra ? endScale + 0.1 : endScale,
+            scaleY: extra ? endScale + 0.1 : endScale,
             ease: ease ? ease : 'Cubic.easeOut',
             duration: duration + 1000,
             onComplete: () => {
-                if (extra) {
-                    PhaserScene.tweens.add({
-                        targets: nextObj,
-                        scaleX: endScale - 0.1,
-                        scaleY: endScale - 0.1,
-                        ease: 'Cubic.easeOut',
-                        duration: 500
-                    });
-                }
+                PhaserScene.tweens.add({
+                    targets: nextObj,
+                    scaleX: endScale,
+                    scaleY: endScale,
+                    ease: 'Cubic.easeOut',
+                    duration: 500
+                });
             }
         });
     }

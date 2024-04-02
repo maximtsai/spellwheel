@@ -5,7 +5,7 @@
 			"format": "RGBA5555",
 			"size": {
 				"w": 1916,
-				"h": 1868
+				"h": 1997
 			},
 			"scale": 1,
 			"frames": [
@@ -62,22 +62,22 @@
 				{
 					"filename": "fog_slice.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 720,
-						"h": 840
+						"w": 820,
+						"h": 970
 					},
 					"spriteSourceSize": {
-						"x": 0,
+						"x": 2,
 						"y": 0,
-						"w": 720,
-						"h": 840
+						"w": 815,
+						"h": 969
 					},
 					"frame": {
 						"x": 1083,
 						"y": 1027,
-						"w": 720,
-						"h": 840
+						"w": 815,
+						"h": 969
 					},
 					"anchor": {
 						"x": 0.5,
@@ -176,7 +176,7 @@
 			"image": "sprites/backgrounds-2.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1344,
+				"w": 1361,
 				"h": 1544
 			},
 			"scale": 1,
@@ -207,6 +207,31 @@
 					}
 				},
 				{
+					"filename": "background2.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 657,
+						"h": 760
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 657,
+						"h": 760
+					},
+					"frame": {
+						"x": 703,
+						"y": 1,
+						"w": 657,
+						"h": 760
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "background0.webp",
 					"rotated": false,
 					"trimmed": false,
@@ -221,33 +246,8 @@
 						"h": 740
 					},
 					"frame": {
-						"x": 1,
-						"y": 803,
-						"w": 640,
-						"h": 740
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "background2.webp",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 640,
-						"h": 740
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 640,
-						"h": 740
-					},
-					"frame": {
-						"x": 643,
-						"y": 803,
+						"x": 703,
+						"y": 763,
 						"w": 640,
 						"h": 740
 					},
@@ -271,8 +271,8 @@
 						"h": 740
 					},
 					"frame": {
-						"x": 703,
-						"y": 1,
+						"x": 1,
+						"y": 803,
 						"w": 640,
 						"h": 740
 					},
@@ -287,6 +287,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:b6f9ed670292466d6c97967c9dd0e89a:f43dbdc93f4611f3c8d34e0367856396:8733dbb53606bf76dda81645ffc6dc8b$"
+		"smartupdate": "$TexturePacker:SmartUpdate:3697f7f00f5627fb7db84a243a1223f7:a9939baf34c1c6a944850828dbcef69e:8733dbb53606bf76dda81645ffc6dc8b$"
 	}
 }

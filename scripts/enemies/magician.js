@@ -1,6 +1,6 @@
  class Magician extends Enemy {
-    constructor(scene, x, y) {
-        super(scene, x, y);
+    constructor(scene, x, y, level) {
+        super(scene, x, y, level);
         this.initSprite('time_magi.png', 0.75,0, 5);
         ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, RUNE_MATTER, null, null , RUNE_MATTER];
         EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_ENHANCE, RUNE_PROTECT, null, null, null, RUNE_REINFORCE, RUNE_PROTECT, RUNE_ENHANCE];

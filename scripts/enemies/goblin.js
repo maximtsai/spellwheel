@@ -1,12 +1,10 @@
  class Goblin extends Enemy {
-     constructor(scene, x, y) {
-         console.log("Making goblin")
-         super(scene, x, y);
+     constructor(scene, x, y, level) {
+         super(scene, x, y, level);
          this.initSprite('gobbo0.png', 0.75);
          this.shieldAdded = false;
 
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
-         EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_ENHANCE, null, null, null, null, null, RUNE_REINFORCE, RUNE_ENHANCE];
 
      }
 

@@ -8,12 +8,18 @@ const RUNE_REINFORCE = 'rune_reinforce';
 const RUNE_STRIKE = 'rune_strike';
 const RUNE_UNLOAD = 'rune_unload';
 
+let highestLevel = 0;
+
 let ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_TIME, RUNE_VOID, RUNE_MATTER, RUNE_MIND, RUNE_TIME];
 ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MATTER, null, null, null , RUNE_MIND];
 let EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, RUNE_UNLOAD, RUNE_STRIKE, RUNE_REINFORCE, RUNE_ENHANCE, RUNE_PROTECT, RUNE_STRIKE];
 EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_ENHANCE, null, null, null, null, null, RUNE_ENHANCE, RUNE_STRIKE];
 
 function updateSpellState(level = 0) {
+    if (level <= highestLevel) {
+        return;
+    }
+    highestLevel = level;
     switch(level) {
         case 0:
             // start, fight dummy

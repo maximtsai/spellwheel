@@ -395,7 +395,7 @@ const ENABLE_KEYBOARD = true;
         this.errorBoxEmbodiment.alpha = 0;
 
         this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 243, 'normal', 'MATTER STRIKE', 30);
-        this.spellNameText.setScale(0.667);
+        this.spellNameText.setScale(0.7);
         this.spellNameText.setOrigin(0.5, 0.5);
         this.spellNameText.setDepth(120);
         this.spellNameText.alpha = 0.5;

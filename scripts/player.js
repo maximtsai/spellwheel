@@ -3,7 +3,7 @@ class Player {
         this.scene = scene;
         this.initStats(x, y);
         this.resetStats();
-        this.createHealthBar(x + 0.5, y + 0.5);
+        this.createHealthBar(x, y + 0.5);
         this.subscriptions = [
             messageBus.subscribe("selfTakeEffect", this.takeEffect.bind(this)),
             messageBus.subscribe("selfTakeEnemyEffect", this.takeEnemyEffect.bind(this)),
@@ -157,7 +157,7 @@ class Player {
         for (let i = 0; i < 3; i++) {
             let healthBar = this.scene.add.sprite(x, y, 'circle', 'healthbar_quarter.png');
             healthBar.setDepth(99999);
-            healthBar.rotation = Math.PI * (0.75 - 0.5 * i);
+            healthBar.rotation = Math.PI * (0.75 - 0.5 * i) + 0.01;
             // healthBar.setScale(0.999, 0.999);
             this.barAssetsLarge.push(healthBar);
         }
@@ -177,7 +177,9 @@ class Player {
         this.healthBarPeak.setScale(1, 1);
         this.healthBarPeak.visible = false;
 
-        this.healthText = this.scene.add.text(x, y + 40, 'HP ' + this.health + '/' + this.healthMax);
+        this.healthText = this.scene.add.text(x, y + 38, 'HP ' + this.health + '/' + this.healthMax, {fontFamily: 'Arial', fontSize: 19, color: '#040404', align: 'left'});
+        this.healthText.setAlpha(0.7);
+        this.healthText.setFontStyle('bold')
         this.healthText.setTint(0x000000);
         this.healthText.setOrigin(0.5, 0.5);
         this.healthText.setDepth(99999);

@@ -10,7 +10,8 @@ class TextPopupManager {
         this.healNums = [];
         this.blockNums = [];
         this.infoBox = this.scene.add.image(0, 0, 'blackPixel').setAlpha(0).setDepth(100001);
-        this.infoText = this.scene.add.text(0, 0, 'WELCOME', {fontFamily: 'Garamond', fontSize: 22, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(100001);
+        this.infoText = this.scene.add.text(0, 0, 'WELCOME', {fontFamily: 'Arial', fontSize: 23, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(100001);
+        this.infoText.setFontStyle('bold');
         messageBus.subscribe('animateDamageNum', this.animateDamageNum.bind(this));
         messageBus.subscribe('animateDamageNumAccumulate', this.animateDamageNumAccumulate.bind(this));
         messageBus.subscribe('animateTrueDamageNum', this.animateTrueDamageNum.bind(this));

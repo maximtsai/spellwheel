@@ -644,20 +644,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 180,
-						"h": 180
+						"w": 182,
+						"h": 182
 					},
 					"spriteSourceSize": {
-						"x": 88,
-						"y": 89,
-						"w": 91,
-						"h": 90
+						"x": 89,
+						"y": 90,
+						"w": 93,
+						"h": 92
 					},
 					"frame": {
 						"x": 1077,
 						"y": 1540,
-						"w": 91,
-						"h": 90
+						"w": 93,
+						"h": 92
 					}
 				},
 				{
@@ -675,7 +675,7 @@
 						"h": 90
 					},
 					"frame": {
-						"x": 1170,
+						"x": 1172,
 						"y": 1540,
 						"w": 91,
 						"h": 90
@@ -850,6 +850,27 @@
 					}
 				},
 				{
+					"filename": "drag_arrow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 102,
+						"h": 25
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 4,
+						"w": 102,
+						"h": 17
+					},
+					"frame": {
+						"x": 1430,
+						"y": 1196,
+						"w": 102,
+						"h": 17
+					}
+				},
+				{
 					"filename": "delayed_damage_amt.png",
 					"rotated": false,
 					"trimmed": true,
@@ -864,7 +885,7 @@
 						"h": 55
 					},
 					"frame": {
-						"x": 1263,
+						"x": 1265,
 						"y": 1540,
 						"w": 80,
 						"h": 55
@@ -885,31 +906,10 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 1263,
+						"x": 1265,
 						"y": 1597,
 						"w": 61,
 						"h": 50
-					}
-				},
-				{
-					"filename": "drag_arrow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 102,
-						"h": 25
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 4,
-						"w": 102,
-						"h": 17
-					},
-					"frame": {
-						"x": 1430,
-						"y": 1196,
-						"w": 102,
-						"h": 17
 					}
 				},
 				{
@@ -990,7 +990,7 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1345,
+						"x": 1347,
 						"y": 1526,
 						"w": 46,
 						"h": 42
@@ -1011,7 +1011,7 @@
 						"h": 39
 					},
 					"frame": {
-						"x": 1393,
+						"x": 1395,
 						"y": 1526,
 						"w": 48,
 						"h": 39
@@ -1032,7 +1032,7 @@
 						"h": 39
 					},
 					"frame": {
-						"x": 1443,
+						"x": 1445,
 						"y": 1526,
 						"w": 48,
 						"h": 39
@@ -1053,7 +1053,7 @@
 						"h": 41
 					},
 					"frame": {
-						"x": 1493,
+						"x": 1495,
 						"y": 1526,
 						"w": 44,
 						"h": 41
@@ -1074,156 +1074,9 @@
 						"h": 41
 					},
 					"frame": {
-						"x": 1539,
+						"x": 1541,
 						"y": 1526,
 						"w": 44,
-						"h": 41
-					}
-				},
-				{
-					"filename": "rune_reinforce.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 1,
-						"w": 41,
-						"h": 38
-					},
-					"frame": {
-						"x": 1585,
-						"y": 1526,
-						"w": 41,
-						"h": 38
-					}
-				},
-				{
-					"filename": "rune_unload_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 0,
-						"w": 44,
-						"h": 41
-					},
-					"frame": {
-						"x": 1345,
-						"y": 1570,
-						"w": 44,
-						"h": 41
-					}
-				},
-				{
-					"filename": "healthbar_sixteenth.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 180,
-						"h": 180
-					},
-					"spriteSourceSize": {
-						"x": 162,
-						"y": 88,
-						"w": 16,
-						"h": 46
-					},
-					"frame": {
-						"x": 987,
-						"y": 1439,
-						"w": 16,
-						"h": 46
-					}
-				},
-				{
-					"filename": "rune_reinforce_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 1,
-						"w": 41,
-						"h": 38
-					},
-					"frame": {
-						"x": 1585,
-						"y": 1566,
-						"w": 41,
-						"h": 38
-					}
-				},
-				{
-					"filename": "rune_time.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 0,
-						"w": 42,
-						"h": 42
-					},
-					"frame": {
-						"x": 1628,
-						"y": 1578,
-						"w": 42,
-						"h": 42
-					}
-				},
-				{
-					"filename": "rune_void.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 0,
-						"w": 40,
-						"h": 41
-					},
-					"frame": {
-						"x": 1672,
-						"y": 1578,
-						"w": 40,
-						"h": 41
-					}
-				},
-				{
-					"filename": "rune_void_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 0,
-						"w": 40,
-						"h": 41
-					},
-					"frame": {
-						"x": 1714,
-						"y": 1578,
-						"w": 40,
 						"h": 41
 					}
 				},
@@ -1242,14 +1095,14 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 1756,
-						"y": 1578,
+						"x": 1587,
+						"y": 1526,
 						"w": 36,
 						"h": 45
 					}
 				},
 				{
-					"filename": "rune_strike.png",
+					"filename": "rune_unload_glow.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1257,100 +1110,37 @@
 						"h": 160
 					},
 					"spriteSourceSize": {
-						"x": 8,
+						"x": 3,
 						"y": 0,
-						"w": 36,
-						"h": 40
+						"w": 44,
+						"h": 41
 					},
 					"frame": {
-						"x": 1794,
-						"y": 1578,
-						"w": 36,
-						"h": 40
+						"x": 1347,
+						"y": 1570,
+						"w": 44,
+						"h": 41
 					}
 				},
 				{
-					"filename": "rune_strike_glow.png",
+					"filename": "healthbar_sixteenth.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 50,
-						"h": 160
+						"w": 182,
+						"h": 182
 					},
 					"spriteSourceSize": {
-						"x": 8,
-						"y": 0,
-						"w": 36,
+						"x": 161,
+						"y": 89,
+						"w": 21,
 						"h": 40
 					},
 					"frame": {
-						"x": 1832,
-						"y": 1578,
-						"w": 36,
+						"x": 987,
+						"y": 1439,
+						"w": 21,
 						"h": 40
-					}
-				},
-				{
-					"filename": "poison_icon.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 50
-					},
-					"spriteSourceSize": {
-						"x": 9,
-						"y": 3,
-						"w": 32,
-						"h": 43
-					},
-					"frame": {
-						"x": 1870,
-						"y": 1578,
-						"w": 32,
-						"h": 43
-					}
-				},
-				{
-					"filename": "rune_mind.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 10,
-						"y": 0,
-						"w": 30,
-						"h": 45
-					},
-					"frame": {
-						"x": 1904,
-						"y": 1574,
-						"w": 30,
-						"h": 45
-					}
-				},
-				{
-					"filename": "rune_time_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 3,
-						"w": 36,
-						"h": 36
-					},
-					"frame": {
-						"x": 1936,
-						"y": 1574,
-						"w": 36,
-						"h": 36
 					}
 				},
 				{
@@ -1368,8 +1158,8 @@
 						"h": 15
 					},
 					"frame": {
-						"x": 1077,
-						"y": 1632,
+						"x": 588,
+						"y": 1610,
 						"w": 16,
 						"h": 15
 					}
@@ -1389,10 +1179,220 @@
 						"h": 15
 					},
 					"frame": {
-						"x": 1077,
-						"y": 1632,
+						"x": 588,
+						"y": 1610,
 						"w": 16,
 						"h": 15
+					}
+				},
+				{
+					"filename": "rune_time.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 0,
+						"w": 42,
+						"h": 42
+					},
+					"frame": {
+						"x": 1882,
+						"y": 1574,
+						"w": 42,
+						"h": 42
+					}
+				},
+				{
+					"filename": "rune_void.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 0,
+						"w": 40,
+						"h": 41
+					},
+					"frame": {
+						"x": 1926,
+						"y": 1574,
+						"w": 40,
+						"h": 41
+					}
+				},
+				{
+					"filename": "rune_void_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 0,
+						"w": 40,
+						"h": 41
+					},
+					"frame": {
+						"x": 1968,
+						"y": 1574,
+						"w": 40,
+						"h": 41
+					}
+				},
+				{
+					"filename": "rune_reinforce.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 1,
+						"w": 41,
+						"h": 38
+					},
+					"frame": {
+						"x": 1395,
+						"y": 1567,
+						"w": 41,
+						"h": 38
+					}
+				},
+				{
+					"filename": "rune_reinforce_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 1,
+						"w": 41,
+						"h": 38
+					},
+					"frame": {
+						"x": 1438,
+						"y": 1567,
+						"w": 41,
+						"h": 38
+					}
+				},
+				{
+					"filename": "rune_strike.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 0,
+						"w": 36,
+						"h": 40
+					},
+					"frame": {
+						"x": 1393,
+						"y": 1607,
+						"w": 36,
+						"h": 40
+					}
+				},
+				{
+					"filename": "rune_strike_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 0,
+						"w": 36,
+						"h": 40
+					},
+					"frame": {
+						"x": 1431,
+						"y": 1607,
+						"w": 36,
+						"h": 40
+					}
+				},
+				{
+					"filename": "rune_time_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 3,
+						"w": 36,
+						"h": 36
+					},
+					"frame": {
+						"x": 1481,
+						"y": 1569,
+						"w": 36,
+						"h": 36
+					}
+				},
+				{
+					"filename": "poison_icon.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 3,
+						"w": 32,
+						"h": 43
+					},
+					"frame": {
+						"x": 1519,
+						"y": 1569,
+						"w": 32,
+						"h": 43
+					}
+				},
+				{
+					"filename": "rune_mind.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 0,
+						"w": 30,
+						"h": 45
+					},
+					"frame": {
+						"x": 1553,
+						"y": 1569,
+						"w": 30,
+						"h": 45
 					}
 				},
 				{
@@ -1400,20 +1400,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 180,
-						"h": 180
+						"w": 182,
+						"h": 182
 					},
 					"spriteSourceSize": {
-						"x": 165,
-						"y": 88,
-						"w": 15,
-						"h": 13
+						"x": 159,
+						"y": 89,
+						"w": 23,
+						"h": 17
 					},
 					"frame": {
-						"x": 511,
-						"y": 1634,
-						"w": 15,
-						"h": 13
+						"x": 1911,
+						"y": 975,
+						"w": 23,
+						"h": 17
 					}
 				},
 				{
@@ -1431,8 +1431,8 @@
 						"h": 25
 					},
 					"frame": {
-						"x": 1911,
-						"y": 975,
+						"x": 1823,
+						"y": 452,
 						"w": 13,
 						"h": 25
 					}
@@ -1464,6 +1464,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:a983bc4fc9b430d0ca22304b67b0a749:2ddd210ad488a481eb825855c5c54b05:9a90585c5b43d68de58739bf36e3c98d$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1e44e703d5720b179177f5d6672c2b20:f39644678cc2f2d4a226e42de4c1d8d1:9a90585c5b43d68de58739bf36e3c98d$"
 	}
 }

@@ -13,7 +13,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 120 : 80;
+         this.health = gameVars.isHardMode ? 120 : 8;
          this.isAsleep = true;
          this.initTutorial();
      }
@@ -116,10 +116,26 @@
     initTutorial3() {
         setTimeout(() => {
             if (!this.dead) {
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 200, gameConsts.halfHeight - 30, "Hover over\nspell names\nfor more\ninfo  ==>");
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 212, gameConsts.halfHeight - 37, "Hover over\nspell names\nfor more\ninfo   =>");
+                let hoverColor = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 241, 'lowq', 'glow_flat.webp').setDepth(-1).setScale(1.75, 1).setAlpha(0);
+                PhaserScene.tweens.add({
+                    targets: hoverColor,
+                    alpha: 0.5,
+                    ease: 'Cubic.easeInOut',
+                    duration: 1500,
+                });
                 setTimeout(() => {
                     let spellListener = messageBus.subscribe('spellClicked', () => {
                         globalObjects.textPopupManager.hideInfoText();
+                        PhaserScene.tweens.add({
+                            targets: hoverColor,
+                            alpha: 0,
+                            ease: 'Cubic.easeOut',
+                            duration: 1000,
+                            onComplete: () => {
+                                hoverColor.destroy();
+                            }
+                        });
                         spellListener.unsubscribe();
                         setTimeout(() => {
                             this.finishedTut3 = true;
@@ -135,17 +151,86 @@
         if (!this.dead && !this.isAsleep && this.finishedTut3 && !this.shownTut4) {
             this.shownTut4 = true;
             globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 229, gameConsts.halfHeight - 60, "Watch out for\nenemy attacks!");
-            let glowBar = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
+            let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 335, 'lowq', 'glow_flat_red.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.1);
+            PhaserScene.tweens.add({
+                targets: glowBar,
+                alpha: 0.5,
+                scaleX: 1.1,
+                ease: 'Cubic.easeInOut',
+                duration: 1500,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        targets: glowBar,
+                        alpha: 0,
+                        scaleX: 1,
+                        ease: 'Cubic.easeInOut',
+                        duration: 1500,
+                        onComplete: () => {
+                            PhaserScene.tweens.add({
+                                targets: glowBar,
+                                alpha: 0.5,
+                                scaleX: 1.1,
+                                ease: 'Cubic.easeInOut',
+                                duration: 1500,
+                            });
+                        }
+                    });
+                }
+            });
             setTimeout(() => {
                 let spellListener = messageBus.subscribe('spellClicked', () => {
+                    PhaserScene.tweens.add({
+                        targets: glowBar,
+                        alpha: 0,
+                        scaleX: 1,
+                        ease: 'Quad.easeInOut',
+                        duration: 1000,
+                        onComplete: () => {
+                            glowBar.destroy();
+                        }
+                    });
                     setTimeout(() => {
                         globalObjects.textPopupManager.hideInfoText();
                         setTimeout(() => {
                             if (!this.dead) {
-                                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 175, 30, "<== Defeat the\nenemy to win");
+                                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 175, 30, "<= Defeat the\nenemy to win");
+                                this.glowHealth = this.scene.add.sprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.1);
+                                PhaserScene.tweens.add({
+                                    targets: this.glowHealth,
+                                    alpha: 0.6,
+                                    scaleX: 1.1,
+                                    ease: 'Cubic.easeInOut',
+                                    duration: 1500,
+                                    onComplete: () => {
+                                        PhaserScene.tweens.add({
+                                            targets: this.glowHealth,
+                                            alpha: 0,
+                                            scaleX: 0.85,
+                                            ease: 'Cubic.easeInOut',
+                                            duration: 1500,
+                                            onComplete: () => {
+                                                PhaserScene.tweens.add({
+                                                    targets: this.glowHealth,
+                                                    alpha: 0.5,
+                                                    scaleX: 0.9,
+                                                    ease: 'Cubic.easeInOut',
+                                                    duration: 1500,
+                                                });
+                                            }
+                                        });
+                                    }
+                                });
                                 setTimeout(() => {
                                     if (!this.dead) {
                                         globalObjects.textPopupManager.hideInfoText();
+                                        PhaserScene.tweens.add({
+                                            targets: this.glowHealth,
+                                            alpha: 0,
+                                            duration: 500,
+                                            onComplete: () => {
+                                                this.glowHealth.destroy();
+                                            }
+                                        });
                                     }
                                 }, 10000);
                             }
@@ -314,13 +399,16 @@
         if (this.currAnim) {
             this.currAnim.stop();
         }
+        if (this.glowHealth) {
+            this.glowHealth.destroy();
+        }
         this.sprite.setScale(this.sprite.startScale);
         globalObjects.textPopupManager.hideInfoText();
         console.log("Hide info text");
 
         this.x += 10;
          this.y += this.sprite.height * this.sprite.scaleY * 0.45; this.sprite.y = this.y;
-         this.sprite.setOrigin(0.5, 0.95);
+         this.sprite.setOrigin(0.51, 0.96);
          this.dieClickBlocker = new Button({
              normal: {
                  ref: "blackPixel",

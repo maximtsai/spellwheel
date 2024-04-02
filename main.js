@@ -3,7 +3,7 @@ let config = {
     scale: {
         parent: 'spellwheel',
         width: 630,
-        height: 735,
+        height: 740,
         autoRound: true,
 
     },

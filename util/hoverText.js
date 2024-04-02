@@ -10,7 +10,7 @@ class InternalHoverTextManager {
         this.hoverBacking.setOrigin(0, 0);
         this.hoverBacking.alpha = 0.6;
 
-        this.hoverTextDisplay = this.scene.add.text(0, 0, 'desc.', {fontFamily: 'Trebuchet MS', fontSize: 16, color: '#FFFFFF', align: 'left'});
+        this.hoverTextDisplay = this.scene.add.text(0, 0, 'desc.', {fontFamily: 'Tahoma', fontSize: 18, color: '#FFFFFF', align: 'left'});
         this.hoverTextDisplay.visible = false;
         this.hoverTextDisplay.setDepth(999);
         this.hoverTextDisplay.setOrigin(0, 0);

@@ -22,17 +22,48 @@ function swirlInReaperFog() {
     });
 }
 
+function clearDeathFog() {
+    if (globalObjects.fogSwirl.currAnim) {
+        globalObjects.fogSwirl.currAnim.stop();
+    }
+    PhaserScene.tweens.add({
+        targets: [globalObjects.fogSwirl],
+        scaleX: 2.2,
+        scaleY: 2.2,
+        alpha: 0,
+        ease: 'Quad.easeIn',
+        duration: 550,
+    });
+
+    PhaserScene.tweens.add({
+        targets: [globalObjects.fogSwirlGlow],
+        scaleX: 2,
+        scaleY: 2,
+        alpha: 0,
+        ease: 'Cubic.easeIn',
+        duration: 600,
+    });
+}
+
 function getFogSlice() {
     if (!globalObjects.fogSlice) {
-        globalObjects.fogSlice = PhaserScene.add.sprite(gameConsts.halfWidth, 170, 'backgrounds', 'fog_slice.png').setDepth(-2).setOrigin(0.5, 0.4);
+        globalObjects.fogSlice = PhaserScene.add.sprite(gameConsts.halfWidth + 12, -53, 'backgrounds', 'fog_slice.png').setDepth(-2).setOrigin(0.68, 0.29);
     }
-    globalObjects.fogSlice.setAlpha(0).setScale(0.6).setRotation(-0.45);
+    globalObjects.fogSlice.setAlpha(0.2).setScale(1.01).setRotation(-0.8);
     return globalObjects.fogSlice;
+}
+
+function getFogSliceDarken() {
+    if (!globalObjects.fogSliceDarken) {
+        globalObjects.fogSliceDarken = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(-3).setScale(500, 500);
+    }
+    globalObjects.fogSliceDarken.setAlpha(1);
+    return globalObjects.fogSliceDarken;
 }
 
 function getFogSwirl() {
     if (!globalObjects.fogSwirl) {
-        globalObjects.fogSwirl = PhaserScene.add.sprite(gameConsts.halfWidth, 240, 'backgrounds', 'fog_swirl.png').setDepth(-2);
+        globalObjects.fogSwirl = PhaserScene.add.sprite(gameConsts.halfWidth, 240, 'backgrounds', 'fog_swirl.png').setDepth(-4);
     }
     globalObjects.fogSwirl.setAlpha(0).setScale(2.2).setRotation(-1);
     return globalObjects.fogSwirl;
@@ -40,7 +71,7 @@ function getFogSwirl() {
 
 function getFogSwirlGlow() {
     if (!globalObjects.fogSwirlGlow) {
-        globalObjects.fogSwirlGlow = PhaserScene.add.sprite(gameConsts.halfWidth, 225, 'backgrounds', 'fog_swirl_glow.png').setDepth(-2);
+        globalObjects.fogSwirlGlow = PhaserScene.add.sprite(gameConsts.halfWidth, 225, 'backgrounds', 'fog_swirl_glow.png').setDepth(-4);
     }
     globalObjects.fogSwirlGlow.setAlpha(0).setScale(2).setRotation(-1);
     return globalObjects.fogSwirlGlow;
@@ -85,7 +116,7 @@ function playReaperAnim(enemy) {
                 globalObjects.fogSwirl.currAnim.stop();
                 globalObjects.fogSwirl.currAnim = newAnim;
             }
-        });;
+        });
 
     }
     PhaserScene.tweens.add({
@@ -115,27 +146,47 @@ function playReaperAnim(enemy) {
                         completeDelay: 100,
                         onComplete: () => {
                             let fogSlice = getFogSlice();
+
+                            let fogSliceDarken = getFogSliceDarken();
                             PhaserScene.tweens.add({
-                                targets: fogSlice,
-                                scaleX: 1,
-                                scaleY: 1,
-                                ease: 'Quart.easeOut',
+                                targets: fogSliceDarken,
+                                alpha: 0.75,
+                                ease: 'Cubic.easeOut',
+                                duration: 500,
+                            });
+                            PhaserScene.tweens.add({
+                                targets: [fogSlice],
                                 alpha: 1,
-                                duration: 100,
-                                completeDelay: 150,
+                                ease: 'Quad.easeOut',
+                                duration: 200,
                                 onComplete: () => {
                                     PhaserScene.tweens.add({
-                                        targets: fogSlice,
+                                        delay: 200,
+                                        targets: [fogSlice, fogSliceDarken],
                                         ease: 'Quart.easeIn',
                                         alpha: 0,
-                                        duration: 1200,
+                                        duration: 1400,
                                     });
-
+                                }
+                            });
+                            PhaserScene.tweens.add({
+                                targets: [fogSlice],
+                                scaleX: 1.08,
+                                scaleY: 1.08,
+                                ease: 'Quint.easeOut',
+                                duration: 300,
+                                onComplete: () => {
+                                    PhaserScene.tweens.add({
+                                        targets: [fogSlice],
+                                        scaleX: 1.09,
+                                        scaleY: 1.09,
+                                        duration: 1500,
+                                    });
                                 }
                             });
                             PhaserScene.tweens.add({
                                 targets: fogSlice,
-                                rotation: -0.65,
+                                rotation: -0.85,
                                 ease: 'Quad.easeOut',
                                 duration: 1500,
                             });

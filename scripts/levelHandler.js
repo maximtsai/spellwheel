@@ -3,6 +3,8 @@ let levelTimeoutID = null;
 
 function beginLevel(lvl) {
     CURRENT_LEVEL = lvl;
+
+    updateSpellState(lvl)
     globalObjects.player.resetStats();
     messageBus.publish('manualResetElements');
     messageBus.publish('manualResetEmbodiments', undefined, true); // with long delay

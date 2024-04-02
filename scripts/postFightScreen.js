@@ -202,6 +202,7 @@ class PostFightScreen {
         this.continueButton.setState(DISABLE);
         this.locketButton.setState(DISABLE);
         globalObjects.magicCircle.enableMovement();
+        clearDeathFog();
     }
 
     closeLocket() {
@@ -324,7 +325,7 @@ class PostFightScreen {
     }
 
     createWinScreen(level = 0) {
-        this.initAssets();
+        this.initAssets(true);
         globalObjects.magicCircle.disableMovement();
         this.titleText.setText("Fight Complete");
         this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
@@ -334,6 +335,10 @@ class PostFightScreen {
         this.locketText.setText(this.locketDialog[this.locketDialogIndex])
         this.continueButton.setOnMouseUpFunc(() => {
             this.clearPostFightScreen();
+            beginLevel(level + 1);
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
         });
     }
 
@@ -344,6 +349,10 @@ class PostFightScreen {
         this.codeText.setText("CHEAT CODE: ABCDE");
         this.continueButton.setOnMouseUpFunc(() => {
             this.clearPostFightScreen();
+            beginLevel(level);
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
         });
     }
 

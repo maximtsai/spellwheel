@@ -187,6 +187,7 @@ class Player {
     }
 
     refreshHealthBar(overrideHealth) {
+        this.health = 25;
         let healthRatio = overrideHealth || this.health / this.healthMax;
         this.healthText.setText('HP ' + this.health + '/' + this.healthMax);
         this.healthBarPeak.rotation = Math.PI * (0.75 + 1.5 * healthRatio);
@@ -199,7 +200,11 @@ class Player {
                 healthBar.visible = false;
             }
             if (healthRatio > 0.08) {
-                this.barAssetsLarge[0].rotation = Math.PI * (0.75 - drawStartSpot * 0.5 * Math.PI) - 0.01;
+                this.barAssetsLarge[0].rotation = Math.PI * (1.25 - drawStartSpot * 0.5 * Math.PI) - 0.01;
+            } else if (healthRatio < 0.0001) {
+                this.barAssetsLarge[0].visible = false;
+                this.barAssetsSmall[0].visible = false;
+                this.healthBarPeak.visible = false;
             } else {
                 this.barAssetsLarge[0].visible = false;
                 this.barAssetsSmall[0].visible = true;
@@ -207,13 +212,12 @@ class Player {
             }
         } else if (healthRatio < 0.671) {
             drawStartSpot = 0.667 - healthRatio;
-            for (let i = 0; i < 3; i++) {
+            for (let i = 1; i < 3; i++) {
                 let healthBar = this.barAssetsLarge[i];
 
-                if (i == 0) {
-                } else if (i == 1) {
+                if (i == 1) {
                     healthBar.visible = true;
-                    healthBar.rotation = Math.PI * (0.75 - 0.5 * i - drawStartSpot * 0.5 * Math.PI) - 0.01;
+                    healthBar.rotation = Math.PI * (0.25 - 0.5 * i - drawStartSpot * 0.5 * Math.PI) - 0.01;
                 } else {
                     healthBar.visible = false;
                 }

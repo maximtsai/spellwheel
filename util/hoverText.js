@@ -6,13 +6,13 @@ class InternalHoverTextManager {
 
         this.hoverBacking = this.scene.add.sprite(0, 0, 'blackPixel');
         this.hoverBacking.visible = false;
-        this.hoverBacking.setDepth(999);
+        this.hoverBacking.setDepth(9992);
         this.hoverBacking.setOrigin(0, 0);
         this.hoverBacking.alpha = 0.6;
 
         this.hoverTextDisplay = this.scene.add.text(0, 0, 'desc.', {fontFamily: 'Tahoma', fontSize: 18, color: '#FFFFFF', align: 'left'});
         this.hoverTextDisplay.visible = false;
-        this.hoverTextDisplay.setDepth(999);
+        this.hoverTextDisplay.setDepth(9992);
         this.hoverTextDisplay.setOrigin(0, 0);
 
         // messageBus.subscribe("pointerUp", this.onPointerUp.bind(this));

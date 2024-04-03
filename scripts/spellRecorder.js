@@ -6,20 +6,20 @@ class SpellRecorder {
         this.castHistory = [];
         this.castCount = {};
 
-        this.spellAnnounceBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 1, 'misc', 'announceBg.png');
+        this.spellAnnounceBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 3, 'misc', 'announceBg.png');
         this.spellAnnounceBG.setOrigin(0.5);
-        this.spellAnnounceBG.setDepth(99999);
+        this.spellAnnounceBG.setDepth(9991);
         this.spellAnnounceBG.alpha = 0;
         this.spellAnnounceBG.setScale(2, 1.1);
 
-        this.spellAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight - 5, 'bonus', 'dfbfdb', 36, 1);
+        this.spellAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight, 'bonus', 'dfbfdb', 34, 1);
         this.spellAnnounceText.setOrigin(0.5, 0.5);
-        this.spellAnnounceText.setDepth(99999);
+        this.spellAnnounceText.setDepth(9991);
         this.spellAnnounceText.alpha = 0;
 
-        this.attackAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight - 5, 'damage', 'dfbfdb', 36, 1);
+        this.attackAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight, 'damage', 'dfbfdb', 34, 1);
         this.attackAnnounceText.setOrigin(0.5, 0.5);
-        this.attackAnnounceText.setDepth(99999);
+        this.attackAnnounceText.setDepth(9991);
         this.attackAnnounceText.alpha = 0;
     }
 

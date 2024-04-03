@@ -154,6 +154,23 @@ function playReaperAnim(enemy) {
                                 ease: 'Cubic.easeOut',
                                 duration: 500,
                             });
+                            let oldSwirlAlpha = globalObjects.fogSwirl.alpha;
+
+                            PhaserScene.tweens.add({
+                                targets: globalObjects.fogSwirl,
+                                alpha: 0.25,
+                                ease: 'Cubic.easeIn',
+                                duration: 300,
+                                onComplete: () => {
+                                    PhaserScene.tweens.add({
+                                        delay: 100,
+                                        targets: globalObjects.fogSwirl,
+                                        ease: 'Cubic.easeInOut',
+                                        alpha: oldSwirlAlpha,
+                                        duration: 1000,
+                                    });
+                                }
+                            });
                             PhaserScene.tweens.add({
                                 targets: [fogSlice],
                                 alpha: 1,

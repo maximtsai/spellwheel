@@ -4,18 +4,19 @@ function createEnemy(num) {
     }
     switch(num) {
     case 0:
-        globalObjects.currentEnemy = new Dummy(PhaserScene, gameConsts.halfWidth, 173, 0);
+        globalObjects.currentEnemy = new LesserDummy(PhaserScene, gameConsts.halfWidth, 265, num);
         break;
     case 1:
-        globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 173, 1);
+        globalObjects.currentEnemy = new Dummy(PhaserScene, gameConsts.halfWidth, 173, num);
         break;
     case 2:
-        globalObjects.currentEnemy = new Dummy(PhaserScene, gameConsts.halfWidth, 173, 2);
+        globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 173, num);
         break;
     case 3:
-        globalObjects.currentEnemy = new Magician(PhaserScene, gameConsts.halfWidth, 173, 3);
+        globalObjects.currentEnemy = new Dummy(PhaserScene, gameConsts.halfWidth, 173, num);
         break;
     case 4:
+        globalObjects.currentEnemy = new Magician(PhaserScene, gameConsts.halfWidth, 173, num);
         break;
     case 5:
         break;

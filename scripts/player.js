@@ -23,8 +23,9 @@ class Player {
             messageBus.subscribe('enemyMadeAttack', this.enemyMadeAttack.bind(this)),
             messageBus.subscribe("selfClearEffect", this.clearSpecificEffect.bind(this)),
 
-            messageBus.subscribe("recordSpellAttack", this.incrementSpellsCast.bind(this)),
-            messageBus.subscribe("recordSpell", this.incrementSpellsCast.bind(this)),
+
+            messageBus.subscribe("spellClicked", this.incrementSpellsCast.bind(this)),
+
             messageBus.subscribe("enemyHasDied", this.clearAllEffects.bind(this)),
 
         ];

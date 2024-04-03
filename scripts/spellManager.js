@@ -1254,11 +1254,11 @@ class SpellManager {
             spellName += " X" + numAdditionalAttacks;
         }
         if (additionalDamage >= 60) {
-            spellName = "DEVASTATING " + spellName;
+            spellName = spellName + " +++DMG";
         } else if (additionalDamage >= 30) {
-            spellName = "DESTRUCTIVE " + spellName;
+            spellName = spellName + " ++DMG";
         } else if (additionalDamage > 1) {
-            spellName = "DEADLY " + spellName;
+            spellName = spellName + " +DMG";
         }
         this.postAttackCast(spellID, 0, spellName);
 

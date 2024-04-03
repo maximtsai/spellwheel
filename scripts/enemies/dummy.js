@@ -10,7 +10,7 @@
             }
         });
         let spellHoverListener = messageBus.subscribe('spellNameTextUpdate', (text) => {
-            if (text === 'ADD STRONGER ATTACK') {
+            if (text === "ADD STRONGER ATTACK") {
                 spellHoverListener.unsubscribe();
                 this.initTutorial3();
             }
@@ -125,96 +125,118 @@
             let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             PhaserScene.tweens.add({
                 targets: glowBar,
-                alpha: 0.5,
+                alpha: 0.4,
                 scaleY: 4,
                 scaleX: 5,
                 ease: 'Cubic.easeInOut',
-                duration: 1500,
+                duration: 800,
                 onComplete: () => {
-                    PhaserScene.tweens.add({
+                    this.glowBarAnim = PhaserScene.tweens.add({
+                        delay: 3500,
                         targets: glowBar,
                         alpha: 0,
-                        scaleX: 1,
+                        scaleY: 5,
+                        scaleX: 6,
                         ease: 'Cubic.easeInOut',
-                        duration: 1500,
-                        onComplete: () => {
-                            PhaserScene.tweens.add({
-                                targets: glowBar,
-                                alpha: 0.5,
-                                scaleX: 1.1,
-                                ease: 'Cubic.easeInOut',
-                                duration: 1500,
-                            });
-                        }
+                        duration: 1200
                     });
                 }
             });
             setTimeout(() => {
                 let spellListener = messageBus.subscribe('spellClicked', () => {
-                    gameVars.timeSlowRatio = 1;
-                    PhaserScene.tweens.add({
-                        targets: glowBar,
-                        alpha: 0,
-                        scaleX: 1,
-                        ease: 'Quad.easeInOut',
-                        duration: 1000,
-                        onComplete: () => {
-                            glowBar.destroy();
+                    if (!this.hasShownAttackWarning) {
+                        this.hasShownAttackWarning = true;
+                        gameVars.timeSlowRatio = 1;
+                        if (this.glowBarAnim) {
+                            this.glowBarAnim.stop();
                         }
-                    });
+                        PhaserScene.tweens.add({
+                            targets: glowBar,
+                            alpha: 0,
+                            scaleY: 5,
+                            scaleX: 6,
+                            ease: 'Quad.easeInOut',
+                            duration: 1000,
+                            onComplete: () => {
+                                glowBar.destroy();
+                            }
+                        });
+                    }
+                    spellListener.unsubscribe();
                     setTimeout(() => {
                         globalObjects.textPopupManager.hideInfoText();
-                        setTimeout(() => {
-                            if (!this.dead) {
-                                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 175, 30, "<= Defeat the\nenemy to win");
-                                this.glowHealth = this.scene.add.sprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.1);
-                                PhaserScene.tweens.add({
-                                    targets: this.glowHealth,
-                                    alpha: 0.6,
-                                    scaleX: 1.1,
-                                    ease: 'Cubic.easeInOut',
-                                    duration: 1500,
-                                    onComplete: () => {
-                                        PhaserScene.tweens.add({
-                                            targets: this.glowHealth,
-                                            alpha: 0,
-                                            scaleX: 0.85,
-                                            ease: 'Cubic.easeInOut',
-                                            duration: 1500,
-                                            onComplete: () => {
-                                                PhaserScene.tweens.add({
-                                                    targets: this.glowHealth,
-                                                    alpha: 0.5,
-                                                    scaleX: 0.9,
-                                                    ease: 'Cubic.easeInOut',
-                                                    duration: 1500,
-                                                });
-                                            }
-                                        });
-                                    }
-                                });
-                                setTimeout(() => {
-                                    if (!this.dead) {
-                                        globalObjects.textPopupManager.hideInfoText();
-                                        PhaserScene.tweens.add({
-                                            targets: this.glowHealth,
-                                            alpha: 0,
-                                            duration: 500,
-                                            onComplete: () => {
-                                                this.glowHealth.destroy();
-                                            }
-                                        });
-                                    }
-                                }, 10000);
-                            }
-                        }, 500);
                     }, 1000);
-                    spellListener.unsubscribe();
                 });
+                setTimeout(() => {
+                    if (!this.hasShownAttackWarning) {
+                        this.hasShownAttackWarning = true;
+                        gameVars.timeSlowRatio = 1;
+                        if (this.glowBarAnim) {
+                            this.glowBarAnim.stop();
+                        }
+                        PhaserScene.tweens.add({
+                            targets: glowBar,
+                            alpha: 0,
+                            scaleY: 5,
+                            scaleX: 6,
+                            ease: 'Quad.easeInOut',
+                            duration: 1000,
+                            onComplete: () => {
+                                glowBar.destroy();
+                            }
+                        });
+                    }
+                }, 4500);
             }, 1500);
         }
     }
 
+    tryInitTutorial5() {
+        setTimeout(() => {
+            if (!this.dead) {
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 175, 30, "<= Defeat the\nenemy to win");
+                this.glowHealth = this.scene.add.sprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.1);
+                PhaserScene.tweens.add({
+                    targets: this.glowHealth,
+                    alpha: 0.6,
+                    scaleX: 1.1,
+                    ease: 'Cubic.easeInOut',
+                    duration: 1500,
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: this.glowHealth,
+                            alpha: 0,
+                            scaleX: 0.85,
+                            ease: 'Cubic.easeInOut',
+                            duration: 1500,
+                            onComplete: () => {
+                                PhaserScene.tweens.add({
+                                    targets: this.glowHealth,
+                                    alpha: 0.5,
+                                    scaleX: 0.9,
+                                    ease: 'Cubic.easeInOut',
+                                    duration: 1500,
+                                });
+                            }
+                        });
+                    }
+                });
+                setTimeout(() => {
+                    if (!this.dead) {
+                        globalObjects.textPopupManager.hideInfoText();
+                        PhaserScene.tweens.add({
+                            targets: this.glowHealth,
+                            alpha: 0,
+                            duration: 500,
+                            onComplete: () => {
+                                this.glowHealth.destroy();
+                            }
+                        });
+                    }
+                }, 10000);
+            }
+        }, 500);
+    }
 
      setHealth(newHealth) {
          super.setHealth(newHealth);
@@ -521,7 +543,7 @@
                  // 0
                  {
                      name: "}5 ",
-                     chargeAmt: 400,
+                     chargeAmt: 500,
                      damage: 5,
                     attackFinishFunction: () => {
                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);

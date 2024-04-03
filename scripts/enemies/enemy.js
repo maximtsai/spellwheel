@@ -165,6 +165,11 @@ class Enemy {
         this.attackName = this.scene.add.bitmapText(this.x, this.chargeBarMax.y - 25, 'normal', '', 25);
         this.attackName.setDepth(10);
         this.attackName.setOrigin(0.5, 0.5);
+
+        this.angrySymbol = this.scene.add.sprite(x, this.attackName.y + 3, 'enemies', 'angry1.png');
+        this.angrySymbol.setDepth(10);
+        this.angrySymbol.visible = false;
+        this.angrySymbolIsHiding = true;
     }
 
     resetStats(x, y) {
@@ -352,15 +357,20 @@ class Enemy {
             if (!this.isAngry) {
                 this.isAngry = true;
                 this.chargeBarAngry.visible = true;
+                this.showAngrySymbol('angry');
                 this.chargeBarCurr.visible = false;
             }
         } else if (chargeMult > 1) {
             this.chargeBarAngry.visible = true;
             this.chargeBarAngry.alpha = 0.4;
+            if (chargeMult > 1.4) {
+                this.showAngrySymbol('exclamation');
+            }
         } else {
             this.isAngry = false;
             this.chargeBarAngry.visible = false;
             this.chargeBarCurr.visible = true;
+            this.hideAngrySymbol()
         }
 
         if (this.slowMultDuration > 0) {
@@ -460,6 +470,8 @@ class Enemy {
         } else {
             this.attackName.setScale(1);
         }
+        this.angrySymbol.x = this.attackName.x + this.attackName.width * 0.52 + 8;
+
         this.prepareChargeBar();
         this.nextAttackIndex++;
     }
@@ -741,6 +753,7 @@ class Enemy {
         this.chargeBarWarningBig.visible = false;
         this.chargeBarAngry.visible = false;
         this.chargeBarWarning.visible = false;
+        this.hideAngrySymbol()
         PhaserScene.tweens.add({
             targets: [this.chargeBarCurr],
             alpha: 0,
@@ -756,6 +769,46 @@ class Enemy {
         this.attackName.visible = false;
     }
 
+    hideAngrySymbol() {
+        if (!this.angrySymbolIsHiding) {
+            console.log("hide angry symbol");
+            this.angrySymbolIsHiding = true;
+            this.angrySymbolAnim = PhaserScene.tweens.add({
+                targets: [this.angrySymbol],
+                scaleX: 0,
+                scaleY: 0,
+                ease: "Cubic.easeIn",
+                duration: 200,
+                onComplete: () => {
+                    this.angrySymbol.visible = false;
+                }
+            });
+        }
+    }
+
+    showAngrySymbol(state) {
+        if (this.angrySymbol.currAnim !== state) {
+            console.log("change state angry symbol");
+            this.angrySymbol.currAnim = state;
+            this.angrySymbol.play(state);
+        }
+        if (this.angrySymbolIsHiding) {
+            console.log("show angry symbol");
+            this.angrySymbolIsHiding = false;
+            if (this.angrySymbolAnim) {
+                this.angrySymbolAnim.stop();
+            }
+            this.scene.tweens.add({
+                targets: this.angrySymbol,
+                scaleX: 0.6,
+                scaleY: 0.6,
+                duration: 200,
+                ease: 'Back.easeOut',
+            });
+            this.angrySymbol.visible = true;
+        }
+    }
+
     destroy() {
         this.healthBarMax.destroy();
         this.healthBarCurr.destroy();
@@ -768,6 +821,7 @@ class Enemy {
         this.chargeBarCurr.destroy();
         this.voidPause.destroy();
         this.attackName.destroy();
+        this.angrySymbol.destroy();
 
         this.sprite.destroy();
 
@@ -806,6 +860,7 @@ class Enemy {
         this.chargeBarWarning.visible = false; this.chargeBarWarning.scaleY = 100;
         this.chargeBarAngry.visible = false; this.chargeBarAngry.scaleY = 100;
         this.chargeBarCurr.visible = false; this.chargeBarCurr.scaleY = 100;
+        this.hideAngrySymbol()
         this.voidPause.visible = false;
 
         this.attackName.visible = false;

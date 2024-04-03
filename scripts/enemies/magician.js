@@ -460,7 +460,6 @@
                      name: "TAKING A BREATHER...",
                      desc: "Time Magician is trying\nto think what to do...",
                      chargeAmt: 125,
-                     chargeMult: 1.5,
                      damage: 0,
                      attackFinishFunction: () => {
                          let currHealthPercent = this.health / this.healthMax;

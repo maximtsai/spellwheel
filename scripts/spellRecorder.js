@@ -37,7 +37,7 @@ class SpellRecorder {
         textObj.setText(spellName);
         let extraScale = bonusSize;
         let extraDuration = bonusSize * 1000;
-        textObj.setScale(0.8 + extraScale, 0.85 + extraScale);
+        textObj.setScale(0.78 + extraScale, 0.82 + extraScale);
         this.spellAnnounceBG.setScale(textObj.width / 350 + 0.1, 0.5 + extraScale * 0.25);
         let origSpellAnnounceBGScale = this.spellAnnounceBG.scaleX;
         textObj.setAlpha(0.5);
@@ -50,7 +50,7 @@ class SpellRecorder {
                     ease: 'Cubic.easeOut',
                     alpha: 0,
                     scaleY: 0.95,
-                    duration: 400,
+                    duration: 300,
                 });
             }
         }
@@ -67,13 +67,13 @@ class SpellRecorder {
             scaleX: 0.9 + extraScale,
             scaleY: 0.9 + extraScale,
             alpha: 1,
-            duration: 350,
+            duration: 300,
             easeParams: [3],
             ease: 'Back.easeOut'
         });
 
         this.currAnim = this.scene.tweens.add({
-            delay: 1000 + spellName.length * 40 + extraDuration,
+            delay: 850 + spellName.length * 35 + extraDuration,
             targets: [textObj, this.spellAnnounceBG],
             ease: 'Cubic.easeIn',
             alpha: 0,

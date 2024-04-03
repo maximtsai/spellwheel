@@ -427,12 +427,10 @@ const ENABLE_KEYBOARD = true;
             },
             onHover: () => {
                 this.spellNameText.alpha = 1;
-                if (this.spellNameText.text === "ADD STRONGER ATTACK") {
-                    messageBus.publish('hoveredSpell');
-                }
             },
             onHoverOut: () => {
                 this.spellNameText.alpha = 0.5;
+                messageBus.publish('hoveredSpell', this.spellNameText.text);
             }
         });
 

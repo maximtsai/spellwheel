@@ -11,6 +11,42 @@ function createAnimations(scene) {
     //     repeat: -1
     // });
     scene.anims.create({
+        key: 'exclamation',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'exclamation',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        frameRate: 3,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: 'angry',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'angry',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        frameRate: 3,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: 'angrybone',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'bone1',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        frameRate: 2,
+        repeat: -1
+    });
+    scene.anims.create({
         key: 'mindBurn',
         frames: scene.anims.generateFrameNames('spells', {
             prefix: 'mindBurn',

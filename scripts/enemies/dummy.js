@@ -4,119 +4,73 @@
         this.initSprite('dummy.png', 0.75,0, 5);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
-                this.initTutorial2();
+                // this.initTutorial2();
             } else if (globalObjects.player.getPlayerCastSpellsCount() > 1) {
-                this.initTutorial3();
                 this.playerSpellCastSub.unsubscribe();
             }
         });
+        let spellHoverListener = messageBus.subscribe('spellNameTextUpdate', (text) => {
+            if (text === 'ADD STRONGER ATTACK') {
+                spellHoverListener.unsubscribe();
+                this.initTutorial3();
+            }
+        });
+
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 120 : 80;
+         this.health = gameVars.isHardMode ? 100 : 75;
          this.isAsleep = true;
-         this.initTutorial();
      }
 
      initTutorial() {
-        setTimeout(() => {
-            if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
-                setTimeout(() => {
-                    globalObjects.magicCircle.showReadySprite();
-                }, 400);
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Click to cast\na spell");
-                let spellListener = messageBus.subscribe('spellClicked', () => {
-                    globalObjects.textPopupManager.hideInfoText();
-                    spellListener.unsubscribe();
-                });
-                setTimeout(() => {
-                    if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
-                        globalObjects.magicCircle.showReadySprite();
-                        setTimeout(() => {
-                            if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
-                                globalObjects.magicCircle.showReadySprite();
-                            }
-                        }, 6000)
-                    }
-                }, 4000)
-            }
-        }, 2000)
+        // setTimeout(() => {
+        //     if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
+        //         setTimeout(() => {
+        //             globalObjects.magicCircle.showReadySprite();
+        //         }, 400);
+        //         globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Click to cast\na spell");
+        //         let spellListener = messageBus.subscribe('spellClicked', () => {
+        //             globalObjects.textPopupManager.hideInfoText();
+        //             spellListener.unsubscribe();
+        //         });
+        //         setTimeout(() => {
+        //             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
+        //                 globalObjects.magicCircle.showReadySprite();
+        //                 setTimeout(() => {
+        //                     if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
+        //                         globalObjects.magicCircle.showReadySprite();
+        //                     }
+        //                 }, 6000)
+        //             }
+        //         }, 4000)
+        //     }
+        // }, 2000)
     }
 
-     showArrowRotate() {
-         PhaserScene.tweens.add({
-             targets: [this.arrowRotate1, this.arrowRotate2],
-             alpha: 0.8,
-             duration: 400,
-         });
-
-         PhaserScene.tweens.add({
-             targets: [this.arrowRotate1],
-             rotation: this.arrowRotate1.rotation * -1,
-             ease: 'Cubic.easeInOut',
-             duration: 1300,
-             completeDelay: 100,
-             onComplete: () => {
-                 PhaserScene.tweens.add({
-                     delay: 900,
-                     targets: [this.arrowRotate1, this.arrowRotate2],
-                     alpha: 0,
-                     duration: 400,
-                 });
-                 PhaserScene.tweens.add({
-                     targets: [this.arrowRotate1],
-                     rotation: this.arrowRotate1.rotation * -1,
-                     ease: 'Cubic.easeInOut',
-                     duration: 1300,
-                 });
-             }
-         });
-         PhaserScene.tweens.add({
-             targets: [this.arrowRotate2],
-             rotation: this.arrowRotate2.rotation * -1,
-             ease: 'Cubic.easeInOut',
-             duration: 1300,
-             completeDelay: 100,
-             onComplete: () => {
-                 PhaserScene.tweens.add({
-                     targets: [this.arrowRotate2],
-                     rotation: this.arrowRotate2.rotation * -1,
-                     ease: 'Cubic.easeInOut',
-                     duration: 1300,
-                     completeDelay: 3000,
-                     onComplete: () => {
-                         if (!this.dead && globalObjects.player.getPlayerCastSpellsCount() === 1) {
-                             this.showArrowRotate();
-                         }
-                     }
-                 });
-             }
-         });
-     }
-
     initTutorial2() {
-        setTimeout(() => {
-            if (globalObjects.player.getPlayerCastSpellsCount() === 1 && !this.dead) {
-                // player only casted 1 spell so far
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Switch spells by spinning\n<== the two wheels ==>");
-                this.arrowRotate1 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
-                this.arrowRotate2 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
-                this.destructibles.push(this.arrowRotate1);
-                this.destructibles.push(this.arrowRotate2);
-                this.showArrowRotate();
-
-                let spellListener = messageBus.subscribe('spellClicked', () => {
-                    globalObjects.textPopupManager.hideInfoText();
-                    spellListener.unsubscribe();
-                });
-            }
-        }, 3000);
+        // setTimeout(() => {
+        //     if (globalObjects.player.getPlayerCastSpellsCount() === 1 && !this.dead) {
+        //         // player only casted 1 spell so far
+        //         globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Switch spells by spinning\n<== the two wheels ==>");
+        //         this.arrowRotate1 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
+        //         this.arrowRotate2 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
+        //         this.destructibles.push(this.arrowRotate1);
+        //         this.destructibles.push(this.arrowRotate2);
+        //         this.showArrowRotate();
+        //
+        //         let spellListener = messageBus.subscribe('spellClicked', () => {
+        //             globalObjects.textPopupManager.hideInfoText();
+        //             spellListener.unsubscribe();
+        //         });
+        //     }
+        // }, 3000);
     }
 
     initTutorial3() {
         setTimeout(() => {
             if (!this.dead) {
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 212, gameConsts.halfHeight - 37, "Hover over\nspell names\nfor more\ninfo   =>");
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 225, gameConsts.halfHeight - 37, "Hover over\nspell names\nfor more\n    info  =>");
                 let hoverColor = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 241, 'lowq', 'glow_flat.webp').setDepth(-1).setScale(1.75, 1).setAlpha(0);
                 PhaserScene.tweens.add({
                     targets: hoverColor,
@@ -126,7 +80,9 @@
                 });
                 setTimeout(() => {
                     let spellListener = messageBus.subscribe('spellClicked', () => {
-                        globalObjects.textPopupManager.hideInfoText();
+                        setTimeout(() => {
+                            globalObjects.textPopupManager.hideInfoText();
+                        }, 500);
                         PhaserScene.tweens.add({
                             targets: hoverColor,
                             alpha: 0,
@@ -137,25 +93,41 @@
                             }
                         });
                         spellListener.unsubscribe();
-                        setTimeout(() => {
-                            this.finishedTut3 = true;
-                            this.tryInitTutorial4();
-                        }, 3000);
+                        hoverListener.unsubscribe();
                     });
-                }, 1500);
+
+                    let hoverListener = messageBus.subscribe('hoveredSpell', () => {
+                        setTimeout(() => {
+                            globalObjects.textPopupManager.hideInfoText();
+                        }, 500);
+                        PhaserScene.tweens.add({
+                            targets: hoverColor,
+                            alpha: 0,
+                            ease: 'Cubic.easeOut',
+                            duration: 1000,
+                            onComplete: () => {
+                                hoverColor.destroy();
+                            }
+                        });
+                        spellListener.unsubscribe();
+                        hoverListener.unsubscribe();
+                    });
+                }, 1200);
             }
-        }, 2500);
+        }, 200);
     }
 
     tryInitTutorial4() {
-        if (!this.dead && !this.isAsleep && this.finishedTut3 && !this.shownTut4) {
+        if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
-            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 150, gameConsts.halfHeight - 90, "Watch out for\nenemy attacks!");
-            let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 335, 'lowq', 'glow_flat_red.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.1);
+            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 150, gameConsts.halfHeight - 90, "Beware of\nenemy attacks!");
+            gameVars.timeSlowRatio = 0.1;
+            let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             PhaserScene.tweens.add({
                 targets: glowBar,
                 alpha: 0.5,
-                scaleX: 1.1,
+                scaleY: 4,
+                scaleX: 5,
                 ease: 'Cubic.easeInOut',
                 duration: 1500,
                 onComplete: () => {
@@ -179,6 +151,7 @@
             });
             setTimeout(() => {
                 let spellListener = messageBus.subscribe('spellClicked', () => {
+                    gameVars.timeSlowRatio = 1;
                     PhaserScene.tweens.add({
                         targets: glowBar,
                         alpha: 0,
@@ -252,7 +225,7 @@
              return;
          }
 
-         if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.5) {
+         if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.8) {
              this.angryEyes = true;
              this.flash = this.scene.add.sprite(this.x, this.y - 90, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
 
@@ -357,8 +330,8 @@
              });
          }
 
-         if (prevHealthPercent >= 0.81) {
-             if (currHealthPercent < 0.81) {
+         if (prevHealthPercent >= 0.8) {
+             if (currHealthPercent < 0.8) {
                  this.canAngryEyes = true;
                  this.eyes = this.scene.add.sprite(this.x - 3, this.y - 80, 'enemies', 'dummyeyes.png').setOrigin(0.5, 0.75).setScale(this.sprite.startScale, 0);
                  this.addExtraSprite(this.eyes, -3, -79)

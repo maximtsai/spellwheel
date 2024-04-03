@@ -2,12 +2,14 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('lesser_dummy.png', 0.8, 0, 5);
-        this.sprite.setOrigin(0.5, 0.95);
+        this.sprite.setOrigin(0.5, 0.99);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
                 this.initTutorial2();
             } else if (globalObjects.player.getPlayerCastSpellsCount() === 2) {
-                this.initTutorial3();
+                setTimeout(() => {
+                    this.attemptTutThree();
+                }, 3000);
                 this.playerSpellCastSub.unsubscribe()
             }
         });
@@ -30,6 +32,9 @@
                     this.firstPopupClosed = true;
                     // globalObjects.textPopupManager.hideInfoText();
                     spellListener.unsubscribe();
+                    if (this.currShadowTween) {
+                        this.currShadowTween.stop();
+                    }
                     PhaserScene.tweens.add({
                         targets: this.shadow,
                         alpha: 0,
@@ -39,13 +44,13 @@
                         duration: 500,
                     });
                 });
-                PhaserScene.tweens.add({
+                this.currShadowTween = PhaserScene.tweens.add({
                     targets: this.shadow,
-                    alpha: 0.75,
+                    alpha: 0.65,
                     ease: "Cubic.easeOut",
                     scaleX: 5.6,
                     scaleY: 5.6,
-                    duration: 500,
+                    duration: 700,
                     onComplete: () => {
                         if (globalObjects.player.getPlayerCastSpellsCount() !== 0 && !this.firstPopupClosed) {
                             globalObjects.textPopupManager.hideInfoText();
@@ -133,7 +138,7 @@
         setTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1 && !this.dead) {
                 // player only casted 1 spell so far
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Switch spells by spinning\n<== the two wheels ==>");
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Switch spells by spinning\n<=  the two wheels  =>");
                 this.arrowRotate1 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
                 this.arrowRotate2 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
                 this.destructibles.push(this.arrowRotate1);
@@ -143,17 +148,22 @@
                 let spellListener = messageBus.subscribe('spellClicked', () => {
                     globalObjects.textPopupManager.hideInfoText();
                     spellListener.unsubscribe();
+                    this.currShadowTween.stop();
                     PhaserScene.tweens.add({
                         targets: this.shadow,
                         alpha: 0,
                         ease: "Cubic.easeOut",
-                        scaleX: 18,
-                        scaleY: 18,
+                        scaleX: 14,
+                        scaleY: 14,
                         duration: 500,
+                        completeDelay: 1000,
+                        onComplete: () => {
+                            this.attemptTutThree();
+                        }
                     });
                 });
 
-                PhaserScene.tweens.add({
+                this.currShadowTween = PhaserScene.tweens.add({
                     targets: this.shadow,
                     alpha: 0.55,
                     ease: "Cubic.easeOut",
@@ -171,6 +181,10 @@
                                 scaleX: 18,
                                 scaleY: 18,
                                 duration: 500,
+                                completeDelay: 1000,
+                                onComplete: () => {
+                                    this.attemptTutThree();
+                                }
                             });
                         }
                     }
@@ -179,15 +193,72 @@
         }, 3400);
     }
 
+    attemptTutThree() {
+        if (!this.dead && !this.attemptedTutThree) {
+            this.attemptedTutThree = true;
+            this.shadow.setFrame('shadow_bar.png').setPosition(gameConsts.halfWidth, 25).setScale(3.2);
+            // = this.scene.add.sprite(gameConsts.halfWidth, 30, 'misc', 'shadow_bar.png').setScale(6).setDepth(9999).setAlpha(0);
+            PhaserScene.tweens.add({
+                targets: this.shadow,
+                alpha: 0.2,
+                duration: 800,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        delay: 1000,
+                        targets: this.shadow,
+                        alpha: 0,
+                        duration: 1500,
+                        onComplete: () => {
+                            this.shadow.destroy();
+                        }
+                    });
+                }
+            });
+            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 175, 30, "<= Defeat the\nenemy to win");
+            this.glowHealth = this.scene.add.sprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
+            PhaserScene.tweens.add({
+                targets: this.glowHealth,
+                alpha: 0.6,
+                scaleX: 0.9,
+                ease: 'Cubic.easeInOut',
+                duration: 1500,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        targets: this.glowHealth,
+                        alpha: 0,
+                        scaleX: 0.7,
+                        ease: 'Cubic.easeInOut',
+                        duration: 1500,
+                        onComplete: () => {
+                            PhaserScene.tweens.add({
+                                targets: this.glowHealth,
+                                alpha: 0.5,
+                                scaleX: 0.9,
+                                ease: 'Cubic.easeInOut',
+                                duration: 1500,
+                                onComplete: () => {
+                                    PhaserScene.tweens.add({
+                                        targets: this.glowHealth,
+                                        alpha: 0,
+                                        duration: 1000,
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    }
 
      setHealth(newHealth) {
          super.setHealth(newHealth);
          if (newHealth > 0) {
              PhaserScene.tweens.add({
                  targets: this.sprite,
-                 rotation: -0.04,
+                 rotation: -0.1,
                  ease: "Quart.easeOut",
-                 duration: 100,
+                 duration: 50,
                  onComplete: () => {
                      PhaserScene.tweens.add({
                          targets: this.sprite,
@@ -207,8 +278,6 @@
         super.die();
         globalObjects.textPopupManager.hideInfoText();
 
-        this.x += 3;
-         this.y += this.sprite.height * this.sprite.scaleY * 0.45; this.sprite.y = this.y;
          this.dieClickBlocker = new Button({
              normal: {
                  ref: "blackPixel",
@@ -228,58 +297,18 @@
              ease: "Cubic.easeIn",
              duration: 1000,
              onComplete: () => {
-                 this.x -= 80;
-                 this.y += 39;
-                 this.setSprite('dummy_broken.png', this.sprite.scaleX);
-                 this.sprite.setRotation(0);
-                 this.sprite.setOrigin(0.85, 0.78);
-                 this.flash = this.scene.add.sprite(this.x, this.y - 75, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.5).setDepth(999);
+                 //this.setSprite('dummy_broken.png', this.sprite.scaleX);
+                 this.showVictory();
 
-                 PhaserScene.tweens.add({
-                     targets: this.flash,
-                     rotation: 2,
-                     scaleX: this.sprite.startScale,
-                     scaleY: this.sprite.startScale,
-                     ease: 'Quad.easeIn',
-                     duration: 500,
-                     onComplete: () => {
-                         PhaserScene.tweens.add({
-                             targets: this.flash,
-                             rotation: 4,
-                             scaleX: 0,
-                             scaleY: 0,
-                             duration: 500,
-                             ease: 'Quad.easeOut',
-                             onComplete: () => {
-                                 this.flash.destroy();
-                             }
-                         });
-                     }
-                 });
-
-                 let rune = this.scene.add.sprite(this.x, this.y - 75, 'circle', 'rune_reinforce_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(999);
-                 PhaserScene.tweens.add({
-                     targets: rune,
-                     x: gameConsts.halfWidth,
-                     scaleX: 2,
-                     scaleY: 2,
-                     ease: "Cubic.easeOut",
-                     duration: 1500,
-                     onComplete: () => {
-                        this.showVictory(rune);
-                     }
-                 });
 
              }
          });
      }
 
-     showVictory(rune) {
+     showVictory() {
          let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
          let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let runeAcquired = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 2, 'NEW RUNE ACQUIRED').setAlpha(0).setVisible(false).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998).setFontSize(22);
          let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
-         swirlInReaperFog();
 
          PhaserScene.tweens.add({
              targets: banner,
@@ -288,14 +317,11 @@
          });
 
          PhaserScene.tweens.add({
-             targets: [victoryText, runeAcquired],
+             targets: [victoryText],
              alpha: 1,
              ease: 'Quad.easeOut',
              duration: 500,
          });
-         setTimeout(() => {
-             continueText.alpha = 1;
-         }, 1000);
 
          PhaserScene.tweens.add({
              targets: victoryText,
@@ -303,43 +329,31 @@
              scaleY: 1,
              duration: 800,
          });
-         PhaserScene.tweens.add({
-             targets: rune,
-             y: "+=23",
-             ease: 'Cubic.easeOut',
-             duration: 400,
-             onComplete: () => {
-                 this.dieClickBlocker.setOnMouseUpFunc(() => {
-                    this.dieClickBlocker.destroy();
-                     PhaserScene.tweens.add({
-                         targets: [victoryText, runeAcquired, banner],
-                         alpha: 0,
-                         duration: 400,
-                         onComplete: () => {
-                             victoryText.destroy();
-                             runeAcquired.destroy();
-                             banner.destroy();
-                             continueText.destroy();
-                             playReaperAnim(this);
-                         }
-                     });
-                     PhaserScene.tweens.add({
-                         targets: rune,
-                         y: "+=90",
-                         ease: 'Quad.easeOut',
-                         duration: 400,
-                         onComplete: () => {
-                             rune.destroy();
-                         }
-                     });
-                     PhaserScene.tweens.add({
-                         targets: rune,
-                         alpha: 0,
-                         duration: 400,
-                     });
-                 })
-             }
-         });
+         setTimeout(() => {
+             continueText.alpha = 1;
+             this.dieClickBlocker.setOnMouseUpFunc(() => {
+                 this.dieClickBlocker.destroy();
+                 PhaserScene.tweens.add({
+                     targets: [victoryText, banner],
+                     alpha: 0,
+                     duration: 400,
+                     onComplete: () => {
+                         victoryText.destroy();
+                         banner.destroy();
+                         continueText.destroy();
+                         beginLevel(1);
+                         PhaserScene.tweens.add({
+                             targets: this.sprite,
+                             alpha: 0,
+                             duration: 600,
+                             onComplete: () => {
+                                 this.destroy();
+                             }
+                         });
+                     }
+                 });
+             })
+         }, 1000);
      }
 
      initAttacks() {
@@ -347,168 +361,16 @@
              [
                  // 0
                  {
-                     name: "}5 ",
-                     chargeAmt: 400,
-                     damage: 5,
+                     name: "}999 ",
+                     chargeAmt: 999,
+                     damage: 999,
                     attackFinishFunction: () => {
                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
                         setTimeout(() => {
                             dmgEffect.destroy();
                         }, 150)
                     }
-                 },
-                 {
-                     name: "}10 ",
-                     chargeAmt: 500,
-                     damage: 10,
-                     attackFinishFunction: () => {
-                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
-                         setTimeout(() => {
-                             dmgEffect.x += 30;
-                             dmgEffect.y += 10;
-                             setTimeout(() => {
-                                 dmgEffect.destroy();
-                             }, 150)
-                         }, 75);
-
-                         this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
-                         PhaserScene.tweens.add({
-                             targets: this.snort,
-                             scaleX: this.sprite.startScale * 1.1,
-                             scaleY: this.sprite.startScale * 1.1,
-                             duration: 400,
-                             ease: 'Cubic.easeOut'
-                         });
-                         PhaserScene.tweens.add({
-                             targets: this.snort,
-                             duration: 400,
-                             alpha: 0,
-                             ease: 'Quad.easeIn',
-                         });
-                     }
-                 },
-                 {
-                     name: "}25",
-                     chargeAmt: 750,
-                     damage: 25,
-                     attackFinishFunction: () => {
-                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.8);
-                         PhaserScene.tweens.add({
-                             targets: dmgEffect,
-                             rotation: 1,
-                             alpha: 0,
-                             duration: 800,
-                             onComplete: () => {
-                                 dmgEffect.destroy();
-                             }
-                         });
-                         this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
-                         PhaserScene.tweens.add({
-                             targets: this.snort,
-                             scaleX: this.sprite.startScale * 1.1,
-                             scaleY: this.sprite.startScale * 1.1,
-                             duration: 400,
-                             ease: 'Cubic.easeOut'
-                         });
-                         PhaserScene.tweens.add({
-                             targets: this.snort,
-                             duration: 400,
-                             alpha: 0,
-                             ease: 'Quad.easeIn',
-                         });
-                     }
-                 },
-                 {
-                     name: " TAKING A BREAK...",
-                     chargeAmt: 350,
-                     damage: 0,
-                     startFunction: () => {
-                         this.setDefaultSprite('dummy_w_eyes.png', 0.8);
-                     },
-                     attackFinishFunction: () => {
-                         this.setDefaultSprite('dummy_angry.png', 0.8);
-                     }
-                 },
-                 {
-                     name: "}10 ",
-                     chargeAmt: 400,
-                     damage: 10,
-                     attackFinishFunction: () => {
-                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
-                         setTimeout(() => {
-                             dmgEffect.destroy();
-                         }, 150)
-                         this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
-                         PhaserScene.tweens.add({
-                             targets: this.snort,
-                             scaleX: this.sprite.startScale * 1.1,
-                             scaleY: this.sprite.startScale * 1.1,
-                             duration: 400,
-                             ease: 'Cubic.easeOut'
-                         });
-                         PhaserScene.tweens.add({
-                             targets: this.snort,
-                             duration: 400,
-                             alpha: 0,
-                             ease: 'Quad.easeIn',
-                         });
-                     }
-                 },
-                 {
-                     name: "}15",
-                     chargeAmt: 450,
-                     damage: 15,
-                     attackFinishFunction: () => {
-                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
-                         setTimeout(() => {
-                             dmgEffect.x += 30;
-                             dmgEffect.y += 10;
-                             setTimeout(() => {
-                                 dmgEffect.destroy();
-                             }, 150)
-                         }, 75)
-                         this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
-                         PhaserScene.tweens.add({
-                             targets: this.snort,
-                             scaleX: this.sprite.startScale * 1.1,
-                             scaleY: this.sprite.startScale * 1.1,
-                             duration: 400,
-                             ease: 'Cubic.easeOut'
-                         });
-                         PhaserScene.tweens.add({
-                             targets: this.snort,
-                             duration: 400,
-                             alpha: 0,
-                             ease: 'Quad.easeIn',
-                         });
-                     }
-                 },
-                 {
-                     name: "ULTIMATE ATTACK }50",
-                     chargeAmt: 800,
-                     damage: 50,
-                     attackFinishFunction: () => {
-                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 110, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.8);
-                         PhaserScene.tweens.add({
-                             targets: dmgEffect,
-                             rotation: 1,
-                             alpha: 0,
-                             duration: 800,
-                             onComplete: () => {
-                                 dmgEffect.destroy();
-                             }
-                         });
-                     }
-                 },
-                 {
-                     name: "GOING BACK TO SLEEP...",
-                     chargeAmt: 250,
-                     damage: 0,
-                     attackFinishFunction: () => {
-                         this.setSprite('dummy.png', 0.8);
-                         this.setAsleep();
-                     }
-                 },
+                 }
              ]
          ];
      }

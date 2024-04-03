@@ -427,6 +427,9 @@ const ENABLE_KEYBOARD = true;
             },
             onHover: () => {
                 this.spellNameText.alpha = 1;
+                if (this.spellNameText.text === "ADD STRONGER ATTACK") {
+                    messageBus.publish('hoveredSpell');
+                }
             },
             onHoverOut: () => {
                 this.spellNameText.alpha = 0.5;
@@ -2065,8 +2068,8 @@ const ENABLE_KEYBOARD = true;
                          this.spellNameHover.setText(getLangText('matter_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD STRONGER ATTACK');
-                         this.spellNameHover.setText(getLangText('matter_enhance_desc'));
+                         this.updateTextIfDifferent(this.spellNameText, 'ADD STRONGER ATTACK')
+                         this.updateTextIfDifferent(this.spellNameHover, getLangText('matter_enhance_desc'))
                          break;
                      case RUNE_PROTECT:
                          this.spellNameText.setText('SHIELD OF STONE');
@@ -2171,6 +2174,7 @@ const ENABLE_KEYBOARD = true;
 
      updateTextIfDifferent(textObj, newTextStr) {
         if (textObj.text !== newTextStr) {
+            messageBus.publish("spellNameTextUpdate", newTextStr)
             textObj.setText(newTextStr);
         }
      }

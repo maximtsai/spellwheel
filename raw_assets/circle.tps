@@ -239,8 +239,6 @@
             <key type="filename">circle/cast_hover.png</key>
             <key type="filename">circle/cast_normal.png</key>
             <key type="filename">circle/cast_press.png</key>
-            <key type="filename">circle/chargeCircle.png</key>
-            <key type="filename">circle/healthbar_cover.png</key>
             <key type="filename">circle/healthbar_quarter.png</key>
             <key type="filename">circle/healthbar_sixteenth.png</key>
             <key type="filename">circle/healthbar_tip.png</key>
@@ -465,7 +463,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">circle/healthbar_quarter_grey.png</key>
+            <key type="filename">circle/healthbar_end.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>46,46,91,91</rect>
+                <key>scale9Paddings</key>
+                <rect>46,46,91,91</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">circle/healthbar_quarter_red.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

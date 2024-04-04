@@ -1451,9 +1451,9 @@ const ENABLE_KEYBOARD = true;
             this.lastDragTime = -1000;
             this.scene.tweens.add({
                 targets: this.innerCircle,
-                delay: 50,
+                delay: 0,
                 ease: 'Back.easeIn',
-                easeParams: [1.2],
+                easeParams: [1.1],
                 onComplete: () => {
                     this.resetElements();
                     this.innerDragDisabled = false;
@@ -1463,14 +1463,14 @@ const ENABLE_KEYBOARD = true;
                         this.bufferedCastAvailable = false;
                     }
                 },
-                duration: 2000,
+                duration: 1800,
                 rotation: "+=6.283"
             });
 
             this.scene.tweens.add({
                 targets: this.outerCircle,
-                delay: 550,
-                easeParams: [1.2],
+                delay: 0,
+                easeParams: [1.1],
                 ease: 'Back.easeIn',
                 onComplete: () => {
                     this.resetEmbodiments();
@@ -1481,7 +1481,7 @@ const ENABLE_KEYBOARD = true;
                         this.bufferedCastAvailable = false;
                     }
                 },
-                duration: 2000,
+                duration: 1800,
                 rotation: "-=6.283"
             });
         }
@@ -1494,7 +1494,6 @@ const ENABLE_KEYBOARD = true;
         this.lastDragTime = -1000;
         this.scene.tweens.add({
             targets: this.innerCircle,
-            delay: 50,
             ease: 'Back.easeIn',
             easeParams: [1.2],
             onComplete: () => {
@@ -1541,7 +1540,6 @@ const ENABLE_KEYBOARD = true;
 
          this.scene.tweens.add({
              targets: this.outerCircle,
-             delay: 50,
              ease: 'Back.easeIn',
              easeParams: [1.2],
              onComplete: () => {
@@ -1574,9 +1572,9 @@ const ENABLE_KEYBOARD = true;
                              }
                          });
                      }
-                 }, useLongDelay ? 1000 : 200)
+                 }, useLongDelay ? 800 : 0)
              },
-             duration: 1400,
+             duration: 1200,
              rotation: "+=6.283"
          });
      }

@@ -10,6 +10,14 @@ class InternalMouseManager {
         messageBus.publish("pointerMove", handPos.x, handPos.y);
     }
 
+    onTouchMove(x, y) {
+        gameVars.wasTouch = true;
+        let handPos = mouseToHand(x, y, true);
+        gameVars.mouseposx = handPos.x;
+        gameVars.mouseposy = handPos.y;
+        messageBus.publish("pointerMove", handPos.x, handPos.y);
+    }
+
     onPointerDown(pointer) {
         gameVars.wasTouch = pointer.wasTouch;
         gameVars.mousedown = true;
@@ -42,7 +50,7 @@ function mouseToHand(x, y, convertFromWindow = false) {
     let inGameY = y;
     if (convertFromWindow) {
         inGameX = (inGameX - gameVars.canvasXOffset) / gameVars.gameScale;
-        inGameY = inGameY / gameVars.gameScale;
+        inGameY = (inGameY - gameVars.canvasYOffset) / gameVars.gameScale;
     }
 
     let bufferDist = 0;
@@ -67,6 +75,13 @@ function setupMouseInteraction(scene) {
         mouseManager.onPointerMove(pointer);
     };
 
+    window.ontouchmove = (pointer) => {
+        console.log(pointer.touches[0]);
+        if (pointer.touches.length > 0) {
+            mouseManager.onTouchMove(pointer.touches[0].clientX, pointer.touches[0].clientY);
+        }
+    };
+
     // baseTouchLayer.on('pointermove', mouseManager.onPointerMove, scene);
     // baseTouchLayer.on('pointerup', mouseManager.onPointerUp, scene);
 }
@@ -86,10 +101,12 @@ function resizeGame() {
         canvas.style.height = windowWidth / gameRatio + "px";
         gameScale = windowWidth / game.config.width;
         gameVars.canvasXOffset = 0;
+        gameVars.canvasYOffset = (windowHeight - game.config.height * gameScale) * 0.5;
     } else {
         canvas.style.width = windowHeight * gameRatio + "px";
         canvas.style.height = windowHeight + "px";
         gameScale = windowHeight / game.config.height;
+        gameVars.canvasYOffset = 0;
         gameVars.canvasXOffset = (windowWidth - game.config.width * gameScale) * 0.5;
     }
     gameVars.gameScale = gameScale;

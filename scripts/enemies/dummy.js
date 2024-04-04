@@ -120,7 +120,7 @@
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
-            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 150, gameConsts.halfHeight - 90, "Beware of\nenemy attacks!");
+            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 150, gameConsts.halfHeight - 90, "Enemies become\nangry when\nattacked!");
             gameVars.timeSlowRatio = 0.1;
             let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             PhaserScene.tweens.add({
@@ -130,7 +130,7 @@
                 scaleX: 5,
                 ease: 'Cubic.easeInOut',
                 duration: 800,
-                onComplete: () => {
+                onComplete: () => {onmouse
                     this.glowBarAnim = PhaserScene.tweens.add({
                         delay: 3500,
                         targets: glowBar,

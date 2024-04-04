@@ -59,7 +59,8 @@ let gameVars = {
     timeSlowRatio: 1,
     playerSpeed: 1,
     gameScale: 1,
-    canvasXOffset: 0
+    canvasXOffset: 0,
+    canvasYOffset: 0
 };
 let globalObjects = {};
 let updateFunctions = {};

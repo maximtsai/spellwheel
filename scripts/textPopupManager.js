@@ -20,12 +20,13 @@ class TextPopupManager {
 
     }
 
-    setInfoText(x, y, newText) {
+    setInfoText(x, y, newText, align = 'center') {
         this.infoText.x = x; this.infoText.y = y;
         this.infoText.setAlpha(0);
         this.infoBox.setAlpha(0);
         this.infoBox.x = x; this.infoBox.y = y;
         this.infoText.setText(newText);
+        this.infoText.setAlign(align);
         let boxWidth = this.infoText.width * 0.5 + 8;
         let boxHeight = this.infoText.height * 0.5 + 6;
         this.infoBox.setScale(boxWidth, boxHeight);

@@ -15,7 +15,7 @@
                 this.initTutorial3();
             }
         });
-
+        this.initTutorial();
     }
 
      initStatsCustom() {
@@ -23,29 +23,20 @@
          this.isAsleep = true;
      }
 
+
+
      initTutorial() {
-        // setTimeout(() => {
-        //     if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
-        //         setTimeout(() => {
-        //             globalObjects.magicCircle.showReadySprite();
-        //         }, 400);
-        //         globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Click to cast\na spell");
-        //         let spellListener = messageBus.subscribe('spellClicked', () => {
-        //             globalObjects.textPopupManager.hideInfoText();
-        //             spellListener.unsubscribe();
-        //         });
-        //         setTimeout(() => {
-        //             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
-        //                 globalObjects.magicCircle.showReadySprite();
-        //                 setTimeout(() => {
-        //                     if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
-        //                         globalObjects.magicCircle.showReadySprite();
-        //                     }
-        //                 }, 6000)
-        //             }
-        //         }, 4000)
-        //     }
-        // }, 2000)
+         this.rune1 = this.scene.add.sprite(31, gameConsts.height - 272, 'circle', 'rune_enhance_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
+         this.rune2 = this.scene.add.sprite(88, gameConsts.height - 273, 'circle', 'rune_matter_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
+
+         setTimeout(() => {
+             globalObjects.textPopupManager.setInfoText(110, gameConsts.height - 360, "Cast spells with\ndifferent runes for\ndifferent effects.\n       +      =  +DMG", 'left');
+             PhaserScene.tweens.add({
+                 targets: [this.rune1, this.rune2],
+                 alpha: 1,
+                 duration: 200,
+             });
+         }, 150)
     }
 
     initTutorial2() {
@@ -70,6 +61,10 @@
     initTutorial3() {
         setTimeout(() => {
             if (!this.dead) {
+                if (this.rune1) {
+                    this.rune1.destroy();
+                    this.rune2.destroy();
+                }
                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 225, gameConsts.halfHeight - 37, "Hover over\nspell names\nfor more\n    info  =>");
                 let hoverColor = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 241, 'lowq', 'glow_flat.webp').setDepth(-1).setScale(1.75, 1).setAlpha(0);
                 PhaserScene.tweens.add({
@@ -120,7 +115,7 @@
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
-            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 150, gameConsts.halfHeight - 90, "Enemies become\nangry when\nattacked!");
+            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 173, gameConsts.halfHeight - 97, "Enemies become\nangry when\nattacked!", 'left');
             gameVars.timeSlowRatio = 0.1;
             let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             PhaserScene.tweens.add({
@@ -130,7 +125,7 @@
                 scaleX: 5,
                 ease: 'Cubic.easeInOut',
                 duration: 800,
-                onComplete: () => {onmouse
+                onComplete: () => {
                     this.glowBarAnim = PhaserScene.tweens.add({
                         delay: 3500,
                         targets: glowBar,
@@ -452,7 +447,7 @@
                      }
                  });
 
-                 let rune = this.scene.add.sprite(this.x, this.y - 75, 'circle', 'rune_reinforce_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(999);
+                 let rune = this.scene.add.sprite(this.x, this.y - 75, 'circle', 'rune_mind_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(9999);
                  PhaserScene.tweens.add({
                      targets: rune,
                      x: gameConsts.halfWidth,

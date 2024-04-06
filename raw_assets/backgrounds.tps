@@ -221,7 +221,9 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">backgrounds/backgroundx.webp</key>
+            <key type="filename">backgrounds/firebg1.png</key>
+            <key type="filename">backgrounds/firebg2.png</key>
+            <key type="filename">backgrounds/firebg3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

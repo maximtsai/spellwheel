@@ -336,10 +336,10 @@
              [
                  // 0
                  {
-                     name: "}5 ",
+                     name: "}3 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
                      chargeAmt: 250,
-                     damage: 5,
+                     damage: 3,
                      prepareSprite: 'time_magi_cast.png'
                  },
              ],
@@ -349,7 +349,7 @@
                      name: "CURSE OF TIME (???)",
                      desc: "A deadly spell that\nslowly drains your life.",
                      chargeAmt: 375,
-                     damage: 1,
+                     damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackFinishFunction: () => {
                          let currHealthPercent = this.health / this.healthMax;
@@ -360,7 +360,7 @@
                              this.currentAttackSetIndex = 2;
                              this.nextAttackIndex = 0;
                          }
-                         messageBus.publish('playerAddDelayedDamage', 29);
+                         messageBus.publish('playerAddDelayedDamage', 30);
                          let hitEffect = PhaserScene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large_red.png').setDepth(110).setScale(0.6);
                          this.scene.tweens.add({
                              targets: hitEffect,
@@ -385,15 +385,16 @@
              [
                  // 2
                  {
-                     name: "}8 ",
+                     name: "}5x2 ",
                      desc: "A basic magic attack.",
                      chargeAmt: 250,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
+                         this.createTimeObject('clock2.png', this.x - 120, this.y + 30);
                          this.createTimeObject('clock3.png', this.x - 75, this.y - 20);
                          setTimeout(() => {
-                             this.fireTimeObjects(8);
+                             this.fireTimeObjects(5);
                          }, 300);
                      },
                  },
@@ -425,7 +426,7 @@
                      }
                  },
                  {
-                     name: "TIME-STOPPED ATTACK }7x6 ",
+                     name: "TIME-STOPPED ATTACK }6x6 ",
                      desc: "A devastating barrage\nof offensive magic.",
                      chargeAmt: 1000,
                      chargeMult: 15,
@@ -441,7 +442,7 @@
                      },
                      attackFinishFunction: () => {
                          setTimeout(() => {
-                             this.fireTimeObjects(7);
+                             this.fireTimeObjects(6);
                              setTimeout(() => {
                                  globalObjects.magicCircle.cancelTimeSlowFromEnemy();
                              }, 300);
@@ -499,11 +500,11 @@
              [
                  // 5
                  {
-                     name: "}7 ",
+                     name: "}6 ",
                      desc: "The Time Magician is\nout of magic.",
                      chargeAmt: 200,
                      chargeMult: 1.1,
-                     damage: 7,
+                     damage: 6,
                      prepareSprite: ['time_magi_cast.png']
                  },
              ],

@@ -37,7 +37,7 @@ function createAnimations(scene) {
     scene.anims.create({
         key: 'angrybone',
         frames: scene.anims.generateFrameNames('enemies', {
-            prefix: 'bone1',
+            prefix: 'bone',
             suffix: '.png',
             start: 1,
             end: 2,

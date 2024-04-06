@@ -5,6 +5,7 @@ function clearMenuButtons() {
     globalObjects.startButton.destroy();
     globalObjects.levelSelectButton.destroy();
     globalObjects.creditsButton.destroy();
+    globalObjects.creditsButton2.destroy();
 }
 
 function createMenuButtons() {
@@ -118,4 +119,33 @@ function createMenuButtons() {
         }
     });
     globalObjects.creditsButton.setScale(0.6);
+
+    globalObjects.creditsButton2 = new Button({
+        normal: {
+            ref: "credits.png",
+            atlas: 'buttons',
+            x: gameConsts.halfWidth,
+            y: gameConsts.halfHeight - 40,
+            alpha: 0.95
+        },
+        hover: {
+            ref: "credits_hover.png",
+            atlas: 'buttons',
+            alpha: 1
+        },
+        press: {
+            ref: "credits_hover.png",
+            atlas: 'buttons',
+            alpha: 0.8
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp: () => {
+            clearMenuButtons();
+            beginLevel(4);
+        }
+    });
+    globalObjects.creditsButton2.setScale(0.6);
+
 }

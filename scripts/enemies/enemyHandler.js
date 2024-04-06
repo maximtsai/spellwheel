@@ -13,7 +13,7 @@ function createEnemy(num) {
         globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 173, num);
         break;
     case 3:
-        globalObjects.currentEnemy = new Tree(PhaserScene, gameConsts.halfWidth, 190, num);
+        globalObjects.currentEnemy = new Tree(PhaserScene, gameConsts.halfWidth, 311, num);
         break;
     case 4:
         globalObjects.currentEnemy = new Magician(PhaserScene, gameConsts.halfWidth, 173, num);

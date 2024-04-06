@@ -394,11 +394,11 @@ const ENABLE_KEYBOARD = true;
         this.errorBoxEmbodiment.setDepth(121);
         this.errorBoxEmbodiment.alpha = 0;
 
-        this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 243, 'normal', 'MATTER STRIKE', 30);
+        this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 242, 'normal', 'MATTER STRIKE', 30);
         this.spellNameText.setScale(0.7);
         this.spellNameText.setOrigin(0.5, 0.5);
         this.spellNameText.setDepth(120);
-        this.spellNameText.alpha = 0.5;
+        this.spellNameText.alpha = 0.4;
 
         this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth, 150, 'spells', 'darkSlice.png').setDepth(0).setRotation(1.618).setAlpha(0);
         this.voidSliceImage2 = scene.add.sprite(gameConsts.halfWidth, 150, 'spells', 'darkSliceFront.png').setDepth(5).setRotation(1.618).setAlpha(0);
@@ -429,7 +429,7 @@ const ENABLE_KEYBOARD = true;
                 this.spellNameText.alpha = 1;
             },
             onHoverOut: () => {
-                this.spellNameText.alpha = 0.5;
+                this.spellNameText.alpha = 0.4;
                 messageBus.publish('hoveredSpell', this.spellNameText.text);
             }
         });

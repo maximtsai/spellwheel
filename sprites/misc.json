@@ -5,7 +5,7 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 1795,
-				"h": 1476
+				"h": 1553
 			},
 			"scale": 1,
 			"frames": [
@@ -136,6 +136,27 @@
 					}
 				},
 				{
+					"filename": "announceBg.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 600,
+						"h": 167
+					},
+					"frame": {
+						"x": 1,
+						"y": 1348,
+						"w": 600,
+						"h": 167
+					}
+				},
+				{
 					"filename": "scythe1.png",
 					"rotated": false,
 					"trimmed": true,
@@ -192,31 +213,31 @@
 						"h": 300
 					},
 					"frame": {
-						"x": 858,
-						"y": 634,
+						"x": 606,
+						"y": 1252,
 						"w": 250,
 						"h": 300
 					}
 				},
 				{
-					"filename": "floating_death.png",
+					"filename": "swipe.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 500,
-						"h": 375
+						"w": 328,
+						"h": 350
 					},
 					"spriteSourceSize": {
-						"x": 65,
-						"y": 0,
-						"w": 435,
-						"h": 370
+						"x": 0,
+						"y": 9,
+						"w": 327,
+						"h": 341
 					},
 					"frame": {
 						"x": 858,
-						"y": 936,
-						"w": 435,
-						"h": 370
+						"y": 634,
+						"w": 327,
+						"h": 341
 					}
 				},
 				{
@@ -234,31 +255,52 @@
 						"h": 466
 					},
 					"frame": {
-						"x": 1295,
-						"y": 876,
+						"x": 858,
+						"y": 977,
 						"w": 456,
 						"h": 466
 					}
 				},
 				{
-					"filename": "announceBg.png",
+					"filename": "floating_death.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 600,
-						"h": 180
+						"w": 500,
+						"h": 375
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 7,
-						"w": 600,
-						"h": 167
+						"x": 65,
+						"y": 0,
+						"w": 435,
+						"h": 370
 					},
 					"frame": {
-						"x": 606,
-						"y": 1308,
-						"w": 600,
-						"h": 167
+						"x": 1316,
+						"y": 876,
+						"w": 435,
+						"h": 370
+					}
+				},
+				{
+					"filename": "heal.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 290,
+						"h": 204
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 21,
+						"w": 279,
+						"h": 175
+					},
+					"frame": {
+						"x": 1316,
+						"y": 1248,
+						"w": 279,
+						"h": 175
 					}
 				},
 				{
@@ -276,10 +318,31 @@
 						"h": 54
 					},
 					"frame": {
-						"x": 1,
-						"y": 1348,
+						"x": 858,
+						"y": 1445,
 						"w": 297,
 						"h": 54
+					}
+				},
+				{
+					"filename": "green_circle.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 120,
+						"h": 120
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 118,
+						"h": 118
+					},
+					"frame": {
+						"x": 1597,
+						"y": 1248,
+						"w": 118,
+						"h": 118
 					}
 				},
 				{
@@ -309,6 +372,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:994b28890e6a1a9ef68e9ae73785469c:eaeafd987477800b3abb985f2a9acc9d:612dcbdb08476a0aba06aeca925f16b2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:85b4ce4135731f0a6853df579864ca22:046fe561220b6d95080cb1d6e8afabd2:612dcbdb08476a0aba06aeca925f16b2$"
 	}
 }

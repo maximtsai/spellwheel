@@ -376,6 +376,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/glowSpike.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.9</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>39,24,78,48</rect>
+                <key>scale9Paddings</key>
+                <rect>39,24,78,48</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/gobbo0.png</key>
             <key type="filename">enemies/gobbo1.png</key>
             <key type="filename">enemies/gobbo2.png</key>
@@ -594,6 +609,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/tree_branch.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>63,40,125,80</rect>
+                <key>scale9Paddings</key>
+                <rect>63,40,125,80</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/tree_eye.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -606,6 +636,21 @@
                 <rect>8,23,15,45</rect>
                 <key>scale9Paddings</key>
                 <rect>8,23,15,45</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/tree_leaf.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>10,25,20,50</rect>
+                <key>scale9Paddings</key>
+                <rect>10,25,20,50</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -624,6 +669,23 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/tree_open_glow.png</key>
+            <key type="filename">enemies/tree_stumped.png</key>
+            <key type="filename">enemies/tree_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>155,128,311,255</rect>
+                <key>scale9Paddings</key>
+                <rect>155,128,311,255</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/void_knight.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -636,21 +698,6 @@
                 <rect>94,109,189,217</rect>
                 <key>scale9Paddings</key>
                 <rect>94,109,189,217</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/wall.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>256,256,512,512</rect>
-                <key>scale9Paddings</key>
-                <rect>256,256,512,512</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

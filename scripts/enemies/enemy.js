@@ -73,6 +73,8 @@ class Enemy {
         this.specialDamageAbsorptionActive = false;
         this.storeDamage = false;
         this.dead = false;
+        this.pullbackScale = 0.9;
+        this.attackScale = 1.1;
 
         this.initStatsCustom();
         console.log("after init stats custom");
@@ -186,6 +188,17 @@ class Enemy {
         this.prevHealth = this.health;
     }
 
+    initSpriteAnim(scale) {
+        this.sprite.setScale(scale * 0.98, scale * 0.95);
+        this.scene.tweens.add({
+            targets: this.sprite,
+            duration: 750,
+            ease: 'Quad.easeOut',
+            scaleX: scale,
+            scaleY: scale,
+            alpha: 1
+        });
+    }
 
     initSprite(name, scale = 1, xOffset = 0, yOffset = 0) {
         this.x += xOffset;
@@ -193,16 +206,10 @@ class Enemy {
         this.sprite = this.scene.add.sprite(this.x, this.y, 'enemies', name);
         this.sprite.setDepth(0);
         this.sprite.setAlpha(0);
-        this.sprite.setScale(scale * 0.98, scale * 0.95);
         this.defaultSprite = name;
 
-        this.scene.tweens.add({
-            targets: this.sprite,
-            duration: 750,
-            scaleX: scale,
-            scaleY: scale,
-            alpha: 1
-        });
+        this.initSpriteAnim(scale);
+
         this.sprite.startScale = scale;
 
         this.clockLarge = this.scene.add.sprite(this.x, this.y, 'spells', 'clock_back_large_red.png');
@@ -242,7 +249,10 @@ class Enemy {
             this.sprite.setDepth(1);
         } else {
             newScale = scale ? scale : this.sprite.startScale;
+            let oldOriginX = this.sprite.originX;
+            let oldOriginY = this.sprite.originY;
             this.sprite.setFrame(name);
+            this.sprite.setOrigin(oldOriginX, oldOriginY)
         }
         this.sprite.startScale = newScale;
         this.sprite.setScale(newScale * 1.02);
@@ -288,7 +298,7 @@ class Enemy {
                     delay: 150,
                     duration: 250,
                     scaleX: '+=0.2',
-                    scaleY: '+= 0.2',
+                    scaleY: '+=0.2',
                     alpha: 0,
                 });
                 this.storeDamage = false;
@@ -673,6 +683,14 @@ class Enemy {
             this.timeSinceLastAttacked = 0;
         }
 
+        this.updateHealthBar();
+
+        if (this.health <= 0) {
+            this.die();
+        }
+    }
+
+    updateHealthBar(isHealing) {
         if (this.health <= 0) {
             this.healthBarCurr.scaleX = 0;
         } else {
@@ -680,11 +698,8 @@ class Enemy {
             this.healthBarCurr.scaleX = healthBarRatio;
         }
         this.healthBarText.setText(this.health);
-
-        if (this.health <= 0) {
-            this.die();
-        }
     }
+
 
     takeTrueDamage(amt, isAttack = true, extraOffsetY = 0) {
         let origHealth = this.health;
@@ -716,13 +731,7 @@ class Enemy {
                 this.timeSinceLastAttacked = 0;
             }
         }
-        if (this.health <= 0) {
-            this.healthBarCurr.scaleX = 0;
-        } else {
-            let healthBarRatio = 1 + this.healthBarLengthMax * this.health / this.healthMax;
-            this.healthBarCurr.scaleX = healthBarRatio;
-        }
-        this.healthBarText.setText(this.health);
+        this.updateHealthBar();
 
         if (this.health <= 0) {
             this.die();
@@ -771,7 +780,6 @@ class Enemy {
 
     hideAngrySymbol() {
         if (!this.angrySymbolIsHiding) {
-            console.log("hide angry symbol");
             this.angrySymbolIsHiding = true;
             this.angrySymbolAnim = PhaserScene.tweens.add({
                 targets: [this.angrySymbol],
@@ -793,7 +801,6 @@ class Enemy {
             this.angrySymbol.play(state);
         }
         if (this.angrySymbolIsHiding) {
-            console.log("show angry symbol");
             this.angrySymbolIsHiding = false;
             if (this.angrySymbolAnim) {
                 this.angrySymbolAnim.stop();
@@ -836,6 +843,10 @@ class Enemy {
         }
 
         updateManager.removeFunction(this.boundUpdateFunc);
+    }
+
+    addToDestructibles(item) {
+        this.destructibles.push(item);
     }
 
     die() {
@@ -1026,7 +1037,7 @@ class Enemy {
         if (this.nextAttack.attackStartFunction) {
             this.nextAttack.attackStartFunction();
         }
-        let pullbackScale = 0.9 * this.sprite.startScale;
+        let pullbackScale = this.pullbackScale * this.sprite.startScale;
         this.attackAnim = this.scene.tweens.add({
             targets: this.sprite,
             scaleX: pullbackScale,
@@ -1042,7 +1053,7 @@ class Enemy {
                     this.setSprite(this.defaultSprite);
                     this.sprite.setScale(pullbackScale);
                 }
-                let attackScale = 1.09 * this.sprite.startScale
+                let attackScale = this.attackScale * this.sprite.startScale
                 this.attackAnim = this.scene.tweens.add({
                     targets: this.sprite,
                     scaleX: attackScale,

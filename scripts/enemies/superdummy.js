@@ -218,7 +218,7 @@
                                                  this.tryInitTutorial4();
                                              }, 800);
 
-                                             this.setDefaultSprite('dummy_angry.png', 0.75);
+                                             this.setDefaultSprite('super_dummy_angry.png', 0.75);
                                              this.brows.destroy();
                                              this.brows = null;
                                          }
@@ -456,9 +456,9 @@
              [
                  // 0
                  {
-                     name: "}5 ",
+                     name: "}20 ",
                      chargeAmt: 500,
-                     damage: 5,
+                     damage: 20,
                     attackFinishFunction: () => {
                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
                         setTimeout(() => {
@@ -535,7 +535,7 @@
                          this.setDefaultSprite('dummy_w_eyes.png', 0.75);
                      },
                      attackFinishFunction: () => {
-                         this.setDefaultSprite('dummy_angry.png', 0.75);
+                         this.setDefaultSprite('super_dummy_angry.png', 0.75);
                      }
                  },
                  {

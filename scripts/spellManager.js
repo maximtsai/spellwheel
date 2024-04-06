@@ -1134,9 +1134,35 @@ class SpellManager {
         const spellID = 'timeUnload';
 
         let multiplier = globalObjects.player.spellMultiplier();
-        this.cleanseForms();
 
-        messageBus.publish('manualSetTimeSlowRatio', 0.1, multiplier);
+        let existingBuff = globalObjects.player.getStatuses()[spellID];
+        let statusObj;
+        if (existingBuff) {
+            // already got a buff in place
+            statusObj = existingBuff.statusObj;
+        }
+        let turnsAdded = 0;
+        while (multiplier > 0) {
+            multiplier--;
+            turnsAdded += Math.max(3, 6 - globalObjects.player.getPlayerTimeExhaustion());
+            globalObjects.player.incrementTimeExhaustion()
+        }
+        messageBus.publish('manualSetTimeSlowRatio', 0.01);
+        messageBus.publish('selfTakeEffect', {
+            name: spellID,
+            spellID: spellID,
+            turns: turnsAdded,
+            spriteSrc1: 'rune_unload_glow.png',
+            spriteSrc2: 'rune_time_glow.png',
+            displayAmt: turnsAdded,
+            statusObj: statusObj,
+            cleanUp: (statuses) => {
+                if (statuses[spellID]) {
+                    globalObjects.magicCircle.cancelTimeSlow();
+                    statuses[spellID] = null;
+                }
+            }
+        });
         let spellName = "ACCELERATED FORM";
         let boost = 0;
         if (multiplier > 3) {

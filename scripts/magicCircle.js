@@ -541,7 +541,7 @@ const ENABLE_KEYBOARD = true;
         });
     }
 
-    cancelTimeSlowFromEnemy() {
+    cancelTimeSlow() {
         if (gameVars.timeSlowRatio !== 1) {
             gameVars.timeSlowRatio = 1;
             this.scene.tweens.add({
@@ -567,7 +567,7 @@ const ENABLE_KEYBOARD = true;
         }
     }
 
-     manualSetTimeSlowRatio(slowRatio, multiplier = 1) {
+     manualSetTimeSlowRatio(slowRatio = 1, multiplier = 1) {
         this.setTimeSlowRatio(slowRatio / multiplier, true);
          this.timeStopHeavy.y = this.y;
          this.timeStopHeavy.setScale(1.95);
@@ -598,6 +598,7 @@ const ENABLE_KEYBOARD = true;
      }
 
     setTimeSlowRatio(ratio = 1, manual = false) {
+        console.log("ratio: ", ratio);
         let oldRatio = gameVars.timeSlowRatio;
         gameVars.timeSlowRatio = ratio;
         if (oldRatio != ratio) {

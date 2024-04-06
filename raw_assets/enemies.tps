@@ -562,6 +562,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/super_dummy_angry.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>100,85,200,170</rect>
+                <key>scale9Paddings</key>
+                <rect>100,85,200,170</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/time_magi.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

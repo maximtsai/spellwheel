@@ -11,7 +11,7 @@ const textData = {
     time_enhance_desc: {en_us: 'NEXT ATTACK\nIS CAST AN\nEXTRA TIME', fr_FR: ''},
     time_protect_desc: {en_us: 'CREATES A SHIELD\nTHAT DELAYS ALL\nDAMAGE.', fr_FR: ''},
     time_reinforce_desc: {en_us: 'HEAL HALF OF\nTHE DAMAGE YOU\nTOOK FROM THE\nLAST ATTACK', fr_FR: ''},
-    time_unload_desc: {en_us: 'FREEZE TIME FOR\nTHE NEXT 6 SPELLS', fr_FR: ''},
+    time_unload_desc: {en_us: 'FREEZE TIME FOR\nTHE NEXT 6 SPELLS\nBUT LOSES POWER\nWITH REPEAT USE', fr_FR: ''},
 
     void_strike_desc: {en_us: 'DEAL 4% OF ENEMY\'s\nTOTAL HEALTH OVER\n4 SECONDS', fr_FR: ''},
     void_enhance_desc: {en_us: 'CURSE THE ENEMY.\nNEXT ATTACK THEY\NMAKE WILL HURT THEM\NFOR 12% CURRENT HP', fr_FR: ''},

@@ -85,6 +85,17 @@ class Player {
 
     incrementSpellsCast() {
         this.playerCastSpells++;
+        let timeFreezeStatus = this.statuses['timeUnload'];
+        if (timeFreezeStatus) {
+            timeFreezeStatus.turns--;
+            timeFreezeStatus.displayAmt = timeFreezeStatus.turns;
+
+            if (timeFreezeStatus.turns <= 0) {
+                messageBus.publish("selfClearStatuses", 'timeUnload');
+            } else {
+                messageBus.publish('selfTakeEffect', timeFreezeStatus);
+            }
+        }
         messageBus.publish("playerCastedSpell");
     }
 
@@ -277,6 +288,7 @@ class Player {
         this.healthMax = this.trueHealthMax;
         this.health = this.healthMax;
         this.playerCastSpells = 0;
+        this.timeExhaustion = 0;
         this.clearAllEffects();
     }
 
@@ -318,6 +330,14 @@ class Player {
 
     getPlayerCastSpellsCount() {
         return this.playerCastSpells;
+    }
+
+    getPlayerTimeExhaustion() {
+        return this.timeExhaustion;
+    }
+
+    incrementTimeExhaustion() {
+        this.timeExhaustion++;
     }
 
     clearVoidForm() {

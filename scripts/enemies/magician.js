@@ -138,7 +138,7 @@
              this.currAnim.stop();
          }
          this.setDefaultSprite('time_magi_terrified.png', 0.72);
-         globalObjects.magicCircle.cancelTimeSlowFromEnemy();
+         globalObjects.magicCircle.cancelTimeSlow();
          if (this.clockShield) {
              this.clockShield.alpha += 0.15;
              this.scene.tweens.add({
@@ -446,7 +446,7 @@
                          setTimeout(() => {
                              this.fireTimeObjects(6);
                              setTimeout(() => {
-                                 globalObjects.magicCircle.cancelTimeSlowFromEnemy();
+                                 globalObjects.magicCircle.cancelTimeSlow();
                              }, 300);
                          }, 500);
                          let currHealthPercent = this.health / this.healthMax;

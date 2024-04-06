@@ -1,4 +1,4 @@
- class Tree extends Enemy {
+ class Knight extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
          this.initSprite('tree.png', 0.7);// 0.7

@@ -2108,7 +2108,7 @@ const ENABLE_KEYBOARD = true;
         }
      }
 
-     applyMindBurn(damage = 3) {
+     applyMindBurn(duration = 4) {
         if (!globalObjects.currentEnemy || globalObjects.currentEnemy.dead) {
             return;
         }
@@ -2118,14 +2118,19 @@ const ENABLE_KEYBOARD = true;
              this.mindBurnTween.stop();
          }
          this.mindBurnAnim.alpha = 0.7;
-         this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(damage) + 0.24);
+         this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.24);
          effectObj = {
              name: effectName,
-             duration: 6,
+             duration: 1 + duration,
+             firstTicked: false,
              onUpdate: () => {
-                 if (effectObj && effectObj.duration < 6) {
-                     this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(damage) + 0.05 * effectObj.duration);
-                     messageBus.publish('enemyTakeTrueDamage', damage, false);
+                 if (effectObj) {
+                     if (effectObj.firstTicked) {
+                         this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * effectObj.duration);
+                         messageBus.publish('enemyTakeTrueDamage', 3, false);
+                     } else {
+                         effectObj.firstTicked = true;
+                     }
                  }
              },
              cleanUp: (statuses) => {

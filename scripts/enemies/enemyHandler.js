@@ -19,10 +19,13 @@ function createEnemy(num) {
         globalObjects.currentEnemy = new Magician(PhaserScene, gameConsts.halfWidth, 173, num);
         break;
     case 5:
+        globalObjects.currentEnemy = new Knight(PhaserScene, gameConsts.halfWidth, 173, num);
         break;
     case 6:
+        globalObjects.currentEnemy = new Wall(PhaserScene, gameConsts.halfWidth, 173, num);
         break;
     case 7:
+        globalObjects.currentEnemy = new SuperDummy(PhaserScene, gameConsts.halfWidth, 173, num);
         break;
     case 8:
         break;

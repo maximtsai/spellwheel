@@ -17,7 +17,6 @@ class TextPopupManager {
         messageBus.subscribe('animateTrueDamageNum', this.animateTrueDamageNum.bind(this));
         messageBus.subscribe('animateHealNum', this.animateHealNum.bind(this));
         messageBus.subscribe('animateBlockNum', this.animateBlockNum.bind(this));
-
     }
 
     setInfoText(x, y, newText, align = 'center') {

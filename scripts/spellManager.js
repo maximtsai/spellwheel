@@ -2256,7 +2256,7 @@ class SpellManager {
                     y: 140,
                     duration: 400,
                     onComplete: () => {
-                        messageBus.publish('applyMindBurn', 3 * mindAttackBuff.multiplier);
+                        messageBus.publish('applyMindBurn', 4 * mindAttackBuff.multiplier);
                         mindAttackBuff.cleanUp(globalObjects.player.getStatuses());
                     }
                 });

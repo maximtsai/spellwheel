@@ -6,7 +6,7 @@ class SpellRecorder {
         this.castHistory = [];
         this.castCount = {};
 
-        this.spellAnnounceBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 3, 'misc', 'announceBg.png');
+        this.spellAnnounceBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 20, 'misc', 'announceBg.png');
         this.spellAnnounceBG.setOrigin(0.5);
         this.spellAnnounceBG.setDepth(9991);
         this.spellAnnounceBG.alpha = 0;

@@ -985,7 +985,7 @@ class Enemy {
         this.timeWhenLastDamageTaken = timeNow;
         let scale = 0.5 + Math.sqrt(val) * 0.2;
         if (isTrueDamage) {
-            messageBus.publish("animateTrueDamageNum", this.x + randX, this.y + randY + offsetY, '-' + val, scale);
+            messageBus.publish("animateTrueDamageNum", this.x + randX, this.y + randY + offsetY - 125, '-' + val, scale);
         } else {
             messageBus.publish("animateDamageNumAccumulate", val, offsetY);
         }

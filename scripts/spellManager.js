@@ -1420,21 +1420,28 @@ class SpellManager {
         let spellMultiplier = globalObjects.player.spellMultiplier();
         let animation1 = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', 'eyeShield.png');
 
-        animation1.setDepth(999);
+        animation1.setDepth(110);
         animation1.setOrigin(0.5, 1);
         animation1.setScale(0.75);
         animation1.origScaleX =  0.95 + spellMultiplier * 0.05;
         animation1.rotation = 0;
         animation1.alpha = 0;
 
-        let animation2 =  this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', 'laserCore.png');
-        animation2.setDepth(999);
-        animation2.setOrigin(0.5, 1.328);
-        animation2.setScale(1 + spellMultiplier * 0.5, 3);
-        animation2.origScaleX = animation2.scaleX;
-        animation2.rotation = 0;
-        animation2.visible = false;
-        messageBus.publish('setTempRotObjs', [animation1, animation2], rotation);
+        let animation2 =  this.scene.add.sprite(gameConsts.halfWidth, 200, 'spells', 'eye.png').setScale(0.8);
+        animation2.setDepth(110);
+        animation2.origScale = animation2.scaleX;
+        animation2.alpha = 0;
+
+        let animation3 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 200, 'spells', 'weakenLines_00.png');
+        animation3.startX = animation3.x;
+        animation3.startY = animation3.y;
+        animation3.setDepth(110);
+        animation3.setOrigin(0.5, 1);
+        animation3.rotation = 0;
+        animation3.visible = false;
+        animation3.rotateOffset = 0;
+
+        messageBus.publish('setTempRotObjs', [animation1, animation3], rotation);
 
         this.scene.tweens.add({
             targets: animation1,
@@ -1445,20 +1452,15 @@ class SpellManager {
             ease: 'Cubic.easeIn',
             onComplete: () => {
                 messageBus.publish("selfTakeEffect", {
+                    ignoreBuff: true,
                     name: shieldID,
                     spellID: shieldID,
                     type: 'mind',
-                    animObj: [animation1, animation2],
+                    animObj: [animation1, animation2, animation3],
                     multiplier: spellMultiplier,
                     spriteSrc1: 'rune_protect_glow.png',
                     spriteSrc2: 'rune_mind_glow.png',
-                    duration: 30,
-                    cooldown: 0,
-                    cooldownMax: 55,
-                    rechargeCooldown: 0,
-                    warmup: 0,
                     lockRotation: rotation,
-                    firing: false,
                     cleanUp: (statuses) => {
                         if (statuses[shieldID] && !statuses[shieldID].currentAnim) {
                             statuses[shieldID].currentAnim = this.scene.tweens.add({
@@ -1470,6 +1472,7 @@ class SpellManager {
                                 onComplete: () => {
                                     animation1.destroy();
                                     animation2.destroy();
+                                    animation3.destroy();
                                 }
                             });
                             messageBus.publish('selfClearEffect', shieldID, true);
@@ -1480,14 +1483,11 @@ class SpellManager {
             }
         });
 
-        let spellName = "GAZE OF PAIN";
+        let spellName = "REFLECT PAIN";
         let bonusSize = 0;
-        if (spellMultiplier >= 6) {
-            spellName = "GAZE OF DEATH";
-            bonusSize = 0.2;
-        } else if (spellMultiplier >= 3) {
-            spellName = "GAZE OF FIRE";
-            bonusSize = 0.1;
+        if (spellMultiplier >= 2) {
+            spellName = "REFLECT PAIN X" + spellMultiplier;
+            bonusSize = 0.15;
         }
         this.postNonAttackCast(spellID, spellName, bonusSize);
     }

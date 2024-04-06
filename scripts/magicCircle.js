@@ -1020,134 +1020,67 @@ const ENABLE_KEYBOARD = true;
              let distFromCenter = 0;
              switch(shieldObj.type) {
                  case 'mind':
-                     const gazeStartRot = 0.13;
-                     let goalRot = shieldObj.lockRotation + this.outerCircle.rotation;
-                     shieldObj.animObj[0].rotation = goalRot;
-                     shieldObj.animObj[1].rotation = goalRot;
-                     if (shieldObj.rechargeCooldown <= 0) {
-                         if (Math.abs(shieldObj.animObj[0].rotation) < gazeStartRot) {
-                             if (!shieldObj.firing) {
-                                 this.outerCircle.rotVel = 0;
-                                 shieldObj.firing = true;
-                                 shieldObj.animObj[1].visible = true;
-                                 shieldObj.animObj[1].scaleX = shieldObj.animObj[1].origScaleX;
-                                 shieldObj.animObj[1].alpha = 0.5 + 0.5 * gameVars.timeSlowRatio;
-                             }
-                         } else if (Math.abs(shieldObj.animObj[0].rotation) > gazeStartRot * 1.8) {
-                             if (shieldObj.firing) {
-                                 shieldObj.firing = false;
-                                 shieldObj.warmup = 0;
-                             }
-                             if (shieldObj.animObj[1].scaleX > 0.25) {
-                                 shieldObj.animObj[1].scaleX -= dScale * 0.05;
-                                 shieldObj.animObj[1].alpha = Math.max(0.25, shieldObj.animObj[1].alpha * 0.95 - 0.05);
-                             }
-                         }
-                     } else {
-                         // shieldObj.animObj[0].scaleX = 0.5;
-                         // shieldObj.animObj[1].alpha = 0.05;
+                     const painStartRot = 0.3 + shieldObj.multiplier * 0.03;
+                     let goalRotMind = shieldObj.lockRotation + this.outerCircle.rotation;
+                     shieldObj.animObj[0].rotation = goalRotMind;
+                     if (shieldObj.impactVisibleTime > 0) {
+                         shieldObj.animObj[2].visible = true;
+                         shieldObj.impactVisibleTime = Math.max(0, shieldObj.impactVisibleTime - dScale);
+                         let impactRotation = goalRotMind + shieldObj.animObj[2].rotateOffset;
+                         shieldObj.animObj[2].rotation = impactRotation;
+                         shieldObj.animObj[2].x = shieldObj.animObj[2].startX + Math.sin(impactRotation) * 220;
+                         shieldObj.animObj[2].y = shieldObj.animObj[2].startY - Math.cos(impactRotation) * 220 + 220;
+                     } else if (shieldObj.animObj[2].visible) {
+                         shieldObj.animObj[2].visible = false;
                      }
 
-                     if (shieldObj.firing) {
-                         this.lastDragTime = Math.min(this.lastDragTime, -50);
-                         if (shieldObj.warmup <= 1) {
-                             shieldObj.animObj[1].scaleX = shieldObj.animObj[1].scaleX * 0.6 + 0.4 * (shieldObj.multiplier * 0.13 + 0.35 + 0.25 * Math.random());
-                         } else {
-                             shieldObj.animObj[1].scaleX = shieldObj.animObj[1].scaleX * 0.5 + 0.5 * (shieldObj.multiplier * 0.17 + 0.55 + 0.4 * Math.random());
+                     distFromCenter = Math.abs(shieldObj.animObj[0].rotation);
+                     if (distFromCenter < painStartRot) {
+                         if (!shieldObj.active) {
+                             shieldObj.active = true;
+                             shieldObj.animObj[0].alpha = 0.85;
+                             this.scene.tweens.add({
+                                 targets: shieldObj.animObj[0],
+                                 duration: 275,
+                                 scaleX: shieldObj.animObj[0].origScaleX,
+                                 easeParams: [3],
+                                 scaleY: 1,
+                                 ease: 'Back.easeOut',
+                             });
+                             this.scene.tweens.add({
+                                 targets: shieldObj.animObj[1],
+                                 scaleX: shieldObj.animObj[1].origScale,
+                                 scaleY: shieldObj.animObj[1].origScale,
+                                 duration: 250,
+                                 alpha: 0.2,
+                                 ease: 'Back.easeOut',
+                             });
                          }
-                         this.outerCircle.rotVel *= Math.max(0.3, Math.min(0.8, 0.5 + 0.1 * dScale));
-                         if (shieldObj.cooldown <= 0) {
-                             if (shieldObj.warmup >= 10 + Math.ceil(shieldObj.multiplier * 0.33)) {
-                                 // Last burst
-                                 shieldObj.rechargeCooldown = 420;
-                                 shieldObj.firing = false;
-                                 shieldObj.warmup = 0;
-                                 shieldObj.animObj[0].alpha = 1;
-                                 shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX + 0.5, 1);
-                                 this.scene.tweens.add({
-                                     targets: shieldObj.animObj[0],
-                                     duration: 200,
-                                     scaleX: shieldObj.animObj[0].origScaleX * 0.5,
-                                     alpha: 0.4,
-                                 });
-                                 messageBus.publish('enemyTakeDamage', shieldObj.multiplier * 3, true);
-                                 shieldObj.animObj[1].scaleX = 2 + shieldObj.multiplier * 0.35;
-                                 this.scene.tweens.add({
-                                     targets: shieldObj.animObj[1],
-                                     duration: 200,
-                                     scaleX: 0,
-                                     alpha: 0,
-                                     ease: 'Quart.easeIn',
-                                 });
-                                 this.applyMindBurn(7);
-                                 zoomTemp(1.01 + shieldObj.multiplier * 0.0006);
-                             } else if (shieldObj.warmup >= 7 + Math.ceil(shieldObj.multiplier * 0.33)) {
-                                 // very heavy lasering
-                                 messageBus.publish('enemyTakeDamage', shieldObj.multiplier * 2, true);
-                                 shieldObj.cooldown = shieldObj.cooldownMax * 0.1;
-                                 shieldObj.animObj[0].alpha = 1;
-                                 shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX + 0.5, 1);
-                                 shieldObj.animObj[1].scaleX = 2 + shieldObj.multiplier * 0.3;
-                                 shieldObj.animObj[1].alpha = 1;
-                                 this.scene.tweens.add({
-                                     targets: shieldObj.animObj[1],
-                                     duration: 50,
-                                     scaleX: 1 + shieldObj.multiplier * 2,
-                                     ease: 'Cubic.easeOut'
-                                 });
-                                 this.applyMindBurn(5);
-                                 zoomTemp(1.007 + shieldObj.multiplier * 0.0005);
-                             } else if (shieldObj.warmup > 1) {
-                                 // heavy lasering
-                                 if (shieldObj.warmup > 3) {
-                                     messageBus.publish('enemyTakeDamage', shieldObj.multiplier, true);
-                                     zoomTemp(1 + shieldObj.multiplier * 0.0005);
-                                     this.applyMindBurn(4);
-                                 } else {
-                                     messageBus.publish('enemyTakeDamage', shieldObj.multiplier, false);
-                                     this.applyMindBurn(3);
-                                 }
-                                 shieldObj.cooldown = shieldObj.cooldownMax * 0.4;
-                                 shieldObj.animObj[0].alpha = 0.8;
-                                 shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX + 0.2, 1);
-                                 shieldObj.animObj[1].scaleX = 1 + shieldObj.multiplier * 0.15 + 0.5 * Math.random();
-                                 shieldObj.animObj[1].alpha = 0.6 + shieldObj.warmup * 0.05;
-                                 this.scene.tweens.add({
-                                     targets: shieldObj.animObj[0],
-                                     duration: 200,
-                                     alpha: 0.65,
-                                     scaleX: shieldObj.animObj[0].origScaleX + 0.05,
-                                     ease: 'Cubic.easeOut',
-                                 });
-                             } else {
-                                 messageBus.publish('enemyTakeDamage', shieldObj.multiplier * 1, false);
-                                 shieldObj.cooldown = shieldObj.cooldownMax;
-                                 shieldObj.animObj[0].alpha = 0.7;
-                                 shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX, 1);
-                                 shieldObj.animObj[1].alpha = 0.5;
-                                 shieldObj.animObj[1].scaleX = 0.8 + shieldObj.multiplier * 0.1 + 0.4 * Math.random();
-                                 this.scene.tweens.add({
-                                     targets: shieldObj.animObj[0],
-                                     duration: 250,
-                                     alpha: 0.5,
-                                     scaleX: shieldObj.animObj[0].origScaleX * 0.8,
-                                     ease: 'Cubic.easeOut',
-                                 });
-                                 this.applyMindBurn(3);
+                     } else if (distFromCenter > painStartRot * 1.1) {
+                         if (shieldObj.active) {
+                             shieldObj.active = false;
+                             shieldObj.animObj[0].alpha = 0.6;
+                             if (shieldObj.animObj[0].currAnim) {
+                                 shieldObj.animObj[0].currAnim.stop();
                              }
-                             shieldObj.warmup++;
-                         } else {
-                             shieldObj.cooldown -= dScale * Math.max(0.001, (gameVars.timeSlowRatio * 1.1 - 0.1));
+                             this.scene.tweens.add({
+                                 targets: shieldObj.animObj[0],
+                                 duration: 275,
+                                 scaleX: shieldObj.animObj[0].origScaleX - 0.13,
+                                 scaleY: 0.99,
+                                 ease: 'Cubic.easeOut',
+                             });
+                             this.scene.tweens.add({
+                                 targets: shieldObj.animObj[1],
+                                 scaleX: shieldObj.animObj[1].origScale * 0.95,
+                                 scaleY: shieldObj.animObj[1].origScale * 0.6,
+                                 ease: 'Cubic.easeOut',
+                                 duration: 250,
+                                 alpha: 0
+                             });
                          }
-                     } else if (shieldObj.cooldown > 0) {
-                         shieldObj.cooldown -= dScale * Math.max(0.001, (gameVars.timeSlowRatio * 1.1 - 0.1));
-                     } else if (shieldObj.rechargeCooldown > 0) {
-                         shieldObj.rechargeCooldown -= dScale * Math.max(0.001, (gameVars.timeSlowRatio * 1.1 - 0.1));
-                     } else if (shieldObj.rechargeCooldown <= 0) {
-                         // ready to fire again
-                         shieldObj.animObj[0].setScale(shieldObj.animObj[0].scaleX * 0.85 + (shieldObj.animObj[0].origScaleX - 0.05) * 0.15, 1);
-                         shieldObj.animObj[0].alpha = shieldObj.animObj[0].alpha * 0.9 + 0.5 * 0.1;
                      }
+
                      break;
                  case 'matter':
                      const blockStartRot = 0.52 + shieldObj.multiplier * 0.03;
@@ -2123,7 +2056,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellNameHover.setText(getLangText('mind_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
-                         this.spellNameText.setText('GAZE OF PAIN');
+                         this.spellNameText.setText('REFLECT PAIN');
                          this.spellNameHover.setText(getLangText('mind_protect_desc'));
                          break;
                      case RUNE_UNLOAD:

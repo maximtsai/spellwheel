@@ -568,14 +568,14 @@
              [
                  // 4
                  {
-                     name: "}15 ",
+                     name: "}14 ",
                      announceName: "HEAVY BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
                      chargeAmt: 300,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
-                         this.attackWithBranch(15);
+                         this.attackWithBranch(14);
                      }
                  },
                  {

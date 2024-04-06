@@ -548,6 +548,27 @@ class Player {
                         });
                     }
                     break;
+                case 'mind':
+                    if (hurtAmt > 0 && shieldObj.active) {
+                        let blockedDmg = Math.ceil(amt * 0.5);
+                        hurtAmt = hurtAmt - blockedDmg;
+                        shieldObj.impactVisibleTime = 6;
+                        messageBus.publish('animateBlockNum', shieldObj.animObj[0].x + 1, shieldObj.animObj[0].y - 15, -blockedDmg, 0.5 + Math.sqrt(blockedDmg) * 0.125);
+                        messageBus.publish('enemyTakeTrueDamage', blockedDmg, false);
+
+                        shieldObj.animObj[2].setAlpha(1);
+                        shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale * 1.2);
+                        shieldObj.animObj[1].setAlpha(1);
+                        this.scene.tweens.add({
+                            targets: shieldObj.animObj[1],
+                            duration: 180,
+                            scaleX: shieldObj.animObj[1].origScale,
+                            scaleY: shieldObj.animObj[1].origScale,
+                            alpha: 0.2,
+                            ease: 'Cubic.easeOut'
+                        });
+                    }
+                    break;
                 case 'time':
                     if (hurtAmt > 1 && shieldObj.active) {
                         messageBus.publish('playerAddDelayedDamage', hurtAmt);
@@ -637,36 +658,6 @@ class Player {
         console.log('todo: has died');
         for (let i = 0; i < this.subscriptions.length; i++) {
             this.subscriptions[i].unsubscribe();
-        }
-    }
-
-    updateGreyHealth() {
-        if (this.statuses['matterProtect'] && this.statuses['matterProtect'].health > 0) {
-            let healthShieldRatio = (this.health + this.statuses['matterProtect'].health) / this.healthMax;
-            let visibleIndex;
-            if (this.statuses['matterProtect'].health <= 25) {
-                visibleIndex = 1;
-            } else if (this.statuses['matterProtect'].health <= 50) {
-                visibleIndex = 2;
-            } else {
-                visibleIndex = 3;
-            }
-            let drawStartSpot = 1 - healthShieldRatio;
-            for (let i = 0; i < this.barAssetsGrey.length; i++) {
-                let healthBar = this.barAssetsGrey[i];
-                if (i < visibleIndex) {
-                    healthBar.visible = true;
-                } else {
-                    healthBar.visible = false;
-                }
-                healthBar.rotation = Math.PI * (-0.25 + 0.5 * i + drawStartSpot * 0.5 * Math.PI - 0.004);
-            }
-
-        } else {
-            for (let i = 0; i < this.barAssetsGrey.length; i++) {
-                let healthBar = this.barAssetsGrey[i];
-                healthBar.visible = false;
-            }
         }
     }
 

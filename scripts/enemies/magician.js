@@ -294,7 +294,9 @@
                          }
 
                          if (this.health > 0) {
-                             messageBus.publish("selfTakeDamage", this.nextAttack.damage);
+                             if (this.nextAttack.damage > 0) {
+                                 messageBus.publish("selfTakeDamage", this.nextAttack.damage);
+                             }
                              if (this.nextAttack.message) {
                                  messageBus.publish(this.nextAttack.message, this.nextAttack.messageDetail);
                              }

@@ -106,6 +106,7 @@ class TextPopupManager {
     }
 
     animateBlockNum(x, y, text, scale, param) {
+        console.log(y, "animate blok num", text);
         let textObj = this.getTextObjFromArray(x, y, text, this.blockNums, 'block');
         textObj.setScale(scale);
         this.animateNum(textObj, this.blockNums, param);

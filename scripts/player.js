@@ -263,12 +263,11 @@ class Player {
                 }
             }
         } else {
-            drawStartSpot = 0;
             // max health
             for (let i = 0; i < 3; i++) {
                 let healthBar = this.barAssetsLarge[i];
                 healthBar.visible = true;
-                healthBar.rotation = Math.PI * (1.25 - 0.5 * i) + 0.01;
+                healthBar.rotation = Math.PI * (1.25 + 0.5 * i) + 0.01;
             }
             this.healthBarPeak.visible = false;
         }
@@ -688,13 +687,13 @@ class Player {
         }
 
         if (isGreyed) {
-            messageBus.publish('animateBlockNum', this.healthText.x - 1, this.healthText.y - 15, healthChange, textScale);
+            messageBus.publish('animateBlockNum', this.healthText.x - 1, this.healthText.y - 85, healthChange, textScale);
         } else if (healthChange > 0) {
-            messageBus.publish('animateHealNum', this.healthText.x - 1, this.healthText.y - 15, '+' + healthChange, textScale);
+            messageBus.publish('animateHealNum', this.healthText.x - 1, this.healthText.y - 60, '+' + healthChange, textScale);
         } else if (healthChange === 0) {
-            messageBus.publish('animateBlockNum', this.healthText.x - 1, this.healthText.y - 15, healthChange, textScale);
+            messageBus.publish('animateBlockNum', this.healthText.x - 1, this.healthText.y - 85, healthChange, textScale);
         } else {
-            messageBus.publish('animateDamageNum', this.healthText.x - 1, this.healthText.y - 15, healthChange, textScale);
+            messageBus.publish('animateDamageNum', this.healthText.x - 1, this.healthText.y - 60, healthChange, textScale);
         }
     }
 }

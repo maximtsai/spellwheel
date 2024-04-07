@@ -174,7 +174,6 @@
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">spells/blackCircle.png</key>
-            <key type="filename">spells/energy_particle.png</key>
             <key type="filename">spells/whiteCircle.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -395,7 +394,6 @@
                 <false/>
             </struct>
             <key type="filename">spells/darkSlice.png</key>
-            <key type="filename">spells/darkSliceFront.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -470,21 +468,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">spells/eye_small.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>28,15,55,31</rect>
-                <key>scale9Paddings</key>
-                <rect>28,15,55,31</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">spells/greatRock.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -527,36 +510,6 @@
                 <rect>20,18,41,35</rect>
                 <key>scale9Paddings</key>
                 <rect>20,18,41,35</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">spells/laserCircle.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>4,16,8,32</rect>
-                <key>scale9Paddings</key>
-                <rect>4,16,8,32</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">spells/laserCore.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>50,20,100,40</rect>
-                <key>scale9Paddings</key>
-                <rect>50,20,100,40</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

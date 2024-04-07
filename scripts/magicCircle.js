@@ -450,9 +450,8 @@ const ENABLE_KEYBOARD = true;
         this.timeStopHeavy.alpha = 0;
         this.timeStopHeavy.setScale(1.95);
 
-        this.clockbg = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 2, 'circle', 'clockbg.png').setAlpha(0);
+        this.clockbg = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 2, 'lowq', 'clockbg.png').setAlpha(0);
         this.clockbg.setDepth(1);
-        this.clockbg.setScale(0.7);
         this.gear1 = this.scene.add.sprite(-40, 280, 'circle', 'gear.png').setAlpha(0);
         this.gear1.setDepth(1);
         this.gear2 = this.scene.add.sprite(120, 442, 'circle', 'gear_small.png').setAlpha(0);
@@ -480,10 +479,10 @@ const ENABLE_KEYBOARD = true;
             // passive time slowdown
             this.gearBonusSpeed = Math.min(10, this.gearBonusSpeed + dt);
             if (this.gearBonusSpeed < 10) {
-                this.gear1.rotation += dt * 0.0045 * this.gearBonusSpeed * gameVars.playerSpeed;
-                this.gear2.rotation -= dt * 0.006 * this.gearBonusSpeed * gameVars.playerSpeed;
-                this.gear3.rotation += dt * 0.003 * this.gearBonusSpeed * gameVars.playerSpeed;
-                this.gear4.rotation += dt * 0.006 * this.gearBonusSpeed * gameVars.playerSpeed;
+                this.gear1.rotation += dt * 0.0045 * this.gearBonusSpeed;
+                this.gear2.rotation -= dt * 0.006 * this.gearBonusSpeed;
+                this.gear3.rotation += dt * 0.003 * this.gearBonusSpeed;
+                this.gear4.rotation += dt * 0.006 * this.gearBonusSpeed;
             }
             // this.timeSinceLastAttack += dt;
             // if (this.timeSinceLastAttack > 300) {
@@ -503,11 +502,11 @@ const ENABLE_KEYBOARD = true;
             //     });
             // }
         } else {
-            this.gearBonusSpeed = Math.max(gameVars.timeSlowRatio, this.gearBonusSpeed * 0.985 -dt * 0.03);
-            this.gear1.rotation += dt * 0.0045 * this.gearBonusSpeed * gameVars.playerSpeed;
-            this.gear2.rotation -= dt * 0.006 * this.gearBonusSpeed * gameVars.playerSpeed;
-            this.gear3.rotation += dt * 0.003 * this.gearBonusSpeed * gameVars.playerSpeed;
-            this.gear4.rotation += dt * 0.006 * this.gearBonusSpeed * gameVars.playerSpeed;
+            this.gearBonusSpeed = Math.max(0.1, Math.max(gameVars.timeSlowRatio, this.gearBonusSpeed * 0.985 -dt * 0.03));
+            this.gear1.rotation += dt * 0.0045 * this.gearBonusSpeed;
+            this.gear2.rotation -= dt * 0.006 * this.gearBonusSpeed;
+            this.gear3.rotation += dt * 0.003 * this.gearBonusSpeed;
+            this.gear4.rotation += dt * 0.006 * this.gearBonusSpeed;
         }
     }
 
@@ -528,9 +527,9 @@ const ENABLE_KEYBOARD = true;
 
         this.scene.tweens.add({
             targets: this.clockbg,
-            alpha: 0.1,
-            scaleX: 0.73,
-            scaleY: 0.73,
+            alpha: 0.15,
+            scaleX: 1.04,
+            scaleY: 1.04,
             duration: 250,
         });
         this.scene.tweens.add({
@@ -584,9 +583,9 @@ const ENABLE_KEYBOARD = true;
 
          this.scene.tweens.add({
              targets: this.clockbg,
-             alpha: 0.04 + multiplierAddition * 0.1,
-             scaleX: 0.73 - multiplier * 0.005,
-             scaleY: 0.73 - multiplier * 0.005,
+             alpha: 0.08 + multiplierAddition * 0.1,
+             scaleX: 1.04 - multiplier * 0.005,
+             scaleY: 1.04 - multiplier * 0.005,
              duration: 250,
          });
          this.scene.tweens.add({
@@ -1060,15 +1059,15 @@ const ENABLE_KEYBOARD = true;
                      } else if (distFromCenter > painStartRot * 1.1) {
                          if (shieldObj.active) {
                              shieldObj.active = false;
-                             shieldObj.animObj[0].alpha = 0.6;
+                             shieldObj.animObj[0].alpha = 0.55;
                              if (shieldObj.animObj[0].currAnim) {
                                  shieldObj.animObj[0].currAnim.stop();
                              }
                              this.scene.tweens.add({
                                  targets: shieldObj.animObj[0],
                                  duration: 275,
-                                 scaleX: shieldObj.animObj[0].origScaleX - 0.13,
-                                 scaleY: 0.99,
+                                 scaleX: shieldObj.animObj[0].origScaleX - 0.2,
+                                 scaleY: 0.98,
                                  ease: 'Cubic.easeOut',
                              });
                              this.scene.tweens.add({
@@ -2049,7 +2048,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellNameHover.setText(getLangText('mind_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
-                         this.spellNameText.setText('FOCUS FORM');
+                         this.spellNameText.setText('POWER FORM');
                          this.spellNameHover.setText(getLangText('mind_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
@@ -2080,7 +2079,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellNameHover.setText(getLangText('void_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD DISRUPTIVE ATTACK');
+                         this.spellNameText.setText('ADD CURSING ATTACK');
                          this.spellNameHover.setText(getLangText('void_enhance_desc'));
                          break;
                      case RUNE_PROTECT:

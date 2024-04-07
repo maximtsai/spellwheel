@@ -161,7 +161,7 @@
              return;
          }
 
-         if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.8) {
+         if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.96) {
              this.angryEyes = true;
              this.flash = this.scene.add.sprite(this.x, this.y - 90, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
 
@@ -266,8 +266,8 @@
              });
          }
 
-         if (prevHealthPercent >= 0.8) {
-             if (currHealthPercent < 0.8) {
+         if (prevHealthPercent >= 0.96) {
+             if (currHealthPercent < 0.96) {
                  this.canAngryEyes = true;
                  this.eyes = this.scene.add.sprite(this.x - 3, this.y - 80, 'enemies', 'dummyeyes.png').setOrigin(0.5, 0.75).setScale(this.sprite.startScale, 0);
                  this.addExtraSprite(this.eyes, -3, -79)
@@ -467,9 +467,9 @@
                     }
                  },
                  {
-                     name: "}10 ",
+                     name: "}12 ",
                      chargeAmt: 500,
-                     damage: 10,
+                     damage: 12,
                      attackFinishFunction: () => {
                          let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
                          setTimeout(() => {

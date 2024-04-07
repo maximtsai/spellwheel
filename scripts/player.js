@@ -116,7 +116,7 @@ class Player {
     }
 
     attackDamageAdder() {
-        const flatDamage = 8;
+        const flatDamage = 6;
         if (this.statuses['matterEnhance']) {
             let multiplier = this.statuses['matterEnhance'].multiplier ? this.statuses['matterEnhance'].multiplier : 1;
             let damageBoost = multiplier * flatDamage;

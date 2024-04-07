@@ -57,7 +57,6 @@ let gameVars = {
     mouseposy: 0,
     lastmousedown: {x: 0, y: 0},
     timeSlowRatio: 1,
-    playerSpeed: 1,
     gameScale: 1,
     canvasXOffset: 0,
     canvasYOffset: 0

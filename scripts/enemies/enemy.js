@@ -21,6 +21,7 @@ class Enemy {
             messageBus.subscribe("statusesTicked", this.updateStatuses.bind(this)),
             messageBus.subscribe("enemyStartDamageCountdown", this.startDamageCountdown.bind(this)),
             messageBus.subscribe("enemyAddShield", this.addShield.bind(this)),
+            messageBus.subscribe("increaseCurse", this.increaseCurse.bind(this)),
 
         ];
 
@@ -75,6 +76,7 @@ class Enemy {
         this.dead = false;
         this.pullbackScale = 0.9;
         this.attackScale = 1.1;
+        this.curse = 0;
 
         this.initStatsCustom();
         console.log("after init stats custom");
@@ -399,10 +401,14 @@ class Enemy {
     adjustDamageTaken(amt, isAttack, isTrue = false) {
         if (isAttack && this.statuses['mindStrike'] && amt > 0 && !isTrue) {
             this.statuses['mindStrike'].cleanUp(this.statuses);
-            let damageToTake = Math.ceil(amt * 0.5);
+            let damageToTake = Math.ceil(amt * 1);
             setTimeout(() => {
                 this.takeTrueDamage(damageToTake);
             }, 0);
+        }
+
+        if (this.curse > 0) {
+            amt += this.curse;
         }
 
         if (this.shield > 0) {
@@ -610,6 +616,10 @@ class Enemy {
         });
     }
 
+    increaseCurse(amt = 1) {
+        this.curse += amt;
+    }
+
     clearShield() {
         this.shield = 0;
         this.shieldSprite.alpha = 1;
@@ -642,32 +652,32 @@ class Enemy {
 
     takeDamage(amt, isAttack = true) {
         let origHealth = this.health;
-        if (this.storeDamage) {
-            // time storage
-            this.accumulatedTimeDamage += amt;
-            let clockLargeGoalScale = 0.15 + Math.sqrt(this.accumulatedTimeDamage) * 0.018;
-            this.clockLarge.setScale(clockLargeGoalScale * 1.02);
-            this.clockLargeHand.setScale(this.clockLarge.scaleX * 20, this.clockLarge.scaleY * 140);
-            this.delayedDamageText.setText(this.accumulatedTimeDamage);
-            this.delayedDamageText.setScale(this.clockLarge.scaleX * 3 + 0.1);
-
-            this.scene.tweens.add({
-                targets: this.clockLarge,
-                scaleX: clockLargeGoalScale,
-                scaleY: clockLargeGoalScale,
-                ease: "Cubic.easeOut",
-                duration: 100 + amt * 5
-            });
-
-            this.scene.tweens.add({
-                targets: this.delayedDamageText,
-                scaleX: this.clockLarge.scaleX * 3,
-                scaleY: this.clockLarge.scaleX * 3,
-                ease: "Cubic.easeOut",
-                duration: 100 + amt * 5
-            });
-            amt = 0;
-        }
+        // if (this.storeDamage) {
+        //     // time storage
+        //     this.accumulatedTimeDamage += amt;
+        //     let clockLargeGoalScale = 0.15 + Math.sqrt(this.accumulatedTimeDamage) * 0.018;
+        //     this.clockLarge.setScale(clockLargeGoalScale * 1.02);
+        //     this.clockLargeHand.setScale(this.clockLarge.scaleX * 20, this.clockLarge.scaleY * 140);
+        //     this.delayedDamageText.setText(this.accumulatedTimeDamage);
+        //     this.delayedDamageText.setScale(this.clockLarge.scaleX * 3 + 0.1);
+        //
+        //     this.scene.tweens.add({
+        //         targets: this.clockLarge,
+        //         scaleX: clockLargeGoalScale,
+        //         scaleY: clockLargeGoalScale,
+        //         ease: "Cubic.easeOut",
+        //         duration: 100 + amt * 5
+        //     });
+        //
+        //     this.scene.tweens.add({
+        //         targets: this.delayedDamageText,
+        //         scaleX: this.clockLarge.scaleX * 3,
+        //         scaleY: this.clockLarge.scaleX * 3,
+        //         ease: "Cubic.easeOut",
+        //         duration: 100 + amt * 5
+        //     });
+        //     amt = 0;
+        // }
 
         let damageTaken = this.adjustDamageTaken(amt, isAttack);
         if (this.specialDamageAbsorptionActive) {
@@ -725,7 +735,7 @@ class Enemy {
         let healthLoss = origHealth - this.health;
         if (healthLoss > 0) {
             this.animateShake();
-            let offsetY = -30 - damageTaken * 0.1 + extraOffsetY;
+            let offsetY = -damageTaken * 0.1 + extraOffsetY;
             this.animateDamageNum(healthLoss, true, offsetY);
             if (isAttack) {
                 this.timeSinceLastAttacked = 0;
@@ -752,7 +762,7 @@ class Enemy {
 
     takeDamagePercentTotal(amt, bonusDamage = 0) {
         let origHealth = this.healthMax;
-        let healthRemoved = Math.ceil(amt * 0.01 * origHealth) + bonusDamage;
+        let healthRemoved = Math.ceil(amt * origHealth) + bonusDamage;
         this.takeDamage(healthRemoved);
     }
 
@@ -985,7 +995,7 @@ class Enemy {
         this.timeWhenLastDamageTaken = timeNow;
         let scale = 0.5 + Math.sqrt(val) * 0.2;
         if (isTrueDamage) {
-            messageBus.publish("animateTrueDamageNum", this.x + randX, this.y + randY + offsetY - 125, '-' + val, scale);
+            messageBus.publish("animateTrueDamageNum", this.x + randX, 100 + randY + offsetY, '-' + val, scale);
         } else {
             messageBus.publish("animateDamageNumAccumulate", val, offsetY);
         }
@@ -1112,6 +1122,10 @@ class Enemy {
                 });
             }
         });
+    }
+
+    getMaxHealth() {
+        return this.healthMax;
     }
 
     updateStatuses() {

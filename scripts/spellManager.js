@@ -698,16 +698,16 @@ class SpellManager {
                     this.createDamageEffect(gameConsts.halfWidth, 140, rockObj.depth);
                     this.scene.tweens.add({
                         targets: rockObj,
-                        scaleY: 0.7 + bonusScaleY,
-                        scaleX: 0.9 + bonusScaleX,
+                        scaleY: 0.65 + bonusScaleY,
+                        scaleX: 0.8 + bonusScaleX,
                         duration: 250,
                         ease: 'Cubic.easeOut',
                         onComplete: () => {
                             this.scene.tweens.add({
                                 targets: rockObj,
-                                delay: 450,
+                                delay: 300,
                                 scaleY: 0,
-                                duration: 400,
+                                duration: 300,
                                 alpha: 0,
                                 ease: 'Cubic.easeIn',
                                 onComplete: () => {
@@ -725,11 +725,11 @@ class SpellManager {
             spellName += " X" + numAdditionalAttacks;
         }
         if (additionalDamage >= 60) {
-            spellName = "MASSIVE " + spellName;
+            spellName = spellName + "+++DMG";
         } else if (additionalDamage >= 30) {
-            spellName = "GREAT " + spellName;
+            spellName = spellName + "++DMG";
         } else if (additionalDamage > 1) {
-            spellName = "HEAVY " + spellName;
+            spellName = spellName + "+DMG";
         }
         messageBus.publish('clearSpellMultiplier');
         this.postAttackCast(spellID, 300, spellName);
@@ -1229,7 +1229,7 @@ class SpellManager {
                         }
                     });
 
-                    messageBus.publish('enemyTakeDamage', 6 + additionalDamage);
+                    messageBus.publish('enemyTakeDamage', 1 + additionalDamage);
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
                         let animation1 = this.scene.add.sprite(attackObj.x - 55, attackObj.y, 'spells').play('weaken');
                         animation1.setDepth(10);
@@ -1382,30 +1382,29 @@ class SpellManager {
         const spellID = 'mindEnhance';
         // next attack hits +1 time
         let existingBuff = globalObjects.player.getStatuses()[spellID];
-        let mindObj;
         let multiplier = globalObjects.player.spellMultiplier();
         if (existingBuff) {
-            multiplier += existingBuff.multiplier;
-            let newScale = 0.25 + multiplier * 0.1;
-            mindObj = existingBuff.animObj;
-            this.scene.tweens.add({
-                targets: mindObj,
-                duration: 300,
-                ease: 'back.easeOut',
-                scaleX: newScale,
-                scaleY: newScale,
-            });
-        } else {
-            mindObj = this.scene.add.sprite(gameConsts.halfWidth + 195, gameConsts.height - 285, 'spells').play('mindBurnSlow').setDepth(10).setScale(0);
-            let newScale = 0.25 + multiplier * 0.1;
-            this.scene.tweens.add({
-                targets: mindObj,
-                duration: 250,
-                ease: 'back.easeOut',
-                scaleX: newScale,
-                scaleY: newScale,
-            });
+            existingBuff.cleanUp();
+            // multiplier += existingBuff.multiplier;
+            // let newScale = 0.25 + multiplier * 0.1;
+            // mindObj = existingBuff.animObj;
+            // this.scene.tweens.add({
+            //     targets: mindObj,
+            //     duration: 300,
+            //     ease: 'back.easeOut',
+            //     scaleX: newScale,
+            //     scaleY: newScale,
+            // });
         }
+        let mindObj = this.scene.add.sprite(gameConsts.halfWidth + 195, gameConsts.height - 285, 'spells').play('mindBurnSlow').setDepth(10).setScale(0);
+        let newScale = 0.25 + multiplier * 0.1;
+        this.scene.tweens.add({
+            targets: mindObj,
+            duration: 250,
+            ease: 'back.easeOut',
+            scaleX: newScale,
+            scaleY: newScale,
+        });
 
         messageBus.publish("selfTakeEffect", {
             ignoreBuff: true,
@@ -1627,7 +1626,6 @@ class SpellManager {
         const spellID = 'voidStrike';
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let additionalDamage = globalObjects.player.attackDamageAdder();
-        let fifthSplitAdditionalDamage = Math.round(additionalDamage * 0.2);
         let allStrikeObjects = [];
         let isNormalDir = Math.random() < 0.6 ? 0 : 1;
 
@@ -1675,7 +1673,8 @@ class SpellManager {
                         duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            messageBus.publish('enemyTakeDamagePercentTotal', 0.5, additionalDamage, false);
+                            globalObjects.currentEnemy
+                            messageBus.publish('enemyTakeDamagePercentTotal', 0.02, additionalDamage, false);
                             messageBus.publish('inflictVoidBurn', 0, 5);
                             currStrikeObj.setScale(currStrikeObj.scaleX * 1.04, currStrikeObj.scaleY * 1.04);
                             this.scene.tweens.add({
@@ -1925,7 +1924,7 @@ class SpellManager {
             }
         });
 
-        let spellName = "ADD DISRUPTIVE ATTACK";
+        let spellName = "ADD CURSING ATTACK";
         if (multiplier > 1) {
             spellName += " X" + multiplier;
         }
@@ -2197,6 +2196,19 @@ class SpellManager {
             PhaserScene.time.delayedCall(Math.max(0, initialDelay * 0.1 + thisDurationDelay * 0.85 - 280), () => {
                 PhaserScene.time.delayedCall(180, () => {
                     zoomTemp(1.005 + numTotalAttacks * 0.002);
+                    let whiteObj = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(500).setDepth(9).setAlpha(0.5);
+                    let blackObj = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(9).setAlpha(0.4);
+                    setTimeout(() => {
+                        whiteObj.destroy();
+                        this.scene.tweens.add({
+                            targets: blackObj,
+                            alpha: 0,
+                            duration: 250,
+                            onComplete: () => {
+                                blackObj.destroy();
+                            }
+                        });
+                    }, 20);
                     messageBus.publish('enemyTakeDamagePercent', 15, additionalDamage);
                     messageBus.publish('disruptOpponentAttackPercent', 0.667);
                     messageBus.publish('setSlowMult', 0.01, 40);
@@ -2303,7 +2315,7 @@ class SpellManager {
                     duration: 250,
                     rotation: "+=3",
                     onComplete: () => {
-                        // messageBus.publish('disruptOpponentAttack', 150 * voidAttackBuff.multiplier);
+                        messageBus.publish('increaseCurse', voidAttackBuff.multiplier);
                         voidAttackBuff.cleanUp(globalObjects.player.getStatuses());
                     }
                 });
@@ -2339,13 +2351,13 @@ class SpellManager {
         // let existingBuff2 = globalObjects.player.getStatuses()['timeReinforce'];
         let existingBuff3 = globalObjects.player.getStatuses()['matterReinforce'];
         if (existingBuff1) {
-            messageBus.publish('selfClearEffect', 'mindReinforce');
+            messageBus.publish('selfClearStatuses', 'mindReinforce');
         }
         // if (existingBuff2) {
         //     messageBus.publish('selfClearEffect', 'timeReinforce');
         // }
         if (existingBuff3) {
-            messageBus.publish('selfClearEffect', 'matterReinforce');
+            messageBus.publish('selfClearStatuses', 'matterReinforce');
         }
     }
 }

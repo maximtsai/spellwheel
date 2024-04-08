@@ -1705,9 +1705,10 @@ class SpellManager {
                         duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            globalObjects.currentEnemy
-                            messageBus.publish('enemyTakeDamagePercentTotal', 0.02, additionalDamage, false);
-                            messageBus.publish('inflictVoidBurn', 0, 5);
+                            let damageDealt = globalObjects.currentEnemy.getHealth() * 0.025 + additionalDamage;
+                            let thirdDamage = Math.ceil(damageDealt * 0.33333);
+                            messageBus.publish('enemyTakeDamage', damageDealt);
+                            messageBus.publish('inflictVoidBurn', thirdDamage, 3);
                             currStrikeObj.setScale(currStrikeObj.scaleX * 1.04, currStrikeObj.scaleY * 1.04);
                             this.scene.tweens.add({
                                 targets: currStrikeObj,

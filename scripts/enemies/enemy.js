@@ -788,6 +788,10 @@ class Enemy {
         this.health = newHealth;
     }
 
+    getHealth() {
+        return this.health;
+    }
+
     takeDamagePercent(amt, bonusDamage = 0) {
         let origHealth = this.health;
         let timeUpdatedHealth = origHealth - this.accumulatedTimeDamage;

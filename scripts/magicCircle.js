@@ -2148,11 +2148,11 @@ const ENABLE_KEYBOARD = true;
          messageBus.publish('enemyTakeEffect', effectObj);
      }
 
-     applyVoidBurn(extraPower = 0, number = 5) {
+     applyVoidBurn(damage = 1, number = 5) {
         if (!globalObjects.currentEnemy) {
             return;
         }
-        let baseScale = 1 + extraPower * 0.1;
+        let baseScale = 1 + damage * 0.1;
          if (this.voidBurnTween) {
              this.voidBurnTween.stop();
          }
@@ -2182,11 +2182,14 @@ const ENABLE_KEYBOARD = true;
          let effectObj;
          effectObj = {
              name: effectName,
-             duration: 5,
-             power: extraPower,
+             duration: 4,
+             power: damage,
+             isFirst: true,
              onUpdate: () => {
-                 if (effectObj && effectObj.duration > 0) {
-                     messageBus.publish('enemyTakeDamagePercentTotal', 0.8, extraPower, false);
+                 if (effectObj.isFirst) {
+                     effectObj.isFirst = false;
+                 } else if (effectObj && effectObj.duration > 0) {
+                     messageBus.publish('enemyTakeDamage', 0.8);
                      if (effectObj.duration <= 1) {
                          if (this.voidBurnTween) {
                              this.voidBurnTween.stop();

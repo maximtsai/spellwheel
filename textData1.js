@@ -14,17 +14,17 @@ const textData = {
     time_unload_desc: {en_us: 'FREEZE TIME FOR\nTHE NEXT 6 SPELLS\nBUT LOSES POWER\nWITH REPEAT USE', fr_FR: ''},
 
     void_strike_desc: {en_us: 'DAMAGE 2.5% OF ENEMY\'s\nCURRENT HEALTH THEN\nDEAL THAT DAMAGE AGAIN\nOVER 4 SECONDS', fr_FR: ''},
-    void_enhance_desc: {en_us: 'NEXT ATTACK PERMANENTLY\nCURSES THE ENEMY TO\nTAKE +1 DAMAGE FROM\nALL SOURCES', fr_FR: ''},
+    void_enhance_desc: {en_us: 'NEXT ATTACK\nCURSES THE ENEMY\nTO TAKE +1 DAMAGE\nFROM ALL SOURCES', fr_FR: ''},
 
     void_protect_desc: {en_us: 'CREATES A SHIELD\nTHAT FULLY NEGATES\nONE ATTACK', fr_FR: ''},
     void_reinforce_desc: {en_us: 'HEAL TO FULL, BUT\nAT THE COST OF\n20% MAX HEALTH', fr_FR: ''},
     void_unload_desc: {en_us: 'DAMAGE 15% OF ENEMY\'S\nCURRENT HEALTH AND\nDISRUPT THEIR CURRENT\nACTION BY 66%', fr_FR: ''},
 
     mind_strike_desc: {en_us: 'DEAL 1 DAMAGE.\nENEMY TAKES +100%\nBONUS DAMAGE FROM\nNEXT ATTACK HIT', fr_FR: ''},
-    mind_enhance_desc: {en_us: 'NEXT ATTACK BURNS\nENEMY FOR 15 DAMAGE\nOVER 5 SECONDS.\n(NON-STACKING)', fr_FR: ''},
+    mind_enhance_desc: {en_us: 'NEXT ATTACK BURNS\nENEMY FOR 3 DMG/S\nFOR 4 SECONDS.\n(DOES NOT STACK)', fr_FR: ''},
     mind_protect_desc: {en_us: 'REFLECT HALF THE\nDAMAGE YOU TAKE\nFROM ATTACKS BACK\nAT THE ENEMY', fr_FR: ''},
     mind_reinforce_desc: {en_us: 'ATTACKS DEAL +2\nDAMAGE', fr_FR: ''},
-    mind_unload_desc: {en_us: 'NEXT NON-ATTACK\nSPELL HAS X3\nEFFECTIVENESS', fr_FR: ''},
+    mind_unload_desc: {en_us: 'NEXT NON-ATTACK\nSPELL HAS +200%\nEFFECTIVENESS', fr_FR: ''},
 };
 
 function setLanguage(lang) {

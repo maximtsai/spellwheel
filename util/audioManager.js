@@ -1,4 +1,5 @@
 let soundList = [];
+globalVolume = 1;
 
 function initializeSounds(scene) {
     for (let i in audioFiles) {
@@ -10,9 +11,21 @@ function initializeSounds(scene) {
     }
 }
 
-function playSound(name, volume = 1) {
-    soundList[name].volume = volume;
+function playSound(name, volume = 1, loop = false) {
+    soundList[name].fullVolume = volume;
+    soundList[name].volume = volume * globalVolume;
+    soundList[name].loop = loop;
     soundList[name].play();
+    return soundList[name];
+}
+
+function updateGlobalVolume(newVol = 1) {
+    globalVolume = newVol;
+    for (let i in soundList) {
+        if (soundList[i].isPlaying) {
+            soundList[i].volume = soundList[i].fullVolume * globalVolume;
+        }
+    }
 }
 
 function tweenVolume(name, volume, duration = 1500) {

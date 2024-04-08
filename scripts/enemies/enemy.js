@@ -242,6 +242,18 @@ class Enemy {
         this.shieldText.setOrigin(0.5, 0.55);
         this.shieldText.setDepth(2);
         this.shieldText.visible = false;
+
+        this.curseSprite = this.scene.add.sprite(25, 18, 'enemies', 'curse_symbol_small_2.png');
+        this.curseSprite.setScale(0.5);
+        this.curseSprite.setOrigin(0.5, 0.45);
+        this.curseSprite.setDepth(11);
+        this.curseSprite.visible = false;
+
+        this.curseText = this.scene.add.bitmapText(this.curseSprite.x, this.curseSprite.y, 'normalStroke', '', 46);
+        this.curseText.setOrigin(0.5, 0.35);
+        this.curseText.setDepth(11);
+        this.curseText.setScale(0.5);
+        this.curseText.visible = false;
     }
 
     setSprite(name, scale) {
@@ -618,6 +630,29 @@ class Enemy {
 
     increaseCurse(amt = 1) {
         this.curse += amt;
+        this.curseSprite.visible = true;
+        this.curseText.visible = true;
+
+        let newScale = 0.3 + Math.sqrt(this.curse) * 0.25;
+        this.curseSprite.setScale(newScale + 0.25)
+        this.scene.tweens.add({
+            targets: this.curseSprite,
+            scaleX: newScale,
+            scaleY: newScale,
+            duration: 300,
+            ease: 'Back.easeOut',
+        });
+        this.curseText.setText(this.curse);
+        this.curseText.setScale(newScale + 0.25);
+        this.scene.tweens.add({
+            targets: this.curseText,
+            scaleX: newScale * 0.8 + 0.075,
+            scaleY: newScale * 0.8 + 0.075,
+            duration: 380,
+            ease: 'Back.easeOut',
+        });
+        this.curseSprite.x = gameConsts.halfWidth - this.healthBarLengthMax - 30 * this.curseSprite.scaleX;
+        this.curseText.x = this.curseSprite.x;
     }
 
     clearShield() {
@@ -840,6 +875,9 @@ class Enemy {
         this.attackName.destroy();
         this.angrySymbol.destroy();
 
+        this.curseSprite.destroy();
+        this.curseText.destroy();
+
         this.sprite.destroy();
 
         this.clockLarge.destroy();
@@ -883,6 +921,9 @@ class Enemy {
         this.chargeBarCurr.visible = false; this.chargeBarCurr.scaleY = 100;
         this.hideAngrySymbol()
         this.voidPause.visible = false;
+
+        this.curseSprite.visible = false;
+        this.curseText.visible = false;
 
         this.attackName.visible = false;
         messageBus.publish('enemyHasDied');

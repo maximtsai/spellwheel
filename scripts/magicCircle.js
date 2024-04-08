@@ -1,6 +1,6 @@
 const DECAY = 0.00006;
 const STATIC = 0.006;
-const INFINITE_CAST = false;
+const INFINITE_CAST = true;
 const ENABLE_KEYBOARD = true;
 
  class MagicCircle {
@@ -419,7 +419,7 @@ const ENABLE_KEYBOARD = true;
             width: this.spellNameText.width + 18,
             height: this.spellNameText.height + 7,
             text: "",
-            displayX: gameConsts.width - 7,
+            displayX: gameConsts.width,
             displayY: this.spellNameText.y + 3,
             displayOrigin: {
                 x: 1,
@@ -2060,7 +2060,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellNameHover.setText(getLangText('mind_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         this.spellNameText.setText('TRIPLIFY MAGIC');
+                         this.spellNameText.setText('AMPLIFY MAGIC');
                          this.spellNameHover.setText(getLangText('mind_unload_desc'));
                          break;
                      default:
@@ -2118,7 +2118,7 @@ const ENABLE_KEYBOARD = true;
              this.mindBurnTween.stop();
          }
          this.mindBurnAnim.alpha = 0.7;
-         this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.24);
+         this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * duration);
          effectObj = {
              name: effectName,
              duration: 1 + duration,

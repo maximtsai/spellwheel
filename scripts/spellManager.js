@@ -145,7 +145,7 @@ class SpellManager {
             alpha: 1,
             ease: 'Cubic.easeOut'
         });
-
+        playSound('matter_strike');
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
@@ -178,9 +178,23 @@ class SpellManager {
 
         for (let i = 0; i < rockObjects.length; i++) {
             let rockObj = rockObjects[i];
+            let delayAmt = 600 + i * (220 - i * 12) + additionalDamage * 2;
+            let durationAmt = 500 + additionalDamage * 5;
+            setTimeout(() => {
+                if (i === 0) {
+                    playSound('matter_strike_hit', 0.7);
+                } else if (rockObjects.length > 2 && i === rockObjects.length - 1) {
+                    // last hit
+                    playSound('matter_strike_hit', 0.5);
+                } else if (i % 2 == 1) {
+                    playSound('matter_strike_hit2', 0.9);
+                } else if (i % 2 == 0) {
+                    playSound('matter_strike_hit2', 0.5);
+                }
+            }, delayAmt + durationAmt - 50)
             this.scene.tweens.add({
                 targets: rockObj,
-                delay: 600 + i * (220 - i * 12) + additionalDamage * 2,
+                delay: delayAmt,
                 x: gameConsts.halfWidth + (Math.random() - 0.5) * 20,
                 y: 140 + (Math.random() - 0.5) * 20 - Math.floor(Math.sqrt(additionalDamage) * 2),
                 duration: 500 + additionalDamage * 5,
@@ -238,6 +252,10 @@ class SpellManager {
         brickObj2.setScale(0.8);
         let protectionAmt = 2;
         let damageAmt = 3;
+        let duration = 400 + 50 * spellMult;
+        setTimeout(() => {
+            playSound('matter_body');
+        }, duration - 175);
         this.scene.tweens.add({
             targets: brickObj,
             duration: 400 + 50 * spellMult,
@@ -369,10 +387,17 @@ class SpellManager {
         for (let i = 0; i < itemsToAnimate.length; i++) {
             this.scene.tweens.add({
                 targets: itemsToAnimate[i],
-                delay: itemsToAnimate.length * Math.random() * 50,
+                delay: itemsToAnimate.length * Math.random() * 25 + (i * 20),
                 duration: 325 + Math.random() * 200,
                 ease: 'Back.easeOut',
-                scaleY: 0.95 + Math.random() * 0.1
+                scaleY: 0.95 + Math.random() * 0.1,
+                onStart: () => {
+                    if (i === 0) {
+                        playSound('matter_enhance', 1);
+                    } else if (i === 1) {
+                        playSound('matter_enhance', 0.5);
+                    }
+                }
             });
         }
 
@@ -457,6 +482,11 @@ class SpellManager {
                 scaleY: 0,
                 y: "-=30",
                 alpha: 1,
+                onStart: () => {
+                    if (i === 0) {
+                        playSound('matter_shield');
+                    }
+                },
                 onComplete: () => {
                     rockAnim.destroy();
                 }
@@ -609,6 +639,7 @@ class SpellManager {
             duration: 300,
             ease: 'Cubic.easeOut',
             onStart: () => {
+                playSound('matter_ultimate');
                 stoneCircle.setAlpha(0.5);
                 textHealth.setText(shieldHealth);
                 this.scene.tweens.add({
@@ -1384,7 +1415,7 @@ class SpellManager {
         let existingBuff = globalObjects.player.getStatuses()[spellID];
         let multiplier = globalObjects.player.spellMultiplier();
         if (existingBuff) {
-            existingBuff.cleanUp();
+            existingBuff.cleanUp(globalObjects.player.getStatuses());
             // multiplier += existingBuff.multiplier;
             // let newScale = 0.25 + multiplier * 0.1;
             // mindObj = existingBuff.animObj;
@@ -1414,17 +1445,19 @@ class SpellManager {
             multiplier: multiplier,
             cleanUp: (statuses) => {
                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
-                    mindObj.setScale(mindObj.scaleX * 1.3);
+                    mindObj.setScale(mindObj.scaleX * 1.1);
                     statuses[spellID].currentAnim = this.scene.tweens.add({
                         targets: mindObj,
                         duration: 150,
+                        scaleX: mindObj.scaleX * 1.7,
+                        scaleY: mindObj.scaleX * 1.7,
                         alpha: 0,
                         ease: 'Quad.easeOut',
                         onComplete: () => {
-                            statuses[spellID] = null;
                             mindObj.destroy();
                         }
                     });
+                    statuses[spellID] = null;
                 }
             }
         });
@@ -1528,7 +1561,7 @@ class SpellManager {
         let magicObj;
         let newMultiplier = 3;
         if (existingMultiplier > 1) {
-            newMultiplier = existingMultiplier + 3;
+            newMultiplier = existingMultiplier + 2;
             magicObj = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'mind_boost_2.png');
             PhaserScene.tweens.add({
                 targets: PhaserScene.cameras.main,
@@ -1609,14 +1642,13 @@ class SpellManager {
             repeat: -1
         });
 
-        let spellName = "TRIPLIFY MAGIC";
+        let newMultiplierDisplay = newMultiplier - 1;
+        let spellName = "AMPLIFY MAGIC +" + newMultiplierDisplay + "00%";
         let bonusSize = 0.15;
-        if (newMultiplier > 6) {
-            spellName = "MULTI TRIPLIFY MAGIC";
+        if (newMultiplier > 4) {
             bonusSize = 0.25;
-        } else if (newMultiplier > 3) {
-            spellName = "DOUBLE TRIPLIFY MAGIC";
-            bonusSize = 0.25;
+        } else if (newMultiplier > 2) {
+            bonusSize = 0.2;
         }
         messageBus.publish('recordSpell', spellID, spellName, bonusSize);
     }
@@ -1871,7 +1903,7 @@ class SpellManager {
         let multiplier = globalObjects.player.spellMultiplier();
         if (existingBuff) {
             multiplier += existingBuff.multiplier;
-            let newScale = 1 + multiplier * 0.5;
+            let newScale = 0.3 + Math.sqrt(multiplier) * 0.9;
             voidObj = existingBuff.animObj;
             this.scene.tweens.add({
                 targets: voidObj,
@@ -1881,10 +1913,10 @@ class SpellManager {
                 scaleY: newScale,
             });
         } else {
-            voidObj = this.scene.add.sprite(gameConsts.halfWidth - 195, gameConsts.height - 285, 'spells', 'blackHoleSmall.png');
+            voidObj = this.scene.add.sprite(gameConsts.halfWidth - 195, gameConsts.height - 285, 'enemies', 'curse_symbol_small.png');
             voidObj.setScale(0);
             voidObj.setDepth(10);
-            let newScale = 1 + multiplier * 0.5;
+            let newScale = 0.3 + Math.sqrt(multiplier) * 0.9;
             this.scene.tweens.add({
                 targets: voidObj,
                 duration: 250,
@@ -1910,7 +1942,7 @@ class SpellManager {
                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
                     statuses[spellID].currentAnim = this.scene.tweens.add({
                         targets: voidObj,
-                        duration: 150,
+                        duration: 100,
                         alpha: 0,
                         scaleX: voidObj.scaleX * 1.25,
                         scaleY: voidObj.scaleY * 1.25,
@@ -2309,21 +2341,45 @@ class SpellManager {
             let voidAttackBuff = globalObjects.player.getStatuses()['voidEnhance'];
             if (voidAttackBuff) {
                 let animObj = voidAttackBuff.animObj;
+                let targetY = 178;
                 this.scene.tweens.add({
                     targets: animObj,
-                    y: 140,
-                    duration: 250,
-                    rotation: "+=3",
+                    y: targetY - 10,
+                    duration: 260,
+                    ease: 'Quad.easeOut',
+                    rotation: "+=2",
                     onComplete: () => {
                         messageBus.publish('increaseCurse', voidAttackBuff.multiplier);
                         voidAttackBuff.cleanUp(globalObjects.player.getStatuses());
+                        let bigCurse = this.scene.add.sprite(gameConsts.halfWidth, targetY, 'enemies', 'curse_symbol.png');
+                        let startScale = 0.65 + 0.1 * Math.sqrt(voidAttackBuff.multiplier);
+                        bigCurse.setScale(startScale);
+                        this.scene.tweens.add({
+                            targets: bigCurse,
+                            ease: 'Quint.easeOut',
+                            scaleX: startScale - 0.02,
+                            scaleY: startScale - 0.02,
+                            alpha: 0.4,
+                            duration: 300,
+                            completeDelay: 500,
+                            onComplete: () => {
+                                this.scene.tweens.add({
+                                    targets: bigCurse,
+                                    ease: 'Cubic.easeIn',
+                                    alpha: 0,
+                                    duration: 800,
+                                    onComplete: () => {
+                                        bigCurse.destroy();
+                                    }
+                                });
+                            }
+                        });
                     }
                 });
                 this.scene.tweens.add({
                     targets: animObj,
-                    ease: 'Quad.easeIn',
-                    x: gameConsts.halfWidth,
-                    duration: 250,
+                    x: gameConsts.halfWidth + 10,
+                    duration: 260,
                 });
             }
         });

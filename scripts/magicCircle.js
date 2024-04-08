@@ -400,8 +400,10 @@ const ENABLE_KEYBOARD = true;
         this.spellNameText.setDepth(120);
         this.spellNameText.alpha = 0.4;
 
-        this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth, 150, 'spells', 'darkSlice.png').setDepth(0).setRotation(1.618).setAlpha(0);
-        this.voidSliceImage2 = scene.add.sprite(gameConsts.halfWidth, 150, 'spells', 'darkSliceFront.png').setDepth(5).setRotation(1.618).setAlpha(0);
+        this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);
+        this.voidSliceImage2 = scene.add.sprite(gameConsts.halfWidth, 280, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5).setAlpha(0).setOrigin(0.17, 0.5);
+        this.voidSliceImage3 = scene.add.sprite(gameConsts.halfWidth + 100, 255, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5 - 0.6).setAlpha(0).setOrigin(0.17, 0.5);
+
         this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0);
 
         // this.spellDescBox = scene.add.sprite(gameConsts.width, gameConsts.height, 'circle', 'descBox.png');
@@ -2152,30 +2154,17 @@ const ENABLE_KEYBOARD = true;
         if (!globalObjects.currentEnemy) {
             return;
         }
-        let baseScale = 1 + damage * 0.1;
-         if (this.voidBurnTween) {
-             this.voidBurnTween.stop();
-         }
-         if (this.voidBurnTween2) {
-             this.voidBurnTween2.stop();
-         }
-
-         this.voidSliceImage1.alpha = 1;
-         this.voidSliceImage2.alpha = 1;
-         this.voidSliceImage1.setScale(baseScale * 0.5, baseScale * 0.5);
+        let baseScale = 0.7 + Math.sqrt(damage) * 0.1;
+         this.voidSliceImage1.alpha = 0.5;
+         this.voidSliceImage2.alpha = 0.5;
+         this.voidSliceImage3.alpha = 0.5;
+         this.voidSliceImage1.setScale(baseScale * 0.8, baseScale * 0.1);
          this.scene.tweens.add({
-             targets: [this.voidSliceImage1, this.voidSliceImage2],
+             targets: [this.voidSliceImage1, this.voidSliceImage2, this.voidSliceImage3],
              ease: 'Cubic.easeOut',
-             scaleX: baseScale * 0.55,
-             scaleY: baseScale * 0.9,
-             duration: 30,
-         });
-         this.voidBurnTween = this.scene.tweens.add({
-             delay: 30,
-             targets: [this.voidSliceImage1, this.voidSliceImage2],
-             scaleX: baseScale * 0.25,
-             scaleY: baseScale * 1.5,
-             duration: 5000
+             scaleX: baseScale * 0.6,
+             scaleY: baseScale,
+             duration: 150,
          });
 
          let effectName = 'voidBurn';
@@ -2183,24 +2172,17 @@ const ENABLE_KEYBOARD = true;
          effectObj = {
              name: effectName,
              duration: 4,
-             power: damage,
              isFirst: true,
              onUpdate: () => {
                  if (effectObj.isFirst) {
                      effectObj.isFirst = false;
                  } else if (effectObj && effectObj.duration > 0) {
-                     messageBus.publish('enemyTakeDamage', 0.8);
                      if (effectObj.duration <= 1) {
-                         if (this.voidBurnTween) {
-                             this.voidBurnTween.stop();
-                         }
-                         this.voidBurnTween2 = this.scene.tweens.add({
-                             targets: [this.voidSliceImage1, this.voidSliceImage2],
-                             scaleX: 0,
-                             scaleY: baseScale * 2,
-                             alpha: 0,
-                             duration: 250,
-                         });
+                         this.fireVoidSpike(this.voidSliceImage3, baseScale, damage);
+                     } else if (effectObj.duration == 2) {
+                         this.fireVoidSpike(this.voidSliceImage2, baseScale, damage);
+                     } else if (effectObj.duration == 3) {
+                        this.fireVoidSpike(this.voidSliceImage1, baseScale, damage);
                      }
                  }
              },
@@ -2209,6 +2191,30 @@ const ENABLE_KEYBOARD = true;
              }
          };
          messageBus.publish('enemyTakeEffect', effectObj);
+     }
+
+     fireVoidSpike(spike, baseScale, damage) {
+        spike.alpha = 1;
+        setTimeout(() => {
+            messageBus.publish('enemyTakeDamage', damage);
+        }, 100);
+         this.scene.tweens.add({
+             targets: spike,
+             ease: 'Back.easeOut',
+             scaleX: baseScale * 2,
+             scaleY: baseScale * 0.8,
+             duration: 100,
+             completeDelay: 100,
+             onComplete: () => {
+                 this.scene.tweens.add({
+                     targets: spike,
+                     ease: 'Cubic.easeIn',
+                     scaleX: baseScale,
+                     scaleY: 0,
+                     duration: 150,
+                 });
+             }
+         });
      }
 
      handleVoidForm() {
@@ -2285,6 +2291,7 @@ const ENABLE_KEYBOARD = true;
      clearEffects() {
          this.voidSliceImage1.alpha = 0;
          this.voidSliceImage2.alpha = 0;
+         this.voidSliceImage3.alpha = 0;
          this.mindBurnAnim.alpha = 0;
          this.mindChargeText.visible = false;
      }

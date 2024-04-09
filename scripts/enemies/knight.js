@@ -1,8 +1,8 @@
  class Knight extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
-         this.initSprite('tree.png', 0.7);// 0.7
-         this.sprite.setOrigin(0.52, 0.9); // 0.9
+         this.initSprite('void_knight_2.png', 0.55);// 0.7
+         this.sprite.setOrigin(0.51, 0.5); // 0.9
          this.shieldAdded = false;
 
      }

@@ -293,7 +293,7 @@ const ENABLE_KEYBOARD = true;
     reset(x, y) {
         this.x = x;
         this.y = y;
-        this.size = 211;
+        this.size = isMobile ? 245 : 211;
         this.draggedObj = null;
         this.dragPointAngle = 0;
         this.dragPointDist = 100;
@@ -352,7 +352,7 @@ const ENABLE_KEYBOARD = true;
         this.outerCircle.torque = 0;
         this.outerCircle.torqueOnRelease = 0;
         this.outerCircle.rotVel = 0;
-        this.innerCircleSize = 155;
+        this.innerCircleSize = isMobile ? 152 : 150;
         this.innerCircle = scene.add.sprite(x, y, 'circle', 'element_normal.png');
         this.innerCircle.setOrigin(0.5003, 0.5003);
         this.innerCircle.setDepth(102);
@@ -360,7 +360,7 @@ const ENABLE_KEYBOARD = true;
         this.innerCircle.torqueOnRelease = 0;
         this.innerCircle.rotVel = 0;
 
-        this.castButtonSize = 82;
+        this.castButtonSize = isMobile ? 76 : 82;
         this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png').setDepth(105);
         this.castButtonSpare = scene.add.sprite(x, y, 'circle', 'cast_press.png').setDepth(106).setAlpha(0);
         // this.castButtonFlash = scene.add.sprite(x, y, 'circle', 'cast_flash.png').setDepth(106).setAlpha(0);

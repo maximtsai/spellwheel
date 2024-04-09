@@ -30,6 +30,13 @@ let config = {
     },
 };
 
+function testMobile() {
+    return true;
+  const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  return regex.test(navigator.userAgent);
+}
+
+
 function isSafariIOS() {
     var ua = window.navigator.userAgent;
     var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
@@ -40,6 +47,7 @@ function isSafariIOS() {
 let game;
 
 function onloadFunc() {
+    isMobile = testMobile();
     game = new Phaser.Game(config); // var canvas = game.canvas;
 }
 
@@ -62,6 +70,7 @@ let gameVars = {
     canvasXOffset: 0,
     canvasYOffset: 0
 };
+let isMobile = false;
 let globalObjects = {};
 let updateFunctions = {};
 let PhaserScene = null; // Global
@@ -133,7 +142,7 @@ function update(time, delta) {
 
     gameVars.mouseJustDowned = false;
     gameVars.mouseJustUpped = false;
-    if (!gameVars.wasTouch && !game.input.mousePointer.isDown) {
+    if (!gameVars.wasTouch && !game.input.mousePointer.isDown && gameVars.mousedown) {
         gameVars.mousedown = false;
     }
 }

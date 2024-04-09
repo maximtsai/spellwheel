@@ -2,7 +2,7 @@ class TextPopupManager {
     constructor(scene) {
         this.scene = scene;
         this.damageNums = []; // Depreciated, currently just using one damage num
-        this.damageNum = this.scene.add.bitmapText(gameConsts.halfWidth, 200, 'damage', '', 32).setDepth(99999).setOrigin(0.5, 0.5);
+        this.damageNum = this.scene.add.bitmapText(gameConsts.halfWidth, 200, 'damage', '', isMobile ? 34 : 32).setDepth(99999).setOrigin(0.5, 0.5);
         this.damageNum.startY = this.damageNum.y;
         this.damageTween = null;
         this.damageNumber = 0;
@@ -10,7 +10,7 @@ class TextPopupManager {
         this.healNums = [];
         this.blockNums = [];
         this.infoBox = this.scene.add.image(0, 0, 'blackPixel').setAlpha(0).setDepth(100001);
-        this.infoText = this.scene.add.text(0, 0, 'WELCOME', {fontFamily: 'Arial', fontSize: 23, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(100001);
+        this.infoText = this.scene.add.text(0, 0, 'WELCOME', {fontFamily: 'Arial', fontSize: isMobile ? 25 : 23, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(100001);
         this.infoText.setFontStyle('bold');
         messageBus.subscribe('animateDamageNum', this.animateDamageNum.bind(this));
         messageBus.subscribe('animateDamageNumAccumulate', this.animateDamageNumAccumulate.bind(this));
@@ -67,6 +67,9 @@ class TextPopupManager {
         this.damageNumber += val;
         this.damageNum.setText('-' + this.damageNumber);
         let newScale = 0.6 + Math.sqrt(val) * 0.2;
+        if (isMobile) {
+            newScale += 0.1;
+        }
         this.damageNum.setScale(newScale)
         this.damageNum.y = this.damageNum.startY + offsetY;
         this.damageNum.alpha = 1;
@@ -95,20 +98,23 @@ class TextPopupManager {
 
     animateTrueDamageNum(x, y, text, scale, param) {
         let textObj = this.getTextObjFromArray(x, y, text, this.bonusNums, 'bonus');
-        textObj.setScale(scale);
+        let mobileScale = isMobile ? 1.2 : 1;
+        textObj.setScale(scale * mobileScale);
         this.animateNum(textObj, this.bonusNums, param);
     }
 
     animateHealNum(x, y, text, scale, param) {
         let textObj = this.getTextObjFromArray(x, y, text, this.healNums, 'heal');
-        textObj.setScale(scale);
+        let mobileScale = isMobile ? 1.2 : 1;
+        textObj.setScale(scale * mobileScale);
         this.animateNum(textObj, this.healNums, param);
     }
 
     animateBlockNum(x, y, text, scale, param) {
         console.log(y, "animate blok num", text);
         let textObj = this.getTextObjFromArray(x, y, text, this.blockNums, 'block');
-        textObj.setScale(scale);
+        let mobileScale = isMobile ? 1.2 : 1;
+        textObj.setScale(scale * mobileScale);
         this.animateNum(textObj, this.blockNums, param);
     }
 

@@ -3,22 +3,24 @@ class InternalMouseManager {
     }
 
     onPointerMove(pointer) {
-        gameVars.wasTouch = pointer.wasTouch;
+        gameVars.wasTouch = pointer.pointerType === "touch";
+       // console.log(pointer.x);
         let handPos = mouseToHand(pointer.x, pointer.y, true);
         gameVars.mouseposx = handPos.x;
         gameVars.mouseposy = handPos.y;
         messageBus.publish("pointerMove", handPos.x, handPos.y);
     }
 
-    onTouchMove(x, y) {
-        gameVars.wasTouch = true;
-        let handPos = mouseToHand(x, y, true);
-        gameVars.mouseposx = handPos.x;
-        gameVars.mouseposy = handPos.y;
-        messageBus.publish("pointerMove", handPos.x, handPos.y);
-    }
+    // onTouchMove(x, y) {
+    //     gameVars.wasTouch = true;
+    //     let handPos = mouseToHand(x, y, true);
+    //     gameVars.mouseposx = handPos.x;
+    //     gameVars.mouseposy = handPos.y;
+    //     messageBus.publish("pointerMove", handPos.x, handPos.y);
+    // }
 
     onPointerDown(pointer) {
+        console.log("pointerdown");
         gameVars.wasTouch = pointer.wasTouch;
         gameVars.mousedown = true;
         gameVars.mouseJustDowned = true;
@@ -28,16 +30,18 @@ class InternalMouseManager {
 
         gameVars.lastmousedown.x = handPos.x;
         gameVars.lastmousedown.y = handPos.y;
+        console.log(handPos.x, handPos.y);
         messageBus.publish("pointerDown", handPos.x, handPos.y);
     }
 
     onPointerUp(pointer) {
-        gameVars.wasTouch = pointer.wasTouch;
+        gameVars.wasTouch = pointer.pointerType;
         gameVars.mousedown = false;
         gameVars.mouseJustUpped = true;
         let handPos = mouseToHand(pointer.x, pointer.y);
         gameVars.mouseposx = handPos.x;
         gameVars.mouseposy = handPos.y;
+        console.log(handPos.x, handPos.y);
         messageBus.publish("pointerUp", handPos.x, handPos.y);
     }
 }
@@ -69,21 +73,12 @@ function setupMouseInteraction(scene) {
     baseTouchLayer.setInteractive();
     baseTouchLayer.on('pointerdown', mouseManager.onPointerDown, scene);
     baseTouchLayer.on('pointerup', mouseManager.onPointerUp, scene);
+    // baseTouchLayer.on('pointermove', mouseManager.onPointerDown, scene); // doesn't work outside
 
     // const body = document.querySelector('body');
-    window.onmousemove = (pointer) => {
+    window.onpointermove = (pointer) => {
         mouseManager.onPointerMove(pointer);
     };
-
-    window.ontouchmove = (pointer) => {
-        console.log(pointer.touches[0]);
-        if (pointer.touches.length > 0) {
-            mouseManager.onTouchMove(pointer.touches[0].clientX, pointer.touches[0].clientY);
-        }
-    };
-
-    // baseTouchLayer.on('pointermove', mouseManager.onPointerMove, scene);
-    // baseTouchLayer.on('pointerup', mouseManager.onPointerUp, scene);
 }
 
 function resizeGame() {

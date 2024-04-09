@@ -26,7 +26,6 @@
          this.shadow = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(6).setDepth(9999).setAlpha(0);
         setTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
-                console.log("Player cast count: ", globalObjects.player.getPlayerCastSpellsCount());
                 // globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Click to cast\na spell");
                 let spellListener = messageBus.subscribe('spellClicked', () => {
                     this.firstPopupClosed = true;
@@ -80,7 +79,7 @@
                     }
                 }, 4000)
             }
-        }, 1500)
+        }, 2500)
     }
 
      showArrowRotate() {

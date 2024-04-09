@@ -16,7 +16,7 @@ function createEnemy(num) {
         globalObjects.currentEnemy = new Tree(PhaserScene, gameConsts.halfWidth, 311, num);
         break;
     case 4:
-        globalObjects.currentEnemy = new Magician(PhaserScene, gameConsts.halfWidth, 173, num);
+        globalObjects.currentEnemy = new Knight(PhaserScene, gameConsts.halfWidth, 180, num);
         break;
     case 5:
         globalObjects.currentEnemy = new Knight(PhaserScene, gameConsts.halfWidth, 173, num);

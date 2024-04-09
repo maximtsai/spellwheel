@@ -6,7 +6,7 @@ function beginLevel(lvl) {
 
     updateSpellState(lvl)
     globalObjects.player.resetStats();
-    messageBus.publish('manualResetElements');
+    messageBus.publish('manualResetElements', undefined, true);
     messageBus.publish('manualResetEmbodiments', undefined, true); // with long delay
 
     globalObjects.magicCircle.buildRunes();

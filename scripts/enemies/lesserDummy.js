@@ -196,20 +196,34 @@
     attemptTutThree() {
         if (!this.dead && !this.attemptedTutThree) {
             this.attemptedTutThree = true;
-            this.shadow.setFrame('shadow_bar.png').setPosition(gameConsts.halfWidth, 25).setScale(3.2);
+            this.shadow.setFrame('shadow_bar.png').setPosition(gameConsts.halfWidth, 30).setScale(8);
             // = this.scene.add.sprite(gameConsts.halfWidth, 30, 'misc', 'shadow_bar.png').setScale(6).setDepth(9999).setAlpha(0);
             PhaserScene.tweens.add({
                 targets: this.shadow,
-                alpha: 0.2,
+                scaleX: 3.4,
+                scaleY: 3.4,
+                y: 20,
+                ease: 'Cubic.easeOut',
+                alpha: 0.7,
                 duration: 800,
                 onComplete: () => {
                     PhaserScene.tweens.add({
-                        delay: 1000,
+                        delay: 50,
+                        scaleX: 3.1,
+                        scaleY: 3.1,
                         targets: this.shadow,
-                        alpha: 0,
-                        duration: 1500,
+                        alpha: 0.2,
+                        duration: 400,
                         onComplete: () => {
-                            this.shadow.destroy();
+                            PhaserScene.tweens.add({
+                                delay: 1000,
+                                targets: this.shadow,
+                                alpha: 0,
+                                duration: 1500,
+                                onComplete: () => {
+                                    this.shadow.destroy();
+                                }
+                            });
                         }
                     });
                 }
@@ -218,8 +232,8 @@
             this.glowHealth = this.scene.add.sprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
             PhaserScene.tweens.add({
                 targets: this.glowHealth,
-                alpha: 0.6,
-                scaleX: 0.9,
+                alpha: 0.85,
+                scaleX: 1,
                 ease: 'Cubic.easeInOut',
                 duration: 1500,
                 onComplete: () => {
@@ -228,11 +242,11 @@
                         alpha: 0,
                         scaleX: 0.7,
                         ease: 'Cubic.easeInOut',
-                        duration: 1500,
+                        duration: 500,
                         onComplete: () => {
                             PhaserScene.tweens.add({
                                 targets: this.glowHealth,
-                                alpha: 0.5,
+                                alpha: 0.55,
                                 scaleX: 0.9,
                                 ease: 'Cubic.easeInOut',
                                 duration: 1500,

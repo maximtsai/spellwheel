@@ -1,6 +1,6 @@
 const DECAY = 0.00006;
 const STATIC = 0.006;
-const INFINITE_CAST = true;
+const INFINITE_CAST = false;
 const ENABLE_KEYBOARD = true;
 
  class MagicCircle {
@@ -293,7 +293,7 @@ const ENABLE_KEYBOARD = true;
     reset(x, y) {
         this.x = x;
         this.y = y;
-        this.size = 207;
+        this.size = 211;
         this.draggedObj = null;
         this.dragPointAngle = 0;
         this.dragPointDist = 100;
@@ -352,7 +352,7 @@ const ENABLE_KEYBOARD = true;
         this.outerCircle.torque = 0;
         this.outerCircle.torqueOnRelease = 0;
         this.outerCircle.rotVel = 0;
-        this.innerCircleSize = 145;
+        this.innerCircleSize = 155;
         this.innerCircle = scene.add.sprite(x, y, 'circle', 'element_normal.png');
         this.innerCircle.setOrigin(0.5003, 0.5003);
         this.innerCircle.setDepth(102);
@@ -360,7 +360,7 @@ const ENABLE_KEYBOARD = true;
         this.innerCircle.torqueOnRelease = 0;
         this.innerCircle.rotVel = 0;
 
-        this.castButtonSize = 83;
+        this.castButtonSize = 82;
         this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png').setDepth(105);
         this.castButtonSpare = scene.add.sprite(x, y, 'circle', 'cast_press.png').setDepth(106).setAlpha(0);
         // this.castButtonFlash = scene.add.sprite(x, y, 'circle', 'cast_flash.png').setDepth(106).setAlpha(0);
@@ -401,7 +401,7 @@ const ENABLE_KEYBOARD = true;
         this.spellNameText.alpha = 0.4;
 
         this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);
-        this.voidSliceImage2 = scene.add.sprite(gameConsts.halfWidth, 280, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5).setAlpha(0).setOrigin(0.17, 0.5);
+        // this.voidSliceImage2 = scene.add.sprite(gameConsts.halfWidth, 280, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5).setAlpha(0).setOrigin(0.17, 0.5);
         this.voidSliceImage3 = scene.add.sprite(gameConsts.halfWidth + 100, 255, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5 - 0.6).setAlpha(0).setOrigin(0.17, 0.5);
 
         this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0);
@@ -842,8 +842,8 @@ const ENABLE_KEYBOARD = true;
         // low torque but high speed = strong stop force
         let spinAmpFromRestInner = Math.abs(this.innerCircle.rotVel) < 0.01 ? 2 : 1;
         let spinAmpFromRestOuter = Math.abs(this.outerCircle.rotVel) < 0.01 ? 2.25 : 1;
-        let spinAmtInner = this.innerCircle.rotVel + this.innerCircle.torque * dt * 5 * spinAmpFromRestInner;
-        let spinAmtOuter = this.outerCircle.rotVel + this.outerCircle.torque * dt * 2.5 * spinAmpFromRestOuter;
+        let spinAmtInner = this.innerCircle.rotVel + this.innerCircle.torque * dt * 5.5 * spinAmpFromRestInner;
+        let spinAmtOuter = this.outerCircle.rotVel + this.outerCircle.torque * dt * 3 * spinAmpFromRestOuter;
 
         let spinSlowTimeDilation = 1 - (1-gameVars.timeSlowRatio)*0.5;
         let spinSnapSlowAmtInner = this.handleSpinSnapSlowAmt(this.innerCircle, this.elements);
@@ -861,9 +861,9 @@ const ENABLE_KEYBOARD = true;
         let multDrag = 1;
         let spellMult = globalObjects.player.spellMultiplier();
         if (spellMult > 1) {
-            multDrag = 0.5;
+            multDrag = 0.85;
             if (spellMult > 3) {
-                multDrag = 0.3;
+                multDrag = 0.6;
             }
         }
         this.innerCircle.rotation += spinAmtInner * spinSlowTimeDilation * spinSnapSlowAmtInner * multDrag;
@@ -1422,21 +1422,22 @@ const ENABLE_KEYBOARD = true;
         }
     }
 
-    manualResetElements(elemUsed) {
+    manualResetElements(elemUsed, useLongDelay = false) {
         this.innerDragDisabled = true;
         this.castDisabled = true;
         this.recharging = true;
         this.lastDragTime = -1000;
+        let spinAmt = useLongDelay ? "+=12.566" : "+=6.283"
         this.scene.tweens.add({
             targets: this.innerCircle,
             ease: 'Back.easeIn',
-            easeParams: [1.2],
+            easeParams: [useLongDelay ? 0.9 : 1.1],
             onComplete: () => {
                 this.resetElements(elemUsed);
                 this.innerDragDisabled = false;
             },
-            duration: 1200,
-            rotation: "+=6.283"
+            duration: useLongDelay ? 2100 : 1200,
+            rotation: spinAmt
         });
     }
 
@@ -1473,10 +1474,11 @@ const ENABLE_KEYBOARD = true;
              this.bufferedCastAvailable = true;
          });
 
+        let spinAmt = useLongDelay ? "+=12.566" : "+=6.283"
          this.scene.tweens.add({
              targets: this.outerCircle,
              ease: 'Back.easeIn',
-             easeParams: [1.2],
+            easeParams: [useLongDelay ? 1.1 : 1.25],
              onComplete: () => {
                  this.resetEmbodiments(embodiUsed);
                  this.outerDragDisabled = false;
@@ -1509,8 +1511,8 @@ const ENABLE_KEYBOARD = true;
                      }
                  }, useLongDelay ? 800 : 0)
              },
-             duration: 1200,
-             rotation: "+=6.283"
+             duration: useLongDelay ? 2100 : 1200,
+             rotation: spinAmt
          });
      }
 
@@ -1992,7 +1994,11 @@ const ENABLE_KEYBOARD = true;
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
                          this.spellNameText.setText('MATTER STRIKE');
-                         this.spellNameHover.setText(getLangText('matter_strike_desc'));
+                         if (gameVars.matterPlus) {
+                            this.spellNameHover.setText(getLangText('matter_strike_plus_desc'));
+                         } else {
+                            this.spellNameHover.setText(getLangText('matter_strike_desc'));
+                         }
                          break;
                      case RUNE_REINFORCE:
                          this.spellNameText.setText('THORN FORM');
@@ -2055,7 +2061,11 @@ const ENABLE_KEYBOARD = true;
                          break;
                      case RUNE_ENHANCE:
                          this.spellNameText.setText('ADD BURNING ATTACK');
-                         this.spellNameHover.setText(getLangText('mind_enhance_desc'));
+                         if (gameVars.mindPlus) {
+                            this.spellNameHover.setText(getLangText('mind_enhance_plus_desc'));
+                         } else {
+                            this.spellNameHover.setText(getLangText('mind_enhance_desc'));
+                         }
                          break;
                      case RUNE_PROTECT:
                          this.spellNameText.setText('REFLECT PAIN');
@@ -2156,11 +2166,11 @@ const ENABLE_KEYBOARD = true;
         }
         let baseScale = 0.7 + Math.sqrt(damage) * 0.1;
          this.voidSliceImage1.alpha = 0.5;
-         this.voidSliceImage2.alpha = 0.5;
+         // this.voidSliceImage2.alpha = 0.5;
          this.voidSliceImage3.alpha = 0.5;
          this.voidSliceImage1.setScale(baseScale * 0.8, baseScale * 0.1);
          this.scene.tweens.add({
-             targets: [this.voidSliceImage1, this.voidSliceImage2, this.voidSliceImage3],
+             targets: [this.voidSliceImage1, this.voidSliceImage3],
              ease: 'Cubic.easeOut',
              scaleX: baseScale * 0.6,
              scaleY: baseScale,
@@ -2171,7 +2181,7 @@ const ENABLE_KEYBOARD = true;
          let effectObj;
          effectObj = {
              name: effectName,
-             duration: 4,
+             duration: 3,
              isFirst: true,
              onUpdate: () => {
                  if (effectObj.isFirst) {
@@ -2180,9 +2190,7 @@ const ENABLE_KEYBOARD = true;
                      if (effectObj.duration <= 1) {
                          this.fireVoidSpike(this.voidSliceImage3, baseScale, damage);
                      } else if (effectObj.duration == 2) {
-                         this.fireVoidSpike(this.voidSliceImage2, baseScale, damage);
-                     } else if (effectObj.duration == 3) {
-                        this.fireVoidSpike(this.voidSliceImage1, baseScale, damage);
+                         this.fireVoidSpike(this.voidSliceImage1, baseScale, damage);
                      }
                  }
              },
@@ -2198,15 +2206,17 @@ const ENABLE_KEYBOARD = true;
         setTimeout(() => {
             messageBus.publish('enemyTakeDamage', damage);
         }, 100);
+        spike.setScale(baseScale * 4, baseScale * 0.6)
          this.scene.tweens.add({
+            delay: 1,
              targets: spike,
-             ease: 'Back.easeOut',
-             scaleX: baseScale * 2,
-             scaleY: baseScale * 0.8,
+             ease: 'Quart.easeOut',
+             scaleX: baseScale * 1.9,
+             scaleY: baseScale * 0.75,
              duration: 100,
-             completeDelay: 100,
              onComplete: () => {
                  this.scene.tweens.add({
+                    delay: 100,
                      targets: spike,
                      ease: 'Cubic.easeIn',
                      scaleX: baseScale,
@@ -2290,7 +2300,7 @@ const ENABLE_KEYBOARD = true;
 
      clearEffects() {
          this.voidSliceImage1.alpha = 0;
-         this.voidSliceImage2.alpha = 0;
+         // this.voidSliceImage2.alpha = 0;
          this.voidSliceImage3.alpha = 0;
          this.mindBurnAnim.alpha = 0;
          this.mindChargeText.visible = false;

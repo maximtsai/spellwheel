@@ -13,7 +13,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 800 : 750;
+         this.health = gameVars.isHardMode ? 800 : 300;
          this.isAsleep = true;
      }
 

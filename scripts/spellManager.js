@@ -204,7 +204,8 @@ class SpellManager {
                 ease: 'Quad.easeIn',
                 onComplete: () => {
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
-                    messageBus.publish('enemyTakeDamage', 12 + additionalDamage);
+                    let baseDamage = gameVars.matterPlus ? 14 : 12;
+                    messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
                     poolManager.returnItemToPool(rockObj, 'rock');
                 }
             });
@@ -628,7 +629,7 @@ class SpellManager {
         }
         textHealth.setDepth(120).setOrigin(0.5, 0.5).setScale(0);
         stoneCircle.setDepth(10);
-        let shieldHealth = 18 * multiplier;
+        let shieldHealth = 20 * multiplier;
         this.scene.tweens.add({
             targets: stoneCircle,
             delay: 250,
@@ -724,7 +725,7 @@ class SpellManager {
                     }, 50);
                 },
                 onComplete: () => {
-                    messageBus.publish('enemyTakeDamage', 18 + additionalDamage);
+                    messageBus.publish('enemyTakeDamage', 20 + additionalDamage);
                     zoomTemp(1.01 + additionalDamage * 0.00025);
                     this.createDamageEffect(gameConsts.halfWidth, 140, rockObj.depth);
                     this.scene.tweens.add({
@@ -1414,18 +1415,22 @@ class SpellManager {
         // next attack hits +1 time
         let existingBuff = globalObjects.player.getStatuses()[spellID];
         let multiplier = globalObjects.player.spellMultiplier();
+
         if (existingBuff) {
-            existingBuff.cleanUp(globalObjects.player.getStatuses());
-            // multiplier += existingBuff.multiplier;
-            // let newScale = 0.25 + multiplier * 0.1;
-            // mindObj = existingBuff.animObj;
-            // this.scene.tweens.add({
-            //     targets: mindObj,
-            //     duration: 300,
-            //     ease: 'back.easeOut',
-            //     scaleX: newScale,
-            //     scaleY: newScale,
-            // });
+            if (gameVars.mindPlus) {
+                multiplier += existingBuff.multiplier;
+                let newScale = 0.25 + multiplier * 0.1;
+                mindObj = existingBuff.animObj;
+                this.scene.tweens.add({
+                    targets: mindObj,
+                    duration: 300,
+                    ease: 'back.easeOut',
+                    scaleX: newScale,
+                    scaleY: newScale,
+                });
+            } else {
+                existingBuff.cleanUp(globalObjects.player.getStatuses());
+            }
         }
         let mindObj = this.scene.add.sprite(gameConsts.halfWidth + 195, gameConsts.height - 285, 'spells').play('mindBurnSlow').setDepth(10).setScale(0);
         let newScale = 0.25 + multiplier * 0.1;
@@ -1705,11 +1710,10 @@ class SpellManager {
                         duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.025 + additionalDamage;
+                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.015 + additionalDamage;
                             let damageDealt = Math.ceil(healthPercent)
-                            let thirdDamage = Math.ceil(healthPercent * 0.33333);
                             messageBus.publish('enemyTakeDamage', damageDealt);
-                            messageBus.publish('inflictVoidBurn', thirdDamage, 3);
+                            messageBus.publish('inflictVoidBurn', damageDealt, 2);
                             currStrikeObj.setScale(currStrikeObj.scaleX * 1.04, currStrikeObj.scaleY * 1.04);
                             this.scene.tweens.add({
                                 targets: currStrikeObj,
@@ -2328,7 +2332,8 @@ class SpellManager {
                     y: 140,
                     duration: 400,
                     onComplete: () => {
-                        messageBus.publish('applyMindBurn', 4 * mindAttackBuff.multiplier);
+                        let mult = gameVars.mindPlus ? 5 : 4;
+                        messageBus.publish('applyMindBurn', mult * mindAttackBuff.multiplier);
                         mindAttackBuff.cleanUp(globalObjects.player.getStatuses());
                     }
                 });

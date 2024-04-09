@@ -10,7 +10,7 @@
             }
         });
         let spellHoverListener = messageBus.subscribe('spellNameTextUpdate', (text) => {
-            if (text === "ADD STRONGER ATTACK") {
+            if (text === "ADD STRONGER ATTACK" && !globalObjects.magicCircle.innerDragDisabled) {
                 spellHoverListener.unsubscribe();
                 this.initTutorial3();
             }
@@ -30,13 +30,13 @@
          this.rune2 = this.scene.add.sprite(88, gameConsts.height - 273, 'circle', 'rune_matter_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
 
          setTimeout(() => {
-             globalObjects.textPopupManager.setInfoText(110, gameConsts.height - 360, "Cast spells with\ndifferent runes for\ndifferent effects.\n       +      =  +DMG", 'left');
+             globalObjects.textPopupManager.setInfoText(110, gameConsts.height - 360, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'left');
              PhaserScene.tweens.add({
                  targets: [this.rune1, this.rune2],
                  alpha: 1,
                  duration: 200,
              });
-         }, 150)
+         }, 750)
     }
 
     initTutorial2() {
@@ -186,52 +186,6 @@
         }
     }
 
-    tryInitTutorial5() {
-        setTimeout(() => {
-            if (!this.dead) {
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 175, 30, "<= Defeat the\nenemy to win");
-                this.glowHealth = this.scene.add.sprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.1);
-                PhaserScene.tweens.add({
-                    targets: this.glowHealth,
-                    alpha: 0.6,
-                    scaleX: 1.1,
-                    ease: 'Cubic.easeInOut',
-                    duration: 1500,
-                    onComplete: () => {
-                        PhaserScene.tweens.add({
-                            targets: this.glowHealth,
-                            alpha: 0,
-                            scaleX: 0.85,
-                            ease: 'Cubic.easeInOut',
-                            duration: 1500,
-                            onComplete: () => {
-                                PhaserScene.tweens.add({
-                                    targets: this.glowHealth,
-                                    alpha: 0.5,
-                                    scaleX: 0.9,
-                                    ease: 'Cubic.easeInOut',
-                                    duration: 1500,
-                                });
-                            }
-                        });
-                    }
-                });
-                setTimeout(() => {
-                    if (!this.dead) {
-                        globalObjects.textPopupManager.hideInfoText();
-                        PhaserScene.tweens.add({
-                            targets: this.glowHealth,
-                            alpha: 0,
-                            duration: 500,
-                            onComplete: () => {
-                                this.glowHealth.destroy();
-                            }
-                        });
-                    }
-                }, 10000);
-            }
-        }, 500);
-    }
 
      setHealth(newHealth) {
          super.setHealth(newHealth);

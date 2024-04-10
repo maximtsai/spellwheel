@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>phaser-maxim</string>
+        <string>phaser</string>
         <key>textureFileName</key>
         <filename>../sprites/backgrounds-{n}.webp</filename>
         <key>flipPVR</key>

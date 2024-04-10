@@ -8,11 +8,14 @@
             } else if (globalObjects.player.getPlayerCastSpellsCount() > 1) {
                 this.playerSpellCastSub.unsubscribe();
             }
+            if (this.canHideStartTut) {
+                    this.initTutorial3();
+            }
         });
         let spellHoverListener = messageBus.subscribe('spellNameTextUpdate', (text) => {
             if (text === "ADD STRONGER ATTACK" && !globalObjects.magicCircle.innerDragDisabled) {
+                this.canHideStartTut = true;
                 spellHoverListener.unsubscribe();
-                this.initTutorial3();
             }
         });
         this.initTutorial();
@@ -65,49 +68,16 @@
                     this.rune1.destroy();
                     this.rune2.destroy();
                 }
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 225, gameConsts.halfHeight - 37, "Hover over\nspell names\nfor more\n    info  =>");
-                let hoverColor = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 241, 'lowq', 'glow_flat.webp').setDepth(-1).setScale(1.75, 1).setAlpha(0);
-                PhaserScene.tweens.add({
-                    targets: hoverColor,
-                    alpha: 0.5,
-                    ease: 'Cubic.easeInOut',
-                    duration: 1500,
-                });
-                setTimeout(() => {
-                    let spellListener = messageBus.subscribe('spellClicked', () => {
-                        setTimeout(() => {
-                            globalObjects.textPopupManager.hideInfoText();
-                        }, 500);
-                        PhaserScene.tweens.add({
-                            targets: hoverColor,
-                            alpha: 0,
-                            ease: 'Cubic.easeOut',
-                            duration: 1000,
-                            onComplete: () => {
-                                hoverColor.destroy();
-                            }
-                        });
-                        spellListener.unsubscribe();
-                        hoverListener.unsubscribe();
-                    });
+                globalObjects.textPopupManager.hideInfoText();
+                // globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 225, gameConsts.halfHeight - 37, "Hover over\nspell names\nfor more\n    info  =>");
+                // let hoverColor = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 241, 'lowq', 'glow_flat.webp').setDepth(-1).setScale(1.75, 1).setAlpha(0);
+                // PhaserScene.tweens.add({
+                //     targets: hoverColor,
+                //     alpha: 0.5,
+                //     ease: 'Cubic.easeInOut',
+                //     duration: 1500,
+                // });
 
-                    let hoverListener = messageBus.subscribe('hoveredSpell', () => {
-                        setTimeout(() => {
-                            globalObjects.textPopupManager.hideInfoText();
-                        }, 500);
-                        PhaserScene.tweens.add({
-                            targets: hoverColor,
-                            alpha: 0,
-                            ease: 'Cubic.easeOut',
-                            duration: 1000,
-                            onComplete: () => {
-                                hoverColor.destroy();
-                            }
-                        });
-                        spellListener.unsubscribe();
-                        hoverListener.unsubscribe();
-                    });
-                }, 1200);
             }
         }, 200);
     }

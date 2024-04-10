@@ -195,6 +195,7 @@
     attemptTutThree() {
         if (!this.dead && !this.attemptedTutThree) {
             this.attemptedTutThree = true;
+            setTimeout(() => {
             this.shadow.setFrame('shadow_bar.png').setPosition(gameConsts.halfWidth, 30).setScale(8);
             // = this.scene.add.sprite(gameConsts.halfWidth, 30, 'misc', 'shadow_bar.png').setScale(6).setDepth(9999).setAlpha(0);
             PhaserScene.tweens.add({
@@ -204,7 +205,7 @@
                 y: 20,
                 ease: 'Cubic.easeOut',
                 alpha: 0.7,
-                duration: 800,
+                duration: 1000,
                 onComplete: () => {
                     PhaserScene.tweens.add({
                         delay: 50,
@@ -212,7 +213,7 @@
                         scaleY: 3.1,
                         targets: this.shadow,
                         alpha: 0.2,
-                        duration: 400,
+                        duration: 1500,
                         onComplete: () => {
                             PhaserScene.tweens.add({
                                 delay: 1000,
@@ -231,7 +232,7 @@
             this.glowHealth = this.scene.add.sprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
             PhaserScene.tweens.add({
                 targets: this.glowHealth,
-                alpha: 0.85,
+                alpha: 0.75,
                 scaleX: 1,
                 ease: 'Cubic.easeInOut',
                 duration: 1500,
@@ -240,8 +241,8 @@
                         targets: this.glowHealth,
                         alpha: 0,
                         scaleX: 0.7,
-                        ease: 'Cubic.easeInOut',
-                        duration: 500,
+                        ease: 'Cubic.easeIn',
+                        duration: 1500,
                         onComplete: () => {
                             PhaserScene.tweens.add({
                                 targets: this.glowHealth,
@@ -261,6 +262,7 @@
                     });
                 }
             });
+            }, 1200);
         }
     }
 

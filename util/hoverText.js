@@ -1,19 +1,10 @@
 class InternalHoverTextManager {
     constructor(scene) {
-        this.scene = scene || PhaserScene;
+        PhaserScene = scene || PhaserScene;
         this.hoverTextList = [];
         this.lastHovered = null;
 
-        this.hoverBacking = this.scene.add.sprite(0, 0, 'blackPixel');
-        this.hoverBacking.visible = false;
-        this.hoverBacking.setDepth(9992);
-        this.hoverBacking.setOrigin(0, 0);
-        this.hoverBacking.alpha = 0.6;
-
-        this.hoverTextDisplay = this.scene.add.text(0, 0, 'desc.', {fontFamily: 'Tahoma', fontSize: isMobile ? 18 : 17, color: '#FFFFFF', align: 'left'});
-        this.hoverTextDisplay.visible = false;
-        this.hoverTextDisplay.setDepth(9992);
-        this.hoverTextDisplay.setOrigin(0, 0);
+        // this.hoverDisplay = new HoverDisplay();
 
         // messageBus.subscribe("pointerUp", this.onPointerUp.bind(this));
         messageBus.subscribe("pointerMove", this.onPointerMove.bind(this));
@@ -53,12 +44,12 @@ class InternalHoverTextManager {
                 let posX = hoverTextObj.displayX ? hoverTextObj.displayX : mouseX;
                 let posY = hoverTextObj.displayY ? hoverTextObj.displayY : mouseY;
                 this.hoverBacking.x = posX; this.hoverBacking.y = posY;
-                this.hoverBacking.setOrigin(hoverTextObj.displayOriginX, hoverTextObj.displayOriginY);
-                this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - hoverTextObj.displayOriginX * 2 - 2);
-                this.hoverTextDisplay.y = this.hoverBacking.y - 1 * (hoverTextObj.displayOriginX * 2 - 1);
+                this.hoverBacking.setOrigin(hoverTextObj.originX, hoverTextObj.originY);
+                this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - hoverTextObj.originX * 2 - 2);
+                this.hoverTextDisplay.y = this.hoverBacking.y - 1 * (hoverTextObj.originX * 2 - 1);
                 this.hoverTextDisplay.setText(hoverTextObj.text);
                 this.hoverTextDisplay.visible = true;
-                this.hoverTextDisplay.setOrigin(hoverTextObj.displayOriginX, hoverTextObj.displayOriginY);
+                this.hoverTextDisplay.setOrigin(hoverTextObj.originX, hoverTextObj.originY);
                 this.hoverBacking.visible = true;
                 this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX, (this.hoverTextDisplay.height + 10) * 0.5 * this.hoverTextDisplay.scaleY);
                 break;
@@ -94,7 +85,51 @@ class InternalHoverTextManager {
 }
 
 // hoverTextManager = new InternalHoverTextManager();
+class HoverDisplay {
+    constructor(data) {
+        this.hoverBacking = PhaserScene.add.sprite(0, 0, 'blackPixel');
+        this.hoverBacking.visible = false;
+        this.hoverBacking.setDepth(data.depth || 9992);
+        this.hoverBacking.alpha = 0.6;
 
+
+        // this.hoverTextDisplay = PhaserScene.add.bitmapText(0, 0, 'plainBold', '', isMobile ? 19 : 18);
+        this.hoverTextDisplay = PhaserScene.add.text(0, 0, 'desc.', {fontFamily: 'Tahoma', fontSize: isMobile ? 18 : 17, color: '#FFFFFF', align: 'left'});
+        this.hoverTextDisplay.visible = false;
+        this.hoverTextDisplay.setDepth(data.depth || 9992);
+
+        this.setPosition(data.x, data.y)
+        this.setOrigin(data.originX, data.originY);
+
+    }
+
+    setPosition(x, y) {
+        this.hoverBacking.x = x; this.hoverBacking.y = y;
+        this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - this.hoverBacking.originX * 2 - 2);
+    }
+
+    setOrigin(x = 0.5, y = 0.5) {
+        this.hoverBacking.setOrigin(x, y);
+        this.hoverTextDisplay.setOrigin(x, y);
+    }
+
+    setText(text) {
+        this.hoverTextDisplay.setText(text);
+        this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - this.hoverBacking.originX * 2 - 2);
+        this.hoverTextDisplay.y = this.hoverBacking.y - 1 * (this.hoverBacking.originX * 2 - 1);
+        this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX, (this.hoverTextDisplay.height + 10) * 0.5 * this.hoverTextDisplay.scaleY);
+        if (text.length > 0) {
+            this.setVisible(true);
+        } else {
+            this.setVisible(false);
+        }
+    }
+
+    setVisible(val) {
+        this.hoverTextDisplay.visible = val;
+        this.hoverBacking.visible = val;
+    }
+}
 
 class HoverText {
     /**
@@ -118,8 +153,8 @@ class HoverText {
 
         this.displayX = data.displayX;
         this.displayY = data.displayY;
-        this.displayOriginX = data.displayOrigin ? data.displayOrigin.x : 0;
-        this.displayOriginY = data.displayOrigin ? data.displayOrigin.y : 0;
+        this.originX = data.displayOrigin ? data.displayOrigin.x : 0;
+        this.originY = data.displayOrigin ? data.displayOrigin.y : 0;
 
 
         globalObjects.hoverTextManager.addToHoverTextList(this);

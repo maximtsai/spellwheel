@@ -19,6 +19,7 @@ const ENABLE_KEYBOARD = true;
         this.forcingAlignment = false;
         this.outerDragDisabled = false;
         this.innerDragDisabled = false;
+        this.disableSpellDescDisplay = false;
         this.elementsAnimArray = [];
         this.embodimentsAnimArray = [];
         this.tempRotObjs = [];
@@ -240,8 +241,6 @@ const ENABLE_KEYBOARD = true;
                 this.draggedObj.rotVel *= 0.25;
             }
 
-
-
             let oldObjRot = this.draggedObj.rotation;
             this.updateRotations(dt);
             let rotDiff = this.draggedObj.rotation - oldObjRot;
@@ -406,35 +405,39 @@ const ENABLE_KEYBOARD = true;
 
         this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0);
 
-        // this.spellDescBox = scene.add.sprite(gameConsts.width, gameConsts.height, 'circle', 'descBox.png');
-        // this.spellDescBox.setOrigin(1, 1);
-        // this.spellDescBox.setDepth(120);
-        //
+
         // this.spellDescText = this.scene.add.bitmapText(this.x + 204, this.y + 2, 'plain', '', 15);
         // this.spellDescText.setOrigin(0, 0);
         // this.spellDescText.setDepth(120);
 
-        this.spellNameHover = new HoverText(
-        {
-            x: this.spellNameText.x - 4,
-            y: this.spellNameText.y + 6,
-            width: this.spellNameText.width + 18,
-            height: this.spellNameText.height + 7,
-            text: "",
-            displayX: gameConsts.width,
-            displayY: this.spellNameText.y + 3,
-            displayOrigin: {
-                x: 1,
-                y: 0.5
-            },
-            onHover: () => {
-                this.spellNameText.alpha = 1;
-            },
-            onHoverOut: () => {
-                this.spellNameText.alpha = 0.4;
-                messageBus.publish('hoveredSpell', this.spellNameText.text);
-            }
-        });
+        // this.spellDescriptor = new HoverDisplay(
+        // {
+        //     x: this.spellNameText.x - 4,
+        //     y: this.spellNameText.y + 6,
+        //     width: this.spellNameText.width + 18,
+        //     height: this.spellNameText.height + 7,
+        //     text: "",
+        //     displayX: gameConsts.width,
+        //     displayY: this.spellNameText.y + 3,
+        //     displayOrigin: {
+        //         x: 1,
+        //         y: 0.5
+        //     },
+        //     onHover: () => {
+        //         this.spellNameText.alpha = 1;
+        //     },
+        //     onHoverOut: () => {
+        //         this.spellNameText.alpha = 0.4;
+        //         messageBus.publish('hoveredSpell', this.spellNameText.text);
+        //     }
+        // });
+        this.spellDescriptor = new HoverDisplay({
+            x: gameConsts.width,
+            y: gameConsts.halfHeight - 15,
+            originX: 1,
+            originY: 0.5,
+            depth: 9
+        })
 
         this.dragArrow = scene.add.sprite(x, y, 'circle', 'drag_arrow.png');
         this.dragArrow.setDepth(100001);
@@ -1382,6 +1385,7 @@ const ENABLE_KEYBOARD = true;
             this.innerDragDisabled = true;
             this.outerDragDisabled = true;
             this.castDisabled = true;
+            this.disableSpellDescDisplay = true;
             this.recharging = true;
             this.lastDragTime = -1000;
             this.scene.tweens.add({
@@ -1449,18 +1453,20 @@ const ENABLE_KEYBOARD = true;
                 this.elements[i].burnedOut = false;
             }
         }
-        let sprite = this.scene.add.sprite(this.x, this.y, 'circle', 'circle.png');
-        sprite.setScale(0.8);
-        sprite.setDepth(101);
+        let sprite = this.elemCircle;
+        if (!sprite) {
+            this.elemCircle = this.scene.add.sprite(this.x, this.y, 'circle', 'circle.png');
+            sprite = this.elemCircle;
+            sprite.setDepth(101);
+        }
+
+        sprite.setScale(0.8).setAlpha(1);
         this.scene.tweens.add({
             targets: sprite,
             alpha: 0,
             scaleX: 1,
             scaleY: 1,
             duration: 500,
-            onComplete: () => {
-                sprite.destroy();
-            }
         });
     }
 
@@ -1468,6 +1474,7 @@ const ENABLE_KEYBOARD = true;
      manualResetEmbodiments(embodiUsed, useLongDelay = false) {
          this.outerDragDisabled = true;
          this.castDisabled = true;
+         this.disableSpellDescDisplay = true;
          this.recharging = true;
          this.lastDragTime = -1000;
          PhaserScene.time.delayedCall(250, () => {
@@ -1484,6 +1491,9 @@ const ENABLE_KEYBOARD = true;
                  this.outerDragDisabled = false;
                  setTimeout(() => {
                      if (!this.outerDragDisabled) {
+                        if (useLongDelay) {
+                            this.disableSpellDescDisplay = false;
+                        }
                          this.castDisabled = false;
                          this.recharging = false;
                          this.bufferedCastAvailable = false;
@@ -1524,18 +1534,22 @@ const ENABLE_KEYBOARD = true;
                 this.embodiments[i].burnedOut = false;
             }
         }
-        console.log("resetting embodi")
-        let sprite = this.scene.add.sprite(this.x, this.y, 'circle', 'circle.png');
-        sprite.setScale(1.05);
-        sprite.setDepth(100);
+        let sprite = this.embodiCircle;
+        if (!sprite) {
+            this.embodiCircle = this.scene.add.sprite(this.x, this.y, 'circle', 'circle.png');
+            sprite = this.embodiCircle;
+            sprite.setDepth(100);
+        }
+        sprite.setAlpha(0).setScale(1.05);
         this.scene.tweens.add({
             targets: sprite,
             alpha: 0,
             scaleX: 1.2,
             scaleY: 1.2,
             duration: 500,
+            completeDelay: 500,
             onComplete: () => {
-                sprite.destroy();
+                // this.disableSpellDescDisplay = false;
             }
         });
     }
@@ -1727,6 +1741,9 @@ const ENABLE_KEYBOARD = true;
                                         delay: 1400,
                                         alpha: 0.7,
                                         duration: 150,
+                                        onComplete: () => {
+                                            this.disableSpellDescDisplay = false;
+                                        }
                                     });
                                     this.bufferedCastAvailable = false;
                                     if (this.useBufferedSpellCast) {
@@ -1903,8 +1920,8 @@ const ENABLE_KEYBOARD = true;
              if (this.delayedDamage > this.delayedDamageCurrMax) {
                  this.delayedDamageCurrMax = this.delayedDamage;
              }
-             let scaleAmtTotal = Math.min(1, this.delayedDamageCurrMax / this.delayedDamageCurrCap);
-            let textScaleFinal = Math.sqrt(scaleAmtTotal * 2) * 0.55;
+             let scaleAmtTotal = Math.min(0.6, this.delayedDamageCurrMax / this.delayedDamageCurrCap);
+            let textScaleFinal = Math.sqrt(scaleAmtTotal * 2) * 0.75;
             let sandScaleFinal = 0.03 + scaleAmtTotal * this.delayedDamage / this.delayedDamageCurrMax
              if (oldDelayedDamage <= 0) {
                  // animation in
@@ -1995,29 +2012,30 @@ const ENABLE_KEYBOARD = true;
                      case RUNE_STRIKE:
                          this.spellNameText.setText('MATTER STRIKE');
                          if (gameVars.matterPlus) {
-                            this.spellNameHover.setText(getLangText('matter_strike_plus_desc'));
+                            this.spellDescriptor.setText(getLangText('matter_strike_plus_desc'));
                          } else {
-                            this.spellNameHover.setText(getLangText('matter_strike_desc'));
+                            this.spellDescriptor.setText(getLangText('matter_strike_desc'));
                          }
                          break;
                      case RUNE_REINFORCE:
                          this.spellNameText.setText('THORN FORM');
-                         this.spellNameHover.setText(getLangText('matter_reinforce_desc'));
+                         this.spellDescriptor.setText(getLangText('matter_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
                          this.updateTextIfDifferent(this.spellNameText, 'ADD STRONGER ATTACK')
-                         this.updateTextIfDifferent(this.spellNameHover, getLangText('matter_enhance_desc'))
+                         this.updateTextIfDifferent(this.spellDescriptor, getLangText('matter_enhance_desc'))
                          break;
                      case RUNE_PROTECT:
                          this.spellNameText.setText('SHIELD OF STONE');
-                         this.spellNameHover.setText(getLangText('matter_protect_desc'));
+                         this.spellDescriptor.setText(getLangText('matter_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
                          this.spellNameText.setText('EARTH FORCE');
-                         this.spellNameHover.setText(getLangText('matter_unload_desc'));
+                         this.spellDescriptor.setText(getLangText('matter_unload_desc'));
                          break;
                      default:
                          this.spellNameText.setText('');
+                         this.spellDescriptor.setText('');
                          break;
                  }
                  break;
@@ -2025,27 +2043,28 @@ const ENABLE_KEYBOARD = true;
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
                          this.spellNameText.setText('TIME STRIKE');
-                         this.spellNameHover.setText(getLangText('time_strike_desc'));
+                         this.spellDescriptor.setText(getLangText('time_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
                          let healAmt = Math.ceil(globalObjects.player.getrecentlyTakenDamageAmt() * (1 - (0.5 ** globalObjects.player.spellMultiplier())));
                          this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS ('+ healAmt + ")")
-                         this.updateTextIfDifferent(this.spellNameHover, getLangText('time_reinforce_desc'))
+                         this.updateTextIfDifferent(this.spellDescriptor, getLangText('time_reinforce_desc'))
                          break;
                      case RUNE_ENHANCE:
                          this.spellNameText.setText('ADD EXTRA ATTACK');
-                         this.spellNameHover.setText(getLangText('time_enhance_desc'));
+                         this.spellDescriptor.setText(getLangText('time_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
                          this.spellNameText.setText('SHIELD OF DELAY');
-                         this.spellNameHover.setText(getLangText('time_protect_desc'));
+                         this.spellDescriptor.setText(getLangText('time_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
                          this.spellNameText.setText('ACCELERATED FORM');
-                         this.spellNameHover.setText(getLangText('time_unload_desc'));
+                         this.spellDescriptor.setText(getLangText('time_unload_desc'));
                          break;
                      default:
                          this.spellNameText.setText('');
+                         this.spellDescriptor.setText('');
                          break;
                  }
                  break;
@@ -2053,30 +2072,31 @@ const ENABLE_KEYBOARD = true;
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
                          this.spellNameText.setText('MIND STRIKE');
-                         this.spellNameHover.setText(getLangText('mind_strike_desc'));
+                         this.spellDescriptor.setText(getLangText('mind_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
                          this.spellNameText.setText('POWER FORM');
-                         this.spellNameHover.setText(getLangText('mind_reinforce_desc'));
+                         this.spellDescriptor.setText(getLangText('mind_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
                          this.spellNameText.setText('ADD BURNING ATTACK');
                          if (gameVars.mindPlus) {
-                            this.spellNameHover.setText(getLangText('mind_enhance_plus_desc'));
+                            this.spellDescriptor.setText(getLangText('mind_enhance_plus_desc'));
                          } else {
-                            this.spellNameHover.setText(getLangText('mind_enhance_desc'));
+                            this.spellDescriptor.setText(getLangText('mind_enhance_desc'));
                          }
                          break;
                      case RUNE_PROTECT:
                          this.spellNameText.setText('REFLECT PAIN');
-                         this.spellNameHover.setText(getLangText('mind_protect_desc'));
+                         this.spellDescriptor.setText(getLangText('mind_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
                          this.spellNameText.setText('AMPLIFY MAGIC');
-                         this.spellNameHover.setText(getLangText('mind_unload_desc'));
+                         this.spellDescriptor.setText(getLangText('mind_unload_desc'));
                          break;
                      default:
                          this.spellNameText.setText('');
+                         this.spellDescriptor.setText('');
                          break;
                  }
                  break;
@@ -2084,33 +2104,42 @@ const ENABLE_KEYBOARD = true;
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
                          this.spellNameText.setText('VOID STRIKE');
-                         this.spellNameHover.setText(getLangText('void_strike_desc'));
+                         this.spellDescriptor.setText(getLangText('void_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
                          this.spellNameText.setText('VOID FORM');
-                         this.spellNameHover.setText(getLangText('void_reinforce_desc'));
+                         this.spellDescriptor.setText(getLangText('void_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
                          this.spellNameText.setText('ADD CURSING ATTACK');
-                         this.spellNameHover.setText(getLangText('void_enhance_desc'));
+                         this.spellDescriptor.setText(getLangText('void_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
                          this.spellNameText.setText('SHIELD OF NEGATION');
-                         this.spellNameHover.setText(getLangText('void_protect_desc'));
+                         this.spellDescriptor.setText(getLangText('void_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
                          this.updateTextIfDifferent(this.spellNameText, 'UN-MAKE')
-                         this.updateTextIfDifferent(this.spellNameHover, getLangText('void_unload_desc'))
+                         this.updateTextIfDifferent(this.spellDescriptor, getLangText('void_unload_desc'))
                          break;
                      default:
                          this.updateTextIfDifferent(this.spellNameText, '')
+                         this.spellDescriptor.setText('');
                          break;
                  }
                  break;
              default:
                  this.spellNameText.setText('');
+                this.spellDescriptor.setText('');
                  break;
          }
+
+        if (this.castDisabled) {
+             this.spellNameText.setText('');
+        }
+        if (this.disableSpellDescDisplay) {
+            this.spellDescriptor.setText('');
+        }
      }
 
      updateTextIfDifferent(textObj, newTextStr) {
@@ -2235,6 +2264,7 @@ const ENABLE_KEYBOARD = true;
          this.lastDragTime = Math.min(this.lastDragTime, -9999);
          gameVars.playerNotMoved = false;
          this.spellNameText.visible = false;
+        this.disableSpellDescDisplay = true;
      }
 
      clearVoidForm() {
@@ -2243,6 +2273,8 @@ const ENABLE_KEYBOARD = true;
          this.innerDragDisabled = false;
          this.lastDragTime = 0
          this.spellNameText.visible = true;
+         console.log("aftervoid1")
+        this.disableSpellDescDisplay = false;
      }
 
      clearMindForm(id) {

@@ -3,8 +3,7 @@ class InternalMouseManager {
     }
 
     onPointerMove(pointer) {
-        gameVars.wasTouch = pointer.pointerType === "touch";
-       // console.log(pointer.x);
+        gameVars.wasTouch = pointer.wasTouch || pointer.pointerType === "touch";
         let handPos = mouseToHand(pointer.x, pointer.y, true);
         gameVars.mouseposx = handPos.x;
         gameVars.mouseposy = handPos.y;
@@ -20,7 +19,6 @@ class InternalMouseManager {
     // }
 
     onPointerDown(pointer) {
-        console.log("pointerdown");
         gameVars.wasTouch = pointer.wasTouch;
         gameVars.mousedown = true;
         gameVars.mouseJustDowned = true;
@@ -30,7 +28,6 @@ class InternalMouseManager {
 
         gameVars.lastmousedown.x = handPos.x;
         gameVars.lastmousedown.y = handPos.y;
-        console.log(handPos.x, handPos.y);
         messageBus.publish("pointerDown", handPos.x, handPos.y);
     }
 
@@ -41,7 +38,6 @@ class InternalMouseManager {
         let handPos = mouseToHand(pointer.x, pointer.y);
         gameVars.mouseposx = handPos.x;
         gameVars.mouseposy = handPos.y;
-        console.log(handPos.x, handPos.y);
         messageBus.publish("pointerUp", handPos.x, handPos.y);
     }
 }

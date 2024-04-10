@@ -198,8 +198,8 @@ class SpellManager {
                 x: gameConsts.halfWidth + (Math.random() - 0.5) * 20,
                 y: 140 + (Math.random() - 0.5) * 20 - Math.floor(Math.sqrt(additionalDamage) * 2),
                 duration: 500 + additionalDamage * 5,
-                scaleX: 0.25 + additionalDamage * 0.006,
-                scaleY: 0.25 + additionalDamage * 0.006,
+                scaleX: 0.25 + additionalDamage * 0.008,
+                scaleY: 0.25 + additionalDamage * 0.008,
                 rotation: (Math.random() - 0.5) * 2,
                 ease: 'Quad.easeIn',
                 onComplete: () => {

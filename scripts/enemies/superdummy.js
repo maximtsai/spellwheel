@@ -13,7 +13,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 800 : 300;
+         this.health = gameVars.isHardMode ? 800 : 200;
          this.isAsleep = true;
      }
 
@@ -456,9 +456,10 @@
              [
                  // 0
                  {
-                     name: "}20 ",
+                     name: "}20x10 ",
                      chargeAmt: 500,
                      damage: 20,
+                     attackTimes: 10,
                     attackFinishFunction: () => {
                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
                         setTimeout(() => {
@@ -467,9 +468,9 @@
                     }
                  },
                  {
-                     name: "}12 ",
+                     name: "}20 ",
                      chargeAmt: 500,
-                     damage: 12,
+                     damage: 20,
                      attackFinishFunction: () => {
                          let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
                          setTimeout(() => {

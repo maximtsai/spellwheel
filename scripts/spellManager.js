@@ -2104,6 +2104,7 @@ class SpellManager {
                     }
 
                     for (let i in shieldArray) {
+                        console.log(i);
                         let shieldObjDarkBall = shieldArray[i];
                         let randX = (Math.random() - 0.5) * 250;
                         let randY = (Math.random() - 0.2) * 200;
@@ -2125,7 +2126,7 @@ class SpellManager {
                         });
                     }
 
-                    messageBus.publish('selfClearEffect', shieldID, true);
+                    // messageBus.publish('selfClearEffect', shieldID, true);
                     statuses[shieldID] = null;
                 }
             }

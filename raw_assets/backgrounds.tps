@@ -174,7 +174,6 @@
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">backgrounds/background0.webp</key>
-            <key type="filename">backgrounds/background2.webp</key>
             <key type="filename">backgrounds/background3.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -266,6 +265,23 @@
                 <rect>300,371,600,741</rect>
                 <key>scale9Paddings</key>
                 <rect>300,371,600,741</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">backgrounds/menu_back.png</key>
+            <key type="filename">backgrounds/menu_bot.png</key>
+            <key type="filename">backgrounds/menu_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>192,238,385,477</rect>
+                <key>scale9Paddings</key>
+                <rect>192,238,385,477</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

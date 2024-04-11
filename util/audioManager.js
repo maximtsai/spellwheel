@@ -29,13 +29,27 @@ function updateGlobalVolume(newVol = 1) {
 }
 
 function tweenVolume(name, volume, duration = 1500) {
-    return PhaserScene.tweens.timeline({
-        targets: [soundList[name]],
-        tweens: [
-            {
-                volume: volume,
-                duration: duration
-            }
-        ]
+    // return PhaserScene.tweens.timeline({
+    //     targets: [soundList[name]],
+    //     tweens: [
+    //         {
+    //             volume: volume,
+    //             duration: duration
+    //         }
+    //     ]
+    // });
+}
+
+
+function fadeAwaySound(sound) {
+    PhaserScene.tweens.add({
+        targets: name,
+        volume: 0,
+        ease: 'Quad.easeOut',
+        duration: 600,
+        onComplete: () => {
+            sound.stop();
+        }
     });
+
 }

@@ -185,7 +185,11 @@ function setupLoadingBar(scene) {
             duration: 750,
             ease: 'Cubic.easeOut',
         });
-        fadeInBackgroundAtlas('backgrounds', 'background0.webp', 4000, 1, 1, 'Cubic.easeInOut');
+        // fadeInBackgroundAtlas('backgrounds', 'background0.webp', 4000, 1, 1, 'Cubic.easeInOut');
+        globalObjects.menuBack = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-9);
+        globalObjects.menuTop = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9);
+        globalObjects.menuBot = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_bot.png').setDepth(-9);
+
 
         loadObjects.loadingSpinner.goalRot = Math.PI * -14/8 - 0.08;//value * Math.PI * -1;
 

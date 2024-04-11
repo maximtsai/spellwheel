@@ -388,15 +388,21 @@ class SpellManager {
         for (let i = 0; i < itemsToAnimate.length; i++) {
             this.scene.tweens.add({
                 targets: itemsToAnimate[i],
-                delay: itemsToAnimate.length * Math.random() * 25 + (i * 20),
+                delay: itemsToAnimate.length * Math.random() * 5 + (i * 20),
                 duration: 325 + Math.random() * 200,
                 ease: 'Back.easeOut',
                 scaleY: 0.95 + Math.random() * 0.1,
                 onStart: () => {
                     if (i === 0) {
                         playSound('matter_enhance', 1);
-                    } else if (i === 1) {
-                        playSound('matter_enhance', 0.5);
+                    } else if (i === itemsToAnimate.length - 1) {
+                        if (itemsToAnimate.length < 4) {
+                            setTimeout(() => {
+                                playSound('matter_enhance_2', 1);
+                            }, 50);
+                        } else {
+                            playSound('matter_enhance_2', 1);
+                        }
                     }
                 }
             });
@@ -1247,9 +1253,14 @@ class SpellManager {
                 y: yPos,
                 ease: 'Quad.easeIn',
                 duration: 400 + additionalDamage * 3,
+                onStart: () => {
+                    playSound('mind_strike');
+                },
                 onComplete: () => {
                     let dmgEffect = this.scene.add.sprite(attackObj.x, attackObj.y, 'spells').play('shockEffect').setDepth(attackObj.depth).setScale(0.5).setRotation(Math.random() * 6);
                     let randScale = 1.15 + 0.1 * Math.random();
+                    playSound('mind_strike_hit');
+
                     this.scene.tweens.add({
                         targets: dmgEffect,
                         scaleX: randScale,
@@ -1432,6 +1443,7 @@ class SpellManager {
                 existingBuff.cleanUp(globalObjects.player.getStatuses());
             }
         }
+        playSound('mind_enhance');
         let mindObj = this.scene.add.sprite(gameConsts.halfWidth + 195, gameConsts.height - 285, 'spells').play('mindBurnSlow').setDepth(10).setScale(0);
         let newScale = 0.25 + multiplier * 0.1;
         this.scene.tweens.add({
@@ -1505,6 +1517,7 @@ class SpellManager {
         animation3.rotateOffset = 0;
 
         messageBus.publish('setTempRotObjs', [animation1, animation3], rotation);
+        playSound('mind_shield');
 
         this.scene.tweens.add({
             targets: animation1,
@@ -1566,6 +1579,7 @@ class SpellManager {
         let magicObj;
         let newMultiplier = 3;
         if (existingMultiplier > 1) {
+            playSound('mind_ultimate_2');
             newMultiplier = existingMultiplier + 2;
             magicObj = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'mind_boost_2.png');
             PhaserScene.tweens.add({
@@ -1583,6 +1597,8 @@ class SpellManager {
                 }
             });
         } else {
+            playSound('mind_ultimate_1');
+
             magicObj = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'mind_boost.png');
             PhaserScene.tweens.add({
                 targets: PhaserScene.cameras.main,
@@ -1615,14 +1631,27 @@ class SpellManager {
             scaleX: 0.96,
             scaleY: 0.96,
             onStart: () => {
+                // BUGGY WARNING
+                let soundObj2 = null;
+                if (existingMultiplier > 1.01) {
+                    soundObj2 = playSound('mind_ultimate_loop_2', 0.5, true);
+                    console.log("asdf");
+                }
+                let soundObj = playSound('mind_ultimate_loop_1', 0.5, true);
                 messageBus.publish("selfTakeEffect", {
                     ignoreBuff: true,
                     name: spellID,
                     spellID: spellID,
                     animObj: magicObjects,
+                    soundObj: soundObj,
+                    soundObj2 : soundObj2,
                     multiplier: newMultiplier,
                     cleanUp: (statuses) => {
                         if (statuses[spellID] && !statuses[spellID].currentAnim) {
+                            fadeAwaySound(statuses[spellID].soundObj);
+                            if (statuses[spellID].soundObj2) {
+                                fadeAwaySound(statuses[spellID].soundObj2);
+                            }
                             statuses[spellID].currentAnim = this.scene.tweens.add({
                                 targets: magicObjects,
                                 duration: 150,
@@ -1765,6 +1794,9 @@ class SpellManager {
         shieldObj.setScale(2.2);
 
         messageBus.publish("selfClearEffect");
+        setTimeout(() => {
+            playSound('void_body');
+        }, 400);
         this.scene.tweens.add({
             targets: shieldObj,
             duration: 1000,
@@ -1974,6 +2006,7 @@ class SpellManager {
         let spellMultiplier = globalObjects.player.spellMultiplier();
         let voidAnimations = [];
         let voidEyes = [];
+        playSound('void_shield');
 
         for (let i = 0; i < 9 + spellMultiplier; i++) {
             let blackCircle = poolManager.getItemFromPool('blackCircle');

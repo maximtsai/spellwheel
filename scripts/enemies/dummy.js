@@ -316,9 +316,7 @@
         if (this.glowHealth) {
             this.glowHealth.destroy();
         }
-        this.sprite.setScale(this.sprite.startScale);
         globalObjects.textPopupManager.hideInfoText();
-        console.log("Hide info text");
 
         this.x += 10;
          this.y += this.sprite.height * this.sprite.scaleY * 0.45; this.sprite.y = this.y;
@@ -347,29 +345,8 @@
                  this.setSprite('dummy_broken.png', this.sprite.scaleX);
                  this.sprite.setRotation(0);
                  this.sprite.setOrigin(0.85, 0.78);
-                 this.flash = this.scene.add.sprite(this.x, this.y - 75, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.5).setDepth(999);
 
-                 PhaserScene.tweens.add({
-                     targets: this.flash,
-                     rotation: 2,
-                     scaleX: this.sprite.startScale,
-                     scaleY: this.sprite.startScale,
-                     ease: 'Quad.easeIn',
-                     duration: 500,
-                     onComplete: () => {
-                         PhaserScene.tweens.add({
-                             targets: this.flash,
-                             rotation: 4,
-                             scaleX: 0,
-                             scaleY: 0,
-                             duration: 500,
-                             ease: 'Quad.easeOut',
-                             onComplete: () => {
-                                 this.flash.destroy();
-                             }
-                         });
-                     }
-                 });
+                 this.showFlash(this.x, this.y - 75);
 
                  let rune = this.scene.add.sprite(this.x, this.y - 75, 'circle', 'rune_mind_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(9999);
                  PhaserScene.tweens.add({
@@ -388,73 +365,6 @@
          });
      }
 
-     showVictory(rune) {
-         let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
-         let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let runeAcquired = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 2, 'NEW RUNE ACQUIRED').setAlpha(0).setVisible(false).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998).setFontSize(22);
-         let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
-         swirlInReaperFog();
-
-         PhaserScene.tweens.add({
-             targets: banner,
-             alpha: 0.75,
-             duration: 500,
-         });
-
-         PhaserScene.tweens.add({
-             targets: [victoryText, runeAcquired],
-             alpha: 1,
-             ease: 'Quad.easeOut',
-             duration: 500,
-         });
-         setTimeout(() => {
-             continueText.alpha = 1;
-         }, 1000);
-
-         PhaserScene.tweens.add({
-             targets: victoryText,
-             scaleX: 1,
-             scaleY: 1,
-             duration: 800,
-         });
-         PhaserScene.tweens.add({
-             targets: rune,
-             y: "+=23",
-             ease: 'Cubic.easeOut',
-             duration: 400,
-             onComplete: () => {
-                 this.dieClickBlocker.setOnMouseUpFunc(() => {
-                    this.dieClickBlocker.destroy();
-                     PhaserScene.tweens.add({
-                         targets: [victoryText, runeAcquired, banner],
-                         alpha: 0,
-                         duration: 400,
-                         onComplete: () => {
-                             victoryText.destroy();
-                             runeAcquired.destroy();
-                             banner.destroy();
-                             continueText.destroy();
-                             playReaperAnim(this);
-                         }
-                     });
-                     PhaserScene.tweens.add({
-                         targets: rune,
-                         y: "+=90",
-                         ease: 'Quad.easeOut',
-                         duration: 400,
-                         onComplete: () => {
-                             rune.destroy();
-                         }
-                     });
-                     PhaserScene.tweens.add({
-                         targets: rune,
-                         alpha: 0,
-                         duration: 400,
-                     });
-                 })
-             }
-         });
-     }
 
      initAttacks() {
          this.attacks = [

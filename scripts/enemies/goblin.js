@@ -14,10 +14,6 @@
 
      // update(dt) {}
 
-     // reset(x, y) {
-     //     this.x = x;
-     //     this.y = y;
-     // }
 
      setHealth(newHealth) {
          super.setHealth(newHealth);
@@ -91,7 +87,7 @@
                      damage: 0
                  },
                  {
-                     name: "TAKING OUT KNIVES (uh oh!)",
+                     name: "TAKING OUT KNIVES!",
                      chargeAmt: gameVars.isHardMode ? 225 : 250,
                      chargeMult: 5,
                      startFunction: () => {
@@ -156,6 +152,60 @@
                  }
              ],
          ];
+     }
+
+     die() {
+        if (this.dead) {
+             return;
+        }
+        super.die();
+        this.currAnim.stop();
+        globalObjects.textPopupManager.hideInfoText();
+
+         this.dieClickBlocker = new Button({
+             normal: {
+                 ref: "blackPixel",
+                 x: gameConsts.halfWidth,
+                 y: gameConsts.halfHeight,
+                 alpha: 0.001,
+                 scaleX: 1000,
+                 scaleY: 1000
+             },
+             onMouseUp: () => {
+
+             }
+         });
+
+
+         PhaserScene.tweens.add({
+             targets: this.sprite,
+             rotation: -0.3,
+             ease: "Cubic.easeIn",
+             duration: 400,
+             onComplete: () => {
+                 this.setSprite('gobboDead.png', this.sprite.scaleX);
+                 this.sprite.setRotation(0);
+                 this.y += 40
+                this.showFlash(this.x, this.y);
+
+
+                 let rune = this.scene.add.sprite(this.x, this.y, 'circle', 'rune_protect_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(9999);
+                 PhaserScene.tweens.add({
+                     targets: rune,
+                     x: gameConsts.halfWidth,
+                     y: gameConsts.halfHeight,
+                     scaleX: 2,
+                     scaleY: 2,
+                     ease: "Cubic.easeOut",
+                     duration: 1500,
+                     onComplete: () => {
+                        this.showVictory(rune);
+                     }
+                 });
+
+             }
+         });
+
      }
 
 }

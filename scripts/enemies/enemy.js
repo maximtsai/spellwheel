@@ -907,6 +907,7 @@ class Enemy {
         }
         this.dead = true;
         // undo any time magic
+        this.sprite.setScale(this.sprite.startScale);
         globalObjects.magicCircle.setTimeSlowRatio(1);
         this.healthBarCurr.scaleX = 0;
         this.healthBarText.setText('0');
@@ -1077,9 +1078,96 @@ class Enemy {
         this.chargeBarCurr.alpha = 1;
     }
 
-    triggerVoidFeedback() {
-
+    showFlash(x, y) {
+        this.flash = this.scene.add.sprite(x, y, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(0.5).setDepth(999);
+         PhaserScene.tweens.add({
+             targets: this.flash,
+             rotation: 2,
+             scaleX: 1.25,
+             scaleY: 1.25,
+             ease: 'Quad.easeIn',
+             duration: 600,
+             onComplete: () => {
+                 PhaserScene.tweens.add({
+                     targets: this.flash,
+                     rotation: 4,
+                     scaleX: 0,
+                     scaleY: 0,
+                     duration: 600,
+                     ease: 'Quad.easeOut',
+                     onComplete: () => {
+                         this.flash.destroy();
+                     }
+                 });
+             }
+         });
     }
+
+     showVictory(rune) {
+         let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
+         let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
+         let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
+         swirlInReaperFog();
+
+         PhaserScene.tweens.add({
+             targets: banner,
+             alpha: 0.75,
+             duration: 500,
+         });
+
+         PhaserScene.tweens.add({
+             targets: [victoryText],
+             alpha: 1,
+             ease: 'Quad.easeOut',
+             duration: 500,
+         });
+         setTimeout(() => {
+             continueText.alpha = 1;
+         }, 1000);
+
+         PhaserScene.tweens.add({
+             targets: victoryText,
+             scaleX: 1,
+             scaleY: 1,
+             duration: 800,
+         });
+         PhaserScene.tweens.add({
+             targets: rune,
+             y: gameConsts.halfHeight,
+             ease: 'Cubic.easeOut',
+             duration: 400,
+             onComplete: () => {
+                 this.dieClickBlocker.setOnMouseUpFunc(() => {
+                    this.dieClickBlocker.destroy();
+                     PhaserScene.tweens.add({
+                         targets: [victoryText, banner],
+                         alpha: 0,
+                         duration: 400,
+                         onComplete: () => {
+                             victoryText.destroy();
+                             banner.destroy();
+                             continueText.destroy();
+                             playReaperAnim(this);
+                         }
+                     });
+                     PhaserScene.tweens.add({
+                         targets: rune,
+                         y: "+=90",
+                         ease: 'Quad.easeOut',
+                         duration: 400,
+                         onComplete: () => {
+                             rune.destroy();
+                         }
+                     });
+                     PhaserScene.tweens.add({
+                         targets: rune,
+                         alpha: 0,
+                         duration: 400,
+                     });
+                 })
+             }
+         });
+     }
 
     launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false) {
         if (this.dead){
@@ -1123,7 +1211,6 @@ class Enemy {
                         if (!isRepeatedAttack) {
                             messageBus.publish("enemyMadeAttack");
                         }
-                        this.triggerVoidFeedback();
                         if (this.dead){
                             return;
                         }

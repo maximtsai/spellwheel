@@ -7,6 +7,57 @@ function clearMenuButtons() {
     globalObjects.creditsButton.destroy();
     globalObjects.creditsButton2.destroy();
     globalObjects.creditsButton3.destroy();
+
+
+
+    if (globalObjects.menuBack) {
+        PhaserScene.tweens.add({
+             targets: [globalObjects.menuBack],
+             scaleX: 1.26,
+             scaleY: 1.26,
+             x: gameConsts.halfWidth - 2,
+             y: gameConsts.halfHeight + 55,
+             ease: 'Cubic.easeInOut',
+             duration: 2500,
+         });
+        PhaserScene.tweens.add({
+             targets: [globalObjects.menuTop],
+             scaleX: 2.1,
+             scaleY: 2.1,
+             y: gameConsts.halfHeight + 130,
+             ease: 'Cubic.easeInOut',
+             duration: 2500,
+         });
+
+        PhaserScene.tweens.add({
+             targets: [globalObjects.menuBot],
+             scaleX: 2.1,
+             scaleY: 1.4,
+             y: gameConsts.halfHeight + 130,
+             ease: 'Cubic.easeInOut',
+             duration: 2500,
+         });
+
+        PhaserScene.tweens.add({
+            delay: 1000,
+             targets: [globalObjects.menuTop, globalObjects.menuBot],
+             alpha: 0,
+             duration: 1500,
+             onComplete: () => {
+             }
+         });
+
+        PhaserScene.tweens.add({
+            delay: 1800,
+             targets: [globalObjects.menuBack],
+             alpha: 0,
+             ease: 'Quad.easeIn',
+             duration: 500,
+             onComplete: () => {
+             }
+         });
+    }
+
 }
 
 function createMenuButtons() {

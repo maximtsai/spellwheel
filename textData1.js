@@ -20,7 +20,7 @@ const textData = {
     void_reinforce_desc: {en_us: 'HEAL TO FULL, BUT\nAT THE COST OF\n20% MAX HEALTH', fr_FR: ''},
     void_unload_desc: {en_us: 'DAMAGE 15% OF ENEMY\nCURRENT HEALTH AND\nDISRUPT THEIR CURRENT\nACTION BY 66%', fr_FR: ''},
 
-    mind_strike_desc: {en_us: 'DEAL 1 DAMAGE.\nENEMY TAKES +100%\nBONUS DAMAGE FROM\nNEXT ATTACK HIT', fr_FR: ''},
+    mind_strike_desc: {en_us: 'DEAL 1 DAMAGE.\nENEMY TAKES DOUBLE\nDAMAGE FROM NEXT\nATTACK HIT', fr_FR: ''},
     mind_enhance_desc: {en_us: 'NEXT ATTACK BURNS\nENEMY FOR 3 DMG/S\nFOR 4 SECONDS.\n(DOES NOT STACK)', fr_FR: ''},
     mind_enhance_plus_desc: {en_us: 'NEXT ATTACK BURNS\nENEMY FOR 3 DMG/S\nFOR 5 SECONDS.', fr_FR: ''},
     mind_protect_desc: {en_us: 'REFLECT HALF THE\nDAMAGE YOU TAKE\nFROM ATTACKS BACK\nAT THE ENEMY', fr_FR: ''},

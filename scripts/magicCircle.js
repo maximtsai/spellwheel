@@ -1,6 +1,6 @@
 const DECAY = 0.00006;
 const STATIC = 0.006;
-const INFINITE_CAST = false;
+const INFINITE_CAST = true;
 const ENABLE_KEYBOARD = true;
 
  class MagicCircle {
@@ -602,9 +602,11 @@ const ENABLE_KEYBOARD = true;
      }
 
     setTimeSlowRatio(ratio = 1, manual = false) {
-        console.log("ratio: ", ratio);
         let oldRatio = gameVars.timeSlowRatio;
         gameVars.timeSlowRatio = ratio;
+        if (ratio < 0.99) {
+            playSound('timeSlow');
+        }
         if (oldRatio != ratio) {
             messageBus.publish('setTimeSlowRatio', ratio);
             if (ratio == 1) {

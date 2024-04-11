@@ -85,6 +85,9 @@ function preload ()
     let gameDiv = document.getElementById('preload-notice');
     gameDiv.innerHTML = "";
     loadFileList(this, imageFilesPreload, 'image');
+    setTimeout(() => {
+        resizeGame();
+    }, 100)
 }
 
 function create ()

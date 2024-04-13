@@ -167,7 +167,7 @@ function createMenuButtons() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            beginLevel(3);
+            beginLevel(2);
         }
     });
     globalObjects.creditsButton.setScale(0.6);
@@ -195,7 +195,7 @@ function createMenuButtons() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            beginLevel(4);
+            beginLevel(3);
         }
     });
     globalObjects.creditsButton2.setScale(0.6);

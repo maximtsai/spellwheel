@@ -1,6 +1,6 @@
 const DECAY = 0.00006;
 const STATIC = 0.006;
-const INFINITE_CAST = true;
+const INFINITE_CAST = false;
 const ENABLE_KEYBOARD = true;
 
  class MagicCircle {
@@ -28,7 +28,6 @@ const ENABLE_KEYBOARD = true;
         this.subscriptions = [
             messageBus.subscribe('attackLaunched', this.attackLaunched.bind(this)),
             messageBus.subscribe('manualSetTimeSlowRatio', this.manualSetTimeSlowRatio.bind(this)),
-            messageBus.subscribe('refreshRandomRunes', this.refreshRandomRunes.bind(this)),
             messageBus.subscribe('statusesTicked', this.handleStatusesTicked.bind(this)),
             messageBus.subscribe('playerAddDelayedDamage', this.addDelayedDamage.bind(this)),
             messageBus.subscribe('playerReduceDelayedDamage', this.reduceDelayedDamage.bind(this)),
@@ -40,7 +39,6 @@ const ENABLE_KEYBOARD = true;
             messageBus.subscribe('startVoidForm', this.handleVoidForm.bind(this)),
             messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this)),
             messageBus.subscribe('selfClearEffect', this.clearMindForm.bind(this)),
-            messageBus.subscribe('selfImplode', this.selfImplode.bind(this)),
             messageBus.subscribe('enemyHasDied', this.clearEffects.bind(this)),
             messageBus.subscribe("applyMindBurn", this.applyMindBurn.bind(this)),
         ];
@@ -65,7 +63,6 @@ const ENABLE_KEYBOARD = true;
     }
 
     update(dt) {
-        let mindReinforceStatus = globalObjects.player.getStatuses()['mindReinforce'];
         if (this.lastDragTime > 30) {
             gameVars.playerNotMoved = true;
         } else {
@@ -1059,7 +1056,7 @@ const ENABLE_KEYBOARD = true;
                                  scaleX: shieldObj.animObj[1].origScale,
                                  scaleY: shieldObj.animObj[1].origScale,
                                  duration: 250,
-                                 alpha: 0.2,
+                                 alpha: 0.25,
                                  ease: 'Back.easeOut',
                              });
                          }
@@ -1543,6 +1540,12 @@ const ENABLE_KEYBOARD = true;
             sprite.setDepth(100);
         }
         sprite.setAlpha(0).setScale(1.05);
+        let mindReinforceStatus = globalObjects.player.getStatuses()['mindReinforce'];
+        if (mindReinforceStatus) {
+            this.showReadySprite(true, 2.5);
+        }
+        messageBus.publish("wheelReloaded");
+
         this.scene.tweens.add({
             targets: sprite,
             alpha: 0,
@@ -1763,15 +1766,16 @@ const ENABLE_KEYBOARD = true;
         });
     }
 
-    showReadySprite(light = true) {
+    showReadySprite(light = true, scaleMult = 1) {
         if (this.readySprite) {
-            this.readySprite.setScale(1.15);
+            this.readySprite.setScale(1.15 * scaleMult);
             this.readySprite.play(light ? 'circleEffect' : 'circleEffectSmall');
             this.readySprite.visible = true;
+            let goalScale = (light ? 2.2 : 1.75)*scaleMult;
             this.scene.tweens.add({
                 targets: this.readySprite,
-                scaleX: light ? 2.2 : 1.75,
-                scaleY: light ? 2.2 : 1.75,
+                scaleX: goalScale,
+                scaleY: goalScale,
                 duration: light ? 1200 : 650,
                 ease: 'Cubic.easeOut',
                 onComplete: () => {
@@ -1807,9 +1811,6 @@ const ENABLE_KEYBOARD = true;
         });
     }
 
-     refreshRandomRunes(runesPerWheel = 2) {
-
-     }
 
      handleStatusesTicked() {
         if (this.delayedDamage > 0) {
@@ -2077,7 +2078,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('mind_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
-                         this.spellNameText.setText('POWER FORM');
+                         this.spellNameText.setText('CHARGE FORM');
                          this.spellDescriptor.setText(getLangText('mind_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
@@ -2283,54 +2284,6 @@ const ENABLE_KEYBOARD = true;
 
      }
 
-     selfImplode() {
-        if (!this.laserIsFiring) {
-            this.clearMindForm();
-        }
-     }
-
-     calculateBonusCharge(laserCharge) {
-        let chargeBonus = 1;
-        if (laserCharge < 8) {
-            chargeBonus = 1.75;
-        } else if (this.laserCharge < 10) {
-            if (this.laserCharge > 9) {
-                chargeBonus = 0.5;
-            } else {
-                chargeBonus = 1.25;
-            }
-        } else if (this.laserCharge < 25) {
-            if (this.laserCharge > 24) {
-                chargeBonus = 0.35;
-            } else {
-                chargeBonus = 1;
-            }
-        } else if (this.laserCharge < 40) {
-            if (this.laserCharge > 39) {
-                chargeBonus = 0.3;
-            } else {
-                chargeBonus = 0.8;
-            }
-        } else if (this.laserCharge < 65) {
-            if (this.laserCharge > 64) {
-                chargeBonus = 0.25;
-            } else {
-                chargeBonus = 0.65;
-            }
-        } else if (this.laserCharge < 100.5) {
-            if (this.laserCharge > 99) {
-                chargeBonus = 0.15;
-            } else {
-                chargeBonus = 0.5;
-            }
-        } else {
-            chargeBonus = 0.3;
-            if (Math.random() < 0.02) {
-                zoomTemp(1.004);
-            }
-        }
-        return chargeBonus;
-     }
 
      clearEffects() {
          this.voidSliceImage1.alpha = 0;
@@ -2344,10 +2297,12 @@ const ENABLE_KEYBOARD = true;
          this.castDisabled = true;
          this.outerDragDisabled = true;
          this.innerDragDisabled = true;
+         this.disableSpellDescDisplay = true;
      }
      enableMovement() {
          this.castDisabled = false;
          this.outerDragDisabled = false;
          this.innerDragDisabled = false;
+         this.disableSpellDescDisplay = false;
      }
  }

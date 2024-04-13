@@ -456,9 +456,9 @@
              [
                  // 0
                  {
-                     name: "}20x10 ",
+                     name: "}4x10 ",
                      chargeAmt: 500,
-                     damage: 20,
+                     damage: 4,
                      attackTimes: 10,
                     attackFinishFunction: () => {
                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
@@ -468,7 +468,7 @@
                     }
                  },
                  {
-                     name: "}20 ",
+                     name: "}6 ",
                      chargeAmt: 500,
                      damage: 20,
                      attackFinishFunction: () => {

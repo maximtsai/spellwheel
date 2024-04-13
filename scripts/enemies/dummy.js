@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 100 : 75;
+         this.health = gameVars.isHardMode ? 100 : 70;
          this.isAsleep = true;
      }
 
@@ -372,7 +372,7 @@
                  // 0
                  {
                      name: "}5 ",
-                     chargeAmt: 500,
+                     chargeAmt: 550,
                      damage: 5,
                     attackFinishFunction: () => {
                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
@@ -383,7 +383,7 @@
                  },
                  {
                      name: "}10 ",
-                     chargeAmt: 500,
+                     chargeAmt: 550,
                      damage: 10,
                      attackFinishFunction: () => {
                          let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
@@ -413,7 +413,7 @@
                  },
                  {
                      name: "}25",
-                     chargeAmt: 750,
+                     chargeAmt: 850,
                      damage: 25,
                      attackFinishFunction: () => {
                          let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
@@ -444,7 +444,7 @@
                  },
                  {
                      name: " TAKING A BREAK...",
-                     chargeAmt: 350,
+                     chargeAmt: 400,
                      damage: 0,
                      startFunction: () => {
                          this.setDefaultSprite('dummy_w_eyes.png', 0.75);
@@ -455,7 +455,7 @@
                  },
                  {
                      name: "}10 ",
-                     chargeAmt: 400,
+                     chargeAmt: 500,
                      damage: 10,
                      attackFinishFunction: () => {
                          let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
@@ -480,7 +480,7 @@
                  },
                  {
                      name: "}15",
-                     chargeAmt: 450,
+                     chargeAmt: 500,
                      damage: 15,
                      attackFinishFunction: () => {
                          let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);

@@ -6,8 +6,6 @@ class PostFightScreen {
         this.titleText = null;
         this.spellsCastText = null;
         this.locketSprite = null;
-        this.locketText = null;
-        this.locketDarkenBG = null;
         this.locketDialogIndex = 0;
     }
 
@@ -31,10 +29,6 @@ class PostFightScreen {
         }
         if (!this.locketSprite) {
             this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 370, 'ui', 'locket1.png').setScale(0.75).setDepth(100002).setAlpha(0).setOrigin(0.5, 0.1);
-        }
-        if (!this.locketText) {
-            this.locketTextBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.height - 53, 'misc', 'victory_banner.png').setScale(100, 1).setDepth(100002).setAlpha(0);
-            this.locketText = this.scene.add.text(gameConsts.halfWidth, gameConsts.height - 58, 'sappy romance stuff here', {fontFamily: 'Garamond', fontSize: 26, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(100002);
         }
         if (!this.continueButton) {
             this.continueButton = new Button({
@@ -119,9 +113,6 @@ class PostFightScreen {
             });
             this.locketButton.setDepth(100001);
         }
-        if (!this.locketDarkenBG) {
-            this.locketDarkenBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(100001).setAlpha(0).setScale(500, 500);
-        }
         this.locketButton.setState(DISABLE);
 
         this.backing.setScale(0.98);
@@ -195,10 +186,12 @@ class PostFightScreen {
 
     clearPostFightScreen() {
         PhaserScene.tweens.add({
-            targets: [this.locketDarkenBG, this.bgShade, this.backing, this.titleText, this.spellsCastText, this.locketSprite, this.codeText, this.locketText, this.locketTextBG],
+            targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.locketSprite, this.codeText],
             alpha: 0,
             duration: 500,
         });
+        globalObjects.bannerTextManager.setOnFinishFunc(() => {});
+        globalObjects.bannerTextManager.closeBanner();
         this.continueButton.setState(DISABLE);
         this.locketButton.setState(DISABLE);
         globalObjects.magicCircle.enableMovement();
@@ -206,17 +199,7 @@ class PostFightScreen {
     }
 
     closeLocket() {
-        if (this.locketTextAnim) {
-            this.locketTextAnim.stop();
-        }
         this.locketIsClosable = true;
-
-        PhaserScene.tweens.add({
-            targets: [this.locketText, this.locketTextBG, this.locketDarkenBG],
-            alpha: 0,
-            duration: 250,
-        });
-
         PhaserScene.tweens.add({
             delay: 50,
             targets: [this.locketSprite],
@@ -227,8 +210,6 @@ class PostFightScreen {
             ease: 'Cubic.easeInOut',
             duration: 700
         });
-
-        this.dialogButton.setState(DISABLE);
     }
 
     openLocket() {
@@ -249,79 +230,12 @@ class PostFightScreen {
                 duration: 410,
                 ease: 'Quad.easeOut'
             });
-            PhaserScene.tweens.add({
-                targets: [this.locketTextBG],
-                alpha: 0.75,
-                duration: 350,
+            globalObjects.bannerTextManager.showBanner();
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+            globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                this.closeLocket();
             });
-            PhaserScene.tweens.add({
-                delay: 150,
-                targets: [this.locketText],
-                alpha: 1,
-                duration: 250,
-            });
-            PhaserScene.tweens.add({
-                targets: [this.locketDarkenBG],
-                alpha: 0.4,
-                duration: 300,
-            });
-
-            if (!this.dialogButton) {
-                this.dialogButton = new Button({
-                    normal: {
-                        ref: "blackPixel",
-                        alpha: 0.00001,
-                        x: gameConsts.halfWidth,
-                        y: gameConsts.halfHeight,
-                        scaleX: 500,
-                        scaleY: 500
-                    },
-                    disable: {
-                        alpha: 0
-                    },
-                    onHover: () => {
-                        if (canvas) {
-                            canvas.style.cursor = 'pointer';
-                        }
-                    },
-                    onHoverOut: () => {
-                        if (canvas) {
-                            canvas.style.cursor = 'default';
-                        }
-                    },
-                    onMouseUp: () => {
-                        let isFinished = this.continueDialog();
-                        if (canvas) {
-                            canvas.style.cursor = 'default';
-                        }
-                        if (isFinished) {
-                            this.closeLocket();
-                        }
-                    }
-                });
-                this.dialogButton.setDepth(100001);
-            }
-
         }
-    }
-
-    continueDialog() {
-        if (this.locketTextAnim) {
-            this.locketTextAnim.stop();
-        }
-        if (!this.locketDialog[this.locketDialogIndex + 1]) {
-            return true;
-        }
-        this.locketDialogIndex++;
-        this.locketText.setText(this.locketDialog[this.locketDialogIndex]);
-        this.locketText.alpha = 0;
-        this.locketTextAnim = PhaserScene.tweens.add({
-            targets: [this.locketText],
-            alpha: 1,
-            duration: 250,
-        });
-
-        return false;
     }
 
     createWinScreen(level = 0) {
@@ -331,8 +245,9 @@ class PostFightScreen {
         this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
         this.codeText.setText("LEVEL CODE: ABCDE");
         this.locketDialog = this.getLevelDialog(level);
-        this.locketDialogIndex = 0;
-        this.locketText.setText(this.locketDialog[this.locketDialogIndex])
+
+        globalObjects.bannerTextManager.setDialog(this.locketDialog);
+
         this.continueButton.setOnMouseUpFunc(() => {
             this.clearPostFightScreen();
             beginLevel(level + 1);
@@ -370,8 +285,8 @@ class PostFightScreen {
                 break;
             case 2:
                 return [
-                    "This strange wheel device I've found is capable\nof magic and storing the strength of defeated opponents.",
-                    "Perhaps if I defeat enough enemies I can gain\nthe strength to bring you back, Rosemary."
+                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
+                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
                 ]
                 break;
         }

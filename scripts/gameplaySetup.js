@@ -185,7 +185,6 @@ function setupLoadingBar(scene) {
             duration: 750,
             ease: 'Cubic.easeOut',
         });
-        // fadeInBackgroundAtlas('backgrounds', 'background0.webp', 4000, 1, 1, 'Cubic.easeInOut');
         globalObjects.menuBack = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-9);
         globalObjects.menuTop = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9);
         globalObjects.menuBot = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_bot.png').setDepth(-9);
@@ -260,6 +259,8 @@ function setupGame() {
     globalObjects.spellManager = new SpellManager(PhaserScene);
     globalObjects.spellRecorder = new SpellRecorder(PhaserScene);
     globalObjects.magicCircle = new MagicCircle(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
+    globalObjects.bannerTextManager = new BannerTextManager(PhaserScene);
+
 
     globalObjects.statusManager = new StatusManager(PhaserScene);
     globalObjects.postFightScreen = new PostFightScreen(PhaserScene);

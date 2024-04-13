@@ -25,8 +25,9 @@ class Player {
 
 
             messageBus.subscribe("spellClicked", this.incrementSpellsCast.bind(this)),
-
             messageBus.subscribe("enemyHasDied", this.clearAllEffects.bind(this)),
+            messageBus.subscribe("wheelReloaded", this.incrementMindReinforceStatus.bind(this)),
+            
 
         ];
         updateManager.addFunction(this.update.bind(this));
@@ -117,12 +118,26 @@ class Player {
 
     attackDamageAdder() {
         const flatDamage = 6;
-        if (this.statuses['matterEnhance']) {
-            let multiplier = this.statuses['matterEnhance'].multiplier ? this.statuses['matterEnhance'].multiplier : 1;
+        let addedAmt = 0;
+        let matterEnhanceStatus = this.statuses['matterEnhance'];
+        if (matterEnhanceStatus) {
+            let multiplier = matterEnhanceStatus.multiplier ? matterEnhanceStatus.multiplier : 1;
             let damageBoost = multiplier * flatDamage;
-            return damageBoost
-        } else {
-            return 0;
+            addedAmt += damageBoost
+        }
+        let mindReinforceStatus = this.statuses['mindReinforce'];
+        if (mindReinforceStatus) {
+            let additionalAmt = mindReinforceStatus.displayAmt || 0;
+            addedAmt += additionalAmt;
+        }
+        return addedAmt;
+    }
+
+    incrementMindReinforceStatus() {
+        let mindReinforceStatus = this.statuses['mindReinforce'];
+        if (mindReinforceStatus) {
+            mindReinforceStatus.displayAmt += mindReinforceStatus.multiplier;
+            messageBus.publish('selfTakeEffect', mindReinforceStatus);
         }
     }
 
@@ -573,19 +588,33 @@ class Player {
                         let blockedDmg = Math.ceil(amt * 0.5);
                         hurtAmt = hurtAmt - blockedDmg;
                         shieldObj.impactVisibleTime = 6;
-                        messageBus.publish('animateBlockNum', shieldObj.animObj[0].x + 1, shieldObj.animObj[0].y - 15, -blockedDmg, 0.5 + Math.sqrt(blockedDmg) * 0.125);
-                        messageBus.publish('enemyTakeTrueDamage', blockedDmg, false);
+                        // messageBus.publish('animateBlockNum', shieldObj.animObj[0].x + 1, shieldObj.animObj[0].y - 15, -blockedDmg, 0.5 + Math.sqrt(blockedDmg) * 0.125);
 
                         shieldObj.animObj[2].setAlpha(1);
-                        shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale * 1.2);
-                        shieldObj.animObj[1].setAlpha(1);
+
                         this.scene.tweens.add({
                             targets: shieldObj.animObj[1],
-                            duration: 180,
-                            scaleX: shieldObj.animObj[1].origScale,
-                            scaleY: shieldObj.animObj[1].origScale,
-                            alpha: 0.2,
-                            ease: 'Cubic.easeOut'
+                            duration: 300,
+                            scaleX: shieldObj.animObj[1].origScale * 1.02,
+                            scaleY: shieldObj.animObj[1].origScale * 1.02,
+                            alpha: 1.2,
+                            ease: 'Cubic.easeIn',
+                            onComplete: () => {
+                                playSound('fizzle');
+                                setTimeout(() => {
+                                   messageBus.publish('enemyTakeTrueDamage', blockedDmg, false, 85);
+                                    shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale * 1.2);
+                                    shieldObj.animObj[1].setAlpha(1);
+                                    this.scene.tweens.add({
+                                        targets: shieldObj.animObj[1],
+                                        duration: 180,
+                                        scaleX: shieldObj.animObj[1].origScale,
+                                        scaleY: shieldObj.animObj[1].origScale,
+                                        alpha: 0.2,
+                                        ease: 'Cubic.easeOut'
+                                    });
+                                }, 50);
+                            }
                         });
                     }
                     break;
@@ -665,9 +694,6 @@ class Player {
                 }
                 hurtAmt = Math.max(0, hurtAmt - this.statuses['matterReinforce'].protection);
                 messageBus.publish('enemyTakeDamage', this.statuses['matterReinforce'].damage, false);
-            } else if (this.statuses['mindReinforce']) {
-                // TODO: HURT SELF
-                messageBus.publish('selfImplode');
             }
         }
 

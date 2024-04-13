@@ -133,40 +133,42 @@ class Enemy {
         this.chargeBarWarningBig.alpha = 0
         this.chargeBarWarningBig.setDepth(1);
 
-        this.chargeBarMax = this.scene.add.sprite(x, 335, 'blackPixel');
-        this.chargeBarMax.setScale(chargeBarLength + 2, 9);
+        this.chargeBarMax = this.scene.add.sprite(x, isMobile ? 339 : 337, 'blackPixel');
+        this.chargeBarMax.setScale(chargeBarLength + 2, isMobile ? 13 : 10);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;
         this.chargeBarMax.setDepth(10);
 
         this.voidPause = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'purple_pixel.png');
         this.voidPause.alpha = 0;
-        this.voidPause.setScale(chargeBarLength + 2, 7);
+        this.voidPause.setScale(chargeBarLength + 2, this.chargeBarMax.scaleY - 2);
         this.voidPause.setOrigin(0.5, 0.5);
         this.voidPause.setDepth(10);
 
         this.chargeBarWarning = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
         this.chargeBarWarning.alphaMult = 1;
-        this.chargeBarWarning.setScale(chargeBarLength + 4, 9);
+        this.chargeBarWarning.setScale(chargeBarLength + 2, this.chargeBarMax.scaleY);
         this.chargeBarWarning.setOrigin(0.5, 0.5);
         this.chargeBarWarning.visible = false;
         this.chargeBarWarning.setDepth(10);
         this.chargeBarWarning.setAlpha(0.35);
 
         this.chargeBarCurr = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'yellow_pixel.png');
-        this.chargeBarCurr.setScale(0, 7);
+        this.chargeBarCurr.setScale(0, this.chargeBarMax.scaleY - 2);
         this.chargeBarCurr.setOrigin(0.5, 0.5);
         this.chargeBarCurr.alpha = 0.9;
         this.chargeBarCurr.setDepth(10);
 
         this.chargeBarAngry = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
-        this.chargeBarAngry.setScale(0, 7.5);
+        this.chargeBarAngry.setScale(0, this.chargeBarMax.scaleY - 2);
         this.chargeBarAngry.setOrigin(0.5, 0.5);
         this.chargeBarAngry.alpha = 0.9;
         this.chargeBarAngry.setDepth(10);
         this.chargeBarAngry.visible = false;
 
-        this.attackName = this.scene.add.bitmapText(this.x, this.chargeBarMax.y - 25, 'normal', '', 25);
+        let attackNameYPos = isMobile ? this.chargeBarMax.y - 28 : this.chargeBarMax.y - 26
+
+        this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', 25);
         this.attackName.setDepth(10);
         this.attackName.setOrigin(0.5, 0.5);
 
@@ -328,14 +330,14 @@ class Enemy {
         if (this.attackCooldown <= 0) {
             chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
             if (this.isAngry) {
-                let increaseMult = Math.max(1.75, 0.3 / 1.75 * chargeMult);
+                let increaseMult = Math.max(2, (0.33 / 2) * chargeMult);
                 this.attackCharge += timeChange * increaseMult * this.slowMult;
             } else {
                 if (gameVars.playerNotMoved && chargeMult === 1) {
                     // this.attackCharge += timeChange * 0.02 * this.slowMult;
                     this.chargeBarCurr.alpha = 0.55;
                 } else {
-                    this.attackCharge += timeChange * 0.25 * this.slowMult * chargeMult;
+                    this.attackCharge += timeChange * 0.33 * this.slowMult * chargeMult;
                     this.chargeBarCurr.alpha = 0.9;
                 }
             }
@@ -423,7 +425,7 @@ class Enemy {
             amt += this.curse;
         }
 
-        if (this.shield > 0) {
+        if (this.shield > 0 && !isTrue) {
             if (amt < this.shield) {
                 let randX = (Math.random() - 0.5) * 60;
                 let randY = (Math.random() - 0.5) * 50;
@@ -1133,7 +1135,7 @@ class Enemy {
          });
          PhaserScene.tweens.add({
              targets: rune,
-             y: gameConsts.halfHeight,
+             y: gameConsts.halfHeight - 110,
              ease: 'Cubic.easeOut',
              duration: 400,
              onComplete: () => {

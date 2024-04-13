@@ -9,7 +9,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 110 : 90;
+         this.health = gameVars.isHardMode ? 120 : 15;
      }
 
      // update(dt) {}
@@ -48,7 +48,7 @@
                  {
                      name: gameVars.isHardMode ? "}8 " : "}5 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
-                     chargeAmt: 250,
+                     chargeAmt: 350,
                      damage: gameVars.isHardMode ? 8 : 5,
                      attackSprites: ['gobbo0_atk.png']
                  }
@@ -71,24 +71,23 @@
              [
                  // 2 - attacks from behind shield
                  {
-                     name: gameVars.isHardMode ? "}12 " : "}10 ",
+                     name: gameVars.isHardMode ? "}12 " : "}7 ",
                      desc: "Goblin rams you with\nhis shield",
-                     chargeAmt: 400,
-                     damage: gameVars.isHardMode ? 12 : 10
+                     chargeAmt: 500,
+                     damage: gameVars.isHardMode ? 12 : 7
                  },
              ],
              [
                  // 3
                  {
                      name: "REALIZING SHIELD IS BROKEN",
-                     desc: "Goblin rams you with\nhis shield",
-                     chargeAmt: gameVars.isHardMode ? 180 : 200,
+                     chargeAmt: gameVars.isHardMode ? 250 : 300,
                      chargeMult: 2,
                      damage: 0
                  },
                  {
                      name: "TAKING OUT KNIVES!",
-                     chargeAmt: gameVars.isHardMode ? 225 : 250,
+                     chargeAmt: gameVars.isHardMode ? 250 : 300,
                      chargeMult: 5,
                      startFunction: () => {
                          this.setDefaultSprite('gobbo3.png', 0.75);
@@ -115,30 +114,30 @@
              [
                  // 4 - dual wield attacks
                  {
-                     name: "}5x2 ",
-                     chargeAmt: gameVars.isHardMode ? 100 : 150,
-                     damage: 5,
+                     name: "}4x2 ",
+                     chargeAmt: gameVars.isHardMode ? 120 : 180,
+                     damage: 4,
                      attackTimes: 2,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
                  },
                  {
-                     name: "}5x3 ",
-                     chargeAmt: gameVars.isHardMode ? 110 : 160,
-                     damage: 5,
+                     name: "}4x3 ",
+                     chargeAmt: gameVars.isHardMode ? 130 : 190,
+                     damage: 4,
                      attackTimes: 3,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
                  },
                  {
-                     name: "}5x4 ",
-                     chargeAmt: gameVars.isHardMode ? 120 : 170,
-                     damage: 5,
+                     name: "}4x4 ",
+                     chargeAmt: gameVars.isHardMode ? 140 : 200,
+                     damage: 4,
                      attackTimes: 4,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
                  },
                  {
-                     name: "}5x5 ",
-                     chargeAmt: gameVars.isHardMode ? 130 : 180,
-                     damage: 5,
+                     name: "}4x5 ",
+                     chargeAmt: gameVars.isHardMode ? 150 : 210,
+                     damage: 4,
                      attackTimes: 5,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
                  },
@@ -159,7 +158,9 @@
              return;
         }
         super.die();
-        this.currAnim.stop();
+        if (this.currAnim) {
+            this.currAnim.stop();
+        }
         globalObjects.textPopupManager.hideInfoText();
 
          this.dieClickBlocker = new Button({
@@ -179,13 +180,14 @@
 
          PhaserScene.tweens.add({
              targets: this.sprite,
-             rotation: -0.3,
+             rotation: -0.2,
              ease: "Cubic.easeIn",
-             duration: 400,
+             duration: 10,
              onComplete: () => {
                  this.setSprite('gobboDead.png', this.sprite.scaleX);
                  this.sprite.setRotation(0);
-                 this.y += 40
+                 this.x -= 5;
+                 this.y += 48;
                 this.showFlash(this.x, this.y);
 
 
@@ -193,7 +195,7 @@
                  PhaserScene.tweens.add({
                      targets: rune,
                      x: gameConsts.halfWidth,
-                     y: gameConsts.halfHeight,
+                     y: gameConsts.halfHeight - 170,
                      scaleX: 2,
                      scaleY: 2,
                      ease: "Cubic.easeOut",

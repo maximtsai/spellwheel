@@ -2,6 +2,7 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('lesser_dummy.png', 0.8, 0, 5);
+        playSound('fightbg1', 0.5, true);
         this.sprite.setOrigin(0.5, 0.99);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
@@ -308,11 +309,14 @@
          });
          PhaserScene.tweens.add({
              targets: this.sprite,
-             rotation: -1.31,
+             rotation: -0.5,
              ease: "Cubic.easeIn",
-             duration: 1000,
+             duration: 750,
              onComplete: () => {
-                 //this.setSprite('dummy_broken.png', this.sprite.scaleX);
+                 this.setSprite('lesser_dummy_dead.png', this.sprite.scaleX);
+                 this.sprite.rotation = 0;
+                 this.sprite.y += 35;
+                 this.sprite.x -= 40;
                  this.showVictory();
 
 

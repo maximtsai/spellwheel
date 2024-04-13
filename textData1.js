@@ -1,8 +1,8 @@
 let language = 'en_us';
 
 const textData = {
-    matter_strike_desc: {en_us: 'DEAL 12 DAMAGE.', fr_FR: ''},
-    matter_strike_plus_desc: {en_us: 'DEAL 14 DAMAGE.', fr_FR: ''},
+    matter_strike_desc: {en_us: 'DEAL 12 DAMAGE', fr_FR: ''},
+    matter_strike_plus_desc: {en_us: 'DEAL 14 DAMAGE', fr_FR: ''},
     matter_enhance_desc: {en_us: 'NEXT ATTACK\nDEALS +6\nEXTRA DAMAGE', fr_FR: ''},
     matter_protect_desc: {en_us: 'CREATES A SHIELD\nTHAT BLOCKS 12\nDAMAGE', fr_FR: ''},
     matter_reinforce_desc: {en_us: 'WHEN ATTACKED,\nREDUCE INCOMING\nDAMAGE BY 2 AND\nRETURN 3 DAMAGE', fr_FR: ''},
@@ -10,7 +10,7 @@ const textData = {
 
     time_strike_desc: {en_us: 'DEAL 6 DAMAGE, THEN\nDEAL HALF THAT DAMAGE\nA SECOND TIME', fr_FR: ''},
     time_enhance_desc: {en_us: 'NEXT ATTACK\nIS CAST AN\nEXTRA TIME', fr_FR: ''},
-    time_protect_desc: {en_us: 'CREATES A SHIELD\nTHAT DELAYS UP TO\n50 DAMAGE.', fr_FR: ''},
+    time_protect_desc: {en_us: 'CREATES A SHIELD\nTHAT DELAYS UP TO\n50 DAMAGE', fr_FR: ''},
     time_reinforce_desc: {en_us: 'HEAL HALF OF\nTHE DAMAGE YOU\nTOOK FROM THE\nLAST ATTACK', fr_FR: ''},
     time_unload_desc: {en_us: 'FREEZE TIME FOR\nTHE NEXT 6 SPELLS\nBUT LOSES POWER\nWITH REPEAT USE', fr_FR: ''},
 
@@ -22,9 +22,9 @@ const textData = {
 
     mind_strike_desc: {en_us: 'DEAL 1 DAMAGE.\nENEMY TAKES DOUBLE\nDAMAGE FROM NEXT\nATTACK HIT', fr_FR: ''},
     mind_enhance_desc: {en_us: 'NEXT ATTACK BURNS\nENEMY FOR 3 DMG/S\nFOR 4 SECONDS.\n(DOES NOT STACK)', fr_FR: ''},
-    mind_enhance_plus_desc: {en_us: 'NEXT ATTACK BURNS\nENEMY FOR 3 DMG/S\nFOR 5 SECONDS.', fr_FR: ''},
+    mind_enhance_plus_desc: {en_us: 'NEXT ATTACK BURNS\nENEMY FOR 3 DMG/S\nFOR 5 SECONDS', fr_FR: ''},
     mind_protect_desc: {en_us: 'REFLECT HALF THE\nDAMAGE YOU TAKE\nFROM ATTACKS BACK\nAT THE ENEMY', fr_FR: ''},
-    mind_reinforce_desc: {en_us: 'ATTACKS DEAL +2\nDAMAGE', fr_FR: ''},
+    mind_reinforce_desc: {en_us: 'ATTACKS DEAL +2\nDAMAGE. THIS BONUS\nGOES UP EACH TIME\nTHE WHEEL RELOADS.', fr_FR: ''},
     mind_unload_desc: {en_us: 'NEXT NON-ATTACK\nSPELL HAS +200%\nEFFECTIVENESS', fr_FR: ''},
 };
 

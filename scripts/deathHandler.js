@@ -79,6 +79,8 @@ function getFogSwirlGlow() {
 
 
 function playReaperAnim(enemy) {
+    globalObjects.magicCircle.disableMovement();
+    let level = enemy.getLevel();
     let floatingDeath = PhaserScene.add.sprite(gameConsts.halfWidth, 130, 'misc', 'floating_death.png').setDepth(-1).setAlpha(0.5).setScale(0.35);
     if (globalObjects.fogSwirl) {
         globalObjects.fogSwirl.currAnim.stop();
@@ -228,17 +230,33 @@ function playReaperAnim(enemy) {
                                 duration: 1500,
                                 onComplete: () => {
                                     PhaserScene.tweens.add({
-                                        targets: [floatingDeath, scythe],
+                                        targets: [scythe],
                                         alpha: 0,
+                                        delay: 50,
                                         scaleX: 0.5,
                                         scaleY: 0.5,
                                         ease: 'Cubic.easeIn',
-                                        duration: 1000,
+                                        duration: 600,
                                         onComplete: () => {
-                                            floatingDeath.destroy();
                                             scythe.destroy();
-                                            globalObjects.postFightScreen.createWinScreen(enemy.getLevel());
                                             enemy.destroy();
+                                            floatingDeath.setDepth(100010);
+                                            handleReaperDialog(level, () => {
+                                                PhaserScene.tweens.add({
+                                                    targets: [floatingDeath, scythe],
+                                                    alpha: 0,
+                                                    scaleX: 0.5,
+                                                    scaleY: 0.5,
+                                                    ease: 'Cubic.easeIn',
+                                                    duration: 1000,
+                                                    onComplete: () => {
+                                                        floatingDeath.destroy();
+
+                                                        globalObjects.magicCircle.enableMovement();
+                                                        globalObjects.postFightScreen.createWinScreen(level);
+                                                    }
+                                                });
+                                            })
                                         }
                                     });
                                 }
@@ -249,4 +267,55 @@ function playReaperAnim(enemy) {
             });
         }
     });
+}
+
+
+function handleReaperDialog(level = 0, onComplete) {
+    let reaperDialog = [];
+    switch(level) {
+    case 1:
+        if (onComplete) {
+            onComplete();
+        }
+        return;
+        break;
+    case 2:
+        reaperDialog = [
+            "...OH? IT'S YOU AGAIN.",
+            "YOU DO NOT BELONG HERE,\nIN THE LANDS OF PASSING.",
+            "TURN BACK TO WHERE YOU CAME FROM."
+            ];
+        break;
+    case 3:
+        reaperDialog = [
+            "DIALOGDIALOG.",
+            ];
+        break;
+    default:
+        if (onComplete) {
+            onComplete();
+        }
+        return;
+    }
+    playReaperDialog(reaperDialog, onComplete);
+}
+
+function playReaperDialog(dialog, onComplete) {
+    globalObjects.bannerTextManager.setDialog(dialog);
+    let fogSliceDarken = getFogSliceDarken();
+    PhaserScene.tweens.add({
+        targets: fogSliceDarken,
+        alpha: 0.5,
+        ease: 'Cubic.easeOut',
+        duration: 500,
+    });
+    globalObjects.bannerTextManager.showBanner();
+    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10);
+    globalObjects.bannerTextManager.setOnFinishFunc(onComplete)
+    // if (!globalObjects.reaperText) {
+    //     globalObjects.reaperTextBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 25, 'misc', 'victory_banner.png').setScale(100, 1).setDepth(100002).setAlpha(0);
+    //     globalObjects.reaperText = this.scene.add.text(gameConsts.halfWidth, globalObjects.reaperTextBG.y, '...', {fontFamily: 'Garamond', fontSize: 26, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(100002);
+    //     globalObjects.reaperText.setFontStyle('italic');
+    // }
+
 }

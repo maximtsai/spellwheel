@@ -815,8 +815,8 @@
 			"image": "sprites/enemies-1.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2013,
-				"h": 1983
+				"w": 2029,
+				"h": 1960
 			},
 			"scale": 1,
 			"frames": [
@@ -846,31 +846,6 @@
 					}
 				},
 				{
-					"filename": "max_death_3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 700,
-						"h": 540
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 26,
-						"w": 564,
-						"h": 499
-					},
-					"frame": {
-						"x": 1448,
-						"y": 1,
-						"w": 564,
-						"h": 499
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "max_death_2.png",
 					"rotated": false,
 					"trimmed": true,
@@ -886,9 +861,34 @@
 					},
 					"frame": {
 						"x": 1448,
-						"y": 502,
+						"y": 1,
 						"w": 559,
 						"h": 511
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 700,
+						"h": 540
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 26,
+						"w": 564,
+						"h": 499
+					},
+					"frame": {
+						"x": 1448,
+						"y": 514,
+						"w": 564,
+						"h": 499
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1021,56 +1021,6 @@
 					}
 				},
 				{
-					"filename": "time_magi_cast.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 310,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 3,
-						"w": 251,
-						"h": 394
-					},
-					"frame": {
-						"x": 319,
-						"y": 1545,
-						"w": 251,
-						"h": 394
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gobboAttack2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 310,
-						"h": 348
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 11,
-						"w": 302,
-						"h": 337
-					},
-					"frame": {
-						"x": 572,
-						"y": 1601,
-						"w": 302,
-						"h": 337
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "tree_open_glow.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1125,20 +1075,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 194,
-						"h": 265
+						"w": 184,
+						"h": 248
 					},
 					"spriteSourceSize": {
-						"x": 16,
-						"y": 2,
-						"w": 156,
-						"h": 261
+						"x": 12,
+						"y": 0,
+						"w": 171,
+						"h": 248
 					},
 					"frame": {
 						"x": 1243,
 						"y": 1326,
-						"w": 156,
-						"h": 261
+						"w": 171,
+						"h": 248
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1160,8 +1110,8 @@
 						"h": 284
 					},
 					"frame": {
-						"x": 876,
-						"y": 1545,
+						"x": 1416,
+						"y": 1500,
 						"w": 361,
 						"h": 284
 					},
@@ -1185,8 +1135,8 @@
 						"h": 151
 					},
 					"frame": {
-						"x": 876,
-						"y": 1831,
+						"x": 1779,
+						"y": 1601,
 						"w": 249,
 						"h": 151
 					},
@@ -1196,74 +1146,24 @@
 					}
 				},
 				{
-					"filename": "gobboDead.png",
+					"filename": "gobboAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 353,
-						"h": 315
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 165,
-						"w": 349,
-						"h": 150
-					},
-					"frame": {
-						"x": 1127,
-						"y": 1831,
-						"w": 349,
-						"h": 150
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gobbo1_alt.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 302,
-						"h": 323
+						"w": 310,
+						"h": 348
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 0,
+						"y": 11,
 						"w": 302,
-						"h": 323
+						"h": 337
 					},
 					"frame": {
-						"x": 1401,
-						"y": 1500,
+						"x": 319,
+						"y": 1545,
 						"w": 302,
-						"h": 323
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "lesser_dummy_headless.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 194,
-						"h": 265
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 68,
-						"w": 156,
-						"h": 195
-					},
-					"frame": {
-						"x": 1239,
-						"y": 1589,
-						"w": 156,
-						"h": 195
+						"h": 337
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1285,8 +1185,8 @@
 						"h": 336
 					},
 					"frame": {
-						"x": 1705,
-						"y": 1601,
+						"x": 623,
+						"y": 1545,
 						"w": 302,
 						"h": 336
 					},
@@ -1294,37 +1194,26 @@
 						"x": 0.5,
 						"y": 0.5
 					}
-				}
-			]
-		},
-		{
-			"image": "sprites/enemies-2.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 802,
-				"h": 901
-			},
-			"scale": 1,
-			"frames": [
+				},
 				{
-					"filename": "time_magi_nervous.png",
+					"filename": "lesser_dummy_dead.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 310,
-						"h": 400
+						"w": 260,
+						"h": 162
 					},
 					"spriteSourceSize": {
-						"x": 21,
-						"y": 35,
-						"w": 244,
-						"h": 342
+						"x": 0,
+						"y": 0,
+						"w": 260,
+						"h": 160
 					},
 					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 244,
-						"h": 342
+						"x": 927,
+						"y": 1545,
+						"w": 260,
+						"h": 160
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1346,10 +1235,171 @@
 						"h": 240
 					},
 					"frame": {
-						"x": 1,
-						"y": 345,
+						"x": 927,
+						"y": 1707,
 						"w": 357,
 						"h": 240
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gobboDead.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 353,
+						"h": 315
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 165,
+						"w": 349,
+						"h": 150
+					},
+					"frame": {
+						"x": 1286,
+						"y": 1786,
+						"w": 349,
+						"h": 150
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/enemies-2.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 828,
+				"h": 1000
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "time_magi_cast.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 310,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 251,
+						"h": 394
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 251,
+						"h": 394
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gobbo1_alt.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 302,
+						"h": 323
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 302,
+						"h": 323
+					},
+					"frame": {
+						"x": 254,
+						"y": 1,
+						"w": 302,
+						"h": 323
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "time_magi_nervous.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 310,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 35,
+						"w": 244,
+						"h": 342
+					},
+					"frame": {
+						"x": 1,
+						"y": 397,
+						"w": 244,
+						"h": 342
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gobbo1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 242,
+						"h": 258
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 242,
+						"h": 258
+					},
+					"frame": {
+						"x": 1,
+						"y": 741,
+						"w": 242,
+						"h": 258
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gobbo0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 262,
+						"h": 282
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 262,
+						"h": 282
+					},
+					"frame": {
+						"x": 558,
+						"y": 1,
+						"w": 262,
+						"h": 282
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1371,10 +1421,35 @@
 						"h": 292
 					},
 					"frame": {
-						"x": 247,
-						"y": 1,
+						"x": 254,
+						"y": 326,
 						"w": 300,
 						"h": 292
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummy_broken.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 322,
+						"h": 270
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 292,
+						"h": 269
+					},
+					"frame": {
+						"x": 247,
+						"y": 620,
+						"w": 292,
+						"h": 269
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1396,8 +1471,8 @@
 						"h": 321
 					},
 					"frame": {
-						"x": 360,
-						"y": 295,
+						"x": 541,
+						"y": 620,
 						"w": 286,
 						"h": 321
 					},
@@ -1421,85 +1496,10 @@
 						"h": 288
 					},
 					"frame": {
-						"x": 549,
-						"y": 1,
+						"x": 556,
+						"y": 326,
 						"w": 236,
 						"h": 288
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dummy_broken.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 322,
-						"h": 270
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 292,
-						"h": 269
-					},
-					"frame": {
-						"x": 1,
-						"y": 587,
-						"w": 292,
-						"h": 269
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gobbo0.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 262,
-						"h": 282
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 262,
-						"h": 282
-					},
-					"frame": {
-						"x": 295,
-						"y": 618,
-						"w": 262,
-						"h": 282
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gobbo1.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 242,
-						"h": 258
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 242,
-						"h": 258
-					},
-					"frame": {
-						"x": 559,
-						"y": 618,
-						"w": 242,
-						"h": 258
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1512,6 +1512,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:068ab051183604d583d573b47d3b699d:ae11ebcd0fdef85335c750c581c290c9:ef05bb2e08b15355d77e46a2cc7ab503$"
+		"smartupdate": "$TexturePacker:SmartUpdate:44da01c5fea0232ffe638f58c8631c0e:ae2f3d8532d6b43337d3098daaaaef4c:ef05bb2e08b15355d77e46a2cc7ab503$"
 	}
 }

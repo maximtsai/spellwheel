@@ -799,7 +799,7 @@ class SpellManager {
         let additionalDamage = globalObjects.player.attackDamageAdder();
         let goalScale = 0.6 + additionalDamage * 0.02;
         let spellDamage = 6 + additionalDamage;
-        let halfSpellDamage = spellDamage * 0.5;
+        let halfSpellDamage = Math.ceil(spellDamage * 0.5);
         for (let i in strikeObjects) {
             let strikeObject = strikeObjects[i];
             let delayedStrikeObject = this.scene.add.sprite(strikeObject.x, strikeObject.y, 'spells', 'clock_red.png').setDepth(10).setRotation(strikeObject.rotation).setScale(strikeObject.scaleX).setAlpha(0.75);
@@ -1409,11 +1409,11 @@ class SpellManager {
         });
 
 
-        let spellName = "POWER FORM";
+        let spellName = "CHARGE FORM";
         if (multiplier >= 3) {
-            spellName = "SUPER POWER FORM";
+            spellName = "SUPER CHARGE FORM";
             if (multiplier >= 6) {
-                spellName = "ULTRA POWER FORM";
+                spellName = "ULTRA CHARGE FORM";
             }
             if (multiplier >= 2) {
                 spellName += " X" + multiplier;
@@ -1502,7 +1502,7 @@ class SpellManager {
         animation1.rotation = 0;
         animation1.alpha = 0;
 
-        let animation2 =  this.scene.add.sprite(gameConsts.halfWidth, 200, 'spells', 'eye.png').setScale(0.8);
+        let animation2 =  this.scene.add.sprite(gameConsts.halfWidth, 185, 'spells', 'eye.png').setScale(0.8);
         animation2.setDepth(110);
         animation2.origScale = animation2.scaleX;
         animation2.alpha = 0;
@@ -2066,7 +2066,7 @@ class SpellManager {
         let startDist = 145;
         for (let i = 0; i < numCircleParticles; i++) {
             let rotationPos = (i - ((numCircleParticles - 1) / 2)) * 0.12;
-            let blackShieldPiece = poolManager.getItemFromPool('blackCircle');
+            let blackShieldPiece = poolManager.getItemFromPool('blackCirclePlain');
             if (!blackShieldPiece) {
                 blackShieldPiece = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', 'blackCirclePlain.png');
             }
@@ -2137,7 +2137,6 @@ class SpellManager {
                     }
 
                     for (let i in shieldArray) {
-                        console.log(i);
                         let shieldObjDarkBall = shieldArray[i];
                         let randX = (Math.random() - 0.5) * 250;
                         let randY = (Math.random() - 0.2) * 200;
@@ -2148,7 +2147,7 @@ class SpellManager {
                             y: "-=" + randY,
                             ease: 'Quart.easeOut',
                             onComplete: () => {
-                                poolManager.returnItemToPool(shieldObjDarkBall, 'blackCircle');
+                                poolManager.returnItemToPool(shieldObjDarkBall, 'blackCirclePlain');
                             }
                         });
                         this.scene.tweens.add({

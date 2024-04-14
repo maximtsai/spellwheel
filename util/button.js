@@ -405,6 +405,9 @@ class Button {
         }
     }
 
+    addText(text, font) {
+    }
+
     tweenToPos(x, y, duration, ease, onUpdate) {
         let tweenObj = {
             targets: this.imageRefs[this.currImageRef],

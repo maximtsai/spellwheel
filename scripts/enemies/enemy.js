@@ -1203,7 +1203,7 @@ class Enemy {
                     targets: this.sprite,
                     scaleX: attackScale,
                     scaleY: attackScale,
-                    duration: isRepeatedAttack ? 300 * extraTimeMult : 350 * extraTimeMult,
+                    duration: isRepeatedAttack ? 350 * extraTimeMult : 375 * extraTimeMult,
                     rotation: 0,
                     ease: 'Cubic.easeIn',
                     onComplete: () => {

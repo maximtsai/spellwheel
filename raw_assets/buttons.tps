@@ -173,14 +173,9 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">buttons/continue_game.png</key>
-            <key type="filename">buttons/continue_game_hover.png</key>
-            <key type="filename">buttons/credits.png</key>
-            <key type="filename">buttons/credits_hover.png</key>
-            <key type="filename">buttons/level_select.png</key>
-            <key type="filename">buttons/level_select_hover.png</key>
-            <key type="filename">buttons/new_game.png</key>
-            <key type="filename">buttons/new_game_hover.png</key>
+            <key type="filename">buttons/menu_btn_hover.png</key>
+            <key type="filename">buttons/menu_btn_normal.png</key>
+            <key type="filename">buttons/menu_btn_press.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -189,9 +184,26 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>100,16,200,31</rect>
+                <rect>95,16,190,31</rect>
                 <key>scale9Paddings</key>
-                <rect>100,16,200,31</rect>
+                <rect>95,16,190,31</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">buttons/options_btn_hover.png</key>
+            <key type="filename">buttons/options_btn_normal.png</key>
+            <key type="filename">buttons/options_btn_press.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>10,10,20,20</rect>
+                <key>scale9Paddings</key>
+                <rect>10,10,20,20</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

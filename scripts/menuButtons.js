@@ -93,21 +93,18 @@ function createMenuButtons() {
     }
     globalObjects.startButton = new Button({
         normal: {
-            ref: "new_game.png",
+            ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.halfWidth,
-            y: gameConsts.halfHeight - 200,
-            alpha: 0.95
+            x: 0,
+            y: 100,
         },
         hover: {
-            ref: "new_game_hover.png",
+            ref: "menu_btn_hover.png",
             atlas: 'buttons',
-            alpha: 1
         },
         press: {
             ref: "new_game_hover.png",
             atlas: 'buttons',
-            alpha: 0.8
         },
         disable: {
             alpha: 0.001
@@ -117,6 +114,10 @@ function createMenuButtons() {
             beginLevel(0);
         }
     });
+    globalObjects.startButton.setOrigin(0, 0.5);
+
+
+
     globalObjects.levelSelectButton = new Button({
         normal: {
             ref: "level_select.png",

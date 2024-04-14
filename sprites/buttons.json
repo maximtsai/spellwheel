@@ -4,105 +4,63 @@
 			"image": "sprites/buttons.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 759,
-				"h": 261
+				"w": 424,
+				"h": 196
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "continue_game.png",
+					"filename": "menu_btn_hover.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 400,
-						"h": 62
-					},
-					"spriteSourceSize": {
-						"x": 24,
-						"y": 0,
-						"w": 352,
-						"h": 62
-					},
-					"frame": {
-						"x": 2,
-						"y": 2,
-						"w": 352,
-						"h": 62
-					}
-				},
-				{
-					"filename": "continue_game_hover.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 400,
+						"w": 380,
 						"h": 62
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 400,
-						"h": 62
-					},
-					"frame": {
-						"x": 357,
-						"y": 2,
-						"w": 400,
-						"h": 62
-					}
-				},
-				{
-					"filename": "credits.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 400,
-						"h": 62
-					},
-					"spriteSourceSize": {
-						"x": 24,
-						"y": 0,
-						"w": 352,
+						"w": 377,
 						"h": 62
 					},
 					"frame": {
 						"x": 2,
-						"y": 67,
-						"w": 352,
+						"y": 2,
+						"w": 377,
 						"h": 62
 					}
 				},
 				{
-					"filename": "credits_hover.png",
+					"filename": "menu_btn_press.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 400,
+						"w": 380,
 						"h": 62
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 400,
+						"w": 377,
 						"h": 62
 					},
 					"frame": {
-						"x": 357,
+						"x": 2,
 						"y": 67,
-						"w": 400,
+						"w": 377,
 						"h": 62
 					}
 				},
 				{
-					"filename": "level_select.png",
+					"filename": "menu_btn_normal.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 400,
+						"w": 380,
 						"h": 62
 					},
 					"spriteSourceSize": {
-						"x": 24,
+						"x": 0,
 						"y": 0,
 						"w": 352,
 						"h": 62
@@ -115,66 +73,66 @@
 					}
 				},
 				{
-					"filename": "level_select_hover.png",
+					"filename": "options_btn_hover.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 400,
-						"h": 62
+						"w": 40,
+						"h": 40
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 400,
-						"h": 62
+						"w": 40,
+						"h": 40
 					},
 					"frame": {
 						"x": 357,
 						"y": 132,
-						"w": 400,
-						"h": 62
+						"w": 40,
+						"h": 40
 					}
 				},
 				{
-					"filename": "new_game.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 400,
-						"h": 62
-					},
-					"spriteSourceSize": {
-						"x": 24,
-						"y": 0,
-						"w": 352,
-						"h": 62
-					},
-					"frame": {
-						"x": 2,
-						"y": 197,
-						"w": 352,
-						"h": 62
-					}
-				},
-				{
-					"filename": "new_game_hover.png",
+					"filename": "options_btn_normal.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 400,
-						"h": 62
+						"w": 40,
+						"h": 40
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 400,
-						"h": 62
+						"w": 40,
+						"h": 40
 					},
 					"frame": {
-						"x": 357,
-						"y": 197,
-						"w": 400,
-						"h": 62
+						"x": 382,
+						"y": 2,
+						"w": 40,
+						"h": 40
+					}
+				},
+				{
+					"filename": "options_btn_press.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 40,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 40,
+						"h": 40
+					},
+					"frame": {
+						"x": 382,
+						"y": 45,
+						"w": 40,
+						"h": 40
 					}
 				}
 			]
@@ -183,6 +141,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:435283e4b2fd21f050be546b9c94908f:dd5a34d98ca8955b8f6a9c860bc12f53:76d98c9e3f665caad5fa5a5151215d9e$"
+		"smartupdate": "$TexturePacker:SmartUpdate:91e49fbf8cae5bb9f8eac07f2d96c84f:e32edfb4af768b16d030f3f33b64c802:76d98c9e3f665caad5fa5a5151215d9e$"
 	}
 }

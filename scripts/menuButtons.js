@@ -95,7 +95,7 @@ function createMenuButtons() {
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: 0,
+            x: 60,
             y: 100,
         },
         hover: {
@@ -115,6 +115,9 @@ function createMenuButtons() {
         }
     });
     globalObjects.startButton.setOrigin(0, 0.5);
+    globalObjects.startButton.addText("NEW GAME", {fontFamily: 'Garamond', fontSize: 42, color: '#000000', align: 'left'})
+    this.text = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 250, '(placeholder title)', {fontFamily: 'Garamond', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+
 
 
 

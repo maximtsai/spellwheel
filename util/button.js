@@ -406,6 +406,7 @@ class Button {
     }
 
     addText(text, font) {
+        this.text = this.scene.add.text(this.imageRefs[0].x, this.imageRefs[0].y, text, font).setAlpha(this.imageRefs[0].alpha).setOrigin(0.5, 0.5).setDepth(this.imageRefs[0].depth);
     }
 
     tweenToPos(x, y, duration, ease, onUpdate) {

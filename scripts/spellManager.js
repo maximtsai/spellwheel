@@ -812,6 +812,9 @@ class SpellManager {
                 duration: 550,
                 rotation: randRotation,
                 ease: 'Quad.easeOut',
+                onStart: () => {
+                    playSound('time_strike');
+                }
             });
 
             let offsetX = (Math.random() - 0.5) * 200;
@@ -863,6 +866,16 @@ class SpellManager {
                             strikeObject.destroy();
                         }
                     });
+                    let idxNum = parseInt(i);
+                    if (idxNum === 0) {
+                        playSound('time_strike_hit');
+                    } else if (idxNum === strikeObjects.length && idxNum !== 1) {
+                        playSound('time_strike_hit');
+                    } else {
+                        if (idxNum % 2 === 1) {
+                            playSound('time_strike_hit_2');
+                        }
+                    }
 
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', spellDamage);
@@ -1064,6 +1077,7 @@ class SpellManager {
                 repeat: -1
             });
         }
+        playSound('time_enhance');
         this.scene.tweens.add({
             targets: timeObjects[0],
             duration: 300,
@@ -1121,7 +1135,7 @@ class SpellManager {
         animation1.setScale(0.75);
         animation1.origScaleX = 0.95;
         animation1.rotation = rotation;
-
+        playSound('time_shield');
         messageBus.publish('setTempRotObjs', [animation1], rotation);
 
         let multiplier = globalObjects.player.spellMultiplier();
@@ -1585,7 +1599,7 @@ class SpellManager {
         let magicObj;
         let newMultiplier = 3;
         if (existingMultiplier > 1) {
-            playSound('mind_ultimate_2');
+            playSound('mind_ultimate_2', 0.95);
             newMultiplier = existingMultiplier + 2;
             magicObj = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'mind_boost_2.png');
             PhaserScene.tweens.add({
@@ -1603,7 +1617,7 @@ class SpellManager {
                 }
             });
         } else {
-            playSound('mind_ultimate_1');
+            playSound('mind_ultimate_1', 0.7);
 
             magicObj = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'mind_boost.png');
             PhaserScene.tweens.add({
@@ -1642,9 +1656,9 @@ class SpellManager {
                     existingBuff.soundObj.stop();
                 }
                 let soundObj2 = null;
-                let soundObj = playSound('mind_ultimate_loop_1', 0.9, true);
+                let soundObj = playSound('mind_ultimate_loop_1', 0.4, true);
                 if (existingMultiplier > 1.01) {
-                    soundObj2 = playSound('mind_ultimate_loop_2', 0.98, true);
+                    soundObj2 = playSound('mind_ultimate_loop_2', 0.8, true);
                 }
                 messageBus.publish("selfTakeEffect", {
                     ignoreBuff: true,
@@ -1735,7 +1749,14 @@ class SpellManager {
                 targets: currStrikeObj,
                 rotation: currStrikeObj.rotation * 0.9,
                 duration: 500,
-                ease: 'Cubic.easeOut'
+                ease: 'Cubic.easeOut',
+                onStart: () => {
+                    if (isLeftStrike) {
+                        playSound('meat_click_left');
+                    } else {
+                        playSound('meat_click_right');
+                    }
+                }
             });
             this.scene.tweens.add({
                 delay: i * 165,
@@ -1755,6 +1776,7 @@ class SpellManager {
                         onComplete: () => {
                             let healthPercent = globalObjects.currentEnemy.getHealth() * 0.015 + additionalDamage;
                             let damageDealt = Math.ceil(healthPercent)
+                            playSound('void_strike_hit');
                             messageBus.publish('enemyTakeDamage', damageDealt);
                             messageBus.publish('setPauseDur', 30);
                             messageBus.publish('inflictVoidBurn', damageDealt, 2);
@@ -2274,6 +2296,7 @@ class SpellManager {
             alpha: 0
         });
 
+        playSound('void_ultimate');
         for (let i = 0; i < numTotalAttacks; i++) {
             let thisDurationDelay = voidDuration - voidDuration * (i / numTotalAttacks);
             if (numTotalAttacks == 1) {

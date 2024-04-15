@@ -21,11 +21,23 @@ const audioFiles = [
     {name: 'mind_ultimate_loop_1', src: 'audio/mind_ultimate_loop_1.mp3'},
     {name: 'mind_ultimate_loop_2', src: 'audio/mind_ultimate_loop_2.mp3'},
 
+    {name: 'time_body', src: 'audio/time_body.mp3'},
+    {name: 'time_strike', src: 'audio/time_strike.mp3'},
+    {name: 'time_strike_hit', src: 'audio/time_strike_hit.mp3'},
+    {name: 'time_strike_hit_2', src: 'audio/time_strike_hit_2.mp3'},
+    {name: 'time_enhance', src: 'audio/time_enhance.mp3'},
+
+    {name: 'void_strike', src: 'audio/void_strike.mp3'},
+    {name: 'void_strike_hit', src: 'audio/void_strike_hit.mp3'},
     {name: 'void_body', src: 'audio/void_body.mp3'},
     {name: 'void_shield', src: 'audio/void_shield.mp3'},
+    {name: 'void_ultimate', src: 'audio/void_ultimate.mp3'},
+    {name: 'void_enhance', src: 'audio/void_enhance.mp3'},
 
-
-
+    {name: 'meat_click_left', src: 'audio/meat_click_left.mp3'},
+    {name: 'meat_click_right', src: 'audio/meat_click_right.mp3'},
+    {name: 'sword_slice', src: 'audio/sword_slice.mp3'},
+    {name: 'sword_hit', src: 'audio/sword_hit.mp3'},
     {name: 'stone_wheel', src: 'audio/stone_wheel.mp3'},
     {name: 'stone_wheel_deep', src: 'audio/stone_wheel_deep.mp3'},
     {name: 'victory', src: 'audio/victory.mp3'},

@@ -2235,6 +2235,7 @@ const ENABLE_KEYBOARD = true;
 
      fireVoidSpike(spike, baseScale, damage) {
         spike.alpha = 1;
+        playSound('void_strike', 0.3);
         setTimeout(() => {
             messageBus.publish('enemyTakeDamage', damage);
             messageBus.publish('setPauseDur', 10);

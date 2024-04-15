@@ -1,7 +1,7 @@
- class Goblin extends Enemy {
+ class KillerRobot extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
-         this.initSprite('gobbo0.png', 0.75);
+         this.initSprite('robot3.png', 0.65);
          this.shieldAdded = false;
 
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
@@ -9,7 +9,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 120 : 90;
+         this.health = gameVars.isHardMode ? 600 : 500;
      }
 
      // update(dt) {}

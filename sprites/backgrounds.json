@@ -2,7 +2,7 @@
 	"textures": [
 		{
 			"image": "sprites/backgrounds-0.webp",
-			"format": "RGBA5555",
+			"format": "RGBA8888",
 			"size": {
 				"w": 1984,
 				"h": 1997
@@ -113,7 +113,7 @@
 		},
 		{
 			"image": "sprites/backgrounds-1.webp",
-			"format": "RGBA5555",
+			"format": "RGBA8888",
 			"size": {
 				"w": 1916,
 				"h": 1978
@@ -224,7 +224,7 @@
 		},
 		{
 			"image": "sprites/backgrounds-2.webp",
-			"format": "RGBA5555",
+			"format": "RGBA8888",
 			"size": {
 				"w": 1462,
 				"h": 1708
@@ -335,32 +335,32 @@
 		},
 		{
 			"image": "sprites/backgrounds-3.webp",
-			"format": "RGBA5555",
+			"format": "RGBA8888",
 			"size": {
-				"w": 1284,
-				"h": 742
+				"w": 1344,
+				"h": 802
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "background0.webp",
+					"filename": "tunnel.webp",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 640,
-						"h": 740
+						"w": 700,
+						"h": 800
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 640,
-						"h": 740
+						"w": 700,
+						"h": 800
 					},
 					"frame": {
 						"x": 1,
 						"y": 1,
-						"w": 640,
-						"h": 740
+						"w": 700,
+						"h": 800
 					},
 					"anchor": {
 						"x": 0.5,
@@ -382,7 +382,7 @@
 						"h": 740
 					},
 					"frame": {
-						"x": 643,
+						"x": 703,
 						"y": 1,
 						"w": 640,
 						"h": 740
@@ -398,6 +398,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:7aa83a61b2264c7da4585006255ec056:953f3d06af5291d0818249552ee29e0f:4b9228cae45da4734de02858f02ab1c0$"
+		"smartupdate": "$TexturePacker:SmartUpdate:8177c0383e4815a8da0468c6bcceefe4:a9adf76a489c586d019a47a2510fba2a:4b9228cae45da4734de02858f02ab1c0$"
 	}
 }

@@ -86,7 +86,7 @@
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
             globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 173, gameConsts.halfHeight - 97, "Enemies become\nangry when\nattacked!", 'left');
-            gameVars.timeSlowRatio = 0.1;
+            messageBus.publish('setSlowMult', 0.1, 425);
             let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             PhaserScene.tweens.add({
                 targets: glowBar,
@@ -111,7 +111,8 @@
                 let spellListener = messageBus.subscribe('spellClicked', () => {
                     if (!this.hasShownAttackWarning) {
                         this.hasShownAttackWarning = true;
-                        gameVars.timeSlowRatio = 1;
+                        messageBus.publish('setSlowMult', 0.99, 1);
+
                         if (this.glowBarAnim) {
                             this.glowBarAnim.stop();
                         }
@@ -135,7 +136,7 @@
                 setTimeout(() => {
                     if (!this.hasShownAttackWarning) {
                         this.hasShownAttackWarning = true;
-                        gameVars.timeSlowRatio = 1;
+                        messageBus.publish('setSlowMult', 0.99, 1);
                         if (this.glowBarAnim) {
                             this.glowBarAnim.stop();
                         }

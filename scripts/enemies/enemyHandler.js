@@ -30,6 +30,7 @@ function createEnemy(num) {
     case 8:
         break;
     case 9:
+        globalObjects.currentEnemy = new KillerRobot(PhaserScene, gameConsts.halfWidth, 160, num);
         break;
     case 10:
         break;

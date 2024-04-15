@@ -27,7 +27,7 @@ class Player {
             messageBus.subscribe("spellClicked", this.incrementSpellsCast.bind(this)),
             messageBus.subscribe("enemyHasDied", this.clearAllEffects.bind(this)),
             messageBus.subscribe("wheelReloaded", this.incrementMindReinforceStatus.bind(this)),
-            
+
 
         ];
         updateManager.addFunction(this.update.bind(this));

@@ -15,6 +15,7 @@ class Enemy {
             messageBus.subscribe("enemyTakeDamagePercent", this.takeDamagePercent.bind(this)),
             messageBus.subscribe("enemyTakeDamagePercentTotal", this.takeDamagePercentTotal.bind(this)),
             messageBus.subscribe("setSlowMult", this.setSlowMult.bind(this)),
+            messageBus.subscribe("setPauseDur", this.setPauseDur.bind(this)),
 
             messageBus.subscribe("disruptOpponentAttack", this.disruptOpponentAttack.bind(this)),
             messageBus.subscribe("disruptOpponentAttackPercent", this.disruptOpponentAttackPercent.bind(this)),
@@ -64,6 +65,7 @@ class Enemy {
         this.attackCooldown = 100;
         this.nextAttackIndex = 0;
         this.currentAttackSetIndex = 0;
+        this.pauseMultDuration = 0;
         this.healthTextPopups = [];
         this.isAngry = false;
         this.slowMult = 1;
@@ -328,6 +330,10 @@ class Enemy {
             return;
         }
         if (this.attackCooldown <= 0) {
+            if (this.pauseMultDuration > 0) {
+                this.pauseMultDuration -= timeChange;
+                timeChange = 0;
+            }
             chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
             if (this.isAngry) {
                 let increaseMult = Math.max(2, (0.33 / 2) * chargeMult);
@@ -398,6 +404,7 @@ class Enemy {
             this.chargeBarCurr.visible = true;
             this.hideAngrySymbol()
         }
+
 
         if (this.slowMultDuration > 0) {
             // slow multiplier expired
@@ -506,9 +513,23 @@ class Enemy {
         this.nextAttackIndex++;
     }
 
+    setPauseDur(duration = 50) {
+        this.pauseMultDuration = duration;
+    }
+
     setSlowMult(amt = 0, duration = 90) {
         this.slowMult = amt;
         this.slowMultDuration = duration;
+
+    }
+
+    disruptOpponentAttackPercent(amt = 0.5) {
+        let disruptAmt = this.attackCharge * amt;
+        this.disruptOpponentAttack(disruptAmt);
+    }
+
+    disruptOpponentAttack(amt = 1) {
+        this.attackCharge -= amt; // Math.max(0, this.attackCharge - amt);
         if (this.chargeBarMax.visible && this.chargeBarMax.alpha > 0) {
             this.voidPause.alpha = 1;
             this.voidPause.setScale(this.chargeBarMax.scaleX, this.chargeBarMax.scaleY);
@@ -524,17 +545,7 @@ class Enemy {
                 scaleX: this.healthBarMax.scaleX + 40,
                 ease: 'Quad.easeOut',
             });
-
         }
-    }
-
-    disruptOpponentAttackPercent(amt = 0.5) {
-        let disruptAmt = this.attackCharge * amt;
-        this.disruptOpponentAttack(disruptAmt);
-    }
-
-    disruptOpponentAttack(amt = 1) {
-        this.attackCharge -= amt; // Math.max(0, this.attackCharge - amt);
         // if (this.attackCharge < 0) {
         //     this.nextAttackChargeNeeded -= 0.33 * this.attackCharge;
         //     this.attackCharge = 0;

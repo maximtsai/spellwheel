@@ -4,7 +4,7 @@ const textData = {
     matter_strike_desc: {en_us: 'DEAL 12 DAMAGE', fr_FR: ''},
     matter_strike_plus_desc: {en_us: 'DEAL 14 DAMAGE', fr_FR: ''},
     matter_enhance_desc: {en_us: 'NEXT ATTACK\nDEALS +6\nEXTRA DAMAGE', fr_FR: ''},
-    matter_protect_desc: {en_us: 'CREATES A SHIELD\nTHAT BLOCKS 12\nDAMAGE', fr_FR: ''},
+    matter_protect_desc: {en_us: 'CREATES A SHIELD\nTHAT BLOCKS 14\nDAMAGE', fr_FR: ''},
     matter_reinforce_desc: {en_us: 'WHEN ATTACKED,\nREDUCE INCOMING\nDAMAGE BY 2 AND\nRETURN 3 DAMAGE', fr_FR: ''},
     matter_unload_desc: {en_us: 'DEAL 20 DAMAGE.\nBLOCK 20 DAMAGE\nFOR THE NEXT\n5 SECONDS', fr_FR: ''},
 

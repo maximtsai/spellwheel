@@ -2,7 +2,7 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('lesser_dummy.png', 0.8, 0, 5);
-        playSound('fightbg1', 0.5, true);
+        this.bgMusic = playSound('fightbg1', 0.01, true);
         this.sprite.setOrigin(0.5, 0.99);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
@@ -293,7 +293,7 @@
          }
         super.die();
         globalObjects.textPopupManager.hideInfoText();
-
+         this.bgMusic.stop();
          this.dieClickBlocker = new Button({
              normal: {
                  ref: "blackPixel",

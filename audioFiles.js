@@ -17,6 +17,7 @@ const audioFiles = [
     {name: 'mind_shield', src: 'audio/mind_shield.mp3'},
     {name: 'mind_ultimate_1', src: 'audio/mind_ultimate_1.mp3'},
     {name: 'mind_ultimate_2', src: 'audio/mind_ultimate_2.mp3'},
+    {name: 'mind_ultimate_cast', src: 'audio/mind_ultimate_cast.mp3'},
     {name: 'mind_ultimate_loop_1', src: 'audio/mind_ultimate_loop_1.mp3'},
     {name: 'mind_ultimate_loop_2', src: 'audio/mind_ultimate_loop_2.mp3'},
 

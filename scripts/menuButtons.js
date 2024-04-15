@@ -95,8 +95,8 @@ function createMenuButtons() {
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: 60,
-            y: 100,
+            x: gameConsts.halfWidth,
+            y: 40,
         },
         hover: {
             ref: "menu_btn_hover.png",
@@ -114,30 +114,24 @@ function createMenuButtons() {
             beginLevel(0);
         }
     });
-    globalObjects.startButton.setOrigin(0, 0.5);
-    globalObjects.startButton.addText("NEW GAME", {fontFamily: 'Garamond', fontSize: 42, color: '#000000', align: 'left'})
-    this.text = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 250, '(placeholder title)', {fontFamily: 'Garamond', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
-
-
-
+    globalObjects.startButton.setOrigin(0.5, 0.5);
+    globalObjects.startButton.addText("NEW GAME", {fontFamily: 'Garamond', fontSize: 28, color: '#000000', align: 'left'})
+    globalObjects.startButton.setScale(0.9);
 
     globalObjects.levelSelectButton = new Button({
         normal: {
-            ref: "level_select.png",
+            ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.halfWidth,
-            y: gameConsts.halfHeight - 140,
-            alpha: 0.95
+            x: 100,
+            y: 100,
         },
         hover: {
-            ref: "level_select_hover.png",
+            ref: "menu_btn_hover.png",
             atlas: 'buttons',
-            alpha: 1
         },
         press: {
-            ref: "level_select_hover.png",
+            ref: "menu_btn_press.png",
             atlas: 'buttons',
-            alpha: 0.8
         },
         disable: {
             alpha: 0.001
@@ -147,24 +141,23 @@ function createMenuButtons() {
             beginLevel(1);
         }
     });
-    globalObjects.levelSelectButton.setScale(0.6);
+    globalObjects.levelSelectButton.setScale(0.5);
+    globalObjects.levelSelectButton.addText("LEVEL 1", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+
     globalObjects.creditsButton = new Button({
         normal: {
-            ref: "credits.png",
+            ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.halfWidth,
-            y: gameConsts.halfHeight - 90,
-            alpha: 0.95
+            x: 100,
+            y: 140,
         },
         hover: {
-            ref: "credits_hover.png",
+            ref: "menu_btn_hover.png",
             atlas: 'buttons',
-            alpha: 1
         },
         press: {
-            ref: "credits_hover.png",
+            ref: "menu_btn_press.png",
             atlas: 'buttons',
-            alpha: 0.8
         },
         disable: {
             alpha: 0.001
@@ -174,53 +167,23 @@ function createMenuButtons() {
             beginLevel(2);
         }
     });
-    globalObjects.creditsButton.setScale(0.6);
+    globalObjects.creditsButton.setScale(0.5);
+    globalObjects.creditsButton.addText("LEVEL 2", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.creditsButton2 = new Button({
         normal: {
-            ref: "credits.png",
+            ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.halfWidth,
-            y: gameConsts.halfHeight - 40,
-            alpha: 0.95
+            x: 100,
+            y: 180,
         },
         hover: {
-            ref: "credits_hover.png",
+            ref: "menu_btn_hover.png",
             atlas: 'buttons',
-            alpha: 1
         },
         press: {
-            ref: "credits_hover.png",
+            ref: "menu_btn_press.png",
             atlas: 'buttons',
-            alpha: 0.8
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            clearMenuButtons();
-            beginLevel(3);
-        }
-    });
-    globalObjects.creditsButton2.setScale(0.6);
-
-    globalObjects.creditsButton3 = new Button({
-        normal: {
-            ref: "credits.png",
-            atlas: 'buttons',
-            x: gameConsts.halfWidth,
-            y: gameConsts.halfHeight + 40,
-            alpha: 0.95
-        },
-        hover: {
-            ref: "credits_hover.png",
-            atlas: 'buttons',
-            alpha: 1
-        },
-        press: {
-            ref: "credits_hover.png",
-            atlas: 'buttons',
-            alpha: 0.8
         },
         disable: {
             alpha: 0.001
@@ -230,6 +193,33 @@ function createMenuButtons() {
             beginLevel(7);
         }
     });
-    globalObjects.creditsButton3.setScale(0.7);
+    globalObjects.creditsButton2.setScale(0.5);
+    globalObjects.creditsButton2.addText("LEVEL 7", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+
+    globalObjects.creditsButton3 = new Button({
+        normal: {
+            ref: "menu_btn_normal.png",
+            atlas: 'buttons',
+            x: 100,
+            y: 220,
+        },
+        hover: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        press: {
+            ref: "menu_btn_press.png",
+            atlas: 'buttons',
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp: () => {
+            clearMenuButtons();
+            beginLevel(9);
+        }
+    });
+    globalObjects.creditsButton3.setScale(0.5);
+    globalObjects.creditsButton3.addText("LEVEL 9", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
 
 }

@@ -2237,6 +2237,7 @@ const ENABLE_KEYBOARD = true;
         spike.alpha = 1;
         setTimeout(() => {
             messageBus.publish('enemyTakeDamage', damage);
+            messageBus.publish('setPauseDur', 10);
         }, 100);
         spike.setScale(baseScale * 4, baseScale * 0.6)
          this.scene.tweens.add({

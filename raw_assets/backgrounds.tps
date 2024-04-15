@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>phaser</string>
+        <string>phaser-maxim</string>
         <key>textureFileName</key>
         <filename>../sprites/backgrounds-{n}.webp</filename>
         <key>flipPVR</key>
@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>75</uint>
+        <uint>69</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -132,7 +132,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGBA5555</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
         <key>alphaHandling</key>
         <enum type="SettingsBase::AlphaHandling">ClearTransparentPixels</enum>
         <key>contentProtection</key>
@@ -173,22 +173,6 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">backgrounds/background0.webp</key>
-            <key type="filename">backgrounds/background3.webp</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>160,185,320,370</rect>
-                <key>scale9Paddings</key>
-                <rect>160,185,320,370</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">backgrounds/background1.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -201,6 +185,21 @@
                 <rect>160,188,320,375</rect>
                 <key>scale9Paddings</key>
                 <rect>160,188,320,375</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">backgrounds/background3.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>160,185,320,370</rect>
+                <key>scale9Paddings</key>
+                <rect>160,185,320,370</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -223,6 +222,7 @@
             <key type="filename">backgrounds/firebg1.png</key>
             <key type="filename">backgrounds/firebg2.png</key>
             <key type="filename">backgrounds/firebg3.png</key>
+            <key type="filename">backgrounds/tunnel.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

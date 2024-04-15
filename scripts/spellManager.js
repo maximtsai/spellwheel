@@ -206,6 +206,7 @@ class SpellManager {
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
+                    messageBus.publish('setPauseDur', 30);
                     poolManager.returnItemToPool(rockObj, 'rock');
                 }
             });
@@ -500,7 +501,7 @@ class SpellManager {
             });
         }
 
-        let shieldHealth = 12 * spellMultiplier;
+        let shieldHealth = 14 * spellMultiplier;
         textHealth.setText(shieldHealth);
         messageBus.publish('setTempRotObjs', [animation1], rotation);
 
@@ -865,6 +866,8 @@ class SpellManager {
 
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', spellDamage);
+                    messageBus.publish('setPauseDur', 20);
+
                 }
             });
             this.scene.tweens.add({
@@ -915,6 +918,7 @@ class SpellManager {
 
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', halfSpellDamage);
+                    messageBus.publish('setPauseDur', 20);
                 }
             });
         }
@@ -1273,6 +1277,8 @@ class SpellManager {
                     });
 
                     messageBus.publish('enemyTakeDamage', 1 + additionalDamage);
+                    messageBus.publish('setPauseDur', 15);
+
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
                         let animation1 = this.scene.add.sprite(attackObj.x - 55, attackObj.y, 'spells').play('weaken');
                         animation1.setDepth(10);
@@ -1632,12 +1638,14 @@ class SpellManager {
             scaleY: 0.96,
             onStart: () => {
                 // BUGGY WARNING
-                let soundObj2 = null;
-                if (existingMultiplier > 1.01) {
-                    soundObj2 = playSound('mind_ultimate_loop_2', 0.5, true);
-                    console.log("asdf");
+                if (existingBuff && existingBuff.soundObj) {
+                    existingBuff.soundObj.stop();
                 }
-                let soundObj = playSound('mind_ultimate_loop_1', 0.5, true);
+                let soundObj2 = null;
+                let soundObj = playSound('mind_ultimate_loop_1', 0.9, true);
+                if (existingMultiplier > 1.01) {
+                    soundObj2 = playSound('mind_ultimate_loop_2', 0.98, true);
+                }
                 messageBus.publish("selfTakeEffect", {
                     ignoreBuff: true,
                     name: spellID,
@@ -1648,16 +1656,22 @@ class SpellManager {
                     multiplier: newMultiplier,
                     cleanUp: (statuses) => {
                         if (statuses[spellID] && !statuses[spellID].currentAnim) {
-                            fadeAwaySound(statuses[spellID].soundObj);
+                            playSound('mind_ultimate_cast');
+                            let sound1 = statuses[spellID].soundObj;
+                            let sound2 = null;
                             if (statuses[spellID].soundObj2) {
-                                fadeAwaySound(statuses[spellID].soundObj2);
+                                sound2 = statuses[spellID].soundObj2;
                             }
                             statuses[spellID].currentAnim = this.scene.tweens.add({
                                 targets: magicObjects,
-                                duration: 150,
+                                duration: 180,
                                 alpha: 0,
                                 ease: 'Quad.easeOut',
                                 onComplete: () => {
+                                    fadeAwaySound(sound1);
+                                    if (sound2) {
+                                        fadeAwaySound(sound2);
+                                    }
                                     statuses[spellID] = null;
                                     for (let i = 0; i < magicObjects.length; i++) {
                                         magicObjects[i].destroy();
@@ -1742,6 +1756,7 @@ class SpellManager {
                             let healthPercent = globalObjects.currentEnemy.getHealth() * 0.015 + additionalDamage;
                             let damageDealt = Math.ceil(healthPercent)
                             messageBus.publish('enemyTakeDamage', damageDealt);
+                            messageBus.publish('setPauseDur', 30);
                             messageBus.publish('inflictVoidBurn', damageDealt, 2);
                             currStrikeObj.setScale(currStrikeObj.scaleX * 1.04, currStrikeObj.scaleY * 1.04);
                             this.scene.tweens.add({
@@ -2282,7 +2297,7 @@ class SpellManager {
                     }, 20);
                     messageBus.publish('enemyTakeDamagePercent', 15, additionalDamage);
                     messageBus.publish('disruptOpponentAttackPercent', 0.667);
-                    messageBus.publish('setSlowMult', 0.01, 40);
+                    messageBus.publish('setPauseDur', 50);
 
                 });
                 if (additionalDamage > 1) {

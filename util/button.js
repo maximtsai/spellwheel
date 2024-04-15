@@ -218,6 +218,7 @@ class Button {
 
     setDepth(depth = 0) {
         this.depth = depth;
+        this.text.setDepth(depth + 1);
         for (let i in this.imageRefs) {
             this.imageRefs[i].setDepth(depth);
         }
@@ -406,7 +407,8 @@ class Button {
     }
 
     addText(text, font) {
-        this.text = this.scene.add.text(this.imageRefs[0].x, this.imageRefs[0].y, text, font).setAlpha(this.imageRefs[0].alpha).setOrigin(0.5, 0.5).setDepth(this.imageRefs[0].depth);
+        let depth = this.normal.depth ? this.normal.depth + 1 : 1;
+        this.text = this.scene.add.text(this.normal.x, this.normal.y, text, font).setAlpha(this.normal.alpha).setOrigin(0.5, 0.5).setDepth(depth);
     }
 
     tweenToPos(x, y, duration, ease, onUpdate) {
@@ -481,6 +483,9 @@ class Button {
 
     destroy() {
         buttonManager.removeButton(this);
+        if (this.text) {
+            this.text.destroy();
+        }
 
         for (let i in this.imageRefs) {
             this.imageRefs[i].destroy();

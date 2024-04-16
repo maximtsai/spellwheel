@@ -1,6 +1,6 @@
 const DECAY = 0.00006;
 const STATIC = 0.006;
-const INFINITE_CAST = false;
+const INFINITE_CAST = true;
 const ENABLE_KEYBOARD = true;
 
  class MagicCircle {
@@ -433,7 +433,7 @@ const ENABLE_KEYBOARD = true;
             y: gameConsts.halfHeight - 15,
             originX: 1,
             originY: 0.5,
-            depth: 9
+            depth: 20
         })
 
         this.dragArrow = scene.add.sprite(x, y, 'circle', 'drag_arrow.png');
@@ -2062,7 +2062,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('time_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         this.spellNameText.setText('ACCELERATED FORM');
+                         this.spellNameText.setText('TIME FREEZE"');
                          this.spellDescriptor.setText(getLangText('time_unload_desc'));
                          break;
                      default:

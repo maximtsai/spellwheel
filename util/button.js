@@ -218,7 +218,9 @@ class Button {
 
     setDepth(depth = 0) {
         this.depth = depth;
-        this.text.setDepth(depth + 1);
+        if (this.text) {
+            this.text.setDepth(depth + 1);
+        }
         for (let i in this.imageRefs) {
             this.imageRefs[i].setDepth(depth);
         }

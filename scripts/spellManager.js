@@ -132,7 +132,8 @@ class SpellManager {
         let additionalDamage = globalObjects.player.attackDamageAdder();
 
         let pebbles = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.height - 360, 'spells', 'rockCircle.png');
-        pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalDamage * 0.015).setRotation(Math.random() * 3)
+        let additionalScale = Math.sqrt(additionalDamage) * 0.1;
+        pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalScale).setRotation(Math.random() * 3)
         this.scene.tweens.add({
             targets: pebbles,
             duration: 300,
@@ -145,7 +146,8 @@ class SpellManager {
             alpha: 1,
             ease: 'Cubic.easeOut'
         });
-        playSound('matter_strike');
+        let strikeVol = 0.92 + additionalDamage * 0.002;
+        playSound('matter_strike', strikeVol);
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
@@ -163,8 +165,8 @@ class SpellManager {
                 targets: rockObj,
                 delay: 150,
                 duration: 400 + additionalDamage * 2,
-                scaleX: 0.5 + additionalDamage * 0.01,
-                scaleY: 0.5 + additionalDamage * 0.01,
+                scaleX: 0.5 + additionalScale,
+                scaleY: 0.5 + additionalScale,
                 ease: 'Back.easeOut'
             });
             this.scene.tweens.add({
@@ -181,25 +183,37 @@ class SpellManager {
             let delayAmt = 600 + i * (220 - i * 12) + additionalDamage * 2;
             let durationAmt = 500 + additionalDamage * 5;
             setTimeout(() => {
+                let additionalVol = additionalDamage * 0.005;
                 if (i === 0) {
-                    playSound('matter_strike_hit', 0.7);
+                    let randNum = Math.random()
+                    if (randNum < 0.3) {
+                        playSound('matter_strike_hit', 0.7 + additionalVol);
+                    } else if (randNum < 0.6) {
+                        playSound('matter_strike_hit_alt', 0.7 + additionalVol);
+                    } else {
+                        playSound('matter_strike_hit_alt_2', 0.75 + additionalVol);
+                    }
                 } else if (rockObjects.length > 2 && i === rockObjects.length - 1) {
                     // last hit
-                    playSound('matter_strike_hit', 0.5);
+                    if (Math.random() < 0.5) {
+                        playSound('matter_strike_hit', 0.6 + additionalVol);
+                    } else {
+                        playSound('matter_strike_hit_alt', 0.6 + additionalVol);
+                    }
                 } else if (i % 2 == 1) {
-                    playSound('matter_strike_hit2', 0.9);
+                    playSound('matter_strike_hit2', 0.9 + additionalVol);
                 } else if (i % 2 == 0) {
-                    playSound('matter_strike_hit2', 0.5);
+                    playSound('matter_strike_hit2', 0.5 + additionalVol);
                 }
             }, delayAmt + durationAmt - 50)
             this.scene.tweens.add({
                 targets: rockObj,
                 delay: delayAmt,
                 x: gameConsts.halfWidth + (Math.random() - 0.5) * 20,
-                y: 140 + (Math.random() - 0.5) * 20 - Math.floor(Math.sqrt(additionalDamage) * 2),
+                y: 140 + (Math.random() - 0.5) * 20 - Math.floor(Math.sqrt(additionalDamage) * 4),
                 duration: 500 + additionalDamage * 5,
-                scaleX: 0.25 + additionalDamage * 0.008,
-                scaleY: 0.25 + additionalDamage * 0.008,
+                scaleX: 0.25 + additionalScale * 0.7,
+                scaleY: 0.25 + additionalScale * 0.7,
                 rotation: (Math.random() - 0.5) * 2,
                 ease: 'Quad.easeIn',
                 onComplete: () => {
@@ -798,7 +812,7 @@ class SpellManager {
         }
 
         let additionalDamage = globalObjects.player.attackDamageAdder();
-        let goalScale = 0.6 + additionalDamage * 0.02;
+        let goalScale = 0.6 + Math.sqrt(additionalDamage) * 0.08 + additionalDamage * 0.01;
         let spellDamage = 6 + additionalDamage;
         let halfSpellDamage = Math.ceil(spellDamage * 0.5);
         for (let i in strikeObjects) {
@@ -869,12 +883,13 @@ class SpellManager {
                     let idxNum = parseInt(i);
                     if (idxNum === 0) {
                         playSound('time_strike_hit');
-                    } else if (idxNum === strikeObjects.length && idxNum !== 1) {
-                        playSound('time_strike_hit');
-                    } else {
-                        if (idxNum % 2 === 1) {
-                            playSound('time_strike_hit_2');
-                        }
+                    } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
+                        // last hit
+                        playSound('time_strike_hit', 0.85);
+                    } else if (idxNum % 2 == 1) {
+                        playSound('time_strike_hit_2', 1);
+                    } else if (idxNum % 2 == 0) {
+                        playSound('time_strike_hit_2', 0.75);
                     }
 
                     // messageBus.publish('enemyStartDamageCountdown');
@@ -928,7 +943,6 @@ class SpellManager {
                             delayedStrikeObject.destroy();
                         }
                     });
-
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', halfSpellDamage);
                     messageBus.publish('setPauseDur', 20);
@@ -951,7 +965,7 @@ class SpellManager {
         let healthRewoundPercent = 1 - 0.5 ** multiplier;
         let bigClock = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large.png');
         this.cleanseForms();
-
+        playSound('time_body')
         bigClock.setDepth(120);
         bigClock.setScale(0.72);
         bigClock.alpha = 0;
@@ -1162,7 +1176,6 @@ class SpellManager {
                     statusObj: statusObj,
                     cleanUp: (statuses) => {
                         if (statuses[shieldID] && !statuses[shieldID].currentAnim) {
-                            console.log("Cleanued up time shield")
                             statuses[shieldID].currentAnim = this.scene.tweens.add({
                                 targets: animation1,
                                 duration: 250,
@@ -1219,15 +1232,8 @@ class SpellManager {
                 }
             }
         });
-        let spellName = "ACCELERATED FORM";
+        let spellName = "TIME FREEZE X"+turnsAdded;
         let boost = 0;
-        if (multiplier > 3) {
-            spellName = "A SINGLE MOMENT\nOF FOREVER";
-            boost = 0.2;
-        } else if (multiplier > 1) {
-            spellName = "ACCELERATED FORM x" + multiplier;
-            boost = 0.1;
-        }
 
         this.postNonAttackCast(spellID, spellName);
     }
@@ -1517,7 +1523,7 @@ class SpellManager {
 
         animation1.setDepth(110);
         animation1.setOrigin(0.5, 1);
-        animation1.setScale(0.75);
+        animation1.setScale(0.85);
         animation1.origScaleX =  0.95 + spellMultiplier * 0.05;
         animation1.rotation = 0;
         animation1.alpha = 0;
@@ -1536,6 +1542,11 @@ class SpellManager {
         animation3.visible = false;
         animation3.rotateOffset = 0;
 
+        let textDisplay = this.scene.add.bitmapText(gameConsts.halfWidth, animation2.y, 'block', '', 48, 1);
+        textDisplay.setOrigin(0.5, 0.5);
+        textDisplay.setDepth(animation2.depth);
+        textDisplay.setScale(0.5);
+
         messageBus.publish('setTempRotObjs', [animation1, animation3], rotation);
         playSound('mind_shield');
 
@@ -1553,12 +1564,15 @@ class SpellManager {
                     spellID: shieldID,
                     type: 'mind',
                     animObj: [animation1, animation2, animation3],
+                    textObj: textDisplay,
+                    storedDamage: 0,
                     multiplier: spellMultiplier,
                     spriteSrc1: 'rune_protect_glow.png',
                     spriteSrc2: 'rune_mind_glow.png',
                     lockRotation: rotation,
                     cleanUp: (statuses) => {
                         if (statuses[shieldID] && !statuses[shieldID].currentAnim) {
+                            textDisplay.destroy();
                             statuses[shieldID].currentAnim = this.scene.tweens.add({
                                 targets: [animation1, animation2],
                                 duration: 150,
@@ -1976,6 +1990,7 @@ class SpellManager {
         let existingBuff = globalObjects.player.getStatuses()[spellID];
         let voidObj;
         let multiplier = globalObjects.player.spellMultiplier();
+        playSound('void_enhance');
         if (existingBuff) {
             multiplier += existingBuff.multiplier;
             let newScale = 0.3 + Math.sqrt(multiplier) * 0.9;

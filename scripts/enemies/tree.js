@@ -395,7 +395,7 @@
 
      playRegrowthAnim(regrowthAmt) {
          let healAmt = regrowthAmt - 1;
-         this.startHealing(healAmt);
+         // this.startHealing(healAmt);
          this.healText = this.scene.add.text(gameConsts.halfWidth, 65, '+' + regrowthAmt, {fontFamily: 'Arial', fontSize: 48, color: '#00F254', align: 'left'})
          this.healText.setFontStyle('bold').setOrigin(0.5, 0.5).setDepth(9);
          this.healText.startY = this.healText.y;
@@ -465,8 +465,8 @@
      }
 
      initAttacks() {
-         let regrowthAmt1 = gameVars.isHardMode ? 8 : 6;
-         let regrowthAmt2 = gameVars.isHardMode ? 11 : 10;
+         let regrowthAmt1 = gameVars.isHardMode ? 18 : 12;
+         let regrowthAmt2 = gameVars.isHardMode ? 24 : 15;
          this.attacks = [
              [
                  // 0
@@ -525,6 +525,28 @@
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
                          this.attackWithBranch(12);
+                     }
+                 },
+                 {
+                     name: "REGROWTH (+" + regrowthAmt2 + ")",
+                     announceName: "REGROWTH (+" + regrowthAmt2 + ")",
+                     desc: "The tree recovers its injuries over time",
+                     chargeAmt: 500,
+                     damage: -1,
+                     attackStartFunction: () => {
+                         this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
+                         this.eyeMagic2.setAlpha(0.2).setScale(0.8, 0.4);
+                         this.eyeMagicAnim = PhaserScene.tweens.add({
+                             targets: [this.eyeMagic1, this.eyeMagic2],
+                             scaleX: 0.95,
+                             scaleY: 0.92,
+                             alpha: 1,
+                             ease: 'Cubic.easeOut',
+                             duration: 600,
+                         });
+                     },
+                     attackFinishFunction: () => {
+                         this.playRegrowthAnim(regrowthAmt2);
                      }
                  },
                  {

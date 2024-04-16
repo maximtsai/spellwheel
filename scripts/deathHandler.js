@@ -79,6 +79,7 @@ function getFogSwirlGlow() {
 
 
 function playReaperAnim(enemy) {
+    playSound('sound_of_death');
     globalObjects.magicCircle.disableMovement();
     let level = enemy.getLevel();
     let floatingDeath = PhaserScene.add.sprite(gameConsts.halfWidth, 130, 'misc', 'floating_death.png').setDepth(-1).setAlpha(0.5).setScale(0.35);

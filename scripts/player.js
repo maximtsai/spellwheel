@@ -546,7 +546,7 @@ class Player {
                             shieldObj.health -= hurtAmt;
                             hurtAmt = 0;
                             shieldObj.shakeAmt = 0.05 + hurtAmt * 0.005;
-                            shieldObj.impactVisibleTime = 5;
+                            shieldObj.impactVisibleTime = 6;
                             shieldObj.animObj[2].rotateOffset = -shieldObj.animObj[0].rotation * 0.92;
                         } else {
                             hurtAmt = hurtAmt - shieldObj.health;
@@ -587,25 +587,41 @@ class Player {
                     if (hurtAmt > 0 && shieldObj.active) {
                         let blockedDmg = Math.ceil(amt * 0.5);
                         hurtAmt = hurtAmt - blockedDmg;
-                        shieldObj.impactVisibleTime = 6;
-                        // messageBus.publish('animateBlockNum', shieldObj.animObj[0].x + 1, shieldObj.animObj[0].y - 15, -blockedDmg, 0.5 + Math.sqrt(blockedDmg) * 0.125);
+                        shieldObj.impactVisibleTime = 8;
+                        shieldObj.storedDamage += blockedDmg;
+                        shieldObj.textObj.setText(shieldObj.storedDamage);
+                        shieldObj.textObj.setScale(0.5 + Math.sqrt(shieldObj.storedDamage) * 0.15);
+                        playSound('fizzle');
+
+                        shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 2.2, shieldObj.animObj[0].scaleY);
+                        this.scene.tweens.add({
+                            targets: shieldObj.animObj[0],
+                            duration: 300,
+                            scaleX: shieldObj.animObj[0].origScaleX,
+                            ease: 'Quad.easeOut',
+                        });
 
                         shieldObj.animObj[2].setAlpha(1);
-
-                        this.scene.tweens.add({
+                        if (shieldObj.eyeBlastAnim) {
+                            shieldObj.eyeBlastAnim.stop();
+                        }
+                        shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale).setAlpha(0.3);
+                        shieldObj.eyeBlastAnim = this.scene.tweens.add({
                             targets: shieldObj.animObj[1],
-                            duration: 300,
-                            scaleX: shieldObj.animObj[1].origScale * 1.02,
-                            scaleY: shieldObj.animObj[1].origScale * 1.02,
-                            alpha: 1.2,
-                            ease: 'Cubic.easeIn',
+                            duration: 850,
+                            scaleX: shieldObj.animObj[1].origScale * 1.12,
+                            scaleY: shieldObj.animObj[1].origScale * 1.12,
+                            alpha: 1.01,
+                            ease: 'Quad.easeOut',
                             onComplete: () => {
-                                playSound('fizzle');
                                 setTimeout(() => {
-                                   messageBus.publish('enemyTakeTrueDamage', blockedDmg, false, 85);
+                                    let retalVol = 0.4 + shieldObj.storedDamage * 0.015;
+                                    playSound('mind_shield_retaliate', retalVol);
+                                    messageBus.publish('enemyTakeTrueDamage', shieldObj.storedDamage, false, 95);
                                     shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale * 1.2);
                                     shieldObj.animObj[1].setAlpha(1);
-                                    this.scene.tweens.add({
+                                    shieldObj.textObj.setText(' ');
+                                    shieldObj.eyeBlastAnim = this.scene.tweens.add({
                                         targets: shieldObj.animObj[1],
                                         duration: 180,
                                         scaleX: shieldObj.animObj[1].origScale,
@@ -613,6 +629,8 @@ class Player {
                                         alpha: 0.2,
                                         ease: 'Cubic.easeOut'
                                     });
+                                    shieldObj.storedDamage = 0;
+
                                 }, 50);
                             }
                         });
@@ -622,13 +640,15 @@ class Player {
                     if (hurtAmt > 1 && shieldObj.active) {
                         messageBus.publish('playerAddDelayedDamage', hurtAmt);
 
+                        shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 1.3, shieldObj.animObj[0].scaleY);
                         shieldObj.shakeAmt = 0.05 + hurtAmt * 0.005;
-                        shieldObj.alpha = 1;
+                        shieldObj.animObj[0].alpha = 1;
                         this.scene.tweens.add({
-                            targets: shieldObj,
-                            duration: 300,
+                            targets: shieldObj.animObj[0],
+                            duration: 250,
                             alpha: 0.85,
-                            ease: 'Quad.easeIn'
+                            scaleX: shieldObj.animObj[0].origScaleX,
+                            ease: 'Cubic.easeIn'
                         });
                         messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 200, hurtAmt, 0.5 + Math.sqrt(hurtAmt) * 0.125);
                         hurtAmt = 0;

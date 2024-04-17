@@ -2,6 +2,7 @@ class Enemy {
     constructor(scene, x, y, level = 1) {
         this.scene = scene;
         this.level = level;
+        this.initPreStats();
         this.initStats();
         this.initAttacks();
         this.resetStats(x, y);
@@ -23,11 +24,14 @@ class Enemy {
             messageBus.subscribe("enemyStartDamageCountdown", this.startDamageCountdown.bind(this)),
             messageBus.subscribe("enemyAddShield", this.addShield.bind(this)),
             messageBus.subscribe("increaseCurse", this.increaseCurse.bind(this)),
-
         ];
 
         this.boundUpdateFunc = this.update.bind(this);
         updateManager.addFunction(this.boundUpdateFunc);
+    }
+
+    initPreStats() {
+        this.delayLoad = false; // delays showing health bar
     }
 
     getLevel() {
@@ -51,6 +55,7 @@ class Enemy {
     initStats() {
         this.destructibles = [];
         this.health = 1000;
+
         this.shield = 0;
         this.isAsleep = false;
         this.timeSinceLastAttacked = 9999;
@@ -81,7 +86,6 @@ class Enemy {
         this.curse = 0;
 
         this.initStatsCustom();
-        console.log("after init stats custom");
 
         this.prevHealth = this.health;
         this.healthMax = this.health;
@@ -94,7 +98,7 @@ class Enemy {
     createHealthBar(x, y) {
         this.healthBarLengthMax = 20 + Math.floor(Math.sqrt(this.healthMax) * 5);
         this.healthBarMax = this.scene.add.sprite(x, 20, 'blackPixel');
-        let healthBarMaxGoalScale = this.healthBarLengthMax + 3;
+        this.healthBarMaxGoalScale = this.healthBarLengthMax + 3;
         this.healthBarMax.setScale(0, 12);
         this.healthBarMax.startScaleY = this.healthBarMax.scaleY;
         this.healthBarMax.setOrigin(0.5, 0.5);
@@ -112,11 +116,18 @@ class Enemy {
         this.healthBarText.alpha = 0;
         this.healthBarText.setText(this.health);
 
+        if (!this.delayLoad) {
+            this.loadUpHealthBar();
+        }
+    }
+
+    loadUpHealthBar() {
+        this.delayLoad = false;
         this.scene.tweens.add({
             targets: [this.healthBarMax],
             delay: 200,
             duration: 100 + this.healthBarLengthMax * 5,
-            scaleX: healthBarMaxGoalScale,
+            scaleX: this.healthBarMaxGoalScale,
             ease: 'Quint.easeInOut'
         });
         this.scene.tweens.add({
@@ -196,14 +207,16 @@ class Enemy {
 
     initSpriteAnim(scale) {
         this.sprite.setScale(scale * 0.98, scale * 0.95);
-        this.scene.tweens.add({
-            targets: this.sprite,
-            duration: 750,
-            ease: 'Quad.easeOut',
-            scaleX: scale,
-            scaleY: scale,
-            alpha: 1
-        });
+        if (!this.delayLoad) {
+            this.scene.tweens.add({
+                targets: this.sprite,
+                duration: 750,
+                ease: 'Quad.easeOut',
+                scaleX: scale,
+                scaleY: scale,
+                alpha: 1
+            });
+        }
     }
 
     initSprite(name, scale = 1, xOffset = 0, yOffset = 0) {
@@ -282,8 +295,11 @@ class Enemy {
         });
     }
 
-    setDefaultSprite(name, scale = 1) {
+    setDefaultSprite(name, scale = null) {
         this.defaultSprite = name;
+        if (!scale) {
+            scale = this.sprite ? this.sprite.startScale : 1;
+        }
         this.setSprite(name, scale);
     }
 
@@ -584,9 +600,6 @@ class Enemy {
 
     takeEffect(newEffect) {
         this.statuses[newEffect.name] = newEffect;
-        if (newEffect.name === 'timeStrike') {
-
-        }
     }
 
     clearEffects() {
@@ -642,6 +655,9 @@ class Enemy {
     }
 
     increaseCurse(amt = 1) {
+        if (this.delayLoad) {
+            return;
+        }
         this.curse += amt;
         this.curseSprite.visible = true;
         this.curseText.visible = true;
@@ -699,6 +715,9 @@ class Enemy {
     }
 
     takeDamage(amt, isAttack = true) {
+        if (this.delayLoad) {
+            return;
+        }
         let origHealth = this.health;
         // if (this.storeDamage) {
         //     // time storage
@@ -760,6 +779,9 @@ class Enemy {
 
 
     takeTrueDamage(amt, isAttack = true, extraOffsetY = 0) {
+        if (this.delayLoad) {
+            return;
+        }
         let origHealth = this.health;
         if (this.storeDamage) {
             // time storage
@@ -838,6 +860,11 @@ class Enemy {
             duration: 400,
         });
         this.attackName.visible = false;
+    }
+
+    setAwake() {
+        this.isAsleep = false;
+        this.attackName.visible = true;
     }
 
     hideAngrySymbol() {

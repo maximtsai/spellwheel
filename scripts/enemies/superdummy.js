@@ -13,7 +13,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 800 : 200;
+         this.health = gameVars.isHardMode ? 800 : 600;
          this.isAsleep = true;
      }
 
@@ -195,7 +195,7 @@
                          ease: 'Quart.easeIn',
                          onComplete: () => {
                              zoomTemp(1.03);
-                             this.isAsleep = false;
+                             this.setAwake();
                              this.currentAttackSetIndex = 0;
                              this.nextAttackIndex = 0;
                              this.brows = this.scene.add.sprite(this.x - 3, this.y - 70, 'enemies', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(999);

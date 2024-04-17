@@ -79,7 +79,7 @@
                  this.breatheTween.stop();
                  this.sprite.setScale(this.sprite.startScale);
              }
-             this.isAsleep = false;
+             this.setAwake();
              let eyePosX = this.x + 129 * this.sprite.startScale;
              let eyePosY = this.y - 94 * this.sprite.startScale;
              let eye = this.scene.add.sprite(eyePosX, eyePosY, 'enemies', 'tree_eye.png').setDepth(9).setOrigin(0.5, 0.5).setRotation(-0.13).setScale(0, this.sprite.startScale);

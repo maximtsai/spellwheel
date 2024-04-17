@@ -1,11 +1,155 @@
  class KillerRobot extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
-         this.initSprite('robot3.png', 0.65);
+         this.initSprite('robot0.png', 0.65);
          this.shieldAdded = false;
 
+         globalObjects.magicCircle.disableMovement();
+         this.sprite.alpha = 0;
+         this.sprite.setScale(this.sprite.startScale * 0.75);
+         setTimeout(() => {
+             this.initPreBattleLogic();
+         }, 1200);
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
+     }
 
+     initPreBattleLogic() {
+         this.setAsleep()
+
+         this.eyeShine = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 67, 'enemies', 'roboteye.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth);
+         this.scene.tweens.add({
+             targets: this.sprite,
+             duration: 3000,
+             scaleX: this.sprite.startScale * 1.05,
+             scaleY: this.sprite.startScale * 1.05,
+             ease: 'Quad.easeOut',
+         });
+         this.scene.tweens.add({
+             delay: 1000,
+             targets: this.eyeShine,
+             duration: 500,
+             scaleX: this.sprite.startScale,
+             scaleY: this.sprite.startScale,
+             alpha: 0.75,
+             ease: 'Back.easeOut',
+             onComplete: () => {
+                 this.scene.tweens.add({
+                     targets: this.eyeShine,
+                     duration: 2000,
+                     alpha: 1,
+                     scaleX: this.sprite.startScale * 1.2,
+                     scaleY: this.sprite.startScale * 1.05,
+                     ease: 'Quad.easeOut',
+                     onComplete: () => {
+                         this.showStartupAnim();
+                     }
+                 });
+             }
+         });
+         this.scene.tweens.add({
+             targets: this.sprite,
+             duration: 3200,
+             alpha: 1,
+             onComplete: () => {
+             }
+         });
+     }
+
+     showStartupAnim() {
+         this.tunnelBG = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight * 0.7, 'backgrounds', 'tunnel2.png').setScale(1).setDepth(-9).setAlpha(0).setOrigin(0.5, 0.35);
+         this.scene.tweens.add({
+             targets: this.tunnelBG,
+             duration: 1400,
+             alpha: 1,
+         });
+         this.scene.tweens.add({
+             targets: [this.sprite],
+             duration: 700,
+             scaleX: this.sprite.startScale * 1.25,
+             scaleY: this.sprite.startScale * 1.25,
+             ease: 'Cubic.easeOut',
+             onComplete: () => {
+                 this.scene.tweens.add({
+                     targets: [this.sprite],
+                     duration: 700,
+                     scaleX: this.sprite.startScale,
+                     scaleY: this.sprite.startScale,
+                     ease: 'Cubic.easeIn',
+                     onComplete: () => {
+                         this.scene.tweens.add({
+                             targets: this.eyeShine,
+                             duration: 150,
+                             alpha: 0,
+                             scaleX: this.sprite.startScale * 0.5,
+                             scaleY: this.sprite.startScale * 0.5,
+                             rotation: 0,
+                         });
+                         this.tunnelBG.setFrame('tunnel3.png').setScale(1.02).setOrigin(0.5, 0.35);
+                         this.scene.tweens.add({
+                             targets: this.tunnelBG,
+                             duration: 500,
+                             alpha: 0.9,
+                             ease: 'Quad.easeOut',
+                             scaleX: 1,
+                             scaleY: 1,
+                         });
+                         this.setDefaultSprite('robot_laser.png');
+                         let spriteOrigY = this.sprite.y;
+                         this.sprite.setOrigin(0.5, 0.95).setPosition(this.sprite.x, this.sprite.y + 150);
+                         this.scene.tweens.add({
+                             delay: 800,
+                             targets: this.sprite,
+                             duration: 900,
+                             rotation: -0.06,
+                             ease: 'Cubic.easeIn',
+                             scaleX: this.sprite.startScale * 0.985,
+                             scaleY: this.sprite.startScale * 0.985,
+                             onComplete: () => {
+                                 this.sprite.setOrigin(0.5, 0.5).setPosition(this.sprite.x, spriteOrigY).setRotation(0);
+                                 this.setDefaultSprite('robot1.png');
+                                 this.setAwake();
+                                 this.loadUpHealthBar();
+                                 this.scene.tweens.add({
+                                     targets: this.tunnelBG,
+                                     duration: 1500,
+                                     alpha: 0.8,
+                                     ease: 'Quad.easeOut',
+                                     scaleX: 1,
+                                     scaleY: 1,
+                                 });
+                             }
+                         });
+                     }
+                 });
+             }
+         });
+         this.scene.tweens.add({
+             targets: this.eyeShine,
+             duration: 700,
+             alpha: 0.95,
+             scaleX: this.sprite.startScale * 1.5,
+             scaleY: this.sprite.startScale * 1.5,
+             rotation: -0.2,
+             y: "-=10",
+             ease: 'Cubic.easeOut',
+             onComplete: () => {
+                 this.scene.tweens.add({
+                     targets: this.eyeShine,
+                     duration: 700,
+                     alpha: 1.3,
+                     scaleX: this.sprite.startScale * 2.5,
+                     scaleY: this.sprite.startScale * 2.5,
+                     rotation: 0,
+                     y: "+=10",
+                     ease: 'Cubic.easeIn',
+                 });
+             }
+         });
+     }
+
+     initPreStats() {
+         this.delayLoad = true;
+         // this.loadUpHealthBar();
      }
 
      initStatsCustom() {

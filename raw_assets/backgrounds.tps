@@ -222,7 +222,6 @@
             <key type="filename">backgrounds/firebg1.png</key>
             <key type="filename">backgrounds/firebg2.png</key>
             <key type="filename">backgrounds/firebg3.png</key>
-            <key type="filename">backgrounds/tunnel.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -282,6 +281,23 @@
                 <rect>192,238,385,477</rect>
                 <key>scale9Paddings</key>
                 <rect>192,238,385,477</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">backgrounds/tunnel.png</key>
+            <key type="filename">backgrounds/tunnel2.png</key>
+            <key type="filename">backgrounds/tunnel3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>225,250,450,500</rect>
+                <key>scale9Paddings</key>
+                <rect>225,250,450,500</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -86,6 +86,11 @@
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
             globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 173, gameConsts.halfHeight - 97, "Enemies become\nangry when\nattacked!", 'left');
+            if (this.rune1) {
+                this.rune1.destroy();
+                this.rune2.destroy();
+            }
+
             messageBus.publish('setSlowMult', 0.1, 320);
             let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             PhaserScene.tweens.add({
@@ -202,7 +207,7 @@
                          ease: 'Quart.easeIn',
                          onComplete: () => {
                              zoomTemp(1.03);
-                             this.isAsleep = false;
+                             this.setAwake();
                              this.currentAttackSetIndex = 0;
                              this.nextAttackIndex = 0;
                              this.brows = this.scene.add.sprite(this.x - 3, this.y - 70, 'enemies', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(999);

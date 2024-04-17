@@ -2279,16 +2279,27 @@ class SpellManager {
         let voidDuration = 1500 + numTotalAttacks * 200 + additionalDamage * 3;
         let voidScale = 0.88 + numTotalAttacks * 0.12 + additionalDamage * 0.016;
         messageBus.publish('enableVoidArm', initialDelay, voidDuration, 0.6 + voidScale * 0.4);
+        let whiteBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(500).setDepth(-1).setAlpha(0.01);
         this.scene.tweens.add({
             targets: voidObj,
             delay: initialDelay,
-            duration: 300,
+            duration: 250,
             alpha: 1,
             scaleX: voidScale,
             scaleY: voidScale,
             ease: 'Cubic.easeOut',
             onStart: () => {
+                whiteBG.alpha = voidScale * 0.65;
                 zoomTemp(1.005);
+                this.scene.tweens.add({
+                    targets: whiteBG,
+                    duration: 450,
+                    alpha: 0,
+                    ease: 'Cubic.easeOut',
+                    onComplete: () => {
+                        whiteBG.destroy();
+                    }
+                });
             }
         });
         this.scene.tweens.add({
@@ -2308,7 +2319,9 @@ class SpellManager {
             scaleX: voidScale * 1.5,
             duration: 500,
             ease: 'Cubic.easeOut',
-            alpha: 0
+            alpha: 0,
+            onStart: () => {
+            }
         });
 
         playSound('void_ultimate');

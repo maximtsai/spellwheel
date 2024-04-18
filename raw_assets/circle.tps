@@ -448,6 +448,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">circle/greyed.png</key>
             <key type="filename">circle/greyed_dead.png</key>
             <key type="filename">circle/usage_drag.png</key>
             <key type="filename">circle/usage_glow.png</key>

@@ -372,6 +372,7 @@ const ENABLE_KEYBOARD = true;
         this.greyedDead = scene.add.sprite(x, y, 'circle', 'greyed_dead.png').setVisible(false).setDepth(119);
 
         this.focusLines = scene.add.sprite(x, y - 137, 'circle', 'focus_lines.png').setDepth(120);
+        this.greyed = scene.add.sprite(x, y, 'circle', 'greyed.png').setVisible(false).setDepth(120).setVisible(false);
 
         this.castTriangles = [];
         let triangle1 = scene.add.sprite(x - 35, y - 113.5, 'circle', 'cast_triangle.png');
@@ -2307,6 +2308,7 @@ const ENABLE_KEYBOARD = true;
      }
 
      disableMovement() {
+         this.greyed.visible = true;
         this.manualDisabled = true;
          // this.castDisabled = true;
          // this.outerDragDisabled = true;
@@ -2314,6 +2316,7 @@ const ENABLE_KEYBOARD = true;
          this.disableSpellDescDisplay = true;
      }
      enableMovement() {
+         this.greyed.visible = false;
          this.manualDisabled = false;
          this.disableSpellDescDisplay = false;
      }

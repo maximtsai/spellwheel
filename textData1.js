@@ -18,7 +18,7 @@ const textData = {
     void_enhance_desc: {en_us: 'NEXT ATTACK\nCURSES THE ENEMY\nTO TAKE +1 DAMAGE\nFROM ALL SOURCES', fr_FR: ''},
     void_protect_desc: {en_us: 'CREATE A SHIELD\nTHAT NEGATES\nONE ATTACK', fr_FR: ''},
     void_reinforce_desc: {en_us: 'HEAL TO FULL, BUT\nAT THE COST OF\n20% MAX HP', fr_FR: ''},
-    void_unload_desc: {en_us: 'DAMAGE 15% OF ENEMY\nCURRENT HP AND\nDISRUPT THEIR CURRENT\nACTION BY 66%', fr_FR: ''},
+    void_unload_desc: {en_us: 'DAMAGE 15% OF\nENEMY CURRENT HP\nAND DISRUPT THEIR\nCURRENT ACTION', fr_FR: ''},
 
     mind_strike_desc: {en_us: 'DEAL 1 DAMAGE.\nENEMY TAKES DOUBLE\nDAMAGE FROM NEXT\nATTACK HIT', fr_FR: ''},
     mind_enhance_desc: {en_us: 'NEXT ATTACK BURNS\nENEMY FOR 3 DMG/S\nFOR 4 SECONDS.\n(DOES NOT STACK)', fr_FR: ''},

@@ -185,22 +185,9 @@ function setupLoadingBar(scene) {
             duration: 750,
             ease: 'Cubic.easeOut',
         });
-        globalObjects.menuBack = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-9);
-        globalObjects.menuTop = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9);
-        globalObjects.menuBot = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_bot.png').setDepth(-9);
-
-
+        setupMainMenu();
         loadObjects.loadingSpinner.goalRot = Math.PI * -14/8 - 0.08;//value * Math.PI * -1;
 
-        // loadingSpinner.goalRot = null;
-        // Animate out the loading bar
-        // let finalRotation = loadingSpinner.rotation > 0 ? Math.PI * 2 : 0;
-        // scene.tweens.add({
-        //     targets: loadingSpinner,
-        //     rotation: finalRotation,
-        //     duration: 450,
-        //     ease: 'Cubic.easeInOut'
-        // });
         scene.tweens.add({
             targets: [loadObjects.loadingText, globalObjects.tempBG],
             delay: 350,
@@ -268,7 +255,7 @@ function setupGame() {
 
     globalObjects.player = new Player(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
 
-    createMenuButtons();
+    gotoMainMenu();
 
     // globalObjects.dummyEnemy = new Wall(PhaserScene, gameConsts.halfWidth, 165);
     // globalObjects.dummyEnemy = new Death(PhaserScene, gameConsts.halfWidth, 173);

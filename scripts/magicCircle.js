@@ -41,6 +41,9 @@ const ENABLE_KEYBOARD = true;
             messageBus.subscribe('selfClearEffect', this.clearMindForm.bind(this)),
             messageBus.subscribe('enemyHasDied', this.clearEffects.bind(this)),
             messageBus.subscribe("applyMindBurn", this.applyMindBurn.bind(this)),
+            messageBus.subscribe("playerDied", this.playerDied.bind(this)),
+            messageBus.subscribe("playerRevived", this.playerRevived.bind(this)),
+
         ];
 
         updateManager.addFunction(this.update.bind(this));
@@ -70,6 +73,19 @@ const ENABLE_KEYBOARD = true;
         }
         this.lastDragTime += dt;
         this.handleTimeSlow(dt);
+
+        let mouseDistX = gameVars.mouseposx - this.x;
+        let mouseDistY = gameVars.mouseposy - this.y;
+        let totalDist = Math.sqrt(mouseDistX * mouseDistX + mouseDistY * mouseDistY);
+
+        this.setFrameLazy(this.castButton, 'cast_normal.png');
+        this.setFrameLazy(this.innerCircle,'element_normal.png');
+        this.setFrameLazy(this.outerCircle, 'usage_normal.png');
+        if (this.manualDisabled) {
+            this.dragArrow.visible = false;
+            return;
+        }
+
         if (this.delayedDamage > this.delayedDamageCurrCap) {
             let extraOverload = this.delayedDamage - this.delayedDamageCurrCap;
             if (this.delayedDamage > this.delayedDamageCurrCap * 1.25) {
@@ -80,13 +96,6 @@ const ENABLE_KEYBOARD = true;
             this.delayDamageSand.x += Math.random() * (extraOverload * 0.12 + 0.5);
             this.delayDamageHourglass.x = this.delayDamageSand.x;
         }
-        let mouseDistX = gameVars.mouseposx - this.x;
-        let mouseDistY = gameVars.mouseposy - this.y;
-        let totalDist = Math.sqrt(mouseDistX * mouseDistX + mouseDistY * mouseDistY);
-
-        this.setFrameLazy(this.castButton, 'cast_normal.png');
-        this.setFrameLazy(this.innerCircle,'element_normal.png');
-        this.setFrameLazy(this.outerCircle, 'usage_normal.png');
 
         if (ENABLE_KEYBOARD) {
             if (this.keyA.isDown || this.keyLeft.isDown) {
@@ -302,8 +311,6 @@ const ENABLE_KEYBOARD = true;
         this.delayedDamageShouldTick = false;
         this.lastDragTorque = 0;
         this.lastDragTorqueMult = 0.5;
-        this.laserDamage = 0
-        this.laserCharge = 0;
     }
 
     buildCircles(x, y, scene) {
@@ -362,6 +369,7 @@ const ENABLE_KEYBOARD = true;
         // this.castButtonFlash = scene.add.sprite(x, y, 'circle', 'cast_flash.png').setDepth(106).setAlpha(0);
         this.castHoverTemp = scene.add.sprite(x, y, 'circle', 'cast_press.png').setDepth(106).setAlpha(0);
         this.castGlow = scene.add.sprite(x, y, 'circle', 'cast_glow.png').setDepth(106).setAlpha(0);
+        this.greyedDead = scene.add.sprite(x, y, 'circle', 'greyed_dead.png').setVisible(false).setDepth(119);
 
         this.focusLines = scene.add.sprite(x, y - 137, 'circle', 'focus_lines.png').setDepth(120);
 
@@ -397,7 +405,6 @@ const ENABLE_KEYBOARD = true;
         this.spellNameText.alpha = 0.4;
 
         this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);
-        // this.voidSliceImage2 = scene.add.sprite(gameConsts.halfWidth, 280, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5).setAlpha(0).setOrigin(0.17, 0.5);
         this.voidSliceImage3 = scene.add.sprite(gameConsts.halfWidth + 100, 255, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5 - 0.6).setAlpha(0).setOrigin(0.17, 0.5);
 
         this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0);
@@ -689,6 +696,9 @@ const ENABLE_KEYBOARD = true;
     }
 
     updateRotations(dt, distToTarget = 99) {
+        if (this.manualDisabled) {
+            return;
+        }
         let decayAltered = DECAY;
 
         let innerDecayMult = 1;
@@ -1250,6 +1260,9 @@ const ENABLE_KEYBOARD = true;
     }
 
     castSpell(wasBuffered = false) {
+        if (this.manualDisabled) {
+            return;
+        }
         this.castDisabled = true;
         this.useBufferedSpellCast = false;
         this.bufferedCastAvailable = false;
@@ -2198,7 +2211,6 @@ const ENABLE_KEYBOARD = true;
         }
         let baseScale = 0.7 + Math.sqrt(damage) * 0.1;
          this.voidSliceImage1.alpha = 0.5;
-         // this.voidSliceImage2.alpha = 0.5;
          this.voidSliceImage3.alpha = 0.5;
          this.voidSliceImage1.setScale(baseScale * 0.8, baseScale * 0.1);
          this.scene.tweens.add({
@@ -2289,22 +2301,39 @@ const ENABLE_KEYBOARD = true;
 
      clearEffects() {
          this.voidSliceImage1.alpha = 0;
-         // this.voidSliceImage2.alpha = 0;
          this.voidSliceImage3.alpha = 0;
          this.mindBurnAnim.alpha = 0;
          this.mindChargeText.visible = false;
      }
 
      disableMovement() {
-         this.castDisabled = true;
-         this.outerDragDisabled = true;
-         this.innerDragDisabled = true;
+        this.manualDisabled = true;
+         // this.castDisabled = true;
+         // this.outerDragDisabled = true;
+         // this.innerDragDisabled = true;
          this.disableSpellDescDisplay = true;
      }
      enableMovement() {
-         this.castDisabled = false;
-         this.outerDragDisabled = false;
-         this.innerDragDisabled = false;
+         this.manualDisabled = false;
          this.disableSpellDescDisplay = false;
+     }
+
+     playerDied() {
+         this.delayedDamage = 0;
+        this.disableMovement();
+         this.greyedDead.visible = true;
+         this.greyedDead.alpha = 1;
+         if (this.disappearDeath) {
+             this.disappearDeath.stop();
+         }
+     }
+
+     playerRevived() {
+         this.enableMovement();
+         this.disappearDeath = this.scene.tweens.add({
+             targets: this.greyedDead,
+             alpha: 0,
+             duration: 250,
+         });
      }
  }

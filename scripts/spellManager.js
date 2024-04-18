@@ -2279,29 +2279,29 @@ class SpellManager {
         let voidDuration = 1500 + numTotalAttacks * 200 + additionalDamage * 3;
         let voidScale = 0.88 + numTotalAttacks * 0.12 + additionalDamage * 0.016;
         messageBus.publish('enableVoidArm', initialDelay, voidDuration, 0.6 + voidScale * 0.4);
-        let whiteBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(500).setDepth(-1).setAlpha(0.01);
-        this.scene.tweens.add({
-            targets: voidObj,
-            delay: initialDelay,
-            duration: 250,
-            alpha: 1,
-            scaleX: voidScale,
-            scaleY: voidScale,
-            ease: 'Cubic.easeOut',
-            onStart: () => {
-                whiteBG.alpha = voidScale * 0.65;
-                zoomTemp(1.005);
-                this.scene.tweens.add({
-                    targets: whiteBG,
-                    duration: 450,
-                    alpha: 0,
-                    ease: 'Cubic.easeOut',
-                    onComplete: () => {
-                        whiteBG.destroy();
-                    }
-                });
-            }
-        });
+        // let blackBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(-1).setAlpha(0.01);
+        // this.scene.tweens.add({
+        //     targets: voidObj,
+        //     delay: initialDelay,
+        //     duration: 250,
+        //     alpha: 1,
+        //     scaleX: voidScale,
+        //     scaleY: voidScale,
+        //     ease: 'Cubic.easeOut',
+        //     onStart: () => {
+        //         blackBG.alpha = voidScale * 0.3;
+        //         zoomTemp(1.005);
+        //         this.scene.tweens.add({
+        //             targets: blackBG,
+        //             duration: 450,
+        //             alpha: 0,
+        //             ease: 'Cubic.easeOut',
+        //             onComplete: () => {
+        //                 blackBG.destroy();
+        //             }
+        //         });
+        //     }
+        // });
         this.scene.tweens.add({
             targets: voidObj,
             delay: initialDelay,
@@ -2325,6 +2325,8 @@ class SpellManager {
         });
 
         playSound('void_ultimate');
+        let whiteObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(500).setDepth(9).setAlpha(0);
+        let blackObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(9).setAlpha(0);
         for (let i = 0; i < numTotalAttacks; i++) {
             let thisDurationDelay = voidDuration - voidDuration * (i / numTotalAttacks);
             if (numTotalAttacks == 1) {
@@ -2333,10 +2335,10 @@ class SpellManager {
             PhaserScene.time.delayedCall(Math.max(0, initialDelay * 0.1 + thisDurationDelay * 0.85 - 280), () => {
                 PhaserScene.time.delayedCall(180, () => {
                     zoomTemp(1.005 + numTotalAttacks * 0.002);
-                    let whiteObj = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(500).setDepth(9).setAlpha(0.5);
-                    let blackObj = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(9).setAlpha(0.4);
+                    whiteObj.alpha = 0.5;
                     setTimeout(() => {
                         whiteObj.destroy();
+                        blackObj.alpha = 0.4;
                         this.scene.tweens.add({
                             targets: blackObj,
                             alpha: 0,

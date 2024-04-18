@@ -72,10 +72,11 @@
                  this.scene.tweens.add({
                      targets: [this.sprite],
                      duration: 700,
-                     scaleX: this.sprite.startScale,
-                     scaleY: this.sprite.startScale,
+                     scaleX: this.sprite.startScale * 0.98,
+                     scaleY: this.sprite.startScale * 0.98,
                      ease: 'Cubic.easeIn',
                      onComplete: () => {
+                         this.sprite.setScale(this.sprite.startScale);
                          this.scene.tweens.add({
                              targets: this.eyeShine,
                              duration: 150,
@@ -190,33 +191,37 @@
              [
                  // 0
                  {
-                     name: gameVars.isHardMode ? "}8 " : "}5 ",
-                     desc: "The goblin waves his\nlittle knife in front\nof your face",
-                     chargeAmt: 350,
-                     damage: gameVars.isHardMode ? 8 : 5,
-                     attackSprites: ['gobbo0_atk.png']
-                 }
-             ],
-             [
-                 // 1
-                 {
-                     name: gameVars.isHardMode ? "READYING FANCY SHIELD {50 " : "READYING FANCY SHIELD {40 ",
-                     desc: "The goblin hoists his\ntrusty shield (which\nwas definitely not stolen)",
-                     block: gameVars.isHardMode ? 50 : 40,
-                     chargeAmt: 180,
+                     name: gameVars.isHardMode ? "SHINY FORCE FIELD {150 " : "SHINY FORCE FIELD  {120 ",
+                     block: gameVars.isHardMode ? 150 : 120,
+                     chargeAmt: 750,
+                     chargeMult: 5,
                      attackFinishFunction: () => {
-                         this.setDefaultSprite('gobbo1.png', 0.75);
-                         this.currentAttackSetIndex = 2;
+                         this.currentAttackSetIndex = 1;
                          this.nextAttackIndex = 0;
                          this.shieldAdded = true;
                      }
                  }
              ],
              [
+                 // 1
+                 {
+                     name: gameVars.isHardMode ? "{8x2 " : "{8x2 ",
+                     chargeAmt: 400,
+                     damage: 8,
+                     attackTimes: 2,
+                     attackSprites: ['robot_claw_1.png', 'robot_claw_2.png']
+                 },
+                 {
+                     name: gameVars.isHardMode ? "}4x8 " : "}4x6 ",
+                     chargeAmt: 500,
+                     damage: 4,
+                     attackTimes: gameVars.isHardMode ? 8 : 6,
+                 },
+             ],
+             [
                  // 2 - attacks from behind shield
                  {
-                     name: gameVars.isHardMode ? "}12 " : "}7 ",
-                     desc: "Goblin rams you with\nhis shield",
+                     name: gameVars.isHardMode ? "}4x6 " : "}4x6 ",
                      chargeAmt: 500,
                      damage: gameVars.isHardMode ? 12 : 7
                  },

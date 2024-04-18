@@ -2,13 +2,6 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('dummy.png', 0.75,0, 5);
-        this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
-            if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
-
-            } else if (globalObjects.player.getPlayerCastSpellsCount() > 1) {
-                this.playerSpellCastSub.unsubscribe();
-            }
-        });
         this.initTutorial();
     }
 
@@ -34,7 +27,7 @@
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
-            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 173, gameConsts.halfHeight - 97, "Enemies become\nangry when\nattacked!", 'left');
+            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 180, gameConsts.halfHeight - 112, "Enemies become\nangry when\nattacked!", 'left');
             messageBus.publish('setSlowMult', 0.1, 320);
             let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             PhaserScene.tweens.add({
@@ -100,7 +93,7 @@
                         });
                     }
                 }, 4500);
-            }, 1500);
+            }, 800);
         }
     }
 

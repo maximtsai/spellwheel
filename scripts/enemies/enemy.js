@@ -24,6 +24,9 @@ class Enemy {
             messageBus.subscribe("enemyStartDamageCountdown", this.startDamageCountdown.bind(this)),
             messageBus.subscribe("enemyAddShield", this.addShield.bind(this)),
             messageBus.subscribe("increaseCurse", this.increaseCurse.bind(this)),
+
+            messageBus.subscribe("playerDied", this.playerDied.bind(this)),
+
         ];
 
         this.boundUpdateFunc = this.update.bind(this);
@@ -698,16 +701,18 @@ class Enemy {
             }
         });
 
-        this.shieldText.setText(0);
-        this.scene.tweens.add({
-            targets: this.shieldText,
-            scaleX: 0,
-            scaleY: 0,
-            duration: 100,
-            onComplete: () => {
-                this.shieldText.visible = false;
-            }
-        });
+        if (this.shieldText) {
+            this.shieldText.setText(0);
+            this.scene.tweens.add({
+                targets: this.shieldText,
+                scaleX: 0,
+                scaleY: 0,
+                duration: 100,
+                onComplete: () => {
+                    this.shieldText.visible = false;
+                }
+            });
+        }
     }
 
     handleSpecialDamageAbsorption(amt) {
@@ -715,6 +720,9 @@ class Enemy {
     }
 
     takeDamage(amt, isAttack = true) {
+        if (globalObjects.player.isDead()) {
+            return;
+        }
         if (this.delayLoad) {
             return;
         }
@@ -779,6 +787,9 @@ class Enemy {
 
 
     takeTrueDamage(amt, isAttack = true, extraOffsetY = 0) {
+        if (globalObjects.player.isDead()) {
+            return;
+        }
         if (this.delayLoad) {
             return;
         }
@@ -905,7 +916,23 @@ class Enemy {
         }
     }
 
+    playerDied() {
+        if (this.dead) {
+            return;
+        }
+        this.setAsleep();
+        for (let i = 0; i < this.subscriptions.length; i++) {
+            this.subscriptions[i].unsubscribe();
+        }
+        this.subscriptions = [];
+    }
+
     destroy() {
+        if (this.isDestroyed) {
+            return;
+        }
+        this.isDestroyed = true;
+        this.clearEffects()
         this.healthBarMax.destroy();
         this.healthBarCurr.destroy();
         this.healthBarText.destroy();
@@ -934,6 +961,11 @@ class Enemy {
             this.destructibles[i].destroy();
         }
 
+        for (let i = 0; i < this.subscriptions.length; i++) {
+            this.subscriptions[i].unsubscribe();
+        }
+        this.subscriptions = [];
+
         updateManager.removeFunction(this.boundUpdateFunc);
     }
 
@@ -945,6 +977,7 @@ class Enemy {
         if (this.dead) {
             return;
         }
+        this.clearEffects();
         this.dead = true;
         // undo any time magic
         this.sprite.setScale(this.sprite.startScale);

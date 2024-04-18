@@ -1,3 +1,10 @@
+function setupMainMenu() {
+    globalObjects.menuBack = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-9);
+    globalObjects.menuTop = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9);
+    globalObjects.menuBot = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_bot.png').setDepth(-9);
+}
+
+
 function clearMenuButtons() {
     if (globalObjects.continueButton) {
         globalObjects.continueButton.destroy();
@@ -60,8 +67,19 @@ function clearMenuButtons() {
 
 }
 
-function createMenuButtons() {
+function gotoMainMenu() {
     let hasContinue = false;
+    if (globalObjects.currentEnemy) {
+        globalObjects.currentEnemy.destroy();
+    }
+    if (globalObjects.player) {
+        globalObjects.player.resetStats();
+
+    }
+
+    globalObjects.menuBack.setAlpha(1).setScale(1).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
+    globalObjects.menuTop.setAlpha(1).setScale(1).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
+    globalObjects.menuBot.setAlpha(1).setScale(1).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
 
     if (hasContinue) {
         globalObjects.continueButton = new Button({
@@ -103,7 +121,7 @@ function createMenuButtons() {
             atlas: 'buttons',
         },
         press: {
-            ref: "new_game_hover.png",
+            ref: "menu_btn_hover.png",
             atlas: 'buttons',
         },
         disable: {

@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>phaser</string>
+        <string>phaser-maxim</string>
         <key>textureFileName</key>
         <filename></filename>
         <key>flipPVR</key>
@@ -330,7 +330,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.97</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -448,6 +448,25 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">circle/greyed_dead.png</key>
+            <key type="filename">circle/usage_drag.png</key>
+            <key type="filename">circle/usage_glow.png</key>
+            <key type="filename">circle/usage_hover.png</key>
+            <key type="filename">circle/usage_normal.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>101,101,202,202</rect>
+                <key>scale9Paddings</key>
+                <rect>101,101,202,202</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">circle/healthbar_end.png</key>
             <key type="filename">circle/healthbar_tiny.png</key>
             <struct type="IndividualSpriteSettings">
@@ -555,24 +574,6 @@
                 <rect>25,25,50,50</rect>
                 <key>scale9Paddings</key>
                 <rect>25,25,50,50</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">circle/usage_drag.png</key>
-            <key type="filename">circle/usage_glow.png</key>
-            <key type="filename">circle/usage_hover.png</key>
-            <key type="filename">circle/usage_normal.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>101,101,202,202</rect>
-                <key>scale9Paddings</key>
-                <rect>101,101,202,202</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

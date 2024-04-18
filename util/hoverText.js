@@ -220,6 +220,10 @@ class HoverText {
     }
 
     destroy() {
+        if (this.isDestroyed) {
+            return;
+        }
+        this.isDestroyed = true;
         globalObjects.hoverTextManager.removeHoverText(this);
     }
 }

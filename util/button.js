@@ -406,11 +406,13 @@ class Button {
         for (let i in this.imageRefs) {
             this.imageRefs[i].setOrigin(origX, origY);
         }
+        return this;
     }
 
     addText(text, font) {
         let depth = this.normal.depth ? this.normal.depth + 1 : 1;
         this.text = this.scene.add.text(this.normal.x, this.normal.y, text, font).setAlpha(this.normal.alpha).setOrigin(0.5, 0.5).setDepth(depth);
+        return this;
     }
 
     tweenToPos(x, y, duration, ease, onUpdate) {
@@ -484,6 +486,10 @@ class Button {
     }
 
     destroy() {
+        if (this.isDestroyed) {
+            return;
+        }
+        this.isDestroyed = true;
         buttonManager.removeButton(this);
         if (this.text) {
             this.text.destroy();

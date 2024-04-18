@@ -1,7 +1,7 @@
  class Goblin extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
-         this.initSprite('gobbo0.png', 0.75);
+         this.initSprite('gobbo0.png', 0.7);
          this.shieldAdded = false;
 
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];

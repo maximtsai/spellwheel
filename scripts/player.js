@@ -4,6 +4,7 @@ class Player {
         this.initStats(x, y);
         this.resetStats();
         this.createHealthBar(x, y + 0.5);
+        this.createMisc();
         this.subscriptions = [
             messageBus.subscribe("selfTakeEffect", this.takeEffect.bind(this)),
             messageBus.subscribe("selfTakeEnemyEffect", this.takeEnemyEffect.bind(this)),
@@ -168,6 +169,7 @@ class Player {
     }
 
     createHealthBar(x, y) {
+        this.healthBarReady = true;
         this.barAssetsGrey = [];
         this.barAssetsLarge = [];
         this.barAssetsSmall = [];
@@ -211,6 +213,30 @@ class Player {
         this.healthText.setTint(0x000000);
         this.healthText.setOrigin(0.5, 0.5);
         this.healthText.setDepth(99999);
+    }
+
+    createMisc() {
+        this.hurtIndicator = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.height + 40, 'enemies', 'warning.png').setRotation(Math.PI).setScale(100, 1).setAlpha(0).setDepth(-1);
+        this.deadBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'grey_pixel.png').setDepth(20).setAlpha(0).setScale(500);
+    }
+
+    showHurt(dmg, emergency) {
+        let emergencyMult = emergency ? 1 : 0;
+        this.hurtIndicator.setAlpha(0.7 + dmg * 0.004 + emergencyMult * 0.25).setScale(100, 2.25 + dmg * 0.025 + emergencyMult * 1.5);
+        this.scene.tweens.add({
+            targets: this.hurtIndicator,
+            duration: 450 + dmg * 2 + emergencyMult * 300,
+            ease: 'Quad.easeOut',
+            scaleY: 1.75,
+            alpha: 0,
+        });
+        if (emergency && !this.recentlyGasped) {
+            this.recentlyGasped = true;
+            playSound('emergency');
+            setTimeout(() => {
+                this.recentlyGasped = false;
+            }, 20000);
+        }
     }
 
     refreshHealthBar(overrideHealth) {
@@ -305,6 +331,9 @@ class Player {
         this.playerCastSpells = 0;
         this.timeExhaustion = 0;
         this.clearAllEffects();
+        if (this.healthBarReady) {
+            this.refreshHealthBar();
+        }
     }
 
 
@@ -424,6 +453,10 @@ class Player {
         }
 
         this.health = Math.max(0, this.health - damageTaken);
+        if (damageTaken > 1) {
+            let isEmergency = origHealth > this.healthMax * 0.2 && this.health < this.healthMax * 0.2;
+            this.showHurt(damageTaken, isEmergency);
+        }
         this.animateHealthChange(-damageTaken);
         this.refreshHealthBar();
         if (this.health <= 0) {
@@ -721,10 +754,137 @@ class Player {
     }
 
     die() {
-        console.log('todo: has died');
-        for (let i = 0; i < this.subscriptions.length; i++) {
-            this.subscriptions[i].unsubscribe();
+        if (this.dead) {
+            return;
         }
+        this.dead = true;
+        this.deadBG.alpha = 0.85;
+        this.clearAllEffects();
+
+        if (!this.swirl1) {
+            this.swirl2 = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'backgrounds', 'fog_swirl_glow.png').setDepth(20);
+            this.swirl1 = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'backgrounds', 'fog_swirl.png').setDepth(20);
+        }
+        this.swirl1.setAlpha(0).setScale(3);
+        this.swirl2.setAlpha(0).setScale(3);
+
+        this.scene.tweens.add({
+            targets: [this.swirl1, this.swirl2],
+            duration: 2500,
+            alpha: 0.5,
+            scaleX: 1.3,
+            scaleY: 1.3,
+            ease: 'Cubic.easeInOut',
+        });
+        this.deadSwirlAnim = this.scene.tweens.add({
+            targets: [this.swirl1, this.swirl2],
+            duration: 30000,
+            rotation: "+=6.283",
+            repeat: -1,
+        });
+
+        messageBus.publish("playerDied");
+        this.deadBGAnim = this.scene.tweens.add({
+            targets: this.deadBG,
+            duration: 750,
+            alpha: 0.5,
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                this.deadBGAnim = this.scene.tweens.add({
+                    targets: this.deadBG,
+                    duration: 1500,
+                    alpha: 1,
+                    ease: 'Cubic.easeIn',
+                    onComplete: () => {
+                        let deathMenuButton;
+                        let deathRetryButton;
+                        deathMenuButton = new Button({
+                            normal: {
+                                ref: "menu_btn_normal.png",
+                                atlas: 'buttons',
+                                x: gameConsts.halfWidth,
+                                y: gameConsts.height - 380,
+                            },
+                            hover: {
+                                ref: "menu_btn_hover.png",
+                                atlas: 'buttons',
+                            },
+                            press: {
+                                ref: "menu_btn_hover.png",
+                                atlas: 'buttons',
+                            },
+                            disable: {
+                                alpha: 0.001
+                            },
+                            onMouseUp: () => {
+                                this.revive();
+                                gotoMainMenu();
+                                deathRetryButton.destroy();
+                                deathMenuButton.destroy();
+                            }
+                        });
+                        deathMenuButton.addText('MENU', {fontFamily: 'Garamond', fontSize: 34, color: '#000000', align: 'center'});
+                        deathMenuButton.setDepth(200);
+
+                        deathRetryButton = new Button({
+                            normal: {
+                                ref: "menu_btn_normal.png",
+                                atlas: 'buttons',
+                                x: gameConsts.halfWidth,
+                                y: gameConsts.height - 440,
+                            },
+                            hover: {
+                                ref: "menu_btn_hover.png",
+                                atlas: 'buttons',
+                            },
+                            press: {
+                                ref: "menu_btn_hover.png",
+                                atlas: 'buttons',
+                            },
+                            disable: {
+                                alpha: 0.001
+                            },
+                            onMouseUp: () => {
+                                this.revive();
+                                deathMenuButton.destroy();
+                                deathRetryButton.destroy();
+                            }
+                        });
+                        deathRetryButton.addText('RETRY', {fontFamily: 'Garamond', fontSize: 34, color: '#000000', align: 'center'});
+                        deathRetryButton.setDepth(200);
+                    }
+                });
+            }
+        });
+    }
+
+    revive() {
+        this.dead = false;
+        if (this.deadBGAnim) {
+            this.deadSwirlAnim.stop();
+            this.deadBGAnim.stop();
+            this.scene.tweens.add({
+                targets: this.deadBG,
+                duration: 500,
+                alpha: 0,
+                ease: 'Quad.easeOut',
+            });
+            this.scene.tweens.add({
+                targets: [this.swirl1, this.swirl2],
+                duration: 1000,
+                alpha: 0,
+                rotation: "-=1",
+                scaleX: 3,
+                scaleY: 3,
+                ease: 'Cubic.easeIn',
+            });
+        }
+
+        messageBus.publish("playerRevived");
+    }
+
+    isDead() {
+        return this.dead;
     }
 
     animateHealthChange(healthChange, isGreyed = false) {

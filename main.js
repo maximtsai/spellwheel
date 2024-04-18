@@ -2,8 +2,8 @@ let config = {
     type: Phaser.CANVAS,
     scale: {
         parent: 'spellwheel',
-        width: 620,
-        height: 740,
+        width: 610,
+        height: 760,
         autoRound: true,
         mode: Phaser.Scale.FIT,
 

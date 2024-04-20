@@ -69,8 +69,8 @@ class Enemy {
         this.attackCharge = 0;
         this.nextAttackChargeNeeded = 999;
         this.nextAttackMultiples = 1;
-        this.delayBetweenAttacks = 100;
-        this.attackCooldown = 100;
+        this.delayBetweenAttacks = 50;
+        this.attackCooldown = 50;
         this.nextAttackIndex = 0;
         this.currentAttackSetIndex = 0;
         this.pauseMultDuration = 0;
@@ -85,6 +85,7 @@ class Enemy {
         this.storeDamage = false;
         this.dead = false;
         this.pullbackScale = 0.9;
+        this.pullbackScaleDefault = this.pullbackScale;
         this.attackScale = 1.1;
         this.curse = 0;
 
@@ -182,13 +183,13 @@ class Enemy {
         this.chargeBarAngry.setDepth(10);
         this.chargeBarAngry.visible = false;
 
-        let attackNameYPos = isMobile ? this.chargeBarMax.y - 28 : this.chargeBarMax.y - 26
+        let attackNameYPos = isMobile ? this.chargeBarMax.y - 21 : this.chargeBarMax.y - 19
 
         this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', 25);
         this.attackName.setDepth(10);
-        this.attackName.setOrigin(0.5, 0.5);
+        this.attackName.setOrigin(0.5, 0.85);
 
-        this.angrySymbol = this.scene.add.sprite(x, this.attackName.y + 3, 'enemies', 'angry1.png');
+        this.angrySymbol = this.scene.add.sprite(x, this.attackName.y - 5, 'enemies', 'angry1.png');
         this.angrySymbol.setDepth(10);
         this.angrySymbol.visible = false;
         this.angrySymbolIsHiding = true;
@@ -251,13 +252,13 @@ class Enemy {
         this.delayedDamageText.setOrigin(0.5, 0.6);
         this.delayedDamageText.setDepth(2);
 
-        this.shieldSprite = this.scene.add.sprite(this.x, this.y + 20, 'spells', 'shield.png');
+        this.shieldSprite = this.scene.add.sprite(this.x, this.y, 'spells', 'shield.png');
         this.shieldSprite.alpha = 0.75;
         this.shieldSprite.setScale(0.5);
         this.shieldSprite.setDepth(2);
         this.shieldSprite.visible = false;
 
-        this.shieldText = this.scene.add.bitmapText(this.x, this.y + 90, 'block', '', 48);
+        this.shieldText = this.scene.add.bitmapText(this.x, this.y + 85, 'block', '', 48);
         this.shieldText.alpha = 0.8;
         this.shieldText.setOrigin(0.5, 0.55);
         this.shieldText.setDepth(2);
@@ -285,7 +286,10 @@ class Enemy {
             newScale = scale ? scale : this.sprite.startScale;
             let oldOriginX = this.sprite.originX;
             let oldOriginY = this.sprite.originY;
-            this.sprite.setFrame(name);
+            let oldFrame = this.sprite.frame;
+            if (oldFrame !== name) {
+                this.sprite.setFrame(name);
+            }
             this.sprite.setOrigin(oldOriginX, oldOriginY)
         }
         this.sprite.startScale = newScale;
@@ -296,6 +300,7 @@ class Enemy {
             scaleX: newScale,
             scaleY: newScale,
         });
+        return this.sprite;
     }
 
     setDefaultSprite(name, scale = null) {
@@ -303,7 +308,9 @@ class Enemy {
         if (!scale) {
             scale = this.sprite ? this.sprite.startScale : 1;
         }
-        this.setSprite(name, scale);
+        console.log("sprite stop", name);
+        this.sprite.stop();
+        return this.setSprite(name, scale);
     }
 
     update(dt) {
@@ -368,7 +375,9 @@ class Enemy {
             }
             this.chargeBarCurr.scaleX = Math.min(this.nextAttackChargeNeeded * 0.2, this.attackCharge * 0.2 + 1);
             this.chargeBarAngry.scaleX = this.chargeBarCurr.scaleX;
-            if (this.attackCharge >= this.nextAttackChargeNeeded) {
+            if (this.isUsingAttack) {
+                // doNothing
+            } else if (this.attackCharge >= this.nextAttackChargeNeeded) {
                 this.useMove();
                 this.chargeBarWarning.visible = true;
                 this.chargeBarWarning.alpha = 0.8;
@@ -395,7 +404,7 @@ class Enemy {
                 this.chargeBarWarning.visible = false;
                 this.chargeBarWarningBig.alpha *= 1 - 0.08 * timeChange;
             }
-        } else {
+        } else if (!this.isUsingAttack) {
             let angerRatio = this.isAngry ? 1.5 : 1;
             this.attackCooldown -= timeChange * angerRatio;
             if (this.attackCooldown <= 0) {
@@ -520,15 +529,38 @@ class Enemy {
         if (this.nextAttack.startFunction) {
             this.nextAttack.startFunction();
         }
-        this.attackName.setText(atkName);
+        let finalScale = 1;
         if (atkName.length > 5) {
-            this.attackName.setScale(0.85);
+            finalScale = 0.85;
         } else {
-            this.attackName.setScale(1);
+            finalScale = 0.98;
         }
+        this.attackName.setText(atkName).setAlpha(0.2).setScale(finalScale);
+
+        PhaserScene.tweens.add({
+            targets: this.attackName,
+            duration: 500,
+            alpha: 1,
+        });
+        PhaserScene.tweens.add({
+            targets: this.attackName,
+            ease: 'Cubic.easeOut',
+            duration: 400,
+            scaleX: (finalScale - 0.679) * 5,
+            scaleY: (finalScale - 0.65) * 5,
+            onComplete: () => {
+                PhaserScene.tweens.add({
+                    targets: this.attackName,
+                    ease: 'Cubic.easeIn',
+                    duration: 500,
+                    scaleX: finalScale,
+                    scaleY: finalScale,
+                });
+            }
+        });
         this.angrySymbol.x = this.attackName.x + this.attackName.width * 0.52 + 8;
 
-        this.prepareChargeBar();
+        this.prepareChargeBar(true, this.nextAttack.isBigMove, this.nextAttack.customCall);
         this.nextAttackIndex++;
     }
 
@@ -573,7 +605,7 @@ class Enemy {
 
     }
 
-    prepareChargeBar(animate = true) {
+    prepareChargeBar(animate = true, isBigMove, customCall) {
         this.chargeBarMax.visible = true;
         let chargeBarLength = Math.floor(this.nextAttackChargeNeeded * 0.2);
         this.chargeBarMax.scaleX = chargeBarLength * 0.6 + 2;
@@ -585,6 +617,22 @@ class Enemy {
         this.chargeBarAngry.alpha = 0.9;
         let extraTimeMult = 2 - gameVars.timeSlowRatio;
         if (animate) {
+            if (customCall) {
+                if (customCall != "" && customCall != " ") {
+                    playSound('customCall', 0.7);
+                }
+            } else {
+                if (isBigMove) {
+                    playSound('enemy_attack_major', 0.6);
+                } else {
+                    if (this.enemyAttackSfxFlip) {
+                        playSound('enemy_attack_2', 0.53);
+                    } else {
+                        playSound('enemy_attack', 0.63);
+                    }
+                    this.enemyAttackSfxFlip = !this.enemyAttackSfxFlip;
+                }
+            }
             this.scene.tweens.add({
                 targets: this.chargeBarMax,
                 scaleX: chargeBarLength + 2,
@@ -1195,6 +1243,7 @@ class Enemy {
              ease: 'Quad.easeOut',
              duration: 500,
          });
+        playSound('victory');
          setTimeout(() => {
              continueText.alpha = 1;
          }, 1000);
@@ -1247,6 +1296,8 @@ class Enemy {
         if (this.dead){
             return;
         }
+        this.isUsingAttack = true;
+
         let extraTimeMult = 2 - gameVars.timeSlowRatio;
         if (prepareSprite) {
             this.setSprite(prepareSprite, this.sprite.startScale);
@@ -1254,28 +1305,33 @@ class Enemy {
         if (this.nextAttack.attackStartFunction) {
             this.nextAttack.attackStartFunction();
         }
+        // First pull back
         let pullbackScale = this.pullbackScale * this.sprite.startScale;
+        let pullbackDurMult = Math.sqrt(Math.abs(this.pullbackScale - this.pullbackScaleDefault) * 10) + 1;
         this.attackAnim = this.scene.tweens.add({
             targets: this.sprite,
             scaleX: pullbackScale,
             scaleY: pullbackScale,
             rotation: 0,
-            duration: isRepeatedAttack ? 200 * extraTimeMult : 300 * extraTimeMult,
+            duration: isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult : 300 * extraTimeMult * pullbackDurMult,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 if (this.dead){
                     return;
                 }
-                if (!prepareSprite) {
-                    this.setSprite(this.defaultSprite);
-                    this.sprite.setScale(pullbackScale);
+                let attackDuration = isRepeatedAttack ? 350 * extraTimeMult : 375 * extraTimeMult
+                if (prepareSprite) {
+                    setTimeout(() => {
+                        this.setSprite(this.defaultSprite);
+                        this.sprite.setScale(pullbackScale);
+                    }, attackDuration * 0.2);
                 }
                 let attackScale = this.attackScale * this.sprite.startScale
                 this.attackAnim = this.scene.tweens.add({
                     targets: this.sprite,
                     scaleX: attackScale,
                     scaleY: attackScale,
-                    duration: isRepeatedAttack ? 350 * extraTimeMult : 375 * extraTimeMult,
+                    duration: attackDuration,
                     rotation: 0,
                     ease: 'Cubic.easeIn',
                     onComplete: () => {
@@ -1318,6 +1374,7 @@ class Enemy {
                                 duration: 500 * extraTimeMult,
                                 ease: 'Cubic.easeInOut'
                             });
+                            this.isUsingAttack = false;
                             setTimeout(() => {
                                 if (!this.dead) {
                                     this.setSprite(this.defaultSprite);

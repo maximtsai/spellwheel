@@ -5,6 +5,7 @@ class PostFightScreen {
         this.backing = null;
         this.titleText = null;
         this.spellsCastText = null;
+        this.healthLeftText = null;
         this.locketSprite = null;
         this.locketDialogIndex = 0;
     }
@@ -22,10 +23,13 @@ class PostFightScreen {
             this.titleText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 250, '(placeholder title)', {fontFamily: 'Garamond', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.spellsCastText) {
-            this.spellsCastText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 160, 'Spells Cast:', {fontFamily: 'Garamond', fontSize: 22, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.spellsCastText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 160, 'Spells Cast:', {fontFamily: 'Garamond', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+        }
+        if (!this.healthLeftText) {
+            this.healthLeftText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 130, 'Health Left:', {fontFamily: 'Garamond', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.codeText) {
-            this.codeText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 130, 'placeholder code: ', {fontFamily: 'Garamond', fontSize: 22, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 30, 'placeholder code: ', {fontFamily: 'Garamond', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
         }
         if (!this.locketSprite) {
             this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 370, 'ui', 'locket1.png').setScale(0.75).setDepth(100002).setAlpha(0).setOrigin(0.5, 0.1);
@@ -47,12 +51,13 @@ class PostFightScreen {
                 },
                 press: {
                     atlas: "ui",
+                    alpha: 1,
                     ref: "nextLevel_press.png",
                 },
                 disable: {
                     atlas: "ui",
                     ref: "nextLevel_press.png",
-                    alpha: 0
+                    alpha: 0.001
                 },
                 onHover: () => {
                     if (canvas) {
@@ -118,6 +123,7 @@ class PostFightScreen {
         this.backing.setScale(0.98);
         this.titleText.setScale(0.97);
         this.spellsCastText.setScale(0.97);
+        this.healthLeftText.setScale(0.97);
         if (isWin) {
             this.locketSprite.visible = true;
             this.locketSprite.x = gameConsts.width + 300;
@@ -128,10 +134,10 @@ class PostFightScreen {
         } else {
             this.locketSprite.visible = false;
         }
-
+        this.continueButton.setState(DISABLE);
         setTimeout(() => {
             this.continueButton.setState(NORMAL);
-        }, 1000);
+        }, 3000);
 
         PhaserScene.tweens.add({
             targets: [this.bgShade],
@@ -148,7 +154,7 @@ class PostFightScreen {
             onComplete: () => {
                 PhaserScene.tweens.add({
                     delay: 200,
-                    targets: [this.spellsCastText],
+                    targets: [this.spellsCastText, this.healthLeftText],
                     scaleX: 1,
                     scaleY: 1,
                     alpha: 1,
@@ -186,7 +192,7 @@ class PostFightScreen {
 
     clearPostFightScreen() {
         PhaserScene.tweens.add({
-            targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.locketSprite, this.codeText],
+            targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.locketSprite, this.codeText],
             alpha: 0,
             duration: 500,
         });
@@ -243,7 +249,8 @@ class PostFightScreen {
         globalObjects.magicCircle.disableMovement();
         this.titleText.setText("Fight Complete");
         this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
-        this.codeText.setText("LEVEL CODE: ABCDE");
+        this.healthLeftText.setText("Health Left: " + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
+        this.codeText.setText("LEVEL CODE: ABCDE\n(Lets you skip past the dummy level)");
         this.locketDialog = this.getLevelDialog(level);
 
         globalObjects.bannerTextManager.setDialog(this.locketDialog);
@@ -261,6 +268,7 @@ class PostFightScreen {
         this.initAssets(false);
         this.titleText.setText("You Have Fallen");
         this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
+        // healthLeftText
         this.codeText.setText("CHEAT CODE: ABCDE");
         this.continueButton.setOnMouseUpFunc(() => {
             this.clearPostFightScreen();

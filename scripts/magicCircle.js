@@ -1,6 +1,6 @@
 const DECAY = 0.00006;
 const STATIC = 0.006;
-const INFINITE_CAST = true;
+const INFINITE_CAST = false;
 const ENABLE_KEYBOARD = true;
 
  class MagicCircle {

@@ -1,7 +1,7 @@
  class Dummy extends Enemy {
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
-        this.initSprite('dummy.png', 0.75,0, 5);
+        this.initSprite('dummy.png', 0.95,0, 5);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
                 // this.initTutorial2();
@@ -172,7 +172,7 @@
              return;
          }
 
-         if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.8) {
+         if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.95) {
              this.angryEyes = true;
              this.flash = this.scene.add.sprite(this.x, this.y - 90, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
 
@@ -229,7 +229,7 @@
                                                  this.tryInitTutorial4();
                                              }, 800);
 
-                                             this.setDefaultSprite('dummy_angry.png', 0.75);
+                                             this.setDefaultSprite('dummy_angry.png', 0.95);
                                              this.brows.destroy();
                                              this.brows = null;
                                          }
@@ -277,8 +277,8 @@
              });
          }
 
-         if (prevHealthPercent >= 0.8) {
-             if (currHealthPercent < 0.8) {
+         if (prevHealthPercent >= 0.95) {
+             if (currHealthPercent < 0.95) {
                  this.canAngryEyes = true;
                  this.eyes = this.scene.add.sprite(this.x - 3, this.y - 80, 'enemies', 'dummyeyes.png').setOrigin(0.5, 0.75).setScale(this.sprite.startScale, 0);
                  this.addExtraSprite(this.eyes, -3, -79)
@@ -288,7 +288,7 @@
                      ease: "Back.easeOut",
                      duration: 350,
                      onComplete: () => {
-                         this.setDefaultSprite('dummy_w_eyes.png', 0.75);
+                         this.setDefaultSprite('dummy_w_eyes.png', 0.95);
                          if (this.eyes) {
                              this.removeExtraSprite(this.eyes);
                              this.eyes.destroy();
@@ -380,7 +380,9 @@
                      name: "}5 ",
                      chargeAmt: 550,
                      damage: 5,
+                     isBigMove: true,
                     attackFinishFunction: () => {
+                        playSound('body_slam')
                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
                         setTimeout(() => {
                             dmgEffect.destroy();
@@ -400,6 +402,7 @@
                                  dmgEffect.destroy();
                              }, 150)
                          }, 75);
+                         playSound('body_slam')
 
                          this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
                          PhaserScene.tweens.add({
@@ -421,7 +424,9 @@
                      name: "}25",
                      chargeAmt: 850,
                      damage: 25,
+                     isBigMove: true,
                      attackFinishFunction: () => {
+                         playSound('body_slam')
                          let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
                          PhaserScene.tweens.add({
                              targets: dmgEffect,
@@ -453,10 +458,10 @@
                      chargeAmt: 400,
                      damage: 0,
                      startFunction: () => {
-                         this.setDefaultSprite('dummy_w_eyes.png', 0.75);
+                         this.setDefaultSprite('dummy_w_eyes.png', 0.95);
                      },
                      attackFinishFunction: () => {
-                         this.setDefaultSprite('dummy_angry.png', 0.75);
+                         this.setDefaultSprite('dummy_angry.png', 0.95);
                      }
                  },
                  {
@@ -535,7 +540,7 @@
                      chargeAmt: 250,
                      damage: 0,
                      attackFinishFunction: () => {
-                         this.setSprite('dummy.png', 0.75);
+                         this.setSprite('dummy.png', 0.95);
                          this.setAsleep();
                      }
                  },

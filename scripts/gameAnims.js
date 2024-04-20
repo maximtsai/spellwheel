@@ -23,6 +23,18 @@ function createAnimations(scene) {
         repeat: -1
     });
     scene.anims.create({
+        key: 'gobboshield',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'gobboshield',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        frameRate: 2,
+        repeat: -1
+    });
+    scene.anims.create({
         key: 'angry',
         frames: scene.anims.generateFrameNames('enemies', {
             prefix: 'angry',

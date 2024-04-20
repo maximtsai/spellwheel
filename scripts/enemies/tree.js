@@ -340,7 +340,7 @@
              this.treeBranch = PhaserScene.add.sprite(gameConsts.halfWidth - 75 + Math.random() * 150, -50, 'enemies', 'tree_branch.webp').setRotation(-0.7 + Math.random()).setDepth(110).setOrigin(0.6, 0.6);
              this.addToDestructibles(this.treeBranch);
          } else {
-             this.treeBranch.setPosition(gameConsts.halfWidth - 75 + Math.random() * 150, -50).setRotation(-0.7 + Math.random()).setAlpha(1);
+             this.treeBranch.setPosition(gameConsts.halfWidth - 75 + Math.random() * 150, -50).setRotation(-0.7 + Math.random()).setAlpha(1).setScale((damage - 6) / 6);
          }
          currObj = this.treeBranch;
 
@@ -471,10 +471,10 @@
              [
                  // 0
                  {
-                     name: "}12 ",
+                     name: "}10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 300,
+                     chargeAmt: 200,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
@@ -520,7 +520,7 @@
                      name: "}12 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 300,
+                     chargeAmt: 400,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
@@ -530,7 +530,7 @@
                  {
                      name: "REGROWTH (+" + regrowthAmt2 + ")",
                      announceName: "REGROWTH (+" + regrowthAmt2 + ")",
-                     desc: "The tree recovers its injuries over time",
+                     desc: "The tree recovers its injuries",
                      chargeAmt: 500,
                      damage: -1,
                      attackStartFunction: () => {
@@ -553,7 +553,7 @@
                      name: "}4x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 600,
+                     chargeAmt: 650,
                      damage: 0,
                      attackSprites: ['tree_open_glow.png'],
                      attackFinishFunction: () => {
@@ -574,7 +574,7 @@
                      name: "CRUSH}30 ",
                      announceName: "CRUSH",
                      desc: "The tree tries to crush you",
-                     chargeAmt: 600,
+                     chargeAmt: 800,
                      damage: 30,
                      attackFinishFunction: () => {
                          this.pullbackScale = 0.99;
@@ -593,7 +593,7 @@
                      name: "}14 ",
                      announceName: "HEAVY BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 300,
+                     chargeAmt: 400,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
@@ -604,7 +604,7 @@
                      name: "}4x6 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 600,
+                     chargeAmt: 650,
                      damage: 0,
                      attackSprites: ['tree_open_glow.png'],
                      attackFinishFunction: () => {
@@ -625,7 +625,7 @@
                      name: "TIMBER!!!}40 ",
                      announceName: "TIMBER!!!",
                      desc: "The tree tries to crush you",
-                     chargeAmt: 900,
+                     chargeAmt: 1100,
                      chargeMult: 2,
                      damage: 40,
                      attackFinishFunction: () => {

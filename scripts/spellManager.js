@@ -661,7 +661,7 @@ class SpellManager {
             duration: 300,
             ease: 'Cubic.easeOut',
             onStart: () => {
-                playSound('matter_ultimate');
+                playSound('matter_ultimate', 1.4);
                 stoneCircle.setAlpha(0.5);
                 textHealth.setText(shieldHealth);
                 this.scene.tweens.add({

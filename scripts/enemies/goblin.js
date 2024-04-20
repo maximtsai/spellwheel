@@ -1,7 +1,7 @@
  class Goblin extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
-         this.initSprite('gobbo0.png', 0.7);
+         this.initSprite('gobbo0.png', 0.95);
          this.shieldAdded = false;
 
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
@@ -10,6 +10,7 @@
 
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 120 : 90;
+         this.slashEffect = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
      }
 
      // update(dt) {}
@@ -33,10 +34,11 @@
          if (this.shieldAdded && this.currentAttackSetIndex == 2) {
              if (this.shield == 0) {
                  // shield must have broke
-                 this.setDefaultSprite('gobbo2.png', 0.75);
+                 this.setDefaultSprite('gobbo2.png', 0.95);
                  this.interruptCurrentAttack();
                  this.currentAttackSetIndex = 3;
                  this.nextAttackIndex = 0;
+                 playSound('goblin_grunt');
              }
          }
      }
@@ -50,7 +52,11 @@
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
                      chargeAmt: 350,
                      damage: gameVars.isHardMode ? 8 : 5,
-                     attackSprites: ['gobbo0_atk.png']
+                     attackSprites: ['gobbo0_atk.png'],
+                     attackFinishFunction: () => {
+                         this.makeSlashEffect();
+                         playSound('sword_hit', 0.75);
+                     }
                  }
              ],
              [
@@ -59,9 +65,12 @@
                      name: gameVars.isHardMode ? "READYING FANCY SHIELD {50 " : "READYING FANCY SHIELD {40 ",
                      desc: "The goblin hoists his\ntrusty shield (which\nwas definitely not stolen)",
                      block: gameVars.isHardMode ? 50 : 40,
+                     customCall: " ",
                      chargeAmt: 180,
                      attackFinishFunction: () => {
-                         this.setDefaultSprite('gobbo1.png', 0.75);
+                         playSound('clunk');
+
+                         this.setDefaultSprite('gobboshield1.png', 0.95).play('gobboshield');
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
                          this.shieldAdded = true;
@@ -74,7 +83,14 @@
                      name: gameVars.isHardMode ? "}12 " : "}7 ",
                      desc: "Goblin rams you with\nhis shield",
                      chargeAmt: 500,
-                     damage: gameVars.isHardMode ? 12 : 7
+                     damage: gameVars.isHardMode ? 12 : 7,
+                     attackFinishFunction: () => {
+                         playSound('body_slam')
+                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
+                         setTimeout(() => {
+                             dmgEffect.destroy();
+                         }, 150)
+                     }
                  },
              ],
              [
@@ -83,19 +99,22 @@
                      name: "REALIZING SHIELD IS BROKEN",
                      chargeAmt: gameVars.isHardMode ? 250 : 300,
                      chargeMult: 2,
+                     customCall: " ",
                      damage: 0
                  },
                  {
                      name: "TAKING OUT KNIVES!",
                      chargeAmt: gameVars.isHardMode ? 250 : 300,
                      chargeMult: 5,
+                     isBigMove: true,
                      startFunction: () => {
-                         this.setDefaultSprite('gobbo3.png', 0.75);
+                         this.setDefaultSprite('gobbo3.png', 0.95);
                      },
                      attackFinishFunction: () => {
+                         playSound('goblin_aha');
                          this.currentAttackSetIndex = 4;
                          this.nextAttackIndex = 0;
-                         this.setDefaultSprite('gobbo4.png', 0.75);
+                         this.setDefaultSprite('gobbo4.png', 0.95);
                          let oldScale = this.sprite.scaleX;
                          this.sprite.setScale(this.sprite.scaleX * 1.01);
                          this.currAnim = PhaserScene.tweens.add({
@@ -105,7 +124,7 @@
                              duration: 600,
                              completeDelay: 100,
                              onComplete: () => {
-                                 this.setDefaultSprite('gobbo5.png', 0.75);
+                                 this.setDefaultSprite('gobbo5.png', 0.95);
                              }
                          });
                      }
@@ -118,39 +137,77 @@
                      chargeAmt: gameVars.isHardMode ? 120 : 180,
                      damage: 4,
                      attackTimes: 2,
-                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
+                     prepareSprite: "",
+                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
+                     attackFinishFunction: () => {
+                         this.makeSlashEffect();
+                     }
                  },
                  {
                      name: "}4x3 ",
                      chargeAmt: gameVars.isHardMode ? 130 : 190,
                      damage: 4,
                      attackTimes: 3,
-                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
+                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
+                     attackFinishFunction: () => {
+                         this.makeSlashEffect();
+                     }
                  },
                  {
                      name: "}4x4 ",
                      chargeAmt: gameVars.isHardMode ? 140 : 200,
                      damage: 4,
                      attackTimes: 4,
-                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
+                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
+                     attackFinishFunction: () => {
+                         this.makeSlashEffect();
+                     }
                  },
                  {
                      name: "}4x5 ",
                      chargeAmt: gameVars.isHardMode ? 150 : 210,
                      damage: 4,
                      attackTimes: 5,
-                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png']
+                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
+                     attackFinishFunction: () => {
+                         this.makeSlashEffect();
+                     }
                  },
                  {
                      name: "LAUGH IN YOUR FACE",
-                     chargeAmt: 200,
+                     chargeAmt: 250,
                      chargeMult: 5,
                      damage: -1,
                      tease: true,
-                     attackSprites: ['gobbo4.png']
+                     attackSprites: ['gobbo4.png'],
+                     attackFinishFunction: () => {
+                         playSound('goblin_aha');
+                     }
                  }
              ],
          ];
+     }
+
+     makeSlashEffect() {
+         playSound('sword_slice', 0.7);
+         if (this.slashEffectAnim) {
+             this.slashEffectAnim.stop();
+         }
+         let isFlipped = this.slashEffect.scaleX > 0;
+         this.slashEffect.setAlpha(1).setScale(isFlipped ? -0.5 : 0.5, 0.4);
+         this.slashEffectAnim = PhaserScene.tweens.add({
+             targets: this.slashEffect,
+             scaleX: isFlipped ? -1 : 1,
+             scaleY: 0.6,
+             duration: 250,
+             ease: 'Cubic.easeOut',
+             alpha: 0,
+         });
+     }
+
+     destroy() {
+         super.destroy();
+         this.slashEffect.destroy();
      }
 
      die() {
@@ -184,7 +241,7 @@
              ease: "Cubic.easeIn",
              duration: 10,
              onComplete: () => {
-                 this.setSprite('gobboDead.png', this.sprite.scaleX);
+                 this.setSprite('gobboDead.png');
                  this.sprite.setRotation(0);
                  this.x -= 5;
                  this.y += 48;
@@ -192,6 +249,7 @@
 
 
                  let rune = this.scene.add.sprite(this.x, this.y, 'circle', 'rune_protect_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(9999);
+                 playSound('victory_2');
                  PhaserScene.tweens.add({
                      targets: rune,
                      x: gameConsts.halfWidth,

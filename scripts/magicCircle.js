@@ -98,7 +98,7 @@ const ENABLE_KEYBOARD = true;
             this.delayDamageHourglass.x = this.delayDamageSand.x;
         }
 
-        if (ENABLE_KEYBOARD) {
+        if (ENABLE_KEYBOARD && !this.outerDragDisabled && !this.innerDragDisabled) {
             if (this.keyA.isDown || this.keyLeft.isDown) {
                 this.keyboardRotateInner = -1;
             } else if (this.keyD.isDown || this.keyRight.isDown) {
@@ -152,6 +152,7 @@ const ENABLE_KEYBOARD = true;
                     this.setFrameLazy(this.outerCircle,'usage_drag.png');
                 }
             } else if (gameVars.mouseJustUpped) {
+                // let go
                 if (totalDist < this.castButtonSize && this.draggedObj == this.castButton) {
                     if (!this.castDisabled && !this.recharging) {
                         // BOOM
@@ -192,10 +193,7 @@ const ENABLE_KEYBOARD = true;
         if (this.draggedObj && this.draggedObj !== this.castButton) {
             this.dragArrow.visible = true;
             this.dragCircle.visible = true;
-            let dragPointX = Math.cos(this.dragPointAngle) * this.dragPointDist;
-            let dragPointY = Math.sin(this.dragPointAngle) * this.dragPointDist;
-            let dragDistX = mouseDistX - dragPointX;
-            let dragDistY = mouseDistY - dragPointY;
+
             // Experimental smoothing
             let dragGoalAngle = Math.atan2(mouseDistY, mouseDistX);
             let dragAngleDiff = dragGoalAngle - this.dragPointAngle;
@@ -204,8 +202,15 @@ const ENABLE_KEYBOARD = true;
             } else if (dragAngleDiff < -Math.PI) {
                 dragAngleDiff += Math.PI * 2;
             }
+
             // console.log(dragAngleDiff);
 
+            // alt method of calculating torque
+            let dragPointX = Math.cos(this.dragPointAngle) * this.dragPointDist;
+            let dragPointY = Math.sin(this.dragPointAngle) * this.dragPointDist;
+            let dragDistX = mouseDistX - dragPointX;
+            let dragDistY = mouseDistY - dragPointY;
+            //
             let dragDist = Math.sqrt(dragDistX * dragDistX + dragDistY * dragDistY);
             let dragDistXOrigin = dragDistX / (dragDist + 0.001);
             let dragDistYOrigin = dragDistY / (dragDist + 0.001);
@@ -223,32 +228,35 @@ const ENABLE_KEYBOARD = true;
             let horizForce = -dragPointYOrigin * dragDistXOrigin;
 
             let dragForceSqr = horizForce + vertForce;
-            let torqueConst = gameVars.wasTouch ? 0.015 : 0.0075;
+
+            let torqueConst = gameVars.wasTouch ? 0.011 : 0.0065;
             // castDisable
 
+            // Using both rotation diff and mult val to calculate
             if (dragForceSqr < 0) {
                 this.draggedObj.torque = dragForce * -Math.sqrt(-dragForceSqr) * torqueConst;
             } else {
                 this.draggedObj.torque = dragForce * Math.sqrt(dragForceSqr) * torqueConst;
             }
-            let minusMult = this.draggedObj.torque < 0 ? -1 : 1;
+            this.draggedObj.torque += dragAngleDiff * torqueConst * 0.4;
 
-            this.draggedObj.torque = this.draggedObj.torque + (this.draggedObj.torque * this.draggedObj.torque) * minusMult * 150;
+            // this.draggedObj.torque = this.draggedObj.torque + (this.draggedObj.torque * this.draggedObj.torque) * minusMult * 150;
             //this.draggedObj.torque += this.draggedObj.torqueOnRelease * 0.5;
 
             this.draggedObj.torqueOnRelease = this.draggedObj.torque * 1.5; // there's some more oomph to when you sling out a spin
             let absDragForce = Math.abs(dragForceSqr);
-            if (absDragForce < 0.0015 && absDragForce > 0) {
-                // if drag force is really small, basically stationary, slow down heavily
-                let mult = absDragForce / 0.0015;
-                this.draggedObj.rotVel *= mult;
-            }
+            // if (absDragForce < 0.0015 && absDragForce > 0) {
+            //     // if drag force is really small, basically stationary, slow down heavily
+            //     let mult = absDragForce / 0.0015;
+            //     this.draggedObj.rotVel *= mult;
+            // }
 
-            if (this.draggedObj.rotVel * dragForceSqr < -0.01) {
+            if (this.draggedObj.rotVel * dragAngleDiff < -0.01) {
                 // if drag force is acting opposite of current velocity, slow down current velocity
                 this.draggedObj.rotVel *= 0.25;
             }
 
+            let oldDragPointAngle = this.dragPointAngle;
             let oldObjRot = this.draggedObj.rotation;
             this.updateRotations(dt);
             let rotDiff = this.draggedObj.rotation - oldObjRot;
@@ -261,8 +269,8 @@ const ENABLE_KEYBOARD = true;
             dragDistY = mouseDistY - dragPointY;
             this.dragArrow.setPosition(this.x + dragPointX, this.y + dragPointY);
             this.dragCircle.setPosition(this.x + dragPointX, this.y + dragPointY);
-            this.dragArrow.setScale(Math.max(0.05, Math.min(1, dragDist * 0.0135)), 1);
-            this.dragArrow.setAlpha(Math.min(this.dragArrow.scaleX * 5 - 1))
+            this.dragArrow.setScale(Math.max(0.08, Math.min(1, dragDist * 0.0135)), 1);
+            this.dragArrow.setAlpha(Math.min(this.dragArrow.scaleX * 5 - 2))
             this.dragArrow.setRotation(Math.atan2(dragDistY, dragDistX));
 
             // dragging affects outside of circle
@@ -361,6 +369,7 @@ const ENABLE_KEYBOARD = true;
         this.outerCircle.torque = 0;
         this.outerCircle.torqueOnRelease = 0;
         this.outerCircle.rotVel = 0;
+        this.outerCircle.calcRot = 0;
         this.innerCircleSize = isMobile ? 152 : 150;
         this.innerCircle = scene.add.sprite(x, y, 'circle', 'element_normal.png');
         this.innerCircle.setOrigin(0.5003, 0.5003);
@@ -368,6 +377,7 @@ const ENABLE_KEYBOARD = true;
         this.innerCircle.torque = 0;
         this.innerCircle.torqueOnRelease = 0;
         this.innerCircle.rotVel = 0;
+        this.innerCircle.calcRot = 0;
 
         this.castButtonSize = isMobile ? 72 : 78;
         this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png').setDepth(105);

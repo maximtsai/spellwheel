@@ -144,11 +144,13 @@ const ENABLE_KEYBOARD = true;
                     this.draggedObj = this.innerCircle;
                     this.dragPointDist = totalDist;
                     this.dragPointAngle = Math.atan2(mouseDistY, mouseDistX);
+                    this.dragPointAngleVisual = this.dragPointAngle;
                     this.setFrameLazy(this.innerCircle, 'element_drag.png');
                 } else if (!this.outerDragDisabled) {
                     this.draggedObj = this.outerCircle;
                     this.dragPointDist = Math.min(totalDist, this.trueSize);
                     this.dragPointAngle = Math.atan2(mouseDistY, mouseDistX);
+                    this.dragPointAngleVisual = this.dragPointAngle;
                     this.setFrameLazy(this.outerCircle,'usage_drag.png');
                 }
             } else if (gameVars.mouseJustUpped) {
@@ -256,15 +258,18 @@ const ENABLE_KEYBOARD = true;
                 this.draggedObj.rotVel *= 0.25;
             }
 
-            let oldDragPointAngle = this.dragPointAngle;
-            let oldObjRot = this.draggedObj.rotation;
-            this.updateRotations(dt);
-            let rotDiff = this.draggedObj.rotation - oldObjRot;
+            let oldObjVisualRot = this.draggedObj.rotation;
+            let oldObjRot = this.draggedObj.nextRotation;
+            this.calculateRotations(dt);
+            this.updateRotationVisuals(dt);
+            let visualDiff = this.draggedObj.rotation - oldObjVisualRot;
+            let rotDiff = this.draggedObj.nextRotation - oldObjRot;
             this.dragPointAngle += rotDiff;
+            this.dragPointAngleVisual += visualDiff;
 
             // recalculating it all for drag arrow visual update
-            dragPointX = Math.cos(this.dragPointAngle) * this.dragPointDist;
-            dragPointY = Math.sin(this.dragPointAngle) * this.dragPointDist;
+            dragPointX = Math.cos(this.dragPointAngleVisual) * this.dragPointDist;
+            dragPointY = Math.sin(this.dragPointAngleVisual) * this.dragPointDist;
             dragDistX = mouseDistX - dragPointX;
             dragDistY = mouseDistY - dragPointY;
             this.dragArrow.setPosition(this.x + dragPointX, this.y + dragPointY);
@@ -282,7 +287,8 @@ const ENABLE_KEYBOARD = true;
         } else {
             this.dragArrow.visible = false;
             this.dragCircle.visible = false;
-            this.updateRotations(dt);
+            this.calculateRotations(dt);
+            this.updateRotationVisuals(dt);
         }
 
         if (this.voidArm.alpha > 0) {
@@ -315,6 +321,7 @@ const ENABLE_KEYBOARD = true;
         this.size = isMobile ? 252 : 225;
         this.draggedObj = null;
         this.dragPointAngle = 0;
+        this.dragPointAngleVisual = this.dragPointAngle;
         this.dragPointDist = 100;
         this.keyboardRotateOuter = 0;
         this.keyboardRotateInner = 0;
@@ -323,8 +330,6 @@ const ENABLE_KEYBOARD = true;
         this.delayedDamageCurrCap = 80;
         this.delayedDamageCurrMax = this.delayedDamageCurrCap * 0.5;
         this.delayedDamageShouldTick = false;
-        this.lastDragTorque = 0;
-        this.lastDragTorqueMult = 0.5;
     }
 
     buildCircles(x, y, scene) {
@@ -369,7 +374,8 @@ const ENABLE_KEYBOARD = true;
         this.outerCircle.torque = 0;
         this.outerCircle.torqueOnRelease = 0;
         this.outerCircle.rotVel = 0;
-        this.outerCircle.calcRot = 0;
+        this.outerCircle.nextRotation = 0;
+        this.outerCircle.prevRotation = 0;
         this.innerCircleSize = isMobile ? 152 : 150;
         this.innerCircle = scene.add.sprite(x, y, 'circle', 'element_normal.png');
         this.innerCircle.setOrigin(0.5003, 0.5003);
@@ -377,7 +383,8 @@ const ENABLE_KEYBOARD = true;
         this.innerCircle.torque = 0;
         this.innerCircle.torqueOnRelease = 0;
         this.innerCircle.rotVel = 0;
-        this.innerCircle.calcRot = 0;
+        this.innerCircle.nextRotation = 0;
+        this.innerCircle.prevRotation = 0;
 
         this.castButtonSize = isMobile ? 72 : 78;
         this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png').setDepth(105);
@@ -715,7 +722,24 @@ const ENABLE_KEYBOARD = true;
         item.lazyFrame = frame;
     }
 
-    updateRotations(dt, distToTarget = 99) {
+     updateRotationVisuals(dt) {
+         this.aura.rotVel += this.innerCircle.rotVel * 0.006 * dt + this.outerCircle.rotVel * 0.008 * dt;
+         this.aura.rotVel *= 1 - 0.07 * dt;
+         this.aura.rotation += dt * 0.001 + this.aura.rotVel;
+         this.aura.setScale(0.9 + Math.abs(this.aura.rotVel));
+
+         for (let i = 0; i < this.elements.length; i++) {
+             this.elements[i].rotation = this.innerCircle.rotation + this.elements[i].startRotation;
+             this.elements[i].glow.rotation = this.elements[i].rotation;
+         }
+         for (let i = 0; i < this.embodiments.length; i++) {
+             this.embodiments[i].rotation = this.outerCircle.rotation + this.embodiments[i].startRotation;
+             this.embodiments[i].glow.rotation = this.embodiments[i].rotation;
+         }
+
+     }
+
+    calculateRotations(dt, distToTarget = 99) {
         if (this.manualDisabled) {
             return;
         }
@@ -730,14 +754,14 @@ const ENABLE_KEYBOARD = true;
         let closestElement = null;
         let closestEmbodiment = null;
         for (let i = 0; i < this.elements.length; i++) {
-            distToRuneElem = this.getRotationDiff(this.innerCircle.rotation, -this.elements[i].startRotation);
+            distToRuneElem = this.getRotationDiff(this.innerCircle.nextRotation, -this.elements[i].startRotation);
             if (Math.abs(distToRuneElem) < Math.abs(distToClosestRuneElement)) {
                 distToClosestRuneElement = distToRuneElem;
                 closestElement = this.elements[i];
             }
         }
         for (let i = 0; i < this.embodiments.length; i++) {
-            distToRuneEmbodi = this.getRotationDiff(this.outerCircle.rotation, -this.embodiments[i].startRotation);
+            distToRuneEmbodi = this.getRotationDiff(this.outerCircle.nextRotation, -this.embodiments[i].startRotation);
             if (Math.abs(distToRuneEmbodi) < Math.abs(distToClosestRuneEmbodiment)) {
                 distToClosestRuneEmbodiment = distToRuneEmbodi;
                 closestEmbodiment = this.embodiments[i];
@@ -750,11 +774,6 @@ const ENABLE_KEYBOARD = true;
         } else {
             this.recentlyUpdatedSpellHover = false;
         }
-
-        this.aura.rotVel += this.innerCircle.rotVel * 0.006 * dt + this.outerCircle.rotVel * 0.008 * dt;
-        this.aura.rotVel *= 1 - 0.07 * dt;
-        this.aura.rotation += dt * 0.001 + this.aura.rotVel;
-        this.aura.setScale(0.9 + Math.abs(this.aura.rotVel));
 
         // very low friction when far away from rune elem
         if (Math.abs(distToClosestRuneElement) > 0.1) {
@@ -898,17 +917,13 @@ const ENABLE_KEYBOARD = true;
                 multDrag = 0.6;
             }
         }
-        this.innerCircle.rotation += spinAmtInner * spinSlowTimeDilation * spinSnapSlowAmtInner * multDrag;
-        this.outerCircle.rotation += spinAmtOuter * spinSlowTimeDilation * spinSnapSlowAmtOuter * multDrag;
+        this.innerCircle.prevRotation = this.innerCircle.nextRotation;
+        this.outerCircle.prevRotation = this.outerCircle.nextRotation;
+        this.innerCircle.nextRotation += spinAmtInner * spinSlowTimeDilation * spinSnapSlowAmtInner * multDrag;
+        this.outerCircle.nextRotation += spinAmtOuter * spinSlowTimeDilation * spinSnapSlowAmtOuter * multDrag;
 
-        for (let i = 0; i < this.elements.length; i++) {
-            this.elements[i].rotation = this.innerCircle.rotation + this.elements[i].startRotation;
-            this.elements[i].glow.rotation = this.elements[i].rotation;
-        }
-        for (let i = 0; i < this.embodiments.length; i++) {
-            this.embodiments[i].rotation = this.outerCircle.rotation + this.embodiments[i].startRotation;
-            this.embodiments[i].glow.rotation = this.embodiments[i].rotation;
-        }
+        this.innerCircle.rotation = (this.innerCircle.nextRotation + this.innerCircle.prevRotation) * 0.5;
+        this.outerCircle.rotation = (this.outerCircle.nextRotation + this.outerCircle.prevRotation) * 0.5;
 
         this.autolockRune(dt);
 
@@ -1493,6 +1508,8 @@ const ENABLE_KEYBOARD = true;
         }
 
         sprite.setScale(0.8).setAlpha(1);
+        this.innerCircle.prevRotation = this.innerCircle.rotation;
+        this.innerCircle.nextRotation = this.innerCircle.rotation;
         this.scene.tweens.add({
             targets: sprite,
             alpha: 0,
@@ -1578,7 +1595,8 @@ const ENABLE_KEYBOARD = true;
             this.showReadySprite(true, 2.5);
         }
         messageBus.publish("wheelReloaded");
-
+        this.outerCircle.prevRotation = this.outerCircle.rotation;
+        this.outerCircle.nextRotation = this.outerCircle.rotation;
         this.scene.tweens.add({
             targets: sprite,
             alpha: 0,

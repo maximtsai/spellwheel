@@ -258,7 +258,8 @@ const ENABLE_KEYBOARD = true;
 
             let oldDragPointAngle = this.dragPointAngle;
             let oldObjRot = this.draggedObj.rotation;
-            this.updateRotations(dt);
+            this.calculateRotations(dt);
+            this.updateRotationVisuals(dt);
             let rotDiff = this.draggedObj.rotation - oldObjRot;
             this.dragPointAngle += rotDiff;
 
@@ -282,8 +283,11 @@ const ENABLE_KEYBOARD = true;
         } else {
             this.dragArrow.visible = false;
             this.dragCircle.visible = false;
-            this.updateRotations(dt);
+            this.calculateRotations(dt);
+            this.updateRotationVisuals(dt);
         }
+
+
 
         if (this.voidArm.alpha > 0) {
             this.voidArm.rotation += (Math.random() - 0.5) * 0.04;
@@ -369,7 +373,8 @@ const ENABLE_KEYBOARD = true;
         this.outerCircle.torque = 0;
         this.outerCircle.torqueOnRelease = 0;
         this.outerCircle.rotVel = 0;
-        this.outerCircle.calcRot = 0;
+        this.outerCircle.nextRotation = 0;
+        this.outerCircle.prevRotation = 0;
         this.innerCircleSize = isMobile ? 152 : 150;
         this.innerCircle = scene.add.sprite(x, y, 'circle', 'element_normal.png');
         this.innerCircle.setOrigin(0.5003, 0.5003);
@@ -377,7 +382,8 @@ const ENABLE_KEYBOARD = true;
         this.innerCircle.torque = 0;
         this.innerCircle.torqueOnRelease = 0;
         this.innerCircle.rotVel = 0;
-        this.innerCircle.calcRot = 0;
+        this.innerCircle.nextRotation = 0;
+        this.innerCircle.prevRotation = 0;
 
         this.castButtonSize = isMobile ? 72 : 78;
         this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png').setDepth(105);
@@ -715,9 +721,32 @@ const ENABLE_KEYBOARD = true;
         item.lazyFrame = frame;
     }
 
-    updateRotations(dt, distToTarget = 99) {
+     updateRotationVisuals(dt) {
+        console.log(this.innerCircle.nextRotation, this.innerCircle.prevRotation);
+         this.innerCircle.rotation = this.innerCircle.nextRotation * 0.5 + this.innerCircle.prevRotation * 0.5;
+         this.outerCircle.rotation = this.outerCircle.nextRotation * 0.5 + this.outerCircle.prevRotation * 0.5;
+
+         for (let i = 0; i < this.elements.length; i++) {
+             this.elements[i].rotation = this.innerCircle.rotation + this.elements[i].startRotation;
+             this.elements[i].glow.rotation = this.elements[i].rotation;
+         }
+         for (let i = 0; i < this.embodiments.length; i++) {
+             this.embodiments[i].rotation = this.outerCircle.rotation + this.embodiments[i].startRotation;
+             this.embodiments[i].glow.rotation = this.embodiments[i].rotation;
+         }
+
+         this.aura.rotVel += this.innerCircle.rotVel * 0.006 * dt + this.outerCircle.rotVel * 0.008 * dt;
+         this.aura.rotVel *= 1 - 0.07 * dt;
+         this.aura.rotation += dt * 0.001 + this.aura.rotVel;
+         this.aura.setScale(0.9 + Math.abs(this.aura.rotVel));
+
+     }
+
+    calculateRotations(dt, distToTarget = 99) {
+
         if (this.manualDisabled) {
-            return;
+            this.innerCircle.torque = 0;
+            this.outerCircle.torque = 0;
         }
         let decayAltered = DECAY;
 
@@ -751,22 +780,17 @@ const ENABLE_KEYBOARD = true;
             this.recentlyUpdatedSpellHover = false;
         }
 
-        this.aura.rotVel += this.innerCircle.rotVel * 0.006 * dt + this.outerCircle.rotVel * 0.008 * dt;
-        this.aura.rotVel *= 1 - 0.07 * dt;
-        this.aura.rotation += dt * 0.001 + this.aura.rotVel;
-        this.aura.setScale(0.9 + Math.abs(this.aura.rotVel));
-
         // very low friction when far away from rune elem
         if (Math.abs(distToClosestRuneElement) > 0.1) {
-            innerDecayMult = 0.05;
+            innerDecayMult = 0.01;
         }
         if (Math.abs(distToClosestRuneEmbodiment) > 0.1) {
-            outerDecayMult = 0.05;
+            outerDecayMult = 0.01;
         }
 
         // high torque = lower friction
-        let torqueMultInner = this.innerCircle.torque * this.innerCircle.torque > 0.00001 ? 0.6: 1;
-        let torqueMultOuter = this.outerCircle.torque * this.outerCircle.torque > 0.00001 ? 0.6 : 1;
+        let torqueMultInner = this.innerCircle.torque * this.innerCircle.torque > 0.00001 ? 1 : 1;
+        let torqueMultOuter = this.outerCircle.torque * this.outerCircle.torque > 0.00001 ? 1 : 1;
 
         let velMultInner = (Math.abs(this.innerCircle.rotVel) + 0.001) / 0.004;
         let velMultOuter = (Math.abs(this.outerCircle.rotVel) + 0.001) / 0.004;
@@ -806,47 +830,31 @@ const ENABLE_KEYBOARD = true;
         }
         // Slow down harder if player stops spinning
         const torqueReleaseThreshold = 0.003; // if torque on release is higher, then full speed ahead
-        if (this.innerCircle.torque == 0 && Math.abs(this.innerCircle.torqueOnRelease) > 0.001) {
-            let isTorqueOpposing = this.innerCircle.torqueOnRelease * this.innerCircle.rotVel < 0;
-            if (isTorqueOpposing) {
-                this.innerCircle.rotVel *= 0.05;
-            } else if (Math.abs(this.innerCircle.torqueOnRelease) < torqueReleaseThreshold) {
-                let slowOnRelease = Math.max(0.05, Math.abs(this.innerCircle.torqueOnRelease) / torqueReleaseThreshold);
-                this.innerCircle.rotVel *= slowOnRelease;
-            }
-            this.innerCircle.torqueOnRelease = 0;
-        }
-        if (this.outerCircle.torque == 0 && Math.abs(this.outerCircle.torqueOnRelease) > 0.001) {
-            let isTorqueOpposing = this.outerCircle.torqueOnRelease * this.outerCircle.rotVel < 0;
-            if (isTorqueOpposing) {
-                this.outerCircle.rotVel *= 0.05;
-            } else if (Math.abs(this.outerCircle.torqueOnRelease) < torqueReleaseThreshold) {
-                let slowOnRelease = Math.max(0.05, Math.abs(this.outerCircle.torqueOnRelease) / torqueReleaseThreshold);
-                this.outerCircle.rotVel *= slowOnRelease;
-            }
-            this.outerCircle.torqueOnRelease = 0;
-        }
+        // if (this.innerCircle.torque == 0 && Math.abs(this.innerCircle.torqueOnRelease) > 0.001) {
+        //     let isTorqueOpposing = this.innerCircle.torqueOnRelease * this.innerCircle.rotVel < 0;
+        //     if (isTorqueOpposing) {
+        //         this.innerCircle.rotVel *= 0.05;
+        //     } else if (Math.abs(this.innerCircle.torqueOnRelease) < torqueReleaseThreshold) {
+        //         let slowOnRelease = Math.max(0.05, Math.abs(this.innerCircle.torqueOnRelease) / torqueReleaseThreshold);
+        //         this.innerCircle.rotVel *= slowOnRelease;
+        //     }
+        //     this.innerCircle.torqueOnRelease = 0;
+        // }
+        // if (this.outerCircle.torque == 0 && Math.abs(this.outerCircle.torqueOnRelease) > 0.001) {
+        //     let isTorqueOpposing = this.outerCircle.torqueOnRelease * this.outerCircle.rotVel < 0;
+        //     if (isTorqueOpposing) {
+        //         this.outerCircle.rotVel *= 0.05;
+        //     } else if (Math.abs(this.outerCircle.torqueOnRelease) < torqueReleaseThreshold) {
+        //         let slowOnRelease = Math.max(0.05, Math.abs(this.outerCircle.torqueOnRelease) / torqueReleaseThreshold);
+        //         this.outerCircle.rotVel *= slowOnRelease;
+        //     }
+        //     this.outerCircle.torqueOnRelease = 0;
+        // }
 
         if (this.forcingAlignment) {
             this.innerCircle.torque *= 0.01;
             this.outerCircle.torque *= 0.01;
         }
-        // reduce pull jitter
-        // if (this.draggedObj) {
-        //     if (this.lastDragTorque * this.draggedObj.torque < 0) {
-        //         this.draggedObj.torque *= this.lastDragTorqueMult;
-        //         this.lastDragTorqueMult *= 0.55;
-        //     } else {
-        //         this.lastDragTorqueMult = 0.5;
-        //     }
-        //     // this.lastDragTorque = this.draggedObj.torque;
-        //
-        //     this.draggedObj.torque -= this.lastDragTorque * 0.25;
-        //     // this.draggedObjLastTorque = this.draggedObj.torque;
-        //     this.lastDragTorque = this.draggedObj.torque;
-        // } else {
-        //     this.lastDragTorque = 0;
-        // }
 
         // ROT VEL UPDATE
         this.innerCircle.rotVel += this.innerCircle.torque * dt;
@@ -898,17 +906,11 @@ const ENABLE_KEYBOARD = true;
                 multDrag = 0.6;
             }
         }
-        this.innerCircle.rotation += spinAmtInner * spinSlowTimeDilation * spinSnapSlowAmtInner * multDrag;
-        this.outerCircle.rotation += spinAmtOuter * spinSlowTimeDilation * spinSnapSlowAmtOuter * multDrag;
+        this.innerCircle.prevRotation = this.innerCircle.nextRotation;
+        this.outerCircle.prevRotation = this.outerCircle.nextRotation;
+        this.innerCircle.nextRotation += spinAmtInner * spinSlowTimeDilation * spinSnapSlowAmtInner * multDrag;
+        this.outerCircle.nextRotation += spinAmtOuter * spinSlowTimeDilation * spinSnapSlowAmtOuter * multDrag;
 
-        for (let i = 0; i < this.elements.length; i++) {
-            this.elements[i].rotation = this.innerCircle.rotation + this.elements[i].startRotation;
-            this.elements[i].glow.rotation = this.elements[i].rotation;
-        }
-        for (let i = 0; i < this.embodiments.length; i++) {
-            this.embodiments[i].rotation = this.outerCircle.rotation + this.embodiments[i].startRotation;
-            this.embodiments[i].glow.rotation = this.embodiments[i].rotation;
-        }
 
         this.autolockRune(dt);
 
@@ -942,7 +944,7 @@ const ENABLE_KEYBOARD = true;
         let distToClosestRuneElement = 999;
         if (this.innerCircle.torque == 0 || this.forcingAlignment) {
             for (let i = 0; i < this.elements.length; i++) {
-                let distToRune = this.getRotationDiff(this.innerCircle.rotation, this.elements[i].startRotation);
+                let distToRune = this.getRotationDiff(this.innerCircle.nextRotation, this.elements[i].startRotation);
                 if (Math.abs(distToRune) < Math.abs(distToClosestRuneElement)) {
                     distToClosestRuneElement = distToRune;
                 }
@@ -952,7 +954,7 @@ const ENABLE_KEYBOARD = true;
                 if (absRotVel < 0.002) {
                     let rotVelMult = 1 - Math.abs(this.innerCircle.rotVel) / 0.0018;
                     let turnAmount = distToClosestRuneElement * 0.125;
-                    this.innerCircle.rotation -= Math.max(-0.05, Math.min(0.05, turnAmount)) * dt * rotVelMult;
+                    this.innerCircle.nextRotation -= Math.max(-0.05, Math.min(0.05, turnAmount)) * dt * rotVelMult;
                     if (absRotVel < 0.001) {
                         this.innerCircle.rotVel *= 1 - (0.1 * dt);
                     }
@@ -973,7 +975,7 @@ const ENABLE_KEYBOARD = true;
                 if (absRotVel < 0.002) {
                     let rotVelMult = 1 - Math.abs(this.outerCircle.rotVel) / 0.0018;
                     let turnAmount = distToClosestRuneEmbodiment * 0.125;
-                    this.outerCircle.rotation -= Math.max(-0.05, Math.min(0.05, turnAmount)) * dt * rotVelMult;
+                    this.outerCircle.nextRotation -= Math.max(-0.05, Math.min(0.05, turnAmount)) * dt * rotVelMult;
                     if (absRotVel < 0.001) {
                         this.outerCircle.rotVel *= 1 - (0.1 * dt);
                     }
@@ -984,12 +986,12 @@ const ENABLE_KEYBOARD = true;
         if (this.forcingAlignment) {
             if (distToClosestRuneElement < 2) {
                 let turnAmount = distToClosestRuneElement * 0.05;
-                this.innerCircle.rotation -= turnAmount * dt;
+                this.innerCircle.nextRotation -= turnAmount * dt;
                 this.innerCircle.rotVel *= 1 - (0.2 * dt);
             }
             if (distToClosestRuneEmbodiment < 2) {
                 let turnAmount = distToClosestRuneEmbodiment * 0.05;
-                this.outerCircle.rotation -= turnAmount * dt;
+                this.outerCircle.nextRotation -= turnAmount * dt;
                 this.outerCircle.rotVel *= 1 - (0.2 * dt);
             }
         }
@@ -1493,6 +1495,8 @@ const ENABLE_KEYBOARD = true;
         }
 
         sprite.setScale(0.8).setAlpha(1);
+        this.innerCircle.prevRotation = this.innerCircle.rotation;
+        this.innerCircle.nextRotation = this.innerCircle.rotation;
         this.scene.tweens.add({
             targets: sprite,
             alpha: 0,
@@ -1578,7 +1582,8 @@ const ENABLE_KEYBOARD = true;
             this.showReadySprite(true, 2.5);
         }
         messageBus.publish("wheelReloaded");
-
+        this.outerCircle.prevRotation = this.outerCircle.rotation;
+        this.outerCircle.nextRotation = this.outerCircle.rotation;
         this.scene.tweens.add({
             targets: sprite,
             alpha: 0,

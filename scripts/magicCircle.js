@@ -83,6 +83,7 @@ const ENABLE_KEYBOARD = true;
         this.setFrameLazy(this.outerCircle, 'usage_normal.png');
         if (this.manualDisabled) {
             this.dragArrow.visible = false;
+            this.dragCircle.visible = false;
             return;
         }
 
@@ -146,7 +147,7 @@ const ENABLE_KEYBOARD = true;
                     this.setFrameLazy(this.innerCircle, 'element_drag.png');
                 } else if (!this.outerDragDisabled) {
                     this.draggedObj = this.outerCircle;
-                    this.dragPointDist = totalDist;
+                    this.dragPointDist = Math.min(totalDist, this.trueSize);
                     this.dragPointAngle = Math.atan2(mouseDistY, mouseDistX);
                     this.setFrameLazy(this.outerCircle,'usage_drag.png');
                 }
@@ -190,6 +191,7 @@ const ENABLE_KEYBOARD = true;
 
         if (this.draggedObj && this.draggedObj !== this.castButton) {
             this.dragArrow.visible = true;
+            this.dragCircle.visible = true;
             let dragPointX = Math.cos(this.dragPointAngle) * this.dragPointDist;
             let dragPointY = Math.sin(this.dragPointAngle) * this.dragPointDist;
             let dragDistX = mouseDistX - dragPointX;
@@ -258,7 +260,9 @@ const ENABLE_KEYBOARD = true;
             dragDistX = mouseDistX - dragPointX;
             dragDistY = mouseDistY - dragPointY;
             this.dragArrow.setPosition(this.x + dragPointX, this.y + dragPointY);
-            this.dragArrow.setScale(Math.max(0.05, Math.min(1, dragDist * 0.01)), 1);
+            this.dragCircle.setPosition(this.x + dragPointX, this.y + dragPointY);
+            this.dragArrow.setScale(Math.max(0.05, Math.min(1, dragDist * 0.0135)), 1);
+            this.dragArrow.setAlpha(Math.min(this.dragArrow.scaleX * 5 - 1))
             this.dragArrow.setRotation(Math.atan2(dragDistY, dragDistX));
 
             // dragging affects outside of circle
@@ -269,6 +273,7 @@ const ENABLE_KEYBOARD = true;
             }
         } else {
             this.dragArrow.visible = false;
+            this.dragCircle.visible = false;
             this.updateRotations(dt);
         }
 
@@ -298,7 +303,8 @@ const ENABLE_KEYBOARD = true;
     reset(x, y) {
         this.x = x;
         this.y = y;
-        this.size = isMobile ? 245 : 211;
+        this.trueSize = 205;
+        this.size = isMobile ? 252 : 225;
         this.draggedObj = null;
         this.dragPointAngle = 0;
         this.dragPointDist = 100;
@@ -363,7 +369,7 @@ const ENABLE_KEYBOARD = true;
         this.innerCircle.torqueOnRelease = 0;
         this.innerCircle.rotVel = 0;
 
-        this.castButtonSize = isMobile ? 76 : 82;
+        this.castButtonSize = isMobile ? 72 : 78;
         this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png').setDepth(105);
         this.castButtonSpare = scene.add.sprite(x, y, 'circle', 'cast_press.png').setDepth(106).setAlpha(0);
         // this.castButtonFlash = scene.add.sprite(x, y, 'circle', 'cast_flash.png').setDepth(106).setAlpha(0);
@@ -395,7 +401,7 @@ const ENABLE_KEYBOARD = true;
         this.errorBoxElement = scene.add.sprite(x, y - 115, 'circle', 'error_box.png');
         this.errorBoxElement.setDepth(121);
         this.errorBoxElement.alpha = 0;
-        this.errorBoxEmbodiment = scene.add.sprite(x, y - 170, 'circle', 'error_box.png');
+        this.errorBoxEmbodiment = scene.add.sprite(x, y - 175, 'circle', 'error_box.png');
         this.errorBoxEmbodiment.setDepth(121);
         this.errorBoxEmbodiment.alpha = 0;
 
@@ -437,16 +443,19 @@ const ENABLE_KEYBOARD = true;
         //     }
         // });
         this.spellDescriptor = new HoverDisplay({
-            x: gameConsts.width,
-            y: gameConsts.halfHeight - 15,
-            originX: 1,
+            x: 0,
+            y: gameConsts.halfHeight - 22,
+            originX: 0,
             originY: 0.5,
             depth: 20
         })
 
+        this.dragCircle = scene.add.sprite(x, y, 'circle', 'drag_circle.png').setAlpha(isMobile ? 0.75 : 0.55);
+        this.dragCircle.setDepth(100001);
+        this.dragCircle.visible = false;
         this.dragArrow = scene.add.sprite(x, y, 'circle', 'drag_arrow.png');
         this.dragArrow.setDepth(100001);
-        this.dragArrow.setOrigin(0, 0.5);
+        this.dragArrow.setOrigin(0.2, 0.5);
         this.dragArrow.visible = false;
         this.buildRunes();
     }
@@ -662,7 +671,7 @@ const ENABLE_KEYBOARD = true;
         this.embodiments = [];
         for (let i = 0; i < ELEMENT_ARRAY.length; i++) {
             this.elements[i] = this.scene.add.sprite(x, y, 'circle', ELEMENT_ARRAY[i] + '.png');
-            this.elements[i].setOrigin(0.5, 0.85);
+            this.elements[i].setOrigin(0.5, 0.84);
             this.elements[i].setDepth(103);
             this.elements[i].rotation = (Math.PI * 2)/ELEMENT_ARRAY.length * i;
             this.elements[i].startRotation = this.elements[i].rotation
@@ -670,13 +679,13 @@ const ENABLE_KEYBOARD = true;
             this.elements[i].alpha = 0.5;
 
             this.elements[i].glow = this.scene.add.sprite(x, y, 'circle', ELEMENT_ARRAY[i] + '_glow.png');
-            this.elements[i].glow.setOrigin(0.5, 0.85);
+            this.elements[i].glow.setOrigin(0.5, 0.84);
             this.elements[i].glow.setDepth(103);
             this.elements[i].glow.rotation = this.elements[i].rotation;
         }
         for (let i = 0; i < EMBODIMENT_ARRAY.length; i++) {
             this.embodiments[i] = this.scene.add.sprite(x, y, 'circle', EMBODIMENT_ARRAY[i] + '.png');
-            this.embodiments[i].setOrigin(0.5, 1.18);
+            this.embodiments[i].setOrigin(0.5, 1.22);
             this.embodiments[i].setDepth(103);
             this.embodiments[i].rotation = (Math.PI * 2)/EMBODIMENT_ARRAY.length * i;
             this.embodiments[i].startRotation = this.embodiments[i].rotation;
@@ -684,7 +693,7 @@ const ENABLE_KEYBOARD = true;
             this.embodiments[i].alpha = 0.5;
 
             this.embodiments[i].glow = this.scene.add.sprite(x, y, 'circle', EMBODIMENT_ARRAY[i] + '_glow.png');
-            this.embodiments[i].glow.setOrigin(0.5, 1.18);
+            this.embodiments[i].glow.setOrigin(0.5, 1.22);
             this.embodiments[i].glow.setDepth(103);
             this.embodiments[i].glow.rotation = this.embodiments[i].rotation;
         }

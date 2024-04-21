@@ -1,12 +1,13 @@
+let isMobile = testMobile();
+
 let config = {
     type: Phaser.CANVAS,
     scale: {
         parent: 'spellwheel',
-        width: 610,
-        height: 760,
         autoRound: true,
+        width: isMobile ? 600 : 610,
+        height: isMobile ? 800: 770,
         mode: Phaser.Scale.FIT,
-
     },
     render: {
         // Leave on to prevent pixelated graphics
@@ -47,7 +48,6 @@ function isSafariIOS() {
 let game;
 
 function onloadFunc() {
-    isMobile = testMobile();
     game = new Phaser.Game(config); // var canvas = game.canvas;
 }
 
@@ -70,7 +70,6 @@ let gameVars = {
     canvasXOffset: 0,
     canvasYOffset: 0
 };
-let isMobile = false;
 let globalObjects = {};
 let updateFunctions = {};
 let PhaserScene = null; // Global

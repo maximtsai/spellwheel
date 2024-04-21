@@ -46,7 +46,7 @@ class InternalHoverTextManager {
                 this.hoverBacking.x = posX; this.hoverBacking.y = posY;
                 this.hoverBacking.setOrigin(hoverTextObj.originX, hoverTextObj.originY);
                 this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - hoverTextObj.originX * 2 - 2);
-                this.hoverTextDisplay.y = this.hoverBacking.y - 1 * (hoverTextObj.originX * 2 - 1);
+                this.hoverTextDisplay.y = this.hoverBacking.y - (hoverTextObj.originX * 2 - 1);
                 this.hoverTextDisplay.setText(hoverTextObj.text);
                 this.hoverTextDisplay.visible = true;
                 this.hoverTextDisplay.setOrigin(hoverTextObj.originX, hoverTextObj.originY);
@@ -100,12 +100,14 @@ class HoverDisplay {
 
         this.setPosition(data.x, data.y)
         this.setOrigin(data.originX, data.originY);
+        this.hoverTextDisplay.setOrigin(data.originX, 0.5);
 
     }
 
     setPosition(x, y) {
         this.hoverBacking.x = x; this.hoverBacking.y = y;
         this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - this.hoverBacking.originX * 2 - 2);
+        this.hoverTextDisplay.y = this.hoverBacking.y - 3;
     }
 
     setOrigin(x = 0.5, y = 0.5) {
@@ -115,9 +117,9 @@ class HoverDisplay {
 
     setText(text) {
         this.hoverTextDisplay.setText(text);
-        this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - this.hoverBacking.originX * 2 - 2);
-        this.hoverTextDisplay.y = this.hoverBacking.y - 1 * (this.hoverBacking.originX * 2 - 1);
-        this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX, (this.hoverTextDisplay.height + 10) * 0.5 * this.hoverTextDisplay.scaleY);
+        this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - this.hoverBacking.originX * 2 - (this.hoverBacking.originX - 0.5) * 4);
+        this.hoverTextDisplay.y = this.hoverBacking.y - (this.hoverBacking.originX * 2);
+        this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX, (this.hoverTextDisplay.height + 6) * 0.5 * this.hoverTextDisplay.scaleY);
         if (text.length > 0) {
             this.setVisible(true);
         } else {

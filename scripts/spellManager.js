@@ -29,7 +29,7 @@ class SpellManager {
                         this.castMatterProtect(shieldID, rotation);
                         break;
                     case RUNE_UNLOAD:
-                        this.castMatterUnload();
+                        this.castMatterUltimate();
                         break;
                 }
                 break;
@@ -48,7 +48,7 @@ class SpellManager {
                         this.castTimeProtect(shieldID, rotation);
                         break;
                     case RUNE_UNLOAD:
-                        this.castTimeUnload();
+                        this.castTimeUltimate();
                         break;
                 }
                 break;
@@ -67,7 +67,7 @@ class SpellManager {
                         this.castMindProtect(shieldID, rotation);
                         break;
                     case RUNE_UNLOAD:
-                        this.castMindUnload();
+                        this.castMindUltimate();
                         break;
                 }
                 break;
@@ -86,7 +86,7 @@ class SpellManager {
                         this.castVoidProtect(shieldID, rotation);
                         break;
                     case RUNE_UNLOAD:
-                        this.castVoidUnload();
+                        this.castVoidUltimate();
                         break;
                 }
                 break;
@@ -599,7 +599,7 @@ class SpellManager {
         this.postNonAttackCast(spellID, spellName, bonusSize);
     }
 
-    castMatterUnload() {
+    castMatterUltimate() {
         const spellID = 'matterUnload';
         let attackObjects = [];
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
@@ -1199,7 +1199,7 @@ class SpellManager {
         let spellName = "SHIELD OF DELAY";
         this.postNonAttackCast(spellID, spellName, boost);
     }
-    castTimeUnload() {
+    castTimeUltimate() {
         const spellID = 'timeUnload';
 
         let multiplier = globalObjects.player.spellMultiplier();
@@ -1601,7 +1601,7 @@ class SpellManager {
         }
         this.postNonAttackCast(spellID, spellName, bonusSize);
     }
-    castMindUnload() {
+    castMindUltimate() {
         const spellID = 'mindUnload';
         let existingBuff = globalObjects.player.getStatuses()[spellID];
         let existingMultiplier = 1;
@@ -1662,8 +1662,8 @@ class SpellManager {
             duration: 500,
             alpha: 0.75,
             ease: 'Cubic.easeOut',
-            scaleX: 0.96,
-            scaleY: 0.96,
+            scaleX: 1,
+            scaleY: 1,
             onStart: () => {
                 // BUGGY WARNING
                 if (existingBuff && existingBuff.soundObj) {
@@ -2224,7 +2224,7 @@ class SpellManager {
         }
         this.postNonAttackCast(spellID, spellName, bonusSize);
     }
-    castVoidUnload() {
+    castVoidUltimate() {
         const spellID = 'voidUnload';
         let numTotalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let additionalDamage = globalObjects.player.attackDamageAdder();

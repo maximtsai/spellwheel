@@ -76,7 +76,7 @@ let PhaserScene = null; // Global
 let oldTime = 0;
 let deltaScale = 1;
 let timeUpdateCounter = 0;
-let timeUpdateCounterMax = 5;
+let timeUpdateCounterMax = 3;
 
 function preload ()
 {
@@ -115,6 +115,9 @@ function onLoadComplete(scene) {
     setupGame(scene);
 }
 
+let lastUpdateValues = [1, 1, 1, 1, 1];
+let lastUpdateValuesIdx = 0;
+let avgDeltaScale = 1;
 function update(time, delta) {
     if (loadObjects.loadingSpinner && loadObjects.loadingSpinner.goalRot) {
         let adjustedSpinnerRot = loadObjects.loadingSpinner.rotation;
@@ -135,12 +138,18 @@ function update(time, delta) {
         let deltaTime = newTime - oldTime;
         oldTime = newTime;
         deltaScale = Math.min(5, deltaTime / 100);
+        lastUpdateValues[lastUpdateValuesIdx] = deltaScale;
+        lastUpdateValuesIdx = (lastUpdateValuesIdx + 1) % 5;
+        avgDeltaScale = 0;
+        for (let i = 0; i < 5; i++) {
+            avgDeltaScale += lastUpdateValues[i] * 0.2;
+        }
     } else {
         timeUpdateCounter++;
     }
 
-    buttonManager.update(deltaScale);
-    updateManager.update(deltaScale);
+    buttonManager.update(avgDeltaScale);
+    updateManager.update(avgDeltaScale);
 
     gameVars.mouseJustDowned = false;
     gameVars.mouseJustUpped = false;

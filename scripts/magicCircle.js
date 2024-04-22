@@ -234,7 +234,7 @@ const ENABLE_KEYBOARD = true;
 
             let dragForceSqr = horizForce + vertForce;
 
-            let torqueConst = gameVars.wasTouch ? 0.013 : 0.0085;
+            let torqueConst = gameVars.wasTouch ? 0.025 : 0.02;
             // castDisable
 
             // Using both rotation diff and mult val to calculate
@@ -249,12 +249,6 @@ const ENABLE_KEYBOARD = true;
             //this.draggedObj.torque += this.draggedObj.torqueOnRelease * 0.5;
 
             this.draggedObj.torqueOnRelease = this.draggedObj.torque * 5; // there's some more oomph to when you sling out a spin
-            let absDragForce = Math.abs(dragForceSqr);
-            // if (absDragForce < 0.0015 && absDragForce > 0) {
-            //     // if drag force is really small, basically stationary, slow down heavily
-            //     let mult = absDragForce / 0.0015;
-            //     this.draggedObj.rotVel *= mult;
-            // }
 
             if (this.draggedObj.rotVel * dragAngleDiff < -0.01) {
                 // if drag force is acting opposite of current velocity, slow down current velocity
@@ -780,14 +774,6 @@ const ENABLE_KEYBOARD = true;
             this.recentlyUpdatedSpellHover = false;
         }
 
-        // very low friction when far away from rune elem
-        if (Math.abs(distToClosestRuneElement) > 0.1) {
-            innerDecayMult = 0.05;
-        }
-        if (Math.abs(distToClosestRuneEmbodiment) > 0.1) {
-            outerDecayMult = 0.05;
-        }
-
         // high torque = lower friction
         let torqueMultInner = this.innerCircle.torque * this.innerCircle.torque > 0.00001 ? 0.6: 1;
         let torqueMultOuter = this.outerCircle.torque * this.outerCircle.torque > 0.00001 ? 0.6 : 1;
@@ -823,37 +809,15 @@ const ENABLE_KEYBOARD = true;
 
         // Slow down high speeds
         if (Math.abs(this.innerCircle.rotVel) > 0.01) {
-            this.innerCircle.torque *= 0.8;
+            this.innerCircle.torque *= 0.7;
         }
         if (Math.abs(this.outerCircle.rotVel) > 0.01) {
-            this.outerCircle.torque *= 0.8;
-        }
-        // Slow down harder if player stops spinning
-        const torqueReleaseThreshold = 0.003; // if torque on release is higher, then full speed ahead
-        if (this.innerCircle.torque == 0 && Math.abs(this.innerCircle.torqueOnRelease) > 0.001) {
-            let isTorqueOpposing = this.innerCircle.torqueOnRelease * this.innerCircle.rotVel < 0;
-            if (isTorqueOpposing) {
-                this.innerCircle.rotVel *= 0.05;
-            } else if (Math.abs(this.innerCircle.torqueOnRelease) < torqueReleaseThreshold) {
-                let slowOnRelease = Math.max(0.05, Math.abs(this.innerCircle.torqueOnRelease) / torqueReleaseThreshold);
-                this.innerCircle.rotVel *= slowOnRelease;
-            }
-            this.innerCircle.torqueOnRelease = 0;
-        }
-        if (this.outerCircle.torque == 0 && Math.abs(this.outerCircle.torqueOnRelease) > 0.001) {
-            let isTorqueOpposing = this.outerCircle.torqueOnRelease * this.outerCircle.rotVel < 0;
-            if (isTorqueOpposing) {
-                this.outerCircle.rotVel *= 0.05;
-            } else if (Math.abs(this.outerCircle.torqueOnRelease) < torqueReleaseThreshold) {
-                let slowOnRelease = Math.max(0.05, Math.abs(this.outerCircle.torqueOnRelease) / torqueReleaseThreshold);
-                this.outerCircle.rotVel *= slowOnRelease;
-            }
-            this.outerCircle.torqueOnRelease = 0;
+            this.outerCircle.torque *= 0.7;
         }
 
         if (this.forcingAlignment) {
-            this.innerCircle.torque *= 0.01;
-            this.outerCircle.torque *= 0.01;
+            this.innerCircle.torque = 0;
+            this.outerCircle.torque = 0;
         }
         // reduce pull jitter
         // if (this.draggedObj) {
@@ -871,6 +835,9 @@ const ENABLE_KEYBOARD = true;
         // } else {
         //     this.lastDragTorque = 0;
         // }
+
+        // Slow down harder if player stops spinning
+
 
         // ROT VEL UPDATE
         this.innerCircle.rotVel += this.innerCircle.torque * dt;
@@ -894,6 +861,34 @@ const ENABLE_KEYBOARD = true;
             this.outerCircle.rotVel *= 0.98;
         }
 
+        const torqueReleaseThreshold = 0.003; // if torque on release is higher, then full speed ahead
+        let lagMultReducer = Math.max(0, Math.min(1, 2 - dt * 0.5));
+        if (this.innerCircle.torque == 0 && Math.abs(this.innerCircle.torqueOnRelease) > 0.001) {
+            let isTorqueOpposing = this.innerCircle.torqueOnRelease * this.innerCircle.rotVel < 0;
+            if (isTorqueOpposing) {
+                this.innerCircle.rotVel *= 0.05;
+            } else if (Math.abs(this.innerCircle.torqueOnRelease) > torqueReleaseThreshold) {
+                let slowOnRelease = Math.min(1.6, Math.max(1, Math.abs(this.innerCircle.torqueOnRelease) * lagMultReducer / torqueReleaseThreshold));
+                this.innerCircle.rotVel *= slowOnRelease;
+                this.innerCircle.torque *= slowOnRelease;
+                this.innerCircle.nextRotation += this.innerCircle.rotVel;
+            }
+            console.log(this.innerCircle.rotVel, this.innerCircle.torque);
+            this.innerCircle.torqueOnRelease = 0;
+        }
+        if (this.outerCircle.torque == 0 && Math.abs(this.outerCircle.torqueOnRelease) > 0.001) {
+            let isTorqueOpposing = this.outerCircle.torqueOnRelease * this.outerCircle.rotVel < 0;
+            if (isTorqueOpposing) {
+                this.outerCircle.rotVel *= 0.05;
+            } else if (Math.abs(this.outerCircle.torqueOnRelease) > torqueReleaseThreshold) {
+                let slowOnRelease = Math.min(1.6, Math.max(1, Math.abs(this.outerCircle.torqueOnRelease) * lagMultReducer / torqueReleaseThreshold));
+                this.outerCircle.rotVel *= slowOnRelease;
+                this.outerCircle.torque *= slowOnRelease;
+                this.outerCircle.nextRotation += this.outerCircle.rotVel;
+            }
+            this.outerCircle.torqueOnRelease = 0;
+        }
+
         // high torque but low speed = strong push force
         // low torque but high speed = strong stop force
         let spinAmpFromRestInner = Math.abs(this.innerCircle.rotVel) < 0.01 ? 2 : 1;
@@ -904,14 +899,6 @@ const ENABLE_KEYBOARD = true;
         let spinSlowTimeDilation = 1 - (1-gameVars.timeSlowRatio)*0.5;
         let spinSnapSlowAmtInner = this.handleSpinSnapSlowAmt(this.innerCircle, this.elements);
         let spinSnapSlowAmtOuter = this.handleSpinSnapSlowAmt(this.outerCircle, this.embodiments);
-
-        // Being close to a rune slows you down a bit
-        if (Math.abs(distToClosestRuneElement) < 0.03) {
-            spinAmtInner *= 0.8;
-        }
-        if (Math.abs(distToClosestRuneEmbodiment) < 0.03) {
-            spinAmtOuter *= 0.8;
-        }
 
         // spell multiplier slows things down
         let multDrag = 1;
@@ -934,9 +921,10 @@ const ENABLE_KEYBOARD = true;
 
         this.innerCircle.torqueDecay = (this.innerCircle.torqueDecay / (1+dt)) + this.innerCircle.torque;
         this.outerCircle.torqueDecay = (this.outerCircle.torqueDecay / (1+dt)) + this.outerCircle.torque;
-        this.innerCircle.torque = 0;
-        this.outerCircle.torque = 0;
 
+        let lagMultTorque = Math.min(dt * 0.1, 0.6);
+        this.innerCircle.torque *= 0;// 0.6 - lagMultTorque;
+        this.outerCircle.torque *= 0;//0.6 - lagMultTorque;
     }
 
     handleSpinSnapSlowAmt(circle, elements) {
@@ -962,9 +950,8 @@ const ENABLE_KEYBOARD = true;
 
     // snap to rune
     autolockRune(dt) {
-        let lagReduceRatio = Math.max(0, Math.min(1, (3 - dt)));
-        if (!this.dragCircle.visible) {
-            lagReduceRatio = 1;
+        if (this.dragCircle.visible) {
+            return;
         }
 
         let distToClosestRuneEmbodiment = 999;
@@ -984,29 +971,27 @@ const ENABLE_KEYBOARD = true;
 
         let absDistToClosestRuneElement = Math.abs(distToClosestRuneElement);
         if (distToClosestRuneElement < 0.45 && absDistToClosestRuneElement > 0.005) {
-            let strengthRatio = Math.min(1, Math.max(0, 1 - absDistToClosestRuneElement * 2))
+            let strengthRatio = Math.min(1, Math.max(0, 1 - absDistToClosestRuneElement * 1.8))
             strengthRatio *= strengthRatio * strengthRatio * strengthRatio;
 
-            let torqueRatio = Math.max(0, 1 - Math.abs(this.innerCircle.torqueDecay) * 100); // goes down when player pull
-            this.innerCircle.rotation -= distToClosestRuneElement * strengthRatio * torqueRatio * lagReduceRatio;// Math.max(-0.05, Math.min(0.05, turnAmount)) * dt * rotVelMult;
+            this.innerCircle.rotation -= distToClosestRuneElement * strengthRatio;// Math.max(-0.05, Math.min(0.05, turnAmount)) * dt * rotVelMult;
             if (!this.dragCircle.visible) {
                 // player isn't pulling
                 let absRotVelMult = Math.max(0, 1 - Math.max(0, Math.abs(this.innerCircle.rotVel) * 25));
-                this.innerCircle.nextRotation -= distToClosestRuneElement * 0.4 * absRotVelMult;
+                this.innerCircle.nextRotation -= distToClosestRuneElement * 0.24 * absRotVelMult;
             }
         }
 
         let absDistToClosestRuneEmbodiment = Math.abs(distToClosestRuneEmbodiment);
         if (Math.abs(distToClosestRuneEmbodiment) < 0.4 && absDistToClosestRuneEmbodiment > 0.005) {
-            let strengthRatio = Math.min(1, Math.max(0, 1 - absDistToClosestRuneEmbodiment * 2.2))
+            let strengthRatio = Math.min(1, Math.max(0, 1 - absDistToClosestRuneEmbodiment * 2))
             strengthRatio *= strengthRatio * strengthRatio * strengthRatio;
 
-            let torqueRatio = Math.max(0, 1 - Math.abs(this.outerCircle.torqueDecay) * 100); // goes down when player pull
-            this.outerCircle.rotation -= distToClosestRuneEmbodiment * strengthRatio * torqueRatio * lagReduceRatio;// Math.max(-0.05, Math.min(0.05, turnAmount)) * dt * rotVelMult;
+            this.outerCircle.rotation -= distToClosestRuneEmbodiment * strengthRatio;// Math.max(-0.05, Math.min(0.05, turnAmount)) * dt * rotVelMult;
             if (!this.dragCircle.visible) {
                 // player isn't pulling
                 let absRotVelMult = Math.max(0, 1 - Math.max(0, Math.abs(this.outerCircle.rotVel) * 25));
-                this.outerCircle.nextRotation -= distToClosestRuneEmbodiment * 0.34 * absRotVelMult;
+                this.outerCircle.nextRotation -= distToClosestRuneEmbodiment * 0.2 * absRotVelMult;
             }
         }
 

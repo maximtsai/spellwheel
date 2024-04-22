@@ -2,7 +2,7 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('lesser_dummy.png', 0.8, 0, 5);
-        this.bgMusic = playSound('fightbg1', 0.2, true);
+        this.bgMusic = playSound('fightbg1', 0.6, true);
         this.sprite.setOrigin(0.5, 0.99);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
@@ -94,7 +94,7 @@
              targets: [this.arrowRotate1],
              rotation: this.arrowRotate1.rotation * -1,
              ease: 'Cubic.easeInOut',
-             duration: 1300,
+             duration: 1100,
              completeDelay: 100,
              onComplete: () => {
                  PhaserScene.tweens.add({
@@ -107,7 +107,7 @@
                      targets: [this.arrowRotate1],
                      rotation: this.arrowRotate1.rotation * -1,
                      ease: 'Cubic.easeInOut',
-                     duration: 1300,
+                     duration: 1100,
                  });
              }
          });
@@ -115,14 +115,14 @@
              targets: [this.arrowRotate2],
              rotation: this.arrowRotate2.rotation * -1,
              ease: 'Cubic.easeInOut',
-             duration: 1300,
+             duration: 1100,
              completeDelay: 100,
              onComplete: () => {
                  PhaserScene.tweens.add({
                      targets: [this.arrowRotate2],
                      rotation: this.arrowRotate2.rotation * -1,
                      ease: 'Cubic.easeInOut',
-                     duration: 1300,
+                     duration: 1100,
                      completeDelay: 3000,
                      onComplete: () => {
                          if (!this.dead && globalObjects.player.getPlayerCastSpellsCount() === 1) {
@@ -293,7 +293,6 @@
          }
         super.die();
         globalObjects.textPopupManager.hideInfoText();
-         this.bgMusic.stop();
          this.dieClickBlocker = new Button({
              normal: {
                  ref: "blackPixel",

@@ -1025,6 +1025,9 @@ class Enemy {
         if (this.dead) {
             return;
         }
+        if (this.bgMusic) {
+            this.bgMusic.stop();
+        }
         this.clearEffects();
         this.dead = true;
         // undo any time magic

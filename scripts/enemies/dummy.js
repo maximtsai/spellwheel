@@ -2,6 +2,7 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('dummy.png', 0.95,0, 5);
+        this.bgMusic = playSound('fightbg1', 0.7, true);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
                 // this.initTutorial2();
@@ -29,11 +30,11 @@
 
 
      initTutorial() {
-         this.rune1 = this.scene.add.sprite(isMobile ? 27 : 27, gameConsts.height - 272, 'circle', 'rune_enhance_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
-         this.rune2 = this.scene.add.sprite(isMobile ? 87 : 87, gameConsts.height - 273, 'circle', 'rune_matter_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
+         this.rune1 = this.scene.add.sprite(gameConsts.width - 200, gameConsts.height - 347, 'circle', 'rune_enhance_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
+         this.rune2 = this.scene.add.sprite(gameConsts.width - 137, gameConsts.height - 348, 'circle', 'rune_matter_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
 
          setTimeout(() => {
-             globalObjects.textPopupManager.setInfoText(114, gameConsts.height - 363, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'left');
+             globalObjects.textPopupManager.setInfoText(gameConsts.width - 114, gameConsts.height - 438, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'left');
              PhaserScene.tweens.add({
                  targets: [this.rune1, this.rune2],
                  alpha: 1,

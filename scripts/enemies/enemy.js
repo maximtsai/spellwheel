@@ -767,7 +767,7 @@ class Enemy {
         return amt;
     }
 
-    takeDamage(amt, isAttack = true) {
+    takeDamage(amt, isAttack = true, yOffset = 0) {
         if (globalObjects.player.isDead()) {
             return;
         }
@@ -810,7 +810,7 @@ class Enemy {
         let healthLoss = origHealth - this.health;
         if (healthLoss > 0) {
             this.animateShake();
-            this.animateDamageNum(healthLoss, undefined, this.damageNumOffset);
+            this.animateDamageNum(healthLoss, undefined, this.damageNumOffset + yOffset);
         }
         if (isAttack) {
             this.timeSinceLastAttacked = 0;

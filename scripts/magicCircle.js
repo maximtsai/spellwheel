@@ -244,7 +244,7 @@ const ENABLE_KEYBOARD = true;
 
             let dragForceSqr = horizForce + vertForce;
 
-            let torqueConst = gameVars.wasTouch ? 0.03 : 0.025;
+            let torqueConst = gameVars.wasTouch ? 0.028 : 0.023;
             // castDisable
 
             // Using both rotation diff and mult val to calculate
@@ -254,7 +254,7 @@ const ENABLE_KEYBOARD = true;
                 this.draggedObj.torque = dragForce * Math.sqrt(dragForceSqr) * torqueConst * (1 + dt * 0.001);
             }
             let lagMult = Math.max(0, (3 / dt) - 0.05);
-            this.draggedObj.torque += dragAngleDiff * torqueConst * 0.3 + (dragAngleDiffDiff * torqueConst * lagMult);
+            this.draggedObj.torque += dragAngleDiff * torqueConst * 0.3 + (dragAngleDiffDiff * torqueConst * lagMult * 0.5);
 
             // this.draggedObj.torque = this.draggedObj.torque + (this.draggedObj.torque * this.draggedObj.torque) * minusMult * 150;
             //this.draggedObj.torque += this.draggedObj.torqueOnRelease * 0.5;

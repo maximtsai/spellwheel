@@ -2335,20 +2335,32 @@ class SpellManager {
             PhaserScene.time.delayedCall(Math.max(0, initialDelay * 0.1 + thisDurationDelay * 0.85 - 280), () => {
                 PhaserScene.time.delayedCall(180, () => {
                     zoomTemp(1.005 + numTotalAttacks * 0.002);
+                    console.log("set white alpha to 0.5");
                     whiteObj.alpha = 0.5;
                     setTimeout(() => {
-                        whiteObj.destroy();
+                        console.log(i);
+                        if (i === 0) {
+                            console.log("destroyWhiteAlpha");
+                            whiteObj.destroy();
+                        } else {
+                            console.log("set white alpha to 0");
+                            whiteObj.alpha = 0;
+                        }
                         blackObj.alpha = 0.4;
                         this.scene.tweens.add({
                             targets: blackObj,
                             alpha: 0,
                             duration: 250,
                             onComplete: () => {
-                                blackObj.destroy();
+                                if (i === 0) {
+                                    blackObj.destroy();
+                                } else {
+                                    blackObj.alpha = 0;
+                                }
                             }
                         });
-                    }, 20);
-                    messageBus.publish('enemyTakeDamagePercent', 15, additionalDamage);
+                    }, 15);
+                    messageBus.publish('enemyTakeDamagePercent', 12.5, additionalDamage);
                     messageBus.publish('disruptOpponentAttackPercent', 0.667);
                     messageBus.publish('setPauseDur', 50);
 

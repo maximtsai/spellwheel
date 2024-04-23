@@ -617,68 +617,6 @@ class Player {
                     }
                     break;
                 case 'mind':
-                    if (hurtAmt > 0 && shieldObj.active) {
-                        let blockedDmg = Math.ceil(amt * 0.5);
-                        hurtAmt = hurtAmt - blockedDmg;
-                        shieldObj.impactVisibleTime = 8;
-                        shieldObj.storedDamage += blockedDmg;
-                        shieldObj.textObj.setText(shieldObj.storedDamage);
-                        shieldObj.textObj.setScale(0.5 + Math.sqrt(shieldObj.storedDamage) * 0.15);
-                        playSound('fizzle');
-
-                        shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 2.2, shieldObj.animObj[0].scaleY);
-                        this.scene.tweens.add({
-                            targets: shieldObj.animObj[0],
-                            duration: 300,
-                            scaleX: shieldObj.animObj[0].origScaleX,
-                            ease: 'Quad.easeOut',
-                        });
-
-                        shieldObj.animObj[2].setAlpha(3).setScale(2.2);
-                        if (shieldObj.reflectAnim) {
-                            shieldObj.reflectAnim.stop();
-                        }
-                        shieldObj.reflectAnim = this.scene.tweens.add({
-                            targets: shieldObj.animObj[2],
-                            duration: 1100,
-                            scaleX: 1.5,
-                            scaleY: 1.5,
-                            alpha: 0,
-                            ease: 'Cubic.easeOut',
-                        });
-                        if (shieldObj.eyeBlastAnim) {
-                            shieldObj.eyeBlastAnim.stop();
-                        }
-                        shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale).setAlpha(0.3);
-                        shieldObj.eyeBlastAnim = this.scene.tweens.add({
-                            targets: shieldObj.animObj[1],
-                            duration: 1100,
-                            scaleX: shieldObj.animObj[1].origScale * 1.15,
-                            scaleY: shieldObj.animObj[1].origScale * 1.15,
-                            alpha: 1.02,
-                            ease: 'Quad.easeOut',
-                            onComplete: () => {
-                                //setTimeout(() => {
-                                    let retalVol = 0.4 + shieldObj.storedDamage * 0.015;
-                                    playSound('mind_shield_retaliate', retalVol);
-                                    messageBus.publish('enemyTakeTrueDamage', shieldObj.storedDamage, false, 95);
-                                    shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale * 1.2);
-                                    shieldObj.animObj[1].setAlpha(1);
-                                    shieldObj.textObj.setText(' ');
-                                    shieldObj.eyeBlastAnim = this.scene.tweens.add({
-                                        targets: shieldObj.animObj[1],
-                                        duration: 180,
-                                        scaleX: shieldObj.animObj[1].origScale,
-                                        scaleY: shieldObj.animObj[1].origScale,
-                                        alpha: 0.2,
-                                        ease: 'Cubic.easeOut'
-                                    });
-                                    shieldObj.storedDamage = 0;
-
-                                //}, 50);
-                            }
-                        });
-                    }
                     break;
                 case 'time':
                     if (hurtAmt > 1 && shieldObj.active) {
@@ -757,7 +695,75 @@ class Player {
                     });
                 }
                 hurtAmt = Math.max(0, hurtAmt - this.statuses['matterReinforce'].protection);
-                messageBus.publish('enemyTakeDamage', this.statuses['matterReinforce'].damage, false);
+                messageBus.publish('enemyTakeDamage', this.statuses['matterReinforce'].damage, false, 30);
+            }
+
+            // handle mind shield which plays after
+            for (let i = 0; i < shieldObjects.length; i++) {
+                let shieldObj = shieldObjects[i];
+                switch (shieldObj.type) {
+                    case 'mind':
+                        if (hurtAmt > 0 && shieldObj.active) {
+                            let blockedDmg = Math.ceil(hurtAmt * 0.49999);
+                            hurtAmt = hurtAmt - blockedDmg;
+                            shieldObj.impactVisibleTime = 8;
+                            shieldObj.storedDamage += blockedDmg;
+                            shieldObj.textObj.setText(shieldObj.storedDamage);
+                            shieldObj.textObj.setScale(0.5 + Math.sqrt(shieldObj.storedDamage) * 0.15);
+                            playSound('fizzle');
+
+                            shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 2.2, shieldObj.animObj[0].scaleY);
+                            this.scene.tweens.add({
+                                targets: shieldObj.animObj[0],
+                                duration: 300,
+                                scaleX: shieldObj.animObj[0].origScaleX,
+                                ease: 'Quad.easeOut',
+                            });
+
+                            shieldObj.animObj[2].setAlpha(3).setScale(2.6);
+                            if (shieldObj.reflectAnim) {
+                                shieldObj.reflectAnim.stop();
+                            }
+                            shieldObj.reflectAnim = this.scene.tweens.add({
+                                targets: shieldObj.animObj[2],
+                                duration: 1100,
+                                scaleX: 1.6,
+                                scaleY: 1.6,
+                                alpha: 0,
+                                ease: 'Cubic.easeOut',
+                            });
+                            if (shieldObj.eyeBlastAnim) {
+                                shieldObj.eyeBlastAnim.stop();
+                            }
+                            shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale).setAlpha(0.3);
+                            shieldObj.eyeBlastAnim = this.scene.tweens.add({
+                                targets: shieldObj.animObj[1],
+                                duration: 1150,
+                                scaleX: shieldObj.animObj[1].origScale * 1.15,
+                                scaleY: shieldObj.animObj[1].origScale * 1.15,
+                                alpha: 1.02,
+                                ease: 'Quad.easeOut',
+                                onComplete: () => {
+                                    let retalVol = 0.4 + shieldObj.storedDamage * 0.015;
+                                    playSound('mind_shield_retaliate', retalVol);
+                                    messageBus.publish('enemyTakeTrueDamage', shieldObj.storedDamage, false, 95);
+                                    shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale * 1.2);
+                                    shieldObj.animObj[1].setAlpha(1);
+                                    shieldObj.textObj.setText(' ');
+                                    shieldObj.eyeBlastAnim = this.scene.tweens.add({
+                                        targets: shieldObj.animObj[1],
+                                        duration: 180,
+                                        scaleX: shieldObj.animObj[1].origScale,
+                                        scaleY: shieldObj.animObj[1].origScale,
+                                        alpha: 0.2,
+                                        ease: 'Cubic.easeOut'
+                                    });
+                                    shieldObj.storedDamage = 0;
+                                }
+                            });
+                        }
+                        break;
+                }
             }
         }
 

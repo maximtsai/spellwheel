@@ -634,20 +634,31 @@ class Player {
                             ease: 'Quad.easeOut',
                         });
 
-                        shieldObj.animObj[2].setAlpha(1);
+                        shieldObj.animObj[2].setAlpha(3).setScale(2.2);
+                        if (shieldObj.reflectAnim) {
+                            shieldObj.reflectAnim.stop();
+                        }
+                        shieldObj.reflectAnim = this.scene.tweens.add({
+                            targets: shieldObj.animObj[2],
+                            duration: 1100,
+                            scaleX: 1.5,
+                            scaleY: 1.5,
+                            alpha: 0,
+                            ease: 'Cubic.easeOut',
+                        });
                         if (shieldObj.eyeBlastAnim) {
                             shieldObj.eyeBlastAnim.stop();
                         }
                         shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale).setAlpha(0.3);
                         shieldObj.eyeBlastAnim = this.scene.tweens.add({
                             targets: shieldObj.animObj[1],
-                            duration: 850,
-                            scaleX: shieldObj.animObj[1].origScale * 1.12,
-                            scaleY: shieldObj.animObj[1].origScale * 1.12,
-                            alpha: 1.01,
+                            duration: 1100,
+                            scaleX: shieldObj.animObj[1].origScale * 1.15,
+                            scaleY: shieldObj.animObj[1].origScale * 1.15,
+                            alpha: 1.02,
                             ease: 'Quad.easeOut',
                             onComplete: () => {
-                                setTimeout(() => {
+                                //setTimeout(() => {
                                     let retalVol = 0.4 + shieldObj.storedDamage * 0.015;
                                     playSound('mind_shield_retaliate', retalVol);
                                     messageBus.publish('enemyTakeTrueDamage', shieldObj.storedDamage, false, 95);
@@ -664,7 +675,7 @@ class Player {
                                     });
                                     shieldObj.storedDamage = 0;
 
-                                }, 50);
+                                //}, 50);
                             }
                         });
                     }

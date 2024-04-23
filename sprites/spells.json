@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "weakenLines_00.png",
+					"filename": "weakenLines_01.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -334,36 +334,15 @@
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 1,
-						"w": 69,
-						"h": 45
+						"y": 3,
+						"w": 70,
+						"h": 46
 					},
 					"frame": {
 						"x": 903,
 						"y": 1284,
-						"w": 69,
-						"h": 45
-					}
-				},
-				{
-					"filename": "timeEffect2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 54,
-						"h": 54
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 0,
-						"w": 42,
-						"h": 54
-					},
-					"frame": {
-						"x": 1959,
-						"y": 940,
-						"w": 42,
-						"h": 54
+						"w": 70,
+						"h": 46
 					}
 				},
 				{
@@ -465,31 +444,10 @@
 						"h": 34
 					},
 					"frame": {
-						"x": 974,
-						"y": 1284,
+						"x": 1959,
+						"y": 940,
 						"w": 34,
 						"h": 34
-					}
-				},
-				{
-					"filename": "rock_chip.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 20,
-						"h": 20
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 20,
-						"h": 20
-					},
-					"frame": {
-						"x": 403,
-						"y": 2005,
-						"w": 20,
-						"h": 20
 					}
 				},
 				{
@@ -672,6 +630,27 @@
 					}
 				},
 				{
+					"filename": "rock_chip.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 20,
+						"h": 20
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 20,
+						"h": 20
+					},
+					"frame": {
+						"x": 1282,
+						"y": 239,
+						"w": 20,
+						"h": 20
+					}
+				},
+				{
 					"filename": "damageEffect1.png",
 					"rotated": false,
 					"trimmed": true,
@@ -819,24 +798,24 @@
 					}
 				},
 				{
-					"filename": "weakenLines_01.png",
+					"filename": "weakenLines_00.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 70,
+						"w": 74,
 						"h": 50
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 6,
-						"w": 68,
-						"h": 40
+						"x": 0,
+						"y": 0,
+						"w": 74,
+						"h": 50
 					},
 					"frame": {
 						"x": 1182,
 						"y": 729,
-						"w": 68,
-						"h": 40
+						"w": 74,
+						"h": 50
 					}
 				},
 				{
@@ -854,31 +833,10 @@
 						"h": 44
 					},
 					"frame": {
-						"x": 1252,
+						"x": 1258,
 						"y": 729,
 						"w": 44,
 						"h": 44
-					}
-				},
-				{
-					"filename": "clock.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 65,
-						"h": 65
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 0,
-						"w": 55,
-						"h": 64
-					},
-					"frame": {
-						"x": 1182,
-						"y": 771,
-						"w": 55,
-						"h": 64
 					}
 				},
 				{
@@ -896,10 +854,31 @@
 						"h": 44
 					},
 					"frame": {
-						"x": 1182,
-						"y": 837,
+						"x": 1258,
+						"y": 775,
 						"w": 44,
 						"h": 44
+					}
+				},
+				{
+					"filename": "timeEffect2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 54,
+						"h": 54
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 0,
+						"w": 42,
+						"h": 54
+					},
+					"frame": {
+						"x": 1182,
+						"y": 821,
+						"w": 42,
+						"h": 54
 					}
 				},
 				{
@@ -917,8 +896,8 @@
 						"h": 40
 					},
 					"frame": {
-						"x": 1228,
-						"y": 837,
+						"x": 1226,
+						"y": 821,
 						"w": 40,
 						"h": 40
 					}
@@ -1344,7 +1323,7 @@
 					}
 				},
 				{
-					"filename": "clock_red.png",
+					"filename": "clock.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1470,6 +1449,27 @@
 					}
 				},
 				{
+					"filename": "clock_red.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 65,
+						"h": 65
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 0,
+						"w": 55,
+						"h": 64
+					},
+					"frame": {
+						"x": 855,
+						"y": 1498,
+						"w": 55,
+						"h": 64
+					}
+				},
+				{
 					"filename": "stoneShield.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1580,6 +1580,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:d509e8db10543eb9db01ae9ef2b1bfd2:477f73084454ace3d03d6ecd36287317:5e62eb201321ea33b301bbf963063802$"
+		"smartupdate": "$TexturePacker:SmartUpdate:7b7c7a286171cf234f48895af84af1fc:7c5fd725bcdb936d9be64df487aeff57:5e62eb201321ea33b301bbf963063802$"
 	}
 }

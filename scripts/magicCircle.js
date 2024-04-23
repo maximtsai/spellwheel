@@ -25,6 +25,7 @@ const ENABLE_KEYBOARD = true;
         this.tempRotObjs = [];
         this.tempLockRot = 0;
         this.lastDragTime = 0;
+        this.prevDragAngleDiff = null;
         this.subscriptions = [
             messageBus.subscribe('attackLaunched', this.attackLaunched.bind(this)),
             messageBus.subscribe('manualSetTimeSlowRatio', this.manualSetTimeSlowRatio.bind(this)),
@@ -210,6 +211,15 @@ const ENABLE_KEYBOARD = true;
                 dragAngleDiff += Math.PI * 2;
             }
 
+            if (!this.prevDragAngleDiff) {
+                this.prevDragAngleDiff = dragAngleDiff;
+            }
+            let dragAngleDiffDiff = (dragAngleDiff - this.prevDragAngleDiff) * Math.abs(dragAngleDiff);
+            if (dragAngleDiffDiff < -0.24) {
+                dragAngleDiffDiff = -0.24;
+            } else if (dragAngleDiffDiff > 0.24) {
+                dragAngleDiffDiff = 0.24;
+            }
             // alt method of calculating torque
             let dragPointX = Math.cos(this.dragPointAngle) * this.dragPointDist;
             let dragPointY = Math.sin(this.dragPointAngle) * this.dragPointDist;
@@ -224,9 +234,9 @@ const ENABLE_KEYBOARD = true;
             let dragPointYOrigin = dragPointY / this.dragPointDist;
             let dragForce = 0;
             if (dragDist < 25) {
-                dragForce = Math.max(0.05, Math.min(1, dragDist * 0.015));
+                dragForce = Math.max(0, Math.min(1, dragDist * 0.015));
             } else {
-                dragForce = Math.min(1, 0.375 + dragDist * 0.002);
+                dragForce = Math.min(1, 0.25 + dragDist * 0.002);
             }
 
             let vertForce = dragPointXOrigin * dragDistYOrigin;
@@ -234,16 +244,17 @@ const ENABLE_KEYBOARD = true;
 
             let dragForceSqr = horizForce + vertForce;
 
-            let torqueConst = gameVars.wasTouch ? 0.025 : 0.02;
+            let torqueConst = gameVars.wasTouch ? 0.03 : 0.025;
             // castDisable
 
             // Using both rotation diff and mult val to calculate
             if (dragForceSqr < 0) {
-                this.draggedObj.torque = dragForce * -Math.sqrt(-dragForceSqr) * torqueConst * (1 + dt * 0.25);
+                this.draggedObj.torque = dragForce * -Math.sqrt(-dragForceSqr) * torqueConst * (1 + dt * 0.001);
             } else {
-                this.draggedObj.torque = dragForce * Math.sqrt(dragForceSqr) * torqueConst * (1 + dt * 0.25);
+                this.draggedObj.torque = dragForce * Math.sqrt(dragForceSqr) * torqueConst * (1 + dt * 0.001);
             }
-            this.draggedObj.torque += dragAngleDiff * torqueConst * 0.25;
+            let lagMult = Math.max(0, (3 / dt) - 0.05);
+            this.draggedObj.torque += dragAngleDiff * torqueConst * 0.3 + (dragAngleDiffDiff * torqueConst * lagMult);
 
             // this.draggedObj.torque = this.draggedObj.torque + (this.draggedObj.torque * this.draggedObj.torque) * minusMult * 150;
             //this.draggedObj.torque += this.draggedObj.torqueOnRelease * 0.5;
@@ -281,7 +292,9 @@ const ENABLE_KEYBOARD = true;
             } else if (this.draggedObj == this.outerCircle) {
                 this.setFrameLazy(this.outerCircle,'usage_drag.png');
             }
+            this.prevDragAngleDiff = dragAngleDiff;
         } else {
+            this.prevDragAngleDiff = null;
             this.dragArrow.visible = false;
             this.dragCircle.visible = false;
             this.calculateRotations(dt);
@@ -819,25 +832,6 @@ const ENABLE_KEYBOARD = true;
             this.innerCircle.torque = 0;
             this.outerCircle.torque = 0;
         }
-        // reduce pull jitter
-        // if (this.draggedObj) {
-        //     if (this.lastDragTorque * this.draggedObj.torque < 0) {
-        //         this.draggedObj.torque *= this.lastDragTorqueMult;
-        //         this.lastDragTorqueMult *= 0.55;
-        //     } else {
-        //         this.lastDragTorqueMult = 0.5;
-        //     }
-        //     // this.lastDragTorque = this.draggedObj.torque;
-        //
-        //     this.draggedObj.torque -= this.lastDragTorque * 0.25;
-        //     // this.draggedObjLastTorque = this.draggedObj.torque;
-        //     this.lastDragTorque = this.draggedObj.torque;
-        // } else {
-        //     this.lastDragTorque = 0;
-        // }
-
-        // Slow down harder if player stops spinning
-
 
         // ROT VEL UPDATE
         this.innerCircle.rotVel += this.innerCircle.torque * dt;
@@ -873,7 +867,6 @@ const ENABLE_KEYBOARD = true;
                 this.innerCircle.torque *= slowOnRelease;
                 this.innerCircle.nextRotation += this.innerCircle.rotVel;
             }
-            console.log(this.innerCircle.rotVel, this.innerCircle.torque);
             this.innerCircle.torqueOnRelease = 0;
         }
         if (this.outerCircle.torque == 0 && Math.abs(this.outerCircle.torqueOnRelease) > 0.001) {
@@ -957,13 +950,13 @@ const ENABLE_KEYBOARD = true;
         let distToClosestRuneEmbodiment = 999;
         let distToClosestRuneElement = 999;
         for (let i = 0; i < this.elements.length; i++) {
-            let distToRune = this.getRotationDiff(this.innerCircle.nextRotation + this.innerCircle.nextRotation - this.innerCircle.prevRotation, this.elements[i].startRotation);
+            let distToRune = this.getRotationDiff(this.innerCircle.nextRotation + this.innerCircle.rotVel * 2, this.elements[i].startRotation);
             if (Math.abs(distToRune) < Math.abs(distToClosestRuneElement)) {
                 distToClosestRuneElement = distToRune;
             }
         }
         for (let i = 0; i < this.embodiments.length; i++) {
-            let distToRune = this.getRotationDiff(this.outerCircle.nextRotation, this.embodiments[i].startRotation);
+            let distToRune = this.getRotationDiff(this.outerCircle.nextRotation + this.outerCircle.rotVel * 2, this.embodiments[i].startRotation);
             if (Math.abs(distToRune) < Math.abs(distToClosestRuneEmbodiment)) {
                 distToClosestRuneEmbodiment = distToRune;
             }
@@ -1628,9 +1621,17 @@ const ENABLE_KEYBOARD = true;
         castCircle.setScale(1.25);
         castCircle.rotation = 0;
 
-        sprite.setPosition(this.x + Math.sin(elem.rotation) * 114, this.y - Math.cos(elem.rotation) * 114);
+        sprite.setPosition(this.x + Math.sin(elem.rotation) * 115, this.y - Math.cos(elem.rotation) * 115);
+        sprite.setScale(1.07);
         sprite.setAlpha(1);
         castCircle.setPosition(sprite.x, sprite.y);
+
+        this.scene.tweens.add({
+            targets: sprite,
+            duration: 400,
+            scaleX: 1.02,
+            scaleY: 1.02
+        });
 
         this.scene.tweens.add({
             targets: castCircle,
@@ -1700,9 +1701,17 @@ const ENABLE_KEYBOARD = true;
         castCircle.setScale(1.25);
         castCircle.rotation = 0;
 
-        sprite.setPosition(this.x + Math.sin(elem.rotation) * 168, this.y - Math.cos(elem.rotation) * 168);
+        sprite.setPosition(this.x + Math.sin(elem.rotation) * 175, this.y - Math.cos(elem.rotation) * 175);
+        sprite.setScale(1.07);
         sprite.setAlpha(1);
         castCircle.setPosition(sprite.x, sprite.y);
+
+        this.scene.tweens.add({
+            targets: sprite,
+            duration: 400,
+            scaleX: 1.02,
+            scaleY: 1.02
+        });
 
         this.scene.tweens.add({
             targets: castCircle,

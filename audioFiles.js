@@ -56,7 +56,6 @@ const audioFiles = [
     {name: 'sword_hit', src: 'audio/sword_hit.mp3'},
     {name: 'stone_wheel', src: 'audio/stone_wheel.mp3'},
     {name: 'stone_wheel_deep', src: 'audio/stone_wheel_deep.mp3'},
-    {name: 'victory', src: 'audio/victory.mp3'},
     {name: 'wind', src: 'audio/wind.mp3'},
     {name: 'sound_of_death', src: 'audio/sound_of_death.mp3'},
 

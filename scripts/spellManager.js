@@ -210,10 +210,10 @@ class SpellManager {
                 targets: rockObj,
                 delay: delayAmt,
                 x: gameConsts.halfWidth + (Math.random() - 0.5) * 20,
-                y: 140 + (Math.random() - 0.5) * 20 - Math.floor(Math.sqrt(additionalDamage) * 4),
+                y: 165 + (Math.random() - 0.5) * 15 - Math.floor(Math.sqrt(additionalDamage) * 2),
                 duration: 500 + additionalDamage * 5,
-                scaleX: 0.25 + additionalScale * 0.7,
-                scaleY: 0.25 + additionalScale * 0.7,
+                scaleX: 0.34 + additionalScale * 0.6,
+                scaleY: 0.34 + additionalScale * 0.6,
                 rotation: (Math.random() - 0.5) * 2,
                 ease: 'Quad.easeIn',
                 onComplete: () => {
@@ -275,8 +275,8 @@ class SpellManager {
         this.scene.tweens.add({
             targets: brickObj,
             duration: 400 + 50 * spellMult,
-            scaleX: 1.01 + 0.015 * spellMult,
-            scaleY: 1.01 + 0.015 * spellMult,
+            scaleX: 1.05 + 0.015 * spellMult,
+            scaleY: 1.05 + 0.015 * spellMult,
             alpha: 0.8,
             rotation: 0,
             ease: 'Cubic.easeIn',
@@ -289,7 +289,7 @@ class SpellManager {
                     alpha: 0.5,
                     ease: 'Quad.easeOut'
                 });
-                let scaleAmt = 0.994 + 0.006 * Math.sqrt(spellMult);
+                let scaleAmt = 1.03 + 0.006 * Math.sqrt(spellMult);
                 brickObj.origScale = scaleAmt;
                 this.scene.tweens.add({
                     targets: brickObj,
@@ -305,8 +305,8 @@ class SpellManager {
             targets: brickObj2,
             delay: 200,
             duration: 400,
-            scaleX: 1.04,
-            scaleY: 1.04,
+            scaleX: 1.08,
+            scaleY: 1.08,
             alpha: 0.7,
             ease: 'Quart.easeIn',
             onComplete: () => {
@@ -318,7 +318,7 @@ class SpellManager {
                     alpha: 0.5,
                     ease: 'Quad.easeOut'
                 });
-                let scaleAmt = 0.925 + 0.085 * Math.sqrt(spellMult);
+                let scaleAmt = 0.975 + 0.085 * Math.sqrt(spellMult);
                 brickObj2.origScale = scaleAmt;
                 this.scene.tweens.add({
                     targets: brickObj2,
@@ -697,7 +697,7 @@ class SpellManager {
             statusObj: statusObj,
             shakeAmt: 0,
             impactVisibleTime: 0,
-            duration: 5,
+            duration: 6,
             active: true,
             cleanUp: (statuses) => {
                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
@@ -1533,13 +1533,13 @@ class SpellManager {
         animation2.origScale = animation2.scaleX;
         animation2.alpha = 0;
 
-        let animation3 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 200, 'spells', 'weakenLines_00.png');
+        let animation3 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 225, 'spells', 'weakenLines_00.png');
         animation3.startX = animation3.x;
         animation3.startY = animation3.y;
         animation3.setDepth(110);
         animation3.setOrigin(0.5, 1);
         animation3.rotation = 0;
-        animation3.visible = false;
+        animation3.alpha = 0;
         animation3.rotateOffset = 0;
 
         let textDisplay = this.scene.add.bitmapText(gameConsts.halfWidth, animation2.y, 'block', '', 48, 1);
@@ -1547,7 +1547,7 @@ class SpellManager {
         textDisplay.setDepth(animation2.depth);
         textDisplay.setScale(0.5);
 
-        messageBus.publish('setTempRotObjs', [animation1, animation3], rotation);
+        messageBus.publish('setTempRotObjs', [animation1], rotation);
         playSound('mind_shield');
 
         this.scene.tweens.add({

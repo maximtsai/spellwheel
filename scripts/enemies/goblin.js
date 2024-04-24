@@ -63,7 +63,7 @@
              [
                  // 1
                  {
-                     name: gameVars.isHardMode ? "READYING FANCY SHIELD {50 " : "READYING FANCY SHIELD {40 ",
+                     name: gameVars.isHardMode ? "FANCY SHIELD {50 " : "FANCY SHIELD {40 ",
                      desc: "The goblin hoists his\ntrusty shield (which\nwas definitely not stolen)",
                      block: gameVars.isHardMode ? 50 : 40,
                      customCall: " ",

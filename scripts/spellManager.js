@@ -1296,7 +1296,7 @@ class SpellManager {
                         }
                     });
 
-                    messageBus.publish('enemyTakeDamage', 30 + additionalDamage);
+                    messageBus.publish('enemyTakeDamage', 1 + additionalDamage);
                     messageBus.publish('setPauseDur', 15);
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {

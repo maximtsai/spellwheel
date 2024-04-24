@@ -154,43 +154,43 @@ class Enemy {
         this.chargeBarMax.setScale(chargeBarLength + 2, isMobile ? 13 : 10);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;
-        this.chargeBarMax.setDepth(10);
+        this.chargeBarMax.setDepth(9);
 
         this.voidPause = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'purple_pixel.png');
         this.voidPause.alpha = 0;
         this.voidPause.setScale(chargeBarLength + 2, this.chargeBarMax.scaleY - 2);
         this.voidPause.setOrigin(0.5, 0.5);
-        this.voidPause.setDepth(10);
+        this.voidPause.setDepth(9);
 
         this.chargeBarWarning = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
         this.chargeBarWarning.alphaMult = 1;
         this.chargeBarWarning.setScale(chargeBarLength + 2, this.chargeBarMax.scaleY);
         this.chargeBarWarning.setOrigin(0.5, 0.5);
         this.chargeBarWarning.visible = false;
-        this.chargeBarWarning.setDepth(10);
+        this.chargeBarWarning.setDepth(9);
         this.chargeBarWarning.setAlpha(0.35);
 
         this.chargeBarCurr = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'yellow_pixel.png');
         this.chargeBarCurr.setScale(0, this.chargeBarMax.scaleY - 2);
         this.chargeBarCurr.setOrigin(0.5, 0.5);
         this.chargeBarCurr.alpha = 0.9;
-        this.chargeBarCurr.setDepth(10);
+        this.chargeBarCurr.setDepth(9);
 
         this.chargeBarAngry = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
         this.chargeBarAngry.setScale(0, this.chargeBarMax.scaleY - 2);
         this.chargeBarAngry.setOrigin(0.5, 0.5);
         this.chargeBarAngry.alpha = 0.9;
-        this.chargeBarAngry.setDepth(10);
+        this.chargeBarAngry.setDepth(9);
         this.chargeBarAngry.visible = false;
 
-        let attackNameYPos = isMobile ? this.chargeBarMax.y - 21 : this.chargeBarMax.y - 19
+        let attackNameYPos = isMobile ? this.chargeBarMax.y - 22 : this.chargeBarMax.y - 19
 
-        this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', 25);
-        this.attackName.setDepth(10);
+        this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', isMobile ? 36 : 26);
+        this.attackName.setDepth(9);
         this.attackName.setOrigin(0.5, 0.85);
 
         this.angrySymbol = this.scene.add.sprite(x, this.attackName.y - 5, 'enemies', 'angry1.png');
-        this.angrySymbol.setDepth(10);
+        this.angrySymbol.setDepth(9);
         this.angrySymbol.visible = false;
         this.angrySymbolIsHiding = true;
     }
@@ -277,11 +277,11 @@ class Enemy {
         this.curseText.visible = false;
     }
 
-    setSprite(name, scale, noAnim) {
+    setSprite(name, scale, noAnim, depth = 1) {
         let newScale = scale ? scale : 1;
         if (!this.sprite) {
             this.sprite = this.scene.add.sprite(this.x, this.y, 'enemies', name);
-            this.sprite.setDepth(1);
+            this.sprite.setDepth(depth);
         } else {
             newScale = scale ? scale : this.sprite.startScale;
             let oldOriginX = this.sprite.originX;
@@ -290,7 +290,8 @@ class Enemy {
             if (oldFrame !== name) {
                 this.sprite.setFrame(name);
             }
-            this.sprite.setOrigin(oldOriginX, oldOriginY)
+            this.sprite.setOrigin(oldOriginX, oldOriginY);
+            this.sprite.setDepth(depth);
         }
         this.sprite.startScale = newScale;
         if (!noAnim) {
@@ -423,7 +424,7 @@ class Enemy {
             }
         } else if (chargeMult > 1) {
             this.chargeBarAngry.visible = true;
-            this.chargeBarAngry.alpha = 0.4;
+            this.chargeBarAngry.alpha = 0.8;
             if (chargeMult > 1.4) {
                 this.showAngrySymbol('exclamation');
             }
@@ -861,7 +862,7 @@ class Enemy {
             amt = 0;
         }
         let damageTaken = this.adjustDamageTaken(amt, isAttack, true);
-        this.setHealth(Math.max(0, this.health - damageTaken));
+        this.setHealth(Math.max(0, this.health - damageTaken), true);
         let healthLoss = origHealth - this.health;
         if (healthLoss > 0) {
             this.animateShake();
@@ -878,7 +879,7 @@ class Enemy {
         }
     }
 
-    setHealth(newHealth) {
+    setHealth(newHealth, isTrue) {
         this.prevHealth = this.health;
         this.health = newHealth;
     }
@@ -1303,33 +1304,49 @@ class Enemy {
         this.isUsingAttack = true;
 
         let extraTimeMult = 2 - gameVars.timeSlowRatio;
-        if (prepareSprite) {
-            this.setSprite(prepareSprite, this.sprite.startScale);
-        }
+
         if (this.nextAttack.attackStartFunction) {
             this.nextAttack.attackStartFunction();
         }
-        // First pull back
         let pullbackScale = this.pullbackScale * this.sprite.startScale;
         let pullbackDurMult = Math.sqrt(Math.abs(this.pullbackScale - this.pullbackScaleDefault) * 10) + 1;
+
+        let durationPullback = isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult : 300 * extraTimeMult * pullbackDurMult;
+
+        if (prepareSprite) {
+            if (isRepeatedAttack) {
+                setTimeout(() => {
+                    this.setSprite(prepareSprite, this.sprite.startScale);
+                }, durationPullback * 0.5);
+            } else {
+                this.setSprite(prepareSprite, this.sprite.startScale);
+            }
+        }
+
+        // First pull back
         this.attackAnim = this.scene.tweens.add({
             targets: this.sprite,
             scaleX: pullbackScale,
             scaleY: pullbackScale,
             rotation: 0,
-            duration: isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult : 300 * extraTimeMult * pullbackDurMult,
+            duration: durationPullback,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 if (this.dead){
                     return;
                 }
                 let attackDuration = isRepeatedAttack ? 150 * extraTimeMult : 175 * extraTimeMult
-                if (prepareSprite) {
-                    setTimeout(() => {
-                        this.setSprite(this.defaultSprite);
-                        this.sprite.setScale(pullbackScale);
-                    }, attackDuration * 0.2);
-                }
+                // if (prepareSprite && attackTimes > 1) {
+                //     setTimeout(() => {
+                //         if (this.sprite.attackNum === undefined) {
+                //             this.sprite.attackNum = 0;
+                //         } else {
+                //             this.sprite.attackNum = (this.sprite.attackNum + 1) % attackSprites.length;
+                //         }
+                //         this.setSprite(attackSprites[this.sprite.attackNum]);
+                //         this.sprite.setScale(pullbackScale);
+                //     }, attackDuration * 0.2);
+                // }
                 let attackScale = this.attackScale * this.sprite.startScale
                 attackDuration += Math.floor(this.attackScale * 200);
                 this.attackAnim = this.scene.tweens.add({
@@ -1350,12 +1367,14 @@ class Enemy {
                             return;
                         }
                         if (attackSprites.length > 0) {
-                            if (this.sprite.attackNum === undefined) {
-                                this.sprite.attackNum = 0;
-                            } else {
-                                this.sprite.attackNum = (this.sprite.attackNum + 1) % attackSprites.length;
-                            }
-                            this.setSprite(attackSprites[this.sprite.attackNum], this.sprite.startScale);
+                            //if (!prepareSprite) {
+                                if (this.sprite.attackNum === undefined) {
+                                    this.sprite.attackNum = 0;
+                                } else {
+                                    this.sprite.attackNum = (this.sprite.attackNum + 1) % attackSprites.length;
+                                }
+                                this.setSprite(attackSprites[this.sprite.attackNum], this.sprite.startScale, undefined, 10);
+                            //}
                         }
                         if (this.health > 0) {
                             if (this.nextAttack.damage > 0) {
@@ -1418,5 +1437,15 @@ class Enemy {
                 delete this.statuses[i];
             }
         }
+    }
+
+    heal(amt) {
+        this.health = Math.min(this.healthMax, this.health + amt);
+        this.updateHealthBar(true);
+    }
+
+    setMaxHealth(amt) {
+        this.healthMax = amt;// = Math.min(this.healthMax, this.health + amt);
+        this.updateHealthBar(true);
     }
 }

@@ -183,11 +183,6 @@
          });
      }
 
-     heal(amt) {
-         this.health = Math.min(this.healthMax, this.health + amt);
-        this.updateHealthBar(true);
-     }
-
      startHealing(amt = 10) {
          if (!this.statuses[0]) {
              let healSprite = this.scene.add.sprite(gameConsts.halfWidth, this.y - 70, 'misc', 'heal.png').setDepth(999).setAlpha(0);

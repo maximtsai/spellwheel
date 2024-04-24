@@ -12,7 +12,7 @@
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
-            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 180, gameConsts.halfHeight - 112, "Enemies become\nangry when\nattacked!", 'left');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width - 170, gameConsts.halfHeight - 112, "Enemies become\nangry when\nattacked!", 'left');
             messageBus.publish('setSlowMult', 0.1, 250);
             let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             PhaserScene.tweens.add({

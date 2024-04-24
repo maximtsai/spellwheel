@@ -175,7 +175,7 @@ function setupLoadingBar(scene) {
                 // loadIcon.destroy();
             }
         });
-        loadObjects.loadingSpinnerOuter = scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'loadingSpinnerOuter').setScale(0.72).setDepth(199).setRotation(1);
+        loadObjects.loadingSpinnerOuter = scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'loadingSpinnerOuter').setScale(0.7).setDepth(199).setRotation(1);
         scene.tweens.add({
             targets: loadObjects.loadingSpinnerOuter,
             delay: 500,

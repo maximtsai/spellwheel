@@ -30,11 +30,11 @@
 
 
      initTutorial() {
-         this.rune1 = this.scene.add.sprite(gameConsts.width - 200, gameConsts.height - 347, 'circle', 'rune_enhance_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
-         this.rune2 = this.scene.add.sprite(gameConsts.width - 137, gameConsts.height - 348, 'circle', 'rune_matter_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
+         this.rune1 = this.scene.add.sprite(gameConsts.width - 200, 441, 'circle', 'rune_enhance_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
+         this.rune2 = this.scene.add.sprite(gameConsts.width - 137, 441, 'circle', 'rune_matter_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
 
          setTimeout(() => {
-             globalObjects.textPopupManager.setInfoText(gameConsts.width - 114, gameConsts.height - 438, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'left');
+             globalObjects.textPopupManager.setInfoText(gameConsts.width - 114, 348, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'left');
              PhaserScene.tweens.add({
                  targets: [this.rune1, this.rune2],
                  alpha: 1,
@@ -68,7 +68,7 @@
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
-            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 173, gameConsts.halfHeight - 97, "Enemies become\nangry when\nattacked!", 'left');
+            globalObjects.textPopupManager.setInfoText(ameConsts.width - 170, 275, "Enemies become\nangry when\nattacked!", 'left');
             if (this.rune1) {
                 this.rune1.destroy();
                 this.rune2.destroy();
@@ -334,6 +334,7 @@
                  this.setSprite('dummy_broken.png', this.sprite.scaleX);
                  this.sprite.setRotation(0);
                  this.sprite.setOrigin(0.85, 0.78);
+                 playSound('victory_2');
 
                  this.showFlash(this.x, this.y - 75);
 
@@ -373,7 +374,7 @@
                     }
                  },
                  {
-                     name: "}10 ",
+                     name: "|10 ",
                      chargeAmt: 550,
                      damage: 10,
                      attackFinishFunction: () => {
@@ -404,7 +405,7 @@
                      }
                  },
                  {
-                     name: "}25",
+                     name: ";25",
                      chargeAmt: 850,
                      damage: 25,
                      isBigMove: true,

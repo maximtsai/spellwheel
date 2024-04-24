@@ -1296,7 +1296,7 @@ class SpellManager {
                         }
                     });
 
-                    messageBus.publish('enemyTakeDamage', 1 + additionalDamage);
+                    messageBus.publish('enemyTakeDamage', 30 + additionalDamage);
                     messageBus.publish('setPauseDur', 15);
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
@@ -1572,7 +1572,7 @@ class SpellManager {
                     lockRotation: rotation,
                     cleanUp: (statuses) => {
                         if (statuses[shieldID] && !statuses[shieldID].currentAnim) {
-                            textDisplay.destroy();
+                            textDisplay.visible = false;
                             statuses[shieldID].currentAnim = this.scene.tweens.add({
                                 targets: [animation1, animation2],
                                 duration: 150,
@@ -1583,6 +1583,7 @@ class SpellManager {
                                     animation1.destroy();
                                     animation2.destroy();
                                     animation3.destroy();
+                                    textDisplay.destroy();
                                 }
                             });
                             messageBus.publish('selfClearEffect', shieldID, true);

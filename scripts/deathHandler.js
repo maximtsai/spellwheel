@@ -289,8 +289,30 @@ function handleReaperDialog(level = 0, onComplete) {
         break;
     case 3:
         reaperDialog = [
-            "DIALOGDIALOG.",
-            ];
+            "IT IS NOT WITHIN MY AUTHORITY\nTO STOP YOU,",
+            "BUT HEED MY WARNING.",
+            "WHATEVER YOU SEEK HERE\nCANNOT BE ATTAINED.",
+        ];
+        break;
+    case 4:
+        reaperDialog = [
+            "YOU STILL PERSIST.",
+            "AND QUITE FRANKLY YOU ARE\nMAKING A MESS OF THINGS.",
+        ];
+        break;
+    case 5:
+        reaperDialog = [
+            "ALAS, IT IS NOT WITHIN MY\nAUTHORITY TO STOP YOU,",
+            "BUT HEED MY WARNING.",
+            "THAT WHICH YOU SEEK HERE\nCANNOT BE ATTAINED.",
+        ];
+        break;
+    case 6:
+        reaperDialog = [
+            "ALAS, IT IS NOT WITHIN MY\nAUTHORITY TO STOP YOU,",
+            "BUT HEED MY WARNING.",
+            "THAT WHICH YOU SEEK HERE\nCANNOT BE ATTAINED.",
+        ];
         break;
     default:
         if (onComplete) {

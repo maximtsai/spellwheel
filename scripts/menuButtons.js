@@ -182,11 +182,11 @@ function gotoMainMenu() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            beginLevel(2);
+            beginLevel(3);
         }
     });
     globalObjects.creditsButton.setScale(0.5);
-    globalObjects.creditsButton.addText("LEVEL 2", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.creditsButton.addText("LEVEL 3", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.creditsButton2 = new Button({
         normal: {

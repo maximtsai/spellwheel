@@ -283,18 +283,66 @@ class PostFightScreen {
         switch(level) {
             case 0:
                 return [
-                    "Rosemary my beloved, your death was in vain.\nI shall valiantly rescue you (insert sappy stuff)"
+                    "And so my journey begins. It won't be long\nbefore I see you again, Rosemary."
                 ]
                 break;
             case 1:
                 return [
-                    "Rosemary my beloved, your death was in vain.\nI shall valiantly rescue you (insert sappy stuff)"
+                    "Rosemary my beloved, your death was in vain.",
+                    "This is my journey to the other side\nto bring you back again."
                 ]
                 break;
             case 2:
                 return [
                     "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
                     "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
+                ]
+                break;
+            case 2:
+                return [
+                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
+                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
+                ]
+                break;
+            case 2:
+                return [
+                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
+                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
+                ]
+                break;
+            case 2:
+                return [
+                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
+                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
+                ]
+                break;
+            case 2:
+                return [
+                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
+                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
+                ]
+                break;
+            case 2:
+                return [
+                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
+                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
+                ]
+                break;
+            case 2:
+                return [
+                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
+                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
+                ]
+                break;
+            case 2:
+                return [
+                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
+                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
+                ]
+                break;
+            default:
+                return [
+                    "I must keep pressing on.",
                 ]
                 break;
         }

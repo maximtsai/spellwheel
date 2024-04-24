@@ -277,7 +277,7 @@ class Enemy {
         this.curseText.visible = false;
     }
 
-    setSprite(name, scale) {
+    setSprite(name, scale, noAnim) {
         let newScale = scale ? scale : 1;
         if (!this.sprite) {
             this.sprite = this.scene.add.sprite(this.x, this.y, 'enemies', name);
@@ -293,24 +293,25 @@ class Enemy {
             this.sprite.setOrigin(oldOriginX, oldOriginY)
         }
         this.sprite.startScale = newScale;
-        this.sprite.setScale(newScale * 1.02);
-        this.scene.tweens.add({
-            targets: this.sprite,
-            duration: 300,
-            scaleX: newScale,
-            scaleY: newScale,
-        });
+        if (!noAnim) {
+            this.sprite.setScale(newScale * 1.02);
+            this.scene.tweens.add({
+                targets: this.sprite,
+                duration: 300,
+                scaleX: newScale,
+                scaleY: newScale,
+            });
+        }
         return this.sprite;
     }
 
-    setDefaultSprite(name, scale = null) {
+    setDefaultSprite(name, scale = null, noAnim) {
         this.defaultSprite = name;
         if (!scale) {
             scale = this.sprite ? this.sprite.startScale : 1;
         }
-        console.log("sprite stop", name);
         this.sprite.stop();
-        return this.setSprite(name, scale);
+        return this.setSprite(name, scale, noAnim);
     }
 
     update(dt) {
@@ -1322,7 +1323,7 @@ class Enemy {
                 if (this.dead){
                     return;
                 }
-                let attackDuration = isRepeatedAttack ? 350 * extraTimeMult : 375 * extraTimeMult
+                let attackDuration = isRepeatedAttack ? 150 * extraTimeMult : 175 * extraTimeMult
                 if (prepareSprite) {
                     setTimeout(() => {
                         this.setSprite(this.defaultSprite);
@@ -1330,6 +1331,7 @@ class Enemy {
                     }, attackDuration * 0.2);
                 }
                 let attackScale = this.attackScale * this.sprite.startScale
+                attackDuration += Math.floor(this.attackScale * 200);
                 this.attackAnim = this.scene.tweens.add({
                     targets: this.sprite,
                     scaleX: attackScale,

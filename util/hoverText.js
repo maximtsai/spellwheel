@@ -94,7 +94,7 @@ class HoverDisplay {
 
 
         // this.hoverTextDisplay = PhaserScene.add.bitmapText(0, 0, 'plainBold', '', isMobile ? 19 : 18);
-        this.hoverTextDisplay = PhaserScene.add.text(0, 0, 'desc.', {fontFamily: 'Tahoma', fontSize: isMobile ? 18 : 17, color: '#FFFFFF', align: 'left'});
+        this.hoverTextDisplay = PhaserScene.add.text(0, 0, 'desc.', {fontFamily: 'Tahoma', fontSize: isMobile ? 20 : 18, color: '#FFFFFF', align: 'left'});
         this.hoverTextDisplay.visible = false;
         this.hoverTextDisplay.setDepth(data.depth || 9992);
 

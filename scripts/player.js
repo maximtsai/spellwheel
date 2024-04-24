@@ -749,7 +749,9 @@ class Player {
                                     messageBus.publish('enemyTakeTrueDamage', shieldObj.storedDamage, false, 95);
                                     shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale * 1.2);
                                     shieldObj.animObj[1].setAlpha(1);
-                                    shieldObj.textObj.setText(' ');
+                                    if (shieldObj.textObj) {
+                                        shieldObj.textObj.setText(' ');
+                                    }
                                     shieldObj.eyeBlastAnim = this.scene.tweens.add({
                                         targets: shieldObj.animObj[1],
                                         duration: 180,
@@ -775,6 +777,7 @@ class Player {
             return;
         }
         this.dead = true;
+        playSound('you_died');
         this.deadBG.alpha = 0.85;
         this.clearAllEffects();
 

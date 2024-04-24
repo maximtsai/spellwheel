@@ -2,7 +2,7 @@
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
          this.initSprite('tree.png', 0.7);// 0.7
-         this.sprite.setOrigin(0.52, 0.9); // 0.9
+         this.sprite.setOrigin(0.52, 0.88); // 0.9
          this.shieldAdded = false;
 
      }
@@ -83,8 +83,8 @@
              let eyePosX = this.x + 129 * this.sprite.startScale;
              let eyePosY = this.y - 94 * this.sprite.startScale;
              let eye = this.scene.add.sprite(eyePosX, eyePosY, 'enemies', 'tree_eye.png').setDepth(9).setOrigin(0.5, 0.5).setRotation(-0.13).setScale(0, this.sprite.startScale);
-             this.eyeMagic1 = this.scene.add.sprite(this.x + 4, this.y - 69, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57).setOrigin(0.5, 1).setScale(0.7, 0.5);
-             this.eyeMagic2 = this.scene.add.sprite(this.x + 4, this.y - 69, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57 + 3.1415).setOrigin(0.5, 1).setScale(0.7, 0.5);
+             this.eyeMagic1 = this.scene.add.sprite(this.x + 4, this.y - 72, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57).setOrigin(0.5, 1).setScale(0.7, 0.5);
+             this.eyeMagic2 = this.scene.add.sprite(this.x + 4, this.y - 72, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57 + 3.1415).setOrigin(0.5, 1).setScale(0.7, 0.5);
              this.eyeMagic1.alpha = 0;
              this.eyeMagic2.alpha = 0;
              this.addToDestructibles(this.eyeMagic1);
@@ -107,6 +107,10 @@
                          scaleX: this.sprite.startScale * 1.2,
                          ease: "Cubic.easeIn",
                          duration: 350,
+                         onStart: () => {
+                            playSound('meat_click_left', 0.36);
+                             playSound('meat_click_right', 0.36);
+                         },
                          onComplete: () => {
                              PhaserScene.tweens.add({
                                  targets: eye,
@@ -124,21 +128,18 @@
                  }
              });
          }
-         if (prevHealthPercent >= 0.5 && !this.hasCrushed) {
-             if (currHealthPercent < 0.5) {
-                 this.hasCrushed = true;
-                 this.currentAttackSetIndex = 3;
-                 this.nextAttackIndex = 0;
-                 this.pullbackScale = 0.98;
-                 this.attackScale = 1.1;
-                 // Going to shield
-             }
-         } else if (prevHealthPercent >= 0.2 && !this.hasTimbered) {
-             if (currHealthPercent < 0.2) {
-                 this.hasTimbered = true;
-                 this.currentAttackSetIndex = 4;
-                 this.nextAttackIndex = 0;
-             }
+         if (currHealthPercent <= 0.5 && !this.hasCrushed) {
+             // CRUSH
+             this.hasCrushed = true;
+             this.currentAttackSetIndex = 3;
+             this.nextAttackIndex = 0;
+             // Going to shield
+         } else if (currHealthPercent <= 0.25 && !this.hasTimbered) {
+             this.hasTimbered = true;
+             this.currentAttackSetIndex = 5;
+             this.nextAttackIndex = 0;
+             this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
+             this.sprite.y -= this.sprite.height * 0.125;
          }
      }
 
@@ -328,6 +329,7 @@
                          alpha: 0,
                          duration: dur
                      });
+                     playSound('razor_leaf', 0.75);
                      messageBus.publish("selfTakeDamage", damage);
                  }
              });
@@ -337,10 +339,10 @@
      attackWithBranch(damage = 12) {
          let currObj;
          if (!this.treeBranch) {
-             this.treeBranch = PhaserScene.add.sprite(gameConsts.halfWidth - 75 + Math.random() * 150, -50, 'enemies', 'tree_branch.webp').setRotation(-0.7 + Math.random()).setDepth(110).setOrigin(0.6, 0.6);
+             this.treeBranch = PhaserScene.add.sprite(gameConsts.halfWidth - 35 + Math.random() * 100, -50, 'enemies', 'tree_branch.webp').setRotation(-0.7 + Math.random()).setDepth(110).setOrigin(0.6, 0.6);
              this.addToDestructibles(this.treeBranch);
          } else {
-             this.treeBranch.setPosition(gameConsts.halfWidth - 75 + Math.random() * 150, -50).setRotation(-0.7 + Math.random()).setAlpha(1).setScale((damage - 6) / 6);
+             this.treeBranch.setPosition(gameConsts.halfWidth - 75 + Math.random() * 150, -50).setRotation(-0.7 + Math.random()).setAlpha(1);
          }
          currObj = this.treeBranch;
 
@@ -357,6 +359,7 @@
              ease: 'Quad.easeIn',
              duration: 700,
              onComplete: () => {
+                 playSound('tree_hit');
                  messageBus.publish("selfTakeDamage", damage);
                  let xPos = gameConsts.halfWidth * 0.5 + currObj.x * 0.5;
                  let hitEffect = PhaserScene.add.sprite(xPos, currObj.y + Math.random() * 8, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(0.95).setDepth(195);
@@ -396,6 +399,7 @@
      playRegrowthAnim(regrowthAmt) {
          let healAmt = regrowthAmt - 1;
          // this.startHealing(healAmt);
+         playSound('magic', 0.6);
          this.healText = this.scene.add.text(gameConsts.halfWidth, 65, '+' + regrowthAmt, {fontFamily: 'Arial', fontSize: 48, color: '#00F254', align: 'left'})
          this.healText.setFontStyle('bold').setOrigin(0.5, 0.5).setDepth(9);
          this.healText.startY = this.healText.y;
@@ -466,7 +470,7 @@
 
      initAttacks() {
          let regrowthAmt1 = gameVars.isHardMode ? 18 : 12;
-         let regrowthAmt2 = gameVars.isHardMode ? 24 : 15;
+         let regrowthAmt2 = gameVars.isHardMode ? 24 : 16;
          this.attacks = [
              [
                  // 0
@@ -474,7 +478,7 @@
                      name: "}10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 200,
+                     chargeAmt: 300,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
@@ -492,7 +496,7 @@
                      name: "REGROWTH (+" + regrowthAmt1 + ")",
                      announceName: "REGROWTH (+" + regrowthAmt1 + ")",
                      desc: "The tree recovers its injuries over time",
-                     chargeAmt: 500,
+                     chargeAmt: 300,
                      damage: -1,
                      attackStartFunction: () => {
                          this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
@@ -508,9 +512,15 @@
                      },
                      attackFinishFunction: () => {
                          this.playRegrowthAnim(regrowthAmt1);
-
-                         this.currentAttackSetIndex = 2;
-                         this.nextAttackIndex = 0;
+                         let currHealthPercent = this.health / this.healthMax;
+                         if (currHealthPercent <= 0.5 && !this.hasCrushed) {
+                             this.hasCrushed = true;
+                             this.currentAttackSetIndex = 3;
+                             this.nextAttackIndex = 0;
+                         } else {
+                             this.currentAttackSetIndex = 2;
+                             this.nextAttackIndex = 0;
+                         }
                      }
                  }
              ],
@@ -525,13 +535,21 @@
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
                          this.attackWithBranch(12);
+                     },
+                     attackFinishFunction: () => {
+                         let currHealthPercent = this.health / this.healthMax;
+                         if (currHealthPercent <= 0.5 && !this.hasCrushed) {
+                             this.hasCrushed = true;
+                             this.currentAttackSetIndex = 3;
+                             this.nextAttackIndex = 0;
+                         }
                      }
                  },
                  {
                      name: "REGROWTH (+" + regrowthAmt2 + ")",
                      announceName: "REGROWTH (+" + regrowthAmt2 + ")",
                      desc: "The tree recovers its injuries",
-                     chargeAmt: 500,
+                     chargeAmt: 300,
                      damage: -1,
                      attackStartFunction: () => {
                          this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
@@ -547,6 +565,12 @@
                      },
                      attackFinishFunction: () => {
                          this.playRegrowthAnim(regrowthAmt2);
+                         let currHealthPercent = this.health / this.healthMax;
+                         if (currHealthPercent <= 0.5 && !this.hasCrushed) {
+                             this.hasCrushed = true;
+                             this.currentAttackSetIndex = 3;
+                             this.nextAttackIndex = 0;
+                         }
                      }
                  },
                  {
@@ -576,14 +600,41 @@
                      desc: "The tree tries to crush you",
                      chargeAmt: 800,
                      damage: 30,
+                     isBigMove: true,
+                     attackStartFunction: () => {
+                         this.pullbackScale = 0.97;
+                         this.attackScale = 1.24;
+                     },
                      attackFinishFunction: () => {
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.03;
                          let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent >= 0.2) {
+                         if (currHealthPercent >= 0.25) {
                              this.currentAttackSetIndex = 4;
                              this.nextAttackIndex = 0;
+                         } else if (!this.hasTimbered) {
+                             this.hasTimbered = true;
+                             this.currentAttackSetIndex = 5;
+                             this.nextAttackIndex = 0;
+                             this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
+                             this.sprite.y -= this.sprite.height * 0.125;
                          }
+                         playSound('body_slam');
+                         let dmgEffect = poolManager.getItemFromPool('brickPattern2')
+                         if (!dmgEffect) {
+                             dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                         }
+                         dmgEffect.setDepth(998).setScale(0.7);
+                         PhaserScene.tweens.add({
+                             targets: dmgEffect,
+                             rotation: 1,
+                             alpha: 0,
+                             duration: 800,
+                             onComplete: () => {
+                                 poolManager.returnItemToPool(dmgEffect, 'brickPattern2');
+
+                             }
+                         });
                      }
                  },
              ],
@@ -628,23 +679,32 @@
                      chargeAmt: 1100,
                      chargeMult: 2,
                      damage: 40,
+                     isBigMove: true,
+                     attackStartFunction: () => {
+                         playSound('tree_timber')
+                         this.pullbackScale = 0.97;
+                         this.attackScale = 2;
+                     },
                      attackFinishFunction: () => {
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.01;
-                         this.stopHealing();
                          this.currentAttackSetIndex = 6;
                          this.nextAttackIndex = 0;
-                         let treeTop = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'tree_top.png');
-                         treeTop.setScale(this.sprite.scaleX, this.sprite.scaleY).setOrigin(this.sprite.originX, this.sprite.originY).setDepth(this.sprite.depth - 1);
-                         this.setDefaultSprite('tree_stumped.png', this.sprite.startScale);
+                         this.triggerFallen();
+                         playSound('body_slam')
+                         let dmgEffect = poolManager.getItemFromPool('brickPattern2')
+                         if (!dmgEffect) {
+                             dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 100, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                         }
+                         dmgEffect.setDepth(998).setScale(0.85);
                          PhaserScene.tweens.add({
-                             targets: treeTop,
+                             targets: dmgEffect,
+                             rotation: 1,
                              alpha: 0,
-                             scaleX: this.sprite.startScale + 0.1,
-                             scaleY: this.sprite.startScale + 0.1,
-                             duration: 1200,
+                             duration: 800,
                              onComplete: () => {
-                                 treeTop.destroy();
+                                 poolManager.returnItemToPool(dmgEffect, 'brickPattern2');
+
                              }
                          });
                      }
@@ -655,24 +715,81 @@
                  {
                      name: "STUMPED...",
                      desc: "The tree is stumped",
-                     chargeAmt: 1000,
+                     chargeAmt: 600,
                      damage: 0,
-                 },
-                 {
-                     name: "STILL STUMPED...",
-                     desc: "The tree is still stumped",
-                     chargeAmt: 1000,
-                     damage: 0
                  },
              ],
          ];
      }
      die() {
          super.die();
-
+         this.triggerFallen();
          if (this.currAnim) {
              this.currAnim.stop();
          }
 
+         this.dieClickBlocker = new Button({
+             normal: {
+                 ref: "blackPixel",
+                 x: gameConsts.halfWidth,
+                 y: gameConsts.halfHeight,
+                 alpha: 0.001,
+                 scaleX: 1000,
+                 scaleY: 1000
+             },
+             onMouseUp: () => {
+
+             }
+         });
+
+
+         this.showFlash(this.x, this.y);
+         let rune = this.scene.add.sprite(this.x, this.y, 'circle', 'rune_reinforce_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(9999);
+         playSound('victory_2');
+         PhaserScene.tweens.add({
+             targets: rune,
+             x: gameConsts.halfWidth,
+             y: gameConsts.halfHeight - 170,
+             scaleX: 2,
+             scaleY: 2,
+             ease: "Cubic.easeOut",
+             duration: 1500,
+             onComplete: () => {
+                 this.showVictory(rune);
+             }
+         });
+
+     }
+
+     triggerFallen() {
+         if (this.fallen) {
+             return;
+         }
+         this.attackAnim.stop();
+         this.fallen = true;
+         let oldScale = this.sprite.scaleX;
+         let treeTop = this.scene.add.sprite(this.sprite.x + 10, this.sprite.y, 'enemies', 'tree_top.png');
+         treeTop.setScale(this.sprite.scaleX, this.sprite.scaleY).setOrigin(this.sprite.originX, this.sprite.originY).setDepth(this.sprite.depth - 1);
+         this.setDefaultSprite('tree_stumped.png', this.sprite.startScale, true);
+         this.sprite.setScale(oldScale);
+
+         PhaserScene.tweens.add({
+             targets: this.sprite,
+             scaleX: this.sprite.startScale,
+             scaleY: this.sprite.startScale,
+             duration: 2000,
+             ease: 'Quad.easeOut',
+         });
+         PhaserScene.tweens.add({
+             targets: treeTop,
+             alpha: 0,
+             rotation: -0.1,
+             scaleX: this.sprite.scaleX + 0.1,
+             scaleY: this.sprite.scaleX + 0.1,
+             duration: 2000,
+             onComplete: () => {
+                 treeTop.destroy();
+             }
+         });
      }
 }

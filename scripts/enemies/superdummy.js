@@ -2,7 +2,6 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('dummy.png', 0.75,0, 5);
-        this.initTutorial();
     }
 
      initStatsCustom() {
@@ -10,25 +9,11 @@
          this.isAsleep = true;
      }
 
-     initTutorial() {
-         // this.rune1 = this.scene.add.sprite(31, gameConsts.height - 272, 'circle', 'rune_enhance_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
-         // this.rune2 = this.scene.add.sprite(88, gameConsts.height - 273, 'circle', 'rune_matter_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
-         //
-         // setTimeout(() => {
-         //     globalObjects.textPopupManager.setInfoText(110, gameConsts.height - 360, "Cast spells with\ndifferent runes for\ndifferent effects.\n       +      =  +DMG", 'left');
-         //     PhaserScene.tweens.add({
-         //         targets: [this.rune1, this.rune2],
-         //         alpha: 1,
-         //         duration: 200,
-         //     });
-         // }, 150)
-    }
-
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
             globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 180, gameConsts.halfHeight - 112, "Enemies become\nangry when\nattacked!", 'left');
-            messageBus.publish('setSlowMult', 0.1, 320);
+            messageBus.publish('setSlowMult', 0.1, 250);
             let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             PhaserScene.tweens.add({
                 targets: glowBar,
@@ -448,9 +433,9 @@
              [
                  // 0
                  {
-                     name: "}4x10 ",
+                     name: "}8x10 ",
                      chargeAmt: 500,
-                     damage: 4,
+                     damage: 8,
                      attackTimes: 10,
                     attackFinishFunction: () => {
                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
@@ -460,7 +445,7 @@
                     }
                  },
                  {
-                     name: "}6 ",
+                     name: "}20 ",
                      chargeAmt: 500,
                      damage: 20,
                      attackFinishFunction: () => {

@@ -45,6 +45,11 @@ const audioFiles = [
     {name: 'victory_2', src: 'audio/victory_2.mp3'},
 
 
+    {name: 'magic', src: 'audio/magic.mp3'},
+    {name: 'tree_timber', src: 'audio/tree_timber.mp3'},
+    {name: 'locket', src: 'audio/locket.mp3'},
+    {name: 'razor_leaf', src: 'audio/razor_leaf.mp3'},
+    {name: 'tree_hit', src: 'audio/tree_hit.mp3'},
     {name: 'clunk', src: 'audio/clunk.mp3'},
     {name: 'goblin_aha', src: 'audio/goblin_aha.mp3'},
     {name: 'goblin_grunt', src: 'audio/goblin_grunt.mp3'},
@@ -58,6 +63,7 @@ const audioFiles = [
     {name: 'stone_wheel_deep', src: 'audio/stone_wheel_deep.mp3'},
     {name: 'wind', src: 'audio/wind.mp3'},
     {name: 'sound_of_death', src: 'audio/sound_of_death.mp3'},
+    {name: 'you_died', src: 'audio/you_died.mp3'},
 
 
     {name: 'timeSlow', src: 'audio/timeslow.mp3'}

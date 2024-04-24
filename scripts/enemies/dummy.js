@@ -43,24 +43,6 @@
          }, 750)
     }
 
-    initTutorial2() {
-        // setTimeout(() => {
-        //     if (globalObjects.player.getPlayerCastSpellsCount() === 1 && !this.dead) {
-        //         // player only casted 1 spell so far
-        //         globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Switch spells by spinning\n<== the two wheels ==>");
-        //         this.arrowRotate1 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
-        //         this.arrowRotate2 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
-        //         this.destructibles.push(this.arrowRotate1);
-        //         this.destructibles.push(this.arrowRotate2);
-        //         this.showArrowRotate();
-        //
-        //         let spellListener = messageBus.subscribe('spellClicked', () => {
-        //             globalObjects.textPopupManager.hideInfoText();
-        //             spellListener.unsubscribe();
-        //         });
-        //     }
-        // }, 3000);
-    }
 
     initTutorial3() {
         setTimeout(() => {
@@ -428,16 +410,22 @@
                      isBigMove: true,
                      attackFinishFunction: () => {
                          playSound('body_slam')
-                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                         let dmgEffect = poolManager.getItemFromPool('brickPattern2')
+                         if (!dmgEffect) {
+                             dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                         }
+                         dmgEffect.setDepth(998).setScale(0.75);
                          PhaserScene.tweens.add({
                              targets: dmgEffect,
                              rotation: 1,
                              alpha: 0,
                              duration: 800,
                              onComplete: () => {
-                                 dmgEffect.destroy();
+                                 poolManager.returnItemToPool(dmgEffect, 'brickPattern2');
                              }
                          });
+
+
                          this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
                          PhaserScene.tweens.add({
                              targets: this.snort,

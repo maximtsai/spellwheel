@@ -459,7 +459,7 @@ const ENABLE_KEYBOARD = true;
         this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);
         this.voidSliceImage3 = scene.add.sprite(gameConsts.halfWidth + 100, 255, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5 - 0.6).setAlpha(0).setOrigin(0.17, 0.5);
 
-        this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0);
+        this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0).setDepth(10);
 
 
         // this.spellDescText = this.scene.add.bitmapText(this.x + 204, this.y + 2, 'plain', '', 15);
@@ -1108,7 +1108,7 @@ const ENABLE_KEYBOARD = true;
                                  scaleX: shieldObj.animObj[1].origScale,
                                  scaleY: shieldObj.animObj[1].origScale,
                                  duration: 250,
-                                 alpha: 0.25,
+                                 alpha: 0.12,
                                  ease: 'Back.easeOut',
                              });
                          }
@@ -1124,7 +1124,7 @@ const ENABLE_KEYBOARD = true;
                                  duration: 275,
                                  scaleX: shieldObj.animObj[0].origScaleX - 0.2,
                                  scaleY: 0.98,
-                                 ease: 'Cubic.easeOut',
+                                 ease: 'Cubic.easeOut'
                              });
                              this.scene.tweens.add({
                                  targets: shieldObj.animObj[1],
@@ -1132,7 +1132,19 @@ const ENABLE_KEYBOARD = true;
                                  scaleY: shieldObj.animObj[1].origScale * 0.6,
                                  ease: 'Cubic.easeOut',
                                  duration: 250,
-                                 alpha: 0
+                                 alpha: 0,
+                                 onComplete: () => {
+                                     if (!shieldObj.active) {
+                                         this.scene.tweens.add({
+                                             targets: shieldObj.animObj[1],
+                                             scaleX: shieldObj.animObj[1].origScale * 0.95,
+                                             scaleY: shieldObj.animObj[1].origScale * 0.6,
+                                             ease: 'Cubic.easeOut',
+                                             duration: 250,
+                                             alpha: 0
+                                         });
+                                     }
+                                 }
                              });
                          }
                      }
@@ -2152,7 +2164,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('mind_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
-                         this.spellNameText.setText('CHARGE FORM');
+                         this.spellNameText.setText('ENERGY FORM');
                          this.spellDescriptor.setText(getLangText('mind_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:

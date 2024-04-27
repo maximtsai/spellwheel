@@ -146,8 +146,8 @@ class SpellManager {
             alpha: 1,
             ease: 'Cubic.easeOut'
         });
-        let strikeVol = 0.92 + additionalDamage * 0.002;
-        playSound('matter_strike', strikeVol);
+        let strikeVol = 0.7 + additionalDamage * 0.0022;
+        playSound(Math.random() < 0.65 ? 'matter_strike' : 'matter_strike_alt', strikeVol);
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
@@ -267,7 +267,7 @@ class SpellManager {
         brickObj.setScale(0.8);
         brickObj2.setScale(0.8);
         let protectionAmt = 2;
-        let damageAmt = 3;
+        let damageAmt = 2;
         let duration = 400 + 50 * spellMult;
         setTimeout(() => {
             playSound('matter_body');
@@ -330,6 +330,8 @@ class SpellManager {
             }
         });
         let totalProtection = spellMult * protectionAmt;
+        messageBus.publish('animateBlockNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + totalProtection + " THORNS", 1 + totalProtection * 0.1);
+
         messageBus.publish('selfTakeEffect', {
             name: spellID,
             spellID: spellID,
@@ -1257,7 +1259,7 @@ class SpellManager {
             attackObj.setOrigin(0.5, 0.1);
         }
 
-        let yPos = 200;
+        let yPos = 190;
         for (let i = 0; i < attackObjects.length; i++) {
             let attackObj = attackObjects[i];
             let delayAmt = 50 + i * (190 - attackObjects.length * 6);
@@ -1300,30 +1302,37 @@ class SpellManager {
                     messageBus.publish('setPauseDur', 15);
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
-                        let animation1 = this.scene.add.sprite(attackObj.x - 55, attackObj.y, 'spells').play('weaken');
+                        let animation1 = this.scene.add.sprite(attackObj.x - 55, attackObj.y - 10, 'spells').play('weaken');
                         animation1.setDepth(10);
                         animation1.rotation = -1.58;
-                        animation1.setOrigin(0.5, 1);
-                        let animation2 = this.scene.add.sprite(attackObj.x + 55, attackObj.y, 'spells').play('weaken');
+                        animation1.setOrigin(0.5, 0.8);
+                        let animation2 = this.scene.add.sprite(attackObj.x + 55, attackObj.y - 10, 'spells').play('weaken');
                         animation2.setDepth(10);
                         animation2.rotation = 1.58;
-                        animation2.setOrigin(0.5, 1);
+                        animation2.setOrigin(0.5, 0.8);
                         messageBus.publish('enemyTakeEffect', {
                             name: spellID,
                             cleanUp: (statuses) => {
                                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
+                                    animation1.setScale(2);
+                                    animation2.setScale(2);
+                                    this.scene.tweens.add({
+                                        targets: [animation1,animation2],
+                                        duration: 350,
+                                        scaleX: 1.15,
+                                        scaleY: 1.15,
+                                        ease: 'Quart.easeOut',
+                                    });
                                     statuses[spellID].currentAnim = this.scene.tweens.add({
                                         targets: [animation1,animation2],
-                                        duration: 300,
-                                        scaleX: 1.4,
-                                        scaleY: 1.4,
+                                        duration: 400,
                                         alpha: 0,
-                                        ease: 'Quad.easeOut',
+                                        ease: 'Quint.easeIn',
                                         onComplete: () => {
                                             animation1.destroy();
                                             animation2.destroy();
                                         }
-                                    });
+                                    })
                                     statuses[spellID] = null;
                                 }
                             }
@@ -1398,10 +1407,12 @@ class SpellManager {
             }
         });
 
-        let buffAmt = 2;
+        let buffAmt = 1;
         if (multiplier > 1) {
-            buffAmt = 2 * multiplier;
+            buffAmt = 1 * multiplier;
         }
+        messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + buffAmt + " DAMAGE", 1 + buffAmt * 0.15);
+
         messageBus.publish('selfTakeEffect', {
             name: spellID,
             spellID: spellID,
@@ -1435,11 +1446,11 @@ class SpellManager {
         });
 
 
-        let spellName = "CHARGE FORM";
+        let spellName = "ENERGY FORM";
         if (multiplier >= 3) {
-            spellName = "SUPER CHARGE FORM";
+            spellName = "SUPER ENERGY FORM";
             if (multiplier >= 6) {
-                spellName = "ULTRA CHARGE FORM";
+                spellName = "ULTRA ENERGY FORM";
             }
             if (multiplier >= 2) {
                 spellName += " X" + multiplier;
@@ -1586,6 +1597,9 @@ class SpellManager {
                                     textDisplay.destroy();
                                 }
                             });
+                            if (statuses[shieldID].eyeBlastAnim) {
+                                statuses[shieldID].eyeBlastAnim.stop();
+                            }
                             messageBus.publish('selfClearEffect', shieldID, true);
                             statuses[shieldID] = null;
                         }

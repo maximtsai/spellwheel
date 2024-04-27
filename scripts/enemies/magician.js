@@ -105,10 +105,11 @@
 
          if (this.usingTimeFreeze) {
              // no change
-         } else if (this.health <= 14 && this.usedTimeShield) {
+         } else if (this.health <= 16 && this.usedTimeShield) {
              if (this.launchedTimeFreeze && !this.isTerrified) {
                  this.isTerrified = true;
                  this.setDefaultSprite('time_magi_terrified.png', 0.75);
+                 this.interruptCurrentAttack();
                  this.currentAttackSetIndex = 6;
                  this.nextAttackIndex = 0;
              }
@@ -288,7 +289,6 @@
                          if (!isRepeatedAttack) {
                              messageBus.publish("enemyMadeAttack");
                          }
-                         this.triggerVoidFeedback();
                          if (this.dead){
                              return;
                          }
@@ -440,7 +440,6 @@
                          this.createTimeObject('clock4.png', this.x + 40, 100, 300);
                          this.createTimeObject('clock3.png', this.x + 120, 135, 400);
                          this.createTimeObject('clock4.png', this.x + 200, 125, 500);
-
                      },
                      attackFinishFunction: () => {
                          setTimeout(() => {
@@ -504,8 +503,7 @@
                  {
                      name: "}6 ",
                      desc: "The Time Magician is\nout of magic.",
-                     chargeAmt: 200,
-                     chargeMult: 1.1,
+                     chargeAmt: 300,
                      damage: 6,
                      prepareSprite: ['time_magi_cast.png']
                  },

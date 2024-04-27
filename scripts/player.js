@@ -139,6 +139,8 @@ class Player {
         if (mindReinforceStatus) {
             mindReinforceStatus.displayAmt += mindReinforceStatus.multiplier;
             messageBus.publish('selfTakeEffect', mindReinforceStatus);
+            messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + mindReinforceStatus.displayAmt + " DAMAGE", 1 + mindReinforceStatus.displayAmt * 0.15);
+
         }
     }
 
@@ -432,6 +434,9 @@ class Player {
     }
 
     takeDamage(amt) {
+        if (globalObjects.currentEnemy.dead) {
+            return;
+        }
         if (amt < 0) {
             amt = 0;
         }
@@ -489,8 +494,10 @@ class Player {
         this.recentlyTakenDamageAmt -= healAmt;
 
         let timeHealAmt = Math.ceil(amount * this.recentlyTakenTimeDamageAmt);
-        this.selfHeal(timeHealAmt, true);
-        this.recentlyTakenTimeDamageAmt -= timeHealAmt;
+        if (timeHealAmt != 0) {
+            this.selfHeal(timeHealAmt, true);
+            this.recentlyTakenTimeDamageAmt -= timeHealAmt;
+        }
     }
 
     takeTrueDamage(amt) {
@@ -559,7 +566,7 @@ class Player {
                 this.statuses['matterUnload'].animObj[1].setText(this.statuses['matterUnload'].health);
                 this.statuses['matterUnload'].cleanUp(this.statuses);
             }
-            messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 40, -shieldedDamage, 0.5 + Math.sqrt(shieldedDamage) * 0.125);
+            messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 40, -shieldedDamage, 1.5 + Math.sqrt(shieldedDamage) * 0.125);
 
 
         }
@@ -575,6 +582,7 @@ class Player {
                 case 'matter':
                     if (hurtAmt > 0 && shieldObj.active) {
                         let blockedDmg = amt;
+                        playSound('shield_block', 0.5);
                         if (shieldObj.health > hurtAmt) {
                             shieldObj.health -= hurtAmt;
                             hurtAmt = 0;
@@ -582,6 +590,7 @@ class Player {
                             shieldObj.impactVisibleTime = 6;
                             shieldObj.animObj[2].rotateOffset = -shieldObj.animObj[0].rotation * 0.92;
                         } else {
+                            playSound('shield_break', 0.6);
                             hurtAmt = hurtAmt - shieldObj.health;
                             blockedDmg = shieldObj.health;
                             shieldObj.health = 0;
@@ -605,8 +614,9 @@ class Player {
                         }
                         shieldObj.animObj[1].setText(shieldObj.health);
                         shieldObj.animObj[1].setScale(1.3);
-                        messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y - 15, -blockedDmg, 0.5 + Math.sqrt(blockedDmg) * 0.125);
+                        messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y - 15, -blockedDmg, 1.5 + Math.sqrt(blockedDmg) * 0.125);
 
+                        messageBus.publish('tempPause', 200);
                         this.scene.tweens.add({
                             targets: shieldObj.animObj[1],
                             duration: 250,
@@ -620,6 +630,7 @@ class Player {
                     break;
                 case 'time':
                     if (hurtAmt > 1 && shieldObj.active) {
+                        playSound('time_strike_hit');
                         messageBus.publish('playerAddDelayedDamage', hurtAmt);
 
                         shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 1.3, shieldObj.animObj[0].scaleY);
@@ -632,7 +643,8 @@ class Player {
                             scaleX: shieldObj.animObj[0].origScaleX,
                             ease: 'Cubic.easeIn'
                         });
-                        messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 200, hurtAmt, 0.5 + Math.sqrt(hurtAmt) * 0.125);
+                        messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 200, 'DELAYED', 1.25);
+                        messageBus.publish('tempPause', 200);
                         hurtAmt = 0;
                     }
                     break;
@@ -640,6 +652,7 @@ class Player {
                     // completely negates the attack
                     if (hurtAmt > 0 && shieldObj.active) {
                         let blockedDmg = amt;
+                        playSound('void_strike_hit');
                         let eyesLeft = shieldObj.animObj[1].length;
                         let eye;
                         if (eyesLeft % 2 == 0) {
@@ -663,7 +676,8 @@ class Player {
                         } else {
                             shieldObj.jiggleAmt = 1;
                         }
-                        messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 100, -blockedDmg, 1.5);
+                        messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 100, 'NEGATED', 2);
+                        messageBus.publish('tempPause', 200);
                         hurtAmt = 0;
                     }
                     // this.statuses['voidProtect'].cleanUp(this.statuses);
@@ -711,6 +725,7 @@ class Player {
                             shieldObj.textObj.setText(shieldObj.storedDamage);
                             shieldObj.textObj.setScale(0.5 + Math.sqrt(shieldObj.storedDamage) * 0.15);
                             playSound('fizzle');
+                            messageBus.publish('tempPause', 200);
 
                             shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 2.2, shieldObj.animObj[0].scaleY);
                             this.scene.tweens.add({
@@ -757,7 +772,7 @@ class Player {
                                         duration: 180,
                                         scaleX: shieldObj.animObj[1].origScale,
                                         scaleY: shieldObj.animObj[1].origScale,
-                                        alpha: 0.2,
+                                        alpha: 0.1,
                                         ease: 'Cubic.easeOut'
                                     });
                                     shieldObj.storedDamage = 0;
@@ -908,7 +923,8 @@ class Player {
     }
 
     animateHealthChange(healthChange, isGreyed = false) {
-        let textScale = 0.6;
+        console.log(healthChange);
+        let textScale = 0.9;
         if (isGreyed) {
 
         } else if (healthChange < -1 ) {
@@ -917,7 +933,7 @@ class Player {
         if (this.health < 20) {
             textScale += 0.2;
         }
-        textScale += (0.06 * Math.abs(healthChange));
+        textScale += (0.065 * Math.abs(healthChange));
         if (textScale > 1) {
             let diffScale = textScale - 1;
             textScale = 1 + diffScale * 0.5;
@@ -926,7 +942,7 @@ class Player {
         if (isGreyed) {
             messageBus.publish('animateBlockNum', this.healthText.x - 1, this.healthText.y - 85, healthChange, textScale);
         } else if (healthChange > 0) {
-            messageBus.publish('animateHealNum', this.healthText.x - 1, this.healthText.y - 60, '+' + healthChange, textScale);
+            messageBus.publish('animateHealNum', this.healthText.x - 1, this.healthText.y - 60, '+' + healthChange, 1 + textScale);
         } else if (healthChange === 0) {
             messageBus.publish('animateBlockNum', this.healthText.x - 1, this.healthText.y - 85, healthChange, textScale);
         } else {

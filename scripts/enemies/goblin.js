@@ -10,7 +10,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 120 : 90;
+         this.health = gameVars.isHardMode ? 120 : 95;
          this.slashEffect = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
      }
 
@@ -35,6 +35,9 @@
          if (this.shieldAdded && this.currentAttackSetIndex == 2) {
              if (this.shield == 0) {
                  // shield must have broke
+                 if (this.breatheTween) {
+                     this.breatheTween.stop();
+                 }
                  this.setDefaultSprite('gobbo2.png', 0.95);
                  this.interruptCurrentAttack();
                  this.currentAttackSetIndex = 3;
@@ -97,15 +100,15 @@
              [
                  // 3
                  {
-                     name: "REALIZING SHIELD IS BROKEN",
+                     name: "REALIZING SHIELD BROKE...",
                      chargeAmt: gameVars.isHardMode ? 250 : 300,
                      chargeMult: 2,
                      customCall: " ",
                      damage: 0
                  },
                  {
-                     name: "TAKING OUT KNIVES!",
-                     chargeAmt: gameVars.isHardMode ? 250 : 300,
+                     name: "GETTING KNIVES!",
+                     chargeAmt: gameVars.isHardMode ? 250 : 250,
                      chargeMult: 5,
                      isBigMove: true,
                      startFunction: () => {
@@ -126,6 +129,7 @@
                              completeDelay: 100,
                              onComplete: () => {
                                  this.setDefaultSprite('gobbo5.png', 0.95);
+                                 this.repeatTweenBreathe(800, 0.5)
                              }
                          });
                      }
@@ -203,6 +207,41 @@
              duration: 250,
              ease: 'Cubic.easeOut',
              alpha: 0,
+         });
+     }
+
+     initSpriteAnim(scale) {
+         super.initSpriteAnim(scale);
+         this.sprite.startX = this.sprite.x;
+
+         this.repeatTweenBreathe();
+     }
+
+     repeatTweenBreathe(duration = 1500, magnitude = 1) {
+         if (this.breatheTween) {
+             this.breatheTween.stop();
+         }
+         let horizMove = Math.ceil(3.5 * magnitude);
+         this.breatheTween = this.scene.tweens.add({
+             targets: this.sprite,
+             duration: duration * (Math.random() * 0.5 + 1),
+             rotation: -0.02 * magnitude,
+             x: this.sprite.startX - horizMove,
+             ease: 'Cubic.easeInOut',
+             completeDelay: 150,
+             onComplete: () => {
+                 this.breatheTween = this.scene.tweens.add({
+                     targets: this.sprite,
+                     duration: duration * (Math.random() * 0.5 + 1),
+                     rotation: 0.02 * magnitude,
+                     x: this.sprite.startX + horizMove,
+                     ease: 'Cubic.easeInOut',
+                     completeDelay: 150,
+                     onComplete: () => {
+                         this.repeatTweenBreathe(duration, magnitude);
+                     }
+                 });
+             }
          });
      }
 

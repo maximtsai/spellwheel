@@ -103,15 +103,34 @@ class TextPopupManager {
         this.animateNum(textObj, this.bonusNums, param);
     }
 
-    animateHealNum(x, y, text, scale, param) {
+    animateHealNum(x, y, text, scale, param = {}) {
         let textObj = this.getTextObjFromArray(x, y, text, this.healNums, 'heal');
         let mobileScale = isMobile ? 1.2 : 1;
         textObj.setScale(scale * mobileScale);
+        param.duration = param.duration ? param.duration + 300 : 1000;
         this.animateNum(textObj, this.healNums, param);
+
+        if (!this.healVisual) {
+            this.healVisual = this.scene.add.image(x, y + 30, 'misc', 'heal.png').setDepth(99999);
+        }
+        this.healVisual.setAlpha(1).setPosition(x, y+15).setScale(Math.sqrt(scale * 0.8));
+        if (Math.random() < 0.5) {
+            this.healVisual.scaleX *= -1;
+        }
+        this.scene.tweens.add({
+            targets: this.healVisual,
+            y: "-=30",
+            duration: 1000,
+        });
+        this.scene.tweens.add({
+            targets: this.healVisual,
+            alpha: 0,
+            duration: 1000,
+            ease: 'Cubic.easeIn'
+        });
     }
 
     animateBlockNum(x, y, text, scale, param) {
-        console.log(y, "animate blok num", text);
         let textObj = this.getTextObjFromArray(x, y, text, this.blockNums, 'block');
         let mobileScale = isMobile ? 1.2 : 1;
         textObj.setScale(scale * mobileScale);

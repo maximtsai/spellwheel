@@ -6,11 +6,11 @@
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
                 // this.initTutorial2();
-            } else if (globalObjects.player.getPlayerCastSpellsCount() > 1) {
+            } else if (globalObjects.player.getPlayerCastSpellsCount() > 1 && this.canHideStartTut) {
                 this.playerSpellCastSub.unsubscribe();
             }
             if (this.canHideStartTut) {
-                    this.initTutorial3();
+                this.initTutorial3();
             }
         });
         let spellHoverListener = messageBus.subscribe('spellNameTextUpdate', (text) => {
@@ -46,22 +46,11 @@
 
     initTutorial3() {
         setTimeout(() => {
-            if (!this.dead) {
-                if (this.rune1) {
-                    this.rune1.destroy();
-                    this.rune2.destroy();
-                }
-                globalObjects.textPopupManager.hideInfoText();
-                // globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 225, gameConsts.halfHeight - 37, "Hover over\nspell names\nfor more\n    info  =>");
-                // let hoverColor = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 241, 'lowq', 'glow_flat.webp').setDepth(-1).setScale(1.75, 1).setAlpha(0);
-                // PhaserScene.tweens.add({
-                //     targets: hoverColor,
-                //     alpha: 0.5,
-                //     ease: 'Cubic.easeInOut',
-                //     duration: 1500,
-                // });
-
+            if (this.rune1) {
+                this.rune1.destroy();
+                this.rune2.destroy();
             }
+            globalObjects.textPopupManager.hideInfoText();
         }, 200);
     }
 

@@ -13,6 +13,8 @@ function clearMenuButtons() {
     globalObjects.levelSelectButton.destroy();
     globalObjects.creditsButton.destroy();
     globalObjects.lvlButton.destroy();
+    globalObjects.lvl5Button.destroy();
+
     globalObjects.creditsButton2.destroy();
     globalObjects.creditsButton3.destroy();
 
@@ -157,11 +159,11 @@ function gotoMainMenu() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            beginLevel(1);
+            beginLevel(2);
         }
     });
     globalObjects.levelSelectButton.setScale(0.5);
-    globalObjects.levelSelectButton.addText("LEVEL 1", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.levelSelectButton.addText("LEVEL 2", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.creditsButton = new Button({
         normal: {
@@ -215,13 +217,39 @@ function gotoMainMenu() {
     globalObjects.lvlButton.setScale(0.5);
     globalObjects.lvlButton.addText("LEVEL 4", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
 
+    globalObjects.lvl5Button = new Button({
+        normal: {
+            ref: "menu_btn_normal.png",
+            atlas: 'buttons',
+            x: 100,
+            y: 220,
+        },
+        hover: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        press: {
+            ref: "menu_btn_press.png",
+            atlas: 'buttons',
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp: () => {
+            clearMenuButtons();
+            beginLevel(5);
+        }
+    });
+    globalObjects.lvl5Button.setScale(0.5);
+    globalObjects.lvl5Button.addText("LEVEL 5", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+
 
     globalObjects.creditsButton2 = new Button({
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
             x: 100,
-            y: 220,
+            y: 260,
         },
         hover: {
             ref: "menu_btn_hover.png",
@@ -247,7 +275,7 @@ function gotoMainMenu() {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
             x: 100,
-            y: 260,
+            y: 300,
         },
         hover: {
             ref: "menu_btn_hover.png",

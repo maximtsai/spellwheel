@@ -10,13 +10,13 @@ function createEnemy(num) {
         globalObjects.currentEnemy = new Dummy(PhaserScene, gameConsts.halfWidth, 173, num);
         break;
     case 2:
-        globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 183, num);
+        globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 179, num);
         break;
     case 3:
         globalObjects.currentEnemy = new Tree(PhaserScene, gameConsts.halfWidth, 311, num);
         break;
     case 4:
-        globalObjects.currentEnemy = new Knight(PhaserScene, gameConsts.halfWidth, 180, num);
+        globalObjects.currentEnemy = new Magician(PhaserScene, gameConsts.halfWidth, 180, num);
         break;
     case 5:
         globalObjects.currentEnemy = new Knight(PhaserScene, gameConsts.halfWidth, 173, num);
@@ -39,7 +39,7 @@ function createEnemy(num) {
     case 12:
         break;
     default:
-        globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 183);
+        globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 179);
         break;
 
     }

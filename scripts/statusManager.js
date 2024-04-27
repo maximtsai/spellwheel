@@ -23,7 +23,6 @@ class StatusManager {
         if (newObj.ignoreBuff) {
             return;
         }
-        console.log("manualUpdateSelf", newObj.spellID)
         let spriteSrc1 = newObj.spriteSrc1;
         let spriteSrc2 = newObj.spriteSrc2;
         let displayAmt = newObj.displayAmt;

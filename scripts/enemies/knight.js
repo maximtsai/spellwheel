@@ -3,12 +3,13 @@
          super(scene, x, y, level);
          this.initSprite('void_knight.png', 1);// 0.7
          this.sprite.setOrigin(0.5, 0.5); // 0.9
+         this.bgMusic = playSound('battle_2_full', 0.4, true);
          this.shieldAdded = false;
-         this.initShields();
+         this.initMisc();
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 175 : 160;
+         this.health = gameVars.isHardMode ? 160 : 130;
          this.eyeObjects = [];
          this.pullbackScale = 0.92;
          this.attackScale = 1.11;
@@ -18,19 +19,92 @@
          this.eyeShieldObjects = [];
          this.eyeUpdateTick = 30;
          this.slashEffect = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
+         this.voidSlashEffect = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 260, 'spells', 'darkSlice.png').setScale(0.8).setDepth(130).setAlpha(0).setOrigin(0.15, 0.5);
+         this.voidSlashEffect2 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 260, 'spells', 'darkSlice.png').setScale(0.8).setDepth(130).setAlpha(0).setOrigin(0.15, 0.5);
+        this.isFirstVoidSlash = true;
      }
 
-     initShields() {
-         this.voidShield1a = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_1.png').setScale(0.5).setDepth(2).setAlpha(0);
-         this.voidShield1b = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(0.5).setDepth(2).setAlpha(0);
+     initMisc() {
+         this.voidShield1a = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_1.png').setScale(0.5).setDepth(3).setAlpha(0);
+         this.voidShield1b = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(0.5).setDepth(3).setAlpha(0);
          this.voidShield1a.startScale = this.voidShield1a.scaleX;
          this.voidShield1b.startScale = this.voidShield1a.scaleX;
 
-         this.voidShield2a = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_1.png').setScale(0.58).setDepth(2).setAlpha(0);
-         this.voidShield2b = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(0.58).setDepth(2).setAlpha(0);
+         this.voidShield2a = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_1.png').setScale(0.64).setDepth(3).setAlpha(0);
+         this.voidShield2b = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(0.64).setDepth(3).setAlpha(0);
          this.voidShield2a.startScale = this.voidShield2a.scaleX;
          this.voidShield2b.startScale = this.voidShield2b.scaleX;
 
+         this.sigilEffect = this.scene.add.sprite(this.x, this.y, 'enemies', 'void_knight_sigil.png').setScale(this.sprite.startScale).setDepth(5).setAlpha(0);
+     }
+
+     launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false) {
+         this.sigilEffect.visible = false;
+         if (this.voidTentacleFront) {
+             this.voidTentacleFront.visible = false;
+             this.voidTentacleBack.visible = false;
+             // this.setSprite('void_knight_3.png');
+         }
+         super.launchAttack(attackTimes, prepareSprite, attackSprites, isRepeatedAttack);
+     }
+
+     initSpriteAnim(scale) {
+         super.initSpriteAnim(scale);
+         this.repeatTweenBreathe();
+     }
+
+     repeatTweenBreathe() {
+         if (this.dead) {
+             return;
+         }
+         this.breatheTween = this.scene.tweens.add({
+             targets: this.sigilEffect,
+             duration: 2000,
+             alpha: 1,
+             ease: 'Cubic.easeInOut',
+             onComplete: () => {
+                 this.breatheTween = this.scene.tweens.add({
+                     targets: this.sigilEffect,
+                     duration: 2000,
+                     alpha: 0,
+                     ease: 'Cubic.easeInOut',
+                     onComplete: () => {
+                         this.repeatTweenBreathe();
+                     }
+                 });
+             }
+         });
+     }
+
+     repeatVoidTweenBreathe() {
+         if (this.dead) {
+             return;
+         }
+         let randRot = (Math.random() - 0.5) * 0.065;
+         let randScale = this.sprite.startScale - 0.015 + Math.random() * 0.03;
+         let randScale2 = this.sprite.startScale - 0.015 + Math.random() * 0.03;
+         let randDur = 1000 + Math.floor(Math.random() * 500)
+
+         this.breatheTween = this.scene.tweens.add({
+             targets: this.voidTentacleFront,
+             duration: randDur,
+             rotation: randRot,
+             scaleX: randScale,
+             scaleY: randScale,
+             ease: 'Cubic.easeInOut',
+             onComplete: () => {
+                 this.repeatVoidTweenBreathe();
+             }
+         });
+
+         this.breatheTween2 = this.scene.tweens.add({
+             delay: 200,
+             targets: this.voidTentacleBack,
+             duration: randDur - 200,
+             scaleX: randScale2,
+             scaleY: randScale2,
+             ease: 'Cubic.easeInOut',
+         });
      }
 
      setHealth(newHealth, isTrue) {
@@ -141,34 +215,81 @@
                      ease: 'Cubic.easeOut',
                  });
              } else {
-                 this.voidShield2a.setScale(this.voidShield1a.startScale * 1.1);
-                 this.voidShield2b.setScale(this.voidShield1a.startScale * 1.1);
-                 PhaserScene.tweens.add({
-                     targets: [this.voidShield2a, this.voidShield2b],
-                     scaleX: this.voidShield2a.startScale,
-                     scaleY: this.voidShield2a.startScale,
-                     duration: 250,
-                     ease: 'Cubic.easeOut',
-                 });
+                 if (this.shieldAmts <= 3) {
+                     PhaserScene.tweens.add({
+                         targets: [this.voidShield2a, this.voidShield2b],
+                         scaleX: this.voidShield2a.startScale * 1.2,
+                         scaleY: this.voidShield2a.startScale * 1.2,
+                         alpha: 0,
+                         duration: 250,
+                         ease: 'Cubic.easeOut',
+                     });
+                 } else {
+                     this.voidShield2a.setScale(this.voidShield2a.startScale * 1.1);
+                     this.voidShield2b.setScale(this.voidShield2b.startScale * 1.1);
+                     PhaserScene.tweens.add({
+                         targets: [this.voidShield2a, this.voidShield2b],
+                         scaleX: this.voidShield2a.startScale,
+                         scaleY: this.voidShield2a.startScale,
+                         duration: 250,
+                         ease: 'Cubic.easeOut',
+                     });
+                 }
              }
          }
-         this.killEye(this.eyeShieldObjects.pop());
+         if (this.eyeShieldObjects.length > 0) {
+             this.killEye(this.eyeShieldObjects.pop());
+         }
 
      }
 
      createVoidShield(amt, doubleShield) {
          playSound('void_shield');
-         this.voidShield1a.setAlpha(1);
-         this.voidShield1b.setAlpha(1);
+         let distMult = 1;
          if (doubleShield) {
-             this.voidShield2a.setAlpha(1);
-             this.voidShield2b.setAlpha(1);
+             distMult = 1;
+             this.voidShield1a.startScale = this.voidShield1a.startScale * distMult;
+             this.voidShield1b.startScale = this.voidShield1b.startScale * distMult;
+         }
+         this.voidShield1a.visible = true;
+         this.voidShield1a.visible = true;
+         this.voidShield1a.setScale(this.voidShield1a.startScale * 1.15).setAlpha(0.5);
+         this.voidShield1b.setScale(this.voidShield1a.startScale * 1.15).setAlpha(0.5);
+         PhaserScene.tweens.add({
+             targets: [this.voidShield1a, this.voidShield1b],
+             scaleX: this.voidShield1a.startScale,
+             scaleY: this.voidShield1a.startScale,
+             duration: 200,
+             alpha: 1,
+             ease: 'Cubic.easeIn',
+         });
+         this.createShieldEye(this.x, this.y + 103 * distMult, 0.5);
+         this.createShieldEye(this.x + 47 * distMult, this.y + 95 * distMult, 0.44);
+         this.createShieldEye(this.x - 47 * distMult, this.y + 95 * distMult, 0.44);
+         if (doubleShield) {
+             this.voidShield2a.setScale(this.voidShield2a.startScale * 1.15).setAlpha(0.5);
+             this.voidShield2b.setScale(this.voidShield2b.startScale * 1.15).setAlpha(0.5);
+             PhaserScene.tweens.add({
+                 delay: 400,
+                 targets: [this.voidShield2a, this.voidShield2b],
+                 scaleX: this.voidShield2a.startScale,
+                 scaleY: this.voidShield2a.startScale,
+                 duration: 200,
+                 alpha: 1,
+                 ease: 'Cubic.easeIn',
+                 onStart: () => {
+                     playSound('void_shield');
+                     this.voidShield2a.visible = true;
+                     this.voidShield2b.visible = true;
+                 }
+             });
              this.shieldsActive = 2;
+             this.createShieldEye(this.x - 86, this.y + 111, 0.38);
+             this.createShieldEye(this.x + 86, this.y + 111, 0.38);
+             this.createShieldEye(this.x - 120, this.y + 75, 0.38);
+             this.createShieldEye(this.x + 120, this.y + 75, 0.38);
          } else {
              this.shieldsActive = 1;
-             this.createShieldEye(this.x, this.y + 103, 0.6);
-             this.createShieldEye(this.x + 49, this.y + 96, 0.4);
-             this.createShieldEye(this.x - 49, this.y + 96, 0.4);
          }
          this.shieldAmts = amt;
      }
@@ -191,8 +312,8 @@
      }
 
      createShieldEye(x, y, scale) {
-         let eyeBack = this.scene.add.sprite(x, y, 'enemies', 'void_knight_shield_eye.png').setScale(scale * 0.85, scale * 0.85).setDepth(2);
-         let eyeFront = this.scene.add.sprite(x, y, 'enemies', 'void_knight_shield_eye_2.png').setScale(scale * 0.85, 0).setDepth(2);
+         let eyeBack = this.scene.add.sprite(x, y, 'enemies', 'void_knight_shield_eye.png').setScale(scale * 0.85, scale * 0.85).setDepth(3);
+         let eyeFront = this.scene.add.sprite(x, y, 'enemies', 'void_knight_shield_eye_2.png').setScale(scale * 0.85, 0).setDepth(3);
          eyeBack.startScale = scale;
          eyeFront.startScale = scale;
          let eyeObj = {
@@ -229,6 +350,9 @@
      }
 
      clearVoidShield(clearSecondShield) {
+         while (this.eyeShieldObjects.length > 0) {
+             this.killEye(this.eyeShieldObjects.pop());
+         }
         if (clearSecondShield) {
             this.shieldsActive--;
             PhaserScene.tweens.add({
@@ -238,34 +362,71 @@
                 duration: 300,
                 ease: 'Cubic.easeOut',
                 alpha: 0,
+                onComplete: () => {
+                    this.voidShield2a.visible = false;
+                    this.voidShield2b.visible = false;
+                }
             });
         } else {
-            this.shieldsActive = 0;
-            PhaserScene.tweens.add({
-                targets: [this.voidShield1a, this.voidShield1b],
-                scaleX: this.voidShield1a.scaleX + 0.1,
-                scaleY: this.voidShield1a.scaleX + 0.1,
-                duration: 250,
-                ease: 'Cubic.easeOut',
-                alpha: 0,
-            });
+            if (this.shieldsActive > 0) {
+                this.shieldsActive = 0;
+                PhaserScene.tweens.add({
+                    targets: [this.voidShield1a, this.voidShield1b],
+                    scaleX: this.voidShield1a.scaleX + 0.1,
+                    scaleY: this.voidShield1a.scaleX + 0.1,
+                    duration: 250,
+                    ease: 'Cubic.easeOut',
+                    alpha: 0,
+                    onComplete: () => {
+                        this.voidShield2a.visible = false;
+                        this.voidShield2b.visible = false;
+                    }
+                });
+            }
         }
      }
 
      makeSlashEffect() {
-         playSound('sword_slice', 0.7);
          if (this.slashEffectAnim) {
              this.slashEffectAnim.stop();
          }
          let isFlipped = this.slashEffect.scaleX > 0;
-         this.slashEffect.setAlpha(1).setScale(isFlipped ? -0.5 : 0.5, 0.4).setRotation(isFlipped ? -0.5 : 0.5);
+         this.slashEffect.setAlpha(1).setScale(isFlipped ? 0.5 : -0.5, 0.4).setRotation(isFlipped ? -1.5 : 1.5);
          this.slashEffectAnim = PhaserScene.tweens.add({
              targets: this.slashEffect,
-             scaleX: isFlipped ? -1 : 1,
+             scaleX: isFlipped ? 1 : -1,
              scaleY: 0.6,
              duration: 250,
              ease: 'Cubic.easeOut',
              alpha: 0,
+         });
+     }
+
+     makeVoidSlashEffect(isBig) {
+         let randRotMult = isBig ? 0 : 0.5;
+         let randRot = (Math.random() - 0.5) * randRotMult;
+         let currVoidSlashEffect = this.isFirstVoidSlash ? this.voidSlashEffect : this.voidSlashEffect2;
+         this.isFirstVoidSlash = !this.isFirstVoidSlash;
+
+         currVoidSlashEffect.x = globalObjects.player.getX() + randRot * 240;
+         currVoidSlashEffect.setAlpha(1).setRotation(Math.PI * 0.5 + randRot).setScale(0.8, 0.7);
+         this.slashEffectAnim = PhaserScene.tweens.add({
+             targets: currVoidSlashEffect,
+             scaleX: isBig ? 2.4 : 1.7,
+             scaleY: isBig ? 0.9 : 0.7,
+             duration: 75,
+             ease: 'Back.easeOut',
+             completeDelay: isBig ? 150 : 75,
+             onComplete: () => {
+                 this.slashEffectAnim = PhaserScene.tweens.add({
+                     targets: currVoidSlashEffect,
+                     scaleX: isBig ? 2.2 : 1.6,
+                     scaleY: isBig ? 0.8 : 0.65,
+                     alpha: 0,
+                     duration: 200,
+                     ease: 'Quart.easeIn',
+                 });
+             }
          });
      }
 
@@ -274,11 +435,11 @@
              [
                  // 0
                  {
-                     name: "|15 ",
-                     announceName: "BRANCH ATTACK",
-                     desc: "The tree swipes a branch at you",
-                     chargeAmt: 300,
-                     damage: 15,
+                     name: "|14 ",
+                     announceName: "INITIAL STRIKE",
+                     desc: "The mysterious knight charges at you!",
+                     chargeAmt: 500,
+                     damage: 14,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
                      attackFinishFunction: () => {
@@ -286,6 +447,7 @@
                          this.nextAttackIndex = 0;
                          this.makeSlashEffect();
                          playSound('sword_hit', 0.75);
+                         this.sigilEffect.visible = true;
                      }
                  }
              ],
@@ -294,31 +456,53 @@
                  {
                      name: "VOID SHIELD {3",
                      announceName: "VOID SHIELD (3)",
-                     desc: "The tree recovers its injuries over time",
+                     desc: "A strange protective shield surrounds the knight",
                      chargeAmt: 400,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.createVoidShield(3);
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
-
+                         this.sigilEffect.visible = true;
                      }
                  }
              ],
              [
                  // 2
                  {
-                     name: "}8 ",
+                     name: "}7 ",
                      announceName: "FEINT ATTACK",
                      chargeAmt: 200,
+                     damage: 7,
+                     attackSprites: ['void_knight_attack.png'],
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect();
+                         playSound('void_strike_hit', 0.9);
+                         playSound('sword_slice', 0.4);
+                     },
+                     attackFinaleFunction: () => {
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: "|8x3 ",
+                     announceName: "ASSAULT",
+                     chargeAmt: 600,
                      damage: 8,
-                     chargeMult: 2,
+                     attackTimes: 3,
+                     prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
                      attackFinishFunction: () => {
                          this.makeSlashEffect();
-                         playSound('sword_hit', 0.75);
+                         playSound('sword_hit', 0.7);
+                     },
+                     attackFinaleFunction: () => {
+                         this.sigilEffect.visible = true;
                      }
                  },
+             ],
+             [
+                 // 3 PLACEHOLDER
                  {
                      name: "}8x3 ",
                      announceName: "ASSAULT",
@@ -334,116 +518,460 @@
                  },
              ],
              [
-                 // 3
+                 // 4 PLACEHOLDER
                  {
-                     name: "CRUSH}30 ",
-                     announceName: "CRUSH",
-                     desc: "The tree tries to crush you",
-                     chargeAmt: 600,
-                     damage: 30,
+                     name: "|8x3 ",
+                     announceName: "ASSAULT",
+                     chargeAmt: 400,
+                     damage: 8,
+                     attackTimes: 3,
+                     prepareSprite: 'void_knight_pullback.png',
+                     attackSprites: ['void_knight_attack.png'],
                      attackFinishFunction: () => {
-                         this.pullbackScale = 0.99;
-                         this.attackScale = 1.03;
-                         let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent >= 0.2) {
-                             this.currentAttackSetIndex = 4;
-                             this.nextAttackIndex = 0;
-                         }
-                     }
-                 },
-             ],
-             [
-                 // 4
-                 {
-                     name: "}14 ",
-                     announceName: "HEAVY BRANCH ATTACK",
-                     desc: "The tree swipes a branch at you",
-                     chargeAmt: 300,
-                     damage: -1,
-                     attackSprites: ['tree_open_glow.png'],
-                     attackStartFunction: () => {
-                         this.attackWithBranch(14);
-                     }
-                 },
-                 {
-                     name: "}4x6 ",
-                     announceName: "LEAF SHOWER",
-                     desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 600,
-                     damage: 0,
-                     attackSprites: ['tree_open_glow.png'],
-                     attackFinishFunction: () => {
-                         for (let i = 0; i < 6; i++) {
-                             let xPos = gameConsts.halfWidth + -200 + i * 80;
-                             let yPos = 75 + Math.random() * 40;
-                             this.createEyeObject('tree_leaf.webp', xPos, yPos, i * 25);
-                         }
-                         setTimeout(() => {
-                             this.fireObjects(4);
-                         }, 350);
+                         this.makeSlashEffect();
+                         playSound('sword_hit', 0.7);
                      }
                  },
              ],
              [
                  // 5
                  {
-                     name: "TIMBER!!!}40 ",
-                     announceName: "TIMBER!!!",
-                     desc: "The tree tries to crush you",
-                     chargeAmt: 900,
-                     chargeMult: 2,
-                     damage: 40,
+                     name: "VOID SHIELD {7 ",
+                     announceName: "VOID SHIELD",
+                     chargeAmt: 800,
+                     chargeMult: 15,
+                     prepareSprite: 'void_knight_3.png',
+                     damage: -1,
                      attackFinishFunction: () => {
-                         this.pullbackScale = 0.99;
-                         this.attackScale = 1.01;
-                         this.stopHealing();
+                         this.createVoidShield(7, true);
                          this.currentAttackSetIndex = 6;
                          this.nextAttackIndex = 0;
-                         let treeTop = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'tree_top.png');
-                         treeTop.setScale(this.sprite.scaleX, this.sprite.scaleY).setOrigin(this.sprite.originX, this.sprite.originY).setDepth(this.sprite.depth - 1);
-                         this.setDefaultSprite('tree_stumped.png', this.sprite.startScale);
-                         PhaserScene.tweens.add({
-                             targets: treeTop,
-                             alpha: 0,
-                             scaleX: this.sprite.startScale + 0.1,
-                             scaleY: this.sprite.startScale + 0.1,
-                             duration: 1200,
-                             onComplete: () => {
-                                 treeTop.destroy();
-                             }
-                         });
+                     },
+                     attackFinaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                         this.pullbackScale = 0.98;
+                         this.attackScale = 1.04;
                      }
                  },
              ],
              [
-                 // 6
                  {
-                     name: "STUMPED...",
-                     desc: "The tree is stumped",
-                     chargeAmt: 1000,
-                     damage: 0,
+                     name: "|6x2 ",
+                     announceName: "ASSAIL",
+                     chargeAmt: 700,
+                     chargeMult: 1.5,
+                     damage: 6,
+                     attackTimes: 2,
+                     prepareSprite: 'void_knight_3.png',
+                     attackSprites: ['void_knight_2.png'],
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect();
+                         playSound('void_strike_hit');
+                         playSound('void_strike', 0.15);
+                     },
+                     attackFinaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                     }
                  },
                  {
-                     name: "STILL STUMPED...",
-                     desc: "The tree is still stumped",
+                     name: "|12 ",
+                     announceName: "ASSAIL",
+                     chargeAmt: 500,
+                     chargeMult: 1.5,
+                     damage: 12,
+                     prepareSprite: 'void_knight_3.png',
+                     attackSprites: ['void_knight_2.png'],
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect(true);
+                         playSound('void_strike_hit');
+                         playSound('void_strike', 0.4);
+                     },
+                     attackFinaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: "|6x4 ",
+                     announceName: "ASSAIL",
+                     chargeAmt: 700,
+                     chargeMult: 1.5,
+                     damage: 6,
+                     attackTimes: 4,
+                     prepareSprite: 'void_knight_3.png',
+                     attackSprites: ['void_knight_2.png'],
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect();
+                         playSound('void_strike_hit');
+                         playSound('void_strike', 0.15);
+                     },
+                     attackFinaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: "|18 ",
+                     announceName: "ASSAIL",
+                     chargeAmt: 500,
+                     chargeMult: 1.5,
+                     damage: 18,
+                     prepareSprite: 'void_knight_3.png',
+                     attackSprites: ['void_knight_2.png'],
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect(true);
+                         playSound('void_strike_hit');
+                         playSound('void_strike', 0.4);
+                     },
+                     attackFinaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: "|6x6 ",
+                     announceName: "ASSAIL",
+                     chargeAmt: 700,
+                     chargeMult: 1.5,
+                     damage: 6,
+                     attackTimes: 6,
+                     prepareSprite: 'void_knight_3.png',
+                     attackSprites: ['void_knight_2.png'],
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect();
+                         playSound('void_strike_hit');
+                         playSound('void_strike', 0.15);
+                     },
+                     attackFinaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: "|24 ",
+                     announceName: "ASSAIL",
+                     chargeAmt: 500,
+                     chargeMult: 1.5,
+                     damage: 24,
+                     prepareSprite: 'void_knight_3.png',
+                     attackSprites: ['void_knight_2.png'],
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect(true);
+                         playSound('void_strike_hit');
+                         playSound('void_strike', 0.4);
+                     },
+                     attackFinaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: "|6x8 ",
+                     announceName: "ASSAIL",
                      chargeAmt: 1000,
-                     damage: 0
+                     chargeMult: 1.5,
+                     damage: 6,
+                     attackTimes: 8,
+                     prepareSprite: 'void_knight_3.png',
+                     attackSprites: ['void_knight_2.png'],
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect();
+                         playSound('void_strike_hit');
+                         playSound('void_strike', 0.15);
+                     },
+                     attackFinaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: "|30 ",
+                     announceName: "ASSAIL",
+                     chargeAmt: 1000,
+                     chargeMult: 1.5,
+                     damage: 30,
+                     prepareSprite: 'void_knight_3.png',
+                     attackSprites: ['void_knight_2.png'],
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect(true);
+                         playSound('void_strike_hit');
+                         playSound('void_strike', 0.4);
+                     },
+                     attackFinaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                     }
                  },
              ],
          ];
      }
+
+     startPhase2() {
+         this.setDefaultSprite('void_knight_3_empty.png');
+         this.sprite.setDepth(2);
+         playSound('meat_click_right');
+         this.setMaxHealth(gameVars.isHardMode ? 100 : 80);
+         this.heal(this.healthMax);
+         this.setAwake();
+         this.sigilEffect.setFrame('void_knight_sigil2.png').setScale(this.sprite.startScale);
+         this.repeatTweenBreathe();
+         this.bgMusic = playSound('battle_2_full', 0.75, true);
+         this.currentAttackSetIndex = 5;
+         this.nextAttackIndex = 0;
+         this.isLoading = false;
+
+         this.voidTentacleFront = this.scene.add.sprite(this.x + 9, this.y - 56, 'enemies', 'void_knight_tent_1_front_spike.png').setDepth(3).setOrigin(0.50, 0.34).setScale(this.sprite.startScale * 0);
+         this.addToDestructibles(this.voidTentacleFront);
+         let blurryBall = this.scene.add.sprite(this.x, this.y - 2, 'enemies', 'blurryball.png').setDepth(0).setScale(4).setAlpha(0.6);
+         PhaserScene.tweens.add({
+             targets: [blurryBall],
+             scaleX: 8,
+             scaleY: 8,
+             duration: 1300,
+             ease: 'Quart.easeOut',
+         });
+         PhaserScene.tweens.add({
+             targets: [blurryBall],
+             alpha: 0,
+             duration: 1300,
+             ease: 'Cubic.easeIn',
+         });
+
+         PhaserScene.tweens.add({
+             targets: [this.voidTentacleFront],
+             scaleX: this.sprite.startScale * 1.32,
+             scaleY: this.sprite.startScale * 1.32,
+             duration: 250,
+             ease: 'Quad.easeIn',
+             onComplete: () => {
+                 PhaserScene.tweens.add({
+                     targets: [this.voidTentacleFront],
+                     scaleX: this.sprite.startScale * 1.2,
+                     scaleY: this.sprite.startScale * 1.2,
+                     duration: 60,
+                     ease: 'Quad.easeOut',
+                     onComplete: () => {
+                         this.voidTentacleFront.setFrame('void_knight_tent_1_front.png').setOrigin(0.48, 0.34).setPosition(this.x - 8, this.y - 50);
+                         this.voidTentacleBack = this.scene.add.sprite(this.x + 48, this.y - 15, 'enemies', 'void_knight_tent_1_back.png').setDepth(1).setScale(this.sprite.startScale * 0.2).setOrigin(0.65, 0.454);
+                         this.addToDestructibles(this.voidTentacleBack);
+
+                         PhaserScene.tweens.add({
+                             targets: [this.voidTentacleBack, this.voidTentacleFront],
+                             scaleX: this.sprite.startScale,
+                             scaleY: this.sprite.startScale,
+                             duration: 600,
+                             ease: 'Back.easeOut',
+                             onComplete: () => {
+                                 this.repeatVoidTweenBreathe();
+                             }
+                         });
+                     }
+                 });
+             }
+         });
+     }
+
+     animateDeathOne() {
+         this.isFirstMode = false;
+         this.isLoading = true;
+         playSound('clunk');
+         this.setSprite('void_knight_3_empty.png');
+
+         let helmet = PhaserScene.add.sprite(this.x + 34, this.y - 59, 'enemies', 'void_knight_helmet.png').setDepth(4);
+         let arm = PhaserScene.add.sprite(this.x + 64, this.y + 19, 'enemies', 'void_knight_arm.png').setDepth(0);
+
+
+         setTimeout(() => {
+             PhaserScene.tweens.add({
+                 delay: 350,
+                 targets: helmet,
+                 rotation: "+=0.1",
+                 x: "+=2",
+                 y: "+=1",
+                 duration: 50,
+             });
+             PhaserScene.tweens.add({
+                 delay: 950,
+                 targets: helmet,
+                 y: "+=190",
+                 duration: 350,
+                 ease: 'Cubic.easeIn',
+                 onStart: () => {
+                     PhaserScene.tweens.add({
+                         targets: helmet,
+                         rotation: 0.96,
+                         duration: 350,
+                     });
+                 },
+                 onComplete: () => {
+                     playSound('clunk2');
+                     PhaserScene.tweens.add({
+                         delay: 500,
+                         targets: [helmet, arm],
+                         alpha: 0,
+                         duration: 750,
+                         onComplete: () => {
+                             helmet.destroy();
+                             arm.destroy();
+                             setTimeout(() => {
+                                 playSound('void_body');
+                                 setTimeout(() => {
+                                     playSound('meat_click_left');
+                                     this.startPhase2();
+                                 }, 400);
+                             }, 1350)
+                         }
+                     });
+                 }
+             });
+
+             PhaserScene.tweens.add({
+                 targets: arm,
+                 y: "+=72",
+                 duration: 300,
+                 ease: 'Cubic.easeIn',
+             });
+             PhaserScene.tweens.add({
+                 targets: arm,
+                 rotation: "+=1",
+                 x: "-=7",
+                 scaleX: "-=0.05",
+                 scaleY: "-=0.05",
+                 duration: 300,
+                 onComplete: () => {
+                     arm.rotation = Math.PI * 0.5
+                     playSound('clunk');
+                 }
+             });
+         }, 1500)
+     }
+
      die() {
+         if (this.isLoading) {
+             return;
+         }
          if (this.currAnim) {
              this.currAnim.stop();
          }
+         this.interruptCurrentAttack();
+         this.setAsleep();
+         this.bgMusic.stop();
+         this.sigilEffect.alpha = 0;
+         this.breatheTween.stop();
+         if (this.breatheTween2) {
+             this.breatheTween2.stop();
+         }
+         this.clearVoidShield();
+
          if (this.isFirstMode) {
-            this.setMaxHealth(this.healthMax - 20);
-            this.heal(this.healthMax);
+             this.animateDeathOne();
+             this.createDeathEffect(7, 0.75, 90);
          } else {
              super.die();
+             PhaserScene.tweens.add({
+                 targets: [this.voidTentacleFront, this.voidTentacleBack],
+                 scaleX: 0,
+                 scaleY: 0,
+                 duration: 400,
+                 ease: 'Cubic.easeOut',
+                 onComplete: () => {
+                     this.voidTentacleFront.destroy();
+                     this.voidTentacleBack.destroy();
+                 }
+             });
+
+             let torso = PhaserScene.add.sprite(this.x, this.y + 21, 'enemies', 'void_knight_3_torso.png').setDepth(4).setScale(this.sprite.startScale).setOrigin(0.5, 0.5646);
+             PhaserScene.tweens.add({
+                 delay: 2000,
+                 targets: torso,
+                 rotation: "+=1.1",
+                 duration: 950,
+                 ease: 'Cubic.easeIn',
+             });
+             PhaserScene.tweens.add({
+                 delay: 2500,
+                 targets: torso,
+                 y: "+=145",
+                 duration: 450,
+                 ease: 'Cubic.easeIn',
+                 onComplete: () => {
+                     torso.destroy();
+                     this.setDefaultSprite('void_knight_died.png', undefined, true);
+                     playSound('clunk2');
+                    setTimeout(() => {
+                        this.dieClickBlocker = new Button({
+                            normal: {
+                                ref: "blackPixel",
+                                x: gameConsts.halfWidth,
+                                y: gameConsts.halfHeight,
+                                alpha: 0.001,
+                                scaleX: 1000,
+                                scaleY: 1000
+                            },
+                            onMouseUp: () => {
+
+                            }
+                        });
+
+                        let rune = this.scene.add.sprite(this.x + 22, this.y + 90, 'circle', 'rune_void_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(9999);
+                        playSound('victory_2');
+                        PhaserScene.tweens.add({
+                            targets: rune,
+                            x: gameConsts.halfWidth,
+                            y: gameConsts.halfHeight - 180,
+                            scaleX: 2,
+                            scaleY: 2,
+                            ease: "Cubic.easeOut",
+                            duration: 1500,
+                            onComplete: () => {
+                                this.showVictory(rune);
+                            }
+                        });
+                    }, 2850);
+                 }
+             });
+             this.setDefaultSprite('void_knight_3_legs.png');
+             this.createDeathEffect();
          }
+     }
 
+     createDeathEffect(amt = 12, scale = 1, vel = 100) {
+         for (let i = 0; i < amt; i++) {
+             let particle = PhaserScene.add.sprite(this.x, this.y, 'enemies', 'void_knight_shield_eye.png').setDepth(0).setScale(scale * (1 + Math.random()) );
+             let randDir = Math.random() * 2 * Math.PI;
+             let randDist = vel + Math.random() * vel;
+             let xShift = Math.sin(randDir) * randDist;
+             let yShift = Math.cos(randDir) * randDist;
+             let randDur = 700 + Math.random() * 700;
 
-
+             PhaserScene.tweens.add({
+                 targets: particle,
+                 x: "+=" + xShift,
+                 y: "+=" + yShift,
+                 duration: randDur,
+                 ease: 'Cubic.easeOut',
+             });
+             PhaserScene.tweens.add({
+                 targets: particle,
+                 scaleX: 0,
+                 scaleY: 0,
+                 duration: randDur,
+                 ease: 'Quad.easeIn',
+                 onComplete: () => {
+                     particle.destroy();
+                 }
+             });
+         }
      }
 }

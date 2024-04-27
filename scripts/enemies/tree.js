@@ -473,7 +473,7 @@
                      name: "}10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 300,
+                     chargeAmt: 600,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
@@ -525,7 +525,7 @@
                      name: "}12 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 400,
+                     chargeAmt: 500,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
@@ -544,7 +544,7 @@
                      name: "REGROWTH (+" + regrowthAmt2 + ")",
                      announceName: "REGROWTH (+" + regrowthAmt2 + ")",
                      desc: "The tree recovers its injuries",
-                     chargeAmt: 300,
+                     chargeAmt: 350,
                      damage: -1,
                      attackStartFunction: () => {
                          this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
@@ -572,7 +572,7 @@
                      name: "}4x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 650,
+                     chargeAmt: 700,
                      damage: 0,
                      attackSprites: ['tree_open_glow.png'],
                      attackFinishFunction: () => {
@@ -636,21 +636,21 @@
              [
                  // 4
                  {
-                     name: "}14 ",
-                     announceName: "HEAVY BRANCH ATTACK",
+                     name: "}12 ",
+                     announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
                      chargeAmt: 400,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
-                         this.attackWithBranch(14);
+                         this.attackWithBranch(12);
                      }
                  },
                  {
                      name: "}4x6 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 650,
+                     chargeAmt: 700,
                      damage: 0,
                      attackSprites: ['tree_open_glow.png'],
                      attackFinishFunction: () => {
@@ -671,7 +671,7 @@
                      name: "TIMBER!!!}40 ",
                      announceName: "TIMBER!!!",
                      desc: "The tree tries to crush you",
-                     chargeAmt: 1100,
+                     chargeAmt: 1200,
                      chargeMult: 2,
                      damage: 40,
                      isBigMove: true,

@@ -66,6 +66,7 @@ let gameVars = {
     mouseposy: 0,
     lastmousedown: {x: 0, y: 0},
     timeSlowRatio: 1,
+    timeScale: 1,
     gameScale: 1,
     canvasXOffset: 0,
     canvasYOffset: 0
@@ -119,6 +120,7 @@ let lastUpdateValues = [1, 1, 1, 1, 1];
 let lastUpdateValuesIdx = 0;
 let avgDeltaScale = 1;
 function update(time, delta) {
+
     if (loadObjects.loadingSpinner && loadObjects.loadingSpinner.goalRot) {
         let adjustedSpinnerRot = loadObjects.loadingSpinner.rotation;
         if (adjustedSpinnerRot > 0) {
@@ -147,6 +149,9 @@ function update(time, delta) {
     } else {
         timeUpdateCounter++;
     }
+
+    avgDeltaScale *= gameVars.timeScale;
+
 
     buttonManager.update(avgDeltaScale);
     updateManager.update(avgDeltaScale);

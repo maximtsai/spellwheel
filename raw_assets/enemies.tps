@@ -189,6 +189,23 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/blurryball.png</key>
+            <key type="filename">enemies/void_knight_shield_eye.png</key>
+            <key type="filename">enemies/void_knight_shield_eye_2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>20,20,40,40</rect>
+                <key>scale9Paddings</key>
+                <rect>20,20,40,40</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/bone1.png</key>
             <key type="filename">enemies/bone2.png</key>
             <struct type="IndividualSpriteSettings">
@@ -528,21 +545,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/knight_arm.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>60,24,120,47</rect>
-                <key>scale9Paddings</key>
-                <rect>60,24,120,47</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">enemies/lesser_dummy.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -678,6 +680,36 @@
                 <rect>68,36,136,71</rect>
                 <key>scale9Paddings</key>
                 <rect>68,36,136,71</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/robot_dead_left.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>57,50,113,100</rect>
+                <key>scale9Paddings</key>
+                <rect>57,50,113,100</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/robot_dead_right.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>60,49,120,98</rect>
+                <key>scale9Paddings</key>
+                <rect>60,49,120,98</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -956,6 +988,41 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/void_knight_3_empty.png</key>
+            <key type="filename">enemies/void_knight_3_legs.png</key>
+            <key type="filename">enemies/void_knight_3_torso.png</key>
+            <key type="filename">enemies/void_knight_tent_1_back.png</key>
+            <key type="filename">enemies/void_knight_tent_1_front.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>183,163,365,325</rect>
+                <key>scale9Paddings</key>
+                <rect>183,163,365,325</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/void_knight_arm.png</key>
+            <key type="filename">enemies/void_knight_injured.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>108,123,215,245</rect>
+                <key>scale9Paddings</key>
+                <rect>108,123,215,245</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/void_knight_attack.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -986,33 +1053,18 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/void_knight_glow.png</key>
+            <key type="filename">enemies/void_knight_helmet.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.54</double>
+                <double>0.5</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>108,150,215,300</rect>
+                <rect>42,33,84,66</rect>
                 <key>scale9Paddings</key>
-                <rect>108,150,215,300</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/void_knight_injured.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.54</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>108,123,215,245</rect>
-                <key>scale9Paddings</key>
-                <rect>108,123,215,245</rect>
+                <rect>42,33,84,66</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1028,21 +1080,6 @@
                 <rect>125,155,250,310</rect>
                 <key>scale9Paddings</key>
                 <rect>125,155,250,310</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/void_knight_shield.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.54</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>100,123,200,245</rect>
-                <key>scale9Paddings</key>
-                <rect>100,123,200,245</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1062,19 +1099,48 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/void_knight_shield_eye.png</key>
-            <key type="filename">enemies/void_knight_shield_eye_2.png</key>
+            <key type="filename">enemies/void_knight_sigil.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.54</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>20,20,40,40</rect>
+                <rect>100,123,200,245</rect>
                 <key>scale9Paddings</key>
-                <rect>20,20,40,40</rect>
+                <rect>100,123,200,245</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/void_knight_sigil2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>100,123,200,245</rect>
+                <key>scale9Paddings</key>
+                <rect>100,123,200,245</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/void_knight_tent_1_front_spike.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>183,213,365,425</rect>
+                <key>scale9Paddings</key>
+                <rect>183,213,365,425</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

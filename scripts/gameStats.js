@@ -1,22 +1,35 @@
 /**
  * This file contains the code for the game's stats such as amount of money and upgrades purchased.
- * 
+ *
  **/
- 
+
  class GameStats {
     constructor() {
         this.reset();
-        messageBus.subscribe("addMoney", this.addMoney.bind(this));
-        messageBus.subscribe("addStocks", this.addStocks.bind(this));
-        messageBus.subscribe("addUpgrade", this.addUpgrade.bind(this));
         messageBus.subscribe("addDebt", this.addDebt.bind(this));
         messageBus.subscribe("debtCleared", this.clearDebt.bind(this));
         messageBus.subscribe("setInterest", this.setInterest.bind(this));
         messageBus.subscribe("setTitle", this.setTitle.bind(this));
         messageBus.subscribe("setMarketHistory", this.setMarketHistory.bind(this));
+        messageBus.subscribe("tempPause", this.setTempPause.bind(this));
+
         setTimeout(() => {
             this.sendAllStatMessages();
         }, 0);
+    }
+
+    setTempPause(dur) {
+        gameVars.timeScale = 0.1;
+        PhaserScene.tweens.timeScale = 0.5;
+        PhaserScene.time.timeScale = 0.1;
+        PhaserScene.anims.globalTimeScale = 0.5;
+
+        setTimeout(() => {
+            gameVars.timeScale = 1;
+            PhaserScene.tweens.timeScale = 1;
+            PhaserScene.time.timeScale = 1;
+            PhaserScene.anims.globalTimeScale = 1;
+        }, dur)
     }
 
     addMoney(amt) {

@@ -1,6 +1,10 @@
 const audioFiles = [
     {name: 'button', src: 'audio/button.mp3'},
     {name: 'fightbg1', src: 'audio/fightbg1.mp3'},
+    {name: 'battle_2_full', src: 'audio/battle_2_full.mp3'},
+    {name: 'battle_2_half', src: 'audio/battle_2_half.mp3'},
+
+
     {name: 'emergency', src: 'audio/emergency.mp3'},
     {name: 'fizzle', src: 'audio/fizzle.mp3'},
     {name: 'matter_body', src: 'audio/matter_body.mp3'},
@@ -8,6 +12,7 @@ const audioFiles = [
     {name: 'matter_enhance_2', src: 'audio/matter_enhance_2.mp3'},
     {name: 'matter_shield', src: 'audio/matter_shield.mp3'},
     {name: 'matter_strike', src: 'audio/matter_strike.mp3'},
+    {name: 'matter_strike_alt', src: 'audio/matter_strike_alt.mp3'},
     {name: 'matter_strike_hit', src: 'audio/matter_strike_hit.mp3'},
     {name: 'matter_strike_hit_alt', src: 'audio/matter_strike_hit_alt.mp3'},
     {name: 'matter_strike_hit_alt_2', src: 'audio/matter_strike_hit_alt_2.mp3'},
@@ -43,6 +48,7 @@ const audioFiles = [
 
     {name: 'victory', src: 'audio/victory.mp3'},
     {name: 'victory_2', src: 'audio/victory_2.mp3'},
+    {name: 'victory_false', src: 'audio/victory_false.mp3'},
 
 
     {name: 'magic', src: 'audio/magic.mp3'},
@@ -51,6 +57,7 @@ const audioFiles = [
     {name: 'razor_leaf', src: 'audio/razor_leaf.mp3'},
     {name: 'tree_hit', src: 'audio/tree_hit.mp3'},
     {name: 'clunk', src: 'audio/clunk.mp3'},
+    {name: 'clunk2', src: 'audio/clunk2.mp3'},
     {name: 'goblin_aha', src: 'audio/goblin_aha.mp3'},
     {name: 'goblin_grunt', src: 'audio/goblin_grunt.mp3'},
     {name: 'enemy_attack', src: 'audio/enemy_attack.mp3'},
@@ -65,6 +72,9 @@ const audioFiles = [
     {name: 'sound_of_death', src: 'audio/sound_of_death.mp3'},
     {name: 'you_died', src: 'audio/you_died.mp3'},
 
+    {name: 'shield_block', src: 'audio/shield_block.mp3'},
+    {name: 'shield_break', src: 'audio/shield_break.mp3'},
+    {name: 'rock_crumble', src: 'audio/rock_crumble.mp3'},
 
     {name: 'timeSlow', src: 'audio/timeslow.mp3'}
 

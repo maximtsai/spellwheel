@@ -100,7 +100,7 @@ class Enemy {
     }
 
     createHealthBar(x, y) {
-        this.healthBarLengthMax = 20 + Math.floor(Math.sqrt(this.healthMax) * 5);
+        this.healthBarLengthMax = 45 + Math.floor(Math.sqrt(this.healthMax) * 5.5);
         this.healthBarMax = this.scene.add.sprite(x, 20, 'blackPixel');
         this.healthBarMaxGoalScale = this.healthBarLengthMax + 3;
         this.healthBarMax.setScale(0, 12);
@@ -185,11 +185,11 @@ class Enemy {
 
         let attackNameYPos = isMobile ? this.chargeBarMax.y - 22 : this.chargeBarMax.y - 19
 
-        this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', isMobile ? 36 : 26);
+        this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', isMobile ? 36 : 32);
         this.attackName.setDepth(9);
         this.attackName.setOrigin(0.5, 0.85);
 
-        this.angrySymbol = this.scene.add.sprite(x, this.attackName.y - 5, 'enemies', 'angry1.png');
+        this.angrySymbol = this.scene.add.sprite(x, this.attackName.y - 8, 'enemies', 'angry1.png');
         this.angrySymbol.setDepth(9);
         this.angrySymbol.visible = false;
         this.angrySymbolIsHiding = true;
@@ -275,6 +275,12 @@ class Enemy {
         this.curseText.setDepth(11);
         this.curseText.setScale(0.5);
         this.curseText.visible = false;
+    }
+
+    setSpriteIfNotInactive(name, scale, noAnim, depth = 1) {
+        if (!this.dead && !this.isAsleep) {
+            this.setSprite(name, scale, noAnim, depth = 1);
+        }
     }
 
     setSprite(name, scale, noAnim, depth = 1) {
@@ -364,7 +370,7 @@ class Enemy {
             }
             chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
             if (this.isAngry) {
-                let increaseMult = Math.max(2, (0.33 / 2) * chargeMult);
+                let increaseMult = Math.max(2.5, 0.33 * chargeMult);
                 this.attackCharge += timeChange * increaseMult * this.slowMult;
             } else {
                 if (gameVars.playerNotMoved && chargeMult === 1) {
@@ -415,17 +421,19 @@ class Enemy {
             }
         }
         this.timeSinceLastAttacked += timeChange;
-        if (this.timeSinceLastAttacked < 270) {
+        if (this.timeSinceLastAttacked < 210) {
             if (!this.isAngry) {
                 this.isAngry = true;
+                this.chargeBarAngry.alpha = 1;
                 this.chargeBarAngry.visible = true;
                 this.showAngrySymbol('angry');
                 this.chargeBarCurr.visible = false;
             }
         } else if (chargeMult > 1) {
             this.chargeBarAngry.visible = true;
-            this.chargeBarAngry.alpha = 0.8;
-            if (chargeMult > 1.4) {
+            this.chargeBarCurr.visible = true;
+            this.chargeBarAngry.alpha = 0.55;
+            if (chargeMult > 1.1) {
                 this.showAngrySymbol('exclamation');
             }
         } else {
@@ -508,6 +516,9 @@ class Enemy {
             if (this.nextAttack.attackFinishFunction) {
                 this.nextAttack.attackFinishFunction();
             }
+            if (this.nextAttack.attackFinaleFunction) {
+                this.nextAttack.attackFinaleFunction();
+            }
         }
         if (this.nextAttack.block) {
             messageBus.publish("enemyAddShield", this.nextAttack.block);
@@ -532,13 +543,16 @@ class Enemy {
             this.nextAttack.startFunction();
         }
         let finalScale = 1;
-        if (atkName.length > 5) {
-            finalScale = 0.85;
+        let isLongName = atkName.length > 5;
+        if (isLongName) {
+            finalScale = 0.8;
         } else {
             finalScale = 0.98;
         }
         this.attackName.setText(atkName).setAlpha(0.2).setScale(finalScale);
+        this.angrySymbol.x = this.attackName.x + this.attackName.width * 0.52 + 11;
 
+        this.attackName.setText(atkName).setAlpha(0.2).setScale(finalScale * 0.9);
         PhaserScene.tweens.add({
             targets: this.attackName,
             duration: 500,
@@ -548,8 +562,8 @@ class Enemy {
             targets: this.attackName,
             ease: 'Cubic.easeOut',
             duration: 400,
-            scaleX: (finalScale - 0.679) * 5,
-            scaleY: (finalScale - 0.65) * 5,
+            scaleX: isLongName ? finalScale + 0.02 : finalScale * 1.6,
+            scaleY: isLongName ? finalScale * 1.25 : finalScale * 1.6,
             onComplete: () => {
                 PhaserScene.tweens.add({
                     targets: this.attackName,
@@ -560,7 +574,6 @@ class Enemy {
                 });
             }
         });
-        this.angrySymbol.x = this.attackName.x + this.attackName.width * 0.52 + 8;
 
         this.prepareChargeBar(true, this.nextAttack.isBigMove, this.nextAttack.customCall);
         this.nextAttackIndex++;
@@ -924,6 +937,7 @@ class Enemy {
     }
 
     setAwake() {
+        this.timeSinceLastAttacked = 9999;
         this.isAsleep = false;
         this.attackName.visible = true;
     }
@@ -946,7 +960,6 @@ class Enemy {
 
     showAngrySymbol(state) {
         if (this.angrySymbol.currAnim !== state) {
-            console.log("change state angry symbol");
             this.angrySymbol.currAnim = state;
             this.angrySymbol.play(state);
         }
@@ -957,8 +970,8 @@ class Enemy {
             }
             this.scene.tweens.add({
                 targets: this.angrySymbol,
-                scaleX: 0.6,
-                scaleY: 0.6,
+                scaleX: 0.85,
+                scaleY: 0.85,
                 duration: 200,
                 ease: 'Back.easeOut',
             });
@@ -969,6 +982,9 @@ class Enemy {
     playerDied() {
         if (this.dead) {
             return;
+        }
+        if (this.bgMusic) {
+            this.bgMusic.stop();
         }
         this.setAsleep();
         for (let i = 0; i < this.subscriptions.length; i++) {
@@ -1030,6 +1046,9 @@ class Enemy {
         if (this.bgMusic) {
             this.bgMusic.stop();
         }
+        if (this.breatheTween) {
+            this.breatheTween.stop();
+        }
         this.clearEffects();
         this.dead = true;
         // undo any time magic
@@ -1067,6 +1086,33 @@ class Enemy {
             status.cleanUp(this.statuses);
             delete this.statuses[i];
         }
+
+        this.sprite.x -= 5;
+        PhaserScene.tweens.add({
+            delay: 0,
+            targets: [this.sprite],
+            x: "+=8",
+            ease: "Cubic.easeOut",
+            duration: 50,
+            onStart: () => {
+                PhaserScene.tweens.add({
+                    targets: [this.sprite],
+                    x: "-=5",
+                    ease: "Cubic.easeInOut",
+                    duration: 70,
+                    onStart: () => {
+                        PhaserScene.tweens.add({
+                            targets: [this.sprite],
+                            x: "+=2",
+                            duration: 50,
+
+                        });
+                    }
+                });
+            }
+        });
+        this.sprite.setScale(this.sprite.startScale);
+
 
         PhaserScene.time.delayedCall(750, () => {
             PhaserScene.tweens.add({
@@ -1316,10 +1362,10 @@ class Enemy {
         if (prepareSprite) {
             if (isRepeatedAttack) {
                 setTimeout(() => {
-                    this.setSprite(prepareSprite, this.sprite.startScale);
+                    this.setSpriteIfNotInactive(prepareSprite, this.sprite.startScale);
                 }, durationPullback * 0.5);
             } else {
-                this.setSprite(prepareSprite, this.sprite.startScale);
+                this.setSpriteIfNotInactive(prepareSprite, this.sprite.startScale);
             }
         }
 
@@ -1373,7 +1419,7 @@ class Enemy {
                                 } else {
                                     this.sprite.attackNum = (this.sprite.attackNum + 1) % attackSprites.length;
                                 }
-                                this.setSprite(attackSprites[this.sprite.attackNum], this.sprite.startScale, undefined, 10);
+                                this.setSpriteIfNotInactive(attackSprites[this.sprite.attackNum], this.sprite.startScale, undefined, 10);
                             //}
                         }
                         if (this.health > 0) {
@@ -1401,7 +1447,10 @@ class Enemy {
                             this.isUsingAttack = false;
                             setTimeout(() => {
                                 if (!this.dead) {
-                                    this.setSprite(this.defaultSprite);
+                                    this.setSpriteIfNotInactive(this.defaultSprite);
+                                    if (this.nextAttack.attackFinaleFunction) {
+                                        this.nextAttack.attackFinaleFunction();
+                                    }
                                 }
                             }, 500 * extraTimeMult * 0.65);
                         }

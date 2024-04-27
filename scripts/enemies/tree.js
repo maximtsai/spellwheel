@@ -668,7 +668,7 @@
              [
                  // 5
                  {
-                     name: "TIMBER!!!}40 ",
+                     name: "TIMBER!!!;40 ",
                      announceName: "TIMBER!!!",
                      desc: "The tree tries to crush you",
                      chargeAmt: 1200,

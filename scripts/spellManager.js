@@ -330,7 +330,15 @@ class SpellManager {
             }
         });
         let totalProtection = spellMult * protectionAmt;
-        messageBus.publish('animateBlockNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + totalProtection + " THORNS", 1 + totalProtection * 0.1);
+        let param = {
+            duration: 1000,
+        }
+        let param2 = {
+            alpha: 0,
+            scaleX: 1,
+            scaleY: 1
+        }
+        messageBus.publish('animateBlockNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + totalProtection + " THORNS", 1 + totalProtection * 0.1, param, param2);
 
         messageBus.publish('selfTakeEffect', {
             name: spellID,
@@ -1411,7 +1419,15 @@ class SpellManager {
         if (multiplier > 1) {
             buffAmt = 1 * multiplier;
         }
-        messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + buffAmt + " DAMAGE", 1 + buffAmt * 0.15);
+        let param = {
+            duration: 1000,
+        }
+        let param2 = {
+            alpha: 0,
+            scaleX: 1,
+            scaleY: 1
+        }
+        messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + buffAmt + " DAMAGE", 1 + buffAmt * 0.15, param, param2);
 
         messageBus.publish('selfTakeEffect', {
             name: spellID,

@@ -459,7 +459,7 @@ const ENABLE_KEYBOARD = true;
         this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);
         this.voidSliceImage3 = scene.add.sprite(gameConsts.halfWidth + 100, 255, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5 - 0.6).setAlpha(0).setOrigin(0.17, 0.5);
 
-        this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0).setDepth(10);
+        this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0).setDepth(10).setBlendMode(Phaser.BlendModes.ADD);
 
 
         // this.spellDescText = this.scene.add.bitmapText(this.x + 204, this.y + 2, 'plain', '', 15);
@@ -1126,26 +1126,16 @@ const ENABLE_KEYBOARD = true;
                                  scaleY: 0.98,
                                  ease: 'Cubic.easeOut'
                              });
-                             this.scene.tweens.add({
-                                 targets: shieldObj.animObj[1],
-                                 scaleX: shieldObj.animObj[1].origScale * 0.95,
-                                 scaleY: shieldObj.animObj[1].origScale * 0.6,
-                                 ease: 'Cubic.easeOut',
-                                 duration: 250,
-                                 alpha: 0,
-                                 onComplete: () => {
-                                     if (!shieldObj.active) {
-                                         this.scene.tweens.add({
-                                             targets: shieldObj.animObj[1],
-                                             scaleX: shieldObj.animObj[1].origScale * 0.95,
-                                             scaleY: shieldObj.animObj[1].origScale * 0.6,
-                                             ease: 'Cubic.easeOut',
-                                             duration: 250,
-                                             alpha: 0
-                                         });
-                                     }
-                                 }
-                             });
+                             if (!shieldObj.isBlasting) {
+                                 this.scene.tweens.add({
+                                     targets: shieldObj.animObj[1],
+                                     scaleX: shieldObj.animObj[1].origScale * 0.95,
+                                     scaleY: shieldObj.animObj[1].origScale * 0.6,
+                                     ease: 'Cubic.easeOut',
+                                     duration: 250,
+                                     alpha: 0,
+                                 });
+                             }
                          }
                      }
 
@@ -1830,7 +1820,7 @@ const ENABLE_KEYBOARD = true;
                                     this.spellNameTextAnim = this.scene.tweens.add({
                                         targets: this.spellNameText,
                                         delay: 1400,
-                                        alpha: 0.7,
+                                        alpha: 0.55,
                                         duration: 150,
                                         onComplete: () => {
                                             this.disableSpellDescDisplay = false;
@@ -2072,21 +2062,29 @@ const ENABLE_KEYBOARD = true;
      reduceDelayedDamage(amt) {
          this.delayedDamage = Math.max(0, this.delayedDamage - amt);
 
+         if (this.delayedDamage <= 0) {
+            this.removeDelayedDamage();
+         } else {
+
+             this.delayDamageText.setText(this.delayedDamage);
+             this.delayDamageSand.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageCurrCap));
+         }
+     }
+
+     removeDelayedDamage() {
+         this.delayedDamage = 0;
          this.delayDamageText.setText(this.delayedDamage);
          this.delayDamageSand.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageCurrCap));
-
-         if (this.delayedDamage <= 0) {
-             this.scene.tweens.add({
-                 delay: 100,
-                 targets: [this.delayDamageHourglass, this.delayDamageSand, this.delayDamageText],
-                 ease: 'Back.easeIn',
-                 scaleX: 0,
-                 scaleY: 0,
-                 duration: 400,
-                 alpha: 0
-             });
-             this.delayedDamageCurrMax = this.delayedDamageCurrCap * 0.5;
-         }
+         this.scene.tweens.add({
+             delay: 100,
+             targets: [this.delayDamageHourglass, this.delayDamageSand, this.delayDamageText],
+             ease: 'Back.easeIn',
+             scaleX: 0,
+             scaleY: 0,
+             duration: 400,
+             alpha: 0
+         });
+         this.delayedDamageCurrMax = this.delayedDamageCurrCap * 0.5;
      }
 
      setTempRotObjs(obj, rotation) {
@@ -2247,7 +2245,7 @@ const ENABLE_KEYBOARD = true;
          if (this.mindBurnTween) {
              this.mindBurnTween.stop();
          }
-         this.mindBurnAnim.alpha = 0.7;
+         this.mindBurnAnim.alpha = 0.5;
          this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * duration);
          effectObj = {
              name: effectName,
@@ -2376,6 +2374,7 @@ const ENABLE_KEYBOARD = true;
          this.voidSliceImage1.alpha = 0;
          this.voidSliceImage3.alpha = 0;
          this.mindBurnAnim.alpha = 0;
+         this.removeDelayedDamage();
      }
 
      disableMovement() {

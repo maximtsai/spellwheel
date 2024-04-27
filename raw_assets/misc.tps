@@ -188,6 +188,36 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">misc/black_circle.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>45,45,90,90</rect>
+                <key>scale9Paddings</key>
+                <rect>45,45,90,90</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/black_circle_2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,50,100,100</rect>
+                <key>scale9Paddings</key>
+                <rect>50,50,100,100</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/floating_death.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -270,7 +300,6 @@
                 <false/>
             </struct>
             <key type="filename">misc/slash1.png</key>
-            <key type="filename">misc/slash2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -282,6 +311,22 @@
                 <rect>188,188,375,375</rect>
                 <key>scale9Paddings</key>
                 <rect>188,188,375,375</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/slice_back.png</key>
+            <key type="filename">misc/slice_front.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>155,140,310,280</rect>
+                <key>scale9Paddings</key>
+                <rect>155,140,310,280</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

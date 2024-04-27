@@ -51,7 +51,8 @@ class TextPopupManager {
 
     animateDamageNum(x, y, text, scale, param) {
         let textObj = this.getTextObjFromArray(x, y, text, this.damageNums, 'damage');
-        textObj.setScale(scale);
+        let mobileScale = isMobile ? 1.2 : 1;
+        textObj.setScale(scale * mobileScale).setAlpha(1);
         this.animateNum(textObj, this.damageNums, param);
     }
 
@@ -96,19 +97,19 @@ class TextPopupManager {
         // this.animateNum(this.damageNum, this.damageNums, param);
     }
 
-    animateTrueDamageNum(x, y, text, scale, param) {
+    animateTrueDamageNum(x, y, text, scale, param, param2) {
         let textObj = this.getTextObjFromArray(x, y, text, this.bonusNums, 'bonus');
         let mobileScale = isMobile ? 1.2 : 1;
-        textObj.setScale(scale * mobileScale);
-        this.animateNum(textObj, this.bonusNums, param);
+        textObj.setScale(scale * mobileScale).setAlpha(1);
+        this.animateNum(textObj, this.bonusNums, param, param2);
     }
 
-    animateHealNum(x, y, text, scale, param = {}) {
+    animateHealNum(x, y, text, scale, param = {}, param2) {
         let textObj = this.getTextObjFromArray(x, y, text, this.healNums, 'heal');
         let mobileScale = isMobile ? 1.2 : 1;
-        textObj.setScale(scale * mobileScale);
+        textObj.setScale(scale * mobileScale).setAlpha(1);
         param.duration = param.duration ? param.duration + 300 : 1000;
-        this.animateNum(textObj, this.healNums, param);
+        this.animateNum(textObj, this.healNums, param, param2);
 
         if (!this.healVisual) {
             this.healVisual = this.scene.add.image(x, y + 30, 'misc', 'heal.png').setDepth(99999);
@@ -130,11 +131,11 @@ class TextPopupManager {
         });
     }
 
-    animateBlockNum(x, y, text, scale, param) {
+    animateBlockNum(x, y, text, scale, param, param2) {
         let textObj = this.getTextObjFromArray(x, y, text, this.blockNums, 'block');
         let mobileScale = isMobile ? 1.2 : 1;
-        textObj.setScale(scale * mobileScale);
-        this.animateNum(textObj, this.blockNums, param);
+        textObj.setScale(scale * mobileScale).setAlpha(1);
+        this.animateNum(textObj, this.blockNums, param, param2);
     }
 
     getTextObjFromArray(x, y, text, array, fontName = 'block') {
@@ -150,24 +151,26 @@ class TextPopupManager {
         return textObj;
     }
 
-    animateNum(textObj, originArray, param = {}) {
+    animateNum(textObj, originArray, param = {}, param2 = {}) {
         let tweenParams = {
             targets: textObj,
-            y: textObj.y - 20,
+            y: "-=20",
             duration: 700,
             ease: 'Cubic.easeOut',
             onComplete: () => {
-                this.scene.tweens.add({
+                let tweenParams2 = {
                     targets: textObj,
-                    scaleX: 0,
-                    scaleY: 0,
-                    duration: 400,
-                    ease: 'Cubic.easeIn',
+                    scaleX: textObj.scaleX * 0.2,
+                    scaleY: textObj.scaleY * 0.2,
+                    duration: 350,
+                    ease: 'Quart.easeIn',
                     onComplete: () => {
                         textObj.visible = false;
                         originArray.push(textObj);
                     }
-                });
+                }
+                tweenParams2 = {...tweenParams2, ...param2};
+                this.scene.tweens.add(tweenParams2);
             }
         }
         tweenParams = {...tweenParams, ...param};

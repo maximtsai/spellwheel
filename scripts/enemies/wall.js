@@ -6,7 +6,7 @@
      }
 
      initStatsCustom() {
-         this.health = 3000;
+         this.health = 1000;
      }
 
      // update(dt) {}

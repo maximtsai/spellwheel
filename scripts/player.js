@@ -139,7 +139,15 @@ class Player {
         if (mindReinforceStatus) {
             mindReinforceStatus.displayAmt += mindReinforceStatus.multiplier;
             messageBus.publish('selfTakeEffect', mindReinforceStatus);
-            messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + mindReinforceStatus.displayAmt + " DAMAGE", 1 + mindReinforceStatus.displayAmt * 0.15);
+            let param = {
+                duration: 1000,
+            }
+            let param2 = {
+                alpha: 0,
+                scaleX: 1,
+                scaleY: 1
+            }
+            messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + mindReinforceStatus.displayAmt + " DAMAGE", 1 + mindReinforceStatus.displayAmt * 0.15, param, param2);
 
         }
     }
@@ -558,6 +566,8 @@ class Player {
                     y: "-=3",
                     ease: 'Cubic.easeOut'
                 });
+                messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 40, 'BLOCKED', 1.25);
+
             } else {
                 hurtAmt = hurtAmt - this.statuses['matterUnload'].health;
                 shieldedDamage = this.statuses['matterUnload'].health;
@@ -565,8 +575,8 @@ class Player {
                 this.statuses['matterUnload'].animObj[1].setScale(1.1);
                 this.statuses['matterUnload'].animObj[1].setText(this.statuses['matterUnload'].health);
                 this.statuses['matterUnload'].cleanUp(this.statuses);
+                messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 40, -shieldedDamage, 1.5 + Math.sqrt(shieldedDamage) * 0.125);
             }
-            messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 40, -shieldedDamage, 1.5 + Math.sqrt(shieldedDamage) * 0.125);
 
 
         }
@@ -589,6 +599,7 @@ class Player {
                             shieldObj.shakeAmt = 0.05 + hurtAmt * 0.005;
                             shieldObj.impactVisibleTime = 6;
                             shieldObj.animObj[2].rotateOffset = -shieldObj.animObj[0].rotation * 0.92;
+                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y, 'BLOCKED', 1.25);
                         } else {
                             playSound('shield_break', 0.6);
                             hurtAmt = hurtAmt - shieldObj.health;
@@ -610,11 +621,11 @@ class Player {
                                     rockAnim.destroy();
                                 }
                             });
+                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y, 'BROKE', 1, {y: "+=10"}, {alpha: 0, scaleX: 1, scaleY: 1});
                             shieldObj.cleanUp(this.statuses);
                         }
                         shieldObj.animObj[1].setText(shieldObj.health);
                         shieldObj.animObj[1].setScale(1.3);
-                        messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y - 15, -blockedDmg, 1.5 + Math.sqrt(blockedDmg) * 0.125);
 
                         messageBus.publish('tempPause', 200);
                         this.scene.tweens.add({
@@ -643,7 +654,7 @@ class Player {
                             scaleX: shieldObj.animObj[0].origScaleX,
                             ease: 'Cubic.easeIn'
                         });
-                        messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 200, 'DELAYED', 1.25);
+                        messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'DELAYED', 1.2);
                         messageBus.publish('tempPause', 200);
                         hurtAmt = 0;
                     }
@@ -676,7 +687,7 @@ class Player {
                         } else {
                             shieldObj.jiggleAmt = 1;
                         }
-                        messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 100, 'NEGATED', 2);
+                        messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 100, 'NEGATED', 1.2);
                         messageBus.publish('tempPause', 200);
                         hurtAmt = 0;
                     }
@@ -751,6 +762,7 @@ class Player {
                                 shieldObj.eyeBlastAnim.stop();
                             }
                             shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale).setAlpha(0.3);
+                            shieldObj.isBlasting = true;
                             shieldObj.eyeBlastAnim = this.scene.tweens.add({
                                 targets: shieldObj.animObj[1],
                                 duration: 1150,
@@ -767,12 +779,13 @@ class Player {
                                     if (shieldObj.textObj) {
                                         shieldObj.textObj.setText(' ');
                                     }
+                                    shieldObj.isBlasting = false;
                                     shieldObj.eyeBlastAnim = this.scene.tweens.add({
                                         targets: shieldObj.animObj[1],
                                         duration: 180,
                                         scaleX: shieldObj.animObj[1].origScale,
                                         scaleY: shieldObj.animObj[1].origScale,
-                                        alpha: 0.1,
+                                        alpha: 0,
                                         ease: 'Cubic.easeOut'
                                     });
                                     shieldObj.storedDamage = 0;
@@ -923,8 +936,7 @@ class Player {
     }
 
     animateHealthChange(healthChange, isGreyed = false) {
-        console.log(healthChange);
-        let textScale = 0.9;
+        let textScale = 1;
         if (isGreyed) {
 
         } else if (healthChange < -1 ) {
@@ -933,18 +945,18 @@ class Player {
         if (this.health < 20) {
             textScale += 0.2;
         }
-        textScale += (0.065 * Math.abs(healthChange));
-        if (textScale > 1) {
-            let diffScale = textScale - 1;
+        textScale += (0.07 * Math.abs(healthChange));
+        if (textScale > 1.2) {
+            let diffScale = textScale - 1.2;
             textScale = 1 + diffScale * 0.5;
         }
 
         if (isGreyed) {
             messageBus.publish('animateBlockNum', this.healthText.x - 1, this.healthText.y - 85, healthChange, textScale);
         } else if (healthChange > 0) {
-            messageBus.publish('animateHealNum', this.healthText.x - 1, this.healthText.y - 60, '+' + healthChange, 1 + textScale);
+            messageBus.publish('animateHealNum', this.healthText.x - 1, this.healthText.y - 60, '+' + healthChange, 0.5 + textScale);
         } else if (healthChange === 0) {
-            messageBus.publish('animateBlockNum', this.healthText.x - 1, this.healthText.y - 85, healthChange, textScale);
+            // messageBus.publish('animateBlockNum', this.healthText.x - 1, this.healthText.y - 85, healthChange, textScale);
         } else {
             messageBus.publish('animateDamageNum', this.healthText.x - 1, this.healthText.y - 60, healthChange, textScale);
         }

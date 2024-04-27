@@ -24,7 +24,7 @@ const textData = {
     mind_enhance_desc: {en_us: 'NEXT ATTACK BURNS\nENEMY FOR 3 DMG/S\nFOR 4 SECONDS.\n(DOES NOT STACK)', fr: '', zh_cn: '', ru: '', es: '', jp: ''},
     mind_enhance_plus_desc: {en_us: 'NEXT ATTACK BURNS\nENEMY FOR 3 DMG/S\nFOR 5 SECONDS', fr: '', zh_cn: '', ru: '', es: '', jp: ''},
     mind_protect_desc: {en_us: 'CREATE A SHIELD\nTHAT REDIRECTS\nHALF THE DAMAGE\nYOU TAKE BACK\nAT THE ENEMY.', fr: '', zh_cn: '', ru: '', es: '', jp: ''},
-    mind_reinforce_desc: {en_us: 'ATTACKS DEAL +2\nDAMAGE. BONUS\nGOES UP EACH\nTIME THE WHEEL\nRELOADS.', fr: '', zh_cn: '', ru: '', es: '', jp: ''},
+    mind_reinforce_desc: {en_us: 'ATTACKS DEAL +1\nDAMAGE. BONUS\nGOES UP EACH\nTIME THE WHEEL\nRELOADS.', fr: '', zh_cn: '', ru: '', es: '', jp: ''},
     mind_unload_desc: {en_us: 'NEXT NON-ATTACK\nSPELL HAS +200%\nEFFECTIVENESS', fr: '', zh_cn: '', ru: '', es: '', jp: ''},
 
 

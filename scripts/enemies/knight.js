@@ -3,7 +3,7 @@
          super(scene, x, y, level);
          this.initSprite('void_knight.png', 1);// 0.7
          this.sprite.setOrigin(0.5, 0.5); // 0.9
-         this.bgMusic = playSound('battle_2_full', 0.4, true);
+         this.bgMusic = playSound('battle_2_half', 0.85, true);
          this.shieldAdded = false;
          this.initMisc();
      }
@@ -402,6 +402,38 @@
          });
      }
 
+     pulseCircleInward(x, y) {
+         this.isPulsing = true;
+         if (!this.pulseCircle) {
+             this.pulseCircle = this.scene.add.sprite(x, y, 'misc', 'black_circle_2.png');
+         }
+         this.pulseCircle.setScale(1.6).setDepth(10).setAlpha(0).setPosition(x, y).setRotation(Math.random() * 6);
+         PhaserScene.tweens.add({
+             targets: [this.pulseCircle],
+             scaleX: 0.8,
+             scaleY: 0.8,
+             duration: 425,
+             ease: 'Cubic.easeIn',
+             alpha: 1.2,
+             onComplete: () => {
+                 PhaserScene.tweens.add({
+                     targets: [this.pulseCircle],
+                     scaleX: 0,
+                     scaleY: 0,
+                     duration: 425,
+                     alpha: 0,
+                     ease: 'Cubic.easeOut',
+                     completeDelay: 1200,
+                     onComplete: () => {
+                         if (this.isPulsing && !this.dead) {
+                             this.pulseCircleInward(x, y);
+                         }
+                     }
+                 });
+             }
+         });
+     }
+
      makeVoidSlashEffect(isBig) {
          let randRotMult = isBig ? 0 : 0.5;
          let randRot = (Math.random() - 0.5) * randRotMult;
@@ -470,15 +502,15 @@
              [
                  // 2
                  {
-                     name: "}7 ",
+                     name: "}4 ",
                      announceName: "FEINT ATTACK",
                      chargeAmt: 200,
-                     damage: 7,
+                     damage: 4,
                      attackSprites: ['void_knight_attack.png'],
                      attackFinishFunction: () => {
-                         this.makeVoidSlashEffect();
-                         playSound('void_strike_hit', 0.9);
-                         playSound('sword_slice', 0.4);
+                         this.makeSlashEffect();
+                         playSound('void_strike_hit', 0.5);
+                         playSound('sword_slice', 0.5);
                      },
                      attackFinaleFunction: () => {
                          this.sigilEffect.visible = true;
@@ -497,6 +529,31 @@
                          playSound('sword_hit', 0.7);
                      },
                      attackFinaleFunction: () => {
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: "|10 ",
+                     announceName: "void strike",
+                     chargeAmt: 600,
+                     damage: 10,
+                     chargeMult: 1.5,
+                     attackSprites: ['void_knight_attack.png'],
+                     startFunction: () => {
+                         this.pulseCircleInward(this.x - 14, this.y - 39);
+                         this.setDefaultSprite('void_knight_pullback.png');
+                         playSound('void_body', 0.9);
+                     },
+                     attackStartFunction: () => {
+                         this.isPulsing = false;
+                     },
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect(true);
+                         playSound('void_strike_hit', 0.9);
+                         playSound('sword_hit', 0.2);
+                     },
+                     attackFinaleFunction: () => {
+                         this.setDefaultSprite('void_knight.png');
                          this.sigilEffect.visible = true;
                      }
                  },
@@ -560,7 +617,7 @@
                  {
                      name: "|6x2 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 700,
+                     chargeAmt: 750,
                      chargeMult: 1.5,
                      damage: 6,
                      attackTimes: 2,
@@ -580,7 +637,7 @@
                  {
                      name: "|12 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 500,
+                     chargeAmt: 600,
                      chargeMult: 1.5,
                      damage: 12,
                      prepareSprite: 'void_knight_3.png',
@@ -597,9 +654,48 @@
                      }
                  },
                  {
+                     name: "|6x3 ",
+                     announceName: "ASSAIL",
+                     chargeAmt: 750,
+                     chargeMult: 1.5,
+                     damage: 6,
+                     attackTimes: 3,
+                     prepareSprite: 'void_knight_3.png',
+                     attackSprites: ['void_knight_2.png'],
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect();
+                         playSound('void_strike_hit');
+                         playSound('void_strike', 0.15);
+                     },
+                     attackFinaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: "|15 ",
+                     announceName: "ASSAIL",
+                     chargeAmt: 600,
+                     chargeMult: 1.5,
+                     damage: 15,
+                     prepareSprite: 'void_knight_3.png',
+                     attackSprites: ['void_knight_2.png'],
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect(true);
+                         playSound('void_strike_hit');
+                         playSound('void_strike', 0.4);
+                     },
+                     attackFinaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
                      name: "|6x4 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 700,
+                     chargeAmt: 750,
                      chargeMult: 1.5,
                      damage: 6,
                      attackTimes: 4,
@@ -619,7 +715,7 @@
                  {
                      name: "|18 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 500,
+                     chargeAmt: 600,
                      chargeMult: 1.5,
                      damage: 18,
                      prepareSprite: 'void_knight_3.png',
@@ -636,10 +732,25 @@
                      }
                  },
                  {
-                     name: "|6x6 ",
+                     name: "ENRAGED",
+                     chargeAmt: 250,
+                     chargeMult: 7,
+                     damage: -1,
+                     prepareSprite: 'void_knight_3.png',
+                     startFunction: () => {
+                         this.createShout();
+                     },
+                     attackFinaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: ";6x6 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 700,
-                     chargeMult: 1.5,
+                     chargeAmt: 1000,
+                     chargeMult: 1.65,
                      damage: 6,
                      attackTimes: 6,
                      prepareSprite: 'void_knight_3.png',
@@ -656,50 +767,11 @@
                      }
                  },
                  {
-                     name: "|24 ",
+                     name: ";24 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 500,
-                     chargeMult: 1.5,
+                     chargeAmt: 1000,
+                     chargeMult: 1.65,
                      damage: 24,
-                     prepareSprite: 'void_knight_3.png',
-                     attackSprites: ['void_knight_2.png'],
-                     attackFinishFunction: () => {
-                         this.makeVoidSlashEffect(true);
-                         playSound('void_strike_hit');
-                         playSound('void_strike', 0.4);
-                     },
-                     attackFinaleFunction: () => {
-                         this.voidTentacleFront.visible = true;
-                         this.voidTentacleBack.visible = true;
-                         this.sigilEffect.visible = true;
-                     }
-                 },
-                 {
-                     name: "|6x8 ",
-                     announceName: "ASSAIL",
-                     chargeAmt: 1000,
-                     chargeMult: 1.5,
-                     damage: 6,
-                     attackTimes: 8,
-                     prepareSprite: 'void_knight_3.png',
-                     attackSprites: ['void_knight_2.png'],
-                     attackFinishFunction: () => {
-                         this.makeVoidSlashEffect();
-                         playSound('void_strike_hit');
-                         playSound('void_strike', 0.15);
-                     },
-                     attackFinaleFunction: () => {
-                         this.voidTentacleFront.visible = true;
-                         this.voidTentacleBack.visible = true;
-                         this.sigilEffect.visible = true;
-                     }
-                 },
-                 {
-                     name: "|30 ",
-                     announceName: "ASSAIL",
-                     chargeAmt: 1000,
-                     chargeMult: 1.5,
-                     damage: 30,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
                      attackFinishFunction: () => {
@@ -721,15 +793,19 @@
          this.setDefaultSprite('void_knight_3_empty.png');
          this.sprite.setDepth(2);
          playSound('meat_click_right');
-         this.setMaxHealth(gameVars.isHardMode ? 100 : 80);
+         this.setMaxHealth(gameVars.isHardMode ? 90 : 75);
          this.heal(this.healthMax);
          this.setAwake();
          this.sigilEffect.setFrame('void_knight_sigil2.png').setScale(this.sprite.startScale);
          this.repeatTweenBreathe();
-         this.bgMusic = playSound('battle_2_full', 0.75, true);
+         this.bgMusic = playSound('battle_2_full', 1, true);
          this.currentAttackSetIndex = 5;
          this.nextAttackIndex = 0;
          this.isLoading = false;
+
+         this.shoutSprite = this.scene.add.sprite(this.x, this.y + 5, 'misc', 'black_circle.png').setDepth(11).setScale(0.15);
+         this.addToDestructibles(this.shoutSprite);
+         this.createShout();
 
          this.voidTentacleFront = this.scene.add.sprite(this.x + 9, this.y - 56, 'enemies', 'void_knight_tent_1_front_spike.png').setDepth(3).setOrigin(0.50, 0.34).setScale(this.sprite.startScale * 0);
          this.addToDestructibles(this.voidTentacleFront);
@@ -779,6 +855,23 @@
                      }
                  });
              }
+         });
+     }
+
+     createShout() {
+         zoomTemp(1.02);
+         this.shoutSprite.setScale(0.15).setAlpha(1);
+         PhaserScene.tweens.add({
+             targets: [this.shoutSprite],
+             scaleX: 9,
+             scaleY: 9,
+             duration: 900,
+             ease: 'Quad.easeOut',
+         });
+         PhaserScene.tweens.add({
+             targets: [this.shoutSprite],
+             alpha: 0,
+             duration: 1000,
          });
      }
 

@@ -1820,7 +1820,7 @@ class SpellManager {
                         duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.015 + additionalDamage;
+                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.055 + additionalDamage;
                             let damageDealt = Math.ceil(healthPercent)
                             playSound('void_strike_hit');
                             messageBus.publish('enemyTakeDamage', damageDealt);

@@ -682,7 +682,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/robot_claw_1.png</key>
+            <key type="filename">enemies/robot_claw_1 - Copy.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>154,137,309,275</rect>
+                <key>scale9Paddings</key>
+                <rect>154,137,309,275</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/robot_claw_2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -740,6 +754,21 @@
                 <rect>60,49,120,98</rect>
                 <key>scale9Paddings</key>
                 <rect>60,49,120,98</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/robot_heart.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>130,145,260,289</rect>
+                <key>scale9Paddings</key>
+                <rect>130,145,260,289</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

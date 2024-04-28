@@ -221,7 +221,7 @@ class SpellManager {
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
-                    messageBus.publish('setPauseDur', 30);
+                    messageBus.publish('setPauseDur', 20);
                     poolManager.returnItemToPool(rockObj, 'rock');
                 }
             });
@@ -905,7 +905,7 @@ class SpellManager {
 
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', spellDamage);
-                    messageBus.publish('setPauseDur', 20);
+                    messageBus.publish('setPauseDur', 12);
 
                 }
             });
@@ -956,7 +956,7 @@ class SpellManager {
                     });
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', halfSpellDamage);
-                    messageBus.publish('setPauseDur', 20);
+                    messageBus.publish('setPauseDur', 12);
                 }
             });
         }
@@ -1308,7 +1308,7 @@ class SpellManager {
                     });
 
                     messageBus.publish('enemyTakeDamage', 1 + additionalDamage);
-                    messageBus.publish('setPauseDur', 15);
+                    messageBus.publish('setPauseDur', 10);
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
                         let animation1 = this.scene.add.sprite(attackObj.x - 55, attackObj.y - 10, 'spells').play('weaken');
@@ -2407,7 +2407,7 @@ class SpellManager {
                     }, 15);
                     messageBus.publish('enemyTakeDamagePercent', 12.5, additionalDamage);
                     messageBus.publish('disruptOpponentAttackPercent', 0.667);
-                    messageBus.publish('setPauseDur', 50);
+                    messageBus.publish('setPauseDur', 40);
 
                 });
                 if (additionalDamage > 1) {

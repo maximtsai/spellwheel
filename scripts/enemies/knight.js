@@ -889,6 +889,8 @@
 
          let helmet = PhaserScene.add.sprite(this.x + 34, this.y - 59, 'enemies', 'void_knight_helmet.png').setDepth(4);
          let arm = PhaserScene.add.sprite(this.x + 64, this.y + 19, 'enemies', 'void_knight_arm.png').setDepth(0);
+         this.addExtraSprite(helmet);
+         this.addExtraSprite(arm);
 
 
          setTimeout(() => {
@@ -921,6 +923,8 @@
                          alpha: 0,
                          duration: 750,
                          onComplete: () => {
+                             this.removeExtraSprite(helmet);
+                             this.removeExtraSprite(arm);
                              helmet.destroy();
                              arm.destroy();
                              setTimeout(() => {

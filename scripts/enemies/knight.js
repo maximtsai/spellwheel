@@ -467,11 +467,11 @@
              [
                  // 0
                  {
-                     name: "|14 ",
+                     name: "|10 ",
                      announceName: "INITIAL STRIKE",
                      desc: "The mysterious knight charges at you!",
                      chargeAmt: 500,
-                     damage: 14,
+                     damage: 10,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
                      attackFinishFunction: () => {
@@ -524,6 +524,7 @@
                      attackTimes: 3,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
+                     isBigMove: true,
                      attackFinishFunction: () => {
                          this.makeSlashEffect();
                          playSound('sword_hit', 0.7);
@@ -533,13 +534,14 @@
                      }
                  },
                  {
-                     name: "|10 ",
+                     name: "|12 ",
                      announceName: "void strike",
                      chargeAmt: 600,
-                     damage: 10,
+                     damage: 12,
                      chargeMult: 1.5,
                      attackSprites: ['void_knight_attack.png'],
                      startFunction: () => {
+                         playSound('void_enhance', 0.5);
                          this.pulseCircleInward(this.x - 14, this.y - 39);
                          this.setDefaultSprite('void_knight_pullback.png');
                          playSound('void_body', 0.9);
@@ -623,6 +625,7 @@
                      attackTimes: 2,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
+                     isBigMove: true,
                      attackFinishFunction: () => {
                          this.makeVoidSlashEffect();
                          playSound('void_strike_hit');
@@ -753,6 +756,7 @@
                      chargeMult: 1.65,
                      damage: 6,
                      attackTimes: 6,
+                     isBigMove: true,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
                      attackFinishFunction: () => {
@@ -772,6 +776,7 @@
                      chargeAmt: 1000,
                      chargeMult: 1.65,
                      damage: 24,
+                     isBigMove: true,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
                      attackFinishFunction: () => {
@@ -859,6 +864,7 @@
      }
 
      createShout() {
+         playSound('void_enhance', 0.9);
          zoomTemp(1.02);
          this.shoutSprite.setScale(0.15).setAlpha(1);
          PhaserScene.tweens.add({

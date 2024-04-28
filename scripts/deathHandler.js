@@ -252,7 +252,14 @@ function playReaperAnim(enemy) {
                                                     duration: 1000,
                                                     onComplete: () => {
                                                         floatingDeath.destroy();
-
+                                                        PhaserScene.tweens.add({
+                                                            targets: [globalObjects.fogSliceDarken],
+                                                            alpha: 0,
+                                                            duration: 1000,
+                                                            onComplete: () => {
+                                                                globalObjects.fogSliceDarken.destroy();
+                                                            }
+                                                        });
                                                         globalObjects.magicCircle.enableMovement();
                                                         globalObjects.postFightScreen.createWinScreen(level);
                                                     }

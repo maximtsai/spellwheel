@@ -146,8 +146,9 @@ class SpellManager {
             alpha: 1,
             ease: 'Cubic.easeOut'
         });
-        let strikeVol = 0.7 + additionalDamage * 0.0022;
-        playSound(Math.random() < 0.65 ? 'matter_strike' : 'matter_strike_alt', strikeVol);
+        let useMainStrike = Math.random() < 0.65;
+        let strikeVol = 0.65 + additionalDamage * 0.0022 + (useMainStrike ? -0.1 : 0);
+        playSound(useMainStrike ? 'matter_strike' : 'matter_strike_alt', strikeVol);
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
@@ -1497,7 +1498,7 @@ class SpellManager {
             }
         }
         playSound('mind_enhance');
-        let mindObj = this.scene.add.sprite(gameConsts.halfWidth + 195, gameConsts.height - 285, 'spells').play('mindBurnSlow').setDepth(10).setScale(0);
+        let mindObj = this.scene.add.sprite(gameConsts.halfWidth +205, gameConsts.height - 295, 'spells').play('mindBurnSlow').setDepth(10).setScale(0);
         let newScale = 0.25 + multiplier * 0.1;
         this.scene.tweens.add({
             targets: mindObj,
@@ -2021,7 +2022,7 @@ class SpellManager {
         let existingBuff = globalObjects.player.getStatuses()[spellID];
         let voidObj;
         let multiplier = globalObjects.player.spellMultiplier();
-        playSound('void_enhance');
+        playSound('void_enhance', 0.7);
         if (existingBuff) {
             multiplier += existingBuff.multiplier;
             let newScale = 0.3 + Math.sqrt(multiplier) * 0.9;
@@ -2034,7 +2035,7 @@ class SpellManager {
                 scaleY: newScale,
             });
         } else {
-            voidObj = this.scene.add.sprite(gameConsts.halfWidth - 195, gameConsts.height - 285, 'enemies', 'curse_symbol_small.png');
+            voidObj = this.scene.add.sprite(gameConsts.halfWidth + 245, gameConsts.height - 210, 'enemies', 'curse_symbol_small.png');
             voidObj.setScale(0);
             voidObj.setDepth(10);
             let newScale = 0.3 + Math.sqrt(multiplier) * 0.9;
@@ -2052,6 +2053,19 @@ class SpellManager {
                 repeat: -1
             });
         }
+
+        if (!this.pulseCircle) {
+            this.pulseCircle = this.scene.add.sprite(voidObj.x, voidObj.y, 'misc', 'black_circle_2.png');
+        }
+        this.pulseCircle.setScale(1.45 + 0.2 * multiplier).setDepth(121).setAlpha(0.05).setPosition(voidObj.x, voidObj.y).setRotation(Math.random() * 6);
+        PhaserScene.tweens.add({
+            targets: [this.pulseCircle],
+            scaleX: 0,
+            scaleY: 0,
+            duration: 400,
+            ease: 'Quad.easeOut',
+            alpha: 1,
+        });
 
         messageBus.publish("selfTakeEffect", {
             ignoreBuff: true,

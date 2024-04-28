@@ -8,8 +8,9 @@
                 // this.initTutorial2();
             } else if (globalObjects.player.getPlayerCastSpellsCount() > 1 && this.canHideStartTut) {
                 this.playerSpellCastSub.unsubscribe();
-            }
-            if (this.canHideStartTut) {
+                this.initTutorial3();
+            } else if (globalObjects.player.getPlayerCastSpellsCount() > 3) {
+                this.playerSpellCastSub.unsubscribe();
                 this.initTutorial3();
             }
         });

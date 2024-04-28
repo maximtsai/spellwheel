@@ -14,6 +14,8 @@ function clearMenuButtons() {
     globalObjects.creditsButton.destroy();
     globalObjects.lvlButton.destroy();
     globalObjects.lvl5Button.destroy();
+    globalObjects.lvl6Button.destroy();
+
 
     globalObjects.creditsButton2.destroy();
     globalObjects.creditsButton3.destroy();
@@ -244,12 +246,40 @@ function gotoMainMenu() {
     globalObjects.lvl5Button.addText("LEVEL 5", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
 
 
-    globalObjects.creditsButton2 = new Button({
+    globalObjects.lvl6Button = new Button({
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
             x: 100,
             y: 260,
+        },
+        hover: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        press: {
+            ref: "menu_btn_press.png",
+            atlas: 'buttons',
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp: () => {
+            clearMenuButtons();
+            beginLevel(6);
+        }
+    });
+    globalObjects.lvl6Button.setScale(0.5);
+    globalObjects.lvl6Button.addText("LEVEL 6", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+
+
+
+    globalObjects.creditsButton2 = new Button({
+        normal: {
+            ref: "menu_btn_normal.png",
+            atlas: 'buttons',
+            x: 100,
+            y: 300,
         },
         hover: {
             ref: "menu_btn_hover.png",
@@ -275,7 +305,7 @@ function gotoMainMenu() {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
             x: 100,
-            y: 300,
+            y: 340,
         },
         hover: {
             ref: "menu_btn_hover.png",

@@ -7,7 +7,7 @@
     }
 
      initStatsCustom() {
-         this.health = 160;
+         this.health = 130;
          this.damageNumOffset = 45;
          this.timeObjects = [];
      }

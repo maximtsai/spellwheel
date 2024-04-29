@@ -8,7 +8,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 300 : 250;
+         this.health = gameVars.isHardMode ? 300 : 240;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;
@@ -128,13 +128,13 @@
                  }
              });
          }
-         if (currHealthPercent <= 0.5 && !this.hasCrushed) {
+         if (currHealthPercent <= 0.6 && !this.hasCrushed) {
              // CRUSH
              this.hasCrushed = true;
              this.currentAttackSetIndex = 3;
              this.nextAttackIndex = 0;
              // Going to shield
-         } else if (currHealthPercent <= 0.25 && !this.hasTimbered) {
+         } else if (currHealthPercent <= 0.3 && !this.hasTimbered) {
              this.hasTimbered = true;
              this.currentAttackSetIndex = 5;
              this.nextAttackIndex = 0;
@@ -464,8 +464,8 @@
      }
 
      initAttacks() {
-         let regrowthAmt1 = gameVars.isHardMode ? 18 : 12;
-         let regrowthAmt2 = gameVars.isHardMode ? 24 : 16;
+         let regrowthAmt1 = gameVars.isHardMode ? 16 : 8;
+         let regrowthAmt2 = gameVars.isHardMode ? 24 : 12;
          this.attacks = [
              [
                  // 0
@@ -604,7 +604,7 @@
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.03;
                          let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent >= 0.25) {
+                         if (currHealthPercent >= 0.3) {
                              this.currentAttackSetIndex = 4;
                              this.nextAttackIndex = 0;
                          } else if (!this.hasTimbered) {

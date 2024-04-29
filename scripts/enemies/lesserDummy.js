@@ -318,12 +318,12 @@
                  this.sprite.x -= 40;
                  this.showVictory();
 
-
              }
          });
      }
 
      showVictory() {
+         globalObjects.magicCircle.disableMovement();
          let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
          let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
          let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
@@ -356,6 +356,7 @@
                      alpha: 0,
                      duration: 400,
                      onComplete: () => {
+                         globalObjects.magicCircle.enableMovement();
                          victoryText.destroy();
                          banner.destroy();
                          continueText.destroy();
@@ -365,6 +366,7 @@
                              alpha: 0,
                              duration: 600,
                              onComplete: () => {
+
                                  this.destroy();
                              }
                          });

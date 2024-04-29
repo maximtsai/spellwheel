@@ -293,7 +293,7 @@ const ENABLE_KEYBOARD = true;
                 this.draggedObj.torque = dragForce * Math.sqrt(dragForceSqr) * torqueConst * (1 + dScale * 0.00);
             }
             // TODO: Remove if not needed
-            this.draggedObj.torque += dragAngleDiff * torqueConst * 0.3 - this.draggedObj.rotVel * 0.235;
+            this.draggedObj.torque += dragAngleDiff * torqueConst * 0.65 - this.draggedObj.rotVel * 0.325;
             // this.draggedObj.torque = this.draggedObj.torque + (this.draggedObj.torque * this.draggedObj.torque) * minusMult * 150;
             //this.draggedObj.torque += this.draggedObj.torqueOnRelease * 0.5;
 

@@ -15,7 +15,7 @@
             }
         });
         let spellHoverListener = messageBus.subscribe('spellNameTextUpdate', (text) => {
-            if (text === "ADD STRONGER ATTACK" && !globalObjects.magicCircle.innerDragDisabled) {
+            if (!globalObjects.magicCircle.innerDragDisabled && text.includes('STRONGER')) {
                 this.canHideStartTut = true;
                 spellHoverListener.unsubscribe();
             }
@@ -31,8 +31,8 @@
 
 
      initTutorial() {
-         this.rune1 = this.scene.add.sprite(gameConsts.width - 200, 441, 'circle', 'rune_enhance_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
-         this.rune2 = this.scene.add.sprite(gameConsts.width - 137, 441, 'circle', 'rune_matter_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
+         this.rune1 = this.scene.add.sprite(gameConsts.width - 200, 440, 'circle', 'rune_enhance_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
+         this.rune2 = this.scene.add.sprite(gameConsts.width - 138, 440, 'circle', 'rune_matter_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
 
          setTimeout(() => {
              globalObjects.textPopupManager.setInfoText(gameConsts.width - 114, 348, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'left');
@@ -58,11 +58,12 @@
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
-            globalObjects.textPopupManager.setInfoText(ameConsts.width - 170, 275, "Enemies become\nangry when\nattacked!", 'left');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width - 120, 275, "Enemies become\nangry when\nattacked!", 'left');
             if (this.rune1) {
                 this.rune1.destroy();
                 this.rune2.destroy();
             }
+            this.timeSinceLastAttacked = 0;
 
             messageBus.publish('setSlowMult', 0.1, 320);
             let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);

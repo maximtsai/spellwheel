@@ -228,15 +228,11 @@ class SpellManager {
         }
 
         let spellName = 'MATTER STRIKE';
+        if (additionalDamage >= 1) {
+            spellName = spellName + " +" + additionalDamage;
+        }
         if (numAdditionalAttacks > 1) {
             spellName += " X" + numAdditionalAttacks;
-        }
-        if (additionalDamage >= 60) {
-            spellName = spellName + " +++DMG";
-        } else if (additionalDamage >= 30) {
-            spellName = spellName + " ++DMG";
-        } else if (additionalDamage > 1) {
-            spellName = spellName + " +DMG";
         }
         this.postAttackCast(spellID, 0, spellName);
     }
@@ -465,7 +461,8 @@ class SpellManager {
                 }
             }
         });
-        let spellName = "ADD STRONGER ATTACK";
+        let spellName = "ADD STRONGER ATTACK\n+" + globalObjects.player.attackDamageAdder();
+
         if (itemsToAnimate.length > 1) {
             spellName += " X" + itemsToAnimate.length;
         }
@@ -785,15 +782,11 @@ class SpellManager {
         }
 
         let spellName = "EARTH FORCE";
+        if (additionalDamage >= 1) {
+            spellName = spellName + " +" + additionalDamage;
+        }
         if (numAdditionalAttacks > 1) {
             spellName += " X" + numAdditionalAttacks;
-        }
-        if (additionalDamage >= 60) {
-            spellName = spellName + "+++DMG";
-        } else if (additionalDamage >= 30) {
-            spellName = spellName + "++DMG";
-        } else if (additionalDamage > 1) {
-            spellName = spellName + "+DMG";
         }
         messageBus.publish('clearSpellMultiplier');
         this.postAttackCast(spellID, 300, spellName);
@@ -962,11 +955,11 @@ class SpellManager {
         }
 
         let spellName = "TIME STRIKE";
+        if (additionalDamage >= 1) {
+            spellName = spellName + " +" + additionalDamage;
+        }
         if (numAdditionalAttacks > 1) {
             spellName += " X"+numAdditionalAttacks;
-        }
-        if (additionalDamage > 1) {
-            spellName = "DAMAGING " + spellName;
         }
         this.postAttackCast(spellID, 300, spellName);
     }
@@ -1362,16 +1355,11 @@ class SpellManager {
         }
 
         let spellName = "MIND STRIKE";
-
+        if (additionalDamage >= 1) {
+            spellName = spellName + " +" + additionalDamage;
+        }
         if (numAdditionalAttacks > 1) {
             spellName += " X" + numAdditionalAttacks;
-        }
-        if (additionalDamage >= 60) {
-            spellName = spellName + " +++DMG";
-        } else if (additionalDamage >= 30) {
-            spellName = spellName + " ++DMG";
-        } else if (additionalDamage > 1) {
-            spellName = spellName + " +DMG";
         }
         this.postAttackCast(spellID, 0, spellName);
 
@@ -1853,17 +1841,13 @@ class SpellManager {
 
 
         let spellName = 'VOID STRIKE';
+
+        if (additionalDamage >= 1) {
+            spellName = spellName + " +" + additionalDamage;
+        }
         if (numAdditionalAttacks > 1) {
             spellName += " X" + numAdditionalAttacks;
         }
-        if (additionalDamage >= 60) {
-            spellName = "DEMOLISHING " + spellName;
-        } else if (additionalDamage >= 30) {
-            spellName = "DESTRUCTIVE " + spellName;
-        } else if (additionalDamage > 1) {
-            spellName = "DAMAGING " + spellName;
-        }
-
         this.postAttackCast(spellID, 0, spellName);
     }
 

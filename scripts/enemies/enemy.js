@@ -185,14 +185,14 @@ class Enemy {
 
         let attackNameYPos = isMobile ? this.chargeBarMax.y - 22 : this.chargeBarMax.y - 19
 
-        this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', isMobile ? 36 : 32);
-        this.attackName.setDepth(9);
-        this.attackName.setOrigin(0.5, 0.85);
-
-        this.angrySymbol = this.scene.add.sprite(x, this.attackName.y - 8, 'enemies', 'angry1.png');
+        this.angrySymbol = this.scene.add.sprite(x, attackNameYPos - 8, 'enemies', 'angry1.png');
         this.angrySymbol.setDepth(9);
         this.angrySymbol.visible = false;
         this.angrySymbolIsHiding = true;
+
+        this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', isMobile ? 36 : 32);
+        this.attackName.setDepth(9);
+        this.attackName.setOrigin(0.5, 0.85);
     }
 
     resetStats(x, y) {

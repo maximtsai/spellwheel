@@ -296,31 +296,47 @@ function handleReaperDialog(level = 0, onComplete) {
         break;
     case 3:
         reaperDialog = [
-            "IT IS NOT WITHIN MY AUTHORITY\nTO STOP YOU,",
-            "BUT HEED MY WARNING.",
-            "WHATEVER YOU SEEK HERE\nCANNOT BE ATTAINED.",
+            "ONLY THE DEPARTED RESIDE HERE.",
+            "AND THOSE WHO ENTER",
+            "CAN NEVER RETURN."
         ];
         break;
     case 4:
         reaperDialog = [
-            "YOU STILL PERSIST.",
-            "AND QUITE FRANKLY YOU ARE\nMAKING A MESS OF THINGS.",
+            "I WILL ONLY WARN YOU ONCE MORE,",
+            "WHATEVER YOU SEEK HERE\nCANNOT BE ATTAINED.",
+            "TURN BACK NOW.",
         ];
         break;
     case 5:
         reaperDialog = [
-            "ALAS, IT IS NOT WITHIN MY\nAUTHORITY TO STOP YOU,",
-            "BUT HEED MY WARNING.",
-            "THAT WHICH YOU SEEK HERE\nCANNOT BE ATTAINED.",
+            "ALAS, IT IS NOT WITHIN MY\nAUTHORITY TO STOP YOU.",
+            "BUT SHOULD YOU PERHAPS... \'STUMBLE\'",
+            "THEN THAT WILL BE A VERY\nDIFFERENT STORY.",
         ];
         break;
     case 6:
         reaperDialog = [
-            "ALAS, IT IS NOT WITHIN MY\nAUTHORITY TO STOP YOU,",
-            "BUT HEED MY WARNING.",
-            "THAT WHICH YOU SEEK HERE\nCANNOT BE ATTAINED.",
+            "YOU ARE PERSISTENT.",
+            "BUT UNDERSTAND THAT ONLY MISERY",
+            "AWAITS AT THE END.",
         ];
         break;
+    case 7:
+        reaperDialog = [
+            "I SHOULD PERHAPS TELL YOU...",
+            "THAT YOU ARE MAKING QUITE A MESS OF THINGS.",
+            "AND MY SCHEDULE IS BUSY ENOUGH AS-IS.",
+        ];
+        break;
+    case 8:
+        reaperDialog = [
+            "...",
+            "I HAVE A FEELING THAT\nIT WON'T BE LONG",
+            "BEFORE I HAVE BUSINESS WITH YOU.",
+        ];
+        break;
+
     default:
         if (onComplete) {
             onComplete();

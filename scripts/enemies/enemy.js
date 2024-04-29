@@ -370,7 +370,7 @@ class Enemy {
             }
             chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
             if (this.isAngry) {
-                let increaseMult = Math.max(3, 0.33 * chargeMult);
+                let increaseMult = Math.max(3.3, 0.33 * chargeMult);
                 this.attackCharge += timeChange * increaseMult * this.slowMult;
             } else {
                 if (gameVars.playerNotMoved && chargeMult === 1) {

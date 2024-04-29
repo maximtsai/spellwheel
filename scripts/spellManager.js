@@ -823,7 +823,7 @@ class SpellManager {
         }
 
         let additionalDamage = globalObjects.player.attackDamageAdder();
-        let goalScale = 0.6 + Math.sqrt(additionalDamage) * 0.08 + additionalDamage * 0.01;
+        let goalScale = 0.6 + Math.sqrt(additionalDamage) * 0.1 + additionalDamage * 0.011;
         let spellDamage = 6 + additionalDamage;
         let halfSpellDamage = Math.ceil(spellDamage * 0.5);
         for (let i in strikeObjects) {
@@ -1820,7 +1820,7 @@ class SpellManager {
                         duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.055 + additionalDamage;
+                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.015 + additionalDamage;
                             let damageDealt = Math.ceil(healthPercent)
                             playSound('void_strike_hit');
                             messageBus.publish('enemyTakeDamage', damageDealt);

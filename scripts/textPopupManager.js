@@ -67,7 +67,7 @@ class TextPopupManager {
         }
         this.damageNumber += val;
         this.damageNum.setText('-' + this.damageNumber);
-        let newScale = 0.6 + Math.sqrt(val) * 0.2;
+        let newScale = 0.5 + Math.sqrt(val) * 0.25;
         if (isMobile) {
             newScale += 0.1;
         }
@@ -160,8 +160,9 @@ class TextPopupManager {
             onComplete: () => {
                 let tweenParams2 = {
                     targets: textObj,
-                    scaleX: textObj.scaleX * 0.2,
-                    scaleY: textObj.scaleY * 0.2,
+                    scaleX: textObj.scaleX * 0.4,
+                    scaleY: textObj.scaleY * 0.4,
+                    alpha: 0,
                     duration: 350,
                     ease: 'Quart.easeIn',
                     onComplete: () => {

@@ -65,24 +65,38 @@ function getFogSwirl() {
     if (!globalObjects.fogSwirl) {
         globalObjects.fogSwirl = PhaserScene.add.sprite(gameConsts.halfWidth, 240, 'backgrounds', 'fog_swirl.png').setDepth(-4);
     }
-    globalObjects.fogSwirl.setAlpha(0).setScale(2.2).setRotation(-1);
+    if (globalObjects.fogSwirl.alpha == 0) {
+        globalObjects.fogSwirl.setScale(2.2).setRotation(-1);
+    }
     return globalObjects.fogSwirl;
+}
+
+function getFloatingDeath() {
+    if (!globalObjects.floatingDeath) {
+        globalObjects.floatingDeath = PhaserScene.add.sprite(gameConsts.halfWidth, 130, 'misc', 'floating_death.png').setDepth(-1);
+        globalObjects.floatingDeath.setAlpha(0.5).setScale(0.35);
+    }
+    globalObjects.floatingDeath.setVisible(true);
+
+    return globalObjects.floatingDeath;
 }
 
 function getFogSwirlGlow() {
     if (!globalObjects.fogSwirlGlow) {
-        globalObjects.fogSwirlGlow = PhaserScene.add.sprite(gameConsts.halfWidth, 225, 'backgrounds', 'fog_swirl_glow.png').setDepth(-4);
+        globalObjects.fogSwirlGlow = PhaserScene.add.sprite(gameConsts.halfWidth, 225, 'backgrounds', 'fog_swirl_glow.png').setDepth(-4).setAlpha(0);
     }
-    globalObjects.fogSwirlGlow.setAlpha(0).setScale(2).setRotation(-1);
+    if (globalObjects.fogSwirlGlow.alpha == 0) {
+        globalObjects.fogSwirlGlow.setScale(2).setRotation(-1);
+    }
     return globalObjects.fogSwirlGlow;
 }
 
 
-function playReaperAnim(enemy) {
+function playReaperAnim(enemy, customFinFunc) {
     playSound('sound_of_death');
     globalObjects.magicCircle.disableMovement();
     let level = enemy.getLevel();
-    let floatingDeath = PhaserScene.add.sprite(gameConsts.halfWidth, 130, 'misc', 'floating_death.png').setDepth(-1).setAlpha(0.5).setScale(0.35);
+    let floatingDeath = getFloatingDeath();
     if (globalObjects.fogSwirl) {
         globalObjects.fogSwirl.currAnim.stop();
         globalObjects.fogSwirl.currAnimScale.stop();
@@ -120,8 +134,8 @@ function playReaperAnim(enemy) {
                 globalObjects.fogSwirl.currAnim = newAnim;
             }
         });
-
     }
+
     PhaserScene.tweens.add({
         targets: floatingDeath,
         scaleX: 0.75,
@@ -141,6 +155,9 @@ function playReaperAnim(enemy) {
                 ease: 'Cubic.easeIn',
                 duration: 400,
                 onComplete: () => {
+                    if (enemy.customBgMusic) {
+                        fadeAwaySound(enemy.customBgMusic, 1000, '')
+                    }
                     PhaserScene.tweens.add({
                         targets: scythe,
                         rotation: 0,
@@ -148,6 +165,11 @@ function playReaperAnim(enemy) {
                         duration: 800,
                         completeDelay: 100,
                         onComplete: () => {
+                            if (enemy.customBgMusic) {
+                                enemy.customBgMusic.stop();
+                            }
+                            playSound(globalObjects.reapSound || 'sword_slice');
+                            globalObjects.reapSound = null;
                             let fogSlice = getFogSlice();
 
                             let fogSliceDarken = getFogSliceDarken();
@@ -260,8 +282,12 @@ function playReaperAnim(enemy) {
                                                                 globalObjects.fogSliceDarken.destroy();
                                                             }
                                                         });
-                                                        globalObjects.magicCircle.enableMovement();
-                                                        globalObjects.postFightScreen.createWinScreen(level);
+                                                        if (customFinFunc) {
+                                                            customFinFunc();
+                                                        } else {
+                                                            globalObjects.magicCircle.enableMovement();
+                                                            globalObjects.postFightScreen.createWinScreen(level);
+                                                        }
                                                     }
                                                 });
                                             })

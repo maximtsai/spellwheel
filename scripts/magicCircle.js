@@ -2392,7 +2392,7 @@ const ENABLE_KEYBOARD = true;
      }
 
      playerDied() {
-         this.delayedDamage = 0;
+        this.removeDelayedDamage();
         this.disableMovement();
          this.greyedDead.visible = true;
          this.greyedDead.alpha = 1;

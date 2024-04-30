@@ -41,15 +41,22 @@ function tweenVolume(name, volume, duration = 1500) {
 }
 
 
-function fadeAwaySound(sound) {
+function fadeAwaySound(sound, duration = 650, ease = 'Quad.easeOut') {
     PhaserScene.tweens.add({
-        targets: name,
+        targets: sound,
         volume: 0,
         ease: 'Quad.easeOut',
-        duration: 600,
+        duration: duration,
         onComplete: () => {
             sound.stop();
         }
     });
+}
 
+function fadeInSound(sound, volume = 1) {
+    PhaserScene.tweens.add({
+        targets: sound,
+        volume: volume,
+        duration: 800
+    });
 }

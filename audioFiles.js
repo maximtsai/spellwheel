@@ -64,6 +64,7 @@ const audioFiles = [
     {name: 'enemy_attack_2', src: 'audio/enemy_attack_2.mp3'},
     {name: 'enemy_attack_major', src: 'audio/enemy_attack_major.mp3'},
     {name: 'body_slam', src: 'audio/body_slam.mp3'},
+    {name: 'punch', src: 'audio/punch.mp3'},
     {name: 'sword_slice', src: 'audio/sword_slice.mp3'},
     {name: 'sword_hit', src: 'audio/sword_hit.mp3'},
     {name: 'stone_wheel', src: 'audio/stone_wheel.mp3'},
@@ -71,6 +72,11 @@ const audioFiles = [
     {name: 'wind', src: 'audio/wind.mp3'},
     {name: 'sound_of_death', src: 'audio/sound_of_death.mp3'},
     {name: 'you_died', src: 'audio/you_died.mp3'},
+
+    {name: 'magician_end', src: 'audio/magician_end.mp3'},
+    {name: 'magician_theme_1', src: 'audio/magician_theme_1.mp3'},
+    {name: 'magician_theme_3', src: 'audio/magician_theme_3.mp3'},
+    {name: 'magician_theme_4', src: 'audio/magician_theme_4.mp3'},
 
     {name: 'shield_block', src: 'audio/shield_block.mp3'},
     {name: 'shield_break', src: 'audio/shield_break.mp3'},

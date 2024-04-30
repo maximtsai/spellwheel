@@ -19,9 +19,9 @@
     }
 
     setTempPause(dur) {
-        gameVars.timeScale = 0.1;
+        gameVars.timeScale = 0.25;
         PhaserScene.tweens.timeScale = 0.5;
-        PhaserScene.time.timeScale = 0.1;
+        PhaserScene.time.timeScale = 0.25;
         PhaserScene.anims.globalTimeScale = 0.5;
 
         setTimeout(() => {

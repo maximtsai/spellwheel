@@ -416,6 +416,10 @@
              ease: 'Cubic.easeIn',
              alpha: 1.2,
              onComplete: () => {
+                 if (this.isPulsing && !this.dead) {
+                     this.nextAttack.damage += 1;
+                     this.attackName.setText("|" + this.nextAttack.damage +" ");
+                 }
                  PhaserScene.tweens.add({
                      targets: [this.pulseCircle],
                      scaleX: 0,
@@ -426,6 +430,7 @@
                      completeDelay: 1200,
                      onComplete: () => {
                          if (this.isPulsing && !this.dead) {
+
                              this.pulseCircleInward(x, y);
                          }
                      }
@@ -534,11 +539,11 @@
                      }
                  },
                  {
-                     name: "|12 ",
+                     name: "|8 ",
                      announceName: "void strike",
                      chargeAmt: 600,
-                     damage: 12,
-                     chargeMult: 1.5,
+                     damage: 8,
+                     chargeMult: 2,
                      attackSprites: ['void_knight_attack.png'],
                      startFunction: () => {
                          playSound('void_enhance', 0.5);

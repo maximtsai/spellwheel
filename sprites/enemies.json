@@ -1183,31 +1183,6 @@
 						"x": 0.5,
 						"y": 0.5
 					}
-				},
-				{
-					"filename": "clock1.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 19,
-						"h": 19
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 19,
-						"h": 19
-					},
-					"frame": {
-						"x": 588,
-						"y": 1991,
-						"w": 19,
-						"h": 19
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
 				}
 			]
 		},
@@ -1514,6 +1489,31 @@
 						"y": 1855,
 						"w": 286,
 						"h": 154
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "clock1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 156,
+						"h": 156
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 156,
+						"h": 156
+					},
+					"frame": {
+						"x": 600,
+						"y": 1855,
+						"w": 156,
+						"h": 156
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2698,6 +2698,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:fe72b384056856166b31895bbce42d41:a7a178707bfd7e19cc1bbab377463250:7932824411c36c67b27fcdfad91f2c95$"
+		"smartupdate": "$TexturePacker:SmartUpdate:b751a5ceeba065d3e9c9578bc09df0dd:571a18e1b997ee1a0ffc5787e677369f:7932824411c36c67b27fcdfad91f2c95$"
 	}
 }

@@ -232,10 +232,14 @@ class Player {
 
     showHurt(dmg, emergency) {
         let emergencyMult = emergency ? 1 : 0;
-        this.hurtIndicator.setAlpha(0.7 + dmg * 0.004 + emergencyMult * 0.25).setScale(100, 2.25 + dmg * 0.025 + emergencyMult * 1.5);
+        let multAmt = 1;
+        if (dmg <= 1) {
+            multAmt = 0.9;
+        }
+        this.hurtIndicator.setAlpha(multAmt * 0.7 + dmg * 0.0045 + emergencyMult * 0.25).setScale(100, multAmt * 2.25 + dmg * 0.028 + emergencyMult * 1.5);
         this.scene.tweens.add({
             targets: this.hurtIndicator,
-            duration: 450 + dmg * 2 + emergencyMult * 300,
+            duration: Math.floor((475 + dmg * 2 + emergencyMult * 300) * multAmt),
             ease: 'Quad.easeOut',
             scaleY: 1.75,
             alpha: 0,
@@ -419,6 +423,7 @@ class Player {
             }
         }
         this.statuses = {};
+        this.delayedDamage
 
         messageBus.publish('selfClearStatuses');
     }
@@ -466,7 +471,7 @@ class Player {
         }
 
         this.health = Math.max(0, this.health - damageTaken);
-        if (damageTaken > 1) {
+        if (damageTaken >= 1) {
             let isEmergency = origHealth > this.healthMax * 0.2 && this.health < this.healthMax * 0.2;
             this.showHurt(damageTaken, isEmergency);
         }
@@ -512,6 +517,7 @@ class Player {
         this.health = Math.max(0, this.health - amt);
         this.animateHealthChange(-amt);
         this.refreshHealthBar();
+        this.showHurt(1, false);
         if (this.health <= 0) {
             this.die();
         }
@@ -707,17 +713,24 @@ class Player {
                         this.statuses['matterReinforce'].animObj[i].origScale = this.statuses['matterReinforce'].animObj[i].scaleX;
                     }
                     if (i == 1) {
-                        wallObj.setScale(wallObj.origScale * 1.06);
+                        wallObj.setScale(wallObj.origScale * 1.12);
+                        this.scene.tweens.add({
+                            targets: wallObj,
+                            duration: 250,
+                            scaleX: wallObj.origScale,
+                            scaleY: wallObj.origScale,
+                            alpha: 0.5,
+                        });
                     } else {
-                        wallObj.setScale(wallObj.origScale * 1.01);
+                        wallObj.setScale(wallObj.origScale * 1.05);
+                        this.scene.tweens.add({
+                            targets: wallObj,
+                            duration: 350,
+                            scaleX: wallObj.origScale,
+                            scaleY: wallObj.origScale,
+                            alpha: 0.5,
+                        });
                     }
-                    this.scene.tweens.add({
-                        targets: wallObj,
-                        duration: 250,
-                        scaleX: wallObj.origScale,
-                        scaleY: wallObj.origScale,
-                        alpha: 0.5,
-                    });
                 }
                 hurtAmt = Math.max(0, hurtAmt - this.statuses['matterReinforce'].protection);
                 messageBus.publish('enemyTakeDamage', this.statuses['matterReinforce'].damage, false, 30);
@@ -838,6 +851,10 @@ class Player {
             alpha: 0.5,
             ease: 'Cubic.easeOut',
             onComplete: () => {
+                if (globalObjects.floatingDeath) {
+                    globalObjects.floatingDeath.visible = false;
+                }
+
                 this.deadBGAnim = this.scene.tweens.add({
                     targets: this.deadBG,
                     duration: 1500,

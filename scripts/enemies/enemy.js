@@ -994,12 +994,17 @@ class Enemy {
         this.subscriptions = [];
     }
 
+    cleanUp() {
+
+    }
+
     destroy() {
         if (this.isDestroyed) {
             return;
         }
         this.isDestroyed = true;
         this.clearEffects()
+        this.cleanUp();
         this.healthBarMax.destroy();
         this.healthBarCurr.destroy();
         this.healthBarText.destroy();
@@ -1044,6 +1049,7 @@ class Enemy {
         if (this.dead) {
             return;
         }
+        this.dead = true;
         if (this.bgMusic) {
             this.bgMusic.stop();
         }
@@ -1051,7 +1057,6 @@ class Enemy {
             this.breatheTween.stop();
         }
         this.clearEffects();
-        this.dead = true;
         // undo any time magic
         this.sprite.setScale(this.sprite.startScale);
         globalObjects.magicCircle.setTimeSlowRatio(1);

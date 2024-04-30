@@ -47,7 +47,7 @@
          } else if (currHealthPercent < 0.75 && !this.usedTimeShield) {
              this.currentAttackSetIndex = 3;
              this.nextAttackIndex = 0;
-         } else if (this.health <= 25 && this.usedTimeShield) {
+         } else if (this.health <= 23 && this.usedTimeShield) {
              if (this.statuses[0] && this.statuses[0].duration >= this.health && !this.isTerrified) {
                  this.isTerrified = true;
                  this.interruptCurrentAttack();
@@ -120,6 +120,9 @@
      }
 
      die() {
+         if (this.dead) {
+             return;
+         }
         super.die();
 
          if (this.currAnim) {
@@ -155,7 +158,7 @@
      showRune() {
          let rune = this.scene.add.sprite(this.x, this.y - 75, 'circle', 'rune_time_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(9999);
          playSound('victory_2');
-         this.showFlash(this.x, this.y - 75);
+         this.showFlash(this.x, this.y);
          let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
          let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
          let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
@@ -548,7 +551,7 @@
                      name: "TIME-STOPPED ATTACK |6x3 ",
                      desc: "A devastating barrage\nof offensive magic.",
                      chargeAmt: 500,
-                     chargeMult: 15,
+                     chargeMult: 16,
                      prepareSprite: 'time_magi_cast_big.png',
                      startFunction: () => {
                          this.timeBarraged = true;
@@ -633,7 +636,7 @@
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
-                         this.createTimeObject('clock2.png', this.x - 80, this.y - 40);
+                         this.createTimeObject('clock2.png', this.x - 80, this.y - 80);
                          setTimeout(() => {
                              this.fireTimeObjects(4);
                          }, 800);
@@ -647,8 +650,8 @@
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
-                         this.createTimeObject('clock2.png', this.x - 120, this.y + 30);
-                         this.createTimeObject('clock3.png', this.x - 75, this.y - 20);
+                         this.createTimeObject('clock2.png', this.x - 120, this.y - 10);
+                         this.createTimeObject('clock3.png', this.x - 75, this.y - 50);
                          setTimeout(() => {
                              this.fireTimeObjects(5);
                          }, 800);

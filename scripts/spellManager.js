@@ -1176,6 +1176,7 @@ class SpellManager {
                     spriteSrc2: 'rune_time_glow.png',
                     displayAmt: 0,
                     active: true,
+                    maxAmt: 50 * multiplier,
                     multiplier: multiplier,
                     statusObj: statusObj,
                     cleanUp: (statuses) => {
@@ -1304,35 +1305,35 @@ class SpellManager {
                     messageBus.publish('setPauseDur', 10);
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
-                        let animation1 = this.scene.add.sprite(attackObj.x - 55, attackObj.y - 10, 'spells').play('weaken');
-                        animation1.setDepth(10);
-                        animation1.rotation = -1.58;
-                        animation1.setOrigin(0.5, 0.8);
-                        let animation2 = this.scene.add.sprite(attackObj.x + 55, attackObj.y - 10, 'spells').play('weaken');
-                        animation2.setDepth(10);
-                        animation2.rotation = 1.58;
-                        animation2.setOrigin(0.5, 0.8);
+                        let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 4, 'spells').play('target').setAlpha(0.2).setScale(0.95).setRotation(Math.PI*0.15);
+                        animation1.setDepth(11);
+                        animation1.setOrigin(0.5, 0.5);
+                        this.scene.tweens.add({
+                            targets: [animation1],
+                            duration: 350,
+                            alpha: 0.5,
+                            scaleX: 0.9,
+                            scaleY: 0.9,
+                            rotation: Math.PI * 0.25,
+                            ease: 'Cubic.easeOut',
+                        });
                         messageBus.publish('enemyTakeEffect', {
                             name: spellID,
                             cleanUp: (statuses) => {
                                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
-                                    animation1.setScale(2);
-                                    animation2.setScale(2);
                                     this.scene.tweens.add({
-                                        targets: [animation1,animation2],
+                                        targets: [animation1],
                                         duration: 350,
                                         scaleX: 1.15,
                                         scaleY: 1.15,
-                                        ease: 'Quart.easeOut',
+                                        ease: 'Cubic.easeOut',
                                     });
                                     statuses[spellID].currentAnim = this.scene.tweens.add({
-                                        targets: [animation1,animation2],
-                                        duration: 400,
+                                        targets: [animation1],
+                                        duration: 350,
                                         alpha: 0,
-                                        ease: 'Quint.easeIn',
                                         onComplete: () => {
                                             animation1.destroy();
-                                            animation2.destroy();
                                         }
                                     })
                                     statuses[spellID] = null;
@@ -1486,7 +1487,7 @@ class SpellManager {
             }
         }
         playSound('mind_enhance');
-        let mindObj = this.scene.add.sprite(gameConsts.halfWidth +205, gameConsts.height - 295, 'spells').play('mindBurnSlow').setDepth(10).setScale(0);
+        let mindObj = this.scene.add.sprite(gameConsts.halfWidth +205, gameConsts.height - 295, 'spells').play('mindBurnSlow').setDepth(11).setScale(0);
         let newScale = 0.25 + multiplier * 0.1;
         this.scene.tweens.add({
             targets: mindObj,
@@ -1765,7 +1766,7 @@ class SpellManager {
 
             let strikeObj = this.scene.add.sprite(xPos, yPos, 'spells', 'dark_tentacle.png');
             strikeObj.setOrigin(0.15, 1)
-            strikeObj.setDepth(10);
+            strikeObj.setDepth(11);
             strikeObj.setScale(0);
             strikeObj.setRotation(isLeftStrike ? -2 : 2 + (Math.random() - 0.5) * 0.1);
             allStrikeObjects.push(strikeObj)
@@ -1857,7 +1858,7 @@ class SpellManager {
         this.cleanseForms();
 
         let shieldObj = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blackHoleBig.png');
-        shieldObj.setDepth(10);
+        shieldObj.setDepth(11);
         shieldObj.setScale(2.2);
 
         messageBus.publish("selfClearEffect");
@@ -2021,7 +2022,7 @@ class SpellManager {
         } else {
             voidObj = this.scene.add.sprite(gameConsts.halfWidth + 245, gameConsts.height - 210, 'enemies', 'curse_symbol_small.png');
             voidObj.setScale(0);
-            voidObj.setDepth(10);
+            voidObj.setDepth(20);
             let newScale = 0.3 + Math.sqrt(multiplier) * 0.9;
             this.scene.tweens.add({
                 targets: voidObj,

@@ -186,4 +186,16 @@ function createAnimations(scene) {
         frameRate: 3,
         repeat: -1
     });
+    scene.anims.create({
+        key: 'target',
+        frames: scene.anims.generateFrameNames('spells', {
+            prefix: 'target',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 1,
+        }),
+        frameRate: 2,
+        repeat: -1
+    });
 }

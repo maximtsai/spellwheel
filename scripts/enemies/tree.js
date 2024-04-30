@@ -717,6 +717,9 @@
          ];
      }
      die() {
+         if (this.dead) {
+             return;
+         }
          super.die();
          this.triggerFallen();
          if (this.currAnim) {

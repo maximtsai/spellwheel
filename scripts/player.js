@@ -423,7 +423,6 @@ class Player {
             }
         }
         this.statuses = {};
-        this.delayedDamage
 
         messageBus.publish('selfClearStatuses');
     }
@@ -633,7 +632,7 @@ class Player {
                         shieldObj.animObj[1].setText(shieldObj.health);
                         shieldObj.animObj[1].setScale(1.3);
 
-                        messageBus.publish('tempPause', 200);
+                        messageBus.publish('tempPause', 150);
                         this.scene.tweens.add({
                             targets: shieldObj.animObj[1],
                             duration: 250,
@@ -648,7 +647,6 @@ class Player {
                 case 'time':
                     if (hurtAmt > 1 && shieldObj.active) {
                         playSound('time_strike_hit');
-                        messageBus.publish('playerAddDelayedDamage', hurtAmt);
 
                         shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 1.3, shieldObj.animObj[0].scaleY);
                         shieldObj.shakeAmt = 0.05 + hurtAmt * 0.005;
@@ -660,9 +658,23 @@ class Player {
                             scaleX: shieldObj.animObj[0].origScaleX,
                             ease: 'Cubic.easeIn'
                         });
-                        messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'DELAYED', 1.2);
-                        messageBus.publish('tempPause', 200);
-                        hurtAmt = 0;
+
+                        let isWithinLimit = globalObjects.magicCircle.delayedDamage + hurtAmt <= shieldObj.maxAmt;
+                        if (isWithinLimit) {
+                            messageBus.publish('playerAddDelayedDamage', hurtAmt);
+                            hurtAmt = 0;
+                        } else {
+                            let remainingAmt = shieldObj.maxAmt - globalObjects.magicCircle.delayedDamage;
+                            hurtAmt -= remainingAmt;
+                            messageBus.publish('playerAddDelayedDamage', remainingAmt);
+                        }
+
+                        if (globalObjects.magicCircle.delayedDamage > shieldObj.maxAmt) {
+                            messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'FULL', 1, {y: "+=10"}, {alpha: 0, scaleX: 1, scaleY: 1});
+                        } else {
+                            messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'DELAYED', 1.2);
+                        }
+                        messageBus.publish('tempPause', 150);
                     }
                     break;
                 case 'void':
@@ -694,7 +706,7 @@ class Player {
                             shieldObj.jiggleAmt = 1;
                         }
                         messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 100, 'NEGATED', 1.2);
-                        messageBus.publish('tempPause', 200);
+                        messageBus.publish('tempPause', 150);
                         hurtAmt = 0;
                     }
                     // this.statuses['voidProtect'].cleanUp(this.statuses);
@@ -749,7 +761,7 @@ class Player {
                             shieldObj.textObj.setText(shieldObj.storedDamage);
                             shieldObj.textObj.setScale(0.5 + Math.sqrt(shieldObj.storedDamage) * 0.15);
                             playSound('fizzle');
-                            messageBus.publish('tempPause', 200);
+                            messageBus.publish('tempPause', 150);
 
                             shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 2.2, shieldObj.animObj[0].scaleY);
                             this.scene.tweens.add({
@@ -802,6 +814,7 @@ class Player {
                                         ease: 'Cubic.easeOut'
                                     });
                                     shieldObj.storedDamage = 0;
+                                    shieldObj.cleanUp(this.statuses);
                                 }
                             });
                         }

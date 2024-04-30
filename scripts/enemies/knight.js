@@ -539,10 +539,10 @@
                      }
                  },
                  {
-                     name: "|8 ",
+                     name: "|7 ",
                      announceName: "void strike",
                      chargeAmt: 600,
-                     damage: 8,
+                     damage: 7,
                      chargeMult: 2,
                      attackSprites: ['void_knight_attack.png'],
                      startFunction: () => {
@@ -966,6 +966,9 @@
      }
 
      die() {
+        if (this.dead) {
+            return;
+        }
          if (this.isLoading) {
              return;
          }

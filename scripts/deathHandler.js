@@ -76,7 +76,9 @@ function getFloatingDeath() {
         globalObjects.floatingDeath = PhaserScene.add.sprite(gameConsts.halfWidth, 130, 'misc', 'floating_death.png').setDepth(-1);
         globalObjects.floatingDeath.setAlpha(0.5).setScale(0.35);
     }
-    globalObjects.floatingDeath.setVisible(true);
+    if (globalObjects.floatingDeath.visible === false) {
+        globalObjects.floatingDeath.setVisible(true).setAlpha(0.5).setScale(0.35).setDepth(-1);
+    }
 
     return globalObjects.floatingDeath;
 }
@@ -273,7 +275,7 @@ function playReaperAnim(enemy, customFinFunc) {
                                                     ease: 'Cubic.easeIn',
                                                     duration: 1000,
                                                     onComplete: () => {
-                                                        floatingDeath.destroy();
+                                                        floatingDeath.visible = false;
                                                         PhaserScene.tweens.add({
                                                             targets: [globalObjects.fogSliceDarken],
                                                             alpha: 0,
@@ -323,7 +325,7 @@ function handleReaperDialog(level = 0, onComplete) {
     case 3:
         reaperDialog = [
             "ONLY THE DEPARTED RESIDE HERE.",
-            "AND THOSE WHO ENTER",
+            "AND THOSE WHO HAVE ENTERED",
             "CAN NEVER RETURN."
         ];
         break;

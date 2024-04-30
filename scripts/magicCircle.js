@@ -489,7 +489,7 @@ const ENABLE_KEYBOARD = true;
         // });
         this.spellDescriptor = new HoverDisplay({
             x: 0,
-            y: gameConsts.halfHeight + 22,
+            y: gameConsts.height - 380,
             originX: 0,
             originY: 1,
             depth: 20
@@ -514,7 +514,7 @@ const ENABLE_KEYBOARD = true;
         this.timeStopHeavy.alpha = 0;
         this.timeStopHeavy.setScale(1.95);
 
-        this.clockbg = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 2, 'lowq', 'clockbg.png').setAlpha(0);
+        this.clockbg = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 2, 'lowq', 'clockbg.png').setAlpha(0).setScale(1.06);
         this.clockbg.setDepth(1);
         this.gear1 = this.scene.add.sprite(-40, 280, 'circle', 'gear.png').setAlpha(0);
         this.gear1.setDepth(1);

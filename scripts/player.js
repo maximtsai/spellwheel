@@ -20,15 +20,12 @@ class Player {
 
             messageBus.subscribe('startVoidForm', this.handleVoidForm.bind(this)),
             messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this)),
-
             messageBus.subscribe('enemyMadeAttack', this.enemyMadeAttack.bind(this)),
             messageBus.subscribe("selfClearEffect", this.clearSpecificEffect.bind(this)),
-
 
             messageBus.subscribe("spellClicked", this.incrementSpellsCast.bind(this)),
             messageBus.subscribe("enemyHasDied", this.clearAllEffects.bind(this)),
             messageBus.subscribe("wheelReloaded", this.incrementMindReinforceStatus.bind(this)),
-
 
         ];
         updateManager.addFunction(this.update.bind(this));
@@ -135,21 +132,21 @@ class Player {
     }
 
     incrementMindReinforceStatus() {
-        let mindReinforceStatus = this.statuses['mindReinforce'];
-        if (mindReinforceStatus) {
-            mindReinforceStatus.displayAmt += mindReinforceStatus.multiplier;
-            messageBus.publish('selfTakeEffect', mindReinforceStatus);
-            let param = {
-                duration: 1000,
-            }
-            let param2 = {
-                alpha: 0,
-                scaleX: 1,
-                scaleY: 1
-            }
-            messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + mindReinforceStatus.displayAmt + " DAMAGE", 1 + mindReinforceStatus.displayAmt * 0.15, param, param2);
-
-        }
+        // let mindReinforceStatus = this.statuses['mindReinforce'];
+        // if (mindReinforceStatus) {
+        //     mindReinforceStatus.displayAmt += mindReinforceStatus.multiplier;
+        //     messageBus.publish('selfTakeEffect', mindReinforceStatus);
+        //     let param = {
+        //         duration: 1000,
+        //     }
+        //     let param2 = {
+        //         alpha: 0,
+        //         scaleX: 1,
+        //         scaleY: 1
+        //     }
+        //     messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + mindReinforceStatus.displayAmt + " DAMAGE", 1 + mindReinforceStatus.displayAmt * 0.15, param, param2);
+        //
+        // }
     }
 
     clearSpellMultiplier() {
@@ -458,10 +455,10 @@ class Player {
         if (damageTaken > 1) {
             this.recentlyTakenDamageAmt += damageTaken;
 
-            this.bleedObj.alpha = Math.sqrt(damageTaken - 1) * 0.04;
+            this.bleedObj.alpha = Math.sqrt(damageTaken) * 0.04;
             this.scene.tweens.add({
                 targets: this.bleedObj,
-                duration: 100,
+                duration: 250,
                 alpha: 0,
                 ease: 'Quad.easeOut'
             });

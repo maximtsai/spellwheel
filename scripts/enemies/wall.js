@@ -48,19 +48,21 @@
              this.birdFalls();
          } else if (currHealthPercent < 0.8 && !this.firstCanCrumble) {
              this.firstCanCrumble = true;
-             this.closeEyes(100, () => {
-                 console.log("reopen");
+             this.setDefaultSprite('wall_3.png');
+             this.closeEyes(150, () => {
                  this.reOpenEyes()
              });
          } else if (currHealthPercent < 0.6 && !this.secondCanCrumble) {
              this.secondCanCrumble = true;
+             this.setDefaultSprite('wall_4.png');
 
-             this.closeEyes(100, () => {
+             this.closeEyes(150, () => {
                  this.reOpenEyes()
              })
          } else if (currHealthPercent < 0.4 && !this.thirdCanCrumble) {
+             this.setDefaultSprite('wall_5.png');
              this.thirdCanCrumble = true;
-             this.closeEyes(100, () => {
+             this.closeEyes(150, () => {
                  this.reOpenEyes()
              })
          }
@@ -157,10 +159,10 @@
          });
      }
 
-     throwWallChunk(spriteName, damage = 40) {
+     throwWallChunk(spriteName, damage = 40, endScale = 1) {
          this.closeEyes(400);
 
-         let wallChunk = this.scene.add.sprite(this.x, this.y - 170, 'enemies', spriteName).setDepth(0).setScale(this.sprite.startScale);
+         let wallChunk = this.scene.add.sprite(this.x, this.y - 145, 'enemies', spriteName).setDepth(0).setScale(this.sprite.startScale);
 
          PhaserScene.tweens.add({
              delay: 550,
@@ -174,7 +176,7 @@
                  }, 80);
              },
              onComplete: () => {
-                 wallChunk.setScale(1).setRotation(-0.5).setDepth(20);
+                 wallChunk.setScale(endScale).setRotation(-4).setDepth(20);
                  PhaserScene.tweens.add({
                      targets: wallChunk,
                      rotation: 0,
@@ -276,8 +278,9 @@
                      attackStartFunction: () => {
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.04;
-                         this.setDefaultSprite('wall_3.png');
-                         this.throwWallChunk('wall_chunk.png');
+                         setTimeout(() => {
+                             this.throwWallChunk('wall_chunk.png', 40);
+                         }, 400)
                      },
                      attackFinishFunction: () => {
 
@@ -295,8 +298,9 @@
                      chargeMult: 1.5,
                      isBigMove: true,
                      attackStartFunction: () => {
-                         this.setDefaultSprite('wall_4.png');
-                         this.throwWallChunk('wall_chunk_2.png');
+                        setTimeout(() => {
+                            this.throwWallChunk('wall_chunk_2.png', 60);
+                        }, 300);
                      },
                      attackFinishFunction: () => {
                          this.currentAttackSetIndex = 0;
@@ -313,8 +317,9 @@
                      chargeMult: 1.5,
                      isBigMove: true,
                      attackStartFunction: () => {
-                         this.setDefaultSprite('wall_5.png');
-                         this.throwWallChunk('wall_chunk_2.png');
+                         setTimeout(() => {
+                             this.throwWallChunk('wall_chunk_2.png', 100, 1.25);
+                         }, 300);
                      },
                      attackFinishFunction: () => {
                          this.currentAttackSetIndex = 0;

@@ -45,7 +45,6 @@ const ENABLE_KEYBOARD = true;
             messageBus.subscribe("applyMindBurn", this.applyMindBurn.bind(this)),
             messageBus.subscribe("playerDied", this.playerDied.bind(this)),
             messageBus.subscribe("playerRevived", this.playerRevived.bind(this)),
-
         ];
 
         updateManager.addFunction(this.update.bind(this));
@@ -450,9 +449,9 @@ const ENABLE_KEYBOARD = true;
         this.errorBoxEmbodiment.setDepth(121);
         this.errorBoxEmbodiment.alpha = 0;
 
-        this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 242, 'normal', 'MATTER STRIKE', 30);
+        this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 234, 'normal', 'MATTER STRIKE', 30, 1);
         this.spellNameText.setScale(0.7);
-        this.spellNameText.setOrigin(0.5, 0.5);
+        this.spellNameText.setOrigin(0.5, 1);
         this.spellNameText.setDepth(120);
         this.spellNameText.alpha = 0.4;
 
@@ -694,7 +693,10 @@ const ENABLE_KEYBOARD = true;
     }
 
     attackLaunched() {
-        // this.setTimeSlowRatio(); // deprecated
+        let mindReinforceStatus = globalObjects.player.getStatuses()['mindReinforce'];
+        if (mindReinforceStatus) {
+            this.showReadySprite(true, 1.5);
+        }
     }
 
     buildRunes() {
@@ -1599,10 +1601,7 @@ const ENABLE_KEYBOARD = true;
             sprite.setDepth(100);
         }
         sprite.setAlpha(0).setScale(1.05);
-        let mindReinforceStatus = globalObjects.player.getStatuses()['mindReinforce'];
-        if (mindReinforceStatus) {
-            this.showReadySprite(true, 2.5);
-        }
+
         messageBus.publish("wheelReloaded");
         this.outerCircle.prevRotation = this.outerCircle.rotation;
         this.outerCircle.nextRotation = this.outerCircle.rotation;
@@ -1847,12 +1846,12 @@ const ENABLE_KEYBOARD = true;
             this.readySprite.setScale(1.15 * scaleMult);
             this.readySprite.play(light ? 'circleEffect' : 'circleEffectSmall');
             this.readySprite.visible = true;
-            let goalScale = (light ? 2.2 : 1.75)*scaleMult;
+            let goalScale = (light ? 1.8 : 1.75)*scaleMult;
             this.scene.tweens.add({
                 targets: this.readySprite,
                 scaleX: goalScale,
                 scaleY: goalScale,
-                duration: light ? 1200 : 650,
+                duration: light ? 800 : 650,
                 ease: 'Cubic.easeOut',
                 onComplete: () => {
                     this.readySprite.visible = false;
@@ -2109,11 +2108,11 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('matter_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.updateTextIfDifferent(this.spellNameText, 'ADD STRONGER ATTACK')
+                         this.updateTextIfDifferent(this.spellNameText, 'ADD\nSTRONGER ATTACK')
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('matter_enhance_desc'))
                          break;
                      case RUNE_PROTECT:
-                         this.spellNameText.setText('SHIELD OF STONE');
+                         this.spellNameText.setText('SHIELD\nOF STONE');
                          this.spellDescriptor.setText(getLangText('matter_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
@@ -2138,15 +2137,15 @@ const ENABLE_KEYBOARD = true;
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('time_reinforce_desc'))
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD EXTRA ATTACK');
+                         this.spellNameText.setText('ADD\nEXTRA ATTACK');
                          this.spellDescriptor.setText(getLangText('time_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
-                         this.spellNameText.setText('SHIELD OF DELAY');
+                         this.spellNameText.setText('SHIELD\nOF DELAY');
                          this.spellDescriptor.setText(getLangText('time_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         this.spellNameText.setText('TIME FREEZE"');
+                         this.spellNameText.setText('TIME FREEZE');
                          this.spellDescriptor.setText(getLangText('time_unload_desc'));
                          break;
                      default:
@@ -2166,7 +2165,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('mind_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD BURNING ATTACK');
+                         this.spellNameText.setText('ADD\nBURNING ATTACK');
                          if (gameVars.mindPlus) {
                             this.spellDescriptor.setText(getLangText('mind_enhance_plus_desc'));
                          } else {
@@ -2198,11 +2197,11 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('void_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD CURSING ATTACK');
+                         this.spellNameText.setText('ADD\nCURSING ATTACK');
                          this.spellDescriptor.setText(getLangText('void_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
-                         this.spellNameText.setText('SHIELD OF NEGATION');
+                         this.spellNameText.setText('SHIELD\nOF NEGATION');
                          this.spellDescriptor.setText(getLangText('void_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
@@ -2409,4 +2408,6 @@ const ENABLE_KEYBOARD = true;
              duration: 250,
          });
      }
+
+
  }

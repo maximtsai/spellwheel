@@ -1405,9 +1405,9 @@ class SpellManager {
             }
         });
 
-        let buffAmt = 1;
+        let buffAmt = 2;
         if (multiplier > 1) {
-            buffAmt = 1 * multiplier;
+            buffAmt = 2 * multiplier;
         }
         let param = {
             duration: 1000,
@@ -1453,14 +1453,8 @@ class SpellManager {
 
 
         let spellName = "ENERGY FORM";
-        if (multiplier >= 3) {
-            spellName = "SUPER ENERGY FORM";
-            if (multiplier >= 6) {
-                spellName = "ULTRA ENERGY FORM";
-            }
-            if (multiplier >= 2) {
-                spellName += " X" + multiplier;
-            }
+        if (multiplier >= 2) {
+            spellName += " X" + multiplier;
         }
         this.postNonAttackCast(spellID, spellName);
     }
@@ -2007,7 +2001,7 @@ class SpellManager {
         let existingBuff = globalObjects.player.getStatuses()[spellID];
         let voidObj;
         let multiplier = globalObjects.player.spellMultiplier();
-        playSound('void_enhance', 0.7);
+        playSound('void_enhance', 0.55);
         if (existingBuff) {
             multiplier += existingBuff.multiplier;
             let newScale = 0.3 + Math.sqrt(multiplier) * 0.9;
@@ -2503,13 +2497,13 @@ class SpellManager {
                         voidAttackBuff.cleanUp(globalObjects.player.getStatuses());
                         let bigCurse = this.scene.add.sprite(gameConsts.halfWidth, targetY, 'enemies', 'curse_symbol.png');
                         let startScale = 0.65 + 0.1 * Math.sqrt(voidAttackBuff.multiplier);
-                        bigCurse.setScale(startScale);
+                        bigCurse.setScale(startScale).setDepth(11);
                         this.scene.tweens.add({
                             targets: bigCurse,
                             ease: 'Quint.easeOut',
                             scaleX: startScale - 0.02,
                             scaleY: startScale - 0.02,
-                            alpha: 0.4,
+                            alpha: 0.25,
                             duration: 300,
                             completeDelay: 500,
                             onComplete: () => {

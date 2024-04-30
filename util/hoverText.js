@@ -94,7 +94,7 @@ class HoverDisplay {
 
 
         // this.hoverTextDisplay = PhaserScene.add.bitmapText(0, 0, 'plainBold', '', isMobile ? 19 : 18);
-        this.hoverTextDisplay = PhaserScene.add.text(0, 0, 'desc.', {fontFamily: 'Tahoma', fontSize: isMobile ? 20 : 18, color: '#FFFFFF', align: 'left'});
+        this.hoverTextDisplay = PhaserScene.add.text(0, 0, 'desc.', {fontFamily: 'Verdana', fontSize: isMobile ? 19 : 18, color: '#FFFFBB', align: 'left'});
         this.hoverTextDisplay.visible = false;
         this.hoverTextDisplay.setDepth(data.depth || 9992);
 
@@ -117,8 +117,15 @@ class HoverDisplay {
 
     setText(text) {
         this.hoverTextDisplay.setText(text);
+        console.log(this.hoverTextDisplay.width)
+        if (this.hoverTextDisplay.width > 180) {
+            this.hoverTextDisplay.setScale(1);
+        } else {
+            this.hoverTextDisplay.setScale(1);
+        }
         this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - this.hoverBacking.originX * 2 - (this.hoverBacking.originX - 0.5) * 4);
         this.hoverTextDisplay.y = this.hoverBacking.y - this.hoverTextDisplay.height * 0.5 * (this.hoverBacking.originY * 2 - 1) - 3;
+
         this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX, (this.hoverTextDisplay.height + 6) * 0.5 * this.hoverTextDisplay.scaleY);
         if (text.length > 0) {
             this.setVisible(true);

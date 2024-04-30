@@ -428,6 +428,27 @@
 						"w": 10,
 						"h": 197
 					}
+				},
+				{
+					"filename": "lowline.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 4
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 4
+					},
+					"frame": {
+						"x": 1216,
+						"y": 469,
+						"w": 100,
+						"h": 4
+					}
 				}
 			]
 		}
@@ -435,6 +456,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:f48875ac501afc735f0ca868fcb9863d:dbe4f6f38fc01da76353a6ab1a2181ef:612dcbdb08476a0aba06aeca925f16b2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1688076d3e9a70213e6c4cef7c184859:21b3efd612484cf055d6a2b56e83e0f3:612dcbdb08476a0aba06aeca925f16b2$"
 	}
 }

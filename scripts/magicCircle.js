@@ -488,7 +488,7 @@ const ENABLE_KEYBOARD = true;
         // });
         this.spellDescriptor = new HoverDisplay({
             x: 0,
-            y: gameConsts.height - 380,
+            y: gameConsts.height - 305,
             originX: 0,
             originY: 1,
             depth: 20
@@ -591,8 +591,8 @@ const ENABLE_KEYBOARD = true;
         this.scene.tweens.add({
             targets: this.clockbg,
             alpha: 0.15,
-            scaleX: 1.04,
-            scaleY: 1.04,
+            scaleX: 1.1,
+            scaleY: 1.1,
             duration: 250,
         });
         this.scene.tweens.add({
@@ -647,8 +647,8 @@ const ENABLE_KEYBOARD = true;
          this.scene.tweens.add({
              targets: this.clockbg,
              alpha: 0.08 + multiplierAddition * 0.1,
-             scaleX: 1.04 - multiplier * 0.005,
-             scaleY: 1.04 - multiplier * 0.005,
+             scaleX: 1.1 - multiplier * 0.005,
+             scaleY: 1.1 - multiplier * 0.005,
              duration: 250,
          });
          this.scene.tweens.add({

@@ -324,16 +324,16 @@ function handleReaperDialog(level = 0, onComplete) {
         break;
     case 3:
         reaperDialog = [
-            "ONLY THE DEPARTED RESIDE HERE.",
-            "AND THOSE WHO HAVE ENTERED",
-            "CAN NEVER RETURN."
+            "I WILL ONLY WARN YOU ONCE MORE,",
+            "THAT WHICH YOU SEEK HERE\nCANNOT BE ATTAINED.",
+            "TURN BACK NOW.",
         ];
         break;
     case 4:
         reaperDialog = [
-            "I WILL ONLY WARN YOU ONCE MORE,",
-            "WHATEVER YOU SEEK HERE\nCANNOT BE ATTAINED.",
-            "TURN BACK NOW.",
+            "THE MAGICIAN THOUGHT HIS MAGIC\nCOULD ELUDE ME,",
+            "BUT THE PASSAGE OF TIME\nCANNOT BE UNDONE.",
+            "AND NEITHER CAN YOUR\nLOVED ONE RETURN.",
         ];
         break;
     case 5:
@@ -346,8 +346,7 @@ function handleReaperDialog(level = 0, onComplete) {
     case 6:
         reaperDialog = [
             "YOU ARE PERSISTENT.",
-            "BUT UNDERSTAND THAT ONLY MISERY",
-            "AWAITS AT THE END.",
+            "BUT UNDERSTAND THAT ONLY MISERY\nAWAITS AT THE END.",
         ];
         break;
     case 7:

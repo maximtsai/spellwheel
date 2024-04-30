@@ -240,7 +240,7 @@
          globalObjects.magicCircle.disableMovement();
           swirlInReaperFog();
         setTimeout(() => {
-            playReaperDialog(['TICK-TOCK'], () => {
+            playReaperDialog(['YOUR TIME IS UP'], () => {
                 globalObjects.reapSound = 'magician_end';
                 playReaperAnim(this, () => {
                     setTimeout(() => {
@@ -449,7 +449,7 @@
              [
                  // 1
                  {
-                     name: "CURSE OF TIME (25)",
+                     name: "CURSE OF TIME (25?)",
                      desc: "A deadly spell that\nslowly drains your life.",
                      chargeAmt: 400,
                      damage: -1,
@@ -515,7 +515,7 @@
              [
                  // 3
                  {
-                     name: "TIME SHIELD (???)",
+                     name: "TIME SHIELD ({?)",
                      desc: "The Time Magician is\ngetting worried",
                      chargeAmt: 300,
                      chargeMult: 2,
@@ -529,7 +529,7 @@
                      }
                  },
                  {
-                     name: "TIME FREEZE (???)",
+                     name: "TIME FREEZE (!!!)",
                      desc: "The Time Magician prepares\nhis most powerful magics.",
                      chargeAmt: 450,
                      chargeMult: 1.5,
@@ -576,9 +576,9 @@
                      attackStartFunction: () => {
                          this.createTimeObject('clock4.png', this.x - 200, 105, 100);
                          this.createTimeObject('clock3.png', this.x - 120, 115, 200);
-                         this.createTimeObject('clock4.png', this.x - 40, 100, 300);
-                         this.createTimeObject('clock3.png', this.x + 40, 135, 400);
-                         this.createTimeObject('clock4.png', this.x + 120, 125, 500);
+                         this.createTimeObject('clock4.png', this.x - 40, 85, 300);
+                         this.createTimeObject('clock3.png', this.x + 40, 105, 400);
+                         this.createTimeObject('clock4.png', this.x + 120, 100, 500);
                          this.createTimeObject('clock3.png', this.x + 200, 125, 500);
                      },
                      attackFinishFunction: () => {
@@ -594,7 +594,7 @@
                      chargeMult: 16,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
-                         this.createTimeObject('clock1.png', this.x - 70, 90, 100, 1.4);
+                         this.createTimeObject('clock1.png', this.x - 95, 80, 100, 1.4);
                      },
                      attackFinishFunction: () => {
                          setTimeout(() => {
@@ -636,7 +636,7 @@
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
-                         this.createTimeObject('clock2.png', this.x - 80, this.y - 80);
+                         this.createTimeObject('clock2.png', this.x - 95, this.y - 100);
                          setTimeout(() => {
                              this.fireTimeObjects(4);
                          }, 800);
@@ -650,8 +650,8 @@
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
-                         this.createTimeObject('clock2.png', this.x - 120, this.y - 10);
-                         this.createTimeObject('clock3.png', this.x - 75, this.y - 50);
+                         this.createTimeObject('clock2.png', this.x - 110, this.y - 70);
+                         this.createTimeObject('clock3.png', this.x - 75, this.y - 95);
                          setTimeout(() => {
                              this.fireTimeObjects(5);
                          }, 800);

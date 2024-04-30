@@ -1389,7 +1389,7 @@ class SpellManager {
             ease: 'Cubic.easeOut',
             completeDelay: 250,
             onComplete: () => {
-                repeatCircle.setScale(1.6);
+                repeatCircle.setScale(1.57);
             }
         });
 
@@ -1438,6 +1438,7 @@ class SpellManager {
                         alpha: 0,
                         ease: 'Cubic.easeOut',
                         onComplete: () => {
+                            repeatCircle.destroy();
                             while (statuses[spellID] && statuses[spellID].animObj.length > 0) {
                                 let item = statuses[spellID].animObj.pop()
                                 item.destroy();

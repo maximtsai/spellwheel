@@ -551,7 +551,7 @@ class Enemy {
             finalScale = 0.98;
         }
         this.attackName.setText(atkName).setAlpha(0.2).setScale(finalScale);
-        this.angrySymbol.x = this.attackName.x + this.attackName.width * this.attackName.scaleX * 0.49 + 50;
+        this.angrySymbol.x = this.attackName.x + this.attackName.width * 0.495 + 20;
 
         this.attackName.setText(atkName).setAlpha(0.2).setScale(finalScale * 0.9);
         PhaserScene.tweens.add({

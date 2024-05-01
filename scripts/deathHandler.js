@@ -345,7 +345,7 @@ function handleReaperDialog(level = 0, onComplete) {
     case 6:
         reaperDialog = [
             "I SHOULD PERHAPS TELL YOU...",
-            "THAT YOU ARE MAKING QUITE A MESS OF THINGS.",
+            "THAT YOU ARE MAKING\nQUITE A MESS OF THINGS.",
             "AND MY SCHEDULE IS BUSY ENOUGH AS-IS.",
         ];
         break;

@@ -7,7 +7,7 @@
      }
 
      initStatsCustom() {
-         this.health = 1000;
+         this.health = 800;
          this.pullbackScale = 0.9999;
          this.attackScale = 1;
          this.isAsleep = true;
@@ -455,7 +455,7 @@
         }
     }
 
-    checkCrumble() {
+    checkCrumble(gotoStare) {
         if (this.thirdCanCrumble && !this.thirdCrumbled) {
             this.thirdCrumbled = true;
             this.secondCrumbled = true;
@@ -468,6 +468,9 @@
         } else if (this.firstCanCrumble && !this.firstCrumbled) {
             this.firstCrumbled = true;
             this.currentAttackSetIndex = 1;
+        } else if (gotoStare) {
+            this.currentAttackSetIndex = 0;
+            this.nextAttackIndex = 0;
         } else {
             this.currentAttackSetIndex = 4;
             this.nextAttackIndex = this.nextBirdIndex;
@@ -578,7 +581,7 @@
                      attackFinishFunction: () => {
                          this.birdPoops(1, true);
                          this.nextBirdIndex = 2;
-                         this.checkCrumble();
+                         this.checkCrumble(true);
                      }
                  },
                  {
@@ -598,7 +601,7 @@
                      attackFinishFunction: () => {
                          this.birdPoops(3, true);
                          this.nextBirdIndex = 4;
-                         this.checkCrumble();
+                         this.checkCrumble(true);
                      }
                  },
                  {
@@ -612,13 +615,13 @@
                      }
                  },
                  {
-                     name: "}5x5",
+                     name: "}5x4",
                      chargeAmt: 500,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(5, true);
                          this.nextBirdIndex = 6;
-                         this.checkCrumble();
+                         this.checkCrumble(true);
                      }
                  },
                  {
@@ -632,13 +635,13 @@
                      }
                  },
                  {
-                     name: "}5x8",
+                     name: "}5x5",
                      chargeAmt: 500,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(8, true);
                          this.nextBirdIndex = 8;
-                         this.checkCrumble();
+                         this.checkCrumble(true);
                      }
                  },
                  {
@@ -647,8 +650,18 @@
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(2, true, true);
-                         this.nextBirdIndex = 4;
+                         this.nextBirdIndex = 9;
                          this.checkCrumble();
+                     }
+                 },
+                 {
+                     name: "}2x12",
+                     chargeAmt: 500,
+                     damage: -1,
+                     attackFinishFunction: () => {
+                         this.birdPoops(12);
+                         this.nextBirdIndex = 5;
+                         this.checkCrumble(true);
                      }
                  },
              ]

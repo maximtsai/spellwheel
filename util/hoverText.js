@@ -116,8 +116,10 @@ class HoverDisplay {
     }
 
     setText(text) {
+        if (this.hoverTextDisplay.text === text) {
+            return;
+        }
         this.hoverTextDisplay.setText(text);
-        console.log(this.hoverTextDisplay.width)
         if (this.hoverTextDisplay.width > 180) {
             this.hoverTextDisplay.setScale(1);
         } else {

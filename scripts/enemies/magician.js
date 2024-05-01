@@ -84,6 +84,10 @@
                  }
              });
          }
+         if (this.magicianTimeEpicTheme) {
+             this.magicianTimeEpicTheme.stop();
+         }
+
          globalObjects.magicCircle.cancelTimeSlow();
          if (this.clockShield) {
              this.clockShield.alpha += 0.15;
@@ -438,7 +442,7 @@
                      damage: 3,
                      prepareSprite: 'time_magi_cast.png',
                      attackFinishFunction: () => {
-                         playSound('punch')
+                         playSound('punch');
                          let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
                          setTimeout(() => {
                              dmgEffect.destroy();
@@ -524,7 +528,7 @@
                          this.usedTimeShield = true;
                      },
                      attackFinishFunction: () => {
-                         playSound('time_body')
+                         playSound('time_shield', 0.6)
                          this.setupTimeShield();
                      }
                  },
@@ -543,7 +547,7 @@
                      },
                      attackFinishFunction: () => {
                          playSound('timeSlow');
-                         playSound('magician_theme_3', 0.8)
+                         this.magicianTimeEpicTheme = playSound('magician_theme_3', 0.8)
                          globalObjects.magicCircle.timeSlowFromEnemy();
                      }
                  },

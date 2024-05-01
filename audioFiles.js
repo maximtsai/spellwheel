@@ -82,6 +82,7 @@ const audioFiles = [
     {name: 'shield_break', src: 'audio/shield_break.mp3'},
     {name: 'rock_crumble', src: 'audio/rock_crumble.mp3'},
 
-    {name: 'timeSlow', src: 'audio/timeslow.mp3'}
+    {name: 'timeSlow', src: 'audio/timeslow.mp3'},
+    {name: 'squish', src: 'audio/squish.mp3'},
 
 ]

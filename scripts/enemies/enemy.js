@@ -49,9 +49,9 @@ class Enemy {
         }
     }
 
-    addExtraSprite(sprite, startOffsetX = 0, startOffsetY = 0) {
-        sprite.startOffsetX = startOffsetX;
-        sprite.startOffsetY = startOffsetY;
+    addExtraSprite(sprite, startOffsetX = null, startOffsetY = null) {
+        sprite.startOffsetX = startOffsetX === null ? sprite.x - this.x : startOffsetX;
+        sprite.startOffsetY = startOffsetY === null ? sprite.y - this.y : startOffsetY;
         this.extraSprites.push(sprite);
     }
 
@@ -551,7 +551,7 @@ class Enemy {
             finalScale = 0.98;
         }
         this.attackName.setText(atkName).setAlpha(0.2).setScale(finalScale);
-        this.angrySymbol.x = this.attackName.x + this.attackName.width * 0.52 + 11;
+        this.angrySymbol.x = this.attackName.x + this.attackName.width * this.attackName.scaleX * 0.49 + 50;
 
         this.attackName.setText(atkName).setAlpha(0.2).setScale(finalScale * 0.9);
         PhaserScene.tweens.add({

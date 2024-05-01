@@ -338,22 +338,22 @@ function handleReaperDialog(level = 0, onComplete) {
         break;
     case 5:
         reaperDialog = [
-            "ALAS, IT IS NOT WITHIN MY\nAUTHORITY TO STOP YOU.",
-            "BUT SHOULD YOU PERHAPS... \'STUMBLE\'",
-            "THEN THAT WILL BE A VERY\nDIFFERENT STORY.",
-        ];
-        break;
-    case 6:
-        reaperDialog = [
             "YOU ARE PERSISTENT.",
             "BUT UNDERSTAND THAT ONLY MISERY\nAWAITS AT THE END.",
         ];
         break;
-    case 7:
+    case 6:
         reaperDialog = [
             "I SHOULD PERHAPS TELL YOU...",
             "THAT YOU ARE MAKING QUITE A MESS OF THINGS.",
             "AND MY SCHEDULE IS BUSY ENOUGH AS-IS.",
+        ];
+        break;
+    case 7:
+        reaperDialog = [
+            "ALAS, IT IS NOT WITHIN MY\nAUTHORITY TO STOP YOU.",
+            "BUT SHOULD YOU PERHAPS... \'STUMBLE\'",
+            "THEN THAT WILL BE A VERY\nDIFFERENT STORY.",
         ];
         break;
     case 8:

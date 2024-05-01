@@ -26,3 +26,14 @@ class InternalPoolManager {
 }
 
 poolManager = new InternalPoolManager();
+
+function getTempPoolObject(atlas, name, poolName, duration = 250) {
+    let effect = poolManager.getItemFromPool(poolName);
+    if (!effect) {
+        effect = PhaserScene.add.sprite(0, 0, atlas, name);
+    }
+    setTimeout(() => {
+        poolManager.returnItemToPool(effect, poolName);
+    }, duration)
+    return effect;
+}

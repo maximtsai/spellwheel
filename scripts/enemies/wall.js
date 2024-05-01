@@ -1,6 +1,6 @@
  class Wall extends Enemy {
-     constructor(scene, x, y) {
-         super(scene, x, y);
+     constructor(scene, x, y, level) {
+         super(scene, x, y, level);
          this.initSprite('wall_1.png', 0.80);
          this.shieldAdded = false;
          this.initBird();
@@ -12,7 +12,8 @@
          this.attackScale = 1;
          this.isAsleep = true;
          this.nextBirdIndex = 0;
-         this.eyes = [];
+         this.eyeArray = [];
+         this.eyeHealth = 50;
      }
 
      initBird() {
@@ -41,6 +42,13 @@
              // dead, can't do anything
              return;
          }
+         if (this.isStarting) {
+             this.eyeHealth -= (this.prevHealth - newHealth);
+             if (this.eyeHealth <= 0 ) {
+                 this.squintEyes();
+                 this.eyeHealth = 50;
+             }
+         }
          if (currHealthPercent < 0.9999 && this.isAsleep && !this.isStarting) {
              this.isStarting = true;
              this.setDefaultSprite('wall_2.png');
@@ -49,20 +57,53 @@
          } else if (currHealthPercent < 0.8 && !this.firstCanCrumble) {
              this.firstCanCrumble = true;
              this.setDefaultSprite('wall_3.png');
-             this.closeEyes(150, () => {
+             this.closeEyes(0, () => {
+                 this.eyes1.setFrame('wall_eyes_3_a.png');
+                 this.eyes1.setPosition(this.x - 91 * this.sprite.startScale, this.y + 41 * this.sprite.startScale);
+                 this.eyes1.startOffsetX = -91 * this.sprite.startScale;
+                 this.eyes1.startOffsetY = 41 * this.sprite.startScale;
+                 let xDiff = 125 * this.sprite.startScale;
+                 let yDiff = -3 * this.sprite.startScale;
+                 this.eyes2 = this.scene.add.sprite(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1);
+                 this.addExtraSprite(this.eyes2, xDiff, yDiff);
+                 this.addToDestructibles(this.eyes2);
+                 this.eyeArray.push(this.eyes2);
                  this.reOpenEyes()
              });
          } else if (currHealthPercent < 0.6 && !this.secondCanCrumble) {
              this.secondCanCrumble = true;
              this.setDefaultSprite('wall_4.png');
+             this.closeEyes(0, () => {
+                 this.eyes1.setPosition(this.x - 91 * this.sprite.startScale, this.y + 41 * this.sprite.startScale);
+                 this.eyes1.startOffsetX = -91 * this.sprite.startScale;
+                 this.eyes1.startOffsetY = 41 * this.sprite.startScale;
+                 if (!this.eyes2) {
+                     let xDiff = 100 * this.sprite.startScale;
+                     let yDiff = -5 * this.sprite.startScale;
+                     this.eyes2 = this.scene.add.sprite(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1);
+                     this.eyeArray.push(this.eyes2);
+                     this.addExtraSprite(this.eyes2, xDiff, yDiff);
+                     this.addToDestructibles(this.eyes2);
+                 }
 
-             this.closeEyes(150, () => {
                  this.reOpenEyes()
              })
          } else if (currHealthPercent < 0.4 && !this.thirdCanCrumble) {
              this.setDefaultSprite('wall_5.png');
              this.thirdCanCrumble = true;
-             this.closeEyes(150, () => {
+             this.eyes1.setVisible(false);
+             this.closeEyes(0, () => {
+                 let eye2OffsetX = 150 * this.sprite.startScale;
+                 let eye2OffsetY = 34 * this.sprite.startScale;
+                 if (!this.eyes2) {
+                     this.eyes2 = this.scene.add.sprite(this.x + 100 * this.sprite.startScale, this.y - 5 * this.sprite.startScale, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1);
+                     this.eyeArray.push(this.eyes2);
+                     this.addExtraSprite(this.eyes2, eye2OffsetX, eye2OffsetY);
+                     this.addToDestructibles(this.eyes2);
+                 }
+                 this.eyes2.setFrame('wall_eyes_4.png').setPosition(this.x + eye2OffsetX, this.y + eye2OffsetY);
+                 this.eyes2.startOffsetX = eye2OffsetX;
+                 this.eyes2.startOffsetY = eye2OffsetY;
                  this.reOpenEyes()
              })
          }
@@ -70,9 +111,9 @@
 
      initEye1() {
          this.eyes1 = this.scene.add.sprite(this.x + 5 * this.sprite.startScale, this.y - 10 * this.sprite.startScale, 'enemies', 'wall_eyes_2.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1).setVisible(false);
-         this.addExtraSprite(this.eyes1);
-         this.eyes.push(this.eyes1);
-
+         this.addExtraSprite(this.eyes1, 5 * this.sprite.startScale, -10 * this.sprite.startScale);
+         this.eyeArray.push(this.eyes1);
+         this.addToDestructibles(this.eyes1);
 
          PhaserScene.tweens.add({
              delay: 250,
@@ -107,9 +148,44 @@
          });
      }
 
+     squintEyes(fullSquint = false) {
+         if (this.eyeAnim) {
+             this.eyeAnim.stop();
+         }
+         if (!fullSquint) {
+             for (let i = 0; i < this.eyeArray.length; i++) {
+                 this.eyeArray[i].scaleY = this.sprite.startScale * 0.5;
+             }
+             this.eyeAnim = PhaserScene.tweens.add({
+                 targets: this.eyeArray,
+                 scaleY: this.sprite.startScale,
+                 ease: 'Cubic.easeIn',
+                 duration: 450,
+             });
+         } else {
+             this.eyeAnim = PhaserScene.tweens.add({
+                 targets: this.eyeArray,
+                 scaleY: 0,
+                 ease: 'Cubic.easeIn',
+                 duration: 350,
+                 onComplete: () => {
+                     this.eyeAnim = PhaserScene.tweens.add({
+                         targets: this.eyeArray,
+                         scaleY: this.sprite.startScale,
+                         ease: 'Cubic.easeOut',
+                         duration: 300,
+                     });
+                 }
+             });
+         }
+     }
+
      closeEyes(duration = 1, onComplete) {
+         if (this.eyeAnim) {
+             this.eyeAnim.stop();
+         }
          PhaserScene.tweens.add({
-             targets: this.eyes,
+             targets: this.eyeArray,
              scaleY: 0,
              ease: 'Quad.easeIn',
              duration: duration,
@@ -119,7 +195,7 @@
 
      reOpenEyes(duration = 500) {
          PhaserScene.tweens.add({
-             targets: this.eyes,
+             targets: this.eyeArray,
              scaleY: this.sprite.startScale,
              ease: 'Back.easeOut',
              duration: duration,
@@ -162,7 +238,8 @@
      throwWallChunk(spriteName, damage = 40, endScale = 1) {
          this.closeEyes(400);
 
-         let wallChunk = this.scene.add.sprite(this.x, this.y - 145, 'enemies', spriteName).setDepth(0).setScale(this.sprite.startScale);
+         let wallChunk = this.scene.add.sprite(this.x, this.y - 115, 'enemies', spriteName).setDepth(0).setScale(this.sprite.startScale * 0.9);
+         wallChunk.y += wallChunk.height * 0.5;
 
          PhaserScene.tweens.add({
              delay: 550,
@@ -183,10 +260,10 @@
                      duration: 800,
                      onComplete: () => {
                          PhaserScene.tweens.add({
-                             delay: 500,
+                             delay: 800,
                              targets: wallChunk,
                              alpha: 0,
-                             duration: 600,
+                             duration: 400,
                              onComplete: () => {
                                  this.reOpenEyes();
                                  wallChunk.destroy();
@@ -201,7 +278,8 @@
                      duration: 800,
                      onComplete: () => {
                          let hitEffect2 = PhaserScene.add.sprite(wallChunk.x, wallChunk.y, 'spells', 'rockCircle.png').setScale(0.2).setRotation(Math.random() * 6).setDepth(195);
-                         let hitEffect = PhaserScene.add.sprite(wallChunk.x, wallChunk.y, 'spells', 'damageEffect4.png').setScale(0.95).setRotation(Math.random()).setDepth(195);
+
+                         let hitEffect = PhaserScene.add.sprite(wallChunk.x, wallChunk.y, 'spells', damage > 50 ? 'brickPattern2.png' : 'damageEffect4.png').setScale(0.95).setRotation(Math.random()).setDepth(195);
 
                          this.scene.tweens.add({
                              targets: hitEffect,
@@ -237,6 +315,165 @@
          });
      }
 
+    birdPoops(numBirds, hasRock = false, hasBigRock = false) {
+        for (let i = 0; i < numBirds; i++) {
+            let delay = i * (hasRock ? 350 : 200);
+            let bird = poolManager.getItemFromPool('bird');
+            if (!bird) {
+                bird = this.scene.add.sprite(-999, 0, 'enemies', 'bird_2.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
+                this.addToDestructibles(bird);
+            }
+            bird.y = 10 + Math.random() * 120;
+            let isLeft = i % 2 == 0;
+            if (!isLeft) {
+                bird.rotation = -0.8;
+                bird.scaleX *= -1;
+            } else {
+                bird.rotation = 0.8;
+            }
+            bird.x = isLeft ? -50 : gameConsts.width + 50;
+            let rock;
+            let rockYOffset = 40;
+            if (hasRock) {
+                rock = this.scene.add.sprite(bird.x, bird.y + rockYOffset, 'enemies', hasBigRock ? 'wall_chunk.png' : 'brick.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
+                if (!isLeft) {
+                    rock.scaleX *= -1;
+                }
+            }
+            let duration = hasRock ? 900 : 700;
+            if (hasBigRock) {
+                duration *= 2;
+            }
+            let goalX = isLeft ? gameConsts.halfWidth + 15 - Math.random() * 45 : gameConsts.halfWidth + Math.random() * 45 - 15;
+            PhaserScene.tweens.add({
+                delay: delay,
+                targets: bird,
+                rotation: bird.rotation * 0.8,
+                x: goalX,
+                duration: duration,
+                onStart: () => {
+                    let goalY = globalObjects.player.getY() - 400 - Math.random() * 110
+                    PhaserScene.tweens.add({
+                        targets: bird,
+                        scaleX: isLeft ? this.sprite.startScale * 0.25 + 0.8 : -this.sprite.startScale * 0.25 - 0.8,
+                        scaleY: this.sprite.startScale * 0.25 + 0.8,
+                        y: goalY,
+                        ease: 'Cubic.easeOut',
+                        duration: duration,
+                    });
+                    if (hasRock) {
+                        PhaserScene.tweens.add({
+                            targets: rock,
+                            scaleX: isLeft ? this.sprite.startScale * 0.25 + 0.8 : -this.sprite.startScale * 0.25 - 0.8 ,
+                            scaleY: this.sprite.startScale * 0.25 + 0.8,
+                            y: goalY + rockYOffset,
+                            ease: 'Cubic.easeOut',
+                            duration: duration,
+                        });
+                        PhaserScene.tweens.add({
+                            targets: rock,
+                            x: goalX,
+                            duration: duration,
+                            onComplete: () => {
+                                let distToPlayer = Math.abs(globalObjects.player.getY() - 180 - rock.y);
+                                PhaserScene.tweens.add({
+                                    targets: rock,
+                                    y: globalObjects.player.getY() - 180 - Math.random() * 15,
+                                    ease: 'Quad.easeIn',
+                                    duration: 500 + Math.floor(distToPlayer * 1.5),
+                                    onComplete: () => {
+                                        messageBus.publish("selfTakeDamage", hasBigRock ? 20 : 5);
+                                        if (hasBigRock) {
+                                            let hitEffect2 = PhaserScene.add.sprite(rock.x, rock.y, 'spells', 'rockCircle.png').setScale(0.2).setRotation(Math.random() * 6).setDepth(195);
+                                            this.scene.tweens.add({
+                                                targets: hitEffect2,
+                                                alpha: 0,
+                                                scaleX: 0.75,
+                                                scaleY: 0.75,
+                                                duration: 500,
+                                                onComplete: () => {
+                                                    hitEffect2.destroy();
+                                                }
+                                            });
+                                            playSound('rock_crumble', 0.6);
+                                        } else {
+                                            playSound('punch', 0.5);
+                                        }
+
+                                        rock.destroy();
+
+                                        let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
+                                        powEffect.setPosition(rock.x, rock.y).setDepth(9999).setScale(hasBigRock ? 2 : 1.25);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                },
+                completeDelay: hasBigRock ? 250 : 0,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        targets: bird,
+                        rotation: 0,
+                        x: isLeft ? gameConsts.width + 50 : -50,
+                        duration: 650,
+                        onComplete: () => {
+                            poolManager.returnItemToPool(bird, 'bird');
+                        }
+                    });
+                    PhaserScene.tweens.add({
+                        targets: bird,
+                        scaleX: isLeft ? this.sprite.startScale * 0.25 + 0.55 : -this.sprite.startScale * 0.25 - 0.55,
+                        scaleY: this.sprite.startScale * 0.25 + 0.55,
+                        y: 100 + Math.random() * 100,
+                        ease: 'Cubic.easeIn',
+                        duration: 650,
+                    });
+                    if (!hasRock) {
+                        let poop = this.scene.add.sprite(bird.x, bird.y + 10, 'enemies', 'poop.png').setDepth(999);
+                        PhaserScene.tweens.add({
+                            targets: poop,
+                            y: globalObjects.player.getY() - 180 - Math.random() * 20,
+                            ease: 'Quad.easeIn',
+                            duration: 600,
+                            onComplete: () => {
+                                poop.destroy();
+                                messageBus.publish("selfTakeDamage", 2);
+                                let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
+                                powEffect.setPosition(poop.x, poop.y).setDepth(9999);
+                                playSound('squish');
+                            }
+                        });
+                        PhaserScene.tweens.add({
+                            targets: poop,
+                            x: gameConsts.halfWidth - Math.random() * 50 + 25,
+                            duration: 500,
+                        });
+                    }
+                }
+            });
+        }
+    }
+
+    checkCrumble() {
+        if (this.thirdCanCrumble && !this.thirdCrumbled) {
+            this.thirdCrumbled = true;
+            this.secondCrumbled = true;
+            this.firstCrumbled = true;
+            this.currentAttackSetIndex = 3;
+        } else if (this.secondCanCrumble && !this.secondCrumbled) {
+            this.secondCrumbled = true;
+            this.firstCrumbled = true;
+            this.currentAttackSetIndex = 2;
+        } else if (this.firstCanCrumble && !this.firstCrumbled) {
+            this.firstCrumbled = true;
+            this.currentAttackSetIndex = 1;
+        } else {
+            this.currentAttackSetIndex = 4;
+            this.nextAttackIndex = this.nextBirdIndex;
+        }
+    }
+
      initAttacks() {
          this.attacks = [
              [
@@ -244,26 +481,12 @@
                  {
                      name: " STARE... ",
                      desc: "A pair of eyes watch you",
-                     chargeAmt: 900,
+                     chargeAmt: 600,
                      damage: -1,
                      attackFinishFunction: () => {
+                         this.squintEyes(true);
                          this.nextAttackIndex = 0;
-                         if (this.thirdCanCrumble && !this.thirdCrumbled) {
-                             this.thirdCrumbled = true;
-                             this.secondCrumbled = true;
-                             this.firstCrumbled = true;
-                             this.currentAttackSetIndex = 3;
-                         } else if (this.secondCanCrumble && !this.secondCrumbled) {
-                             this.secondCrumbled = true;
-                             this.firstCrumbled = true;
-                             this.currentAttackSetIndex = 2;
-                         } else if (this.firstCanCrumble && !this.firstCrumbled) {
-                             this.firstCrumbled = true;
-                             this.currentAttackSetIndex = 1;
-                         } else {
-                             this.currentAttackSetIndex = 4;
-                             this.nextAttackIndex = this.nextBirdIndex;
-                         }
+                        this.checkCrumble();
                      }
                  },
              ],
@@ -271,7 +494,7 @@
                  // 1
                  {
                      name: "CRUMBLE ;40",
-                     chargeAmt: 1200,
+                     chargeAmt: 1000,
                      damage: -1,
                      chargeMult: 1.5,
                      isBigMove: true,
@@ -283,7 +506,8 @@
                          }, 400)
                      },
                      attackFinishFunction: () => {
-
+                         this.pullbackScale = 0.99;
+                         this.attackScale = 1;
                          this.currentAttackSetIndex = 0;
                          this.nextAttackIndex = 0;
                      }
@@ -293,16 +517,20 @@
                  // 2
                  {
                      name: "TOPPLE ;60",
-                     chargeAmt: 1200,
+                     chargeAmt: 1000,
                      damage: -1,
                      chargeMult: 1.5,
                      isBigMove: true,
                      attackStartFunction: () => {
+                         this.pullbackScale = 0.99;
+                         this.attackScale = 1.04;
                         setTimeout(() => {
                             this.throwWallChunk('wall_chunk_2.png', 60);
                         }, 300);
                      },
                      attackFinishFunction: () => {
+                         this.pullbackScale = 0.99;
+                         this.attackScale = 1;
                          this.currentAttackSetIndex = 0;
                          this.nextAttackIndex = 0;
                      }
@@ -311,17 +539,21 @@
              [
                  // 3
                  {
-                     name: "FALL ;100",
-                     chargeAmt: 1200,
-                     damage: 100,
+                     name: "FALL ;100;",
+                     chargeAmt: 1000,
+                     damage: -1,
                      chargeMult: 1.5,
                      isBigMove: true,
                      attackStartFunction: () => {
+                         this.pullbackScale = 0.99;
+                         this.attackScale = 1.04;
                          setTimeout(() => {
                              this.throwWallChunk('wall_chunk_2.png', 100, 1.25);
                          }, 300);
                      },
                      attackFinishFunction: () => {
+                         this.pullbackScale = 0.99;
+                         this.attackScale = 1;
                          this.currentAttackSetIndex = 0;
                          this.nextAttackIndex = 0;
                      }
@@ -331,50 +563,92 @@
                  // 4
                  {
                      name: "}2",
-                     chargeAmt: 400,
-                     damage: 2,
+                     chargeAmt: 500,
+                     damage: -1,
                      attackFinishFunction: () => {
-                         this.currentAttackSetIndex = 0;
-                         this.nextAttackIndex = 0;
+                        this.birdPoops(1);
+                         this.nextBirdIndex = 1;
+                        this.checkCrumble();
                      }
                  },
                  {
-                     name: "}4",
-                     chargeAmt: 400,
-                     damage: 4,
+                     name: "}5",
+                     chargeAmt: 500,
+                     damage: -1,
                      attackFinishFunction: () => {
-                         this.currentAttackSetIndex = 0;
-                         this.nextAttackIndex = 0;
+                         this.birdPoops(1, true);
+                         this.nextBirdIndex = 2;
+                         this.checkCrumble();
                      }
                  },
                  {
                      name: "}2x3",
                      chargeAmt: 500,
-                     damage: 2,
-                     attackTimes: 3,
+                     damage: -1,
                      attackFinishFunction: () => {
-                         this.currentAttackSetIndex = 0;
-                         this.nextAttackIndex = 0;
+                         this.birdPoops(3);
+                         this.nextBirdIndex = 3;
+                         this.checkCrumble();
                      }
                  },
                  {
-                     name: "}4x3",
+                     name: "}5x3",
                      chargeAmt: 500,
-                     damage: 4,
-                     attackTimes: 3,
+                     damage: -1,
                      attackFinishFunction: () => {
-                         this.currentAttackSetIndex = 0;
-                         this.nextAttackIndex = 0;
+                         this.birdPoops(3, true);
+                         this.nextBirdIndex = 4;
+                         this.checkCrumble();
                      }
                  },
                  {
-                     name: "}2x6",
-                     chargeAmt: 600,
-                     damage: 2,
-                     attackTimes: 6,
+                     name: "}2x5",
+                     chargeAmt: 500,
+                     damage: -1,
                      attackFinishFunction: () => {
-                         this.currentAttackSetIndex = 0;
-                         this.nextAttackIndex = 0;
+                         this.birdPoops(5);
+                         this.nextBirdIndex = 5;
+                         this.checkCrumble();
+                     }
+                 },
+                 {
+                     name: "}5x5",
+                     chargeAmt: 500,
+                     damage: -1,
+                     attackFinishFunction: () => {
+                         this.birdPoops(5, true);
+                         this.nextBirdIndex = 6;
+                         this.checkCrumble();
+                     }
+                 },
+                 {
+                     name: "}20",
+                     chargeAmt: 500,
+                     damage: -1,
+                     attackFinishFunction: () => {
+                         this.birdPoops(1, true, true);
+                         this.nextBirdIndex = 7;
+                         this.checkCrumble();
+                     }
+                 },
+                 {
+                     name: "}5x8",
+                     chargeAmt: 500,
+                     damage: -1,
+                     attackFinishFunction: () => {
+                         this.birdPoops(8, true);
+                         this.nextBirdIndex = 8;
+                         this.checkCrumble();
+                     }
+                 },
+                 {
+                     name: "}20x2",
+                     chargeAmt: 500,
+                     damage: -1,
+                     attackFinishFunction: () => {
+                         this.birdPoops(2, true, true);
+                         this.nextBirdIndex = 4;
+                         this.checkCrumble();
                      }
                  },
              ]
@@ -382,11 +656,54 @@
      }
 
      die() {
+         if (this.dead) {
+             return;
+         }
+         super.die();
+         for (let i = 0; i < this.eyeArray.length; i++) {
+             this.eyeArray[i].destroy();
+         }
+
          if (this.currAnim) {
              this.currAnim.stop();
          }
          this.setDefaultSprite('wall_dead.png')
-         this.bgMusic.stop();
+         if (this.bgMusic) {
+             this.bgMusic.stop();
+         }
+         this.dieClickBlocker = new Button({
+             normal: {
+                 ref: "blackPixel",
+                 x: gameConsts.halfWidth,
+                 y: gameConsts.halfHeight,
+                 alpha: 0.001,
+                 scaleX: 1000,
+                 scaleY: 1000
+             },
+             onMouseUp: () => {
+
+             }
+         });
+
+         setTimeout(() => {
+             this.showFlash(this.x, this.y + 100);
+             setTimeout(() => {
+                 let rune = this.scene.add.sprite(this.x, this.y + 100, 'circle', 'rune_unload_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(9999);
+                 playSound('victory_2');
+                 PhaserScene.tweens.add({
+                     targets: rune,
+                     x: gameConsts.halfWidth,
+                     y: gameConsts.halfHeight - 170,
+                     scaleX: 2,
+                     scaleY: 2,
+                     ease: "Cubic.easeOut",
+                     duration: 1500,
+                     onComplete: () => {
+                         this.showVictory(rune);
+                     }
+                 });
+             }, 250)
+         }, 1400);
      }
 
 }

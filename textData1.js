@@ -14,7 +14,7 @@ const textData = {
     time_reinforce_desc: {en_us: 'Heal half of\nthe damage you\ntook from the\nlast attack', fr: '', zh_cn: '', ru: '', es: '', jp: ''},
     time_unload_desc: {en_us: 'Freeze time for\nthe next 6 spells.\nLoses power\nwith repeat use.', fr: '', zh_cn: '', ru: '', es: '', jp: ''},
 
-    void_strike_desc: {en_us: 'Damage 1.5% of\nenemy current\nHP. Deal that\ndamage 2 more\ntimes after a\ndelay.', fr: '', zh_cn: '', ru: '', es: '', jp: ''},
+    void_strike_desc: {en_us: 'Damage 1.5%\nenemy current\nHP. Deal that\ndamage 2 more\ntimes after a\ndelay.', fr: '', zh_cn: '', ru: '', es: '', jp: ''},
     void_enhance_desc: {en_us: 'Next attack\ncurses the enemy\nto take +1 damage\nfrom all sources', fr: '', zh_cn: '', ru: '', es: '', jp: ''},
     void_protect_desc: {en_us: 'Create a shield\nthat completely\nnegates one\nattack', fr: '', zh_cn: '', ru: '', es: '', jp: ''},
     void_reinforce_desc: {en_us: 'Heal to full, but\nat the cost of\n20% max hp', fr: '', zh_cn: '', ru: '', es: '', jp: ''},

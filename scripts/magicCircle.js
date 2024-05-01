@@ -2220,10 +2220,10 @@ const ENABLE_KEYBOARD = true;
                  break;
          }
 
-        if (this.castDisabled) {
+        if (this.castDisabled || this.manualDisabled) {
              this.spellNameText.setText('');
         }
-        if (this.disableSpellDescDisplay) {
+        if (this.disableSpellDescDisplay || this.manualDisabled) {
             this.spellDescriptor.setText('');
         }
      }
@@ -2350,7 +2350,6 @@ const ENABLE_KEYBOARD = true;
          this.innerDragDisabled = true;
          this.lastDragTime = Math.min(this.lastDragTime, -9999);
          gameVars.playerNotMoved = false;
-         this.spellNameText.visible = false;
         this.disableSpellDescDisplay = true;
      }
 
@@ -2359,8 +2358,6 @@ const ENABLE_KEYBOARD = true;
          this.outerDragDisabled = false;
          this.innerDragDisabled = false;
          this.lastDragTime = 0
-         this.spellNameText.visible = true;
-         console.log("aftervoid1")
         this.disableSpellDescDisplay = false;
      }
 

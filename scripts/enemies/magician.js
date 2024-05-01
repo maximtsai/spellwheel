@@ -160,7 +160,7 @@
      }
 
      showRune() {
-         let rune = this.scene.add.sprite(this.x, this.y - 75, 'circle', 'rune_time_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(9999);
+         let rune = this.scene.add.sprite(this.x, this.y - 60, 'tutorial', 'rune_time_large.png').setOrigin(0.5, 0.5).setScale(0.5).setDepth(9999);
          playSound('victory_2');
          this.showFlash(this.x, this.y);
          let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
@@ -170,8 +170,8 @@
          PhaserScene.tweens.add({
              targets: rune,
              x: gameConsts.halfWidth,
-             scaleX: 2,
-             scaleY: 2,
+             scaleX: 1,
+             scaleY: 1,
              ease: "Cubic.easeOut",
              duration: 1500,
              onComplete: () => {

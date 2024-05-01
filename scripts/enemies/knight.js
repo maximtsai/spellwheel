@@ -1035,14 +1035,14 @@
                             }
                         });
 
-                        let rune = this.scene.add.sprite(this.x + 22, this.y + 90, 'circle', 'rune_void_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(9999);
+                        let rune = this.scene.add.sprite(this.x + 22, this.y + 90, 'tutorial', 'rune_void_large.png').setScale(0.5).setDepth(9999);
                         playSound('victory_2');
                         PhaserScene.tweens.add({
                             targets: rune,
                             x: gameConsts.halfWidth,
                             y: gameConsts.halfHeight - 180,
-                            scaleX: 2,
-                            scaleY: 2,
+                            scaleX: 1,
+                            scaleY: 1,
                             ease: "Cubic.easeOut",
                             duration: 1500,
                             onComplete: () => {

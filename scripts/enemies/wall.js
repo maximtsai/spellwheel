@@ -701,14 +701,14 @@
          setTimeout(() => {
              this.showFlash(this.x, this.y + 100);
              setTimeout(() => {
-                 let rune = this.scene.add.sprite(this.x, this.y + 100, 'circle', 'rune_unload_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(9999);
+                 let rune = this.scene.add.sprite(this.x, this.y + 100, 'tutorial', 'rune_unload_large.png').setScale(0.5).setDepth(9999);
                  playSound('victory_2');
                  PhaserScene.tweens.add({
                      targets: rune,
                      x: gameConsts.halfWidth,
                      y: gameConsts.halfHeight - 170,
-                     scaleX: 2,
-                     scaleY: 2,
+                     scaleX: 1,
+                     scaleY: 1,
                      ease: "Cubic.easeOut",
                      duration: 1500,
                      onComplete: () => {

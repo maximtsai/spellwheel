@@ -101,7 +101,18 @@ class HoverDisplay {
         this.setPosition(data.x, data.y)
         this.setOrigin(data.originX, data.originY);
         this.hoverTextDisplay.setOrigin(data.originX, 0.5);
+    }
 
+    addTween(tweenObj) {
+        if (this.currTween) {
+            this.currTween.stop();
+        }
+        let tweenParams = {
+            targets: [this.hoverBacking, this.hoverTextDisplay],
+            duration: 100,
+        }
+        tweenParams = {...tweenParams, ...tweenObj};
+        this.currTween = PhaserScene.tweens.add(tweenParams);
     }
 
     setPosition(x, y) {

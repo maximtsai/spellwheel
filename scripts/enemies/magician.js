@@ -4,11 +4,17 @@
         this.initSprite('time_magi.png', 0.75,0, 5);
         ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, RUNE_MATTER, null, null , RUNE_MATTER];
         EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_ENHANCE, RUNE_PROTECT, null, null, null, RUNE_REINFORCE, RUNE_PROTECT, RUNE_ENHANCE];
-        this.customBgMusic = playSound('magician_theme_1', 0.95, true);
+        setTimeout(() => {
+            this.tutorialButton = createTutorialBtn(this.level);
+            this.addToDestructibles(this.tutorialButton);
+            this.customBgMusic = playSound('magician_theme_1', 0.95, true);
+        }, 1500)
+        this.sprite.startY = this.sprite.y;
+        this.repeatTweenBreathe();
     }
 
      initStatsCustom() {
-         this.health = 130;
+         this.health = 100;
          this.damageNumOffset = 45;
          this.timeObjects = [];
      }
@@ -23,7 +29,7 @@
              return;
          }
          if (this.specialDamageAbsorptionActive) {
-             this.animateShake();
+             // this.animateShake();
              let healthBarRatio = 1 + this.healthBarLengthMax * this.health / this.healthMax;
              this.healthBarCurr.scaleX = healthBarRatio;
              this.healthBarText.setText(this.health);
@@ -39,31 +45,39 @@
          }
 
 
+         if (!this.isNervous && this.statuses[0] && this.statuses[0].duration >= this.health) {
+             this.isNervous = true;
+             this.setDefaultSprite('time_magi_nervous.png', 0.75);
+         }
          if (this.usingTimeFreeze) {
              // no change
-         } else if (currHealthPercent < 0.999 && !this.usedTimeCurse) {
+         } else if (currHealthPercent < 0.999 && !this.usedTimeShield) {
              this.currentAttackSetIndex = 1;
              this.nextAttackIndex = 0;
-         } else if (currHealthPercent < 0.75 && !this.usedTimeShield) {
-             this.currentAttackSetIndex = 3;
-             this.nextAttackIndex = 0;
-         } else if (this.health <= 23 && this.usedTimeShield) {
+         } else if (this.health <= 15 && this.usedTimeShield) {
              if (this.statuses[0] && this.statuses[0].duration >= this.health && !this.isTerrified) {
                  this.isTerrified = true;
                  this.interruptCurrentAttack();
                  this.currentAttackSetIndex = 6;
                  this.nextAttackIndex = 0;
                  this.startReaper();
-
-                 fadeAwaySound(this.customBgMusic, 1000, '');
+                 if (this.customBgMusic) {
+                     fadeAwaySound(this.customBgMusic, 1000, '');
+                 }
+                 if (this.clocktickbg) {
+                     fadeAwaySound(this.clocktickbg, 1000, '');
+                 }
                  setTimeout(() => {
                      if (!this.dead) {
                          this.customBgMusic = playSound('magician_theme_4', 0.4, true);
                          fadeInSound(this.customBgMusic, 0.8);
                      }
-                 }, 500)
+                 }, 750)
 
              }
+         } else if (this.health <= 4 && !this.timeTerrified) {
+             this.timeTerrified = true;
+             this.setDefaultSprite('time_magi_terrified.png', 0.72);
          }
 
      }
@@ -72,6 +86,9 @@
         if (this.cleanedUp) {
             return;
         }
+         if (this.breatheTween) {
+             this.breatheTween.stop();
+         }
         this.cleanedUp = true;
          if (this.floatingDeathAnim) {
              this.floatingDeathAnim.stop().destroy();
@@ -87,7 +104,9 @@
          if (this.magicianTimeEpicTheme) {
              this.magicianTimeEpicTheme.stop();
          }
-
+         if (this.clocktickbg) {
+             this.clocktickbg.stop();
+         }
          globalObjects.magicCircle.cancelTimeSlow();
          if (this.clockShield) {
              this.clockShield.alpha += 0.15;
@@ -284,18 +303,21 @@
          this.specialDamageAbsorptionActive = true;
 
          this.clockShield = PhaserScene.add.sprite(gameConsts.halfWidth, this.y, 'spells', 'clock_back_large_red.png').setDepth(1).setScale(0.4).setAlpha(0.75);
-         this.scene.tweens.add({
-             targets: this.clockShield,
-             duration: 15000,
-             rotation: "+=3.1415",
-             repeat: -1
-         });
+
          this.scene.tweens.add({
              targets: this.clockShield,
              duration: 600,
              alpha: 0.2,
              rotation: "+=2",
              ease: 'Cubic.easeOut',
+             onComplete: () => {
+                 this.scene.tweens.add({
+                     targets: this.clockShield,
+                     duration: 15000,
+                     rotation: "+=3.1415",
+                     repeat: -1
+                 });
+             }
          });
      }
 
@@ -330,7 +352,10 @@
                  }
              }
              this.statuses[0] = statusObj;
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 25 - Math.random()*50, this.sprite.y + 25 - Math.random() * 50, 'DELAYED', 0.9);
          } else {
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random()*150, this.sprite.y + 50 - Math.random() * 100, 'DELAYED', 0.75);
+
              this.statuses[0].duration = Math.min(this.statuses[0].duration + amt, this.health + 1);
              this.statuses[0].animObj.setText(Math.max(0, this.statuses[0].duration - 1));
              this.statuses[0].animObj.setScale(0.7 + 0.01 * this.statuses[0].duration);
@@ -348,6 +373,33 @@
          }
 
          return 0;
+     }
+
+     repeatTweenBreathe(duration = 1500, magnitude = 1) {
+         if (this.breatheTween) {
+             this.breatheTween.stop();
+         }
+         let vertMove = Math.ceil(3.5 * magnitude);
+         this.breatheTween = this.scene.tweens.add({
+             targets: this.sprite,
+             duration: duration,
+             y: this.sprite.startY - vertMove,
+             ease: 'Quad.easeInOut',
+             completeDelay: 150,
+             onComplete: () => {
+                 this.breatheTween = this.scene.tweens.add({
+                     targets: this.sprite,
+                     duration: duration * (Math.random() * 0.5 + 1),
+                     rotation: 0.02 * magnitude,
+                     y: this.sprite.startY + vertMove,
+                     ease: 'Quad.easeInOut',
+                     completeDelay: 150,
+                     onComplete: () => {
+                         this.repeatTweenBreathe(duration, magnitude);
+                     }
+                 });
+             }
+         });
      }
 
      launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false) {
@@ -436,53 +488,36 @@
              [
                  // 0
                  {
-                     name: "}3 ",
+                     name: "}4 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: 250,
-                     damage: 3,
-                     prepareSprite: 'time_magi_cast.png',
-                     attackFinishFunction: () => {
-                         playSound('punch');
-                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
+                     chargeAmt: 300,
+                     damage: -1,
+                     prepareSprite: 'time_magi_cast_big.png',
+                     attackStartFunction: () => {
+                         this.createTimeObject('clock2.png', this.x - 25, this.y - 110);
                          setTimeout(() => {
-                             dmgEffect.destroy();
-                         }, 150)
-                     }
+                             this.fireTimeObjects(4);
+                         }, 800);
+                     },
                  },
              ],
              [
-                 // 1
                  {
-                     name: "CURSE OF TIME (25?)",
-                     desc: "A deadly spell that\nslowly drains your life.",
-                     chargeAmt: 400,
-                     damage: -1,
+                     name: "{TIME SHIELD{",
+                     desc: "The Time Magician\nslows down his health",
+                     chargeAmt: 250,
                      prepareSprite: 'time_magi_cast_big.png',
+                     startFunction: () => {
+                         this.usedTimeShield = true;
+                     },
                      attackFinishFunction: () => {
-                         playSound('time_body');
+                         playSound('time_shield', 0.6)
+                         this.setupTimeShield();
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
-                         messageBus.publish('playerAddDelayedDamage', 25);
-                         let hitEffect = PhaserScene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large_red.png').setDepth(110).setScale(0.6);
-                         this.scene.tweens.add({
-                             targets: hitEffect,
-                             rotation: "-=1",
-                             ease: 'Cubic.easeOut',
-                             duration: 900,
-                             onComplete: () => {
-                                 hitEffect.destroy();
-                             }
-                         });
-                         this.scene.tweens.add({
-                             targets: hitEffect,
-                             alpha: 0,
-                             scaleX: 0.65,
-                             scaleY: 0.65,
-                             duration: 900
-                         });
-                         this.usedTimeCurse = true;
                      }
-                 }
+                 },
+                 // 1
              ],
              [
                  // 2
@@ -503,7 +538,7 @@
                  {
                      name: "}4x3 ",
                      desc: "An advanced magic attack.",
-                     chargeAmt: 340,
+                     chargeAmt: 300,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -514,38 +549,65 @@
                              this.fireTimeObjects(4);
                          }, 800);
                      },
-                 }
+                 },
+                 {
+                     name: "CURSE OF TIME (20?)",
+                     desc: "A deadly spell that\nslowly drains your life.",
+                     chargeAmt: 350,
+                     damage: -1,
+                     prepareSprite: 'time_magi_cast_big.png',
+                     attackFinishFunction: () => {
+                         playSound('time_body');
+                         this.currentAttackSetIndex = 3;
+                         this.nextAttackIndex = 0;
+                         messageBus.publish('playerAddDelayedDamage', 20);
+                         let hitEffect = PhaserScene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large_red.png').setDepth(110).setScale(0.6);
+                         this.scene.tweens.add({
+                             targets: hitEffect,
+                             rotation: "-=1",
+                             ease: 'Cubic.easeOut',
+                             duration: 900,
+                             onComplete: () => {
+                                 hitEffect.destroy();
+                             }
+                         });
+                         this.scene.tweens.add({
+                             targets: hitEffect,
+                             alpha: 0,
+                             scaleX: 0.65,
+                             scaleY: 0.65,
+                             duration: 900
+                         });
+                         this.usedTimeCurse = true;
+                     }
+                 },
              ],
              [
                  // 3
+
                  {
-                     name: "TIME SHIELD ({?)",
-                     desc: "The Time Magician is\ngetting worried",
-                     chargeAmt: 300,
-                     chargeMult: 2,
-                     prepareSprite: 'time_magi_cast_big.png',
-                     startFunction: () => {
-                         this.usedTimeShield = true;
-                     },
-                     attackFinishFunction: () => {
-                         playSound('time_shield', 0.6)
-                         this.setupTimeShield();
-                     }
-                 },
-                 {
-                     name: "TIME FREEZE (!!!)",
+                     name: "!!TIME FREEZE!!",
                      desc: "The Time Magician prepares\nhis most powerful magics.",
-                     chargeAmt: 450,
+                     chargeAmt: 400,
                      chargeMult: 1.5,
                      prepareSprite: 'time_magi_cast_big.png',
                      startFunction: () => {
                          setTimeout(() => {
                              let myCustomMusic = this.customBgMusic;
                              fadeAwaySound(myCustomMusic, 2000, ' ');
-                         }, 650);
+                             setTimeout(() => {
+                                 if (!this.timeBarraged) {
+                                     this.tickSlow = playSound('tickslow');
+                                 }
+                             }, 1000);
+                         }, 750);
                          this.usingTimeFreeze = true;
                      },
                      attackFinishFunction: () => {
+                         this.timeBarraged = true;
+                         if (this.tickSlow) {
+                             fadeAwaySound(this.tickSlow, 400, ' ');
+                         }
                          playSound('timeSlow');
                          this.magicianTimeEpicTheme = playSound('magician_theme_3', 0.8)
                          globalObjects.magicCircle.timeSlowFromEnemy();
@@ -558,7 +620,6 @@
                      chargeMult: 16,
                      prepareSprite: 'time_magi_cast_big.png',
                      startFunction: () => {
-                         this.timeBarraged = true;
                      },
                      attackStartFunction: () => {
                          this.createTimeObject('clock3.png', this.x - 100, 115, 200);
@@ -615,7 +676,13 @@
                      startFunction: () => {
                          globalObjects.magicCircle.cancelTimeSlow();
                          if (!this.dead) {
-                             this.setDefaultSprite('time_magi_nervous.png', 0.75);
+                             setTimeout(() => {
+                                 if (!this.isTerrified) {
+                                     this.clocktickbg = playSound('clocktick', 0.2, true);
+                                     fadeInSound(this.clocktickbg, 1)
+                                 }
+                                 fadeAwaySound(this.magicianTimeEpicTheme, 1500);
+                             }, 1500);
                          }
                          this.usingTimeFreeze = false;
                      },
@@ -633,21 +700,21 @@
              [
                  // 4
                  {
-                     name: "}4 ",
+                     name: "}6 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
                      chargeAmt: 300,
                      chargeMult: 1.5,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
-                         this.createTimeObject('clock2.png', this.x - 95, this.y - 100);
+                         this.createTimeObject('clock3.png', this.x - 25, this.y - 110);
                          setTimeout(() => {
-                             this.fireTimeObjects(4);
+                             this.fireTimeObjects(6);
                          }, 800);
                      },
                  },
                  {
-                     name: "}5x2 ",
+                     name: "}4x2 ",
                      desc: "An advanced magic attack.",
                      chargeAmt: 300,
                      chargeMult: 1.5,
@@ -655,9 +722,9 @@
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
                          this.createTimeObject('clock2.png', this.x - 110, this.y - 70);
-                         this.createTimeObject('clock3.png', this.x - 75, this.y - 95);
+                         this.createTimeObject('clock3.png', this.x - 35, this.y - 100);
                          setTimeout(() => {
-                             this.fireTimeObjects(5);
+                             this.fireTimeObjects(4);
                          }, 800);
                      },
                  }

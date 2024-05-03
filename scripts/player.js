@@ -568,7 +568,7 @@ class Player {
                     y: "-=3",
                     ease: 'Cubic.easeOut'
                 });
-                messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 40, 'BLOCKED', 1.25);
+                messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 40, 'BLOCKED', 1.2);
 
             } else {
                 hurtAmt = hurtAmt - this.statuses['matterUnload'].health;
@@ -601,7 +601,7 @@ class Player {
                             shieldObj.shakeAmt = 0.05 + hurtAmt * 0.005;
                             shieldObj.impactVisibleTime = 6;
                             shieldObj.animObj[2].rotateOffset = -shieldObj.animObj[0].rotation * 0.92;
-                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y, 'BLOCKED', 1.25);
+                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y - 5, 'BLOCKED', 0.9, {y: "-=5", ease: 'Quart.easeOut'}, {scaleX: 0.85, scaleY: 0.85, alpha: 0, });
                         } else {
                             playSound('shield_break', 0.6);
                             hurtAmt = hurtAmt - shieldObj.health;
@@ -623,13 +623,13 @@ class Player {
                                     rockAnim.destroy();
                                 }
                             });
-                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y, 'BROKE', 1, {y: "+=10"}, {alpha: 0, scaleX: 1, scaleY: 1});
+                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y + 10, '-BROKE-', 1, {y: "+=10", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1, scaleY: 1});
                             shieldObj.cleanUp(this.statuses);
                         }
                         shieldObj.animObj[1].setText(shieldObj.health);
                         shieldObj.animObj[1].setScale(1.3);
 
-                        messageBus.publish('tempPause', 150);
+                        messageBus.publish('tempPause', 100);
                         this.scene.tweens.add({
                             targets: shieldObj.animObj[1],
                             duration: 250,
@@ -671,7 +671,7 @@ class Player {
                         } else {
                             messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'DELAYED', 1.2);
                         }
-                        messageBus.publish('tempPause', 150);
+                        messageBus.publish('tempPause', 100);
                     }
                     break;
                 case 'void':
@@ -703,7 +703,7 @@ class Player {
                             shieldObj.jiggleAmt = 1;
                         }
                         messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 100, 'NEGATED', 1.2);
-                        messageBus.publish('tempPause', 150);
+                        messageBus.publish('tempPause', 100);
                         hurtAmt = 0;
                     }
                     // this.statuses['voidProtect'].cleanUp(this.statuses);
@@ -758,7 +758,7 @@ class Player {
                             shieldObj.textObj.setText(shieldObj.storedDamage);
                             shieldObj.textObj.setScale(0.5 + Math.sqrt(shieldObj.storedDamage) * 0.15);
                             playSound('fizzle');
-                            messageBus.publish('tempPause', 150);
+                            messageBus.publish('tempPause', 100);
 
                             shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 2.2, shieldObj.animObj[0].scaleY);
                             this.scene.tweens.add({

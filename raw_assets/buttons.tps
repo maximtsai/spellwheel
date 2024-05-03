@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>phaser</string>
+        <string>phaser-maxim</string>
         <key>textureFileName</key>
         <filename>../sprites/buttons.webp</filename>
         <key>flipPVR</key>
@@ -64,7 +64,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>1</uint>
+        <uint>0</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -76,7 +76,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">webp</enum>
         <key>borderPadding</key>
-        <uint>1</uint>
+        <uint>0</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -187,6 +187,54 @@
                 <rect>95,16,190,31</rect>
                 <key>scale9Paddings</key>
                 <rect>95,16,190,31</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">buttons/new_btn.png</key>
+            <key type="filename">buttons/new_btn_anim.png</key>
+            <key type="filename">buttons/new_btn_back.png</key>
+            <key type="filename">buttons/new_btn_basic.png</key>
+            <key type="filename">buttons/new_btn_hover.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,16,33,33</rect>
+                <key>scale9Paddings</key>
+                <rect>16,16,33,33</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">buttons/new_btn_anim_1.png</key>
+            <key type="filename">buttons/new_btn_anim_10.png</key>
+            <key type="filename">buttons/new_btn_anim_11.png</key>
+            <key type="filename">buttons/new_btn_anim_12.png</key>
+            <key type="filename">buttons/new_btn_anim_13.png</key>
+            <key type="filename">buttons/new_btn_anim_14.png</key>
+            <key type="filename">buttons/new_btn_anim_15.png</key>
+            <key type="filename">buttons/new_btn_anim_2.png</key>
+            <key type="filename">buttons/new_btn_anim_3.png</key>
+            <key type="filename">buttons/new_btn_anim_4.png</key>
+            <key type="filename">buttons/new_btn_anim_5.png</key>
+            <key type="filename">buttons/new_btn_anim_6.png</key>
+            <key type="filename">buttons/new_btn_anim_7.png</key>
+            <key type="filename">buttons/new_btn_anim_8.png</key>
+            <key type="filename">buttons/new_btn_anim_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>17,17,35,35</rect>
+                <key>scale9Paddings</key>
+                <rect>17,17,35,35</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

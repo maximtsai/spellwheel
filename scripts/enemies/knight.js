@@ -6,6 +6,10 @@
          this.bgMusic = playSound('battle_2_half', 0.85, true);
          this.shieldAdded = false;
          this.initMisc();
+         setTimeout(() => {
+             this.tutorialButton = createTutorialBtn(this.level);
+             this.addToDestructibles(this.tutorialButton);
+         }, 1500)
      }
 
      initStatsCustom() {
@@ -409,10 +413,11 @@
          }
          this.pulseCircle.setScale(1.6).setDepth(10).setAlpha(0).setPosition(x, y).setRotation(Math.random() * 6);
          PhaserScene.tweens.add({
+             delay: 500,
              targets: [this.pulseCircle],
              scaleX: 0.8,
              scaleY: 0.8,
-             duration: 425,
+             duration: 450,
              ease: 'Cubic.easeIn',
              alpha: 1.2,
              onComplete: () => {
@@ -424,7 +429,7 @@
                      targets: [this.pulseCircle],
                      scaleX: 0,
                      scaleY: 0,
-                     duration: 425,
+                     duration: 450,
                      alpha: 0,
                      ease: 'Cubic.easeOut',
                      completeDelay: 1200,
@@ -975,6 +980,7 @@
          if (this.currAnim) {
              this.currAnim.stop();
          }
+         this.isPulsing = false;
          this.interruptCurrentAttack();
          this.setAsleep();
          this.bgMusic.stop();

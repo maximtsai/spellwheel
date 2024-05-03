@@ -4,6 +4,10 @@
          this.initSprite('wall_1.png', 0.80);
          this.shieldAdded = false;
          this.initBird();
+         setTimeout(() => {
+             this.tutorialButton = createTutorialBtn(this.level);
+             this.addToDestructibles(this.tutorialButton);
+         }, 1500)
      }
 
      initStatsCustom() {
@@ -315,14 +319,24 @@
          });
      }
 
-    birdPoops(numBirds, hasRock = false, hasBigRock = false) {
+    birdPoops(numBirds, hasRock = false, hasBigRock = false, hasBigPoop = false) {
         for (let i = 0; i < numBirds; i++) {
             let delay = i * (hasRock ? 350 : 200);
-            let bird = poolManager.getItemFromPool('bird');
-            if (!bird) {
-                bird = this.scene.add.sprite(-999, 0, 'enemies', 'bird_2.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
+            let bird;
+            let isBigPoop = false;
+            if (hasBigPoop && i == numBirds - 1) {
+                delay += 500;
+                isBigPoop = true;
+                bird = this.scene.add.sprite(-999, 0, 'enemies', 'bird_2_fat.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
                 this.addToDestructibles(bird);
+            } else {
+                bird = poolManager.getItemFromPool('bird');
+                if (!bird) {
+                    bird = this.scene.add.sprite(-999, 0, 'enemies', 'bird_2.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
+                    this.addToDestructibles(bird);
+                }
             }
+
             bird.y = 10 + Math.random() * 120;
             let isLeft = i % 2 == 0;
             if (!isLeft) {
@@ -334,7 +348,7 @@
             bird.x = isLeft ? -50 : gameConsts.width + 50;
             let rock;
             let rockYOffset = 40;
-            if (hasRock) {
+            if (hasRock && !isBigPoop) {
                 rock = this.scene.add.sprite(bird.x, bird.y + rockYOffset, 'enemies', hasBigRock ? 'wall_chunk.png' : 'brick.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
                 if (!isLeft) {
                     rock.scaleX *= -1;
@@ -342,6 +356,9 @@
             }
             let duration = hasRock ? 900 : 700;
             if (hasBigRock) {
+                duration *= 2;
+            }
+            if (isBigPoop) {
                 duration *= 2;
             }
             let goalX = isLeft ? gameConsts.halfWidth + 15 - Math.random() * 45 : gameConsts.halfWidth + Math.random() * 45 - 15;
@@ -361,7 +378,7 @@
                         ease: 'Cubic.easeOut',
                         duration: duration,
                     });
-                    if (hasRock) {
+                    if (hasRock && !isBigPoop) {
                         PhaserScene.tweens.add({
                             targets: rock,
                             scaleX: isLeft ? this.sprite.startScale * 0.25 + 0.8 : -this.sprite.startScale * 0.25 - 0.8 ,
@@ -412,8 +429,14 @@
                 },
                 completeDelay: hasBigRock ? 250 : 0,
                 onComplete: () => {
+                    let poopDelay = 0;
+                    if (isBigPoop) {
+                        poopDelay = 200;
+                        bird.setFrame('bird_2.png');
+                    }
                     PhaserScene.tweens.add({
                         targets: bird,
+                        delay: poopDelay,
                         rotation: 0,
                         x: isLeft ? gameConsts.width + 50 : -50,
                         duration: 650,
@@ -423,31 +446,60 @@
                     });
                     PhaserScene.tweens.add({
                         targets: bird,
+                        delay: poopDelay,
                         scaleX: isLeft ? this.sprite.startScale * 0.25 + 0.55 : -this.sprite.startScale * 0.25 - 0.55,
                         scaleY: this.sprite.startScale * 0.25 + 0.55,
                         y: 100 + Math.random() * 100,
                         ease: 'Cubic.easeIn',
                         duration: 650,
                     });
-                    if (!hasRock) {
-                        let poop = this.scene.add.sprite(bird.x, bird.y + 10, 'enemies', 'poop.png').setDepth(999);
+                    if (!hasRock || isBigPoop) {
+                        let poop = this.scene.add.sprite(bird.x, bird.y + 10, 'enemies', isBigPoop ? 'poopbig.png' : 'poop.png').setDepth(999);
+                        let targetY = globalObjects.player.getY() - 215;
+                        if (!isBigPoop) {
+                            targetY += Math.random() * 15;
+                        }
                         PhaserScene.tweens.add({
                             targets: poop,
-                            y: globalObjects.player.getY() - 180 - Math.random() * 20,
+                            y: targetY,
                             ease: 'Quad.easeIn',
-                            duration: 600,
+                            duration: isBigPoop ? 1000 : 600,
                             onComplete: () => {
-                                poop.destroy();
-                                messageBus.publish("selfTakeDamage", 2);
-                                let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
-                                powEffect.setPosition(poop.x, poop.y).setDepth(9999);
-                                playSound('squish');
+                                if (isBigPoop) {
+                                    messageBus.publish("selfTakeDamage", 3);
+                                    messageBus.publish('playerAddDelayedDamage', 2);
+
+                                    playSound('punch', 0.5);
+                                    playSound('squish');
+                                    let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
+                                    powEffect.setPosition(poop.x, poop.y).setDepth(9999).setScale(1.4);
+                                    let startScale = poop.scaleX;
+                                    poop.setScale(startScale * 1.25);
+                                    PhaserScene.tweens.add({
+                                        delay: 3000,
+                                        targets: poop,
+                                        alpha: 0,
+                                        ease: 'Cubic.easeIn',
+                                        duration: 500,
+                                    })
+
+                                } else {
+                                    poop.destroy();
+                                    messageBus.publish("selfTakeDamage", 2);
+                                    let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
+                                    powEffect.setPosition(poop.x, poop.y).setDepth(9999);
+                                    playSound('squish');
+                                }
                             }
                         });
+                        let targetX = gameConsts.halfWidth;
+                        if (!isBigPoop) {
+                            targetX += Math.random() * 50 - 25;
+                        }
                         PhaserScene.tweens.add({
                             targets: poop,
-                            x: gameConsts.halfWidth - Math.random() * 50 + 25,
-                            duration: 500,
+                            x: targetX,
+                            duration: isBigPoop ? 1000 : 600,
                         });
                     }
                 }
@@ -615,11 +667,11 @@
                      }
                  },
                  {
-                     name: "}5x4",
+                     name: "}5x4 (with extra)",
                      chargeAmt: 500,
                      damage: -1,
                      attackFinishFunction: () => {
-                         this.birdPoops(5, true);
+                         this.birdPoops(4, true, false, true);
                          this.nextBirdIndex = 6;
                          this.checkCrumble(true);
                      }
@@ -635,11 +687,11 @@
                      }
                  },
                  {
-                     name: "}5x5",
+                     name: "}5x6",
                      chargeAmt: 500,
                      damage: -1,
                      attackFinishFunction: () => {
-                         this.birdPoops(8, true);
+                         this.birdPoops(6, true);
                          this.nextBirdIndex = 8;
                          this.checkCrumble(true);
                      }

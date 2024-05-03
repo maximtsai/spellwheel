@@ -4,7 +4,10 @@
          this.initSprite('tree.png', 0.7);// 0.7
          this.sprite.setOrigin(0.52, 0.88); // 0.9
          this.shieldAdded = false;
-
+         setTimeout(() => {
+             this.tutorialButton = createTutorialBtn(this.level);
+             this.addToDestructibles(this.tutorialButton);
+         }, 1500)
      }
 
      initStatsCustom() {
@@ -80,8 +83,8 @@
                  this.sprite.setScale(this.sprite.startScale);
              }
              this.setAwake();
-             let eyePosX = this.x + 129 * this.sprite.startScale;
-             let eyePosY = this.y - 94 * this.sprite.startScale;
+             let eyePosX = this.x + 132 * this.sprite.startScale;
+             let eyePosY = this.y - 82 * this.sprite.startScale;
              let eye = this.scene.add.sprite(eyePosX, eyePosY, 'enemies', 'tree_eye.png').setDepth(9).setOrigin(0.5, 0.5).setRotation(-0.13).setScale(0, this.sprite.startScale);
              this.eyeMagic1 = this.scene.add.sprite(this.x + 4, this.y - 72, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57).setOrigin(0.5, 1).setScale(0.7, 0.5);
              this.eyeMagic2 = this.scene.add.sprite(this.x + 4, this.y - 72, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57 + 3.1415).setOrigin(0.5, 1).setScale(0.7, 0.5);
@@ -465,7 +468,7 @@
 
      initAttacks() {
          let regrowthAmt1 = gameVars.isHardMode ? 16 : 8;
-         let regrowthAmt2 = gameVars.isHardMode ? 24 : 12;
+         let regrowthAmt2 = gameVars.isHardMode ? 24 : 10;
          this.attacks = [
              [
                  // 0
@@ -491,7 +494,7 @@
                      name: "REGROWTH (+" + regrowthAmt1 + ")",
                      announceName: "REGROWTH (+" + regrowthAmt1 + ")",
                      desc: "The tree recovers its injuries over time",
-                     chargeAmt: 300,
+                     chargeAmt: 500,
                      damage: -1,
                      attackStartFunction: () => {
                          this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
@@ -525,7 +528,7 @@
                      name: "}12 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 500,
+                     chargeAmt: 700,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
@@ -544,7 +547,7 @@
                      name: "REGROWTH (+" + regrowthAmt2 + ")",
                      announceName: "REGROWTH (+" + regrowthAmt2 + ")",
                      desc: "The tree recovers its injuries",
-                     chargeAmt: 350,
+                     chargeAmt: 600,
                      damage: -1,
                      attackStartFunction: () => {
                          this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
@@ -572,7 +575,7 @@
                      name: "}4x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 700,
+                     chargeAmt: 750,
                      damage: 0,
                      attackSprites: ['tree_open_glow.png'],
                      attackFinishFunction: () => {
@@ -590,15 +593,15 @@
              [
                  // 3
                  {
-                     name: "CRUSH}30 ",
+                     name: "CRUSH}25 ",
                      announceName: "CRUSH",
                      desc: "The tree tries to crush you",
                      chargeAmt: 800,
-                     damage: 30,
+                     damage: 25,
                      isBigMove: true,
                      attackStartFunction: () => {
-                         this.pullbackScale = 0.97;
-                         this.attackScale = 1.24;
+                         this.pullbackScale = 0.965;
+                         this.attackScale = 1.25;
                      },
                      attackFinishFunction: () => {
                          this.pullbackScale = 0.99;
@@ -639,7 +642,7 @@
                      name: "}12 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 400,
+                     chargeAmt: 700,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
@@ -647,15 +650,15 @@
                      }
                  },
                  {
-                     name: "}4x6 ",
+                     name: "}4x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 700,
+                     chargeAmt: 750,
                      damage: 0,
                      attackSprites: ['tree_open_glow.png'],
                      attackFinishFunction: () => {
-                         for (let i = 0; i < 6; i++) {
-                             let xPos = gameConsts.halfWidth + -200 + i * 80;
+                         for (let i = 0; i < 5; i++) {
+                             let xPos = gameConsts.halfWidth + -200 + i * 100;
                              let yPos = 75 + Math.random() * 40;
                              this.createLeafObject('tree_leaf.webp', xPos, yPos, i * 25);
                          }

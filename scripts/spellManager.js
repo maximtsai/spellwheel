@@ -327,15 +327,21 @@ class SpellManager {
             }
         });
         let totalProtection = spellMult * protectionAmt;
+        let goalScale = 1 + totalProtection * 0.1;
         let param = {
             duration: 1000,
+            ease: 'Quart.easeOut',
+            y: "-=1",
+            scaleX: goalScale + 0.15,
+            scaleY: goalScale + 0.15,
         }
         let param2 = {
             alpha: 0,
-            scaleX: 1,
-            scaleY: 1
+            scaleX: goalScale,
+            scaleY: goalScale
         }
-        messageBus.publish('animateBlockNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + totalProtection + " THORNS", 1 + totalProtection * 0.1, param, param2);
+
+        messageBus.publish('animateBlockNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + totalProtection + " THORNS", goalScale, param, param2);
 
         messageBus.publish('selfTakeEffect', {
             name: spellID,

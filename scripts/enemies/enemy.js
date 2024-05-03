@@ -876,6 +876,9 @@ class Enemy {
             amt = 0;
         }
         let damageTaken = this.adjustDamageTaken(amt, isAttack, true);
+        if (this.specialDamageAbsorptionActive) {
+            damageTaken = this.handleSpecialDamageAbsorption(damageTaken);
+        }
         this.setHealth(Math.max(0, this.health - damageTaken), true);
         let healthLoss = origHealth - this.health;
         if (healthLoss > 0) {
@@ -1030,7 +1033,9 @@ class Enemy {
         this.shieldText.destroy();
 
         for (let i = 0; i < this.destructibles.length; i++) {
-            this.destructibles[i].destroy();
+            if (this.destructibles[i]) {
+                this.destructibles[i].destroy();
+            }
         }
 
         for (let i = 0; i < this.subscriptions.length; i++) {

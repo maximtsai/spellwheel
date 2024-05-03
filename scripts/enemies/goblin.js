@@ -7,6 +7,11 @@
 
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
 
+         setTimeout(() => {
+             this.tutorialButton = createTutorialBtn(this.level);
+             this.addToDestructibles(this.tutorialButton);
+         }, 1500)
+
      }
 
      initStatsCustom() {

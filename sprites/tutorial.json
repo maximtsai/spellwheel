@@ -4,30 +4,105 @@
 			"image": "sprites/tutorial-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 512,
-				"h": 632
+				"w": 773,
+				"h": 997
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "battleOverScreen.png",
+					"filename": "encyclopedia1.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 510,
-						"h": 470
+						"w": 542,
+						"h": 685
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 510,
-						"h": 470
+						"x": 5,
+						"y": 5,
+						"w": 534,
+						"h": 672
 					},
 					"frame": {
 						"x": 1,
 						"y": 1,
-						"w": 510,
-						"h": 470
+						"w": 534,
+						"h": 672
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "popupTutorial.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 529,
+						"h": 321
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 529,
+						"h": 321
+					},
+					"frame": {
+						"x": 1,
+						"y": 675,
+						"w": 529,
+						"h": 321
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "popupTutorialTitle.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 529,
+						"h": 321
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 529,
+						"h": 321
+					},
+					"frame": {
+						"x": 1,
+						"y": 675,
+						"w": 529,
+						"h": 321
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "popupClose.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 168,
+						"h": 58
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 168,
+						"h": 58
+					},
+					"frame": {
+						"x": 537,
+						"y": 1,
+						"w": 168,
+						"h": 58
 					},
 					"anchor": {
 						"x": 0.5,
@@ -49,8 +124,8 @@
 						"h": 88
 					},
 					"frame": {
-						"x": 1,
-						"y": 473,
+						"x": 707,
+						"y": 1,
 						"w": 52,
 						"h": 88
 					},
@@ -60,74 +135,24 @@
 					}
 				},
 				{
-					"filename": "rune_protect_large.png",
+					"filename": "popupClose_hover.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 104,
-						"h": 90
-					},
-					"spriteSourceSize": {
-						"x": 9,
-						"y": 5,
-						"w": 84,
-						"h": 81
-					},
-					"frame": {
-						"x": 55,
-						"y": 473,
-						"w": 84,
-						"h": 81
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_reinforce_large.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 104,
-						"h": 90
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 8,
-						"w": 83,
-						"h": 74
-					},
-					"frame": {
-						"x": 55,
-						"y": 556,
-						"w": 83,
-						"h": 74
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_enhance_large.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 104,
-						"h": 80
+						"w": 168,
+						"h": 58
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 103,
-						"h": 80
+						"w": 168,
+						"h": 58
 					},
 					"frame": {
-						"x": 141,
-						"y": 473,
-						"w": 103,
-						"h": 80
+						"x": 537,
+						"y": 61,
+						"w": 168,
+						"h": 58
 					},
 					"anchor": {
 						"x": 0.5,
@@ -135,24 +160,174 @@
 					}
 				},
 				{
-					"filename": "rune_matter_large.png",
+					"filename": "blank.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 104,
-						"h": 80
+						"w": 2,
+						"h": 2
 					},
 					"spriteSourceSize": {
-						"x": 7,
-						"y": 3,
-						"w": 92,
-						"h": 76
+						"x": 0,
+						"y": 0,
+						"w": 3,
+						"h": 3
 					},
 					"frame": {
-						"x": 141,
-						"y": 555,
-						"w": 92,
-						"h": 76
+						"x": 761,
+						"y": 1,
+						"w": 3,
+						"h": 3
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "plus_symbol.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 1,
+						"w": 46,
+						"h": 47
+					},
+					"frame": {
+						"x": 707,
+						"y": 91,
+						"w": 46,
+						"h": 47
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "popupClose_press.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 168,
+						"h": 58
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 168,
+						"h": 58
+					},
+					"frame": {
+						"x": 537,
+						"y": 121,
+						"w": 168,
+						"h": 58
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "title.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 165,
+						"h": 46
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 165,
+						"h": 46
+					},
+					"frame": {
+						"x": 537,
+						"y": 181,
+						"w": 165,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "closetutorial.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 70,
+						"h": 70
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 68,
+						"h": 67
+					},
+					"frame": {
+						"x": 704,
+						"y": 181,
+						"w": 68,
+						"h": 67
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "tut_matter_shield.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 537,
+						"y": 229,
+						"w": 150,
+						"h": 150
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "tut_mind_shield.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 537,
+						"y": 229,
+						"w": 150,
+						"h": 150
 					},
 					"anchor": {
 						"x": 0.5,
@@ -174,8 +349,8 @@
 						"h": 80
 					},
 					"frame": {
-						"x": 246,
-						"y": 473,
+						"x": 689,
+						"y": 250,
 						"w": 83,
 						"h": 80
 					},
@@ -185,24 +360,49 @@
 					}
 				},
 				{
-					"filename": "rune_void_large.png",
+					"filename": "rune_reinforce_large.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
 						"w": 104,
-						"h": 80
+						"h": 90
 					},
 					"spriteSourceSize": {
-						"x": 12,
-						"y": 0,
-						"w": 77,
-						"h": 80
+						"x": 8,
+						"y": 8,
+						"w": 83,
+						"h": 74
 					},
 					"frame": {
-						"x": 331,
-						"y": 473,
-						"w": 77,
-						"h": 80
+						"x": 689,
+						"y": 332,
+						"w": 83,
+						"h": 74
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "tut_mind_enhance.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 537,
+						"y": 381,
+						"w": 150,
+						"h": 150
 					},
 					"anchor": {
 						"x": 0.5,
@@ -224,8 +424,8 @@
 						"h": 78
 					},
 					"frame": {
-						"x": 410,
-						"y": 473,
+						"x": 689,
+						"y": 408,
 						"w": 79,
 						"h": 78
 					},
@@ -249,10 +449,235 @@
 						"h": 78
 					},
 					"frame": {
-						"x": 410,
-						"y": 553,
+						"x": 689,
+						"y": 488,
 						"w": 79,
 						"h": 78
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "tut_mind_strike.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 537,
+						"y": 533,
+						"w": 150,
+						"h": 150
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_void_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 0,
+						"w": 77,
+						"h": 80
+					},
+					"frame": {
+						"x": 689,
+						"y": 568,
+						"w": 77,
+						"h": 80
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "closetutorial_hover.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 70,
+						"h": 70
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 68,
+						"h": 67
+					},
+					"frame": {
+						"x": 689,
+						"y": 650,
+						"w": 68,
+						"h": 67
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "tab.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 142,
+						"h": 89
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 142,
+						"h": 89
+					},
+					"frame": {
+						"x": 532,
+						"y": 685,
+						"w": 142,
+						"h": 89
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_matter_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 3,
+						"w": 92,
+						"h": 76
+					},
+					"frame": {
+						"x": 676,
+						"y": 719,
+						"w": 92,
+						"h": 76
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_highlight.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 125,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 125,
+						"h": 125
+					},
+					"frame": {
+						"x": 532,
+						"y": 776,
+						"w": 125,
+						"h": 125
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_enhance_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 103,
+						"h": 80
+					},
+					"frame": {
+						"x": 659,
+						"y": 797,
+						"w": 103,
+						"h": 80
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_protect_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 90
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 5,
+						"w": 84,
+						"h": 81
+					},
+					"frame": {
+						"x": 532,
+						"y": 903,
+						"w": 84,
+						"h": 81
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "closetutorial_hover_press.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 70,
+						"h": 70
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 68,
+						"h": 67
+					},
+					"frame": {
+						"x": 618,
+						"y": 903,
+						"w": 68,
+						"h": 67
 					},
 					"anchor": {
 						"x": 0.5,
@@ -265,6 +690,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:347dd23c1174ff78c385629c18112957:57be29eb6d13f82844fd95da18278e1b:77e5ef39ce5a344d4157739a7d363d2d$"
+		"smartupdate": "$TexturePacker:SmartUpdate:3b43be081c172e5440c0384b4afba56d:455060dfc7087bd8fed7ae67abefcd76:77e5ef39ce5a344d4157739a7d363d2d$"
 	}
 }

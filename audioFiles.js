@@ -30,6 +30,8 @@ const audioFiles = [
     {name: 'mind_ultimate_loop_1', src: 'audio/mind_ultimate_loop_1.mp3'},
     {name: 'mind_ultimate_loop_2', src: 'audio/mind_ultimate_loop_2.mp3'},
 
+    {name: 'tickslow', src: 'audio/tickslow.mp3'},
+    {name: 'clocktick', src: 'audio/clocktick.mp3'},
     {name: 'time_body', src: 'audio/time_body.mp3'},
     {name: 'time_strike', src: 'audio/time_strike.mp3'},
     {name: 'time_strike_hit', src: 'audio/time_strike_hit.mp3'},

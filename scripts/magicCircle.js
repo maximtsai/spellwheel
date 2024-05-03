@@ -402,7 +402,7 @@ const ENABLE_KEYBOARD = true;
         this.outerCircle.rotVel = 0;
         this.outerCircle.nextRotation = 0;
         this.outerCircle.prevRotation = 0;
-        this.innerCircleSize = isMobile ? 152 : 150;
+        this.innerCircleSize = isMobile ? 138 : 143;
         this.innerCircle = scene.add.sprite(x, y, 'circle', 'element_normal.png');
         this.innerCircle.setOrigin(0.5003, 0.5003);
         this.innerCircle.setDepth(102);
@@ -823,19 +823,19 @@ const ENABLE_KEYBOARD = true;
         if (this.keyboardRotateInner != 0 && !this.innerDragDisabled) {
             this.usedKeyboardInner = true;
             let rotMult = 0.005/(0.005+Math.abs(this.innerCircle.rotVel));
-            this.innerCircle.torque = this.keyboardRotateInner * 0.031 * rotMult;
+            this.innerCircle.torque = this.keyboardRotateInner * 0.043 * rotMult;
         } else if (this.usedKeyboardInner) {
             this.usedKeyboardInner = false;
-            this.innerCircle.rotVel *= 0.5;
+            this.innerCircle.rotVel *= 0.7;
         }
 
         if (this.keyboardRotateOuter != 0 && !this.outerDragDisabled) {
             this.usedKeyboardOuter = true;
             let rotMult = 0.005/(0.005+Math.abs(this.outerCircle.rotVel));
-            this.outerCircle.torque = this.keyboardRotateOuter * 0.038 * rotMult;
+            this.outerCircle.torque = this.keyboardRotateOuter * 0.043 * rotMult;
         } else if (this.usedKeyboardOuter) {
             this.usedKeyboardOuter = false;
-            this.outerCircle.rotVel *= 0.5;
+            this.outerCircle.rotVel *= 0.7;
         }
 
         // Slow down high speeds

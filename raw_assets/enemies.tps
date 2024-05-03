@@ -205,6 +205,7 @@
                 <false/>
             </struct>
             <key type="filename">enemies/bird_2.png</key>
+            <key type="filename">enemies/bird_2_fat.png</key>
             <key type="filename">enemies/brick.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -678,6 +679,21 @@
                 <rect>15,11,29,23</rect>
                 <key>scale9Paddings</key>
                 <rect>15,11,29,23</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/poopbig.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>10,11,21,23</rect>
+                <key>scale9Paddings</key>
+                <rect>10,11,21,23</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

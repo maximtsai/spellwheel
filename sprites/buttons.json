@@ -4,8 +4,8 @@
 			"image": "sprites/buttons.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 424,
-				"h": 196
+				"w": 509,
+				"h": 335
 			},
 			"scale": 1,
 			"frames": [
@@ -24,10 +24,73 @@
 						"h": 62
 					},
 					"frame": {
-						"x": 2,
-						"y": 2,
+						"x": 1,
+						"y": 1,
 						"w": 377,
 						"h": 62
+					}
+				},
+				{
+					"filename": "new_btn_anim_5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 86,
+						"h": 72
+					},
+					"frame": {
+						"x": 380,
+						"y": 1,
+						"w": 86,
+						"h": 72
+					}
+				},
+				{
+					"filename": "new_btn_anim_6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 86,
+						"h": 72
+					},
+					"frame": {
+						"x": 380,
+						"y": 1,
+						"w": 86,
+						"h": 72
+					}
+				},
+				{
+					"filename": "new_btn_anim_7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 86,
+						"h": 72
+					},
+					"frame": {
+						"x": 380,
+						"y": 1,
+						"w": 86,
+						"h": 72
 					}
 				},
 				{
@@ -45,30 +108,9 @@
 						"h": 62
 					},
 					"frame": {
-						"x": 2,
-						"y": 67,
+						"x": 1,
+						"y": 65,
 						"w": 377,
-						"h": 62
-					}
-				},
-				{
-					"filename": "menu_btn_normal.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 380,
-						"h": 62
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 352,
-						"h": 62
-					},
-					"frame": {
-						"x": 2,
-						"y": 132,
-						"w": 352,
 						"h": 62
 					}
 				},
@@ -87,8 +129,8 @@
 						"h": 40
 					},
 					"frame": {
-						"x": 357,
-						"y": 132,
+						"x": 468,
+						"y": 1,
 						"w": 40,
 						"h": 40
 					}
@@ -108,10 +150,31 @@
 						"h": 40
 					},
 					"frame": {
-						"x": 382,
-						"y": 2,
+						"x": 468,
+						"y": 43,
 						"w": 40,
 						"h": 40
+					}
+				},
+				{
+					"filename": "new_btn_anim_8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 86,
+						"h": 72
+					},
+					"frame": {
+						"x": 380,
+						"y": 75,
+						"w": 86,
+						"h": 72
 					}
 				},
 				{
@@ -129,10 +192,367 @@
 						"h": 40
 					},
 					"frame": {
-						"x": 382,
-						"y": 45,
+						"x": 468,
+						"y": 85,
 						"w": 40,
 						"h": 40
+					}
+				},
+				{
+					"filename": "menu_btn_normal.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 62
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 352,
+						"h": 62
+					},
+					"frame": {
+						"x": 1,
+						"y": 129,
+						"w": 352,
+						"h": 62
+					}
+				},
+				{
+					"filename": "new_btn_anim_15.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 3,
+						"h": 3
+					},
+					"frame": {
+						"x": 355,
+						"y": 129,
+						"w": 3,
+						"h": 3
+					}
+				},
+				{
+					"filename": "new_btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 81,
+						"h": 81
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 81,
+						"h": 81
+					},
+					"frame": {
+						"x": 1,
+						"y": 193,
+						"w": 81,
+						"h": 81
+					}
+				},
+				{
+					"filename": "new_btn_anim.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 81,
+						"h": 81
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 81,
+						"h": 81
+					},
+					"frame": {
+						"x": 1,
+						"y": 193,
+						"w": 81,
+						"h": 81
+					}
+				},
+				{
+					"filename": "new_btn_anim_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 16,
+						"w": 85,
+						"h": 56
+					},
+					"frame": {
+						"x": 1,
+						"y": 276,
+						"w": 85,
+						"h": 56
+					}
+				},
+				{
+					"filename": "new_btn_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 81,
+						"h": 81
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 81,
+						"h": 81
+					},
+					"frame": {
+						"x": 84,
+						"y": 193,
+						"w": 81,
+						"h": 81
+					}
+				},
+				{
+					"filename": "new_btn_back.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 65,
+						"h": 65
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 5,
+						"w": 55,
+						"h": 55
+					},
+					"frame": {
+						"x": 88,
+						"y": 276,
+						"w": 55,
+						"h": 55
+					}
+				},
+				{
+					"filename": "new_btn_anim_13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 19,
+						"w": 66,
+						"h": 53
+					},
+					"frame": {
+						"x": 145,
+						"y": 276,
+						"w": 66,
+						"h": 53
+					}
+				},
+				{
+					"filename": "new_btn_anim_9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 86,
+						"h": 72
+					},
+					"frame": {
+						"x": 167,
+						"y": 193,
+						"w": 86,
+						"h": 72
+					}
+				},
+				{
+					"filename": "new_btn_anim_11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 5,
+						"w": 66,
+						"h": 67
+					},
+					"frame": {
+						"x": 213,
+						"y": 267,
+						"w": 66,
+						"h": 67
+					}
+				},
+				{
+					"filename": "new_btn_anim_4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 83,
+						"h": 72
+					},
+					"frame": {
+						"x": 255,
+						"y": 193,
+						"w": 83,
+						"h": 72
+					}
+				},
+				{
+					"filename": "new_btn_basic.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 65,
+						"h": 65
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 65,
+						"h": 65
+					},
+					"frame": {
+						"x": 281,
+						"y": 267,
+						"w": 65,
+						"h": 65
+					}
+				},
+				{
+					"filename": "new_btn_anim_10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 0,
+						"w": 80,
+						"h": 72
+					},
+					"frame": {
+						"x": 340,
+						"y": 193,
+						"w": 80,
+						"h": 72
+					}
+				},
+				{
+					"filename": "new_btn_anim_3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 85,
+						"h": 69
+					},
+					"frame": {
+						"x": 422,
+						"y": 149,
+						"w": 85,
+						"h": 69
+					}
+				},
+				{
+					"filename": "new_btn_anim_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 13,
+						"w": 85,
+						"h": 59
+					},
+					"frame": {
+						"x": 422,
+						"y": 220,
+						"w": 85,
+						"h": 59
+					}
+				},
+				{
+					"filename": "new_btn_anim_12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 8,
+						"w": 66,
+						"h": 64
+					},
+					"frame": {
+						"x": 348,
+						"y": 267,
+						"w": 66,
+						"h": 64
+					}
+				},
+				{
+					"filename": "new_btn_anim_14.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 69,
+						"h": 69
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 31,
+						"w": 53,
+						"h": 27
+					},
+					"frame": {
+						"x": 355,
+						"y": 149,
+						"w": 53,
+						"h": 27
 					}
 				}
 			]
@@ -141,6 +561,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:91e49fbf8cae5bb9f8eac07f2d96c84f:e32edfb4af768b16d030f3f33b64c802:76d98c9e3f665caad5fa5a5151215d9e$"
+		"smartupdate": "$TexturePacker:SmartUpdate:ee1a5bbe023560ca46933ded84c0cf2a:8753781545c36a9b31614eefa856871c:76d98c9e3f665caad5fa5a5151215d9e$"
 	}
 }

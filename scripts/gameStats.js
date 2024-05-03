@@ -12,6 +12,8 @@
         messageBus.subscribe("setTitle", this.setTitle.bind(this));
         messageBus.subscribe("setMarketHistory", this.setMarketHistory.bind(this));
         messageBus.subscribe("tempPause", this.setTempPause.bind(this));
+        messageBus.subscribe("pauseGame", this.setPermPause.bind(this));
+        messageBus.subscribe("unpauseGame", this.setUnpause.bind(this));
 
         setTimeout(() => {
             this.sendAllStatMessages();
@@ -19,6 +21,7 @@
     }
 
     setTempPause(dur) {
+        console.log("tempPause");
         gameVars.timeScale = 0.25;
         PhaserScene.tweens.timeScale = 0.5;
         PhaserScene.time.timeScale = 0.25;
@@ -30,6 +33,22 @@
             PhaserScene.time.timeScale = 1;
             PhaserScene.anims.globalTimeScale = 1;
         }, dur)
+    }
+
+    setPermPause(amt = 0.002) {
+        console.log("permPause", amt);
+        gameVars.timeScale = amt;
+        PhaserScene.tweens.timeScale = amt;
+        PhaserScene.time.timeScale = amt;
+        PhaserScene.anims.globalTimeScale = amt;
+    }
+
+    setUnpause() {
+        console.log("unpause");
+        gameVars.timeScale = 1;
+        PhaserScene.tweens.timeScale = 1;
+        PhaserScene.time.timeScale = 1;
+        PhaserScene.anims.globalTimeScale = 1;
     }
 
     addMoney(amt) {

@@ -25,7 +25,7 @@ class Button {
         this.onHoverOutFunc = data.onHoverOut || null;
         this.onDropFunc = data.onDrop || null;
         this.cursorInteractive = data.cursorInteractive;
-
+        this.destructibles = [];
         this.imageRefs = {};
         this.oldImageRef = null;
         this.currImageRef = null;
@@ -485,11 +485,21 @@ class Button {
         }
     }
 
+    addToDestructibles(item) {
+        this.destructibles.push(item);
+    }
+
     destroy() {
         if (this.isDestroyed) {
             return;
         }
         this.isDestroyed = true;
+        if (this.destructibles.length > 0) {
+            for (let i = 0; i < this.destructibles.length; i++) {
+                this.destructibles[i].destroy();
+            }
+        }
+        this.destructibles = [];
         buttonManager.removeButton(this);
         if (this.text) {
             this.text.destroy();

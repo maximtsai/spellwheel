@@ -2,6 +2,10 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('dummy.png', 0.75,0, 5);
+        setTimeout(() => {
+            this.tutorialButton = createTutorialBtn(this.level);
+            this.addToDestructibles(this.tutorialButton);
+        }, 1500)
     }
 
      initStatsCustom() {

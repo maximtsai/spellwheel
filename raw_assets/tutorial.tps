@@ -267,21 +267,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">tutorial/popupTutorialTitle.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>132,80,265,161</rect>
-                <key>scale9Paddings</key>
-                <rect>132,80,265,161</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">tutorial/rune_enhance_large.png</key>
             <key type="filename">tutorial/rune_matter_large.png</key>
             <key type="filename">tutorial/rune_time_large.png</key>
@@ -365,11 +350,25 @@
                 <false/>
             </struct>
             <key type="filename">tutorial/tut_matter_enhance.png</key>
+            <key type="filename">tutorial/tut_matter_reinforce.png</key>
             <key type="filename">tutorial/tut_matter_shield.png</key>
             <key type="filename">tutorial/tut_matter_strike.png</key>
+            <key type="filename">tutorial/tut_matter_unload.png</key>
             <key type="filename">tutorial/tut_mind_enhance.png</key>
+            <key type="filename">tutorial/tut_mind_reinforce.png</key>
             <key type="filename">tutorial/tut_mind_shield.png</key>
             <key type="filename">tutorial/tut_mind_strike.png</key>
+            <key type="filename">tutorial/tut_mind_unload.png</key>
+            <key type="filename">tutorial/tut_time_enhance.png</key>
+            <key type="filename">tutorial/tut_time_reinforce.png</key>
+            <key type="filename">tutorial/tut_time_shield.png</key>
+            <key type="filename">tutorial/tut_time_strike.png</key>
+            <key type="filename">tutorial/tut_time_unload.png</key>
+            <key type="filename">tutorial/tut_void_enhance.png</key>
+            <key type="filename">tutorial/tut_void_protect.png</key>
+            <key type="filename">tutorial/tut_void_reinforce.png</key>
+            <key type="filename">tutorial/tut_void_strike.png</key>
+            <key type="filename">tutorial/tut_void_unload.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

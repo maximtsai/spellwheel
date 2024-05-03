@@ -73,14 +73,19 @@ function createTutorialBtn(lvl) {
             return buildTutorialButton('rune_mind_large.png', buildTutorialMind);
             break;
         case 3:
+            return buildTutorialButton('rune_protect_large.png', buildTutorialProtect);
             break;
         case 4:
+            return buildTutorialButton('rune_reinforce_large.png', buildTutorialReinforce);
             break;
         case 5:
+            return buildTutorialButton('rune_time_large.png', buildTutorialTime);
             break;
         case 6:
+            return buildTutorialButton('rune_void_large.png', buildTutorialVoid);
             break;
         case 7:
+            return buildTutorialButton('rune_unload_large.png', buildTutorialUnload);
             break;
     }
 }
@@ -163,7 +168,7 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
 
     let tutTitleBg = PhaserScene.add.sprite(gameConsts.halfWidth - 168, gameConsts.halfHeight - 285, 'tutorial', 'title.png').setDepth(10000);
     let tutBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 100, 'tutorial', 'popupTutorial.png').setScale(0.985).setAlpha(0.5).setDepth(10000);
-    let tutPlus = PhaserScene.add.sprite(gameConsts.halfWidth - 118, gameConsts.halfHeight - 188, 'tutorial', 'plus_symbol.png').setScale(0.96).setAlpha(0.5).setDepth(10000);
+    let tutPlus = PhaserScene.add.sprite(gameConsts.halfWidth - 124, gameConsts.halfHeight - 193, 'tutorial', 'plus_symbol.png').setScale(0.96).setAlpha(0.5).setDepth(10000);
 
     let closeButton;
     closeButton = new Button({
@@ -254,7 +259,7 @@ function buildClickblocker() {
             ref: "blackPixel",
             x: gameConsts.halfWidth,
             y: gameConsts.halfHeight,
-            alpha: 0.001,
+            alpha: 0.3,
             scaleX: 1000,
             scaleY: 1000
         },

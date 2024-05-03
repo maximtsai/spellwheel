@@ -15,7 +15,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 120 : 95;
+         this.health = gameVars.isHardMode ? 120 : 6;
          this.slashEffect = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
      }
 
@@ -279,14 +279,13 @@
              }
          });
 
-
          PhaserScene.tweens.add({
              targets: this.sprite,
              rotation: -0.2,
              ease: "Cubic.easeIn",
              duration: 25,
              onComplete: () => {
-                 this.setSprite('gobboDead.png');
+                 this.setDefaultSprite('gobboDead.png');
                  this.sprite.setRotation(0);
                  this.x -= 5;
                  this.y += 48;

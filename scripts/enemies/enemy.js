@@ -1055,6 +1055,9 @@ class Enemy {
             return;
         }
         this.dead = true;
+        if (this.tutorialButton) {
+            this.tutorialButton.destroy();
+        }
         if (this.bgMusic) {
             this.bgMusic.stop();
         }

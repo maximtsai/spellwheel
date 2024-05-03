@@ -1421,7 +1421,7 @@ class Enemy {
                             return;
                         }
                         if (!isRepeatedAttack) {
-                            messageBus.publish("enemyMadeAttack");
+                            messageBus.publish("enemyMadeAttack", this.nextAttack.damage);
                         }
                         if (this.dead){
                             return;

@@ -892,7 +892,7 @@ class SpellManager {
                     });
                     let idxNum = parseInt(i);
                     if (idxNum === 0) {
-                        playSound('time_strike_hit');
+                        playSound('time_strike_hit', 0.92);
                     } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
                         // last hit
                         playSound('time_strike_hit', 0.85);
@@ -1615,10 +1615,10 @@ class SpellManager {
             }
         });
 
-        let spellName = "REFLECT PAIN";
+        let spellName = "REFLECT DAMAGE";
         let bonusSize = 0;
         if (spellMultiplier >= 2) {
-            spellName = "REFLECT PAIN X" + spellMultiplier;
+            spellName = "REFLECT DAMAGE X" + spellMultiplier;
             bonusSize = 0.15;
         }
         this.postNonAttackCast(spellID, spellName, bonusSize);

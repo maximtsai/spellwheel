@@ -2173,7 +2173,7 @@ const ENABLE_KEYBOARD = true;
                          }
                          break;
                      case RUNE_PROTECT:
-                         this.spellNameText.setText('REFLECT PAIN');
+                         this.spellNameText.setText('REFLECT DAMAGE');
                          this.spellDescriptor.setText(getLangText('mind_protect_desc'));
                          break;
                      case RUNE_UNLOAD:

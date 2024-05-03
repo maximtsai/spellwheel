@@ -160,9 +160,9 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
     messageBus.publish('pauseGame', 0.002);
     globalObjects.magicCircle.disableMovement();
 
+    let tutTitleBg = PhaserScene.add.sprite(gameConsts.halfWidth - 168, gameConsts.halfHeight - 285, 'tutorial', 'title.png').setDepth(10000);
     let tutBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 100, 'tutorial', 'popupTutorial.png').setScale(0.985).setAlpha(0.5).setDepth(10000);
-    let tutPlus = PhaserScene.add.sprite(gameConsts.halfWidth - 120, gameConsts.halfHeight - 200, 'tutorial', 'plus_symbol.png').setScale(0.96).setAlpha(0.5).setDepth(10000);
-    let tutTitleBg = PhaserScene.add.sprite(gameConsts.halfWidth - 175, gameConsts.halfHeight - 270, 'tutorial', 'title.png').setDepth(10000);
+    let tutPlus = PhaserScene.add.sprite(gameConsts.halfWidth - 118, gameConsts.halfHeight - 188, 'tutorial', 'plus_symbol.png').setScale(0.96).setAlpha(0.5).setDepth(10000);
 
     let closeButton;
     closeButton = new Button({
@@ -192,6 +192,7 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
             cleanupTutorialElements(nonscalingDestructibles, true);
             globalObjects.runeHighlight.setVisible(false).setScale(0.96);
             globalObjects.runeHighlightTemp.setAlpha(0);
+            globalObjects.runePicture.setAlpha(0);
         }
     });
     closeButton.setDepth(10002);
@@ -213,46 +214,6 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
         duration: 1,
     });
 
-}
-
-function buildTutorialMind() {
-    let clickBlocker = buildClickblocker();
-    let initTutText = "The Energy Rune represents all\npower that is non-physical.\n\nThis rune provides powerful\nsupportive abilities and can even\ndeal damage that bypasses\nenemy shields.";
-    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 100, initTutText, {fontFamily: 'Verdana', fontSize: 24, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0);
-    globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
-    PhaserScene.tweens.add({
-        delay: 1,
-        targets: [tutText, globalObjects.runePicture],
-        alpha: 1,
-        scaleX: 1,
-        scaleY: 1,
-        duration: 1,
-    });
-    globalObjects.runePicture.setFrame('rune_mind_large.png');
-
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 180, gameConsts.halfHeight - 270, 'MIND RUNE', {fontFamily: 'Verdana', fontSize: 24, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
-    let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 200, gameConsts.halfHeight - 190, 'tutorial', 'rune_mind_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
-    let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
-        tutText.setText(initTutText);
-        globalObjects.runePicture.setFrame('rune_mind_large.png');
-    })
-
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune.x, tutRune.y);
-
-    let tutRune2 = PhaserScene.add.sprite(gameConsts.halfWidth - 0, gameConsts.halfHeight - 190, 'tutorial', 'rune_strike_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
-    let runeClicker2 = buildRuneclicker(tutRune2.x, tutRune2.y, () => {
-        tutText.setText("Fires a bolt of energy that\ndeals little damage on it's\nown, but it amplifies your next\nattack for double (x2) damage.");
-        globalObjects.runePicture.setFrame('tut_mind_strike.png');
-
-    })
-
-    let tutRune3 = PhaserScene.add.sprite(gameConsts.halfWidth + 150, gameConsts.halfHeight - 190, 'tutorial', 'rune_enhance_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
-    let runeClicker3 = buildRuneclicker(tutRune3.x, tutRune3.y, () => {
-        tutText.setText("Your next attack sets the\nenemy on fire, which deals\ndamage over time that\nbypasses shields.");
-        globalObjects.runePicture.setFrame('tut_mind_enhance.png');
-    })
-
-    buildTutorialBasic([tutTitleText, tutRune, tutRune2, tutRune3, tutText], [runeClicker1, runeClicker2, runeClicker3, clickBlocker]);
 }
 
 function buildRuneclicker(x, y, onClick) {

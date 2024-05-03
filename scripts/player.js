@@ -433,9 +433,10 @@ class Player {
         zoomTemp(1.006);
     }
 
-    enemyMadeAttack() {
-        this.recentlyTakenDamageAmt = 0;
-        this.recentlyTakenTimeDamageAmt = 0;
+    enemyMadeAttack(damage) {
+        if (damage > 0) {
+            this.canResetRecentDamage = true;
+        }
     }
 
     getrecentlyTakenDamageAmt() {
@@ -453,6 +454,12 @@ class Player {
         let origHealth = this.health;
         let damageTaken = this.adjustDamageTaken(actualAmt);
         if (damageTaken > 1) {
+            if (this.canResetRecentDamage) {
+                this.canResetRecentDamage = false;
+                this.recentlyTakenDamageAmt = 0;
+                this.recentlyTakenTimeDamageAmt = 0;
+            }
+
             this.recentlyTakenDamageAmt += damageTaken;
 
             this.bleedObj.alpha = Math.sqrt(damageTaken) * 0.04;
@@ -594,7 +601,7 @@ class Player {
                 case 'matter':
                     if (hurtAmt > 0 && shieldObj.active) {
                         let blockedDmg = amt;
-                        playSound('shield_block', 0.5);
+                        playSound('shield_block', 0.4);
                         if (shieldObj.health > hurtAmt) {
                             shieldObj.health -= hurtAmt;
                             hurtAmt = 0;

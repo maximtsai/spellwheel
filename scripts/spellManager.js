@@ -446,6 +446,9 @@ class SpellManager {
             cleanUp: (statuses) => {
                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
                     let objectsToCleanup = statuses[spellID].animObj;
+                    for (let i = 0; i < objectsToCleanup.length; i++) {
+                        objectsToCleanup[i].setFrame('matter_boost_glow.png');
+                    }
                     statuses[spellID].currentAnim = this.scene.tweens.add({
                         targets: objectsToCleanup,
                         duration: 350 + objectsToCleanup.length * 50,
@@ -460,9 +463,9 @@ class SpellManager {
                     statuses[spellID].currentAnim = this.scene.tweens.add({
                         targets: statuses[spellID].animObj,
                         duration: 350 + statuses[spellID].animObj.length * 50,
-                        scaleX: 0.6,
-                        scaleY: 0.6,
-                        ease: 'Cubic.easeIn'
+                        scaleX: 0.62,
+                        scaleY: 0.62,
+                        ease: 'Quart.easeIn'
                     });
                 }
             }

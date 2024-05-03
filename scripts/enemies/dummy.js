@@ -35,11 +35,11 @@
 
 
      initTutorial() {
-         this.rune1 = this.scene.add.sprite(gameConsts.width - 200, 440, 'circle', 'rune_enhance_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
-         this.rune2 = this.scene.add.sprite(gameConsts.width - 138, 440, 'circle', 'rune_matter_glow.png').setDepth(100002).setScale(0.8, 0.8).setAlpha(0);
+         this.rune1 = this.scene.add.sprite(gameConsts.width - 200, gameConsts.halfHeight + 20, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+         this.rune2 = this.scene.add.sprite(gameConsts.width - 138, gameConsts.halfHeight + 20, 'circle', 'rune_matter_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
 
          setTimeout(() => {
-             globalObjects.textPopupManager.setInfoText(gameConsts.width - 114, 348, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'left');
+             globalObjects.textPopupManager.setInfoText(gameConsts.width - 114, gameConsts.halfHeight - 70, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'left');
              PhaserScene.tweens.add({
                  targets: [this.rune1, this.rune2],
                  alpha: 1,

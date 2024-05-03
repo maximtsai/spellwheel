@@ -606,6 +606,8 @@ const ENABLE_KEYBOARD = true;
     cancelTimeSlow() {
         if (gameVars.timeSlowRatio !== 1) {
             gameVars.timeSlowRatio = 1;
+            messageBus.publish("clearPermPause");
+
             this.scene.tweens.add({
                 // this.timeStopLight,
                 targets: [this.timeStopHeavy],
@@ -665,9 +667,11 @@ const ENABLE_KEYBOARD = true;
         if (ratio < 0.99) {
             playSound('timeSlow');
         }
+
         if (oldRatio != ratio) {
             messageBus.publish('setTimeSlowRatio', ratio);
             if (ratio == 1) {
+
                 this.scene.tweens.add({
                     // this.timeStopLight,
                     targets: [this.timeStopHeavy],

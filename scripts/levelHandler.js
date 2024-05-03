@@ -67,6 +67,7 @@ function createTutorialBtn(lvl) {
         case 0:
             break;
         case 1:
+            return buildTutorialButton('rune_matter_large.png', buildTutorialMatter);
             break;
         case 2:
             return buildTutorialButton('rune_mind_large.png', buildTutorialMind);

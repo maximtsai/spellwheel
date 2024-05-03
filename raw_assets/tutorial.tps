@@ -364,7 +364,9 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">tutorial/tut_matter_enhance.png</key>
             <key type="filename">tutorial/tut_matter_shield.png</key>
+            <key type="filename">tutorial/tut_matter_strike.png</key>
             <key type="filename">tutorial/tut_mind_enhance.png</key>
             <key type="filename">tutorial/tut_mind_shield.png</key>
             <key type="filename">tutorial/tut_mind_strike.png</key>

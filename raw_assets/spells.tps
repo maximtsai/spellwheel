@@ -543,6 +543,7 @@
                 <false/>
             </struct>
             <key type="filename">spells/matter_boost.png</key>
+            <key type="filename">spells/matter_boost_glow.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

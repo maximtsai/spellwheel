@@ -1370,6 +1370,7 @@ class Enemy {
         }
         let pullbackScale = this.pullbackScale * this.sprite.startScale;
         let pullbackDurMult = Math.sqrt(Math.abs(this.pullbackScale - this.pullbackScaleDefault) * 10) + 1;
+        let timeSlowMult = gameVars.timeSlowRatio < 0.9 ? 0.5 : 1;
 
         let durationPullback = isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult : 300 * extraTimeMult * pullbackDurMult;
 
@@ -1389,7 +1390,7 @@ class Enemy {
             scaleX: pullbackScale,
             scaleY: pullbackScale,
             rotation: 0,
-            duration: durationPullback,
+            duration: durationPullback * timeSlowMult,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 if (this.dead){
@@ -1407,7 +1408,7 @@ class Enemy {
                 //         this.sprite.setScale(pullbackScale);
                 //     }, attackDuration * 0.2);
                 // }
-                let attackScale = this.attackScale * this.sprite.startScale
+                let attackScale = this.attackScale * this.sprite.startScale * timeSlowMult;
                 attackDuration += Math.floor(this.attackScale * 200);
                 this.attackAnim = this.scene.tweens.add({
                     targets: this.sprite,
@@ -1455,7 +1456,7 @@ class Enemy {
                                 scaleX: this.sprite.startScale,
                                 scaleY: this.sprite.startScale,
                                 rotation: 0,
-                                duration: 500 * extraTimeMult,
+                                duration: 500 * extraTimeMult * timeSlowMult,
                                 ease: 'Cubic.easeInOut'
                             });
                             this.isUsingAttack = false;

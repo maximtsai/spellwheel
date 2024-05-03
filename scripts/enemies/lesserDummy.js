@@ -314,8 +314,8 @@
              onComplete: () => {
                  this.setSprite('lesser_dummy_dead.png', this.sprite.scaleX);
                  this.sprite.rotation = 0;
-                 this.sprite.y += 35;
-                 this.sprite.x -= 40;
+                 this.sprite.y += 54;
+                 this.sprite.x -= 81;
                  this.showVictory();
 
              }

@@ -13,6 +13,8 @@
         messageBus.subscribe("setMarketHistory", this.setMarketHistory.bind(this));
         messageBus.subscribe("tempPause", this.setTempPause.bind(this));
         messageBus.subscribe("pauseGame", this.setPermPause.bind(this));
+        messageBus.subscribe("setGameSlow", this.setGameSlow.bind(this));
+        messageBus.subscribe("clearGameSlow", this.clearGameSlow.bind(this));
         messageBus.subscribe("unpauseGame", this.setUnpause.bind(this));
 
         setTimeout(() => {
@@ -28,15 +30,14 @@
         PhaserScene.anims.globalTimeScale = 0.5;
 
         setTimeout(() => {
-            gameVars.timeScale = 1;
-            PhaserScene.tweens.timeScale = 1;
-            PhaserScene.time.timeScale = 1;
-            PhaserScene.anims.globalTimeScale = 1;
+            gameVars.timeScale = gameVars.gameManualSlowSpeed || 1;
+            PhaserScene.tweens.timeScale = gameVars.gameManualSlowSpeed || 1;
+            PhaserScene.time.timeScale = gameVars.gameManualSlowSpeed || 1;
+            PhaserScene.anims.globalTimeScale = gameVars.gameManualSlowSpeed || 1;
         }, dur)
     }
 
     setPermPause(amt = 0.002) {
-        console.log("permPause", amt);
         gameVars.timeScale = amt;
         PhaserScene.tweens.timeScale = amt;
         PhaserScene.time.timeScale = amt;
@@ -44,11 +45,26 @@
     }
 
     setUnpause() {
-        console.log("unpause");
-        gameVars.timeScale = 1;
-        PhaserScene.tweens.timeScale = 1;
-        PhaserScene.time.timeScale = 1;
-        PhaserScene.anims.globalTimeScale = 1;
+        gameVars.timeScale = gameVars.gameManualSlowSpeed || 1;
+        PhaserScene.tweens.timeScale = gameVars.gameManualSlowSpeed || 1;
+        PhaserScene.time.timeScale = gameVars.gameManualSlowSpeed || 1;
+        PhaserScene.anims.globalTimeScale = gameVars.gameManualSlowSpeed || 1;
+    }
+
+    setGameSlow(amt) {
+        gameVars.gameManualSlowSpeed = amt;
+        gameVars.timeScale = gameVars.gameManualSlowSpeed;
+        PhaserScene.tweens.timeScale = gameVars.gameManualSlowSpeed;
+        PhaserScene.time.timeScale = gameVars.gameManualSlowSpeed;
+        PhaserScene.anims.globalTimeScale = gameVars.gameManualSlowSpeed;
+    }
+
+    clearGameSlow() {
+        gameVars.gameManualSlowSpeed = 1;
+        gameVars.timeScale = gameVars.gameManualSlowSpeed;
+        PhaserScene.tweens.timeScale = gameVars.gameManualSlowSpeed;
+        PhaserScene.time.timeScale = gameVars.gameManualSlowSpeed;
+        PhaserScene.anims.globalTimeScale = gameVars.gameManualSlowSpeed;
     }
 
     addMoney(amt) {

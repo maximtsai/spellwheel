@@ -188,6 +188,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">ui/credits.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>113,138,225,275</rect>
+                <key>scale9Paddings</key>
+                <rect>113,138,225,275</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">ui/locket1.png</key>
             <key type="filename">ui/locket2.png</key>
             <struct type="IndividualSpriteSettings">

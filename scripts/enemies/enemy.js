@@ -389,38 +389,40 @@ class Enemy {
             if (this.isUsingAttack) {
                 // doNothing
             } else if (this.attackCharge >= this.nextAttackChargeNeeded) {
-                this.chargeBarReady1.setAlpha(1).setScale(0.9, 0.5);
-                this.chargeBarReady2.setAlpha(1).setScale(0.9, 0.5);
-                this.chargeBarReady1.x = this.chargeBarMax.x - this.chargeBarMax.scaleX * 1;
-                this.chargeBarReady2.x = this.chargeBarMax.x + this.chargeBarMax.scaleX * 1;
-                console.log( this.chargeBarReady1.x);
-                this.chargeBarReadyAnim = this.scene.tweens.add({
-                    targets: [this.chargeBarReady1, this.chargeBarReady2],
-                    scaleX: 1.25,
-                    scaleY: 0.95,
-                    ease: 'Cubic.easeIn',
-                    duration: 100,
-                    onComplete: () => {
-                        this.chargeBarReadyAnim = this.scene.tweens.add({
-                            targets: [this.chargeBarReady1, this.chargeBarReady2],
-                            scaleX: 0.9,
-                            scaleY: 0.8,
-                            alpha: 0.95,
-                            ease: 'Cubic.easeOut',
-                            duration: 400,
-                            onComplete: () => {
-                                this.chargeBarReadyAnim = this.scene.tweens.add({
-                                    targets: [this.chargeBarReady1, this.chargeBarReady2],
-                                    alpha: 0,
-                                    scaleX: 0.75,
-                                    scaleY: 0.75,
-                                    duration: 600,
-                                    ease: 'Quad.easeIn'
-                                });
-                            }
-                        });
-                    }
-                });
+                if (this.nextAttack.damage !== undefined && this.nextAttack.damage !== 0) {
+                    this.chargeBarReady1.setAlpha(1).setScale(0.9, 0.5);
+                    this.chargeBarReady2.setAlpha(1).setScale(0.9, 0.5);
+                    this.chargeBarReady1.x = this.chargeBarMax.x - this.chargeBarMax.scaleX * 1;
+                    this.chargeBarReady2.x = this.chargeBarMax.x + this.chargeBarMax.scaleX * 1;
+                    this.chargeBarReadyAnim = this.scene.tweens.add({
+                        targets: [this.chargeBarReady1, this.chargeBarReady2],
+                        scaleX: 1.25,
+                        scaleY: 0.95,
+                        ease: 'Cubic.easeIn',
+                        duration: 100,
+                        onComplete: () => {
+                            this.chargeBarReadyAnim = this.scene.tweens.add({
+                                targets: [this.chargeBarReady1, this.chargeBarReady2],
+                                scaleX: 0.9,
+                                scaleY: 0.8,
+                                alpha: 0.95,
+                                ease: 'Cubic.easeOut',
+                                duration: 400,
+                                onComplete: () => {
+                                    this.chargeBarReadyAnim = this.scene.tweens.add({
+                                        targets: [this.chargeBarReady1, this.chargeBarReady2],
+                                        alpha: 0,
+                                        scaleX: 0.75,
+                                        scaleY: 0.75,
+                                        duration: 600,
+                                        ease: 'Quad.easeIn'
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+
                 this.useMove();
                 this.chargeBarWarning.visible = true;
                 this.chargeBarWarning.alpha = 0.8;

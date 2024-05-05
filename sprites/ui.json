@@ -4,32 +4,11 @@
 			"image": "sprites/ui-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 943,
-				"h": 996
+				"w": 964,
+				"h": 1318
 			},
 			"scale": 1,
 			"frames": [
-				{
-					"filename": "battleOverScreen.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 510,
-						"h": 560
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 510,
-						"h": 560
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 510,
-						"h": 560
-					}
-				},
 				{
 					"filename": "locket2.png",
 					"rotated": false,
@@ -46,7 +25,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 563,
+						"y": 1,
 						"w": 548,
 						"h": 432
 					}
@@ -66,10 +45,52 @@
 						"h": 433
 					},
 					"frame": {
-						"x": 513,
+						"x": 551,
 						"y": 1,
 						"w": 401,
 						"h": 433
+					}
+				},
+				{
+					"filename": "battleOverScreen.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 510,
+						"h": 560
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 510,
+						"h": 560
+					},
+					"frame": {
+						"x": 1,
+						"y": 435,
+						"w": 510,
+						"h": 560
+					}
+				},
+				{
+					"filename": "credits.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 450,
+						"h": 550
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 450,
+						"h": 550
+					},
+					"frame": {
+						"x": 513,
+						"y": 436,
+						"w": 450,
+						"h": 550
 					}
 				},
 				{
@@ -87,8 +108,8 @@
 						"h": 329
 					},
 					"frame": {
-						"x": 551,
-						"y": 436,
+						"x": 513,
+						"y": 988,
 						"w": 391,
 						"h": 329
 					}
@@ -108,8 +129,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 551,
-						"y": 767,
+						"x": 1,
+						"y": 997,
 						"w": 180,
 						"h": 51
 					}
@@ -129,29 +150,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 733,
-						"y": 767,
-						"w": 180,
-						"h": 51
-					}
-				},
-				{
-					"filename": "nextLevel_press.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 180,
-						"h": 51
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 180,
-						"h": 51
-					},
-					"frame": {
-						"x": 551,
-						"y": 820,
+						"x": 183,
+						"y": 997,
 						"w": 180,
 						"h": 51
 					}
@@ -171,8 +171,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 733,
-						"y": 820,
+						"x": 365,
+						"y": 997,
 						"w": 139,
 						"h": 51
 					}
@@ -192,8 +192,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 733,
-						"y": 820,
+						"x": 365,
+						"y": 997,
 						"w": 139,
 						"h": 51
 					}
@@ -213,9 +213,30 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 733,
-						"y": 820,
+						"x": 365,
+						"y": 997,
 						"w": 139,
+						"h": 51
+					}
+				},
+				{
+					"filename": "nextLevel_press.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 180,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 180,
+						"h": 51
+					},
+					"frame": {
+						"x": 1,
+						"y": 1050,
+						"w": 180,
 						"h": 51
 					}
 				}
@@ -225,6 +246,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:a100f73fc11f15a0ba2c2ef51d1e3612:eea1b936d4bdf7c2bad8a12527de941b:6af6d199855d1c5980a61db04791f8fb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:f3453a95fae5eb650baf0e8ace5b9fbb:a287d4f4389ded66f2e2c9a3bc44ec5d:6af6d199855d1c5980a61db04791f8fb$"
 	}
 }

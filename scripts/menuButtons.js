@@ -11,14 +11,15 @@ function clearMenuButtons() {
     }
     globalObjects.startButton.destroy();
     globalObjects.levelSelectButton.destroy();
-    globalObjects.creditsButton.destroy();
     globalObjects.lvlButton.destroy();
+    globalObjects.level3Button.destroy();
     globalObjects.lvl5Button.destroy();
     globalObjects.lvl6Button.destroy();
 
-
-    globalObjects.creditsButton2.destroy();
-    globalObjects.creditsButton3.destroy();
+    globalObjects.creditsButton.destroy();
+    globalObjects.lvl7Button.destroy();
+    globalObjects.lvl8Button.destroy();
+    globalObjects.lvl9Button.destroy();
 
 
 
@@ -167,7 +168,7 @@ function gotoMainMenu() {
     globalObjects.levelSelectButton.setScale(0.5);
     globalObjects.levelSelectButton.addText("LEVEL 2", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
 
-    globalObjects.creditsButton = new Button({
+    globalObjects.level3Button = new Button({
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
@@ -190,8 +191,8 @@ function gotoMainMenu() {
             beginLevel(3);
         }
     });
-    globalObjects.creditsButton.setScale(0.5);
-    globalObjects.creditsButton.addText("LEVEL 3", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.level3Button.setScale(0.5);
+    globalObjects.level3Button.addText("LEVEL 3", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvlButton = new Button({
         normal: {
@@ -274,7 +275,7 @@ function gotoMainMenu() {
 
 
 
-    globalObjects.creditsButton2 = new Button({
+    globalObjects.lvl7Button = new Button({
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
@@ -297,10 +298,10 @@ function gotoMainMenu() {
             beginLevel(7);
         }
     });
-    globalObjects.creditsButton2.setScale(0.5);
-    globalObjects.creditsButton2.addText("LEVEL 7", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl7Button.setScale(0.5);
+    globalObjects.lvl7Button.addText("LEVEL 7", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
 
-    globalObjects.creditsButton3 = new Button({
+    globalObjects.lvl8Button = new Button({
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
@@ -320,10 +321,95 @@ function gotoMainMenu() {
         },
         onMouseUp: () => {
             clearMenuButtons();
+            beginLevel(8);
+        }
+    });
+    globalObjects.lvl8Button.setScale(0.5);
+    globalObjects.lvl8Button.addText("LEVEL 8", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+
+    globalObjects.lvl9Button = new Button({
+        normal: {
+            ref: "menu_btn_normal.png",
+            atlas: 'buttons',
+            x: 100,
+            y: 380,
+        },
+        hover: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        press: {
+            ref: "menu_btn_press.png",
+            atlas: 'buttons',
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp: () => {
+            clearMenuButtons();
             beginLevel(9);
         }
     });
-    globalObjects.creditsButton3.setScale(0.5);
-    globalObjects.creditsButton3.addText("LEVEL 9", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl9Button.setScale(0.5);
+    globalObjects.lvl9Button.addText("LEVEL 9", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+
+    globalObjects.creditsButton = new Button({
+        normal: {
+            ref: "menu_btn_normal.png",
+            atlas: 'buttons',
+            x: gameConsts.width - 80,
+            y: gameConsts.height - 330,
+        },
+        hover: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        press: {
+            ref: "menu_btn_press.png",
+            atlas: 'buttons',
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp: () => {
+            let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'credits.png').setDepth(100000).setScale(0.975);
+            PhaserScene.tweens.add({
+                targets: creditsUI,
+                duration: 250,
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 1,
+                ease: 'Cubic.easeOut',
+            });
+            if (canvas) {
+                canvas.style.cursor = 'pointer';
+            }
+            let creditsButton;
+            creditsButton = new Button({
+                normal: {
+                    ref: "blackPixel",
+                    scaleX: 1000,
+                    scaleY: 1000,
+                    alpha: 0.5,
+                    x: gameConsts.halfWidth,
+                    y: gameConsts.halfHeight,
+                },
+                disable: {
+                    alpha: 0.1
+                },
+
+                onMouseUp: () => {
+                    creditsButton.destroy();
+                    creditsUI.destroy();
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                }
+            });
+            creditsButton.setDepth(99999);
+        }
+    });
+    globalObjects.creditsButton.setScale(0.5, 0.5);
+    globalObjects.creditsButton.addText("CREDITS", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
 
 }

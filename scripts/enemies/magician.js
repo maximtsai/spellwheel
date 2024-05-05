@@ -14,7 +14,7 @@
     }
 
      initStatsCustom() {
-         this.health = 100;
+         this.health = 75;
          this.damageNumOffset = 45;
          this.timeObjects = [];
      }
@@ -54,7 +54,7 @@
          } else if (currHealthPercent < 0.999 && !this.usedTimeShield) {
              this.currentAttackSetIndex = 1;
              this.nextAttackIndex = 0;
-         } else if (this.health <= 15 && this.usedTimeShield) {
+         } else if (this.health <= 14 && this.usedTimeShield) {
              if (this.statuses[0] && this.statuses[0].duration >= this.health && !this.isTerrified) {
                  this.isTerrified = true;
                  this.interruptCurrentAttack();
@@ -285,7 +285,7 @@
          this.floatingDeath = getFloatingDeath();
          this.floatingDeathAnim = this.scene.tweens.add({
              targets: this.floatingDeath,
-             duration: 16000,
+             duration: 19000,
              alpha: 0.75,
              scaleX: 0.7,
              scaleY: 0.7,
@@ -293,13 +293,15 @@
          });
          this.scene.tweens.add({
              targets: this.blackBackground,
-             duration: 16000,
+             duration: 19000,
              alpha: 0.7,
              ease: 'Quad.easeOut',
          });
      }
 
      setupTimeShield() {
+        let lostHealth = this.healthMax - this.health;
+         this.heal(Math.floor(lostHealth * 0.33));
          this.specialDamageAbsorptionActive = true;
 
          this.clockShield = PhaserScene.add.sprite(gameConsts.halfWidth, this.y, 'spells', 'clock_back_large_red.png').setDepth(1).setScale(0.4).setAlpha(0.75);
@@ -503,7 +505,7 @@
              ],
              [
                  {
-                     name: "{TIME SHIELD{",
+                     name: "+{DELAY INJURIES{+",
                      desc: "The Time Magician\nslows down his health",
                      chargeAmt: 250,
                      prepareSprite: 'time_magi_cast_big.png',
@@ -590,6 +592,7 @@
                      desc: "The Time Magician prepares\nhis most powerful magics.",
                      chargeAmt: 400,
                      chargeMult: 1.5,
+                     isBigMove: true,
                      prepareSprite: 'time_magi_cast_big.png',
                      startFunction: () => {
                          setTimeout(() => {
@@ -635,7 +638,7 @@
                  {
                      name: "TIME-STOPPED ATTACK |6x6 ",
                      desc: "A devastating barrage\nof offensive magic.",
-                     chargeAmt: 850,
+                     chargeAmt: 750,
                      chargeMult: 16,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -653,7 +656,7 @@
                      }
                  },
                  {
-                     name: "TIME-STOPPED ATTACK |15 ",
+                     name: "TIME-STOPPED ATTACK |18 ",
                      desc: "A devastating barrage\nof offensive magic.",
                      chargeAmt: 750,
                      chargeMult: 16,
@@ -663,7 +666,7 @@
                      },
                      attackFinishFunction: () => {
                          setTimeout(() => {
-                             this.fireTimeObjects(15, 500);
+                             this.fireTimeObjects(18, 500);
                          }, 300);
                      }
                  },

@@ -699,6 +699,58 @@ const ENABLE_KEYBOARD = true;
     attackLaunched() {
         let mindReinforceStatus = globalObjects.player.getStatuses()['mindReinforce'];
         if (mindReinforceStatus) {
+            let energyCircle1 = mindReinforceStatus.animObj[1];
+            let energyCircle2 = mindReinforceStatus.animObj[1];
+            this.scene.tweens.add({
+                targets: energyCircle1,
+                duration: 150,
+                scaleX: 1.15,
+                scaleY: 1.15,
+                alpha: 1,
+                ease: 'Cubic.easeOut',
+                onComplete: () => {
+                    this.scene.tweens.add({
+                        targets: energyCircle1,
+                        duration: 400,
+                        scaleX: 0.975,
+                        scaleY: 0.975,
+                        ease: 'Back.easeOut',
+                        onComplete: () => {
+                            this.scene.tweens.add({
+                                targets: energyCircle1,
+                                duration: 750,
+                                alpha: 0.5,
+                            });
+                        }
+                    });
+                }
+            });
+
+            this.scene.tweens.add({
+                targets: energyCircle2,
+                duration: 200,
+                scaleX: 1.18,
+                scaleY: 1.18,
+                alpha: 1,
+                ease: 'Cubic.easeOut',
+                onComplete: () => {
+                    this.scene.tweens.add({
+                        targets: energyCircle2,
+                        duration: 550,
+                        scaleX: 1,
+                        scaleY: 1,
+                        ease: 'Back.easeOut',
+                        onComplete: () => {
+                            this.scene.tweens.add({
+                                targets: energyCircle2,
+                                duration: 750,
+                                alpha: 0.5,
+                            });
+                        }
+                    });
+                }
+            });
+
             this.showReadySprite(true, 1.5);
         }
     }

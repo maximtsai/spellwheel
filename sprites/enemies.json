@@ -4,7 +4,7 @@
 			"image": "sprites/enemies-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2047,
+				"w": 2048,
 				"h": 2046
 			},
 			"scale": 1,
@@ -510,24 +510,24 @@
 					}
 				},
 				{
-					"filename": "void_knight_sigil.png",
+					"filename": "poopbig.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 216,
-						"h": 265
+						"w": 41,
+						"h": 45
 					},
 					"spriteSourceSize": {
-						"x": 76,
-						"y": 73,
-						"w": 40,
-						"h": 37
+						"x": 0,
+						"y": 0,
+						"w": 41,
+						"h": 45
 					},
 					"frame": {
 						"x": 2006,
 						"y": 1157,
-						"w": 40,
-						"h": 37
+						"w": 41,
+						"h": 45
 					},
 					"anchor": {
 						"x": 0.5,
@@ -910,6 +910,31 @@
 					}
 				},
 				{
+					"filename": "void_knight_sigil.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 216,
+						"h": 265
+					},
+					"spriteSourceSize": {
+						"x": 76,
+						"y": 73,
+						"w": 40,
+						"h": 37
+					},
+					"frame": {
+						"x": 2006,
+						"y": 1863,
+						"w": 40,
+						"h": 37
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "wall_eyes_dead.png",
 					"rotated": false,
 					"trimmed": true,
@@ -985,6 +1010,31 @@
 					}
 				},
 				{
+					"filename": "ready_glow.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 117,
+						"h": 49
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 117,
+						"h": 49
+					},
+					"frame": {
+						"x": 353,
+						"y": 1991,
+						"w": 117,
+						"h": 49
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "dummysnort.png",
 					"rotated": false,
 					"trimmed": true,
@@ -999,60 +1049,10 @@
 						"h": 30
 					},
 					"frame": {
-						"x": 353,
+						"x": 472,
 						"y": 1991,
 						"w": 133,
 						"h": 30
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "bird_2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 83,
-						"h": 64
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 10,
-						"w": 55,
-						"h": 47
-					},
-					"frame": {
-						"x": 488,
-						"y": 1991,
-						"w": 55,
-						"h": 47
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "bird_2_fat.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 83,
-						"h": 64
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 10,
-						"w": 55,
-						"h": 47
-					},
-					"frame": {
-						"x": 545,
-						"y": 1991,
-						"w": 55,
-						"h": 47
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1110,23 +1110,23 @@
 					}
 				},
 				{
-					"filename": "bird_1.png",
+					"filename": "bird_2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 56,
-						"h": 50
+						"w": 83,
+						"h": 64
 					},
 					"spriteSourceSize": {
-						"x": 5,
-						"y": 0,
-						"w": 48,
+						"x": 16,
+						"y": 10,
+						"w": 55,
 						"h": 47
 					},
 					"frame": {
 						"x": 1379,
 						"y": 1874,
-						"w": 48,
+						"w": 55,
 						"h": 47
 					},
 					"anchor": {
@@ -1135,24 +1135,24 @@
 					}
 				},
 				{
-					"filename": "bone2.png",
+					"filename": "bird_2_fat.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 48,
-						"h": 46
+						"w": 83,
+						"h": 64
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 48,
-						"h": 45
+						"x": 16,
+						"y": 10,
+						"w": 55,
+						"h": 47
 					},
 					"frame": {
 						"x": 1379,
 						"y": 1923,
-						"w": 48,
-						"h": 45
+						"w": 55,
+						"h": 47
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1174,7 +1174,7 @@
 						"h": 80
 					},
 					"frame": {
-						"x": 1429,
+						"x": 1436,
 						"y": 1962,
 						"w": 191,
 						"h": 80
@@ -1185,24 +1185,24 @@
 					}
 				},
 				{
-					"filename": "poopbig.png",
+					"filename": "bird_1.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 41,
-						"h": 45
+						"w": 56,
+						"h": 50
 					},
 					"spriteSourceSize": {
-						"x": 0,
+						"x": 5,
 						"y": 0,
-						"w": 41,
-						"h": 45
+						"w": 48,
+						"h": 47
 					},
 					"frame": {
 						"x": 1379,
-						"y": 1970,
-						"w": 41,
-						"h": 45
+						"y": 1972,
+						"w": 48,
+						"h": 47
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1224,7 +1224,7 @@
 						"h": 101
 					},
 					"frame": {
-						"x": 1622,
+						"x": 1629,
 						"y": 1925,
 						"w": 233,
 						"h": 101
@@ -1249,7 +1249,7 @@
 						"h": 78
 					},
 					"frame": {
-						"x": 1857,
+						"x": 1864,
 						"y": 1962,
 						"w": 163,
 						"h": 78
@@ -1274,7 +1274,7 @@
 						"h": 29
 					},
 					"frame": {
-						"x": 1857,
+						"x": 1864,
 						"y": 1925,
 						"w": 66,
 						"h": 29
@@ -1299,7 +1299,7 @@
 						"h": 25
 					},
 					"frame": {
-						"x": 1429,
+						"x": 1436,
 						"y": 1925,
 						"w": 67,
 						"h": 25
@@ -1589,6 +1589,31 @@
 						"y": 1896,
 						"w": 137,
 						"h": 82
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bone2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 46
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 48,
+						"h": 45
+					},
+					"frame": {
+						"x": 1864,
+						"y": 1896,
+						"w": 48,
+						"h": 45
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2798,6 +2823,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:3c9515fb302b0723c1cc240df3168351:a4f8c9cb70ce50ea8b65bd9c08158807:7932824411c36c67b27fcdfad91f2c95$"
+		"smartupdate": "$TexturePacker:SmartUpdate:03741c33b52451ac953793fe9c88de42:2a4f2f86ff0c3401bc0ca37b0f8e6929:7932824411c36c67b27fcdfad91f2c95$"
 	}
 }

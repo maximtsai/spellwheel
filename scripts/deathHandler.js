@@ -8,8 +8,8 @@ function swirlInReaperFog() {
 
     fogSwirl.currAnimScale = PhaserScene.tweens.add({
         targets: [fogSwirl, fogSwirlGlow],
-        scaleX: 1.6,
-        scaleY: 1.6,
+        scaleX: 1.66,
+        scaleY: 1.66,
         alpha: 0.5,
         ease: 'Cubic.easeOut',
         duration: 12000,
@@ -28,8 +28,8 @@ function clearDeathFog() {
     }
     PhaserScene.tweens.add({
         targets: [globalObjects.fogSwirl],
-        scaleX: 2.2,
-        scaleY: 2.2,
+        scaleX: 2.25,
+        scaleY: 2.25,
         alpha: 0,
         ease: 'Quad.easeIn',
         duration: 550,
@@ -63,10 +63,10 @@ function getFogSliceDarken() {
 
 function getFogSwirl() {
     if (!globalObjects.fogSwirl) {
-        globalObjects.fogSwirl = PhaserScene.add.sprite(gameConsts.halfWidth, 240, 'backgrounds', 'fog_swirl.png').setDepth(-4);
+        globalObjects.fogSwirl = PhaserScene.add.sprite(gameConsts.halfWidth, 240, 'backgrounds', 'fog_swirl.png').setDepth(-4).setScale(2.2).setRotation(-1).setAlpha(0);
     }
     if (globalObjects.fogSwirl.alpha == 0) {
-        globalObjects.fogSwirl.setScale(2.2).setRotation(-1);
+        globalObjects.fogSwirl.setScale(2.25).setRotation(-1);
     }
     return globalObjects.fogSwirl;
 }
@@ -110,8 +110,8 @@ function playReaperAnim(enemy, customFinFunc) {
         // });
         globalObjects.fogSwirl.currAnim = PhaserScene.tweens.add({
             targets: [globalObjects.fogSwirl, globalObjects.fogSwirlGlow],
-            scaleX: 1.09,
-            scaleY: 1.09,
+            scaleX: 1.15,
+            scaleY: 1.15,
             alpha: 0.9,
             ease: 'Cubic.easeInOut',
             rotation: "+=1.5",
@@ -126,8 +126,8 @@ function playReaperAnim(enemy, customFinFunc) {
             onStart: () => {
                 PhaserScene.tweens.add({
                     targets: [globalObjects.fogSwirl, globalObjects.fogSwirlGlow],
-                    scaleX: 1.08,
-                    scaleY: 1.08,
+                    scaleX: 1.17,
+                    scaleY: 1.17,
                     alpha: 0.92,
                     ease: 'Quad.easeOut',
                     duration: 1000,

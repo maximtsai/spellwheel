@@ -134,7 +134,7 @@ function setupLoadingBar(scene) {
                     loadObjects.loadingText.setText('LOADED\nENHANCE RUNE');
                     break;
                 case 6:
-                    loadObjects.loadingText.setText('LOADED\nPROTECT RUNE');
+                    loadObjects.loadingText.setText('LOADED\nSHIELD RUNE');
                     break;
                 case 7:
                     loadObjects.loadingText.setText('LOADED\nBODY RUNE');

@@ -150,6 +150,9 @@ class Enemy {
         this.chargeBarWarningBig.alpha = 0
         this.chargeBarWarningBig.setDepth(1);
 
+        this.chargeBarReady1 = this.scene.add.sprite(x, isMobile ? 339 : 337, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
+        this.chargeBarReady2 = this.scene.add.sprite(x, isMobile ? 339 : 337, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
+
         this.chargeBarMax = this.scene.add.sprite(x, isMobile ? 339 : 337, 'blackPixel');
         this.chargeBarMax.setScale(chargeBarLength + 2, isMobile ? 13 : 10);
         this.chargeBarMax.setOrigin(0.5, 0.5);
@@ -386,6 +389,38 @@ class Enemy {
             if (this.isUsingAttack) {
                 // doNothing
             } else if (this.attackCharge >= this.nextAttackChargeNeeded) {
+                this.chargeBarReady1.setAlpha(1).setScale(0.9, 0.5);
+                this.chargeBarReady2.setAlpha(1).setScale(0.9, 0.5);
+                this.chargeBarReady1.x = this.chargeBarMax.x - this.chargeBarMax.scaleX * 1;
+                this.chargeBarReady2.x = this.chargeBarMax.x + this.chargeBarMax.scaleX * 1;
+                console.log( this.chargeBarReady1.x);
+                this.chargeBarReadyAnim = this.scene.tweens.add({
+                    targets: [this.chargeBarReady1, this.chargeBarReady2],
+                    scaleX: 1.25,
+                    scaleY: 0.95,
+                    ease: 'Cubic.easeIn',
+                    duration: 100,
+                    onComplete: () => {
+                        this.chargeBarReadyAnim = this.scene.tweens.add({
+                            targets: [this.chargeBarReady1, this.chargeBarReady2],
+                            scaleX: 0.9,
+                            scaleY: 0.8,
+                            alpha: 0.95,
+                            ease: 'Cubic.easeOut',
+                            duration: 400,
+                            onComplete: () => {
+                                this.chargeBarReadyAnim = this.scene.tweens.add({
+                                    targets: [this.chargeBarReady1, this.chargeBarReady2],
+                                    alpha: 0,
+                                    scaleX: 0.75,
+                                    scaleY: 0.75,
+                                    duration: 600,
+                                    ease: 'Quad.easeIn'
+                                });
+                            }
+                        });
+                    }
+                });
                 this.useMove();
                 this.chargeBarWarning.visible = true;
                 this.chargeBarWarning.alpha = 0.8;
@@ -622,6 +657,16 @@ class Enemy {
     }
 
     prepareChargeBar(animate = true, isBigMove, customCall) {
+        if (this.chargeBarReadyAnim) {
+            this.chargeBarReadyAnim.stop();
+            this.scene.tweens.add({
+                targets: [this.chargeBarReady1, this.chargeBarReady2],
+                alpha: 0,
+                scaleX: 0.4,
+                scaleY: 0.4,
+                duration: 250,
+            });
+        }
         this.chargeBarMax.visible = true;
         let chargeBarLength = Math.floor(this.nextAttackChargeNeeded * 0.2);
         this.chargeBarMax.scaleX = chargeBarLength * 0.6 + 2;

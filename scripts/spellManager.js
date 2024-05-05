@@ -1387,7 +1387,59 @@ class SpellManager {
         }
         let electricCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells').play('powerEffect').setScale(3.4).setDepth(117);
         let repeatCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells').play('powerEffectRepeat').setScale(1.5).setDepth(117);
+        let energyCircle1 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'energy_body.png').setScale(0.9).setAlpha(0.75).setDepth(104);
+        let energyCircle2 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'energy_body.png').setScale(0.8).setAlpha(0.25).setRotation(Math.PI / 8).setDepth(104);
 
+        playSound('mind_body');
+        this.scene.tweens.add({
+            targets: energyCircle1,
+            duration: 125,
+            scaleX: 1.12,
+            scaleY: 1.12,
+            alpha: 1,
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                this.scene.tweens.add({
+                    targets: energyCircle1,
+                    duration: 400,
+                    scaleX: 0.975,
+                    scaleY: 0.975,
+                    ease: 'Back.easeOut',
+                    onComplete: () => {
+                        this.scene.tweens.add({
+                            targets: energyCircle1,
+                            duration: 750,
+                            alpha: 0.5,
+                        });
+                    }
+                });
+            }
+        });
+
+        this.scene.tweens.add({
+            targets: energyCircle2,
+            duration: 225,
+            scaleX: 1.15,
+            scaleY: 1.15,
+            alpha: 1,
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                this.scene.tweens.add({
+                    targets: energyCircle2,
+                    duration: 450,
+                    scaleX: 1,
+                    scaleY: 1,
+                    ease: 'Back.easeOut',
+                    onComplete: () => {
+                        this.scene.tweens.add({
+                            targets: energyCircle2,
+                            duration: 750,
+                            alpha: 0.5,
+                        });
+                    }
+                });
+            }
+        });
 
         this.scene.tweens.add({
             targets: repeatCircle,
@@ -1431,7 +1483,7 @@ class SpellManager {
         messageBus.publish('selfTakeEffect', {
             name: spellID,
             spellID: spellID,
-            animObj: [repeatCircle],
+            animObj: [repeatCircle, energyCircle1, energyCircle2],
             multiplier: multiplier,
             spriteSrc1: 'rune_reinforce_glow.png',
             spriteSrc2: 'rune_mind_glow.png',
@@ -1448,6 +1500,8 @@ class SpellManager {
                         ease: 'Cubic.easeOut',
                         onComplete: () => {
                             repeatCircle.destroy();
+                            energyCircle1.destroy();
+                            energyCircle2.destroy();
                             while (statuses[spellID] && statuses[spellID].animObj.length > 0) {
                                 let item = statuses[spellID].animObj.pop()
                                 item.destroy();

@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "fog_swirl_glow - Copy.png",
+					"filename": "fog_swirl - Copy.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -60,7 +60,7 @@
 					}
 				},
 				{
-					"filename": "fog_slice.png",
+					"filename": "fog_slice - Copy.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,8 +115,119 @@
 			"image": "sprites/backgrounds-1.webp",
 			"format": "RGBA8888",
 			"size": {
+				"w": 2036,
+				"h": 1978
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "fog_swirl_glow - Copy.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1200,
+						"h": 1483
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1200,
+						"h": 1483
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 1200,
+						"h": 1483
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "background6.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 832,
+						"h": 1024
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 832,
+						"h": 1024
+					},
+					"frame": {
+						"x": 1203,
+						"y": 1,
+						"w": 832,
+						"h": 1024
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fog_slice.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 820,
+						"h": 970
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 9,
+						"w": 796,
+						"h": 950
+					},
+					"frame": {
+						"x": 1203,
+						"y": 1027,
+						"w": 796,
+						"h": 950
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "menu_top.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 769,
+						"h": 953
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 29,
+						"w": 769,
+						"h": 449
+					},
+					"frame": {
+						"x": 1,
+						"y": 1486,
+						"w": 769,
+						"h": 449
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/backgrounds-2.webp",
+			"format": "RGBA8888",
+			"size": {
 				"w": 1984,
-				"h": 2028
+				"h": 2004
 			},
 			"scale": 1,
 			"frames": [
@@ -171,118 +282,7 @@
 					}
 				},
 				{
-					"filename": "background6.webp",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 832,
-						"h": 1024
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 832,
-						"h": 1024
-					},
-					"frame": {
-						"x": 1083,
-						"y": 1003,
-						"w": 832,
-						"h": 1024
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "menu_top.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 769,
-						"h": 953
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 29,
-						"w": 769,
-						"h": 449
-					},
-					"frame": {
-						"x": 1,
-						"y": 1338,
-						"w": 769,
-						"h": 449
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				}
-			]
-		},
-		{
-			"image": "sprites/backgrounds-2.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 1984,
-				"h": 2004
-			},
-			"scale": 1,
-			"frames": [
-				{
-					"filename": "fog_swirl_glow.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 1080,
-						"h": 1335
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 1080,
-						"h": 1335
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 1080,
-						"h": 1335
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "tunnel2.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 900,
-						"h": 1000
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 900,
-						"h": 1000
-					},
-					"frame": {
-						"x": 1083,
-						"y": 1,
-						"w": 900,
-						"h": 1000
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "tunnel3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -312,11 +312,61 @@
 			"image": "sprites/backgrounds-3.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1662,
-				"h": 1773
+				"w": 1984,
+				"h": 1973
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "fog_swirl_glow.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1080,
+						"h": 1335
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1080,
+						"h": 1335
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 1080,
+						"h": 1335
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "tunnel3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 900,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 900,
+						"h": 1000
+					},
+					"frame": {
+						"x": 1083,
+						"y": 1,
+						"w": 900,
+						"h": 1000
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
 				{
 					"filename": "background1.webp",
 					"rotated": false,
@@ -332,8 +382,8 @@
 						"h": 969
 					},
 					"frame": {
-						"x": 1,
-						"y": 1,
+						"x": 1083,
+						"y": 1003,
 						"w": 900,
 						"h": 969
 					},
@@ -341,7 +391,18 @@
 						"x": 0.5,
 						"y": 0.5
 					}
-				},
+				}
+			]
+		},
+		{
+			"image": "sprites/backgrounds-4.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1462,
+				"h": 1708
+			},
+			"scale": 1,
+			"frames": [
 				{
 					"filename": "menu_back.png",
 					"rotated": false,
@@ -357,7 +418,7 @@
 						"h": 904
 					},
 					"frame": {
-						"x": 903,
+						"x": 1,
 						"y": 1,
 						"w": 758,
 						"h": 904
@@ -382,7 +443,7 @@
 						"h": 800
 					},
 					"frame": {
-						"x": 903,
+						"x": 1,
 						"y": 907,
 						"w": 700,
 						"h": 800
@@ -407,8 +468,8 @@
 						"h": 800
 					},
 					"frame": {
-						"x": 1,
-						"y": 972,
+						"x": 703,
+						"y": 907,
 						"w": 700,
 						"h": 800
 					},
@@ -416,18 +477,7 @@
 						"x": 0.5,
 						"y": 0.5
 					}
-				}
-			]
-		},
-		{
-			"image": "sprites/backgrounds-4.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 1364,
-				"h": 802
-			},
-			"scale": 1,
-			"frames": [
+				},
 				{
 					"filename": "firebg3.png",
 					"rotated": false,
@@ -443,7 +493,7 @@
 						"h": 800
 					},
 					"frame": {
-						"x": 1,
+						"x": 761,
 						"y": 1,
 						"w": 700,
 						"h": 800
@@ -452,7 +502,18 @@
 						"x": 0.5,
 						"y": 0.5
 					}
-				},
+				}
+			]
+		},
+		{
+			"image": "sprites/backgrounds-5.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 662,
+				"h": 802
+			},
+			"scale": 1,
+			"frames": [
 				{
 					"filename": "background3.webp",
 					"rotated": false,
@@ -468,7 +529,7 @@
 						"h": 800
 					},
 					"frame": {
-						"x": 703,
+						"x": 1,
 						"y": 1,
 						"w": 660,
 						"h": 800
@@ -484,6 +545,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:47f074cdbdd1fe095339b21c3f8ff85f:ef275d259bf66c77c12606b04b1c692a:d36b2d12f94c3c84864533b00704d5ae$"
+		"smartupdate": "$TexturePacker:SmartUpdate:5fdd33b0ebe1e07c0498c361d78da9b0:70ec7cc65afeb73a4baf0c43b5747949:78d9df4e1197d3677727ae92cf39d227$"
 	}
 }

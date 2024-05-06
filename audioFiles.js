@@ -53,8 +53,16 @@ const audioFiles = [
     {name: 'victory_2', src: 'audio/victory_2.mp3'},
     {name: 'victory_false', src: 'audio/victory_false.mp3'},
 
+    {name: 'voca_gun', src: 'audio/voca_gun.mp3'},
+    {name: 'voca_laser', src: 'audio/voca_laser.mp3'},
+    {name: 'voca_claw_1', src: 'audio/voca_claw_1.mp3'},
+    {name: 'voca_claw_2', src: 'audio/voca_claw_2.mp3'},
+    {name: 'big_gun_pow_1', src: 'audio/big_gun_pow_1.mp3'},
+    {name: 'big_gun_pow_2', src: 'audio/big_gun_pow_2.mp3'},
 
     {name: 'magic', src: 'audio/magic.mp3'},
+    {name: 'power_surge', src: 'audio/power_surge.mp3'},
+    {name: 'power_surge_plain', src: 'audio/power_surge_plain.mp3'},
     {name: 'tree_timber', src: 'audio/tree_timber.mp3'},
     {name: 'locket', src: 'audio/locket.mp3'},
     {name: 'razor_leaf', src: 'audio/razor_leaf.mp3'},

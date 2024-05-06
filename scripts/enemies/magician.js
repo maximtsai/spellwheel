@@ -283,6 +283,7 @@
      startReaper() {
         this.blackBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(-1)
          this.floatingDeath = getFloatingDeath();
+         gameVars.deathFlutterDelay = 600;
          this.floatingDeathAnim = this.scene.tweens.add({
              targets: this.floatingDeath,
              duration: 19000,

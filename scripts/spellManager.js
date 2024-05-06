@@ -219,7 +219,7 @@ class SpellManager {
                 ease: 'Quad.easeIn',
                 onComplete: () => {
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
-                    let baseDamage = gameVars.matterPlus ? 14 : 12;
+                    let baseDamage = gameVars.matterPlus ? 14 : 120;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
                     messageBus.publish('setPauseDur', 20);
                     poolManager.returnItemToPool(rockObj, 'rock');
@@ -1364,7 +1364,7 @@ class SpellManager {
             });
         }
 
-        let spellName = "MIND STRIKE";
+        let spellName = "ENERGY STRIKE";
         if (additionalDamage >= 1) {
             spellName = spellName + " +" + additionalDamage;
         }
@@ -1390,20 +1390,22 @@ class SpellManager {
         let energyCircle1 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'energy_body.png').setScale(0.9).setAlpha(0.75).setDepth(104);
         let energyCircle2 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'energy_body.png').setScale(0.8).setAlpha(0.25).setRotation(Math.PI / 8).setDepth(104);
 
-        playSound('mind_body');
+        playSound('power_surge');
+
         this.scene.tweens.add({
             targets: energyCircle1,
             duration: 125,
-            scaleX: 1.12,
-            scaleY: 1.12,
+            scaleX: 1.1 + 0.02 * multiplier,
+            scaleY: 1.1 + 0.02 * multiplier,
             alpha: 1,
             ease: 'Cubic.easeOut',
             onComplete: () => {
+                playSound('mind_shield_retaliate', 0.7 + multiplier * 0.05);
                 this.scene.tweens.add({
                     targets: energyCircle1,
                     duration: 400,
-                    scaleX: 0.975,
-                    scaleY: 0.975,
+                    scaleX: 0.965 + 0.01 * multiplier,
+                    scaleY: 0.965 + 0.01 * multiplier,
                     ease: 'Back.easeOut',
                     onComplete: () => {
                         this.scene.tweens.add({
@@ -1419,16 +1421,16 @@ class SpellManager {
         this.scene.tweens.add({
             targets: energyCircle2,
             duration: 225,
-            scaleX: 1.15,
-            scaleY: 1.15,
+            scaleX: 1.13 + 0.02 * multiplier,
+            scaleY: 1.13 + 0.02 * multiplier,
             alpha: 1,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 this.scene.tweens.add({
                     targets: energyCircle2,
                     duration: 450,
-                    scaleX: 1,
-                    scaleY: 1,
+                    scaleX: 0.99 + 0.01 * multiplier,
+                    scaleY: 0.99 + 0.01 * multiplier,
                     ease: 'Back.easeOut',
                     onComplete: () => {
                         this.scene.tweens.add({

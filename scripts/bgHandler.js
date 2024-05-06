@@ -24,8 +24,8 @@ function fadeInBackground(name, duration = 15000, scale = 1) {
     return nextObj;
 }
 
-function fadeInBackgroundAtlas(atlas, name, duration = 15000, scale = 1.1, endScale, ease, delay, extra) {
-    let nextObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight * 0.7, atlas, name).setDepth(-10).setScale(scale).setAlpha(0).setOrigin(0.5, 0.35);
+function fadeInBackgroundAtlas(atlas, name, duration = 15000, scale = 1.1, endScale, ease, delay, extra, yOffset = 0) {
+    let nextObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight * 0.7 + yOffset, atlas, name).setDepth(-10).setScale(scale).setAlpha(0).setOrigin(0.5, 0.35);
 
     PhaserScene.tweens.add({
         delay: delay,

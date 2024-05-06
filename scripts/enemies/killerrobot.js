@@ -1,10 +1,13 @@
  class KillerRobot extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
-         this.initSprite('robot0.png', 0.65);
+         this.initSprite('robot0.png', 1);
          this.shieldAdded = false;
 
-         globalObjects.magicCircle.disableMovement();
+         setTimeout(() => {
+             globalObjects.magicCircle.disableMovement();
+
+         }, 900);
          this.sprite.alpha = 0;
          this.sprite.setScale(this.sprite.startScale * 0.75);
          setTimeout(() => {
@@ -14,24 +17,28 @@
      }
 
      initPreBattleLogic() {
-         this.setAsleep()
+         this.setAsleep();
+         this.shieldSprite.setFrame('shockEffect9.png').setAlpha(0);
 
          this.eyeShine = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 67, 'enemies', 'roboteye.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth);
          this.scene.tweens.add({
              targets: this.sprite,
-             duration: 3000,
+             duration: 2500,
              scaleX: this.sprite.startScale * 1.05,
              scaleY: this.sprite.startScale * 1.05,
              ease: 'Quad.easeOut',
          });
          this.scene.tweens.add({
-             delay: 1000,
+             delay: 250,
              targets: this.eyeShine,
              duration: 500,
              scaleX: this.sprite.startScale,
              scaleY: this.sprite.startScale,
              alpha: 0.75,
              ease: 'Back.easeOut',
+             onStart: () => {
+                 playSound('power_surge_plain');
+             },
              onComplete: () => {
                  this.scene.tweens.add({
                      targets: this.eyeShine,
@@ -48,7 +55,7 @@
          });
          this.scene.tweens.add({
              targets: this.sprite,
-             duration: 3200,
+             duration: 2500,
              alpha: 1,
              onComplete: () => {
              }
@@ -108,6 +115,8 @@
                              onComplete: () => {
                                  this.sprite.setOrigin(0.5, 0.5).setPosition(this.sprite.x, spriteOrigY).setRotation(0);
                                  this.setDefaultSprite('robot1.png');
+                                 globalObjects.magicCircle.enableMovement();
+
                                  this.setAwake();
                                  this.loadUpHealthBar();
                                  this.scene.tweens.add({
@@ -175,15 +184,78 @@
                  // Going to shield
              }
          }
-         if (this.shieldAdded && this.currentAttackSetIndex == 2) {
+         if (this.shieldAdded) {
              if (this.shield == 0) {
                  // shield must have broke
-                 this.setDefaultSprite('gobbo2.png', 0.75);
+                 this.shieldAdded = false;
                  this.interruptCurrentAttack();
-                 this.currentAttackSetIndex = 3;
+                 this.currentAttackSetIndex = 1;
                  this.nextAttackIndex = 0;
              }
          }
+     }
+
+     flashBullet(bullet, sfx, damage) {
+         bullet.setScale(1.05);
+         if (this.bulletTween) {
+             this.bulletTween.stop();
+         }
+         this.bulletTween = PhaserScene.tweens.add({
+             targets: bullet,
+             scaleX: 1,
+             scaleY: 1,
+             ease: 'Cubic.easeOut',
+             duration: 100,
+         })
+         playSound(sfx);
+         messageBus.publish("selfTakeDamage", damage);
+     }
+
+     shootBullets(damage = 4) {
+         if (!this.fireEffect) {
+             this.fireEffect = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_fire_1.png').setDepth(11);
+             this.addToDestructibles(this.fireEffect);
+         }
+         let fireDelay = 120;
+         PhaserScene.time.delayedCall(135, () => {
+             if (!this.dead && this.shieldAdded) {
+                 this.fireEffect.setVisible(true);
+                 this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
+                 PhaserScene.time.delayedCall(fireDelay, () => {
+                     if (!this.dead && this.shieldAdded) {
+                         this.fireEffect.setFrame('robot_fire_2.png');
+                         this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage)
+                         PhaserScene.time.delayedCall(fireDelay, () => {
+                             if (!this.dead && this.shieldAdded) {
+                                 this.fireEffect.setFrame('robot_fire_1.png')
+                                 this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
+                                 PhaserScene.time.delayedCall(fireDelay, () => {
+                                     if (!this.dead && this.shieldAdded) {
+                                         this.fireEffect.setFrame('robot_fire_2.png');
+                                         this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage)
+                                         PhaserScene.time.delayedCall(fireDelay, () => {
+                                             if (!this.dead && this.shieldAdded) {
+                                                 this.fireEffect.setFrame('robot_fire_1.png');
+                                                 this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
+                                                 PhaserScene.time.delayedCall(fireDelay, () => {
+                                                     this.fireEffect.setVisible(false);
+                                                     setTimeout(() => {
+                                                         if (!this.dead && this.shieldAdded) {
+                                                             this.setDefaultSprite('robot1.png');
+                                                             this.setSprite('robot1.png');
+                                                         }
+                                                     }, 250);
+                                                 });
+                                             }
+                                         });
+                                     }
+                                 });
+                             }
+                         });
+                     }
+                 });
+             }
+         });
      }
 
      initAttacks() {
@@ -193,10 +265,11 @@
                  {
                      name: gameVars.isHardMode ? "SHINY FORCE FIELD {150 " : "SHINY FORCE FIELD  {120 ",
                      block: gameVars.isHardMode ? 150 : 120,
-                     chargeAmt: 750,
+                     chargeAmt: 50,
                      chargeMult: 5,
+                     damage: -1,
                      attackFinishFunction: () => {
-                         this.currentAttackSetIndex = 1;
+                         this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
                          this.shieldAdded = true;
                      }
@@ -205,25 +278,88 @@
              [
                  // 1
                  {
-                     name: gameVars.isHardMode ? "{8x2 " : "{8x2 ",
-                     chargeAmt: 400,
-                     damage: 8,
-                     attackTimes: 2,
-                     attackSprites: ['robot_claw_1.png', 'robot_claw_2.png']
+                     name: "PROCESSING MISSING SHIELD",
+                     chargeAmt: gameVars.isHardMode ? 250 : 300,
+                     chargeMult: 5,
+                     damage: 0,
+                     attackFinishFunction: () => {
+                         console.log("Hey")
+                     }
                  },
                  {
-                     name: gameVars.isHardMode ? "}4x8 " : "}4x6 ",
-                     chargeAmt: 500,
-                     damage: 4,
-                     attackTimes: gameVars.isHardMode ? 8 : 6,
-                 },
+                     name: "REBOOTING",
+                     chargeAmt: gameVars.isHardMode ? 500 : 600,
+                     block: gameVars.isHardMode ? 175 : 150,
+                     chargeMult: 5,
+                     startFunction: () => {
+                         this.setDefaultSprite('robot_hide.png');
+                     },
+                     attackFinishFunction: () => {
+                         this.currentAttackSetIndex = 3;
+                         this.nextAttackIndex = 0;
+                         this.shieldAdded = true;
+                         this.setDefaultSprite('robot_laser.png');
+
+                         let oldScale = this.sprite.scaleX;
+                         this.sprite.setScale(this.sprite.scaleX * 1.01);
+                         this.currAnim = PhaserScene.tweens.add({
+                             targets: this.sprite,
+                             scaleX: oldScale,
+                             scaleY: oldScale,
+                             duration: 600,
+                             completeDelay: 100,
+                             onComplete: () => {
+                                 if (!this.dead) {
+                                     this.setDefaultSprite('robot1.png');
+                                 }
+                             }
+                         });
+                     }
+                 }
              ],
              [
-                 // 2 - attacks from behind shield
+                 // 2
                  {
-                     name: gameVars.isHardMode ? "}4x6 " : "}4x6 ",
-                     chargeAmt: 500,
-                     damage: gameVars.isHardMode ? 12 : 7
+                     name: gameVars.isHardMode ? "}8x2 " : "}8x2 ",
+                     chargeAmt: 200,
+                     damage: 8,
+                     attackTimes: 2,
+                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
+                     startFunction: () => {
+                         this.claw1Attacked = false;
+                         this.pullbackScale = this.pullbackScaleDefault;
+                         this.attackScale = this.attackScaleDefault;
+                     },
+                     attackFinishFunction: () => {
+                         this.claw1Attacked = !this.claw1Attacked;
+                         playSound(this.claw1Attacked ? 'voca_claw_1' : 'voca_claw_2', 0.8);
+                         playSound('sword_hit');
+                         setTimeout(() => {
+                             if (!this.dead && this.shieldAdded) {
+                                 this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
+                             }
+                         }, 80);
+                         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
+                         powEffect.setPosition(gameConsts.halfWidth + (Math.random() - 0.5) * 20).setDepth(998).setScale(1.5);
+                     }
+                 },
+                 {
+                     name: gameVars.isHardMode ? "}6x5 " : "}4x5 ",
+                     chargeAmt: 250,
+                     damage: -1,
+                     startFunction: () => {
+                         this.pullbackScale = 0.99;
+                         this.attackScale = 1.03;
+                     },
+                     attackStartFunction: () => {
+                         if (!this.dead && this.shieldAdded) {
+                             playSound('voca_gun');
+                             this.setDefaultSprite('robot_shoot.png');
+                         }
+                     },
+                     attackFinishFunction: () => {
+                        this.shootBullets(4);
+                     }
                  },
              ],
              [

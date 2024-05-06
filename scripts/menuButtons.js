@@ -1,7 +1,7 @@
 function setupMainMenu() {
-    globalObjects.menuBack = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-9);
-    globalObjects.menuTop = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9);
-    globalObjects.menuBot = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_bot.png').setDepth(-9);
+    globalObjects.menuBack = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-9).setScale(0.92);
+    globalObjects.menuTop = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9).setScale(0.92);
+    globalObjects.menuBot = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_bot.png').setDepth(-9).setScale(0.92);
 }
 
 
@@ -28,8 +28,8 @@ function clearMenuButtons() {
              targets: [globalObjects.menuBack],
              scaleX: 1.26,
              scaleY: 1.26,
-             x: gameConsts.halfWidth - 2,
-             y: gameConsts.halfHeight + 55,
+             x: gameConsts.halfWidth - 1,
+             y: gameConsts.halfHeight - 3,
              ease: 'Cubic.easeInOut',
              duration: 2500,
          });
@@ -83,9 +83,9 @@ function gotoMainMenu() {
 
     }
 
-    globalObjects.menuBack.setAlpha(1).setScale(1).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
-    globalObjects.menuTop.setAlpha(1).setScale(1).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
-    globalObjects.menuBot.setAlpha(1).setScale(1).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
+    globalObjects.menuBack.setAlpha(1).setScale(0.902).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
+    globalObjects.menuTop.setAlpha(1).setScale(0.902).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
+    globalObjects.menuBot.setAlpha(1).setScale(0.902).setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 89).setOrigin(0.5, 0.4);
 
     if (hasContinue) {
         globalObjects.continueButton = new Button({

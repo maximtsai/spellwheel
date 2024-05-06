@@ -236,21 +236,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">backgrounds/fog_slice - Copy.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>205,243,410,485</rect>
-                <key>scale9Paddings</key>
-                <rect>205,243,410,485</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">backgrounds/fog_slice.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -263,22 +248,6 @@
                 <rect>180,210,360,420</rect>
                 <key>scale9Paddings</key>
                 <rect>180,210,360,420</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/fog_swirl - Copy.png</key>
-            <key type="filename">backgrounds/fog_swirl_glow - Copy.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>300,371,600,741</rect>
-                <key>scale9Paddings</key>
-                <rect>300,371,600,741</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -1,7 +1,7 @@
  class Goblin extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
-         this.initSprite('gobbo0.png', 0.95);
+         this.initSprite('gobbo0.png', 0.92);
          this.bgMusic = playSound('fightbg1', 0.7, true);
          this.shieldAdded = false;
 
@@ -15,7 +15,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 120 : 95;
+         this.health = gameVars.isHardMode ? 180 : 100;
          this.slashEffect = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
      }
 
@@ -43,7 +43,7 @@
                  if (this.breatheTween) {
                      this.breatheTween.stop();
                  }
-                 this.setDefaultSprite('gobbo2.png', 0.95);
+                 this.setDefaultSprite('gobbo2.png', 0.92);
                  this.interruptCurrentAttack();
                  this.currentAttackSetIndex = 3;
                  this.nextAttackIndex = 0;
@@ -79,7 +79,7 @@
                      attackFinishFunction: () => {
                          playSound('clunk');
 
-                         this.setDefaultSprite('gobboshield1.png', 0.95).play('gobboshield');
+                         this.setDefaultSprite('gobboshield1.png', 0.92).play('gobboshield');
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
                          this.shieldAdded = true;
@@ -117,13 +117,13 @@
                      chargeMult: 5,
                      isBigMove: true,
                      startFunction: () => {
-                         this.setDefaultSprite('gobbo3.png', 0.95);
+                         this.setDefaultSprite('gobbo3.png', 0.92);
                      },
                      attackFinishFunction: () => {
                          playSound('goblin_aha');
                          this.currentAttackSetIndex = 4;
                          this.nextAttackIndex = 0;
-                         this.setDefaultSprite('gobbo4.png', 0.95);
+                         this.setDefaultSprite('gobbo4.png', 0.92);
                          let oldScale = this.sprite.scaleX;
                          this.sprite.setScale(this.sprite.scaleX * 1.01);
                          this.currAnim = PhaserScene.tweens.add({
@@ -133,7 +133,7 @@
                              duration: 600,
                              completeDelay: 100,
                              onComplete: () => {
-                                 this.setDefaultSprite('gobbo5.png', 0.95);
+                                 this.setDefaultSprite('gobbo5.png', 0.92);
                                  this.repeatTweenBreathe(800, 0.5)
                              }
                          });

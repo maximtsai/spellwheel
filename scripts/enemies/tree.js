@@ -766,7 +766,10 @@
          if (this.fallen) {
              return;
          }
-         this.attackAnim.stop();
+         if (this.attackAnim) {
+             this.attackAnim.stop();
+
+         }
          this.fallen = true;
          let oldScale = this.sprite.scaleX;
          let treeTop = this.scene.add.sprite(this.sprite.x + 10, this.sprite.y, 'enemies', 'tree_top.png');

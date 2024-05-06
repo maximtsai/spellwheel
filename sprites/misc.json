@@ -4,8 +4,8 @@
 			"image": "sprites/misc.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1715,
-				"h": 1702
+				"w": 1854,
+				"h": 1733
 			},
 			"scale": 1,
 			"frames": [
@@ -115,6 +115,27 @@
 					}
 				},
 				{
+					"filename": "floating_death_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 675,
+						"h": 440
+					},
+					"spriteSourceSize": {
+						"x": 38,
+						"y": 8,
+						"w": 637,
+						"h": 428
+					},
+					"frame": {
+						"x": 1216,
+						"y": 1,
+						"w": 637,
+						"h": 428
+					}
+				},
+				{
 					"filename": "scythe5.png",
 					"rotated": false,
 					"trimmed": true,
@@ -136,24 +157,24 @@
 					}
 				},
 				{
-					"filename": "scythe6.png",
+					"filename": "floating_death_1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 850,
-						"h": 780
+						"w": 675,
+						"h": 440
 					},
 					"spriteSourceSize": {
-						"x": 68,
-						"y": 313,
-						"w": 456,
-						"h": 466
+						"x": 38,
+						"y": 17,
+						"w": 613,
+						"h": 393
 					},
 					"frame": {
-						"x": 1216,
-						"y": 1,
-						"w": 456,
-						"h": 466
+						"x": 606,
+						"y": 498,
+						"w": 613,
+						"h": 393
 					}
 				},
 				{
@@ -171,8 +192,8 @@
 						"h": 429
 					},
 					"frame": {
-						"x": 606,
-						"y": 498,
+						"x": 1221,
+						"y": 431,
 						"w": 604,
 						"h": 429
 					}
@@ -187,57 +208,15 @@
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 109,
-						"w": 502,
-						"h": 422
-					},
-					"frame": {
-						"x": 1212,
-						"y": 498,
-						"w": 502,
-						"h": 422
-					}
-				},
-				{
-					"filename": "announceBg.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 600,
-						"h": 180
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 7,
-						"w": 600,
-						"h": 167
+						"y": 110,
+						"w": 470,
+						"h": 463
 					},
 					"frame": {
 						"x": 527,
-						"y": 929,
-						"w": 600,
-						"h": 167
-					}
-				},
-				{
-					"filename": "floating_death.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 500,
-						"h": 375
-					},
-					"spriteSourceSize": {
-						"x": 65,
-						"y": 0,
-						"w": 435,
-						"h": 370
-					},
-					"frame": {
-						"x": 527,
-						"y": 1098,
-						"w": 435,
-						"h": 370
+						"y": 893,
+						"w": 470,
+						"h": 463
 					}
 				},
 				{
@@ -255,10 +234,31 @@
 						"h": 501
 					},
 					"frame": {
-						"x": 964,
-						"y": 1098,
+						"x": 999,
+						"y": 893,
 						"w": 250,
 						"h": 501
+					}
+				},
+				{
+					"filename": "scythe6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 850,
+						"h": 780
+					},
+					"spriteSourceSize": {
+						"x": 83,
+						"y": 336,
+						"w": 455,
+						"h": 443
+					},
+					"frame": {
+						"x": 1251,
+						"y": 862,
+						"w": 455,
+						"h": 443
 					}
 				},
 				{
@@ -276,10 +276,31 @@
 						"h": 341
 					},
 					"frame": {
-						"x": 1216,
-						"y": 922,
+						"x": 518,
+						"y": 1358,
 						"w": 327,
 						"h": 341
+					}
+				},
+				{
+					"filename": "announceBg.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 600,
+						"h": 167
+					},
+					"frame": {
+						"x": 1251,
+						"y": 1307,
+						"w": 600,
+						"h": 167
 					}
 				},
 				{
@@ -297,31 +318,10 @@
 						"h": 300
 					},
 					"frame": {
-						"x": 1216,
-						"y": 1265,
+						"x": 847,
+						"y": 1396,
 						"w": 250,
 						"h": 300
-					}
-				},
-				{
-					"filename": "heal.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 290,
-						"h": 204
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 21,
-						"w": 279,
-						"h": 175
-					},
-					"frame": {
-						"x": 518,
-						"y": 1470,
-						"w": 279,
-						"h": 175
 					}
 				},
 				{
@@ -339,10 +339,31 @@
 						"h": 54
 					},
 					"frame": {
-						"x": 518,
-						"y": 1647,
+						"x": 1,
+						"y": 1678,
 						"w": 297,
 						"h": 54
+					}
+				},
+				{
+					"filename": "heal.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 290,
+						"h": 204
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 21,
+						"w": 279,
+						"h": 175
+					},
+					"frame": {
+						"x": 1099,
+						"y": 1476,
+						"w": 279,
+						"h": 175
 					}
 				},
 				{
@@ -360,8 +381,8 @@
 						"h": 230
 					},
 					"frame": {
-						"x": 1468,
-						"y": 1265,
+						"x": 1380,
+						"y": 1476,
 						"w": 230,
 						"h": 230
 					}
@@ -381,8 +402,8 @@
 						"h": 180
 					},
 					"frame": {
-						"x": 1468,
-						"y": 1497,
+						"x": 1612,
+						"y": 1476,
 						"w": 180,
 						"h": 180
 					}
@@ -402,8 +423,8 @@
 						"h": 118
 					},
 					"frame": {
-						"x": 799,
-						"y": 1470,
+						"x": 1708,
+						"y": 862,
 						"w": 118,
 						"h": 118
 					}
@@ -423,8 +444,8 @@
 						"h": 197
 					},
 					"frame": {
-						"x": 1674,
-						"y": 1,
+						"x": 527,
+						"y": 594,
 						"w": 10,
 						"h": 197
 					}
@@ -444,8 +465,8 @@
 						"h": 4
 					},
 					"frame": {
-						"x": 1216,
-						"y": 469,
+						"x": 847,
+						"y": 1358,
 						"w": 100,
 						"h": 4
 					}
@@ -456,6 +477,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:1688076d3e9a70213e6c4cef7c184859:21b3efd612484cf055d6a2b56e83e0f3:612dcbdb08476a0aba06aeca925f16b2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1b71d82bca2e388e8ddefcc8a1cd2795:e0268a1020869165837375d34c75afff:612dcbdb08476a0aba06aeca925f16b2$"
 	}
 }

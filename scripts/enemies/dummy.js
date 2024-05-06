@@ -38,6 +38,9 @@
          this.rune1 = this.scene.add.sprite(gameConsts.width - 200, gameConsts.halfHeight + 20, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
          this.rune2 = this.scene.add.sprite(gameConsts.width - 138, gameConsts.halfHeight + 20, 'circle', 'rune_matter_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
 
+         this.addToDestructibles(this.rune1);
+         this.addToDestructibles(this.rune2);
+
          setTimeout(() => {
              globalObjects.textPopupManager.setInfoText(gameConsts.width - 114, gameConsts.halfHeight - 70, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'left');
              PhaserScene.tweens.add({
@@ -52,8 +55,8 @@
     initTutorial3() {
         setTimeout(() => {
             if (this.rune1) {
-                this.rune1.destroy();
-                this.rune2.destroy();
+                this.rune1.visible = false;
+                this.rune2.visible = false;
             }
             globalObjects.textPopupManager.hideInfoText();
         }, 200);
@@ -69,7 +72,7 @@
             }
             this.timeSinceLastAttacked = 0;
 
-            messageBus.publish('setSlowMult', 0.1, 320);
+            messageBus.publish('setSlowMult', 0.25, 250);
             let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             PhaserScene.tweens.add({
                 targets: glowBar,
@@ -283,6 +286,10 @@
              return;
          }
         super.die();
+         if (this.rune1) {
+             this.rune1.visible = false;
+             this.rune2.visible = false;
+         }
          if (this.eyes) {
              this.removeExtraSprite(this.eyes);
              this.eyes.destroy();

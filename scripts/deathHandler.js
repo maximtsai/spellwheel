@@ -73,12 +73,16 @@ function getFogSwirl() {
 
 function getFloatingDeath() {
     if (!globalObjects.floatingDeath) {
-        globalObjects.floatingDeath = PhaserScene.add.sprite(gameConsts.halfWidth, 130, 'misc', 'floating_death.png').setDepth(-1);
-        globalObjects.floatingDeath.setAlpha(0.5).setScale(0.35);
+        globalObjects.floatingDeath = PhaserScene.add.sprite(gameConsts.halfWidth, 155, 'misc', 'floating_death_1.png').setDepth(-1);
+        globalObjects.floatingDeath.setAlpha(0.4).setScale(0.35);
+        globalObjects.floatingDeath2 = PhaserScene.add.sprite(gameConsts.halfWidth, 155, 'misc', 'floating_death_2.png').setDepth(-1).setVisible(false);
     }
     if (globalObjects.floatingDeath.visible === false) {
-        globalObjects.floatingDeath.setVisible(true).setAlpha(0.5).setScale(0.35).setDepth(-1);
+        globalObjects.floatingDeath.setVisible(true).setAlpha(0.4).setScale(0.35).setDepth(-1);
+        globalObjects.floatingDeath2.setVisible(false);
     }
+    globalObjects.floatingDeath.fakeAlpha = globalObjects.floatingDeath.alpha;
+    globalObjects.floatingDeath2.fakeAlpha = globalObjects.floatingDeath.alpha;
 
     return globalObjects.floatingDeath;
 }
@@ -138,14 +142,19 @@ function playReaperAnim(enemy, customFinFunc) {
         });
     }
 
+    startDeathFlutterAnim();
+    globalObjects.floatingDeath.fakeAlpha = globalObjects.floatingDeath.alpha;
+    globalObjects.floatingDeath2.fakeAlpha = globalObjects.floatingDeath.alpha;
     PhaserScene.tweens.add({
-        targets: floatingDeath,
+        targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2],
         scaleX: 0.75,
         scaleY: 0.75,
         ease: 'Cubic.easeInOut',
-        alpha: 1,
+        fakeAlpha: 1,
         duration: 1200,
         onComplete: () => {
+            gameVars.deathFlutterDelay = 450;
+            // repeatDeathFlutterAnimation();
             let scythe = PhaserScene.add.sprite(gameConsts.halfWidth, 140, 'misc', 'scythe1.png').setDepth(999).setAlpha(0).setScale(0.8).setRotation(-1);
             PhaserScene.tweens.add({
                 targets: scythe,
@@ -265,17 +274,34 @@ function playReaperAnim(enemy, customFinFunc) {
                                         onComplete: () => {
                                             scythe.destroy();
                                             enemy.destroy();
-                                            floatingDeath.setDepth(100010);
+                                            globalObjects.floatingDeath.setDepth(100010);
+                                            globalObjects.floatingDeath2.setDepth(100010);
                                             handleReaperDialog(level, () => {
+                                                gameVars.deathFlutterDelay = 10;
+                                                repeatDeathFlutterAnimation(-0.25);
+                                                // setTimeout(() => {
+                                                //     repeatDeathFlutterAnimation();
+                                                //     gameVars.deathFlutterDelay = 100;
+                                                //
+                                                // }, 200);
                                                 PhaserScene.tweens.add({
-                                                    targets: [floatingDeath, scythe],
-                                                    alpha: 0,
+                                                    targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2, scythe],
+                                                    fakeAlpha: 0,
+                                                    scaleX: 0.5,
+                                                    scaleY: 0.5,
+                                                    ease: 'Quad.easeIn',
+                                                    duration: 1100,
+                                                });
+                                                PhaserScene.tweens.add({
+                                                    targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2, scythe],
                                                     scaleX: 0.5,
                                                     scaleY: 0.5,
                                                     ease: 'Cubic.easeIn',
-                                                    duration: 1000,
+                                                    duration: 1100,
                                                     onComplete: () => {
-                                                        floatingDeath.visible = false;
+                                                        globalObjects.floatingDeath.flutterAnim.stop();
+                                                        globalObjects.floatingDeath.visible = false;
+                                                        globalObjects.floatingDeath2.visible = false;
                                                         PhaserScene.tweens.add({
                                                             targets: [globalObjects.fogSliceDarken],
                                                             alpha: 0,
@@ -305,6 +331,56 @@ function playReaperAnim(enemy, customFinFunc) {
     });
 }
 
+function startDeathFlutterAnim() {
+    globalObjects.floatingDeath2.setVisible(true).setAlpha(0).setScale(globalObjects.floatingDeath.scaleX).setDepth(globalObjects.floatingDeath.depth);
+    gameVars.deathFlutterDelay = 0;
+    repeatDeathFlutterAnimation();
+}
+
+function repeatDeathFlutterAnimation(alphaOffset = 0) {
+    if (globalObjects.floatingDeath.flutterAnim) {
+        globalObjects.floatingDeath.flutterAnim.stop();
+    }
+
+    globalObjects.floatingDeath2.alpha = 0;
+    globalObjects.floatingDeath.flutterAnim = PhaserScene.tweens.add({
+        targets: globalObjects.floatingDeath2,
+        alpha: globalObjects.floatingDeath2.fakeAlpha + alphaOffset,
+        duration: 70 + gameVars.deathFlutterDelay,
+        ease: 'Cubic.easeIn',
+        onComplete: () => {
+            globalObjects.floatingDeath.flutterAnim = PhaserScene.tweens.add({
+                targets: globalObjects.floatingDeath,
+                alpha: 0,
+                duration: 20 + gameVars.deathFlutterDelay,
+                ease: 'Cubic.easeOut',
+                completeDelay: 100 + gameVars.deathFlutterDelay * 2,
+                onComplete: () => {
+                    globalObjects.floatingDeath2.setDepth(globalObjects.floatingDeath.depth - 1);
+                    globalObjects.floatingDeath.flutterAnim = PhaserScene.tweens.add({
+                        targets: globalObjects.floatingDeath,
+                        alpha: globalObjects.floatingDeath.fakeAlpha + alphaOffset,
+                        duration: 70 + gameVars.deathFlutterDelay,
+                        ease: 'Cubic.easeIn',
+                        onComplete: () => {
+                            globalObjects.floatingDeath.flutterAnim = PhaserScene.tweens.add({
+                                targets: globalObjects.floatingDeath2,
+                                alpha: 0,
+                                duration: 20 + gameVars.deathFlutterDelay,
+                                ease: 'Cubic.easeOut',
+                                completeDelay: 100 + gameVars.deathFlutterDelay * 2,
+                                onComplete: () => {
+                                    globalObjects.floatingDeath2.setDepth(globalObjects.floatingDeath.depth + 1);
+                                    repeatDeathFlutterAnimation();
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
+}
 
 function handleReaperDialog(level = 0, onComplete) {
     let reaperDialog = [];

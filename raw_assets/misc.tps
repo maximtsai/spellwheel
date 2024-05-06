@@ -218,7 +218,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">misc/floating_death.png</key>
+            <key type="filename">misc/floating_death_1.png</key>
+            <key type="filename">misc/floating_death_2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -227,9 +228,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>125,94,250,187</rect>
+                <rect>153,102,305,203</rect>
                 <key>scale9Paddings</key>
-                <rect>125,94,250,187</rect>
+                <rect>153,102,305,203</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

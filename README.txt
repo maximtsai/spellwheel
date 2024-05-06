@@ -7,3 +7,4 @@ https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_t
 
 Once you have python installed, you can click on pythonRunServer.bat or python3RunServer.bat (depending on which version of python you've installed). The bat file is pointing to port 8124 and you can open it by going to localhost:8124 in a web browser.
 
+Desert Eagle Shoot by Carlfnf -- https://freesound.org/s/677838/ -- License: Creative Commons 0

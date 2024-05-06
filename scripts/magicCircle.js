@@ -699,21 +699,22 @@ const ENABLE_KEYBOARD = true;
     attackLaunched() {
         let mindReinforceStatus = globalObjects.player.getStatuses()['mindReinforce'];
         if (mindReinforceStatus) {
+            let multiplier = mindReinforceStatus.multiplier;
             let energyCircle1 = mindReinforceStatus.animObj[1];
             let energyCircle2 = mindReinforceStatus.animObj[1];
             this.scene.tweens.add({
                 targets: energyCircle1,
                 duration: 150,
-                scaleX: 1.15,
-                scaleY: 1.15,
+                scaleX: 1.13 + 0.02 * multiplier,
+                scaleY: 1.13 + 0.02 * multiplier,
                 alpha: 1,
                 ease: 'Cubic.easeOut',
                 onComplete: () => {
                     this.scene.tweens.add({
                         targets: energyCircle1,
                         duration: 400,
-                        scaleX: 0.975,
-                        scaleY: 0.975,
+                        scaleX: 0.965 + 0.01 * multiplier,
+                        scaleY: 0.965 + 0.01 * multiplier,
                         ease: 'Back.easeOut',
                         onComplete: () => {
                             this.scene.tweens.add({
@@ -729,16 +730,16 @@ const ENABLE_KEYBOARD = true;
             this.scene.tweens.add({
                 targets: energyCircle2,
                 duration: 200,
-                scaleX: 1.18,
-                scaleY: 1.18,
+                scaleX: 1.16 + 0.02 * multiplier,
+                scaleY: 1.16 + 0.02 * multiplier,
                 alpha: 1,
                 ease: 'Cubic.easeOut',
                 onComplete: () => {
                     this.scene.tweens.add({
                         targets: energyCircle2,
                         duration: 550,
-                        scaleX: 1,
-                        scaleY: 1,
+                        scaleX: 0.99 + 0.01 * multiplier,
+                        scaleY: 0.99 + 0.01 * multiplier,
                         ease: 'Back.easeOut',
                         onComplete: () => {
                             this.scene.tweens.add({
@@ -963,7 +964,7 @@ const ENABLE_KEYBOARD = true;
         let spinAmtInner = this.innerCircle.rotVel + this.innerCircle.torque * dt * 5.5 * spinAmpFromRestInner;
         let spinAmtOuter = this.outerCircle.rotVel + this.outerCircle.torque * dt * 3 * spinAmpFromRestOuter;
 
-        let spinSlowTimeDilation = 1 - (1-gameVars.timeSlowRatio)*0.5;
+        let spinSlowTimeDilation = 1 - (1-gameVars.timeSlowRatio)*0.25;
         let spinSnapSlowAmtInner = this.handleSpinSnapSlowAmt(this.innerCircle, this.elements);
         let spinSnapSlowAmtOuter = this.handleSpinSnapSlowAmt(this.outerCircle, this.embodiments);
 
@@ -2213,7 +2214,7 @@ const ENABLE_KEYBOARD = true;
              case RUNE_MIND:
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
-                         this.spellNameText.setText('MIND STRIKE');
+                         this.spellNameText.setText('ENERGY STRIKE');
                          this.spellDescriptor.setText(getLangText('mind_strike_desc'));
                          break;
                      case RUNE_REINFORCE:

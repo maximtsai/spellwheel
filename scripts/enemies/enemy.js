@@ -87,6 +87,7 @@ class Enemy {
         this.pullbackScale = 0.9;
         this.pullbackScaleDefault = this.pullbackScale;
         this.attackScale = 1.1;
+        this.attackScaleDefault = this.attackScale;
         this.curse = 0;
 
         this.initStatsCustom();

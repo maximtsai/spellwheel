@@ -85,7 +85,11 @@
              this.setAwake();
              let eyePosX = this.x + 132 * this.sprite.startScale;
              let eyePosY = this.y - 82 * this.sprite.startScale;
-             let eye = this.scene.add.sprite(eyePosX, eyePosY, 'enemies', 'tree_eye.png').setDepth(9).setOrigin(0.5, 0.5).setRotation(-0.13).setScale(0, this.sprite.startScale);
+
+             let tree = this.scene.add.sprite(this.x, this.y, 'enemies', 'tree_open.png').setDepth(1).setOrigin(this.sprite.originX, this.sprite.originY).setScale(this.sprite.startScale).setAlpha(0);
+             this.addExtraSprite(tree);
+
+             let eye = this.scene.add.sprite(eyePosX, eyePosY, 'enemies', 'tree_eye.png').setDepth(10).setOrigin(0.5, 0.5).setRotation(-0.13).setScale(0, this.sprite.startScale);
              this.eyeMagic1 = this.scene.add.sprite(this.x + 4, this.y - 72, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57).setOrigin(0.5, 1).setScale(0.7, 0.5);
              this.eyeMagic2 = this.scene.add.sprite(this.x + 4, this.y - 72, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57 + 3.1415).setOrigin(0.5, 1).setScale(0.7, 0.5);
              this.eyeMagic1.alpha = 0;
@@ -94,7 +98,13 @@
              this.addToDestructibles(this.eyeMagic2);
 
 
-             this.addExtraSprite(eye, 3.5, -84)
+             this.addExtraSprite(eye, 3.5, -84);
+             PhaserScene.tweens.add({
+                 targets: tree,
+                 alpha: 0.95,
+                 duration: 1200,
+             });
+
              PhaserScene.tweens.add({
                  targets: eye,
                  scaleX: this.sprite.startScale * 0.6,
@@ -121,6 +131,7 @@
                                  ease: "Cubic.easeOut",
                                  duration: 300,
                                  onComplete: () => {
+                                     tree.destroy();
                                      this.setDefaultSprite('tree_open.png', this.sprite.startScale);
                                      this.removeExtraSprite(eye);
                                      eye.destroy();

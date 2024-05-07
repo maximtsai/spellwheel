@@ -22,10 +22,10 @@ function beginLevel(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'background3.webp', 1500, 1, 1, 'Quart.easeIn', 0, false, -15);
             break;
         case 2:
-            fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 1.05, 1.05, 'Quart.easeIn', 0, false, -65);
+            fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 'Quart.easeIn', 0, false, -65);
             break;
         case 3:
-            fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 0.95, 0.95, 'Quart.easeIn', 0, false, -10);
+            fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 0.95, 0.95, 'Quart.easeIn', 0, false, -10);
             break;
         case 4:
             fadeInBackgroundAtlas('backgrounds', 'background3.webp', 1500, 1, 1, 'Quart.easeIn', 0, false);

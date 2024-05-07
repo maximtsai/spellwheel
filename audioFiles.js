@@ -69,6 +69,8 @@ const audioFiles = [
     {name: 'tree_hit', src: 'audio/tree_hit.mp3'},
     {name: 'clunk', src: 'audio/clunk.mp3'},
     {name: 'clunk2', src: 'audio/clunk2.mp3'},
+    {name: 'cutesy_down', src: 'audio/cutesy_down.mp3'},
+    {name: 'cutesy_up', src: 'audio/cutesy_up.mp3'},
     {name: 'goblin_aha', src: 'audio/goblin_aha.mp3'},
     {name: 'goblin_grunt', src: 'audio/goblin_grunt.mp3'},
     {name: 'enemy_attack', src: 'audio/enemy_attack.mp3'},

@@ -1296,21 +1296,23 @@ const ENABLE_KEYBOARD = true;
 
                      let shieldArray = shieldObj.animObj[0];
                      let shieldEyes = shieldObj.animObj[1];
+                     let shieldGlow = shieldObj.animObj[2];
+                     shieldGlow.rotation = goalRotVoid;
                      shieldObj.jiggleAmt = Math.max(0, shieldObj.jiggleAmt - 0.01 * dScale);
                      let shieldMidPoint = (shieldArray.length - 1)/2;
                      for (let i = 0; i < shieldArray.length; i++) {
                          let distFromMid = shieldMidPoint - i;
                          distFromMid *= distFromMid;
                          let rotationOffset = shieldObj.spreadAmt * shieldArray[i].rotationOffset;
-                         shieldArray[i].x = shieldArray[i].startX + Math.sin(goalRotVoid + rotationOffset) * (197 + distFromMid * -0.8);
-                         shieldArray[i].y = shieldArray[i].startY - Math.cos(goalRotVoid + rotationOffset) * (200 + distFromMid * -0.8) - 10;
+                         shieldArray[i].x = shieldArray[i].startX + Math.sin(goalRotVoid + rotationOffset) * (206 + distFromMid * -0.8);
+                         shieldArray[i].y = shieldArray[i].startY - Math.cos(goalRotVoid + rotationOffset) * (210 + distFromMid * -0.8) - 10;
                          shieldArray[i].scaleVel += ((Math.random() - 0.45) * (0.003 + shieldObj.jiggleAmt * 0.08) + ((0.95 - distFromMid * 0.01) - shieldArray[i].scaleX) * (0.005 + shieldObj.jiggleAmt * 0.008)) * dScale;
                          shieldArray[i].scaleVel *= 1 - (0.03 + shieldObj.jiggleAmt * 0.02) * dScale;
                          shieldArray[i].setScale(shieldArray[i].scaleX + shieldArray[i].scaleVel);
                      }
                      for (let i = 0; i < shieldEyes.length; i++) {
-                         shieldEyes[i].x = shieldEyes[i].startX + Math.sin(goalRotVoid + shieldEyes[i].rotationOffset) * 196;
-                         shieldEyes[i].y = shieldEyes[i].startY - Math.cos(goalRotVoid + shieldEyes[i].rotationOffset) * 199 - 11;
+                         shieldEyes[i].x = shieldEyes[i].startX + Math.sin(goalRotVoid + shieldEyes[i].rotationOffset) * 206;
+                         shieldEyes[i].y = shieldEyes[i].startY - Math.cos(goalRotVoid + shieldEyes[i].rotationOffset) * 209 - 11;
                          shieldEyes[i].rotVel += (Math.random() - 0.5) * 0.02 * dScale;
                          shieldEyes[i].rotVel *= 1 - 0.02 * dScale;
                          shieldEyes[i].rotation += shieldEyes[i].rotVel;
@@ -1331,7 +1333,6 @@ const ENABLE_KEYBOARD = true;
                                  });
                              }
                          });
-
                      }
 
                      distFromCenter = Math.abs(goalRotVoid);

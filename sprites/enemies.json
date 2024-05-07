@@ -1901,7 +1901,7 @@
 			"image": "sprites/enemies-2.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2001,
+				"w": 2026,
 				"h": 2048
 			},
 			"scale": 1,
@@ -2657,6 +2657,31 @@
 					}
 				},
 				{
+					"filename": "robot_blush.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 484
+					},
+					"spriteSourceSize": {
+						"x": 157,
+						"y": 157,
+						"w": 186,
+						"h": 101
+					},
+					"frame": {
+						"x": 1693,
+						"y": 766,
+						"w": 186,
+						"h": 101
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "blood_1.png",
 					"rotated": false,
 					"trimmed": true,
@@ -2671,7 +2696,7 @@
 						"h": 91
 					},
 					"frame": {
-						"x": 1693,
+						"x": 1881,
 						"y": 766,
 						"w": 144,
 						"h": 91
@@ -2737,8 +2762,8 @@
 			"image": "sprites/enemies-3.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1273,
-				"h": 996
+				"w": 1018,
+				"h": 1245
 			},
 			"scale": 1,
 			"frames": [
@@ -2782,8 +2807,8 @@
 						"h": 271
 					},
 					"frame": {
-						"x": 1,
-						"y": 295,
+						"x": 303,
+						"y": 1,
 						"w": 245,
 						"h": 271
 					},
@@ -2807,10 +2832,35 @@
 						"h": 205
 					},
 					"frame": {
-						"x": 1,
-						"y": 568,
+						"x": 550,
+						"y": 1,
 						"w": 305,
 						"h": 205
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummy_angry.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 153,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 153,
+						"h": 230
+					},
+					"frame": {
+						"x": 857,
+						"y": 1,
+						"w": 153,
+						"h": 230
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2832,10 +2882,35 @@
 						"h": 220
 					},
 					"frame": {
-						"x": 248,
-						"y": 295,
+						"x": 550,
+						"y": 208,
 						"w": 280,
 						"h": 220
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "lesser_dummy.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 184,
+						"h": 248
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 0,
+						"w": 171,
+						"h": 248
+					},
+					"frame": {
+						"x": 832,
+						"y": 233,
+						"w": 171,
+						"h": 248
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2858,7 +2933,7 @@
 					},
 					"frame": {
 						"x": 303,
-						"y": 1,
+						"y": 274,
 						"w": 235,
 						"h": 262
 					},
@@ -2882,60 +2957,10 @@
 						"h": 220
 					},
 					"frame": {
-						"x": 1,
-						"y": 775,
+						"x": 540,
+						"y": 430,
 						"w": 272,
 						"h": 220
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dummy_broken.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 260,
-						"h": 217
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 236,
-						"h": 216
-					},
-					"frame": {
-						"x": 275,
-						"y": 775,
-						"w": 236,
-						"h": 216
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gobbo5.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 241,
-						"h": 270
-					},
-					"spriteSourceSize": {
-						"x": 20,
-						"y": 12,
-						"w": 213,
-						"h": 252
-					},
-					"frame": {
-						"x": 308,
-						"y": 517,
-						"w": 213,
-						"h": 252
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2957,8 +2982,8 @@
 						"h": 219
 					},
 					"frame": {
-						"x": 513,
-						"y": 771,
+						"x": 814,
+						"y": 483,
 						"w": 203,
 						"h": 219
 					},
@@ -2968,74 +2993,49 @@
 					}
 				},
 				{
-					"filename": "robot_hide.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 222,
-						"h": 229
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 222,
-						"h": 229
-					},
-					"frame": {
-						"x": 523,
-						"y": 517,
-						"w": 222,
-						"h": 229
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "robot_hide_2.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 222,
-						"h": 229
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 222,
-						"h": 229
-					},
-					"frame": {
-						"x": 718,
-						"y": 748,
-						"w": 222,
-						"h": 229
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "lesser_dummy.png",
+					"filename": "gobbo5.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 184,
-						"h": 248
+						"w": 241,
+						"h": 270
 					},
 					"spriteSourceSize": {
-						"x": 12,
-						"y": 0,
-						"w": 171,
-						"h": 248
+						"x": 20,
+						"y": 12,
+						"w": 213,
+						"h": 252
 					},
 					"frame": {
-						"x": 530,
-						"y": 265,
-						"w": 171,
-						"h": 248
+						"x": 1,
+						"y": 295,
+						"w": 213,
+						"h": 252
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot_hide.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 222,
+						"h": 273
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 222,
+						"h": 230
+					},
+					"frame": {
+						"x": 216,
+						"y": 538,
+						"w": 222,
+						"h": 230
 					},
 					"anchor": {
 						"x": 0.5,
@@ -3057,85 +3057,10 @@
 						"h": 196
 					},
 					"frame": {
-						"x": 540,
-						"y": 1,
+						"x": 1,
+						"y": 549,
 						"w": 212,
 						"h": 196
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "tree_branch.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 250,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 5,
-						"w": 249,
-						"h": 151
-					},
-					"frame": {
-						"x": 703,
-						"y": 199,
-						"w": 249,
-						"h": 151
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "clock1.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 156,
-						"h": 156
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 156,
-						"h": 156
-					},
-					"frame": {
-						"x": 703,
-						"y": 352,
-						"w": 156,
-						"h": 156
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "robot_dead_left.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 148,
-						"h": 130
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 148,
-						"h": 130
-					},
-					"frame": {
-						"x": 754,
-						"y": 1,
-						"w": 148,
-						"h": 130
 					},
 					"anchor": {
 						"x": 0.5,
@@ -3157,10 +3082,60 @@
 						"h": 200
 					},
 					"frame": {
-						"x": 747,
-						"y": 510,
+						"x": 1,
+						"y": 747,
 						"w": 187,
 						"h": 200
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot_hide_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 222,
+						"h": 273
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 222,
+						"h": 230
+					},
+					"frame": {
+						"x": 440,
+						"y": 652,
+						"w": 222,
+						"h": 230
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummy_broken.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 260,
+						"h": 217
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 236,
+						"h": 216
+					},
+					"frame": {
+						"x": 190,
+						"y": 770,
+						"w": 236,
+						"h": 216
 					},
 					"anchor": {
 						"x": 0.5,
@@ -3182,10 +3157,35 @@
 						"h": 200
 					},
 					"frame": {
-						"x": 936,
-						"y": 352,
+						"x": 1,
+						"y": 949,
 						"w": 187,
 						"h": 200
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot_dead_left.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 148,
+						"h": 130
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 148,
+						"h": 130
+					},
+					"frame": {
+						"x": 664,
+						"y": 652,
+						"w": 148,
+						"h": 130
 					},
 					"anchor": {
 						"x": 0.5,
@@ -3207,8 +3207,8 @@
 						"h": 221
 					},
 					"frame": {
-						"x": 954,
-						"y": 1,
+						"x": 814,
+						"y": 704,
 						"w": 163,
 						"h": 221
 					},
@@ -3218,24 +3218,24 @@
 					}
 				},
 				{
-					"filename": "dummy_angry.png",
+					"filename": "tree_branch.webp",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 153,
-						"h": 230
+						"w": 250,
+						"h": 160
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 153,
-						"h": 230
+						"x": 1,
+						"y": 5,
+						"w": 249,
+						"h": 151
 					},
 					"frame": {
-						"x": 1119,
-						"y": 1,
-						"w": 153,
-						"h": 230
+						"x": 428,
+						"y": 884,
+						"w": 249,
+						"h": 151
 					},
 					"anchor": {
 						"x": 0.5,
@@ -3257,8 +3257,8 @@
 						"h": 230
 					},
 					"frame": {
-						"x": 942,
-						"y": 554,
+						"x": 190,
+						"y": 988,
 						"w": 153,
 						"h": 230
 					},
@@ -3282,8 +3282,8 @@
 						"h": 209
 					},
 					"frame": {
-						"x": 942,
-						"y": 786,
+						"x": 679,
+						"y": 927,
 						"w": 163,
 						"h": 209
 					},
@@ -3307,8 +3307,8 @@
 						"h": 210
 					},
 					"frame": {
-						"x": 1097,
-						"y": 554,
+						"x": 844,
+						"y": 927,
 						"w": 162,
 						"h": 210
 					},
@@ -3332,10 +3332,35 @@
 						"h": 207
 					},
 					"frame": {
-						"x": 1107,
-						"y": 766,
+						"x": 345,
+						"y": 1037,
 						"w": 164,
 						"h": 207
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "clock1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 156,
+						"h": 156
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 156,
+						"h": 156
+					},
+					"frame": {
+						"x": 511,
+						"y": 1037,
+						"w": 156,
+						"h": 156
 					},
 					"anchor": {
 						"x": 0.5,
@@ -3348,6 +3373,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:114793e6f781132cb7079da58b66d00e:2858c3afaa4d613409fcd9f79c053af1:7932824411c36c67b27fcdfad91f2c95$"
+		"smartupdate": "$TexturePacker:SmartUpdate:e95e8ce5dc13d19fef8e3ff3ca109763:4fc050720e96ae58a2216d8e54212262:7932824411c36c67b27fcdfad91f2c95$"
 	}
 }

@@ -2153,9 +2153,9 @@ class SpellManager {
         for (let i = 0; i < 9 + spellMultiplier; i++) {
             let blackCircle = poolManager.getItemFromPool('blackCircle');
             if (!blackCircle) {
-                blackCircle = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 200, 'spells', 'blackCircle.png');
+                blackCircle = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 210, 'spells', 'blackCircle.png');
             }
-            blackCircle.setPosition(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 200);
+            blackCircle.setPosition(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 210);
             blackCircle.setDepth(120);
             let xOffset = (Math.random() - 0.5) * 400 + spellMultiplier * 20;
             let yOffset = (Math.random() - 0.25) * 150 + spellMultiplier * 20;
@@ -2198,14 +2198,14 @@ class SpellManager {
                 delay: delayAmt,
                 duration: 280 + Math.floor(randSize * 90),
                 x: gameConsts.halfWidth,
-                y: MAGIC_CIRCLE_HEIGHT - 200,
+                y: MAGIC_CIRCLE_HEIGHT - 210,
                 ease: 'Cubic.easeIn',
             });
         }
 
         let shieldArray = [];
         let numCircleParticles = 9;
-        let startDist = 145;
+        let startDist = 155;
         for (let i = 0; i < numCircleParticles; i++) {
             let rotationPos = (i - ((numCircleParticles - 1) / 2)) * 0.12;
             let blackShieldPiece = poolManager.getItemFromPool('blackCirclePlain');
@@ -2239,7 +2239,6 @@ class SpellManager {
             voidEyes.push(eyeAnim);
         }
 
-        messageBus.publish('setTempRotObjs', voidAnimations, rotation);
 
 
         for (let i = voidEyes.length - 1; i >= 0; i--) {
@@ -2254,6 +2253,14 @@ class SpellManager {
                 ease: 'Back.easeOut'
             });
         }
+        let voidBG = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 20, 'spells', 'shield_glow.png').setScale(0.91).setAlpha(0).setOrigin(0.5, 1);
+        this.scene.tweens.add({
+            targets: voidBG,
+            delay: 250,
+            duration: 800,
+            alpha: 1,
+        });
+        messageBus.publish('setTempRotObjs', [voidBG], rotation);
 
         let shieldHealth = spellMultiplier;
 
@@ -2261,7 +2268,7 @@ class SpellManager {
             name: shieldID,
             spellID: shieldID,
             type: 'void',
-            animObj: [shieldArray, voidEyes],
+            animObj: [shieldArray, voidEyes, voidBG],
             spriteSrc1: 'rune_protect_glow.png',
             spriteSrc2: 'rune_void_glow.png',
             spreadAmt: 0.9,
@@ -2277,6 +2284,16 @@ class SpellManager {
                     for (let i in voidEyes) {
                         voidEyes[i].destroy();
                     }
+
+                    this.scene.tweens.add({
+                        targets: voidBG,
+                        duration: 400,
+                        scaleX: 0,
+                        scaleY: 0,
+                        onComplete: () => {
+                            voidBG.destroy();
+                        }
+                    });
 
                     for (let i in shieldArray) {
                         let shieldObjDarkBall = shieldArray[i];
@@ -2450,7 +2467,7 @@ class SpellManager {
                             }
                         });
                     }, 15);
-                    messageBus.publish('enemyTakeDamagePercent', 12.5, additionalDamage);
+                    messageBus.publish('enemyTakeDamagePercent', 12, additionalDamage);
                     messageBus.publish('disruptOpponentAttackPercent', 0.667);
                     messageBus.publish('setPauseDur', 40);
 

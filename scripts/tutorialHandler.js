@@ -210,10 +210,9 @@ function buildTutorialProtect() {
     let firstText = getLangText('matter_tut_protect_desc');
     let secondText = getLangText('mind_tut_protect_desc');
 
-    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 24, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
-    globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
+    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 24, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34).setAlpha(0.5);
+    globalObjects.runePicture.setVisible(true).setAlpha(0.5).setScale(0.96);
     PhaserScene.tweens.add({
-        delay: 1,
         targets: [tutText, globalObjects.runePicture],
         alpha: 1,
         scaleX: 1,

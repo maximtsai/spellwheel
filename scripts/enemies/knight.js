@@ -522,7 +522,7 @@
                          playSound('void_strike_hit', 0.5);
                          playSound('sword_slice', 0.5);
                      },
-                     attackFinaleFunction: () => {
+                     finaleFunction: () => {
                          this.sigilEffect.visible = true;
                      }
                  },
@@ -539,7 +539,7 @@
                          this.makeSlashEffect();
                          playSound('sword_hit', 0.7);
                      },
-                     attackFinaleFunction: () => {
+                     finaleFunction: () => {
                          this.sigilEffect.visible = true;
                      }
                  },
@@ -564,7 +564,7 @@
                          playSound('void_strike_hit', 0.9);
                          playSound('sword_hit', 0.2);
                      },
-                     attackFinaleFunction: () => {
+                     finaleFunction: () => {
                          this.setDefaultSprite('void_knight.png');
                          this.sigilEffect.visible = true;
                      }
@@ -616,7 +616,7 @@
                          this.currentAttackSetIndex = 6;
                          this.nextAttackIndex = 0;
                      },
-                     attackFinaleFunction: () => {
+                     finaleFunction: () => {
                          this.voidTentacleFront.visible = true;
                          this.voidTentacleBack.visible = true;
                          this.sigilEffect.visible = true;
@@ -641,7 +641,7 @@
                          playSound('void_strike_hit');
                          playSound('void_strike', 0.15);
                      },
-                     attackFinaleFunction: () => {
+                     finaleFunction: () => {
                          this.voidTentacleFront.visible = true;
                          this.voidTentacleBack.visible = true;
                          this.sigilEffect.visible = true;
@@ -660,7 +660,7 @@
                          playSound('void_strike_hit');
                          playSound('void_strike', 0.4);
                      },
-                     attackFinaleFunction: () => {
+                     finaleFunction: () => {
                          this.voidTentacleFront.visible = true;
                          this.voidTentacleBack.visible = true;
                          this.sigilEffect.visible = true;
@@ -680,7 +680,7 @@
                          playSound('void_strike_hit');
                          playSound('void_strike', 0.15);
                      },
-                     attackFinaleFunction: () => {
+                     finaleFunction: () => {
                          this.voidTentacleFront.visible = true;
                          this.voidTentacleBack.visible = true;
                          this.sigilEffect.visible = true;
@@ -699,7 +699,7 @@
                          playSound('void_strike_hit');
                          playSound('void_strike', 0.4);
                      },
-                     attackFinaleFunction: () => {
+                     finaleFunction: () => {
                          this.voidTentacleFront.visible = true;
                          this.voidTentacleBack.visible = true;
                          this.sigilEffect.visible = true;
@@ -719,7 +719,7 @@
                          playSound('void_strike_hit');
                          playSound('void_strike', 0.15);
                      },
-                     attackFinaleFunction: () => {
+                     finaleFunction: () => {
                          this.voidTentacleFront.visible = true;
                          this.voidTentacleBack.visible = true;
                          this.sigilEffect.visible = true;
@@ -738,7 +738,7 @@
                          playSound('void_strike_hit');
                          playSound('void_strike', 0.4);
                      },
-                     attackFinaleFunction: () => {
+                     finaleFunction: () => {
                          this.voidTentacleFront.visible = true;
                          this.voidTentacleBack.visible = true;
                          this.sigilEffect.visible = true;
@@ -753,7 +753,7 @@
                      startFunction: () => {
                          this.createShout();
                      },
-                     attackFinaleFunction: () => {
+                     finaleFunction: () => {
                          this.voidTentacleFront.visible = true;
                          this.voidTentacleBack.visible = true;
                          this.sigilEffect.visible = true;
@@ -774,7 +774,7 @@
                          playSound('void_strike_hit');
                          playSound('void_strike', 0.15);
                      },
-                     attackFinaleFunction: () => {
+                     finaleFunction: () => {
                          this.voidTentacleFront.visible = true;
                          this.voidTentacleBack.visible = true;
                          this.sigilEffect.visible = true;
@@ -794,7 +794,7 @@
                          playSound('void_strike_hit');
                          playSound('void_strike', 0.4);
                      },
-                     attackFinaleFunction: () => {
+                     finaleFunction: () => {
                          this.voidTentacleFront.visible = true;
                          this.voidTentacleBack.visible = true;
                          this.sigilEffect.visible = true;

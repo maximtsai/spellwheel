@@ -108,7 +108,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    void_unload_desc: {en_us: 'Damage 12.5% of\nenemy current HP\nand disrupt their\naction',
+    void_unload_desc: {en_us: 'Damage 12% of\nenemy current HP\nand disrupt their\naction',
         fr: '',
         zh_cn: '',
         ru: '',

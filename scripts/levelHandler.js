@@ -22,10 +22,10 @@ function beginLevel(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'background3.webp', 1500, 1, 1, 'Quart.easeIn', 0, false, -15);
             break;
         case 2:
-            fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 1, 1, 'Quart.easeIn', 0, false, -20);
+            fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 1.05, 1.05, 'Quart.easeIn', 0, false, -65);
             break;
         case 3:
-            fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 1, 1, 'Quart.easeIn', 0, false);
+            fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 0.95, 0.95, 'Quart.easeIn', 0, false, -10);
             break;
         case 4:
             fadeInBackgroundAtlas('backgrounds', 'background3.webp', 1500, 1, 1, 'Quart.easeIn', 0, false);
@@ -199,6 +199,11 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
             globalObjects.runeHighlight.setVisible(false).setScale(0.96);
             globalObjects.runeHighlightTemp.setAlpha(0);
             globalObjects.runePicture.setAlpha(0);
+            PhaserScene.tweens.add({
+                targets: [globalObjects.runePicture, globalObjects.runeHighlightTemp],
+                alpha: 0,
+                duration: 1,
+            });
         }
     });
     closeButton.setDepth(10002);

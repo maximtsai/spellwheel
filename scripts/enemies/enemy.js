@@ -89,6 +89,8 @@ class Enemy {
         this.attackScale = 1.1;
         this.attackScaleDefault = this.attackScale;
         this.curse = 0;
+        this.lastAttackLingerMult = 1;
+        this.attackSlownessMult = 1;
 
         this.initStatsCustom();
 
@@ -261,6 +263,7 @@ class Enemy {
         this.shieldSprite.setScale(0.5);
         this.shieldSprite.setDepth(2);
         this.shieldSprite.visible = false;
+        this.shieldSprite.startScale = this.shieldSprite.scaleX;
 
         this.shieldText = this.scene.add.bitmapText(this.x, this.y + 85, 'block', '', 48);
         this.shieldText.alpha = 0.8;
@@ -517,11 +520,11 @@ class Enemy {
                 this.shield -= amt;
                 amt = 0;
                 this.shieldSprite.alpha = 1;
-                this.shieldSprite.setScale(0.55);
+                this.shieldSprite.setScale(this.shieldSprite.startScale * 1.1);
                 this.scene.tweens.add({
                     targets: this.shieldSprite,
-                    scaleX: 0.5,
-                    scaleY: 0.5,
+                    scaleX: this.shieldSprite.startScale,
+                    scaleY: this.shieldSprite.startScale,
                     duration: 150,
                     alpha: 0.75
                 });
@@ -555,8 +558,8 @@ class Enemy {
             if (this.nextAttack.attackFinishFunction) {
                 this.nextAttack.attackFinishFunction();
             }
-            if (this.nextAttack.attackFinaleFunction) {
-                this.nextAttack.attackFinaleFunction();
+            if (this.nextAttack.finaleFunction) {
+                this.nextAttack.finaleFunction();
             }
         }
         if (this.nextAttack.block) {
@@ -741,11 +744,11 @@ class Enemy {
         this.shield = amt;
         this.shieldSprite.visible = true;
         this.shieldSprite.alpha = 0.2;
-        this.shieldSprite.setScale(0.55);
+        this.shieldSprite.setScale(this.shieldSprite.startScale * 1.1);
         this.scene.tweens.add({
             targets: this.shieldSprite,
-            scaleX: 0.5,
-            scaleY: 0.5,
+            scaleX: this.shieldSprite.startScale,
+            scaleY: this.shieldSprite.startScale,
             alpha: 0.9,
             ease: "Cubic.easeIn",
             duration: 150,
@@ -804,8 +807,8 @@ class Enemy {
         this.shieldSprite.alpha = 1;
         this.scene.tweens.add({
             targets: this.shieldSprite,
-            scaleX: 0.6,
-            scaleY: 0.6,
+            scaleX: this.shieldSprite.startScale * 1.2,
+            scaleY: this.shieldSprite.startScale * 1.2,
             duration: 100,
             alpha: 0,
             onComplete: () => {
@@ -1411,7 +1414,7 @@ class Enemy {
         }
         this.isUsingAttack = true;
 
-        let extraTimeMult = 2 - gameVars.timeSlowRatio;
+        let extraTimeMult = (2 - gameVars.timeSlowRatio) * this.attackSlownessMult;
 
         if (this.nextAttack.attackStartFunction) {
             this.nextAttack.attackStartFunction();
@@ -1511,11 +1514,11 @@ class Enemy {
                             setTimeout(() => {
                                 if (!this.dead) {
                                     this.setSpriteIfNotInactive(this.defaultSprite);
-                                    if (this.nextAttack.attackFinaleFunction) {
-                                        this.nextAttack.attackFinaleFunction();
+                                    if (this.nextAttack.finaleFunction) {
+                                        this.nextAttack.finaleFunction();
                                     }
                                 }
-                            }, 500 * extraTimeMult * 0.65);
+                            }, 500 * extraTimeMult * 0.65 * this.lastAttackLingerMult);
                         }
                     }
                 });

@@ -10,4 +10,6 @@ Once you have python installed, you can click on pythonRunServer.bat or python3R
 Desert Eagle Shoot by Carlfnf -- https://freesound.org/s/677838/ -- License: Creative Commons 0
 
 Magic sounds.wav by Wax_vibe -- https://freesound.org/s/587802/ -- License: Creative Commons 0
-achievement-sparkle by pigeonfriend -- https://freesound.org/s/715067/ -- License: Creative Commons 0
+(not yet used) achievement-sparkle by pigeonfriend -- https://freesound.org/s/715067/ -- License: Creative Commons 0
+
+Incoming Artillery Strike Cinematic Explosion by EFlexMusic -- https://freesound.org/s/530886/ -- License: Attribution 3.0

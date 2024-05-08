@@ -179,7 +179,7 @@ function playReaperAnim(enemy, customFinFunc) {
                             if (enemy.customBgMusic) {
                                 enemy.customBgMusic.stop();
                             }
-                            playSound(globalObjects.reapSound || 'sword_slice');
+                            playSound(globalObjects.reapSound || 'death_attack');
                             globalObjects.reapSound = null;
                             let fogSlice = getFogSlice();
 

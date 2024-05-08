@@ -187,9 +187,9 @@ function createAnimations(scene) {
         repeat: -1
     });
     scene.anims.create({
-        key: 'target',
+        key: 'energyTarget',
         frames: scene.anims.generateFrameNames('spells', {
-            prefix: 'target',
+            prefix: 'energyTarget',
             suffix: '.png',
             start: 1,
             end: 2,

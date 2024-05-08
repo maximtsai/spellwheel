@@ -1,10 +1,12 @@
 const audioFiles = [
-    {name: 'button', src: 'audio/button.mp3'},
     {name: 'fightbg1', src: 'audio/fightbg1.mp3'},
     {name: 'battle_2_full', src: 'audio/battle_2_full.mp3'},
     {name: 'battle_2_half', src: 'audio/battle_2_half.mp3'},
+    {name: 'recipe_for_action', src: 'audio/recipe_for_action.mp3'},
+    {name: 'echos_of_time', src: 'audio/echos_of_time.mp3'},
+    {name: 'echos_of_time_finale', src: 'audio/echos_of_time_finale.mp3'},
 
-
+    {name: 'button', src: 'audio/button.mp3'},
     {name: 'emergency', src: 'audio/emergency.mp3'},
     {name: 'fizzle', src: 'audio/fizzle.mp3'},
     {name: 'matter_body', src: 'audio/matter_body.mp3'},
@@ -53,12 +55,20 @@ const audioFiles = [
     {name: 'victory_2', src: 'audio/victory_2.mp3'},
     {name: 'victory_false', src: 'audio/victory_false.mp3'},
 
+    {name: 'voca_hello', src: 'audio/voca_hello.mp3'},
+    {name: 'voca_pain', src: 'audio/voca_pain.mp3'},
+    {name: 'voca_missile', src: 'audio/voca_missile.mp3'},
+    {name: 'voca_kya_damaged', src: 'audio/voca_kya_damaged.mp3'},
+    {name: 'voca_kya', src: 'audio/voca_kya.mp3'},
     {name: 'voca_gun', src: 'audio/voca_gun.mp3'},
     {name: 'voca_laser', src: 'audio/voca_laser.mp3'},
     {name: 'voca_claw_1', src: 'audio/voca_claw_1.mp3'},
     {name: 'voca_claw_2', src: 'audio/voca_claw_2.mp3'},
     {name: 'big_gun_pow_1', src: 'audio/big_gun_pow_1.mp3'},
     {name: 'big_gun_pow_2', src: 'audio/big_gun_pow_2.mp3'},
+    {name: 'robot_sfx_1', src: 'audio/robot_sfx_1.mp3'},
+    {name: 'robot_sfx_2', src: 'audio/robot_sfx_2.mp3'},
+    {name: 'robot_laser', src: 'audio/robot_laser.mp3'},
 
     {name: 'magic', src: 'audio/magic.mp3'},
     {name: 'power_surge', src: 'audio/power_surge.mp3'},
@@ -85,6 +95,9 @@ const audioFiles = [
     {name: 'wind', src: 'audio/wind.mp3'},
     {name: 'sound_of_death', src: 'audio/sound_of_death.mp3'},
     {name: 'you_died', src: 'audio/you_died.mp3'},
+    {name: 'missile_launch_1', src: 'audio/missile_launch_1.mp3'},
+    {name: 'missile_launch_2', src: 'audio/missile_launch_2.mp3'},
+    {name: 'death_attack', src: 'audio/death_attack.mp3'},
 
     {name: 'magician_end', src: 'audio/magician_end.mp3'},
     {name: 'magician_theme_1', src: 'audio/magician_theme_1.mp3'},

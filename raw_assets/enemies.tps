@@ -598,6 +598,7 @@
             <key type="filename">enemies/gunflash_3.png</key>
             <key type="filename">enemies/gunflash_4.png</key>
             <key type="filename">enemies/gunflash_5.png</key>
+            <key type="filename">enemies/missile.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -845,6 +846,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/robot_blast.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>133,105,265,210</rect>
+                <key>scale9Paddings</key>
+                <rect>133,105,265,210</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/robot_blush.png</key>
             <key type="filename">enemies/roboteye.png</key>
             <struct type="IndividualSpriteSettings">
@@ -858,6 +874,21 @@
                 <rect>125,121,250,242</rect>
                 <key>scale9Paddings</key>
                 <rect>125,121,250,242</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/robot_charge.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,75,150,150</rect>
+                <key>scale9Paddings</key>
+                <rect>75,75,150,150</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1009,6 +1040,21 @@
                 <rect>144,121,287,242</rect>
                 <key>scale9Paddings</key>
                 <rect>144,121,287,242</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/robot_laser_fire.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,118,150,235</rect>
+                <key>scale9Paddings</key>
+                <rect>75,118,150,235</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

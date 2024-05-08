@@ -377,7 +377,7 @@ class Enemy {
             }
             chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
             if (this.isAngry) {
-                let increaseMult = Math.max(3.3, 0.33 * chargeMult);
+                let increaseMult = Math.max(4.25, 0.33 * chargeMult);
                 this.attackCharge += timeChange * increaseMult * this.slowMult;
             } else {
                 if (gameVars.playerNotMoved && chargeMult === 1) {
@@ -462,7 +462,7 @@ class Enemy {
             }
         }
         this.timeSinceLastAttacked += timeChange;
-        if (this.timeSinceLastAttacked < 110) {
+        if (this.timeSinceLastAttacked < 80) {
             if (!this.isAngry) {
                 this.isAngry = true;
                 this.chargeBarAngry.alpha = 1;
@@ -548,7 +548,7 @@ class Enemy {
         this.chargeBarCurr.alpha = 1;
         this.chargeBarAngry.alpha = 1;
 
-        this.timeSinceLastAttacked += 100;
+        this.timeSinceLastAttacked += 60;
         if (this.nextAttack.damage !== 0) {
             this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.prepareSprite, this.nextAttack.attackSprites);
         } else {
@@ -1313,6 +1313,11 @@ class Enemy {
         this.attackCharge = 0;
         this.attackCooldown = this.delayBetweenAttacks;
         this.chargeBarCurr.alpha = 1;
+    }
+
+    setNextAttack(set, index = 0) {
+        this.currentAttackSetIndex = set;
+        this.nextAttackIndex = index;
     }
 
     showFlash(x, y) {

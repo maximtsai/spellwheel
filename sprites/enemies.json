@@ -5,7 +5,7 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 2046,
-				"h": 2046
+				"h": 2045
 			},
 			"scale": 1,
 			"frames": [
@@ -74,56 +74,6 @@
 						"h": 409
 					},
 					"frame": {
-						"x": 803,
-						"y": 1033,
-						"w": 800,
-						"h": 409
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "wall_2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 800,
-						"h": 500
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 27,
-						"w": 800,
-						"h": 409
-					},
-					"frame": {
-						"x": 803,
-						"y": 1444,
-						"w": 800,
-						"h": 409
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "wall_3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 800,
-						"h": 500
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 27,
-						"w": 800,
-						"h": 409
-					},
-					"frame": {
 						"x": 1,
 						"y": 1463,
 						"w": 800,
@@ -160,6 +110,56 @@
 					}
 				},
 				{
+					"filename": "wall_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 800,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 27,
+						"w": 800,
+						"h": 409
+					},
+					"frame": {
+						"x": 803,
+						"y": 1033,
+						"w": 800,
+						"h": 409
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "wall_3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 800,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 27,
+						"w": 800,
+						"h": 409
+					},
+					"frame": {
+						"x": 803,
+						"y": 1444,
+						"w": 800,
+						"h": 409
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "mantis_shoot_left.png",
 					"rotated": false,
 					"trimmed": true,
@@ -178,6 +178,181 @@
 						"y": 543,
 						"w": 583,
 						"h": 452
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "mantis_reveal.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 610,
+						"h": 550
+					},
+					"spriteSourceSize": {
+						"x": 93,
+						"y": 0,
+						"w": 409,
+						"h": 539
+					},
+					"frame": {
+						"x": 1605,
+						"y": 997,
+						"w": 409,
+						"h": 539
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot_heart.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 338,
+						"h": 376
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 336,
+						"h": 373
+					},
+					"frame": {
+						"x": 1605,
+						"y": 1538,
+						"w": 336,
+						"h": 373
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot_fire_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 421,
+						"h": 177
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 7,
+						"w": 411,
+						"h": 166
+					},
+					"frame": {
+						"x": 1,
+						"y": 1874,
+						"w": 411,
+						"h": 166
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot_fire_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 421,
+						"h": 177
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 7,
+						"w": 405,
+						"h": 161
+					},
+					"frame": {
+						"x": 414,
+						"y": 1874,
+						"w": 405,
+						"h": 161
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot_shoot.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 328,
+						"h": 315
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 125,
+						"w": 327,
+						"h": 189
+					},
+					"frame": {
+						"x": 821,
+						"y": 1855,
+						"w": 327,
+						"h": 189
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "void_knight_tent_1_front.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 365,
+						"h": 325
+					},
+					"spriteSourceSize": {
+						"x": 55,
+						"y": 2,
+						"w": 309,
+						"h": 167
+					},
+					"frame": {
+						"x": 1150,
+						"y": 1855,
+						"w": 309,
+						"h": 167
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "wall_eyes_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 350,
+						"h": 60
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 350,
+						"h": 54
+					},
+					"frame": {
+						"x": 1461,
+						"y": 1913,
+						"w": 350,
+						"h": 54
 					},
 					"anchor": {
 						"x": 0.5,
@@ -210,82 +385,7 @@
 					}
 				},
 				{
-					"filename": "void_knight_arm.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 47,
-						"h": 110
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 6,
-						"w": 47,
-						"h": 104
-					},
-					"frame": {
-						"x": 1990,
-						"y": 203,
-						"w": 47,
-						"h": 104
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "tree_leaf.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 40,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 40,
-						"h": 97
-					},
-					"frame": {
-						"x": 2002,
-						"y": 1,
-						"w": 40,
-						"h": 97
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "tree_eye.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 26,
-						"h": 85
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 26,
-						"h": 85
-					},
-					"frame": {
-						"x": 2002,
-						"y": 100,
-						"w": 26,
-						"h": 85
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gunflash_5.png",
+					"filename": "missile.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -293,16 +393,16 @@
 						"h": 138
 					},
 					"spriteSourceSize": {
-						"x": 47,
-						"y": 34,
-						"w": 55,
-						"h": 71
+						"x": 38,
+						"y": 6,
+						"w": 68,
+						"h": 126
 					},
 					"frame": {
-						"x": 1990,
-						"y": 309,
-						"w": 55,
-						"h": 71
+						"x": 1943,
+						"y": 1538,
+						"w": 68,
+						"h": 126
 					},
 					"anchor": {
 						"x": 0.5,
@@ -310,99 +410,24 @@
 					}
 				},
 				{
-					"filename": "void_knight_shield_eye_2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 80,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 13,
-						"w": 54,
-						"h": 54
-					},
-					"frame": {
-						"x": 1990,
-						"y": 382,
-						"w": 54,
-						"h": 54
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "exclamation1.png",
+					"filename": "ready_glow.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 24,
-						"h": 48
+						"w": 117,
+						"h": 49
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 24,
-						"h": 48
+						"w": 117,
+						"h": 49
 					},
 					"frame": {
-						"x": 1990,
-						"y": 438,
-						"w": 24,
-						"h": 48
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "bird_2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 83,
-						"h": 64
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 10,
-						"w": 55,
-						"h": 47
-					},
-					"frame": {
-						"x": 1990,
-						"y": 488,
-						"w": 55,
-						"h": 47
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "poop.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 58,
-						"h": 45
-					},
-					"spriteSourceSize": {
-						"x": 14,
-						"y": 0,
-						"w": 28,
-						"h": 43
-					},
-					"frame": {
-						"x": 2016,
-						"y": 438,
-						"w": 28,
-						"h": 43
+						"x": 1461,
+						"y": 1855,
+						"w": 117,
+						"h": 49
 					},
 					"anchor": {
 						"x": 0.5,
@@ -435,81 +460,6 @@
 					}
 				},
 				{
-					"filename": "dummyeyes.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 67,
-						"h": 29
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 4,
-						"w": 67,
-						"h": 25
-					},
-					"frame": {
-						"x": 1583,
-						"y": 997,
-						"w": 67,
-						"h": 25
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "mantis_reveal.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 610,
-						"h": 550
-					},
-					"spriteSourceSize": {
-						"x": 93,
-						"y": 0,
-						"w": 409,
-						"h": 539
-					},
-					"frame": {
-						"x": 1605,
-						"y": 1024,
-						"w": 409,
-						"h": 539
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "robot_heart.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 338,
-						"h": 376
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 336,
-						"h": 373
-					},
-					"frame": {
-						"x": 1605,
-						"y": 1565,
-						"w": 336,
-						"h": 373
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "lesser_dummy_head.png",
 					"rotated": false,
 					"trimmed": true,
@@ -525,7 +475,7 @@
 					},
 					"frame": {
 						"x": 1943,
-						"y": 1565,
+						"y": 1666,
 						"w": 93,
 						"h": 94
 					},
@@ -550,7 +500,7 @@
 					},
 					"frame": {
 						"x": 1943,
-						"y": 1661,
+						"y": 1762,
 						"w": 89,
 						"h": 92
 					},
@@ -560,24 +510,24 @@
 					}
 				},
 				{
-					"filename": "gunflash_3.png",
+					"filename": "blood_0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 138,
-						"h": 138
+						"w": 148,
+						"h": 106
 					},
 					"spriteSourceSize": {
-						"x": 40,
-						"y": 24,
-						"w": 67,
-						"h": 89
+						"x": 18,
+						"y": 32,
+						"w": 118,
+						"h": 44
 					},
 					"frame": {
-						"x": 1943,
-						"y": 1755,
-						"w": 67,
-						"h": 89
+						"x": 1461,
+						"y": 1969,
+						"w": 118,
+						"h": 44
 					},
 					"anchor": {
 						"x": 0.5,
@@ -585,24 +535,24 @@
 					}
 				},
 				{
-					"filename": "curse_symbol_small_2.png",
+					"filename": "tree_leaf.webp",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 86,
-						"h": 90
+						"w": 40,
+						"h": 100
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 2,
-						"w": 86,
-						"h": 85
+						"w": 40,
+						"h": 97
 					},
 					"frame": {
-						"x": 1943,
-						"y": 1846,
-						"w": 86,
-						"h": 85
+						"x": 2002,
+						"y": 1,
+						"w": 40,
+						"h": 97
 					},
 					"anchor": {
 						"x": 0.5,
@@ -625,334 +575,9 @@
 					},
 					"frame": {
 						"x": 1943,
-						"y": 1933,
+						"y": 1856,
 						"w": 80,
 						"h": 80
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "exclamation2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 22,
-						"h": 44
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 20,
-						"h": 42
-					},
-					"frame": {
-						"x": 2012,
-						"y": 1755,
-						"w": 20,
-						"h": 42
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "robot_fire_2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 421,
-						"h": 177
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 7,
-						"w": 411,
-						"h": 166
-					},
-					"frame": {
-						"x": 803,
-						"y": 1855,
-						"w": 411,
-						"h": 166
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "robot_shoot.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 328,
-						"h": 315
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 125,
-						"w": 327,
-						"h": 189
-					},
-					"frame": {
-						"x": 1216,
-						"y": 1855,
-						"w": 327,
-						"h": 189
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "wall_eyes_2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 350,
-						"h": 60
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 350,
-						"h": 54
-					},
-					"frame": {
-						"x": 1545,
-						"y": 1940,
-						"w": 350,
-						"h": 54
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "clock3.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 58,
-						"h": 58
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 58,
-						"h": 58
-					},
-					"frame": {
-						"x": 1545,
-						"y": 1855,
-						"w": 58,
-						"h": 58
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "poopbig.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 41,
-						"h": 45
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 41,
-						"h": 45
-					},
-					"frame": {
-						"x": 1897,
-						"y": 1940,
-						"w": 41,
-						"h": 45
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "clock2.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 43,
-						"h": 43
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 43,
-						"h": 43
-					},
-					"frame": {
-						"x": 1897,
-						"y": 1987,
-						"w": 43,
-						"h": 43
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dummybrows.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 67,
-						"h": 29
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 66,
-						"h": 29
-					},
-					"frame": {
-						"x": 1942,
-						"y": 2015,
-						"w": 66,
-						"h": 29
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "blood_0.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 148,
-						"h": 106
-					},
-					"spriteSourceSize": {
-						"x": 18,
-						"y": 32,
-						"w": 118,
-						"h": 44
-					},
-					"frame": {
-						"x": 1545,
-						"y": 1996,
-						"w": 118,
-						"h": 44
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "ready_glow.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 117,
-						"h": 49
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 117,
-						"h": 49
-					},
-					"frame": {
-						"x": 1665,
-						"y": 1996,
-						"w": 117,
-						"h": 49
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "brick.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 83,
-						"h": 64
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 77,
-						"h": 45
-					},
-					"frame": {
-						"x": 1784,
-						"y": 1996,
-						"w": 77,
-						"h": 45
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "robot_fire_1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 421,
-						"h": 177
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 7,
-						"w": 405,
-						"h": 161
-					},
-					"frame": {
-						"x": 1,
-						"y": 1874,
-						"w": 405,
-						"h": 161
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "void_knight_tent_1_front.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 365,
-						"h": 325
-					},
-					"spriteSourceSize": {
-						"x": 55,
-						"y": 2,
-						"w": 309,
-						"h": 167
-					},
-					"frame": {
-						"x": 408,
-						"y": 1874,
-						"w": 309,
-						"h": 167
 					},
 					"anchor": {
 						"x": 0.5,
@@ -974,8 +599,8 @@
 						"h": 80
 					},
 					"frame": {
-						"x": 719,
-						"y": 1874,
+						"x": 1813,
+						"y": 1913,
 						"w": 80,
 						"h": 80
 					},
@@ -985,24 +610,349 @@
 					}
 				},
 				{
-					"filename": "clock4.png",
+					"filename": "brick.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 83,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 77,
+						"h": 45
+					},
+					"frame": {
+						"x": 1581,
+						"y": 1969,
+						"w": 77,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "wall_eyes_3_a.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 80,
+						"h": 54
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 0,
+						"w": 72,
+						"h": 46
+					},
+					"frame": {
+						"x": 1660,
+						"y": 1969,
+						"w": 72,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "void_knight_arm.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 47,
+						"h": 110
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 6,
+						"w": 47,
+						"h": 104
+					},
+					"frame": {
+						"x": 1990,
+						"y": 203,
+						"w": 47,
+						"h": 104
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gunflash_5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 138,
+						"h": 138
+					},
+					"spriteSourceSize": {
+						"x": 47,
+						"y": 34,
+						"w": 55,
+						"h": 71
+					},
+					"frame": {
+						"x": 1990,
+						"y": 309,
+						"w": 55,
+						"h": 71
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "tree_eye.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 78,
-						"h": 78
+						"w": 26,
+						"h": 85
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 78,
-						"h": 78
+						"w": 26,
+						"h": 85
 					},
 					"frame": {
-						"x": 719,
-						"y": 1956,
-						"w": 78,
-						"h": 78
+						"x": 2002,
+						"y": 100,
+						"w": 26,
+						"h": 85
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "wall_eyes_dead.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 71,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 70,
+						"h": 41
+					},
+					"frame": {
+						"x": 1734,
+						"y": 1969,
+						"w": 70,
+						"h": 41
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "void_knight_shield_eye_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 13,
+						"w": 54,
+						"h": 54
+					},
+					"frame": {
+						"x": 1990,
+						"y": 382,
+						"w": 54,
+						"h": 54
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bird_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 83,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 10,
+						"w": 55,
+						"h": 47
+					},
+					"frame": {
+						"x": 1990,
+						"y": 438,
+						"w": 55,
+						"h": 47
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummyeyes.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 67,
+						"h": 29
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 4,
+						"w": 67,
+						"h": 25
+					},
+					"frame": {
+						"x": 1806,
+						"y": 1995,
+						"w": 67,
+						"h": 25
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gunflash_3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 138,
+						"h": 138
+					},
+					"spriteSourceSize": {
+						"x": 40,
+						"y": 24,
+						"w": 67,
+						"h": 89
+					},
+					"frame": {
+						"x": 1895,
+						"y": 1938,
+						"w": 67,
+						"h": 89
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "clock3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 58,
+						"h": 58
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 58,
+						"h": 58
+					},
+					"frame": {
+						"x": 1964,
+						"y": 1938,
+						"w": 58,
+						"h": 58
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "exclamation1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 48
+					},
+					"frame": {
+						"x": 1990,
+						"y": 487,
+						"w": 24,
+						"h": 48
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "poop.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 58,
+						"h": 45
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 0,
+						"w": 28,
+						"h": 43
+					},
+					"frame": {
+						"x": 2016,
+						"y": 487,
+						"w": 28,
+						"h": 43
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "exclamation2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 22,
+						"h": 44
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 20,
+						"h": 42
+					},
+					"frame": {
+						"x": 1580,
+						"y": 1855,
+						"w": 20,
+						"h": 42
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1015,8 +965,8 @@
 			"image": "sprites/enemies-1.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2048,
-				"h": 2043
+				"w": 2032,
+				"h": 2048
 			},
 			"scale": 1,
 			"frames": [
@@ -1146,24 +1096,24 @@
 					}
 				},
 				{
-					"filename": "time_magi_cast.png",
+					"filename": "robot_laser_fire.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 310,
-						"h": 400
+						"w": 300,
+						"h": 470
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 3,
-						"w": 251,
-						"h": 394
+						"x": 43,
+						"y": 23,
+						"w": 210,
+						"h": 428
 					},
 					"frame": {
 						"x": 1605,
 						"y": 1018,
-						"w": 251,
-						"h": 394
+						"w": 210,
+						"h": 428
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1185,60 +1135,10 @@
 						"h": 353
 					},
 					"frame": {
-						"x": 1605,
-						"y": 1414,
+						"x": 1817,
+						"y": 1018,
 						"w": 198,
 						"h": 353
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "time_magi_terrified.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 310,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 69,
-						"y": 47,
-						"w": 241,
-						"h": 344
-					},
-					"frame": {
-						"x": 1805,
-						"y": 1414,
-						"w": 241,
-						"h": 344
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gobboAttack1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 241,
-						"h": 270
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 0,
-						"w": 235,
-						"h": 263
-					},
-					"frame": {
-						"x": 1805,
-						"y": 1760,
-						"w": 235,
-						"h": 263
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1260,60 +1160,10 @@
 						"h": 320
 					},
 					"frame": {
-						"x": 1858,
-						"y": 1018,
+						"x": 1817,
+						"y": 1373,
 						"w": 187,
 						"h": 320
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "mantis_head_2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 110,
-						"h": 75
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 3,
-						"w": 106,
-						"h": 72
-					},
-					"frame": {
-						"x": 1858,
-						"y": 1340,
-						"w": 106,
-						"h": 72
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gunflash_4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 138,
-						"h": 138
-					},
-					"spriteSourceSize": {
-						"x": 33,
-						"y": 32,
-						"w": 81,
-						"h": 71
-					},
-					"frame": {
-						"x": 1966,
-						"y": 1340,
-						"w": 81,
-						"h": 71
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1371,24 +1221,24 @@
 					}
 				},
 				{
-					"filename": "mantis_dead.png",
+					"filename": "max_death_3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 530,
-						"h": 550
+						"w": 700,
+						"h": 540
 					},
 					"spriteSourceSize": {
-						"x": 26,
-						"y": 392,
-						"w": 401,
-						"h": 142
+						"x": 6,
+						"y": 26,
+						"w": 564,
+						"h": 499
 					},
 					"frame": {
 						"x": 1243,
-						"y": 1769,
-						"w": 401,
-						"h": 142
+						"y": 1448,
+						"w": 564,
+						"h": 499
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1396,132 +1246,7 @@
 					}
 				},
 				{
-					"filename": "dummy.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 153,
-						"h": 230
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 153,
-						"h": 230
-					},
-					"frame": {
-						"x": 1646,
-						"y": 1769,
-						"w": 153,
-						"h": 230
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "void_knight_3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 365,
-						"h": 325
-					},
-					"spriteSourceSize": {
-						"x": 53,
-						"y": 0,
-						"w": 312,
-						"h": 291
-					},
-					"frame": {
-						"x": 1243,
-						"y": 1444,
-						"w": 312,
-						"h": 291
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gobboDead.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 235,
-						"h": 263
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 162,
-						"w": 233,
-						"h": 101
-					},
-					"frame": {
-						"x": 1243,
-						"y": 1913,
-						"w": 233,
-						"h": 101
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "robot_dead_right.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 156,
-						"h": 127
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 156,
-						"h": 127
-					},
-					"frame": {
-						"x": 1478,
-						"y": 1913,
-						"w": 156,
-						"h": 127
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "wall_eyes_dead.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 71,
-						"h": 48
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 70,
-						"h": 41
-					},
-					"frame": {
-						"x": 1636,
-						"y": 2001,
-						"w": 70,
-						"h": 41
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "void_knight_sigil.png",
+					"filename": "void_knight.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1529,16 +1254,16 @@
 						"h": 265
 					},
 					"spriteSourceSize": {
-						"x": 76,
-						"y": 73,
-						"w": 40,
-						"h": 37
+						"x": 16,
+						"y": 0,
+						"w": 200,
+						"h": 265
 					},
 					"frame": {
-						"x": 1708,
-						"y": 2001,
-						"w": 40,
-						"h": 37
+						"x": 1809,
+						"y": 1695,
+						"w": 200,
+						"h": 265
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1546,49 +1271,174 @@
 					}
 				},
 				{
-					"filename": "angry2.png",
+					"filename": "roboteye.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 46,
-						"h": 46
+						"w": 200,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 0,
+						"w": 191,
+						"h": 80
+					},
+					"frame": {
+						"x": 1243,
+						"y": 1949,
+						"w": 191,
+						"h": 80
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "wall_chunk.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 165,
+						"h": 82
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 4,
+						"w": 163,
+						"h": 78
+					},
+					"frame": {
+						"x": 1436,
+						"y": 1949,
+						"w": 163,
+						"h": 78
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "blood_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 148,
+						"h": 106
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 144,
+						"h": 91
+					},
+					"frame": {
+						"x": 1601,
+						"y": 1949,
+						"w": 144,
+						"h": 91
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bird_2_fat.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 83,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 10,
+						"w": 55,
+						"h": 47
+					},
+					"frame": {
+						"x": 1747,
+						"y": 1949,
+						"w": 55,
+						"h": 47
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "glowSpike.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 137,
+						"h": 82
+					},
+					"frame": {
+						"x": 1804,
+						"y": 1962,
+						"w": 137,
+						"h": 82
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "curse_symbol_small_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 90
 					},
 					"spriteSourceSize": {
 						"x": 0,
+						"y": 2,
+						"w": 86,
+						"h": 85
+					},
+					"frame": {
+						"x": 1943,
+						"y": 1962,
+						"w": 86,
+						"h": 85
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bird_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 56,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 5,
 						"y": 0,
-						"w": 46,
-						"h": 46
-					},
-					"frame": {
-						"x": 1557,
-						"y": 1444,
-						"w": 46,
-						"h": 46
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "bone1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
 						"w": 48,
-						"h": 46
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 2,
-						"w": 46,
-						"h": 43
+						"h": 47
 					},
 					"frame": {
-						"x": 1557,
-						"y": 1492,
-						"w": 46,
-						"h": 43
+						"x": 1747,
+						"y": 1998,
+						"w": 48,
+						"h": 47
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1596,49 +1446,24 @@
 					}
 				},
 				{
-					"filename": "angry1.png",
+					"filename": "mantis_head_2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 46,
-						"h": 46
+						"w": 110,
+						"h": 75
 					},
 					"spriteSourceSize": {
-						"x": 1,
-						"y": 2,
-						"w": 44,
-						"h": 42
+						"x": 4,
+						"y": 3,
+						"w": 106,
+						"h": 72
 					},
 					"frame": {
-						"x": 1557,
-						"y": 1537,
-						"w": 44,
-						"h": 42
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "exclamation.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 46,
-						"h": 46
-					},
-					"spriteSourceSize": {
 						"x": 1,
-						"y": 2,
-						"w": 44,
-						"h": 42
-					},
-					"frame": {
-						"x": 1557,
-						"y": 1581,
-						"w": 44,
-						"h": 42
+						"y": 1974,
+						"w": 106,
+						"h": 72
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1660,7 +1485,7 @@
 						"h": 66
 					},
 					"frame": {
-						"x": 1,
+						"x": 109,
 						"y": 1974,
 						"w": 93,
 						"h": 66
@@ -1685,10 +1510,35 @@
 						"h": 56
 					},
 					"frame": {
-						"x": 96,
+						"x": 204,
 						"y": 1974,
 						"w": 85,
 						"h": 56
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gunflash_4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 138,
+						"h": 138
+					},
+					"spriteSourceSize": {
+						"x": 33,
+						"y": 32,
+						"w": 81,
+						"h": 71
+					},
+					"frame": {
+						"x": 291,
+						"y": 1974,
+						"w": 81,
+						"h": 71
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1710,35 +1560,10 @@
 						"h": 58
 					},
 					"frame": {
-						"x": 183,
+						"x": 374,
 						"y": 1974,
 						"w": 77,
 						"h": 58
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "wall_eyes_3_a.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 80,
-						"h": 54
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 0,
-						"w": 72,
-						"h": 46
-					},
-					"frame": {
-						"x": 262,
-						"y": 1974,
-						"w": 72,
-						"h": 46
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1760,7 +1585,7 @@
 						"h": 63
 					},
 					"frame": {
-						"x": 336,
+						"x": 453,
 						"y": 1974,
 						"w": 71,
 						"h": 63
@@ -1785,7 +1610,7 @@
 						"h": 66
 					},
 					"frame": {
-						"x": 409,
+						"x": 526,
 						"y": 1974,
 						"w": 67,
 						"h": 66
@@ -1810,7 +1635,7 @@
 						"h": 68
 					},
 					"frame": {
-						"x": 478,
+						"x": 595,
 						"y": 1974,
 						"w": 66,
 						"h": 68
@@ -1821,49 +1646,24 @@
 					}
 				},
 				{
-					"filename": "bird_2_fat.png",
+					"filename": "dummybrows.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 83,
-						"h": 64
+						"w": 67,
+						"h": 29
 					},
 					"spriteSourceSize": {
-						"x": 16,
-						"y": 10,
-						"w": 55,
-						"h": 47
-					},
-					"frame": {
-						"x": 546,
-						"y": 1974,
-						"w": 55,
-						"h": 47
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "bird_1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 56,
-						"h": 50
-					},
-					"spriteSourceSize": {
-						"x": 5,
+						"x": 1,
 						"y": 0,
-						"w": 48,
-						"h": 47
+						"w": 66,
+						"h": 29
 					},
 					"frame": {
-						"x": 603,
+						"x": 663,
 						"y": 1974,
-						"w": 48,
-						"h": 47
+						"w": 66,
+						"h": 29
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1885,10 +1685,185 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 653,
+						"x": 731,
 						"y": 1974,
 						"w": 48,
 						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "angry1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 46,
+						"h": 46
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 44,
+						"h": 42
+					},
+					"frame": {
+						"x": 663,
+						"y": 2005,
+						"w": 44,
+						"h": 42
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "angry2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 46,
+						"h": 46
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 46,
+						"h": 46
+					},
+					"frame": {
+						"x": 781,
+						"y": 1974,
+						"w": 46,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bone1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 46
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 46,
+						"h": 43
+					},
+					"frame": {
+						"x": 829,
+						"y": 1974,
+						"w": 46,
+						"h": 43
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "exclamation.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 46,
+						"h": 46
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 44,
+						"h": 42
+					},
+					"frame": {
+						"x": 877,
+						"y": 1974,
+						"w": 44,
+						"h": 42
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "clock2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 43,
+						"h": 43
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 43,
+						"h": 43
+					},
+					"frame": {
+						"x": 923,
+						"y": 1974,
+						"w": 43,
+						"h": 43
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "poopbig.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 41,
+						"h": 45
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 41,
+						"h": 45
+					},
+					"frame": {
+						"x": 968,
+						"y": 1974,
+						"w": 41,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "void_knight_sigil.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 216,
+						"h": 265
+					},
+					"spriteSourceSize": {
+						"x": 76,
+						"y": 73,
+						"w": 40,
+						"h": 37
+					},
+					"frame": {
+						"x": 1011,
+						"y": 1974,
+						"w": 40,
+						"h": 37
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1901,8 +1876,8 @@
 			"image": "sprites/enemies-2.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2026,
-				"h": 2048
+				"w": 2046,
+				"h": 2002
 			},
 			"scale": 1,
 			"frames": [
@@ -1932,56 +1907,6 @@
 					}
 				},
 				{
-					"filename": "tree_top.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 621,
-						"h": 530
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 0,
-						"w": 619,
-						"h": 367
-					},
-					"frame": {
-						"x": 1,
-						"y": 531,
-						"w": 619,
-						"h": 367
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 795,
-						"h": 610
-					},
-					"spriteSourceSize": {
-						"x": 105,
-						"y": 39,
-						"w": 604,
-						"h": 392
-					},
-					"frame": {
-						"x": 1,
-						"y": 900,
-						"w": 604,
-						"h": 392
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "mantis_shoot_right.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1996,35 +1921,10 @@
 						"h": 452
 					},
 					"frame": {
-						"x": 607,
-						"y": 900,
+						"x": 1,
+						"y": 531,
 						"w": 583,
 						"h": 452
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 700,
-						"h": 540
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 26,
-						"w": 564,
-						"h": 499
-					},
-					"frame": {
-						"x": 1,
-						"y": 1294,
-						"w": 564,
-						"h": 499
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2057,6 +1957,56 @@
 					}
 				},
 				{
+					"filename": "max_death_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 795,
+						"h": 610
+					},
+					"spriteSourceSize": {
+						"x": 105,
+						"y": 39,
+						"w": 604,
+						"h": 392
+					},
+					"frame": {
+						"x": 1207,
+						"y": 1,
+						"w": 604,
+						"h": 392
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "void_knight_shield_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 510
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 12,
+						"w": 491,
+						"h": 489
+					},
+					"frame": {
+						"x": 1,
+						"y": 985,
+						"w": 491,
+						"h": 489
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "void_knight_shield_2.png",
 					"rotated": false,
 					"trimmed": true,
@@ -2071,10 +2021,60 @@
 						"h": 471
 					},
 					"frame": {
-						"x": 622,
-						"y": 422,
+						"x": 1,
+						"y": 1476,
 						"w": 487,
 						"h": 471
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "tree_top.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 621,
+						"h": 530
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 619,
+						"h": 367
+					},
+					"frame": {
+						"x": 622,
+						"y": 422,
+						"w": 619,
+						"h": 367
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot_blast.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 530,
+						"h": 420
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 6,
+						"w": 517,
+						"h": 409
+					},
+					"frame": {
+						"x": 1243,
+						"y": 395,
+						"w": 517,
+						"h": 409
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2096,8 +2096,8 @@
 						"h": 309
 					},
 					"frame": {
-						"x": 1111,
-						"y": 422,
+						"x": 586,
+						"y": 791,
 						"w": 415,
 						"h": 309
 					},
@@ -2121,160 +2121,10 @@
 						"h": 337
 					},
 					"frame": {
-						"x": 1207,
-						"y": 1,
+						"x": 494,
+						"y": 1102,
 						"w": 400,
 						"h": 337
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "roboteye.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 0,
-						"w": 191,
-						"h": 80
-					},
-					"frame": {
-						"x": 1207,
-						"y": 340,
-						"w": 191,
-						"h": 80
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "wall_chunk.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 165,
-						"h": 82
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 4,
-						"w": 163,
-						"h": 78
-					},
-					"frame": {
-						"x": 1400,
-						"y": 340,
-						"w": 163,
-						"h": 78
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "lesser_dummy_dead.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 260,
-						"h": 162
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 260,
-						"h": 160
-					},
-					"frame": {
-						"x": 1111,
-						"y": 733,
-						"w": 260,
-						"h": 160
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "void_knight_shield_1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 500,
-						"h": 510
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 12,
-						"w": 491,
-						"h": 489
-					},
-					"frame": {
-						"x": 1192,
-						"y": 895,
-						"w": 491,
-						"h": 489
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "robot_claw_2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 401,
-						"h": 357
-					},
-					"spriteSourceSize": {
-						"x": 14,
-						"y": 8,
-						"w": 384,
-						"h": 344
-					},
-					"frame": {
-						"x": 1528,
-						"y": 420,
-						"w": 384,
-						"h": 344
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "mantis_head_1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 147,
-						"h": 221
-					},
-					"spriteSourceSize": {
-						"x": 18,
-						"y": 1,
-						"w": 129,
-						"h": 159
-					},
-					"frame": {
-						"x": 1373,
-						"y": 733,
-						"w": 129,
-						"h": 159
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2296,8 +2146,8 @@
 						"h": 336
 					},
 					"frame": {
-						"x": 1609,
-						"y": 1,
+						"x": 1003,
+						"y": 806,
 						"w": 391,
 						"h": 336
 					},
@@ -2307,74 +2157,24 @@
 					}
 				},
 				{
-					"filename": "robot0.png",
+					"filename": "robot_claw_2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 358,
-						"h": 347
+						"w": 401,
+						"h": 357
 					},
 					"spriteSourceSize": {
-						"x": 1,
-						"y": 2,
-						"w": 332,
+						"x": 14,
+						"y": 8,
+						"w": 384,
 						"h": 344
 					},
 					"frame": {
-						"x": 567,
-						"y": 1354,
-						"w": 332,
+						"x": 1396,
+						"y": 806,
+						"w": 384,
 						"h": 344
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "time_magi_nervous.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 310,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 21,
-						"y": 35,
-						"w": 244,
-						"h": 342
-					},
-					"frame": {
-						"x": 901,
-						"y": 1354,
-						"w": 244,
-						"h": 342
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "robot_dead.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 187,
-						"h": 101
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 187,
-						"h": 101
-					},
-					"frame": {
-						"x": 1504,
-						"y": 766,
-						"w": 187,
-						"h": 101
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2396,110 +2196,10 @@
 						"h": 316
 					},
 					"frame": {
-						"x": 1147,
-						"y": 1386,
+						"x": 896,
+						"y": 1144,
 						"w": 391,
 						"h": 316
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "void_knight.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 216,
-						"h": 265
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 0,
-						"w": 200,
-						"h": 265
-					},
-					"frame": {
-						"x": 901,
-						"y": 1698,
-						"w": 200,
-						"h": 265
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "robot1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 325,
-						"h": 315
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 303,
-						"h": 314
-					},
-					"frame": {
-						"x": 567,
-						"y": 1700,
-						"w": 303,
-						"h": 314
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "tree_stumped.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 621,
-						"h": 530
-					},
-					"spriteSourceSize": {
-						"x": 155,
-						"y": 284,
-						"w": 361,
-						"h": 244
-					},
-					"frame": {
-						"x": 1,
-						"y": 1795,
-						"w": 361,
-						"h": 244
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gobbo3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 190,
-						"h": 244
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 10,
-						"w": 184,
-						"h": 223
-					},
-					"frame": {
-						"x": 364,
-						"y": 1795,
-						"w": 184,
-						"h": 223
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2521,10 +2221,85 @@
 						"h": 315
 					},
 					"frame": {
-						"x": 1540,
-						"y": 1386,
+						"x": 1289,
+						"y": 1152,
 						"w": 373,
 						"h": 315
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "time_magi_cast.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 310,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 251,
+						"h": 394
+					},
+					"frame": {
+						"x": 1762,
+						"y": 395,
+						"w": 251,
+						"h": 394
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "time_magi_terrified.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 310,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 69,
+						"y": 47,
+						"w": 241,
+						"h": 344
+					},
+					"frame": {
+						"x": 1782,
+						"y": 791,
+						"w": 241,
+						"h": 344
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 358,
+						"h": 347
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 332,
+						"h": 344
+					},
+					"frame": {
+						"x": 1664,
+						"y": 1152,
+						"w": 332,
+						"h": 344
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2546,8 +2321,8 @@
 						"h": 289
 					},
 					"frame": {
-						"x": 1540,
-						"y": 1703,
+						"x": 494,
+						"y": 1441,
 						"w": 390,
 						"h": 289
 					},
@@ -2557,24 +2332,24 @@
 					}
 				},
 				{
-					"filename": "void_knight_attack.png",
+					"filename": "tree_stumped.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 432,
-						"h": 416
+						"w": 621,
+						"h": 530
 					},
 					"spriteSourceSize": {
-						"x": 127,
-						"y": 105,
-						"w": 303,
-						"h": 309
+						"x": 155,
+						"y": 284,
+						"w": 361,
+						"h": 244
 					},
 					"frame": {
-						"x": 1103,
-						"y": 1704,
-						"w": 303,
-						"h": 309
+						"x": 886,
+						"y": 1462,
+						"w": 361,
+						"h": 244
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2582,32 +2357,7 @@
 					}
 				},
 				{
-					"filename": "glowSpike.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 140,
-						"h": 86
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 137,
-						"h": 82
-					},
-					"frame": {
-						"x": 872,
-						"y": 1965,
-						"w": 137,
-						"h": 82
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "mantis_preparing.png",
+					"filename": "mantis_dead.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -2615,16 +2365,16 @@
 						"h": 550
 					},
 					"spriteSourceSize": {
-						"x": 131,
-						"y": 198,
-						"w": 286,
-						"h": 309
+						"x": 26,
+						"y": 392,
+						"w": 401,
+						"h": 142
 					},
 					"frame": {
-						"x": 1685,
-						"y": 869,
-						"w": 286,
-						"h": 309
+						"x": 490,
+						"y": 1732,
+						"w": 401,
+						"h": 142
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2632,74 +2382,24 @@
 					}
 				},
 				{
-					"filename": "void_knight_tent_1_front_spike.png",
+					"filename": "robot1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 350,
-						"h": 416
+						"w": 325,
+						"h": 315
 					},
 					"spriteSourceSize": {
-						"x": 64,
-						"y": 3,
-						"w": 251,
-						"h": 148
-					},
-					"frame": {
-						"x": 1685,
-						"y": 1180,
-						"w": 251,
-						"h": 148
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "robot_blush.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 500,
-						"h": 484
-					},
-					"spriteSourceSize": {
-						"x": 157,
-						"y": 157,
-						"w": 186,
-						"h": 101
-					},
-					"frame": {
-						"x": 1693,
-						"y": 766,
-						"w": 186,
-						"h": 101
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "blood_1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 148,
-						"h": 106
-					},
-					"spriteSourceSize": {
-						"x": 1,
+						"x": 0,
 						"y": 0,
-						"w": 144,
-						"h": 91
+						"w": 303,
+						"h": 314
 					},
 					"frame": {
-						"x": 1881,
-						"y": 766,
-						"w": 144,
-						"h": 91
+						"x": 1249,
+						"y": 1469,
+						"w": 303,
+						"h": 314
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2707,68 +2407,7 @@
 					}
 				},
 				{
-					"filename": "gunflash_1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 138,
-						"h": 138
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 3,
-						"w": 129,
-						"h": 127
-					},
-					"frame": {
-						"x": 1408,
-						"y": 1704,
-						"w": 129,
-						"h": 127
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "void_knight_3_legs.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 365,
-						"h": 325
-					},
-					"spriteSourceSize": {
-						"x": 127,
-						"y": 174,
-						"w": 118,
-						"h": 118
-					},
-					"frame": {
-						"x": 1408,
-						"y": 1833,
-						"w": 118,
-						"h": 118
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				}
-			]
-		},
-		{
-			"image": "sprites/enemies-3.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 1018,
-				"h": 1245
-			},
-			"scale": 1,
-			"frames": [
-				{
-					"filename": "time_magi_cast_big.png",
+					"filename": "time_magi_nervous.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -2776,16 +2415,16 @@
 						"h": 400
 					},
 					"spriteSourceSize": {
-						"x": 10,
-						"y": 72,
-						"w": 300,
-						"h": 292
+						"x": 21,
+						"y": 35,
+						"w": 244,
+						"h": 342
 					},
 					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 300,
-						"h": 292
+						"x": 1554,
+						"y": 1498,
+						"w": 244,
+						"h": 342
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2807,85 +2446,10 @@
 						"h": 271
 					},
 					"frame": {
-						"x": 303,
-						"y": 1,
+						"x": 1800,
+						"y": 1498,
 						"w": 245,
 						"h": 271
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "wall_chunk_2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 305,
-						"h": 218
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 13,
-						"w": 305,
-						"h": 205
-					},
-					"frame": {
-						"x": 550,
-						"y": 1,
-						"w": 305,
-						"h": 205
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dummy_angry.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 153,
-						"h": 230
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 153,
-						"h": 230
-					},
-					"frame": {
-						"x": 857,
-						"y": 1,
-						"w": 153,
-						"h": 230
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gobbo2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 282,
-						"h": 220
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 0,
-						"w": 280,
-						"h": 220
-					},
-					"frame": {
-						"x": 550,
-						"y": 208,
-						"w": 280,
-						"h": 220
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2907,10 +2471,496 @@
 						"h": 248
 					},
 					"frame": {
-						"x": 832,
-						"y": 233,
+						"x": 1813,
+						"y": 1,
 						"w": 171,
 						"h": 248
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "tree_branch.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 250,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 5,
+						"w": 249,
+						"h": 151
+					},
+					"frame": {
+						"x": 893,
+						"y": 1708,
+						"w": 249,
+						"h": 151
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gobboDead.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 235,
+						"h": 263
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 162,
+						"w": 233,
+						"h": 101
+					},
+					"frame": {
+						"x": 490,
+						"y": 1876,
+						"w": 233,
+						"h": 101
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot_dead_right.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 156,
+						"h": 127
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 156,
+						"h": 127
+					},
+					"frame": {
+						"x": 1813,
+						"y": 251,
+						"w": 156,
+						"h": 127
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot_dead.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 187,
+						"h": 101
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 187,
+						"h": 101
+					},
+					"frame": {
+						"x": 725,
+						"y": 1876,
+						"w": 187,
+						"h": 101
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot_blush.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 484
+					},
+					"spriteSourceSize": {
+						"x": 157,
+						"y": 157,
+						"w": 186,
+						"h": 101
+					},
+					"frame": {
+						"x": 914,
+						"y": 1861,
+						"w": 186,
+						"h": 101
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummy.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 153,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 153,
+						"h": 230
+					},
+					"frame": {
+						"x": 1800,
+						"y": 1771,
+						"w": 153,
+						"h": 230
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "void_knight_tent_1_front_spike.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 350,
+						"h": 416
+					},
+					"spriteSourceSize": {
+						"x": 64,
+						"y": 3,
+						"w": 251,
+						"h": 148
+					},
+					"frame": {
+						"x": 1144,
+						"y": 1785,
+						"w": 251,
+						"h": 148
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot_dead_left.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 148,
+						"h": 130
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 148,
+						"h": 130
+					},
+					"frame": {
+						"x": 1397,
+						"y": 1785,
+						"w": 148,
+						"h": 130
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "mantis_head_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 147,
+						"h": 221
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 1,
+						"w": 129,
+						"h": 159
+					},
+					"frame": {
+						"x": 1547,
+						"y": 1842,
+						"w": 129,
+						"h": 159
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "void_knight_3_legs.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 365,
+						"h": 325
+					},
+					"spriteSourceSize": {
+						"x": 127,
+						"y": 174,
+						"w": 118,
+						"h": 118
+					},
+					"frame": {
+						"x": 1678,
+						"y": 1842,
+						"w": 118,
+						"h": 118
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "clock4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 78
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 78
+					},
+					"frame": {
+						"x": 494,
+						"y": 985,
+						"w": 78,
+						"h": 78
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/enemies-3.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 925,
+				"h": 1736
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "void_knight_attack.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 432,
+						"h": 416
+					},
+					"spriteSourceSize": {
+						"x": 127,
+						"y": 105,
+						"w": 303,
+						"h": 309
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 303,
+						"h": 309
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "void_knight_3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 365,
+						"h": 325
+					},
+					"spriteSourceSize": {
+						"x": 53,
+						"y": 0,
+						"w": 312,
+						"h": 291
+					},
+					"frame": {
+						"x": 306,
+						"y": 1,
+						"w": 312,
+						"h": 291
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "mantis_preparing.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 530,
+						"h": 550
+					},
+					"spriteSourceSize": {
+						"x": 131,
+						"y": 198,
+						"w": 286,
+						"h": 309
+					},
+					"frame": {
+						"x": 620,
+						"y": 1,
+						"w": 286,
+						"h": 309
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "time_magi_cast_big.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 310,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 72,
+						"w": 300,
+						"h": 292
+					},
+					"frame": {
+						"x": 306,
+						"y": 294,
+						"w": 300,
+						"h": 292
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "robot_charge.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 13,
+						"w": 275,
+						"h": 272
+					},
+					"frame": {
+						"x": 1,
+						"y": 312,
+						"w": 275,
+						"h": 272
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gobboAttack1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 241,
+						"h": 270
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 0,
+						"w": 235,
+						"h": 263
+					},
+					"frame": {
+						"x": 1,
+						"y": 586,
+						"w": 235,
+						"h": 263
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "wall_chunk_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 305,
+						"h": 218
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 13,
+						"w": 305,
+						"h": 205
+					},
+					"frame": {
+						"x": 608,
+						"y": 312,
+						"w": 305,
+						"h": 205
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gobbo2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 282,
+						"h": 220
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 280,
+						"h": 220
+					},
+					"frame": {
+						"x": 608,
+						"y": 519,
+						"w": 280,
+						"h": 220
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2932,8 +2982,8 @@
 						"h": 262
 					},
 					"frame": {
-						"x": 303,
-						"y": 274,
+						"x": 238,
+						"y": 588,
 						"w": 235,
 						"h": 262
 					},
@@ -2943,49 +2993,24 @@
 					}
 				},
 				{
-					"filename": "gobbo0_atk.png",
+					"filename": "gunflash_1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 279,
-						"h": 220
+						"w": 138,
+						"h": 138
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 272,
-						"h": 220
+						"x": 6,
+						"y": 3,
+						"w": 129,
+						"h": 127
 					},
 					"frame": {
-						"x": 540,
-						"y": 430,
-						"w": 272,
-						"h": 220
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gobbo0.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 203,
-						"h": 219
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 203,
-						"h": 219
-					},
-					"frame": {
-						"x": 814,
-						"y": 483,
-						"w": 203,
-						"h": 219
+						"x": 475,
+						"y": 588,
+						"w": 129,
+						"h": 127
 					},
 					"anchor": {
 						"x": 0.5,
@@ -3008,9 +3033,59 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 295,
+						"y": 851,
 						"w": 213,
 						"h": 252
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gobbo0_atk.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 279,
+						"h": 220
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 272,
+						"h": 220
+					},
+					"frame": {
+						"x": 475,
+						"y": 741,
+						"w": 272,
+						"h": 220
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "void_knight_injured.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 216,
+						"h": 258
+					},
+					"spriteSourceSize": {
+						"x": 23,
+						"y": 37,
+						"w": 163,
+						"h": 221
+					},
+					"frame": {
+						"x": 749,
+						"y": 741,
+						"w": 163,
+						"h": 221
 					},
 					"anchor": {
 						"x": 0.5,
@@ -3033,59 +3108,9 @@
 					},
 					"frame": {
 						"x": 216,
-						"y": 538,
+						"y": 852,
 						"w": 222,
 						"h": 230
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "void_knight_died.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 308,
-						"h": 394
-					},
-					"spriteSourceSize": {
-						"x": 95,
-						"y": 197,
-						"w": 212,
-						"h": 196
-					},
-					"frame": {
-						"x": 1,
-						"y": 549,
-						"w": 212,
-						"h": 196
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gobboshield1.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 187,
-						"h": 200
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 187,
-						"h": 200
-					},
-					"frame": {
-						"x": 1,
-						"y": 747,
-						"w": 187,
-						"h": 200
 					},
 					"anchor": {
 						"x": 0.5,
@@ -3108,9 +3133,84 @@
 					},
 					"frame": {
 						"x": 440,
-						"y": 652,
+						"y": 963,
 						"w": 222,
 						"h": 230
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gobbo0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 203,
+						"h": 219
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 203,
+						"h": 219
+					},
+					"frame": {
+						"x": 216,
+						"y": 1084,
+						"w": 203,
+						"h": 219
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "void_knight_died.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 308,
+						"h": 394
+					},
+					"spriteSourceSize": {
+						"x": 95,
+						"y": 197,
+						"w": 212,
+						"h": 196
+					},
+					"frame": {
+						"x": 1,
+						"y": 1105,
+						"w": 212,
+						"h": 196
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gobbo3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 190,
+						"h": 244
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 10,
+						"w": 184,
+						"h": 223
+					},
+					"frame": {
+						"x": 1,
+						"y": 1303,
+						"w": 184,
+						"h": 223
 					},
 					"anchor": {
 						"x": 0.5,
@@ -3132,10 +3232,60 @@
 						"h": 216
 					},
 					"frame": {
-						"x": 190,
-						"y": 770,
+						"x": 664,
+						"y": 964,
 						"w": 236,
 						"h": 216
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "lesser_dummy_dead.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 260,
+						"h": 162
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 260,
+						"h": 160
+					},
+					"frame": {
+						"x": 664,
+						"y": 1182,
+						"w": 260,
+						"h": 160
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gobboshield1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 187,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 187,
+						"h": 200
+					},
+					"frame": {
+						"x": 421,
+						"y": 1195,
+						"w": 187,
+						"h": 200
 					},
 					"anchor": {
 						"x": 0.5,
@@ -3157,8 +3307,8 @@
 						"h": 200
 					},
 					"frame": {
-						"x": 1,
-						"y": 949,
+						"x": 187,
+						"y": 1305,
 						"w": 187,
 						"h": 200
 					},
@@ -3168,74 +3318,24 @@
 					}
 				},
 				{
-					"filename": "robot_dead_left.png",
+					"filename": "dummy_angry.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 148,
-						"h": 130
+						"w": 153,
+						"h": 230
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 148,
-						"h": 130
+						"w": 153,
+						"h": 230
 					},
 					"frame": {
-						"x": 664,
-						"y": 652,
-						"w": 148,
-						"h": 130
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "void_knight_injured.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 216,
-						"h": 258
-					},
-					"spriteSourceSize": {
-						"x": 23,
-						"y": 37,
-						"w": 163,
-						"h": 221
-					},
-					"frame": {
-						"x": 814,
-						"y": 704,
-						"w": 163,
-						"h": 221
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "tree_branch.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 250,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 5,
-						"w": 249,
-						"h": 151
-					},
-					"frame": {
-						"x": 428,
-						"y": 884,
-						"w": 249,
-						"h": 151
+						"x": 610,
+						"y": 1344,
+						"w": 153,
+						"h": 230
 					},
 					"anchor": {
 						"x": 0.5,
@@ -3257,8 +3357,8 @@
 						"h": 230
 					},
 					"frame": {
-						"x": 190,
-						"y": 988,
+						"x": 765,
+						"y": 1344,
 						"w": 153,
 						"h": 230
 					},
@@ -3282,8 +3382,8 @@
 						"h": 209
 					},
 					"frame": {
-						"x": 679,
-						"y": 927,
+						"x": 376,
+						"y": 1397,
 						"w": 163,
 						"h": 209
 					},
@@ -3307,8 +3407,8 @@
 						"h": 210
 					},
 					"frame": {
-						"x": 844,
-						"y": 927,
+						"x": 187,
+						"y": 1507,
 						"w": 162,
 						"h": 210
 					},
@@ -3332,8 +3432,8 @@
 						"h": 207
 					},
 					"frame": {
-						"x": 345,
-						"y": 1037,
+						"x": 1,
+						"y": 1528,
 						"w": 164,
 						"h": 207
 					},
@@ -3357,8 +3457,8 @@
 						"h": 156
 					},
 					"frame": {
-						"x": 511,
-						"y": 1037,
+						"x": 541,
+						"y": 1576,
 						"w": 156,
 						"h": 156
 					},
@@ -3373,6 +3473,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:a9e4d6d1d87923cfbdfedd925ef76914:5dd556151d92dfd70614c5ea33403872:7932824411c36c67b27fcdfad91f2c95$"
+		"smartupdate": "$TexturePacker:SmartUpdate:d9e55b6a392170bc38fc6a3580d2bdef:bba9bae145d731e6ab94c1eba99800b0:7932824411c36c67b27fcdfad91f2c95$"
 	}
 }

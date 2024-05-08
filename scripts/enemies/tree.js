@@ -4,6 +4,9 @@
          this.initSprite('tree.png', 0.7);// 0.7
          this.sprite.setOrigin(0.52, 0.88); // 0.9
          this.shieldAdded = false;
+         this.bgMusic = playSound('echos_of_time', 0.8, true);
+
+
          setTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
@@ -142,18 +145,18 @@
                  }
              });
          }
-         if (currHealthPercent <= 0.6 && !this.hasCrushed) {
+         if (currHealthPercent < 0.667 && !this.hasCrushed) {
              // CRUSH
-             this.hasCrushed = true;
-             this.currentAttackSetIndex = 3;
-             this.nextAttackIndex = 0;
+             this.setNextAttack(3, 0);
              // Going to shield
-         } else if (currHealthPercent <= 0.3 && !this.hasTimbered) {
-             this.hasTimbered = true;
-             this.currentAttackSetIndex = 5;
-             this.nextAttackIndex = 0;
-             this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
-             this.sprite.y -= this.sprite.height * 0.125;
+         } else if (currHealthPercent <= 0.333 && !this.hasTimbered) {
+             this.setNextAttack(5, 0);
+             if (!this.hasPreparedFinal) {
+                 this.hasPreparedFinal = true;
+                 fadeAwaySound(this.bgMusic, 2000);
+                 this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
+                 this.sprite.y -= this.sprite.height * 0.125;
+             }
          }
      }
 
@@ -290,7 +293,6 @@
              rotation: angleToPlayer,
              duration: 500
          });
-
      }
 
      fireObjects(damage = 10) {
@@ -487,15 +489,19 @@
                      name: "}10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 600,
+                     chargeAmt: 650,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
                          this.attackWithBranch(12);
                      },
                      attackFinishFunction: () => {
-                         this.currentAttackSetIndex = 1;
-                         this.nextAttackIndex = 0;
+                         let currHealthPercent = this.health / this.healthMax;
+                         if (currHealthPercent <= 0.667 && !this.hasCrushed) {
+                             this.setNextAttack(3, 0);
+                         } else {
+                             this.setNextAttack(1, 0);
+                         }
                      }
                  }
              ],
@@ -522,13 +528,10 @@
                      attackFinishFunction: () => {
                          this.playRegrowthAnim(regrowthAmt1);
                          let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent <= 0.5 && !this.hasCrushed) {
-                             this.hasCrushed = true;
-                             this.currentAttackSetIndex = 3;
-                             this.nextAttackIndex = 0;
+                         if (currHealthPercent <= 0.667 && !this.hasCrushed) {
+                             this.setNextAttack(3, 0);
                          } else {
-                             this.currentAttackSetIndex = 2;
-                             this.nextAttackIndex = 0;
+                             this.setNextAttack(2, 0);
                          }
                      }
                  }
@@ -547,8 +550,7 @@
                      },
                      attackFinishFunction: () => {
                          let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent <= 0.5 && !this.hasCrushed) {
-                             this.hasCrushed = true;
+                         if (currHealthPercent <= 0.667 && !this.hasCrushed) {
                              this.currentAttackSetIndex = 3;
                              this.nextAttackIndex = 0;
                          }
@@ -575,8 +577,7 @@
                      attackFinishFunction: () => {
                          this.playRegrowthAnim(regrowthAmt2);
                          let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent <= 0.5 && !this.hasCrushed) {
-                             this.hasCrushed = true;
+                         if (currHealthPercent <= 0.667 && !this.hasCrushed) {
                              this.currentAttackSetIndex = 3;
                              this.nextAttackIndex = 0;
                          }
@@ -613,16 +614,16 @@
                      attackStartFunction: () => {
                          this.pullbackScale = 0.965;
                          this.attackScale = 1.25;
+                         this.hasCrushed = true;
                      },
                      attackFinishFunction: () => {
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.03;
                          let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent >= 0.3) {
+                         if (currHealthPercent >= 0.333) {
                              this.currentAttackSetIndex = 4;
                              this.nextAttackIndex = 0;
                          } else if (!this.hasTimbered) {
-                             this.hasTimbered = true;
                              this.currentAttackSetIndex = 5;
                              this.nextAttackIndex = 0;
                              this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
@@ -653,7 +654,7 @@
                      name: "}12 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 700,
+                     chargeAmt: 650,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
@@ -690,9 +691,14 @@
                      damage: 40,
                      isBigMove: true,
                      attackStartFunction: () => {
-                         playSound('tree_timber')
+                         playSound('tree_timber');
+                         this.bgMusic.stop();
+                         if (!this.dead) {
+                             this.bgMusic = playSound('echos_of_time_finale');
+                         }
                          this.pullbackScale = 0.97;
-                         this.attackScale = 2;
+                         this.attackScale = 1.75;
+                         this.hasTimbered = true;
                      },
                      attackFinishFunction: () => {
                          this.pullbackScale = 0.99;
@@ -754,22 +760,23 @@
              }
          });
 
-
-         this.showFlash(this.x, this.y);
-         let rune = this.scene.add.sprite(this.x, this.y, 'tutorial', 'rune_reinforce_large.png').setScale(0.5).setDepth(9999);
-         playSound('victory_2');
-         PhaserScene.tweens.add({
-             targets: rune,
-             x: gameConsts.halfWidth,
-             y: gameConsts.halfHeight - 170,
-             scaleX: 1,
-             scaleY: 1,
-             ease: "Cubic.easeOut",
-             duration: 1500,
-             onComplete: () => {
-                 this.showVictory(rune);
-             }
-         });
+         setTimeout(() => {
+             this.showFlash(this.x, this.y - 25);
+             let rune = this.scene.add.sprite(this.x, this.y - 10, 'tutorial', 'rune_reinforce_large.png').setScale(0.5).setDepth(9999);
+             playSound('victory_2');
+             PhaserScene.tweens.add({
+                 targets: rune,
+                 x: gameConsts.halfWidth,
+                 y: gameConsts.halfHeight - 170,
+                 scaleX: 1,
+                 scaleY: 1,
+                 ease: "Cubic.easeOut",
+                 duration: 1500,
+                 onComplete: () => {
+                     this.showVictory(rune);
+                 }
+             });
+         }, 2000);
 
      }
 

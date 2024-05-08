@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "target1.png",
+					"filename": "energyTarget1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "target2.png",
+					"filename": "energyTarget2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -1643,6 +1643,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:7920fb7c5cfc63894c3f4cd956300695:a5d49f2c4d27a92f5e2663facdada0d3:5e62eb201321ea33b301bbf963063802$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1ae6596d15b6fe7d4e74704badc019ca:c5724d48e42e36b46d2e215db3ab15f9:5e62eb201321ea33b301bbf963063802$"
 	}
 }

@@ -14,7 +14,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 300 : 240;
+         this.health = gameVars.isHardMode ? 300 : 250;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;
@@ -86,8 +86,8 @@
                  this.sprite.setScale(this.sprite.startScale);
              }
              this.setAwake();
-             let eyePosX = this.x + 132 * this.sprite.startScale;
-             let eyePosY = this.y - 82 * this.sprite.startScale;
+             let eyePosX = this.x + 130 * this.sprite.startScale;
+             let eyePosY = this.y - 84 * this.sprite.startScale;
 
              let tree = this.scene.add.sprite(this.x, this.y, 'enemies', 'tree_open.png').setDepth(1).setOrigin(this.sprite.originX, this.sprite.originY).setScale(this.sprite.startScale).setAlpha(0);
              this.addExtraSprite(tree);
@@ -590,6 +590,9 @@
                      chargeAmt: 750,
                      damage: 0,
                      attackSprites: ['tree_open_glow.png'],
+                     attackStartFunction: () => {
+                         playSound('tree_sfx');
+                     },
                      attackFinishFunction: () => {
                          for (let i = 0; i < 5; i++) {
                              let xPos = gameConsts.halfWidth + -200 + i * 100;
@@ -612,6 +615,7 @@
                      damage: 25,
                      isBigMove: true,
                      attackStartFunction: () => {
+                         playSound('tree_sfx');
                          this.pullbackScale = 0.965;
                          this.attackScale = 1.25;
                          this.hasCrushed = true;
@@ -668,6 +672,9 @@
                      chargeAmt: 750,
                      damage: 0,
                      attackSprites: ['tree_open_glow.png'],
+                     attackStartFunction: () => {
+                       playSound('tree_sfx');
+                     },
                      attackFinishFunction: () => {
                          for (let i = 0; i < 5; i++) {
                              let xPos = gameConsts.halfWidth + -200 + i * 100;

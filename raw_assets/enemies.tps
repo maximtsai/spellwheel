@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>90</uint>
+        <uint>85</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -861,6 +861,22 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/robot_blast_small1.png</key>
+            <key type="filename">enemies/robot_blast_small2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>53,43,107,85</rect>
+                <key>scale9Paddings</key>
+                <rect>53,43,107,85</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/robot_blush.png</key>
             <key type="filename">enemies/roboteye.png</key>
             <struct type="IndividualSpriteSettings">
@@ -874,6 +890,21 @@
                 <rect>125,121,250,242</rect>
                 <key>scale9Paddings</key>
                 <rect>125,121,250,242</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/robot_broken.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>143,138,285,275</rect>
+                <key>scale9Paddings</key>
+                <rect>143,138,285,275</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

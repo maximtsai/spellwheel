@@ -26,6 +26,8 @@
 
          this.eyeShine = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 67, 'enemies', 'roboteye.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth);
          this.blush = PhaserScene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'robot_blush.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth + 1);
+         this.addToDestructibles(this.blush)
+         this.addToDestructibles(this.eyeShine)
          this.scene.tweens.add({
              targets: this.sprite,
              duration: 2500,
@@ -173,7 +175,7 @@
 
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 600 : 500;
-         this.nextShieldHealth = 120;
+         this.nextShieldHealth = 100;
          this.shieldsBroken = 0;
          this.missileObjects = [];
      }
@@ -189,7 +191,7 @@
              // dead, can't do anything
              return;
          }
-         if (this.shieldAdded && !this.shieldIgnoreGone) {
+         if (this.shieldAdded && !this.shieldIgnoreGone && !this.emergency) {
              if (this.shield == 0) {
                  // shield must have broke
                  playSound('cutesy_down');
@@ -200,6 +202,16 @@
                  this.currentAttackSetIndex = 1;
                  this.nextAttackIndex = 0;
              }
+         }
+         if (this.health < 100 && !this.emergency) {
+             this.blush.visible = false;
+             this.eyeShine.visible = false;
+             this.emergency = true;
+             this.interruptCurrentAttack();
+             this.setDefaultSprite('robot_broken.png');
+             playSound('voca_pain');
+             this.currentAttackSetIndex = 7;
+             this.nextAttackIndex = 0;
          }
      }
 
@@ -235,6 +247,8 @@
                          }, 100);
                      },
                      attackFinishFunction: () => {
+                         let scaleAmt = gameVars.isHardMode ? 40 : 25;
+                         this.nextShieldHealth += 100 + scaleAmt * (this.shieldsBroken + 1);
                          this.shieldIgnoreGone = false;
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
@@ -245,9 +259,10 @@
                  // 1
                  {
                      name: "ERROR: SHIELD MISSING",
-                     chargeAmt: gameVars.isHardMode ? 400 : 400,
+                     chargeAmt: gameVars.isHardMode ? 500 : 500,
                      damage: 0,
                      startFunction: () => {
+                         this.shieldAdded = false;
                          this.blushAnim = PhaserScene.tweens.add({
                              targets: this.blush,
                              scaleX: this.sprite.startScale,
@@ -277,8 +292,8 @@
                      chargeMult: 5,
                      damage: -1,
                      startFunction: () => {
-                         let scaleAmt = gameVars.isHardMode ? 40 : 30;
-                         this.nextShieldHealth += 120 + scaleAmt * this.shieldsBroken;
+                         let scaleAmt = gameVars.isHardMode ? 40 : 25;
+                         this.nextShieldHealth += 100 + scaleAmt * (this.shieldsBroken + 1);
                          this.setDefaultSprite('robot_hide.png');
                          playSound('voca_kya');
                          this.sprite.rotation = 0.15;
@@ -353,7 +368,7 @@
              [
                  // 2
                  {
-                     name: "}8x2 ",
+                     name: "|8x2 ",
                      chargeAmt: 400,
                      damage: 8,
                      attackTimes: 2,
@@ -378,7 +393,7 @@
                      }
                  },
                  {
-                     name: "}4x5 ",
+                     name: "|4x5 ",
                      chargeAmt: 500,
                      damage: -1,
                      startFunction: () => {
@@ -400,7 +415,7 @@
                      }
                  },
                  {
-                     name: "}14 ",
+                     name: "|14 ",
                      chargeAmt: 400,
                      damage: 14,
                      attackTimes: 1,
@@ -428,7 +443,7 @@
              [
                  // 3
                  {
-                     name: "}8x2 ",
+                     name: "|8x2 ",
                      chargeAmt: 200,
                      damage: 8,
                      attackTimes: 2,
@@ -453,7 +468,7 @@
                      }
                  },
                  {
-                     name: "}14 ",
+                     name: "|14 ",
                      chargeAmt: 400,
                      damage: 14,
                      attackTimes: 1,
@@ -481,7 +496,7 @@
              [
                  // 4 laser
                  {
-                     name: "}30 ",
+                     name: ";30 ",
                      chargeAmt: 700,
                      damage: -1,
                      isBigMove: true,
@@ -509,8 +524,8 @@
              [
                  // 5 missiles
                  {
-                     name: "}6x8 ",
-                     chargeAmt: 200,
+                     name: ";6x8 ",
+                     chargeAmt: 750,
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
@@ -541,8 +556,9 @@
                  },
              ],
              [
+                 // 6
                  {
-                     name: "}5x5 ",
+                     name: "}4x5 ",
                      chargeAmt: 500,
                      damage: -1,
                      startFunction: () => {
@@ -560,7 +576,7 @@
                          }
                      },
                      attackFinishFunction: () => {
-                         this.shootBullets(5);
+                         this.shootBullets(4);
                      }
                  },
                  {
@@ -588,8 +604,127 @@
                          powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 170).setDepth(998).setScale(2);
                      }
                  },
+             ],
+             [
+                 // 7
+                 {
+                     name: "EMERGENCY SHIELD {50",
+                     chargeAmt: 500,
+                     block: 50,
+                     chargeMult: 5,
+                     damage: -1,
+                     startFunction: () => {
+                         this.pullbackScale = 0.99;
+                         this.attackScale = 1.02;
+
+                     },
+                     attackStartFunction: () => {
+                         playSound('power_surge_plain');
+
+                     },
+                     attackFinishFunction: () => {
+                     }
+                 },
+                 {
+                     name: "MIS-AIMED MISSILE }4x0",
+                     chargeAmt: 1000,
+                     damage: -1,
+                     startFunction: () => {
+                         this.pullbackScale = 0.99;
+                         this.attackScale = 1.02;
+                         playSound('robot_sfx_1');
+                     },
+                     attackStartFunction: () => {
+                         if (!this.exhausted) {
+                             playSound('voca_missile_broken', 0.8);
+                         }
+                         this.createMissileObject(this.x - 50, this.y - 1, -0.4, 0);
+                     },
+                     attackFinishFunction: () => {
+                         this.fireMissilesDud(0);
+                         messageBus.publish('enemyTakeTrueDamage', 4, false);
+                     }
+                 },
+                 {
+                     name: "UNDER-CHARGED LASER }12",
+                     chargeAmt: 1000,
+                     damage: 12,
+                     startFunction: () => {
+                         this.pullbackScale = 0.99;
+                         this.attackScale = 1.02;
+                         this.startWeakLaser();
+                         playSound('robot_sfx_2');
+                     },
+                     attackStartFunction: () => {
+                         this.weakLaserFinished = true;
+                         if (!this.exhausted) {
+                             playSound('voca_laser_broken', 0.8);
+                         }
+                         this.laserFake = this.scene.add.sprite(this.x - 5, this.y, 'enemies', 'robot_blast_small1.png').setScale(0.8).setDepth(9999).setAlpha(0.5);
+                         PhaserScene.tweens.add({
+                             targets: this.laserFake,
+                             alpha: 0.8,
+                             ease: "Cubic.easeOut",
+                             duration: 400,
+                             onComplete: () => {
+                                 PhaserScene.tweens.add({
+                                     targets: this.laserFake,
+                                     rotation: -1,
+                                     y: "-=30",
+                                     ease: "Cubic.easeIn",
+                                     duration: 1000,
+                                 });
+                                 PhaserScene.tweens.add({
+                                     targets: this.laserFake,
+                                     alpha: 0.4,
+                                     scaleX: 0.6,
+                                     scaleY: 0.6,
+                                     ease: "Back.easeOut",
+                                     duration: 500,
+                                     onComplete: () => {
+                                         PhaserScene.tweens.add({
+                                             targets: this.laserFake,
+                                             alpha: 0,
+                                             duration: 500,
+                                             onComplete: () => {
+                                                 this.laserFake.destroy();
+                                             }
+                                         });
+                                     }
+                                 });
+                             }
+                         });
+                     },
+                     attackFinishFunction: () => {
+                         messageBus.publish('enemyTakeTrueDamage', 2, false);
+                     }
+                 },
+                 {
+                     name: "}2",
+                     chargeAmt: 1000,
+                     damage: 2,
+                     startFunction: () => {
+                         this.pullbackScale = 0.98;
+                         this.attackScale = 1.05;
+                     },
+                     attackFinishFunction: () => {
+                         playSound('clunk2');
+                         this.exhausted = true;
+                         messageBus.publish('enemyTakeTrueDamage', 2, false);
+                     },
+                 },
              ]
          ];
+     }
+
+     startWeakLaser() {
+         if (!this.dead && !this.weakLaserFinished) {
+             PhaserScene.time.delayedCall(2000, () => {
+                 this.nextAttack.damage = Math.max(1, this.nextAttack.damage - 1);
+                 this.attackName.setText("}" + this.nextAttack.damage +" ");
+                 this.startWeakLaser();
+             });
+         }
      }
 
      die() {
@@ -600,6 +735,7 @@
         if (this.currAnim) {
             this.currAnim.stop();
         }
+        playSound('voca_kya_damaged')
          this.cleanUpTweens();
          globalObjects.textPopupManager.hideInfoText();
 
@@ -622,29 +758,62 @@
              targets: this.sprite,
              rotation: -0.2,
              ease: "Cubic.easeIn",
-             duration: 10,
+             duration: 250,
              onComplete: () => {
-                 this.setSprite('gobboDead.png', this.sprite.scaleX);
+                 this.setDefaultSprite('robot_dead_left.png', this.sprite.scaleX, true);
                  this.sprite.setRotation(0);
-                 this.x -= 5;
-                 this.y += 48;
-                this.showFlash(this.x, this.y);
-
-
-                 let rune = this.scene.add.sprite(this.x, this.y, 'circle', 'rune_protect_glow.png').setOrigin(0.5, 0.15).setScale(0.8).setDepth(9999);
+                 this.y -= 850;
                  PhaserScene.tweens.add({
-                     targets: rune,
-                     x: gameConsts.halfWidth,
-                     y: gameConsts.halfHeight - 170,
-                     scaleX: 2,
-                     scaleY: 2,
-                     ease: "Cubic.easeOut",
-                     duration: 1500,
+                     targets: this.sprite,
+                     y: "+=100",
+                     ease: "Cubic.easeIn",
+                     duration: 600,
                      onComplete: () => {
-                        this.showVictory(rune);
+                         playSound('clunk');
+                         PhaserScene.tweens.add({
+                             targets: this.sprite,
+                             y: "-=30",
+                             rotation: "+=0.3",
+                             ease: "Cubic.easeOut",
+                             duration: 300,
+                             onComplete: () => {
+                                 this.setDefaultSprite('robot_dead_right.png', this.sprite.scaleX, true);
+                                 this.sprite.setRotation(-0.3);
+                                 PhaserScene.tweens.add({
+                                     targets: this.sprite,
+                                     y: "+=30",
+                                     rotation: "+=0.3",
+                                     ease: "Cubic.easeIn",
+                                     duration: 300,
+                                     onComplete: () => {
+                                         playSound('clunk2');
+                                         this.setDefaultSprite('robot_dead.png', this.sprite.scaleX, true);
+                                         this.sprite.setRotation(0.2);
+                                         PhaserScene.tweens.add({
+                                             targets: this.sprite,
+                                             y: "-=5",
+                                             rotation: "-=0.3",
+                                             ease: "Cubic.easeOut",
+                                             duration: 100,
+                                             onComplete: () => {
+                                                 PhaserScene.tweens.add({
+                                                     targets: this.sprite,
+                                                     y: "+=5",
+                                                     ease: "Cubic.easeIn",
+                                                     duration: 100,
+                                                     onComplete: () => {
+                                                         this.sprite.setRotation(0);
+                                                         playSound('clunk2');
+                                                     }
+                                                 });
+                                             }
+                                         });
+                                     }
+                                 });
+                             }
+                         });
                      }
                  });
-
              }
          });
 
@@ -662,6 +831,40 @@
              easeParams: [2],
              duration: 400
          });
+     }
+
+     fireMissilesDud() {
+         while (this.missileObjects.length > 0) {
+             let currObj = this.missileObjects.pop();
+             let delayAmt = 150;
+             this.scene.tweens.add({
+                 delay: delayAmt,
+                 targets: currObj,
+                 x: "-=150",
+                 rotation: "-=0.2",
+                 duration: 1500
+             });
+             this.scene.tweens.add({
+                 delay: delayAmt,
+                 targets: currObj,
+                 y: "+=150",
+                 ease: 'Back.easeIn',
+                 duration: 1500,
+                 onComplete: () => {
+                     currObj.rotation = Math.PI * -0.5;
+                     this.scene.tweens.add({
+                         delay: 2000,
+                         targets: currObj,
+                         alpha: 0,
+                         duration: 1000,
+                         onComplete: () => {
+                             currObj.destroy();
+                         }
+                     });
+                 }
+             });
+
+         }
      }
 
      fireMissiles(damage = 6) {
@@ -898,7 +1101,7 @@
                      delay: delayInterval,
                      targets: this.laserBeam,
                      scaleX: 1,
-                     scaleY: 1,
+                     scaleY: 1.02,
                      duration: 10,
                      ease: 'Quint.easeOut',
                      onComplete: () => {
@@ -907,7 +1110,7 @@
                              delay: delayInterval,
                              targets: this.laserBeam,
                              scaleX: 1.1,
-                             scaleY: 1.08,
+                             scaleY: 1.1,
                              duration: 10,
                              ease: 'Quint.easeOut',
                              onComplete: () => {
@@ -916,8 +1119,8 @@
                                  this.laserTween = PhaserScene.tweens.add({
                                      delay: delayInterval,
                                      targets: this.laserBeam,
-                                     scaleX: 1,
-                                     scaleY: 1,
+                                     scaleX: 1.01,
+                                     scaleY: 0.99,
                                      duration: 10,
                                      ease: 'Quint.easeOut',
                                      onComplete: () => {
@@ -927,7 +1130,7 @@
                                              delay: delayInterval,
                                              targets: this.laserBeam,
                                              scaleX: 1.15,
-                                             scaleY: 1.08,
+                                             scaleY: 1.1,
                                              duration: 10,
                                              ease: 'Quint.easeOut',
                                              onComplete: () => {

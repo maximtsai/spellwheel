@@ -2442,7 +2442,6 @@ class SpellManager {
             PhaserScene.time.delayedCall(Math.max(0, initialDelay * 0.1 + thisDurationDelay * 0.85 - 280), () => {
                 PhaserScene.time.delayedCall(180, () => {
                     zoomTemp(1.005 + numTotalAttacks * 0.002);
-                    console.log("set white alpha to 0.5");
                     whiteObj.alpha = 0.5;
                     setTimeout(() => {
                         console.log(i);
@@ -2450,7 +2449,6 @@ class SpellManager {
                             console.log("destroyWhiteAlpha");
                             whiteObj.destroy();
                         } else {
-                            console.log("set white alpha to 0");
                             whiteObj.alpha = 0;
                         }
                         blackObj.alpha = 0.4;

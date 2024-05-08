@@ -308,7 +308,7 @@ const textData = {
         jp: ''},
 
 
-    protect_tut_desc: {en_us: 'The Shield rune lets you create\nbarriers that offer protection\nas long as it\'s positioned\nbetween you and the enemy.',
+    protect_tut_desc: {en_us: 'The Shield rune lets you create\nshields that offer protection\nas long as it\'s positioned\nbetween you and the enemy.',
         fr: '',
         zh_cn: '',
         ru: '',

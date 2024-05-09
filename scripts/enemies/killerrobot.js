@@ -1006,12 +1006,12 @@
 
      animateBoomEyeshine() {
          this.eyeShine.visible = true;
-         this.eyeShine.setAlpha(0.7).setScale(0.8).setPosition(this.sprite.x, this.sprite.y);
+         this.eyeShine.setAlpha(0.7).setScale(0.8).setPosition(this.sprite.x, this.sprite.y).setDepth(9999);
          this.scene.tweens.add({
              targets: this.eyeShine,
              duration: 3000,
-             scaleX: 1.5,
-             scaleY: 1.5,
+             scaleX: 2.2,
+             scaleY: 1.8,
              alpha: 1.05,
              ease: 'Quad.easeOut',
          });
@@ -1021,14 +1021,59 @@
              rotation: "-=0.3",
              ease: 'Quad.easeOut',
              onComplete: () => {
-                this.eyeShine.setRotation(-0.2);
                  this.scene.tweens.add({
                      targets: this.eyeShine,
-                     duration: 200,
-                     rotation: "+=0.1",
+                     duration: 150,
+                     scaleX: 2.3,
+                     rotation: "+=0.05",
                      ease: 'Quart.easeOut',
                      onComplete: () => {
-                         this.eyeShine.setRotation(-0.2);
+                         this.scene.tweens.add({
+                             targets: this.eyeShine,
+                             duration: 150,
+                             scaleX: 2.4,
+                             rotation: "-=0.1",
+                             ease: 'Quart.easeOut',
+                             onComplete: () => {
+                                 this.scene.tweens.add({
+                                     targets: this.eyeShine,
+                                     duration: 150,
+                                     scaleX: 2.5,
+                                     rotation: "+=0.15",
+                                     ease: 'Quart.easeOut',
+                                     onComplete: () => {
+                                         this.scene.tweens.add({
+                                             targets: this.eyeShine,
+                                             duration: 150,
+                                             scaleX: 2.6,
+                                             rotation: "-=0.2",
+                                             ease: 'Quart.easeOut',
+                                             onComplete: () => {
+                                                 this.scene.tweens.add({
+                                                     targets: this.eyeShine,
+                                                     duration: 150,
+                                                     scaleX: 2.7,
+                                                     rotation: "+=0.25",
+                                                     ease: 'Quart.easeOut',
+                                                     onComplete: () => {
+                                                         this.scene.tweens.add({
+                                                             targets: this.eyeShine,
+                                                             duration: 250,
+                                                             scaleX: 1.75,
+                                                             scaleY: 1.5,
+                                                             rotation: 0.1,
+                                                             ease: 'Cubic.easeIn',
+                                                             onComplete: () => {
+                                                             }
+                                                         });
+                                                     }
+                                                 });
+                                             }
+                                         });
+                                     }
+                                 });
+                             }
+                         });
                      }
                  });
              }

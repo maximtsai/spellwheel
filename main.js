@@ -180,6 +180,13 @@ function loadFileList(scene, filesList, type) {
             case 'atlas':
                 scene.load.multiatlas(data.name, data.src);
                 break;
+            case 'video':
+                scene.load.video({
+                    key: data.name,
+                    url: data.src,
+                    noAudio: true
+                });
+                break;
             default:
                 console.warn('unrecognized type: ', type);
                 break;

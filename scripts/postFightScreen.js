@@ -190,7 +190,7 @@ class PostFightScreen {
         });
     }
 
-    clearPostFightScreen() {
+    clearPostFightScreen(clearFog = true) {
         PhaserScene.tweens.add({
             targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.locketSprite, this.codeText],
             alpha: 0,
@@ -201,7 +201,9 @@ class PostFightScreen {
         this.continueButton.setState(DISABLE);
         this.locketButton.setState(DISABLE);
         globalObjects.magicCircle.enableMovement();
-        clearDeathFog();
+        if (clearFog) {
+            clearDeathFog();
+        }
     }
 
     closeLocket() {
@@ -245,6 +247,28 @@ class PostFightScreen {
     }
 
     createWinScreen(level = 0) {
+        this.createWinScreenUI(level);
+        this.continueButton.setOnMouseUpFunc(() => {
+            this.clearPostFightScreen();
+            beginLevel(level + 1);
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        });
+    }
+
+    createWinScreenBoom(level = 0) {
+        this.createWinScreenUI(level);
+        this.continueButton.setOnMouseUpFunc(() => {
+            this.clearPostFightScreen(false);
+            messageBus.publish('robotExplosion');
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        });
+    }
+
+    createWinScreenUI(level = 0) {
         this.initAssets(true);
         globalObjects.magicCircle.disableMovement();
         this.titleText.setText("Fight Complete");
@@ -254,14 +278,6 @@ class PostFightScreen {
         this.locketDialog = this.getLevelDialog(level);
 
         globalObjects.bannerTextManager.setDialog(this.locketDialog);
-
-        this.continueButton.setOnMouseUpFunc(() => {
-            this.clearPostFightScreen();
-            beginLevel(level + 1);
-            if (canvas) {
-                canvas.style.cursor = 'default';
-            }
-        });
     }
 
     createLoseScreen(level) {

@@ -284,6 +284,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">backgrounds/star.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>175,225,350,450</rect>
+                <key>scale9Paddings</key>
+                <rect>175,225,350,450</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">backgrounds/tunnel.png</key>
             <key type="filename">backgrounds/tunnel2.png</key>
             <key type="filename">backgrounds/tunnel3.png</key>

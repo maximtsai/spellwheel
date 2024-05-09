@@ -32,3 +32,7 @@ const imageAtlases = [
 
 const imageFiles = [
 ];
+
+const videoFiles = [
+    {name: 'death_idle_test', src: 'video/death_idle_test.mp4'},
+];

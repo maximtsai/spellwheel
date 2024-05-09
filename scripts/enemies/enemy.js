@@ -266,7 +266,7 @@ class Enemy {
         this.shieldSprite.startScale = this.shieldSprite.scaleX;
 
         this.shieldText = this.scene.add.bitmapText(this.x, this.y + 85, 'block', '', 48);
-        this.shieldText.alpha = 0.8;
+        this.shieldText.alpha = 1;
         this.shieldText.setOrigin(0.5, 0.55);
         this.shieldText.setDepth(2);
         this.shieldText.visible = false;
@@ -1426,6 +1426,7 @@ class Enemy {
         }
         let pullbackScale = this.pullbackScale * this.sprite.startScale;
         let pullbackDurMult = Math.sqrt(Math.abs(this.pullbackScale - this.pullbackScaleDefault) * 10) + 1;
+        pullbackDurMult *= this.pullbackDurMult ? this.pullbackDurMult : 1;
         let timeSlowMult = gameVars.timeSlowRatio < 0.9 ? 0.5 : 1;
 
         let durationPullback = isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult : 300 * extraTimeMult * pullbackDurMult;
@@ -1453,17 +1454,6 @@ class Enemy {
                     return;
                 }
                 let attackDuration = isRepeatedAttack ? 150 * extraTimeMult : 175 * extraTimeMult
-                // if (prepareSprite && attackTimes > 1) {
-                //     setTimeout(() => {
-                //         if (this.sprite.attackNum === undefined) {
-                //             this.sprite.attackNum = 0;
-                //         } else {
-                //             this.sprite.attackNum = (this.sprite.attackNum + 1) % attackSprites.length;
-                //         }
-                //         this.setSprite(attackSprites[this.sprite.attackNum]);
-                //         this.sprite.setScale(pullbackScale);
-                //     }, attackDuration * 0.2);
-                // }
                 let attackScale = this.attackScale * this.sprite.startScale * timeSlowMult;
                 attackDuration += Math.floor(this.attackScale * 200);
                 this.attackAnim = this.scene.tweens.add({
@@ -1472,7 +1462,7 @@ class Enemy {
                     scaleY: attackScale,
                     duration: attackDuration,
                     rotation: 0,
-                    ease: 'Cubic.easeIn',
+                    ease: this.attackEase ? this.attackEase : 'Cubic.easeIn',
                     onComplete: () => {
                         if (this.dead){
                             return;
@@ -1513,7 +1503,7 @@ class Enemy {
                                 scaleY: this.sprite.startScale,
                                 rotation: 0,
                                 duration: 500 * extraTimeMult * timeSlowMult,
-                                ease: 'Cubic.easeInOut'
+                                ease: this.returnEase ? this.returnEase : 'Cubic.easeInOut'
                             });
                             this.isUsingAttack = false;
                             setTimeout(() => {

@@ -107,6 +107,7 @@ function onPreloadComplete (scene)
     loadFileList(scene, imageAtlases, 'atlas');
     loadFileList(scene, imageFiles, 'image');
     loadFileList(scene, fontFiles, 'bitmap_font');
+    loadFileList(scene, videoFiles, 'video');
 
     scene.load.start();
 }

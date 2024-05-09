@@ -8,8 +8,6 @@ class SpellManager {
     initializePoolStuff() {
         let rockObj = this.scene.add.sprite(0, 0, 'spells', 'rock.png');
         poolManager.returnItemToPool(rockObj, 'rock');
-
-
     }
 
     handleSpell(elem, embodi, shieldID, rotation = 0) {
@@ -147,7 +145,7 @@ class SpellManager {
             ease: 'Cubic.easeOut'
         });
         let useMainStrike = Math.random() < 0.65;
-        let strikeVol = 0.65 + additionalDamage * 0.0022 + (useMainStrike ? -0.1 : 0);
+        let strikeVol = 0.75 + additionalDamage * 0.0015 + (useMainStrike ? -0.1 : 0);
         playSound(useMainStrike ? 'matter_strike' : 'matter_strike_alt', strikeVol);
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
@@ -188,23 +186,23 @@ class SpellManager {
                 if (i === 0) {
                     let randNum = Math.random()
                     if (randNum < 0.3) {
-                        playSound('matter_strike_hit', 0.7 + additionalVol);
+                        playSound('matter_strike_hit', 0.8 + additionalVol);
                     } else if (randNum < 0.6) {
-                        playSound('matter_strike_hit_alt', 0.7 + additionalVol);
+                        playSound('matter_strike_hit_alt', 0.8 + additionalVol);
                     } else {
-                        playSound('matter_strike_hit_alt_2', 0.75 + additionalVol);
+                        playSound('matter_strike_hit_alt_2', 0.85 + additionalVol);
                     }
                 } else if (rockObjects.length > 2 && i === rockObjects.length - 1) {
                     // last hit
                     if (Math.random() < 0.5) {
-                        playSound('matter_strike_hit', 0.6 + additionalVol);
+                        playSound('matter_strike_hit', 0.7 + additionalVol);
                     } else {
-                        playSound('matter_strike_hit_alt', 0.6 + additionalVol);
+                        playSound('matter_strike_hit_alt', 0.7 + additionalVol);
                     }
                 } else if (i % 2 == 1) {
-                    playSound('matter_strike_hit2', 0.9 + additionalVol);
+                    playSound('matter_strike_hit2', 0.95 + additionalVol);
                 } else if (i % 2 == 0) {
-                    playSound('matter_strike_hit2', 0.5 + additionalVol);
+                    playSound('matter_strike_hit2', 0.6 + additionalVol);
                 }
             }, delayAmt + durationAmt - 50)
             this.scene.tweens.add({
@@ -219,7 +217,7 @@ class SpellManager {
                 ease: 'Quad.easeIn',
                 onComplete: () => {
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
-                    let baseDamage = gameVars.matterPlus ? 14 : 12;
+                    let baseDamage = gameVars.matterPlus ? 80 : 80;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
                     messageBus.publish('setPauseDur', 20);
                     poolManager.returnItemToPool(rockObj, 'rock');
@@ -1856,16 +1854,16 @@ class SpellManager {
             this.scene.tweens.add({
                 delay: i * 165,
                 targets: currStrikeObj,
-                scaleX: (0.75 + additionalDamage * 0.002) * scaleXMult,
-                scaleY: (0.75 + additionalDamage * 0.002),
+                scaleX: (0.82 + additionalDamage * 0.0022) * scaleXMult,
+                scaleY: (0.82 + additionalDamage * 0.0022),
                 duration: 600,
                 ease: 'Back.easeOut',
                 onComplete: () => {
                     this.scene.tweens.add({
                         targets: currStrikeObj,
                         rotation: isLeftStrike ? 0.13 : -0.13,
-                        scaleX: (0.95 + additionalDamage * 0.01) * scaleXMult,
-                        scaleY: 1.05 + additionalDamage * 0.01,
+                        scaleX: (1 + additionalDamage * 0.01) * scaleXMult,
+                        scaleY: 1.08 + additionalDamage * 0.01,
                         duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
@@ -1875,7 +1873,7 @@ class SpellManager {
                             messageBus.publish('enemyTakeDamage', damageDealt);
                             messageBus.publish('setPauseDur', 30);
                             messageBus.publish('inflictVoidBurn', damageDealt, 2);
-                            currStrikeObj.setScale(currStrikeObj.scaleX * 1.04, currStrikeObj.scaleY * 1.04);
+                            currStrikeObj.setScale(currStrikeObj.scaleX * 1.03, currStrikeObj.scaleY * 1.03);
                             this.scene.tweens.add({
                                 targets: currStrikeObj,
                                 rotation: isLeftStrike ? 2.2 : -2.2,

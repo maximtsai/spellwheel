@@ -19,7 +19,7 @@
 
      initPreBattleLogic() {
          this.setAsleep();
-         this.shieldSprite.setFrame('shockEffect4.png').setVisible(false).setOrigin(0.5, 0.43);
+         this.shieldSprite.setFrame('shockEffect4.png').setVisible(false).setOrigin(0.5, 0.45);
          this.shieldSprite.startScale = 3;
          this.lastAttackLingerMult = 1.75;
          this.attackSlownessMult = 1.25;
@@ -111,6 +111,8 @@
                              scaleY: 1,
                          });
                          this.setDefaultSprite('robot_laser.png');
+                         this.sprite.y = this.sprite.startY;
+
                          let spriteOrigY = this.sprite.y;
                          this.sprite.setOrigin(0.5, 0.95).setPosition(this.sprite.x, this.sprite.y + 150);
                          this.scene.tweens.add({
@@ -127,6 +129,7 @@
                              onComplete: () => {
                                  this.sprite.setOrigin(0.5, 0.5).setPosition(this.sprite.x, spriteOrigY).setRotation(0);
                                  this.setDefaultSprite('robot1.png');
+                                 this.sprite.y = this.sprite.startY;
 
                                  this.setAwake();
                                  this.loadUpHealthBar();
@@ -137,6 +140,9 @@
                                      ease: 'Quad.easeOut',
                                      scaleX: 1,
                                      scaleY: 1,
+                                     onComplete: () => {
+                                         this.animateBG()
+                                     }
                                  });
                              }
                          });
@@ -174,10 +180,16 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 600 : 500;
+         this.health = gameVars.isHardMode ? 500 : 450;
          this.nextShieldHealth = 100;
          this.shieldsBroken = 0;
          this.missileObjects = [];
+         this.attackEase = "Quad.easeOut";
+         this.returnEase = "Cubic.easeIn";
+         this.pullbackDurMult = 0.5;
+         this.baseBGAlpha = 0;
+         this.pullbackScale = 0.9;
+         this.pullbackScaleDefault = 0.95;
      }
 
      // update(dt) {}
@@ -203,13 +215,40 @@
                  this.nextAttackIndex = 0;
              }
          }
+         if (this.health < 200 && !this.scratched) {
+             this.scratched = true;
+             this.baseBGAlpha = -0.15;
+         }
          if (this.health < 100 && !this.emergency) {
+             this.baseBGAlpha = -0.25;
+             this.scene.tweens.add({
+                 targets: this.tunnelBG,
+                 duration: 1000,
+                 alpha: 0.4,
+                 ease: 'Quad.easeOut',
+                 onComplete: () => {
+                     this.tunnelBG.setAlpha(0.85);
+                     setTimeout(() => {
+                         this.tunnelBG.setAlpha(0.6);
+                         setTimeout(() => {
+                             this.tunnelBG.setAlpha(0.7);
+                             setTimeout(() => {
+                                 this.tunnelBG.setAlpha(0.4);
+                             }, 200);
+                         }, 700);
+                     }, 50);
+                 }
+             });
+             this.attackEase = "Quad.easeOut";
+             this.returnEase = "Cubic.easeIn";
              this.blush.visible = false;
              this.eyeShine.visible = false;
              this.emergency = true;
              this.interruptCurrentAttack();
              this.setDefaultSprite('robot_broken.png');
-             playSound('voca_pain');
+             this.sprite.y = this.sprite.startY;
+             playSound('voca_pain', 0.9);
+             playSound('clunk2', 1.2);
              this.currentAttackSetIndex = 7;
              this.nextAttackIndex = 0;
          }
@@ -229,12 +268,33 @@
          backgroundBlack.setAlpha(0);
      }
 
+     animateBG(durationMult = 1, extraAlpha = 0) {
+         if (this.dead) {
+             return;
+         }
+         this.tunnelBG.setAlpha(0.81 + extraAlpha + this.baseBGAlpha);
+         this.currBGAnim = this.scene.tweens.add({
+             targets: this.tunnelBG,
+             duration: 550 * durationMult,
+             alpha: 0.785 + this.baseBGAlpha,
+             ease: 'Cubic.easeOut',
+             onComplete: () => {
+                 this.animateBG();
+             }
+         });
+     }
+
+     refreshAnimateBG(durMult, alpha) {
+         this.currBGAnim.stop();
+         this.animateBG(durMult, alpha);
+     }
+
      initAttacks() {
          this.attacks = [
              [
                  // 0
                  {
-                     name: "SHINY FORCE FIELD {" + this.nextShieldHealth + " ",
+                     name: "SHINY SHIELD {" + this.nextShieldHealth + " ",
                      block: this.nextShieldHealth,
                      chargeAmt: 600,
                      chargeMult: 15,
@@ -248,7 +308,6 @@
                      },
                      attackFinishFunction: () => {
                          let scaleAmt = gameVars.isHardMode ? 40 : 25;
-                         this.nextShieldHealth += 100 + scaleAmt * (this.shieldsBroken + 1);
                          this.shieldIgnoreGone = false;
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
@@ -259,7 +318,7 @@
                  // 1
                  {
                      name: "ERROR: SHIELD MISSING",
-                     chargeAmt: gameVars.isHardMode ? 500 : 500,
+                     chargeAmt: 500,
                      damage: 0,
                      startFunction: () => {
                          this.shieldAdded = false;
@@ -277,7 +336,9 @@
                                      duration: 3000,
                                  })
                              }
-                         })
+                         });
+                         this.attackEase = "Quad.easeOut";
+                         this.returnEase = "Cubic.easeIn";
                      },
                      finaleFunction: () => {
                          if (this.blushAnim) {
@@ -292,8 +353,9 @@
                      chargeMult: 5,
                      damage: -1,
                      startFunction: () => {
+                         this.pullbackScale = 0.99;
+                         this.attackScale = 1.03;
                          let scaleAmt = gameVars.isHardMode ? 40 : 25;
-                         this.nextShieldHealth += 100 + scaleAmt * (this.shieldsBroken + 1);
                          this.setDefaultSprite('robot_hide.png');
                          playSound('voca_kya');
                          this.sprite.rotation = 0.15;
@@ -346,6 +408,7 @@
                                      onComplete: () => {
                                          if (!this.dead && this.shieldAdded) {
                                              this.setDefaultSprite('robot1.png');
+                                             this.sprite.y = this.sprite.startY;
                                          }
                                      }
                                  });
@@ -362,6 +425,8 @@
                              this.currentAttackSetIndex = 6;
                          }
                          this.nextAttackIndex = 0;
+                         this.pullbackScale = this.pullbackScaleDefault;
+                         this.attackScale = this.attackScaleDefault;
                      }
                  }
              ],
@@ -377,6 +442,11 @@
                          this.claw1Attacked = false;
                          this.pullbackScale = this.pullbackScaleDefault;
                          this.attackScale = this.attackScaleDefault;
+                         this.attackEase = "Cubic.easeIn";
+                         this.returnEase = "Cubic.easeOut";
+                     },
+                     attackStartFunction: () => {
+                         this.refreshAnimateBG(2, 0.1);
                      },
                      attackFinishFunction: () => {
                          this.claw1Attacked = !this.claw1Attacked;
@@ -390,6 +460,10 @@
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
                          let xOffset = this.claw1Attacked ? -30 : 30;
                          powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 170).setDepth(998).setScale(1.5);
+                     },
+                     finaleFunction: () => {
+                         this.attackEase = "Quad.easeOut";
+                         this.returnEase = "Cubic.easeIn";
                      }
                  },
                  {
@@ -408,6 +482,8 @@
                                  }
                              }, 200);
                              this.setDefaultSprite('robot_shoot.png');
+                             this.sprite.y = this.sprite.startY;
+                             this.refreshAnimateBG(2, 0.1);
                          }
                      },
                      attackFinishFunction: () => {
@@ -424,6 +500,11 @@
                          this.claw1Attacked = false;
                          this.pullbackScale = this.pullbackScaleDefault;
                          this.attackScale = this.attackScaleDefault;
+                         this.attackEase = "Cubic.easeIn";
+                         this.returnEase = "Cubic.easeOut";
+                     },
+                     attackStartFunction: () => {
+                         this.refreshAnimateBG(2, 0.1);
                      },
                      attackFinishFunction: () => {
                          this.claw1Attacked = !this.claw1Attacked;
@@ -437,6 +518,10 @@
                          }, 80);
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
                          powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 170).setDepth(998).setScale(2);
+                     },
+                     finaleFunction: () => {
+                         this.attackEase = "Quad.easeOut";
+                         this.returnEase = "Cubic.easeIn";
                      }
                  },
              ],
@@ -452,6 +537,11 @@
                          this.claw1Attacked = true;
                          this.pullbackScale = this.pullbackScaleDefault;
                          this.attackScale = this.attackScaleDefault;
+                         this.attackEase = "Cubic.easeIn";
+                         this.returnEase = "Cubic.easeOut";
+                     },
+                     attackStartFunction: () => {
+                         this.refreshAnimateBG(2, 0.1);
                      },
                      attackFinishFunction: () => {
                          this.claw1Attacked = !this.claw1Attacked;
@@ -465,6 +555,10 @@
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
                          let xOffset = this.claw1Attacked ? -30 : 30;
                          powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 170).setDepth(998).setScale(1.5);
+                     },
+                     finaleFunction: () => {
+                         this.attackEase = "Quad.easeOut";
+                         this.returnEase = "Cubic.easeIn";
                      }
                  },
                  {
@@ -477,6 +571,8 @@
                          this.claw1Attacked = false;
                          this.pullbackScale = this.pullbackScaleDefault;
                          this.attackScale = this.attackScaleDefault;
+                         this.attackEase = "Cubic.easeIn";
+                         this.returnEase = "Cubic.easeOut";
                      },
                      attackFinishFunction: () => {
                          this.claw1Attacked = !this.claw1Attacked;
@@ -490,6 +586,11 @@
                          }, 80);
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
                          powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 170).setDepth(998).setScale(2);
+                         this.refreshAnimateBG(2, 0.1);
+                     },
+                     finaleFunction: () => {
+                         this.attackEase = "Quad.easeOut";
+                         this.returnEase = "Cubic.easeIn";
                      }
                  },
              ],
@@ -512,6 +613,8 @@
                                  }
                              }, 200);
                              this.setDefaultSprite('robot_heart.png');
+                             this.sprite.y = this.sprite.startY;
+                             this.refreshAnimateBG(3, 0.4);
                          }
                      },
                      attackFinishFunction: () => {
@@ -524,7 +627,7 @@
              [
                  // 5 missiles
                  {
-                     name: ";6x8 ",
+                     name: ";12x4 ",
                      chargeAmt: 750,
                      damage: -1,
                      isBigMove: true,
@@ -535,21 +638,16 @@
                      attackStartFunction: () => {
                          if (!this.dead && this.shieldAdded) {
                              playSound('voca_missile');
-                             this.createMissileObject(this.x - 75, this.y + 5, -0.5, 300);
-                             this.createMissileObject(this.x + 75, this.y + 5, 0.5, 350);
+                             this.createMissileObject(this.x - 75, this.y + 5, -0.5, 200);
+                             this.createMissileObject(this.x + 75, this.y + 5, 0.5, 200);
 
-                             this.createMissileObject(this.x - 60, this.y - 20, -0.3, 200);
-                             this.createMissileObject(this.x + 60, this.y - 20, 0.3, 250);
-
-                             this.createMissileObject(this.x - 40, this.y - 30, -0.12, 100);
-                             this.createMissileObject(this.x + 40, this.y - 30, 0.12, 150);
-
-                             this.createMissileObject(this.x - 15, this.y - 35, -0.03, 0);
-                             this.createMissileObject(this.x + 15, this.y - 35, 0.03, 50);
+                             this.createMissileObject(this.x - 25, this.y - 30, -0.12, 0);
+                             this.createMissileObject(this.x + 25, this.y - 30, 0.12, 0);
+                             this.refreshAnimateBG(3, 0.25);
                          }
                      },
                      attackFinishFunction: () => {
-                         this.fireMissiles(6);
+                         this.fireMissiles(12);
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
                      }
@@ -573,6 +671,8 @@
                                  }
                              }, 200);
                              this.setDefaultSprite('robot_shoot.png');
+                             this.sprite.y = this.sprite.startY;
+                             this.refreshAnimateBG(2, 0.1);
                          }
                      },
                      attackFinishFunction: () => {
@@ -589,6 +689,11 @@
                          this.claw1Attacked = false;
                          this.pullbackScale = this.pullbackScaleDefault;
                          this.attackScale = this.attackScaleDefault;
+                         this.attackEase = "Cubic.easeIn";
+                         this.returnEase = "Cubic.easeOut";
+                     },
+                     attackStartFunction: () => {
+                         this.refreshAnimateBG(2, 0.1);
                      },
                      attackFinishFunction: () => {
                          this.claw1Attacked = !this.claw1Attacked;
@@ -602,6 +707,10 @@
                          }, 80);
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
                          powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 170).setDepth(998).setScale(2);
+                     },
+                     finaleFunction: () => {
+                         this.attackEase = "Quad.easeOut";
+                         this.returnEase = "Cubic.easeIn";
                      }
                  },
              ],
@@ -646,7 +755,7 @@
                      }
                  },
                  {
-                     name: "UNDER-CHARGED LASER }12",
+                     name: "FAILING CIRCUITS }12",
                      chargeAmt: 1000,
                      damage: 12,
                      startFunction: () => {
@@ -660,20 +769,13 @@
                          if (!this.exhausted) {
                              playSound('voca_laser_broken', 0.8);
                          }
-                         this.laserFake = this.scene.add.sprite(this.x - 5, this.y, 'enemies', 'robot_blast_small1.png').setScale(0.8).setDepth(9999).setAlpha(0.5);
+                         this.laserFake = this.scene.add.sprite(this.x - 5, this.y -30, 'enemies', 'robot_blast_small1.png').setScale(0.8).setDepth(9999).setAlpha(0.1);
                          PhaserScene.tweens.add({
                              targets: this.laserFake,
                              alpha: 0.8,
-                             ease: "Cubic.easeOut",
+                             ease: "Quad.easeOut",
                              duration: 400,
                              onComplete: () => {
-                                 PhaserScene.tweens.add({
-                                     targets: this.laserFake,
-                                     rotation: -1,
-                                     y: "-=30",
-                                     ease: "Cubic.easeIn",
-                                     duration: 1000,
-                                 });
                                  PhaserScene.tweens.add({
                                      targets: this.laserFake,
                                      alpha: 0.4,
@@ -684,10 +786,19 @@
                                      onComplete: () => {
                                          PhaserScene.tweens.add({
                                              targets: this.laserFake,
-                                             alpha: 0,
-                                             duration: 500,
+                                             alpha: 0.8,
+                                             ease: "Back.easeOut",
+                                             duration: 650,
                                              onComplete: () => {
-                                                 this.laserFake.destroy();
+                                                 PhaserScene.tweens.add({
+                                                     targets: this.laserFake,
+                                                     alpha: 0,
+                                                     ease: 'Quad.easeIn',
+                                                     duration: 500,
+                                                     onComplete: () => {
+                                                         this.laserFake.destroy();
+                                                     }
+                                                 });
                                              }
                                          });
                                      }
@@ -697,6 +808,20 @@
                      },
                      attackFinishFunction: () => {
                          messageBus.publish('enemyTakeTrueDamage', 2, false);
+                         this.laserHeart.setAlpha(0.6).setScale(0.25).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 150);
+                         PhaserScene.tweens.add({
+                             targets: this.laserHeart,
+                             scaleX: 0.55,
+                             scaleY: 0.55,
+                             duration: 1000,
+                             ease: 'Cubic.easeOut',
+                         });
+                         PhaserScene.tweens.add({
+                             targets: this.laserHeart,
+                             alpha: 0,
+                             ease: 'Quad.easeOut',
+                             duration: 1000,
+                         });
                      }
                  },
                  {
@@ -721,7 +846,7 @@
          if (!this.dead && !this.weakLaserFinished) {
              PhaserScene.time.delayedCall(2000, () => {
                  this.nextAttack.damage = Math.max(1, this.nextAttack.damage - 1);
-                 this.attackName.setText("}" + this.nextAttack.damage +" ");
+                 this.attackName.setText("FAILING CIRCUITS }" + this.nextAttack.damage +" ");
                  this.startWeakLaser();
              });
          }
@@ -735,7 +860,36 @@
         if (this.currAnim) {
             this.currAnim.stop();
         }
-        playSound('voca_kya_damaged')
+         this.boomListener = messageBus.subscribe('robotExplosion', () => {
+
+             this.animateBoomEyeshine();
+         });
+        this.subscriptions.push(this.boomListener);
+
+         this.scene.tweens.add({
+             targets: this.tunnelBG,
+             duration: 1000,
+             alpha: 0,
+             ease: 'Quad.easeIn',
+         });
+         let deathBoom = PhaserScene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'robot_blast.png').setDepth(0).setOrigin(0.5, 0.65).setScale(0.25, -0.25);
+         PhaserScene.tweens.add({
+             targets: deathBoom,
+             alpha: 0,
+             duration: 900,
+             ease: 'Quad.easeIn',
+             onComplete: () => {
+                 deathBoom.destroy();
+             }
+         });
+         PhaserScene.tweens.add({
+             targets: deathBoom,
+             scaleX: 1,
+             scaleY: -1,
+             duration: 900,
+             ease: 'Cubic.easeOut',
+         });
+        playSound('voca_kya_damaged', 0.85)
          this.cleanUpTweens();
          globalObjects.textPopupManager.hideInfoText();
 
@@ -761,13 +915,13 @@
              duration: 250,
              onComplete: () => {
                  this.setDefaultSprite('robot_dead_left.png', this.sprite.scaleX, true);
+                 this.sprite.y = this.sprite.startY;
                  this.sprite.setRotation(0);
-                 this.y -= 850;
                  PhaserScene.tweens.add({
                      targets: this.sprite,
-                     y: "+=100",
+                     y: "+=125",
                      ease: "Cubic.easeIn",
-                     duration: 600,
+                     duration: 800,
                      onComplete: () => {
                          playSound('clunk');
                          PhaserScene.tweens.add({
@@ -775,7 +929,7 @@
                              y: "-=30",
                              rotation: "+=0.3",
                              ease: "Cubic.easeOut",
-                             duration: 300,
+                             duration: 500,
                              onComplete: () => {
                                  this.setDefaultSprite('robot_dead_right.png', this.sprite.scaleX, true);
                                  this.sprite.setRotation(-0.3);
@@ -784,7 +938,7 @@
                                      y: "+=30",
                                      rotation: "+=0.3",
                                      ease: "Cubic.easeIn",
-                                     duration: 300,
+                                     duration: 400,
                                      onComplete: () => {
                                          playSound('clunk2');
                                          this.setDefaultSprite('robot_dead.png', this.sprite.scaleX, true);
@@ -794,16 +948,33 @@
                                              y: "-=5",
                                              rotation: "-=0.3",
                                              ease: "Cubic.easeOut",
-                                             duration: 100,
+                                             duration: 150,
                                              onComplete: () => {
                                                  PhaserScene.tweens.add({
                                                      targets: this.sprite,
                                                      y: "+=5",
                                                      ease: "Cubic.easeIn",
-                                                     duration: 100,
+                                                     duration: 150,
                                                      onComplete: () => {
                                                          this.sprite.setRotation(0);
                                                          playSound('clunk2');
+
+                                                         setTimeout(() => {
+                                                             let rune = this.scene.add.sprite(this.x, this.y, 'tutorial', 'rune_protect_large.png').setScale(0).setVisible(false);
+                                                             PhaserScene.tweens.add({
+                                                                 targets: rune,
+                                                                 x: gameConsts.halfWidth,
+                                                                 y: gameConsts.halfHeight - 170,
+                                                                 scaleX: 1,
+                                                                 scaleY: 1,
+                                                                 ease: "Cubic.easeOut",
+                                                                 duration: 1500,
+                                                                 onComplete: () => {
+                                                                     this.showVictory(rune);
+                                                                 }
+                                                             });
+                                                         }, 500)
+
                                                      }
                                                  });
                                              }
@@ -830,6 +1001,37 @@
              ease: 'Back.easeOut',
              easeParams: [2],
              duration: 400
+         });
+     }
+
+     animateBoomEyeshine() {
+         this.eyeShine.visible = true;
+         this.eyeShine.setAlpha(0.7).setScale(0.8).setPosition(this.sprite.x, this.sprite.y);
+         this.scene.tweens.add({
+             targets: this.eyeShine,
+             duration: 3000,
+             scaleX: 1.5,
+             scaleY: 1.5,
+             alpha: 1.05,
+             ease: 'Quad.easeOut',
+         });
+         this.scene.tweens.add({
+             targets: this.eyeShine,
+             duration: 2000,
+             rotation: "-=0.3",
+             ease: 'Quad.easeOut',
+             onComplete: () => {
+                this.eyeShine.setRotation(-0.2);
+                 this.scene.tweens.add({
+                     targets: this.eyeShine,
+                     duration: 200,
+                     rotation: "+=0.1",
+                     ease: 'Quart.easeOut',
+                     onComplete: () => {
+                         this.eyeShine.setRotation(-0.2);
+                     }
+                 });
+             }
          });
      }
 
@@ -986,6 +1188,7 @@
                                                  setTimeout(() => {
                                                      if (!this.dead && this.shieldAdded) {
                                                          this.setDefaultSprite('robot1.png');
+                                                         this.sprite.y = this.sprite.startY;
                                                          this.setSprite('robot1.png');
                                                      }
                                                  }, 250);
@@ -1157,8 +1360,8 @@
                                                                  this.laserHeart.setAlpha(1).setScale(0.25).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 150);
                                                                  PhaserScene.tweens.add({
                                                                      targets: this.laserHeart,
-                                                                     scaleX: 0.65,
-                                                                     scaleY: 0.65,
+                                                                     scaleX: 0.8,
+                                                                     scaleY: 0.8,
                                                                      duration: 900,
                                                                      ease: 'Cubic.easeOut',
                                                                  });
@@ -1198,6 +1401,7 @@
                                                                      onComplete: () => {
                                                                          playSound('robot_sfx_2');
                                                                          this.setDefaultSprite('robot1.png');
+                                                                         this.sprite.y = this.sprite.startY;
                                                                      }
                                                                  });
                                                              }
@@ -1212,6 +1416,60 @@
                          });
                      }
                  });
+             }
+         });
+     }
+
+     showVictory(rune) {
+         globalObjects.magicCircle.disableMovement();
+         let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
+         let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
+         let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
+
+         PhaserScene.tweens.add({
+             targets: banner,
+             alpha: 0.75,
+             duration: 500,
+         });
+
+         PhaserScene.tweens.add({
+             targets: [victoryText],
+             alpha: 1,
+             ease: 'Quad.easeOut',
+             duration: 500,
+         });
+         playSound('victory_false');
+         setTimeout(() => {
+             continueText.alpha = 1;
+         }, 1000);
+
+         PhaserScene.tweens.add({
+             targets: victoryText,
+             scaleX: 1,
+             scaleY: 1,
+             duration: 800,
+         });
+         PhaserScene.tweens.add({
+             targets: rune,
+             y: gameConsts.halfHeight - 110,
+             ease: 'Cubic.easeOut',
+             duration: 400,
+             onComplete: () => {
+                 this.dieClickBlocker.setOnMouseUpFunc(() => {
+                     this.dieClickBlocker.destroy();
+                     PhaserScene.tweens.add({
+                         targets: [victoryText, banner],
+                         alpha: 0,
+                         duration: 400,
+                         onComplete: () => {
+                             victoryText.destroy();
+                             banner.destroy();
+                             continueText.destroy();
+                             globalObjects.postFightScreen.createWinScreenBoom(this.level);
+                         }
+                     });
+                     rune.destroy();
+                 })
              }
          });
      }

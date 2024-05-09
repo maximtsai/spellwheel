@@ -4,6 +4,7 @@
          this.initSprite('gobbo0.png', 0.92);
          this.bgMusic = playSound('fightbg1', 0.7, true);
          this.shieldAdded = false;
+         this.initShield();
 
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
 

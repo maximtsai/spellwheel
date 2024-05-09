@@ -38,7 +38,7 @@ function beginLevel(lvl) {
             break;
 
         case 7:
-            fadeInBackgroundAtlas('backgrounds', 'firebg1.png', 1500, 5, 1, 'Quart.easeIn', 0, true);
+            fadeInBackgroundAtlas('backgrounds', 'star.png', 1500, 5, 0.935, 'Quart.easeIn', 0, true, -1);
             break;
         case 8:
             fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1, 1, 'Quart.easeIn', 0, false);

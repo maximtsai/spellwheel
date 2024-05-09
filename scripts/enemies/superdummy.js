@@ -1,7 +1,7 @@
  class SuperDummy extends Enemy {
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
-        this.initSprite('dummy.png', 0.75,0, 5);
+        this.initSprite('max_death_2x.png', 0.5,0, 15);
         setTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);

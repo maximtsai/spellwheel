@@ -23,6 +23,9 @@ function swirlInReaperFog() {
 }
 
 function clearDeathFog() {
+    if (!globalObjects.fogSwirl) {
+        return;
+    }
     if (globalObjects.fogSwirl.currAnim) {
         globalObjects.fogSwirl.currAnim.stop();
     }

@@ -111,6 +111,12 @@ class Enemy {
         this.healthBarMax.setOrigin(0.5, 0.5);
         this.healthBarMax.setDepth(10);
 
+        this.healthBarFlash = this.scene.add.sprite(x - this.healthBarLengthMax - 1, this.healthBarMax.y, 'pixels', 'white_pixel.png');
+        this.healthBarFlash.setScale(this.healthBarLengthMax + 1, 10);
+        this.healthBarFlash.setOrigin(0, 0.5);
+        this.healthBarFlash.alpha = 0;
+        this.healthBarFlash.setDepth(10);
+
         this.healthBarCurr = this.scene.add.sprite(x - this.healthBarLengthMax - 1, this.healthBarMax.y, 'pixels', 'green_pixel.png');
         this.healthBarCurr.setScale(this.healthBarLengthMax + 1, 10);
         this.healthBarCurr.setOrigin(0, 0.5);
@@ -156,8 +162,15 @@ class Enemy {
         this.chargeBarReady1 = this.scene.add.sprite(x, isMobile ? 339 : 337, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
         this.chargeBarReady2 = this.scene.add.sprite(x, isMobile ? 339 : 337, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
 
+        this.chargeBarOutline = this.scene.add.sprite(x, isMobile ? 339 : 337, 'whitePixel');
+        this.chargeBarOutline.setScale(chargeBarLength + 4, isMobile ? 15 : 13);
+        this.chargeBarOutline.setOrigin(0.5, 0.5);
+        this.chargeBarOutline.visible = false;
+        this.chargeBarOutline.alpha = 0.4;
+        this.chargeBarOutline.setDepth(9);
+
         this.chargeBarMax = this.scene.add.sprite(x, isMobile ? 339 : 337, 'blackPixel');
-        this.chargeBarMax.setScale(chargeBarLength + 2, isMobile ? 13 : 10);
+        this.chargeBarMax.setScale(chargeBarLength + 2, isMobile ? 13 : 11);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;
         this.chargeBarMax.setDepth(9);
@@ -389,6 +402,8 @@ class Enemy {
                 }
             }
             this.chargeBarCurr.scaleX = Math.min(this.nextAttackChargeNeeded * 0.2, this.attackCharge * 0.2 + 1);
+            this.chargeBarOutline.alpha = 0.35 * this.chargeBarCurr.scaleX / (this.chargeBarMax.scaleX + 1) + 0.02;
+
             this.chargeBarAngry.scaleX = this.chargeBarCurr.scaleX;
             if (this.isUsingAttack) {
                 // doNothing
@@ -420,6 +435,12 @@ class Enemy {
                                         scaleY: 0.75,
                                         duration: 600,
                                         ease: 'Quad.easeIn'
+                                    });
+                                    this.scene.tweens.add({
+                                        targets: [this.chargeBarOutline],
+                                        alpha: 0,
+                                        duration: 800,
+                                        ease: 'Cubic.easeIn'
                                     });
                                 }
                             });
@@ -674,10 +695,12 @@ class Enemy {
             });
         }
         this.chargeBarMax.visible = true;
+        this.chargeBarOutline.visible = true;
         let chargeBarLength = Math.floor(this.nextAttackChargeNeeded * 0.2);
         this.chargeBarMax.scaleX = chargeBarLength * 0.6 + 2;
+        this.chargeBarOutline.scaleX = this.chargeBarMax.scaleX + 2;
         this.chargeBarWarning.visible = false;
-        this.chargeBarWarning.scaleX = chargeBarLength + 4;
+        this.chargeBarWarning.scaleX = chargeBarLength + 2;
         this.chargeBarCurr.scaleX = 0;
         this.chargeBarCurr.alpha = 0.9;
         this.chargeBarAngry.scaleX = 0;
@@ -706,10 +729,22 @@ class Enemy {
                 duration: chargeBarLength * 7 * extraTimeMult,
                 ease: 'Quart.easeOut'
             });
+            this.scene.tweens.add({
+                targets: this.chargeBarOutline,
+                scaleX: chargeBarLength + 4,
+                duration: chargeBarLength * 7 * extraTimeMult,
+                ease: 'Quart.easeOut'
+            });
         } else {
             this.scene.tweens.add({
                 targets: this.chargeBarMax,
                 scaleX: chargeBarLength + 2,
+                duration: 50,
+                ease: 'Quart.easeOut'
+            });
+            this.scene.tweens.add({
+                targets: this.chargeBarOutline,
+                scaleX: chargeBarLength + 4,
                 duration: 50,
                 ease: 'Quart.easeOut'
             });
@@ -890,11 +925,31 @@ class Enemy {
         }
     }
 
+    flashHealthChange(newScale, mult = 1) {
+        let scaleChange = this.healthBarCurr.scaleX - newScale;
+        // let tallAmt = Math.max(0, Math.min(2, 0.05 * scaleChange - 10));
+        this.healthBarFlash.scaleX = this.healthBarCurr.scaleX;
+        this.healthBarFlash.scaleY = this.healthBarCurr.scaleY;
+        this.healthBarFlash.alpha = 1 + 0.2 * mult;
+        if (this.healthBarFlashTween) {
+            this.healthBarFlashTween.stop();
+        }
+        this.healthBarFlashTween = PhaserScene.tweens.add({
+            targets: this.healthBarFlash,
+            alpha: 0,
+            scaleY: this.healthBarCurr.scaleY,
+            ease: "Cubic.easeOut",
+            duration: 550 * mult
+        })
+    }
+
     updateHealthBar(isHealing) {
         if (this.health <= 0) {
+            this.flashHealthChange(this.healthBarCurr.scaleX, 2);
             this.healthBarCurr.scaleX = 0;
         } else {
             let healthBarRatio = 1 + this.healthBarLengthMax * this.health / this.healthMax;
+            this.flashHealthChange(this.healthBarCurr.scaleX);
             this.healthBarCurr.scaleX = healthBarRatio;
         }
         this.healthBarText.setText(this.health);
@@ -983,7 +1038,7 @@ class Enemy {
         });
 
         PhaserScene.tweens.add({
-            targets: [this.chargeBarMax, this.chargeBarCurr],
+            targets: [this.chargeBarMax, this.chargeBarCurr, this.chargeBarOutline],
             scaleX: 0,
             ease: "Cubic.easeOut",
             duration: 400,
@@ -1065,6 +1120,7 @@ class Enemy {
 
         this.chargeBarWarningBig.destroy();
         this.chargeBarMax.destroy();
+        this.chargeBarOutline.destroy();
         this.chargeBarWarning.destroy();
         this.chargeBarAngry.destroy();
         this.chargeBarCurr.destroy();
@@ -1119,6 +1175,7 @@ class Enemy {
         // undo any time magic
         this.sprite.setScale(this.sprite.startScale);
         globalObjects.magicCircle.setTimeSlowRatio(1);
+        this.flashHealthChange(this.healthBarCurr.scaleX, 2);
         this.healthBarCurr.scaleX = 0;
         this.healthBarText.setText('0');
         for (let i = 0; i < this.subscriptions.length; i++) {
@@ -1187,7 +1244,7 @@ class Enemy {
                 duration: 400,
                  onComplete: () => {
                      PhaserScene.tweens.add({
-                         targets: [this.chargeBarMax],
+                         targets: [this.chargeBarMax, this.chargeBarOutline],
                          scaleX: 0,
                          ease: "Cubic.easeOut",
                          duration: 400,

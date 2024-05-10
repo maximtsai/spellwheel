@@ -24,10 +24,15 @@
          this.lastAttackLingerMult = 1.75;
          this.attackSlownessMult = 1.25;
 
-         this.eyeShine = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 67, 'enemies', 'roboteye.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth);
+        this.laserCharge = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_charge.png').setDepth(11).setAlpha(0);
+        this.laserHeart = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_blast.png').setDepth(11).setOrigin(0.5, 0.65).setAlpha(0);
+         this.eyeShine = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 57, 'enemies', 'roboteye.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth);
          this.blush = PhaserScene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'robot_blush.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth + 1);
-         this.addToDestructibles(this.blush)
-         this.addToDestructibles(this.eyeShine)
+         this.addToDestructibles(this.blush);
+         this.addToDestructibles(this.eyeShine);
+        this.addToDestructibles(this.laserHeart);
+        this.addToDestructibles(this.laserCharge);
+
          this.scene.tweens.add({
              targets: this.sprite,
              duration: 2500,
@@ -38,6 +43,7 @@
          this.scene.tweens.add({
              delay: 250,
              targets: this.eyeShine,
+             y: this.y - 58,
              duration: 500,
              scaleX: this.sprite.startScale,
              scaleY: this.sprite.startScale,
@@ -50,6 +56,7 @@
                  this.scene.tweens.add({
                      targets: this.eyeShine,
                      duration: 2000,
+                     y: this.y - 67,
                      alpha: 1,
                      scaleX: this.sprite.startScale * 1.2,
                      scaleY: this.sprite.startScale * 1.05,
@@ -434,7 +441,7 @@
                  // 2
                  {
                      name: "|8x2 ",
-                     chargeAmt: 400,
+                     chargeAmt: 500,
                      damage: 8,
                      attackTimes: 2,
                      attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
@@ -529,7 +536,7 @@
                  // 3
                  {
                      name: "|8x2 ",
-                     chargeAmt: 200,
+                     chargeAmt: 500,
                      damage: 8,
                      attackTimes: 2,
                      attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
@@ -861,16 +868,18 @@
             this.currAnim.stop();
         }
          this.boomListener = messageBus.subscribe('robotExplosion', () => {
-
              this.animateBoomEyeshine();
+             this.animateSelfDestructText();
          });
         this.subscriptions.push(this.boomListener);
-
+        if (this.currBGAnim) {
+            this.currBGAnim.stop();
+        }
          this.scene.tweens.add({
              targets: this.tunnelBG,
-             duration: 1000,
+             duration: 700,
              alpha: 0,
-             ease: 'Quad.easeIn',
+             ease: 'Quint.easeOut',
          });
          let deathBoom = PhaserScene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'robot_blast.png').setDepth(0).setOrigin(0.5, 0.65).setScale(0.25, -0.25);
          PhaserScene.tweens.add({
@@ -889,7 +898,7 @@
              duration: 900,
              ease: 'Cubic.easeOut',
          });
-        playSound('voca_kya_damaged', 0.85)
+        playSound('voca_kya_damaged', 0.85);
          this.cleanUpTweens();
          globalObjects.textPopupManager.hideInfoText();
 
@@ -1004,34 +1013,133 @@
          });
      }
 
+     animateSelfDestructText() {
+         let selfDestructDesc = PhaserScene.add.bitmapText(this.sprite.x, this.sprite.y - 155, 'damage', "SELF DESTRUCT\nACTIVE IN", 32, 1).setDepth(999).setOrigin(0.5, 0.5);
+         let selfDestructText = PhaserScene.add.bitmapText(this.sprite.x, this.sprite.y - 95, 'damage', "3", 48, 1).setDepth(999).setOrigin(0.5, 0.5).setScale(1.3);
+        PhaserScene.tweens.add({
+            targets: selfDestructText,
+            scaleX: 1,
+            scaleY: 1,
+            duration: 500,
+            ease: 'Cubic.easeOut'
+        });
+         setTimeout(() => {
+             selfDestructText.setText("2").setScale(1.3);
+            PhaserScene.tweens.add({
+                targets: selfDestructText,
+                scaleX: 1,
+                scaleY: 1,
+                duration: 500,
+                ease: 'Cubic.easeOut'
+            });
+             setTimeout(() => {
+                 selfDestructText.setText("1").setScale(1.3);
+                PhaserScene.tweens.add({
+                    targets: selfDestructText,
+                    scaleX: 1,
+                    scaleY: 1,
+                    duration: 500,
+                    ease: 'Cubic.easeOut'
+                });
+                 setTimeout(() => {
+                     selfDestructText.setText("GOODBYE!\n(die X3)\n ").setScale(1.3);
+                    PhaserScene.tweens.add({
+                        targets: selfDestructText,
+                        scaleX: 1.1,
+                        scaleY: 1.1,
+                        duration: 500,
+                        ease: 'Cubic.easeOut'
+                    });
+                     selfDestructDesc.destroy();
+                    PhaserScene.tweens.add({
+                        delay: 500,
+                        targets: PhaserScene.cameras.main,
+                        x: 10,
+                        y: 3,
+                        duration: 40,
+                        onComplete: () => {
+                            PhaserScene.tweens.add({
+                                targets: PhaserScene.cameras.main,
+                                x: -10,
+                                y: -3,
+                                duration: 50,
+                                onComplete: () => {
+                                    PhaserScene.tweens.add({
+                                        targets: PhaserScene.cameras.main,
+                                        x: 7,
+                                        y: 6,
+                                        duration: 50,
+                                        onComplete: () => {
+                                            PhaserScene.tweens.add({
+                                                targets: PhaserScene.cameras.main,
+                                                x: -2,
+                                                y: -1,
+                                                duration: 50,
+                                                onComplete: () => {
+                                                    PhaserScene.tweens.add({
+                                                        targets: PhaserScene.cameras.main,
+                                                        x: 0,
+                                                        y: 0,
+                                                        duration: 50
+                                                    });
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                    setTimeout(() => {
+                        let explosion = PhaserScene.add.sprite(this.x, this.y, 'spells', 'brickPattern2.png').setScale(1).setDepth(100010).setPosition(this.x, gameConsts.halfHeight - 50).setOrigin(0.5, 0.45);
+                        this.scene.tweens.add({
+                            targets: explosion,
+                            duration: 300,
+                            scaleX: 4,
+                            scaleY: 4,
+                            rotation: "+=100",
+                            alpha: 1,
+                            ease: 'Quad.easeIn',
+                            onComplete: () => {
+                                explosion.setRotation(0);
+                                 selfDestructText.destroy();
+                            }
+                        });
+                    }, 500);
+                 }, 1000)
+             }, 1000)
+         }, 1000)
+         this.addToDestructibles(selfDestructText);
+     }
+
      animateBoomEyeshine() {
          this.eyeShine.visible = true;
          this.eyeShine.setAlpha(0.7).setScale(0.8).setPosition(this.sprite.x, this.sprite.y).setDepth(9999);
          this.scene.tweens.add({
              targets: this.eyeShine,
-             duration: 3000,
-             scaleX: 2.2,
-             scaleY: 1.8,
+             duration: 2500,
+             scaleX: 1.9,
+             scaleY: 1.75,
              alpha: 1.05,
              ease: 'Quad.easeOut',
          });
          this.scene.tweens.add({
              targets: this.eyeShine,
-             duration: 2000,
+             duration: 2500,
              rotation: "-=0.3",
              ease: 'Quad.easeOut',
              onComplete: () => {
                  this.scene.tweens.add({
                      targets: this.eyeShine,
                      duration: 150,
-                     scaleX: 2.3,
+                     scaleX: 2,
                      rotation: "+=0.05",
                      ease: 'Quart.easeOut',
                      onComplete: () => {
                          this.scene.tweens.add({
                              targets: this.eyeShine,
                              duration: 150,
-                             scaleX: 2.4,
+                             scaleX: 2.2,
                              rotation: "-=0.1",
                              ease: 'Quart.easeOut',
                              onComplete: () => {
@@ -1045,14 +1153,16 @@
                                          this.scene.tweens.add({
                                              targets: this.eyeShine,
                                              duration: 150,
-                                             scaleX: 2.6,
+                                             scaleX: 3,
+                                             scaleY: 2.3,
                                              rotation: "-=0.2",
                                              ease: 'Quart.easeOut',
                                              onComplete: () => {
                                                  this.scene.tweens.add({
                                                      targets: this.eyeShine,
                                                      duration: 150,
-                                                     scaleX: 2.7,
+                                                     scaleY: 2.5,
+                                                     scaleX: 3.3,
                                                      rotation: "+=0.25",
                                                      ease: 'Quart.easeOut',
                                                      onComplete: () => {
@@ -1064,6 +1174,13 @@
                                                              rotation: 0.1,
                                                              ease: 'Cubic.easeIn',
                                                              onComplete: () => {
+                                                                 this.scene.tweens.add({
+                                                                     targets: this.eyeShine,
+                                                                     duration: 250,
+                                                                     scaleX: 0,
+                                                                     scaleY: 0,
+                                                                     rotation: 0,
+                                                                 });
                                                              }
                                                          });
                                                      }
@@ -1252,11 +1369,7 @@
      fireLaser(damage = 30) {
          if (!this.dead && this.shieldAdded) {
              if (!this.laserBeam) {
-                 this.laserCharge = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_charge.png').setDepth(11)
-                 this.laserHeart = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_blast.png').setDepth(11).setOrigin(0.5, 0.65);
                  this.laserBeam = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 5, 'enemies', 'robot_laser_fire.png').setDepth(11).setOrigin(0.5, 0.1);
-                 this.addToDestructibles(this.laserHeart);
-                 this.addToDestructibles(this.laserCharge);
                  this.addToDestructibles(this.laserBeam);
              }
              let backgroundBlack = getBackgroundBlackout();

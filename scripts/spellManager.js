@@ -2251,12 +2251,14 @@ class SpellManager {
                 ease: 'Back.easeOut'
             });
         }
-        let voidBG = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 20, 'spells', 'shield_glow.png').setScale(0.91).setAlpha(0).setOrigin(0.5, 1);
+        let voidBG = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 20, 'spells', 'shield_glow.png').setScale(1.5, 1.15).setAlpha(0.05).setOrigin(0.5, 1);
         this.scene.tweens.add({
             targets: voidBG,
             delay: 250,
             duration: 800,
-            alpha: 1,
+            scaleX: 1,
+            scaleY: 0.98,
+            alpha: 0.5,
         });
         messageBus.publish('setTempRotObjs', [voidBG], rotation);
 

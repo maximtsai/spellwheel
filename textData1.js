@@ -58,7 +58,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    time_protect_desc: {en_us: 'Create a shield\nthat delays up to\n50 damage',
+    time_protect_desc: {en_us: 'Create a shield\nthat delays up\nto 60 damage',
         fr: '',
         zh_cn: '',
         ru: '',

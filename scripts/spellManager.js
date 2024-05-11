@@ -217,7 +217,7 @@ class SpellManager {
                 ease: 'Quad.easeIn',
                 onComplete: () => {
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
-                    let baseDamage = gameVars.matterPlus ? 80 : 80;
+                    let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
                     messageBus.publish('setPauseDur', 20);
                     poolManager.returnItemToPool(rockObj, 'rock');
@@ -1183,7 +1183,7 @@ class SpellManager {
                     spriteSrc2: 'rune_time_glow.png',
                     displayAmt: 0,
                     active: true,
-                    maxAmt: 50 * multiplier,
+                    maxAmt: 60 * multiplier,
                     multiplier: multiplier,
                     statusObj: statusObj,
                     cleanUp: (statuses) => {

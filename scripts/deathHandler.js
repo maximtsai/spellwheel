@@ -76,9 +76,9 @@ function getFogSwirl() {
 
 function getFloatingDeath() {
     if (!globalObjects.floatingDeath) {
-        globalObjects.floatingDeath = PhaserScene.add.sprite(gameConsts.halfWidth, 155, 'misc', 'floating_death_1.png').setDepth(-1);
+        globalObjects.floatingDeath = PhaserScene.add.sprite(gameConsts.halfWidth, 95, 'enemies', 'max_death_1a.png').setDepth(-1);
         globalObjects.floatingDeath.setAlpha(0.4).setScale(0.35);
-        globalObjects.floatingDeath2 = PhaserScene.add.sprite(gameConsts.halfWidth, 155, 'misc', 'floating_death_2.png').setDepth(-1).setVisible(false);
+        globalObjects.floatingDeath2 = PhaserScene.add.sprite(gameConsts.halfWidth, 95, 'enemies', 'max_death_1b.png').setDepth(-1).setVisible(false);
     }
     if (globalObjects.floatingDeath.visible === false) {
         globalObjects.floatingDeath.setVisible(true).setAlpha(0.4).setScale(0.35).setDepth(-1);

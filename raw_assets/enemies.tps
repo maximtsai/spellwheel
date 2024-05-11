@@ -740,7 +740,10 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/max_death_1.png</key>
+            <key type="filename">enemies/max_death_1_angry.png</key>
+            <key type="filename">enemies/max_death_1_cast.png</key>
+            <key type="filename">enemies/max_death_1a.png</key>
+            <key type="filename">enemies/max_death_1b.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -749,9 +752,25 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>199,153,397,305</rect>
+                <rect>169,175,337,350</rect>
                 <key>scale9Paddings</key>
-                <rect>199,153,397,305</rect>
+                <rect>169,175,337,350</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/max_death_1_magic_1.png</key>
+            <key type="filename">enemies/max_death_1_magic_2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>43,46,85,93</rect>
+                <key>scale9Paddings</key>
+                <rect>43,46,85,93</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -233,7 +233,7 @@ const textData = {
         es: '',
         jp: ''},
 
-    time_tut_desc: {en_us: 'The Time rune grants control\nover the temporal.\nTime spells let you attack\nmultiple times, delay or rewind\ninjuries, or even slow your\nenemies to a stand-still.',
+    time_tut_desc: {en_us: 'The Time rune grants control\nover the temporal.\nTime spells let you attack\nmultiple times, delay injuries,\nor even slow your enemies\nto a stand-still.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -257,7 +257,7 @@ const textData = {
         ru: '',
         es: '',
         jp: ''},
-    time_tut_reinforce_desc: {en_us: 'Partially rewinds time to\nheal some of your recent\ninjuries.',
+    time_tut_reinforce_desc: {en_us: 'Heals you by partially\nundoing your most recent\ninjury.',
         fr: '',
         zh_cn: '',
         ru: '',

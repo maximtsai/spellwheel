@@ -7,7 +7,7 @@
          setTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
-         }, 1500)
+         }, 3500)
      }
 
      initStatsCustom() {
@@ -264,7 +264,7 @@
                      duration: 800,
                      onComplete: () => {
                          PhaserScene.tweens.add({
-                             delay: 800,
+                             delay: 1000 + damage * 5,
                              targets: wallChunk,
                              alpha: 0,
                              duration: 400,

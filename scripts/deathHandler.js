@@ -288,23 +288,39 @@ function playReaperAnim(enemy, customFinFunc) {
                                                 //
                                                 // }, 200);
                                                 PhaserScene.tweens.add({
-                                                    targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2, scythe],
-                                                    fakeAlpha: 0,
+                                                    targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2],
+                                                    fakeAlpha: 0.1,
                                                     scaleX: 0.5,
                                                     scaleY: 0.5,
                                                     ease: 'Quad.easeIn',
                                                     duration: 1100,
-                                                });
-                                                PhaserScene.tweens.add({
-                                                    targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2, scythe],
-                                                    scaleX: 0.5,
-                                                    scaleY: 0.5,
-                                                    ease: 'Cubic.easeIn',
-                                                    duration: 1100,
                                                     onComplete: () => {
                                                         globalObjects.floatingDeath.flutterAnim.stop();
-                                                        globalObjects.floatingDeath.visible = false;
+                                                        globalObjects.floatingDeath.visible = true;
                                                         globalObjects.floatingDeath2.visible = false;
+                                                        globalObjects.floatingDeath.alpha = 0.1;
+                                                        PhaserScene.tweens.add({
+                                                            targets: [globalObjects.floatingDeath],
+                                                            alpha: 0,
+                                                            fakeAlpha: 0,
+                                                            scaleX: 0.3,
+                                                            scaleY: 0.3,
+                                                            duration: 300,
+                                                            onComplete: () => {
+                                                                globalObjects.floatingDeath.visible = false;
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                                PhaserScene.tweens.add({
+                                                    targets: [scythe],
+                                                    scaleX: 0.5,
+                                                    scaleY: 0.5,
+                                                    alpha: 0,
+                                                    ease: 'Cubic.easeIn',
+                                                    duration: 1100,
+                                                    completeDelay: 200,
+                                                    onComplete: () => {
                                                         PhaserScene.tweens.add({
                                                             targets: [globalObjects.fogSliceDarken],
                                                             alpha: 0,
@@ -404,8 +420,8 @@ function handleReaperDialog(level = 0, onComplete) {
     case 3:
         reaperDialog = [
             "I WILL ONLY WARN YOU ONCE MORE,",
-            "THAT WHICH YOU SEEK HERE\nCANNOT BE ATTAINED.",
             "TURN BACK NOW.",
+            "THAT WHICH YOU SEEK HERE\nCANNOT BE ATTAINED.",
         ];
         break;
     case 4:

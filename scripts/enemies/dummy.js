@@ -24,7 +24,7 @@
         setTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
-        }, 1500)
+        }, 3500)
     }
 
      initStatsCustom() {

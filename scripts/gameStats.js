@@ -23,11 +23,10 @@
     }
 
     setTempPause(dur) {
-        console.log("tempPause");
-        gameVars.timeScale = 0.25;
-        PhaserScene.tweens.timeScale = 0.5;
-        PhaserScene.time.timeScale = 0.25;
-        PhaserScene.anims.globalTimeScale = 0.5;
+        gameVars.timeScale = 0.5;
+        PhaserScene.tweens.timeScale = 0.6;
+        PhaserScene.time.timeScale = 0.5;
+        PhaserScene.anims.globalTimeScale = 0.6;
 
         setTimeout(() => {
             gameVars.timeScale = gameVars.gameManualSlowSpeed || 1;

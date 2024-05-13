@@ -328,6 +328,7 @@
                      chargeAmt: 500,
                      damage: 0,
                      startFunction: () => {
+                        playSound('robot_sfx_1');
                          this.shieldAdded = false;
                          this.blushAnim = PhaserScene.tweens.add({
                              targets: this.blush,
@@ -453,6 +454,7 @@
                          this.returnEase = "Cubic.easeOut";
                      },
                      attackStartFunction: () => {
+                        this.sprite.setDepth(10);
                          this.refreshAnimateBG(2, 0.1);
                      },
                      attackFinishFunction: () => {
@@ -469,6 +471,7 @@
                          powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 170).setDepth(998).setScale(1.5);
                      },
                      finaleFunction: () => {
+                        this.sprite.setDepth(0);
                          this.attackEase = "Quad.easeOut";
                          this.returnEase = "Cubic.easeIn";
                      }
@@ -487,14 +490,14 @@
                                  if (!this.dead && this.shieldAdded) {
                                      playSound('voca_gun');
                                  }
-                             }, 200);
+                             }, 500);
                              this.setDefaultSprite('robot_shoot.png');
                              this.sprite.y = this.sprite.startY;
                              this.refreshAnimateBG(2, 0.1);
                          }
                      },
                      attackFinishFunction: () => {
-                        this.shootBullets(4);
+                        this.shootBullets(4, 500);
                      }
                  },
                  {
@@ -1014,8 +1017,8 @@
      }
 
      animateSelfDestructText() {
-         let selfDestructDesc = PhaserScene.add.bitmapText(this.sprite.x, this.sprite.y - 155, 'damage', "SELF DESTRUCT\nACTIVE IN", 32, 1).setDepth(999).setOrigin(0.5, 0.5);
-         let selfDestructText = PhaserScene.add.bitmapText(this.sprite.x, this.sprite.y - 95, 'damage', "3", 48, 1).setDepth(999).setOrigin(0.5, 0.5).setScale(1.3);
+         let selfDestructDesc = PhaserScene.add.bitmapText(this.sprite.x, this.sprite.y - 168, 'damage', "SELF DESTRUCT\nACTIVE IN", 42, 1).setDepth(999).setOrigin(0.5, 0.5);
+         let selfDestructText = PhaserScene.add.bitmapText(this.sprite.x, this.sprite.y - 95, 'damage', "4", 54, 1).setDepth(999).setOrigin(0.5, 0.5).setScale(1.6);
         PhaserScene.tweens.add({
             targets: selfDestructText,
             scaleX: 1,
@@ -1023,8 +1026,17 @@
             duration: 500,
             ease: 'Cubic.easeOut'
         });
+        setTimeout(() => {
+             selfDestructText.setText("3").setScale(1.4);
+            PhaserScene.tweens.add({
+                targets: selfDestructText,
+                scaleX: 1,
+                scaleY: 1,
+                duration: 500,
+                ease: 'Cubic.easeOut'
+            });
          setTimeout(() => {
-             selfDestructText.setText("2").setScale(1.3);
+             selfDestructText.setText("2").setScale(1.4);
             PhaserScene.tweens.add({
                 targets: selfDestructText,
                 scaleX: 1,
@@ -1033,7 +1045,7 @@
                 ease: 'Cubic.easeOut'
             });
              setTimeout(() => {
-                 selfDestructText.setText("1").setScale(1.3);
+                 selfDestructText.setText("1").setScale(1.4);
                 PhaserScene.tweens.add({
                     targets: selfDestructText,
                     scaleX: 1,
@@ -1042,7 +1054,7 @@
                     ease: 'Cubic.easeOut'
                 });
                  setTimeout(() => {
-                     selfDestructText.setText("GOODBYE!\n(die X3)\n ").setScale(1.3);
+                     selfDestructText.setText("GOODBYE!\n(die X3)\n ").setScale(1.4);
                     PhaserScene.tweens.add({
                         targets: selfDestructText,
                         scaleX: 1.1,
@@ -1109,6 +1121,8 @@
                  }, 1000)
              }, 1000)
          }, 1000)
+        }, 750);
+
          this.addToDestructibles(selfDestructText);
      }
 
@@ -1320,50 +1334,52 @@
          powEffect.play('damageEffect')
      }
 
-     shootBullets(damage = 4) {
-         let fireDelay = 120;
-         if (!this.dead && this.shieldAdded) {
-             if (!this.fireEffect) {
-                 this.fireEffect = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_fire_1.png').setDepth(11);
-                 this.addToDestructibles(this.fireEffect);
-             }
-             this.fireEffect.setVisible(true);
-             this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
-             PhaserScene.time.delayedCall(fireDelay, () => {
-                 if (!this.dead && this.shieldAdded) {
-                     this.fireEffect.setFrame('robot_fire_2.png');
-                     this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage);
-                     PhaserScene.time.delayedCall(fireDelay, () => {
-                         if (!this.dead && this.shieldAdded) {
-                             this.fireEffect.setFrame('robot_fire_1.png')
-                             this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
-                             PhaserScene.time.delayedCall(fireDelay, () => {
-                                 if (!this.dead && this.shieldAdded) {
-                                     this.fireEffect.setFrame('robot_fire_2.png');
-                                     this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage)
-                                     PhaserScene.time.delayedCall(fireDelay, () => {
-                                         if (!this.dead && this.shieldAdded) {
-                                             this.fireEffect.setFrame('robot_fire_1.png');
-                                             this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
-                                             PhaserScene.time.delayedCall(fireDelay, () => {
-                                                 this.fireEffect.setVisible(false);
-                                                 setTimeout(() => {
-                                                     if (!this.dead && this.shieldAdded) {
-                                                         this.setDefaultSprite('robot1.png');
-                                                         this.sprite.y = this.sprite.startY;
-                                                         this.setSprite('robot1.png');
-                                                     }
-                                                 }, 250);
-                                             });
-                                         }
-                                     });
-                                 }
-                             });
-                         }
-                     });
+     shootBullets(damage = 4, initDelay = 150) {
+        setTimeout(() => {
+             if (!this.dead && this.shieldAdded) {
+                 if (!this.fireEffect) {
+                     this.fireEffect = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_fire_1.png').setDepth(11);
+                     this.addToDestructibles(this.fireEffect);
                  }
-             });
-         }
+                 let fireDelay = 125;
+                 this.fireEffect.setVisible(true);
+                 this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
+                 PhaserScene.time.delayedCall(fireDelay, () => {
+                     if (!this.dead && this.shieldAdded) {
+                         this.fireEffect.setFrame('robot_fire_2.png');
+                         this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage);
+                         PhaserScene.time.delayedCall(fireDelay, () => {
+                             if (!this.dead && this.shieldAdded) {
+                                 this.fireEffect.setFrame('robot_fire_1.png')
+                                 this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
+                                 PhaserScene.time.delayedCall(fireDelay, () => {
+                                     if (!this.dead && this.shieldAdded) {
+                                         this.fireEffect.setFrame('robot_fire_2.png');
+                                         this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage)
+                                         PhaserScene.time.delayedCall(fireDelay, () => {
+                                             if (!this.dead && this.shieldAdded) {
+                                                 this.fireEffect.setFrame('robot_fire_1.png');
+                                                 this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
+                                                 PhaserScene.time.delayedCall(fireDelay, () => {
+                                                     this.fireEffect.setVisible(false);
+                                                     setTimeout(() => {
+                                                         if (!this.dead && this.shieldAdded) {
+                                                             this.setDefaultSprite('robot1.png');
+                                                             this.sprite.y = this.sprite.startY;
+                                                             this.setSprite('robot1.png');
+                                                         }
+                                                     }, 800);
+                                                 });
+                                             }
+                                         });
+                                     }
+                                 });
+                             }
+                         });
+                     }
+                 });
+             }
+        }, initDelay);
      }
 
      fireLaser(damage = 30) {

@@ -31,7 +31,7 @@ function createEnemy(num) {
         globalObjects.currentEnemy = new Mantis(PhaserScene, gameConsts.halfWidth, 160, num);
         break;
     case 9:
-        globalObjects.currentEnemy = new KillerRobot(PhaserScene, gameConsts.halfWidth, 160, num);
+        globalObjects.currentEnemy = new KillerRobot(PhaserScene, gameConsts.halfWidth, 158, num);
         break;
     case 10:
         break;

@@ -4,13 +4,13 @@
          this.initSprite('tree.png', 0.7);// 0.7
          this.sprite.setOrigin(0.52, 0.88); // 0.9
          this.shieldAdded = false;
-         this.bgMusic = playSound('echos_of_time', 0.8, true);
+         this.bgMusic = playSound('echos_of_time', 1, true);
 
 
          setTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
-         }, 1500)
+         }, 3500)
      }
 
      initStatsCustom() {
@@ -697,12 +697,14 @@
                      chargeMult: 2,
                      damage: 40,
                      isBigMove: true,
-                     attackStartFunction: () => {
-                         playSound('tree_timber');
+                     startFunction: () => {
                          this.bgMusic.stop();
                          if (!this.dead) {
                              this.bgMusic = playSound('echos_of_time_finale');
                          }
+                     },
+                     attackStartFunction: () => {
+                         playSound('tree_timber');
                          this.pullbackScale = 0.97;
                          this.attackScale = 1.75;
                          this.hasTimbered = true;

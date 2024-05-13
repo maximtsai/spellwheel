@@ -91,9 +91,9 @@ function createTutorialBtn(lvl) {
 }
 
 function buildTutorialButton(icon = "rune_matter_large.png", popup) {
-    let btnPopBack = PhaserScene.add.sprite(42, 70, 'buttons', 'new_btn_back.png').setScale(0.1).setDepth(130);
-    let btnIcon = PhaserScene.add.sprite(42, 70, 'tutorial', icon).setScale(0.05).setDepth(130);
-    let btnPop = PhaserScene.add.sprite(42, 70, 'buttons', 'new_btn.png').setScale(0.1).setDepth(131);
+    let btnPopBack = PhaserScene.add.sprite(45, 70, 'buttons', 'new_btn_back.png').setScale(0.1).setDepth(130);
+    let btnIcon = PhaserScene.add.sprite(45, 70, 'tutorial', icon).setScale(0.05).setDepth(130);
+    let btnPop = PhaserScene.add.sprite(45, 70, 'buttons', 'new_btn.png').setScale(0.1).setDepth(131);
 
     let returnButton;
     returnButton = new Button({
@@ -101,7 +101,7 @@ function buildTutorialButton(icon = "rune_matter_large.png", popup) {
             atlas: "buttons",
             ref: "new_btn.png",
             alpha: 1,
-            x: 42,
+            x: 45,
             y: 70,
         },
         hover: {
@@ -135,12 +135,13 @@ function buildTutorialButton(icon = "rune_matter_large.png", popup) {
         targets: [btnPopBack, btnPop],
         scaleX: 1,
         scaleY: 1,
+        easeParams: [5],
         ease: "Back.easeOut",
-        duration: 600,
+        duration: 900,
         onComplete: () => {
             btnPop.destroy();
             returnButton.setState(NORMAL);
-            let anim = PhaserScene.add.sprite(42, 70, 'buttons').setDepth(130).play('newButtonAnim');
+            let anim = PhaserScene.add.sprite(45, 70, 'buttons').setDepth(130).play('newButtonAnim');
             returnButton.addToDestructibles(anim);
         }
     });
@@ -149,8 +150,9 @@ function buildTutorialButton(icon = "rune_matter_large.png", popup) {
         targets: btnIcon,
         scaleX: 0.5,
         scaleY: 0.5,
+        easeParams: [4],
         ease: "Back.easeOut",
-        duration: 600,
+        duration: 1100,
     });
     returnButton.addToDestructibles(btnIcon);
     returnButton.addToDestructibles(btnPopBack);

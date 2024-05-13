@@ -3,13 +3,13 @@
          super(scene, x, y, level);
          this.initSprite('void_knight.png', 1);// 0.7
          this.sprite.setOrigin(0.5, 0.5); // 0.9
-         this.bgMusic = playSound('battle_2_half', 0.85, true);
+         this.bgMusic = playSound('battle_2_half', 0.8, true);
          this.shieldAdded = false;
          this.initMisc();
          setTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
-         }, 1500)
+         }, 3500)
      }
 
      initStatsCustom() {
@@ -620,8 +620,8 @@
                          this.voidTentacleFront.visible = true;
                          this.voidTentacleBack.visible = true;
                          this.sigilEffect.visible = true;
-                         this.pullbackScale = 0.98;
-                         this.attackScale = 1.04;
+                         this.pullbackScale = 0.97;
+                         this.attackScale = 1.08;
                      }
                  },
              ],

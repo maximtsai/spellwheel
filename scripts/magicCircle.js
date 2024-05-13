@@ -1474,11 +1474,9 @@ const ENABLE_KEYBOARD = true;
                 });
             });
             if (closestElement == null) {
-                this.errorBoxElement.setAlpha(0.15);
                 this.flashElement(this.errorBoxElement);
             }
             if (closestEmbodiment == null) {
-                this.errorBoxEmbodiment.setAlpha(0.15);
                 this.flashElement(this.errorBoxEmbodiment);
             }
         }
@@ -1928,19 +1926,25 @@ const ENABLE_KEYBOARD = true;
     }
 
     flashElement(elem) {
+        elem.setAlpha(0.25);
+        elem.setScale(0.98);
         this.scene.tweens.add({
             targets: elem,
             ease: 'Cubic.easeIn',
+            scaleX: 1.02,
+            scaleY: 1.02,
             onComplete: () => {
                 this.scene.tweens.add({
                     targets: elem,
                     ease: 'Cubic.easeOut',
-                    duration: 600,
+                    duration: isMobile ? 750 : 600,
+                    scaleX: 1,
+                    scaleY: 1,
                     alpha: 0
                 });
             },
             duration: 50,
-            alpha: 0.6
+            alpha: isMobile ? 0.8 : 0.7
         });
     }
 

@@ -233,8 +233,12 @@ class Player {
         if (dmg <= 1) {
             multAmt = 0.9;
         }
-        this.hurtIndicator.setAlpha(multAmt * 0.7 + dmg * 0.0045 + emergencyMult * 0.25).setScale(100, multAmt * 2.25 + dmg * 0.028 + emergencyMult * 1.5);
-        this.scene.tweens.add({
+        if (this.hurtTween) {
+            this.hurtTween.stop();
+        }
+        this.hurtIndicator.setAlpha(multAmt * 0.7 + dmg * 0.0045 + emergencyMult * 0.25 + this.hurtIndicator.alpha);
+        this.hurtIndicator.setScale(100, multAmt * 2 + dmg * 0.02 + emergencyMult * 0.5 + this.hurtIndicator.scaleY);
+        this.hurtTween = this.scene.tweens.add({
             targets: this.hurtIndicator,
             duration: Math.floor((475 + dmg * 2 + emergencyMult * 300) * multAmt),
             ease: 'Quad.easeOut',

@@ -7,6 +7,8 @@
         setTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
+        }, 3500)
+        setTimeout(() => {
             this.customBgMusic = playSound('magician_theme_1', 0.95, true);
         }, 1500)
         this.sprite.startY = this.sprite.y;
@@ -14,7 +16,7 @@
     }
 
      initStatsCustom() {
-         this.health = 75;
+         this.health = 65;
          this.damageNumOffset = 45;
          this.timeObjects = [];
      }
@@ -54,27 +56,24 @@
          } else if (currHealthPercent < 0.999 && !this.usedTimeShield) {
              this.currentAttackSetIndex = 1;
              this.nextAttackIndex = 0;
-         } else if (this.health <= 14 && this.usedTimeShield) {
-             if (this.statuses[0] && this.statuses[0].duration >= this.health && !this.isTerrified) {
-                 this.isTerrified = true;
-                 this.interruptCurrentAttack();
-                 this.currentAttackSetIndex = 6;
-                 this.nextAttackIndex = 0;
-                 this.startReaper();
-                 if (this.customBgMusic) {
-                     fadeAwaySound(this.customBgMusic, 1000, '');
-                 }
-                 if (this.clocktickbg) {
-                     fadeAwaySound(this.clocktickbg, 1000, '');
-                 }
-                 setTimeout(() => {
-                     if (!this.dead) {
-                         this.customBgMusic = playSound('magician_theme_4', 0.4, true);
-                         fadeInSound(this.customBgMusic, 0.8);
-                     }
-                 }, 750)
-
+         } else if (this.health <= 14 && this.usedTimeShield && !this.isTerrified) {
+             this.isTerrified = true;
+             this.interruptCurrentAttack();
+             this.currentAttackSetIndex = 6;
+             this.nextAttackIndex = 0;
+             this.startReaper();
+             if (this.customBgMusic) {
+                 fadeAwaySound(this.customBgMusic, 1000, '');
              }
+             if (this.clocktickbg) {
+                 fadeAwaySound(this.clocktickbg, 1000, '');
+             }
+             setTimeout(() => {
+                 if (!this.dead) {
+                     this.customBgMusic = playSound('magician_theme_4', 0.4, true);
+                     fadeInSound(this.customBgMusic, 0.8);
+                 }
+             }, 750)
          } else if (this.health <= 4 && !this.timeTerrified) {
              this.timeTerrified = true;
              this.setDefaultSprite('time_magi_terrified.png', 0.72);
@@ -283,6 +282,7 @@
      startReaper() {
         this.blackBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(-1)
          this.floatingDeath = getFloatingDeath();
+         this.floatingDeath.alpha = 0;
          gameVars.deathFlutterDelay = 600;
          this.floatingDeathAnim = this.scene.tweens.add({
              targets: this.floatingDeath,
@@ -302,7 +302,7 @@
 
      setupTimeShield() {
         let lostHealth = this.healthMax - this.health;
-         this.heal(Math.floor(lostHealth * 0.33));
+         this.heal(Math.floor(lostHealth * 0.5));
          this.specialDamageAbsorptionActive = true;
 
          this.clockShield = PhaserScene.add.sprite(gameConsts.halfWidth, this.y, 'spells', 'clock_back_large_red.png').setDepth(1).setScale(0.4).setAlpha(0.75);

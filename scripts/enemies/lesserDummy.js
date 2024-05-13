@@ -197,40 +197,58 @@
         if (!this.dead && !this.attemptedTutThree) {
             this.attemptedTutThree = true;
             setTimeout(() => {
-            this.shadow.setFrame('shadow_bar.png').setPosition(gameConsts.halfWidth, 30).setScale(8);
-            // = this.scene.add.sprite(gameConsts.halfWidth, 30, 'misc', 'shadow_bar.png').setScale(6).setDepth(9999).setAlpha(0);
+            this.shadow.destroy();
+            if (this.dead) {
+                return;
+            }
+            // setFrame('shadow_bar.png').setPosition(gameConsts.halfWidth, 25).setScale(3.5).setAlpha(0.2);
+            // // = this.scene.add.sprite(gameConsts.halfWidth, 30, 'misc', 'shadow_bar.png').setScale(6).setDepth(9999).setAlpha(0);
+            // PhaserScene.tweens.add({
+            //     targets: this.shadow,
+            //     scaleX: 3.4,
+            //     scaleY: 3.4,
+            //     y: 20,
+            //     ease: 'Cubic.easeOut',
+            //     alpha: 0.5,
+            //     duration: 250,
+            //     onComplete: () => {
+            //         PhaserScene.tweens.add({
+            //             scaleX: 5,
+            //             scaleY: 5,
+            //             targets: this.shadow,
+            //             alpha: 0,
+            //             duration: 1000,
+            //             onComplete: () => {
+            //                         this.shadow.destroy();
+            //             }
+            //         });
+            //     }
+            // });
+            setTimeout(() => {
+                if (!this.dead) {
+                    globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 180, 30, "Defeat the =>\nenemy to win");
+                }
+
+            }, 800);
+            this.glowHealth = this.scene.add.sprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
+            this.glowHealth2 = this.scene.add.sprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_red.webp').setDepth(0).setAlpha(1.1).setScale(0.5, 2);
             PhaserScene.tweens.add({
-                targets: this.shadow,
-                scaleX: 3.4,
-                scaleY: 3.4,
-                y: 20,
-                ease: 'Cubic.easeOut',
-                alpha: 0.7,
-                duration: 1000,
+                targets: this.glowHealth2,
+                scaleX: 3,
+                ease: 'Quad.easeOut',
+                duration: 800,
                 onComplete: () => {
-                    PhaserScene.tweens.add({
-                        delay: 50,
-                        scaleX: 3.1,
-                        scaleY: 3.1,
-                        targets: this.shadow,
-                        alpha: 0.2,
-                        duration: 1500,
-                        onComplete: () => {
-                            PhaserScene.tweens.add({
-                                delay: 1000,
-                                targets: this.shadow,
-                                alpha: 0,
-                                duration: 1500,
-                                onComplete: () => {
-                                    this.shadow.destroy();
-                                }
-                            });
-                        }
-                    });
+                    this.glowHealth2.destroy();
                 }
             });
-            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 175, 30, "<= Defeat the\nenemy to win");
-            this.glowHealth = this.scene.add.sprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
+            PhaserScene.tweens.add({
+                targets: this.glowHealth2,
+                scaleY: 0,
+                alpha: 0,
+                ease: 'Quad.easeIn',
+                duration: 800,
+            });
+
             PhaserScene.tweens.add({
                 targets: this.glowHealth,
                 alpha: 0.75,
@@ -308,9 +326,9 @@
          });
          PhaserScene.tweens.add({
              targets: this.sprite,
-             rotation: -0.5,
+             rotation: -1,
              ease: "Cubic.easeIn",
-             duration: 750,
+             duration: 900,
              onComplete: () => {
                  this.setSprite('lesser_dummy_dead.png', this.sprite.scaleX);
                  this.sprite.rotation = 0;

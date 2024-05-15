@@ -15,6 +15,13 @@ function setupLoadingBar(scene) {
     // Basic loading bar visual
     loadObjects.loadingSpinner = scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'loadingSpinner');
     loadObjects.castButton = scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'castNormal');
+    // loadObjects.introLocket = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'introLocket').setScale(0.5).setAlpha(0).setDepth(1001);
+    // loadObjects.introLocket.currAnim = PhaserScene.tweens.add({
+    //     targets: loadObjects.introLocket,
+    //     alpha: 1,
+    //     ease: 'Cubic.easeOut',
+    //     duration: 2000,
+    // });
 
     icons.push(scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'runeMatterPre'));
     icons.push(scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'runeMindPre'));
@@ -61,8 +68,8 @@ function setupLoadingBar(scene) {
         icons[i].startRotation = icons[i].rotation;
     }
 
-    loadObjects.loadingText = scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight - 220, 'LOADING...');
-    loadObjects.loadingText.setFontSize(28);
+    loadObjects.loadingText = scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 40, 'LOADING...', {fontFamily: 'verdanabold', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+    loadObjects.loadingText.setScale(0.6);
     loadObjects.loadingText.setAlign('center');
     loadObjects.loadingText.setOrigin(0.5, 0);
 
@@ -166,55 +173,111 @@ function setupLoadingBar(scene) {
                 }
             });
         }
+
+        //loadObjects.fadeBG = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(1000).setAlpha(0).setDepth(1000);
+        // scene.tweens.add({
+        //     targets: loadObjects.fadeBG,
+        //     alpha: 0.5,
+        //     duration: 1100,
+        // });
         scene.tweens.add({
-            delay: 250,
+            targets: [loadObjects.loadingText],
+            alpha: 0,
+            duration: 300,
+            onComplete: () => {
+                this.cleanupIntro(scene);
+            }
+        });
+
+
+    });
+}
+
+function clickIntro() {
+
+}
+
+function cleanupIntro(scene) {
+        PhaserScene.tweens.add({
             targets: icons,
             alpha: 0,
             duration: 800,
             onComplete: () => {
-                // loadIcon.destroy();
+                scene.tweens.add({
+                    targets: [globalObjects.tempBG],
+                    duration: 1000,
+                    onStart: () => {
+
+                    },
+                    onComplete: () => {
+                        let loadObjectsArray = [];
+                        for (let i in loadObjects) {
+                            loadObjectsArray.push(loadObjects[i]);
+                        }
+                        globalObjects.tempBG.destroy();
+                        scene.tweens.add({
+                            targets: loadObjectsArray,
+                            alpha: 0,
+                            duration: 700,
+                            onComplete: () => {
+                                for (let i in loadObjects) {
+                                    loadObjects[i].destroy();
+                                }
+                            }
+                        });
+                    }
+                });
             }
         });
-        loadObjects.loadingSpinnerOuter = scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'loadingSpinnerOuter').setScale(0.7).setDepth(199).setRotation(1);
-        scene.tweens.add({
+        loadObjects.loadingSpinnerOuter = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'loadingSpinnerOuter').setScale(0.7).setDepth(199).setRotation(1);
+        PhaserScene.tweens.add({
             targets: loadObjects.loadingSpinnerOuter,
-            delay: 500,
             rotation: 0,
             scaleX: 1,
             scaleY: 1,
             duration: 750,
             ease: 'Cubic.easeOut',
-        });
-        setupMainMenu();
-        loadObjects.loadingSpinner.goalRot = Math.PI * -14/8 - 0.08;//value * Math.PI * -1;
-
-        scene.tweens.add({
-            targets: [loadObjects.loadingText, globalObjects.tempBG],
-            delay: 350,
-            alpha: 0,
-            duration: 1000,
             onComplete: () => {
-                let loadObjectsArray = [];
-                for (let i in loadObjects) {
-                    loadObjectsArray.push(loadObjects[i]);
-                }
-                globalObjects.tempBG.destroy();
-                scene.tweens.add({
-                    targets: loadObjectsArray,
-                    alpha: 0,
-                    duration: 700,
-                    onComplete: () => {
-                        for (let i in loadObjects) {
-                            loadObjects[i].destroy();
-                        }
-                    }
-                });
+                setupMainMenu();
                 onLoadComplete(scene);
             }
         });
-    });
+        loadObjects.loadingSpinner.goalRot = Math.PI * -14/8 - 0.08;//value * Math.PI * -1;
 }
 
+function createGlobalClickBlocker() {
+    if (!globalObjects.clickBlocker) {
+        globalObjects.clickBlocker = new Button({
+             normal: {
+                 ref: "blackPixel",
+                 x: gameConsts.halfWidth,
+                 y: gameConsts.halfHeight,
+                 alpha: 0.001,
+                 scaleX: 1000,
+                 scaleY: 1000
+             },
+            onHover: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'pointer';
+                }
+            },
+            onHoverOut: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
+            },
+             onMouseUp: () => {
+
+             }
+         });
+    } else {
+        globalObjects.clickBlocker.setState(NORMAL);
+        globalObjects.clickBlocker.setOnMouseUpFunc(() => {});
+        buttonManager.bringButtonToTop(globalObjects.clickBlocker);
+    }
+    return globalObjects.clickBlocker;
+
+}
 
 
 function resetGame() {
@@ -230,6 +293,7 @@ function setupGame() {
     }
 
     gameVars.started = true;
+    PhaserScene.sound.pauseOnBlur = false;
 
     PhaserScene.tweens.add({
         targets: PhaserScene.cameras.main,

@@ -26,7 +26,6 @@ class Enemy {
             messageBus.subscribe("increaseCurse", this.increaseCurse.bind(this)),
 
             messageBus.subscribe("playerDied", this.playerDied.bind(this)),
-
         ];
 
         this.boundUpdateFunc = this.update.bind(this);
@@ -299,12 +298,13 @@ class Enemy {
 
     setSpriteIfNotInactive(name, scale, noAnim, depth = 1) {
         if (!this.dead && !this.isAsleep) {
-            this.setSprite(name, scale, noAnim, depth = 1);
+            this.setSprite(name, scale, noAnim, depth);
         }
     }
 
     setSprite(name, scale, noAnim, depth = 1) {
         let newScale = scale ? scale : 1;
+        console.log(depth);
         if (!this.sprite) {
             this.sprite = this.scene.add.sprite(this.x, this.y, 'enemies', name);
             this.sprite.setDepth(depth);
@@ -402,7 +402,7 @@ class Enemy {
                 }
             }
             this.chargeBarCurr.scaleX = Math.min(this.nextAttackChargeNeeded * 0.2, this.attackCharge * 0.2 + 1);
-            this.chargeBarOutline.alpha = 0.35 * this.chargeBarCurr.scaleX / (this.chargeBarMax.scaleX + 1) + 0.02;
+            this.chargeBarOutline.alpha = 0.65 * this.chargeBarCurr.scaleX / (this.chargeBarMax.scaleX + 1) - 0.1;
 
             this.chargeBarAngry.scaleX = this.chargeBarCurr.scaleX;
             if (this.isUsingAttack) {
@@ -571,7 +571,7 @@ class Enemy {
 
         this.timeSinceLastAttacked += 60;
         if (this.nextAttack.damage !== 0) {
-            this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.prepareSprite, this.nextAttack.attackSprites);
+            this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.prepareSprite, this.nextAttack.attackSprites, undefined, this.nextAttack.finishDelay);
         } else {
             if (this.nextAttack.message) {
                 messageBus.publish(this.nextAttack.message, this.nextAttack.messageDetail);
@@ -1470,7 +1470,7 @@ class Enemy {
          });
      }
 
-    launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false) {
+    launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false, finishDelay = 0) {
         if (this.dead){
             return;
         }
@@ -1520,6 +1520,7 @@ class Enemy {
                     duration: attackDuration,
                     rotation: 0,
                     ease: this.attackEase ? this.attackEase : 'Cubic.easeIn',
+                    completeDelay: finishDelay,
                     onComplete: () => {
                         if (this.dead){
                             return;
@@ -1570,7 +1571,7 @@ class Enemy {
                                         this.nextAttack.finaleFunction();
                                     }
                                 }
-                            }, 500 * extraTimeMult * 0.65 * this.lastAttackLingerMult);
+                            }, 400 * extraTimeMult * this.lastAttackLingerMult + 50);
                         }
                     }
                 });

@@ -2345,7 +2345,7 @@ class SpellManager {
             numBlackHolePre = 2;
         }
         for (let i = 0; i < numBlackHolePre; i++) {
-            let voidObjPre = this.scene.add.sprite(gameConsts.halfWidth, 250, 'spells', 'blackHolePre.png');
+            let voidObjPre = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHolePre.png');
             voidObjPre.rotation = Math.random() * 6.28;
             voidObjPre.setAlpha(0.05);
             voidObjPre.setScale(1 + 0.25 * i);
@@ -2376,14 +2376,14 @@ class SpellManager {
             });
         }
 
-        let voidObj = this.scene.add.sprite(gameConsts.halfWidth, 250, 'spells', 'blackHoleBig.png');
+        let voidObj = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHoleBig.png');
         voidObj.setDepth(10);
         voidObj.rotation = Math.random() * 0.1;
         voidObj.setScale(1 + numTotalAttacks * 0.15);
         voidObj.setAlpha(0);
 
         let initialDelay = 200 + numTotalAttacks * 10 + additionalDamage;
-        let voidDuration = 1500 + numTotalAttacks * 200 + additionalDamage * 3;
+        let voidDuration = 1700 + numTotalAttacks * 150 + additionalDamage * 2;
         let voidScale = 0.88 + numTotalAttacks * 0.12 + additionalDamage * 0.016;
         messageBus.publish('enableVoidArm', initialDelay, voidDuration, 0.6 + voidScale * 0.4);
         // let blackBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(-1).setAlpha(0.01);
@@ -2435,6 +2435,7 @@ class SpellManager {
         let whiteObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(500).setDepth(9).setAlpha(0);
         let blackObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(9).setAlpha(0);
         for (let i = 0; i < numTotalAttacks; i++) {
+            let isFirstAttack = i === numTotalAttacks - 1;
             let thisDurationDelay = voidDuration - voidDuration * (i / numTotalAttacks);
             if (numTotalAttacks == 1) {
                 thisDurationDelay = voidDuration * 0.75;
@@ -2444,9 +2445,7 @@ class SpellManager {
                     zoomTemp(1.005 + numTotalAttacks * 0.002);
                     whiteObj.alpha = 0.5;
                     setTimeout(() => {
-                        console.log(i);
                         if (i === 0) {
-                            console.log("destroyWhiteAlpha");
                             whiteObj.destroy();
                         } else {
                             whiteObj.alpha = 0;
@@ -2466,12 +2465,11 @@ class SpellManager {
                         });
                     }, 15);
                     messageBus.publish('enemyTakeDamagePercent', 12, additionalDamage);
-                    messageBus.publish('disruptOpponentAttackPercent', 0.667);
+                    messageBus.publish('disruptOpponentAttackPercent', isFirstAttack ? 0.6 : 0.4);
                     messageBus.publish('setPauseDur', 40);
-
                 });
                 if (additionalDamage > 1) {
-                    let rockObj = this.scene.add.sprite(gameConsts.halfWidth, 250, 'spells', 'stoneCircle.png');
+                    let rockObj = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'stoneCircle.png');
                     rockObj.alpha = 0;
                     rockObj.rotation = Math.random() * Math.PI * 2;
                     rockObj.setScale(1 + additionalDamage * 0.005);
@@ -2577,7 +2575,7 @@ class SpellManager {
                         messageBus.publish('increaseCurse', voidAttackBuff.multiplier);
                         voidAttackBuff.cleanUp(globalObjects.player.getStatuses());
                         let bigCurse = this.scene.add.sprite(gameConsts.halfWidth, targetY, 'enemies', 'curse_symbol.png');
-                        let startScale = 0.65 + 0.1 * Math.sqrt(voidAttackBuff.multiplier);
+                        let startScale = 1.2 + 0.22 * Math.sqrt(voidAttackBuff.multiplier);
                         bigCurse.setScale(startScale).setDepth(11);
                         this.scene.tweens.add({
                             targets: bigCurse,

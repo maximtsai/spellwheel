@@ -2,7 +2,6 @@ const audioFiles = [
     {name: 'fightbg1', src: 'audio/fightbg1.mp3'},
     {name: 'battle_2_full', src: 'audio/battle_2_full.mp3'},
     {name: 'battle_2_half', src: 'audio/battle_2_half.mp3'},
-    {name: 'recipe_for_action', src: 'audio/recipe_for_action.mp3'},
     {name: 'echos_of_time', src: 'audio/echos_of_time.mp3'},
     {name: 'echos_of_time_finale', src: 'audio/echos_of_time_finale.mp3'},
 
@@ -106,6 +105,7 @@ const audioFiles = [
     {name: 'magician_theme_1', src: 'audio/magician_theme_1.mp3'},
     {name: 'magician_theme_3', src: 'audio/magician_theme_3.mp3'},
     {name: 'magician_theme_4', src: 'audio/magician_theme_4.mp3'},
+    {name: 'gunsequence', src: 'audio/gunsequence.mp3'},
 
     {name: 'shield_block', src: 'audio/shield_block.mp3'},
     {name: 'shield_break', src: 'audio/shield_break.mp3'},

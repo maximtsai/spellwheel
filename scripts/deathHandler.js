@@ -285,7 +285,6 @@ function playReaperAnim(enemy, customFinFunc) {
                                                 // setTimeout(() => {
                                                 //     repeatDeathFlutterAnimation();
                                                 //     gameVars.deathFlutterDelay = 100;
-                                                //
                                                 // }, 200);
                                                 PhaserScene.tweens.add({
                                                     targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2],
@@ -362,6 +361,7 @@ function repeatDeathFlutterAnimation(alphaOffset = 0) {
     }
 
     globalObjects.floatingDeath2.alpha = 0;
+    globalObjects.floatingDeath.alpha = 1;
     globalObjects.floatingDeath.flutterAnim = PhaserScene.tweens.add({
         targets: globalObjects.floatingDeath2,
         alpha: globalObjects.floatingDeath2.fakeAlpha + alphaOffset,

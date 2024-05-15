@@ -231,18 +231,17 @@ class Player {
         let emergencyMult = emergency ? 1 : 0;
         let multAmt = 1;
         if (dmg <= 1) {
-            multAmt = 0.9;
+            multAmt = 0.75;
         }
         if (this.hurtTween) {
             this.hurtTween.stop();
         }
-        this.hurtIndicator.setAlpha(multAmt * 0.7 + dmg * 0.0045 + emergencyMult * 0.25 + this.hurtIndicator.alpha);
-        this.hurtIndicator.setScale(100, multAmt * 2 + dmg * 0.02 + emergencyMult * 0.5 + this.hurtIndicator.scaleY);
+        this.hurtIndicator.setAlpha(multAmt * 0.75 + dmg * 0.006 + emergencyMult * 0.4 + this.hurtIndicator.alpha + 0.04);
+        this.hurtIndicator.setScale(100, multAmt * 2 + dmg * 0.03 + emergencyMult + this.hurtIndicator.scaleY + 0.02);
         this.hurtTween = this.scene.tweens.add({
             targets: this.hurtIndicator,
-            duration: Math.floor((475 + dmg * 2 + emergencyMult * 300) * multAmt),
-            ease: 'Quad.easeOut',
-            scaleY: 1.75,
+            duration: Math.floor((650 + dmg * 3 + emergencyMult * 300) * multAmt),
+            scaleY: 1.5,
             alpha: 0,
         });
         if (emergency && !this.recentlyGasped) {
@@ -809,7 +808,7 @@ class Player {
                                     messageBus.publish('enemyTakeTrueDamage', shieldObj.storedDamage, false, 95);
                                     shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale * 1.2);
                                     shieldObj.animObj[1].setAlpha(1);
-                                    if (shieldObj.textObj) {
+                                    if (shieldObj.textObj && shieldObj.textObj.active) {
                                         shieldObj.textObj.setText(' ');
                                     }
                                     shieldObj.isBlasting = false;

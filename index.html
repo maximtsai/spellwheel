@@ -87,10 +87,17 @@
             font-weight:400;
             font-weight:normal;
         }
+        @font-face {
+            font-family: verdanabold;
+            src: url('fonts/Verdanab.ttf');
+            font-weight:400;
+            font-weight:bold;
+        }
     </style>
 </head>
 <body onload="onloadFunc()" onresize="resizeGame()">
     <div style="font-family:verdanamax; position:absolute; left:-1000px; visibility:hidden;">.</div>
+    <div style="font-family:verdanabold; position:absolute; left:-1000px; visibility:hidden;">.</div>
     <div id="preload-notice">Loading Preloader...</div>
     <script src="main.js"></script>
 </body>

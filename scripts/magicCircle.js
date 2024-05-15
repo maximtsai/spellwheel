@@ -370,11 +370,11 @@ const ENABLE_KEYBOARD = true;
         this.timeArm.setScale(0.7);
         this.timeArm.setAlpha(0);
 
-        this.voidArm = this.scene.add.sprite(gameConsts.halfWidth, 250, 'spells', 'blackHoleArms.png');
+        this.voidArm = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHoleArms.png');
         this.voidArm.setDepth(1);
         this.voidArm.alpha = 0;
 
-        this.voidArm2 = this.scene.add.sprite(gameConsts.halfWidth, 250, 'spells', 'blackHoleArms.png');
+        this.voidArm2 = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHoleArms.png');
         this.voidArm2.setDepth(1);
         this.voidArm2.alpha = 0;
         this.voidArm2.bonusRotation = 0;
@@ -2000,7 +2000,7 @@ const ENABLE_KEYBOARD = true;
              targets: this.voidArm,
              delay: delay,
              duration: duration - 900,
-             y: 250,
+             y: 210,
              onComplete: () => {
                  this.scene.tweens.add({
                      targets: this.voidArm,
@@ -2027,7 +2027,7 @@ const ENABLE_KEYBOARD = true;
                  targets: this.voidArm2,
                  delay: delay,
                  duration: duration - 900,
-                 y: 250,
+                 y: 210,
                  onComplete: () => {
                      this.scene.tweens.add({
                          targets: this.voidArm2,

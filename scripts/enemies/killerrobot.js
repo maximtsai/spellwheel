@@ -454,7 +454,6 @@
                          this.returnEase = "Cubic.easeOut";
                      },
                      attackStartFunction: () => {
-                        this.sprite.setDepth(10);
                          this.refreshAnimateBG(2, 0.1);
                      },
                      attackFinishFunction: () => {
@@ -463,6 +462,7 @@
                          playSound('sword_hit');
                          setTimeout(() => {
                              if (!this.dead && this.shieldAdded) {
+                                this.sprite.setDepth(10);
                                  this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
                              }
                          }, 80);
@@ -524,12 +524,14 @@
                          setTimeout(() => {
                              if (!this.dead && this.shieldAdded) {
                                  this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
+                                this.sprite.setDepth(10);
                              }
                          }, 80);
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
                          powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 170).setDepth(998).setScale(2);
                      },
                      finaleFunction: () => {
+                        this.sprite.setDepth(0);
                          this.attackEase = "Quad.easeOut";
                          this.returnEase = "Cubic.easeIn";
                      }

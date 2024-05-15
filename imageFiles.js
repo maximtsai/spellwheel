@@ -5,6 +5,8 @@ const imageFilesPreload = [
     {name: 'loadingSpinner', src: 'sprites/preload/loading_spinner.webp'},
     {name: 'loadingSpinnerOuter', src: 'sprites/preload/loading_spinner_outer.webp'},
     {name: 'castNormal', src: 'sprites/preload/cast_normal.webp'},
+    {name: 'introLocket', src: 'sprites/preload/locket.webp'},
+
     {name: 'runeEnhancePre', src: 'sprites/preload/rune_enhance_glow.png'},
     {name: 'runeMatterPre', src: 'sprites/preload/rune_matter_glow.png'},
     {name: 'runeMindPre', src: 'sprites/preload/rune_mind_glow.png'},

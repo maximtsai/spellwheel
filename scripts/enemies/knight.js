@@ -9,7 +9,10 @@
          setTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
-         }, 3500)
+         }, 3500);
+         setTimeout(() => {
+            this.initFog();
+         }, 0);
      }
 
      initStatsCustom() {
@@ -22,6 +25,7 @@
          this.shieldsActive = 0;
          this.eyeShieldObjects = [];
          this.eyeUpdateTick = 30;
+         this.lastAttackLingerMult = 1.2;
          this.slashEffect = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
          this.voidSlashEffect = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 260, 'spells', 'darkSlice.png').setScale(0.8).setDepth(130).setAlpha(0).setOrigin(0.15, 0.5);
          this.voidSlashEffect2 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 260, 'spells', 'darkSlice.png').setScale(0.8).setDepth(130).setAlpha(0).setOrigin(0.15, 0.5);
@@ -42,6 +46,29 @@
          this.sigilEffect = this.scene.add.sprite(this.x, this.y, 'enemies', 'void_knight_sigil.png').setScale(this.sprite.startScale).setDepth(5).setAlpha(0);
      }
 
+     initFog() {
+        this.fogThick = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'lowq', 'fogthick.png').setDepth(9).setAlpha(0).setOrigin(0.5, 0.25);
+        this.graves = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'graves.png').setDepth(9).setScale(1.25, 1).setAlpha(0);
+        this.addToDestructibles(this.fogThick);
+        this.addToDestructibles(this.graves);
+
+        this.scene.tweens.add({
+             targets: [this.fogThick],
+             duration: 1000,
+             alpha: 1,
+             scaleX: 1,
+             ease: 'Cubic.easeInOut',
+         });
+        this.scene.tweens.add({
+             targets: [this.graves],
+             alpha: 1,
+             duration: 1200,
+             scaleX: 0.98,
+             ease: 'Cubic.easeInOut',
+
+         });
+     }
+
      launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false) {
          this.sigilEffect.visible = false;
          if (this.voidTentacleFront) {
@@ -57,7 +84,7 @@
          this.repeatTweenBreathe();
      }
 
-     repeatTweenBreathe() {
+     repeatTweenBreathe(fogExpand = true) {
          if (this.dead) {
              return;
          }
@@ -73,11 +100,46 @@
                      alpha: 0,
                      ease: 'Cubic.easeInOut',
                      onComplete: () => {
-                         this.repeatTweenBreathe();
+                         this.repeatTweenBreathe(!fogExpand);
                      }
                  });
              }
          });
+
+
+        let goalY = gameConsts.halfHeight - 200 + (fogExpand ? 3 : -2);
+        let goalX = gameConsts.halfWidth + (fogExpand ? 40 : -40);
+        let goalScaleX = 1 + (fogExpand ? 0.03 : 0);
+
+        this.fogTween = this.scene.tweens.add({
+            targets: this.fogThick,
+            duration: 4000,
+            x: goalX,
+            ease: 'Cubic.easeInOut',
+        })
+
+         this.fogTween = this.scene.tweens.add({
+             targets: this.fogThick,
+             duration: 2000,
+             y: goalY,
+             alpha: 1,
+             scaleX: goalScaleX,
+             ease: 'Cubic.easeInOut',
+             completeDelay: 200,
+             onComplete: () => {
+                 this.fogTween = this.scene.tweens.add({
+                     targets: this.fogThick,
+                     duration: 1800,
+                     y: goalY,
+                     alpha: 0.6,
+                     scaleX: goalScaleX,
+                     ease: 'Cubic.easeInOut',
+                     onComplete: () => {
+
+                     }
+                 })
+             }
+         })
      }
 
      repeatVoidTweenBreathe() {
@@ -480,7 +542,7 @@
                      name: "|10 ",
                      announceName: "INITIAL STRIKE",
                      desc: "The mysterious knight charges at you!",
-                     chargeAmt: 500,
+                     chargeAmt: 550,
                      damage: 10,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
@@ -884,6 +946,47 @@
              duration: 900,
              ease: 'Quad.easeOut',
          });
+
+         if (this.fogTween) {
+            this.fogTween.stop();
+         }
+         if (this.fogSpookTween) {
+            this.fogSpookTween.stop();
+         }
+
+         this.scene.tweens.add({
+             targets: [this.fogThick, this.fogSpook],
+             duration: 100,
+             alpha: 1.1,
+             ease: 'Cubic.easeOut',
+             onComplete: () => {
+                 this.scene.tweens.add({
+                     targets: [this.fogThick, this.fogSpook],
+                     duration: 1400,
+                     alpha: 0,
+                     ease: 'Quad.easeOut',
+                     onComplete: () => {
+                        this.fogThick.visible = false;
+                        this.fogSpook.visible = false;
+
+                     }
+                 })
+             }
+         })
+         this.scene.tweens.add({
+             targets: [this.fogThick, this.fogSpook],
+             duration: 1000,
+             scaleX: 5,
+             scaleY: 5,
+             ease: 'Cubic.easeOut',
+         })
+         this.scene.tweens.add({
+             targets: [this.fogThick, this.fogSpook],
+             duration: 1000,
+             scaleX: -4.5,
+             scaleY: 4.5,
+             ease: 'Cubic.easeOut',
+         })
          PhaserScene.tweens.add({
              targets: [this.shoutSprite],
              alpha: 0,
@@ -902,8 +1005,14 @@
          this.addExtraSprite(helmet);
          this.addExtraSprite(arm);
 
-
          setTimeout(() => {
+            this.fogSpook = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'lowq', 'fogspook.png').setDepth(9).setAlpha(0).setBlendMode(Phaser.BlendModes.ADD).setOrigin(0.5, 0.25).setScale(-1, 1);
+            this.addToDestructibles(this.fogSpook);
+             this.fogSpookTween = PhaserScene.tweens.add({
+                 targets: this.fogSpook,
+                 alpha: 1,
+                 duration: 3000,
+             });
              PhaserScene.tweens.add({
                  delay: 350,
                  targets: helmet,
@@ -938,6 +1047,15 @@
                              helmet.destroy();
                              arm.destroy();
                              setTimeout(() => {
+                                if (this.fogTween) {
+                                this.fogTween.stop();
+                                }
+                                this.fogTween = this.scene.tweens.add({
+                                 targets: this.fogThick,
+                                 duration: 1000,
+                                 alpha: 1,
+                                 ease: 'Cubic.easeOut',
+                                })
                                  playSound('void_body');
                                  setTimeout(() => {
                                      playSound('meat_click_left');

@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>69</uint>
+        <uint>65</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -173,36 +173,6 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">backgrounds/background1.webp</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>160,188,320,375</rect>
-                <key>scale9Paddings</key>
-                <rect>160,188,320,375</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/background3.webp</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>160,185,320,370</rect>
-                <key>scale9Paddings</key>
-                <rect>160,185,320,370</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">backgrounds/background5.webp</key>
             <key type="filename">backgrounds/background6.webp</key>
             <struct type="IndividualSpriteSettings">
@@ -219,9 +189,55 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">backgrounds/background7.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>188,225,375,450</rect>
+                <key>scale9Paddings</key>
+                <rect>188,225,375,450</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">backgrounds/background8 - Copy.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>178,206,355,412</rect>
+                <key>scale9Paddings</key>
+                <rect>178,206,355,412</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">backgrounds/background8.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>175,202,350,404</rect>
+                <key>scale9Paddings</key>
+                <rect>175,202,350,404</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">backgrounds/firebg1.png</key>
             <key type="filename">backgrounds/firebg2.png</key>
             <key type="filename">backgrounds/firebg3.png</key>
+            <key type="filename">backgrounds/graves.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

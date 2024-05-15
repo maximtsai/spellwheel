@@ -4,8 +4,8 @@
 			"image": "sprites/lowq-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1662,
-				"h": 1521
+				"w": 1572,
+				"h": 2044
 			},
 			"scale": 1,
 			"frames": [
@@ -31,27 +31,6 @@
 					}
 				},
 				{
-					"filename": "clockbg.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 717,
-						"h": 717
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 717,
-						"h": 717
-					},
-					"frame": {
-						"x": 1,
-						"y": 803,
-						"w": 717,
-						"h": 717
-					}
-				},
-				{
 					"filename": "star_white.png",
 					"rotated": false,
 					"trimmed": false,
@@ -66,73 +45,10 @@
 						"h": 800
 					},
 					"frame": {
-						"x": 803,
-						"y": 1,
+						"x": 1,
+						"y": 803,
 						"w": 800,
 						"h": 800
-					}
-				},
-				{
-					"filename": "victory_banner.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 10,
-						"h": 180
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 10,
-						"h": 178
-					},
-					"frame": {
-						"x": 1605,
-						"y": 1,
-						"w": 10,
-						"h": 178
-					}
-				},
-				{
-					"filename": "stars.jpg",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 600,
-						"h": 506
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 600,
-						"h": 506
-					},
-					"frame": {
-						"x": 720,
-						"y": 803,
-						"w": 600,
-						"h": 506
-					}
-				},
-				{
-					"filename": "flashplain.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 400,
-						"h": 200
-					},
-					"spriteSourceSize": {
-						"x": 29,
-						"y": 44,
-						"w": 339,
-						"h": 113
-					},
-					"frame": {
-						"x": 1322,
-						"y": 803,
-						"w": 339,
-						"h": 113
 					}
 				},
 				{
@@ -150,8 +66,8 @@
 						"h": 200
 					},
 					"frame": {
-						"x": 720,
-						"y": 1311,
+						"x": 1,
+						"y": 1605,
 						"w": 394,
 						"h": 200
 					}
@@ -171,10 +87,52 @@
 						"h": 200
 					},
 					"frame": {
-						"x": 1116,
-						"y": 1311,
+						"x": 1,
+						"y": 1807,
 						"w": 394,
 						"h": 200
+					}
+				},
+				{
+					"filename": "victory_banner.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 10,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 10,
+						"h": 178
+					},
+					"frame": {
+						"x": 397,
+						"y": 1605,
+						"w": 10,
+						"h": 178
+					}
+				},
+				{
+					"filename": "flashplain.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 400,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 44,
+						"w": 339,
+						"h": 113
+					},
+					"frame": {
+						"x": 397,
+						"y": 1785,
+						"w": 339,
+						"h": 113
 					}
 				},
 				{
@@ -192,8 +150,8 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 1322,
-						"y": 918,
+						"x": 397,
+						"y": 1900,
 						"w": 200,
 						"h": 50
 					}
@@ -213,8 +171,8 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 1322,
-						"y": 970,
+						"x": 397,
+						"y": 1952,
 						"w": 200,
 						"h": 50
 					}
@@ -234,10 +192,105 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 1322,
-						"y": 1022,
+						"x": 599,
+						"y": 1900,
 						"w": 200,
 						"h": 50
+					}
+				},
+				{
+					"filename": "clockbg.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 768,
+						"h": 768
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 768,
+						"h": 768
+					},
+					"frame": {
+						"x": 803,
+						"y": 1,
+						"w": 768,
+						"h": 768
+					}
+				},
+				{
+					"filename": "fogspook.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 700,
+						"h": 800
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 36,
+						"w": 700,
+						"h": 764
+					},
+					"frame": {
+						"x": 803,
+						"y": 771,
+						"w": 700,
+						"h": 764
+					}
+				},
+				{
+					"filename": "stars.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 600,
+						"h": 506
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 600,
+						"h": 506
+					},
+					"frame": {
+						"x": 803,
+						"y": 1537,
+						"w": 600,
+						"h": 506
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/lowq-1.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 702,
+				"h": 763
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "fogthick.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 700,
+						"h": 800
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 39,
+						"w": 700,
+						"h": 761
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 700,
+						"h": 761
 					}
 				}
 			]
@@ -246,6 +299,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:9b5e104408859ae8f90f69105e7c7a87:d7121ef10c1736c21db902a51f54999a:0644d9afadc5ec39d626109554d3f3bc$"
+		"smartupdate": "$TexturePacker:SmartUpdate:3d16315b41fd0a2e12516e34d8850adf:b4f2ce053e08f948a08696295d9fa053:f370068b913c8d62cf32d629b9ea5881$"
 	}
 }

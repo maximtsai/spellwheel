@@ -4,8 +4,8 @@
 			"image": "sprites/ui-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1357,
-				"h": 996
+				"w": 1848,
+				"h": 1002
 			},
 			"scale": 1,
 			"frames": [
@@ -35,20 +35,83 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 550,
+						"w": 600,
 						"h": 500
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 64,
-						"w": 548,
-						"h": 432
+						"x": 0,
+						"y": 10,
+						"w": 594,
+						"h": 476
 					},
 					"frame": {
-						"x": 1,
-						"y": 563,
-						"w": 548,
-						"h": 432
+						"x": 513,
+						"y": 1,
+						"w": 594,
+						"h": 476
+					}
+				},
+				{
+					"filename": "locket4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 38,
+						"w": 547,
+						"h": 448
+					},
+					"frame": {
+						"x": 1109,
+						"y": 1,
+						"w": 547,
+						"h": 448
+					}
+				},
+				{
+					"filename": "locket1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 144,
+						"y": 13,
+						"w": 440,
+						"h": 476
+					},
+					"frame": {
+						"x": 513,
+						"y": 479,
+						"w": 440,
+						"h": 476
+					}
+				},
+				{
+					"filename": "locket2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 144,
+						"y": 13,
+						"w": 440,
+						"h": 476
+					},
+					"frame": {
+						"x": 955,
+						"y": 479,
+						"w": 440,
+						"h": 476
 					}
 				},
 				{
@@ -66,73 +129,10 @@
 						"h": 550
 					},
 					"frame": {
-						"x": 513,
-						"y": 1,
+						"x": 1397,
+						"y": 451,
 						"w": 450,
 						"h": 550
-					}
-				},
-				{
-					"filename": "locket1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 550,
-						"h": 500
-					},
-					"spriteSourceSize": {
-						"x": 149,
-						"y": 64,
-						"w": 401,
-						"h": 433
-					},
-					"frame": {
-						"x": 551,
-						"y": 553,
-						"w": 401,
-						"h": 433
-					}
-				},
-				{
-					"filename": "locket2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 550,
-						"h": 500
-					},
-					"spriteSourceSize": {
-						"x": 150,
-						"y": 64,
-						"w": 400,
-						"h": 432
-					},
-					"frame": {
-						"x": 954,
-						"y": 553,
-						"w": 400,
-						"h": 432
-					}
-				},
-				{
-					"filename": "locket4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 550,
-						"h": 500
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 167,
-						"w": 391,
-						"h": 329
-					},
-					"frame": {
-						"x": 965,
-						"y": 1,
-						"w": 391,
-						"h": 329
 					}
 				},
 				{
@@ -150,8 +150,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 965,
-						"y": 332,
+						"x": 1,
+						"y": 563,
 						"w": 180,
 						"h": 51
 					}
@@ -171,8 +171,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 965,
-						"y": 385,
+						"x": 1658,
+						"y": 1,
 						"w": 180,
 						"h": 51
 					}
@@ -192,8 +192,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 965,
-						"y": 438,
+						"x": 1,
+						"y": 616,
 						"w": 180,
 						"h": 51
 					}
@@ -213,8 +213,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 965,
-						"y": 491,
+						"x": 183,
+						"y": 563,
 						"w": 139,
 						"h": 51
 					}
@@ -234,8 +234,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 965,
-						"y": 491,
+						"x": 183,
+						"y": 563,
 						"w": 139,
 						"h": 51
 					}
@@ -255,8 +255,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 965,
-						"y": 491,
+						"x": 183,
+						"y": 563,
 						"w": 139,
 						"h": 51
 					}
@@ -267,6 +267,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:10230c4167834932efed37747e6258f0:0d473c8fa92819dda9e79d16f3b5475c:6af6d199855d1c5980a61db04791f8fb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:f7cefa3cd1a00284b0eb7dce64fda048:0035c0d67e5d65c474cb8e5615e3b9c0:6af6d199855d1c5980a61db04791f8fb$"
 	}
 }

@@ -207,9 +207,11 @@ const ENABLE_KEYBOARD = true;
             this.updateInterval(dScale, mouseDistX, mouseDistY);
         }
 
+        let rotationOffset = this.voidArm2.alpha > 0 ? 0.35 : 0.05;
         if (this.voidArm.alpha > 0) {
-            this.voidArm.rotation += (Math.random() - 0.5) * 0.04;
-            this.voidArm.rotation *= 0.98;
+            this.voidArm.bonusRotation += (Math.random() - 0.5) * 0.05;
+            this.voidArm.bonusRotation *= 0.98;
+            this.voidArm.rotation = this.voidArm.bonusRotation + rotationOffset;
             if (this.voidArm.alpha > 0.92) {
                 this.voidArm.alpha = 0.92 + Math.random() * 0.08;
             }
@@ -217,7 +219,7 @@ const ENABLE_KEYBOARD = true;
         if (this.voidArm2.alpha > 0) {
             this.voidArm2.bonusRotation += (Math.random() - 0.5) * 0.05;
             this.voidArm2.bonusRotation *= 0.97;
-            this.voidArm2.rotation = Math.PI * 0.5 + this.voidArm2.bonusRotation;
+            this.voidArm2.rotation = Math.PI * 0.5 + this.voidArm2.bonusRotation + rotationOffset;
             if (this.voidArm2.alpha > 0.92) {
                 this.voidArm2.alpha = 0.92 + Math.random() * 0.08;
             }
@@ -370,11 +372,12 @@ const ENABLE_KEYBOARD = true;
         this.timeArm.setScale(0.7);
         this.timeArm.setAlpha(0);
 
-        this.voidArm = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHoleArms.png');
+        this.voidArm = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHoleArms.png').setScale(1.25);
         this.voidArm.setDepth(1);
         this.voidArm.alpha = 0;
+        this.voidArm.bonusRotation = 0;
 
-        this.voidArm2 = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHoleArms.png');
+        this.voidArm2 = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHoleArms.png').setScale(1.25);
         this.voidArm2.setDepth(1);
         this.voidArm2.alpha = 0;
         this.voidArm2.bonusRotation = 0;
@@ -1994,8 +1997,8 @@ const ENABLE_KEYBOARD = true;
      }
 
      enableVoidArm(delay, duration, scale) {
-        let useBig = scale > 1.05;
-         this.voidArm.setScale(useBig ? scale * 0.75 : scale * 0.9);
+        let useBig = scale > 1.3;
+         this.voidArm.setScale(useBig ? scale * 0.95 : scale * 1.15);
          this.scene.tweens.add({
              targets: this.voidArm,
              delay: delay,
@@ -2022,7 +2025,7 @@ const ENABLE_KEYBOARD = true;
          });
 
          if (useBig) {
-             this.voidArm2.setScale(useBig ? scale * 0.75 : scale * 0.9);
+             this.voidArm2.setScale(useBig ? scale * 0.95 : scale * 1.15);
              this.scene.tweens.add({
                  targets: this.voidArm2,
                  delay: delay,

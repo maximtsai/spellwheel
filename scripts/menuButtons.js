@@ -74,6 +74,7 @@ function clearMenuButtons() {
 }
 
 function gotoMainMenu() {
+    setupMainMenu();
     let hasContinue = false;
     if (globalObjects.currentEnemy) {
         globalObjects.currentEnemy.destroy();

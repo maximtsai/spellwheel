@@ -977,13 +977,11 @@ class SpellManager {
         let bigClock = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large.png');
         this.cleanseForms();
         playSound('time_body')
-        bigClock.setDepth(120);
-        bigClock.setScale(0.72);
+        bigClock.setDepth(120).setScale(1.05);
         bigClock.alpha = 0;
         let clockArm = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_arm_large.png');
-        clockArm.setDepth(120);
+        clockArm.setDepth(120).setScale(1.05);
         clockArm.setOrigin(0.01, 0.5);
-        clockArm.setScale(0.72);
         clockArm.alpha = 0;
         clockArm.rotation = -Math.PI * 0.5;
 
@@ -991,8 +989,8 @@ class SpellManager {
             targets: [bigClock, clockArm],
             duration: 300,
             alpha: 0.4 + multiplier * 0.1,
-            scaleX: 0.67,
-            scaleY: 0.67,
+            scaleX: 0.95,
+            scaleY: 0.95,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 messageBus.publish('selfHealRecent', healthRewoundPercent);
@@ -1017,8 +1015,8 @@ class SpellManager {
             targets: [bigClock, clockArm],
             delay: 900,
             duration: 500,
-            scaleX: 0.75,
-            scaleY: 0.75,
+            scaleX: 1.1,
+            scaleY: 1.1,
             alpha: 0
         });
 
@@ -2384,8 +2382,8 @@ class SpellManager {
 
         let initialDelay = 200 + numTotalAttacks * 10 + additionalDamage;
         let voidDuration = 1700 + numTotalAttacks * 150 + additionalDamage * 2;
-        let voidScale = 0.88 + numTotalAttacks * 0.12 + additionalDamage * 0.016;
-        messageBus.publish('enableVoidArm', initialDelay, voidDuration, 0.6 + voidScale * 0.4);
+        let voidScale = 0.88 + numTotalAttacks * 0.15 + additionalDamage * 0.02;
+        messageBus.publish('enableVoidArm', initialDelay, voidDuration, 0.75 + voidScale * 0.5);
         // let blackBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(-1).setAlpha(0.01);
         // this.scene.tweens.add({
         //     targets: voidObj,

@@ -253,18 +253,6 @@ class Enemy {
 
         this.sprite.startScale = scale;
 
-        this.clockLarge = this.scene.add.sprite(this.x, this.y, 'spells', 'clock_back_large_red.png');
-        this.clockLarge.alpha = 0;
-        this.clockLarge.setScale(0.2);
-        this.clockLarge.setDepth(2);
-
-        this.clockLargeHand = this.scene.add.sprite(this.x, this.y, 'pixels', 'red_pixel.png');
-        this.clockLargeHand.alpha = 0;
-        this.clockLargeHand.rotation = -0.1;
-        this.clockLargeHand.setScale(4, 28);
-        this.clockLargeHand.setOrigin(0.5, 1);
-        this.clockLargeHand.setDepth(2);
-
         this.delayedDamageText = this.scene.add.bitmapText(this.x, this.y, 'block', '', 64);
         this.delayedDamageText.alpha = 0.95;
         this.delayedDamageText.setOrigin(0.5, 0.6);
@@ -272,7 +260,6 @@ class Enemy {
 
         this.shieldSprite = this.scene.add.sprite(this.x, this.y, 'spells', 'shield.png');
         this.shieldSprite.alpha = 0.75;
-        this.shieldSprite.setScale(0.5);
         this.shieldSprite.setDepth(2);
         this.shieldSprite.visible = false;
         this.shieldSprite.startScale = this.shieldSprite.scaleX;
@@ -347,6 +334,7 @@ class Enemy {
         }
         let timeChange = dt * gameVars.timeSlowRatio;
 
+        /*
         if (this.storeDamage) {
             this.damageCountdown += timeChange;
             if (this.damageCountdown < 600) {
@@ -378,6 +366,7 @@ class Enemy {
                 this.accumulatedTimeDamage = 0;
             }
         }
+        */
 
         let chargeMult = 1;
         if (this.isAsleep) {
@@ -767,12 +756,12 @@ class Enemy {
     }
 
     startDamageCountdown() {
-        this.clockLarge.alpha = 0.75;
-        this.clockLargeHand.alpha = 0.85;
-        this.clockLargeHand.rotation = -0.1;
-        this.delayedDamageText.alpha = 0.95;
-        this.damageCountdown = 0;
-        this.storeDamage = true;
+        // this.clockLarge.alpha = 0.75;
+        // this.clockLargeHand.alpha = 0.85;
+        //this.clockLargeHand.rotation = -0.1;
+        //this.delayedDamageText.alpha = 0.95;
+        //this.damageCountdown = 0;
+        //this.storeDamage = true;
     }
 
     addShield(amt) {

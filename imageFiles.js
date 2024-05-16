@@ -3,7 +3,6 @@ const imageFilesPreload = [
     {name: 'blackPixel', src: 'sprites/preload/black_pixel.png'},
     {name: 'backgroundPreload', src: 'sprites/preload/background_preload.webp'},
     {name: 'loadingSpinner', src: 'sprites/preload/loading_spinner.webp'},
-    {name: 'loadingSpinnerOuter', src: 'sprites/preload/loading_spinner_outer.webp'},
     {name: 'castNormal', src: 'sprites/preload/cast_normal.webp'},
     {name: 'introLocket', src: 'sprites/preload/locket.webp'},
 

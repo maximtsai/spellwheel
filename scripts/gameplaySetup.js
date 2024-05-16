@@ -15,25 +15,29 @@ function setupLoadingBar(scene) {
     // Basic loading bar visual
     loadObjects.loadingSpinner = scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'loadingSpinner');
     loadObjects.castButton = scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'castNormal');
-    // loadObjects.introLocket = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'introLocket').setScale(0.5).setAlpha(0).setDepth(1001);
-    // loadObjects.introLocket.currAnim = PhaserScene.tweens.add({
-    //     targets: loadObjects.introLocket,
-    //     alpha: 1,
-    //     ease: 'Cubic.easeOut',
-    //     duration: 2000,
-    // });
 
-    icons.push(scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'runeMatterPre'));
-    icons.push(scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'runeMindPre'));
-    icons.push(scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'runeTimePre'));
-    icons.push(scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'runeVoidPre'));
-    icons.push(scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'runeStrikePre'));
-    icons.push(scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'runeEnhancePre')); // prepare
-    icons.push(scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'runeProtectPre')); // shield
-    icons.push(scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'runeReinforcePre')); // body
-    icons.push(scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'runeUnloadPre')); // ultimate
+    loadObjects.introLocket = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 100, 'introLocket').setScale(0.47).setAlpha(0).setDepth(1001).setOrigin(0.5, 0.75);
+    loadObjects.introLocket.currAnim = PhaserScene.tweens.add({
+        targets: loadObjects.introLocket,
+        alpha: 1,
+        scaleX: 0.5,
+        scaleY: 0.5,
+        ease: 'Cubic.easeOut',
+        duration: 1500,
+    });
+    let iconsHeight = gameConsts.height - 124;
 
-    let loadIconHeight = gameConsts.halfHeight - 4;
+    icons.push(scene.add.image(gameConsts.halfWidth, iconsHeight, 'runeMatterPre'));
+    icons.push(scene.add.image(gameConsts.halfWidth, iconsHeight, 'runeMindPre'));
+    icons.push(scene.add.image(gameConsts.halfWidth, iconsHeight, 'runeTimePre'));
+    icons.push(scene.add.image(gameConsts.halfWidth, iconsHeight, 'runeVoidPre'));
+    icons.push(scene.add.image(gameConsts.halfWidth, iconsHeight, 'runeStrikePre'));
+    icons.push(scene.add.image(gameConsts.halfWidth, iconsHeight, 'runeEnhancePre')); // prepare
+    icons.push(scene.add.image(gameConsts.halfWidth, iconsHeight, 'runeProtectPre')); // shield
+    icons.push(scene.add.image(gameConsts.halfWidth, iconsHeight, 'runeReinforcePre')); // body
+    icons.push(scene.add.image(gameConsts.halfWidth, iconsHeight, 'runeUnloadPre')); // ultimate
+
+    let loadIconHeight = gameConsts.halfHeight + 20;
     loadingIcons.push(scene.add.image(gameConsts.halfWidth - 200, loadIconHeight, 'runeMatterPre'));
     loadingIcons.push(scene.add.image(gameConsts.halfWidth - 150, loadIconHeight, 'runeMindPre'));
     loadingIcons.push(scene.add.image(gameConsts.halfWidth - 100, loadIconHeight, 'runeTimePre'));
@@ -68,7 +72,9 @@ function setupLoadingBar(scene) {
         icons[i].startRotation = icons[i].rotation;
     }
 
-    loadObjects.loadingText = scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 40, 'LOADING...', {fontFamily: 'verdanabold', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+
+
+    loadObjects.loadingText = scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 60, 'LOADING...', {fontFamily: 'verdanabold', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
     loadObjects.loadingText.setScale(0.6);
     loadObjects.loadingText.setAlign('center');
     loadObjects.loadingText.setOrigin(0.5, 0);
@@ -83,6 +89,7 @@ function setupLoadingBar(scene) {
             let iconToEdit = icons[loadLevel];
             let loadingIconToEdit = loadingIcons[loadLevel];
             let loadingIconFlashToEdit = loadingIconsFlash[loadLevel];
+
             PhaserScene.tweens.add({
                 targets: iconToEdit,
                 alpha: 1,
@@ -150,7 +157,7 @@ function setupLoadingBar(scene) {
                     loadObjects.loadingText.setText('LOADED\nULTIMATE RUNE');
                     break;
                 case 9:
-                    loadObjects.loadingText.setText('LOADING\nFINAL FILES');
+                    loadObjects.loadingText.setText('LOADING\nPRECIOUS MEMORIES');
                     break;
             }
 
@@ -158,7 +165,8 @@ function setupLoadingBar(scene) {
         }
     });
     scene.load.on('complete', () => {
-        loadObjects.loadingText.setText('LOADING\nFINAL FILES');
+                onLoadComplete(scene);
+        loadObjects.loadingText.setText('LOADING\nPRECIOUS MEMORIES');
         for (let i = 0; i < loadingIcons.length; i++) {
             let loadIcon = loadingIcons[i];
             scene.tweens.add({
@@ -174,18 +182,94 @@ function setupLoadingBar(scene) {
             });
         }
 
-        //loadObjects.fadeBG = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(1000).setAlpha(0).setDepth(1000);
-        // scene.tweens.add({
-        //     targets: loadObjects.fadeBG,
-        //     alpha: 0.5,
-        //     duration: 1100,
-        // });
+        loadObjects.flash = scene.add.image(gameConsts.halfWidth, 0, 'lowq', 'flash.webp').setScale(0).setRotation(-0.2).setDepth(1002);
+
+        loadObjects.flash.currAnim = scene.tweens.add({
+            targets: loadObjects.flash,
+            delay: 10,
+            scaleX: 0.85,
+            scaleY: 0.85,
+            ease: 'Cubic.easeIn',
+            duration: 400,
+            onComplete: () => {
+                loadObjects.flash.currAnim = scene.tweens.add({
+                    targets: loadObjects.flash,
+                    scaleX: 0.1,
+                    scaleY: 0.2,
+                    ease: 'Back.easeOut',
+                    duration: 400,
+                    completeDelay: 200,
+                    onComplete: () => {
+                        this.repeatFlash();
+                    }
+                });
+            }
+        });
+        scene.tweens.add({
+            targets: loadObjects.flash,
+            y: gameConsts.halfHeight - 85,
+            rotation: "+=1.78",
+            duration: 5500,
+            ease: 'Quad.easeOut',
+            onComplete: () => {
+                if (!loadObjects.introLocketOpen) {
+                    loadObjects.flash.currAnim.stop()
+                    loadObjects.flash.setScale(loadObjects.flash.scaleX * 1.25, loadObjects.flash.scaleY * 1.25);
+                    loadObjects.flash.currAnim = scene.tweens.add({
+                        targets: loadObjects.flash,
+                        scaleX: 0,
+                        scaleY: 0,
+                        alpha: 0,
+                        ease: 'Quad.easeOut',
+                        duration: 400,
+                    });
+                    let oldX = loadObjects.introLocket.x; let oldY = loadObjects.introLocket.y; let oldScale = loadObjects.introLocket.scaleX;
+                    loadObjects.introLocket.destroy();
+                    loadObjects.introLocketOpen = scene.add.image(oldX, oldY, 'ui', 'locket2.png').setScale(oldScale * 1.05).setDepth(1001).setOrigin(0.5, 0.75);
+                    scene.tweens.add({
+                        targets: loadObjects.introLocketOpen,
+                        scaleX: oldScale,
+                        scaleY: oldScale,
+                        ease: 'Back.easeOut',
+                        duration: 400
+                    });
+                }
+            }
+        });
+
+        loadObjects.fadeBG = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(1000).setAlpha(0).setDepth(1000);
+
+        scene.tweens.add({
+            targets: loadObjects.fadeBG,
+            alpha: 0.65,
+            duration: 1100,
+        });
         scene.tweens.add({
             targets: [loadObjects.loadingText],
             alpha: 0,
             duration: 300,
             onComplete: () => {
-                this.cleanupIntro(scene);
+                loadObjects.loadingText.setText("START").setScale(1);
+                loadObjects.loadingText.alpha = 1;
+                let clickBlocker = createGlobalClickBlocker();
+                clickBlocker.setOnMouseUpFunc(() => {
+                    hideGlobalClickBlocker();
+                    this.clickIntro();
+                    // this.cleanupIntro(scene);
+                })
+                loadObjects.introLocket.currAnim.stop();
+                scene.tweens.add({
+                    targets: [loadObjects.introLocket],
+                    scaleX: 0.55,
+                    scaleY: 0.55,
+                    y: gameConsts.halfHeight - 68,
+                    duration: 600,
+                    ease: 'Cubic.easeOut',
+                    onComplete: () => {
+                        // cleanupIntro(scene)
+
+                    }
+                });
             }
         });
 
@@ -194,55 +278,73 @@ function setupLoadingBar(scene) {
 }
 
 function clickIntro() {
+     loadObjects.flash.currAnim.stop();
+    loadObjects.introLocket.destroy();
+    loadObjects.flash.currAnim = PhaserScene.tweens.add({
+        targets: loadObjects.flash,
+        scaleX: 0,
+        scaleY: 0,
+        alpha: 0,
+        y: Math.min(loadObjects.flash.y + 70, gameConsts.halfHeight - 85),
+        ease: 'Quad.easeOut',
+        duration: 400,
+    });
+    loadObjects.whiteBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(1000).setAlpha(0).setDepth(1002);
+    PhaserScene.tweens.add({
+        targets: loadObjects.whiteBG,
+        alpha: 1,
+        duration: 3500,
+        ease: 'Cubic.easeIn',
+        onComplete: () => {
+            cleanupIntro(PhaserScene);
+        }
+    });
+    loadObjects.loadingText.setText("I will bring you back\n ").setScale(0.75).y -= 15;
+    setTimeout(() => {
+        loadObjects.loadingText.setText("I will bring you back\nmy beloved");
+    }, 2000)
 
+
+    if (!loadObjects.introLocketOpen) {
+         loadObjects.introLocketOpen = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'ui', 'locket3.png').setDepth(1001).setOrigin(0.5, 0.75);
+    } else {
+        loadObjects.introLocketOpen.setFrame('locket3.png').setOrigin(0.5, 0.75);
+    }
+    let oldScale = 0.55;
+    loadObjects.introLocketOpen.setScale(oldScale * 1.05);
+    PhaserScene.tweens.add({
+        targets: loadObjects.introLocketOpen,
+        scaleX: 0.65,
+        scaleY: 0.65,
+         y: gameConsts.halfHeight - 50,
+        ease: 'Cubic.easeOut',
+        duration: 1000
+    });
 }
 
 function cleanupIntro(scene) {
-        PhaserScene.tweens.add({
-            targets: icons,
-            alpha: 0,
-            duration: 800,
-            onComplete: () => {
-                scene.tweens.add({
-                    targets: [globalObjects.tempBG],
-                    duration: 1000,
-                    onStart: () => {
+    for (let i = 0; i < icons.length; i++) {
+        icons[i].destroy();
+    }
 
-                    },
-                    onComplete: () => {
-                        let loadObjectsArray = [];
-                        for (let i in loadObjects) {
-                            loadObjectsArray.push(loadObjects[i]);
-                        }
-                        globalObjects.tempBG.destroy();
-                        scene.tweens.add({
-                            targets: loadObjectsArray,
-                            alpha: 0,
-                            duration: 700,
-                            onComplete: () => {
-                                for (let i in loadObjects) {
-                                    loadObjects[i].destroy();
-                                }
-                            }
-                        });
-                    }
-                });
+    loadObjects.loadingSpinnerOuter = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'circle', 'usage_normal.png').setScale(0.7).setDepth(199).setRotation(1);
+    PhaserScene.tweens.add({
+        targets: loadObjects.loadingSpinnerOuter,
+        rotation: 0,
+        scaleX: 1,
+        scaleY: 1,
+        duration: 100,
+        ease: 'Cubic.easeOut',
+        onComplete: () => {
+            globalObjects.tempBG.destroy();
+            for (let i in loadObjects) {
+                loadObjects[i].destroy();
             }
-        });
-        loadObjects.loadingSpinnerOuter = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'loadingSpinnerOuter').setScale(0.7).setDepth(199).setRotation(1);
-        PhaserScene.tweens.add({
-            targets: loadObjects.loadingSpinnerOuter,
-            rotation: 0,
-            scaleX: 1,
-            scaleY: 1,
-            duration: 750,
-            ease: 'Cubic.easeOut',
-            onComplete: () => {
-                setupMainMenu();
-                onLoadComplete(scene);
-            }
-        });
-        loadObjects.loadingSpinner.goalRot = Math.PI * -14/8 - 0.08;//value * Math.PI * -1;
+            setupPlayer();
+            gotoMainMenu();
+        }
+    });
+    loadObjects.loadingSpinner.goalRot = Math.PI * -14/8 - 0.08;//value * Math.PI * -1;
 }
 
 function createGlobalClickBlocker() {
@@ -256,16 +358,6 @@ function createGlobalClickBlocker() {
                  scaleX: 1000,
                  scaleY: 1000
              },
-            onHover: () => {
-                if (canvas) {
-                    canvas.style.cursor = 'pointer';
-                }
-            },
-            onHoverOut: () => {
-                if (canvas) {
-                    canvas.style.cursor = 'default';
-                }
-            },
              onMouseUp: () => {
 
              }
@@ -275,10 +367,19 @@ function createGlobalClickBlocker() {
         globalObjects.clickBlocker.setOnMouseUpFunc(() => {});
         buttonManager.bringButtonToTop(globalObjects.clickBlocker);
     }
+    if (canvas) {
+        console.log("Hover");
+        canvas.style.cursor = 'pointer';
+    }
     return globalObjects.clickBlocker;
-
 }
 
+function hideGlobalClickBlocker() {
+    globalObjects.clickBlocker.setState(DISABLE);
+    if (canvas) {
+        canvas.style.cursor = 'default';
+    }
+}
 
 function resetGame() {
     for (let i in globalObjects) {
@@ -295,31 +396,18 @@ function setupGame() {
     gameVars.started = true;
     PhaserScene.sound.pauseOnBlur = false;
 
-    PhaserScene.tweens.add({
-        targets: PhaserScene.cameras.main,
-        zoom: 1,
-        ease: "Quint.easeInOut",
-        duration: 900,
-    });
     createAnimations(PhaserScene);
-    MAGIC_CIRCLE_HEIGHT = gameConsts.height - 124;
 
     globalObjects.gameStats = new GameStats();
     globalObjects.hoverTextManager = new InternalHoverTextManager(PhaserScene);
     globalObjects.textPopupManager = new TextPopupManager(PhaserScene);
     globalObjects.spellManager = new SpellManager(PhaserScene);
     globalObjects.spellRecorder = new SpellRecorder(PhaserScene);
-    globalObjects.magicCircle = new MagicCircle(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
     globalObjects.bannerTextManager = new BannerTextManager(PhaserScene);
 
 
     globalObjects.statusManager = new StatusManager(PhaserScene);
     globalObjects.postFightScreen = new PostFightScreen(PhaserScene);
-
-
-    globalObjects.player = new Player(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
-
-    gotoMainMenu();
 
     // globalObjects.dummyEnemy = new Wall(PhaserScene, gameConsts.halfWidth, 165);
     // globalObjects.dummyEnemy = new Death(PhaserScene, gameConsts.halfWidth, 173);
@@ -350,8 +438,63 @@ function setupGame() {
     // updateManager.addFunction(globalObjects.interestManager.update);
 }
 
+function setupPlayer() {
+    MAGIC_CIRCLE_HEIGHT = gameConsts.height - 124;
+    PhaserScene.tweens.add({
+        targets: PhaserScene.cameras.main,
+        zoom: 1,
+        ease: "Quint.easeInOut",
+        duration: 900,
+    });
+    globalObjects.magicCircle = new MagicCircle(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
+    globalObjects.player = new Player(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
+}
 
 function onCreditsButtonClicked() {
     globalObjects.creditsText.visible = true;
     playSound('button');
+}
+
+function repeatFlash() {
+    if (gameVars.introFinished) {
+        return;
+    }
+
+    loadObjects.flash.currAnim = PhaserScene.tweens.add({
+        targets: loadObjects.flash,
+        scaleX: 0.28,
+        scaleY: 0.4,
+        ease: 'Quart.easeIn',
+        duration: 500,
+        onComplete: () => {
+            loadObjects.flash.currAnim = PhaserScene.tweens.add({
+                targets: loadObjects.flash,
+                scaleX: 0.1,
+                scaleY: 0.2,
+                ease: 'Back.easeOut',
+                duration: 600,
+                onComplete: () => {
+                    loadObjects.flash.currAnim = PhaserScene.tweens.add({
+                        targets: loadObjects.flash,
+                        scaleX: 0.18,
+                        scaleY: 0.3,
+                        ease: 'Quart.easeIn',
+                        duration: 550,
+                        onComplete: () => {
+                            loadObjects.flash.currAnim = PhaserScene.tweens.add({
+                                targets: loadObjects.flash,
+                                scaleX: 0.1,
+                                scaleY: 0.2,
+                                ease: 'Back.easeOut',
+                                duration: 600,
+                                onComplete: () => {
+                                    this.repeatFlash();
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
 }

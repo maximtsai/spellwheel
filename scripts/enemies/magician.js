@@ -305,7 +305,7 @@
          this.heal(Math.floor(lostHealth * 0.5));
          this.specialDamageAbsorptionActive = true;
 
-         this.clockShield = PhaserScene.add.sprite(gameConsts.halfWidth, this.y, 'spells', 'clock_back_large_red.png').setDepth(1).setScale(0.4).setAlpha(0.75);
+         this.clockShield = PhaserScene.add.sprite(gameConsts.halfWidth, this.y, 'spells', 'clock_back_large_red.png').setDepth(1).setAlpha(0.75);
 
          this.scene.tweens.add({
              targets: this.clockShield,
@@ -564,7 +564,7 @@
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
                          messageBus.publish('playerAddDelayedDamage', 20);
-                         let hitEffect = PhaserScene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large_red.png').setDepth(110).setScale(0.6);
+                         let hitEffect = PhaserScene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large_red.png').setDepth(110).setScale(1.2);
                          this.scene.tweens.add({
                              targets: hitEffect,
                              rotation: "-=1",
@@ -577,8 +577,8 @@
                          this.scene.tweens.add({
                              targets: hitEffect,
                              alpha: 0,
-                             scaleX: 0.65,
-                             scaleY: 0.65,
+                             scaleX: 1,
+                             scaleY: 1,
                              duration: 900
                          });
                          this.usedTimeCurse = true;
@@ -797,7 +797,7 @@
                      let dur = 280 - Math.sqrt(totalTimeObjects) * 40;
                      let rot = dur * 0.004;
                      let scaleMult = 1 + durBonus / 800;
-                     let hitEffect = PhaserScene.add.sprite(currObj.x, currObj.y, 'spells').play('timeRed').setRotation((Math.random() - 0.5) * 3).setScale(0.35 * scaleMult).setDepth(195);
+                     let hitEffect = PhaserScene.add.sprite(currObj.x, currObj.y, 'spells', 'timeRed1').setRotation((Math.random() - 0.5) * 3).setScale(0.35 * scaleMult).setDepth(195);
                      this.scene.tweens.add({
                          targets: hitEffect,
                          scaleX: 0.7 * scaleMult,

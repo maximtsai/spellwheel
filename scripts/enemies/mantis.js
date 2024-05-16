@@ -126,9 +126,8 @@
                  },
                  {
                      name: "...ARE YOU ALIVE?",
-                     chargeAmt: 500,
+                     chargeAmt: 250,
                      damage: -1,
-                     chargeMult: 4,
                      startFunction: () => {
                         this.setDefaultSprite('mantis_unveiled.png')
 

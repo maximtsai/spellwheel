@@ -1103,6 +1103,12 @@ class Enemy {
         this.isDestroyed = true;
         this.clearEffects()
         this.cleanUp();
+        for (let i = 0; i < this.destructibles.length; i++) {
+            if (this.destructibles[i]) {
+                this.destructibles[i].destroy();
+            }
+        }
+
         this.healthBarMax.destroy();
         this.healthBarCurr.destroy();
         this.healthBarText.destroy();
@@ -1122,23 +1128,15 @@ class Enemy {
 
         this.sprite.destroy();
 
-        this.clockLarge.destroy();
-        this.clockLargeHand.destroy();
         this.delayedDamageText.destroy();
         this.shieldSprite.destroy();
         this.shieldText.destroy();
-
-        for (let i = 0; i < this.destructibles.length; i++) {
-            if (this.destructibles[i]) {
-                this.destructibles[i].destroy();
-            }
-        }
 
         for (let i = 0; i < this.subscriptions.length; i++) {
             this.subscriptions[i].unsubscribe();
         }
         this.subscriptions = [];
-
+        console.log("Destsroyed enemy")
         updateManager.removeFunction(this.boundUpdateFunc);
     }
 
@@ -1476,7 +1474,7 @@ class Enemy {
         let timeSlowMult = gameVars.timeSlowRatio < 0.9 ? 0.5 : 1;
 
         let durationPullback = isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult : 300 * extraTimeMult * pullbackDurMult;
-
+        console.log("launch attack");
         if (prepareSprite) {
             if (isRepeatedAttack) {
                 setTimeout(() => {
@@ -1560,7 +1558,7 @@ class Enemy {
                                         this.nextAttack.finaleFunction();
                                     }
                                 }
-                            }, 400 * extraTimeMult * this.lastAttackLingerMult + 50);
+                            }, 400 * extraTimeMult * this.lastAttackLingerMult + 100);
                         }
                     }
                 });

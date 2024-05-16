@@ -226,8 +226,8 @@
 			"image": "sprites/backgrounds-2.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1523,
-				"h": 1814
+				"w": 1504,
+				"h": 1816
 			},
 			"scale": 1,
 			"frames": [
@@ -250,6 +250,31 @@
 						"y": 1,
 						"w": 769,
 						"h": 910
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "background4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 685,
+						"h": 912
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 685,
+						"h": 912
+					},
+					"frame": {
+						"x": 772,
+						"y": 1,
+						"w": 685,
+						"h": 912
 					},
 					"anchor": {
 						"x": 0.5,
@@ -297,32 +322,7 @@
 					},
 					"frame": {
 						"x": 753,
-						"y": 913,
-						"w": 750,
-						"h": 900
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "background7.webp",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 750,
-						"h": 900
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 750,
-						"h": 900
-					},
-					"frame": {
-						"x": 772,
-						"y": 1,
+						"y": 915,
 						"w": 750,
 						"h": 900
 					},
@@ -343,31 +343,6 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "background8 - Copy.webp",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 710,
-						"h": 824
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 710,
-						"h": 824
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 710,
-						"h": 824
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "star.png",
 					"rotated": false,
 					"trimmed": false,
@@ -382,35 +357,10 @@
 						"h": 900
 					},
 					"frame": {
-						"x": 713,
+						"x": 1,
 						"y": 1,
 						"w": 700,
 						"h": 900
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "firebg1.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 700,
-						"h": 850
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 700,
-						"h": 850
-					},
-					"frame": {
-						"x": 1,
-						"y": 827,
-						"w": 700,
-						"h": 850
 					},
 					"anchor": {
 						"x": 0.5,
@@ -432,7 +382,7 @@
 						"h": 824
 					},
 					"frame": {
-						"x": 703,
+						"x": 1,
 						"y": 903,
 						"w": 710,
 						"h": 824
@@ -441,18 +391,32 @@
 						"x": 0.5,
 						"y": 0.5
 					}
-				}
-			]
-		},
-		{
-			"image": "sprites/backgrounds-4.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 1404,
-				"h": 1273
-			},
-			"scale": 1,
-			"frames": [
+				},
+				{
+					"filename": "firebg1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 700,
+						"h": 850
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 700,
+						"h": 850
+					},
+					"frame": {
+						"x": 703,
+						"y": 1,
+						"w": 700,
+						"h": 850
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
 				{
 					"filename": "firebg2.png",
 					"rotated": false,
@@ -468,8 +432,8 @@
 						"h": 850
 					},
 					"frame": {
-						"x": 1,
-						"y": 1,
+						"x": 713,
+						"y": 853,
 						"w": 700,
 						"h": 850
 					},
@@ -477,7 +441,18 @@
 						"x": 0.5,
 						"y": 0.5
 					}
-				},
+				}
+			]
+		},
+		{
+			"image": "sprites/backgrounds-4.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 702,
+				"h": 1273
+			},
+			"scale": 1,
+			"frames": [
 				{
 					"filename": "firebg3.png",
 					"rotated": false,
@@ -493,7 +468,7 @@
 						"h": 850
 					},
 					"frame": {
-						"x": 703,
+						"x": 1,
 						"y": 1,
 						"w": 700,
 						"h": 850
@@ -534,6 +509,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:fa919f29f56efbc09258c343e21d4186:abdd0b2496041d41be07c56a97638141:d36b2d12f94c3c84864533b00704d5ae$"
+		"smartupdate": "$TexturePacker:SmartUpdate:c84d373cad7a268300112648a7a7a46b:92f78657ed522bec978a641301c12b19:d36b2d12f94c3c84864533b00704d5ae$"
 	}
 }

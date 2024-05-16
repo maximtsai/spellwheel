@@ -182,7 +182,7 @@ function setupLoadingBar(scene) {
             });
         }
 
-        loadObjects.flash = scene.add.image(gameConsts.halfWidth, 0, 'lowq', 'flash.webp').setScale(0).setRotation(-0.2).setDepth(1002);
+        loadObjects.flash = scene.add.image(gameConsts.halfWidth, -10, 'lowq', 'flash.webp').setScale(0).setRotation(-0.2).setDepth(1002);
 
         loadObjects.flash.currAnim = scene.tweens.add({
             targets: loadObjects.flash,
@@ -209,7 +209,7 @@ function setupLoadingBar(scene) {
             targets: loadObjects.flash,
             y: gameConsts.halfHeight - 85,
             rotation: "+=1.78",
-            duration: 5500,
+            duration: 4000,
             ease: 'Quad.easeOut',
             onComplete: () => {
                 if (!loadObjects.introLocketOpen) {
@@ -249,13 +249,27 @@ function setupLoadingBar(scene) {
             alpha: 0,
             duration: 300,
             onComplete: () => {
-                loadObjects.loadingText.setText("START").setScale(1);
+                loadObjects.loadingText.setText("START").setScale(1).setPosition(loadObjects.loadingText.x, loadObjects.loadingText.y - 20);
                 loadObjects.loadingText.alpha = 1;
-                let clickBlocker = createGlobalClickBlocker();
+                let clickBlocker = createGlobalClickBlocker(true);
                 clickBlocker.setOnMouseUpFunc(() => {
-                    hideGlobalClickBlocker();
-                    this.clickIntro();
-                    // this.cleanupIntro(scene);
+                    if (!gameVars.runningIntro) {
+                        this.clickIntro();
+                        // this.cleanupIntro(scene);
+                        setTimeout(() => {
+                            scene.tweens.add({
+                                targets: loadObjects.skipIntroText,
+                                alpha: 0.5,
+                                duration: 1250,
+                            });
+                        
+
+                            clickBlocker.setOnMouseUpFunc(() => {
+                                this.skipIntro();
+                            })
+                        }, 100);
+
+                    }
                 })
                 loadObjects.introLocket.currAnim.stop();
                 scene.tweens.add({
@@ -278,6 +292,7 @@ function setupLoadingBar(scene) {
 }
 
 function clickIntro() {
+    gameVars.runningIntro = true;
      loadObjects.flash.currAnim.stop();
     loadObjects.introLocket.destroy();
     loadObjects.flash.currAnim = PhaserScene.tweens.add({
@@ -299,9 +314,26 @@ function clickIntro() {
             cleanupIntro(PhaserScene);
         }
     });
-    loadObjects.loadingText.setText("I will bring you back\n ").setScale(0.75).y -= 15;
+    loadObjects.skipIntroText = PhaserScene.add.text(gameConsts.width - 5, gameConsts.height - 5, 'CLICK TO SKIP', {fontFamily: 'verdana', fontSize: 18, color: '#FFFFFF', align: 'right'}).setDepth(1005).setAlpha(0).setOrigin(1, 1);
+    loadObjects.loadingText.setText("I will find you\n ").setAlpha(0.2).setScale(0.75).y -= 18;
+    PhaserScene.tweens.add({
+        targets: loadObjects.loadingText,
+        alpha: 1,
+        ease: 'Quad.easeOut',
+        duration: 500
+    });
     setTimeout(() => {
-        loadObjects.loadingText.setText("I will bring you back\nmy beloved");
+        if (!gameVars.introFinished) {
+            loadObjects.loadingText2 = PhaserScene.add.text(gameConsts.halfWidth, loadObjects.loadingText.y + 40, 'my beloved', {fontFamily: 'verdanabold', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+            loadObjects.loadingText2.setScale(loadObjects.loadingText.scaleX).setAlpha(0);
+            loadObjects.loadingText2.setAlign('center');
+            loadObjects.loadingText2.setOrigin(0.5, 0);
+            PhaserScene.tweens.add({
+                targets: loadObjects.loadingText2,
+                alpha: 1,
+                duration: 1000,
+            });
+        }
     }, 2000)
 
 
@@ -322,32 +354,40 @@ function clickIntro() {
     });
 }
 
-function cleanupIntro(scene) {
+function skipIntro() {
+    tempBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(1000).setAlpha(0.5).setDepth(1002);
+    PhaserScene.tweens.add({
+        targets: tempBG,
+        alpha: 0,
+        ease: 'Cubic.easeOut',
+        duration: 1000
+    });
+    setTimeout(() => {
+        cleanupIntro();
+    }, 0)
+
+}
+
+function cleanupIntro() {
+    if (gameVars.introFinished) {
+        return;
+    }
+    gameVars.introFinished = true;
+
+    hideGlobalClickBlocker();
     for (let i = 0; i < icons.length; i++) {
         icons[i].destroy();
     }
 
-    loadObjects.loadingSpinnerOuter = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'circle', 'usage_normal.png').setScale(0.7).setDepth(199).setRotation(1);
-    PhaserScene.tweens.add({
-        targets: loadObjects.loadingSpinnerOuter,
-        rotation: 0,
-        scaleX: 1,
-        scaleY: 1,
-        duration: 100,
-        ease: 'Cubic.easeOut',
-        onComplete: () => {
-            globalObjects.tempBG.destroy();
-            for (let i in loadObjects) {
-                loadObjects[i].destroy();
-            }
-            setupPlayer();
-            gotoMainMenu();
-        }
-    });
-    loadObjects.loadingSpinner.goalRot = Math.PI * -14/8 - 0.08;//value * Math.PI * -1;
+    globalObjects.tempBG.destroy();
+    for (let i in loadObjects) {
+        loadObjects[i].destroy();
+    }
+    setupPlayer();
+    gotoMainMenu();
 }
 
-function createGlobalClickBlocker() {
+function createGlobalClickBlocker(showPointer) {
     if (!globalObjects.clickBlocker) {
         globalObjects.clickBlocker = new Button({
              normal: {
@@ -367,8 +407,7 @@ function createGlobalClickBlocker() {
         globalObjects.clickBlocker.setOnMouseUpFunc(() => {});
         buttonManager.bringButtonToTop(globalObjects.clickBlocker);
     }
-    if (canvas) {
-        console.log("Hover");
+    if (showPointer && canvas) {
         canvas.style.cursor = 'pointer';
     }
     return globalObjects.clickBlocker;

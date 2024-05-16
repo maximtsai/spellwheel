@@ -19,6 +19,7 @@
          this.health = 65;
          this.damageNumOffset = 45;
          this.timeObjects = [];
+         this.initTemporalObjects();
      }
 
 
@@ -263,6 +264,10 @@
           swirlInReaperFog();
         setTimeout(() => {
             playReaperDialog(['YOUR TIME IS UP'], () => {
+                 this.scene.tweens.add({
+                     targets: this.timeFallObjs,
+                     duration: 1000,
+                 });
                 globalObjects.reapSound = 'magician_end';
                 playReaperAnim(this, () => {
                     setTimeout(() => {
@@ -477,7 +482,7 @@
                                  if (!this.dead) {
                                      this.setSprite(this.defaultSprite);
                                  }
-                             }, 550 * extraTimeMult * 0.65);
+                             }, 550 * extraTimeMult * 0.65 + 200);
                          }
                      }
                  });
@@ -491,13 +496,14 @@
              [
                  // 0
                  {
-                     name: "}4 ",
+                     name: "}4x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: 300,
+                     chargeAmt: 350,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
-                         this.createTimeObject('clock2.png', this.x - 25, this.y - 110);
+                         this.createTimeObject('clock2.png', this.x - 110, this.y - 70);
+                         this.createTimeObject('clock3.png', this.x - 35, this.y - 100);
                          setTimeout(() => {
                              this.fireTimeObjects(4);
                          }, 800);
@@ -541,7 +547,7 @@
                  {
                      name: "}4x3 ",
                      desc: "An advanced magic attack.",
-                     chargeAmt: 300,
+                     chargeAmt: 350,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -609,6 +615,11 @@
                      },
                      attackFinishFunction: () => {
                          this.timeBarraged = true;
+                         this.freezingTime = true;
+                        for (let i = 0; i < this.timeFallObjs.length; i++) {
+                            let clock = this.timeFallObjs[i];
+                            clock.setAlpha(1);
+                        }
                          if (this.tickSlow) {
                              fadeAwaySound(this.tickSlow, 400, ' ');
                          }
@@ -618,7 +629,7 @@
                      }
                  },
                  {
-                     name: "TIME-STOPPED ATTACK |6x3 ",
+                     name: "TIME-STOPPED ATTACK |6x4 ",
                      desc: "A devastating barrage\nof offensive magic.",
                      chargeAmt: 500,
                      chargeMult: 16,
@@ -626,9 +637,10 @@
                      startFunction: () => {
                      },
                      attackStartFunction: () => {
-                         this.createTimeObject('clock3.png', this.x - 100, 115, 200);
-                         this.createTimeObject('clock4.png', this.x, 100, 300);
-                         this.createTimeObject('clock3.png', this.x + 100, 115, 400);
+                         this.createTimeObject('clock3.png', this.x - 150, 115, 200);
+                         this.createTimeObject('clock4.png', this.x - 50, 100, 300);
+                         this.createTimeObject('clock3.png', this.x + 50, 105, 400);
+                         this.createTimeObject('clock4.png', this.x + 150, 115, 500);
                      },
                      attackFinishFunction: () => {
                          setTimeout(() => {
@@ -657,7 +669,7 @@
                      }
                  },
                  {
-                     name: "TIME-STOPPED ATTACK |18 ",
+                     name: "TIME-STOPPED ATTACK |20 ",
                      desc: "A devastating barrage\nof offensive magic.",
                      chargeAmt: 750,
                      chargeMult: 16,
@@ -667,7 +679,7 @@
                      },
                      attackFinishFunction: () => {
                          setTimeout(() => {
-                             this.fireTimeObjects(18, 500);
+                             this.fireTimeObjects(20, 500);
                          }, 300);
                      }
                  },
@@ -678,6 +690,12 @@
                      chargeMult: 1.5,
                      damage: 0,
                      startFunction: () => {
+                         this.freezingTime = false;
+                        for (let i = 0; i < this.timeFallObjs.length; i++) {
+                            let clock = this.timeFallObjs[i];
+                            clock.setAlpha(0.01 + clock.scaleX * 0.45);
+                        }
+
                          globalObjects.magicCircle.cancelTimeSlow();
                          if (!this.dead) {
                              setTimeout(() => {
@@ -706,7 +724,7 @@
                  {
                      name: "}6 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: 300,
+                     chargeAmt: 350,
                      chargeMult: 1.5,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
@@ -720,7 +738,7 @@
                  {
                      name: "}4x2 ",
                      desc: "An advanced magic attack.",
-                     chargeAmt: 300,
+                     chargeAmt: 350,
                      chargeMult: 1.5,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
@@ -797,7 +815,7 @@
                      let dur = 280 - Math.sqrt(totalTimeObjects) * 40;
                      let rot = dur * 0.004;
                      let scaleMult = 1 + durBonus / 800;
-                     let hitEffect = PhaserScene.add.sprite(currObj.x, currObj.y, 'spells', 'timeRed1').setRotation((Math.random() - 0.5) * 3).setScale(0.35 * scaleMult).setDepth(195);
+                     let hitEffect = PhaserScene.add.sprite(currObj.x, currObj.y, 'spells', 'timeRed1.png').setRotation((Math.random() - 0.5) * 3).setScale(0.35 * scaleMult).setDepth(195);
                      this.scene.tweens.add({
                          targets: hitEffect,
                          scaleX: 0.7 * scaleMult,
@@ -834,4 +852,63 @@
 
      }
 
+     update(dt) {
+        super.update(dt);
+        if (!this.freezingTime) {
+            for (let i = 0; i < this.timeFallObjs.length; i++) {
+                let clock = this.timeFallObjs[i];
+                clock.y += 0.4 * dt;
+                clock.rotation += dt * clock.rotSpeed * 0.004;
+                if (clock.y > gameConsts.height + 75) {
+
+                    clock.y = -75;
+                    let randFrame = 'temporal' + Math.floor(Math.random() * 10) + ".png";
+                    clock.setFrame(randFrame).setRotation(Math.random() * 6);
+                    let randDist = 0.25 + Math.random() * 0.45;
+                    clock.setScale(randDist);
+                    clock.rotSpeed = (1 + Math.random()) * (Math.random < 0.5 ? 1 : -1);
+                    clock.setScale(clock.scaleX);
+                    clock.setAlpha(clock.scaleX * 0.5 - 0.05);
+
+
+                    clock.x = gameConsts.width * ((this.availableIndicies[this.lastPlacedIndex] + 0.5) / 5);
+                    this.lastPlacedIndex = (this.lastPlacedIndex + 1) % this.availableIndicies.length;
+                }
+            }
+        }
+    }
+
+    initTemporalObjects() {
+        this.timeFallObjs = [];
+        this.lastPlacedIndex = 0;
+        this.availableIndicies = [
+            0, 3, 1, 4, 2,
+            0, 1, 3, 2, 4, 
+            1, 0, 3, 2, 4, 
+            3, 0, 2, 4, 1, 
+            3, 1, 0, 4, 2, 
+            1, 4, 3, 2, 0];
+        let numObjects = 15;
+        for (let i = 0; i < numObjects; i++) {
+            let randDist = 0.25 + Math.random() * 0.45;
+
+            let randFrame = 'temporal' + Math.floor(Math.random() * 10) + ".png";
+            let newClock = PhaserScene.add.sprite(0, (i * gameConsts.height / (numObjects - 2)) - 70, 'lowq', randFrame).setRotation(Math.random() * 6).setScale(randDist).setDepth(-1);
+            newClock.setAlpha(0);
+
+            
+             this.scene.tweens.add({
+                 targets: newClock,
+                 alpha: newClock.scaleX * 0.5 - 0.05,
+                 duration: 500
+             });
+
+            newClock.rotSpeed = (1 + Math.random()) * (Math.random < 0.5 ? 1 : -1);
+            this.timeFallObjs.push(newClock);
+            this.addToDestructibles(newClock);
+
+            newClock.x = gameConsts.width * ((this.availableIndicies[this.lastPlacedIndex] + 0.5) / 5);
+            this.lastPlacedIndex = (this.lastPlacedIndex + 1) % this.availableIndicies.length;
+        } 
+    }
 }

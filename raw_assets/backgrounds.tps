@@ -173,6 +173,21 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">backgrounds/background4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>171,228,343,456</rect>
+                <key>scale9Paddings</key>
+                <rect>171,228,343,456</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">backgrounds/background5.webp</key>
             <key type="filename">backgrounds/background6.webp</key>
             <struct type="IndividualSpriteSettings">
@@ -186,36 +201,6 @@
                 <rect>208,256,416,512</rect>
                 <key>scale9Paddings</key>
                 <rect>208,256,416,512</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/background7.webp</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>188,225,375,450</rect>
-                <key>scale9Paddings</key>
-                <rect>188,225,375,450</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/background8 - Copy.webp</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>178,206,355,412</rect>
-                <key>scale9Paddings</key>
-                <rect>178,206,355,412</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

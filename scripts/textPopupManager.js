@@ -2,7 +2,7 @@ class TextPopupManager {
     constructor(scene) {
         this.scene = scene;
         this.damageNums = []; // Depreciated, currently just using one damage num
-        this.damageNum = this.scene.add.bitmapText(gameConsts.halfWidth, 200, 'damage', '', isMobile ? 34 : 32).setDepth(99999).setOrigin(0.5, 0.5);
+        this.damageNum = this.scene.add.bitmapText(gameConsts.halfWidth, 200, 'damage', '', isMobile ? 34 : 32).setDepth(100000).setOrigin(0.5, 0.65);
         this.damageNum.startY = this.damageNum.y;
         this.damageTween = null;
         this.damageNumber = 0;
@@ -65,32 +65,59 @@ class TextPopupManager {
         if (this.damageNum.scaleX < 0.1) {
             this.damageNumber = 0;
         }
+        let shakeMult = 0;
         this.damageNumber += val;
+        if (this.damageNumber === 0) {
+            shakeMult = 0;
+        } else if (this.damageNumber < 15) {
+            shakeMult = 0.3;
+        } else if (this.damageNumber < 40) {
+            shakeMult = 0.65;
+        } else if (this.damageNumber < 100) {
+            shakeMult = 0.8;
+        } else if (this.damageNumber < 160) {
+            shakeMult = 1;
+        } else {
+            shakeMult = 1.2;
+        }
         this.damageNum.setText('-' + this.damageNumber);
-        let newScale = 0.5 + Math.sqrt(val) * 0.25;
+        let newScale = 0.8 + Math.sqrt(this.damageNumber) * 0.15;
         if (isMobile) {
             newScale += 0.1;
         }
-        this.damageNum.setScale(newScale)
+        this.damageNum.setScale(newScale * 0.98)
         this.damageNum.y = this.damageNum.startY + offsetY;
         this.damageNum.alpha = 1;
 
+        let extraDur = Math.floor(shakeMult * shakeMult * 40);
         let tweenParams = {
             targets: this.damageNum,
-            scaleX: newScale * 0.98,
-            scaleY: newScale * 0.98,
-            duration: 500,
+            scaleX: newScale * (1 + shakeMult),
+            scaleY: newScale * (1 + shakeMult),
+            rotation: shakeMult * 0.075 * (Math.random() < 0.5 ? 1 : -1),
+            duration: 140 + extraDur,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 this.damageTween = this.scene.tweens.add({
-                    delay: 600,
                     targets: this.damageNum,
-                    scaleX: 0,
-                    scaleY: 0,
-                    alpha: 0,
-                    duration: 250,
-                    ease: 'Quart.easeIn',
+                    scaleX: newScale,
+                    scaleY: newScale,
+                    rotation: 0,
+                    duration: 300 + extraDur,
+                    ease: 'Bounce.easeOut',
+                    onComplete: () => {
+                        this.damageTween = this.scene.tweens.add({
+                            delay: 800 + Math.floor(this.damageNumber * 4),
+                            targets: this.damageNum,
+                            scaleX: 0,
+                            scaleY: 0,
+                            alpha: 0,
+                            duration: 250,
+                            ease: 'Quart.easeIn',
+                        });
+                    }
                 });
+
             }
         }
         this.damageTween = this.scene.tweens.add(tweenParams);

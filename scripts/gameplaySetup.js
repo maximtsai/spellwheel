@@ -165,7 +165,7 @@ function setupLoadingBar(scene) {
         }
     });
     scene.load.on('complete', () => {
-                onLoadComplete(scene);
+        onLoadComplete(scene);
         loadObjects.loadingText.setText('LOADING\nPRECIOUS MEMORIES');
         for (let i = 0; i < loadingIcons.length; i++) {
             let loadIcon = loadingIcons[i];
@@ -182,60 +182,42 @@ function setupLoadingBar(scene) {
             });
         }
 
-        loadObjects.flash = scene.add.image(gameConsts.halfWidth, -10, 'lowq', 'flash.webp').setScale(0).setRotation(-0.2).setDepth(1002);
+        loadObjects.flash = scene.add.image(gameConsts.halfWidth - 30, loadObjects.introLocket.y - 25, 'lowq', 'flash.webp').setScale(0).setRotation(-0.1).setDepth(1002);
 
         loadObjects.flash.currAnim = scene.tweens.add({
             targets: loadObjects.flash,
-            delay: 10,
             scaleX: 0.85,
             scaleY: 0.85,
             ease: 'Cubic.easeIn',
-            duration: 400,
+            duration: 350,
             onComplete: () => {
                 loadObjects.flash.currAnim = scene.tweens.add({
                     targets: loadObjects.flash,
-                    scaleX: 0.1,
-                    scaleY: 0.2,
-                    ease: 'Back.easeOut',
-                    duration: 400,
-                    completeDelay: 200,
+                    scaleX: 0,
+                    scaleY: 0,
+                    ease: 'Cubic.easeOut',
+                    rotation: "+=0.1",
+                    duration: 700,
                     onComplete: () => {
-                        this.repeatFlash();
+                        // this.repeatFlash();
                     }
                 });
             }
         });
-        scene.tweens.add({
-            targets: loadObjects.flash,
-            y: gameConsts.halfHeight - 85,
-            rotation: "+=1.78",
-            duration: 4000,
-            ease: 'Quad.easeOut',
-            onComplete: () => {
-                if (!loadObjects.introLocketOpen) {
-                    loadObjects.flash.currAnim.stop()
-                    loadObjects.flash.setScale(loadObjects.flash.scaleX * 1.25, loadObjects.flash.scaleY * 1.25);
-                    loadObjects.flash.currAnim = scene.tweens.add({
-                        targets: loadObjects.flash,
-                        scaleX: 0,
-                        scaleY: 0,
-                        alpha: 0,
-                        ease: 'Quad.easeOut',
-                        duration: 400,
-                    });
-                    let oldX = loadObjects.introLocket.x; let oldY = loadObjects.introLocket.y; let oldScale = loadObjects.introLocket.scaleX;
-                    loadObjects.introLocket.destroy();
-                    loadObjects.introLocketOpen = scene.add.image(oldX, oldY, 'ui', 'locket2.png').setScale(oldScale * 1.05).setDepth(1001).setOrigin(0.5, 0.75);
-                    scene.tweens.add({
-                        targets: loadObjects.introLocketOpen,
-                        scaleX: oldScale,
-                        scaleY: oldScale,
-                        ease: 'Back.easeOut',
-                        duration: 400
-                    });
-                }
+        setTimeout(() => {
+            if (!loadObjects.introLocketOpen) {
+                let oldX = loadObjects.introLocket.x; let oldY = loadObjects.introLocket.y; let oldScale = loadObjects.introLocket.scaleX;
+                loadObjects.introLocket.destroy();
+                loadObjects.introLocketOpen = scene.add.image(oldX, oldY, 'ui', 'locket2.png').setScale(oldScale * 1.1).setDepth(1001).setOrigin(0.5, 0.75);
+                scene.tweens.add({
+                    targets: loadObjects.introLocketOpen,
+                    scaleX: oldScale,
+                    scaleY: oldScale,
+                    ease: 'Back.easeOut',
+                    duration: 400
+                });
             }
-        });
+        }, 100)
 
         loadObjects.fadeBG = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(1000).setAlpha(0).setDepth(1000);
 
@@ -494,46 +476,46 @@ function onCreditsButtonClicked() {
     playSound('button');
 }
 
-function repeatFlash() {
-    if (gameVars.introFinished) {
-        return;
-    }
+// function repeatFlash() {
+//     if (gameVars.introFinished) {
+//         return;
+//     }
 
-    loadObjects.flash.currAnim = PhaserScene.tweens.add({
-        targets: loadObjects.flash,
-        scaleX: 0.28,
-        scaleY: 0.4,
-        ease: 'Quart.easeIn',
-        duration: 500,
-        onComplete: () => {
-            loadObjects.flash.currAnim = PhaserScene.tweens.add({
-                targets: loadObjects.flash,
-                scaleX: 0.1,
-                scaleY: 0.2,
-                ease: 'Back.easeOut',
-                duration: 600,
-                onComplete: () => {
-                    loadObjects.flash.currAnim = PhaserScene.tweens.add({
-                        targets: loadObjects.flash,
-                        scaleX: 0.18,
-                        scaleY: 0.3,
-                        ease: 'Quart.easeIn',
-                        duration: 550,
-                        onComplete: () => {
-                            loadObjects.flash.currAnim = PhaserScene.tweens.add({
-                                targets: loadObjects.flash,
-                                scaleX: 0.1,
-                                scaleY: 0.2,
-                                ease: 'Back.easeOut',
-                                duration: 600,
-                                onComplete: () => {
-                                    this.repeatFlash();
-                                }
-                            });
-                        }
-                    });
-                }
-            });
-        }
-    });
-}
+//     loadObjects.flash.currAnim = PhaserScene.tweens.add({
+//         targets: loadObjects.flash,
+//         scaleX: 0.28,
+//         scaleY: 0.4,
+//         ease: 'Quart.easeIn',
+//         duration: 500,
+//         onComplete: () => {
+//             loadObjects.flash.currAnim = PhaserScene.tweens.add({
+//                 targets: loadObjects.flash,
+//                 scaleX: 0.1,
+//                 scaleY: 0.2,
+//                 ease: 'Back.easeOut',
+//                 duration: 600,
+//                 onComplete: () => {
+//                     loadObjects.flash.currAnim = PhaserScene.tweens.add({
+//                         targets: loadObjects.flash,
+//                         scaleX: 0.18,
+//                         scaleY: 0.3,
+//                         ease: 'Quart.easeIn',
+//                         duration: 550,
+//                         onComplete: () => {
+//                             loadObjects.flash.currAnim = PhaserScene.tweens.add({
+//                                 targets: loadObjects.flash,
+//                                 scaleX: 0.1,
+//                                 scaleY: 0.2,
+//                                 ease: 'Back.easeOut',
+//                                 duration: 600,
+//                                 onComplete: () => {
+//                                     this.repeatFlash();
+//                                 }
+//                             });
+//                         }
+//                     });
+//                 }
+//             });
+//         }
+//     });
+// }

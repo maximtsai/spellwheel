@@ -99,6 +99,8 @@ const audioFiles = [
     {name: 'you_died', src: 'audio/you_died.mp3'},
     {name: 'missile_launch_1', src: 'audio/missile_launch_1.mp3'},
     {name: 'missile_launch_2', src: 'audio/missile_launch_2.mp3'},
+    {name: 'guncock', src: 'audio/guncock.mp3'},
+    {name: 'derp', src: 'audio/derp.mp3'},
     {name: 'death_attack', src: 'audio/death_attack.mp3'},
 
     {name: 'magician_end', src: 'audio/magician_end.mp3'},

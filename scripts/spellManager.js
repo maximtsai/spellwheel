@@ -657,7 +657,7 @@ class SpellManager {
             });
         } else {
             stoneCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'stoneCircle.png');
-            stoneCircle.setAlpha(0.5).setScale(0.605).setRotation(-0.3);
+            stoneCircle.setAlpha(0.5).setScale(0.9).setRotation(-0.3);
 
             textHealth = this.scene.add.bitmapText(gameConsts.halfWidth, globalObjects.player.getY() - 44, 'block', '0', 48, 1);
             textHealth.startX = textHealth.x;
@@ -669,8 +669,8 @@ class SpellManager {
         this.scene.tweens.add({
             targets: stoneCircle,
             delay: 250,
-            scaleX: 0.72,
-            scaleY: 0.72,
+            scaleX: 1.04,
+            scaleY: 1.04,
             alpha: 1,
             rotation: 0,
             duration: 300,
@@ -691,8 +691,8 @@ class SpellManager {
                 stoneCircle.setDepth(118);
                 this.scene.tweens.add({
                     targets: stoneCircle,
-                    scaleX: 0.7,
-                    scaleY: 0.7,
+                    scaleX: 1,
+                    scaleY: 1,
                     duration: 300,
                     ease: 'Cubic.easeIn',
                 });
@@ -1601,10 +1601,11 @@ class SpellManager {
         animation1.rotation = 0;
         animation1.alpha = 0;
 
-        let animation2 =  this.scene.add.sprite(gameConsts.halfWidth, 185, 'spells', 'eye.png').setScale(0.8);
+        let animation2 =  this.scene.add.sprite(gameConsts.halfWidth, 175, 'spells', 'reticle.png').setScale(0.95);
         animation2.setDepth(110);
         animation2.origScale = animation2.scaleX;
-        animation2.alpha = 0;
+        animation2.alpha = 0.3;
+        animation2.visible = false;
 
         let animation3 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 225, 'spells', 'weakenLines_00.png');
         animation3.startX = animation3.x;
@@ -1614,6 +1615,10 @@ class SpellManager {
         animation3.rotation = 0;
         animation3.alpha = 0;
         animation3.rotateOffset = 0;
+
+        let animation4 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blast.png').setScale(2 + spellMultiplier * 0.2, 5);
+        animation4.setDepth(990).setOrigin(0.5, 1.205).setAlpha(0);
+        animation4.origScale = animation4.scaleX;
 
         let textDisplay = this.scene.add.bitmapText(gameConsts.halfWidth, animation2.y, 'block', '', 48, 1);
         textDisplay.setOrigin(0.5, 0.5);
@@ -1636,7 +1641,7 @@ class SpellManager {
                     name: shieldID,
                     spellID: shieldID,
                     type: 'mind',
-                    animObj: [animation1, animation2, animation3],
+                    animObj: [animation1, animation2, animation3, animation4],
                     textObj: textDisplay,
                     storedDamage: 0,
                     multiplier: spellMultiplier,
@@ -1647,15 +1652,16 @@ class SpellManager {
                         if (statuses[shieldID] && !statuses[shieldID].currentAnim) {
                             textDisplay.visible = false;
                             statuses[shieldID].currentAnim = this.scene.tweens.add({
+                                delay: 100,
                                 targets: [animation1, animation2],
                                 duration: 150,
-                                scaleX: "+=0.25",
                                 alpha: 0,
-                                ease: 'Quad.easeOut',
+                                ease: 'Quad.easeIn',
                                 onComplete: () => {
                                     animation1.destroy();
                                     animation2.destroy();
                                     animation3.destroy();
+                                    animation4.destroy();
                                     textDisplay.destroy();
                                 }
                             });

@@ -1553,7 +1553,7 @@ class Enemy {
                             this.isUsingAttack = false;
                             setTimeout(() => {
                                 if (!this.dead) {
-                                    this.setSpriteIfNotInactive(this.defaultSprite);
+                                    this.setSpriteIfNotInactive(this.defaultSprite, undefined, true);
                                     if (this.nextAttack.finaleFunction) {
                                         this.nextAttack.finaleFunction();
                                     }

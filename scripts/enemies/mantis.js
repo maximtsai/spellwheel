@@ -28,7 +28,7 @@
          });
      }
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 240 : 180;
+         this.health = gameVars.isHardMode ? 240 : 200;
          this.pullbackDurMult = 0.5;
          this.pullbackScale = 0.99;
          this.pullbackScaleDefault = 0.99;
@@ -80,6 +80,13 @@
                             }
                             this.setSprite('mantis_reveal.png');
                             this.bgMusic.stop();
+                            PhaserScene.time.delayedCall(400, () => {
+                                if (this.dead) {
+                                    return;
+                                }
+                                playSound('guncock');
+                            });
+
                             PhaserScene.time.delayedCall(500, () => {
                                 if (this.dead) {
                                     return;
@@ -93,11 +100,11 @@
                                     duration: 600,
                                     ease: 'Back.easeOut',
                                 });
-                                PhaserScene.time.delayedCall(1500, () => {
+                                PhaserScene.time.delayedCall(2000, () => {
                                     if (this.dead) {
                                         return;
                                     }
-                                    let attackText = PhaserScene.add.bitmapText(this.sprite.x + 120, this.sprite.y - 120, 'damage', "GET EM'", 42, 1).setDepth(999).setOrigin(0.5, 0.5);
+                                    let attackText = PhaserScene.add.bitmapText(this.sprite.x + 120, this.sprite.y - 120, 'damage', "GET 'EM", 42, 1).setDepth(999).setOrigin(0.5, 0.5);
                                     PhaserScene.tweens.add({
                                          targets: attackText,
                                          x: this.sprite.x + 127,
@@ -158,6 +165,7 @@
                      chargeAmt: 150,
                      damage: -1,
                      startFunction: () => {
+                         playSound('magic', 0.4);
                         this.backForthAnim();
                         this.repeatTweenBreathe();
                      },
@@ -170,6 +178,8 @@
 
      panik() {
         if (this.isPaniking) {
+            let detuneAmt = Math.floor((Math.random() - 0.5) * 1500);
+            playSound('derp', 0.8).detune = detuneAmt;
             let isUpsideDown = this.isAngry && Math.random() < 0.1;
             this.panicTween = PhaserScene.tweens.add({
                 delay: this.isAngry ? 150 : 300,
@@ -203,26 +213,24 @@
             return;
         }
         if (hits === 0) {
-            this.gunFlash1.visible = false;
-            this.gunFlash2.visible = false;
-            this.setDefaultSprite('mantis_unveiled.png')
+            // this.gunFlash1.visible = false;
+            // this.gunFlash2.visible = false;
+            this.setDefaultSprite('mantis_unveiled.png', undefined, false);
             return;
+        } else {
+            this.gunFlash1.setVisible(true);
+            this.gunFlash2.setVisible(true);
         }
-        let flashDelay = 65;
+        let flashDelay = 61;
         for (let i = 1; i <= 6; i++) {
             setTimeout(() => {
                 if (!this.dead) {
-                    if (i == 2) {
-                        messageBus.publish("selfTakeDamage", damage);
-                    } else if (i == 6) {
-                        this.repeatGunSequenceA(damage, hits - 1);
-                    }
                     let randFrameNum = Math.floor(Math.random() * 5) + 1;
                     let randFrame = 'gunflash_' + randFrameNum + '.png';
                     let isLeft = i % 2 == 1;
                     if (i == 1) {
                         this.gunFlash1.setScale(1.8);
-                        this.scene.tweens.add({
+                        this.currGunFlash1 = this.scene.tweens.add({
                             targets: this.gunFlash1,
                             scaleX: 1,
                             scaleY: 1,
@@ -231,7 +239,7 @@
                         });
                     } else if (i == 2) {
                         this.gunFlash2.setScale(1.8);
-                        this.scene.tweens.add({
+                        this.currGunFlash2 = this.scene.tweens.add({
                             targets: this.gunFlash2,
                             scaleX: 1,
                             scaleY: 1,
@@ -241,10 +249,39 @@
                     }
                     if (isLeft) {
                         this.setSprite('mantis_shoot_left.png');
-                        this.gunFlash1.setPosition(this.sprite.x - 85 + Math.random() * 30, this.sprite.y - 15 + Math.random() * 65).setVisible(true).setFrame(randFrame).setRotation(Math.random());
+                        this.gunFlash1.setPosition(this.sprite.x - 85 + Math.random() * 30, this.sprite.y - 15 + Math.random() * 65).setFrame(randFrame).setRotation(Math.random());
                     } else {
                         this.setSprite('mantis_shoot_right.png');
-                        this.gunFlash2.setPosition(this.sprite.x + 85 - Math.random() * 30, this.sprite.y - 15 + Math.random() * 65).setVisible(true).setFrame(randFrame).setRotation(Math.random());
+                        this.gunFlash2.setPosition(this.sprite.x + 85 - Math.random() * 30, this.sprite.y - 15 + Math.random() * 65).setFrame(randFrame).setRotation(Math.random());
+                    }
+                    if (hits === 1 && i == 6) {
+                        this.gunFlash1.setScale(2.5).setPosition(this.sprite.x - 70, this.sprite.y + 25).setFrame('gunflash_1.png')
+                        this.gunFlash2.setScale(2.5).setPosition(this.sprite.x + 70, this.sprite.y + 25).setFrame('gunflash_2.png')
+                        this.currGunFlash1.stop();
+                        this.currGunFlash2.stop();
+                        this.scene.tweens.add({
+                            targets: this.gunFlash1,
+                            scaleX: 1,
+                            scaleY: 1,
+                            duration: 200,
+                            ease: 'Cubic.easeOut',
+                        });
+                        this.scene.tweens.add({
+                            targets: this.gunFlash2,
+                            scaleX: 1,
+                            scaleY: 1,
+                            duration: 200,
+                            ease: 'Cubic.easeOut',
+                            onComplete: () => {
+                                this.gunFlash1.visible = false;
+                                this.gunFlash2.visible = false;
+                            }
+                        });
+                    }
+                    if (i == 2) {
+                        messageBus.publish("selfTakeDamage", damage);
+                    } else if (i == 6) {
+                        this.repeatGunSequenceA(damage, hits - 1);
                     }
                 }
             }, flashDelay * i);
@@ -391,9 +428,9 @@
 
      }
      lieDown() {
+        playSound('clunk2');
          this.setDefaultSprite('mantis_dead.png', this.sprite.startScale, true);
          this.sprite.setRotation(0).setScale(this.sprite.startScale);
-         this.y -= 10;
          setTimeout(() => {
             setTimeout(() => {
                 let rune = this.scene.add.sprite(this.x, this.y, 'tutorial', 'rune_protect_large.png').setScale(0.5).setDepth(9999).setVisible(false);

@@ -1138,10 +1138,18 @@ const ENABLE_KEYBOARD = true;
              let distFromCenter = 0;
              switch(shieldObj.type) {
                  case 'mind':
-                     const painStartRot = 0.3 + shieldObj.multiplier * 0.03;
+                     const painStartRot = 0.2 + shieldObj.multiplier * 0.03;
                      let goalRotMind = shieldObj.lockRotation + this.outerCircle.rotation;
-                     shieldObj.animObj[0].rotation = goalRotMind;
-                     if (shieldObj.impactVisibleTime > 0) {
+                     if (!shieldObj.isLocked) {
+                        shieldObj.animObj[0].rotation = goalRotMind;
+                     }
+                     if (shieldObj.isBlasting) {
+                         shieldObj.animObj[2].visible = true;
+                         let impactRotation = goalRotMind + shieldObj.animObj[2].rotateOffset;
+                         shieldObj.animObj[2].rotation = impactRotation;
+                         shieldObj.animObj[2].x = shieldObj.animObj[2].startX + Math.sin(impactRotation) * 210;
+                         shieldObj.animObj[2].y = shieldObj.animObj[2].startY - Math.cos(impactRotation) * 210 + 220;
+                     } else if (shieldObj.impactVisibleTime > 0) {
                          shieldObj.animObj[2].visible = true;
                          shieldObj.impactVisibleTime = Math.max(0, shieldObj.impactVisibleTime - dScale);
                          let impactRotation = goalRotMind + shieldObj.animObj[2].rotateOffset;
@@ -1156,28 +1164,19 @@ const ENABLE_KEYBOARD = true;
                      if (distFromCenter < painStartRot) {
                          if (!shieldObj.active) {
                              shieldObj.active = true;
-                             shieldObj.animObj[0].alpha = 0.85;
                              this.scene.tweens.add({
                                  targets: shieldObj.animObj[0],
                                  duration: 275,
-                                 scaleX: shieldObj.animObj[0].origScaleX,
-                                 easeParams: [3],
+                                 scaleX: shieldObj.animObj[0].origScaleX * 1.05,
+                                 easeParams: [4],
                                  scaleY: 1,
                                  ease: 'Back.easeOut',
                              });
-                             this.scene.tweens.add({
-                                 targets: shieldObj.animObj[1],
-                                 scaleX: shieldObj.animObj[1].origScale,
-                                 scaleY: shieldObj.animObj[1].origScale,
-                                 duration: 250,
-                                 alpha: 0.12,
-                                 ease: 'Back.easeOut',
-                             });
+                             // reticle
                          }
                      } else if (distFromCenter > painStartRot * 1.1) {
                          if (shieldObj.active) {
                              shieldObj.active = false;
-                             shieldObj.animObj[0].alpha = 0.55;
                              if (shieldObj.animObj[0].currAnim) {
                                  shieldObj.animObj[0].currAnim.stop();
                              }
@@ -1185,21 +1184,13 @@ const ENABLE_KEYBOARD = true;
                                  targets: shieldObj.animObj[0],
                                  duration: 275,
                                  scaleX: shieldObj.animObj[0].origScaleX - 0.2,
-                                 scaleY: 0.98,
+                                 scaleY: 0.985,
                                  ease: 'Cubic.easeOut'
                              });
-                             if (!shieldObj.isBlasting) {
-                                 this.scene.tweens.add({
-                                     targets: shieldObj.animObj[1],
-                                     scaleX: shieldObj.animObj[1].origScale * 0.95,
-                                     scaleY: shieldObj.animObj[1].origScale * 0.6,
-                                     ease: 'Cubic.easeOut',
-                                     duration: 250,
-                                     alpha: 0,
-                                 });
-                             }
                          }
                      }
+                    shieldObj.animObj[0].alpha = shieldObj.active ? 0.82 : 0.5;
+                    shieldObj.animObj[1].visible = shieldObj.active;
 
                      break;
                  case 'matter':
@@ -2345,15 +2336,40 @@ const ENABLE_KEYBOARD = true;
             return;
         }
         let baseScale = 0.7 + Math.sqrt(damage) * 0.1;
-         this.voidSliceImage1.alpha = 0.5;
-         this.voidSliceImage3.alpha = 0.5;
-         this.voidSliceImage1.setScale(baseScale * 0.8, baseScale * 0.1);
+         this.voidSliceImage1.alpha = 0.75;
+         this.voidSliceImage3.alpha = 0.75;
+         this.voidSliceImage1.setScale(baseScale * 0.8, baseScale * 0.95);
+         this.voidSliceImage3.setScale(baseScale * 0.8, baseScale * 0.95);
          this.scene.tweens.add({
              targets: [this.voidSliceImage1, this.voidSliceImage3],
              ease: 'Cubic.easeOut',
-             scaleX: baseScale * 0.6,
-             scaleY: baseScale,
+             scaleX: baseScale * 0.68,
+             scaleY: baseScale * 0.8,
+             alpha: 0.45,
              duration: 150,
+         });
+         if (this.voidSliceImage1.anim) {
+            this.voidSliceImage1.anim.stop();
+            this.voidSliceImage3.anim.stop();
+         }
+
+        this.voidSliceImage1.anim = this.scene.tweens.add({
+            delay: 180,
+             targets: this.voidSliceImage1,
+             scaleX: baseScale * 0.5,
+             scaleY: baseScale * 0.95,
+             alpha: 0.65,
+             ease: 'Quad.easeOut',
+             duration: 200,
+         });
+        this.voidSliceImage3.anim = this.scene.tweens.add({
+            delay: 180,
+             targets: this.voidSliceImage3,
+             scaleX: baseScale * 0.45,
+             scaleY: baseScale * 1,
+             alpha: 0.7,
+             ease: 'Quad.easeOut',
+             duration: 3000,
          });
 
          let effectName = 'voidBurn';
@@ -2381,6 +2397,9 @@ const ENABLE_KEYBOARD = true;
      }
 
      fireVoidSpike(spike, baseScale, damage) {
+        if (spike.anim) {
+            spike.anim.stop();
+        }
         spike.alpha = 1;
         playSound('void_strike', 0.3);
         setTimeout(() => {

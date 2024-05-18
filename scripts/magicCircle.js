@@ -383,7 +383,7 @@ const ENABLE_KEYBOARD = true;
         this.voidArm2.bonusRotation = 0;
 
         this.delayDamageSand = scene.add.sprite(x - 200, y - 195, 'circle', 'delayed_damage_amt.png');
-        this.delayDamageHourglass = scene.add.sprite(x - 200, y - 195, 'circle', 'delayed_damage.png');
+        this.delayDamageHourglass = scene.add.sprite(x - 240, y - 120, 'circle', 'delayed_damage.png');
 
         this.delayDamageSand.setDepth(101);
         this.delayDamageSand.alpha = 0;
@@ -512,9 +512,9 @@ const ENABLE_KEYBOARD = true;
         // this.timeStopLight = this.scene.add.sprite(this.x, this.y, 'blackPixel');
         // this.timeStopLight.alpha = 0;
         // this.timeStopLight.setScale(999);
-        this.timeStopHeavy = this.scene.add.sprite(this.x, this.y, 'circle', 'time_stop.png');
+        this.timeStopHeavy = this.scene.add.sprite(this.x, this.y, 'spells', 'blackCircleLarge.png');
         this.timeStopHeavy.alpha = 0;
-        this.timeStopHeavy.setScale(1.95);
+        this.timeStopHeavy.setScale(1.7);
 
         this.clockbg = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 2, 'lowq', 'clockbg.png').setAlpha(0).setScale(1.06);
         this.clockbg.setDepth(1);
@@ -584,8 +584,8 @@ const ENABLE_KEYBOARD = true;
         this.timeStopHeavy.y = 150;
         this.scene.tweens.add({
             targets: this.timeStopHeavy,
-            scaleX: 8,
-            scaleY: 8,
+            scaleX: 7,
+            scaleY: 7,
             alpha: 0.8,
             ease: 'Cubic.easeIn',
             duration: 280,
@@ -637,13 +637,13 @@ const ENABLE_KEYBOARD = true;
      manualSetTimeSlowRatio(slowRatio = 1, multiplier = 1) {
         this.setTimeSlowRatio(slowRatio / multiplier, true);
          this.timeStopHeavy.y = this.y;
-         this.timeStopHeavy.setScale(1.95);
+         this.timeStopHeavy.setScale(1.7);
          this.timeStopHeavy.setAlpha(1);
          let multiplierAddition = Math.max(0, (multiplier - 2) / multiplier);
          this.scene.tweens.add({
              targets: this.timeStopHeavy,
-             scaleX: 8,
-             scaleY: 8,
+             scaleX: 7,
+             scaleY: 7,
              alpha: 0.8 + multiplierAddition * 0.2,
              ease: 'Cubic.easeIn',
              duration: 280,
@@ -1688,15 +1688,15 @@ const ENABLE_KEYBOARD = true;
         castCircle.rotation = 0;
 
         sprite.setPosition(this.x + Math.sin(elem.rotation) * 115, this.y - Math.cos(elem.rotation) * 115);
-        sprite.setScale(1.07);
+        sprite.setScale(1.16);
         sprite.setAlpha(1);
         castCircle.setPosition(sprite.x, sprite.y);
 
         this.scene.tweens.add({
             targets: sprite,
             duration: 400,
-            scaleX: 1.02,
-            scaleY: 1.02
+            scaleX: 1.03,
+            scaleY: 1.03
         });
 
         this.scene.tweens.add({
@@ -1768,15 +1768,15 @@ const ENABLE_KEYBOARD = true;
         castCircle.rotation = 0;
 
         sprite.setPosition(this.x + Math.sin(elem.rotation) * 175, this.y - Math.cos(elem.rotation) * 175);
-        sprite.setScale(1.07);
+        sprite.setScale(1.16);
         sprite.setAlpha(1);
         castCircle.setPosition(sprite.x, sprite.y);
 
         this.scene.tweens.add({
             targets: sprite,
             duration: 400,
-            scaleX: 1.02,
-            scaleY: 1.02
+            scaleX: 1.03,
+            scaleY: 1.03
         });
 
         this.scene.tweens.add({
@@ -1949,12 +1949,8 @@ const ENABLE_KEYBOARD = true;
                 if (this.delayedDamage < this.delayedDamageCurrCap) {
                     this.delayDamageSand.setAlpha(0.75);
                 }
-                // Too much stored damage
-                if (this.delayedDamage < this.delayedDamageCurrCap * 1.25) {
-                    this.tickDelayedDamage();
-                } else {
-                    this.tickDelayedDamage(2);
-                }
+                this.tickDelayedDamage();
+
 
                 this.delayedDamageShouldTick = false;
                 if (this.delayedDamage <= 0) {
@@ -1970,11 +1966,6 @@ const ENABLE_KEYBOARD = true;
                     this.delayedDamageCurrMax = this.delayedDamageCurrCap * 0.5;
                 }
             } else {
-                if (this.delayedDamage > this.delayedDamageCurrCap * 2) {
-                    this.tickDelayedDamage(2);
-                } else if (this.delayedDamage > this.delayedDamageCurrCap) {
-                    this.tickDelayedDamage(1);
-                }
                 this.delayedDamageShouldTick = true;
             }
         }
@@ -2054,14 +2045,13 @@ const ENABLE_KEYBOARD = true;
              if (this.delayedDamage > this.delayedDamageCurrMax) {
                  this.delayedDamageCurrMax = this.delayedDamage;
              }
-             let scaleAmtTotal = Math.min(0.6, this.delayedDamageCurrMax / this.delayedDamageCurrCap);
+             let scaleAmtTotal = 0.5;
             let textScaleFinal = Math.sqrt(scaleAmtTotal * 2) * 0.75;
-            let sandScaleFinal = 0.03 + scaleAmtTotal * this.delayedDamage / this.delayedDamageCurrMax
              if (oldDelayedDamage <= 0) {
                  // animation in
                  this.delayDamageHourglass.setScale(scaleAmtTotal - 0.3);
                  this.delayDamageText.setScale(textScaleFinal - 0.3);
-                 this.delayDamageSand.setScale(sandScaleFinal - 0.3);
+
                  this.delayDamageHourglass.setRotation(0.5);
                  this.delayDamageSand.setRotation(0.5);
                  this.delayDamageHourglass.setAlpha(0.5);
@@ -2096,15 +2086,6 @@ const ENABLE_KEYBOARD = true;
                      duration: 250,
                      alpha: 1
                  });
-                 this.scene.tweens.add({
-                     targets: [this.delayDamageSand],
-                     ease: 'Cubic.easeOut',
-                     rotation: 0,
-                     scaleX: sandScaleFinal,
-                     scaleY: sandScaleFinal,
-                     duration: 250,
-                     alpha: 1
-                 });
              }
 
 
@@ -2112,6 +2093,7 @@ const ENABLE_KEYBOARD = true;
                  this.delayDamageSand.setAlpha(1);
              }
          }
+         return this.delayedDamage;
      }
 
      reduceDelayedDamage(amt) {
@@ -2338,12 +2320,12 @@ const ENABLE_KEYBOARD = true;
         let baseScale = 0.7 + Math.sqrt(damage) * 0.1;
          this.voidSliceImage1.alpha = 0.75;
          this.voidSliceImage3.alpha = 0.75;
-         this.voidSliceImage1.setScale(baseScale * 0.8, baseScale * 0.95);
-         this.voidSliceImage3.setScale(baseScale * 0.8, baseScale * 0.95);
+         this.voidSliceImage1.setScale(baseScale * 0.4, baseScale * 0.95);
+         this.voidSliceImage3.setScale(baseScale * 0.4, baseScale * 0.95);
          this.scene.tweens.add({
              targets: [this.voidSliceImage1, this.voidSliceImage3],
              ease: 'Cubic.easeOut',
-             scaleX: baseScale * 0.68,
+             scaleX: baseScale * 0.8,
              scaleY: baseScale * 0.8,
              alpha: 0.45,
              duration: 150,

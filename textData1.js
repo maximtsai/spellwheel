@@ -29,7 +29,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    matter_reinforce_desc: {en_us: 'When attacked,\nreduce damage\ntaken by 2 and\nreturn 2 damage',
+    matter_reinforce_desc: {en_us: 'When attacked,\nreduce damage\ntaken by 2 and\nreturn 1 damage',
         fr: '',
         zh_cn: '',
         ru: '',

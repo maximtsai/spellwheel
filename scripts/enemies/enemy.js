@@ -1015,6 +1015,7 @@ class Enemy {
 
     setAsleep() {
         this.isAsleep = true;
+        this.isUsingAttack = false;
         this.chargeBarWarning.visible = false;
         this.chargeBarWarningBig.visible = false;
         this.chargeBarAngry.visible = false;
@@ -1032,7 +1033,9 @@ class Enemy {
             ease: "Cubic.easeOut",
             duration: 400,
         });
-        this.attackName.visible = false;
+        if (this.attackName) {
+            this.attackName.visible = false;
+        }
     }
 
     setAwake() {
@@ -1357,6 +1360,13 @@ class Enemy {
         this.attackCharge = 0;
         this.attackCooldown = this.delayBetweenAttacks;
         this.chargeBarCurr.alpha = 1;
+        this.attackName.setText(" ");
+        this.isUsingAttack = false;
+        if (this.attackAnim) {
+            this.attackAnim.stop();
+        }
+
+        this.sprite.setScale(this.sprite.startScale);
     }
 
     setNextAttack(set, index = 0) {
@@ -1474,7 +1484,6 @@ class Enemy {
         let timeSlowMult = gameVars.timeSlowRatio < 0.9 ? 0.5 : 1;
 
         let durationPullback = isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult : 300 * extraTimeMult * pullbackDurMult;
-        console.log("launch attack");
         if (prepareSprite) {
             if (isRepeatedAttack) {
                 setTimeout(() => {

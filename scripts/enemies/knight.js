@@ -3,7 +3,7 @@
          super(scene, x, y, level);
          this.initSprite('void_knight.png', 1);// 0.7
          this.sprite.setOrigin(0.5, 0.5); // 0.9
-         this.bgMusic = playSound('battle_2_half', 0.8, true);
+         this.bgMusic = playSound('into_the_void', 0.8, true);
          this.shieldAdded = false;
          this.initMisc();
          setTimeout(() => {
@@ -542,7 +542,7 @@
                      name: "|10 ",
                      announceName: "INITIAL STRIKE",
                      desc: "The mysterious knight charges at you!",
-                     chargeAmt: 550,
+                     chargeAmt: 575,
                      damage: 10,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
@@ -870,12 +870,12 @@
          this.setDefaultSprite('void_knight_3_empty.png');
          this.sprite.setDepth(2);
          playSound('meat_click_right');
-         this.setMaxHealth(gameVars.isHardMode ? 90 : 75);
+         this.setMaxHealth(gameVars.isHardMode ? 95 : 75);
          this.heal(this.healthMax);
          this.setAwake();
          this.sigilEffect.setFrame('void_knight_sigil2.png').setScale(this.sprite.startScale);
          this.repeatTweenBreathe();
-         this.bgMusic = playSound('battle_2_full', 1, true);
+         this.bgMusic = playSound('and_into_the_void', 1, true);
          this.currentAttackSetIndex = 5;
          this.nextAttackIndex = 0;
          this.isLoading = false;
@@ -1101,7 +1101,9 @@
          this.isPulsing = false;
          this.interruptCurrentAttack();
          this.setAsleep();
-         this.bgMusic.stop();
+         if (this.bgMusic) {
+            this.bgMusic.stop();
+         }
          this.sigilEffect.alpha = 0;
          this.breatheTween.stop();
          if (this.breatheTween2) {
@@ -1112,6 +1114,7 @@
          if (this.isFirstMode) {
              this.animateDeathOne();
              this.createDeathEffect(7, 0.75, 90);
+
          } else {
              super.die();
              PhaserScene.tweens.add({
@@ -1160,8 +1163,27 @@
                         });
 
                         let rune = this.scene.add.sprite(this.x + 22, this.y + 90, 'tutorial', 'rune_void_large.png').setScale(0.5).setDepth(9999);
+                        this.flash = this.scene.add.sprite(rune.x, rune.y, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
+
+                         PhaserScene.tweens.add({
+                             targets: this.flash,
+                             scaleX: this.sprite.startScale * 3.5,
+                             scaleY: this.sprite.startScale * 0.05,
+                             duration: 300,
+                         });
+                         PhaserScene.tweens.add({
+                             targets: this.flash,
+                             duration: 300,
+                             ease: 'Quad.easeIn',
+                             alpha: 0,
+                             onComplete: () => {
+                                 this.flash.destroy();
+                             }
+                         });
+
                         playSound('victory_2');
                         PhaserScene.tweens.add({
+                            delay: 10,
                             targets: rune,
                             x: gameConsts.halfWidth,
                             y: gameConsts.halfHeight - 180,

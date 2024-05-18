@@ -1,7 +1,7 @@
 const audioFiles = [
     {name: 'fightbg1', src: 'audio/fightbg1.mp3'},
-    {name: 'battle_2_full', src: 'audio/battle_2_full.mp3'},
-    {name: 'battle_2_half', src: 'audio/battle_2_half.mp3'},
+    {name: 'and_into_the_void', src: 'audio/and_into_the_void.mp3'},
+    {name: 'into_the_void', src: 'audio/into_the_void.mp3'},
     {name: 'echos_of_time', src: 'audio/echos_of_time.mp3'},
     {name: 'echos_of_time_finale', src: 'audio/echos_of_time_finale.mp3'},
 

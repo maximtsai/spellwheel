@@ -262,7 +262,7 @@ class SpellManager {
         brickObj.setScale(0.8);
         brickObj2.setScale(0.8);
         let protectionAmt = 2;
-        let damageAmt = 2;
+        let damageAmt = 1;
         let duration = 400 + 50 * spellMult;
         setTimeout(() => {
             playSound('matter_body');

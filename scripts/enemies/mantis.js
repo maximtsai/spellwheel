@@ -136,8 +136,8 @@
                      chargeAmt: 250,
                      damage: -1,
                      startFunction: () => {
-                        this.setDefaultSprite('mantis_unveiled.png')
-
+                        this.setDefaultSprite('mantis_unveiled.png');
+                        this.pullbackDurMult = 0.01;
                      },
                      attackStartFunction: () => {
 
@@ -169,6 +169,9 @@
                         this.backForthAnim();
                         this.repeatTweenBreathe();
                      },
+                     attackFinishFunction: () => {
+                        this.pullbackDurMult = 1;
+                     }
                  },
 
              ]

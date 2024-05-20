@@ -160,7 +160,7 @@ const textData = {
     },
 
     // ================== Tutorial ================
-    matter_tut_desc: {en_us: 'The Matter rune grants\ncontrol of the physical.\nMatter spells are blunt and\ngood at dealing direct damage\nor providing reliable protection.',
+    matter_tut_desc: {en_us: 'The Matter rune grants control\nover the physical.\nMatter spells are good at\ndealing direct damage and\nproviding reliable protection.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -196,7 +196,7 @@ const textData = {
         ru: '',
         es: '',
         jp: ''},
-    mind_tut_desc: {en_us: 'The Energy rune grants\ncontrol of raw energy.\nEnergy spells have powerful\nsupportive effects and can\ndeal damage that bypasses\nenemy shields.',
+    mind_tut_desc: {en_us: 'The Energy rune grants control\ncover raw energy.\nEnergy spells have powerful\nsupportive effects and can\ndeal damage that bypasses\nenemy shields.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -270,7 +270,7 @@ const textData = {
         es: '',
         jp: ''},
 
-    void_tut_desc: {en_us: 'The Void rune grants control\nof the dark power of emptiness.\nVoid spells can deal percentage\nhealth damage, negate enemy\nattacks, or even fully heal\nyou, but at a cost.',
+    void_tut_desc: {en_us: 'The Void rune grants control\nover the dark power of emptiness.\nVoid spells can deal percentage\nhealth damage, negate enemy\nattacks, or even fully heal\nyou, but at a cost.',
         fr: '',
         zh_cn: '',
         ru: '',

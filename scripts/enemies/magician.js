@@ -16,7 +16,7 @@
     }
 
      initStatsCustom() {
-         this.health = 65;
+         this.health = 70;
          this.damageNumOffset = 45;
          this.timeObjects = [];
          this.initTemporalObjects();
@@ -307,7 +307,7 @@
 
      setupTimeShield() {
         let lostHealth = this.healthMax - this.health;
-         this.heal(Math.floor(lostHealth * 0.5));
+         this.heal(Math.floor(lostHealth * 0.4));
          this.specialDamageAbsorptionActive = true;
 
          this.clockShield = PhaserScene.add.sprite(gameConsts.halfWidth, this.y, 'spells', 'clock_back_large_red.png').setDepth(1).setAlpha(0.75);

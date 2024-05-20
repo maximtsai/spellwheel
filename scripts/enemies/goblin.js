@@ -57,7 +57,7 @@
              [
                  // 0
                  {
-                     name: gameVars.isHardMode ? "}8 " : "}5 ",
+                     name: gameVars.isHardMode ? "}8 " : "}4 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
                      chargeAmt: 350,
                      damage: gameVars.isHardMode ? 8 : 5,

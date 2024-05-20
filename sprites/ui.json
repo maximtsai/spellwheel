@@ -5,7 +5,7 @@
 			"format": "RGBA5555",
 			"size": {
 				"w": 1017,
-				"h": 1535
+				"h": 1575
 			},
 			"scale": 1,
 			"frames": [
@@ -73,6 +73,48 @@
 					}
 				},
 				{
+					"filename": "battleOverScreen.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 563,
+						"h": 612
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 5,
+						"w": 547,
+						"h": 603
+					},
+					"frame": {
+						"x": 1,
+						"y": 473,
+						"w": 547,
+						"h": 603
+					}
+				},
+				{
+					"filename": "credits.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 450,
+						"h": 550
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 450,
+						"h": 550
+					},
+					"frame": {
+						"x": 550,
+						"y": 521,
+						"w": 450,
+						"h": 550
+					}
+				},
+				{
 					"filename": "nextLevel_hover.png",
 					"rotated": false,
 					"trimmed": false,
@@ -94,48 +136,6 @@
 					}
 				},
 				{
-					"filename": "battleOverScreen.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 512,
-						"h": 556
-					},
-					"spriteSourceSize": {
-						"x": 11,
-						"y": 9,
-						"w": 488,
-						"h": 538
-					},
-					"frame": {
-						"x": 1,
-						"y": 473,
-						"w": 488,
-						"h": 538
-					}
-				},
-				{
-					"filename": "credits.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 450,
-						"h": 550
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 450,
-						"h": 550
-					},
-					"frame": {
-						"x": 491,
-						"y": 521,
-						"w": 450,
-						"h": 550
-					}
-				},
-				{
 					"filename": "locket2.png",
 					"rotated": false,
 					"trimmed": true,
@@ -151,7 +151,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 1013,
+						"y": 1078,
 						"w": 432,
 						"h": 468
 					}
@@ -172,7 +172,7 @@
 					},
 					"frame": {
 						"x": 435,
-						"y": 1073,
+						"y": 1078,
 						"w": 541,
 						"h": 443
 					}
@@ -192,8 +192,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1,
-						"y": 1483,
+						"x": 435,
+						"y": 1523,
 						"w": 180,
 						"h": 51
 					}
@@ -213,8 +213,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 183,
-						"y": 1483,
+						"x": 617,
+						"y": 1523,
 						"w": 139,
 						"h": 51
 					}
@@ -234,8 +234,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 183,
-						"y": 1483,
+						"x": 617,
+						"y": 1523,
 						"w": 139,
 						"h": 51
 					}
@@ -255,8 +255,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 183,
-						"y": 1483,
+						"x": 617,
+						"y": 1523,
 						"w": 139,
 						"h": 51
 					}
@@ -267,6 +267,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:9fa6dc72f7cee51b2e1622a165bdf079:b596269b052293fa1f37a6262fd59bb4:6af6d199855d1c5980a61db04791f8fb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:fc9cb8311b3f55f4163919f1595b6275:ba1f66fcc528ae593f44d0820ac584ef:6af6d199855d1c5980a61db04791f8fb$"
 	}
 }

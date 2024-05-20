@@ -16,10 +16,10 @@ function beginLevel(lvl) {
     switch(lvl) {
         case 0:
             // zoomInCurrBackground(1500, 2, 'Cubic.easeIn');
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1.25, 1.25, 'Quart.easeIn', 0, false, -50);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1.25, 1.25, 'Quart.easeIn', 0, false, -55);
             break;
         case 1:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1, 1, 'Quart.easeIn', 0, false, -15);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1.3, 1.3, 'Quart.easeIn', 0, false, -55);
             break;
         case 2:
             fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 'Quart.easeIn', 0, false, -65);
@@ -34,11 +34,10 @@ function beginLevel(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 'Quart.easeIn', 0, false, 1);
             break;
         case 6:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1, 1, 'Quart.easeIn', 0, false);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1.1, 1.1, 'Quart.easeIn', 0, false);
             break;
-
         case 7:
-            fadeInBackgroundAtlas('backgrounds', 'star.png', 1500, 5, 0.935, 'Quart.easeIn', 0, true, -1);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 5, 0.935, 'Quart.easeIn', 0, true, -1);
             break;
         case 8:
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 1, 1, 'Quart.easeIn', 0, false);

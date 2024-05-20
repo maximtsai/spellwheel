@@ -182,6 +182,18 @@ class PostFightScreen {
                                 x: gameConsts.width * 0.9,
                                 ease: 'Cubic.easeOut',
                                 duration: 1000,
+                                onComplete: () => {
+                                    let oldScale = this.locketSprite.scaleX;
+                                    this.locketSprite.setFrame('locket2.png').setScale(oldScale * 1.05);
+                                    PhaserScene.tweens.add({
+                                        targets: this.locketSprite,
+                                        scaleY: oldScale,
+                                        scaleX: oldScale,
+                                        ease: 'Back.easeOut',
+                                        duration: 300,
+
+                                    });
+                                }
                             });
                         }
                     });
@@ -223,7 +235,7 @@ class PostFightScreen {
     openLocket() {
         if (this.locketSprite) {
             this.locketIsOpen = true;
-            this.locketSprite.setFrame('locket2.png');
+            this.locketSprite.setFrame('locket3.png');
             PhaserScene.tweens.add({
                 targets: [this.locketSprite],
                 x: gameConsts.halfWidth + 120,
@@ -274,7 +286,7 @@ class PostFightScreen {
         this.titleText.setText("Fight Complete");
         this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
         this.healthLeftText.setText("Health Left: " + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
-        this.codeText.setText("LEVEL CODE: ABCDE\n(Lets you skip past the dummy level)");
+        this.codeText.setText("LEVEL CODE: placeholder\n(placeholder)");
         this.locketDialog = this.getLevelDialog(level);
 
         globalObjects.bannerTextManager.setDialog(this.locketDialog);

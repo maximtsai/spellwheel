@@ -415,7 +415,7 @@ function setupGame() {
     }
 
     gameVars.started = true;
-    PhaserScene.sound.pauseOnBlur = false;
+    // PhaserScene.sound.pauseOnBlur = false;
 
     createAnimations(PhaserScene);
 

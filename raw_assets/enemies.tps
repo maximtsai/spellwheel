@@ -643,18 +643,18 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/lesser_dummy_head.png</key>
+            <key type="filename">enemies/lesser_dummy_noshadow.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.8</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>24,24,47,47</rect>
+                <rect>58,78,115,155</rect>
                 <key>scale9Paddings</key>
-                <rect>24,24,47,47</rect>
+                <rect>58,78,115,155</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -786,21 +786,6 @@
                 <rect>143,130,285,260</rect>
                 <key>scale9Paddings</key>
                 <rect>143,130,285,260</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/max_death_2x - Copy.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>275,170,550,340</rect>
-                <key>scale9Paddings</key>
-                <rect>275,170,550,340</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1167,22 +1152,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/super_dummy_2.png</key>
-            <key type="filename">enemies/super_dummy_3.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>366,269,731,539</rect>
-                <key>scale9Paddings</key>
-                <rect>366,269,731,539</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">enemies/super_dummy_angry.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -1195,6 +1164,144 @@
                 <rect>100,85,200,170</rect>
                 <key>scale9Paddings</key>
                 <rect>100,85,200,170</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/super_dummy_broken.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>83,92,166,183</rect>
+                <key>scale9Paddings</key>
+                <rect>83,92,166,183</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/super_dummy_dab2.png</key>
+            <key type="filename">enemies/super_dummy_dab_right.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>132,120,263,240</rect>
+                <key>scale9Paddings</key>
+                <rect>132,120,263,240</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/super_dummy_dab_left.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>132,103,263,205</rect>
+                <key>scale9Paddings</key>
+                <rect>132,103,263,205</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/super_dummy_fist.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>56,48,112,97</rect>
+                <key>scale9Paddings</key>
+                <rect>56,48,112,97</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/super_dummy_leftarm.png</key>
+            <key type="filename">enemies/super_dummy_rightarm.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>70,73,139,146</rect>
+                <key>scale9Paddings</key>
+                <rect>70,73,139,146</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/super_dummy_leftarm_fist.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>92,120,185,240</rect>
+                <key>scale9Paddings</key>
+                <rect>92,120,185,240</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/super_dummy_leftarm_stretch.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>92,95,185,191</rect>
+                <key>scale9Paddings</key>
+                <rect>92,95,185,191</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/super_dummy_pushup1.png</key>
+            <key type="filename">enemies/super_dummy_pushup2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>92,148,183,295</rect>
+                <key>scale9Paddings</key>
+                <rect>92,148,183,295</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/super_dummy_stars.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>71,92,143,183</rect>
+                <key>scale9Paddings</key>
+                <rect>71,92,143,183</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

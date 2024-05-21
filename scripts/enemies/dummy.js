@@ -2,7 +2,7 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('dummy.png', 0.95,0, 5);
-        this.bgMusic = playSound('fightbg1', 0.7, true);
+        this.bgMusic = playSound('bite_down_simplified', 0.65, true);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
                 // this.initTutorial2();
@@ -156,12 +156,14 @@
          if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.95) {
              this.angryEyes = true;
              this.flash = this.scene.add.sprite(this.x, this.y - 90, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
-
+            fadeAwaySound(this.bgMusic, 200);
              PhaserScene.tweens.add({
                  targets: this.flash,
                  scaleX: this.sprite.startScale * 3.5,
                  scaleY: this.sprite.startScale * 0.05,
                  duration: 300,
+                 onStart: () => {
+                 }
              });
              PhaserScene.tweens.add({
                  targets: this.flash,
@@ -177,17 +179,21 @@
                  targets: this.sprite,
                  scaleX: this.sprite.startScale + 0.2,
                  scaleY: this.sprite.startScale + 0.2,
-                 duration: 500,
+                 duration: 600,
+                 completeDelay: 50,
                  ease: 'Quart.easeOut',
                  onComplete: () => {
                      this.currAnim = PhaserScene.tweens.add({
                          targets: this.sprite,
                          scaleX: this.sprite.startScale,
                          scaleY: this.sprite.startScale,
-                         duration: 375,
+                         duration: 400,
                          ease: 'Quart.easeIn',
                          onComplete: () => {
                              zoomTemp(1.03);
+                             playSound('punch');
+                            this.bgMusic = playSound('bite_down', 0.75, true);
+
                              this.setAwake();
                              this.currentAttackSetIndex = 0;
                              this.nextAttackIndex = 0;

@@ -7,6 +7,7 @@ class PostFightScreen {
         this.spellsCastText = null;
         this.healthLeftText = null;
         this.locketSprite = null;
+        this.locketDialog = null;
         this.locketDialogIndex = 0;
     }
 
@@ -20,7 +21,7 @@ class PostFightScreen {
             this.backing = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 30, 'ui', 'battleOverScreen.png').setDepth(100000).setAlpha(0);
         }
         if (!this.titleText) {
-            this.titleText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 250, '(placeholder title)', {fontFamily: 'Garamond', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.titleText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 255, '(placeholder title)', {fontFamily: 'Garamond', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.spellsCastText) {
             this.spellsCastText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 160, 'Spells Cast:', {fontFamily: 'Garamond', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
@@ -32,8 +33,15 @@ class PostFightScreen {
             this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 30, 'placeholder code: ', {fontFamily: 'Garamond', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
         }
         if (!this.locketSprite) {
-            this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 370, 'ui', 'locket1.png').setScale(0.75).setDepth(100002).setAlpha(0).setOrigin(0.5, 0.1);
+            this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 380, 'ui', 'locket1.png').setScale(0.75).setDepth(100002).setAlpha(0).setOrigin(0.5, 0.1);
         }
+        if (!this.locketDialog) {
+            this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 220, '(placeholder story)', {fontFamily: 'Garamond', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
+        }
+        if (!this.flashObj) {
+            this.flashObj = this.scene.add.sprite(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'lowq', 'flash.webp').setScale(0).setRotation(-0.2).setDepth(100002).setAlpha(0.5);
+        }
+
         if (!this.continueButton) {
             this.continueButton = new Button({
                 normal: {
@@ -101,6 +109,7 @@ class PostFightScreen {
                 onMouseUp: () => {
                     if (!this.locketIsOpen) {
                         this.openLocket();
+
                     } else if (this.locketIsClosable) {
                         this.locketSprite.setFrame('locket1.png');
                         this.locketSprite.setScale(this.locketSprite.scaleX + 0.02);
@@ -191,7 +200,31 @@ class PostFightScreen {
                                         scaleX: oldScale,
                                         ease: 'Back.easeOut',
                                         duration: 300,
+                                    });
 
+                                    this.flashObj.alpha = 0.5;
+                                    this.scene.tweens.add({
+                                        targets: this.flashObj,
+                                        scaleX: 1.7,
+                                        scaleY: 1.7,
+                                        ease: 'Cubic.easeIn',
+                                        rotation: "+=0.1",
+                                        duration: 300,
+                                        alpha: 1,
+                                        onComplete: () => {
+                                            this.scene.tweens.add({
+                                                targets: this.flashObj,
+                                                scaleX: 0,
+                                                scaleY: 0,
+                                                ease: 'Cubic.easeOut',
+                                                rotation: "+=0.15",
+                                                duration: 500,
+                                                onComplete: () => {
+                                                    this.flashObj.alpha = 0;
+                                                    this.flashObj.rotation = -0.2;
+                                                }
+                                            });
+                                        }
                                     });
                                 }
                             });
@@ -230,35 +263,43 @@ class PostFightScreen {
             ease: 'Cubic.easeInOut',
             duration: 700
         });
+        this.returnStatText();
     }
 
     openLocket() {
         if (this.locketSprite) {
             this.locketIsOpen = true;
             this.locketSprite.setFrame('locket3.png');
+            this.locketSprite.setScale(this.locketSprite.scaleX + 0.02);
             PhaserScene.tweens.add({
                 targets: [this.locketSprite],
-                x: gameConsts.halfWidth + 120,
-                y: gameConsts.halfHeight - 310,
-                duration: 410,
-                ease: 'Cubic.easeOut'
+                scaleX: 0.75,
+                scaleY: 0.75,
+                y: '-=15',
+                x: "+=10",
+                ease: 'Cubic.easeOut',
+                duration: 250,
             });
-            PhaserScene.tweens.add({
-                targets: [this.locketSprite],
-                scaleX: 1,
-                scaleY: 1,
-                duration: 410,
-                ease: 'Quad.easeOut'
-            });
-            globalObjects.bannerTextManager.showBanner();
-            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
-            globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                this.closeLocket();
-            });
+            this.showStoryText(this.currLevel);
+            // PhaserScene.tweens.add({
+            //     targets: [this.locketSprite],
+            //     x: gameConsts.halfWidth + 120,
+            //     y: gameConsts.halfHeight - 310,
+            //     duration: 410,
+            //     ease: 'Cubic.easeOut'
+            // });
+            // PhaserScene.tweens.add({
+            //     targets: [this.locketSprite],
+            //     scaleX: 1,
+            //     scaleY: 1,
+            //     duration: 410,
+            //     ease: 'Quad.easeOut'
+            // });
         }
     }
 
     createWinScreen(level = 0) {
+        this.currLevel = level;
         this.createWinScreenUI(level);
         this.continueButton.setOnMouseUpFunc(() => {
             this.clearPostFightScreen();
@@ -287,7 +328,7 @@ class PostFightScreen {
         this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
         this.healthLeftText.setText("Health Left: " + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
         this.codeText.setText("LEVEL CODE: placeholder\n(placeholder)");
-        this.locketDialog = this.getLevelDialog(level);
+        this.locketDialog.setText(this.getStoryDialog(level));
 
         globalObjects.bannerTextManager.setDialog(this.locketDialog);
     }
@@ -307,6 +348,93 @@ class PostFightScreen {
         });
     }
 
+    showStoryText(level) {
+        let objectsToFade = [this.spellsCastText, this.healthLeftText, this.codeText];
+
+        PhaserScene.tweens.add({
+            delay: 100,
+            targets: this.locketDialog,
+            alpha: 1,
+            ease: 'Cubic.easeIn',
+            duration: 500,
+        });
+        PhaserScene.tweens.add({
+            targets: objectsToFade,
+            alpha: 0,
+            ease: 'Cubic.easeOut',
+            duration: 500,
+        });
+        PhaserScene.tweens.add({
+            targets: this.titleText,
+            alpha: 0.1,
+            ease: 'Cubic.easeOut',
+            duration: 300,
+            onComplete: () => {
+                this.titleText.setText('DAY ' + level);
+                PhaserScene.tweens.add({
+                    targets: this.titleText,
+                    alpha: 1,
+                    duration: 350,
+                });
+            }
+        });
+    }
+
+    returnStatText() {
+        let objectsToFade = [this.titleText, this.spellsCastText, this.healthLeftText, this.codeText];
+        PhaserScene.tweens.add({
+            targets: this.locketDialog,
+            alpha: 0,
+            ease: 'Cubic.easeOut',
+            duration: 500,
+        });
+        PhaserScene.tweens.add({
+            delay: 100,
+            targets: objectsToFade,
+            alpha: 1,
+            ease: 'Cubic.easeIn',
+            duration: 500,
+        });
+    }
+
+    getStoryDialog(level) {
+        switch(level) {
+            case 0:
+                return "And so my journey begins.\nIt won't be long before\nI see you again, Rosemary."
+            case 1:
+                return "Finally, I've found\nthe entry way to\nyour resting place.\n\n"+
+                "Almost immediately I can feel\nthis place trying to prevent me from\ngoing further.\n\n"+
+                "But I know I will find you here dear\nRosemary, and no creature or construct\nwill stop me from reaching you."
+            case 2:
+                return "Finally, I've found the\nthe entry way to\nthe mystical land of\nthe dead.\n\n"+
+                "Almost immediately I can feel\nthis place trying to resist\nmy entry.\n\n"+
+                "But I know you are here my Rosemary,\nand no creature or construct will stop me\nfrom reaching you."
+            case 3:
+                return "DAY 3\n\ntest";
+
+            case 4:
+                return "DAY 4\n\ntest";
+
+            case 5:
+                return "DAY 5\n\ntest";
+
+            case 6:
+                return "DAY 6\n\ntest";
+
+            case 7:
+                return "DAY 7\n\ntest";
+
+            case 8:
+                return "DAY 8\n\ntest";
+
+            case 9:
+                return "DAY 9\n\ntest";
+
+            default:
+                return "..."
+        }
+    }
+
     getLevelDialog(level) {
         switch(level) {
             case 0:
@@ -316,8 +444,8 @@ class PostFightScreen {
                 break;
             case 1:
                 return [
-                    "Rosemary my beloved, your death was in vain.",
-                    "This is my journey to the other side\nto bring you back again."
+                    "DAY 1",
+                    "I'm sure this is the right place."
                 ]
                 break;
             case 2:
@@ -326,43 +454,43 @@ class PostFightScreen {
                     "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
                 ]
                 break;
-            case 2:
+            case 3:
                 return [
                     "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
                     "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
                 ]
                 break;
-            case 2:
+            case 4:
                 return [
                     "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
                     "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
                 ]
                 break;
-            case 2:
+            case 5:
                 return [
                     "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
                     "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
                 ]
                 break;
-            case 2:
+            case 6:
                 return [
                     "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
                     "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
                 ]
                 break;
-            case 2:
+            case 7:
                 return [
                     "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
                     "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
                 ]
                 break;
-            case 2:
+            case 8:
                 return [
                     "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
                     "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
                 ]
                 break;
-            case 2:
+            case 9:
                 return [
                     "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
                     "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."

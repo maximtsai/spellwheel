@@ -2,7 +2,7 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('lesser_dummy.png', 0.8, 0, 5);
-        this.bgMusic = playSound('fightbg1', 0.6, true);
+        this.bgMusic = playSound('bite_down_simplified', 0.6, true);
         this.sprite.setOrigin(0.5, 0.99);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
@@ -324,6 +324,9 @@
 
              }
          });
+        this.setDefaultSprite('lesser_dummy_noshadow.png', this.sprite.scaleX);
+        this.sprite.setOrigin(0.5, 0.99);
+
          PhaserScene.tweens.add({
              targets: this.sprite,
              rotation: -1,

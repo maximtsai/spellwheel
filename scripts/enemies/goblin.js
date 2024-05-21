@@ -2,7 +2,7 @@
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
          this.initSprite('gobbo0.png', 0.92);
-         this.bgMusic = playSound('fightbg1', 0.7, true);
+         this.bgMusic = playSound('bite_down', 0.7, true);
          this.shieldAdded = false;
 
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
@@ -285,6 +285,7 @@
              ease: "Cubic.easeIn",
              duration: 25,
              onComplete: () => {
+                 playSound('goblin_grunt');
                  this.setDefaultSprite('gobboDead.png');
                  this.sprite.setRotation(0);
                  this.x -= 5;

@@ -4,6 +4,7 @@
          this.initSprite('robot0.png', 1);
          this.shieldAdded = false;
          this.sprite.startY = y;
+        this.bgMusic = playSound('jpop', 0.9, true);
 
          setTimeout(() => {
              globalObjects.magicCircle.disableMovement();
@@ -80,19 +81,19 @@
          this.tunnelBG = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight * 0.7, 'backgrounds', 'tunnel2.png').setScale(1).setDepth(-9).setAlpha(0).setOrigin(0.5, 0.35);
          this.scene.tweens.add({
              targets: this.tunnelBG,
-             duration: 1400,
+             duration: 1600,
              alpha: 1,
          });
          this.scene.tweens.add({
              targets: [this.sprite],
-             duration: 700,
+             duration: 800,
              scaleX: this.sprite.startScale * 1.25,
              scaleY: this.sprite.startScale * 1.25,
              ease: 'Cubic.easeOut',
              onComplete: () => {
                  this.scene.tweens.add({
                      targets: [this.sprite],
-                     duration: 700,
+                     duration: 800,
                      scaleX: this.sprite.startScale * 0.98,
                      scaleY: this.sprite.startScale * 0.98,
                      ease: 'Cubic.easeIn',
@@ -159,7 +160,7 @@
          });
          this.scene.tweens.add({
              targets: this.eyeShine,
-             duration: 700,
+             duration: 800,
              alpha: 0.95,
              scaleX: this.sprite.startScale * 1.5,
              scaleY: this.sprite.startScale * 1.5,
@@ -169,7 +170,7 @@
              onComplete: () => {
                  this.scene.tweens.add({
                      targets: this.eyeShine,
-                     duration: 700,
+                     duration: 800,
                      alpha: 1.3,
                      scaleX: this.sprite.startScale * 2.5,
                      scaleY: this.sprite.startScale * 2.5,

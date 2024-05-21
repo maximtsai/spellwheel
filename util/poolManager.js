@@ -31,9 +31,12 @@ function getTempPoolObject(atlas, name, poolName, duration = 250) {
     let effect = poolManager.getItemFromPool(poolName);
     if (!effect) {
         effect = PhaserScene.add.sprite(0, 0, atlas, name);
+    } else {
+        effect.setFrame(name).setAlpha(1).setVisible(true).setRotation(0)
     }
-    setTimeout(() => {
+    PhaserScene.time.delayedCall(duration, () => {
         poolManager.returnItemToPool(effect, poolName);
-    }, duration)
+    });
+
     return effect;
 }

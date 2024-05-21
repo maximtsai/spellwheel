@@ -281,8 +281,17 @@
                             }
                         });
                     }
+                    let powSize = hits < 2 ? 1.25 : 1;
                     if (i == 2) {
                         messageBus.publish("selfTakeDamage", damage);
+
+                         let powEffect = getTempPoolObject('circle', 'blastEffect0.png', 'blastEffect', 300);
+                         let randX = 140 * (Math.random() - 0.5)
+                         powEffect.setPosition(gameConsts.halfWidth + randX, globalObjects.player.getY() - 210 + Math.abs(randX) * 0.3).setDepth(998).play('blastEffect').setScale(powSize).setRotation(Math.random() * 6);
+                    } else if (i == 5) {
+                        let powEffect = getTempPoolObject('circle', 'blastEffect0.png', 'blastEffect', 300);
+                         let randX = 140 * (Math.random() - 0.5)
+                         powEffect.setPosition(gameConsts.halfWidth + randX, globalObjects.player.getY() - 210 + Math.abs(randX) * 0.3).setDepth(998).play('blastEffect').setScale(powSize).setRotation(Math.random() * 6);
                     } else if (i == 6) {
                         this.repeatGunSequenceA(damage, hits - 1);
                     }

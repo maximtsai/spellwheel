@@ -2318,6 +2318,8 @@ const ENABLE_KEYBOARD = true;
             return;
         }
         let baseScale = 0.7 + Math.sqrt(damage) * 0.1;
+        this.voidSliceImage1.visible = true;
+        this.voidSliceImage3.visible = true;
          this.voidSliceImage1.alpha = 0.75;
          this.voidSliceImage3.alpha = 0.75;
          this.voidSliceImage1.setScale(baseScale * 0.4, baseScale * 0.95);
@@ -2433,8 +2435,8 @@ const ENABLE_KEYBOARD = true;
 
 
      clearEffects() {
-         this.voidSliceImage1.alpha = 0;
-         this.voidSliceImage3.alpha = 0;
+        this.voidSliceImage1.visible = false;
+        this.voidSliceImage3.visible = false;
          this.mindBurnAnim.alpha = 0;
          this.removeDelayedDamage();
      }

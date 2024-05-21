@@ -127,7 +127,17 @@ function createAnimations(scene) {
         }),
         frameRate: 10
     });
-
+    scene.anims.create({
+        key: 'blastEffect',
+        frames: scene.anims.generateFrameNames('circle', {
+            prefix: 'blastEffect',
+            suffix: '.png',
+            start: 0,
+            end: 6,
+            zeroPad: 0,
+        }),
+        frameRate: 24
+    });
     scene.anims.create({
         key: 'powerEffect',
         frames: scene.anims.generateFrameNames('spells', {

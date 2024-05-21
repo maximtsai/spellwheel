@@ -1330,11 +1330,10 @@
          })
          playSound(sfx);
          messageBus.publish("selfTakeDamage", damage);
-         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 250);
-         let randVal = Math.random() - 0.5;
-         let yOffset = Math.abs(randVal) * 10 + Math.random() * 5;
-         powEffect.setPosition(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 170 + yOffset).setDepth(998).setScale(1.5);
-         powEffect.play('damageEffect')
+         let powEffect = getTempPoolObject('circle', 'blastEffect0.png', 'blastEffect', 300);
+         let randX = 100 * (Math.random() - 0.5)
+         powEffect.setPosition(gameConsts.halfWidth + randX, globalObjects.player.getY() - 210 + Math.abs(randX) * 0.3).setDepth(998).play('blastEffect').setScale(1.5).setRotation(Math.random() * 6);
+
      }
 
      shootBullets(damage = 4, initDelay = 150) {

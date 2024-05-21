@@ -237,9 +237,10 @@ class PostFightScreen {
 
     clearPostFightScreen(clearFog = true) {
         PhaserScene.tweens.add({
-            targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.locketSprite, this.codeText],
+            targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.locketSprite, this.codeText, this.locketDialog],
             alpha: 0,
-            duration: 500,
+            ease: 'Quad.easeOut',
+            duration: 700,
         });
         globalObjects.bannerTextManager.setOnFinishFunc(() => {});
         globalObjects.bannerTextManager.closeBanner();

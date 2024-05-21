@@ -89,7 +89,9 @@ class Enemy {
         this.attackScaleDefault = this.attackScale;
         this.curse = 0;
         this.lastAttackLingerMult = 1;
+        this.extraRepeatDelay = 0;
         this.attackSlownessMult = 1;
+         this.pullbackHoldRatio = 0.5;
 
         this.initStatsCustom();
 
@@ -146,6 +148,31 @@ class Enemy {
             delay: this.healthBarLengthMax * 5 + 150,
             targets: [this.healthBarCurr, this.healthBarText],
             duration: 250,
+            alpha: 1
+        });
+    }
+
+    loadUpHealthBarSecond() {
+        this.healthBarLengthMax = 45 + Math.floor(Math.sqrt(this.healthMax) * 5.5);
+        this.healthBarMaxGoalScale = this.healthBarLengthMax + 3;
+        this.scene.tweens.add({
+            targets: [this.healthBarMax],
+            duration: 100 + this.healthBarLengthMax * 5,
+            scaleX: this.healthBarMaxGoalScale,
+            ease: 'Quint.easeInOut',
+        });
+
+        this.scene.tweens.add({
+            targets: [this.healthBarCurr],
+            duration: 100 + this.healthBarLengthMax * 5,
+            x: this.x - this.healthBarLengthMax - 1,
+            scaleX: this.healthBarLengthMax + 1,
+            ease: 'Quint.easeInOut',
+        });
+
+        this.scene.tweens.add({
+            targets: [this.healthBarCurr, this.healthBarText],
+            duration: 400,
             alpha: 1
         });
     }
@@ -584,7 +611,6 @@ class Enemy {
         }
         this.nextAttack = this.attacks[this.currentAttackSetIndex][this.nextAttackIndex];
         if (!this.nextAttack) {
-            console.warn("missing attack");
             this.nextAttackIndex = 0;
             this.nextAttack = this.attacks[this.currentAttackSetIndex][this.nextAttackIndex];
         }
@@ -1483,12 +1509,14 @@ class Enemy {
         pullbackDurMult *= this.pullbackDurMult ? this.pullbackDurMult : 1;
         let timeSlowMult = gameVars.timeSlowRatio < 0.9 ? 0.5 : 1;
 
-        let durationPullback = isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult : 300 * extraTimeMult * pullbackDurMult;
+        let durationPullback = isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult + this.extraRepeatDelay : 300 * extraTimeMult * pullbackDurMult;
+        console.log(isRepeatedAttack, this.extraRepeatDelay);
+
         if (prepareSprite) {
             if (isRepeatedAttack) {
                 setTimeout(() => {
                     this.setSpriteIfNotInactive(prepareSprite, this.sprite.startScale);
-                }, durationPullback * 0.5);
+                }, durationPullback * this.pullbackHoldRatio);
             } else {
                 this.setSpriteIfNotInactive(prepareSprite, this.sprite.startScale);
             }

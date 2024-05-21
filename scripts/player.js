@@ -476,6 +476,9 @@ class Player {
             return;
         }
 
+        if (globalObjects.currentEnemy.dead) {
+            return;
+        }
         this.health = Math.max(0, this.health - damageTaken);
         if (damageTaken >= 1) {
             let isEmergency = origHealth > this.healthMax * 0.2 && this.health < this.healthMax * 0.2;

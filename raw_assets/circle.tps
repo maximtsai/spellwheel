@@ -218,6 +218,51 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">circle/blastEffect0.png</key>
+            <key type="filename">circle/blastEffect1.png</key>
+            <key type="filename">circle/blastEffect3.png</key>
+            <key type="filename">circle/blastEffect5.png</key>
+            <key type="filename">circle/blastEffect6.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>32,32,65,65</rect>
+                <key>scale9Paddings</key>
+                <rect>32,32,65,65</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">circle/blastEffect2.png</key>
+            <key type="filename">circle/blastEffect4.png</key>
+            <key type="filename">circle/circleEffect1.png</key>
+            <key type="filename">circle/circleEffect10.png</key>
+            <key type="filename">circle/circleEffect2.png</key>
+            <key type="filename">circle/circleEffect3.png</key>
+            <key type="filename">circle/circleEffect4.png</key>
+            <key type="filename">circle/circleEffect5.png</key>
+            <key type="filename">circle/circleEffect6.png</key>
+            <key type="filename">circle/circleEffect7.png</key>
+            <key type="filename">circle/circleEffect8.png</key>
+            <key type="filename">circle/circleEffect9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>31,31,63,63</rect>
+                <key>scale9Paddings</key>
+                <rect>31,31,63,63</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">circle/border.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -298,30 +343,6 @@
                 <rect>103,103,205,205</rect>
                 <key>scale9Paddings</key>
                 <rect>103,103,205,205</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">circle/circleEffect1.png</key>
-            <key type="filename">circle/circleEffect10.png</key>
-            <key type="filename">circle/circleEffect2.png</key>
-            <key type="filename">circle/circleEffect3.png</key>
-            <key type="filename">circle/circleEffect4.png</key>
-            <key type="filename">circle/circleEffect5.png</key>
-            <key type="filename">circle/circleEffect6.png</key>
-            <key type="filename">circle/circleEffect7.png</key>
-            <key type="filename">circle/circleEffect8.png</key>
-            <key type="filename">circle/circleEffect9.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>31,31,63,63</rect>
-                <key>scale9Paddings</key>
-                <rect>31,31,63,63</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

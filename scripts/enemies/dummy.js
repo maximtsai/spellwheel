@@ -30,6 +30,7 @@
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 100 : 70;
          this.isAsleep = true;
+        this.attackScale = 1.23;
      }
 
 
@@ -65,14 +66,15 @@
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
-            globalObjects.textPopupManager.setInfoText(gameConsts.width - 120, 275, "Enemies become\nangry when\nattacked!", 'left');
+            this.timeSinceLastAttacked = -50;
+            globalObjects.textPopupManager.setInfoText(gameConsts.width - 80, 275, "Enemies get\nangry when\nattacked!", 'left');
             if (this.rune1) {
                 this.rune1.destroy();
                 this.rune2.destroy();
             }
             this.timeSinceLastAttacked = 0;
 
-            messageBus.publish('setSlowMult', 0.25, 250);
+            messageBus.publish('setSlowMult', 0.25, 200);
             let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             PhaserScene.tweens.add({
                 targets: glowBar,
@@ -83,7 +85,7 @@
                 duration: 800,
                 onComplete: () => {
                     this.glowBarAnim = PhaserScene.tweens.add({
-                        delay: 3500,
+                        delay: 2750,
                         targets: glowBar,
                         alpha: 0,
                         scaleY: 5,
@@ -155,7 +157,7 @@
 
          if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.95) {
              this.angryEyes = true;
-             this.flash = this.scene.add.sprite(this.x, this.y - 90, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
+             this.flash = this.scene.add.sprite(this.x + 3, this.y - 65, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
             fadeAwaySound(this.bgMusic, 200);
              PhaserScene.tweens.add({
                  targets: this.flash,
@@ -197,7 +199,7 @@
                              this.setAwake();
                              this.currentAttackSetIndex = 0;
                              this.nextAttackIndex = 0;
-                             this.brows = this.scene.add.sprite(this.x - 3, this.y - 70, 'enemies', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(999);
+                             this.brows = this.scene.add.sprite(this.x , this.y - 39, 'enemies', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(999);
                              PhaserScene.tweens.add({
                                  targets: this.brows,
                                  scaleX: this.sprite.startScale * 2.2,
@@ -241,7 +243,8 @@
                                  ease: 'Quad.easeIn',
                              });
 
-                             let shinePattern = this.scene.add.sprite(this.x, this.y, 'spells', 'brickPattern2.png').setScale(this.sprite.startScale + 0.25).setDepth(-1);
+                             let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 1000);
+                             shinePattern.setPosition(this.x, this.y).setScale(this.sprite.startScale + 0.25).setDepth(-1);
                              PhaserScene.tweens.add({
                                  targets: shinePattern,
                                  scaleX: this.sprite.startScale * 0.5,
@@ -254,9 +257,6 @@
                                  alpha: 0,
                                  ease: 'Cubic.easeIn',
                                  duration: 1000,
-                                 onComplete: () => {
-                                     shinePattern.destroy();
-                                 }
                              });
                          }
                      });
@@ -267,8 +267,8 @@
          if (prevHealthPercent >= 0.95) {
              if (currHealthPercent < 0.95) {
                  this.canAngryEyes = true;
-                 this.eyes = this.scene.add.sprite(this.x - 3, this.y - 80, 'enemies', 'dummyeyes.png').setOrigin(0.5, 0.75).setScale(this.sprite.startScale, 0);
-                 this.addExtraSprite(this.eyes, -3, -79)
+                 this.eyes = this.scene.add.sprite(this.x + 1 , this.y - 41, 'enemies', 'dummyeyes.png').setOrigin(0.5, 0.75).setScale(this.sprite.startScale, 0);
+                 this.addExtraSprite(this.eyes, 1, -40)
                  PhaserScene.tweens.add({
                      targets: this.eyes,
                      scaleY: this.sprite.startScale,

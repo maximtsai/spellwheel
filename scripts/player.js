@@ -655,39 +655,6 @@ class Player {
                 case 'mind':
                     break;
                 case 'time':
-                    if (hurtAmt > 1 && shieldObj.active) {
-                        playSound('time_strike_hit');
-
-                        shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 1.3, shieldObj.animObj[0].scaleY);
-                        shieldObj.shakeAmt = 0.05 + hurtAmt * 0.005;
-                        shieldObj.animObj[0].alpha = 1;
-                        this.scene.tweens.add({
-                            targets: shieldObj.animObj[0],
-                            duration: 250,
-                            alpha: 0.85,
-                            scaleX: shieldObj.animObj[0].origScaleX,
-                            ease: 'Cubic.easeIn'
-                        });
-
-                        let isWithinLimit = globalObjects.magicCircle.delayedDamage + hurtAmt <= shieldObj.maxAmt;
-                        if (isWithinLimit) {
-                            messageBus.publish('playerAddDelayedDamage', hurtAmt);
-                            hurtAmt = 0;
-                        } else {
-                            let remainingAmt = shieldObj.maxAmt - globalObjects.magicCircle.delayedDamage;
-                            hurtAmt -= remainingAmt;
-                            globalObjects.magicCircle.delayedDamage -= remainingAmt;
-                            messageBus.publish('playerAddDelayedDamage', remainingAmt);
-                        }
-
-                        if (globalObjects.magicCircle.delayedDamage > shieldObj.maxAmt) {
-                            messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'OVERLOADED', 1, {y: "+=10"}, {alpha: 0, scaleX: 1, scaleY: 1});
-                            shieldObj.animObj.cleanUp();
-                        } else {
-                            messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'DELAYED', 1.2);
-                        }
-                        messageBus.publish('tempPause', 100);
-                    }
                     break;
                 case 'void':
                     // completely negates the attack
@@ -865,6 +832,41 @@ class Player {
                                     shieldObj.cleanUp(this.statuses);
                                 }
                             });
+                        }
+                        break;
+                    case 'time':
+                        if (hurtAmt > 1 && shieldObj.active) {
+                            playSound('time_strike_hit');
+
+                            shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 1.3, shieldObj.animObj[0].scaleY);
+                            shieldObj.shakeAmt = 0.05 + hurtAmt * 0.005;
+                            shieldObj.animObj[0].alpha = 1;
+                            this.scene.tweens.add({
+                                targets: shieldObj.animObj[0],
+                                duration: 250,
+                                alpha: 0.85,
+                                scaleX: shieldObj.animObj[0].origScaleX,
+                                ease: 'Cubic.easeIn'
+                            });
+
+                            let isWithinLimit = globalObjects.magicCircle.delayedDamage + hurtAmt <= shieldObj.maxAmt;
+                            if (isWithinLimit) {
+                                messageBus.publish('playerAddDelayedDamage', hurtAmt);
+                                hurtAmt = 0;
+                            } else {
+                                let remainingAmt = shieldObj.maxAmt - globalObjects.magicCircle.delayedDamage;
+                                hurtAmt -= remainingAmt;
+                                globalObjects.magicCircle.delayedDamage -= remainingAmt;
+                                messageBus.publish('playerAddDelayedDamage', remainingAmt);
+                            }
+
+                            if (globalObjects.magicCircle.delayedDamage > shieldObj.maxAmt) {
+                                messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'OVERLOADED', 1, {y: "+=10"}, {alpha: 0, scaleX: 1, scaleY: 1});
+                                shieldObj.animObj.cleanUp();
+                            } else {
+                                messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'DELAYED', 1.2);
+                            }
+                            messageBus.publish('tempPause', 100);
                         }
                         break;
                 }

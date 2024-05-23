@@ -199,7 +199,7 @@
                              this.setAwake();
                              this.currentAttackSetIndex = 0;
                              this.nextAttackIndex = 0;
-                             this.brows = this.scene.add.sprite(this.x , this.y - 39, 'enemies', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(999);
+                             this.brows = this.scene.add.sprite(this.x , this.y - 36, 'enemies', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(999);
                              PhaserScene.tweens.add({
                                  targets: this.brows,
                                  scaleX: this.sprite.startScale * 2.2,

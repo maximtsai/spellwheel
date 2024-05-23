@@ -11,12 +11,18 @@
         setTimeout(() => {
             this.customBgMusic = playSound('magician_theme_1', 0.95, true);
         }, 1500)
+        
+
+        this.magicianReaped = messageBus.subscribe('reapedEnemyGong', () => {
+            this.zoomAwayClocks();
+        });
+
         this.sprite.startY = this.sprite.y;
         this.repeatTweenBreathe();
     }
 
      initStatsCustom() {
-         this.health = 70;
+         this.health = 65;
          this.damageNumOffset = 45;
          this.timeObjects = [];
          this.initTemporalObjects();
@@ -54,7 +60,7 @@
          }
          if (this.usingTimeFreeze) {
              // no change
-         } else if (currHealthPercent < 0.999 && !this.usedTimeShield) {
+         } else if (currHealthPercent < 0.999 && !this.preppingTimeShield) {
              this.currentAttackSetIndex = 1;
              this.nextAttackIndex = 0;
          } else if (this.health <= 14 && this.usedTimeShield && !this.isTerrified) {
@@ -65,9 +71,6 @@
              this.startReaper();
              if (this.customBgMusic) {
                  fadeAwaySound(this.customBgMusic, 1000, '');
-             }
-             if (this.clocktickbg) {
-                 fadeAwaySound(this.clocktickbg, 1000, '');
              }
              setTimeout(() => {
                  if (!this.dead) {
@@ -104,9 +107,6 @@
          if (this.magicianTimeEpicTheme) {
              this.magicianTimeEpicTheme.stop();
          }
-         if (this.clocktickbg) {
-             this.clocktickbg.stop();
-         }
          globalObjects.magicCircle.cancelTimeSlow();
          if (this.clockShield) {
              this.clockShield.alpha += 0.15;
@@ -131,7 +131,6 @@
              scaleX: 0,
              scaleY: 0,
              duration: 300,
-             ease: 'Quad.easeInOut',
              rotation: "+=3",
              onComplete: () => {
                  for (let i = 0; i < this.timeObjects.length; i++) {
@@ -139,6 +138,17 @@
                  }
                  this.timeObjects = [];
              }
+         });
+     }
+
+     zoomAwayClocks() {
+        this.scene.tweens.add({
+             targets: this.timeFallObjs,
+             scaleX: 0,
+             scaleY: 0,
+             duration: 600,
+             ease: 'Quad.easeOut',
+             rotation: "+=3"
          });
      }
 
@@ -176,6 +186,7 @@
         if (this.customBgMusic) {
             this.customBgMusic.stop();
         }
+        this.magicianReaped.unsubscribe();
      }
 
      showRune() {
@@ -307,7 +318,8 @@
 
      setupTimeShield() {
         let lostHealth = this.healthMax - this.health;
-         this.heal(Math.floor(lostHealth * 0.4));
+        lostHealth = Math.max(0, lostHealth - 12);
+         this.heal(Math.floor(lostHealth * 0.5));
          this.specialDamageAbsorptionActive = true;
 
          this.clockShield = PhaserScene.add.sprite(gameConsts.halfWidth, this.y, 'spells', 'clock_back_large_red.png').setDepth(1).setAlpha(0.75);
@@ -352,6 +364,16 @@
                      } else {
                          healthText.setText(Math.max(0, statusObj.duration - 1));
                          this.setHealth(this.health - 1);
+
+                         if (!this.isTerrified && !this.freezingTime) {
+                            if (this.health % 2 == 0) {
+                                if (this.health % 4 == 0) {
+                                    playSound('clocktick2', 1);
+                                } else {
+                                    playSound('clocktick1', 1);
+                                }
+                            }
+                         }
                      }
                  },
                  cleanUp: () => {
@@ -500,7 +522,7 @@
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
                      chargeAmt: 350,
                      damage: -1,
-                     prepareSprite: 'time_magi_cast_big.png',
+                     prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
                          this.createTimeObject('clock2.png', this.x - 110, this.y - 70);
                          this.createTimeObject('clock3.png', this.x - 35, this.y - 100);
@@ -517,9 +539,10 @@
                      chargeAmt: 250,
                      prepareSprite: 'time_magi_cast_big.png',
                      startFunction: () => {
-                         this.usedTimeShield = true;
+                        this.preppingTimeShield = true;
                      },
                      attackFinishFunction: () => {
+                         this.usedTimeShield = true;
                          playSound('time_shield', 0.6)
                          this.setupTimeShield();
                          this.currentAttackSetIndex = 3;
@@ -629,58 +652,61 @@
                      }
                  },
                  {
-                     name: "TIME-STOPPED ATTACK |6x4 ",
+                     name: "TIME-ATTACK |4x6 ",
                      desc: "A devastating barrage\nof offensive magic.",
-                     chargeAmt: 500,
+                     chargeAmt: 550,
                      chargeMult: 16,
                      prepareSprite: 'time_magi_cast_big.png',
                      startFunction: () => {
                      },
                      attackStartFunction: () => {
-                         this.createTimeObject('clock3.png', this.x - 150, 115, 200);
-                         this.createTimeObject('clock4.png', this.x - 50, 100, 300);
-                         this.createTimeObject('clock3.png', this.x + 50, 105, 400);
-                         this.createTimeObject('clock4.png', this.x + 150, 115, 500);
+                         this.createTimeObject('clock2.png', this.x - 150, 115, 75);
+                         this.createTimeObject('clock4.png', this.x - 90, 100, 150);
+                         this.createTimeObject('clock3.png', this.x - 30, 105, 225);
+                         this.createTimeObject('clock3.png', this.x + 30, 105, 300);
+                         this.createTimeObject('clock4.png', this.x + 90, 115, 375);
+                         this.createTimeObject('clock2.png', this.x + 150, 110, 450);
                      },
                      attackFinishFunction: () => {
                          setTimeout(() => {
-                             this.fireTimeObjects(6);
+                             this.fireTimeObjects(4);
                          }, 400);
                      }
                  },
                  {
-                     name: "TIME-STOPPED ATTACK |6x6 ",
+                     name: "TIME-ATTACK |4x7 ",
                      desc: "A devastating barrage\nof offensive magic.",
-                     chargeAmt: 750,
+                     chargeAmt: 700,
                      chargeMult: 16,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
-                         this.createTimeObject('clock4.png', this.x - 200, 105, 100);
-                         this.createTimeObject('clock3.png', this.x - 120, 115, 200);
-                         this.createTimeObject('clock4.png', this.x - 40, 85, 300);
-                         this.createTimeObject('clock3.png', this.x + 40, 105, 400);
-                         this.createTimeObject('clock4.png', this.x + 120, 100, 500);
-                         this.createTimeObject('clock3.png', this.x + 200, 125, 500);
+                         this.createTimeObject('clock2.png', this.x - 220, 125, 75);
+                         this.createTimeObject('clock3.png', this.x - 150, 115, 150);
+                         this.createTimeObject('clock4.png', this.x - 75, 100, 225);
+                         this.createTimeObject('clock3.png', this.x, 105, 300);
+                         this.createTimeObject('clock4.png', this.x + 75, 115, 375);
+                         this.createTimeObject('clock3.png', this.x + 150, 110, 450);
+                         this.createTimeObject('clock2.png', this.x + 220, 125, 525);
                      },
                      attackFinishFunction: () => {
                          setTimeout(() => {
-                             this.fireTimeObjects(6);
+                             this.fireTimeObjects(4);
                          }, 500);
                      }
                  },
                  {
-                     name: "TIME-STOPPED ATTACK |20 ",
+                     name: "TIME-ATTACK |20 ",
                      desc: "A devastating barrage\nof offensive magic.",
                      chargeAmt: 750,
                      chargeMult: 16,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
-                         this.createTimeObject('clock1.png', this.x - 95, 80, 100, 1.4);
+                         this.createTimeObjectHuge('clock1.png', this.x - 95, 60, 100, 1.4);
                      },
                      attackFinishFunction: () => {
                          setTimeout(() => {
                              this.fireTimeObjects(20, 500);
-                         }, 300);
+                         }, 350);
                      }
                  },
                  {
@@ -699,10 +725,6 @@
                          globalObjects.magicCircle.cancelTimeSlow();
                          if (!this.dead) {
                              setTimeout(() => {
-                                 if (!this.isTerrified) {
-                                     this.clocktickbg = playSound('clocktick', 0.2, true);
-                                     fadeInSound(this.clocktickbg, 1)
-                                 }
                                  fadeAwaySound(this.magicianTimeEpicTheme, 1500);
                              }, 1500);
                          }
@@ -792,6 +814,42 @@
          });
      }
 
+     createTimeObjectHuge(name, x, y, delay = 0, durMult = 1) {
+         let newObj = PhaserScene.add.sprite(x, y, 'enemies', name).setRotation((Math.random() - 0.5) * 3).setScale(0).setDepth(110);
+         newObj.durMult = durMult;
+         newObj.endScale = 1.4;
+         this.timeObjects.push(newObj);
+         this.scene.tweens.add({
+             delay: delay,
+             targets: newObj,
+             scaleX: 0.9,
+             scaleY: 0.9,
+             ease: 'Back.easeOut',
+             easeParams: [2],
+             rotation: '+=1',
+             duration: 350,
+             onStart: () => {
+                 playSound('time_strike');
+             },
+             onComplete: () => {
+                 this.scene.tweens.add({
+                    delay: 100,
+                     targets: newObj,
+                     scaleX: 1.4,
+                     scaleY: 1.4,
+                     ease: 'Back.easeOut',
+                     easeParams: [2.5],
+                     rotation: '+=1',
+                     duration: 400,
+                     onStart: () => {
+                         let sfx = playSound('time_strike', 1.2);
+                         sfx.detune = 500;
+                     }
+                 });
+             }
+         });
+     }
+
      fireTimeObjects(damage = 10, durBonus = 0) {
          let totalTimeObjects = this.timeObjects.length;
          let projDur = 550 - Math.floor(Math.sqrt(totalTimeObjects) * 50) + durBonus;
@@ -807,9 +865,6 @@
                  ease: 'Quad.easeIn',
                  duration: projDur,
                  rotation: (Math.random() - 0.5) * 3,
-                 onStart: () => {
-                     currObj.setScale(1);
-                 },
                  onComplete: () => {
                      currObj.destroy();
                      let dur = 280 - Math.sqrt(totalTimeObjects) * 40;

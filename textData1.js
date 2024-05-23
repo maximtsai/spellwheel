@@ -29,7 +29,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    matter_reinforce_desc: {en_us: 'When attacked,\nreduce damage\ntaken by 2 and\nreturn 1 damage',
+    matter_reinforce_desc: {en_us: 'When attacked,\ntake 1 less\ndamage and deal\n1 damage back',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -108,7 +108,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    void_unload_desc: {en_us: 'Damage 12% of\nenemy current HP\nand disrupt their\naction',
+    void_unload_desc: {en_us: 'Damage 10% of\nenemy current HP\nand disrupt their\naction',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -308,7 +308,7 @@ const textData = {
         jp: ''},
 
 
-    protect_tut_desc: {en_us: 'The Shield rune lets you create\nshields that offer protection\nas long as it\'s positioned\nbetween you and the enemy.',
+    protect_tut_desc: {en_us: 'The Shield rune lets you create\nshields that protect you\nas long as it\'s positioned\nbetween you and the enemy.',
         fr: '',
         zh_cn: '',
         ru: '',

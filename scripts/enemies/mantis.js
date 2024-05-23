@@ -49,7 +49,7 @@
      }
 
      initAttacks() {
-        let attackDamages = 14;
+        let attackDamages = 12;
         let attackTimes = 16;
          this.attacks = [
              [
@@ -64,9 +64,11 @@
                         playSound('enemy_attack');
                         setTimeout(() => {
                             playSound('enemy_attack_2');
+                            this.angrySymbol.x += 29;
                             this.attackName.setText("|;"+attackDamages+"x"+attackTimes+";| ");
                             setTimeout(() => {
                                 playSound('enemy_attack_major');
+                                this.angrySymbol.x += 28;
                                 this.attackName.setText("}|;"+attackDamages+"x"+attackTimes+";|} ");
                             }, 550);
                         }, 550);
@@ -286,11 +288,11 @@
                         messageBus.publish("selfTakeDamage", damage);
 
                          let powEffect = getTempPoolObject('circle', 'blastEffect0.png', 'blastEffect', 300);
-                         let randX = 140 * (Math.random() - 0.5)
+                         let randX = 90 * (Math.random() - 1)
                          powEffect.setPosition(gameConsts.halfWidth + randX, globalObjects.player.getY() - 210 + Math.abs(randX) * 0.3).setDepth(998).play('blastEffect').setScale(powSize).setRotation(Math.random() * 6);
                     } else if (i == 5) {
                         let powEffect = getTempPoolObject('circle', 'blastEffect0.png', 'blastEffect', 300);
-                         let randX = 140 * (Math.random() - 0.5)
+                         let randX = 90 * Math.random()
                          powEffect.setPosition(gameConsts.halfWidth + randX, globalObjects.player.getY() - 210 + Math.abs(randX) * 0.3).setDepth(998).play('blastEffect').setScale(powSize).setRotation(Math.random() * 6);
                     } else if (i == 6) {
                         this.repeatGunSequenceA(damage, hits - 1);

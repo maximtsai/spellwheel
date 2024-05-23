@@ -35,7 +35,8 @@ const audioFiles = [
     {name: 'mind_ultimate_loop_2', src: 'audio/mind_ultimate_loop_2.mp3'},
 
     {name: 'tickslow', src: 'audio/tickslow.mp3'},
-    {name: 'clocktick', src: 'audio/clocktick.mp3'},
+    {name: 'clocktick1', src: 'audio/clocktick1.mp3'},
+    {name: 'clocktick2', src: 'audio/clocktick2.mp3'},
     {name: 'time_body', src: 'audio/time_body.mp3'},
     {name: 'time_strike', src: 'audio/time_strike.mp3'},
     {name: 'time_strike_hit', src: 'audio/time_strike_hit.mp3'},
@@ -92,6 +93,7 @@ const audioFiles = [
     {name: 'enemy_attack_major', src: 'audio/enemy_attack_major.mp3'},
     {name: 'body_slam', src: 'audio/body_slam.mp3'},
     {name: 'punch', src: 'audio/punch.mp3'},
+    {name: 'punch2', src: 'audio/punch2.mp3'},
     {name: 'sword_slice', src: 'audio/sword_slice.mp3'},
     {name: 'sword_hit', src: 'audio/sword_hit.mp3'},
     {name: 'stone_wheel', src: 'audio/stone_wheel.mp3'},
@@ -103,6 +105,7 @@ const audioFiles = [
     {name: 'missile_launch_2', src: 'audio/missile_launch_2.mp3'},
     {name: 'guncock', src: 'audio/guncock.mp3'},
     {name: 'derp', src: 'audio/derp.mp3'},
+    {name: 'balloon', src: 'audio/balloon.mp3'},
     {name: 'death_attack', src: 'audio/death_attack.mp3'},
 
     {name: 'magician_end', src: 'audio/magician_end.mp3'},

@@ -103,6 +103,7 @@ function getFogSwirlGlow() {
 
 function playReaperAnim(enemy, customFinFunc) {
     playSound('sound_of_death');
+                            messageBus.publish('reapedEnemyGong')
     globalObjects.magicCircle.disableMovement();
     let level = enemy.getLevel();
     let floatingDeath = getFloatingDeath();
@@ -183,6 +184,7 @@ function playReaperAnim(enemy, customFinFunc) {
                                 enemy.customBgMusic.stop();
                             }
                             playSound(globalObjects.reapSound || 'death_attack');
+                            messageBus.publish('reapedEnemyGong')
                             globalObjects.reapSound = null;
                             let fogSlice = getFogSlice();
 

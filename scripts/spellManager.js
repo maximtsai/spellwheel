@@ -261,7 +261,7 @@ class SpellManager {
         brickObj2.alpha = 0.02;
         brickObj.setScale(0.8);
         brickObj2.setScale(0.8);
-        let protectionAmt = 2;
+        let protectionAmt = 1;
         let damageAmt = 1;
         let duration = 400 + 50 * spellMult;
         setTimeout(() => {
@@ -2353,7 +2353,7 @@ class SpellManager {
             voidObjPre.rotation = Math.random() * 6.28;
             voidObjPre.setAlpha(0.05);
             voidObjPre.setScale(1 + 0.25 * i);
-            voidObjPre.setDepth(10);
+            voidObjPre.setDepth(12);
             this.scene.tweens.add({
                 targets: voidObjPre,
                 delay: i * 50,
@@ -2381,7 +2381,7 @@ class SpellManager {
         }
 
         let voidObj = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHoleBig.png');
-        voidObj.setDepth(10);
+        voidObj.setDepth(12);
         voidObj.rotation = Math.random() * 0.1;
         voidObj.setScale(1 + numTotalAttacks * 0.15);
         voidObj.setAlpha(0);
@@ -2436,8 +2436,8 @@ class SpellManager {
         });
 
         playSound('void_ultimate');
-        let whiteObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(500).setDepth(9).setAlpha(0);
-        let blackObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(9).setAlpha(0);
+        let whiteObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(500).setDepth(0).setAlpha(0);
+        let blackObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(0).setAlpha(0);
         for (let i = 0; i < numTotalAttacks; i++) {
             let isFirstAttack = i === numTotalAttacks - 1;
             let thisDurationDelay = voidDuration - voidDuration * (i / numTotalAttacks);
@@ -2468,7 +2468,7 @@ class SpellManager {
                             }
                         });
                     }, 15);
-                    messageBus.publish('enemyTakeDamagePercent', 12, additionalDamage);
+                    messageBus.publish('enemyTakeDamagePercent', 10, additionalDamage);
                     messageBus.publish('disruptOpponentAttackPercent', isFirstAttack ? 0.6 : 0.4);
                     messageBus.publish('setPauseDur', 40);
                 });

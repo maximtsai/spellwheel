@@ -65,7 +65,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    time_reinforce_desc: {en_us: 'Heal 50% of\nthe damage you\ntook from your\nlast injury',
+    time_reinforce_desc: {en_us: 'Heal 50% of your\nlast injury, then\nheal 50% your\ndelayed damage.',
         fr: '',
         zh_cn: '',
         ru: '',

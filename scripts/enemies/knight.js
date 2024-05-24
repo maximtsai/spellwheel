@@ -268,8 +268,11 @@
          playSound('meat_click_left', 0.4);
          playSound('meat_click_right', 0.4);
          if (this.shieldAmts <= 0) {
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'NEGATED', 0.8, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1, scaleY: 1});
              this.clearVoidShield();
          } else {
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random()*150, this.sprite.y + 50 - Math.random() * 100, 'NEGATED', 0.75);
+
              if (this.shieldsActive == 1) {
                  this.voidShield1a.setScale(this.voidShield1a.startScale * 1.12);
                  this.voidShield1b.setScale(this.voidShield1a.startScale * 1.12);
@@ -539,11 +542,26 @@
              [
                  // 0
                  {
-                     name: "|8 ",
+                     name: "|24 ",
                      announceName: "INITIAL STRIKE",
                      desc: "The mysterious knight charges at you!",
-                     chargeAmt: 575,
-                     damage: 8,
+                     chargeAmt: 275,
+                     damage: 24,
+                     prepareSprite: 'void_knight_pullback.png',
+                     attackSprites: ['void_knight_attack.png'],
+                     attackFinishFunction: () => {
+  
+                         this.makeSlashEffect();
+                         playSound('sword_hit', 0.75);
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: "|24 ",
+                     announceName: "INITIAL STRIKE",
+                     desc: "The mysterious knight charges at you!",
+                     chargeAmt: 275,
+                     damage: 24,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
                      attackFinishFunction: () => {

@@ -2038,7 +2038,16 @@ const ENABLE_KEYBOARD = true;
      addDelayedDamage(amt) {
         let oldDelayedDamage = this.delayedDamage;
          this.delayedDamage += amt;
-         globalObjects.player.addRecentlyTakenTimeDamage(amt);
+
+        if (globalObjects.player.canResetRecentDamage) {
+
+            globalObjects.player.canResetRecentDamage = false;
+            globalObjects.player.recentlyTakenDamageAmt = 0;
+            globalObjects.player.recentlyTakenDelayedDamageAmt = 0;
+            globalObjects.player.lastInjuryHealth = globalObjects.player.health;
+
+        }
+        globalObjects.player.addRecentlyTakenDelayedDamage(amt);
 
          if (this.delayedDamage > 0) {
              this.delayDamageText.setText(this.delayedDamage);
@@ -2098,11 +2107,14 @@ const ENABLE_KEYBOARD = true;
 
      reduceDelayedDamage(amt) {
          this.delayedDamage = Math.max(0, this.delayedDamage - amt);
+        if (amt > 0) {
+            let textScale = 0.75 + (0.18 * Math.sqrt(Math.abs(amt)) + 0.035 * Math.abs(amt));
 
+            messageBus.publish('animateHealNum', this.delayDamageText.x - 1, this.delayDamageText.y - 50, '+' + amt, 0.5 + textScale);
+        }
          if (this.delayedDamage <= 0) {
             this.removeDelayedDamage();
          } else {
-
              this.delayDamageText.setText(this.delayedDamage);
              this.delayDamageSand.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageCurrCap));
          }
@@ -2170,7 +2182,12 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('time_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
-                         let healAmt = Math.ceil(globalObjects.player.getRecentlyTakenDamageAmt() * (1 - (0.5 ** globalObjects.player.spellMultiplier())));
+                        let healMult = (1 - (0.5 ** globalObjects.player.spellMultiplier()));
+                        let recentlyTakenDamage = globalObjects.player.getRecentlyTakenDamageAmt();
+                        let recentlyHealAmt = Math.ceil(recentlyTakenDamage * healMult);
+                        let overheal = Math.max(0, globalObjects.player.health + recentlyHealAmt - globalObjects.player.healthMax)
+                        let healDelayed = this.delayedDamage - overheal;
+                         let healAmt = recentlyHealAmt + Math.ceil(healDelayed * healMult);
                          this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS ('+ healAmt + ")")
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('time_reinforce_desc'))
                          break;

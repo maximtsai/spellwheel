@@ -1001,7 +1001,10 @@ class SpellManager {
             targets: [clockArm],
             duration: 1200,
             rotation: -Math.PI * 0.5 - (Math.PI * 2 * healthRewoundPercent),
-            ease: 'Cubic.easeInOut'
+            ease: 'Cubic.easeInOut',
+            onComplete: () => {
+                messageBus.publish('selfHealDelayPercent', healthRewoundPercent);
+            }
         });
 
         this.scene.tweens.add({

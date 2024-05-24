@@ -11,6 +11,8 @@ class Player {
             messageBus.subscribe("selfTakeDamage", this.takeDamage.bind(this)),
             messageBus.subscribe("selfHeal", this.selfHeal.bind(this)),
             messageBus.subscribe("selfHealPercent", this.selfHealPercent.bind(this)),
+            messageBus.subscribe("selfHealDelayPercent", this.selfHealDelayPercent.bind(this)),
+
             messageBus.subscribe("selfHealRecent", this.selfHealRecent.bind(this)),
 
             messageBus.subscribe("selfTakeTrueDamage", this.takeTrueDamage.bind(this)),
@@ -43,11 +45,12 @@ class Player {
     initStats(x, y) {
         this.x = x;
         this.y = y;
-        this.health = 80;
         this.trueHealthMax = 80;
-        this.healthMax = 80;
+        this.healthMax = this.trueHealthMax;
+        this.health = this.healthMax;
+        this.lastInjuryHealth = this.healthMax;
         this.recentlyTakenDamageAmt = 0;
-        this.recentlyTakenTimeDamageAmt = 0;
+        this.recentlyTakenDelayedDamageAmt = 0;
         this.playerCastSpells = 0;
         this.initStatsCustom();
         this.statuses = {};
@@ -344,8 +347,9 @@ class Player {
         this.health = this.healthMax;
         this.playerCastSpells = 0;
         this.timeExhaustion = 0;
+        this.lastInjuryHealth = this.healthMax;
         this.recentlyTakenDamageAmt = 0;
-        this.recentlyTakenTimeDamageAmt = 0;
+        this.recentlyTakenDelayedDamageAmt = 0;
         this.clearAllEffects();
         if (this.healthBarReady) {
             this.refreshHealthBar();
@@ -444,12 +448,16 @@ class Player {
         }
     }
 
-    addRecentlyTakenTimeDamage(amt) {
-        this.recentlyTakenTimeDamageAmt += amt;
+    addRecentlyTakenDamage(amt) {
+        this.recentlyTakenDamageAmt += amt;
+    }
+
+    addRecentlyTakenDelayedDamage(amt) {
+        this.recentlyTakenDelayedDamageAmt += amt;
     }
 
     getRecentlyTakenDamageAmt() {
-        return this.recentlyTakenDamageAmt + this.recentlyTakenTimeDamageAmt;
+        return this.recentlyTakenDamageAmt;
     }
 
     takeDamage(amt) {
@@ -465,9 +473,9 @@ class Player {
         if (damageTaken > 1) {
             if (this.canResetRecentDamage) {
                 this.canResetRecentDamage = false;
-                console.log("recent damage reset");
+                this.lastInjuryHealth = origHealth;
                 this.recentlyTakenDamageAmt = 0;
-                this.recentlyTakenTimeDamageAmt = 0;
+                this.recentlyTakenDelayedDamageAmt = 0;
             }
 
             this.recentlyTakenDamageAmt += damageTaken;
@@ -498,18 +506,19 @@ class Player {
         }
     }
 
-    selfHeal(amt, timeOverflow = false) {
+    selfHeal(amt) {
         let overflow = 0;
         let newHealthAmt = this.health + amt;
         if (newHealthAmt > this.healthMax) {
             overflow = newHealthAmt - this.healthMax;
         }
         this.health = Math.min(this.healthMax, newHealthAmt);
-        if (timeOverflow) {
-            messageBus.publish('playerReduceDelayedDamage', overflow);
-        }
+        // if (timeOverflow) {
+        //     messageBus.publish('playerReduceDelayedDamage', overflow);
+        // }
         this.animateHealthChange(amt);
         this.refreshHealthBar();
+        return overflow;
     }
 
     selfHealPercent(percent) {
@@ -517,18 +526,31 @@ class Player {
         this.selfHeal(healthToHeal);
     }
 
-    selfHealRecent(amount = 0.1) {
+    selfHealDelayPercent(percent = 0.5) {
+        let delayedHealAmt = Math.ceil(percent * globalObjects.magicCircle.delayedDamage);
+        messageBus.publish('playerReduceDelayedDamage', delayedHealAmt);
+    }
 
-        let healAmt = Math.ceil(amount * this.recentlyTakenDamageAmt);
-        console.log("healed ", healAmt)
-        this.selfHeal(healAmt);
+    selfHealRecent(percent = 0.5) {
+        let maxHealAmt = this.lastInjuryHealth - this.health;
+
+        let healAmt = Math.ceil(percent * (this.recentlyTakenDamageAmt + this.recentlyTakenDelayedDamageAmt));
         this.recentlyTakenDamageAmt -= healAmt;
+        let overflowHeal = 0;
+        if (healAmt > maxHealAmt) {
+            overflowHeal = healAmt - maxHealAmt;
+            healAmt = maxHealAmt;
+        }
+        this.selfHeal(healAmt, true);
 
-        let timeHealAmt = Math.ceil(amount * this.recentlyTakenTimeDamageAmt);
-        if (timeHealAmt != 0) {
-            console.log("timehealed ", timeHealAmt)
-            this.selfHeal(timeHealAmt, true);
-            this.recentlyTakenTimeDamageAmt -= timeHealAmt;
+        //let delayedHealAmt = Math.ceil(percent * this.recentlyTakenDelayedDamageAmt);
+        //let remainingDelayedHealth = Math.max(0, globalObjects.magicCircle.delayedDamage - delayedHealAmt);
+        //recentlyTakenDelayedDamageAmt -= delayedHealAmt;
+        //let healableDelayedDamage = globalObjects.magicCircle.delayedDamage - healAmt;
+
+        // let delayedDamageHealed = overflowHeal + Math.max(0, Math.ceil((healableDelayedDamage) * percent))
+        if (overflowHeal > 0) {
+            messageBus.publish('playerReduceDelayedDamage', overflowHeal);
         }
     }
 
@@ -859,18 +881,17 @@ class Player {
                                 ease: 'Cubic.easeIn'
                             });
 
-                            let isWithinLimit = globalObjects.magicCircle.delayedDamage + hurtAmt <= shieldObj.maxAmt;
-                            if (isWithinLimit) {
+                            let exceedAmt = globalObjects.magicCircle.delayedDamage + hurtAmt - shieldObj.maxAmt;
+                            if (exceedAmt <= 0) {
                                 messageBus.publish('playerAddDelayedDamage', hurtAmt);
                                 hurtAmt = 0;
                                 messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'DELAYED', 1.2);
                             } else {
-                                let remainingAmt = shieldObj.maxAmt - globalObjects.magicCircle.delayedDamage;
-                                hurtAmt -= remainingAmt;
-                                globalObjects.magicCircle.delayedDamage -= remainingAmt;
-                                messageBus.publish('playerAddDelayedDamage', remainingAmt);
+                                hurtAmt = exceedAmt;
+                                let delayAmt = shieldObj.maxAmt - globalObjects.magicCircle.delayedDamage;
+                                messageBus.publish('playerAddDelayedDamage', delayAmt);
                                 messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'OVERLOADED', 1, {y: "+=10"}, {alpha: 0, scaleX: 1, scaleY: 1});
-                                shieldObj.animObj.cleanUp();
+                                shieldObj.cleanUp(this.statuses);
                             }
                             messageBus.publish('tempPause', 100);
                         }
@@ -1031,20 +1052,20 @@ class Player {
         if (this.health < 20) {
             textScale += 0.2;
         }
-        textScale += (0.07 * Math.abs(healthChange));
+        textScale += (0.18 * Math.sqrt(Math.abs(healthChange)) + 0.04 * Math.abs(healthChange));
         if (textScale > 1.2) {
             let diffScale = textScale - 1.2;
             textScale = 1 + diffScale * 0.5;
         }
 
         if (isGreyed) {
-            messageBus.publish('animateBlockNum', this.healthText.x - 1, this.healthText.y - 85, healthChange, textScale);
+            messageBus.publish('animateBlockNum', this.healthText.x - 31 + Math.random() * 60, this.healthText.y - 65 + Math.random() * 50, healthChange, textScale);
         } else if (healthChange > 0) {
-            messageBus.publish('animateHealNum', this.healthText.x - 1, this.healthText.y - 60, '+' + healthChange, 0.5 + textScale);
+            messageBus.publish('animateHealNum', this.healthText.x - 21 + Math.random() * 40, this.healthText.y - 25 + Math.random() * 40, '+' + healthChange, 0.5 + textScale, {duration: 1750, ease: 'Quart.easeOut', scaleX: 0.5 + textScale * 0.9, scaleY: 0.5 + textScale * 0.9});
         } else if (healthChange === 0) {
             // messageBus.publish('animateBlockNum', this.healthText.x - 1, this.healthText.y - 85, healthChange, textScale);
         } else {
-            messageBus.publish('animateDamageNum', this.healthText.x - 1, this.healthText.y - 60, healthChange, textScale);
+            messageBus.publish('animateDamageNum', this.healthText.x - 41 + Math.random() * 80, this.healthText.y - 90 + Math.random() * 130, healthChange, 0.4 + textScale, {duration: 400, completeDelay: 1200, ease: 'Back.easeOut', y: "-=10", scaleX: textScale * 0.9, scaleY: textScale * 0.9});
         }
     }
 }

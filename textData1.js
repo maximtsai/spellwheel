@@ -36,7 +36,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    matter_unload_desc: {en_us: 'Deal 20 damage.\nBlock 20 damage\nfor the next\n5 seconds',
+    matter_unload_desc: {en_us: 'Deal 22 damage.\nBlock 22 damage\nfor the next\n5 seconds',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -72,7 +72,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    time_unload_desc: {en_us: 'Freeze time for\nthe next 6 spells.\nLoses power\nwith repeat use.',
+    time_unload_desc: {en_us: 'Freeze time for\nthe next 7 spells.\nGets weaker\nwith repeat use.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -245,7 +245,7 @@ const textData = {
         ru: '',
         es: '',
         jp: ''},
-    time_tut_enhance_desc: {en_us: 'Causes your next attack to be\ncast an additional time.',
+    time_tut_enhance_desc: {en_us: 'Your next attack fires off\nan additional time.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -270,7 +270,7 @@ const textData = {
         es: '',
         jp: ''},
 
-    void_tut_desc: {en_us: 'The Void rune grants control\nover the dark power of emptiness.\nVoid spells can deal percentage\nhealth damage, negate enemy\nattacks, or even fully heal\nyou, but at a cost.',
+    void_tut_desc: {en_us: 'The Void rune grants control\nover the power of empty\nspace. Void spells can deal\npercentage health damage,\nnegate enemy attacks, or even\nfully heal you at a cost.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -308,7 +308,7 @@ const textData = {
         jp: ''},
 
 
-    protect_tut_desc: {en_us: 'The Shield rune lets you create\nshields that protect you\nas long as it\'s positioned\nbetween you and the enemy.',
+    protect_tut_desc: {en_us: 'The Shield rune lets you create\nbarriers that protect you\nas long as it\'s positioned\nbetween you and the enemy.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -320,7 +320,7 @@ const textData = {
         ru: '',
         es: '',
         jp: ''},
-    unload_tut_desc: {en_us: 'The Ultimate rune grants you\nsome of the most powerful\nspells available whether you\nneed protection, utility, or raw\ndestructive damage.',
+    unload_tut_desc: {en_us: 'The Ultimate rune grants you\nsome of the most powerful\nspells in your arsenal.\nUse this rune wisely.',
         fr: '',
         zh_cn: '',
         ru: '',

@@ -665,7 +665,7 @@ class SpellManager {
         }
         textHealth.setDepth(120).setOrigin(0.5, 0.5).setScale(0);
         stoneCircle.setDepth(10);
-        let shieldHealth = 20 * multiplier;
+        let shieldHealth = 22 * multiplier;
         this.scene.tweens.add({
             targets: stoneCircle,
             delay: 250,
@@ -761,7 +761,7 @@ class SpellManager {
                     }, 50);
                 },
                 onComplete: () => {
-                    messageBus.publish('enemyTakeDamage', 20 + additionalDamage);
+                    messageBus.publish('enemyTakeDamage', 22 + additionalDamage);
                     zoomTemp(1.01 + additionalDamage * 0.00025);
                     this.createDamageEffect(gameConsts.halfWidth, 140, rockObj.depth);
                     this.scene.tweens.add({
@@ -1223,7 +1223,7 @@ class SpellManager {
         let turnsAdded = 0;
         while (multiplier > 0) {
             multiplier--;
-            turnsAdded += Math.max(3, 6 - globalObjects.player.getPlayerTimeExhaustion());
+            turnsAdded += Math.max(3, 7 - globalObjects.player.getPlayerTimeExhaustion());
             globalObjects.player.incrementTimeExhaustion()
         }
         messageBus.publish('manualSetTimeSlowRatio', 0.01);

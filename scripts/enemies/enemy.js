@@ -268,10 +268,11 @@ class Enemy {
         }
     }
 
-    initSprite(name, scale = 1, xOffset = 0, yOffset = 0) {
+    initSprite(name, scale = 1, xOffset = 0, yOffset = 0, atlas) {
         this.x += xOffset;
         this.y += yOffset;
-        this.sprite = this.scene.add.sprite(this.x, this.y, 'enemies', name);
+        let usedAtlas = atlas ? atlas : 'enemies';
+        this.sprite = this.scene.add.sprite(this.x, this.y, usedAtlas, name);
         this.sprite.setDepth(0);
         this.sprite.setAlpha(0);
         this.defaultSprite = name;
@@ -318,7 +319,6 @@ class Enemy {
 
     setSprite(name, scale, noAnim, depth = 1) {
         let newScale = scale ? scale : 1;
-        console.log(depth);
         if (!this.sprite) {
             this.sprite = this.scene.add.sprite(this.x, this.y, 'enemies', name);
             this.sprite.setDepth(depth);
@@ -418,7 +418,7 @@ class Enemy {
                 }
             }
             this.chargeBarCurr.scaleX = Math.min(this.nextAttackChargeNeeded * 0.2, this.attackCharge * 0.2 + 1);
-            this.chargeBarOutline.alpha = 0.65 * this.chargeBarCurr.scaleX / (this.chargeBarMax.scaleX + 1) - 0.1;
+            this.chargeBarOutline.alpha = 0.9 * this.chargeBarCurr.scaleX / (this.chargeBarMax.scaleX + 1) - 0.15;
 
             this.chargeBarAngry.scaleX = this.chargeBarCurr.scaleX;
             if (this.isUsingAttack) {
@@ -1284,6 +1284,9 @@ class Enemy {
     }
 
     animateShake(amt = 1) {
+        if (this.disableAnimateShake) {
+            return;
+        }
         this.sprite.x -= 4;
         let extraTimeMult = 2 - gameVars.timeSlowRatio;
         PhaserScene.tweens.add({

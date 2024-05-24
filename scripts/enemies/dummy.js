@@ -1,7 +1,7 @@
  class Dummy extends Enemy {
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
-        this.initSprite('dummy.png', 0.95,0, 5);
+        this.initSprite('dummy.png', 0.95,0, 5, 'dummyenemy');
         this.bgMusic = playSound('bite_down_simplified', 0.65, true);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
@@ -199,7 +199,7 @@
                              this.setAwake();
                              this.currentAttackSetIndex = 0;
                              this.nextAttackIndex = 0;
-                             this.brows = this.scene.add.sprite(this.x , this.y - 36, 'enemies', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(999);
+                             this.brows = this.scene.add.sprite(this.x , this.y - 36, 'dummyenemy', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(999);
                              PhaserScene.tweens.add({
                                  targets: this.brows,
                                  scaleX: this.sprite.startScale * 2.2,
@@ -226,7 +226,7 @@
                                  }
                              });
 
-                             this.snort = this.scene.add.sprite(this.x - 3, this.y - 101, 'enemies', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(999);
+                             this.snort = this.scene.add.sprite(this.x - 3, this.y - 101, 'dummyenemy', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(999);
                              this.destructibles.push(this.snort);
 
                              PhaserScene.tweens.add({
@@ -267,7 +267,7 @@
          if (prevHealthPercent >= 0.95) {
              if (currHealthPercent < 0.95) {
                  this.canAngryEyes = true;
-                 this.eyes = this.scene.add.sprite(this.x + 1 , this.y - 41, 'enemies', 'dummyeyes.png').setOrigin(0.5, 0.75).setScale(this.sprite.startScale, 0);
+                 this.eyes = this.scene.add.sprite(this.x + 1 , this.y - 41, 'dummyenemy', 'dummyeyes.png').setOrigin(0.5, 0.75).setScale(this.sprite.startScale, 0);
                  this.addExtraSprite(this.eyes, 1, -40)
                  PhaserScene.tweens.add({
                      targets: this.eyes,

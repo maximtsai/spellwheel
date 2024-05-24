@@ -866,7 +866,6 @@
                  duration: projDur,
                  rotation: (Math.random() - 0.5) * 3,
                  onComplete: () => {
-                     currObj.destroy();
                      let dur = 280 - Math.sqrt(totalTimeObjects) * 40;
                      let rot = dur * 0.004;
                      let scaleMult = 1 + durBonus / 800;
@@ -887,12 +886,17 @@
                          alpha: 0,
                          duration: dur
                      });
+                     if (currObj.scaleX > 1.1) {
+                        playSound('body_slam', 0.5);
+                     }
                      if (Math.random() < 0.6) {
                          playSound('time_strike_hit');
                      } else {
                          playSound('time_strike_hit_2');
                      }
                      messageBus.publish("selfTakeDamage", damage);
+                     currObj.destroy();
+
                  }
              });
              this.scene.tweens.add({

@@ -539,11 +539,11 @@
              [
                  // 0
                  {
-                     name: "|10 ",
+                     name: "|8 ",
                      announceName: "INITIAL STRIKE",
                      desc: "The mysterious knight charges at you!",
                      chargeAmt: 575,
-                     damage: 10,
+                     damage: 8,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
                      attackFinishFunction: () => {

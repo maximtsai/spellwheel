@@ -344,6 +344,8 @@ class Player {
         this.health = this.healthMax;
         this.playerCastSpells = 0;
         this.timeExhaustion = 0;
+        this.recentlyTakenDamageAmt = 0;
+
         this.clearAllEffects();
         if (this.healthBarReady) {
             this.refreshHealthBar();
@@ -853,18 +855,14 @@ class Player {
                             if (isWithinLimit) {
                                 messageBus.publish('playerAddDelayedDamage', hurtAmt);
                                 hurtAmt = 0;
+                                messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'DELAYED', 1.2);
                             } else {
                                 let remainingAmt = shieldObj.maxAmt - globalObjects.magicCircle.delayedDamage;
                                 hurtAmt -= remainingAmt;
                                 globalObjects.magicCircle.delayedDamage -= remainingAmt;
                                 messageBus.publish('playerAddDelayedDamage', remainingAmt);
-                            }
-
-                            if (globalObjects.magicCircle.delayedDamage > shieldObj.maxAmt) {
                                 messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'OVERLOADED', 1, {y: "+=10"}, {alpha: 0, scaleX: 1, scaleY: 1});
                                 shieldObj.animObj.cleanUp();
-                            } else {
-                                messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'DELAYED', 1.2);
                             }
                             messageBus.publish('tempPause', 100);
                         }

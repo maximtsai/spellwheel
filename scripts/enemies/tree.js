@@ -4,7 +4,7 @@
          this.initSprite('tree.png', 0.7);// 0.7
          this.sprite.setOrigin(0.52, 0.88); // 0.9
          this.shieldAdded = false;
-         this.bgMusic = playSound('echos_of_time', 1, true);
+         this.bgMusic = playSound('echos_of_time', 0.9, true);
 
 
          setTimeout(() => {
@@ -539,7 +539,7 @@
              [
                  // 2
                  {
-                     name: "}12 ",
+                     name: "|12 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
                      chargeAmt: 700,
@@ -584,7 +584,7 @@
                      }
                  },
                  {
-                     name: "}4x5 ",
+                     name: "|4x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
                      chargeAmt: 750,
@@ -608,7 +608,7 @@
              [
                  // 3
                  {
-                     name: "CRUSH}25 ",
+                     name: "CRUSH;25 ",
                      announceName: "CRUSH",
                      desc: "The tree tries to crush you",
                      chargeAmt: 800,
@@ -655,7 +655,7 @@
              [
                  // 4
                  {
-                     name: "}12 ",
+                     name: "|12 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
                      chargeAmt: 650,
@@ -666,7 +666,7 @@
                      }
                  },
                  {
-                     name: "}4x5 ",
+                     name: "|4x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
                      chargeAmt: 750,
@@ -694,7 +694,7 @@
                      announceName: "TIMBER!!!",
                      desc: "The tree tries to crush you",
                      chargeAmt: 1200,
-                     chargeMult: 2,
+                     chargeMult: 2.5,
                      damage: 40,
                      isBigMove: true,
                      startFunction: () => {

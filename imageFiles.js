@@ -24,6 +24,7 @@ const imageAtlases = [
     {name: 'spells', src: 'sprites/spells.json'},
     {name: 'backgrounds', src: 'sprites/backgrounds.json'},
     {name: 'enemies', src: 'sprites/enemies.json'},
+    {name: 'dummyenemy', src: 'sprites/dummyenemy.json'},
     {name: 'buttons', src: 'sprites/buttons.json'},
     {name: 'lowq', src: 'sprites/lowq.json'},
     {name: 'misc', src: 'sprites/misc.json'},

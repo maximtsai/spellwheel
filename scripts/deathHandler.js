@@ -422,8 +422,8 @@ function handleReaperDialog(level = 0, onComplete) {
     case 3:
         reaperDialog = [
             "I WILL ONLY WARN YOU ONCE MORE,",
-            "TURN BACK NOW.",
             "THAT WHICH YOU SEEK HERE\nCANNOT BE ATTAINED.",
+            "TURN BACK NOW.",
         ];
         break;
     case 4:

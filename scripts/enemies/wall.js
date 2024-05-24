@@ -3,6 +3,7 @@
          super(scene, x, y, level);
          this.initSprite('wall_1.png', 0.80);
          this.shieldAdded = false;
+        this.bgMusic = playSound('bite_down', 0.7, true);
          this.initBird();
          setTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
@@ -130,6 +131,9 @@
                  this.eyes1.setVisible(true);
              },
              onComplete: () => {
+                setTimeout(() => {
+                    playSound('matter_enhance_2');
+                }, 500)
                  PhaserScene.tweens.add({
                      targets: [this.eyes1],
                      scaleY: this.sprite.startScale * 1.1,
@@ -536,7 +540,7 @@
                  {
                      name: " STARE... ",
                      desc: "A pair of eyes watch you",
-                     chargeAmt: 600,
+                     chargeAmt: 300,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.squintEyes(true);
@@ -618,7 +622,7 @@
                  // 4
                  {
                      name: "}2",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
                         this.birdPoops(1);
@@ -628,7 +632,7 @@
                  },
                  {
                      name: "}5",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(1, true);
@@ -638,7 +642,7 @@
                  },
                  {
                      name: "}2x3",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(3);
@@ -648,7 +652,7 @@
                  },
                  {
                      name: "}5x3",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(3, true);
@@ -658,7 +662,7 @@
                  },
                  {
                      name: "}2x5",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(5);
@@ -668,7 +672,7 @@
                  },
                  {
                      name: "}5x4 (with extra)",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(4, true, false, true);
@@ -678,7 +682,7 @@
                  },
                  {
                      name: "}20",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(1, true, true);
@@ -688,7 +692,7 @@
                  },
                  {
                      name: "}5x6",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(6, true);
@@ -698,7 +702,7 @@
                  },
                  {
                      name: "}20x2",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(2, true, true);
@@ -708,7 +712,7 @@
                  },
                  {
                      name: "}2x12",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(12);

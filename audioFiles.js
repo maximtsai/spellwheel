@@ -1,6 +1,7 @@
 const audioFiles = [
     {name: 'bite_down', src: 'audio/bite_down.mp3'},
     {name: 'bite_down_simplified', src: 'audio/bite_down_simplified.mp3'},
+    {name: 'bite_down_complex', src: 'audio/bite_down_complex.mp3'},
     {name: 'and_into_the_void', src: 'audio/and_into_the_void.mp3'},
     {name: 'into_the_void', src: 'audio/into_the_void.mp3'},
     {name: 'echos_of_time', src: 'audio/echos_of_time.mp3'},
@@ -105,6 +106,7 @@ const audioFiles = [
     {name: 'missile_launch_2', src: 'audio/missile_launch_2.mp3'},
     {name: 'guncock', src: 'audio/guncock.mp3'},
     {name: 'derp', src: 'audio/derp.mp3'},
+    {name: 'inflate', src: 'audio/inflate.mp3'},
     {name: 'balloon', src: 'audio/balloon.mp3'},
     {name: 'death_attack', src: 'audio/death_attack.mp3'},
 

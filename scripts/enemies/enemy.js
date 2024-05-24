@@ -175,6 +175,8 @@ class Enemy {
             duration: 400,
             alpha: 1
         });
+        this.curseSprite.x = gameConsts.halfWidth - this.healthBarLengthMax - 30 * this.curseSprite.scaleX;
+        this.curseText.x = this.curseSprite.x;
     }
 
     createChargeBar(x) {
@@ -1513,7 +1515,6 @@ class Enemy {
         let timeSlowMult = gameVars.timeSlowRatio < 0.9 ? 0.5 : 1;
 
         let durationPullback = isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult + this.extraRepeatDelay : 300 * extraTimeMult * pullbackDurMult;
-        console.log(isRepeatedAttack, this.extraRepeatDelay);
 
         if (prepareSprite) {
             if (isRepeatedAttack) {

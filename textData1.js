@@ -137,7 +137,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    mind_protect_desc: {en_us: 'Create a shield\nthat absorbs 50%\nincoming damage,\nthen blasts it\nback.',
+    mind_protect_desc: {en_us: 'Create a shield\nthat absorbs 50%\nincoming damage\nthen blasts it\nback.',
         fr: '',
         zh_cn: '',
         ru: '',

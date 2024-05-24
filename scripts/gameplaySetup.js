@@ -469,6 +469,7 @@ function setupPlayer() {
     });
     globalObjects.magicCircle = new MagicCircle(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
     globalObjects.player = new Player(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
+    // globalObjects.encyclopedia = new Encyclopedia(PhaserScene, gameConsts.width - 110, 60);
 }
 
 function onCreditsButtonClicked() {

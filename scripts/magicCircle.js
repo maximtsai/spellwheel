@@ -2038,7 +2038,7 @@ const ENABLE_KEYBOARD = true;
      addDelayedDamage(amt) {
         let oldDelayedDamage = this.delayedDamage;
          this.delayedDamage += amt;
-         globalObjects.player.recentlyTakenTimeDamageAmt += amt;
+         globalObjects.player.addRecentlyTakenTimeDamage(amt);
 
          if (this.delayedDamage > 0) {
              this.delayDamageText.setText(this.delayedDamage);
@@ -2170,7 +2170,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('time_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
-                         let healAmt = Math.ceil(globalObjects.player.getrecentlyTakenDamageAmt() * (1 - (0.5 ** globalObjects.player.spellMultiplier())));
+                         let healAmt = Math.ceil(globalObjects.player.getRecentlyTakenDamageAmt() * (1 - (0.5 ** globalObjects.player.spellMultiplier())));
                          this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS ('+ healAmt + ")")
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('time_reinforce_desc'))
                          break;

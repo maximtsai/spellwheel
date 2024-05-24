@@ -17,7 +17,7 @@
          this.isAsleep = true;
          this.isFirstMode = true;
         this.attackScale = 1.23;
-        this.lastAttackLingerMult = 0.4;
+        this.lastAttackLingerMult = 0.55;
         this.extraRepeatDelay = 200;
         this.pullbackHoldRatio = 0.6;
         this.attackSlownessMult = 1;
@@ -532,11 +532,13 @@
                      startFunction: () => {
                         this.pullbackScale = 0.8;
                         this.attackScale = 1.3;
+                        this.lastAttackLingerMult = 1.25;
                      },
                      attackStartFunction: () => {
                         this.setSprite('super_dummy_wide.png');
                      },
                      attackFinishFunction: () => {
+                        this.lastAttackLingerMult = 0.55;
                         this.pullbackScale = 0.9;
                         this.setSprite('dummy_angry.png');
                         this.reEnableArms();
@@ -592,7 +594,7 @@
                      },
                  },
                  {
-                     name: "}8x2 ",
+                     name: "|8x2 ",
                      chargeAmt: 350,
                      damage: 8,
                      attackTimes: 2,
@@ -611,11 +613,14 @@
                     }
                  },
                  {
-                     name: "}20 ",
+                     name: "|20 ",
+                     damage: -1,
+                    finishDelay: 2200,
                      chargeAmt: 500,
                      startFunction: () => {
                         this.pullbackScale = 0.99;
                         this.attackScale = 1.01;
+                        this.lastAttackLingerMult = 1.25;
                      },
                      attackStartFunction: () => {
                         playSound('inflate');
@@ -765,6 +770,11 @@
                              scaleY: 0,
                              ease: 'Cubic.easeOut'
                          });
+                     },
+                     finaleFunction: () => {
+                        this.pullbackScale = 0.8;
+                        this.attackScale = 1.2;
+                        this.lastAttackLingerMult = 0.55;
                      }
                  },
                  {

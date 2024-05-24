@@ -345,7 +345,7 @@ class Player {
         this.playerCastSpells = 0;
         this.timeExhaustion = 0;
         this.recentlyTakenDamageAmt = 0;
-
+        this.recentlyTakenTimeDamageAmt = 0;
         this.clearAllEffects();
         if (this.healthBarReady) {
             this.refreshHealthBar();
@@ -444,7 +444,11 @@ class Player {
         }
     }
 
-    getrecentlyTakenDamageAmt() {
+    addRecentlyTakenTimeDamage(amt) {
+        this.recentlyTakenTimeDamageAmt += amt;
+    }
+
+    getRecentlyTakenDamageAmt() {
         return this.recentlyTakenDamageAmt + this.recentlyTakenTimeDamageAmt;
     }
 
@@ -461,6 +465,7 @@ class Player {
         if (damageTaken > 1) {
             if (this.canResetRecentDamage) {
                 this.canResetRecentDamage = false;
+                console.log("recent damage reset");
                 this.recentlyTakenDamageAmt = 0;
                 this.recentlyTakenTimeDamageAmt = 0;
             }
@@ -513,12 +518,15 @@ class Player {
     }
 
     selfHealRecent(amount = 0.1) {
+
         let healAmt = Math.ceil(amount * this.recentlyTakenDamageAmt);
+        console.log("healed ", healAmt)
         this.selfHeal(healAmt);
         this.recentlyTakenDamageAmt -= healAmt;
 
         let timeHealAmt = Math.ceil(amount * this.recentlyTakenTimeDamageAmt);
         if (timeHealAmt != 0) {
+            console.log("timehealed ", timeHealAmt)
             this.selfHeal(timeHealAmt, true);
             this.recentlyTakenTimeDamageAmt -= timeHealAmt;
         }

@@ -177,7 +177,7 @@
 
             this.dummyLeftArm.visible = false;
             this.dummyRightArm.visible = false;
-            this.setSprite('super_dummy_angry.png', 0.9);
+            this.setSprite('super_dummy_angry.png', 0.8);
             this.x += 10;
              this.y += this.sprite.height * this.sprite.scaleY * 0.45; this.sprite.y = this.y;
              this.sprite.setOrigin(0.51, 0.96);
@@ -233,7 +233,7 @@
             alpha: 0.75,
             duration: 500,
             onComplete: () => {
-                let dummyArm = this.scene.add.sprite(this.x - 95, this.y - 70, 'dummyenemy', 'super_dummy_rightarm_stretch.png').setScale(0, 0.15).setDepth(-1);
+                let dummyArm = this.scene.add.sprite(this.x - 95, this.y - 70, 'dummyenemy', 'super_dummy_rightarm_stretch.png').setScale(0, 0.15).setDepth(0);
                 setTimeout(() => {
                     playSound('inflate');
                 }, 100);
@@ -250,7 +250,7 @@
                              ease: 'Cubic.easeInOut',
                              duration: 400,
                              onComplete: () => {
-                                dummyArm.setFrame('super_dummy_leftarm_fist.png').setRotation(-0.1).setScale(1.08);
+                                dummyArm.setFrame('super_dummy_leftarm_fist.png').setRotation(-0.1).setScale(1.08).setDepth(0);
                                 PhaserScene.tweens.add({
                                      targets: dummyArm,
                                      scaleX: 1,
@@ -264,7 +264,7 @@
                                              ease: 'Quart.easeIn',
                                              duration: 500,
                                              onComplete: () => {
-                                                dummyArm.setFrame('super_dummy_leftarm_fist_large.png').setRotation(1.9).setScale(1.05);
+                                                dummyArm.setFrame('super_dummy_leftarm_fist_large.png').setRotation(1.9).setScale(1.05).setDepth(0);
                                                 playSound('body_slam')
                                                 zoomTemp(1.02);
                                                 continueText.destroy();
@@ -456,8 +456,8 @@
 
                         this.bgMusic = playSound('bite_down_complex', 0.8, true);
                         this.setDefaultSprite('dummy_angry.png', 0.95);
-                        this.dummyRightArm = this.scene.add.sprite(this.x + 51, this.startY + 30, 'dummyenemy', 'super_dummy_rightarm.png').setScale(this.sprite.startScale * 0.4).setDepth(-1).setRotation(0.5);
-                        this.dummyLeftArm = this.scene.add.sprite(this.x - 51, this.startY + 30, 'dummyenemy', 'super_dummy_leftarm.png').setScale(this.sprite.startScale * 0.4).setDepth(-1).setRotation(-0.5);
+                        this.dummyRightArm = this.scene.add.sprite(this.x + 51, this.startY + 30, 'dummyenemy', 'super_dummy_rightarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(0.5);
+                        this.dummyLeftArm = this.scene.add.sprite(this.x - 51, this.startY + 30, 'dummyenemy', 'super_dummy_leftarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(-0.5);
                         
 
 
@@ -520,21 +520,6 @@
      initAttacks() {
          this.attacks = [
              [
-                 {
-                     name: "}6x2 ",
-                     chargeAmt: 350,
-                     damage: 6,
-                     attackTimes: 2,
-                     prepareSprite: 'super_dummy_swinging.png',
-                     attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
-                    attackFinishFunction: () => {
-                        this.createPunchEffect();
-                    },
-                    finaleFunction: () => {
-                        this.setSprite('dummy_angry.png');
-                        this.reEnableArms();
-                    }
-                 },
                  {
                      name: "}18 ",
                      chargeAmt: 500,
@@ -641,7 +626,7 @@
                          this.currAnim = PhaserScene.tweens.add({
                              targets: [this.sprite],
                              duration: 700,
-                             x: gameConsts.halfWidth - 65,
+                             x: gameConsts.halfWidth - 58,
                              ease: 'Cubic.easeOut'
                          });
 
@@ -692,7 +677,7 @@
                                         playSound('punch');
                                         zoomTemp(1.02);
                                         this.dummyRightArm.setFrame('super_dummy_leftarm_fist_large.png');
-                                        this.dummyRightArm.setRotation(3).setScale(-1.35, 1.45).setDepth(200);
+                                        this.dummyRightArm.setRotation(3).setScale(-1.33, 1.38).setDepth(200);
 
                                         messageBus.publish("selfTakeDamage", 20);
                                          let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 800);
@@ -722,8 +707,8 @@
                                         PhaserScene.tweens.add({
                                             targets: this.dummyRightArm,
                                             duration: 550,
-                                            scaleX: -1.1,
-                                            scaleY: 1.1,
+                                            scaleX: -1.05,
+                                            scaleY: 1.05,
                                             ease: 'Quint.easeOut',
                                             onComplete: () => {
                                                 PhaserScene.tweens.add({
@@ -829,11 +814,67 @@
                     }
                  },
                  {
-                     name: ";10x3 ",
-                     chargeAmt: 350,
-                     damage: 10,
-                     attackTimes: 3,
+                     name: ";8x4 ",
+                     chargeAmt: 500,
+                     damage: -1,
+                    finishDelay: 3300,
                      isBigMove: true,
+                     startFunction: () => {
+                        this.pullbackScale = 0.99;
+                        this.pullbackDurMult = 0;
+                        this.attackScale = 1.01;
+                        this.lastAttackLingerMult = 1.25;
+                     },
+                     attackStartFunction: () => {
+                        playSound('balloon');
+                        this.reEnableArms();
+                        this.setSprite('dummy_angry.png');
+                        this.disableAnimateShake = true;
+
+                         if (this.breatheTween) {
+                             this.breatheTween.stop();
+                         }
+                         if (this.breatheTween2) {
+                             this.breatheTween2.stop();
+                         }
+
+                        this.dummyLeftArm.setScale(1, -1).setDepth(11);
+                        this.dummyRightArm.setScale(1, -1).setDepth(11);
+                        this.sprite.setDepth(12);
+                        PhaserScene.tweens.add({
+                            targets: this.dummyRightArm,
+                            duration: 1100,
+
+                             scaleX: 1.3,
+                             scaleY: -1.3,
+                            rotation: -1,
+                            ease: 'Cubic.easeOut',
+                        });
+                        PhaserScene.tweens.add({
+                            targets: this.dummyLeftArm,
+                            duration: 1100,
+
+                             scaleX: 1.3,
+                             scaleY: -1.3,
+                            rotation: 1,
+                            ease: 'Cubic.easeOut',
+                            onComplete: () => {
+                                this.rightPummel(8, 4);
+                            }
+                        });
+                     },
+                     finaleFunction: () => {
+                        this.pullbackDurMult = 1;
+                        this.pullbackScale = 0.8;
+                        this.attackScale = 1.2;
+                        this.lastAttackLingerMult = 0.55;
+                     }
+                 },
+                 {
+                     name: "|10x3 ",
+                     chargeAmt: 400,
+                     damage: 10,
+                     attackTimes: 2,
                      prepareSprite: 'super_dummy_swinging.png',
                      attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
                     attackFinishFunction: () => {
@@ -928,6 +969,7 @@
                      isBigMove: true,
                      chargeMult: 2,
                      startFunction: () => {
+                        this.pullbackDurMult = 0;
                         this.disableAnimateShake = true;
                         globalObjects.tempBG.setDepth(0).setVisible(true);
                         fadeAwaySound(this.bgMusic, 6000);
@@ -1019,6 +1061,7 @@
                         });
                      },
                      finaleFunction: () => {
+                        this.pullbackDurMult = 1;
                          this.currentAttackSetIndex = 1;
                          this.nextAttackIndex = 0;
                         this.pullbackScale = 0.9;
@@ -1044,20 +1087,62 @@
                     }
                  },
                  {
-                     name: "}10x2 ",
-                     chargeAmt: 350,
-                     damage: 10,
-                     attackTimes: 2,
-                     prepareSprite: 'super_dummy_swinging.png',
-                     attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
-                    attackFinishFunction: () => {
-                        this.createPunchEffect();
-                    },
-                    finaleFunction: () => {
-                        this.setSprite('dummy_angry.png');
+                     name: ";8x2 ",
+                     chargeAmt: 500,
+                     damage: -1,
+                    finishDelay: 2300,
+                     startFunction: () => {
+                        this.pullbackScale = 0.99;
+                        this.pullbackDurMult = 0;
+                        this.attackScale = 1.01;
+                        this.lastAttackLingerMult = 1.25;
+                     },
+                     attackStartFunction: () => {
+                        playSound('balloon');
                         this.reEnableArms();
-                    }
+                        this.setSprite('dummy_angry.png');
+                        this.disableAnimateShake = true;
+
+                         if (this.breatheTween) {
+                             this.breatheTween.stop();
+                         }
+                         if (this.breatheTween2) {
+                             this.breatheTween2.stop();
+                         }
+
+                        this.dummyLeftArm.setScale(1, -1).setDepth(11);
+                        this.dummyRightArm.setScale(1, -1).setDepth(11);
+                        this.sprite.setDepth(12);
+                        PhaserScene.tweens.add({
+                            targets: this.dummyRightArm,
+                            duration: 1100,
+
+                             scaleX: 1.3,
+                             scaleY: -1.3,
+                            rotation: -1,
+                            ease: 'Cubic.easeOut',
+                        });
+                        PhaserScene.tweens.add({
+                            targets: this.dummyLeftArm,
+                            duration: 1100,
+
+                             scaleX: 1.3,
+                             scaleY: -1.3,
+                            rotation: 1,
+                            ease: 'Cubic.easeOut',
+                            onComplete: () => {
+                                this.rightPummel(8, 2);
+                            }
+                        });
+                     },
+                     finaleFunction: () => {
+                        this.pullbackDurMult = 1;
+                        this.pullbackScale = 0.8;
+                        this.attackScale = 1.2;
+                        this.lastAttackLingerMult = 0.55;
+                     }
                  },
+
                 ]
          ];
      }
@@ -1129,6 +1214,153 @@
             alpha: 0,
          })
      }
+
+    rightPummel(damage, times = 1) {
+        if (times <= 0) {
+            return;
+        }
+
+        PhaserScene.tweens.add({
+            targets: this.dummyRightArm,
+            duration: 200,
+            scaleX: 1.65,
+            scaleY: -1.65,
+            rotation: 0.6,
+            ease: 'Quart.easeIn',
+            onComplete: () => {
+                this.dummyRightArm.setFrame('super_dummy_leftarm_fist_large.png');
+                this.dummyRightArm.setRotation(3.2).setScale(-1.1, 1.2).setDepth(200);
+                playSound('punch');
+                zoomTemp(1.02);
+                messageBus.publish("selfTakeDamage", damage);
+                let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 800);
+                shinePattern.setPosition(gameConsts.halfWidth + 25, globalObjects.player.getY() - 220).setScale(0.55).setDepth(9999).setAlpha(1);
+                PhaserScene.tweens.add({
+                    targets: shinePattern,
+                    scaleX: 0.45,
+                    scaleY: 0.45,
+                    duration: 500,
+                });
+                PhaserScene.tweens.add({
+                    targets: shinePattern,
+                    alpha: 0,
+                    ease: 'Cubic.easeIn',
+                    duration: 500,
+                });
+
+
+                PhaserScene.tweens.add({
+                    targets: this.dummyRightArm,
+                    duration: 200,
+                    scaleX: -1,
+                    scaleY: 1.05,
+                    ease: 'Quart.easeOut',
+                    onComplete: () => {
+                        this.leftPummel(damage, times - 1);
+                        PhaserScene.tweens.add({
+                            targets: this.dummyRightArm,
+                            duration: 150,
+                            scaleX: -0.95,
+                            scaleY: 0.9,
+                            ease: 'Quart.easeIn',
+                            onComplete: () => {
+                                this.dummyRightArm.setFrame('super_dummy_rightarm.png');
+                                this.dummyRightArm.setRotation(0.6).setScale(1.4, -1.4).setDepth(200);
+                                PhaserScene.tweens.add({
+                                    targets: this.dummyRightArm,
+                                    duration: 400,
+                                    rotation: -0.75,
+                                    scaleX: 1.2,
+                                    scaleY: -1.2,
+                                    ease: 'Quint.easeOut',
+                                    onComplete: () => {
+                                        this.rightPummel(damage, times - 2);
+                                    }
+                                });
+                            }
+                        });
+
+
+                    }
+                });
+            }
+        });
+    }
+
+    leftPummel(damage, times = 1) {
+        if (times <= 0) {
+            return;
+        }
+
+        PhaserScene.tweens.add({
+            targets: this.dummyLeftArm,
+            duration: 200,
+            scaleX: 1.65,
+            scaleY: -1.65,
+            rotation: -0.6,
+            ease: 'Quart.easeIn',
+            onComplete: () => {
+                this.dummyLeftArm.setFrame('super_dummy_leftarm_fist_large.png');
+                this.dummyLeftArm.setRotation(-3.2).setScale(1.1, 1.2).setDepth(200);
+                playSound('punch');
+                zoomTemp(1.02);
+                messageBus.publish("selfTakeDamage", damage);
+                let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 800);
+                shinePattern.setPosition(gameConsts.halfWidth - 25, globalObjects.player.getY() - 220).setScale(0.55).setDepth(9999).setAlpha(1);
+                PhaserScene.tweens.add({
+                    targets: shinePattern,
+                    scaleX: 0.45,
+                    scaleY: 0.45,
+                    duration: 500,
+                });
+                PhaserScene.tweens.add({
+                    targets: shinePattern,
+                    alpha: 0,
+                    ease: 'Cubic.easeIn',
+                    duration: 500,
+                });
+
+
+                PhaserScene.tweens.add({
+                    targets: this.dummyLeftArm,
+                    duration: 200,
+                    scaleX: 1,
+                    scaleY: 1.05,
+                    ease: 'Quart.easeOut',
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: this.dummyLeftArm,
+                            duration: 150,
+                            scaleX: 0.95,
+                            scaleY: 0.9,
+                            ease: 'Quart.easeIn',
+                            onComplete: () => {
+                                this.dummyLeftArm.setFrame('super_dummy_leftarm.png');
+                                this.dummyLeftArm.setRotation(-0.6).setScale(1.4, -1.4).setDepth(200);
+                                PhaserScene.tweens.add({
+                                    targets: this.dummyLeftArm,
+                                    duration: 400,
+                                    rotation: 0.75,
+                                    scaleX: 1.2,
+                                    scaleY: -1.2,
+                                    ease: 'Quint.easeOut',
+                                    onComplete: () => {
+                                        if (times == 1) {
+                                            this.dummyRightArm.setDepth(0).setScale(1.1);
+                                            this.dummyLeftArm.setDepth(0).setScale(1.1);
+                                            this.repeatTweenBreathe()
+                                        }
+                                    }
+                                });
+                            }
+                        });
+
+
+                    }
+                });
+            }
+        });
+    }
 
      buffArms() {
         this.dummyLeftArm.visible = true;

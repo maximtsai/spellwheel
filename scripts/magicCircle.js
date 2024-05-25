@@ -101,17 +101,33 @@ const ENABLE_KEYBOARD = true;
 
         if (ENABLE_KEYBOARD && !this.outerDragDisabled && !this.innerDragDisabled) {
             if (this.keyA.isDown || this.keyLeft.isDown) {
-                this.keyboardRotateInner = -1;
+                if (this.keyboardRotateInner > -1) {
+                    this.keyboardRotateInner = -1.4;
+                } else {
+                    this.keyboardRotateInner = -1;
+                }
             } else if (this.keyD.isDown || this.keyRight.isDown) {
-                this.keyboardRotateInner = 1;
+                if (this.keyboardRotateInner < 1) {
+                    this.keyboardRotateInner = 1.4;
+                } else {
+                    this.keyboardRotateInner = 1;
+                }
             } else {
                 this.keyboardRotateInner = 0;
             }
 
             if (this.keyW.isDown || this.keyUp.isDown || this.keyE.isDown) {
-                this.keyboardRotateOuter = 1;
+                if (this.keyboardRotateOuter < 1) {
+                    this.keyboardRotateOuter = 1.4;
+                } else {
+                    this.keyboardRotateOuter = 1;
+                }
             } else if (this.keyS.isDown || this.keyDown.isDown || this.keyQ.isDown) {
-                this.keyboardRotateOuter = -1;
+                if (this.keyboardRotateOuter > -1) {
+                    this.keyboardRotateOuter = -1.4;
+                } else {
+                    this.keyboardRotateOuter = -1;
+                }
             } else {
                 this.keyboardRotateOuter = 0;
             }
@@ -883,7 +899,7 @@ const ENABLE_KEYBOARD = true;
         if (this.keyboardRotateInner != 0 && !this.innerDragDisabled) {
             this.usedKeyboardInner = true;
             let rotMult = 0.005/(0.005+Math.abs(this.innerCircle.rotVel));
-            this.innerCircle.torque = this.keyboardRotateInner * 0.043 * rotMult;
+            this.innerCircle.torque = this.keyboardRotateInner * 0.048 * rotMult;
         } else if (this.usedKeyboardInner) {
             this.usedKeyboardInner = false;
             this.innerCircle.rotVel *= 0.7;
@@ -892,7 +908,7 @@ const ENABLE_KEYBOARD = true;
         if (this.keyboardRotateOuter != 0 && !this.outerDragDisabled) {
             this.usedKeyboardOuter = true;
             let rotMult = 0.005/(0.005+Math.abs(this.outerCircle.rotVel));
-            this.outerCircle.torque = this.keyboardRotateOuter * 0.043 * rotMult;
+            this.outerCircle.torque = this.keyboardRotateOuter * 0.048 * rotMult;
         } else if (this.usedKeyboardOuter) {
             this.usedKeyboardOuter = false;
             this.outerCircle.rotVel *= 0.7;
@@ -967,7 +983,7 @@ const ENABLE_KEYBOARD = true;
         let spinAmtInner = this.innerCircle.rotVel + this.innerCircle.torque * dt * 5.5 * spinAmpFromRestInner;
         let spinAmtOuter = this.outerCircle.rotVel + this.outerCircle.torque * dt * 3 * spinAmpFromRestOuter;
 
-        let spinSlowTimeDilation = 1 - (1-gameVars.timeSlowRatio)*0.25;
+        let spinSlowTimeDilation = 1 - (1-gameVars.timeSlowRatio)*0.02;
         let spinSnapSlowAmtInner = this.handleSpinSnapSlowAmt(this.innerCircle, this.elements);
         let spinSnapSlowAmtOuter = this.handleSpinSnapSlowAmt(this.outerCircle, this.embodiments);
 

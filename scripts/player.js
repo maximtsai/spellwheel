@@ -913,8 +913,8 @@ class Player {
         this.clearAllEffects();
 
         if (!this.swirl1) {
-            this.swirl2 = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'backgrounds', 'fog_swirl_glow.png').setDepth(20);
-            this.swirl1 = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'backgrounds', 'fog_swirl.png').setDepth(20);
+            this.swirl2 = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'backgrounds', 'fog_swirl_glow.png').setDepth(30);
+            this.swirl1 = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'backgrounds', 'fog_swirl.png').setDepth(30);
         }
         this.swirl1.setAlpha(0).setScale(3);
         this.swirl2.setAlpha(0).setScale(3);

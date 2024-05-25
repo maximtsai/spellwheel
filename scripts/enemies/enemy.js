@@ -276,7 +276,7 @@ class Enemy {
         let usedAtlas = atlas ? atlas : 'enemies';
         this.atlas = usedAtlas;
         this.sprite = this.scene.add.sprite(this.x, this.y, usedAtlas, name);
-        this.sprite.setDepth(0);
+        this.sprite.setDepth(1);
         this.sprite.setAlpha(0);
         this.defaultSprite = name;
 

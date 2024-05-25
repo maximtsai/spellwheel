@@ -1,4 +1,4 @@
- class LesserDummy extends Enemy {
+ class MenuDummy extends Enemy {
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('lesser_dummy.png', 0.8, 0, 5);

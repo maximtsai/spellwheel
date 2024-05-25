@@ -1,9 +1,9 @@
  class LesserDummy extends Enemy {
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
-        this.initSprite('lesser_dummy.png', 0.8, 0, 5);
+        this.initSprite('lesser_dummy.png', 0.8, 0);
         this.bgMusic = playSound('bite_down_simplified', 0.6, true);
-        this.sprite.setOrigin(0.5, 0.99);
+        this.sprite.setOrigin(0.5, 0.98);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
                 this.initTutorial2();
@@ -329,7 +329,7 @@
 
          PhaserScene.tweens.add({
              targets: this.sprite,
-             rotation: -1,
+             rotation: -1.25,
              ease: "Cubic.easeIn",
              duration: 900,
              onComplete: () => {

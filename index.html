@@ -83,19 +83,23 @@
 		}
         @font-face {
             font-family: verdanamax;
-            src: url('fonts/Verdana.ttf');
+            src: local('verdanamax'), url('fonts/Verdana.ttf')  format('truetype');
             font-weight:400;
             font-weight:normal;
         }
         @font-face {
             font-family: verdanabold;
-            src: url('fonts/Verdanab.ttf');
+            src: local('verdanabold'), url('fonts/Verdanab.ttf') format('truetype');
             font-weight:400;
             font-weight:bold;
         }
     </style>
 </head>
 <body onload="onloadFunc()" onresize="resizeGame()">
+    <script>
+        document.fonts.load('10pt "verdanamax"')
+        document.fonts.load('10pt "verdanabold"')
+    </script>
     <div style="font-family:verdanamax; position:absolute; left:-1000px; visibility:hidden;">.</div>
     <div style="font-family:verdanabold; position:absolute; left:-1000px; visibility:hidden;">.</div>
     <div id="preload-notice">Loading Preloader...</div>

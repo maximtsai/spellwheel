@@ -479,6 +479,29 @@
          });
      }
 
+    createShieldTut() {
+         this.rune1 = this.scene.add.sprite(95, gameConsts.halfHeight - 49, 'circle', 'rune_protect_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+
+         this.addToDestructibles(this.rune1);
+
+         setTimeout(() => {
+            globalObjects.textPopupManager.setInfoText(96, gameConsts.halfHeight - 139, "Block enemy\nattacks with\nthe shield rune\n ", 'left');
+             PhaserScene.tweens.add({
+                 targets: [this.rune1],
+                 alpha: 1,
+                 duration: 200,
+             });
+             setTimeout(() => {
+                globalObjects.textPopupManager.hideInfoText();
+                 PhaserScene.tweens.add({
+                     targets: [this.rune1],
+                     alpha: 0,
+                     duration: 200,
+                 });
+             }, 10000);
+         }, 500)
+    }
+
      initAttacks() {
          let regrowthAmt1 = gameVars.isHardMode ? 16 : 8;
          let regrowthAmt2 = gameVars.isHardMode ? 24 : 10;
@@ -492,7 +515,17 @@
                      chargeAmt: 650,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
+                     startFunction: () => {
+                        this.createShieldTut();
+
+                     },
                      attackStartFunction: () => {
+                        globalObjects.textPopupManager.hideInfoText();
+                         PhaserScene.tweens.add({
+                             targets: [this.rune1],
+                             alpha: 0,
+                             duration: 200,
+                         });
                          this.attackWithBranch(12);
                      },
                      attackFinishFunction: () => {
@@ -608,14 +641,21 @@
              [
                  // 3
                  {
-                     name: "CRUSH;25 ",
+                     name: "CRUSH;28",
                      announceName: "CRUSH",
                      desc: "The tree tries to crush you",
                      chargeAmt: 800,
                      damage: 25,
                      isBigMove: true,
+                     startFunction: () => {
+                        globalObjects.textPopupManager.setInfoText(100, gameConsts.halfHeight - 139, "Different shields\nare useful\nagainst different\nattacks.", 'left');
+                        setTimeout(() => {
+                            globalObjects.textPopupManager.hideInfoText();
+                         }, 11000);
+                     },
                      attackStartFunction: () => {
                          playSound('tree_sfx');
+                        globalObjects.textPopupManager.hideInfoText();
                          this.pullbackScale = 0.965;
                          this.attackScale = 1.25;
                          this.hasCrushed = true;
@@ -655,6 +695,27 @@
              [
                  // 4
                  {
+                     name: "|4x4 ",
+                     announceName: "LEAF SHOWER",
+                     desc: "The tree showers you with sharp leaves",
+                     chargeAmt: 750,
+                     damage: 0,
+                     attackSprites: ['tree_open_glow.png'],
+                     attackStartFunction: () => {
+                       playSound('tree_sfx');
+                     },
+                     attackFinishFunction: () => {
+                         for (let i = 0; i < 4; i++) {
+                             let xPos = gameConsts.halfWidth + -150 + i * 100;
+                             let yPos = 75 + Math.random() * 40;
+                             this.createLeafObject('tree_leaf.webp', xPos, yPos, i * 25);
+                         }
+                         setTimeout(() => {
+                             this.fireObjects(4);
+                         }, 350);
+                     }
+                 },
+                 {
                      name: "|12 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
@@ -666,31 +727,42 @@
                      }
                  },
                  {
-                     name: "|4x5 ",
+                     name: "|4x6 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
                      chargeAmt: 750,
                      damage: 0,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
-                       playSound('tree_sfx');
+                         playSound('tree_sfx');
                      },
                      attackFinishFunction: () => {
-                         for (let i = 0; i < 5; i++) {
-                             let xPos = gameConsts.halfWidth + -200 + i * 100;
+                         for (let i = 0; i < 6; i++) {
+                             let xPos = gameConsts.halfWidth + -250 + i * 100;
                              let yPos = 75 + Math.random() * 40;
                              this.createLeafObject('tree_leaf.webp', xPos, yPos, i * 25);
                          }
                          setTimeout(() => {
                              this.fireObjects(4);
-                         }, 350);
+                         }, 300);
+                     }
+                 },
+                 {
+                     name: "|12 ",
+                     announceName: "BRANCH ATTACK",
+                     desc: "The tree swipes a branch at you",
+                     chargeAmt: 650,
+                     damage: -1,
+                     attackSprites: ['tree_open_glow.png'],
+                     attackStartFunction: () => {
+                         this.attackWithBranch(12);
                      }
                  },
              ],
              [
                  // 5
                  {
-                     name: "TIMBER!!!;40 ",
+                     name: "TIMBER!!!;30 ",
                      announceName: "TIMBER!!!",
                      desc: "The tree tries to crush you",
                      chargeAmt: 1200,
@@ -754,6 +826,12 @@
          if (this.currAnim) {
              this.currAnim.stop();
          }
+        globalObjects.textPopupManager.hideInfoText();
+         PhaserScene.tweens.add({
+             targets: [this.rune1],
+             alpha: 0,
+             duration: 200,
+         });
 
          this.dieClickBlocker = new Button({
              normal: {

@@ -163,7 +163,7 @@ class Enemy {
         });
 
         this.scene.tweens.add({
-            targets: [this.healthBarCurr],
+            targets: [this.healthBarCurr, this.healthBarFlash],
             duration: 100 + this.healthBarLengthMax * 5,
             x: this.x - this.healthBarLengthMax - 1,
             scaleX: this.healthBarLengthMax + 1,

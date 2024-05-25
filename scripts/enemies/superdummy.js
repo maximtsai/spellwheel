@@ -581,7 +581,7 @@
                  },
                  {
                      name: "BUFF UP",
-                     chargeAmt: 800,
+                     chargeAmt: 900,
                      damage: -1,
                      chargeMult: 2,
                      startFunction: () => {
@@ -792,7 +792,7 @@
                  },
                  {
                      name: "BUFF UP",
-                     chargeAmt: 800,
+                     chargeAmt: 900,
                      damage: -1,
                      chargeMult: 2,
                      startFunction: () => {
@@ -845,7 +845,7 @@
                     }
                  },
                  {
-                     name: "T-POSING",
+                     name: "T-POSE",
                      chargeAmt: 350,
                      damage: -1,
                      chargeMult: 2,

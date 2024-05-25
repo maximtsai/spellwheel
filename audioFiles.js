@@ -11,6 +11,7 @@ const audioFiles = [
     {name: 'button', src: 'audio/button.mp3'},
     {name: 'emergency', src: 'audio/emergency.mp3'},
     {name: 'fizzle', src: 'audio/fizzle.mp3'},
+    {name: 'zoomin', src: 'audio/zoomin.mp3'},
     {name: 'matter_body', src: 'audio/matter_body.mp3'},
     {name: 'matter_enhance', src: 'audio/matter_enhance.mp3'},
     {name: 'matter_enhance_2', src: 'audio/matter_enhance_2.mp3'},

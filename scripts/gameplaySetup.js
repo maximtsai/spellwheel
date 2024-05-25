@@ -361,7 +361,7 @@ function cleanupIntro() {
         icons[i].destroy();
     }
 
-    globalObjects.tempBG.destroy();
+    globalObjects.tempBG.alpha = 0;
     for (let i in loadObjects) {
         loadObjects[i].destroy();
     }

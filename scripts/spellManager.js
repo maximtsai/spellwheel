@@ -264,9 +264,9 @@ class SpellManager {
         let protectionAmt = 1;
         let damageAmt = 1;
         let duration = 400 + 50 * spellMult;
-        setTimeout(() => {
+        PhaserScene.time.delayedCall( duration - 175, () => {
             playSound('matter_body');
-        }, duration - 175);
+        });
         this.scene.tweens.add({
             targets: brickObj,
             duration: 400 + 50 * spellMult,
@@ -423,9 +423,9 @@ class SpellManager {
                         playSound('matter_enhance', 1);
                     } else if (i === itemsToAnimate.length - 1) {
                         if (itemsToAnimate.length < 4) {
-                            setTimeout(() => {
+                            PhaserScene.time.delayedCall( 50, () => {
                                 playSound('matter_enhance_2', 1);
-                            }, 50);
+                            });
                         } else {
                             playSound('matter_enhance_2', 1);
                         }
@@ -751,14 +751,14 @@ class SpellManager {
                 duration: 200,
                 ease: 'Cubic.easeIn',
                 onStart: () => {
-                    setTimeout(() => {
+                    PhaserScene.time.delayedCall( 50, () => {
                         for (let i = 0; i < 6; i++) {
                             let velX = (Math.random() - 0.5) * 1;
                             let velY = -0.05 -Math.random() * 0.2;
                             let duration = 250 + Math.random() * 500;
                             this.createRockParticle(rockObj.x + (Math.random() - 0.5) * 25, rockObj.y - Math.random() * 5, velX, velY, duration)
                         }
-                    }, 50);
+                    });
                 },
                 onComplete: () => {
                     messageBus.publish('enemyTakeDamage', 22 + additionalDamage);

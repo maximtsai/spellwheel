@@ -274,6 +274,7 @@ class Enemy {
         this.x += xOffset;
         this.y += yOffset;
         let usedAtlas = atlas ? atlas : 'enemies';
+        this.atlas = usedAtlas;
         this.sprite = this.scene.add.sprite(this.x, this.y, usedAtlas, name);
         this.sprite.setDepth(0);
         this.sprite.setAlpha(0);
@@ -322,7 +323,7 @@ class Enemy {
     setSprite(name, scale, noAnim, depth = 1) {
         let newScale = scale ? scale : 1;
         if (!this.sprite) {
-            this.sprite = this.scene.add.sprite(this.x, this.y, 'enemies', name);
+            this.sprite = this.scene.add.sprite(this.x, this.y, this.atlas, name);
             this.sprite.setDepth(depth);
         } else {
             newScale = scale ? scale : this.sprite.startScale;

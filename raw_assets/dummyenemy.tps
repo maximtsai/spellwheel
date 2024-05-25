@@ -157,7 +157,7 @@
             <key>extrude</key>
             <uint>1</uint>
             <key>trimThreshold</key>
-            <uint>2</uint>
+            <uint>3</uint>
             <key>trimMargin</key>
             <uint>1</uint>
             <key>trimMode</key>
@@ -233,6 +233,22 @@
                 <rect>44,23,88,45</rect>
                 <key>scale9Paddings</key>
                 <rect>44,23,88,45</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">dummyenemy/scary_eyes.png</key>
+            <key type="filename">dummyenemy/super_dummy_tpose.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>163,100,325,200</rect>
+                <key>scale9Paddings</key>
+                <rect>163,100,325,200</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

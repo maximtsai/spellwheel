@@ -542,26 +542,11 @@
              [
                  // 0
                  {
-                     name: "|24 ",
+                     name: "|8 ",
                      announceName: "INITIAL STRIKE",
                      desc: "The mysterious knight charges at you!",
                      chargeAmt: 275,
-                     damage: 24,
-                     prepareSprite: 'void_knight_pullback.png',
-                     attackSprites: ['void_knight_attack.png'],
-                     attackFinishFunction: () => {
-  
-                         this.makeSlashEffect();
-                         playSound('sword_hit', 0.75);
-                         this.sigilEffect.visible = true;
-                     }
-                 },
-                 {
-                     name: "|24 ",
-                     announceName: "INITIAL STRIKE",
-                     desc: "The mysterious knight charges at you!",
-                     chargeAmt: 275,
-                     damage: 24,
+                     damage: 8,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
                      attackFinishFunction: () => {

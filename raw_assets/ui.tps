@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>101</uint>
+        <uint>86</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -178,7 +178,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.55</double>
+                <double>0.56</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -249,6 +249,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">ui/newgamepaper.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>158,171,315,342</rect>
+                <key>scale9Paddings</key>
+                <rect>158,171,315,342</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">ui/nextLevel.png</key>
             <key type="filename">ui/nextLevel_hover.png</key>
             <key type="filename">ui/nextLevel_press.png</key>
@@ -263,6 +278,21 @@
                 <rect>45,13,90,25</rect>
                 <key>scale9Paddings</key>
                 <rect>45,13,90,25</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ui/paper.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.6</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>256,278,512,556</rect>
+                <key>scale9Paddings</key>
+                <rect>256,278,512,556</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

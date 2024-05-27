@@ -5,7 +5,7 @@ class BannerTextManager {
         this.dialogIndex = 0;
         this.darkenBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(100002).setAlpha(0).setScale(500, 500);
         this.textBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 25, 'misc', 'victory_banner.png').setScale(100, 1).setDepth(100002).setAlpha(0);
-        this.text = this.scene.add.text(gameConsts.halfWidth, this.textBG.y, '...', {fontFamily: 'Garamond', fontSize: 26, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(100002);
+        this.text = this.scene.add.text(gameConsts.halfWidth, this.textBG.y, '...', {fontFamily: 'Garamond', fontSize: 28, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(100002);
         // this.text.setFontStyle('bold');
     }
 

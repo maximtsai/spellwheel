@@ -17,6 +17,8 @@
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 180 : 100;
          this.slashEffect = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
+        this.pullbackScale = 0.88;
+        this.attackScale = 1.14;
      }
 
      // update(dt) {}
@@ -93,6 +95,10 @@
                      desc: "Goblin rams you with\nhis shield",
                      chargeAmt: 500,
                      damage: gameVars.isHardMode ? 12 : 7,
+                     startFunction: () => {
+                        this.pullbackScale = 0.85;
+                        this.attackScale = 1.2;
+                     },
                      attackFinishFunction: () => {
                          playSound('body_slam')
                          let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
@@ -117,6 +123,8 @@
                      chargeMult: 5,
                      isBigMove: true,
                      startFunction: () => {
+                        this.pullbackScale = 0.88;
+                        this.attackScale = 1.15;
                          this.setDefaultSprite('gobbo3.png', 0.92);
                      },
                      attackFinishFunction: () => {

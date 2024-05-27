@@ -153,7 +153,6 @@
              this.setNextAttack(5, 0);
              if (!this.hasPreparedFinal) {
                  this.hasPreparedFinal = true;
-                 fadeAwaySound(this.bgMusic, 2000);
                  this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
                  this.sprite.y -= this.sprite.height * 0.125;
              }
@@ -544,7 +543,7 @@
                      name: "REGROWTH (+" + regrowthAmt1 + ")",
                      announceName: "REGROWTH (+" + regrowthAmt1 + ")",
                      desc: "The tree recovers its injuries over time",
-                     chargeAmt: 500,
+                     chargeAmt: 650,
                      damage: -1,
                      attackStartFunction: () => {
                          this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
@@ -593,7 +592,7 @@
                      name: "REGROWTH (+" + regrowthAmt2 + ")",
                      announceName: "REGROWTH (+" + regrowthAmt2 + ")",
                      desc: "The tree recovers its injuries",
-                     chargeAmt: 600,
+                     chargeAmt: 650,
                      damage: -1,
                      attackStartFunction: () => {
                          this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
@@ -645,7 +644,7 @@
                      announceName: "CRUSH",
                      desc: "The tree tries to crush you",
                      chargeAmt: 800,
-                     damage: 25,
+                     damage: 28,
                      isBigMove: true,
                      startFunction: () => {
                         globalObjects.textPopupManager.setInfoText(100, gameConsts.halfHeight - 139, "Different shields\nare useful\nagainst different\nattacks.", 'left');
@@ -656,8 +655,8 @@
                      attackStartFunction: () => {
                          playSound('tree_sfx');
                         globalObjects.textPopupManager.hideInfoText();
-                         this.pullbackScale = 0.965;
-                         this.attackScale = 1.25;
+                         this.pullbackScale = 0.96;
+                         this.attackScale = 1.28;
                          this.hasCrushed = true;
                      },
                      attackFinishFunction: () => {
@@ -695,24 +694,24 @@
              [
                  // 4
                  {
-                     name: "|4x4 ",
+                     name: "|4x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
                      chargeAmt: 750,
                      damage: 0,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
-                       playSound('tree_sfx');
+                         playSound('tree_sfx');
                      },
                      attackFinishFunction: () => {
-                         for (let i = 0; i < 4; i++) {
-                             let xPos = gameConsts.halfWidth + -150 + i * 100;
+                         for (let i = 0; i < 5; i++) {
+                             let xPos = gameConsts.halfWidth + -200 + i * 100;
                              let yPos = 75 + Math.random() * 40;
                              this.createLeafObject('tree_leaf.webp', xPos, yPos, i * 25);
                          }
                          setTimeout(() => {
                              this.fireObjects(4);
-                         }, 350);
+                         }, 300);
                      }
                  },
                  {
@@ -730,7 +729,7 @@
                      name: "|4x6 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 750,
+                     chargeAmt: 800,
                      damage: 0,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
@@ -762,7 +761,7 @@
              [
                  // 5
                  {
-                     name: "TIMBER!!!;30 ",
+                     name: "TIMBER!!!;32 ",
                      announceName: "TIMBER!!!",
                      desc: "The tree tries to crush you",
                      chargeAmt: 1200,
@@ -770,10 +769,12 @@
                      damage: 40,
                      isBigMove: true,
                      startFunction: () => {
-                         this.bgMusic.stop();
-                         if (!this.dead) {
-                             this.bgMusic = playSound('echos_of_time_finale');
-                         }
+                        fadeAwaySound(this.bgMusic, 3000);
+                        setTimeout(() => {
+                             if (!this.dead) {
+                                 this.bgMusic = playSound('echos_of_time_finale');
+                             }
+                         }, 3000)
                      },
                      attackStartFunction: () => {
                          playSound('tree_timber');

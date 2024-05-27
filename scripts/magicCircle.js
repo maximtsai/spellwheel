@@ -2158,6 +2158,12 @@ const ENABLE_KEYBOARD = true;
      }
 
      updateSpellHover(closestElement, closestEmbodiment, closestElementDist, closestEmbodimentDist) {
+        let multiplier = globalObjects.player.spellMultiplier();
+        let multText = "";
+        if (multiplier > 1.1) {
+            multText = " X" + multiplier;
+        }
+        // LEt enemy finish last 3% of charge always.
          switch (closestElement.runeName) {
              case RUNE_MATTER:
                  switch (closestEmbodiment.runeName) {
@@ -2170,15 +2176,19 @@ const ENABLE_KEYBOARD = true;
                          }
                          break;
                      case RUNE_REINFORCE:
-                         this.spellNameText.setText('THORN FORM');
+                        let displayText = "THORN FORM";
+                        if (multiplier > 1.1) {
+                            displayText = displayText + multText;
+                        }
+                         this.spellNameText.setText(displayText);
                          this.spellDescriptor.setText(getLangText('matter_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.updateTextIfDifferent(this.spellNameText, 'ADD\nSTRONGER ATTACK')
+                         this.updateTextIfDifferent(this.spellNameText, 'ADD\nSTRONGER ATTACK' + multText)
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('matter_enhance_desc'))
                          break;
                      case RUNE_PROTECT:
-                         this.spellNameText.setText('SHIELD\nOF STONE');
+                         this.spellNameText.setText('SHIELD\nOF STONE' + multText);
                          this.spellDescriptor.setText(getLangText('matter_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
@@ -2198,7 +2208,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('time_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
-                        let healMult = (1 - (0.5 ** globalObjects.player.spellMultiplier()));
+                        let healMult = (1 - (0.5 ** multiplier));
                         let recentlyTakenDamage = globalObjects.player.getRecentlyTakenDamageAmt();
                         let recentlyHealAmt = Math.ceil(recentlyTakenDamage * healMult);
                         let overheal = Math.max(0, globalObjects.player.health + recentlyHealAmt - globalObjects.player.healthMax)
@@ -2208,15 +2218,15 @@ const ENABLE_KEYBOARD = true;
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('time_reinforce_desc'))
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD\nEXTRA ATTACK');
+                         this.spellNameText.setText('ADD\nEXTRA ATTACK' + multText);
                          this.spellDescriptor.setText(getLangText('time_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
-                         this.spellNameText.setText('SHIELD\nOF DELAY');
+                         this.spellNameText.setText('SHIELD\nOF DELAY' + multText);
                          this.spellDescriptor.setText(getLangText('time_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         this.spellNameText.setText('TIME FREEZE');
+                         this.spellNameText.setText('TIME FREEZE' + multText);
                          this.spellDescriptor.setText(getLangText('time_unload_desc'));
                          break;
                      default:
@@ -2232,11 +2242,11 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('mind_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
-                         this.spellNameText.setText('ENERGY FORM');
+                         this.spellNameText.setText('ENERGY FORM' + multText);
                          this.spellDescriptor.setText(getLangText('mind_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD\nBURNING ATTACK');
+                         this.spellNameText.setText('ADD\nBURNING ATTACK' + multText);
                          if (gameVars.mindPlus) {
                             this.spellDescriptor.setText(getLangText('mind_enhance_plus_desc'));
                          } else {
@@ -2244,11 +2254,15 @@ const ENABLE_KEYBOARD = true;
                          }
                          break;
                      case RUNE_PROTECT:
-                         this.spellNameText.setText('REFLECT DAMAGE');
+                         this.spellNameText.setText('REFLECT DAMAGE' + multText);
                          this.spellDescriptor.setText(getLangText('mind_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         this.spellNameText.setText('AMPLIFY MAGIC');
+                        let displayText = 'AMPLIFY MAGIC';
+                        if (multiplier > 1.1) {
+                            displayText = "AMPLIFIED AMPLIFY MAGIC";
+                        }
+                         this.spellNameText.setText(displayText);
                          this.spellDescriptor.setText(getLangText('mind_unload_desc'));
                          break;
                      default:
@@ -2268,11 +2282,11 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('void_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD\nCURSING ATTACK');
+                         this.spellNameText.setText('ADD\nCURSING ATTACK' + multText);
                          this.spellDescriptor.setText(getLangText('void_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
-                         this.spellNameText.setText('SHIELD\nOF NEGATION');
+                         this.spellNameText.setText('SHIELD\nOF NEGATION' + multText);
                          this.spellDescriptor.setText(getLangText('void_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
@@ -2508,4 +2522,4 @@ const ENABLE_KEYBOARD = true;
      }
 
 
- }
+}

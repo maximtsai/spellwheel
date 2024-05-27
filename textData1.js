@@ -80,7 +80,7 @@ const textData = {
         jp: ''
     },
 
-    void_strike_desc: {en_us: 'Damage 1.5%\nenemy current\nHP. Deal that\ndamage 2 more\ntimes after a\ndelay.',
+    void_strike_desc: {en_us: 'Damage 2% enemy\ncurrent HP. Inflict\nthe same damage\n2 more times after\na delay.',
         fr: '',
         zh_cn: '',
         ru: '',

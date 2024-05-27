@@ -4,8 +4,7 @@ function setupMainMenu() {
     globalObjects.menuBot = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_bot.png').setDepth(-9).setScale(0.92);
 }
 
-
-function clearMenuButtons() {
+function clearOnlyMenuButtons() {
     if (globalObjects.continueButton) {
         globalObjects.continueButton.destroy();
     }
@@ -20,24 +19,56 @@ function clearMenuButtons() {
     globalObjects.lvl7Button.destroy();
     globalObjects.lvl8Button.destroy();
     globalObjects.lvl9Button.destroy();
+}
 
+function minorZoomMenu() {
+    if (globalObjects.menuBack) {
+        PhaserScene.tweens.add({
+             targets: [globalObjects.menuBack],
+             scaleX: 1,
+             scaleY: 1,
+             y: gameConsts.halfHeight - 100,
+             ease: 'Quint.easeInOut',
+             duration: 1500,
+         });
+        PhaserScene.tweens.add({
+             targets: [globalObjects.menuTop],
+             scaleX: 1.05,
+             scaleY: 1.05,
+             y: gameConsts.halfHeight - 100,
+             ease: 'Quint.easeInOut',
+             duration: 1500,
+         });
 
+        globalObjects.menuBot.destroy();
 
+        // PhaserScene.tweens.add({
+        //      targets: [globalObjects.menuBot],
+        //      scaleX: 1.2,
+        //      scaleY: 1.2,
+        //      y: gameConsts.halfHeight - 70,
+        //      ease: 'Cubic.easeInOut',
+        //      duration: 1500,
+        //  });
+    }
+}
+
+function clearOnlyMenuBack() {
     if (globalObjects.menuBack) {
         PhaserScene.tweens.add({
              targets: [globalObjects.menuBack],
              scaleX: 1.26,
              scaleY: 1.26,
              x: gameConsts.halfWidth - 1,
-             y: gameConsts.halfHeight - 3,
+             y: gameConsts.halfHeight + 15,
              ease: 'Cubic.easeInOut',
              duration: 2500,
          });
         PhaserScene.tweens.add({
              targets: [globalObjects.menuTop],
-             scaleX: 2.1,
-             scaleY: 2.1,
-             y: gameConsts.halfHeight + 130,
+             scaleX: 2,
+             scaleY: 2,
+             y: gameConsts.halfHeight + 20,
              ease: 'Cubic.easeInOut',
              duration: 2500,
          });
@@ -70,7 +101,11 @@ function clearMenuButtons() {
              }
          });
     }
+}
 
+function clearMenuButtons() {
+    clearOnlyMenuButtons();
+    clearOnlyMenuBack();
 }
 
 function gotoMainMenu() {
@@ -135,8 +170,8 @@ function gotoMainMenu() {
             alpha: 0.001
         },
         onMouseUp: () => {
-            clearMenuButtons();
-            beginLevel(0);
+            clearOnlyMenuButtons();
+            beginPreLevel(0)
         }
     });
     globalObjects.startButton.setOrigin(0.5, 0.5);

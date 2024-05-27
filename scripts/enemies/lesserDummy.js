@@ -1,11 +1,13 @@
  class LesserDummy extends Enemy {
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
-        this.initSprite('lesser_dummy.png', 0.8, 0);
-        this.bgMusic = playSound('bite_down_simplified', 0.6, true);
+        this.initSprite('lesser_dummy.png', 0.9, 0, undefined, undefined, 0);
         this.sprite.setOrigin(0.5, 0.98);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
+                if (!this.bgMusic) {
+                    this.bgMusic = playSound('bite_down_simplified', 0.6, true);
+                }
                 this.initTutorial2();
             } else if (globalObjects.player.getPlayerCastSpellsCount() === 2) {
                 setTimeout(() => {
@@ -13,6 +15,20 @@
                 }, 3000);
                 this.playerSpellCastSub.unsubscribe()
             }
+        });
+    }
+
+    initSpriteAnim(scale) {
+        let origY = this.sprite.y;
+        this.sprite.setScale(scale * 0.85, scale * 0.85).setAlpha(1);
+        this.sprite.y += 92;
+        this.scene.tweens.add({
+            targets: this.sprite,
+            duration: 1500,
+            ease: 'Quint.easeInOut',
+            scaleX: scale,
+            scaleY: scale,
+            y: origY,
         });
     }
 
@@ -27,58 +43,69 @@
          this.shadow = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(6).setDepth(9999).setAlpha(0);
         setTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
-                // globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Click to cast\na spell");
-                let spellListener = messageBus.subscribe('spellClicked', () => {
-                    this.firstPopupClosed = true;
-                    // globalObjects.textPopupManager.hideInfoText();
-                    spellListener.unsubscribe();
-                    if (this.currShadowTween) {
-                        this.currShadowTween.stop();
-                    }
-                    PhaserScene.tweens.add({
-                        targets: this.shadow,
-                        alpha: 0,
-                        ease: "Cubic.easeOut",
-                        scaleX: 8,
-                        scaleY: 8,
-                        duration: 500,
-                    });
-                });
-                this.currShadowTween = PhaserScene.tweens.add({
-                    targets: this.shadow,
-                    alpha: 0.65,
-                    ease: "Cubic.easeOut",
-                    scaleX: 5.6,
-                    scaleY: 5.6,
-                    duration: 700,
-                    onComplete: () => {
-                        if (globalObjects.player.getPlayerCastSpellsCount() !== 0 && !this.firstPopupClosed) {
-                            globalObjects.textPopupManager.hideInfoText();
+                globalObjects.bannerTextManager.setDialog(["This thing is in the way.", "I should knock it over."]);
+                globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+                globalObjects.bannerTextManager.showBanner();
+                globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                    globalObjects.bannerTextManager.setOnFinishFunc(() => {});
+                    globalObjects.bannerTextManager.closeBanner();
+                    if (!this.bgMusic) {
+                        this.bgMusic = playSound('bite_down_simplified', 0.6, true);
+
+                        // globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Click to cast\na spell");
+                        let spellListener = messageBus.subscribe('spellClicked', () => {
+                            this.firstPopupClosed = true;
+                            // globalObjects.textPopupManager.hideInfoText();
                             spellListener.unsubscribe();
+                            if (this.currShadowTween) {
+                                this.currShadowTween.stop();
+                            }
                             PhaserScene.tweens.add({
                                 targets: this.shadow,
                                 alpha: 0,
                                 ease: "Cubic.easeOut",
                                 scaleX: 8,
                                 scaleY: 8,
-                                duration: 350,
+                                duration: 500,
                             });
-                        }
-                    }
-                });
-                setTimeout(() => {
-                    globalObjects.magicCircle.showReadySprite();
-                }, 1000);
-                setTimeout(() => {
-                    if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
-                        globalObjects.magicCircle.showReadySprite();
+                        });
+                        this.currShadowTween = PhaserScene.tweens.add({
+                            targets: this.shadow,
+                            alpha: 0.65,
+                            ease: "Cubic.easeOut",
+                            scaleX: 5.6,
+                            scaleY: 5.6,
+                            duration: 700,
+                            onComplete: () => {
+                                if (globalObjects.player.getPlayerCastSpellsCount() !== 0 && !this.firstPopupClosed) {
+                                    globalObjects.textPopupManager.hideInfoText();
+                                    spellListener.unsubscribe();
+                                    PhaserScene.tweens.add({
+                                        targets: this.shadow,
+                                        alpha: 0,
+                                        ease: "Cubic.easeOut",
+                                        scaleX: 8,
+                                        scaleY: 8,
+                                        duration: 350,
+                                    });
+                                }
+                            }
+                        });
+                        setTimeout(() => {
+                            globalObjects.magicCircle.showReadySprite();
+                        }, 1000);
                         setTimeout(() => {
                             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
                                 globalObjects.magicCircle.showReadySprite();
+                                setTimeout(() => {
+                                    if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
+                                        globalObjects.magicCircle.showReadySprite();
+                                    }
+                                }, 6000)
                             }
-                        }, 6000)
+                        }, 4000)
                     }
-                }, 4000)
+                });
             }
         }, 2500)
     }
@@ -341,6 +368,13 @@
 
              }
          });
+
+         PhaserScene.tweens.add({
+             targets: this.sprite,
+             x: "+=35",
+             ease: "Cubic.easeOut",
+             duration: 400,
+         });
      }
 
      showVictory() {
@@ -385,6 +419,9 @@
                          PhaserScene.tweens.add({
                              targets: this.sprite,
                              alpha: 0,
+                             scaleX: this.sprite.startScaleX * 1.25,
+                             scaleY: this.sprite.startScaleX * 1.25,
+                             y: "+=15",
                              duration: 600,
                              onComplete: () => {
 

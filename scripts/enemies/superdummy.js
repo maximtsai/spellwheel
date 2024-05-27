@@ -35,6 +35,7 @@
 
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
+            // return;
             this.shownTut4 = true;
             globalObjects.textPopupManager.setInfoText(gameConsts.width - 80, 275, "Enemies get\nangry when\nattacked!", 'left');
             messageBus.publish('setSlowMult', 0.25, 50);
@@ -178,8 +179,8 @@
             this.dummyLeftArm.visible = false;
             this.dummyRightArm.visible = false;
             this.setSprite('super_dummy_angry.png', 0.8);
-            this.x += 10;
-             this.y += this.sprite.height * this.sprite.scaleY * 0.45; this.sprite.y = this.y;
+            this.x += 8;
+             this.y += this.sprite.height * this.sprite.scaleY * 0.51; this.sprite.y = this.y;
              this.sprite.setOrigin(0.51, 0.96);
              this.dieClickBlocker = new Button({
                  normal: {
@@ -447,7 +448,7 @@
                      ease: 'Quart.easeIn',
                      onComplete: () => {
                         this.isLoading = false;
-                        this.setMaxHealth(gameVars.isHardMode ? 800 : 700);
+                        this.setMaxHealth(gameVars.isHardMode ? 750 : 650);
                         this.heal(this.healthMax);
                         this.currentAttackSetIndex = 0;
                         this.nextAttackIndex = 0;
@@ -521,8 +522,27 @@
          this.attacks = [
              [
                  {
-                     name: "}18 ",
+                     name: "|6x2 ",
                      chargeAmt: 500,
+                     damage: 6,
+                     attackTimes: 2,
+                     prepareSprite: 'super_dummy_swinging.png',
+                     attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
+                     startFunction: () => {
+                         this.pullbackScale = 0.9;
+                        this.attackScale = 1.2;
+                     },
+                    attackFinishFunction: () => {
+                        this.createPunchEffect();
+                    },
+                    finaleFunction: () => {
+                        this.setSprite('dummy_angry.png');
+                        this.reEnableArms();
+                    }
+                 },
+                 {
+                     name: "}18 ",
+                     chargeAmt: 600,
                      damage: 18,
                      prepareSprite: 'super_dummy_wide.png',
                      startFunction: () => {
@@ -568,7 +588,7 @@
                      name: "BUFF UP",
                      chargeAmt: 900,
                      damage: -1,
-                     chargeMult: 2,
+                     chargeMult: 1.5,
                      startFunction: () => {
                         this.pullbackScale = 0.99;
                         this.attackScale = 1.01;
@@ -591,7 +611,7 @@
                  },
                  {
                      name: "|8x2 ",
-                     chargeAmt: 350,
+                     chargeAmt: 450,
                      damage: 8,
                      attackTimes: 2,
                      prepareSprite: 'super_dummy_swinging.png',
@@ -612,7 +632,7 @@
                      name: "|20 ",
                      damage: -1,
                     finishDelay: 2200,
-                     chargeAmt: 500,
+                     chargeAmt: 600,
                      startFunction: () => {
                         this.pullbackScale = 0.99;
                         this.attackScale = 1.01;
@@ -712,7 +732,7 @@
                                             ease: 'Quint.easeOut',
                                             onComplete: () => {
                                                 PhaserScene.tweens.add({
-                                                    delay: 350,
+                                                    delay: 400,
                                                     targets: this.dummyRightArm,
                                                     duration: 600,
                                                     scaleX: -0.8,
@@ -779,7 +799,7 @@
                      name: "BUFF UP",
                      chargeAmt: 900,
                      damage: -1,
-                     chargeMult: 2,
+                     chargeMult: 1.5,
                      startFunction: () => {
                         this.dummyLeftArm.visible = false;
                         this.dummyRightArm.visible = false;
@@ -800,7 +820,7 @@
                  },
                  {
                      name: "|10x2 ",
-                     chargeAmt: 350,
+                     chargeAmt: 400,
                      damage: 10,
                      attackTimes: 2,
                      prepareSprite: 'super_dummy_swinging.png',
@@ -814,8 +834,23 @@
                     }
                  },
                  {
+                     name: "|6 ",
+                     chargeAmt: 250,
+                     damage: 6,
+                     attackTimes: 1,
+                     prepareSprite: 'super_dummy_wide.png',
+                     attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
+                    attackFinishFunction: () => {
+                        this.createPunchEffect();
+                    },
+                    finaleFunction: () => {
+                        this.setSprite('dummy_angry.png');
+                        this.reEnableArms();
+                    }
+                 },
+                 {
                      name: ";8x4 ",
-                     chargeAmt: 500,
+                     chargeAmt: 550,
                      damage: -1,
                     finishDelay: 3300,
                      isBigMove: true,
@@ -874,7 +909,7 @@
                      name: "|10x3 ",
                      chargeAmt: 400,
                      damage: 10,
-                     attackTimes: 2,
+                     attackTimes: 3,
                      prepareSprite: 'super_dummy_swinging.png',
                      attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
                     attackFinishFunction: () => {
@@ -887,10 +922,11 @@
                  },
                  {
                      name: "T-POSE",
-                     chargeAmt: 350,
+                     chargeAmt: 400,
                      damage: -1,
                      chargeMult: 2,
                      startFunction: () => {
+                        this.pullbackDurMult = 0;
                         this.pullbackScale = 0.9;
                         this.attackScale = 1;
                      },
@@ -913,13 +949,13 @@
                         PhaserScene.tweens.add({
                              targets: this.dummyLeftArm,
                              rotation: 0.7,
-                             duration: 750,
+                             duration: 600,
                              ease: 'Quart.easeOut',
                         });
                         PhaserScene.tweens.add({
                              targets: this.dummyRightArm,
                              rotation: -0.7,
-                             duration: 750,
+                             duration: 600,
                              ease: 'Quart.easeOut',
                              onComplete: () => {
                                 PhaserScene.tweens.add({
@@ -962,7 +998,7 @@
                     },
                  },
                  {
-                     name: "FINISHER ;8x7 ",
+                     name: "FINISHER ;8x8 ",
                      chargeAmt: 600,
                     finishDelay: 6000,
                      damage: -1,
@@ -1021,7 +1057,7 @@
                                      onComplete: () => {
                                         zoomSound.stop();
                                         this.glowEyes.visible = false;
-                                        this.setDefaultSprite('dummy_angry.png', 0.95, false);
+                                        this.setDefaultSprite('dummy_tired.png', 0.95, false);
                                         this.sprite.setRotation(0);
                                         this.reEnableArms();
                                         this.dummyLeftArm.setFrame('super_dummy_leftarm.png')
@@ -1033,8 +1069,8 @@
                                      }
                                 });
                                 setTimeout(() => {
-                                    for (let i = 0; i < 7; i++) {
-                                        let delay = i * 100;
+                                    for (let i = 0; i < 8; i++) {
+                                        let delay = i * 90;
                                         setTimeout(() => {
                                             if (!this.dead) {
                                                 playSound('punch');
@@ -1050,13 +1086,13 @@
                                                      let yPosOffset2 = Math.abs(xPosOffset * 0.2) + Math.random() * 30;
                                                      powEffect.setPosition(gameConsts.halfWidth + xPosOffset2, globalObjects.player.getY() - 200 + yPosOffset2).setDepth(999).setScale(1).setAlpha(1).setRotation(Math.random() - 0.5);
 
-                                                }, 50)
+                                                }, 45)
                                                 messageBus.publish("selfTakeDamage", 8);
                                             }
                                         }, delay)
                                     }
 
-                                }, 280)
+                                }, 250)
                              }
                         });
                      },
@@ -1073,7 +1109,7 @@
             [
                  {
                      name: "}10x1 ",
-                     chargeAmt: 350,
+                     chargeAmt: 400,
                      damage: 10,
                      attackTimes: 1,
                      prepareSprite: 'super_dummy_swinging.png',
@@ -1082,12 +1118,12 @@
                         this.createPunchEffect();
                     },
                     finaleFunction: () => {
-                        this.setSprite('dummy_angry.png');
+                        this.setSprite('dummy_tired.png');
                         this.reEnableArms();
                     }
                  },
                  {
-                     name: ";8x2 ",
+                     name: "|8x2 ",
                      chargeAmt: 500,
                      damage: -1,
                     finishDelay: 2300,
@@ -1136,6 +1172,7 @@
                         });
                      },
                      finaleFunction: () => {
+                        this.setSprite('dummy_tired.png');
                         this.pullbackDurMult = 1;
                         this.pullbackScale = 0.8;
                         this.attackScale = 1.2;

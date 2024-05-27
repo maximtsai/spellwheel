@@ -173,6 +173,27 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">buttons/closebtn.png</key>
+            <key type="filename">buttons/closebtn_press.png</key>
+            <key type="filename">buttons/new_btn.png</key>
+            <key type="filename">buttons/new_btn_anim.png</key>
+            <key type="filename">buttons/new_btn_back.png</key>
+            <key type="filename">buttons/new_btn_basic.png</key>
+            <key type="filename">buttons/new_btn_hover.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,16,33,33</rect>
+                <key>scale9Paddings</key>
+                <rect>16,16,33,33</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">buttons/encyclopedia_btn_hover.png</key>
             <key type="filename">buttons/encyclopedia_btn_normal.png</key>
             <key type="filename">buttons/encyclopedia_btn_press.png</key>
@@ -207,25 +228,6 @@
                 <rect>95,16,190,31</rect>
                 <key>scale9Paddings</key>
                 <rect>95,16,190,31</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">buttons/new_btn.png</key>
-            <key type="filename">buttons/new_btn_anim.png</key>
-            <key type="filename">buttons/new_btn_back.png</key>
-            <key type="filename">buttons/new_btn_basic.png</key>
-            <key type="filename">buttons/new_btn_hover.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>16,16,33,33</rect>
-                <key>scale9Paddings</key>
-                <rect>16,16,33,33</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

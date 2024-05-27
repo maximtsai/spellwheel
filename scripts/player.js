@@ -768,7 +768,7 @@ class Player {
                             let blockedDmg = Math.ceil(hurtAmt * 0.49999);
                             hurtAmt = hurtAmt - blockedDmg;
                             shieldObj.impactVisibleTime = 8;
-                            shieldObj.storedDamage += blockedDmg;
+                            shieldObj.storedDamage += blockedDmg + shieldObj.multiplier;
                             shieldObj.textObj.setText(shieldObj.storedDamage);
                             shieldObj.textObj.setScale(0.5 + Math.sqrt(shieldObj.storedDamage) * 0.15);
                             playSound('fizzle');

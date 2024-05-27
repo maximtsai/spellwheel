@@ -1,7 +1,7 @@
  class Mantis extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
-         this.initSprite('mantis_a.png', 0.92);
+         this.initSprite('max_death_3.png', 0.46);
          this.bgMusic = playSound('bite_down', 0.7, true);
 
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
@@ -11,6 +11,7 @@
      }
 
      backForthAnim() {
+        return;
          PhaserScene.time.delayedCall(1000, () => {
             if (!this.dead && !this.isDestroyed && !this.isUnloading) {
                 if (this.defaultSprite === 'mantis_a.png') {

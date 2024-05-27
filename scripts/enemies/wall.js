@@ -598,7 +598,7 @@
              [
                  // 3
                  {
-                     name: "FALL ;100;",
+                     name: "FALL ;100 ",
                      chargeAmt: 1000,
                      damage: -1,
                      chargeMult: 1.5,

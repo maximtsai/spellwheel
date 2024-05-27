@@ -175,6 +175,7 @@
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">dummyenemy/dummy.png</key>
             <key type="filename">dummyenemy/dummy_angry.png</key>
+            <key type="filename">dummyenemy/dummy_tired.png</key>
             <key type="filename">dummyenemy/dummy_w_eyes.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -202,6 +203,21 @@
                 <rect>82,69,165,137</rect>
                 <key>scale9Paddings</key>
                 <rect>82,69,165,137</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">dummyenemy/dummy_fist_lines.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>121,100,242,200</rect>
+                <key>scale9Paddings</key>
+                <rect>121,100,242,200</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -415,7 +431,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.8</double>
+                <double>0.76</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>

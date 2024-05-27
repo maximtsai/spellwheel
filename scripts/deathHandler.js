@@ -443,7 +443,7 @@ function handleReaperDialog(level = 0, onComplete) {
         reaperDialog = [
             "I SHOULD PERHAPS TELL YOU...",
             "THAT YOU ARE MAKING\nQUITE A MESS OF THINGS.",
-            "AND MY SCHEDULE IS BUSY ENOUGH AS-IS.",
+            "AND MY SCHEDULE IS\nBUSY ENOUGH AS-IS.",
         ];
         break;
     case 7:

@@ -146,9 +146,9 @@
          if (this.dead) {
              return;
          }
-         let randRot = (Math.random() - 0.5) * 0.065;
-         let randScale = this.sprite.startScale - 0.015 + Math.random() * 0.03;
-         let randScale2 = this.sprite.startScale - 0.015 + Math.random() * 0.03;
+         let randRot = (Math.random() - 0.5) * 0.075;
+         let randScale = this.sprite.startScale - 0.02 + Math.random() * 0.04;
+         let randScale2 = this.sprite.startScale - 0.02 + Math.random() * 0.04;
          let randDur = 1000 + Math.floor(Math.random() * 500)
 
          this.breatheTween = this.scene.tweens.add({
@@ -545,7 +545,7 @@
                      name: "|8 ",
                      announceName: "INITIAL STRIKE",
                      desc: "The mysterious knight charges at you!",
-                     chargeAmt: 275,
+                     chargeAmt: 400,
                      damage: 8,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
@@ -579,7 +579,7 @@
                  {
                      name: "}4 ",
                      announceName: "FEINT ATTACK",
-                     chargeAmt: 200,
+                     chargeAmt: 240,
                      damage: 4,
                      attackSprites: ['void_knight_attack.png'],
                      attackFinishFunction: () => {
@@ -594,7 +594,7 @@
                  {
                      name: "|8x3 ",
                      announceName: "ASSAULT",
-                     chargeAmt: 600,
+                     chargeAmt: 700,
                      damage: 8,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_pullback.png',
@@ -609,10 +609,10 @@
                      }
                  },
                  {
-                     name: "|7 ",
+                     name: "|4 ",
                      announceName: "void strike",
-                     chargeAmt: 600,
-                     damage: 7,
+                     chargeAmt: 650,
+                     damage: 4,
                      chargeMult: 2,
                      attackSprites: ['void_knight_attack.png'],
                      startFunction: () => {
@@ -669,7 +669,7 @@
              ],
              [
                  // 5
-                 {
+                {
                      name: "VOID SHIELD {7 ",
                      announceName: "VOID SHIELD",
                      chargeAmt: 800,
@@ -678,8 +678,6 @@
                      damage: -1,
                      attackFinishFunction: () => {
                          this.createVoidShield(7, true);
-                         this.currentAttackSetIndex = 6;
-                         this.nextAttackIndex = 0;
                      },
                      finaleFunction: () => {
                          this.voidTentacleFront.visible = true;
@@ -689,13 +687,29 @@
                          this.attackScale = 1.08;
                      }
                  },
+                {
+                     name: "STARING... ",
+                     chargeAmt: 250,
+                     damage: -1,
+                     attackStartFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                     },
+                     attackFinishFunction: () => {
+                         this.currentAttackSetIndex = 6;
+                         this.nextAttackIndex = 0;
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                     },
+                 },
+
              ],
              [
                  {
                      name: "|6x2 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 600,
-                     chargeMult: 1.8,
+                     chargeAmt: 700,
+                     chargeMult: 1.7,
                      damage: 6,
                      attackTimes: 2,
                      prepareSprite: 'void_knight_3.png',
@@ -715,8 +729,8 @@
                  {
                      name: "|12 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 600,
-                     chargeMult: 1.8,
+                     chargeAmt: 500,
+                     chargeMult: 1.7,
                      damage: 12,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -735,7 +749,7 @@
                      name: "|6x3 ",
                      announceName: "ASSAIL",
                      chargeAmt: 700,
-                     chargeMult: 1.8,
+                     chargeMult: 1.7,
                      damage: 6,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_3.png',
@@ -754,8 +768,8 @@
                  {
                      name: "|15 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 600,
-                     chargeMult: 1.8,
+                     chargeAmt: 500,
+                     chargeMult: 1.7,
                      damage: 15,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -774,7 +788,7 @@
                      name: "|6x4 ",
                      announceName: "ASSAIL",
                      chargeAmt: 700,
-                     chargeMult: 1.8,
+                     chargeMult: 1.7,
                      damage: 6,
                      attackTimes: 4,
                      prepareSprite: 'void_knight_3.png',
@@ -793,8 +807,8 @@
                  {
                      name: "|18 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 600,
-                     chargeMult: 1.8,
+                     chargeAmt: 500,
+                     chargeMult: 1.7,
                      damage: 18,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -811,8 +825,8 @@
                  },
                  {
                      name: "ENRAGED",
-                     chargeAmt: 300,
-                     chargeMult: 8,
+                     chargeAmt: 400,
+                     chargeMult: 12,
                      damage: -1,
                      prepareSprite: 'void_knight_3.png',
                      startFunction: () => {
@@ -848,7 +862,7 @@
                  {
                      name: ";24 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 1000,
+                     chargeAmt: 800,
                      chargeMult: 1.8,
                      damage: 24,
                      isBigMove: true,
@@ -873,7 +887,7 @@
          this.setDefaultSprite('void_knight_3_empty.png');
          this.sprite.setDepth(2);
          playSound('meat_click_right');
-         this.setMaxHealth(gameVars.isHardMode ? 95 : 75);
+         this.setMaxHealth(gameVars.isHardMode ? 100 : 80);
          this.heal(this.healthMax);
          this.setAwake();
          this.sigilEffect.setFrame('void_knight_sigil2.png').setScale(this.sprite.startScale);

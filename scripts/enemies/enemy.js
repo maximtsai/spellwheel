@@ -412,12 +412,20 @@ class Enemy {
                 let increaseMult = Math.max(4.25, 0.33 * chargeMult);
                 this.attackCharge += timeChange * increaseMult * this.slowMult;
             } else {
-                if (gameVars.playerNotMoved && chargeMult === 1) {
+                let almostDone = this.attackCharge > this.nextAttackChargeNeeded - 40;
+                if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone) {
                     // this.attackCharge += timeChange * 0.02 * this.slowMult;
-                    this.chargeBarCurr.alpha = 0.55;
+                    this.chargeBarCurr.alpha = 0.5;
                 } else {
-                    this.attackCharge += timeChange * 0.33 * this.slowMult * chargeMult;
-                    this.chargeBarCurr.alpha = 0.9;
+                    // Normal slow chargin
+                    if (almostDone) {
+                        this.chargeBarCurr.alpha = 0.95;
+                        this.attackCharge += timeChange * 0.35 * this.slowMult * chargeMult;
+                    } else {
+                        this.chargeBarCurr.alpha = 0.8;
+                        this.attackCharge += timeChange * 0.2 * this.slowMult * chargeMult;
+                    }
+
                 }
             }
             this.chargeBarCurr.scaleX = Math.min(this.nextAttackChargeNeeded * 0.2, this.attackCharge * 0.2 + 1);
@@ -624,7 +632,7 @@ class Enemy {
             this.nextAttack.startFunction();
         }
         let finalScale = 1;
-        let isLongName = atkName.length > 5;
+        let isLongName = atkName.length > 7;
         if (isLongName) {
             finalScale = 0.8;
         } else {
@@ -1466,6 +1474,7 @@ class Enemy {
              y: gameConsts.halfHeight - 110,
              ease: 'Cubic.easeOut',
              duration: 400,
+             completeDelay: 300,
              onComplete: () => {
                  this.dieClickBlocker.setOnMouseUpFunc(() => {
                     this.dieClickBlocker.destroy();

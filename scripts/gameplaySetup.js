@@ -369,39 +369,6 @@ function cleanupIntro() {
     gotoMainMenu();
 }
 
-function createGlobalClickBlocker(showPointer) {
-    if (!globalObjects.clickBlocker) {
-        globalObjects.clickBlocker = new Button({
-             normal: {
-                 ref: "blackPixel",
-                 x: gameConsts.halfWidth,
-                 y: gameConsts.halfHeight,
-                 alpha: 0.001,
-                 scaleX: 1000,
-                 scaleY: 1000
-             },
-             onMouseUp: () => {
-
-             }
-         });
-    } else {
-        globalObjects.clickBlocker.setState(NORMAL);
-        globalObjects.clickBlocker.setOnMouseUpFunc(() => {});
-        buttonManager.bringButtonToTop(globalObjects.clickBlocker);
-    }
-    if (showPointer && canvas) {
-        canvas.style.cursor = 'pointer';
-    }
-    return globalObjects.clickBlocker;
-}
-
-function hideGlobalClickBlocker() {
-    globalObjects.clickBlocker.setState(DISABLE);
-    if (canvas) {
-        canvas.style.cursor = 'default';
-    }
-}
-
 function resetGame() {
     for (let i in globalObjects) {
         globalObjects[i].destroy();
@@ -469,7 +436,8 @@ function setupPlayer() {
     });
     globalObjects.magicCircle = new MagicCircle(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
     globalObjects.player = new Player(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
-    // globalObjects.encyclopedia = new Encyclopedia(PhaserScene, gameConsts.width - 110, 60);
+    globalObjects.encyclopedia = new Encyclopedia(PhaserScene, gameConsts.width - 80, 30);
+    globalObjects.options = new Options(PhaserScene, gameConsts.width - 35, 30);
 }
 
 function onCreditsButtonClicked() {

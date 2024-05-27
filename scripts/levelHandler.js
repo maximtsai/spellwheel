@@ -1,6 +1,92 @@
 let CURRENT_LEVEL = null;
 let levelTimeoutID = null;
 
+function beginPreLevel(lvl) {
+    switch(lvl) {
+        case 0:
+            let introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 20, 'ui', 'newgamepaper.png').setDepth(99999).setAlpha(0);
+            let text1 = PhaserScene.add.text(gameConsts.halfWidth - 250, gameConsts.halfHeight + 210, 'BEWARE THE REAPER', {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'});
+            text1.setDepth(99999).setOrigin(0, 0.5).setAlpha(0);
+            let text2 = PhaserScene.add.text(gameConsts.halfWidth - 90, gameConsts.halfHeight + 240, 'DON\'T TRUST THE DUMMY', {fontFamily: 'verdanabold', fontSize: 22, color: '#000000', align: 'left'});
+            text2.setDepth(99999).setOrigin(0, 0.5).setAlpha(0);
+            let text3 = PhaserScene.add.text(gameConsts.halfWidth , gameConsts.halfHeight + 275, 'THIS IS NOT A LAND FOR THE LIVING', {fontFamily: 'verdanabold', fontSize: 18, color: '#000000', align: 'center'});
+            text3.setDepth(99999).setAlpha(0).setOrigin(0.5, 0.5);
+
+            PhaserScene.tweens.add({
+                targets: [text1, text2, text3],
+                duration: 600,
+                ease: 'Cubic.easeOut',
+                y: "-=60",
+            })
+            PhaserScene.tweens.add({
+                targets: [text1, text2, text3],
+                alpha: 0.5,
+                duration: 650,
+            })
+
+            createGlobalClickBlocker();
+
+
+            PhaserScene.tweens.add({
+                targets: [introPaper],
+                alpha: 1,
+                duration: 500,
+                scaleX: 1,
+                scaleY: 1,
+                ease: 'Cubic.easeOut',
+                y: "-=60",
+                onComplete: () => {
+                        let lvl1CloseButton = {};
+                        lvl1CloseButton = new Button({
+                            normal: {
+                                ref: "menu_btn_normal.png",
+                                atlas: 'buttons',
+                                x: gameConsts.width - 180,
+                                y: gameConsts.height - 135,
+                            },
+                            hover: {
+                                ref: "menu_btn_hover.png",
+                                atlas: 'buttons',
+                            },
+                            press: {
+                                ref: "menu_btn_hover.png",
+                                atlas: 'buttons',
+                            },
+                            disable: {
+                                alpha: 0.001
+                            },
+                            onMouseUp: () => {
+                                PhaserScene.tweens.add({
+                                    targets: [text1, text2, text3, introPaper],
+                                    alpha: 0,
+                                    duration: 400,
+                                    ease: 'Quad.easeOut',
+                                    y: "+=40",
+                                    onComplete: () => {
+                                        text1.destroy();
+                                        text2.destroy();
+                                        text3.destroy();
+                                        introPaper.destroy();
+                                    }
+                                });
+                                lvl1CloseButton.destroy();
+                                hideGlobalClickBlocker();
+                                beginLevel(0)
+                            }
+                        });
+                        lvl1CloseButton.setOrigin(0.5, 0.5);
+                        lvl1CloseButton.addText("BEGIN", {fontFamily: 'Garamond', fontSize: 28, color: '#000000', align: 'left'})
+                        lvl1CloseButton.setScale(0.9);
+                        lvl1CloseButton.setDepth(99999);
+                }
+            });
+        break;
+        case 1:
+        break;
+
+    }
+}
+
 function beginLevel(lvl) {
     CURRENT_LEVEL = lvl;
 
@@ -16,9 +102,11 @@ function beginLevel(lvl) {
     switch(lvl) {
         case 0:
             // zoomInCurrBackground(1500, 2, 'Cubic.easeIn');
+            minorZoomMenu()
             fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1.25, 1.25, 'Quart.easeIn', 0, false, -55);
             break;
         case 1:
+            clearOnlyMenuBack();
             fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1.3, 1.3, 'Quart.easeIn', 0, false, -55);
             break;
         case 2:
@@ -49,11 +137,15 @@ function beginLevel(lvl) {
 }
 
 function createEnemyAfterDelay(lvl) {
+    let delayAmt = 1400;
+    if (lvl == 0) {
+        delayAmt = 0;
+    }
     levelTimeoutID = setTimeout(() => {
         if (lvl === CURRENT_LEVEL) {
             createEnemy(lvl);
         }
-    }, 1400);
+    }, delayAmt);
 }
 
 function createTutorialBtn(lvl) {

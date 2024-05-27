@@ -90,19 +90,19 @@
 					"trimmed": true,
 					"sourceSize": {
 						"w": 769,
-						"h": 910
+						"h": 1000
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 372,
+						"y": 417,
 						"w": 769,
-						"h": 538
+						"h": 583
 					},
 					"frame": {
 						"x": 1,
 						"y": 1338,
 						"w": 769,
-						"h": 538
+						"h": 583
 					},
 					"anchor": {
 						"x": 0.5,
@@ -227,29 +227,79 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 1504,
-				"h": 1816
+				"h": 1860
 			},
 			"scale": 1,
 			"frames": [
 				{
 					"filename": "menu_back.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
 						"w": 769,
-						"h": 910
+						"h": 1000
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 0,
+						"y": 44,
 						"w": 769,
-						"h": 910
+						"h": 956
 					},
 					"frame": {
 						"x": 1,
 						"y": 1,
 						"w": 769,
-						"h": 910
+						"h": 956
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "background5.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 750,
+						"h": 900
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 750,
+						"h": 900
+					},
+					"frame": {
+						"x": 1,
+						"y": 959,
+						"w": 750,
+						"h": 900
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "background6.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 750,
+						"h": 900
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 750,
+						"h": 900
+					},
+					"frame": {
+						"x": 753,
+						"y": 959,
+						"w": 750,
+						"h": 900
 					},
 					"anchor": {
 						"x": 0.5,
@@ -275,56 +325,6 @@
 						"y": 1,
 						"w": 685,
 						"h": 912
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "background5.webp",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 750,
-						"h": 900
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 750,
-						"h": 900
-					},
-					"frame": {
-						"x": 1,
-						"y": 913,
-						"w": 750,
-						"h": 900
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "background6.webp",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 750,
-						"h": 900
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 750,
-						"h": 900
-					},
-					"frame": {
-						"x": 753,
-						"y": 915,
-						"w": 750,
-						"h": 900
 					},
 					"anchor": {
 						"x": 0.5,
@@ -509,6 +509,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:c84d373cad7a268300112648a7a7a46b:92f78657ed522bec978a641301c12b19:d36b2d12f94c3c84864533b00704d5ae$"
+		"smartupdate": "$TexturePacker:SmartUpdate:aa6bf6f237412243e89600639b1daac8:9da1475d784e604ef56822aa52075d2e:d36b2d12f94c3c84864533b00704d5ae$"
 	}
 }

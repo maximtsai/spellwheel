@@ -188,7 +188,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 500 : 450;
+         this.health = gameVars.isHardMode ? 500 : 400;
          this.nextShieldHealth = 100;
          this.shieldsBroken = 0;
          this.missileObjects = [];

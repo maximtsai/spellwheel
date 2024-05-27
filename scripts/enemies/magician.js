@@ -2,8 +2,6 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('time_magi.png', 0.75,0, 5);
-        ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, RUNE_MATTER, null, null , RUNE_MATTER];
-        EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_ENHANCE, RUNE_PROTECT, null, null, null, RUNE_REINFORCE, RUNE_PROTECT, RUNE_ENHANCE];
         setTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
@@ -22,7 +20,7 @@
     }
 
      initStatsCustom() {
-         this.health = 65;
+         this.health = 80;
          this.damageNumOffset = 45;
          this.timeObjects = [];
          this.initTemporalObjects();
@@ -63,7 +61,7 @@
          } else if (currHealthPercent < 0.999 && !this.preppingTimeShield) {
              this.currentAttackSetIndex = 1;
              this.nextAttackIndex = 0;
-         } else if (this.health <= 14 && this.usedTimeShield && !this.isTerrified) {
+         } else if (this.health <= 13 && this.statuses[0].duration >= this.health && this.usedTimeShield && !this.isTerrified) {
              this.isTerrified = true;
              this.interruptCurrentAttack();
              this.currentAttackSetIndex = 6;
@@ -190,7 +188,7 @@
      }
 
      showRune() {
-         let rune = this.scene.add.sprite(this.x, this.y - 60, 'tutorial', 'rune_time_large.png').setOrigin(0.5, 0.5).setScale(0.5).setDepth(9999);
+         let rune = this.scene.add.sprite(this.x, this.y - 45, 'tutorial', 'rune_time_large.png').setOrigin(0.5, 0.5).setScale(0.5).setDepth(9999);
          playSound('victory_2');
          this.showFlash(this.x, this.y);
          let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
@@ -235,7 +233,7 @@
              targets: rune,
              y: gameConsts.halfHeight - 110,
              ease: 'Cubic.easeOut',
-             duration: 400,
+             duration: 450,
              onComplete: () => {
                  this.dieClickBlocker.setOnMouseUpFunc(() => {
                      this.dieClickBlocker.destroy();
@@ -318,7 +316,7 @@
 
      setupTimeShield() {
         let lostHealth = this.healthMax - this.health;
-        lostHealth = Math.max(0, lostHealth - 12);
+        lostHealth = Math.max(0, lostHealth);
          this.heal(Math.floor(lostHealth * 0.5));
          this.specialDamageAbsorptionActive = true;
 
@@ -365,7 +363,7 @@
                          healthText.setText(Math.max(0, statusObj.duration - 1));
                          this.setHealth(this.health - 1);
 
-                         if (!this.isTerrified && !this.freezingTime) {
+                         if (!this.isTerrified && !this.freezingTime && this.timeBarraged) {
                             if (this.health % 2 == 0) {
                                 if (this.health % 4 == 0) {
                                     playSound('clocktick2', 1);
@@ -520,7 +518,7 @@
                  {
                      name: "}4x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: 350,
+                     chargeAmt: 400,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
@@ -616,12 +614,27 @@
              ],
              [
                  // 3
-
                  {
-                     name: "!!TIME FREEZE!!",
+                     name: "}2x4 ",
+                     desc: "An advanced magic attack.",
+                     chargeAmt: 350,
+                     damage: -1,
+                     prepareSprite: 'time_magi_cast_big.png',
+                     attackStartFunction: () => {
+                         this.createTimeObject('clock2.png', this.x - 120, this.y - 70);
+                         this.createTimeObject('clock3.png', this.x - 40, this.y - 80, 150);
+                         this.createTimeObject('clock3.png', this.x + 40, this.y - 80, 300);
+                         this.createTimeObject('clock4.png', this.x + 120, this.y - 70, 450);
+                         setTimeout(() => {
+                             this.fireTimeObjects(2);
+                         }, 800);
+                     },
+                 },
+                 {
+                     name: "TIME FREEZE ;4x!!!",
                      desc: "The Time Magician prepares\nhis most powerful magics.",
-                     chargeAmt: 400,
-                     chargeMult: 1.5,
+                     chargeAmt: 800,
+                     chargeMult: 3,
                      isBigMove: true,
                      prepareSprite: 'time_magi_cast_big.png',
                      startFunction: () => {
@@ -641,7 +654,7 @@
                          this.freezingTime = true;
                         for (let i = 0; i < this.timeFallObjs.length; i++) {
                             let clock = this.timeFallObjs[i];
-                            clock.setAlpha(1);
+                            clock.setAlpha(0);
                         }
                          if (this.tickSlow) {
                              fadeAwaySound(this.tickSlow, 400, ' ');
@@ -705,12 +718,12 @@
                      },
                      attackFinishFunction: () => {
                          setTimeout(() => {
-                             this.fireTimeObjects(20, 500);
+                             this.fireTimeObjects(20, 600);
                          }, 350);
                      }
                  },
                  {
-                     name: "TAKING A BREATHER...",
+                     name: "RESTING...",
                      desc: "Time Magician is trying\nto think what to do...",
                      chargeAmt: 200,
                      chargeMult: 1.5,
@@ -746,7 +759,7 @@
                  {
                      name: "}6 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: 350,
+                     chargeAmt: 550,
                      chargeMult: 1.5,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
@@ -852,7 +865,7 @@
 
      fireTimeObjects(damage = 10, durBonus = 0) {
          let totalTimeObjects = this.timeObjects.length;
-         let projDur = 550 - Math.floor(Math.sqrt(totalTimeObjects) * 50) + durBonus;
+         let projDur = 600 - Math.floor(Math.sqrt(totalTimeObjects) * 50) + durBonus;
          let timeObjectsFired = 0;
          while (this.timeObjects.length > 0) {
              let currObj = this.timeObjects.shift();

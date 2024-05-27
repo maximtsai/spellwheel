@@ -418,18 +418,21 @@ class Enemy {
                     this.chargeBarCurr.alpha = 0.5;
                 } else {
                     // Normal slow chargin
-                    if (almostDone) {
+                    if (almostDone || chargeMult > 1) {
                         this.chargeBarCurr.alpha = 0.95;
                         this.attackCharge += timeChange * 0.35 * this.slowMult * chargeMult;
                     } else {
                         this.chargeBarCurr.alpha = 0.8;
-                        this.attackCharge += timeChange * 0.2 * this.slowMult * chargeMult;
+                        this.attackCharge += timeChange * 0.125 * this.slowMult * chargeMult;
                     }
 
                 }
             }
             this.chargeBarCurr.scaleX = Math.min(this.nextAttackChargeNeeded * 0.2, this.attackCharge * 0.2 + 1);
-            this.chargeBarOutline.alpha = 0.9 * this.chargeBarCurr.scaleX / (this.chargeBarMax.scaleX + 1) - 0.15;
+            let goalAlpha = 1 * this.chargeBarCurr.scaleX / (this.chargeBarMax.scaleX + 1) - 0.15;
+
+            let changeSpd = 0.06 * dt;
+            this.chargeBarOutline.alpha = goalAlpha * changeSpd + this.chargeBarOutline.alpha * (1-changeSpd);
 
             this.chargeBarAngry.scaleX = this.chargeBarCurr.scaleX;
             if (this.isUsingAttack) {
@@ -725,6 +728,9 @@ class Enemy {
         let chargeBarLength = Math.floor(this.nextAttackChargeNeeded * 0.2);
         this.chargeBarMax.scaleX = chargeBarLength * 0.6 + 2;
         this.chargeBarOutline.scaleX = this.chargeBarMax.scaleX + 2;
+        this.chargeBarOutline.alpha = 3;
+        this.chargeBarOutline.isAnimating = true;
+
         this.chargeBarWarning.visible = false;
         this.chargeBarWarning.scaleX = chargeBarLength + 2;
         this.chargeBarCurr.scaleX = 0;
@@ -759,7 +765,11 @@ class Enemy {
                 targets: this.chargeBarOutline,
                 scaleX: chargeBarLength + 4,
                 duration: chargeBarLength * 7 * extraTimeMult,
-                ease: 'Quart.easeOut'
+                alpha: 1,
+                ease: 'Quart.easeOut',
+                onComplete: () => {
+                    this.chargeBarOutline.isAnimating = false;
+                }
             });
         } else {
             this.scene.tweens.add({
@@ -772,7 +782,11 @@ class Enemy {
                 targets: this.chargeBarOutline,
                 scaleX: chargeBarLength + 4,
                 duration: 50,
-                ease: 'Quart.easeOut'
+                alpha: 1,
+                ease: 'Quart.easeOut',
+                onComplete: () => {
+                    this.chargeBarOutline.isAnimating = false;
+                }
             });
         }
     }

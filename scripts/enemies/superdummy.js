@@ -14,6 +14,7 @@
 
      initStatsCustom() {
          this.health = 10;
+        this.secondHealth = gameVars.isHardMode ? 750 : 650;
          this.isAsleep = true;
          this.isFirstMode = true;
         this.attackScale = 1.23;
@@ -448,7 +449,7 @@
                      ease: 'Quart.easeIn',
                      onComplete: () => {
                         this.isLoading = false;
-                        this.setMaxHealth(gameVars.isHardMode ? 750 : 650);
+                        this.setMaxHealth(this.secondHealth);
                         this.heal(this.healthMax);
                         this.currentAttackSetIndex = 0;
                         this.nextAttackIndex = 0;

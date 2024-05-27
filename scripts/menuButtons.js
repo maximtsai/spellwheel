@@ -123,6 +123,7 @@ function gotoMainMenu() {
     globalObjects.menuTop.setAlpha(1).setScale(0.902).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
     globalObjects.menuBot.setAlpha(1).setScale(0.902).setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 89).setOrigin(0.5, 0.4);
 
+
     if (hasContinue) {
         globalObjects.continueButton = new Button({
             normal: {

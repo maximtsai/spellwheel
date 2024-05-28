@@ -6,7 +6,7 @@
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
                 if (!this.bgMusic) {
-                    this.bgMusic = playSound('bite_down_simplified', 0.6, true);
+                    this.bgMusic = playMusic('bite_down_simplified', 0.6, true);
                 }
                 this.initTutorial2();
             } else if (globalObjects.player.getPlayerCastSpellsCount() === 2) {
@@ -50,7 +50,7 @@
                     globalObjects.bannerTextManager.setOnFinishFunc(() => {});
                     globalObjects.bannerTextManager.closeBanner();
                     if (!this.bgMusic) {
-                        this.bgMusic = playSound('bite_down_simplified', 0.6, true);
+                        this.bgMusic = playMusic('bite_down_simplified', 0.6, true);
 
                         // globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Click to cast\na spell");
                         let spellListener = messageBus.subscribe('spellClicked', () => {

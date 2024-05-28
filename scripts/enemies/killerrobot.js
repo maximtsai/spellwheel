@@ -4,7 +4,7 @@
          this.initSprite('robot0.png', 1);
          this.shieldAdded = false;
          this.sprite.startY = y;
-        this.bgMusic = playSound('jpop', 0.9, true);
+        this.bgMusic = playMusic('jpop', 0.9, true);
 
          setTimeout(() => {
              globalObjects.magicCircle.disableMovement();

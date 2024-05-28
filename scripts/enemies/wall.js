@@ -3,7 +3,7 @@
          super(scene, x, y, level);
          this.initSprite('wall_1.png', 0.80);
          this.shieldAdded = false;
-        this.bgMusic = playSound('bite_down', 0.7, true);
+        this.bgMusic = playMusic('bite_down', 0.7, true);
          this.initBird();
          setTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);

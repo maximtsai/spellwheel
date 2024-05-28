@@ -4,7 +4,7 @@
          this.initSprite('tree.png', 0.7);// 0.7
          this.sprite.setOrigin(0.52, 0.88); // 0.9
          this.shieldAdded = false;
-         this.bgMusic = playSound('echos_of_time', 0.9, true);
+         this.bgMusic = playMusic('echos_of_time', 0.9, true);
 
 
          setTimeout(() => {
@@ -772,7 +772,7 @@
                         fadeAwaySound(this.bgMusic, 3000);
                         setTimeout(() => {
                              if (!this.dead) {
-                                 this.bgMusic = playSound('echos_of_time_finale');
+                                 this.bgMusic = playMusic('echos_of_time_finale');
                              }
                          }, 3000)
                      },

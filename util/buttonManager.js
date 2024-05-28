@@ -46,11 +46,11 @@ class InternalButtonManager {
     onPointerUp(mouseX, mouseY) {
         let buttonObj = this.getLastClickedButton();
         if (buttonObj && buttonObj.checkCoordOver(mouseX, mouseY)) {
-            buttonObj.onMouseUp();
+            buttonObj.onMouseUp(mouseX, mouseY);
         }
         if (this.draggedObj) {
             if (this.draggedObj.onDrop) {
-                this.draggedObj.onDrop();
+                this.draggedObj.onDrop(mouseX, mouseY);
             }
             this.draggedObj = null
         }
@@ -59,6 +59,9 @@ class InternalButtonManager {
     onPointerMove(mouseX, mouseY) {
         if (this.draggedObj) {
             this.draggedObj.setPos(mouseX, mouseY);
+            if (this.draggedObj.onDrag) {
+                this.draggedObj.onDrag(mouseX, mouseY);
+            }
         }
     }
 
@@ -66,7 +69,7 @@ class InternalButtonManager {
         for (let i = this.buttonList.length - 1; i >= 0; i--) {
             let buttonObj = this.buttonList[i];
             if (buttonObj.checkCoordOver(mouseX, mouseY)) {
-                buttonObj.onMouseDown();
+                buttonObj.onMouseDown(mouseX, mouseY);
                 this.lastClickedButton = buttonObj;
                 break;
             }

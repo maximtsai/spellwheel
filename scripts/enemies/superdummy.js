@@ -2,7 +2,7 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('dummy.png', 0.95, undefined, undefined, 'dummyenemy');
-        this.bgMusic = playSound('bite_down', 0.65, true);
+        this.bgMusic = playMusic('bite_down', 0.65, true);
         this.startY = this.sprite.y;
 
         setTimeout(() => {
@@ -456,7 +456,7 @@
                         this.setAwake();
                         this.loadUpHealthBarSecond();
 
-                        this.bgMusic = playSound('bite_down_complex', 0.8, true);
+                        this.bgMusic = playMusic('bite_down_complex', 0.8, true);
                         this.setDefaultSprite('dummy_angry.png', 0.95);
                         this.dummyRightArm = this.scene.add.sprite(this.x + 51, this.startY + 30, 'dummyenemy', 'super_dummy_rightarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(0.5);
                         this.dummyLeftArm = this.scene.add.sprite(this.x - 51, this.startY + 30, 'dummyenemy', 'super_dummy_leftarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(-0.5);

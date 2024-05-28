@@ -78,7 +78,10 @@ function setupMouseInteraction(scene) {
 }
 
 function resizeGame() {
-    if (!game || !game.canvas) {
+    if (!game) {
+        return;
+    } 
+    if (!game.canvas) {
         return;
     }
     var canvas = game.canvas; //document.querySelector("canvas");

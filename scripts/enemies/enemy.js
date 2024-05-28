@@ -1137,7 +1137,7 @@ class Enemy {
             return;
         }
         if (this.bgMusic) {
-            this.bgMusic.stop();
+            fadeAwaySound(this.bgMusic, 350);
         }
         this.setAsleep();
         for (let i = 0; i < this.subscriptions.length; i++) {

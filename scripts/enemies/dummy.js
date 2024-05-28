@@ -2,7 +2,7 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('dummy.png', 0.95,0, 5, 'dummyenemy');
-        this.bgMusic = playSound('bite_down_simplified', 0.65, true);
+        this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
                 // this.initTutorial2();
@@ -194,7 +194,7 @@
                          onComplete: () => {
                              zoomTemp(1.03);
                              playSound('punch');
-                            this.bgMusic = playSound('bite_down', 0.75, true);
+                            this.bgMusic = playSound('bite_down', 0.75, true, true);
 
                              this.setAwake();
                              this.currentAttackSetIndex = 0;

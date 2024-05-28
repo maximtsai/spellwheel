@@ -11,7 +11,7 @@ class Button {
      * Possible parameters: scene, normal, hover, press, disable, onMouseUp, onHover, onDrop, isDraggable
      */
     constructor(data) {
-        // scene, onMouseUp, normal, hover, press, disable
+        // scene, onMouseUp, onDragnormal, hover, press, disable
         this.scene = data.scene || PhaserScene;
         this.state = NORMAL;
         this.normal = data.normal;
@@ -172,11 +172,11 @@ class Button {
         this.setState(NORMAL);
     }
 
-    onMouseDown() {
+    onMouseDown(x, y) {
         if (this.state !== DISABLE) {
             this.setState(PRESS);
             if (this.onMouseDownFunc) {
-                this.onMouseDownFunc();
+                this.onMouseDownFunc(x, y);
             }
             if (this.isDraggable) {
                 // Add to update
@@ -184,7 +184,7 @@ class Button {
                     this.setPos(gameVars.mouseposx + PhaserScene.cameras.main.scrollX, gameVars.mouseposy + PhaserScene.cameras.main.scrollY);
                     this.isDragged = true;
                     let oldDraggedObj = buttonManager.getDraggedObj();
-                    if (oldDraggedObj) {
+                    if (oldDraggedObj && oldDraggedObj.onDrop) {
                         oldDraggedObj.onDrop().bind();
                     }
                     buttonManager.setDraggedObj(this);
@@ -193,26 +193,26 @@ class Button {
         }
     }
 
-    onDrag() {
+    onDrag(x, y) {
         if (this.onDragFunc) {
-            this.onDragFunc();
+            this.onDragFunc(x, y);
         }
     }
 
-    onMouseUp() {
+    onMouseUp(x, y) {
         if (this.state === PRESS) {
             this.setState(HOVER);
             if (this.onMouseUpFunc) {
-                this.onMouseUpFunc();
+                this.onMouseUpFunc(x, y);
             }
         }
     }
 
-    onDrop() {
+    onDrop(x, y) {
         this.isDragged = false;
         buttonManager.setDraggedObj();
         if (this.onDropFunc) {
-            this.onDropFunc();
+            this.onDropFunc(x, y);
         }
     }
 

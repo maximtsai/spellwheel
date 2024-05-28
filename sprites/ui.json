@@ -4,8 +4,8 @@
 			"image": "sprites/ui-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1998,
-				"h": 1692
+				"w": 1607,
+				"h": 1533
 			},
 			"scale": 1,
 			"frames": [
@@ -14,20 +14,24 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 1024,
-						"h": 1112
+						"w": 614,
+						"h": 667
 					},
 					"spriteSourceSize": {
-						"x": 24,
-						"y": 14,
-						"w": 979,
-						"h": 1074
+						"x": 14,
+						"y": 8,
+						"w": 588,
+						"h": 645
 					},
 					"frame": {
 						"x": 1,
 						"y": 1,
-						"w": 979,
-						"h": 1074
+						"w": 588,
+						"h": 645
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
 					}
 				},
 				{
@@ -45,136 +49,39 @@
 						"h": 645
 					},
 					"frame": {
-						"x": 982,
-						"y": 1,
+						"x": 1,
+						"y": 648,
 						"w": 588,
 						"h": 645
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
 					}
 				},
 				{
-					"filename": "battleOverScreen.png",
+					"filename": "slider.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 573,
-						"h": 623
+						"w": 351,
+						"h": 64
 					},
 					"spriteSourceSize": {
-						"x": 9,
-						"y": 5,
-						"w": 555,
-						"h": 614
+						"x": 20,
+						"y": 4,
+						"w": 311,
+						"h": 56
 					},
 					"frame": {
 						"x": 1,
-						"y": 1077,
-						"w": 555,
-						"h": 614
-					}
-				},
-				{
-					"filename": "locket3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 600,
-						"h": 500
+						"y": 1295,
+						"w": 311,
+						"h": 56
 					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 13,
-						"w": 586,
-						"h": 470
-					},
-					"frame": {
-						"x": 982,
-						"y": 648,
-						"w": 586,
-						"h": 470
-					}
-				},
-				{
-					"filename": "locket1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 600,
-						"h": 500
-					},
-					"spriteSourceSize": {
-						"x": 149,
-						"y": 19,
-						"w": 427,
-						"h": 465
-					},
-					"frame": {
-						"x": 1570,
-						"y": 648,
-						"w": 427,
-						"h": 465
-					}
-				},
-				{
-					"filename": "credits.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 450,
-						"h": 550
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 450,
-						"h": 550
-					},
-					"frame": {
-						"x": 558,
-						"y": 1120,
-						"w": 450,
-						"h": 550
-					}
-				},
-				{
-					"filename": "locket4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 600,
-						"h": 500
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 38,
-						"w": 541,
-						"h": 443
-					},
-					"frame": {
-						"x": 1010,
-						"y": 1120,
-						"w": 541,
-						"h": 443
-					}
-				},
-				{
-					"filename": "locket2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 600,
-						"h": 500
-					},
-					"spriteSourceSize": {
-						"x": 147,
-						"y": 17,
-						"w": 432,
-						"h": 468
-					},
-					"frame": {
-						"x": 1553,
-						"y": 1120,
-						"w": 432,
-						"h": 468
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
 					}
 				},
 				{
@@ -192,10 +99,14 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1572,
-						"y": 1,
+						"x": 1,
+						"y": 1353,
 						"w": 180,
 						"h": 51
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
 					}
 				},
 				{
@@ -213,10 +124,14 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1010,
-						"y": 1565,
+						"x": 1,
+						"y": 1406,
 						"w": 180,
 						"h": 51
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
 					}
 				},
 				{
@@ -234,10 +149,14 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1572,
-						"y": 54,
+						"x": 1,
+						"y": 1459,
 						"w": 180,
 						"h": 51
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
 					}
 				},
 				{
@@ -255,10 +174,14 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1754,
-						"y": 1,
+						"x": 183,
+						"y": 1353,
 						"w": 139,
 						"h": 51
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
 					}
 				},
 				{
@@ -276,10 +199,14 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1754,
-						"y": 1,
+						"x": 183,
+						"y": 1353,
 						"w": 139,
 						"h": 51
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
 					}
 				},
 				{
@@ -297,10 +224,364 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1754,
-						"y": 1,
+						"x": 183,
+						"y": 1353,
 						"w": 139,
 						"h": 51
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "sound_mute.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 3,
+						"w": 56,
+						"h": 45
+					},
+					"frame": {
+						"x": 314,
+						"y": 1295,
+						"w": 56,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "sound_full.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 3,
+						"w": 54,
+						"h": 45
+					},
+					"frame": {
+						"x": 183,
+						"y": 1406,
+						"w": 54,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "sound_most.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 3,
+						"w": 49,
+						"h": 45
+					},
+					"frame": {
+						"x": 183,
+						"y": 1453,
+						"w": 49,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "slider_indicator_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 47,
+						"h": 47
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 45,
+						"h": 45
+					},
+					"frame": {
+						"x": 234,
+						"y": 1453,
+						"w": 45,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "sound_half.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 3,
+						"w": 44,
+						"h": 45
+					},
+					"frame": {
+						"x": 239,
+						"y": 1406,
+						"w": 44,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "music_mute.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 4,
+						"w": 44,
+						"h": 44
+					},
+					"frame": {
+						"x": 281,
+						"y": 1453,
+						"w": 44,
+						"h": 44
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "music.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 4,
+						"w": 39,
+						"h": 43
+					},
+					"frame": {
+						"x": 285,
+						"y": 1406,
+						"w": 39,
+						"h": 43
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "slider_indicator.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 39,
+						"h": 39
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 39,
+						"h": 39
+					},
+					"frame": {
+						"x": 324,
+						"y": 1342,
+						"w": 39,
+						"h": 39
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "locket3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 13,
+						"w": 586,
+						"h": 470
+					},
+					"frame": {
+						"x": 591,
+						"y": 1,
+						"w": 586,
+						"h": 470
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "locket1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 149,
+						"y": 19,
+						"w": 427,
+						"h": 465
+					},
+					"frame": {
+						"x": 1179,
+						"y": 1,
+						"w": 427,
+						"h": 465
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "battleOverScreen.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 573,
+						"h": 623
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 5,
+						"w": 555,
+						"h": 614
+					},
+					"frame": {
+						"x": 591,
+						"y": 473,
+						"w": 555,
+						"h": 614
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "locket4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 38,
+						"w": 541,
+						"h": 443
+					},
+					"frame": {
+						"x": 591,
+						"y": 1089,
+						"w": 541,
+						"h": 443
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "credits.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 450,
+						"h": 550
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 450,
+						"h": 550
+					},
+					"frame": {
+						"x": 1148,
+						"y": 473,
+						"w": 450,
+						"h": 550
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "locket2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 147,
+						"y": 17,
+						"w": 432,
+						"h": 468
+					},
+					"frame": {
+						"x": 1148,
+						"y": 1025,
+						"w": 432,
+						"h": 468
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
 					}
 				}
 			]
@@ -309,6 +590,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:b8d315e1c53e4a24a51e1250603cf9e3:c7841207e8934c2a15fecb4342e9628d:6af6d199855d1c5980a61db04791f8fb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:e8f1b38e55ff86dc42462e0fb97694b1:13a7e7ee23c55d4ca0a0b8a629e6eab5:6af6d199855d1c5980a61db04791f8fb$"
 	}
 }

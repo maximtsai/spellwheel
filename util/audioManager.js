@@ -1,30 +1,58 @@
+// audiomanager
 let soundList = [];
-globalVolume = 1;
+globalVolume = 0.9;
+globalMusicVol = 0.9;
+globalMusic = null;
 
 function initializeSounds(scene) {
-    for (let i in audioFiles) {
-        let audioData = audioFiles[i];
-        if (soundList[audioData.name]) {
-            console.warn('audio name duplicate ', audioData.name);
-        }
-        soundList[audioData.name] = scene.sound.add(audioData.name);
-    }
+    // for (let i in audioFiles) {
+    //     let audioData = audioFiles[i];
+    //     if (soundList[audioData.name]) {
+    //         console.warn('audio name duplicate ', audioData.name);
+    //     }
+    //     soundList[audioData.name] = scene.sound.add(audioData.name);
+    // }
 }
 
-function playSound(name, volume = 1, loop = false) {
+function playSound(name, volume = 1, loop = false, isMusic = false) {
+    if (!soundList[name]) {
+        soundList[name] = PhaserScene.sound.add(name);
+    }
     soundList[name].fullVolume = volume;
     soundList[name].volume = volume * globalVolume;
     soundList[name].loop = loop;
+    if (isMusic) {
+        soundList[name].volume = volume * globalMusicVol;
+        globalMusic = soundList[name];
+    }
     soundList[name].play();
     return soundList[name];
+}
+
+function playMusic(name, volume = 1, loop = false) {
+    return this.playSound(name, volume, loop, true);
+}
+
+function playFakeBGMusic(name) {
+    soundList[name].volume = globalMusicVol;
+    soundList[name].play();
 }
 
 function updateGlobalVolume(newVol = 1) {
     globalVolume = newVol;
     for (let i in soundList) {
         if (soundList[i].isPlaying) {
-            soundList[i].volume = soundList[i].fullVolume * globalVolume;
+            if (soundList[i] !== globalMusic) {
+                soundList[i].volume = soundList[i].fullVolume * globalVolume;
+            }
         }
+    }
+}
+
+function updateGlobalMusicVolume(newVol = 1) {
+    globalMusicVol = newVol;
+    if (globalMusic) {
+        globalMusic.volume = newVol;
     }
 }
 

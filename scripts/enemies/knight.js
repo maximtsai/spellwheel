@@ -3,7 +3,7 @@
          super(scene, x, y, level);
          this.initSprite('void_knight.png', 1);// 0.7
          this.sprite.setOrigin(0.5, 0.5); // 0.9
-         this.bgMusic = playSound('into_the_void', 0.8, true);
+         this.bgMusic = playMusic('into_the_void', 0.8, true);
          this.shieldAdded = false;
          this.initMisc();
          setTimeout(() => {
@@ -892,7 +892,7 @@
          this.setAwake();
          this.sigilEffect.setFrame('void_knight_sigil2.png').setScale(this.sprite.startScale);
          this.repeatTweenBreathe();
-         this.bgMusic = playSound('and_into_the_void', 1, true);
+         this.bgMusic = playMusic('and_into_the_void', 1, true);
          this.currentAttackSetIndex = 5;
          this.nextAttackIndex = 0;
          this.isLoading = false;

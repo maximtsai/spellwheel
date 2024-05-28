@@ -2,7 +2,7 @@
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
          this.initSprite('mantis_a.png', 0.46);
-         this.bgMusic = playSound('bite_down', 0.7, true);
+         this.bgMusic = playMusic('bite_down', 0.7, true);
 
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
          setTimeout(() => {

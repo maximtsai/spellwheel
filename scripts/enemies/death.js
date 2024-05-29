@@ -1,12 +1,14 @@
  class Death extends Enemy {
      constructor(scene, x, y) {
          super(scene, x, y);
-         this.initSprite('max_death_3.png', 0.55);
-         this.shieldAdded = false;
+         this.initSprite('blurryball.png', 0.7);
+        this.sprite.setOrigin(0.5, 0.4);
+        swirlInReaperFog(1.25);
+        this.setupCustomDeathSprite();
      }
 
      initStatsCustom() {
-         this.health = 333;
+         this.health = 666;
      }
 
      // update(dt) {}
@@ -16,49 +18,100 @@
      //     this.y = y;
      // }
 
-     setHealth(newHealth) {
-         super.setHealth(newHealth);
-         let prevHealthPercent = this.prevHealth / this.healthMax;
-         let currHealthPercent = this.health / this.healthMax;
-         if (currHealthPercent == 0) {
-             // dead, can't do anything
-             return;
+     repeatTweenBreathe(duration = 1500, magnitude = 1) {
+         if (this.breatheTween) {
+             this.breatheTween.stop();
          }
+     }
+
+     setupCustomDeathSprite() {
+        this.floatingDeath1 = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 300, 'enemies', 'max_death_1a.png').setDepth(1).setScale(0.3).setAlpha(0);
+        this.floatingDeath2 = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 300, 'enemies', 'max_death_1b.png').setDepth(1).setScale(0.3).setAlpha(0);
+        this.floatingDeath1.fakeAlpha = 0;
+        this.floatingDeath2.fakeAlpha = 0;
+        this.deathBreathe();
+        PhaserScene.tweens.add({
+            targets: [this.floatingDeath1, this.floatingDeath2],
+            fakeAlpha: 1,
+            scaleX: 0.667,
+            scaleY: 0.667,
+            duration: 6000,
+            ease: 'Cubic.easeOut',
+        });
+     }
+
+     deathBreathe() {
+        if (this.flutterAnim) {
+            this.flutterAnim.stop();
+        }
+
+        this.flutterAnim = PhaserScene.tweens.add({
+            targets: this.floatingDeath2,
+            alpha: this.floatingDeath2.fakeAlpha,
+            duration: 500,
+            ease: 'Cubic.easeIn',
+            onComplete: () => {
+                this.flutterAnim = PhaserScene.tweens.add({
+                    targets: this.floatingDeath1,
+                    alpha: 0,
+                    duration: 500,
+                    ease: 'Cubic.easeOut',
+                    completeDelay: 700,
+                    onComplete: () => {
+                        this.floatingDeath2.setDepth(this.floatingDeath1.depth - 1);
+                        this.flutterAnim = PhaserScene.tweens.add({
+                            targets: this.floatingDeath1,
+                            alpha: this.floatingDeath1.fakeAlpha,
+                            duration: 500,
+                            ease: 'Cubic.easeIn',
+                            onComplete: () => {
+                                this.flutterAnim = PhaserScene.tweens.add({
+                                    targets: this.floatingDeath2,
+                                    alpha: 0,
+                                    duration: 500,
+                                    ease: 'Cubic.easeOut',
+                                    completeDelay: 700,
+                                    onComplete: () => {
+                                        this.floatingDeath2.setDepth(this.floatingDeath1.depth + 1);
+                                        this.deathBreathe();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+     }
+
+
+
+
+     setHealth(newHealth) {
+        messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'IMMATERIAL', 0.8, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.4, scaleY: 1.4});
+
+         // super.setHealth(newHealth);
+         // let prevHealthPercent = this.prevHealth / this.healthMax;
+         // let currHealthPercent = this.health / this.healthMax;
+         // if (currHealthPercent == 0) {
+         //     // dead, can't do anything
+         //     return;
+         // }
      }
 
      initAttacks() {
          this.attacks = [
              [
                  {
-                     name: "Let me tell you a story",
-                     chargeAmt: 100,
+                     name: "REAP ;4444",
+                     chargeAmt: 600,
                      chargeMult: 1.1,
-                     damage: 0,
+                     damage: -1,
+                     attackStartFunction: () => {
+                         this.isPulsing = false;
+                     },
                  },
-                 {
-                     name: "About a greedy man who wanted everything.",
-                     chargeAmt: 120,
-                     chargeMult: 1.1,
-                     damage: 0,
-                 },
-                 {
-                     name: "Fame, wealth, admiration,",
-                     chargeAmt: 100,
-                     chargeMult: 1.1,
-                     damage: 0,
-                 },
-                 {
-                     name: "And of course...",
-                     chargeAmt: 50,
-                     chargeMult: 1.1,
-                     damage: 0,
-                 },
-                 {
-                     name: "Immortality.",
-                     chargeAmt: 150,
-                     chargeMult: 1.1,
-                     damage: 0,
-                 }
              ]
          ];
 

@@ -16,6 +16,7 @@
                 this.playerSpellCastSub.unsubscribe()
             }
         });
+         this.initTutorial(x, y);
     }
 
     initSpriteAnim(scale) {
@@ -36,26 +37,50 @@
          this.health = 40;
          this.isAsleep = true;
 
-         this.initTutorial();
      }
 
-     initTutorial() {
+     initTutorial(x, y) {
+        let dummyShadow = this.scene.add.sprite(x - 6, y - 50, 'misc', 'shadow_circle.png').setScale(13).setDepth(9999).setAlpha(0);
+        PhaserScene.tweens.add({
+            targets: dummyShadow,
+            alpha: 0.4,
+            ease: "Cubic.easeInOut",
+            y: y - 114,
+            scaleX: 8,
+            scaleY: 8,
+            duration: 1500,
+        });
+
          this.shadow = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(6).setDepth(9999).setAlpha(0);
         setTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
+                // TODO Add for main dummy too
                 globalObjects.bannerTextManager.setDialog(["This thing is in the way.", "I should knock it over."]);
                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
-                globalObjects.bannerTextManager.showBanner();
+                globalObjects.bannerTextManager.showBanner(false);
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                    messageBus.publish("highlightRunes");
+                    PhaserScene.tweens.add({
+                        targets: dummyShadow,
+                        alpha: 0,
+                        ease: "Cubic.easeOut",
+                        scaleX: 10,
+                        scaleY: 10,
+                        duration: 400,
+                        onComplete: () => {
+                            dummyShadow.destroy();
+                        }
+                    });
                     globalObjects.bannerTextManager.setOnFinishFunc(() => {});
                     globalObjects.bannerTextManager.closeBanner();
                     if (!this.bgMusic) {
                         this.bgMusic = playMusic('bite_down_simplified', 0.6, true);
-
+                        // this.shadow.setPosition(globalObjects.player.getX(), globalObjects.player.getY() - 1);
                         // globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Click to cast\na spell");
                         let spellListener = messageBus.subscribe('spellClicked', () => {
                             this.firstPopupClosed = true;
                             // globalObjects.textPopupManager.hideInfoText();
+                            messageBus.publish("unhighlightRunes");
                             spellListener.unsubscribe();
                             if (this.currShadowTween) {
                                 this.currShadowTween.stop();
@@ -70,6 +95,7 @@
                             });
                         });
                         this.currShadowTween = PhaserScene.tweens.add({
+                            delay: 200,
                             targets: this.shadow,
                             alpha: 0.65,
                             ease: "Cubic.easeOut",
@@ -78,6 +104,7 @@
                             duration: 700,
                             onComplete: () => {
                                 if (globalObjects.player.getPlayerCastSpellsCount() !== 0 && !this.firstPopupClosed) {
+                                    messageBus.publish("unhighlightRunes");
                                     globalObjects.textPopupManager.hideInfoText();
                                     spellListener.unsubscribe();
                                     PhaserScene.tweens.add({
@@ -107,7 +134,7 @@
                     }
                 });
             }
-        }, 2500)
+        }, 1250)
     }
 
      showArrowRotate() {
@@ -165,7 +192,7 @@
         setTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1 && !this.dead) {
                 // player only casted 1 spell so far
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Switch spells by spinning\n<=  the two wheels  =>");
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Switch spells by spinning\nthe ACTION and ELEMENT wheels");
                 this.arrowRotate1 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
                 this.arrowRotate2 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
                 this.destructibles.push(this.arrowRotate1);

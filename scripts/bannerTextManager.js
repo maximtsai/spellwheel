@@ -17,13 +17,15 @@ class BannerTextManager {
         this.text.setText(text);
     }
 
-    showBanner() {
+    showBanner(haveBGDarken = true) {
         this.setText(this.dialog[this.dialogIndex]);
-        PhaserScene.tweens.add({
-            targets: [this.darkenBG],
-            alpha: 0.5,
-            duration: 350,
-        });
+        if (haveBGDarken) {
+            PhaserScene.tweens.add({
+                targets: [this.darkenBG],
+                alpha: 0.5,
+                duration: 350,
+            });
+        }
         PhaserScene.tweens.add({
             targets: [this.textBG],
             alpha: 1,
@@ -67,7 +69,7 @@ class BannerTextManager {
                 this.dialogButton.setOnMouseUpFunc(() => {
                     this.continueDialog();
                 })
-            }, 400)
+            }, 500)
         }
     }
 
@@ -97,16 +99,21 @@ class BannerTextManager {
         this.text.setPosition(x, y + textOffsetY);
     }
 
-    setOnFinishFunc(func) {
+    setOnFinishFunc(func, delay = 0) {
         this.onFinishFunc = func;
     }
 
     continueDialog() {
+        if (this.continuePause) {
+            return;
+        }
+        this.continuePause = true;
         this.dialogIndex++;
         if (this.currAnim) {
             this.currAnim.stop();
         }
         if (!this.dialog[this.dialogIndex]) {
+            this.continuePause = false;
             this.closeBanner();
         } else {
             this.currAnim = PhaserScene.tweens.add({
@@ -119,6 +126,17 @@ class BannerTextManager {
                         targets: [this.text],
                         alpha: 1,
                         duration: 250,
+                        onComplete: () => {
+                            this.continuePause = false;
+                        }
+                    });
+                    PhaserScene.tweens.add({
+                        targets: [this.text],
+                        rotation: 0,
+                        duration: 175,
+                        onComplete: () => {
+                            this.continuePause = false;
+                        }
                     });
                 }
             });

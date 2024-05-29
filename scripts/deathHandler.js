@@ -2,14 +2,14 @@ function showVictoryScreen() {
     globalObjects.player.getPlayerCastSpellsCount();
 }
 
-function swirlInReaperFog() {
+function swirlInReaperFog(customScale = 1.66) {
     let fogSwirlGlow = getFogSwirlGlow();
     let fogSwirl = getFogSwirl();
 
     fogSwirl.currAnimScale = PhaserScene.tweens.add({
         targets: [fogSwirl, fogSwirlGlow],
-        scaleX: 1.66,
-        scaleY: 1.66,
+        scaleX: customScale,
+        scaleY: customScale,
         alpha: 0.5,
         ease: 'Cubic.easeOut',
         duration: 12000,
@@ -103,7 +103,7 @@ function getFogSwirlGlow() {
 
 function playReaperAnim(enemy, customFinFunc) {
     playSound('sound_of_death');
-                            messageBus.publish('reapedEnemyGong')
+    messageBus.publish('reapedEnemyGong')
     globalObjects.magicCircle.disableMovement();
     let level = enemy.getLevel();
     let floatingDeath = getFloatingDeath();
@@ -481,7 +481,7 @@ function playReaperDialog(dialog, onComplete) {
     });
     globalObjects.bannerTextManager.showBanner();
     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10);
-    globalObjects.bannerTextManager.setOnFinishFunc(onComplete)
+    globalObjects.bannerTextManager.setOnFinishFunc(onComplete, 100)
     // if (!globalObjects.reaperText) {
     //     globalObjects.reaperTextBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 25, 'misc', 'victory_banner.png').setScale(100, 1).setDepth(100002).setAlpha(0);
     //     globalObjects.reaperText = this.scene.add.text(gameConsts.halfWidth, globalObjects.reaperTextBG.y, '...', {fontFamily: 'Garamond', fontSize: 26, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(100002);

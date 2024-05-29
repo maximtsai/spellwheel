@@ -3,6 +3,7 @@ let soundList = [];
 globalVolume = 0.9;
 globalMusicVol = 0.9;
 globalMusic = null;
+globalTempMusic = null;
 
 function initializeSounds(scene) {
     // for (let i in audioFiles) {
@@ -19,7 +20,7 @@ function playSound(name, volume = 1, loop = false, isMusic = false) {
         soundList[name] = PhaserScene.sound.add(name);
     }
     soundList[name].fullVolume = volume;
-    soundList[name].volume = volume * globalVolume;
+    soundList[name].volume = soundList[name].fullVolume * globalVolume;
     soundList[name].loop = loop;
     if (isMusic) {
         soundList[name].volume = volume * globalMusicVol;
@@ -34,6 +35,10 @@ function playMusic(name, volume = 1, loop = false) {
 }
 
 function playFakeBGMusic(name) {
+    if (!soundList[name]) {
+        soundList[name] = PhaserScene.sound.add(name);
+    }
+    globalTempMusic = soundList[name];
     soundList[name].volume = globalMusicVol;
     soundList[name].play();
 }
@@ -52,7 +57,10 @@ function updateGlobalVolume(newVol = 1) {
 function updateGlobalMusicVolume(newVol = 1) {
     globalMusicVol = newVol;
     if (globalMusic) {
-        globalMusic.volume = newVol;
+        globalMusic.volume = globalMusic.fullVolume * newVol;
+    }
+    if (globalTempMusic) {
+        globalTempMusic.volume = newVol;
     }
 }
 

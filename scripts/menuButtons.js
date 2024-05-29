@@ -19,6 +19,7 @@ function clearOnlyMenuButtons() {
     globalObjects.lvl7Button.destroy();
     globalObjects.lvl8Button.destroy();
     globalObjects.lvl9Button.destroy();
+    globalObjects.lvl10Button.destroy();
 }
 
 function minorZoomMenu() {
@@ -388,6 +389,34 @@ function gotoMainMenu() {
     });
     globalObjects.lvl9Button.setScale(0.5);
     globalObjects.lvl9Button.addText("LEVEL 9", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+
+
+    globalObjects.lvl10Button = new Button({
+        normal: {
+            ref: "menu_btn_normal.png",
+            atlas: 'buttons',
+            x: 100,
+            y: 420,
+        },
+        hover: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        press: {
+            ref: "menu_btn_press.png",
+            atlas: 'buttons',
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp: () => {
+            clearMenuButtons();
+            beginLevel(10);
+        }
+    });
+    globalObjects.lvl10Button.setScale(0.5);
+    globalObjects.lvl10Button.addText("LEVEL 10", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+
 
     globalObjects.creditsButton = new Button({
         normal: {

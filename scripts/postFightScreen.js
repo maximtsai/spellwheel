@@ -33,7 +33,7 @@ class PostFightScreen {
             this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 30, 'placeholder code: ', {fontFamily: 'Garamond', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
         }
         if (!this.locketSprite) {
-            this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 380, 'ui', 'locket1.png').setScale(0.75).setDepth(100002).setAlpha(0).setOrigin(0.5, 0.1);
+            this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 105, 'ui', 'locket1.png').setScale(0.75).setDepth(100002).setAlpha(0).setOrigin(0.5, 0.8);
         }
         if (!this.locketDialog) {
             this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 220, '(placeholder story)', {fontFamily: 'Garamond', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
@@ -87,10 +87,10 @@ class PostFightScreen {
             this.locketButton = new Button({
                 normal: {
                     ref: "blackPixel",
-                    alpha: 0.0001,
+                    alpha: 0.001,
                     x: gameConsts.width * 0.8,
-                    y: gameConsts.halfHeight - 160,
-                    scaleX: 100,
+                    y: gameConsts.halfHeight - 150,
+                    scaleX: 110,
                     scaleY: 110
                 },
                 disable: {
@@ -111,7 +111,14 @@ class PostFightScreen {
                         this.openLocket();
 
                     } else if (this.locketIsClosable) {
-                        this.locketSprite.setFrame('locket1.png');
+                        if (this.locketSprite.frame.name == 'locket1.png') {
+                            globalObjects.bannerTextManager.setDialog(["I must press on."]);
+                            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+                            globalObjects.bannerTextManager.showBanner();
+                        }
+
+                        
+                        this.locketSprite.setFrame('locket1.png').setOrigin(0.5, 0.8);
                         this.locketSprite.setScale(this.locketSprite.scaleX + 0.02);
                         PhaserScene.tweens.add({
                             targets: [this.locketSprite],
@@ -136,10 +143,10 @@ class PostFightScreen {
         if (isWin) {
             this.locketSprite.visible = true;
             this.locketSprite.x = gameConsts.width + 300;
-            this.locketSprite.y = gameConsts.halfHeight - 370;
+            this.locketSprite.y = gameConsts.halfHeight - 105;
             this.locketSprite.setScale(0.75);
             this.locketSprite.setRotation(-0.6);
-            this.locketSprite.setFrame('locket1.png');
+            this.locketSprite.setFrame('locket1.png').setOrigin(0.5, 0.8);
         } else {
             this.locketSprite.visible = false;
         }
@@ -188,12 +195,12 @@ class PostFightScreen {
                             PhaserScene.tweens.add({
                                 targets: this.locketSprite,
                                 rotation: 0.3,
-                                x: gameConsts.width * 0.9,
+                                x: gameConsts.width * 0.8,
                                 ease: 'Cubic.easeOut',
                                 duration: 1000,
                                 onComplete: () => {
                                     let oldScale = this.locketSprite.scaleX;
-                                    this.locketSprite.setFrame('locket2.png').setScale(oldScale * 1.05);
+                                    this.locketSprite.setFrame('locket2.png').setOrigin(0.5, 0.8).setScale(oldScale * 1.05)
                                     PhaserScene.tweens.add({
                                         targets: this.locketSprite,
                                         scaleY: oldScale,
@@ -259,10 +266,10 @@ class PostFightScreen {
             targets: [this.locketSprite],
             scaleX: 0.75,
             scaleY: 0.75,
-            x: gameConsts.width * 0.9,
-            y: gameConsts.halfHeight - 370,
+            x: gameConsts.width * 0.8 + 10,
+            y: gameConsts.halfHeight - 115,
             ease: 'Cubic.easeInOut',
-            duration: 700
+            duration: 400
         });
         this.returnStatText();
     }
@@ -270,7 +277,7 @@ class PostFightScreen {
     openLocket() {
         if (this.locketSprite) {
             this.locketIsOpen = true;
-            this.locketSprite.setFrame('locket3.png');
+            this.locketSprite.setFrame('locket3.png').setOrigin(0.5, 0.8);
             this.locketSprite.setScale(this.locketSprite.scaleX + 0.02);
             PhaserScene.tweens.add({
                 targets: [this.locketSprite],
@@ -403,21 +410,22 @@ class PostFightScreen {
             case 0:
                 return "And so my journey begins.\nIt won't be long before\nI see you again, Rosemary."
             case 1:
-                return "Finally, I've found\nthe entry way to\nyour resting place.\n\n"+
-                "Almost immediately I can feel\nthis place trying to prevent me from\ngoing further.\n\n"+
-                "But I know I will find you here dear\nRosemary, and no creature or construct\nwill stop me from reaching you."
+                return "Here I stand in front\nof the gates to the\nmystical land of\nthe dead.\n\n"+
+                "Almost immediately I can feel\nthis place trying to resist my entry,\ntrying to obstruct my every step.\n\n"+
+                "But I know you are here dear Rosemary,\nand no creature or construct will stop me\nfrom finding you."
             case 2:
-                return "Finally, I've found the\nthe entry way to\nthe mystical land of\nthe dead.\n\n"+
-                "Almost immediately I can feel\nthis place trying to resist\nmy entry.\n\n"+
-                "But I know you are here my Rosemary,\nand no creature or construct will stop me\nfrom reaching you."
+                return "The fabled Reaper has\nnoticed my presence, though\nthey have done nothing but\nwag their finger at me like a parent scolding their child.\n\n"+
+                "But there is still a long way to go,\nand I have a feeling this won't be the last time\nwe see each other.";
             case 3:
-                return "DAY 3\n\ntest";
-
+                return "The creatures of this\nland are clearly hostile.\n\n"+
+                "But it seems that I acquire the\nstrength of each one I defeat.\n\n"+
+                "Perhaps if I triumph over enough foes, I can eventually\neven conquer Death itself!"
             case 4:
-                return "DAY 4\n\ntest";
-
+                return "My magic grows with each\nnew foe defeated, but\nI must practice with it if\nI am to use it to its full potential.\n\n";
             case 5:
-                return "DAY 5\n\ntest";
+                return "The creatures of this\nland are sparse, but cruel\n, I've found the\ngates to the mystical\nland of the dead.\n\n"+
+                "Almost immediately I can feel\nthis place trying to resist my entry.\n\n"+
+                "But I know you are here dear Rosemary,\nand no creature or construct will stop me\nfrom finding you."
 
             case 6:
                 return "DAY 6\n\ntest";
@@ -429,7 +437,9 @@ class PostFightScreen {
                 return "DAY 8\n\ntest";
 
             case 9:
-                return "DAY 9\n\ntest";
+                return "The creatures in this\nland are clearly hostile\nto my presence.\n\n"+
+                "But it seems that I gain the\nstrength of each one I defeat.\n\n"+
+                "I just know I am very close to you.";
 
             default:
                 return "..."

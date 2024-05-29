@@ -133,6 +133,9 @@ function beginLevel(lvl) {
         case 9:
             fadeInBackgroundAtlas('backgrounds', 'tunnel.png', 1500, 1, 1, 'Quart.easeIn', 0, false);
             break;
+        case 10:
+            fadeInBackgroundAtlas('backgrounds', 'background4.png', 2500, 1, 1, 'Quart.easeIn', 0, false);
+            break;
     }
 }
 
@@ -231,6 +234,9 @@ function buildTutorialButton(icon = "rune_matter_large.png", popup) {
         duration: 900,
         onComplete: () => {
             btnPop.destroy();
+            if (returnButton.isDestroyed) {
+                return;
+            }
             returnButton.setState(NORMAL);
             let anim = PhaserScene.add.sprite(45, 70, 'buttons').setDepth(130).play('newButtonAnim');
             returnButton.addToDestructibles(anim);

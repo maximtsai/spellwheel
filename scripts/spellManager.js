@@ -226,13 +226,7 @@ class SpellManager {
         }
 
         let spellName = 'MATTER STRIKE';
-        if (additionalDamage >= 1) {
-            spellName = spellName + " +" + additionalDamage;
-        }
-        if (numAdditionalAttacks > 1) {
-            spellName += " X" + numAdditionalAttacks;
-        }
-        this.postAttackCast(spellID, 0, spellName);
+        this.postAttackCast(spellID, 0, spellName, additionalDamage, numAdditionalAttacks);
     }
     castMatterReinforce() {
         const spellID = 'matterReinforce';
@@ -400,13 +394,8 @@ class SpellManager {
         for (let i = 0; i < globalObjects.player.spellMultiplier(); i++) {
             newSpike = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'matter_boost.png');
             let thisSpikeIndex = multiplier + i;
-            if (thisSpikeIndex % 2 == 0) {
-                newSpike.rotation = -0.7 - thisSpikeIndex * 0.1;
-                newSpike.setScale(1, 0.75);
-            } else {
-                newSpike.rotation = 0.6 + thisSpikeIndex * 0.1;
-                newSpike.setScale(-1, 0.75);
-            }
+            newSpike.rotation = 0.6 + thisSpikeIndex * 0.18;
+            newSpike.setScale(-1, 0.75);
             itemsToAnimate.push(newSpike);
             itemsToTween.push(newSpike);
         }
@@ -417,7 +406,7 @@ class SpellManager {
                 delay: itemsToAnimate.length * Math.random() * 5 + (i * 20),
                 duration: 325 + Math.random() * 200,
                 ease: 'Back.easeOut',
-                scaleY: 0.95 + Math.random() * 0.1,
+                scaleY: 0.98 + Math.random() * 0.1,
                 onStart: () => {
                     if (i === 0) {
                         let sfx = playSound('matter_enhance', 0.9);
@@ -451,26 +440,37 @@ class SpellManager {
                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
                     let objectsToCleanup = statuses[spellID].animObj;
                     for (let i = 0; i < objectsToCleanup.length; i++) {
-                        objectsToCleanup[i].setFrame('matter_boost_glow.png');
-                    }
-                    statuses[spellID].currentAnim = this.scene.tweens.add({
-                        targets: objectsToCleanup,
-                        duration: 350 + objectsToCleanup.length * 50,
-                        rotation: 0,
-                        ease: 'Cubic.easeInOut',
-                        onComplete: () => {
-                            for (let i = 0; i < objectsToCleanup.length; i++) {
-                                objectsToCleanup[i].destroy();
+                        this.scene.tweens.add({
+                            delay: i * 60,
+                            targets: objectsToCleanup[i],
+                            duration: 300,
+                            scaleY: "+=0.14",
+                            ease: 'Quart.easeOut',
+                            onStart: () => {
+                            },
+                            onComplete: () => {
+                                objectsToCleanup[i].scaleX *= 1.08;
+                                objectsToCleanup[i].setFrame('matter_boost_glow.png');
+                                this.scene.tweens.add({
+                                    targets: objectsToCleanup[i],
+                                    duration: 300,
+                                    scaleY: 0.6,
+                                    ease: 'Quart.easeIn',
+                                    onComplete: () => {
+                                        objectsToCleanup[i].destroy();
+                                    }
+                                });
                             }
-                        }
-                    });
-                    statuses[spellID].currentAnim = this.scene.tweens.add({
-                        targets: statuses[spellID].animObj,
-                        duration: 350 + statuses[spellID].animObj.length * 50,
-                        scaleX: 0.62,
-                        scaleY: 0.62,
-                        ease: 'Quart.easeIn'
-                    });
+                        });
+                    }
+
+                    // statuses[spellID].currentAnim = this.scene.tweens.add({
+                    //     targets: statuses[spellID].animObj,
+                    //     duration: 350 + statuses[spellID].animObj.length * 50,
+                    //     scaleX: 0.62,
+                    //     scaleY: 0.62,
+                    //     ease: 'Quart.easeIn'
+                    // });
                 }
             }
         });
@@ -795,14 +795,8 @@ class SpellManager {
         }
 
         let spellName = "EARTH FORCE";
-        if (additionalDamage >= 1) {
-            spellName = spellName + " +" + additionalDamage;
-        }
-        if (numAdditionalAttacks > 1) {
-            spellName += " X" + numAdditionalAttacks;
-        }
         messageBus.publish('clearSpellMultiplier');
-        this.postAttackCast(spellID, 300, spellName);
+        this.postAttackCast(spellID, 300, spellName, additionalDamage, numAdditionalAttacks);
 
     }
 
@@ -968,13 +962,7 @@ class SpellManager {
         }
 
         let spellName = "TIME STRIKE";
-        if (additionalDamage >= 1) {
-            spellName = spellName + " +" + additionalDamage;
-        }
-        if (numAdditionalAttacks > 1) {
-            spellName += " X"+numAdditionalAttacks;
-        }
-        this.postAttackCast(spellID, 300, spellName);
+        this.postAttackCast(spellID, 300, spellName, additionalDamage, numAdditionalAttacks);
     }
     castTimeReinforce() {
         const spellID = 'timeReinforce';
@@ -1370,13 +1358,7 @@ class SpellManager {
         }
 
         let spellName = "ENERGY STRIKE";
-        if (additionalDamage >= 1) {
-            spellName = spellName + " +" + additionalDamage;
-        }
-        if (numAdditionalAttacks > 1) {
-            spellName += " X" + numAdditionalAttacks;
-        }
-        this.postAttackCast(spellID, 0, spellName);
+        this.postAttackCast(spellID, 0, spellName, additionalDamage, numAdditionalAttacks);
 
     }
     castMindReinforce() {
@@ -1912,14 +1894,7 @@ class SpellManager {
         }
 
         let spellName = 'VOID STRIKE';
-
-        if (additionalDamage >= 1) {
-            spellName = spellName + " +" + additionalDamage;
-        }
-        if (numAdditionalAttacks > 1) {
-            spellName += " X" + numAdditionalAttacks;
-        }
-        this.postAttackCast(spellID, 0, spellName);
+        this.postAttackCast(spellID, 0, spellName, additionalDamage, numAdditionalAttacks);
     }
 
     castVoidReinforce(elem, embodi) {
@@ -2549,7 +2524,7 @@ class SpellManager {
         this.particlesRock.push(particle);
     }
 
-    postAttackCast(spellID, delayAmt = 0, spellName = "UNNAMED ATTACK") {
+    postAttackCast(spellID, delayAmt = 0, spellName = "UNNAMED ATTACK", additionalDamage, numAdditionalAttacks) {
         PhaserScene.time.delayedCall(delayAmt, () => {
             messageBus.publish('attackLaunched', spellID);
             let mindAttackBuff = globalObjects.player.getStatuses()['mindEnhance'];
@@ -2618,7 +2593,7 @@ class SpellManager {
                 });
             }
         });
-        messageBus.publish('recordSpellAttack', spellID, spellName);
+        messageBus.publish('recordSpellAttack', spellID, spellName, undefined, additionalDamage, numAdditionalAttacks);
         messageBus.publish('clearAttackMultiplier');
         messageBus.publish('clearDamageAdder');
     }

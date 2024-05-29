@@ -44,7 +44,7 @@ const textData = {
         jp: ''
     },
 
-    time_strike_desc: {en_us: 'Deal 6 damage,\nthen deal half\nthat damage\na second time',
+    time_strike_desc: {en_us: 'Deal 6 damage,\nthen deal 50%\nthat damage\na second time',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -116,21 +116,21 @@ const textData = {
         jp: ''
     },
 
-    mind_strike_desc: {en_us: 'Deal 1 damage.\nEnemy takes x2\ndamage from\nnext attack hit',
+    mind_strike_desc: {en_us: 'Deal 1 damage.\nEnemy takes x2\ndamage from your\nnext attack',
         fr: '',
         zh_cn: '',
         ru: '',
         es: '',
         jp: ''
     },
-    mind_enhance_desc: {en_us: 'Next attack deals\n3 DMG/s for\n4 seconds.\n(Non-stacking)',
+    mind_enhance_desc: {en_us: 'Next attack deals\n10 damage over\n5 seconds.\n(Non-stacking)',
         fr: '',
         zh_cn: '',
         ru: '',
         es: '',
         jp: ''
     },
-    mind_enhance_plus_desc: {en_us: 'Next attack deals\n3 DMG/s for\n5 seconds',
+    mind_enhance_plus_desc: {en_us: 'Next attack deals\n15 damage over\n5 seconds',
         fr: '',
         zh_cn: '',
         ru: '',

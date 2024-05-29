@@ -45,6 +45,9 @@ const ENABLE_KEYBOARD = true;
             messageBus.subscribe("applyMindBurn", this.applyMindBurn.bind(this)),
             messageBus.subscribe("playerDied", this.playerDied.bind(this)),
             messageBus.subscribe("playerRevived", this.playerRevived.bind(this)),
+            messageBus.subscribe("highlightRunes", this.highlightRunes.bind(this)),
+            messageBus.subscribe("unhighlightRunes", this.unhighlightRunes.bind(this)),
+
         ];
 
         updateManager.addFunction(this.update.bind(this));
@@ -2320,7 +2323,7 @@ const ENABLE_KEYBOARD = true;
         }
      }
 
-     applyMindBurn(duration = 4) {
+     applyMindBurn(duration = 5) {
         if (!globalObjects.currentEnemy || globalObjects.currentEnemy.dead) {
             return;
         }
@@ -2339,7 +2342,7 @@ const ENABLE_KEYBOARD = true;
                  if (effectObj) {
                      if (effectObj.firstTicked) {
                          this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * effectObj.duration);
-                         messageBus.publish('enemyTakeTrueDamage', 3, false);
+                         messageBus.publish('enemyTakeTrueDamage', 2, false);
                      } else {
                          effectObj.firstTicked = true;
                      }
@@ -2520,6 +2523,32 @@ const ENABLE_KEYBOARD = true;
              duration: 250,
          });
      }
+
+    highlightRunes() {
+        if (this.elements) {
+            for (let i = 0; i < this.elements.length; i++) {
+                this.elements[i].glow.setDepth(10000);
+            }
+        }
+        if (this.embodiments) {
+            for (let i = 0; i < this.embodiments.length; i++) {
+                this.embodiments[i].glow.setDepth(10000);
+            }
+        }
+    }
+
+    unhighlightRunes() {
+        if (this.elements) {
+            for (let i = 0; i < this.elements.length; i++) {
+                this.elements[i].glow.setDepth(103);
+            }
+        }
+        if (this.embodiments) {
+            for (let i = 0; i < this.embodiments.length; i++) {
+                this.embodiments[i].glow.setDepth(103);
+            }
+        }
+    }
 
 
 }

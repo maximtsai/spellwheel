@@ -539,6 +539,7 @@
                  // 0
                  {
                      name: " STARE... ",
+                     isPassive: true,
                      desc: "A pair of eyes watch you",
                      chargeAmt: 300,
                      damage: -1,

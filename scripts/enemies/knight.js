@@ -689,6 +689,7 @@
                  },
                 {
                      name: "STARING... ",
+                    isPassive: true,
                      chargeAmt: 250,
                      damage: -1,
                      attackStartFunction: () => {

@@ -181,35 +181,35 @@ class Enemy {
 
     createChargeBar(x) {
         let chargeBarLength = Math.floor(this.nextAttackChargeNeeded * 0.2);
-        this.chargeBarWarningBig = this.scene.add.sprite(gameConsts.halfWidth, 0, 'enemies', 'warning.png');
+        this.chargeBarWarningBig = this.scene.add.image(gameConsts.halfWidth, 0, 'enemies', 'warning.png');
         this.chargeBarWarningBig.setOrigin(0.5, 0);
         this.chargeBarWarningBig.setScale(gameConsts.width * 0.1, 0.65);
         this.chargeBarWarningBig.alpha = 0
         this.chargeBarWarningBig.setDepth(1);
 
-        this.chargeBarReady1 = this.scene.add.sprite(x, isMobile ? 339 : 337, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
-        this.chargeBarReady2 = this.scene.add.sprite(x, isMobile ? 339 : 337, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
+        this.chargeBarReady1 = this.scene.add.image(x, isMobile ? 339 : 337, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
+        this.chargeBarReady2 = this.scene.add.image(x, isMobile ? 339 : 337, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
 
-        this.chargeBarOutline = this.scene.add.sprite(x, isMobile ? 339 : 337, 'whitePixel');
+        this.chargeBarOutline = this.scene.add.image(x, isMobile ? 339 : 337, 'whitePixel');
         this.chargeBarOutline.setScale(chargeBarLength + 4, isMobile ? 15 : 13);
         this.chargeBarOutline.setOrigin(0.5, 0.5);
         this.chargeBarOutline.visible = false;
         this.chargeBarOutline.alpha = 0.4;
         this.chargeBarOutline.setDepth(9);
 
-        this.chargeBarMax = this.scene.add.sprite(x, isMobile ? 339 : 337, 'blackPixel');
+        this.chargeBarMax = this.scene.add.image(x, isMobile ? 339 : 337, 'blackPixel');
         this.chargeBarMax.setScale(chargeBarLength + 2, isMobile ? 13 : 11);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;
         this.chargeBarMax.setDepth(9);
 
-        this.voidPause = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'purple_pixel.png');
+        this.voidPause = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'purple_pixel.png');
         this.voidPause.alpha = 0;
         this.voidPause.setScale(chargeBarLength + 2, this.chargeBarMax.scaleY - 2);
         this.voidPause.setOrigin(0.5, 0.5);
         this.voidPause.setDepth(9);
 
-        this.chargeBarWarning = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
+        this.chargeBarWarning = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
         this.chargeBarWarning.alphaMult = 1;
         this.chargeBarWarning.setScale(chargeBarLength + 2, this.chargeBarMax.scaleY);
         this.chargeBarWarning.setOrigin(0.5, 0.5);
@@ -217,27 +217,29 @@ class Enemy {
         this.chargeBarWarning.setDepth(9);
         this.chargeBarWarning.setAlpha(0.35);
 
-        this.chargeBarCurr = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'yellow_pixel.png');
+        this.chargeBarCurr = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'yellow_pixel.png');
         this.chargeBarCurr.setScale(0, this.chargeBarMax.scaleY - 2);
         this.chargeBarCurr.setOrigin(0.5, 0.5);
         this.chargeBarCurr.alpha = 0.9;
         this.chargeBarCurr.setDepth(9);
 
-        this.chargeBarAngry = this.scene.add.sprite(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
+        this.chargeBarAngry = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
         this.chargeBarAngry.setScale(0, this.chargeBarMax.scaleY - 2);
         this.chargeBarAngry.setOrigin(0.5, 0.5);
         this.chargeBarAngry.alpha = 0.9;
         this.chargeBarAngry.setDepth(9);
         this.chargeBarAngry.visible = false;
 
-        let attackNameYPos = isMobile ? this.chargeBarMax.y - 22 : this.chargeBarMax.y - 19
+        let attackNameYPos = isMobile ? this.chargeBarMax.y - 23 : this.chargeBarMax.y - 22
 
         this.angrySymbol = this.scene.add.sprite(x, attackNameYPos - 8, 'enemies', 'angry1.png');
         this.angrySymbol.setDepth(9);
         this.angrySymbol.visible = false;
         this.angrySymbolIsHiding = true;
 
-        this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', isMobile ? 36 : 32);
+        this.attackNameHighlight = this.scene.add.image(x, attackNameYPos - 13, 'lowq', 'glow_flat_red.webp').setAlpha(0).setDepth(9);
+
+        this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', isMobile ? 38 : 36);
         this.attackName.setDepth(9);
         this.attackName.setOrigin(0.5, 0.85);
     }
@@ -645,11 +647,43 @@ class Enemy {
         this.angrySymbol.x = this.attackName.x + this.attackName.width * 0.495 + 20;
 
         this.attackName.setText(atkName).setAlpha(0.2).setScale(finalScale * 0.9);
+
+        if (!this.nextAttack.isPassive) {
+            let widthToScale = this.attackName.width / 200;
+            this.attackNameHighlight.setScale(widthToScale, 2.2).setAlpha(0.2);
+            PhaserScene.tweens.add({
+                targets: this.attackNameHighlight,
+                duration: 300,
+                ease: 'Quad.easeOut',
+                alpha: 0.9,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        targets: this.attackNameHighlight,
+                        ease: 'Quad.easeOut',
+                        duration: 1000,
+                        alpha: 0,
+                    });
+                }
+            });
+            PhaserScene.tweens.add({
+                targets: this.attackNameHighlight,
+                duration: 1300,
+                ease: 'Cubic.easeOut',
+                scaleX: widthToScale + 1.5,
+            });
+            PhaserScene.tweens.add({
+                delay: 200,
+                targets: this.attackNameHighlight,
+                duration: 1100,
+                scaleY: 0,
+            });
+        }
         PhaserScene.tweens.add({
             targets: this.attackName,
             duration: 500,
             alpha: 1,
         });
+
         PhaserScene.tweens.add({
             targets: this.attackName,
             ease: 'Cubic.easeOut',

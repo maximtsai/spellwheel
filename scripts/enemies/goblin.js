@@ -62,7 +62,7 @@
                      name: gameVars.isHardMode ? "}8 " : "}4 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
                      chargeAmt: 350,
-                     damage: gameVars.isHardMode ? 8 : 5,
+                     damage: gameVars.isHardMode ? 8 : 4,
                      attackSprites: ['gobbo0_atk.png'],
                      attackFinishFunction: () => {
                          this.makeSlashEffect();
@@ -76,10 +76,27 @@
                      name: gameVars.isHardMode ? "FANCY SHIELD {50 " : "FANCY SHIELD {40 ",
                      desc: "The goblin hoists his\ntrusty shield (which\nwas definitely not stolen)",
                      block: gameVars.isHardMode ? 50 : 40,
+                     isPassive: true,
                      customCall: " ",
                      chargeAmt: 180,
                      attackFinishFunction: () => {
                          playSound('clunk');
+
+                         let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 700);
+                         shinePattern.setPosition(this.x, this.y).setScale(0.8).setDepth(-1).setAlpha(0.5);
+                         PhaserScene.tweens.add({
+                             targets: shinePattern,
+                             scaleX: 0.85,
+                             scaleY: 0.85,
+                             duration: 700,
+                             ease: 'Cubic.easeOut'
+                         });
+                         PhaserScene.tweens.add({
+                             targets: shinePattern,
+                             alpha: 0,
+                             ease: 'Cubic.easeIn',
+                             duration: 700,
+                         });
 
                          this.setDefaultSprite('gobboshield1.png', 0.92).play('gobboshield');
                          this.currentAttackSetIndex = 2;
@@ -91,10 +108,10 @@
              [
                  // 2 - attacks from behind shield
                  {
-                     name: gameVars.isHardMode ? "}12 " : "}7 ",
+                     name: gameVars.isHardMode ? "}12 " : "}6 ",
                      desc: "Goblin rams you with\nhis shield",
                      chargeAmt: 500,
-                     damage: gameVars.isHardMode ? 12 : 7,
+                     damage: gameVars.isHardMode ? 12 : 6,
                      startFunction: () => {
                         this.pullbackScale = 0.85;
                         this.attackScale = 1.2;
@@ -112,6 +129,7 @@
                  // 3
                  {
                      name: "REALIZING SHIELD BROKE...",
+                     isPassive: true,
                      chargeAmt: gameVars.isHardMode ? 250 : 300,
                      chargeMult: 2,
                      customCall: " ",
@@ -119,6 +137,7 @@
                  },
                  {
                      name: "GETTING KNIVES!",
+                     isPassive: true,
                      chargeAmt: gameVars.isHardMode ? 250 : 250,
                      chargeMult: 5,
                      isBigMove: true,
@@ -193,6 +212,7 @@
                  },
                  {
                      name: "LAUGH IN YOUR FACE",
+                     isPassive: true,
                      chargeAmt: 250,
                      chargeMult: 5,
                      damage: -1,

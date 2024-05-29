@@ -536,6 +536,7 @@
                      desc: "The Time Magician\nslows down his health",
                      chargeAmt: 250,
                      prepareSprite: 'time_magi_cast_big.png',
+                     isPassive: true,
                      startFunction: () => {
                         this.preppingTimeShield = true;
                      },
@@ -725,6 +726,7 @@
                  {
                      name: "RESTING...",
                      desc: "Time Magician is trying\nto think what to do...",
+                     isPassive: true,
                      chargeAmt: 200,
                      chargeMult: 1.5,
                      damage: 0,
@@ -799,11 +801,12 @@
              [
                  // 6
                  {
-                     name: "COWER }1 ",
-                     desc: "The Time Magician is\nafraid of death.",
-                     chargeAmt: 1000,
-                     chargeMult: 1.1,
-                     damage: 1,
+                    name: "COWER",
+                    isPassive: true,
+                    desc: "The Time Magician is\nafraid of death.",
+                    chargeAmt: 1000,
+                    chargeMult: 1.1,
+                    damage: 0,
                  },
              ]
          ];

@@ -137,6 +137,7 @@
                  {
                      name: "...ARE YOU ALIVE?",
                      chargeAmt: 250,
+                    isPassive: true,
                      damage: -1,
                      startFunction: () => {
                         this.setDefaultSprite('mantis_unveiled.png');
@@ -149,6 +150,7 @@
                  {
                      name: "PANIK!",
                      chargeAmt: 1000,
+                    isPassive: true,
                      damage: -1,
                      chargeMult: 8,
                      startFunction: () => {
@@ -166,6 +168,7 @@
                  {
                      name: "KALM",
                      chargeAmt: 150,
+                    isPassive: true,
                      damage: -1,
                      startFunction: () => {
                          playSound('magic', 0.4);

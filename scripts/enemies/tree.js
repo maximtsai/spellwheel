@@ -540,10 +540,11 @@
              [
                  // 1
                  {
-                     name: "REGROWTH (+" + regrowthAmt1 + ")",
-                     announceName: "REGROWTH (+" + regrowthAmt1 + ")",
+                     name: "HEAL (\\" + regrowthAmt1 + ")",
+                     announceName: "HEAL (+" + regrowthAmt1 + ")",
                      desc: "The tree recovers its injuries over time",
                      chargeAmt: 650,
+                     isPassive: true,
                      damage: -1,
                      attackStartFunction: () => {
                          this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
@@ -589,10 +590,11 @@
                      }
                  },
                  {
-                     name: "REGROWTH (+" + regrowthAmt2 + ")",
-                     announceName: "REGROWTH (+" + regrowthAmt2 + ")",
+                     name: "HEAL (\\" + regrowthAmt2 + ")",
+                     announceName: "HEAL (+" + regrowthAmt2 + ")",
                      desc: "The tree recovers its injuries",
                      chargeAmt: 650,
+                     isPassive: true,
                      damage: -1,
                      attackStartFunction: () => {
                          this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);

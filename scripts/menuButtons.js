@@ -176,7 +176,7 @@ function gotoMainMenu() {
         }
     });
     globalObjects.startButton.setOrigin(0.5, 0.5);
-    globalObjects.startButton.addText("NEW GAME", {fontFamily: 'Garamond', fontSize: 28, color: '#000000', align: 'left'})
+    globalObjects.startButton.addText("NEW GAME", {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
     globalObjects.startButton.setScale(0.9);
 
     globalObjects.levelSelectButton = new Button({
@@ -203,7 +203,7 @@ function gotoMainMenu() {
         }
     });
     globalObjects.levelSelectButton.setScale(0.5);
-    globalObjects.levelSelectButton.addText("LEVEL 2", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.levelSelectButton.addText("LEVEL 2", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.level3Button = new Button({
         normal: {
@@ -229,7 +229,7 @@ function gotoMainMenu() {
         }
     });
     globalObjects.level3Button.setScale(0.5);
-    globalObjects.level3Button.addText("LEVEL 3", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.level3Button.addText("LEVEL 3", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvlButton = new Button({
         normal: {
@@ -255,7 +255,7 @@ function gotoMainMenu() {
         }
     });
     globalObjects.lvlButton.setScale(0.5);
-    globalObjects.lvlButton.addText("LEVEL 4", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvlButton.addText("LEVEL 4", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl5Button = new Button({
         normal: {
@@ -281,7 +281,7 @@ function gotoMainMenu() {
         }
     });
     globalObjects.lvl5Button.setScale(0.5);
-    globalObjects.lvl5Button.addText("LEVEL 5", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl5Button.addText("LEVEL 5", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
 
     globalObjects.lvl6Button = new Button({
@@ -308,7 +308,7 @@ function gotoMainMenu() {
         }
     });
     globalObjects.lvl6Button.setScale(0.5);
-    globalObjects.lvl6Button.addText("LEVEL 6", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl6Button.addText("LEVEL 6", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
 
 
@@ -336,7 +336,7 @@ function gotoMainMenu() {
         }
     });
     globalObjects.lvl7Button.setScale(0.5);
-    globalObjects.lvl7Button.addText("LEVEL 7", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl7Button.addText("LEVEL 7", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl8Button = new Button({
         normal: {
@@ -362,7 +362,7 @@ function gotoMainMenu() {
         }
     });
     globalObjects.lvl8Button.setScale(0.5);
-    globalObjects.lvl8Button.addText("LEVEL 8", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl8Button.addText("LEVEL 8", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl9Button = new Button({
         normal: {
@@ -388,7 +388,7 @@ function gotoMainMenu() {
         }
     });
     globalObjects.lvl9Button.setScale(0.5);
-    globalObjects.lvl9Button.addText("LEVEL 9", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl9Button.addText("LEVEL 9", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
 
     globalObjects.lvl10Button = new Button({
@@ -415,7 +415,7 @@ function gotoMainMenu() {
         }
     });
     globalObjects.lvl10Button.setScale(0.5);
-    globalObjects.lvl10Button.addText("LEVEL 10", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl10Button.addText("LEVEL 10", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
 
     globalObjects.creditsButton = new Button({
@@ -475,6 +475,6 @@ function gotoMainMenu() {
         }
     });
     globalObjects.creditsButton.setScale(0.5, 0.5);
-    globalObjects.creditsButton.addText("CREDITS", {fontFamily: 'Garamond', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.creditsButton.addText("CREDITS", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
 }

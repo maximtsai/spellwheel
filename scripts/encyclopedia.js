@@ -1,6 +1,8 @@
 class Encyclopedia {
     constructor(scene, x, y) {
         this.baseDepth = 101000;
+        this.listOfThingsToHide = [];
+        this.listOfButtonsToDisable = [];
         this.button = new Button({
             normal: {
                 atlas: 'buttons',
@@ -38,6 +40,7 @@ class Encyclopedia {
                 this.showEncyclopedia()
             }
         });
+        this.button.setDepth(this.baseDepth);
 
         this.button.setScrollFactor(0, 0)
     }
@@ -46,9 +49,11 @@ class Encyclopedia {
         if (!this.darkenBG) {
             this.darkenBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(this.baseDepth);
             this.darkenBG.setScale(500, 500);
+            this.listOfThingsToHide.push(this.darkenBG);
         }
         if (!this.bgPage) {
             this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 25, 'ui', 'battleOverScreen.png').setDepth(this.baseDepth);
+            this.listOfThingsToHide.push(this.bgPage);
         }
         createGlobalClickBlocker();
         if (!this.closeButton) {
@@ -90,6 +95,7 @@ class Encyclopedia {
                 }
             });
             this.closeButton.setDepth(this.baseDepth + 10);
+            this.listOfButtonsToDisable.push(this.closeButton);
         } else {
             buttonManager.bringButtonToTop(this.closeButton);
             this.closeButton.setState(NORMAL);
@@ -107,21 +113,16 @@ class Encyclopedia {
 
     hideEncyclopedia() {
         hideGlobalClickBlocker();
-        let listOfThingsToHide = [];
-        if (this.bgPage) {
-            listOfThingsToHide.push(this.bgPage);
-            listOfThingsToHide.push(this.darkenBG);
-
-        }
         PhaserScene.tweens.add({
-             targets: listOfThingsToHide,
+             targets: this.listOfThingsToHide,
              alpha: 0,
              ease: 'Cubic.easeOut',
              duration: 400,
         });
 
-        if (this.closeButton) {
-            this.closeButton.setState(DISABLE);
+        for (let i = 0; i < this.listOfButtonsToDisable.length; i++) {
+            this.listOfButtonsToDisable[i].setState(DISABLE);
         }
+
     }
 }

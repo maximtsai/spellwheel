@@ -40,7 +40,7 @@ class Options {
                 this.showOptions()
             }
         });
-
+        this.button.setDepth(this.baseDepth);
         this.button.setScrollFactor(0, 0)
     }
 

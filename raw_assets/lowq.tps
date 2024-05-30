@@ -243,13 +243,29 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
                 <rect>200,200,400,400</rect>
                 <key>scale9Paddings</key>
                 <rect>200,200,400,400</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">lowq/star_blur.png</key>
+            <key type="filename">lowq/star_blur_sharp.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>153,153,305,305</rect>
+                <key>scale9Paddings</key>
+                <rect>153,153,305,305</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -258,28 +274,13 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.5</double>
+                <double>0.1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
                 <rect>400,400,800,800</rect>
                 <key>scale9Paddings</key>
                 <rect>400,400,800,800</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">lowq/stars.jpg</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>150,127,300,253</rect>
-                <key>scale9Paddings</key>
-                <rect>150,127,300,253</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

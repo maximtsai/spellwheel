@@ -75,7 +75,7 @@ function beginPreLevel(lvl) {
                             }
                         });
                         lvl1CloseButton.setOrigin(0.5, 0.5);
-                        lvl1CloseButton.addText("BEGIN", {fontFamily: 'Garamond', fontSize: 28, color: '#000000', align: 'left'})
+                        lvl1CloseButton.addText("BEGIN", {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
                         lvl1CloseButton.setScale(0.9);
                         lvl1CloseButton.setDepth(99999);
                 }

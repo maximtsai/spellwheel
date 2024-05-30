@@ -416,19 +416,19 @@ function handleReaperDialog(level = 0, onComplete) {
         reaperDialog = [
             "...OH? IT'S YOU AGAIN.",
             "YOU DO NOT BELONG HERE,\nIN THE LANDS OF PASSING.",
-            "TURN BACK TO WHERE YOU CAME FROM."
+            "TURN BACK TO\nWHERE YOU CAME FROM."
             ];
         break;
     case 3:
         reaperDialog = [
-            "I WILL ONLY WARN YOU ONCE MORE,",
+            "I WILL ONLY\nWARN YOU ONCE MORE,",
             "THAT WHICH YOU SEEK HERE\nCANNOT BE ATTAINED.",
-            "TURN BACK NOW.",
+            "RETURN TO THE MORTAL REALM.",
         ];
         break;
     case 4:
         reaperDialog = [
-            "THE MAGICIAN THOUGHT HIS MAGIC\nCOULD ELUDE ME,",
+            "THE MAGICIAN THOUGHT HIS\nMAGIC COULD ELUDE ME,",
             "BUT THE PASSAGE OF TIME\nCANNOT BE UNDONE.",
             "AND NEITHER CAN YOUR\nLOVED ONE RETURN.",
         ];
@@ -484,7 +484,7 @@ function playReaperDialog(dialog, onComplete) {
     globalObjects.bannerTextManager.setOnFinishFunc(onComplete, 100)
     // if (!globalObjects.reaperText) {
     //     globalObjects.reaperTextBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 25, 'misc', 'victory_banner.png').setScale(100, 1).setDepth(100002).setAlpha(0);
-    //     globalObjects.reaperText = this.scene.add.text(gameConsts.halfWidth, globalObjects.reaperTextBG.y, '...', {fontFamily: 'Garamond', fontSize: 26, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(100002);
+    //     globalObjects.reaperText = this.scene.add.text(gameConsts.halfWidth, globalObjects.reaperTextBG.y, '...', {fontFamily: 'garamond', fontSize: 26, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(100002);
     //     globalObjects.reaperText.setFontStyle('italic');
     // }
 

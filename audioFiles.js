@@ -64,6 +64,7 @@ const audioFiles = [
     {name: 'victory_false', src: 'audio/victory_false.mp3'},
 
     {name: 'voca_hello', src: 'audio/voca_hello.mp3'},
+    {name: 'voca_hello_short', src: 'audio/voca_hello_short.mp3'},
     {name: 'voca_pain', src: 'audio/voca_pain.mp3'},
     {name: 'voca_missile', src: 'audio/voca_missile.mp3'},
     {name: 'voca_missile_broken', src: 'audio/voca_missile_broken.mp3'},

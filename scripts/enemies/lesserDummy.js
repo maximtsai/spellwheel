@@ -192,7 +192,7 @@
         setTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1 && !this.dead) {
                 // player only casted 1 spell so far
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Switch spells by spinning\nthe ACTION and ELEMENT wheels");
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Spin the ACTION and ELEMENT\nwheels to switch spells");
                 this.arrowRotate1 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
                 this.arrowRotate2 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
                 this.destructibles.push(this.arrowRotate1);
@@ -433,28 +433,29 @@
              continueText.alpha = 1;
              this.dieClickBlocker.setOnMouseUpFunc(() => {
                  this.dieClickBlocker.destroy();
+
+                 PhaserScene.tweens.add({
+                     targets: this.sprite,
+                     alpha: 0,
+                     scaleX: this.sprite.startScale * 1.2,
+                     scaleY: this.sprite.startScale * 1.2,
+                     y: "+=30",
+                     duration: 700,
+                     onComplete: () => {
+                         this.destroy();
+                     }
+                 });
                  PhaserScene.tweens.add({
                      targets: [victoryText, banner],
                      alpha: 0,
                      duration: 400,
+                     completeDelay: 200,
                      onComplete: () => {
                          globalObjects.magicCircle.enableMovement();
                          victoryText.destroy();
                          banner.destroy();
                          continueText.destroy();
                          beginLevel(1);
-                         PhaserScene.tweens.add({
-                             targets: this.sprite,
-                             alpha: 0,
-                             scaleX: this.sprite.startScaleX * 1.25,
-                             scaleY: this.sprite.startScaleX * 1.25,
-                             y: "+=15",
-                             duration: 600,
-                             onComplete: () => {
-
-                                 this.destroy();
-                             }
-                         });
                      }
                  });
              })

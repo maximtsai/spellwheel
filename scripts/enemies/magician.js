@@ -7,7 +7,7 @@
             this.addToDestructibles(this.tutorialButton);
         }, 3500)
         setTimeout(() => {
-            this.customBgMusic = playSound('magician_theme_1', 0.95, true);
+            this.customBgMusic = playMusic('magician_theme_1', 0.95, true);
         }, 1500)
         
 
@@ -61,7 +61,7 @@
          } else if (currHealthPercent < 0.999 && !this.preppingTimeShield) {
              this.currentAttackSetIndex = 1;
              this.nextAttackIndex = 0;
-         } else if (this.health <= 13 && this.statuses[0].duration >= this.health && this.usedTimeShield && !this.isTerrified) {
+         } else if (this.health <= 13 && this.usedTimeShield && !this.isTerrified && this.statuses[0] && this.statuses[0].duration >= this.health) {
              this.isTerrified = true;
              this.interruptCurrentAttack();
              this.currentAttackSetIndex = 6;
@@ -72,11 +72,11 @@
              }
              setTimeout(() => {
                  if (!this.dead) {
-                     this.customBgMusic = playSound('magician_theme_4', 0.4, true);
+                     this.customBgMusic = playMusic('magician_theme_4', 0.4, true);
                      fadeInSound(this.customBgMusic, 0.8);
                  }
              }, 750)
-         } else if (this.health <= 4 && !this.timeTerrified) {
+         } else if (this.health <= 4 && !this.timeTerrified && this.usedTimeShield) {
              this.timeTerrified = true;
              this.setDefaultSprite('time_magi_terrified.png', 0.72);
          }
@@ -661,7 +661,7 @@
                              fadeAwaySound(this.tickSlow, 400, ' ');
                          }
                          playSound('timeSlow');
-                         this.magicianTimeEpicTheme = playSound('magician_theme_3', 0.8)
+                         this.magicianTimeEpicTheme = playMusic('magician_theme_3', 0.8)
                          globalObjects.magicCircle.timeSlowFromEnemy();
                      }
                  },

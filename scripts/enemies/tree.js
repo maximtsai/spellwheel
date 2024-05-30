@@ -149,12 +149,10 @@
              // CRUSH
              this.setNextAttack(3, 0);
              // Going to shield
-         } else if (currHealthPercent <= 0.333 && !this.hasTimbered) {
+         } else if (currHealthPercent <= 0.25 && !this.hasTimbered) {
              this.setNextAttack(5, 0);
              if (!this.hasPreparedFinal) {
                  this.hasPreparedFinal = true;
-                 this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
-                 this.sprite.y -= this.sprite.height * 0.125;
              }
          }
      }
@@ -366,17 +364,17 @@
              targets: currObj,
              x: gameConsts.halfWidth * 0.2 + currObj.x * 0.8,
              y: gameConsts.height - 320,
-             ease: 'Quad.easeIn',
-             duration: 700,
+             ease: 'Cubic.easeIn',
+             duration: 850,
              onComplete: () => {
                  playSound('tree_hit');
                  messageBus.publish("selfTakeDamage", damage);
                  let xPos = gameConsts.halfWidth * 0.5 + currObj.x * 0.5;
-                 let hitEffect = PhaserScene.add.sprite(xPos, currObj.y + Math.random() * 8, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(0.95).setDepth(195);
+                 let hitEffect = PhaserScene.add.sprite(xPos, currObj.y + Math.random() * 8, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
                  this.scene.tweens.add({
                      targets: hitEffect,
-                     scaleX: 0.7,
-                     scaleY: 0.7,
+                     scaleX: 1.25,
+                     scaleY: 1.25,
                      ease: 'Cubic.easeOut',
                      duration: 150,
                      onComplete: () => {
@@ -508,7 +506,7 @@
              [
                  // 0
                  {
-                     name: "}10 ",
+                     name: "}8 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
                      chargeAmt: 650,
@@ -525,7 +523,7 @@
                              alpha: 0,
                              duration: 200,
                          });
-                         this.attackWithBranch(12);
+                         this.attackWithBranch(8);
                      },
                      attackFinishFunction: () => {
                          let currHealthPercent = this.health / this.healthMax;
@@ -572,14 +570,14 @@
              [
                  // 2
                  {
-                     name: "|12 ",
+                     name: "|10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
                      chargeAmt: 700,
                      damage: -1,
                      attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
-                         this.attackWithBranch(12);
+                         this.attackWithBranch(10);
                      },
                      attackFinishFunction: () => {
                          let currHealthPercent = this.health / this.healthMax;
@@ -649,7 +647,7 @@
                      damage: 28,
                      isBigMove: true,
                      startFunction: () => {
-                        globalObjects.textPopupManager.setInfoText(100, gameConsts.halfHeight - 139, "Different shields\nare useful\nagainst different\nattacks.", 'left');
+                        globalObjects.textPopupManager.setInfoText(94, gameConsts.halfHeight - 139, "Different shields\nare useful\nagainst different\nattacks.", 'left', true);
                         setTimeout(() => {
                             globalObjects.textPopupManager.hideInfoText();
                          }, 11000);
@@ -665,19 +663,17 @@
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.03;
                          let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent >= 0.333) {
+                         if (currHealthPercent >= 0.25) {
                              this.currentAttackSetIndex = 4;
                              this.nextAttackIndex = 0;
                          } else if (!this.hasTimbered) {
                              this.currentAttackSetIndex = 5;
                              this.nextAttackIndex = 0;
-                             this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
-                             this.sprite.y -= this.sprite.height * 0.125;
                          }
                          playSound('body_slam');
                          let dmgEffect = poolManager.getItemFromPool('brickPattern2')
                          if (!dmgEffect) {
-                             dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                             dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 160, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
                          }
                          dmgEffect.setDepth(998).setScale(0.7);
                          PhaserScene.tweens.add({
@@ -771,6 +767,8 @@
                      damage: 40,
                      isBigMove: true,
                      startFunction: () => {
+                        this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
+                        this.sprite.y -= this.sprite.height * 0.125;
                         fadeAwaySound(this.bgMusic, 3000);
                         setTimeout(() => {
                              if (!this.dead) {

@@ -96,6 +96,12 @@
             font-weight:400;
             font-weight:bold;
         }
+        @font-face {
+            font-family: garamondmax;
+            src: local('garamondmax'), url('fonts/Garamond.ttf') format('truetype');
+            font-weight:600;
+            font-weight:bold;
+        }
     </style>
 </head>
 <body onload="onloadFunc()" onresize="resizeGame()">
@@ -103,9 +109,11 @@
         // this is needed to get fonts to load on mobile
         document.fonts.load('10pt "verdanamax"')
         document.fonts.load('10pt "verdanabold"')
+        document.fonts.load('10pt "garamondmax"')
     </script>
     <div style="font-family:verdanamax; position:absolute; left:-1000px; visibility:hidden;">.</div>
     <div style="font-family:verdanabold; position:absolute; left:-1000px; visibility:hidden;">.</div>
+    <div style="font-family:garamondmax; position:absolute; left:-1000px; visibility:hidden;">.</div>
     <div id="preload-notice">Loading Preloader...</div>
     <script src="main.js"></script>
 </body>

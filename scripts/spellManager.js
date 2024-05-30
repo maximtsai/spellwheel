@@ -447,10 +447,12 @@ class SpellManager {
                             scaleY: "+=0.14",
                             ease: 'Quart.easeOut',
                             onStart: () => {
+                                setTimeout(() => {
+                                    objectsToCleanup[i].setFrame('matter_boost_glow.png');
+                                }, 100);
                             },
                             onComplete: () => {
                                 objectsToCleanup[i].scaleX *= 1.08;
-                                objectsToCleanup[i].setFrame('matter_boost_glow.png');
                                 this.scene.tweens.add({
                                     targets: objectsToCleanup[i],
                                     duration: 300,

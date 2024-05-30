@@ -655,26 +655,27 @@ class Enemy {
                 targets: this.attackNameHighlight,
                 duration: 300,
                 ease: 'Quad.easeOut',
-                alpha: 0.9,
+                alpha: this.nextAttack.isBigMove ? 1 : 0.85,
                 onComplete: () => {
                     PhaserScene.tweens.add({
                         targets: this.attackNameHighlight,
                         ease: 'Quad.easeOut',
-                        duration: 1000,
+                        duration: this.nextAttack.isBigMove ? 1200 : 800,
                         alpha: 0,
                     });
                 }
             });
             PhaserScene.tweens.add({
                 targets: this.attackNameHighlight,
-                duration: 1300,
+                duration: this.nextAttack.isBigMove ? 1500 : 1100,
                 ease: 'Cubic.easeOut',
-                scaleX: widthToScale + 1.5,
+                scaleX: widthToScale + (this.nextAttack.isBigMove ? 1.75 : 1.4),
             });
             PhaserScene.tweens.add({
                 delay: 200,
                 targets: this.attackNameHighlight,
-                duration: 1100,
+                ease: this.nextAttack.isBigMove ? 'Quad.easeIn' : 'Quad.easeOut',
+                duration: this.nextAttack.isBigMove ? 1300 : 900,
                 scaleY: 0,
             });
         }
@@ -985,7 +986,11 @@ class Enemy {
         this.setHealth(Math.max(0, this.health - damageTaken));
         let healthLoss = origHealth - this.health;
         if (healthLoss > 0) {
-            this.animateShake();
+            if (healthLoss > 20) {
+                this.animateShake(1.5);
+            } else {
+                this.animateShake(1.1);
+            }
             this.animateDamageNum(healthLoss, undefined, this.damageNumOffset + yOffset);
         }
         if (isAttack) {
@@ -1347,6 +1352,18 @@ class Enemy {
             return;
         }
         this.sprite.x -= 4;
+        if (amt <= 1) {
+            this.sprite.setTint(0xFFBBBB);
+        } else if (amt < 1.25) {
+            this.sprite.setTint(0xFF7777);
+        } else {
+            this.sprite.setTint(0xFF0000);
+        }
+            
+        setTimeout(()=> {
+            this.sprite.clearTint();
+        } ,40 + amt * 20); 
+
         let extraTimeMult = 2 - gameVars.timeSlowRatio;
         PhaserScene.tweens.add({
             targets: this.sprite,

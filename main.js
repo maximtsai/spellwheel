@@ -1,7 +1,7 @@
 let isMobile = testMobile();
 
 let config = {
-    type: Phaser.CANVAS,
+    type: Phaser.AUTO,
     scale: {
         parent: 'spellwheel',
         autoRound: true,

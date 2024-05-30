@@ -978,7 +978,7 @@ class Player {
                                 deathMenuButton.destroy();
                             }
                         });
-                        deathMenuButton.addText('MENU', {fontFamily: 'Garamond', fontSize: 34, color: '#000000', align: 'center'});
+                        deathMenuButton.addText('MENU', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
                         deathMenuButton.setDepth(200);
 
                         deathRetryButton = new Button({
@@ -1005,7 +1005,7 @@ class Player {
                                 deathRetryButton.destroy();
                             }
                         });
-                        deathRetryButton.addText('RETRY', {fontFamily: 'Garamond', fontSize: 34, color: '#000000', align: 'center'});
+                        deathRetryButton.addText('RETRY', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
                         deathRetryButton.setDepth(200);
                     }
                 });

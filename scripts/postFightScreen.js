@@ -21,22 +21,22 @@ class PostFightScreen {
             this.backing = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 30, 'ui', 'battleOverScreen.png').setDepth(100000).setAlpha(0);
         }
         if (!this.titleText) {
-            this.titleText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 255, '(placeholder title)', {fontFamily: 'Garamond', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.titleText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 255, '(placeholder title)', {fontFamily: 'garamondmax', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.spellsCastText) {
-            this.spellsCastText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 160, 'Spells Cast:', {fontFamily: 'Garamond', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.spellsCastText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 160, 'Spells Cast:', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.healthLeftText) {
-            this.healthLeftText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 130, 'Health Left:', {fontFamily: 'Garamond', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.healthLeftText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 130, 'Health Left:', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.codeText) {
-            this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 30, 'placeholder code: ', {fontFamily: 'Garamond', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
+            this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 30, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
         }
         if (!this.locketSprite) {
             this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 105, 'ui', 'locket1.png').setScale(0.75).setDepth(100002).setAlpha(0).setOrigin(0.5, 0.8);
         }
         if (!this.locketDialog) {
-            this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 220, '(placeholder story)', {fontFamily: 'Garamond', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
+            this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 220, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
         }
         if (!this.flashObj) {
             this.flashObj = this.scene.add.sprite(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'lowq', 'flash.webp').setScale(0).setRotation(-0.2).setDepth(100002).setAlpha(0.5);
@@ -415,13 +415,14 @@ class PostFightScreen {
                 "But I know you are here dear Rosemary,\nand no creature or construct will stop me\nfrom finding you."
             case 2:
                 return "The fabled Reaper has\nnoticed my presence, though\nthey have done nothing but\nwag their finger at me like a parent scolding their child.\n\n"+
-                "But there is still a long way to go,\nand I have a feeling this won't be the last time\nwe see each other.";
+                "But there is still a long way to go,\nand I have a feeling this won't be the last time\nwe see each other.\n\n"+
+                "In the mean-time, this shield I picked\nup from the fallen goblin should\ncome in handy.";
             case 3:
                 return "The creatures of this\nland are clearly hostile.\n\n"+
                 "But it seems that I acquire the\nstrength of each one I defeat.\n\n"+
-                "Perhaps if I triumph over enough foes, I can eventually\neven conquer Death itself!"
+                "Perhaps if I triumph over enough foes, I can\neven conquer Death itself!"
             case 4:
-                return "My magic grows with each\nnew foe defeated, but\nI must practice with it if\nI am to use it to its full potential.\n\n";
+                return "My power grows\nwith each new foe\ndefeated.\n\nBut I must practice with it if\nI am to use it to its full potential.\n\n";
             case 5:
                 return "The creatures of this\nland are sparse, but cruel\n, I've found the\ngates to the mystical\nland of the dead.\n\n"+
                 "Almost immediately I can feel\nthis place trying to resist my entry.\n\n"+

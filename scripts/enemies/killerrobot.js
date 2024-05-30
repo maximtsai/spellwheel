@@ -24,6 +24,16 @@
          this.shieldSprite.startScale = 3;
          this.lastAttackLingerMult = 1.75;
          this.attackSlownessMult = 1.25;
+        this.lightShineLeft = PhaserScene.add.sprite(gameConsts.halfWidth - 220, gameConsts.halfHeight - 320, 'lowq', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(-0.5);
+        this.lightShineLeftTop = PhaserScene.add.sprite(this.lightShineLeft.x, this.lightShineLeft.y, 'lowq', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineLeft.rotation);
+
+        this.lightShineRight = PhaserScene.add.sprite(gameConsts.halfWidth + 220, gameConsts.halfHeight - 320, 'lowq', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(0.5);
+        this.lightShineRightTop = PhaserScene.add.sprite(this.lightShineRight.x, this.lightShineRight.y, 'lowq', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineRight.rotation);
+        this.addToDestructibles(this.lightShineLeft);
+        this.addToDestructibles(this.lightShineLeftTop);
+        this.addToDestructibles(this.lightShineRight);
+        this.addToDestructibles(this.lightShineRightTop);
+
 
         this.laserCharge = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_charge.png').setDepth(11).setAlpha(0);
         this.laserHeart = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_blast.png').setDepth(11).setOrigin(0.5, 0.65).setAlpha(0);
@@ -110,6 +120,48 @@
                              rotation: 0,
                          });
                          this.tunnelBG.setFrame('tunnel3.png').setScale(1.02).setOrigin(0.5, 0.35);
+
+                        this.lightShineLeft.setAlpha(0.3).setScale(0.5);
+                        this.lightShineRight.setAlpha(0.3).setScale(0.5);
+                        this.lightShineLeftTop.setAlpha(1).setScale(0.5);
+                        this.lightShineRightTop.setAlpha(1).setScale(0.5);
+
+
+                        this.scene.tweens.add({
+                            targets: [this.lightShineLeft, this.lightShineLeftTop],
+                            duration: 500,
+                            rotation: -0.2,
+                            easeParams: [3],
+                            ease: 'Back.easeOut',
+                            scaleX: 1,
+                            scaleY: 1,
+                        });
+
+                        this.scene.tweens.add({
+                            targets: [this.lightShineRight,  this.lightShineRightTop],
+                            duration: 500,
+                            rotation: 0.2,
+                            easeParams: [1.5],
+                            ease: 'Back.easeOut',
+                            scaleX: 1,
+                            scaleY: 1,
+                        });
+
+                        this.scene.tweens.add({
+                            targets: [this.lightShineLeftTop,  this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
+                            duration: 1500,
+                            alpha: 0.4,
+                        });
+
+                         this.scene.tweens.add({
+                             targets: this.tunnelBG,
+                             duration: 500,
+                             alpha: 0.9,
+                             ease: 'Quad.easeOut',
+                             scaleX: 1,
+                             scaleY: 1,
+                         });
+
                          this.scene.tweens.add({
                              targets: this.tunnelBG,
                              duration: 500,
@@ -302,10 +354,11 @@
              [
                  // 0
                  {
-                     name: "SHINY SHIELD {" + this.nextShieldHealth + " ",
+                     name: "SHINE BRIGHT! {" + this.nextShieldHealth + " ",
                      block: this.nextShieldHealth,
                      chargeAmt: 600,
                      chargeMult: 15,
+                     isPassive: true,
                      damage: -1,
                      attackStartFunction: () => {
                          this.shieldAdded = true;
@@ -313,6 +366,36 @@
                          setTimeout(() => {
                              playSound('cutesy_up', 0.8);
                          }, 100);
+
+                        this.lightShineLeftTop.setDepth(999);
+                        this.lightShineRightTop.setDepth(999);
+
+                        this.scene.tweens.add({
+                            targets: [this.lightShineLeftTop,  this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
+                            ease: 'Cubic.easeOut',
+                            duration: 250,
+                            alpha: 1,
+                            scaleX: 2,
+                            scaleY: 2,
+                            onComplete: () => {
+                                setTimeout(() => {
+                                    globalObjects.bannerTextManager.setDialog(["The stage lights are blinding.", "-2 damage to your attacks."]);
+                                    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 20, 0);
+                                    globalObjects.bannerTextManager.showBanner(false);
+                                }, 250)
+                                this.scene.tweens.add({
+                                    targets: [this.lightShineLeftTop,  this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
+                                    duration: 1500,
+                                    alpha: 0.5,
+                                    scaleX: 1,
+                                    scaleY: 1,
+                                    onComplete: () => {
+
+                                    }
+                                });
+                            }
+                        });
+
                      },
                      attackFinishFunction: () => {
                          let scaleAmt = gameVars.isHardMode ? 40 : 25;
@@ -320,7 +403,7 @@
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
                      }
-                 }
+                 },
              ],
              [
                  // 1
@@ -1034,7 +1117,8 @@
             ease: 'Cubic.easeOut'
         });
         setTimeout(() => {
-             selfDestructText.setText("3").setScale(1.4);
+            selfDestructText.setText("3").setScale(1.4);
+            playSound('voca_hello_short');
             PhaserScene.tweens.add({
                 targets: selfDestructText,
                 scaleX: 1,
@@ -1042,8 +1126,9 @@
                 duration: 500,
                 ease: 'Cubic.easeOut'
             });
-         setTimeout(() => {
-             selfDestructText.setText("2").setScale(1.4);
+        setTimeout(() => {
+            selfDestructText.setText("2").setScale(1.4);
+            playSound('voca_hello_short');
             PhaserScene.tweens.add({
                 targets: selfDestructText,
                 scaleX: 1,
@@ -1051,8 +1136,9 @@
                 duration: 500,
                 ease: 'Cubic.easeOut'
             });
-             setTimeout(() => {
-                 selfDestructText.setText("1").setScale(1.4);
+            setTimeout(() => {
+                selfDestructText.setText("1").setScale(1.4);
+                playSound('voca_hello_short');
                 PhaserScene.tweens.add({
                     targets: selfDestructText,
                     scaleX: 1,
@@ -1061,7 +1147,10 @@
                     ease: 'Cubic.easeOut'
                 });
                  setTimeout(() => {
-                     selfDestructText.setText("GOODBYE!\n(die X3)\n ").setScale(1.4);
+                    let soundToKill = playSound('voca_hello');
+                    
+
+                    selfDestructText.setText("GOODBYE!\n(die X3)\n ").setScale(1.4);
                     PhaserScene.tweens.add({
                         targets: selfDestructText,
                         scaleX: 1.1,
@@ -1069,7 +1158,7 @@
                         duration: 500,
                         ease: 'Cubic.easeOut'
                     });
-                     selfDestructDesc.destroy();
+                    selfDestructDesc.destroy();
                     PhaserScene.tweens.add({
                         delay: 500,
                         targets: PhaserScene.cameras.main,
@@ -1077,6 +1166,7 @@
                         y: 3,
                         duration: 40,
                         onComplete: () => {
+                            soundToKill.volume = 0.1;
                             PhaserScene.tweens.add({
                                 targets: PhaserScene.cameras.main,
                                 x: -10,
@@ -1089,6 +1179,7 @@
                                         y: 6,
                                         duration: 50,
                                         onComplete: () => {
+                                            soundToKill.stop();
                                             PhaserScene.tweens.add({
                                                 targets: PhaserScene.cameras.main,
                                                 x: -2,

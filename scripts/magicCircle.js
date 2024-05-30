@@ -2525,6 +2525,8 @@ const ENABLE_KEYBOARD = true;
      }
 
     highlightRunes() {
+        this.errorBoxElement.setDepth(10000);
+        this.errorBoxEmbodiment.setDepth(10000);
         if (this.elements) {
             for (let i = 0; i < this.elements.length; i++) {
                 this.elements[i].glow.setDepth(10000);
@@ -2538,6 +2540,8 @@ const ENABLE_KEYBOARD = true;
     }
 
     unhighlightRunes() {
+        this.errorBoxElement.setDepth(121);
+        this.errorBoxEmbodiment.setDepth(121);
         if (this.elements) {
             for (let i = 0; i < this.elements.length; i++) {
                 this.elements[i].glow.setDepth(103);

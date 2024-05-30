@@ -19,16 +19,18 @@ class TextPopupManager {
         messageBus.subscribe('animateBlockNum', this.animateBlockNum.bind(this));
     }
 
-    setInfoText(x, y, newText, align = 'center') {
+    setInfoText(x, y, newText, align = 'center', useSmall) {
         this.infoText.x = x; this.infoText.y = y;
         this.infoText.setAlpha(0);
         this.infoBox.setAlpha(0);
         this.infoBox.x = x; this.infoBox.y = y;
         this.infoText.setText(newText);
+        let multScale = useSmall ? 0.9 : 1;
+        this.infoText.setScale(multScale);
         this.infoText.setAlign(align);
         let boxWidth = this.infoText.width * 0.5 + 8;
         let boxHeight = this.infoText.height * 0.5 + 6;
-        this.infoBox.setScale(boxWidth, boxHeight);
+        this.infoBox.setScale(boxWidth * multScale, boxHeight * multScale);
         this.scene.tweens.add({
             targets: [this.infoText],
             alpha: 1,

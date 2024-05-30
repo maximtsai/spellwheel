@@ -67,7 +67,6 @@ class SpellRecorder {
     }
 
     handleRecordSpell(textObj, spellID, spellName, bonusSize = 0, bonusText1, bonusText2) {
-            console.log("bonus " + bonusText1)
         // this.castHistory.push(spellName);
         textObj.setText(spellName);
         let extraScale = bonusSize;

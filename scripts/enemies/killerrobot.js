@@ -327,6 +327,7 @@
                  {
                      name: "ERROR: SHIELD MISSING",
                      chargeAmt: 500,
+                     isPassive: true,
                      damage: 0,
                      startFunction: () => {
                         playSound('robot_sfx_1');
@@ -359,6 +360,7 @@
                      name: "REBOOTING {" + this.nextShieldHealth + " ",
                      chargeAmt: gameVars.isHardMode ? 1000 : 1200,
                      block: this.nextShieldHealth,
+                     isPassive: true,
                      chargeMult: 5,
                      damage: -1,
                      startFunction: () => {
@@ -731,6 +733,7 @@
                  // 7
                  {
                      name: "EMERGENCY SHIELD {50",
+                     isPassive: true,
                      chargeAmt: 500,
                      block: 50,
                      chargeMult: 5,
@@ -839,6 +842,7 @@
                  },
                  {
                      name: "}2",
+                     isPassive: true,
                      chargeAmt: 1000,
                      damage: 2,
                      startFunction: () => {

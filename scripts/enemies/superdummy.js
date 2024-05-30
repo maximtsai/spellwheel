@@ -588,6 +588,7 @@
                  {
                      name: "BUFF UP",
                      chargeAmt: 900,
+                     isPassive: true,
                      damage: -1,
                      chargeMult: 1.5,
                      startFunction: () => {
@@ -798,6 +799,7 @@
                  },
                  {
                      name: "BUFF UP",
+                     isPassive: true,
                      chargeAmt: 900,
                      damage: -1,
                      chargeMult: 1.5,

@@ -457,7 +457,7 @@ class Player {
     }
 
     getRecentlyTakenDamageAmt() {
-        return this.recentlyTakenDamageAmt;
+        return this.recentlyTakenDamageAmt + this.recentlyTakenDelayedDamageAmt;
     }
 
     takeDamage(amt) {
@@ -535,10 +535,15 @@ class Player {
         let maxHealAmt = this.lastInjuryHealth - this.health;
 
         let healAmt = Math.ceil(percent * (this.recentlyTakenDamageAmt + this.recentlyTakenDelayedDamageAmt));
-        this.recentlyTakenDamageAmt -= healAmt;
+        this.recentlyTakenDamageAmt = this.recentlyTakenDamageAmt - healAmt;
+        if (this.recentlyTakenDamageAmt < 0) {
+            this.recentlyTakenDelayedDamageAmt -= Math.abs(this.recentlyTakenDamageAmt);
+            this.recentlyTakenDamageAmt = 0;
+        }
         let overflowHeal = 0;
         if (healAmt > maxHealAmt) {
             overflowHeal = healAmt - maxHealAmt;
+            // this.recentlyTakenDelayedDamageAmt -= overflowHeal;
             healAmt = maxHealAmt;
         }
         this.selfHeal(healAmt, true);

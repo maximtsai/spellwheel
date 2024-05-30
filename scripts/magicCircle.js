@@ -2126,6 +2126,7 @@ const ENABLE_KEYBOARD = true;
 
      reduceDelayedDamage(amt) {
          this.delayedDamage = Math.max(0, this.delayedDamage - amt);
+         globalObjects.player.recentlyTakenDelayedDamageAmt = Math.max(0, globalObjects.player.recentlyTakenDelayedDamageAmt - amt);
         if (amt > 0) {
             let textScale = 0.75 + (0.18 * Math.sqrt(Math.abs(amt)) + 0.035 * Math.abs(amt));
 

@@ -425,7 +425,7 @@ class Enemy {
                         this.attackCharge += timeChange * 0.35 * this.slowMult * chargeMult;
                     } else {
                         this.chargeBarCurr.alpha = 0.8;
-                        this.attackCharge += timeChange * 0.125 * this.slowMult * chargeMult;
+                        this.attackCharge += timeChange * 0.15 * this.slowMult * chargeMult;
                     }
 
                 }
@@ -552,10 +552,17 @@ class Enemy {
         }
     }
 
+    setDefense(amt) {
+        this.defense = amt;
+    }
+
     adjustDamageTaken(amt, isAttack, isTrue = false) {
-        if (isAttack && this.statuses['mindStrike'] && amt > 0 && !isTrue) {
+        if (this.defense && isAttack && !isTrue) {
+            amt = Math.max(0, amt - this.defense);
+        }
+        if (isAttack && this.statuses['mindStrike'] && !isTrue) {
             this.statuses['mindStrike'].cleanUp(this.statuses);
-            let damageToTake = Math.ceil(amt * 1);
+            let damageToTake = Math.ceil(amt);
             setTimeout(() => {
                 this.takeTrueDamage(damageToTake);
             }, 0);
@@ -1362,7 +1369,7 @@ class Enemy {
             
         setTimeout(()=> {
             this.sprite.clearTint();
-        } ,40 + amt * 20); 
+        }, 50 + amt * 20); 
 
         let extraTimeMult = 2 - gameVars.timeSlowRatio;
         PhaserScene.tweens.add({

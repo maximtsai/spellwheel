@@ -95,11 +95,11 @@ const ENABLE_KEYBOARD = true;
             let extraOverload = this.delayedDamage - this.delayedDamageCurrCap;
             if (this.delayedDamage > this.delayedDamageCurrCap * 1.25) {
                 // way overflow
-                this.delayDamageSand.x += Math.random() * extraOverload * 0.03;
+                this.delayDamageSandFull.x += Math.random() * extraOverload * 0.03;
             }
-            this.delayDamageSand.x = this.delayDamageSand.origX + (this.delayDamageSand.origX - this.delayDamageSand.x) * 0.75;
-            this.delayDamageSand.x += Math.random() * (extraOverload * 0.12 + 0.5);
-            this.delayDamageHourglass.x = this.delayDamageSand.x;
+            this.delayDamageSandFull.x = this.delayDamageSandFull.origX + (this.delayDamageSandFull.origX - this.delayDamageSandFull.x) * 0.75;
+            this.delayDamageSandFull.x += Math.random() * (extraOverload * 0.12 + 0.5);
+            this.delayDamageHourglass.x = this.delayDamageSandFull.x;
         }
 
         if (ENABLE_KEYBOARD && !this.outerDragDisabled && !this.innerDragDisabled) {
@@ -373,8 +373,7 @@ const ENABLE_KEYBOARD = true;
         this.keyboardRotateInner = 0;
         this.keyboardCasted = false;
         this.delayedDamage = 0;
-        this.delayedDamageCurrCap = 80;
-        this.delayedDamageCurrMax = this.delayedDamageCurrCap * 0.5;
+        this.delayedDamageCurrCap = 60;
         this.delayedDamageShouldTick = false;
     }
 
@@ -401,20 +400,25 @@ const ENABLE_KEYBOARD = true;
         this.voidArm2.alpha = 0;
         this.voidArm2.bonusRotation = 0;
 
-        this.delayDamageSand = scene.add.sprite(x - 200, y - 195, 'circle', 'delayed_damage_amt.png');
-        this.delayDamageHourglass = scene.add.sprite(x - 240, y - 120, 'circle', 'delayed_damage.png');
 
-        this.delayDamageSand.setDepth(101);
-        this.delayDamageSand.alpha = 0;
-        this.delayDamageSand.origX = this.delayDamageSand.x;
+        this.delayDamagePartial = scene.add.graphics().setDepth(101)
+        this.delayDamagePartial.fillStyle(0xff0000, 0.7)
 
-        this.delayDamageText = this.scene.add.bitmapText(x - 200, y - 203, 'damage', '0', 48, 0);
+        this.delayDamageSandFull = scene.add.sprite(x - 240, y - 130, 'circle', 'delayed_damage_full.png');
+        this.delayDamageHourglass = scene.add.sprite(x - 240, y - 130, 'circle', 'delayed_damage.png');
+        this.delayDamageHourglass.setDepth(101);
+        this.delayDamageHourglass.alpha = 0;
+
+        this.delayDamageSandFull.setDepth(101);
+        this.delayDamageSandFull.alpha = 0;
+        this.delayDamageSandFull.origX = this.delayDamageSandFull.x;
+
+        this.delayDamageText = this.scene.add.bitmapText(this.delayDamageHourglass.x, this.delayDamageHourglass.y, 'damage', '0', 48, 0);
         this.delayDamageText.setDepth(101);
         this.delayDamageText.alpha = 0;
         this.delayDamageText.setOrigin(0.5, -0.35);
 
-        this.delayDamageHourglass.setDepth(101);
-        this.delayDamageHourglass.alpha = 0;
+
 
         this.outerCircle = scene.add.sprite(x, y, 'circle', 'usage_normal.png')
         this.outerCircle.setDepth(101);
@@ -1965,24 +1969,37 @@ const ENABLE_KEYBOARD = true;
      handleStatusesTicked() {
         if (this.delayedDamage > 0) {
             if (this.delayedDamageShouldTick) {
-                if (this.delayedDamage < this.delayedDamageCurrCap) {
-                    this.delayDamageSand.setAlpha(0.75);
-                }
+                let baseDelayAmt = 60;
+                let scale = 0.5 + 0.1 * Math.floor(this.delayedDamage / baseDelayAmt);
+                this.delayDamageHourglass.setScale(scale);
+                this.delayDamageSandFull.setScale(0);
+                let closestBase = Math.floor(this.delayedDamage / baseDelayAmt) * baseDelayAmt;
+                let extraDelayedTickDamage = this.delayedDamage - closestBase;
+
                 this.tickDelayedDamage();
+                let rotateAmt = this.delayedDamage / this.delayedDamageCurrCap * 6.283 - 1.5708;
+                let xPos = this.delayDamageHourglass.x;
+                let yPos = this.delayDamageHourglass.y;
+                let size = 98 * this.delayDamageHourglass.scaleX;
+                this.delayDamagePartial.clear();
+                this.delayDamagePartial.slice(xPos, yPos, size, -1.5708, rotateAmt, false)
+                this.delayDamagePartial.fillPath();
+
 
 
                 this.delayedDamageShouldTick = false;
                 if (this.delayedDamage <= 0) {
+                    this.delayDamagePartial.clear();
+                    // this.delayDamagePartial.visible = false;
                     this.scene.tweens.add({
                         delay: 100,
-                        targets: [this.delayDamageHourglass, this.delayDamageSand, this.delayDamageText],
+                        targets: [this.delayDamageHourglass, this.delayDamageSandFull, this.delayDamageText],
                         ease: 'Back.easeIn',
                         scaleX: 0,
                         scaleY: 0,
                         duration: 400,
                         alpha: 0
                     });
-                    this.delayedDamageCurrMax = this.delayedDamageCurrCap * 0.5;
                 }
             } else {
                 this.delayedDamageShouldTick = true;
@@ -1993,7 +2010,7 @@ const ENABLE_KEYBOARD = true;
      tickDelayedDamage(amt = 1) {
          this.delayedDamage -= amt;
          this.delayDamageText.setText(this.delayedDamage);
-         this.delayDamageSand.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageCurrCap));
+         // this.delayDamageSandFull.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageCurrCap));
          messageBus.publish('selfTakeTrueDamage', amt);
      }
 
@@ -2070,9 +2087,6 @@ const ENABLE_KEYBOARD = true;
 
          if (this.delayedDamage > 0) {
              this.delayDamageText.setText(this.delayedDamage);
-             if (this.delayedDamage > this.delayedDamageCurrMax) {
-                 this.delayedDamageCurrMax = this.delayedDamage;
-             }
              let scaleAmtTotal = 0.5;
             let textScaleFinal = Math.sqrt(scaleAmtTotal * 2) * 0.75;
              if (oldDelayedDamage <= 0) {
@@ -2081,12 +2095,27 @@ const ENABLE_KEYBOARD = true;
                  this.delayDamageText.setScale(textScaleFinal - 0.3);
 
                  this.delayDamageHourglass.setRotation(0.5);
-                 this.delayDamageSand.setRotation(0.5);
                  this.delayDamageHourglass.setAlpha(0.5);
                  this.delayDamageText.setAlpha(0.5);
-                 this.delayDamageSand.setAlpha(0.5);
+
+
+                let rotateAmt = this.delayedDamage / this.delayedDamageCurrCap * 6.283 - 1.5708;
+                let xPos = this.delayDamageHourglass.x;
+                let yPos = this.delayDamageHourglass.y;
+                let size = 98 * scaleAmtTotal;
+                this.delayDamagePartial.clear();
+                this.delayDamagePartial.slice(xPos, yPos, size, -1.5708, rotateAmt, false)
+                this.delayDamagePartial.fillPath();
+                this.delayDamagePartial.setAlpha(0);
+
+                this.scene.tweens.add({
+                     targets: [this.delayDamagePartial],
+                     duration: 400,
+                     alpha: 1
+                 });
+
                  this.scene.tweens.add({
-                     targets: [this.delayDamageHourglass, this.delayDamageText, this.delayDamageSand],
+                     targets: [this.delayDamageHourglass, this.delayDamageText],
                      ease: 'Cubic.easeOut',
                      rotation: 0,
                      scaleX: "+= 0.3",
@@ -2114,12 +2143,29 @@ const ENABLE_KEYBOARD = true;
                      duration: 250,
                      alpha: 1
                  });
+
+                let rotateAmt = this.delayedDamage / this.delayedDamageCurrCap * 6.283 - 1.5708;
+                let xPos = this.delayDamageHourglass.x;
+                let yPos = this.delayDamageHourglass.y;
+                let size = 98 * scaleAmtTotal;
+                this.delayDamagePartial.clear();
+                this.delayDamagePartial.slice(xPos, yPos, size, -1.5708, rotateAmt, false)
+                this.delayDamagePartial.fillPath();
+                this.delayDamagePartial.setAlpha(0);
+
+                this.scene.tweens.add({
+                     targets: [this.delayDamagePartial],
+                     duration: 400,
+                     alpha: 1
+                });
+
+
              }
 
 
-             if (this.delayedDamage > 100) {
-                 this.delayDamageSand.setAlpha(1);
-             }
+             // if (this.delayedDamage > 60) {
+             //     this.delayDamageSandFull.setAlpha(1);
+             // }
          }
          return this.delayedDamage;
      }
@@ -2128,7 +2174,7 @@ const ENABLE_KEYBOARD = true;
          this.delayedDamage = Math.max(0, this.delayedDamage - amt);
         // globalObjects.player.recentlyTakenDelayedDamageAmt = Math.max(0, globalObjects.player.recentlyTakenDelayedDamageAmt - amt);
         if (amt > 0) {
-            let textScale = 0.75 + (0.4 * Math.sqrt(Math.abs(amt)) + 0.01 * Math.abs(amt));
+            let textScale = Math.min(1.25, 0.5 + (0.2 * Math.sqrt(Math.abs(amt))));
 
             messageBus.publish('animateHealNum', this.delayDamageText.x - 1, this.delayDamageText.y - 50, '+' + amt, 0.5 + textScale);
         }
@@ -2136,24 +2182,21 @@ const ENABLE_KEYBOARD = true;
             this.removeDelayedDamage();
          } else {
              this.delayDamageText.setText(this.delayedDamage);
-             this.delayDamageSand.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageCurrCap));
          }
      }
 
      removeDelayedDamage() {
          this.delayedDamage = 0;
          this.delayDamageText.setText(this.delayedDamage);
-         this.delayDamageSand.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageCurrCap));
          this.scene.tweens.add({
              delay: 100,
-             targets: [this.delayDamageHourglass, this.delayDamageSand, this.delayDamageText],
+             targets: [this.delayDamageHourglass, this.delayDamageSandFull, this.delayDamageText],
              ease: 'Back.easeIn',
              scaleX: 0,
              scaleY: 0,
              duration: 400,
              alpha: 0
          });
-         this.delayedDamageCurrMax = this.delayedDamageCurrCap * 0.5;
      }
 
      setTempRotObjs(obj, rotation) {

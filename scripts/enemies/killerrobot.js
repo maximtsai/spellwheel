@@ -378,6 +378,7 @@
                             scaleX: 2,
                             scaleY: 2,
                             onComplete: () => {
+                                this.setDefense(2);
                                 setTimeout(() => {
                                     globalObjects.bannerTextManager.setDialog(["The stage lights are blinding.", "-2 damage to your attacks."]);
                                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 20, 0);

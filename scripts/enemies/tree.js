@@ -616,7 +616,7 @@
                      }
                  },
                  {
-                     name: "|4x5 ",
+                     name: "|4x4 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
                      chargeAmt: 750,
@@ -626,14 +626,14 @@
                          playSound('tree_sfx');
                      },
                      attackFinishFunction: () => {
-                         for (let i = 0; i < 5; i++) {
-                             let xPos = gameConsts.halfWidth + -200 + i * 100;
+                         for (let i = 0; i < 4; i++) {
+                             let xPos = gameConsts.halfWidth + -150 + i * 100;
                              let yPos = 75 + Math.random() * 40;
                              this.createLeafObject('tree_leaf.webp', xPos, yPos, i * 25);
                          }
                          setTimeout(() => {
                              this.fireObjects(4);
-                         }, 300);
+                         }, 250);
                      }
                  },
              ],

@@ -2007,7 +2007,9 @@ const ENABLE_KEYBOARD = true;
                 let scale = this.getDelayedDamageClockScale();
                 this.plainUpdateDelayedDamageVisual(scale);
 
-                this.delayedDamageShouldTick = false;
+                if (this.delayedDamage <= this.delayedDamageBase) {
+                    this.delayedDamageShouldTick = false;
+                }
                 if (this.delayedDamage <= 0) {
                     this.clearClock()
                 }
@@ -2371,6 +2373,7 @@ const ENABLE_KEYBOARD = true;
              this.mindBurnTween.stop();
          }
          this.mindBurnAnim.alpha = 0.5;
+         let damageDealt = gameVars.mindPlus ? 3 : 2;
          this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * duration);
          effectObj = {
              name: effectName,
@@ -2380,7 +2383,7 @@ const ENABLE_KEYBOARD = true;
                  if (effectObj) {
                      if (effectObj.firstTicked) {
                          this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * effectObj.duration);
-                         messageBus.publish('enemyTakeTrueDamage', 2, false);
+                         messageBus.publish('enemyTakeTrueDamage', damageDealt, false);
                      } else {
                          effectObj.firstTicked = true;
                      }

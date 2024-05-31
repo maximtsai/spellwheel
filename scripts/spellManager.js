@@ -1517,20 +1517,16 @@ class SpellManager {
         let multiplier = globalObjects.player.spellMultiplier();
 
         if (existingBuff) {
-            if (gameVars.mindPlus) {
-                multiplier += existingBuff.multiplier;
-                let newScale = 0.25 + multiplier * 0.1;
-                mindObj = existingBuff.animObj;
-                this.scene.tweens.add({
-                    targets: mindObj,
-                    duration: 300,
-                    ease: 'back.easeOut',
-                    scaleX: newScale,
-                    scaleY: newScale,
-                });
-            } else {
-                existingBuff.cleanUp(globalObjects.player.getStatuses());
-            }
+            multiplier += existingBuff.multiplier;
+            let newScale = 0.25 + multiplier * 0.1;
+            mindObj = existingBuff.animObj;
+            this.scene.tweens.add({
+                targets: mindObj,
+                duration: 300,
+                ease: 'back.easeOut',
+                scaleX: newScale,
+                scaleY: newScale,
+            });
         }
         playSound('mind_enhance');
         let mindObj = this.scene.add.sprite(gameConsts.halfWidth +205, gameConsts.height - 295, 'spells').play('mindBurnSlow').setDepth(11).setScale(0);
@@ -2534,7 +2530,7 @@ class SpellManager {
                     y: 140,
                     duration: 400,
                     onComplete: () => {
-                        let mult = gameVars.mindPlus ? 5 : 4;
+                        let mult = 5;
                         messageBus.publish('applyMindBurn', mult * mindAttackBuff.multiplier);
                         mindAttackBuff.cleanUp(globalObjects.player.getStatuses());
                     }

@@ -91,9 +91,9 @@ const ENABLE_KEYBOARD = true;
             return;
         }
 
-        if (this.delayedDamage > this.delayedDamageCurrCap) {
-            let extraOverload = this.delayedDamage - this.delayedDamageCurrCap;
-            if (this.delayedDamage > this.delayedDamageCurrCap * 1.25) {
+        if (this.delayedDamage > this.delayedDamageBase) {
+            let extraOverload = this.delayedDamage - this.delayedDamageBase;
+            if (this.delayedDamage > this.delayedDamageBase * 1.25) {
                 // way overflow
                 this.delayDamageSandFull.x += Math.random() * extraOverload * 0.03;
             }
@@ -373,7 +373,7 @@ const ENABLE_KEYBOARD = true;
         this.keyboardRotateInner = 0;
         this.keyboardCasted = false;
         this.delayedDamage = 0;
-        this.delayedDamageCurrCap = 60;
+        this.delayedDamageBase = 60;
         this.delayedDamageShouldTick = false;
     }
 
@@ -403,6 +403,7 @@ const ENABLE_KEYBOARD = true;
 
         this.delayDamagePartial = scene.add.graphics().setDepth(101)
         this.delayDamagePartial.fillStyle(0xff0000, 0.7)
+        this.delayDamagePartial.visible = false;
 
         this.delayDamageSandFull = scene.add.sprite(x - 240, y - 130, 'circle', 'delayed_damage_full.png');
         this.delayDamageHourglass = scene.add.sprite(x - 240, y - 130, 'circle', 'delayed_damage.png');
@@ -1965,41 +1966,50 @@ const ENABLE_KEYBOARD = true;
         });
     }
 
+    getDelayedDamageClockScale() {
+        return 0.5 + 0.1 * Math.floor(this.delayedDamage / this.delayedDamageBase);
+    }
+
+    plainUpdateDelayedDamageVisual(scale) {
+        this.delayDamageHourglass.setScale(scale);
+        this.delayDamageSandFull.setScale(0);
+        let closestBase = Math.floor(this.delayedDamage / this.delayedDamageBase) * this.delayedDamageBase;
+        let extraDelayedTickDamage = this.delayedDamage - closestBase;
+
+        let rotateAmt = this.delayedDamage / this.delayedDamageBase * 6.283 - 1.5708;
+        let xPos = this.delayDamageHourglass.x;
+        let yPos = this.delayDamageHourglass.y;
+        let size = 98 * this.delayDamageHourglass.scaleX;
+        this.delayDamagePartial.clear();
+        this.delayDamagePartial.slice(xPos, yPos, size, -1.5708, rotateAmt, false)
+        this.delayDamagePartial.fillPath();
+        this.delayDamagePartial.visible = true;
+    }
+
+    clearClock() {
+        this.delayDamagePartial.clear();
+        this.delayDamagePartial.visible = false;
+        this.scene.tweens.add({
+            delay: 100,
+            targets: [this.delayDamageHourglass, this.delayDamageSandFull, this.delayDamageText],
+            ease: 'Back.easeIn',
+            scaleX: 0,
+            scaleY: 0,
+            duration: 400,
+            alpha: 0
+        });
+    }
 
      handleStatusesTicked() {
         if (this.delayedDamage > 0) {
             if (this.delayedDamageShouldTick) {
-                let baseDelayAmt = 60;
-                let scale = 0.5 + 0.1 * Math.floor(this.delayedDamage / baseDelayAmt);
-                this.delayDamageHourglass.setScale(scale);
-                this.delayDamageSandFull.setScale(0);
-                let closestBase = Math.floor(this.delayedDamage / baseDelayAmt) * baseDelayAmt;
-                let extraDelayedTickDamage = this.delayedDamage - closestBase;
-
                 this.tickDelayedDamage();
-                let rotateAmt = this.delayedDamage / this.delayedDamageCurrCap * 6.283 - 1.5708;
-                let xPos = this.delayDamageHourglass.x;
-                let yPos = this.delayDamageHourglass.y;
-                let size = 98 * this.delayDamageHourglass.scaleX;
-                this.delayDamagePartial.clear();
-                this.delayDamagePartial.slice(xPos, yPos, size, -1.5708, rotateAmt, false)
-                this.delayDamagePartial.fillPath();
-
-
+                let scale = this.getDelayedDamageClockScale();
+                this.plainUpdateDelayedDamageVisual(scale);
 
                 this.delayedDamageShouldTick = false;
                 if (this.delayedDamage <= 0) {
-                    this.delayDamagePartial.clear();
-                    // this.delayDamagePartial.visible = false;
-                    this.scene.tweens.add({
-                        delay: 100,
-                        targets: [this.delayDamageHourglass, this.delayDamageSandFull, this.delayDamageText],
-                        ease: 'Back.easeIn',
-                        scaleX: 0,
-                        scaleY: 0,
-                        duration: 400,
-                        alpha: 0
-                    });
+                    this.clearClock()
                 }
             } else {
                 this.delayedDamageShouldTick = true;
@@ -2010,7 +2020,7 @@ const ENABLE_KEYBOARD = true;
      tickDelayedDamage(amt = 1) {
          this.delayedDamage -= amt;
          this.delayDamageText.setText(this.delayedDamage);
-         // this.delayDamageSandFull.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageCurrCap));
+         // this.delayDamageSandFull.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageBase));
          messageBus.publish('selfTakeTrueDamage', amt);
      }
 
@@ -2087,7 +2097,7 @@ const ENABLE_KEYBOARD = true;
 
          if (this.delayedDamage > 0) {
              this.delayDamageText.setText(this.delayedDamage);
-             let scaleAmtTotal = 0.5;
+             let scaleAmtTotal = this.getDelayedDamageClockScale();
             let textScaleFinal = Math.sqrt(scaleAmtTotal * 2) * 0.75;
              if (oldDelayedDamage <= 0) {
                  // animation in
@@ -2099,7 +2109,7 @@ const ENABLE_KEYBOARD = true;
                  this.delayDamageText.setAlpha(0.5);
 
 
-                let rotateAmt = this.delayedDamage / this.delayedDamageCurrCap * 6.283 - 1.5708;
+                let rotateAmt = this.delayedDamage / this.delayedDamageBase * 6.283 - 1.5708;
                 let xPos = this.delayDamageHourglass.x;
                 let yPos = this.delayDamageHourglass.y;
                 let size = 98 * scaleAmtTotal;
@@ -2107,6 +2117,7 @@ const ENABLE_KEYBOARD = true;
                 this.delayDamagePartial.slice(xPos, yPos, size, -1.5708, rotateAmt, false)
                 this.delayDamagePartial.fillPath();
                 this.delayDamagePartial.setAlpha(0);
+                this.delayDamagePartial.visible = true;
 
                 this.scene.tweens.add({
                      targets: [this.delayDamagePartial],
@@ -2121,19 +2132,23 @@ const ENABLE_KEYBOARD = true;
                      scaleX: "+= 0.3",
                      scaleY: "+= 0.3",
                      duration: 400,
-                     alpha: 1
+                     alpha: 1,
+                     onComplete: () => {
+                        let scale = this.getDelayedDamageClockScale();
+                        this.plainUpdateDelayedDamageVisual(scale)
+                     }
                  });
              } else {
                  // just animate scale
-                 this.scene.tweens.add({
-                     targets: [this.delayDamageHourglass],
-                     ease: 'Cubic.easeOut',
-                     rotation: 0,
-                     scaleX: scaleAmtTotal,
-                     scaleY: scaleAmtTotal,
-                     duration: 250,
-                     alpha: 1
-                 });
+                 // this.scene.tweens.add({
+                 //     targets: [this.delayDamageHourglass],
+                 //     ease: 'Cubic.easeOut',
+                 //     rotation: 0,
+                 //     scaleX: scaleAmtTotal,
+                 //     scaleY: scaleAmtTotal,
+                 //     duration: 250,
+                 //     alpha: 1
+                 // });
                  this.scene.tweens.add({
                      targets: [this.delayDamageText],
                      ease: 'Cubic.easeOut',
@@ -2143,21 +2158,8 @@ const ENABLE_KEYBOARD = true;
                      duration: 250,
                      alpha: 1
                  });
-
-                let rotateAmt = this.delayedDamage / this.delayedDamageCurrCap * 6.283 - 1.5708;
-                let xPos = this.delayDamageHourglass.x;
-                let yPos = this.delayDamageHourglass.y;
-                let size = 98 * scaleAmtTotal;
-                this.delayDamagePartial.clear();
-                this.delayDamagePartial.slice(xPos, yPos, size, -1.5708, rotateAmt, false)
-                this.delayDamagePartial.fillPath();
-                this.delayDamagePartial.setAlpha(0);
-
-                this.scene.tweens.add({
-                     targets: [this.delayDamagePartial],
-                     duration: 400,
-                     alpha: 1
-                });
+                let scale = this.getDelayedDamageClockScale();
+                this.plainUpdateDelayedDamageVisual(scale)
 
 
              }
@@ -2188,15 +2190,7 @@ const ENABLE_KEYBOARD = true;
      removeDelayedDamage() {
          this.delayedDamage = 0;
          this.delayDamageText.setText(this.delayedDamage);
-         this.scene.tweens.add({
-             delay: 100,
-             targets: [this.delayDamageHourglass, this.delayDamageSandFull, this.delayDamageText],
-             ease: 'Back.easeIn',
-             scaleX: 0,
-             scaleY: 0,
-             duration: 400,
-             alpha: 0
-         });
+         this.clearClock();
      }
 
      setTempRotObjs(obj, rotation) {

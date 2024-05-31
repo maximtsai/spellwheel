@@ -15,7 +15,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    matter_enhance_desc: {en_us: 'Next attack\nDeals +6\ndamage',
+    matter_enhance_desc: {en_us: 'Next attack\ngains +6\ndamage',
         fr: '',
         zh_cn: '下个攻击造成\n+6 点伤害',
         ru: '',
@@ -29,14 +29,14 @@ const textData = {
         es: '',
         jp: ''
     },
-    matter_reinforce_desc: {en_us: 'When attacked,\ntake 1 less\ndamage and deal\n1 damage back',
+    matter_reinforce_desc: {en_us: 'Gain thorns that\nprotect you and\nreflect 1 damage',
         fr: '',
         zh_cn: '',
         ru: '',
         es: '',
         jp: ''
     },
-    matter_unload_desc: {en_us: 'Deal 22 damage.\nBlock 22 damage\nfor the next\n5 seconds',
+    matter_unload_desc: {en_us: 'Deal 22 damage.\nGain 22 temporary\nprotection',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -51,7 +51,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    time_enhance_desc: {en_us: 'Next attack\nis cast an\nextra time',
+    time_enhance_desc: {en_us: 'Create an extra\ncopy of your\nnext attack',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -65,7 +65,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    time_reinforce_desc: {en_us: 'Heal 50% of your\nlast injury, then\nheal 50% your\ndelayed damage.',
+    time_reinforce_desc: {en_us: 'Heal 50% of your\nlast injury and\n50% of your\ndelayed damage.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -80,7 +80,7 @@ const textData = {
         jp: ''
     },
 
-    void_strike_desc: {en_us: 'Damage 2% enemy\ncurrent HP. Inflict\nthe same damage\n2 more times after\na delay.',
+    void_strike_desc: {en_us: 'Attack 3 times\nafter a delay,\neach attack\ndeals 2% enemy\ncurrent HP.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -101,7 +101,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    void_reinforce_desc: {en_us: 'Heal to full, but\nat the cost of\n20% max hp',
+    void_reinforce_desc: {en_us: 'Heal to full,\nbut lose\n20% max hp',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -116,21 +116,21 @@ const textData = {
         jp: ''
     },
 
-    mind_strike_desc: {en_us: 'Deal 1 damage.\nEnemy takes x2\ndamage from your\nnext attack',
+    mind_strike_desc: {en_us: 'Deal 1 damage.\nEnemy takes bonus\ndamage equal to\nyour next attack',
         fr: '',
         zh_cn: '',
         ru: '',
         es: '',
         jp: ''
     },
-    mind_enhance_desc: {en_us: 'Next attack deals\n10 damage over\n5 seconds.\n(Non-stacking)',
+    mind_enhance_desc: {en_us: 'Next attack burns\nenemy for 10\nbonus damage\nover 5 seconds',
         fr: '',
         zh_cn: '',
         ru: '',
         es: '',
         jp: ''
     },
-    mind_enhance_plus_desc: {en_us: 'Next attack deals\n15 damage over\n5 seconds',
+    mind_enhance_plus_desc: {en_us: 'Next attack burns\nenemy for 15\nbonus damage\nover 5 seconds',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -144,7 +144,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    mind_reinforce_desc: {en_us: 'Attacks deal\n+2 damage',
+    mind_reinforce_desc: {en_us: 'Attacks gain\n+2 damage',
         fr: '',
         zh_cn: '',
         ru: '',

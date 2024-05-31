@@ -436,7 +436,7 @@ function handleReaperDialog(level = 0, onComplete) {
     case 5:
         reaperDialog = [
             "YOU ARE PERSISTENT.",
-            "BUT UNDERSTAND THAT ONLY MISERY\nAWAITS AT THE END.",
+            "BUT UNDERSTAND THAT ONLY\nMISERY AWAITS AT THE END.",
         ];
         break;
     case 6:

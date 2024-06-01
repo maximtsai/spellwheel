@@ -8,7 +8,6 @@
 
          setTimeout(() => {
              globalObjects.magicCircle.disableMovement();
-
          }, 900);
          this.sprite.alpha = 0;
          this.sprite.setScale(this.sprite.startScale * 0.75);
@@ -34,6 +33,13 @@
         this.addToDestructibles(this.lightShineRight);
         this.addToDestructibles(this.lightShineRightTop);
 
+        this.minusDamage1 = this.scene.add.bitmapText(this.lightShineLeft.x, this.lightShineLeft.y + 5, 'block', '-DMG', 32, 1);
+        this.minusDamage1.setOrigin(0.5, -0.2).setAlpha(0).setDepth(12);
+        this.addToDestructibles(this.minusDamage1);
+        this.minusDamage2 = this.scene.add.bitmapText(this.lightShineRight.x, this.lightShineRight.y + 5, 'block', '-DMG', 32, 1);
+        this.minusDamage2.setOrigin(0.5, -0.2).setAlpha(0).setDepth(12);
+        this.addToDestructibles(this.minusDamage2);
+
 
         this.laserCharge = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_charge.png').setDepth(11).setAlpha(0);
         this.laserHeart = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_blast.png').setDepth(11).setOrigin(0.5, 0.65).setAlpha(0);
@@ -52,7 +58,6 @@
              ease: 'Quad.easeOut',
          });
          this.scene.tweens.add({
-             delay: 250,
              targets: this.eyeShine,
              y: this.y - 58,
              duration: 500,
@@ -66,7 +71,7 @@
              onComplete: () => {
                  this.scene.tweens.add({
                      targets: this.eyeShine,
-                     duration: 2000,
+                     duration: 2200,
                      y: this.y - 67,
                      alpha: 1,
                      scaleX: this.sprite.startScale * 1.2,
@@ -240,7 +245,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 500 : 400;
+         this.health = gameVars.isHardMode ? 500 : 360;
          this.nextShieldHealth = 100;
          this.shieldsBroken = 0;
          this.missileObjects = [];
@@ -276,43 +281,78 @@
              }
          }
          if (this.health < 200 && !this.scratched) {
-             this.scratched = true;
-             this.baseBGAlpha = -0.15;
+            this.scratched = true;
+            this.baseBGAlpha = -0.15;
+            this.lightShineLeftTop.alpha = 0.55;
+            this.lightShineRightTop.alpha = 0.55;
+            this.scene.tweens.add({
+                targets: [this.lightShineLeftTop,  this.lightShineRightTop],
+                 ase: 'Quad.easeOut',
+                duration: 1500,
+                alpha: 0.3,
+            });
          }
-         if (this.health < 100 && !this.emergency) {
-             this.baseBGAlpha = -0.25;
-             this.scene.tweens.add({
-                 targets: this.tunnelBG,
-                 duration: 1000,
-                 alpha: 0.4,
-                 ease: 'Quad.easeOut',
-                 onComplete: () => {
-                     this.tunnelBG.setAlpha(0.85);
-                     setTimeout(() => {
-                         this.tunnelBG.setAlpha(0.6);
-                         setTimeout(() => {
-                             this.tunnelBG.setAlpha(0.7);
-                             setTimeout(() => {
-                                 this.tunnelBG.setAlpha(0.4);
-                             }, 200);
-                         }, 700);
-                     }, 50);
-                 }
-             });
-             this.attackEase = "Quad.easeOut";
-             this.returnEase = "Cubic.easeIn";
-             this.blush.visible = false;
-             this.eyeShine.visible = false;
-             this.emergency = true;
-             this.interruptCurrentAttack();
-             this.setDefaultSprite('robot_broken.png');
-             this.sprite.y = this.sprite.startY;
-             playSound('voca_pain', 0.9);
-             playSound('clunk2', 1.2);
-             this.currentAttackSetIndex = 7;
-             this.nextAttackIndex = 0;
+         if (this.health < 80 && !this.emergency) {
+            this.startInjuredSequence();
          }
      }
+
+
+    startInjuredSequence() {
+        if (this.emergency) {
+            return;
+        }
+        this.emergency = true;
+         this.baseBGAlpha = -0.25;
+         this.scene.tweens.add({
+             targets: this.tunnelBG,
+             duration: 1000,
+             alpha: 0.4,
+             ease: 'Quad.easeOut',
+             onComplete: () => {
+                 this.tunnelBG.setAlpha(0.85);
+                 setTimeout(() => {
+                     this.tunnelBG.setAlpha(0.6);
+                     setTimeout(() => {
+                         this.tunnelBG.setAlpha(0.7);
+                         setTimeout(() => {
+                             this.tunnelBG.setAlpha(0.4);
+                         }, 200);
+                     }, 700);
+                 }, 50);
+             }
+         });
+         this.attackEase = "Quad.easeOut";
+         this.returnEase = "Cubic.easeIn";
+         this.blush.visible = false;
+         this.eyeShine.visible = false;
+         this.interruptCurrentAttack();
+         this.setDefaultSprite('robot_broken.png');
+        if (this.shineAnim) {
+            this.shineAnim.stop();
+        }
+        PhaserScene.tweens.add({
+             targets: [this.minusDamage1, this.minusDamage2, this.lightShineLeft, this.lightShineLeftTop, this.lightShineRight, this.lightShineRightTop],
+             duration: 2000,
+             alpha: 0,
+             ease: 'Quad.easeOut',
+         });
+        this.setDefense(0);
+        this.bgMusic.detune = -600;
+        setVolume(this.bgMusic, 0.25, 1000)
+
+        setTimeout(() => {
+            globalObjects.bannerTextManager.setDialog(["The stage lights are off."]);
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+            globalObjects.bannerTextManager.showBanner(false);
+        }, 1000)
+
+        this.sprite.y = this.sprite.startY;
+        playSound('voca_pain', 0.9);
+        playSound('clunk2', 1.2);
+        this.currentAttackSetIndex = 7;
+        this.nextAttackIndex = 0;
+    }
 
      cleanUpTweens() {
          if (this.backgroundTween) {
@@ -335,13 +375,21 @@
          this.tunnelBG.setAlpha(0.81 + extraAlpha + this.baseBGAlpha);
          this.currBGAnim = this.scene.tweens.add({
              targets: this.tunnelBG,
-             duration: 550 * durationMult,
-             alpha: 0.785 + this.baseBGAlpha,
+             duration: 800 * durationMult,
+             alpha: 0.76 + this.baseBGAlpha,
              ease: 'Cubic.easeOut',
              onComplete: () => {
                  this.animateBG();
              }
          });
+        this.minusDamage2.setRotation(this.minusDamage1.rotation);
+        this.minusDamage1.setRotation(this.minusDamage1.rotation * -1);
+
+        if (this.sprite.frame.name == "robot1.png") {
+            this.sprite.setFrame('robot2.png')
+        } else if (this.sprite.frame.name == "robot2.png") {
+            this.sprite.setFrame('robot1.png')
+        }
      }
 
      refreshAnimateBG(durMult, alpha) {
@@ -369,6 +417,8 @@
 
                         this.lightShineLeftTop.setDepth(999);
                         this.lightShineRightTop.setDepth(999);
+                        this.minusDamage1.setDepth(999);
+                        this.minusDamage2.setDepth(999);
 
                         this.scene.tweens.add({
                             targets: [this.lightShineLeftTop,  this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
@@ -381,7 +431,10 @@
                                 this.setDefense(2);
                                 setTimeout(() => {
                                     globalObjects.bannerTextManager.setDialog(["The stage lights are blinding.", "-2 damage to your attacks."]);
-                                    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 20, 0);
+                                    this.minusDamage1.setAlpha(0.5).setRotation(0.12);
+                                    this.minusDamage2.setAlpha(0.5).setRotation(-0.12);
+
+                                    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                                     globalObjects.bannerTextManager.showBanner(false);
                                 }, 250)
                                 this.scene.tweens.add({
@@ -390,9 +443,6 @@
                                     alpha: 0.5,
                                     scaleX: 1,
                                     scaleY: 1,
-                                    onComplete: () => {
-
-                                    }
                                 });
                             }
                         });
@@ -410,29 +460,34 @@
                  // 1
                  {
                      name: "ERROR: SHIELD MISSING",
-                     chargeAmt: 500,
+                     chargeAmt: 400,
                      isPassive: true,
                      damage: 0,
                      startFunction: () => {
-                        playSound('robot_sfx_1');
-                         this.shieldAdded = false;
-                         this.blushAnim = PhaserScene.tweens.add({
-                             targets: this.blush,
-                             scaleX: this.sprite.startScale,
-                             scaleY: this.sprite.startScale,
-                             alpha: 0.5,
-                             ease: 'Back.easeOut',
-                             duration: 350,
-                             onComplete: () => {
-                                 this.blushAnim = PhaserScene.tweens.add({
-                                     targets: this.blush,
-                                     alpha: 1,
-                                     duration: 3000,
-                                 })
-                             }
-                         });
-                         this.attackEase = "Quad.easeOut";
-                         this.returnEase = "Cubic.easeIn";
+                        if (this.health >= 80) {
+                            this.setDefaultSprite('robot1.png', undefined, true);
+                            playSound('robot_sfx_1');
+                            this.shieldAdded = false;
+                            this.blushAnim = PhaserScene.tweens.add({
+                                 targets: this.blush,
+                                 scaleX: this.sprite.startScale,
+                                 scaleY: this.sprite.startScale,
+                                 alpha: 0.5,
+                                 ease: 'Back.easeOut',
+                                 duration: 350,
+                                 onComplete: () => {
+                                     this.blushAnim = PhaserScene.tweens.add({
+                                         targets: this.blush,
+                                         alpha: 1,
+                                         duration: 3000,
+                                     })
+                                 }
+                             });
+                            this.attackEase = "Quad.easeOut";
+                            this.returnEase = "Cubic.easeIn";
+                        } else {
+                            this.startInjuredSequence()
+                        }
                      },
                      finaleFunction: () => {
                          if (this.blushAnim) {
@@ -441,45 +496,62 @@
                      }
                  },
                  {
-                     name: "REBOOTING {" + this.nextShieldHealth + " ",
+                     name: "SHINE BRIGHTER! {" + this.nextShieldHealth + " ",
                      chargeAmt: gameVars.isHardMode ? 1000 : 1200,
                      block: this.nextShieldHealth,
                      isPassive: true,
                      chargeMult: 5,
                      damage: -1,
                      startFunction: () => {
-                         this.pullbackScale = 0.99;
-                         this.attackScale = 1.03;
-                         let scaleAmt = gameVars.isHardMode ? 40 : 25;
-                         this.setDefaultSprite('robot_hide.png');
-                         playSound('voca_kya');
-                         this.sprite.rotation = 0.15;
-                         PhaserScene.tweens.add({
-                             targets: [this.sprite, this.blush],
-                             y: 240,
-                             ease: 'Cubic.easeIn',
-                             duration: 550,
-                             onComplete: () => {
-                                 playSound('clunk2');
-                                 setTimeout(() => {
-                                     playSound('clunk', 0.6);
+                        if (this.health < 80) {
+                            this.startInjuredSequence()
+                        } else {
+                            PhaserScene.tweens.add({
+                                 targets: [this.minusDamage1, this.minusDamage2, this.lightShineLeft, this.lightShineLeftTop, this.lightShineRight, this.lightShineRightTop],
+                                 duration: 2000,
+                                 alpha: 0.05,
+                                 ease: 'Quad.easeOut',
+                             });
+                            this.setDefense(0);
+                            setVolume(this.bgMusic, 0.35)
+                            this.bgMusic.detune = 500;
+
+
+                             this.pullbackScale = 0.99;
+                             this.attackScale = 1.03;
+                             let scaleAmt = gameVars.isHardMode ? 40 : 25;
+                             this.setDefaultSprite('robot_hide.png');
+                             playSound('voca_kya');
+                             this.sprite.rotation = 0.15;
+                             PhaserScene.tweens.add({
+                                 targets: [this.sprite, this.blush],
+                                 y: 240,
+                                 ease: 'Cubic.easeIn',
+                                 duration: 550,
+                                 onComplete: () => {
+                                     playSound('clunk2');
                                      setTimeout(() => {
-                                         playSound('clunk2', 0.3);
-                                     }, 200);
-                                 }, 500);
-                                 PhaserScene.tweens.add({
-                                     targets: this.sprite,
-                                     rotation: 0,
-                                     ease: 'Bounce.easeOut',
-                                     duration: 700,
-                                 })
-                             }
-                         })
+                                         playSound('clunk', 0.6);
+                                         setTimeout(() => {
+                                             playSound('clunk2', 0.3);
+                                         }, 200);
+                                     }, 500);
+                                     PhaserScene.tweens.add({
+                                         targets: this.sprite,
+                                         rotation: 0,
+                                         ease: 'Bounce.easeOut',
+                                         duration: 700,
+                                     })
+                                 }
+                             })
+                        }
                      },
                      attackStartFunction: () => {
-                         this.shieldAdded = true;
-                         this.shieldIgnoreGone = true;
-                         setTimeout(() => {
+                        if (this.health < 80) {
+                            this.startInjuredSequence();
+                        } else {
+                             this.shieldAdded = true;
+                             this.shieldIgnoreGone = true;
                              if (!this.dead && this.shieldAdded) {
                                  playSound('robot_sfx_1');
 
@@ -507,21 +579,58 @@
                                          }
                                      }
                                  });
-                             }
-                         }, 100);
+
+                                this.shineAnim = this.scene.tweens.add({
+                                    targets: [this.lightShineLeftTop,  this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
+                                    ease: 'Cubic.easeOut',
+                                    duration: 250,
+                                    alpha: 0.9,
+                                    scaleX: 1.9,
+                                    scaleY: 1.9,
+                                    onComplete: () => {
+                                        let dialogToSet = ["The stage lights shine\neven brighter.", "-4 damage to your attacks."];
+                                        if (!this.isShiningBrighter) {
+                                            this.isShiningBrighter = true;
+                                            this.setDefense(4);
+                                        } else {
+                                            dialogToSet = ["The stage lights are\nalready at max brightness."];
+                                        }
+                                        globalObjects.bannerTextManager.setDialog(dialogToSet);
+                                        this.minusDamage1.setAlpha(0.55).setRotation(0.14);
+                                        this.minusDamage2.setAlpha(0.55).setRotation(-0.14);
+                                        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                                        globalObjects.bannerTextManager.showBanner(false);
+                                        this.shineAnim = this.scene.tweens.add({
+                                            targets: [this.lightShineLeftTop, this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
+                                            duration: 1500,
+                                            alpha: 0.55,
+                                            scaleX: 1,
+                                            scaleY: 1,
+                                        });
+                                    }
+                                });
+                            }
+                        }
                      },
                      attackFinishFunction: () => {
-                         this.shieldIgnoreGone = false;
-                         if (this.shieldsBroken === 1) {
-                             this.currentAttackSetIndex = 4;
-                         } else if (this.shieldsBroken === 2) {
-                             this.currentAttackSetIndex = 5;
-                         } else if (this.shieldsBroken >= 3) {
-                             this.currentAttackSetIndex = 6;
-                         }
-                         this.nextAttackIndex = 0;
-                         this.pullbackScale = this.pullbackScaleDefault;
-                         this.attackScale = this.attackScaleDefault;
+                        if (this.health < 80) {
+                            this.startInjuredSequence()
+                        } else {
+                            setVolume(this.bgMusic, 0.85)
+                            this.bgMusic.detune = 0;
+
+                             this.shieldIgnoreGone = false;
+                             if (this.shieldsBroken === 1) {
+                                 this.currentAttackSetIndex = 4;
+                             } else if (this.shieldsBroken === 2) {
+                                 this.currentAttackSetIndex = 5;
+                             } else if (this.shieldsBroken >= 3) {
+                                 this.currentAttackSetIndex = 6;
+                             }
+                             this.nextAttackIndex = 0;
+                             this.pullbackScale = this.pullbackScaleDefault;
+                             this.attackScale = this.attackScaleDefault;
+                        }
                      }
                  }
              ],
@@ -564,7 +673,7 @@
                      }
                  },
                  {
-                     name: "|4x5 ",
+                     name: "|4x6 ",
                      chargeAmt: 500,
                      damage: -1,
                      startFunction: () => {
@@ -726,7 +835,7 @@
              [
                  // 5 missiles
                  {
-                     name: ";12x4 ",
+                     name: ";8x6 ",
                      chargeAmt: 750,
                      damage: -1,
                      isBigMove: true,
@@ -737,8 +846,10 @@
                      attackStartFunction: () => {
                          if (!this.dead && this.shieldAdded) {
                              playSound('voca_missile');
-                             this.createMissileObject(this.x - 75, this.y + 5, -0.5, 200);
-                             this.createMissileObject(this.x + 75, this.y + 5, 0.5, 200);
+                             this.createMissileObject(this.x - 75, this.y + 5, -0.5, 300);
+                             this.createMissileObject(this.x + 75, this.y + 5, 0.5, 300);
+                             this.createMissileObject(this.x - 50, this.y - 10, -0.3, 150);
+                             this.createMissileObject(this.x - 50, this.y - 10, 0.3, 150);
 
                              this.createMissileObject(this.x - 25, this.y - 30, -0.12, 0);
                              this.createMissileObject(this.x + 25, this.y - 30, 0.12, 0);
@@ -746,7 +857,7 @@
                          }
                      },
                      attackFinishFunction: () => {
-                         this.fireMissiles(12);
+                         this.fireMissiles(8);
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
                      }
@@ -755,7 +866,7 @@
              [
                  // 6
                  {
-                     name: "}4x5 ",
+                     name: "}4x6 ",
                      chargeAmt: 500,
                      damage: -1,
                      startFunction: () => {
@@ -835,7 +946,7 @@
                      }
                  },
                  {
-                     name: "MIS-AIMED MISSILE }4x0",
+                     name: "MIS-AIMED MISSILE }8x0",
                      chargeAmt: 1000,
                      damage: -1,
                      startFunction: () => {
@@ -965,10 +1076,22 @@
              this.animateBoomEyeshine();
              this.animateSelfDestructText();
          });
+        globalObjects.bannerTextManager.closeBanner();
         this.subscriptions.push(this.boomListener);
         if (this.currBGAnim) {
             this.currBGAnim.stop();
         }
+        if (this.shineAnim) {
+            this.shineAnim.stop();
+        }
+        this.minusDamage1.visible = false;
+        this.minusDamage2.visible = false;
+        this.lightShineLeft.visible = false;
+        this.lightShineLeftTop.visible = false;
+        this.lightShineRight.visible = false;
+        this.lightShineRightTop.visible = false;
+        this.setDefense(0);
+
          this.scene.tweens.add({
              targets: this.tunnelBG,
              duration: 700,
@@ -1439,7 +1562,7 @@
                      this.fireEffect = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_fire_1.png').setDepth(11);
                      this.addToDestructibles(this.fireEffect);
                  }
-                 let fireDelay = 125;
+                 let fireDelay = 120;
                  this.fireEffect.setVisible(true);
                  this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
                  PhaserScene.time.delayedCall(fireDelay, () => {
@@ -1459,14 +1582,20 @@
                                                  this.fireEffect.setFrame('robot_fire_1.png');
                                                  this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
                                                  PhaserScene.time.delayedCall(fireDelay, () => {
-                                                     this.fireEffect.setVisible(false);
-                                                     setTimeout(() => {
-                                                         if (!this.dead && this.shieldAdded) {
-                                                             this.setDefaultSprite('robot1.png');
-                                                             this.sprite.y = this.sprite.startY;
-                                                             this.setSprite('robot1.png');
-                                                         }
-                                                     }, 800);
+                                                     if (!this.dead && this.shieldAdded) {
+                                                         this.fireEffect.setFrame('robot_fire_2.png');
+                                                         this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage)
+                                                         PhaserScene.time.delayedCall(fireDelay, () => {
+                                                           this.fireEffect.setVisible(false);
+                                                            setTimeout(() => {
+                                                                 if (!this.dead && this.shieldAdded) {
+                                                                     this.setDefaultSprite('robot1.png');
+                                                                     this.sprite.y = this.sprite.startY;
+                                                                     this.setSprite('robot1.png');
+                                                                 }
+                                                            }, 800);
+                                                        });
+                                                     }
                                                  });
                                              }
                                          });

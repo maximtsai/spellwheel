@@ -2331,7 +2331,7 @@ class SpellManager {
             voidObjPre.rotation = Math.random() * 6.28;
             voidObjPre.setAlpha(0.05);
             voidObjPre.setScale(1 + 0.25 * i);
-            voidObjPre.setDepth(12);
+            voidObjPre.setDepth(15);
             this.scene.tweens.add({
                 targets: voidObjPre,
                 delay: i * 50,
@@ -2359,7 +2359,7 @@ class SpellManager {
         }
 
         let voidObj = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHoleBig.png');
-        voidObj.setDepth(12);
+        voidObj.setDepth(15);
         voidObj.rotation = Math.random() * 0.1;
         voidObj.setScale(1 + numTotalAttacks * 0.15);
         voidObj.setAlpha(0);
@@ -2476,7 +2476,7 @@ class SpellManager {
         let particle = this.particlesRock.pop();
         if (!particle) {
             particle = this.scene.add.sprite(x, y, 'spells', 'rock_chip.png');
-            particle.setDepth(11);
+            particle.setDepth(15);
         }
         particle.setScale(1.25);
         particle.visible = true;
@@ -2558,7 +2558,7 @@ class SpellManager {
                         voidAttackBuff.cleanUp(globalObjects.player.getStatuses());
                         let bigCurse = this.scene.add.sprite(gameConsts.halfWidth, targetY, 'enemies', 'curse_symbol.png');
                         let startScale = 1.2 + 0.22 * Math.sqrt(voidAttackBuff.multiplier);
-                        bigCurse.setScale(startScale).setDepth(11);
+                        bigCurse.setScale(startScale).setDepth(15);
                         this.scene.tweens.add({
                             targets: bigCurse,
                             ease: 'Quint.easeOut',

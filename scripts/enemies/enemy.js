@@ -309,8 +309,8 @@ class Enemy {
         this.curseSprite.setDepth(11);
         this.curseSprite.visible = false;
 
-        this.curseText = this.scene.add.bitmapText(this.curseSprite.x, this.curseSprite.y, 'normalStroke', '', 46);
-        this.curseText.setOrigin(0.5, 0.35);
+        this.curseText = this.scene.add.bitmapText(this.curseSprite.x, this.curseSprite.y - 4, 'normal', '', 50);
+        this.curseText.setOrigin(0.5, 0.4);
         this.curseText.setDepth(11);
         this.curseText.setScale(0.5);
         this.curseText.visible = false;

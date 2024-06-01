@@ -443,9 +443,7 @@ class Player {
     }
 
     enemyMadeAttack(damage) {
-        if (damage > 0) {
-            this.canResetRecentDamage = true;
-        }
+        this.canResetRecentDamage = true;
     }
 
     addRecentlyTakenDamage(amt) {

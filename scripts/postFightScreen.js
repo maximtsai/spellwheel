@@ -438,9 +438,9 @@ class PostFightScreen {
                 return "DAY 8\n\ntest";
 
             case 9:
-                return "The creatures in this\nland are clearly hostile\nto my presence.\n\n"+
-                "But it seems that I gain the\nstrength of each one I defeat.\n\n"+
-                "I just know I am very close to you.";
+                return "The \n\n"+
+                "Not even the machines of death\ncan best me!\n\n"+
+                "All I have to do now is get\naround this broken robot\nand I know you are just\naround the corner!";
 
             default:
                 return "..."

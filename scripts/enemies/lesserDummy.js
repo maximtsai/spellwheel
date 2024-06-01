@@ -113,7 +113,7 @@
                                         ease: "Cubic.easeOut",
                                         scaleX: 8,
                                         scaleY: 8,
-                                        duration: 350,
+                                        duration: 500,
                                     });
                                 }
                             }

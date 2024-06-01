@@ -2,7 +2,6 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('dummy.png', 0.95,0, 5, 'dummyenemy');
-        this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
                 // this.initTutorial2();
@@ -36,20 +35,31 @@
 
 
      initTutorial() {
-         this.rune1 = this.scene.add.sprite(gameConsts.width - 200, gameConsts.halfHeight + 20, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-         this.rune2 = this.scene.add.sprite(gameConsts.width - 138, gameConsts.halfHeight + 20, 'circle', 'rune_matter_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
 
-         this.addToDestructibles(this.rune1);
-         this.addToDestructibles(this.rune2);
+        globalObjects.bannerTextManager.setDialog(["Another one?", "Perhaps I should try\nmy more advanced magic."]);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+        globalObjects.bannerTextManager.showBanner(false);
 
-         setTimeout(() => {
-             globalObjects.textPopupManager.setInfoText(gameConsts.width - 114, gameConsts.halfHeight - 70, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'left');
-             PhaserScene.tweens.add({
-                 targets: [this.rune1, this.rune2],
-                 alpha: 1,
-                 duration: 200,
-             });
-         }, 750)
+
+        globalObjects.bannerTextManager.setOnFinishFunc(() => {
+            globalObjects.bannerTextManager.setOnFinishFunc(() => {});
+            globalObjects.bannerTextManager.closeBanner();
+             this.rune1 = this.scene.add.sprite(gameConsts.width - 200, gameConsts.halfHeight + 20, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+             this.rune2 = this.scene.add.sprite(gameConsts.width - 138, gameConsts.halfHeight + 20, 'circle', 'rune_matter_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+            this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
+
+             this.addToDestructibles(this.rune1);
+             this.addToDestructibles(this.rune2);
+
+             setTimeout(() => {
+                 globalObjects.textPopupManager.setInfoText(gameConsts.width - 114, gameConsts.halfHeight - 70, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'left');
+                 PhaserScene.tweens.add({
+                     targets: [this.rune1, this.rune2],
+                     alpha: 1,
+                     duration: 200,
+                 });
+             }, 500)
+        });
     }
 
 

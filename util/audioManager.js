@@ -22,6 +22,7 @@ function playSound(name, volume = 1, loop = false, isMusic = false) {
     soundList[name].fullVolume = volume;
     soundList[name].volume = soundList[name].fullVolume * globalVolume;
     soundList[name].loop = loop;
+    soundList[name].isMusic = isMusic;
     if (isMusic) {
         soundList[name].volume = volume * globalMusicVol;
         globalMusic = soundList[name];
@@ -64,23 +65,26 @@ function updateGlobalMusicVolume(newVol = 1) {
     }
 }
 
-function tweenVolume(name, volume, duration = 1500) {
-    // return PhaserScene.tweens.timeline({
-    //     targets: [soundList[name]],
-    //     tweens: [
-    //         {
-    //             volume: volume,
-    //             duration: duration
-    //         }
-    //     ]
-    // });
+function setVolume(sound, volume = 0, duration) {
+    let globalToUse = sound.isMusic ? globalMusicVol : globalVolume;
+    sound.fullVolume = volume;
+    if (!duration) {
+        sound.volume = sound.fullVolume * globalToUse;
+    } else {
+        PhaserScene.tweens.add({
+            targets: sound,
+            volume: sound.fullVolume * globalToUse,
+            duration: duration
+        });
+    }
 }
 
 
 function fadeAwaySound(sound, duration = 650, ease, onComplete) {
+    sound.fullVolume = 0
     PhaserScene.tweens.add({
         targets: sound,
-        volume: 0,
+        volume: sound.fullVolume,
         ease: ease,
         duration: duration,
         onComplete: () => {
@@ -93,9 +97,11 @@ function fadeAwaySound(sound, duration = 650, ease, onComplete) {
 }
 
 function fadeInSound(sound, volume = 1) {
+    let globalToUse = sound.isMusic ? globalMusicVol : globalVolume;
+    sound.fullVolume = volume
     PhaserScene.tweens.add({
         targets: sound,
-        volume: volume,
+        volume: sound.fullVolume * globalToUse,
         duration: 800
     });
 }

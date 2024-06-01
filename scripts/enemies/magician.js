@@ -2,12 +2,14 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('time_magi.png', 0.75,0, 5);
-        setTimeout(() => {
+        this.popupTimeout = this.addTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
         }, 3500)
-        setTimeout(() => {
-            this.customBgMusic = playMusic('magician_theme_1', 0.95, true);
+        this.addTimeout(() => {
+            if (!this.isDestroyed) {
+                this.customBgMusic = playMusic('magician_theme_1', 0.95, true);
+            }
         }, 1500)
         
 
@@ -70,7 +72,7 @@
              if (this.customBgMusic) {
                  fadeAwaySound(this.customBgMusic, 1000, '');
              }
-             setTimeout(() => {
+             this.addTimeout(() => {
                  if (!this.dead) {
                      this.customBgMusic = playMusic('magician_theme_4', 0.4, true);
                      fadeInSound(this.customBgMusic, 0.8);
@@ -93,7 +95,7 @@
         this.cleanedUp = true;
          if (this.floatingDeathAnim) {
              this.floatingDeathAnim.stop().destroy();
-             this.scene.tweens.add({
+             this.addTween({
                  targets: this.blackBackground,
                  alpha: 0,
                  duration: 3000,
@@ -108,7 +110,7 @@
          globalObjects.magicCircle.cancelTimeSlow();
          if (this.clockShield) {
              this.clockShield.alpha += 0.15;
-             this.scene.tweens.add({
+             this.addTween({
                  targets: this.clockShield,
                  scaleX: 0.75,
                  scaleY: 0.75,
@@ -124,7 +126,7 @@
              this.statuses[0].cleanUp();
          }
 
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.timeObjects,
              scaleX: 0,
              scaleY: 0,
@@ -140,7 +142,7 @@
      }
 
      zoomAwayClocks() {
-        this.scene.tweens.add({
+        this.addTween({
              targets: this.timeFallObjs,
              scaleX: 0,
              scaleY: 0,
@@ -188,14 +190,14 @@
      }
 
      showRune() {
-         let rune = this.scene.add.sprite(this.x, this.y - 45, 'tutorial', 'rune_time_large.png').setOrigin(0.5, 0.5).setScale(0.5).setDepth(9999);
+         let rune = this.addSprite(this.x, this.y - 45, 'tutorial', 'rune_time_large.png').setOrigin(0.5, 0.5).setScale(0.5).setDepth(9999);
          playSound('victory_2');
          this.showFlash(this.x, this.y);
-         let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
-         let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
+         let banner = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
+         let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
+         let continueText = this.addText(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: rune,
              x: gameConsts.halfWidth,
              scaleX: 1,
@@ -206,30 +208,30 @@
              }
          });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: banner,
              alpha: 0.75,
              duration: 500,
          });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [victoryText],
              alpha: 1,
              ease: 'Quad.easeOut',
              duration: 500,
          });
          playSound('victory');
-         setTimeout(() => {
+         this.addTimeout(() => {
              continueText.alpha = 1;
          }, 1000);
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: victoryText,
              scaleX: 1,
              scaleY: 1,
              duration: 800,
          });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: rune,
              y: gameConsts.halfHeight - 110,
              ease: 'Cubic.easeOut',
@@ -237,7 +239,7 @@
              onComplete: () => {
                  this.dieClickBlocker.setOnMouseUpFunc(() => {
                      this.dieClickBlocker.destroy();
-                     PhaserScene.tweens.add({
+                     this.addTween({
                          targets: [victoryText, banner],
                          alpha: 0,
                          duration: 400,
@@ -247,7 +249,7 @@
                              continueText.destroy();
                          }
                      });
-                     PhaserScene.tweens.add({
+                     this.addTween({
                          targets: rune,
                          y: "+=90",
                          ease: 'Quad.easeOut',
@@ -258,7 +260,7 @@
                              globalObjects.postFightScreen.createWinScreen(this.level);
                          }
                      });
-                     PhaserScene.tweens.add({
+                     this.addTween({
                          targets: rune,
                          alpha: 0,
                          duration: 400,
@@ -269,17 +271,17 @@
     }
 
      showVictory() {
-         globalObjects.magicCircle.disableMovement();
-          swirlInReaperFog();
-        setTimeout(() => {
+        globalObjects.magicCircle.disableMovement();
+        swirlInReaperFog();
+        this.addTimeout(() => {
             playReaperDialog(['YOUR TIME IS UP'], () => {
-                 this.scene.tweens.add({
+                 this.addTween({
                      targets: this.timeFallObjs,
                      duration: 1000,
                  });
                 globalObjects.reapSound = 'magician_end';
                 playReaperAnim(this, () => {
-                    setTimeout(() => {
+                    this.addTimeout(() => {
                         this.showRune();
                     }, 1200);
                 });
@@ -294,11 +296,11 @@
 
 
      startReaper() {
-        this.blackBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(-1)
+        this.blackBackground = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(-1)
          this.floatingDeath = getFloatingDeath();
          this.floatingDeath.alpha = 0;
          gameVars.deathFlutterDelay = 600;
-         this.floatingDeathAnim = this.scene.tweens.add({
+         this.floatingDeathAnim = this.addTween({
              targets: this.floatingDeath,
              duration: 19000,
              alpha: 0.75,
@@ -306,7 +308,7 @@
              scaleY: 0.7,
              ease: 'Quad.easeInOut',
          });
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.blackBackground,
              duration: 19000,
              alpha: 0.7,
@@ -320,16 +322,16 @@
          this.heal(Math.floor(lostHealth * 0.5));
          this.specialDamageAbsorptionActive = true;
 
-         this.clockShield = PhaserScene.add.sprite(gameConsts.halfWidth, this.y, 'spells', 'clock_back_large_red.png').setDepth(1).setAlpha(0.75);
+         this.clockShield = this.addSprite(gameConsts.halfWidth, this.y, 'spells', 'clock_back_large_red.png').setDepth(1).setAlpha(0.75);
 
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.clockShield,
              duration: 600,
              alpha: 0.2,
              rotation: "+=2",
              ease: 'Cubic.easeOut',
              onComplete: () => {
-                 this.scene.tweens.add({
+                 this.addTween({
                      targets: this.clockShield,
                      duration: 15000,
                      rotation: "+=3.1415",
@@ -356,7 +358,7 @@
                      healthText.setScale(0.7 + 0.01 * statusObj.duration);
                      if (this.health == 1) {
                          // drag out last second
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.die();
                          }, 1000);
                      } else {
@@ -391,7 +393,7 @@
 
          if (this.clockShield.alpha < 0.3) {
              this.clockShield.alpha = 0.5;
-             this.scene.tweens.add({
+             this.addTween({
                  targets: this.clockShield,
                  duration: 400,
                  alpha: 0.15,
@@ -408,14 +410,14 @@
              this.breatheTween.stop();
          }
          let vertMove = Math.ceil(3.5 * magnitude);
-         this.breatheTween = this.scene.tweens.add({
+         this.breatheTween = this.addTween({
              targets: this.sprite,
              duration: duration,
              y: this.sprite.startY - vertMove,
              ease: 'Quad.easeInOut',
              completeDelay: 150,
              onComplete: () => {
-                 this.breatheTween = this.scene.tweens.add({
+                 this.breatheTween = this.addTween({
                      targets: this.sprite,
                      duration: duration * (Math.random() * 0.5 + 1),
                      rotation: 0.02 * magnitude,
@@ -442,7 +444,7 @@
              this.nextAttack.attackStartFunction();
          }
          let pullbackScale = 0.9 * this.sprite.startScale;
-         this.attackAnim = this.scene.tweens.add({
+         this.attackAnim = this.addTween({
              targets: this.sprite,
              scaleX: pullbackScale,
              scaleY: pullbackScale,
@@ -458,7 +460,7 @@
                      this.sprite.setScale(pullbackScale);
                  }
                  let attackScale = 1.09 * this.sprite.startScale
-                 this.attackAnim = this.scene.tweens.add({
+                 this.attackAnim = this.addTween({
                      targets: this.sprite,
                      scaleX: attackScale,
                      scaleY: attackScale,
@@ -490,7 +492,7 @@
                          if (attackTimes > 1) {
                              this.launchAttack(attackTimes - 1, prepareSprite, attackSprites, true);
                          } else {
-                             this.attackAnim = this.scene.tweens.add({
+                             this.attackAnim = this.addTween({
                                  targets: this.sprite,
                                  scaleX: this.sprite.startScale,
                                  scaleY: this.sprite.startScale,
@@ -498,7 +500,7 @@
                                  duration: 550 * extraTimeMult,
                                  ease: 'Cubic.easeInOut'
                              });
-                             setTimeout(() => {
+                             this.addTimeout(() => {
                                  if (!this.dead) {
                                      this.setSprite(this.defaultSprite);
                                  }
@@ -524,7 +526,7 @@
                      attackStartFunction: () => {
                          this.createTimeObject('clock2.png', this.x - 110, this.y - 70);
                          this.createTimeObject('clock3.png', this.x - 35, this.y - 100);
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.fireTimeObjects(4);
                          }, 800);
                      },
@@ -561,7 +563,7 @@
                      attackStartFunction: () => {
                          this.createTimeObject('clock2.png', this.x - 120, this.y + 30);
                          this.createTimeObject('clock3.png', this.x - 75, this.y - 20);
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.fireTimeObjects(5);
                          }, 300);
                      },
@@ -576,7 +578,7 @@
                          this.createTimeObject('clock2.png', this.x - 110, this.y - 40);
                          this.createTimeObject('clock3.png', this.x - 60, this.y - 75, 150);
                          this.createTimeObject('clock4.png', this.x + 5, this.y - 90, 300);
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.fireTimeObjects(4);
                          }, 800);
                      },
@@ -592,8 +594,8 @@
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
                          messageBus.publish('playerAddDelayedDamage', 20);
-                         let hitEffect = PhaserScene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large_red.png').setDepth(110).setScale(1.2);
-                         this.scene.tweens.add({
+                         let hitEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large_red.png').setDepth(110).setScale(1.2);
+                         this.addTween({
                              targets: hitEffect,
                              rotation: "-=1",
                              ease: 'Cubic.easeOut',
@@ -602,7 +604,7 @@
                                  hitEffect.destroy();
                              }
                          });
-                         this.scene.tweens.add({
+                         this.addTween({
                              targets: hitEffect,
                              alpha: 0,
                              scaleX: 1,
@@ -626,7 +628,7 @@
                          this.createTimeObject('clock3.png', this.x - 40, this.y - 80, 150);
                          this.createTimeObject('clock3.png', this.x + 40, this.y - 80, 300);
                          this.createTimeObject('clock4.png', this.x + 120, this.y - 70, 450);
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.fireTimeObjects(2);
                          }, 800);
                      },
@@ -639,10 +641,10 @@
                      isBigMove: true,
                      prepareSprite: 'time_magi_cast_big.png',
                      startFunction: () => {
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              let myCustomMusic = this.customBgMusic;
                              fadeAwaySound(myCustomMusic, 2000, ' ');
-                             setTimeout(() => {
+                             this.addTimeout(() => {
                                  if (!this.timeBarraged) {
                                      this.tickSlow = playSound('tickslow');
                                  }
@@ -682,7 +684,7 @@
                          this.createTimeObject('clock2.png', this.x + 150, 110, 450);
                      },
                      attackFinishFunction: () => {
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.fireTimeObjects(4);
                          }, 400);
                      }
@@ -703,7 +705,7 @@
                          this.createTimeObject('clock2.png', this.x + 220, 125, 525);
                      },
                      attackFinishFunction: () => {
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.fireTimeObjects(4);
                          }, 500);
                      }
@@ -718,7 +720,7 @@
                          this.createTimeObjectHuge('clock1.png', this.x - 95, 60, 100, 1.4);
                      },
                      attackFinishFunction: () => {
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.fireTimeObjects(20, 600);
                          }, 350);
                      }
@@ -739,7 +741,7 @@
 
                          globalObjects.magicCircle.cancelTimeSlow();
                          if (!this.dead) {
-                             setTimeout(() => {
+                             this.addTimeout(() => {
                                  fadeAwaySound(this.magicianTimeEpicTheme, 1500);
                              }, 1500);
                          }
@@ -767,7 +769,7 @@
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
                          this.createTimeObject('clock3.png', this.x - 25, this.y - 110);
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.fireTimeObjects(6);
                          }, 800);
                      },
@@ -782,7 +784,7 @@
                      attackStartFunction: () => {
                          this.createTimeObject('clock2.png', this.x - 110, this.y - 70);
                          this.createTimeObject('clock3.png', this.x - 35, this.y - 100);
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.fireTimeObjects(4);
                          }, 800);
                      },
@@ -812,10 +814,10 @@
          ];
      }
      createTimeObject(name, x, y, delay = 0, durMult = 1) {
-         let newObj = PhaserScene.add.sprite(x, y, 'enemies', name).setRotation((Math.random() - 0.5) * 3).setScale(0).setDepth(110);
+         let newObj = this.addSprite(x, y, 'enemies', name).setRotation((Math.random() - 0.5) * 3).setScale(0).setDepth(110);
          newObj.durMult = durMult;
          this.timeObjects.push(newObj);
-         this.scene.tweens.add({
+         this.addTween({
              delay: delay,
              targets: newObj,
              scaleX: 1,
@@ -831,11 +833,11 @@
      }
 
      createTimeObjectHuge(name, x, y, delay = 0, durMult = 1) {
-         let newObj = PhaserScene.add.sprite(x, y, 'enemies', name).setRotation((Math.random() - 0.5) * 3).setScale(0).setDepth(110);
+         let newObj = this.addSprite(x, y, 'enemies', name).setRotation((Math.random() - 0.5) * 3).setScale(0).setDepth(110);
          newObj.durMult = durMult;
          newObj.endScale = 1.4;
          this.timeObjects.push(newObj);
-         this.scene.tweens.add({
+         this.addTween({
              delay: delay,
              targets: newObj,
              scaleX: 0.9,
@@ -848,7 +850,7 @@
                  playSound('time_strike');
              },
              onComplete: () => {
-                 this.scene.tweens.add({
+                 this.addTween({
                     delay: 100,
                      targets: newObj,
                      scaleX: 1.4,
@@ -874,7 +876,7 @@
              let currObj = this.timeObjects.shift();
              let delayAmt = timeObjectsFired * 160;
              timeObjectsFired++;
-             this.scene.tweens.add({
+             this.addTween({
                  targets: currObj,
                  delay: delayAmt,
                  y: globalObjects.player.getY() - 175 + Math.random() * 10,
@@ -885,8 +887,8 @@
                      let dur = 280 - Math.sqrt(totalTimeObjects) * 40;
                      let rot = dur * 0.004;
                      let scaleMult = 1 + durBonus / 800;
-                     let hitEffect = PhaserScene.add.sprite(currObj.x, currObj.y, 'spells', 'timeRed1.png').setRotation((Math.random() - 0.5) * 3).setScale(0.35 * scaleMult).setDepth(195);
-                     this.scene.tweens.add({
+                     let hitEffect = this.addSprite(currObj.x, currObj.y, 'spells', 'timeRed1.png').setRotation((Math.random() - 0.5) * 3).setScale(0.35 * scaleMult).setDepth(195);
+                     this.addTween({
                          targets: hitEffect,
                          scaleX: 0.7 * scaleMult,
                          scaleY: 0.7 * scaleMult,
@@ -896,7 +898,7 @@
                              hitEffect.destroy();
                          }
                      });
-                     this.scene.tweens.add({
+                     this.addTween({
                          targets: hitEffect,
                          rotation: "-="+rot,
                          alpha: 0,
@@ -915,7 +917,7 @@
 
                  }
              });
-             this.scene.tweens.add({
+             this.addTween({
                  targets: currObj,
                  delay: delayAmt,
                  x: gameConsts.halfWidth * 0.92 + currObj.x * 0.15,
@@ -968,11 +970,10 @@
             let randDist = 0.25 + Math.random() * 0.45;
 
             let randFrame = 'temporal' + Math.floor(Math.random() * 10) + ".png";
-            let newClock = PhaserScene.add.sprite(0, (i * gameConsts.height / (numObjects - 2)) - 70, 'lowq', randFrame).setRotation(Math.random() * 6).setScale(randDist).setDepth(-1);
+            let newClock = this.addSprite(0, (i * gameConsts.height / (numObjects - 2)) - 70, 'lowq', randFrame).setRotation(Math.random() * 6).setScale(randDist).setDepth(-1);
             newClock.setAlpha(0);
 
-            
-             this.scene.tweens.add({
+             this.addTween({
                  targets: newClock,
                  alpha: newClock.scaleX * 0.5 - 0.05,
                  duration: 500
@@ -980,7 +981,6 @@
 
             newClock.rotSpeed = (1 + Math.random()) * (Math.random < 0.5 ? 1 : -1);
             this.timeFallObjs.push(newClock);
-            this.addToDestructibles(newClock);
 
             newClock.x = gameConsts.width * ((this.availableIndicies[this.lastPlacedIndex] + 0.5) / 5);
             this.lastPlacedIndex = (this.lastPlacedIndex + 1) % this.availableIndicies.length;

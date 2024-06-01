@@ -307,6 +307,8 @@ class PostFightScreen {
     }
 
     createWinScreen(level = 0) {
+        globalObjects.encyclopedia.showButton();
+        globalObjects.options.showButton();
         this.currLevel = level;
         this.createWinScreenUI(level);
         this.continueButton.setOnMouseUpFunc(() => {
@@ -414,8 +416,8 @@ class PostFightScreen {
                 "Almost immediately I can feel\nthis place trying to resist my entry,\ntrying to obstruct my every step.\n\n"+
                 "But I know you are here dear Rosemary,\nand no creature or construct will stop me\nfrom finding you."
             case 2:
-                return "The fabled Reaper has\nnoticed my presence, though\nthey have done nothing but\nwag their finger at me like a parent scolding their child.\n\n"+
-                "But there is still a long way to go,\nand I have a feeling this won't be the last time\nwe see each other.\n\n"+
+                return "The fabled Reaper\nhas me, though\nthey have done\nnothing but wag their finger\nat me like a parent scolding their child.\n\n"+
+                "But there is still a long way to go,\nand I have a feeling this won't be the last\ntime we see each other.\n\n"+
                 "In the mean-time, this shield I picked\nup from the fallen goblin should\ncome in handy.";
             case 3:
                 return "The creatures of this\nland are clearly hostile.\n\n"+

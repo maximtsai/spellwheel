@@ -88,7 +88,6 @@ const ENABLE_KEYBOARD = true;
         if (this.manualDisabled) {
             this.dragArrow.visible = false;
             this.dragCircle.visible = false;
-            return;
         }
 
         if (this.delayedDamage > this.delayedDamageBase) {
@@ -154,7 +153,7 @@ const ENABLE_KEYBOARD = true;
             }
         }
 
-        if (totalDist <= this.size) {
+        if (totalDist <= this.size && !this.manualDisabled) {
             if (gameVars.mouseJustDowned) {
                 // clicked
                 if (totalDist < this.castButtonSize) {
@@ -832,7 +831,7 @@ const ENABLE_KEYBOARD = true;
      }
 
     calculateRotations(dt, distToTarget = 99) {
-        if (this.manualDisabled || this.innerDragDisabled || this.outerDragDisabled) {
+        if (this.innerDragDisabled || this.outerDragDisabled) {
             return;
         }
         let decayAltered = DECAY;
@@ -1697,15 +1696,15 @@ const ENABLE_KEYBOARD = true;
             targets: sprite,
             duration: 100,
             ease: 'Cubic.easeOut',
-            scaleX: 1.35,
-            scaleY: 1.35,
+            scaleX: isMobile ? 1.5 : 1.4,
+            scaleY: isMobile ? 1.5 : 1.4,
             onComplete: () => {
                 this.scene.tweens.add({
                     targets: sprite,
                     ease: 'Cubic.easeOut',
                     duration: 350,
-                    scaleX: 1.05,
-                    scaleY: 1.05
+                    scaleX: isMobile ? 1.075 : 1.05,
+                    scaleY: isMobile ? 1.075 : 1.05
                 });
             }
         });
@@ -1788,15 +1787,16 @@ const ENABLE_KEYBOARD = true;
             targets: sprite,
             duration: 100,
             ease: 'Cubic.easeOut',
-            scaleX: 1.4,
-            scaleY: 1.4,
+            scaleX: isMobile ? 1.55 : 1.44,
+            scaleY: isMobile ? 1.55 : 1.44,
+            completeDelay: isMobile ? 50 : 0,
             onComplete: () => {
                 this.scene.tweens.add({
                     targets: sprite,
                     ease: 'Cubic.easeOut',
                     duration: 350,
-                    scaleX: 1.05,
-                    scaleY: 1.05
+                    scaleX: isMobile ? 1.075 : 1.05,
+                    scaleY: isMobile ? 1.075 : 1.05
                 });
             }
         });
@@ -1915,11 +1915,14 @@ const ENABLE_KEYBOARD = true;
 
     showReadySprite(light = true, scaleMult = 1) {
         if (this.readySprite) {
+            if (this.readySprite.currAnim) {
+                this.readySprite.currAnim.stop();
+            }
             this.readySprite.setScale(1.15 * scaleMult);
             this.readySprite.play(light ? 'circleEffect' : 'circleEffectSmall');
             this.readySprite.visible = true;
             let goalScale = (light ? 1.8 : 1.75)*scaleMult;
-            this.scene.tweens.add({
+            this.readySprite.currAnim = this.scene.tweens.add({
                 targets: this.readySprite,
                 scaleX: goalScale,
                 scaleY: goalScale,

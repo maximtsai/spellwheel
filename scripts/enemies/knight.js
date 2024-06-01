@@ -6,7 +6,7 @@
          this.bgMusic = playMusic('into_the_void', 0.8, true);
          this.shieldAdded = false;
          this.initMisc();
-         setTimeout(() => {
+         this.popupTimeout = setTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3500);

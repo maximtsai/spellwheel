@@ -7,7 +7,7 @@
 
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
 
-         setTimeout(() => {
+         this.popupTimeout = this.addTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3500)
@@ -16,7 +16,7 @@
 
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 180 : 100;
-         this.slashEffect = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
+         this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.14;
      }
@@ -84,14 +84,14 @@
 
                          let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 700);
                          shinePattern.setPosition(this.x, this.y).setScale(0.8).setDepth(-1).setAlpha(0.5);
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: shinePattern,
                              scaleX: 0.85,
                              scaleY: 0.85,
                              duration: 700,
                              ease: 'Cubic.easeOut'
                          });
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: shinePattern,
                              alpha: 0,
                              ease: 'Cubic.easeIn',
@@ -118,8 +118,8 @@
                      },
                      attackFinishFunction: () => {
                          playSound('body_slam')
-                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
-                         setTimeout(() => {
+                         let dmgEffect = this.addImage(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
+                         this.addTimeout(() => {
                              dmgEffect.destroy();
                          }, 150)
                      }
@@ -153,7 +153,7 @@
                          this.setDefaultSprite('gobbo4.png', 0.92);
                          let oldScale = this.sprite.scaleX;
                          this.sprite.setScale(this.sprite.scaleX * 1.01);
-                         this.currAnim = PhaserScene.tweens.add({
+                         this.currAnim = this.addTween({
                              targets: this.sprite,
                              scaleX: oldScale,
                              scaleY: oldScale,
@@ -233,7 +233,7 @@
          }
          let isFlipped = this.slashEffect.scaleX > 0;
          this.slashEffect.setAlpha(1).setScale(isFlipped ? -0.5 : 0.5, 0.4);
-         this.slashEffectAnim = PhaserScene.tweens.add({
+         this.slashEffectAnim = this.addTween({
              targets: this.slashEffect,
              scaleX: isFlipped ? -1 : 1,
              scaleY: 0.6,
@@ -251,11 +251,14 @@
      }
 
      repeatTweenBreathe(duration = 1500, magnitude = 1) {
+        if (this.dead || this.isDestroyed) {
+            return;
+        }
          if (this.breatheTween) {
              this.breatheTween.stop();
          }
          let horizMove = Math.ceil(3.5 * magnitude);
-         this.breatheTween = this.scene.tweens.add({
+         this.breatheTween = this.addTween({
              targets: this.sprite,
              duration: duration * (Math.random() * 0.5 + 1),
              rotation: -0.02 * magnitude,
@@ -263,7 +266,7 @@
              ease: 'Cubic.easeInOut',
              completeDelay: 150,
              onComplete: () => {
-                 this.breatheTween = this.scene.tweens.add({
+                 this.breatheTween = this.addTween({
                      targets: this.sprite,
                      duration: duration * (Math.random() * 0.5 + 1),
                      rotation: 0.02 * magnitude,
@@ -276,11 +279,6 @@
                  });
              }
          });
-     }
-
-     destroy() {
-         super.destroy();
-         this.slashEffect.destroy();
      }
 
      die() {
@@ -307,7 +305,7 @@
              }
          });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: this.sprite,
              rotation: -0.2,
              ease: "Cubic.easeIn",
@@ -318,12 +316,12 @@
                  this.sprite.setRotation(0);
                  this.x -= 5;
                  this.y += 48;
-                 setTimeout(() => {
+                 this.addTimeout(() => {
                      this.showFlash(this.x, this.y);
-                    setTimeout(() => {
-                        let rune = this.scene.add.sprite(this.x, this.y, 'tutorial', 'rune_protect_large.png').setScale(0.5).setDepth(9999);
+                    this.addTimeout(() => {
+                        let rune = this.addImage(this.x, this.y, 'tutorial', 'rune_protect_large.png').setScale(0.5).setDepth(9999);
                         playSound('victory_2');
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: rune,
                             x: gameConsts.halfWidth,
                             y: gameConsts.halfHeight - 170,

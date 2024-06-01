@@ -1,5 +1,7 @@
 class Options {
     constructor(scene, x, y) {
+        this.startX = x;
+        this.startY = y;
         this.baseDepth = 101000;
         this.listOfThingsToHide = [];
         this.listOfButtonsToDisable = [];
@@ -54,6 +56,58 @@ class Options {
             this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 25, 'ui', 'paper.png').setDepth(this.baseDepth);
             this.listOfThingsToHide.push(this.bgPage);
         }
+
+        if (!this.menuBtn) {
+            this.menuBtn = new Button({
+                normal: {
+                    ref: "menu_btn_normal.png",
+                    atlas: 'buttons',
+                    x: gameConsts.halfWidth,
+                    y: gameConsts.halfHeight + 200,
+                    alpha: 1,
+                },
+                hover: {
+                    ref: "menu_btn_hover.png",
+                    atlas: 'buttons',
+                    alpha: 1,
+                },
+                press: {
+                    ref: "menu_btn_normal.png",
+                    atlas: 'buttons',
+                    alpha: 1,
+                },
+                disable: {
+                    ref: "menu_btn_normal.png",
+                    atlas: 'buttons',
+                    alpha: 0
+                },
+                onHover: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: () => {
+                    this.hideOptions();
+                    globalObjects.player.revive();
+                    gotoMainMenu();
+                    globalObjects.textPopupManager.hideInfoText();
+                    globalObjects.bannerTextManager.closeBanner();
+                    if (globalObjects.floatingDeath) {
+                        globalObjects.floatingDeath.visible = false;
+                        globalObjects.floatingDeath2.visible = false;
+                    }
+                }
+            });
+            this.menuBtn.addText('MENU', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
+            this.menuBtn.setDepth(this.baseDepth + 1);
+            this.listOfButtonsToDisable.push(this.menuBtn);
+        }
+
         if (!this.sliderBGM) {
             this.draggerBGM;
             this.draggerSFX;
@@ -187,10 +241,13 @@ class Options {
             this.closeButton.setDepth(this.baseDepth + 10);
             this.listOfButtonsToDisable.push(this.closeButton);
         }
-        buttonManager.bringButtonToTop(this.sliderBGM);
-        buttonManager.bringButtonToTop(this.sliderSFX);
-        this.sliderBGM.setState(NORMAL);
-        this.sliderSFX.setState(NORMAL);
+
+        // buttonManager.bringButtonToTop(this.sliderBGM);
+        // buttonManager.bringButtonToTop(this.sliderSFX);
+        // buttonManager.bringButtonToTop(this.menuBtn);
+        // this.sliderBGM.setState(NORMAL);
+        // this.sliderSFX.setState(NORMAL);
+        // this.menuBtn.setState(NORMAL);
 
         for (let i = 0; i < this.listOfButtonsToDisable.length; i++) {
             this.listOfButtonsToDisable[i].setState(NORMAL);
@@ -205,8 +262,9 @@ class Options {
              targets: this.bgPage,
              alpha: 1,
              ease: 'Cubic.easeOut',
-             duration: 400,
+             duration: 1,
         });
+        messageBus.publish('pauseGame', 0.002);
 
     }
 
@@ -255,6 +313,7 @@ class Options {
     }
 
     hideOptions() {
+        messageBus.publish('unpauseGame');
         hideGlobalClickBlocker();
         PhaserScene.tweens.add({
              targets: this.listOfThingsToHide,
@@ -266,5 +325,13 @@ class Options {
         for (let i = 0; i < this.listOfButtonsToDisable.length; i++) {
             this.listOfButtonsToDisable[i].setState(DISABLE);
         }
+    }
+
+    showButton() {
+        this.button.setPos(this.startX, this.startY);
+    }
+
+    hideButton() {
+        this.button.setPos(this.startX, -100);
     }
 }

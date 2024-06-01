@@ -5,7 +5,7 @@
          this.shieldAdded = false;
         this.bgMusic = playMusic('bite_down', 0.7, true);
          this.initBird();
-         setTimeout(() => {
+         this.popupTimeout = setTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3500)

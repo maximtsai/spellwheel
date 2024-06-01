@@ -1,7 +1,9 @@
 function setupMainMenu() {
-    globalObjects.menuBack = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-9).setScale(0.92);
-    globalObjects.menuTop = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9).setScale(0.92);
-    globalObjects.menuBot = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_bot.png').setDepth(-9).setScale(0.92);
+    if (!globalObjects.menuBack) {
+        globalObjects.menuBack = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-9).setScale(0.92);
+        globalObjects.menuTop = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9).setScale(0.92);
+        globalObjects.menuBot = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_bot.png').setDepth(-9).setScale(0.92);
+    }
 }
 
 function clearOnlyMenuButtons() {
@@ -111,6 +113,8 @@ function clearMenuButtons() {
 
 function gotoMainMenu() {
     setupMainMenu();
+    globalObjects.encyclopedia.showButton();
+    globalObjects.options.showButton();
     let hasContinue = false;
     if (globalObjects.currentEnemy) {
         globalObjects.currentEnemy.destroy();
@@ -123,6 +127,10 @@ function gotoMainMenu() {
     globalObjects.menuBack.setAlpha(1).setScale(0.902).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
     globalObjects.menuTop.setAlpha(1).setScale(0.902).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
     globalObjects.menuBot.setAlpha(1).setScale(0.902).setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 89).setOrigin(0.5, 0.4);
+
+    if (globalObjects.startButton && !globalObjects.startButton.isDestroyed) {
+        return;
+    }
 
     if (hasContinue) {
         globalObjects.continueButton = new Button({

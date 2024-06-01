@@ -6,12 +6,12 @@
          this.sprite.startY = y;
         this.bgMusic = playMusic('jpop', 0.9, true);
 
-         setTimeout(() => {
+         this.addTimeout(() => {
              globalObjects.magicCircle.disableMovement();
          }, 900);
          this.sprite.alpha = 0;
          this.sprite.setScale(this.sprite.startScale * 0.75);
-         setTimeout(() => {
+         this.addTimeout(() => {
              this.initPreBattleLogic();
          }, 1200);
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
@@ -23,11 +23,11 @@
          this.shieldSprite.startScale = 3;
          this.lastAttackLingerMult = 1.75;
          this.attackSlownessMult = 1.25;
-        this.lightShineLeft = PhaserScene.add.sprite(gameConsts.halfWidth - 220, gameConsts.halfHeight - 320, 'lowq', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(-0.5);
-        this.lightShineLeftTop = PhaserScene.add.sprite(this.lightShineLeft.x, this.lightShineLeft.y, 'lowq', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineLeft.rotation);
+        this.lightShineLeft = this.addSprite(gameConsts.halfWidth - 220, gameConsts.halfHeight - 320, 'lowq', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(-0.5);
+        this.lightShineLeftTop = this.addSprite(this.lightShineLeft.x, this.lightShineLeft.y, 'lowq', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineLeft.rotation);
 
-        this.lightShineRight = PhaserScene.add.sprite(gameConsts.halfWidth + 220, gameConsts.halfHeight - 320, 'lowq', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(0.5);
-        this.lightShineRightTop = PhaserScene.add.sprite(this.lightShineRight.x, this.lightShineRight.y, 'lowq', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineRight.rotation);
+        this.lightShineRight = this.addSprite(gameConsts.halfWidth + 220, gameConsts.halfHeight - 320, 'lowq', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(0.5);
+        this.lightShineRightTop = this.addSprite(this.lightShineRight.x, this.lightShineRight.y, 'lowq', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineRight.rotation);
         this.addToDestructibles(this.lightShineLeft);
         this.addToDestructibles(this.lightShineLeftTop);
         this.addToDestructibles(this.lightShineRight);
@@ -41,10 +41,10 @@
         this.addToDestructibles(this.minusDamage2);
 
 
-        this.laserCharge = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_charge.png').setDepth(11).setAlpha(0);
-        this.laserHeart = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_blast.png').setDepth(11).setOrigin(0.5, 0.65).setAlpha(0);
-         this.eyeShine = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 57, 'enemies', 'roboteye.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth);
-         this.blush = PhaserScene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'robot_blush.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth + 1);
+        this.laserCharge = this.addSprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_charge.png').setDepth(11).setAlpha(0);
+        this.laserHeart = this.addSprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_blast.png').setDepth(11).setOrigin(0.5, 0.65).setAlpha(0);
+         this.eyeShine = this.addSprite(this.sprite.x, this.sprite.y - 57, 'enemies', 'roboteye.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth);
+         this.blush = this.addSprite(this.sprite.x, this.sprite.y, 'enemies', 'robot_blush.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth + 1);
          this.addToDestructibles(this.blush);
          this.addToDestructibles(this.eyeShine);
         this.addToDestructibles(this.laserHeart);
@@ -93,7 +93,7 @@
      }
 
      showStartupAnim() {
-         this.tunnelBG = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight * 0.7, 'backgrounds', 'tunnel2.png').setScale(1).setDepth(-9).setAlpha(0).setOrigin(0.5, 0.35);
+         this.tunnelBG = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight * 0.7, 'backgrounds', 'tunnel2.png').setScale(1).setDepth(-9).setAlpha(0).setOrigin(0.5, 0.35);
          this.scene.tweens.add({
              targets: this.tunnelBG,
              duration: 1600,
@@ -311,11 +311,11 @@
              ease: 'Quad.easeOut',
              onComplete: () => {
                  this.tunnelBG.setAlpha(0.85);
-                 setTimeout(() => {
+                 this.addTimeout(() => {
                      this.tunnelBG.setAlpha(0.6);
-                     setTimeout(() => {
+                     this.addTimeout(() => {
                          this.tunnelBG.setAlpha(0.7);
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.tunnelBG.setAlpha(0.4);
                          }, 200);
                      }, 700);
@@ -341,7 +341,7 @@
         this.bgMusic.detune = -600;
         setVolume(this.bgMusic, 0.25, 1000)
 
-        setTimeout(() => {
+        this.addTimeout(() => {
             globalObjects.bannerTextManager.setDialog(["The stage lights are off."]);
             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
             globalObjects.bannerTextManager.showBanner(false);
@@ -411,7 +411,7 @@
                      attackStartFunction: () => {
                          this.shieldAdded = true;
                          this.shieldIgnoreGone = true;
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              playSound('cutesy_up', 0.8);
                          }, 100);
 
@@ -429,7 +429,7 @@
                             scaleY: 2,
                             onComplete: () => {
                                 this.setDefense(2);
-                                setTimeout(() => {
+                                this.addTimeout(() => {
                                     globalObjects.bannerTextManager.setDialog(["The stage lights are blinding.", "-2 damage to your attacks."]);
                                     this.minusDamage1.setAlpha(0.5).setRotation(0.12);
                                     this.minusDamage2.setAlpha(0.5).setRotation(-0.12);
@@ -530,9 +530,9 @@
                                  duration: 550,
                                  onComplete: () => {
                                      playSound('clunk2');
-                                     setTimeout(() => {
+                                     this.addTimeout(() => {
                                          playSound('clunk', 0.6);
-                                         setTimeout(() => {
+                                         this.addTimeout(() => {
                                              playSound('clunk2', 0.3);
                                          }, 200);
                                      }, 500);
@@ -656,7 +656,7 @@
                          this.claw1Attacked = !this.claw1Attacked;
                          playSound(this.claw1Attacked ? 'voca_claw_1' : 'voca_claw_2', 0.8);
                          playSound('sword_hit');
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              if (!this.dead && this.shieldAdded) {
                                 this.sprite.setDepth(10);
                                  this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
@@ -682,7 +682,7 @@
                      },
                      attackStartFunction: () => {
                          if (!this.dead && this.shieldAdded) {
-                             setTimeout(() => {
+                             this.addTimeout(() => {
                                  if (!this.dead && this.shieldAdded) {
                                      playSound('voca_gun');
                                  }
@@ -717,7 +717,7 @@
                          playSound('voca_claw_1', 0.7);
                          playSound('voca_claw_2', 0.7);
                          playSound('sword_hit');
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              if (!this.dead && this.shieldAdded) {
                                  this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
                                 this.sprite.setDepth(10);
@@ -755,7 +755,7 @@
                          this.claw1Attacked = !this.claw1Attacked;
                          playSound(this.claw1Attacked ? 'voca_claw_1' : 'voca_claw_2', 0.8);
                          playSound('sword_hit');
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              if (!this.dead && this.shieldAdded) {
                                  this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
                              }
@@ -787,7 +787,7 @@
                          playSound('voca_claw_1', 0.7);
                          playSound('voca_claw_2', 0.7);
                          playSound('sword_hit');
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              if (!this.dead && this.shieldAdded) {
                                  this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
                              }
@@ -815,7 +815,7 @@
                      },
                      attackStartFunction: () => {
                          if (!this.dead && this.shieldAdded) {
-                             setTimeout(() => {
+                             this.addTimeout(() => {
                                  if (!this.dead && this.shieldAdded) {
                                      playSound('voca_laser');
                                  }
@@ -875,7 +875,7 @@
                      },
                      attackStartFunction: () => {
                          if (!this.dead && this.shieldAdded) {
-                             setTimeout(() => {
+                             this.addTimeout(() => {
                                  if (!this.dead && this.shieldAdded) {
                                      playSound('voca_gun');
                                  }
@@ -910,7 +910,7 @@
                          playSound('voca_claw_1', 0.7);
                          playSound('voca_claw_2', 0.7);
                          playSound('sword_hit');
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              if (!this.dead && this.shieldAdded) {
                                  this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
                              }
@@ -980,7 +980,7 @@
                          if (!this.exhausted) {
                              playSound('voca_laser_broken', 0.8);
                          }
-                         this.laserFake = this.scene.add.sprite(this.x - 5, this.y -30, 'enemies', 'robot_blast_small1.png').setScale(0.8).setDepth(9999).setAlpha(0.1);
+                         this.laserFake = this.addSprite(this.x - 5, this.y -30, 'enemies', 'robot_blast_small1.png').setScale(0.8).setDepth(9999).setAlpha(0.1);
                          PhaserScene.tweens.add({
                              targets: this.laserFake,
                              alpha: 0.8,
@@ -1098,7 +1098,7 @@
              alpha: 0,
              ease: 'Quint.easeOut',
          });
-         let deathBoom = PhaserScene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'robot_blast.png').setDepth(0).setOrigin(0.5, 0.65).setScale(0.25, -0.25);
+         let deathBoom = this.addSprite(this.sprite.x, this.sprite.y, 'enemies', 'robot_blast.png').setDepth(0).setOrigin(0.5, 0.65).setScale(0.25, -0.25);
          PhaserScene.tweens.add({
              targets: deathBoom,
              alpha: 0,
@@ -1185,8 +1185,8 @@
                                                          this.sprite.setRotation(0);
                                                          playSound('clunk2');
 
-                                                         setTimeout(() => {
-                                                             let rune = this.scene.add.sprite(this.x, this.y, 'tutorial', 'rune_protect_large.png').setScale(0).setVisible(false);
+                                                         this.addTimeout(() => {
+                                                             let rune = this.addSprite(this.x, this.y, 'tutorial', 'rune_protect_large.png').setScale(0).setVisible(false);
                                                              PhaserScene.tweens.add({
                                                                  targets: rune,
                                                                  x: gameConsts.halfWidth,
@@ -1217,7 +1217,7 @@
      }
 
      createMissileObject(x, y, rotation = 0, delay = 0) {
-         let newObj = PhaserScene.add.sprite(x, y, 'enemies', 'missile.png').setRotation(rotation).setScale(0).setDepth(0).setOrigin(0.5, 1.1);
+         let newObj = this.addSprite(x, y, 'enemies', 'missile.png').setRotation(rotation).setScale(0).setDepth(0).setOrigin(0.5, 1.1);
          this.missileObjects.push(newObj);
          this.scene.tweens.add({
              delay: delay,
@@ -1233,6 +1233,8 @@
      animateSelfDestructText() {
          let selfDestructDesc = PhaserScene.add.bitmapText(this.sprite.x, this.sprite.y - 168, 'damage', "SELF DESTRUCT\nACTIVE IN", 42, 1).setDepth(999).setOrigin(0.5, 0.5);
          let selfDestructText = PhaserScene.add.bitmapText(this.sprite.x, this.sprite.y - 95, 'damage', "4", 54, 1).setDepth(999).setOrigin(0.5, 0.5).setScale(1.6);
+         this.addToDestructibles(selfDestructDesc);
+         this.addToDestructibles(selfDestructText);
         PhaserScene.tweens.add({
             targets: selfDestructText,
             scaleX: 1,
@@ -1240,7 +1242,7 @@
             duration: 500,
             ease: 'Cubic.easeOut'
         });
-        setTimeout(() => {
+        this.addTimeout(() => {
             selfDestructText.setText("3").setScale(1.4);
             playSound('voca_hello_short');
             PhaserScene.tweens.add({
@@ -1250,7 +1252,7 @@
                 duration: 500,
                 ease: 'Cubic.easeOut'
             });
-        setTimeout(() => {
+        this.addTimeout(() => {
             selfDestructText.setText("2").setScale(1.4);
             playSound('voca_hello_short');
             PhaserScene.tweens.add({
@@ -1260,7 +1262,7 @@
                 duration: 500,
                 ease: 'Cubic.easeOut'
             });
-            setTimeout(() => {
+            this.addTimeout(() => {
                 selfDestructText.setText("1").setScale(1.4);
                 playSound('voca_hello_short');
                 PhaserScene.tweens.add({
@@ -1270,7 +1272,7 @@
                     duration: 500,
                     ease: 'Cubic.easeOut'
                 });
-                 setTimeout(() => {
+                 this.addTimeout(() => {
                     let soundToKill = playSound('voca_hello');
                     
 
@@ -1324,8 +1326,8 @@
                             });
                         }
                     });
-                    setTimeout(() => {
-                        let explosion = PhaserScene.add.sprite(this.x, this.y, 'spells', 'brickPattern2.png').setScale(1).setDepth(100010).setPosition(this.x, gameConsts.halfHeight - 50).setOrigin(0.5, 0.45);
+                    this.addTimeout(() => {
+                        let explosion = this.addSprite(this.x, this.y, 'spells', 'brickPattern2.png').setScale(1).setDepth(100010).setPosition(this.x, gameConsts.halfHeight - 50).setOrigin(0.5, 0.45);
                         this.scene.tweens.add({
                             targets: explosion,
                             duration: 300,
@@ -1556,10 +1558,10 @@
      }
 
      shootBullets(damage = 4, initDelay = 150) {
-        setTimeout(() => {
+        this.addTimeout(() => {
              if (!this.dead && this.shieldAdded) {
                  if (!this.fireEffect) {
-                     this.fireEffect = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_fire_1.png').setDepth(11);
+                     this.fireEffect = this.addSprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_fire_1.png').setDepth(11);
                      this.addToDestructibles(this.fireEffect);
                  }
                  let fireDelay = 120;
@@ -1587,7 +1589,7 @@
                                                          this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage)
                                                          PhaserScene.time.delayedCall(fireDelay, () => {
                                                            this.fireEffect.setVisible(false);
-                                                            setTimeout(() => {
+                                                            this.addTimeout(() => {
                                                                  if (!this.dead && this.shieldAdded) {
                                                                      this.setDefaultSprite('robot1.png');
                                                                      this.sprite.y = this.sprite.startY;
@@ -1612,7 +1614,7 @@
      fireLaser(damage = 30) {
          if (!this.dead && this.shieldAdded) {
              if (!this.laserBeam) {
-                 this.laserBeam = PhaserScene.add.sprite(this.sprite.x, this.sprite.y - 5, 'enemies', 'robot_laser_fire.png').setDepth(11).setOrigin(0.5, 0.1);
+                 this.laserBeam = this.addSprite(this.sprite.x, this.sprite.y - 5, 'enemies', 'robot_laser_fire.png').setDepth(11).setOrigin(0.5, 0.1);
                  this.addToDestructibles(this.laserBeam);
              }
              let backgroundBlack = getBackgroundBlackout();
@@ -1823,9 +1825,9 @@
 
      showVictory(rune) {
          globalObjects.magicCircle.disableMovement();
-         let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
-         let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
+         let banner = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
+         let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
+         let continueText = this.addText(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
 
          PhaserScene.tweens.add({
              targets: banner,
@@ -1840,7 +1842,7 @@
              duration: 500,
          });
          playSound('victory_false');
-         setTimeout(() => {
+         this.addTimeout(() => {
              continueText.alpha = 1;
          }, 1000);
 

@@ -10,7 +10,7 @@
                 }
                 this.initTutorial2();
             } else if (globalObjects.player.getPlayerCastSpellsCount() === 2) {
-                setTimeout(() => {
+                this.addTimeout(() => {
                     this.attemptTutThree();
                 }, 3000);
                 this.playerSpellCastSub.unsubscribe()
@@ -23,7 +23,7 @@
         let origY = this.sprite.y;
         this.sprite.setScale(scale * 0.85, scale * 0.85).setAlpha(1);
         this.sprite.y += 92;
-        this.scene.tweens.add({
+        this.addTween({
             targets: this.sprite,
             duration: 1500,
             ease: 'Quint.easeInOut',
@@ -40,8 +40,8 @@
      }
 
      initTutorial(x, y) {
-        let dummyShadow = this.scene.add.sprite(x - 6, y - 50, 'misc', 'shadow_circle.png').setScale(13).setDepth(9999).setAlpha(0);
-        PhaserScene.tweens.add({
+        let dummyShadow = this.addSprite(x - 6, y - 50, 'misc', 'shadow_circle.png').setScale(13).setDepth(9999).setAlpha(0);
+        this.addTween({
             targets: dummyShadow,
             alpha: 0.4,
             ease: "Cubic.easeInOut",
@@ -51,16 +51,18 @@
             duration: 1500,
         });
 
-         this.shadow = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(6).setDepth(9999).setAlpha(0);
-        setTimeout(() => {
+         this.shadow = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(6).setDepth(9999).setAlpha(0);
+        this.addTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
+                globalObjects.magicCircle.disableMovement();
                 // TODO Add for main dummy too
                 globalObjects.bannerTextManager.setDialog(["This thing is in the way.", "I should knock it over."]);
                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
                 globalObjects.bannerTextManager.showBanner(false);
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                    globalObjects.magicCircle.enableMovement();
                     messageBus.publish("highlightRunes");
-                    PhaserScene.tweens.add({
+                    this.addTween({
                         targets: dummyShadow,
                         alpha: 0,
                         ease: "Cubic.easeOut",
@@ -85,7 +87,7 @@
                             if (this.currShadowTween) {
                                 this.currShadowTween.stop();
                             }
-                            PhaserScene.tweens.add({
+                            this.addTween({
                                 targets: this.shadow,
                                 alpha: 0,
                                 ease: "Cubic.easeOut",
@@ -94,7 +96,7 @@
                                 duration: 500,
                             });
                         });
-                        this.currShadowTween = PhaserScene.tweens.add({
+                        this.currShadowTween = this.addTween({
                             delay: 200,
                             targets: this.shadow,
                             alpha: 0.65,
@@ -107,24 +109,24 @@
                                     messageBus.publish("unhighlightRunes");
                                     globalObjects.textPopupManager.hideInfoText();
                                     spellListener.unsubscribe();
-                                    PhaserScene.tweens.add({
+                                    this.addTween({
                                         targets: this.shadow,
                                         alpha: 0,
                                         ease: "Cubic.easeOut",
                                         scaleX: 8,
                                         scaleY: 8,
-                                        duration: 500,
+                                        duration: 750,
                                     });
                                 }
                             }
                         });
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             globalObjects.magicCircle.showReadySprite();
                         }, 1000);
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
                                 globalObjects.magicCircle.showReadySprite();
-                                setTimeout(() => {
+                                this.addTimeout(() => {
                                     if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
                                         globalObjects.magicCircle.showReadySprite();
                                     }
@@ -134,30 +136,30 @@
                     }
                 });
             }
-        }, 1250)
+        }, 1100)
     }
 
      showArrowRotate() {
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [this.arrowRotate1, this.arrowRotate2],
              alpha: 0.8,
              duration: 400,
          });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [this.arrowRotate1],
              rotation: this.arrowRotate1.rotation * -1,
              ease: 'Cubic.easeInOut',
              duration: 1100,
              completeDelay: 100,
              onComplete: () => {
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      delay: 900,
                      targets: [this.arrowRotate1, this.arrowRotate2],
                      alpha: 0,
                      duration: 400,
                  });
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: [this.arrowRotate1],
                      rotation: this.arrowRotate1.rotation * -1,
                      ease: 'Cubic.easeInOut',
@@ -165,14 +167,14 @@
                  });
              }
          });
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [this.arrowRotate2],
              rotation: this.arrowRotate2.rotation * -1,
              ease: 'Cubic.easeInOut',
              duration: 1100,
              completeDelay: 100,
              onComplete: () => {
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: [this.arrowRotate2],
                      rotation: this.arrowRotate2.rotation * -1,
                      ease: 'Cubic.easeInOut',
@@ -189,12 +191,12 @@
      }
 
     initTutorial2() {
-        setTimeout(() => {
+        this.addTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1 && !this.dead) {
                 // player only casted 1 spell so far
                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Spin the ACTION and ELEMENT\nwheels to switch spells");
-                this.arrowRotate1 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
-                this.arrowRotate2 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
+                this.arrowRotate1 = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
+                this.arrowRotate2 = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
                 this.destructibles.push(this.arrowRotate1);
                 this.destructibles.push(this.arrowRotate2);
                 this.showArrowRotate();
@@ -203,7 +205,7 @@
                     globalObjects.textPopupManager.hideInfoText();
                     spellListener.unsubscribe();
                     this.currShadowTween.stop();
-                    PhaserScene.tweens.add({
+                    this.addTween({
                         targets: this.shadow,
                         alpha: 0,
                         ease: "Cubic.easeOut",
@@ -217,7 +219,7 @@
                     });
                 });
 
-                this.currShadowTween = PhaserScene.tweens.add({
+                this.currShadowTween = this.addTween({
                     targets: this.shadow,
                     alpha: 0.55,
                     ease: "Cubic.easeOut",
@@ -228,7 +230,7 @@
                         if (globalObjects.player.getPlayerCastSpellsCount() > 1 && this.shadow.alpha > 0.54) {
                             globalObjects.textPopupManager.hideInfoText();
                             spellListener.unsubscribe();
-                            PhaserScene.tweens.add({
+                            this.addTween({
                                 targets: this.shadow,
                                 alpha: 0,
                                 ease: "Cubic.easeOut",
@@ -250,14 +252,14 @@
     attemptTutThree() {
         if (!this.dead && !this.attemptedTutThree) {
             this.attemptedTutThree = true;
-            setTimeout(() => {
+            this.addTimeout(() => {
             this.shadow.destroy();
             if (this.dead) {
                 return;
             }
             // setFrame('shadow_bar.png').setPosition(gameConsts.halfWidth, 25).setScale(3.5).setAlpha(0.2);
-            // // = this.scene.add.sprite(gameConsts.halfWidth, 30, 'misc', 'shadow_bar.png').setScale(6).setDepth(9999).setAlpha(0);
-            // PhaserScene.tweens.add({
+            // // = this.addSprite(gameConsts.halfWidth, 30, 'misc', 'shadow_bar.png').setScale(6).setDepth(9999).setAlpha(0);
+            // this.addTween({
             //     targets: this.shadow,
             //     scaleX: 3.4,
             //     scaleY: 3.4,
@@ -266,7 +268,7 @@
             //     alpha: 0.5,
             //     duration: 250,
             //     onComplete: () => {
-            //         PhaserScene.tweens.add({
+            //         this.addTween({
             //             scaleX: 5,
             //             scaleY: 5,
             //             targets: this.shadow,
@@ -278,15 +280,15 @@
             //         });
             //     }
             // });
-            setTimeout(() => {
+            this.addTimeout(() => {
                 if (!this.dead) {
                     globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 180, 30, "Defeat the =>\nenemy to win");
                 }
 
             }, 800);
-            this.glowHealth = this.scene.add.sprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
-            this.glowHealth2 = this.scene.add.sprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_red.webp').setDepth(0).setAlpha(1.1).setScale(0.5, 2);
-            PhaserScene.tweens.add({
+            this.glowHealth = this.addSprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
+            this.glowHealth2 = this.addSprite(gameConsts.halfWidth, 21, 'lowq', 'glow_flat_red.webp').setDepth(0).setAlpha(1.1).setScale(0.5, 2);
+            this.addTween({
                 targets: this.glowHealth2,
                 scaleX: 3,
                 ease: 'Quad.easeOut',
@@ -295,7 +297,7 @@
                     this.glowHealth2.destroy();
                 }
             });
-            PhaserScene.tweens.add({
+            this.addTween({
                 targets: this.glowHealth2,
                 scaleY: 0,
                 alpha: 0,
@@ -303,28 +305,28 @@
                 duration: 800,
             });
 
-            PhaserScene.tweens.add({
+            this.addTween({
                 targets: this.glowHealth,
                 alpha: 0.75,
                 scaleX: 1,
                 ease: 'Cubic.easeInOut',
                 duration: 1500,
                 onComplete: () => {
-                    PhaserScene.tweens.add({
+                    this.addTween({
                         targets: this.glowHealth,
                         alpha: 0,
                         scaleX: 0.7,
                         ease: 'Cubic.easeIn',
                         duration: 1500,
                         onComplete: () => {
-                            PhaserScene.tweens.add({
+                            this.addTween({
                                 targets: this.glowHealth,
                                 alpha: 0.55,
                                 scaleX: 0.9,
                                 ease: 'Cubic.easeInOut',
                                 duration: 1500,
                                 onComplete: () => {
-                                    PhaserScene.tweens.add({
+                                    this.addTween({
                                         targets: this.glowHealth,
                                         alpha: 0,
                                         duration: 1000,
@@ -342,13 +344,13 @@
      setHealth(newHealth) {
          super.setHealth(newHealth);
          if (newHealth > 0) {
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: this.sprite,
                  rotation: -0.1,
                  ease: "Quart.easeOut",
                  duration: 50,
                  onComplete: () => {
-                     PhaserScene.tweens.add({
+                     this.addTween({
                          targets: this.sprite,
                          rotation: 0,
                          ease: "Back.easeOut",
@@ -381,7 +383,7 @@
         this.setDefaultSprite('lesser_dummy_noshadow.png', this.sprite.scaleX);
         this.sprite.setOrigin(0.5, 0.99);
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: this.sprite,
              rotation: -1.25,
              ease: "Cubic.easeIn",
@@ -396,7 +398,7 @@
              }
          });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: this.sprite,
              x: "+=35",
              ease: "Cubic.easeOut",
@@ -406,35 +408,35 @@
 
      showVictory() {
          globalObjects.magicCircle.disableMovement();
-         let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
-         let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
+         let banner = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
+         let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
+         let continueText = this.addText(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: banner,
              alpha: 0.8,
              duration: 500,
          });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [victoryText],
              alpha: 1,
              ease: 'Quad.easeOut',
              duration: 500,
          });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: victoryText,
              scaleX: 1,
              scaleY: 1,
              duration: 800,
          });
-         setTimeout(() => {
+         this.addTimeout(() => {
              continueText.alpha = 1;
              this.dieClickBlocker.setOnMouseUpFunc(() => {
                  this.dieClickBlocker.destroy();
 
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: this.sprite,
                      alpha: 0,
                      scaleX: this.sprite.startScale * 1.2,
@@ -445,7 +447,7 @@
                          this.destroy();
                      }
                  });
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: [victoryText, banner],
                      alpha: 0,
                      duration: 400,
@@ -471,8 +473,8 @@
                      chargeAmt: 999,
                      damage: 999,
                     attackFinishFunction: () => {
-                        let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
-                        setTimeout(() => {
+                        let dmgEffect = this.addSprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
+                        this.addTimeout(() => {
                             dmgEffect.destroy();
                         }, 150)
                     }

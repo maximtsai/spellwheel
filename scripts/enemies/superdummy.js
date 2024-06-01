@@ -5,7 +5,7 @@
         this.bgMusic = playMusic('bite_down', 0.65, true);
         this.startY = this.sprite.y;
 
-        setTimeout(() => {
+        this.popupTimeout = setTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
         }, 1500)
@@ -26,10 +26,10 @@
 
      initMisc() {
         if (!this.snort) {
-            this.snort = this.scene.add.sprite(this.x - 5, this.y - 96, 'dummyenemy', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(11).setAlpha(0);
+            this.snort = this.addSprite(this.x - 5, this.y - 96, 'dummyenemy', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(11).setAlpha(0);
             this.destructibles.push(this.snort);
         }
-        this.stars = this.scene.add.sprite(this.x - 5, this.y - 96, 'dummyenemy', 'super_dummy_stars.png').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.7).setDepth(150).setAlpha(0);
+        this.stars = this.addSprite(this.x - 5, this.y - 96, 'dummyenemy', 'super_dummy_stars.png').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.7).setDepth(150).setAlpha(0);
         this.destructibles.push(this.stars);
 
      }
@@ -40,7 +40,7 @@
             this.shownTut4 = true;
             globalObjects.textPopupManager.setInfoText(gameConsts.width - 80, 275, "Enemies get\nangry when\nattacked!", 'left');
             messageBus.publish('setSlowMult', 0.25, 50);
-            let glowBar = this.scene.add.sprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
+            let glowBar = this.addSprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             PhaserScene.tweens.add({
                 targets: glowBar,
                 alpha: 0.25,
@@ -208,7 +208,7 @@
                      this.sprite.setRotation(0);
                      this.sprite.setOrigin(0.85, 0.78);
 
-                     let rune = this.scene.add.sprite(this.x, this.y - 75, 'circle', 'rune_mind_glow.png').setOrigin(0.5, 0.15).setScale(0).setDepth(9999).setVisible(false);
+                     let rune = this.addSprite(this.x, this.y - 75, 'circle', 'rune_mind_glow.png').setOrigin(0.5, 0.15).setScale(0).setDepth(9999).setVisible(false);
                      PhaserScene.tweens.add({
                          targets: rune,
                          x: gameConsts.halfWidth,
@@ -226,16 +226,16 @@
     }
 
     showFalseVictory() {
-        let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
-        let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-        let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
+        let banner = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
+        let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
+        let continueText = this.addText(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
 
         PhaserScene.tweens.add({
             targets: banner,
             alpha: 0.75,
             duration: 500,
             onComplete: () => {
-                let dummyArm = this.scene.add.sprite(this.x - 95, this.y - 70, 'dummyenemy', 'super_dummy_rightarm_stretch.png').setScale(0, 0.15).setDepth(0);
+                let dummyArm = this.addSprite(this.x - 95, this.y - 70, 'dummyenemy', 'super_dummy_rightarm_stretch.png').setScale(0, 0.15).setDepth(0);
                 setTimeout(() => {
                     playSound('inflate');
                 }, 100);
@@ -428,6 +428,9 @@
     }
 
     revive() {
+        if (this.isDestroyed) {
+            return;
+        }
         this.y = this.startY;
         this.sprite.y = this.y;
         this.sprite.setOrigin(0.51, 0.5);
@@ -441,6 +444,9 @@
              completeDelay: 50,
              ease: 'Quart.easeOut',
              onComplete: () => {
+                if (this.isDestroyed) {
+                    return;
+                }
                  this.currAnim = PhaserScene.tweens.add({
                      targets: this.sprite,
                      scaleX: this.sprite.startScale,
@@ -448,6 +454,9 @@
                      duration: 400,
                      ease: 'Quart.easeIn',
                      onComplete: () => {
+                        if (this.isDestroyed) {
+                            return;
+                        }
                         this.isLoading = false;
                         this.setMaxHealth(this.secondHealth);
                         this.heal(this.healthMax);
@@ -458,11 +467,9 @@
 
                         this.bgMusic = playMusic('bite_down_complex', 0.8, true);
                         this.setDefaultSprite('dummy_angry.png', 0.95);
-                        this.dummyRightArm = this.scene.add.sprite(this.x + 51, this.startY + 30, 'dummyenemy', 'super_dummy_rightarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(0.5);
-                        this.dummyLeftArm = this.scene.add.sprite(this.x - 51, this.startY + 30, 'dummyenemy', 'super_dummy_leftarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(-0.5);
+                        this.dummyRightArm = this.addSprite(this.x + 51, this.startY + 30, 'dummyenemy', 'super_dummy_rightarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(0.5);
+                        this.dummyLeftArm = this.addSprite(this.x - 51, this.startY + 30, 'dummyenemy', 'super_dummy_leftarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(-0.5);
                         
-
-
                          PhaserScene.tweens.add({
                              targets: [this.dummyRightArm, this.dummyLeftArm],
                              scaleX: this.sprite.startScale * 0.9,
@@ -471,6 +478,9 @@
                              rotation: 0,
                              duration: 700,
                              onComplete: () => {
+                                if (this.isDestroyed) {
+                                    return;
+                                }
                                 this.repeatTweenBreathe();
                              }
                          });
@@ -497,6 +507,9 @@
                              ease: 'Cubic.easeIn',
                              duration: 1000,
                              onComplete: () => {
+                                if (this.isDestroyed) {
+                                    return;
+                                }
                                 this.tryInitTutorial4()
                              }
                          });
@@ -559,7 +572,7 @@
                         this.pullbackScale = 0.9;
                         this.setSprite('dummy_angry.png');
                         this.reEnableArms();
-                         let dmgEffect = this.scene.add.sprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
+                         let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
                          setTimeout(() => {
                              dmgEffect.x += 30;
                              dmgEffect.y += 10;
@@ -1041,9 +1054,8 @@
                         this.sprite.setDepth(200);
                         let zoomSound = playSound('zoomin');
 
-                        this.glowEyes = PhaserScene.add.sprite(0, 0, 'dummyenemy', 'scary_eyes.png');
+                        this.glowEyes = this.addSprite(0, 0, 'dummyenemy', 'scary_eyes.png');
                         this.glowEyes.setOrigin(this.sprite.originX, this.sprite.originY).setPosition(this.sprite.x, this.sprite.y + 2).setAlpha(-0.1).setDepth(200).setScale(0.8);
-                        this.addToDestructibles(this.glowEyes);
                         this.currAnim = PhaserScene.tweens.add({
                              targets: [this.glowEyes, this.sprite],
                              scaleX: 1.35,

@@ -1,5 +1,7 @@
 class Encyclopedia {
     constructor(scene, x, y) {
+        this.startX = x;
+        this.startY = y;
         this.baseDepth = 101000;
         this.listOfThingsToHide = [];
         this.listOfButtonsToDisable = [];
@@ -106,12 +108,14 @@ class Encyclopedia {
              targets: this.bgPage,
              alpha: 1,
              ease: 'Cubic.easeOut',
-             duration: 500,
+             duration: 1,
         });
+        messageBus.publish('pauseGame', 0.002);
 
     }
 
     hideEncyclopedia() {
+        messageBus.publish('unpauseGame');
         hideGlobalClickBlocker();
         PhaserScene.tweens.add({
              targets: this.listOfThingsToHide,
@@ -123,6 +127,13 @@ class Encyclopedia {
         for (let i = 0; i < this.listOfButtonsToDisable.length; i++) {
             this.listOfButtonsToDisable[i].setState(DISABLE);
         }
+    }
 
+    showButton() {
+        this.button.setPos(this.startX, this.startY);
+    }
+
+    hideButton() {
+        this.button.setPos(this.startX, -100);
     }
 }

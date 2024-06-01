@@ -185,34 +185,34 @@ class Player {
         this.barAssetsSmall = [];
         for (let i = 0; i < 3; i++) {
             let healthBar = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_quarter.png');
-            healthBar.setDepth(99998);
+            healthBar.setDepth(9997);
             healthBar.rotation = Math.PI * (0.75 - 0.5 * i);
             healthBar.visible = false;
             //healthBar.setScale(0.999, 0.999);
             this.barAssetsGrey.push(healthBar);
         }
-        this.healthBarTiny = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_tiny.png').setDepth(99999);
+        this.healthBarTiny = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_tiny.png').setDepth(9998);
         this.healthBarTiny.setRotation(Math.PI * 0.85).setScale(1);
 
         for (let i = 0; i < 3; i++) {
             let healthBar = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_quarter.png');
-            healthBar.setDepth(99999);
+            healthBar.setDepth(9997);
             healthBar.rotation = Math.PI * (1.25 + 0.5 * i) + 0.01;
             //healthBar.setScale(0.999, 0.999);
             this.barAssetsLarge.push(healthBar);
         }
 
         for (let i = 0; i < 4; i++) {
-            let healthBar = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_sixteenth.png').setDepth(99999);
+            let healthBar = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_sixteenth.png').setDepth(9998);
             healthBar.rotation = Math.PI * (0.882 + i * 0.125);
             healthBar.visible = true;
             this.barAssetsSmall.push(healthBar);
         }
 
-        let healthBarEnd = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_end.png').setDepth(99999);
+        let healthBarEnd = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_end.png').setDepth(9998);
 
         this.healthBarPeak = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_tip.png');
-        this.healthBarPeak.setDepth(99999);
+        this.healthBarPeak.setDepth(9998);
         this.healthBarPeak.rotation = Math.PI * (0.75 + 1.5);
         this.healthBarPeak.setScale(1, 1);
         this.healthBarPeak.visible = true;
@@ -222,7 +222,7 @@ class Player {
         this.healthText.setFontStyle('bold')
         this.healthText.setTint(0x000000);
         this.healthText.setOrigin(0.5, 0.5);
-        this.healthText.setDepth(99999);
+        this.healthText.setDepth(9998);
     }
 
     createMisc() {
@@ -982,6 +982,8 @@ class Player {
                             onMouseUp: () => {
                                 this.revive();
                                 gotoMainMenu();
+                                globalObjects.textPopupManager.hideInfoText();
+                                globalObjects.bannerTextManager.closeBanner();
                                 deathRetryButton.destroy();
                                 deathMenuButton.destroy();
                             }

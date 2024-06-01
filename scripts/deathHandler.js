@@ -284,10 +284,6 @@ function playReaperAnim(enemy, customFinFunc) {
                                             handleReaperDialog(level, () => {
                                                 gameVars.deathFlutterDelay = 10;
                                                 repeatDeathFlutterAnimation(-0.25);
-                                                // setTimeout(() => {
-                                                //     repeatDeathFlutterAnimation();
-                                                //     gameVars.deathFlutterDelay = 100;
-                                                // }, 200);
                                                 PhaserScene.tweens.add({
                                                     targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2],
                                                     fakeAlpha: 0.1,

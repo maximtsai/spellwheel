@@ -5,7 +5,7 @@
          this.bgMusic = playMusic('bite_down', 0.7, true);
 
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
-         setTimeout(() => {
+         this.addTimeout(() => {
              this.backForthAnim();
          }, 100);
      }
@@ -62,11 +62,11 @@
                      finishDelay: 8000,
                      startFunction: () => {
                         playSound('enemy_attack');
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             playSound('enemy_attack_2');
                             this.angrySymbol.x += 29;
                             this.attackName.setText("|;"+attackDamages+"x"+attackTimes+";| ");
-                            setTimeout(() => {
+                            this.addTimeout(() => {
                                 playSound('enemy_attack_major');
                                 this.angrySymbol.x += 28;
                                 this.attackName.setText("}|;"+attackDamages+"x"+attackTimes+";|} ");
@@ -120,7 +120,7 @@
                                          }
                                      });
                                     this.bgMusic = playSound('gunsequence', 0.75);
-                                    setTimeout(() => {
+                                    this.addTimeout(() => {
                                         if (this.dead) {
                                             return;
                                         }
@@ -231,7 +231,7 @@
         }
         let flashDelay = 61;
         for (let i = 1; i <= 6; i++) {
-            setTimeout(() => {
+            this.addTimeout(() => {
                 if (!this.dead) {
                     let randFrameNum = Math.floor(Math.random() * 5) + 1;
                     let randFrame = 'gunflash_' + randFrameNum + '.png';
@@ -448,24 +448,22 @@
         playSound('clunk2');
          this.setDefaultSprite('mantis_dead.png', this.sprite.startScale, true);
          this.sprite.setRotation(0).setScale(this.sprite.startScale);
-         setTimeout(() => {
-            setTimeout(() => {
-                let rune = this.scene.add.sprite(this.x, this.y, 'tutorial', 'rune_protect_large.png').setScale(0.5).setDepth(9999).setVisible(false);
-                playSound('victory_2');
-                PhaserScene.tweens.add({
-                    targets: rune,
-                    x: gameConsts.halfWidth,
-                    y: gameConsts.halfHeight - 170,
-                    scaleX: 1,
-                    scaleY: 1,
-                    ease: "Cubic.easeOut",
-                    duration: 500,
-                    onComplete: () => {
-                        this.showVictory(rune);
-                    }
-                });
-            }, 250)
-         }, 1400);
+         this.addTimeout(() => {
+            let rune = this.scene.add.sprite(this.x, this.y, 'tutorial', 'rune_protect_large.png').setScale(0.5).setDepth(9999).setVisible(false);
+            playSound('victory_2');
+            PhaserScene.tweens.add({
+                targets: rune,
+                x: gameConsts.halfWidth,
+                y: gameConsts.halfHeight - 170,
+                scaleX: 1,
+                scaleY: 1,
+                ease: "Cubic.easeOut",
+                duration: 500,
+                onComplete: () => {
+                    this.showVictory(rune);
+                }
+            });
+         }, 1600);
      }
 
 }

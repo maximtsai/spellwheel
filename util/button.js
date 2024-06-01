@@ -129,6 +129,13 @@ class Button {
         } else {
             this.imageRefs[stateData.ref].setTint(stateData.tint);
         }
+        if (this.text) {
+            if (newState === DISABLE) {
+                this.text.visible = false;
+            } else {
+                this.text.visible = true;
+            }
+        }
     }
 
     checkCoordOver(valX, valY) {

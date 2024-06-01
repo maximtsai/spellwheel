@@ -7,7 +7,7 @@
          this.bgMusic = playMusic('echos_of_time', 0.9, true);
 
 
-         setTimeout(() => {
+         this.popupTimeout = setTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3500)

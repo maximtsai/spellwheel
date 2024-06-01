@@ -273,6 +273,9 @@ class Enemy {
     }
 
     initSprite(name, scale = 1, xOffset = 0, yOffset = 0, atlas) {
+        if (this.isDestroyed) {
+            return;
+        }
         this.x += xOffset;
         this.y += yOffset;
         let usedAtlas = atlas ? atlas : 'enemies';
@@ -317,12 +320,15 @@ class Enemy {
     }
 
     setSpriteIfNotInactive(name, scale, noAnim, depth = 1) {
-        if (!this.dead && !this.isAsleep) {
+        if (!this.dead && !this.isAsleep && !this.isDestroyed) {
             this.setSprite(name, scale, noAnim, depth);
         }
     }
 
     setSprite(name, scale, noAnim, depth = 1) {
+        if (this.isDestroyed) {
+            return;
+        }
         let newScale = scale ? scale : 1;
         if (!this.sprite) {
             this.sprite = this.scene.add.sprite(this.x, this.y, this.atlas, name);
@@ -352,6 +358,9 @@ class Enemy {
     }
 
     setDefaultSprite(name, scale = null, noAnim) {
+        if (this.isDestroyed) {
+            return;
+        }
         this.defaultSprite = name;
         if (!scale) {
             scale = this.sprite ? this.sprite.startScale : 1;
@@ -361,44 +370,10 @@ class Enemy {
     }
 
     update(dt) {
-        if (this.dead) {
+        if (this.dead || this.isDestroyed) {
             return;
         }
         let timeChange = dt * gameVars.timeSlowRatio;
-
-        /*
-        if (this.storeDamage) {
-            this.damageCountdown += timeChange;
-            if (this.damageCountdown < 600) {
-                if (this.damageCountdown > 25 && this.damageCountdown < 510) {
-                    this.clockLargeHand.rotation = -(this.damageCountdown - 20) * 0.012;
-                    this.clockLargeHand.alpha = 0.92;
-                } else if (this.damageCountdown >= 590) {
-                    // do nothing for a brief moment
-                } else if (this.damageCountdown >= 510) {
-                    this.clockLargeHand.rotation = -490 * 0.012 - (this.damageCountdown - 510) * 0.0044;
-                    this.clockLargeHand.alpha = 1;
-                } else {
-                    this.clockLargeHand.alpha = 0.85;
-                }
-            } else {
-                // disappear
-                this.clockLargeHand.rotation = 0;
-                this.delayedDamageText.alpha = 0;
-                this.scene.tweens.add({
-                    targets: [this.clockLargeHand, this.clockLarge],
-                    delay: 150,
-                    duration: 250,
-                    scaleX: '+=0.2',
-                    scaleY: '+=0.2',
-                    alpha: 0,
-                });
-                this.storeDamage = false;
-                this.takeDamage(this.accumulatedTimeDamage);
-                this.accumulatedTimeDamage = 0;
-            }
-        }
-        */
 
         let chargeMult = 1;
         if (this.isAsleep) {
@@ -600,6 +575,9 @@ class Enemy {
     }
 
     useMove() {
+        if (this.isDestroyed) {
+            return;
+        }
         if (this.health <= 0) {
             return;
         }
@@ -629,6 +607,9 @@ class Enemy {
     }
 
     readyNextAttack() {
+        if (this.isDestroyed) {
+            return;
+        }
         if (this.nextAttackIndex >= this.attacks[this.currentAttackSetIndex].length) {
             this.nextAttackIndex = 0;
         }
@@ -858,6 +839,9 @@ class Enemy {
     }
 
     addShield(amt) {
+        if (this.isDestroyed) {
+            return;
+        }
         this.shield = amt;
         this.shieldSprite.visible = true;
         this.shieldSprite.alpha = 0.2;
@@ -1012,6 +996,9 @@ class Enemy {
     }
 
     flashHealthChange(newScale, mult = 1) {
+        if (this.isDestroyed) {
+            return;
+        }
         let scaleChange = this.healthBarCurr.scaleX - newScale;
         // let tallAmt = Math.max(0, Math.min(2, 0.05 * scaleChange - 10));
         this.healthBarFlash.scaleX = this.healthBarCurr.scaleX;
@@ -1030,6 +1017,9 @@ class Enemy {
     }
 
     updateHealthBar(isHealing) {
+        if (this.isDestroyed) {
+            return;
+        }
         if (this.health <= 0) {
             this.flashHealthChange(this.healthBarCurr.scaleX, 2);
             this.healthBarCurr.scaleX = 0;
@@ -1111,6 +1101,9 @@ class Enemy {
     }
 
     setAsleep() {
+        if (this.isDestroyed) {
+            return;
+        }
         this.isAsleep = true;
         this.isUsingAttack = false;
         this.chargeBarWarning.visible = false;
@@ -1136,12 +1129,18 @@ class Enemy {
     }
 
     setAwake() {
+        if (this.isDestroyed) {
+            return;
+        }
         this.timeSinceLastAttacked = 9999;
         this.isAsleep = false;
         this.attackName.visible = true;
     }
 
     hideAngrySymbol() {
+        if (this.isDestroyed) {
+            return;
+        }
         if (!this.angrySymbolIsHiding) {
             this.angrySymbolIsHiding = true;
             this.angrySymbolAnim = PhaserScene.tweens.add({
@@ -1158,6 +1157,9 @@ class Enemy {
     }
 
     showAngrySymbol(state) {
+        if (this.isDestroyed) {
+            return;
+        }
         if (this.angrySymbol.currAnim !== state) {
             this.angrySymbol.currAnim = state;
             this.angrySymbol.play(state);
@@ -1179,7 +1181,7 @@ class Enemy {
     }
 
     playerDied() {
-        if (this.dead) {
+        if (this.dead || this.isDestroyed) {
             return;
         }
         if (this.bgMusic) {
@@ -1200,6 +1202,7 @@ class Enemy {
         if (this.isDestroyed) {
             return;
         }
+        this.dead = true;
         this.isDestroyed = true;
         this.clearEffects()
         this.cleanUp();
@@ -1207,6 +1210,12 @@ class Enemy {
             if (this.destructibles[i]) {
                 this.destructibles[i].destroy();
             }
+        }
+        if (this.bgMusic) {
+            fadeAwaySound(this.bgMusic, 200);
+        }
+        if (this.popupTimeout) {
+            clearTimeout(this.popupTimeout);
         }
 
         this.healthBarMax.destroy();
@@ -1512,6 +1521,8 @@ class Enemy {
     }
 
      showVictory(rune) {
+        globalObjects.encyclopedia.hideButton();
+        globalObjects.options.hideButton();
         globalObjects.magicCircle.disableMovement();
          let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
          let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
@@ -1581,7 +1592,7 @@ class Enemy {
      }
 
     launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false, finishDelay = 0) {
-        if (this.dead){
+        if (this.dead || this.isDestroyed){
             return;
         }
         this.isUsingAttack = true;
@@ -1617,7 +1628,7 @@ class Enemy {
             duration: durationPullback * timeSlowMult,
             ease: 'Cubic.easeOut',
             onComplete: () => {
-                if (this.dead){
+                if (this.dead || this.isDestroyed){
                     return;
                 }
                 let attackDuration = isRepeatedAttack ? 150 * extraTimeMult : 175 * extraTimeMult
@@ -1632,13 +1643,13 @@ class Enemy {
                     ease: this.attackEase ? this.attackEase : 'Cubic.easeIn',
                     completeDelay: finishDelay,
                     onComplete: () => {
-                        if (this.dead){
+                        if (this.dead || this.isDestroyed){
                             return;
                         }
                         if (!isRepeatedAttack) {
                             messageBus.publish("enemyMadeAttack", this.nextAttack.damage);
                         }
-                        if (this.dead){
+                        if (this.dead || this.isDestroyed){
                             return;
                         }
                         if (attackSprites.length > 0) {
@@ -1675,7 +1686,7 @@ class Enemy {
                             });
                             this.isUsingAttack = false;
                             setTimeout(() => {
-                                if (!this.dead) {
+                                if (!this.dead && !this.isDestroyed) {
                                     this.setSpriteIfNotInactive(this.defaultSprite, undefined, true);
                                     if (this.nextAttack.finaleFunction) {
                                         this.nextAttack.finaleFunction();
@@ -1691,6 +1702,55 @@ class Enemy {
 
     getMaxHealth() {
         return this.healthMax;
+    }
+
+    addSprite(x, y, atlas, frame) {
+        let newSprite = this.scene.add.sprite(x, y, atlas, frame);
+        this.addToDestructibles(newSprite);
+        return newSprite;
+    }
+
+    addImage(x, y, atlas, frame) {
+        let newImage = this.scene.add.image(x, y, atlas, frame);
+        this.addToDestructibles(newImage);
+        return newImage;
+    }
+
+    addTween(param) {
+        if (param.onStart) {
+            let oldOnStart = param.onStart;
+            param.onStart = () => {
+                if (!this.isDestroyed) {
+                    oldOnStart();
+                }
+            }
+        }
+        if (param.onComplete) {
+            let oldOnComplete = param.onComplete;
+            param.onComplete = () => {
+                if (!this.isDestroyed) {
+                    oldOnComplete();
+                }
+            }
+        }
+        return PhaserScene.tweens.add(param);
+    }
+
+    addText(x, y, text, param1, param2) {
+        let newText = this.scene.add.text(x, y, text, param1, param2)
+        this.addToDestructibles(newText);
+        return newText;
+    }
+
+    addTimeout(func, delay) {
+        if (this.isDestroyed) {
+            return setTimeout(() => {}, 0);
+        }
+        return setTimeout(() => {
+            if (!this.isDestroyed) {
+                func()
+            }
+        }, delay);
     }
 
     updateStatuses() {

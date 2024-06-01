@@ -1515,7 +1515,7 @@ class SpellManager {
         // next attack hits +1 time
         let existingBuff = globalObjects.player.getStatuses()[spellID];
         let multiplier = globalObjects.player.spellMultiplier();
-
+        let mindObj;
         if (existingBuff) {
             multiplier += existingBuff.multiplier;
             let newScale = 0.25 + multiplier * 0.1;
@@ -1527,9 +1527,10 @@ class SpellManager {
                 scaleX: newScale,
                 scaleY: newScale,
             });
+        } else {
+            mindObj = this.scene.add.sprite(gameConsts.halfWidth +205, gameConsts.height - 295, 'spells').play('mindBurnSlow').setDepth(11).setScale(0);
         }
         playSound('mind_enhance');
-        let mindObj = this.scene.add.sprite(gameConsts.halfWidth +205, gameConsts.height - 295, 'spells').play('mindBurnSlow').setDepth(11).setScale(0);
         let newScale = 0.25 + multiplier * 0.1;
         this.scene.tweens.add({
             targets: mindObj,

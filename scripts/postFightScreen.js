@@ -243,6 +243,9 @@ class PostFightScreen {
     }
 
     clearPostFightScreen(clearFog = true) {
+        if (!this.isCreated) {
+            return;
+        }
         PhaserScene.tweens.add({
             targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.locketSprite, this.codeText, this.locketDialog],
             alpha: 0,
@@ -307,6 +310,7 @@ class PostFightScreen {
     }
 
     createWinScreen(level = 0) {
+        this.isCreated = true;
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
         this.currLevel = level;

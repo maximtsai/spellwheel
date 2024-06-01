@@ -101,6 +101,7 @@ class Options {
                         globalObjects.floatingDeath.visible = false;
                         globalObjects.floatingDeath2.visible = false;
                     }
+                    globalObjects.postFightScreen.clearPostFightScreen();
                 }
             });
             this.menuBtn.addText('MENU', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});

@@ -161,6 +161,8 @@
          if (this.currAnim) {
              this.currAnim.stop();
          }
+        globalObjects.encyclopedia.hideButton();
+        globalObjects.options.hideButton();
         this.cleanUp();
          this.showVictory();
 
@@ -190,48 +192,47 @@
      }
 
      showRune() {
-         let rune = this.addSprite(this.x, this.y - 45, 'tutorial', 'rune_time_large.png').setOrigin(0.5, 0.5).setScale(0.5).setDepth(9999);
+         let rune = PhaserScene.add.image(this.x, this.y - 45, 'tutorial', 'rune_time_large.png').setOrigin(0.5, 0.5).setScale(0.5).setDepth(9999);
          playSound('victory_2');
          this.showFlash(this.x, this.y);
-         let banner = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
-         let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let continueText = this.addText(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
+         let banner = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
+         let victoryText = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
+         let continueText = PhaserScene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
 
-         this.addTween({
+         PhaserScene.tweens.add({
              targets: rune,
              x: gameConsts.halfWidth,
              scaleX: 1,
              scaleY: 1,
              ease: "Cubic.easeOut",
              duration: 1500,
-             onComplete: () => {
-             }
          });
 
-         this.addTween({
+         PhaserScene.tweens.add({
              targets: banner,
              alpha: 0.75,
              duration: 500,
          });
 
-         this.addTween({
+         PhaserScene.tweens.add({
              targets: [victoryText],
              alpha: 1,
              ease: 'Quad.easeOut',
              duration: 500,
          });
          playSound('victory');
-         this.addTimeout(() => {
+         setTimeout(() => {
              continueText.alpha = 1;
          }, 1000);
-         this.addTween({
+         PhaserScene.tweens.add({
              targets: victoryText,
              scaleX: 1,
              scaleY: 1,
              duration: 800,
          });
 
-         this.addTween({
+         // KEEP THIS TWEEN
+         PhaserScene.tweens.add({
              targets: rune,
              y: gameConsts.halfHeight - 110,
              ease: 'Cubic.easeOut',
@@ -239,7 +240,7 @@
              onComplete: () => {
                  this.dieClickBlocker.setOnMouseUpFunc(() => {
                      this.dieClickBlocker.destroy();
-                     this.addTween({
+                     PhaserScene.tweens.add({
                          targets: [victoryText, banner],
                          alpha: 0,
                          duration: 400,
@@ -249,7 +250,7 @@
                              continueText.destroy();
                          }
                      });
-                     this.addTween({
+                     PhaserScene.tweens.add({
                          targets: rune,
                          y: "+=90",
                          ease: 'Quad.easeOut',
@@ -260,7 +261,7 @@
                              globalObjects.postFightScreen.createWinScreen(this.level);
                          }
                      });
-                     this.addTween({
+                     PhaserScene.tweens.add({
                          targets: rune,
                          alpha: 0,
                          duration: 400,
@@ -273,15 +274,15 @@
      showVictory() {
         globalObjects.magicCircle.disableMovement();
         swirlInReaperFog();
-        this.addTimeout(() => {
+        setTimeout(() => {
             playReaperDialog(['YOUR TIME IS UP'], () => {
-                 this.addTween({
+                 PhaserScene.tweens.add({
                      targets: this.timeFallObjs,
                      duration: 1000,
                  });
                 globalObjects.reapSound = 'magician_end';
                 playReaperAnim(this, () => {
-                    this.addTimeout(() => {
+                    setTimeout(() => {
                         this.showRune();
                     }, 1200);
                 });
@@ -317,7 +318,7 @@
      }
 
      setupTimeShield() {
-        let lostHealth = this.healthMax - this.health;
+        let lostHealth = (this.healthMax - 12) - this.health;
         lostHealth = Math.max(0, lostHealth);
          this.heal(Math.floor(lostHealth * 0.5));
          this.specialDamageAbsorptionActive = true;
@@ -618,19 +619,18 @@
              [
                  // 3
                  {
-                     name: "}2x4 ",
+                     name: "}4x3 ",
                      desc: "An advanced magic attack.",
                      chargeAmt: 350,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
                          this.createTimeObject('clock2.png', this.x - 120, this.y - 70);
-                         this.createTimeObject('clock3.png', this.x - 40, this.y - 80, 150);
-                         this.createTimeObject('clock3.png', this.x + 40, this.y - 80, 300);
-                         this.createTimeObject('clock4.png', this.x + 120, this.y - 70, 450);
+                         this.createTimeObject('clock3.png', this.x - 40, this.y - 80, 125);
+                         this.createTimeObject('clock4.png', this.x + 40, this.y - 80, 250);
                          this.addTimeout(() => {
-                             this.fireTimeObjects(2);
-                         }, 800);
+                             this.fireTimeObjects(4);
+                         }, 500);
                      },
                  },
                  {
@@ -676,17 +676,18 @@
                      startFunction: () => {
                      },
                      attackStartFunction: () => {
-                         this.createTimeObject('clock2.png', this.x - 150, 115, 75);
-                         this.createTimeObject('clock4.png', this.x - 90, 100, 150);
-                         this.createTimeObject('clock3.png', this.x - 30, 105, 225);
-                         this.createTimeObject('clock3.png', this.x + 30, 105, 300);
-                         this.createTimeObject('clock4.png', this.x + 90, 115, 375);
-                         this.createTimeObject('clock2.png', this.x + 150, 110, 450);
-                     },
-                     attackFinishFunction: () => {
+                         this.createTimeObject('clock2.png', this.x - 175, 115, 0);
+                         this.createTimeObject('clock4.png', this.x - 105, 100, 75);
+                         this.createTimeObject('clock3.png', this.x - 35, 105, 150);
+                         this.createTimeObject('clock3.png', this.x + 35, 105, 225);
+                         this.createTimeObject('clock4.png', this.x + 105, 115, 300);
+                         this.createTimeObject('clock2.png', this.x + 175, 110, 375);
                          this.addTimeout(() => {
                              this.fireTimeObjects(4);
-                         }, 400);
+                         }, 800);
+                     },
+                     attackFinishFunction: () => {
+
                      }
                  },
                  {
@@ -703,11 +704,12 @@
                          this.createTimeObject('clock4.png', this.x + 75, 115, 375);
                          this.createTimeObject('clock3.png', this.x + 150, 110, 450);
                          this.createTimeObject('clock2.png', this.x + 220, 125, 525);
-                     },
-                     attackFinishFunction: () => {
                          this.addTimeout(() => {
                              this.fireTimeObjects(4);
-                         }, 500);
+                         }, 900);
+                     },
+                     attackFinishFunction: () => {
+
                      }
                  },
                  {

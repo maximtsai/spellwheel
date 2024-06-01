@@ -6,11 +6,11 @@
          this.bgMusic = playMusic('into_the_void', 0.8, true);
          this.shieldAdded = false;
          this.initMisc();
-         this.popupTimeout = setTimeout(() => {
+         this.popupTimeout = this.addTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3500);
-         setTimeout(() => {
+         this.addTimeout(() => {
             this.initFog();
          }, 0);
      }
@@ -26,40 +26,38 @@
          this.eyeShieldObjects = [];
          this.eyeUpdateTick = 30;
          this.lastAttackLingerMult = 1.2;
-         this.slashEffect = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
-         this.voidSlashEffect = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 260, 'spells', 'darkSlice.png').setScale(0.8).setDepth(130).setAlpha(0).setOrigin(0.15, 0.5);
-         this.voidSlashEffect2 = this.scene.add.sprite(globalObjects.player.getX(), globalObjects.player.getY() - 260, 'spells', 'darkSlice.png').setScale(0.8).setDepth(130).setAlpha(0).setOrigin(0.15, 0.5);
+         this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
+         this.voidSlashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 260, 'spells', 'darkSlice.png').setScale(0.8).setDepth(130).setAlpha(0).setOrigin(0.15, 0.5);
+         this.voidSlashEffect2 = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 260, 'spells', 'darkSlice.png').setScale(0.8).setDepth(130).setAlpha(0).setOrigin(0.15, 0.5);
         this.isFirstVoidSlash = true;
      }
 
      initMisc() {
-         this.voidShield1a = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_1.png').setScale(0.5).setDepth(3).setAlpha(0);
-         this.voidShield1b = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(0.5).setDepth(3).setAlpha(0);
+         this.voidShield1a = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_1.png').setScale(0.5).setDepth(3).setAlpha(0);
+         this.voidShield1b = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(0.5).setDepth(3).setAlpha(0);
          this.voidShield1a.startScale = this.voidShield1a.scaleX;
          this.voidShield1b.startScale = this.voidShield1a.scaleX;
 
-         this.voidShield2a = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_1.png').setScale(0.64).setDepth(3).setAlpha(0);
-         this.voidShield2b = this.scene.add.sprite(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(0.64).setDepth(3).setAlpha(0);
+         this.voidShield2a = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_1.png').setScale(0.64).setDepth(3).setAlpha(0);
+         this.voidShield2b = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(0.64).setDepth(3).setAlpha(0);
          this.voidShield2a.startScale = this.voidShield2a.scaleX;
          this.voidShield2b.startScale = this.voidShield2b.scaleX;
 
-         this.sigilEffect = this.scene.add.sprite(this.x, this.y, 'enemies', 'void_knight_sigil.png').setScale(this.sprite.startScale).setDepth(5).setAlpha(0);
+         this.sigilEffect = this.addImage(this.x, this.y, 'enemies', 'void_knight_sigil.png').setScale(this.sprite.startScale).setDepth(5).setAlpha(0);
      }
 
      initFog() {
-        this.fogThick = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'lowq', 'fogthick.png').setDepth(9).setAlpha(0).setOrigin(0.5, 0.25);
-        this.graves = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'graves.png').setDepth(9).setScale(1.25, 1).setAlpha(0);
-        this.addToDestructibles(this.fogThick);
-        this.addToDestructibles(this.graves);
+        this.fogThick = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'lowq', 'fogthick.png').setDepth(9).setAlpha(0).setOrigin(0.5, 0.25);
+        this.graves = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'graves.png').setDepth(9).setScale(1.25, 1).setAlpha(0);
 
-        this.scene.tweens.add({
+        this.addTween({
              targets: [this.fogThick],
              duration: 1000,
              alpha: 1,
              scaleX: 1,
              ease: 'Cubic.easeInOut',
          });
-        this.scene.tweens.add({
+        this.addTween({
              targets: [this.graves],
              alpha: 1,
              duration: 1200,
@@ -88,13 +86,13 @@
          if (this.dead) {
              return;
          }
-         this.breatheTween = this.scene.tweens.add({
+         this.breatheTween = this.addTween({
              targets: this.sigilEffect,
              duration: 2000,
              alpha: 1,
              ease: 'Cubic.easeInOut',
              onComplete: () => {
-                 this.breatheTween = this.scene.tweens.add({
+                 this.breatheTween = this.addTween({
                      targets: this.sigilEffect,
                      duration: 2000,
                      alpha: 0,
@@ -111,14 +109,14 @@
         let goalX = gameConsts.halfWidth + (fogExpand ? 40 : -40);
         let goalScaleX = 1 + (fogExpand ? 0.03 : 0);
 
-        this.fogTween = this.scene.tweens.add({
+        this.fogTween = this.addTween({
             targets: this.fogThick,
             duration: 4000,
             x: goalX,
             ease: 'Cubic.easeInOut',
         })
 
-         this.fogTween = this.scene.tweens.add({
+         this.fogTween = this.addTween({
              targets: this.fogThick,
              duration: 2000,
              y: goalY,
@@ -127,7 +125,7 @@
              ease: 'Cubic.easeInOut',
              completeDelay: 200,
              onComplete: () => {
-                 this.fogTween = this.scene.tweens.add({
+                 this.fogTween = this.addTween({
                      targets: this.fogThick,
                      duration: 1800,
                      y: goalY,
@@ -151,7 +149,7 @@
          let randScale2 = this.sprite.startScale - 0.02 + Math.random() * 0.04;
          let randDur = 1000 + Math.floor(Math.random() * 500)
 
-         this.breatheTween = this.scene.tweens.add({
+         this.breatheTween = this.addTween({
              targets: this.voidTentacleFront,
              duration: randDur,
              rotation: randRot,
@@ -163,7 +161,7 @@
              }
          });
 
-         this.breatheTween2 = this.scene.tweens.add({
+         this.breatheTween2 = this.addTween({
              delay: 200,
              targets: this.voidTentacleBack,
              duration: randDur - 200,
@@ -190,12 +188,12 @@
      }
 
      createEyeObject(name, x, y, delay = 0) {
-         let newObj = PhaserScene.add.sprite(x, y, 'enemies', name).setRotation((Math.random() - 0.5) * 3).setScale(0).setDepth(110);
+         let newObj = this.addImage(x, y, 'enemies', name).setRotation((Math.random() - 0.5) * 3).setScale(0).setDepth(110);
          this.eyeObjects.push(newObj);
          let xDist = gameConsts.halfWidth - x;
          let yDist = globalObjects.player.getY() - 175 - y;
          let angleToPlayer = Math.atan2(yDist, xDist) - 1.57;
-         this.scene.tweens.add({
+         this.addTween({
              delay: delay,
              targets: newObj,
              scaleX: 1,
@@ -204,7 +202,7 @@
              easeParams: [2],
              duration: 300
          });
-         this.scene.tweens.add({
+         this.addTween({
              delay: delay,
              targets: newObj,
              ease: 'Cubic.easeOut',
@@ -223,14 +221,14 @@
                     let obj = this.eyeShieldObjects[i];
                     if (Math.random() < 0.1) {
                         // blink
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             delay: Math.floor(Math.random() * 125),
                             targets: [obj.front],
                             scaleY: 0,
                             duration: 150,
                             ease: 'Cubic.easeIn',
                             onComplete: () => {
-                                PhaserScene.tweens.add({
+                                this.addTween({
                                     targets: [obj.front],
                                     scaleX: obj.front.startScale,
                                     scaleY: obj.front.startScale,
@@ -247,7 +245,7 @@
                         let randScale = Math.random() * 0.15;
                         randScale *= randScale;
                         let newScale = obj.front.startScale - 0.04 + randScale;
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             delay: Math.floor(Math.random() * 125),
                             targets: [obj.front],
                             x: obj.back.x + xPos,
@@ -276,7 +274,7 @@
              if (this.shieldsActive == 1) {
                  this.voidShield1a.setScale(this.voidShield1a.startScale * 1.12);
                  this.voidShield1b.setScale(this.voidShield1a.startScale * 1.12);
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: [this.voidShield1a, this.voidShield1b],
                      scaleX: this.voidShield1a.startScale,
                      scaleY: this.voidShield1a.startScale,
@@ -285,7 +283,7 @@
                  });
              } else {
                  if (this.shieldAmts <= 3) {
-                     PhaserScene.tweens.add({
+                     this.addTween({
                          targets: [this.voidShield2a, this.voidShield2b],
                          scaleX: this.voidShield2a.startScale * 1.2,
                          scaleY: this.voidShield2a.startScale * 1.2,
@@ -296,7 +294,7 @@
                  } else {
                      this.voidShield2a.setScale(this.voidShield2a.startScale * 1.1);
                      this.voidShield2b.setScale(this.voidShield2b.startScale * 1.1);
-                     PhaserScene.tweens.add({
+                     this.addTween({
                          targets: [this.voidShield2a, this.voidShield2b],
                          scaleX: this.voidShield2a.startScale,
                          scaleY: this.voidShield2a.startScale,
@@ -324,7 +322,7 @@
          this.voidShield1a.visible = true;
          this.voidShield1a.setScale(this.voidShield1a.startScale * 1.15).setAlpha(0.5);
          this.voidShield1b.setScale(this.voidShield1a.startScale * 1.15).setAlpha(0.5);
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [this.voidShield1a, this.voidShield1b],
              scaleX: this.voidShield1a.startScale,
              scaleY: this.voidShield1a.startScale,
@@ -338,7 +336,7 @@
          if (doubleShield) {
              this.voidShield2a.setScale(this.voidShield2a.startScale * 1.15).setAlpha(0.5);
              this.voidShield2b.setScale(this.voidShield2b.startScale * 1.15).setAlpha(0.5);
-             PhaserScene.tweens.add({
+             this.addTween({
                  delay: 400,
                  targets: [this.voidShield2a, this.voidShield2b],
                  scaleX: this.voidShield2a.startScale,
@@ -366,7 +364,7 @@
      killEye(obj) {
          let eyeFront = obj.front;
          let eyeBack = obj.back;
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [eyeBack, eyeFront],
              scaleX: eyeBack.scaleX + 0.3,
              scaleY: eyeBack.scaleX + 0.3,
@@ -381,8 +379,8 @@
      }
 
      createShieldEye(x, y, scale) {
-         let eyeBack = this.scene.add.sprite(x, y, 'enemies', 'void_knight_shield_eye.png').setScale(scale * 0.85, scale * 0.85).setDepth(3);
-         let eyeFront = this.scene.add.sprite(x, y, 'enemies', 'void_knight_shield_eye_2.png').setScale(scale * 0.85, 0).setDepth(3);
+         let eyeBack = this.addImage(x, y, 'enemies', 'void_knight_shield_eye.png').setScale(scale * 0.85, scale * 0.85).setDepth(3);
+         let eyeFront = this.addImage(x, y, 'enemies', 'void_knight_shield_eye_2.png').setScale(scale * 0.85, 0).setDepth(3);
          eyeBack.startScale = scale;
          eyeFront.startScale = scale;
          let eyeObj = {
@@ -390,7 +388,7 @@
              back: eyeBack
          }
          this.eyeShieldObjects.push(eyeObj);
-         PhaserScene.tweens.add({
+         this.addTween({
              delay: 0,
              targets: [eyeBack],
              scaleX: scale,
@@ -398,7 +396,7 @@
              duration: 300,
              ease: 'Back.easeOut',
          });
-         PhaserScene.tweens.add({
+         this.addTween({
              delay: 250,
              targets: [eyeFront],
              scaleX: scale * 0.85,
@@ -406,7 +404,7 @@
              duration: 500,
              ease: 'Back.easeOut',
              onComplete: () => {
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: [eyeFront],
                      scaleX: scale,
                      scaleY: scale,
@@ -424,7 +422,7 @@
          }
         if (clearSecondShield) {
             this.shieldsActive--;
-            PhaserScene.tweens.add({
+            this.addTween({
                 targets: [this.voidShield2a, this.voidShield2b],
                 scaleX: this.voidShield2a.scaleX + 0.1,
                 scaleY: this.voidShield2a.scaleX + 0.1,
@@ -439,7 +437,7 @@
         } else {
             if (this.shieldsActive > 0) {
                 this.shieldsActive = 0;
-                PhaserScene.tweens.add({
+                this.addTween({
                     targets: [this.voidShield1a, this.voidShield1b],
                     scaleX: this.voidShield1a.scaleX + 0.1,
                     scaleY: this.voidShield1a.scaleX + 0.1,
@@ -461,7 +459,7 @@
          }
          let isFlipped = this.slashEffect.scaleX > 0;
          this.slashEffect.setAlpha(1).setScale(isFlipped ? 0.5 : -0.5, 0.4).setRotation(isFlipped ? -1.5 : 1.5);
-         this.slashEffectAnim = PhaserScene.tweens.add({
+         this.slashEffectAnim = this.addTween({
              targets: this.slashEffect,
              scaleX: isFlipped ? 1 : -1,
              scaleY: 0.6,
@@ -474,10 +472,10 @@
      pulseCircleInward(x, y) {
          this.isPulsing = true;
          if (!this.pulseCircle) {
-             this.pulseCircle = this.scene.add.sprite(x, y, 'misc', 'black_circle_2.png');
+             this.pulseCircle = this.addImage(x, y, 'misc', 'black_circle_2.png');
          }
          this.pulseCircle.setScale(1.6).setDepth(10).setAlpha(0).setPosition(x, y).setRotation(Math.random() * 6);
-         PhaserScene.tweens.add({
+         this.addTween({
              delay: 500,
              targets: [this.pulseCircle],
              scaleX: 0.8,
@@ -490,7 +488,7 @@
                      this.nextAttack.damage += 1;
                      this.attackName.setText("|" + this.nextAttack.damage +" ");
                  }
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: [this.pulseCircle],
                      scaleX: 0,
                      scaleY: 0,
@@ -517,7 +515,7 @@
 
          currVoidSlashEffect.x = globalObjects.player.getX() + randRot * 240;
          currVoidSlashEffect.setAlpha(1).setRotation(Math.PI * 0.5 + randRot).setScale(0.8, 0.7);
-         this.slashEffectAnim = PhaserScene.tweens.add({
+         this.slashEffectAnim = this.addTween({
              targets: currVoidSlashEffect,
              scaleX: isBig ? 2.4 : 1.7,
              scaleY: isBig ? 0.9 : 0.7,
@@ -525,7 +523,7 @@
              ease: 'Back.easeOut',
              completeDelay: isBig ? 150 : 75,
              onComplete: () => {
-                 this.slashEffectAnim = PhaserScene.tweens.add({
+                 this.slashEffectAnim = this.addTween({
                      targets: currVoidSlashEffect,
                      scaleX: isBig ? 2.2 : 1.6,
                      scaleY: isBig ? 0.8 : 0.65,
@@ -898,35 +896,33 @@
          this.nextAttackIndex = 0;
          this.isLoading = false;
 
-         this.shoutSprite = this.scene.add.sprite(this.x, this.y + 5, 'misc', 'black_circle.png').setDepth(11).setScale(0.15);
-         this.addToDestructibles(this.shoutSprite);
+         this.shoutSprite = this.addImage(this.x, this.y + 5, 'misc', 'black_circle.png').setDepth(11).setScale(0.15);
          this.createShout();
 
-         this.voidTentacleFront = this.scene.add.sprite(this.x + 9, this.y - 56, 'enemies', 'void_knight_tent_1_front_spike.png').setDepth(3).setOrigin(0.50, 0.34).setScale(this.sprite.startScale * 0);
-         this.addToDestructibles(this.voidTentacleFront);
-         let blurryBall = this.scene.add.sprite(this.x, this.y - 2, 'enemies', 'blurryball.png').setDepth(0).setScale(4).setAlpha(0.6);
-         PhaserScene.tweens.add({
+         this.voidTentacleFront = this.addImage(this.x + 9, this.y - 56, 'enemies', 'void_knight_tent_1_front_spike.png').setDepth(3).setOrigin(0.50, 0.34).setScale(this.sprite.startScale * 0);
+         let blurryBall = this.addImage(this.x, this.y - 2, 'enemies', 'blurryball.png').setDepth(0).setScale(4).setAlpha(0.6);
+         this.addTween({
              targets: [blurryBall],
              scaleX: 8,
              scaleY: 8,
              duration: 1300,
              ease: 'Quart.easeOut',
          });
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [blurryBall],
              alpha: 0,
              duration: 1300,
              ease: 'Cubic.easeIn',
          });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [this.voidTentacleFront],
              scaleX: this.sprite.startScale * 1.32,
              scaleY: this.sprite.startScale * 1.32,
              duration: 250,
              ease: 'Quad.easeIn',
              onComplete: () => {
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: [this.voidTentacleFront],
                      scaleX: this.sprite.startScale * 1.2,
                      scaleY: this.sprite.startScale * 1.2,
@@ -934,10 +930,9 @@
                      ease: 'Quad.easeOut',
                      onComplete: () => {
                          this.voidTentacleFront.setFrame('void_knight_tent_1_front.png').setOrigin(0.48, 0.34).setPosition(this.x - 8, this.y - 50);
-                         this.voidTentacleBack = this.scene.add.sprite(this.x + 48, this.y - 15, 'enemies', 'void_knight_tent_1_back.png').setDepth(1).setScale(this.sprite.startScale * 0.2).setOrigin(0.65, 0.454);
-                         this.addToDestructibles(this.voidTentacleBack);
+                         this.voidTentacleBack = this.addImage(this.x + 48, this.y - 15, 'enemies', 'void_knight_tent_1_back.png').setDepth(1).setScale(this.sprite.startScale * 0.2).setOrigin(0.65, 0.454);
 
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: [this.voidTentacleBack, this.voidTentacleFront],
                              scaleX: this.sprite.startScale,
                              scaleY: this.sprite.startScale,
@@ -957,7 +952,7 @@
          playSound('void_enhance', 0.9);
          zoomTemp(1.02);
          this.shoutSprite.setScale(0.15).setAlpha(1);
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [this.shoutSprite],
              scaleX: 9,
              scaleY: 9,
@@ -972,13 +967,13 @@
             this.fogSpookTween.stop();
          }
 
-         this.scene.tweens.add({
+         this.addTween({
              targets: [this.fogThick, this.fogSpook],
              duration: 100,
              alpha: 1.1,
              ease: 'Cubic.easeOut',
              onComplete: () => {
-                 this.scene.tweens.add({
+                 this.addTween({
                      targets: [this.fogThick, this.fogSpook],
                      duration: 1400,
                      alpha: 0,
@@ -991,21 +986,21 @@
                  })
              }
          })
-         this.scene.tweens.add({
+         this.addTween({
              targets: [this.fogThick, this.fogSpook],
              duration: 1000,
              scaleX: 5,
              scaleY: 5,
              ease: 'Cubic.easeOut',
          })
-         this.scene.tweens.add({
+         this.addTween({
              targets: [this.fogThick, this.fogSpook],
              duration: 1000,
              scaleX: -4.5,
              scaleY: 4.5,
              ease: 'Cubic.easeOut',
          })
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [this.shoutSprite],
              alpha: 0,
              duration: 1000,
@@ -1018,20 +1013,19 @@
          playSound('clunk');
          this.setSprite('void_knight_3_empty.png');
 
-         let helmet = PhaserScene.add.sprite(this.x + 34, this.y - 59, 'enemies', 'void_knight_helmet.png').setDepth(4);
-         let arm = PhaserScene.add.sprite(this.x + 64, this.y + 19, 'enemies', 'void_knight_arm.png').setDepth(0);
+         let helmet = this.addImage(this.x + 34, this.y - 59, 'enemies', 'void_knight_helmet.png').setDepth(4);
+         let arm = this.addImage(this.x + 64, this.y + 19, 'enemies', 'void_knight_arm.png').setDepth(0);
          this.addExtraSprite(helmet);
          this.addExtraSprite(arm);
 
-         setTimeout(() => {
-            this.fogSpook = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'lowq', 'fogspook.png').setDepth(9).setAlpha(0).setBlendMode(Phaser.BlendModes.ADD).setOrigin(0.5, 0.25).setScale(-1, 1);
-            this.addToDestructibles(this.fogSpook);
-             this.fogSpookTween = PhaserScene.tweens.add({
+         this.addTimeout(() => {
+            this.fogSpook = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'lowq', 'fogspook.png').setDepth(9).setAlpha(0).setBlendMode(Phaser.BlendModes.ADD).setOrigin(0.5, 0.25).setScale(-1, 1);
+             this.fogSpookTween = this.addTween({
                  targets: this.fogSpook,
                  alpha: 1,
                  duration: 3000,
              });
-             PhaserScene.tweens.add({
+             this.addTween({
                  delay: 350,
                  targets: helmet,
                  rotation: "+=0.1",
@@ -1039,14 +1033,14 @@
                  y: "+=1",
                  duration: 50,
              });
-             PhaserScene.tweens.add({
+             this.addTween({
                  delay: 950,
                  targets: helmet,
                  y: "+=190",
                  duration: 350,
                  ease: 'Cubic.easeIn',
                  onStart: () => {
-                     PhaserScene.tweens.add({
+                     this.addTween({
                          targets: helmet,
                          rotation: 0.96,
                          duration: 350,
@@ -1054,7 +1048,7 @@
                  },
                  onComplete: () => {
                      playSound('clunk2');
-                     PhaserScene.tweens.add({
+                     this.addTween({
                          delay: 500,
                          targets: [helmet, arm],
                          alpha: 0,
@@ -1064,18 +1058,18 @@
                              this.removeExtraSprite(arm);
                              helmet.destroy();
                              arm.destroy();
-                             setTimeout(() => {
+                             this.addTimeout(() => {
                                 if (this.fogTween) {
                                 this.fogTween.stop();
                                 }
-                                this.fogTween = this.scene.tweens.add({
+                                this.fogTween = this.addTween({
                                  targets: this.fogThick,
                                  duration: 1000,
                                  alpha: 1,
                                  ease: 'Cubic.easeOut',
                                 })
                                  playSound('void_body');
-                                 setTimeout(() => {
+                                 this.addTimeout(() => {
                                      playSound('meat_click_left');
                                      this.startPhase2();
                                  }, 400);
@@ -1085,13 +1079,13 @@
                  }
              });
 
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: arm,
                  y: "+=72",
                  duration: 300,
                  ease: 'Cubic.easeIn',
              });
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: arm,
                  rotation: "+=1",
                  x: "-=7",
@@ -1135,7 +1129,7 @@
 
          } else {
              super.die();
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: [this.voidTentacleFront, this.voidTentacleBack],
                  scaleX: 0,
                  scaleY: 0,
@@ -1147,15 +1141,15 @@
                  }
              });
 
-             let torso = PhaserScene.add.sprite(this.x, this.y + 21, 'enemies', 'void_knight_3_torso.png').setDepth(4).setScale(this.sprite.startScale).setOrigin(0.5, 0.5646);
-             PhaserScene.tweens.add({
+             let torso = this.addImage(this.x, this.y + 21, 'enemies', 'void_knight_3_torso.png').setDepth(4).setScale(this.sprite.startScale).setOrigin(0.5, 0.5646);
+             this.addTween({
                  delay: 2000,
                  targets: torso,
                  rotation: "+=1.1",
                  duration: 950,
                  ease: 'Cubic.easeIn',
              });
-             PhaserScene.tweens.add({
+             this.addTween({
                  delay: 2500,
                  targets: torso,
                  y: "+=145",
@@ -1165,7 +1159,7 @@
                      torso.destroy();
                      this.setDefaultSprite('void_knight_died.png', undefined, true);
                      playSound('clunk2');
-                    setTimeout(() => {
+                    this.addTimeout(() => {
                         this.dieClickBlocker = new Button({
                             normal: {
                                 ref: "blackPixel",
@@ -1180,16 +1174,16 @@
                             }
                         });
 
-                        let rune = this.scene.add.sprite(this.x + 22, this.y + 90, 'tutorial', 'rune_void_large.png').setScale(0.5).setDepth(9999);
-                        this.flash = this.scene.add.sprite(rune.x, rune.y, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
+                        let rune = this.addImage(this.x + 22, this.y + 90, 'tutorial', 'rune_void_large.png').setScale(0.5).setDepth(9999);
+                        this.flash = this.addImage(rune.x, rune.y, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
 
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: this.flash,
                              scaleX: this.sprite.startScale * 3.5,
                              scaleY: this.sprite.startScale * 0.05,
                              duration: 300,
                          });
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: this.flash,
                              duration: 300,
                              ease: 'Quad.easeIn',
@@ -1200,7 +1194,7 @@
                          });
 
                         playSound('victory_2');
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             delay: 10,
                             targets: rune,
                             x: gameConsts.halfWidth,
@@ -1223,21 +1217,21 @@
 
      createDeathEffect(amt = 12, scale = 1, vel = 100) {
          for (let i = 0; i < amt; i++) {
-             let particle = PhaserScene.add.sprite(this.x, this.y, 'enemies', 'void_knight_shield_eye.png').setDepth(0).setScale(scale * (1 + Math.random()) );
+             let particle = this.addImage(this.x, this.y, 'enemies', 'void_knight_shield_eye.png').setDepth(0).setScale(scale * (1 + Math.random()) );
              let randDir = Math.random() * 2 * Math.PI;
              let randDist = vel + Math.random() * vel;
              let xShift = Math.sin(randDir) * randDist;
              let yShift = Math.cos(randDir) * randDist;
              let randDur = 700 + Math.random() * 700;
 
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: particle,
                  x: "+=" + xShift,
                  y: "+=" + yShift,
                  duration: randDur,
                  ease: 'Cubic.easeOut',
              });
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: particle,
                  scaleX: 0,
                  scaleY: 0,

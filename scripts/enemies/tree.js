@@ -7,7 +7,7 @@
          this.bgMusic = playMusic('echos_of_time', 0.9, true);
 
 
-         this.popupTimeout = setTimeout(() => {
+         this.popupTimeout = this.addTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3500)
@@ -19,58 +19,7 @@
          this.leafObjects = [];
          this.pullbackScale = 0.99;
          this.attackScale = 1.03;
-
-         //
-         // this.bg1 =  this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'firebg1.png').setDepth(-2);
-         // this.bg2 =  this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'firebg2.png').setDepth(-2).setAlpha(0);
-         // this.fadeInBg(this.bg2, 'firebg2.png', () => {
-         //     this.bg1.alpha = 0;
-         //     this.bg2.depth = -2;
-         //     this.fadeInBg(this.bg1, 'firebg3.png', () => {
-         //         this.bg2.alpha = 0;
-         //         this.bg1.depth = -2;
-         //         this.fadeInBg(this.bg2, 'firebg2.png', () => {
-         //             this.bg1.alpha = 0;
-         //             this.bg2.depth = -2;
-         //             this.fadeInBg(this.bg1, 'firebg1.png', () => {
-         //                 this.bg2.alpha = 0;
-         //                 this.bg1.depth = -2;
-         //                 this.fadeInBg(this.bg2, 'firebg2.png', () => {
-         //                     this.bg1.alpha = 0;
-         //                     this.bg2.depth = -2;
-         //                     this.fadeInBg(this.bg1, 'firebg3.png', () => {
-         //                         this.bg2.alpha = 0;
-         //                         this.bg1.depth = -2;
-         //                         this.fadeInBg(this.bg1, 'firebg2.png', () => {})
-         //                     })
-         //                 })
-         //             })
-         //         })
-         //     })
-         // })
-
      }
-
-     // fadeInBg(img, name, onComplete) {
-     //     img.setFrame(name).setDepth(-1);
-     //     PhaserScene.tweens.add({
-     //         targets: img,
-     //         alpha: 1,
-     //         duration: 1200,
-     //         ease: 'Quad.easeInOut',
-     //         completeDelay: 0,
-     //         onComplete: () => {
-     //             onComplete();
-     //         }
-     //     });
-     // }
-
-     // update(dt) {}
-
-     // reset(x, y) {
-     //     this.x = x;
-     //     this.y = y;
-     // }
 
      setHealth(newHealth) {
          super.setHealth(newHealth);
@@ -89,26 +38,23 @@
              let eyePosX = this.x + 130 * this.sprite.startScale;
              let eyePosY = this.y - 84 * this.sprite.startScale;
 
-             let tree = this.scene.add.sprite(this.x, this.y, 'enemies', 'tree_open.png').setDepth(1).setOrigin(this.sprite.originX, this.sprite.originY).setScale(this.sprite.startScale).setAlpha(0);
+             let tree = this.addImage(this.x, this.y, 'enemies', 'tree_open.png').setDepth(1).setOrigin(this.sprite.originX, this.sprite.originY).setScale(this.sprite.startScale).setAlpha(0);
              this.addExtraSprite(tree);
 
-             let eye = this.scene.add.sprite(eyePosX, eyePosY, 'enemies', 'tree_eye.png').setDepth(10).setOrigin(0.5, 0.5).setRotation(-0.13).setScale(0, this.sprite.startScale);
-             this.eyeMagic1 = this.scene.add.sprite(this.x + 4, this.y - 72, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57).setOrigin(0.5, 1).setScale(0.7, 0.5);
-             this.eyeMagic2 = this.scene.add.sprite(this.x + 4, this.y - 72, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57 + 3.1415).setOrigin(0.5, 1).setScale(0.7, 0.5);
+             let eye = this.addImage(eyePosX, eyePosY, 'enemies', 'tree_eye.png').setDepth(10).setOrigin(0.5, 0.5).setRotation(-0.13).setScale(0, this.sprite.startScale);
+             this.eyeMagic1 = this.addImage(this.x + 4, this.y - 72, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57).setOrigin(0.5, 1).setScale(0.7, 0.5);
+             this.eyeMagic2 = this.addImage(this.x + 4, this.y - 72, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57 + 3.1415).setOrigin(0.5, 1).setScale(0.7, 0.5);
              this.eyeMagic1.alpha = 0;
              this.eyeMagic2.alpha = 0;
-             this.addToDestructibles(this.eyeMagic1);
-             this.addToDestructibles(this.eyeMagic2);
-
 
              this.addExtraSprite(eye, 3.5, -84);
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: tree,
                  alpha: 0.95,
                  duration: 1200,
              });
 
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: eye,
                  scaleX: this.sprite.startScale * 0.6,
                  ease: "Back.easeOut",
@@ -116,7 +62,7 @@
                  rotation: -0.08,
                  duration: 450,
                  onComplete: () => {
-                     PhaserScene.tweens.add({
+                     this.addTween({
                          delay: 500,
                          targets: eye,
                          rotation: 0,
@@ -128,7 +74,7 @@
                              playSound('meat_click_right', 0.36);
                          },
                          onComplete: () => {
-                             PhaserScene.tweens.add({
+                             this.addTween({
                                  targets: eye,
                                  scaleX: this.sprite.startScale,
                                  ease: "Cubic.easeOut",
@@ -159,7 +105,7 @@
 
      initSpriteAnim(scale) {
          this.sprite.setScale(scale * 0.99, scale * 1.02);
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.sprite,
              duration: 1500,
              scaleX: scale,
@@ -170,7 +116,7 @@
                  this.repeatTweenBreathe()
              }
          });
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.sprite,
              duration: 1000,
              alpha: 1
@@ -178,13 +124,13 @@
      }
 
      repeatTweenBreathe(duration = 2500) {
-         this.breatheTween = this.scene.tweens.add({
+         this.breatheTween = this.addTween({
              targets: this.sprite,
              duration: duration,
              scaleY: "+=0.01",
              ease: 'Quart.easeOut',
              onComplete: () => {
-                 this.scene.tweens.add({
+                 this.addTween({
                      targets: this.sprite,
                      duration: duration * 0.8,
                      scaleY: "-=0.01",
@@ -199,7 +145,7 @@
 
      startHealing(amt = 10) {
          if (!this.statuses[0]) {
-             let healSprite = this.scene.add.sprite(gameConsts.halfWidth, this.y - 70, 'misc', 'heal.png').setDepth(999).setAlpha(0);
+             let healSprite = this.addImage(gameConsts.halfWidth, this.y - 70, 'misc', 'heal.png').setDepth(999).setAlpha(0);
              let statusObj = {};
              statusObj = {
                  animObj: healSprite,
@@ -217,7 +163,7 @@
                          statusObj.amt -= 1;
                          this.healText.alpha = 1;
                          this.healText.y = this.healText.startY;
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: this.healText,
                              scaleX: 1,
                              scaleY: 1,
@@ -225,7 +171,7 @@
                              ease: 'Quart.easeOut',
                              duration: 3000,
                          });
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              delay: 2500,
                              targets: this.healText,
                              alpha: 0,
@@ -237,12 +183,12 @@
                          healSprite.y = this.y - 85;
                          healSprite.scaleX = healSprite.scaleX * -1
 
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: healSprite,
                              y: "-=50",
                              duration: 1200,
                          });
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              delay: 200,
                              targets: healSprite,
                              alpha: 0,
@@ -269,12 +215,12 @@
      }
 
      createLeafObject(name, x, y, delay = 0) {
-         let newObj = PhaserScene.add.sprite(x, y, 'enemies', name).setRotation((Math.random() - 0.5) * 3).setScale(0).setDepth(110);
+         let newObj = this.addImage(x, y, 'enemies', name).setRotation((Math.random() - 0.5) * 3).setScale(0).setDepth(110);
          this.leafObjects.push(newObj);
          let xDist = gameConsts.halfWidth - x;
          let yDist = globalObjects.player.getY() - 175 - y;
          let angleToPlayer = Math.atan2(yDist, xDist) - 1.57;
-         this.scene.tweens.add({
+         this.addTween({
              delay: delay,
              targets: newObj,
              scaleX: 1,
@@ -283,7 +229,7 @@
              easeParams: [2],
              duration: 300
          });
-         this.scene.tweens.add({
+         this.addTween({
              delay: delay,
              targets: newObj,
              ease: 'Cubic.easeOut',
@@ -299,7 +245,7 @@
          while (this.leafObjects.length > 0) {
              let currObj = this.leafObjects.shift();
              let delayAmt = leafObjectsFired * 100;
-             this.scene.tweens.add({
+             this.addTween({
                  delay: delayAmt,
                  targets: currObj,
                  scaleX: 0.85,
@@ -308,7 +254,7 @@
                  duration: projDur,
              });
              leafObjectsFired++;
-             this.scene.tweens.add({
+             this.addTween({
                  targets: currObj,
                  delay: delayAmt,
                  y: globalObjects.player.getY() - 190,
@@ -321,8 +267,8 @@
                  onComplete: () => {
                      currObj.destroy();
                      let dur = 280 - Math.sqrt(totalObjects) * 40;
-                     let hitEffect = PhaserScene.add.sprite(currObj.x - 10 + Math.random() * 20, currObj.y + Math.random() * 8, 'spells', 'damageEffect4.png').setScale(0.95).setRotation(Math.random()).setDepth(195);
-                     this.scene.tweens.add({
+                     let hitEffect = this.addImage(currObj.x - 10 + Math.random() * 20, currObj.y + Math.random() * 8, 'spells', 'damageEffect4.png').setScale(0.95).setRotation(Math.random()).setDepth(195);
+                     this.addTween({
                          targets: hitEffect,
                          scaleX: 1,
                          scaleY: 1,
@@ -332,7 +278,7 @@
                              hitEffect.destroy();
                          }
                      });
-                     this.scene.tweens.add({
+                     this.addTween({
                          targets: hitEffect,
                          alpha: 0,
                          duration: dur
@@ -347,20 +293,19 @@
      attackWithBranch(damage = 12) {
          let currObj;
          if (!this.treeBranch) {
-             this.treeBranch = PhaserScene.add.sprite(gameConsts.halfWidth - 35 + Math.random() * 100, -50, 'enemies', 'tree_branch.webp').setRotation(-0.7 + Math.random()).setDepth(110).setOrigin(0.6, 0.6);
-             this.addToDestructibles(this.treeBranch);
+             this.treeBranch = this.addImage(gameConsts.halfWidth - 35 + Math.random() * 100, -50, 'enemies', 'tree_branch.webp').setRotation(-0.7 + Math.random()).setDepth(110).setOrigin(0.6, 0.6);
          } else {
              this.treeBranch.setPosition(gameConsts.halfWidth - 75 + Math.random() * 150, -50).setRotation(-0.7 + Math.random()).setAlpha(1);
          }
          currObj = this.treeBranch;
 
-         this.scene.tweens.add({
+         this.addTween({
              targets: currObj,
              rotation: -0.2,
              duration: 700
          });
 
-         this.scene.tweens.add({
+         this.addTween({
              targets: currObj,
              x: gameConsts.halfWidth * 0.2 + currObj.x * 0.8,
              y: gameConsts.height - 320,
@@ -370,8 +315,8 @@
                  playSound('tree_hit');
                  messageBus.publish("selfTakeDamage", damage);
                  let xPos = gameConsts.halfWidth * 0.5 + currObj.x * 0.5;
-                 let hitEffect = PhaserScene.add.sprite(xPos, currObj.y + Math.random() * 8, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
-                 this.scene.tweens.add({
+                 let hitEffect = this.addImage(xPos, currObj.y + Math.random() * 8, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
+                 this.addTween({
                      targets: hitEffect,
                      scaleX: 1.25,
                      scaleY: 1.25,
@@ -381,20 +326,20 @@
                          hitEffect.destroy();
                      }
                  });
-                 this.scene.tweens.add({
+                 this.addTween({
                      targets: hitEffect,
                      alpha: 0,
                      duration: 150
                  });
                  let horizShift = currObj.x - gameConsts.halfWidth;
-                 this.scene.tweens.add({
+                 this.addTween({
                      targets: currObj,
                      alpha: 0,
                      x: "+=" + horizShift * 4,
                      rotation: horizShift * 0.05,
                      duration: 600,
                  });
-                 this.scene.tweens.add({
+                 this.addTween({
                      targets: currObj,
                      y: "-=120",
                      duration: 600,
@@ -411,7 +356,7 @@
          this.healText = this.scene.add.text(gameConsts.halfWidth, 65, '+' + regrowthAmt, {fontFamily: 'Arial', fontSize: 48, color: '#00F254', align: 'left'})
          this.healText.setFontStyle('bold').setOrigin(0.5, 0.5).setDepth(9);
          this.healText.startY = this.healText.y;
-         let healSprite = this.scene.add.sprite(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(1.1).setDepth(999).setAlpha(0);
+         let healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(1.1).setDepth(999).setAlpha(0);
          this.heal(regrowthAmt);
          healSprite.alpha = 1;
 
@@ -421,7 +366,7 @@
 
          this.eyeMagic1.setScale(1);
          this.eyeMagic2.setScale(1);
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [this.eyeMagic1, this.eyeMagic2],
              scaleX: 0.95,
              scaleY: 0.95,
@@ -430,7 +375,7 @@
              duration: 500,
              completeDelay: 600,
              onComplete: () => {
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: [this.eyeMagic1, this.eyeMagic2],
                      scaleX: 0.8,
                      scaleY: 0.3,
@@ -441,7 +386,7 @@
              }
          });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: this.healText,
              scaleX: 1,
              scaleY: 1,
@@ -449,7 +394,7 @@
              ease: 'Cubic.easeOut',
              duration: 3000,
          });
-         PhaserScene.tweens.add({
+         this.addTween({
              delay: 2500,
              targets: this.healText,
              alpha: 0,
@@ -457,7 +402,7 @@
              duration: 1000,
          });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: healSprite,
              scaleX: 1,
              scaleY: 1,
@@ -467,7 +412,7 @@
                  healSprite.destroy()
              }
          });
-         PhaserScene.tweens.add({
+         this.addTween({
              delay: 600,
              targets: healSprite,
              alpha: 0,
@@ -477,20 +422,17 @@
      }
 
     createShieldTut() {
-         this.rune1 = this.scene.add.sprite(95, gameConsts.halfHeight - 49, 'circle', 'rune_protect_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-
-         this.addToDestructibles(this.rune1);
-
-         setTimeout(() => {
+         this.rune1 = this.addImage(95, gameConsts.halfHeight - 49, 'circle', 'rune_protect_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+         this.addTimeout(() => {
             globalObjects.textPopupManager.setInfoText(96, gameConsts.halfHeight - 139, "Block enemy\nattacks with\nthe shield rune\n ", 'left');
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: [this.rune1],
                  alpha: 1,
                  duration: 200,
              });
-             setTimeout(() => {
+             this.addTimeout(() => {
                 globalObjects.textPopupManager.hideInfoText();
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: [this.rune1],
                      alpha: 0,
                      duration: 200,
@@ -518,7 +460,7 @@
                      },
                      attackStartFunction: () => {
                         globalObjects.textPopupManager.hideInfoText();
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: [this.rune1],
                              alpha: 0,
                              duration: 200,
@@ -547,7 +489,7 @@
                      attackStartFunction: () => {
                          this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
                          this.eyeMagic2.setAlpha(0.2).setScale(0.8, 0.4);
-                         this.eyeMagicAnim = PhaserScene.tweens.add({
+                         this.eyeMagicAnim = this.addTween({
                              targets: [this.eyeMagic1, this.eyeMagic2],
                              scaleX: 0.95,
                              scaleY: 0.92,
@@ -597,7 +539,7 @@
                      attackStartFunction: () => {
                          this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
                          this.eyeMagic2.setAlpha(0.2).setScale(0.8, 0.4);
-                         this.eyeMagicAnim = PhaserScene.tweens.add({
+                         this.eyeMagicAnim = this.addTween({
                              targets: [this.eyeMagic1, this.eyeMagic2],
                              scaleX: 0.95,
                              scaleY: 0.92,
@@ -631,7 +573,7 @@
                              let yPos = 75 + Math.random() * 40;
                              this.createLeafObject('tree_leaf.webp', xPos, yPos, i * 25);
                          }
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.fireObjects(4);
                          }, 250);
                      }
@@ -648,7 +590,7 @@
                      isBigMove: true,
                      startFunction: () => {
                         globalObjects.textPopupManager.setInfoText(94, gameConsts.halfHeight - 139, "Different shields\nare useful\nagainst different\nattacks.", 'left', true);
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             globalObjects.textPopupManager.hideInfoText();
                          }, 11000);
                      },
@@ -673,10 +615,10 @@
                          playSound('body_slam');
                          let dmgEffect = poolManager.getItemFromPool('brickPattern2')
                          if (!dmgEffect) {
-                             dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 160, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                             dmgEffect = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 160, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
                          }
                          dmgEffect.setDepth(998).setScale(0.7);
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: dmgEffect,
                              rotation: 1,
                              alpha: 0,
@@ -707,7 +649,7 @@
                              let yPos = 75 + Math.random() * 40;
                              this.createLeafObject('tree_leaf.webp', xPos, yPos, i * 25);
                          }
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.fireObjects(4);
                          }, 300);
                      }
@@ -739,7 +681,7 @@
                              let yPos = 75 + Math.random() * 40;
                              this.createLeafObject('tree_leaf.webp', xPos, yPos, i * 25);
                          }
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.fireObjects(4);
                          }, 300);
                      }
@@ -770,7 +712,7 @@
                         this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
                         this.sprite.y -= this.sprite.height * 0.125;
                         fadeAwaySound(this.bgMusic, 3000);
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                              if (!this.dead) {
                                  this.bgMusic = playMusic('echos_of_time_finale');
                              }
@@ -791,10 +733,10 @@
                          playSound('body_slam')
                          let dmgEffect = poolManager.getItemFromPool('brickPattern2')
                          if (!dmgEffect) {
-                             dmgEffect = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 100, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                             dmgEffect = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 100, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
                          }
                          dmgEffect.setDepth(998).setScale(0.85);
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: dmgEffect,
                              rotation: 1,
                              alpha: 0,
@@ -828,7 +770,7 @@
              this.currAnim.stop();
          }
         globalObjects.textPopupManager.hideInfoText();
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [this.rune1],
              alpha: 0,
              duration: 200,
@@ -848,11 +790,11 @@
              }
          });
 
-         setTimeout(() => {
+         this.addTimeout(() => {
              this.showFlash(this.x, this.y - 25);
-             let rune = this.scene.add.sprite(this.x, this.y - 10, 'tutorial', 'rune_reinforce_large.png').setScale(0.5).setDepth(9999);
+             let rune = this.addImage(this.x, this.y - 10, 'tutorial', 'rune_reinforce_large.png').setScale(0.5).setDepth(9999);
              playSound('victory_2');
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: rune,
                  x: gameConsts.halfWidth,
                  y: gameConsts.halfHeight - 170,
@@ -878,19 +820,19 @@
          }
          this.fallen = true;
          let oldScale = this.sprite.scaleX;
-         let treeTop = this.scene.add.sprite(this.sprite.x + 10, this.sprite.y, 'enemies', 'tree_top.png');
+         let treeTop = this.addImage(this.sprite.x + 10, this.sprite.y, 'enemies', 'tree_top.png');
          treeTop.setScale(this.sprite.scaleX, this.sprite.scaleY).setOrigin(this.sprite.originX, this.sprite.originY).setDepth(this.sprite.depth - 1);
          this.setDefaultSprite('tree_stumped.png', this.sprite.startScale, true);
          this.sprite.setScale(oldScale);
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: this.sprite,
              scaleX: this.sprite.startScale,
              scaleY: this.sprite.startScale,
              duration: 2000,
              ease: 'Quad.easeOut',
          });
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: treeTop,
              alpha: 0,
              rotation: -0.1,

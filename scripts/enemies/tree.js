@@ -353,7 +353,7 @@
          let healAmt = regrowthAmt - 1;
          // this.startHealing(healAmt);
          playSound('magic', 0.6);
-         this.healText = this.scene.add.text(gameConsts.halfWidth, 65, '+' + regrowthAmt, {fontFamily: 'Arial', fontSize: 48, color: '#00F254', align: 'left'})
+         this.healText = this.addText(gameConsts.halfWidth, 65, '+' + regrowthAmt, {fontFamily: 'Arial', fontSize: 48, color: '#00F254', align: 'left'})
          this.healText.setFontStyle('bold').setOrigin(0.5, 0.5).setDepth(9);
          this.healText.startY = this.healText.y;
          let healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(1.1).setDepth(999).setAlpha(0);

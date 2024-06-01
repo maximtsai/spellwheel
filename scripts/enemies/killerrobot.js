@@ -33,12 +33,12 @@
         this.addToDestructibles(this.lightShineRight);
         this.addToDestructibles(this.lightShineRightTop);
 
-        this.minusDamage1 = this.scene.add.bitmapText(this.lightShineLeft.x, this.lightShineLeft.y + 5, 'block', '-DMG', 32, 1);
+        this.minusDamage1 = this.addBitmapText(this.lightShineLeft.x, this.lightShineLeft.y + 5, 'block', '-DMG', 32, 1);
         this.minusDamage1.setOrigin(0.5, -0.2).setAlpha(0).setDepth(12);
-        this.addToDestructibles(this.minusDamage1);
-        this.minusDamage2 = this.scene.add.bitmapText(this.lightShineRight.x, this.lightShineRight.y + 5, 'block', '-DMG', 32, 1);
+
+        this.minusDamage2 = this.addBitmapText(this.lightShineRight.x, this.lightShineRight.y + 5, 'block', '-DMG', 32, 1);
         this.minusDamage2.setOrigin(0.5, -0.2).setAlpha(0).setDepth(12);
-        this.addToDestructibles(this.minusDamage2);
+
 
 
         this.laserCharge = this.addSprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_charge.png').setDepth(11).setAlpha(0);
@@ -50,14 +50,14 @@
         this.addToDestructibles(this.laserHeart);
         this.addToDestructibles(this.laserCharge);
 
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.sprite,
              duration: 2500,
              scaleX: this.sprite.startScale * 1.05,
              scaleY: this.sprite.startScale * 1.05,
              ease: 'Quad.easeOut',
          });
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.eyeShine,
              y: this.y - 58,
              duration: 500,
@@ -69,7 +69,7 @@
                  playSound('power_surge_plain');
              },
              onComplete: () => {
-                 this.scene.tweens.add({
+                 this.addTween({
                      targets: this.eyeShine,
                      duration: 2200,
                      y: this.y - 67,
@@ -83,7 +83,7 @@
                  });
              }
          });
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.sprite,
              duration: 2500,
              alpha: 1,
@@ -94,19 +94,19 @@
 
      showStartupAnim() {
          this.tunnelBG = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight * 0.7, 'backgrounds', 'tunnel2.png').setScale(1).setDepth(-9).setAlpha(0).setOrigin(0.5, 0.35);
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.tunnelBG,
              duration: 1600,
              alpha: 1,
          });
-         this.scene.tweens.add({
+         this.addTween({
              targets: [this.sprite],
              duration: 800,
              scaleX: this.sprite.startScale * 1.25,
              scaleY: this.sprite.startScale * 1.25,
              ease: 'Cubic.easeOut',
              onComplete: () => {
-                 this.scene.tweens.add({
+                 this.addTween({
                      targets: [this.sprite],
                      duration: 800,
                      scaleX: this.sprite.startScale * 0.98,
@@ -116,7 +116,7 @@
                          globalObjects.magicCircle.enableMovement();
                          playSound('voca_hello', 0.8);
                          this.sprite.setScale(this.sprite.startScale);
-                         this.scene.tweens.add({
+                         this.addTween({
                              targets: this.eyeShine,
                              duration: 150,
                              alpha: 0,
@@ -132,7 +132,7 @@
                         this.lightShineRightTop.setAlpha(1).setScale(0.5);
 
 
-                        this.scene.tweens.add({
+                        this.addTween({
                             targets: [this.lightShineLeft, this.lightShineLeftTop],
                             duration: 500,
                             rotation: -0.2,
@@ -142,7 +142,7 @@
                             scaleY: 1,
                         });
 
-                        this.scene.tweens.add({
+                        this.addTween({
                             targets: [this.lightShineRight,  this.lightShineRightTop],
                             duration: 500,
                             rotation: 0.2,
@@ -152,13 +152,13 @@
                             scaleY: 1,
                         });
 
-                        this.scene.tweens.add({
+                        this.addTween({
                             targets: [this.lightShineLeftTop,  this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
                             duration: 1500,
                             alpha: 0.4,
                         });
 
-                         this.scene.tweens.add({
+                         this.addTween({
                              targets: this.tunnelBG,
                              duration: 500,
                              alpha: 0.9,
@@ -167,7 +167,7 @@
                              scaleY: 1,
                          });
 
-                         this.scene.tweens.add({
+                         this.addTween({
                              targets: this.tunnelBG,
                              duration: 500,
                              alpha: 0.9,
@@ -180,7 +180,7 @@
 
                          let spriteOrigY = this.sprite.y;
                          this.sprite.setOrigin(0.5, 0.95).setPosition(this.sprite.x, this.sprite.y + 150);
-                         this.scene.tweens.add({
+                         this.addTween({
                              delay: 800,
                              targets: this.sprite,
                              duration: 900,
@@ -198,7 +198,7 @@
 
                                  this.setAwake();
                                  this.loadUpHealthBar();
-                                 this.scene.tweens.add({
+                                 this.addTween({
                                      targets: this.tunnelBG,
                                      duration: 1500,
                                      alpha: 0.8,
@@ -215,7 +215,7 @@
                  });
              }
          });
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.eyeShine,
              duration: 800,
              alpha: 0.95,
@@ -225,7 +225,7 @@
              y: "-=10",
              ease: 'Cubic.easeOut',
              onComplete: () => {
-                 this.scene.tweens.add({
+                 this.addTween({
                      targets: this.eyeShine,
                      duration: 800,
                      alpha: 1.3,
@@ -285,7 +285,7 @@
             this.baseBGAlpha = -0.15;
             this.lightShineLeftTop.alpha = 0.55;
             this.lightShineRightTop.alpha = 0.55;
-            this.scene.tweens.add({
+            this.addTween({
                 targets: [this.lightShineLeftTop,  this.lightShineRightTop],
                  ase: 'Quad.easeOut',
                 duration: 1500,
@@ -304,7 +304,7 @@
         }
         this.emergency = true;
          this.baseBGAlpha = -0.25;
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.tunnelBG,
              duration: 1000,
              alpha: 0.4,
@@ -331,14 +331,14 @@
         if (this.shineAnim) {
             this.shineAnim.stop();
         }
-        PhaserScene.tweens.add({
+        this.addTween({
              targets: [this.minusDamage1, this.minusDamage2, this.lightShineLeft, this.lightShineLeftTop, this.lightShineRight, this.lightShineRightTop],
              duration: 2000,
              alpha: 0,
              ease: 'Quad.easeOut',
          });
         this.setDefense(0);
-        this.bgMusic.detune = -600;
+        this.bgMusic.detune = -900;
         setVolume(this.bgMusic, 0.25, 1000)
 
         this.addTimeout(() => {
@@ -373,7 +373,7 @@
              return;
          }
          this.tunnelBG.setAlpha(0.81 + extraAlpha + this.baseBGAlpha);
-         this.currBGAnim = this.scene.tweens.add({
+         this.currBGAnim = this.addTween({
              targets: this.tunnelBG,
              duration: 800 * durationMult,
              alpha: 0.76 + this.baseBGAlpha,
@@ -420,7 +420,7 @@
                         this.minusDamage1.setDepth(999);
                         this.minusDamage2.setDepth(999);
 
-                        this.scene.tweens.add({
+                        this.addTween({
                             targets: [this.lightShineLeftTop,  this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
                             ease: 'Cubic.easeOut',
                             duration: 250,
@@ -437,7 +437,7 @@
                                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                                     globalObjects.bannerTextManager.showBanner(false);
                                 }, 250)
-                                this.scene.tweens.add({
+                                this.addTween({
                                     targets: [this.lightShineLeftTop,  this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
                                     duration: 1500,
                                     alpha: 0.5,
@@ -468,7 +468,7 @@
                             this.setDefaultSprite('robot1.png', undefined, true);
                             playSound('robot_sfx_1');
                             this.shieldAdded = false;
-                            this.blushAnim = PhaserScene.tweens.add({
+                            this.blushAnim = this.addTween({
                                  targets: this.blush,
                                  scaleX: this.sprite.startScale,
                                  scaleY: this.sprite.startScale,
@@ -476,7 +476,7 @@
                                  ease: 'Back.easeOut',
                                  duration: 350,
                                  onComplete: () => {
-                                     this.blushAnim = PhaserScene.tweens.add({
+                                     this.blushAnim = this.addTween({
                                          targets: this.blush,
                                          alpha: 1,
                                          duration: 3000,
@@ -506,7 +506,7 @@
                         if (this.health < 80) {
                             this.startInjuredSequence()
                         } else {
-                            PhaserScene.tweens.add({
+                            this.addTween({
                                  targets: [this.minusDamage1, this.minusDamage2, this.lightShineLeft, this.lightShineLeftTop, this.lightShineRight, this.lightShineRightTop],
                                  duration: 2000,
                                  alpha: 0.05,
@@ -523,7 +523,7 @@
                              this.setDefaultSprite('robot_hide.png');
                              playSound('voca_kya');
                              this.sprite.rotation = 0.15;
-                             PhaserScene.tweens.add({
+                             this.addTween({
                                  targets: [this.sprite, this.blush],
                                  y: 240,
                                  ease: 'Cubic.easeIn',
@@ -536,7 +536,7 @@
                                              playSound('clunk2', 0.3);
                                          }, 200);
                                      }, 500);
-                                     PhaserScene.tweens.add({
+                                     this.addTween({
                                          targets: this.sprite,
                                          rotation: 0,
                                          ease: 'Bounce.easeOut',
@@ -559,14 +559,14 @@
                                  this.setDefaultSprite('robot_laser.png');
                                  this.sprite.y = this.sprite.startY;
                                  this.blush.y = this.sprite.startY;
-                                 this.blushAnim = PhaserScene.tweens.add({
+                                 this.blushAnim = this.addTween({
                                      targets: this.blush,
                                      alpha: 0,
                                      duration: 500,
                                  })
                                  let oldScale = this.sprite.scaleX;
                                  this.sprite.setScale(this.sprite.scaleX * 1.01);
-                                 this.currAnim = PhaserScene.tweens.add({
+                                 this.currAnim = this.addTween({
                                      targets: this.sprite,
                                      scaleX: oldScale,
                                      scaleY: oldScale,
@@ -580,7 +580,7 @@
                                      }
                                  });
 
-                                this.shineAnim = this.scene.tweens.add({
+                                this.shineAnim = this.addTween({
                                     targets: [this.lightShineLeftTop,  this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
                                     ease: 'Cubic.easeOut',
                                     duration: 250,
@@ -600,7 +600,7 @@
                                         this.minusDamage2.setAlpha(0.55).setRotation(-0.14);
                                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                                         globalObjects.bannerTextManager.showBanner(false);
-                                        this.shineAnim = this.scene.tweens.add({
+                                        this.shineAnim = this.addTween({
                                             targets: [this.lightShineLeftTop, this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
                                             duration: 1500,
                                             alpha: 0.55,
@@ -981,13 +981,13 @@
                              playSound('voca_laser_broken', 0.8);
                          }
                          this.laserFake = this.addSprite(this.x - 5, this.y -30, 'enemies', 'robot_blast_small1.png').setScale(0.8).setDepth(9999).setAlpha(0.1);
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: this.laserFake,
                              alpha: 0.8,
                              ease: "Quad.easeOut",
                              duration: 400,
                              onComplete: () => {
-                                 PhaserScene.tweens.add({
+                                 this.addTween({
                                      targets: this.laserFake,
                                      alpha: 0.4,
                                      scaleX: 0.6,
@@ -995,13 +995,13 @@
                                      ease: "Back.easeOut",
                                      duration: 500,
                                      onComplete: () => {
-                                         PhaserScene.tweens.add({
+                                         this.addTween({
                                              targets: this.laserFake,
                                              alpha: 0.8,
                                              ease: "Back.easeOut",
                                              duration: 650,
                                              onComplete: () => {
-                                                 PhaserScene.tweens.add({
+                                                 this.addTween({
                                                      targets: this.laserFake,
                                                      alpha: 0,
                                                      ease: 'Quad.easeIn',
@@ -1020,14 +1020,14 @@
                      attackFinishFunction: () => {
                          messageBus.publish('enemyTakeTrueDamage', 2, false);
                          this.laserHeart.setAlpha(0.6).setScale(0.25).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 150);
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: this.laserHeart,
                              scaleX: 0.55,
                              scaleY: 0.55,
                              duration: 1000,
                              ease: 'Cubic.easeOut',
                          });
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: this.laserHeart,
                              alpha: 0,
                              ease: 'Quad.easeOut',
@@ -1056,7 +1056,7 @@
 
      startWeakLaser() {
          if (!this.dead && !this.weakLaserFinished) {
-             PhaserScene.time.delayedCall(2000, () => {
+             this.addDelayedCall(2000, () => {
                  this.nextAttack.damage = Math.max(1, this.nextAttack.damage - 1);
                  this.attackName.setText("FAILING CIRCUITS }" + this.nextAttack.damage +" ");
                  this.startWeakLaser();
@@ -1092,14 +1092,14 @@
         this.lightShineRightTop.visible = false;
         this.setDefense(0);
 
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.tunnelBG,
              duration: 700,
              alpha: 0,
              ease: 'Quint.easeOut',
          });
          let deathBoom = this.addSprite(this.sprite.x, this.sprite.y, 'enemies', 'robot_blast.png').setDepth(0).setOrigin(0.5, 0.65).setScale(0.25, -0.25);
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: deathBoom,
              alpha: 0,
              duration: 900,
@@ -1108,7 +1108,7 @@
                  deathBoom.destroy();
              }
          });
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: deathBoom,
              scaleX: 1,
              scaleY: -1,
@@ -1134,7 +1134,7 @@
          });
 
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: this.sprite,
              rotation: -0.2,
              ease: "Cubic.easeIn",
@@ -1143,14 +1143,14 @@
                  this.setDefaultSprite('robot_dead_left.png', this.sprite.scaleX, true);
                  this.sprite.y = this.sprite.startY;
                  this.sprite.setRotation(0);
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: this.sprite,
                      y: "+=125",
                      ease: "Cubic.easeIn",
                      duration: 800,
                      onComplete: () => {
                          playSound('clunk');
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: this.sprite,
                              y: "-=30",
                              rotation: "+=0.3",
@@ -1159,7 +1159,7 @@
                              onComplete: () => {
                                  this.setDefaultSprite('robot_dead_right.png', this.sprite.scaleX, true);
                                  this.sprite.setRotation(-0.3);
-                                 PhaserScene.tweens.add({
+                                 this.addTween({
                                      targets: this.sprite,
                                      y: "+=30",
                                      rotation: "+=0.3",
@@ -1169,14 +1169,14 @@
                                          playSound('clunk2');
                                          this.setDefaultSprite('robot_dead.png', this.sprite.scaleX, true);
                                          this.sprite.setRotation(0.2);
-                                         PhaserScene.tweens.add({
+                                         this.addTween({
                                              targets: this.sprite,
                                              y: "-=5",
                                              rotation: "-=0.3",
                                              ease: "Cubic.easeOut",
                                              duration: 150,
                                              onComplete: () => {
-                                                 PhaserScene.tweens.add({
+                                                 this.addTween({
                                                      targets: this.sprite,
                                                      y: "+=5",
                                                      ease: "Cubic.easeIn",
@@ -1187,7 +1187,7 @@
 
                                                          this.addTimeout(() => {
                                                              let rune = this.addSprite(this.x, this.y, 'tutorial', 'rune_protect_large.png').setScale(0).setVisible(false);
-                                                             PhaserScene.tweens.add({
+                                                             this.addTween({
                                                                  targets: rune,
                                                                  x: gameConsts.halfWidth,
                                                                  y: gameConsts.halfHeight - 170,
@@ -1219,7 +1219,7 @@
      createMissileObject(x, y, rotation = 0, delay = 0) {
          let newObj = this.addSprite(x, y, 'enemies', 'missile.png').setRotation(rotation).setScale(0).setDepth(0).setOrigin(0.5, 1.1);
          this.missileObjects.push(newObj);
-         this.scene.tweens.add({
+         this.addTween({
              delay: delay,
              targets: newObj,
              scaleX: 1,
@@ -1231,11 +1231,9 @@
      }
 
      animateSelfDestructText() {
-         let selfDestructDesc = PhaserScene.add.bitmapText(this.sprite.x, this.sprite.y - 168, 'damage', "SELF DESTRUCT\nACTIVE IN", 42, 1).setDepth(999).setOrigin(0.5, 0.5);
-         let selfDestructText = PhaserScene.add.bitmapText(this.sprite.x, this.sprite.y - 95, 'damage', "4", 54, 1).setDepth(999).setOrigin(0.5, 0.5).setScale(1.6);
-         this.addToDestructibles(selfDestructDesc);
-         this.addToDestructibles(selfDestructText);
-        PhaserScene.tweens.add({
+         let selfDestructDesc = this.addBitmapText(this.sprite.x, this.sprite.y - 168, 'damage', "SELF DESTRUCT\nACTIVE IN", 42, 1).setDepth(999).setOrigin(0.5, 0.5);
+         let selfDestructText = this.addBitmapText(this.sprite.x, this.sprite.y - 95, 'damage', "4", 54, 1).setDepth(999).setOrigin(0.5, 0.5).setScale(1.6);
+        this.addTween({
             targets: selfDestructText,
             scaleX: 1,
             scaleY: 1,
@@ -1245,7 +1243,7 @@
         this.addTimeout(() => {
             selfDestructText.setText("3").setScale(1.4);
             playSound('voca_hello_short');
-            PhaserScene.tweens.add({
+            this.addTween({
                 targets: selfDestructText,
                 scaleX: 1,
                 scaleY: 1,
@@ -1255,7 +1253,7 @@
         this.addTimeout(() => {
             selfDestructText.setText("2").setScale(1.4);
             playSound('voca_hello_short');
-            PhaserScene.tweens.add({
+            this.addTween({
                 targets: selfDestructText,
                 scaleX: 1,
                 scaleY: 1,
@@ -1265,7 +1263,7 @@
             this.addTimeout(() => {
                 selfDestructText.setText("1").setScale(1.4);
                 playSound('voca_hello_short');
-                PhaserScene.tweens.add({
+                this.addTween({
                     targets: selfDestructText,
                     scaleX: 1,
                     scaleY: 1,
@@ -1277,7 +1275,7 @@
                     
 
                     selfDestructText.setText("GOODBYE!\n(die X3)\n ").setScale(1.4);
-                    PhaserScene.tweens.add({
+                    this.addTween({
                         targets: selfDestructText,
                         scaleX: 1.1,
                         scaleY: 1.1,
@@ -1285,34 +1283,35 @@
                         ease: 'Cubic.easeOut'
                     });
                     selfDestructDesc.destroy();
-                    PhaserScene.tweens.add({
-                        delay: 500,
+                    this.addTween({
+                        delay: 400,
                         targets: PhaserScene.cameras.main,
                         x: 10,
                         y: 3,
                         duration: 40,
                         onComplete: () => {
+                            playSound('explosion');
                             soundToKill.volume = 0.1;
-                            PhaserScene.tweens.add({
+                            this.addTween({
                                 targets: PhaserScene.cameras.main,
                                 x: -10,
                                 y: -3,
                                 duration: 50,
                                 onComplete: () => {
-                                    PhaserScene.tweens.add({
+                                    this.addTween({
                                         targets: PhaserScene.cameras.main,
                                         x: 7,
                                         y: 6,
                                         duration: 50,
                                         onComplete: () => {
                                             soundToKill.stop();
-                                            PhaserScene.tweens.add({
+                                            this.addTween({
                                                 targets: PhaserScene.cameras.main,
                                                 x: -2,
                                                 y: -1,
                                                 duration: 50,
                                                 onComplete: () => {
-                                                    PhaserScene.tweens.add({
+                                                    this.addTween({
                                                         targets: PhaserScene.cameras.main,
                                                         x: 0,
                                                         y: 0,
@@ -1328,7 +1327,7 @@
                     });
                     this.addTimeout(() => {
                         let explosion = this.addSprite(this.x, this.y, 'spells', 'brickPattern2.png').setScale(1).setDepth(100010).setPosition(this.x, gameConsts.halfHeight - 50).setOrigin(0.5, 0.45);
-                        this.scene.tweens.add({
+                        this.addTween({
                             targets: explosion,
                             duration: 300,
                             scaleX: 4,
@@ -1353,7 +1352,7 @@
      animateBoomEyeshine() {
          this.eyeShine.visible = true;
          this.eyeShine.setAlpha(0.7).setScale(0.8).setPosition(this.sprite.x, this.sprite.y).setDepth(9999);
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.eyeShine,
              duration: 2500,
              scaleX: 1.9,
@@ -1361,34 +1360,34 @@
              alpha: 1.05,
              ease: 'Quad.easeOut',
          });
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.eyeShine,
              duration: 2500,
              rotation: "-=0.3",
              ease: 'Quad.easeOut',
              onComplete: () => {
-                 this.scene.tweens.add({
+                 this.addTween({
                      targets: this.eyeShine,
                      duration: 150,
                      scaleX: 2,
                      rotation: "+=0.05",
                      ease: 'Quart.easeOut',
                      onComplete: () => {
-                         this.scene.tweens.add({
+                         this.addTween({
                              targets: this.eyeShine,
                              duration: 150,
                              scaleX: 2.2,
                              rotation: "-=0.1",
                              ease: 'Quart.easeOut',
                              onComplete: () => {
-                                 this.scene.tweens.add({
+                                 this.addTween({
                                      targets: this.eyeShine,
                                      duration: 150,
                                      scaleX: 2.5,
                                      rotation: "+=0.15",
                                      ease: 'Quart.easeOut',
                                      onComplete: () => {
-                                         this.scene.tweens.add({
+                                         this.addTween({
                                              targets: this.eyeShine,
                                              duration: 150,
                                              scaleX: 3,
@@ -1396,7 +1395,7 @@
                                              rotation: "-=0.2",
                                              ease: 'Quart.easeOut',
                                              onComplete: () => {
-                                                 this.scene.tweens.add({
+                                                 this.addTween({
                                                      targets: this.eyeShine,
                                                      duration: 150,
                                                      scaleY: 2.5,
@@ -1404,7 +1403,7 @@
                                                      rotation: "+=0.25",
                                                      ease: 'Quart.easeOut',
                                                      onComplete: () => {
-                                                         this.scene.tweens.add({
+                                                         this.addTween({
                                                              targets: this.eyeShine,
                                                              duration: 250,
                                                              scaleX: 1.75,
@@ -1412,7 +1411,7 @@
                                                              rotation: 0.1,
                                                              ease: 'Cubic.easeIn',
                                                              onComplete: () => {
-                                                                 this.scene.tweens.add({
+                                                                 this.addTween({
                                                                      targets: this.eyeShine,
                                                                      duration: 250,
                                                                      scaleX: 0,
@@ -1439,14 +1438,14 @@
          while (this.missileObjects.length > 0) {
              let currObj = this.missileObjects.pop();
              let delayAmt = 150;
-             this.scene.tweens.add({
+             this.addTween({
                  delay: delayAmt,
                  targets: currObj,
                  x: "-=150",
                  rotation: "-=0.2",
                  duration: 1500
              });
-             this.scene.tweens.add({
+             this.addTween({
                  delay: delayAmt,
                  targets: currObj,
                  y: "+=150",
@@ -1454,7 +1453,7 @@
                  duration: 1500,
                  onComplete: () => {
                      currObj.rotation = Math.PI * -0.5;
-                     this.scene.tweens.add({
+                     this.addTween({
                          delay: 2000,
                          targets: currObj,
                          alpha: 0,
@@ -1478,7 +1477,7 @@
              let delayAmt = this.missileObjects.length * 140;
              let xGoal = Math.sin(currObj.rotation) * 250;
              let yGoal = -Math.cos(currObj.rotation) * 250;
-             this.scene.tweens.add({
+             this.addTween({
                  delay: delayAmt,
                  targets: currObj,
                  x: "+=" + xGoal,
@@ -1497,7 +1496,7 @@
                  onComplete: () => {
                      let startX = gameConsts.halfWidth * 0.6 + currObj.x * 0.4;
                      let xOffset = gameConsts.halfWidth - startX;
-                     this.scene.tweens.add({
+                     this.addTween({
                          targets: currObj,
                          delay: 300,
                          y: globalObjects.player.getY() - 195 + Math.abs(xOffset * 0.3),
@@ -1512,14 +1511,14 @@
                          onComplete: () => {
                              let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 200);
                              powEffect.setPosition(currObj.x, currObj.y).setDepth(999).setScale(1.5).setAlpha(1.2).setRotation(Math.random() - 0.5);
-                             this.scene.tweens.add({
+                             this.addTween({
                                  targets: powEffect,
                                  scaleX: 2.4,
                                  scaleY: 2.4,
                                  ease: 'Cubic.easeOut',
                                  duration: 200,
                              })
-                             this.scene.tweens.add({
+                             this.addTween({
                                  targets: powEffect,
                                  alpha: 0,
                                  ease: 'Quad.easeIn',
@@ -1542,7 +1541,7 @@
          if (this.bulletTween) {
              this.bulletTween.stop();
          }
-         this.bulletTween = PhaserScene.tweens.add({
+         this.bulletTween = this.addTween({
              targets: bullet,
              scaleX: 1,
              scaleY: 1,
@@ -1567,27 +1566,27 @@
                  let fireDelay = 120;
                  this.fireEffect.setVisible(true);
                  this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
-                 PhaserScene.time.delayedCall(fireDelay, () => {
+                 this.addDelayedCall(fireDelay, () => {
                      if (!this.dead && this.shieldAdded) {
                          this.fireEffect.setFrame('robot_fire_2.png');
                          this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage);
-                         PhaserScene.time.delayedCall(fireDelay, () => {
+                         this.addDelayedCall(fireDelay, () => {
                              if (!this.dead && this.shieldAdded) {
                                  this.fireEffect.setFrame('robot_fire_1.png')
                                  this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
-                                 PhaserScene.time.delayedCall(fireDelay, () => {
+                                 this.addDelayedCall(fireDelay, () => {
                                      if (!this.dead && this.shieldAdded) {
                                          this.fireEffect.setFrame('robot_fire_2.png');
                                          this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage)
-                                         PhaserScene.time.delayedCall(fireDelay, () => {
+                                         this.addDelayedCall(fireDelay, () => {
                                              if (!this.dead && this.shieldAdded) {
                                                  this.fireEffect.setFrame('robot_fire_1.png');
                                                  this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
-                                                 PhaserScene.time.delayedCall(fireDelay, () => {
+                                                 this.addDelayedCall(fireDelay, () => {
                                                      if (!this.dead && this.shieldAdded) {
                                                          this.fireEffect.setFrame('robot_fire_2.png');
                                                          this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage)
-                                                         PhaserScene.time.delayedCall(fireDelay, () => {
+                                                         this.addDelayedCall(fireDelay, () => {
                                                            this.fireEffect.setVisible(false);
                                                             this.addTimeout(() => {
                                                                  if (!this.dead && this.shieldAdded) {
@@ -1619,7 +1618,7 @@
              }
              let backgroundBlack = getBackgroundBlackout();
              backgroundBlack.setDepth(-1).setAlpha(0);
-             this.backgroundTween = PhaserScene.tweens.add({
+             this.backgroundTween = this.addTween({
                  targets: backgroundBlack,
                  alpha: 0.4,
                  duration: 1000,
@@ -1628,7 +1627,7 @@
              this.laserCharge.setScale(0.2).setAlpha(0.5);
              this.laserHeart.setScale(0.25).setAlpha(0);
              this.laserBeam.setScale(1).setVisible(false);
-             this.laserTween = PhaserScene.tweens.add({
+             this.laserTween = this.addTween({
                  targets: this.laserCharge,
                  scaleX: 0.3,
                  scaleY: 0.3,
@@ -1639,7 +1638,7 @@
                  onComplete: () => {
                      this.laserCharge.setAlpha(0.5);
                      this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4);
-                     this.laserTween = PhaserScene.tweens.add({
+                     this.laserTween = this.addTween({
                          targets: this.laserCharge,
                          scaleX: 0.5,
                          scaleY: 0.5,
@@ -1650,7 +1649,7 @@
                          onComplete: () => {
                              this.laserCharge.setAlpha(0.5);
                              this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4);
-                             this.laserTween = PhaserScene.tweens.add({
+                             this.laserTween = this.addTween({
                                  targets: this.laserCharge,
                                  scaleX: 0.75,
                                  scaleY: 0.75,
@@ -1661,7 +1660,7 @@
                                  onComplete: () => {
                                      this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
                                      this.laserHeart.setAlpha(1.1);
-                                     PhaserScene.tweens.add({
+                                     this.addTween({
                                          targets: this.laserHeart,
                                          scaleX: 0.75,
                                          scaleY: 0.75,
@@ -1669,7 +1668,7 @@
                                          duration: 750,
                                      })
 
-                                     PhaserScene.tweens.add({
+                                     this.addTween({
                                          targets: this.laserHeart,
                                          alpha: 0,
                                          ease: 'Quad.easeIn',
@@ -1694,7 +1693,7 @@
          backgroundBlack.setAlpha(0.7);
          this.laserBeam.setVisible(true);
          let delayInterval = 50;
-         this.laserTween = PhaserScene.tweens.add({
+         this.laserTween = this.addTween({
              delay: delayInterval,
              targets: this.laserBeam,
              scaleX: 1.08,
@@ -1703,7 +1702,7 @@
              ease: 'Quint.easeOut',
              onComplete: () => {
                  this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
-                 this.laserTween = PhaserScene.tweens.add({
+                 this.laserTween = this.addTween({
                      delay: delayInterval,
                      targets: this.laserBeam,
                      scaleX: 1,
@@ -1712,7 +1711,7 @@
                      ease: 'Quint.easeOut',
                      onComplete: () => {
                          this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
-                         this.laserTween = PhaserScene.tweens.add({
+                         this.laserTween = this.addTween({
                              delay: delayInterval,
                              targets: this.laserBeam,
                              scaleX: 1.1,
@@ -1722,7 +1721,7 @@
                              onComplete: () => {
                                  zoomTemp(1.01);
                                  this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
-                                 this.laserTween = PhaserScene.tweens.add({
+                                 this.laserTween = this.addTween({
                                      delay: delayInterval,
                                      targets: this.laserBeam,
                                      scaleX: 1.01,
@@ -1732,7 +1731,7 @@
                                      onComplete: () => {
                                          zoomTemp(1.01);
                                          this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
-                                         this.laserTween = PhaserScene.tweens.add({
+                                         this.laserTween = this.addTween({
                                              delay: delayInterval,
                                              targets: this.laserBeam,
                                              scaleX: 1.15,
@@ -1741,7 +1740,7 @@
                                              ease: 'Quint.easeOut',
                                              onComplete: () => {
                                                  this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
-                                                 this.laserTween = PhaserScene.tweens.add({
+                                                 this.laserTween = this.addTween({
                                                      delay: delayInterval * 0.5,
                                                      targets: this.laserBeam,
                                                      scaleX: 1.1,
@@ -1751,7 +1750,7 @@
                                                      onComplete: () => {
                                                          zoomTemp(1.02);
                                                          this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
-                                                         this.laserTween = PhaserScene.tweens.add({
+                                                         this.laserTween = this.addTween({
                                                              delay: delayInterval * 0.5,
                                                              targets: this.laserBeam,
                                                              scaleX: 1.25,
@@ -1761,14 +1760,14 @@
                                                              onComplete: () => {
                                                                  this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
                                                                  this.laserHeart.setAlpha(1).setScale(0.25).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 150);
-                                                                 PhaserScene.tweens.add({
+                                                                 this.addTween({
                                                                      targets: this.laserHeart,
                                                                      scaleX: 0.8,
                                                                      scaleY: 0.8,
                                                                      duration: 900,
                                                                      ease: 'Cubic.easeOut',
                                                                  });
-                                                                 PhaserScene.tweens.add({
+                                                                 this.addTween({
                                                                      targets: this.laserHeart,
                                                                      alpha: 0,
                                                                      ease: 'Quad.easeIn',
@@ -1778,12 +1777,12 @@
                                                                  playSound('time_strike_hit_2');
                                                                  messageBus.publish("selfTakeDamage", damage);
                                                                  zoomTemp(1.02);
-                                                                 PhaserScene.tweens.add({
+                                                                 this.addTween({
                                                                      targets: backgroundBlack,
                                                                      alpha: 0,
                                                                      duration: 400,
                                                                  });
-                                                                 PhaserScene.tweens.add({
+                                                                 this.addTween({
                                                                      targets: this.laserCharge,
                                                                      alpha: 0,
                                                                      scaleX: 0.5,
@@ -1791,7 +1790,7 @@
                                                                      duration: 150,
                                                                      ease: 'Cubic.easeIn',
                                                                  });
-                                                                 this.laserTween = PhaserScene.tweens.add({
+                                                                 this.laserTween = this.addTween({
                                                                      delay: delayInterval,
                                                                      targets: this.laserBeam,
                                                                      scaleX: 1,
@@ -1829,13 +1828,13 @@
          let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
          let continueText = this.addText(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: banner,
              alpha: 0.75,
              duration: 500,
          });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [victoryText],
              alpha: 1,
              ease: 'Quad.easeOut',
@@ -1846,13 +1845,13 @@
              continueText.alpha = 1;
          }, 1000);
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: victoryText,
              scaleX: 1,
              scaleY: 1,
              duration: 800,
          });
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: rune,
              y: gameConsts.halfHeight - 110,
              ease: 'Cubic.easeOut',
@@ -1860,7 +1859,7 @@
              onComplete: () => {
                  this.dieClickBlocker.setOnMouseUpFunc(() => {
                      this.dieClickBlocker.destroy();
-                     PhaserScene.tweens.add({
+                     this.addTween({
                          targets: [victoryText, banner],
                          alpha: 0,
                          duration: 400,

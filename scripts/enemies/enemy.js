@@ -1753,6 +1753,23 @@ class Enemy {
         }, delay);
     }
 
+    addBitmapText(x, y, source, text, size, param1, param2, param3) {
+        let newText = PhaserScene.add.bitmapText(x, y, source, text, size, param1, param2, param3)
+        this.addToDestructibles(newText);
+        return newText;
+    }
+
+    addDelayedCall(delay, func) {
+        if (this.isDestroyed) {
+            return PhaserScene.time.delayedCall(0, () => {})
+        }
+        return PhaserScene.time.delayedCall(delay, () => {
+            if (!this.isDestroyed) {
+                func();
+            }
+        })
+    }
+
     updateStatuses() {
         if (this.dead) {
             return;

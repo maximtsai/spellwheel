@@ -11,12 +11,12 @@
      }
 
      backForthAnim() {
-         PhaserScene.time.delayedCall(1000, () => {
+         this.addDelayedCall(1000, () => {
             if (!this.dead && !this.isDestroyed && !this.isUnloading) {
                 if (this.defaultSprite === 'mantis_a.png') {
                     this.sprite.setFrame('mantis_b.png');
                 }
-                PhaserScene.time.delayedCall(1000, () => {
+                this.addDelayedCall(1000, () => {
                     if (!this.dead && !this.isDestroyed && !this.isUnloading) {
                         if (this.defaultSprite === 'mantis_a.png') {
                             this.sprite.setFrame('mantis_a.png');
@@ -76,38 +76,38 @@
                      attackStartFunction: () => {
                         this.isUnloading = true;
                         this.setSprite('mantis_preparing.png')
-                        PhaserScene.time.delayedCall(300, () => {
+                        this.addDelayedCall(300, () => {
                             if (this.dead) {
                                 return;
                             }
                             this.setSprite('mantis_reveal.png');
                             this.bgMusic.stop();
-                            PhaserScene.time.delayedCall(400, () => {
+                            this.addDelayedCall(400, () => {
                                 if (this.dead) {
                                     return;
                                 }
                                 playSound('guncock');
                             });
 
-                            PhaserScene.time.delayedCall(500, () => {
+                            this.addDelayedCall(500, () => {
                                 if (this.dead) {
                                     return;
                                 }
                                 this.setDefaultSprite('mantis_unveiled.png');
                                 this.sprite.setScale(0.88, 0.93);
-                                PhaserScene.tweens.add({
+                                this.addTween({
                                     targets: this.sprite,
                                     scaleX: 0.9,
                                     scaleY: 0.9,
                                     duration: 600,
                                     ease: 'Back.easeOut',
                                 });
-                                PhaserScene.time.delayedCall(2000, () => {
+                                this.addDelayedCall(2000, () => {
                                     if (this.dead) {
                                         return;
                                     }
                                     let attackText = PhaserScene.add.bitmapText(this.sprite.x + 120, this.sprite.y - 120, 'damage', "GET 'EM", 42, 1).setDepth(999).setOrigin(0.5, 0.5);
-                                    PhaserScene.tweens.add({
+                                    this.addTween({
                                          targets: attackText,
                                          x: this.sprite.x + 127,
                                          duration: 20,
@@ -189,7 +189,7 @@
             let detuneAmt = Math.floor((Math.random() - 0.5) * 1500);
             playSound('derp', 0.8).detune = detuneAmt;
             let isUpsideDown = this.isAngry && Math.random() < 0.1;
-            this.panicTween = PhaserScene.tweens.add({
+            this.panicTween = this.addTween({
                 delay: this.isAngry ? 150 : 300,
                  targets: this.sprite,
                  scaleX: -this.sprite.scaleX,
@@ -206,10 +206,8 @@
 
     startGunSequence(attackDamages, attackTimes) {
         if (!this.gunFlash1) {
-            this.gunFlash1 = PhaserScene.add.sprite(this.sprite.x - 50, this.sprite.y + 10, 'enemies', 'gunflash_1.png').setDepth(11).setVisible(false);
-            this.gunFlash2 = PhaserScene.add.sprite(this.sprite.x + 50, this.sprite.y + 10, 'enemies', 'gunflash_1.png').setDepth(11).setVisible(false);
-            this.addToDestructibles(this.gunFlash1);
-            this.addToDestructibles(this.gunFlash2);
+            this.gunFlash1 = this.addImage(this.sprite.x - 50, this.sprite.y + 10, 'enemies', 'gunflash_1.png').setDepth(11).setVisible(false);
+            this.gunFlash2 = this.addImage(this.sprite.x + 50, this.sprite.y + 10, 'enemies', 'gunflash_1.png').setDepth(11).setVisible(false);
         }
         if (!this.dead) {
             this.repeatGunSequenceA(attackDamages, attackTimes);
@@ -362,42 +360,41 @@
 
         playSound('goblin_grunt');
         if (this.isUnloading) {
-            this.head1 = PhaserScene.add.sprite(this.sprite.x + 12, this.sprite.y -68, 'enemies', 'mantis_head_1.png').setDepth(8).setScale(this.sprite.startScale);
-            this.head2 = PhaserScene.add.sprite(this.sprite.x + 12, this.sprite.y -15, 'enemies', 'mantis_head_2.png').setDepth(8).setScale(this.sprite.startScale);
-            this.head3 = PhaserScene.add.sprite(this.sprite.x + 12, this.sprite.y + 32, 'enemies', 'mantis_head_3.png').setDepth(8).setScale(this.sprite.startScale);
-            this.addToDestructibles(this.head1); this.addToDestructibles(this.head2); this.addToDestructibles(this.head3);
-             PhaserScene.tweens.add({
+            this.head1 = this.addImage(this.sprite.x + 12, this.sprite.y -68, 'enemies', 'mantis_head_1.png').setDepth(8).setScale(this.sprite.startScale);
+            this.head2 = this.addImage(this.sprite.x + 12, this.sprite.y -15, 'enemies', 'mantis_head_2.png').setDepth(8).setScale(this.sprite.startScale);
+            this.head3 = this.addImage(this.sprite.x + 12, this.sprite.y + 32, 'enemies', 'mantis_head_3.png').setDepth(8).setScale(this.sprite.startScale);
+             this.addTween({
                  targets: this.head1,
                  y: this.sprite.y + 120,
                  ease: "Cubic.easeIn",
                  duration: 1050,
              });
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: this.head2,
                  y: this.sprite.y + 120,
                  ease: "Cubic.easeIn",
                  duration: 850,
              });
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: this.head3,
                  y: this.sprite.y + 120,
                  ease: "Cubic.easeIn",
                  duration: 600,
              });
 
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: this.head1,
                  x: this.sprite.x - 70,
                  rotation: -1.5,
                  duration: 1050,
              });
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: this.head2,
                  x: this.sprite.x + 65,
                  rotation: 3.14,
                  duration: 850,
              });
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: this.head3,
                  x: this.sprite.x - 10,
                  rotation: -0.2,
@@ -407,7 +404,7 @@
 
             this.setDefaultSprite('mantis_shoot_headless.png').setScale(this.sprite.startScale * 0.94);
             this.sprite.setOrigin(0.5, 0.98).setPosition(this.sprite.x, this.sprite.y + 275 * 0.57)
-             PhaserScene.tweens.add({
+             this.addTween({
                 delay: 3000,
                  targets: this.sprite,
                  rotation: -0.3,
@@ -417,7 +414,7 @@
                  duration: 1200,
                  onComplete: () => {
                     this.lieDown()
-                     PhaserScene.tweens.add({
+                     this.addTween({
                          targets: [this.head1, this.head2, this.head3],
                          alpha: 0,
                          duration: 1000,
@@ -449,9 +446,9 @@
          this.setDefaultSprite('mantis_dead.png', this.sprite.startScale, true);
          this.sprite.setRotation(0).setScale(this.sprite.startScale);
          this.addTimeout(() => {
-            let rune = this.scene.add.sprite(this.x, this.y, 'tutorial', 'rune_protect_large.png').setScale(0.5).setDepth(9999).setVisible(false);
+            let rune = this.addImage(this.x, this.y, 'tutorial', 'rune_protect_large.png').setScale(0.5).setDepth(9999).setVisible(false);
             playSound('victory_2');
-            PhaserScene.tweens.add({
+            this.addTween({
                 targets: rune,
                 x: gameConsts.halfWidth,
                 y: gameConsts.halfHeight - 170,

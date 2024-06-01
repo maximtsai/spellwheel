@@ -5,7 +5,7 @@
          this.shieldAdded = false;
         this.bgMusic = playMusic('bite_down', 0.7, true);
          this.initBird();
-         this.popupTimeout = setTimeout(() => {
+         this.popupTimeout = this.addTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3500)
@@ -22,9 +22,8 @@
      }
 
      initBird() {
-         this.bird = this.scene.add.sprite(this.x - 335 * this.sprite.startScale, this.y - 223 * this.sprite.startScale, 'enemies', 'bird_1.png').setAlpha(0).setDepth(10).setScale(this.sprite.startScale);
-         this.addToDestructibles(this.bird);
-         PhaserScene.tweens.add({
+         this.bird = this.addImage(this.x - 335 * this.sprite.startScale, this.y - 223 * this.sprite.startScale, 'enemies', 'bird_1.png').setAlpha(0).setDepth(10).setScale(this.sprite.startScale);
+         this.addTween({
              targets: [this.bird],
              alpha: 1,
              ease: 'Quad.easeIn',
@@ -69,9 +68,8 @@
                  this.eyes1.startOffsetY = 41 * this.sprite.startScale;
                  let xDiff = 125 * this.sprite.startScale;
                  let yDiff = -3 * this.sprite.startScale;
-                 this.eyes2 = this.scene.add.sprite(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1);
+                 this.eyes2 = this.addImage(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1);
                  this.addExtraSprite(this.eyes2, xDiff, yDiff);
-                 this.addToDestructibles(this.eyes2);
                  this.eyeArray.push(this.eyes2);
                  this.reOpenEyes()
              });
@@ -85,10 +83,9 @@
                  if (!this.eyes2) {
                      let xDiff = 100 * this.sprite.startScale;
                      let yDiff = -5 * this.sprite.startScale;
-                     this.eyes2 = this.scene.add.sprite(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1);
+                     this.eyes2 = this.addImage(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1);
                      this.eyeArray.push(this.eyes2);
                      this.addExtraSprite(this.eyes2, xDiff, yDiff);
-                     this.addToDestructibles(this.eyes2);
                  }
 
                  this.reOpenEyes()
@@ -101,10 +98,9 @@
                  let eye2OffsetX = 150 * this.sprite.startScale;
                  let eye2OffsetY = 34 * this.sprite.startScale;
                  if (!this.eyes2) {
-                     this.eyes2 = this.scene.add.sprite(this.x + 100 * this.sprite.startScale, this.y - 5 * this.sprite.startScale, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1);
+                     this.eyes2 = this.addImage(this.x + 100 * this.sprite.startScale, this.y - 5 * this.sprite.startScale, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1);
                      this.eyeArray.push(this.eyes2);
                      this.addExtraSprite(this.eyes2, eye2OffsetX, eye2OffsetY);
-                     this.addToDestructibles(this.eyes2);
                  }
                  this.eyes2.setFrame('wall_eyes_4.png').setPosition(this.x + eye2OffsetX, this.y + eye2OffsetY);
                  this.eyes2.startOffsetX = eye2OffsetX;
@@ -115,12 +111,11 @@
      }
 
      initEye1() {
-         this.eyes1 = this.scene.add.sprite(this.x + 5 * this.sprite.startScale, this.y - 10 * this.sprite.startScale, 'enemies', 'wall_eyes_2.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1).setVisible(false);
+         this.eyes1 = this.addImage(this.x + 5 * this.sprite.startScale, this.y - 10 * this.sprite.startScale, 'enemies', 'wall_eyes_2.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1).setVisible(false);
          this.addExtraSprite(this.eyes1, 5 * this.sprite.startScale, -10 * this.sprite.startScale);
          this.eyeArray.push(this.eyes1);
-         this.addToDestructibles(this.eyes1);
 
-         PhaserScene.tweens.add({
+         this.addTween({
              delay: 250,
              targets: [this.eyes1],
              scaleY: this.sprite.startScale * 0.25,
@@ -131,17 +126,17 @@
                  this.eyes1.setVisible(true);
              },
              onComplete: () => {
-                setTimeout(() => {
+                this.addTimeout(() => {
                     playSound('matter_enhance_2');
                 }, 500)
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: [this.eyes1],
                      scaleY: this.sprite.startScale * 1.1,
                      duration: 900,
                      ease: 'Back.easeIn',
                      completeDelay: 200,
                      onComplete: () => {
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: [this.eyes1],
                              scaleY: this.sprite.startScale,
                              duration: 300,
@@ -164,20 +159,20 @@
              for (let i = 0; i < this.eyeArray.length; i++) {
                  this.eyeArray[i].scaleY = this.sprite.startScale * 0.5;
              }
-             this.eyeAnim = PhaserScene.tweens.add({
+             this.eyeAnim = this.addTween({
                  targets: this.eyeArray,
                  scaleY: this.sprite.startScale,
                  ease: 'Cubic.easeIn',
                  duration: 450,
              });
          } else {
-             this.eyeAnim = PhaserScene.tweens.add({
+             this.eyeAnim = this.addTween({
                  targets: this.eyeArray,
                  scaleY: 0,
                  ease: 'Cubic.easeIn',
                  duration: 350,
                  onComplete: () => {
-                     this.eyeAnim = PhaserScene.tweens.add({
+                     this.eyeAnim = this.addTween({
                          targets: this.eyeArray,
                          scaleY: this.sprite.startScale,
                          ease: 'Cubic.easeOut',
@@ -192,7 +187,7 @@
          if (this.eyeAnim) {
              this.eyeAnim.stop();
          }
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: this.eyeArray,
              scaleY: 0,
              ease: 'Quad.easeIn',
@@ -202,7 +197,7 @@
      }
 
      reOpenEyes(duration = 500) {
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: this.eyeArray,
              scaleY: this.sprite.startScale,
              ease: 'Back.easeOut',
@@ -211,13 +206,13 @@
      }
 
      birdFalls() {
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [this.bird],
              x: "+=90",
              rotation: "+=5.9",
              duration: 1150,
          });
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [this.bird],
              y: "+=140",
              duration: 1150,
@@ -225,14 +220,14 @@
              onComplete: () => {
                  this.bird.setFrame('bird_2.png')
                  this.bird.setRotation(0.4);
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: [this.bird],
                      y: -40,
                      duration: 1000,
                      easeParams: [1.4],
                      ease: 'Back.easeIn',
                  });
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: [this.bird],
                      x: "+=400",
                      rotation: 0,
@@ -246,28 +241,28 @@
      throwWallChunk(spriteName, damage = 40, endScale = 1) {
          this.closeEyes(400);
 
-         let wallChunk = this.scene.add.sprite(this.x, this.y - 115, 'enemies', spriteName).setDepth(0).setScale(this.sprite.startScale * 0.9);
+         let wallChunk = this.addImage(this.x, this.y - 115, 'enemies', spriteName).setDepth(0).setScale(this.sprite.startScale * 0.9);
          wallChunk.y += wallChunk.height * 0.5;
 
-         PhaserScene.tweens.add({
+         this.addTween({
              delay: 550,
              targets: wallChunk,
              y: -250,
              ease: 'Quad.easeOut',
              duration: 500,
              onStart: () => {
-                 setTimeout(() => {
+                 this.addTimeout(() => {
                      playSound('matter_enhance', 0.75);
                  }, 80);
              },
              onComplete: () => {
                  wallChunk.setScale(endScale).setRotation(-4).setDepth(20);
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: wallChunk,
                      rotation: 0,
                      duration: 800,
                      onComplete: () => {
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              delay: 1000 + damage * 5,
                              targets: wallChunk,
                              alpha: 0,
@@ -279,15 +274,15 @@
                          });
                      }
                  });
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: wallChunk,
                      y: globalObjects.player.getY() - 210,
                      ease: 'Cubic.easeIn',
                      duration: 800,
                      onComplete: () => {
-                         let hitEffect2 = PhaserScene.add.sprite(wallChunk.x, wallChunk.y, 'spells', 'rockCircle.png').setScale(0.2).setRotation(Math.random() * 6).setDepth(195);
+                         let hitEffect2 = this.addImage(wallChunk.x, wallChunk.y, 'spells', 'rockCircle.png').setScale(0.2).setRotation(Math.random() * 6).setDepth(195);
 
-                         let hitEffect = PhaserScene.add.sprite(wallChunk.x, wallChunk.y, 'spells', damage > 50 ? 'brickPattern2.png' : 'damageEffect4.png').setScale(0.95).setRotation(Math.random()).setDepth(195);
+                         let hitEffect = this.addImage(wallChunk.x, wallChunk.y, 'spells', damage > 50 ? 'brickPattern2.png' : 'damageEffect4.png').setScale(0.95).setRotation(Math.random()).setDepth(195);
 
                          this.scene.tweens.add({
                              targets: hitEffect,
@@ -331,13 +326,11 @@
             if (hasBigPoop && i == numBirds - 1) {
                 delay += 500;
                 isBigPoop = true;
-                bird = this.scene.add.sprite(-999, 0, 'enemies', 'bird_2_fat.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
-                this.addToDestructibles(bird);
+                bird = this.addImage(-999, 0, 'enemies', 'bird_2_fat.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
             } else {
                 bird = poolManager.getItemFromPool('bird');
                 if (!bird) {
-                    bird = this.scene.add.sprite(-999, 0, 'enemies', 'bird_2.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
-                    this.addToDestructibles(bird);
+                    bird = this.addImage(-999, 0, 'enemies', 'bird_2.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
                 }
             }
 
@@ -353,7 +346,7 @@
             let rock;
             let rockYOffset = 40;
             if (hasRock && !isBigPoop) {
-                rock = this.scene.add.sprite(bird.x, bird.y + rockYOffset, 'enemies', hasBigRock ? 'wall_chunk.png' : 'brick.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
+                rock = this.addImage(bird.x, bird.y + rockYOffset, 'enemies', hasBigRock ? 'wall_chunk.png' : 'brick.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
                 if (!isLeft) {
                     rock.scaleX *= -1;
                 }
@@ -366,7 +359,7 @@
                 duration *= 2;
             }
             let goalX = isLeft ? gameConsts.halfWidth + 15 - Math.random() * 45 : gameConsts.halfWidth + Math.random() * 45 - 15;
-            PhaserScene.tweens.add({
+            this.addTween({
                 delay: delay,
                 targets: bird,
                 rotation: bird.rotation * 0.8,
@@ -374,7 +367,7 @@
                 duration: duration,
                 onStart: () => {
                     let goalY = globalObjects.player.getY() - 400 - Math.random() * 110
-                    PhaserScene.tweens.add({
+                    this.addTween({
                         targets: bird,
                         scaleX: isLeft ? this.sprite.startScale * 0.25 + 0.8 : -this.sprite.startScale * 0.25 - 0.8,
                         scaleY: this.sprite.startScale * 0.25 + 0.8,
@@ -383,7 +376,7 @@
                         duration: duration,
                     });
                     if (hasRock && !isBigPoop) {
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: rock,
                             scaleX: isLeft ? this.sprite.startScale * 0.25 + 0.8 : -this.sprite.startScale * 0.25 - 0.8 ,
                             scaleY: this.sprite.startScale * 0.25 + 0.8,
@@ -391,13 +384,13 @@
                             ease: 'Cubic.easeOut',
                             duration: duration,
                         });
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: rock,
                             x: goalX,
                             duration: duration,
                             onComplete: () => {
                                 let distToPlayer = Math.abs(globalObjects.player.getY() - 180 - rock.y);
-                                PhaserScene.tweens.add({
+                                this.addTween({
                                     targets: rock,
                                     y: globalObjects.player.getY() - 180 - Math.random() * 15,
                                     ease: 'Quad.easeIn',
@@ -405,7 +398,7 @@
                                     onComplete: () => {
                                         messageBus.publish("selfTakeDamage", hasBigRock ? 20 : 5);
                                         if (hasBigRock) {
-                                            let hitEffect2 = PhaserScene.add.sprite(rock.x, rock.y, 'spells', 'rockCircle.png').setScale(0.2).setRotation(Math.random() * 6).setDepth(195);
+                                            let hitEffect2 = this.addImage(rock.x, rock.y, 'spells', 'rockCircle.png').setScale(0.2).setRotation(Math.random() * 6).setDepth(195);
                                             this.scene.tweens.add({
                                                 targets: hitEffect2,
                                                 alpha: 0,
@@ -438,7 +431,7 @@
                         poopDelay = 200;
                         bird.setFrame('bird_2.png');
                     }
-                    PhaserScene.tweens.add({
+                    this.addTween({
                         targets: bird,
                         delay: poopDelay,
                         rotation: 0,
@@ -448,7 +441,7 @@
                             poolManager.returnItemToPool(bird, 'bird');
                         }
                     });
-                    PhaserScene.tweens.add({
+                    this.addTween({
                         targets: bird,
                         delay: poopDelay,
                         scaleX: isLeft ? this.sprite.startScale * 0.25 + 0.55 : -this.sprite.startScale * 0.25 - 0.55,
@@ -458,12 +451,12 @@
                         duration: 650,
                     });
                     if (!hasRock || isBigPoop) {
-                        let poop = this.scene.add.sprite(bird.x, bird.y + 10, 'enemies', isBigPoop ? 'poopbig.png' : 'poop.png').setDepth(999);
+                        let poop = this.addImage(bird.x, bird.y + 10, 'enemies', isBigPoop ? 'poopbig.png' : 'poop.png').setDepth(999);
                         let targetY = globalObjects.player.getY() - 215;
                         if (!isBigPoop) {
                             targetY += Math.random() * 15;
                         }
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: poop,
                             y: targetY,
                             ease: 'Quad.easeIn',
@@ -479,7 +472,7 @@
                                     powEffect.setPosition(poop.x, poop.y).setDepth(9999).setScale(1.4);
                                     let startScale = poop.scaleX;
                                     poop.setScale(startScale * 1.25);
-                                    PhaserScene.tweens.add({
+                                    this.addTween({
                                         delay: 3000,
                                         targets: poop,
                                         alpha: 0,
@@ -500,7 +493,7 @@
                         if (!isBigPoop) {
                             targetX += Math.random() * 50 - 25;
                         }
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: poop,
                             x: targetX,
                             duration: isBigPoop ? 1000 : 600,
@@ -561,7 +554,7 @@
                      attackStartFunction: () => {
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.04;
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.throwWallChunk('wall_chunk.png', 40);
                          }, 400)
                      },
@@ -584,7 +577,7 @@
                      attackStartFunction: () => {
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.04;
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             this.throwWallChunk('wall_chunk_2.png', 60);
                         }, 300);
                      },
@@ -607,7 +600,7 @@
                      attackStartFunction: () => {
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.04;
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.throwWallChunk('wall_chunk_2.png', 100, 1.25);
                          }, 300);
                      },
@@ -755,12 +748,12 @@
              }
          });
 
-         setTimeout(() => {
+         this.addTimeout(() => {
              this.showFlash(this.x, this.y + 100);
-             setTimeout(() => {
-                 let rune = this.scene.add.sprite(this.x, this.y + 100, 'tutorial', 'rune_unload_large.png').setScale(0.5).setDepth(9999);
+             this.addTimeout(() => {
+                 let rune = this.addImage(this.x, this.y + 100, 'tutorial', 'rune_unload_large.png').setScale(0.5).setDepth(9999);
                  playSound('victory_2');
-                 PhaserScene.tweens.add({
+                 this.addTween({
                      targets: rune,
                      x: gameConsts.halfWidth,
                      y: gameConsts.halfHeight - 170,

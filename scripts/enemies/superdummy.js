@@ -5,7 +5,7 @@
         this.bgMusic = playMusic('bite_down', 0.65, true);
         this.startY = this.sprite.y;
 
-        this.popupTimeout = setTimeout(() => {
+        this.popupTimeout = this.addTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
         }, 1500)
@@ -41,7 +41,7 @@
             globalObjects.textPopupManager.setInfoText(gameConsts.width - 80, 275, "Enemies get\nangry when\nattacked!", 'left');
             messageBus.publish('setSlowMult', 0.25, 50);
             let glowBar = this.addSprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
-            PhaserScene.tweens.add({
+            this.addTween({
                 targets: glowBar,
                 alpha: 0.25,
                 scaleY: 4,
@@ -49,7 +49,7 @@
                 ease: 'Cubic.easeInOut',
                 duration: 600,
                 onComplete: () => {
-                    this.glowBarAnim = PhaserScene.tweens.add({
+                    this.glowBarAnim = this.addTween({
                         delay: 1500,
                         targets: glowBar,
                         alpha: 0,
@@ -60,14 +60,14 @@
                     });
                 }
             });
-            setTimeout(() => {
+            this.addTimeout(() => {
                 let spellListener = messageBus.subscribe('spellClicked', () => {
                     if (!this.hasShownAttackWarning) {
                         this.hasShownAttackWarning = true;
                         if (this.glowBarAnim) {
                             this.glowBarAnim.stop();
                         }
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: glowBar,
                             alpha: 0,
                             scaleY: 5,
@@ -80,18 +80,18 @@
                         });
                     }
                     spellListener.unsubscribe();
-                    setTimeout(() => {
+                    this.addTimeout(() => {
                         globalObjects.textPopupManager.hideInfoText();
                     }, 1000);
                 });
-                setTimeout(() => {
+                this.addTimeout(() => {
                     if (!this.hasShownAttackWarning) {
                         this.hasShownAttackWarning = true;
                         messageBus.publish('setSlowMult', 0.99, 1);
                         if (this.glowBarAnim) {
                             this.glowBarAnim.stop();
                         }
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: glowBar,
                             alpha: 0,
                             scaleY: 5,
@@ -120,14 +120,14 @@
 
 
     animateDeathOne() {
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: this.sprite,
              rotation: -1.31,
              ease: "Cubic.easeIn",
              duration: 1000,
              onComplete: () => {
                  playSound('victory_2');
-                 setTimeout(() => {
+                 this.addTimeout(() => {
                     this.showFalseVictory();
                  }, 500)
              }
@@ -196,7 +196,7 @@
 
                  }
              });
-             PhaserScene.tweens.add({
+             this.addTween({
                  targets: this.sprite,
                  rotation: -1.31,
                  ease: "Cubic.easeIn",
@@ -209,7 +209,7 @@
                      this.sprite.setOrigin(0.85, 0.78);
 
                      let rune = this.addSprite(this.x, this.y - 75, 'circle', 'rune_mind_glow.png').setOrigin(0.5, 0.15).setScale(0).setDepth(9999).setVisible(false);
-                     PhaserScene.tweens.add({
+                     this.addTween({
                          targets: rune,
                          x: gameConsts.halfWidth,
                          duration: 1500,
@@ -230,37 +230,37 @@
         let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
         let continueText = this.addText(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
 
-        PhaserScene.tweens.add({
+        this.addTween({
             targets: banner,
             alpha: 0.75,
             duration: 500,
             onComplete: () => {
                 let dummyArm = this.addSprite(this.x - 95, this.y - 70, 'dummyenemy', 'super_dummy_rightarm_stretch.png').setScale(0, 0.15).setDepth(0);
-                setTimeout(() => {
+                this.addTimeout(() => {
                     playSound('inflate');
                 }, 100);
-                PhaserScene.tweens.add({
+                this.addTween({
                      targets: dummyArm,
                      scaleX: 1,
                      scaleY: 1,
                      ease: 'Back.easeOut',
                      duration: 1000,
                      onComplete: () => {
-                        PhaserScene.tweens.add({
+                        this.addTween({
                              targets: dummyArm,
                              rotation: -1,
                              ease: 'Cubic.easeInOut',
                              duration: 400,
                              onComplete: () => {
                                 dummyArm.setFrame('super_dummy_leftarm_fist.png').setRotation(-0.1).setScale(1.08).setDepth(0);
-                                PhaserScene.tweens.add({
+                                this.addTween({
                                      targets: dummyArm,
                                      scaleX: 1,
                                      scaleY: 1,
                                      ease: 'Cubic.easeOut',
                                      duration: 300,
                                      onComplete: () => {
-                                        PhaserScene.tweens.add({
+                                        this.addTween({
                                              targets: dummyArm,
                                              rotation: 1.55,
                                              ease: 'Quart.easeIn',
@@ -278,14 +278,14 @@
                                                 // Pow effect
                                                 let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 1000);
                                                  shinePattern.setPosition(this.x + 125, this.y + 30).setScale(0.7).setDepth(9999).setAlpha(1);
-                                                 PhaserScene.tweens.add({
+                                                 this.addTween({
                                                      targets: shinePattern,
                                                      scaleX: 0.55,
                                                      scaleY: 0.55,
                                                      duration: 750,
                                                      rotation: 1
                                                  });
-                                                 PhaserScene.tweens.add({
+                                                 this.addTween({
                                                      targets: shinePattern,
                                                      alpha: 0,
                                                      ease: 'Cubic.easeIn',
@@ -293,7 +293,7 @@
                                                  });
 
 
-                                                PhaserScene.tweens.add({
+                                                this.addTween({
                                                     delay: 10,
                                                      targets: dummyArm,
                                                      rotation: 1.1,
@@ -303,7 +303,7 @@
                                                      duration: 500,
                                                      completeDelay: 400,
                                                      onComplete: () => {
-                                                        PhaserScene.tweens.add({
+                                                        this.addTween({
                                                              targets: dummyArm,
                                                              scaleX: 0.4,
                                                              scaleY: 0,
@@ -311,7 +311,7 @@
                                                              ease: 'Cubic.easeIn',
                                                              onComplete: () => {
                                                                 dummyArm.destroy();
-                                                                PhaserScene.tweens.add({
+                                                                this.addTween({
                                                                     delay: 100,
                                                                      targets: [banner, victoryText],
                                                                      alpha: 0,
@@ -324,7 +324,7 @@
                                                                      }
                                                                 });
 
-                                                                this.currAnim = PhaserScene.tweens.add({
+                                                                this.currAnim = this.addTween({
                                                                      targets: this.sprite,
                                                                      rotation: 0,
                                                                      duration: 1000,
@@ -349,14 +349,14 @@
             }
         });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: [victoryText, continueText],
              alpha: 1,
              ease: 'Quad.easeOut',
              duration: 500,
          });
 
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: victoryText,
              scaleX: 1,
              scaleY: 1,
@@ -375,13 +375,13 @@
          if (this.breatheTween2) {
              this.breatheTween2.stop();
          }
-         this.breatheTween = this.scene.tweens.add({
+         this.breatheTween = this.addTween({
              targets: this.dummyLeftArm,
              duration: duration,
              rotation: 0.05,
              ease: 'Cubic.easeOut',
              onComplete: () => {
-                 this.breatheTween = this.scene.tweens.add({
+                 this.breatheTween = this.addTween({
                      targets: this.dummyLeftArm,
                      duration: duration,
                      rotation: -0.1 * magnitude,
@@ -392,13 +392,13 @@
              }
          });
 
-         this.breatheTween = this.scene.tweens.add({
+         this.breatheTween = this.addTween({
              targets: this.dummyRightArm,
              duration: duration,
              rotation: -0.05,
              ease: 'Cubic.easeOut',
              onComplete: () => {
-                 this.breatheTween2 = this.scene.tweens.add({
+                 this.breatheTween2 = this.addTween({
                      targets: this.dummyRightArm,
                      duration: duration,
                      rotation: 0.1 * magnitude,
@@ -412,14 +412,14 @@
 
     animateSnort() {
         this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: this.snort,
              scaleX: this.sprite.startScale * 1.1,
              scaleY: this.sprite.startScale * 1.1,
              duration: 400,
              ease: 'Cubic.easeOut'
          });
-         PhaserScene.tweens.add({
+         this.addTween({
              targets: this.snort,
              duration: 400,
              alpha: 0,
@@ -435,7 +435,7 @@
         this.sprite.y = this.y;
         this.sprite.setOrigin(0.51, 0.5);
 
-         this.currAnim = PhaserScene.tweens.add({
+         this.currAnim = this.addTween({
              delay: 100,
              targets: this.sprite,
              scaleX: this.sprite.startScale + 0.2,
@@ -447,7 +447,7 @@
                 if (this.isDestroyed) {
                     return;
                 }
-                 this.currAnim = PhaserScene.tweens.add({
+                 this.currAnim = this.addTween({
                      targets: this.sprite,
                      scaleX: this.sprite.startScale,
                      scaleY: this.sprite.startScale,
@@ -470,7 +470,7 @@
                         this.dummyRightArm = this.addSprite(this.x + 51, this.startY + 30, 'dummyenemy', 'super_dummy_rightarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(0.5);
                         this.dummyLeftArm = this.addSprite(this.x - 51, this.startY + 30, 'dummyenemy', 'super_dummy_leftarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(-0.5);
                         
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: [this.dummyRightArm, this.dummyLeftArm],
                              scaleX: this.sprite.startScale * 0.9,
                              scaleY: this.sprite.startScale * 0.9,
@@ -493,7 +493,7 @@
                         zoomTemp(1.02);
                          let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 1000);
                          shinePattern.setPosition(this.x, this.y).setScale(this.sprite.startScale + 0.75).setDepth(-1);
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: shinePattern,
                              scaleX: this.sprite.startScale + 0.4,
                              scaleY: this.sprite.startScale + 0.4,
@@ -501,7 +501,7 @@
                              duration: 1000,
                          });
                          this.timeSinceLastAttacked = -30;
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: shinePattern,
                              alpha: 0,
                              ease: 'Cubic.easeIn',
@@ -573,24 +573,24 @@
                         this.setSprite('dummy_angry.png');
                         this.reEnableArms();
                          let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              dmgEffect.x += 30;
                              dmgEffect.y += 10;
-                             setTimeout(() => {
+                             this.addTimeout(() => {
                                  dmgEffect.destroy();
                              }, 150)
                          }, 75);
                          this.createDoublePunchEffect();
 
                          this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: this.snort,
                              scaleX: this.sprite.startScale * 1.1,
                              scaleY: this.sprite.startScale * 1.1,
                              duration: 400,
                              ease: 'Cubic.easeOut'
                          });
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: this.snort,
                              duration: 400,
                              alpha: 0,
@@ -658,7 +658,7 @@
                         this.reEnableArms();
                         this.setSprite('dummy_angry.png');
                         this.disableAnimateShake = true;
-                         this.currAnim = PhaserScene.tweens.add({
+                         this.currAnim = this.addTween({
                              targets: [this.sprite],
                              duration: 700,
                              x: gameConsts.halfWidth - 58,
@@ -674,14 +674,14 @@
 
                         this.dummyRightArm.setScale(1, -1);
                         this.sprite.setDepth(12);
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: this.dummyRightArm,
                             duration: 1100,
                             x: this.x - 5,
                             rotation: -1.2,
                             ease: 'Cubic.easeOut',
                             onComplete: () => {
-                                this.tempArmAnim = PhaserScene.tweens.add({
+                                this.tempArmAnim = this.addTween({
                                     targets: this.dummyRightArm,
                                     duration: 50,
                                     rotation: -1.1,
@@ -691,7 +691,7 @@
                                 });
                             }
                         });
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: this.dummyRightArm,
                             duration: 1400,
                             scaleX: 1.65,
@@ -701,7 +701,7 @@
                                 if (this.tempArmAnim) {
                                     this.tempArmAnim.stop();
                                 }
-                                PhaserScene.tweens.add({
+                                this.addTween({
                                     targets: this.dummyRightArm,
                                     duration: 275,
                                     rotation: 0.5,
@@ -717,14 +717,14 @@
                                         messageBus.publish("selfTakeDamage", 20);
                                          let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 800);
                                          shinePattern.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 220).setScale(0.7).setDepth(9999).setAlpha(1);
-                                         PhaserScene.tweens.add({
+                                         this.addTween({
                                              targets: shinePattern,
                                              scaleX: 0.55,
                                              scaleY: 0.55,
                                              duration: 750,
                                              rotation: 1
                                          });
-                                         PhaserScene.tweens.add({
+                                         this.addTween({
                                              targets: shinePattern,
                                              alpha: 0,
                                              ease: 'Cubic.easeIn',
@@ -732,21 +732,21 @@
                                          });
 
                                         this.dummyRightArm.x += 9;
-                                        PhaserScene.tweens.add({
+                                        this.addTween({
                                             targets: this.dummyRightArm,
                                             duration: 450,
                                             x: "-=7",
                                             ease: 'Bounce.easeOut',
                                         });
 
-                                        PhaserScene.tweens.add({
+                                        this.addTween({
                                             targets: this.dummyRightArm,
                                             duration: 550,
                                             scaleX: -1.05,
                                             scaleY: 1.05,
                                             ease: 'Quint.easeOut',
                                             onComplete: () => {
-                                                PhaserScene.tweens.add({
+                                                this.addTween({
                                                     delay: 400,
                                                     targets: this.dummyRightArm,
                                                     duration: 600,
@@ -760,13 +760,13 @@
                                                         this.dummyRightArm.setFrame('super_dummy_rightarm.png');
                                                         this.dummyRightArm.setRotation(0.3);
                                                         this.dummyRightArm.setDepth(0).setScale(1);
-                                                         this.currAnim = PhaserScene.tweens.add({
+                                                         this.currAnim = this.addTween({
                                                              targets: [this.sprite],
                                                              duration: 300,
                                                              x: gameConsts.halfWidth,
                                                              ease: 'Cubic.easeOut',
                                                          });
-                                                         PhaserScene.tweens.add({
+                                                         this.addTween({
                                                              targets: this.dummyRightArm,
                                                              duration: 300,
                                                              x: gameConsts.halfWidth + 51, 
@@ -778,7 +778,7 @@
                                                                 this.repeatTweenBreathe();
                                                              }
                                                          });
-                                                         PhaserScene.tweens.add({
+                                                         this.addTween({
                                                              targets: this.dummyLeftArm,
                                                              duration: 300,
                                                              scaleX: 1,
@@ -796,7 +796,7 @@
                             }
                         });
 
-                         PhaserScene.tweens.add({
+                         this.addTween({
                              targets: this.dummyLeftArm,
                              duration: 900,
                              scaleX: 0,
@@ -892,7 +892,7 @@
                         this.dummyLeftArm.setScale(1, -1).setDepth(11);
                         this.dummyRightArm.setScale(1, -1).setDepth(11);
                         this.sprite.setDepth(12);
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: this.dummyRightArm,
                             duration: 1100,
 
@@ -901,7 +901,7 @@
                             rotation: -1,
                             ease: 'Cubic.easeOut',
                         });
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: this.dummyLeftArm,
                             duration: 1100,
 
@@ -962,25 +962,25 @@
                         this.pullbackScale = 1;
                         this.attackScale = 1.01;
                         playSound('inflate');
-                        PhaserScene.tweens.add({
+                        this.addTween({
                              targets: this.dummyLeftArm,
                              rotation: 0.7,
                              duration: 600,
                              ease: 'Quart.easeOut',
                         });
-                        PhaserScene.tweens.add({
+                        this.addTween({
                              targets: this.dummyRightArm,
                              rotation: -0.7,
                              duration: 600,
                              ease: 'Quart.easeOut',
                              onComplete: () => {
-                                PhaserScene.tweens.add({
+                                this.addTween({
                                      targets: this.dummyLeftArm,
                                      rotation: -0.15,
                                      duration: 500,
                                      ease: 'Quart.easeIn',
                                 });
-                                PhaserScene.tweens.add({
+                                this.addTween({
                                      targets: this.dummyRightArm,
                                      rotation: 0.15,
                                      duration: 500,
@@ -989,11 +989,11 @@
                                         this.dummyLeftArm.setFrame('super_dummy_leftarm_stretch_straight.png').setScale(1.3, 1.2).setRotation(0);
                                         this.dummyRightArm.setFrame('super_dummy_rightarm_stretch_straight.png').setScale(1.3, 1.2).setRotation(0);
                                         playSound('balloon', 0.15).detune = -500;
-                                        setTimeout(() => {
+                                        this.addTimeout(() => {
                                             playSound('balloon', 0.9);
                                         }, 110)
 
-                                        PhaserScene.tweens.add({
+                                        this.addTween({
                                              targets: [this.dummyLeftArm, this.dummyRightArm],
                                              scaleX: 1,
                                              scaleY: 1,
@@ -1025,7 +1025,7 @@
                         this.disableAnimateShake = true;
                         globalObjects.tempBG.setDepth(0).setVisible(true);
                         fadeAwaySound(this.bgMusic, 6000);
-                        globalObjects.tempBG.currAnim = PhaserScene.tweens.add({
+                        globalObjects.tempBG.currAnim = this.addTween({
                              targets: globalObjects.tempBG,
                              alpha: 0.4,
                              duration: 10000,
@@ -1037,13 +1037,13 @@
                             globalObjects.tempBG.currAnim.stop();
                         }
                         this.bgMusic.stop();
-                        globalObjects.tempBG.currAnim = PhaserScene.tweens.add({
+                        globalObjects.tempBG.currAnim = this.addTween({
                              targets: globalObjects.tempBG,
                              alpha: 0.3,
                              ease: 'Quad.easeOut',
                              duration: 200,
                              onComplete: () => {
-                                globalObjects.tempBG.currAnim = PhaserScene.tweens.add({
+                                globalObjects.tempBG.currAnim = this.addTween({
                                      targets: globalObjects.tempBG,
                                      alpha: 0.85,
                                      duration: 5000,
@@ -1056,7 +1056,7 @@
 
                         this.glowEyes = this.addSprite(0, 0, 'dummyenemy', 'scary_eyes.png');
                         this.glowEyes.setOrigin(this.sprite.originX, this.sprite.originY).setPosition(this.sprite.x, this.sprite.y + 2).setAlpha(-0.1).setDepth(200).setScale(0.8);
-                        this.currAnim = PhaserScene.tweens.add({
+                        this.currAnim = this.addTween({
                              targets: [this.glowEyes, this.sprite],
                              scaleX: 1.35,
                              scaleY: 1.35,
@@ -1064,7 +1064,7 @@
                              alpha: 2.5,
                              ease: 'Quad.easeIn',
                              onComplete: () => {
-                                this.currAnim = PhaserScene.tweens.add({
+                                this.currAnim = this.addTween({
                                      targets: [this.glowEyes, this.sprite],
                                      rotation: "+=100",
                                      duration: 1000,
@@ -1083,10 +1083,10 @@
                                         this.repeatTweenBreathe();
                                      }
                                 });
-                                setTimeout(() => {
+                                this.addTimeout(() => {
                                     for (let i = 0; i < 8; i++) {
                                         let delay = i * 90;
-                                        setTimeout(() => {
+                                        this.addTimeout(() => {
                                             if (!this.dead) {
                                                 playSound('punch');
                                                  let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 200);
@@ -1094,7 +1094,7 @@
                                                  let yPosOffset = Math.abs(xPosOffset * 0.2) + Math.random() * 30;
                                                  powEffect.setPosition(gameConsts.halfWidth - xPosOffset, globalObjects.player.getY() - 200 + yPosOffset).setDepth(999).setScale(1).setAlpha(1).setRotation(Math.random() - 0.5);
 
-                                                setTimeout(() => {
+                                                this.addTimeout(() => {
                                                     playSound('punch2');
                                                      let powEffect2 = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 200);
                                                      let xPosOffset2 = Math.random() * 80;
@@ -1164,7 +1164,7 @@
                         this.dummyLeftArm.setScale(1, -1).setDepth(11);
                         this.dummyRightArm.setScale(1, -1).setDepth(11);
                         this.sprite.setDepth(12);
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: this.dummyRightArm,
                             duration: 1100,
 
@@ -1173,7 +1173,7 @@
                             rotation: -1,
                             ease: 'Cubic.easeOut',
                         });
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: this.dummyLeftArm,
                             duration: 1100,
 
@@ -1201,7 +1201,7 @@
 
     buffUp() {
         if (this.isBuffing) {
-            this.buffTween = PhaserScene.tweens.add({
+            this.buffTween = this.addTween({
                  targets: this.sprite,
                  scaleY: 0.9,
                  duration: this.isAngry ? 250 : 500,
@@ -1240,7 +1240,7 @@
          let xOffset2 = isSwingingLeft ? -80 : 80;
          let leftMult = isSwingingLeft ? 1 : -1;
          fistEffect.setPosition(this.sprite.x + xOffset2, this.y - 8).setDepth(11).setScale(1.6 * leftMult, 1.6);
-         PhaserScene.tweens.add({
+         this.addTween({
             targets: fistEffect,
             duration: 250,
             y: '-=5',
@@ -1253,14 +1253,14 @@
          let starEffect = getTempPoolObject('dummyenemy', 'super_dummy_stars.png', 'stars', 250);
          let xOffset3 = isSwingingLeft ? -85 : 85;
          starEffect.setPosition(this.sprite.x + xOffset3, this.y).setDepth(11).setScale(1.1 * leftMult, 1.1).setOrigin(0.5, 0.4);
-         PhaserScene.tweens.add({
+         this.addTween({
             targets: starEffect,
             duration: 250,
             scaleX: 1.35 * leftMult,
             scaleY: 1.35,
             ease: 'Cubic.easeOut'
          })
-         PhaserScene.tweens.add({
+         this.addTween({
             targets: starEffect,
             duration: 250,
             alpha: 0,
@@ -1272,7 +1272,7 @@
             return;
         }
 
-        PhaserScene.tweens.add({
+        this.addTween({
             targets: this.dummyRightArm,
             duration: 200,
             scaleX: 1.65,
@@ -1287,13 +1287,13 @@
                 messageBus.publish("selfTakeDamage", damage);
                 let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 800);
                 shinePattern.setPosition(gameConsts.halfWidth + 25, globalObjects.player.getY() - 220).setScale(0.55).setDepth(9999).setAlpha(1);
-                PhaserScene.tweens.add({
+                this.addTween({
                     targets: shinePattern,
                     scaleX: 0.45,
                     scaleY: 0.45,
                     duration: 500,
                 });
-                PhaserScene.tweens.add({
+                this.addTween({
                     targets: shinePattern,
                     alpha: 0,
                     ease: 'Cubic.easeIn',
@@ -1301,7 +1301,7 @@
                 });
 
 
-                PhaserScene.tweens.add({
+                this.addTween({
                     targets: this.dummyRightArm,
                     duration: 200,
                     scaleX: -1,
@@ -1309,7 +1309,7 @@
                     ease: 'Quart.easeOut',
                     onComplete: () => {
                         this.leftPummel(damage, times - 1);
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: this.dummyRightArm,
                             duration: 150,
                             scaleX: -0.95,
@@ -1318,7 +1318,7 @@
                             onComplete: () => {
                                 this.dummyRightArm.setFrame('super_dummy_rightarm.png');
                                 this.dummyRightArm.setRotation(0.6).setScale(1.4, -1.4).setDepth(200);
-                                PhaserScene.tweens.add({
+                                this.addTween({
                                     targets: this.dummyRightArm,
                                     duration: 400,
                                     rotation: -0.75,
@@ -1344,7 +1344,7 @@
             return;
         }
 
-        PhaserScene.tweens.add({
+        this.addTween({
             targets: this.dummyLeftArm,
             duration: 200,
             scaleX: 1.65,
@@ -1359,13 +1359,13 @@
                 messageBus.publish("selfTakeDamage", damage);
                 let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 800);
                 shinePattern.setPosition(gameConsts.halfWidth - 25, globalObjects.player.getY() - 220).setScale(0.55).setDepth(9999).setAlpha(1);
-                PhaserScene.tweens.add({
+                this.addTween({
                     targets: shinePattern,
                     scaleX: 0.45,
                     scaleY: 0.45,
                     duration: 500,
                 });
-                PhaserScene.tweens.add({
+                this.addTween({
                     targets: shinePattern,
                     alpha: 0,
                     ease: 'Cubic.easeIn',
@@ -1373,14 +1373,14 @@
                 });
 
 
-                PhaserScene.tweens.add({
+                this.addTween({
                     targets: this.dummyLeftArm,
                     duration: 200,
                     scaleX: 1,
                     scaleY: 1.05,
                     ease: 'Quart.easeOut',
                     onComplete: () => {
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: this.dummyLeftArm,
                             duration: 150,
                             scaleX: 0.95,
@@ -1389,7 +1389,7 @@
                             onComplete: () => {
                                 this.dummyLeftArm.setFrame('super_dummy_leftarm.png');
                                 this.dummyLeftArm.setRotation(-0.6).setScale(1.4, -1.4).setDepth(200);
-                                PhaserScene.tweens.add({
+                                this.addTween({
                                     targets: this.dummyLeftArm,
                                     duration: 400,
                                     rotation: 0.75,
@@ -1427,7 +1427,7 @@
         let oldScale = arm.scaleX;
         arm.setFrame(rotMult == 1 ? 'super_dummy_leftarm_stretch_straight.png' : 'super_dummy_rightarm_stretch_straight.png');
         arm.setRotation(-0.3*rotMult).setScale(oldScale - 0.2);
-        PhaserScene.tweens.add({
+        this.addTween({
             targets: arm,
             duration: 600,
             ease: 'Quart.easeOut',
@@ -1435,7 +1435,7 @@
             scaleY: oldScale,
             rotation: -0.5 * rotMult,
             onComplete: () => {
-                PhaserScene.tweens.add({
+                this.addTween({
                     targets: arm,
                     duration: 50,
                     ease: 'Quint.easeOut',
@@ -1443,7 +1443,7 @@
                     yoyo: true,
                     repeat: 2,
                     onComplete: () => {
-                        PhaserScene.tweens.add({
+                        this.addTween({
                             targets: arm,
                             duration: 500,
                             ease: 'Quart.easeIn',
@@ -1453,7 +1453,7 @@
                             onComplete: () => {
                                 arm.setFrame(rotMult == 1 ? 'super_dummy_leftarm.png' : 'super_dummy_rightarm.png');
                                 arm.setRotation(-0.05 * rotMult).setScale(oldScale);
-                                PhaserScene.tweens.add({
+                                this.addTween({
                                     targets: arm,
                                     duration: 300,
                                     ease: 'Quint.easeOut',
@@ -1461,7 +1461,7 @@
                                     scaleY: oldScale + 0.4,
                                     rotation: 0.1 * rotMult,
                                     onComplete: () => {
-                                        PhaserScene.tweens.add({
+                                        this.addTween({
                                             targets: arm,
                                             duration: 700,
                                             ease: 'Cubic.easeIn',
@@ -1477,14 +1477,14 @@
                                  let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 1000);
                                  shinePattern.setPosition(this.x, this.y).setScale(1.5).setDepth(-2).setRotation(0);
                                  playSound('body_slam');
-                                 PhaserScene.tweens.add({
+                                 this.addTween({
                                      targets: shinePattern,
                                      scaleX: 1.4,
                                      scaleY: 1.4,
                                      duration: 750,
                                      rotation: 1
                                  });
-                                 PhaserScene.tweens.add({
+                                 this.addTween({
                                      targets: shinePattern,
                                      alpha: 0,
                                      ease: 'Cubic.easeIn',
@@ -1496,7 +1496,7 @@
                 })
             }
         });
-        // PhaserScene.tweens.add({
+        // this.addTween({
         //     targets: arm,
         //     duration: 400,
         //     ease: 'Quint.easeOut',
@@ -1504,7 +1504,7 @@
         //     scaleY: oldScale - 0.05,
         //     rotation: 0.3 * rotMult,
         //     onComplete: () => {
-        //         PhaserScene.tweens.add({
+        //         this.addTween({
         //             targets: arm,
         //             duration: 600,
         //             ease: 'Quint.easeIn',
@@ -1513,7 +1513,7 @@
         //             rotation: -0.5 * rotMult,
         //             onComplete: () => {
         //                 arm.setScale(oldScale + 0.65);
-        //                 PhaserScene.tweens.add({
+        //                 this.addTween({
         //                     targets: arm,
         //                     duration: 300,
         //                     ease: 'Back.easeIn',
@@ -1521,7 +1521,7 @@
         //                     scaleY: oldScale + 0.1,
         //                     rotation: -0.4 * rotMult,
         //                     onComplete: () => {
-        //                         PhaserScene.tweens.add({
+        //                         this.addTween({
         //                             targets: arm,
         //                             duration: 600,
         //                             ease: 'Cubic.easeInOut',
@@ -1539,7 +1539,7 @@
 
      createDoublePunchEffect() {
         playSound('punch');
-        setTimeout(() => {
+        this.addTimeout(() => {
             playSound('punch2');
         }, 70)
          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 175);
@@ -1549,7 +1549,7 @@
          let fistEffect2 = getTempPoolObject('dummyenemy', 'super_dummy_fist.png', 'fist', 250);
          fistEffect.setPosition(this.sprite.x - 110, this.y - 8).setDepth(11).setScale(1.45, 1.45);
          fistEffect2.setPosition(this.sprite.x + 110, this.y - 8).setDepth(11).setScale(-1.45, 1.45);
-         PhaserScene.tweens.add({
+         this.addTween({
             targets: fistEffect,
             duration: 250,
             y: '-=5',
@@ -1557,7 +1557,7 @@
             scaleY: 1.25,
             ease: 'Back.easeIn'
          })
-         PhaserScene.tweens.add({
+         this.addTween({
             targets: fistEffect2,
             duration: 250,
             y: '-=5',
@@ -1569,14 +1569,14 @@
          // let starEffect = getTempPoolObject('dummyenemy', 'super_dummy_stars.png', 'stars', 250);
          // let xOffset3 = isSwingingLeft ? -85 : 85;
          // starEffect.setPosition(this.sprite.x + xOffset3, this.y).setDepth(11).setScale(1.1 * leftMult, 1.1).setOrigin(0.5, 0.4);
-         // PhaserScene.tweens.add({
+         // this.addTween({
          //    targets: starEffect,
          //    duration: 250,
          //    scaleX: 1.35 * leftMult,
          //    scaleY: 1.35,
          //    ease: 'Cubic.easeOut'
          // })
-         // PhaserScene.tweens.add({
+         // this.addTween({
          //    targets: starEffect,
          //    duration: 250,
          //    alpha: 0,

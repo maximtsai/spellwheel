@@ -61,7 +61,7 @@
                  {
                      name: gameVars.isHardMode ? "}8 " : "}4 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
-                     chargeAmt: 350,
+                     chargeAmt: 450,
                      damage: gameVars.isHardMode ? 8 : 4,
                      attackSprites: ['gobbo0_atk.png'],
                      attackFinishFunction: () => {
@@ -78,7 +78,7 @@
                      block: gameVars.isHardMode ? 50 : 40,
                      isPassive: true,
                      customCall: " ",
-                     chargeAmt: 180,
+                     chargeAmt: 350,
                      attackFinishFunction: () => {
                          playSound('clunk');
 
@@ -110,7 +110,7 @@
                  {
                      name: gameVars.isHardMode ? "}12 " : "}6 ",
                      desc: "Goblin rams you with\nhis shield",
-                     chargeAmt: 500,
+                     chargeAmt: 600,
                      damage: gameVars.isHardMode ? 12 : 6,
                      startFunction: () => {
                         this.pullbackScale = 0.85;
@@ -130,7 +130,7 @@
                  {
                      name: "REALIZING SHIELD BROKE...",
                      isPassive: true,
-                     chargeAmt: gameVars.isHardMode ? 250 : 300,
+                     chargeAmt: 350,
                      chargeMult: 2,
                      customCall: " ",
                      damage: 0
@@ -138,7 +138,7 @@
                  {
                      name: "GETTING KNIVES!",
                      isPassive: true,
-                     chargeAmt: gameVars.isHardMode ? 250 : 250,
+                     chargeAmt: 300,
                      chargeMult: 5,
                      isBigMove: true,
                      startFunction: () => {
@@ -171,7 +171,7 @@
                  // 4 - dual wield attacks
                  {
                      name: "}4x2 ",
-                     chargeAmt: gameVars.isHardMode ? 120 : 180,
+                     chargeAmt: gameVars.isHardMode ? 150 : 200,
                      damage: 4,
                      attackTimes: 2,
                      prepareSprite: "",
@@ -182,7 +182,7 @@
                  },
                  {
                      name: "}4x3 ",
-                     chargeAmt: gameVars.isHardMode ? 130 : 190,
+                     chargeAmt: gameVars.isHardMode ? 170 : 220,
                      damage: 4,
                      attackTimes: 3,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
@@ -192,7 +192,7 @@
                  },
                  {
                      name: "}4x4 ",
-                     chargeAmt: gameVars.isHardMode ? 140 : 200,
+                     chargeAmt: gameVars.isHardMode ? 190 : 240,
                      damage: 4,
                      attackTimes: 4,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
@@ -202,7 +202,7 @@
                  },
                  {
                      name: "}4x5 ",
-                     chargeAmt: gameVars.isHardMode ? 150 : 210,
+                     chargeAmt: gameVars.isHardMode ? 210 : 260,
                      damage: 4,
                      attackTimes: 5,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
@@ -213,7 +213,7 @@
                  {
                      name: "LAUGH IN YOUR FACE",
                      isPassive: true,
-                     chargeAmt: 250,
+                     chargeAmt: 600,
                      chargeMult: 5,
                      damage: -1,
                      tease: true,

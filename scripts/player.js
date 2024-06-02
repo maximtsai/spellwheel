@@ -778,7 +778,15 @@ class Player {
                             shieldObj.impactVisibleTime = 8;
                             shieldObj.storedDamage += blockedDmg + shieldObj.multiplier;
                             shieldObj.textObj.setText(shieldObj.storedDamage);
-                            shieldObj.textObj.setScale(0.5 + Math.sqrt(shieldObj.storedDamage) * 0.15);
+                            let textObjGoalScale = 0.4 + Math.sqrt(shieldObj.storedDamage) * 0.12
+                            shieldObj.textObj.setScale(textObjGoalScale + 0.6);
+                            this.scene.tweens.add({
+                                targets: shieldObj.textObj,
+                                duration: 300,
+                                scaleX: textObjGoalScale,
+                                scaleY: textObjGoalScale,
+                                ease: 'Cubic.easeOut',
+                            });
                             playSound('fizzle');
                             messageBus.publish('tempPause', 100);
 
@@ -796,7 +804,7 @@ class Player {
                             }
                             shieldObj.reflectAnim = this.scene.tweens.add({
                                 targets: shieldObj.animObj[2],
-                                duration: 1100,
+                                duration: 1250,
                                 scaleX: 2,
                                 scaleY: 2,
                                 alpha: 1,
@@ -813,7 +821,7 @@ class Player {
                             shieldObj.isBlasting = true;
                             shieldObj.eyeBlastAnim = this.scene.tweens.add({
                                 targets: [shieldObj.animObj[0], shieldObj.animObj[1]],
-                                duration: 1100,
+                                duration: 1250,
                                 alpha: 1.1,
                                 onComplete: () => {
                                     if (!globalObjects.player.dead) {

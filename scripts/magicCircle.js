@@ -70,7 +70,7 @@ const ENABLE_KEYBOARD = true;
     }
 
     update(dScale) {
-        if (this.lastDragTime > 30) {
+        if (this.lastDragTime > 15) {
             gameVars.playerNotMoved = true;
         } else {
             gameVars.playerNotMoved = false;
@@ -709,22 +709,22 @@ const ENABLE_KEYBOARD = true;
             this.scene.tweens.add({
                 targets: energyCircle1,
                 duration: 150,
-                scaleX: 1.13 + 0.02 * multiplier,
-                scaleY: 1.13 + 0.02 * multiplier,
+                scaleX: 1.135 + 0.02 * multiplier,
+                scaleY: 1.135 + 0.02 * multiplier,
                 alpha: 1,
                 ease: 'Cubic.easeOut',
                 onComplete: () => {
                     this.scene.tweens.add({
                         targets: energyCircle1,
                         duration: 400,
-                        scaleX: 0.965 + 0.01 * multiplier,
-                        scaleY: 0.965 + 0.01 * multiplier,
+                        scaleX: 0.975 + 0.01 * multiplier,
+                        scaleY: 0.975 + 0.01 * multiplier,
                         ease: 'Back.easeOut',
                         onComplete: () => {
                             this.scene.tweens.add({
                                 targets: energyCircle1,
                                 duration: 750,
-                                alpha: 0.5,
+                                alpha: 0.6,
                             });
                         }
                     });
@@ -734,22 +734,22 @@ const ENABLE_KEYBOARD = true;
             this.scene.tweens.add({
                 targets: energyCircle2,
                 duration: 200,
-                scaleX: 1.16 + 0.02 * multiplier,
-                scaleY: 1.16 + 0.02 * multiplier,
+                scaleX: 1.17 + 0.02 * multiplier,
+                scaleY: 1.17 + 0.02 * multiplier,
                 alpha: 1,
                 ease: 'Cubic.easeOut',
                 onComplete: () => {
                     this.scene.tweens.add({
                         targets: energyCircle2,
                         duration: 550,
-                        scaleX: 0.99 + 0.01 * multiplier,
-                        scaleY: 0.99 + 0.01 * multiplier,
+                        scaleX: 1 + 0.012 * multiplier,
+                        scaleY: 1 + 0.012 * multiplier,
                         ease: 'Back.easeOut',
                         onComplete: () => {
                             this.scene.tweens.add({
                                 targets: energyCircle2,
                                 duration: 750,
-                                alpha: 0.5,
+                                alpha: 0.6,
                             });
                         }
                     });
@@ -1148,15 +1148,25 @@ const ENABLE_KEYBOARD = true;
                          shieldObj.animObj[2].visible = true;
                          let impactRotation = goalRotMind + shieldObj.animObj[2].rotateOffset;
                          shieldObj.animObj[2].rotation = impactRotation;
-                         shieldObj.animObj[2].x = shieldObj.animObj[2].startX + Math.sin(impactRotation) * 210;
-                         shieldObj.animObj[2].y = shieldObj.animObj[2].startY - Math.cos(impactRotation) * 210 + 220;
+                         let sinX = Math.sin(impactRotation);
+                         let cosY = Math.cos(impactRotation);
+                         shieldObj.animObj[2].x = shieldObj.animObj[2].startX + sinX * 210;
+                         shieldObj.animObj[2].y = shieldObj.animObj[2].startY - cosY * 210 + 220;
+
+                         shieldObj.textObj.x = shieldObj.animObj[2].startX + sinX * 150;
+                         shieldObj.textObj.y = shieldObj.animObj[2].startY - cosY * 150 + 175;
                      } else if (shieldObj.impactVisibleTime > 0) {
                          shieldObj.animObj[2].visible = true;
                          shieldObj.impactVisibleTime = Math.max(0, shieldObj.impactVisibleTime - dScale);
                          let impactRotation = goalRotMind + shieldObj.animObj[2].rotateOffset;
                          shieldObj.animObj[2].rotation = impactRotation;
-                         shieldObj.animObj[2].x = shieldObj.animObj[2].startX + Math.sin(impactRotation) * 220;
-                         shieldObj.animObj[2].y = shieldObj.animObj[2].startY - Math.cos(impactRotation) * 220 + 220;
+                         let sinX = Math.sin(impactRotation);
+                         let cosY = Math.cos(impactRotation);
+                         shieldObj.animObj[2].x = shieldObj.animObj[2].startX + sinX * 220;
+                         shieldObj.animObj[2].y = shieldObj.animObj[2].startY - cosY * 220 + 220;
+
+                         shieldObj.textObj.x = shieldObj.animObj[2].startX + sinX * 150;
+                         shieldObj.textObj.y = shieldObj.animObj[2].startY - cosY * 150 + 175;
                      } else if (shieldObj.animObj[2].visible) {
                          shieldObj.animObj[2].visible = false;
                      }

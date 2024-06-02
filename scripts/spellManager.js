@@ -538,7 +538,7 @@ class SpellManager {
             });
         }
 
-        let shieldHealth = 14 * spellMultiplier;
+        let shieldHealth = 12 * spellMultiplier;
         textHealth.setText(shieldHealth);
         messageBus.publish('setTempRotObjs', [animation1], rotation);
 
@@ -1381,8 +1381,8 @@ class SpellManager {
         this.scene.tweens.add({
             targets: energyCircle1,
             duration: 125,
-            scaleX: 1.1 + 0.02 * multiplier,
-            scaleY: 1.1 + 0.02 * multiplier,
+            scaleX: 1.11 + 0.02 * multiplier,
+            scaleY: 1.11 + 0.02 * multiplier,
             alpha: 1,
             ease: 'Cubic.easeOut',
             onComplete: () => {
@@ -1390,14 +1390,14 @@ class SpellManager {
                 this.scene.tweens.add({
                     targets: energyCircle1,
                     duration: 400,
-                    scaleX: 0.965 + 0.01 * multiplier,
-                    scaleY: 0.965 + 0.01 * multiplier,
+                    scaleX: 0.975 + 0.01 * multiplier,
+                    scaleY: 0.975 + 0.01 * multiplier,
                     ease: 'Back.easeOut',
                     onComplete: () => {
                         this.scene.tweens.add({
                             targets: energyCircle1,
                             duration: 750,
-                            alpha: 0.5,
+                            alpha: 0.6,
                         });
                     }
                 });
@@ -1415,14 +1415,14 @@ class SpellManager {
                 this.scene.tweens.add({
                     targets: energyCircle2,
                     duration: 450,
-                    scaleX: 0.99 + 0.01 * multiplier,
-                    scaleY: 0.99 + 0.01 * multiplier,
+                    scaleX: 1 + 0.012 * multiplier,
+                    scaleY: 1 + 0.012 * multiplier,
                     ease: 'Back.easeOut',
                     onComplete: () => {
                         this.scene.tweens.add({
                             targets: energyCircle2,
                             duration: 750,
-                            alpha: 0.5,
+                            alpha: 0.6,
                         });
                     }
                 });
@@ -1607,7 +1607,7 @@ class SpellManager {
         animation4.setDepth(990).setOrigin(0.5, 1.205).setAlpha(0);
         animation4.origScale = animation4.scaleX;
 
-        let textDisplay = this.scene.add.bitmapText(gameConsts.halfWidth, animation2.y, 'block', '', 48, 1);
+        let textDisplay = this.scene.add.bitmapText(gameConsts.halfWidth, animation2.y, 'bonus', '', 48, 1);
         textDisplay.setOrigin(0.5, 0.5);
         textDisplay.setDepth(animation2.depth);
         textDisplay.setScale(0.5);

@@ -24,7 +24,7 @@ class Enemy {
             messageBus.subscribe("enemyStartDamageCountdown", this.startDamageCountdown.bind(this)),
             messageBus.subscribe("enemyAddShield", this.addShield.bind(this)),
             messageBus.subscribe("increaseCurse", this.increaseCurse.bind(this)),
-
+            messageBus.subscribe('spellClicked', this.playerClickedSpell.bind(this)),
             messageBus.subscribe("playerDied", this.playerDied.bind(this)),
         ];
 
@@ -61,6 +61,7 @@ class Enemy {
         this.shield = 0;
         this.isAsleep = false;
         this.timeSinceLastAttacked = 9999;
+        this.castAggravateCharge = 0;
         this.damageNumOffset = 0;
         this.healthBarLengthMax = 101;
         this.extraSprites = [];
@@ -385,22 +386,60 @@ class Enemy {
                 timeChange = 0;
             }
             chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
+            let almostIshDone = this.attackCharge > this.nextAttackChargeNeeded - 120;
+            if (almostIshDone) {
+                if (!this.attackName.hasWarned && !this.nextAttack.isPassive) {
+                    this.attackName.hasWarned = true;
+                    let origScale = this.attackName.origScale;
+                    if (this.attackName.currAnim) {
+                        this.attackName.currAnim.stop();
+                    }
+                    this.attackName.setAlpha(0.5);
+                    let isShortName = this.nextAttack.name.length <= 7;
+                    this.attackName.currAnim = PhaserScene.tweens.add({
+                        targets: this.attackName,
+                        ease: 'Cubic.easeIn',
+                        duration: 500,
+                        alpha: 2.5,
+                        yoyo: true,
+                        repeat: -1,
+                        scaleX: origScale + (isShortName ? 0.25 : 0.09),
+                        scaleY: origScale + (isShortName ? 0.35 : 0.2),
+                    });
+                }
+            }
             if (this.isAngry) {
                 let increaseMult = Math.max(4.25, 0.33 * chargeMult);
                 this.attackCharge += timeChange * increaseMult * this.slowMult;
+                this.castAggravateCharge = 0;
             } else {
-                let almostDone = this.attackCharge > this.nextAttackChargeNeeded - 40;
-                if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone) {
+                let almostDone = this.attackCharge > this.nextAttackChargeNeeded - 55;
+                if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone && this.castAggravateCharge <= 0) {
                     // this.attackCharge += timeChange * 0.02 * this.slowMult;
-                    this.chargeBarCurr.alpha = 0.5;
+                    this.chargeBarCurr.alpha = 0.45;
                 } else {
                     // Normal slow chargin
-                    if (almostDone || chargeMult > 1) {
-                        this.chargeBarCurr.alpha = 0.95;
+                    if (almostDone || chargeMult > 1 || this.castAggravateCharge > 0) {
+                        let castAggravateBonus = 0; // if recently casted a spell, that speeds up opponent charge
+                        if (this.castAggravateCharge > 0) {
+                            this.castAggravateCharge -= timeChange;
+                            if (this.castAggravateCharge >= 0) {
+                                castAggravateBonus = timeChange;
+                            } else {
+                                castAggravateBonus = timeChange + this.castAggravateCharge;
+                            }
+                        }
+                        if (!(chargeMult > 1) && !almostDone) {
+                            this.chargeBarCurr.alpha = 0.6;
+                        } else {
+                            this.chargeBarCurr.alpha = 0.9;
+                        }
                         this.attackCharge += timeChange * 0.35 * this.slowMult * chargeMult;
+                        this.attackCharge += castAggravateBonus * 0.2;
+
                     } else {
-                        this.chargeBarCurr.alpha = 0.8;
-                        this.attackCharge += timeChange * 0.15 * this.slowMult * chargeMult;
+                        this.chargeBarCurr.alpha = 0.6;
+                        this.attackCharge += timeChange * 0.1 * this.slowMult * chargeMult;
                     }
 
                 }
@@ -587,6 +626,7 @@ class Enemy {
         this.chargeBarAngry.alpha = 1;
 
         this.timeSinceLastAttacked += 60;
+        this.castAggravateCharge = 0;
         if (this.nextAttack.damage !== 0) {
             this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.prepareSprite, this.nextAttack.attackSprites, undefined, this.nextAttack.finishDelay);
         } else {
@@ -632,9 +672,10 @@ class Enemy {
             finalScale = 0.98;
         }
         this.attackName.setText(atkName).setAlpha(0.2).setScale(finalScale);
-        this.angrySymbol.x = this.attackName.x + this.attackName.width * 0.495 + 20;
+        this.angrySymbol.x = this.attackName.x + this.attackName.width * 0.496 + 20;
 
-        this.attackName.setText(atkName).setAlpha(0.2).setScale(finalScale * 0.9);
+        this.attackName.setScale(finalScale * 0.9);
+        this.attackName.hasWarned = false;
 
         if (!this.nextAttack.isPassive) {
             let widthToScale = this.attackName.width / 200;
@@ -673,12 +714,16 @@ class Enemy {
             alpha: 1,
         });
 
+        if (this.attackName.currAnim) {
+            this.attackName.currAnim.stop();
+        }
+        this.attackName.origScale = finalScale;
         PhaserScene.tweens.add({
             targets: this.attackName,
             ease: 'Cubic.easeOut',
             duration: 400,
-            scaleX: isLongName ? finalScale + 0.02 : finalScale * 1.6,
-            scaleY: isLongName ? finalScale * 1.25 : finalScale * 1.6,
+            scaleX: isLongName && !this.nextAttack.isBigMove ? finalScale + 0.02 : finalScale * 1.6,
+            scaleY: isLongName && !this.nextAttack.isBigMove ? finalScale * 1.25 : finalScale * 1.6,
             onComplete: () => {
                 PhaserScene.tweens.add({
                     targets: this.attackName,
@@ -686,6 +731,19 @@ class Enemy {
                     duration: 500,
                     scaleX: finalScale,
                     scaleY: finalScale,
+                    onComplete: () => {
+                        if (this.nextAttack.isBigMove) {
+                            this.attackName.currAnim = PhaserScene.tweens.add({
+                                targets: this.attackName,
+                                ease: 'Cubic.easeIn',
+                                duration: 750,
+                                yoyo: true,
+                                repeat: -1,
+                                scaleX: this.attackName.origScale + 0.065,
+                                scaleY: this.attackName.origScale + 0.14,
+                            });
+                        }
+                    }
                 });
             }
         });
@@ -1169,13 +1227,35 @@ class Enemy {
             if (this.angrySymbolAnim) {
                 this.angrySymbolAnim.stop();
             }
-            this.scene.tweens.add({
-                targets: this.angrySymbol,
-                scaleX: 0.85,
-                scaleY: 0.85,
-                duration: 200,
-                ease: 'Back.easeOut',
-            });
+            if (state === 'angry') {
+                this.angrySymbolAnim = this.scene.tweens.add({
+                    targets: this.angrySymbol,
+                    scaleX: 2,
+                    scaleY: 2,
+                    rotation: 0.15,
+                    duration: 125,
+                    ease: 'Quint.easeOut',
+                    onComplete: () => {
+                        this.angrySymbolAnim = this.scene.tweens.add({
+                            targets: this.angrySymbol,
+                            rotation: 0,
+                            scaleX: 0.85,
+                            scaleY: 0.85,
+                            duration: 200,
+                            ease: 'Back.easeOut',
+                        });
+                    }
+                });
+            } else {
+                this.angrySymbolAnim = this.scene.tweens.add({
+                    targets: this.angrySymbol,
+                    scaleX: 0.85,
+                    scaleY: 0.85,
+                    duration: 200,
+                    ease: 'Back.easeOut',
+                });
+            }
+
             this.angrySymbol.visible = true;
         }
     }
@@ -1802,5 +1882,9 @@ class Enemy {
     setMaxHealth(amt) {
         this.healthMax = amt;// = Math.min(this.healthMax, this.health + amt);
         this.updateHealthBar(true);
+    }
+
+    playerClickedSpell() {
+        this.castAggravateCharge = 35;
     }
 }

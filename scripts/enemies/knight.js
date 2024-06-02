@@ -266,7 +266,7 @@
          playSound('meat_click_left', 0.4);
          playSound('meat_click_right', 0.4);
          if (this.shieldAmts <= 0) {
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'NEGATED', 0.8, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1, scaleY: 1});
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'NEGATED', 1.05, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1, scaleY: 1});
              this.clearVoidShield();
          } else {
              messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random()*150, this.sprite.y + 50 - Math.random() * 100, 'NEGATED', 0.75);
@@ -543,7 +543,7 @@
                      name: "|8 ",
                      announceName: "INITIAL STRIKE",
                      desc: "The mysterious knight charges at you!",
-                     chargeAmt: 400,
+                     chargeAmt: 450,
                      damage: 8,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
@@ -562,7 +562,8 @@
                      name: "VOID SHIELD {3",
                      announceName: "VOID SHIELD (3)",
                      desc: "A strange protective shield surrounds the knight",
-                     chargeAmt: 400,
+                     isPassive: true,
+                     chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.createVoidShield(3);
@@ -577,7 +578,7 @@
                  {
                      name: "}4 ",
                      announceName: "FEINT ATTACK",
-                     chargeAmt: 240,
+                     chargeAmt: 250,
                      damage: 4,
                      attackSprites: ['void_knight_attack.png'],
                      attackFinishFunction: () => {
@@ -590,10 +591,10 @@
                      }
                  },
                  {
-                     name: "|8x3 ",
+                     name: "|6x3 ",
                      announceName: "ASSAULT",
                      chargeAmt: 700,
-                     damage: 8,
+                     damage: 6,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
@@ -607,10 +608,10 @@
                      }
                  },
                  {
-                     name: "|4 ",
+                     name: "|5 ",
                      announceName: "void strike",
                      chargeAmt: 650,
-                     damage: 4,
+                     damage: 5,
                      chargeMult: 2,
                      attackSprites: ['void_knight_attack.png'],
                      startFunction: () => {
@@ -628,6 +629,7 @@
                          playSound('sword_hit', 0.2);
                      },
                      finaleFunction: () => {
+                        this.nextAttack.damage = 5;
                          this.setDefaultSprite('void_knight.png');
                          this.sigilEffect.visible = true;
                      }
@@ -671,6 +673,7 @@
                      name: "VOID SHIELD {7 ",
                      announceName: "VOID SHIELD",
                      chargeAmt: 800,
+                     isPassive: true,
                      chargeMult: 15,
                      prepareSprite: 'void_knight_3.png',
                      damage: -1,
@@ -686,9 +689,9 @@
                      }
                  },
                 {
-                     name: "STARING... ",
+                     name: "STALKING... ",
                     isPassive: true,
-                     chargeAmt: 250,
+                     chargeAmt: 400,
                      damage: -1,
                      attackStartFunction: () => {
                          this.voidTentacleFront.visible = true;
@@ -1173,6 +1176,7 @@
 
                             }
                         });
+                        this.graves.setDepth(1);
 
                         let rune = this.addImage(this.x + 22, this.y + 90, 'tutorial', 'rune_void_large.png').setScale(0.5).setDepth(9999);
                         this.flash = this.addImage(rune.x, rune.y, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
@@ -1192,7 +1196,6 @@
                                  this.flash.destroy();
                              }
                          });
-
                         playSound('victory_2');
                         this.addTween({
                             delay: 10,

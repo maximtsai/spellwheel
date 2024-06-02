@@ -21,16 +21,16 @@ class PostFightScreen {
             this.backing = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 30, 'ui', 'battleOverScreen.png').setDepth(100000).setAlpha(0);
         }
         if (!this.titleText) {
-            this.titleText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 255, '(placeholder title)', {fontFamily: 'garamondmax', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.titleText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 260, '(placeholder title)', {fontFamily: 'garamondmax', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.spellsCastText) {
-            this.spellsCastText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 160, 'Spells Cast:', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.spellsCastText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 190, 'Spells Cast:', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.healthLeftText) {
-            this.healthLeftText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 130, 'Health Left:', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.healthLeftText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 155, 'Health Left:', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.codeText) {
-            this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 30, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
+            this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 80, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
         }
         if (!this.locketSprite) {
             this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 105, 'ui', 'locket1.png').setScale(0.75).setDepth(100002).setAlpha(0).setOrigin(0.5, 0.8);
@@ -38,8 +38,17 @@ class PostFightScreen {
         if (!this.locketDialog) {
             this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 220, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
         }
+        if (!this.newRuneAnnounce) {
+            this.newRuneAnnounce =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 120, 'New Rune!', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+        }
+        if (!this.newRuneDesc) {
+            this.newRuneDesc =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 86, '(insert rune description)', {fontFamily: 'garamondmax', fontSize: 22, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
+        }
+        if (!this.newRuneIcon) {
+            this.newRuneIcon =  this.scene.add.image(gameConsts.halfWidth - 76, gameConsts.halfHeight - 122, 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
+        }
         if (!this.flashObj) {
-            this.flashObj = this.scene.add.sprite(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'lowq', 'flash.webp').setScale(0).setRotation(-0.2).setDepth(100002).setAlpha(0.5);
+            this.flashObj = this.scene.add.image(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'lowq', 'flash.webp').setScale(0).setRotation(-0.2).setDepth(100002).setAlpha(0.5);
         }
 
         if (!this.continueButton) {
@@ -50,7 +59,7 @@ class PostFightScreen {
                     visible: true,
                     alpha: 0.95,
                     x: gameConsts.halfWidth,
-                    y: gameConsts.halfHeight + 180,
+                    y: gameConsts.halfHeight + 210,
                 },
                 hover: {
                     atlas: "ui",
@@ -140,6 +149,9 @@ class PostFightScreen {
         this.titleText.setScale(0.97);
         this.spellsCastText.setScale(0.97);
         this.healthLeftText.setScale(0.97);
+        this.newRuneAnnounce.setScale(0.97);
+        this.newRuneDesc.setScale(0.97);
+        this.newRuneIcon.setScale(0.4)
         if (isWin) {
             this.locketSprite.visible = true;
             this.locketSprite.x = gameConsts.width + 300;
@@ -168,9 +180,18 @@ class PostFightScreen {
             ease: 'Back.easeOut',
             duration: 300,
             onComplete: () => {
+                
                 PhaserScene.tweens.add({
                     delay: 200,
-                    targets: [this.spellsCastText, this.healthLeftText],
+                    targets: [this.newRuneIcon],
+                    scaleX: 0.42,
+                    scaleY: 0.42,
+                    alpha: 1,
+                    duration: 250,
+                });
+                PhaserScene.tweens.add({
+                    delay: 200,
+                    targets: [this.spellsCastText, this.healthLeftText, this.newRuneAnnounce, this.newRuneDesc],
                     scaleX: 1,
                     scaleY: 1,
                     alpha: 1,
@@ -247,7 +268,7 @@ class PostFightScreen {
             return;
         }
         PhaserScene.tweens.add({
-            targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.locketSprite, this.codeText, this.locketDialog],
+            targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.newRuneDesc, this.newRuneIcon, this.newRuneAnnounce, this.locketSprite, this.codeText, this.locketDialog],
             alpha: 0,
             ease: 'Quad.easeOut',
             duration: 700,
@@ -286,8 +307,8 @@ class PostFightScreen {
                 targets: [this.locketSprite],
                 scaleX: 0.75,
                 scaleY: 0.75,
-                y: '-=15',
-                x: "+=10",
+                y: '-=35',
+                x: "+=12",
                 ease: 'Cubic.easeOut',
                 duration: 250,
             });
@@ -310,7 +331,6 @@ class PostFightScreen {
     }
 
     createWinScreen(level = 0) {
-        this.isCreated = true;
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
         this.currLevel = level;
@@ -336,11 +356,15 @@ class PostFightScreen {
     }
 
     createWinScreenUI(level = 0) {
+        this.isCreated = true;
         this.initAssets(true);
         globalObjects.magicCircle.disableMovement();
         this.titleText.setText("Fight Complete");
         this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
         this.healthLeftText.setText("Health Left: " + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
+        this.newRuneAnnounce.setText(this.getNewRuneAnnounce(level));
+        this.newRuneDesc.setText(this.getNewRuneDesc(level))
+        this.newRuneIcon.setFrame(this.getNewRuneFrame(level));
         this.codeText.setText("LEVEL CODE: placeholder\n(placeholder)");
         this.locketDialog.setText(this.getStoryDialog(level));
 
@@ -363,7 +387,7 @@ class PostFightScreen {
     }
 
     showStoryText(level) {
-        let objectsToFade = [this.spellsCastText, this.healthLeftText, this.codeText];
+        let objectsToFade = [this.spellsCastText, this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
 
         PhaserScene.tweens.add({
             delay: 100,
@@ -395,7 +419,7 @@ class PostFightScreen {
     }
 
     returnStatText() {
-        let objectsToFade = [this.titleText, this.spellsCastText, this.healthLeftText, this.codeText];
+        let objectsToFade = [this.titleText, this.spellsCastText, this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
         PhaserScene.tweens.add({
             targets: this.locketDialog,
             alpha: 0,
@@ -411,22 +435,100 @@ class PostFightScreen {
         });
     }
 
+    getNewRuneAnnounce(level) {
+        if (level < 7) {
+            return 'New Rune!'
+        } else if (level >= 9) {
+            return 'No Upgrade!'
+        } else {
+            return 'Upgraded Rune!'
+        }
+    }
+
+    getNewRuneDesc(level) {
+        switch(level) {
+            case 1:
+                return getLangText('mind_tut_desc');
+                break;
+            case 2:
+                return getLangText('protect_tut_desc');
+                break;
+            case 3:
+                return getLangText('reinforce_tut_desc');
+                break;
+            case 4:
+                return getLangText('time_tut_desc');
+                break
+            case 5:
+                return getLangText('void_tut_desc');
+                break;
+            case 6:
+                return getLangText('unload_tut_desc');
+                break
+            case 7:
+                return getLangText('matter_plus_tut_desc');
+                break;
+            case 8:
+                return getLangText('mind_plus_tut_desc');
+                break
+            case 9:
+                return getLangText('no_improve_tut_desc');
+                break;
+            default:
+                return '(missing description)'
+        }
+    }
+
+    getNewRuneFrame(level) {
+        switch(level) {
+            case 1:
+                return 'rune_mind_large.png';
+                break;
+            case 2:
+                return 'rune_protect_large.png';
+                break;
+            case 3:
+                return 'rune_reinforce_large.png';
+                break;
+            case 4:
+                return 'rune_time_large.png';
+                break
+            case 5:
+                return 'rune_void_large.png';
+                break;
+            case 6:
+                return 'rune_unload_large.png';
+                break
+            case 7:
+                return 'rune_matter_large.png';
+                break;
+            case 8:
+                return 'rune_mind_large.png';
+                break
+            case 9:
+                return 'blank.png';
+                break;
+            default:
+                return 'blank.png'
+        }
+    }
+
     getStoryDialog(level) {
         switch(level) {
             case 0:
                 return "And so my journey begins.\nIt won't be long before\nI see you again, Rosemary."
             case 1:
                 return "Here I stand in front\nof the gates to the\nmystical land of\nthe dead.\n\n"+
-                "Almost immediately I can feel\nthis place trying to resist my entry,\ntrying to obstruct my every step.\n\n"+
+                "Almost immediately I can feel\nthis place resisting my entry, trying\nto obstruct my every step.\n\n"+
                 "But I know you are here dear Rosemary,\nand no creature or construct will stop me\nfrom finding you."
             case 2:
-                return "The fabled Reaper\nhas me, though\nthey have done\nnothing but wag their finger\nat me like a parent scolding their child.\n\n"+
-                "But there is still a long way to go,\nand I have a feeling this won't be the last\ntime we see each other.\n\n"+
+                return "The fabled Reaper\nhas noticed me,\nthough they have\ndone nothing but wag their\nbony finger at me like a parent\nscolding a child.\n\n"+
+                "I have a feeling this won't be the last\ntime we see each other.\n\n"+
                 "In the mean-time, this shield I picked\nup from the fallen goblin should\ncome in handy.";
             case 3:
                 return "The creatures of this\nland are clearly hostile.\n\n"+
                 "But it seems that I acquire the\nstrength of each one I defeat.\n\n"+
-                "Perhaps if I triumph over enough foes, I can\neven conquer Death itself!"
+                "Perhaps if I triumph over enough foes, I\ncan even conquer Death itself!"
             case 4:
                 return "My power grows\nwith each new foe\ndefeated.\n\nBut I must practice with it if\nI am to use it to its full potential.\n\n";
             case 5:

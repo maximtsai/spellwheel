@@ -245,7 +245,8 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 500 : 360;
+         this.health = gameVars.isHardMode ? 500 : 380;
+         this.criticalThreshold = 80;
          this.nextShieldHealth = 100;
          this.shieldsBroken = 0;
          this.missileObjects = [];
@@ -292,7 +293,7 @@
                 alpha: 0.3,
             });
          }
-         if (this.health < 80 && !this.emergency) {
+         if (this.health < this.criticalThreshold && !this.emergency) {
             this.startInjuredSequence();
          }
      }
@@ -301,6 +302,9 @@
     startInjuredSequence() {
         if (this.emergency) {
             return;
+        }
+        if (this.kyaTween) {
+            this.kyaTween.stop();
         }
         this.emergency = true;
          this.baseBGAlpha = -0.25;
@@ -464,7 +468,7 @@
                      isPassive: true,
                      damage: 0,
                      startFunction: () => {
-                        if (this.health >= 80) {
+                        if (this.health >= this.criticalThreshold) {
                             this.setDefaultSprite('robot1.png', undefined, true);
                             playSound('robot_sfx_1');
                             this.shieldAdded = false;
@@ -503,7 +507,7 @@
                      chargeMult: 5,
                      damage: -1,
                      startFunction: () => {
-                        if (this.health < 80) {
+                        if (this.health < this.criticalThreshold) {
                             this.startInjuredSequence()
                         } else {
                             this.addTween({
@@ -523,7 +527,7 @@
                              this.setDefaultSprite('robot_hide.png');
                              playSound('voca_kya');
                              this.sprite.rotation = 0.15;
-                             this.addTween({
+                             this.kyaTween = this.addTween({
                                  targets: [this.sprite, this.blush],
                                  y: 240,
                                  ease: 'Cubic.easeIn',
@@ -547,7 +551,7 @@
                         }
                      },
                      attackStartFunction: () => {
-                        if (this.health < 80) {
+                        if (this.health < this.criticalThreshold) {
                             this.startInjuredSequence();
                         } else {
                              this.shieldAdded = true;
@@ -613,7 +617,7 @@
                         }
                      },
                      attackFinishFunction: () => {
-                        if (this.health < 80) {
+                        if (this.health < this.criticalThreshold) {
                             this.startInjuredSequence()
                         } else {
                             setVolume(this.bgMusic, 0.85)
@@ -801,6 +805,40 @@
                          this.returnEase = "Cubic.easeIn";
                      }
                  },
+                 {
+                     name: "|8x3 ",
+                     chargeAmt: 500,
+                     damage: 8,
+                     attackTimes: 3,
+                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
+                     startFunction: () => {
+                         this.claw1Attacked = true;
+                         this.pullbackScale = this.pullbackScaleDefault;
+                         this.attackScale = this.attackScaleDefault;
+                         this.attackEase = "Cubic.easeIn";
+                         this.returnEase = "Cubic.easeOut";
+                     },
+                     attackStartFunction: () => {
+                         this.refreshAnimateBG(2, 0.1);
+                     },
+                     attackFinishFunction: () => {
+                         this.claw1Attacked = !this.claw1Attacked;
+                         playSound(this.claw1Attacked ? 'voca_claw_1' : 'voca_claw_2', 0.8);
+                         playSound('sword_hit');
+                         this.addTimeout(() => {
+                             if (!this.dead && this.shieldAdded) {
+                                 this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
+                             }
+                         }, 80);
+                         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
+                         let xOffset = this.claw1Attacked ? -30 : 30;
+                         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 170).setDepth(998).setScale(1.5);
+                     },
+                     finaleFunction: () => {
+                         this.attackEase = "Quad.easeOut";
+                         this.returnEase = "Cubic.easeIn";
+                     }
+                 },
              ],
              [
                  // 4 laser
@@ -917,6 +955,40 @@
                          }, 80);
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
                          powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 170).setDepth(998).setScale(2);
+                     },
+                     finaleFunction: () => {
+                         this.attackEase = "Quad.easeOut";
+                         this.returnEase = "Cubic.easeIn";
+                     }
+                 },
+                 {
+                     name: "|8x2 ",
+                     chargeAmt: 500,
+                     damage: 8,
+                     attackTimes: 2,
+                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
+                     startFunction: () => {
+                         this.claw1Attacked = true;
+                         this.pullbackScale = this.pullbackScaleDefault;
+                         this.attackScale = this.attackScaleDefault;
+                         this.attackEase = "Cubic.easeIn";
+                         this.returnEase = "Cubic.easeOut";
+                     },
+                     attackStartFunction: () => {
+                         this.refreshAnimateBG(2, 0.1);
+                     },
+                     attackFinishFunction: () => {
+                         this.claw1Attacked = !this.claw1Attacked;
+                         playSound(this.claw1Attacked ? 'voca_claw_1' : 'voca_claw_2', 0.8);
+                         playSound('sword_hit');
+                         this.addTimeout(() => {
+                             if (!this.dead && this.shieldAdded) {
+                                 this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
+                             }
+                         }, 80);
+                         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
+                         let xOffset = this.claw1Attacked ? -30 : 30;
+                         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 170).setDepth(998).setScale(1.5);
                      },
                      finaleFunction: () => {
                          this.attackEase = "Quad.easeOut";

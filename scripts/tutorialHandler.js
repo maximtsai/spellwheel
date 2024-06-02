@@ -17,14 +17,13 @@ function buildTutorialMatter() {
     });
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);
 
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 170, gameConsts.halfHeight - 285, 'MATTER RUNE', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
+    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, 'MATTER RUNE SPELLS', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
     let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 205, gameConsts.halfHeight - 200, 'tutorial', startFrame).setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
         tutText.setText(initTutText);
         globalObjects.runePicture.setFrame(startFrame).setRotation(0);
     })
 
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune.x, tutRune.y);
 
     let tutRune2 = PhaserScene.add.sprite(gameConsts.halfWidth - 0, gameConsts.halfHeight - 200, 'tutorial', 'rune_strike_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker2 = buildRuneclicker(tutRune2.x, tutRune2.y, () => {
@@ -32,6 +31,9 @@ function buildTutorialMatter() {
         globalObjects.runePicture.setFrame('tut_matter_strike.png').setRotation(-0.1);
 
     })
+    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
+    tutText.setText(strikeText);
+    globalObjects.runePicture.setFrame('tut_matter_strike.png').setRotation(-0.1);
 
     let tutRune3 = PhaserScene.add.sprite(gameConsts.halfWidth + 150, gameConsts.halfHeight - 200, 'tutorial', 'rune_enhance_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker3 = buildRuneclicker(tutRune3.x, tutRune3.y, () => {
@@ -62,16 +64,17 @@ function buildTutorialMind() {
     });
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);
 
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 170, gameConsts.halfHeight - 285, 'ENERGY RUNE', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
+    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, 'ENERGY RUNE SPELLS', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
     let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 205, gameConsts.halfHeight - 200, 'tutorial', startFrame).setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
         tutText.setText(initTutText);
         globalObjects.runePicture.setFrame(startFrame).setRotation(0);
     })
 
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune.x, tutRune.y);
-
+    tutText.setText(strikeText);
+    globalObjects.runePicture.setFrame('tut_mind_strike.png').setRotation(-0.1);
     let tutRune2 = PhaserScene.add.sprite(gameConsts.halfWidth - 0, gameConsts.halfHeight - 200, 'tutorial', 'rune_strike_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
+    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
     let runeClicker2 = buildRuneclicker(tutRune2.x, tutRune2.y, () => {
         tutText.setText(strikeText);
         globalObjects.runePicture.setFrame('tut_mind_strike.png').setRotation(-0.1);
@@ -108,21 +111,21 @@ function buildTutorialTime() {
     });
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);
 
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 170, gameConsts.halfHeight - 285, 'TIME RUNE', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
+    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, 'TIME RUNE SPELLS', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
     let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 205, gameConsts.halfHeight - 200, 'tutorial', startFrame).setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
         tutText.setText(initTutText);
         globalObjects.runePicture.setFrame(startFrame).setRotation(0);
     })
 
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune.x, tutRune.y);
-
     let tutRune2 = PhaserScene.add.sprite(gameConsts.halfWidth - 60, gameConsts.halfHeight - 200, 'tutorial', 'rune_strike_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker2 = buildRuneclicker(tutRune2.x, tutRune2.y, () => {
         tutText.setText(strikeText);
         globalObjects.runePicture.setFrame('tut_time_strike.png').setRotation(-0.1);
-
     })
+    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
+    tutText.setText(strikeText);
+    globalObjects.runePicture.setFrame('tut_time_strike.png').setRotation(-0.1);
 
     let tutRune3 = PhaserScene.add.sprite(gameConsts.halfWidth + 30, gameConsts.halfHeight - 200, 'tutorial', 'rune_enhance_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker3 = buildRuneclicker(tutRune3.x, tutRune3.y, () => {
@@ -166,14 +169,12 @@ function buildTutorialVoid() {
     });
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);
 
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 170, gameConsts.halfHeight - 285, 'VOID RUNE', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
+    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, 'VOID RUNE SPELLS', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
     let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 205, gameConsts.halfHeight - 200, 'tutorial', startFrame).setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
         tutText.setText(initTutText);
         globalObjects.runePicture.setFrame(startFrame).setRotation(0);
     })
-
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune.x, tutRune.y);
 
     let tutRune2 = PhaserScene.add.sprite(gameConsts.halfWidth - 60, gameConsts.halfHeight - 200, 'tutorial', 'rune_strike_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker2 = buildRuneclicker(tutRune2.x, tutRune2.y, () => {
@@ -181,6 +182,9 @@ function buildTutorialVoid() {
         globalObjects.runePicture.setFrame('tut_void_strike.png').setRotation(-0.1);
 
     })
+    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
+    tutText.setText(strikeText);
+    globalObjects.runePicture.setFrame('tut_void_strike.png').setRotation(-0.1);
 
     let tutRune3 = PhaserScene.add.sprite(gameConsts.halfWidth + 30, gameConsts.halfHeight - 200, 'tutorial', 'rune_enhance_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker3 = buildRuneclicker(tutRune3.x, tutRune3.y, () => {
@@ -222,21 +226,22 @@ function buildTutorialProtect() {
     let startFrame = 'rune_protect_large.png'
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);
 
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 170, gameConsts.halfHeight - 285, 'SHIELD RUNE', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
+    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, 'SHIELD RUNE SPELLS', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
     let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 205, gameConsts.halfHeight - 200, 'tutorial', startFrame).setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
         tutText.setText(initTutText);
         globalObjects.runePicture.setFrame(startFrame).setRotation(0);
     })
 
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune.x, tutRune.y);
-
     let tutRune2 = PhaserScene.add.sprite(gameConsts.halfWidth - 0, gameConsts.halfHeight - 200, 'tutorial', 'rune_matter_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker2 = buildRuneclicker(tutRune2.x, tutRune2.y, () => {
         tutText.setText(firstText);
         globalObjects.runePicture.setFrame('tut_matter_shield.png').setRotation(-0.1);
-
     })
+
+    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
+    tutText.setText(firstText);
+    globalObjects.runePicture.setFrame('tut_matter_shield.png').setRotation(-0.1);
 
     let tutRune3 = PhaserScene.add.sprite(gameConsts.halfWidth + 150, gameConsts.halfHeight - 200, 'tutorial', 'rune_mind_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker3 = buildRuneclicker(tutRune3.x, tutRune3.y, () => {
@@ -266,21 +271,22 @@ function buildTutorialReinforce() {
     let startFrame = 'rune_reinforce_large.png'
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);
 
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 170, gameConsts.halfHeight - 285, 'BODY RUNE', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
+    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, 'BODY RUNE SPELLS', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
     let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 205, gameConsts.halfHeight - 200, 'tutorial', startFrame).setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
         tutText.setText(initTutText);
         globalObjects.runePicture.setFrame(startFrame).setRotation(0);
     })
 
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune.x, tutRune.y);
-
     let tutRune2 = PhaserScene.add.sprite(gameConsts.halfWidth - 0, gameConsts.halfHeight - 200, 'tutorial', 'rune_matter_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker2 = buildRuneclicker(tutRune2.x, tutRune2.y, () => {
         tutText.setText(firstText);
         globalObjects.runePicture.setFrame('tut_matter_reinforce.png').setRotation(-0.1);
-
     })
+
+    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
+    tutText.setText(firstText);
+    globalObjects.runePicture.setFrame('tut_matter_reinforce.png').setRotation(-0.1);
 
     let tutRune3 = PhaserScene.add.sprite(gameConsts.halfWidth + 150, gameConsts.halfHeight - 200, 'tutorial', 'rune_mind_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker3 = buildRuneclicker(tutRune3.x, tutRune3.y, () => {
@@ -312,21 +318,22 @@ function buildTutorialUnload() {
     let startFrame = 'rune_unload_large.png'
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);
 
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 170, gameConsts.halfHeight - 285, 'ULTIMATE RUNE', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
+    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, 'ULTIMATE RUNE SPELLS', {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
     let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 205, gameConsts.halfHeight - 200, 'tutorial', startFrame).setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
         tutText.setText(initTutText);
         globalObjects.runePicture.setFrame(startFrame).setRotation(0);
     })
 
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune.x, tutRune.y);
-
     let tutRune2 = PhaserScene.add.sprite(gameConsts.halfWidth - 50, gameConsts.halfHeight - 200, 'tutorial', 'rune_matter_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker2 = buildRuneclicker(tutRune2.x, tutRune2.y, () => {
         tutText.setText(firstText);
         globalObjects.runePicture.setFrame('tut_matter_unload.png').setRotation(-0.1);
-
     })
+
+    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
+    tutText.setText(firstText);
+    globalObjects.runePicture.setFrame('tut_matter_unload.png').setRotation(-0.1);
 
     let tutRune3 = PhaserScene.add.sprite(gameConsts.halfWidth + 30, gameConsts.halfHeight - 200, 'tutorial', 'rune_mind_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker3 = buildRuneclicker(tutRune3.x, tutRune3.y, () => {

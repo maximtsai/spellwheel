@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = 80;
+         this.health = 90;
          this.damageNumOffset = 45;
          this.timeObjects = [];
          this.initTemporalObjects();
@@ -365,6 +365,7 @@
                      } else {
                          healthText.setText(Math.max(0, statusObj.duration - 1));
                          this.setHealth(this.health - 1);
+                        this.castAggravateCharge = 50;
 
                          if (!this.isTerrified && !this.freezingTime && this.timeBarraged) {
                             if (this.health % 2 == 0) {
@@ -521,7 +522,7 @@
                  {
                      name: "}4x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: 400,
+                     chargeAmt: 550,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
@@ -537,7 +538,7 @@
                  {
                      name: "+{DELAY INJURIES{+",
                      desc: "The Time Magician\nslows down his health",
-                     chargeAmt: 250,
+                     chargeAmt: 350,
                      prepareSprite: 'time_magi_cast_big.png',
                      isPassive: true,
                      startFunction: () => {
@@ -558,7 +559,7 @@
                  {
                      name: "}5x2 ",
                      desc: "A basic magic attack.",
-                     chargeAmt: 250,
+                     chargeAmt: 350,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
@@ -572,7 +573,7 @@
                  {
                      name: "}4x3 ",
                      desc: "An advanced magic attack.",
-                     chargeAmt: 350,
+                     chargeAmt: 450,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -587,7 +588,7 @@
                  {
                      name: "CURSE OF TIME (20?)",
                      desc: "A deadly spell that\nslowly drains your life.",
-                     chargeAmt: 350,
+                     chargeAmt: 450,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackFinishFunction: () => {
@@ -621,7 +622,7 @@
                  {
                      name: "}4x3 ",
                      desc: "An advanced magic attack.",
-                     chargeAmt: 350,
+                     chargeAmt: 450,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -636,8 +637,7 @@
                  {
                      name: "TIME FREEZE ;4x!!!",
                      desc: "The Time Magician prepares\nhis most powerful magics.",
-                     chargeAmt: 800,
-                     chargeMult: 3,
+                     chargeAmt: 900,
                      isBigMove: true,
                      prepareSprite: 'time_magi_cast_big.png',
                      startFunction: () => {
@@ -668,7 +668,7 @@
                      }
                  },
                  {
-                     name: "TIME-ATTACK |4x6 ",
+                     name: "TIME-ATTACK |4x5 ",
                      desc: "A devastating barrage\nof offensive magic.",
                      chargeAmt: 550,
                      chargeMult: 16,
@@ -676,12 +676,11 @@
                      startFunction: () => {
                      },
                      attackStartFunction: () => {
-                         this.createTimeObject('clock2.png', this.x - 175, 115, 0);
-                         this.createTimeObject('clock4.png', this.x - 105, 100, 75);
-                         this.createTimeObject('clock3.png', this.x - 35, 105, 150);
-                         this.createTimeObject('clock3.png', this.x + 35, 105, 225);
-                         this.createTimeObject('clock4.png', this.x + 105, 115, 300);
-                         this.createTimeObject('clock2.png', this.x + 175, 110, 375);
+                         this.createTimeObject('clock2.png', this.x - 150, 115, 0);
+                         this.createTimeObject('clock4.png', this.x - 75, 100, 75);
+                         this.createTimeObject('clock3.png', this.x, 105, 150);
+                         this.createTimeObject('clock3.png', this.x + 75, 105, 225);
+                         this.createTimeObject('clock4.png', this.x + 150, 115, 300);
                          this.addTimeout(() => {
                              this.fireTimeObjects(4);
                          }, 800);
@@ -713,7 +712,7 @@
                      }
                  },
                  {
-                     name: "TIME-ATTACK |20 ",
+                     name: "TIME-ATTACK |16 ",
                      desc: "A devastating barrage\nof offensive magic.",
                      chargeAmt: 750,
                      chargeMult: 16,
@@ -723,7 +722,7 @@
                      },
                      attackFinishFunction: () => {
                          this.addTimeout(() => {
-                             this.fireTimeObjects(20, 600);
+                             this.fireTimeObjects(16, 600);
                          }, 350);
                      }
                  },
@@ -731,7 +730,7 @@
                      name: "RESTING...",
                      desc: "Time Magician is trying\nto think what to do...",
                      isPassive: true,
-                     chargeAmt: 200,
+                     chargeAmt: 250,
                      chargeMult: 1.5,
                      damage: 0,
                      startFunction: () => {
@@ -766,7 +765,6 @@
                      name: "}6 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
                      chargeAmt: 550,
-                     chargeMult: 1.5,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -780,7 +778,6 @@
                      name: "}4x2 ",
                      desc: "An advanced magic attack.",
                      chargeAmt: 350,
-                     chargeMult: 1.5,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {

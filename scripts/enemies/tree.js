@@ -14,7 +14,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 300 : 250;
+         this.health = gameVars.isHardMode ? 300 : 240;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;
@@ -42,10 +42,14 @@
              this.addExtraSprite(tree);
 
              let eye = this.addImage(eyePosX, eyePosY, 'enemies', 'tree_eye.png').setDepth(10).setOrigin(0.5, 0.5).setRotation(-0.13).setScale(0, this.sprite.startScale);
-             this.eyeMagic1 = this.addImage(this.x + 4, this.y - 72, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57).setOrigin(0.5, 1).setScale(0.7, 0.5);
-             this.eyeMagic2 = this.addImage(this.x + 4, this.y - 72, 'enemies', 'glowSpike.png').setDepth(999).setRotation(1.57 + 3.1415).setOrigin(0.5, 1).setScale(0.7, 0.5);
-             this.eyeMagic1.alpha = 0;
-             this.eyeMagic2.alpha = 0;
+             // this.thorns1 = this.addImage(this.x, this.y - 70, 'enemies', 'thorns.png').setDepth(999).setOrigin(0.5, -0.25);
+
+             this.thorns1 = this.addImage(this.x - 4, this.y - 95, 'enemies', 'thorns.png').setDepth(8).setRotation(1.57 + 3.1415).setOrigin(0.5, -0.6).setScale(0.7, 0.5);
+             this.thorns2 = this.addImage(this.x - 4, this.y - 95, 'enemies', 'thorns.png').setDepth(8).setRotation(1.57).setOrigin(0.5, -0.6).setScale(0.7, 0.5);
+             this.thorns1.alpha = 0;
+             this.thorns2.alpha = 0;
+
+             this.greenGlow = this.addImage(this.x - 4, this.y - 265, 'lowq', 'green_star.webp').setDepth(-1).setOrigin(0.5, 0.48).setAlpha(0);
 
              this.addExtraSprite(eye, 3.5, -84);
              this.addTween({
@@ -142,6 +146,27 @@
              }
          });
      }
+
+     glowGreen() {
+         this.addTween({
+             targets: this.greenGlow,
+             duration: 500,
+             alpha: 0.6,
+             scaleX: 2.5,
+             scaleY: 2.5,
+             ease: 'Quad.easeIn',
+             onComplete: () => {
+                 this.addTween({
+                     targets: this.greenGlow,
+                     duration: 1500,
+                     alpha: 0,
+                     scaleX: 1.5,
+                     scaleY: 1.5,
+                     ease: 'Cubic.easeIn',
+                 });
+             }
+         });
+    }
 
      startHealing(amt = 10) {
          if (!this.statuses[0]) {
@@ -298,7 +323,7 @@
              this.treeBranch.setPosition(gameConsts.halfWidth - 75 + Math.random() * 150, -50).setRotation(-0.7 + Math.random()).setAlpha(1);
          }
          currObj = this.treeBranch;
-
+        this.glowGreen()
          this.addTween({
              targets: currObj,
              rotation: -0.2,
@@ -315,7 +340,7 @@
                  playSound('tree_hit');
                  messageBus.publish("selfTakeDamage", damage);
                  let xPos = gameConsts.halfWidth * 0.5 + currObj.x * 0.5;
-                 let hitEffect = this.addImage(xPos, currObj.y + Math.random() * 8, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
+                 let hitEffect = this.addSprite(xPos, currObj.y + Math.random() * 8, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
                  this.addTween({
                      targets: hitEffect,
                      scaleX: 1.25,
@@ -349,76 +374,153 @@
          });
      }
 
-     playRegrowthAnim(regrowthAmt) {
-         let healAmt = regrowthAmt - 1;
-         // this.startHealing(healAmt);
-         playSound('magic', 0.6);
-         this.healText = this.addText(gameConsts.halfWidth, 65, '+' + regrowthAmt, {fontFamily: 'Arial', fontSize: 48, color: '#00F254', align: 'left'})
-         this.healText.setFontStyle('bold').setOrigin(0.5, 0.5).setDepth(9);
-         this.healText.startY = this.healText.y;
-         let healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(1.1).setDepth(999).setAlpha(0);
-         this.heal(regrowthAmt);
-         healSprite.alpha = 1;
-
-         if (this.eyeMagicAnim) {
-             this.eyeMagicAnim.stop();
-         }
-
-         this.eyeMagic1.setScale(1);
-         this.eyeMagic2.setScale(1);
-         this.addTween({
-             targets: [this.eyeMagic1, this.eyeMagic2],
-             scaleX: 0.95,
-             scaleY: 0.95,
-             alpha: 1,
+     clearThorns() {
+        if (this.thornsTween) {
+            this.thornsTween.stop();
+        }
+        this.hasThorns = false;
+        this.addTween({
+             targets: [this.thorns1, this.thorns2],
+             scaleX: 0.8,
+             scaleY: 0.8,
+             alpha: 0,
              ease: 'Cubic.easeOut',
+             duration: 300,
+         });
+     }
+
+     playThornsAnim() {
+        this.thorns1.setScale(0.5, 0.7);
+        this.thorns2.setScale(0.5, 0.7);
+         this.addTween({
+             targets: [this.thorns1, this.thorns2],
+             scaleX: 1.1,
+             scaleY: 1.1,
+             alpha: 1,
+             ease: 'Quart.easeOut',
              duration: 500,
-             completeDelay: 600,
              onComplete: () => {
                  this.addTween({
-                     targets: [this.eyeMagic1, this.eyeMagic2],
-                     scaleX: 0.8,
-                     scaleY: 0.3,
-                     ease: 'Quart.easeIn',
-                     alpha: 0,
-                     duration: 400,
+                     targets: [this.thorns1, this.thorns2],
+                     scaleX: 1,
+                     scaleY: 1,
+                     ease: 'Cubic.easeOut',
+                     alpha: 0.85,
+                     duration: 700,
                  });
              }
          });
+        let spikeTemp = this.addImage(gameConsts.halfWidth, this.y - 150, 'spells', 'brickPattern1.png').setScale(0.75).setDepth(0).setAlpha(0).setRotation(-3);
 
          this.addTween({
-             targets: this.healText,
-             scaleX: 1,
-             scaleY: 1,
-             y: "-=13",
-             ease: 'Cubic.easeOut',
-             duration: 3000,
-         });
-         this.addTween({
-             delay: 2500,
-             targets: this.healText,
-             alpha: 0,
-             ease: 'Quad.easeIn',
-             duration: 1000,
-         });
-
-         this.addTween({
-             targets: healSprite,
-             scaleX: 1,
-             scaleY: 1,
-             y: "-=60",
-             duration: 1300,
+            delay: 300,
+             targets: [spikeTemp],
+             rotation: 0,
+             scaleX: 1.05,
+             scaleY: 1.05,
+             ease: 'Quad.easeOut',
+             alpha: 0.9,
+             duration: 200,
              onComplete: () => {
-                 healSprite.destroy()
+                playSound('matter_body');
+                 this.addTween({
+                     targets: [spikeTemp],
+                     scaleX: 1,
+                     scaleY: 1,
+                     ease: 'Cubic.easeIn',
+                    alpha: 0.7,
+                     duration: 400,
+                     onComplete: () => {
+                        globalObjects.bannerTextManager.setDialog(["The tree gains prickly thorns that\nreflect 2 damage.", "Block them + Make your attacks count."]);
+                        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                        globalObjects.bannerTextManager.showBanner(true);
+                        this.setDefense(2);
+                        this.hasThorns = true;
+                         this.addTween({
+                             targets: [spikeTemp],
+                             ease: 'Cubic.easeIn',
+                             alpha: 0,
+                             duration: 1000,
+                             onComplete: () => {
+                                spikeTemp.destroy();
+                             }
+                         });
+                     }
+                 });
              }
          });
-         this.addTween({
-             delay: 600,
-             targets: healSprite,
-             alpha: 0,
-             ease: 'Quad.easeIn',
-             duration: 700,
-         });
+     }
+
+     playRegrowthAnim(regrowthAmt) {
+         // let healAmt = regrowthAmt - 1;
+         // // this.startHealing(healAmt);
+         // playSound('magic', 0.6);
+         // this.healText = this.addText(gameConsts.halfWidth, 65, '+' + regrowthAmt, {fontFamily: 'Arial', fontSize: 48, color: '#00F254', align: 'left'})
+         // this.healText.setFontStyle('bold').setOrigin(0.5, 0.5).setDepth(9);
+         // this.healText.startY = this.healText.y;
+         // let healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(1.1).setDepth(999).setAlpha(0);
+         // this.heal(regrowthAmt);
+         // healSprite.alpha = 1;
+
+         // if (this.eyeMagicAnim) {
+         //     this.eyeMagicAnim.stop();
+         // }
+
+         // this.eyeMagic1.setScale(1);
+         // this.eyeMagic2.setScale(1);
+         // this.addTween({
+         //     targets: [this.eyeMagic1, this.eyeMagic2],
+         //     scaleX: 0.95,
+         //     scaleY: 0.95,
+         //     alpha: 1,
+         //     ease: 'Cubic.easeOut',
+         //     duration: 500,
+         //     completeDelay: 600,
+         //     onComplete: () => {
+         //         this.addTween({
+         //             targets: [this.eyeMagic1, this.eyeMagic2],
+         //             scaleX: 0.8,
+         //             scaleY: 0.3,
+         //             ease: 'Quart.easeIn',
+         //             alpha: 0,
+         //             duration: 400,
+         //         });
+         //     }
+         // });
+
+         // this.addTween({
+         //     targets: this.healText,
+         //     scaleX: 1,
+         //     scaleY: 1,
+         //     y: "-=13",
+         //     ease: 'Cubic.easeOut',
+         //     duration: 3000,
+         // });
+         // this.addTween({
+         //     delay: 2500,
+         //     targets: this.healText,
+         //     alpha: 0,
+         //     ease: 'Quad.easeIn',
+         //     duration: 1000,
+         // });
+
+         // this.addTween({
+         //     targets: healSprite,
+         //     scaleX: 1,
+         //     scaleY: 1,
+         //     y: "-=60",
+         //     duration: 1300,
+         //     onComplete: () => {
+         //         healSprite.destroy()
+         //     }
+         // });
+         // this.addTween({
+         //     delay: 600,
+         //     targets: healSprite,
+         //     alpha: 0,
+         //     ease: 'Quad.easeIn',
+         //     duration: 700,
+         // });
      }
 
     createShieldTut() {
@@ -453,7 +555,6 @@
                      desc: "The tree swipes a branch at you",
                      chargeAmt: 650,
                      damage: -1,
-                     attackSprites: ['tree_open_glow.png'],
                      startFunction: () => {
                         this.createShieldTut();
 
@@ -469,7 +570,7 @@
                      },
                      attackFinishFunction: () => {
                          let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent <= 0.667 && !this.hasCrushed) {
+                         if (currHealthPercent <= 0.6 && !this.hasCrushed) {
                              this.setNextAttack(3, 0);
                          } else {
                              this.setNextAttack(1, 0);
@@ -480,28 +581,28 @@
              [
                  // 1
                  {
-                     name: "HEAL (\\" + regrowthAmt1 + ")",
-                     announceName: "HEAL (+" + regrowthAmt1 + ")",
-                     desc: "The tree recovers its injuries over time",
-                     chargeAmt: 650,
+                     name: "THORNS",
+                     announceName: "THORNS",
+                     desc: "The tree creates protective thorns!",
+                     chargeAmt: 400,
                      isPassive: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
-                         this.eyeMagic2.setAlpha(0.2).setScale(0.8, 0.4);
-                         this.eyeMagicAnim = this.addTween({
-                             targets: [this.eyeMagic1, this.eyeMagic2],
-                             scaleX: 0.95,
-                             scaleY: 0.92,
-                             alpha: 1,
-                             ease: 'Cubic.easeOut',
-                             duration: 600,
-                         });
+                         // this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
+                         // this.eyeMagic2.setAlpha(0.2).setScale(0.8, 0.4);
+                         // this.eyeMagicAnim = this.addTween({
+                         //     targets: [this.eyeMagic1, this.eyeMagic2],
+                         //     scaleX: 0.95,
+                         //     scaleY: 0.92,
+                         //     alpha: 1,
+                         //     ease: 'Cubic.easeOut',
+                         //     duration: 600,
+                         // });
                      },
                      attackFinishFunction: () => {
-                         this.playRegrowthAnim(regrowthAmt1);
+                         this.playThornsAnim();
                          let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent <= 0.667 && !this.hasCrushed) {
+                         if (currHealthPercent <= 0.6 && !this.hasCrushed) {
                              this.setNextAttack(3, 0);
                          } else {
                              this.setNextAttack(2, 0);
@@ -512,69 +613,73 @@
              [
                  // 2
                  {
+                     name: "STARE... ",
+                     chargeAmt: 400,
+                     damage: -1,
+                     isPassive: true,
+                     attackStartFunction: () => {
+
+                     },
+                     attackFinishFunction: () => {
+                         let currHealthPercent = this.health / this.healthMax;
+                         if (currHealthPercent <= 0.6 && !this.hasCrushed) {
+                             this.currentAttackSetIndex = 3;
+                             this.nextAttackIndex = 0;
+                         }
+                     }
+                 },
+                 {
                      name: "|10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
                      chargeAmt: 700,
                      damage: -1,
-                     attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
                          this.attackWithBranch(10);
                      },
                      attackFinishFunction: () => {
                          let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent <= 0.667 && !this.hasCrushed) {
+                         if (currHealthPercent <= 0.6 && !this.hasCrushed) {
                              this.currentAttackSetIndex = 3;
                              this.nextAttackIndex = 0;
                          }
                      }
                  },
                  {
-                     name: "HEAL (\\" + regrowthAmt2 + ")",
-                     announceName: "HEAL (+" + regrowthAmt2 + ")",
-                     desc: "The tree recovers its injuries",
-                     chargeAmt: 650,
-                     isPassive: true,
+                     name: "STARE... ",
+                     chargeAmt: 400,
                      damage: -1,
+                     isPassive: true,
                      attackStartFunction: () => {
-                         this.eyeMagic1.setAlpha(0.2).setScale(0.8, 0.4);
-                         this.eyeMagic2.setAlpha(0.2).setScale(0.8, 0.4);
-                         this.eyeMagicAnim = this.addTween({
-                             targets: [this.eyeMagic1, this.eyeMagic2],
-                             scaleX: 0.95,
-                             scaleY: 0.92,
-                             alpha: 1,
-                             ease: 'Cubic.easeOut',
-                             duration: 600,
-                         });
+
                      },
                      attackFinishFunction: () => {
-                         this.playRegrowthAnim(regrowthAmt2);
                          let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent <= 0.667 && !this.hasCrushed) {
+                         if (currHealthPercent <= 0.6 && !this.hasCrushed) {
                              this.currentAttackSetIndex = 3;
                              this.nextAttackIndex = 0;
                          }
                      }
                  },
                  {
-                     name: "|4x4 ",
+                     name: "|2x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 750,
+                     chargeAmt: 850,
                      damage: 0,
-                     attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
                          playSound('tree_sfx');
                      },
                      attackFinishFunction: () => {
-                         for (let i = 0; i < 4; i++) {
-                             let xPos = gameConsts.halfWidth + -150 + i * 100;
+                        this.glowGreen()
+
+                         for (let i = 0; i < 5; i++) {
+                             let xPos = gameConsts.halfWidth + -200 + i * 100;
                              let yPos = 75 + Math.random() * 40;
                              this.createLeafObject('tree_leaf.webp', xPos, yPos, i * 25);
                          }
                          this.addTimeout(() => {
-                             this.fireObjects(4);
+                             this.fireObjects(2);
                          }, 250);
                      }
                  },
@@ -582,24 +687,27 @@
              [
                  // 3
                  {
-                     name: "CRUSH;28",
+                     name: ";24",
                      announceName: "CRUSH",
                      desc: "The tree tries to crush you",
-                     chargeAmt: 800,
-                     damage: 28,
+                     chargeAmt: 1100,
+                    finishDelay: 3000,
+                     chargeMult: 1.5,
+                     damage: -1,
                      isBigMove: true,
                      startFunction: () => {
-                        globalObjects.textPopupManager.setInfoText(94, gameConsts.halfHeight - 139, "Different shields\nare useful\nagainst different\nattacks.", 'left', true);
+                        globalObjects.textPopupManager.setInfoText(gameConsts.width - 94, gameConsts.halfHeight - 139, "Different shields\nare useful\nagainst different\nattacks.", 'right', true);
                         this.addTimeout(() => {
                             globalObjects.textPopupManager.hideInfoText();
                          }, 11000);
                      },
                      attackStartFunction: () => {
+                        this.glowGreen();
                          playSound('tree_sfx');
+                         playSound('magic');
                         globalObjects.textPopupManager.hideInfoText();
-                         this.pullbackScale = 0.96;
-                         this.attackScale = 1.28;
                          this.hasCrushed = true;
+                         this.createCrushAttack(24);
                      },
                      attackFinishFunction: () => {
                          this.pullbackScale = 0.99;
@@ -612,101 +720,69 @@
                              this.currentAttackSetIndex = 5;
                              this.nextAttackIndex = 0;
                          }
-                         playSound('body_slam');
-                         let dmgEffect = poolManager.getItemFromPool('brickPattern2')
-                         if (!dmgEffect) {
-                             dmgEffect = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 160, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
-                         }
-                         dmgEffect.setDepth(998).setScale(0.7);
-                         this.addTween({
-                             targets: dmgEffect,
-                             rotation: 1,
-                             alpha: 0,
-                             duration: 800,
-                             onComplete: () => {
-                                 poolManager.returnItemToPool(dmgEffect, 'brickPattern2');
-
-                             }
-                         });
                      }
                  },
              ],
              [
                  // 4
                  {
-                     name: "|4x5 ",
-                     announceName: "LEAF SHOWER",
+                     name: "STARE... ",
+                     chargeAmt: 400,
+                     damage: -1,
+                     isPassive: true,
+                     attackStartFunction: () => {
+
+                     },
+                     attackFinishFunction: () => {
+                         let currHealthPercent = this.health / this.healthMax;
+                         if (currHealthPercent <= 0.6 && !this.hasCrushed) {
+                             this.currentAttackSetIndex = 3;
+                             this.nextAttackIndex = 0;
+                         }
+                     }
+                 },
+                 {
+                     name: "|2x5 ",
+                     announceName: "LEAF STORM",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 750,
+                     chargeAmt: 850,
                      damage: 0,
-                     attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
                          playSound('tree_sfx');
                      },
                      attackFinishFunction: () => {
+                        this.glowGreen()
                          for (let i = 0; i < 5; i++) {
                              let xPos = gameConsts.halfWidth + -200 + i * 100;
                              let yPos = 75 + Math.random() * 40;
                              this.createLeafObject('tree_leaf.webp', xPos, yPos, i * 25);
                          }
                          this.addTimeout(() => {
-                             this.fireObjects(4);
+                             this.fireObjects(2);
                          }, 300);
                      }
                  },
                  {
-                     name: "|12 ",
+                     name: "|10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 650,
+                     chargeAmt: 700,
                      damage: -1,
-                     attackSprites: ['tree_open_glow.png'],
                      attackStartFunction: () => {
-                         this.attackWithBranch(12);
+
+                         this.attackWithBranch(10);
                      }
-                 },
-                 {
-                     name: "|4x6 ",
-                     announceName: "LEAF SHOWER",
-                     desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 800,
-                     damage: 0,
-                     attackSprites: ['tree_open_glow.png'],
-                     attackStartFunction: () => {
-                         playSound('tree_sfx');
-                     },
-                     attackFinishFunction: () => {
-                         for (let i = 0; i < 6; i++) {
-                             let xPos = gameConsts.halfWidth + -250 + i * 100;
-                             let yPos = 75 + Math.random() * 40;
-                             this.createLeafObject('tree_leaf.webp', xPos, yPos, i * 25);
-                         }
-                         this.addTimeout(() => {
-                             this.fireObjects(4);
-                         }, 300);
-                     }
-                 },
-                 {
-                     name: "|12 ",
-                     announceName: "BRANCH ATTACK",
-                     desc: "The tree swipes a branch at you",
-                     chargeAmt: 650,
-                     damage: -1,
-                     attackSprites: ['tree_open_glow.png'],
-                     attackStartFunction: () => {
-                         this.attackWithBranch(12);
-                     }
-                 },
+                 }
              ],
              [
                  // 5
                  {
-                     name: "TIMBER!!!;32 ",
+                     name: "TIMBER!;36 ",
                      announceName: "TIMBER!!!",
                      desc: "The tree tries to crush you",
-                     chargeAmt: 1200,
+                     chargeAmt: 1250,
                      chargeMult: 2.5,
-                     damage: 40,
+                     damage: 36,
                      isBigMove: true,
                      startFunction: () => {
                         this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
@@ -769,6 +845,7 @@
          if (this.currAnim) {
              this.currAnim.stop();
          }
+         this.clearThorns()
         globalObjects.textPopupManager.hideInfoText();
          this.addTween({
              targets: [this.rune1],
@@ -821,6 +898,7 @@
          this.fallen = true;
          let oldScale = this.sprite.scaleX;
          let treeTop = this.addImage(this.sprite.x + 10, this.sprite.y, 'enemies', 'tree_top.png');
+        this.clearThorns()
          treeTop.setScale(this.sprite.scaleX, this.sprite.scaleY).setOrigin(this.sprite.originX, this.sprite.originY).setDepth(this.sprite.depth - 1);
          this.setDefaultSprite('tree_stumped.png', this.sprite.startScale, true);
          this.sprite.setScale(oldScale);
@@ -844,4 +922,196 @@
              }
          });
      }
+
+    createCrushAttack(damage = 30) {
+        let greenSpike = this.addImage(this.sprite.x, this.sprite.y - 200, 'lowq', 'green_spike.png').setDepth(20).setScale(0);
+        let spikeGlow1 = this.addImage(this.sprite.x, this.sprite.y - 200, 'lowq', 'spike_glow_yellow.png').setDepth(20).setRotation(10).setScale(0.2);
+        let spikeGlow2 = this.addImage(this.sprite.x, this.sprite.y - 200, 'lowq', 'spike_glow_yellow.png').setDepth(20).setAlpha(0);
+        let spike1 = this.addImage(this.sprite.x, this.sprite.y - 200, 'lowq', 'star_black.png').setDepth(20).setRotation(10).setScale(0.2);
+        let spike2 = this.addImage(this.sprite.x, this.sprite.y - 200, 'lowq', 'star_black.png').setDepth(20).setAlpha(0);
+
+        this.addTween({
+            targets: [spikeGlow1, spike1],
+            scaleX: 1.4,
+            scaleY: 1.4,
+            ease: 'Quart.easeIn',
+            duration: 1400,
+            onComplete: () => {
+                this.addTween({
+                    targets: [spikeGlow1, spike1],
+                    scaleX: 0.9,
+                    scaleY: 0.9,
+                    ease: 'Cubic.easeOut',
+                    duration: 600,
+                });
+            }
+        });
+
+        this.addTween({
+            targets: [spikeGlow1, spike1],
+            rotation: Math.PI * 0.25,
+            ease: 'Quad.easeInOut',
+            y: this.y - 40,
+            duration: 2000,
+            onComplete: () => {
+                let fallSound = playSound('robot_laser');
+                fallSound.detune = -500;
+                greenSpike.setPosition(spikeGlow1.x, spikeGlow1.y);
+                greenSpike.setRotation(Math.PI * 0.25);
+                spikeGlow2.y = spikeGlow1.y;
+                spike2.y = spike1.y;
+                spikeGlow2.rotation = 0;
+                spikeGlow2.alpha = 1;
+                spike2.alpha = 1;
+                spike2.rotation = 0;
+                this.addTween({
+                    targets: [spike2, spikeGlow2],
+                    scaleX: 1.5,
+                    scaleY: 1.5,
+                    easeParams: [4],
+                    ease: 'Back.easeOut',
+                    duration: 500,
+                    onComplete: () => {
+                        this.addTween({
+                            targets: [spike2, spikeGlow2],
+                            scaleX: 1.7,
+                            scaleY: 1.7,
+                            duration: 500,
+                        });
+                    }
+                });
+                this.addTween({
+                    targets: [spike1, spikeGlow1],
+                    scaleX: 1.65,
+                    scaleY: 1.65,
+                    duration: 1000,
+                });
+                this.addTween({
+                    targets: [greenSpike],
+                    scaleX: 5,
+                    scaleY: 5,
+                    alpha: 0,
+                    duration: 350,
+                });
+                this.addTween({
+                    targets: [spikeGlow1, spikeGlow2, spike1, spike2, greenSpike],
+                    rotation: "+=12",
+                    ease: 'Quad.easeIn',
+                    y: globalObjects.player.getY() - 200,
+                    duration: 1000,
+                    onComplete: () => {
+                        playSound('body_slam', 0.7);
+                        playSound('fizzle');
+                        messageBus.publish("selfTakeDamage", damage);
+                        greenSpike.destroy();
+                        this.addTween({
+                            targets: [spikeGlow1, spikeGlow2, spike1, spike2],
+                            scaleX: 1.8,
+                            scaleY: 1.8,
+                            duration: 10,
+                            onComplete: () => {
+                                this.addTween({
+                                    targets: [spikeGlow1, spikeGlow2, spike1, spike2],
+                                    duration: 500,
+                                    alpha: 0,
+                                    onComplete: () => {
+                                        spikeGlow1.destroy();
+                                        spikeGlow2.destroy();
+                                        spike1.destroy();
+                                        spike2.destroy();
+                                        fallSound.detune = 0;
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    adjustDamageTaken(amt, isAttack, isTrue ) {
+        if (isAttack && this.hasThorns && !isTrue) {
+            
+            let glowSpike = getTempPoolObject('enemies', 'glowSpike.png', 'glowSpike', 1800);
+            let isLeft = Math.random() < 0.5;
+            glowSpike.setScale(0.5).setAlpha(0.9).setPosition(gameConsts.halfWidth + (isLeft ? -50 : 50), this.y - 150).setDepth(999).setRotation(isLeft ? -4 : 4);
+
+            this.addTween({
+                targets: glowSpike,
+                x: gameConsts.halfWidth + (isLeft ? -80 : 80),
+                ease: 'Cubic.easeOut',
+                duration: 300, 
+                rotation: 0,
+                onComplete: () => {
+                    this.addTween({
+                        rotation: isLeft ? 10 : -10,
+                        targets: glowSpike,
+                        ease: 'Cubic.easeIn',
+                        x: gameConsts.halfWidth,
+                        duration: 1100,
+                    });
+                }
+            });
+            this.addTween({
+                targets: glowSpike,
+                ease: 'Quart.easeIn',
+                scaleX: 3,
+                scaleY: 3,
+                duration: 300,
+                onComplete: () => {
+                    playSound('matter_body');
+                    this.addTween({
+                        targets: glowSpike,
+                        ease: 'Cubic.easeOut',
+                        scaleX: 1.1,
+                        scaleY: 1.1,
+                        duration: 1100,
+                        onComplete: () => {
+                            glowSpike.setScale(1.3);
+                        }
+                    });
+                }
+            });
+
+            this.addTween({
+                targets: glowSpike,
+                y: globalObjects.player.getY() - 270,
+                alpha: 1.2,
+                duration: 1300,
+                easeParams: [2.5],
+                ease: 'Back.easeIn',
+                onComplete: () => {
+                    glowSpike.setDepth(20);
+                    this.addTween({
+                        targets: glowSpike,
+                        y: globalObjects.player.getY() - 205,
+                        duration: 100,
+                        onComplete: () => {
+                            messageBus.publish("selfTakeDamage", 2);
+                            playSound('razor_leaf', 0.75)
+                                this.addTween({
+                                targets: glowSpike,
+                                alpha: 0,
+                                ease: 'Cubic.easeIn',
+                                duration: 300,
+                            });
+                        }
+                    });
+                }
+            });
+
+            this.thorns1.setScale(1.24).setAlpha(1);
+            this.thorns2.setScale(1.24).setAlpha(1);
+            this.thornsTween = this.addTween({
+                 targets: [this.thorns1, this.thorns2],
+                 scaleX: 1,
+                 scaleY: 1,
+                 alpha: 0.85,
+                 ease: 'Cubic.easeOut',
+                 duration: 400,
+             });
+        }
+        return super.adjustDamageTaken(amt, isAttack, isTrue);
+    }
 }

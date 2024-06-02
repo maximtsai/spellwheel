@@ -22,7 +22,14 @@ const textData = {
         es: '',
         jp: ''
     },
-    matter_protect_desc: {en_us: 'Create a shield\nthat blocks 14\ndamage',
+    matter_protect_desc: {en_us: 'Create a shield\nthat blocks 12\ndamage',
+        fr: '',
+        zh_cn: '创建一个阻挡\n14 点伤害的护盾',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    matter_protect_plus_desc: {en_us: 'Create a shield\nthat blocks 14\ndamage',
         fr: '',
         zh_cn: '创建一个阻挡\n14 点伤害的护盾',
         ru: '',
@@ -160,7 +167,13 @@ const textData = {
     },
 
     // ================== Tutorial ================
-    matter_tut_desc: {en_us: 'The Matter rune grants control\nover the physical.\nMatter spells are good at\ndealing direct damage and\nproviding reliable protection.',
+    matter_tut_desc: {en_us: 'The Matter rune grants control\nover the physical.\nMatter spells are good at dealing direct damage\nand providing reliable protection.',
+        fr: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''},
+    matter_plus_tut_desc: {en_us: 'The Matter rune grants control\nover the physical.\nYour mastery over the element strengthens\nsome of your existing Matter spells.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -196,7 +209,13 @@ const textData = {
         ru: '',
         es: '',
         jp: ''},
-    mind_tut_desc: {en_us: 'The Energy rune grants control\ncover raw energy.\nEnergy spells have powerful\nsupportive effects and can\ndeal damage that bypasses\nenemy shields.',
+    mind_tut_desc: {en_us: 'The Energy rune grants control\ncover raw energy.\nEnergy spells have powerful supportive effects and\ncan deal damage that bypasses enemy shields.',
+        fr: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''},
+    mind_plus_tut_desc: {en_us: 'The Energy rune grants control\ncover raw energy.\nYour mastery over the element strengthens\nsome of your existing Mind spells.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -233,7 +252,7 @@ const textData = {
         es: '',
         jp: ''},
 
-    time_tut_desc: {en_us: 'The Time rune grants control\nover the temporal.\nTime spells let you attack\nmultiple times, delay injuries,\nor even slow your enemies\nto a stand-still.',
+    time_tut_desc: {en_us: 'The Time rune grants control\nover the temporal.\nTime spells let you attack multiple times, delay injuries,\nor even slow your enemies to a stand-still.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -245,13 +264,13 @@ const textData = {
         ru: '',
         es: '',
         jp: ''},
-    time_tut_enhance_desc: {en_us: 'Your next attack fires off\nan additional time.',
+    time_tut_enhance_desc: {en_us: 'Your next attack is duplicated\nallowing you to fire multiple\nattacks at the same time.',
         fr: '',
         zh_cn: '',
         ru: '',
         es: '',
         jp: ''},
-    time_tut_protect_desc: {en_us: 'Creates a shield that delays\nall damage you take to a\nslow trickle, but only up to\na limit.',
+    time_tut_protect_desc: {en_us: 'Creates a shield that delays\nall damage you take to a\nslow trickle, up to a limit.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -308,13 +327,13 @@ const textData = {
         jp: ''},
 
 
-    protect_tut_desc: {en_us: 'The Shield rune lets you create\nbarriers that protect you\nas long as it\'s positioned\nbetween you and the enemy.',
+    protect_tut_desc: {en_us: 'The Shield rune lets you create\nbarriers that protect you as long as they\nare positioned between you and the enemy.',
         fr: '',
         zh_cn: '',
         ru: '',
         es: '',
         jp: ''},
-    reinforce_tut_desc: {en_us: 'The Body rune strengthens you\nwith effects that persist until\nyou cast a new body spell.\nSome Body+Rune combos can\neven heal you.',
+    reinforce_tut_desc: {en_us: 'The Body rune strengthens you\nwith effects that persist until you cast\na new body spell.\nSome Body+Rune combos can even heal you.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -326,11 +345,12 @@ const textData = {
         ru: '',
         es: '',
         jp: ''},
-
-
-
-
-
+    no_improve_tut_desc: {en_us: 'You see no more need to improve.\nYou are certain that you are strong\nenough to take on any challenge.',
+        fr: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''},
 
 
 

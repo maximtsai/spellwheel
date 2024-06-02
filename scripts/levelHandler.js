@@ -185,9 +185,10 @@ function createTutorialBtn(lvl) {
 }
 
 function buildTutorialButton(icon = "rune_matter_large.png", popup) {
-    let btnPopBack = PhaserScene.add.sprite(45, 70, 'buttons', 'new_btn_back.png').setScale(0.1).setDepth(130);
-    let btnIcon = PhaserScene.add.sprite(45, 70, 'tutorial', icon).setScale(0.05).setDepth(130);
-    let btnPop = PhaserScene.add.sprite(45, 70, 'buttons', 'new_btn.png').setScale(0.1).setDepth(131);
+    let buttonX = gameConsts.width - 45; let buttonY = 120;
+    let btnPopBack = PhaserScene.add.sprite(buttonX, buttonY, 'buttons', 'new_btn_back.png').setScale(0.1).setDepth(130);
+    let btnIcon = PhaserScene.add.sprite(buttonX, buttonY, 'tutorial', icon).setScale(0.05).setDepth(130);
+    let btnPop = PhaserScene.add.sprite(buttonX, buttonY, 'buttons', 'new_btn.png').setScale(0.1).setDepth(131);
 
     let returnButton;
     returnButton = new Button({
@@ -195,8 +196,8 @@ function buildTutorialButton(icon = "rune_matter_large.png", popup) {
             atlas: "buttons",
             ref: "new_btn.png",
             alpha: 1,
-            x: 45,
-            y: 70,
+            x: buttonX,
+            y: buttonY,
         },
         hover: {
             atlas: "buttons",
@@ -238,7 +239,7 @@ function buildTutorialButton(icon = "rune_matter_large.png", popup) {
                 return;
             }
             returnButton.setState(NORMAL);
-            let anim = PhaserScene.add.sprite(45, 70, 'buttons').setDepth(130).play('newButtonAnim');
+            let anim = PhaserScene.add.sprite(buttonX, buttonY, 'buttons').setDepth(130).play('newButtonAnim');
             returnButton.addToDestructibles(anim);
         }
     });
@@ -265,7 +266,7 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
     messageBus.publish('pauseGame', 0.002);
     globalObjects.magicCircle.disableMovement();
 
-    let tutTitleBg = PhaserScene.add.sprite(gameConsts.halfWidth - 168, gameConsts.halfHeight - 285, 'tutorial', 'title.png').setDepth(10000);
+    let tutTitleBg = PhaserScene.add.sprite(gameConsts.halfWidth - 138, gameConsts.halfHeight - 285, 'tutorial', 'title.png').setDepth(10000);
     let tutBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 100, 'tutorial', 'popupTutorial.png').setScale(0.985).setAlpha(0.5).setDepth(10000);
     let tutPlus = PhaserScene.add.sprite(gameConsts.halfWidth - 124, gameConsts.halfHeight - 193, 'tutorial', 'plus_symbol.png').setScale(0.96).setAlpha(0.5).setDepth(10000);
 

@@ -776,7 +776,7 @@ class Player {
                             let blockedDmg = Math.ceil(hurtAmt * 0.49999);
                             hurtAmt = hurtAmt - blockedDmg;
                             shieldObj.impactVisibleTime = 8;
-                            shieldObj.storedDamage += blockedDmg + shieldObj.multiplier;
+                            shieldObj.storedDamage += blockedDmg * shieldObj.multiplier;
                             shieldObj.textObj.setText(shieldObj.storedDamage);
                             let textObjGoalScale = 0.4 + Math.sqrt(shieldObj.storedDamage) * 0.12
                             shieldObj.textObj.setScale(textObjGoalScale + 0.6);

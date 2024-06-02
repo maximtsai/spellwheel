@@ -435,7 +435,7 @@ class Enemy {
                             this.chargeBarCurr.alpha = 0.9;
                         }
                         this.attackCharge += timeChange * 0.35 * this.slowMult * chargeMult;
-                        this.attackCharge += castAggravateBonus * 0.2;
+                        this.attackCharge += castAggravateBonus;
 
                     } else {
                         this.chargeBarCurr.alpha = 0.6;
@@ -529,7 +529,7 @@ class Enemy {
             }
         }
         this.timeSinceLastAttacked += timeChange;
-        if (this.timeSinceLastAttacked < 80) {
+        if (this.timeSinceLastAttacked < 75) {
             if (!this.isAngry) {
                 this.isAngry = true;
                 this.chargeBarAngry.alpha = 1;
@@ -1885,6 +1885,6 @@ class Enemy {
     }
 
     playerClickedSpell() {
-        this.castAggravateCharge = 35;
+        this.castAggravateCharge = 20;
     }
 }

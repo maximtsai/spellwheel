@@ -578,7 +578,7 @@
                  {
                      name: "}4 ",
                      announceName: "FEINT ATTACK",
-                     chargeAmt: 250,
+                     chargeAmt: 300,
                      damage: 4,
                      attackSprites: ['void_knight_attack.png'],
                      attackFinishFunction: () => {

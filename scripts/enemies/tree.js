@@ -431,7 +431,7 @@
                     alpha: 0.7,
                      duration: 400,
                      onComplete: () => {
-                        globalObjects.bannerTextManager.setDialog(["The tree gains prickly thorns that\nreflect 2 damage.", "Block them + Make your attacks count."]);
+                        globalObjects.bannerTextManager.setDialog(["The tree gains prickly thorns that\nreflect 2 damage.", "Block the thorns\n+ Make your attacks count."]);
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                         globalObjects.bannerTextManager.showBanner(true);
                         this.setDefense(2);
@@ -696,7 +696,7 @@
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
-                        globalObjects.textPopupManager.setInfoText(gameConsts.width - 94, gameConsts.halfHeight - 139, "Different shields\nare useful\nagainst different\nattacks.", 'right', true);
+                        globalObjects.textPopupManager.setInfoText(gameConsts.width - 94, gameConsts.halfHeight - 139, "Some shields\nare more useful\nagainst certain\nattacks.", 'right', true);
                         this.addTimeout(() => {
                             globalObjects.textPopupManager.hideInfoText();
                          }, 11000);

@@ -197,7 +197,7 @@ const textData = {
         ru: '',
         es: '',
         jp: ''},
-    matter_tut_reinforce_desc: {en_us: 'Defensive buff that protects\nyou with spiky skin.\nEnemies that attack you also\nreceive minor damage\nthemselves.',
+    matter_tut_reinforce_desc: {en_us: 'Defensive buff that protects\nyou with spiky skin.\nGreat against large quantities\nof weaker attacks.',
         fr: '',
         zh_cn: '',
         ru: '',

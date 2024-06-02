@@ -238,7 +238,9 @@
              ease: 'Cubic.easeOut',
              duration: 450,
              onComplete: () => {
+                console.log("compltete")
                  this.dieClickBlocker.setOnMouseUpFunc(() => {
+                    console.log("clikk")
                      this.dieClickBlocker.destroy();
                      PhaserScene.tweens.add({
                          targets: [victoryText, banner],
@@ -287,10 +289,6 @@
                     }, 1200);
                 });
             });
-
-            this.dieClickBlocker.setOnMouseUpFunc(() => {
-                this.dieClickBlocker.destroy();
-            })
         }, 500);
      }
 
@@ -365,7 +363,7 @@
                      } else {
                          healthText.setText(Math.max(0, statusObj.duration - 1));
                          this.setHealth(this.health - 1);
-                        this.castAggravateCharge = 50;
+                        this.castAggravateCharge = 35;
 
                          if (!this.isTerrified && !this.freezingTime && this.timeBarraged) {
                             if (this.health % 2 == 0) {
@@ -522,7 +520,7 @@
                  {
                      name: "}4x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: 550,
+                     chargeAmt: 500,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
@@ -536,7 +534,7 @@
              ],
              [
                  {
-                     name: "+{DELAY INJURIES{+",
+                     name: "\\{DELAY INJURIES{\\",
                      desc: "The Time Magician\nslows down his health",
                      chargeAmt: 350,
                      prepareSprite: 'time_magi_cast_big.png',

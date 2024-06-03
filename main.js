@@ -78,9 +78,10 @@ let oldTime = 0;
 let deltaScale = 1;
 let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 3;
-
+let canResizeGame = false;
 function preload ()
 {
+    canResizeGame = true;
     resizeGame();
     let gameDiv = document.getElementById('preload-notice');
     gameDiv.innerHTML = "";

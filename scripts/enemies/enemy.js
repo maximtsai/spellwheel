@@ -409,7 +409,7 @@ class Enemy {
                 }
             }
             if (this.isAngry) {
-                let increaseMult = Math.max(4.25, 0.33 * chargeMult);
+                let increaseMult = Math.max(4.4, 0.33 * chargeMult);
                 this.attackCharge += timeChange * increaseMult * this.slowMult;
                 this.castAggravateCharge = 0;
             } else {
@@ -529,7 +529,7 @@ class Enemy {
             }
         }
         this.timeSinceLastAttacked += timeChange;
-        if (this.timeSinceLastAttacked < 75) {
+        if (this.timeSinceLastAttacked < 70) {
             if (!this.isAngry) {
                 this.isAngry = true;
                 this.chargeBarAngry.alpha = 1;
@@ -646,6 +646,10 @@ class Enemy {
 
     }
 
+    repositionAngrySymbol() {
+        this.angrySymbol.x = this.attackName.x + this.attackName.width * 0.496 + 18;
+    }
+
     readyNextAttack() {
         if (this.isDestroyed) {
             return;
@@ -672,7 +676,7 @@ class Enemy {
             finalScale = 0.98;
         }
         this.attackName.setText(atkName).setAlpha(0.2).setScale(finalScale);
-        this.angrySymbol.x = this.attackName.x + this.attackName.width * 0.496 + 20;
+        this.repositionAngrySymbol();
 
         this.attackName.setScale(finalScale * 0.9);
         this.attackName.hasWarned = false;
@@ -1721,7 +1725,6 @@ class Enemy {
                     duration: attackDuration,
                     rotation: 0,
                     ease: this.attackEase ? this.attackEase : 'Cubic.easeIn',
-                    completeDelay: finishDelay,
                     onComplete: () => {
                         if (this.dead || this.isDestroyed){
                             return;
@@ -1764,7 +1767,9 @@ class Enemy {
                                 duration: 500 * extraTimeMult * timeSlowMult,
                                 ease: this.returnEase ? this.returnEase : 'Cubic.easeInOut'
                             });
-                            this.isUsingAttack = false;
+                            setTimeout(() => {
+                                this.isUsingAttack = false;
+                            }, finishDelay);
                             setTimeout(() => {
                                 if (!this.dead && !this.isDestroyed) {
                                     this.setSpriteIfNotInactive(this.defaultSprite, undefined, true);

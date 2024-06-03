@@ -4,7 +4,7 @@
          this.initSprite('robot0.png', 1);
          this.shieldAdded = false;
          this.sprite.startY = y;
-        this.bgMusic = playMusic('jpop', 0.9, true);
+        this.bgMusic = playMusic('metaljpop', 0.9, false);
 
          this.addTimeout(() => {
              globalObjects.magicCircle.disableMovement();
@@ -114,7 +114,9 @@
                      ease: 'Cubic.easeIn',
                      onComplete: () => {
                          globalObjects.magicCircle.enableMovement();
+                        this.bgMusic.stop();
                          playSound('voca_hello', 0.8);
+
                          this.sprite.setScale(this.sprite.startScale);
                          this.addTween({
                              targets: this.eyeShine,
@@ -192,6 +194,7 @@
                                  playSound('robot_sfx_1');
                              },
                              onComplete: () => {
+                                this.bgMusic = playMusic('jpop', 1, true);
                                  this.sprite.setOrigin(0.5, 0.5).setPosition(this.sprite.x, spriteOrigY).setRotation(0);
                                  this.setDefaultSprite('robot1.png');
                                  this.sprite.y = this.sprite.startY;

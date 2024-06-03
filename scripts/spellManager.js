@@ -538,7 +538,9 @@ class SpellManager {
             });
         }
 
-        let shieldHealth = 12 * spellMultiplier;
+        let shieldBaseHealth = gameVars.matterPlus ? 14 : 12;
+
+        let shieldHealth = shieldBaseHealth * spellMultiplier;
         textHealth.setText(shieldHealth);
         messageBus.publish('setTempRotObjs', [animation1], rotation);
 
@@ -673,7 +675,8 @@ class SpellManager {
         }
         textHealth.setDepth(120).setOrigin(0.5, 0.5).setScale(0);
         stoneCircle.setDepth(10);
-        let shieldHealth = 22 * multiplier;
+        let basePower = 22;
+        let shieldHealth = basePower * multiplier;
         this.scene.tweens.add({
             targets: stoneCircle,
             delay: 250,
@@ -769,7 +772,7 @@ class SpellManager {
                     });
                 },
                 onComplete: () => {
-                    messageBus.publish('enemyTakeDamage', 22 + additionalDamage);
+                    messageBus.publish('enemyTakeDamage', basePower + additionalDamage);
                     zoomTemp(1.01 + additionalDamage * 0.00025);
                     this.createDamageEffect(gameConsts.halfWidth, 140, rockObj.depth);
                     this.scene.tweens.add({
@@ -976,13 +979,13 @@ class SpellManager {
         bigClock.setDepth(120).setScale(1.05);
         bigClock.alpha = 0;
         let clockArm = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_arm_large.png');
-        clockArm.setDepth(120).setScale(1.05);
+        clockArm.setDepth(120).setScale(1.2);
         clockArm.setOrigin(0.01, 0.5);
         clockArm.alpha = 0;
         clockArm.rotation = -Math.PI * 0.5;
 
         this.scene.tweens.add({
-            targets: [bigClock, clockArm],
+            targets: [bigClock],
             duration: 300,
             alpha: 0.4 + multiplier * 0.1,
             scaleX: 0.95,
@@ -991,6 +994,14 @@ class SpellManager {
             onComplete: () => {
                 messageBus.publish('selfHealRecent', healthRewoundPercent);
             }
+        });
+        this.scene.tweens.add({
+            targets: [bigClock, clockArm],
+            duration: 400,
+            alpha: 0.55 + multiplier * 0.12,
+            scaleX: 0.92,
+            scaleY: 0.92,
+            ease: 'Cubic.easeOut',
         });
 
         this.scene.tweens.add({
@@ -2300,7 +2311,6 @@ class SpellManager {
                         });
                     }
 
-                    // messageBus.publish('selfClearEffect', shieldID, true);
                     statuses[shieldID] = null;
                 }
             }
@@ -2614,12 +2624,35 @@ class SpellManager {
         let existingBuff3 = globalObjects.player.getStatuses()['matterReinforce'];
         if (existingBuff1) {
             messageBus.publish('selfClearStatuses', 'mindReinforce');
+            let param = {
+                duration: 750,
+                ease: 'Cubic.easeOut',
+                alpha: 0.9,
+                y: "+=4",
+            }
+            let param2 = {
+                duration: 750,
+                alpha: 0,
+            }
+            messageBus.publish('animateBlockNum', gameConsts.halfWidth, globalObjects.player.getY() + 24, "-DAMAGE", 0.75, param, param2);
         }
         // if (existingBuff2) {
         //     messageBus.publish('selfClearEffect', 'timeReinforce');
         // }
         if (existingBuff3) {
             messageBus.publish('selfClearStatuses', 'matterReinforce');
+
+            let param = {
+                duration: 750,
+                ease: 'Cubic.easeOut',
+                alpha: 0.9,
+                y: "+=4",
+            }
+            let param2 = {
+                duration: 750,
+                alpha: 0,
+            }
+            messageBus.publish('animateBlockNum', gameConsts.halfWidth, globalObjects.player.getY() + 24, "-THORNS", 0.6, param, param2);
         }
     }
 }

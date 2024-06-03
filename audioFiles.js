@@ -6,6 +6,7 @@ const audioFiles = [
     {name: 'into_the_void', src: 'audio/into_the_void.mp3'},
     {name: 'echos_of_time', src: 'audio/echos_of_time.mp3'},
     {name: 'echos_of_time_finale', src: 'audio/echos_of_time_finale.mp3'},
+    {name: 'metaljpop', src: 'audio/metaljpop.mp3'},
     {name: 'jpop', src: 'audio/jpop.mp3'},
     {name: 'heartbeat', src: 'audio/heartbeat.mp3'},
 
@@ -43,6 +44,7 @@ const audioFiles = [
     {name: 'clocktick2', src: 'audio/clocktick2.mp3'},
     {name: 'time_body', src: 'audio/time_body.mp3'},
     {name: 'time_strike', src: 'audio/time_strike.mp3'},
+    {name: 'time_strike_alt', src: 'audio/time_strike.mp3'},
     {name: 'time_strike_hit', src: 'audio/time_strike_hit.mp3'},
     {name: 'time_strike_hit_2', src: 'audio/time_strike_hit_2.mp3'},
     {name: 'time_enhance', src: 'audio/time_enhance.mp3'},

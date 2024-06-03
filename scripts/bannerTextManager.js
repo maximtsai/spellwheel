@@ -69,7 +69,7 @@ class BannerTextManager {
                 this.dialogButton.setOnMouseUpFunc(() => {
                     this.continueDialog();
                 })
-            }, 500)
+            }, 650)
         }
     }
 
@@ -107,6 +107,7 @@ class BannerTextManager {
         if (this.continuePause) {
             return;
         }
+
         this.continuePause = true;
         this.dialogIndex++;
         if (this.currAnim) {
@@ -126,6 +127,7 @@ class BannerTextManager {
                         targets: [this.text],
                         alpha: 1,
                         duration: 250,
+                        completeDelay: 150,
                         onComplete: () => {
                             this.continuePause = false;
                         }
@@ -134,9 +136,6 @@ class BannerTextManager {
                         targets: [this.text],
                         rotation: 0,
                         duration: 175,
-                        onComplete: () => {
-                            this.continuePause = false;
-                        }
                     });
                 }
             });

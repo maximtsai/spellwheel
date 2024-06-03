@@ -687,7 +687,7 @@
              [
                  // 3
                  {
-                     name: ";24",
+                     name: ";26",
                      announceName: "CRUSH",
                      desc: "The tree tries to crush you",
                      chargeAmt: 1100,
@@ -707,7 +707,7 @@
                          playSound('magic');
                         globalObjects.textPopupManager.hideInfoText();
                          this.hasCrushed = true;
-                         this.createCrushAttack(24);
+                         this.createCrushAttack(26);
                      },
                      attackFinishFunction: () => {
                          this.pullbackScale = 0.99;
@@ -792,13 +792,51 @@
                              if (!this.dead) {
                                  this.bgMusic = playMusic('echos_of_time_finale');
                              }
-                         }, 3000)
+                         }, 3200)
+                        let greenSpike = this.addImage(this.sprite.x, this.sprite.y, 'lowq', 'green_spike.png').setDepth(20).setScale(5).setRotation(-3).setAlpha(0);
+                         this.addTween({
+                             targets: greenSpike,
+                             ease: 'Cubic.easeIn',
+                             rotation: 0,
+                             scaleX: 0.8,
+                             scaleY: 0.8,
+                             alpha: 1.2,
+                             duration: 800,
+                             onComplete: () => {
+                                greenSpike.setScale(1);
+                                 this.addTween({
+                                     targets: greenSpike,
+                                     ease: 'Cubic.easeOut',
+                                     alpha: 0,
+                                     scaleX: 0.4,
+                                     scaleY: 0.4,
+                                     duration: 800,
+                                     onComplete: () => {
+                                        greenSpike.destroy();
+                                     }
+                                 });
+                             }
+                         });
                      },
                      attackStartFunction: () => {
                          playSound('tree_timber');
                          this.pullbackScale = 0.97;
                          this.attackScale = 1.75;
                          this.hasTimbered = true;
+
+                        let greenSpike = this.addImage(this.sprite.x, this.sprite.y, 'lowq', 'green_spike.png').setDepth(20).setScale(0.1).setRotation(Math.PI * 0.25);
+                         this.addTween({
+                             targets: greenSpike,
+                             ease: 'Quad.easeOut',
+                             scaleX: 3,
+                             scaleY: 3,
+                             alpha: 0,
+                             duration: 800,
+                             onComplete: () => {
+                                greenSpike.destroy();
+                             }
+                         });
+
                      },
                      attackFinishFunction: () => {
                          this.pullbackScale = 0.99;
@@ -988,10 +1026,10 @@
                 });
                 this.addTween({
                     targets: [greenSpike],
-                    scaleX: 5,
-                    scaleY: 5,
+                    scaleX: 6,
+                    scaleY: 6,
                     alpha: 0,
-                    duration: 350,
+                    duration: 450,
                 });
                 this.addTween({
                     targets: [spikeGlow1, spikeGlow2, spike1, spike2, greenSpike],

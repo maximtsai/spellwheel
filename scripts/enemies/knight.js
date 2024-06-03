@@ -1023,12 +1023,12 @@
 
          this.addTimeout(() => {
             this.fogSpook = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'lowq', 'fogspook.png').setDepth(9).setAlpha(0).setBlendMode(Phaser.BlendModes.ADD).setOrigin(0.5, 0.25).setScale(-1, 1);
-             this.fogSpookTween = this.addTween({
-                 targets: this.fogSpook,
-                 alpha: 1,
-                 duration: 3000,
-             });
-             this.addTween({
+            this.fogSpookTween = this.addTween({
+                targets: this.fogSpook,
+                alpha: 1,
+                duration: 3000,
+            });
+            this.addTween({
                  delay: 350,
                  targets: helmet,
                  rotation: "+=0.1",

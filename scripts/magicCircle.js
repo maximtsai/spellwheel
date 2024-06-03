@@ -383,12 +383,6 @@ const ENABLE_KEYBOARD = true;
         this.aura.rotVel = 0;
         this.aura.alpha = 0.02;
 
-        this.timeArm = scene.add.sprite(x, y, 'spells', 'clock_arm_large.png');
-        this.timeArm.setDepth(103);
-        this.timeArm.setOrigin(0.01, 0.5);
-        this.timeArm.setScale(0.7);
-        this.timeArm.setAlpha(0);
-
         this.voidArm = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHoleArms.png').setScale(1.25);
         this.voidArm.setDepth(15);
         this.voidArm.alpha = 0;
@@ -483,8 +477,8 @@ const ENABLE_KEYBOARD = true;
         this.spellNameText.setDepth(120);
         this.spellNameText.alpha = 0.4;
 
-        this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);
-        this.voidSliceImage3 = scene.add.sprite(gameConsts.halfWidth + 100, 255, 'spells', 'darkSlice.png').setDepth(9).setRotation(-Math.PI * 0.5 - 0.6).setAlpha(0).setOrigin(0.17, 0.5);
+        this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(21).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);
+        this.voidSliceImage3 = scene.add.sprite(gameConsts.halfWidth + 100, 255, 'spells', 'darkSlice.png').setDepth(21).setRotation(-Math.PI * 0.5 - 0.6).setAlpha(0).setOrigin(0.17, 0.5);
 
         this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0).setDepth(10).setBlendMode(Phaser.BlendModes.ADD);
 
@@ -2209,6 +2203,8 @@ const ENABLE_KEYBOARD = true;
             this.removeDelayedDamage();
          } else {
              this.delayDamageText.setText(this.delayedDamage);
+            let scale = this.getDelayedDamageClockScale();
+            this.plainUpdateDelayedDamageVisual(scale)
          }
      }
 
@@ -2280,7 +2276,7 @@ const ENABLE_KEYBOARD = true;
                         let overheal = Math.max(0, globalObjects.player.health + recentlyHealAmt - globalObjects.player.healthMax)
                         let healDelayed = this.delayedDamage - overheal;
                          let healAmt = recentlyHealAmt + Math.ceil(healDelayed * healMult);
-                         this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS ('+ healAmt + ")")
+                         this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS (+'+ healAmt + ")")
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('time_reinforce_desc'))
                          break;
                      case RUNE_ENHANCE:

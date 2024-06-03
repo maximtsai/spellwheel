@@ -1,7 +1,7 @@
  class Magician extends Enemy {
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
-        this.initSprite('time_magi.png', 0.75,0, 5);
+        this.initSprite('time_magi.png', 1, 0, 5);
         this.popupTimeout = this.addTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
@@ -22,66 +22,71 @@
     }
 
      initStatsCustom() {
-         this.health = 90;
+         this.health = 10;
          this.damageNumOffset = 45;
+         this.lifeOne = true;
          this.timeObjects = [];
+         this.numTimesHealed = 0;
+         this.pullbackScale = 0.8;
          this.initTemporalObjects();
      }
 
 
      setHealth(newHealth) {
-         super.setHealth(newHealth);
+        // if (this.invincible) {
+        //     messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random()*150, this.sprite.y + 50 - Math.random() * 100, 'DELAYED', 0.75);
+        //     return;
+        // }
          let prevHealthPercent = this.prevHealth / this.healthMax;
          let currHealthPercent = this.health / this.healthMax;
-         if (currHealthPercent == 0) {
+         if (this.health === 0) {
              // dead, can't do anything
              return;
          }
+         super.setHealth(newHealth);
+
          if (this.specialDamageAbsorptionActive) {
              // this.animateShake();
-             let healthBarRatio = 1 + this.healthBarLengthMax * this.health / this.healthMax;
-             this.healthBarCurr.scaleX = healthBarRatio;
-             this.healthBarText.setText(this.health);
-             if (this.health <= 0) {
-                 this.die();
-             }
-            if (this.statuses[0] && this.statuses[0].duration > newHealth + 1) {
-                this.statuses[0].duration = newHealth + 1;
-                this.statuses[0].animObj.setText(this.statuses[0].duration);
-
-            }
-
+            //  let healthBarRatio = 1 + this.healthBarLengthMax * this.health / this.healthMax;
+            //  this.healthBarCurr.scaleX = healthBarRatio;
+            //  this.healthBarText.setText(this.health);
+            //  if (this.health <= 0) {
+            //      this.die();
+            //  }
+            // if (this.statuses[0] && this.statuses[0].duration > newHealth + 1) {
+            //     this.statuses[0].duration = newHealth + 1;
+            //     this.statuses[0].animObj.setText(this.statuses[0].duration);
+            // }
          }
 
-
-         if (!this.isNervous && this.statuses[0] && this.statuses[0].duration >= this.health) {
-             this.isNervous = true;
-             this.setDefaultSprite('time_magi_nervous.png', 0.75);
-         }
-         if (this.usingTimeFreeze) {
-             // no change
-         } else if (currHealthPercent < 0.999 && !this.preppingTimeShield) {
-             this.currentAttackSetIndex = 1;
-             this.nextAttackIndex = 0;
-         } else if (this.health <= 13 && this.usedTimeShield && !this.isTerrified && this.statuses[0] && this.statuses[0].duration >= this.health) {
-             this.isTerrified = true;
-             this.interruptCurrentAttack();
-             this.currentAttackSetIndex = 6;
-             this.nextAttackIndex = 0;
-             this.startReaper();
-             if (this.customBgMusic) {
-                 fadeAwaySound(this.customBgMusic, 1000, '');
-             }
-             this.addTimeout(() => {
-                 if (!this.dead) {
-                     this.customBgMusic = playMusic('magician_theme_4', 0.4, true);
-                     fadeInSound(this.customBgMusic, 0.8);
-                 }
-             }, 750)
-         } else if (this.health <= 4 && !this.timeTerrified && this.usedTimeShield) {
-             this.timeTerrified = true;
-             this.setDefaultSprite('time_magi_terrified.png', 0.72);
-         }
+         // if (!this.isNervous && this.statuses[0] && this.statuses[0].duration >= this.health) {
+         //     this.isNervous = true;
+         //     this.setDefaultSprite('time_magi_nervous.png', 1);
+         // }
+         // if (this.usingTimeFreeze) {
+         //     // no change
+         // } else if (currHealthPercent < 0.999 && !this.preppingTimeShield) {
+         //     this.currentAttackSetIndex = 1;
+         //     this.nextAttackIndex = 0;
+         // } else if (this.health <= 13 && this.usedTimeShield && !this.isTerrified && this.statuses[0] && this.statuses[0].duration >= this.health) {
+         //     this.isTerrified = true;
+         //     this.interruptCurrentAttack();
+         //     this.currentAttackSetIndex = 6;
+         //     this.nextAttackIndex = 0;
+         //     this.startReaper();
+         //     if (this.customBgMusic) {
+         //         fadeAwaySound(this.customBgMusic, 1000, '');
+         //     }
+         //     this.addTimeout(() => {
+         //         if (!this.dead) {
+         //             this.customBgMusic = playMusic('magician_theme_4', 0.4, true);
+         //             fadeInSound(this.customBgMusic, 0.8);
+         //         }
+         //     }, 750)
+         // } else if (this.health <= 4 && !this.timeTerrified && this.usedTimeShield) {
+         //     this.timeTerrified = true;
+         //     this.setDefaultSprite('time_magi_terrified.png', 0.95);
+         // }
 
      }
 
@@ -143,44 +148,107 @@
 
      zoomAwayClocks() {
         this.addTween({
-             targets: this.timeFallObjs,
-             scaleX: 0,
-             scaleY: 0,
-             duration: 600,
-             ease: 'Quad.easeOut',
-             rotation: "+=3"
-         });
+            targets: this.timeFallObjs,
+            scaleX: 0,
+            scaleY: 0,
+            duration: 600,
+            ease: 'Quad.easeOut',
+            rotation: "+=3"
+        });
      }
 
      die() {
-         if (this.dead) {
+         if (this.dead || this.invincible) {
              return;
          }
-        super.die();
 
-         if (this.currAnim) {
-             this.currAnim.stop();
-         }
-        globalObjects.encyclopedia.hideButton();
-        globalObjects.options.hideButton();
-        this.cleanUp();
-         this.showVictory();
+        if (this.currAnim) {
+            this.currAnim.stop();
+        }
+        globalObjects.magicCircle.cancelTimeSlow();
+        if (this.lifeOne) {
+            this.interruptCurrentAttack();
+            this.setAsleep();
 
-         this.setDefaultSprite('time_magi_terrified.png', 0.72);
+            this.invincible = true;
+            this.lifeOne = false;
+            this.customBgMusic.stop();
+             this.setDefaultSprite('time_magi_fade.png', 1);
+             this.sprite.setRotation(-0.5);
+             for (let i = 0; i < 5; i++) {
+                let textIndex = i * 2;
+                let text = 'temporal' + textIndex + ".png";
+                let tempClock = this.addImage(this.x, this.y, 'lowq', text).setScale(0.5).setRotation(Math.random() * 6).setAlpha(0.6);
+                let randScale = 0.75 + Math.random() * 0.2;
+                let randDur1 = 150 + Math.floor(Math.random() * 100);
+                let randDur2Bonus = Math.floor(Math.random() * 200);
+                let randDur2 = 1500 + randDur2Bonus;
+                let totalDur = randDur1 + randDur2;
+                let randRot = "+=" + 6 * (Math.random() < 0.5 ? 1 : -1)
+                this.addTween({
+                    targets: tempClock,
+                    scaleX: randScale,
+                    scaleY: randScale,
+                    duration: randDur1,
+                    ease: 'Cubic.easeOut',
+                    onComplete: () => {
+                        this.addTween({
+                            targets: tempClock,
+                            scaleX: 0,
+                            scaleY: 0,
+                            duration: randDur2,
+                        });
+                    }
+                });
+                this.addTween({
+                    targets: tempClock,
+                    rotation: randRot,
+                    duration: totalDur,
+                    ease: 'Quad.easeOut',
+                });
 
-         this.dieClickBlocker = new Button({
-             normal: {
-                 ref: "blackPixel",
-                 x: gameConsts.halfWidth,
-                 y: gameConsts.halfHeight,
-                 alpha: 0.001,
-                 scaleX: 1000,
-                 scaleY: 1000
-             },
-             onMouseUp: () => {
-
+                let randDir = Math.random() * 12.5;
+                let xDir = (150 + randDur2Bonus * 0.2) * Math.sin(randDir);
+                let yDir = (150 + randDur2Bonus * 0.2) * Math.cos(randDir);
+                this.addTween({
+                    targets: tempClock,
+                    x: "+=" + xDir,
+                    y: "+=" + yDir,
+                    duration: totalDur,
+                    ease: 'Cubic.easeOut',
+                    onComplete: () => {
+                        tempClock.destroy();
+                    }
+                });
              }
-         });
+            this.addTimeout(() => {
+                this.revive();
+            }, 2400)
+        } else {
+            super.die();
+
+
+            globalObjects.encyclopedia.hideButton();
+            globalObjects.options.hideButton();
+            this.cleanUp();
+             this.showVictory();
+
+             this.setDefaultSprite('time_magi_terrified.png', 0.98);
+
+             this.dieClickBlocker = new Button({
+                 normal: {
+                     ref: "blackPixel",
+                     x: gameConsts.halfWidth,
+                     y: gameConsts.halfHeight,
+                     alpha: 0.001,
+                     scaleX: 1000,
+                     scaleY: 1000
+                 },
+                 onMouseUp: () => {
+
+                 }
+             });
+        }
      }
 
      destroy() {
@@ -238,9 +306,7 @@
              ease: 'Cubic.easeOut',
              duration: 450,
              onComplete: () => {
-                console.log("compltete")
                  this.dieClickBlocker.setOnMouseUpFunc(() => {
-                    console.log("clikk")
                      this.dieClickBlocker.destroy();
                      PhaserScene.tweens.add({
                          targets: [victoryText, banner],
@@ -292,8 +358,6 @@
         }, 500);
      }
 
-
-
      startReaper() {
         this.blackBackground = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(-1)
          this.floatingDeath = getFloatingDeath();
@@ -316,9 +380,6 @@
      }
 
      setupTimeShield() {
-        let lostHealth = (this.healthMax - 12) - this.health;
-        lostHealth = Math.max(0, lostHealth);
-         this.heal(Math.floor(lostHealth * 0.5));
          this.specialDamageAbsorptionActive = true;
 
          this.clockShield = this.addSprite(gameConsts.halfWidth, this.y, 'spells', 'clock_back_large_red.png').setDepth(1).setAlpha(0.75);
@@ -346,7 +407,7 @@
                  amt = this.health + 1;
              }
 
-             let healthText = this.scene.add.bitmapText(gameConsts.halfWidth, 100, 'damage', '', 60).setDepth(999).setOrigin(0.5, 0.5);
+             let healthText = this.scene.add.bitmapText(gameConsts.halfWidth, 100, 'damage', '40', 60).setDepth(999).setOrigin(0.5, 0.5);
              healthText.setText(amt);
              healthText.setScale(0.7 + 0.01 * amt);
              let statusObj = {};
@@ -420,7 +481,6 @@
                  this.breatheTween = this.addTween({
                      targets: this.sprite,
                      duration: duration * (Math.random() * 0.5 + 1),
-                     rotation: 0.02 * magnitude,
                      y: this.sprite.startY + vertMove,
                      ease: 'Quad.easeInOut',
                      completeDelay: 150,
@@ -432,105 +492,477 @@
          });
      }
 
-     launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false) {
-         if (this.dead){
-             return;
-         }
-         let extraTimeMult = 0.25 + 0.75 * gameVars.timeSlowRatio;
-         if (prepareSprite) {
-             this.setSprite(prepareSprite, this.sprite.startScale);
-         }
-         if (this.nextAttack.attackStartFunction) {
-             this.nextAttack.attackStartFunction();
-         }
-         let pullbackScale = 0.9 * this.sprite.startScale;
-         this.attackAnim = this.addTween({
-             targets: this.sprite,
-             scaleX: pullbackScale,
-             scaleY: pullbackScale,
-             rotation: 0,
-             duration: isRepeatedAttack ? 250 * extraTimeMult : 300 * extraTimeMult,
-             ease: 'Cubic.easeOut',
-             onComplete: () => {
-                 if (this.dead){
-                     return;
-                 }
-                 if (!prepareSprite) {
-                     this.setSprite(this.defaultSprite);
-                     this.sprite.setScale(pullbackScale);
-                 }
-                 let attackScale = 1.09 * this.sprite.startScale
-                 this.attackAnim = this.addTween({
-                     targets: this.sprite,
-                     scaleX: attackScale,
-                     scaleY: attackScale,
-                     duration: isRepeatedAttack ? 300 * extraTimeMult : 350 * extraTimeMult,
-                     rotation: 0,
-                     ease: 'Cubic.easeIn',
-                     onComplete: () => {
-                         if (this.dead){
-                             return;
-                         }
-                         if (!isRepeatedAttack) {
-                             messageBus.publish("enemyMadeAttack", this.nextAttack.damage);
-                         }
-                         if (this.dead){
-                             return;
-                         }
+    launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false, finishDelay = 0) {
+        if (this.dead || this.isDestroyed){
+            return;
+        }
+        this.isUsingAttack = true;
 
-                         if (this.health > 0) {
-                             if (this.nextAttack.damage > 0) {
-                                 messageBus.publish("selfTakeDamage", this.nextAttack.damage);
-                             }
-                             if (this.nextAttack.message) {
-                                 messageBus.publish(this.nextAttack.message, this.nextAttack.messageDetail);
-                             }
-                             if (this.nextAttack.attackFinishFunction) {
-                                 this.nextAttack.attackFinishFunction();
-                             }
-                         }
-                         if (attackTimes > 1) {
-                             this.launchAttack(attackTimes - 1, prepareSprite, attackSprites, true);
-                         } else {
-                             this.attackAnim = this.addTween({
-                                 targets: this.sprite,
-                                 scaleX: this.sprite.startScale,
-                                 scaleY: this.sprite.startScale,
-                                 rotation: 0,
-                                 duration: 550 * extraTimeMult,
-                                 ease: 'Cubic.easeInOut'
-                             });
-                             this.addTimeout(() => {
-                                 if (!this.dead) {
-                                     this.setSprite(this.defaultSprite);
-                                 }
-                             }, 550 * extraTimeMult * 0.65 + 200);
-                         }
-                     }
-                 });
-             }
-         });
-     }
+        let extraTimeMult = 1 * this.attackSlownessMult;
 
+        if (this.nextAttack.attackStartFunction) {
+            this.nextAttack.attackStartFunction();
+        }
+        let pullbackScale = this.pullbackScale * this.sprite.startScale;
+        let pullbackDurMult = Math.sqrt(Math.abs(this.pullbackScale - this.pullbackScaleDefault) * 10) + 1;
+        pullbackDurMult *= this.pullbackDurMult ? this.pullbackDurMult : 1;
+        let timeSlowMult = 1;
+
+        let durationPullback = isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult + this.extraRepeatDelay : 300 * extraTimeMult * pullbackDurMult;
+
+        if (prepareSprite) {
+            if (isRepeatedAttack) {
+                setTimeout(() => {
+                    this.setSpriteIfNotInactive(prepareSprite, this.sprite.startScale);
+                }, durationPullback * this.pullbackHoldRatio);
+            } else {
+                this.setSpriteIfNotInactive(prepareSprite, this.sprite.startScale);
+            }
+        }
+
+        // First pull back
+        this.attackAnim = this.scene.tweens.add({
+            targets: this.sprite,
+            scaleX: pullbackScale,
+            scaleY: pullbackScale,
+            rotation: 0,
+            duration: durationPullback * timeSlowMult,
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                if (this.dead || this.isDestroyed){
+                    return;
+                }
+                let attackDuration = isRepeatedAttack ? 150 * extraTimeMult : 175 * extraTimeMult
+                let attackScale = this.attackScale * this.sprite.startScale * timeSlowMult;
+                attackDuration += Math.floor(this.attackScale * 200);
+                this.attackAnim = this.scene.tweens.add({
+                    targets: this.sprite,
+                    scaleX: attackScale,
+                    scaleY: attackScale,
+                    duration: attackDuration,
+                    rotation: 0,
+                    ease: this.attackEase ? this.attackEase : 'Cubic.easeIn',
+                    onComplete: () => {
+                        if (this.dead || this.isDestroyed){
+                            return;
+                        }
+                        if (!isRepeatedAttack) {
+                            messageBus.publish("enemyMadeAttack", this.nextAttack.damage);
+                        }
+                        if (this.dead || this.isDestroyed){
+                            return;
+                        }
+                        if (attackSprites.length > 0) {
+                            //if (!prepareSprite) {
+                                if (this.sprite.attackNum === undefined) {
+                                    this.sprite.attackNum = 0;
+                                } else {
+                                    this.sprite.attackNum = (this.sprite.attackNum + 1) % attackSprites.length;
+                                }
+                                this.setSpriteIfNotInactive(attackSprites[this.sprite.attackNum], this.sprite.startScale, undefined, 10);
+                            //}
+                        }
+                        if (this.health > 0) {
+                            if (this.nextAttack.damage > 0) {
+                                messageBus.publish("selfTakeDamage", this.nextAttack.damage);
+                            }
+                            if (this.nextAttack.message) {
+                                messageBus.publish(this.nextAttack.message, this.nextAttack.messageDetail);
+                            }
+                            if (this.nextAttack.attackFinishFunction) {
+                                this.nextAttack.attackFinishFunction();
+                            }
+                        }
+                        if (attackTimes > 1) {
+                            this.launchAttack(attackTimes - 1, prepareSprite, attackSprites, true);
+                        } else {
+                            this.attackAnim = this.scene.tweens.add({
+                                targets: this.sprite,
+                                scaleX: this.sprite.startScale,
+                                scaleY: this.sprite.startScale,
+                                rotation: 0,
+                                duration: 500 * extraTimeMult * timeSlowMult,
+                                ease: this.returnEase ? this.returnEase : 'Cubic.easeInOut'
+                            });
+                            setTimeout(() => {
+                                this.isUsingAttack = false;
+                            }, finishDelay);
+                            setTimeout(() => {
+                                if (!this.dead && !this.isDestroyed) {
+                                    this.setSpriteIfNotInactive(this.defaultSprite, undefined, true);
+                                    if (this.nextAttack.finaleFunction) {
+                                        this.nextAttack.finaleFunction();
+                                    }
+                                }
+                            }, 400 * extraTimeMult * this.lastAttackLingerMult + 100);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    revive() {
+        this.backClock = PhaserScene.add.image(this.x, this.y, 'lowq', 'temporal9.png').setDepth(-1).setAlpha(0.05).setScale(0.4);
+        this.backClock.baseScale = this.backClock.scaleX;
+        let delayAmt = 0;
+        let delayAdded = 400;
+        for (let i = 0; i < this.timeFallObjs.length; i++) {
+            let clock = this.timeFallObjs[i];
+            delayAmt += delayAdded;
+            delayAdded = Math.floor(delayAdded * 0.86);
+            this.addTween({
+                delay: delayAmt,
+                targets: clock,
+                x: this.x,
+                y: this.y,
+                duration: 275,
+                ease: 'Quad.easeIn',
+                onStart:() => {
+                    let detuneAmt = i * 30 - 600;
+                    if (i % 2 == 0) {
+                        playSound('time_strike').detune = detuneAmt;
+                    } else {
+                        playSound('time_strike_alt').detune = detuneAmt;
+                    }
+                },
+                onComplete: () => {
+                    let rotateAmt = 0.07 + (i * 0.005);
+                    this.backClock.baseScale += 0.08;
+                    this.backClock.setScale(this.backClock.baseScale + 0.07)
+                    this.backClock.alpha += 0.08;
+                    if (i === this.timeFallObjs.length - 1) {
+                        this.backClock.baseScale += 0.3;
+                        this.backClock.setScale(this.backClock.baseScale - 0.5)
+                        this.backClock.alpha = 1;
+                        playSound('time_strike_hit');
+                        this.addTween({
+                            targets: this.sprite,
+                            duration: 250,
+                            rotation: 0,
+                            ease: 'Quart.easeOut',
+                        });
+                        this.addTween({
+                            targets: this.backClock,
+                            duration: 400,
+                            scaleX: this.backClock.baseScale,
+                            scaleY: this.backClock.baseScale,
+                            easeParams: [3],
+                            ease: 'Back.easeOut',
+                            completeDelay: 100,
+                            onComplete: () => {
+                                clock.destroy();
+                                this.beginPhaseTwo();
+                                this.addTween({
+                                    targets: this.backClock,
+                                    duration: 1200,
+                                    rotation: "+=2",
+                                    scaleX: "+=1",
+                                    scaleY: "+=1",
+                                    alpha: 0,
+                                    ease: 'Cubic.easeOut',
+                                    onComplete: () => {
+
+                                    }
+                                });
+                            }
+                        });
+                    } else {
+                        this.addTween({
+                            targets: this.backClock,
+                            duration: 220 - i * 4,
+                            rotation: "-=" + rotateAmt,
+                            scaleX: this.backClock.baseScale,
+                            scaleY: this.backClock.baseScale,
+                            easeParams: [5],
+                            ease: 'Bounce.easeOut',
+                            onComplete: () => {
+                                clock.destroy();
+                            }
+                        });
+                    }
+
+                }
+            });
+            this.addTween({
+                delay: delayAmt,
+                targets: clock,
+                alpha: 0,
+                duration: 300,
+                ease: 'Cubic.easeIn',
+                onStart: () => {
+                    clock.setAlpha(1);
+                },
+            });
+        }
+    }
+
+    beginPhaseTwo() {
+        globalObjects.bannerTextManager.setDialog(["The Magician's time is limited,\nbut he plans to end things fast.", "Watch out"]);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+        globalObjects.bannerTextManager.showBanner(true);
+        globalObjects.bannerTextManager.setOnFinishFunc(() => {
+            this.addTween({
+                targets: this.sprite,
+                scaleX: this.sprite.startScale - 0.2,
+                scaleY: this.sprite.startScale - 0.2,
+                duration: 250,
+                ease: 'Cubic.easeOut',
+                onComplete: () => {
+                    this.addTween({
+                        targets: this.sprite,
+                        scaleX: this.sprite.startScale + 0.2,
+                        scaleY: this.sprite.startScale + 0.2,
+                        duration: 500,
+                        ease: 'Cubic.easeIn',
+                        onComplete: () => {
+                            this.setMaxHealth(30);
+                            this.heal(this.healthMax);
+                            this.setAwake();
+                            this.setupTimeShield();
+
+                            // this.customBgMusic = playMusic('magician_theme_3', 0.8);
+                             playSound('timeSlow');
+                             this.magicianTimeEpicTheme = playMusic('magician_theme_3', 0.8)
+                             globalObjects.magicCircle.timeSlowFromEnemy();
+
+                            this.currentAttackSetIndex = 2;
+                            this.nextAttackIndex = 0;
+                            this.setSprite('time_magi_cast.png', undefined, true);
+                            this.addTween({
+                                targets: this.sprite,
+                                scaleX: this.sprite.startScale,
+                                scaleY: this.sprite.startScale,
+                                duration: 450,
+                                ease: 'Quart.easeOut',
+                                onComplete: () => {
+                                    this.setSprite('time_magi.png', undefined, true);
+                                },
+                            });
+                        },
+                    });
+                },
+            });
+        })
+    }
+
+    startChargingUltimate() {
+        for (let i = 0; i < 24; i++) {
+            this.addTween({
+                delay: i * 510,
+                duration: 150,
+                targets: this.sprite,
+                scaleX: this.sprite.startScale,
+                scaleX: this.sprite.startScale,
+                rotation: 0,
+                ease: 'Cubic.easeOut',
+                onStart: () => {
+                    if (!this.finishedChargingUltimate) {
+                        this.sprite.setScale(this.sprite.startScale * 1.05);
+                        this.sprite.setRotation(0.1);
+                        let startX = this.x;
+                        let startY = this.y;
+                        let dirAngle = i * Math.PI / 12;
+                        let offsetX = Math.sin(dirAngle) * 90;
+                        let offsetY = -Math.cos(dirAngle) * 80;
+                        let clockName = 'clock2.png';
+                        if (i % 6 == 0) {
+                            clockName = 'clock4.png';
+                        }
+
+                        let xPos = startX + offsetX; let yPos = startY + offsetY;
+                        let timeObj = this.createTimeObject(clockName, xPos, yPos, 0, 2, -300 + i * 30);
+                        timeObj.setDepth(3);
+                        this.addTween({
+                            duration: 400,
+                            targets: timeObj,
+                            x: startX + offsetX * (i % 6 == 0 ? 1.55 : 1.6),
+                            y: startY + offsetY * (i % 6 == 0 ? 1.55 : 1.6),
+                            ease: 'Quart.easeOut'
+                        });
+                        let numAttacks = i + 1;
+                        if (i < 7) {
+                            this.attackName.setText("}4x" + numAttacks + "}");
+                        } else if (i < 15) {
+                            this.attackName.setText("}}4x" + numAttacks + "}}");
+                        } else if (i < 23) {
+                            this.attackName.setText("}}}4x" + numAttacks + "}}}");
+                        } else {
+                            this.attackName.setText("}}}}4x" + numAttacks + "}}}}");
+                        }
+                        this.repositionAngrySymbol();
+                    }
+                },
+            })
+        }
+    }
 
      initAttacks() {
          this.attacks = [
              [
                  // 0
                  {
+                     name: "}4x3 ",
+                     desc: "An advanced magic attack.",
+                     chargeAmt: 550,
+                     damage: -1,
+                     prepareSprite: 'time_magi_cast_big.png',
+                     attackStartFunction: () => {
+                         this.createTimeObject('clock2.png', this.x - 120, this.y - 70);
+                         this.createTimeObject('clock3.png', this.x - 40, this.y - 80, 125);
+                         this.createTimeObject('clock4.png', this.x + 40, this.y - 80, 250);
+                         this.addTimeout(() => {
+                             this.fireTimeObjects(4);
+                         }, 600);
+                     },
+                     attackFinishFunction: () => {
+                        if (this.health < this.healthMax - 20) {
+                            // health low-ish, go heal
+                            this.currentAttackSetIndex = 1;
+                            this.nextAttackIndex = 0;
+                        }
+                    }
+                 },
+                 {
                      name: "}4x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: 500,
+                     chargeAmt: 400,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
-                         this.createTimeObject('clock2.png', this.x - 110, this.y - 70);
-                         this.createTimeObject('clock3.png', this.x - 35, this.y - 100);
+                         this.createTimeObject('clock2.png', this.x - 110, this.y - 70, 0);
+                         this.createTimeObject('clock3.png', this.x - 35, this.y - 100, 100);
+                         this.addTimeout(() => {
+                             this.fireTimeObjects(4);
+                         }, 800);
+                     },
+                     attackFinishFunction: () => {
+                        if (this.health < this.healthMax - 20) {
+                            // health low-ish, go heal
+                            this.currentAttackSetIndex = 1;
+                            this.nextAttackIndex = 0;
+                        }
+                    }
+                 },
+             ],
+             [
+                // 1
+                 {
+                     name: "\\50% MISSING HEALTH",
+                     chargeAmt: 500,
+                     isPassive: true,
+                     damage: -1,
+                     prepareSprite: 'time_magi_cast_big.png',
+                     attackStartFunction: () => {
+
+
+                     },
+                     attackFinishFunction: () => {
+                        this.numTimesHealed++;
+                        let lostHealth = this.healthMax - this.health;
+                        let healedAmt = Math.floor(lostHealth * 0.5);
+                        this.heal(healedAmt);
+                         playSound('magic', 0.6);
+                        messageBus.publish('animateHealNum', this.x, this.y - 50, '+' + healedAmt, 0.5 + Math.sqrt(healedAmt) * 0.2);
+                        if (!this.healSprite) {
+                            this.healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(0.9).setDepth(999).setAlpha(1);
+                        }
+                        this.healSprite.setAlpha(1).setPosition(gameConsts.halfWidth, this.y - 90);
+                        this.scene.tweens.add({
+                            targets: this.healSprite,
+                            y: "-=30",
+                            duration: 1000,
+                        });
+                        this.scene.tweens.add({
+                            targets: this.healSprite,
+                            alpha: 0,
+                            duration: 1000,
+                            ease: 'Cubic.easeIn',
+                            onComplete: () => {
+                                if (this.numTimesHealed === 3) {
+                                    globalObjects.bannerTextManager.setDialog(["The Magician mocks your\npoor offensive capabilities."]);
+                                    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                                    globalObjects.bannerTextManager.showBanner(true);
+                                }
+                            }
+                        });
+                        if (this.numTimesHealed >= 3) {
+
+                        } else {
+                            this.currentAttackSetIndex = 0;
+                            this.nextAttackIndex = 0;
+                        }
+                     },
+                 },
+                 {
+                     name: "|20 ",
+                     desc: "A devastating barrage\nof offensive magic.",
+                     chargeAmt: 700,
+                     isBigMove: true,
+                     prepareSprite: 'time_magi_cast_big.png',
+                     attackStartFunction: () => {
+                         this.createTimeObjectHuge('clock1.png', this.x - 95, 60, 100, 1.4);
+                     },
+                     attackFinishFunction: () => {
+                         this.addTimeout(() => {
+                             this.fireTimeObjects(20, 600);
+                         }, 350);
+                        this.currentAttackSetIndex = 0;
+                        this.nextAttackIndex = 0;
+                     }
+                 },
+            ],
+            [
+                // 2
+                {
+                     name: ";4x1",
+                     desc: "The Time Magician\nuses his ultimate attack",
+                     chargeAmt: 1350,
+                     isBigMove: true,
+                     chargeMult: 7,
+                     damage: -1,
+                    finishDelay: 4200,
+
+                     isPassive: true,
+                     startFunction: () => {
+                        this.setSprite('time_magi_cast_big.png');
+                         this.finishedChargingUltimate = false;
+                        this.startChargingUltimate();
+                     },
+                     attackStartFunction: () => {
+                         this.finishedChargingUltimate = true;
+                     },
+                     attackFinishFunction: () => {
+                        this.fireTimeObjects(4);
+                         this.currentAttackSetIndex = 3;
+                         this.nextAttackIndex = 0;
+                         globalObjects.magicCircle.cancelTimeSlow();
+
+                     }
+                }
+            ],
+             [
+                 {
+                     name: "EXHAUSTED...",
+                     chargeAmt: 700,
+                     chargeMult: 2,
+                     isPassive: true,
+                 },
+                 {
+                     name: "}4 ",
+                     desc: "The Time Magician cautiously\npokes you with his\nwand.",
+                     chargeAmt: 600,
+                     chargeMult: 2,
+                     damage: -1,
+                     prepareSprite: 'time_magi_cast.png',
+                     attackStartFunction: () => {
+                         this.createTimeObject('clock2.png', this.x - 60, this.y - 70, 0);
                          this.addTimeout(() => {
                              this.fireTimeObjects(4);
                          }, 800);
                      },
                  },
+                 // 1
              ],
              [
                  {
@@ -710,21 +1142,6 @@
                      }
                  },
                  {
-                     name: "TIME-ATTACK |16 ",
-                     desc: "A devastating barrage\nof offensive magic.",
-                     chargeAmt: 750,
-                     chargeMult: 16,
-                     prepareSprite: 'time_magi_cast_big.png',
-                     attackStartFunction: () => {
-                         this.createTimeObjectHuge('clock1.png', this.x - 95, 60, 100, 1.4);
-                     },
-                     attackFinishFunction: () => {
-                         this.addTimeout(() => {
-                             this.fireTimeObjects(16, 600);
-                         }, 350);
-                     }
-                 },
-                 {
                      name: "RESTING...",
                      desc: "Time Magician is trying\nto think what to do...",
                      isPassive: true,
@@ -810,7 +1227,7 @@
              ]
          ];
      }
-     createTimeObject(name, x, y, delay = 0, durMult = 1) {
+     createTimeObject(name, x, y, delay = 0, durMult = 1, detune = 0) {
          let newObj = this.addSprite(x, y, 'enemies', name).setRotation((Math.random() - 0.5) * 3).setScale(0).setDepth(110);
          newObj.durMult = durMult;
          this.timeObjects.push(newObj);
@@ -820,13 +1237,15 @@
              scaleX: 1,
              scaleY: 1,
              ease: 'Back.easeOut',
-             easeParams: [2],
+             easeParams: [3],
              rotation: '+=1',
              duration: 300 * durMult,
              onStart: () => {
-                 playSound('time_strike');
+                 let sound = playSound('time_strike');
+                 sound.detune = detune;
              }
          });
+         return newObj;
      }
 
      createTimeObjectHuge(name, x, y, delay = 0, durMult = 1) {
@@ -928,7 +1347,7 @@
 
      update(dt) {
         super.update(dt);
-        if (!this.freezingTime) {
+        if (this.lifeOne) {
             for (let i = 0; i < this.timeFallObjs.length; i++) {
                 let clock = this.timeFallObjs[i];
                 clock.y += 0.4 * dt;
@@ -943,7 +1362,6 @@
                     clock.rotSpeed = (1 + Math.random()) * (Math.random < 0.5 ? 1 : -1);
                     clock.setScale(clock.scaleX);
                     clock.setAlpha(clock.scaleX * 0.5 - 0.05);
-
 
                     clock.x = gameConsts.width * ((this.availableIndicies[this.lastPlacedIndex] + 0.5) / 5);
                     this.lastPlacedIndex = (this.lastPlacedIndex + 1) % this.availableIndicies.length;

@@ -2276,7 +2276,7 @@ const ENABLE_KEYBOARD = true;
                         let overheal = Math.max(0, globalObjects.player.health + recentlyHealAmt - globalObjects.player.healthMax)
                         let healDelayed = this.delayedDamage - overheal;
                          let healAmt = recentlyHealAmt + Math.ceil(healDelayed * healMult);
-                         this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS (+'+ healAmt + ")")
+                         this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS (\\'+ healAmt + ")")
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('time_reinforce_desc'))
                          break;
                      case RUNE_ENHANCE:

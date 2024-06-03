@@ -45,20 +45,6 @@
          }
          super.setHealth(newHealth);
 
-         if (this.specialDamageAbsorptionActive) {
-             // this.animateShake();
-            //  let healthBarRatio = 1 + this.healthBarLengthMax * this.health / this.healthMax;
-            //  this.healthBarCurr.scaleX = healthBarRatio;
-            //  this.healthBarText.setText(this.health);
-            //  if (this.health <= 0) {
-            //      this.die();
-            //  }
-            // if (this.statuses[0] && this.statuses[0].duration > newHealth + 1) {
-            //     this.statuses[0].duration = newHealth + 1;
-            //     this.statuses[0].animObj.setText(this.statuses[0].duration);
-            // }
-         }
-
          // if (!this.isNervous && this.statuses[0] && this.statuses[0].duration >= this.health) {
          //     this.isNervous = true;
          //     this.setDefaultSprite('time_magi_nervous.png', 1);
@@ -114,11 +100,17 @@
          }
          globalObjects.magicCircle.cancelTimeSlow();
          if (this.clockShield) {
+            if (this.clockShield.hitTween) {
+                this.clockShield.hitTween.stop();
+            }
+            if (this.clockShield.currAnim) {
+                this.clockShield.currAnim.stop();
+            }
              this.clockShield.alpha += 0.15;
              this.addTween({
                  targets: this.clockShield,
-                 scaleX: 0.75,
-                 scaleY: 0.75,
+                 scaleX: 1.2,
+                 scaleY: 1.2,
                  alpha: 0,
                  duration: 300,
                  ease: 'Cubic.easeOut',
@@ -226,7 +218,6 @@
             }, 2400)
         } else {
             super.die();
-
 
             globalObjects.encyclopedia.hideButton();
             globalObjects.options.hideButton();
@@ -361,11 +352,11 @@
      startReaper() {
         this.blackBackground = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(-1)
          this.floatingDeath = getFloatingDeath();
-         this.floatingDeath.alpha = 0;
+         this.floatingDeath.alpha = 0.03;
          gameVars.deathFlutterDelay = 600;
          this.floatingDeathAnim = this.addTween({
              targets: this.floatingDeath,
-             duration: 19000,
+             duration: 16000,
              alpha: 0.75,
              scaleX: 0.7,
              scaleY: 0.7,
@@ -373,35 +364,188 @@
          });
          this.addTween({
              targets: this.blackBackground,
-             duration: 19000,
+             duration: 16000,
              alpha: 0.7,
              ease: 'Quad.easeOut',
          });
      }
 
+    tickTimeShield() {
+        if (this.dead || this.exhausted) {
+            return;
+        }
+         this.clockShield.currAnim = this.addTween({
+             targets: this.clockShield,
+             duration: 250,
+             rotation: "+=0.2618",
+             ease: 'Back.easeOut',
+             completeDelay: 1250,
+             onComplete: () => {
+                this.tickTimeShield();
+             }
+         });
+    }
+
      setupTimeShield() {
+        if (this.specialDamageAbsorptionActive) {
+            return;
+        }
          this.specialDamageAbsorptionActive = true;
 
-         this.clockShield = this.addSprite(gameConsts.halfWidth, this.y, 'spells', 'clock_back_large_red.png').setDepth(1).setAlpha(0.75);
+         this.clockShield = this.addSprite(gameConsts.halfWidth, this.y, 'enemies', 'red_clock_back_large_red.png').setDepth(1).setAlpha(0.75);
+        this.clockShieldArm = this.addImage(this.clockShield.x, this.clockShield.y, 'enemies', 'red_clock_arm_large.png').setDepth(-1).setOrigin(0.5, 1).setRotation(-0.4).setAlpha(0);
 
-         this.addTween({
+         this.clockShield.currAnim = this.addTween({
              targets: this.clockShield,
              duration: 600,
              alpha: 0.2,
              rotation: "+=2",
              ease: 'Cubic.easeOut',
              onComplete: () => {
-                 this.addTween({
-                     targets: this.clockShield,
-                     duration: 15000,
-                     rotation: "+=3.1415",
-                     repeat: -1
-                 });
+                this.tickTimeShield();
              }
          });
+
+         let healthText = this.scene.add.bitmapText(gameConsts.halfWidth, 100, 'damage', this.healthMax, 60).setDepth(999).setOrigin(0.5, 0.5);
+         let glow = this.addImage(healthText.x, healthText.y, 'lowq', 'glow.webp').setDepth(998).setAlpha(0);
+
+         healthText.startY = healthText.y;
+         healthText.setScale(0);
+         let statusObj = {};
+         statusObj = {
+             animObj: healthText,
+             glowObj: glow,
+             duration: this.healthMax,
+             onUpdate: () => {
+                if (this.usingTimeFreeze) {
+                    statusObj.duration++;
+                    return;
+                }
+
+                 healthText.y = healthText.startY + 4;
+                 let bonusScale = this.health <= 1 ? 0.2 : 0;
+                 this.addTween({
+                     targets: healthText,
+                     duration: 150,
+                     scaleX: 1.35 - 0.02 * statusObj.duration + bonusScale,
+                     scaleY: 1.35 - 0.02 * statusObj.duration + bonusScale,
+                     ease: 'Cubic.easeOut',
+                     onComplete: () => {
+                         this.addTween({
+                             targets: healthText,
+                             duration: 600,
+                             scaleX: 1.2 - 0.015 * statusObj.duration + bonusScale,
+                             scaleY: 1.2 - 0.015 * statusObj.duration + bonusScale,
+                             ease: 'Back.easeOut',
+                         });
+                     }
+                 });
+                 glow.setScale(healthText.scaleX);
+                 this.addTween({
+                     targets: glow,
+                     duration: 850,
+                     alpha: 0.6 - 0.02 * statusObj.duration,
+                     scaleX: 1 - 0.02 * statusObj.duration + bonusScale,
+                     scaleX: 1 - 0.02 * statusObj.duration + bonusScale,
+                     ease: 'Cubic.easeOut',
+                 });
+                 this.addTween({
+                     targets: healthText,
+                     duration: 850,
+                     y: healthText.startY,
+                     ease: 'Cubic.easeInOut',
+                 });
+
+                 if (this.health == 0) {
+                     // drag out last second
+                     healthText.setText(0);
+
+                 } else {
+                     healthText.setText(Math.max(0, statusObj.duration - 1));
+                     this.setHealth(this.health - 1);
+                     let goalRotArm = (this.health / this.healthMax) * Math.PI * 2;
+                     this.clockShieldArm.setRotation(goalRotArm - 0.06);
+                     this.addTween({
+                         targets: this.clockShieldArm,
+                         duration: 200,
+                         rotation: "+=0.08",
+                         ease: 'Quart.easeOut',
+                         onComplete: () => {
+                             this.addTween({
+                                 targets: this.clockShieldArm,
+                                 duration: 300,
+                                 rotation: "-=0.02",
+                                 ease: 'Back.easeOut',
+                                 onComplete: () => {
+                                    
+                                 }
+                             });
+                         }
+                     });
+                     this.clockShield.setAlpha(0.4 + (this.health / this.healthMax) * 0.6);
+                     if (this.health == 0) {
+                        this.addTimeout(() => {
+                            this.invincible = false;
+                             this.die();
+                         }, 1000);
+                     }
+
+                     if (!this.isTerrified) {
+                        if (this.health < 12) {
+                            this.pullbackScale = 1;
+                            this.attackScale = 1;
+                            this.isTerrified = true;
+                            this.startReaper();
+                             if (this.customBgMusic) {
+                                 fadeAwaySound(this.customBgMusic, 1000, '');
+                             }
+
+                             this.addTimeout(() => {
+                                 this.customBgMusic = playMusic('magician_theme_4', 0.4, true);
+                                 fadeInSound(this.customBgMusic, 0.8);
+                                 this.setDefaultSprite('time_magi_nervous.png')
+                             }, 750)
+                        }
+                        if (this.health % 2 == 0) {
+                            if (this.health % 4 == 0) {
+                                playSound('clocktick2', 1);
+                            } else {
+                                playSound('clocktick1', 1);
+                            }
+                        }
+                     } else {
+                        if (this.health < 7 && this.currentAttackSetIndex !== 8) {
+                            this.setDefaultSprite('time_magi_terrified.png')
+                            this.currentAttackSetIndex = 8;
+                            this.nextAttackIndex = 0;
+                            this.interruptCurrentAttack();
+                        }
+                     }
+                 }
+             },
+             cleanUp: () => {
+                 statusObj.animObj.setText(0).setScale(1.5);
+                 this.addTween({
+                     targets: [statusObj.animObj, statusObj.glowObj, this.clockShieldArm, this.clockShield],
+                     scaleX: 1.65,
+                     scaleY: 1.65,
+                     duration: 850,
+                     alpha: 0,
+                     onComplete: () => {
+                        statusObj.animObj.destroy();
+                        statusObj.glowObj.destroy();
+                        this.clockShieldArm.destroy();
+                     }
+                 });
+                this.statuses[0] = null;
+             }
+         }
+         this.statuses[0] = statusObj;
+
      }
 
      handleSpecialDamageAbsorption(amt) {
+        /*
          if (!this.statuses[0]) {
              if (amt > this.health) {
                  amt = this.health + 1;
@@ -443,22 +587,29 @@
                  }
              }
              this.statuses[0] = statusObj;
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 25 - Math.random()*50, this.sprite.y + 25 - Math.random() * 50, 'DELAYED', 0.9);
          } else {
              messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random()*150, this.sprite.y + 50 - Math.random() * 100, 'DELAYED', 0.75);
 
-             this.statuses[0].duration = Math.min(this.statuses[0].duration + amt, this.health + 1);
-             this.statuses[0].animObj.setText(Math.max(0, this.statuses[0].duration - 1));
-             this.statuses[0].animObj.setScale(0.7 + 0.01 * this.statuses[0].duration);
+             // this.statuses[0].duration = Math.min(this.statuses[0].duration + amt, this.health + 1);
+             // this.statuses[0].animObj.setText(Math.max(0, this.statuses[0].duration - 1));
+             // this.statuses[0].animObj.setScale(0.7 + 0.01 * this.statuses[0].duration);
          }
+         */
+        if (amt == 1) {
+            messageBus.publish('animateBlockNum', gameConsts.halfWidth + 25 - Math.random()*50, this.sprite.y - Math.random() * 50, 'DELAYED', 0.75);
+        } else {
+            messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 20, 'DELAYED', 1.25);
+        }
 
          if (this.clockShield.alpha < 0.3) {
              this.clockShield.alpha = 0.5;
-             this.addTween({
+             this.clockShield.setScale(0.9);
+             this.clockShield.hitTween = this.addTween({
                  targets: this.clockShield,
                  duration: 400,
                  alpha: 0.15,
-                 rotation: "+=0.785",
+                 scaleX: 1,
+                 scaleY: 1,
                  ease: 'Cubic.easeOut',
              });
          }
@@ -606,11 +757,11 @@
         this.backClock = PhaserScene.add.image(this.x, this.y, 'lowq', 'temporal9.png').setDepth(-1).setAlpha(0.05).setScale(0.4);
         this.backClock.baseScale = this.backClock.scaleX;
         let delayAmt = 0;
-        let delayAdded = 400;
+        let delayAdded = 460;
         for (let i = 0; i < this.timeFallObjs.length; i++) {
             let clock = this.timeFallObjs[i];
             delayAmt += delayAdded;
-            delayAdded = Math.floor(delayAdded * 0.86);
+            delayAdded = Math.floor(delayAdded * 0.84);
             this.addTween({
                 delay: delayAmt,
                 targets: clock,
@@ -698,7 +849,7 @@
     }
 
     beginPhaseTwo() {
-        globalObjects.bannerTextManager.setDialog(["The Magician's time is limited,\nbut he plans to end things fast.", "Watch out"]);
+        globalObjects.bannerTextManager.setDialog(["The Magician uses his most powerful\nmagic to delay his death.", "Watch out"]);
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
         globalObjects.bannerTextManager.showBanner(true);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -716,7 +867,7 @@
                         duration: 500,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            this.setMaxHealth(30);
+                            this.setMaxHealth(24);
                             this.heal(this.healthMax);
                             this.setAwake();
                             this.setupTimeShield();
@@ -725,6 +876,7 @@
                              playSound('timeSlow');
                              this.magicianTimeEpicTheme = playMusic('magician_theme_3', 0.8)
                              globalObjects.magicCircle.timeSlowFromEnemy();
+                             this.usingTimeFreeze = true;
 
                             this.currentAttackSetIndex = 2;
                             this.nextAttackIndex = 0;
@@ -785,12 +937,15 @@
                             this.attackName.setText("}4x" + numAttacks + "}");
                         } else if (i < 15) {
                             this.attackName.setText("}}4x" + numAttacks + "}}");
+                            this.repositionAngrySymbol();
                         } else if (i < 23) {
                             this.attackName.setText("}}}4x" + numAttacks + "}}}");
+                            this.repositionAngrySymbol();
                         } else {
                             this.attackName.setText("}}}}4x" + numAttacks + "}}}}");
+                            this.repositionAngrySymbol();
+                            this.nextAttack.chargeMult = 15;
                         }
-                        this.repositionAngrySymbol();
                     }
                 },
             })
@@ -862,7 +1017,7 @@
                         let lostHealth = this.healthMax - this.health;
                         let healedAmt = Math.floor(lostHealth * 0.5);
                         this.heal(healedAmt);
-                         playSound('magic', 0.6);
+                        playSound('magic', 0.6);
                         messageBus.publish('animateHealNum', this.x, this.y - 50, '+' + healedAmt, 0.5 + Math.sqrt(healedAmt) * 0.2);
                         if (!this.healSprite) {
                             this.healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(0.9).setDepth(999).setAlpha(1);
@@ -915,7 +1070,7 @@
             [
                 // 2
                 {
-                     name: ";4x1",
+                     name: "}4x1}",
                      desc: "The Time Magician\nuses his ultimate attack",
                      chargeAmt: 1350,
                      isBigMove: true,
@@ -933,20 +1088,55 @@
                          this.finishedChargingUltimate = true;
                      },
                      attackFinishFunction: () => {
-                        this.fireTimeObjects(4);
+                        this.fireTimeObjects(4, undefined, 135);
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
-                         globalObjects.magicCircle.cancelTimeSlow();
-
+                     },
+                     finaleFunction: () => {
                      }
                 }
             ],
              [
+                // 3
                  {
                      name: "EXHAUSTED...",
                      chargeAmt: 700,
                      chargeMult: 2,
                      isPassive: true,
+                     startFunction: () => {
+                        this.exhausted = true;
+                         globalObjects.magicCircle.cancelTimeSlow();
+                        this.clockShield.currAnim.stop();
+                        let extraRotations = Math.floor(this.clockShield.rotation / (Math.PI * 2));
+                        this.clockShield.rotation -= extraRotations * Math.PI * 2;
+                        if (this.clockShield.rotation > 0) {
+                            this.clockShield.rotation -= Math.PI * 2;
+                        }
+                        this.addTween({
+                            delay: 300,
+                            targets: this.clockShield,
+                            duration: 700,
+                            scaleX: 0.85,
+                            scaleY: 0.85,
+                            rotation: Math.PI * 2,
+                            alpha: 0.75,
+                            ease: 'Cubic.easeIn',
+                            onComplete: () => {
+                                this.statuses[0].animObj.setScale(0.8);
+                                this.clockShield.alpha = 1;
+                                this.clockShieldArm.setRotation(-0.4);
+                                this.addTween({
+                                    targets: this.clockShieldArm,
+                                    duration: 200,
+                                    rotation: 0,
+                                    alpha: 1,
+                                    ease: 'Cubic.easeOut',
+                                });
+
+                                this.usingTimeFreeze = false;
+                            }
+                        });
+                     }
                  },
                  {
                      name: "}4 ",
@@ -965,6 +1155,7 @@
                  // 1
              ],
              [
+                // 4
                  {
                      name: "\\{DELAY INJURIES{\\",
                      desc: "The Time Magician\nslows down his health",
@@ -982,10 +1173,9 @@
                          this.nextAttackIndex = 0;
                      }
                  },
-                 // 1
              ],
              [
-                 // 2
+                 // 5
                  {
                      name: "}5x2 ",
                      desc: "A basic magic attack.",
@@ -1026,7 +1216,7 @@
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
                          messageBus.publish('playerAddDelayedDamage', 20);
-                         let hitEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large_red.png').setDepth(110).setScale(1.2);
+                         let hitEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'red_clock_back_large_red.png').setDepth(110).setScale(1.2);
                          this.addTween({
                              targets: hitEffect,
                              rotation: "-=1",
@@ -1048,7 +1238,7 @@
                  },
              ],
              [
-                 // 3
+                 // 6
                  {
                      name: "}4x3 ",
                      desc: "An advanced magic attack.",
@@ -1161,7 +1351,6 @@
                                  fadeAwaySound(this.magicianTimeEpicTheme, 1500);
                              }, 1500);
                          }
-                         this.usingTimeFreeze = false;
                      },
                      attackFinishFunction: () => {
                          if (this.isTerrified) {
@@ -1175,7 +1364,7 @@
                  }
              ],
              [
-                 // 4
+                 // 7
                  {
                      name: "}6 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
@@ -1205,17 +1394,7 @@
                  }
              ],
              [
-                 // 5
-                 {
-                     name: "}4 ",
-                     desc: "The Time Magician is\nout of magic.",
-                     chargeAmt: 500,
-                     damage: 4,
-                     prepareSprite: ['time_magi_cast.png']
-                 },
-             ],
-             [
-                 // 6
+                 // 8
                  {
                     name: "COWER",
                     isPassive: true,
@@ -1223,6 +1402,9 @@
                     chargeAmt: 1000,
                     chargeMult: 1.1,
                     damage: 0,
+                    startFunction: () => {
+
+                    }
                  },
              ]
          ];
@@ -1284,13 +1466,13 @@
          });
      }
 
-     fireTimeObjects(damage = 10, durBonus = 0) {
+     fireTimeObjects(damage = 10, durBonus = 0, interval = 175) {
          let totalTimeObjects = this.timeObjects.length;
          let projDur = 600 - Math.floor(Math.sqrt(totalTimeObjects) * 50) + durBonus;
          let timeObjectsFired = 0;
          while (this.timeObjects.length > 0) {
              let currObj = this.timeObjects.shift();
-             let delayAmt = timeObjectsFired * 160;
+             let delayAmt = timeObjectsFired * interval;
              timeObjectsFired++;
              this.addTween({
                  targets: currObj,

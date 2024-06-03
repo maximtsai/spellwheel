@@ -252,7 +252,7 @@ const textData = {
         es: '',
         jp: ''},
 
-    time_tut_desc: {en_us: 'The Time rune grants control\nover the temporal.\nTime spells let you attack multiple times, delay injuries,\nor even slow your enemies to a stand-still.',
+    time_tut_desc: {en_us: 'The Time rune grants control\nover the temporal.\nTime spells let you attack multiple times, delay\ninjuries, or even slow your enemies to a stand-still.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -313,7 +313,7 @@ const textData = {
         ru: '',
         es: '',
         jp: ''},
-    void_tut_reinforce_desc: {en_us: 'Fully heals you, but at the\ncost of part of your\nmaximum health.',
+    void_tut_reinforce_desc: {en_us: 'Become briefly invulnerable\nand heal to full, but at\nthe cost of some max health.',
         fr: '',
         zh_cn: '',
         ru: '',

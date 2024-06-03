@@ -1050,7 +1050,6 @@ class Enemy {
             this.timeSinceLastAttacked = 0;
         }
 
-        this.updateHealthBar();
 
         if (this.health <= 0) {
             this.die();
@@ -1133,7 +1132,6 @@ class Enemy {
                 this.timeSinceLastAttacked = 0;
             }
         }
-        this.updateHealthBar();
 
         if (this.health <= 0) {
             this.die();
@@ -1143,6 +1141,7 @@ class Enemy {
     setHealth(newHealth, isTrue) {
         this.prevHealth = this.health;
         this.health = newHealth;
+        this.updateHealthBar();
     }
 
     getHealth() {

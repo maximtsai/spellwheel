@@ -462,6 +462,9 @@ class Player {
         if (globalObjects.currentEnemy.dead) {
             return;
         }
+        if (this.blackBalls) {
+            return;
+        }
         if (amt < 0) {
             amt = 0;
         }

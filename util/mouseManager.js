@@ -26,19 +26,49 @@ class InternalMouseManager {
         gameVars.mouseposx = handPos.x;
         gameVars.mouseposy = handPos.y;
 
+        console.log("pointer down default", handPos.x, handPos.y);
+        console.log(pointer.wasTouch);
+
         gameVars.lastmousedown.x = handPos.x;
         gameVars.lastmousedown.y = handPos.y;
         messageBus.publish("pointerDown", handPos.x, handPos.y);
     }
 
-    onPointerUp(pointer) {
+    // onPointerDownAlt(pointer) {
+    //     let handPos = mouseToHand(pointer.x, pointer.y, true);
+    //     console.log("pointer down alt", handPos.x, handPos.y)
+    //     console.log(pointer.wasTouch);
+    //     gameVars.wasTouch = pointer.wasTouch || (pointer.wasTouch === undefined);
+    //     gameVars.mousedown = true;
+    //     gameVars.mouseJustDowned = true;
+    //     gameVars.mouseposx = handPos.x;
+    //     gameVars.mouseposy = handPos.y;
+
+    //     gameVars.lastmousedown.x = handPos.x;
+    //     gameVars.lastmousedown.y = handPos.y;
+    //     messageBus.publish("pointerDown", handPos.x, handPos.y);
+    // }
+
+    // onPointerUp(pointer) {
+    //     gameVars.wasTouch = pointer.pointerType;
+    //     gameVars.mousedown = false;
+    //     gameVars.mouseJustUpped = true;
+    //     let handPos = mouseToHand(pointer.x, pointer.y);
+    //     gameVars.mouseposx = handPos.x;
+    //     gameVars.mouseposy = handPos.y;
+    //     messageBus.publish("pointerUp", handPos.x, handPos.y);
+    // }
+
+    onPointerUpAlt(pointer) {
+        let handPos = mouseToHand(pointer.x, pointer.y, true);
+
         gameVars.wasTouch = pointer.pointerType;
         gameVars.mousedown = false;
         gameVars.mouseJustUpped = true;
-        let handPos = mouseToHand(pointer.x, pointer.y);
+        messageBus.publish("pointerUp", handPos.x, handPos.y);
+
         gameVars.mouseposx = handPos.x;
         gameVars.mouseposy = handPos.y;
-        messageBus.publish("pointerUp", handPos.x, handPos.y);
     }
 }
 
@@ -68,13 +98,21 @@ function setupMouseInteraction(scene) {
         x: 0, y: 0, key: 'whitePixel', add: true, scale: {x: gameConsts.width, y: gameConsts.height}, alpha: 0.001});
     baseTouchLayer.setInteractive();
     baseTouchLayer.on('pointerdown', mouseManager.onPointerDown, scene);
-    baseTouchLayer.on('pointerup', mouseManager.onPointerUp, scene);
+    // baseTouchLayer.on('pointerup', mouseManager.onPointerUp, scene);
     // baseTouchLayer.on('pointermove', mouseManager.onPointerDown, scene); // doesn't work outside
 
     // const body = document.querySelector('body');
     window.onpointermove = (pointer) => {
         mouseManager.onPointerMove(pointer);
     };
+    window.onpointerup = (pointer) => {
+        mouseManager.onPointerUpAlt(pointer);
+    };
+
+    // doesn't quite work for some reason
+    // window.onpointerdown = (pointer) => {
+    //     mouseManager.onPointerDownAlt(pointer);
+    // };
 }
 
 function resizeGame() {

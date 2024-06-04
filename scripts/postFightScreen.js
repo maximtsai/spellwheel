@@ -524,7 +524,7 @@ class PostFightScreen {
             case 2:
                 return "The fabled Reaper\nhas noticed me,\nthough they have\ndone nothing but wag their\nbony finger at me like a parent\nscolding a child.\n\n"+
                 "I have a feeling this won't be the last\ntime we see each other.\n\n"+
-                "In the mean-time, this shield I picked\nup from the fallen goblin should\ncome in handy.";
+                "In the mean-time, I will claim this\nshield as my prize.";
             case 3:
                 return "The creatures of this\nland are clearly hostile.\n\n"+
                 "But it seems that I acquire the\nstrength of each one I defeat.\n\n"+

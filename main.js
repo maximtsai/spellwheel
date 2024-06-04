@@ -8,6 +8,8 @@ let config = {
         width: isMobile ? 600 : 610,
         height: isMobile ? 800: 770,
         mode: Phaser.Scale.FIT,
+        orientation: 'landscape',
+        forceLandscape: true
     },
     render: {
         // Leave on to prevent pixelated graphics

@@ -337,7 +337,7 @@ class PostFightScreen {
         this.createWinScreenUI(level);
         this.continueButton.setOnMouseUpFunc(() => {
             this.clearPostFightScreen();
-            beginLevel(level + 1);
+            beginPreLevel(level + 1);
             if (canvas) {
                 canvas.style.cursor = 'default';
             }
@@ -379,7 +379,7 @@ class PostFightScreen {
         this.codeText.setText("CHEAT CODE: ABCDE");
         this.continueButton.setOnMouseUpFunc(() => {
             this.clearPostFightScreen();
-            beginLevel(level);
+            beginPreLevel(level);
             if (canvas) {
                 canvas.style.cursor = 'default';
             }
@@ -518,7 +518,7 @@ class PostFightScreen {
             case 0:
                 return "And so my journey begins.\nIt won't be long before\nI see you again, Rosemary."
             case 1:
-                return "Here I stand in front\nof the gates to the\nmystical land of\nthe dead.\n\n"+
+                return "Here I stand in front\nof the gates to the\nfabled forbidden lands\nof the dead.\n\n"+
                 "Almost immediately I can feel\nthis place resisting my entry, trying\nto obstruct my every step.\n\n"+
                 "But I know you are here dear Rosemary,\nand no creature or construct will stop me\nfrom finding you."
             case 2:

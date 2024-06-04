@@ -2,19 +2,25 @@ let CURRENT_LEVEL = null;
 let levelTimeoutID = null;
 
 function beginPreLevel(lvl) {
+    let introPaper;
+    let text1;
+    let text2;
+    let text3;
+    let introOverlay;
     switch(lvl) {
         case 0:
-            let introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 20, 'ui', 'newgamepaper.png').setDepth(99999).setAlpha(0);
-            let text1 = PhaserScene.add.text(gameConsts.halfWidth - 250, gameConsts.halfHeight + 210, 'BEWARE THE REAPER', {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'});
-            text1.setDepth(99999).setOrigin(0, 0.5).setAlpha(0);
-            let text2 = PhaserScene.add.text(gameConsts.halfWidth - 90, gameConsts.halfHeight + 240, 'DON\'T TRUST THE DUMMY', {fontFamily: 'verdanabold', fontSize: 22, color: '#000000', align: 'left'});
-            text2.setDepth(99999).setOrigin(0, 0.5).setAlpha(0);
-            let text3 = PhaserScene.add.text(gameConsts.halfWidth , gameConsts.halfHeight + 275, 'THIS IS NOT A LAND FOR THE LIVING', {fontFamily: 'verdanabold', fontSize: 18, color: '#000000', align: 'center'});
+            // lesser dummy
+            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'newgamepaper.png').setDepth(99999).setAlpha(0);
+            text1 = PhaserScene.add.text(gameConsts.halfWidth - 232, gameConsts.halfHeight + 198, 'DAY XX0', {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'});
+            text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            text2 = PhaserScene.add.text(gameConsts.halfWidth - 230, gameConsts.halfHeight + 230, "I\'m finally here.\nAt the gateway to the forbidden lands.\nI know I will find you here my beloved.", {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
+            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            text3 = PhaserScene.add.text(gameConsts.halfWidth , gameConsts.halfHeight + 290, '', {fontFamily: 'verdanabold', fontSize: 18, color: '#000000', align: 'center'});
             text3.setDepth(99999).setAlpha(0).setOrigin(0.5, 0.5);
 
             PhaserScene.tweens.add({
                 targets: [text1, text2, text3],
-                duration: 600,
+                duration: 500,
                 ease: 'Cubic.easeOut',
                 y: "-=60",
             })
@@ -26,7 +32,6 @@ function beginPreLevel(lvl) {
 
             createGlobalClickBlocker();
 
-
             PhaserScene.tweens.add({
                 targets: [introPaper],
                 alpha: 1,
@@ -36,55 +41,133 @@ function beginPreLevel(lvl) {
                 ease: 'Cubic.easeOut',
                 y: "-=60",
                 onComplete: () => {
-                        let lvl1CloseButton = {};
-                        lvl1CloseButton = new Button({
-                            normal: {
-                                ref: "menu_btn_normal.png",
-                                atlas: 'buttons',
-                                x: gameConsts.width - 180,
-                                y: gameConsts.height - 135,
-                            },
-                            hover: {
-                                ref: "menu_btn_hover.png",
-                                atlas: 'buttons',
-                            },
-                            press: {
-                                ref: "menu_btn_hover.png",
-                                atlas: 'buttons',
-                            },
-                            disable: {
-                                alpha: 0.001
-                            },
-                            onMouseUp: () => {
-                                PhaserScene.tweens.add({
-                                    targets: [text1, text2, text3, introPaper],
-                                    alpha: 0,
-                                    duration: 400,
-                                    ease: 'Quad.easeOut',
-                                    y: "+=40",
-                                    onComplete: () => {
-                                        text1.destroy();
-                                        text2.destroy();
-                                        text3.destroy();
-                                        introPaper.destroy();
-                                    }
-                                });
-                                lvl1CloseButton.destroy();
-                                hideGlobalClickBlocker();
-                                beginLevel(0)
-                            }
-                        });
-                        lvl1CloseButton.setOrigin(0.5, 0.5);
-                        lvl1CloseButton.addText("BEGIN", {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
-                        lvl1CloseButton.setScale(0.9);
-                        lvl1CloseButton.setDepth(99999);
+                    createLvlCloseButton(lvl, [text1, text2, text3, introPaper]);
                 }
             });
         break;
-        case 1:
+    case 2:
+        // goblin
+        introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+        introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'gobbo_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+        text1 = PhaserScene.add.text(gameConsts.halfWidth - 240, gameConsts.halfHeight - 228, 'During my travels I\nhappened across a\nsmall, mean-looking\ncreature yelling at\nme with bravado.', {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'});
+        text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+        text2 = PhaserScene.add.text(gameConsts.halfWidth - 68, gameConsts.halfHeight - 5, "Its foul language is\nunintelligible, but I\nknow it is taunting me\nfor a fight.", {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'});
+        text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+        text3 = PhaserScene.add.text(gameConsts.halfWidth - 240 , gameConsts.halfHeight + 160, 'The shield it carries\nwould make a fine prize.', {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'});
+        text3.setDepth(99999).setAlpha(0).setOrigin(0, 0);
+
+        PhaserScene.tweens.add({
+            targets: [text1, text2, text3],
+            duration: 500,
+            ease: 'Cubic.easeOut',
+            y: "-=60",
+        })
+        PhaserScene.tweens.add({
+            targets: [text1, text2, text3],
+            alpha: 0.5,
+            duration: 650,
+        })
+
+        createGlobalClickBlocker();
+        PhaserScene.tweens.add({
+            targets: [introPaper, introOverlay],
+            alpha: 1,
+            duration: 500,
+            scaleX: 1,
+            scaleY: 1,
+            ease: 'Cubic.easeOut',
+            y: "-=60",
+            onComplete: () => {
+                createLvlCloseButton(lvl, [text1, text2, text3, introPaper, introOverlay]);
+            }
+        });
+
+        break;
+    case 3:
+        // tree
+        introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+        introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'tree_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+        text1 = PhaserScene.add.text(gameConsts.halfWidth - 250, gameConsts.halfHeight +165, 'I feel like this forest is watching me.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+        text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+        text2 = PhaserScene.add.text(gameConsts.halfWidth - 250, gameConsts.halfHeight +200, "Surely it must be my imagination.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+        text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+
+        PhaserScene.tweens.add({
+            targets: [text1, text2],
+            duration: 500,
+            ease: 'Cubic.easeOut',
+            y: "-=60",
+        })
+        PhaserScene.tweens.add({
+            targets: [text1, text2],
+            alpha: 0.5,
+            duration: 650,
+        })
+
+        createGlobalClickBlocker();
+        PhaserScene.tweens.add({
+            targets: [introPaper, introOverlay],
+            alpha: 1,
+            duration: 500,
+            scaleX: 1,
+            scaleY: 1,
+            ease: 'Cubic.easeOut',
+            y: "-=60",
+            onComplete: () => {
+                createLvlCloseButton(lvl, [text1, text2, introPaper, introOverlay]);
+            }
+        });
+        break;
+    default:
+        beginLevel(lvl);
         break;
 
     }
+}
+
+function createLvlCloseButton(lvl, items) {
+    let lvlCloseButton = new Button({
+        normal: {
+            ref: "menu_btn_normal.png",
+            atlas: 'buttons',
+            x: gameConsts.width - 180,
+            y: gameConsts.height - 135,
+        },
+        hover: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        press: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp: () => {
+            PhaserScene.tweens.add({
+                targets: items,
+                alpha: 0,
+                duration: 400,
+                ease: 'Quad.easeOut',
+                y: "+=40",
+                onComplete: () => {
+                    for (let i = 0; i < items.length; i++) {
+                        items[i].destroy();
+                    }
+                }
+            });
+            lvlCloseButton.destroy();
+            hideGlobalClickBlocker();
+            beginLevel(lvl)
+        }
+    });
+    lvlCloseButton.setOrigin(0.5, 0.5);
+    lvlCloseButton.addText("CONTINUE", {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
+    lvlCloseButton.setScale(0.9);
+    lvlCloseButton.setDepth(99999);
+
+    return lvlCloseButton;
 }
 
 function beginLevel(lvl) {

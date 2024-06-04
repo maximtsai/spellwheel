@@ -1233,9 +1233,9 @@ class Enemy {
             if (state === 'angry') {
                 this.angrySymbolAnim = this.scene.tweens.add({
                     targets: this.angrySymbol,
-                    scaleX: 2,
-                    scaleY: 2,
-                    rotation: 0.15,
+                    scaleX: 2.2,
+                    scaleY: 2.2,
+                    rotation: 0.17,
                     duration: 125,
                     ease: 'Quint.easeOut',
                     onComplete: () => {
@@ -1244,7 +1244,7 @@ class Enemy {
                             rotation: 0,
                             scaleX: 0.85,
                             scaleY: 0.85,
-                            duration: 200,
+                            duration: 215,
                             ease: 'Back.easeOut',
                         });
                     }

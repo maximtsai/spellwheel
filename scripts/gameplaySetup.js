@@ -226,6 +226,27 @@ function setupLoadingBar(scene) {
             alpha: 0.65,
             duration: 1100,
         });
+        let clickBlocker = createGlobalClickBlocker(true);
+        clickBlocker.setOnMouseUpFunc(() => {
+            if (!gameVars.runningIntro) {
+                // loadObjects.loadingText.visible = false;
+                this.clickIntro();
+                // this.cleanupIntro(scene);
+                setTimeout(() => {
+                    scene.tweens.add({
+                        targets: loadObjects.skipIntroText,
+                        alpha: 0.5,
+                        duration: 1250,
+                    });
+                
+
+                    clickBlocker.setOnMouseUpFunc(() => {
+                        this.skipIntro();
+                    })
+                }, 150);
+
+            }
+        });
         scene.tweens.add({
             targets: [loadObjects.loadingText],
             alpha: 0,
@@ -233,26 +254,7 @@ function setupLoadingBar(scene) {
             onComplete: () => {
                 loadObjects.loadingText.setText("START").setScale(1).setPosition(loadObjects.loadingText.x, loadObjects.loadingText.y - 20);
                 loadObjects.loadingText.alpha = 1;
-                let clickBlocker = createGlobalClickBlocker(true);
-                clickBlocker.setOnMouseUpFunc(() => {
-                    if (!gameVars.runningIntro) {
-                        this.clickIntro();
-                        // this.cleanupIntro(scene);
-                        setTimeout(() => {
-                            scene.tweens.add({
-                                targets: loadObjects.skipIntroText,
-                                alpha: 0.5,
-                                duration: 1250,
-                            });
-                        
 
-                            clickBlocker.setOnMouseUpFunc(() => {
-                                this.skipIntro();
-                            })
-                        }, 100);
-
-                    }
-                })
                 loadObjects.introLocket.currAnim.stop();
                 scene.tweens.add({
                     targets: [loadObjects.introLocket],
@@ -262,8 +264,6 @@ function setupLoadingBar(scene) {
                     duration: 600,
                     ease: 'Cubic.easeOut',
                     onComplete: () => {
-                        // cleanupIntro(scene)
-
                     }
                 });
             }
@@ -286,12 +286,53 @@ function clickIntro() {
         ease: 'Quad.easeOut',
         duration: 400,
     });
-    loadObjects.whiteBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(1000).setAlpha(0).setDepth(1002);
+    loadObjects.glowBG = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'circle.webp').setDepth(1000).setAlpha(0.3).setScale(0);
+    loadObjects.glowStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'flashbg.webp').setDepth(1000).setAlpha(0.3).setScale(0.4);
+    loadObjects.sharpStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.1, 0.15);
+    loadObjects.sharpStar2 = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.1, 0.15);
+
     PhaserScene.tweens.add({
-        targets: loadObjects.whiteBG,
+        targets: loadObjects.glowStar,
         alpha: 1,
-        duration: 3500,
+        scaleX: 2.4,
+        scaleY: 2.4,
+        duration: 3000,
+    });
+
+    loadObjects.sharpStar.setRotation(0.4);
+    PhaserScene.tweens.add({
+        targets: loadObjects.sharpStar,
+        alpha: 0.9,
+        scaleX: 1.6,
+        scaleY: 0.38,
+        duration: 350,
         ease: 'Cubic.easeIn',
+        yoyo: true,
+    });
+
+    loadObjects.sharpStar2.setRotation(-0.4);
+    PhaserScene.tweens.add({
+        delay: 150,
+        targets: loadObjects.sharpStar2,
+        alpha: 0.9,
+        scaleX: 1.85,
+        scaleY: 0.4,
+        duration: 300,
+        ease: 'Quart.easeIn',
+        yoyo: true,
+        onComplete: () => {
+
+        }
+    });
+
+    PhaserScene.tweens.add({
+        delay: 2500,
+        targets: loadObjects.glowBG,
+        alpha: 1,
+        scaleX: 10,
+        scaleY: 10,
+        duration: 500,
+        ease: 'Quart.easeIn',
         onComplete: () => {
             cleanupIntro(PhaserScene);
         }

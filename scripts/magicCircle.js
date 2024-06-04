@@ -27,6 +27,8 @@ const ENABLE_KEYBOARD = true;
         this.lastDragTime = 0;
         this.prevDragAngleDiff = null;
         this.dScaleAccumulate = 0;
+        this.draggedDuration = 0;
+        this.preventRotDecay = 0;
         this.subscriptions = [
             messageBus.subscribe('attackLaunched', this.attackLaunched.bind(this)),
             messageBus.subscribe('manualSetTimeSlowRatio', this.manualSetTimeSlowRatio.bind(this)),
@@ -155,6 +157,7 @@ const ENABLE_KEYBOARD = true;
 
         if (totalDist <= this.size && !this.manualDisabled) {
             if (gameVars.mouseJustDowned) {
+                this.draggedDuration = 0;
                 // clicked
                 if (totalDist < this.castButtonSize) {
                     this.draggedObj = this.castButton;
@@ -173,6 +176,10 @@ const ENABLE_KEYBOARD = true;
                     this.setFrameLazy(this.outerCircle,'usage_drag.png');
                 }
             } else if (gameVars.mouseJustUpped) {
+                // this.draggedDuration = -2;
+                if (this.draggedDuration < 12) {
+                    this.preventRotDecay = (12 - this.draggedDuration) * 0.4;
+                }
                 // let go
                 if (totalDist < this.castButtonSize && this.draggedObj == this.castButton) {
                     if (!this.castDisabled && !this.recharging) {
@@ -185,6 +192,7 @@ const ENABLE_KEYBOARD = true;
                     }
                 }
             } else if (gameVars.mousedown) {
+                this.draggedDuration += dScale;
                 if (totalDist < this.castButtonSize && this.draggedObj == this.castButton) {
                     this.setFrameLazy(this.castButton,'cast_press.png');
                 }
@@ -908,17 +916,22 @@ const ENABLE_KEYBOARD = true;
 
         // ROT VEL UPDATE
         this.innerCircle.rotVel += this.innerCircle.torque;
-        if (this.innerCircle.rotVel < 0) {
-            this.innerCircle.rotVel = Math.min(0, this.innerCircle.rotVel * decayAmtInner + staticAmtInner);
-        } else {
-            this.innerCircle.rotVel = Math.max(0, this.innerCircle.rotVel * decayAmtInner - staticAmtInner);
-        }
-
         this.outerCircle.rotVel += this.outerCircle.torque;
-        if (this.outerCircle.rotVel < 0) {
-            this.outerCircle.rotVel = Math.min(0, this.outerCircle.rotVel * decayAmtOuter + staticAmtOuter);
+
+        if (this.preventRotDecay > 0) {
+            this.preventRotDecay -= dt;
         } else {
-            this.outerCircle.rotVel = Math.max(0, this.outerCircle.rotVel * decayAmtOuter - staticAmtOuter);
+            if (this.innerCircle.rotVel < 0) {
+                this.innerCircle.rotVel = Math.min(0, this.innerCircle.rotVel * decayAmtInner + staticAmtInner);
+            } else {
+                this.innerCircle.rotVel = Math.max(0, this.innerCircle.rotVel * decayAmtInner - staticAmtInner);
+            }
+
+            if (this.outerCircle.rotVel < 0) {
+                this.outerCircle.rotVel = Math.min(0, this.outerCircle.rotVel * decayAmtOuter + staticAmtOuter);
+            } else {
+                this.outerCircle.rotVel = Math.max(0, this.outerCircle.rotVel * decayAmtOuter - staticAmtOuter);
+            }
         }
 
         if (Math.abs(this.innerCircle.rotVel) > 0.036) {

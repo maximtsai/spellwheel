@@ -156,7 +156,7 @@ function gotoMainMenu() {
             },
             onMouseUp: () => {
                 clearMenuButtons();
-                beginLevel(1);
+                beginPreLevel(1);
             }
         });
     }
@@ -207,7 +207,7 @@ function gotoMainMenu() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            beginLevel(2);
+            beginPreLevel(2);
         }
     });
     globalObjects.levelSelectButton.setScale(0.5);
@@ -233,7 +233,7 @@ function gotoMainMenu() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            beginLevel(3);
+            beginPreLevel(3);
         }
     });
     globalObjects.level3Button.setScale(0.5);
@@ -259,7 +259,7 @@ function gotoMainMenu() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            beginLevel(4);
+            beginPreLevel(4);
         }
     });
     globalObjects.lvlButton.setScale(0.5);
@@ -285,7 +285,7 @@ function gotoMainMenu() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            beginLevel(5);
+            beginPreLevel(5);
         }
     });
     globalObjects.lvl5Button.setScale(0.5);
@@ -312,7 +312,7 @@ function gotoMainMenu() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            beginLevel(6);
+            beginPreLevel(6);
         }
     });
     globalObjects.lvl6Button.setScale(0.5);
@@ -340,7 +340,7 @@ function gotoMainMenu() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            beginLevel(7);
+            beginPreLevel(7);
         }
     });
     globalObjects.lvl7Button.setScale(0.5);
@@ -366,7 +366,7 @@ function gotoMainMenu() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            beginLevel(8);
+            beginPreLevel(8);
         }
     });
     globalObjects.lvl8Button.setScale(0.5);
@@ -392,7 +392,7 @@ function gotoMainMenu() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            beginLevel(9);
+            beginPreLevel(9);
         }
     });
     globalObjects.lvl9Button.setScale(0.5);
@@ -419,7 +419,7 @@ function gotoMainMenu() {
         },
         onMouseUp: () => {
             clearMenuButtons();
-            beginLevel(10);
+            beginPreLevel(10);
         }
     });
     globalObjects.lvl10Button.setScale(0.5);

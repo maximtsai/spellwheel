@@ -13,8 +13,10 @@ function setupLoadingBar(scene) {
     fadeInBackground('backgroundPreload', 5000, 3.28);
 
     // Basic loading bar visual
-    loadObjects.loadingSpinner = scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'loadingSpinner');
-    loadObjects.castButton = scene.add.image(gameConsts.halfWidth, gameConsts.height - 124, 'castNormal');
+    let iconsHeight = gameConsts.height - (isMobile ? 134 : 124);
+    loadObjects.version = scene.add.text(4, gameConsts.height - 4, gameVersion).setOrigin(0, 1).setAlpha(0.7);
+    loadObjects.loadingSpinner = scene.add.image(gameConsts.halfWidth, iconsHeight, 'loadingSpinner');
+    loadObjects.castButton = scene.add.image(gameConsts.halfWidth, iconsHeight, 'castNormal');
 
     loadObjects.introLocket = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 100, 'introLocket').setScale(0.47).setAlpha(0).setDepth(1001).setOrigin(0.5, 0.75);
     loadObjects.introLocket.currAnim = PhaserScene.tweens.add({
@@ -25,7 +27,6 @@ function setupLoadingBar(scene) {
         ease: 'Cubic.easeOut',
         duration: 1500,
     });
-    let iconsHeight = gameConsts.height - 124;
 
     icons.push(scene.add.image(gameConsts.halfWidth, iconsHeight, 'runeMatterPre'));
     icons.push(scene.add.image(gameConsts.halfWidth, iconsHeight, 'runeMindPre'));
@@ -468,7 +469,7 @@ function setupGame() {
 }
 
 function setupPlayer() {
-    MAGIC_CIRCLE_HEIGHT = gameConsts.height - 124;
+    MAGIC_CIRCLE_HEIGHT = gameConsts.height - (isMobile ? 134 : 124);
     PhaserScene.tweens.add({
         targets: PhaserScene.cameras.main,
         zoom: 1,

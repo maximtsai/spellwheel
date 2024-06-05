@@ -2,6 +2,8 @@ let CURRENT_LEVEL = null;
 let levelTimeoutID = null;
 
 function beginPreLevel(lvl) {
+    globalObjects.encyclopedia.hideButton();
+    globalObjects.options.hideButton();
     let introPaper;
     let text1;
     let text2;
@@ -18,111 +20,143 @@ function beginPreLevel(lvl) {
             text3 = PhaserScene.add.text(gameConsts.halfWidth , gameConsts.halfHeight + 290, '', {fontFamily: 'verdanabold', fontSize: 18, color: '#000000', align: 'center'});
             text3.setDepth(99999).setAlpha(0).setOrigin(0.5, 0.5);
 
-            PhaserScene.tweens.add({
-                targets: [text1, text2, text3],
-                duration: 500,
-                ease: 'Cubic.easeOut',
-                y: "-=60",
-            })
-            PhaserScene.tweens.add({
-                targets: [text1, text2, text3],
-                alpha: 0.5,
-                duration: 650,
-            })
+            createGlobalClickBlocker();
+            fadeInPreFightStuff(lvl, [text1, text2, text3], [introPaper])
+        break;
+        case 2:
+            // goblin
+            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'gobbo_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+            text1 = PhaserScene.add.text(gameConsts.halfWidth - 240, gameConsts.halfHeight - 228, 'During my travels I\nhappened across a\nshort but vicious\ncreature yelling at\nme with bravado.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            text2 = PhaserScene.add.text(gameConsts.halfWidth - 68, gameConsts.halfHeight - 5, "With a mouth full of\nspittle, it taunts me\nfor a fight.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            text3 = PhaserScene.add.text(gameConsts.halfWidth - 240 , gameConsts.halfHeight + 160, 'The shield it carries\nwould make a fine prize.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text3.setDepth(99999).setAlpha(0).setOrigin(0, 0);
 
             createGlobalClickBlocker();
+            fadeInPreFightStuff(lvl, [text1, text2, text3], [introPaper, introOverlay])
+            break;
+        case 3:
+            // tree
+            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'tree_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +165, 'I feel like this forest is watching me.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, "Surely it must be my imagination.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
-            PhaserScene.tweens.add({
-                targets: [introPaper],
-                alpha: 1,
-                duration: 500,
-                scaleX: 1,
-                scaleY: 1,
-                ease: 'Cubic.easeOut',
-                y: "-=60",
-                onComplete: () => {
-                    createLvlCloseButton(lvl, [text1, text2, text3, introPaper]);
-                }
-            });
-        break;
-    case 2:
-        // goblin
-        introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
-        introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'gobbo_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-        text1 = PhaserScene.add.text(gameConsts.halfWidth - 240, gameConsts.halfHeight - 228, 'During my travels I\nhappened across a\nsmall, mean-looking\ncreature yelling at\nme with bravado.', {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'});
-        text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-        text2 = PhaserScene.add.text(gameConsts.halfWidth - 68, gameConsts.halfHeight - 5, "Its foul language is\nunintelligible, but I\nknow it is taunting me\nfor a fight.", {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'});
-        text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-        text3 = PhaserScene.add.text(gameConsts.halfWidth - 240 , gameConsts.halfHeight + 160, 'The shield it carries\nwould make a fine prize.', {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'});
-        text3.setDepth(99999).setAlpha(0).setOrigin(0, 0);
+            createGlobalClickBlocker();
+            fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
+            break;
+        case 4:
+            // magician
+            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 40, 'ui', 'magician_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 248, gameConsts.halfHeight - 180, 'A diminutive man laughs\nat me from his throne of\ntime-telling paraphernelia.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            text2 = PhaserScene.add.text(gameConsts.halfWidth - 40, gameConsts.halfHeight +65, "I challenge him and\nhe seems more than\nhappy to showcase his\ntemporal powers.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
-        PhaserScene.tweens.add({
-            targets: [text1, text2, text3],
-            duration: 500,
-            ease: 'Cubic.easeOut',
-            y: "-=60",
-        })
-        PhaserScene.tweens.add({
-            targets: [text1, text2, text3],
-            alpha: 0.5,
-            duration: 650,
-        })
+            createGlobalClickBlocker();
+            fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
+            break;
+        case 5:
+            // knight
+            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'knight_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 130, 'In front of me stands a knight,\nmotionless but with sword drawn.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, "No words are needed to know what\nmust be done.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
-        createGlobalClickBlocker();
-        PhaserScene.tweens.add({
-            targets: [introPaper, introOverlay],
-            alpha: 1,
-            duration: 500,
-            scaleX: 1,
-            scaleY: 1,
-            ease: 'Cubic.easeOut',
-            y: "-=60",
-            onComplete: () => {
-                createLvlCloseButton(lvl, [text1, text2, text3, introPaper, introOverlay]);
-            }
-        });
+            createGlobalClickBlocker();
+            fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
+            break;
 
-        break;
-    case 3:
-        // tree
-        introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
-        introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'tree_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-        text1 = PhaserScene.add.text(gameConsts.halfWidth - 250, gameConsts.halfHeight +165, 'I feel like this forest is watching me.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
-        text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-        text2 = PhaserScene.add.text(gameConsts.halfWidth - 250, gameConsts.halfHeight +200, "Surely it must be my imagination.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
-        text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+        case 6:
+            // wall
+            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'wall_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 55, 'No matter which way I turn, this wall\nalways seems to be blocking my\npath.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +160, "But if there is no entrance, then I\nsimply will make one.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
-        PhaserScene.tweens.add({
-            targets: [text1, text2],
-            duration: 500,
-            ease: 'Cubic.easeOut',
-            y: "-=60",
-        })
-        PhaserScene.tweens.add({
-            targets: [text1, text2],
-            alpha: 0.5,
-            duration: 650,
-        })
+            createGlobalClickBlocker();
+            fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
+            break;
 
-        createGlobalClickBlocker();
-        PhaserScene.tweens.add({
-            targets: [introPaper, introOverlay],
-            alpha: 1,
-            duration: 500,
-            scaleX: 1,
-            scaleY: 1,
-            ease: 'Cubic.easeOut',
-            y: "-=60",
-            onComplete: () => {
-                createLvlCloseButton(lvl, [text1, text2, introPaper, introOverlay]);
-            }
-        });
-        break;
+        case 7:
+            // superdummy
+            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'dummy_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 75, 'This old dummy has come to stand\nin my way again.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +150, "Should be a quick and simple fight.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+
+            createGlobalClickBlocker();
+            fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
+            break;
+
+        case 8:
+            // mantis
+            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'mantis_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 65, 'The sound of skittering legs cuts\nthrough the fog.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +140, "I am being hunted.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+
+            createGlobalClickBlocker();
+            fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
+            break;
+        case 9:
+            // robot
+            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'robot_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 140, 'I sense something dangerous and\nterrifying blocking the path up ahead.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +220, "But no matter what it is, I'm certain\nI am prepared.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+
+            createGlobalClickBlocker();
+            fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
+            break;
     default:
         beginLevel(lvl);
         break;
 
     }
+}
+
+function fadeInPreFightStuff(lvl, texts, introbgs) {
+    PhaserScene.tweens.add({
+        targets: texts,
+        duration: 500,
+        ease: 'Cubic.easeOut',
+        y: "-=60",
+    })
+    PhaserScene.tweens.add({
+        targets: texts,
+        alpha: 0.5,
+        duration: 650,
+    })
+
+    PhaserScene.tweens.add({
+        targets: introbgs,
+        alpha: 1,
+        duration: 500,
+        scaleX: 1,
+        scaleY: 1,
+        ease: 'Cubic.easeOut',
+        y: "-=60",
+        onComplete: () => {
+            let itemsToClear = texts.concat(introbgs);
+            createLvlCloseButton(lvl, itemsToClear);
+        }
+    });
 }
 
 function createLvlCloseButton(lvl, items) {
@@ -131,7 +165,7 @@ function createLvlCloseButton(lvl, items) {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
             x: gameConsts.width - 180,
-            y: gameConsts.height - 135,
+            y: gameConsts.height - 125,
         },
         hover: {
             ref: "menu_btn_hover.png",
@@ -159,7 +193,9 @@ function createLvlCloseButton(lvl, items) {
             });
             lvlCloseButton.destroy();
             hideGlobalClickBlocker();
-            beginLevel(lvl)
+            beginLevel(lvl);
+            globalObjects.encyclopedia.showButton();
+            globalObjects.options.showButton();
         }
     });
     lvlCloseButton.setOrigin(0.5, 0.5);

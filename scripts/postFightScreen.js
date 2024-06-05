@@ -441,7 +441,7 @@ class PostFightScreen {
         } else if (level >= 9) {
             return 'No Upgrade!'
         } else {
-            return 'Upgraded Rune!'
+            return 'Upgraded!'
         }
     }
 

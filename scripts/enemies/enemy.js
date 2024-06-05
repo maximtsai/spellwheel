@@ -628,7 +628,7 @@ class Enemy {
         this.timeSinceLastAttacked += 60;
         this.castAggravateCharge = 0;
         if (this.nextAttack.damage !== 0) {
-            this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.prepareSprite, this.nextAttack.attackSprites, undefined, this.nextAttack.finishDelay);
+            this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.prepareSprite, this.nextAttack.attackSprites, undefined, this.nextAttack.finishDelay, this.nextAttack.transitionFast);
         } else {
             if (this.nextAttack.message) {
                 messageBus.publish(this.nextAttack.message, this.nextAttack.messageDetail);
@@ -1674,7 +1674,7 @@ class Enemy {
          });
      }
 
-    launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false, finishDelay = 0) {
+    launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false, finishDelay = 0, transitionFast = false) {
         if (this.dead || this.isDestroyed){
             return;
         }
@@ -1702,13 +1702,15 @@ class Enemy {
             }
         }
 
+        let transitionMult = transitionFast ? 0 : 1;
+
         // First pull back
         this.attackAnim = this.scene.tweens.add({
             targets: this.sprite,
             scaleX: pullbackScale,
             scaleY: pullbackScale,
             rotation: 0,
-            duration: durationPullback * timeSlowMult,
+            duration: durationPullback * timeSlowMult * transitionMult,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 if (this.dead || this.isDestroyed){
@@ -1721,7 +1723,7 @@ class Enemy {
                     targets: this.sprite,
                     scaleX: attackScale,
                     scaleY: attackScale,
-                    duration: attackDuration,
+                    duration: attackDuration * transitionMult,
                     rotation: 0,
                     ease: this.attackEase ? this.attackEase : 'Cubic.easeIn',
                     onComplete: () => {
@@ -1756,14 +1758,14 @@ class Enemy {
                             }
                         }
                         if (attackTimes > 1) {
-                            this.launchAttack(attackTimes - 1, prepareSprite, attackSprites, true);
+                            this.launchAttack(attackTimes - 1, prepareSprite, attackSprites, true, finishDelay, transitionFast);
                         } else {
                             this.attackAnim = this.scene.tweens.add({
                                 targets: this.sprite,
                                 scaleX: this.sprite.startScale,
                                 scaleY: this.sprite.startScale,
                                 rotation: 0,
-                                duration: 500 * extraTimeMult * timeSlowMult,
+                                duration: 500 * extraTimeMult * timeSlowMult * transitionMult,
                                 ease: this.returnEase ? this.returnEase : 'Cubic.easeInOut'
                             });
                             setTimeout(() => {

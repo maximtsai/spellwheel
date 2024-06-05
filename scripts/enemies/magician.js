@@ -849,7 +849,7 @@
     }
 
     beginPhaseTwo() {
-        globalObjects.bannerTextManager.setDialog(["The Magician uses his most powerful\nmagic to delay his death.", "Watch out"]);
+        globalObjects.bannerTextManager.setDialog(["The Magician delays his death and\nprepares his most powerful magic.", "Watch out."]);
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
         globalObjects.bannerTextManager.showBanner(true);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -901,7 +901,7 @@
     startChargingUltimate() {
         for (let i = 0; i < 24; i++) {
             this.addTween({
-                delay: i * 510,
+                delay: i * 300,
                 duration: 150,
                 targets: this.sprite,
                 scaleX: this.sprite.startScale,
@@ -944,7 +944,8 @@
                         } else {
                             this.attackName.setText("}}}}4x" + numAttacks + "}}}}");
                             this.repositionAngrySymbol();
-                            this.nextAttack.chargeMult = 15;
+                            this.nextAttack.chargeMult = 12;
+                            this.setDefaultSprite('time_magi.png');
                         }
                     }
                 },
@@ -1074,7 +1075,7 @@
                      desc: "The Time Magician\nuses his ultimate attack",
                      chargeAmt: 1350,
                      isBigMove: true,
-                     chargeMult: 7,
+                     chargeMult: 6,
                      damage: -1,
                     finishDelay: 4200,
 
@@ -1104,6 +1105,7 @@
                      chargeMult: 2,
                      isPassive: true,
                      startFunction: () => {
+                        this.setDefaultSprite('time_magi_fade.png', 1);
                         this.exhausted = true;
                          globalObjects.magicCircle.cancelTimeSlow();
                         this.clockShield.currAnim.stop();

@@ -203,8 +203,14 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">ui/dummy_paper.png</key>
             <key type="filename">ui/gobbo_paper.png</key>
+            <key type="filename">ui/knight_paper.png</key>
+            <key type="filename">ui/magician_paper.png</key>
+            <key type="filename">ui/mantis_paper.png</key>
+            <key type="filename">ui/robot_paper.png</key>
             <key type="filename">ui/tree_paper.png</key>
+            <key type="filename">ui/wall_paper.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

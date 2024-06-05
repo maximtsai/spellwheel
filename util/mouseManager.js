@@ -26,9 +26,6 @@ class InternalMouseManager {
         gameVars.mouseposx = handPos.x;
         gameVars.mouseposy = handPos.y;
 
-        console.log("pointer down default", handPos.x, handPos.y);
-        console.log(pointer.wasTouch);
-
         gameVars.lastmousedown.x = handPos.x;
         gameVars.lastmousedown.y = handPos.y;
         messageBus.publish("pointerDown", handPos.x, handPos.y);

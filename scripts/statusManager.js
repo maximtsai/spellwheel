@@ -129,7 +129,6 @@ class StatusManager {
     }
 
     clearPlayerStatuses(spellId = null, skipCleanup = false) {
-        console.log("clear effects", spellId, skipCleanup);
         for (let i in this.playerStatusDisplayStack) {
             let statusDisplayObj = this.playerStatusDisplayStack[i]
             if (statusDisplayObj == null) {

@@ -28,7 +28,7 @@
          });
      }
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 250 : 210;
+         this.health = gameVars.isHardMode ? 250 : 200;
          this.pullbackDurMult = 0.5;
          this.pullbackScale = 0.99;
          this.pullbackScaleDefault = 0.99;
@@ -136,6 +136,7 @@
                  {
                      name: "...ARE YOU ALIVE?",
                      chargeAmt: 250,
+                    transitionFast: true,
                     isPassive: true,
                      damage: -1,
                      startFunction: () => {

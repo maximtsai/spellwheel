@@ -44,6 +44,8 @@ const ENABLE_KEYBOARD = true;
             messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this)),
             messageBus.subscribe('selfClearEffect', this.clearMindForm.bind(this)),
             messageBus.subscribe('enemyHasDied', this.clearEffects.bind(this)),
+            messageBus.subscribe('selfClearStatuses', this.clearEffects.bind(this)),
+            
             messageBus.subscribe("applyMindBurn", this.applyMindBurn.bind(this)),
             messageBus.subscribe("playerDied", this.playerDied.bind(this)),
             messageBus.subscribe("playerRevived", this.playerRevived.bind(this)),

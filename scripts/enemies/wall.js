@@ -546,8 +546,8 @@
              [
                  // 1
                  {
-                     name: "CRUMBLE ;40",
-                     chargeAmt: 1000,
+                     name: ";40",
+                     chargeAmt: 1100,
                      damage: -1,
                      chargeMult: 1.5,
                      isBigMove: true,
@@ -569,8 +569,8 @@
              [
                  // 2
                  {
-                     name: "TOPPLE ;60",
-                     chargeAmt: 1000,
+                     name: ";60",
+                     chargeAmt: 1150,
                      damage: -1,
                      chargeMult: 1.5,
                      isBigMove: true,
@@ -592,8 +592,8 @@
              [
                  // 3
                  {
-                     name: "FALL ;100 ",
-                     chargeAmt: 1000,
+                     name: ";100",
+                     chargeAmt: 1200,
                      damage: -1,
                      chargeMult: 1.5,
                      isBigMove: true,
@@ -730,6 +730,7 @@
          if (this.currAnim) {
              this.currAnim.stop();
          }
+        playSound('rock_crumble', 0.6);
          this.setDefaultSprite('wall_dead.png')
          if (this.bgMusic) {
              this.bgMusic.stop();

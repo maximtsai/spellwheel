@@ -1,12 +1,12 @@
 let isMobile = testMobile();
-
+let gameVersion = "version 1.0";
 let config = {
     type: Phaser.AUTO,
     scale: {
         parent: 'spellwheel',
         autoRound: true,
         width: isMobile ? 600 : 610,
-        height: isMobile ? 800: 770,
+        height: isMobile ? 810: 770,
         mode: Phaser.Scale.FIT,
         orientation: 'landscape',
         forceLandscape: true
@@ -83,6 +83,9 @@ let timeUpdateCounterMax = 3;
 let canResizeGame = false;
 function preload ()
 {
+    if (isMobile && screen && screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock('portrait')
+    }
     canResizeGame = true;
     resizeGame();
     let gameDiv = document.getElementById('preload-notice');
@@ -103,6 +106,7 @@ function create ()
 function onPreloadComplete (scene)
 {
     globalObjects.tempBG = scene.add.sprite(0, 0, 'blackPixel').setScale(1000, 1000).setDepth(-1);
+
     setupMouseInteraction(scene);
     setupLoadingBar(scene);
 

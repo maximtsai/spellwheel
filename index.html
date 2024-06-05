@@ -110,6 +110,76 @@
         document.fonts.load('10pt "verdanamax"')
         document.fonts.load('10pt "verdanabold"')
         document.fonts.load('10pt "garamondmax"')
+        // console.log("test");
+        // let N = 5;
+        // let V = [10, 2, 8, 6, 4];
+        // let C = 3;
+        // let S = 0.15;
+        // function getProfit(N, V, C, S) {
+        //     let accPackageProfit = 0;
+        //     let earnedProfit = 0;
+        //     for (let i = 0; i < N; i++) {
+        //         accPackageProfit += V[i];
+        //         let takePackageProfit = accPackageProfit - C;
+        //         let leavePackageProfit = accPackageProfit * (1 - S);
+        //         if (takePackageProfit <= 0) {
+        //             // too expensive to take package, just leave it
+        //             accPackageProfit = leavePackageProfit;
+        //         } else if (i == N - 1) {
+        //             // last day, no more leaving package
+        //             earnedProfit += Math.max(0, takePackageProfit);
+        //             accPackageProfit = 0;
+        //         } else if (leavePackageProfit > takePackageProfit) {
+        //             // leaving package is more valuable, but is it really? Dependent on when
+        //             // you next take a package.
+        //             accPackageProfit = leavePackageProfit;
+        //         } else {
+        //             earnedProfit += Math.max(0, takePackageProfit);
+        //             accPackageProfit = 0;
+        //         } 
+        //     }
+        //     // if (accPackageProfit > C) {
+        //     //     earnedProfit += accPackageProfit - C;
+        //     // }
+        //     return earnedProfit;
+        // }
+
+        // function getProfit2(N, V, C, S) {
+        //     let totalProfit = 0;
+
+        //     for (let i = 0; i < N; i++) {
+        //         totalProfit += V[i];
+        //     }
+
+        //     let expectedLoss = 0;
+
+        //     for (let i = 0; i < N; i++) {
+        //         let expectedLossIfNotTaken
+        //         accPackageProfit += V[i];
+        //         let takePackageProfit = accPackageProfit - C;
+        //         let leavePackageProfit = accPackageProfit * (1 - S);
+        //         if (takePackageProfit <= 0) {
+        //             // too expensive to take package, just leave it
+        //             accPackageProfit = leavePackageProfit;
+        //         } else if (i == N - 1) {
+        //             // last day, no more leaving package
+        //             earnedProfit += Math.max(0, takePackageProfit);
+        //             accPackageProfit = 0;
+        //         } else if (leavePackageProfit > takePackageProfit) {
+        //             // leaving package is more valuable
+        //             accPackageProfit = leavePackageProfit;
+        //         } else {
+        //             earnedProfit += Math.max(0, takePackageProfit);
+        //             accPackageProfit = 0;
+        //         } 
+        //     }
+        //     // if (accPackageProfit > C) {
+        //     //     earnedProfit += accPackageProfit - C;
+        //     // }
+        //     return totalProfit - expectedLoss;
+        // }
+
+        // console.log(getProfit2(N, V, C, S))
     </script>
     <div style="font-family:verdanamax; position:absolute; left:-1000px; visibility:hidden;">.</div>
     <div style="font-family:verdanabold; position:absolute; left:-1000px; visibility:hidden;">.</div>

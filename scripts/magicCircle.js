@@ -45,12 +45,15 @@ const ENABLE_KEYBOARD = true;
             messageBus.subscribe('selfClearEffect', this.clearMindForm.bind(this)),
             messageBus.subscribe('enemyHasDied', this.clearEffects.bind(this)),
             messageBus.subscribe('selfClearStatuses', this.clearEffects.bind(this)),
-            
+
             messageBus.subscribe("applyMindBurn", this.applyMindBurn.bind(this)),
             messageBus.subscribe("playerDied", this.playerDied.bind(this)),
             messageBus.subscribe("playerRevived", this.playerRevived.bind(this)),
             messageBus.subscribe("highlightRunes", this.highlightRunes.bind(this)),
             messageBus.subscribe("unhighlightRunes", this.unhighlightRunes.bind(this)),
+            messageBus.subscribe("showCircleShadow", this.showCircleShadow.bind(this)),
+
+            messageBus.subscribe("setCircleShadow", this.setCircleShadow.bind(this))
 
         ];
 
@@ -426,8 +429,7 @@ const ENABLE_KEYBOARD = true;
 
 
 
-        this.outerCircle = scene.add.sprite(x, y, 'circle', 'usage_normal.png')
-        this.outerCircle.setDepth(101);
+        this.outerCircle = scene.add.sprite(x, y, 'circle', 'usage_normal.png').setDepth(101);
         this.outerCircle.torque = 0;
         this.outerCircle.torqueDecay = 0;
         this.outerCircle.torqueOnRelease = 0;
@@ -435,15 +437,16 @@ const ENABLE_KEYBOARD = true;
         this.outerCircle.nextRotation = 0;
         this.outerCircle.prevRotation = 0;
         this.innerCircleSize = isMobile ? 138 : 143;
-        this.innerCircle = scene.add.sprite(x, y, 'circle', 'element_normal.png');
+        this.innerCircle = scene.add.sprite(x, y, 'circle', 'element_normal.png').setDepth(102);
         this.innerCircle.setOrigin(0.5003, 0.5003);
-        this.innerCircle.setDepth(102);
+        this.innerCircle
         this.innerCircle.torque = 0;
         this.innerCircle.torqueDecay = 0;
         this.innerCircle.torqueOnRelease = 0;
         this.innerCircle.rotVel = 0;
         this.innerCircle.nextRotation = 0;
         this.innerCircle.prevRotation = 0;
+        this.shadowCircle = scene.add.sprite(x, y, 'circle', 'shadow.png').setAlpha(0).setDepth(99999).setBlendMode(Phaser.BlendModes.MULTIPLY);
 
         this.castButtonSize = isMobile ? 72 : 78;
         this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png').setDepth(105);
@@ -1148,7 +1151,7 @@ const ENABLE_KEYBOARD = true;
              let distFromCenter = 0;
              switch(shieldObj.type) {
                  case 'mind':
-                     const painStartRot = 0.2 + shieldObj.multiplier * 0.03;
+                     const painStartRot = 0.28 + shieldObj.multiplier * 0.03;
                      let goalRotMind = shieldObj.lockRotation + this.outerCircle.rotation;
                      if (!shieldObj.isLocked) {
                         shieldObj.animObj[0].rotation = goalRotMind;
@@ -1214,7 +1217,7 @@ const ENABLE_KEYBOARD = true;
 
                      break;
                  case 'matter':
-                     const blockStartRot = 0.52 + shieldObj.multiplier * 0.03;
+                     const blockStartRot = 0.54 + shieldObj.multiplier * 0.03;
                      let goalRotMatter = shieldObj.lockRotation + this.outerCircle.rotation;
                      shieldObj.animObj[0].rotation = goalRotMatter;
                      shieldObj.animObj[1].x = shieldObj.animObj[1].startX + Math.sin(goalRotMatter) * 222;
@@ -2005,16 +2008,19 @@ const ENABLE_KEYBOARD = true;
         let xPos = this.delayDamageHourglass.x;
         let yPos = this.delayDamageHourglass.y;
         let size = 98 * this.delayDamageHourglass.scaleX;
+        console.log("make visible");
         this.delayDamagePartial.visible = true;
+        this.delayDamagePartial.canCleanup = true;
         this.delayDamagePartial.clear();
         this.delayDamagePartial.slice(xPos, yPos, size, -1.5708, rotateAmt, false)
         this.delayDamagePartial.fillPath();
     }
 
     clearClock() {
-        console.log("Clear clock");
-        this.delayDamagePartial.clear();
-        this.delayDamagePartial.visible = false;
+        if (this.delayDamagePartial && this.delayDamagePartial.canCleanup) {
+            this.delayDamagePartial.clear();
+            this.delayDamagePartial.canCleanup = false;
+        }
         this.scene.tweens.add({
             delay: 100,
             targets: [this.delayDamageHourglass, this.delayDamageSandFull, this.delayDamageText],
@@ -2141,7 +2147,7 @@ const ENABLE_KEYBOARD = true;
                 let xPos = this.delayDamageHourglass.x;
                 let yPos = this.delayDamageHourglass.y;
                 let size = 98 * scaleAmtTotal;
-                // this.delayDamagePartial.visible = true;
+                this.delayDamagePartial.visible = true;
                 this.delayDamagePartial.clear();
                 this.delayDamagePartial.slice(xPos, yPos, size, -1.5708, rotateAmt, false);
                 this.delayDamagePartial.fillPath();
@@ -2409,9 +2415,29 @@ const ENABLE_KEYBOARD = true;
          this.mindBurnAnim.alpha = 0.5;
          let damageDealt = gameVars.mindPlus ? 3 : 2;
          this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * duration);
+        messageBus.publish('enemyTakeTrueDamage', damageDealt, false);
+        if (!this.flashBGWhite) {
+            this.flashBGWhite = PhaserScene.add.image(gameConsts.halfWidth,gameConsts.halfHeight,'whitePixel').setScale(1000).setDepth(-1);
+        }
+        this.scene.tweens.add({
+            targets: this.flashBGWhite,
+            alpha: duration * 0.005 - 0.025,
+            duration: 120,
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                this.scene.tweens.add({
+                    targets: this.flashBGWhite,
+                    alpha: 0,
+                    duration: 250 + duration * 10,
+                    ease: 'Cubic.easeOut'
+                });
+            }
+        });
+
+        messageBus.publish('showCircleShadow', 0.03 + duration * 0.005, -90 + duration * 20);
          effectObj = {
              name: effectName,
-             duration: 1 + duration,
+             duration: duration,
              firstTicked: false,
              onUpdate: () => {
                  if (effectObj) {
@@ -2629,5 +2655,21 @@ const ENABLE_KEYBOARD = true;
         }
     }
 
+    showCircleShadow(intensity = 0.25, extraDuration = 0) {
+        this.shadowCircle.alpha = intensity;
+        if (this.shadowCircle.currAnim) {
+            this.shadowCircle.currAnim.stop();
+        }
+        this.shadowCircle.currAnim = this.scene.tweens.add({
+            targets: this.shadowCircle,
+            alpha: 0,
+            ease: 'Cubic.easeIn',
+            duration: 950 + intensity * 1000 + extraDuration,
+        });
+    }
+
+    setCircleShadow(intensity = 0.2) {
+        this.shadowCircle.alpha = intensity;
+    }
 
 }

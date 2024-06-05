@@ -132,7 +132,7 @@
                         this.lightShineRight.setAlpha(0.3).setScale(0.5);
                         this.lightShineLeftTop.setAlpha(1).setScale(0.5);
                         this.lightShineRightTop.setAlpha(1).setScale(0.5);
-
+                        messageBus.publish('showCircleShadow');
 
                         this.addTween({
                             targets: [this.lightShineLeft, this.lightShineLeftTop],
@@ -248,8 +248,8 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 500 : 380;
-         this.criticalThreshold = 80;
+         this.health = gameVars.isHardMode ? 500 : 400;
+         this.criticalThreshold = 90;
          this.nextShieldHealth = 100;
          this.shieldsBroken = 0;
          this.missileObjects = [];
@@ -430,11 +430,12 @@
                         this.addTween({
                             targets: [this.lightShineLeftTop,  this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
                             ease: 'Cubic.easeOut',
-                            duration: 250,
+                            duration: 150,
                             alpha: 1,
                             scaleX: 2,
                             scaleY: 2,
                             onComplete: () => {
+                                messageBus.publish('showCircleShadow', 0.6);
                                 this.setDefense(2);
                                 this.addTimeout(() => {
                                     globalObjects.bannerTextManager.setDialog(["The stage lights are blinding.", "-2 damage to your attacks."]);
@@ -590,11 +591,12 @@
                                 this.shineAnim = this.addTween({
                                     targets: [this.lightShineLeftTop,  this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
                                     ease: 'Cubic.easeOut',
-                                    duration: 250,
+                                    duration: 200,
                                     alpha: 0.9,
                                     scaleX: 1.9,
                                     scaleY: 1.9,
                                     onComplete: () => {
+                                        messageBus.publish('showCircleShadow', 0.7);
                                         let dialogToSet = ["The stage lights shine\neven brighter.", "-4 damage to your attacks."];
                                         if (!this.isShiningBrighter) {
                                             this.isShiningBrighter = true;
@@ -1692,7 +1694,7 @@
                  this.addToDestructibles(this.laserBeam);
              }
              let backgroundBlack = getBackgroundBlackout();
-             backgroundBlack.setDepth(-1).setAlpha(0);
+             backgroundBlack.setDepth(-3).setAlpha(0);
              this.backgroundTween = this.addTween({
                  targets: backgroundBlack,
                  alpha: 0.4,

@@ -288,6 +288,7 @@
                     let powSize = hits < 2 ? 1.25 : 1;
                     if (i == 2) {
                         messageBus.publish("selfTakeDamage", damage);
+                        messageBus.publish('showCircleShadow', 0.08, -960);
 
                          let powEffect = getTempPoolObject('circle', 'blastEffect0.png', 'blastEffect', 300);
                          let randX = 90 * (Math.random() - 1)

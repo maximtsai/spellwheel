@@ -976,6 +976,7 @@
              alpha: 1.1,
              ease: 'Cubic.easeOut',
              onComplete: () => {
+                messageBus.publish('showCircleShadow');
                  this.addTween({
                      targets: [this.fogThick, this.fogSpook],
                      duration: 1400,

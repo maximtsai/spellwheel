@@ -1061,6 +1061,7 @@
                              scaleX: 1.35,
                              scaleY: 1.35,
                              duration: 5200,
+                             depth: 200,
                              alpha: 2.5,
                              ease: 'Quad.easeIn',
                              onComplete: () => {

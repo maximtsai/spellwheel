@@ -2417,11 +2417,15 @@ const ENABLE_KEYBOARD = true;
          this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * duration);
         messageBus.publish('enemyTakeTrueDamage', damageDealt, false);
         if (!this.flashBGWhite) {
-            this.flashBGWhite = PhaserScene.add.image(gameConsts.halfWidth,gameConsts.halfHeight,'whitePixel').setScale(1000).setDepth(-1);
+            this.flashBGWhite = PhaserScene.add.image(gameConsts.halfWidth,gameConsts.halfHeight - 200,'lowq', 'circle.webp').setDepth(-1).setAlpha(0);
         }
+        let scaleFlash = 2 + duration * 0.02;
+        this.flashBGWhite.setScale(scaleFlash);
         this.scene.tweens.add({
             targets: this.flashBGWhite,
-            alpha: duration * 0.005 - 0.025,
+            alpha: duration * 0.005 - 0.02,
+            scaleX: scaleFlash * 1.2,
+            scaleY: scaleFlash * 1.2,
             duration: 120,
             ease: 'Cubic.easeOut',
             onComplete: () => {

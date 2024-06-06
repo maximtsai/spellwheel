@@ -112,6 +112,7 @@ function setupMouseInteraction(scene) {
     // };
 }
 
+canResizeGame = false;
 function resizeGame() {
     if (!canResizeGame) {
         return;

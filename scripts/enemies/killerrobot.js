@@ -6,7 +6,9 @@
          this.sprite.startY = y;
         this.bgMusic = playMusic('metaljpop', 0.9, false);
 
-         this.setAsleep();
+        this.addTimeout(() => {
+            this.setAsleep();
+        }, 10)
          this.addTimeout(() => {
              globalObjects.magicCircle.disableMovement();
          }, 900);
@@ -1360,12 +1362,14 @@
                         ease: 'Cubic.easeOut'
                     });
                     selfDestructDesc.destroy();
+                    let explosion = PhaserScene.add.sprite(this.x, this.y, 'spells', 'brickPattern2.png').setScale(0).setDepth(100010).setPosition(this.x, gameConsts.halfHeight - 50).setOrigin(0.5, 0.45);
+
                     this.addTween({
                         delay: 400,
                         targets: PhaserScene.cameras.main,
                         x: 10,
                         y: 3,
-                        duration: 40,
+                        duration: 50,
                         onComplete: () => {
                             playSound('explosion');
                             soundToKill.volume = 0.1;
@@ -1392,7 +1396,10 @@
                                                         targets: PhaserScene.cameras.main,
                                                         x: 0,
                                                         y: 0,
-                                                        duration: 50
+                                                        duration: 50,
+                                                        onComplete: () => {
+                                                            this.goToDeathLevel(explosion)
+                                                        }
                                                     });
                                                 }
                                             });
@@ -1403,7 +1410,7 @@
                         }
                     });
                     this.addTimeout(() => {
-                        let explosion = this.addSprite(this.x, this.y, 'spells', 'brickPattern2.png').setScale(1).setDepth(100010).setPosition(this.x, gameConsts.halfHeight - 50).setOrigin(0.5, 0.45);
+                        explosion.setScale(1)
                         this.addTween({
                             targets: explosion,
                             duration: 300,
@@ -1953,4 +1960,18 @@
          });
      }
 
+
+     goToDeathLevel(explosion) {
+        this.destroy();
+        swirlInReaperFog(1.25);
+        PhaserScene.tweens.add({
+            targets: explosion,
+            alpha: 0,
+            duration: 800,
+            completeDelay: 200,
+            onComplete: () => {
+                beginLevel(10)
+            }
+        })
+     }
 }

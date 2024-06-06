@@ -319,21 +319,22 @@ class SpellManager {
             }
         });
         let totalProtection = spellMult * protectionAmt;
-        let goalScale = 1 + totalProtection * 0.1;
+        let goalScale = 1.15 + totalProtection * 0.1;
         let param = {
-            duration: 1000,
-            ease: 'Quart.easeOut',
+            duration: 400,
+            ease: 'Quad.easeOut',
             y: "-=1",
-            scaleX: goalScale + 0.15,
-            scaleY: goalScale + 0.15,
+            scaleX: goalScale,
+            scaleY: goalScale,
         }
         let param2 = {
             alpha: 0,
-            scaleX: goalScale,
-            scaleY: goalScale
+            duration: 1600,
+            scaleX: goalScale * 0.95,
+            scaleY: goalScale * 0.95
         }
 
-        messageBus.publish('animateBlockNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + totalProtection + " THORNS", goalScale, param, param2);
+        messageBus.publish('animateArmorNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + totalProtection + " THORNS", goalScale, param, param2);
 
         messageBus.publish('selfTakeEffect', {
             name: spellID,
@@ -506,7 +507,7 @@ class SpellManager {
         animation1.origScaleX = 0.95 + spellMultiplier * 0.06;
         animation1.rotation = 0;
 
-        let textHealth = this.scene.add.bitmapText(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 222, 'block', '0', 32, 1);
+        let textHealth = this.scene.add.bitmapText(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 222, 'armor', '0', 32, 1);
         textHealth.startX = textHealth.x;
         textHealth.startY = textHealth.y;
         textHealth.setOrigin(0.5, 0.5);
@@ -669,7 +670,7 @@ class SpellManager {
             stoneCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'stoneCircle.png');
             stoneCircle.setAlpha(0.5).setScale(0.9).setRotation(-0.3);
 
-            textHealth = this.scene.add.bitmapText(gameConsts.halfWidth, globalObjects.player.getY() - 44, 'block', '0', 48, 1);
+            textHealth = this.scene.add.bitmapText(gameConsts.halfWidth, globalObjects.player.getY() - 44, 'armor', '0', 48, 1);
             textHealth.startX = textHealth.x;
             textHealth.startY = textHealth.y;
         }
@@ -2625,13 +2626,14 @@ class SpellManager {
         if (existingBuff1) {
             messageBus.publish('selfClearStatuses', 'mindReinforce');
             let param = {
-                duration: 750,
+                duration: 800,
                 ease: 'Cubic.easeOut',
                 alpha: 0.9,
                 y: "+=4",
             }
             let param2 = {
-                duration: 750,
+                duration: 1000,
+                ease: 'Quad.easeIn',
                 alpha: 0,
             }
             messageBus.publish('animateBlockNum', gameConsts.halfWidth, globalObjects.player.getY() + 24, "-DAMAGE", 0.75, param, param2);
@@ -2643,13 +2645,14 @@ class SpellManager {
             messageBus.publish('selfClearStatuses', 'matterReinforce');
 
             let param = {
-                duration: 750,
+                duration: 800,
                 ease: 'Cubic.easeOut',
                 alpha: 0.9,
                 y: "+=4",
             }
             let param2 = {
-                duration: 750,
+                duration: 1000,
+                ease: 'Quad.easeIn',
                 alpha: 0,
             }
             messageBus.publish('animateBlockNum', gameConsts.halfWidth, globalObjects.player.getY() + 24, "-THORNS", 0.6, param, param2);

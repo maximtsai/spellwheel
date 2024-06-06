@@ -677,6 +677,13 @@ const ENABLE_KEYBOARD = true;
         gameVars.timeSlowRatio = ratio;
         if (ratio < 0.99) {
             playSound('timeSlow');
+            if (globalObjects.currentEnemy && globalObjects.currentEnemy.bgMusic) {
+                globalObjects.currentEnemy.bgMusic.detune = -1000;
+            }
+        } else {
+            if (globalObjects.currentEnemy && globalObjects.currentEnemy.bgMusic) {
+                globalObjects.currentEnemy.bgMusic.detune = 0;
+            }
         }
 
         if (oldRatio != ratio) {

@@ -423,6 +423,22 @@
              duration: 200,
              onComplete: () => {
                 playSound('matter_body');
+                let goalScale = 1;
+                let param = {
+                    duration: 400,
+                    ease: 'Quad.easeOut',
+                    y: "-=1",
+                    scaleX: goalScale,
+                    scaleY: goalScale,
+                }
+                let param2 = {
+                    alpha: 0,
+                    duration: 1600,
+                    scaleX: goalScale * 0.95,
+                    scaleY: goalScale * 0.95
+                }
+
+                messageBus.publish('animateArmorNum', gameConsts.halfWidth, this.y - 60, "+2 THORNS", goalScale, param, param2);
                  this.addTween({
                      targets: [spikeTemp],
                      scaleX: 1,

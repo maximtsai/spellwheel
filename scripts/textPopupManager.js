@@ -17,6 +17,7 @@ class TextPopupManager {
         messageBus.subscribe('animateTrueDamageNum', this.animateTrueDamageNum.bind(this));
         messageBus.subscribe('animateHealNum', this.animateHealNum.bind(this));
         messageBus.subscribe('animateBlockNum', this.animateBlockNum.bind(this));
+        messageBus.subscribe('animateArmorNum', this.animateArmorNum.bind(this));
     }
 
     setInfoText(x, y, newText, align = 'center', useSmall) {
@@ -53,7 +54,7 @@ class TextPopupManager {
 
     animateDamageNum(x, y, text, scale, param) {
         let textObj = this.getTextObjFromArray(x, y, text, this.damageNums, 'damage');
-        let mobileScale = isMobile ? 1.2 : 1;
+        let mobileScale = isMobile ? 1.15 : 1;
         textObj.setScale(scale * mobileScale).setAlpha(1);
         this.animateNum(textObj, this.damageNums, param);
     }
@@ -128,14 +129,14 @@ class TextPopupManager {
 
     animateTrueDamageNum(x, y, text, scale, param, param2) {
         let textObj = this.getTextObjFromArray(x, y, text, this.bonusNums, 'bonus');
-        let mobileScale = isMobile ? 1.2 : 1;
+        let mobileScale = isMobile ? 1.15 : 1;
         textObj.setScale(scale * mobileScale).setAlpha(1);
         this.animateNum(textObj, this.bonusNums, param, param2);
     }
 
     animateHealNum(x, y, text, scale, param = {}, param2) {
         let textObj = this.getTextObjFromArray(x, y, text, this.healNums, 'heal');
-        let mobileScale = isMobile ? 1.2 : 1;
+        let mobileScale = isMobile ? 1.15 : 1;
         textObj.setScale(scale * mobileScale).setAlpha(1);
         param.duration = param.duration ? param.duration + 300 : 1000;
         this.animateNum(textObj, this.healNums, param, param2);
@@ -162,7 +163,14 @@ class TextPopupManager {
 
     animateBlockNum(x, y, text, scale, param, param2) {
         let textObj = this.getTextObjFromArray(x, y, text, this.blockNums, 'block');
-        let mobileScale = isMobile ? 1.2 : 1;
+        let mobileScale = isMobile ? 1.15 : 1;
+        textObj.setScale(scale * mobileScale).setAlpha(1);
+        this.animateNum(textObj, this.blockNums, param, param2);
+    }
+
+    animateArmorNum(x, y, text, scale, param, param2) {
+        let textObj = this.getTextObjFromArray(x, y, text, this.blockNums, 'armor');
+        let mobileScale = isMobile ? 1.15 : 1;
         textObj.setScale(scale * mobileScale).setAlpha(1);
         this.animateNum(textObj, this.blockNums, param, param2);
     }

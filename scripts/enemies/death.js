@@ -5,7 +5,9 @@
         this.sprite.setOrigin(0.5, 0.4);
         swirlInReaperFog(1.25);
         this.setupCustomDeathSprite();
-         this.setAsleep();
+        setTimeout(() => {
+             this.setAsleep();
+         }, 10)
      }
 
      initStatsCustom() {
@@ -26,13 +28,16 @@
      }
 
      setupCustomDeathSprite() {
-        this.floatingDeath1 = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 300, 'enemies', 'max_death_1a.png').setDepth(1).setScale(0.3).setAlpha(0);
-        this.floatingDeath2 = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 300, 'enemies', 'max_death_1b.png').setDepth(1).setScale(0.3).setAlpha(0);
-        this.floatingDeath1.fakeAlpha = 0;
-        this.floatingDeath2.fakeAlpha = 0;
-        this.deathBreathe();
-        tweenFloatingDeath(0.667, 1, 5000, "Cubic.easeOut", () => {
-            globalObjects.bannerTextManager.setDialog(["AND THUS COMES THE END.", "IT IS UNFORTUNATE, BUT YOUR\nJOURNEY WAS NEVER MEANT TO BE.", "FAREWELL."]);
+        this.floatingDeath = getFloatingDeath();
+        // this.floatingDeath1 = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 300, 'enemies', 'max_death_1a.png').setDepth(1).setScale(0.3).setAlpha(0);
+        // this.floatingDeath2 = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 300, 'enemies', 'max_death_1b.png').setDepth(1).setScale(0.3).setAlpha(0);
+        // this.floatingDeath1.fakeAlpha = 0;
+        // this.floatingDeath2.fakeAlpha = 0;
+        // this.deathBreathe();
+        repeatDeathHandsRotate();
+        startDeathFlutterAnim();
+        tweenFloatingDeath(0.667, 1, 1800, "Cubic.easeOut", () => {
+            globalObjects.bannerTextManager.setDialog(["THUS COMES THE END.", "UNFORTUNATE, BUT YOUR JOURNEY\nWAS NEVER MEANT TO BE.", "FAREWELL."]);
             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
             globalObjects.bannerTextManager.showBanner(true);
             globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -41,6 +46,7 @@
         });
      }
 
+/*
      deathBreathe() {
         if (this.flutterAnim) {
             this.flutterAnim.stop();
@@ -85,7 +91,7 @@
         });
 
      }
-
+*/
 
 
 

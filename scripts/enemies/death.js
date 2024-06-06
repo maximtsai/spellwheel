@@ -5,6 +5,7 @@
         this.sprite.setOrigin(0.5, 0.4);
         swirlInReaperFog(1.25);
         this.setupCustomDeathSprite();
+         this.setAsleep();
      }
 
      initStatsCustom() {
@@ -30,13 +31,13 @@
         this.floatingDeath1.fakeAlpha = 0;
         this.floatingDeath2.fakeAlpha = 0;
         this.deathBreathe();
-        PhaserScene.tweens.add({
-            targets: [this.floatingDeath1, this.floatingDeath2],
-            fakeAlpha: 1,
-            scaleX: 0.667,
-            scaleY: 0.667,
-            duration: 6000,
-            ease: 'Cubic.easeOut',
+        tweenFloatingDeath(0.667, 1, 5000, "Cubic.easeOut", () => {
+            globalObjects.bannerTextManager.setDialog(["AND THUS COMES THE END.", "IT IS UNFORTUNATE, BUT YOUR\nJOURNEY WAS NEVER MEANT TO BE.", "FAREWELL."]);
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+            globalObjects.bannerTextManager.showBanner(true);
+            globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                this.setAwake();
+            })
         });
      }
 
@@ -104,10 +105,11 @@
          this.attacks = [
              [
                  {
-                     name: "REAP ;4444",
+                     name: ";4444",
                      chargeAmt: 600,
                      chargeMult: 1.1,
                      damage: -1,
+                     isBigMove: true,
                      attackStartFunction: () => {
                          this.isPulsing = false;
                      },

@@ -44,6 +44,9 @@
              return;
          }
          super.setHealth(newHealth);
+        if (this.invulnHealthBar) {
+            this.healthBarText.setText("INVULNERABLE");
+        }
 
          // if (!this.isNervous && this.statuses[0] && this.statuses[0].duration >= this.health) {
          //     this.isNervous = true;
@@ -343,7 +346,7 @@
                 playReaperAnim(this, () => {
                     setTimeout(() => {
                         this.showRune();
-                    }, 1200);
+                    }, 500);
                 });
             });
         }, 500);
@@ -352,8 +355,14 @@
      startReaper() {
         this.blackBackground = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(-1)
          this.floatingDeath = getFloatingDeath();
-         this.floatingDeath.alpha = 0.03;
+         this.floatingDeath.alpha = 0;
+         globalObjects.deathLeftHand.alpha = 0;
+         globalObjects.deathRightHand.alpha = 0;
          gameVars.deathFlutterDelay = 600;
+        setFloatingDeathScale(0.35)
+
+        tweenFloatingDeath(0.71, 0.75, 16000, "Quad.easeInOut");
+
          this.floatingDeathAnim = this.addTween({
              targets: this.floatingDeath,
              duration: 16000,
@@ -421,6 +430,7 @@
                     statusObj.duration++;
                     return;
                 }
+                this.invulnHealthBar = false;
 
                  healthText.y = healthText.startY + 4;
                  let bonusScale = this.health <= 1 ? 0.2 : 0;
@@ -491,7 +501,7 @@
                      }
 
                      if (!this.isTerrified) {
-                        if (this.health < 12) {
+                        if (this.health < 13) {
                             this.pullbackScale = 1;
                             this.attackScale = 1;
                             this.isTerrified = true;
@@ -869,6 +879,9 @@
                         onComplete: () => {
                             this.setMaxHealth(24);
                             this.heal(this.healthMax);
+                            this.invulnHealthBar = true;
+                            this.healthBarText.setText("INVULNERABLE");
+
                             this.setAwake();
                             this.setupTimeShield();
 

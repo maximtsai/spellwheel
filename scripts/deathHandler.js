@@ -97,17 +97,19 @@ function getFloatingDeath() {
 
         globalObjects.deathLeftHand.offsetX = leftHandOffsetX; globalObjects.deathLeftHand.offsetY = leftHandOffsetY; 
         globalObjects.deathRightHand.offsetX = rightHandOffsetX; globalObjects.deathRightHand.offsetY = rightHandOffsetY; 
-
+        setFloatingDeathScale(0.32)
     }
     if (globalObjects.floatingDeath.visible === false) {
-        globalObjects.floatingDeath.setVisible(true).setAlpha(0.4).setScale(0.35).setDepth(-1);
+        globalObjects.floatingDeath.setVisible(true).setAlpha(0.05).setScale(0.35).setDepth(-1);
         globalObjects.floatingDeath2.setVisible(false);
+        globalObjects.deathLeftHand.setAlpha(0.05);
+        globalObjects.deathRightHand.setAlpha(0.05);
+        setFloatingDeathScale(0.32)
     }
-    globalObjects.deathLeftHand.setAlpha(0.4).setDepth(globalObjects.floatingDeath.depth + 1);
-    globalObjects.deathRightHand.setAlpha(0.4).setDepth(globalObjects.floatingDeath.depth + 1)
+    globalObjects.deathLeftHand.setDepth(globalObjects.floatingDeath.depth + 1);
+    globalObjects.deathRightHand.setDepth(globalObjects.floatingDeath.depth + 1)
     tweenObjectRotationTo(globalObjects.deathLeftHand, -0.35, 10);
     tweenObjectRotationTo(globalObjects.deathRightHand, 0.3, 10);
-    setFloatingDeathScale(0.35)
 
     globalObjects.deathLeftHand.fakeAlpha = 0;
     globalObjects.deathRightHand.fakeAlpha = 0;
@@ -138,8 +140,14 @@ function setFloatingDeathScale(scale) {
     globalObjects.deathRightHand.setPosition(globalObjects.floatingDeath.x + globalObjects.deathRightHand.offsetX * scale, globalObjects.floatingDeath.y + globalObjects.deathRightHand.offsetY * scale);
 }
 
+function stopFloatingDeathTween() {
+    globalObjects.floatingDeath.currAnim1.stop();
+    globalObjects.floatingDeath.currAnim2.stop();
+    globalObjects.floatingDeath.currAnim3.stop();
+}
+
 function tweenFloatingDeath(scale = 0.75, alpha = 1, duration = 1200, ease = "Cubic.easeInOut", onComplete) {
-    PhaserScene.tweens.add({
+    globalObjects.floatingDeath.currAnim1 = PhaserScene.tweens.add({
         targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2, globalObjects.deathLeftHand, globalObjects.deathRightHand],
         scaleX: scale,
         scaleY: scale,
@@ -149,7 +157,7 @@ function tweenFloatingDeath(scale = 0.75, alpha = 1, duration = 1200, ease = "Cu
         onComplete: onComplete
     });
 
-    PhaserScene.tweens.add({
+    globalObjects.floatingDeath.currAnim2 = PhaserScene.tweens.add({
         targets: [globalObjects.deathLeftHand],
         x: globalObjects.floatingDeath.x + globalObjects.deathLeftHand.offsetX * scale,
         y: globalObjects.floatingDeath.y + globalObjects.deathLeftHand.offsetY * scale,
@@ -158,7 +166,7 @@ function tweenFloatingDeath(scale = 0.75, alpha = 1, duration = 1200, ease = "Cu
         duration: duration,
     });
 
-    PhaserScene.tweens.add({
+    globalObjects.floatingDeath.currAnim3 = PhaserScene.tweens.add({
         targets: [globalObjects.deathRightHand],
         x: globalObjects.floatingDeath.x + globalObjects.deathRightHand.offsetX * scale,
         y: globalObjects.floatingDeath.y + globalObjects.deathRightHand.offsetY * scale,
@@ -182,7 +190,6 @@ function repeatDeathHandsRotate() {
         globalObjects.deathRightHand.currAnim = tweenObjectRotationTo(globalObjects.deathRightHand, 0.05, 2500, "Cubic.easeInOut", () => {
             repeatDeathHandsRotate();
         });
-
     });
 }
 
@@ -287,7 +294,7 @@ function playReaperAnim(enemy, customFinFunc) {
                                 ease: 'Cubic.easeOut',
                                 duration: 500,
                             });
-                            let oldSwirlAlpha = globalObjects.fogSwirl.alpha;
+                            let oldSwirlAlpha = globalObjects.fogSwirl ? globalObjects.fogSwirl.alpha : 1;
 
                             PhaserScene.tweens.add({
                                 targets: globalObjects.fogSwirl,

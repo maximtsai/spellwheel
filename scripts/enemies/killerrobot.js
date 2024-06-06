@@ -6,6 +6,7 @@
          this.sprite.startY = y;
         this.bgMusic = playMusic('metaljpop', 0.9, false);
 
+         this.setAsleep();
          this.addTimeout(() => {
              globalObjects.magicCircle.disableMovement();
          }, 900);
@@ -18,7 +19,6 @@
      }
 
      initPreBattleLogic() {
-         this.setAsleep();
          this.shieldSprite.setFrame('shockEffect4.png').setVisible(false).setOrigin(0.5, 0.45);
          this.shieldSprite.startScale = 3;
          this.lastAttackLingerMult = 1.75;

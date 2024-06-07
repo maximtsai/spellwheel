@@ -2,9 +2,11 @@ function showVictoryScreen() {
     globalObjects.player.getPlayerCastSpellsCount();
 }
 
-function swirlInReaperFog(customScale = 1.66) {
-    let fogSwirlGlow = getFogSwirlGlow();
-    let fogSwirl = getFogSwirl();
+function swirlInReaperFog(customScale = 1.66, offsetY = 0, depth = -5) {
+    let fogSwirlGlow = getFogSwirlGlow(offsetY);
+    let fogSwirl = getFogSwirl(offsetY);
+    fogSwirlGlow.setDepth(depth);
+    fogSwirl.setDepth(depth);
 
     fogSwirl.currAnimScale = PhaserScene.tweens.add({
         targets: [fogSwirl, fogSwirlGlow],
@@ -28,6 +30,9 @@ function clearDeathFog() {
     }
     if (globalObjects.fogSwirl.currAnim) {
         globalObjects.fogSwirl.currAnim.stop();
+    }
+    if (globalObjects.fogSwirl.currAnimScale) {
+        globalObjects.fogSwirl.currAnimScale.stop();
     }
     PhaserScene.tweens.add({
         targets: [globalObjects.fogSwirl],
@@ -64,13 +69,14 @@ function getFogSliceDarken() {
     return globalObjects.fogSliceDarken;
 }
 
-function getFogSwirl() {
+function getFogSwirl(offsetY) {
     if (!globalObjects.fogSwirl) {
-        globalObjects.fogSwirl = PhaserScene.add.image(gameConsts.halfWidth, 240, 'backgrounds', 'fog_swirl.png').setDepth(-4).setScale(2.2).setRotation(-1).setAlpha(0);
+        globalObjects.fogSwirl = PhaserScene.add.image(gameConsts.halfWidth, 240, 'backgrounds', 'fog_swirl.png').setDepth(-1).setScale(2.2).setRotation(-1).setAlpha(0);
     }
     if (globalObjects.fogSwirl.alpha == 0) {
         globalObjects.fogSwirl.setScale(2.25).setRotation(-1);
     }
+    globalObjects.fogSwirl.setPosition(gameConsts.halfWidth, 240 + offsetY);
     return globalObjects.fogSwirl;
 }
 
@@ -93,7 +99,6 @@ function getFloatingDeath() {
         let rightHandOffsetX = 190; rightHandOffsetY = -49;
         globalObjects.deathLeftHand = PhaserScene.add.image(gameConsts.halfWidth + leftHandOffsetX, globalObjects.floatingDeath.y + leftHandOffsetY, 'enemies', 'max_death_left_arm.png');
         globalObjects.deathRightHand = PhaserScene.add.image(gameConsts.halfWidth + rightHandOffsetX, globalObjects.floatingDeath.y + rightHandOffsetY, 'enemies', 'max_death_right_hand.png');
-
 
         globalObjects.deathLeftHand.offsetX = leftHandOffsetX; globalObjects.deathLeftHand.offsetY = leftHandOffsetY; 
         globalObjects.deathRightHand.offsetX = rightHandOffsetX; globalObjects.deathRightHand.offsetY = rightHandOffsetY; 
@@ -119,13 +124,14 @@ function getFloatingDeath() {
     return globalObjects.floatingDeath;
 }
 
-function getFogSwirlGlow() {
+function getFogSwirlGlow(offsetY) {
     if (!globalObjects.fogSwirlGlow) {
-        globalObjects.fogSwirlGlow = PhaserScene.add.image(gameConsts.halfWidth, 225, 'backgrounds', 'fog_swirl_glow.png').setDepth(-4).setAlpha(0);
+        globalObjects.fogSwirlGlow = PhaserScene.add.image(gameConsts.halfWidth, 225, 'backgrounds', 'fog_swirl_glow.png').setDepth(-1).setAlpha(0);
     }
     if (globalObjects.fogSwirlGlow.alpha == 0) {
         globalObjects.fogSwirlGlow.setScale(2).setRotation(-1);
     }
+    globalObjects.fogSwirlGlow.setPosition(gameConsts.halfWidth, 225 + offsetY)
     return globalObjects.fogSwirlGlow;
 }
 

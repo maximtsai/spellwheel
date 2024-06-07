@@ -296,6 +296,35 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">spells/burnParticle1.png</key>
+            <key type="filename">spells/burnParticle10.png</key>
+            <key type="filename">spells/burnParticle11.png</key>
+            <key type="filename">spells/burnParticle12.png</key>
+            <key type="filename">spells/burnParticle13.png</key>
+            <key type="filename">spells/burnParticle2.png</key>
+            <key type="filename">spells/burnParticle3.png</key>
+            <key type="filename">spells/burnParticle4.png</key>
+            <key type="filename">spells/burnParticle5.png</key>
+            <key type="filename">spells/burnParticle6.png</key>
+            <key type="filename">spells/burnParticle7.png</key>
+            <key type="filename">spells/burnParticle8.png</key>
+            <key type="filename">spells/burnParticle9.png</key>
+            <key type="filename">spells/timeGreen.png</key>
+            <key type="filename">spells/timeRed1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,50,100,100</rect>
+                <key>scale9Paddings</key>
+                <rect>50,50,100,100</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">spells/clock.png</key>
             <key type="filename">spells/rock.png</key>
             <struct type="IndividualSpriteSettings">
@@ -348,21 +377,6 @@
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
                 <double>0.72</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>170,170,339,339</rect>
-                <key>scale9Paddings</key>
-                <rect>170,170,339,339</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">spells/clock_back_large_red.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.45</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -436,7 +450,9 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">spells/energyTarget1 - Copy.png</key>
             <key type="filename">spells/energyTarget1.png</key>
+            <key type="filename">spells/energyTarget2 - Copy.png</key>
             <key type="filename">spells/energyTarget2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -749,22 +765,6 @@
                 <rect>15,15,30,30</rect>
                 <key>scale9Paddings</key>
                 <rect>15,15,30,30</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">spells/timeGreen.png</key>
-            <key type="filename">spells/timeRed1.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>50,50,100,100</rect>
-                <key>scale9Paddings</key>
-                <rect>50,50,100,100</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

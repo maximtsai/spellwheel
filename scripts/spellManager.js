@@ -1318,7 +1318,7 @@ class SpellManager {
                     messageBus.publish('setPauseDur', 10);
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
-                        let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 4, 'spells').play('energyTarget').setAlpha(0.2).setScale(0.95).setRotation(Math.PI*0.15);
+                        let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 4, 'spells').play('energyTarget').setAlpha(0.2).setScale(0.95).setRotation(Math.PI*0.15).setBlendMode(Phaser.BlendModes.ADD);
                         animation1.setDepth(50);
                         animation1.setOrigin(0.5, 0.5);
                         this.scene.tweens.add({

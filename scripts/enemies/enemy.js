@@ -297,14 +297,14 @@ class Enemy {
 
         this.shieldSprite = this.scene.add.sprite(this.x, this.y, 'spells', 'shield.png');
         this.shieldSprite.alpha = 0.75;
-        this.shieldSprite.setDepth(2);
+        this.shieldSprite.setDepth(9);
         this.shieldSprite.visible = false;
         this.shieldSprite.startScale = this.shieldSprite.scaleX;
 
-        this.shieldText = this.scene.add.bitmapText(this.x, this.y + 85, 'block', '', 48);
+        this.shieldText = this.scene.add.bitmapText(this.x, this.y + 85, 'armor', '', 48);
         this.shieldText.alpha = 1;
         this.shieldText.setOrigin(0.5, 0.55);
-        this.shieldText.setDepth(2);
+        this.shieldText.setDepth(9);
         this.shieldText.visible = false;
 
         this.curseSprite = this.scene.add.sprite(25, 18, 'enemies', 'curse_symbol_small_2.png');
@@ -595,12 +595,16 @@ class Enemy {
                 amt = 0;
                 this.shieldSprite.alpha = 1;
                 this.shieldSprite.setScale(this.shieldSprite.startScale * 1.1);
+                this.shieldText.setDepth(99);
                 this.scene.tweens.add({
                     targets: this.shieldSprite,
                     scaleX: this.shieldSprite.startScale,
                     scaleY: this.shieldSprite.startScale,
                     duration: 150,
-                    alpha: 0.75
+                    alpha: 0.75,
+                    onComplete: () => {
+                        this.shieldText.setDepth(9);
+                    }
                 });
                 this.shieldText.setText(this.shield);
             } else {

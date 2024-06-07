@@ -18,7 +18,7 @@ function setupLoadingBar(scene) {
     loadObjects.loadingSpinner = scene.add.image(gameConsts.halfWidth, iconsHeight, 'loadingSpinner');
     loadObjects.castButton = scene.add.image(gameConsts.halfWidth, iconsHeight, 'castNormal');
 
-    loadObjects.introLocket = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 100, 'introLocket').setScale(0.47).setAlpha(0).setDepth(1001).setOrigin(0.5, 0.75);
+    loadObjects.introLocket = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 85, 'introLocket').setScale(0.47).setAlpha(0).setDepth(1001).setOrigin(0.5, 0.75);
     loadObjects.introLocket.currAnim = PhaserScene.tweens.add({
         targets: loadObjects.introLocket,
         alpha: 1,
@@ -220,7 +220,7 @@ function setupLoadingBar(scene) {
             }
         }, 100)
 
-        loadObjects.fadeBG = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(1000).setAlpha(0).setDepth(1000);
+        loadObjects.fadeBG = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(1000).setAlpha(0).setDepth(-5);
 
         scene.tweens.add({
             targets: loadObjects.fadeBG,
@@ -248,6 +248,7 @@ function setupLoadingBar(scene) {
 
             }
         });
+        swirlInReaperFog(1.15, 75, 1000);
         scene.tweens.add({
             targets: [loadObjects.loadingText],
             alpha: 0,
@@ -256,12 +257,20 @@ function setupLoadingBar(scene) {
                 loadObjects.loadingText.setText("START").setScale(1).setPosition(loadObjects.loadingText.x, loadObjects.loadingText.y - 20);
                 loadObjects.loadingText.alpha = 1;
 
+                loadObjects.loadingText2 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, 'START', {fontFamily: 'verdanabold', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+                loadObjects.loadingText2.setScale(1).setAlign('center').setOrigin(0.5, 0);
+
+                loadObjects.loadingText3 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, 'START', {fontFamily: 'verdanabold', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+                loadObjects.loadingText3.setScale(1).setAlign('center').setOrigin(0.5, 0);
+
+                this.animateStart();
+
                 loadObjects.introLocket.currAnim.stop();
                 scene.tweens.add({
                     targets: [loadObjects.introLocket],
                     scaleX: 0.55,
                     scaleY: 0.55,
-                    y: gameConsts.halfHeight - 68,
+                    y: gameConsts.halfHeight - 55,
                     duration: 600,
                     ease: 'Cubic.easeOut',
                     onComplete: () => {
@@ -269,12 +278,59 @@ function setupLoadingBar(scene) {
                 });
             }
         });
+    });
+}
+
+function animateStart() {
+    let newX = loadObjects.loadingText.x - 20 + Math.random() * 40;
+    let newY = loadObjects.loadingText.y - 5 + Math.random() * 45;
+    loadObjects.loadingText2.alpha = 0.7;
+    loadObjects.loadingText2.setPosition(loadObjects.loadingText.x, loadObjects.loadingText.y);
+    loadObjects.loadingText2.currAnim = PhaserScene.tweens.add({
+        targets: loadObjects.loadingText2,
+        alpha: 0,
+        x: newX,
+        duration: 1500,
+        completeDelay: 150,
+        onComplete: () => {
+            if (!gameVars.runningIntro) {
+                this.animateStart();
+            }
+        }
+    });
+    PhaserScene.tweens.add({
+        targets: loadObjects.loadingText2,
+        ease: 'Quad.easeIn',
+        y: newY,
+        duration: 1500,
+    });
 
 
+    let new3X = loadObjects.loadingText.x - 20 + Math.random() * 40;
+    let new3Y = loadObjects.loadingText.y - 5 + Math.random() * 45;
+    loadObjects.loadingText3.currAnim = PhaserScene.tweens.add({
+        delay: 750,
+        targets: loadObjects.loadingText3,
+        x: new3X,
+        alpha: 0,
+        duration: 1500,
+        onStart: () => {
+            loadObjects.loadingText3.alpha = 0.7;
+            loadObjects.loadingText3.setPosition(loadObjects.loadingText.x, loadObjects.loadingText.y);
+        }
+    });
+
+    PhaserScene.tweens.add({
+        delay: 750,
+        targets: loadObjects.loadingText3,
+        y: new3Y,
+        ease: 'Quad.easeIn',
+        duration: 1500,
     });
 }
 
 function clickIntro() {
+    clearDeathFog()
     gameVars.runningIntro = true;
      loadObjects.flash.currAnim.stop();
     loadObjects.introLocket.destroy();
@@ -287,6 +343,17 @@ function clickIntro() {
         ease: 'Quad.easeOut',
         duration: 400,
     });
+
+    loadObjects.loadingText2.currAnim.stop();
+    loadObjects.loadingText3.currAnim.stop();
+    PhaserScene.tweens.add({
+        targets: [loadObjects.loadingText2, loadObjects.loadingText3],
+        alpha: 0,
+        duration: 500,
+        ease: 'Quint.easeOut'
+    });
+
+
     loadObjects.glowBG = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'circle.webp').setDepth(1000).setAlpha(0.3).setScale(0);
     loadObjects.glowStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'flashbg.webp').setDepth(1000).setAlpha(0.3).setScale(0.4);
     loadObjects.sharpStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.1, 0.15);

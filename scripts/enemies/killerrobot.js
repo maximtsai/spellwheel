@@ -21,8 +21,9 @@
      }
 
      initPreBattleLogic() {
-         this.shieldSprite.setFrame('shockEffect4.png').setVisible(false).setOrigin(0.5, 0.45);
-         this.shieldSprite.startScale = 3;
+        this.shieldSprite.damageAnim = "forceFieldHit"
+         this.shieldSprite.setFrame('forceField0.png').setVisible(false).setOrigin(0.5, 0.45);
+         this.shieldSprite.startScale = 1.15;
          this.lastAttackLingerMult = 1.75;
          this.attackSlownessMult = 1.25;
         this.lightShineLeft = this.addSprite(gameConsts.halfWidth - 220, gameConsts.halfHeight - 320, 'lowq', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(-0.5);
@@ -194,6 +195,7 @@
                              scaleY: this.sprite.startScale * 0.985,
                              onStart: () => {
                                  playSound('robot_sfx_1');
+                                 this.setAwake();
                              },
                              onComplete: () => {
                                 this.bgMusic = playMusic('jpop', 1, true);
@@ -201,7 +203,6 @@
                                  this.setDefaultSprite('robot1.png');
                                  this.sprite.y = this.sprite.startY;
 
-                                 this.setAwake();
                                  this.loadUpHealthBar();
                                  this.addTween({
                                      targets: this.tunnelBG,

@@ -1333,9 +1333,6 @@ class SpellManager {
                         scaleY: randScale,
                         duration: 460,
                         ease: 'Quart.easeOut',
-                        onComplete: () => {
-                            dmgEffect.destroy();
-                        }
                     });
 
                     messageBus.publish('enemyTakeDamage', 1 + additionalDamage);

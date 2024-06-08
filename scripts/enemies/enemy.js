@@ -295,7 +295,7 @@ class Enemy {
         this.delayedDamageText.setOrigin(0.5, 0.6);
         this.delayedDamageText.setDepth(2);
 
-        this.shieldSprite = this.scene.add.sprite(this.x, this.y, 'enemies', 'shieldHit.png');
+        this.shieldSprite = this.scene.add.sprite(this.x, this.y, 'enemies', 'shield10.png');
         this.shieldSprite.alpha = 0.85;
         this.shieldSprite.setDepth(9);
         this.shieldSprite.visible = false;
@@ -594,7 +594,7 @@ class Enemy {
                 this.shield -= amt;
                 amt = 0;
                 this.shieldSprite.alpha = 1;
-                this.shieldSprite.play('shieldHit')
+                this.shieldSprite.play(this.shieldSprite.damageAnim ? this.shieldSprite.damageAnim : 'shieldHit')
                 this.shieldSprite.setScale(this.shieldSprite.startScale * 1.1);
                 this.shieldText.setDepth(99);
                 this.scene.tweens.add({
@@ -608,6 +608,41 @@ class Enemy {
                     }
                 });
                 this.shieldText.setText(this.shield);
+                let startLeft = Math.random() < 0.5;
+                this.scene.tweens.add({
+                    targets: this.shieldText,
+                    scaleX: this.shieldText.startScale + 0.4,
+                    scaleY: this.shieldText.startScale + 0.4,
+                    y: "-=3",
+                    x: startLeft ? "-=6" : "+=6",
+                    duration: 80,
+                    ease: 'Quint.easeOut',
+                    onComplete: () => {
+                        this.scene.tweens.add({
+                            targets: this.shieldText,
+                            scaleX: this.shieldText.startScale,
+                            scaleY: this.shieldText.startScale,
+                            y: "+=3",
+                            duration: 500,
+                            ease: 'Cubic.easeOut',
+                        });
+                        this.scene.tweens.add({
+                            targets: this.shieldText,
+                            x: startLeft ? "+=13" : "-=13",
+                            duration: 120,
+                            ease: 'Quint.easeInOut',
+                            onComplete: () => {
+                                this.scene.tweens.add({
+                                    targets: this.shieldText,
+                                    x: this.shieldText.startX,
+                                    duration: 400,
+                                    easeParams: [3],
+                                    ease: 'Bounce.easeOut',
+                                });
+                            }
+                        });
+                    }
+                });
             } else {
                 messageBus.publish('animateBlockNum', this.shieldText.x + 1, this.shieldText.y - 15, -amt, 0.5 + Math.sqrt(amt) * 0.125);
                 amt -= this.shield;
@@ -911,7 +946,7 @@ class Enemy {
         }
         this.shield = amt;
         this.shieldSprite.visible = true;
-        this.shieldSprite.play('shieldHit')
+        this.shieldSprite.play(this.shieldSprite.damageAnim ? this.shieldSprite.damageAnim : 'shieldFlash')
         this.shieldSprite.alpha = 0.2;
         this.shieldSprite.setScale(this.shieldSprite.startScale * 1.1);
         this.scene.tweens.add({
@@ -932,10 +967,12 @@ class Enemy {
         this.shieldText.visible = true;
         this.shieldText.setScale(0.1);
         this.shieldText.setText(this.shield);
+        this.shieldText.startX = this.shieldText.x;
+        this.shieldText.startScale = 0.7 + amt * 0.003;
         this.scene.tweens.add({
             targets: this.shieldText,
-            scaleX: 0.7 + amt * 0.003,
-            scaleY: 0.7 + amt * 0.003,
+            scaleX: this.shieldText.startScale,
+            scaleY: this.shieldText.startScale,
             ease: 'Back.easeOut',
             duration: 250,
         });

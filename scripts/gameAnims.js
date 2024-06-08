@@ -110,8 +110,30 @@ function createAnimations(scene) {
         frames: scene.anims.generateFrameNames('enemies', {
             prefix: 'shield',
             suffix: '.png',
+            start: 2,
+            end: 10,
+            zeroPad: 0,
+        }),
+        frameRate: 30
+    });
+    scene.anims.create({
+        key: 'shieldFlash',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'shield',
+            suffix: '.png',
             start: 1,
             end: 10,
+            zeroPad: 0,
+        }),
+        frameRate: 20
+    });
+    scene.anims.create({
+        key: 'forceFieldHit',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'forceField',
+            suffix: '.png',
+            start: 0,
+            end: 1,
             zeroPad: 0,
         }),
         frameRate: 30

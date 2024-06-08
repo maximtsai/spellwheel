@@ -217,7 +217,7 @@ class SpellManager {
                 ease: 'Quad.easeIn',
                 onComplete: () => {
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
-                    let baseDamage = gameVars.matterPlus ? 14 : 120;
+                    let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
                     messageBus.publish('setPauseDur', 20);
                     poolManager.returnItemToPool(rockObj, 'rock');
@@ -923,7 +923,7 @@ class SpellManager {
                 scaleX: goalScale,
                 scaleY: goalScale,
                 ease: 'Back.easeOut',
-                easeParams: [0.25],
+                easeParams: [0.9],
                 onStart: () => {
                     this.scene.tweens.add({
                         targets: delayedStrikeObject,
@@ -952,14 +952,31 @@ class SpellManager {
                 onComplete: () => {
                     this.scene.tweens.add({
                         targets: delayedStrikeObject,
-                        duration: 200,
-                        scaleX: goalScale + 0.4,
-                        scaleY: goalScale + 0.4,
-                        alpha: 0,
+                        duration: 250,
+                        scaleX: goalScale + 0.8,
+                        scaleY: goalScale + 0.8,
+                        ease: 'Quad.easeOut',
                         onComplete: () => {
                             delayedStrikeObject.destroy();
                         }
                     });
+                    this.scene.tweens.add({
+                        targets: delayedStrikeObject,
+                        duration: 250,
+                        alpha: 0,
+
+                    });
+                    let dmgBG = getTempPoolObject('spells', 'blackPulse.png', 'blackPulse', 200).setDepth(delayedStrikeObject.depth - 1).setScale(0.3).setAlpha(0.8).setPosition(delayedStrikeObject.x, delayedStrikeObject.y);
+
+                    let randScale = goalScale * 0.9 + 0.75 + Math.random() * 0.5;
+                    this.scene.tweens.add({
+                        targets: dmgBG,
+                        duration: 300,
+                        scaleX: randScale,
+                        scaleY: randScale,
+                        alpha: 0,
+                    });
+
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', halfSpellDamage);
                     messageBus.publish('setPauseDur', 12);
@@ -1299,16 +1316,23 @@ class SpellManager {
                     playSound('mind_strike');
                 },
                 onComplete: () => {
-                    let dmgEffect = this.scene.add.sprite(attackObj.x, attackObj.y, 'spells').play('shockEffect').setDepth(attackObj.depth).setScale(0.5).setRotation(Math.random() * 6);
-                    let randScale = 1.15 + 0.1 * Math.random();
+                    let dmgBG = getTempPoolObject('spells', 'blackPulse.png', 'blackPulse', 310).setDepth(attackObj.depth).setScale(0.5).setAlpha(0.6).setPosition(attackObj.x, attackObj.y);
+                    let dmgEffect = getTempPoolObject('spells', 'shockEffect1.png', 'shockEffect', 310).play('shockEffect').setPosition(attackObj.x, attackObj.y).setDepth(attackObj.depth).setScale(0.5).setRotation(Math.random() * 6);
+                    let randScale = 1.3 + 0.1 * Math.random();
                     playSound('mind_strike_hit');
 
+
                     this.scene.tweens.add({
-                        targets: dmgEffect,
+                        targets: [dmgBG],
+                        alpha: 0,
+                        duration: 480,
+                    });
+                    this.scene.tweens.add({
+                        targets: [dmgEffect, dmgBG],
                         scaleX: randScale,
                         scaleY: randScale,
-                        duration: 300,
-                        ease: 'Cubic.easeOut',
+                        duration: 460,
+                        ease: 'Quart.easeOut',
                         onComplete: () => {
                             dmgEffect.destroy();
                         }

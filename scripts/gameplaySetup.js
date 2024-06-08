@@ -257,10 +257,10 @@ function setupLoadingBar(scene) {
                 loadObjects.loadingText.setText("START").setScale(1).setPosition(loadObjects.loadingText.x, loadObjects.loadingText.y - 20);
                 loadObjects.loadingText.alpha = 1;
 
-                loadObjects.loadingText2 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, 'START', {fontFamily: 'verdanabold', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+                loadObjects.loadingText2 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, "START", {fontFamily: 'verdanabold', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
                 loadObjects.loadingText2.setScale(1).setAlign('center').setOrigin(0.5, 0);
 
-                loadObjects.loadingText3 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, 'START', {fontFamily: 'verdanabold', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+                loadObjects.loadingText3 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, "START", {fontFamily: 'verdanabold', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
                 loadObjects.loadingText3.setScale(1).setAlign('center').setOrigin(0.5, 0);
 
                 this.animateStart();
@@ -344,8 +344,10 @@ function clickIntro() {
         duration: 400,
     });
 
+    if (loadObjects.loadingText2 && loadObjects.loadingText2.currAnim) {
     loadObjects.loadingText2.currAnim.stop();
     loadObjects.loadingText3.currAnim.stop();
+    }
     PhaserScene.tweens.add({
         targets: [loadObjects.loadingText2, loadObjects.loadingText3],
         alpha: 0,
@@ -356,9 +358,11 @@ function clickIntro() {
 
     loadObjects.glowBG = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'circle.webp').setDepth(1000).setAlpha(0.3).setScale(0);
     loadObjects.glowStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'flashbg.webp').setDepth(1000).setAlpha(0.3).setScale(0.4);
-    loadObjects.sharpStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.1, 0.15);
-    loadObjects.sharpStar2 = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.1, 0.15);
+    loadObjects.sharpStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 30, 'lowq', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.6, 0.05);
+    loadObjects.sharpStar2 = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 25, 'lowq', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.1, 0.15);
 
+    loadObjects.sharpStar.setRotation(0.01);
+    loadObjects.sharpStar2.setRotation(-0.02);
     PhaserScene.tweens.add({
         targets: loadObjects.glowStar,
         alpha: 1,
@@ -367,29 +371,45 @@ function clickIntro() {
         duration: 3000,
     });
 
-    loadObjects.sharpStar.setRotation(0.4);
     PhaserScene.tweens.add({
         targets: loadObjects.sharpStar,
         alpha: 0.9,
-        scaleX: 1.6,
-        scaleY: 0.38,
-        duration: 350,
-        ease: 'Cubic.easeIn',
-        yoyo: true,
+        scaleX: 0.9,
+        scaleY: 0.15,
+        duration: 50,
+        rotation: 0.02,
+        ease: 'Cubic.easeOut',
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                targets: loadObjects.sharpStar,
+                alpha: 0.4,
+                scaleX: 0.1,
+                scaleY: 0.15,
+                duration: 250,
+                rotation: 0.03,
+                ease: 'Cubic.easeOut',
+            });
+        }
     });
 
-    loadObjects.sharpStar2.setRotation(-0.4);
+
     PhaserScene.tweens.add({
-        delay: 150,
         targets: loadObjects.sharpStar2,
         alpha: 0.9,
-        scaleX: 1.85,
-        scaleY: 0.4,
-        duration: 300,
-        ease: 'Quart.easeIn',
-        yoyo: true,
+        scaleX: 1.7,
+        scaleY: 0.5,
+        duration: 200,
+        rotation: -0.03,
+        ease: 'Cubic.easeOut',
         onComplete: () => {
-
+            PhaserScene.tweens.add({
+                targets: loadObjects.sharpStar2,
+                alpha: 0.4,
+                scaleX: 0.1,
+                scaleY: 0.2,
+                duration: 550,
+                ease: 'Cubic.easeOut',
+            });
         }
     });
 

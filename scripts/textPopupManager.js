@@ -71,15 +71,15 @@ class TextPopupManager {
         let shakeMult = 0;
         this.damageNumber += val;
         if (this.damageNumber === 0) {
-            shakeMult = 0;
+            shakeMult = 0.05;
         } else if (this.damageNumber < 15) {
-            shakeMult = 0.3;
+            shakeMult = 0.5;
         } else if (this.damageNumber < 40) {
-            shakeMult = 0.65;
-        } else if (this.damageNumber < 100) {
             shakeMult = 0.8;
-        } else if (this.damageNumber < 160) {
+        } else if (this.damageNumber < 100) {
             shakeMult = 1;
+        } else if (this.damageNumber < 160) {
+            shakeMult = 1.15;
         } else {
             shakeMult = 1.2;
         }
@@ -98,7 +98,7 @@ class TextPopupManager {
             scaleX: newScale * (1 + shakeMult),
             scaleY: newScale * (1 + shakeMult),
             rotation: shakeMult * 0.075 * (Math.random() < 0.5 ? 1 : -1),
-            duration: 140 + extraDur,
+            duration: 150 + extraDur,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 this.damageTween = this.scene.tweens.add({
@@ -110,7 +110,7 @@ class TextPopupManager {
                     ease: 'Bounce.easeOut',
                     onComplete: () => {
                         this.damageTween = this.scene.tweens.add({
-                            delay: 800 + Math.floor(this.damageNumber * 4),
+                            delay: 850 + Math.floor(this.damageNumber * 4),
                             targets: this.damageNum,
                             scaleX: 0,
                             scaleY: 0,

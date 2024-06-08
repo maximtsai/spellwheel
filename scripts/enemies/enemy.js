@@ -295,8 +295,8 @@ class Enemy {
         this.delayedDamageText.setOrigin(0.5, 0.6);
         this.delayedDamageText.setDepth(2);
 
-        this.shieldSprite = this.scene.add.sprite(this.x, this.y, 'spells', 'shield.png');
-        this.shieldSprite.alpha = 0.75;
+        this.shieldSprite = this.scene.add.sprite(this.x, this.y, 'enemies', 'shieldHit.png');
+        this.shieldSprite.alpha = 0.85;
         this.shieldSprite.setDepth(9);
         this.shieldSprite.visible = false;
         this.shieldSprite.startScale = this.shieldSprite.scaleX;
@@ -594,6 +594,7 @@ class Enemy {
                 this.shield -= amt;
                 amt = 0;
                 this.shieldSprite.alpha = 1;
+                this.shieldSprite.play('shieldHit')
                 this.shieldSprite.setScale(this.shieldSprite.startScale * 1.1);
                 this.shieldText.setDepth(99);
                 this.scene.tweens.add({
@@ -601,7 +602,7 @@ class Enemy {
                     scaleX: this.shieldSprite.startScale,
                     scaleY: this.shieldSprite.startScale,
                     duration: 150,
-                    alpha: 0.75,
+                    alpha: 0.85,
                     onComplete: () => {
                         this.shieldText.setDepth(9);
                     }
@@ -910,19 +911,20 @@ class Enemy {
         }
         this.shield = amt;
         this.shieldSprite.visible = true;
+        this.shieldSprite.play('shieldHit')
         this.shieldSprite.alpha = 0.2;
         this.shieldSprite.setScale(this.shieldSprite.startScale * 1.1);
         this.scene.tweens.add({
             targets: this.shieldSprite,
             scaleX: this.shieldSprite.startScale,
             scaleY: this.shieldSprite.startScale,
-            alpha: 0.9,
+            alpha: 1,
             ease: "Cubic.easeIn",
             duration: 150,
             onComplete: () => {
                 this.scene.tweens.add({
                     targets: this.shieldSprite,
-                    alpha: 0.75,
+                    alpha: 0.85,
                     duration: 250,
                 });
             }

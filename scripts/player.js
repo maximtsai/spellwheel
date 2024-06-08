@@ -842,6 +842,21 @@ class Player {
                                             repeat: 6
                                         });
 
+                                        let dist = 210;
+                                        let xPos = gameConsts.halfWidth + Math.sin(shieldObj.animObj[3].rotation) * dist;
+                                        let yPos = globalObjects.player.getY() - Math.cos(shieldObj.animObj[3].rotation) * dist;
+
+                                        let shockEffect = getTempPoolObject('spells', 'shockEffect1.png', 'shockEffect', 1100).play('powerEffect');
+                                        let goalScale = shieldObj.animObj[3].scaleX;
+                                        shockEffect.setPosition(xPos, yPos).setDepth(shieldObj.animObj[3].depth - 1).setScale(goalScale*0.6, goalScale*0.15).setRotation(shieldObj.animObj[0].rotation);
+                                        this.scene.tweens.add({
+                                            targets: shockEffect,
+                                            duration: 1000,
+                                            scaleX: goalScale * 1.4,
+                                            scaleY: goalScale * 0.35,
+                                            ease: 'Quint.easeOut'
+                                        });
+
                                         if (shieldObj.active) {
                                             messageBus.publish('enemyTakeTrueDamage', shieldObj.storedDamage, false, 95);
                                             shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale);
@@ -856,9 +871,6 @@ class Player {
                                             });
                                             shieldObj.animObj[1].setAlpha(1); // reticle
                                         } else {
-                                            let dist = 210;
-                                            let xPos = gameConsts.halfWidth + Math.sin(shieldObj.animObj[3].rotation) * dist;
-                                            let yPos = globalObjects.player.getY() - Math.cos(shieldObj.animObj[3].rotation) * dist;
                                             messageBus.publish('animateBlockNum', xPos, yPos, 'MISSED', 0.85);
                                         }
                                     }

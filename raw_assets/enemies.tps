@@ -1182,6 +1182,30 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/shield1.png</key>
+            <key type="filename">enemies/shield10.png</key>
+            <key type="filename">enemies/shield2.png</key>
+            <key type="filename">enemies/shield3.png</key>
+            <key type="filename">enemies/shield4.png</key>
+            <key type="filename">enemies/shield5.png</key>
+            <key type="filename">enemies/shield6.png</key>
+            <key type="filename">enemies/shield7.png</key>
+            <key type="filename">enemies/shield8.png</key>
+            <key type="filename">enemies/shield9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>130,115,260,230</rect>
+                <key>scale9Paddings</key>
+                <rect>130,115,260,230</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/thorns.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

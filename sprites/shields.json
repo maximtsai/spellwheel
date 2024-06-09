@@ -1,0 +1,770 @@
+{
+	"textures": [
+		{
+			"image": "sprites/shields-0.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1728,
+				"h": 1333
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "forceField1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceField2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 1,
+						"y": 368,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceField3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 368,
+						"y": 1,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceFieldShort1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 368,
+						"y": 1,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceField4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 1,
+						"y": 735,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shield1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 260,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 258,
+						"h": 230
+					},
+					"frame": {
+						"x": 1,
+						"y": 1102,
+						"w": 258,
+						"h": 230
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceField5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 368,
+						"y": 368,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceField6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 735,
+						"y": 1,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceFieldShort2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 735,
+						"y": 1,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceField7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 368,
+						"y": 735,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceFieldShort3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 368,
+						"y": 735,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shield2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 260,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 258,
+						"h": 230
+					},
+					"frame": {
+						"x": 261,
+						"y": 1102,
+						"w": 258,
+						"h": 230
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceField8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 735,
+						"y": 368,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceFieldShort4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 735,
+						"y": 368,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceField9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 1102,
+						"y": 1,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceFieldShort5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 1102,
+						"y": 1,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceField10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 735,
+						"y": 735,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceFieldShort6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 735,
+						"y": 735,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shield3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 260,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 258,
+						"h": 230
+					},
+					"frame": {
+						"x": 521,
+						"y": 1102,
+						"w": 258,
+						"h": 230
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shield4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 260,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 258,
+						"h": 230
+					},
+					"frame": {
+						"x": 781,
+						"y": 1102,
+						"w": 258,
+						"h": 230
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceField11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 1102,
+						"y": 368,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceFieldShort7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 1102,
+						"y": 368,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceField12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 1102,
+						"y": 735,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "forceFieldShort8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 365,
+						"h": 365
+					},
+					"frame": {
+						"x": 1102,
+						"y": 735,
+						"w": 365,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shield5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 260,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 258,
+						"h": 230
+					},
+					"frame": {
+						"x": 1041,
+						"y": 1102,
+						"w": 258,
+						"h": 230
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shield6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 260,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 258,
+						"h": 230
+					},
+					"frame": {
+						"x": 1301,
+						"y": 1102,
+						"w": 258,
+						"h": 230
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shield7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 260,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 258,
+						"h": 230
+					},
+					"frame": {
+						"x": 1469,
+						"y": 1,
+						"w": 258,
+						"h": 230
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shield8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 260,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 258,
+						"h": 230
+					},
+					"frame": {
+						"x": 1469,
+						"y": 233,
+						"w": 258,
+						"h": 230
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shield9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 260,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 258,
+						"h": 230
+					},
+					"frame": {
+						"x": 1469,
+						"y": 465,
+						"w": 258,
+						"h": 230
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shield10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 260,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 258,
+						"h": 230
+					},
+					"frame": {
+						"x": 1469,
+						"y": 697,
+						"w": 258,
+						"h": 230
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:01213e1285e36fb14a131d375b4e228c:9ac7cf1d6ff58e73e3756f63d511631d:e3951c6f68ce0c66739caba1d93c8ece$"
+	}
+}

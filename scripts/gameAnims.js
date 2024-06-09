@@ -107,7 +107,7 @@ function createAnimations(scene) {
     });
     scene.anims.create({
         key: 'shieldHit',
-        frames: scene.anims.generateFrameNames('enemies', {
+        frames: scene.anims.generateFrameNames('shields', {
             prefix: 'shield',
             suffix: '.png',
             start: 2,
@@ -118,7 +118,7 @@ function createAnimations(scene) {
     });
     scene.anims.create({
         key: 'shieldFlash',
-        frames: scene.anims.generateFrameNames('enemies', {
+        frames: scene.anims.generateFrameNames('shields', {
             prefix: 'shield',
             suffix: '.png',
             start: 1,
@@ -129,14 +129,36 @@ function createAnimations(scene) {
     });
     scene.anims.create({
         key: 'forceFieldHit',
-        frames: scene.anims.generateFrameNames('enemies', {
+        frames: scene.anims.generateFrameNames('shields', {
             prefix: 'forceField',
             suffix: '.png',
-            start: 0,
-            end: 1,
+            start: 2,
+            end: 12,
             zeroPad: 0,
         }),
         frameRate: 30
+    });
+    scene.anims.create({
+        key: 'forceFieldHitShort',
+        frames: scene.anims.generateFrameNames('shields', {
+            prefix: 'forceFieldShort',
+            suffix: '.png',
+            start: 1,
+            end: 8,
+            zeroPad: 0,
+        }),
+        frameRate: 30
+    });
+    scene.anims.create({
+        key: 'forceFieldFlash',
+        frames: scene.anims.generateFrameNames('shields', {
+            prefix: 'forceField',
+            suffix: '.png',
+            start: 1,
+            end: 12,
+            zeroPad: 0,
+        }),
+        frameRate: 15
     });
     scene.anims.create({
         key: 'circleEffect',

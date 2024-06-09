@@ -79,9 +79,12 @@
                      isPassive: true,
                      customCall: " ",
                      chargeAmt: 350,
-                     attackFinishFunction: () => {
+                    transitionFast: true,
+                     startFunction: () => {
+                        this.attackScale = 1;
+                     },
+                     attackStartFunction: () => {
                          playSound('clunk');
-
                          let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 700);
                          shinePattern.setPosition(this.x, this.y).setScale(0.8).setDepth(-1).setAlpha(0.5);
                          this.addTween({
@@ -99,9 +102,13 @@
                          });
 
                          this.setDefaultSprite('gobboshield1.png', 0.92).play('gobboshield');
+                         this.shieldAdded = true;
+                     },
+                     attackFinishFunction: () => {
+
+
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
-                         this.shieldAdded = true;
                      }
                  }
              ],
@@ -114,7 +121,7 @@
                      damage: gameVars.isHardMode ? 12 : 6,
                      startFunction: () => {
                         this.pullbackScale = 0.85;
-                        this.attackScale = 1.2;
+                        this.attackScale = 1.28;
                      },
                      attackFinishFunction: () => {
                          playSound('body_slam')

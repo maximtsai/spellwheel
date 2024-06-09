@@ -20,10 +20,35 @@
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
      }
 
+    playShieldHitAnim() {
+        this.shieldSprite.alpha = this.recentlyHit ? 0.86 : 0.95;
+        let animToPlay = this.recentlyHit ? "forceFieldHitShort" : "forceFieldHit";
+        this.shieldSprite.play(animToPlay)
+        this.shieldSprite.rotation = Math.random() * 1 - 0.5;
+        this.shieldSprite.setScale(this.shieldSprite.startScale * 1.02);
+        this.shieldText.setDepth(99);
+        if (this.shieldHitAnim) {
+            this.shieldHitAnim.stop();
+        }
+        this.shieldHitAnim = this.scene.tweens.add({
+            targets: this.shieldSprite,
+            scaleX: this.shieldSprite.startScale,
+            scaleY: this.shieldSprite.startScale,
+            duration: 150,
+            alpha: 0.8,
+            completeDelay: 250,
+            onComplete: () => {
+                this.recentlyHit = false;
+            }
+        });
+        this.recentlyHit = true;
+    }
+
      initPreBattleLogic() {
-        this.shieldSprite.damageAnim = "forceFieldHit"
-         this.shieldSprite.setFrame('forceField0.png').setVisible(false).setOrigin(0.5, 0.45);
-         this.shieldSprite.startScale = 1.15;
+        this.shieldSprite.damageAnim = "forceFieldHit";
+        this.shieldSprite.flashAnim = "forceFieldFlash";
+         this.shieldSprite.setFrame('forceField12.png').setVisible(false).setOrigin(0.5, 0.45);
+         this.shieldSprite.startScale = 1.05;
          this.lastAttackLingerMult = 1.75;
          this.attackSlownessMult = 1.25;
         this.lightShineLeft = this.addSprite(gameConsts.halfWidth - 220, gameConsts.halfHeight - 320, 'lowq', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(-0.5);

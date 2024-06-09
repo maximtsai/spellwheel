@@ -161,6 +161,17 @@ function createAnimations(scene) {
         frameRate: 15
     });
     scene.anims.create({
+        key: 'forceBreak',
+        frames: scene.anims.generateFrameNames('shields', {
+            prefix: 'forceBreak',
+            suffix: '.png',
+            start: 1,
+            end: 3,
+            zeroPad: 0,
+        }),
+        frameRate: 10
+    });
+    scene.anims.create({
         key: 'circleEffect',
         frames: scene.anims.generateFrameNames('circle', {
             prefix: 'circleEffect',

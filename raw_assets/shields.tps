@@ -173,6 +173,23 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">shields/forceBreak1.png</key>
+            <key type="filename">shields/forceBreak2.png</key>
+            <key type="filename">shields/forceBreak3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.92</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>125,125,250,250</rect>
+                <key>scale9Paddings</key>
+                <rect>125,125,250,250</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">shields/forceField1.png</key>
             <key type="filename">shields/forceField10.png</key>
             <key type="filename">shields/forceField11.png</key>

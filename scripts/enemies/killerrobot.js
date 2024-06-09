@@ -44,6 +44,36 @@
         this.recentlyHit = true;
     }
 
+    clearShield() {
+        this.shield = 0;
+        this.shieldSprite.alpha = 1.2;
+        this.shieldSprite.play('forceBreak');
+        this.scene.tweens.add({
+            targets: this.shieldSprite,
+            scaleX: this.shieldSprite.startScale * 1.1,
+            scaleY: this.shieldSprite.startScale * 1.1,
+            ease: 'Cubic.easeOut',
+            duration: 900,
+            alpha: 0,
+            onComplete: () => {
+                this.shieldSprite.visible = false;
+            }
+        });
+
+        if (this.shieldText) {
+            this.shieldText.setText(0);
+            this.scene.tweens.add({
+                targets: this.shieldText,
+                scaleX: 0,
+                scaleY: 0,
+                duration: 900,
+                onComplete: () => {
+                    this.shieldText.visible = false;
+                }
+            });
+        }
+    }
+
      initPreBattleLogic() {
         this.shieldSprite.damageAnim = "forceFieldHit";
         this.shieldSprite.flashAnim = "forceFieldFlash";

@@ -84,7 +84,9 @@ let canResizeGame = false;
 function preload ()
 {
     if (isMobile && screen && screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock('portrait')
+        var myScreenOrientation = window.screen.orientation;
+        console.log(myScreenOrientation)
+        myScreenOrientation.lock('portrait')
     }
     canResizeGame = true;
     resizeGame();

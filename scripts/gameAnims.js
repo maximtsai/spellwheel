@@ -183,6 +183,17 @@ function createAnimations(scene) {
         frameRate: 10
     });
     scene.anims.create({
+        key: 'circleBlast',
+        frames: scene.anims.generateFrameNames('lowq', {
+            prefix: 'circle_blue',
+            suffix: '.png',
+            start: 0,
+            end: 4,
+            zeroPad: 0,
+        }),
+        frameRate: 5
+    });
+    scene.anims.create({
         key: 'circleEffectSmall',
         frames: scene.anims.generateFrameNames('circle', {
             prefix: 'circleEffect',

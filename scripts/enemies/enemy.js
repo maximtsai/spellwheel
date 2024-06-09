@@ -589,10 +589,68 @@ class Enemy {
             amt = Math.max(0, amt - this.defense);
         }
         if (isAttack && this.statuses['mindStrike'] && !isTrue) {
-            this.statuses['mindStrike'].cleanUp(this.statuses);
+            let xPos = this.statuses['mindStrike'].x; let yPos = this.statuses['mindStrike'].y;
             let damageToTake = Math.ceil(amt);
+            this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake);
             setTimeout(() => {
-                this.takeTrueDamage(damageToTake);
+                this.takeTrueDamage(damageToTake, undefined, 0);
+                // let startScale = 0.45 + Math.sqrt(damageToTake) * 0.1;
+                // let damageCircle = getTempPoolObject('lowq', 'circle_blue0.png', 'circle_blue', 1800).setDepth(100).setScale(startScale).setAlpha(0.3).setPosition(xPos, yPos);
+                // damageCircle.play('circleBlast')
+                // let damageStar = getTempPoolObject('lowq', 'star_white.png', 'star_white', 1800).setDepth(100).setScale(startScale).setAlpha(0.45).setPosition(xPos, yPos).setRotation(Math.PI * 0.25);
+                // this.scene.tweens.add({
+                //     targets: [damageCircle, damageStar],
+                //     alpha: 1,
+                //     duration: 900,
+                //     ease: 'Cubic.easeOut',
+                // });
+                // this.scene.tweens.add({
+                //     targets: damageCircle,
+                //     scaleX: 0,
+                //     scaleY: 0,
+                //     duration: 850 + damageToTake * 10,
+                //     ease: 'Quint.easeIn',
+                //     onComplete: () => {
+                //     }
+                // });
+                // damageStar.rotAnim = this.scene.tweens.add({
+                //     targets: damageStar,
+                //     rotation: "-=6.28",
+                //     duration: 1800,
+                // });
+                // this.scene.tweens.add({
+                //     targets: damageStar,
+                //     scaleX: startScale * 1.8,
+                //     scaleY: startScale * 1.8,
+                //     duration: 150,
+                //     ease: 'Cubic.easeOut',
+                //     onComplete: () => {
+                //         this.scene.tweens.add({
+                //             targets: damageStar,
+                //             scaleX: 0,
+                //             scaleY: 0,
+                //             duration: 550 + damageToTake * 10,
+                //             ease: 'Cubic.easeIn',
+                //             completeDelay: 50,
+                //             onComplete: () => {
+                //                 damageStar.rotAnim.stop();
+                //                 this.takeTrueDamage(damageToTake, undefined, 40);
+                //                 damageStar.setRotation(Math.PI * 0.25);
+                //                 damageStar.setScale(startScale * 1.25);
+                //                 this.scene.tweens.add({
+                //                     targets: damageStar,
+                //                     scaleX: startScale * 2,
+                //                     scaleY: startScale * 2,
+                //                     duration: 250,
+                //                     ease: 'Quad.easeOut',
+                //                     alpha: 0
+                //                 });
+                //             }
+                //         });
+                //     }
+                // });
+
+
             }, 0);
         }
 
@@ -1014,9 +1072,9 @@ class Enemy {
         this.shieldSprite.alpha = 1;
         this.scene.tweens.add({
             targets: this.shieldSprite,
-            scaleX: this.shieldSprite.startScale * 1.2,
-            scaleY: this.shieldSprite.startScale * 1.2,
-            duration: 100,
+            scaleX: this.shieldSprite.startScale * 1.25,
+            scaleY: this.shieldSprite.startScale * 1.25,
+            duration: 250,
             alpha: 0,
             onComplete: () => {
                 this.shieldSprite.visible = false;
@@ -1029,7 +1087,8 @@ class Enemy {
                 targets: this.shieldText,
                 scaleX: 0,
                 scaleY: 0,
-                duration: 100,
+                ease: 'Quad.easeOut',
+                duration: 250,
                 onComplete: () => {
                     this.shieldText.visible = false;
                 }

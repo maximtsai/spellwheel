@@ -4,8 +4,8 @@
 			"image": "sprites/dummyenemy-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2026,
-				"h": 1007
+				"w": 1812,
+				"h": 1228
 			},
 			"scale": 1,
 			"frames": [
@@ -135,56 +135,6 @@
 					}
 				},
 				{
-					"filename": "super_dummy_dab_left.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 421,
-						"h": 329
-					},
-					"spriteSourceSize": {
-						"x": 9,
-						"y": 0,
-						"w": 317,
-						"h": 305
-					},
-					"frame": {
-						"x": 320,
-						"y": 701,
-						"w": 317,
-						"h": 305
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "super_dummy_pushup1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 278,
-						"h": 448
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 80,
-						"w": 273,
-						"h": 272
-					},
-					"frame": {
-						"x": 358,
-						"y": 427,
-						"w": 273,
-						"h": 272
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "super_dummy_wide.png",
 					"rotated": false,
 					"trimmed": true,
@@ -235,24 +185,74 @@
 					}
 				},
 				{
-					"filename": "super_dummy_swinging.png",
+					"filename": "dummy_broken.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 323,
-						"h": 320
+						"w": 263,
+						"h": 220
 					},
 					"spriteSourceSize": {
-						"x": 4,
-						"y": 57,
-						"w": 318,
-						"h": 263
+						"x": 0,
+						"y": 1,
+						"w": 239,
+						"h": 219
 					},
 					"frame": {
-						"x": 1682,
-						"y": 1,
-						"w": 318,
-						"h": 263
+						"x": 1,
+						"y": 1008,
+						"w": 239,
+						"h": 219
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "super_dummy_pushup1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 278,
+						"h": 448
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 80,
+						"w": 273,
+						"h": 272
+					},
+					"frame": {
+						"x": 358,
+						"y": 427,
+						"w": 273,
+						"h": 272
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "super_dummy_dab_left.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 421,
+						"h": 329
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 0,
+						"w": 317,
+						"h": 305
+					},
+					"frame": {
+						"x": 320,
+						"y": 701,
+						"w": 317,
+						"h": 305
 					},
 					"anchor": {
 						"x": 0.5,
@@ -335,24 +335,99 @@
 					}
 				},
 				{
-					"filename": "dummy_fist_lines.png",
+					"filename": "super_dummy_swinging.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 484,
-						"h": 400
+						"w": 323,
+						"h": 320
 					},
 					"spriteSourceSize": {
-						"x": 81,
-						"y": 63,
-						"w": 321,
-						"h": 25
+						"x": 4,
+						"y": 57,
+						"w": 318,
+						"h": 263
 					},
 					"frame": {
 						"x": 639,
 						"y": 931,
-						"w": 321,
-						"h": 25
+						"w": 318,
+						"h": 263
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "super_dummy_pushup1_flip.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 278,
+						"h": 448
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 80,
+						"w": 273,
+						"h": 272
+					},
+					"frame": {
+						"x": 959,
+						"y": 931,
+						"w": 273,
+						"h": 272
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "super_dummy_rightarm_stretch.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 295,
+						"h": 305
+					},
+					"spriteSourceSize": {
+						"x": 127,
+						"y": 0,
+						"w": 168,
+						"h": 177
+					},
+					"frame": {
+						"x": 242,
+						"y": 1008,
+						"w": 168,
+						"h": 177
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "super_dummy_leftarm_stretch.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 295,
+						"h": 305
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 168,
+						"h": 176
+					},
+					"frame": {
+						"x": 412,
+						"y": 1008,
+						"w": 168,
+						"h": 176
 					},
 					"anchor": {
 						"x": 0.5,
@@ -410,31 +485,6 @@
 					}
 				},
 				{
-					"filename": "super_dummy_pushup1_flip.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 278,
-						"h": 448
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 80,
-						"w": 273,
-						"h": 272
-					},
-					"frame": {
-						"x": 1336,
-						"y": 250,
-						"w": 273,
-						"h": 272
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "super_dummy_stars.png",
 					"rotated": false,
 					"trimmed": true,
@@ -449,35 +499,10 @@
 						"h": 265
 					},
 					"frame": {
-						"x": 1113,
-						"y": 518,
+						"x": 1336,
+						"y": 250,
 						"w": 198,
 						"h": 265
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dummy_broken.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 263,
-						"h": 220
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 239,
-						"h": 219
-					},
-					"frame": {
-						"x": 1313,
-						"y": 524,
-						"w": 239,
-						"h": 219
 					},
 					"anchor": {
 						"x": 0.5,
@@ -499,8 +524,8 @@
 						"h": 246
 					},
 					"frame": {
-						"x": 1611,
-						"y": 266,
+						"x": 1536,
+						"y": 250,
 						"w": 156,
 						"h": 246
 					},
@@ -510,24 +535,24 @@
 					}
 				},
 				{
-					"filename": "dummy.png",
+					"filename": "dummy_paper.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 163,
-						"h": 320
+						"w": 176,
+						"h": 473
 					},
 					"spriteSourceSize": {
-						"x": 7,
-						"y": 83,
-						"w": 156,
-						"h": 237
+						"x": 8,
+						"y": 0,
+						"w": 166,
+						"h": 241
 					},
 					"frame": {
-						"x": 1769,
-						"y": 266,
-						"w": 156,
-						"h": 237
+						"x": 1113,
+						"y": 518,
+						"w": 166,
+						"h": 241
 					},
 					"anchor": {
 						"x": 0.5,
@@ -550,7 +575,7 @@
 					},
 					"frame": {
 						"x": 1113,
-						"y": 785,
+						"y": 761,
 						"w": 176,
 						"h": 154
 					},
@@ -574,10 +599,110 @@
 						"h": 220
 					},
 					"frame": {
-						"x": 1927,
-						"y": 266,
+						"x": 1682,
+						"y": 1,
 						"w": 98,
 						"h": 220
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummy_paper_back.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 176,
+						"h": 473
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 0,
+						"w": 166,
+						"h": 241
+					},
+					"frame": {
+						"x": 1281,
+						"y": 518,
+						"w": 166,
+						"h": 241
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummy_paper_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 176,
+						"h": 473
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 0,
+						"w": 166,
+						"h": 241
+					},
+					"frame": {
+						"x": 1449,
+						"y": 517,
+						"w": 166,
+						"h": 241
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummy_paper_face.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 176,
+						"h": 473
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 0,
+						"w": 166,
+						"h": 241
+					},
+					"frame": {
+						"x": 1291,
+						"y": 761,
+						"w": 166,
+						"h": 241
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummy.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 163,
+						"h": 320
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 83,
+						"w": 156,
+						"h": 237
+					},
+					"frame": {
+						"x": 1459,
+						"y": 760,
+						"w": 156,
+						"h": 237
 					},
 					"anchor": {
 						"x": 0.5,
@@ -599,8 +724,8 @@
 						"h": 237
 					},
 					"frame": {
-						"x": 1554,
-						"y": 524,
+						"x": 1617,
+						"y": 498,
 						"w": 156,
 						"h": 237
 					},
@@ -624,8 +749,8 @@
 						"h": 237
 					},
 					"frame": {
-						"x": 1712,
-						"y": 514,
+						"x": 1617,
+						"y": 737,
 						"w": 156,
 						"h": 237
 					},
@@ -649,8 +774,8 @@
 						"h": 88
 					},
 					"frame": {
-						"x": 1313,
-						"y": 745,
+						"x": 1234,
+						"y": 1004,
 						"w": 216,
 						"h": 88
 					},
@@ -674,8 +799,8 @@
 						"h": 89
 					},
 					"frame": {
-						"x": 1291,
-						"y": 835,
+						"x": 1234,
+						"y": 1094,
 						"w": 215,
 						"h": 89
 					},
@@ -685,24 +810,24 @@
 					}
 				},
 				{
-					"filename": "super_dummy_leftarm_stretch.png",
+					"filename": "dummy_fist_lines.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 295,
-						"h": 305
+						"w": 363,
+						"h": 300
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 168,
-						"h": 176
+						"x": 61,
+						"y": 47,
+						"w": 241,
+						"h": 20
 					},
 					"frame": {
-						"x": 1531,
-						"y": 763,
-						"w": 168,
-						"h": 176
+						"x": 1234,
+						"y": 1185,
+						"w": 241,
+						"h": 20
 					},
 					"anchor": {
 						"x": 0.5,
@@ -724,8 +849,8 @@
 						"h": 151
 					},
 					"frame": {
-						"x": 1870,
-						"y": 505,
+						"x": 1694,
+						"y": 223,
 						"w": 117,
 						"h": 151
 					},
@@ -735,24 +860,49 @@
 					}
 				},
 				{
-					"filename": "super_dummy_rightarm.png",
+					"filename": "dummy_fake_face.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 222,
-						"h": 234
+						"w": 163,
+						"h": 320
 					},
 					"spriteSourceSize": {
-						"x": 102,
-						"y": 0,
-						"w": 117,
-						"h": 151
+						"x": 35,
+						"y": 77,
+						"w": 97,
+						"h": 109
 					},
 					"frame": {
-						"x": 1870,
-						"y": 658,
-						"w": 117,
-						"h": 151
+						"x": 1694,
+						"y": 376,
+						"w": 97,
+						"h": 109
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummy_fake.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 153,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 72,
+						"w": 147,
+						"h": 228
+					},
+					"frame": {
+						"x": 1617,
+						"y": 976,
+						"w": 147,
+						"h": 228
 					},
 					"anchor": {
 						"x": 0.5,
@@ -774,8 +924,8 @@
 						"h": 29
 					},
 					"frame": {
-						"x": 639,
-						"y": 958,
+						"x": 242,
+						"y": 1187,
 						"w": 135,
 						"h": 29
 					},
@@ -785,24 +935,24 @@
 					}
 				},
 				{
-					"filename": "super_dummy_rightarm_stretch.png",
+					"filename": "super_dummy_rightarm.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 295,
-						"h": 305
+						"w": 222,
+						"h": 234
 					},
 					"spriteSourceSize": {
-						"x": 127,
+						"x": 102,
 						"y": 0,
-						"w": 168,
-						"h": 177
+						"w": 117,
+						"h": 151
 					},
 					"frame": {
-						"x": 1701,
-						"y": 811,
-						"w": 168,
-						"h": 177
+						"x": 1459,
+						"y": 999,
+						"w": 117,
+						"h": 151
 					},
 					"anchor": {
 						"x": 0.5,
@@ -865,6 +1015,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:b559e620e2eae602b0727c4947837fa1:afcd1478d84a5193c06281b59a17b2ba:54bf8bea0d39745f04810f264e648deb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:ae8c522923904cd44b1ba0bca56440cc:b204c17e4374a6d829be845e03fce4e2:54bf8bea0d39745f04810f264e648deb$"
 	}
 }

@@ -334,6 +334,8 @@
              if (this.shield == 0) {
                  // shield must have broke
                  playSound('cutesy_down');
+                 playSound('glass_break');
+
                  this.shieldsBroken++;
                  this.cleanUpTweens();
                  this.shieldAdded = false;
@@ -367,6 +369,7 @@
         if (this.kyaTween) {
             this.kyaTween.stop();
         }
+        playSound('glass_break');
         this.emergency = true;
          this.baseBGAlpha = -0.25;
          this.addTween({

@@ -50,6 +50,7 @@
                  this.currentAttackSetIndex = 3;
                  this.nextAttackIndex = 0;
                  playSound('goblin_grunt');
+                 playSound('clunk');
              }
          }
      }

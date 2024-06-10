@@ -328,9 +328,88 @@ function animateStart() {
         duration: 1500,
     });
 }
+let randIntroTexts = ["find her", "I will find you", "my beloved", "searching", "dearest", "bring her back", 
+    "rescue her", "seek her", "lovely departed", "find", "rescue", "save", "love", "I will be a hero", "triumph", "from the dead", "not yet gone"
+    ];
+function generateRandIntroText() {
+    let randVal = Math.floor(Math.random() * randIntroTexts.length);
+    if (randVal == gameVars.lastIntroTextGenerated) {
+        randVal = Math.floor(Math.random() * randIntroTexts.length);
+    } else if (randVal == gameVars.lastLastIntroTextGenerated) {
+        randVal = Math.floor(Math.random() * randIntroTexts.length);
+    }
+    if (randVal == gameVars.lastIntroTextGenerated) {
+        randVal = Math.floor(Math.random() * randIntroTexts.length);
+    } else if (randVal == gameVars.lastLastIntroTextGenerated) {
+        randVal = Math.floor(Math.random() * randIntroTexts.length);
+    }
+    gameVars.lastLastIntroTextGenerated = gameVars.lastIntroTextGenerated;
+    gameVars.lastIntroTextGenerated = randVal;
+    return randIntroTexts[randVal];
+}
+
+function recursiveCreateIntroText(delay = 100, num = 180) {
+    if (num <= 0 || gameVars.introFinished) {
+        return;
+    }
+
+    let randX = Math.random() * gameConsts.width;
+    let randY = Math.random() * gameConsts.height;
+    let numAttempts = 3;
+    while (numAttempts > 0) {
+        if (Math.abs(randX - gameConsts.halfWidth) < 120) {
+            // might be in middle of somethin
+            if (randY > gameConsts.height - 150) {
+                randX = Math.random() * gameConsts.width;
+                randY = Math.random() * gameConsts.height;
+            } else {
+                numAttempts = 0;
+            }
+        } else {
+            numAttempts = 0;
+        }
+    }
+
+    let extraAlpha = 0.6 - delay * 0.004;
+    let newText = PhaserScene.add.text(randX, randY, generateRandIntroText(), {fontFamily: 'verdanabold', fontSize: 28, color: '#EEEEEE', align: 'center'}).setDepth(100).setAlpha(Math.random() * 0.25 - 0.15).setOrigin(0.5, 0.5).setScale(1 + Math.random() * 1);
+    PhaserScene.tweens.add({
+        targets: newText,
+        alpha: Math.max(0.1, newText.alpha + extraAlpha),
+        duration: 400,
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                targets: newText,
+                alpha: 0,
+                duration: 1200,
+                onComplete: () => {
+                    
+                }
+            });
+        }
+    });
+    let randShiftX = 20 * (Math.random() - 0.5)
+    let randShiftY = 20 * (Math.random() - 0.5)
+    PhaserScene.tweens.add({
+        targets: newText,
+        scaleX: newText.scaleX * 0.9,
+        scaleY: newText.scaleX * 0.9,
+        x: "+=" + randShiftX,
+        y: "+=" + randShiftY,
+        duration: 1600,
+    });
+
+    globalObjects.tempIntroText.push(newText)
+    let newDelay = Math.ceil(delay * 0.93);
+    console.log(num);
+    setTimeout(() => {
+        recursiveCreateIntroText(newDelay, num - 1)
+    }, delay)
+}
 
 function clickIntro() {
-    clearDeathFog()
+    clearDeathFog();
+    globalObjects.tempIntroText = [];
+    recursiveCreateIntroText();
     gameVars.runningIntro = true;
      loadObjects.flash.currAnim.stop();
     loadObjects.introLocket.destroy();
@@ -356,7 +435,7 @@ function clickIntro() {
     });
 
 
-    loadObjects.glowBG = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'circle.webp').setDepth(1000).setAlpha(0.3).setScale(0);
+    loadObjects.glowBG = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'circle.webp').setDepth(2000).setAlpha(0.5).setScale(0);
     loadObjects.glowStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'flashbg.webp').setDepth(1000).setAlpha(0.3).setScale(0.4);
     loadObjects.sharpStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 30, 'lowq', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.6, 0.05);
     loadObjects.sharpStar2 = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 25, 'lowq', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.1, 0.15);
@@ -416,9 +495,9 @@ function clickIntro() {
     PhaserScene.tweens.add({
         delay: 2500,
         targets: loadObjects.glowBG,
-        alpha: 1,
-        scaleX: 10,
-        scaleY: 10,
+        alpha: 1.25,
+        scaleX: 14,
+        scaleY: 14,
         duration: 500,
         ease: 'Quart.easeIn',
         onComplete: () => {
@@ -432,6 +511,13 @@ function clickIntro() {
         alpha: 1,
         ease: 'Quad.easeOut',
         duration: 500
+    });
+    loadObjects.whiteOverall = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setDepth(2000).setAlpha(0).setScale(1000);
+    PhaserScene.tweens.add({
+        targets: loadObjects.whiteOverall,
+        alpha: 1,
+        ease: 'Cubic.easeIn',
+        duration: 3200
     });
     setTimeout(() => {
         if (!gameVars.introFinished) {
@@ -466,13 +552,6 @@ function clickIntro() {
 }
 
 function skipIntro() {
-    tempBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(1000).setAlpha(0.5).setDepth(1002);
-    PhaserScene.tweens.add({
-        targets: tempBG,
-        alpha: 0,
-        ease: 'Cubic.easeOut',
-        duration: 1000
-    });
     setTimeout(() => {
         cleanupIntro();
     }, 0)
@@ -484,6 +563,15 @@ function cleanupIntro() {
         return;
     }
     gameVars.introFinished = true;
+    tempBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(1000).setAlpha(0.85).setDepth(1002);
+    PhaserScene.tweens.add({
+        targets: tempBG,
+        alpha: 0,
+        duration: 750,
+        onComplete: () => {
+            tempBG.destroy();
+        }
+    });
 
     hideGlobalClickBlocker();
     for (let i = 0; i < icons.length; i++) {
@@ -493,6 +581,9 @@ function cleanupIntro() {
     globalObjects.tempBG.alpha = 0;
     for (let i in loadObjects) {
         loadObjects[i].destroy();
+    }
+    for (let i in globalObjects.tempIntroText) {
+        globalObjects.tempIntroText[i].destroy();
     }
     setupPlayer();
     gotoMainMenu();

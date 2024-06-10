@@ -219,6 +219,10 @@ function beginLevel(lvl) {
 
     createEnemyAfterDelay(lvl);
     switch(lvl) {
+        case -1:
+        // mind dummy
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1.3, 1.3, 'Quart.easeIn', 0, false, -55);
+        break;
         case 0:
             // zoomInCurrBackground(1500, 2, 'Cubic.easeIn');
             minorZoomMenu()

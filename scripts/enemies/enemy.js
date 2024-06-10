@@ -59,6 +59,7 @@ class Enemy {
         this.health = 1000;
 
         this.shield = 0;
+        this.shieldOffsetY = 0;
         this.isAsleep = false;
         this.timeSinceLastAttacked = 9999;
         this.castAggravateCharge = 0;
@@ -284,6 +285,7 @@ class Enemy {
         this.sprite = this.scene.add.sprite(this.x, this.y, usedAtlas, name);
         this.sprite.setDepth(1);
         this.sprite.setAlpha(0);
+        this.sprite.startX = this.sprite.x;
         this.defaultSprite = name;
 
         this.initSpriteAnim(scale);
@@ -295,13 +297,13 @@ class Enemy {
         this.delayedDamageText.setOrigin(0.5, 0.6);
         this.delayedDamageText.setDepth(2);
 
-        this.shieldSprite = this.scene.add.sprite(this.x, this.y, 'shields', 'shield10.png');
+        this.shieldSprite = this.scene.add.sprite(this.x, this.y + this.shieldOffsetY, 'shields', 'shield10.png');
         this.shieldSprite.alpha = 0.85;
         this.shieldSprite.setDepth(8);
         this.shieldSprite.visible = false;
         this.shieldSprite.startScale = this.shieldSprite.scaleX;
 
-        this.shieldText = this.scene.add.bitmapText(this.x, this.y + 85, 'armor', '', 48);
+        this.shieldText = this.scene.add.bitmapText(this.x, this.y + 85 + this.shieldOffsetY, 'armor', '', 48);
         this.shieldText.alpha = 1;
         this.shieldText.setOrigin(0.5, 0.55);
         this.shieldText.setDepth(8);
@@ -662,7 +664,7 @@ class Enemy {
             if (amt < this.shield) {
                 let randX = (Math.random() - 0.5) * 60;
                 let randY = (Math.random() - 0.5) * 50;
-                messageBus.publish('animateBlockNum', this.shieldText.x + 1 + randX, this.shieldText.y - 15 + randY, -amt, 0.5 + Math.sqrt(amt) * 0.125);
+                messageBus.publish('animateBlockNum', this.shieldText.x + 1 + randX, this.shieldText.y - 15 + randY, -amt, 0.65 + Math.sqrt(amt) * 0.09);
                 this.shield -= amt;
                 amt = 0;
                 this.playShieldHitAnim();
@@ -703,7 +705,7 @@ class Enemy {
                     }
                 });
             } else {
-                messageBus.publish('animateBlockNum', this.shieldText.x + 1, this.shieldText.y - 15, -amt, 0.5 + Math.sqrt(amt) * 0.125);
+                messageBus.publish('animateBlockNum', this.shieldText.x + 1, this.shieldText.y - 15, -amt, 0.65 + Math.sqrt(amt) * 0.09);
                 amt -= this.shield;
                 this.clearShield();
             }
@@ -1027,7 +1029,7 @@ class Enemy {
         this.shieldText.setScale(0.1);
         this.shieldText.setText(this.shield);
         this.shieldText.startX = this.shieldText.x;
-        this.shieldText.startScale = 0.7 + amt * 0.003;
+        this.shieldText.startScale = 0.8 + Math.sqrt(amt) * 0.005;
         this.scene.tweens.add({
             targets: this.shieldText,
             scaleX: this.shieldText.startScale,
@@ -1490,7 +1492,6 @@ class Enemy {
             status.cleanUp(this.statuses);
             delete this.statuses[i];
         }
-
         this.sprite.x -= 5;
         PhaserScene.tweens.add({
             delay: 0,
@@ -1509,7 +1510,6 @@ class Enemy {
                             targets: [this.sprite],
                             x: "+=2",
                             duration: 50,
-
                         });
                     }
                 });
@@ -1745,34 +1745,66 @@ class Enemy {
              duration: 400,
              completeDelay: 300,
              onComplete: () => {
-                 this.dieClickBlocker.setOnMouseUpFunc(() => {
-                    this.dieClickBlocker.destroy();
-                     PhaserScene.tweens.add({
-                         targets: [victoryText, banner],
-                         alpha: 0,
-                         duration: 400,
-                         onComplete: () => {
-                             victoryText.destroy();
-                             banner.destroy();
-                             continueText.destroy();
-                             playReaperAnim(this);
-                         }
-                     });
-                     PhaserScene.tweens.add({
-                         targets: rune,
-                         y: "+=90",
-                         ease: 'Quad.easeOut',
-                         duration: 400,
-                         onComplete: () => {
-                             rune.destroy();
-                         }
-                     });
-                     PhaserScene.tweens.add({
-                         targets: rune,
-                         alpha: 0,
-                         duration: 400,
-                     });
-                 })
+                if (this.dieClickBlocker) {
+                     this.dieClickBlocker.setOnMouseUpFunc(() => {
+                        this.dieClickBlocker.destroy();
+                         PhaserScene.tweens.add({
+                             targets: [victoryText, banner],
+                             alpha: 0,
+                             duration: 400,
+                             onComplete: () => {
+                                 victoryText.destroy();
+                                 banner.destroy();
+                                 continueText.destroy();
+                                 playReaperAnim(this);
+                             }
+                         });
+                         PhaserScene.tweens.add({
+                             targets: rune,
+                             y: "+=90",
+                             ease: 'Quad.easeOut',
+                             duration: 400,
+                             onComplete: () => {
+                                 rune.destroy();
+                             }
+                         });
+                         PhaserScene.tweens.add({
+                             targets: rune,
+                             alpha: 0,
+                             duration: 400,
+                         });
+                     })
+                 } else {
+                    let clickBlocker = createGlobalClickBlocker(true);
+                    clickBlocker.setOnMouseUpFunc(() => {
+                        hideGlobalClickBlocker();
+                         PhaserScene.tweens.add({
+                             targets: [victoryText, banner],
+                             alpha: 0,
+                             duration: 400,
+                             onComplete: () => {
+                                 victoryText.destroy();
+                                 banner.destroy();
+                                 continueText.destroy();
+                                 playReaperAnim(this);
+                             }
+                         });
+                         PhaserScene.tweens.add({
+                             targets: rune,
+                             y: "+=90",
+                             ease: 'Quad.easeOut',
+                             duration: 400,
+                             onComplete: () => {
+                                 rune.destroy();
+                             }
+                         });
+                         PhaserScene.tweens.add({
+                             targets: rune,
+                             alpha: 0,
+                             duration: 400,
+                         });
+                    });
+                 }
              }
          });
      }

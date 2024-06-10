@@ -58,7 +58,7 @@ class PostFightScreen {
                     ref: "nextLevel.png",
                     visible: true,
                     alpha: 0.95,
-                    x: gameConsts.halfWidth,
+                    x: gameConsts.halfWidth + 110,
                     y: gameConsts.halfHeight + 210,
                 },
                 hover: {
@@ -92,6 +92,48 @@ class PostFightScreen {
             });
             this.continueButton.setDepth(100000);
         }
+        if (!this.trainingButton) {
+            this.trainingButton = new Button({
+                normal: {
+                    atlas: "ui",
+                    ref: "nextLevel.png",
+                    visible: true,
+                    alpha: 0.95,
+                    x: gameConsts.halfWidth - 110,
+                    y: gameConsts.halfHeight + 210,
+                },
+                hover: {
+                    atlas: "ui",
+                    alpha: 1,
+                    ref: "nextLevel_hover.png",
+                },
+                press: {
+                    atlas: "ui",
+                    alpha: 1,
+                    ref: "nextLevel_press.png",
+                },
+                disable: {
+                    atlas: "ui",
+                    ref: "nextLevel_press.png",
+                    alpha: 0.001
+                },
+                onHover: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: () => {
+
+                }
+            });
+            this.trainingButton.setDepth(100000);
+        }
+
         if (!this.locketButton) {
             this.locketButton = new Button({
                 normal: {
@@ -163,8 +205,11 @@ class PostFightScreen {
             this.locketSprite.visible = false;
         }
         this.continueButton.setState(DISABLE);
+        this.trainingButton.setState(NORMAL);
         setTimeout(() => {
-            this.continueButton.setState(NORMAL);
+            if (this.trainingButton.getState() !== DISABLE) {
+                this.continueButton.setState(NORMAL);
+            }
         }, 3000);
 
         PhaserScene.tweens.add({
@@ -276,6 +321,7 @@ class PostFightScreen {
         globalObjects.bannerTextManager.setOnFinishFunc(() => {});
         globalObjects.bannerTextManager.closeBanner();
         this.continueButton.setState(DISABLE);
+        this.trainingButton.setState(DISABLE);
         this.locketButton.setState(DISABLE);
         globalObjects.magicCircle.enableMovement();
         if (clearFog) {
@@ -333,6 +379,11 @@ class PostFightScreen {
     createWinScreen(level = 0) {
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
+        if (level > gameVars.latestLevel) {
+            gameVars.latestLevel = level;
+            localStorage.setItem("latestLevel", level.toString());
+        }
+
         this.currLevel = level;
         this.createWinScreenUI(level);
         this.continueButton.setOnMouseUpFunc(() => {
@@ -342,6 +393,14 @@ class PostFightScreen {
                 canvas.style.cursor = 'default';
             }
         });
+        this.trainingButton.setOnMouseUpFunc(() => {
+            this.clearPostFightScreen();
+            beginPreLevel(-level);
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        });
+
     }
 
     createWinScreenBoom(level = 0) {
@@ -380,6 +439,14 @@ class PostFightScreen {
         this.continueButton.setOnMouseUpFunc(() => {
             this.clearPostFightScreen();
             beginPreLevel(level);
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        });
+        this.trainingButton.setOnMouseUpFunc(() => {
+            this.clearPostFightScreen();
+            let trainLevel = -level - 1;
+            beginPreLevel(trainLevel);
             if (canvas) {
                 canvas.style.cursor = 'default';
             }

@@ -146,7 +146,9 @@ class SpellManager {
         });
         let useMainStrike = Math.random() < 0.65;
         let strikeVol = 0.75 + additionalDamage * 0.0015 + (useMainStrike ? -0.1 : 0);
-        playSound(useMainStrike ? 'matter_strike' : 'matter_strike_alt', strikeVol);
+        let sfx = playSound(useMainStrike ? 'matter_strike' : 'matter_strike_alt', strikeVol);
+        let detuneAmt = Math.floor(Math.sqrt(additionalDamage * 0.75)) * -150;
+        sfx.detune = detuneAmt;
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
@@ -186,23 +188,23 @@ class SpellManager {
                 if (i === 0) {
                     let randNum = Math.random()
                     if (randNum < 0.3) {
-                        playSound('matter_strike_hit', 0.8 + additionalVol);
+                        playSound('matter_strike_hit', 0.8 + additionalVol).detune = detuneAmt;
                     } else if (randNum < 0.6) {
-                        playSound('matter_strike_hit_alt', 0.8 + additionalVol);
+                        playSound('matter_strike_hit_alt', 0.8 + additionalVol).detune = detuneAmt;
                     } else {
-                        playSound('matter_strike_hit_alt_2', 0.85 + additionalVol);
+                        playSound('matter_strike_hit_alt_2', 0.85 + additionalVol).detune = detuneAmt;
                     }
                 } else if (rockObjects.length > 2 && i === rockObjects.length - 1) {
                     // last hit
                     if (Math.random() < 0.5) {
-                        playSound('matter_strike_hit', 0.7 + additionalVol);
+                        playSound('matter_strike_hit', 0.7 + additionalVol).detune = detuneAmt;
                     } else {
-                        playSound('matter_strike_hit_alt', 0.7 + additionalVol);
+                        playSound('matter_strike_hit_alt', 0.7 + additionalVol).detune = detuneAmt;
                     }
                 } else if (i % 2 == 1) {
-                    playSound('matter_strike_hit2', 0.95 + additionalVol);
+                    playSound('matter_strike_hit2', 0.95 + additionalVol).detune = detuneAmt;
                 } else if (i % 2 == 0) {
-                    playSound('matter_strike_hit2', 0.6 + additionalVol);
+                    playSound('matter_strike_hit2', 0.6 + additionalVol).detune = detuneAmt;
                 }
             }, delayAmt + durationAmt - 50)
             this.scene.tweens.add({

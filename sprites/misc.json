@@ -4,8 +4,8 @@
 			"image": "sprites/misc.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1854,
-				"h": 1733
+				"w": 1972,
+				"h": 1460
 			},
 			"scale": 1,
 			"frames": [
@@ -115,24 +115,45 @@
 					}
 				},
 				{
-					"filename": "floating_death_2.png",
+					"filename": "slice_front.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 675,
-						"h": 600
+						"w": 620,
+						"h": 560
 					},
 					"spriteSourceSize": {
-						"x": 38,
-						"y": 168,
-						"w": 637,
-						"h": 428
+						"x": 8,
+						"y": 128,
+						"w": 604,
+						"h": 429
 					},
 					"frame": {
 						"x": 1216,
 						"y": 1,
-						"w": 637,
-						"h": 428
+						"w": 604,
+						"h": 429
+					}
+				},
+				{
+					"filename": "announceBg.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 600,
+						"h": 167
+					},
+					"frame": {
+						"x": 606,
+						"y": 498,
+						"w": 600,
+						"h": 167
 					}
 				},
 				{
@@ -150,52 +171,10 @@
 						"h": 449
 					},
 					"frame": {
-						"x": 1,
-						"y": 1227,
+						"x": 527,
+						"y": 667,
 						"w": 515,
 						"h": 449
-					}
-				},
-				{
-					"filename": "floating_death_1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 675,
-						"h": 600
-					},
-					"spriteSourceSize": {
-						"x": 38,
-						"y": 177,
-						"w": 613,
-						"h": 393
-					},
-					"frame": {
-						"x": 606,
-						"y": 498,
-						"w": 613,
-						"h": 393
-					}
-				},
-				{
-					"filename": "slice_front.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 620,
-						"h": 560
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 128,
-						"w": 604,
-						"h": 429
-					},
-					"frame": {
-						"x": 1221,
-						"y": 431,
-						"w": 604,
-						"h": 429
 					}
 				},
 				{
@@ -213,8 +192,8 @@
 						"h": 463
 					},
 					"frame": {
-						"x": 527,
-						"y": 893,
+						"x": 1044,
+						"y": 667,
 						"w": 470,
 						"h": 463
 					}
@@ -234,10 +213,52 @@
 						"h": 501
 					},
 					"frame": {
-						"x": 999,
-						"y": 893,
+						"x": 1516,
+						"y": 432,
 						"w": 250,
 						"h": 501
+					}
+				},
+				{
+					"filename": "black_circle_2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 230,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 230,
+						"h": 230
+					},
+					"frame": {
+						"x": 1,
+						"y": 1227,
+						"w": 230,
+						"h": 230
+					}
+				},
+				{
+					"filename": "heal.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 290,
+						"h": 204
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 21,
+						"w": 279,
+						"h": 175
+					},
+					"frame": {
+						"x": 233,
+						"y": 1227,
+						"w": 279,
+						"h": 175
 					}
 				},
 				{
@@ -255,8 +276,8 @@
 						"h": 443
 					},
 					"frame": {
-						"x": 1251,
-						"y": 862,
+						"x": 1516,
+						"y": 935,
 						"w": 455,
 						"h": 443
 					}
@@ -276,31 +297,10 @@
 						"h": 341
 					},
 					"frame": {
-						"x": 518,
-						"y": 1358,
+						"x": 527,
+						"y": 1118,
 						"w": 327,
 						"h": 341
-					}
-				},
-				{
-					"filename": "announceBg.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 600,
-						"h": 180
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 7,
-						"w": 600,
-						"h": 167
-					},
-					"frame": {
-						"x": 1251,
-						"y": 1307,
-						"w": 600,
-						"h": 167
 					}
 				},
 				{
@@ -318,73 +318,31 @@
 						"h": 300
 					},
 					"frame": {
-						"x": 847,
-						"y": 1396,
+						"x": 856,
+						"y": 1132,
 						"w": 250,
 						"h": 300
 					}
 				},
 				{
-					"filename": "victory_text.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 297,
-						"h": 54
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 297,
-						"h": 54
-					},
-					"frame": {
-						"x": 1,
-						"y": 1678,
-						"w": 297,
-						"h": 54
-					}
-				},
-				{
-					"filename": "heal.png",
+					"filename": "complete.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 290,
-						"h": 204
+						"w": 365,
+						"h": 58
 					},
 					"spriteSourceSize": {
-						"x": 4,
-						"y": 21,
-						"w": 279,
-						"h": 175
-					},
-					"frame": {
-						"x": 1099,
-						"y": 1476,
-						"w": 279,
-						"h": 175
-					}
-				},
-				{
-					"filename": "black_circle_2.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 230,
-						"h": 230
-					},
-					"spriteSourceSize": {
-						"x": 0,
+						"x": 3,
 						"y": 0,
-						"w": 230,
-						"h": 230
+						"w": 357,
+						"h": 58
 					},
 					"frame": {
-						"x": 1380,
-						"y": 1476,
-						"w": 230,
-						"h": 230
+						"x": 1108,
+						"y": 1132,
+						"w": 357,
+						"h": 58
 					}
 				},
 				{
@@ -402,10 +360,31 @@
 						"h": 180
 					},
 					"frame": {
-						"x": 1612,
-						"y": 1476,
+						"x": 1108,
+						"y": 1192,
 						"w": 180,
 						"h": 180
+					}
+				},
+				{
+					"filename": "victory_text.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 297,
+						"h": 54
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 297,
+						"h": 54
+					},
+					"frame": {
+						"x": 1216,
+						"y": 432,
+						"w": 297,
+						"h": 54
 					}
 				},
 				{
@@ -423,8 +402,8 @@
 						"h": 118
 					},
 					"frame": {
-						"x": 1708,
-						"y": 862,
+						"x": 1822,
+						"y": 1,
 						"w": 118,
 						"h": 118
 					}
@@ -444,8 +423,8 @@
 						"h": 197
 					},
 					"frame": {
-						"x": 527,
-						"y": 594,
+						"x": 1768,
+						"y": 432,
 						"w": 10,
 						"h": 197
 					}
@@ -465,8 +444,8 @@
 						"h": 4
 					},
 					"frame": {
-						"x": 847,
-						"y": 1358,
+						"x": 233,
+						"y": 1404,
 						"w": 100,
 						"h": 4
 					}
@@ -477,6 +456,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:ad099e8bd09ed6b87a9bce39cb53349a:93e647095e9f6f3692251aa6e4ce8a61:612dcbdb08476a0aba06aeca925f16b2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:95b4f7ab77ffe1f99d29a487a4b13379:fc53745a671ba8d940542389b12777c1:612dcbdb08476a0aba06aeca925f16b2$"
 	}
 }

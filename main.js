@@ -60,6 +60,21 @@ let gameConsts = {
     halfHeight: config.scale.height * 0.5,
     SDK: null
 };
+let cheats = {
+    extraHealth: false,
+    extraExtraHealth: false,
+    extraDamage: false,
+    extraExtraDamage: false,
+    fullArsenal: false,
+    infiniteAmmo: false,
+    slowEnemies: false,
+    frail: false,
+    grudge: false,
+    toughEnemies: false,
+};
+let funnies = {
+    mustache: false,
+};
 let gameVars = {
     gameConstructed: false,
     mousedown: false,
@@ -81,12 +96,22 @@ let deltaScale = 1;
 let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 3;
 let canResizeGame = false;
+let url1 = null;// 'crazygames';
+let url2 = null;// '1001juegos';
+
 function preload ()
 {
+    gameVars.latestLevel = parseInt(localStorage.getItem("latestLevel"));
+    console.log("latest level reached: ", gameVars.latestLevel);
+
     if (isMobile && screen && screen.orientation && screen.orientation.lock) {
         var myScreenOrientation = window.screen.orientation;
         console.log(myScreenOrientation)
         myScreenOrientation.lock('portrait')
+    }
+    if (!document.location.href.includes(url1) && !document.location.href.includes(url2)) {
+        // TODO turn on
+        // return;
     }
     canResizeGame = true;
     resizeGame();

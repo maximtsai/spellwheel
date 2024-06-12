@@ -539,25 +539,6 @@
          // });
      }
 
-    createShieldTut() {
-         this.rune1 = this.addImage(95, gameConsts.halfHeight - 49, 'circle', 'rune_protect_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-         this.addTimeout(() => {
-            globalObjects.textPopupManager.setInfoText(96, gameConsts.halfHeight - 139, "Block enemy\nattacks with\nthe shield rune\n ", 'left');
-             this.addTween({
-                 targets: [this.rune1],
-                 alpha: 1,
-                 duration: 200,
-             });
-             this.addTimeout(() => {
-                globalObjects.textPopupManager.hideInfoText();
-                 this.addTween({
-                     targets: [this.rune1],
-                     alpha: 0,
-                     duration: 200,
-                 });
-             }, 10000);
-         }, 500)
-    }
 
      initAttacks() {
          let regrowthAmt1 = gameVars.isHardMode ? 16 : 8;
@@ -569,19 +550,12 @@
                      name: "}8 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 650,
+                     chargeAmt: 700,
                      damage: -1,
                      startFunction: () => {
-                        this.createShieldTut();
 
                      },
                      attackStartFunction: () => {
-                        globalObjects.textPopupManager.hideInfoText();
-                         this.addTween({
-                             targets: [this.rune1],
-                             alpha: 0,
-                             duration: 200,
-                         });
                          this.attackWithBranch(8);
                      },
                      attackFinishFunction: () => {
@@ -793,12 +767,12 @@
              [
                  // 5
                  {
-                     name: "TIMBER!;36 ",
+                     name: "TIMBER!;40 ",
                      announceName: "TIMBER!!!",
                      desc: "The tree tries to crush you",
                      chargeAmt: 1250,
                      chargeMult: 2.5,
-                     damage: 36,
+                     damage: 40,
                      isBigMove: true,
                      startFunction: () => {
                         this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75

@@ -34,9 +34,8 @@
     }
 
      initStatsCustom() {
-         this.health = 40;
+         this.health = 35;
          this.isAsleep = true;
-
      }
 
      initTutorial(x, y) {

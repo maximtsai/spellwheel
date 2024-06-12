@@ -403,6 +403,20 @@ class PostFightScreen {
 
     }
 
+    createWinScreenMin(level = 0) {
+        globalObjects.encyclopedia.showButton();
+        globalObjects.options.showButton();
+
+        this.createWinScreenUIMin(level);
+        this.continueButton.setOnMouseUpFunc(() => {
+            this.clearPostFightScreen();
+            beginPreLevel(level + 1);
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        });
+    }
+
     createWinScreenBoom(level = 0) {
         this.createWinScreenUI(level);
         this.continueButton.setOnMouseUpFunc(() => {
@@ -426,6 +440,25 @@ class PostFightScreen {
         this.newRuneIcon.setFrame(this.getNewRuneFrame(level));
         this.codeText.setText("LEVEL CODE: placeholder\n(placeholder)");
         this.locketDialog.setText(this.getStoryDialog(level));
+
+        globalObjects.bannerTextManager.setDialog(this.locketDialog);
+    }
+
+    createWinScreenUIMin(level = 0) {
+        this.isCreated = true;
+        this.initAssets(true);
+        globalObjects.magicCircle.disableMovement();
+        this.titleText.setText("Training Complete");
+        this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
+        this.healthLeftText.setText("Health Left: " + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
+        this.newRuneAnnounce.setText(' ');
+        this.newRuneDesc.setText(' ')
+        // this.newRuneIcon.setFrame(' ');
+        this.codeText.setText(' ');
+        this.locketDialog.setText(this.getStoryDialog(level));
+
+        this.continueButton.setState(NORMAL);
+        this.trainingButton.setState(DISABLE);
 
         globalObjects.bannerTextManager.setDialog(this.locketDialog);
     }

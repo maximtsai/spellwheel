@@ -23,10 +23,20 @@ function updateSpellState(level = 0) {
     gameVars.matterPlus = false;
     gameVars.mindPlus = false;
     switch(level) {
+        case -3:
+            // body dummy
+            EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, null, null, null, null, null, null, null, RUNE_REINFORCE];
+            ELEMENT_ARRAY = [RUNE_MIND, RUNE_MIND, null, null, null, null, null];
+            break;
+        case -2:
+            // shield dummy
+            EMBODIMENT_ARRAY = [null, RUNE_PROTECT, null, RUNE_PROTECT, null, RUNE_PROTECT, null, RUNE_PROTECT, null, RUNE_PROTECT];
+            ELEMENT_ARRAY = [RUNE_MIND, RUNE_MIND, null, null, null, RUNE_MATTER, RUNE_MATTER];
+            break;
         case -1:
             // mind dummy
             EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_STRIKE, RUNE_STRIKE, RUNE_STRIKE, RUNE_STRIKE, RUNE_STRIKE, RUNE_STRIKE, RUNE_STRIKE, RUNE_STRIKE];
-            ELEMENT_ARRAY = [RUNE_MIND, RUNE_MATTER, RUNE_MIND, null, RUNE_MATTER, RUNE_MIND, RUNE_MATTER];
+            ELEMENT_ARRAY = [RUNE_MIND, RUNE_MATTER, null, null, null, RUNE_MIND, RUNE_MATTER];
             break;
         case 0:
             // start, fight lesser dummy

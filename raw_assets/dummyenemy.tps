@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>85</uint>
+        <uint>81</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -173,6 +173,51 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">dummyenemy/cloud1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>49,41,97,82</rect>
+                <key>scale9Paddings</key>
+                <rect>49,41,97,82</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">dummyenemy/cloud2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>26,22,53,44</rect>
+                <key>scale9Paddings</key>
+                <rect>26,22,53,44</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">dummyenemy/dagger.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>35,55,69,110</rect>
+                <key>scale9Paddings</key>
+                <rect>35,55,69,110</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">dummyenemy/dummy.png</key>
             <key type="filename">dummyenemy/dummy_angry.png</key>
             <key type="filename">dummyenemy/dummy_fake_face.png</key>
@@ -286,6 +331,23 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">dummyenemy/picketsign.png</key>
+            <key type="filename">dummyenemy/picketsign_hover.png</key>
+            <key type="filename">dummyenemy/picketsign_press.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.8</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>63,79,126,157</rect>
+                <key>scale9Paddings</key>
+                <rect>63,79,126,157</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">dummyenemy/scary_eyes.png</key>
             <key type="filename">dummyenemy/super_dummy_tpose.png</key>
             <struct type="IndividualSpriteSettings">
@@ -299,6 +361,21 @@
                 <rect>163,100,325,200</rect>
                 <key>scale9Paddings</key>
                 <rect>163,100,325,200</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">dummyenemy/scythe.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>53,53,105,105</rect>
+                <key>scale9Paddings</key>
+                <rect>53,53,105,105</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -518,6 +595,21 @@
                 <rect>118,95,235,191</rect>
                 <key>scale9Paddings</key>
                 <rect>118,95,235,191</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">dummyenemy/sword.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>30,55,59,110</rect>
+                <key>scale9Paddings</key>
+                <rect>30,55,59,110</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

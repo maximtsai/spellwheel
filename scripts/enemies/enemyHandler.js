@@ -3,6 +3,9 @@ function createEnemy(num) {
         globalObjects.currentEnemy.destroy();
     }
     switch(num) {
+    case -2:
+        globalObjects.currentEnemy = new Dummyshield(PhaserScene, gameConsts.halfWidth, 320, num);
+        break;
     case -1:
         globalObjects.currentEnemy = new Dummymind(PhaserScene, gameConsts.halfWidth, 320, num);
         break;

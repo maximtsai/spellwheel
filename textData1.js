@@ -123,21 +123,21 @@ const textData = {
         jp: ''
     },
 
-    mind_strike_desc: {en_us: 'Deal 1 damage.\nEnemy takes bonus\ndamage equal to\nyour next attack',
+    mind_strike_desc: {en_us: 'Deal 1 damage.\nEnemy takes true\ndamage equal to\nyour next attack',
         fr: '',
         zh_cn: '',
         ru: '',
         es: '',
         jp: ''
     },
-    mind_enhance_desc: {en_us: 'Next attack burns\nenemy for 10\nbonus damage\nover 5 seconds',
+    mind_enhance_desc: {en_us: 'Next attack burns\nenemy for 10\ntrue damage\nover 5 seconds',
         fr: '',
         zh_cn: '',
         ru: '',
         es: '',
         jp: ''
     },
-    mind_enhance_plus_desc: {en_us: 'Next attack burns\nenemy for 15\nbonus damage\nover 5 seconds',
+    mind_enhance_plus_desc: {en_us: 'Next attack burns\nenemy for 15\ntrue damage\nover 5 seconds',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -227,7 +227,7 @@ const textData = {
         ru: '',
         es: '',
         jp: ''},
-    mind_tut_enhance_desc: {en_us: 'Your next attack sets the\nenemy on fire, which deals\ndamage over time that\nbypasses defenses.',
+    mind_tut_enhance_desc: {en_us: 'Your next attack sets the\nenemy on fire, which deals\ntrue damage over time that\nignores defenses.',
         fr: '',
         zh_cn: '',
         ru: '',

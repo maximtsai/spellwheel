@@ -4,13 +4,11 @@
     }
 
      initStatsCustom() {
-         this.health = 70;
+         this.health = 50;
          this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
      }
-
-
 
      initTutorial() {
         this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
@@ -76,39 +74,11 @@
                                      }
                                  });
                                 globalObjects.textPopupManager.hideInfoText();
-                            }, 200);
+                            }, 1000);
                         });
                      }
                  });
              }, 500)
-
-
-             // this.rune3 = this.addSprite(gameConsts.width - 95, gameConsts.halfHeight + 20, 'circle', 'rune_mind_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-             // this.addTimeout(() => {
-             //     globalObjects.textPopupManager.setInfoText(gameConsts.width - 95, gameConsts.halfHeight - 70, "Energy spells\ncan ignore\nenemy defenses.\n", 'left');
-             //     this.addTween({
-             //         targets: [this.rune3],
-             //         alpha: 1,
-             //         duration: 200,
-             //         completeDelay: 1000,
-             //         onComplete: () => {
-             //            this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
-             //                this.playerSpellCastSub.unsubscribe();
-             //                this.addTimeout(() => {
-             //                     this.addTween({
-             //                         targets: [this.rune3],
-             //                         alpha: 0,
-             //                         duration: 300,
-             //                         onComplete: () => {
-             //                            this.rune3.visible = false;
-             //                         }
-             //                     });
-             //                    globalObjects.textPopupManager.hideInfoText();
-             //                }, 200);
-             //            });
-             //         }
-             //     });
-             // }, 500)
          }
      }
 

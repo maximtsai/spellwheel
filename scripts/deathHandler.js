@@ -401,7 +401,7 @@ function playReaperAnim(enemy, customFinFunc) {
                                                     globalObjects.floatingDeath2.visible = false;
                                                     globalObjects.floatingDeath.alpha = 0.1;
                                                     PhaserScene.tweens.add({
-                                                        targets: [globalObjects.floatingDeath, globalObjects.deathLeftHand, globalObjects.deathRightHand],
+                                                        targets: [globalObjects.floatingDeath],
                                                         alpha: 0,
                                                         fakeAlpha: 0,
                                                         scaleX: 0.3,
@@ -410,6 +410,14 @@ function playReaperAnim(enemy, customFinFunc) {
                                                         onComplete: () => {
                                                             globalObjects.floatingDeath.visible = false;
                                                         }
+                                                    });
+                                                    PhaserScene.tweens.add({
+                                                        targets: [globalObjects.floatingDeath, globalObjects.deathLeftHand, globalObjects.deathRightHand],
+                                                        alpha: 0,
+                                                        scaleX: 0.3,
+                                                        scaleY: 0.3,
+                                                        duration: 300,
+                                                        ease: 'Quad.easeIn'
                                                     });
                                                 });
 

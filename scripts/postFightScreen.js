@@ -23,7 +23,7 @@ class PostFightScreen {
             this.titleText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 260, '(placeholder title)', {fontFamily: 'garamondmax', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.healthLeftText) {
-            this.healthLeftText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 190, 'Health Left:', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.healthLeftText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 200, 'Health Left:', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.codeText) {
             this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 80, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
@@ -35,13 +35,13 @@ class PostFightScreen {
             this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 220, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
         }
         if (!this.newRuneAnnounce) {
-            this.newRuneAnnounce =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 138, 'New Rune!', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.newRuneAnnounce =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 154, 'New Rune!', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.newRuneDesc) {
-            this.newRuneDesc =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 115, '(insert rune description)', {fontFamily: 'garamondmax', fontSize: 22, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
+            this.newRuneDesc =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 120, '(insert rune description)', {fontFamily: 'garamondmax', fontSize: 22, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
         }
         if (!this.newRuneIcon) {
-            this.newRuneIcon =  this.scene.add.image(gameConsts.halfWidth - 76, gameConsts.halfHeight - 142, 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
+            this.newRuneIcon =  this.scene.add.image(gameConsts.halfWidth - 76, gameConsts.halfHeight - 158, 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
             this.showRuneDescBtn = new Button({
                 normal: {
                     atlas: "ui",
@@ -49,7 +49,7 @@ class PostFightScreen {
                     visible: true,
                     alpha: 0.85,
                     x: gameConsts.halfWidth - 56,
-                    y: gameConsts.halfHeight - 141,
+                    y: gameConsts.halfHeight - 157,
                 },
                 hover: {
                     atlas: "ui",
@@ -556,7 +556,7 @@ class PostFightScreen {
     }
 
     showStoryText(level) {
-        let objectsToFade = [this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon];
+        let objectsToFade = [this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
 
         this.showRuneDescBtn.setState(DISABLE);
         PhaserScene.tweens.add({
@@ -589,11 +589,10 @@ class PostFightScreen {
     }
 
     returnStatText() {
-        if (!this.newRuneDesc.visible) {
+        if (!this.newRuneDesc.visible && this.trainingButton.getState() !== DISABLE) {
             this.showRuneDescBtn.setState(NORMAL);
-
         }
-        let objectsToFade = [this.titleText, this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon];
+        let objectsToFade = [this.titleText, this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
         PhaserScene.tweens.add({
             targets: this.locketDialog,
             alpha: 0,

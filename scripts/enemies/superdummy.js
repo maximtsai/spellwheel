@@ -38,7 +38,7 @@
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             // return;
             this.shownTut4 = true;
-            globalObjects.textPopupManager.setInfoText(gameConsts.width - 80, 275, "Enemies get\nangry when\nattacked!", 'left');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, 275, "Enemies get\nangry when\nattacked!", 'right');
             messageBus.publish('setSlowMult', 0.25, 50);
             let glowBar = this.addSprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             this.addTween({

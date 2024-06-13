@@ -1019,7 +1019,7 @@ class Player {
                                 ref: "menu_btn_normal.png",
                                 atlas: 'buttons',
                                 x: gameConsts.halfWidth,
-                                y: gameConsts.height - 440,
+                                y: gameConsts.height - 460,
                             },
                             hover: {
                                 ref: "menu_btn_hover.png",
@@ -1034,6 +1034,15 @@ class Player {
                             },
                             onMouseUp: () => {
                                 this.revive();
+                                globalObjects.encyclopedia.showButton();
+                                globalObjects.options.showButton();
+                                if (globalObjects.currentEnemy) {
+                                    globalObjects.currentEnemy.destroy();
+                                }
+                                if (globalObjects.player) {
+                                    globalObjects.player.resetStats();
+                                }
+                                createEnemy(CURRENT_LEVEL);
                                 deathMenuButton.destroy();
                                 deathRetryButton.destroy();
                             }

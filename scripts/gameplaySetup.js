@@ -400,10 +400,9 @@ function recursiveCreateIntroText(delay = 100, num = 180) {
 
     globalObjects.tempIntroText.push(newText)
     let newDelay = Math.ceil(delay * 0.93);
-    console.log(num);
-    setTimeout(() => {
+    PhaserScene.time.delayedCall(delay, () => {
         recursiveCreateIntroText(newDelay, num - 1)
-    }, delay)
+    })
 }
 
 function clickIntro() {
@@ -519,7 +518,7 @@ function clickIntro() {
         ease: 'Cubic.easeIn',
         duration: 3200
     });
-    setTimeout(() => {
+    PhaserScene.time.delayedCall(2000, () => {
         if (!gameVars.introFinished) {
             loadObjects.loadingText2 = PhaserScene.add.text(gameConsts.halfWidth, loadObjects.loadingText.y + 40, 'my beloved', {fontFamily: 'verdanabold', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
             loadObjects.loadingText2.setScale(loadObjects.loadingText.scaleX).setAlpha(0);
@@ -531,7 +530,7 @@ function clickIntro() {
                 duration: 1000,
             });
         }
-    }, 2000)
+    });
 
 
     if (!loadObjects.introLocketOpen) {
@@ -616,6 +615,7 @@ function setupGame() {
 
     globalObjects.statusManager = new StatusManager(PhaserScene);
     globalObjects.postFightScreen = new PostFightScreen(PhaserScene);
+    globalObjects.bgHandler = new BgHandler();
 
     // globalObjects.dummyEnemy = new Wall(PhaserScene, gameConsts.halfWidth, 165);
     // globalObjects.dummyEnemy = new Death(PhaserScene, gameConsts.halfWidth, 173);

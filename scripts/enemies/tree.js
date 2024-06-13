@@ -5,7 +5,7 @@
          this.sprite.setOrigin(0.52, 0.88); // 0.9
          this.shieldAdded = false;
          this.bgMusic = playMusic('echos_of_time', 0.9, true);
-        playSound('tree_rustle', 0.5);
+        playSound('tree_rustle', 0.35);
 
 
          this.popupTimeout = this.addTimeout(() => {

@@ -13,12 +13,12 @@ function beginPreLevel(lvl) {
         case 0:
             // lesser dummy
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'newgamepaper.png').setDepth(99999).setAlpha(0);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth - 232, gameConsts.halfHeight + 198, 'DAY XX0', {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 200, 'I\'m finally here.', {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth - 230, gameConsts.halfHeight + 230, "I\'m finally here.\nAt the gateway to the forbidden lands.\nI know I will find you here my beloved.", {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 235, "At the gateway to the forbidden lands.", {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text3 = PhaserScene.add.text(gameConsts.halfWidth , gameConsts.halfHeight + 290, '', {fontFamily: 'verdanabold', fontSize: 18, color: '#000000', align: 'center'});
-            text3.setDepth(99999).setAlpha(0).setOrigin(0.5, 0.5);
+            text3 = PhaserScene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 277, 'I know I will find you here my beloved.', {fontFamily: 'verdanabold', fontSize: 18, color: '#000000', align: 'left'});
+            text3.setDepth(99999).setAlpha(0).setOrigin(0, 0.5);
 
             createGlobalClickBlocker();
             fadeInPreFightStuff(lvl, [text1, text2, text3], [introPaper])
@@ -178,7 +178,20 @@ function createLvlCloseButton(lvl, items) {
         disable: {
             alpha: 0.001
         },
+        onHover: () => {
+            if (canvas) {
+                canvas.style.cursor = 'pointer';
+            }
+        },
+        onHoverOut: () => {
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        },
         onMouseUp: () => {
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
             PhaserScene.tweens.add({
                 targets: items,
                 alpha: 0,

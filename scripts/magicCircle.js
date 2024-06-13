@@ -2547,10 +2547,10 @@ const ENABLE_KEYBOARD = true;
         }
         spike.alpha = 1;
         playSound('void_strike', 0.3);
-        setTimeout(() => {
+        PhaserScene.time.delayedCall(100, () => {
             messageBus.publish('enemyTakeDamage', damage);
             messageBus.publish('setPauseDur', 5);
-        }, 100);
+        })
         spike.setScale(baseScale * 4, baseScale * 0.6)
          this.scene.tweens.add({
             delay: 1,

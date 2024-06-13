@@ -50,7 +50,7 @@
              this.rune2 = this.addSprite(gameConsts.width - 138, gameConsts.halfHeight + 20, 'circle', 'rune_matter_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
 
              this.addTimeout(() => {
-                 globalObjects.textPopupManager.setInfoText(gameConsts.width - 114, gameConsts.halfHeight - 70, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'left');
+                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 70, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'right');
                  this.addTween({
                      targets: [this.rune1, this.rune2],
                      alpha: 1,
@@ -82,7 +82,7 @@
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
             this.timeSinceLastAttacked = -50;
-            globalObjects.textPopupManager.setInfoText(gameConsts.width - 80, 275, "Enemies get\nangry when\nattacked!", 'left');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, 275, "Enemies get\nangry when\nattacked!", 'right');
             if (this.rune1) {
                 this.rune1.destroy();
                 this.rune2.destroy();

@@ -81,7 +81,7 @@
     startFight() {
         this.setAwake();
         playSound('inflate', 0.6).detune = 500;
-        this.addTween({
+        this.currDummyAnim = this.addTween({
             targets: this.sprite,
             scaleX: this.sprite.startScale * 0.85,
             scaleY: this.sprite.startScale * 0.85,
@@ -89,8 +89,8 @@
             ease: "Quint.easeOut",
             duration: 700,
             onComplete: () => {
-                playSound('tractor_start', 0.5);
-                this.addTween({
+                playSound('tractor_start', 0.4);
+                this.currDummyAnim = this.addTween({
                     targets: this.sprite,
                     scaleX: this.sprite.startScale * 1.25,
                     scaleY: this.sprite.startScale * 1.25,
@@ -99,7 +99,7 @@
                     duration: 600,
                     onComplete: () => {
                         this.setDefaultSprite('dummy_paper_face.png');
-                        this.addTween({
+                        this.currDummyAnim = this.addTween({
                             targets: this.sprite,
                             scaleX: this.sprite.startScale,
                             scaleY: this.sprite.startScale,
@@ -109,7 +109,7 @@
                             duration: 500,
                             onComplete: () => {
                                 this.runSfxLoop = playSound('tractor_loop', 0, true);
-                                this.runTween = this.addTween({
+                                this.currDummyAnim = this.runTween = this.addTween({
                                     targets: this.sprite,
                                     rotation: 0.02,
                                     ease: "Quart.easeInOut",
@@ -146,7 +146,7 @@
             return;
         }
         this.tempShiftSFX();
-        this.addTween({
+        this.currDummyAnim = this.addTween({
             targets: this.sprite,
             scaleX: this.sprite.startScale * 0.85,
             scaleY: this.sprite.startScale * 0.85,
@@ -207,7 +207,7 @@
                         });
                     }
                 });
-                this.addTween({
+                this.currDummyAnim = this.addTween({
                     targets: this.sprite,
                     scaleX: this.sprite.startScale * 1.1,
                     scaleY: this.sprite.startScale * 1.1,
@@ -216,7 +216,7 @@
                     duration: 500,
                     onComplete: () => {
                         if (numTimes <= 1) {
-                            this.addTween({
+                            this.currDummyAnim = this.addTween({
                                 targets: this.sprite,
                                 scaleX: this.sprite.startScale,
                                 scaleY: this.sprite.startScale,
@@ -237,12 +237,12 @@
         });
     }
 
-    throwStar(name, damage, numTimes = 1) {
-        if (this.dead || this.isDestroyed) {
+    throwDouble(name, damage, numTimes = 1) {
+        if (this.dead || this.isDestroyed || globalObjects.player.isDead()) {
             return;
         }
         this.tempShiftSFX();
-        this.addTween({
+        this.currDummyAnim = this.addTween({
             targets: this.sprite,
             scaleX: this.sprite.startScale * 0.85,
             scaleY: this.sprite.startScale * 0.85,
@@ -349,7 +349,7 @@
                     }
                 });
 
-                this.addTween({
+                this.currDummyAnim = this.addTween({
                     targets: this.sprite,
                     scaleX: this.sprite.startScale * 1.1,
                     scaleY: this.sprite.startScale * 1.1,
@@ -358,7 +358,7 @@
                     duration: 350,
                     onComplete: () => {
                         if (numTimes <= 1) {
-                            this.addTween({
+                            this.currDummyAnim = this.addTween({
                                 targets: this.sprite,
                                 scaleX: this.sprite.startScale,
                                 scaleY: this.sprite.startScale,
@@ -371,7 +371,7 @@
                 });
                 if (numTimes > 1) {
                     this.addTimeout(() => {
-                        this.throwStar(name, damage, numTimes - 1);
+                        this.throwDouble(name, damage, numTimes - 1);
                     }, 350)
                 }
 
@@ -427,7 +427,11 @@
 
         globalObjects.textPopupManager.hideInfoText();
         this.globalClickBlocker = createGlobalClickBlocker(false);
+        this.sprite.setScale(this.sprite.startScale).setRotation(0);
         let darkDummy = this.addSprite(this.sprite.startX, this.sprite.y, 'dummyenemy', 'dummy_paper_dark.png').setScale(this.sprite.startScale).setDepth(11).setAlpha(0.1);
+        if (this.currDummyAnim) {
+            this.currDummyAnim.stop();
+        }
          this.addTween({
              targets: darkDummy,
              alpha: 0.7,

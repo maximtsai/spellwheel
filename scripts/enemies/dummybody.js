@@ -25,7 +25,7 @@
     }
 
      initStatsCustom() {
-        this.health = 100;
+        this.health = 120;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -47,9 +47,9 @@
 
     showThornsTutorial() {
          this.addTimeout(() => {
-             this.rune3 = this.addImage(gameConsts.width - 150, gameConsts.halfHeight + 20, 'circle', 'rune_matter_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-             this.rune4 = this.addImage(gameConsts.width - 82, gameConsts.halfHeight + 20, 'circle', 'rune_body_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-             globalObjects.textPopupManager.setInfoText(gameConsts.width - 110, gameConsts.halfHeight - 70, "Thorns make you\ntake less damage\nwhile reflecting\nsome damage back\n             +", 'left');
+             this.rune3 = this.addImage(gameConsts.width - 160, gameConsts.halfHeight - 65, 'circle', 'rune_matter_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+             this.rune4 = this.addImage(gameConsts.width - 82, gameConsts.halfHeight - 65, 'circle', 'rune_reinforce_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 170, "Thorns reduce\nincoming damage\nand can inflict\ndamage back.\n             +", 'right');
              this.addTween({
                  targets: [this.rune3, this.rune4],
                  alpha: 1,
@@ -58,24 +58,21 @@
                  onComplete: () => {
                     this.addTimeout(() => {
                         this.spellHoverListener = messageBus.subscribe('playerCastedSpell', (id, spellName) => {
-                            globalObjects.textPopupManager.hideInfoText();
+                            this.spellHoverListener.unsubscribe();
+                            this.addTimeout(() => {
+                                globalObjects.textPopupManager.hideInfoText();
+                                 this.addTween({
+                                     targets: [this.rune3, this.rune4],
+                                     alpha: 0,
+                                     duration: 300,
+                                     onComplete: () => {
+                                        this.rune3.visible = false;
+                                        this.rune4.visible = false;
+                                     }
+                                 });
+                            }, 1000);
                         });
                     }, 1000)
-                    this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
-                        this.playerSpellCastSub.unsubscribe();
-                        this.addTimeout(() => {
-                             this.addTween({
-                                 targets: [this.rune3, this.rune4],
-                                 alpha: 0,
-                                 duration: 300,
-                                 onComplete: () => {
-                                    this.rune3.visible = false;
-                                    this.rune4.visible = false;
-                                 }
-                             });
-                            globalObjects.textPopupManager.hideInfoText();
-                        }, 1000);
-                    });
                  }
              });
          }, 500)
@@ -148,7 +145,7 @@
 
                     },
                     attackFinishFunction: () => {
-                        this.throwStar('star.png', 2, 99);
+                        this.throwDouble('star.png', 2, 49);
                     }
                  },
              ]

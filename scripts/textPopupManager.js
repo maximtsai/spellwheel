@@ -24,21 +24,22 @@ class TextPopupManager {
         this.infoText.x = x; this.infoText.y = y;
         this.infoText.setAlpha(0);
         this.infoBox.setAlpha(0);
+        this.infoText.setAlign('left');
         if (align == "left") {
             this.infoText.setOrigin(0, 0.5);
             this.infoBox.setOrigin(0, 0.5);
         } else if (align == "center") {
-            this.infoText.x -= 1;
+            this.infoText.x -= 3;
+            this.infoText.setAlign('center');
             this.infoText.setOrigin(0.5, 0.5);
             this.infoBox.setOrigin(0.5, 0.5);
         } else if (align == "right") {
             this.infoText.setOrigin(1, 0.5);
-            this.infoText.x -= 2;
+            this.infoText.x -= 6;
             this.infoBox.setOrigin(1, 0.5);
         }
         this.infoBox.x = x; this.infoBox.y = y;
         this.infoText.setText(newText);
-        this.infoText.setAlign('left');
         let multScale = useSmall ? 0.9 : 1;
         this.infoText.setScale(multScale);
         let boxWidth = this.infoText.width * 0.5 + 8;

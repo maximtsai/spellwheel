@@ -978,10 +978,12 @@ class Enemy {
     }
 
     takeEffect(newEffect) {
+        console.log("took effect", newEffect)
         this.statuses[newEffect.name] = newEffect;
     }
 
     clearEffects() {
+        console.log("cleaned up effects");
         for (let i in this.statuses) {
             let effect = this.statuses[i];
             if (effect) {
@@ -1484,6 +1486,7 @@ class Enemy {
         this.attackName.visible = false;
         messageBus.publish('enemyHasDied');
 
+        console.log("die cleanup")
         for (let i in this.statuses) {
             let status = this.statuses[i];
             if (status == null) {
@@ -1995,6 +1998,7 @@ class Enemy {
         if (this.dead) {
             return;
         }
+        console.log("updateStatuses")
         for (let i in this.statuses) {
             let status = this.statuses[i];
             if (status == null) {

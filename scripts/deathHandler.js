@@ -95,7 +95,7 @@ function getFloatingDeath() {
         globalObjects.floatingDeath = PhaserScene.add.image(gameConsts.halfWidth, 95, 'enemies', 'max_death_1a.png').setDepth(-1);
         globalObjects.floatingDeath.setAlpha(0.4);
         globalObjects.floatingDeath2 = PhaserScene.add.image(gameConsts.halfWidth, 95, 'enemies', 'max_death_1b.png').setDepth(-1).setVisible(false);
-        let leftHandOffsetX = -112; leftHandOffsetY = 28;
+        let leftHandOffsetX = -114; leftHandOffsetY = 26;
         let rightHandOffsetX = 190; rightHandOffsetY = -49;
         globalObjects.deathLeftHand = PhaserScene.add.image(gameConsts.halfWidth + leftHandOffsetX, globalObjects.floatingDeath.y + leftHandOffsetY, 'enemies', 'max_death_left_arm.png');
         globalObjects.deathRightHand = PhaserScene.add.image(gameConsts.halfWidth + rightHandOffsetX, globalObjects.floatingDeath.y + rightHandOffsetY, 'enemies', 'max_death_right_hand.png');
@@ -153,12 +153,14 @@ function stopFloatingDeathTween() {
 }
 
 function tweenFloatingDeath(scale = 0.75, alpha = 1, duration = 1200, ease = "Cubic.easeInOut", onComplete) {
+    let fakeAlphaAdjusted = alpha < 0.15 ? alpha - 0.15 : alpha;
+
     globalObjects.floatingDeath.currAnim1 = PhaserScene.tweens.add({
         targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2, globalObjects.deathLeftHand, globalObjects.deathRightHand],
         scaleX: scale,
         scaleY: scale,
         ease: ease,
-        fakeAlpha: alpha,
+        fakeAlpha: fakeAlphaAdjusted,
         duration: duration,
         onComplete: onComplete
     });
@@ -395,29 +397,24 @@ function playReaperAnim(enemy, customFinFunc) {
                                                 }
                                                 tweenObjectRotationTo(globalObjects.deathLeftHand, -0.38, 1100, "Cubic.easeIn");
                                                 tweenObjectRotationTo(globalObjects.deathRightHand, 0.32, 1100, "Cubic.easeIn");
+                                                globalObjects.deathLeftHand.alpha = 3;
+                                                globalObjects.deathRightHand.alpha = 3;
                                                 tweenFloatingDeath(0.5, 0.1, 1100, "Quad.easeIn", () => {
                                                     globalObjects.floatingDeath.flutterAnim.stop();
                                                     globalObjects.floatingDeath.visible = true;
                                                     globalObjects.floatingDeath2.visible = false;
                                                     globalObjects.floatingDeath.alpha = 0.1;
                                                     PhaserScene.tweens.add({
-                                                        targets: [globalObjects.floatingDeath],
+                                                        targets: [globalObjects.floatingDeath, globalObjects.deathLeftHand, globalObjects.deathRightHand],
                                                         alpha: 0,
                                                         fakeAlpha: 0,
                                                         scaleX: 0.3,
                                                         scaleY: 0.3,
-                                                        duration: 300,
+                                                        duration: 400,
+                                                        ease: 'Quad.easeOut',
                                                         onComplete: () => {
                                                             globalObjects.floatingDeath.visible = false;
                                                         }
-                                                    });
-                                                    PhaserScene.tweens.add({
-                                                        targets: [globalObjects.floatingDeath, globalObjects.deathLeftHand, globalObjects.deathRightHand],
-                                                        alpha: 0,
-                                                        scaleX: 0.3,
-                                                        scaleY: 0.3,
-                                                        duration: 300,
-                                                        ease: 'Quad.easeIn'
                                                     });
                                                 });
 
@@ -539,7 +536,6 @@ function handleReaperDialog(level = 0, onComplete) {
         reaperDialog = [
             "I WILL ONLY\nWARN YOU ONCE MORE,",
             "THAT WHICH YOU SEEK HERE\nCANNOT BE ATTAINED.",
-            "RETURN TO THE MORTAL REALM.",
         ];
         break;
     case 4:

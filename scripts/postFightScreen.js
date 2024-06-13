@@ -4,7 +4,6 @@ class PostFightScreen {
         this.bgShade = null;
         this.backing = null;
         this.titleText = null;
-        this.spellsCastText = null;
         this.healthLeftText = null;
         this.locketSprite = null;
         this.locketDialog = null;
@@ -23,29 +22,76 @@ class PostFightScreen {
         if (!this.titleText) {
             this.titleText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 260, '(placeholder title)', {fontFamily: 'garamondmax', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
-        if (!this.spellsCastText) {
-            this.spellsCastText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 190, 'Spells Cast:', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
-        }
         if (!this.healthLeftText) {
-            this.healthLeftText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 155, 'Health Left:', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.healthLeftText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 190, 'Health Left:', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.codeText) {
             this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 80, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
         }
         if (!this.locketSprite) {
-            this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 105, 'ui', 'locket1.png').setScale(0.75).setDepth(100002).setAlpha(0).setOrigin(0.5, 0.8);
+            this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 120, 'ui', 'locket1.png').setScale(0.75).setDepth(100002).setAlpha(0).setOrigin(0.5, 0.8);
         }
         if (!this.locketDialog) {
             this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 220, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
         }
         if (!this.newRuneAnnounce) {
-            this.newRuneAnnounce =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 120, 'New Rune!', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.newRuneAnnounce =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 138, 'New Rune!', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.newRuneDesc) {
-            this.newRuneDesc =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 86, '(insert rune description)', {fontFamily: 'garamondmax', fontSize: 22, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
+            this.newRuneDesc =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 115, '(insert rune description)', {fontFamily: 'garamondmax', fontSize: 22, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
         }
         if (!this.newRuneIcon) {
-            this.newRuneIcon =  this.scene.add.image(gameConsts.halfWidth - 76, gameConsts.halfHeight - 122, 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
+            this.newRuneIcon =  this.scene.add.image(gameConsts.halfWidth - 76, gameConsts.halfHeight - 142, 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
+            this.showRuneDescBtn = new Button({
+                normal: {
+                    atlas: "ui",
+                    ref: "more.png",
+                    visible: true,
+                    alpha: 0.85,
+                    x: gameConsts.halfWidth - 56,
+                    y: gameConsts.halfHeight - 141,
+                },
+                hover: {
+                    atlas: "ui",
+                    alpha: 1,
+                    ref: "more_hover.png",
+                },
+                press: {
+                    atlas: "ui",
+                    alpha: 0.8,
+                    ref: "more_press.png",
+                },
+                disable: {
+                    atlas: "ui",
+                    ref: "more_press.png",
+                    alpha: 0
+                },
+                onHover: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: () => {
+                    this.showRuneDescBtn.setState(DISABLE);
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                    this.newRuneDesc.visible = true;
+                    PhaserScene.tweens.add({
+                        targets: [this.newRuneDesc],
+                        alpha: 1,
+                        ease: 'Cubic.easeOut',
+                        duration: 250,
+                    });
+                }
+            });
+            this.showRuneDescBtn.setDepth(100000);
+            this.showRuneDescBtn.setState(DISABLE)
         }
         if (!this.flashObj) {
             this.flashObj = this.scene.add.image(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'lowq', 'flash.webp').setScale(0).setRotation(-0.2).setDepth(100002).setAlpha(0.5);
@@ -74,7 +120,7 @@ class PostFightScreen {
                 disable: {
                     atlas: "ui",
                     ref: "nextLevel_press.png",
-                    alpha: 0.001
+                    alpha: 0
                 },
                 onHover: () => {
                     if (canvas) {
@@ -96,7 +142,7 @@ class PostFightScreen {
             this.trainingButton = new Button({
                 normal: {
                     atlas: "ui",
-                    ref: "nextLevel.png",
+                    ref: "practice.png",
                     visible: true,
                     alpha: 0.95,
                     x: gameConsts.halfWidth - 110,
@@ -105,17 +151,17 @@ class PostFightScreen {
                 hover: {
                     atlas: "ui",
                     alpha: 1,
-                    ref: "nextLevel_hover.png",
+                    ref: "practice_hover.png",
                 },
                 press: {
                     atlas: "ui",
                     alpha: 1,
-                    ref: "nextLevel_press.png",
+                    ref: "practice_press.png",
                 },
                 disable: {
                     atlas: "ui",
-                    ref: "nextLevel_press.png",
-                    alpha: 0.001
+                    ref: "practice_press.png",
+                    alpha: 0
                 },
                 onHover: () => {
                     if (canvas) {
@@ -131,7 +177,10 @@ class PostFightScreen {
 
                 }
             });
+            this.trainingButton.addText('        TRAINING', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'center'});
             this.trainingButton.setDepth(100000);
+
+            this.trainingRuneIcon =  this.scene.add.image(this.trainingButton.getXPos() - 68, this.trainingButton.getYPos(), 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
         }
 
         if (!this.locketButton) {
@@ -189,11 +238,10 @@ class PostFightScreen {
 
         this.backing.setScale(0.98);
         this.titleText.setScale(0.97);
-        this.spellsCastText.setScale(0.97);
         this.healthLeftText.setScale(0.97);
         this.newRuneAnnounce.setScale(0.97);
-        this.newRuneDesc.setScale(0.97);
-        this.newRuneIcon.setScale(0.4)
+        this.newRuneIcon.setScale(0.4);
+        this.trainingRuneIcon.setScale(0.4);
         if (isWin) {
             this.locketSprite.visible = true;
             this.locketSprite.x = gameConsts.width + 300;
@@ -228,15 +276,21 @@ class PostFightScreen {
                 
                 PhaserScene.tweens.add({
                     delay: 200,
-                    targets: [this.newRuneIcon],
-                    scaleX: 0.42,
-                    scaleY: 0.42,
+                    targets: [this.newRuneIcon, this.trainingRuneIcon],
+                    scaleX: 0.435,
+                    scaleY: 0.435,
                     alpha: 1,
                     duration: 250,
+                    onComplete: () => {
+                        if (this.canShowRuneBtn) {
+                            this.showRuneDescBtn.setState(NORMAL);
+                        }
+                    }
                 });
+
                 PhaserScene.tweens.add({
                     delay: 200,
-                    targets: [this.spellsCastText, this.healthLeftText, this.newRuneAnnounce, this.newRuneDesc],
+                    targets: [this.healthLeftText, this.newRuneAnnounce],
                     scaleX: 1,
                     scaleY: 1,
                     alpha: 1,
@@ -309,20 +363,22 @@ class PostFightScreen {
     }
 
     clearPostFightScreen(clearFog = true) {
+        this.canShowRuneBtn = false;
         if (!this.isCreated) {
             return;
         }
         PhaserScene.tweens.add({
-            targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.newRuneDesc, this.newRuneIcon, this.newRuneAnnounce, this.locketSprite, this.codeText, this.locketDialog],
+            targets: [this.bgShade, this.backing, this.titleText, this.healthLeftText, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon, this.newRuneAnnounce, this.locketSprite, this.codeText, this.locketDialog],
             alpha: 0,
             ease: 'Quad.easeOut',
-            duration: 700,
+            duration: 600,
         });
         globalObjects.bannerTextManager.setOnFinishFunc(() => {});
         globalObjects.bannerTextManager.closeBanner();
         this.continueButton.setState(DISABLE);
         this.trainingButton.setState(DISABLE);
         this.locketButton.setState(DISABLE);
+        this.showRuneDescBtn.setState(DISABLE);
         globalObjects.magicCircle.enableMovement();
         if (clearFog) {
             clearDeathFog();
@@ -377,6 +433,7 @@ class PostFightScreen {
     }
 
     createWinScreen(level = 0) {
+        this.canShowRuneBtn = true;
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
         if (level > gameVars.latestLevel) {
@@ -404,6 +461,7 @@ class PostFightScreen {
     }
 
     createWinScreenMin(level = 0) {
+        this.canShowRuneBtn = true;
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
 
@@ -418,6 +476,7 @@ class PostFightScreen {
     }
 
     createWinScreenBoom(level = 0) {
+        this.canShowRuneBtn = true;
         this.createWinScreenUI(level);
         this.continueButton.setOnMouseUpFunc(() => {
             this.clearPostFightScreen(false);
@@ -429,15 +488,23 @@ class PostFightScreen {
     }
 
     createWinScreenUI(level = 0) {
+        this.canShowRuneBtn = true;
         this.isCreated = true;
         this.initAssets(true);
         globalObjects.magicCircle.disableMovement();
         this.titleText.setText("Fight Complete");
-        this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
+        // this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
         this.healthLeftText.setText("Health Left: " + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
         this.newRuneAnnounce.setText(this.getNewRuneAnnounce(level));
+        this.newRuneDesc.visible = false;
+        this.newRuneDesc.alpha = 0;
         this.newRuneDesc.setText(this.getNewRuneDesc(level))
+        this.newRuneIcon.visible = true;
+
         this.newRuneIcon.setFrame(this.getNewRuneFrame(level));
+        this.trainingRuneIcon.visible = true;
+        this.trainingRuneIcon.setFrame(this.getNewRuneFrame(level));
+
         this.codeText.setText("LEVEL CODE: placeholder\n(placeholder)");
         this.locketDialog.setText(this.getStoryDialog(level));
 
@@ -445,14 +512,16 @@ class PostFightScreen {
     }
 
     createWinScreenUIMin(level = 0) {
+        this.canShowRuneBtn = false;
         this.isCreated = true;
         this.initAssets(true);
         globalObjects.magicCircle.disableMovement();
         this.titleText.setText("Training Complete");
-        this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
         this.healthLeftText.setText("Health Left: " + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
         this.newRuneAnnounce.setText(' ');
         this.newRuneDesc.setText(' ')
+        this.newRuneIcon.visible = false;
+        this.trainingRuneIcon.visible = false;
         // this.newRuneIcon.setFrame(' ');
         this.codeText.setText(' ');
         this.locketDialog.setText(this.getStoryDialog(level));
@@ -464,9 +533,9 @@ class PostFightScreen {
     }
 
     createLoseScreen(level) {
+        this.canShowRuneBtn = true;
         this.initAssets(false);
         this.titleText.setText("You Have Fallen");
-        this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
         // healthLeftText
         this.codeText.setText("CHEAT CODE: ABCDE");
         this.continueButton.setOnMouseUpFunc(() => {
@@ -487,8 +556,9 @@ class PostFightScreen {
     }
 
     showStoryText(level) {
-        let objectsToFade = [this.spellsCastText, this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
+        let objectsToFade = [this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon];
 
+        this.showRuneDescBtn.setState(DISABLE);
         PhaserScene.tweens.add({
             delay: 100,
             targets: this.locketDialog,
@@ -519,7 +589,11 @@ class PostFightScreen {
     }
 
     returnStatText() {
-        let objectsToFade = [this.titleText, this.spellsCastText, this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
+        if (!this.newRuneDesc.visible) {
+            this.showRuneDescBtn.setState(NORMAL);
+
+        }
+        let objectsToFade = [this.titleText, this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon];
         PhaserScene.tweens.add({
             targets: this.locketDialog,
             alpha: 0,

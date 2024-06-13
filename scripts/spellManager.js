@@ -147,7 +147,7 @@ class SpellManager {
         let useMainStrike = Math.random() < 0.65;
         let strikeVol = 0.75 + additionalDamage * 0.0015 + (useMainStrike ? -0.1 : 0);
         let sfx = playSound(useMainStrike ? 'matter_strike' : 'matter_strike_alt', strikeVol);
-        let detuneAmt = Math.floor(Math.sqrt(additionalDamage * 0.75)) * -150;
+        let detuneAmt = Math.floor(Math.sqrt(additionalDamage * 0.75)) * -80;
         sfx.detune = detuneAmt;
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
@@ -219,7 +219,7 @@ class SpellManager {
                 ease: 'Quad.easeIn',
                 onComplete: () => {
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
-                    let baseDamage = gameVars.matterPlus ? 14 : 120;
+                    let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
                     messageBus.publish('setPauseDur', 20);
                     poolManager.returnItemToPool(rockObj, 'rock');

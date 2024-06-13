@@ -5,6 +5,7 @@
          this.sprite.setOrigin(0.52, 0.88); // 0.9
          this.shieldAdded = false;
          this.bgMusic = playMusic('echos_of_time', 0.9, true);
+        playSound('tree_rustle', 0.5);
 
 
          this.popupTimeout = this.addTimeout(() => {
@@ -14,7 +15,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 300 : 240;
+         this.health = gameVars.isHardMode ? 300 : 10;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;
@@ -447,7 +448,7 @@
                     alpha: 0.7,
                      duration: 400,
                      onComplete: () => {
-                        globalObjects.bannerTextManager.setDialog(["The tree gains prickly thorns that\nreflect 2 damage.", "Block the thorns\n+ Make your attacks count."]);
+                        globalObjects.bannerTextManager.setDialog(["The tree gains spiky thorns that\nreflect 2 damage.", "Block them\n+ Make your attacks count."]);
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                         globalObjects.bannerTextManager.showBanner(true);
                         this.setDefense(2);
@@ -979,7 +980,7 @@
             targets: [spikeGlow1, spike1],
             rotation: Math.PI * 0.25,
             ease: 'Quad.easeInOut',
-            y: this.y - 40,
+            y: this.y - 70,
             duration: 2000,
             onComplete: () => {
                 let fallSound = playSound('robot_laser');
@@ -1023,7 +1024,7 @@
                 });
                 this.addTween({
                     targets: [spikeGlow1, spikeGlow2, spike1, spike2, greenSpike],
-                    rotation: "+=12",
+                    rotation: "+=6",
                     ease: 'Quad.easeIn',
                     y: globalObjects.player.getY() - 200,
                     duration: 1000,
@@ -1059,7 +1060,7 @@
     }
 
     adjustDamageTaken(amt, isAttack, isTrue ) {
-        if (isAttack && this.hasThorns && !isTrue) {
+        if (isAttack && this.hasThorns && !isTrue && !this.dead) {
             
             let glowSpike = getTempPoolObject('enemies', 'glowSpike.png', 'glowSpike', 1800);
             let isLeft = Math.random() < 0.5;

@@ -78,7 +78,74 @@
         }
     }
 
+    startFight() {
+        this.setAwake();
+        playSound('inflate', 0.6).detune = 500;
+        this.addTween({
+            targets: this.sprite,
+            scaleX: this.sprite.startScale * 0.85,
+            scaleY: this.sprite.startScale * 0.85,
+            rotation: -0.25,
+            ease: "Quint.easeOut",
+            duration: 700,
+            onComplete: () => {
+                playSound('tractor_start', 0.5);
+                this.addTween({
+                    targets: this.sprite,
+                    scaleX: this.sprite.startScale * 1.25,
+                    scaleY: this.sprite.startScale * 1.25,
+                    rotation: 0.08,
+                    ease: "Quart.easeIn",
+                    duration: 600,
+                    onComplete: () => {
+                        this.setDefaultSprite('dummy_paper_face.png');
+                        this.addTween({
+                            targets: this.sprite,
+                            scaleX: this.sprite.startScale,
+                            scaleY: this.sprite.startScale,
+                            rotation: -0.02,
+                            easeParams: [2],
+                            ease: "Bounce.easeOut",
+                            duration: 500,
+                            onComplete: () => {
+                                this.runSfxLoop = playSound('tractor_loop', 0, true);
+                                this.runTween = this.addTween({
+                                    targets: this.sprite,
+                                    rotation: 0.02,
+                                    ease: "Quart.easeInOut",
+                                    duration: 500,
+                                    repeat: -1,
+                                    yoyo: true
+                                });
+                            }
+                        });
+
+                         let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 700);
+                         shinePattern.setPosition(this.x, this.y - 120).setScale(0.65).setDepth(-1).setAlpha(0.5);
+                         this.addTween({
+                             targets: shinePattern,
+                             scaleX: 0.85,
+                             scaleY: 0.85,
+                             duration: 700,
+                             ease: 'Cubic.easeOut'
+                         });
+                         this.addTween({
+                             targets: shinePattern,
+                             alpha: 0,
+                             ease: 'Cubic.easeIn',
+                             duration: 700,
+                         });
+                    }
+                });
+            }
+        });
+    }
+
     throwWeapon(name, damage, numTimes = 1) {
+        if (this.dead || this.isDestroyed) {
+            return;
+        }
+        this.tempShiftSFX();
         this.addTween({
             targets: this.sprite,
             scaleX: this.sprite.startScale * 0.85,
@@ -102,7 +169,6 @@
                     duration: 550,
                     onComplete: () => {
                         weapon.setDepth(20);
-                        playSound('matter_body');
                         weapon.setScale(1.2);
                         this.addTween({
                             targets: weapon,
@@ -170,6 +236,149 @@
             }
         });
     }
+
+    throwStar(name, damage, numTimes = 1) {
+        if (this.dead || this.isDestroyed) {
+            return;
+        }
+        this.tempShiftSFX();
+        this.addTween({
+            targets: this.sprite,
+            scaleX: this.sprite.startScale * 0.85,
+            scaleY: this.sprite.startScale * 0.85,
+            rotation: (numTimes % 2 == 1) ? -0.25 : 0.25,
+            ease: "Quart.easeOut",
+            duration: 600,
+            onComplete: () => {
+                let weapon = this.addImage(this.x + 5, this.y - 95, 'dummyenemy', name).setDepth(0).setScale(0.25);
+                let weapon2 = this.addImage(this.x - 5, this.y - 85, 'dummyenemy', name).setDepth(0).setScale(0.25);
+                this.addTween({
+                    targets: weapon,
+                    rotation: -12.566 + Math.random() * 0.1,
+                    duration: 1200,
+                });
+                this.addTween({
+                    delay: 200,
+                    targets: weapon2,
+                    rotation: 12.566 + Math.random() * 0.1,
+                    duration: 1200,
+                });
+
+                this.addTween({
+                    targets: weapon,
+                    x: gameConsts.halfWidth + 70,
+                    y: this.y - 280,
+                    scaleX: 0.95,
+                    scaleY: 0.95,
+                    ease: "Cubic.easeOut",
+                    duration: 500,
+                    onComplete: () => {
+                        weapon.setDepth(20);
+                        this.addTween({
+                            targets: weapon,
+                            x: gameConsts.halfWidth + 15,
+                            y: globalObjects.player.getY() - 220,
+                            ease: "Cubic.easeIn",
+                            duration: 700,
+                            onComplete: () => {
+                                messageBus.publish("selfTakeDamage", damage);
+                                 let hitEffect = this.addSprite(weapon.x, globalObjects.player.getY() - 190, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
+                                 this.addTween({
+                                     targets: hitEffect,
+                                     scaleX: 1.25,
+                                     scaleY: 1.25,
+                                     ease: 'Cubic.easeOut',
+                                     duration: 150,
+                                     onComplete: () => {
+                                         hitEffect.destroy();
+                                     }
+                                 });
+                                 let detuneAmt = (numTimes % 3) * 100 - 100;
+                                 playSound('razor_leaf').detune = detuneAmt;
+                                this.addTween({
+                                    delay: 500,
+                                    targets: weapon,
+                                    alpha: 0,
+                                    duration: 500,
+                                });
+                            }
+                        });
+                    }
+                });
+
+                this.addTween({
+                    delay: 200,
+                    targets: weapon2,
+                    x: gameConsts.halfWidth - 70,
+                    y: this.y - 295,
+                    scaleX: 0.95,
+                    scaleY: 0.95,
+                    ease: "Cubic.easeOut",
+                    duration: 550,
+                    onComplete: () => {
+                        weapon2.setDepth(20);
+                        this.addTween({
+                            targets: weapon2,
+                            x: gameConsts.halfWidth - 15,
+                            y: globalObjects.player.getY() - 220,
+                            ease: "Cubic.easeIn",
+                            duration: 700,
+                            onComplete: () => {
+                                messageBus.publish("selfTakeDamage", damage);
+                                 let hitEffect = this.addSprite(weapon2.x, globalObjects.player.getY() - 190, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
+                                 this.addTween({
+                                     targets: hitEffect,
+                                     scaleX: 1.25,
+                                     scaleY: 1.25,
+                                     ease: 'Cubic.easeOut',
+                                     duration: 150,
+                                     onComplete: () => {
+                                         hitEffect.destroy();
+                                     }
+                                 });
+                                 let detuneAmt = ((numTimes + 1) % 3) * 100 - 100;
+                                 playSound('razor_leaf').detune = detuneAmt;
+                                this.addTween({
+                                    delay: 500,
+                                    targets: weapon2,
+                                    alpha: 0,
+                                    duration: 500,
+                                });
+                            }
+                        });
+                    }
+                });
+
+                this.addTween({
+                    targets: this.sprite,
+                    scaleX: this.sprite.startScale * 1.1,
+                    scaleY: this.sprite.startScale * 1.1,
+                    rotation: numTimes % 2 == 1 ? 0.05 : -0.05,
+                    ease: "Quart.easeIn",
+                    duration: 350,
+                    onComplete: () => {
+                        if (numTimes <= 1) {
+                            this.addTween({
+                                targets: this.sprite,
+                                scaleX: this.sprite.startScale,
+                                scaleY: this.sprite.startScale,
+                                rotation: 0,
+                                ease: "Bounce.easeOut",
+                                duration: 350,
+                            });
+                        }
+                    }
+                });
+                if (numTimes > 1) {
+                    this.addTimeout(() => {
+                        this.throwStar(name, damage, numTimes - 1);
+                    }, 350)
+                }
+
+            }
+        });
+    }
+
 
     createDamageParticles() {
         let cloud1 = getTempPoolObject('dummyenemy', 'cloud1.png', 'cloud1', 1100);

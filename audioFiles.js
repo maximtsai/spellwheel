@@ -88,6 +88,7 @@ const audioFiles = [
     {name: 'power_surge_plain', src: 'audio/power_surge_plain.mp3'},
     {name: 'tree_timber', src: 'audio/tree_timber.mp3'},
     {name: 'tree_sfx', src: 'audio/tree_sfx.mp3'},
+    {name: 'tree_rustle', src: 'audio/tree_rustle.mp3'},
     {name: 'locket', src: 'audio/locket.mp3'},
     {name: 'razor_leaf', src: 'audio/razor_leaf.mp3'},
     {name: 'tree_hit', src: 'audio/tree_hit.mp3'},

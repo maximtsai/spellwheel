@@ -330,36 +330,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/cloud1.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>49,41,97,82</rect>
-                <key>scale9Paddings</key>
-                <rect>49,41,97,82</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/cloud2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>26,22,53,44</rect>
-                <key>scale9Paddings</key>
-                <rect>26,22,53,44</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">enemies/curse_symbol.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -1016,18 +986,20 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/robot_claw_2.png</key>
+            <key type="filename">enemies/robot_claw_2 - Copy.png</key>
+            <key type="filename">enemies/robot_claw_b1.png</key>
+            <key type="filename">enemies/robot_claw_b2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.64</double>
+                <double>1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>139,127,279,255</rect>
+                <rect>154,137,309,275</rect>
                 <key>scale9Paddings</key>
-                <rect>139,127,279,255</rect>
+                <rect>154,137,309,275</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

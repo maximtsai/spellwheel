@@ -17,8 +17,8 @@
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
         globalObjects.bannerTextManager.showBanner(false);
         let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
-        this.rune1 = this.addSprite(gameConsts.halfWidth - 260, gameConsts.height - 130, 'tutorial', 'rune_mind_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
-        this.rune2 = this.addSprite(gameConsts.halfWidth + 260, gameConsts.height - 130, 'tutorial', 'rune_mind_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+        this.rune1 = this.addImage(gameConsts.halfWidth - 260, gameConsts.height - 130, 'tutorial', 'rune_mind_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+        this.rune2 = this.addImage(gameConsts.halfWidth + 260, gameConsts.height - 130, 'tutorial', 'rune_mind_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
          this.addTween({
              targets: [this.rune1, this.rune2],
              alpha: 1,
@@ -51,10 +51,10 @@
          }
          if (this.canShowShieldTip) {
             this.canShowShieldTip = false;
-             this.rune3 = this.addSprite(gameConsts.width - 150, gameConsts.halfHeight + 20, 'circle', 'rune_mind_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-             this.rune4 = this.addSprite(gameConsts.width - 82, gameConsts.halfHeight + 20, 'circle', 'rune_strike_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
              this.addTimeout(() => {
-                 globalObjects.textPopupManager.setInfoText(gameConsts.width - 110, gameConsts.halfHeight - 70, "Energy strike lets\nyour next attack\nhit twice as hard.\n             +", 'left');
+                 this.rune3 = this.addImage(gameConsts.width - 150, gameConsts.halfHeight + 20, 'circle', 'rune_mind_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+                 this.rune4 = this.addImage(gameConsts.width - 82, gameConsts.halfHeight + 20, 'circle', 'rune_strike_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, "Energy strike lets\nyour next attack\nhit twice as hard.\n             +", 'right');
                  this.addTween({
                      targets: [this.rune3, this.rune4],
                      alpha: 1,
@@ -86,6 +86,7 @@
          if (this.dead) {
              return;
          }
+        globalObjects.textPopupManager.hideInfoText();
          if (this.rune1) {
              this.rune1.visible = false;
              this.rune2.visible = false;

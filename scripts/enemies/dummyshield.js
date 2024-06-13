@@ -79,69 +79,10 @@
             easeParams: [1.5],
             completeDelay: 400,
             onComplete: () => {
-                playSound('inflate', 0.6).detune = 500;
                 this.picketVisual.destroy();
-                this.addTween({
-                    targets: this.sprite,
-                    scaleX: this.sprite.startScale * 0.85,
-                    scaleY: this.sprite.startScale * 0.85,
-                    rotation: -0.25,
-                    ease: "Quint.easeOut",
-                    duration: 700,
-                    onComplete: () => {
-                        playSound('tractor_loop', 1);
-                        this.addTween({
-                            targets: this.sprite,
-                            scaleX: this.sprite.startScale * 1.25,
-                            scaleY: this.sprite.startScale * 1.25,
-                            rotation: 0.08,
-                            ease: "Quart.easeIn",
-                            duration: 600,
-                            onComplete: () => {
-                                this.setDefaultSprite('dummy_paper_face.png');
-                                this.addTween({
-                                    targets: this.sprite,
-                                    scaleX: this.sprite.startScale,
-                                    scaleY: this.sprite.startScale,
-                                    rotation: -0.02,
-                                    easeParams: [2],
-                                    ease: "Bounce.easeOut",
-                                    duration: 500,
-                                    onComplete: () => {
-                                        this.runSfxLoop = playSound('tractor_loop', 0, true);
-                                        this.runTween = this.addTween({
-                                            targets: this.sprite,
-                                            rotation: 0.02,
-                                            ease: "Quart.easeInOut",
-                                            duration: 500,
-                                            repeat: -1,
-                                            yoyo: true
-                                        });
-                                    }
-                                });
-
-                                 let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 700);
-                                 shinePattern.setPosition(this.x, this.y - 120).setScale(0.65).setDepth(-1).setAlpha(0.5);
-                                 this.addTween({
-                                     targets: shinePattern,
-                                     scaleX: 0.85,
-                                     scaleY: 0.85,
-                                     duration: 700,
-                                     ease: 'Cubic.easeOut'
-                                 });
-                                 this.addTween({
-                                     targets: shinePattern,
-                                     alpha: 0,
-                                     ease: 'Cubic.easeIn',
-                                     duration: 700,
-                                 });
-                            }
-                        });
-                    }
-                });
+                this.startFight();
             }
         });
-        this.setAwake();
     }
 
      setHealth(newHealth) {

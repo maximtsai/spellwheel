@@ -109,6 +109,49 @@ class Options {
             this.listOfButtonsToDisable.push(this.menuBtn);
         }
 
+        if (!this.resumeBtn) {
+            this.resumeBtn = new Button({
+                normal: {
+                    ref: "menu_btn_normal.png",
+                    atlas: 'buttons',
+                    x: gameConsts.halfWidth,
+                    y: gameConsts.halfHeight + 130,
+                    alpha: 1,
+                },
+                hover: {
+                    ref: "menu_btn_hover.png",
+                    atlas: 'buttons',
+                    alpha: 1,
+                },
+                press: {
+                    ref: "menu_btn_normal.png",
+                    atlas: 'buttons',
+                    alpha: 1,
+                },
+                disable: {
+                    ref: "menu_btn_normal.png",
+                    atlas: 'buttons',
+                    alpha: 0
+                },
+                onHover: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: () => {
+                    this.hideOptions();
+                }
+            });
+            this.resumeBtn.addText('RESUME', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
+            this.resumeBtn.setDepth(this.baseDepth + 1);
+            this.listOfButtonsToDisable.push(this.resumeBtn);
+        }
+
         if (!this.sliderBGM) {
             this.draggerBGM;
             this.draggerSFX;
@@ -207,8 +250,8 @@ class Options {
                     atlas: 'buttons',
                     ref: "closebtn.png",
                     alpha: 0.9,
-                    x: gameConsts.width - 65,
-                    y: 100,
+                    x: gameConsts.halfWidth + 244,
+                    y: 105,
                 },
                 hover: {
                     alpha: 1,

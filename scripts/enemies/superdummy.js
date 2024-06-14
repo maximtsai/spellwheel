@@ -4,6 +4,7 @@
         this.initSprite('dummy.png', 0.95, undefined, undefined, 'dummyenemy');
         this.bgMusic = playMusic('bite_down', 0.65, true);
         this.startY = this.sprite.y;
+        // this.temp = this.addSprite(x - 50, 170, 'deathfin', 'frame_00.png').setDepth(6).play({key: 'ladydeath', repeat: -1});
 
         this.popupTimeout = this.addTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
@@ -536,7 +537,7 @@
          this.attacks = [
              [
                  {
-                     name: "|6x2 ",
+                     name: "|6x2",
                      chargeAmt: 500,
                      damage: 6,
                      attackTimes: 2,
@@ -555,7 +556,7 @@
                     }
                  },
                  {
-                     name: "}18 ",
+                     name: "}18",
                      chargeAmt: 600,
                      damage: 18,
                      prepareSprite: 'super_dummy_wide.png',
@@ -625,7 +626,7 @@
                      },
                  },
                  {
-                     name: "|8x2 ",
+                     name: "|8x2",
                      chargeAmt: 450,
                      damage: 8,
                      attackTimes: 2,
@@ -644,7 +645,7 @@
                     }
                  },
                  {
-                     name: "|20 ",
+                     name: "|20",
                      damage: -1,
                     finishDelay: 2200,
                      chargeAmt: 600,
@@ -835,7 +836,7 @@
                      },
                  },
                  {
-                     name: "|10x2 ",
+                     name: "|10x2",
                      chargeAmt: 400,
                      damage: 10,
                      attackTimes: 2,
@@ -850,7 +851,7 @@
                     }
                  },
                  {
-                     name: "|6 ",
+                     name: "|6",
                      chargeAmt: 250,
                      damage: 6,
                      attackTimes: 1,
@@ -865,7 +866,7 @@
                     }
                  },
                  {
-                     name: ";8x4 ",
+                     name: ";8x4",
                      chargeAmt: 550,
                      damage: -1,
                     finishDelay: 3300,
@@ -922,7 +923,7 @@
                      }
                  },
                  {
-                     name: "|10x3 ",
+                     name: "|10x3",
                      chargeAmt: 400,
                      damage: 10,
                      attackTimes: 3,
@@ -1014,7 +1015,7 @@
                     },
                  },
                  {
-                     name: "FINISHER ;8x8 ",
+                     name: "FINISHER ;8x8",
                      chargeAmt: 600,
                     finishDelay: 6000,
                      damage: -1,
@@ -1124,7 +1125,7 @@
              ],
             [
                  {
-                     name: "}10x1 ",
+                     name: "}10x1",
                      chargeAmt: 400,
                      damage: 10,
                      attackTimes: 1,
@@ -1139,7 +1140,7 @@
                     }
                  },
                  {
-                     name: "|8x2 ",
+                     name: "|8x2",
                      chargeAmt: 500,
                      damage: -1,
                     finishDelay: 2300,

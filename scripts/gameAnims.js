@@ -251,6 +251,17 @@ function createAnimations(scene) {
         frameRate: 20
     });
     scene.anims.create({
+        key: 'ladydeath',
+        frames: scene.anims.generateFrameNames('deathfin', {
+            prefix: 'frame_',
+            suffix: '.png',
+            start: 0,
+            end: 31,
+            zeroPad: 2,
+        }),
+        frameRate: 10
+    });
+    scene.anims.create({
         key: 'weaken',
         frames: scene.anims.generateFrameNames('spells', {
             prefix: 'weakenLines_',

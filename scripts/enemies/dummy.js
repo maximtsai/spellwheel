@@ -8,13 +8,13 @@
             } else if (globalObjects.player.getPlayerCastSpellsCount() > 1 && this.canHideStartTut) {
                 this.playerSpellCastSub.unsubscribe();
                 this.initTutorial3();
-            } else if (globalObjects.player.getPlayerCastSpellsCount() > 3) {
+            } else if (globalObjects.player.getPlayerCastSpellsCount() >= 3) {
                 this.playerSpellCastSub.unsubscribe();
                 this.initTutorial3();
             }
         });
         let spellHoverListener = messageBus.subscribe('spellNameTextUpdate', (text) => {
-            if (!globalObjects.magicCircle.innerDragDisabled && text.includes('STRONGER')) {
+            if (!globalObjects.magicCircle.innerDragDisabled && text.includes('STRENGTHEN')) {
                 this.canHideStartTut = true;
                 spellHoverListener.unsubscribe();
             }
@@ -46,11 +46,11 @@
             globalObjects.magicCircle.enableMovement();
             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
             globalObjects.bannerTextManager.closeBanner();
-             this.rune1 = this.addSprite(gameConsts.width - 200, gameConsts.halfHeight + 20, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-             this.rune2 = this.addSprite(gameConsts.width - 138, gameConsts.halfHeight + 20, 'circle', 'rune_matter_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+             this.rune1 = this.addSprite(gameConsts.width - 128, gameConsts.halfHeight - 94, 'circle', 'rune_strike_glow.png').setDepth(9999).setScale(0.875, 0.875).setAlpha(0);
+             this.rune2 = this.addSprite(gameConsts.width - 128, gameConsts.halfHeight + 19, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.84, 0.84).setAlpha(0);
 
              this.addTimeout(() => {
-                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 70, "Combine different\nrunes for different\neffects.\n       +      =  +DMG", 'right');
+                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 115, "The Strike Rune\ncasts attack spells\n\nThe Enhance Rune\nstrengthens your\nnext attack\n ", 'right');
                  this.addTween({
                      targets: [this.rune1, this.rune2],
                      alpha: 1,
@@ -87,9 +87,8 @@
                 this.rune1.destroy();
                 this.rune2.destroy();
             }
-            this.timeSinceLastAttacked = 0;
 
-            messageBus.publish('setSlowMult', 0.25, 200);
+            messageBus.publish('setSlowMult', 0.25, 50);
             let glowBar = this.addSprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             this.addTween({
                 targets: glowBar,
@@ -385,7 +384,7 @@
                  // 0
                  {
                      name: "}5 ",
-                     chargeAmt: 300,
+                     chargeAmt: 500,
                      damage: 5,
                      isBigMove: true,
                     attackFinishFunction: () => {

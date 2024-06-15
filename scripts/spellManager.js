@@ -479,7 +479,7 @@ class SpellManager {
                 }
             }
         });
-        let spellName = "ADD STRONGER ATTACK\n+" + globalObjects.player.attackDamageAdder();
+        let spellName = "STRENGTHEN NEXT ATTACK\n+" + globalObjects.player.attackDamageAdder();
 
         if (itemsToAnimate.length > 1) {
             spellName += " X" + itemsToAnimate.length;
@@ -1164,7 +1164,7 @@ class SpellManager {
             }
         });
 
-        let spellName = "ADD EXTRA ATTACK +"+addedActualAttacks;
+        let spellName = "DUPLICATE NEXT ATTACK +"+addedActualAttacks;
 
         this.postNonAttackCast(spellID, spellName);
     }
@@ -1619,7 +1619,7 @@ class SpellManager {
         });
 
 
-        let spellName = "ADD BURNING ATTACK";
+        let spellName = "IGNITE NEXT ATTACK";
         if (multiplier > 1) {
             spellName += " X" + multiplier;
         }
@@ -2170,7 +2170,7 @@ class SpellManager {
             }
         });
 
-        let spellName = "ADD CURSING ATTACK";
+        let spellName = "CURSE NEXT ATTACK";
         if (multiplier > 1) {
             spellName += " X" + multiplier;
         }

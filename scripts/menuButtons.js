@@ -178,6 +178,17 @@ function gotoMainMenu() {
         disable: {
             alpha: 0.001
         },
+        onHover: () => {
+            if (canvas) {
+                playSound('button_hover');
+                canvas.style.cursor = 'pointer';
+            }
+        },
+        onHoverOut: () => {
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        },
         onMouseUp: () => {
             clearOnlyMenuButtons();
             beginPreLevel(0)

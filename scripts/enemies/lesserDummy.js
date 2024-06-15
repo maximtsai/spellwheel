@@ -34,7 +34,7 @@
     }
 
      initStatsCustom() {
-         this.health = 35;
+         this.health = 36;
          this.isAsleep = true;
      }
 
@@ -193,7 +193,7 @@
         this.addTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1 && !this.dead) {
                 // player only casted 1 spell so far
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Spin the ACTION and ELEMENT\nwheels to switch spells");
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Spin the wheels to\n swap in fresh runes ");
                 this.arrowRotate1 = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
                 this.arrowRotate2 = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
                 this.destructibles.push(this.arrowRotate1);

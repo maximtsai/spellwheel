@@ -28,7 +28,9 @@ class InternalButtonManager {
         for (let i = this.buttonList.length - 1; i >= 0; i--) {
             let buttonObj = this.buttonList[i];
             if (buttonObj && buttonObj.checkCoordOver(handX, handY)) {
-                buttonObj.onHover();
+                if (this.lastHovered !== buttonObj) {
+                    buttonObj.onHover();
+                }
                 hasHovered = true;
                 currentHovered = buttonObj;
                 break;

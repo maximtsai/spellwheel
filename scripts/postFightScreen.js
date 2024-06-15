@@ -123,6 +123,7 @@ class PostFightScreen {
                     alpha: 0
                 },
                 onHover: () => {
+                    playSound('button_hover');
                     if (canvas) {
                         canvas.style.cursor = 'pointer';
                     }
@@ -164,6 +165,7 @@ class PostFightScreen {
                     alpha: 0
                 },
                 onHover: () => {
+                    playSound('button_hover');
                     if (canvas) {
                         canvas.style.cursor = 'pointer';
                     }
@@ -444,6 +446,7 @@ class PostFightScreen {
         this.currLevel = level;
         this.createWinScreenUI(level);
         this.continueButton.setOnMouseUpFunc(() => {
+            playSound('button_click');
             this.clearPostFightScreen();
             beginPreLevel(level + 1);
             if (canvas) {
@@ -451,6 +454,7 @@ class PostFightScreen {
             }
         });
         this.trainingButton.setOnMouseUpFunc(() => {
+            playSound('button_click');
             this.clearPostFightScreen();
             beginPreLevel(-level);
             if (canvas) {
@@ -692,7 +696,7 @@ class PostFightScreen {
                 return "And so my journey begins.\nIt won't be long before\nI see you again, Rosemary."
             case 1:
                 return "Here I stand in front\nof the gates to the\nfabled forbidden lands\nof the dead.\n\n"+
-                "Almost immediately I can feel\nthis place resisting my entry, trying\nto obstruct my every step.\n\n"+
+                "Right away I can feel this place\nresisting my entry, trying to\nobstruct my every step.\n\n"+
                 "But I know you are here dear Rosemary,\nand no creature or construct will stop me\nfrom finding you."
             case 2:
                 return "The fabled Reaper\nhas noticed me,\nthough they have\ndone nothing but wag their\nbony finger at me like a parent\nscolding a child.\n\n"+

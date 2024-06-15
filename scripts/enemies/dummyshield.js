@@ -141,9 +141,6 @@
                      chargeMult: 8,
                      damage: -1,
                     startFunction: () => {
-                        setTimeout(() => {
-                            this.takeDamage(10, false);
-                        }, 10);
                     },
                     attackStartFunction: () => {
 
@@ -311,9 +308,6 @@
                         }
                         this.tempShiftSFX();
                         this.throwWeapon(throwSprite, 30, 1);
-                        setTimeout(() => {
-                            this.takeDamage(10, false);
-                        }, 3000)
                     }
                  },
                  {
@@ -339,11 +333,65 @@
                         }
                         this.tempShiftSFX();
                         this.throwWeapon(throwSprite, 30, 1);
-                        setTimeout(() => {
-                            this.takeDamage(10, false);
-                        }, 3000)
                     }
                 },
+                 {
+                     name: "}6",
+                     chargeAmt: 500,
+                     finishDelay: 800,
+                     transitionFast: true,
+                     chargeMult: 8,
+                     damage: -1,
+                    startFunction: () => {
+                        setTimeout(() => {
+                            this.takeDamage(10, false);
+                        }, 10);
+                    },
+                    attackStartFunction: () => {
+
+                    },
+                    attackFinishFunction: () => {
+                        this.tempShiftSFX();
+                        this.throwWeapon('dagger.png', 6, 1);
+                    }
+                 },
+                 {
+                     name: "Malfunctioning...",
+                     chargeAmt: 350,
+                     chargeMult: 4,
+                     damage: -1,
+                     isPassive: true,
+                     startFunction: () => {
+                        this.runSfxLoop.detune = 900;
+                        setVolume(this.runSfxLoop, 1, 300)
+                        this.sprite.setRotation(0.07);
+                        this.malfunctionTween = this.addTween({
+                            targets: this.sprite,
+                            rotation: -0.06,
+                            ease: "Cubic.easeOut",
+                            duration: 250,
+                            repeat: -1
+                        });
+                     },
+                    attackStartFunction: () => {
+                        setTimeout(() => {
+                            this.takeDamage(20, false);
+                        }, 10);
+                        playSound('clunk2');
+                        this.runSfxLoop.detune = 0;
+                        setVolume(this.runSfxLoop, 0, 400)
+                        this.malfunctionTween.stop();
+                        this.sprite.setRotation(0.2);
+                        this.addTween({
+                            delay: 1000,
+                            targets: this.sprite,
+                            rotation: 0,
+                            ease: "Quart.easeIn",
+                            duration: 400,
+                        });
+                    },
+                 },
+
              ]
          ];
      }

@@ -107,6 +107,13 @@ const ENABLE_KEYBOARD = true;
             this.delayDamageHourglass.x = this.delayDamageSandFull.x;
         }
 
+        if (!this.recentSkipped && (this.keyEnter.isDown || this.keySpace.isDown)) {
+            messageBus.publish("continueDialog");
+            this.recentSkipped = true;
+        } else if (this.recentSkipped && !this.keyEnter.isDown && !this.keySpace.isDown) {
+            this.recentSkipped = false;
+        }
+
         if (ENABLE_KEYBOARD && !this.outerDragDisabled && !this.innerDragDisabled) {
             if (this.keyA.isDown || this.keyLeft.isDown) {
                 if (this.keyboardRotateInner > -1) {
@@ -2273,7 +2280,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('matter_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.updateTextIfDifferent(this.spellNameText, 'ADD\nSTRONGER ATTACK' + multText)
+                         this.updateTextIfDifferent(this.spellNameText, 'STRENGTHEN\nNEXT ATTACK' + multText)
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('matter_enhance_desc'))
                          break;
                      case RUNE_PROTECT:
@@ -2307,7 +2314,7 @@ const ENABLE_KEYBOARD = true;
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('time_reinforce_desc'))
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD\nEXTRA ATTACK' + multText);
+                         this.spellNameText.setText('DUPLICATE\nNEXT ATTACK' + multText);
                          this.spellDescriptor.setText(getLangText('time_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
@@ -2335,7 +2342,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('mind_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD\nBURNING ATTACK' + multText);
+                         this.spellNameText.setText('IGNITE\nNEXT ATTACK' + multText);
                          if (gameVars.mindPlus) {
                             this.spellDescriptor.setText(getLangText('mind_enhance_plus_desc'));
                          } else {
@@ -2371,7 +2378,7 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('void_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('ADD\nCURSING ATTACK' + multText);
+                         this.spellNameText.setText('CURSE\nNEXT ATTACK' + multText);
                          this.spellDescriptor.setText(getLangText('void_enhance_desc'));
                          break;
                      case RUNE_PROTECT:

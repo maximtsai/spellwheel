@@ -132,6 +132,7 @@ function beginPreLevel(lvl) {
 }
 
 function fadeInPreFightStuff(lvl, texts, introbgs) {
+    playSound('flip2')
     PhaserScene.tweens.add({
         targets: texts,
         duration: 500,
@@ -179,6 +180,7 @@ function createLvlCloseButton(lvl, items) {
             alpha: 0.001
         },
         onHover: () => {
+            playSound('button_hover');
             if (canvas) {
                 canvas.style.cursor = 'pointer';
             }
@@ -189,6 +191,7 @@ function createLvlCloseButton(lvl, items) {
             }
         },
         onMouseUp: () => {
+            playSound('button_click');
             if (canvas) {
                 canvas.style.cursor = 'default';
             }
@@ -229,7 +232,7 @@ function beginLevel(lvl) {
 
     globalObjects.magicCircle.buildRunes();
 
-
+    playSound('whoosh');
     createEnemyAfterDelay(lvl);
     switch(lvl) {
         case -7:

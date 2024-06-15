@@ -134,4 +134,11 @@ const audioFiles = [
     {name: 'timeSlow', src: 'audio/timeslow.mp3'},
     {name: 'squish', src: 'audio/squish.mp3'},
 
+    {name: 'flip1', src: 'audio/flip1.mp3'},
+    {name: 'flip2', src: 'audio/flip2.mp3'},
+    {name: 'flip3', src: 'audio/flip3.mp3'},
+    {name: 'button_hover', src: 'audio/button_hover.mp3'},
+    {name: 'button_click', src: 'audio/button_click.mp3'},
+    {name: 'whoosh', src: 'audio/whoosh.mp3'},
+
 ]

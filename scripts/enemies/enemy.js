@@ -114,6 +114,12 @@ class Enemy {
         this.healthBarMax.setOrigin(0.5, 0.5);
         this.healthBarMax.setDepth(10);
 
+        this.healthBarRed = this.scene.add.sprite(x - this.healthBarLengthMax - 1, this.healthBarMax.y, 'pixels', 'red_pixel.png');
+        this.healthBarRed.setScale(this.healthBarLengthMax + 1, 12);
+        this.healthBarRed.setOrigin(0, 0.5);
+        this.healthBarRed.alpha = 0;
+        this.healthBarRed.setDepth(10);
+
         this.healthBarFlash = this.scene.add.sprite(x - this.healthBarLengthMax - 1, this.healthBarMax.y, 'pixels', 'white_pixel.png');
         this.healthBarFlash.setScale(this.healthBarLengthMax + 1, 10);
         this.healthBarFlash.setOrigin(0, 0.5);
@@ -165,7 +171,7 @@ class Enemy {
         });
 
         this.scene.tweens.add({
-            targets: [this.healthBarCurr, this.healthBarFlash],
+            targets: [this.healthBarCurr, this.healthBarFlash, this.healthBarRed],
             duration: 100 + this.healthBarLengthMax * 5,
             x: this.x - this.healthBarLengthMax - 1,
             scaleX: this.healthBarLengthMax + 1,
@@ -1169,6 +1175,9 @@ class Enemy {
         }
         let scaleChange = this.healthBarCurr.scaleX - newScale;
         // let tallAmt = Math.max(0, Math.min(2, 0.05 * scaleChange - 10));
+
+        this.healthBarRed.alpha = 0.4 + 0.4 * mult;
+
         this.healthBarFlash.scaleX = this.healthBarCurr.scaleX;
         this.healthBarFlash.scaleY = this.healthBarCurr.scaleY;
         this.healthBarFlash.alpha = 1 + 0.2 * mult;
@@ -1180,11 +1189,20 @@ class Enemy {
             alpha: 0,
             scaleY: this.healthBarCurr.scaleY,
             ease: "Cubic.easeOut",
-            duration: 550 * mult
+            duration: 600 * mult + 150
+        });
+        if (this.healthBarRedTween) {
+            this.healthBarRedTween.stop();
+        }
+        this.healthBarRedTween = PhaserScene.tweens.add({
+            targets: this.healthBarRed,
+            alpha: 0,
+            ease: "Cubic.easeOut",
+            duration: 600 * mult + 100
         })
     }
 
-    updateHealthBar(isHealing) {
+    updateHealthBar(isHealing, hurtAmt) {
         if (this.isDestroyed) {
             return;
         }
@@ -1193,7 +1211,11 @@ class Enemy {
             this.healthBarCurr.scaleX = 0;
         } else {
             let healthBarRatio = 1 + this.healthBarLengthMax * this.health / this.healthMax;
-            this.flashHealthChange(this.healthBarCurr.scaleX);
+            if (hurtAmt >= 4) {
+                this.flashHealthChange(this.healthBarCurr.scaleX);
+            } else if (hurtAmt > 0) {
+                this.flashHealthChange(this.healthBarCurr.scaleX, 0.4);
+            }
             this.healthBarCurr.scaleX = healthBarRatio;
         }
         this.healthBarText.setText(this.health);
@@ -1248,7 +1270,8 @@ class Enemy {
     setHealth(newHealth, isTrue) {
         this.prevHealth = this.health;
         this.health = newHealth;
-        this.updateHealthBar();
+        let healthDiff = this.prevHealth - newHealth;
+        this.updateHealthBar(undefined, healthDiff);
     }
 
     getHealth() {

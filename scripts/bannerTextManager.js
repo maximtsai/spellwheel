@@ -7,6 +7,7 @@ class BannerTextManager {
         this.textBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 25, 'misc', 'victory_banner.png').setScale(100, 1).setDepth(100002).setAlpha(0);
         this.text = this.scene.add.text(gameConsts.halfWidth, this.textBG.y, '...', {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.57).setDepth(100002);
         // this.text.setFontStyle('bold');
+        messageBus.subscribe("continueDialog", this.continueDialog.bind(this));
     }
 
     setDialog(dialogArray) {
@@ -22,6 +23,7 @@ class BannerTextManager {
     }
 
     showBanner(haveBGDarken = true) {
+        this.isShowing = true;
         this.setText(this.dialog[this.dialogIndex]);
         if (haveBGDarken) {
             PhaserScene.tweens.add({
@@ -78,6 +80,7 @@ class BannerTextManager {
     }
 
     closeBanner() {
+        this.isShowing = false;
         if (this.dialogButton) {
             this.dialogButton.destroy();
             this.dialogButton = null;
@@ -108,7 +111,7 @@ class BannerTextManager {
     }
 
     continueDialog() {
-        if (this.continuePause) {
+        if (this.continuePause || !this.isShowing) {
             return;
         }
 

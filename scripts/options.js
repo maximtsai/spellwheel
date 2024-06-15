@@ -47,6 +47,7 @@ class Options {
     }
 
     showOptions() {
+        playSound('flip2')
         if (!this.darkenBG) {
             this.darkenBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(this.baseDepth);
             this.darkenBG.setScale(500, 500).setAlpha(0.4);

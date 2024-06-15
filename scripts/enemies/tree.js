@@ -15,7 +15,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 300 : 10;
+         this.health = gameVars.isHardMode ? 300 : 240;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;

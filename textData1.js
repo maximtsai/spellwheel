@@ -123,7 +123,7 @@ const textData = {
         jp: ''
     },
 
-    mind_strike_desc: {en_us: 'Deal 1 damage.\nEnemy takes true\ndamage equal to\nyour next attack',
+    mind_strike_desc: {en_us: 'Deal 1 damage.\nEnemy takes x2\ndamage from\nyour next attack',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -144,7 +144,7 @@ const textData = {
         es: '',
         jp: ''
     },
-    mind_protect_desc: {en_us: 'Create a shield\nthat absorbs 50%\nincoming damage\nthen blasts it\nback.',
+    mind_protect_desc: {en_us: 'Create a shield\nthat absorbs\n50% damage then\nblasts it back.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -209,7 +209,7 @@ const textData = {
         ru: '',
         es: '',
         jp: ''},
-    mind_tut_desc: {en_us: 'The Energy rune grants \ncontrol over raw energy.\nEnergy spells have powerful supportive effects and\ncan deal damage that bypasses enemy shields.',
+    mind_tut_desc: {en_us: 'The Energy rune grants \ncontrol over raw energy.\nEnergy spells have powerful supportive\neffects and can deal True damage that\nbypasses enemy defenses.',
         fr: '',
         zh_cn: '',
         ru: '',

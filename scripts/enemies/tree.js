@@ -687,7 +687,7 @@
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
-                        globalObjects.textPopupManager.setInfoText(gameConsts.width - 94, gameConsts.halfHeight - 139, "Some shields\nare more useful\nagainst certain\nattacks.", 'right', true);
+                        globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 139, "Some shields\nare more useful\nagainst certain\nattacks.", 'right', true);
                         this.addTimeout(() => {
                             globalObjects.textPopupManager.hideInfoText();
                          }, 11000);
@@ -1061,7 +1061,7 @@
 
     adjustDamageTaken(amt, isAttack, isTrue ) {
         if (isAttack && this.hasThorns && !isTrue && !this.dead) {
-            
+
             let glowSpike = getTempPoolObject('enemies', 'glowSpike.png', 'glowSpike', 1800);
             let isLeft = Math.random() < 0.5;
             glowSpike.setScale(0.5).setAlpha(0.9).setPosition(gameConsts.halfWidth + (isLeft ? -50 : 50), this.y - 150).setDepth(999).setRotation(isLeft ? -4 : 4);
@@ -1070,7 +1070,7 @@
                 targets: glowSpike,
                 x: gameConsts.halfWidth + (isLeft ? -80 : 80),
                 ease: 'Cubic.easeOut',
-                duration: 300, 
+                duration: 300,
                 rotation: 0,
                 onComplete: () => {
                     this.addTween({

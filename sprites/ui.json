@@ -4,8 +4,8 @@
 			"image": "sprites/ui-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1984,
-				"h": 1890
+				"w": 2008,
+				"h": 1905
 			},
 			"scale": 1,
 			"frames": [
@@ -285,6 +285,31 @@
 					}
 				},
 				{
+					"filename": "small_paper.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 440,
+						"h": 231
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 8,
+						"w": 412,
+						"h": 215
+					},
+					"frame": {
+						"x": 1129,
+						"y": 1639,
+						"w": 412,
+						"h": 215
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "mantis_paper.png",
 					"rotated": false,
 					"trimmed": true,
@@ -399,8 +424,8 @@
 						"h": 250
 					},
 					"frame": {
-						"x": 1129,
-						"y": 1639,
+						"x": 1842,
+						"y": 1500,
 						"w": 165,
 						"h": 250
 					},
@@ -474,8 +499,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1296,
-						"y": 1639,
+						"x": 1,
+						"y": 1825,
 						"w": 200,
 						"h": 51
 					},
@@ -499,8 +524,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1,
-						"y": 1825,
+						"x": 314,
+						"y": 1767,
 						"w": 200,
 						"h": 51
 					},
@@ -511,31 +536,6 @@
 				},
 				{
 					"filename": "nextLevel.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 180,
-						"h": 51
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 180,
-						"h": 51
-					},
-					"frame": {
-						"x": 314,
-						"y": 1767,
-						"w": 180,
-						"h": 51
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "nextLevel_hover.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -560,31 +560,6 @@
 					}
 				},
 				{
-					"filename": "nextLevel_press.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 180,
-						"h": 51
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 180,
-						"h": 51
-					},
-					"frame": {
-						"x": 1296,
-						"y": 1692,
-						"w": 180,
-						"h": 51
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "retry.png",
 					"rotated": false,
 					"trimmed": false,
@@ -599,8 +574,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1296,
-						"y": 1745,
+						"x": 1842,
+						"y": 1752,
 						"w": 139,
 						"h": 51
 					},
@@ -624,8 +599,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1296,
-						"y": 1745,
+						"x": 1842,
+						"y": 1752,
 						"w": 139,
 						"h": 51
 					},
@@ -649,9 +624,59 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1296,
-						"y": 1745,
+						"x": 1842,
+						"y": 1752,
 						"w": 139,
+						"h": 51
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "nextLevel_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 180,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 180,
+						"h": 51
+					},
+					"frame": {
+						"x": 314,
+						"y": 1820,
+						"w": 180,
+						"h": 51
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "nextLevel_press.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 180,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 180,
+						"h": 51
+					},
+					"frame": {
+						"x": 1543,
+						"y": 1853,
+						"w": 180,
 						"h": 51
 					},
 					"anchor": {
@@ -674,8 +699,8 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 1842,
-						"y": 1500,
+						"x": 1532,
+						"y": 546,
 						"w": 89,
 						"h": 43
 					},
@@ -686,6 +711,31 @@
 				},
 				{
 					"filename": "more_hover.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 90,
+						"h": 45
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 89,
+						"h": 43
+					},
+					"frame": {
+						"x": 1842,
+						"y": 1805,
+						"w": 89,
+						"h": 43
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "more_press.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -710,31 +760,6 @@
 					}
 				},
 				{
-					"filename": "more_press.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 90,
-						"h": 45
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 89,
-						"h": 43
-					},
-					"frame": {
-						"x": 496,
-						"y": 1767,
-						"w": 89,
-						"h": 43
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "sound_mute.png",
 					"rotated": false,
 					"trimmed": true,
@@ -749,8 +774,8 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 1498,
-						"y": 1639,
+						"x": 516,
+						"y": 1767,
 						"w": 56,
 						"h": 45
 					},
@@ -774,35 +799,10 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 1532,
-						"y": 546,
+						"x": 1725,
+						"y": 1853,
 						"w": 54,
 						"h": 45
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "slider_indicator.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 39,
-						"h": 39
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 39,
-						"h": 39
-					},
-					"frame": {
-						"x": 1536,
-						"y": 593,
-						"w": 39,
-						"h": 39
 					},
 					"anchor": {
 						"x": 0.5,
@@ -824,8 +824,8 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 1296,
-						"y": 1798,
+						"x": 1781,
+						"y": 1853,
 						"w": 49,
 						"h": 45
 					},
@@ -849,34 +849,9 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 1842,
-						"y": 1545,
+						"x": 1933,
+						"y": 1805,
 						"w": 45,
-						"h": 45
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "sound_half.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 59,
-						"h": 51
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 3,
-						"w": 44,
-						"h": 45
-					},
-					"frame": {
-						"x": 1588,
-						"y": 546,
-						"w": 44,
 						"h": 45
 					},
 					"anchor": {
@@ -899,10 +874,35 @@
 						"h": 44
 					},
 					"frame": {
-						"x": 1296,
-						"y": 1845,
+						"x": 1129,
+						"y": 1856,
 						"w": 44,
 						"h": 44
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "sound_half.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 3,
+						"w": 44,
+						"h": 45
+					},
+					"frame": {
+						"x": 1175,
+						"y": 1856,
+						"w": 44,
+						"h": 45
 					},
 					"anchor": {
 						"x": 0.5,
@@ -924,10 +924,35 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 1437,
-						"y": 1745,
+						"x": 1221,
+						"y": 1856,
 						"w": 39,
 						"h": 43
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "slider_indicator.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 39,
+						"h": 39
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 39,
+						"h": 39
+					},
+					"frame": {
+						"x": 1262,
+						"y": 1856,
+						"w": 39,
+						"h": 39
 					},
 					"anchor": {
 						"x": 0.5,
@@ -940,6 +965,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:522a98f25cd4b192016bc0498e8f6f9f:4da7d87eb4602cd11200e03f7f9d3769:6af6d199855d1c5980a61db04791f8fb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:ea198a72be720613567c258241f28393:707e69bbce9850694aa6469795d5d0de:6af6d199855d1c5980a61db04791f8fb$"
 	}
 }

@@ -1950,6 +1950,7 @@ const ENABLE_KEYBOARD = true;
 
     showReadySprite(light = true, scaleMult = 1) {
         if (this.readySprite) {
+            console.log("readysprite");
             if (this.readySprite.currAnim) {
                 this.readySprite.currAnim.stop();
             }

@@ -27,7 +27,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 100 : 75;
+         this.health = gameVars.isHardMode ? 100 : 80;
          this.isAsleep = true;
         this.attackScale = 1.23;
      }
@@ -37,7 +37,7 @@
      initTutorial() {
         this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
         globalObjects.magicCircle.disableMovement();
-        globalObjects.bannerTextManager.setDialog(["Another one?", "Perhaps I should try\nmy more advanced magic."]);
+        globalObjects.bannerTextManager.setDialog(["Another one?", "I should try my\nmore advanced magic."]);
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
         globalObjects.bannerTextManager.showBanner(false);
 
@@ -46,8 +46,8 @@
             globalObjects.magicCircle.enableMovement();
             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
             globalObjects.bannerTextManager.closeBanner();
-             this.rune1 = this.addSprite(gameConsts.width - 128, gameConsts.halfHeight - 94, 'circle', 'rune_strike_glow.png').setDepth(9999).setScale(0.875, 0.875).setAlpha(0);
-             this.rune2 = this.addSprite(gameConsts.width - 128, gameConsts.halfHeight + 19, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.84, 0.84).setAlpha(0);
+             this.rune1 = this.addSprite(gameConsts.width - 128, gameConsts.halfHeight - 92, 'circle', 'rune_strike_glow.png').setDepth(9999).setScale(0.88, 0.88).setAlpha(0);
+             this.rune2 = this.addSprite(gameConsts.width - 128, gameConsts.halfHeight + 21, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.85, 0.85).setAlpha(0);
 
              this.addTimeout(() => {
                  globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 115, "The Strike Rune\ncasts attack spells\n\nThe Enhance Rune\nstrengthens your\nnext attack\n ", 'right');
@@ -133,7 +133,7 @@
                     spellListener.unsubscribe();
                     this.addTimeout(() => {
                         globalObjects.textPopupManager.hideInfoText();
-                    }, 1000);
+                    }, 1200);
                 });
                 this.addTimeout(() => {
                     if (!this.hasShownAttackWarning) {
@@ -424,6 +424,17 @@
                              alpha: 0,
                              ease: 'Quad.easeIn',
                          });
+                         this.addTimeout(() => {
+                             globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 23, "Watch your health", 'center');
+                             this.addTimeout(() => {
+                                 this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                                     this.addTimeout(() => {
+                                         globalObjects.textPopupManager.hideInfoText();
+                                     }, 1200);
+                                     this.playerSpellCastSub.unsubscribe();
+                                 });
+                             }, 1200)
+                         }, 1000)
                      }
                  },
                  {

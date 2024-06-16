@@ -219,7 +219,7 @@ class PostFightScreen {
                             globalObjects.bannerTextManager.showBanner();
                         }
 
-                        
+
                         this.locketSprite.setFrame('locket1.png').setOrigin(0.5, 0.8);
                         this.locketSprite.setScale(this.locketSprite.scaleX + 0.02);
                         PhaserScene.tweens.add({
@@ -255,9 +255,11 @@ class PostFightScreen {
             this.locketSprite.visible = false;
         }
         this.continueButton.setState(DISABLE);
-        this.trainingButton.setState(NORMAL);
+        if (this.currLevel <= 3) {
+            this.trainingButton.setState(NORMAL);
+        }
         setTimeout(() => {
-            if (this.trainingButton.getState() !== DISABLE) {
+            if (this.trainingButton.getState() !== DISABLE || this.currLevel > 3) {
                 this.continueButton.setState(NORMAL);
             }
         }, 3000);
@@ -275,7 +277,7 @@ class PostFightScreen {
             ease: 'Back.easeOut',
             duration: 300,
             onComplete: () => {
-                
+
                 PhaserScene.tweens.add({
                     delay: 200,
                     targets: [this.newRuneIcon, this.trainingRuneIcon],
@@ -446,11 +448,12 @@ class PostFightScreen {
         this.currLevel = level;
         this.createWinScreenUI(level);
         this.continueButton.setOnMouseUpFunc(() => {
-            playSound('button_click');
-            this.clearPostFightScreen();
-            beginPreLevel(level + 1);
-            if (canvas) {
-                canvas.style.cursor = 'default';
+            if (this.trainingButton.getState() !== DISABLE) {
+                messageBus.publish("showConfirmPopup", () => {
+                    this.moveToNextLevel(level);
+                })
+            } else {
+                this.moveToNextLevel(level);
             }
         });
         this.trainingButton.setOnMouseUpFunc(() => {
@@ -462,6 +465,15 @@ class PostFightScreen {
             }
         });
 
+    }
+
+    moveToNextLevel(level) {
+        playSound('button_click');
+        this.clearPostFightScreen();
+        beginPreLevel(level + 1);
+        if (canvas) {
+            canvas.style.cursor = 'default';
+        }
     }
 
     createWinScreenMin(level = 0) {
@@ -695,7 +707,7 @@ class PostFightScreen {
             case 0:
                 return "And so my journey begins.\nIt won't be long before\nI see you again, Rosemary."
             case 1:
-                return "Here I stand in front\nof the gates to the\nfabled forbidden lands\nof the dead.\n\n"+
+                return "Here I stand in front\nof the gates to the\nfabled forbidden lands\nof the departed.\n\n"+
                 "Right away I can feel this place\nresisting my entry, trying to\nobstruct my every step.\n\n"+
                 "But I know you are here dear Rosemary,\nand no creature or construct will stop me\nfrom finding you."
             case 2:

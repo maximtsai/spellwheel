@@ -11,7 +11,7 @@
                 this.customBgMusic = playMusic('magician_theme_1', 0.95, true);
             }
         }, 1500)
-        
+
 
         this.magicianReaped = messageBus.subscribe('reapedEnemyGong', () => {
             this.zoomAwayClocks();
@@ -46,6 +46,8 @@
          super.setHealth(newHealth);
         if (this.invulnHealthBar) {
             this.healthBarText.setText("INVULNERABLE");
+            this.healthBarCurr.setFrame('yellow_pixel.png');
+
         }
 
          // if (!this.isNervous && this.statuses[0] && this.statuses[0].duration >= this.health) {
@@ -456,7 +458,6 @@
                      duration: 850,
                      alpha: 0.6 - 0.02 * statusObj.duration,
                      scaleX: 1 - 0.02 * statusObj.duration + bonusScale,
-                     scaleX: 1 - 0.02 * statusObj.duration + bonusScale,
                      ease: 'Cubic.easeOut',
                  });
                  this.addTween({
@@ -487,7 +488,7 @@
                                  rotation: "-=0.02",
                                  ease: 'Back.easeOut',
                                  onComplete: () => {
-                                    
+
                                  }
                              });
                          }
@@ -918,7 +919,7 @@
                 duration: 150,
                 targets: this.sprite,
                 scaleX: this.sprite.startScale,
-                scaleX: this.sprite.startScale,
+                scaleY: this.sprite.startScale,
                 rotation: 0,
                 ease: 'Cubic.easeOut',
                 onStart: () => {
@@ -1572,10 +1573,10 @@
         this.lastPlacedIndex = 0;
         this.availableIndicies = [
             0, 3, 1, 4, 2,
-            0, 1, 3, 2, 4, 
-            1, 0, 3, 2, 4, 
-            3, 0, 2, 4, 1, 
-            3, 1, 0, 4, 2, 
+            0, 1, 3, 2, 4,
+            1, 0, 3, 2, 4,
+            3, 0, 2, 4, 1,
+            3, 1, 0, 4, 2,
             1, 4, 3, 2, 0];
         let numObjects = 15;
         for (let i = 0; i < numObjects; i++) {
@@ -1596,6 +1597,6 @@
 
             newClock.x = gameConsts.width * ((this.availableIndicies[this.lastPlacedIndex] + 0.5) / 5);
             this.lastPlacedIndex = (this.lastPlacedIndex + 1) % this.availableIndicies.length;
-        } 
+        }
     }
 }

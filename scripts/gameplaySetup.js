@@ -239,7 +239,7 @@ function setupLoadingBar(scene) {
                         alpha: 0.5,
                         duration: 1250,
                     });
-                
+
 
                     clickBlocker.setOnMouseUpFunc(() => {
                         this.skipIntro();
@@ -328,7 +328,7 @@ function animateStart() {
         duration: 1500,
     });
 }
-let randIntroTexts = ["find her", "I will find you", "my beloved", "searching", "dearest", "bring her back", 
+let randIntroTexts = ["find her", "I will find you", "my beloved", "searching", "dearest", "bring her back",
     "rescue her", "seek her", "lovely departed", "find", "rescue", "save", "love", "I will be a hero", "triumph", "from the dead", "not yet gone"
     ];
 function generateRandIntroText() {
@@ -382,7 +382,7 @@ function recursiveCreateIntroText(delay = 100, num = 180) {
                 alpha: 0,
                 duration: 1200,
                 onComplete: () => {
-                    
+
                 }
             });
         }
@@ -615,6 +615,7 @@ function setupGame() {
 
     globalObjects.statusManager = new StatusManager(PhaserScene);
     globalObjects.postFightScreen = new PostFightScreen(PhaserScene);
+    globalObjects.confirmPopup = new ConfirmPopup(PhaserScene);
     globalObjects.bgHandler = new BgHandler();
 
     // globalObjects.dummyEnemy = new Wall(PhaserScene, gameConsts.halfWidth, 165);

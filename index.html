@@ -40,6 +40,7 @@
     <script src="scripts/player.js"></script>
     <script src="scripts/menuButtons.js"></script>
     <script src="scripts/postFightScreen.js"></script>
+    <script src="scripts/confirmPopup.js"></script>
     <script src="scripts/bannerTextManager.js"></script>
     <script src="scripts/miscFunctions.js"></script>
     <script src="scripts/encyclopedia.js"></script>
@@ -117,6 +118,18 @@
         document.fonts.load('10pt "verdanamax"')
         document.fonts.load('10pt "verdanabold"')
         document.fonts.load('10pt "garamondmax"')
+
+        function isPalin(str) {
+            let maxLength = str.length;
+            for (let i = 0; i < Math.floor(str.length / 2); i++) {
+                if (str[i] != str[maxLength - i - 1]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        console.log(isPalin("abbca"));
+
         // console.log("test");
         // let N = 5;
         // let V = [10, 2, 8, 6, 4];
@@ -143,7 +156,7 @@
         //         } else {
         //             earnedProfit += Math.max(0, takePackageProfit);
         //             accPackageProfit = 0;
-        //         } 
+        //         }
         //     }
         //     // if (accPackageProfit > C) {
         //     //     earnedProfit += accPackageProfit - C;
@@ -178,7 +191,7 @@
         //         } else {
         //             earnedProfit += Math.max(0, takePackageProfit);
         //             accPackageProfit = 0;
-        //         } 
+        //         }
         //     }
         //     // if (accPackageProfit > C) {
         //     //     earnedProfit += accPackageProfit - C;

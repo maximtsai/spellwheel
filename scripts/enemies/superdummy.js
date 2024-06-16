@@ -15,7 +15,7 @@
 
      initStatsCustom() {
          this.health = 10;
-        this.secondHealth = gameVars.isHardMode ? 750 : 650;
+        this.secondHealth = gameVars.isHardMode ? 750 : 600;
          this.isAsleep = true;
          this.isFirstMode = true;
         this.attackScale = 1.23;
@@ -470,7 +470,7 @@
                         this.setDefaultSprite('dummy_angry.png', 0.95);
                         this.dummyRightArm = this.addSprite(this.x + 51, this.startY + 30, 'dummyenemy', 'super_dummy_rightarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(0.5);
                         this.dummyLeftArm = this.addSprite(this.x - 51, this.startY + 30, 'dummyenemy', 'super_dummy_leftarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(-0.5);
-                        
+
                          this.addTween({
                              targets: [this.dummyRightArm, this.dummyLeftArm],
                              scaleX: this.sprite.startScale * 0.9,
@@ -604,7 +604,7 @@
                      chargeAmt: 900,
                      isPassive: true,
                      damage: -1,
-                     chargeMult: 1.5,
+                     chargeMult: 2,
                      startFunction: () => {
                         this.pullbackScale = 0.99;
                         this.attackScale = 1.01;
@@ -770,7 +770,7 @@
                                                          this.addTween({
                                                              targets: this.dummyRightArm,
                                                              duration: 300,
-                                                             x: gameConsts.halfWidth + 51, 
+                                                             x: gameConsts.halfWidth + 51,
                                                              y: this.startY + 30,
                                                              rotation: 0,
                                                              ease: 'Cubic.easeOut',
@@ -816,7 +816,7 @@
                      isPassive: true,
                      chargeAmt: 900,
                      damage: -1,
-                     chargeMult: 1.5,
+                     chargeMult: 2,
                      startFunction: () => {
                         this.dummyLeftArm.visible = false;
                         this.dummyRightArm.visible = false;
@@ -1213,7 +1213,7 @@
                     playSound('balloon', 0.6).detune = (this.isPushingUp ? 0 : -500) + (this.isAngry ? 125 : 0);
                     if (this.isPushingUp && Math.random() < 0.3) {
                         this.isFlipped = !this.isFlipped;
-                    } 
+                    }
                     let newFrameName = this.isPushingUp ? 'super_dummy_pushup1' : 'super_dummy_pushup2';
                     if (!this.isFlipped) {
                         newFrameName += '_flip';
@@ -1471,7 +1471,7 @@
                                             scaleY: oldScale + 0.1,
                                             rotation: 0,
                                             onComplete: () => {
-                                                
+
                                             }
                                         });
                                     }
@@ -1537,7 +1537,7 @@
         //     }
         // });
 
-    } 
+    }
 
      createDoublePunchEffect() {
         playSound('punch');

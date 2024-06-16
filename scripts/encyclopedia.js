@@ -51,11 +51,14 @@ class Encyclopedia {
         if (!this.darkenBG) {
             this.darkenBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(this.baseDepth);
             this.darkenBG.setScale(500, 500);
-            this.listOfThingsToHide.push(this.darkenBG);
         }
         if (!this.bgPage) {
-            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 25, 'ui', 'battleOverScreen.png').setDepth(this.baseDepth);
+            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 25, 'ui', 'battleOverScreen.png').setDepth(this.baseDepth).setAlpha(0);
             this.listOfThingsToHide.push(this.bgPage);
+        }
+        if (!this.title) {
+            this.title = PhaserScene.add.text(gameConsts.halfWidth - 242, gameConsts.halfHeight - 292, 'Encyclopedia (under construction)', {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'}).setDepth(this.baseDepth).setAlpha(0);
+            this.listOfThingsToHide.push(this.title);
         }
         createGlobalClickBlocker();
         if (!this.closeButton) {
@@ -103,13 +106,19 @@ class Encyclopedia {
             this.closeButton.setState(NORMAL);
         }
         this.darkenBG.setAlpha(0.4);
-        this.bgPage.setAlpha(0.2);
         PhaserScene.tweens.add({
-             targets: this.bgPage,
-             alpha: 1,
-             ease: 'Cubic.easeOut',
-             duration: 1,
+            targets: this.listOfThingsToHide,
+            alpha: 1,
+            ease: 'Cubic.easeOut',
+            duration: 1,
         });
+        // this.bgPage.setAlpha(0.2);
+        // PhaserScene.tweens.add({
+        //      targets: this.bgPage,
+        //      alpha: 1,
+        //      ease: 'Cubic.easeOut',
+        //      duration: 1,
+        // });
         messageBus.publish('pauseGame', 0.002);
 
     }
@@ -117,6 +126,7 @@ class Encyclopedia {
     hideEncyclopedia() {
         messageBus.publish('unpauseGame');
         hideGlobalClickBlocker();
+        this.darkenBG.setAlpha(0);
         PhaserScene.tweens.add({
              targets: this.listOfThingsToHide,
              alpha: 0,

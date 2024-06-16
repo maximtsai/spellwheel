@@ -130,14 +130,14 @@ const textData = {
         es: '',
         jp: ''
     },
-    mind_enhance_desc: {en_us: 'Next attack burns\nenemy for 10\ntrue damage\nover 5 seconds',
+    mind_enhance_desc: {en_us: 'Next attack burns\nenemy for 10\nTrue damage\nover 5 seconds',
         fr: '',
         zh_cn: '',
         ru: '',
         es: '',
         jp: ''
     },
-    mind_enhance_plus_desc: {en_us: 'Next attack burns\nenemy for 15\ntrue damage\nover 5 seconds',
+    mind_enhance_plus_desc: {en_us: 'Next attack burns\nenemy for 15\nTrue damage\nover 5 seconds',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -227,7 +227,7 @@ const textData = {
         ru: '',
         es: '',
         jp: ''},
-    mind_tut_enhance_desc: {en_us: 'Your next attack sets the\nenemy on fire, which deals\ntrue damage over time that\nignores defenses.',
+    mind_tut_enhance_desc: {en_us: 'Your next attack sets the\nenemy on fire, which deals\nTrue damage over time that\nignores defenses.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -252,7 +252,7 @@ const textData = {
         es: '',
         jp: ''},
 
-    time_tut_desc: {en_us: 'The Time rune grants \ncontrol over the temporal.\nTime spells let you attack multiple times, delay\ninjuries, or even slow your enemies to a stand-still.',
+    time_tut_desc: {en_us: 'The Time rune grants \ncontrol over the temporal.\nTime spells let you attack multiple\ntimes, delay injuries, or even slow\nyour enemies to a stand-still.',
         fr: '',
         zh_cn: '',
         ru: '',
@@ -327,7 +327,7 @@ const textData = {
         jp: ''},
 
 
-    protect_tut_desc: {en_us: 'The Shield rune lets you create\nbarriers that protect you as long as they\nare positioned between you and the enemy.',
+    protect_tut_desc: {en_us: 'The Shield rune creates barriers\nfor protection as long as they are\npositioned between you and the enemy.',
         fr: '',
         zh_cn: '',
         ru: '',

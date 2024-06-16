@@ -2,7 +2,7 @@
 	"textures": [
 		{
 			"image": "sprites/lowq-0.webp",
-			"format": "RGBA5555",
+			"format": "RGBA8888",
 			"size": {
 				"w": 2033,
 				"h": 2033
@@ -838,7 +838,7 @@
 		},
 		{
 			"image": "sprites/lowq-1.webp",
-			"format": "RGBA5555",
+			"format": "RGBA8888",
 			"size": {
 				"w": 207,
 				"h": 224
@@ -876,6 +876,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:ca25dda197d1cc10b65a2d788c8ce6c9:163decf8e68bf31c9e36ec5d89359aa2:f370068b913c8d62cf32d629b9ea5881$"
+		"smartupdate": "$TexturePacker:SmartUpdate:09f90f15484f254bd73093f9c1add40a:163decf8e68bf31c9e36ec5d89359aa2:f370068b913c8d62cf32d629b9ea5881$"
 	}
 }

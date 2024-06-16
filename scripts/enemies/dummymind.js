@@ -52,9 +52,9 @@
          if (this.canShowShieldTip) {
             this.canShowShieldTip = false;
              this.addTimeout(() => {
-                 this.rune3 = this.addImage(gameConsts.width - 150, gameConsts.halfHeight - 20, 'circle', 'rune_mind_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-                 this.rune4 = this.addImage(gameConsts.width - 82, gameConsts.halfHeight - 20, 'circle', 'rune_strike_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 100, "Energy Strike makes\nyour next attack\nhit twice as hard.\n             +", 'right');
+                 this.rune3 = this.addImage(gameConsts.width - 140, gameConsts.halfHeight + 4, 'circle', 'rune_mind_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+                 this.rune4 = this.addImage(gameConsts.width - 72, gameConsts.halfHeight + 4, 'circle', 'rune_strike_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 100, "Energy Strike\nmakes your\nnext attack hit\ntwice as hard.\n            +", 'right');
                  this.addTween({
                      targets: [this.rune3, this.rune4],
                      alpha: 1,

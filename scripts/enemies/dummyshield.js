@@ -9,12 +9,41 @@
         this.attackScale = 1;
         this.pullbackScale = 1;
         this.damageCanEmit = true;
+        this.spellsCastCount = 0;
      }
 
      initTutorial() {
         setTimeout(() => {
             this.createPicketSign();
         }, 1000);
+
+         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+             this.spellsCastCount++;
+             if (this.spellsCastCount >= 3 && this.spellsCastCount % 2 == 1) {
+                 this.picketButton.setScale(1.02, 1.05);
+                 this.picketVisual.setScale(1.02, 1.05);
+                 this.picketButton.tweenToScale(1.05, 1.15, 200, 'Cubic.easeOut', undefined, () => {
+                     this.picketButton.tweenToScale(1, 1, 700, 'Back.easeOut');
+                 });
+                 this.addTween({
+                     targets: this.picketVisual,
+                     scaleX: 1.05,
+                     scaleY: 1.15,
+                     ease: "Cubic.easeOut",
+                     duration: 200,
+                     onComplete: () => {
+                         this.addTween({
+                             targets: this.picketVisual,
+                             scaleX: 1,
+                             scaleY: 1,
+                             ease: "Back.easeOut",
+                             duration: 700,
+                         });
+                     }
+                 });
+
+             }
+         });
     }
 
     createPicketSign() {
@@ -68,6 +97,7 @@
 
     clickPicketSign() {
         this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
+        this.playerSpellCastSub.unsubscribe();
         this.picketButton.destroy();
         playSound('balloon', 0.5).detune = -500;
         this.addTween({
@@ -208,7 +238,7 @@
                     },
                  },
                  {
-                     name: "}12",
+                     name: "}2x4",
                      chargeAmt: 500,
                      chargeMult: 8,
                      finishDelay: 800,
@@ -224,7 +254,7 @@
                     },
                     attackFinishFunction: () => {
                         this.tempShiftSFX();
-                        this.throwWeapon('sword.png', 12, 1);
+                        this.throwDouble('star.png', 2, 2);
                     }
                  },
                  {

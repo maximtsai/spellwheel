@@ -47,9 +47,9 @@
 
     showThornsTutorial() {
          this.addTimeout(() => {
-             this.rune3 = this.addImage(gameConsts.width - 160, gameConsts.halfHeight - 65, 'circle', 'rune_matter_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-             this.rune4 = this.addImage(gameConsts.width - 82, gameConsts.halfHeight - 65, 'circle', 'rune_reinforce_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 170, "Thorns reduce\nincoming damage\nand can inflict\ndamage back.\n             +", 'right');
+             this.rune3 = this.addImage(gameConsts.width - 160, gameConsts.halfHeight - 60, 'circle', 'rune_matter_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+             this.rune4 = this.addImage(gameConsts.width - 82, gameConsts.halfHeight - 60, 'circle', 'rune_reinforce_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
+             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 165, "Thorns reduce\nincoming damage\nand can inflict\ndamage back.\n             +", 'right');
              this.addTween({
                  targets: [this.rune3, this.rune4],
                  alpha: 1,
@@ -132,7 +132,7 @@
              [
                  // 0
                  {
-                     name: "}2x99",
+                     name: "}1x99",
                      chargeAmt: 1300,
                      finishDelay: 35000,
                      transitionFast: true,
@@ -145,7 +145,7 @@
 
                     },
                     attackFinishFunction: () => {
-                        this.throwDouble('star.png', 2, 49);
+                        this.throwDouble('star.png', 1, 49);
                     }
                  },
              ]

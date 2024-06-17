@@ -254,7 +254,7 @@
                     },
                     attackFinishFunction: () => {
                         this.tempShiftSFX();
-                        this.throwDouble('star.png', 2, 2);
+                        this.throwTriple('star.png', 2, 2);
                     }
                  },
                  {
@@ -284,7 +284,6 @@
                      chargeMult: 7,
                      damage: -1,
                      isPassive: true,
-                     isBigMove: true,
                      startFunction: () => {
                         this.runSfxLoop.detune = 900;
                         setVolume(this.runSfxLoop, 1, 300)

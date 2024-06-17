@@ -237,7 +237,7 @@
         });
     }
 
-    throwDouble(name, damage, numTimes = 1) {
+    throwTriple(name, damage, numTimes = 1) {
         if (this.dead || this.isDestroyed || globalObjects.player.isDead()) {
             return;
         }
@@ -250,104 +250,15 @@
             ease: "Quart.easeOut",
             duration: 600,
             onComplete: () => {
-                let weapon = this.addImage(this.x + 5, this.y - 95, 'dummyenemy', name).setDepth(0).setScale(0.25);
-                let weapon2 = this.addImage(this.x - 5, this.y - 85, 'dummyenemy', name).setDepth(0).setScale(0.25);
-                this.addTween({
-                    targets: weapon,
-                    rotation: -12.566 + Math.random() * 0.1,
-                    duration: 1200,
-                });
-                this.addTween({
-                    delay: 200,
-                    targets: weapon2,
-                    rotation: 12.566 + Math.random() * 0.1,
-                    duration: 1200,
-                });
-
-                this.addTween({
-                    targets: weapon,
-                    x: gameConsts.halfWidth + 70,
-                    y: this.y - 280,
-                    scaleX: 0.95,
-                    scaleY: 0.95,
-                    ease: "Cubic.easeOut",
-                    duration: 500,
-                    onComplete: () => {
-                        weapon.setDepth(20);
-                        this.addTween({
-                            targets: weapon,
-                            x: gameConsts.halfWidth + 15,
-                            y: globalObjects.player.getY() - 220,
-                            ease: "Cubic.easeIn",
-                            duration: 700,
-                            onComplete: () => {
-                                messageBus.publish("selfTakeDamage", damage);
-                                 let hitEffect = this.addSprite(weapon.x, globalObjects.player.getY() - 190, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
-                                 this.addTween({
-                                     targets: hitEffect,
-                                     scaleX: 1.25,
-                                     scaleY: 1.25,
-                                     ease: 'Cubic.easeOut',
-                                     duration: 150,
-                                     onComplete: () => {
-                                         hitEffect.destroy();
-                                     }
-                                 });
-                                 let detuneAmt = (numTimes % 3) * 100 - 100;
-                                 playSound('razor_leaf').detune = detuneAmt;
-                                this.addTween({
-                                    delay: 500,
-                                    targets: weapon,
-                                    alpha: 0,
-                                    duration: 500,
-                                });
-                            }
-                        });
-                    }
-                });
-
-                this.addTween({
-                    delay: 200,
-                    targets: weapon2,
-                    x: gameConsts.halfWidth - 70,
-                    y: this.y - 295,
-                    scaleX: 0.95,
-                    scaleY: 0.95,
-                    ease: "Cubic.easeOut",
-                    duration: 550,
-                    onComplete: () => {
-                        weapon2.setDepth(20);
-                        this.addTween({
-                            targets: weapon2,
-                            x: gameConsts.halfWidth - 15,
-                            y: globalObjects.player.getY() - 220,
-                            ease: "Cubic.easeIn",
-                            duration: 700,
-                            onComplete: () => {
-                                messageBus.publish("selfTakeDamage", damage);
-                                 let hitEffect = this.addSprite(weapon2.x, globalObjects.player.getY() - 190, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
-                                 this.addTween({
-                                     targets: hitEffect,
-                                     scaleX: 1.25,
-                                     scaleY: 1.25,
-                                     ease: 'Cubic.easeOut',
-                                     duration: 150,
-                                     onComplete: () => {
-                                         hitEffect.destroy();
-                                     }
-                                 });
-                                 let detuneAmt = ((numTimes + 1) % 3) * 100 - 100;
-                                 playSound('razor_leaf').detune = detuneAmt;
-                                this.addTween({
-                                    delay: 500,
-                                    targets: weapon2,
-                                    alpha: 0,
-                                    duration: 500,
-                                });
-                            }
-                        });
-                    }
-                });
+                if (numTimes % 2 == 0) {
+                    this.tweenWeaponToPlayer(name, damage, this.x - 100, this.y - 280, this.x - 10, globalObjects.player.getY() - 220, 0, -120)
+                    this.tweenWeaponToPlayer(name, damage, this.x, this.y - 295, this.x, globalObjects.player.getY() - 220, 175, 0)
+                    this.tweenWeaponToPlayer(name, damage, this.x + 100, this.y - 280, this.x + 10, globalObjects.player.getY() - 220, 350, 120)
+                } else {
+                    this.tweenWeaponToPlayer(name, damage, this.x + 100, this.y - 280, this.x + 10, globalObjects.player.getY() - 220, 0, -120)
+                    this.tweenWeaponToPlayer(name, damage, this.x, this.y - 295, this.x, globalObjects.player.getY() - 220, 175, 0)
+                    this.tweenWeaponToPlayer(name, damage, this.x - 100, this.y - 280, this.x - 10, globalObjects.player.getY() - 220, 350, 120)
+                }
 
                 this.currDummyAnim = this.addTween({
                     targets: this.sprite,
@@ -355,7 +266,7 @@
                     scaleY: this.sprite.startScale * 1.1,
                     rotation: numTimes % 2 == 1 ? 0.05 : -0.05,
                     ease: "Quart.easeIn",
-                    duration: 350,
+                    duration: 400,
                     onComplete: () => {
                         if (numTimes <= 1) {
                             this.currDummyAnim = this.addTween({
@@ -364,19 +275,71 @@
                                 scaleY: this.sprite.startScale,
                                 rotation: 0,
                                 ease: "Bounce.easeOut",
-                                duration: 350,
+                                duration: 400,
                             });
                         }
                     }
                 });
                 if (numTimes > 1) {
                     this.addTimeout(() => {
-                        this.throwDouble(name, damage, numTimes - 1);
-                    }, 350)
+                        this.throwTriple(name, damage, numTimes - 1);
+                    }, 400)
                 }
 
             }
         });
+    }
+
+    tweenWeaponToPlayer(name, damage, xOut, yOut, xTarg, yTarg, delay, detune = 0) {
+        let weapon = this.addImage(this.x, this.y - 90, 'dummyenemy', name).setDepth(0).setScale(0.25);
+        this.addTween({
+            targets: weapon,
+            rotation: -12.566 + Math.random() * 0.1,
+            duration: 1200,
+        });
+        this.addTween({
+            delay: delay,
+            targets: weapon,
+            x: xOut,
+            y: yOut,
+            scaleX: 0.95,
+            scaleY: 0.95,
+            ease: "Cubic.easeOut",
+            duration: 500,
+            onComplete: () => {
+                weapon.setDepth(20);
+                this.addTween({
+                    targets: weapon,
+                    x: xTarg,
+                    y: yTarg,
+                    ease: "Cubic.easeIn",
+                    duration: 700,
+                    onComplete: () => {
+                        messageBus.publish("selfTakeDamage", damage);
+                        let hitEffect = this.addSprite(weapon.x, globalObjects.player.getY() - 190, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
+                        this.addTween({
+                            targets: hitEffect,
+                            scaleX: 1.25,
+                            scaleY: 1.25,
+                            ease: 'Cubic.easeOut',
+                            duration: 150,
+                            onComplete: () => {
+                                hitEffect.destroy();
+                            }
+                        });
+                        let detuneAmt = detune;//(numTimes % 3) * 100 - 100;
+                        playSound('razor_leaf').detune = detuneAmt;
+                        this.addTween({
+                            delay: 500,
+                            targets: weapon,
+                            alpha: 0,
+                            duration: 500,
+                        });
+                    }
+                });
+            }
+        });
+
     }
 
 

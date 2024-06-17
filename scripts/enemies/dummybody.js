@@ -132,9 +132,9 @@
              [
                  // 0
                  {
-                     name: "}1x99",
-                     chargeAmt: 1300,
-                     finishDelay: 35000,
+                     name: "}2x15",
+                     chargeAmt: 700,
+                     finishDelay: 4000,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
@@ -145,8 +145,80 @@
 
                     },
                     attackFinishFunction: () => {
-                        this.throwDouble('star.png', 1, 49);
+                        this.throwTriple('star.png', 2, 5);
                     }
+                 },
+                 // 0
+                 {
+                     name: "}2x18",
+                     chargeAmt: 700,
+                     finishDelay: 5000,
+                     transitionFast: true,
+                     isBigMove: true,
+                     damage: -1,
+                     startFunction: () => {
+
+                     },
+                     attackStartFunction: () => {
+
+                     },
+                     attackFinishFunction: () => {
+                         this.throwTriple('star.png', 2, 6);
+                     }
+                 },
+                 // 0
+                 {
+                     name: "}2x30",
+                     chargeAmt: 700,
+                     finishDelay: 6000,
+                     transitionFast: true,
+                     isBigMove: true,
+                     damage: -1,
+                     startFunction: () => {
+
+                     },
+                     attackStartFunction: () => {
+
+                     },
+                     attackFinishFunction: () => {
+                         this.throwTriple('star.png', 2, 10);
+                     }
+                 },
+                 {
+                     name: "Malfunctioning...",
+                     chargeAmt: 300,
+                     chargeMult: 10,
+                     damage: -1,
+                     isPassive: true,
+                     startFunction: () => {
+                         this.runSfxLoop.detune = 900;
+                         setVolume(this.runSfxLoop, 1, 300)
+                         this.sprite.setRotation(-0.09);
+                         this.malfunctionTween = this.addTween({
+                             targets: this.sprite,
+                             rotation: 0.09,
+                             ease: "Cubic.easeOut",
+                             duration: 400,
+                             repeat: -1
+                         });
+                     },
+                     attackStartFunction: () => {
+                         setTimeout(() => {
+                             this.takeDamage(20, false);
+                         }, 10);
+                         playSound('clunk');
+                         this.runSfxLoop.detune = 0;
+                         setVolume(this.runSfxLoop, 0, 400)
+                         this.malfunctionTween.stop();
+                         this.sprite.setRotation(0.2);
+                         this.addTween({
+                             delay: 1000,
+                             targets: this.sprite,
+                             rotation: 0,
+                             ease: "Quart.easeIn",
+                             duration: 400,
+                         });
+                     },
                  },
              ]
          ];

@@ -1,6 +1,6 @@
 let language = 'en_us';
 
-const textData = {
+let textData = {
     matter_strike_desc: {en_us: 'Deal 12 damage',
         fr: '',
         zh_cn: '造成 12 点伤害',

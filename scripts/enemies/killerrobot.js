@@ -81,11 +81,11 @@
          this.shieldSprite.startScale = 1.05;
          this.lastAttackLingerMult = 1.75;
          this.attackSlownessMult = 1.25;
-        this.lightShineLeft = this.addSprite(gameConsts.halfWidth - 220, gameConsts.halfHeight - 320, 'lowq', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(-0.5);
-        this.lightShineLeftTop = this.addSprite(this.lightShineLeft.x, this.lightShineLeft.y, 'lowq', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineLeft.rotation);
+        this.lightShineLeft = this.addSprite(gameConsts.halfWidth - 220, gameConsts.halfHeight - 320, 'blurry', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(-0.5);
+        this.lightShineLeftTop = this.addSprite(this.lightShineLeft.x, this.lightShineLeft.y, 'blurry', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineLeft.rotation);
 
-        this.lightShineRight = this.addSprite(gameConsts.halfWidth + 220, gameConsts.halfHeight - 320, 'lowq', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(0.5);
-        this.lightShineRightTop = this.addSprite(this.lightShineRight.x, this.lightShineRight.y, 'lowq', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineRight.rotation);
+        this.lightShineRight = this.addSprite(gameConsts.halfWidth + 220, gameConsts.halfHeight - 320, 'blurry', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(0.5);
+        this.lightShineRightTop = this.addSprite(this.lightShineRight.x, this.lightShineRight.y, 'blurry', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineRight.rotation);
         this.addToDestructibles(this.lightShineLeft);
         this.addToDestructibles(this.lightShineLeftTop);
         this.addToDestructibles(this.lightShineRight);
@@ -1410,7 +1410,7 @@
                 });
                  this.addTimeout(() => {
                     let soundToKill = playSound('voca_hello');
-                    
+
 
                     selfDestructText.setText("GOODBYE!\n(die X3)\n ").setScale(1.4);
                     this.addTween({

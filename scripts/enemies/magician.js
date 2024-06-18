@@ -418,7 +418,7 @@
          });
 
          let healthText = this.scene.add.bitmapText(gameConsts.halfWidth, 100, 'damage', this.healthMax, 60).setDepth(999).setOrigin(0.5, 0.5);
-         let glow = this.addImage(healthText.x, healthText.y, 'lowq', 'glow.webp').setDepth(998).setAlpha(0);
+         let glow = this.addImage(healthText.x, healthText.y, 'blurry', 'glow.webp').setDepth(998).setAlpha(0);
 
          healthText.startY = healthText.y;
          healthText.setScale(0);

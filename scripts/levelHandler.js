@@ -13,11 +13,11 @@ function beginPreLevel(lvl) {
         case 0:
             // lesser dummy
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'newgamepaper.png').setDepth(99999).setAlpha(0);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 200, 'I\'m finally here.', {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 200, getLangText('pre_fight_0a'), {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 235, "At the gateway to the forbidden lands.", {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 235, getLangText('pre_fight_0b'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text3 = PhaserScene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 277, 'I know I will find you here my beloved.', {fontFamily: 'verdanabold', fontSize: 18, color: '#000000', align: 'left'});
+            text3 = PhaserScene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 277, getLangText('pre_fight_0c'), {fontFamily: 'verdanabold', fontSize: 18, color: '#000000', align: 'left'});
             text3.setDepth(99999).setAlpha(0).setOrigin(0, 0.5);
 
             createGlobalClickBlocker();

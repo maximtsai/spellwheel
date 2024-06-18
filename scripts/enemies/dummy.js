@@ -171,7 +171,7 @@
 
          if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.95) {
              this.angryEyes = true;
-             this.flash = this.addSprite(this.x + 3, this.y - 65, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
+             this.flash = this.addSprite(this.x + 3, this.y - 65, 'blurry', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
             fadeAwaySound(this.bgMusic, 200);
              this.addTween({
                  targets: this.flash,

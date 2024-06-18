@@ -183,7 +183,7 @@ function setupLoadingBar(scene) {
             });
         }
 
-        loadObjects.flash = scene.add.image(gameConsts.halfWidth - 30, loadObjects.introLocket.y - 25, 'lowq', 'flash.webp').setScale(0).setRotation(-0.1).setDepth(1002);
+        loadObjects.flash = scene.add.image(gameConsts.halfWidth - 30, loadObjects.introLocket.y - 25, 'blurry', 'flash.webp').setScale(0).setRotation(-0.1).setDepth(1002);
 
         loadObjects.flash.currAnim = scene.tweens.add({
             targets: loadObjects.flash,
@@ -434,10 +434,10 @@ function clickIntro() {
     });
 
 
-    loadObjects.glowBG = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'circle.webp').setDepth(2000).setAlpha(0.5).setScale(0);
-    loadObjects.glowStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'lowq', 'flashbg.webp').setDepth(1000).setAlpha(0.3).setScale(0.4);
-    loadObjects.sharpStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 30, 'lowq', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.6, 0.05);
-    loadObjects.sharpStar2 = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 25, 'lowq', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.1, 0.15);
+    loadObjects.glowBG = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'blurry', 'circle.webp').setDepth(2000).setAlpha(0.5).setScale(0);
+    loadObjects.glowStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'blurry', 'flashbg.webp').setDepth(1000).setAlpha(0.3).setScale(0.4);
+    loadObjects.sharpStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 30, 'blurry', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.6, 0.05);
+    loadObjects.sharpStar2 = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 25, 'blurry', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.1, 0.15);
 
     loadObjects.sharpStar.setRotation(0.01);
     loadObjects.sharpStar2.setRotation(-0.02);

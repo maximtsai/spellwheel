@@ -245,7 +245,7 @@ class Enemy {
         this.angrySymbol.visible = false;
         this.angrySymbolIsHiding = true;
 
-        this.attackNameHighlight = this.scene.add.image(x, attackNameYPos - 13, 'lowq', 'glow_flat_red.webp').setAlpha(0).setDepth(9);
+        this.attackNameHighlight = this.scene.add.image(x, attackNameYPos - 13, 'blurry', 'glow_flat_red.webp').setAlpha(0).setDepth(9);
 
         this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', isMobile ? 38 : 36);
         this.attackName.setDepth(9);
@@ -1587,10 +1587,10 @@ class Enemy {
         } else {
             this.sprite.setTint(0xFF0000);
         }
-            
+
         setTimeout(()=> {
             this.sprite.clearTint();
-        }, 50 + amt * 20); 
+        }, 50 + amt * 20);
 
         let extraTimeMult = 2 - gameVars.timeSlowRatio;
         PhaserScene.tweens.add({
@@ -1708,7 +1708,7 @@ class Enemy {
     }
 
     showFlash(x, y) {
-        this.flash = this.scene.add.sprite(x, y, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(0.5).setDepth(999);
+        this.flash = this.scene.add.sprite(x, y, 'blurry', 'flash.webp').setOrigin(0.5, 0.5).setScale(0.5).setDepth(999);
          PhaserScene.tweens.add({
              targets: this.flash,
              rotation: 2,

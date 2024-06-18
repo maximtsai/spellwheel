@@ -50,7 +50,7 @@
              this.thorns1.alpha = 0;
              this.thorns2.alpha = 0;
 
-             this.greenGlow = this.addImage(this.x - 4, this.y - 265, 'lowq', 'green_star.webp').setDepth(-1).setOrigin(0.5, 0.48).setAlpha(0);
+             this.greenGlow = this.addImage(this.x - 4, this.y - 265, 'blurry', 'green_star.webp').setDepth(-1).setOrigin(0.5, 0.48).setAlpha(0);
 
              this.addExtraSprite(eye, 3.5, -84);
              this.addTween({
@@ -778,6 +778,19 @@
                      damage: 40,
                      isBigMove: true,
                      startFunction: () => {
+                         if (!this.glowBG) {
+                             this.glowBG = this.addImage(this.sprite.x, this.sprite.y, 'blurry', 'explod.webp').setDepth(-1).setAlpha(0.01).setScale(9).setBlendMode(Phaser.BlendModes.MULTIPLY);
+                         }
+
+                         this.finalGlowTween = this.addTween({
+                             targets: this.glowBG,
+                             scaleX: 15,
+                             scaleY: 15,
+                             alpha: 0.5,
+                             ease: 'Quad.easeOut',
+                             duration: 15000
+                         })
+
                         this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
                         this.sprite.y -= this.sprite.height * 0.125;
                         fadeAwaySound(this.bgMusic, 3000);
@@ -812,10 +825,21 @@
                          });
                      },
                      attackStartFunction: () => {
+                         if (this.finalGlowTween) {
+                             this.finalGlowTween.stop();
+                         }
                          playSound('tree_timber');
                          this.pullbackScale = 0.97;
                          this.attackScale = 1.75;
                          this.hasTimbered = true;
+                         this.addTween({
+                             targets: this.glowBG,
+                             scaleX: 13,
+                             scaleY: 13,
+                             alpha: 1,
+                             ease: 'Quad.easeIn',
+                             duration: 1000
+                         })
 
                         let greenSpike = this.addImage(this.sprite.x, this.sprite.y, 'lowq', 'green_spike.png').setDepth(20).setScale(0.1).setRotation(Math.PI * 0.25);
                          this.addTween({
@@ -832,6 +856,17 @@
 
                      },
                      attackFinishFunction: () => {
+                         this.addTween({
+                             targets: this.glowBG,
+                             scaleX: 15,
+                             scaleY: 15,
+                             alpha: 0,
+                             ease: 'Cubic.easeOut',
+                             duration: 1000,
+                             onComplete: () => {
+                                 this.glowBG.destroy();
+                             }
+                         })
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.01;
                          this.currentAttackSetIndex = 6;
@@ -956,8 +991,8 @@
 
     createCrushAttack(damage = 30) {
         let greenSpike = this.addImage(this.sprite.x, this.sprite.y - 200, 'lowq', 'green_spike.png').setDepth(20).setScale(0);
-        let spikeGlow1 = this.addImage(this.sprite.x, this.sprite.y - 200, 'lowq', 'spike_glow_yellow.png').setDepth(20).setRotation(10).setScale(0.2);
-        let spikeGlow2 = this.addImage(this.sprite.x, this.sprite.y - 200, 'lowq', 'spike_glow_yellow.png').setDepth(20).setAlpha(0);
+        let spikeGlow1 = this.addImage(this.sprite.x, this.sprite.y - 200, 'blurry', 'spike_glow_yellow.png').setDepth(20).setRotation(10).setScale(0.2);
+        let spikeGlow2 = this.addImage(this.sprite.x, this.sprite.y - 200, 'blurry', 'spike_glow_yellow.png').setDepth(20).setAlpha(0);
         let spike1 = this.addImage(this.sprite.x, this.sprite.y - 200, 'lowq', 'star_black.png').setDepth(20).setRotation(10).setScale(0.2);
         let spike2 = this.addImage(this.sprite.x, this.sprite.y - 200, 'lowq', 'star_black.png').setDepth(20).setAlpha(0);
 
@@ -977,14 +1012,29 @@
                 });
             }
         });
-
+        this.glowBG = this.addImage(spikeGlow1.x, spikeGlow1.y, 'blurry', 'explod.webp').setDepth(-1).setAlpha(0.01).setScale(9).setBlendMode(Phaser.BlendModes.MULTIPLY);
         this.addTween({
-            targets: [spikeGlow1, spike1],
+            targets: [this.glowBG],
+            scaleX: 16,
+            scaleY: 16,
+            alpha: 0.25,
+            ease: 'Quad.easeInOut',
+            duration: 2000,
+        })
+        this.addTween({
+            targets: [spikeGlow1, spike1, this.glowBG],
             rotation: Math.PI * 0.25,
             ease: 'Quad.easeInOut',
             y: this.y - 70,
             duration: 2000,
             onComplete: () => {
+                this.addTween({
+                    targets: [this.glowBG],
+                    scaleX: 12,
+                    scaleY: 12,
+                    alpha: 0.75,
+                    duration: 990,
+                })
                 let fallSound = playSound('robot_laser');
                 fallSound.detune = -500;
                 greenSpike.setPosition(spikeGlow1.x, spikeGlow1.y);
@@ -997,24 +1047,24 @@
                 spike2.rotation = 0;
                 this.addTween({
                     targets: [spike2, spikeGlow2],
-                    scaleX: 1.5,
-                    scaleY: 1.5,
+                    scaleX: 1.4,
+                    scaleY: 1.4,
                     easeParams: [4],
                     ease: 'Back.easeOut',
                     duration: 500,
                     onComplete: () => {
                         this.addTween({
                             targets: [spike2, spikeGlow2],
-                            scaleX: 1.7,
-                            scaleY: 1.7,
+                            scaleX: 1.6,
+                            scaleY: 1.6,
                             duration: 500,
                         });
                     }
                 });
                 this.addTween({
                     targets: [spike1, spikeGlow1],
-                    scaleX: 1.65,
-                    scaleY: 1.65,
+                    scaleX: 1.55,
+                    scaleY: 1.55,
                     duration: 1000,
                 });
                 this.addTween({
@@ -1025,7 +1075,7 @@
                     duration: 450,
                 });
                 this.addTween({
-                    targets: [spikeGlow1, spikeGlow2, spike1, spike2, greenSpike],
+                    targets: [spikeGlow1, spikeGlow2, spike1, spike2, greenSpike, this.glowBG],
                     rotation: "+=6",
                     ease: 'Quad.easeIn',
                     y: globalObjects.player.getY() - 200,
@@ -1037,12 +1087,13 @@
                         greenSpike.destroy();
                         this.addTween({
                             targets: [spikeGlow1, spikeGlow2, spike1, spike2],
-                            scaleX: 1.8,
-                            scaleY: 1.8,
+                            scaleX: 1.75,
+                            scaleY: 1.75,
                             duration: 10,
                             onComplete: () => {
+                                this.glowBG.alpha = 1;
                                 this.addTween({
-                                    targets: [spikeGlow1, spikeGlow2, spike1, spike2],
+                                    targets: [spikeGlow1, spikeGlow2, spike1, spike2, this.glowBG],
                                     duration: 500,
                                     alpha: 0,
                                     onComplete: () => {

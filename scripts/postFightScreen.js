@@ -94,7 +94,7 @@ class PostFightScreen {
             this.showRuneDescBtn.setState(DISABLE)
         }
         if (!this.flashObj) {
-            this.flashObj = this.scene.add.image(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'lowq', 'flash.webp').setScale(0).setRotation(-0.2).setDepth(100002).setAlpha(0.5);
+            this.flashObj = this.scene.add.image(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'blurry', 'flash.webp').setScale(0).setRotation(-0.2).setDepth(100002).setAlpha(0.5);
         }
 
         if (!this.continueButton) {

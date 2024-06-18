@@ -47,7 +47,7 @@
      }
 
      initFog() {
-        this.fogThick = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'lowq', 'fogthick.png').setDepth(9).setAlpha(0).setOrigin(0.5, 0.25);
+        this.fogThick = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'blurry', 'fogthick.png').setDepth(9).setAlpha(0).setOrigin(0.5, 0.25);
         this.graves = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'graves.png').setDepth(9).setScale(1.25, 1).setAlpha(0);
 
         this.addTween({
@@ -1025,7 +1025,7 @@
          this.addExtraSprite(arm);
 
          this.addTimeout(() => {
-            this.fogSpook = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'lowq', 'fogspook.png').setDepth(9).setAlpha(0).setBlendMode(Phaser.BlendModes.ADD).setOrigin(0.5, 0.25).setScale(-1, 1);
+            this.fogSpook = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'blurry', 'fogspook.png').setDepth(9).setAlpha(0).setBlendMode(Phaser.BlendModes.ADD).setOrigin(0.5, 0.25).setScale(-1, 1);
             this.fogSpookTween = this.addTween({
                 targets: this.fogSpook,
                 alpha: 1,
@@ -1182,7 +1182,7 @@
                         this.graves.setDepth(1);
 
                         let rune = this.addImage(this.x + 22, this.y + 90, 'tutorial', 'rune_void_large.png').setScale(0.5).setDepth(9999);
-                        this.flash = this.addImage(rune.x, rune.y, 'lowq', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
+                        this.flash = this.addImage(rune.x, rune.y, 'blurry', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
 
                          this.addTween({
                              targets: this.flash,

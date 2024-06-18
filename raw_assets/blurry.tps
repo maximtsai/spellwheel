@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>phaser-maxim</string>
         <key>textureFileName</key>
-        <filename>../sprites/lowq-{n}.webp</filename>
+        <filename>../sprites/blurry-{n}.webp</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrQualityLevel</key>
@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>55</uint>
+        <uint>20</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -124,7 +124,7 @@
             <key>json</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../sprites/lowq.json</filename>
+                <filename>../sprites/blurry.json</filename>
             </struct>
         </map>
         <key>multiPackMode</key>
@@ -132,7 +132,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGBA5555</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
         <key>alphaHandling</key>
         <enum type="SettingsBase::AlphaHandling">ClearTransparentPixels</enum>
         <key>contentProtection</key>
@@ -173,11 +173,8 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">lowq/circle_blue0.png</key>
-            <key type="filename">lowq/circle_blue1.png</key>
-            <key type="filename">lowq/circle_blue2.png</key>
-            <key type="filename">lowq/circle_blue3.png</key>
-            <key type="filename">lowq/circle_blue4.png</key>
+            <key type="filename">blurry/circle.webp</key>
+            <key type="filename">blurry/explod.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -186,28 +183,14 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>76,76,151,151</rect>
+                <rect>50,50,100,100</rect>
                 <key>scale9Paddings</key>
-                <rect>76,76,151,151</rect>
+                <rect>50,50,100,100</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">lowq/clockbg.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.75</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>256,256,512,512</rect>
-                <key>scale9Paddings</key>
-                <rect>256,256,512,512</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">lowq/flashplain.webp</key>
+            <key type="filename">blurry/flash.webp</key>
+            <key type="filename">blurry/flashbg.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -222,7 +205,55 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">lowq/green_spike.png</key>
+            <key type="filename">blurry/fogspook.png</key>
+            <key type="filename">blurry/fogthick.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>175,200,350,400</rect>
+                <key>scale9Paddings</key>
+                <rect>175,200,350,400</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">blurry/glow.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>55,55,110,110</rect>
+                <key>scale9Paddings</key>
+                <rect>55,55,110,110</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">blurry/glow_flat.webp</key>
+            <key type="filename">blurry/glow_flat_green.webp</key>
+            <key type="filename">blurry/glow_flat_red.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,13,100,25</rect>
+                <key>scale9Paddings</key>
+                <rect>50,13,100,25</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">blurry/green_star.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -231,13 +262,13 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>150,150,300,300</rect>
+                <rect>153,153,305,305</rect>
                 <key>scale9Paddings</key>
-                <rect>150,150,300,300</rect>
+                <rect>153,153,305,305</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">lowq/star_black.png</key>
+            <key type="filename">blurry/spike_glow_yellow.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -252,157 +283,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">lowq/temporal0.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.6</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>85,85,170,170</rect>
-                <key>scale9Paddings</key>
-                <rect>85,85,170,170</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">lowq/temporal1.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.5</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>108,93,215,185</rect>
-                <key>scale9Paddings</key>
-                <rect>108,93,215,185</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">lowq/temporal2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.6</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>90,105,180,210</rect>
-                <key>scale9Paddings</key>
-                <rect>90,105,180,210</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">lowq/temporal3.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.6</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>88,90,175,179</rect>
-                <key>scale9Paddings</key>
-                <rect>88,90,175,179</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">lowq/temporal4.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.6</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>92,64,184,129</rect>
-                <key>scale9Paddings</key>
-                <rect>92,64,184,129</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">lowq/temporal5.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.6</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>88,105,176,210</rect>
-                <key>scale9Paddings</key>
-                <rect>88,105,176,210</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">lowq/temporal6.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.6</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>110,98,219,197</rect>
-                <key>scale9Paddings</key>
-                <rect>110,98,219,197</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">lowq/temporal7.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.6</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>75,83,149,166</rect>
-                <key>scale9Paddings</key>
-                <rect>75,83,149,166</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">lowq/temporal8.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.6</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>104,84,207,167</rect>
-                <key>scale9Paddings</key>
-                <rect>104,84,207,167</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">lowq/temporal9.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.6</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>104,116,209,233</rect>
-                <key>scale9Paddings</key>
-                <rect>104,116,209,233</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">lowq/victory_banner.webp</key>
+            <key type="filename">blurry/star_blur.png</key>
+            <key type="filename">blurry/star_blur_sharp.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -411,9 +293,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>3,50,5,100</rect>
+                <rect>153,153,305,305</rect>
                 <key>scale9Paddings</key>
-                <rect>3,50,5,100</rect>
+                <rect>153,153,305,305</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -424,7 +306,7 @@
             <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
-                    <filename>lowq</filename>
+                    <filename>blurry</filename>
                 </array>
             </struct>
         </map>

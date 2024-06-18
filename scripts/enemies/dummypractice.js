@@ -250,7 +250,7 @@
             ease: "Quart.easeOut",
             duration: 600,
             onComplete: () => {
-                if (numTimes % 2 == 0) {
+                if (numTimes % 2 == 1) {
                     this.tweenWeaponToPlayer(name, damage, this.x - 100, this.y - 280, this.x - 10, globalObjects.player.getY() - 220, 0, -120)
                     this.tweenWeaponToPlayer(name, damage, this.x, this.y - 295, this.x, globalObjects.player.getY() - 220, 175, 0)
                     this.tweenWeaponToPlayer(name, damage, this.x + 100, this.y - 280, this.x + 10, globalObjects.player.getY() - 220, 350, 120)

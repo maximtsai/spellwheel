@@ -490,11 +490,23 @@ const ENABLE_KEYBOARD = true;
         this.errorBoxEmbodiment.setDepth(121);
         this.errorBoxEmbodiment.alpha = 0;
 
-        this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 234, 'normal', 'MATTER STRIKE', 30, 1);
+        this.spellElementText = this.scene.add.bitmapText(this.x - 11, this.y - 238, 'normal', 'MATTER STRIKE', 30, 1);
+        this.spellElementText.setScale(0.7);
+        this.spellElementText.setOrigin(1, 0.5);
+        this.spellElementText.setDepth(120);
+        this.spellElementText.alpha = 0.4;
+
+        this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 238, 'normal', 'MATTER STRIKE', 30, 1);
         this.spellNameText.setScale(0.7);
-        this.spellNameText.setOrigin(0.5, 1);
+        this.spellNameText.setOrigin(0.5, 0.5);
         this.spellNameText.setDepth(120);
         this.spellNameText.alpha = 0.4;
+
+        this.spellActionText = this.scene.add.bitmapText(this.x + 13, this.y - 238, 'normal', 'MATTER STRIKE', 30, 1);
+        this.spellActionText.setScale(0.7);
+        this.spellActionText.setOrigin(0, 0.5);
+        this.spellActionText.setDepth(120);
+        this.spellActionText.alpha = 0.4;
 
         this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(21).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);
         this.voidSliceImage3 = scene.add.sprite(gameConsts.halfWidth + 100, 255, 'spells', 'darkSlice.png').setDepth(21).setRotation(-Math.PI * 0.5 - 0.6).setAlpha(0).setOrigin(0.17, 0.5);
@@ -1480,7 +1492,7 @@ const ENABLE_KEYBOARD = true;
                 this.spellNameTextAnim.stop();
             }
             this.spellNameTextAnim = this.scene.tweens.add({
-                targets: this.spellNameText,
+                targets: [this.spellNameText, this.spellElementText, this.spellActionText],
                 delay: 50,
                 ease: 'Cubic.easeIn',
                 alpha: 0,
@@ -1924,7 +1936,7 @@ const ENABLE_KEYBOARD = true;
                                         this.spellNameTextAnim.stop();
                                     }
                                     this.spellNameTextAnim = this.scene.tweens.add({
-                                        targets: this.spellNameText,
+                                        targets: [this.spellNameText, this.spellActionText, this.spellElementText],
                                         delay: 1400,
                                         alpha: 0.55,
                                         duration: 150,
@@ -2261,11 +2273,33 @@ const ENABLE_KEYBOARD = true;
             multText = " X" + multiplier;
         }
         // LEt enemy finish last 3% of charge always.
+         let embodimentText = '';
+         switch (closestEmbodiment.runeName) {
+             case RUNE_STRIKE:
+                 embodimentText = 'STRIKE';
+                 break;
+             case RUNE_REINFORCE:
+                 embodimentText = 'BODY';
+                 break;
+             case RUNE_ENHANCE:
+                 embodimentText = 'ENHANCE';
+                 break;
+             case RUNE_PROTECT:
+                 embodimentText = 'PROTECT';
+                 break;
+             case RUNE_UNLOAD:
+                 embodimentText = 'ULTIMATE';
+                 break;
+             default:
+                 break;
+         }
+
+         let displayText = "+";
          switch (closestElement.runeName) {
              case RUNE_MATTER:
+                 this.spellElementText.setText('MATTER');
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
-                         this.spellNameText.setText('MATTER STRIKE');
                          if (gameVars.matterPlus) {
                             this.spellDescriptor.setText(getLangText('matter_strike_plus_desc'));
                          } else {
@@ -2273,35 +2307,33 @@ const ENABLE_KEYBOARD = true;
                          }
                          break;
                      case RUNE_REINFORCE:
-                        let displayText = "THORN FORM";
-                        if (multiplier > 1.1) {
-                            displayText = displayText + multText;
-                        }
-                         this.spellNameText.setText(displayText);
+                         embodimentText += multiplier > 1.1 ? " X3" : "";
                          this.spellDescriptor.setText(getLangText('matter_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.updateTextIfDifferent(this.spellNameText, 'STRENGTHEN\nNEXT ATTACK' + multText)
+                         embodimentText += multiplier > 1.1 ? " X3" : "";
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('matter_enhance_desc'))
                          break;
                      case RUNE_PROTECT:
-                         this.spellNameText.setText('SHIELD\nOF STONE' + multText);
+                         embodimentText += multiplier > 1.1 ? " X3" : "";
                          this.spellDescriptor.setText(getLangText('matter_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         this.spellNameText.setText('EARTH FORCE');
+                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         //this.spellNameText.setText('EARTH FORCE');
                          this.spellDescriptor.setText(getLangText('matter_unload_desc'));
                          break;
                      default:
-                         this.spellNameText.setText('');
+                         //this.spellNameText.setText('');
+                         displayText = '';
                          this.spellDescriptor.setText('');
                          break;
                  }
                  break;
              case RUNE_TIME:
+                 this.spellElementText.setText('TIME');
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
-                         this.spellNameText.setText('TIME STRIKE');
                          this.spellDescriptor.setText(getLangText('time_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
@@ -2311,19 +2343,20 @@ const ENABLE_KEYBOARD = true;
                         let overheal = Math.max(0, globalObjects.player.health + recentlyHealAmt - globalObjects.player.healthMax)
                         let healDelayed = this.delayedDamage - overheal;
                          let healAmt = recentlyHealAmt + Math.ceil(healDelayed * healMult);
-                         this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS (\\'+ healAmt + ")")
+                         // this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS (\\'+ healAmt + ")")
+                         embodimentText += " (" + healAmt + ")";
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('time_reinforce_desc'))
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('DUPLICATE\nNEXT ATTACK' + multText);
+                         embodimentText += multiplier > 1.1 ? " X3" : "";
                          this.spellDescriptor.setText(getLangText('time_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
-                         this.spellNameText.setText('SHIELD\nOF DELAY' + multText);
+                         embodimentText += multiplier > 1.1 ? " X3" : "";
                          this.spellDescriptor.setText(getLangText('time_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         this.spellNameText.setText('TIME FREEZE' + multText);
+                         embodimentText += multiplier > 1.1 ? " X3" : "";
                          this.spellDescriptor.setText(getLangText('time_unload_desc'));
                          break;
                      default:
@@ -2333,17 +2366,17 @@ const ENABLE_KEYBOARD = true;
                  }
                  break;
              case RUNE_MIND:
+                 this.spellElementText.setText('ENERGY');
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
-                         this.spellNameText.setText('ENERGY STRIKE');
                          this.spellDescriptor.setText(getLangText('mind_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
-                         this.spellNameText.setText('ENERGY FORM' + multText);
+                         embodimentText += multiplier > 1.1 ? " X3" : "";
                          this.spellDescriptor.setText(getLangText('mind_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('IGNITE\nNEXT ATTACK' + multText);
+                         embodimentText += multiplier > 1.1 ? " X3" : "";
                          if (gameVars.mindPlus) {
                             this.spellDescriptor.setText(getLangText('mind_enhance_plus_desc'));
                          } else {
@@ -2351,15 +2384,11 @@ const ENABLE_KEYBOARD = true;
                          }
                          break;
                      case RUNE_PROTECT:
-                         this.spellNameText.setText('REFLECT DAMAGE' + multText);
+                         embodimentText += multiplier > 1.1 ? " X3" : "";
                          this.spellDescriptor.setText(getLangText('mind_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                        let displayText = 'AMPLIFY MAGIC';
-                        if (multiplier > 1.1) {
-                            displayText = "AMPLIFIED AMPLIFY MAGIC";
-                        }
-                         this.spellNameText.setText(displayText);
+                         embodimentText += multiplier > 1.1 ? " (DOUBLE)" : "";
                          this.spellDescriptor.setText(getLangText('mind_unload_desc'));
                          break;
                      default:
@@ -2369,25 +2398,25 @@ const ENABLE_KEYBOARD = true;
                  }
                  break;
              case RUNE_VOID:
+                 this.spellElementText.setText('VOID');
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
-                         this.spellNameText.setText('VOID STRIKE');
                          this.spellDescriptor.setText(getLangText('void_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
-                         this.spellNameText.setText('VOID FORM');
+                         embodimentText += multiplier > 1.1 ? " X3" : "";
                          this.spellDescriptor.setText(getLangText('void_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         this.spellNameText.setText('CURSE\nNEXT ATTACK' + multText);
+                         embodimentText += multiplier > 1.1 ? " X3" : "";
                          this.spellDescriptor.setText(getLangText('void_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
-                         this.spellNameText.setText('SHIELD\nOF NEGATION' + multText);
+                         embodimentText += multiplier > 1.1 ? " X3" : "";
                          this.spellDescriptor.setText(getLangText('void_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         this.updateTextIfDifferent(this.spellNameText, 'UN-MAKE')
+                         // this.updateTextIfDifferent(this.spellNameText, 'UN-MAKE')
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('void_unload_desc'))
                          break;
                      default:
@@ -2397,13 +2426,19 @@ const ENABLE_KEYBOARD = true;
                  }
                  break;
              default:
+                 this.spellElementText.setText('');
                  this.spellNameText.setText('');
                 this.spellDescriptor.setText('');
                  break;
          }
+         this.updateTextIfDifferent(this.spellNameText, displayText)
+         this.spellActionText.setText(embodimentText)
+
 
         if (this.castDisabled || this.manualDisabled) {
              this.spellNameText.setText('');
+             this.spellElementText.setText('')
+            this.spellActionText.setText('')
         }
         if (this.disableSpellDescDisplay || this.manualDisabled) {
             this.spellDescriptor.setText('');

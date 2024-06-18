@@ -270,7 +270,7 @@ const textData = {
         ru: '',
         es: '',
         jp: ''},
-    time_tut_protect_desc: {en_us: 'Creates a shield that delays\nall damage you take to a\nslow trickle, up to a limit.',
+    time_tut_protect_desc: {en_us: 'Creates a shield that delays\nthe damage you take to a\nslow trickle, up to a limit.',
         fr: '',
         zh_cn: '',
         ru: '',

@@ -687,10 +687,12 @@
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
-                        globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 139, "Some shields\nare more useful\nagainst certain\nattacks.", 'right', true);
-                        this.addTimeout(() => {
-                            globalObjects.textPopupManager.hideInfoText();
-                         }, 11000);
+                         this.addTimeout(() => {
+                             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 139, "Some shields\nare more useful\nagainst certain\nattacks.", 'right', true);
+                             this.addTimeout(() => {
+                                 globalObjects.textPopupManager.hideInfoText();
+                             }, 11000);
+                         }, 2500)
                      },
                      attackStartFunction: () => {
                         this.glowGreen();

@@ -168,9 +168,9 @@
                  },
                  // 0
                  {
-                     name: "}2x30",
+                     name: "}2x24",
                      chargeAmt: 700,
-                     finishDelay: 6000,
+                     finishDelay: 15000,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
@@ -181,7 +181,7 @@
 
                      },
                      attackFinishFunction: () => {
-                         this.throwTriple('star.png', 2, 10);
+                         this.throwTriple('star.png', 2, 8);
                      }
                  },
                  {

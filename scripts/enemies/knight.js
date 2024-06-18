@@ -689,7 +689,7 @@
                      }
                  },
                 {
-                     name: "STALKING... ",
+                     name: "UNDULATING... ",
                     isPassive: true,
                      chargeAmt: 400,
                      damage: -1,
@@ -830,6 +830,8 @@
                      chargeAmt: 400,
                      chargeMult: 12,
                      damage: -1,
+
+                     transitionFast: true,
                      prepareSprite: 'void_knight_3.png',
                      startFunction: () => {
                          this.createShout();

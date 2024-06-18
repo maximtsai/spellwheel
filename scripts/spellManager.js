@@ -1836,8 +1836,8 @@ class SpellManager {
         });
         this.scene.tweens.add({
             targets: magicObj,
-            duration: 35000,
-            rotation: "+=3.14",
+            duration: 70000,
+            rotation: "+=6.28318",
             repeat: -1
         });
 

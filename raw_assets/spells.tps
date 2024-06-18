@@ -291,6 +291,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">spells/blank.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1,1,1,1</rect>
+                <key>scale9Paddings</key>
+                <rect>1,1,1,1</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">spells/blast.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -379,6 +394,22 @@
                 <rect>56,67,113,133</rect>
                 <key>scale9Paddings</key>
                 <rect>56,67,113,133</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/clockShieldTriple.png</key>
+            <key type="filename">spells/clockShieldTripleSatellite.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>88,64,177,128</rect>
+                <key>scale9Paddings</key>
+                <rect>88,64,177,128</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -661,21 +692,6 @@
                 <rect>5,5,10,10</rect>
                 <key>scale9Paddings</key>
                 <rect>5,5,10,10</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">spells/shield.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.5</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>125,110,250,220</rect>
-                <key>scale9Paddings</key>
-                <rect>125,110,250,220</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

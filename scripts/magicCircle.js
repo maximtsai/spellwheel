@@ -420,7 +420,7 @@ const ENABLE_KEYBOARD = true;
         this.delayDamagePartial.setDepth(101);
 
 
-        this.delayDamageHourglass = scene.add.sprite(x - 240, y - 130, 'circle', 'delayed_damage.png');
+        this.delayDamageHourglass = scene.add.sprite(x - 240, y - 130, 'circle', 'delayed_damage.png').setScale(0.9);
         this.delayDamageHourglass.setDepth(101);
         this.delayDamageHourglass.alpha = 0;
 
@@ -495,8 +495,9 @@ const ENABLE_KEYBOARD = true;
         this.spellElementText.setOrigin(1, 0.5);
         this.spellElementText.setDepth(120);
         this.spellElementText.alpha = 0.4;
+        this.spellElementSprite = this.scene.add.sprite(this.spellElementText.x, this.spellElementText.y, 'vfx', 'blank.png').setDepth(119).setOrigin(1, 0.5);
 
-        this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 238, 'normal', 'MATTER STRIKE', 30, 1);
+        this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 238, 'normal', '+', 30, 1);
         this.spellNameText.setScale(0.7);
         this.spellNameText.setOrigin(0.5, 0.5);
         this.spellNameText.setDepth(120);
@@ -1299,20 +1300,25 @@ const ENABLE_KEYBOARD = true;
                  case 'time':
                      const blockTimeStartRot = 0.52 + shieldObj.multiplier * 0.03;
                      let goalRotTime = shieldObj.lockRotation + this.outerCircle.rotation;
-                     shieldObj.animObj[0].rotation = goalRotTime;
+                     let goalRotTime1 = goalRotTime * 0.85 + shieldObj.animObj[1].rotation * 0.15;
+                     let goalRotTime2 = goalRotTime * 0.5 + shieldObj.animObj[1].rotation * 0.5;
+                     shieldObj.animObj[0].rotation = goalRotTime1;
+                     shieldObj.animObj[1].rotation = goalRotTime2;
 
                      distFromCenter = Math.abs(shieldObj.animObj[0].rotation);
                      if (shieldObj.shakeAmt > 0) {
                          let shakeOffset = shieldObj.shakeAmt * (Math.random() - 0.5);
                          shieldObj.shakeAmt = Math.max(0, shieldObj.shakeAmt - dScale * 0.012);
                          shieldObj.animObj[0].rotation += shakeOffset;
+                         shieldObj.animObj[1].rotation += shakeOffset * 0.5;
                      }
                      if (distFromCenter < blockTimeStartRot) {
                          if (!shieldObj.active) {
                              shieldObj.active = true;
                              shieldObj.animObj[0].alpha = 0.85;
+                             shieldObj.animObj[1].alpha = 0.85;
                              this.scene.tweens.add({
-                                 targets: shieldObj.animObj[0],
+                                 targets: [shieldObj.animObj[0], shieldObj.animObj[1]],
                                  duration: 250,
                                  scaleX: shieldObj.animObj[0].origScaleX,
                                  scaleY: 0.965,
@@ -1323,8 +1329,9 @@ const ENABLE_KEYBOARD = true;
                          if (shieldObj.active) {
                              shieldObj.active = false;
                              shieldObj.animObj[0].alpha = 0.5;
+                             shieldObj.animObj[1].alpha = 0.5;
                              this.scene.tweens.add({
-                                 targets: shieldObj.animObj[0],
+                                 targets: [shieldObj.animObj[0], shieldObj.animObj[1]],
                                  duration: 250,
                                  scaleX: shieldObj.animObj[0].origScaleX - 0.35,
                                  scaleY: 0.95,
@@ -2020,11 +2027,11 @@ const ENABLE_KEYBOARD = true;
     }
 
     plainUpdateDelayedDamageVisual(scale) {
-        this.delayDamageHourglass.setScale(scale);
+        this.delayDamageHourglass.setScale(scale - 0.1);
         let closestBase = Math.floor(this.delayedDamage / this.delayedDamageBase) * this.delayedDamageBase;
         if (closestBase > 0) {
             this.delayDamageSandFull.alpha = 1;
-            this.delayDamageSandFull.setScale(scale - 0.175);
+            this.delayDamageSandFull.setScale(scale - 0.28);
         } else {
             this.delayDamageSandFull.setScale(0);
         }
@@ -2163,7 +2170,7 @@ const ENABLE_KEYBOARD = true;
             let textScaleFinal = Math.sqrt(scaleAmtTotal * 2) * 0.75;
              if (oldDelayedDamage <= 0) {
                  // animation in
-                 this.delayDamageHourglass.setScale(scaleAmtTotal - 0.3);
+                 this.delayDamageHourglass.setScale(scaleAmtTotal - 0.4);
                  this.delayDamageText.setScale(textScaleFinal - 0.3);
 
                  this.delayDamageHourglass.setRotation(0.5);
@@ -2296,7 +2303,7 @@ const ENABLE_KEYBOARD = true;
                  break;
          }
 
-         let displayText = "+";
+         // let displayText = "+";
          switch (closestElement.runeName) {
              case RUNE_MATTER:
                  this.spellElementText.setText('MATTER');
@@ -2327,7 +2334,6 @@ const ENABLE_KEYBOARD = true;
                          break;
                      default:
                          //this.spellNameText.setText('');
-                         displayText = '';
                          this.spellDescriptor.setText('');
                          break;
                  }
@@ -2429,16 +2435,19 @@ const ENABLE_KEYBOARD = true;
                  break;
              default:
                  this.spellElementText.setText('');
-                 this.spellNameText.setText('');
                 this.spellDescriptor.setText('');
                  break;
          }
-         this.updateTextIfDifferent(this.spellNameText, displayText)
+         if (this.spellElementText.text == '' && this.spellActionText.text == '') {
+             this.spellNameText.visible = false;
+         } else {
+             this.spellNameText.visible = true;
+         }
+         // this.updateTextIfDifferent(this.spellNameText, displayText)
          this.spellActionText.setText(embodimentText)
 
-
         if (this.castDisabled || this.manualDisabled) {
-             this.spellNameText.setText('');
+             this.spellNameText.visible = false;
              this.spellElementText.setText('')
             this.spellActionText.setText('')
         }

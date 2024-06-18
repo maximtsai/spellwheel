@@ -905,8 +905,10 @@ class Player {
                             playSound('time_strike_hit');
 
                             shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 1.3, shieldObj.animObj[0].scaleY);
+                            shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScaleX * 1.25, shieldObj.animObj[0].scaleY);
                             shieldObj.shakeAmt = 0.05 + hurtAmt * 0.005;
                             shieldObj.animObj[0].alpha = 1;
+                            shieldObj.animObj[1].alpha = 1;
                             this.scene.tweens.add({
                                 targets: shieldObj.animObj[0],
                                 duration: 250,
@@ -914,6 +916,14 @@ class Player {
                                 scaleX: shieldObj.animObj[0].origScaleX,
                                 ease: 'Cubic.easeIn'
                             });
+                            this.scene.tweens.add({
+                                targets: shieldObj.animObj[1],
+                                duration: 350,
+                                alpha: 0.85,
+                                scaleX: shieldObj.animObj[1].origScaleX,
+                                ease: 'Cubic.easeIn'
+                            });
+
 
                             let exceedAmt = globalObjects.magicCircle.delayedDamage + hurtAmt - shieldObj.maxAmt;
                             if (exceedAmt <= 0) {

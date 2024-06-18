@@ -1178,20 +1178,35 @@ class SpellManager {
             // already got a buff in place
             statusObj = existingBuff.statusObj;
         }
+        let multiplier = globalObjects.player.spellMultiplier();
+        let shieldName = 'clockShield.png';
+        if (multiplier >= 2) {
+            shieldName = "clockShieldTriple.png";
+        }
 
-        let animation1 = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', 'clockShield.png');
+        let animation1 = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', shieldName);
         animation1.setDepth(118);
         animation1.setOrigin(0.5, 1);
         animation1.setScale(0.75);
         animation1.origScaleX = 0.95;
         animation1.rotation = rotation;
-        playSound('time_shield');
-        messageBus.publish('setTempRotObjs', [animation1], rotation);
 
-        let multiplier = globalObjects.player.spellMultiplier();
+        let shield2Name = 'blank.png';
+        if (multiplier >= 2) {
+            shield2Name = "clockShieldTripleSatellite.png";
+        }
+        let animation2 = this.scene.add.image(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', shield2Name);
+        animation2.setDepth(118);
+        animation2.setOrigin(0.5, 1);
+        animation2.setScale(0.75);
+        animation2.origScaleX = 0.95;
+        animation2.rotation = rotation;
+        playSound('time_shield');
+        messageBus.publish('setTempRotObjs', [animation1, animation2], rotation);
+
 
         this.scene.tweens.add({
-            targets: animation1,
+            targets: [animation1, animation2],
             duration: 400,
             ease: 'Cubic.easeOut',
             scaleX: 0.95,
@@ -1202,7 +1217,7 @@ class SpellManager {
                     name: shieldID,
                     spellID: shieldID,
                     type: 'time',
-                    animObj: [animation1],
+                    animObj: [animation1, animation2],
                     lockRotation: rotation,
                     spriteSrc1: 'rune_protect_glow.png',
                     spriteSrc2: 'rune_time_glow.png',
@@ -1214,7 +1229,7 @@ class SpellManager {
                     cleanUp: (statuses) => {
                         if (statuses[shieldID] && !statuses[shieldID].currentAnim) {
                             statuses[shieldID].currentAnim = this.scene.tweens.add({
-                                targets: animation1,
+                                targets: [animation1, animation2],
                                 duration: 250,
                                 scaleX: 0.55,
                                 scaleY: 0.55,
@@ -1222,6 +1237,7 @@ class SpellManager {
                                 ease: 'Quad.easeOut',
                                 onComplete: () => {
                                     animation1.destroy();
+                                    animation2.destroy();
                                 }
                             });
                             messageBus.publish('selfClearEffect', shieldID, true);

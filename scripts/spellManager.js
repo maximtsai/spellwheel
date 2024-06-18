@@ -2028,7 +2028,7 @@ class SpellManager {
                                     messageBus.publish("selfHeal", healPerTick);
                                     setTimeout(() => {
                                         messageBus.publish("selfHeal", healPerTick);
-                                        let newMaxHealth = Math.ceil(globalObjects.player.getHealthMax() * 0.8);
+                                        let newMaxHealth = Math.ceil(globalObjects.player.getHealthMax() * 0.85);
                                         globalObjects.player.setHealth(newMaxHealth);
                                         globalObjects.player.setHealthMaxTemp(newMaxHealth);
                                         for (let i = 0; i < blackBalls.length; i++) {

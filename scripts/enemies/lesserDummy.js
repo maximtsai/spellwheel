@@ -55,7 +55,7 @@
             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
                 globalObjects.magicCircle.disableMovement();
                 // TODO Add for main dummy too
-                globalObjects.bannerTextManager.setDialog(["This thing is in the way.", "I should knock it over."]);
+                globalObjects.bannerTextManager.setDialog([getLangText('level0_diag_a'), getLangText('level0_diag_b')]);
                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
                 globalObjects.bannerTextManager.showBanner(false);
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -193,7 +193,7 @@
         this.addTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1 && !this.dead) {
                 // player only casted 1 spell so far
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Spin the wheels to\n swap in fresh runes ");
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, getLangText('level0_tut_a'));
                 this.arrowRotate1 = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
                 this.arrowRotate2 = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
                 this.destructibles.push(this.arrowRotate1);
@@ -281,7 +281,7 @@
             // });
             this.addTimeout(() => {
                 if (!this.dead) {
-                    globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 180, 30, "Defeat the =>\nenemy to win");
+                    globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 180, 30, getLangText('level0_tut_b'));
                 }
 
             }, 800);
@@ -409,7 +409,7 @@
          globalObjects.magicCircle.disableMovement();
          let banner = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
          let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let continueText = this.addText(gameConsts.width - 15, gameConsts.halfHeight + 2, 'CONTINUE').setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
+         let continueText = this.addText(gameConsts.width - 15, gameConsts.halfHeight + 2, getLangText('cont_ui')).setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
 
          this.addTween({
              targets: banner,

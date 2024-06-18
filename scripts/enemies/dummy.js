@@ -29,7 +29,8 @@
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 100 : 80;
          this.isAsleep = true;
-        this.attackScale = 1.23;
+         this.pullbackScale = 0.78;
+        this.attackScale = 1.25;
      }
 
 
@@ -37,7 +38,7 @@
      initTutorial() {
         this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
         globalObjects.magicCircle.disableMovement();
-        globalObjects.bannerTextManager.setDialog(["Another one?", "I should try my\nmore advanced magic."]);
+        globalObjects.bannerTextManager.setDialog([getLangText('level1_diag_a'), getLangText('level1_diag_b')]);
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
         globalObjects.bannerTextManager.showBanner(false);
 
@@ -46,11 +47,10 @@
             globalObjects.magicCircle.enableMovement();
             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
             globalObjects.bannerTextManager.closeBanner();
-             this.rune1 = this.addSprite(gameConsts.width - 128, gameConsts.halfHeight - 92, 'circle', 'rune_strike_glow.png').setDepth(9999).setScale(0.88, 0.88).setAlpha(0);
-             this.rune2 = this.addSprite(gameConsts.width - 128, gameConsts.halfHeight + 21, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.85, 0.85).setAlpha(0);
-
              this.addTimeout(() => {
-                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 115, "The Strike Rune\ncasts attack spells\n\nThe Enhance Rune\nstrengthens your\nnext attack\n ", 'right');
+                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 115, getLangText('level1_tut_a'), 'right');
+                 this.rune1 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight - 92, 'circle', 'rune_strike_glow.png').setDepth(9999).setScale(0.88, 0.88).setAlpha(0);
+                 this.rune2 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight + 21, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.85, 0.85).setAlpha(0);
                  this.addTween({
                      targets: [this.rune1, this.rune2],
                      alpha: 1,
@@ -82,7 +82,7 @@
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
             this.timeSinceLastAttacked = -50;
-            globalObjects.textPopupManager.setInfoText(gameConsts.width, 275, "Enemies get\nangry when\nattacked!", 'right');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, 275, getLangText('level1_tut_b'), 'right');
             if (this.rune1) {
                 this.rune1.destroy();
                 this.rune2.destroy();

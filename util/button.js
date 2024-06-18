@@ -422,6 +422,12 @@ class Button {
         return this;
     }
 
+    setText(text) {
+        if (this.text) {
+            this.text.setText(text);
+        }
+    }
+
     tweenToPos(x, y, duration, ease, onUpdate) {
         let tweenObj = {
             targets: this.imageRefs[this.currImageRef],

@@ -9,6 +9,7 @@ class TextPopupManager {
         this.bonusNums = [];
         this.healNums = [];
         this.blockNums = [];
+        this.armorNums = [];
         this.infoBox = this.scene.add.image(0, 0, 'blackPixel').setAlpha(0).setDepth(9999);
         this.infoText = this.scene.add.text(0, 0, 'WELCOME', {fontFamily: 'Arial', fontSize: isMobile ? 25 : 23, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(9999);
         this.infoText.setFontStyle('bold');
@@ -55,6 +56,10 @@ class TextPopupManager {
             alpha: 0.7,
             duration: 300,
         });
+    }
+
+    getWidth() {
+        return this.infoBox.scaleX * 2;
     }
 
     hideInfoText() {
@@ -182,10 +187,10 @@ class TextPopupManager {
     }
 
     animateArmorNum(x, y, text, scale, param, param2) {
-        let textObj = this.getTextObjFromArray(x, y, text, this.blockNums, 'armor');
+        let textObj = this.getTextObjFromArray(x, y, text, this.armorNums, 'armor');
         let mobileScale = isMobile ? 1.15 : 1;
         textObj.setScale(scale * mobileScale).setAlpha(1);
-        this.animateNum(textObj, this.blockNums, param, param2);
+        this.animateNum(textObj, this.armorNums, param, param2);
     }
 
     getTextObjFromArray(x, y, text, array, fontName = 'block') {

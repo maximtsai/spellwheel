@@ -4,8 +4,8 @@
 			"image": "sprites/ui-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 2008,
-				"h": 1905
+				"w": 2023,
+				"h": 1887
 			},
 			"scale": 1,
 			"frames": [
@@ -235,31 +235,6 @@
 					}
 				},
 				{
-					"filename": "locket2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 600,
-						"h": 500
-					},
-					"spriteSourceSize": {
-						"x": 147,
-						"y": 17,
-						"w": 432,
-						"h": 468
-					},
-					"frame": {
-						"x": 1134,
-						"y": 1169,
-						"w": 432,
-						"h": 468
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "wall_paper.png",
 					"rotated": false,
 					"trimmed": true,
@@ -278,6 +253,31 @@
 						"y": 1622,
 						"w": 538,
 						"h": 264
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "locket2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 147,
+						"y": 17,
+						"w": 432,
+						"h": 468
+					},
+					"frame": {
+						"x": 1134,
+						"y": 1169,
+						"w": 432,
+						"h": 468
 					},
 					"anchor": {
 						"x": 0.5,
@@ -460,6 +460,56 @@
 					}
 				},
 				{
+					"filename": "nextLevel.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 180,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 180,
+						"h": 51
+					},
+					"frame": {
+						"x": 1842,
+						"y": 1752,
+						"w": 180,
+						"h": 51
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "nextLevel_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 180,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 180,
+						"h": 51
+					},
+					"frame": {
+						"x": 1842,
+						"y": 1805,
+						"w": 180,
+						"h": 51
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "practice.png",
 					"rotated": false,
 					"trimmed": false,
@@ -535,7 +585,7 @@
 					}
 				},
 				{
-					"filename": "nextLevel.png",
+					"filename": "nextLevel_press.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -574,8 +624,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1842,
-						"y": 1752,
+						"x": 203,
+						"y": 1825,
 						"w": 139,
 						"h": 51
 					},
@@ -599,8 +649,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1842,
-						"y": 1752,
+						"x": 203,
+						"y": 1825,
 						"w": 139,
 						"h": 51
 					},
@@ -624,59 +674,9 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1842,
-						"y": 1752,
+						"x": 203,
+						"y": 1825,
 						"w": 139,
-						"h": 51
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "nextLevel_hover.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 180,
-						"h": 51
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 180,
-						"h": 51
-					},
-					"frame": {
-						"x": 314,
-						"y": 1820,
-						"w": 180,
-						"h": 51
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "nextLevel_press.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 180,
-						"h": 51
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 180,
-						"h": 51
-					},
-					"frame": {
-						"x": 1543,
-						"y": 1853,
-						"w": 180,
 						"h": 51
 					},
 					"anchor": {
@@ -724,8 +724,8 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 1842,
-						"y": 1805,
+						"x": 344,
+						"y": 1820,
 						"w": 89,
 						"h": 43
 					},
@@ -749,10 +749,35 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 203,
-						"y": 1825,
+						"x": 435,
+						"y": 1820,
 						"w": 89,
 						"h": 43
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "sound_full.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 3,
+						"w": 54,
+						"h": 45
+					},
+					"frame": {
+						"x": 1968,
+						"y": 352,
+						"w": 54,
+						"h": 45
 					},
 					"anchor": {
 						"x": 0.5,
@@ -785,31 +810,6 @@
 					}
 				},
 				{
-					"filename": "sound_full.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 59,
-						"h": 51
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 3,
-						"w": 54,
-						"h": 45
-					},
-					"frame": {
-						"x": 1725,
-						"y": 1853,
-						"w": 54,
-						"h": 45
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "sound_most.png",
 					"rotated": false,
 					"trimmed": true,
@@ -824,8 +824,8 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 1781,
-						"y": 1853,
+						"x": 1968,
+						"y": 399,
 						"w": 49,
 						"h": 45
 					},
@@ -849,9 +849,34 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 1933,
-						"y": 1805,
+						"x": 1968,
+						"y": 446,
 						"w": 45,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "sound_half.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 3,
+						"w": 44,
+						"h": 45
+					},
+					"frame": {
+						"x": 1968,
+						"y": 493,
+						"w": 44,
 						"h": 45
 					},
 					"anchor": {
@@ -874,35 +899,10 @@
 						"h": 44
 					},
 					"frame": {
-						"x": 1129,
-						"y": 1856,
+						"x": 1968,
+						"y": 540,
 						"w": 44,
 						"h": 44
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "sound_half.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 59,
-						"h": 51
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 3,
-						"w": 44,
-						"h": 45
-					},
-					"frame": {
-						"x": 1175,
-						"y": 1856,
-						"w": 44,
-						"h": 45
 					},
 					"anchor": {
 						"x": 0.5,
@@ -924,10 +924,60 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 1221,
-						"y": 1856,
+						"x": 1968,
+						"y": 586,
 						"w": 39,
 						"h": 43
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "slip.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 55,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 53,
+						"h": 38
+					},
+					"frame": {
+						"x": 526,
+						"y": 1814,
+						"w": 53,
+						"h": 38
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "slip_hover.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 55,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 53,
+						"h": 38
+					},
+					"frame": {
+						"x": 1536,
+						"y": 591,
+						"w": 53,
+						"h": 38
 					},
 					"anchor": {
 						"x": 0.5,
@@ -949,10 +999,35 @@
 						"h": 39
 					},
 					"frame": {
-						"x": 1262,
-						"y": 1856,
+						"x": 1591,
+						"y": 591,
 						"w": 39,
 						"h": 39
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "slip_press.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 55,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 53,
+						"h": 38
+					},
+					"frame": {
+						"x": 1968,
+						"y": 631,
+						"w": 53,
+						"h": 38
 					},
 					"anchor": {
 						"x": 0.5,
@@ -965,6 +1040,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:ea198a72be720613567c258241f28393:707e69bbce9850694aa6469795d5d0de:6af6d199855d1c5980a61db04791f8fb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:fb5279f8c26ec58750283924eae9eb7d:7d4365262a9e48a47e5ddfee4c138ac7:6af6d199855d1c5980a61db04791f8fb$"
 	}
 }

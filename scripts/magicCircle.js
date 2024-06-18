@@ -2028,13 +2028,11 @@ const ENABLE_KEYBOARD = true;
         } else {
             this.delayDamageSandFull.setScale(0);
         }
-        let extraDelayedTickDamage = this.delayedDamage - closestBase;
 
         let rotateAmt = (this.delayedDamage - closestBase) / this.delayedDamageBase * 6.283 - 1.5708;
         let xPos = this.delayDamageHourglass.x;
         let yPos = this.delayDamageHourglass.y;
         let size = 98 * this.delayDamageHourglass.scaleX;
-        console.log("make visible");
         this.delayDamagePartial.visible = true;
         this.delayDamagePartial.canCleanup = true;
         this.delayDamagePartial.clear();
@@ -2082,6 +2080,10 @@ const ENABLE_KEYBOARD = true;
          this.delayDamageText.setText(this.delayedDamage);
          // this.delayDamageSandFull.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageBase));
          messageBus.publish('selfTakeTrueDamage', amt);
+     }
+
+     getDelayedDamage() {
+        return this.delayedDamage;
      }
 
      enableVoidArm(delay, duration, scale) {
@@ -2638,7 +2640,10 @@ const ENABLE_KEYBOARD = true;
      }
 
 
-     clearEffects() {
+     clearEffects(specific) {
+        if (specific) {
+            return;
+        }
         this.voidSliceImage1.visible = false;
         this.voidSliceImage3.visible = false;
          this.mindBurnAnim.alpha = 0;

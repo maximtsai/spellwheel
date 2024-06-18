@@ -14,7 +14,7 @@
             }
         });
         let spellHoverListener = messageBus.subscribe('spellNameTextUpdate', (text) => {
-            if (!globalObjects.magicCircle.innerDragDisabled && text.includes('STRENGTHEN')) {
+            if (!globalObjects.magicCircle.innerDragDisabled && text.includes('ENHANCE')) {
                 this.canHideStartTut = true;
                 spellHoverListener.unsubscribe();
             }

@@ -536,7 +536,6 @@ class Player {
         let maxHealAmt = this.lastInjuryHealth - this.health;
 
         let healAmt = Math.ceil(percent * (this.recentlyTakenDamageAmt + this.recentlyTakenDelayedDamageAmt));
-        console.log(healAmt, this.recentlyTakenDamageAmt, this.recentlyTakenDelayedDamageAmt);
         this.recentlyTakenDamageAmt = this.recentlyTakenDamageAmt - healAmt;
         if (this.recentlyTakenDamageAmt < 0) {
             this.recentlyTakenDelayedDamageAmt -= Math.abs(this.recentlyTakenDamageAmt);
@@ -548,10 +547,14 @@ class Player {
             // this.recentlyTakenDelayedDamageAmt -= overflowHeal;
             healAmt = maxHealAmt;
         }
+        console.log(healAmt, overflowHeal);
         this.selfHeal(healAmt, false);
-        let delayedDamageRemaining = globalObjects.magicCircle.delayedDamage - overflowHeal;
+        let delayedDamageRemaining = globalObjects.magicCircle.getDelayedDamage() - overflowHeal;
+        console.log("curr delayed damage: ", globalObjects.magicCircle.getDelayedDamage())
         let delayedDamageReduced = Math.ceil(delayedDamageRemaining * 0.5);
         overflowHeal += Math.ceil(delayedDamageRemaining * 0.5);
+        console.log("delayed damage reduced", delayedDamageReduced)
+        console.log("overflowheal", overflowHeal)
         this.recentlyTakenDelayedDamageAmt -= delayedDamageReduced;
 
         //let delayedHealAmt = Math.ceil(percent * this.recentlyTakenDelayedDamageAmt);

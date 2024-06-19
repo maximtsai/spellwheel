@@ -502,11 +502,13 @@ class SpellManager {
         animation2.visible = false;
         animation2.rotateOffset = 0;
 
-        let animation1 = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', 'stoneShield.png');
+        let shieldFile = spellMultiplier > 1.1 ? 'stoneShieldTriple.png' : 'stoneShield.png';
+
+        let animation1 = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', shieldFile);
         animation1.setDepth(1);
         animation1.setOrigin(0.5, 1);
         animation1.setScale(0.75);
-        animation1.origScaleX = 0.95 + spellMultiplier * 0.06;
+        animation1.origScaleX = 0.97 + spellMultiplier * 0.025;
         animation1.rotation = 0;
 
         let textHealth = this.scene.add.bitmapText(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 222, 'armor', '0', 32, 1);

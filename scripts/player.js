@@ -759,13 +759,25 @@ class Player {
                             alpha: 0.5,
                         });
                     } else {
-                        wallObj.setScale(wallObj.origScale * 1.05);
+                        wallObj.setScale(wallObj.origScale * 0.99);
                         this.scene.tweens.add({
                             targets: wallObj,
-                            duration: 350,
-                            scaleX: wallObj.origScale,
-                            scaleY: wallObj.origScale,
-                            alpha: 0.5,
+                            duration: 100,
+                            scaleX: wallObj.origScale * 1.06,
+                            scaleY: wallObj.origScale * 1.06,
+                            ease: 'Cubic.easeIn',
+                            alpha: 1,
+                            onComplete: () => {
+                                this.scene.tweens.add({
+                                    targets: wallObj,
+                                    duration: 200,
+                                    scaleX: wallObj.origScale,
+                                    scaleY: wallObj.origScale,
+                                    ease: 'Quad.easeOut',
+                                    alpha: 0.5,
+
+                                });
+                            }
                         });
                     }
                 }
@@ -833,25 +845,38 @@ class Player {
                                     if (!globalObjects.player.dead) {
                                         let retalVol = 0.4 + shieldObj.storedDamage * 0.015;
                                         playSound('mind_shield_retaliate', retalVol);
-                                        shieldObj.animObj[3].setAlpha(1); // laser
-                                        shieldObj.animObj[3].rotation = shieldObj.animObj[0].rotation;
-                                        shieldObj.animObj[3].scaleX = shieldObj.animObj[3].origScale * (1.2 + shieldObj.storedDamage * 0.025);
-                                        this.scene.tweens.add({
-                                            targets: shieldObj.animObj[3],
-                                            duration: 25,
-                                            scaleX: shieldObj.animObj[3].origScale * (0.9 + shieldObj.storedDamage * 0.015),
-                                            ease: 'Quint.easeIn',
-                                            yoyo: true,
-                                            repeat: 6
-                                        });
+                                        //  + spellMultiplier * 0.2
+                                        let startRotOffset = shieldObj.multiplier * 0.03 - 0.03;
+                                        for (let i = 0; i < shieldObj.multiplier; i++) {
+                                            let laserAnim = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blast.png').setScale(2, 5);
+                                            laserAnim.setDepth(990).setOrigin(0.5, 1.205).setAlpha(0);
+                                            laserAnim.origScale = laserAnim.scaleX;
+                                            laserAnim.rotation = shieldObj.animObj[0].rotation - startRotOffset + i * 0.06;
+                                            laserAnim.scaleX = laserAnim.origScale * (1.2 + shieldObj.storedDamage * 0.025);
+                                            this.scene.tweens.add({
+                                                delay: i * 85,
+                                                targets: laserAnim,
+                                                duration: 25,
+                                                scaleX: laserAnim.origScale * (0.9 + shieldObj.storedDamage * 0.015),
+                                                ease: 'Quint.easeIn',
+                                                yoyo: true,
+                                                repeat: shieldObj.multiplier > 1.1 ? 5 : 6,
+                                                onStart: () => {
+                                                    laserAnim.setAlpha(1);
+                                                },
+                                                onComplete: () => {
+                                                    laserAnim.destroy();
+                                                }
+                                            });
+                                        }
 
                                         let dist = 210;
-                                        let xPos = gameConsts.halfWidth + Math.sin(shieldObj.animObj[3].rotation) * dist;
-                                        let yPos = globalObjects.player.getY() - Math.cos(shieldObj.animObj[3].rotation) * dist;
+                                        let xPos = gameConsts.halfWidth + Math.sin(shieldObj.animObj[0].rotation) * dist;
+                                        let yPos = globalObjects.player.getY() - Math.cos(shieldObj.animObj[0].rotation) * dist;
 
                                         let shockEffect = getTempPoolObject('spells', 'shockEffect1.png', 'shockEffect', 1100).play('powerEffect');
-                                        let goalScale = shieldObj.animObj[3].scaleX;
-                                        shockEffect.setPosition(xPos, yPos).setDepth(shieldObj.animObj[3].depth - 1).setScale(goalScale*0.6, goalScale*0.15).setRotation(shieldObj.animObj[0].rotation);
+                                        let goalScale = 2.4 + shieldObj.storedDamage * 0.05;
+                                        shockEffect.setPosition(xPos, yPos).setDepth(989).setScale(goalScale*0.6, goalScale*0.15).setRotation(shieldObj.animObj[0].rotation);
                                         this.scene.tweens.add({
                                             targets: shockEffect,
                                             duration: 1000,
@@ -951,6 +976,7 @@ class Player {
         if (this.dead) {
             return;
         }
+        globalObjects.magicCircle.setAuraAlpha(0);
         this.dead = true;
         playSound('you_died');
         this.deadBG.alpha = 0.85;
@@ -1090,6 +1116,8 @@ class Player {
             });
         }
 
+        messageBus.publish("manualResetElements");
+        messageBus.publish("manualResetEmbodiments");
         messageBus.publish("playerRevived");
     }
 

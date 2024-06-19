@@ -100,8 +100,8 @@ function getFloatingDeath() {
         globalObjects.deathLeftHand = PhaserScene.add.image(gameConsts.halfWidth + leftHandOffsetX, globalObjects.floatingDeath.y + leftHandOffsetY, 'enemies', 'max_death_left_arm.png');
         globalObjects.deathRightHand = PhaserScene.add.image(gameConsts.halfWidth + rightHandOffsetX, globalObjects.floatingDeath.y + rightHandOffsetY, 'enemies', 'max_death_right_hand.png');
 
-        globalObjects.deathLeftHand.offsetX = leftHandOffsetX; globalObjects.deathLeftHand.offsetY = leftHandOffsetY; 
-        globalObjects.deathRightHand.offsetX = rightHandOffsetX; globalObjects.deathRightHand.offsetY = rightHandOffsetY; 
+        globalObjects.deathLeftHand.offsetX = leftHandOffsetX; globalObjects.deathLeftHand.offsetY = leftHandOffsetY;
+        globalObjects.deathRightHand.offsetX = rightHandOffsetX; globalObjects.deathRightHand.offsetY = rightHandOffsetY;
         setFloatingDeathScale(0.32)
     }
     if (globalObjects.floatingDeath.visible === false) {
@@ -141,7 +141,7 @@ function setFloatingDeathScale(scale) {
 
     globalObjects.deathLeftHand.setScale(scale);
     globalObjects.deathLeftHand.setPosition(globalObjects.floatingDeath.x + globalObjects.deathLeftHand.offsetX * scale, globalObjects.floatingDeath.y + globalObjects.deathLeftHand.offsetY * scale);
-    
+
     globalObjects.deathRightHand.setScale(scale);
     globalObjects.deathRightHand.setPosition(globalObjects.floatingDeath.x + globalObjects.deathRightHand.offsetX * scale, globalObjects.floatingDeath.y + globalObjects.deathRightHand.offsetY * scale);
 }
@@ -561,7 +561,7 @@ function handleReaperDialog(level = 0, onComplete) {
     case 7:
         reaperDialog = [
             "ALAS, IT IS NOT WITHIN MY\nAUTHORITY TO STOP YOU.",
-            "BUT SHOULD YOU PERHAPS... \'STUMBLE\'",
+            "BUT IF YOU WERE TO...\n\'STUMBLE\'",
             "THEN THAT WILL BE A VERY\nDIFFERENT STORY.",
         ];
         break;

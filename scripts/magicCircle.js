@@ -1158,11 +1158,17 @@ const ENABLE_KEYBOARD = true;
         }
     }
 
+
      updateShields(dScale) {
          let playerStatuses = globalObjects.player.getStatuses();
          let shieldObjects = [];
          for (let i = 0; i < this.tempRotObjs.length; i++) {
              this.tempRotObjs[i].rotation = this.tempLockRot + this.outerCircle.rotation;
+         }
+         let matterBlock = playerStatuses['matterUnload'];
+         if (matterBlock) {
+             let fullShield = matterBlock.animObj[0];
+             fullShield.rotation = this.outerCircle.rotation;
          }
          for (let i = 0; i < 10; i++) {
              if (playerStatuses['shield' + i]) {
@@ -1300,7 +1306,12 @@ const ENABLE_KEYBOARD = true;
                  case 'time':
                      const blockTimeStartRot = 0.52 + shieldObj.multiplier * 0.03;
                      let goalRotTime = shieldObj.lockRotation + this.outerCircle.rotation;
-                     let goalRotTime1 = goalRotTime * 0.85 + shieldObj.animObj[1].rotation * 0.15;
+                     let goalRotTime1 = goalRotTime;
+                     if (goalRotTime > shieldObj.animObj[1].rotation + Math.PI * 2) {
+                         shieldObj.animObj[1].rotation += Math.PI * 2;
+                     } else if (goalRotTime < shieldObj.animObj[1].rotation - Math.PI * 2) {
+                         shieldObj.animObj[1].rotation -= Math.PI * 2;
+                     }
                      let goalRotTime2 = goalRotTime * 0.5 + shieldObj.animObj[1].rotation * 0.5;
                      shieldObj.animObj[0].rotation = goalRotTime1;
                      shieldObj.animObj[1].rotation = goalRotTime2;
@@ -2316,19 +2327,19 @@ const ENABLE_KEYBOARD = true;
                          }
                          break;
                      case RUNE_REINFORCE:
-                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          this.spellDescriptor.setText(getLangText('matter_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('matter_enhance_desc'))
                          break;
                      case RUNE_PROTECT:
-                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          this.spellDescriptor.setText(getLangText('matter_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          //this.spellNameText.setText('EARTH FORCE');
                          this.spellDescriptor.setText(getLangText('matter_unload_desc'));
                          break;
@@ -2356,15 +2367,15 @@ const ENABLE_KEYBOARD = true;
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('time_reinforce_desc'))
                          break;
                      case RUNE_ENHANCE:
-                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          this.spellDescriptor.setText(getLangText('time_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
-                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          this.spellDescriptor.setText(getLangText('time_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          this.spellDescriptor.setText(getLangText('time_unload_desc'));
                          break;
                      default:
@@ -2380,11 +2391,11 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('mind_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
-                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          this.spellDescriptor.setText(getLangText('mind_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          if (gameVars.mindPlus) {
                             this.spellDescriptor.setText(getLangText('mind_enhance_plus_desc'));
                          } else {
@@ -2392,7 +2403,7 @@ const ENABLE_KEYBOARD = true;
                          }
                          break;
                      case RUNE_PROTECT:
-                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          this.spellDescriptor.setText(getLangText('mind_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
@@ -2412,15 +2423,15 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('void_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
-                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          this.spellDescriptor.setText(getLangText('void_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
-                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          this.spellDescriptor.setText(getLangText('void_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
-                         embodimentText += multiplier > 1.1 ? " X3" : "";
+                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          this.spellDescriptor.setText(getLangText('void_protect_desc'));
                          break;
                      case RUNE_UNLOAD:

@@ -676,6 +676,8 @@ class SpellManager {
             textHealth.startX = textHealth.x;
             textHealth.startY = textHealth.y;
         }
+        // messageBus.publish('setTempRotObjs', [stoneCircle], rotation);
+
         textHealth.setDepth(120).setOrigin(0.5, 0.5).setScale(0);
         stoneCircle.setDepth(10);
         let basePower = 22;
@@ -1648,7 +1650,14 @@ class SpellManager {
         const spellID = 'mindProtect';
         this.cleanUpExistingShield(shieldID);
         let spellMultiplier = globalObjects.player.spellMultiplier();
-        let animation1 = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', 'eyeShield.png');
+
+        let eyeShieldFile = 'eyeShield.png';
+        if (spellMultiplier > 3.1) {
+            eyeShieldFile = 'eyeShieldQuint.png';
+        } else if (spellMultiplier > 1.1) {
+            eyeShieldFile = 'eyeShieldTriple.png';
+        }
+        let animation1 = this.scene.add.image(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', eyeShieldFile);
 
         animation1.setDepth(110);
         animation1.setOrigin(0.5, 1);
@@ -1672,9 +1681,9 @@ class SpellManager {
         animation3.alpha = 0;
         animation3.rotateOffset = 0;
 
-        let animation4 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blast.png').setScale(2 + spellMultiplier * 0.2, 5);
-        animation4.setDepth(990).setOrigin(0.5, 1.205).setAlpha(0);
-        animation4.origScale = animation4.scaleX;
+        // let animation4 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blast.png').setScale(2 + spellMultiplier * 0.2, 5);
+        // animation4.setDepth(990).setOrigin(0.5, 1.205).setAlpha(0);
+        // animation4.origScale = animation4.scaleX;
 
         let textDisplay = this.scene.add.bitmapText(gameConsts.halfWidth, animation2.y, 'bonus', '', 48, 1);
         textDisplay.setOrigin(0.5, 0.5);
@@ -1697,7 +1706,7 @@ class SpellManager {
                     name: shieldID,
                     spellID: shieldID,
                     type: 'mind',
-                    animObj: [animation1, animation2, animation3, animation4],
+                    animObj: [animation1, animation2, animation3],
                     textObj: textDisplay,
                     storedDamage: 0,
                     multiplier: spellMultiplier,
@@ -1717,7 +1726,6 @@ class SpellManager {
                                     animation1.destroy();
                                     animation2.destroy();
                                     animation3.destroy();
-                                    animation4.destroy();
                                     textDisplay.destroy();
                                 }
                             });
@@ -2520,8 +2528,8 @@ class SpellManager {
                     messageBus.publish('setPauseDur', 40);
                 });
                 if (additionalDamage > 1) {
-                    let rockObj = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'stoneCircle.png');
-                    rockObj.alpha = 0;
+                    let rockObj = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'rockCircle.png');
+                    rockObj.alpha = 0.05;
                     rockObj.rotation = Math.random() * Math.PI * 2;
                     rockObj.setScale(1 + additionalDamage * 0.005);
                     this.scene.tweens.add({

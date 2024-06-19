@@ -493,20 +493,20 @@ const ENABLE_KEYBOARD = true;
         this.spellElementText = this.scene.add.bitmapText(this.x - 11, this.y - 238, 'normal', 'MATTER STRIKE', 30, 1);
         this.spellElementText.setScale(0.7);
         this.spellElementText.setOrigin(1, 0.5);
-        this.spellElementText.setDepth(120);
+        this.spellElementText.setDepth(125);
         this.spellElementText.alpha = 0.4;
         this.spellElementSprite = this.scene.add.sprite(this.spellElementText.x, this.spellElementText.y, 'vfx', 'blank.png').setDepth(119).setOrigin(1, 0.5);
 
         this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 238, 'normal', '+', 30, 1);
         this.spellNameText.setScale(0.7);
         this.spellNameText.setOrigin(0.5, 0.5);
-        this.spellNameText.setDepth(120);
+        this.spellNameText.setDepth(125);
         this.spellNameText.alpha = 0.4;
 
         this.spellActionText = this.scene.add.bitmapText(this.x + 13, this.y - 238, 'normal', 'MATTER STRIKE', 30, 1);
         this.spellActionText.setScale(0.7);
         this.spellActionText.setOrigin(0, 0.5);
-        this.spellActionText.setDepth(120);
+        this.spellActionText.setDepth(125);
         this.spellActionText.alpha = 0.4;
 
         this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(21).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);
@@ -2011,6 +2011,13 @@ const ENABLE_KEYBOARD = true;
     }
 
     flashElement(elem) {
+        if (!this.playErrorSfxCooldown) {
+            playSound('fizzle', 0.8)
+            this.playErrorSfxCooldown = true;
+            setTimeout(() => {
+                this.playErrorSfxCooldown = false;
+            }, 300)
+        }
         elem.setAlpha(0.25);
         elem.setScale(0.98);
         this.scene.tweens.add({

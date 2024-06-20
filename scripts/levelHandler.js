@@ -28,11 +28,11 @@ function beginPreLevel(lvl) {
             // goblin
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'gobbo_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth - 240, gameConsts.halfHeight - 220, 'During my travels I\nencountered a small\ndirty creature waving\nits makeshift dagger\nin front of my face.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth - 240, gameConsts.halfHeight - 220, getLangText('pre_fight_1a'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
             // text2 = PhaserScene.add.text(gameConsts.halfWidth - 68, gameConsts.halfHeight - 5, "Its spittle filled mouth\ntaunts me for a fight.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             // text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text3 = PhaserScene.add.text(gameConsts.halfWidth - 80 , gameConsts.halfHeight + 140, "It clearly has few\npossessions, but the shield\nit carries could make a\nfine prize.", {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'left'});
+            text3 = PhaserScene.add.text(gameConsts.halfWidth - 80 , gameConsts.halfHeight + 140, getLangText('pre_fight_1b'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'left'});
             text3.setDepth(99999).setAlpha(0).setOrigin(0, 0);
 
             createGlobalClickBlocker();

@@ -62,11 +62,11 @@
                      finishDelay: 8000,
                      startFunction: () => {
                         playSound('enemy_attack');
-                        this.addTimeout(() => {
+                        this.addDelay(() => {
                             playSound('enemy_attack_2');
                             this.angrySymbol.x += 29;
                             this.attackName.setText("|;"+attackDamages+"x"+attackTimes+";| ");
-                            this.addTimeout(() => {
+                            this.addDelay(() => {
                                 playSound('enemy_attack_major');
                                 this.angrySymbol.x += 28;
                                 this.attackName.setText("}|;"+attackDamages+"x"+attackTimes+";|} ");
@@ -120,7 +120,7 @@
                                          }
                                      });
                                     this.bgMusic = playSound('gunsequence', 0.75);
-                                    this.addTimeout(() => {
+                                    this.addDelay(() => {
                                         if (this.dead) {
                                             return;
                                         }
@@ -230,7 +230,7 @@
         }
         let flashDelay = 61;
         for (let i = 1; i <= 6; i++) {
-            this.addTimeout(() => {
+            this.addDelay(() => {
                 if (!this.dead) {
                     let randFrameNum = Math.floor(Math.random() * 5) + 1;
                     let randFrame = 'gunflash_' + randFrameNum + '.png';

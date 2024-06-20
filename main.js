@@ -84,6 +84,8 @@ let gameVars = {
     lastmousedown: {x: 0, y: 0},
     timeSlowRatio: 1,
     timeScale: 1,
+    gameManualSlowSpeed: 1,
+    gameManualSlowSpeedInverse: 1,
     gameScale: 1,
     canvasXOffset: 0,
     canvasYOffset: 0

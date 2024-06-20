@@ -164,10 +164,10 @@ let textData = {
         es: '',
         jp: ''
     },
-    mind_protect_desc: {en_us: 'Create a shield\nthat absorbs\n50% damage then\nblasts it back.',
+    mind_protect_desc: {en_us: 'Create a shield\nthat absorbs\n50% damage then\nblasts it back',
         fr: '',
         zh_tw: '',
-        zh_cn: '创建一个吸收 50%\n伤害的盾牌，然后\n将其反射回去。',
+        zh_cn: '创建一个吸收 50%\n伤害的盾牌，吸收\n后将伤害反射回去',
         ru: '',
         es: '',
         jp: ''

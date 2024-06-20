@@ -1050,7 +1050,7 @@
                             ease: 'Cubic.easeIn',
                             onComplete: () => {
                                 if (this.numTimesHealed === 3) {
-                                    globalObjects.bannerTextManager.setDialog(["The Magician mocks your\npoor offensive capabilities."]);
+                                    globalObjects.bannerTextManager.setDialog(["\"You can talk\nbut you can't knock\"", "\"Now have a taste of\nmy great big clock!\""]);
                                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                                     globalObjects.bannerTextManager.showBanner(true);
                                 }

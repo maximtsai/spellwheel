@@ -1289,8 +1289,7 @@ class SpellManager {
                 }
             }
         });
-        let spellName = "TIME FREEZE X"+turnsAdded;
-        let boost = 0;
+        let spellName = turnsAdded + " TURN\nTIME FREEZE";
 
         this.postNonAttackCast(spellID, spellName);
     }

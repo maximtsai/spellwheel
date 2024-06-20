@@ -52,6 +52,7 @@
 
     setGameSlow(amt) {
         gameVars.gameManualSlowSpeed = amt;
+        gameVars.gameManualSlowSpeedInverse = 1 / gameVars.gameManualSlowSpeed;
         gameVars.timeScale = gameVars.gameManualSlowSpeed;
         PhaserScene.tweens.timeScale = gameVars.gameManualSlowSpeed;
         PhaserScene.time.timeScale = gameVars.gameManualSlowSpeed;
@@ -60,6 +61,7 @@
 
     clearGameSlow() {
         gameVars.gameManualSlowSpeed = 1;
+        gameVars.gameManualSlowSpeedInverse = 1;
         gameVars.timeScale = gameVars.gameManualSlowSpeed;
         PhaserScene.tweens.timeScale = gameVars.gameManualSlowSpeed;
         PhaserScene.time.timeScale = gameVars.gameManualSlowSpeed;

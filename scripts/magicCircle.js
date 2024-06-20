@@ -81,8 +81,8 @@ const ENABLE_KEYBOARD = true;
         } else {
             gameVars.playerNotMoved = false;
         }
-        this.lastDragTime += dScale;
         this.handleTimeSlow(dScale);
+        this.lastDragTime += dScale;
 
         let mouseDistX = gameVars.mouseposx - this.x;
         let mouseDistY = gameVars.mouseposy - this.y;
@@ -594,7 +594,7 @@ const ENABLE_KEYBOARD = true;
             scaleY: 7,
             alpha: 0.8,
             ease: 'Cubic.easeIn',
-            duration: 280,
+            duration: gameVars.gameManualSlowSpeed * 280,
         });
 
         this.scene.tweens.add({
@@ -602,32 +602,32 @@ const ENABLE_KEYBOARD = true;
             alpha: 0.15,
             scaleX: 1.1,
             scaleY: 1.1,
-            duration: 250,
+            duration: gameVars.gameManualSlowSpeed * 250,
         });
         this.scene.tweens.add({
             targets: [this.gear1, this.gear2, this.gear3, this.gear4],
             ease: 'Quart.easeOut',
             alpha: 0.5,
-            duration: 1000,
+            duration: gameVars.gameManualSlowSpeed * 1000,
         });
     }
 
     cancelTimeSlow() {
         if (gameVars.timeSlowRatio !== 1) {
             gameVars.timeSlowRatio = 1;
-            messageBus.publish("clearPermPause");
+            messageBus.publish('clearGameSlow');
 
             this.scene.tweens.add({
                 // this.timeStopLight,
                 targets: [this.timeStopHeavy],
                 ease: 'Quint.easeOut',
                 alpha: 0.01,
-                duration: 700,
+                duration: gameVars.gameManualSlowSpeed * 700,
                 onComplete: () => {
                     this.scene.tweens.add({
                         targets: [this.timeStopHeavy],
                         alpha: 0,
-                        duration: 500
+                        duration: gameVars.gameManualSlowSpeed * 500
                     });
                 }
             });
@@ -635,13 +635,26 @@ const ENABLE_KEYBOARD = true;
                 targets: [this.gear1, this.gear2, this.gear3, this.gear4, this.clockbg],
                 ease: 'Quad.easeIn',
                 alpha: 0,
-                duration: 300,
+                duration: gameVars.gameManualSlowSpeed * 300,
             });
         }
     }
 
      manualSetTimeSlowRatio(slowRatio = 1, multiplier = 1) {
         this.setTimeSlowRatio(slowRatio / multiplier, true);
+        ////
+         console.log("manualSetTimeSlowRatio ", slowRatio);
+         if (slowRatio > 0.999) {
+             messageBus.publish('clearGameSlow');
+         } else {
+             // messageBus.publish('setGameSlow', 0.2 + 0.8 * slowRatio);
+             let slowAmt = 0.4;
+             gameVars.gameManualSlowSpeed = slowAmt;
+             gameVars.gameManualSlowSpeedInverse = 1 / gameVars.gameManualSlowSpeed;
+             PhaserScene.tweens.timeScale = slowAmt;
+             // PhaserScene.time.timeScale = slowAmt;
+             PhaserScene.anims.globalTimeScale = slowAmt;
+         }
          this.timeStopHeavy.y = this.y;
          this.timeStopHeavy.setScale(1.7);
          this.timeStopHeavy.setAlpha(1);
@@ -652,7 +665,7 @@ const ENABLE_KEYBOARD = true;
              scaleY: 7,
              alpha: 0.8 + multiplierAddition * 0.2,
              ease: 'Cubic.easeIn',
-             duration: 280,
+             duration: gameVars.gameManualSlowSpeed * 280,
          });
 
          this.scene.tweens.add({
@@ -660,13 +673,13 @@ const ENABLE_KEYBOARD = true;
              alpha: 0.08 + multiplierAddition * 0.1,
              scaleX: 1.1 - multiplier * 0.005,
              scaleY: 1.1 - multiplier * 0.005,
-             duration: 250,
+             duration: gameVars.gameManualSlowSpeed * 250,
          });
          this.scene.tweens.add({
              targets: [this.gear1, this.gear2, this.gear3, this.gear4],
              ease: 'Quart.easeOut',
              alpha: 0.4 + multiplierAddition * 0.2,
-             duration: 1000,
+             duration: gameVars.gameManualSlowSpeed * 1000,
          });
      }
 
@@ -693,12 +706,12 @@ const ENABLE_KEYBOARD = true;
                     targets: [this.timeStopHeavy],
                     ease: 'Quint.easeOut',
                     alpha: 0.01,
-                    duration: 700,
+                    duration: gameVars.gameManualSlowSpeed * 700,
                     onComplete: () => {
                         this.scene.tweens.add({
                             targets: [this.timeStopHeavy],
                             alpha: 0,
-                            duration: 500
+                            duration: gameVars.gameManualSlowSpeed * 500
                         });
                     }
                 });
@@ -706,7 +719,7 @@ const ENABLE_KEYBOARD = true;
                     targets: [this.gear1, this.gear2, this.gear3, this.gear4, this.clockbg],
                     ease: 'Quad.easeIn',
                     alpha: 0,
-                    duration: 300,
+                    duration: gameVars.gameManualSlowSpeed * 300,
                 });
             }
         }
@@ -720,7 +733,7 @@ const ENABLE_KEYBOARD = true;
             let energyCircle2 = mindReinforceStatus.animObj[1];
             this.scene.tweens.add({
                 targets: energyCircle1,
-                duration: 150,
+                duration: gameVars.gameManualSlowSpeed * 150,
                 scaleX: 1.135 + 0.02 * multiplier,
                 scaleY: 1.135 + 0.02 * multiplier,
                 alpha: 1,
@@ -728,14 +741,14 @@ const ENABLE_KEYBOARD = true;
                 onComplete: () => {
                     this.scene.tweens.add({
                         targets: energyCircle1,
-                        duration: 400,
+                        duration: gameVars.gameManualSlowSpeed * 400,
                         scaleX: 0.975 + 0.01 * multiplier,
                         scaleY: 0.975 + 0.01 * multiplier,
                         ease: 'Back.easeOut',
                         onComplete: () => {
                             this.scene.tweens.add({
                                 targets: energyCircle1,
-                                duration: 750,
+                                duration: gameVars.gameManualSlowSpeed * 750,
                                 alpha: 0.6,
                             });
                         }
@@ -745,7 +758,7 @@ const ENABLE_KEYBOARD = true;
 
             this.scene.tweens.add({
                 targets: energyCircle2,
-                duration: 200,
+                duration: gameVars.gameManualSlowSpeed * 200,
                 scaleX: 1.17 + 0.02 * multiplier,
                 scaleY: 1.17 + 0.02 * multiplier,
                 alpha: 1,
@@ -753,14 +766,14 @@ const ENABLE_KEYBOARD = true;
                 onComplete: () => {
                     this.scene.tweens.add({
                         targets: energyCircle2,
-                        duration: 550,
+                        duration: gameVars.gameManualSlowSpeed * 550,
                         scaleX: 1 + 0.012 * multiplier,
                         scaleY: 1 + 0.012 * multiplier,
                         ease: 'Back.easeOut',
                         onComplete: () => {
                             this.scene.tweens.add({
                                 targets: energyCircle2,
-                                duration: 750,
+                                duration: gameVars.gameManualSlowSpeed * 750,
                                 alpha: 0.6,
                             });
                         }
@@ -1104,7 +1117,7 @@ const ENABLE_KEYBOARD = true;
                 this.castGlow.alpha = 0.5;
                 this.scene.tweens.add({
                     targets: this.castGlow,
-                    duration: 1000,
+                    duration: gameVars.gameManualSlowSpeed * 1000,
                     ease: 'Quint.easeOut',
                     alpha: 0,
                 });
@@ -1115,14 +1128,14 @@ const ENABLE_KEYBOARD = true;
                 this.castButtonSpare.alpha = 0.6;
                 this.scene.tweens.add({
                     targets: this.castButtonSpare,
-                    duration: 400,
+                    duration: gameVars.gameManualSlowSpeed * 400,
                     ease: 'Cubic.easeOut',
                     alpha: 0,
                 });
                 // this.castButtonFlash.alpha = 0.15;
                 // this.scene.tweens.add({
                 //     targets: this.castButtonFlash,
-                //     duration: 300,
+                //     duration: gameVars.gameManualSlowSpeed * 300,
                 //     ease: 'Quad.easeOut',
                 //     alpha: 0,
                 // });
@@ -1200,7 +1213,7 @@ const ENABLE_KEYBOARD = true;
                              shieldObj.active = true;
                              this.scene.tweens.add({
                                  targets: shieldObj.animObj[0],
-                                 duration: 275,
+                                 duration: gameVars.gameManualSlowSpeed * 275,
                                  scaleX: shieldObj.animObj[0].origScaleX * 1.05,
                                  easeParams: [4],
                                  scaleY: 1,
@@ -1216,7 +1229,7 @@ const ENABLE_KEYBOARD = true;
                              }
                              this.scene.tweens.add({
                                  targets: shieldObj.animObj[0],
-                                 duration: 275,
+                                 duration: gameVars.gameManualSlowSpeed * 275,
                                  scaleX: shieldObj.animObj[0].origScaleX - 0.2,
                                  scaleY: 0.985,
                                  ease: 'Cubic.easeOut'
@@ -1257,7 +1270,7 @@ const ENABLE_KEYBOARD = true;
                              shieldObj.animObj[1].alpha = 1;
                              this.scene.tweens.add({
                                  targets: shieldObj.animObj[0],
-                                 duration: 275,
+                                 duration: gameVars.gameManualSlowSpeed * 275,
                                  scaleX: shieldObj.animObj[0].origScaleX,
                                  easeParams: [3],
                                  scaleY: 1,
@@ -1274,7 +1287,7 @@ const ENABLE_KEYBOARD = true;
                              }
                              this.scene.tweens.add({
                                  targets: shieldObj.animObj[0],
-                                 duration: 275,
+                                 duration: gameVars.gameManualSlowSpeed * 275,
                                  scaleX: shieldObj.animObj[0].origScaleX - 0.06,
                                  scaleY: 0.99,
                                  ease: 'Cubic.easeOut',
@@ -1309,7 +1322,7 @@ const ENABLE_KEYBOARD = true;
                              shieldObj.animObj[1].alpha = 0.85;
                              this.scene.tweens.add({
                                  targets: [shieldObj.animObj[0], shieldObj.animObj[1]],
-                                 duration: 250,
+                                 duration: gameVars.gameManualSlowSpeed * 250,
                                  scaleX: shieldObj.animObj[0].origScaleX,
                                  scaleY: 0.965,
                                  ease: 'Cubic.easeOut',
@@ -1322,7 +1335,7 @@ const ENABLE_KEYBOARD = true;
                              shieldObj.animObj[1].alpha = 0.5;
                              this.scene.tweens.add({
                                  targets: [shieldObj.animObj[0], shieldObj.animObj[1]],
-                                 duration: 250,
+                                 duration: gameVars.gameManualSlowSpeed * 250,
                                  scaleX: shieldObj.animObj[0].origScaleX - 0.35,
                                  scaleY: 0.95,
                                  ease: 'Cubic.easeOut',
@@ -1360,13 +1373,13 @@ const ENABLE_KEYBOARD = true;
                         let randIndex = Math.floor(Math.random() * shieldEyes.length);
                          this.scene.tweens.add({
                              targets: shieldEyes[randIndex],
-                             duration: 150,
+                             duration: gameVars.gameManualSlowSpeed * 150,
                              scaleX: 0.1,
                              ease: 'Cubic.easeIn',
                              onComplete: () => {
                                  this.scene.tweens.add({
                                      targets: shieldEyes[randIndex],
-                                     duration: 150,
+                                     duration: gameVars.gameManualSlowSpeed * 150,
                                      scaleX: 1,
                                      ease: 'Cubic.easeOut'
                                  });
@@ -1422,7 +1435,7 @@ const ENABLE_KEYBOARD = true;
             this.castHoverTemp.alpha = 1;
             this.castHoverTempAnim = this.scene.tweens.add({
                 targets: this.castHoverTemp,
-                duration: 500,
+                duration: gameVars.gameManualSlowSpeed * 500,
                 ease: 'Cubic.easeOut',
                 alpha: 0,
             });
@@ -1493,18 +1506,18 @@ const ENABLE_KEYBOARD = true;
                 delay: 50,
                 ease: 'Cubic.easeIn',
                 alpha: 0,
-                duration: 400,
+                duration: gameVars.gameManualSlowSpeed * 400,
             });
             messageBus.publish('spellClicked');
-            PhaserScene.time.delayedCall(1250, () => {
+            PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 1250, () => {
                 this.trueCastSpell(closestElement, closestEmbodiment, shieldId, closestEmbodiment.startRotation);
             });
         } else {
             // failed cast
             let retryDelay = this.keyboardCasted ? 800 : 500;
-            PhaserScene.time.delayedCall(retryDelay - 250, () => {
+            PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * (retryDelay - 250), () => {
                 this.bufferedCastAvailable = true;
-                PhaserScene.time.delayedCall(250, () => {
+                PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 250, () => {
                     this.castDisabled = false;
                     this.bufferedCastAvailable = false;
                     if (this.useBufferedSpellCast) {
@@ -1556,7 +1569,7 @@ const ENABLE_KEYBOARD = true;
                         this.bufferedCastAvailable = false;
                     }
                 },
-                duration: 1800,
+                duration: gameVars.gameManualSlowSpeed * 1800,
                 rotation: "+=6.283"
             });
 
@@ -1574,7 +1587,7 @@ const ENABLE_KEYBOARD = true;
                         this.bufferedCastAvailable = false;
                     }
                 },
-                duration: 1800,
+                duration: gameVars.gameManualSlowSpeed * 1800,
                 rotation: "-=6.283"
             });
         }
@@ -1594,7 +1607,7 @@ const ENABLE_KEYBOARD = true;
                 this.resetElements(elemUsed);
                 this.innerDragDisabled = false;
             },
-            duration: useLongDelay ? 2100 : 1200,
+            duration: gameVars.gameManualSlowSpeed * useLongDelay ? 2100 : 1200,
             rotation: spinAmt
         });
     }
@@ -1622,7 +1635,7 @@ const ENABLE_KEYBOARD = true;
             alpha: 0,
             scaleX: 1,
             scaleY: 1,
-            duration: 500,
+            duration: gameVars.gameManualSlowSpeed * 500,
         });
     }
 
@@ -1633,7 +1646,7 @@ const ENABLE_KEYBOARD = true;
          this.disableSpellDescDisplay = true;
          this.recharging = true;
          this.lastDragTime = -1000;
-         PhaserScene.time.delayedCall(250, () => {
+         PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 250, () => {
              this.bufferedCastAvailable = true;
          });
 
@@ -1668,7 +1681,7 @@ const ENABLE_KEYBOARD = true;
                              targets: this.readySprite,
                              scaleX: useLongDelay ? 2.2 : 1.75,
                              scaleY: useLongDelay ? 2.2 : 1.75,
-                             duration: useLongDelay ? 1200 : 600,
+                             duration: gameVars.gameManualSlowSpeed * useLongDelay ? 1200 : 600,
                              ease: 'Cubic.easeOut',
                              onComplete: () => {
                                  this.readySprite.visible = false;
@@ -1677,7 +1690,7 @@ const ENABLE_KEYBOARD = true;
                      }
                  }, useLongDelay ? 800 : 0)
              },
-             duration: useLongDelay ? 2100 : 1200,
+             duration: gameVars.gameManualSlowSpeed * useLongDelay ? 2100 : 1200,
              rotation: spinAmt
          });
      }
@@ -1706,7 +1719,7 @@ const ENABLE_KEYBOARD = true;
             alpha: 0,
             scaleX: 1.2,
             scaleY: 1.2,
-            duration: 500,
+            duration: gameVars.gameManualSlowSpeed * 500,
             completeDelay: 500,
             onComplete: () => {
                 // this.disableSpellDescDisplay = false;
@@ -1739,7 +1752,7 @@ const ENABLE_KEYBOARD = true;
         sprite.setScale(1.07);
         this.scene.tweens.add({
             targets: sprite,
-            duration: 100,
+            duration: gameVars.gameManualSlowSpeed * 100,
             ease: 'Cubic.easeOut',
             scaleX: isMobile ? 1.5 : 1.4,
             scaleY: isMobile ? 1.5 : 1.4,
@@ -1747,7 +1760,7 @@ const ENABLE_KEYBOARD = true;
                 this.scene.tweens.add({
                     targets: sprite,
                     ease: 'Cubic.easeOut',
-                    duration: 350,
+                    duration: gameVars.gameManualSlowSpeed * 350,
                     scaleX: isMobile ? 1.075 : 1.05,
                     scaleY: isMobile ? 1.075 : 1.05
                 });
@@ -1757,7 +1770,7 @@ const ENABLE_KEYBOARD = true;
 
         this.scene.tweens.add({
             targets: castCircle,
-            duration: 250,
+            duration: gameVars.gameManualSlowSpeed * 250,
             alpha: 0.85
         });
 
@@ -1769,7 +1782,7 @@ const ENABLE_KEYBOARD = true;
                 castCircle.alpha = 1;
                 this.scene.tweens.add({
                     targets: castCircle,
-                    duration: 650,
+                    duration: gameVars.gameManualSlowSpeed * 650,
                     delay: 30,
                     ease: 'Quart.easeInOut',
                     rotation: -1.57,
@@ -1786,7 +1799,7 @@ const ENABLE_KEYBOARD = true;
                             alpha: 0,
                             scaleX: 1.5,
                             scaleY: 1.5,
-                            duration: 500,
+                            duration: gameVars.gameManualSlowSpeed * 500,
                             onComplete: () => {
                                 poolManager.returnItemToPool(castCircle, 'castCircle');
 
@@ -1794,12 +1807,12 @@ const ENABLE_KEYBOARD = true;
                             }
                         });
                     },
-                    duration: 840,
+                    duration: gameVars.gameManualSlowSpeed * 840,
                     x: this.x - 28,
                     y: this.y - 224
                 });
             },
-            duration: 250,
+            duration: gameVars.gameManualSlowSpeed * 250,
             scaleX: 1,
             scaleY: 1
         });
@@ -1830,7 +1843,7 @@ const ENABLE_KEYBOARD = true;
         sprite.setScale(1.07);
         this.scene.tweens.add({
             targets: sprite,
-            duration: 100,
+            duration: gameVars.gameManualSlowSpeed * 100,
             ease: 'Cubic.easeOut',
             scaleX: isMobile ? 1.55 : 1.44,
             scaleY: isMobile ? 1.55 : 1.44,
@@ -1839,7 +1852,7 @@ const ENABLE_KEYBOARD = true;
                 this.scene.tweens.add({
                     targets: sprite,
                     ease: 'Cubic.easeOut',
-                    duration: 350,
+                    duration: gameVars.gameManualSlowSpeed * 350,
                     scaleX: isMobile ? 1.075 : 1.05,
                     scaleY: isMobile ? 1.075 : 1.05
                 });
@@ -1848,13 +1861,13 @@ const ENABLE_KEYBOARD = true;
 
         this.scene.tweens.add({
             targets: castCircle,
-            duration: 250,
+            duration: gameVars.gameManualSlowSpeed * 250,
             alpha: 0.85,
         });
 
         this.scene.tweens.add({
             targets: this.castTriangles,
-            duration: 200,
+            duration: gameVars.gameManualSlowSpeed * 200,
             alpha: 0
         });
 
@@ -1865,7 +1878,7 @@ const ENABLE_KEYBOARD = true;
                 castCircle.alpha = 1;
                 this.scene.tweens.add({
                     targets: castCircle,
-                    duration: 650,
+                    duration: gameVars.gameManualSlowSpeed * 650,
                     delay: 30,
                     ease: 'Quart.easeInOut',
                     rotation: 1.57,
@@ -1874,14 +1887,14 @@ const ENABLE_KEYBOARD = true;
                 this.scene.tweens.add({
                     delay: 340,
                     targets: this.castTriangles[0],
-                    duration: 300,
+                    duration: gameVars.gameManualSlowSpeed * 300,
                     alpha: 0.6,
                     ease: 'Cubic.easeOut'
                 });
                 this.scene.tweens.add({
                     delay: 600,
                     targets: this.castTriangles[1],
-                    duration: 200,
+                    duration: gameVars.gameManualSlowSpeed * 200,
                     alpha: 0.6,
                     ease: 'Cubic.easeOut'
                 });
@@ -1889,29 +1902,29 @@ const ENABLE_KEYBOARD = true;
                     targets: [sprite, castCircle],
                     ease: 'Quart.easeInOut',
                     delay: 60,
-                    duration: 840,
+                    duration: gameVars.gameManualSlowSpeed * 840,
                     x: this.x + 28,
                     y: this.y - 224,
                     onStart: () => {
                         let stopForceAlignmentDelay = this.keyboardCasted ? 350 : 0;
-                        PhaserScene.time.delayedCall(stopForceAlignmentDelay, () => {
+                        PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * stopForceAlignmentDelay, () => {
                             this.forcingAlignment = false;
                         });
                     },
                     onComplete: () => {
-                        PhaserScene.time.delayedCall(250, () => {
+                        PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 250, () => {
                             this.bufferedCastAvailable = true;
                         });
                         this.scene.tweens.add({
                             targets: this.castTriangles[2],
-                            duration: 200,
+                            duration: gameVars.gameManualSlowSpeed * 200,
                             alpha: 0.6,
                             ease: 'Cubic.easeOut'
                         });
                         this.scene.tweens.add({
                             delay: 450,
                             targets: this.castTriangles,
-                            duration: 100,
+                            duration: gameVars.gameManualSlowSpeed * 100,
                             alpha: 1,
                             ease: 'Cubic.easeOut'
                         });
@@ -1920,13 +1933,13 @@ const ENABLE_KEYBOARD = true;
                             alpha: 0,
                             scaleX: 1.5,
                             scaleY: 1.5,
-                            duration: 500,
+                            duration: gameVars.gameManualSlowSpeed * 500,
                             onComplete: () => {
                                 poolManager.returnItemToPool(castCircle, 'castCircle');
                                 sprite.setScale(1);
                                 let reEnableDelay = this.keyboardCasted ? 400 : 0;
 
-                                PhaserScene.time.delayedCall(reEnableDelay, () => {
+                                PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * reEnableDelay, () => {
                                     if (!this.outerDragDisabled) {
                                         this.castDisabled = false;
                                     }
@@ -1937,7 +1950,7 @@ const ENABLE_KEYBOARD = true;
                                         targets: [this.spellNameText, this.spellActionText, this.spellElementText],
                                         delay: 1400,
                                         alpha: 0.55,
-                                        duration: 150,
+                                        duration: gameVars.gameManualSlowSpeed * 150,
                                         onComplete: () => {
                                             this.disableSpellDescDisplay = false;
                                         }
@@ -1952,7 +1965,7 @@ const ENABLE_KEYBOARD = true;
                     }
                 });
             },
-            duration: 250,
+            duration: gameVars.gameManualSlowSpeed * 250,
             scaleX: 1,
             scaleY: 1
         });
@@ -1972,7 +1985,7 @@ const ENABLE_KEYBOARD = true;
                 targets: this.readySprite,
                 scaleX: goalScale,
                 scaleY: goalScale,
-                duration: light ? 800 : 650,
+                duration: gameVars.gameManualSlowSpeed * light ? 800 : 650,
                 ease: 'Cubic.easeOut',
                 onComplete: () => {
                     this.readySprite.visible = false;
@@ -2009,13 +2022,13 @@ const ENABLE_KEYBOARD = true;
                 this.scene.tweens.add({
                     targets: elem,
                     ease: 'Cubic.easeOut',
-                    duration: isMobile ? 750 : 600,
+                    duration: gameVars.gameManualSlowSpeed * isMobile ? 750 : 600,
                     scaleX: 1,
                     scaleY: 1,
                     alpha: 0
                 });
             },
-            duration: 50,
+            duration: gameVars.gameManualSlowSpeed * 50,
             alpha: isMobile ? 0.8 : 0.7
         });
     }
@@ -2056,7 +2069,7 @@ const ENABLE_KEYBOARD = true;
             ease: 'Back.easeIn',
             scaleX: 0,
             scaleY: 0,
-            duration: 400,
+            duration: gameVars.gameManualSlowSpeed * 400,
             alpha: 0
         });
     }
@@ -2097,13 +2110,13 @@ const ENABLE_KEYBOARD = true;
          this.scene.tweens.add({
              targets: this.voidArm,
              delay: delay,
-             duration: duration - 900,
+             duration: gameVars.gameManualSlowSpeed * duration - 900,
              y: 210,
              onComplete: () => {
                  this.scene.tweens.add({
                      targets: this.voidArm,
                      alpha: 0,
-                     duration: 400,
+                     duration: gameVars.gameManualSlowSpeed * 400,
                      ease: 'Cubic.easeIn',
                  });
              }
@@ -2111,7 +2124,7 @@ const ENABLE_KEYBOARD = true;
          this.scene.tweens.add({
              targets: this.voidArm,
              delay: delay,
-             duration: 350,
+             duration: gameVars.gameManualSlowSpeed * 350,
              ease: useBig ? 'Back.easeOut' : 'Quad.easeOut',
              easeParams: [5],
              alpha: 1,
@@ -2124,13 +2137,13 @@ const ENABLE_KEYBOARD = true;
              this.scene.tweens.add({
                  targets: this.voidArm2,
                  delay: delay,
-                 duration: duration - 900,
+                 duration: gameVars.gameManualSlowSpeed * duration - 900,
                  y: 210,
                  onComplete: () => {
                      this.scene.tweens.add({
                          targets: this.voidArm2,
                          alpha: 0,
-                         duration: 400,
+                         duration: gameVars.gameManualSlowSpeed * 400,
                          ease: 'Cubic.easeIn',
                      });
                  }
@@ -2138,7 +2151,7 @@ const ENABLE_KEYBOARD = true;
              this.scene.tweens.add({
                  targets: this.voidArm2,
                  delay: delay,
-                 duration: 350,
+                 duration: gameVars.gameManualSlowSpeed * 350,
                  ease: 'Back.easeOut',
                  easeParams: [5],
                  alpha: 1,
@@ -2188,7 +2201,7 @@ const ENABLE_KEYBOARD = true;
 
                 this.scene.tweens.add({
                      targets: [this.delayDamagePartial],
-                     duration: 400,
+                     duration: gameVars.gameManualSlowSpeed * 400,
                      alpha: 1
                  });
 
@@ -2204,7 +2217,7 @@ const ENABLE_KEYBOARD = true;
                      rotation: 0,
                      scaleX: "+= 0.3",
                      scaleY: "+= 0.3",
-                     duration: 400,
+                     duration: gameVars.gameManualSlowSpeed * 400,
                      alpha: 1,
                      onComplete: () => {
                         let scale = this.getDelayedDamageClockScale();
@@ -2219,7 +2232,7 @@ const ENABLE_KEYBOARD = true;
                  //     rotation: 0,
                  //     scaleX: scaleAmtTotal,
                  //     scaleY: scaleAmtTotal,
-                 //     duration: 250,
+                 //     duration: gameVars.gameManualSlowSpeed * 250,
                  //     alpha: 1
                  // });
                  this.scene.tweens.add({
@@ -2228,7 +2241,7 @@ const ENABLE_KEYBOARD = true;
                      rotation: 0,
                      scaleX: textScaleFinal,
                      scaleY: textScaleFinal,
-                     duration: 250,
+                     duration: gameVars.gameManualSlowSpeed * 250,
                      alpha: 1
                  });
                 let scale = this.getDelayedDamageClockScale();
@@ -2360,7 +2373,13 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('time_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+                         let turnsAdded = 0;
+                        let tempMult = multiplier;
+                        while (tempMult > 0) {
+                            tempMult--;
+                            turnsAdded += Math.max(3, 7 - globalObjects.player.getPlayerTimeExhaustion() - tempMult);
+                        }
+                         embodimentText += " (" + turnsAdded + ")"
                          this.spellDescriptor.setText(getLangText('time_unload_desc'));
                          break;
                      default:
@@ -2477,13 +2496,13 @@ const ENABLE_KEYBOARD = true;
             alpha: duration * 0.005 - 0.02,
             scaleX: scaleFlash * 1.2,
             scaleY: scaleFlash * 1.2,
-            duration: 120,
+            duration: gameVars.gameManualSlowSpeed * 120,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 this.scene.tweens.add({
                     targets: this.flashBGWhite,
                     alpha: 0,
-                    duration: 250 + duration * 10,
+                    duration: gameVars.gameManualSlowSpeed * 250 + duration * 10,
                     ease: 'Cubic.easeOut'
                 });
             }
@@ -2492,7 +2511,7 @@ const ENABLE_KEYBOARD = true;
         messageBus.publish('showCircleShadow', 0.03 + duration * 0.005, -90 + duration * 20);
          effectObj = {
              name: effectName,
-             duration: duration,
+             duration: gameVars.gameManualSlowSpeed * duration,
              firstTicked: false,
              onUpdate: () => {
                  if (effectObj) {
@@ -2510,7 +2529,7 @@ const ENABLE_KEYBOARD = true;
                      alpha: 0,
                      scaleX: 1,
                      scaleY: 1,
-                     duration: 250,
+                     duration: gameVars.gameManualSlowSpeed * 250,
                      ease: 'Quad.easeOut'
                  });
                  statuses[effectName] = null;
@@ -2536,7 +2555,7 @@ const ENABLE_KEYBOARD = true;
              scaleX: baseScale * 0.8,
              scaleY: baseScale * 0.8,
              alpha: 0.45,
-             duration: 150,
+             duration: gameVars.gameManualSlowSpeed * 150,
          });
          if (this.voidSliceImage1.anim) {
             this.voidSliceImage1.anim.stop();
@@ -2550,7 +2569,7 @@ const ENABLE_KEYBOARD = true;
              scaleY: baseScale * 0.95,
              alpha: 0.65,
              ease: 'Quad.easeOut',
-             duration: 200,
+             duration: gameVars.gameManualSlowSpeed * 200,
          });
         this.voidSliceImage3.anim = this.scene.tweens.add({
             delay: 180,
@@ -2559,14 +2578,14 @@ const ENABLE_KEYBOARD = true;
              scaleY: baseScale * 1,
              alpha: 0.7,
              ease: 'Quad.easeOut',
-             duration: 3000,
+             duration: gameVars.gameManualSlowSpeed * 3000,
          });
 
          let effectName = 'voidBurn';
          let effectObj;
          effectObj = {
              name: effectName,
-             duration: 3,
+             duration: gameVars.gameManualSlowSpeed * 3,
              isFirst: true,
              onUpdate: () => {
                  if (effectObj.isFirst) {
@@ -2592,7 +2611,7 @@ const ENABLE_KEYBOARD = true;
         }
         spike.alpha = 1;
         playSound('void_strike', 0.3);
-        PhaserScene.time.delayedCall(100, () => {
+        PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 100, () => {
             messageBus.publish('enemyTakeDamage', damage);
             messageBus.publish('setPauseDur', 5);
         })
@@ -2603,7 +2622,7 @@ const ENABLE_KEYBOARD = true;
              ease: 'Quart.easeOut',
              scaleX: baseScale * 1.9,
              scaleY: baseScale * 0.75,
-             duration: 100,
+             duration: gameVars.gameManualSlowSpeed * 100,
              onComplete: () => {
                  this.scene.tweens.add({
                     delay: 100,
@@ -2611,7 +2630,7 @@ const ENABLE_KEYBOARD = true;
                      ease: 'Cubic.easeIn',
                      scaleX: baseScale,
                      scaleY: 0,
-                     duration: 150,
+                     duration: gameVars.gameManualSlowSpeed * 150,
                  });
              }
          });
@@ -2679,7 +2698,7 @@ const ENABLE_KEYBOARD = true;
          this.disappearDeath = this.scene.tweens.add({
              targets: this.greyedDead,
              alpha: 0,
-             duration: 250,
+             duration: gameVars.gameManualSlowSpeed * 250,
          });
      }
 
@@ -2722,7 +2741,7 @@ const ENABLE_KEYBOARD = true;
             targets: this.shadowCircle,
             alpha: 0,
             ease: 'Cubic.easeIn',
-            duration: 950 + intensity * 1000 + extraDuration,
+            duration: gameVars.gameManualSlowSpeed * 950 + intensity * 1000 + extraDuration,
         });
     }
 

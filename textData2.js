@@ -25,6 +25,23 @@ let textData2 = {
         jp: ''
     },
 
+    pre_fight_1a: {en_us: "I've finally arrived.",
+        fr: '',
+        zh_tw: '我終於到了。',
+        zh_cn: '我终于到了。',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    pre_fight_1b: {en_us: "At the gateway to the forbidden lands.",
+        fr: '',
+        zh_tw: '在通往禁地的入口處。',
+        zh_cn: '在通往禁地的门口。',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+
     level0_diag_a: {en_us: "This thing is in the way.",
         fr: '',
         zh_tw: '這東西擋住了我的路。',
@@ -73,10 +90,10 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    level1_tut_a: {en_us: "The Strike Rune\ncasts attack spells\n\nThe Enhance Rune\nstrengthens your\nnext attack\n ",
+    level1_tut_a: {en_us: "The Enhance Rune\nstrengthens your\nnext attack\n ",
         fr: '',
-        zh_tw: '攻击符文\n施放攻击法术\n\n增强符文\n增强你的下\n一次攻击\n ',
-        zh_cn: '攻击符文\n施放攻击法术\n\n增强符文\n增强你的下\n一次攻击\n ',
+        zh_tw: '增强符文\n增强你的下\n一次攻击\n ',
+        zh_cn: '增强符文\n增强你的下\n一次攻击\n ',
         ru: '',
         es: '',
         jp: ''

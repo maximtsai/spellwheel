@@ -114,8 +114,8 @@ class Enemy {
         this.healthBarMax.setOrigin(0.5, 0.5);
         this.healthBarMax.setDepth(10);
 
-        this.healthBarRed = this.scene.add.sprite(x - this.healthBarLengthMax - 1, this.healthBarMax.y, 'pixels', 'red_pixel.png');
-        this.healthBarRed.setScale(this.healthBarLengthMax + 1, 12);
+        this.healthBarRed = this.scene.add.sprite(x - this.healthBarLengthMax - 2, this.healthBarMax.y, 'pixels', 'red_pixel.png');
+        this.healthBarRed.setScale(this.healthBarLengthMax + 3, 12);
         this.healthBarRed.setOrigin(0, 0.5);
         this.healthBarRed.alpha = 0;
         this.healthBarRed.setDepth(10);
@@ -148,14 +148,14 @@ class Enemy {
         this.scene.tweens.add({
             targets: [this.healthBarMax],
             delay: 200,
-            duration: 100 + this.healthBarLengthMax * 5,
+            duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
             scaleX: this.healthBarMaxGoalScale,
             ease: 'Quint.easeInOut'
         });
         this.scene.tweens.add({
             delay: this.healthBarLengthMax * 5 + 150,
             targets: [this.healthBarCurr, this.healthBarText],
-            duration: 250,
+            duration: gameVars.gameManualSlowSpeedInverse * 250,
             alpha: 1
         });
     }
@@ -165,22 +165,30 @@ class Enemy {
         this.healthBarMaxGoalScale = this.healthBarLengthMax + 3;
         this.scene.tweens.add({
             targets: [this.healthBarMax],
-            duration: 100 + this.healthBarLengthMax * 5,
+            duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
             scaleX: this.healthBarMaxGoalScale,
             ease: 'Quint.easeInOut',
         });
 
         this.scene.tweens.add({
-            targets: [this.healthBarCurr, this.healthBarFlash, this.healthBarRed],
-            duration: 100 + this.healthBarLengthMax * 5,
+            targets: [this.healthBarCurr, this.healthBarFlash],
+            duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
             x: this.x - this.healthBarLengthMax - 1,
             scaleX: this.healthBarLengthMax + 1,
             ease: 'Quint.easeInOut',
         });
 
         this.scene.tweens.add({
+            targets: [this.healthBarRed],
+            duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
+            x: this.x - this.healthBarLengthMax - 2,
+            scaleX: this.healthBarLengthMax + 3,
+            ease: 'Quint.easeInOut',
+        });
+
+        this.scene.tweens.add({
             targets: [this.healthBarCurr, this.healthBarText],
-            duration: 400,
+            duration: gameVars.gameManualSlowSpeedInverse * 400,
             alpha: 1
         });
         this.curseSprite.x = gameConsts.halfWidth - this.healthBarLengthMax - 30 * this.curseSprite.scaleX;
@@ -271,7 +279,7 @@ class Enemy {
         if (!this.delayLoad) {
             this.scene.tweens.add({
                 targets: this.sprite,
-                duration: 750,
+                duration: gameVars.gameManualSlowSpeedInverse * 750,
                 ease: 'Quad.easeOut',
                 scaleX: scale,
                 scaleY: scale,
@@ -358,7 +366,7 @@ class Enemy {
             this.sprite.setScale(newScale * 1.02);
             this.scene.tweens.add({
                 targets: this.sprite,
-                duration: 300,
+                duration: gameVars.gameManualSlowSpeedInverse * 300,
                 scaleX: newScale,
                 scaleY: newScale,
             });
@@ -407,7 +415,7 @@ class Enemy {
                     this.attackName.currAnim = PhaserScene.tweens.add({
                         targets: this.attackName,
                         ease: 'Cubic.easeIn',
-                        duration: 500,
+                        duration: gameVars.gameManualSlowSpeedInverse * 500,
                         alpha: 2.5,
                         yoyo: true,
                         repeat: -1,
@@ -472,7 +480,7 @@ class Enemy {
                         scaleX: 1.25,
                         scaleY: 0.95,
                         ease: 'Cubic.easeIn',
-                        duration: 100,
+                        duration: gameVars.gameManualSlowSpeedInverse * 100,
                         onComplete: () => {
                             this.chargeBarReadyAnim = this.scene.tweens.add({
                                 targets: [this.chargeBarReady1, this.chargeBarReady2],
@@ -480,20 +488,20 @@ class Enemy {
                                 scaleY: 0.8,
                                 alpha: 0.95,
                                 ease: 'Cubic.easeOut',
-                                duration: 400,
+                                duration: gameVars.gameManualSlowSpeedInverse * 400,
                                 onComplete: () => {
                                     this.chargeBarReadyAnim = this.scene.tweens.add({
                                         targets: [this.chargeBarReady1, this.chargeBarReady2],
                                         alpha: 0,
                                         scaleX: 0.75,
                                         scaleY: 0.75,
-                                        duration: 600,
+                                        duration: gameVars.gameManualSlowSpeedInverse * 600,
                                         ease: 'Quad.easeIn'
                                     });
                                     this.scene.tweens.add({
                                         targets: [this.chargeBarOutline],
                                         alpha: 0,
-                                        duration: 800,
+                                        duration: gameVars.gameManualSlowSpeedInverse * 800,
                                         ease: 'Cubic.easeIn'
                                     });
                                 }
@@ -587,7 +595,7 @@ class Enemy {
             targets: this.shieldSprite,
             scaleX: this.shieldSprite.startScale,
             scaleY: this.shieldSprite.startScale,
-            duration: 150,
+            duration: gameVars.gameManualSlowSpeedInverse * 150,
             alpha: 0.85,
         });
     }
@@ -609,14 +617,14 @@ class Enemy {
                 // this.scene.tweens.add({
                 //     targets: [damageCircle, damageStar],
                 //     alpha: 1,
-                //     duration: 900,
+                //     duration: gameVars.gameManualSlowSpeedInverse * 900,
                 //     ease: 'Cubic.easeOut',
                 // });
                 // this.scene.tweens.add({
                 //     targets: damageCircle,
                 //     scaleX: 0,
                 //     scaleY: 0,
-                //     duration: 850 + damageToTake * 10,
+                //     duration: gameVars.gameManualSlowSpeedInverse * 850 + damageToTake * 10,
                 //     ease: 'Quint.easeIn',
                 //     onComplete: () => {
                 //     }
@@ -624,20 +632,20 @@ class Enemy {
                 // damageStar.rotAnim = this.scene.tweens.add({
                 //     targets: damageStar,
                 //     rotation: "-=6.28",
-                //     duration: 1800,
+                //     duration: gameVars.gameManualSlowSpeedInverse * 1800,
                 // });
                 // this.scene.tweens.add({
                 //     targets: damageStar,
                 //     scaleX: startScale * 1.8,
                 //     scaleY: startScale * 1.8,
-                //     duration: 150,
+                //     duration: gameVars.gameManualSlowSpeedInverse * 150,
                 //     ease: 'Cubic.easeOut',
                 //     onComplete: () => {
                 //         this.scene.tweens.add({
                 //             targets: damageStar,
                 //             scaleX: 0,
                 //             scaleY: 0,
-                //             duration: 550 + damageToTake * 10,
+                //             duration: gameVars.gameManualSlowSpeedInverse * 550 + damageToTake * 10,
                 //             ease: 'Cubic.easeIn',
                 //             completeDelay: 50,
                 //             onComplete: () => {
@@ -649,7 +657,7 @@ class Enemy {
                 //                     targets: damageStar,
                 //                     scaleX: startScale * 2,
                 //                     scaleY: startScale * 2,
-                //                     duration: 250,
+                //                     duration: gameVars.gameManualSlowSpeedInverse * 250,
                 //                     ease: 'Quad.easeOut',
                 //                     alpha: 0
                 //                 });
@@ -682,7 +690,7 @@ class Enemy {
                     scaleY: this.shieldText.startScale + 1,
                     y: "-=3",
                     x: startLeft ? "-=6" : "+=6",
-                    duration: 60,
+                    duration: gameVars.gameManualSlowSpeedInverse * 60,
                     ease: 'Quint.easeOut',
                     onComplete: () => {
                         this.scene.tweens.add({
@@ -690,20 +698,20 @@ class Enemy {
                             scaleX: this.shieldText.startScale,
                             scaleY: this.shieldText.startScale,
                             y: "+=3",
-                            duration: 500,
+                            duration: gameVars.gameManualSlowSpeedInverse * 500,
                             ease: 'Quart.easeOut',
                         });
                         this.scene.tweens.add({
                             targets: this.shieldText,
                             x: startLeft ? "+=13" : "-=13",
-                            duration: 100,
+                            duration: gameVars.gameManualSlowSpeedInverse * 100,
                             ease: 'Quint.easeInOut',
                             onComplete: () => {
                                 this.shieldText.setDepth(8);
                                 this.scene.tweens.add({
                                     targets: this.shieldText,
                                     x: this.shieldText.startX,
-                                    duration: 400,
+                                    duration: gameVars.gameManualSlowSpeedInverse * 400,
                                     ease: 'Bounce.easeOut',
                                 });
                             }
@@ -793,21 +801,21 @@ class Enemy {
             this.attackNameHighlight.setScale(widthToScale, 2.2).setAlpha(0.2);
             PhaserScene.tweens.add({
                 targets: this.attackNameHighlight,
-                duration: 300,
+                duration: gameVars.gameManualSlowSpeedInverse * 300,
                 ease: 'Quad.easeOut',
                 alpha: this.nextAttack.isBigMove ? 1 : 0.85,
                 onComplete: () => {
                     PhaserScene.tweens.add({
                         targets: this.attackNameHighlight,
                         ease: 'Quad.easeOut',
-                        duration: this.nextAttack.isBigMove ? 1200 : 800,
+                        duration: gameVars.gameManualSlowSpeedInverse * this.nextAttack.isBigMove ? 1200 : 800,
                         alpha: 0,
                     });
                 }
             });
             PhaserScene.tweens.add({
                 targets: this.attackNameHighlight,
-                duration: this.nextAttack.isBigMove ? 1500 : 1100,
+                duration: gameVars.gameManualSlowSpeedInverse * this.nextAttack.isBigMove ? 1500 : 1100,
                 ease: 'Cubic.easeOut',
                 scaleX: widthToScale + (this.nextAttack.isBigMove ? 1.75 : 1.4),
             });
@@ -815,13 +823,13 @@ class Enemy {
                 delay: 200,
                 targets: this.attackNameHighlight,
                 ease: this.nextAttack.isBigMove ? 'Quad.easeIn' : 'Quad.easeOut',
-                duration: this.nextAttack.isBigMove ? 1300 : 900,
+                duration: gameVars.gameManualSlowSpeedInverse * this.nextAttack.isBigMove ? 1300 : 900,
                 scaleY: 0,
             });
         }
         PhaserScene.tweens.add({
             targets: this.attackName,
-            duration: 500,
+            duration: gameVars.gameManualSlowSpeedInverse * 500,
             alpha: 1,
         });
 
@@ -832,14 +840,14 @@ class Enemy {
         PhaserScene.tweens.add({
             targets: this.attackName,
             ease: 'Cubic.easeOut',
-            duration: 400,
+            duration: gameVars.gameManualSlowSpeedInverse * 400,
             scaleX: isLongName && !this.nextAttack.isBigMove ? finalScale + 0.02 : finalScale * 1.6,
             scaleY: isLongName && !this.nextAttack.isBigMove ? finalScale * 1.25 : finalScale * 1.6,
             onComplete: () => {
                 PhaserScene.tweens.add({
                     targets: this.attackName,
                     ease: 'Cubic.easeIn',
-                    duration: 500,
+                    duration: gameVars.gameManualSlowSpeedInverse * 500,
                     scaleX: finalScale,
                     scaleY: finalScale,
                     onComplete: () => {
@@ -847,7 +855,7 @@ class Enemy {
                             this.attackName.currAnim = PhaserScene.tweens.add({
                                 targets: this.attackName,
                                 ease: 'Cubic.easeIn',
-                                duration: 750,
+                                duration: gameVars.gameManualSlowSpeedInverse * 750,
                                 yoyo: true,
                                 repeat: -1,
                                 scaleX: this.attackName.origScale + 0.065,
@@ -885,13 +893,13 @@ class Enemy {
             this.voidPause.setScale(this.chargeBarMax.scaleX, this.chargeBarMax.scaleY);
             this.scene.tweens.add({
                 targets: this.voidPause,
-                duration: 200,
+                duration: gameVars.gameManualSlowSpeedInverse * 200,
                 alpha: 0,
                 scaleY: 0,
             });
             this.scene.tweens.add({
                 targets: this.voidPause,
-                duration: 200,
+                duration: gameVars.gameManualSlowSpeedInverse * 200,
                 scaleX: this.healthBarMax.scaleX + 40,
                 ease: 'Quad.easeOut',
             });
@@ -912,7 +920,7 @@ class Enemy {
                 alpha: 0,
                 scaleX: 0.4,
                 scaleY: 0.4,
-                duration: 250,
+                duration: gameVars.gameManualSlowSpeedInverse * 250,
             });
         }
         this.chargeBarMax.visible = true;
@@ -950,13 +958,13 @@ class Enemy {
             this.scene.tweens.add({
                 targets: this.chargeBarMax,
                 scaleX: chargeBarLength + 2,
-                duration: chargeBarLength * 7 * extraTimeMult,
+                duration: gameVars.gameManualSlowSpeedInverse * chargeBarLength * 7 * extraTimeMult,
                 ease: 'Quart.easeOut'
             });
             this.scene.tweens.add({
                 targets: this.chargeBarOutline,
                 scaleX: chargeBarLength + 4,
-                duration: chargeBarLength * 7 * extraTimeMult,
+                duration: gameVars.gameManualSlowSpeedInverse * chargeBarLength * 7 * extraTimeMult,
                 alpha: 1,
                 ease: 'Quart.easeOut',
                 onComplete: () => {
@@ -967,13 +975,13 @@ class Enemy {
             this.scene.tweens.add({
                 targets: this.chargeBarMax,
                 scaleX: chargeBarLength + 2,
-                duration: 50,
+                duration: gameVars.gameManualSlowSpeedInverse * 50,
                 ease: 'Quart.easeOut'
             });
             this.scene.tweens.add({
                 targets: this.chargeBarOutline,
                 scaleX: chargeBarLength + 4,
-                duration: 50,
+                duration: gameVars.gameManualSlowSpeedInverse * 50,
                 alpha: 1,
                 ease: 'Quart.easeOut',
                 onComplete: () => {
@@ -1023,12 +1031,12 @@ class Enemy {
             scaleY: this.shieldSprite.startScale,
             alpha: 1,
             ease: "Cubic.easeIn",
-            duration: 150,
+            duration: gameVars.gameManualSlowSpeedInverse * 150,
             onComplete: () => {
                 this.scene.tweens.add({
                     targets: this.shieldSprite,
                     alpha: 0.85,
-                    duration: 250,
+                    duration: gameVars.gameManualSlowSpeedInverse * 250,
                 });
             }
         });
@@ -1042,7 +1050,7 @@ class Enemy {
             scaleX: this.shieldText.startScale,
             scaleY: this.shieldText.startScale,
             ease: 'Back.easeOut',
-            duration: 250,
+            duration: gameVars.gameManualSlowSpeedInverse * 250,
         });
     }
 
@@ -1060,7 +1068,7 @@ class Enemy {
             targets: this.curseSprite,
             scaleX: newScale,
             scaleY: newScale,
-            duration: 300,
+            duration: gameVars.gameManualSlowSpeedInverse * 300,
             ease: 'Back.easeOut',
         });
         this.curseText.setText(this.curse);
@@ -1069,7 +1077,7 @@ class Enemy {
             targets: this.curseText,
             scaleX: newScale * 0.8 + 0.075,
             scaleY: newScale * 0.8 + 0.075,
-            duration: 380,
+            duration: gameVars.gameManualSlowSpeedInverse * 380,
             ease: 'Back.easeOut',
         });
         this.curseSprite.x = gameConsts.halfWidth - this.healthBarLengthMax - 30 * this.curseSprite.scaleX;
@@ -1083,7 +1091,7 @@ class Enemy {
             targets: this.shieldSprite,
             scaleX: this.shieldSprite.startScale * 1.25,
             scaleY: this.shieldSprite.startScale * 1.25,
-            duration: 250,
+            duration: gameVars.gameManualSlowSpeedInverse * 250,
             alpha: 0,
             onComplete: () => {
                 this.shieldSprite.visible = false;
@@ -1097,7 +1105,7 @@ class Enemy {
                 scaleX: 0,
                 scaleY: 0,
                 ease: 'Quad.easeOut',
-                duration: 250,
+                duration: gameVars.gameManualSlowSpeedInverse * 250,
                 onComplete: () => {
                     this.shieldText.visible = false;
                 }
@@ -1131,7 +1139,7 @@ class Enemy {
         //         scaleX: clockLargeGoalScale,
         //         scaleY: clockLargeGoalScale,
         //         ease: "Cubic.easeOut",
-        //         duration: 100 + amt * 5
+        //         duration: gameVars.gameManualSlowSpeedInverse * 100 + amt * 5
         //     });
         //
         //     this.scene.tweens.add({
@@ -1139,7 +1147,7 @@ class Enemy {
         //         scaleX: this.clockLarge.scaleX * 3,
         //         scaleY: this.clockLarge.scaleX * 3,
         //         ease: "Cubic.easeOut",
-        //         duration: 100 + amt * 5
+        //         duration: gameVars.gameManualSlowSpeedInverse * 100 + amt * 5
         //     });
         //     amt = 0;
         // }
@@ -1188,7 +1196,7 @@ class Enemy {
             alpha: 0,
             scaleY: this.healthBarCurr.scaleY,
             ease: "Cubic.easeOut",
-            duration: 600 * mult + 150
+            duration: gameVars.gameManualSlowSpeedInverse * 600 * mult + 150
         });
         if (this.healthBarRedTween) {
             this.healthBarRedTween.stop();
@@ -1197,7 +1205,7 @@ class Enemy {
             targets: this.healthBarRed,
             alpha: 0,
             ease: "Cubic.easeOut",
-            duration: 600 * mult + 100
+            duration: gameVars.gameManualSlowSpeedInverse * 600 * mult + 100
         })
     }
 
@@ -1241,7 +1249,7 @@ class Enemy {
                 scaleX: this.clockLarge.scaleX * 3,
                 scaleY: this.clockLarge.scaleX * 3,
                 ease: "Cubic.easeOut",
-                duration: 100 + amt * 5
+                duration: gameVars.gameManualSlowSpeedInverse * 100 + amt * 5
             });
 
             amt = 0;
@@ -1304,14 +1312,14 @@ class Enemy {
         PhaserScene.tweens.add({
             targets: [this.chargeBarCurr],
             alpha: 0,
-            duration: 400,
+            duration: gameVars.gameManualSlowSpeedInverse * 400,
         });
 
         PhaserScene.tweens.add({
             targets: [this.chargeBarMax, this.chargeBarCurr, this.chargeBarOutline],
             scaleX: 0,
             ease: "Cubic.easeOut",
-            duration: 400,
+            duration: gameVars.gameManualSlowSpeedInverse * 400,
         });
         if (this.attackName) {
             this.attackName.visible = false;
@@ -1338,7 +1346,7 @@ class Enemy {
                 scaleX: 0,
                 scaleY: 0,
                 ease: "Cubic.easeIn",
-                duration: 200,
+                duration: gameVars.gameManualSlowSpeedInverse * 200,
                 onComplete: () => {
                     this.angrySymbol.visible = false;
                 }
@@ -1365,7 +1373,7 @@ class Enemy {
                     scaleX: 2.2,
                     scaleY: 2.2,
                     rotation: 0.17,
-                    duration: 125,
+                    duration: gameVars.gameManualSlowSpeedInverse * 125,
                     ease: 'Quint.easeOut',
                     onComplete: () => {
                         this.angrySymbolAnim = this.scene.tweens.add({
@@ -1373,7 +1381,7 @@ class Enemy {
                             rotation: 0,
                             scaleX: 0.85,
                             scaleY: 0.85,
-                            duration: 215,
+                            duration: gameVars.gameManualSlowSpeedInverse * 215,
                             ease: 'Back.easeOut',
                         });
                     }
@@ -1383,7 +1391,7 @@ class Enemy {
                     targets: this.angrySymbol,
                     scaleX: 0.85,
                     scaleY: 0.85,
-                    duration: 200,
+                    duration: gameVars.gameManualSlowSpeedInverse * 200,
                     ease: 'Back.easeOut',
                 });
             }
@@ -1523,18 +1531,18 @@ class Enemy {
             targets: [this.sprite],
             x: "+=8",
             ease: "Cubic.easeOut",
-            duration: 50,
+            duration: gameVars.gameManualSlowSpeedInverse * 50,
             onStart: () => {
                 PhaserScene.tweens.add({
                     targets: [this.sprite],
                     x: "-=5",
                     ease: "Cubic.easeInOut",
-                    duration: 70,
+                    duration: gameVars.gameManualSlowSpeedInverse * 70,
                     onStart: () => {
                         PhaserScene.tweens.add({
                             targets: [this.sprite],
                             x: "+=2",
-                            duration: 50,
+                            duration: gameVars.gameManualSlowSpeedInverse * 50,
                         });
                     }
                 });
@@ -1548,24 +1556,24 @@ class Enemy {
                 targets: [this.chargeBarCurr],
                 scaleX: 0,
                 ease: "Cubic.easeOut",
-                duration: 400,
+                duration: gameVars.gameManualSlowSpeedInverse * 400,
                  onComplete: () => {
                      PhaserScene.tweens.add({
                          targets: [this.chargeBarMax, this.chargeBarOutline],
                          scaleX: 0,
                          ease: "Cubic.easeOut",
-                         duration: 400,
+                         duration: gameVars.gameManualSlowSpeedInverse * 400,
                          onComplete: () => {
                              PhaserScene.tweens.add({
                                  targets: [this.healthBarMax],
                                  scaleX: 0,
-                                 duration: 1000
+                                 duration: gameVars.gameManualSlowSpeedInverse * 1000
                              });
                              PhaserScene.tweens.add({
                                  delay: 400,
                                  targets: [this.healthBarText],
                                  alpha: 0,
-                                 duration: 300
+                                 duration: gameVars.gameManualSlowSpeedInverse * 300
                              });
                          }
                      });
@@ -1587,28 +1595,28 @@ class Enemy {
             this.sprite.setTint(0xFF0000);
         }
 
-        setTimeout(()=> {
+        PhaserScene.time.delayedCall(50 + amt * 20, ()=> {
             this.sprite.clearTint();
-        }, 50 + amt * 20);
+        });
 
         let extraTimeMult = 2 - gameVars.timeSlowRatio;
         PhaserScene.tweens.add({
             targets: this.sprite,
             x: this.x + 3 * amt,
             ease: "Quad.easeOut",
-            duration: 100 * extraTimeMult,
+            duration: gameVars.gameManualSlowSpeedInverse * 100 * extraTimeMult,
             onComplete: () => {
                 PhaserScene.tweens.add({
                     targets: this.sprite,
                     x: this.x - 2 * amt,
                     ease: "Cubic.easeInOut",
-                    duration: 100 * extraTimeMult,
+                    duration: gameVars.gameManualSlowSpeedInverse * 100 * extraTimeMult,
                     onComplete: () => {
                         PhaserScene.tweens.add({
                             targets: this.sprite,
                             x: this.x,
                             ease: "Cubic.easeInOut",
-                            duration: 60 * extraTimeMult
+                            duration: gameVars.gameManualSlowSpeedInverse * 60 * extraTimeMult
                         });
                     }
                 });
@@ -1621,19 +1629,19 @@ class Enemy {
                 targets: currSprite,
                 x: this.x + 3 * amt + currSprite.startOffsetX,
                 ease: "Quad.easeOut",
-                duration: 100 * extraTimeMult,
+                duration: gameVars.gameManualSlowSpeedInverse * 100 * extraTimeMult,
                 onComplete: () => {
                     PhaserScene.tweens.add({
                         targets: currSprite,
                         x: this.x - 2 * amt + currSprite.startOffsetX,
                         ease: "Cubic.easeInOut",
-                        duration: 100 * extraTimeMult,
+                        duration: gameVars.gameManualSlowSpeedInverse * 100 * extraTimeMult,
                         onComplete: () => {
                             PhaserScene.tweens.add({
                                 targets: currSprite,
                                 x: this.x + currSprite.startOffsetX,
                                 ease: "Cubic.easeInOut",
-                                duration: 60 * extraTimeMult
+                                duration: gameVars.gameManualSlowSpeedInverse * 60 * extraTimeMult
                             });
                         }
                     });
@@ -1714,14 +1722,14 @@ class Enemy {
              scaleX: 1.25,
              scaleY: 1.25,
              ease: 'Quad.easeIn',
-             duration: 600,
+             duration: gameVars.gameManualSlowSpeedInverse * 600,
              onComplete: () => {
                  PhaserScene.tweens.add({
                      targets: this.flash,
                      rotation: 4,
                      scaleX: 0,
                      scaleY: 0,
-                     duration: 600,
+                     duration: gameVars.gameManualSlowSpeedInverse * 600,
                      ease: 'Quad.easeOut',
                      onComplete: () => {
                          this.flash.destroy();
@@ -1743,14 +1751,14 @@ class Enemy {
          PhaserScene.tweens.add({
              targets: banner,
              alpha: 0.75,
-             duration: 500,
+             duration: gameVars.gameManualSlowSpeedInverse * 500,
          });
 
          PhaserScene.tweens.add({
              targets: [victoryText],
              alpha: 1,
              ease: 'Quad.easeOut',
-             duration: 500,
+             duration: gameVars.gameManualSlowSpeedInverse * 500,
          });
         playSound('victory');
          setTimeout(() => {
@@ -1761,13 +1769,13 @@ class Enemy {
              targets: victoryText,
              scaleX: 1,
              scaleY: 1,
-             duration: 800,
+             duration: gameVars.gameManualSlowSpeedInverse * 800,
          });
          PhaserScene.tweens.add({
              targets: rune,
              y: gameConsts.halfHeight - 110,
              ease: 'Cubic.easeOut',
-             duration: 400,
+             duration: gameVars.gameManualSlowSpeedInverse * 400,
              completeDelay: 300,
              onComplete: () => {
                 if (this.dieClickBlocker) {
@@ -1776,7 +1784,7 @@ class Enemy {
                          PhaserScene.tweens.add({
                              targets: [victoryText, banner],
                              alpha: 0,
-                             duration: 400,
+                             duration: gameVars.gameManualSlowSpeedInverse * 400,
                              onComplete: () => {
                                  victoryText.destroy();
                                  banner.destroy();
@@ -1788,7 +1796,7 @@ class Enemy {
                              targets: rune,
                              y: "+=90",
                              ease: 'Quad.easeOut',
-                             duration: 400,
+                             duration: gameVars.gameManualSlowSpeedInverse * 400,
                              onComplete: () => {
                                  rune.destroy();
                              }
@@ -1796,7 +1804,7 @@ class Enemy {
                          PhaserScene.tweens.add({
                              targets: rune,
                              alpha: 0,
-                             duration: 400,
+                             duration: gameVars.gameManualSlowSpeedInverse * 400,
                          });
                      })
                  } else {
@@ -1806,7 +1814,7 @@ class Enemy {
                          PhaserScene.tweens.add({
                              targets: [victoryText, banner],
                              alpha: 0,
-                             duration: 400,
+                             duration: gameVars.gameManualSlowSpeedInverse * 400,
                              onComplete: () => {
                                  victoryText.destroy();
                                  banner.destroy();
@@ -1818,7 +1826,7 @@ class Enemy {
                              targets: rune,
                              y: "+=90",
                              ease: 'Quad.easeOut',
-                             duration: 400,
+                             duration: gameVars.gameManualSlowSpeedInverse * 400,
                              onComplete: () => {
                                  rune.destroy();
                              }
@@ -1826,7 +1834,7 @@ class Enemy {
                          PhaserScene.tweens.add({
                              targets: rune,
                              alpha: 0,
-                             duration: 400,
+                             duration: gameVars.gameManualSlowSpeedInverse * 400,
                          });
                     });
                  }
@@ -1854,9 +1862,9 @@ class Enemy {
 
         if (prepareSprite) {
             if (isRepeatedAttack) {
-                setTimeout(() => {
+                PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeedInverse * durationPullback * this.pullbackHoldRatio, () => {
                     this.setSpriteIfNotInactive(prepareSprite, this.sprite.startScale);
-                }, durationPullback * this.pullbackHoldRatio);
+                });
             } else {
                 this.setSpriteIfNotInactive(prepareSprite, this.sprite.startScale);
             }
@@ -1870,7 +1878,7 @@ class Enemy {
             scaleX: pullbackScale,
             scaleY: pullbackScale,
             rotation: 0,
-            duration: durationPullback * timeSlowMult * transitionMult,
+            duration: gameVars.gameManualSlowSpeedInverse * durationPullback * timeSlowMult * transitionMult,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 if (this.dead || this.isDestroyed){
@@ -1883,7 +1891,7 @@ class Enemy {
                     targets: this.sprite,
                     scaleX: attackScale,
                     scaleY: attackScale,
-                    duration: attackDuration * transitionMult,
+                    duration: gameVars.gameManualSlowSpeedInverse * attackDuration * transitionMult,
                     rotation: 0,
                     ease: this.attackEase ? this.attackEase : 'Cubic.easeIn',
                     onComplete: () => {
@@ -1925,20 +1933,20 @@ class Enemy {
                                 scaleX: this.sprite.startScale,
                                 scaleY: this.sprite.startScale,
                                 rotation: 0,
-                                duration: 500 * extraTimeMult * timeSlowMult * transitionMult,
+                                duration: gameVars.gameManualSlowSpeedInverse * 500 * extraTimeMult * timeSlowMult * transitionMult,
                                 ease: this.returnEase ? this.returnEase : 'Cubic.easeInOut'
                             });
-                            setTimeout(() => {
+                            PhaserScene.time.delayedCall(finishDelay, () => {
                                 this.isUsingAttack = false;
-                            }, finishDelay);
-                            setTimeout(() => {
+                            });
+                            PhaserScene.time.delayedCall(400 * extraTimeMult * this.lastAttackLingerMult + 100, () => {
                                 if (!this.dead && !this.isDestroyed) {
                                     this.setSpriteIfNotInactive(this.defaultSprite, undefined, true);
                                     if (this.nextAttack.finaleFunction) {
                                         this.nextAttack.finaleFunction();
                                     }
                                 }
-                            }, 400 * extraTimeMult * this.lastAttackLingerMult + 100);
+                            });
                         }
                     }
                 });
@@ -1996,7 +2004,7 @@ class Enemy {
             if (!this.isDestroyed) {
                 func()
             }
-        }, delay);
+        }, gameVars.gameManualSlowSpeedInverse * delay);
     }
 
     addBitmapText(x, y, source, text, size, param1, param2, param3) {
@@ -2005,11 +2013,15 @@ class Enemy {
         return newText;
     }
 
+    addDelay(func, delay) {
+        return this.addDelayedCall(delay, func);
+    }
+
     addDelayedCall(delay, func) {
         if (this.isDestroyed) {
             return PhaserScene.time.delayedCall(0, () => {})
         }
-        return PhaserScene.time.delayedCall(delay, () => {
+        return PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeedInverse * delay, () => {
             if (!this.isDestroyed) {
                 func();
             }

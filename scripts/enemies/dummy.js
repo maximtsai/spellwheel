@@ -48,9 +48,9 @@
             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
             globalObjects.bannerTextManager.closeBanner();
              this.addTimeout(() => {
-                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 115, getLangText('level1_tut_a'), 'right');
-                 this.rune1 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight - 92, 'circle', 'rune_strike_glow.png').setDepth(9999).setScale(0.88, 0.88).setAlpha(0);
-                 this.rune2 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight + 21, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.85, 0.85).setAlpha(0);
+                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 135, getLangText('level1_tut_a'), 'right');
+                 this.rune1 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight - 112, 'circle', 'rune_strike_glow.png').setDepth(9999).setScale(0.88, 0.88).setAlpha(0);
+                 this.rune2 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight + 1, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.85, 0.85).setAlpha(0);
                  this.addTween({
                      targets: [this.rune1, this.rune2],
                      alpha: 1,

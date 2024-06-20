@@ -2009,9 +2009,9 @@
                          onComplete: () => {
                              victoryText.destroy();
                              banner.destroy();
-                             continueText.destroy();
                              globalObjects.postFightScreen.createWinScreenBoom(this.level);
                          }
+                        continueText.destroy();
                      });
                      rune.destroy();
                  })

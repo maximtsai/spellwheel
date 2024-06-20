@@ -9,6 +9,7 @@ function beginPreLevel(lvl) {
     let text2;
     let text3;
     let introOverlay;
+    switchLevelBackground(lvl);
     switch(lvl) {
         case 0:
             // lesser dummy
@@ -27,15 +28,15 @@ function beginPreLevel(lvl) {
             // goblin
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'gobbo_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth - 240, gameConsts.halfHeight - 228, 'During my travels I\nencountered a small\nbut vicious creature\nyelling at me\nwith bravado.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth - 240, gameConsts.halfHeight - 220, 'During my travels I\nencountered a small\ndirty creature waving\nits makeshift dagger\nin front of my face.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth - 68, gameConsts.halfHeight - 5, "Its spittle filled mouth\ntaunts me for a fight.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
-            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text3 = PhaserScene.add.text(gameConsts.halfWidth - 240 , gameConsts.halfHeight + 160, 'The shield it carries\nwould make a fine prize.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            // text2 = PhaserScene.add.text(gameConsts.halfWidth - 68, gameConsts.halfHeight - 5, "Its spittle filled mouth\ntaunts me for a fight.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            // text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            text3 = PhaserScene.add.text(gameConsts.halfWidth - 80 , gameConsts.halfHeight + 140, "It clearly has few\npossessions, but the shield\nit carries could make a\nfine prize.", {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'left'});
             text3.setDepth(99999).setAlpha(0).setOrigin(0, 0);
 
             createGlobalClickBlocker();
-            fadeInPreFightStuff(lvl, [text1, text2, text3], [introPaper, introOverlay])
+            fadeInPreFightStuff(lvl, [text1, text3], [introPaper, introOverlay])
             break;
         case 3:
             // tree
@@ -67,7 +68,7 @@ function beginPreLevel(lvl) {
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'knight_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 130, 'In front of me stands a knight,\nmotionless but with sword drawn.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, "I need no explanation to know\nwhat I must do.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, "I need no explanation to know what\nI must do.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -141,7 +142,7 @@ function fadeInPreFightStuff(lvl, texts, introbgs) {
     })
     PhaserScene.tweens.add({
         targets: texts,
-        alpha: 0.5,
+        alpha: 0.65,
         duration: 650,
     })
 
@@ -222,18 +223,7 @@ function createLvlCloseButton(lvl, items) {
     return lvlCloseButton;
 }
 
-function beginLevel(lvl) {
-    CURRENT_LEVEL = lvl;
-
-    updateSpellState(lvl)
-    globalObjects.player.resetStats();
-    messageBus.publish('manualResetElements', undefined, true);
-    messageBus.publish('manualResetEmbodiments', undefined, true); // with long delay
-
-    globalObjects.magicCircle.buildRunes();
-
-    playSound('whoosh');
-    createEnemyAfterDelay(lvl);
+function switchLevelBackground(lvl) {
     switch(lvl) {
         case -7:
         case -6:
@@ -282,6 +272,21 @@ function beginLevel(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 2500, 1, 1, 'Quart.easeIn', 0, false);
             break;
     }
+}
+
+function beginLevel(lvl) {
+    CURRENT_LEVEL = lvl;
+
+    updateSpellState(lvl)
+    globalObjects.player.resetStats();
+    messageBus.publish('manualResetElements', undefined, true);
+    messageBus.publish('manualResetEmbodiments', undefined, true); // with long delay
+
+    globalObjects.magicCircle.buildRunes();
+
+    playSound('whoosh');
+    createEnemyAfterDelay(lvl);
+    switchLevelBackground(lvl);
 }
 
 function createEnemyAfterDelay(lvl) {

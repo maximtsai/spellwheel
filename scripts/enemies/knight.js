@@ -48,7 +48,7 @@
 
      initFog() {
         this.fogThick = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'blurry', 'fogthick.png').setDepth(9).setAlpha(0).setOrigin(0.5, 0.25);
-        this.graves = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'graves.png').setDepth(9).setScale(1.25, 1).setAlpha(0);
+        this.graves = this.addImage(gameConsts.halfWidth, gameConsts.height + 8, 'backgrounds', 'graves.png').setDepth(9).setScale(1.25, 1).setAlpha(0).setOrigin(0.5, 1);
 
         this.addTween({
              targets: [this.fogThick],

@@ -984,7 +984,6 @@ class Enemy {
     }
 
     takeEffect(newEffect) {
-        console.log("took effect", newEffect)
         this.statuses[newEffect.name] = newEffect;
     }
 
@@ -1781,10 +1780,10 @@ class Enemy {
                              onComplete: () => {
                                  victoryText.destroy();
                                  banner.destroy();
-                                 continueText.destroy();
                                  playReaperAnim(this);
                              }
                          });
+                        continueText.destroy();
                          PhaserScene.tweens.add({
                              targets: rune,
                              y: "+=90",
@@ -1811,10 +1810,10 @@ class Enemy {
                              onComplete: () => {
                                  victoryText.destroy();
                                  banner.destroy();
-                                 continueText.destroy();
                                  playReaperAnim(this);
                              }
                          });
+                        continueText.destroy();
                          PhaserScene.tweens.add({
                              targets: rune,
                              y: "+=90",
@@ -2021,7 +2020,6 @@ class Enemy {
         if (this.dead) {
             return;
         }
-        console.log("updateStatuses")
         for (let i in this.statuses) {
             let status = this.statuses[i];
             if (status == null) {

@@ -96,13 +96,12 @@
                             });
                         });
                         this.currShadowTween = this.addTween({
-                            delay: 200,
                             targets: this.shadow,
                             alpha: 0.65,
                             ease: "Cubic.easeOut",
                             scaleX: 5.6,
                             scaleY: 5.6,
-                            duration: 700,
+                            duration: 1000,
                             onComplete: () => {
                                 if (globalObjects.player.getPlayerCastSpellsCount() !== 0 && !this.firstPopupClosed) {
                                     messageBus.publish("unhighlightRunes");
@@ -119,9 +118,9 @@
                                 }
                             }
                         });
-                        this.addTimeout(() => {
-                            globalObjects.magicCircle.showReadySprite();
-                        }, 1000);
+                        // this.addTimeout(() => {
+                        //     globalObjects.magicCircle.showReadySprite();
+                        // }, 1000);
                         this.addTimeout(() => {
                             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
                                 globalObjects.magicCircle.showReadySprite();
@@ -224,7 +223,7 @@
                     ease: "Cubic.easeOut",
                     scaleX: 13,
                     scaleY: 13,
-                    duration: 500,
+                    duration: 650,
                     onComplete: () => {
                         if (globalObjects.player.getPlayerCastSpellsCount() > 1 && this.shadow.alpha > 0.54) {
                             globalObjects.textPopupManager.hideInfoText();
@@ -245,7 +244,7 @@
                     }
                 });
             }
-        }, 3400);
+        }, 3200);
     }
 
     attemptTutThree() {
@@ -281,7 +280,7 @@
             // });
             this.addTimeout(() => {
                 if (!this.dead) {
-                    globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 180, 30, getLangText('level0_tut_b'));
+                    globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 195, 30, getLangText('level0_tut_b'));
                 }
 
             }, 800);
@@ -446,6 +445,7 @@
                          this.destroy();
                      }
                  });
+                continueText.destroy();
                  this.addTween({
                      targets: [victoryText, banner],
                      alpha: 0,
@@ -455,7 +455,6 @@
                          globalObjects.magicCircle.enableMovement();
                          victoryText.destroy();
                          banner.destroy();
-                         continueText.destroy();
                          beginLevel(1);
                      }
                  });

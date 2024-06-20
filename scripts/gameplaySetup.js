@@ -348,7 +348,7 @@ function generateRandIntroText() {
     return randIntroTexts[randVal];
 }
 
-function recursiveCreateIntroText(delay = 100, num = 180) {
+function recursiveCreateIntroText(delay = 150, num = 180) {
     if (num <= 0 || gameVars.introFinished) {
         return;
     }
@@ -370,7 +370,7 @@ function recursiveCreateIntroText(delay = 100, num = 180) {
         }
     }
 
-    let extraAlpha = 0.6 - delay * 0.004;
+    let extraAlpha = 0.6 - delay * 0.0038;
     let newText = PhaserScene.add.text(randX, randY, generateRandIntroText(), {fontFamily: 'verdanabold', fontSize: 28, color: '#EEEEEE', align: 'center'}).setDepth(100).setAlpha(Math.random() * 0.25 - 0.15).setOrigin(0.5, 0.5).setScale(1 + Math.random() * 1);
     PhaserScene.tweens.add({
         targets: newText,
@@ -378,6 +378,7 @@ function recursiveCreateIntroText(delay = 100, num = 180) {
         duration: 400,
         onComplete: () => {
             PhaserScene.tweens.add({
+                delay: 100,
                 targets: newText,
                 alpha: 0,
                 duration: 1200,
@@ -399,7 +400,7 @@ function recursiveCreateIntroText(delay = 100, num = 180) {
     });
 
     globalObjects.tempIntroText.push(newText)
-    let newDelay = Math.ceil(delay * 0.93);
+    let newDelay = Math.ceil(delay * 0.85 + 1);
     PhaserScene.time.delayedCall(delay, () => {
         recursiveCreateIntroText(newDelay, num - 1)
     })

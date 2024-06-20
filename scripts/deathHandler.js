@@ -527,49 +527,48 @@ function handleReaperDialog(level = 0, onComplete) {
         break;
     case 2:
         reaperDialog = [
-            "...OH? IT'S YOU AGAIN.",
-            "YOU DO NOT BELONG HERE,\nIN THE LANDS OF PASSING.",
-            "TURN BACK TO\nWHERE YOU CAME FROM."
+            getLangText('death2a'),
+            getLangText('death2b'),
+            getLangText('death2c'),
             ];
         break;
     case 3:
         reaperDialog = [
-            "I WILL ONLY\nWARN YOU ONCE MORE,",
-            "THAT WHICH YOU SEEK HERE\nCANNOT BE ATTAINED.",
+            getLangText('death3a'),
+            getLangText('death3b'),
         ];
         break;
     case 4:
         reaperDialog = [
-            "THE MAGICIAN THOUGHT HIS\nMAGIC COULD ELUDE ME,",
-            "BUT THE PASSAGE OF TIME\nCANNOT BE UNDONE.",
-            "AND NEITHER CAN YOUR\nLOVED ONE RETURN.",
+            getLangText('death4a'),
+            getLangText('death4b'),
+            getLangText('death4c'),
         ];
         break;
     case 5:
         reaperDialog = [
-            "YOU ARE PERSISTENT.",
-            "BUT UNDERSTAND THAT ONLY\nMISERY AWAITS AT THE END.",
+            getLangText('death5a'),
+            getLangText('death5b'),
         ];
         break;
     case 6:
         reaperDialog = [
-            "I SHOULD PERHAPS TELL YOU...",
-            "THAT YOU ARE MAKING\nQUITE A MESS OF THINGS.",
-            "AND MY SCHEDULE IS\nBUSY ENOUGH AS-IS.",
+            getLangText('death6a'),
+            getLangText('death6b'),
         ];
         break;
     case 7:
         reaperDialog = [
-            "ALAS, IT IS NOT WITHIN MY\nAUTHORITY TO STOP YOU.",
-            "BUT IF YOU WERE TO...\n\'STUMBLE\'",
-            "THEN THAT WILL BE A VERY\nDIFFERENT STORY.",
+            getLangText('death7a'),
+            getLangText('death7b'),
+            getLangText('death7c'),
         ];
         break;
     case 8:
         reaperDialog = [
-            "...",
-            "I HAVE A FEELING THAT\nIT WON'T BE LONG",
-            "BEFORE I HAVE BUSINESS WITH YOU.",
+            getLangText('death8a'),
+            getLangText('death8b'),
+            getLangText('death8c'),
         ];
         break;
 

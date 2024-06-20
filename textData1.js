@@ -409,8 +409,6 @@ let textData = {
 
 
 
-
-
     desc1: {en_us: '',
         fr: '',
         zh_tw: '',

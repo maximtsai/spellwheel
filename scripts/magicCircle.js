@@ -519,27 +519,6 @@ const ENABLE_KEYBOARD = true;
         // this.spellDescText.setOrigin(0, 0);
         // this.spellDescText.setDepth(120);
 
-        // this.spellDescriptor = new HoverDisplay(
-        // {
-        //     x: this.spellNameText.x - 4,
-        //     y: this.spellNameText.y + 6,
-        //     width: this.spellNameText.width + 18,
-        //     height: this.spellNameText.height + 7,
-        //     text: "",
-        //     displayX: gameConsts.width,
-        //     displayY: this.spellNameText.y + 3,
-        //     displayOrigin: {
-        //         x: 1,
-        //         y: 0.5
-        //     },
-        //     onHover: () => {
-        //         this.spellNameText.alpha = 1;
-        //     },
-        //     onHoverOut: () => {
-        //         this.spellNameText.alpha = 0.4;
-        //         messageBus.publish('hoveredSpell', this.spellNameText.text);
-        //     }
-        // });
         this.spellDescriptor = new HoverDisplay({
             x: 0,
             y: gameConsts.height - 305,
@@ -2386,7 +2365,6 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('time_unload_desc'));
                          break;
                      default:
-                         this.spellNameText.setText('');
                          this.spellDescriptor.setText('');
                          break;
                  }
@@ -2418,7 +2396,6 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('mind_unload_desc'));
                          break;
                      default:
-                         this.spellNameText.setText('');
                          this.spellDescriptor.setText('');
                          break;
                  }
@@ -2442,11 +2419,9 @@ const ENABLE_KEYBOARD = true;
                          this.spellDescriptor.setText(getLangText('void_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         // this.updateTextIfDifferent(this.spellNameText, 'UN-MAKE')
                          this.updateTextIfDifferent(this.spellDescriptor, getLangText('void_unload_desc'))
                          break;
                      default:
-                         this.updateTextIfDifferent(this.spellNameText, '')
                          this.spellDescriptor.setText('');
                          break;
                  }
@@ -2461,7 +2436,6 @@ const ENABLE_KEYBOARD = true;
          } else {
              this.spellNameText.visible = true;
          }
-         // this.updateTextIfDifferent(this.spellNameText, displayText)
          this.spellActionText.setText(embodimentText)
 
         if (this.castDisabled || this.manualDisabled) {

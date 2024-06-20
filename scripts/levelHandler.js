@@ -8,22 +8,76 @@ function beginPreLevel(lvl) {
     let text1;
     let text2;
     let text3;
+    let text4;
+    let text5;
+    let text6;
+    let text7;
+    let text8;
     let introOverlay;
-    switchLevelBackground(lvl);
+    if (lvl !== 0) {
+        switchLevelBackground(lvl);
+    }
     switch(lvl) {
         case 0:
             // lesser dummy
-            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'newgamepaper.png').setDepth(99999).setAlpha(0);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 200, getLangText('pre_fight_0a'), {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'});
-            text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 235, getLangText('pre_fight_0b'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
+            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'newgame_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+            text1 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight - 275, getLangText('pre_fight_0a'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'center'});
+            text1.setDepth(99999).setOrigin(0.5, 0).setAlpha(0);
+            text2 = PhaserScene.add.text(gameConsts.halfWidth - 245, gameConsts.halfHeight - 185, getLangText('pre_fight_0b'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text3 = PhaserScene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 277, getLangText('pre_fight_0c'), {fontFamily: 'verdanabold', fontSize: 18, color: '#000000', align: 'left'});
-            text3.setDepth(99999).setAlpha(0).setOrigin(0, 0.5);
+            text3 = PhaserScene.add.text(gameConsts.halfWidth - 200, gameConsts.halfHeight - 90, getLangText('pre_fight_0c'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
+            text3.setDepth(99999).setAlpha(0).setOrigin(0, 0);
+            text4 = PhaserScene.add.text(gameConsts.halfWidth - 200, gameConsts.halfHeight - 15, getLangText('pre_fight_0d'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
+            text4.setDepth(99999).setAlpha(0).setOrigin(0, 0);
+            text5 = PhaserScene.add.text(gameConsts.halfWidth - 200, gameConsts.halfHeight - 60, getLangText('pre_fight_0e'), {fontFamily: 'verdanabold', fontSize: 16, color: '#000000', align: 'left'});
+            text5.setDepth(99999).setAlpha(0).setOrigin(0, 0);
+            text6 = PhaserScene.add.text(gameConsts.halfWidth - 200, gameConsts.halfHeight + 15, getLangText('pre_fight_0f'), {fontFamily: 'verdanabold', fontSize: 16, color: '#000000', align: 'left'});
+            text6.setDepth(99999).setAlpha(0).setOrigin(0, 0);
+            text7 = PhaserScene.add.text(gameConsts.halfWidth + 115, gameConsts.halfHeight + 30, getLangText('pre_fight_0g'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'center'});
+            text7.setDepth(99999).setAlpha(0).setOrigin(0.5, 1);
+            text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 306, getLangText('pre_fight_0h'), {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'center'});
+            text8.setDepth(99999).setAlpha(0).setOrigin(0.5, 1);
 
             createGlobalClickBlocker();
-            fadeInPreFightStuff(lvl, [text1, text2, text3], [introPaper])
-        break;
+            texts = [text1, text2, text3, text4, text5, text6, text7, text8];
+            playSound('flip2')
+            PhaserScene.tweens.add({
+                targets: texts,
+                duration: 500,
+                ease: 'Cubic.easeOut',
+                y: "-=60",
+            })
+            PhaserScene.tweens.add({
+                targets: texts,
+                alpha: 0.65,
+                duration: 650,
+            })
+
+            let introbgs = [introPaper, introOverlay];
+            PhaserScene.tweens.add({
+                targets: introPaper,
+                alpha: 1,
+                duration: 500,
+                scaleX: 1,
+                scaleY: 1.1,
+                ease: 'Cubic.easeOut',
+                y: "-=60",
+                onComplete: () => {
+                    let itemsToClear = texts.concat(introbgs);
+                    createLvlCloseButton(lvl, itemsToClear, 10, 50);
+                }
+            });
+            PhaserScene.tweens.add({
+                targets: introOverlay,
+                alpha: 1,
+                duration: 500,
+                scaleX: 1,
+                scaleY: 1,
+                ease: 'Cubic.easeOut',
+                y: "-=60",
+            });
+            break;
         case 2:
             // goblin
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
@@ -161,13 +215,13 @@ function fadeInPreFightStuff(lvl, texts, introbgs) {
     });
 }
 
-function createLvlCloseButton(lvl, items) {
+function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0) {
     let lvlCloseButton = new Button({
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.width - 180,
-            y: gameConsts.height - 125,
+            x: gameConsts.width - 180 + offsetX,
+            y: gameConsts.height - 125 + offsetY,
         },
         hover: {
             ref: "menu_btn_hover.png",

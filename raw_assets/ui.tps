@@ -308,18 +308,18 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">ui/newgamepaper.png</key>
+            <key type="filename">ui/newgame_paper.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.6</double>
+                <double>1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>158,171,315,342</rect>
+                <rect>143,165,285,330</rect>
                 <key>scale9Paddings</key>
-                <rect>158,171,315,342</rect>
+                <rect>143,165,285,330</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

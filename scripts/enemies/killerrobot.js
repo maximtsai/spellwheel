@@ -2002,6 +2002,7 @@
              onComplete: () => {
                  this.dieClickBlocker.setOnMouseUpFunc(() => {
                      this.dieClickBlocker.destroy();
+                     continueText.destroy();
                      this.addTween({
                          targets: [victoryText, banner],
                          alpha: 0,
@@ -2011,7 +2012,6 @@
                              banner.destroy();
                              globalObjects.postFightScreen.createWinScreenBoom(this.level);
                          }
-                        continueText.destroy();
                      });
                      rune.destroy();
                  })

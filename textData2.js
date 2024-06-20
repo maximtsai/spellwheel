@@ -1,6 +1,6 @@
 
 let textData2 = {
-    pre_fight_0a: {en_us: "I've finally arrived.",
+    pre_fight_0a: {en_us: "If I am to rescue my beloved,\nI must familiarize myself with the\nCONTROLS:",
         fr: '',
         zh_tw: '我終於到了。',
         zh_cn: '我终于到了。',
@@ -8,7 +8,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    pre_fight_0b: {en_us: "At the gateway to the forbidden lands.",
+    pre_fight_0b: {en_us: "Click and drag the wheels\n - or -\nArrow keys + Spacebar",
         fr: '',
         zh_tw: '在通往禁地的入口處。',
         zh_cn: '在通往禁地的门口。',
@@ -16,7 +16,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    pre_fight_0c: {en_us: "I know I will find you here, my beloved.",
+    pre_fight_0c: {en_us: "Strike Rune",
         fr: '',
         zh_tw: '我知道我會在這裡找到你，我親愛的。',
         zh_cn: '我知道我会在这里找到你，我亲爱的。',
@@ -24,7 +24,46 @@ let textData2 = {
         es: '',
         jp: ''
     },
-
+    pre_fight_0d: {en_us: "Matter Rune",
+        fr: '',
+        zh_tw: '我知道我會在這裡找到你，我親愛的。',
+        zh_cn: '我知道我会在这里找到你，我亲爱的。',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    pre_fight_0e: {en_us: "Casts attack spells",
+        fr: '',
+        zh_tw: '我知道我會在這裡找到你，我親愛的。',
+        zh_cn: '我知道我会在这里找到你，我亲爱的。',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    pre_fight_0f: {en_us: "Uses solid rock and\nstone for your spells",
+        fr: '',
+        zh_tw: '我知道我會在這裡找到你，我親愛的。',
+        zh_cn: '我知道我会在这里找到你，我亲爱的。',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    pre_fight_0g: {en_us: "Line up two runes\nto cast a spell",
+        fr: '',
+        zh_tw: '我知道我會在這裡找到你，我親愛的。',
+        zh_cn: '我知道我会在这里找到你，我亲爱的。',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    pre_fight_0h: {en_us: "Click\nbutton\nto cast",
+        fr: '',
+        zh_tw: '我知道我會在這裡找到你，我親愛的。',
+        zh_cn: '我知道我会在这里找到你，我亲爱的。',
+        ru: '',
+        es: '',
+        jp: ''
+    },
     pre_fight_1a: {en_us: "I've finally arrived.",
         fr: '',
         zh_tw: '我終於到了。',

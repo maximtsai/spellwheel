@@ -339,7 +339,7 @@
         globalObjects.magicCircle.disableMovement();
         swirlInReaperFog();
         setTimeout(() => {
-            playReaperDialog(['YOUR TIME IS UP'], () => {
+            playReaperDialog(["TIME'S UP"], () => {
                  PhaserScene.tweens.add({
                      targets: this.timeFallObjs,
                      duration: 1000,

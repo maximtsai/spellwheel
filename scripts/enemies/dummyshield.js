@@ -46,6 +46,31 @@
          });
     }
 
+    showGoal() {
+        this.backingBox = this.addImage(0, 0, 'blackPixel').setAlpha(0);
+        this.text = PhaserScene.add.text(8, 8, getLangText('level2_train_tut_a'), {fontFamily: 'garamondmax', fontSize: 24, color: '#FFFFFF', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100);
+        this.backingBox.setScale(this.text.width * 0.5 + 8, this.text.height * 0.5 + 8).setOrigin(0, 0);
+        this.addToDestructibles(this.text);
+        this.highlightGoal();
+    }
+
+    highlightGoal() {
+        this.text.setScale(0.98);
+        this.addTween({
+             targets: [this.text],
+             alpha: 1,
+             scaleX: 1,
+             scaleY: 1,
+             ease: 'Back.easeOut',
+             duration: 600,
+         });
+         this.addTween({
+             targets: [this.backingBox],
+             alpha: 0.8,
+             duration: 600,
+         });
+    }
+
     createPicketSign() {
         this.picketVisual = this.addSprite(this.x - 170, this.y + 15, 'dummyenemy', 'picketsign.png').setScale(1, 0).setOrigin(0.5, 1).setDepth(11);
         playSound('balloon', 0.6)
@@ -55,6 +80,9 @@
             ease: "Back.easeOut",
             duration: 500,
             onComplete: () => {
+                this.addTimeout(() => {
+                    this.showGoal()
+                }, 600)
                 this.picketButton = new Button({
                     normal: {
                         ref: "picketsign.png",
@@ -110,6 +138,11 @@
             completeDelay: 400,
             onComplete: () => {
                 this.picketVisual.destroy();
+                this.addTween({
+                     targets: [this.text, this.backingBox],
+                     alpha: 0,
+                     duration: 600,
+                 });
                 this.startFight();
             }
         });
@@ -238,10 +271,10 @@
                     },
                  },
                  {
-                     name: "}2x4",
+                     name: "}2x6",
                      chargeAmt: 500,
                      chargeMult: 8,
-                     finishDelay: 800,
+                     finishDelay: 1000,
                      transitionFast: true,
                      damage: -1,
                     startFunction: () => {
@@ -260,7 +293,7 @@
                  {
                      name: "}12x2",
                      chargeAmt: 700,
-                     finishDelay: 1800,
+                     finishDelay: 1600,
                      transitionFast: true,
                      chargeMult: 8,
                      damage: -1,
@@ -317,7 +350,7 @@
                  {
                      name: "}30",
                      chargeAmt: 1000,
-                     finishDelay: 4000,
+                     finishDelay: 1200,
                      transitionFast: true,
                      chargeMult: 8,
                      damage: -1,
@@ -342,7 +375,7 @@
                  {
                      name: "}30",
                      chargeAmt: 1000,
-                     finishDelay: 4000,
+                     finishDelay: 1200,
                      transitionFast: true,
                      chargeMult: 8,
                      damage: -1,
@@ -367,7 +400,6 @@
                  {
                      name: "}6",
                      chargeAmt: 500,
-                     finishDelay: 800,
                      transitionFast: true,
                      chargeMult: 8,
                      damage: -1,

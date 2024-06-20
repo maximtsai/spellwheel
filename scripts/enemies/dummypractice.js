@@ -495,6 +495,7 @@
                     });
 
                     hideGlobalClickBlocker();
+                    continueText.destroy();
                     PhaserScene.tweens.add({
                          targets: [victoryText, banner],
                          alpha: 0,
@@ -502,7 +503,6 @@
                          onComplete: () => {
                             victoryText.destroy();
                             banner.destroy();
-                            continueText.destroy();
                             globalObjects.magicCircle.enableMovement();
                             globalObjects.postFightScreen.createWinScreenMin(-this.level);
                         }

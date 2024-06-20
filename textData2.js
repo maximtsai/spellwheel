@@ -41,7 +41,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    level0_tut_a: {en_us: "Spin the wheels to\n swap in fresh runes ",
+    level0_tut_a: {en_us: "Spin the wheels to\n swap in fresh Runes ",
         fr: '',
         zh_tw: '旋轉輪子交換新的魔法符文',
         zh_cn: '旋转轮子来换取\n新的魔法符文',
@@ -89,6 +89,47 @@ let textData2 = {
         es: '',
         jp: ''
     },
+    level1_train_diag_a: {en_us: "This new Rune I acquired\ncould be useful.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    level1_train_diag_b: {en_us: "I should be more strategic\nwith my spells.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    level1_train_diag_c: {en_us: "I should carefully consider\nwhat order I use my spells in.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    level1_train_tut_a: {en_us: "Goal: Defeat the\ndummy in just\n4 spells.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    level2_train_tut_a: {en_us: "Goal: Survive the\ndummy's attacks.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+
 
     level1_diag: {
 

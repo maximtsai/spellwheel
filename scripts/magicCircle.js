@@ -1541,6 +1541,7 @@ const ENABLE_KEYBOARD = true;
             this.disableSpellDescDisplay = true;
             this.recharging = true;
             this.lastDragTime = -1000;
+            messageBus.publish("resetCircle")
             this.scene.tweens.add({
                 targets: this.innerCircle,
                 delay: 0,
@@ -2326,11 +2327,9 @@ const ENABLE_KEYBOARD = true;
                          break;
                      case RUNE_UNLOAD:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         //this.spellNameText.setText('EARTH FORCE');
                          this.spellDescriptor.setText(getLangText('matter_unload_desc'));
                          break;
                      default:
-                         //this.spellNameText.setText('');
                          this.spellDescriptor.setText('');
                          break;
                  }

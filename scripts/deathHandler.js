@@ -55,7 +55,7 @@ function clearDeathFog() {
 
 function getFogSlice() {
     if (!globalObjects.fogSlice) {
-        globalObjects.fogSlice = PhaserScene.add.image(gameConsts.halfWidth + 12, -53, 'backgrounds', 'fog_slice.png').setDepth(-2).setOrigin(0.68, 0.29);
+        globalObjects.fogSlice = PhaserScene.add.image(gameConsts.halfWidth + 8, -60, 'backgrounds', 'fog_slice.png').setDepth(-2).setOrigin(0.68, 0.29);
     }
     globalObjects.fogSlice.setAlpha(0.2).setScale(1.01).setRotation(-0.8);
     return globalObjects.fogSlice;

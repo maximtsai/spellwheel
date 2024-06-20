@@ -137,6 +137,7 @@ class PostFightScreen {
 
                 }
             });
+            this.continueButton.addText('SKIP TRAINING    ', {fontFamily: 'garamondmax', fontSize: 21, color: '#000000', align: 'center'});
             this.continueButton.setDepth(100000);
         }
         if (!this.trainingButton) {
@@ -260,6 +261,8 @@ class PostFightScreen {
         }
         setTimeout(() => {
             if (this.trainingButton.getState() !== DISABLE || this.currLevel > 3) {
+                this.continueButton.setText('SKIP TRAINING    ');
+
                 this.continueButton.setState(NORMAL);
             }
         }, 3000);
@@ -449,9 +452,10 @@ class PostFightScreen {
         this.createWinScreenUI(level);
         this.continueButton.setOnMouseUpFunc(() => {
             if (this.trainingButton.getState() !== DISABLE) {
-                messageBus.publish("showConfirmPopup", () => {
-                    this.moveToNextLevel(level);
-                })
+                this.moveToNextLevel(level);
+                // messageBus.publish("showConfirmPopup", () => {
+                //     this.moveToNextLevel(level);
+                // })
             } else {
                 this.moveToNextLevel(level);
             }
@@ -542,6 +546,7 @@ class PostFightScreen {
         this.codeText.setText(' ');
         this.locketDialog.setText(this.getStoryDialog(level));
 
+        this.continueButton.setText('NEXT LEVEL    ');
         this.continueButton.setState(NORMAL);
         this.trainingButton.setState(DISABLE);
 
@@ -707,26 +712,25 @@ class PostFightScreen {
             case 0:
                 return "And so my journey begins.\nIt won't be long before\nI see you again, Rosemary."
             case 1:
-                return "Here I stand in front\nof the gates to the\nfabled forbidden lands\nof the departed.\n\n"+
-                "Right away I can feel this place\nresisting my entry, trying to\nobstruct my every step.\n\n"+
-                "But I know you are here dear Rosemary,\nand no creature or construct will stop me\nfrom finding you."
+                return "Here I stand in\nfront of the gates to\nthe forbidden land\nof the departed.\n\n"+
+                "Right away I can feel this place resisting\nme, as though it were rejecting my\nvery presence here.\n\n"+
+                "But I know I will find you here dear Rosemary,\nand no creature or construct will stop me\nfrom reaching you."
             case 2:
                 return "The fabled Reaper\nhas noticed me,\nthough they have\ndone nothing but wag their\nbony finger at me like a parent\nscolding a child.\n\n"+
-                "I have a feeling this won't be the last\ntime we see each other.\n\n"+
-                "In the mean-time, I will claim this\nshield as my prize.";
+                "I doubt this will be the last time\nwe see each other.\n\n"+
+                "For now, I will claim this shield\nas my prize.";
             case 3:
                 return "The creatures of this\nland are clearly hostile.\n\n"+
                 "But it seems that I acquire the\nstrength of each one I defeat.\n\n"+
-                "Perhaps if I triumph over enough foes, I\ncan even conquer Death itself!"
+                "Perhaps if I triumph over enough foes, I\ncan even face Death itself!"
             case 4:
-                return "My power grows\nwith each new foe\ndefeated.\n\nBut I must practice with it if\nI am to use it to its full potential.\n\n";
+                return "My power grows\nwith each new foe\ndefeated.\n\nBut I must practice with\nthese powers if I am to use them to\ntheir full potential.\n\n";
             case 5:
-                return "The creatures of this\nland are sparse, but cruel\n, I've found the\ngates to the mystical\nland of the dead.\n\n"+
-                "Almost immediately I can feel\nthis place trying to resist my entry.\n\n"+
-                "But I know you are here dear Rosemary,\nand no creature or construct will stop me\nfrom finding you."
-
+                return "I wonder about\nthe nature of\nthe creatures in\nthis land.\n\n"+
+                "Are they guardians and defenders?\nOr are they just unfortunate residents who happen\nto be in my path?\n\n"+
+                "Either way, I'll fight every last one\nif it gets me closer to you."
             case 6:
-                return "DAY 6\n\ntest";
+                return "Placeholder";
 
             case 7:
                 return "DAY 7\n\ntest";

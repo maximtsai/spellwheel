@@ -24,9 +24,9 @@ function beginPreLevel(lvl) {
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'newgame_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight - 275, getLangText('pre_fight_0a'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'center'});
             text1.setDepth(99999).setOrigin(0.5, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth - 245, gameConsts.halfHeight - 185, getLangText('pre_fight_0b'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
-            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text3 = PhaserScene.add.text(gameConsts.halfWidth - 200, gameConsts.halfHeight - 90, getLangText('pre_fight_0c'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
+            //text2 = PhaserScene.add.text(gameConsts.halfWidth - 245, gameConsts.halfHeight - 185, getLangText('pre_fight_0b'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
+            //text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            text3 = PhaserScene.add.text(gameConsts.halfWidth - 200, gameConsts.halfHeight - 94, getLangText('pre_fight_0c'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
             text3.setDepth(99999).setAlpha(0).setOrigin(0, 0);
             text4 = PhaserScene.add.text(gameConsts.halfWidth - 200, gameConsts.halfHeight - 15, getLangText('pre_fight_0d'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'left'});
             text4.setDepth(99999).setAlpha(0).setOrigin(0, 0);
@@ -40,7 +40,7 @@ function beginPreLevel(lvl) {
             text8.setDepth(99999).setAlpha(0).setOrigin(0.5, 1);
 
             createGlobalClickBlocker();
-            texts = [text1, text2, text3, text4, text5, text6, text7, text8];
+            texts = [text1, text3, text4, text5, text6, text7, text8];
             playSound('flip2')
             PhaserScene.tweens.add({
                 targets: texts,

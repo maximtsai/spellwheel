@@ -107,7 +107,7 @@ let textData = {
         es: '',
         jp: ''
     },
-    void_enhance_desc: {en_us: 'Next attack\ncurses the enemy\nto take +1 damage\nfrom all sources',
+    void_enhance_desc: {en_us: 'Next attack curses\nthe enemy\nto take +1 damage\nfrom all sources',
         fr: '',
         zh_tw: '',
         zh_cn: '下一次攻击诅咒\n敌人受到来自所有\n来源的 +1 伤害',
@@ -123,7 +123,7 @@ let textData = {
         es: '',
         jp: ''
     },
-    void_reinforce_desc: {en_us: 'Heal to full,\nbut lose\n15% max hp',
+    void_reinforce_desc: {en_us: 'Heal to full,\nbut lose 15%\nmax hp',
         fr: '',
         zh_tw: '',
         zh_cn: '恢复至满血，\n但损失 15%\n总生命值',

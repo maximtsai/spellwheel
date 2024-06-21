@@ -2305,7 +2305,7 @@ const ENABLE_KEYBOARD = true;
                  embodimentText = 'ENHANCE';
                  break;
              case RUNE_PROTECT:
-                 embodimentText = 'PROTECT';
+                 embodimentText = 'SHIELD';
                  break;
              case RUNE_UNLOAD:
                  embodimentText = 'ULTIMATE';

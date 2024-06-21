@@ -911,6 +911,14 @@
          if (this.currAnim) {
              this.currAnim.stop();
          }
+         if (this.finalGlowTween) {
+             this.finalGlowTween.stop();
+             this.addTween({
+                 targets: this.glowBG,
+                 alpha: 0,
+                 duration: 2000
+             })
+         }
          this.clearThorns()
         globalObjects.textPopupManager.hideInfoText();
          this.addTween({

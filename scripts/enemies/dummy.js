@@ -49,12 +49,27 @@
             globalObjects.bannerTextManager.closeBanner();
              this.addTimeout(() => {
                  globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 135, getLangText('level1_tut_a'), 'right');
-                 this.rune1 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight - 112, 'circle', 'rune_strike_glow.png').setDepth(9999).setScale(0.88, 0.88).setAlpha(0);
-                 this.rune2 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight + 1, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.85, 0.85).setAlpha(0);
+                 this.rune2 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight - 40, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
                  this.addTween({
-                     targets: [this.rune1, this.rune2],
+                     targets: [this.rune2],
                      alpha: 1,
                      duration: 200,
+                 });
+                 this.addTween({
+                     targets: [this.rune2],
+                     scaleX: 1,
+                     scaleY: 1,
+                     ease: 'Quart.easeOut',
+                     duration: 500,
+                     onComplete: () => {
+                         this.addTween({
+                             targets: [this.rune2],
+                             scaleX: 0.85,
+                             scaleY: 0.85,
+                             ease: 'Back.easeOut',
+                             duration: 300,
+                         });
+                     }
                  });
              }, 500)
         });
@@ -63,13 +78,12 @@
 
     initTutorial3() {
         this.addTimeout(() => {
-            if (this.rune1) {
+            if (this.rune2) {
                  this.addTween({
-                     targets: [this.rune1, this.rune2],
+                     targets: [this.rune2],
                      alpha: 0,
                      duration: 300,
                      onComplete: () => {
-                        this.rune1.visible = false;
                         this.rune2.visible = false;
                      }
                  });
@@ -83,8 +97,7 @@
             this.shownTut4 = true;
             this.timeSinceLastAttacked = -50;
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 275, getLangText('level1_tut_b'), 'right');
-            if (this.rune1) {
-                this.rune1.destroy();
+            if (this.rune2) {
                 this.rune2.destroy();
             }
 
@@ -306,8 +319,7 @@
              return;
          }
         super.die();
-         if (this.rune1) {
-             this.rune1.visible = false;
+         if (this.rune2) {
              this.rune2.visible = false;
          }
          if (this.eyes) {

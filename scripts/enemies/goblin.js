@@ -161,7 +161,7 @@
              [
                  // 3
                  {
-                     name: "MY SHIELD! :(",
+                     name: "MY SHIELD!",
                      isPassive: true,
                      chargeAmt: 350,
                      chargeMult: 2,

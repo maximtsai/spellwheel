@@ -114,7 +114,7 @@ class Enemy {
         this.healthBarMax.setOrigin(0.5, 0.5);
         this.healthBarMax.setDepth(10);
 
-        this.healthBarRed = this.scene.add.sprite(x - this.healthBarLengthMax - 2, this.healthBarMax.y, 'pixels', 'red_pixel.png');
+        this.healthBarRed = this.scene.add.sprite(x - this.healthBarLengthMax - 3, this.healthBarMax.y, 'pixels', 'red_pixel.png');
         this.healthBarRed.setScale(this.healthBarLengthMax + 3, 12);
         this.healthBarRed.setOrigin(0, 0.5);
         this.healthBarRed.alpha = 0;
@@ -181,7 +181,7 @@ class Enemy {
         this.scene.tweens.add({
             targets: [this.healthBarRed],
             duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
-            x: this.x - this.healthBarLengthMax - 2,
+            x: this.x - this.healthBarLengthMax - 3,
             scaleX: this.healthBarLengthMax + 3,
             ease: 'Quint.easeInOut',
         });

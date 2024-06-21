@@ -79,6 +79,7 @@
     }
 
     startFight() {
+        this.fightStarted = true;
         this.setAwake();
         playSound('inflate', 0.6).detune = 500;
         this.currDummyAnim = this.addTween({
@@ -152,7 +153,7 @@
             scaleY: this.sprite.startScale * 0.85,
             rotation: (numTimes % 2 == 1) ? -0.25 : 0.25,
             ease: "Quart.easeOut",
-            duration: 700,
+            duration: 650,
             onComplete: () => {
                 let weapon = this.addImage(this.x, this.y - 105, 'dummyenemy', name).setDepth(0).setScale(0.2);
                 this.addTween({
@@ -169,7 +170,7 @@
                     duration: 550,
                     onComplete: () => {
                         weapon.setDepth(20);
-                        weapon.setScale(1.2);
+                        weapon.setScale(1.14);
                         this.addTween({
                             targets: weapon,
                             scaleX: 1,
@@ -213,7 +214,7 @@
                     scaleY: this.sprite.startScale * 1.1,
                     rotation: numTimes % 2 == 1 ? 0.05 : -0.05,
                     ease: "Quart.easeIn",
-                    duration: 500,
+                    duration: 450,
                     onComplete: () => {
                         if (numTimes <= 1) {
                             this.currDummyAnim = this.addTween({
@@ -230,7 +231,7 @@
                 if (numTimes > 1) {
                     this.addTimeout(() => {
                         this.throwWeapon(name, damage, numTimes - 1);
-                    }, 500)
+                    }, 450)
                 }
 
             }
@@ -302,8 +303,8 @@
             targets: weapon,
             x: xOut,
             y: yOut,
-            scaleX: 0.95,
-            scaleY: 0.95,
+            scaleX: 0.9,
+            scaleY: 0.9,
             ease: "Cubic.easeOut",
             duration: 500,
             onComplete: () => {

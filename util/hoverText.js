@@ -41,23 +41,23 @@ class InternalHoverTextManager {
                 if (this.lastHovered !== currentHovered && currentHovered.onHover) {
                     currentHovered.onHover();
                 }
-                let posX = hoverTextObj.displayX ? hoverTextObj.displayX : mouseX;
-                let posY = hoverTextObj.displayY ? hoverTextObj.displayY : mouseY;
-                this.hoverBacking.x = posX; this.hoverBacking.y = posY;
-                this.hoverBacking.setOrigin(hoverTextObj.originX, hoverTextObj.originY);
-                this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - hoverTextObj.originX * 2 - 2);
-                this.hoverTextDisplay.y = this.hoverBacking.y - (hoverTextObj.originX * 2 - 1);
-                this.hoverTextDisplay.setText(hoverTextObj.text);
-                this.hoverTextDisplay.visible = true;
-                this.hoverTextDisplay.setOrigin(hoverTextObj.originX, hoverTextObj.originY);
-                this.hoverBacking.visible = true;
-                this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX, (this.hoverTextDisplay.height + 10) * 0.5 * this.hoverTextDisplay.scaleY);
+                // let posX = hoverTextObj.displayX ? hoverTextObj.displayX : mouseX;
+                // let posY = hoverTextObj.displayY ? hoverTextObj.displayY : mouseY;
+                // this.hoverBacking.x = posX; this.hoverBacking.y = posY;
+                // this.hoverBacking.setOrigin(hoverTextObj.originX, hoverTextObj.originY);
+                // this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - hoverTextObj.originX * 2 - 2);
+                // this.hoverTextDisplay.y = this.hoverBacking.y - (hoverTextObj.originX * 2 - 1);
+                // this.hoverTextDisplay.setText(hoverTextObj.text);
+                // this.hoverTextDisplay.visible = true;
+                // this.hoverTextDisplay.setOrigin(hoverTextObj.originX, hoverTextObj.originY);
+                // this.hoverBacking.visible = true;
+                // this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX, (this.hoverTextDisplay.height + 10) * 0.5 * this.hoverTextDisplay.scaleY);
                 break;
             }
         }
         if (this.lastHovered && this.lastHovered !== currentHovered) {
-            this.hoverTextDisplay.visible = false;
-            this.hoverBacking.visible = false;
+            // this.hoverTextDisplay.visible = false;
+            // this.hoverBacking.visible = false;
             if (this.lastHovered.onHoverOut) {
                 this.lastHovered.onHoverOut();
             }
@@ -87,14 +87,13 @@ class InternalHoverTextManager {
 // hoverTextManager = new InternalHoverTextManager();
 class HoverDisplay {
     constructor(data) {
-        this.hoverBacking = PhaserScene.add.sprite(0, 0, 'blackPixel');
+        this.hoverBacking = PhaserScene.add.sprite(-3, 0, 'blackPixel');
         this.hoverBacking.visible = false;
         this.hoverBacking.setDepth(data.depth || 9992);
         this.hoverBacking.alpha = 0.6;
 
-
         // this.hoverTextDisplay = PhaserScene.add.bitmapText(0, 0, 'plainBold', '', isMobile ? 19 : 18);
-        this.hoverTextDisplay = PhaserScene.add.text(0, 0, 'desc.', {fontFamily: 'verdanamax', fontSize: isMobile ? 19 : 18, color: '#FFFFBB', align: 'left'});
+        this.hoverTextDisplay = PhaserScene.add.text(0, 0, 'desc.', {fontFamily: 'verdanamax', fontSize: 19, color: '#FFFFBB', align: 'left'});
         this.hoverTextDisplay.visible = false;
         this.hoverTextDisplay.setDepth(data.depth || 9992);
 
@@ -116,7 +115,7 @@ class HoverDisplay {
     }
 
     setPosition(x, y) {
-        this.hoverBacking.x = x; this.hoverBacking.y = y;
+        this.hoverBacking.x = x - 3; this.hoverBacking.y = y;
         this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - this.hoverBacking.originX * 2 - 2);
         this.hoverTextDisplay.y = this.hoverBacking.y - 14 * (this.hoverBacking.originY * 2 - 1);
     }
@@ -132,14 +131,14 @@ class HoverDisplay {
         }
         this.hoverTextDisplay.setText(text);
         if (this.hoverTextDisplay.width > 180) {
-            this.hoverTextDisplay.setScale(1);
+            this.hoverTextDisplay.setFontSize(17);
         } else {
-            this.hoverTextDisplay.setScale(1);
+            this.hoverTextDisplay.setFontSize(19);
         }
-        this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - this.hoverBacking.originX * 2 - (this.hoverBacking.originX - 0.5) * 4);
+        this.hoverTextDisplay.x = this.hoverBacking.x + 3 * (1 - this.hoverBacking.originX * 2 - (this.hoverBacking.originX - 0.5) * 4);
         this.hoverTextDisplay.y = this.hoverBacking.y - this.hoverTextDisplay.height * 0.5 * (this.hoverBacking.originY * 2 - 1) - 3;
 
-        this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX, (this.hoverTextDisplay.height + 6) * 0.5 * this.hoverTextDisplay.scaleY);
+        this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX + 3, (this.hoverTextDisplay.height + 6) * 0.5 * this.hoverTextDisplay.scaleY);
         if (text.length > 0) {
             this.setVisible(true);
         } else {

@@ -691,7 +691,7 @@
                 {
                      name: "UNDULATING... ",
                     isPassive: true,
-                     chargeAmt: 400,
+                     chargeAmt: 450,
                      damage: -1,
                      attackStartFunction: () => {
                          this.voidTentacleFront.visible = true;
@@ -729,11 +729,11 @@
                      }
                  },
                  {
-                     name: "|12 ",
+                     name: "|14 ",
                      announceName: "ASSAIL",
                      chargeAmt: 500,
                      chargeMult: 1.7,
-                     damage: 12,
+                     damage: 14,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
                      attackFinishFunction: () => {
@@ -768,11 +768,11 @@
                      }
                  },
                  {
-                     name: "|15 ",
+                     name: "|16 ",
                      announceName: "ASSAIL",
                      chargeAmt: 500,
                      chargeMult: 1.7,
-                     damage: 15,
+                     damage: 16,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
                      attackFinishFunction: () => {
@@ -891,7 +891,7 @@
          this.setDefaultSprite('void_knight_3_empty.png');
          this.sprite.setDepth(2);
          playSound('meat_click_right');
-         this.setMaxHealth(gameVars.isHardMode ? 100 : 80);
+         this.setMaxHealth(gameVars.isHardMode ? 110 : 85);
          this.heal(this.healthMax);
          this.setAwake();
          this.sigilEffect.setFrame('void_knight_sigil2.png').setScale(this.sprite.startScale);

@@ -1,6 +1,6 @@
 
 let textData2 = {
-    pre_fight_0a: {en_us: "If I am to rescue my beloved,\nI must familiarize myself with the\nCONTROLS:",
+    pre_fight_0z: {en_us: "If I am to rescue my beloved,\nI must familiarize myself with the",
         fr: '',
         zh_tw: '我終於到了。',
         zh_cn: '我终于到了。',
@@ -8,7 +8,15 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    pre_fight_0b: {en_us: "Click and drag the wheels\n - or -\nArrow keys + Spacebar",
+    pre_fight_0a: {en_us: "CONTROLS:",
+        fr: '',
+        zh_tw: '我終於到了。',
+        zh_cn: '我终于到了。',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    pre_fight_0b: {en_us: "Click and drag\nthe wheels",
         fr: '',
         zh_tw: '在通往禁地的入口處。',
         zh_cn: '在通往禁地的门口。',
@@ -58,13 +66,13 @@ let textData2 = {
     },
     pre_fight_0h: {en_us: "Click\nbutton\nto cast",
         fr: '',
-        zh_tw: '我知道我會在這裡找到你，我親愛的。',
-        zh_cn: '我知道我会在这里找到你，我亲爱的。',
+        zh_tw: '',
+        zh_cn: '',
         ru: '',
         es: '',
         jp: ''
     },
-    pre_fight_1a: {en_us: "I've finally arrived.",
+    pre_fight_1a: {en_us: "\"This is my shield, mine!\n Is family treasure from\n father's brother's aunt's\n grandpa's cousin's\n friend's neighbor!!\"",
         fr: '',
         zh_tw: '我終於到了。',
         zh_cn: '我终于到了。',
@@ -72,7 +80,24 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    pre_fight_1b: {en_us: "At the gateway to the forbidden lands.",
+    pre_fight_1b: {en_us: "I doubt this dirty creature\ncould legitimately own\nsomething so valuable, so\nI'll take the prized shield\nfor myself.",
+        fr: '',
+        zh_tw: '在通往禁地的入口處。',
+        zh_cn: '在通往禁地的门口。',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+
+    pre_fight_za: {en_us: "I've finally arrived.",
+        fr: '',
+        zh_tw: '我終於到了。',
+        zh_cn: '我终于到了。',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    pre_fight_zb: {en_us: "I doubt the goblin's claim\nof ownership",
         fr: '',
         zh_tw: '在通往禁地的入口處。',
         zh_cn: '在通往禁地的门口。',
@@ -113,7 +138,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    level1_diag_a: {en_us: "Another one?",
+    level1_diag_a: {en_us: "Another obstacle?",
         fr: '',
         zh_tw: '怎麼出現另一個？',
         zh_cn: '怎么出现另一个？',
@@ -186,6 +211,46 @@ let textData2 = {
         jp: ''
     },
 
+    level4_train_tut_a: {en_us: "Goal: Defeat\nthe dummy",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    level4_train_tut_b: {en_us: "Heal your last\ninjury with\n          +",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    level5_train_tut_a: {en_us: "Goal: Defeat\nthe dummy",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    level5_train_tut_b: {en_us: "Fully heal\nyourself with\n          +",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    level5_train_tut_c: {en_us: "Void shields can\nfully block single\npowerful attacks\n             +",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
 
     level1_diag: {
 

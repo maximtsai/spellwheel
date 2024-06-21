@@ -8,6 +8,7 @@ class PostFightScreen {
         this.locketSprite = null;
         this.locketDialog = null;
         this.locketDialogIndex = 0;
+        this.isActive = false;
     }
 
     initAssets(isWin = true) {
@@ -256,13 +257,12 @@ class PostFightScreen {
             this.locketSprite.visible = false;
         }
         this.continueButton.setState(DISABLE);
-        if (this.currLevel <= 3) {
+        if (this.currLevel <= 6) {
             this.trainingButton.setState(NORMAL);
         }
         setTimeout(() => {
-            if (this.trainingButton.getState() !== DISABLE || this.currLevel > 3) {
+            if (this.trainingButton.getState() !== DISABLE) {
                 this.continueButton.setText('SKIP TRAINING    ');
-
                 this.continueButton.setState(NORMAL);
             }
         }, 3000);

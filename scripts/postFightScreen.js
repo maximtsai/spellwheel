@@ -11,6 +11,21 @@ class PostFightScreen {
         this.isActive = false;
     }
 
+    startGloom() {
+        if (!this.gloom) {
+            this.gloom = this.scene.add.image(gameConsts.width + 600, gameConsts.halfHeight - 155, 'blurry', 'gloom.webp').setScale(5.4, 6).setDepth(100002).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY)
+        }
+        this.gloom.setPosition(gameConsts.width + 600, gameConsts.halfHeight - 155)
+        if (this.gloom.currAnim) {
+            this.gloom.currAnim.stop();
+        }
+        this.gloom.currAnim = PhaserScene.tweens.add({
+            targets: [this.gloom],
+            alpha: 0.2,
+            duration: 1000,
+        })
+    }
+
     initAssets(isWin = true) {
         this.locketIsOpen = false;
         this.locketIsClosable = false;
@@ -30,7 +45,7 @@ class PostFightScreen {
             this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 80, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
         }
         if (!this.locketSprite) {
-            this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 120, 'ui', 'locket1.png').setScale(0.75).setDepth(100002).setAlpha(0).setOrigin(0.5, 0.8);
+            this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 120, 'ui', 'locket1.png').setScale(0.75).setDepth(100003).setAlpha(0).setOrigin(0.5, 0.5);
         }
         if (!this.locketDialog) {
             this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 220, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
@@ -95,7 +110,7 @@ class PostFightScreen {
             this.showRuneDescBtn.setState(DISABLE)
         }
         if (!this.flashObj) {
-            this.flashObj = this.scene.add.image(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'blurry', 'flash.webp').setScale(0).setRotation(-0.2).setDepth(100002).setAlpha(0.5);
+            this.flashObj = this.scene.add.image(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'blurry', 'flash.webp').setScale(0).setDepth(100002).setAlpha(0.5);
         }
 
         if (!this.continueButton) {
@@ -187,6 +202,10 @@ class PostFightScreen {
             this.trainingRuneIcon =  this.scene.add.image(this.trainingButton.getXPos() - 68, this.trainingButton.getYPos(), 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
         }
 
+        if (!this.gloom) {
+            this.gloom = this.scene.add.image(this.locketSprite.x, this.locketSprite.y - 50, 'blurry', 'gloom.webp').setScale(5.4, 6).setDepth(100002).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY)
+        }
+
         if (!this.locketButton) {
             this.locketButton = new Button({
                 normal: {
@@ -222,7 +241,7 @@ class PostFightScreen {
                         }
 
 
-                        this.locketSprite.setFrame('locket1.png').setOrigin(0.5, 0.8);
+                        this.locketSprite.setFrame('locket4.png').setOrigin(0.5, 0.8);
                         this.locketSprite.setScale(this.locketSprite.scaleX + 0.02);
                         PhaserScene.tweens.add({
                             targets: [this.locketSprite],
@@ -251,8 +270,17 @@ class PostFightScreen {
             this.locketSprite.x = gameConsts.width + 300;
             this.locketSprite.y = gameConsts.halfHeight - 105;
             this.locketSprite.setScale(0.75);
-            this.locketSprite.setRotation(-0.6);
             this.locketSprite.setFrame('locket1.png').setOrigin(0.5, 0.8);
+            this.gloom.setPosition(this.locketSprite.x, this.locketSprite.y - 50);
+            if (this.gloom.currAnim) {
+                this.gloom.currAnim.stop();
+            }
+            this.gloom.currAnim = PhaserScene.tweens.add({
+                targets: [this.gloom],
+                alpha: 0.25,
+                ease: 'Cubic.easeOut',
+                duration: 400,
+            })
         } else {
             this.locketSprite.visible = false;
         }
@@ -320,9 +348,8 @@ class PostFightScreen {
                         onStart: () => {
                             this.locketButton.setState(NORMAL);
                             PhaserScene.tweens.add({
-                                targets: this.locketSprite,
-                                rotation: 0.3,
-                                x: gameConsts.width * 0.8,
+                                targets: [this.locketSprite, this.gloom],
+                                x: gameConsts.width * 0.76,
                                 ease: 'Cubic.easeOut',
                                 duration: 1000,
                                 onComplete: () => {
@@ -369,29 +396,6 @@ class PostFightScreen {
         });
     }
 
-    clearPostFightScreen(clearFog = true) {
-        this.canShowRuneBtn = false;
-        if (!this.isCreated) {
-            return;
-        }
-        PhaserScene.tweens.add({
-            targets: [this.bgShade, this.backing, this.titleText, this.healthLeftText, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon, this.newRuneAnnounce, this.locketSprite, this.codeText, this.locketDialog],
-            alpha: 0,
-            ease: 'Quad.easeOut',
-            duration: 600,
-        });
-        globalObjects.bannerTextManager.setOnFinishFunc(() => {});
-        globalObjects.bannerTextManager.closeBanner();
-        this.continueButton.setState(DISABLE);
-        this.trainingButton.setState(DISABLE);
-        this.locketButton.setState(DISABLE);
-        this.showRuneDescBtn.setState(DISABLE);
-        globalObjects.magicCircle.enableMovement();
-        if (clearFog) {
-            clearDeathFog();
-        }
-    }
-
     closeLocket() {
         this.locketIsClosable = true;
         PhaserScene.tweens.add({
@@ -412,6 +416,15 @@ class PostFightScreen {
             this.locketIsOpen = true;
             this.locketSprite.setFrame('locket3.png').setOrigin(0.5, 0.8);
             this.locketSprite.setScale(this.locketSprite.scaleX + 0.02);
+            if (this.gloom.currAnim) {
+                this.gloom.currAnim.stop();
+            }
+            this.gloom.currAnim = PhaserScene.tweens.add({
+                targets: [this.gloom],
+                alpha: 0,
+                ease: 'Cubic.easeOut',
+                duration: 301,
+            })
             PhaserScene.tweens.add({
                 targets: [this.locketSprite],
                 scaleX: 0.75,
@@ -439,7 +452,15 @@ class PostFightScreen {
         }
     }
 
+    clearWindSound() {
+        if (this.windSfx) {
+            fadeAwaySound(this.windSfx, 1500);
+        }
+    }
+
     createWinScreen(level = 0) {
+        this.windSfx = playSound('wind', 0.1, true);
+        fadeInSound(this.windSfx);
         this.canShowRuneBtn = true;
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
@@ -520,6 +541,7 @@ class PostFightScreen {
         this.newRuneDesc.alpha = 0;
         this.newRuneDesc.setText(this.getNewRuneDesc(level))
         this.newRuneIcon.visible = true;
+        this.gloom.alpha = 0;
 
         this.newRuneIcon.setFrame(this.getNewRuneFrame(level));
         this.trainingRuneIcon.visible = true;
@@ -747,6 +769,40 @@ class PostFightScreen {
                 return "..."
         }
     }
+
+    clearPostFightScreen(clearFog = true) {
+        this.canShowRuneBtn = false;
+        if (!this.isCreated) {
+            return;
+        }
+        this.clearWindSound();
+        if (this.gloom.currAnim) {
+            this.gloom.currAnim.stop();
+        }
+        this.gloom.currAnim = PhaserScene.tweens.add({
+            targets: [this.gloom],
+            alpha: 0,
+            ease: 'Cubic.easeOut',
+            duration: 500,
+        })
+        PhaserScene.tweens.add({
+            targets: [this.bgShade, this.backing, this.titleText, this.healthLeftText, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon, this.newRuneAnnounce, this.locketSprite, this.codeText, this.locketDialog],
+            alpha: 0,
+            ease: 'Quad.easeOut',
+            duration: 600,
+        });
+        globalObjects.bannerTextManager.setOnFinishFunc(() => {});
+        globalObjects.bannerTextManager.closeBanner();
+        this.continueButton.setState(DISABLE);
+        this.trainingButton.setState(DISABLE);
+        this.locketButton.setState(DISABLE);
+        this.showRuneDescBtn.setState(DISABLE);
+        globalObjects.magicCircle.enableMovement();
+        if (clearFog) {
+            clearDeathFog();
+        }
+    }
+
 
     getLevelDialog(level) {
         switch(level) {

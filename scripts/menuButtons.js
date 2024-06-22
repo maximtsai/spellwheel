@@ -119,6 +119,7 @@ function clearMenuButtons() {
 
 function gotoMainMenu() {
     setupMainMenu();
+    globalObjects.postFightScreen.clearWindSound();
     globalObjects.magicCircle.setAuraAlpha(0);
     globalObjects.encyclopedia.showButton();
     globalObjects.options.showButton();

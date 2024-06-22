@@ -203,7 +203,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">ui/dummy_paper.png</key>
             <key type="filename">ui/gobbo_paper.png</key>
             <key type="filename">ui/knight_paper.png</key>
             <key type="filename">ui/magician_paper.png</key>
@@ -265,9 +264,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>138,125,275,250</rect>
+                <rect>182,141,365,282</rect>
                 <key>scale9Paddings</key>
-                <rect>138,125,275,250</rect>
+                <rect>182,141,365,282</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

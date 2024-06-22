@@ -79,7 +79,7 @@
                      block: gameVars.isHardMode ? 50 : 40,
                      isPassive: true,
                      customCall: " ",
-                     chargeAmt: 350,
+                     chargeAmt: 300,
                     transitionFast: true,
                      startFunction: () => {
                         this.attackScale = 1;

@@ -417,7 +417,7 @@ function playReaperAnim(enemy, customFinFunc) {
                                                         }
                                                     });
                                                 });
-
+                                                globalObjects.postFightScreen.startGloom();
                                                 PhaserScene.tweens.add({
                                                     targets: [scythe],
                                                     scaleX: 0.5,

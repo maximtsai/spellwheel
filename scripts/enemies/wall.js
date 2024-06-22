@@ -12,7 +12,7 @@
      }
 
      initStatsCustom() {
-         this.health = 800;
+         this.health = 8;
          this.pullbackScale = 0.9999;
          this.attackScale = 1;
          this.isAsleep = true;
@@ -233,6 +233,9 @@
                      rotation: 0,
                      duration: 1000,
                      ease: 'Quad.easeIn',
+                     onComplete: () => {
+                         this.bird.visible = false;
+                     }
                  });
              }
          });
@@ -748,6 +751,30 @@
 
              }
          });
+
+         if (this.bird && this.bird.visible) {
+             this.addTween({
+                 targets: [this.bird],
+                 y: "+=330",
+                 duration: 1400,
+                 ease: 'Quad.easeIn',
+             });
+
+             this.addTween({
+                 targets: [this.bird],
+                 rotation: "+=7",
+                 x: "+=10",
+                 duration: 1400,
+                 onComplete: () => {
+                     this.addTween({
+                         delay: 500,
+                         targets: [this.bird],
+                         duration: 500,
+                         alpha: 0,
+                     });
+                 }
+             });
+         }
 
          this.addTimeout(() => {
              this.showFlash(this.x, this.y + 100);

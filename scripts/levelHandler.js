@@ -147,15 +147,16 @@ function beginPreLevel(lvl) {
 
         case 7:
             // superdummy
-            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
-            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'dummy_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 75, 'This old dummy has come to stand\nin my way again.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
-            text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +150, "Should be a quick and simple fight.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
-            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-
-            createGlobalClickBlocker();
-            fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
+            // introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+            // introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'dummy_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+            // text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 75, 'This old dummy has come to stand\nin my way again.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            // text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            // text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +150, "Should be a quick and simple fight.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            // text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            //
+            // createGlobalClickBlocker();
+            // fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
+            beginLevel(lvl);
             break;
 
         case 8:
@@ -341,6 +342,9 @@ function beginLevel(lvl) {
     messageBus.publish('manualResetEmbodiments', undefined, true); // with long delay
 
     globalObjects.magicCircle.buildRunes();
+    if (lvl == 0) {
+        switchLevelBackground(lvl)
+    }
 
     playSound('whoosh');
     createEnemyAfterDelay(lvl);

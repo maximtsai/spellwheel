@@ -1,15 +1,37 @@
 function createAnimations(scene) {
-    // scene.anims.create({
-    //     key: 'snooze',
-    //     frames: [
-    //         { key: 'cat1' },
-    //         { key: 'cat2' },
-    //         { key: 'cat3' },
-    //         { key: 'cat4', duration: 50 }
-    //     ],
-    //     frameRate: 8,
-    //     repeat: -1
-    // });
+    scene.anims.create({
+        key: 'dummyblink',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'lesser_dummy_eyes',
+            suffix: '.png',
+            start: 1,
+            end: 7,
+            zeroPad: 0,
+        }),
+        frameRate: 15
+    });
+    scene.anims.create({
+        key: 'dummylook',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'lesser_dummy_eyes',
+            suffix: '.png',
+            start: 4,
+            end: 9,
+            zeroPad: 0,
+        }),
+        frameRate: 15
+    });
+    scene.anims.create({
+        key: 'dummysmile',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'lesser_dummy_mouth',
+            suffix: '.png',
+            start: 1,
+            end: 9,
+            zeroPad: 0,
+        }),
+        frameRate: 20
+    });
     scene.anims.create({
         key: 'exclamation',
         frames: scene.anims.generateFrameNames('enemies', {

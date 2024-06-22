@@ -551,6 +551,41 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/lesser_dummy_blank.png</key>
+            <key type="filename">enemies/lesser_dummy_eyes1.png</key>
+            <key type="filename">enemies/lesser_dummy_eyes2.png</key>
+            <key type="filename">enemies/lesser_dummy_eyes3.png</key>
+            <key type="filename">enemies/lesser_dummy_eyes4.png</key>
+            <key type="filename">enemies/lesser_dummy_eyes5.png</key>
+            <key type="filename">enemies/lesser_dummy_eyes6.png</key>
+            <key type="filename">enemies/lesser_dummy_eyes7.png</key>
+            <key type="filename">enemies/lesser_dummy_eyes8.png</key>
+            <key type="filename">enemies/lesser_dummy_eyes9.png</key>
+            <key type="filename">enemies/lesser_dummy_mouth1.png</key>
+            <key type="filename">enemies/lesser_dummy_mouth2.png</key>
+            <key type="filename">enemies/lesser_dummy_mouth3.png</key>
+            <key type="filename">enemies/lesser_dummy_mouth4.png</key>
+            <key type="filename">enemies/lesser_dummy_mouth5.png</key>
+            <key type="filename">enemies/lesser_dummy_mouth6.png</key>
+            <key type="filename">enemies/lesser_dummy_mouth7.png</key>
+            <key type="filename">enemies/lesser_dummy_mouth8.png</key>
+            <key type="filename">enemies/lesser_dummy_mouth9.png</key>
+            <key type="filename">enemies/lesser_dummy_noshadow.png</key>
+            <key type="filename">enemies/lesser_dummy_smile.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.8</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>58,78,115,155</rect>
+                <key>scale9Paddings</key>
+                <rect>58,78,115,155</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/lesser_dummy_dead.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -563,21 +598,6 @@
                 <rect>81,51,163,101</rect>
                 <key>scale9Paddings</key>
                 <rect>81,51,163,101</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/lesser_dummy_noshadow.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.8</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>58,78,115,155</rect>
-                <key>scale9Paddings</key>
-                <rect>58,78,115,155</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -741,6 +761,22 @@
                 <rect>175,135,350,270</rect>
                 <key>scale9Paddings</key>
                 <rect>175,135,350,270</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/max_death_3b.png</key>
+            <key type="filename">enemies/max_death_3c.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,128,150,255</rect>
+                <key>scale9Paddings</key>
+                <rect>75,128,150,255</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -1146,19 +1146,19 @@
             this.addTween({
                 targets: glowSpike,
                 ease: 'Quart.easeIn',
-                scaleX: 3,
-                scaleY: 3,
+                scaleX: 2.6,
+                scaleY: 2.6,
                 duration: 300,
                 onComplete: () => {
                     playSound('matter_body');
                     this.addTween({
                         targets: glowSpike,
                         ease: 'Cubic.easeOut',
-                        scaleX: 1.1,
-                        scaleY: 1.1,
+                        scaleX: 1.05,
+                        scaleY: 1.05,
                         duration: 1100,
                         onComplete: () => {
-                            glowSpike.setScale(1.3);
+                            glowSpike.setScale(1.15);
                         }
                     });
                 }

@@ -1,7 +1,7 @@
  class LesserDummy extends Enemy {
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
-        this.initSprite('lesser_dummy.png', 0.9, 0, undefined, undefined, 0);
+        this.initSprite('lesser_dummy_blank.png', 0.9, 0, undefined, undefined, 0);
         this.sprite.setOrigin(0.5, 0.98);
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
@@ -30,6 +30,18 @@
             scaleX: scale,
             scaleY: scale,
             y: origY,
+            onComplete: () => {
+                this.mouthSprite = this.addSprite(this.x, this.sprite.y - 107, 'enemies', 'lesser_dummy_mouth1.png').setScale(scale).setDepth(5);
+                this.addExtraSprite(this.mouthSprite, 0, 0);
+                this.mouthSprite.play('dummysmile');
+                this.addTimeout(() => {
+                    this.setDefaultSprite('lesser_dummy_smile.png', undefined, true);
+                    this.mouthSprite.destroy();
+                    this.eyeSprite = this.addSprite(this.x, this.sprite.y - 107, 'enemies', 'lesser_dummy_eyes4.png').setScale(scale).setDepth(5);
+                    this.eyeSprite.play('dummylook');
+                }, 1000)
+
+            }
         });
     }
 
@@ -54,6 +66,7 @@
         this.addTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
                 globalObjects.magicCircle.disableMovement();
+
                 // TODO Add for main dummy too
                 globalObjects.bannerTextManager.setDialog([getLangText('level0_diag_a'), getLangText('level0_diag_b')]);
                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
@@ -114,6 +127,9 @@
                                         scaleX: 8,
                                         scaleY: 8,
                                         duration: 750,
+                                        onComplete: () => {
+                                            this.eyeSprite.play('dummyblink');
+                                        }
                                     });
                                 }
                             }
@@ -281,6 +297,7 @@
             this.addTimeout(() => {
                 if (!this.dead) {
                     globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 195, 30, getLangText('level0_tut_b'));
+                    this.eyeSprite.play('dummyblink');
                 }
 
             }, 800);
@@ -342,15 +359,31 @@
      setHealth(newHealth) {
          super.setHealth(newHealth);
          if (newHealth > 0) {
+             this.eyeSprite.play('dummyblink');
+
              this.addTween({
-                 targets: this.sprite,
+                 targets: [this.sprite, this.eyeSprite],
                  rotation: -0.1,
                  ease: "Quart.easeOut",
                  duration: 50,
                  onComplete: () => {
                      this.addTween({
-                         targets: this.sprite,
+                         targets: [this.sprite, this.eyeSprite],
                          rotation: 0,
+                         ease: "Back.easeOut",
+                         duration: 400,
+                     });
+                 }
+             });
+             this.addTween({
+                 targets: [this.eyeSprite],
+                 x: "-=3",
+                 ease: "Quart.easeOut",
+                 duration: 50,
+                 onComplete: () => {
+                     this.addTween({
+                         targets: [this.eyeSprite],
+                         x: this.x,
                          ease: "Back.easeOut",
                          duration: 400,
                      });
@@ -378,6 +411,9 @@
 
              }
          });
+         if (this.eyeSprite) {
+             this.eyeSprite.destroy();
+         }
         this.setDefaultSprite('lesser_dummy_noshadow.png', this.sprite.scaleX);
         this.sprite.setOrigin(0.5, 0.99);
 

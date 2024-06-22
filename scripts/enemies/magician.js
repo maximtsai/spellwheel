@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = 10;
+         this.health = 100;
          this.damageNumOffset = 45;
          this.lifeOne = true;
          this.timeObjects = [];

@@ -15,7 +15,7 @@ function beginPreLevel(lvl) {
     let text7;
     let text8;
     let introOverlay;
-    if (lvl !== 0) {
+    if (lvl != 0) {
         switchLevelBackground(lvl);
     }
     switch(lvl) {
@@ -342,7 +342,7 @@ function beginLevel(lvl) {
     messageBus.publish('manualResetEmbodiments', undefined, true); // with long delay
 
     globalObjects.magicCircle.buildRunes();
-    if (lvl == 0) {
+    if (lvl <= 1) {
         switchLevelBackground(lvl)
     }
 

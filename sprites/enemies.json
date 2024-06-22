@@ -1396,7 +1396,7 @@
 					}
 				},
 				{
-					"filename": "lesser_dummy_eyes4.png",
+					"filename": "lesser_dummy_eyes5.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -4132,7 +4132,7 @@
 					}
 				},
 				{
-					"filename": "lesser_dummy_eyes5.png",
+					"filename": "lesser_dummy_eyes4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -4147,7 +4147,7 @@
 					},
 					"frame": {
 						"x": 991,
-						"y": 1039,
+						"y": 1010,
 						"w": 30,
 						"h": 27
 					},
@@ -4237,6 +4237,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:ed38263ba32308827f6fe97266955bdc:48131949d9776c07e8395cf41e06f3ce:ef05bb2e08b15355d77e46a2cc7ab503$"
+		"smartupdate": "$TexturePacker:SmartUpdate:ae24440c1285275a9cc49ca568373076:2b535e22c2feb82117a6b28bbb4f8a17:ef05bb2e08b15355d77e46a2cc7ab503$"
 	}
 }

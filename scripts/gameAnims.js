@@ -8,7 +8,7 @@ function createAnimations(scene) {
             end: 7,
             zeroPad: 0,
         }),
-        frameRate: 15
+        frameRate: 20
     });
     scene.anims.create({
         key: 'dummylook',
@@ -30,7 +30,7 @@ function createAnimations(scene) {
             end: 9,
             zeroPad: 0,
         }),
-        frameRate: 20
+        frameRate: 25
     });
     scene.anims.create({
         key: 'exclamation',

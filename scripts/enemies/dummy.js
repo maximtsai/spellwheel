@@ -19,6 +19,8 @@
                 spellHoverListener.unsubscribe();
             }
         });
+        globalObjects.encyclopedia.showButton();
+        globalObjects.options.showButton();
         this.initTutorial();
         // this.popupTimeout = this.addTimeout(() => {
         //     this.tutorialButton = createTutorialBtn(this.level);
@@ -54,20 +56,23 @@
                      targets: [this.rune2],
                      alpha: 1,
                      duration: 200,
-                 });
-                 this.addTween({
-                     targets: [this.rune2],
-                     scaleX: 1,
-                     scaleY: 1,
-                     ease: 'Quart.easeOut',
-                     duration: 500,
+                     completeDelay: 200,
                      onComplete: () => {
                          this.addTween({
                              targets: [this.rune2],
-                             scaleX: 0.85,
-                             scaleY: 0.85,
-                             ease: 'Back.easeOut',
-                             duration: 300,
+                             scaleX: 1,
+                             scaleY: 1,
+                             ease: 'Quart.easeOut',
+                             duration: 500,
+                             onComplete: () => {
+                                 this.addTween({
+                                     targets: [this.rune2],
+                                     scaleX: 0.85,
+                                     scaleY: 0.85,
+                                     ease: 'Back.easeOut',
+                                     duration: 300,
+                                 });
+                             }
                          });
                      }
                  });

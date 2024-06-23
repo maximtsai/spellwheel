@@ -1,6 +1,6 @@
 
 let textData2 = {
-    pre_fight_0z: {en_us: "If I am to rescue my beloved,\nI must familiarize myself with the",
+    pre_fight_0z: {en_us: "I can only hope this is\nenough to rescue my beloved.",
         fr: '',
         zh_tw: '我終於到了。',
         zh_cn: '我终于到了。',
@@ -56,7 +56,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    pre_fight_0g: {en_us: "Line up two runes\nto cast a spell",
+    pre_fight_0g: {en_us: "Line up two runes\nto select a spell",
         fr: '',
         zh_tw: '我知道我會在這裡找到你，我親愛的。',
         zh_cn: '我知道我会在这里找到你，我亲爱的。',
@@ -64,7 +64,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    pre_fight_0h: {en_us: "Click\nbutton\nto cast",
+    pre_fight_0h: {en_us: "Click\nto cast\nspell",
         fr: '',
         zh_tw: '',
         zh_cn: '',

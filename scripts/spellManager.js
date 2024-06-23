@@ -840,7 +840,9 @@ class SpellManager {
         let halfSpellDamage = Math.ceil(spellDamage * 0.5);
         for (let i in strikeObjects) {
             let strikeObject = strikeObjects[i];
+            strikeObject.finalRot = 0.2 - Math.random() * 0.4;
             let delayedStrikeObject = this.scene.add.sprite(strikeObject.x, strikeObject.y, 'spells', 'clock_red.png').setDepth(10).setRotation(strikeObject.rotation).setScale(strikeObject.scaleX).setAlpha(0.75);
+            delayedStrikeObject.finalRot = strikeObject.finalRot;
             let delayAmt = i * 150;
             let randRotation = (Math.random() - 0.5) * 10;
             this.scene.tweens.add({
@@ -893,9 +895,11 @@ class SpellManager {
                     });
                 },
                 onComplete: () => {
+                    strikeObject.setFrame('clockStrike.png');
+                    strikeObject.rotation = strikeObject.finalRot;
                     this.scene.tweens.add({
                         targets: strikeObject,
-                        duration: 200,
+                        duration: 200 + additionalDamage * 2,
                         scaleX: goalScale + 0.4,
                         scaleY: goalScale + 0.4,
                         alpha: 0,
@@ -956,9 +960,12 @@ class SpellManager {
                     });
                 },
                 onComplete: () => {
+                    delayedStrikeObject.setFrame('clock_redStrike.png');
+                    delayedStrikeObject.rotation = delayedStrikeObject.finalRot;
+
                     this.scene.tweens.add({
                         targets: delayedStrikeObject,
-                        duration: 250,
+                        duration: 250 + additionalDamage * 2,
                         scaleX: goalScale + 0.8,
                         scaleY: goalScale + 0.8,
                         ease: 'Quad.easeOut',
@@ -968,7 +975,7 @@ class SpellManager {
                     });
                     this.scene.tweens.add({
                         targets: delayedStrikeObject,
-                        duration: 250,
+                        duration: 250 + additionalDamage * 2,
                         alpha: 0,
 
                     });

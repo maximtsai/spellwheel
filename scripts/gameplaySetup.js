@@ -182,7 +182,12 @@ function setupLoadingBar(scene) {
                 }
             });
         }
-
+        loadObjects.gloom = scene.add.image(gameConsts.halfWidth, loadObjects.introLocket.y, 'blurry', 'gloom.webp').setScale(5).setBlendMode(Phaser.BlendModes.MULTIPLY).setDepth(201).setAlpha(0);
+        scene.tweens.add({
+            targets: loadObjects.gloom,
+            alpha: 0.3,
+            duration: 800,
+        });
         loadObjects.flash = scene.add.image(gameConsts.halfWidth - 30, loadObjects.introLocket.y - 25, 'blurry', 'flash.webp').setScale(0).setRotation(-0.1).setDepth(1002);
 
         loadObjects.flash.currAnim = scene.tweens.add({

@@ -35,7 +35,47 @@
         this.attackScale = 1.25;
      }
 
+     initSpriteAnim(scale) {
+        let startY = this.sprite.y;
+         let yOffset = this.sprite.height * 0.425;
+         this.sprite.setScale(scale * 0.9, scale * 0.9);
 
+         this.sprite.setOrigin(0.5, 0.95);
+         if (!this.delayLoad) {
+             this.addTween({
+                 targets: this.sprite,
+                 duration: 240,
+                 y: startY + yOffset,
+                 ease: 'Cubic.easeIn',
+                 scaleX: scale*0.85,
+                 scaleY: scale*1.01,
+                 alpha: 1,
+                 onComplete: () => {
+                     playSound('balloon', 0.3).detune = -800;
+                     this.addTween({
+                         targets: this.sprite,
+                         duration: 200,
+                         ease: 'Cubic.easeOut',
+                         scaleX: scale*1.1,
+                         scaleY: scale*0.85,
+                         onComplete: () => {
+                             this.addTween({
+                                 targets: this.sprite,
+                                 duration: 250,
+                                 ease: 'Back.easeOut',
+                                 scaleX: scale,
+                                 scaleY: scale,
+                                 onComplete: () => {
+                                     this.sprite.setOrigin(0.5, 0.5).setPosition(this.sprite.x, startY);
+
+                                 }
+                             });
+                         }
+                     });
+                 }
+             });
+         }
+     }
 
      initTutorial() {
         this.bgMusic = playMusic('bite_down_simplified', 0.65, true);

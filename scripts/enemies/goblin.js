@@ -279,8 +279,50 @@
      initSpriteAnim(scale) {
          super.initSpriteAnim(scale);
          this.sprite.startX = this.sprite.x;
+         this.sprite.x = gameConsts.halfWidth + 150;
+         this.sprite.setRotation(0.05);
+         this.addTween({
+             targets: this.sprite,
+             rotation: -0.05,
+             duration: 150,
+             yoyo: true,
+             completeDelay: 20,
+             onComplete: () => {
+                 this.addTween({
+                     targets: this.sprite,
+                     rotation: -0.05,
+                     duration: 180,
+                     yoyo: true,
+                     completeDelay: 20,
+                     onComplete: () => {
+                         this.addTween({
+                             targets: this.sprite,
+                             rotation: -0.05,
+                             duration: 210,
+                             completeDelay: 20,
+                             onComplete: () => {
+                                 this.addTween({
+                                     targets: this.sprite,
+                                     rotation: 0,
+                                     ease: 'Quad.easeOut',
+                                     duration: 250,
+                                     onComplete: () => {
+                                         this.repeatTweenBreathe();
+                                     }
+                                 });
+                             }
+                         });
+                     }
+                 });
+             }
+         });
+         this.addTween({
+             targets: this.sprite,
+             x: this.sprite.startX,
+             duration: 1350,
+             ease: 'Cubic.easeOut',
+         });
 
-         this.repeatTweenBreathe();
      }
 
      repeatTweenBreathe(duration = 1500, magnitude = 1) {

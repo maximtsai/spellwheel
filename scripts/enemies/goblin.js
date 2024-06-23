@@ -322,7 +322,6 @@
              duration: 1350,
              ease: 'Cubic.easeOut',
          });
-
      }
 
      repeatTweenBreathe(duration = 1500, magnitude = 1) {

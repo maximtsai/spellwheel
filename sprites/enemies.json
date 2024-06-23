@@ -1246,7 +1246,7 @@
 					}
 				},
 				{
-					"filename": "robot_claw_2 - Copy.png",
+					"filename": "robot_claw_2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -4237,6 +4237,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:ae24440c1285275a9cc49ca568373076:2b535e22c2feb82117a6b28bbb4f8a17:ef05bb2e08b15355d77e46a2cc7ab503$"
+		"smartupdate": "$TexturePacker:SmartUpdate:f5cbc0853d8825071c06de322ea74e67:2b535e22c2feb82117a6b28bbb4f8a17:ef05bb2e08b15355d77e46a2cc7ab503$"
 	}
 }

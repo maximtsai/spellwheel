@@ -459,7 +459,7 @@ class PostFightScreen {
     }
 
     createWinScreen(level = 0) {
-        this.windSfx = playSound('wind', 0.1, true);
+        this.windSfx = playSound('wind', 0.01, true);
         fadeInSound(this.windSfx);
         this.canShowRuneBtn = true;
         globalObjects.encyclopedia.showButton();

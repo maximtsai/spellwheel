@@ -12,7 +12,7 @@
      }
 
      initStatsCustom() {
-         this.health = 8;
+         this.health = 800;
          this.pullbackScale = 0.9999;
          this.attackScale = 1;
          this.isAsleep = true;
@@ -21,9 +21,22 @@
          this.eyeHealth = 50;
      }
 
+     initSpriteAnim(scale) {
+         this.sprite.setScale(scale * 0.94, scale);
+         playSound('matter_enhance_2', 0.35).detune = -1000;
+         this.addTween({
+             targets: this.sprite,
+             scaleX: scale,
+             duration: 800,
+             alpha: 1,
+             ease: 'Quart.easeOut',
+         });
+     }
+
      initBird() {
          this.bird = this.addImage(this.x - 335 * this.sprite.startScale, this.y - 223 * this.sprite.startScale, 'enemies', 'bird_1.png').setAlpha(0).setDepth(10).setScale(this.sprite.startScale);
          this.addTween({
+             delay: 150,
              targets: [this.bird],
              alpha: 1,
              ease: 'Quad.easeIn',

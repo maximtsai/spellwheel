@@ -175,9 +175,9 @@ function beginPreLevel(lvl) {
             // robot
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'robot_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 140, 'I sense something dangerous and\nterrifying blocking the path up ahead.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 140, 'I sense something dangerous\nblocking the path up ahead.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +220, "But no matter what it is, I'm confident\nI am prepared.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +220, "But I'm certain I am prepared\nfor anything.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();

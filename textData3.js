@@ -80,7 +80,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    death6a: {en_us: "TRULY YOU ARE MAKING\nA MESS OF THINGS.",
+    death6a: {en_us: "YOU ARE TRULY MAKING\nA MESS OF THINGS.",
         fr: '',
         zh_tw: '',
         zh_cn: '',

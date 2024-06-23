@@ -710,7 +710,7 @@
                  {
                      name: "|6x2 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 700,
+                     chargeAmt: 600,
                      chargeMult: 1.7,
                      damage: 6,
                      attackTimes: 2,
@@ -750,7 +750,7 @@
                  {
                      name: "|6x3 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 700,
+                     chargeAmt: 650,
                      chargeMult: 1.7,
                      damage: 6,
                      attackTimes: 3,

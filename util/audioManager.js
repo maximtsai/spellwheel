@@ -102,6 +102,6 @@ function fadeInSound(sound, volume = 1) {
     PhaserScene.tweens.add({
         targets: sound,
         volume: sound.fullVolume * globalToUse,
-        duration: 800
+        duration: 900
     });
 }

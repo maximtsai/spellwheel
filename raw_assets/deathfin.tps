@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>67</uint>
+        <uint>59</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -157,7 +157,7 @@
             <key>extrude</key>
             <uint>1</uint>
             <key>trimThreshold</key>
-            <uint>1</uint>
+            <uint>2</uint>
             <key>trimMargin</key>
             <uint>1</uint>
             <key>trimMode</key>
@@ -173,38 +173,171 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">deathfin/frame_00.png</key>
-            <key type="filename">deathfin/frame_01.png</key>
-            <key type="filename">deathfin/frame_02.png</key>
-            <key type="filename">deathfin/frame_03.png</key>
-            <key type="filename">deathfin/frame_04.png</key>
-            <key type="filename">deathfin/frame_05.png</key>
-            <key type="filename">deathfin/frame_06.png</key>
-            <key type="filename">deathfin/frame_07.png</key>
-            <key type="filename">deathfin/frame_08.png</key>
-            <key type="filename">deathfin/frame_09.png</key>
-            <key type="filename">deathfin/frame_10.png</key>
-            <key type="filename">deathfin/frame_11.png</key>
-            <key type="filename">deathfin/frame_12.png</key>
-            <key type="filename">deathfin/frame_13.png</key>
-            <key type="filename">deathfin/frame_14.png</key>
-            <key type="filename">deathfin/frame_15.png</key>
-            <key type="filename">deathfin/frame_16.png</key>
-            <key type="filename">deathfin/frame_17.png</key>
-            <key type="filename">deathfin/frame_18.png</key>
-            <key type="filename">deathfin/frame_19.png</key>
-            <key type="filename">deathfin/frame_20.png</key>
-            <key type="filename">deathfin/frame_21.png</key>
-            <key type="filename">deathfin/frame_22.png</key>
-            <key type="filename">deathfin/frame_23.png</key>
-            <key type="filename">deathfin/frame_24.png</key>
-            <key type="filename">deathfin/frame_25.png</key>
-            <key type="filename">deathfin/frame_26.png</key>
-            <key type="filename">deathfin/frame_27.png</key>
-            <key type="filename">deathfin/frame_28.png</key>
-            <key type="filename">deathfin/frame_29.png</key>
-            <key type="filename">deathfin/frame_30.png</key>
-            <key type="filename">deathfin/frame_31.png</key>
+            <key type="filename">deathfin/frame0000.png</key>
+            <key type="filename">deathfin/frame0001.png</key>
+            <key type="filename">deathfin/frame0002.png</key>
+            <key type="filename">deathfin/frame0003.png</key>
+            <key type="filename">deathfin/frame0004.png</key>
+            <key type="filename">deathfin/frame0005.png</key>
+            <key type="filename">deathfin/frame0006.png</key>
+            <key type="filename">deathfin/frame0007.png</key>
+            <key type="filename">deathfin/frame0008.png</key>
+            <key type="filename">deathfin/frame0009.png</key>
+            <key type="filename">deathfin/frame0010.png</key>
+            <key type="filename">deathfin/frame0011.png</key>
+            <key type="filename">deathfin/frame0012.png</key>
+            <key type="filename">deathfin/frame0013.png</key>
+            <key type="filename">deathfin/frame0014.png</key>
+            <key type="filename">deathfin/frame0015.png</key>
+            <key type="filename">deathfin/frame0016.png</key>
+            <key type="filename">deathfin/frame0017.png</key>
+            <key type="filename">deathfin/frame0018.png</key>
+            <key type="filename">deathfin/frame0019.png</key>
+            <key type="filename">deathfin/frame0020.png</key>
+            <key type="filename">deathfin/frame0021.png</key>
+            <key type="filename">deathfin/frame0022.png</key>
+            <key type="filename">deathfin/frame0023.png</key>
+            <key type="filename">deathfin/frame0024.png</key>
+            <key type="filename">deathfin/frame0025.png</key>
+            <key type="filename">deathfin/frame0026.png</key>
+            <key type="filename">deathfin/frame0027.png</key>
+            <key type="filename">deathfin/frame0028.png</key>
+            <key type="filename">deathfin/frame0029.png</key>
+            <key type="filename">deathfin/frame0030.png</key>
+            <key type="filename">deathfin/frame0031.png</key>
+            <key type="filename">deathfin/frame0032.png</key>
+            <key type="filename">deathfin/frame0033.png</key>
+            <key type="filename">deathfin/frame0034.png</key>
+            <key type="filename">deathfin/frame0035.png</key>
+            <key type="filename">deathfin/frame0036.png</key>
+            <key type="filename">deathfin/frame0037.png</key>
+            <key type="filename">deathfin/frame0038.png</key>
+            <key type="filename">deathfin/frame0039.png</key>
+            <key type="filename">deathfin/frame0040.png</key>
+            <key type="filename">deathfin/frame0041.png</key>
+            <key type="filename">deathfin/frame0042.png</key>
+            <key type="filename">deathfin/frame0043.png</key>
+            <key type="filename">deathfin/frame0044.png</key>
+            <key type="filename">deathfin/frame0045.png</key>
+            <key type="filename">deathfin/frame0046.png</key>
+            <key type="filename">deathfin/frame0047.png</key>
+            <key type="filename">deathfin/frame0048.png</key>
+            <key type="filename">deathfin/frame0049.png</key>
+            <key type="filename">deathfin/frame0050.png</key>
+            <key type="filename">deathfin/frame0051.png</key>
+            <key type="filename">deathfin/frame0052.png</key>
+            <key type="filename">deathfin/frame0053.png</key>
+            <key type="filename">deathfin/frame0054.png</key>
+            <key type="filename">deathfin/frame0055.png</key>
+            <key type="filename">deathfin/frame0056.png</key>
+            <key type="filename">deathfin/frame0057.png</key>
+            <key type="filename">deathfin/frame0058.png</key>
+            <key type="filename">deathfin/frame0059.png</key>
+            <key type="filename">deathfin/frame0060.png</key>
+            <key type="filename">deathfin/frame0061.png</key>
+            <key type="filename">deathfin/frame0062.png</key>
+            <key type="filename">deathfin/frame0063.png</key>
+            <key type="filename">deathfin/frame0064.png</key>
+            <key type="filename">deathfin/frame0065.png</key>
+            <key type="filename">deathfin/frame0066.png</key>
+            <key type="filename">deathfin/frame0067.png</key>
+            <key type="filename">deathfin/frame0068.png</key>
+            <key type="filename">deathfin/frame0069.png</key>
+            <key type="filename">deathfin/frame0070.png</key>
+            <key type="filename">deathfin/frame0071.png</key>
+            <key type="filename">deathfin/frame0072.png</key>
+            <key type="filename">deathfin/frame0073.png</key>
+            <key type="filename">deathfin/frame0074.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>308,175,615,350</rect>
+                <key>scale9Paddings</key>
+                <rect>308,175,615,350</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">deathfin/hood0000.png</key>
+            <key type="filename">deathfin/hood0001.png</key>
+            <key type="filename">deathfin/hood0002.png</key>
+            <key type="filename">deathfin/hood0003.png</key>
+            <key type="filename">deathfin/hood0004.png</key>
+            <key type="filename">deathfin/hood0005.png</key>
+            <key type="filename">deathfin/hood0006.png</key>
+            <key type="filename">deathfin/hood0007.png</key>
+            <key type="filename">deathfin/hood0008.png</key>
+            <key type="filename">deathfin/hood0009.png</key>
+            <key type="filename">deathfin/hood0010.png</key>
+            <key type="filename">deathfin/hood0011.png</key>
+            <key type="filename">deathfin/hood0012.png</key>
+            <key type="filename">deathfin/hood0013.png</key>
+            <key type="filename">deathfin/hood0014.png</key>
+            <key type="filename">deathfin/hood0015.png</key>
+            <key type="filename">deathfin/hood0016.png</key>
+            <key type="filename">deathfin/hood0017.png</key>
+            <key type="filename">deathfin/hood0018.png</key>
+            <key type="filename">deathfin/hood0019.png</key>
+            <key type="filename">deathfin/hood0020.png</key>
+            <key type="filename">deathfin/hood0021.png</key>
+            <key type="filename">deathfin/hood0022.png</key>
+            <key type="filename">deathfin/hood0023.png</key>
+            <key type="filename">deathfin/hood0024.png</key>
+            <key type="filename">deathfin/hood0025.png</key>
+            <key type="filename">deathfin/hood0026.png</key>
+            <key type="filename">deathfin/hood0027.png</key>
+            <key type="filename">deathfin/hood0028.png</key>
+            <key type="filename">deathfin/hood0029.png</key>
+            <key type="filename">deathfin/hood0030.png</key>
+            <key type="filename">deathfin/hood0031.png</key>
+            <key type="filename">deathfin/hood0032.png</key>
+            <key type="filename">deathfin/hood0033.png</key>
+            <key type="filename">deathfin/hood0034.png</key>
+            <key type="filename">deathfin/hood0035.png</key>
+            <key type="filename">deathfin/hood0036.png</key>
+            <key type="filename">deathfin/hood0037.png</key>
+            <key type="filename">deathfin/hood0038.png</key>
+            <key type="filename">deathfin/hood0039.png</key>
+            <key type="filename">deathfin/hood0040.png</key>
+            <key type="filename">deathfin/hood0041.png</key>
+            <key type="filename">deathfin/hood0042.png</key>
+            <key type="filename">deathfin/hood0043.png</key>
+            <key type="filename">deathfin/hood0044.png</key>
+            <key type="filename">deathfin/hood0045.png</key>
+            <key type="filename">deathfin/hood0046.png</key>
+            <key type="filename">deathfin/hood0047.png</key>
+            <key type="filename">deathfin/hood0048.png</key>
+            <key type="filename">deathfin/hood0049.png</key>
+            <key type="filename">deathfin/hood0050.png</key>
+            <key type="filename">deathfin/hood0051.png</key>
+            <key type="filename">deathfin/hood0052.png</key>
+            <key type="filename">deathfin/hood0053.png</key>
+            <key type="filename">deathfin/hood0054.png</key>
+            <key type="filename">deathfin/hood0055.png</key>
+            <key type="filename">deathfin/hood0056.png</key>
+            <key type="filename">deathfin/hood0057.png</key>
+            <key type="filename">deathfin/hood0058.png</key>
+            <key type="filename">deathfin/hood0059.png</key>
+            <key type="filename">deathfin/hood0060.png</key>
+            <key type="filename">deathfin/hood0061.png</key>
+            <key type="filename">deathfin/hood0062.png</key>
+            <key type="filename">deathfin/hood0063.png</key>
+            <key type="filename">deathfin/hood0064.png</key>
+            <key type="filename">deathfin/hood0065.png</key>
+            <key type="filename">deathfin/hood0066.png</key>
+            <key type="filename">deathfin/hood0067.png</key>
+            <key type="filename">deathfin/hood0068.png</key>
+            <key type="filename">deathfin/hood0069.png</key>
+            <key type="filename">deathfin/hood0070.png</key>
+            <key type="filename">deathfin/hood0071.png</key>
+            <key type="filename">deathfin/hood0072.png</key>
+            <key type="filename">deathfin/hood0073.png</key>
+            <key type="filename">deathfin/hood0074.png</key>
+            <key type="filename">deathfin/hood0075.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -213,9 +346,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>150,85,300,171</rect>
+                <rect>308,175,615,350</rect>
                 <key>scale9Paddings</key>
-                <rect>150,85,300,171</rect>
+                <rect>308,175,615,350</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

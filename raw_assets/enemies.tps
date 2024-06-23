@@ -1022,7 +1022,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/robot_claw_2 - Copy.png</key>
+            <key type="filename">enemies/robot_claw_2.png</key>
             <key type="filename">enemies/robot_claw_b1.png</key>
             <key type="filename">enemies/robot_claw_b2.png</key>
             <struct type="IndividualSpriteSettings">

@@ -2039,7 +2039,7 @@ const ENABLE_KEYBOARD = true;
 
     plainUpdateDelayedDamageVisual(scale) {
         this.delayDamageHourglass.setScale(scale - 0.1);
-        let closestBase = Math.floor(this.delayedDamage / this.delayedDamageBase) * this.delayedDamageBase;
+        let closestBase = Math.floor(Math.max(0, this.delayedDamage - 0.5) / this.delayedDamageBase) * this.delayedDamageBase;
         if (closestBase > 0) {
             this.delayDamageSandFull.alpha = 1;
             this.delayDamageSandFull.setScale(scale - 0.28);

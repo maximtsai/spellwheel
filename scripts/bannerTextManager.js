@@ -2,6 +2,7 @@ class BannerTextManager {
     constructor(scene) {
         this.scene = scene;
         this.dialog = ["..."];
+        this.funcArray = [];
         this.dialogIndex = 0;
         this.darkenBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(100002).setAlpha(0).setScale(500, 500);
         this.textBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 25, 'misc', 'victory_banner.png').setScale(100, 1).setDepth(100002).setAlpha(0);
@@ -12,6 +13,10 @@ class BannerTextManager {
 
     setDialog(dialogArray) {
         this.dialog = dialogArray;
+    }
+
+    setDialogFunc(funcArray = []) {
+        this.funcArray = funcArray;
     }
 
     setText(text) {
@@ -25,6 +30,9 @@ class BannerTextManager {
     showBanner(haveBGDarken = true) {
         this.isShowing = true;
         this.setText(this.dialog[this.dialogIndex]);
+        if (this.funcArray[this.dialogIndex]) {
+            this.funcArray[this.dialogIndex]();
+        }
         if (haveBGDarken) {
             PhaserScene.tweens.add({
                 targets: [this.darkenBG],
@@ -98,6 +106,7 @@ class BannerTextManager {
             duration: 500,
         });
         this.dialog = ["..."];
+        this.funcArray = [];
         this.dialogIndex = 0;
     }
 
@@ -130,6 +139,9 @@ class BannerTextManager {
                 duration: 250,
                 onComplete: () => {
                     this.setText(this.dialog[this.dialogIndex]);
+                    if (this.funcArray[this.dialogIndex]) {
+                        this.funcArray[this.dialogIndex]();
+                    }
                     this.currAnim = PhaserScene.tweens.add({
                         targets: [this.text],
                         alpha: 1,

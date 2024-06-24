@@ -80,7 +80,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    pre_fight_1b: {en_us: "I doubt this dirty creature\ncould legitimately own\nsomething so valuable, so\nI'll take the prized shield\nfor myself.",
+    pre_fight_1b: {en_us: "I doubt a creature so dirty\ncould legitimately own\nsomething so valuable, so\nI'll take the prized shield\nfor myself.",
         fr: '',
         zh_tw: '在通往禁地的入口處。',
         zh_cn: '在通往禁地的门口。',

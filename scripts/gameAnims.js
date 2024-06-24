@@ -273,15 +273,26 @@ function createAnimations(scene) {
         frameRate: 20
     });
     scene.anims.create({
-        key: 'ladydeath',
+        key: 'ladydeathcape',
         frames: scene.anims.generateFrameNames('deathfin', {
-            prefix: 'frame_',
+            prefix: 'frame00',
             suffix: '.png',
             start: 0,
-            end: 31,
+            end: 74,
             zeroPad: 2,
         }),
-        frameRate: 10
+        frameRate: 30
+    });
+    scene.anims.create({
+        key: 'ladydeathhood',
+        frames: scene.anims.generateFrameNames('hood', {
+            prefix: 'hood00',
+            suffix: '.png',
+            start: 0,
+            end: 74,
+            zeroPad: 2,
+        }),
+        frameRate: 30
     });
     scene.anims.create({
         key: 'weaken',

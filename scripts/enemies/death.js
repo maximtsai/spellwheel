@@ -11,7 +11,8 @@
      }
 
      initStatsCustom() {
-         this.health = 666;
+         this.health = 4;
+         this.scytheObjects = [];
      }
 
      // update(dt) {}
@@ -113,12 +114,48 @@
                  {
                      name: ";4444",
                      chargeAmt: 600,
-                     chargeMult: 1.1,
+                     chargeMult: 2,
                      damage: -1,
                      isBigMove: true,
                      attackStartFunction: () => {
-                         this.isPulsing = false;
+
                      },
+                     finaleFunction: () => {
+                         this.setAsleep();
+                         globalObjects.bannerTextManager.setDialog(["SEEMS YOU'VE LEARNED\nA TRICK OR TWO", "BUT CAN YOU SURVIVE DEATH\nBY A THOUSAND CUTS?"]);
+                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                         globalObjects.bannerTextManager.showBanner(true);
+                         globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                             this.setAwake();
+                         });
+                     }
+                 },
+                 {
+                     name: ";6x1",
+                     chargeAmt: 1000,
+                     chargeMult: 2,
+                     damage: -1,
+                     isBigMove: true,
+                     startFunction: () => {
+                         this.setSprite('time_magi_cast_big.png');
+                         this.finishedChargingMulti = false;
+                         this.startChargingUltimate();
+                     },
+                     attackStartFunction: () => {
+                         this.finishedChargingMulti = true;
+                     },
+                     attackFinishFunction: () => {
+                         this.fireScytheObjects(4);
+                     },
+                     finaleFunction: () => {
+                         this.setAsleep();
+                         globalObjects.bannerTextManager.setDialog(["SEEMS YOU'VE LEARNED\nA TRICK OR TWO", "BUT CAN YOU SURVIVE DEATH\nBY A THOUSAND CUTS?"]);
+                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                         globalObjects.bannerTextManager.showBanner(true);
+                         globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                             this.setAwake();
+                         });
+                     }
                  },
              ]
          ];
@@ -141,4 +178,145 @@
          // ];
      }
 
+     fireScytheObjects(damage = 6, interval = 100) {
+         let totalScytheObjects = this.scytheObjects.length;
+         let projDur = 600 - Math.floor(Math.sqrt(totalScytheObjects) * 50);
+         let scytheObjectsFired = 0;
+         while (this.scytheObjects.length > 0) {
+             let currObj = this.scytheObjects.shift();
+             let delayAmt = scytheObjectsFired * interval;
+             scytheObjectsFired++;
+             this.addTween({
+                 targets: currObj,
+                 delay: delayAmt,
+                 y: globalObjects.player.getY() - 175 + Math.random() * 10,
+                 ease: 'Quad.easeIn',
+                 duration: projDur,
+                 rotation: (Math.random() - 0.5) * 3,
+                 onComplete: () => {
+                     let dur = 280 - Math.sqrt(totalScytheObjects) * 40;
+                     let rot = dur * 0.004;
+                     let scaleMult = 1;
+                     let hitEffect = this.addSprite(currObj.x, currObj.y, 'spells', 'timeRed1.png').setRotation((Math.random() - 0.5) * 3).setScale(0.35 * scaleMult).setDepth(195);
+                     this.addTween({
+                         targets: hitEffect,
+                         scaleX: 0.7 * scaleMult,
+                         scaleY: 0.7 * scaleMult,
+                         ease: 'Cubic.easeOut',
+                         duration: dur,
+                         onComplete: () => {
+                             hitEffect.destroy();
+                         }
+                     });
+                     this.addTween({
+                         targets: hitEffect,
+                         rotation: "-="+rot,
+                         alpha: 0,
+                         duration: dur
+                     });
+                     if (currObj.scaleX > 1.1) {
+                         playSound('body_slam', 0.5);
+                     }
+                     if (Math.random() < 0.6) {
+                         playSound('time_strike_hit');
+                     } else {
+                         playSound('time_strike_hit_2');
+                     }
+                     messageBus.publish("selfTakeDamage", damage);
+                     currObj.destroy();
+
+                 }
+             });
+             this.addTween({
+                 targets: currObj,
+                 delay: delayAmt,
+                 x: gameConsts.halfWidth * 0.92 + currObj.x * 0.15,
+                 ease: 'Back.easeIn',
+                 easeParams: [3],
+                 duration: projDur
+             });
+         }
+     }
+
+     startChargingMulti() {
+         for (let i = 0; i < 36; i++) {
+             this.addTween({
+                 delay: i * 100,
+                 duration: 150,
+                 targets: this.sprite,
+                 scaleX: this.sprite.startScale,
+                 scaleY: this.sprite.startScale,
+                 rotation: 0,
+                 ease: 'Cubic.easeOut',
+                 onStart: () => {
+                     if (!this.finishedChargingMulti) {
+                         // this.sprite.setScale(this.sprite.startScale * 1.05);
+                         // this.sprite.setRotation(0.1);
+                         let startX = this.x;
+                         let startY = this.y;
+                         let dirAngle = i * Math.PI / 12;
+                         let offsetX = Math.sin(dirAngle) * 90;
+                         let offsetY = -Math.cos(dirAngle) * 80;
+
+                         let xPos = startX + offsetX; let yPos = startY + offsetY;
+                         let scytheObj = this.createScytheObject(xPos, yPos, 0, 2, -300 + i * 30);
+                         scytheObj.setDepth(3);
+                         this.addTween({
+                             duration: 400,
+                             targets: scytheObj,
+                             x: startX + offsetX * (i % 6 == 0 ? 1.55 : 1.6),
+                             y: startY + offsetY * (i % 6 == 0 ? 1.55 : 1.6),
+                             ease: 'Quart.easeOut'
+                         });
+                         let numAttacks = i + 1;
+                         if (i == 5) {
+                             this.attackName.setText("}6x" + numAttacks + "}");
+                         } else if (i == 11) {
+                             this.attackName.setText("}}6x" + numAttacks + "}}");
+                             this.repositionAngrySymbol();
+                         } else if (i == 17) {
+                             this.attackName.setText("}}}6x" + numAttacks + "}}}");
+                             this.repositionAngrySymbol();
+                         } else if (i == 23) {
+                             this.attackName.setText("}}}}6x" + numAttacks + "}}}}");
+                             this.repositionAngrySymbol();
+                         } else if (i == 30) {
+                             this.attackName.setText("}}}}}6x" + numAttacks + "}}}}}");
+                             this.repositionAngrySymbol();
+                         }  else if (i == 35) {
+                             this.attackName.setText("}}}}}}6x" + numAttacks + "}}}}}}");
+                             this.repositionAngrySymbol();
+                             this.nextAttack.chargeMult = 12;
+                             // this.setDefaultSprite('time_magi.png');
+                         }
+                     }
+                 },
+             })
+         }
+     }
+
+     createScytheObject(x, y, delay = 0, durMult = 1) {
+         let newObj = this.addSprite(x, y, 'misc', "miniscythe.png").setRotation((Math.random() - 0.5) * 3).setScale(0).setDepth(110);
+         newObj.durMult = durMult;
+         this.scytheObjects.push(newObj);
+         this.addTween({
+             delay: delay,
+             targets: newObj,
+             scaleX: 1,
+             scaleY: 1,
+             ease: 'Back.easeOut',
+             easeParams: [3],
+             duration: 300,
+             onStart: () => {
+                 // let sound = playSound('time_strike');
+                 // sound.detune = detune;
+             }
+         });
+         this.addTween({
+             targets: newObj,
+             rotation: "-=6.283",
+             duration: 5000,
+         });
+         return newObj;
+     }
 }

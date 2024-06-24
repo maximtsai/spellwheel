@@ -144,6 +144,98 @@ let textData3 = {
         es: '',
         jp: ''
     },
+
+    epilogue1a: {en_us: "ALAS, YOUR WOUNDS\nWERE TOO MANY TO BEAR.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    epilogue1b: {en_us: "BUT FOR YOUR EFFORTS, I SHALL\nAT LEAST GRANT YOUR WISH...",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    epilogue1c: {en_us: "TO BE BESIDE YOUR BELOVED.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    epilogue1d: {en_us: "MAY YOU FIND PEACE\nIN ETERNAL SLUMBER.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    epilogue1e: {en_us: "Ending 1\nEternal Rest",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+
+    epilogue2a: {en_us: "I SEE YOUR DESIRE TO\nSEEK VICTORY REMAINS INSATIABLE.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    epilogue2b: {en_us: "SHOULD I WISH, IT WOULD BE\nTRIVIAL TO SIMPLY...",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    epilogue2c: {en_us: "END YOUR LIFE BY FORCE.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    epilogue2d: {en_us: "BUT YOU DO NOT DESERVE\nSUCH MERCY.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    epilogue2e: {en_us: "I WILL GIVE YOU BACK\nYOUR BELOVED",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    epilogue2f: {en_us: "AND YOU SHALL WANDER THE\nWORLD ETERNALLY WITHOUT REST.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+
+
 };
 
 textData = { ...textData, ...textData3};

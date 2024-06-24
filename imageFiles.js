@@ -22,18 +22,19 @@ const imageAtlases = [
     {name: 'pixels', src: 'sprites/pixels.json'},
     {name: 'circle', src: 'sprites/circle.json'},
     {name: 'spells', src: 'sprites/spells.json'},
+    {name: 'tutorial', src: 'sprites/tutorial.json'},
+    {name: 'ui', src: 'sprites/ui.json'},
     {name: 'backgrounds', src: 'sprites/backgrounds.json'},
     {name: 'enemies', src: 'sprites/enemies.json'},
-    {name: 'shields', src: 'sprites/shields.json'},
-    {name: 'vfx', src: 'sprites/vfx.json'},
     {name: 'dummyenemy', src: 'sprites/dummyenemy.json'},
     {name: 'buttons', src: 'sprites/buttons.json'},
     {name: 'lowq', src: 'sprites/lowq.json'},
     {name: 'blurry', src: 'sprites/blurry.json'},
     {name: 'misc', src: 'sprites/misc.json'},
-    {name: 'ui', src: 'sprites/ui.json'},
-    {name: 'tutorial', src: 'sprites/tutorial.json'},
     {name: 'deathfin', src: 'sprites/deathfin.json'},
+    {name: 'shields', src: 'sprites/shields.json'},
+    {name: 'vfx', src: 'sprites/vfx.json'},
+    {name: 'ending', src: 'sprites/ending.json'},
 ];
 
 const imageFiles = [

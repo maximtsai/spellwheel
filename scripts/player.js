@@ -1135,7 +1135,15 @@ class Player {
         if (this.health < 20) {
             textScale += 0.2;
         }
-        textScale += (0.18 * Math.sqrt(Math.abs(healthChange)) + 0.04 * Math.abs(healthChange));
+        if (healthChange > 10) {
+            healthChange = 10;
+        }
+        let addAmt = (0.18 * Math.sqrt(Math.abs(healthChange)) + 0.04 * Math.abs(healthChange));
+        if (Math.abs(healthChange) > 80) {
+            addAmt = 0.18 * Math.sqrt(80) + 0.04 * 80;
+        }
+        textScale += addAmt;
+        console.log(textScale);
         if (textScale > 1.2) {
             let diffScale = textScale - 1.2;
             textScale = 1 + diffScale * 0.5;

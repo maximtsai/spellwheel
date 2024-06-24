@@ -262,15 +262,37 @@ function createAnimations(scene) {
         repeatDelay: 1000
     });
     scene.anims.create({
+        key: 'scythePause',
+        frames: scene.anims.generateFrameNames('misc', {
+            prefix: 'scythe',
+            suffix: '.png',
+            start: 1,
+            end: 5,
+            zeroPad: 0,
+        }),
+        frameRate: 30
+    });
+    scene.anims.create({
+        key: 'scytheResume',
+        frames: scene.anims.generateFrameNames('misc', {
+            prefix: 'scythe',
+            suffix: '.png',
+            start: 5,
+            end: 8,
+            zeroPad: 0,
+        }),
+        frameRate: 30
+    });
+    scene.anims.create({
         key: 'scytheReap',
         frames: scene.anims.generateFrameNames('misc', {
             prefix: 'scythe',
             suffix: '.png',
-            start: 2,
-            end: 6,
+            start: 1,
+            end: 8,
             zeroPad: 0,
         }),
-        frameRate: 20
+        frameRate: 30
     });
     scene.anims.create({
         key: 'ladydeathcape',

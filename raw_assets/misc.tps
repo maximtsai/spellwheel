@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>93</uint>
+        <uint>90</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -169,7 +169,7 @@
             <key>defaultPivotPoint</key>
             <point_f>0.5,0.5</point_f>
             <key>writePivotPoints</key>
-            <false/>
+            <true/>
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
@@ -234,6 +234,7 @@
                 <false/>
             </struct>
             <key type="filename">misc/green_circle.png</key>
+            <key type="filename">misc/purple_circle.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -283,7 +284,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.5</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -299,7 +300,6 @@
             <key type="filename">misc/scythe4.png</key>
             <key type="filename">misc/scythe5.png</key>
             <key type="filename">misc/scythe6.png</key>
-            <key type="filename">misc/scythe_mini.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -311,6 +311,58 @@
                 <rect>213,195,425,390</rect>
                 <key>scale9Paddings</key>
                 <rect>213,195,425,390</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/scythe7.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>120,129,240,258</rect>
+                <key>scale9Paddings</key>
+                <rect>120,129,240,258</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/scythe8.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>200,129,400,258</rect>
+                <key>scale9Paddings</key>
+                <rect>200,129,400,258</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/scytheflash1.png</key>
+            <key type="filename">misc/scytheflash2.png</key>
+            <key type="filename">misc/scytheflash2png.png</key>
+            <key type="filename">misc/scytheflash3.png</key>
+            <key type="filename">misc/scytheflash4.png</key>
+            <key type="filename">misc/scytheflash5.png</key>
+            <key type="filename">misc/scytheflash6.png</key>
+            <key type="filename">misc/scytheflash7.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>213,225,425,450</rect>
+                <key>scale9Paddings</key>
+                <rect>213,225,425,450</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

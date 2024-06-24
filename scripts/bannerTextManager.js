@@ -21,6 +21,11 @@ class BannerTextManager {
 
     setText(text) {
         this.text.setText(text);
+        if (this.text.width > gameConsts.width - 80) {
+            this.text.setFontSize(30)
+        } else {
+            this.text.setFontSize(32)
+        }
     }
 
     getDepth() {

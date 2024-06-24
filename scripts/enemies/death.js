@@ -7,12 +7,43 @@
         this.setupCustomDeathSprite();
         setTimeout(() => {
              this.setAsleep();
+            globalObjects.magicCircle.disableMovement();
+            this.mainScythe = this.addSprite(this.x, this.y + 75, 'misc', 'scythe1.png').setDepth(200).setRotation(-0.6).setOrigin(0.5, 0.9);
          }, 10)
      }
 
      initStatsCustom() {
          this.health = 4;
          this.scytheObjects = [];
+     }
+
+     swingScythe(damage = 4444, onComplete) {
+        this.addTween({
+            targets: this.mainScythe,
+            duration: 250,
+            ease: 'Quart.easeInOut',
+            rotation: -0.35,
+            onComplete: () => {
+                this.addTween({
+                    targets: this.mainScythe,
+                    duration: 750,
+                    ease: 'Quint.easeIn',
+                    rotation: -3.1,
+                    onComplete: () => {
+                        if (onComplete) {
+                            onComplete();
+                        }
+                    }
+                })
+                this.addDelay(() => {
+                    this.mainScythe.play('scytheReap');
+                    playSound('death_attack');
+                    this.addDelay(() => {
+                        messageBus.publish("selfTakeDamage", damage);
+                    }, 300)
+                }, 200)
+            }
+        })
      }
 
      // update(dt) {}
@@ -38,10 +69,11 @@
         repeatDeathHandsRotate();
         startDeathFlutterAnim();
         tweenFloatingDeath(0.667, 1, 1800, "Cubic.easeOut", () => {
-            globalObjects.bannerTextManager.setDialog(["THUS COMES THE END.", "UNFORTUNATE, BUT YOUR JOURNEY\nWAS NEVER MEANT TO BE.", "FAREWELL."]);
+            globalObjects.bannerTextManager.setDialog([getLangText('deathFight1a'), getLangText('deathFight1b'), getLangText('deathFight1c')]);
             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
             globalObjects.bannerTextManager.showBanner(true);
             globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                globalObjects.magicCircle.enableMovement();
                 this.setAwake();
             })
         });
@@ -97,7 +129,7 @@
 
 
      setHealth(newHealth) {
-        messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'IMMATERIAL', 0.8, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.4, scaleY: 1.4});
+        messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'IMMATERIAL', 0.8, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.1, scaleY: 1.1});
 
          // super.setHealth(newHealth);
          // let prevHealthPercent = this.prevHealth / this.healthMax;
@@ -108,6 +140,8 @@
          // }
      }
 
+
+
      initAttacks() {
          this.attacks = [
              [
@@ -115,41 +149,46 @@
                      name: ";4444",
                      chargeAmt: 600,
                      chargeMult: 2,
+                     finishDelay: 3000,
                      damage: -1,
                      isBigMove: true,
                      attackStartFunction: () => {
-
+                         this.swingScythe(4444, () => {
+                             if (!globalObjects.player.dead) {
+                                 globalObjects.bannerTextManager.setDialog([getLangText('deathFight1d'), getLangText('deathFight1e')]);
+                                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                                 globalObjects.bannerTextManager.showBanner(true);
+                                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                                     this.interruptCurrentAttack();
+                                     this.setAwake();
+                                 });
+                             }
+                         })
                      },
                      finaleFunction: () => {
                          this.setAsleep();
-                         globalObjects.bannerTextManager.setDialog(["SEEMS YOU'VE LEARNED\nA TRICK OR TWO", "BUT CAN YOU SURVIVE DEATH\nBY A THOUSAND CUTS?"]);
-                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-                         globalObjects.bannerTextManager.showBanner(true);
-                         globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                             this.setAwake();
-                         });
                      }
                  },
                  {
                      name: ";6x1",
-                     chargeAmt: 1000,
+                     chargeAmt: 1200,
                      chargeMult: 2,
+                     finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
-                         this.setSprite('time_magi_cast_big.png');
                          this.finishedChargingMulti = false;
-                         this.startChargingUltimate();
+                         this.startChargingMulti();
                      },
                      attackStartFunction: () => {
                          this.finishedChargingMulti = true;
                      },
                      attackFinishFunction: () => {
-                         this.fireScytheObjects(4);
+                         this.fireScytheObjects(6);
                      },
                      finaleFunction: () => {
                          this.setAsleep();
-                         globalObjects.bannerTextManager.setDialog(["SEEMS YOU'VE LEARNED\nA TRICK OR TWO", "BUT CAN YOU SURVIVE DEATH\nBY A THOUSAND CUTS?"]);
+                         globalObjects.bannerTextManager.setDialog([getLangText('deathFight1f'), getLangText('deathFight1g')]);
                          globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                          globalObjects.bannerTextManager.showBanner(true);
                          globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -183,7 +222,8 @@
          let projDur = 600 - Math.floor(Math.sqrt(totalScytheObjects) * 50);
          let scytheObjectsFired = 0;
          while (this.scytheObjects.length > 0) {
-             let currObj = this.scytheObjects.shift();
+             let currObj = this.scytheObjects.pop();
+             currObj.rotTween.stop();
              let delayAmt = scytheObjectsFired * interval;
              scytheObjectsFired++;
              this.addTween({
@@ -231,7 +271,7 @@
                  targets: currObj,
                  delay: delayAmt,
                  x: gameConsts.halfWidth * 0.92 + currObj.x * 0.15,
-                 ease: 'Back.easeIn',
+                 rotation: "-=4",
                  easeParams: [3],
                  duration: projDur
              });
@@ -240,83 +280,88 @@
 
      startChargingMulti() {
          for (let i = 0; i < 36; i++) {
+             let startX = this.x;
+             let startY = this.y;
+             let dirAngle = +Math.PI*0.75 + i * Math.PI / 9;
+             let multAmt = i < 18 ? 90 : 135;
+             let offsetX = Math.sin(dirAngle) * multAmt;
+             let offsetY = -Math.cos(dirAngle) * multAmt;
+
+             let xPos = startX + offsetX; let yPos = startY + offsetY;
+             let scytheObj = this.addImage(xPos, yPos, 'misc', "miniscythe.png").setScale(0).setDepth(3);
+             scytheObj.setScale(0).setRotation((Math.PI / 18) * i);
+             this.scytheObjects.push(scytheObj);
+            scytheObj.rotTween = this.addTween({
+                targets: scytheObj,
+                rotation: "-=6.281",
+                duration: 10000,
+                repeat: -1
+            })
+         }
+         for (let j = 0; j < 18; j++) {
+             let currScythe = this.scytheObjects[j];
              this.addTween({
-                 delay: i * 100,
-                 duration: 150,
-                 targets: this.sprite,
-                 scaleX: this.sprite.startScale,
-                 scaleY: this.sprite.startScale,
-                 rotation: 0,
-                 ease: 'Cubic.easeOut',
+                 delay: Math.abs((9 - j) * 250),
+                 duration: 250,
+                 targets: currScythe,
+                 scaleX: 0.5,
+                 scaleY: 0.5,
+                 ease: 'Back.easeOut',
                  onStart: () => {
                      if (!this.finishedChargingMulti) {
                          // this.sprite.setScale(this.sprite.startScale * 1.05);
                          // this.sprite.setRotation(0.1);
-                         let startX = this.x;
-                         let startY = this.y;
-                         let dirAngle = i * Math.PI / 12;
-                         let offsetX = Math.sin(dirAngle) * 90;
-                         let offsetY = -Math.cos(dirAngle) * 80;
-
-                         let xPos = startX + offsetX; let yPos = startY + offsetY;
-                         let scytheObj = this.createScytheObject(xPos, yPos, 0, 2, -300 + i * 30);
-                         scytheObj.setDepth(3);
-                         this.addTween({
-                             duration: 400,
-                             targets: scytheObj,
-                             x: startX + offsetX * (i % 6 == 0 ? 1.55 : 1.6),
-                             y: startY + offsetY * (i % 6 == 0 ? 1.55 : 1.6),
-                             ease: 'Quart.easeOut'
-                         });
-                         let numAttacks = i + 1;
-                         if (i == 5) {
+                         let numAttacks = Math.abs((9 - j)) + 1;
+                         if (j == 5) {
                              this.attackName.setText("}6x" + numAttacks + "}");
-                         } else if (i == 11) {
+                         } else if (j == 11) {
                              this.attackName.setText("}}6x" + numAttacks + "}}");
                              this.repositionAngrySymbol();
-                         } else if (i == 17) {
+                         } else if (j == 17) {
                              this.attackName.setText("}}}6x" + numAttacks + "}}}");
                              this.repositionAngrySymbol();
-                         } else if (i == 23) {
+                         } else if (j == 23) {
                              this.attackName.setText("}}}}6x" + numAttacks + "}}}}");
                              this.repositionAngrySymbol();
-                         } else if (i == 30) {
+                         } else if (j == 30) {
                              this.attackName.setText("}}}}}6x" + numAttacks + "}}}}}");
                              this.repositionAngrySymbol();
-                         }  else if (i == 35) {
+                         } else if (j == 35) {
                              this.attackName.setText("}}}}}}6x" + numAttacks + "}}}}}}");
                              this.repositionAngrySymbol();
-                             this.nextAttack.chargeMult = 12;
-                             // this.setDefaultSprite('time_magi.png');
                          }
                      }
                  },
              })
          }
-     }
 
-     createScytheObject(x, y, delay = 0, durMult = 1) {
-         let newObj = this.addSprite(x, y, 'misc', "miniscythe.png").setRotation((Math.random() - 0.5) * 3).setScale(0).setDepth(110);
-         newObj.durMult = durMult;
-         this.scytheObjects.push(newObj);
-         this.addTween({
-             delay: delay,
-             targets: newObj,
-             scaleX: 1,
-             scaleY: 1,
-             ease: 'Back.easeOut',
-             easeParams: [3],
-             duration: 300,
-             onStart: () => {
-                 // let sound = playSound('time_strike');
-                 // sound.detune = detune;
-             }
-         });
-         this.addTween({
-             targets: newObj,
-             rotation: "-=6.283",
-             duration: 5000,
-         });
-         return newObj;
+        PhaserScene.time.delayedCall(4000, () => {
+            if (this.finishedChargingMulti) {
+                return;
+            }
+            this.attackName.setText(";;;6x36;;;");
+            this.repositionAngrySymbol();
+            this.nextAttack.chargeMult = 9;
+            this.addTween({
+                targets: this.scytheObjects,
+                duration: 350,
+                scaleX: 0.7,
+                scaleY: 0.7,
+                ease: 'Quart.easeOut',
+                onComplete: () => {
+                    this.addTween({
+                        targets: this.scytheObjects,
+                        duration: 450,
+                        scaleX: 1,
+                        scaleY: 1,
+                        ease: 'Back.easeOut',
+                        onComplete: () => {
+
+                        }
+                    })
+                }
+            })
+
+        })
      }
 }

@@ -260,14 +260,14 @@ function playReaperAnim(enemy, customFinFunc) {
     tweenFloatingDeath(0.75, 1, 1200, "Cubic.easeInOut", () => {
             gameVars.deathFlutterDelay = 450;
             // repeatDeathFlutterAnimation();
-            let scythe = PhaserScene.add.sprite(gameConsts.halfWidth, 140, 'misc', 'scythe1.png').setDepth(999).setAlpha(0).setScale(0.8).setRotation(-1);
+            let scythe = PhaserScene.add.sprite(gameConsts.halfWidth, 140, 'misc', 'scythe1.png').setDepth(999).setAlpha(0).setScale(0.5).setRotation(-1.5);
             PhaserScene.tweens.add({
                 targets: scythe,
                 alpha: 1,
                 y: 60,
                 scaleX: 0.7,
                 scaleY: 0.7,
-                rotation: -0.95,
+                rotation: -1.4,
                 ease: 'Cubic.easeIn',
                 duration: 400,
                 onComplete: () => {
@@ -282,7 +282,7 @@ function playReaperAnim(enemy, customFinFunc) {
 
                     PhaserScene.tweens.add({
                         targets: scythe,
-                        rotation: 0,
+                        rotation: -0.5,
                         ease: 'Cubic.easeOut',
                         duration: 800,
                         completeDelay: 100,
@@ -357,7 +357,6 @@ function playReaperAnim(enemy, customFinFunc) {
                             });
 
                             scythe.play('scytheReap');
-                            scythe.rotation = -1;
                             if (enemy) {
                                 let body = enemy.sprite;
                                 PhaserScene.tweens.add({
@@ -371,7 +370,7 @@ function playReaperAnim(enemy, customFinFunc) {
 
                             PhaserScene.tweens.add({
                                 targets: scythe,
-                                rotation: -1.5,
+                                rotation: -3,
                                 ease: 'Quint.easeOut',
                                 duration: 1500,
                                 onComplete: () => {

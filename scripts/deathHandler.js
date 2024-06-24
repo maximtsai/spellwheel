@@ -55,9 +55,9 @@ function clearDeathFog() {
 
 function getFogSlice() {
     if (!globalObjects.fogSlice) {
-        globalObjects.fogSlice = PhaserScene.add.image(gameConsts.halfWidth + 8, -60, 'backgrounds', 'fog_slice.png').setDepth(-2).setOrigin(0.68, 0.29);
+        globalObjects.fogSlice = PhaserScene.add.image(gameConsts.halfWidth + 8, -45, 'backgrounds', 'fog_slice.png').setDepth(-2).setOrigin(0.68, 0.29);
     }
-    globalObjects.fogSlice.setAlpha(0.2).setScale(1.01).setRotation(-0.8);
+    globalObjects.fogSlice.setAlpha(0.2).setScale(1.01).setRotation(-0.8).setPosition(gameConsts.halfWidth + 8, -45);
     return globalObjects.fogSlice;
 }
 
@@ -65,7 +65,7 @@ function getFogSliceDarken() {
     if (!globalObjects.fogSliceDarken) {
         globalObjects.fogSliceDarken = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(-3).setScale(500, 500);
     }
-    globalObjects.fogSliceDarken.setAlpha(1);
+    globalObjects.fogSliceDarken.setAlpha(1).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
     return globalObjects.fogSliceDarken;
 }
 
@@ -260,15 +260,21 @@ function playReaperAnim(enemy, customFinFunc) {
     tweenFloatingDeath(0.75, 1, 1200, "Cubic.easeInOut", () => {
             gameVars.deathFlutterDelay = 450;
             // repeatDeathFlutterAnimation();
-            let scythe = PhaserScene.add.sprite(gameConsts.halfWidth, 140, 'misc', 'scythe1.png').setDepth(999).setAlpha(0).setScale(0.5).setRotation(-1.5);
+            let scythe = PhaserScene.add.sprite(gameConsts.halfWidth, 140, 'misc', 'scythe1.png').setDepth(999).setAlpha(0).setScale(0.65).setRotation(-1.5);
+            scythe.play('scytheFlash');
             PhaserScene.tweens.add({
                 targets: scythe,
                 alpha: 1,
-                y: 60,
-                scaleX: 0.7,
-                scaleY: 0.7,
-                rotation: -1.4,
-                ease: 'Cubic.easeIn',
+                duration: 450
+            })
+
+            PhaserScene.tweens.add({
+                targets: scythe,
+                y: 75,
+                scaleX: 0.8,
+                scaleY: 0.8,
+                rotation: -1.35,
+                ease: 'Quart.easeIn',
                 duration: 400,
                 onComplete: () => {
                     if (enemy.customBgMusic) {
@@ -279,170 +285,201 @@ function playReaperAnim(enemy, customFinFunc) {
                         tweenObjectRotationTo(globalObjects.deathLeftHand, -0.2, 500, "Cubic.easeOut");
                         tweenObjectRotationTo(globalObjects.deathRightHand, 0.1, 500, "Cubic.easeOut");
                     })
-
+                    PhaserScene.tweens.add({
+                        targets: scythe,
+                        scaleX: 0.9,
+                        scaleY: 0.9,
+                        y: 65,
+                        ease: 'Cubic.easeInOut',
+                        duration: 900,
+                    });
                     PhaserScene.tweens.add({
                         targets: scythe,
                         rotation: -0.5,
-                        ease: 'Cubic.easeOut',
-                        duration: 800,
-                        completeDelay: 100,
+
+                        ease: 'Quart.easeOut',
+                        duration: 900,
+                        completeDelay: 200,
                         onComplete: () => {
-                            if (enemy.customBgMusic) {
-                                enemy.customBgMusic.stop();
-                            }
-                            playSound(globalObjects.reapSound || 'death_attack');
-                            messageBus.publish('reapedEnemyGong')
-                            globalObjects.reapSound = null;
-                            let fogSlice = getFogSlice();
-
-                            let fogSliceDarken = getFogSliceDarken();
-                            PhaserScene.tweens.add({
-                                targets: fogSliceDarken,
-                                alpha: 0.75,
-                                ease: 'Cubic.easeOut',
-                                duration: 500,
-                            });
-                            let oldSwirlAlpha = globalObjects.fogSwirl ? globalObjects.fogSwirl.alpha : 1;
-
-                            PhaserScene.tweens.add({
-                                targets: globalObjects.fogSwirl,
-                                alpha: 0.25,
-                                ease: 'Cubic.easeIn',
-                                duration: 300,
-                                onComplete: () => {
-                                    PhaserScene.tweens.add({
-                                        delay: 100,
-                                        targets: globalObjects.fogSwirl,
-                                        ease: 'Cubic.easeInOut',
-                                        alpha: oldSwirlAlpha,
-                                        duration: 1000,
-                                    });
-                                }
-                            });
-                            PhaserScene.tweens.add({
-                                targets: [fogSlice],
-                                alpha: 1,
-                                ease: 'Quad.easeOut',
-                                duration: 200,
-                                onComplete: () => {
-                                    PhaserScene.tweens.add({
-                                        delay: 200,
-                                        targets: [fogSlice, fogSliceDarken],
-                                        ease: 'Quart.easeIn',
-                                        alpha: 0,
-                                        duration: 1400,
-                                    });
-                                }
-                            });
-                            PhaserScene.tweens.add({
-                                targets: [fogSlice],
-                                scaleX: 1.08,
-                                scaleY: 1.08,
-                                ease: 'Quint.easeOut',
-                                duration: 300,
-                                onComplete: () => {
-                                    PhaserScene.tweens.add({
-                                        targets: [fogSlice],
-                                        scaleX: 1.09,
-                                        scaleY: 1.09,
-                                        duration: 1500,
-                                    });
-                                }
-                            });
-                            PhaserScene.tweens.add({
-                                targets: fogSlice,
-                                rotation: -0.85,
-                                ease: 'Quad.easeOut',
-                                duration: 1500,
-                            });
-
                             scythe.play('scytheReap');
-                            if (enemy) {
-                                let body = enemy.sprite;
-                                PhaserScene.tweens.add({
-                                    targets: body,
-                                    scaleX: body.scaleX * 1.2,
-                                    scaleY: body.scaleX * 1.2,
-                                    alpha: 0,
-                                    duration: 750
-                                });
-                            }
-
                             PhaserScene.tweens.add({
                                 targets: scythe,
-                                rotation: -3,
-                                ease: 'Quint.easeOut',
-                                duration: 1500,
+                                rotation: "-=1.5",
+                                ease: 'Quint.easeIn',
+                                duration: 50,
                                 onComplete: () => {
-                                    repeatDeathHandsRotate();
+                                    if (enemy.customBgMusic) {
+                                        enemy.customBgMusic.stop();
+                                    }
+
+                                    let fogSlice = getFogSlice();
+
+                                    let fogSliceDarken = getFogSliceDarken();
                                     PhaserScene.tweens.add({
-                                        targets: [scythe],
-                                        alpha: 0,
-                                        delay: 50,
-                                        scaleX: 0.5,
-                                        scaleY: 0.5,
+                                        targets: fogSliceDarken,
+                                        alpha: 0.75,
+                                        ease: 'Cubic.easeOut',
+                                        duration: 500,
+                                    });
+                                    let oldSwirlAlpha = globalObjects.fogSwirl ? globalObjects.fogSwirl.alpha : 1;
+
+                                    PhaserScene.tweens.add({
+                                        targets: globalObjects.fogSwirl,
+                                        alpha: 0.25,
                                         ease: 'Cubic.easeIn',
-                                        duration: 600,
+                                        duration: 300,
                                         onComplete: () => {
-                                            scythe.destroy();
-                                            enemy.destroy();
-                                            setFloatingDeathDepth(100010);
-                                            handleReaperDialog(level, () => {
-                                                gameVars.deathFlutterDelay = 10;
-                                                repeatDeathFlutterAnimation(-0.25);
-                                                if (globalObjects.deathLeftHand.currAnim) {
-                                                    globalObjects.deathLeftHand.currAnim.stop();
-                                                    globalObjects.deathRightHand.currAnim.stop();
-                                                }
-                                                tweenObjectRotationTo(globalObjects.deathLeftHand, -0.38, 1100, "Cubic.easeIn");
-                                                tweenObjectRotationTo(globalObjects.deathRightHand, 0.32, 1100, "Cubic.easeIn");
-                                                globalObjects.deathLeftHand.alpha = 3;
-                                                globalObjects.deathRightHand.alpha = 3;
-                                                tweenFloatingDeath(0.5, 0.1, 1100, "Quad.easeIn", () => {
-                                                    globalObjects.floatingDeath.flutterAnim.stop();
-                                                    globalObjects.floatingDeath.visible = true;
-                                                    globalObjects.floatingDeath2.visible = false;
-                                                    globalObjects.floatingDeath.alpha = 0.1;
-                                                    PhaserScene.tweens.add({
-                                                        targets: [globalObjects.floatingDeath, globalObjects.deathLeftHand, globalObjects.deathRightHand],
-                                                        alpha: 0,
-                                                        fakeAlpha: 0,
-                                                        scaleX: 0.3,
-                                                        scaleY: 0.3,
-                                                        duration: 400,
-                                                        ease: 'Quad.easeOut',
-                                                        onComplete: () => {
-                                                            globalObjects.floatingDeath.visible = false;
+                                            PhaserScene.tweens.add({
+                                                delay: 100,
+                                                targets: globalObjects.fogSwirl,
+                                                ease: 'Cubic.easeInOut',
+                                                alpha: oldSwirlAlpha,
+                                                duration: 1000,
+                                            });
+                                        }
+                                    });
+                                    PhaserScene.tweens.add({
+                                        delay: 50,
+                                        targets: [fogSlice],
+                                        alpha: 1,
+                                        ease: 'Quad.easeOut',
+                                        duration: 200,
+                                        onComplete: () => {
+                                            PhaserScene.tweens.add({
+                                                delay: 200,
+                                                targets: [fogSlice, fogSliceDarken],
+                                                ease: 'Quart.easeIn',
+                                                alpha: 0,
+                                                duration: 1400,
+                                            });
+                                        }
+                                    });
+                                    PhaserScene.tweens.add({
+                                        delay: 50,
+                                        targets: [fogSlice],
+                                        scaleX: 1.08,
+                                        scaleY: 1.08,
+                                        ease: 'Quint.easeOut',
+                                        duration: 300,
+                                        onComplete: () => {
+                                            PhaserScene.tweens.add({
+                                                targets: [fogSlice],
+                                                scaleX: 1.09,
+                                                scaleY: 1.09,
+                                                duration: 1500,
+                                            });
+                                        }
+                                    });
+                                    PhaserScene.tweens.add({
+                                        delay: 50,
+                                        targets: fogSlice,
+                                        scaleX: 1.06,
+                                        scaleY: 1.06,
+                                        rotation: -0.85,
+                                        ease: 'Quad.easeOut',
+                                        duration: 1500,
+                                    });
+                                    if (enemy) {
+                                        let body = enemy.sprite;
+                                        PhaserScene.tweens.add({
+                                            targets: body,
+                                            scaleX: body.scaleX * 1.2,
+                                            scaleY: body.scaleX * 1.2,
+                                            alpha: 0,
+                                            duration: 750
+                                        });
+                                    }
+                                    setTimeout(() => {
+                                        playSound(globalObjects.reapSound || 'death_attack');
+                                        messageBus.publish('reapedEnemyGong')
+                                        globalObjects.reapSound = null;
+                                    }, 100);
+                                    PhaserScene.tweens.add({
+                                        targets: scythe,
+                                        rotation: -3.5,
+                                        x: "-=10",
+                                        ease: 'Quint.easeOut',
+                                        duration: 500,
+                                        onComplete: () => {
+                                            repeatDeathHandsRotate();
+                                            PhaserScene.tweens.add({
+                                                delay: 200,
+                                                targets: scythe,
+                                                rotation: "+=0.1",
+                                                x: "-=12",
+                                                ease: 'Quart.easeInOut',
+                                                duration: 2000,
+                                            })
+                                            PhaserScene.tweens.add({
+                                                targets: scythe,
+                                                alpha: 0,
+                                                delay: 1000,
+                                                scaleX: 0.6,
+                                                scaleY: 0.6,
+                                                ease: 'Cubic.easeIn',
+                                                duration: 600,
+                                                onComplete: () => {
+                                                    scythe.destroy();
+                                                    enemy.destroy();
+                                                    setFloatingDeathDepth(100010);
+                                                    handleReaperDialog(level, () => {
+                                                        gameVars.deathFlutterDelay = 10;
+                                                        repeatDeathFlutterAnimation(-0.25);
+                                                        if (globalObjects.deathLeftHand.currAnim) {
+                                                            globalObjects.deathLeftHand.currAnim.stop();
+                                                            globalObjects.deathRightHand.currAnim.stop();
                                                         }
-                                                    });
-                                                });
-                                                globalObjects.postFightScreen.startGloom();
-                                                PhaserScene.tweens.add({
-                                                    targets: [scythe],
-                                                    scaleX: 0.5,
-                                                    scaleY: 0.5,
-                                                    alpha: 0,
-                                                    ease: 'Cubic.easeIn',
-                                                    duration: 1100,
-                                                    completeDelay: 200,
-                                                    onComplete: () => {
+                                                        tweenObjectRotationTo(globalObjects.deathLeftHand, -0.38, 1100, "Cubic.easeIn");
+                                                        tweenObjectRotationTo(globalObjects.deathRightHand, 0.32, 1100, "Cubic.easeIn");
+                                                        globalObjects.deathLeftHand.alpha = 3;
+                                                        globalObjects.deathRightHand.alpha = 3;
+                                                        tweenFloatingDeath(0.5, 0.1, 1100, "Quad.easeIn", () => {
+                                                            globalObjects.floatingDeath.flutterAnim.stop();
+                                                            globalObjects.floatingDeath.visible = true;
+                                                            globalObjects.floatingDeath2.visible = false;
+                                                            globalObjects.floatingDeath.alpha = 0.1;
+                                                            PhaserScene.tweens.add({
+                                                                targets: [globalObjects.floatingDeath, globalObjects.deathLeftHand, globalObjects.deathRightHand],
+                                                                alpha: 0,
+                                                                fakeAlpha: 0,
+                                                                scaleX: 0.3,
+                                                                scaleY: 0.3,
+                                                                duration: 400,
+                                                                ease: 'Quad.easeOut',
+                                                                onComplete: () => {
+                                                                    globalObjects.floatingDeath.visible = false;
+                                                                }
+                                                            });
+                                                        });
+                                                        globalObjects.postFightScreen.startGloom();
                                                         PhaserScene.tweens.add({
-                                                            targets: [globalObjects.fogSliceDarken],
+                                                            targets: [scythe],
+                                                            scaleX: 0.5,
+                                                            scaleY: 0.5,
                                                             alpha: 0,
-                                                            duration: 1000,
+                                                            ease: 'Cubic.easeIn',
+                                                            duration: 1100,
+                                                            completeDelay: 200,
                                                             onComplete: () => {
-                                                                globalObjects.fogSliceDarken.destroy();
+                                                                PhaserScene.tweens.add({
+                                                                    targets: [globalObjects.fogSliceDarken],
+                                                                    alpha: 0,
+                                                                    duration: 1000,
+                                                                    onComplete: () => {
+                                                                        globalObjects.fogSliceDarken.destroy();
+                                                                    }
+                                                                });
+                                                                if (customFinFunc) {
+                                                                    customFinFunc();
+                                                                } else {
+                                                                    globalObjects.magicCircle.enableMovement();
+                                                                    globalObjects.postFightScreen.createWinScreen(level);
+                                                                }
                                                             }
                                                         });
-                                                        if (customFinFunc) {
-                                                            customFinFunc();
-                                                        } else {
-                                                            globalObjects.magicCircle.enableMovement();
-                                                            globalObjects.postFightScreen.createWinScreen(level);
-                                                        }
-                                                    }
-                                                });
-                                            })
+                                                    })
+                                                }
+                                            });
                                         }
                                     });
                                 }

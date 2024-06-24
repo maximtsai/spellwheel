@@ -376,7 +376,7 @@ let textData = {
         jp: ''},
 
 
-    protect_tut_desc: {en_us: 'The Shield rune creates barriers\nfor protection as long as they are\npositioned between you and the enemy.',
+    protect_tut_desc: {en_us: 'The Shield rune creates\nbarriers that protect you as\nlong as they are positioned\nbetween you and the enemy.',
         fr: '',
         zh_tw: '',
         zh_cn: '',

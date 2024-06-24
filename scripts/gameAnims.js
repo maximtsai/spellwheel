@@ -262,6 +262,17 @@ function createAnimations(scene) {
         repeatDelay: 1000
     });
     scene.anims.create({
+        key: 'scytheFlash',
+        frames: scene.anims.generateFrameNames('misc', {
+            prefix: 'scytheflash',
+            suffix: '.png',
+            start: 1,
+            end: 7,
+            zeroPad: 0,
+        }),
+        frameRate: 10
+    });
+    scene.anims.create({
         key: 'scythePause',
         frames: scene.anims.generateFrameNames('misc', {
             prefix: 'scythe',
@@ -270,7 +281,7 @@ function createAnimations(scene) {
             end: 5,
             zeroPad: 0,
         }),
-        frameRate: 30
+        frameRate: 15
     });
     scene.anims.create({
         key: 'scytheResume',
@@ -281,7 +292,7 @@ function createAnimations(scene) {
             end: 8,
             zeroPad: 0,
         }),
-        frameRate: 30
+        frameRate: 15
     });
     scene.anims.create({
         key: 'scytheReap',
@@ -292,7 +303,7 @@ function createAnimations(scene) {
             end: 8,
             zeroPad: 0,
         }),
-        frameRate: 30
+        frameRate: 15
     });
     scene.anims.create({
         key: 'ladydeathcape',
@@ -307,7 +318,7 @@ function createAnimations(scene) {
     });
     scene.anims.create({
         key: 'ladydeathhood',
-        frames: scene.anims.generateFrameNames('hood', {
+        frames: scene.anims.generateFrameNames('deathfin', {
             prefix: 'hood00',
             suffix: '.png',
             start: 0,

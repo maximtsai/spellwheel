@@ -221,6 +221,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/blank.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1,1,1,1</rect>
+                <key>scale9Paddings</key>
+                <rect>1,1,1,1</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/blood_0.png</key>
             <key type="filename">enemies/blood_1.png</key>
             <struct type="IndividualSpriteSettings">
@@ -685,15 +700,11 @@
             </struct>
             <key type="filename">enemies/max_death_1_angry.png</key>
             <key type="filename">enemies/max_death_1_cast.png</key>
-            <key type="filename">enemies/max_death_1a.png</key>
-            <key type="filename">enemies/max_death_1b.png</key>
-            <key type="filename">enemies/max_death_left_sleeve_a.png</key>
-            <key type="filename">enemies/max_death_left_sleeve_b.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.9</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -716,6 +727,24 @@
                 <rect>43,46,85,93</rect>
                 <key>scale9Paddings</key>
                 <rect>43,46,85,93</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/max_death_1a.png</key>
+            <key type="filename">enemies/max_death_1b.png</key>
+            <key type="filename">enemies/max_death_left_sleeve_a.png</key>
+            <key type="filename">enemies/max_death_left_sleeve_b.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>169,175,337,350</rect>
+                <key>scale9Paddings</key>
+                <rect>169,175,337,350</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

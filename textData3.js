@@ -145,7 +145,7 @@ let textData3 = {
         jp: ''
     },
 
-    deathFight1a: {en_us: "PITY, BUT YOUR JOURNEY\nWAS NEVER MEANT TO BE.",
+    deathFight1a: {en_us: "ALAS, YOUR JOURNEY WAS\nNOT MEANT TO BE.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -169,7 +169,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    deathFight1d: {en_us: "BUT YOU'LL NEED MORE THAN\nTHAT TO AVOID FATE.",
+    deathFight1d: {en_us: "BUT YOU'LL NEED MORE THAN\nTHAT TO AVOID YOUR FATE.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -201,6 +201,31 @@ let textData3 = {
         es: '',
         jp: ''
     },
+    deathFight1h: {en_us: "... THIS WAS MY\nFAVORITE SCYTHE.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    deathFight1i: {en_us: "NOW WORTHLESS.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    deathFight1j: {en_us: "IT'S BEEN A LONG TIME SINCE\nI'VE HAD TO BE \"HANDS ON\".",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+
 
     epilogue1a: {en_us: "ALAS, YOUR WOUNDS\nWERE TOO MANY TO BEAR.",
         fr: '',

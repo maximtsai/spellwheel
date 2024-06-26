@@ -467,7 +467,9 @@ class Enemy {
             this.chargeBarOutline.alpha = goalAlpha * changeSpd + this.chargeBarOutline.alpha * (1-changeSpd);
 
             this.chargeBarAngry.scaleX = this.chargeBarCurr.scaleX;
-            if (this.isUsingAttack) {
+            if (this.attackPaused) {
+                // doNothing
+            } else if (this.isUsingAttack) {
                 // doNothing
             } else if (this.attackCharge >= this.nextAttackChargeNeeded) {
                 if (this.nextAttack.damage !== undefined && this.nextAttack.damage !== 0) {
@@ -510,10 +512,11 @@ class Enemy {
                     });
                 }
 
-                this.useMove();
+                console.log("set warning to visible");
                 this.chargeBarWarning.visible = true;
                 this.chargeBarWarning.alpha = 0.8;
                 this.chargeBarWarningBig.alpha = Math.min(0.5, this.chargeBarWarningBig.alpha + timeChange * 0.05);
+                this.useMove();
             } else if (this.attackCharge >= this.nextAttackChargeNeeded * 0.9 - 30) {
                 this.chargeBarWarning.visible = true;
                 this.chargeBarWarning.alpha += (this.slowMult * (timeChange + 0.5)) * 0.03 * this.chargeBarWarning.alphaMult;
@@ -558,6 +561,7 @@ class Enemy {
             this.chargeBarAngry.visible = true;
             this.chargeBarCurr.visible = true;
             this.chargeBarAngry.alpha = 0.55;
+            console.log("setting charge bar angry");
             if (chargeMult > 1.1) {
                 this.showAngrySymbol('exclamation');
             }
@@ -1333,6 +1337,9 @@ class Enemy {
         this.timeSinceLastAttacked = 9999;
         this.isAsleep = false;
         this.attackName.visible = true;
+        this.attackPaused = false;
+        this.unhideCurrentAttack();
+
     }
 
     hideAngrySymbol() {
@@ -1340,6 +1347,7 @@ class Enemy {
             return;
         }
         if (!this.angrySymbolIsHiding) {
+            console.log("hidden angry symbol");
             this.angrySymbolIsHiding = true;
             this.angrySymbolAnim = PhaserScene.tweens.add({
                 targets: [this.angrySymbol],
@@ -1358,6 +1366,7 @@ class Enemy {
         if (this.isDestroyed) {
             return;
         }
+        console.log("show angry symb")
         if (this.angrySymbol.currAnim !== state) {
             this.angrySymbol.currAnim = state;
             this.angrySymbol.play(state);
@@ -1516,7 +1525,6 @@ class Enemy {
         this.attackName.visible = false;
         messageBus.publish('enemyHasDied');
 
-        console.log("die cleanup")
         for (let i in this.statuses) {
             let status = this.statuses[i];
             if (status == null) {
@@ -1710,12 +1718,18 @@ class Enemy {
     }
 
     hideCurrentAttack() {
-        this.attackName.setText(" ");
-        this.chargeBarCurr.alpha = 0;
+        this.chargeBarCurr.x = -999;
         this.hideAngrySymbol();
-        this.chargeBarWarning.alpha = 0;
-        this.chargeBarAngry.alpha = 0;
+        this.attackName.x = -999;
+        this.chargeBarWarning.x = -999;
+        this.chargeBarAngry.x = -999;
+    }
 
+    unhideCurrentAttack() {
+        this.chargeBarCurr.x = gameConsts.halfWidth;
+        this.attackName.x = gameConsts.halfWidth;
+        this.chargeBarWarning.x = gameConsts.halfWidth;
+        this.chargeBarAngry.x = gameConsts.halfWidth;
     }
 
     setNextAttack(set, index = 0) {

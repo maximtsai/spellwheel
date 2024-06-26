@@ -201,6 +201,13 @@ function repeatDeathHandsRotate() {
     });
 }
 
+function setReaperVisible(visible) {
+    globalObjects.deathLeftHand.visible = visible;
+    globalObjects.deathRightHand.visible = visible;
+    globalObjects.floatingDeath.visible = visible;
+    globalObjects.floatingDeath2.visible = visible;
+}
+
 function playReaperAnim(enemy, customFinFunc) {
     playSound('sound_of_death');
     messageBus.publish('reapedEnemyGong')
@@ -390,7 +397,7 @@ function playReaperAnim(enemy, customFinFunc) {
                                         });
                                     }
                                     setTimeout(() => {
-                                        playSound(globalObjects.reapSound || 'death_attack');
+                                        playSound(globalObjects.reapSound || 'death_attack').detune = 0;
                                         messageBus.publish('reapedEnemyGong')
                                         messageBus.publish('showCircleShadow', 0.4);
                                         globalObjects.reapSound = null;

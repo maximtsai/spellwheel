@@ -344,6 +344,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">misc/scythebroke.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>213,225,425,450</rect>
+                <key>scale9Paddings</key>
+                <rect>213,225,425,450</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/scytheflash1.png</key>
             <key type="filename">misc/scytheflash2.png</key>
             <key type="filename">misc/scytheflash2png.png</key>
@@ -363,6 +378,21 @@
                 <rect>213,225,425,450</rect>
                 <key>scale9Paddings</key>
                 <rect>213,225,425,450</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/scythepiece.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>73,76,145,151</rect>
+                <key>scale9Paddings</key>
+                <rect>73,76,145,151</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

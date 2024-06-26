@@ -1,15 +1,15 @@
  class Death extends Enemy {
      constructor(scene, x, y) {
          super(scene, x, y);
-         this.initSprite('blurryball.png', 0.7);
-        this.sprite.setOrigin(0.5, 0.4);
+         this.initSprite('blank.png', 0.7);
+        this.sprite.setOrigin(0.5, 0.45);
          this.bgMusic = playMusic('heartbeat', 0.75, true);
         swirlInReaperFog(1.25);
         this.setupCustomDeathSprite();
         setTimeout(() => {
              this.setAsleep();
             globalObjects.magicCircle.disableMovement();
-            this.mainScythe = this.addSprite(this.x, this.y + 75, 'misc', 'scythe1.png').setDepth(200).setAlpha(0).setRotation(-0.6).setOrigin(0.5, 0.9);
+            this.mainScythe = this.addSprite(this.x, this.y + 175, 'misc', 'scythe1.png').setDepth(200).setAlpha(0).setRotation(-0.6).setOrigin(0.5, 0.9);
          }, 10)
      }
 
@@ -139,7 +139,7 @@
                                      duration: 1500,
                                  });
                                  setTimeout(() => {
-                                     playSound('death_attack');
+                                     playSound('death_attack').detune = 0;
                                      messageBus.publish("selfTakeDamage", damage);
                                      messageBus.publish('showCircleShadow', 0.9, undefined, 985);
                                      messageBus.publish('tempPause', 350, 0.015);
@@ -205,12 +205,6 @@
          });
      }
 
-     // update(dt) {}
-
-     // reset(x, y) {
-     //     this.x = x;
-     //     this.y = y;
-     // }
 
      repeatTweenBreathe(duration = 1500, magnitude = 1) {
          if (this.breatheTween) {
@@ -323,9 +317,9 @@
      }
 
      createScytheAttackSfx(flipped, isFast) {
-         let darkScreen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(980).setAlpha(1.1)
+         let darkScreen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(980).setAlpha(isFast ? 0.95 : 1.1)
          if (!this.scytheBlur) {
-             this.scytheBlur = PhaserScene.add.image(gameConsts.halfWidth, this.y + 25, 'blurry', 'scytheblur.png').setDepth(1002).setBlendMode(Phaser.BlendModes.LIGHTEN)
+             this.scytheBlur = PhaserScene.add.image(gameConsts.halfWidth, this.y + 125, 'blurry', 'scytheblur.png').setDepth(1002).setBlendMode(Phaser.BlendModes.LIGHTEN)
          }
 
          let flipScale = flipped ? -1 : 1;
@@ -333,7 +327,7 @@
          PhaserScene.tweens.add({
              targets: [darkScreen],
              alpha: 0,
-             duration: isFast ? 1500 : 1800,
+             duration: isFast ? 1200 : 1800,
              ease: 'Quad.easeOut',
              onComplete: () => {
                  darkScreen.destroy();
@@ -345,7 +339,7 @@
              scaleX: 1.02*flipScale,
              scaleY: 1.01,
              ease: 'Cubic.easeOut',
-             duration: isFast ? 800 : 900,
+             duration: isFast ? 700 : 900,
          });
      }
 
@@ -375,15 +369,16 @@
                      damage: -1,
                      isBigMove: true,
                      attackStartFunction: () => {
-                         this.setAsleep();
-                         this.hideCurrentAttack();
+                         // this.hideCurrentAttack();
                          this.swingScythe(4444, true, false, () => {
                              if (!globalObjects.player.dead) {
+                                 this.setAsleep();
                                  super.setHealth(3);
-                                 globalObjects.bannerTextManager.setDialog([getLangText('deathFight1c'), getLangText('deathFight1d'), getLangText('deathFight1e')]);
+                                 globalObjects.bannerTextManager.setDialog([getLangText('deathFight1c'), getLangText('deathFight1d')]);
                                  globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                                  globalObjects.bannerTextManager.showBanner(true);
                                  globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                                     this.interruptCurrentAttack();
                                      this.setAwake();
                                      fadeInSound(this.bgMusic, 0.85);
                                  });
@@ -402,6 +397,8 @@
                      isBigMove: true,
                      startFunction: () => {
                          this.finishedChargingMulti = false;
+                         setReaperVisible(false);
+                         this.setDefaultSprite('max_death_1_cast.png', undefined);
                          this.startChargingMulti();
                      },
                      attackStartFunction: () => {
@@ -409,7 +406,7 @@
                      },
                      attackFinishFunction: () => {
                          this.setAsleep();
-                         this.hideCurrentAttack();
+                         // this.hideCurrentAttack();
                          this.fireScytheObjects(6, undefined, () => {
                              if (!globalObjects.player.dead) {
                                  super.setHealth(2);
@@ -417,6 +414,7 @@
                                  globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                                  globalObjects.bannerTextManager.showBanner(true);
                                  globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                                     this.interruptCurrentAttack();
                                      this.setAwake();
                                  });
                              }
@@ -431,8 +429,7 @@
                      damage: -1,
                      isBigMove: true,
                      attackStartFunction: () => {
-                         this.setAsleep();
-                         this.hideCurrentAttack();
+                         // this.hideCurrentAttack();
                          this.swingScytheFastIntro(17, false, false,() => {
                              this.swingScytheFast(17, false, true,() => {
                                  this.swingScytheFast(17, false, false,() => {
@@ -447,7 +444,7 @@
                                                          ease: 'Quad.easeOut',
                                                          duration: 500,
                                                      });
-                                                     this.setAwake();
+                                                     // this.setAwake();
                                                  })
                                              })
                                          })
@@ -462,46 +459,58 @@
                  {
                      name: ";80",
                      chargeAmt: 600,
-                     chargeMult: 4,
-                     finishDelay: 3000,
+                     chargeMult: 2,
+                     finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
                      attackStartFunction: () => {
-                         this.swingScythe(80, true, false,() => {
+                         this.scytheCanBreak = true;
+                         this.swingScytheFastIntro(80, true, false, () => {
                              if (!globalObjects.player.dead) {
-                                 globalObjects.bannerTextManager.setDialog([getLangText('deathFight1d'), getLangText('deathFight1e')]);
-                                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-                                 globalObjects.bannerTextManager.showBanner(true);
-                                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
-
-                                 });
+                                 super.setHealth(0);
+                                 this.die();
                              }
                          })
                      },
                      finaleFunction: () => {
-                         super.setHealth(0);
-                         this.setAsleep();
                      }
                  },
              ]
          ];
+     }
 
-         // this.attacks = [
-         //     [
-         //         {
-         //             name: "REAP }44x4",
-         //             chargeAmt: 300,
-         //             damage: 44,
-         //             attackTimes: 4
-         //         },
-         //         {
-         //             name: "EXECUTE }66",
-         //             chargeAmt: 300,
-         //             chargeMult: 5,
-         //             damage: 66,
-         //         }
-         //     ]
-         // ];
+     die() {
+         fadeAwaySound(this.bgMusic)
+        PhaserScene.tweens.add({
+            delay: 250,
+            targets: this.mainScythe,
+            alpha: 1,
+            scaleX: 0.7,
+            scaleY: 0.7,
+            rotation: -0.4,
+            x: gameConsts.halfWidth + 170,
+            y: this.y + 335,
+            duration: 1500,
+            ease: 'Cubic.easeInOut',
+            completeDelay: 700,
+            onComplete: () => {
+                PhaserScene.tweens.add({
+                    targets: this.mainScythe,
+                    rotation: -0.55,
+                    y: this.y + 340,
+                    duration: 600,
+                    ease: 'Cubic.easeInOut',
+                    onComplete: () => {
+                        globalObjects.bannerTextManager.setDialog([getLangText('deathFight1f'), getLangText('deathFight1g')]);
+                        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                        globalObjects.bannerTextManager.showBanner(true);
+                        globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                        });
+                    }
+                })
+            }
+
+        })
      }
 
      fireScytheObjects(damage = 6, interval = 120, onComplete) {
@@ -598,7 +607,7 @@
      startChargingMulti() {
          for (let i = 0; i < 36; i++) {
              let startX = this.x;
-             let startY = this.y;
+             let startY = this.y + 100;
              let multAmt = 120;
              let angleIdx = i;
              if (i < 12) {
@@ -678,7 +687,7 @@
          })
 
          this.addTween({
-             delay: 1400,
+             delay: 1300,
              duration: 450,
              targets: secondThird,
              scaleX: 1.1,
@@ -704,7 +713,7 @@
              }
          })
          this.addTween({
-             delay: 2800,
+             delay: 2600,
              duration: 450,
              targets: thirdThird,
              scaleX: 1.2,
@@ -726,6 +735,10 @@
                      scaleX: 0.68,
                      scaleY: 0.68,
                      ease: 'Back.easeOut',
+                     onComplete: () => {
+                         setReaperVisible(true);
+                         this.setDefaultSprite('blank.png', undefined, true);
+                     }
                  })
              }
          })
@@ -741,7 +754,7 @@
              duration: 350
          })
 
-         PhaserScene.time.delayedCall(820, () => {
+         PhaserScene.time.delayedCall(780, () => {
              if (globalObjects.deathLeftHand.currAnim) {
                  globalObjects.deathLeftHand.currAnim.stop();
                  globalObjects.deathRightHand.currAnim.stop();
@@ -763,7 +776,7 @@
              x: gameConsts.halfWidth + 5,
              y: 100,
              ease: 'Quart.easeInOut',
-             duration: 900,
+             duration: 800,
              completeDelay: 50,
              onComplete: () => {
                  scythe.play('scytheReap');
@@ -774,12 +787,19 @@
                      duration: 100,
                      onComplete: () => {
                          setTimeout(() => {
-                             playSound('death_attack');
+                             playSound('death_attack').detune = 0;
                              messageBus.publish("selfTakeDamage", damage);
                              messageBus.publish('showCircleShadow', 0.85, undefined, 985);
-                             messageBus.publish('tempPause', 350, 0.02);
-                             screenShake(10);
-                         }, 80);
+                             messageBus.publish('tempPause', this.scytheCanBreak ? 600 : 300, 0.02);
+                             screenShake(this.scytheCanBreak ? 1 : 10);
+                             if (this.scytheCanBreak) {
+                                 this.addDelay(() => {
+                                     scythe.stop();
+                                     scythe.setFrame('scythebroke.png')
+                                     playSound('clunk')
+                                 }, 100)
+                             }
+                         }, this.scytheCanBreak ? 65 : 80);
                          this.createScytheAttackSfx(false, true);
                          PhaserScene.tweens.add({
                              targets: scythe,
@@ -862,8 +882,8 @@
              rotation: -0.75 * flipMult,
              x: gameConsts.halfWidth + 5 * flipMult,
              ease: 'Quart.easeOut',
-             duration: 800,
-             completeDelay: 100,
+             duration: 700,
+             completeDelay: 50,
              onComplete: () => {
                  scythe.play('scytheReap');
                  PhaserScene.tweens.add({
@@ -873,10 +893,10 @@
                      duration: 100,
                      onComplete: () => {
                          setTimeout(() => {
-                             playSound('death_attack');
+                             playSound('death_attack').detune = 0;
                              messageBus.publish("selfTakeDamage", damage);
-                             messageBus.publish('showCircleShadow', 0.85, undefined, 985);
-                             messageBus.publish('tempPause', 350, 0.02);
+                             messageBus.publish('showCircleShadow', 0.7, undefined, 985);
+                             messageBus.publish('tempPause', 250, 0.035);
                              screenShake(8 * flipMult);
                          }, 80);
                          this.createScytheAttackSfx(flipped, true);

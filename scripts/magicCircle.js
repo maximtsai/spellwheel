@@ -1299,12 +1299,13 @@ const ENABLE_KEYBOARD = true;
                      const blockTimeStartRot = 0.52 + shieldObj.multiplier * 0.03;
                      let goalRotTime = shieldObj.lockRotation + this.outerCircle.rotation;
                      let goalRotTime1 = goalRotTime;
-                     if (goalRotTime > shieldObj.animObj[1].rotation + Math.PI * 2) {
-                         shieldObj.animObj[1].rotation += Math.PI * 2;
-                     } else if (goalRotTime < shieldObj.animObj[1].rotation - Math.PI * 2) {
-                         shieldObj.animObj[1].rotation -= Math.PI * 2;
+                     let shieldFollowObjRot = shieldObj.animObj[1].rotation;
+                     if (goalRotTime > shieldFollowObjRot + Math.PI * 2) {
+                         shieldFollowObjRot += Math.PI * 2;
+                     } else if (goalRotTime < shieldFollowObjRot - Math.PI * 2) {
+                         shieldFollowObjRot -= Math.PI * 2;
                      }
-                     let goalRotTime2 = goalRotTime * 0.5 + shieldObj.animObj[1].rotation * 0.5;
+                     let goalRotTime2 = goalRotTime * 0.5 + shieldFollowObjRot * 0.5;
                      shieldObj.animObj[0].rotation = goalRotTime1;
                      shieldObj.animObj[1].rotation = goalRotTime2;
 

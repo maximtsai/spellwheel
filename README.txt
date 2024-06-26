@@ -13,3 +13,8 @@ Magic sounds.wav by Wax_vibe -- https://freesound.org/s/587802/ -- License: Crea
 (not yet used) achievement-sparkle by pigeonfriend -- https://freesound.org/s/715067/ -- License: Creative Commons 0
 
 Incoming Artillery Strike Cinematic Explosion by EFlexMusic -- https://freesound.org/s/530886/ -- License: Attribution 3.0
+
+Glass Break by unfa -- https://freesound.org/s/221528/ -- License: Creative Commons 0
+Rocks - Effects - Source Recordings - 05 by GregorQuendel -- https://freesound.org/s/424997/ -- License: Attribution 4.0
+
+Unlocking lock.wav by Stefan21100190 -- https://freesound.org/s/593112/ -- License: Attribution 4.0

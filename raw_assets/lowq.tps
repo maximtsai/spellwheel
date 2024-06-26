@@ -237,6 +237,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">lowq/sharpflashred.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>35,95,70,190</rect>
+                <key>scale9Paddings</key>
+                <rect>35,95,70,190</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">lowq/star_black.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -249,6 +264,21 @@
                 <rect>100,100,200,200</rect>
                 <key>scale9Paddings</key>
                 <rect>100,100,200,200</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">lowq/star_white.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,75,151,151</rect>
+                <key>scale9Paddings</key>
+                <rect>75,75,151,151</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

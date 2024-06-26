@@ -9,6 +9,7 @@ const audioFiles = [
     {name: 'metaljpop', src: 'audio/metaljpop.mp3'},
     {name: 'jpop', src: 'audio/jpop.mp3'},
     {name: 'heartbeat', src: 'audio/heartbeat.mp3'},
+    {name: 'heartbeatmini', src: 'audio/heartbeatmini.mp3'},
 
 
     {name: 'glass_break', src: 'audio/glass_break.mp3'},
@@ -106,9 +107,9 @@ const audioFiles = [
     {name: 'punch2', src: 'audio/punch2.mp3'},
     {name: 'sword_slice', src: 'audio/sword_slice.mp3'},
     {name: 'sword_hit', src: 'audio/sword_hit.mp3'},
-    {name: 'stone_wheel', src: 'audio/stone_wheel.mp3'},
-    {name: 'stone_wheel_deep', src: 'audio/stone_wheel_deep.mp3'},
     {name: 'wind', src: 'audio/wind.mp3'},
+    {name: 'locket_open', src: 'audio/locket_open.mp3'},
+    {name: 'locket_close', src: 'audio/locket_close.mp3'},
     {name: 'sound_of_death', src: 'audio/sound_of_death.mp3'},
     {name: 'you_died', src: 'audio/you_died.mp3'},
     {name: 'missile_launch_1', src: 'audio/missile_launch_1.mp3'},

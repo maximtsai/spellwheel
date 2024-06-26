@@ -860,7 +860,7 @@
     }
 
     beginPhaseTwo() {
-        globalObjects.bannerTextManager.setDialog(["The Magician delays his death and\nprepares his most powerful magic.", "Watch out."]);
+        globalObjects.bannerTextManager.setDialog(["\"You think you've defeated me?\"", "\"Have a taste of my true power!\""]);
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
         globalObjects.bannerTextManager.showBanner(true);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {

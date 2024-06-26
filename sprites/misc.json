@@ -535,31 +535,6 @@
 					}
 				},
 				{
-					"filename": "miniscythe.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 99,
-						"h": 102
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 10,
-						"w": 85,
-						"h": 80
-					},
-					"frame": {
-						"x": 966,
-						"y": 1419,
-						"w": 85,
-						"h": 80
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "victory_text.png",
 					"rotated": false,
 					"trimmed": false,
@@ -574,7 +549,7 @@
 						"h": 54
 					},
 					"frame": {
-						"x": 1053,
+						"x": 966,
 						"y": 1419,
 						"w": 297,
 						"h": 54
@@ -610,6 +585,31 @@
 					}
 				},
 				{
+					"filename": "miniscythe.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 119,
+						"h": 122
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 119,
+						"h": 118
+					},
+					"frame": {
+						"x": 1313,
+						"y": 358,
+						"w": 119,
+						"h": 118
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "green_circle.png",
 					"rotated": false,
 					"trimmed": true,
@@ -624,32 +624,7 @@
 						"h": 118
 					},
 					"frame": {
-						"x": 1313,
-						"y": 358,
-						"w": 118,
-						"h": 118
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "purple_circle.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 120,
-						"h": 120
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 118,
-						"h": 118
-					},
-					"frame": {
-						"x": 1433,
+						"x": 1434,
 						"y": 358,
 						"w": 118,
 						"h": 118
@@ -760,6 +735,31 @@
 					}
 				},
 				{
+					"filename": "purple_circle.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 120,
+						"h": 120
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 118,
+						"h": 118
+					},
+					"frame": {
+						"x": 1554,
+						"y": 352,
+						"w": 118,
+						"h": 118
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "shadow_circle.png",
 					"rotated": false,
 					"trimmed": false,
@@ -840,6 +840,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:283b67bec14d14199d769f230191beaf:f6f2e0877292a9a26618648569509f9e:612dcbdb08476a0aba06aeca925f16b2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:2f59ec1d0a06000851790943798afd8a:5777cd86fc0c6fe4817eafc94ba938a8:612dcbdb08476a0aba06aeca925f16b2$"
 	}
 }

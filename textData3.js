@@ -153,7 +153,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    deathFight1b: {en_us: "UNFORTUNATE, BUT YOUR JOURNEY\nWAS NEVER MEANT TO BE.",
+    deathFight1b: {en_us: "PITY, BUT YOUR JOURNEY\nWAS NEVER MEANT TO BE.",
         fr: '',
         zh_tw: '',
         zh_cn: '',

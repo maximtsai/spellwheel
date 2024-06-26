@@ -48,7 +48,7 @@ class PostFightScreen {
             this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 120, 'ui', 'locket1.png').setScale(0.75).setDepth(100003).setAlpha(0).setOrigin(0.5, 0.5);
         }
         if (!this.locketDialog) {
-            this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 220, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
+            this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 10, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
         }
         if (!this.newRuneAnnounce) {
             this.newRuneAnnounce =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 154, 'New Rune!', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
@@ -408,11 +408,14 @@ class PostFightScreen {
             ease: 'Cubic.easeInOut',
             duration: 400
         });
+        playSound('locket_close');
+
         this.returnStatText();
     }
 
     openLocket() {
         if (this.locketSprite) {
+            playSound('locket_open');
             this.locketIsOpen = true;
             this.locketSprite.setFrame('locket3.png').setOrigin(0.5, 0.8);
             this.locketSprite.setScale(this.locketSprite.scaleX + 0.02);
@@ -740,7 +743,7 @@ class PostFightScreen {
             case 2:
                 return "The fabled Reaper\nhas noticed me,\nthough they have\ndone nothing but wag their\nbony finger at me like a parent\nscolding a child.\n\n"+
                 "I doubt this will be the last time\nwe see each other.\n\n"+
-                "For now, I will claim this shield\nas my prize.";
+                "For now, I will add this shield to\ny arsenal.";
             case 3:
                 return "The creatures of this\nland are clearly hostile.\n\n"+
                 "But it seems that I acquire the\nstrength of each one I defeat.\n\n"+

@@ -458,7 +458,7 @@ class Player {
         return this.recentlyTakenDamageAmt + this.recentlyTakenDelayedDamageAmt;
     }
 
-    takeDamage(amt) {
+    takeDamage(amt, isTime = false) {
         if (globalObjects.currentEnemy.dead) {
             return;
         }
@@ -471,7 +471,7 @@ class Player {
         let actualAmt = this.handleDamageStatuses(amt);
         let origHealth = this.health;
         let damageTaken = this.adjustDamageTaken(actualAmt);
-        if (damageTaken > 1) {
+        if (damageTaken >= 1 && !isTime) {
             if (this.canResetRecentDamage) {
                 this.canResetRecentDamage = false;
                 this.lastInjuryHealth = origHealth;
@@ -547,14 +547,10 @@ class Player {
             // this.recentlyTakenDelayedDamageAmt -= overflowHeal;
             healAmt = maxHealAmt;
         }
-        console.log(healAmt, overflowHeal);
         this.selfHeal(healAmt, false);
         let delayedDamageRemaining = globalObjects.magicCircle.getDelayedDamage() - overflowHeal;
-        console.log("curr delayed damage: ", globalObjects.magicCircle.getDelayedDamage())
         let delayedDamageReduced = Math.ceil(delayedDamageRemaining * 0.5);
         overflowHeal += Math.ceil(delayedDamageRemaining * 0.5);
-        console.log("delayed damage reduced", delayedDamageReduced)
-        console.log("overflowheal", overflowHeal)
         this.recentlyTakenDelayedDamageAmt -= delayedDamageReduced;
 
         //let delayedHealAmt = Math.ceil(percent * this.recentlyTakenDelayedDamageAmt);
@@ -566,6 +562,9 @@ class Player {
         if (overflowHeal > 0) {
             messageBus.publish('playerReduceDelayedDamage', overflowHeal);
         }
+        setTimeout(() => {
+            this.recentlyTakenDamageAmt = 0;
+        }, 250)
     }
 
     takeTrueDamage(amt) {
@@ -926,7 +925,7 @@ class Player {
                         }
                         break;
                     case 'time':
-                        if (hurtAmt > 1 && shieldObj.active) {
+                        if (hurtAmt >= 1 && shieldObj.active) {
                             playSound('time_strike_hit');
 
                             shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 1.3, shieldObj.animObj[0].scaleY);

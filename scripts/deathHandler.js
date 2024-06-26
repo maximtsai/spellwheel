@@ -392,8 +392,31 @@ function playReaperAnim(enemy, customFinFunc) {
                                     setTimeout(() => {
                                         playSound(globalObjects.reapSound || 'death_attack');
                                         messageBus.publish('reapedEnemyGong')
+                                        messageBus.publish('showCircleShadow', 0.4);
                                         globalObjects.reapSound = null;
+                                        messageBus.publish('tempPause', 200, 0.01);
                                     }, 100);
+                                    setFloatingDeathDepth(1000);
+                                    let darkScreen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(980).setAlpha(1)
+                                    if (!this.scytheBlur) {
+                                        this.scytheBlur = PhaserScene.add.image(gameConsts.halfWidth, scythe.y, 'blurry', 'scytheblur.png').setDepth(1002).setBlendMode(Phaser.BlendModes.LIGHTEN)
+                                    }
+                                    this.scytheBlur.setAlpha(1).setScale(0.82).setRotation(-0.15);
+                                    PhaserScene.tweens.add({
+                                        targets: [darkScreen],
+                                        alpha: 0,
+                                        duration: 1500,
+                                        ease: 'Quad.easeOut',
+                                        onComplete: () => {
+                                            darkScreen.destroy();
+                                        }
+                                    });
+                                    PhaserScene.tweens.add({
+                                        targets: [this.scytheBlur],
+                                        alpha: 0,
+                                        ease: 'Cubic.easeOut',
+                                        duration: 700,
+                                    });
                                     PhaserScene.tweens.add({
                                         targets: scythe,
                                         rotation: -3.5,

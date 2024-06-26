@@ -174,6 +174,7 @@
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">pixels/blue_pixel.png</key>
+            <key type="filename">pixels/gloom_pixel.png</key>
             <key type="filename">pixels/green_pixel.png</key>
             <key type="filename">pixels/grey_pixel.png</key>
             <key type="filename">pixels/purple_pixel.png</key>

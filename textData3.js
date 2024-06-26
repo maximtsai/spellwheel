@@ -145,7 +145,7 @@ let textData3 = {
         jp: ''
     },
 
-    deathFight1a: {en_us: "THUS COMES THE END.",
+    deathFight1a: {en_us: "PITY, BUT YOUR JOURNEY\nWAS NEVER MEANT TO BE.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -153,7 +153,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    deathFight1b: {en_us: "PITY, BUT YOUR JOURNEY\nWAS NEVER MEANT TO BE.",
+    deathFight1b: {en_us: "FAREWELL",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -161,7 +161,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    deathFight1c: {en_us: "FAREWELL",
+    deathFight1c: {en_us: "YOU'VE LEARNED SOME\nNEW TRICKS. NOT BAD.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -169,7 +169,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    deathFight1d: {en_us: "SEEMS YOU'VE LEARNED\nA TRICK OR TWO.",
+    deathFight1d: {en_us: "BUT I KNOW A FEW\nTECHNIQUES MYSELF.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -177,7 +177,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    deathFight1e: {en_us: "BUT CAN YOU SURVIVE DEATH\nBY A THOUSAND CUTS?",
+    deathFight1e: {en_us: "DEATH BY A THOUSAND CUTS",
         fr: '',
         zh_tw: '',
         zh_cn: '',

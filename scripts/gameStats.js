@@ -27,12 +27,22 @@
         PhaserScene.tweens.timeScale = magnitude || 0.6;
         PhaserScene.time.timeScale = magnitude || 0.5;
         PhaserScene.anims.globalTimeScale = magnitude || 0.6;
+        if (this.currTimeoutAmt) {
+            if (gameVars.timeScale > this.currTimeoutAmt) {
+                return;
+            }
+        }
 
-        setTimeout(() => {
+        this.currTimeoutAmt = gameVars.timeScale;
+        if (this.currTimeoutPause) {
+            clearTimeout(this.currTimeoutPause);
+        }
+        this.currTimeoutPause = setTimeout(() => {
             gameVars.timeScale = gameVars.gameManualSlowSpeed || 1;
             PhaserScene.tweens.timeScale = gameVars.gameManualSlowSpeed || 1;
             PhaserScene.time.timeScale = gameVars.gameManualSlowSpeed || 1;
             PhaserScene.anims.globalTimeScale = gameVars.gameManualSlowSpeed || 1;
+            this.currTimeoutAmt = null;
         }, dur)
     }
 

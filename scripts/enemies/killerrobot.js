@@ -1668,7 +1668,7 @@
                                  duration: 200,
                              })
                              currObj.destroy();
-                             zoomTemp(1.01);
+                             screenShake(3);
 
                              playSound('razor_leaf', 0.75);
                              messageBus.publish("selfTakeDamage", damage);

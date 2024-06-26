@@ -169,7 +169,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    deathFight1d: {en_us: "BUT I KNOW A FEW\nTECHNIQUES MYSELF.",
+    deathFight1d: {en_us: "BUT YOU'LL NEED MORE THAN\nTHAT TO AVOID FATE.",
         fr: '',
         zh_tw: '',
         zh_cn: '',

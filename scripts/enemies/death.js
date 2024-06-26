@@ -68,7 +68,7 @@
                              targets: scythe,
                              rotation: "-=1.5",
                              ease: 'Quint.easeIn',
-                             duration: 100,
+                             duration: 125,
                              onComplete: () => {
                                  let fogSlice = getFogSlice();
                                  fogSlice.setPosition(gameConsts.halfWidth + 8, 25);
@@ -142,7 +142,8 @@
                                      playSound('death_attack');
                                      messageBus.publish("selfTakeDamage", damage);
                                      messageBus.publish('showCircleShadow', 0.9, undefined, 985);
-                                     messageBus.publish('tempPause', 350, 0.001);
+                                     messageBus.publish('tempPause', 350, 0.015);
+                                     screenShake(20);
                                  }, 75);
                                  this.createScytheAttackSfx();
                                  PhaserScene.tweens.add({
@@ -566,9 +567,13 @@
                      }
                  });
                  if (hasSfx) {
+                     if (currScytheObjCount % 3 == 0) {
+                         screenShake(2);
+                     }
                      if (currScytheObjCount % 12 == 0) {
                          messageBus.publish('showCircleShadow', 0.65, undefined, 985);
                          messageBus.publish('tempPause', 200, 0.05);
+
                          playSound('death_attack', 0.4).detune = 1200;
                         this.createScytheAttackSfxSmall(currObj.x, currObj.y - 20);
                      } else {
@@ -773,6 +778,7 @@
                              messageBus.publish("selfTakeDamage", damage);
                              messageBus.publish('showCircleShadow', 0.85, undefined, 985);
                              messageBus.publish('tempPause', 350, 0.02);
+                             screenShake(10);
                          }, 80);
                          this.createScytheAttackSfx(false, true);
                          PhaserScene.tweens.add({
@@ -871,6 +877,7 @@
                              messageBus.publish("selfTakeDamage", damage);
                              messageBus.publish('showCircleShadow', 0.85, undefined, 985);
                              messageBus.publish('tempPause', 350, 0.02);
+                             screenShake(8 * flipMult);
                          }, 80);
                          this.createScytheAttackSfx(flipped, true);
                          PhaserScene.tweens.add({

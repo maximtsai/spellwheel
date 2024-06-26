@@ -682,12 +682,13 @@
                          onComplete();
                      }, 1500)
                  }
-                 let hitEffect = getTempPoolObject('lowq', 'sharpflashred.webp', 'sharpflashred', 300);
+                 let hitEffect = getTempPoolObject('lowq', 'sharpflashred.webp', 'sharpflashred', 400);
                  hitEffect.setPosition(currObj.x + 10 - Math.random() * 20, currObj.y - 10 - Math.random() * 15).setDepth(195).setScale(0.25, 0.1).setVisible(true);
+                 let extraScale = Math.random() * 0.35;
                  this.addTween({
                      targets: hitEffect,
-                     scaleX: 0.4,
-                     scaleY: 0.45,
+                     scaleX: 0.25 + extraScale,
+                     scaleY: 0.3 + extraScale * 1.2,
                      ease: 'Quart.easeIn',
                      duration: 150,
                      onComplete: () => {

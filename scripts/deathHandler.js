@@ -394,7 +394,7 @@ function playReaperAnim(enemy, customFinFunc) {
                                         messageBus.publish('reapedEnemyGong')
                                         messageBus.publish('showCircleShadow', 0.4);
                                         globalObjects.reapSound = null;
-                                        messageBus.publish('tempPause', 200, 0.01);
+                                        messageBus.publish('tempPause', 50, 0.1);
                                     }, 100);
                                     setFloatingDeathDepth(1000);
                                     let darkScreen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(980).setAlpha(1)

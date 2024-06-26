@@ -452,7 +452,7 @@ const ENABLE_KEYBOARD = true;
         this.innerCircle.rotVel = 0;
         this.innerCircle.nextRotation = 0;
         this.innerCircle.prevRotation = 0;
-        this.shadowCircle = scene.add.sprite(x, y, 'circle', 'shadow.png').setAlpha(0).setDepth(99999).setBlendMode(Phaser.BlendModes.MULTIPLY);
+        this.shadowCircle = scene.add.sprite(x, y, 'circle', 'shadow.png').setAlpha(0).setDepth(99998).setBlendMode(Phaser.BlendModes.MULTIPLY);
 
         this.castButtonSize = isMobile ? 72 : 78;
         this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png').setDepth(105);
@@ -2732,7 +2732,8 @@ const ENABLE_KEYBOARD = true;
         }
     }
 
-    showCircleShadow(intensity = 0.25, extraDuration = 0) {
+    showCircleShadow(intensity = 0.25, extraDuration = 0, depth = 99999) {
+        this.shadowCircle.setDepth(depth)
         this.shadowCircle.alpha = intensity;
         if (this.shadowCircle.currAnim) {
             this.shadowCircle.currAnim.stop();

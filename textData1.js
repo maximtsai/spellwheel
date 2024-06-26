@@ -49,10 +49,10 @@ let textData = {
         es: '',
         jp: ''
     },
-    matter_unload_desc: {en_us: 'Deal 22 damage.\nGain 22 temporary\nprotection',
+    matter_unload_desc: {en_us: 'Deal 24 damage.\nGain 24 temporary\nprotection',
         fr: '',
         zh_tw: '',
-        zh_cn: '造成 22 点伤害。\n获得 22 点临时保护',
+        zh_cn: '造成 24 点伤害。\n获得 24 点临时保护',
         ru: '',
         es: '',
         jp: ''

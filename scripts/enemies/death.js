@@ -18,192 +18,10 @@
          this.scytheObjects = [];
      }
 
-     swingScytheFast(damage = 4444, fadeOutScythe = true, flipped = false, onComplete) {
-         let flipMult = flipped ? 1 : 1;
-         // this.mainScythe.setPosition(this.mainScythe.x, 160).setDepth(999).setAlpha(0).setScale(0.65*flipMult, 0.65).setRotation(-1.5);
-         let scythe = this.mainScythe;
-         PhaserScene.tweens.add({
-             targets: scythe,
-             alpha: 1,
-             duration: 450
-         })
-
-         PhaserScene.tweens.add({
-             targets: scythe,
-             x: gameConsts.halfWidth + 5*flipMult,
-             y: 100,
-             scaleX: flipMult*0.75,
-             scaleY: 0.75,
-             rotation: -1.35,
-             ease: 'Quart.easeIn',
-             duration: 400,
-             onComplete: () => {
-                 PhaserScene.time.delayedCall(820, () => {
-                     tweenObjectRotationTo(globalObjects.deathLeftHand, -0.2, 500, "Cubic.easeOut");
-                     tweenObjectRotationTo(globalObjects.deathRightHand, 0.1, 500, "Cubic.easeOut");
-                 })
-                 PhaserScene.tweens.add({
-                     targets: scythe,
-                     scaleX: flipMult*0.85,
-                     scaleY: 0.85,
-                     y: 90,
-                     ease: 'Cubic.easeInOut',
-                     duration: 900,
-                 });
-                 PhaserScene.tweens.add({
-                     targets: scythe,
-                     rotation: -0.5,
-                     ease: 'Quart.easeOut',
-                     duration: 900,
-                     completeDelay: 200,
-                     onComplete: () => {
-                         scythe.play('scytheReap');
-                         PhaserScene.tweens.add({
-                             targets: scythe,
-                             rotation: "-=1.5",
-                             ease: 'Quint.easeIn',
-                             duration: 50,
-                             onComplete: () => {
-                                 let fogSlice = getFogSlice();
-                                 fogSlice.setPosition(gameConsts.halfWidth + 8, 25);
-                                 let fogSliceDarken = getFogSliceDarken();
-                                 fogSliceDarken.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 50);
-                                 PhaserScene.tweens.add({
-                                     targets: fogSliceDarken,
-                                     alpha: 0.75,
-                                     ease: 'Cubic.easeOut',
-                                     duration: 500,
-                                 });
-                                 let oldSwirlAlpha = globalObjects.fogSwirl ? globalObjects.fogSwirl.alpha : 1;
-
-                                 PhaserScene.tweens.add({
-                                     targets: globalObjects.fogSwirl,
-                                     alpha: 0.25,
-                                     ease: 'Cubic.easeIn',
-                                     duration: 300,
-                                     onComplete: () => {
-                                         PhaserScene.tweens.add({
-                                             delay: 100,
-                                             targets: globalObjects.fogSwirl,
-                                             ease: 'Cubic.easeInOut',
-                                             alpha: oldSwirlAlpha,
-                                             duration: 1000,
-                                         });
-                                     }
-                                 });
-                                 PhaserScene.tweens.add({
-                                     delay: 50,
-                                     targets: [fogSlice],
-                                     alpha: 1,
-                                     ease: 'Quad.easeOut',
-                                     duration: 200,
-                                     onComplete: () => {
-                                         PhaserScene.tweens.add({
-                                             delay: 200,
-                                             targets: [fogSlice, fogSliceDarken],
-                                             ease: 'Quart.easeIn',
-                                             alpha: 0,
-                                             duration: 1400,
-                                         });
-                                     }
-                                 });
-                                 PhaserScene.tweens.add({
-                                     delay: 50,
-                                     targets: [fogSlice],
-                                     scaleX: 1.08,
-                                     scaleY: 1.08,
-                                     ease: 'Quint.easeOut',
-                                     duration: 300,
-                                     onComplete: () => {
-                                         PhaserScene.tweens.add({
-                                             targets: [fogSlice],
-                                             scaleX: 1.09,
-                                             scaleY: 1.09,
-                                             duration: 1500,
-                                         });
-                                     }
-                                 });
-                                 PhaserScene.tweens.add({
-                                     delay: 50,
-                                     targets: fogSlice,
-                                     scaleX: 1.2,
-                                     scaleY: 1.2,
-                                     rotation: -0.85,
-                                     ease: 'Quad.easeOut',
-                                     duration: 1500,
-                                 });
-                                 setTimeout(() => {
-                                     playSound('death_attack');
-                                     messageBus.publish("selfTakeDamage", damage);
-                                     messageBus.publish('showCircleShadow', 0.9);
-                                     messageBus.publish('tempPause', 350, 0.02);
-                                 }, 100);
-                                 this.createScytheAttackSfx();
-
-
-                                 PhaserScene.tweens.add({
-                                     targets: scythe,
-                                     scaleX: flipMult*1.35,
-                                     scaleY: 1.35,
-                                     ease: 'Quart.easeOut',
-                                     duration: 200,
-                                     onComplete: () => {
-                                         PhaserScene.tweens.add({
-                                             targets: scythe,
-                                             scaleX: 1.05,
-                                             scaleY: 1.05,
-                                             ease: 'Quart.easeIn',
-                                             duration: 500,
-                                         })
-                                     }
-                                 })
-                                 PhaserScene.tweens.add({
-                                     targets: scythe,
-                                     rotation: -3.5,
-                                     x: flipped ? "+=10" : "-=10",
-                                     ease: 'Quint.easeOut',
-                                     duration: 500,
-                                     onComplete: () => {
-                                         repeatDeathHandsRotate();
-                                         if (!fadeOutScythe) {
-                                             if (onComplete) {
-                                                 onComplete();
-                                             }
-                                         } else {
-                                             PhaserScene.tweens.add({
-                                                 delay: 200,
-                                                 targets: scythe,
-                                                 rotation: "+=0.1",
-                                                 x: flipped ? "+=12" : "-=12",
-                                                 ease: 'Quart.easeInOut',
-                                                 duration: 2000,
-                                             })
-                                             PhaserScene.tweens.add({
-                                                 targets: scythe,
-                                                 alpha: 0,
-                                                 delay: 1000,
-                                                 scaleX: flipMult * 0.6,
-                                                 scaleY: 0.6,
-                                                 ease: 'Cubic.easeIn',
-                                                 duration: 600,
-                                                 completeDelay: 1000,
-                                                 onComplete: onComplete
-                                             });
-                                         }
-                                     }
-                                 });
-                             }
-                         });
-                     }
-                 });
-             }
-         });
-     }
-
      swingScythe(damage = 4444, fadeOutScythe = true, flipped = false, onComplete) {
 
          let flipMult = flipped ? -1 : 1;
-         this.mainScythe.setPosition(this.mainScythe.x, 160).setDepth(999).setAlpha(0).setScale(0.65*flipMult, 0.65).setRotation(-1.5);
+         this.mainScythe.setPosition(this.x, 160).setDepth(999).setAlpha(0).setScale(0.65*flipMult, 0.65).setRotation(-1.5);
          let scythe = this.mainScythe;
          scythe.play('scytheFlash');
          PhaserScene.tweens.add({
@@ -223,6 +41,10 @@
              duration: 400,
              onComplete: () => {
                  PhaserScene.time.delayedCall(820, () => {
+                     if (globalObjects.deathLeftHand.currAnim) {
+                         globalObjects.deathLeftHand.currAnim.stop();
+                         globalObjects.deathRightHand.currAnim.stop();
+                     }
                      tweenObjectRotationTo(globalObjects.deathLeftHand, -0.2, 500, "Cubic.easeOut");
                      tweenObjectRotationTo(globalObjects.deathRightHand, 0.1, 500, "Cubic.easeOut");
                  })
@@ -246,7 +68,7 @@
                              targets: scythe,
                              rotation: "-=1.5",
                              ease: 'Quint.easeIn',
-                             duration: 50,
+                             duration: 100,
                              onComplete: () => {
                                  let fogSlice = getFogSlice();
                                  fogSlice.setPosition(gameConsts.halfWidth + 8, 25);
@@ -319,9 +141,9 @@
                                  setTimeout(() => {
                                      playSound('death_attack');
                                      messageBus.publish("selfTakeDamage", damage);
-                                    messageBus.publish('showCircleShadow', 0.9);
-                                     messageBus.publish('tempPause', 350, 0.02);
-                                 }, 100);
+                                     messageBus.publish('showCircleShadow', 0.9, undefined, 985);
+                                     messageBus.publish('tempPause', 350, 0.001);
+                                 }, 75);
                                  this.createScytheAttackSfx();
                                  PhaserScene.tweens.add({
                                      targets: scythe,
@@ -334,7 +156,7 @@
                                              targets: scythe,
                                              scaleX: 1.05,
                                              scaleY: 1.05,
-                                             ease: 'Quart.easeIn',
+                                             ease: 'Quart.easeInOut',
                                              duration: 500,
                                          })
                                      }
@@ -482,8 +304,8 @@
          });
          PhaserScene.tweens.add({
              targets: flashPlain,
-             scaleX: 1.5,
-             scaleY: 1.1,
+             scaleX: 1.2,
+             scaleY: 0.95,
              easeParams: [3],
              ease: 'Back.easeOut',
              duration: 100,
@@ -499,7 +321,7 @@
          });
      }
 
-     createScytheAttackSfx(flipped) {
+     createScytheAttackSfx(flipped, isFast) {
          let darkScreen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(980).setAlpha(1.1)
          if (!this.scytheBlur) {
              this.scytheBlur = PhaserScene.add.image(gameConsts.halfWidth, this.y + 25, 'blurry', 'scytheblur.png').setDepth(1002).setBlendMode(Phaser.BlendModes.LIGHTEN)
@@ -510,7 +332,7 @@
          PhaserScene.tweens.add({
              targets: [darkScreen],
              alpha: 0,
-             duration: 1800,
+             duration: isFast ? 1500 : 1800,
              ease: 'Quad.easeOut',
              onComplete: () => {
                  darkScreen.destroy();
@@ -520,9 +342,9 @@
              targets: [this.scytheBlur],
              alpha: 0,
              scaleX: 1.02*flipScale,
-             scaleY: 1.01*flipScale,
+             scaleY: 1.01,
              ease: 'Cubic.easeOut',
-             duration: 900,
+             duration: isFast ? 800 : 900,
          });
      }
 
@@ -547,18 +369,20 @@
                  {
                      name: ";4444",
                      chargeAmt: 600,
-                     chargeMult: 3,
+                     chargeMult: 2,
                      finishDelay: 3000,
                      damage: -1,
                      isBigMove: true,
                      attackStartFunction: () => {
+                         this.setAsleep();
+                         this.hideCurrentAttack();
                          this.swingScythe(4444, true, false, () => {
                              if (!globalObjects.player.dead) {
+                                 super.setHealth(3);
                                  globalObjects.bannerTextManager.setDialog([getLangText('deathFight1c'), getLangText('deathFight1d'), getLangText('deathFight1e')]);
                                  globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                                  globalObjects.bannerTextManager.showBanner(true);
                                  globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                                     this.interruptCurrentAttack();
                                      this.setAwake();
                                      fadeInSound(this.bgMusic, 0.85);
                                  });
@@ -566,14 +390,12 @@
                          })
                      },
                      finaleFunction: () => {
-                         super.setHealth(3);
-                         this.setAsleep();
                      }
                  },
                  {
                      name: "}6x12}",
-                     chargeAmt: 1000,
-                     chargeMult: 3,
+                     chargeAmt: 1200,
+                     chargeMult: 2,
                      finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
@@ -585,40 +407,46 @@
                          this.finishedChargingMulti = true;
                      },
                      attackFinishFunction: () => {
+                         this.setAsleep();
+                         this.hideCurrentAttack();
                          this.fireScytheObjects(6, undefined, () => {
                              if (!globalObjects.player.dead) {
+                                 super.setHealth(2);
                                  globalObjects.bannerTextManager.setDialog([getLangText('deathFight1f'), getLangText('deathFight1g')]);
                                  globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                                  globalObjects.bannerTextManager.showBanner(true);
                                  globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                                     this.interruptCurrentAttack();
                                      this.setAwake();
                                  });
                              }
                          });
                      },
-                     finaleFunction: () => {
-                         super.setHealth(2);
-                         this.setAsleep();
-
-                     }
                  },
                  {
                      name: ";17x7",
-                     chargeAmt: 1000,
+                     chargeAmt: 1200,
                      chargeMult: 2,
-                     finishDelay: 7500,
+                     finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
                      attackStartFunction: () => {
-                         this.swingScythe(17, false, false,() => {
+                         this.setAsleep();
+                         this.hideCurrentAttack();
+                         this.swingScytheFastIntro(17, false, false,() => {
                              this.swingScytheFast(17, false, true,() => {
                                  this.swingScytheFast(17, false, false,() => {
                                      this.swingScytheFast(17, false, true,() => {
                                          this.swingScytheFast(17, false, false,() => {
                                              this.swingScytheFast(17, false, true,() => {
                                                  this.swingScytheFast(17, false, false,() => {
-
+                                                     super.setHealth(1);
+                                                     PhaserScene.tweens.add({
+                                                         targets: this.mainScythe,
+                                                         alpha: 0,
+                                                         ease: 'Quad.easeOut',
+                                                         duration: 500,
+                                                     });
+                                                     this.setAwake();
                                                  })
                                              })
                                          })
@@ -628,8 +456,6 @@
                          })
                      },
                      finaleFunction: () => {
-                         super.setHealth(3);
-                         this.setAsleep();
                      }
                  },
                  {
@@ -741,7 +567,7 @@
                  });
                  if (hasSfx) {
                      if (currScytheObjCount % 12 == 0) {
-                         messageBus.publish('showCircleShadow', 0.65);
+                         messageBus.publish('showCircleShadow', 0.65, undefined, 985);
                          messageBus.publish('tempPause', 200, 0.05);
                          playSound('death_attack', 0.4).detune = 1200;
                         this.createScytheAttackSfxSmall(currObj.x, currObj.y - 20);
@@ -898,5 +724,188 @@
                  })
              }
          })
+     }
+
+     swingScytheFastIntro(damage = 4444, fadeOutScythe = true, flipped = false, onComplete) {
+         this.mainScythe.setPosition(this.x, 160).setDepth(999).setAlpha(0).setScale(0.65, 0.65).setRotation(-1.5);
+         let scythe = this.mainScythe;
+         scythe.play('scytheFlash');
+         PhaserScene.tweens.add({
+             targets: scythe,
+             alpha: 1,
+             duration: 350
+         })
+
+         PhaserScene.time.delayedCall(820, () => {
+             if (globalObjects.deathLeftHand.currAnim) {
+                 globalObjects.deathLeftHand.currAnim.stop();
+                 globalObjects.deathRightHand.currAnim.stop();
+             }
+             tweenObjectRotationTo(globalObjects.deathLeftHand, -0.2, 500, "Cubic.easeOut");
+             tweenObjectRotationTo(globalObjects.deathRightHand, 0.1, 500, "Cubic.easeOut");
+         })
+         PhaserScene.tweens.add({
+             targets: scythe,
+             scaleX: 0.8,
+             scaleY: 0.8,
+             y: 90,
+             ease: 'Cubic.easeInOut',
+             duration: 800,
+         });
+         PhaserScene.tweens.add({
+             targets: scythe,
+             rotation: -0.75,
+             x: gameConsts.halfWidth + 5,
+             y: 100,
+             ease: 'Quart.easeInOut',
+             duration: 900,
+             completeDelay: 50,
+             onComplete: () => {
+                 scythe.play('scytheReap');
+                 PhaserScene.tweens.add({
+                     targets: scythe,
+                     rotation: "-=1.5",
+                     ease: 'Quint.easeIn',
+                     duration: 100,
+                     onComplete: () => {
+                         setTimeout(() => {
+                             playSound('death_attack');
+                             messageBus.publish("selfTakeDamage", damage);
+                             messageBus.publish('showCircleShadow', 0.85, undefined, 985);
+                             messageBus.publish('tempPause', 350, 0.02);
+                         }, 80);
+                         this.createScytheAttackSfx(false, true);
+                         PhaserScene.tweens.add({
+                             targets: scythe,
+                             scaleX: 1.35,
+                             scaleY: 1.35,
+                             ease: 'Quart.easeOut',
+                             duration: 150,
+                             onComplete: () => {
+                                 PhaserScene.tweens.add({
+                                     targets: scythe,
+                                     scaleX: 0.9,
+                                     scaleY: 0.9,
+                                     ease: 'Cubic.easeIn',
+                                     duration: 200,
+                                 })
+                             }
+                         })
+                         let rotAmt = -1.8;
+                         PhaserScene.tweens.add({
+                             targets: scythe,
+                             rotation: "+=" + rotAmt,
+                             x: flipped ? "+=10" : "-=10",
+                             duration: 250,
+                             onComplete: () => {
+                                 //repeatDeathHandsRotate();
+                                 if (onComplete) {
+                                     onComplete();
+                                 }
+                             }
+                         });
+                     }
+                 });
+             }
+         });
+     }
+
+     swingScytheFast(damage = 4444, fadeOutScythe = true, flipped = false, onComplete) {
+
+         let flipMult = flipped ? -1 : 1;
+         let scythe = this.mainScythe;
+         PhaserScene.tweens.add({
+             targets: scythe,
+             alpha: 1,
+             duration: 350
+         })
+         PhaserScene.time.delayedCall(720, () => {
+             if (globalObjects.deathLeftHand.currAnim) {
+                 globalObjects.deathLeftHand.currAnim.stop();
+                 globalObjects.deathRightHand.currAnim.stop();
+             }
+             tweenObjectRotationTo(globalObjects.deathLeftHand, -0.2, 500, "Cubic.easeOut");
+             tweenObjectRotationTo(globalObjects.deathRightHand, 0.1, 500, "Cubic.easeOut");
+         })
+         PhaserScene.tweens.add({
+             targets: scythe,
+             alpha: 0,
+             ease: 'Quad.easeOut',
+             duration: 150,
+             onComplete: () => {
+                 PhaserScene.tweens.add({
+                     delay: 150,
+                     targets: scythe,
+                     alpha: 1,
+                     ease: 'Quad.easeIn',
+                     duration: 250,
+
+                 });
+             }
+         });
+         PhaserScene.tweens.add({
+             targets: scythe,
+             scaleX: 0.8 * flipMult,
+             scaleY: 0.8,
+             y: 90,
+             ease: 'Quart.easeInOut',
+             duration: 550,
+         });
+         PhaserScene.tweens.add({
+             targets: scythe,
+             rotation: -0.75 * flipMult,
+             x: gameConsts.halfWidth + 5 * flipMult,
+             ease: 'Quart.easeOut',
+             duration: 800,
+             completeDelay: 100,
+             onComplete: () => {
+                 scythe.play('scytheReap');
+                 PhaserScene.tweens.add({
+                     targets: scythe,
+                     rotation: flipped ? "+=1.5" : "-=1.5",
+                     ease: 'Quint.easeIn',
+                     duration: 100,
+                     onComplete: () => {
+                         setTimeout(() => {
+                             playSound('death_attack');
+                             messageBus.publish("selfTakeDamage", damage);
+                             messageBus.publish('showCircleShadow', 0.85, undefined, 985);
+                             messageBus.publish('tempPause', 350, 0.02);
+                         }, 80);
+                         this.createScytheAttackSfx(flipped, true);
+                         PhaserScene.tweens.add({
+                             targets: scythe,
+                             scaleX: 1.35 * flipMult,
+                             scaleY: 1.35,
+                             ease: 'Quart.easeOut',
+                             duration: 100,
+                             onComplete: () => {
+                                 PhaserScene.tweens.add({
+                                     targets: scythe,
+                                     scaleX: 0.9 * flipMult,
+                                     scaleY: 0.9,
+                                     ease: 'Cubic.easeIn',
+                                     duration: 200,
+                                 })
+                             }
+                         })
+                         let rotAmt = -1.8 * flipMult;
+                         PhaserScene.tweens.add({
+                             targets: scythe,
+                             rotation: "+=" + rotAmt,
+                             x: flipped ? "+=10" : "-=10",
+                             duration: 250,
+                             onComplete: () => {
+                                 repeatDeathHandsRotate();
+                                 if (onComplete) {
+                                     onComplete();
+                                 }
+                             }
+                         });
+                     }
+                 });
+             }
+         });
+
      }
 }

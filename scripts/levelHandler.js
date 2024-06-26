@@ -22,29 +22,146 @@ function beginPreLevel(lvl) {
         case 0:
             // lesser dummy
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
-            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 10, 'ui', 'newgame_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth - 253, gameConsts.halfHeight - 280, getLangText('pre_fight_0a'), {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'});
+            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 10, 'ui', 'newgame_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+            text1 = PhaserScene.add.text(gameConsts.halfWidth - 253, gameConsts.halfHeight - 270, getLangText('pre_fight_0a'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth - 253, gameConsts.halfHeight - 210, getLangText('pre_fight_0b'), {fontFamily: 'verdanabold', fontSize: 16, color: '#000000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth - 253, gameConsts.halfHeight - 195, getLangText('pre_fight_0b'), {fontFamily: 'verdanabold', fontSize: 16, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text3 = PhaserScene.add.text(gameConsts.halfWidth - 200, gameConsts.halfHeight - 127, getLangText('pre_fight_0c'), {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'});
-            text3.setDepth(99999).setAlpha(0).setOrigin(0, 0);
-            text4 = PhaserScene.add.text(gameConsts.halfWidth - 200, gameConsts.halfHeight - 55, getLangText('pre_fight_0d'), {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'});
-            text4.setDepth(99999).setAlpha(0).setOrigin(0, 0);
-            text5 = PhaserScene.add.text(gameConsts.halfWidth - 200, gameConsts.halfHeight - 93, getLangText('pre_fight_0e'), {fontFamily: 'verdanabold', fontSize: 16, color: '#000000', align: 'left'});
-            text5.setDepth(99999).setAlpha(0).setOrigin(0, 0);
-            text6 = PhaserScene.add.text(gameConsts.halfWidth - 200, gameConsts.halfHeight - 25, getLangText('pre_fight_0f'), {fontFamily: 'verdanabold', fontSize: 16, color: '#000000', align: 'left'});
-            text6.setDepth(99999).setAlpha(0).setOrigin(0, 0);
-            text7 = PhaserScene.add.text(gameConsts.halfWidth + 115, gameConsts.halfHeight - 7, getLangText('pre_fight_0g'), {fontFamily: 'verdanabold', fontSize: 16, color: '#000000', align: 'center'});
-            text7.setDepth(99999).setAlpha(0).setOrigin(0.5, 1);
-            text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 226, getLangText('pre_fight_0h'), {fontFamily: 'verdanabold', fontSize: 20, color: '#000000', align: 'center'});
+            text3 = PhaserScene.add.text(gameConsts.halfWidth - 66, gameConsts.halfHeight - 93, getLangText('pre_fight_0c'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'});
+            text3.setDepth(99999).setAlpha(0).setOrigin(0, 0.5);
+            text4 = PhaserScene.add.text(gameConsts.halfWidth - 66, gameConsts.halfHeight - 37, getLangText('pre_fight_0d'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'});
+            text4.setDepth(99999).setAlpha(0).setOrigin(0, 0.5);
+            text5 = PhaserScene.add.text(text3.x, text3.y, getLangText('pre_fight_0e'), {fontFamily: 'verdanabold', fontSize: 18, color: '#200000', align: 'left'});
+            text5.setDepth(99999).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
+            text6 = PhaserScene.add.text(text4.x, text4.y, getLangText('pre_fight_0f'), {fontFamily: 'verdanabold', fontSize: 18, color: '#200000', align: 'left'});
+            text6.setDepth(99999).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
+            text7 = PhaserScene.add.text(gameConsts.halfWidth + 8, gameConsts.halfHeight + 19, getLangText('pre_fight_0g'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'center'});
+            text7.setDepth(99999).setAlpha(0).setOrigin(0.5, 0.5);
+            text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 246, getLangText('pre_fight_0h'), {fontFamily: 'verdanabold', fontSize: 16, color: '#200000', align: 'center'});
             text8.setDepth(99999).setAlpha(0).setOrigin(0.5, 0.5);
 
-            text0 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 315, getLangText('pre_fight_0z'), {fontFamily: 'verdanabold', fontSize: 16, color: '#000000', align: 'center'});
+            text0 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 315, getLangText('pre_fight_0z'), {fontFamily: 'verdanabold', fontSize: 16, color: '#200000', align: 'center'});
             text0.setDepth(99999).setOrigin(0.5, 0).setAlpha(0);
 
             createGlobalClickBlocker();
-            texts = [text0, text1, text2, text3, text4, text5, text6, text7, text8];
+
+            let strikeHoverBtn = new Button({
+                normal: {
+                    ref: "tut_btn.png",
+                    atlas: 'buttons',
+                    x: gameConsts.halfWidth - 5,
+                    y: text3.y - 60,
+                    alpha: 0.3
+                },
+                hover: {
+                    ref: "tut_btn_hover.png",
+                    atlas: 'buttons',
+                    alpha: 0.6
+                },
+                press: {
+                    ref: "tut_btn_hover.png",
+                    atlas: 'buttons',
+                    alpha: 0.6
+                },
+                disable: {
+                    alpha: 0
+                },
+                onHover: () => {
+                    PhaserScene.tweens.add({
+                        targets: text3,
+                        alpha: 0,
+                        duration: 100
+                    })
+                    text5.visible = true;
+                    text5.alpha = 0;
+                    PhaserScene.tweens.add({
+                        targets: text5,
+                        alpha: 0.65,
+                        duration: 100
+                    })
+                },
+                onHoverOut: () => {
+                    PhaserScene.tweens.add({
+                        targets: text3,
+                        alpha: 0.65,
+                        duration: 150
+                    })
+                    PhaserScene.tweens.add({
+                        targets: text5,
+                        alpha: 0,
+                        duration: 150
+                    })
+                },
+                onMouseUp: () => {
+                    if (gameVars.wasTouch) {
+                        text3.visible = !text3.visible;
+                        text5.visible = !text5.visible;
+                    }
+                }
+            });
+            strikeHoverBtn.setOrigin(0.5, 0.5);
+            strikeHoverBtn.setDepth(99999);
+            strikeHoverBtn.setState(DISABLE);
+
+            let matterHoverBtn = new Button({
+                normal: {
+                    ref: "tut_btn.png",
+                    atlas: 'buttons',
+                    x: gameConsts.halfWidth - 5,
+                    y: text4.y - 58,
+                    alpha: 0.3
+                },
+                hover: {
+                    ref: "tut_btn_hover.png",
+                    atlas: 'buttons',
+                    alpha: 0.6
+                },
+                press: {
+                    ref: "tut_btn_hover.png",
+                    atlas: 'buttons',
+                    alpha: 0.6
+                },
+                disable: {
+                    alpha: 0
+                },
+                onHover: () => {
+                    PhaserScene.tweens.add({
+                        targets: text4,
+                        alpha: 0,
+                        duration: 100
+                    })
+                    text6.visible = true;
+                    text6.alpha = 0;
+                    PhaserScene.tweens.add({
+                        targets: text6,
+                        alpha: 0.65,
+                        duration: 100
+                    })
+                },
+                onHoverOut: () => {
+                    PhaserScene.tweens.add({
+                        targets: text4,
+                        alpha: 0.65,
+                        duration: 150
+                    })
+                    PhaserScene.tweens.add({
+                        targets: text6,
+                        alpha: 0,
+                        duration: 150
+                    })
+                },
+                onMouseUp: () => {
+                    if (gameVars.wasTouch) {
+                        text4.visible = !text4.visible;
+                        text6.visible = !text6.visible;
+                    }
+                }
+            });
+            matterHoverBtn.setOrigin(0.5, 0.5);
+            matterHoverBtn.setDepth(99999);
+            matterHoverBtn.setState(DISABLE);
+
+            texts = [text0, text1, text2, text3, text4, text5, text6, text7, text8, strikeHoverBtn, matterHoverBtn];
             playSound('flip2')
             PhaserScene.tweens.add({
                 targets: texts,
@@ -56,6 +173,10 @@ function beginPreLevel(lvl) {
                 targets: texts,
                 alpha: 0.65,
                 duration: 650,
+                onComplete: () => {
+                    strikeHoverBtn.setState(NORMAL);
+                    matterHoverBtn.setState(NORMAL);
+                }
             })
 
             let introbgs = [introPaper, introOverlay];
@@ -69,7 +190,7 @@ function beginPreLevel(lvl) {
                 y: "-=60",
                 onComplete: () => {
                     let itemsToClear = texts.concat(introbgs);
-                    createLvlCloseButton(lvl, itemsToClear, 10, 50);
+                    createLvlCloseButton(lvl, itemsToClear, 5, 35);
                 }
             });
             PhaserScene.tweens.add({

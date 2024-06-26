@@ -1709,6 +1709,15 @@ class Enemy {
         this.sprite.setScale(this.sprite.startScale);
     }
 
+    hideCurrentAttack() {
+        this.attackName.setText(" ");
+        this.chargeBarCurr.alpha = 0;
+        this.hideAngrySymbol();
+        this.chargeBarWarning.alpha = 0;
+        this.chargeBarAngry.alpha = 0;
+
+    }
+
     setNextAttack(set, index = 0) {
         this.currentAttackSetIndex = set;
         this.nextAttackIndex = index;

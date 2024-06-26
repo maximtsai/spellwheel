@@ -682,7 +682,7 @@ class SpellManager {
 
         textHealth.setDepth(120).setOrigin(0.5, 0.5).setScale(0);
         stoneCircle.setDepth(10);
-        let basePower = 22;
+        let basePower = 24;
         let shieldHealth = basePower * multiplier;
         this.scene.tweens.add({
             targets: stoneCircle,

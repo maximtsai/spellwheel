@@ -29,11 +29,11 @@ function beginPreLevel(lvl) {
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
             text3 = PhaserScene.add.text(gameConsts.halfWidth - 66, gameConsts.halfHeight - 93, getLangText('pre_fight_0c'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'});
             text3.setDepth(99999).setAlpha(0).setOrigin(0, 0.5);
-            text4 = PhaserScene.add.text(gameConsts.halfWidth - 66, gameConsts.halfHeight - 37, getLangText('pre_fight_0d'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'});
+            text4 = PhaserScene.add.text(gameConsts.halfWidth - 65, gameConsts.halfHeight - 35, getLangText('pre_fight_0d'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'});
             text4.setDepth(99999).setAlpha(0).setOrigin(0, 0.5);
-            text5 = PhaserScene.add.text(text3.x, text3.y, getLangText('pre_fight_0e'), {fontFamily: 'verdanabold', fontSize: 18, color: '#200000', align: 'left'});
+            text5 = PhaserScene.add.text(text3.x, text3.y + 1, getLangText('pre_fight_0e'), {fontFamily: 'verdanabold', fontSize: 18, color: '#200000', align: 'left'});
             text5.setDepth(99999).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
-            text6 = PhaserScene.add.text(text4.x, text4.y, getLangText('pre_fight_0f'), {fontFamily: 'verdanabold', fontSize: 18, color: '#200000', align: 'left'});
+            text6 = PhaserScene.add.text(text4.x, text4.y + 2, getLangText('pre_fight_0f'), {fontFamily: 'verdanabold', fontSize: 18, color: '#200000', align: 'left'});
             text6.setDepth(99999).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
             text7 = PhaserScene.add.text(gameConsts.halfWidth + 8, gameConsts.halfHeight + 19, getLangText('pre_fight_0g'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'center'});
             text7.setDepth(99999).setAlpha(0).setOrigin(0.5, 0.5);
@@ -81,6 +81,7 @@ function beginPreLevel(lvl) {
                     })
                 },
                 onHoverOut: () => {
+                    text3.visible = true;
                     PhaserScene.tweens.add({
                         targets: text3,
                         alpha: 0.65,
@@ -94,8 +95,18 @@ function beginPreLevel(lvl) {
                 },
                 onMouseUp: () => {
                     if (gameVars.wasTouch) {
-                        text3.visible = !text3.visible;
                         text5.visible = !text5.visible;
+                        text3.visible = !text5.visible;
+                        PhaserScene.tweens.add({
+                            targets: text3,
+                            alpha: text3.visible ? 0.65 : 0,
+                            duration: 100
+                        })
+                        PhaserScene.tweens.add({
+                            targets: text5,
+                            alpha: text5.visible ? 0.65 : 0,
+                            duration: 100
+                        })
                     }
                 }
             });
@@ -108,7 +119,7 @@ function beginPreLevel(lvl) {
                     ref: "tut_btn.png",
                     atlas: 'buttons',
                     x: gameConsts.halfWidth - 5,
-                    y: text4.y - 58,
+                    y: text4.y - 57,
                     alpha: 0.3
                 },
                 hover: {
@@ -139,6 +150,7 @@ function beginPreLevel(lvl) {
                     })
                 },
                 onHoverOut: () => {
+                    targets: text4.visible = true;
                     PhaserScene.tweens.add({
                         targets: text4,
                         alpha: 0.65,
@@ -152,8 +164,18 @@ function beginPreLevel(lvl) {
                 },
                 onMouseUp: () => {
                     if (gameVars.wasTouch) {
-                        text4.visible = !text4.visible;
                         text6.visible = !text6.visible;
+                        text4.visible = !text6.visible;
+                        PhaserScene.tweens.add({
+                            targets: text4,
+                            alpha: text4.visible ? 0.65 : 0,
+                            duration: 100
+                        })
+                        PhaserScene.tweens.add({
+                            targets: text6,
+                            alpha: text6.visible ? 0.65 : 0,
+                            duration: 100
+                        })
                     }
                 }
             });

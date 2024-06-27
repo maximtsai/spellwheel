@@ -16,6 +16,7 @@
      initStatsCustom() {
          this.health = 4;
          this.scytheObjects = [];
+         this.listOfAngryPopups = [];
      }
 
      swingScythe(damage = 4444, fadeOutScythe = true, flipped = false, onComplete) {
@@ -422,7 +423,7 @@
                      },
                  },
                  {
-                     name: ";17x7",
+                     name: ";20x6",
                      chargeAmt: 1200,
                      chargeMult: 2,
                      finishDelay: 5000,
@@ -430,22 +431,20 @@
                      isBigMove: true,
                      attackStartFunction: () => {
                          // this.hideCurrentAttack();
-                         this.swingScytheFastIntro(17, false, false,() => {
-                             this.swingScytheFast(17, false, true,() => {
-                                 this.swingScytheFast(17, false, false,() => {
-                                     this.swingScytheFast(17, false, true,() => {
-                                         this.swingScytheFast(17, false, false,() => {
-                                             this.swingScytheFast(17, false, true,() => {
-                                                 this.swingScytheFast(17, false, false,() => {
-                                                     super.setHealth(1);
-                                                     PhaserScene.tweens.add({
-                                                         targets: this.mainScythe,
-                                                         alpha: 0,
-                                                         ease: 'Quad.easeOut',
-                                                         duration: 500,
-                                                     });
-                                                     // this.setAwake();
-                                                 })
+                         this.swingScytheFastIntro(20, false, false,() => {
+                             this.swingScytheFast(20, false, true,() => {
+                                 this.swingScytheFast(20, false, false,() => {
+                                     this.swingScytheFast(20, false, true,() => {
+                                         this.swingScytheFast(20, false, false,() => {
+                                             this.swingScytheFast(20, false, true,() => {
+                                                 super.setHealth(1);
+                                                 PhaserScene.tweens.add({
+                                                     targets: this.mainScythe,
+                                                     alpha: 0,
+                                                     ease: 'Quad.easeOut',
+                                                     duration: 500,
+                                                 });
+                                                 // this.setAwake();
                                              })
                                          })
                                      })
@@ -457,15 +456,44 @@
                      }
                  },
                  {
-                     name: ";80",
-                     chargeAmt: 600,
+                     name: ";66",
+                     chargeAmt: 900,
                      chargeMult: 2,
                      finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
+                     startFunction: () => {
+                         this.listOfAngryPopups = [];
+
+                         this.addDelay(() => {
+                             this.nextAttack.chargeMult = 4.5;
+                             let angryPopup = this.addSprite(this.x +8, this.y - 15, 'enemies', 'angry1.png').play('angry').setScale(0.3);
+                             this.listOfAngryPopups.push(angryPopup);
+                             this.addTween({
+                                 targets: angryPopup, scaleX: 2.5, scaleY: 2.5, rotation: 0.1,
+                                 ease: 'Quart.easeOut', duration: 200,
+                                 onComplete: () => {
+                                     this.addTween({
+                                         targets: angryPopup, scaleX: 0.75, scaleY: 0.75, rotation: 0.1, easeParams: [3],
+                                         ease: 'Back.easeOut', duration: 300
+                                     });
+                                 }
+                             });
+                         }, 900)
+
+                     },
                      attackStartFunction: () => {
                          this.scytheCanBreak = true;
                          this.swingScytheFastIntro(80, true, false, () => {
+                             this.addTween({
+                                 targets: this.listOfAngryPopups, scaleX: 0, scaleY: 0,
+                                 ease: 'Back.easeIn', duration: 400,
+                                 onComplete: () => {
+                                     for (let i in this.listOfAngryPopups) {
+                                         this.listOfAngryPopups[i].destroy();
+                                     }
+                                 }
+                             });
                              if (!globalObjects.player.dead) {
                                  super.setHealth(0);
                                  this.die();
@@ -480,7 +508,7 @@
      }
 
      die() {
-         fadeAwaySound(this.bgMusic)
+         fadeAwaySound(this.bgMusic);
         PhaserScene.tweens.add({
             delay: 250,
             targets: this.mainScythe,
@@ -489,19 +517,20 @@
             scaleY: 0.7,
             rotation: -0.4,
             x: gameConsts.halfWidth + 170,
-            y: this.y + 335,
+            y: this.y + 310,
             duration: 1500,
             ease: 'Cubic.easeInOut',
             completeDelay: 700,
             onComplete: () => {
+                super.die();
                 PhaserScene.tweens.add({
                     targets: this.mainScythe,
                     rotation: -0.55,
-                    y: this.y + 340,
+                    y: this.y + 320,
                     duration: 600,
                     ease: 'Cubic.easeInOut',
                     onComplete: () => {
-                        globalObjects.bannerTextManager.setDialog([getLangText('deathFight1f'), getLangText('deathFight1g')]);
+                        globalObjects.bannerTextManager.setDialog([getLangText('deathFight1h'), getLangText('deathFight1i')]);
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                         globalObjects.bannerTextManager.showBanner(true);
                         globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -648,12 +677,12 @@
              let currScythe = this.scytheObjects[j];
             firstThird.push(currScythe);
          }
-         for (let j = 12; j < 24; j++) {
-             let currScythe = this.scytheObjects[j];
+         for (let k = 12; k < 24; k++) {
+             let currScythe = this.scytheObjects[k];
              secondThird.push(currScythe);
          }
-         for (let j = 24; j < 36; j++) {
-             let currScythe = this.scytheObjects[j];
+         for (let l = 24; l < 36; l++) {
+             let currScythe = this.scytheObjects[l];
              thirdThird.push(currScythe);
          }
          this.addTween({

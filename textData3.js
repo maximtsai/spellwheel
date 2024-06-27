@@ -3,7 +3,7 @@ let textData3 = {
     death2a: {en_us: '...OH? IT\'S YOU AGAIN.',
         fr: '',
         zh_tw: '',
-        zh_cn: '',
+        zh_cn: '...哦？又是你。',
         ru: '',
         es: '',
         jp: ''
@@ -169,7 +169,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    deathFight1d: {en_us: "BUT YOU'LL NEED MORE THAN\nTHAT TO AVOID YOUR FATE.",
+    deathFight1d: {en_us: "BUT YOU'LL NEED MORE\nTO AVOID YOUR FATE.",
         fr: '',
         zh_tw: '',
         zh_cn: '',

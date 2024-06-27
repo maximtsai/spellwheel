@@ -201,7 +201,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    deathFight1h: {en_us: "... THIS WAS MY\nFAVORITE SCYTHE.",
+    deathFight1h: {en_us: "...HMPH,\nSHODDY EQUIPMENT",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -209,7 +209,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    deathFight1i: {en_us: "NOW WORTHLESS.",
+    deathFight1i: {en_us: "SEEMS I'LL NEED TO BE\nMORE \"HANDS ON\".",
         fr: '',
         zh_tw: '',
         zh_cn: '',

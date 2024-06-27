@@ -43,7 +43,7 @@ let textData = {
     },
     matter_reinforce_desc: {en_us: 'Gain thorns that\nprotect you and\nreflect 1 damage',
         fr: '',
-        zh_tw: '',
+        zh_tw: '獲得荊棘來保護你\n並反射 1 點傷害',
         zh_cn: '获得荆棘来保护你\n并反射 1 点伤害',
         ru: '',
         es: '',
@@ -51,17 +51,19 @@ let textData = {
     },
     matter_unload_desc: {en_us: 'Deal 24 damage.\nGain 24 temporary\nprotection',
         fr: '',
-        zh_tw: '',
+        zh_tw: '造成 24 點傷害。\n' +
+            '獲得 24 點臨時保護',
         zh_cn: '造成 24 点伤害。\n获得 24 点临时保护',
         ru: '',
         es: '',
         jp: ''
     },
 
-    time_strike_desc: {en_us: 'Deal 6 damage,\nthen deal 50%\nthat damage\na second time',
+    time_strike_desc: {en_us: 'Attack twice.\nFirst attack deals\n6 damage, second\nattack deals 50%\nof first.',
         fr: '',
         zh_tw: '',
-        zh_cn: '造成 6 点伤害，\n然后再次造成第一\n次攻击 50% 的伤害',
+        zh_cn: '攻击两次。\n' +
+            '第一次攻击造成 6 点伤害，第二次攻击造成第一次攻击的 50%',
         ru: '',
         es: '',
         jp: ''
@@ -164,7 +166,7 @@ let textData = {
         es: '',
         jp: ''
     },
-    mind_protect_desc: {en_us: 'Create a shield\nthat absorbs\n50% damage then\nblasts it back',
+    mind_protect_desc: {en_us: 'Create a shield\nthat absorbs 50%\ndamage then\nblasts it back',
         fr: '',
         zh_tw: '',
         zh_cn: '创建一个吸收 50%\n伤害的盾牌，吸收\n后将伤害反射回去',

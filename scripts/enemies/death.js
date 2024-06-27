@@ -391,8 +391,8 @@
                  },
                  {
                      name: "}6x12}",
-                     chargeAmt: 1200,
-                     chargeMult: 2,
+                     chargeAmt: 1250,
+                     chargeMult: 1.5,
                      finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
@@ -424,8 +424,8 @@
                  },
                  {
                      name: ";20x6",
-                     chargeAmt: 1200,
-                     chargeMult: 2,
+                     chargeAmt: 1250,
+                     chargeMult: 1.5,
                      finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
@@ -457,7 +457,7 @@
                  },
                  {
                      name: ";66",
-                     chargeAmt: 900,
+                     chargeAmt: 800,
                      chargeMult: 2,
                      finishDelay: 5000,
                      damage: -1,
@@ -494,10 +494,24 @@
                                      }
                                  }
                              });
-                             if (!globalObjects.player.dead) {
-                                 super.setHealth(0);
-                                 this.die();
-                             }
+                             this.addTween({
+                                 targets: this.mainScythe,
+                                 rotation: "+=0.7",
+                                 ease: 'Quart.easeInOut',
+                                 duration: 700,
+                                 onComplete: () => {
+                                     if (!globalObjects.player.dead) {
+                                         super.setHealth(0);
+                                         this.die();
+                                     } else {
+                                         this.addTween({
+                                             targets: this.mainScythe,
+                                             alpha: 0,
+                                             duration: 1000
+                                         })
+                                     }
+                                 }
+                             })
                          })
                      },
                      finaleFunction: () => {
@@ -509,8 +523,7 @@
 
      die() {
          fadeAwaySound(this.bgMusic);
-        PhaserScene.tweens.add({
-            delay: 250,
+         PhaserScene.tweens.add({
             targets: this.mainScythe,
             alpha: 1,
             scaleX: 0.7,
@@ -531,6 +544,35 @@
                     ease: 'Cubic.easeInOut',
                     onComplete: () => {
                         globalObjects.bannerTextManager.setDialog([getLangText('deathFight1h'), getLangText('deathFight1i')]);
+                        globalObjects.bannerTextManager.setDialogFunc([undefined, () => {
+                            PhaserScene.tweens.add({
+                                targets: this.mainScythe,
+                                rotation: "-=0.3",
+                                duration: 500,
+                                ease: 'Cubic.easeInOut',
+                                onComplete: () => {
+                                    PhaserScene.tweens.add({
+                                        targets: this.mainScythe,
+                                        rotation: "+=0.4",
+                                        ease: 'Cubic.easeIn',
+                                        duration: 150,
+                                        onComplete: () => {
+                                            this.addTimeout(() => {
+                                                playSound('clunk').pan = 0.4;
+                                            }, 500);
+                                            PhaserScene.tweens.add({
+                                                targets: this.mainScythe,
+                                                rotation: "+=10",
+                                                x: "+=600",
+                                                duration: 1000,
+                                                onComplete: () => {
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+                        }]);
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                         globalObjects.bannerTextManager.showBanner(true);
                         globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -825,7 +867,7 @@
                                  this.addDelay(() => {
                                      scythe.stop();
                                      scythe.setFrame('scythebroke.png')
-                                     playSound('clunk')
+                                     playSound('clunk2')
                                  }, 100)
                              }
                          }, this.scytheCanBreak ? 65 : 80);

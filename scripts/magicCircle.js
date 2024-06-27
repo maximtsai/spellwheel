@@ -2287,6 +2287,15 @@ const ENABLE_KEYBOARD = true;
         this.tempLockRot = rotation;
      }
 
+     updateSpellDescriptorText(newTextStr) {
+         if (this.spellDescriptor.getText() !== newTextStr) {
+             messageBus.publish("spellNameTextUpdate", newTextStr)
+             this.spellDescriptor.setText(newTextStr);
+             this.spellDescriptor.setAlpha(0.6);
+             this.spellDescriptor.addTween({alpha: 1, duration: 250, delay: 600});
+         }
+     }
+
      updateSpellHover(closestElement, closestEmbodiment, closestElementDist, closestEmbodimentDist) {
         let multiplier = globalObjects.player.spellMultiplier();
         let multText = "";
@@ -2322,26 +2331,26 @@ const ENABLE_KEYBOARD = true;
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
                          if (gameVars.matterPlus) {
-                            this.spellDescriptor.setText(getLangText('matter_strike_plus_desc'));
+                            this.updateSpellDescriptorText(getLangText('matter_strike_plus_desc'));
                          } else {
-                            this.spellDescriptor.setText(getLangText('matter_strike_desc'));
+                            this.updateSpellDescriptorText(getLangText('matter_strike_desc'));
                          }
                          break;
                      case RUNE_REINFORCE:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.spellDescriptor.setText(getLangText('matter_reinforce_desc'));
+                         this.updateSpellDescriptorText(getLangText('matter_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateTextIfDifferent(this.spellDescriptor, getLangText('matter_enhance_desc'))
+                         this.updateSpellDescriptorText(getLangText('matter_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.spellDescriptor.setText(getLangText('matter_protect_desc'));
+                         this.updateSpellDescriptorText(getLangText('matter_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.spellDescriptor.setText(getLangText('matter_unload_desc'));
+                         this.updateSpellDescriptorText(getLangText('matter_unload_desc'));
                          break;
                      default:
                          this.spellDescriptor.setText('');
@@ -2352,7 +2361,7 @@ const ENABLE_KEYBOARD = true;
                  this.spellElementText.setText('TIME');
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
-                         this.spellDescriptor.setText(getLangText('time_strike_desc'));
+                         this.updateSpellDescriptorText(getLangText('time_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
                         let healMult = (1 - (0.5 ** multiplier));
@@ -2363,15 +2372,15 @@ const ENABLE_KEYBOARD = true;
                          let healAmt = recentlyHealAmt + Math.ceil(healDelayed * healMult);
                          // this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS (\\'+ healAmt + ")")
                          embodimentText += " (" + healAmt + ")";
-                         this.updateTextIfDifferent(this.spellDescriptor, getLangText('time_reinforce_desc'))
+                         this.updateSpellDescriptorText(getLangText('time_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.spellDescriptor.setText(getLangText('time_enhance_desc'));
+                         this.updateSpellDescriptorText(getLangText('time_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.spellDescriptor.setText(getLangText('time_protect_desc'));
+                         this.updateSpellDescriptorText(getLangText('time_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
                          let turnsAdded = 0;
@@ -2381,7 +2390,7 @@ const ENABLE_KEYBOARD = true;
                             turnsAdded += Math.max(3, 7 - globalObjects.player.getPlayerTimeExhaustion() - tempMult);
                         }
                          embodimentText += " (" + turnsAdded + ")"
-                         this.spellDescriptor.setText(getLangText('time_unload_desc'));
+                         this.updateSpellDescriptorText(getLangText('time_unload_desc'));
                          break;
                      default:
                          this.spellDescriptor.setText('');
@@ -2392,27 +2401,27 @@ const ENABLE_KEYBOARD = true;
                  this.spellElementText.setText('ENERGY');
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
-                         this.spellDescriptor.setText(getLangText('mind_strike_desc'));
+                         this.updateSpellDescriptorText(getLangText('mind_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.spellDescriptor.setText(getLangText('mind_reinforce_desc'));
+                         this.updateSpellDescriptorText(getLangText('mind_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                          if (gameVars.mindPlus) {
-                            this.spellDescriptor.setText(getLangText('mind_enhance_plus_desc'));
+                            this.updateSpellDescriptorText(getLangText('mind_enhance_plus_desc'));
                          } else {
-                            this.spellDescriptor.setText(getLangText('mind_enhance_desc'));
+                            this.updateSpellDescriptorText(getLangText('mind_enhance_desc'));
                          }
                          break;
                      case RUNE_PROTECT:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.spellDescriptor.setText(getLangText('mind_protect_desc'));
+                         this.updateSpellDescriptorText(getLangText('mind_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
                          embodimentText += multiplier > 1.1 ? " (DOUBLE)" : "";
-                         this.spellDescriptor.setText(getLangText('mind_unload_desc'));
+                         this.updateSpellDescriptorText(getLangText('mind_unload_desc'));
                          break;
                      default:
                          this.spellDescriptor.setText('');
@@ -2423,22 +2432,22 @@ const ENABLE_KEYBOARD = true;
                  this.spellElementText.setText('VOID');
                  switch (closestEmbodiment.runeName) {
                      case RUNE_STRIKE:
-                         this.spellDescriptor.setText(getLangText('void_strike_desc'));
+                         this.updateSpellDescriptorText(getLangText('void_strike_desc'));
                          break;
                      case RUNE_REINFORCE:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.spellDescriptor.setText(getLangText('void_reinforce_desc'));
+                         this.updateSpellDescriptorText(getLangText('void_reinforce_desc'));
                          break;
                      case RUNE_ENHANCE:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.spellDescriptor.setText(getLangText('void_enhance_desc'));
+                         this.updateSpellDescriptorText(getLangText('void_enhance_desc'));
                          break;
                      case RUNE_PROTECT:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.spellDescriptor.setText(getLangText('void_protect_desc'));
+                         this.updateSpellDescriptorText(getLangText('void_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
-                         this.updateTextIfDifferent(this.spellDescriptor, getLangText('void_unload_desc'))
+                         this.updateSpellDescriptorText(getLangText('void_unload_desc'));
                          break;
                      default:
                          this.spellDescriptor.setText('');
@@ -2464,13 +2473,6 @@ const ENABLE_KEYBOARD = true;
         }
         if (this.disableSpellDescDisplay || this.manualDisabled) {
             this.spellDescriptor.setText('');
-        }
-     }
-
-     updateTextIfDifferent(textObj, newTextStr) {
-        if (textObj.text !== newTextStr) {
-            messageBus.publish("spellNameTextUpdate", newTextStr)
-            textObj.setText(newTextStr);
         }
      }
 

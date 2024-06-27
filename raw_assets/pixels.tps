@@ -179,6 +179,7 @@
             <key type="filename">pixels/grey_pixel.png</key>
             <key type="filename">pixels/purple_pixel.png</key>
             <key type="filename">pixels/red_pixel.png</key>
+            <key type="filename">pixels/semiblack_pixel.png</key>
             <key type="filename">pixels/white_pixel.png</key>
             <key type="filename">pixels/yellow_pixel.png</key>
             <struct type="IndividualSpriteSettings">

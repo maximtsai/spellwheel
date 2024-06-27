@@ -87,10 +87,9 @@ class InternalHoverTextManager {
 // hoverTextManager = new InternalHoverTextManager();
 class HoverDisplay {
     constructor(data) {
-        this.hoverBacking = PhaserScene.add.sprite(-3, 0, 'blackPixel');
+        this.hoverBacking = PhaserScene.add.sprite(-3, 0, 'pixels', 'semiblack_pixel.png');
         this.hoverBacking.visible = false;
         this.hoverBacking.setDepth(data.depth || 9992);
-        this.hoverBacking.alpha = 0.6;
 
         // this.hoverTextDisplay = PhaserScene.add.bitmapText(0, 0, 'plainBold', '', isMobile ? 19 : 18);
         this.hoverTextDisplay = PhaserScene.add.text(0, 0, 'desc.', {fontFamily: 'verdanamax', fontSize: 19, color: '#FFFFBB', align: 'left'});
@@ -125,12 +124,16 @@ class HoverDisplay {
         this.hoverTextDisplay.setOrigin(x, y);
     }
 
+    getText() {
+        return this.hoverTextDisplay.text;
+    }
+
     setText(text) {
         if (this.hoverTextDisplay.text === text) {
             return;
         }
         this.hoverTextDisplay.setText(text);
-        if (this.hoverTextDisplay.width > 180) {
+        if (this.hoverTextDisplay.width > 170) {
             this.hoverTextDisplay.setFontSize(17);
         } else {
             this.hoverTextDisplay.setFontSize(19);
@@ -144,6 +147,11 @@ class HoverDisplay {
         } else {
             this.setVisible(false);
         }
+    }
+
+    setAlpha(val) {
+        this.hoverTextDisplay.alpha = val;
+        this.hoverBacking.alpha = 0.6 * val;
     }
 
     setVisible(val) {

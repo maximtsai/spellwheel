@@ -14,6 +14,7 @@ const ENABLE_KEYBOARD = true;
         }
 
         this.castDisabled = false;
+        console.log("e1")
         this.bufferedCastAvailable = false;
         this.forcingAlignment = false;
         this.outerDragDisabled = false;
@@ -1520,6 +1521,7 @@ const ENABLE_KEYBOARD = true;
                 this.bufferedCastAvailable = true;
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 250, () => {
                     this.castDisabled = false;
+                    console.log("e2")
                     this.bufferedCastAvailable = false;
                     if (this.useBufferedSpellCast) {
                         this.castSpell(true);
@@ -1566,6 +1568,7 @@ const ENABLE_KEYBOARD = true;
                     this.innerDragDisabled = false;
                     if (!this.innerDragDisabled && !this.outerDragDisabled) {
                         this.castDisabled = false;
+                        console.log("e3")
                         this.recharging = false;
                         this.bufferedCastAvailable = false;
                     }
@@ -1584,6 +1587,7 @@ const ENABLE_KEYBOARD = true;
                     this.outerDragDisabled = false;
                     if (!this.innerDragDisabled && !this.outerDragDisabled) {
                         this.castDisabled = false;
+                        console.log("e4")
                         this.recharging = false;
                         this.bufferedCastAvailable = false;
                     }
@@ -1599,6 +1603,12 @@ const ENABLE_KEYBOARD = true;
         this.castDisabled = true;
         this.recharging = true;
         this.lastDragTime = -1000;
+        if (useLongDelay) {
+            this.spellNameText.visible = false;
+            this.spellElementText.setText('');
+            this.spellActionText.setText('');
+            this.spellDescriptor.setText('');
+        }
         let spinAmt = useLongDelay ? "+=12.566" : "+=6.283"
         this.scene.tweens.add({
             targets: this.innerCircle,
@@ -1665,6 +1675,7 @@ const ENABLE_KEYBOARD = true;
                             this.disableSpellDescDisplay = false;
                         }
                          this.castDisabled = false;
+                        console.log("e5")
                          this.recharging = false;
                          this.bufferedCastAvailable = false;
                          if (this.useBufferedSpellCast) {
@@ -1943,6 +1954,7 @@ const ENABLE_KEYBOARD = true;
                                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * reEnableDelay, () => {
                                     if (!this.outerDragDisabled) {
                                         this.castDisabled = false;
+                                        console.log("e6")
                                     }
                                     if (this.spellNameTextAnim) {
                                         this.spellNameTextAnim.stop();
@@ -2291,8 +2303,8 @@ const ENABLE_KEYBOARD = true;
          if (this.spellDescriptor.getText() !== newTextStr) {
              messageBus.publish("spellNameTextUpdate", newTextStr)
              this.spellDescriptor.setText(newTextStr);
-             this.spellDescriptor.setAlpha(0.6);
-             this.spellDescriptor.addTween({alpha: 1, duration: 250, delay: 600});
+             this.spellDescriptor.setAlpha(0.8);
+             this.spellDescriptor.addTween({ease: 'Cubic.easeInOut', alpha: 1, duration: 250, delay: 500});
          }
      }
 
@@ -2651,6 +2663,7 @@ const ENABLE_KEYBOARD = true;
 
      clearVoidForm() {
          this.castDisabled = false;
+         console.log("e7")
          this.outerDragDisabled = false;
          this.innerDragDisabled = false;
          this.lastDragTime = 0

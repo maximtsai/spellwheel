@@ -398,8 +398,29 @@
                      isBigMove: true,
                      startFunction: () => {
                          this.finishedChargingMulti = false;
-                         setReaperVisible(false);
-                         this.setDefaultSprite('max_death_1_cast.png', undefined);
+                         tweenFloatingDeath(0.6, 0.1, 250, "Cubic.easeIn", () => {
+                             setReaperVisible(false);
+                             this.setDefaultSprite('max_death_1_cast.png', this.sprite.startScale);
+                             this.sprite.setScale(this.sprite.startScale - 0.1);
+                             this.addTween({
+                                 targets: this.sprite,
+                                 scaleX: this.sprite.startScale + 0.05,
+                                 scaleY: this.sprite.startScale + 0.05,
+                                 duration: 300,
+                                 ease: 'Cubic.easeOut',
+                                 onComplete: () => {
+                                     this.sprite.currAnim = this.addTween({
+                                         targets: this.sprite,
+                                         y: "+=6",
+                                         ease: 'Cubic.easeInOut',
+                                         yoyo: true,
+                                         repeat: 3,
+                                         duration: 1000
+                                     })
+                                 }
+                             })
+                         })
+
                          this.startChargingMulti();
                      },
                      attackStartFunction: () => {
@@ -519,6 +540,12 @@
                  },
              ]
          ];
+     }
+
+     cleanUp() {
+         super.cleanUp();
+         clearDeathFog();
+         clearReaper();
      }
 
      die() {
@@ -651,7 +678,7 @@
                          screenShake(2);
                      }
                      if (currScytheObjCount % 12 == 0) {
-                         messageBus.publish('showCircleShadow', 0.65, undefined, 985);
+                         messageBus.publish('showCircleShadow', 0.6, -100, 985);
                          messageBus.publish('tempPause', 200, 0.05);
 
                          playSound('death_attack', 0.4).detune = 1200;
@@ -807,8 +834,25 @@
                      scaleY: 0.68,
                      ease: 'Back.easeOut',
                      onComplete: () => {
-                         setReaperVisible(true);
-                         this.setDefaultSprite('blank.png', undefined, true);
+                         if (this.sprite.currAnim) {
+                             this.sprite.currAnim.stop();
+                         }
+                         this.addTween({
+                             targets: this.sprite,
+                             scaleX: this.sprite.startScale - 0.1,
+                             scaleY: this.sprite.startScale - 0.1,
+                             duration: 300,
+                             ease: 'Cubic.easeIn',
+                             onComplete: () => {
+                                 this.setDefaultSprite('blank.png', this.sprite.startScale, true);
+                             }
+                         })
+                         tweenFloatingDeath(0.667, 0, 25, "Cubic.easeOut", () => {
+                             setReaperVisible(true);
+                             tweenFloatingDeath(0.667, 1, 300, "Cubic.easeIn", () => {
+
+                             })
+                         })
                      }
                  })
              }
@@ -860,7 +904,7 @@
                          setTimeout(() => {
                              playSound('death_attack').detune = 0;
                              messageBus.publish("selfTakeDamage", damage);
-                             messageBus.publish('showCircleShadow', 0.85, undefined, 985);
+                             messageBus.publish('showCircleShadow', 0.8, undefined, 985);
                              messageBus.publish('tempPause', this.scytheCanBreak ? 600 : 300, 0.02);
                              screenShake(this.scytheCanBreak ? 1 : 10);
                              if (this.scytheCanBreak) {
@@ -966,7 +1010,7 @@
                          setTimeout(() => {
                              playSound('death_attack').detune = 0;
                              messageBus.publish("selfTakeDamage", damage);
-                             messageBus.publish('showCircleShadow', 0.7, undefined, 985);
+                             messageBus.publish('showCircleShadow', 0.7, -150, 985);
                              messageBus.publish('tempPause', 250, 0.035);
                              screenShake(8 * flipMult);
                          }, 80);

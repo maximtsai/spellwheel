@@ -791,6 +791,15 @@ class Player {
                     case 'mind':
                         if (hurtAmt > 0 && shieldObj.active) {
                             let blockedDmg = Math.ceil(hurtAmt * 0.49999);
+                            if (blockedDmg > Math.floor(hurtAmt * 0.49999) + 0.9) {
+                                // we got extra
+                                if (shieldObj.soakedExtra) {
+                                    shieldObj.soakedExtra = false;
+                                } else {
+                                    blockedDmg--;
+                                    shieldObj.soakedExtra = true;
+                                }
+                            }
                             hurtAmt = hurtAmt - blockedDmg;
                             shieldObj.impactVisibleTime = 8;
                             shieldObj.storedDamage += blockedDmg * shieldObj.multiplier;

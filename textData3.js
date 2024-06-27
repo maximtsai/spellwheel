@@ -209,7 +209,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    deathFight1i: {en_us: "SEEMS I'LL NEED TO BE\nMORE \"HANDS ON\".",
+    deathFight1i: {en_us: "SEEMS I HAVE TO BE\nMORE HANDS ON.",
         fr: '',
         zh_tw: '',
         zh_cn: '',

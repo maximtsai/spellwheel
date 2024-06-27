@@ -9,8 +9,6 @@ const audioFiles = [
     {name: 'metaljpop', src: 'audio/metaljpop.mp3'},
     {name: 'jpop', src: 'audio/jpop.mp3'},
     {name: 'heartbeat', src: 'audio/heartbeat.mp3'},
-    {name: 'heartbeatmini', src: 'audio/heartbeatmini.mp3'},
-
 
     {name: 'glass_break', src: 'audio/glass_break.mp3'},
     {name: 'button', src: 'audio/button.mp3'},

@@ -57,7 +57,7 @@
                  {
                      name: ";"+attackDamages+"x"+attackTimes+"; ",
                      desc: "Secret weapon",
-                     chargeAmt: 1200,
+                     chargeAmt: 1300,
                      damage: -1,
                      finishDelay: 8000,
                      startFunction: () => {

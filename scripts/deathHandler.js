@@ -455,32 +455,7 @@ function playReaperAnim(enemy, customFinFunc) {
                                                     handleReaperDialog(level, () => {
                                                         gameVars.deathFlutterDelay = 10;
                                                         repeatDeathFlutterAnimation(-0.25);
-                                                        if (globalObjects.deathLeftHand.currAnim) {
-                                                            globalObjects.deathLeftHand.currAnim.stop();
-                                                            globalObjects.deathRightHand.currAnim.stop();
-                                                        }
-                                                        tweenObjectRotationTo(globalObjects.deathLeftHand, -0.38, 1100, "Cubic.easeIn");
-                                                        tweenObjectRotationTo(globalObjects.deathRightHand, 0.32, 1100, "Cubic.easeIn");
-                                                        globalObjects.deathLeftHand.alpha = 3;
-                                                        globalObjects.deathRightHand.alpha = 3;
-                                                        tweenFloatingDeath(0.5, 0.1, 1100, "Quad.easeIn", () => {
-                                                            globalObjects.floatingDeath.flutterAnim.stop();
-                                                            globalObjects.floatingDeath.visible = true;
-                                                            globalObjects.floatingDeath2.visible = false;
-                                                            globalObjects.floatingDeath.alpha = 0.1;
-                                                            PhaserScene.tweens.add({
-                                                                targets: [globalObjects.floatingDeath, globalObjects.deathLeftHand, globalObjects.deathRightHand],
-                                                                alpha: 0,
-                                                                fakeAlpha: 0,
-                                                                scaleX: 0.3,
-                                                                scaleY: 0.3,
-                                                                duration: 400,
-                                                                ease: 'Quad.easeOut',
-                                                                onComplete: () => {
-                                                                    globalObjects.floatingDeath.visible = false;
-                                                                }
-                                                            });
-                                                        });
+                                                        clearReaper();
                                                         globalObjects.postFightScreen.startGloom();
                                                         PhaserScene.tweens.add({
                                                             targets: [scythe],
@@ -528,6 +503,35 @@ function playReaperAnim(enemy, customFinFunc) {
     //     duration: 1200,
 
     // });
+}
+
+function clearReaper() {
+    if (globalObjects.deathLeftHand.currAnim) {
+        globalObjects.deathLeftHand.currAnim.stop();
+        globalObjects.deathRightHand.currAnim.stop();
+    }
+    tweenObjectRotationTo(globalObjects.deathLeftHand, -0.38, 1100, "Cubic.easeIn");
+    tweenObjectRotationTo(globalObjects.deathRightHand, 0.32, 1100, "Cubic.easeIn");
+    globalObjects.deathLeftHand.alpha = 3;
+    globalObjects.deathRightHand.alpha = 3;
+    tweenFloatingDeath(0.5, 0.1, 1100, "Quad.easeIn", () => {
+        globalObjects.floatingDeath.flutterAnim.stop();
+        globalObjects.floatingDeath.visible = true;
+        globalObjects.floatingDeath2.visible = false;
+        globalObjects.floatingDeath.alpha = 0.1;
+        PhaserScene.tweens.add({
+            targets: [globalObjects.floatingDeath, globalObjects.deathLeftHand, globalObjects.deathRightHand],
+            alpha: 0,
+            fakeAlpha: 0,
+            scaleX: 0.3,
+            scaleY: 0.3,
+            duration: 400,
+            ease: 'Quad.easeOut',
+            onComplete: () => {
+                globalObjects.floatingDeath.visible = false;
+            }
+        });
+    });
 }
 
 function startDeathFlutterAnim() {

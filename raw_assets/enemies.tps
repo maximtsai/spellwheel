@@ -748,67 +748,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/max_death_2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>143,130,285,260</rect>
-                <key>scale9Paddings</key>
-                <rect>143,130,285,260</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/max_death_2x.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>225,155,450,310</rect>
-                <key>scale9Paddings</key>
-                <rect>225,155,450,310</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/max_death_3.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>175,135,350,270</rect>
-                <key>scale9Paddings</key>
-                <rect>175,135,350,270</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/max_death_3b.png</key>
-            <key type="filename">enemies/max_death_3c.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>75,128,150,255</rect>
-                <key>scale9Paddings</key>
-                <rect>75,128,150,255</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">enemies/max_death_left_arm.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

@@ -632,7 +632,7 @@
                  // 4
                  {
                      name: "}2",
-                     chargeAmt: 450,
+                     chargeAmt: 300,
                      damage: -1,
                      attackFinishFunction: () => {
                         this.birdPoops(1);
@@ -642,7 +642,7 @@
                  },
                  {
                      name: "}5",
-                     chargeAmt: 450,
+                     chargeAmt: 400,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(1, true);
@@ -652,7 +652,7 @@
                  },
                  {
                      name: "}2x4",
-                     chargeAmt: 450,
+                     chargeAmt: 400,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(4);
@@ -702,7 +702,7 @@
                  },
                  {
                      name: "}2x12",
-                     chargeAmt: 450,
+                     chargeAmt: 500,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(12);
@@ -712,7 +712,7 @@
                  },
                  {
                      name: "}5x6",
-                     chargeAmt: 450,
+                     chargeAmt: 500,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(6, true);
@@ -722,7 +722,7 @@
                  },
                  {
                      name: "}20x2",
-                     chargeAmt: 450,
+                     chargeAmt: 550,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(2, true, true);

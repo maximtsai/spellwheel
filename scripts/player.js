@@ -894,7 +894,7 @@ class Player {
                                         });
 
                                         if (shieldObj.active) {
-                                            messageBus.publish('enemyTakeTrueDamage', shieldObj.storedDamage, false, 95);
+                                            messageBus.publish('enemyTakeTrueDamage', shieldObj.storedDamage, false, 95, true);
                                             shieldObj.animObj[1].setScale(shieldObj.animObj[1].origScale);
                                             this.scene.tweens.add({
                                                 targets: shieldObj.animObj[1],

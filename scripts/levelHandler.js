@@ -5,7 +5,6 @@ function beginPreLevel(lvl) {
     globalObjects.encyclopedia.hideButton();
     globalObjects.options.hideButton();
     let introPaper;
-    let text0;
     let text1;
     let text2;
     let text3;
@@ -39,9 +38,6 @@ function beginPreLevel(lvl) {
             text7.setDepth(99999).setAlpha(0).setOrigin(0.5, 0.5);
             text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 246, getLangText('pre_fight_0h'), {fontFamily: 'verdanabold', fontSize: 16, color: '#200000', align: 'center'});
             text8.setDepth(99999).setAlpha(0).setOrigin(0.5, 0.5);
-
-            text0 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 315, getLangText('pre_fight_0z'), {fontFamily: 'verdanabold', fontSize: 16, color: '#200000', align: 'center'});
-            text0.setDepth(99999).setOrigin(0.5, 0).setAlpha(0);
 
             createGlobalClickBlocker();
 
@@ -183,7 +179,7 @@ function beginPreLevel(lvl) {
             matterHoverBtn.setDepth(99999);
             matterHoverBtn.setState(DISABLE);
 
-            texts = [text0, text1, text2, text3, text4, text5, text6, text7, text8, strikeHoverBtn, matterHoverBtn];
+            texts = [text1, text2, text3, text4, text5, text6, text7, text8, strikeHoverBtn, matterHoverBtn];
             playSound('flip2')
             PhaserScene.tweens.add({
                 targets: texts,

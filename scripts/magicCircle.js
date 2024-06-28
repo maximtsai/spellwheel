@@ -2500,7 +2500,7 @@ const ENABLE_KEYBOARD = true;
          this.mindBurnAnim.alpha = 0.5;
          let damageDealt = gameVars.mindPlus ? 3 : 2;
          this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * duration);
-        messageBus.publish('enemyTakeTrueDamage', damageDealt, false);
+        messageBus.publish('enemyTakeTrueDamage', damageDealt, false, 0, true);
         if (!this.flashBGWhite) {
             this.flashBGWhite = PhaserScene.add.image(gameConsts.halfWidth,gameConsts.halfHeight - 200,'blurry', 'circle.webp').setDepth(-1).setAlpha(0);
         }
@@ -2532,7 +2532,7 @@ const ENABLE_KEYBOARD = true;
                  if (effectObj) {
                      if (effectObj.firstTicked) {
                          this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * effectObj.duration);
-                         messageBus.publish('enemyTakeTrueDamage', damageDealt, false);
+                         messageBus.publish('enemyTakeTrueDamage', damageDealt, false, 0, true);
                      } else {
                          effectObj.firstTicked = true;
                      }

@@ -291,13 +291,19 @@ function setupLoadingBar(scene) {
 }
 
 function tempLoadFinFunc() {
-    let goalX = (gameVars.mouseposx - gameConsts.halfWidth) * 0.02;
+    let goalX = (gameVars.mouseposx - gameConsts.halfWidth) * 0.024;
     let goalY = (gameVars.mouseposy - gameConsts.halfHeight) * 0.01;
     PhaserScene.cameras.main.scrollX = goalX * 0.08 + PhaserScene.cameras.main.scrollX * 0.92;
     PhaserScene.cameras.main.scrollY = goalY * 0.08 + PhaserScene.cameras.main.scrollY * 0.92;
 
     if (loadObjects.introLocketOpen) {
-        loadObjects.introLocketOpen.rotation = Math.sin(PhaserScene.cameras.main.scrollX * 0.004);
+        if (PhaserScene.cameras.main.scrollX < 0) {
+            loadObjects.introLocketOpen.rotation = -Math.sqrt(PhaserScene.cameras.main.scrollX * -0.1) * 0.015;
+
+        } else {
+            loadObjects.introLocketOpen.rotation = Math.sqrt(PhaserScene.cameras.main.scrollX * 0.1) * 0.015;
+
+        }
 
     }
 }
@@ -580,6 +586,7 @@ function clickIntro() {
 }
 
 function skipIntro() {
+    gameVars.introSkipped = true;
     setTimeout(() => {
         cleanupIntro();
     }, 0)
@@ -614,8 +621,7 @@ function cleanupIntro() {
         globalObjects.tempIntroText[i].destroy();
     }
     setupPlayer();
-    let hasSkipped = false;
-    if (hasSkipped) {
+    if (gameVars.introSkipped) {
         gotoMainMenu();
     } else {
 
@@ -645,12 +651,9 @@ function locketFlash() {
     globalObjects.gameLocketOpen.x = (gameConsts.halfWidth - scaleDiff * 400) * 0.2 + globalObjects.gameLocketOpen.x * 0.8;
     globalObjects.gameLocketOpen.rotation = (-scaleDiff + goalY * 0.5) * 0.05 + globalObjects.gameLocketOpen.rotation * 0.95;
     globalObjects.gameLocketOpenLight.rotation = globalObjects.gameLocketOpen.rotation;
-    globalObjects.gameLocketOpenLight.alpha = Math.abs(globalObjects.gameLocketOpenLight.rotation) * 12 - 0.05 - goalY
+    globalObjects.gameLocketOpenLight.alpha = -globalObjects.gameLocketOpenLight.rotation * 12 - 0.1 - goalY * 1.18;
     globalObjects.gameLocketOpenLight.x = globalObjects.gameLocketOpen.x;
     globalObjects.gameLocketOpenLight.scaleY = globalObjects.gameLocketOpen.scaleY;
-    // if (loadObjects.introLocketOpen) {
-    //     loadObjects.introLocketOpen.rotation = Math.sin(goalX * 0.004);
-    // }
 }
 
 function showLocket() {

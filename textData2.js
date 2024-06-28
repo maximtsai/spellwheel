@@ -9,58 +9,54 @@ let textData2 = {
         jp: ''
     },
 
-    pre_fight_0z: {en_us: " ",
-        fr: '',
-        zh_tw: '我終於到了。',
-        zh_cn: '我终于到了。',
-        ru: '',
-        es: '',
-        jp: ''
-    },
     pre_fight_0a: {en_us: "CONTROLS:",
         fr: '',
-        zh_tw: '我終於到了。',
-        zh_cn: '我终于到了。',
+        zh_tw: '控制：',
+        zh_cn: '控制:',
         ru: '',
         es: '',
         jp: ''
     },
     pre_fight_0b: {en_us: "Click and drag\nthe wheels",
         fr: '',
-        zh_tw: '在通往禁地的入口處。',
-        zh_cn: '在通往禁地的门口。',
+        zh_tw: '點擊並拖曳\n' +
+            '輪子',
+        zh_cn: '点击并拖动\n' +
+            '轮子',
         ru: '',
         es: '',
         jp: ''
     },
     pre_fight_0c: {en_us: "Strike Rune",
         fr: '',
-        zh_tw: '我知道我會在這裡找到你，我親愛的。',
-        zh_cn: '我知道我会在这里找到你，我亲爱的。',
+        zh_tw: '打擊符文',
+        zh_cn: '打击符文',
         ru: '',
         es: '',
         jp: ''
     },
     pre_fight_0d: {en_us: "Matter Rune",
         fr: '',
-        zh_tw: '我知道我會在這裡找到你，我親愛的。',
-        zh_cn: '我知道我会在这里找到你，我亲爱的。',
+        zh_tw: '物質符文',
+        zh_cn: '物质符文',
         ru: '',
         es: '',
         jp: ''
     },
     pre_fight_0e: {en_us: "Casts attack spells",
         fr: '',
-        zh_tw: '我知道我會在這裡找到你，我親愛的。',
-        zh_cn: '我知道我会在这里找到你，我亲爱的。',
+        zh_tw: '施展攻擊法術',
+        zh_cn: '施放攻击型法术',
         ru: '',
         es: '',
         jp: ''
     },
     pre_fight_0f: {en_us: "Uses solid rock and\nstone for your spells",
         fr: '',
-        zh_tw: '',
-        zh_cn: '',
+        zh_tw: '使用岩石和\n' +
+            '石头施展法术',
+        zh_cn: '使用岩石和\n' +
+            '石头施展法术',
         ru: '',
         es: '',
         jp: ''
@@ -75,8 +71,12 @@ let textData2 = {
     },
     pre_fight_0h: {en_us: "Click to cast\nMatter+Strike\nspell",
         fr: '',
-        zh_tw: '',
-        zh_cn: '',
+        zh_tw: '點擊投射\n' +
+            '物質+打擊\n' +
+            '法術',
+        zh_cn: '点击投射\n' +
+            '物质+打击\n' +
+            '法术',
         ru: '',
         es: '',
         jp: ''

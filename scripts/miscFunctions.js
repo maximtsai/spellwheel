@@ -45,3 +45,37 @@ function hideGlobalClickBlocker() {
         globalObjects.magicCircle.enableMovement();
     }
 }
+
+let cheatsDisplay;
+function toggleCheat(code) {
+    switch(code) {
+        case 'dd':
+            cheats.extraDamage = !cheats.extraDamage;
+            break;
+        default:
+            break;
+    }
+    updateCheatsDisplay();
+}
+
+function updateCheatsDisplay() {
+    let cheatsText = "CHEATS ACTIVE:";
+    if (!cheatsDisplay) {
+        cheatsDisplay = PhaserScene.add.text(10, 103, ' ', {fontFamily: 'verdanamax', fontSize: 17, color: '#FF0000', align: 'left'}).setOrigin(0, 0);
+        cheatsDisplay.setDepth(500);
+    }
+    let hasCheats = false;
+    for (let i in cheats) {
+        if (cheats[i]) {
+            hasCheats = true;
+            cheatsText += "\n" + i;
+        }
+    }
+    if (hasCheats) {
+        cheatsDisplay.setText(cheatsText);
+
+    } else {
+        cheatsDisplay.setText(' ');
+    }
+
+}

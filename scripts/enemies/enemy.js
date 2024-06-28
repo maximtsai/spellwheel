@@ -28,6 +28,7 @@ class Enemy {
             messageBus.subscribe("playerDied", this.playerDied.bind(this)),
         ];
 
+
         this.boundUpdateFunc = this.update.bind(this);
         updateManager.addFunction(this.boundUpdateFunc);
     }
@@ -605,6 +606,7 @@ class Enemy {
     }
 
     adjustDamageTaken(amt, isAttack, isTrue = false) {
+
         if (this.defense && isAttack && !isTrue) {
             amt = Math.max(0, amt - this.defense);
         }
@@ -613,7 +615,7 @@ class Enemy {
             let damageToTake = Math.ceil(amt);
             this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake);
             setTimeout(() => {
-                this.takeTrueDamage(damageToTake, undefined, 0);
+                this.takeTrueDamage(damageToTake, false, 0, false);
                 // let startScale = 0.45 + Math.sqrt(damageToTake) * 0.1;
                 // let damageCircle = getTempPoolObject('lowq', 'circle_blue0.png', 'circle_blue', 1800).setDepth(100).setScale(startScale).setAlpha(0.3).setPosition(xPos, yPos);
                 // damageCircle.play('circleBlast')
@@ -1128,6 +1130,12 @@ class Enemy {
         if (this.delayLoad) {
             return;
         }
+        if (isAttack && cheats.extraDamage) {
+            amt *= 2;
+        }
+        if (isAttack && cheats.extraExtraDamage) {
+            amt *= 2;
+        }
         let origHealth = this.health;
         // if (this.storeDamage) {
         //     // time storage
@@ -1233,31 +1241,38 @@ class Enemy {
     }
 
 
-    takeTrueDamage(amt, isAttack = true, extraOffsetY = 0) {
+    takeTrueDamage(amt, isAttack = true, extraOffsetY = 0, canAmplify) {
         if (globalObjects.player.isDead()) {
             return;
         }
         if (this.delayLoad) {
             return;
         }
-        let origHealth = this.health;
-        if (this.storeDamage) {
-            // time storage
-            this.accumulatedTimeDamage += amt;
-            this.clockLarge.setScale(0.18 + Math.sqrt(this.accumulatedTimeDamage) * 0.01);
-            this.clockLargeHand.setScale(this.clockLarge.scaleX * 20, this.clockLarge.scaleY * 140);
-            this.delayedDamageText.setText(this.accumulatedTimeDamage);
-            this.delayedDamageText.setScale(this.clockLarge.scaleX * 3 + 0.1);
-            this.scene.tweens.add({
-                targets: this.delayedDamageText,
-                scaleX: this.clockLarge.scaleX * 3,
-                scaleY: this.clockLarge.scaleX * 3,
-                ease: "Cubic.easeOut",
-                duration: gameVars.gameManualSlowSpeedInverse * 100 + amt * 5
-            });
-
-            amt = 0;
+        if (canAmplify && cheats.extraDamage) {
+            amt *= 2;
         }
+        if (canAmplify && cheats.extraExtraDamage) {
+            amt *= 2;
+        }
+
+        let origHealth = this.health;
+        // if (this.storeDamage) {
+        //     // time storage
+        //     this.accumulatedTimeDamage += amt;
+        //     this.clockLarge.setScale(0.18 + Math.sqrt(this.accumulatedTimeDamage) * 0.01);
+        //     this.clockLargeHand.setScale(this.clockLarge.scaleX * 20, this.clockLarge.scaleY * 140);
+        //     this.delayedDamageText.setText(this.accumulatedTimeDamage);
+        //     this.delayedDamageText.setScale(this.clockLarge.scaleX * 3 + 0.1);
+        //     this.scene.tweens.add({
+        //         targets: this.delayedDamageText,
+        //         scaleX: this.clockLarge.scaleX * 3,
+        //         scaleY: this.clockLarge.scaleX * 3,
+        //         ease: "Cubic.easeOut",
+        //         duration: gameVars.gameManualSlowSpeedInverse * 100 + amt * 5
+        //     });
+        //
+        //     amt = 0;
+        // }
         let damageTaken = this.adjustDamageTaken(amt, isAttack, true);
         if (this.specialDamageAbsorptionActive) {
             damageTaken = this.handleSpecialDamageAbsorption(damageTaken);

@@ -8,8 +8,6 @@ let loadLevel = 0;
 let MAGIC_CIRCLE_HEIGHT = 0;
 let canvas;
 
-let funcToRemove;
-
 function setupLoadingBar(scene) {
     PhaserScene.cameras.main.setZoom(0.98);
     fadeInBackground('backgroundPreload', 5000, 3.28);
@@ -171,7 +169,7 @@ function setupLoadingBar(scene) {
     scene.load.on('complete', () => {
         onLoadComplete(scene);
 
-        funcToRemove = updateManager.addFunction(tempLoadFinFunc);
+        updateManager.addFunction(tempLoadFinFunc);
         loadObjects.loadingText.setText('LOADING\nPRECIOUS MEMORIES');
         for (let i = 0; i < loadingIcons.length; i++) {
             let loadIcon = loadingIcons[i];
@@ -434,7 +432,7 @@ function clickIntro() {
     globalObjects.tempIntroText = [];
     // recursiveCreateIntroText();
     gameVars.runningIntro = true;
-     loadObjects.flash.currAnim.stop();
+    loadObjects.flash.currAnim.stop();
     loadObjects.introLocket.destroy();
     loadObjects.flash.currAnim = PhaserScene.tweens.add({
         targets: loadObjects.flash,
@@ -445,7 +443,7 @@ function clickIntro() {
         ease: 'Quad.easeOut',
         duration: 400,
     });
-    updateManager.removeFunction(funcToRemove);
+    updateManager.removeFunction(tempLoadFinFunc);
     PhaserScene.tweens.add({
         targets: PhaserScene.cameras.main,
         scrollX: 0,
@@ -473,7 +471,6 @@ function clickIntro() {
         ease: 'Quint.easeOut'
     });
 
-
     loadObjects.glowBG = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'blurry', 'circle.webp').setDepth(2000).setAlpha(0.5).setScale(0);
     loadObjects.glowStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'blurry', 'flashbg.webp').setDepth(1000).setAlpha(0.3).setScale(0.4);
     loadObjects.sharpStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 30, 'blurry', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.6, 0.05);
@@ -486,7 +483,7 @@ function clickIntro() {
         alpha: 1,
         scaleX: 2.4,
         scaleY: 2.4,
-        duration: 3000,
+        duration: 2500,
     });
 
     PhaserScene.tweens.add({
@@ -532,7 +529,7 @@ function clickIntro() {
     });
 
     PhaserScene.tweens.add({
-        delay: 2500,
+        delay: 2000,
         targets: loadObjects.glowBG,
         alpha: 1.25,
         scaleX: 14,
@@ -544,30 +541,22 @@ function clickIntro() {
         }
     });
     loadObjects.skipIntroText = PhaserScene.add.text(gameConsts.width - 5, gameConsts.height - 5, 'CLICK TO SKIP', {fontFamily: 'verdana', fontSize: 18, color: '#FFFFFF', align: 'right'}).setDepth(1005).setAlpha(0).setOrigin(1, 1);
-    loadObjects.loadingText.setText("I will find you\n ").setAlpha(0.2).setScale(0.75).y -= 18;
-    PhaserScene.tweens.add({
-        targets: loadObjects.loadingText,
-        alpha: 1,
-        ease: 'Quad.easeOut',
-        duration: 500
-    });
+    loadObjects.loadingText.setText(" ").setAlpha(0).setScale(0.75).y -= 18;
     loadObjects.whiteOverall = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setDepth(2000).setAlpha(0).setScale(1000);
     PhaserScene.tweens.add({
         targets: loadObjects.whiteOverall,
         alpha: 1,
         ease: 'Cubic.easeIn',
-        duration: 3200
+        duration: 2700
     });
-    PhaserScene.time.delayedCall(2000, () => {
+    PhaserScene.time.delayedCall(1200, () => {
         if (!gameVars.introFinished) {
-            loadObjects.loadingText2 = PhaserScene.add.text(gameConsts.halfWidth, loadObjects.loadingText.y + 40, 'my beloved', {fontFamily: 'verdanabold', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
-            loadObjects.loadingText2.setScale(loadObjects.loadingText.scaleX).setAlpha(0);
-            loadObjects.loadingText2.setAlign('center');
-            loadObjects.loadingText2.setOrigin(0.5, 0);
+            loadObjects.loadingText.setAlpha(0).setText("I will find you").setAlign('center');
             PhaserScene.tweens.add({
-                targets: loadObjects.loadingText2,
+                targets: loadObjects.loadingText,
                 alpha: 1,
-                duration: 1000,
+                ease: 'Quad.easeIn',
+                duration: 1300,
             });
         }
     });
@@ -625,39 +614,104 @@ function cleanupIntro() {
         globalObjects.tempIntroText[i].destroy();
     }
     setupPlayer();
-    // gotoMainMenu();
-    globalObjects.magicCircle.disableMovement();
-    gotoMainMenuNoButtons();
-    showLocket();
+    let hasSkipped = false;
+    if (hasSkipped) {
+        gotoMainMenu();
+    } else {
+
+        globalObjects.magicCircle.disableMovement();
+        gotoMainMenuNoButtons();
+        showLocket();
+        globalObjects.encyclopedia.hideButton();
+        globalObjects.options.hideButton();
+    }
+
+}
+
+function locketFlash() {
+    let goalX = (gameVars.mouseposx - gameConsts.halfWidth) * 0.02;
+    let goalY = (gameVars.mouseposy - gameConsts.height) * 0.0003;
+
+    let scaleDiff = 0;
+    scaleDiff = Math.sqrt(Math.abs(goalX)) * 0.015;
+    if (goalX < 0) {
+        scaleDiff = -scaleDiff;
+    }
+    if (goalY < 0) {
+        globalObjects.gameLocketOpen.scaleY = 0.95 - goalY * goalY;
+    } else {
+        globalObjects.gameLocketOpen.scaleY = 0.95;
+    }
+    globalObjects.gameLocketOpen.x = (gameConsts.halfWidth - scaleDiff * 400) * 0.2 + globalObjects.gameLocketOpen.x * 0.8;
+    globalObjects.gameLocketOpen.rotation = (-scaleDiff + goalY * 0.5) * 0.05 + globalObjects.gameLocketOpen.rotation * 0.95;
+    globalObjects.gameLocketOpenLight.rotation = globalObjects.gameLocketOpen.rotation;
+    globalObjects.gameLocketOpenLight.alpha = Math.abs(globalObjects.gameLocketOpenLight.rotation) * 12 - 0.05 - goalY
+    globalObjects.gameLocketOpenLight.x = globalObjects.gameLocketOpen.x;
+    globalObjects.gameLocketOpenLight.scaleY = globalObjects.gameLocketOpen.scaleY;
+    // if (loadObjects.introLocketOpen) {
+    //     loadObjects.introLocketOpen.rotation = Math.sin(goalX * 0.004);
+    // }
 }
 
 function showLocket() {
-    let gameLocketOpen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 119, 'ui', 'locket3.png').setScale(0.8).setDepth(100003);
+    globalObjects.gameLocketOpen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 119, 'ui', 'locket3.png').setScale(0.8).setDepth(100003);
+    globalObjects.gameLocketOpenLight = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 119, 'ui', 'locketwhite.png').setScale(0.8).setDepth(100003).setAlpha(0);
+    let closeText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 20, 'Put away locket', {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'right'}).setDepth(100003).setOrigin(1, 1).setAlpha(0);
+
     PhaserScene.tweens.add({
-        targets: gameLocketOpen,
+        targets: [globalObjects.gameLocketOpen, globalObjects.gameLocketOpenLight],
         y: "+=25",
         ease: 'Quint.easeOut',
         scaleX: 0.95, scaleY: 0.95,
         duration: 700,
+        onComplete: () => {
+            updateManager.addFunction(locketFlash);
+
+            closeText.currAnim = PhaserScene.tweens.add({
+                targets: closeText,
+                alpha: 0.9,
+                duration: 1000,
+            });
+        }
     });
     globalObjects.bannerTextManager.setDialog([getLangText('beginLocket1')]);
-    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height + 230, 0);
     globalObjects.bannerTextManager.showBanner(0.75);
     globalObjects.bannerTextManager.setOnFinishFunc(() => {
+        updateManager.removeFunction(locketFlash);
+        globalObjects.gameLocketOpenLight.destroy();
+
         globalObjects.magicCircle.enableMovement();
-        gameLocketOpen.setFrame('locket4.png');
-        gameLocketOpen.setScale(0.98);
+        globalObjects.gameLocketOpen.setFrame('locket4.png');
+
+        globalObjects.gameLocketOpen.setScale(0.98).setRotation(0.1);
+        if (closeText.currAnim) {
+            closeText.currAnim.stop();
+        }
         PhaserScene.tweens.add({
-            targets: gameLocketOpen,
-            scaleX: 0.95,
-            scaleY: 0.95,
+            targets: [closeText],
+            alpha: 0,
+            duration: 300,
+        });
+        PhaserScene.tweens.add({
+            targets: [globalObjects.gameLocketOpen],
+            rotation: 0,
+            ease: 'Back.easeOut',
+            duration: 250,
+        });
+        PhaserScene.tweens.add({
+            targets: [globalObjects.gameLocketOpen],
+            scaleX: 0.8,
+            scaleY: 0.8,
             ease: 'Cubic.easeOut',
             duration: 250,
             onComplete: () => {
+                globalObjects.encyclopedia.showButton();
+                globalObjects.options.showButton();
                 showMainMenuButtons();
                 PhaserScene.tweens.add({
                     delay: 150,
-                    targets: gameLocketOpen,
+                    targets: globalObjects.gameLocketOpen,
                     y: "+=150",
                     alpha: 0,
                     scaleX: 0.65,
@@ -665,7 +719,8 @@ function showLocket() {
                     ease: 'Quart.easeIn',
                     duration: 600,
                     onComplete: () => {
-                        gameLocketOpen.destroy();
+                        globalObjects.gameLocketOpen.destroy();
+                        closeText.destroy();
                     }
                 });
             }

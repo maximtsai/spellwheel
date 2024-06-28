@@ -256,6 +256,7 @@
                 <false/>
             </struct>
             <key type="filename">ui/locket4.png</key>
+            <key type="filename">ui/locketwhite.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

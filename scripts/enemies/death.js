@@ -225,7 +225,7 @@
         tweenFloatingDeath(0.667, 1, 1800, "Cubic.easeOut", () => {
             globalObjects.bannerTextManager.setDialog([getLangText('deathFight1a'), getLangText('deathFight1b')]);
             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-            globalObjects.bannerTextManager.showBanner(true);
+            globalObjects.bannerTextManager.showBanner(0.5);
             globalObjects.bannerTextManager.setOnFinishFunc(() => {
                 globalObjects.magicCircle.enableMovement();
                 this.setAwake();
@@ -377,7 +377,7 @@
                                  super.setHealth(3);
                                  globalObjects.bannerTextManager.setDialog([getLangText('deathFight1c'), getLangText('deathFight1d')]);
                                  globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-                                 globalObjects.bannerTextManager.showBanner(true);
+                                 globalObjects.bannerTextManager.showBanner(0.5);
                                  globalObjects.bannerTextManager.setOnFinishFunc(() => {
                                      this.interruptCurrentAttack();
                                      this.setAwake();
@@ -434,7 +434,7 @@
                                  super.setHealth(2);
                                  globalObjects.bannerTextManager.setDialog([getLangText('deathFight1f'), getLangText('deathFight1g')]);
                                  globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-                                 globalObjects.bannerTextManager.showBanner(true);
+                                 globalObjects.bannerTextManager.showBanner(0.5);
                                  globalObjects.bannerTextManager.setOnFinishFunc(() => {
                                      this.interruptCurrentAttack();
                                      this.setAwake();
@@ -601,7 +601,7 @@
                             });
                         }]);
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-                        globalObjects.bannerTextManager.showBanner(true);
+                        globalObjects.bannerTextManager.showBanner(0.5);
                         globalObjects.bannerTextManager.setOnFinishFunc(() => {
                         });
                     }

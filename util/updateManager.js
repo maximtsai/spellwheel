@@ -21,12 +21,13 @@ class UpdateManager {
             }
         }
         this.listOfFunctions.push(func);
+        return func;
     }
 
     removeFunction(func) {
         for (let i = 0; i < this.listOfFunctions.length; i++) {
             if (func === this.listOfFunctions[i]) {
-                this.listOfFunctions.splice();
+                this.listOfFunctions.splice(i, 1);
             }
         }
     }

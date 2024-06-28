@@ -130,11 +130,11 @@
                                 if (this.numTimesHealed === 3) {
                                     globalObjects.bannerTextManager.setDialog([getLangText('level1_train_diag_b')]);
                                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
-                                    globalObjects.bannerTextManager.showBanner(true);
+                                    globalObjects.bannerTextManager.showBanner(0.5);
                                 } else if (this.numTimesHealed === 5) {
                                     globalObjects.bannerTextManager.setDialog([getLangText('level1_train_diag_c')]);
                                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
-                                    globalObjects.bannerTextManager.showBanner(true);
+                                    globalObjects.bannerTextManager.showBanner(0.5);
                                 }
                             }
                         });

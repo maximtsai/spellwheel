@@ -72,6 +72,8 @@ function getFogSliceDarken() {
 function getFogSwirl(offsetY) {
     if (!globalObjects.fogSwirl) {
         globalObjects.fogSwirl = PhaserScene.add.image(gameConsts.halfWidth, 240, 'backgrounds', 'fog_swirl.png').setDepth(-1).setScale(2.2).setRotation(-1).setAlpha(0);
+        globalObjects.fogSwirl.scrollFactorX = 0.25;
+        globalObjects.fogSwirl.scrollFactorY = 0.25;
     }
     if (globalObjects.fogSwirl.alpha == 0) {
         globalObjects.fogSwirl.setScale(2.25).setRotation(-1);
@@ -127,6 +129,8 @@ function getFloatingDeath() {
 function getFogSwirlGlow(offsetY) {
     if (!globalObjects.fogSwirlGlow) {
         globalObjects.fogSwirlGlow = PhaserScene.add.image(gameConsts.halfWidth, 225, 'backgrounds', 'fog_swirl_glow.png').setDepth(-1).setAlpha(0);
+        globalObjects.fogSwirlGlow.scrollFactorX = 0.25;
+        globalObjects.fogSwirlGlow.scrollFactorY = 0.25;
     }
     if (globalObjects.fogSwirlGlow.alpha == 0) {
         globalObjects.fogSwirlGlow.setScale(2).setRotation(-1);

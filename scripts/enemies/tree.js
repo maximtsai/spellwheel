@@ -450,7 +450,7 @@
                      onComplete: () => {
                         globalObjects.bannerTextManager.setDialog(["The tree gains spiky thorns that\nreflect 2 damage.", "Block them\n+ Make your attacks count."]);
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-                        globalObjects.bannerTextManager.showBanner(true);
+                        globalObjects.bannerTextManager.showBanner(0.5);
                         this.setDefense(2);
                         this.hasThorns = true;
                          this.addTween({

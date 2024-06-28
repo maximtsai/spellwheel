@@ -1,4 +1,4 @@
-function setupMainMenu() {
+function setupMainMenuBG() {
     if (!globalObjects.menuBack) {
         globalObjects.menuBack = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-9).setScale(0.92);
         globalObjects.menuTop = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9).setScale(0.92);
@@ -118,18 +118,23 @@ function clearMenuButtons() {
 }
 
 function gotoMainMenu() {
-    setupMainMenu();
+    gotoMainMenuNoButtons()
+    showMainMenuButtons();
+}
+
+
+
+function gotoMainMenuNoButtons() {
+    setupMainMenuBG();
     globalObjects.postFightScreen.clearWindSound();
     globalObjects.magicCircle.setAuraAlpha(0);
     globalObjects.encyclopedia.showButton();
     globalObjects.options.showButton();
-    let hasContinue = false;
     if (globalObjects.currentEnemy) {
         globalObjects.currentEnemy.destroy();
     }
     if (globalObjects.player) {
         globalObjects.player.resetStats();
-
     }
 
     globalObjects.menuBack.setAlpha(1).setScale(0.902).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
@@ -139,6 +144,10 @@ function gotoMainMenu() {
     if (globalObjects.startButton && !globalObjects.startButton.isDestroyed) {
         return;
     }
+}
+
+function showMainMenuButtons() {
+    let hasContinue = false;
 
     if (hasContinue) {
         globalObjects.continueButton = new Button({
@@ -313,7 +322,6 @@ function gotoMainMenu() {
     globalObjects.lvl5Button.setScale(0.5);
     globalObjects.lvl5Button.addText("LEVEL 5", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
-
     globalObjects.lvl6Button = new Button({
         normal: {
             ref: "menu_btn_normal.png",
@@ -339,8 +347,6 @@ function gotoMainMenu() {
     });
     globalObjects.lvl6Button.setScale(0.5);
     globalObjects.lvl6Button.addText("LEVEL 6", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
-
-
 
     globalObjects.lvl7Button = new Button({
         normal: {
@@ -420,7 +426,6 @@ function gotoMainMenu() {
     globalObjects.lvl9Button.setScale(0.5);
     globalObjects.lvl9Button.addText("LEVEL 9", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
-
     globalObjects.lvl10Button = new Button({
         normal: {
             ref: "menu_btn_normal.png",
@@ -446,7 +451,6 @@ function gotoMainMenu() {
     });
     globalObjects.lvl10Button.setScale(0.5);
     globalObjects.lvl10Button.addText("LEVEL 10", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
-
 
     globalObjects.creditsButton = new Button({
         normal: {
@@ -621,8 +625,6 @@ function gotoMainMenu() {
     });
     globalObjects.zh_tw_button.addText("中文(繁體)", {fontSize: 16, color: '#000000', align: 'left'})
 }
-
-
 
 function updateMenuLanguage() {
     console.log("todo");

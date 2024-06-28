@@ -862,7 +862,7 @@
     beginPhaseTwo() {
         globalObjects.bannerTextManager.setDialog(["\"You think you've defeated me?\"", "\"Have a taste of my true power!\""]);
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-        globalObjects.bannerTextManager.showBanner(true);
+        globalObjects.bannerTextManager.showBanner(0.5);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
             this.addTween({
                 targets: this.sprite,
@@ -1052,7 +1052,7 @@
                                 if (this.numTimesHealed === 3) {
                                     globalObjects.bannerTextManager.setDialog(["\"You can talk\nbut you can't knock\"", "\"Now have a taste of\nmy great big clock!\""]);
                                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-                                    globalObjects.bannerTextManager.showBanner(true);
+                                    globalObjects.bannerTextManager.showBanner(0.5);
                                 }
                             }
                         });

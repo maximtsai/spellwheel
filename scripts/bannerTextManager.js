@@ -32,7 +32,7 @@ class BannerTextManager {
         return this.darkenBG.depth;
     }
 
-    showBanner(haveBGDarken = true) {
+    showBanner(haveBGDarken = 0.5) {
         this.isShowing = true;
         this.setText(this.dialog[this.dialogIndex]);
         if (this.funcArray[this.dialogIndex]) {
@@ -41,7 +41,7 @@ class BannerTextManager {
         if (haveBGDarken) {
             PhaserScene.tweens.add({
                 targets: [this.darkenBG],
-                alpha: 0.5,
+                alpha: haveBGDarken,
                 duration: 350,
             });
         }

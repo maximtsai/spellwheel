@@ -1,5 +1,13 @@
 
 let textData3 = {
+    beginLocket1: {en_us: "I'll reach you soon,\nmy beloved...",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '...哦？又是你。',
+        ru: '',
+        es: '',
+        jp: ''
+    },
     death2a: {en_us: '...OH? IT\'S YOU AGAIN.',
         fr: '',
         zh_tw: '',
@@ -145,7 +153,7 @@ let textData3 = {
         jp: ''
     },
 
-    deathFight1a: {en_us: "ALAS, YOUR JOURNEY WAS\nNOT MEANT TO BE.",
+    deathFight1a: {en_us: "UNFORTUNATE, YOUR JOURNEY\nWAS NOT MEANT TO BE.",
         fr: '',
         zh_tw: '',
         zh_cn: '',

@@ -8,6 +8,8 @@ let loadLevel = 0;
 let MAGIC_CIRCLE_HEIGHT = 0;
 let canvas;
 
+let funcToRemove;
+
 function setupLoadingBar(scene) {
     PhaserScene.cameras.main.setZoom(0.98);
     fadeInBackground('backgroundPreload', 5000, 3.28);
@@ -17,8 +19,11 @@ function setupLoadingBar(scene) {
     loadObjects.version = scene.add.text(4, gameConsts.height - 4, gameVersion).setOrigin(0, 1).setAlpha(0.7);
     loadObjects.loadingSpinner = scene.add.image(gameConsts.halfWidth, iconsHeight, 'loadingSpinner');
     loadObjects.castButton = scene.add.image(gameConsts.halfWidth, iconsHeight, 'castNormal');
+    loadObjects.castButton.scrollFactorX = 0.35; loadObjects.castButton.scrollFactorY = 0.35;
+    loadObjects.loadingSpinner.scrollFactorX = 0.35; loadObjects.loadingSpinner.scrollFactorY = 0.35;
+    loadObjects.version.scrollFactorX = 0; loadObjects.version.scrollFactorY = 0;
 
-    loadObjects.introLocket = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 85, 'introLocket').setScale(0.47).setAlpha(0).setDepth(1001).setOrigin(0.5, 0.75);
+    loadObjects.introLocket = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 115, 'introLocket').setScale(0.75).setAlpha(0).setDepth(1001).setOrigin(0.5, 0.65);
     loadObjects.introLocket.currAnim = PhaserScene.tweens.add({
         targets: loadObjects.introLocket,
         alpha: 1,
@@ -55,7 +60,6 @@ function setupLoadingBar(scene) {
         let newFlashImage = scene.add.image(currIcon.x, currIcon.y, currIcon.texture.key);
         loadingIconsFlash.push(newFlashImage)
         // icons[i].visible = false;
-        // icons[i].setScale(0);
         currIcon.setOrigin(0.5, 0.123);
         newFlashImage.setOrigin(0.5, 0.123);
         newFlashImage.alpha = 0;
@@ -64,21 +68,20 @@ function setupLoadingBar(scene) {
 
     for (let i = 0; i < icons.length; i++) {
         // icons[i].visible = false;
-        // icons[i].setScale(0);
         icons[i].alpha = 0;
         icons[i].setDepth(201);
         icons[i].setOrigin(0.5, 0.85);
         icons[i].setScale(1.25, 1.75);
         icons[i].rotation = (i / icons.length) * Math.PI * 2;
         icons[i].startRotation = icons[i].rotation;
+        icons[i].scrollFactorX = 0.3; icons[i].scrollFactorY = 0.3;
     }
-
-
 
     loadObjects.loadingText = scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 60, 'LOADING...', {fontFamily: 'verdanabold', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
     loadObjects.loadingText.setScale(0.6);
     loadObjects.loadingText.setAlign('center');
     loadObjects.loadingText.setOrigin(0.5, 0);
+    loadObjects.loadingText.scrollFactorX = 0.3; loadObjects.loadingText.scrollFactorY = 0.3;
 
     loadObjects.loadingSpinner.setDepth(200);
     loadObjects.castButton.setDepth(200);
@@ -167,6 +170,8 @@ function setupLoadingBar(scene) {
     });
     scene.load.on('complete', () => {
         onLoadComplete(scene);
+
+        funcToRemove = updateManager.addFunction(tempLoadFinFunc);
         loadObjects.loadingText.setText('LOADING\nPRECIOUS MEMORIES');
         for (let i = 0; i < loadingIcons.length; i++) {
             let loadIcon = loadingIcons[i];
@@ -214,11 +219,12 @@ function setupLoadingBar(scene) {
             if (!loadObjects.introLocketOpen) {
                 let oldX = loadObjects.introLocket.x; let oldY = loadObjects.introLocket.y; let oldScale = loadObjects.introLocket.scaleX;
                 loadObjects.introLocket.destroy();
-                loadObjects.introLocketOpen = scene.add.image(oldX, oldY, 'ui', 'locket2.png').setScale(oldScale * 1.1).setDepth(1001).setOrigin(0.5, 0.75);
+                loadObjects.introLocketOpen = scene.add.image(oldX, oldY, 'ui', 'locket2.png').setScale(0.83).setDepth(1001).setOrigin(0.5, 0.65);
+                loadObjects.introLocketOpen.scrollFactorX = 0; loadObjects.introLocketOpen.scrollFactorY = 0;
                 scene.tweens.add({
                     targets: loadObjects.introLocketOpen,
-                    scaleX: oldScale,
-                    scaleY: oldScale,
+                    scaleX: 0.75,
+                    scaleY: 0.75,
                     ease: 'Back.easeOut',
                     duration: 400
                 });
@@ -286,6 +292,18 @@ function setupLoadingBar(scene) {
     });
 }
 
+function tempLoadFinFunc() {
+    let goalX = (gameVars.mouseposx - gameConsts.halfWidth) * 0.02;
+    let goalY = (gameVars.mouseposy - gameConsts.halfHeight) * 0.01;
+    PhaserScene.cameras.main.scrollX = goalX * 0.08 + PhaserScene.cameras.main.scrollX * 0.92;
+    PhaserScene.cameras.main.scrollY = goalY * 0.08 + PhaserScene.cameras.main.scrollY * 0.92;
+
+    if (loadObjects.introLocketOpen) {
+        loadObjects.introLocketOpen.rotation = Math.sin(PhaserScene.cameras.main.scrollX * 0.004);
+
+    }
+}
+
 function animateStart() {
     let newX = loadObjects.loadingText.x - 20 + Math.random() * 40;
     let newY = loadObjects.loadingText.y - 5 + Math.random() * 45;
@@ -333,25 +351,25 @@ function animateStart() {
         duration: 1500,
     });
 }
-let randIntroTexts = ["find her", "I will find you", "my beloved", "searching", "dearest", "bring her back",
-    "rescue her", "seek her", "lovely departed", "find", "rescue", "save", "love", "I will be a hero", "triumph", "from the dead", "not yet gone"
-    ];
-function generateRandIntroText() {
-    let randVal = Math.floor(Math.random() * randIntroTexts.length);
-    if (randVal == gameVars.lastIntroTextGenerated) {
-        randVal = Math.floor(Math.random() * randIntroTexts.length);
-    } else if (randVal == gameVars.lastLastIntroTextGenerated) {
-        randVal = Math.floor(Math.random() * randIntroTexts.length);
-    }
-    if (randVal == gameVars.lastIntroTextGenerated) {
-        randVal = Math.floor(Math.random() * randIntroTexts.length);
-    } else if (randVal == gameVars.lastLastIntroTextGenerated) {
-        randVal = Math.floor(Math.random() * randIntroTexts.length);
-    }
-    gameVars.lastLastIntroTextGenerated = gameVars.lastIntroTextGenerated;
-    gameVars.lastIntroTextGenerated = randVal;
-    return randIntroTexts[randVal];
-}
+// let randIntroTexts = ["find her", "I will find you", "my beloved", "searching", "dearest", "bring her back",
+//     "rescue her", "seek her", "lovely departed", "find", "rescue", "save", "love", "I will be a hero", "triumph", "from the dead", "not yet gone"
+//     ];
+// function generateRandIntroText() {
+//     let randVal = Math.floor(Math.random() * randIntroTexts.length);
+//     if (randVal == gameVars.lastIntroTextGenerated) {
+//         randVal = Math.floor(Math.random() * randIntroTexts.length);
+//     } else if (randVal == gameVars.lastLastIntroTextGenerated) {
+//         randVal = Math.floor(Math.random() * randIntroTexts.length);
+//     }
+//     if (randVal == gameVars.lastIntroTextGenerated) {
+//         randVal = Math.floor(Math.random() * randIntroTexts.length);
+//     } else if (randVal == gameVars.lastLastIntroTextGenerated) {
+//         randVal = Math.floor(Math.random() * randIntroTexts.length);
+//     }
+//     gameVars.lastLastIntroTextGenerated = gameVars.lastIntroTextGenerated;
+//     gameVars.lastIntroTextGenerated = randVal;
+//     return randIntroTexts[randVal];
+// }
 
 function recursiveCreateIntroText(delay = 150, num = 180) {
     if (num <= 0 || gameVars.introFinished) {
@@ -414,7 +432,7 @@ function recursiveCreateIntroText(delay = 150, num = 180) {
 function clickIntro() {
     clearDeathFog();
     globalObjects.tempIntroText = [];
-    recursiveCreateIntroText();
+    // recursiveCreateIntroText();
     gameVars.runningIntro = true;
      loadObjects.flash.currAnim.stop();
     loadObjects.introLocket.destroy();
@@ -427,6 +445,22 @@ function clickIntro() {
         ease: 'Quad.easeOut',
         duration: 400,
     });
+    updateManager.removeFunction(funcToRemove);
+    PhaserScene.tweens.add({
+        targets: PhaserScene.cameras.main,
+        scrollX: 0,
+        scrollY: 0,
+        duration: 750,
+        ease: 'Cubic.easeOut'
+    });
+    PhaserScene.tweens.add({
+        targets: loadObjects.introLocketOpen,
+        rotation: 0,
+        scrollY: 0,
+        ease: 'Cubic.easeOut',
+        duration: 750
+    });
+
 
     if (loadObjects.loadingText2 && loadObjects.loadingText2.currAnim) {
     loadObjects.loadingText2.currAnim.stop();
@@ -540,17 +574,17 @@ function clickIntro() {
 
 
     if (!loadObjects.introLocketOpen) {
-         loadObjects.introLocketOpen = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'ui', 'locket3.png').setDepth(1001).setOrigin(0.5, 0.75);
+         loadObjects.introLocketOpen = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'ui', 'locket3.png').setDepth(1001).setOrigin(0.5, 0.65);
+        loadObjects.introLocketOpen.scrollFactorX = 0; loadObjects.introLocketOpen.scrollFactorY = 0;
     } else {
-        loadObjects.introLocketOpen.setFrame('locket3.png').setOrigin(0.5, 0.75);
+        loadObjects.introLocketOpen.setFrame('locket3.png').setOrigin(0.5, 0.65);
     }
-    let oldScale = 0.55;
-    loadObjects.introLocketOpen.setScale(oldScale * 1.05);
+    loadObjects.introLocketOpen.setScale(0.8);
     PhaserScene.tweens.add({
         targets: loadObjects.introLocketOpen,
-        scaleX: 0.65,
-        scaleY: 0.65,
-         y: gameConsts.halfHeight - 50,
+        scaleX: 0.75,
+        scaleY: 0.75,
+         y: gameConsts.halfHeight - 100,
         ease: 'Cubic.easeOut',
         duration: 1000
     });
@@ -591,8 +625,55 @@ function cleanupIntro() {
         globalObjects.tempIntroText[i].destroy();
     }
     setupPlayer();
-    gotoMainMenu();
+    // gotoMainMenu();
+    globalObjects.magicCircle.disableMovement();
+    gotoMainMenuNoButtons();
+    showLocket();
 }
+
+function showLocket() {
+    let gameLocketOpen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 119, 'ui', 'locket3.png').setScale(0.8).setDepth(100003);
+    PhaserScene.tweens.add({
+        targets: gameLocketOpen,
+        y: "+=25",
+        ease: 'Quint.easeOut',
+        scaleX: 0.95, scaleY: 0.95,
+        duration: 700,
+    });
+    globalObjects.bannerTextManager.setDialog([getLangText('beginLocket1')]);
+    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+    globalObjects.bannerTextManager.showBanner(0.75);
+    globalObjects.bannerTextManager.setOnFinishFunc(() => {
+        globalObjects.magicCircle.enableMovement();
+        gameLocketOpen.setFrame('locket4.png');
+        gameLocketOpen.setScale(0.98);
+        PhaserScene.tweens.add({
+            targets: gameLocketOpen,
+            scaleX: 0.95,
+            scaleY: 0.95,
+            ease: 'Cubic.easeOut',
+            duration: 250,
+            onComplete: () => {
+                showMainMenuButtons();
+                PhaserScene.tweens.add({
+                    delay: 150,
+                    targets: gameLocketOpen,
+                    y: "+=150",
+                    alpha: 0,
+                    scaleX: 0.65,
+                    scaleY: 0.65,
+                    ease: 'Quart.easeIn',
+                    duration: 600,
+                    onComplete: () => {
+                        gameLocketOpen.destroy();
+                    }
+                });
+            }
+        });
+
+    })
+}
+
 
 function resetGame() {
     for (let i in globalObjects) {
@@ -623,34 +704,6 @@ function setupGame() {
     globalObjects.postFightScreen = new PostFightScreen(PhaserScene);
     globalObjects.confirmPopup = new ConfirmPopup(PhaserScene);
     globalObjects.bgHandler = new BgHandler();
-
-    // globalObjects.dummyEnemy = new Wall(PhaserScene, gameConsts.halfWidth, 165);
-    // globalObjects.dummyEnemy = new Death(PhaserScene, gameConsts.halfWidth, 173);
-    //globalObjects.dummyEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 173);
-
-
-    // globalObjects.optionsButton = new Button(
-    // {
-    //     normal: {
-    //         "ref": "optionsNormal",
-    //         "x": gameConsts.width - 55,
-    //         "y": gameConsts.height - 22
-    //     },
-    //     hover: {
-    //         "ref": "optionsHover"
-    //     },
-    //     press: {
-    //         "ref": "optionsPress"
-    //     },
-    //     onMouseUp: () => {
-    //
-    //     }
-    // });
-    // globalObjects.optionsButton.setDepth(20);
-
-
-    // globalObjects.interestManager = new InterestManager();
-    // updateManager.addFunction(globalObjects.interestManager.update);
 }
 
 function setupPlayer() {

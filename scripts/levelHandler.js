@@ -409,8 +409,6 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0) {
             lvlCloseButton.destroy();
             hideGlobalClickBlocker();
             beginLevel(lvl);
-            globalObjects.encyclopedia.showButton();
-            globalObjects.options.showButton();
         }
     });
     lvlCloseButton.setOrigin(0.5, 0.5);
@@ -475,7 +473,8 @@ function switchLevelBackground(lvl) {
 
 function beginLevel(lvl) {
     CURRENT_LEVEL = lvl;
-
+    globalObjects.encyclopedia.showButton();
+    globalObjects.options.showButton();
     updateSpellState(lvl)
     globalObjects.player.resetStats();
     messageBus.publish('manualResetElements', undefined, true);

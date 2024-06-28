@@ -50,15 +50,33 @@ class Encyclopedia {
 
     showEncyclopedia() {
         if (!this.darkenBG) {
-            this.darkenBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(this.baseDepth);
+            this.darkenBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(this.baseDepth - 1);
             this.darkenBG.setScale(500, 500);
         }
+        if (!this.tab1) {
+            this.tab1 = PhaserScene.add.image(gameConsts.halfWidth - 180, gameConsts.halfHeight - 245, 'ui', 'paperTab.png').setDepth(this.baseDepth - 1).setAlpha(0);
+            this.tab1Icon = PhaserScene.add.image(this.tab1.x, this.tab1.y - 30, 'ui', 'tab_icon_control.png').setDepth(this.baseDepth - 1).setAlpha(0);
+            this.listOfThingsToHide.push(this.tab1);
+            this.listOfThingsToHide.push(this.tab1Icon);
+        }
+        if (!this.tab2) {
+            this.tab2 = PhaserScene.add.image(gameConsts.halfWidth - 90, gameConsts.halfHeight - 245, 'ui', 'paperTab.png').setDepth(this.baseDepth - 1).setAlpha(0);
+            this.tab2Icon = PhaserScene.add.image(this.tab2.x, this.tab2.y - 30, 'ui', 'tab_icon_runes.png').setDepth(this.baseDepth - 1).setAlpha(0);
+            this.listOfThingsToHide.push(this.tab2);
+            this.listOfThingsToHide.push(this.tab2Icon);
+        }
+        if (!this.tab3) {
+            this.tab3 = PhaserScene.add.image(gameConsts.halfWidth - 0, gameConsts.halfHeight - 245, 'ui', 'paperTab.png').setDepth(this.baseDepth - 1).setAlpha(0);
+            this.tab3Icon = PhaserScene.add.image(this.tab3.x, this.tab3.y - 30, 'ui', 'tab_icon_combos.png').setDepth(this.baseDepth - 1).setAlpha(0);
+            this.listOfThingsToHide.push(this.tab3);
+            this.listOfThingsToHide.push(this.tab3Icon);
+        }
         if (!this.bgPage) {
-            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 10, 'ui', 'battleOverScreen.png').setDepth(this.baseDepth).setAlpha(0);
+            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight + 30, 'ui', 'battleOverScreen.png').setDepth(this.baseDepth).setAlpha(0);
             this.listOfThingsToHide.push(this.bgPage);
         }
         if (!this.title) {
-            this.title = PhaserScene.add.text(gameConsts.halfWidth - 242, gameConsts.halfHeight - 282, getLangText('pre_fight_0a'), {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'}).setDepth(this.baseDepth).setAlpha(0);
+            this.title = PhaserScene.add.text(gameConsts.halfWidth - 242, gameConsts.halfHeight - 242, getLangText('pre_fight_0a'), {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'}).setDepth(this.baseDepth).setAlpha(0);
             this.listOfThingsToHide.push(this.title);
         }
         this.setFirstPage();
@@ -70,8 +88,8 @@ class Encyclopedia {
                     atlas: 'buttons',
                     ref: "closebtn.png",
                     alpha: 0.9,
-                    x: gameConsts.halfWidth + 260,
-                    y: gameConsts.halfHeight - 320,
+                    x: gameConsts.halfWidth + 262,
+                    y: gameConsts.halfHeight - 285,
                 },
                 hover: {
                     alpha: 1,
@@ -108,7 +126,7 @@ class Encyclopedia {
             buttonManager.bringButtonToTop(this.closeButton);
             this.closeButton.setState(NORMAL);
         }
-        this.darkenBG.setAlpha(0.4);
+        this.darkenBG.setAlpha(0.55);
         PhaserScene.tweens.add({
             targets: this.listOfThingsToHide,
             alpha: 1,
@@ -120,7 +138,10 @@ class Encyclopedia {
             alpha: 1,
             ease: 'Cubic.easeOut',
             duration: 1,
+            onComplete: () => {
+            }
         });
+        this.raiseTab(1);
 
         // this.bgPage.setAlpha(0.2);
         // PhaserScene.tweens.add({
@@ -131,6 +152,50 @@ class Encyclopedia {
         // });
         messageBus.publish('pauseGame', 0.002);
 
+    }
+
+    raiseTab(idx) {
+        let restOfTabs = [this.tab2, this.tab3];
+        let restOfTabIcons = [this.tab2Icon, this.tab3Icon];
+        let currTab = this.tab1;
+        let currTabIcon = this.tab1Icon;
+        if (idx == 2) {
+            currTab = this.tab2;
+            currTabIcon = this.tab2Icon;
+            let restOfTabs = [this.tab1, this.tab3];
+            let restOfTabIcons = [this.tab1Icon, this.tab3Icon];
+
+        } else if (idx == 3) {
+            currTab = this.tab3;
+            currTabIcon = this.tab3Icon;
+            let restOfTabs = [this.tab1, this.tab2];
+            let restOfTabIcons = [this.tab1Icon, this.tab2Icon];
+        }
+        PhaserScene.tweens.add({
+            targets: restOfTabs,
+            y: gameConsts.halfHeight - 243,
+            ease: 'Cubic.easeOut',
+            duration: 1,
+        });
+        PhaserScene.tweens.add({
+            targets: restOfTabIcons,
+            y: gameConsts.halfHeight - 273,
+            ease: 'Cubic.easeOut',
+            duration: 1,
+        });
+
+        PhaserScene.tweens.add({
+            targets: [currTab],
+            y: gameConsts.halfHeight - 275,
+            ease: 'Cubic.easeOut',
+            duration: 1,
+        });
+        PhaserScene.tweens.add({
+            targets: [currTabIcon],
+            y: gameConsts.halfHeight - 300,
+            ease: 'Cubic.easeOut',
+            duration: 1,
+        });
     }
 
     clearCurrentPage() {
@@ -150,20 +215,20 @@ class Encyclopedia {
     }
 
     setFirstPage() {
-        let imageCover = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'ui', 'newgame_paper.png').setDepth(this.baseDepth).setAlpha(0).setScale(0.92);
-        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 228, getLangText('pre_fight_0b'), {fontFamily: 'verdanabold', fontSize: 15, color: '#200000', align: 'left'});
+        let imageCover = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'newgame_paper.png').setDepth(this.baseDepth).setAlpha(0).setScale(0.92);
+        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 188, getLangText('pre_fight_0b'), {fontFamily: 'verdanabold', fontSize: 15, color: '#200000', align: 'left'});
         text2.setDepth(this.baseDepth).setOrigin(0, 0).setAlpha(0);
-        let text3 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 133, getLangText('pre_fight_0c'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'left'});
+        let text3 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 93, getLangText('pre_fight_0c'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'left'});
         text3.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5);
-        let text4 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 81, getLangText('pre_fight_0d'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'left'});
+        let text4 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 41, getLangText('pre_fight_0d'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'left'});
         text4.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5);
         let text5 = PhaserScene.add.text(text3.x, text3.y + 1, getLangText('pre_fight_0e'), {fontFamily: 'verdanabold', fontSize: 17, color: '#200000', align: 'left'});
         text5.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
         let text6 = PhaserScene.add.text(text4.x, text4.y + 2, getLangText('pre_fight_0f'), {fontFamily: 'verdanabold', fontSize: 17, color: '#200000', align: 'left'});
         text6.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
-        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 8, gameConsts.halfHeight - 33, getLangText('pre_fight_0g'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'center'});
+        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 8, gameConsts.halfHeight +7, getLangText('pre_fight_0g'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'center'});
         text7.setDepth(this.baseDepth).setAlpha(0).setOrigin(0.5, 0.5);
-        let text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 175, getLangText('pre_fight_0h'), {fontFamily: 'verdanabold', fontSize: 15, color: '#200000', align: 'center'});
+        let text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 215, getLangText('pre_fight_0h'), {fontFamily: 'verdanabold', fontSize: 15, color: '#200000', align: 'center'});
         text8.setDepth(this.baseDepth).setAlpha(0).setOrigin(0.5, 0.5);
         this.currentPageItems.push(imageCover);
         // this.currentPageItems.push(text1);
@@ -174,6 +239,11 @@ class Encyclopedia {
         this.currentPageItems.push(text6);
         this.currentPageItems.push(text7);
         this.currentPageItems.push(text8);
+        PhaserScene.tweens.add({
+            targets: [this.tab1]
+        })
+        this.listOfThingsToHide.push();
+        this.listOfThingsToHide.push(this.tab1Icon);
     }
 
     hideEncyclopedia() {

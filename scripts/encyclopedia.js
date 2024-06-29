@@ -49,6 +49,8 @@ class Encyclopedia {
     }
 
     showEncyclopedia() {
+        globalObjects.encyclopedia.hideButton();
+        globalObjects.options.hideButton();
         if (!this.darkenBG) {
             this.darkenBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(this.baseDepth - 1);
             this.darkenBG.setScale(500, 500);
@@ -82,14 +84,16 @@ class Encyclopedia {
         this.setFirstPage();
 
         createGlobalClickBlocker();
+        this.activateTabButtons();
+
         if (!this.closeButton) {
             this.closeButton = new Button({
                 normal: {
                     atlas: 'buttons',
                     ref: "closebtn.png",
                     alpha: 0.9,
-                    x: gameConsts.halfWidth + 262,
-                    y: gameConsts.halfHeight - 285,
+                    x: gameConsts.width - 50,
+                    y: 50,
                 },
                 hover: {
                     alpha: 1,
@@ -154,6 +158,144 @@ class Encyclopedia {
 
     }
 
+    activateTabButtons() {
+        if (!this.tab1Button) {
+            this.tab1Button = new Button({
+                normal: {
+                    ref: "blackPixel",
+                    alpha: 0,
+                    x: this.tab1Icon.x,
+                    y: this.tab1Icon.y - 30,
+                    scaleX: 42,
+                    scaleY: 42
+                },
+                hover: {
+                    ref: "blackPixel",
+                    alpha: 0,
+                    x: this.tab1Icon.x,
+                    y: this.tab1Icon.y - 30,
+                    scaleX: 43,
+                    scaleY: 43
+                },
+                disable: {
+                    alpha: 0
+                },
+                onHover: () => {
+                    this.tab1.setFrame('paperTab_glow.png')
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    this.tab1.setFrame('paperTab.png')
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: () => {
+                    this.clearCurrentPage();
+                    this.setFirstPage();
+                    this.raiseTab(1);
+                }
+            });
+            this.tab1Button.setDepth(this.baseDepth);
+            this.listOfButtonsToDisable.push(this.tab1Button);
+        } else {
+            buttonManager.bringButtonToTop(this.tab1Button);
+            this.tab1Button.setState(NORMAL);
+        }
+        if (!this.tab2Button) {
+            this.tab2Button = new Button({
+                normal: {
+                    ref: "blackPixel",
+                    alpha: 0,
+                    x: this.tab2Icon.x,
+                    y: this.tab2Icon.y - 30,
+                    scaleX: 42,
+                    scaleY: 42
+                },
+                hover: {
+                    ref: "blackPixel",
+                    alpha: 0,
+                    x: this.tab2Icon.x,
+                    y: this.tab2Icon.y - 30,
+                    scaleX: 43,
+                    scaleY: 43
+                },
+                disable: {
+                    alpha: 0
+                },
+                onHover: () => {
+                    this.tab2.setFrame('paperTab_glow.png')
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    this.tab2.setFrame('paperTab.png')
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: () => {
+                    this.clearCurrentPage();
+                    this.setFirstPage();
+                    this.raiseTab(2);
+                }
+            });
+            this.tab2Button.setDepth(this.baseDepth);
+            this.listOfButtonsToDisable.push(this.tab2Button);
+        } else {
+            buttonManager.bringButtonToTop(this.tab2Button);
+            this.tab2Button.setState(NORMAL);
+        }
+        if (!this.tab3Button) {
+            this.tab3Button = new Button({
+                normal: {
+                    ref: "blackPixel",
+                    alpha: 0,
+                    x: this.tab3Icon.x,
+                    y: this.tab3Icon.y - 30,
+                    scaleX: 42,
+                    scaleY: 42
+                },
+                hover: {
+                    ref: "blackPixel",
+                    alpha: 0,
+                    x: this.tab3Icon.x,
+                    y: this.tab3Icon.y - 30,
+                    scaleX: 43,
+                    scaleY: 43
+                },
+                disable: {
+                    alpha: 0
+                },
+                onHover: () => {
+                    this.tab3.setFrame('paperTab_glow.png')
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    this.tab3.setFrame('paperTab.png')
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: () => {
+                    this.clearCurrentPage();
+                    this.setFirstPage();
+                    this.raiseTab(3);
+                }
+            });
+            this.tab3Button.setDepth(this.baseDepth);
+            this.listOfButtonsToDisable.push(this.tab3Button);
+        } else {
+            buttonManager.bringButtonToTop(this.tab3Button);
+            this.tab3Button.setState(NORMAL);
+        }
+    }
+
     raiseTab(idx) {
         let restOfTabs = [this.tab2, this.tab3];
         let restOfTabIcons = [this.tab2Icon, this.tab3Icon];
@@ -162,14 +304,14 @@ class Encyclopedia {
         if (idx == 2) {
             currTab = this.tab2;
             currTabIcon = this.tab2Icon;
-            let restOfTabs = [this.tab1, this.tab3];
-            let restOfTabIcons = [this.tab1Icon, this.tab3Icon];
+            restOfTabs = [this.tab1, this.tab3];
+            restOfTabIcons = [this.tab1Icon, this.tab3Icon];
 
         } else if (idx == 3) {
             currTab = this.tab3;
             currTabIcon = this.tab3Icon;
-            let restOfTabs = [this.tab1, this.tab2];
-            let restOfTabIcons = [this.tab1Icon, this.tab2Icon];
+            restOfTabs = [this.tab1, this.tab2];
+            restOfTabIcons = [this.tab1Icon, this.tab2Icon];
         }
         PhaserScene.tweens.add({
             targets: restOfTabs,
@@ -239,14 +381,11 @@ class Encyclopedia {
         this.currentPageItems.push(text6);
         this.currentPageItems.push(text7);
         this.currentPageItems.push(text8);
-        PhaserScene.tweens.add({
-            targets: [this.tab1]
-        })
-        this.listOfThingsToHide.push();
-        this.listOfThingsToHide.push(this.tab1Icon);
     }
 
     hideEncyclopedia() {
+        globalObjects.encyclopedia.showButton();
+        globalObjects.options.showButton();
         messageBus.publish('unpauseGame');
         hideGlobalClickBlocker();
         this.darkenBG.setAlpha(0);

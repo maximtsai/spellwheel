@@ -4,8 +4,8 @@
 			"image": "sprites/ui-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1906,
-				"h": 1973
+				"w": 1919,
+				"h": 1972
 			},
 			"scale": 1,
 			"frames": [
@@ -135,7 +135,7 @@
 					}
 				},
 				{
-					"filename": "locket1.png",
+					"filename": "locket2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -143,41 +143,16 @@
 						"h": 440
 					},
 					"spriteSourceSize": {
-						"x": 171,
+						"x": 157,
 						"y": 0,
-						"w": 366,
-						"h": 422
+						"w": 379,
+						"h": 412
 					},
 					"frame": {
 						"x": 1539,
 						"y": 1,
-						"w": 366,
-						"h": 422
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "locket4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 569,
-						"h": 440
-					},
-					"spriteSourceSize": {
-						"x": 171,
-						"y": 0,
-						"w": 366,
-						"h": 422
-					},
-					"frame": {
-						"x": 1539,
-						"y": 425,
-						"w": 366,
-						"h": 422
+						"w": 379,
+						"h": 412
 					},
 					"anchor": {
 						"x": 0.5,
@@ -260,31 +235,6 @@
 					}
 				},
 				{
-					"filename": "tree_paper.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 614,
-						"h": 667
-					},
-					"spriteSourceSize": {
-						"x": 120,
-						"y": 53,
-						"w": 394,
-						"h": 397
-					},
-					"frame": {
-						"x": 1131,
-						"y": 553,
-						"w": 394,
-						"h": 397
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "locketwhite.png",
 					"rotated": false,
 					"trimmed": true,
@@ -299,8 +249,8 @@
 						"h": 369
 					},
 					"frame": {
-						"x": 1075,
-						"y": 952,
+						"x": 1131,
+						"y": 553,
 						"w": 419,
 						"h": 369
 					},
@@ -310,7 +260,32 @@
 					}
 				},
 				{
-					"filename": "locket2.png",
+					"filename": "tree_paper.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 614,
+						"h": 667
+					},
+					"spriteSourceSize": {
+						"x": 120,
+						"y": 53,
+						"w": 394,
+						"h": 397
+					},
+					"frame": {
+						"x": 1075,
+						"y": 924,
+						"w": 394,
+						"h": 397
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "locket1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -318,16 +293,41 @@
 						"h": 440
 					},
 					"spriteSourceSize": {
-						"x": 157,
+						"x": 171,
 						"y": 0,
-						"w": 379,
-						"h": 412
+						"w": 366,
+						"h": 422
 					},
 					"frame": {
 						"x": 1032,
 						"y": 1323,
-						"w": 379,
-						"h": 412
+						"w": 366,
+						"h": 422
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "locket4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 569,
+						"h": 440
+					},
+					"spriteSourceSize": {
+						"x": 171,
+						"y": 0,
+						"w": 366,
+						"h": 422
+					},
+					"frame": {
+						"x": 1552,
+						"y": 415,
+						"w": 366,
+						"h": 422
 					},
 					"anchor": {
 						"x": 0.5,
@@ -374,8 +374,8 @@
 						"h": 351
 					},
 					"frame": {
-						"x": 1413,
-						"y": 1323,
+						"x": 1471,
+						"y": 924,
 						"w": 272,
 						"h": 351
 					},
@@ -399,10 +399,35 @@
 						"h": 349
 					},
 					"frame": {
-						"x": 1527,
-						"y": 849,
+						"x": 1400,
+						"y": 1323,
 						"w": 336,
 						"h": 349
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "mantis_paper.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 614,
+						"h": 667
+					},
+					"spriteSourceSize": {
+						"x": 152,
+						"y": 46,
+						"w": 319,
+						"h": 280
+					},
+					"frame": {
+						"x": 1400,
+						"y": 1674,
+						"w": 319,
+						"h": 280
 					},
 					"anchor": {
 						"x": 0.5,
@@ -435,49 +460,24 @@
 					}
 				},
 				{
-					"filename": "mantis_paper.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 614,
-						"h": 667
-					},
-					"spriteSourceSize": {
-						"x": 152,
-						"y": 46,
-						"w": 319,
-						"h": 280
-					},
-					"frame": {
-						"x": 1413,
-						"y": 1676,
-						"w": 319,
-						"h": 280
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "paperTab_glow.png",
+					"filename": "nextLevel.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 117,
-						"h": 174
+						"w": 220,
+						"h": 51
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 117,
-						"h": 174
+						"w": 220,
+						"h": 51
 					},
 					"frame": {
-						"x": 908,
-						"y": 1710,
-						"w": 117,
-						"h": 174
+						"x": 1552,
+						"y": 839,
+						"w": 220,
+						"h": 51
 					},
 					"anchor": {
 						"x": 0.5,
@@ -485,7 +485,7 @@
 					}
 				},
 				{
-					"filename": "nextLevel.png",
+					"filename": "nextLevel_hover.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -510,24 +510,49 @@
 					}
 				},
 				{
-					"filename": "nextLevel_hover.png",
+					"filename": "paperTab_glow.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 220,
-						"h": 51
+						"w": 105,
+						"h": 162
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 4,
+						"w": 102,
+						"h": 155
+					},
+					"frame": {
+						"x": 908,
+						"y": 1710,
+						"w": 102,
+						"h": 155
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "paperTab.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 87,
+						"h": 162
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 0,
-						"w": 220,
-						"h": 51
+						"y": 15,
+						"w": 87,
+						"h": 147
 					},
 					"frame": {
-						"x": 1027,
-						"y": 1737,
-						"w": 220,
-						"h": 51
+						"x": 314,
+						"y": 1824,
+						"w": 87,
+						"h": 147
 					},
 					"anchor": {
 						"x": 0.5,
@@ -549,8 +574,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1027,
-						"y": 1790,
+						"x": 1012,
+						"y": 1747,
 						"w": 200,
 						"h": 51
 					},
@@ -574,35 +599,10 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1027,
-						"y": 1843,
+						"x": 1012,
+						"y": 1800,
 						"w": 200,
 						"h": 51
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "paperTab.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 87,
-						"h": 157
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 9,
-						"w": 87,
-						"h": 148
-					},
-					"frame": {
-						"x": 314,
-						"y": 1824,
-						"w": 87,
-						"h": 148
 					},
 					"anchor": {
 						"x": 0.5,
@@ -624,33 +624,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1496,
-						"y": 1200,
-						"w": 200,
-						"h": 51
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "practice_press.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 200,
-						"h": 51
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 200,
-						"h": 51
-					},
-					"frame": {
-						"x": 1496,
-						"y": 1253,
+						"x": 1012,
+						"y": 1853,
 						"w": 200,
 						"h": 51
 					},
@@ -674,8 +649,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1249,
-						"y": 1737,
+						"x": 1774,
+						"y": 839,
 						"w": 139,
 						"h": 51
 					},
@@ -699,8 +674,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1249,
-						"y": 1737,
+						"x": 1774,
+						"y": 839,
 						"w": 139,
 						"h": 51
 					},
@@ -724,8 +699,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 1249,
-						"y": 1737,
+						"x": 1774,
+						"y": 839,
 						"w": 139,
 						"h": 51
 					},
@@ -835,6 +810,31 @@
 					}
 				},
 				{
+					"filename": "sound_most.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 3,
+						"w": 49,
+						"h": 45
+					},
+					"frame": {
+						"x": 1075,
+						"y": 877,
+						"w": 49,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "tab_icon_combos.png",
 					"rotated": false,
 					"trimmed": true,
@@ -849,10 +849,35 @@
 						"h": 71
 					},
 					"frame": {
-						"x": 1229,
-						"y": 1790,
+						"x": 1214,
+						"y": 1747,
 						"w": 71,
 						"h": 71
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "music_mute.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 4,
+						"w": 44,
+						"h": 44
+					},
+					"frame": {
+						"x": 1471,
+						"y": 1277,
+						"w": 44,
+						"h": 44
 					},
 					"anchor": {
 						"x": 0.5,
@@ -874,8 +899,8 @@
 						"h": 64
 					},
 					"frame": {
-						"x": 1698,
-						"y": 1200,
+						"x": 1214,
+						"y": 1820,
 						"w": 58,
 						"h": 64
 					},
@@ -899,10 +924,35 @@
 						"h": 62
 					},
 					"frame": {
-						"x": 1302,
-						"y": 1790,
+						"x": 1287,
+						"y": 1747,
 						"w": 58,
 						"h": 62
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "practice_press.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 51
+					},
+					"frame": {
+						"x": 908,
+						"y": 1906,
+						"w": 200,
+						"h": 51
 					},
 					"anchor": {
 						"x": 0.5,
@@ -924,34 +974,9 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 223,
-						"y": 1927,
+						"x": 403,
+						"y": 1914,
 						"w": 56,
-						"h": 45
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "sound_most.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 59,
-						"h": 51
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 3,
-						"w": 49,
-						"h": 45
-					},
-					"frame": {
-						"x": 1362,
-						"y": 1790,
-						"w": 49,
 						"h": 45
 					},
 					"anchor": {
@@ -974,8 +999,8 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 403,
-						"y": 1927,
+						"x": 1347,
+						"y": 1747,
 						"w": 45,
 						"h": 45
 					},
@@ -999,35 +1024,10 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 450,
-						"y": 1927,
+						"x": 1110,
+						"y": 1906,
 						"w": 44,
 						"h": 45
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "music_mute.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 59,
-						"h": 51
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 4,
-						"w": 44,
-						"h": 44
-					},
-					"frame": {
-						"x": 1075,
-						"y": 877,
-						"w": 44,
-						"h": 44
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1049,8 +1049,8 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 1865,
-						"y": 849,
+						"x": 1517,
+						"y": 1277,
 						"w": 39,
 						"h": 43
 					},
@@ -1074,8 +1074,8 @@
 						"h": 39
 					},
 					"frame": {
-						"x": 908,
-						"y": 1886,
+						"x": 1156,
+						"y": 1906,
 						"w": 39,
 						"h": 39
 					},
@@ -1090,6 +1090,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:365261c7c7aaae4b712635196b824270:c10bd9e1bc997c56fa0814989f5d8712:6af6d199855d1c5980a61db04791f8fb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:5d17c8b4823a832bdb3cddf3fd42d233:04cd99e15c579be05fc355eb24f68f4b:6af6d199855d1c5980a61db04791f8fb$"
 	}
 }

@@ -1,5 +1,5 @@
 let isMobile = testMobile();
-let gameVersion = "version 1.21";
+let gameVersion = "version 1.22";
 let config = {
     type: Phaser.AUTO,
     scale: {
@@ -63,8 +63,8 @@ let gameConsts = {
 let cheats = {
     extraHealth: false,
     extraExtraHealth: false,
-    extraDamage: false,
-    extraExtraDamage: false,
+    extraDmg: false,
+    extraExtraDmg: false,
     fullArsenal: false,
     infiniteAmmo: false,
     slowEnemies: false,
@@ -104,6 +104,9 @@ let url2 = null;// '1001juegos';
 function preload ()
 {
     gameVars.latestLevel = parseInt(localStorage.getItem("latestLevel"));
+    if (!gameVars.latestLevel) {
+        gameVars.latestLevel = 0;
+    }
     console.log("latest level reached: ", gameVars.latestLevel);
 
     if (isMobile && screen && screen.orientation && screen.orientation.lock) {

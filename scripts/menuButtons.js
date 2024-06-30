@@ -14,6 +14,8 @@ function clearOnlyMenuButtons() {
     globalObjects.levelSelectButton.destroy();
     globalObjects.lvlButton.destroy();
     globalObjects.cheatButton.destroy();
+    globalObjects.cheatButton2.destroy();
+
     globalObjects.level3Button.destroy();
     globalObjects.lvl5Button.destroy();
     globalObjects.lvl6Button.destroy();
@@ -243,6 +245,32 @@ function showMainMenuButtons() {
     });
     globalObjects.cheatButton.setScale(0.5);
     globalObjects.cheatButton.addText("X2 DAMAGE CHEAT", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+
+    globalObjects.cheatButton2 = new Button({
+        normal: {
+            ref: "menu_btn_normal.png",
+            atlas: 'buttons',
+            x: gameConsts.width - 100,
+            y: 220,
+        },
+        hover: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        press: {
+            ref: "menu_btn_press.png",
+            atlas: 'buttons',
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp: () => {
+            toggleCheat('edd')
+        }
+    });
+    globalObjects.cheatButton2.setScale(0.5);
+    globalObjects.cheatButton2.addText("X2 DAMAGE CHEAT", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+
 
     globalObjects.levelSelectButton = new Button({
         normal: {

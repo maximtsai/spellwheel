@@ -399,7 +399,7 @@
                      startFunction: () => {
                          this.finishedChargingMulti = false;
                          tweenFloatingDeath(0.6, 0.1, 250, "Cubic.easeIn", () => {
-                             setReaperVisible(false);
+                             setFloatingDeathVisible(false);
                              this.setDefaultSprite('max_death_1_cast.png', this.sprite.startScale);
                              this.sprite.setScale(this.sprite.startScale - 0.1);
                              this.addTween({
@@ -848,7 +848,7 @@
                              }
                          })
                          tweenFloatingDeath(0.667, 0, 25, "Cubic.easeOut", () => {
-                             setReaperVisible(true);
+                             setFloatingDeathVisible(true);
                              tweenFloatingDeath(0.667, 1, 300, "Cubic.easeIn", () => {
 
                              })

@@ -127,11 +127,11 @@
                             duration: 1000,
                             ease: 'Cubic.easeIn',
                             onComplete: () => {
-                                if (this.numTimesHealed === 3) {
+                                if (this.numTimesHealed === 2) {
                                     globalObjects.bannerTextManager.setDialog([getLangText('level1_train_diag_b')]);
                                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
                                     globalObjects.bannerTextManager.showBanner(0.5);
-                                } else if (this.numTimesHealed === 5) {
+                                } else if (this.numTimesHealed === 4) {
                                     globalObjects.bannerTextManager.setDialog([getLangText('level1_train_diag_c')]);
                                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
                                     globalObjects.bannerTextManager.showBanner(0.5);

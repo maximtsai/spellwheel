@@ -7,13 +7,15 @@ class PostFightScreen {
         this.healthLeftText = null;
         this.locketSprite = null;
         this.locketDialog = null;
+        this.locketRecentlyClicked = false;
         this.locketDialogIndex = 0;
         this.isActive = false;
     }
 
     startGloom() {
+        console.log("start gloom");
         if (!this.gloom) {
-            this.gloom = this.scene.add.image(gameConsts.width + 600, gameConsts.halfHeight - 155, 'blurry', 'gloom.webp').setScale(5.4, 6).setDepth(100002).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY)
+            this.gloom = this.scene.add.image(gameConsts.width + 600, gameConsts.halfHeight - 160, 'blurry', 'gloom.webp').setScale(5.4, 6).setDepth(100002).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY)
         }
         this.gloom.setPosition(gameConsts.width + 600, gameConsts.halfHeight - 155)
         if (this.gloom.currAnim) {
@@ -26,7 +28,7 @@ class PostFightScreen {
         })
     }
 
-    initAssets(isWin = true) {
+    initAssets(isWin = true, isPractice = false) {
         this.locketIsOpen = false;
         this.locketIsClosable = false;
         if (!this.bgShade) {
@@ -51,7 +53,7 @@ class PostFightScreen {
             this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 10, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
         }
         if (!this.newRuneAnnounce) {
-            this.newRuneAnnounce =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 154, 'New Rune!', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.newRuneAnnounce =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 154, getLangText('post_fight_newrune'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.newRuneDesc) {
             this.newRuneDesc =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 120, '(insert rune description)', {fontFamily: 'garamondmax', fontSize: 22, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
@@ -203,7 +205,8 @@ class PostFightScreen {
         }
 
         if (!this.gloom) {
-            this.gloom = this.scene.add.image(this.locketSprite.x, this.locketSprite.y - 50, 'blurry', 'gloom.webp').setScale(5.4, 6).setDepth(100002).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY)
+            console.log("make gloom from nul");
+            this.gloom = this.scene.add.image(this.locketSprite.x, this.locketSprite.y - 55, 'blurry', 'gloom.webp').setScale(5.4, 6).setDepth(100002).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY)
         }
 
         if (!this.locketButton) {
@@ -223,16 +226,38 @@ class PostFightScreen {
                     if (canvas) {
                         canvas.style.cursor = 'pointer';
                     }
+                    if (this.gloom.currAnim) {
+                        this.gloom.currAnim.stop();
+                    }
+                    this.gloom.currAnim = PhaserScene.tweens.add({
+                        targets: this.gloom,
+                        scaleX: 8,
+                        scaleY: 9.3,
+                        alpha: 0.23,
+                        duration: 800,
+                        ease: 'Cubic.easeOut',
+                    })
                 },
                 onHoverOut: () => {
                     if (canvas) {
                         canvas.style.cursor = 'default';
                     }
+                    if (this.gloom.currAnim) {
+                        this.gloom.currAnim.stop();
+                    }
+                    this.gloom.currAnim = PhaserScene.tweens.add({
+                        targets: this.gloom,
+                        scaleX: 5,
+                        scaleY: 6,
+                        alpha: 0.27,
+                        duration: 500,
+                        ease: 'Back.easeOut',
+                    })
                 },
                 onMouseUp: () => {
+                    this.locketRecentlyClicked = true;
                     if (!this.locketIsOpen) {
                         this.openLocket();
-
                     } else if (this.locketIsClosable) {
                         if (this.locketSprite.frame.name == 'locket1.png') {
                             globalObjects.bannerTextManager.setDialog(["I must press on."]);
@@ -266,23 +291,27 @@ class PostFightScreen {
         this.newRuneIcon.setScale(0.4);
         this.trainingRuneIcon.setScale(0.4);
         if (isWin) {
-            this.locketSprite.visible = true;
-            this.locketSprite.x = gameConsts.width + 300;
-            this.locketSprite.y = gameConsts.halfHeight - 105;
-            this.locketSprite.setScale(0.75);
-            this.locketSprite.setFrame('locket1.png').setOrigin(0.5, 0.8);
-            this.gloom.setPosition(this.locketSprite.x, this.locketSprite.y - 50);
-            if (this.gloom.currAnim) {
-                this.gloom.currAnim.stop();
+            if (!this.locketRecentlyClicked) {
+                this.locketSprite.visible = true;
+                this.locketSprite.x = gameConsts.width + 300;
+                this.locketSprite.y = gameConsts.halfHeight - 105;
+                this.locketSprite.setScale(0.75);
+                this.locketSprite.setFrame('locket1.png').setOrigin(0.5, 0.8);
             }
-            this.gloom.currAnim = PhaserScene.tweens.add({
-                targets: [this.gloom],
-                alpha: 0.25,
-                ease: 'Cubic.easeOut',
-                duration: 400,
-            })
-        } else {
-            this.locketSprite.visible = false;
+
+            if (!isPractice) {
+                this.gloom.visible = true;
+                this.gloom.setPosition(this.locketSprite.x, this.locketSprite.y - 50);
+                if (this.gloom.currAnim) {
+                    this.gloom.currAnim.stop();
+                }
+                this.gloom.currAnim = PhaserScene.tweens.add({
+                    targets: [this.gloom],
+                    alpha: 0.25,
+                    ease: 'Cubic.easeOut',
+                    duration: 400,
+                })
+            }
         }
         this.continueButton.setState(DISABLE);
         if (this.currLevel <= 6) {
@@ -346,7 +375,10 @@ class PostFightScreen {
                         alpha: 1,
                         duration: 700,
                         onStart: () => {
-                            this.locketButton.setState(NORMAL);
+                            if (!this.locketRecentlyClicked) {
+                                this.locketButton.setState(NORMAL);
+                            }
+
                             PhaserScene.tweens.add({
                                 targets: [this.locketSprite, this.gloom],
                                 x: gameConsts.width * 0.76,
@@ -475,6 +507,7 @@ class PostFightScreen {
         this.currLevel = level;
         this.createWinScreenUI(level);
         this.continueButton.setOnMouseUpFunc(() => {
+            this.locketRecentlyClicked = false;
             if (this.trainingButton.getState() !== DISABLE) {
                 this.moveToNextLevel(level);
                 // messageBus.publish("showConfirmPopup", () => {
@@ -511,6 +544,7 @@ class PostFightScreen {
 
         this.createWinScreenUIMin(level);
         this.continueButton.setOnMouseUpFunc(() => {
+            this.locketRecentlyClicked = false;
             this.clearPostFightScreen();
             beginPreLevel(level + 1);
             if (canvas) {
@@ -523,6 +557,7 @@ class PostFightScreen {
         this.canShowRuneBtn = true;
         this.createWinScreenUI(level);
         this.continueButton.setOnMouseUpFunc(() => {
+            this.locketRecentlyClicked = false;
             this.clearPostFightScreen(false);
             messageBus.publish('robotExplosion');
             if (canvas) {
@@ -536,7 +571,7 @@ class PostFightScreen {
         this.isCreated = true;
         this.initAssets(true);
         globalObjects.magicCircle.disableMovement();
-        this.titleText.setText("Fight Complete");
+        this.titleText.setText(getLangText('post_fight_title'));
         // this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
         this.healthLeftText.setText(getLangText('post_fight_health') + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
         this.newRuneAnnounce.setText(this.getNewRuneAnnounce(level));
@@ -559,7 +594,7 @@ class PostFightScreen {
     createWinScreenUIMin(level = 0) {
         this.canShowRuneBtn = false;
         this.isCreated = true;
-        this.initAssets(true);
+        this.initAssets(true, true);
         globalObjects.magicCircle.disableMovement();
         this.titleText.setText("Training Complete");
         this.healthLeftText.setText(getLangText('post_fight_health') + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
@@ -585,6 +620,7 @@ class PostFightScreen {
         // healthLeftText
         this.codeText.setText("CHEAT CODE: ABCDE");
         this.continueButton.setOnMouseUpFunc(() => {
+            this.locketRecentlyClicked = false;
             this.clearPostFightScreen();
             beginPreLevel(level);
             if (canvas) {

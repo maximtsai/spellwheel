@@ -14,7 +14,6 @@ const ENABLE_KEYBOARD = true;
         }
 
         this.castDisabled = false;
-        console.log("e1")
         this.bufferedCastAvailable = false;
         this.forcingAlignment = false;
         this.outerDragDisabled = false;
@@ -1521,7 +1520,6 @@ const ENABLE_KEYBOARD = true;
                 this.bufferedCastAvailable = true;
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 250, () => {
                     this.castDisabled = false;
-                    console.log("e2")
                     this.bufferedCastAvailable = false;
                     if (this.useBufferedSpellCast) {
                         this.castSpell(true);
@@ -1568,7 +1566,6 @@ const ENABLE_KEYBOARD = true;
                     this.innerDragDisabled = false;
                     if (!this.innerDragDisabled && !this.outerDragDisabled) {
                         this.castDisabled = false;
-                        console.log("e3")
                         this.recharging = false;
                         this.bufferedCastAvailable = false;
                     }
@@ -1587,7 +1584,6 @@ const ENABLE_KEYBOARD = true;
                     this.outerDragDisabled = false;
                     if (!this.innerDragDisabled && !this.outerDragDisabled) {
                         this.castDisabled = false;
-                        console.log("e4")
                         this.recharging = false;
                         this.bufferedCastAvailable = false;
                     }
@@ -1675,7 +1671,6 @@ const ENABLE_KEYBOARD = true;
                             this.disableSpellDescDisplay = false;
                         }
                          this.castDisabled = false;
-                        console.log("e5")
                          this.recharging = false;
                          this.bufferedCastAvailable = false;
                          if (this.useBufferedSpellCast) {
@@ -1954,7 +1949,6 @@ const ENABLE_KEYBOARD = true;
                                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * reEnableDelay, () => {
                                     if (!this.outerDragDisabled) {
                                         this.castDisabled = false;
-                                        console.log("e6")
                                     }
                                     if (this.spellNameTextAnim) {
                                         this.spellNameTextAnim.stop();
@@ -2663,7 +2657,6 @@ const ENABLE_KEYBOARD = true;
 
      clearVoidForm() {
          this.castDisabled = false;
-         console.log("e7")
          this.outerDragDisabled = false;
          this.innerDragDisabled = false;
          this.lastDragTime = 0

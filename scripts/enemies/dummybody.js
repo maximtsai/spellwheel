@@ -25,7 +25,7 @@
     }
 
      initStatsCustom() {
-        this.health = 130;
+        this.health = 145;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -133,7 +133,7 @@
                  // 0
                  {
                      name: "}2x15",
-                     chargeAmt: 700,
+                     chargeAmt: 820,
                      finishDelay: 4000,
                      transitionFast: true,
                      isBigMove: true,
@@ -151,7 +151,7 @@
                  // 0
                  {
                      name: "}2x18",
-                     chargeAmt: 700,
+                     chargeAmt: 820,
                      finishDelay: 5000,
                      transitionFast: true,
                      isBigMove: true,
@@ -169,8 +169,8 @@
                  // 0
                  {
                      name: "}2x24",
-                     chargeAmt: 700,
-                     finishDelay: 15000,
+                     chargeAmt: 820,
+                     finishDelay: 9000,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
@@ -182,6 +182,23 @@
                      },
                      attackFinishFunction: () => {
                          this.throwTriple('star.png', 2, 8);
+                     }
+                 },
+                 {
+                     name: "}15",
+                     chargeAmt: 600,
+                     finishDelay: 700,
+                     transitionFast: true,
+                     isBigMove: true,
+                     damage: -1,
+                     startFunction: () => {
+
+                     },
+                     attackStartFunction: () => {
+
+                     },
+                     attackFinishFunction: () => {
+                         this.throwWeapon('sword.png', 5, 1);
                      }
                  },
                  {
@@ -204,7 +221,7 @@
                      },
                      attackStartFunction: () => {
                          setTimeout(() => {
-                             this.takeDamage(20, false);
+                             this.takeDamage(50, false);
                          }, 10);
                          playSound('clunk');
                          this.runSfxLoop.detune = 0;

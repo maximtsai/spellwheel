@@ -536,6 +536,7 @@ class Player {
         let maxHealAmt = this.lastInjuryHealth - this.health;
 
         let healAmt = Math.ceil(percent * (this.recentlyTakenDamageAmt + this.recentlyTakenDelayedDamageAmt));
+        console.log("healAmt Initial: ", healAmt);
         this.recentlyTakenDamageAmt = this.recentlyTakenDamageAmt - healAmt;
         if (this.recentlyTakenDamageAmt < 0) {
             this.recentlyTakenDelayedDamageAmt -= Math.abs(this.recentlyTakenDamageAmt);
@@ -547,6 +548,7 @@ class Player {
             // this.recentlyTakenDelayedDamageAmt -= overflowHeal;
             healAmt = maxHealAmt;
         }
+        console.log("healAmt actual: ", healAmt);
         this.selfHeal(healAmt, false);
         let delayedDamageRemaining = globalObjects.magicCircle.getDelayedDamage() - overflowHeal;
         let delayedDamageReduced = Math.ceil(delayedDamageRemaining * 0.5);
@@ -560,6 +562,7 @@ class Player {
 
         // let delayedDamageHealed = overflowHeal + Math.max(0, Math.ceil((healableDelayedDamage) * percent))
         if (overflowHeal > 0) {
+            console.log("overflow heal: ", overflowHeal);
             messageBus.publish('playerReduceDelayedDamage', overflowHeal);
         }
         setTimeout(() => {
@@ -791,7 +794,7 @@ class Player {
                     case 'mind':
                         if (hurtAmt > 0 && shieldObj.active) {
                             let blockedDmg = Math.ceil(hurtAmt * 0.49999);
-                            if (blockedDmg > Math.floor(hurtAmt * 0.49999) + 0.9) {
+                            if (blockedDmg > Math.floor(hurtAmt * 0.50001) + 0.9) {
                                 // we got extra
                                 if (shieldObj.soakedExtra) {
                                     shieldObj.soakedExtra = false;
@@ -1151,7 +1154,6 @@ class Player {
             addAmt = 0.18 * Math.sqrt(80) + 0.04 * 80;
         }
         textScale += addAmt;
-        console.log(textScale);
         if (textScale > 1.2) {
             let diffScale = textScale - 1.2;
             textScale = 1 + diffScale * 0.5;

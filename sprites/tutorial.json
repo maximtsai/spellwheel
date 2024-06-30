@@ -145,13 +145,13 @@
 					"spriteSourceSize": {
 						"x": 7,
 						"y": 3,
-						"w": 92,
+						"w": 93,
 						"h": 76
 					},
 					"frame": {
 						"x": 906,
 						"y": 83,
-						"w": 92,
+						"w": 93,
 						"h": 76
 					},
 					"anchor": {
@@ -1065,6 +1065,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:796a902122924a70ba3de4ae69ea4f6d:d9e274e925cb4b2ca8b7b1d7abf643f9:77e5ef39ce5a344d4157739a7d363d2d$"
+		"smartupdate": "$TexturePacker:SmartUpdate:b094da4acf5c735ed123a37d644c6bb5:e346fadef18f66e9e5baf0be602878ac:77e5ef39ce5a344d4157739a7d363d2d$"
 	}
 }

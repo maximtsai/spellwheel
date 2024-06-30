@@ -513,7 +513,6 @@ class Enemy {
                     });
                 }
 
-                console.log("set warning to visible");
                 this.chargeBarWarning.visible = true;
                 this.chargeBarWarning.alpha = 0.8;
                 this.chargeBarWarningBig.alpha = Math.min(0.5, this.chargeBarWarningBig.alpha + timeChange * 0.05);
@@ -562,7 +561,6 @@ class Enemy {
             this.chargeBarAngry.visible = true;
             this.chargeBarCurr.visible = true;
             this.chargeBarAngry.alpha = 0.55;
-            console.log("setting charge bar angry");
             if (chargeMult > 1.1) {
                 this.showAngrySymbol('exclamation');
             }
@@ -1130,10 +1128,10 @@ class Enemy {
         if (this.delayLoad) {
             return;
         }
-        if (isAttack && cheats.extraDamage) {
+        if (isAttack && cheats.extraDmg) {
             amt *= 2;
         }
-        if (isAttack && cheats.extraExtraDamage) {
+        if (isAttack && cheats.extraExtraDmg) {
             amt *= 2;
         }
         let origHealth = this.health;
@@ -1248,10 +1246,10 @@ class Enemy {
         if (this.delayLoad) {
             return;
         }
-        if (canAmplify && cheats.extraDamage) {
+        if (canAmplify && cheats.extraDmg) {
             amt *= 2;
         }
-        if (canAmplify && cheats.extraExtraDamage) {
+        if (canAmplify && cheats.extraExtraDmg) {
             amt *= 2;
         }
 
@@ -1362,7 +1360,6 @@ class Enemy {
             return;
         }
         if (!this.angrySymbolIsHiding) {
-            console.log("hidden angry symbol");
             this.angrySymbolIsHiding = true;
             this.angrySymbolAnim = PhaserScene.tweens.add({
                 targets: [this.angrySymbol],
@@ -1381,7 +1378,6 @@ class Enemy {
         if (this.isDestroyed) {
             return;
         }
-        console.log("show angry symb")
         if (this.angrySymbol.currAnim !== state) {
             this.angrySymbol.currAnim = state;
             this.angrySymbol.play(state);

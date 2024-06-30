@@ -50,7 +50,10 @@ let cheatsDisplay;
 function toggleCheat(code) {
     switch(code) {
         case 'dd':
-            cheats.extraDamage = !cheats.extraDamage;
+            cheats.extraDmg = !cheats.extraDmg;
+            break;
+        case 'edd':
+            cheats.extraExtraDmg = !cheats.extraExtraDmg;
             break;
         default:
             break;

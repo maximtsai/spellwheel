@@ -205,7 +205,7 @@ function repeatDeathHandsRotate() {
     });
 }
 
-function setReaperVisible(visible) {
+function setFloatingDeathVisible(visible) {
     globalObjects.deathLeftHand.visible = visible;
     globalObjects.deathRightHand.visible = visible;
     globalObjects.floatingDeath.visible = visible;
@@ -514,6 +514,8 @@ function clearReaper() {
         globalObjects.deathLeftHand.currAnim.stop();
         globalObjects.deathRightHand.currAnim.stop();
     }
+    setFloatingDeathVisible(true);
+    globalObjects.floatingDeath.setFrame('max_death_1a.png');
     tweenObjectRotationTo(globalObjects.deathLeftHand, -0.38, 1100, "Cubic.easeIn");
     tweenObjectRotationTo(globalObjects.deathRightHand, 0.32, 1100, "Cubic.easeIn");
     globalObjects.deathLeftHand.alpha = 3;
@@ -592,6 +594,7 @@ function repeatDeathFlutterAnimation(alphaOffset = 0) {
 
 function handleReaperDialog(level = 0, onComplete) {
     let reaperDialog = [];
+    let reaperFuncList = [];
     switch(level) {
     case 1:
         if (onComplete) {
@@ -630,6 +633,18 @@ function handleReaperDialog(level = 0, onComplete) {
             getLangText('death6a'),
             getLangText('death6b'),
         ];
+        reaperFuncList = [undefined, () => {
+            globalObjects.floatingDeath.flutterAnim.stop();
+            setFloatingDeathVisible(false);
+            globalObjects.floatingDeath.visible = true;
+            globalObjects.floatingDeath.alpha = 0.25;
+            globalObjects.floatingDeath.setFrame('max_death_1_angry.png');
+            PhaserScene.tweens.add({
+                targets: globalObjects.floatingDeath,
+                alpha: 1,
+                duration: 2000,
+            });
+        }]
         break;
     case 7:
         reaperDialog = [
@@ -652,11 +667,12 @@ function handleReaperDialog(level = 0, onComplete) {
         }
         return;
     }
-    playReaperDialog(reaperDialog, onComplete);
+    playReaperDialog(reaperDialog, reaperFuncList, onComplete);
 }
 
-function playReaperDialog(dialog, onComplete) {
+function playReaperDialog(dialog, funcList, onComplete) {
     globalObjects.bannerTextManager.setDialog(dialog);
+    globalObjects.bannerTextManager.setDialogFunc(funcList);
     let fogSliceDarken = getFogSliceDarken();
     PhaserScene.tweens.add({
         targets: fogSliceDarken,

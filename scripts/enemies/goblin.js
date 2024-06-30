@@ -365,6 +365,11 @@
         }
         globalObjects.textPopupManager.hideInfoText();
 
+        if (this.rune3) {
+            this.rune3.visible = false;
+            this.rune4.visible = false;
+        }
+
          this.dieClickBlocker = new Button({
              normal: {
                  ref: "blackPixel",

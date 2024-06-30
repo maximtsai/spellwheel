@@ -137,14 +137,7 @@ class Encyclopedia {
             ease: 'Cubic.easeOut',
             duration: 1,
         });
-        PhaserScene.tweens.add({
-            targets: this.currentPageItems,
-            alpha: 1,
-            ease: 'Cubic.easeOut',
-            duration: 1,
-            onComplete: () => {
-            }
-        });
+
         this.raiseTab(1);
 
         // this.bgPage.setAlpha(0.2);
@@ -239,7 +232,7 @@ class Encyclopedia {
                 },
                 onMouseUp: () => {
                     this.clearCurrentPage();
-                    this.setFirstPage();
+                    this.setSecondPage();
                     this.raiseTab(2);
                 }
             });
@@ -346,7 +339,7 @@ class Encyclopedia {
             targets: currentPageItemsTemp,
             alpha: 0,
             ease: 'Cubic.easeOut',
-            duration: 400,
+            duration: 1,
             onComplete: () => {
                 for (let i in currentPageItemsTemp) {
                     currentPageItemsTemp[i].destroy();
@@ -357,6 +350,8 @@ class Encyclopedia {
     }
 
     setFirstPage() {
+        playSound('flip1');
+        this.title.setText(getLangText('pre_fight_0a'));
         let imageCover = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'newgame_paper.png').setDepth(this.baseDepth).setAlpha(0).setScale(0.92);
         let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 188, getLangText('pre_fight_0b'), {fontFamily: 'verdanabold', fontSize: 15, color: '#200000', align: 'left'});
         text2.setDepth(this.baseDepth).setOrigin(0, 0).setAlpha(0);
@@ -381,6 +376,63 @@ class Encyclopedia {
         this.currentPageItems.push(text6);
         this.currentPageItems.push(text7);
         this.currentPageItems.push(text8);
+        PhaserScene.tweens.add({
+            targets: this.currentPageItems, alpha: 1, ease: 'Cubic.easeOut', duration: 1,
+        });
+
+    }
+
+    setSecondPage() {
+        playSound('flip2');
+        this.title.setText(" ")
+        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 238, getLangText('encyclopedia_rune_element'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 2, getLangText('encyclopedia_rune_action'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        this.currentPageItems.push(text1);
+        this.currentPageItems.push(text2);
+
+        let listOfRunes = ["rune_matter_large.png",
+            "rune_strike_large.png", "rune_enhance_large.png",
+            "rune_mind_large.png",
+            "rune_protect_large.png", "rune_reinforce_large.png",
+            "rune_time_large.png", "rune_void_large.png",
+            "rune_unload_large.png"];
+        let listOfText = [getLangText("pre_fight_0d"),
+            getLangText("pre_fight_0c"), getLangText("encyc_enhance"),
+            getLangText("encyc_energy"),
+            getLangText('encyc_shield'), getLangText('encyc_body'),
+            getLangText("encyc_time"), getLangText("encyc_void"),
+            getLangText('encyc_ultimate')];
+        let listOfDesc = [getLangText("pre_fight_0f"),
+            getLangText("pre_fight_0e"), getLangText("encyc_desc_enhance"),
+            getLangText("encyc_desc_energy"),
+            getLangText('encyc_desc_shield'), getLangText('encyc_desc_body'),
+            getLangText("encyc_desc_time"), getLangText("encyc_desc_void"),
+            getLangText('encyc_desc_ultimate')
+        ];
+        let startPos1 = gameConsts.halfHeight - 183;
+        let offset = 50;
+        let startPos2 = gameConsts.halfHeight + 58;
+        let listOfPositions = [startPos1,
+            startPos2, startPos2 + offset,
+            startPos1 + offset,
+            startPos2 + offset * 2, startPos2 + offset * 3,
+            startPos1 + offset * 2, startPos1 + offset * 3,
+            startPos2 + offset * 4,
+        ]
+        for (let i = 0; i < listOfRunes.length; i++) {
+            if (i > gameVars.latestLevel + 2) {
+                break;
+            }
+            let newIcon = PhaserScene.add.image(gameConsts.halfWidth - 212, listOfPositions[i], 'tutorial', listOfRunes[i]).setAlpha(0).setDepth(this.baseDepth).setScale(0.55);
+            let newText = PhaserScene.add.text(gameConsts.halfWidth - 170, listOfPositions[i], listOfText[i], {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth).setOrigin(0, 0.5);
+            this.currentPageItems.push(newIcon);
+            this.currentPageItems.push(newText);
+
+        }
+
+        PhaserScene.tweens.add({
+            targets: this.currentPageItems, alpha: 1, ease: 'Cubic.easeOut', duration: 1,
+        });
     }
 
     hideEncyclopedia() {

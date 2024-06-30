@@ -529,7 +529,7 @@
                  // 1
                  {
                      name: "ERROR: SHIELD MISSING",
-                     chargeAmt: 400,
+                     chargeAmt: 300,
                      isPassive: true,
                      damage: 0,
                      startFunction: () => {
@@ -566,10 +566,10 @@
                  },
                  {
                      name: "SHINE BRIGHTER! {" + this.nextShieldHealth + " ",
-                     chargeAmt: gameVars.isHardMode ? 1000 : 1200,
+                     chargeAmt: gameVars.isHardMode ? 900 : 1100,
                      block: this.nextShieldHealth,
                      isPassive: true,
-                     chargeMult: 5,
+                     chargeMult: 6,
                      damage: -1,
                      startFunction: () => {
                         if (this.health < this.criticalThreshold) {
@@ -708,7 +708,7 @@
                  // 2
                  {
                      name: "|8x2 ",
-                     chargeAmt: 500,
+                     chargeAmt: 400,
                      damage: 8,
                      attackTimes: 2,
                      attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
@@ -807,7 +807,7 @@
                  // 3
                  {
                      name: "|8x2 ",
-                     chargeAmt: 500,
+                     chargeAmt: 400,
                      damage: 8,
                      attackTimes: 2,
                      attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],

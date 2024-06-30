@@ -239,9 +239,9 @@ function beginPreLevel(lvl) {
             // tree
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'tree_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +165, 'I feel like this forest is watching me.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +165, getLangText('pre_fight_2a'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, "Surely it is only my imagination?", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, getLangText('pre_fight_2b'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -251,9 +251,9 @@ function beginPreLevel(lvl) {
             // magician
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 40, 'ui', 'magician_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 248, gameConsts.halfHeight - 180, 'A diminutive man laughs\nat me from his throne of\ntime-telling paraphernelia.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 248, gameConsts.halfHeight - 180, getLangText('pre_fight_3a'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth - 40, gameConsts.halfHeight +65, "I challenge him and\nhe seems more than\nhappy to showcase his\ntemporal powers.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth - 40, gameConsts.halfHeight +65, getLangText('pre_fight_3b'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -263,9 +263,9 @@ function beginPreLevel(lvl) {
             // knight
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'knight_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 130, 'In front of me stands a knight,\nmotionless but with sword drawn.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 130, getLangText('pre_fight_4a'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, "I need no explanation to know what\nI must do.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, getLangText('pre_fight_4b'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -276,9 +276,9 @@ function beginPreLevel(lvl) {
             // wall
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'wall_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 55, 'No matter where I go, this wall\nalways seems to be blocking the way.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 55, getLangText('pre_fight_5a'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +160, "But if there is no entrance, then I\nwill simply make one.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +160, getLangText('pre_fight_5b'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -303,9 +303,9 @@ function beginPreLevel(lvl) {
             // mantis
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'mantis_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 65, 'The sound of skittering legs cuts\nthrough the fog.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 65, getLangText('pre_fight_7a'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +140, "Something is hunting me.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +140, getLangText('pre_fight_7b'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -315,9 +315,9 @@ function beginPreLevel(lvl) {
             // robot
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'robot_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 140, 'I sense something dangerous\nblocking the path up ahead.', {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 140, getLangText('pre_fight_8a'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +220, "But I'm certain I am prepared\nfor anything.", {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +220, getLangText('pre_fight_8b'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();

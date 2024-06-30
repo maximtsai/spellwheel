@@ -514,8 +514,10 @@ function clearReaper() {
         globalObjects.deathLeftHand.currAnim.stop();
         globalObjects.deathRightHand.currAnim.stop();
     }
-    setFloatingDeathVisible(true);
-    globalObjects.floatingDeath.setFrame('max_death_1a.png');
+    // globalObjects.deathLeftHand.visible = visible;
+    // globalObjects.deathRightHand.visible = visible;
+    globalObjects.floatingDeath.visible = true;
+    globalObjects.floatingDeath2.visible = true;
     tweenObjectRotationTo(globalObjects.deathLeftHand, -0.38, 1100, "Cubic.easeIn");
     tweenObjectRotationTo(globalObjects.deathRightHand, 0.32, 1100, "Cubic.easeIn");
     globalObjects.deathLeftHand.alpha = 3;
@@ -535,6 +537,10 @@ function clearReaper() {
             ease: 'Quad.easeOut',
             onComplete: () => {
                 globalObjects.floatingDeath.visible = false;
+                globalObjects.deathLeftHand.visible = true;
+                globalObjects.deathRightHand.visible = true;
+                globalObjects.floatingDeath.setFrame('max_death_1a.png');
+                globalObjects.floatingDeath2.setFrame('max_death_1b.png');
             }
         });
     });
@@ -635,14 +641,21 @@ function handleReaperDialog(level = 0, onComplete) {
         ];
         reaperFuncList = [undefined, () => {
             globalObjects.floatingDeath.flutterAnim.stop();
-            setFloatingDeathVisible(false);
-            globalObjects.floatingDeath.visible = true;
-            globalObjects.floatingDeath.alpha = 0.25;
-            globalObjects.floatingDeath.setFrame('max_death_1_angry.png');
-            PhaserScene.tweens.add({
-                targets: globalObjects.floatingDeath,
-                alpha: 1,
-                duration: 2000,
+
+            tweenFloatingDeath(0.75, 0, 500, undefined, () => {
+                setFloatingDeathVisible(false);
+                globalObjects.floatingDeath.visible = true;
+                globalObjects.floatingDeath2.visible = true;
+                globalObjects.deathLeftHand.visible = false;
+                globalObjects.deathRightHand.visible = false;
+                globalObjects.floatingDeath.alpha = 0.15;
+                globalObjects.floatingDeath.setFrame('max_death_1a_angry.png');
+                globalObjects.floatingDeath2.setFrame('max_death_1b_angry.png');
+                PhaserScene.tweens.add({
+                    targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2],
+                    alpha: 1,
+                    duration: 2000,
+                });
             });
         }]
         break;

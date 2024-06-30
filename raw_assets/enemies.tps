@@ -698,7 +698,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/max_death_1_angry.png</key>
             <key type="filename">enemies/max_death_1_cast.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -739,6 +738,22 @@
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
                 <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>169,175,337,350</rect>
+                <key>scale9Paddings</key>
+                <rect>169,175,337,350</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/max_death_1a_angry.png</key>
+            <key type="filename">enemies/max_death_1b_angry.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.95</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -976,20 +991,6 @@
                 <false/>
             </struct>
             <key type="filename">enemies/robot_claw_1.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.64</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>154,137,309,275</rect>
-                <key>scale9Paddings</key>
-                <rect>154,137,309,275</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">enemies/robot_claw_2.png</key>
             <key type="filename">enemies/robot_claw_b1.png</key>
             <key type="filename">enemies/robot_claw_b2.png</key>
@@ -997,7 +998,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.64</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>

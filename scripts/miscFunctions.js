@@ -62,9 +62,9 @@ function toggleCheat(code) {
 }
 
 function updateCheatsDisplay() {
-    let cheatsText = "CHEATS ACTIVE:";
+    let cheatsText = "CHEATS:";
     if (!cheatsDisplay) {
-        cheatsDisplay = PhaserScene.add.text(10, 103, ' ', {fontFamily: 'verdanamax', fontSize: 17, color: '#FF0000', align: 'left'}).setOrigin(0, 0);
+        cheatsDisplay = PhaserScene.add.text(7, gameConsts.height , ' ', {fontFamily: 'verdanamax', fontSize: 15, color: '#FF0000', align: 'left'}).setOrigin(0, 1);
         cheatsDisplay.setDepth(500);
     }
     let hasCheats = false;

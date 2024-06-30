@@ -50,7 +50,7 @@ class PostFightScreen {
             this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 120, 'ui', 'locket1.png').setScale(0.75).setDepth(100003).setAlpha(0).setOrigin(0.5, 0.5);
         }
         if (!this.locketDialog) {
-            this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight + 10, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
+            this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 200, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
         }
         if (!this.newRuneAnnounce) {
             this.newRuneAnnounce =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 154, getLangText('post_fight_newrune'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
@@ -155,7 +155,7 @@ class PostFightScreen {
 
                 }
             });
-            this.continueButton.addText('SKIP TRAINING    ', {fontFamily: 'garamondmax', fontSize: 21, color: '#000000', align: 'center'});
+            this.continueButton.addText(getLangText('post_fight_skip_training'), {fontFamily: 'garamondmax', fontSize: 21, color: '#000000', align: 'center'});
             this.continueButton.setDepth(100000);
         }
         if (!this.trainingButton) {
@@ -200,6 +200,7 @@ class PostFightScreen {
             });
             this.trainingButton.addText('        TRAINING', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'center'});
             this.trainingButton.setDepth(100000);
+            this.trainingButton.setState(DISABLE);
 
             this.trainingRuneIcon =  this.scene.add.image(this.trainingButton.getXPos() - 68, this.trainingButton.getYPos(), 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
         }
@@ -259,6 +260,7 @@ class PostFightScreen {
                     if (!this.locketIsOpen) {
                         this.openLocket();
                     } else if (this.locketIsClosable) {
+                        playSound('locket_close');
                         if (this.locketSprite.frame.name == 'locket1.png') {
                             globalObjects.bannerTextManager.setDialog(["I must press on."]);
                             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
@@ -311,15 +313,20 @@ class PostFightScreen {
                     ease: 'Cubic.easeOut',
                     duration: 400,
                 })
+            } else {
+                this.gloom.visible = false
             }
         }
         this.continueButton.setState(DISABLE);
         if (this.currLevel <= 6) {
             this.trainingButton.setState(NORMAL);
+        } else {
+            this.trainingButton.setState(DISABLE);
+            this.continueButton.setState(NORMAL);
         }
         setTimeout(() => {
             if (this.trainingButton.getState() !== DISABLE) {
-                this.continueButton.setText('SKIP TRAINING    ');
+                this.continueButton.setText(getLangText('post_fight_skip_training'));
                 this.continueButton.setState(NORMAL);
             }
         }, 3000);
@@ -369,6 +376,11 @@ class PostFightScreen {
                     duration: 250,
                 });
                 if (isWin) {
+                    if (this.locketRecentlyClicked) {
+                        this.locketSprite.visible = false;
+                    } else {
+                        this.locketSprite.visible = true;
+                    }
                     PhaserScene.tweens.add({
                         delay: 400,
                         targets: [this.locketSprite],
@@ -377,6 +389,8 @@ class PostFightScreen {
                         onStart: () => {
                             if (!this.locketRecentlyClicked) {
                                 this.locketButton.setState(NORMAL);
+                            } else {
+                                return;
                             }
 
                             PhaserScene.tweens.add({
@@ -440,7 +454,7 @@ class PostFightScreen {
             ease: 'Cubic.easeInOut',
             duration: 400
         });
-        playSound('locket_close');
+        // playSound('locket_close');
 
         this.returnStatText();
     }
@@ -459,6 +473,9 @@ class PostFightScreen {
                 alpha: 0,
                 ease: 'Cubic.easeOut',
                 duration: 301,
+                onComplete: () => {
+                    this.gloom.visible = false;
+                }
             })
             PhaserScene.tweens.add({
                 targets: [this.locketSprite],
@@ -660,7 +677,7 @@ class PostFightScreen {
             ease: 'Cubic.easeOut',
             duration: 300,
             onComplete: () => {
-                this.titleText.setText('DAY ' + level);
+                this.titleText.setText(getLangText('post_fight_day') + level + getLangText('post_fight_day2'));
                 PhaserScene.tweens.add({
                     targets: this.titleText,
                     alpha: 1,
@@ -692,11 +709,14 @@ class PostFightScreen {
 
     getNewRuneAnnounce(level) {
         if (level < 7) {
-            return 'New Rune!'
+            this.showRuneDescBtn.setPos(gameConsts.halfWidth - 56, gameConsts.halfHeight - 157);
+            return getLangText('post_fight_newrune');
         } else if (level >= 9) {
-            return 'No Upgrade!'
+            this.showRuneDescBtn.setPos(gameConsts.halfWidth - 46, gameConsts.halfHeight - 157);
+            return getLangText('post_fight_noupgrade');
         } else {
-            return 'Upgraded!'
+            this.showRuneDescBtn.setPos(gameConsts.halfWidth - 56, gameConsts.halfHeight - 157);
+            return getLangText('post_fight_upgrade');
         }
     }
 
@@ -773,36 +793,26 @@ class PostFightScreen {
             case 0:
                 return "And so my journey begins.\nIt won't be long before\nI see you again, Rosemary."
             case 1:
-                return "Here I stand in\nfront of the gates to\nthe forbidden land\nof the departed.\n\n"+
-                "Right away I can feel this place resisting\nme, as though it were rejecting my\nvery presence here.\n\n"+
-                "But I know I will find you here dear Rosemary,\nand no creature or construct will stop me\nfrom reaching you."
+                return getLangText('post_fight_story1')
             case 2:
-                return "The fabled Reaper\nhas noticed me,\nthough they have\ndone nothing but wag their\nbony finger at me like a parent\nscolding a child.\n\n"+
-                "I doubt this will be the last time\nwe see each other.\n\n"+
-                "For now, I will add this shield to\ny arsenal.";
+                return getLangText('post_fight_story2');
             case 3:
-                return "The creatures of this\nland are clearly hostile.\n\n"+
-                "But it seems that I acquire the\nstrength of each one I defeat.\n\n"+
-                "Perhaps if I triumph over enough foes, I\ncan even face Death itself!"
+                return getLangText('post_fight_story3');
             case 4:
-                return "My power grows\nwith each new foe\ndefeated.\n\nBut I must practice with\nthese powers if I am to use them to\ntheir full potential.\n\n";
+                return getLangText('post_fight_story4');
             case 5:
-                return "I wonder about\nthe nature of\nthe creatures in\nthis land.\n\n"+
-                "Are they guardians and defenders?\nOr are they just unfortunate residents who happen\nto be in my path?\n\n"+
-                "Either way, I'll fight every last one\nif it gets me closer to you."
+                return getLangText('post_fight_story5')
             case 6:
-                return "Placeholder";
+                return getLangText("post_fight_story6");
 
             case 7:
-                return "DAY 7\n\ntest";
+                return getLangText("post_fight_story7");
 
             case 8:
-                return "DAY 8\n\ntest";
+                return getLangText("post_fight_story8");
 
             case 9:
-                return "The \n\n"+
-                "Not even the machines of death\ncan best me!\n\n"+
-                "All I have to do now is get\naround this broken robot\nand I know you are just\naround the corner!";
+                return getLangText("post_fight_story9");
 
             default:
                 return "..."

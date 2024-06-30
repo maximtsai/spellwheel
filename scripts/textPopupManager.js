@@ -46,12 +46,12 @@ class TextPopupManager {
         let boxWidth = this.infoText.width * 0.5 + 8;
         let boxHeight = this.infoText.height * 0.5 + 6;
         this.infoBox.setScale(boxWidth * multScale, boxHeight * multScale);
-        this.scene.tweens.add({
+        this.currAnim = this.scene.tweens.add({
             targets: [this.infoText],
             alpha: 1,
             duration: 300,
         });
-        this.scene.tweens.add({
+        this.currAnim2 = this.scene.tweens.add({
             targets: [this.infoBox],
             alpha: 0.7,
             duration: 300,
@@ -63,6 +63,10 @@ class TextPopupManager {
     }
 
     hideInfoText() {
+        if (this.currAnim) {
+            this.currAnim.stop();
+            this.currAnim2.stop();
+        }
         this.scene.tweens.add({
             targets: [this.infoText, this.infoBox],
             alpha: 0,

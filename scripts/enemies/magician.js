@@ -46,7 +46,6 @@
          super.setHealth(newHealth);
         if (this.invulnHealthBar) {
             this.healthBarText.setText("INVULNERABLE");
-            this.healthBarCurr.setFrame('yellow_pixel.png');
 
         }
 
@@ -339,7 +338,7 @@
         globalObjects.magicCircle.disableMovement();
         swirlInReaperFog();
         setTimeout(() => {
-            playReaperDialog(["TIME'S UP"], () => {
+            playReaperDialog(["TIME'S UP"], [], () => {
                  PhaserScene.tweens.add({
                      targets: this.timeFallObjs,
                      duration: 1000,
@@ -881,6 +880,7 @@
                             this.setMaxHealth(24);
                             this.heal(this.healthMax);
                             this.invulnHealthBar = true;
+                            this.healthBarCurr.setFrame('yellow_pixel.png');
                             this.healthBarText.setText("INVULNERABLE");
 
                             this.setAwake();

@@ -688,10 +688,12 @@
                      isBigMove: true,
                      startFunction: () => {
                          this.addTimeout(() => {
-                             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 139, "Some shields\nare more useful\nagainst certain\nattacks.", 'right', true);
-                             this.addTimeout(() => {
-                                 globalObjects.textPopupManager.hideInfoText();
-                             }, 11000);
+                             if (!this.dead) {
+                                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 139, getLangText('level2_tut_a'), 'right', true);
+                                 setTimeout(() => {
+                                     globalObjects.textPopupManager.hideInfoText();
+                                 }, 11000);
+                             }
                          }, 2500)
                      },
                      attackStartFunction: () => {

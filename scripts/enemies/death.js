@@ -9,6 +9,7 @@
         setTimeout(() => {
              this.setAsleep();
             globalObjects.magicCircle.disableMovement();
+            this.healthBarCurr.setFrame('yellow_pixel.png');
             this.mainScythe = this.addSprite(this.x, this.y + 175, 'misc', 'scythe1.png').setDepth(200).setAlpha(0).setRotation(-0.6).setOrigin(0.5, 0.9);
          }, 10)
      }

@@ -1446,6 +1446,8 @@ class Enemy {
         this.isDestroyed = true;
         this.clearEffects()
         this.cleanUp();
+        globalObjects.textPopupManager.hideInfoText();
+
         for (let i = 0; i < this.destructibles.length; i++) {
             if (this.destructibles[i]) {
                 this.destructibles[i].destroy();
@@ -1485,7 +1487,6 @@ class Enemy {
             this.subscriptions[i].unsubscribe();
         }
         this.subscriptions = [];
-        console.log("Destsroyed enemy")
         updateManager.removeFunction(this.boundUpdateFunc);
     }
 

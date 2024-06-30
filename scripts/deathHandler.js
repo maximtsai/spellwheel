@@ -643,18 +643,22 @@ function handleReaperDialog(level = 0, onComplete) {
             globalObjects.floatingDeath.flutterAnim.stop();
 
             tweenFloatingDeath(0.75, 0, 500, undefined, () => {
-                setFloatingDeathVisible(false);
+                // setFloatingDeathVisible(false);
                 globalObjects.floatingDeath.visible = true;
                 globalObjects.floatingDeath2.visible = true;
                 globalObjects.deathLeftHand.visible = false;
                 globalObjects.deathRightHand.visible = false;
                 globalObjects.floatingDeath.alpha = 0.15;
+                globalObjects.floatingDeath2.alpha = 0.15;
                 globalObjects.floatingDeath.setFrame('max_death_1a_angry.png');
                 globalObjects.floatingDeath2.setFrame('max_death_1b_angry.png');
                 PhaserScene.tweens.add({
                     targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2],
                     alpha: 1,
                     duration: 2000,
+                    onComplete: () => {
+                        startDeathFlutterAnim();
+                    }
                 });
             });
         }]

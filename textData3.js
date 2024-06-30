@@ -112,7 +112,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    death7b: {en_us: "BUT IF YOU WERE TO...\nENCOUNTER AN ACCIDENT,",
+    death7b: {en_us: "BUT SHOULD YOU ENCOUNTER\nAN ACCIDENT,",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -120,7 +120,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    death7c: {en_us: "THEN YOUR FATE WILL VERY\nMUCH BE IN MY HANDS.",
+    death7c: {en_us: "THEN YOUR FATE WILL BE\nENTIRELY IN MY HANDS.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -144,7 +144,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    death8c: {en_us: "BEFORE I HAVE BUSINESS WITH YOU.",
+    death8c: {en_us: "BEFORE I HAVE BUSINESS\nWITH YOU.",
         fr: '',
         zh_tw: '',
         zh_cn: '',

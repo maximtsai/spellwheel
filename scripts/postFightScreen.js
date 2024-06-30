@@ -206,7 +206,6 @@ class PostFightScreen {
         }
 
         if (!this.gloom) {
-            console.log("make gloom from nul");
             this.gloom = this.scene.add.image(this.locketSprite.x, this.locketSprite.y - 55, 'blurry', 'gloom.webp').setScale(5.4, 6).setDepth(100002).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY)
         }
 
@@ -291,7 +290,7 @@ class PostFightScreen {
         this.healthLeftText.setScale(0.97);
         this.newRuneAnnounce.setScale(0.97);
         this.newRuneIcon.setScale(0.4);
-        this.trainingRuneIcon.setScale(0.4);
+        this.trainingRuneIcon.setScale(0.4).setVisible(true);
         if (isWin) {
             if (!this.locketRecentlyClicked) {
                 this.locketSprite.visible = true;
@@ -320,16 +319,19 @@ class PostFightScreen {
         this.continueButton.setState(DISABLE);
         if (this.currLevel <= 6) {
             this.trainingButton.setState(NORMAL);
+            setTimeout(() => {
+                if (this.trainingButton.getState() !== DISABLE) {
+                    this.continueButton.setText(getLangText('post_fight_skip_training'));
+                    this.continueButton.setState(NORMAL);
+                }
+            }, 3000);
         } else {
             this.trainingButton.setState(DISABLE);
             this.continueButton.setState(NORMAL);
+            this.continueButton.setText(getLangText('post_fight_continue'));
+            this.trainingRuneIcon.visible = false;
         }
-        setTimeout(() => {
-            if (this.trainingButton.getState() !== DISABLE) {
-                this.continueButton.setText(getLangText('post_fight_skip_training'));
-                this.continueButton.setState(NORMAL);
-            }
-        }, 3000);
+
 
         PhaserScene.tweens.add({
             targets: [this.bgShade],

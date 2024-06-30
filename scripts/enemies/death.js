@@ -7,6 +7,7 @@
         swirlInReaperFog(1.25);
         this.setupCustomDeathSprite();
         setTimeout(() => {
+            globalObjects.player.setHealth(1);
              this.setAsleep();
             globalObjects.magicCircle.disableMovement();
             this.healthBarCurr.setFrame('yellow_pixel.png');

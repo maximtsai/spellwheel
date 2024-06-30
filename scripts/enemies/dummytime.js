@@ -49,6 +49,11 @@
          });
      }
 
+     startFight() {
+         super.startFight();
+         this.bgMusic = playMusic('bite_down_simplified', 0.7, true);
+     }
+
      setHealth(newHealth) {
          super.setHealth(newHealth);
          let prevHealthPercent = this.prevHealth / this.healthMax;
@@ -84,6 +89,10 @@
          }
          if (this.playerSpellCastSub) {
              this.playerSpellCastSub.unsubscribe();
+         }
+         if (this.rune1) {
+             this.rune1.destroy();
+             this.rune2.destroy();
          }
         playSound('clunk2');
          if (this.runTween) {

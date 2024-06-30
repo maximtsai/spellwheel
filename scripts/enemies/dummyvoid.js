@@ -11,6 +11,10 @@ class Dummyvoid extends Dummypractice {
         this.damageCanEmit = true;
         this.spellsCastCount = 0;
     }
+    startFight() {
+        super.startFight();
+        this.bgMusic = playMusic('bite_down_simplified', 0.7, true);
+    }
 
     initTutorial() {
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
@@ -87,6 +91,14 @@ class Dummyvoid extends Dummypractice {
         }
         if (this.playerSpellCastSub) {
             this.playerSpellCastSub.unsubscribe();
+        }
+        if (this.rune1) {
+            this.rune1.destroy();
+            this.rune2.destroy();
+        }
+        if (this.rune3) {
+            this.rune3.destroy();
+            this.rune4.destroy();
         }
         playSound('clunk2');
         if (this.runTween) {

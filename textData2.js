@@ -231,9 +231,9 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_story5: {en_us: "I wonder about\nthe nature of\nthe creatures in\nthis land.\n\n"+
-            "Are they guardians and defenders?\nOr are they just unfortunate residents who happen\nto be in my path?\n\n"+
-            "Either way, I'll fight every last one\nif it gets me closer to you.",
+    post_fight_story5: {en_us: "I wonder about\nthe nature of the\ncreatures in this place.\n\n"+
+            "Are they guardians and defenders?\nOr are they just unfortunate residents\nwho happen to be in my path?\n\n"+
+            "Either way, I'll fight every last one if it\ngets me closer to you.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -241,7 +241,8 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_story6: {en_us: "",
+    post_fight_story6: {en_us: "Perhaps these\nobstacles are\nbeing set up by\nDeath to stop me!\n\n"+
+        "But he ",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -258,8 +259,8 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_story8: {en_us: "Whether it's soldier\nor assassin, none\ncan challenge me.\n\n" +
-            "Surely Death must be getting desperate\nknowing I am nearing my destination.",
+    post_fight_story8: {en_us: "Whether it's\nsoldiers or\bassassins, none can\nchallenge me.\n\n" +
+            "Surely Death must be getting desperate\nknowing I am near my destination.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -267,9 +268,9 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_story9: {en_us: "Not even the machines of\ndeath can best me!\n\n" +
-            "I am at the peak of my\npower, and there is\nnothing left that can stand in my way.\n\n" +
-            "All I have to do now is get around this broken\nrobot and I know I will find you just around\nthe corner!",
+    post_fight_story9: {en_us: "Not even the\nmachines of death\ncan best me!\n\n" +
+            "I am at the peak of my\npower, and there is nothing left that\ncan stand in my way.\n\n" +
+            "All I have to do now is get around this broken\nrobot and I know I will find her just around\nthe corner.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -291,6 +292,14 @@ let textData2 = {
         fr: '',
         zh_tw: '跳過練習',
         zh_cn: '跳过练习',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    post_fight_continue: {en_us: "CONTINUE         ",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
         ru: '',
         es: '',
         jp: ''
@@ -465,7 +474,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    pre_fight_8a: {en_us: 'I sense something dangerous\nblocking the path up ahead.',
+    pre_fight_8a: {en_us: 'I sense something dangerous\bbarring the path up ahead.',
         fr: '',
         zh_tw: '',
         zh_cn: '。',
@@ -652,10 +661,14 @@ let textData2 = {
         jp: ''
     },
 
-    level1_diag: {
-
+    level7_diag_a: {en_us: "Strange, I don't remember\nsetting up a training dummy here.",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
     },
-
 
     dummy_mind_tut: {en_us: 'Energy Strike\nmakes your\nnext attack hit\ntwice as hard.\n            +',
         fr: '',

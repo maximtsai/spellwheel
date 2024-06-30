@@ -199,7 +199,7 @@ let textData = {
         ru: '',
         es: '',
         jp: ''},
-    matter_plus_tut_desc: {en_us: 'The Matter rune grants\ncontrol over the physical.\nYour mastery over the element strengthens\nsome of your existing Matter spells.',
+    matter_plus_tut_desc: {en_us: 'Your mastery over the\nMatter element strengthens\nsome of your existing Matter spells.',
         fr: '',
         zh_tw: '',
         zh_cn: '',

@@ -1,5 +1,5 @@
  class SuperDummy extends Enemy {
-    constructor(scene, x, y, level) {
+    constructor(scene, x, y, level, fromTutorial) {
         super(scene, x, y, level);
         this.initSprite('dummy.png', 0.95, undefined, undefined, 'dummyenemy');
         this.bgMusic = playMusic('bite_down', 0.65, true);
@@ -9,13 +9,14 @@
         this.popupTimeout = this.addTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
+
         }, 1500)
         this.initMisc();
     }
 
      initStatsCustom() {
-         this.health = 10;
-        this.secondHealth = gameVars.isHardMode ? 750 : 600;
+         this.health = 20;
+        this.secondHealth = gameVars.isHardMode ? 700 : 600;
          this.isAsleep = true;
          this.isFirstMode = true;
         this.attackScale = 1.23;

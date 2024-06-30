@@ -2352,7 +2352,7 @@ const ENABLE_KEYBOARD = true;
                          break;
                      case RUNE_PROTECT:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateSpellDescriptorText(getLangText('matter_protect_desc'));
+                         this.updateSpellDescriptorText(getLangText(gameVars.matterPlus ? 'matter_protect_desc' : 'matter_protect_plus_desc');
                          break;
                      case RUNE_UNLOAD:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";

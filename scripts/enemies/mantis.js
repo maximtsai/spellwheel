@@ -3,20 +3,20 @@
          super(scene, x, y, level);
          this.initSprite('mantis_a.png', 0.9);
          this.bgMusic = playMusic('bite_down', 0.7, true);
-
-         // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
+         this.backForthDelay = 300;
          this.addTimeout(() => {
              this.backForthAnim();
-         }, 100);
+         }, 10)
+         // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
      }
 
      backForthAnim() {
-         this.addDelayedCall(1000, () => {
+         this.addDelayedCall(this.backForthDelay, () => {
             if (!this.dead && !this.isDestroyed && !this.isUnloading) {
                 if (this.defaultSprite === 'mantis_a.png') {
                     this.sprite.setFrame('mantis_b.png');
                 }
-                this.addDelayedCall(1000, () => {
+                this.addDelayedCall(this.backForthDelay, () => {
                     if (!this.dead && !this.isDestroyed && !this.isUnloading) {
                         if (this.defaultSprite === 'mantis_a.png') {
                             this.sprite.setFrame('mantis_a.png');
@@ -310,7 +310,30 @@
          super.initSpriteAnim(scale);
          this.sprite.startX = this.sprite.x;
 
-         this.repeatTweenBreathe();
+         this.sprite.startX = this.sprite.x;
+         this.sprite.startY = this.sprite.y;
+         this.sprite.x = gameConsts.halfWidth + 150;
+         this.sprite.y = this.sprite.startY + 30;
+         this.sprite.setRotation(0.15);
+         this.addTween({
+             targets: this.sprite,
+             y: this.sprite.startY,
+             duration: gameVars.gameManualSlowSpeedInverse * 900,
+             ease: 'Quart.easeOut',
+         });
+         this.addTween({
+             targets: this.sprite,
+             x: this.sprite.startX,
+             rotation: 0,
+             duration: gameVars.gameManualSlowSpeedInverse * 900,
+             ease: 'Cubic.easeOut',
+             onComplete: () => {
+                 this.repeatTweenBreathe();
+             }
+         });
+         this.addDelay(() => {
+             this.backForthDelay = 1000;
+         }, 700)
      }
 
      repeatTweenBreathe(duration = 1500, magnitude = 1) {

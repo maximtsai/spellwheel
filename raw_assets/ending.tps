@@ -132,7 +132,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA5555</enum>
         <key>alphaHandling</key>
         <enum type="SettingsBase::AlphaHandling">ClearTransparentPixels</enum>
         <key>contentProtection</key>
@@ -173,6 +173,22 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">ending/ending2_a.png</key>
+            <key type="filename">ending/ending2_b.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>150,161,299,323</rect>
+                <key>scale9Paddings</key>
+                <rect>150,161,299,323</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">ending/ending_1_blue.png</key>
             <key type="filename">ending/ending_1_pink.png</key>
             <struct type="IndividualSpriteSettings">
@@ -186,21 +202,6 @@
                 <rect>205,175,410,350</rect>
                 <key>scale9Paddings</key>
                 <rect>205,175,410,350</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">ending/ending_2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>265,175,529,350</rect>
-                <key>scale9Paddings</key>
-                <rect>265,175,529,350</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

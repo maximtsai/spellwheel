@@ -526,7 +526,8 @@ function showMainMenuButtons() {
         },
         onMouseUp: () => {
             //showCutscene1();
-            //return;
+            showCutscene2();
+            return;
             let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'credits.png').setDepth(100000).setScale(0.975);
             PhaserScene.tweens.add({
                 targets: creditsUI,

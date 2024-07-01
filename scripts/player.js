@@ -859,16 +859,16 @@ class Player {
                                         //  + spellMultiplier * 0.2
                                         let startRotOffset = shieldObj.multiplier * 0.03 - 0.03;
                                         for (let i = 0; i < shieldObj.multiplier; i++) {
-                                            let laserAnim = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blast.png').setScale(2, 5);
+                                            let laserAnim = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blast.png').setScale(1.3, 4);
                                             laserAnim.setDepth(990).setOrigin(0.5, 1.205).setAlpha(0);
                                             laserAnim.origScale = laserAnim.scaleX;
                                             laserAnim.rotation = shieldObj.animObj[0].rotation - startRotOffset + i * 0.06;
-                                            laserAnim.scaleX = laserAnim.origScale * (1.2 + shieldObj.storedDamage * 0.025);
+                                            laserAnim.scaleX = laserAnim.origScale * (1.2 + Math.sqrt(shieldObj.storedDamage) * 0.095);
                                             this.scene.tweens.add({
                                                 delay: i * 85,
                                                 targets: laserAnim,
                                                 duration: 25,
-                                                scaleX: laserAnim.origScale * (0.9 + shieldObj.storedDamage * 0.015),
+                                                scaleX: laserAnim.origScale * (0.9 + Math.sqrt(shieldObj.storedDamage) * 0.05),
                                                 ease: 'Quint.easeIn',
                                                 yoyo: true,
                                                 repeat: shieldObj.multiplier > 1.1 ? 5 : 6,

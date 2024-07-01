@@ -329,6 +329,113 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">blurry/static0.png</key>
+            <key type="filename">blurry/static2.png</key>
+            <key type="filename">blurry/static7.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>220,165,440,330</rect>
+                <key>scale9Paddings</key>
+                <rect>220,165,440,330</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">blurry/staticlite0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>8,2,15,3</rect>
+                <key>scale9Paddings</key>
+                <rect>8,2,15,3</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">blurry/staticlite1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,5,100,10</rect>
+                <key>scale9Paddings</key>
+                <rect>50,5,100,10</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">blurry/staticlite2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>5,4,9,8</rect>
+                <key>scale9Paddings</key>
+                <rect>5,4,9,8</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">blurry/staticlite3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>6,6,13,11</rect>
+                <key>scale9Paddings</key>
+                <rect>6,6,13,11</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">blurry/staticlite4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>10,12,20,24</rect>
+                <key>scale9Paddings</key>
+                <rect>10,12,20,24</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">blurry/staticlite5.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>10,3,20,6</rect>
+                <key>scale9Paddings</key>
+                <rect>10,3,20,6</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
         </map>
         <key>fileLists</key>
         <map type="SpriteSheetMap">

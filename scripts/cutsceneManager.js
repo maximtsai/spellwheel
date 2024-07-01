@@ -12,6 +12,7 @@ function readyShowCutsceneLogic() {
         globalObjects.cutsceneBarTop = PhaserScene.add.image(gameConsts.halfWidth, 0, 'blackPixel').setDepth(CUTSCENE_DEPTH + 1).setOrigin(0.5, 1).setScale(500);
         globalObjects.cutsceneBarBot = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.height, 'blackPixel').setDepth(CUTSCENE_DEPTH + 1).setOrigin(0.5, 0).setScale(500);
     }
+    globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH + 2);
 }
 
 function setCutscene1(name) {
@@ -77,6 +78,7 @@ function showCutscene1() {
             globalObjects.cutsceneBarTop.y = gameConsts.halfHeight - 272;
             globalObjects.cutsceneBarBot.y = gameConsts.halfHeight + 272;
             globalObjects.cutsceneBarTop.alpha = 1;
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 58, 0);
             globalObjects.bannerTextManager.setDialog([getLangText('epilogue1a'), getLangText('epilogue1b'), getLangText('epilogue1c')]);
             globalObjects.bannerTextManager.setDialogFunc([null, null, () => {
                 if (globalObjects.cutSceneAnim) {
@@ -140,9 +142,287 @@ function showCutscene1() {
     //     ease: 'Cubic.easeOut'
     // })
 }
-
+let bansheeCanTween = false;
 function showCutscene2() {
+    console.log("showcut")
     readyShowCutsceneLogic();
+    globalObjects.cutsceneBarTop.y = gameConsts.height;
+    globalObjects.cutsceneBarTop.alpha = 0;
+    globalObjects.cutsceneBack.alpha = 0;
+    PhaserScene.tweens.add({
+        targets: globalObjects.cutsceneBack,
+        alpha: 1,
+        duration: 1500,
+        onComplete: () => {
+            bansheeCanTween = true;
+            let bansheeGlow = PhaserScene.add.image(gameConsts.halfWidth, 225, 'deathfinal', 'max_death_3_banshee.png').setAlpha(0).setScale(0.5).setDepth(CUTSCENE_DEPTH+3);
+            let banshee = PhaserScene.add.image(gameConsts.halfWidth, 225, 'deathfinal', 'max_death_3_banshee.png').setAlpha(0).setScale(0.5).setDepth(CUTSCENE_DEPTH+3);
+            globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH);
+            PhaserScene.tweens.add({
+                targets: banshee,
+                scaleX: 0.8,
+                scaleY: 0.8,
+                ease: 'Cubic.easeOut',
+                duration: 1200,
+                onComplete: () => {
+                    bansheeGlow.setScale(0.8).setAlpha(1);
+                    tweenRandomBanshee(bansheeGlow, gameConsts.halfWidth, 225, 0.8)
+                }
+            })
+            PhaserScene.tweens.add({
+                targets: banshee,
+                alpha: 1,
+                duration: 1200,
+            })
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 58, 0);
+            globalObjects.bannerTextManager.setDialog(["FINE, I SHALL RETURN TO YOU\nYOUR BELOVED.", "BUT YOU WILL BE CURSED TO EXIST\nETERNALLY WITHOUT REST."]);
+            globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                bansheeCanTween = false;
+                PhaserScene.tweens.add({
+                    targets: banshee,
+                    scaleX: 0.45,
+                    scaleY: 0.45,
+                    alpha: 0,
+                    ease: 'Cubic.easeIn',
+                    duration: 2000,
+                    onComplete: () => {
+                        banshee.destroy();
+                        let whiteDoor = PhaserScene.add.image(gameConsts.halfWidth, 360, 'whitePixel').setDepth(CUTSCENE_DEPTH+3).setAlpha(0.1).setOrigin(0.5, 1);
+                        PhaserScene.tweens.add({
+                            targets: whiteDoor,
+                            scaleX: 120,
+                            scaleY: 3,
+                            alpha: 1,
+                            ease: 'Cubic.easeOut',
+                            duration: 400,
+                            onComplete: () => {
+                                PhaserScene.tweens.add({
+                                    targets: whiteDoor,
+                                    scaleY: 160,
+                                    ease: 'Quint.easeOut',
+                                    duration: 600,
+                                    onComplete: () => {
+                                        showLoverApproach();
+                                        PhaserScene.tweens.add({
+                                            delay: 500,
+                                            targets: whiteDoor,
+                                            alpha: 0,
+                                            ease: 'Cubic.easeIn',
+                                            duration: 2000,
+                                            onComplete: () => {
+                                                whiteDoor.destroy();
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
+                });
+            })
+            globalObjects.bannerTextManager.showBanner(false);
+
+        }
+    });
+}
+
+function showLoverApproach() {
+    let star = PhaserScene.add.image(gameConsts.halfWidth, 225, 'blurry', 'star_blur.png').setAlpha(1).setScale(0.4).setDepth(CUTSCENE_DEPTH+2).setOrigin(0.5, 0.5);
+    let lover = PhaserScene.add.image(gameConsts.halfWidth, 150, 'ending', 'ending2_a.png').setAlpha(0).setScale(0.4).setDepth(CUTSCENE_DEPTH+3).setOrigin(0.5, 0.1);
+    let horror = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blurry', 'static0.png').setAlpha(0).setScale(1.5, 3).setDepth(CUTSCENE_DEPTH+3);
+    let blotter = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blurry', 'static7.png').setAlpha(0).setScale(4).setDepth(CUTSCENE_DEPTH+3);
+    PhaserScene.tweens.add({
+        targets: star,
+        scaleX: 0.8,
+        scaleY: 0.8,
+        ease: 'Cubic.easeIn',
+        duration: 700,
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                targets: star,
+                scaleX: 0.4,
+                scaleY: 0.4,
+                ease: 'Cubic.easeOut',
+                duration: 600,
+                onComplete: () => {
+                    star.destroy();
+                }
+            })
+        }
+    })
+    PhaserScene.tweens.add({
+        targets: lover,
+        alpha: 1,
+        ease: 'Quad.easeOut',
+        duration: 1000,
+    });
+    shakeStatic(horror);
+    shakeStatic2(blotter);
+    PhaserScene.time.delayedCall(3000, () => {
+        blotter.setAlpha(0.25);
+        //globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH + 4);
+        setTimeout(() => {
+            blotter.setAlpha(0);
+            //globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH);
+        }, 20)
+        PhaserScene.time.delayedCall(1500, () => {
+            blotter.setAlpha(0.3);
+            //globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH + 4);
+            setTimeout(() => {
+                blotter.setAlpha(0);
+                //globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH);
+
+            }, 20)
+
+        });
+        PhaserScene.time.delayedCall(1800, () => {
+            lover.setFrame('ending2_b.png').setOrigin(0.5, 0.1);
+
+            blotter.alpha = 0.25;
+            //globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH + 4);
+            setTimeout(() => {
+                lover.setFrame('ending2_a.png').setOrigin(0.5, 0.1);
+                blotter.scaleX = -blotter.scaleX;
+                //globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH);
+                setTimeout(() => {
+                    blotter.alpha = 0;
+                }, 50)
+            }, 30)
+        });
+    });
+    animateStatic(horror, 0.3, 1.4, 2, 5000);
+    PhaserScene.tweens.add({
+        targets: lover,
+        scaleX: 0.73,
+        scaleY: 0.73,
+        duration: 5000,
+        onComplete: () => {
+            lover.setFrame('ending2_b.png').setOrigin(0.5, 0.3);
+            blotter.setAlpha(0.6).setScale(2);
+            setTimeout(() => {
+                blotter.x = gameConsts.halfWidth - 100;
+                lover.setFrame('ending2_a.png').setOrigin(0.5, 0.1);
+                setTimeout(() => {
+                    blotter.x = gameConsts.halfWidth + 50;
+                    blotter.setScale(2.2, -2.2)
+                    setTimeout(() => {
+                        blotter.setAlpha(0);
+                    }, 40)
+                }, 40)
+            }, 50)
+
+            horror.setAlpha(0.6);
+            horror.setFrame('static2.png')
+            animateStatic(horror, 1, 1.35, 1.4,4500);
+            PhaserScene.time.delayedCall(2000, () => {
+                lover.setFrame('ending2_b.png').setOrigin(0.5, 0.1);
+                blotter.setAlpha(0.3);
+                animateStatic(blotter, 1, 1.35, 1.4,3500);
+                globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH + 4);
+                setTimeout(() => {
+                    lover.setFrame('ending2_a.png').setOrigin(0.5, 0.1);
+
+                    globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH);
+                    setTimeout(() => {
+                        lover.setFrame('ending2_b.png').setOrigin(0.5, 0.02);
+                            setTimeout(() => {
+                                lover.setFrame('ending2_a.png').setOrigin(0.5, 0.1).setAlpha(0.7);
+                                setTimeout(() => {
+                                    lover.setFrame('ending2_b.png').setOrigin(0.5, 0.1).setAlpha(0.9);
+                                    PhaserScene.tweens.add({
+                                        targets: lover,
+                                        alpha: 0.75,
+                                        duration: 2500,
+                                    })
+                                }, 1700)
+                            }, 100)
+                        }, 60)
+
+                }, 80)
+            })
+            lover.setScale(0.8);
+            PhaserScene.tweens.add({
+                targets: lover,
+                scaleX: 1,
+                scaleY: 1,
+                ease: 'Quad.easeOut',
+                duration: 5000,
+                onComplete: () => {
+                    stopHorror = true;
+                    lover.destroy();
+                    globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH + 4);
+                    let closeText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 40, 'Ending 2\nEternal Unrest', {fontFamily: 'garamondmax', fontSize: 28, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 1);
+                    PhaserScene.tweens.add({
+                        targets: closeText,
+                        alpha: 1,
+                        duration: 1000,
+                    })
+                }
+            })
+        }
+    })
+}
+
+function animateStatic(horror, amt, scaleX, scaleY, dur) {
+    PhaserScene.tweens.add({
+        targets: horror,
+        alpha: amt,
+        scaleX: scaleX,
+        scaleY: scaleY,
+        duration: dur,
+        onComplete: () => {
+        }
+    })
+}
+let stopHorror = false;
+function shakeStatic(horror) {
+    stopHorror = false;
+    horror.y = gameConsts.halfHeight + 500 * (Math.random() - 0.5)
+    setTimeout(() => {
+        if (stopHorror) {
+            return;
+        }
+        shakeStatic(horror);
+    }, 30)
+}
+
+function shakeStatic2(horror) {
+    stopHorror = false;
+    horror.y = gameConsts.halfHeight + 100 * (Math.random() - 0.5)
+    horror.x = gameConsts.halfWidth + 500 * (Math.random() - 0.5)
+    setTimeout(() => {
+        if (stopHorror) {
+            return;
+        }
+        shakeStatic(horror);
+    }, 30)
+}
+
+
+function tweenRandomBanshee(image, x, y, scale) {
+    if (!bansheeCanTween) {
+        PhaserScene.tweens.add({
+            targets: image,
+            alpha: 0,
+            duration: 700,
+            onComplete: () => {
+                image.destroy();
+            }
+        })
+        return;
+    }
+    PhaserScene.tweens.add({
+        targets: image,
+        alpha: 0,
+        x: x + (Math.random() - 0.5) * 35,
+        y: y + (Math.random() - 0.5) * 35 + 5,
+        scaleY: scale + 0.05,
+        duration: 1000,
+        onComplete: () => {
+            image.setScale(scale).setPosition(x, y).setAlpha(1);
+            tweenRandomBanshee(image, x, y, scale)
+        }
+    })
 }
 
 function showCutscene3() {

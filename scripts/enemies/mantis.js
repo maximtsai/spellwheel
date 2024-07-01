@@ -312,8 +312,8 @@
 
          this.sprite.startX = this.sprite.x;
          this.sprite.startY = this.sprite.y;
-         this.sprite.x = gameConsts.halfWidth + 150;
-         this.sprite.y = this.sprite.startY + 30;
+         this.sprite.x = gameConsts.halfWidth + 120;
+         this.sprite.y = this.sprite.startY + 24;
          this.sprite.setRotation(0.15);
          this.addTween({
              targets: this.sprite,

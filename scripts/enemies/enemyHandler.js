@@ -55,6 +55,7 @@ function createEnemy(num) {
         globalObjects.currentEnemy = new Death(PhaserScene, gameConsts.halfWidth, 58, num);
         break;
     case 11:
+        globalObjects.currentEnemy = new Death2(PhaserScene, gameConsts.halfWidth, 170, num);
         break;
     case 12:
         break;

@@ -235,10 +235,13 @@
                 globalObjects.bannerTextManager.showBanner(0.5);
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
                     this.beginFightReal();
+                        this.die();
                 })
             } else {
                 this.beginFightReal();
+                        this.die();
             }
+
         });
      }
 
@@ -561,12 +564,14 @@
 
      cleanUp() {
          super.cleanUp();
-         clearDeathFog();
          if (this.windSfx) {
              this.windSfx.stop();
          }
-
-         clearReaper();
+         if (this.reaperHidden) {
+            setFloatingDeathVisible(false);
+         } else {
+             clearReaper();
+         }
      }
 
      die() {
@@ -598,10 +603,10 @@
                             stopDeathFlutterAnim();
                             setFloatingDeathVisible(false);
                         })
-                        this.flashCover = this.addImage(this.sprite.x, this.sprite.y + 80, 'blurry', 'flashbg.webp').setScale(0.2, 0.3).setRotation(Math.PI * 0.5).setDepth(99);
+                        this.flashCover = this.addImage(this.sprite.x, this.sprite.y + 80, 'blurry', 'flashbg.webp').setScale(0.1, 0.15).setRotation(Math.PI * 0.5).setDepth(91);
 
                         this.setDefaultSprite('max_death_1b_angry.png');
-                        this.sprite.setAlpha(0);
+                        this.sprite.setAlpha(0).setDepth(92);
                         this.addTween({
                             targets: this.sprite,
                             alpha: 1,
@@ -641,18 +646,21 @@
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                         globalObjects.bannerTextManager.showBanner(0.5);
                         globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                            this.reaperHidden = true;
+                            clearDeathFog();
                             this.darkOverlay = this.addImage(gameConsts.halfWidth,gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(90);
-                            this.whiteDeath = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'max_death_1b_angry_white.png').setScale(this.sprite.scaleX).setAlpha(0).setDepth(90).setOrigin(0.5, 0.45);
+                            this.whiteDeath = this.addImage(this.sprite.x, this.sprite.y + 1, 'enemies', 'max_death_1b_angry_white.png').setScale(this.sprite.scaleX).setAlpha(0).setDepth(92).setOrigin(0.5, 0.45);
 
                             this.addTween({
                                 targets: [this.sprite, this.whiteDeath],
-                                scaleX: 0.2,
-                                scaleY: 0.2,
-                                ease: 'Cubic.easeIn',
-                                duration: 3000,
+                                scaleX: 0.5,
+                                scaleY: 0.5,
+                                ease: 'Cubic.easeInOut',
+                                duration: 2800,
                                 onComplete: () => {
                                     this.sprite.alpha = 0;
                                     this.whiteDeath.destroy();
+                                    setFloatingDeathVisible(false);
                                 }
                             })
                             this.addTween({
@@ -661,15 +669,15 @@
                                 scaleY: 6,
                                 alpha: 1,
                                 ease: 'Cubic.easeIn',
-                                duration: 2800,
+                                duration: 3000,
                                 onComplete: () => {
                                     this.addTween({
                                         targets: [this.flashCover],
                                         scaleX: 3,
                                         scaleY: 4.5,
-                                        alpha: 1,
+                                        alpha: 0,
                                         ease: 'Cubic.easeOut',
-                                        duration: 1000,
+                                        duration: 3000,
                                         onComplete: () => {
                                             this.flashCover.destroy();
                                         }
@@ -680,15 +688,19 @@
                             this.addTween({
                                 targets: [this.darkOverlay, this.whiteDeath],
                                 alpha: 1,
-                                duration: 2200,
+                                duration: 2600,
                                 onComplete: () => {
-                                    this.muscleDeathWhite = this.addImage(this.sprite.x, this.sprite.y, 'deathfinal', 'max_death_2.png').setScale(0.4).setDepth(90).setOrigin(0.5, 0.2);
+                                    this.muscleDeathWhite = this.addImage(this.sprite.x, 105, 'deathfinal', 'max_death_2_white.png').setScale(0.55, 0.57).setDepth(90).setOrigin(0.5, 0.3);
                                     this.addTween({
                                         targets: this.muscleDeathWhite,
                                         scaleX: 0.9,
                                         scaleY: 0.9,
-                                        ease: 'Cubic.easeOut',
+                                        ease: 'Quart.easeInOut',
                                         duration: 3000,
+                                        onComplete: () => {
+                                            this.darkOverlay.destroy();
+                                            this.beginDeath2();
+                                        }
                                     })
                                     // this.whiteOverlay = this.addImage(gameConsts.halfWidth,gameConsts.halfHeight, 'whitePixel').setScale(500).setAlpha(0).setDepth(99999);
 
@@ -1143,5 +1155,10 @@
              }
          });
 
+     }
+
+     beginDeath2() {
+        createEnemy(11)
+        this.destroy();
      }
 }

@@ -1,18 +1,51 @@
  class Death2 extends Enemy {
      constructor(scene, x, y) {
          super(scene, x, y);
-         this.initSprite('max_death_2.png', 0.7, 0, 0, 'deathfinal');
-         this.bgMusic = playMusic('heartbeat', 0.75, true);
-        swirlInReaperFog(1.25);
+         this.initSprite('max_death_2.png', 0.9, 0, 0, 'deathfinal');
+         this.whiteBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(500).setAlpha(0.5);
+         this.createAnimatedHellBG();
+         this.addTween({
+            targets: this.whiteBG,
+            alpha: 0,
+            duration: 2000,
+            onComplete: () => {
+                this.whiteBG.destroy();
+            }
+         })
         setTimeout(() => {
              this.setAsleep();
          }, 10)
      }
 
-     initStatsCustom() {
-         this.health = 666;
-         this.fistObjects = [];
-     }
+    createAnimatedHellBG() {
+        this.bg1 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'firebg1.png').setDepth(-5);
+        this.bg2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'firebg2.png').setDepth(-5);
+        this.nextBG = 0;
+        this.useFirstBG = true;
+        this.animateBGRepeat();
+    }
+    animateBGRepeat() {
+        this.bg1.setDepth(-5); this.bg2.setDepth(-5);
+        let bgToUse = this.useFirstBG ? this.bg1 : this.bg2;
+        let newFrame = 'firebg' + this.nextBG + '.png';
+        bgToUse.setFrame(newFrame);
+        this.nextBG = (this.nextBG + 1) % 3;
+        bgToUse.setAlpha(0).setDepth(-4);
+        this.addTween({
+            targets: bgToUse,
+            duration: 2000,
+            alpha: 1,
+            onComplete: () => {
+                this.useFirstBG = !this.useFirstBG;
+                this.animateBGRepeat();
+            } 
+        })
+    }
+
+    initStatsCustom() {
+        this.health = 666;
+        this.fistObjects = [];
+    }
 
      repeatTweenBreathe(duration = 1500, magnitude = 1) {
          if (this.breatheTween) {
@@ -22,7 +55,6 @@
 
 
      setHealth(newHealth) {
-        messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'IMMATERIAL', 0.8, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.1, scaleY: 1.1});
 
          // super.setHealth(newHealth);
          let currHealthPercent = this.health / this.healthMax;

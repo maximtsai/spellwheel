@@ -173,6 +173,22 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">backgrounds/IMG_4344 - Copy.webp</key>
+            <key type="filename">backgrounds/IMG_4344.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>126,138,251,275</rect>
+                <key>scale9Paddings</key>
+                <rect>126,138,251,275</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">backgrounds/background4.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -219,9 +235,23 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">backgrounds/firebg0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>175,213,350,425</rect>
+                <key>scale9Paddings</key>
+                <rect>175,213,350,425</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">backgrounds/firebg1.png</key>
             <key type="filename">backgrounds/firebg2.png</key>
-            <key type="filename">backgrounds/firebg3.png</key>
             <key type="filename">backgrounds/graves.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

@@ -151,18 +151,16 @@ function setFloatingDeathScale(scale) {
 }
 
 function stopFloatingDeathTween() {
-    globalObjects.floatingDeath.currAnim1.stop();
-    globalObjects.floatingDeath.currAnim2.stop();
-    globalObjects.floatingDeath.currAnim3.stop();
-}
-
-function tweenFloatingDeath(scale = 0.75, alpha = 1, duration = 1200, ease = "Cubic.easeInOut", onComplete) {
-    let fakeAlphaAdjusted = alpha < 0.15 ? alpha - 0.15 : alpha;
     if (globalObjects.floatingDeath.currAnim1) {
         globalObjects.floatingDeath.currAnim1.stop();
         globalObjects.floatingDeath.currAnim2.stop();
         globalObjects.floatingDeath.currAnim3.stop();
     }
+}
+
+function tweenFloatingDeath(scale = 0.75, alpha = 1, duration = 1200, ease = "Cubic.easeInOut", onComplete) {
+    let fakeAlphaAdjusted = alpha < 0.15 ? alpha - 0.15 : alpha;
+    stopFloatingDeathTween();
 
     globalObjects.floatingDeath.currAnim1 = PhaserScene.tweens.add({
         targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2, globalObjects.deathLeftHand, globalObjects.deathRightHand],
@@ -665,14 +663,6 @@ function handleReaperDialog(level = 0, onComplete) {
                 globalObjects.floatingDeath2.fakeAlpha = 1;
                 gameVars.deathFlutterDelay = 350;
                 repeatDeathFlutterAnimation(0);
-                // PhaserScene.tweens.add({
-                //     targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2],
-                //     alpha: 1,
-                //     duration: 2000,
-                //     onComplete: () => {
-                //
-                //     }
-                // });
             });
         }, undefined]
         break;

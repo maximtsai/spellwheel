@@ -586,13 +586,18 @@
                     ease: 'Cubic.easeInOut',
                     onComplete: () => {
                         globalObjects.floatingDeath.flutterAnim.stop();
-                        tweenFloatingDeath(0.65, 0, 500, "Quad.easeIn");
+                        tweenFloatingDeath(0.65, 0, 400, "Cubic.easeIn", () => {
+                            stopDeathFlutterAnim();
+                            setFloatingDeathVisible(false);
+                        })
+                        this.flashCover = this.addImage(this.sprite.x, this.sprite.y - 15, 'blurry', 'flashbg.webp').setScale(0.1, 0.2);
+
                         this.setDefaultSprite('max_death_1b_angry.png');
                         this.sprite.setAlpha(0);
                         this.addTween({
                             targets: this.sprite,
                             alpha: 1,
-                            delay: 500,
+                            duration: 400,
                             ease: 'Quad.easeOut',
                         })
                         globalObjects.bannerTextManager.setDialog([getLangText('deathFight1h'), getLangText('deathFight1i')]);
@@ -615,7 +620,7 @@
                                             PhaserScene.tweens.add({
                                                 targets: this.mainScythe,
                                                 rotation: "+=10",
-                                                x: "+=600",
+                                                x: "+=900",
                                                 duration: 1000,
                                                 onComplete: () => {
                                                 }
@@ -628,6 +633,56 @@
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                         globalObjects.bannerTextManager.showBanner(0.5);
                         globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                            this.darkOverlay = this.addImage(gameConsts.halfWidth,gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(90);
+                            this.whiteDeath = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'max_death_1b_angry_white.png').setScale(this.sprite.scaleX).setAlpha(0).setDepth(90).setOrigin(0.5, 0.45);
+
+                            this.addTween({
+                                targets: [this.sprite, this.whiteDeath],
+                                scaleX: 0.2,
+                                scaleY: 0.2,
+                                ease: 'Cubic.easeIn',
+                                duration: 3000,
+                                onComplete: () => {
+                                    this.sprite.alpha = 0;
+                                    this.whiteDeath.destroy();
+                                }
+                            })
+                            this.addTween({
+                                targets: [this.flashCover],
+                                scaleX: 0.75,
+                                scaleY: 1.5,
+                                ease: 'Cubic.easeIn',
+                                duration: 2200,
+                                onComplete: () => {
+                                    this.addTween({
+                                        targets: [this.flashCover],
+                                        scaleX: 0.5,
+                                        scaleY: 1,
+                                        alpha: 0,
+                                        ease: 'Cubic.easeOut',
+                                        duration: 1000,
+                                        onComplete: () => {
+                                            this.flashCover.destroy();
+                                        }
+                                    })
+                                }
+                            })
+
+                            this.addTween({
+                                targets: [this.darkOverlay, this.whiteDeath],
+                                alpha: 1,
+                                duration: 2200,
+                                onComplete: () => {
+                                    this.muscleDeathWhite = this.addImage(this.sprite.x, this.sprite.y, 'deathfinal', 'max_death_2_white.png').setScale(0.2).setDepth(90).setOrigin(0.5, 0.25);
+                                    this.addTween({
+                                        targets: this.muscleDeathWhite,
+                                        scaleX: 1,
+                                        scaleY: 1,
+                                        ease: 'Cubic.easeOut',
+                                        duration: 3000,
+                                    })
+                                }
+                            })
                             clearDeathFog();
                         });
                     }

@@ -55,6 +55,13 @@ function toggleCheat(code) {
         case 'edd':
             cheats.extraExtraDmg = !cheats.extraExtraDmg;
             break;
+        case 'hpx':
+            cheats.extraHealth = !cheats.extraHealth;
+            globalObjects.player.reInitStats();
+        case 'hpdx':
+            cheats.extraExtraHealth = !cheats.extraExtraHealth;
+            globalObjects.player.reInitStats();
+            break;
         default:
             break;
     }

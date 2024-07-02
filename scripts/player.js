@@ -45,14 +45,25 @@ class Player {
     initStats(x, y) {
         this.x = x;
         this.y = y;
-        this.trueHealthMax = 80;
+        this.reInitStats();
+    }
+
+    reInitStats() {
+        let maxHealth = 80;
+        if (cheats.extraHealth) {
+            maxHealth += 1000;
+        }
+        if (cheats.extraExtraHealth) {
+            maxHealth += 80;
+        }
+        this.trueHealthMax = maxHealth;
+        console.log(this.trueHealthMax);
         this.healthMax = this.trueHealthMax;
         this.health = this.healthMax;
         this.lastInjuryHealth = this.healthMax;
         this.recentlyTakenDamageAmt = 0;
         this.recentlyTakenDelayedDamageAmt = 0;
         this.playerCastSpells = 0;
-        this.initStatsCustom();
         this.statuses = {};
     }
 
@@ -174,10 +185,6 @@ class Player {
             this.statuses['matterEnhance'].cleanUp(this.statuses);
             this.statuses['matterEnhance'] = null;
         }
-    }
-
-    initStatsCustom() {
-
     }
 
     createHealthBar(x, y) {

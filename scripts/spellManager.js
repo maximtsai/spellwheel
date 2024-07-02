@@ -2035,7 +2035,7 @@ class SpellManager {
                         blackBalls.push(blackBall);
                         let fades = [];
                         if (i == 2) {
-                            let healPerTick = Math.floor((globalObjects.player.getHealthMax() - globalObjects.player.getHealth()) / 6);
+                            let healPerTick = Math.ceil((globalObjects.player.getHealthMax() - globalObjects.player.getHealth()) / 3);
                             let whiteBall = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'whiteCircle.png').setDepth(99).setScale(6,6).setAlpha(0.6);
                             let blackFade = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(99).setScale(500, 500).setAlpha(0);
                             fades.push(whiteBall);
@@ -2054,11 +2054,11 @@ class SpellManager {
                                 alpha: 0.43
                             });
                             messageBus.publish("startVoidForm", blackBalls);
-                            setTimeout(() => {
+                            PhaserScene.time.delayedCall(250, () => {
                                 messageBus.publish("selfHeal", healPerTick);
-                                setTimeout(() => {
+                                PhaserScene.time.delayedCall(750, () => {
                                     messageBus.publish("selfHeal", healPerTick);
-                                    setTimeout(() => {
+                                    PhaserScene.time.delayedCall(750, () => {
                                         messageBus.publish("selfHeal", healPerTick);
                                         let newMaxHealth = Math.ceil(globalObjects.player.getHealthMax() * 0.85);
                                         globalObjects.player.setHealth(newMaxHealth);
@@ -2101,9 +2101,9 @@ class SpellManager {
 
                                         messageBus.publish("stopVoidForm");
 
-                                    }, 750)
-                                }, 750)
-                            }, 250)
+                                    })
+                                })
+                            })
                         } else if (i == 8) {
                             for (let j = 0; j < 8; j++) {
                                 blackBalls[j].setScale(blackBalls[8].scaleX + 0.08);

@@ -337,7 +337,6 @@
             <key type="filename">deathfin/hood0072.png</key>
             <key type="filename">deathfin/hood0073.png</key>
             <key type="filename">deathfin/hood0074.png</key>
-            <key type="filename">deathfin/hood0075.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

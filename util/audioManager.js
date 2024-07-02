@@ -96,12 +96,12 @@ function fadeAwaySound(sound, duration = 650, ease, onComplete) {
     });
 }
 
-function fadeInSound(sound, volume = 1) {
+function fadeInSound(sound, volume = 1, duration = 1000) {
     let globalToUse = sound.isMusic ? globalMusicVol : globalVolume;
     sound.fullVolume = volume
     PhaserScene.tweens.add({
         targets: sound,
         volume: sound.fullVolume * globalToUse,
-        duration: 900
+        duration: duration
     });
 }

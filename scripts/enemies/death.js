@@ -3,11 +3,11 @@
          super(scene, x, y);
          this.initSprite('blank.png', 0.7);
         this.sprite.setOrigin(0.5, 0.45);
-         this.bgMusic = playMusic('heartbeat', 0.75, true);
         swirlInReaperFog(1.25);
         this.setupCustomDeathSprite();
         setTimeout(() => {
-            console.log("estting health");
+            this.windSfx = playSound('wind', 0.01, true);
+            fadeInSound(this.windSfx, 1, 2000);
             globalObjects.player.setHealth(1);
             globalObjects.player.recentlyTakenDamageAmt = 79;
              this.setAsleep();
@@ -230,7 +230,14 @@
             globalObjects.bannerTextManager.setDialog([getLangText('deathFight1a'), getLangText('deathFight1b')]);
             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
             globalObjects.bannerTextManager.showBanner(0.5);
+
             globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                this.bgMusic = playMusic('heartbeat', 0.75, true);
+                setTimeout(() => {
+                    fadeAwaySound(this.windSfx, 5000);
+                }, 1000)
+
+
                 globalObjects.magicCircle.enableMovement();
                 this.setAwake();
                 globalObjects.encyclopedia.showButton();
@@ -481,7 +488,7 @@
                      }
                  },
                  {
-                     name: ";66",
+                     name: ";44",
                      chargeAmt: 800,
                      chargeMult: 2,
                      finishDelay: 5000,
@@ -509,7 +516,7 @@
                      },
                      attackStartFunction: () => {
                          this.scytheCanBreak = true;
-                         this.swingScytheFastIntro(80, true, false, () => {
+                         this.swingScytheFastIntro(44, true, false, () => {
                              this.addTween({
                                  targets: this.listOfAngryPopups, scaleX: 0, scaleY: 0,
                                  ease: 'Back.easeIn', duration: 400,
@@ -549,6 +556,10 @@
      cleanUp() {
          super.cleanUp();
          clearDeathFog();
+         if (this.windSfx) {
+             this.windSfx.stop();
+         }
+
          clearReaper();
      }
 
@@ -574,11 +585,12 @@
                     duration: 600,
                     ease: 'Cubic.easeInOut',
                     onComplete: () => {
+                        globalObjects.floatingDeath.flutterAnim.stop();
                         tweenFloatingDeath(0.65, 0, 500, "Quad.easeIn");
-                        let angrySprite = this.setDefaultSprite('max_death_1b_angry.png');
-                        angrySprite.setAlpha(0);
+                        this.setDefaultSprite('max_death_1b_angry.png');
+                        this.sprite.setAlpha(0);
                         this.addTween({
-                            targets: angrySprite,
+                            targets: this.sprite,
                             alpha: 1,
                             delay: 500,
                             ease: 'Quad.easeOut',
@@ -616,6 +628,7 @@
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                         globalObjects.bannerTextManager.showBanner(0.5);
                         globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                            clearDeathFog();
                         });
                     }
                 })

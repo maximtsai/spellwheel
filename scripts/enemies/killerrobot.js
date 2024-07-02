@@ -2022,6 +2022,7 @@
 
      goToDeathLevel(explosion) {
         this.destroy();
+         fadeInBackgroundAtlas('backgrounds', 'background4.png', 2000, 1, 1, 'Cubic.easeInOut', 0, false);
         swirlInReaperFog(1.25);
         PhaserScene.tweens.add({
             targets: explosion,

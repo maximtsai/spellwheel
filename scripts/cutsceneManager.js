@@ -175,7 +175,7 @@ function showCutscene2() {
                 duration: 1200,
             })
             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 58, 0);
-            globalObjects.bannerTextManager.setDialog(["FINE, I SHALL RETURN TO YOU\nYOUR BELOVED.", "BUT YOU WILL BOTH BE CURSED TO\nEXIST ETERNALLY WITHOUT REST."]);
+            globalObjects.bannerTextManager.setDialog(["FINE, I SHALL RETURN TO YOU\nYOUR BELOVED.", "BUT A CURSED EXISTENCE WILL YOU\nBOTH SUFFER FOR ETERNITY."]);
             globalObjects.bannerTextManager.setOnFinishFunc(() => {
                 bansheeCanTween = false;
                 PhaserScene.tweens.add({
@@ -187,7 +187,7 @@ function showCutscene2() {
                     duration: 2000,
                     onComplete: () => {
                         banshee.destroy();
-                        let whiteDoor = PhaserScene.add.image(gameConsts.halfWidth, 360, 'whitePixel').setDepth(CUTSCENE_DEPTH+3).setAlpha(0.1).setOrigin(0.5, 1);
+                        let whiteDoor = PhaserScene.add.image(gameConsts.halfWidth, 385, 'whitePixel').setDepth(CUTSCENE_DEPTH+3).setAlpha(0.1).setOrigin(0.5, 1);
                         PhaserScene.tweens.add({
                             targets: whiteDoor,
                             scaleX: 120,
@@ -351,12 +351,45 @@ function showLoverApproach() {
                     stopHorror = true;
                     lover.destroy();
                     globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH + 4);
-                    let closeText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 50, 'Ending 2\nEternal Unrest', {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 1);
+                    let finalText1 = 'You age, yet cannot die.';
+                    let finalText2 = 'You wither, yet cannot find rest.';
+                    let finalText3 = 'Your suffering remains unending until\nonly madness brings your minds to oblivion.';
+                    // ', yet no longer able to die,\nyou and your lover live the rest of\neternity without ever '
+                    let closeText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 260, finalText1, {fontFamily: 'garamondmax', fontSize: 26, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 0);
+                    let closeText2 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 230, finalText2, {fontFamily: 'garamondmax', fontSize: 26, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 0);
+                    let closeText3 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 200, finalText3, {fontFamily: 'garamondmax', fontSize: 26, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 0);
+                    let closeText4 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 30, 'Ending 2\nEternal Unrest', {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 1);
                     PhaserScene.tweens.add({
+                        delay: 800,
                         targets: closeText,
                         alpha: 1,
-                        duration: 1000,
+                        duration: 1500,
+                        onComplete: () => {
+                            PhaserScene.tweens.add({
+                                delay: 1400,
+                                targets: closeText2,
+                                alpha: 1,
+                                duration: 1500,
+                                onComplete: () => {
+                                    PhaserScene.tweens.add({
+                                        delay: 1700,
+                                        targets: closeText3,
+                                        alpha: 1,
+                                        duration: 1500,
+                                        onComplete: () => {
+                                            PhaserScene.tweens.add({
+                                                delay: 3000,
+                                                targets: closeText4,
+                                                alpha: 1,
+                                                duration: 1000,
+                                            })
+                                        }
+                                    })
+                                }
+                            })
+                        }
                     })
+
                 }
             })
         }
@@ -419,7 +452,9 @@ function tweenRandomBanshee(image, x, y, scale) {
         scaleY: scale + 0.05,
         duration: 1000,
         onComplete: () => {
-            image.setScale(scale).setPosition(x, y).setAlpha(1);
+            if (!bansheeCanTween) {
+                image.setScale(scale).setPosition(x, y).setAlpha(1);
+            }
             tweenRandomBanshee(image, x, y, scale)
         }
     })

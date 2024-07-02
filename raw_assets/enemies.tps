@@ -731,6 +731,7 @@
             </struct>
             <key type="filename">enemies/max_death_1a.png</key>
             <key type="filename">enemies/max_death_1b.png</key>
+            <key type="filename">enemies/max_death_1b_angry_white.png</key>
             <key type="filename">enemies/max_death_left_sleeve_a.png</key>
             <key type="filename">enemies/max_death_left_sleeve_b.png</key>
             <struct type="IndividualSpriteSettings">

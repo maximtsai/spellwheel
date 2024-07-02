@@ -226,26 +226,32 @@
         // this.deathBreathe();
         repeatDeathHandsRotate();
         startDeathFlutterAnim();
-        tweenFloatingDeath(0.667, 1, 1800, "Cubic.easeOut", () => {
-            globalObjects.bannerTextManager.setDialog([getLangText('deathFight1a'), getLangText('deathFight1b')]);
-            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-            globalObjects.bannerTextManager.showBanner(0.5);
+        tweenFloatingDeath(0.667, 1, gameVars.showFinaleDeathSpeech ? 1800 : 1550, "Cubic.easeOut", () => {
+            if (gameVars.showFinaleDeathSpeech) {
+                gameVars.showFinaleDeathSpeech = false;
 
-            globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                this.bgMusic = playMusic('heartbeat', 0.75, true);
-                setTimeout(() => {
-                    fadeAwaySound(this.windSfx, 5000);
-                }, 1000)
-
-
-                globalObjects.magicCircle.enableMovement();
-                this.setAwake();
-                globalObjects.encyclopedia.showButton();
-                globalObjects.options.showButton();
-            })
+                globalObjects.bannerTextManager.setDialog([getLangText('deathFight1a'), getLangText('deathFight1b')]);
+                globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                globalObjects.bannerTextManager.showBanner(0.5);
+                globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                    this.beginFightReal();
+                })
+            } else {
+                this.beginFightReal();
+            }
         });
      }
 
+     beginFightReal() {
+         this.bgMusic = playMusic('heartbeat', 0.75, true);
+         setTimeout(() => {
+             fadeAwaySound(this.windSfx, 5000);
+         }, 1000)
+         globalObjects.magicCircle.enableMovement();
+         this.setAwake();
+         globalObjects.encyclopedia.showButton();
+         globalObjects.options.showButton();
+     }
 /*
      deathBreathe() {
         if (this.flutterAnim) {

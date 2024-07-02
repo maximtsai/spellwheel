@@ -551,17 +551,21 @@ function clearReaper() {
     });
 }
 
-function startDeathFlutterAnim() {
-    globalObjects.floatingDeath2.setVisible(true).setAlpha(0).setScale(globalObjects.floatingDeath.scaleX).setDepth(globalObjects.floatingDeath.depth);
-    gameVars.deathFlutterDelay = 0;
-    repeatDeathFlutterAnimation();
-}
-
-function repeatDeathFlutterAnimation(alphaOffset = 0) {
+function stopDeathFlutterAnim() {
     if (globalObjects.floatingDeath.flutterAnim) {
         globalObjects.floatingDeath.flutterAnim.stop();
     }
+}
 
+
+function startDeathFlutterAnim(alphaOffset) {
+    globalObjects.floatingDeath2.setVisible(true).setScale(globalObjects.floatingDeath.scaleX).setDepth(globalObjects.floatingDeath.depth);
+    gameVars.deathFlutterDelay = 0;
+    repeatDeathFlutterAnimation(alphaOffset);
+}
+
+function repeatDeathFlutterAnimation(alphaOffset = 0) {
+    stopDeathFlutterAnim();
     globalObjects.floatingDeath2.alpha = 0;
     globalObjects.floatingDeath.alpha = 1;
     globalObjects.floatingDeath.flutterAnim = PhaserScene.tweens.add({
@@ -644,10 +648,10 @@ function handleReaperDialog(level = 0, onComplete) {
             getLangText('death6a'),
             getLangText('death6b'),
         ];
-        reaperFuncList = [undefined, () => {
-            globalObjects.floatingDeath.flutterAnim.stop();
+        reaperFuncList = [() => {
+            stopDeathFlutterAnim();
 
-            tweenFloatingDeath(0.75, 0, 500, undefined, () => {
+            tweenFloatingDeath(0.75, 0, 400, undefined, () => {
                 // setFloatingDeathVisible(false);
                 globalObjects.floatingDeath.visible = true;
                 globalObjects.floatingDeath2.visible = true;
@@ -657,16 +661,20 @@ function handleReaperDialog(level = 0, onComplete) {
                 globalObjects.floatingDeath2.alpha = 0.15;
                 globalObjects.floatingDeath.setFrame('max_death_1a_angry.png');
                 globalObjects.floatingDeath2.setFrame('max_death_1b_angry.png');
-                PhaserScene.tweens.add({
-                    targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2],
-                    alpha: 1,
-                    duration: 2000,
-                    onComplete: () => {
-                        startDeathFlutterAnim();
-                    }
-                });
+                globalObjects.floatingDeath.fakeAlpha = 1;
+                globalObjects.floatingDeath2.fakeAlpha = 1;
+                gameVars.deathFlutterDelay = 350;
+                repeatDeathFlutterAnimation(0);
+                // PhaserScene.tweens.add({
+                //     targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2],
+                //     alpha: 1,
+                //     duration: 2000,
+                //     onComplete: () => {
+                //
+                //     }
+                // });
             });
-        }]
+        }, undefined]
         break;
     case 7:
         reaperDialog = [

@@ -1,8 +1,9 @@
  class Wall extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
-         this.initSprite('wall_1.png', 0.80);
+         this.initSprite('wall_1.png', 1);
          this.shieldAdded = false;
+         this.trueStartScale = 1;
         this.bgMusic = playMusic('bite_down', 0.7, true);
          this.initBird();
          this.popupTimeout = this.addTimeout(() => {
@@ -34,7 +35,7 @@
      }
 
      initBird() {
-         this.bird = this.addImage(this.x - 335 * this.sprite.startScale, this.y - 223 * this.sprite.startScale, 'enemies', 'bird_1.png').setAlpha(0).setDepth(10).setScale(this.sprite.startScale);
+         this.bird = this.addImage(this.x - 335 * this.trueStartScale, this.y - 223 * this.trueStartScale, 'enemies', 'bird_1.png').setAlpha(0).setDepth(10).setScale(this.trueStartScale);
          this.addTween({
              delay: 150,
              targets: [this.bird],
@@ -76,12 +77,12 @@
              this.setDefaultSprite('wall_3.png');
              this.closeEyes(0, () => {
                  this.eyes1.setFrame('wall_eyes_3_a.png');
-                 this.eyes1.setPosition(this.x - 91 * this.sprite.startScale, this.y + 41 * this.sprite.startScale);
-                 this.eyes1.startOffsetX = -91 * this.sprite.startScale;
-                 this.eyes1.startOffsetY = 41 * this.sprite.startScale;
-                 let xDiff = 125 * this.sprite.startScale;
-                 let yDiff = -3 * this.sprite.startScale;
-                 this.eyes2 = this.addImage(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1);
+                 this.eyes1.setPosition(this.x - 91 * this.trueStartScale, this.y + 41 * this.trueStartScale);
+                 this.eyes1.startOffsetX = -91 * this.trueStartScale;
+                 this.eyes1.startOffsetY = 41 * this.trueStartScale;
+                 let xDiff = 125 * this.trueStartScale;
+                 let yDiff = -3 * this.trueStartScale;
+                 this.eyes2 = this.addImage(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1);
                  this.addExtraSprite(this.eyes2, xDiff, yDiff);
                  this.eyeArray.push(this.eyes2);
                  this.reOpenEyes()
@@ -90,13 +91,13 @@
              this.secondCanCrumble = true;
              this.setDefaultSprite('wall_4.png');
              this.closeEyes(0, () => {
-                 this.eyes1.setPosition(this.x - 91 * this.sprite.startScale, this.y + 41 * this.sprite.startScale);
-                 this.eyes1.startOffsetX = -91 * this.sprite.startScale;
-                 this.eyes1.startOffsetY = 41 * this.sprite.startScale;
+                 this.eyes1.setPosition(this.x - 91 * this.trueStartScale, this.y + 41 * this.trueStartScale);
+                 this.eyes1.startOffsetX = -91 * this.trueStartScale;
+                 this.eyes1.startOffsetY = 41 * this.trueStartScale;
                  if (!this.eyes2) {
-                     let xDiff = 100 * this.sprite.startScale;
-                     let yDiff = -5 * this.sprite.startScale;
-                     this.eyes2 = this.addImage(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1);
+                     let xDiff = 100 * this.trueStartScale;
+                     let yDiff = -5 * this.trueStartScale;
+                     this.eyes2 = this.addImage(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1);
                      this.eyeArray.push(this.eyes2);
                      this.addExtraSprite(this.eyes2, xDiff, yDiff);
                  }
@@ -108,10 +109,10 @@
              this.thirdCanCrumble = true;
              this.eyes1.setVisible(false);
              this.closeEyes(0, () => {
-                 let eye2OffsetX = 150 * this.sprite.startScale;
-                 let eye2OffsetY = 34 * this.sprite.startScale;
+                 let eye2OffsetX = 150 * this.trueStartScale;
+                 let eye2OffsetY = 34 * this.trueStartScale;
                  if (!this.eyes2) {
-                     this.eyes2 = this.addImage(this.x + 100 * this.sprite.startScale, this.y - 5 * this.sprite.startScale, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1);
+                     this.eyes2 = this.addImage(this.x + 100 * this.trueStartScale, this.y - 5 * this.trueStartScale, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1);
                      this.eyeArray.push(this.eyes2);
                      this.addExtraSprite(this.eyes2, eye2OffsetX, eye2OffsetY);
                  }
@@ -124,14 +125,14 @@
      }
 
      initEye1() {
-         this.eyes1 = this.addImage(this.x + 5 * this.sprite.startScale, this.y - 10 * this.sprite.startScale, 'enemies', 'wall_eyes_2.png').setDepth(8).setScale(this.sprite.startScale, this.sprite.startScale * 0.1).setVisible(false);
-         this.addExtraSprite(this.eyes1, 5 * this.sprite.startScale, -10 * this.sprite.startScale);
+         this.eyes1 = this.addImage(this.x + 5 * this.trueStartScale, this.y - 10 * this.trueStartScale, 'enemies', 'wall_eyes_2.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1).setVisible(false);
+         this.addExtraSprite(this.eyes1, 5 * this.trueStartScale, -10 * this.trueStartScale);
          this.eyeArray.push(this.eyes1);
 
          this.addTween({
              delay: 250,
              targets: [this.eyes1],
-             scaleY: this.sprite.startScale * 0.25,
+             scaleY: this.trueStartScale * 0.25,
              duration: 55,
              ease: 'Back.easeOut',
              completeDelay: 700,
@@ -144,14 +145,14 @@
                 }, 500)
                  this.addTween({
                      targets: [this.eyes1],
-                     scaleY: this.sprite.startScale * 1.1,
+                     scaleY: this.trueStartScale * 1.1,
                      duration: 900,
                      ease: 'Back.easeIn',
                      completeDelay: 200,
                      onComplete: () => {
                          this.addTween({
                              targets: [this.eyes1],
-                             scaleY: this.sprite.startScale,
+                             scaleY: this.trueStartScale,
                              duration: 300,
                              ease: 'Cubic.easeInOut',
                              onComplete: () => {
@@ -170,11 +171,11 @@
          }
          if (!fullSquint) {
              for (let i = 0; i < this.eyeArray.length; i++) {
-                 this.eyeArray[i].scaleY = this.sprite.startScale * 0.5;
+                 this.eyeArray[i].scaleY = this.trueStartScale * 0.5;
              }
              this.eyeAnim = this.addTween({
                  targets: this.eyeArray,
-                 scaleY: this.sprite.startScale,
+                 scaleY: this.trueStartScale,
                  ease: 'Cubic.easeIn',
                  duration: 450,
              });
@@ -187,7 +188,7 @@
                  onComplete: () => {
                      this.eyeAnim = this.addTween({
                          targets: this.eyeArray,
-                         scaleY: this.sprite.startScale,
+                         scaleY: this.trueStartScale,
                          ease: 'Cubic.easeOut',
                          duration: 300,
                      });
@@ -212,7 +213,7 @@
      reOpenEyes(duration = 500) {
          this.addTween({
              targets: this.eyeArray,
-             scaleY: this.sprite.startScale,
+             scaleY: this.trueStartScale,
              ease: 'Back.easeOut',
              duration: duration,
          });
@@ -257,7 +258,7 @@
      throwWallChunk(spriteName, damage = 40, endScale = 1) {
          this.closeEyes(400);
 
-         let wallChunk = this.addImage(this.x, this.y - 115, 'enemies', spriteName).setDepth(0).setScale(this.sprite.startScale * 0.9);
+         let wallChunk = this.addImage(this.x, this.y - 115, 'enemies', spriteName).setDepth(0).setScale(this.trueStartScale * 0.9);
          wallChunk.y += wallChunk.height * 0.5;
 
          this.addTween({
@@ -342,11 +343,11 @@
             if (hasBigPoop && i == numBirds - 1) {
                 delay += 500;
                 isBigPoop = true;
-                bird = this.addImage(-999, 0, 'enemies', 'bird_2_fat.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
+                bird = this.addImage(-999, 0, 'enemies', 'bird_2_fat.png').setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
             } else {
                 bird = poolManager.getItemFromPool('bird');
                 if (!bird) {
-                    bird = this.addImage(-999, 0, 'enemies', 'bird_2.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
+                    bird = this.addImage(-999, 0, 'enemies', 'bird_2.png').setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
                 }
             }
 
@@ -362,7 +363,7 @@
             let rock;
             let rockYOffset = 40;
             if (hasRock && !isBigPoop) {
-                rock = this.addImage(bird.x, bird.y + rockYOffset, 'enemies', hasBigRock ? 'wall_chunk.png' : 'brick.png').setDepth(12).setScale(this.sprite.startScale * 0.25 + 0.55);
+                rock = this.addImage(bird.x, bird.y + rockYOffset, 'enemies', hasBigRock ? 'wall_chunk.png' : 'brick.png').setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
                 if (!isLeft) {
                     rock.scaleX *= -1;
                 }
@@ -385,8 +386,8 @@
                     let goalY = globalObjects.player.getY() - 400 - Math.random() * 110
                     this.addTween({
                         targets: bird,
-                        scaleX: isLeft ? this.sprite.startScale * 0.25 + 0.8 : -this.sprite.startScale * 0.25 - 0.8,
-                        scaleY: this.sprite.startScale * 0.25 + 0.8,
+                        scaleX: isLeft ? this.trueStartScale * 0.25 + 0.8 : -this.trueStartScale * 0.25 - 0.8,
+                        scaleY: this.trueStartScale * 0.25 + 0.8,
                         y: goalY,
                         ease: 'Cubic.easeOut',
                         duration: duration,
@@ -394,8 +395,8 @@
                     if (hasRock && !isBigPoop) {
                         this.addTween({
                             targets: rock,
-                            scaleX: isLeft ? this.sprite.startScale * 0.25 + 0.8 : -this.sprite.startScale * 0.25 - 0.8 ,
-                            scaleY: this.sprite.startScale * 0.25 + 0.8,
+                            scaleX: isLeft ? this.trueStartScale * 0.25 + 0.8 : -this.trueStartScale * 0.25 - 0.8 ,
+                            scaleY: this.trueStartScale * 0.25 + 0.8,
                             y: goalY + rockYOffset,
                             ease: 'Cubic.easeOut',
                             duration: duration,
@@ -460,8 +461,8 @@
                     this.addTween({
                         targets: bird,
                         delay: poopDelay,
-                        scaleX: isLeft ? this.sprite.startScale * 0.25 + 0.55 : -this.sprite.startScale * 0.25 - 0.55,
-                        scaleY: this.sprite.startScale * 0.25 + 0.55,
+                        scaleX: isLeft ? this.trueStartScale * 0.25 + 0.55 : -this.trueStartScale * 0.25 - 0.55,
+                        scaleY: this.trueStartScale * 0.25 + 0.55,
                         y: 100 + Math.random() * 100,
                         ease: 'Cubic.easeIn',
                         duration: 650,

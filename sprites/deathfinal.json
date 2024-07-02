@@ -5,7 +5,7 @@
 			"format": "RGBA5555",
 			"size": {
 				"w": 1595,
-				"h": 1894
+				"h": 1900
 			},
 			"scale": 1,
 			"frames": [
@@ -235,6 +235,31 @@
 					}
 				},
 				{
+					"filename": "max_death_2_white.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 438,
+						"h": 412
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 435,
+						"h": 409
+					},
+					"frame": {
+						"x": 528,
+						"y": 1490,
+						"w": 435,
+						"h": 409
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "max_death_3b.png",
 					"rotated": false,
 					"trimmed": true,
@@ -285,6 +310,31 @@
 					}
 				},
 				{
+					"filename": "max_death_2_right.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 365,
+						"h": 358
+					},
+					"spriteSourceSize": {
+						"x": 179,
+						"y": 0,
+						"w": 182,
+						"h": 254
+					},
+					"frame": {
+						"x": 1395,
+						"y": 1,
+						"w": 182,
+						"h": 254
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "deathhalo.png",
 					"rotated": false,
 					"trimmed": true,
@@ -299,10 +349,35 @@
 						"h": 301
 					},
 					"frame": {
-						"x": 528,
+						"x": 965,
 						"y": 1490,
 						"w": 305,
 						"h": 301
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_2_left.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 406,
+						"h": 354
+					},
+					"spriteSourceSize": {
+						"x": 28,
+						"y": 6,
+						"w": 210,
+						"h": 247
+					},
+					"frame": {
+						"x": 1308,
+						"y": 1315,
+						"w": 210,
+						"h": 247
 					},
 					"anchor": {
 						"x": 0.5,
@@ -324,35 +399,10 @@
 						"h": 289
 					},
 					"frame": {
-						"x": 835,
-						"y": 1490,
+						"x": 1272,
+						"y": 1564,
 						"w": 308,
 						"h": 289
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_2_white.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 438,
-						"h": 412
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 435,
-						"h": 409
-					},
-					"frame": {
-						"x": 1145,
-						"y": 1484,
-						"w": 435,
-						"h": 409
 					},
 					"anchor": {
 						"x": 0.5,
@@ -365,6 +415,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:814a84b4f339a8f609d8f85621681764:f58dd2ef738b16f947c4b8b1ea32aca8:dfb2cdd9e7b94615120d14c14cdfc785$"
+		"smartupdate": "$TexturePacker:SmartUpdate:dc96a13c2aaac5b52d3a3d25ce5380e2:625c711ed33c70fb8fece448d899c036:dfb2cdd9e7b94615120d14c14cdfc785$"
 	}
 }

@@ -232,10 +232,9 @@ class Options {
             this.listOfButtonsToDisable.push(this.sliderSFX);
             this.BGMVisual = PhaserScene.add.image(startX, gameConsts.halfHeight - 210, 'ui', 'slider.png').setDepth(this.baseDepth);
             this.SFXVisual = PhaserScene.add.image(startX, gameConsts.halfHeight - 120, 'ui', 'slider.png').setDepth(this.baseDepth);
-            
+
             let musicExtraXPos = ((globalMusicVol * 10) - 9) * 30;
             let sfxExtraXPos = ((globalVolume * 10) - 9) * 30;
-
             this.draggerBGM = PhaserScene.add.image(startX + 4 * 30 + musicExtraXPos, gameConsts.halfHeight - 210, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
             this.draggerSFX = PhaserScene.add.image(startX + 4 * 30 + sfxExtraXPos, gameConsts.halfHeight - 120, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
 

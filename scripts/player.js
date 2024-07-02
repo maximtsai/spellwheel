@@ -77,7 +77,9 @@ class Player {
     }
 
     setHealth(amt = 80) {
+        console.log("Setting health to ", amt);
         this.health = amt;
+        this.refreshHealthBar();
     }
 
     setHealthMaxTemp(amt = 80) {
@@ -1146,10 +1148,13 @@ class Player {
         if (this.health < 20) {
             textScale += 0.2;
         }
-        if (healthChange > 10) {
-            healthChange = 10;
+        let healthChangeScaleAmt = 0;
+        if (healthChange > 12) {
+            healthChangeScaleAmt = 12;
+        } else {
+            healthChangeScaleAmt = healthChange;
         }
-        let addAmt = (0.18 * Math.sqrt(Math.abs(healthChange)) + 0.04 * Math.abs(healthChange));
+        let addAmt = (0.18 * Math.sqrt(Math.abs(healthChangeScaleAmt)) + 0.04 * Math.abs(healthChangeScaleAmt));
         if (Math.abs(healthChange) > 80) {
             addAmt = 0.18 * Math.sqrt(80) + 0.04 * 80;
         }

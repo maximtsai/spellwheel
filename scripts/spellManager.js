@@ -2728,7 +2728,7 @@ class SpellManager {
                 ease: 'Quad.easeIn',
                 alpha: 0,
             }
-            messageBus.publish('animateBlockNum', gameConsts.halfWidth, globalObjects.player.getY() + 24, "-THORNS", 0.6, param, param2);
+            messageBus.publish('animateBlockNum', gameConsts.halfWidth, globalObjects.player.getY() + 30, "-THORNS", 0.75, param, param2);
         }
     }
 }

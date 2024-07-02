@@ -175,7 +175,7 @@ function showCutscene2() {
                 duration: 1200,
             })
             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 58, 0);
-            globalObjects.bannerTextManager.setDialog(["FINE, I SHALL RETURN TO YOU\nYOUR BELOVED.", "BUT YOU WILL BE CURSED TO EXIST\nETERNALLY WITHOUT REST."]);
+            globalObjects.bannerTextManager.setDialog(["FINE, I SHALL RETURN TO YOU\nYOUR BELOVED.", "BUT YOU WILL BOTH BE CURSED TO\nEXIST ETERNALLY WITHOUT REST."]);
             globalObjects.bannerTextManager.setOnFinishFunc(() => {
                 bansheeCanTween = false;
                 PhaserScene.tweens.add({
@@ -351,7 +351,7 @@ function showLoverApproach() {
                     stopHorror = true;
                     lover.destroy();
                     globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH + 4);
-                    let closeText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 40, 'Ending 2\nEternal Unrest', {fontFamily: 'garamondmax', fontSize: 28, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 1);
+                    let closeText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 50, 'Ending 2\nEternal Unrest', {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 1);
                     PhaserScene.tweens.add({
                         targets: closeText,
                         alpha: 1,

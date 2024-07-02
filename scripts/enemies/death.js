@@ -7,7 +7,9 @@
         swirlInReaperFog(1.25);
         this.setupCustomDeathSprite();
         setTimeout(() => {
+            console.log("estting health");
             globalObjects.player.setHealth(1);
+            globalObjects.player.recentlyTakenDamageAmt = 79;
              this.setAsleep();
             globalObjects.magicCircle.disableMovement();
             this.healthBarCurr.setFrame('yellow_pixel.png');
@@ -21,7 +23,7 @@
          this.listOfAngryPopups = [];
      }
 
-     swingScythe(damage = 4444, fadeOutScythe = true, flipped = false, onComplete) {
+     swingScythe(damage = 444, fadeOutScythe = true, flipped = false, onComplete) {
 
          let flipMult = flipped ? -1 : 1;
          this.mainScythe.setPosition(this.x, 160).setDepth(999).setAlpha(0).setScale(0.65*flipMult, 0.65).setRotation(-1.5);
@@ -365,15 +367,15 @@
          this.attacks = [
              [
                  {
-                     name: ";4444",
-                     chargeAmt: 600,
+                     name: ";444",
+                     chargeAmt: 700,
                      chargeMult: 2,
                      finishDelay: 3000,
                      damage: -1,
                      isBigMove: true,
                      attackStartFunction: () => {
                          // this.hideCurrentAttack();
-                         this.swingScythe(4444, true, false, () => {
+                         this.swingScythe(444, true, false, () => {
                              if (!globalObjects.player.dead) {
                                  this.setAsleep();
                                  super.setHealth(3);
@@ -392,9 +394,9 @@
                      }
                  },
                  {
-                     name: "}6x12}",
-                     chargeAmt: 1250,
-                     chargeMult: 1.5,
+                     name: "}5x12}",
+                     chargeAmt: 1300,
+                     chargeMult: 1.3,
                      finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
@@ -431,7 +433,7 @@
                      attackFinishFunction: () => {
                          this.setAsleep();
                          // this.hideCurrentAttack();
-                         this.fireScytheObjects(6, undefined, () => {
+                         this.fireScytheObjects(5, undefined, () => {
                              if (!globalObjects.player.dead) {
                                  super.setHealth(2);
                                  globalObjects.bannerTextManager.setDialog([getLangText('deathFight1f'), getLangText('deathFight1g')]);
@@ -447,8 +449,8 @@
                  },
                  {
                      name: ";20x6",
-                     chargeAmt: 1250,
-                     chargeMult: 1.5,
+                     chargeAmt: 1300,
+                     chargeMult: 1.3,
                      finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
@@ -572,6 +574,15 @@
                     duration: 600,
                     ease: 'Cubic.easeInOut',
                     onComplete: () => {
+                        tweenFloatingDeath(0.65, 0, 500, "Quad.easeIn");
+                        let angrySprite = this.setDefaultSprite('max_death_1b_angry.png');
+                        angrySprite.setAlpha(0);
+                        this.addTween({
+                            targets: angrySprite,
+                            alpha: 1,
+                            delay: 500,
+                            ease: 'Quad.easeOut',
+                        })
                         globalObjects.bannerTextManager.setDialog([getLangText('deathFight1h'), getLangText('deathFight1i')]);
                         globalObjects.bannerTextManager.setDialogFunc([undefined, () => {
                             PhaserScene.tweens.add({
@@ -613,7 +624,7 @@
         })
      }
 
-     fireScytheObjects(damage = 6, interval = 120, onComplete) {
+     fireScytheObjects(damage = 5, interval = 120, onComplete) {
          let totalScytheObjects = this.scytheObjects.length;
          let projDur = 600 - Math.floor(Math.sqrt(totalScytheObjects) * 50);
          let scytheObjectsFired = 0;
@@ -627,15 +638,16 @@
              let delayAmt = scytheObjectsFired * interval;
              scytheObjectsFired++;
              if (isLastObj) {
-                 this.tweenFireScythe(currObj, projDur, delayAmt, this.scytheObjects.length, true, onComplete)
+                 this.tweenFireScythe(currObj, damage, projDur, delayAmt, this.scytheObjects.length, true)
+                 this.tweenFireScythe(currObj2, damage, projDur, delayAmt, this.scytheObjects.length, false, onComplete)
              } else {
-                 this.tweenFireScythe(currObj, projDur, delayAmt, this.scytheObjects.length, true)
-                 this.tweenFireScythe(currObj2, projDur, delayAmt, this.scytheObjects.length, false)
+                 this.tweenFireScythe(currObj, damage, projDur, delayAmt, this.scytheObjects.length, true)
+                 this.tweenFireScythe(currObj2, damage, projDur, delayAmt, this.scytheObjects.length, false)
              }
          }
      }
 
-     tweenFireScythe(currObj, projDur, delayAmt, currScytheObjCount, hasSfx, onComplete) {
+     tweenFireScythe(currObj, damage, projDur, delayAmt, currScytheObjCount, hasSfx, onComplete) {
          this.addTween({
              targets: currObj,
              delay: delayAmt,
@@ -689,7 +701,7 @@
                          playSound('sword_slice').detune = 400 - Math.floor(Math.random() * 800)
                      }
                  }
-                 messageBus.publish("selfTakeDamage", 6);
+                 messageBus.publish("selfTakeDamage", damage);
                  currObj.destroy();
 
              }
@@ -705,21 +717,22 @@
      }
 
      startChargingMulti() {
-         for (let i = 0; i < 36; i++) {
+         let scytheMultCount = 12;
+         for (let i = 0; i < scytheMultCount*3; i++) {
              let startX = this.x;
              let startY = this.y + 100;
              let multAmt = 120;
              let angleIdx = i;
-             if (i < 12) {
+             if (i < scytheMultCount) {
                  multAmt = 120;
-             } else if (i < 24) {
+             } else if (i < scytheMultCount*2) {
                  angleIdx -=12;
                  multAmt = 180;
-             } else if (i < 36) {
-                 angleIdx -=24;
+             } else if (i < scytheMultCount*3) {
+                 angleIdx -=scytheMultCount*2;
                  multAmt = 240;
              }
-             let dirAngle = -Math.PI / 4 + angleIdx * Math.PI / 24 + Math.PI * 0.5;
+             let dirAngle = -Math.PI / 4 + angleIdx * Math.PI / (scytheMultCount * 2) + Math.PI * 0.5;
              let offsetX = Math.sin(dirAngle) * multAmt;
              let offsetY = -Math.cos(dirAngle) * multAmt;
              if (i % 2 == 0) {
@@ -744,15 +757,15 @@
          let firstThird = [];
          let secondThird = [];
          let thirdThird = [];
-         for (let j = 0; j < 12; j++) {
+         for (let j = 0; j < scytheMultCount; j++) {
              let currScythe = this.scytheObjects[j];
             firstThird.push(currScythe);
          }
-         for (let k = 12; k < 24; k++) {
+         for (let k = scytheMultCount; k < scytheMultCount*2; k++) {
              let currScythe = this.scytheObjects[k];
              secondThird.push(currScythe);
          }
-         for (let l = 24; l < 36; l++) {
+         for (let l = scytheMultCount*2; l < scytheMultCount*3; l++) {
              let currScythe = this.scytheObjects[l];
              thirdThird.push(currScythe);
          }
@@ -768,7 +781,7 @@
                      playSound('enemy_attack');
                      // this.sprite.setScale(this.sprite.startScale * 1.05);
                      // this.sprite.setRotation(0.1);
-                     this.attackName.setText("}}}6x12}}}");
+                     this.attackName.setText("}}}5x12}}}");
                      this.repositionAngrySymbol();
                  }
              },
@@ -798,7 +811,7 @@
                      playSound('enemy_attack_2');
                      // this.sprite.setScale(this.sprite.startScale * 1.05);
                      // this.sprite.setRotation(0.1);
-                     this.attackName.setText("|||6x24|||");
+                     this.attackName.setText("|||5x24|||");
                      this.repositionAngrySymbol();
                  }
              },
@@ -824,7 +837,7 @@
                      playSound('enemy_attack_major');
                      // this.sprite.setScale(this.sprite.startScale * 1.05);
                      // this.sprite.setRotation(0.1);
-                     this.attackName.setText(";;;6x36;;;");
+                     this.attackName.setText(";;;5x36;;;");
                      this.repositionAngrySymbol();
                  }
              },
@@ -841,8 +854,8 @@
                          }
                          this.addTween({
                              targets: this.sprite,
-                             scaleX: this.sprite.startScale - 0.1,
-                             scaleY: this.sprite.startScale - 0.1,
+                             scaleX: this.sprite.startScale - 0.03,
+                             scaleY: this.sprite.startScale - 0.03,
                              duration: 300,
                              ease: 'Cubic.easeIn',
                              onComplete: () => {
@@ -861,7 +874,7 @@
          })
      }
 
-     swingScytheFastIntro(damage = 4444, fadeOutScythe = true, flipped = false, onComplete) {
+     swingScytheFastIntro(damage = 444, fadeOutScythe = true, flipped = false, onComplete) {
          this.mainScythe.setPosition(this.x, 160).setDepth(999).setAlpha(0).setScale(0.65, 0.65).setRotation(-1.5);
          let scythe = this.mainScythe;
          scythe.play('scytheFlash');

@@ -107,7 +107,7 @@ class Enemy {
     }
 
     createHealthBar(x, y) {
-        this.healthBarLengthMax = 45 + Math.floor(Math.sqrt(this.healthMax) * 5.5);
+        this.healthBarLengthMax = 65 + Math.floor(Math.sqrt(this.healthMax) * 5);
         this.healthBarMax = this.scene.add.sprite(x, 20, 'blackPixel');
         this.healthBarMaxGoalScale = this.healthBarLengthMax + 3;
         this.healthBarMax.setScale(0, 12);

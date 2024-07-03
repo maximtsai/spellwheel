@@ -7,6 +7,7 @@
          this.createAnimatedHellBG();
          globalObjects.player.reInitStats();
          globalObjects.player.refreshHealthBar();
+         this.createArms();
 
          this.addTween({
             targets: this.whiteBG,
@@ -21,6 +22,71 @@
              this.setAsleep();
              this.introSpeech();
          }, 10)
+     }
+
+     initSpriteAnim(scale) {
+         this.sprite.setScale(scale);
+         if (!this.delayLoad) {
+             this.scene.tweens.add({
+                 targets: this.sprite,
+                 duration: gameVars.gameManualSlowSpeedInverse * 750,
+                 ease: 'Quad.easeOut',
+                 alpha: 1
+             });
+         }
+     }
+
+     createArms() {
+         let xOffsetLeft = -56 * this.sprite.startScale;
+         let xOffsetRight = 72 * this.sprite.startScale;
+         let yOffsetLeft = + 39 * this.sprite.startScale;
+         let yOffsetRight = + 40 * this.sprite.startScale ;
+         this.leftArm = this.addImage(this.x + xOffsetLeft, this.y + yOffsetLeft, 'deathfinal', 'max_death_2_left.png').setDepth(2).setScale(this.sprite.startScale);
+         this.rightArm = this.addImage(this.x + xOffsetRight, this.y + yOffsetRight, 'deathfinal', 'max_death_2_right.png').setDepth(2).setScale(this.sprite.startScale);
+         this.leftShoulder = this.addImage(this.x, this.y, 'deathfinal', 'max_death_2_shoulder.png').setDepth(2).setScale(this.sprite.startScale).setOrigin(0.5, this.sprite.originY);
+
+         this.leftArm.setRotation(0.08);
+         this.rightArm.setRotation(-0.08);
+         this.idleAnim();
+     }
+
+     idleAnim() {
+         this.addTween({
+             targets: this.sprite,
+             y: "+=4",
+             scaleY: this.sprite.startScale * 0.983,
+             yoyo: true,
+             ease: 'Cubic.easeInOut',
+             repeat: -1,
+             duration: 2000
+         });
+
+         this.addTween({
+             targets: this.leftArm,
+             rotation: -0.07,
+             y: "+=3",
+             yoyo: true,
+             ease: 'Cubic.easeInOut',
+             repeat: -1,
+             duration: 2000
+         });
+         this.addTween({
+             targets: this.rightArm,
+             rotation: 0.07,
+             y: "+=3",
+             yoyo: true,
+             ease: 'Cubic.easeInOut',
+             repeat: -1,
+             duration: 2000
+         })
+         this.addTween({
+             targets: this.leftShoulder,
+             y: "+=3",
+             yoyo: true,
+             ease: 'Cubic.easeInOut',
+             repeat: -1,
+             duration: 2000
+         })
      }
 
     introSpeech() {
@@ -185,12 +251,12 @@
         bgToUse.setAlpha(0).setDepth(-4);
         this.addTween({
             targets: bgToUse,
-            duration: 2000,
+            duration: 1200,
             alpha: 1,
             onComplete: () => {
                 this.useFirstBG = !this.useFirstBG;
                 this.animateBGRepeat();
-            } 
+            }
         })
     }
 }

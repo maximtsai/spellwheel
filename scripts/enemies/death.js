@@ -578,6 +578,7 @@
          fadeAwaySound(this.bgMusic);
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();
+
          PhaserScene.tweens.add({
             targets: this.mainScythe,
             alpha: 1,
@@ -591,6 +592,7 @@
             completeDelay: 700,
             onComplete: () => {
                 super.die();
+                globalObjects.magicCircle.disableMovement();
                 PhaserScene.tweens.add({
                     targets: this.mainScythe,
                     rotation: -0.55,
@@ -690,7 +692,7 @@
                                 alpha: 1,
                                 duration: 2600,
                                 onComplete: () => {
-                                    this.muscleDeathWhite = this.addImage(this.sprite.x, 105, 'deathfinal', 'max_death_2_white.png').setScale(0.55, 0.57).setDepth(90).setOrigin(0.5, 0.3);
+                                    this.muscleDeathWhite = this.addImage(this.sprite.x, 112, 'deathfinal', 'max_death_2_white.png').setScale(0.55, 0.57).setDepth(90).setOrigin(0.5, 0.25);
                                     this.addTween({
                                         targets: this.muscleDeathWhite,
                                         scaleX: 0.9,

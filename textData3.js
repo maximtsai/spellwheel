@@ -234,6 +234,23 @@ let textData3 = {
         jp: ''
     },
 
+    deathFight2a: {en_us: "PREPARE YOURSELF!",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    deathFight2b: {en_us: "FAREWELL",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+
 
     epilogue1a: {en_us: "ALAS, YOUR WOUNDS\nWERE TOO MANY TO BEAR.",
         fr: '',

@@ -1896,12 +1896,21 @@ class Enemy {
         let durationPullback = isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult + this.extraRepeatDelay : 300 * extraTimeMult * pullbackDurMult;
 
         if (prepareSprite) {
+            let spriteToPrepare = prepareSprite;
+            if (Array.isArray(prepareSprite)) {
+                if (this.sprite.prepareNum === undefined) {
+                    this.sprite.prepareNum = 0;
+                } else {
+                    this.sprite.prepareNum = (this.sprite.prepareNum + 1) % prepareSprite.length;
+                }
+                spriteToPrepare = prepareSprite[this.sprite.prepareNum];
+            }
             if (isRepeatedAttack) {
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeedInverse * durationPullback * this.pullbackHoldRatio, () => {
-                    this.setSpriteIfNotInactive(prepareSprite, this.sprite.startScale);
+                    this.setSpriteIfNotInactive(spriteToPrepare, this.sprite.startScale);
                 });
             } else {
-                this.setSpriteIfNotInactive(prepareSprite, this.sprite.startScale);
+                this.setSpriteIfNotInactive(spriteToPrepare, this.sprite.startScale);
             }
         }
 

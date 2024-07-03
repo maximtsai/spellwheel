@@ -2602,8 +2602,9 @@ const ENABLE_KEYBOARD = true;
                  } else if (effectObj && effectObj.duration > 0) {
                      if (effectObj.duration <= 1) {
                          this.fireVoidSpike(this.voidSliceImage3, baseScale, damage);
-                     } else if (effectObj.duration == 2) {
-                         this.fireVoidSpike(this.voidSliceImage1, baseScale, damage);
+                         PhaserScene.time.delayedCall(700, () => {
+                             this.fireVoidSpike(this.voidSliceImage1, baseScale, damage);
+                         })
                      }
                  }
              },

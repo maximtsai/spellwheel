@@ -135,7 +135,7 @@ class Dummyvoid extends Dummypractice {
                 },
                 {
                     name: "WAITING...",
-                    chargeAmt: 700,
+                    chargeAmt: 500,
                     transitionFast: true,
                     isPassive: true,
                     damage: -1,
@@ -230,6 +230,50 @@ class Dummyvoid extends Dummypractice {
             ],
             [
                 {
+                    name: ";20",
+                    chargeAmt: 550,
+                    finishDelay: 300,
+                    transitionFast: true,
+                    damage: -1,
+                    startFunction: () => {
+
+                    },
+                    attackStartFunction: () => {
+
+                    },
+                    attackFinishFunction: () => {
+                        this.throwWeapon('scythe.png', 20, 1);
+                    }
+                },
+                {
+                    name: "PAUSING...",
+                    chargeAmt: 450,
+                    chargeMult: 2,
+                    transitionFast: true,
+                },
+                {
+                    name: "|2x9",
+                    chargeAmt: 600,
+                    finishDelay: 2000,
+                    transitionFast: true,
+                    damage: -1,
+                    startFunction: () => {
+
+                    },
+                    attackStartFunction: () => {
+
+                    },
+                    attackFinishFunction: () => {
+                        this.throwTriple('star.png', 2, 3);
+                    }
+                },
+                {
+                    name: "PAUSING...",
+                    chargeAmt: 450,
+                    chargeMult: 2,
+                    transitionFast: true,
+                },
+                {
                     name: ";25",
                     chargeAmt: 550,
                     finishDelay: 300,
@@ -247,7 +291,7 @@ class Dummyvoid extends Dummypractice {
                 },
                 {
                     name: "PAUSING...",
-                    chargeAmt: 300,
+                    chargeAmt: 450,
                     chargeMult: 2,
                     transitionFast: true,
                 },
@@ -269,7 +313,7 @@ class Dummyvoid extends Dummypractice {
                 },
                 {
                     name: "PAUSING...",
-                    chargeAmt: 300,
+                    chargeAmt: 450,
                     chargeMult: 2,
                     transitionFast: true,
                 },
@@ -291,51 +335,7 @@ class Dummyvoid extends Dummypractice {
                 },
                 {
                     name: "PAUSING...",
-                    chargeAmt: 300,
-                    chargeMult: 2,
-                    transitionFast: true,
-                },
-                {
-                    name: "|2x12",
-                    chargeAmt: 600,
-                    finishDelay: 2000,
-                    transitionFast: true,
-                    damage: -1,
-                    startFunction: () => {
-
-                    },
-                    attackStartFunction: () => {
-
-                    },
-                    attackFinishFunction: () => {
-                        this.throwTriple('star.png', 2, 4);
-                    }
-                },
-                {
-                    name: "PAUSING...",
-                    chargeAmt: 300,
-                    chargeMult: 2,
-                    transitionFast: true,
-                },
-                {
-                    name: ";35",
-                    chargeAmt: 550,
-                    finishDelay: 300,
-                    transitionFast: true,
-                    damage: -1,
-                    startFunction: () => {
-
-                    },
-                    attackStartFunction: () => {
-
-                    },
-                    attackFinishFunction: () => {
-                        this.throwWeapon('scythe.png', 35, 1);
-                    }
-                },
-                {
-                    name: "PAUSING...",
-                    chargeAmt: 300,
+                    chargeAmt: 450,
                     chargeMult: 2,
                     transitionFast: true,
                 },

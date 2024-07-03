@@ -245,6 +245,10 @@
         });
      }
 
+     takeEffect() {
+         // do nothing
+     }
+
      beginFightReal() {
          this.bgMusic = playMusic('heartbeat', 0.75, true);
          setTimeout(() => {

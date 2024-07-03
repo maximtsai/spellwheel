@@ -25,7 +25,7 @@
     }
 
      initStatsCustom() {
-        this.health = 145;
+        this.health = 175;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -132,9 +132,32 @@
              [
                  // 0
                  {
-                     name: "}2x15",
-                     chargeAmt: 820,
-                     finishDelay: 4000,
+                     name: "}2x3",
+                     chargeAmt: 500,
+                     finishDelay: 500,
+                     transitionFast: true,
+                     isBigMove: true,
+                     damage: -1,
+                     startFunction: () => {
+
+                     },
+                     attackStartFunction: () => {
+
+                     },
+                     attackFinishFunction: () => {
+                         this.throwTriple('star.png', 2, 1);
+                     }
+                 },
+                 {
+                     name: "WAITING...",
+                     chargeAmt: 400,
+                     transitionFast: true,
+                     damage: -1,
+                 },
+                 {
+                     name: "}2x12",
+                     chargeAmt: 800,
+                     finishDelay: 3500,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
@@ -145,14 +168,44 @@
 
                     },
                     attackFinishFunction: () => {
-                        this.throwTriple('star.png', 2, 5);
+                        this.throwTriple('star.png', 2, 4);
                     }
+                 },
+                 {
+                     name: "WAITING...",
+                     chargeAmt: 400,
+                     transitionFast: true,
+                     damage: -1,
                  },
                  // 0
                  {
+                     name: "}2x15",
+                     chargeAmt: 900,
+                     finishDelay: 4500,
+                     transitionFast: true,
+                     isBigMove: true,
+                     damage: -1,
+                     startFunction: () => {
+
+                     },
+                     attackStartFunction: () => {
+
+                     },
+                     attackFinishFunction: () => {
+                         this.throwTriple('star.png', 2, 5);
+                     }
+                 },
+                 // 0
+                 {
+                     name: "WAITING...",
+                     chargeAmt: 400,
+                     transitionFast: true,
+                     damage: -1,
+                 },
+                 {
                      name: "}2x18",
-                     chargeAmt: 820,
-                     finishDelay: 5000,
+                     chargeAmt: 1000,
+                     finishDelay: 5500,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
@@ -166,23 +219,11 @@
                          this.throwTriple('star.png', 2, 6);
                      }
                  },
-                 // 0
                  {
-                     name: "}2x24",
-                     chargeAmt: 820,
-                     finishDelay: 9000,
+                     name: "WAITING...",
+                     chargeAmt: 400,
                      transitionFast: true,
-                     isBigMove: true,
                      damage: -1,
-                     startFunction: () => {
-
-                     },
-                     attackStartFunction: () => {
-
-                     },
-                     attackFinishFunction: () => {
-                         this.throwTriple('star.png', 2, 8);
-                     }
                  },
                  {
                      name: "}15",

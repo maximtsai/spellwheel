@@ -242,7 +242,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.85</double>
+                <double>0.8</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -313,6 +313,7 @@
                 <false/>
             </struct>
             <key type="filename">deathfinal/max_death_2.png</key>
+            <key type="filename">deathfinal/max_death_2_shoulder.png</key>
             <key type="filename">deathfinal/max_death_2_white.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -387,6 +388,37 @@
                 <rect>138,125,275,249</rect>
                 <key>scale9Paddings</key>
                 <rect>138,125,275,249</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">deathfinal/puncharm.png</key>
+            <key type="filename">deathfinal/punchportal.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,110,150,220</rect>
+                <key>scale9Paddings</key>
+                <rect>75,110,150,220</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">deathfinal/puncharmblur.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,115,150,230</rect>
+                <key>scale9Paddings</key>
+                <rect>75,115,150,230</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

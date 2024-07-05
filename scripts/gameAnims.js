@@ -57,6 +57,18 @@ function createAnimations(scene) {
         repeat: -1
     });
     scene.anims.create({
+        key: 'robotheart',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'robot_blast_small',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        frameRate: 20,
+        repeat: -1
+    });
+    scene.anims.create({
         key: 'angry',
         frames: scene.anims.generateFrameNames('enemies', {
             prefix: 'angry',

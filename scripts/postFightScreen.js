@@ -44,7 +44,7 @@ class PostFightScreen {
             this.healthLeftText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 200, getLangText('post_fight_health'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.codeText) {
-            this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 80, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
+            this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 65, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
         }
         if (!this.locketSprite) {
             this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 120, 'ui', 'locket1.png').setScale(0.75).setDepth(100003).setAlpha(0).setOrigin(0.5, 0.5);
@@ -122,8 +122,8 @@ class PostFightScreen {
                     ref: "nextLevel.png",
                     visible: true,
                     alpha: 0.95,
-                    x: gameConsts.halfWidth + 110,
-                    y: gameConsts.halfHeight + 210,
+                    x: gameConsts.halfWidth,
+                    y: gameConsts.halfHeight + 220,
                 },
                 hover: {
                     atlas: "ui",
@@ -165,8 +165,8 @@ class PostFightScreen {
                     ref: "practice.png",
                     visible: true,
                     alpha: 0.95,
-                    x: gameConsts.halfWidth - 110,
-                    y: gameConsts.halfHeight + 210,
+                    x: gameConsts.halfWidth,
+                    y: gameConsts.halfHeight + 162,
                 },
                 hover: {
                     atlas: "ui",
@@ -198,11 +198,11 @@ class PostFightScreen {
 
                 }
             });
-            this.trainingButton.addText('        TRAINING', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'center'});
+            this.trainingButton.addText('      TRAINING', {fontFamily: 'garamondmax', fontSize: 32, color: '#000000', align: 'center'});
             this.trainingButton.setDepth(100000);
             this.trainingButton.setState(DISABLE);
 
-            this.trainingRuneIcon =  this.scene.add.image(this.trainingButton.getXPos() - 68, this.trainingButton.getYPos(), 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
+            this.trainingRuneIcon =  this.scene.add.image(this.trainingButton.getXPos() - 88, this.trainingButton.getYPos(), 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
         }
 
         if (!this.gloom) {

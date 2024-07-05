@@ -18,3 +18,6 @@ Glass Break by unfa -- https://freesound.org/s/221528/ -- License: Creative Comm
 Rocks - Effects - Source Recordings - 05 by GregorQuendel -- https://freesound.org/s/424997/ -- License: Attribution 4.0
 
 Unlocking lock.wav by Stefan21100190 -- https://freesound.org/s/593112/ -- License: Attribution 4.0
+
+Rocks - Effects - Source Recordings - 05 by GregorQuendel -- https://freesound.org/s/424997/ -- License: Attribution 4.0
+rocks2.wav by mystiscool -- https://freesound.org/s/7136/ -- License: Attribution 4.0

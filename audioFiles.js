@@ -21,6 +21,7 @@ const audioFiles = [
     {name: 'matter_shield', src: 'audio/matter_shield.mp3'},
     {name: 'matter_strike', src: 'audio/matter_strike.mp3'},
     {name: 'matter_strike_alt', src: 'audio/matter_strike_alt.mp3'},
+    {name: 'matter_strike_heavy', src: 'audio/matter_strike_heavy.mp3'},
     {name: 'matter_strike_hit', src: 'audio/matter_strike_hit.mp3'},
     {name: 'matter_strike_hit_alt', src: 'audio/matter_strike_hit_alt.mp3'},
     {name: 'matter_strike_hit_alt_2', src: 'audio/matter_strike_hit_alt_2.mp3'},
@@ -41,8 +42,8 @@ const audioFiles = [
 
     {name: 'tickslow', src: 'audio/tickslow.mp3'},
     {name: 'clocktick1', src: 'audio/clocktick1.mp3'},
-    {name: 'clocktick2', src: 'audio/clocktick2.mp3'},
     {name: 'time_body', src: 'audio/time_body.mp3'},
+    {name: 'time_strike_buff', src: 'audio/time_strike_buff.mp3'},
     {name: 'time_strike', src: 'audio/time_strike.mp3'},
     {name: 'time_strike_alt', src: 'audio/time_strike.mp3'},
     {name: 'time_strike_hit', src: 'audio/time_strike_hit.mp3'},
@@ -139,5 +140,6 @@ const audioFiles = [
     {name: 'button_hover', src: 'audio/button_hover.mp3'},
     {name: 'button_click', src: 'audio/button_click.mp3'},
     {name: 'whoosh', src: 'audio/whoosh.mp3'},
+    {name: 'slice_in', src: 'audio/slice_in.mp3'},
 
 ]

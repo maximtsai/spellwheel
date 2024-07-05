@@ -26,7 +26,7 @@
         this.shieldSprite.play(animToPlay)
         this.shieldSprite.rotation = Math.random() * 1 - 0.5;
         this.shieldSprite.setScale(this.shieldSprite.startScale * 1.02);
-        this.shieldText.setDepth(99);
+        this.shieldText.setDepth(199);
         if (this.shieldHitAnim) {
             this.shieldHitAnim.stop();
         }
@@ -308,7 +308,7 @@
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 500 : 400;
          this.criticalThreshold = 90;
-         this.nextShieldHealth = 100;
+         this.nextShieldHealth = gameVars.isHardMode ? 90 : 80;
          this.shieldsBroken = 0;
          this.missileObjects = [];
          this.attackEase = "Quad.easeOut";
@@ -522,7 +522,7 @@
                          this.shieldIgnoreGone = false;
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
-                     }
+                     },
                  },
              ],
              [
@@ -534,6 +534,7 @@
                      damage: 0,
                      startFunction: () => {
                         if (this.health >= this.criticalThreshold) {
+                            this.nextShieldHealth += gameVars.isHardMode ? 30 : 20;
                             this.setDefaultSprite('robot1.png', undefined, true);
                             playSound('robot_sfx_1');
                             this.shieldAdded = false;
@@ -565,13 +566,15 @@
                      }
                  },
                  {
-                     name: "SHINE BRIGHTER! {" + this.nextShieldHealth + " ",
+                     name: "SHINE BRIGHTER! {" + this.nextShieldHealth,
                      chargeAmt: gameVars.isHardMode ? 900 : 1100,
                      block: this.nextShieldHealth,
                      isPassive: true,
                      chargeMult: 6,
                      damage: -1,
                      startFunction: () => {
+                         this.nextAttack.block = this.nextShieldHealth;
+                         this.attackName.setText("SHINE BRIGHTER! {" + this.nextShieldHealth);
                         if (this.health < this.criticalThreshold) {
                             this.startInjuredSequence()
                         } else {
@@ -707,7 +710,7 @@
              [
                  // 2
                  {
-                     name: "|8x2 ",
+                     name: "|8x2",
                      chargeAmt: 400,
                      damage: 8,
                      attackTimes: 2,
@@ -743,7 +746,7 @@
                      }
                  },
                  {
-                     name: "|4x6 ",
+                     name: "|4x6",
                      chargeAmt: 500,
                      damage: -1,
                      startFunction: () => {
@@ -767,7 +770,7 @@
                      }
                  },
                  {
-                     name: "|14 ",
+                     name: "|14",
                      chargeAmt: 400,
                      damage: 14,
                      attackTimes: 1,
@@ -806,7 +809,7 @@
              [
                  // 3
                  {
-                     name: "|8x2 ",
+                     name: "|8x2",
                      chargeAmt: 400,
                      damage: 8,
                      attackTimes: 2,
@@ -840,7 +843,7 @@
                      }
                  },
                  {
-                     name: "|14 ",
+                     name: "|14",
                      chargeAmt: 400,
                      damage: 14,
                      attackTimes: 1,
@@ -872,7 +875,7 @@
                      }
                  },
                  {
-                     name: "|8x3 ",
+                     name: "|8x3",
                      chargeAmt: 500,
                      damage: 8,
                      attackTimes: 3,
@@ -909,7 +912,7 @@
              [
                  // 4 laser
                  {
-                     name: ";30 ",
+                     name: ";18x2 ",
                      chargeAmt: 700,
                      damage: -1,
                      isBigMove: true,
@@ -1668,7 +1671,7 @@
                                  duration: 200,
                              })
                              currObj.destroy();
-                             screenShake(3);
+                             screenShake(1);
 
                              playSound('razor_leaf', 0.75);
                              messageBus.publish("selfTakeDamage", damage);
@@ -1835,22 +1838,40 @@
          playSound('robot_laser');
          backgroundBlack.setAlpha(0.7);
          this.laserBeam.setVisible(true);
-         let delayInterval = 50;
+
+         this.laserHeart.setAlpha(1).setScale(0.25).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 150);
+         this.addTween({
+             targets: this.laserHeart,
+             scaleX: 0.8,
+             scaleY: 0.8,
+             duration: 450,
+             ease: 'Cubic.easeOut',
+         });
+         this.addTween({
+             targets: this.laserHeart,
+             alpha: 0,
+             ease: 'Quad.easeIn',
+             duration: 450,
+         });
+
+         let delayInterval = 55;
          this.laserTween = this.addTween({
              delay: delayInterval,
              targets: this.laserBeam,
              scaleX: 1.08,
              scaleY: 1.08,
-             duration: 10,
+             duration: 15,
              ease: 'Quint.easeOut',
              onComplete: () => {
+                 messageBus.publish("selfTakeDamage", damage);
+                 screenShake(3);
                  this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
                  this.laserTween = this.addTween({
                      delay: delayInterval,
                      targets: this.laserBeam,
                      scaleX: 1,
                      scaleY: 1.02,
-                     duration: 10,
+                     duration: 15,
                      ease: 'Quint.easeOut',
                      onComplete: () => {
                          this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
@@ -1859,7 +1880,7 @@
                              targets: this.laserBeam,
                              scaleX: 1.1,
                              scaleY: 1.1,
-                             duration: 10,
+                             duration: 15,
                              ease: 'Quint.easeOut',
                              onComplete: () => {
                                  zoomTemp(1.01);
@@ -1869,7 +1890,7 @@
                                      targets: this.laserBeam,
                                      scaleX: 1.01,
                                      scaleY: 0.99,
-                                     duration: 10,
+                                     duration: 15,
                                      ease: 'Quint.easeOut',
                                      onComplete: () => {
                                          zoomTemp(1.01);
@@ -1879,74 +1900,98 @@
                                              targets: this.laserBeam,
                                              scaleX: 1.15,
                                              scaleY: 1.1,
-                                             duration: 10,
+                                             duration: 15,
                                              ease: 'Quint.easeOut',
                                              onComplete: () => {
                                                  this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
                                                  this.laserTween = this.addTween({
-                                                     delay: delayInterval * 0.5,
+                                                     delay: delayInterval,
                                                      targets: this.laserBeam,
                                                      scaleX: 1.1,
                                                      scaleY: 1.05,
-                                                     duration: 10,
+                                                     duration: 15,
                                                      ease: 'Quint.easeOut',
                                                      onComplete: () => {
                                                          zoomTemp(1.02);
                                                          this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
                                                          this.laserTween = this.addTween({
-                                                             delay: delayInterval * 0.5,
+                                                             delay: delayInterval,
                                                              targets: this.laserBeam,
                                                              scaleX: 1.25,
                                                              scaleY: 1.1,
-                                                             duration: 10,
+                                                             duration: 15,
                                                              ease: 'Quint.easeOut',
                                                              onComplete: () => {
                                                                  this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
-                                                                 this.laserHeart.setAlpha(1).setScale(0.25).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 150);
-                                                                 this.addTween({
-                                                                     targets: this.laserHeart,
-                                                                     scaleX: 0.8,
-                                                                     scaleY: 0.8,
-                                                                     duration: 900,
-                                                                     ease: 'Cubic.easeOut',
-                                                                 });
-                                                                 this.addTween({
-                                                                     targets: this.laserHeart,
-                                                                     alpha: 0,
-                                                                     ease: 'Quad.easeIn',
-                                                                     duration: 900,
-                                                                 });
-                                                                 backgroundBlack.setAlpha(1);
-                                                                 playSound('time_strike_hit_2');
-                                                                 messageBus.publish("selfTakeDamage", damage);
-                                                                 zoomTemp(1.02);
-                                                                 this.addTween({
-                                                                     targets: backgroundBlack,
-                                                                     alpha: 0,
-                                                                     duration: 400,
-                                                                 });
-                                                                 this.addTween({
-                                                                     targets: this.laserCharge,
-                                                                     alpha: 0,
-                                                                     scaleX: 0.5,
-                                                                     scaleY: 0.5,
-                                                                     duration: 150,
-                                                                     ease: 'Cubic.easeIn',
-                                                                 });
                                                                  this.laserTween = this.addTween({
-                                                                     delay: delayInterval,
+                                                                     delay: delayInterval * 0.75,
                                                                      targets: this.laserBeam,
-                                                                     scaleX: 1,
-                                                                     scaleY: 1,
-                                                                     duration: 500,
+                                                                     scaleX: 1.1,
+                                                                     scaleY: 1.05,
+                                                                     duration: 15,
                                                                      ease: 'Quint.easeOut',
-                                                                     onStart: () => {
-                                                                         this.laserBeam.setVisible(false);
-                                                                     },
                                                                      onComplete: () => {
-                                                                         playSound('robot_sfx_2');
-                                                                         this.setDefaultSprite('robot1.png');
-                                                                         this.sprite.y = this.sprite.startY;
+                                                                         zoomTemp(1.02);
+                                                                         this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
+                                                                         this.laserTween = this.addTween({
+                                                                             delay: delayInterval * 0.75,
+                                                                             targets: this.laserBeam,
+                                                                             scaleX: 1.25,
+                                                                             scaleY: 1.1,
+                                                                             duration: 15,
+                                                                             ease: 'Quint.easeOut',
+                                                                             onComplete: () => {
+                                                                                 this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
+                                                                                 this.laserHeart.setAlpha(1).setScale(0.25).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 150);
+                                                                                 this.addTween({
+                                                                                     targets: this.laserHeart,
+                                                                                     scaleX: 0.8,
+                                                                                     scaleY: 0.8,
+                                                                                     duration: 900,
+                                                                                     ease: 'Cubic.easeOut',
+                                                                                 });
+                                                                                 this.addTween({
+                                                                                     targets: this.laserHeart,
+                                                                                     alpha: 0,
+                                                                                     ease: 'Quad.easeIn',
+                                                                                     duration: 900,
+                                                                                 });
+                                                                                 backgroundBlack.setAlpha(1);
+                                                                                 playSound('time_strike_hit_2');
+                                                                                 messageBus.publish("selfTakeDamage", damage);
+                                                                                 screenShake(1);
+                                                                                 zoomTemp(1.02);
+                                                                                 this.addTween({
+                                                                                     targets: backgroundBlack,
+                                                                                     alpha: 0,
+                                                                                     duration: 400,
+                                                                                 });
+                                                                                 this.addTween({
+                                                                                     targets: this.laserCharge,
+                                                                                     alpha: 0,
+                                                                                     scaleX: 0.5,
+                                                                                     scaleY: 0.5,
+                                                                                     duration: 150,
+                                                                                     ease: 'Cubic.easeIn',
+                                                                                 });
+                                                                                 this.laserTween = this.addTween({
+                                                                                     delay: delayInterval,
+                                                                                     targets: this.laserBeam,
+                                                                                     scaleX: 1,
+                                                                                     scaleY: 1,
+                                                                                     duration: 500,
+                                                                                     ease: 'Quint.easeOut',
+                                                                                     onStart: () => {
+                                                                                         this.laserBeam.setVisible(false);
+                                                                                     },
+                                                                                     onComplete: () => {
+                                                                                         playSound('robot_sfx_2');
+                                                                                         this.setDefaultSprite('robot1.png');
+                                                                                         this.sprite.y = this.sprite.startY;
+                                                                                     }
+                                                                                 });
+                                                                             }
+                                                                         });
                                                                      }
                                                                  });
                                                              }

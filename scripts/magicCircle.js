@@ -2594,7 +2594,7 @@ const ENABLE_KEYBOARD = true;
          let effectObj;
          effectObj = {
              name: effectName,
-             duration: gameVars.gameManualSlowSpeed * 3,
+             duration: gameVars.gameManualSlowSpeed * 2,
              isFirst: true,
              onUpdate: () => {
                  if (effectObj.isFirst) {

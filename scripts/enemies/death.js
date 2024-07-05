@@ -235,11 +235,9 @@
                 globalObjects.bannerTextManager.showBanner(0.5);
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
                     this.beginFightReal();
-                        this.die();
                 })
             } else {
                 this.beginFightReal();
-                        this.die();
             }
 
         });
@@ -696,7 +694,7 @@
                                 alpha: 1,
                                 duration: 2600,
                                 onComplete: () => {
-                                    this.muscleDeathWhite = this.addImage(this.sprite.x, 112, 'deathfinal', 'max_death_2_white.png').setScale(0.55, 0.57).setDepth(90).setOrigin(0.5, 0.25);
+                                    this.muscleDeathWhite = this.addImage(this.sprite.x, 90, 'deathfinal', 'max_death_2_white.png').setScale(0.55, 0.57).setDepth(90).setOrigin(0.5, 0.2);
                                     this.addTween({
                                         targets: this.muscleDeathWhite,
                                         scaleX: 0.9,

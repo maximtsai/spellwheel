@@ -108,27 +108,27 @@ class Enemy {
 
     createHealthBar(x, y) {
         this.healthBarLengthMax = 65 + Math.floor(Math.sqrt(this.healthMax) * 5);
-        this.healthBarMax = this.scene.add.sprite(x, 20, 'blackPixel');
+        this.healthBarMax = this.scene.add.sprite(x, 19, 'blackPixel');
         this.healthBarMaxGoalScale = this.healthBarLengthMax + 3;
-        this.healthBarMax.setScale(0, 12);
+        this.healthBarMax.setScale(0, isMobile ? 14 : 12);
         this.healthBarMax.startScaleY = this.healthBarMax.scaleY;
         this.healthBarMax.setOrigin(0.5, 0.5);
         this.healthBarMax.setDepth(10);
 
         this.healthBarRed = this.scene.add.sprite(x - this.healthBarLengthMax - 3, this.healthBarMax.y, 'pixels', 'red_pixel.png');
-        this.healthBarRed.setScale(this.healthBarLengthMax + 3, 12);
+        this.healthBarRed.setScale(this.healthBarLengthMax + 3, this.healthBarMax.scaleY);
         this.healthBarRed.setOrigin(0, 0.5);
         this.healthBarRed.alpha = 0;
         this.healthBarRed.setDepth(10);
 
         this.healthBarFlash = this.scene.add.sprite(x - this.healthBarLengthMax - 1, this.healthBarMax.y, 'pixels', 'white_pixel.png');
-        this.healthBarFlash.setScale(this.healthBarLengthMax + 1, 10);
+        this.healthBarFlash.setScale(this.healthBarLengthMax + 1, this.healthBarMax.scaleY - 2);
         this.healthBarFlash.setOrigin(0, 0.5);
         this.healthBarFlash.alpha = 0;
         this.healthBarFlash.setDepth(10);
 
         this.healthBarCurr = this.scene.add.sprite(x - this.healthBarLengthMax - 1, this.healthBarMax.y, 'pixels', 'green_pixel.png');
-        this.healthBarCurr.setScale(this.healthBarLengthMax + 1, 10);
+        this.healthBarCurr.setScale(this.healthBarLengthMax + 1, this.healthBarMax.scaleY - 2);
         this.healthBarCurr.setOrigin(0, 0.5);
         this.healthBarCurr.alpha = 0;
         this.healthBarCurr.setDepth(10);
@@ -1907,35 +1907,39 @@ class Enemy {
             }
             if (isRepeatedAttack) {
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeedInverse * durationPullback * this.pullbackHoldRatio, () => {
-                    this.setSpriteIfNotInactive(spriteToPrepare, this.sprite.startScale);
+                    this.setSpriteIfNotInactive(spriteToPrepare, this.sprite.startScale, true);
                 });
             } else {
-                this.setSpriteIfNotInactive(spriteToPrepare, this.sprite.startScale);
+                this.setSpriteIfNotInactive(spriteToPrepare, this.sprite.startScale, true);
             }
         }
 
         let transitionMult = transitionFast ? 0 : 1;
 
         // First pull back
+        let pullbackEase = 'Cubic.easeOut';
+        if (isRepeatedAttack) {
+            pullbackEase = this.customRepeatPullback ? this.customRepeatPullback : pullbackEase;
+        }
         this.attackAnim = this.scene.tweens.add({
             targets: this.sprite,
             scaleX: pullbackScale,
             scaleY: pullbackScale,
             rotation: 0,
             duration: gameVars.gameManualSlowSpeedInverse * durationPullback * timeSlowMult * transitionMult,
-            ease: 'Cubic.easeOut',
+            ease: pullbackEase,
             onComplete: () => {
                 if (this.dead || this.isDestroyed){
                     return;
                 }
                 let attackDuration = isRepeatedAttack ? 150 * extraTimeMult : 175 * extraTimeMult
-                let attackScale = this.attackScale * this.sprite.startScale * timeSlowMult;
+                let attackScale = this.attackScale * this.sprite.startScale;
                 attackDuration += Math.floor(this.attackScale * 200);
                 this.attackAnim = this.scene.tweens.add({
                     targets: this.sprite,
                     scaleX: attackScale,
                     scaleY: attackScale,
-                    duration: gameVars.gameManualSlowSpeedInverse * attackDuration * transitionMult,
+                    duration: gameVars.gameManualSlowSpeedInverse * attackDuration * transitionMult * timeSlowMult,
                     rotation: 0,
                     ease: this.attackEase ? this.attackEase : 'Cubic.easeIn',
                     onComplete: () => {

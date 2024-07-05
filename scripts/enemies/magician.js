@@ -518,9 +518,9 @@
                         }
                         if (this.health % 2 == 0) {
                             if (this.health % 4 == 0) {
-                                playSound('clocktick2', 1);
+                                playSound('clocktick1', 1).detune = -300;
                             } else {
-                                playSound('clocktick1', 1);
+                                playSound('clocktick1', 1).detune = 0;
                             }
                         }
                      } else {
@@ -859,7 +859,7 @@
     }
 
     beginPhaseTwo() {
-        globalObjects.bannerTextManager.setDialog(["\"You think you've defeated me?\"", "\"Have a taste of my true power!\""]);
+        globalObjects.bannerTextManager.setDialog(["\"You think you've defeated me?\"", "\"Witness my true power!\""]);
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
         globalObjects.bannerTextManager.showBanner(0.5);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -1049,14 +1049,14 @@
                             duration: 1000,
                             ease: 'Cubic.easeIn',
                             onComplete: () => {
-                                if (this.numTimesHealed === 3) {
-                                    globalObjects.bannerTextManager.setDialog(["\"You can talk\nbut you can't knock\"", "\"Now have a taste of\nmy great big clock!\""]);
+                                if (this.numTimesHealed === 2) {
+                                    globalObjects.bannerTextManager.setDialog(["\"You can talk\nbut you've got no knock.\"", "\"Now have a taste of\nmy great big clock!\""]);
                                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                                     globalObjects.bannerTextManager.showBanner(0.5);
                                 }
                             }
                         });
-                        if (this.numTimesHealed >= 3) {
+                        if (this.numTimesHealed >= 2) {
 
                         } else {
                             this.currentAttackSetIndex = 0;
@@ -1115,8 +1115,8 @@
                 // 3
                  {
                      name: "EXHAUSTED...",
-                     chargeAmt: 700,
-                     chargeMult: 2,
+                     chargeAmt: 300,
+                     chargeMult: 3,
                      isPassive: true,
                      startFunction: () => {
                         this.setDefaultSprite('time_magi_fade.png', 1);
@@ -1157,7 +1157,35 @@
                  {
                      name: "}4 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: 600,
+                     chargeAmt: 400,
+                     chargeMult: 2,
+                     damage: -1,
+                     prepareSprite: 'time_magi_cast.png',
+                     attackStartFunction: () => {
+                         this.createTimeObject('clock2.png', this.x - 60, this.y - 70, 0);
+                         this.addTimeout(() => {
+                             this.fireTimeObjects(4);
+                         }, 800);
+                     },
+                 },
+                 {
+                     name: "}4 ",
+                     desc: "The Time Magician cautiously\npokes you with his\nwand.",
+                     chargeAmt: 400,
+                     chargeMult: 2,
+                     damage: -1,
+                     prepareSprite: 'time_magi_cast.png',
+                     attackStartFunction: () => {
+                         this.createTimeObject('clock2.png', this.x - 60, this.y - 70, 0);
+                         this.addTimeout(() => {
+                             this.fireTimeObjects(4);
+                         }, 800);
+                     },
+                 },
+                 {
+                     name: "}4 ",
+                     desc: "The Time Magician cautiously\npokes you with his\nwand.",
+                     chargeAmt: 400,
                      chargeMult: 2,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',

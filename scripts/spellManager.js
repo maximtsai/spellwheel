@@ -870,8 +870,8 @@ class SpellManager {
     castTimeStrike() {
         const spellID = 'timeStrike';
         let additionalDamage = globalObjects.player.attackDamageAdder();
-        let hasFirstBuff = additionalDamage >= 9;
-        let hasSecondBuff = additionalDamage >= 18;
+        let hasFirstBuff = additionalDamage >= 6;
+        let hasSecondBuff = additionalDamage >= 14;
 
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let strikeObjects = [];

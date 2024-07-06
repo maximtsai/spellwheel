@@ -30,7 +30,7 @@ function createAnimations(scene) {
             end: 9,
             zeroPad: 0,
         }),
-        frameRate: 25
+        frameRate: 30
     });
     scene.anims.create({
         key: 'exclamation',

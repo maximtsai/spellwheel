@@ -677,7 +677,6 @@ function handleReaperDialog(level = 0, onComplete) {
         reaperDialog = [
             getLangText('death8a'),
             getLangText('death8b'),
-            getLangText('death8c'),
         ];
         break;
 

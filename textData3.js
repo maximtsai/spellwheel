@@ -112,7 +112,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    death7b: {en_us: "BUT SHOULD YOU ENCOUNTER\nAN ACCIDENT,",
+    death7b: {en_us: "SO I CAN ONLY GIVE YOU\nA WORD OF CAUTION",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -120,7 +120,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    death7c: {en_us: "THEN YOUR FATE WILL BE\nENTIRELY IN MY HANDS.",
+    death7c: {en_us: "THAT DANGEROUS FOES LIE AHEAD.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -128,7 +128,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    death8a: {en_us: "...",
+    death8a: {en_us: "YOUR SKILL HAS BEEN REMARKABLE\nTO REACH THIS FAR",
         fr: '...',
         zh_tw: '...',
         zh_cn: '...',
@@ -136,15 +136,7 @@ let textData3 = {
         es: '...',
         jp: '...'
     },
-    death8b: {en_us: "I HAVE A FEELING THAT\nIT WON'T BE LONG",
-        fr: '',
-        zh_tw: '',
-        zh_cn: '',
-        ru: '',
-        es: '',
-        jp: ''
-    },
-    death8c: {en_us: "BEFORE I HAVE BUSINESS\nWITH YOU.",
+    death8b: {en_us: "BUT UNDERSTAND THAT ALL THINGS\nEVENTUALLY COME TO AN END.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -177,7 +169,7 @@ let textData3 = {
         es: '',
         jp: ''
     },
-    deathFight1d: {en_us: "BUT YOU'LL NEED MORE\nTO AVOID YOUR FATE.",
+    deathFight1d: {en_us: "BUT THAT DOES NOT\nABSOLVE YOU FROM YOUR FATE.",
         fr: '',
         zh_tw: '',
         zh_cn: '',

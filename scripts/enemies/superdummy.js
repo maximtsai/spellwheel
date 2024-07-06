@@ -173,6 +173,10 @@
              this.animateDeathOne();
          } else {
             super.die();
+            this.isBuffing = false;
+            if (this.buffTween) {
+                this.buffTween.stop();
+            }
             if (globalObjects.tempBG.currAnim) {
                 globalObjects.tempBG.currAnim.stop();
                 globalObjects.tempBG.alpha = 0;

@@ -1210,6 +1210,9 @@
              return;
         }
         super.die();
+        if (this.blush) {
+            this.blush.visible = false;
+        }
         if (this.currAnim) {
             this.currAnim.stop();
         }
@@ -1479,7 +1482,7 @@
                             scaleX: 4,
                             scaleY: 4,
                             rotation: "+=100",
-                            alpha: 1,
+                            alpha: 4,
                             ease: 'Quad.easeIn',
                             onComplete: () => {
                                 explosion.setRotation(0);

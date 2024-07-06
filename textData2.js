@@ -194,9 +194,9 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_story1: {en_us: "Here I stand in\nfront of the gates\nto the forbidden land\nof the departed.\n\n"+
-            "Right away this place resists my entry.\n"+
-            "But I know I will find you here dear Rosemary,\nand no creature or construct will stop me\nfrom reaching you.",
+    post_fight_story1: {en_us: "I have arrived\nat the gates to\nthe forbidden land\nof the departed.\n\n"+
+            "Immediately, this realm resists my entry.\n"+
+            "But I know I will find you here, dear beloved,\nand nothing will stop me from reaching you.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -204,9 +204,9 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_story2: {en_us: "The fabled Reaper\nhas noticed me,\nthough I hardly feel afraid.\n\n" +
-        "If anything, they remind me more of a\nnagging parent than some specter of\nthe underworld.\n\n"+
-            "For now, I will rightfully claim this shield\nas my own.",
+    post_fight_story2: {en_us: "The legendary\nReaper has taken\nnotice of me,\nyet I hardly feel fear.\n\n" +
+        "To me, they seem more akin to a nagging\nparent than a dread specter of\nthe underworld.\n\n"+
+            "Hence, I shall rightfully seize this shield\nas my own.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -214,8 +214,8 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_story3: {en_us: "It seems I acquire\nthe strength of\neach foe I defeat!\n\n"+
-            "The journey may be long, but perhaps\nif I triumph over enough foes, eventually\nI can even face Death itself!",
+    post_fight_story3: {en_us: "It appears I\ngain the strength\nof every foe I vanquish!\n\n"+
+            "The journey may be long, but if I conquer\nenough adversaries, I may one day be able to\nstand against Death itself!",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -223,7 +223,8 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_story4: {en_us: "My power grows\nwith each new foe\ndefeated.\n\nBut I must practice if I am to use them to\ntheir full potential.\n\n",
+    post_fight_story4: {en_us: "How I yearn\nto feel your\nembrace once again,\nmy dearest beloved.\n\n"+
+    "Your passing was too soon, too unjust,\nand I will right this wrong even if I must\noverturn the entire land.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -231,9 +232,9 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_story5: {en_us: "I wonder about\nthe nature of the\ncreatures in this place.\n\n"+
-            "Are they guardians and defenders?\nOr are they just unfortunate residents\nwho happen to be in my path?\n\n"+
-            "Either way, I'll fight every last one if it\ngets me closer to you.",
+    post_fight_story5: {en_us: "My power grows,\nbut so too does\nthe resistance\nthis land puts up.\n\n"+
+    "Is my noble quest to reclaim a loved one\nso wrong?\n\n"+
+    "Surely not, and I shall do whatever it takes,\nregardless of the cost.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -241,8 +242,8 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_story6: {en_us: "Perhaps these\nobstacles are\nbeing set up by\nDeath to stop me!\n\n"+
-        "But he ",
+    post_fight_story6: {en_us: "Whether it's\nsoldiers or\nassassins, none can\nstand against me.\n\n" +
+            "Surely Death must be growing desperate\nknowing I am approaching my destination.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -250,8 +251,8 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_story7: {en_us: "The enemies I face\nare strong, but I\ngrow stronger still.\n\n"+
-        "Maybe there is still room for improvement, but\nmy magic should be more than enough to\nrescue you, dearest Rosemary.",
+    post_fight_story7: {en_us: "The opponents I\nencounter are\nformidable, but my\nown strength is greater still.\n\n"
+    +"There may still be room for growth, but my\nmagic should now more than suffice to rescue\nyou, my dearest beloved.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -259,8 +260,9 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_story8: {en_us: "Whether it's\nsoldiers or\bassassins, none can\nchallenge me.\n\n" +
-            "Surely Death must be getting desperate\nknowing I am near my destination.",
+    post_fight_story8: {en_us: "It becomes clearer\nwith each step\nthat Death itself\nis orchestrating these obstacles\nto thwart my quest. Yet this only fuels my resolve.\n\n"+
+        "If Death thinks it can deter me with these\ntrials, it underestimates the depth of\nmy determination.\n\n"+
+        "My beloved awaits, and no force, not even Death,\nshall keep us apart.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -269,8 +271,8 @@ let textData2 = {
         jp: ''
     },
     post_fight_story9: {en_us: "Not even the\nmachines of death\ncan best me!\n\n" +
-            "I am at the peak of my\npower, and there is nothing left that\ncan stand in my way.\n\n" +
-            "All I have to do now is get around this broken\nrobot and I know I will find her just around\nthe corner.",
+            "I am at the height of my power,\nand nothing remains that can stand in my way.\n\n" +
+            "All I have to do now is get around this broken\nrobot and I know I shall find my beloved just\naround the corner.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -417,7 +419,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    pre_fight_3b: {en_us: "I challenge him and\nhe seems more than\nhappy to showcase his\ntemporal powers.",
+    pre_fight_3b: {en_us: "\"Face me!\" I call out,\nand he seems more\nthan willing to\ndemonstrate his\ntemporal powers.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -466,7 +468,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    pre_fight_7b: {en_us: "Something is hunting me.",
+    pre_fight_7b: {en_us: "Something is hunting me, but not\nif I hunt it first.",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -474,7 +476,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    pre_fight_8a: {en_us: 'I sense something dangerous\nbarring the path up ahead.',
+    pre_fight_8a: {en_us: 'I sense something dangerous barring\nthe path up ahead.',
         fr: '',
         zh_tw: '',
         zh_cn: '。',
@@ -482,7 +484,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    pre_fight_8b: {en_us: "But I'm certain I am ready\nfor anything.",
+    pre_fight_8b: {en_us: "But I'm certain I am ready for anything.",
         fr: '',
         zh_tw: '',
         zh_cn: '',

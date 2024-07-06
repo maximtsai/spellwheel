@@ -148,7 +148,7 @@ class SpellManager {
             ease: 'Cubic.easeOut'
         });
         let useMainStrike = Math.random() < 0.6;
-        let strikeVol = 0.72 + additionalDamage * 0.0013;
+        let strikeVol = 0.65 + additionalDamage * 0.0013;
         let detuneSqrtMult = Math.floor(Math.sqrt(additionalDamage * 0.75));
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
@@ -170,9 +170,9 @@ class SpellManager {
                 scaleY: 0.5 + additionalScale + (isExtraBuff ? -0.05 : 0),
                 ease: 'Back.easeOut',
                 onStart: () => {
-                    let detuneAmt = detuneSqrtMult * (isExtraBuff ? -10 : -30);
+                    let detuneAmt = detuneSqrtMult * (isExtraBuff ? -10 : -30) - 75 + Math.random() * 150;
                     if (numAdditionalAttacks >= 2) {
-                        playSound('matter_strike_alt', strikeVol * 0.5).detune = detuneAmt - 150;
+                        playSound('matter_strike_alt', strikeVol * 0.55).detune = detuneAmt - 150;
                         setTimeout(() => {
                             playSound('matter_strike', strikeVol).detune = detuneAmt + 50;
                         }, 100)
@@ -875,8 +875,11 @@ class SpellManager {
 
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let strikeObjects = [];
-        let finalStrikeScale = 0.88 + Math.sqrt(additionalDamage) * 0.125 + additionalDamage * 0.013;
-        let goalScale = 0.6 + Math.sqrt(additionalDamage) * 0.1 + additionalDamage * 0.011;
+        let finalStrikeScale = 0.5 + Math.sqrt(additionalDamage) * 0.075 + additionalDamage * 0.02;
+        let goalScale = 0.4 + Math.sqrt(additionalDamage) * 0.05 + additionalDamage * 0.015;
+        if (!hasSecondBuff) {
+            playSound('time_strike_buff', hasFirstBuff ? 0.7 : 0.9).detune = 400;
+        }
 
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
@@ -889,48 +892,62 @@ class SpellManager {
             }
             strikeObj.setDepth(10).setVisible(true).setAlpha(1).setPosition(xPos, yPos).setFrame('clock.png');
             strikeObj.rotation = Math.random() - 0.5;
-            strikeObj.setScale(0.2);
+            strikeObj.setScale(0);
             strikeObjects.push(strikeObj);
             this.scene.tweens.add({
                 targets: strikeObj,
-                duration: 200,
-                scaleX: 0.9,
-                scaleY: 0.9,
+                duration: 150,
+                scaleX: 0.5,
+                scaleY: 0.5,
+                rotation: "-=0.8",
                 easeParams: [2],
                 ease: 'Back.easeOut',
                 onComplete: () => {
                     if (!hasFirstBuff) {
                         return;
                     }
-                    let randRotAmt = 0.7 + Math.random() * 0.6;
+                    let randRotAmt = 1.1 + Math.random() * 0.5;
+                    if (i === 0 && hasSecondBuff) {
+                        playSound('time_strike_buff', 0.7).detune = 0;
+                    }
+
                     this.scene.tweens.add({
-                        delay: 250,
+                        delay: 200,
                         targets: strikeObj,
-                        duration: 200,
+                        duration: 250,
                         rotation: "+=" + randRotAmt,
-                        scaleX: 1.2,
-                        scaleY: 1.2,
-                        easeParams: [2],
+                        scaleX: 0.65,
+                        scaleY: 0.65,
+                        easeParams: [3],
                         ease: 'Back.easeOut',
                         onStart: () => {
-                            playSound('time_strike_buff', hasSecondBuff ? 0.7 : 0.9).detune = 0;
+                            if (i === 0 && !hasSecondBuff) {
+                                setTimeout(() => {
+                                    playSound('time_strike_buff', 0.9).detune = 0;
+                                }, 100)
+                            }
                         },
                         onComplete: () => {
                             if (!hasSecondBuff) {
                                 return;
                             }
-                            let randRotMultiplied = randRotAmt * 1.5;
+                            if (i === 0) {
+                                playSound('time_strike_buff', 1).detune = -400;
+                            }
+                            let randRotMultiplied = randRotAmt * 1.8;
                             this.scene.tweens.add({
-                                delay: 250,
+                                delay: 200,
                                 targets: strikeObj,
-                                duration: 200,
+                                duration: 250,
                                 rotation: "-=" + randRotMultiplied,
                                 scaleX: finalStrikeScale,
                                 scaleY: finalStrikeScale,
-                                easeParams: [2],
+                                easeParams: [3],
                                 ease: 'Back.easeOut',
-                                onStart: () => {
-                                    playSound('time_strike_buff').detune = 500;
+                                onComplete: () => {
+                                    if (i === 0) {
+                                        playSound('time_strike_buff', 1.2).detune = -800;
+                                    }
                                 },
                             });
                         }
@@ -943,30 +960,33 @@ class SpellManager {
         let halfSpellDamage = Math.ceil(spellDamage * 0.5);
         let buffDelay = 0;
         if (hasFirstBuff) {
-            buffDelay += 500;
+            buffDelay += 470;
             if (hasSecondBuff) {
-                buffDelay += 500;
+                buffDelay += 470;
             }
         }
         for (let i in strikeObjects) {
             let strikeObject = strikeObjects[i];
             strikeObject.finalRot = 0.2 - Math.random() * 0.4;
-            let delayedStrikeObject = this.scene.add.sprite(strikeObject.x, strikeObject.y, 'spells', 'clock_red.png').setDepth(10).setRotation(strikeObject.rotation).setScale(strikeObject.scaleX).setAlpha(0.75);
+            let delayedStrikeObject = this.scene.add.sprite(strikeObject.x, strikeObject.y, 'spells', 'clock_red.png').setDepth(10).setRotation(strikeObject.rotation).setScale(finalStrikeScale).setAlpha(0.75);
             delayedStrikeObject.finalRot = strikeObject.finalRot;
-            let delayAmt = 200 + i * 150 + buffDelay;
-            let randRotation = (Math.random() - 0.5) * 10;
+            delayedStrikeObject.visible = false;
+            let delayAmt = 270 + i * 150 + buffDelay;
+            let offsetX = (Math.random() - 0.5) * 200;
+
+            let randRotation = (offsetX < 0 ? 4 : -4) + (Math.random() - 0.5) * 2 - offsetX * 0.02;
+
             this.scene.tweens.add({
                 delay: delayAmt,
                 targets: [strikeObject, delayedStrikeObject],
                 duration: 550,
                 rotation: randRotation,
-                ease: 'Quad.easeOut',
                 onStart: () => {
                     playSound('time_strike');
                 }
             });
 
-            let offsetX = (Math.random() - 0.5) * 200;
+
             let offsetGoal = gameConsts.halfWidth + offsetX;
             let randXGoal = gameConsts.halfWidth + (Math.random()) - 0.5 * 5;
             let randY = 120 + (Math.random()) - 0.5 * 5;
@@ -980,6 +1000,8 @@ class SpellManager {
                 ease: 'Back.easeOut',
                 easeParams: [0.25],
                 onStart: () => {
+                    delayedStrikeObject.visible = true;
+                    delayedStrikeObject.rotation = strikeObject.rotation;
                     this.scene.tweens.add({
                         targets: strikeObject,
                         x: offsetGoal,
@@ -1010,8 +1032,8 @@ class SpellManager {
                     this.scene.tweens.add({
                         targets: strikeObject,
                         duration: 200 + additionalDamage * 2,
-                        scaleX: goalScale + 0.4,
-                        scaleY: goalScale + 0.4,
+                        scaleX: goalScale + 0.24,
+                        scaleY: goalScale + 0.24,
                         alpha: 0,
                         onComplete: () => {
                             poolManager.returnItemToPool(strikeObject, 'clock');
@@ -1076,8 +1098,8 @@ class SpellManager {
                     this.scene.tweens.add({
                         targets: delayedStrikeObject,
                         duration: 250 + additionalDamage * 2,
-                        scaleX: goalScale + 0.8,
-                        scaleY: goalScale + 0.8,
+                        scaleX: goalScale + 0.4,
+                        scaleY: goalScale + 0.4,
                         ease: 'Quad.easeOut',
                         onComplete: () => {
                             delayedStrikeObject.destroy();

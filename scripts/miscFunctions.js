@@ -62,6 +62,19 @@ function toggleCheat(code) {
             cheats.extraExtraHealth = !cheats.extraExtraHealth;
             globalObjects.player.reInitStats();
             break;
+        case 'inam':
+            cheats.infiniteAmmo = !cheats.infiniteAmmo;
+            messageBus.publish('manualResetElements');
+            messageBus.publish('manualResetEmbodiments');
+            break;
+        case 'flal':
+            cheats.fullArsenal = !cheats.fullArsenal;
+            updateSpellState(gameVars.latestLevel);
+            globalObjects.player.resetStats();
+            messageBus.publish('manualResetElements');
+            messageBus.publish('manualResetEmbodiments');
+            break;
+
         default:
             break;
     }

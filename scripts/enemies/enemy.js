@@ -2111,6 +2111,6 @@ class Enemy {
     }
 
     playerClickedSpell() {
-        this.castAggravateCharge = 22;
+        this.castAggravateCharge = 25;
     }
 }

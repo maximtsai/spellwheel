@@ -13,7 +13,7 @@ class SpellRecorder {
         this.spellAnnounceBG.alpha = 0;
         this.spellAnnounceBG.setScale(2, 1.1);
 
-        this.spellAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight - 10, 'bonus', 'dfbfdb', 33, 1);
+        this.spellAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight - 7, 'bonus', 'dfbfdb', 33, 1);
         this.spellAnnounceText.setOrigin(0.5, 0.5);
         this.spellAnnounceText.setDepth(9991);
         this.spellAnnounceText.alpha = 0;

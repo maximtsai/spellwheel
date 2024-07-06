@@ -780,6 +780,8 @@
                      damage: 40,
                      isBigMove: true,
                      startFunction: () => {
+                         this.attackSlownessMult = 1.5;
+
                          if (!this.glowBG) {
                              this.glowBG = this.addImage(this.sprite.x, this.sprite.y, 'blurry', 'explod.webp').setDepth(-1).setAlpha(0.01).setScale(9).setBlendMode(Phaser.BlendModes.MULTIPLY);
                          }

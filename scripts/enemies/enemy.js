@@ -1910,14 +1910,20 @@ class Enemy {
                     this.setSpriteIfNotInactive(spriteToPrepare, this.sprite.startScale, true);
                 });
             } else {
-                this.setSpriteIfNotInactive(spriteToPrepare, this.sprite.startScale, true);
+                if (this.pullbackInitialDelay) {
+                    PhaserScene.time.delayedCall(this.pullbackInitialDelay, () => {
+                        this.setSpriteIfNotInactive(spriteToPrepare, this.sprite.startScale, true);
+                    });
+                } else {
+                    this.setSpriteIfNotInactive(spriteToPrepare, this.sprite.startScale, true);
+                }
             }
         }
 
         let transitionMult = transitionFast ? 0 : 1;
 
         // First pull back
-        let pullbackEase = 'Cubic.easeOut';
+        let pullbackEase = this.customInitialPullback ? this.customInitialPullback : 'Cubic.easeOut';
         if (isRepeatedAttack) {
             pullbackEase = this.customRepeatPullback ? this.customRepeatPullback : pullbackEase;
         }

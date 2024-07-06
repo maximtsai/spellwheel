@@ -5,7 +5,7 @@ let config = {
     scale: {
         parent: 'spellwheel',
         autoRound: true,
-        width: isMobile ? 600 : 610,
+        width: isMobile ? 596 : 610,
         height: isMobile ? 810: 770,
         mode: Phaser.Scale.FIT,
         orientation: 'landscape',

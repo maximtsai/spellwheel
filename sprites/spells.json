@@ -1441,7 +1441,7 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 1015,
-				"h": 1163
+				"h": 1176
 			},
 			"scale": 1,
 			"frames": [
@@ -1921,24 +1921,24 @@
 					}
 				},
 				{
-					"filename": "blackHolePre.png",
+					"filename": "rockglow.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 165,
-						"h": 165
+						"w": 170,
+						"h": 170
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 8,
-						"w": 161,
-						"h": 156
+						"x": 0,
+						"y": 0,
+						"w": 170,
+						"h": 170
 					},
 					"frame": {
 						"x": 255,
 						"y": 811,
-						"w": 161,
-						"h": 156
+						"w": 170,
+						"h": 170
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2021,6 +2021,56 @@
 					}
 				},
 				{
+					"filename": "blackHolePre.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 165,
+						"h": 165
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 8,
+						"w": 161,
+						"h": 156
+					},
+					"frame": {
+						"x": 1,
+						"y": 957,
+						"w": 161,
+						"h": 156
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "blackCircle.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 79,
+						"h": 79
+					},
+					"frame": {
+						"x": 164,
+						"y": 957,
+						"w": 79,
+						"h": 79
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "eyeShieldTriple.png",
 					"rotated": false,
 					"trimmed": true,
@@ -2035,10 +2085,60 @@
 						"h": 71
 					},
 					"frame": {
-						"x": 1,
-						"y": 957,
+						"x": 427,
+						"y": 948,
 						"w": 190,
 						"h": 71
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "damageEffect3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 3,
+						"w": 94,
+						"h": 95
+					},
+					"frame": {
+						"x": 245,
+						"y": 983,
+						"w": 94,
+						"h": 95
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "impact.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 81,
+						"h": 70
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 81,
+						"h": 70
+					},
+					"frame": {
+						"x": 341,
+						"y": 983,
+						"w": 81,
+						"h": 70
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2060,8 +2160,8 @@
 						"h": 70
 					},
 					"frame": {
-						"x": 418,
-						"y": 948,
+						"x": 619,
+						"y": 1012,
 						"w": 188,
 						"h": 70
 					},
@@ -2085,35 +2185,10 @@
 						"h": 66
 					},
 					"frame": {
-						"x": 193,
-						"y": 969,
+						"x": 424,
+						"y": 1021,
 						"w": 189,
 						"h": 66
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "damageEffect3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 3,
-						"w": 94,
-						"h": 95
-					},
-					"frame": {
-						"x": 1,
-						"y": 1030,
-						"w": 94,
-						"h": 95
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2135,85 +2210,10 @@
 						"h": 95
 					},
 					"frame": {
-						"x": 97,
-						"y": 1030,
+						"x": 164,
+						"y": 1080,
 						"w": 94,
 						"h": 95
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "clockShieldTriple.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 303,
-						"h": 256
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 3,
-						"w": 272,
-						"h": 80
-					},
-					"frame": {
-						"x": 608,
-						"y": 1012,
-						"w": 272,
-						"h": 80
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "blackCircle.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 80,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 79,
-						"h": 79
-					},
-					"frame": {
-						"x": 384,
-						"y": 1020,
-						"w": 79,
-						"h": 79
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "impact.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 81,
-						"h": 70
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 81,
-						"h": 70
-					},
-					"frame": {
-						"x": 465,
-						"y": 1020,
-						"w": 81,
-						"h": 70
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2235,10 +2235,35 @@
 						"h": 60
 					},
 					"frame": {
-						"x": 465,
-						"y": 1092,
+						"x": 1,
+						"y": 1115,
 						"w": 83,
 						"h": 60
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "clockShieldTriple.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 303,
+						"h": 256
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 3,
+						"w": 272,
+						"h": 80
+					},
+					"frame": {
+						"x": 260,
+						"y": 1089,
+						"w": 272,
+						"h": 80
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2260,8 +2285,8 @@
 						"h": 68
 					},
 					"frame": {
-						"x": 550,
-						"y": 1094,
+						"x": 534,
+						"y": 1089,
 						"w": 277,
 						"h": 68
 					},
@@ -2276,6 +2301,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:2d9bce13fba36bb60abcff23e160d2f4:3d7094fce740fc38a7e9df675b24d20b:c357989966e3ba71c701d894923dde60$"
+		"smartupdate": "$TexturePacker:SmartUpdate:81d878449a14c790eca51653aacc5ec9:fcf6f22aa16e533c7efabdd434d584d9:c357989966e3ba71c701d894923dde60$"
 	}
 }

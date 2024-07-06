@@ -132,7 +132,7 @@ class SpellManager {
 
         let pebbles = getTempPoolObject('spells', 'rockCircle.png', 'rockCircle', 800);
         pebbles.setPosition(gameConsts.halfWidth, gameConsts.height - 360);
-        let additionalScale = Math.sqrt(additionalDamage) * 0.02;
+        let additionalScale = Math.sqrt(additionalDamage) * 0.021;
         let finalAdditionaScale = additionalScale * 5;
         pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalScale).setRotation(Math.random() * 3)
         this.scene.tweens.add({
@@ -189,16 +189,35 @@ class SpellManager {
                             let sfx2 = playSound('matter_strike_heavy', strikeVol);
                             sfx2.detune = detuneSqrtMult * -100;
                         }
+                        let rockGlow = getTempPoolObject('spells', 'rockglow.png', 'rockglow', 400);
+                        rockGlow.setScale(rockObj.scaleX).setPosition(rockObj.x, rockObj.y).setRotation(rockObj.rotation).setAlpha(0).setDepth(rockObj.depth + 1);
+                            
                         this.scene.tweens.add({
-                            targets: rockObj,
+                            targets: [rockObj, rockGlow],
                             delay: 110,
                             duration: 40,
                             scaleX: 0.65 + finalAdditionaScale,
                             scaleY: 0.65 + finalAdditionaScale,
                             ease: 'Back.easeOut',
+                            onStart: () => {
+                                this.scene.tweens.add({
+                                    targets: rockGlow,
+                                    duration: 40,
+                                    alpha: Math.min(1, 0.58 + Math.sqrt(additionalDamage) * 0.04),
+                                    ease: 'Cubic.easeIn',
+                                    onComplete: () => {
+                                        this.scene.tweens.add({
+                                            targets: rockGlow,
+                                            duration: 500,
+                                            alpha: 0,
+                                            ease: 'Cubic.easeOut',
+                                        }); 
+                                    }
+                                });
+                            },
                             onComplete: () => {
                                 this.scene.tweens.add({
-                                    targets: rockObj,
+                                    targets: [rockObj, rockGlow],
                                     duration: 150,
                                     scaleX: 0.5 + finalAdditionaScale,
                                     scaleY: 0.5 + finalAdditionaScale,

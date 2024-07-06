@@ -203,7 +203,7 @@ class SpellManager {
                                 this.scene.tweens.add({
                                     targets: rockGlow,
                                     duration: 40,
-                                    alpha: Math.min(1, 0.58 + Math.sqrt(additionalDamage) * 0.04),
+                                    alpha: Math.min(1, 0.45 + Math.sqrt(additionalDamage) * 0.045),
                                     ease: 'Cubic.easeIn',
                                     onComplete: () => {
                                         this.scene.tweens.add({

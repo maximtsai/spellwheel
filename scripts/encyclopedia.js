@@ -352,20 +352,20 @@ class Encyclopedia {
     setFirstPage() {
         playSound('flip1');
         this.title.setText(getLangText('pre_fight_0a'));
-        let imageCover = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'newgame_paper.png').setDepth(this.baseDepth).setAlpha(0).setScale(0.92);
-        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 188, getLangText('pre_fight_0b'), {fontFamily: 'verdanabold', fontSize: 15, color: '#200000', align: 'left'});
+        let imageCover = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight + 4, 'ui', 'newgame_paper.png').setDepth(this.baseDepth).setAlpha(0).setScale(0.92);
+        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight + 58, getLangText('pre_fight_0b'), {fontFamily: 'verdanabold', fontSize: 15, color: '#200000', align: 'left'});
         text2.setDepth(this.baseDepth).setOrigin(0, 0).setAlpha(0);
-        let text3 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 93, getLangText('pre_fight_0c'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'left'});
+        let text3 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 89, getLangText('pre_fight_0c'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'left'});
         text3.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5);
-        let text4 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 41, getLangText('pre_fight_0d'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'left'});
+        let text4 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 37, getLangText('pre_fight_0d'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'left'});
         text4.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5);
-        let text5 = PhaserScene.add.text(text3.x, text3.y + 1, getLangText('pre_fight_0e'), {fontFamily: 'verdanabold', fontSize: 17, color: '#200000', align: 'left'});
+        let text5 = PhaserScene.add.text(text3.x, text3.y + 5, getLangText('pre_fight_0e'), {fontFamily: 'verdanabold', fontSize: 17, color: '#200000', align: 'left'});
         text5.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
-        let text6 = PhaserScene.add.text(text4.x, text4.y + 2, getLangText('pre_fight_0f'), {fontFamily: 'verdanabold', fontSize: 17, color: '#200000', align: 'left'});
+        let text6 = PhaserScene.add.text(text4.x, text4.y + 6, getLangText('pre_fight_0f'), {fontFamily: 'verdanabold', fontSize: 17, color: '#200000', align: 'left'});
         text6.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
-        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 8, gameConsts.halfHeight +7, getLangText('pre_fight_0g'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'center'});
+        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 8, gameConsts.halfHeight + 11, getLangText('pre_fight_0g'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'center'});
         text7.setDepth(this.baseDepth).setAlpha(0).setOrigin(0.5, 0.5);
-        let text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 215, getLangText('pre_fight_0h'), {fontFamily: 'verdanabold', fontSize: 15, color: '#200000', align: 'center'});
+        let text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 219, getLangText('pre_fight_0h'), {fontFamily: 'verdanabold', fontSize: 15, color: '#200000', align: 'center'});
         text8.setDepth(this.baseDepth).setAlpha(0).setOrigin(0.5, 0.5);
         this.currentPageItems.push(imageCover);
         // this.currentPageItems.push(text1);
@@ -419,6 +419,7 @@ class Encyclopedia {
             startPos1 + offset * 2, startPos1 + offset * 3,
             startPos2 + offset * 4,
         ]
+        console.log(gameVars.latestLevel);
         for (let i = 0; i < listOfRunes.length; i++) {
             if (i > gameVars.latestLevel + 2) {
                 break;

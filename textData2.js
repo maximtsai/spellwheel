@@ -290,7 +290,7 @@ let textData2 = {
     },
 
 
-    post_fight_training: {en_us: "    TRY NEW RUNE",
+    post_fight_training: {en_us: "    TEST NEW RUNE",
         fr: '',
         zh_tw: '練習',
         zh_cn: '练习',
@@ -298,7 +298,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_no_training: {en_us: "CONTINUE JOURNEY   ",
+    post_fight_no_training: {en_us: "CONTINUE  JOURNEY    ",
         fr: '',
         zh_tw: '',
         zh_cn: '',
@@ -306,7 +306,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_skip_training: {en_us: "Continue Journey     ",
+    post_fight_skip_training: {en_us: "Journey On     ",
         fr: '',
         zh_tw: '跳過練習',
         zh_cn: '跳过练习',
@@ -605,7 +605,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    level1_train_diag_c: {en_us: "I can do more damage if I\ninterweave different attacks.",
+    level1_train_diag_c: {en_us: "I can do more damage if I follow up\nMind+Strike with Matter+Strike.",
         fr: '',
         zh_tw: '',
         zh_cn: '',

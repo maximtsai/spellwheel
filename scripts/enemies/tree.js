@@ -291,7 +291,6 @@
                      currObj.setScale(1);
                  },
                  onComplete: () => {
-                     currObj.destroy();
                      let dur = 280 - Math.sqrt(totalObjects) * 40;
                      let hitEffect = this.addImage(currObj.x - 10 + Math.random() * 20, currObj.y + Math.random() * 8, 'spells', 'damageEffect4.png').setScale(0.95).setRotation(Math.random()).setDepth(195);
                      this.addTween({
@@ -310,7 +309,8 @@
                          duration: dur
                      });
                      playSound('razor_leaf', 0.75);
-                     messageBus.publish("selfTakeDamage", damage);
+                     messageBus.publish("selfTakeDamage", damage, undefined, currObj.x);
+                     currObj.destroy();
                  }
              });
          }
@@ -1182,7 +1182,7 @@
                         y: globalObjects.player.getY() - 205,
                         duration: 100,
                         onComplete: () => {
-                            messageBus.publish("selfTakeDamage", 2);
+                            messageBus.publish("selfTakeDamage", 2, false, glowSpike.x);
                             playSound('razor_leaf', 0.75)
                                 this.addTween({
                                 targets: glowSpike,

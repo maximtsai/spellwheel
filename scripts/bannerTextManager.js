@@ -120,6 +120,7 @@ class BannerTextManager {
         this.text.setPosition(x, y + textOffsetY);
     }
 
+
     setOnFinishFunc(func, delay = 0) {
         this.onFinishFunc = func;
     }

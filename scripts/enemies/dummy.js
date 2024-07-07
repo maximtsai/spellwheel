@@ -91,7 +91,7 @@
             globalObjects.bannerTextManager.closeBanner();
              this.addTimeout(() => {
                  globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 135, getLangText('level1_tut_a'), 'right');
-                 this.rune2 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight - 40, 'circle', 'rune_enhance_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
+                 this.rune2 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight - 40, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
                  this.addTween({
                      targets: [this.rune2],
                      alpha: 1,
@@ -417,7 +417,7 @@
 
                  this.showFlash(this.x, this.y - 75);
 
-                 let rune = this.addSprite(this.x, this.y - 75, 'tutorial', 'rune_mind_large.png').setScale(0.5).setDepth(9999);
+                 let rune = this.addSprite(this.x, this.y - 75, 'tutorial', 'rune_mind_large.png').setScale(0.5).setDepth(10001);
                  this.addTween({
                      targets: rune,
                      x: gameConsts.halfWidth,

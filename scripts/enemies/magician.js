@@ -1554,7 +1554,7 @@
                      } else {
                          playSound('time_strike_hit_2');
                      }
-                     messageBus.publish("selfTakeDamage", damage);
+                     messageBus.publish("selfTakeDamage", damage, undefined, currObj.x);
                      currObj.destroy();
 
                  }

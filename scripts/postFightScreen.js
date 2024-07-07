@@ -122,7 +122,7 @@ class PostFightScreen {
                     ref: "nextLevel.png",
                     visible: true,
                     alpha: 0.95,
-                    x: gameConsts.halfWidth - 151,
+                    x: gameConsts.halfWidth - 161,
                     y: gameConsts.halfHeight + 220,
                 },
                 hover: {

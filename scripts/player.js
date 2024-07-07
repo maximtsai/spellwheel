@@ -467,7 +467,7 @@ class Player {
         return this.recentlyTakenDamageAmt + this.recentlyTakenDelayedDamageAmt;
     }
 
-    takeDamage(amt, isTime = false) {
+    takeDamage(amt, isTime = false, xPos = null) {
         if (globalObjects.currentEnemy.dead) {
             return;
         }
@@ -497,6 +497,19 @@ class Player {
                 alpha: 0,
                 ease: 'Quad.easeOut'
             });
+            if (xPos !== null) {
+                let damageSpike = getTempPoolObject('lowq', 'sharpflashred.webp', 'sharpflashred', 450);
+                let distFromCenter = gameConsts.halfWidth - xPos;
+                damageSpike.setScale(0.5 + Math.sqrt(damageTaken) * 0.2).setPosition(xPos, globalObjects.player.getY() - 190 + Math.abs(distFromCenter * 0.1)).setDepth(1);
+                damageSpike.setRotation(distFromCenter * 0.002);
+                this.scene.tweens.add({
+                    targets: damageSpike,
+                    duration: 450,
+                    scaleX: 0.55,
+                    scaleY: 0,
+                    ease: 'Quad.easeOut'
+                });
+            }
         } else if (damageTaken === undefined) {
             return;
         }
@@ -869,7 +882,7 @@ class Player {
                                         let startRotOffset = shieldObj.multiplier * 0.03 - 0.03;
                                         for (let i = 0; i < shieldObj.multiplier; i++) {
                                             let laserAnim = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blast.png').setScale(1.3, 4);
-                                            laserAnim.setDepth(990).setOrigin(0.5, 1.05).setAlpha(0);
+                                            laserAnim.setDepth(99).setOrigin(0.5, 1.08).setAlpha(0);
                                             laserAnim.origScale = laserAnim.scaleX;
                                             laserAnim.rotation = shieldObj.animObj[0].rotation - startRotOffset + i * 0.06;
                                             laserAnim.scaleX = laserAnim.origScale * (1.2 + Math.sqrt(shieldObj.storedDamage) * 0.095);

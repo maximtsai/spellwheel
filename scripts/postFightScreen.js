@@ -122,7 +122,7 @@ class PostFightScreen {
                     ref: "nextLevel.png",
                     visible: true,
                     alpha: 0.95,
-                    x: gameConsts.halfWidth - 155,
+                    x: gameConsts.halfWidth - 151,
                     y: gameConsts.halfHeight + 220,
                 },
                 hover: {
@@ -317,7 +317,8 @@ class PostFightScreen {
             }
         }
         this.continueButton.setState(DISABLE);
-        if (this.currLevel <= 6) {
+        if (this.currLevel <= 6 && this.currLevel >= 0) {
+            this.trainingButton.setText(getLangText('post_fight_training'))
             this.trainingButton.setState(NORMAL);
             setTimeout(() => {
                 if (this.trainingButton.getState() !== DISABLE) {
@@ -326,8 +327,9 @@ class PostFightScreen {
                 }
             }, 3000);
         } else {
-            this.trainingButton.setState(DISABLE);
-            this.continueButton.setState(NORMAL);
+            this.trainingButton.setText(getLangText('post_fight_no_training'))
+            this.trainingButton.setState(NORMAL);
+            this.continueButton.setState(DISABLE);
             this.continueButton.setText(getLangText('post_fight_continue'));
             this.trainingRuneIcon.visible = false;
         }
@@ -562,7 +564,9 @@ class PostFightScreen {
         globalObjects.options.showButton();
 
         this.createWinScreenUIMin(level);
-        this.continueButton.setOnMouseUpFunc(() => {
+        this.continueButton.setState(DISABLE);
+        this.trainingButton.setState(NORMAL);
+        this.trainingButton.setOnMouseUpFunc(() => {
             this.locketRecentlyClicked = false;
             this.clearPostFightScreen();
             beginPreLevel(level + 1);
@@ -575,7 +579,9 @@ class PostFightScreen {
     createWinScreenBoom(level = 0) {
         this.canShowRuneBtn = true;
         this.createWinScreenUI(level);
-        this.continueButton.setOnMouseUpFunc(() => {
+        this.continueButton.setState(DISABLE);
+        this.trainingButton.setState(NORMAL);
+        this.trainingButton.setOnMouseUpFunc(() => {
             this.locketRecentlyClicked = false;
             this.clearPostFightScreen(false);
             messageBus.publish('robotExplosion');
@@ -615,7 +621,7 @@ class PostFightScreen {
         this.isCreated = true;
         this.initAssets(true, true);
         globalObjects.magicCircle.disableMovement();
-        this.titleText.setText("Training Complete");
+        this.titleText.setText(getLangText('post_fight_title2'));
         this.healthLeftText.setText(getLangText('post_fight_health') + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
         this.newRuneAnnounce.setText(' ');
         this.newRuneDesc.setText(' ')
@@ -625,10 +631,17 @@ class PostFightScreen {
         this.codeText.setText(' ');
         this.locketDialog.setText(this.getStoryDialog(level));
 
-        this.continueButton.setText('NEXT LEVEL    ');
-        this.continueButton.setState(NORMAL);
-        this.trainingButton.setState(DISABLE);
-
+        this.continueButton.setState(DISABLE);
+        this.trainingButton.setText(getLangText('post_fight_no_training'));
+        this.trainingButton.setState(NORMAL);
+        this.trainingButton.setOnMouseUpFunc(() => {
+            this.locketRecentlyClicked = false;
+            this.clearPostFightScreen();
+            beginPreLevel(level + 1);
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        });
         globalObjects.bannerTextManager.setDialog(this.locketDialog);
     }
 

@@ -146,6 +146,14 @@ let textData2 = {
         es: '',
         jp: ''
     },
+    post_fight_title2: {en_us: "Rune Test Complete",
+        fr: '',
+        zh_tw: '符文戰鬥測試完成',
+        zh_cn: '符文战斗测试完成',
+        ru: '',
+        es: '',
+        jp: ''
+    },
     post_fight_health: {en_us: "Health Left: ",
         fr: '',
         zh_tw: '生命: ',
@@ -286,6 +294,14 @@ let textData2 = {
         fr: '',
         zh_tw: '練習',
         zh_cn: '练习',
+        ru: '',
+        es: '',
+        jp: ''
+    },
+    post_fight_no_training: {en_us: "CONTINUE JOURNEY   ",
+        fr: '',
+        zh_tw: '',
+        zh_cn: '',
         ru: '',
         es: '',
         jp: ''

@@ -869,7 +869,7 @@ class Player {
                                         let startRotOffset = shieldObj.multiplier * 0.03 - 0.03;
                                         for (let i = 0; i < shieldObj.multiplier; i++) {
                                             let laserAnim = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blast.png').setScale(1.3, 4);
-                                            laserAnim.setDepth(990).setOrigin(0.5, 1.205).setAlpha(0);
+                                            laserAnim.setDepth(990).setOrigin(0.5, 1.05).setAlpha(0);
                                             laserAnim.origScale = laserAnim.scaleX;
                                             laserAnim.rotation = shieldObj.animObj[0].rotation - startRotOffset + i * 0.06;
                                             laserAnim.scaleX = laserAnim.origScale * (1.2 + Math.sqrt(shieldObj.storedDamage) * 0.095);

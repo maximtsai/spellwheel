@@ -188,8 +188,8 @@ const ENABLE_KEYBOARD = true;
                 }
             } else if (gameVars.mouseJustUpped) {
                 // this.draggedDuration = -2;
-                if (this.draggedDuration < 12) {
-                    this.preventRotDecay = (12 - this.draggedDuration) * 0.4;
+                if (this.draggedDuration < 11) {
+                    this.preventRotDecay = (11 - this.draggedDuration) * 0.4;
                 }
                 // let go
                 if (totalDist < this.castButtonSize && this.draggedObj == this.castButton) {

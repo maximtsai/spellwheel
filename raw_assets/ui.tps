@@ -224,53 +224,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">ui/locket1.png</key>
-            <key type="filename">ui/locket2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.78</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>138,138,275,275</rect>
-                <key>scale9Paddings</key>
-                <rect>138,138,275,275</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">ui/locket3.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.78</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>103,94,207,187</rect>
-                <key>scale9Paddings</key>
-                <rect>103,94,207,187</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">ui/locket4.png</key>
-            <key type="filename">ui/locketwhite.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.78</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>182,141,365,282</rect>
-                <key>scale9Paddings</key>
-                <rect>182,141,365,282</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">ui/more.png</key>
             <key type="filename">ui/more_hover.png</key>
             <key type="filename">ui/more_press.png</key>

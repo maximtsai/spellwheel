@@ -47,7 +47,7 @@ class PostFightScreen {
             this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 65, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
         }
         if (!this.locketSprite) {
-            this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 120, 'ui', 'locket1.png').setScale(0.75).setDepth(100003).setAlpha(0).setOrigin(0.5, 0.5);
+            this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 120, 'misc', 'locket1.png').setScale(0.75).setDepth(100003).setAlpha(0).setOrigin(0.5, 0.5);
         }
         if (!this.locketDialog) {
             this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 200, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
@@ -66,7 +66,7 @@ class PostFightScreen {
                     ref: "more.png",
                     visible: true,
                     alpha: 0.85,
-                    x: gameConsts.halfWidth - 56,
+                    x: gameConsts.halfWidth - 120,
                     y: gameConsts.halfHeight - 157,
                 },
                 hover: {
@@ -122,7 +122,7 @@ class PostFightScreen {
                     ref: "nextLevel.png",
                     visible: true,
                     alpha: 0.95,
-                    x: gameConsts.halfWidth,
+                    x: gameConsts.halfWidth - 155,
                     y: gameConsts.halfHeight + 220,
                 },
                 hover: {
@@ -155,7 +155,7 @@ class PostFightScreen {
 
                 }
             });
-            this.continueButton.addText(getLangText('post_fight_skip_training'), {fontFamily: 'garamondmax', fontSize: 21, color: '#000000', align: 'center'});
+            this.continueButton.addText(getLangText('post_fight_skip_training'), {fontFamily: 'garamondmax', fontSize: 19, color: '#000000', align: 'center'});
             this.continueButton.setDepth(100000);
         }
         if (!this.trainingButton) {
@@ -198,11 +198,11 @@ class PostFightScreen {
 
                 }
             });
-            this.trainingButton.addText('      TRAINING', {fontFamily: 'garamondmax', fontSize: 32, color: '#000000', align: 'center'});
+            this.trainingButton.addText(getLangText('post_fight_training'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'center'});
             this.trainingButton.setDepth(100000);
             this.trainingButton.setState(DISABLE);
 
-            this.trainingRuneIcon =  this.scene.add.image(this.trainingButton.getXPos() - 88, this.trainingButton.getYPos(), 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
+            this.trainingRuneIcon =  this.scene.add.image(this.trainingButton.getXPos() - 128, this.trainingButton.getYPos(), 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
         }
 
         if (!this.gloom) {
@@ -711,13 +711,10 @@ class PostFightScreen {
 
     getNewRuneAnnounce(level) {
         if (level < 7) {
-            this.showRuneDescBtn.setPos(gameConsts.halfWidth - 56, gameConsts.halfHeight - 157);
             return getLangText('post_fight_newrune');
         } else if (level >= 9) {
-            this.showRuneDescBtn.setPos(gameConsts.halfWidth - 46, gameConsts.halfHeight - 157);
             return getLangText('post_fight_noupgrade');
         } else {
-            this.showRuneDescBtn.setPos(gameConsts.halfWidth - 56, gameConsts.halfHeight - 157);
             return getLangText('post_fight_upgrade');
         }
     }

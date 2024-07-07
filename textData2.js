@@ -204,8 +204,8 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_story2: {en_us: "The legendary\nReaper has taken\nnotice of me,\nyet I hardly feel fear.\n\n" +
-        "To me, they seem more akin to a nagging\nparent than a dread specter of\nthe underworld.\n\n"+
+    post_fight_story2: {en_us: "The legendary\nReaper has taken\nnotice of me, yet\nI hardly feel fear.\n\n" +
+        "If anything, they seem more like a nagging\nparent than a dread specter of\nthe underworld.\n\n"+
             "Hence, I shall rightfully seize this shield\nas my own.",
         fr: '',
         zh_tw: '',
@@ -282,7 +282,7 @@ let textData2 = {
     },
 
 
-    post_fight_training: {en_us: "Training",
+    post_fight_training: {en_us: "    TRY NEW RUNE",
         fr: '',
         zh_tw: '練習',
         zh_cn: '练习',
@@ -290,7 +290,7 @@ let textData2 = {
         es: '',
         jp: ''
     },
-    post_fight_skip_training: {en_us: "SKIP TRAINING    ",
+    post_fight_skip_training: {en_us: "Continue Journey     ",
         fr: '',
         zh_tw: '跳過練習',
         zh_cn: '跳过练习',

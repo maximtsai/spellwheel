@@ -217,7 +217,7 @@ function setupLoadingBar(scene) {
             if (!loadObjects.introLocketOpen) {
                 let oldX = loadObjects.introLocket.x; let oldY = loadObjects.introLocket.y; let oldScale = loadObjects.introLocket.scaleX;
                 loadObjects.introLocket.destroy();
-                loadObjects.introLocketOpen = scene.add.image(oldX, oldY, 'ui', 'locket2.png').setScale(0.83).setDepth(1001).setOrigin(0.5, 0.65);
+                loadObjects.introLocketOpen = scene.add.image(oldX, oldY, 'misc', 'locket2.png').setScale(0.83).setDepth(1001).setOrigin(0.5, 0.65);
                 loadObjects.introLocketOpen.scrollFactorX = 0; loadObjects.introLocketOpen.scrollFactorY = 0;
                 scene.tweens.add({
                     targets: loadObjects.introLocketOpen,
@@ -569,7 +569,7 @@ function clickIntro() {
 
 
     if (!loadObjects.introLocketOpen) {
-         loadObjects.introLocketOpen = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'ui', 'locket3.png').setDepth(1001).setOrigin(0.5, 0.65);
+         loadObjects.introLocketOpen = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'misc', 'locket3.png').setDepth(1001).setOrigin(0.5, 0.65);
         loadObjects.introLocketOpen.scrollFactorX = 0; loadObjects.introLocketOpen.scrollFactorY = 0;
     } else {
         loadObjects.introLocketOpen.setFrame('locket3.png').setOrigin(0.5, 0.65);
@@ -657,8 +657,8 @@ function locketFlash() {
 }
 
 function showLocket() {
-    globalObjects.gameLocketOpen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 119, 'ui', 'locket3.png').setScale(0.8).setDepth(100003);
-    globalObjects.gameLocketOpenLight = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 119, 'ui', 'locketwhite.png').setScale(0.8).setDepth(100003).setAlpha(0);
+    globalObjects.gameLocketOpen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 119, 'misc', 'locket3.png').setScale(0.8).setDepth(100003);
+    globalObjects.gameLocketOpenLight = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 119, 'misc', 'locketwhite.png').setScale(0.8).setDepth(100003).setAlpha(0);
     let closeText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 20, 'Put away locket', {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'right'}).setDepth(100003).setOrigin(1, 1).setAlpha(0);
     PhaserScene.tweens.add({
         targets: [globalObjects.gameLocketOpen, globalObjects.gameLocketOpenLight],

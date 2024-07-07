@@ -128,7 +128,7 @@
             </struct>
         </map>
         <key>multiPackMode</key>
-        <enum type="SettingsBase::MultiPackMode">MultiPackOff</enum>
+        <enum type="SettingsBase::MultiPackMode">MultiPackAuto</enum>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -261,6 +261,39 @@
                 <rect>67,24,133,47</rect>
                 <key>scale9Paddings</key>
                 <rect>67,24,133,47</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/locket1.png</key>
+            <key type="filename">misc/locket2.png</key>
+            <key type="filename">misc/locket4.png</key>
+            <key type="filename">misc/locketwhite.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.75</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>182,141,365,282</rect>
+                <key>scale9Paddings</key>
+                <rect>182,141,365,282</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/locket3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.75</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>197,141,395,282</rect>
+                <key>scale9Paddings</key>
+                <rect>197,141,395,282</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

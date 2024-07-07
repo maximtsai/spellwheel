@@ -1043,6 +1043,7 @@ class Player {
                     onComplete: () => {
                         let deathMenuButton;
                         let deathRetryButton;
+                        let deathTrainingButton;
                         deathMenuButton = new Button({
                             normal: {
                                 ref: "menu_btn_normal.png",
@@ -1068,17 +1069,55 @@ class Player {
                                 globalObjects.bannerTextManager.closeBanner();
                                 deathRetryButton.destroy();
                                 deathMenuButton.destroy();
+                                deathTrainingButton.destroy();
                             }
                         });
                         deathMenuButton.addText('MENU', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
                         deathMenuButton.setDepth(200);
+
+                        deathTrainingButton = new Button({
+                            normal: {
+                                ref: "menu_btn_normal.png",
+                                atlas: 'buttons',
+                                x: gameConsts.halfWidth,
+                                y: gameConsts.height - 540,
+                            },
+                            hover: {
+                                ref: "menu_btn_hover.png",
+                                atlas: 'buttons',
+                            },
+                            press: {
+                                ref: "menu_btn_hover.png",
+                                atlas: 'buttons',
+                            },
+                            disable: {
+                                alpha: 0.001
+                            },
+                            onMouseUp: () => {
+                                this.revive();
+                                globalObjects.encyclopedia.showButton();
+                                globalObjects.options.showButton();
+                                if (globalObjects.currentEnemy) {
+                                    globalObjects.currentEnemy.destroy();
+                                }
+                                if (globalObjects.player) {
+                                    globalObjects.player.resetStats();
+                                }
+                                beginLevel(CURRENT_LEVEL * -1 + 1);
+                                deathMenuButton.destroy();
+                                deathRetryButton.destroy();
+                                deathTrainingButton.destroy();
+                            }
+                        });
+                        deathTrainingButton.addText('BACK TO TRAINING', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
+                        deathTrainingButton.setDepth(200);
 
                         deathRetryButton = new Button({
                             normal: {
                                 ref: "menu_btn_normal.png",
                                 atlas: 'buttons',
                                 x: gameConsts.halfWidth,
-                                y: gameConsts.height - 460,
+                                y: gameConsts.height - 540,
                             },
                             hover: {
                                 ref: "menu_btn_hover.png",
@@ -1104,6 +1143,7 @@ class Player {
                                 createEnemy(CURRENT_LEVEL);
                                 deathMenuButton.destroy();
                                 deathRetryButton.destroy();
+                                deathTrainingButton.destroy();
                             }
                         });
                         deathRetryButton.addText('RETRY', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});

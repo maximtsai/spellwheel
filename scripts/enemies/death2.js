@@ -109,9 +109,11 @@
         this.pullbackHoldRatio = 0.5;
         this.attackSlownessMult = 1;
         this.attackEase = 'Quint.easeIn';
-        this.customInitialPullback = 'Quint.easeOut',
-        this.customRepeatPullback = 'Quart.easeInOut',
-
+        this.customInitialPullback = 'Quint.easeOut';
+        this.customRepeatPullback = 'Quart.easeInOut';
+        this.shieldOffsetY = 120;
+        this.shieldTextOffsetY = -60;
+        this.shieldScale = 1.3;
         this.fistObjectPosX = [-140, 140, -75, 75, -250, 250, -220, 220, 0];
         this.fistObjectPosY = [100, 100, -15, -15, 160, 160, 20, 20, 65];
     }
@@ -134,7 +136,22 @@
              let prevHealthPercent = this.prevHealth / this.healthMax;
              if (prevHealthPercent > 0.5 && currHealthPercent <= 0.5 && !this.thornForm) {
                  this.thornForm = true;
+                 this.isPreppingFists = false;
                  this.interruptCurrentAttack();
+                this.clearFistObjects();
+                 playSound('clunk');
+                 this.setArmsVisible(false);
+                 this.setDefaultSprite('death2crouch.png');
+                 messageBus.publish("enemyAddShield", 120);
+                 this.currentAttackSetIndex = 1;
+                 this.nextAttackIndex = 0;
+                 this.setAsleep();
+                 globalObjects.bannerTextManager.setDialog([getLangText('deathFight2c')]);
+                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                 globalObjects.bannerTextManager.showBanner(0);
+                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                     this.setAwake();
+                 })
              }
          }
      }
@@ -164,6 +181,10 @@
                  ease: 'Cubic.easeOut',
              });
          }
+
+     }
+
+     clearThorns() {
 
      }
 
@@ -238,7 +259,7 @@
                         // this.sprite.setFrame('max_death_2.png')
                     },
                     attackFinishFunction: () => {
-                        playSound('showdown_bell', 1.5);
+                        playSound('showdown_bell', 1);
                         // this.makeSlashEffect();
 
                     },
@@ -277,6 +298,52 @@
                         playSound('punch');
                         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 400);
                         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 185).setDepth(998).setScale(1.45);
+                    },
+                    finaleFunction: () => {
+                        this.setDefaultSprite('max_death_2.png');
+                        this.setArmsVisible(true);
+                    },
+                },
+            ],
+            [
+                {
+                    name: "THORNS {6",
+                    chargeAmt: 900,
+                    finishDelay: 1000,
+                    chargeMult: 10,
+                    damage: -1,
+                    isPassive: true,
+                    isBigMove: true,
+                    startFunction: () => {
+                    },
+                    attackStartFunction: () => {
+                        this.thorns1 = this.addImage(this.x - 4, this.y - 95, 'enemies', 'thorns.png').setDepth(8).setRotation(1.57 + 3.1415).setOrigin(0.5, -0.6).setScale(0.7, 0.5);
+                        this.thorns2 = this.addImage(this.x - 4, this.y - 95, 'enemies', 'thorns.png').setDepth(8).setRotation(1.57).setOrigin(0.5, -0.6).setScale(0.7, 0.5);
+                        this.thorns1.alpha = 0;
+                        this.thorns2.alpha = 0;
+
+                    },
+                    attackFinishFunction: () => {
+                        this.currentAttackSetIndex = 0;
+                        this.nextAttackIndex = 0;
+                        let goalScale = 1.35;
+                        let param = {
+                            duration: 400,
+                            ease: 'Quad.easeOut',
+                            y: "-=1",
+                            scaleX: goalScale,
+                            scaleY: goalScale,
+                        }
+                        let param2 = {
+                            alpha: 0,
+                            duration: 1600,
+                            scaleX: goalScale * 0.95,
+                            scaleY: goalScale * 0.95
+                        }
+
+                        messageBus.publish('animateArmorNum', gameConsts.halfWidth, this.y + 120, "+6 THORNS", goalScale, param, param2);
+                        this.setDefense(2);
+                        this.hasThorns = true;
                     },
                     finaleFunction: () => {
                         this.setDefaultSprite('max_death_2.png');
@@ -526,17 +593,27 @@
          this.leftShoulder.visible = val;
      }
 
-    die() {
-         super.die();
+     clearFistObjects() {
          if (this.fistObjects.length > 0) {
              PhaserScene.add.tween({
                  targets: this.fistObjects,
                  duration: 500,
-                 ease: 'Cubic.easeOut',
+                 ease: 'Back.easeIn',
                  scaleX: 0,
                  scaleY: 0,
+                 onComplete: () => {
+                     for (let i = 0; i < this.fistObjects.length; i++) {
+                         this.fistObjects[i].destroy();
+                     }
+                     this.fistObjects = [];
+                 }
              })
          }
+     }
+
+    die() {
+         super.die();
+         this.clearFistObjects();
         fadeAwaySound(this.bgMusic);
     }
 

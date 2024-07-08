@@ -9,6 +9,15 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "deathFight2c": {
+        "en_us": "IMPRESSIVE OFFENSE, BUT\nNOT NEARLY ENOUGH.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "back_to_training": {
         "en_us": "BACK TO TRAINING",
         "fr": "",

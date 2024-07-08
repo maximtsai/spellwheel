@@ -572,7 +572,7 @@
              [
                  // 1
                  {
-                     name: "THORNS",
+                     name: "THORNS {2",
                      announceName: "THORNS",
                      desc: "The tree creates protective thorns!",
                      chargeAmt: 400,

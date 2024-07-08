@@ -298,7 +298,7 @@ let textData = {
         ru: '',
         es: '',
         jp: ''},
-    time_tut_strike_desc: {en_us: 'An attack that deals modest\ndamage but also strikes a\nsecond time at 50% power.\nParticularly strong when\ncombined with +damage\nenhancements.',
+    time_tut_strike_desc: {en_us: 'An attack that strikes twice.\nEach attack does modest damage\nbut can be powered\nup greatly with +damage\nenhancements.',
         fr: '',
         zh_tw: '',
         zh_cn: '',

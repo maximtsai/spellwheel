@@ -478,7 +478,7 @@ function clickIntro() {
     });
 
     loadObjects.glowBG = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'blurry', 'circle.webp').setDepth(2000).setAlpha(0.5).setScale(0);
-    loadObjects.glowStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'blurry', 'flashbg.webp').setDepth(1000).setAlpha(0.3).setScale(0.4);
+    loadObjects.glowStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 50, 'tutorial', 'flashbg.webp').setDepth(1000).setAlpha(0.5).setScale(0.4);
     loadObjects.sharpStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 30, 'blurry', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.6, 0.05);
     loadObjects.sharpStar2 = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 25, 'blurry', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.1, 0.15);
 
@@ -486,10 +486,21 @@ function clickIntro() {
     loadObjects.sharpStar2.setRotation(-0.02);
     PhaserScene.tweens.add({
         targets: loadObjects.glowStar,
-        alpha: 1,
-        scaleX: 2.4,
-        scaleY: 2.4,
-        duration: 2500,
+        alpha: 0.9,
+        scaleX: 1.3,
+        scaleY: 1.3,
+        ease: 'Back.easeOut',
+        duration: 400,
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                targets: loadObjects.glowStar,
+                alpha: 1.1,
+                scaleX: 3,
+                scaleY: 3,
+                ease: 'Quad.easeIn',
+                duration: 1600,
+            });
+        }
     });
 
     PhaserScene.tweens.add({
@@ -535,12 +546,12 @@ function clickIntro() {
     });
 
     PhaserScene.tweens.add({
-        delay: 2000,
+        delay: 1500,
         targets: loadObjects.glowBG,
         alpha: 1.25,
         scaleX: 14,
         scaleY: 14,
-        duration: 500,
+        duration: 600,
         ease: 'Quart.easeIn',
         onComplete: () => {
             cleanupIntro(PhaserScene);

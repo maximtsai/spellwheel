@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>87</uint>
+        <uint>82</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -217,6 +217,21 @@
                 <rect>136,171,271,343</rect>
                 <key>scale9Paddings</key>
                 <rect>136,171,271,343</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">tutorial/flashbg.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>100,50,200,100</rect>
+                <key>scale9Paddings</key>
+                <rect>100,50,200,100</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

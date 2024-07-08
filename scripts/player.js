@@ -1073,7 +1073,7 @@ class Player {
                                 atlas: 'buttons',
                             },
                             disable: {
-                                alpha: 0.001
+                                alpha: 0
                             },
                             onMouseUp: () => {
                                 this.revive();
@@ -1104,7 +1104,7 @@ class Player {
                                 atlas: 'buttons',
                             },
                             disable: {
-                                alpha: 0.001
+                                alpha: 0
                             },
                             onMouseUp: () => {
                                 this.revive();
@@ -1122,7 +1122,7 @@ class Player {
                                 deathTrainingButton.destroy();
                             }
                         });
-                        deathTrainingButton.addText('BACK TO TRAINING', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
+                        deathTrainingButton.addText(getLangText('back_to_training'), {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
                         deathTrainingButton.setDepth(200);
 
                         deathRetryButton = new Button({
@@ -1130,7 +1130,7 @@ class Player {
                                 ref: "menu_btn_normal.png",
                                 atlas: 'buttons',
                                 x: gameConsts.halfWidth,
-                                y: gameConsts.height - 540,
+                                y: gameConsts.height - 460,
                             },
                             hover: {
                                 ref: "menu_btn_hover.png",
@@ -1141,7 +1141,7 @@ class Player {
                                 atlas: 'buttons',
                             },
                             disable: {
-                                alpha: 0.001
+                                alpha: 0
                             },
                             onMouseUp: () => {
                                 this.revive();

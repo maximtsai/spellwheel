@@ -578,7 +578,7 @@
                         this.pullbackScale = 0.9;
                         this.setSprite('dummy_angry.png');
                         this.reEnableArms();
-                         let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
+                         let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.55);
                          this.addTimeout(() => {
                              dmgEffect.x += 30;
                              dmgEffect.y += 10;
@@ -1099,7 +1099,7 @@
                                                  let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 200);
                                                  let xPosOffset = Math.random() * 80;
                                                  let yPosOffset = Math.abs(xPosOffset * 0.2) + Math.random() * 30;
-                                                 powEffect.setPosition(gameConsts.halfWidth - xPosOffset, globalObjects.player.getY() - 200 + yPosOffset).setDepth(999).setScale(1).setAlpha(1).setRotation(Math.random() - 0.5);
+                                                 powEffect.setPosition(gameConsts.halfWidth - xPosOffset, globalObjects.player.getY() - 205 + yPosOffset).setDepth(999).setScale(1).setAlpha(1).setRotation(Math.random() - 0.5);
 
                                                 this.addTimeout(() => {
                                                     playSound('punch2');
@@ -1241,7 +1241,7 @@
         playSound(isSwingingLeft ? 'punch' : 'punch2');
          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 175);
          let xOffset = isSwingingLeft ? -30 : 30;
-         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 170).setDepth(998).setScale(1.5);
+         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 180).setDepth(998).setScale(1.5);
 
          let fistEffect = getTempPoolObject('dummyenemy', 'super_dummy_fist.png', 'fist', 250);
          let xOffset2 = isSwingingLeft ? -80 : 80;
@@ -1550,7 +1550,7 @@
             playSound('punch2');
         }, 70)
          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 175);
-         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 170).setDepth(998).setScale(2.1);
+         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 180).setDepth(998).setScale(1.75);
 
          let fistEffect = getTempPoolObject('dummyenemy', 'super_dummy_fist.png', 'fist', 250);
          let fistEffect2 = getTempPoolObject('dummyenemy', 'super_dummy_fist.png', 'fist', 250);

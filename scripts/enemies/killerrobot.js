@@ -737,7 +737,7 @@
                          }, 80);
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
                          let xOffset = this.claw1Attacked ? -30 : 30;
-                         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 170).setDepth(998).setScale(1.5);
+                         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 180).setDepth(998).setScale(1.45);
                      },
                      finaleFunction: () => {
                         this.sprite.setDepth(0);
@@ -797,7 +797,7 @@
                              }
                          }, 80);
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
-                         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 170).setDepth(998).setScale(2);
+                         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 180).setDepth(998).setScale(1.6);
                      },
                      finaleFunction: () => {
                         this.sprite.setDepth(0);
@@ -835,7 +835,7 @@
                          }, 80);
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
                          let xOffset = this.claw1Attacked ? -30 : 30;
-                         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 170).setDepth(998).setScale(1.5);
+                         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 180).setDepth(998).setScale(1.5);
                      },
                      finaleFunction: () => {
                          this.attackEase = "Quad.easeOut";
@@ -866,7 +866,7 @@
                              }
                          }, 80);
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
-                         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 170).setDepth(998).setScale(2);
+                         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 180).setDepth(998).setScale(1.6);
                          this.refreshAnimateBG(2, 0.1);
                      },
                      finaleFunction: () => {
@@ -901,7 +901,7 @@
                          }, 80);
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
                          let xOffset = this.claw1Attacked ? -30 : 30;
-                         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 170).setDepth(998).setScale(1.5);
+                         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 180).setDepth(998).setScale(1.5);
                      },
                      finaleFunction: () => {
                          this.attackEase = "Quad.easeOut";
@@ -1023,7 +1023,7 @@
                              }
                          }, 80);
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
-                         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 170).setDepth(998).setScale(2);
+                         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 180).setDepth(998).setScale(1.6);
                      },
                      finaleFunction: () => {
                          this.attackEase = "Quad.easeOut";
@@ -1057,7 +1057,7 @@
                          }, 80);
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
                          let xOffset = this.claw1Attacked ? -30 : 30;
-                         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 170).setDepth(998).setScale(1.5);
+                         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 180).setDepth(998).setScale(1.5);
                      },
                      finaleFunction: () => {
                          this.attackEase = "Quad.easeOut";

@@ -119,7 +119,7 @@ function resizeGame() {
     }
     if (!game) {
         return;
-    } 
+    }
     if (!game.canvas) {
         return;
     }

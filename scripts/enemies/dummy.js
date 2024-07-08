@@ -457,7 +457,7 @@
                      chargeAmt: 550,
                      damage: 10,
                      attackFinishFunction: () => {
-                         let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
+                         let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.4);
                          this.addTimeout(() => {
                              dmgEffect.x += 30;
                              dmgEffect.y += 10;
@@ -549,7 +549,7 @@
                      chargeAmt: 500,
                      damage: 10,
                      attackFinishFunction: () => {
-                         let dmgEffect = this.addSprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
+                         let dmgEffect = this.addSprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.4);
                          this.addTimeout(() => {
                              dmgEffect.destroy();
                          }, 150)
@@ -574,7 +574,7 @@
                      chargeAmt: 500,
                      damage: 15,
                      attackFinishFunction: () => {
-                         let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.6);
+                         let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.4);
                          this.addTimeout(() => {
                              dmgEffect.x += 30;
                              dmgEffect.y += 10;

@@ -141,5 +141,6 @@ const audioFiles = [
     {name: 'button_click', src: 'audio/button_click.mp3'},
     {name: 'whoosh', src: 'audio/whoosh.mp3'},
     {name: 'slice_in', src: 'audio/slice_in.mp3'},
+    {name: 'showdown_bell', src: 'audio/showdown_bell.mp3'},
 
 ]

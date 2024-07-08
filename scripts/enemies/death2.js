@@ -142,6 +142,9 @@
 
      setSpriteIfNotInactive(name, scale, noAnim, depth = 1) {
          super.setSpriteIfNotInactive(name, scale, noAnim, depth);
+         if (name !== "max_death_2") {
+             this.setArmsVisible(false);
+         }
          if (name === "death2windup.png" || name === "death2windupflip.png") {
              if (!this.windupVfx) {
                  this.windupVfx = this.addImage(this.x, this.y, 'deathfinal', 'death2windupvfx.png').setOrigin(0.5, 0.12);
@@ -212,18 +215,22 @@
                     damage: 30,
                     attackTimes: 1,
                     prepareSprite: "death2crouch.png",
+                    preAttackSprite: 'death2charge.png',
                     attackSprites: ['death2charge.png'],
+                    finishDelay: 2500,
                     startFunction: () => {
+                        this.setSpriteIfNotInactive('max_death_2_full.png', undefined, true)
                         this.pullbackScale = 0.6;
-                        this.attackScale = 1.8;
+                        this.attackScale = 2;
                         this.pullbackHoldRatio = 0.9;
-                        this.pullbackInitialDelay = 500;
-                        this.attackSlownessMult = 2.1;
+                        this.pullbackInitialDelay = 450;
+                        this.attackSlownessMult = 2;
+                        this.attackDurMult = 0.4;
                     },
                     finaleFunction: () => {
                         this.pullbackInitialDelay = 0;
-                        this.setArmsVisible(true);
                         this.setDefaultSprite('max_death_2.png', null, true)
+                        this.setArmsVisible(true);
                         this.pullbackHoldRatio = 0.5;
                     },
                     attackStartFunction: () => {
@@ -231,6 +238,7 @@
                         // this.sprite.setFrame('max_death_2.png')
                     },
                     attackFinishFunction: () => {
+                        playSound('showdown_bell');
                         // this.makeSlashEffect();
 
                     },
@@ -267,7 +275,7 @@
                         // this.makeSlashEffect();
                         playSound('punch');
                         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 400);
-                        powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 170).setDepth(998).setScale(1.8);
+                        powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 185).setDepth(998).setScale(1.45);
                     },
                     finaleFunction: () => {
                         this.setDefaultSprite('max_death_2.png');
@@ -368,7 +376,7 @@
             }
             this.addTween({
                 targets: markObj,
-                delay: 600 + 300 * i,
+                delay: 600 + 270 * i,
                 ease: 'Quart.easeIn',
                 scaleX: 0,
                 scaleY: 0,
@@ -417,7 +425,7 @@
                          punchFist.setOrigin(0.6, 0.5);
                          messageBus.publish("selfTakeDamage", 6);
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
-                         powEffect.setPosition(gameConsts.halfWidth * 0.4 + 0.6 * punchPortal.x, globalObjects.player.getY() - 175).setDepth(998).setScale(1.6);
+                         powEffect.setPosition(gameConsts.halfWidth * 0.4 + 0.6 * punchPortal.x, globalObjects.player.getY() - 185).setDepth(998).setScale(1.4);
                          screenShake(2);
                          playSound(isLeft ? 'punch' : 'punch2');
                          this.addTween({
@@ -458,7 +466,7 @@
         screenShake(2);
          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 400);
          let xOffset = isSwingingLeft ? -30 : 30;
-         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 170).setDepth(998).setScale(1.8);
+         powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 185).setDepth(998).setScale(1.5);
 
          let fistEffect = getTempPoolObject('deathfinal', 'deathfist.png', 'fist', 360);
          let xOffset2 = isSwingingLeft ? -34 : 39;
@@ -478,11 +486,11 @@
     }
 
      useMove() {
-         if (this.nextAttack.damage !== 0) {
-             this.leftArm.visible = false;
-             this.rightArm.visible = false;
-             this.leftShoulder.visible = false;
-         }
+         // if (this.nextAttack.damage !== 0) {
+         //     this.leftArm.visible = false;
+         //     this.rightArm.visible = false;
+         //     this.leftShoulder.visible = false;
+         // }
          super.useMove();
      }
 

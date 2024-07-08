@@ -4,8 +4,8 @@
 			"image": "sprites/deathfinal-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 2000,
-				"h": 1976
+				"w": 1858,
+				"h": 2029
 			},
 			"scale": 1,
 			"frames": [
@@ -39,20 +39,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 720,
-						"h": 666
+						"w": 640,
+						"h": 592
 					},
 					"spriteSourceSize": {
-						"x": 15,
-						"y": 63,
-						"w": 690,
-						"h": 498
+						"x": 13,
+						"y": 56,
+						"w": 614,
+						"h": 443
 					},
 					"frame": {
-						"x": 1,
-						"y": 571,
-						"w": 690,
-						"h": 498
+						"x": 847,
+						"y": 1,
+						"w": 614,
+						"h": 443
 					},
 					"anchor": {
 						"x": 0.5,
@@ -60,24 +60,74 @@
 					}
 				},
 				{
-					"filename": "max_death_2 - Copy.png",
+					"filename": "death2punch.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 548,
-						"h": 515
+						"w": 528,
+						"h": 493
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 544,
-						"h": 511
+						"x": 111,
+						"y": 3,
+						"w": 379,
+						"h": 480
+					},
+					"frame": {
+						"x": 1463,
+						"y": 1,
+						"w": 379,
+						"h": 480
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "death2charge.vfx.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 680,
+						"h": 629
+					},
+					"spriteSourceSize": {
+						"x": 58,
+						"y": 264,
+						"w": 603,
+						"h": 365
 					},
 					"frame": {
 						"x": 847,
-						"y": 1,
-						"w": 544,
-						"h": 511
+						"y": 446,
+						"w": 603,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "death2punchflip.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 528,
+						"h": 493
+					},
+					"spriteSourceSize": {
+						"x": 38,
+						"y": 3,
+						"w": 379,
+						"h": 480
+					},
+					"frame": {
+						"x": 1452,
+						"y": 483,
+						"w": 379,
+						"h": 480
 					},
 					"anchor": {
 						"x": 0.5,
@@ -100,334 +150,9 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 1071,
+						"y": 571,
 						"w": 546,
 						"h": 491
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "death2windup.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 497,
-						"h": 422
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 7,
-						"w": 494,
-						"h": 411
-					},
-					"frame": {
-						"x": 1,
-						"y": 1564,
-						"w": 494,
-						"h": 411
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "death2charge.vfx.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 680,
-						"h": 629
-					},
-					"spriteSourceSize": {
-						"x": 58,
-						"y": 264,
-						"w": 603,
-						"h": 365
-					},
-					"frame": {
-						"x": 1393,
-						"y": 1,
-						"w": 603,
-						"h": 365
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "death2windupflip.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 497,
-						"h": 422
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 7,
-						"w": 494,
-						"h": 411
-					},
-					"frame": {
-						"x": 497,
-						"y": 1564,
-						"w": 494,
-						"h": 411
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 300,
-						"h": 510
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 2,
-						"w": 263,
-						"h": 506
-					},
-					"frame": {
-						"x": 693,
-						"y": 571,
-						"w": 263,
-						"h": 506
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "death2punch.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 528,
-						"h": 493
-					},
-					"spriteSourceSize": {
-						"x": 111,
-						"y": 3,
-						"w": 379,
-						"h": 480
-					},
-					"frame": {
-						"x": 958,
-						"y": 514,
-						"w": 379,
-						"h": 480
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "death2punchflip.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 528,
-						"h": 493
-					},
-					"spriteSourceSize": {
-						"x": 38,
-						"y": 3,
-						"w": 379,
-						"h": 480
-					},
-					"frame": {
-						"x": 549,
-						"y": 1079,
-						"w": 379,
-						"h": 480
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_2_white.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 438,
-						"h": 412
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 435,
-						"h": 409
-					},
-					"frame": {
-						"x": 1393,
-						"y": 368,
-						"w": 435,
-						"h": 409
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_2_left.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 325,
-						"h": 283
-					},
-					"spriteSourceSize": {
-						"x": 22,
-						"y": 4,
-						"w": 169,
-						"h": 199
-					},
-					"frame": {
-						"x": 1830,
-						"y": 368,
-						"w": 169,
-						"h": 199
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 438,
-						"h": 412
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 65,
-						"w": 336,
-						"h": 344
-					},
-					"frame": {
-						"x": 1339,
-						"y": 779,
-						"w": 336,
-						"h": 344
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_3b.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 300,
-						"h": 510
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 2,
-						"w": 263,
-						"h": 506
-					},
-					"frame": {
-						"x": 1677,
-						"y": 779,
-						"w": 263,
-						"h": 506
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "deathhalo.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 406,
-						"h": 432
-					},
-					"spriteSourceSize": {
-						"x": 47,
-						"y": 13,
-						"w": 305,
-						"h": 301
-					},
-					"frame": {
-						"x": 958,
-						"y": 996,
-						"w": 305,
-						"h": 301
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_3c.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 300,
-						"h": 510
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 2,
-						"w": 263,
-						"h": 506
-					},
-					"frame": {
-						"x": 993,
-						"y": 1299,
-						"w": 263,
-						"h": 506
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "marker.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 310,
-						"h": 310
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 6,
-						"w": 300,
-						"h": 300
-					},
-					"frame": {
-						"x": 1265,
-						"y": 1125,
-						"w": 300,
-						"h": 300
 					},
 					"anchor": {
 						"x": 0.5,
@@ -449,8 +174,8 @@
 						"h": 311
 					},
 					"frame": {
-						"x": 1258,
-						"y": 1427,
+						"x": 549,
+						"y": 571,
 						"w": 293,
 						"h": 311
 					},
@@ -460,49 +185,24 @@
 					}
 				},
 				{
-					"filename": "punchportal.png",
+					"filename": "death2windup.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 300,
-						"h": 440
+						"w": 497,
+						"h": 422
 					},
 					"spriteSourceSize": {
-						"x": 27,
-						"y": 138,
-						"w": 245,
-						"h": 142
+						"x": 2,
+						"y": 7,
+						"w": 494,
+						"h": 411
 					},
 					"frame": {
-						"x": 993,
-						"y": 1807,
-						"w": 245,
-						"h": 142
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_2_right.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 292,
-						"h": 286
-					},
-					"spriteSourceSize": {
-						"x": 143,
-						"y": 0,
-						"w": 146,
-						"h": 204
-					},
-					"frame": {
-						"x": 1830,
-						"y": 569,
-						"w": 146,
-						"h": 204
+						"x": 844,
+						"y": 813,
+						"w": 494,
+						"h": 411
 					},
 					"anchor": {
 						"x": 0.5,
@@ -524,85 +224,10 @@
 						"h": 272
 					},
 					"frame": {
-						"x": 1567,
-						"y": 1287,
+						"x": 549,
+						"y": 884,
 						"w": 290,
 						"h": 272
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "deathfist.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 268,
-						"h": 251
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 4,
-						"w": 253,
-						"h": 239
-					},
-					"frame": {
-						"x": 1553,
-						"y": 1561,
-						"w": 253,
-						"h": 239
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "puncharmblur.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 300,
-						"h": 460
-					},
-					"spriteSourceSize": {
-						"x": 90,
-						"y": 178,
-						"w": 126,
-						"h": 277
-					},
-					"frame": {
-						"x": 1859,
-						"y": 1287,
-						"w": 126,
-						"h": 277
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "puncharm.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 300,
-						"h": 460
-					},
-					"spriteSourceSize": {
-						"x": 32,
-						"y": 188,
-						"w": 179,
-						"h": 260
-					},
-					"frame": {
-						"x": 1808,
-						"y": 1566,
-						"w": 179,
-						"h": 260
 					},
 					"anchor": {
 						"x": 0.5,
@@ -624,8 +249,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 847,
-						"y": 514,
+						"x": 1340,
+						"y": 813,
 						"w": 93,
 						"h": 51
 					},
@@ -649,10 +274,385 @@
 						"h": 38
 					},
 					"frame": {
-						"x": 1567,
-						"y": 1125,
+						"x": 1340,
+						"y": 866,
 						"w": 90,
 						"h": 38
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "death2windupflip.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 497,
+						"h": 422
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 7,
+						"w": 494,
+						"h": 411
+					},
+					"frame": {
+						"x": 1340,
+						"y": 965,
+						"w": 494,
+						"h": 411
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_2_full.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 438,
+						"h": 412
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 435,
+						"h": 409
+					},
+					"frame": {
+						"x": 1,
+						"y": 1064,
+						"w": 435,
+						"h": 409
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 510
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 2,
+						"w": 263,
+						"h": 506
+					},
+					"frame": {
+						"x": 1,
+						"y": 1475,
+						"w": 263,
+						"h": 506
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_3b.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 510
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 2,
+						"w": 263,
+						"h": 506
+					},
+					"frame": {
+						"x": 266,
+						"y": 1475,
+						"w": 263,
+						"h": 506
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "deathhalo.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 406,
+						"h": 432
+					},
+					"spriteSourceSize": {
+						"x": 47,
+						"y": 13,
+						"w": 305,
+						"h": 301
+					},
+					"frame": {
+						"x": 531,
+						"y": 1158,
+						"w": 305,
+						"h": 301
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_2_white.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 438,
+						"h": 412
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 435,
+						"h": 409
+					},
+					"frame": {
+						"x": 838,
+						"y": 1226,
+						"w": 435,
+						"h": 409
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "marker.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 310,
+						"h": 310
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 6,
+						"w": 300,
+						"h": 300
+					},
+					"frame": {
+						"x": 531,
+						"y": 1461,
+						"w": 300,
+						"h": 300
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "puncharm.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 460
+					},
+					"spriteSourceSize": {
+						"x": 32,
+						"y": 188,
+						"w": 179,
+						"h": 260
+					},
+					"frame": {
+						"x": 531,
+						"y": 1763,
+						"w": 179,
+						"h": 260
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "deathfist.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 268,
+						"h": 251
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 4,
+						"w": 253,
+						"h": 239
+					},
+					"frame": {
+						"x": 712,
+						"y": 1763,
+						"w": 253,
+						"h": 239
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 438,
+						"h": 412
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 65,
+						"w": 336,
+						"h": 344
+					},
+					"frame": {
+						"x": 967,
+						"y": 1637,
+						"w": 336,
+						"h": 344
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_2_right.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 292,
+						"h": 286
+					},
+					"spriteSourceSize": {
+						"x": 143,
+						"y": 0,
+						"w": 146,
+						"h": 204
+					},
+					"frame": {
+						"x": 1275,
+						"y": 1378,
+						"w": 146,
+						"h": 204
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_3c.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 510
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 2,
+						"w": 263,
+						"h": 506
+					},
+					"frame": {
+						"x": 1423,
+						"y": 1378,
+						"w": 263,
+						"h": 506
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "punchportal.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 440
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 138,
+						"w": 245,
+						"h": 142
+					},
+					"frame": {
+						"x": 1305,
+						"y": 1886,
+						"w": 245,
+						"h": 142
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_2_left.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 325,
+						"h": 283
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 4,
+						"w": 169,
+						"h": 199
+					},
+					"frame": {
+						"x": 1688,
+						"y": 1378,
+						"w": 169,
+						"h": 199
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "puncharmblur.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 460
+					},
+					"spriteSourceSize": {
+						"x": 90,
+						"y": 178,
+						"w": 126,
+						"h": 277
+					},
+					"frame": {
+						"x": 1688,
+						"y": 1579,
+						"w": 126,
+						"h": 277
 					},
 					"anchor": {
 						"x": 0.5,
@@ -665,6 +665,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:2ef9b511393fe23fb4dc0c4f2611a695:a0d6cf08fd4ecabefd4382bc40a3c59a:dfb2cdd9e7b94615120d14c14cdfc785$"
+		"smartupdate": "$TexturePacker:SmartUpdate:bff18c90c08bfd7310d7551a1fffbe2f:461c237fe17683958ea713c51ca60909:dfb2cdd9e7b94615120d14c14cdfc785$"
 	}
 }

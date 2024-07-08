@@ -213,7 +213,7 @@ class PostFightScreen {
             this.locketButton = new Button({
                 normal: {
                     ref: "blackPixel",
-                    alpha: 0.001,
+                    alpha: 0,
                     x: gameConsts.width * 0.8,
                     y: gameConsts.halfHeight - 150,
                     scaleX: 110,

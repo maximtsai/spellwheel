@@ -88,6 +88,7 @@ class Enemy {
         this.dead = false;
         this.pullbackScale = 0.9;
         this.pullbackScaleDefault = this.pullbackScale;
+        this.attackDurMult = 1;
         this.attackScale = 1.1;
         this.attackScaleDefault = this.attackScale;
         this.curse = 0;
@@ -747,7 +748,7 @@ class Enemy {
         this.timeSinceLastAttacked += 60;
         this.castAggravateCharge = 0;
         if (this.nextAttack.damage !== 0) {
-            this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.prepareSprite, this.nextAttack.attackSprites, undefined, this.nextAttack.finishDelay, this.nextAttack.transitionFast);
+            this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.prepareSprite, this.nextAttack.preAttackSprite, this.nextAttack.attackSprites, undefined, this.nextAttack.finishDelay, this.nextAttack.transitionFast);
         } else {
             if (this.nextAttack.message) {
                 messageBus.publish(this.nextAttack.message, this.nextAttack.messageDetail);
@@ -1877,7 +1878,7 @@ class Enemy {
          });
      }
 
-    launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false, finishDelay = 0, transitionFast = false) {
+    launchAttack(attackTimes = 1, prepareSprite, preAttackSprite, attackSprites = [], isRepeatedAttack = false, finishDelay = 0, transitionFast = false) {
         if (this.dead || this.isDestroyed){
             return;
         }
@@ -1938,9 +1939,14 @@ class Enemy {
                 if (this.dead || this.isDestroyed){
                     return;
                 }
-                let attackDuration = isRepeatedAttack ? 150 * extraTimeMult : 175 * extraTimeMult
+                let attackDuration = (isRepeatedAttack ? (150 * extraTimeMult) : (175 * extraTimeMult)) * this.attackDurMult;
                 let attackScale = this.attackScale * this.sprite.startScale;
                 attackDuration += Math.floor(this.attackScale * 200);
+                if (preAttackSprite) {
+                    let origX = this.sprite.originX;
+                    let origY = this.sprite.originY;
+                    this.sprite.setFrame(preAttackSprite).setOrigin(origX, origY);
+                }
                 this.attackAnim = this.scene.tweens.add({
                     targets: this.sprite,
                     scaleX: attackScale,
@@ -1980,7 +1986,7 @@ class Enemy {
                             }
                         }
                         if (attackTimes > 1) {
-                            this.launchAttack(attackTimes - 1, prepareSprite, attackSprites, true, finishDelay, transitionFast);
+                            this.launchAttack(attackTimes - 1, prepareSprite, preAttackSprite, attackSprites, true, finishDelay, transitionFast);
                         } else {
                             this.attackAnim = this.scene.tweens.add({
                                 targets: this.sprite,
@@ -1994,6 +2000,9 @@ class Enemy {
                                 this.isUsingAttack = false;
                             });
                             PhaserScene.time.delayedCall(400 * extraTimeMult * this.lastAttackLingerMult + 100, () => {
+                                this.sprite.attackNum = 0;
+                                this.sprite.prepareNum = 0;
+                                this.attackDurMult = 1;
                                 if (!this.dead && !this.isDestroyed) {
                                     this.setSpriteIfNotInactive(this.defaultSprite, undefined, true);
                                     if (this.nextAttack.finaleFunction) {

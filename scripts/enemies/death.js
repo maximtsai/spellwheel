@@ -607,7 +607,7 @@
                             stopDeathFlutterAnim();
                             setFloatingDeathVisible(false);
                         })
-                        this.flashCover = this.addImage(this.sprite.x, this.sprite.y + 80, 'tutorial', 'flashbg.webp').setScale(0.1, 0.15).setRotation(Math.PI * 0.5).setDepth(91);
+                        this.flashCover = this.addImage(this.sprite.x, this.sprite.y + 80, 'blurry', 'flash_bg.webp').setScale(0.1, 0.15).setRotation(Math.PI * 0.5).setDepth(91);
 
                         this.setDefaultSprite('max_death_1b_angry.png');
                         this.sprite.setAlpha(0).setDepth(92);

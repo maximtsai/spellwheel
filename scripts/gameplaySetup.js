@@ -478,7 +478,7 @@ function clickIntro() {
     });
 
     loadObjects.glowBG = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'blurry', 'circle.webp').setDepth(2000).setAlpha(0.5).setScale(0);
-    loadObjects.glowStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 50, 'tutorial', 'flashbg.webp').setDepth(1000).setAlpha(0.5).setScale(0.4);
+    loadObjects.glowStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 50, 'blurry', 'flash_bg.webp').setDepth(1000).setAlpha(0.5).setScale(0.4);
     loadObjects.sharpStar = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 30, 'blurry', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.6, 0.05);
     loadObjects.sharpStar2 = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y - 25, 'blurry', 'star_blur_sharp.png').setDepth(1000).setAlpha(0.75).setScale(0.1, 0.15);
 
@@ -487,18 +487,18 @@ function clickIntro() {
     PhaserScene.tweens.add({
         targets: loadObjects.glowStar,
         alpha: 0.9,
-        scaleX: 1.3,
-        scaleY: 1.3,
+        scaleX: 1.6,
+        scaleY: 1.6,
         ease: 'Back.easeOut',
         duration: 400,
         onComplete: () => {
             PhaserScene.tweens.add({
                 targets: loadObjects.glowStar,
                 alpha: 1.1,
-                scaleX: 3,
-                scaleY: 3,
-                ease: 'Quad.easeIn',
-                duration: 1600,
+                scaleX: 3.7,
+                scaleY: 3.7,
+                ease: 'Quart.easeIn',
+                duration: 1500,
             });
         }
     });

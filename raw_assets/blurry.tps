@@ -190,7 +190,6 @@
                 <false/>
             </struct>
             <key type="filename">blurry/flash.webp</key>
-            <key type="filename">blurry/flashbg.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -202,6 +201,21 @@
                 <rect>100,50,200,100</rect>
                 <key>scale9Paddings</key>
                 <rect>100,50,200,100</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">blurry/flash_bg.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>120,70,240,140</rect>
+                <key>scale9Paddings</key>
+                <rect>120,70,240,140</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

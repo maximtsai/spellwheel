@@ -217,11 +217,11 @@
                     prepareSprite: "death2crouch.png",
                     preAttackSprite: 'death2charge.png',
                     attackSprites: ['death2charge.png'],
-                    finishDelay: 2500,
+                    finishDelay: 2000,
                     startFunction: () => {
                         this.setSpriteIfNotInactive('max_death_2_full.png', undefined, true)
                         this.pullbackScale = 0.6;
-                        this.attackScale = 2;
+                        this.attackScale = 1.5;
                         this.pullbackHoldRatio = 0.9;
                         this.pullbackInitialDelay = 450;
                         this.attackSlownessMult = 2;
@@ -229,7 +229,7 @@
                     },
                     finaleFunction: () => {
                         this.pullbackInitialDelay = 0;
-                        this.setDefaultSprite('max_death_2.png', null, true)
+                        // this.setDefaultSprite('max_death_2.png', null, true)
                         this.setArmsVisible(true);
                         this.pullbackHoldRatio = 0.5;
                     },
@@ -238,14 +238,15 @@
                         // this.sprite.setFrame('max_death_2.png')
                     },
                     attackFinishFunction: () => {
-                        playSound('showdown_bell');
+                        playSound('showdown_bell', 1.5);
                         // this.makeSlashEffect();
 
                     },
                 },
                 {
                     name: "}6   ",
-                    chargeAmt: 850,
+                    chargeAmt: 880,
+                    finishDelay: 1200,
                     chargeMult: 2,
                     damage: 6,
                     isBigMove: true,
@@ -260,7 +261,7 @@
                         this.addDelay(() => {
                             this.isPreppingFists = true;
                             this.prepareManyFists();
-                        }, 500)
+                        }, 900)
                     },
                     attackStartFunction: () => {
                         this.isPreppingFists = false;
@@ -376,7 +377,7 @@
             }
             this.addTween({
                 targets: markObj,
-                delay: 600 + 270 * i,
+                delay: 600 + 220 * i,
                 ease: 'Quart.easeIn',
                 scaleX: 0,
                 scaleY: 0,
@@ -410,10 +411,35 @@
              onComplete: () => {
                  punchPortal.setDepth(120);
                 let punchFist = this.addImage(punchPortal.x, punchPortal.y, 'deathfinal', 'puncharmblur.png');
+                 let punchFistFade = this.addImage(punchPortal.x, punchPortal.y, 'deathfinal', 'puncharmblur.png');
                  punchFist.setScale(isLeft ? 0.85 : -0.85, 0).setRotation(punchPortal.rotation * 0.4).setDepth(121);
                  punchFist.setOrigin(0.6, 0.5);
                  punchFist.x += isLeft ? 27 : - 27;
-                this.addTween({
+                 punchFistFade.setScale(punchFist.scaleX, punchFist.scaleY).setRotation(punchFist.rotation).setDepth(punchFist.depth + 1);
+                 punchFistFade.setOrigin(0.6, 0.5).setAlpha(0.3);
+                 punchFistFade.x = punchFist.x;
+                 this.addTween({
+                     targets: punchFistFade,
+                     scaleX: isLeft ? randScale * 1.1: randScale * -1.1,
+                     rotation: punchPortal.rotation * 1.1,
+                     scaleY: randScale * 1.15,
+                     alpha: 0.6,
+                     ease: 'Cubic.easeIn',
+                     duration: 140,
+                     onComplete: () => {
+                         this.addTween({
+                             targets: punchFistFade,
+                             scaleX: isLeft ? randScale : -randScale,
+                             scaleY: randScale,
+                             rotation: punchPortal.rotation,
+                             ease: 'Back.easeOut',
+                             alpha: 0,
+                             duration: 40,
+                         })
+                     }
+                 })
+                 this.addTween({
+                     delay: 150,
                      targets: punchFist,
                      scaleX: isLeft ? randScale * 1.1: randScale * -1.1,
                     rotation: punchPortal.rotation * 1.1,

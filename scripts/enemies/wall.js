@@ -643,7 +643,7 @@
                  },
                  {
                      name: "}5",
-                     chargeAmt: 400,
+                     chargeAmt: 350,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(1, true);
@@ -693,7 +693,7 @@
                  },
                  {
                      name: "}20",
-                     chargeAmt: 450,
+                     chargeAmt: 500,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(1, true, true);

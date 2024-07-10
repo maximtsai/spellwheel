@@ -361,8 +361,9 @@ class Enemy {
             let oldOriginX = this.sprite.originX;
             let oldOriginY = this.sprite.originY;
             let oldFrame = this.sprite.frame;
-            if (oldFrame !== name) {
+            if (oldFrame.name !== name) {
                 this.sprite.setFrame(name);
+                console.log("set frame to ", name)
             }
             this.sprite.setOrigin(oldOriginX, oldOriginY);
             this.sprite.setDepth(depth);
@@ -1884,7 +1885,6 @@ class Enemy {
              }
          });
      }
-
     launchAttack(attackTimes = 1, prepareSprite, preAttackSprite, attackSprites = [], isRepeatedAttack = false, finishDelay = 0, transitionFast = false) {
         if (this.dead || this.isDestroyed){
             return;
@@ -1949,10 +1949,12 @@ class Enemy {
                 let attackDuration = (isRepeatedAttack ? (150 * extraTimeMult) : (175 * extraTimeMult)) * this.attackDurMult;
                 let attackScale = this.attackScale * this.sprite.startScale;
                 attackDuration += Math.floor(this.attackScale * 200);
-                if (preAttackSprite) {
+                if (preAttackSprite && preAttackSprite.length > 0) {
                     let origX = this.sprite.originX;
                     let origY = this.sprite.originY;
                     this.sprite.setFrame(preAttackSprite).setOrigin(origX, origY);
+                    console.log("set frame to pre attack ", preAttackSprite)
+
                 }
                 this.attackAnim = this.scene.tweens.add({
                     targets: this.sprite,

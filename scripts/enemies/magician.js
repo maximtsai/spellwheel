@@ -653,7 +653,7 @@
          });
      }
 
-    launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false, finishDelay = 0) {
+    launchAttack(attackTimes = 1, prepareSprite, preAttackSprite, attackSprites = [], isRepeatedAttack = false, finishDelay, transitionFast = false) {
         if (this.dead || this.isDestroyed){
             return;
         }
@@ -735,7 +735,7 @@
                             }
                         }
                         if (attackTimes > 1) {
-                            this.launchAttack(attackTimes - 1, prepareSprite, attackSprites, true);
+                            this.launchAttack(attackTimes - 1, prepareSprite, preAttackSprite, attackSprites, true, finishDelay, transitionFast);
                         } else {
                             this.attackAnim = this.scene.tweens.add({
                                 targets: this.sprite,

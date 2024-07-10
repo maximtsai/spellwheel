@@ -614,9 +614,9 @@ const ENABLE_KEYBOARD = true;
     }
 
     cancelTimeSlow() {
+        messageBus.publish('clearGameSlow');
         if (gameVars.timeSlowRatio !== 1) {
             gameVars.timeSlowRatio = 1;
-            messageBus.publish('clearGameSlow');
             if (globalObjects.currentEnemy && globalObjects.currentEnemy.bgMusic) {
                 globalObjects.currentEnemy.bgMusic.detune = 0;
             }

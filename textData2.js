@@ -317,12 +317,12 @@ let textData2 = {
     },
     "post_fight_no_training": {
         "en_us": "CONTINUE  JOURNEY    ",
-        "fr": "CONTINUER LE VOYAGE",
-        "zh_tw": "繼續旅程",
-        "zh_cn": "继续旅程",
-        "ru": "ПРОДОЛЖИТЬ ПУТЕШЕСТВИЕ",
-        "es": "CONTINUAR VIAJE",
-        "jp": "旅を続ける"
+        "fr": "CONTINUER LE VOYAGE    ",
+        "zh_tw": "繼續旅程"    ,
+        "zh_cn": "继续旅程    ",
+        "ru": "ПРОДОЛЖИТЬ  ПУТЕШЕСТВИЕ    ",
+        "es": "CONTINUAR  VIAJE    ",
+        "jp": "旅を続ける    "
     },
     "post_fight_skip_training": {
         "en_us": "Journey On     ",

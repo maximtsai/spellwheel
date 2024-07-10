@@ -296,7 +296,7 @@ class SpellManager {
 
 
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
-                    let baseDamage = gameVars.matterPlus ? 14 : 12;
+                    let baseDamage = gameVars.matterPlus ? 1400 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
                     messageBus.publish('setPauseDur', 20);
                     poolManager.returnItemToPool(rockObj, 'rock');
@@ -2215,7 +2215,7 @@ class SpellManager {
                                     messageBus.publish("selfHeal", healPerTick);
                                     PhaserScene.time.delayedCall(750, () => {
                                         messageBus.publish("selfHeal", healPerTick);
-                                        let newMaxHealth = Math.ceil(globalObjects.player.getHealthMax() * 0.85);
+                                        let newMaxHealth = Math.ceil(globalObjects.player.getHealthMax() - 10);
                                         globalObjects.player.setHealth(newMaxHealth);
                                         globalObjects.player.setHealthMaxTemp(newMaxHealth);
                                         for (let i = 0; i < blackBalls.length; i++) {

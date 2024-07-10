@@ -119,31 +119,31 @@ let textData = {
         "jp": "3回攻撃すると、1回の攻撃で敵の現在のHPが2%増加する"
     },
     "void_enhance_desc": {
-        "en_us": "Next attack curses\nthe enemy\nto take +1 damage\nfrom all sources",
-        "fr": "La prochaine attaque maudit l’ennemi pour qu’il subisse +1 de dégâts de toutes les sources",
-        "zh_tw": "下一次攻擊詛咒敵人受到所有來源的 +1 傷害",
-        "zh_cn": "下一次攻击诅咒敌人受到所有来源的 +1 伤害",
+        "en_us": "Next attack curses\nthe enemy to\ntake +1 damage\nfrom all sources",
+        "fr": "La prochaine attaque\nmaudit l’ennemi\npour qu’il subisse\n+1 de dégâts de\ntoutes les sources",
+        "zh_tw": "下一次攻擊詛咒\n敵人受到所有來源的 +1 傷害",
+        "zh_cn": "下一次攻击诅咒\n敌人受到所有来源的 +1 伤害",
         "ru": "Следующая атака проклинает врага, чтобы получить +1 к урону от всех источников",
         "es": "El siguiente ataque maldice al enemigo para que reciba +1 de daño de todas las fuentes",
         "jp": "次の攻撃は敵を呪い、すべての発生源から+1ダメージを受ける"
     },
     "void_protect_desc": {
         "en_us": "Create a shield\nthat completely\nnegates one\nattack",
-        "fr": "Crée un bouclier qui annule complètement une attaque",
-        "zh_tw": "創建一個完全抵消一次攻擊的盾牌",
-        "zh_cn": "创建一个完全抵消一次攻击的盾牌",
-        "ru": "Создайте щит, который полностью нейтрализует одну атаку",
-        "es": "Crea un escudo que anula por completo un ataque",
-        "jp": "1回の攻撃を完全に無効にするシールドを作る"
+        "fr": "Crée un bouclier\nqui annule\ncomplètement\nune attaque",
+        "zh_tw": "創建一個完全抵消\n一次攻擊的盾牌",
+        "zh_cn": "创建一个完全抵消\n一次攻击的盾牌",
+        "ru": "Создайте щит,\nкоторый полностью\nнейтрализует\nодну атаку",
+        "es": "Crea un escudo\nque anula por\ncompleto un ataque",
+        "jp": "1回の攻撃を完全\nに無効にするシ\nールドを作る"
     },
     "void_reinforce_desc": {
-        "en_us": "Heal to full,\nbut lose 15%\nmax hp",
-        "fr": "Soigne complètement, mais perd 15% de PV max",
-        "zh_tw": "治療至滿，但最大生命值損失 15%",
-        "zh_cn": "治疗至满，但最大生命值损失 15%",
-        "ru": "Лечится до полного, но теряет 15% от макс. здоровья",
-        "es": "Te curas por completo, pero pierdes un 15% de los puntos de vida máximos",
-        "jp": "最大回復するが、最大HPを15%減少"
+        "en_us": "Heal to full,\nbut lose 10\nmax hp",
+        "fr": "Soigne complètement, mais perd 10 de PV max",
+        "zh_tw": "治療至滿，但最大生命值損失 10",
+        "zh_cn": "治疗至满，但最大生命值损失 10",
+        "ru": "Лечится до полного, но теряет 10 от макс. здоровья",
+        "es": "Te curas por completo, pero pierdes un 10 de los puntos de vida máximos",
+        "jp": "最大回復するが、最大HPを10減少"
     },
     "void_unload_desc": {
         "en_us": "Damage 10% of\nenemy current HP\nand disrupt their\naction",

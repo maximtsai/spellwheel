@@ -145,22 +145,13 @@ let textData3 = {
         "jp": "危険な敵が待ち受けていること。"
     },
     "death8a": {
-        "en_us": "YOUR SKILL HAS BEEN REMARKABLE\nTO REACH THIS FAR",
-        "fr": "VOTRE TALENT A ÉTÉ REMARQUABLE POUR ARRIVER JUSQU’ICI",
-        "zh_tw": "你的技能已經非常出色了，能達到這麼遠",
-        "zh_cn": "你的技能已经非常出色了，能达到这么远",
-        "ru": "ВАШЕ МАСТЕРСТВО БЫЛО ЗАМЕЧАТЕЛЬНЫМ, ЧТОБЫ ДОСТИЧЬ ТАКОГО УРОВНЯ",
-        "es": "TU HABILIDAD HA SIDO NOTABLE PARA LLEGAR TAN LEJOS",
-        "jp": "ここまで来るのは驚くべきことです"
-    },
-    "death8b": {
-        "en_us": "BUT UNDERSTAND THAT ALL THINGS\nEVENTUALLY COME TO AN END.",
-        "fr": "MAIS COMPRENEZ QUE TOUTES LES CHOSES FINISSENT PAR AVOIR UNE FIN.",
-        "zh_tw": "但要明白，所有的事情最終都會結束。",
-        "zh_cn": "但要明白，所有的事情最终都会结束。",
-        "ru": "НО ПОЙМИТЕ, ЧТО ВСЕ РАНО ИЛИ ПОЗДНО ЗАКАНЧИВАЕТСЯ.",
-        "es": "PERO ENTIENDE QUE TODAS LAS COSAS EVENTUALMENTE LLEGAN A SU FIN.",
-        "jp": "しかし、すべてのことはやがて終わりを迎えることを理解しなさい。"
+        "en_us": "YOUR SKILL IS REMARKABLE\nTO REACH THIS FAR",
+        "fr": "VOTRE COMPÉTENCE EST REMARQUABLE\nPOUR ATTEINDRE SI LOIN",
+        "zh_tw": "你的技能已經非常出色了，\n能達到這麼遠",
+        "zh_cn": "你的技能已经非常出色了，\n能达到这么远",
+        "ru": "ВАШИ НАВЫКИ ЗАМЕЧАТЕЛЬНЫ,\nЧТОБЫ ДОСТАТЬ ТАК ДОЛГО",
+        "es": "TU HABILIDAD ES NOTABLE\nPARA LLEGAR HASTA TAN LEJOS",
+        "jp": "ここまで来るのは驚\nくべきことです"
     },
     "deathFight1a": {
         "en_us": "UNFORTUNATE, YOUR JOURNEY\nWAS NOT MEANT TO BE.",

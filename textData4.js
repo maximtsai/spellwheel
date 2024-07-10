@@ -26,6 +26,15 @@ let textData4 = {
         "ru": "",
         "es": "",
         "jp": ""
-    }
+    },
+    "death8b": {
+        "en_us": "BUT UNDERSTAND THAT ALL THINGS\nEVENTUALLY MEET THEIR END.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
 }
 textData = { ...textData, ...textData4};

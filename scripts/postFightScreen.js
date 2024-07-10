@@ -594,6 +594,9 @@ class PostFightScreen {
     createWinScreenUI(level = 0) {
         this.canShowRuneBtn = true;
         this.isCreated = true;
+        if (this.trainingRuneIcon) {
+            this.trainingRuneIcon.visible = true;
+        }
         this.initAssets(true);
         globalObjects.magicCircle.disableMovement();
         this.titleText.setText(getLangText('post_fight_title'));
@@ -607,7 +610,6 @@ class PostFightScreen {
         this.gloom.alpha = 0;
 
         this.newRuneIcon.setFrame(this.getNewRuneFrame(level));
-        this.trainingRuneIcon.visible = true;
         this.trainingRuneIcon.setFrame(this.getNewRuneFrame(level));
 
         this.codeText.setText("LEVEL CODE: placeholder\n(placeholder)");

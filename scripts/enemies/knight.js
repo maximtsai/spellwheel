@@ -67,14 +67,14 @@
          });
      }
 
-     launchAttack(attackTimes = 1, prepareSprite, attackSprites = [], isRepeatedAttack = false) {
+     launchAttack(attackTimes = 1, prepareSprite, preAttackSprite, attackSprites, isRepeatedAttack, finishDelay, transitionFast = false) {
          this.sigilEffect.visible = false;
          if (this.voidTentacleFront) {
              this.voidTentacleFront.visible = false;
              this.voidTentacleBack.visible = false;
              // this.setSprite('void_knight_3.png');
          }
-         super.launchAttack(attackTimes, prepareSprite, attackSprites, isRepeatedAttack);
+         super.launchAttack(attackTimes, prepareSprite, preAttackSprite, attackSprites, isRepeatedAttack, finishDelay, transitionFast);
      }
 
      initSpriteAnim(scale) {

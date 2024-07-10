@@ -1124,7 +1124,7 @@ class Player {
                         });
                         deathTrainingButton.addText(getLangText('back_to_training'), {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
                         deathTrainingButton.setDepth(200);
-                        if (CURRENT_LEVEL >= 6) {
+                        if (CURRENT_LEVEL >= 7) {
                             deathTrainingButton.setState(DISABLE);
                         }
 

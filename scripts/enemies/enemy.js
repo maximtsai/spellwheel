@@ -349,6 +349,9 @@ class Enemy {
         if (this.isDestroyed) {
             return;
         }
+        if (this.forceOverrideSprite && name !== this.forceOverrideSprite) {
+            return;
+        }
         let newScale = scale ? scale : 1;
         if (!this.sprite) {
             this.sprite = this.scene.add.sprite(this.x, this.y, this.atlas, name);
@@ -379,6 +382,9 @@ class Enemy {
 
     setDefaultSprite(name, scale = null, noAnim) {
         if (this.isDestroyed) {
+            return;
+        }
+        if (this.forceOverrideSprite && name !== this.forceOverrideSprite) {
             return;
         }
         this.defaultSprite = name;

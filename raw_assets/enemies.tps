@@ -436,6 +436,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/glowSpike2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>45,45,90,90</rect>
+                <key>scale9Paddings</key>
+                <rect>45,45,90,90</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/gobbo0.png</key>
             <key type="filename">enemies/gobbo2.png</key>
             <key type="filename">enemies/gobbo3.png</key>
@@ -1056,6 +1071,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/robot_flutter.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.7</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>153,136,305,272</rect>
+                <key>scale9Paddings</key>
+                <rect>153,136,305,272</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/robot_heart.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -1158,6 +1188,21 @@
                 <rect>55,24,110,48</rect>
                 <key>scale9Paddings</key>
                 <rect>55,24,110,48</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/thorns2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>138,63,275,125</rect>
+                <key>scale9Paddings</key>
+                <rect>138,63,275,125</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

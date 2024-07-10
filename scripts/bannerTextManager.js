@@ -32,6 +32,7 @@ class BannerTextManager {
         return this.darkenBG.depth;
     }
 
+
     showBanner(haveBGDarken = 0.5) {
         this.isShowing = true;
         this.setText(this.dialog[this.dialogIndex]);

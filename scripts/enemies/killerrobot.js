@@ -235,9 +235,25 @@
                              scaleX: 1,
                              scaleY: 1,
                          });
-                         this.setDefaultSprite('robot_laser.png');
+                         this.setDefaultSprite('robot_heart.png');
                          this.sprite.y = this.sprite.startY;
-
+                         let heartImage = this.addImage(gameConsts.halfWidth, this.sprite.startY + 50, 'enemies', 'robot_flutter.png').setScale(0.85).setDepth(this.sprite.depth - 1).setAlpha(1.05);
+                         this.addTween({
+                             targets: heartImage,
+                             scaleX: 1.1,
+                             scaleY: 1.1,
+                             ease: 'Quint.easeOut',
+                             duration: 1300,
+                         })
+                         this.addTween({
+                             targets: heartImage,
+                             alpha: 0,
+                             duration: 1300,
+                             ease: 'Quad.easeIn',
+                             onComplete: () => {
+                                 heartImage.destroy();
+                             }
+                         })
                          let spriteOrigY = this.sprite.y;
                          this.sprite.setOrigin(0.5, 0.95).setPosition(this.sprite.x, this.sprite.y + 150);
                          this.addTween({
@@ -259,6 +275,7 @@
                                  this.sprite.y = this.sprite.startY;
 
                                  this.loadUpHealthBar();
+                                 this.animateBG()
                                  this.addTween({
                                      targets: this.tunnelBG,
                                      duration: 1500,
@@ -267,7 +284,6 @@
                                      scaleX: 1,
                                      scaleY: 1,
                                      onComplete: () => {
-                                         this.animateBG()
                                      }
                                  });
                              }
@@ -443,7 +459,7 @@
          this.tunnelBG.setAlpha(0.81 + extraAlpha + this.baseBGAlpha);
          this.currBGAnim = this.addTween({
              targets: this.tunnelBG,
-             duration: 800 * durationMult,
+             duration: 549 * durationMult,
              alpha: 0.76 + this.baseBGAlpha,
              ease: 'Cubic.easeOut',
              onComplete: () => {
@@ -500,8 +516,8 @@
                                 this.setDefense(2);
                                 this.addTimeout(() => {
                                     globalObjects.bannerTextManager.setDialog(["The stage lights are blinding.", "-2 damage to your attacks."]);
-                                    this.minusDamage1.setAlpha(0.5).setRotation(0.12);
-                                    this.minusDamage2.setAlpha(0.5).setRotation(-0.12);
+                                    this.minusDamage1.setAlpha(0.5).setRotation(-0.12);
+                                    this.minusDamage2.setAlpha(0.5).setRotation(0.12);
 
                                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                                     globalObjects.bannerTextManager.showBanner(false);
@@ -628,9 +644,27 @@
                                  playSound('robot_sfx_1');
 
                                  playSound('cutesy_up');
-                                 this.setDefaultSprite('robot_laser.png');
+                                 this.setDefaultSprite('robot_heart.png');
                                  this.sprite.y = this.sprite.startY;
                                  this.blush.y = this.sprite.startY;
+                                 let heartImage = this.addImage(gameConsts.halfWidth, 200, 'enemies', 'robot_flutter.png').setScale(0.9).setDepth(this.sprite.depth + 1).setAlpha(1);
+                                 this.addTween({
+                                     targets: heartImage,
+                                     scaleX: 1.15,
+                                     scaleY: 1.15,
+                                     ease: 'Quint.easeOut',
+                                     duration: 800,
+                                 })
+                                 this.addTween({
+                                     targets: heartImage,
+                                     alpha: 0,
+                                     duration: 800,
+                                     ease: 'Quad.easeIn',
+                                     onComplete: () => {
+                                         heartImage.destroy();
+                                     }
+                                 })
+
                                  this.blushAnim = this.addTween({
                                      targets: this.blush,
                                      alpha: 0,
@@ -927,7 +961,7 @@
                                      playSound('voca_laser');
                                  }
                              }, 200);
-                             this.setDefaultSprite('robot_heart.png');
+                             this.setDefaultSprite('robot_laser.png');
                              this.sprite.y = this.sprite.startY;
                              this.refreshAnimateBG(3, 0.4);
                          }
@@ -2067,11 +2101,10 @@
          });
      }
 
-
      goToDeathLevel(explosion) {
         this.destroy();
         gameVars.showFinaleDeathSpeech = true;
-         fadeInBackgroundAtlas('backgrounds', 'background4.png', 2000, 1, 1, 'Cubic.easeInOut', 0, false);
+         fadeInBackgroundAtlas('backgrounds', 'background4.png', 2000, 1, 1, 1, 'Cubic.easeInOut', 0, false);
         swirlInReaperFog(1.25);
         PhaserScene.tweens.add({
             targets: explosion,

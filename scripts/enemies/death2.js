@@ -22,6 +22,8 @@
         setTimeout(() => {
              this.setAsleep();
              this.introSpeech();
+            globalObjects.encyclopedia.hideButton();
+            globalObjects.options.hideButton();
          }, 10)
      }
 
@@ -36,6 +38,19 @@
              });
          }
      }
+
+    introSpeech() {
+        globalObjects.bannerTextManager.setDialog([getLangText('deathFight2a')]);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+        globalObjects.bannerTextManager.showBanner(0);
+        globalObjects.bannerTextManager.setOnFinishFunc(() => {
+            this.setAwake();
+            globalObjects.magicCircle.enableMovement();
+            globalObjects.encyclopedia.showButton();
+            globalObjects.options.showButton();
+            this.bgMusic = playMusic('but_never_forgotten', 1, true);
+        })
+    }
 
      createArms() {
          let xOffsetLeft = -56 * this.sprite.startScale;
@@ -90,19 +105,11 @@
          })
      }
 
-    introSpeech() {
-        globalObjects.bannerTextManager.setDialog([getLangText('deathFight2a')]);
-        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-        globalObjects.bannerTextManager.showBanner(0);
-        globalObjects.bannerTextManager.setOnFinishFunc(() => {
-            this.setAwake();
-            globalObjects.magicCircle.enableMovement();
-        })
-    }
 
     initStatsCustom() {
         this.health = 600;
         this.fistObjects = [];
+        this.thornsList = [];
         this.attackScale = 1.13;
         this.lastAttackLingerMult = 0.9;
         this.extraRepeatDelay = 500;
@@ -136,11 +143,14 @@
              let prevHealthPercent = this.prevHealth / this.healthMax;
              if (prevHealthPercent > 0.5 && currHealthPercent <= 0.5 && !this.thornForm) {
                  this.thornForm = true;
+
+                 this.preventArmsVisible = true;
                  this.isPreppingFists = false;
                  this.interruptCurrentAttack();
                 this.clearFistObjects();
                  playSound('clunk');
                  this.setArmsVisible(false);
+                 this.forceOverrideSprite = 'death2crouch.png';
                  this.setDefaultSprite('death2crouch.png');
                  messageBus.publish("enemyAddShield", 120);
                  this.currentAttackSetIndex = 1;
@@ -185,7 +195,20 @@
      }
 
      clearThorns() {
-
+         this.thornsAmt = 0;
+         this.addTween({
+             targets: this.thornsList,
+             scaleX: 0,
+             scaleY: 0,
+             alpha: 0,
+             ease: 'Quad.easeIn',
+             duration: 1000,
+             onComplete: () => {
+                 for (let i = 0; i < this.thornsList.length; i++) {
+                     this.thornsList[i].destroy();
+                 }
+             }
+         })
      }
 
     initAttacks() {
@@ -253,15 +276,31 @@
                         // this.setDefaultSprite('max_death_2.png', null, true)
                         this.setArmsVisible(true);
                         this.pullbackHoldRatio = 0.5;
+                        globalObjects.encyclopedia.showButton();
+                        globalObjects.options.showButton();
                     },
                     attackStartFunction: () => {
                         // this.setDefaultSprite('death2charge.png', null, true)
                         // this.sprite.setFrame('max_death_2.png')
+                        globalObjects.encyclopedia.hideButton();
+                        globalObjects.options.hideButton();
                     },
                     attackFinishFunction: () => {
-                        playSound('showdown_bell', 1);
+                        playSound('death_attack', 1);
+                        screenShake(6);
+                        let fakeDeathBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'fake_death_bg.png').setScale(2).setDepth(30);
+                        fakeDeathBG.scrollFactorX = -0.1;
+                        fakeDeathBG.scrollFactorY = 0;
+                        this.addTween({
+                            targets: fakeDeathBG,
+                            alpha: 0,
+                            ease: "Quad.easeOut",
+                            duration: 3200,
+                            onComplete: () => {
+                                fakeDeathBG.destroy();
+                            }
+                        })
                         // this.makeSlashEffect();
-
                     },
                 },
                 {
@@ -308,20 +347,19 @@
             [
                 {
                     name: "THORNS {6",
-                    chargeAmt: 900,
+                    chargeAmt: 700,
                     finishDelay: 1000,
                     chargeMult: 10,
                     damage: -1,
                     isPassive: true,
                     isBigMove: true,
                     startFunction: () => {
+                        this.pullbackScale = 0.95;
+                        this.attackScale = 1.05;
                     },
                     attackStartFunction: () => {
-                        this.thorns1 = this.addImage(this.x - 4, this.y - 95, 'enemies', 'thorns.png').setDepth(8).setRotation(1.57 + 3.1415).setOrigin(0.5, -0.6).setScale(0.7, 0.5);
-                        this.thorns2 = this.addImage(this.x - 4, this.y - 95, 'enemies', 'thorns.png').setDepth(8).setRotation(1.57).setOrigin(0.5, -0.6).setScale(0.7, 0.5);
-                        this.thorns1.alpha = 0;
-                        this.thorns2.alpha = 0;
-
+                        let yOffset = 125;
+                        this.createThornsAnimation();
                     },
                     attackFinishFunction: () => {
                         this.currentAttackSetIndex = 0;
@@ -342,10 +380,13 @@
                         }
 
                         messageBus.publish('animateArmorNum', gameConsts.halfWidth, this.y + 120, "+6 THORNS", goalScale, param, param2);
-                        this.setDefense(2);
+                        this.thornsAmt = 6;
+                        this.setDefense(6);
                         this.hasThorns = true;
                     },
                     finaleFunction: () => {
+                        this.preventArmsVisible = false;
+                        this.forceOverrideSprite = null;
                         this.setDefaultSprite('max_death_2.png');
                         this.setArmsVisible(true);
                     },
@@ -506,7 +547,7 @@
                      }
                  })
                  this.addTween({
-                     delay: 150,
+                     delay: 120,
                      targets: punchFist,
                      scaleX: isLeft ? randScale * 1.1: randScale * -1.1,
                     rotation: punchPortal.rotation * 1.1,
@@ -530,11 +571,11 @@
                              duration: 40,
                              onComplete: () => {
                                  this.addTween({
-                                     delay: 100,
+                                     delay: 150,
                                      targets: [punchFist],
                                      ease: 'Quart.easeIn',
                                      scaleY: 0,
-                                     duration: 200,
+                                     duration: 250,
                                      onComplete: () => {
                                          punchFist.destroy();
                                      }
@@ -543,7 +584,7 @@
                                      targets: [punchFist, punchPortal],
                                      ease: 'Cubic.easeIn',
                                      alpha: 0,
-                                     duration: 250
+                                     duration: 350
                                  })
                              }
                          })
@@ -588,6 +629,9 @@
      }
 
      setArmsVisible(val) {
+         if (this.preventArmsVisible && val) {
+             return;
+         }
          this.leftArm.visible = val;
          this.rightArm.visible = val;
          this.leftShoulder.visible = val;
@@ -614,7 +658,15 @@
     die() {
          super.die();
          this.clearFistObjects();
-        fadeAwaySound(this.bgMusic);
+         if (this.bgMusic) {
+             fadeAwaySound(this.bgMusic);
+         }
+        this.setArmsVisible(false);
+        this.forceOverrideSprite = 'death2fall.png';
+        this.setDefaultSprite('death2fall.png', this.sprite.startScale);
+        this.clearThorns();
+
+
     }
 
     createAnimatedHellBG() {
@@ -624,6 +676,213 @@
         this.useFirstBG = true;
         this.animateBGRepeat();
     }
+
+    createThornsAnimation() {
+         let yOffset = 120;
+        this.thorns1 = this.addImage(this.x, this.y + yOffset, 'enemies', 'thorns.png').setDepth(8).setRotation(1.57 + 3.1415).setOrigin(0.5, -0.55).setScale(0.7, 0.5);
+        this.thorns2 = this.addImage(this.x, this.y + yOffset, 'enemies', 'thorns.png').setDepth(8).setRotation(1.57 + 3.1415).setOrigin(0.5, -0.55).setScale(0.7, 0.5);
+        this.thorns3 = this.addImage(this.x, this.y + yOffset, 'enemies', 'thorns.png').setDepth(8).setRotation(1.57 + 3.1415).setOrigin(0.5, -0.55).setScale(0.7, 0.5);
+        this.thorns4 = this.addImage(this.x, this.y + yOffset, 'enemies', 'thorns.png').setDepth(8).setRotation(1.57).setOrigin(0.5, -0.55).setScale(0.7, 0.5);
+        this.thorns5 = this.addImage(this.x, this.y + yOffset, 'enemies', 'thorns.png').setDepth(8).setRotation(1.57).setOrigin(0.5, -0.55).setScale(0.7, 0.5);
+        this.thorns6 = this.addImage(this.x, this.y + yOffset, 'enemies', 'thorns.png').setDepth(8).setRotation(1.57).setOrigin(0.5, -0.55).setScale(0.7, 0.5);
+
+        this.thornsList.push(this.thorns1);
+        this.thornsList.push(this.thorns2);
+        this.thornsList.push(this.thorns3);
+        this.thornsList.push(this.thorns4);
+        this.thornsList.push(this.thorns5);
+        this.thornsList.push(this.thorns6);
+
+        this.thorns1.alpha = 0;
+        this.thorns2.alpha = 0;
+        this.thorns3.alpha = 0;
+        this.thorns4.alpha = 0;
+        this.thorns5.alpha = 0;
+        this.thorns6.alpha = 0;
+        this.addTween({
+            targets: [this.thorns1, this.thorns2, this.thorns3, this.thorns4, this.thorns5, this.thorns6],
+            scaleX: 1,
+            scaleY: 1,
+            ease: 'Cubic.easeOut',
+            duration: 1000,
+            alpha: 1,
+        });
+        this.addTween({
+            targets: [this.thorns1, this.thorns2, this.thorns3],
+            x: "+=20",
+            ease: 'Quad.easeIn',
+            duration: 500,
+            onComplete: () => {
+                this.addTween({
+                    targets: [this.thorns2, this.thorns3],
+                    x: "+=60",
+                    ease: 'Quad.easeOut',
+                    duration: 350,
+                    onComplete: () => {
+                        this.addTween({
+                            targets: [this.thorns3],
+                            x: "+=60",
+                            ease: 'Quart.easeOut',
+                            duration: 350,
+                            completeDelay: 200,
+                            onComplete: () => {
+                                this.addTween({
+                                    targets: [this.thorns2, this.thorns3],
+                                    x: "-=60",
+                                    ease: 'Cubic.easeIn',
+                                    duration: 350,
+                                    onComplete: () => {
+                                        this.thorns2.destroy();
+                                        this.thorns1.setScale(1.2)
+                                        this.addTween({
+                                            targets: [this.thorns1],
+                                            scaleX: 1.1,
+                                            scaleY: 1.1,
+                                            ease: 'Back.easeOut',
+                                            duration: 200,
+                                        })
+                                        this.addTween({
+                                            targets: [this.thorns3],
+                                            x: "-=50",
+                                            ease: 'Cubic.easeIn',
+                                            duration: 350,
+                                            onComplete: () => {
+                                                this.thorns3.destroy();
+                                                this.thorns1.setFrame('thorns2.png').setScale(0.8).setOrigin(0.5, -0.15);
+                                                this.finishThornsAnimation();
+                                                this.addTween({
+                                                    targets: [this.thorns1],
+                                                    scaleX: 0.65,
+                                                    scaleY: 0.65,
+                                                    alpha: 0.78,
+                                                    ease: 'Back.easeOut',
+                                                    duration: 200,
+                                                })
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+            }
+        })
+        this.addTween({
+            targets: [this.thorns4, this.thorns5, this.thorns6],
+            x: "-=20",
+            ease: 'Quad.easeIn',
+            duration: 500,
+            onComplete: () => {
+                this.addTween({
+                    targets: [this.thorns5, this.thorns6],
+                    x: "-=60",
+                    ease: 'Quad.easeOut',
+                    duration: 350,
+                    onComplete: () => {
+                        this.addTween({
+                            targets: [this.thorns6],
+                            x: "-=60",
+                            ease: 'Quart.easeOut',
+                            duration: 350,
+                            completeDelay: 200,
+                            onComplete: () => {
+                                this.addTween({
+                                    targets: [this.thorns5, this.thorns6],
+                                    x: "+=60",
+                                    ease: 'Cubic.easeIn',
+                                    duration: 350,
+                                    onComplete: () => {
+                                        this.thorns5.destroy();
+                                        this.thorns4.setScale(1.2)
+                                        this.addTween({
+                                            targets: [this.thorns4],
+                                            scaleX: 1.1,
+                                            scaleY: 1.1,
+                                            ease: 'Back.easeOut',
+                                            duration: 200,
+                                        })
+                                        this.addTween({
+                                            targets: [this.thorns6],
+                                            x: "+=50",
+                                            ease: 'Cubic.easeIn',
+                                            duration: 350,
+                                            onComplete: () => {
+                                                this.thorns6.destroy();
+                                                this.thorns4.setFrame('thorns2.png').setScale(0.8).setOrigin(0.5, -0.15)
+                                                this.addTween({
+                                                    targets: [this.thorns4],
+                                                    scaleX: 0.65,
+                                                    scaleY: 0.65,
+                                                    ease: 'Back.easeOut',
+                                                    alpha: 0.78,
+                                                    duration: 200,
+                                                })
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    }
+
+     finishThornsAnimation() {
+         this.clearShield();
+         if (this.dead) {
+             return;
+         }
+         this.thorns7 = this.addImage(this.x, 0, 'enemies', 'thorns2.png').setDepth(-1).setOrigin(0.5, 0.5).setScale(0.9, 0).setRotation(-0.5);
+         this.thorns8 = this.addImage(-15, 110, 'enemies', 'thorns2.png').setDepth(-1).setOrigin(0.5, 0.5).setScale(0.9, 0).setRotation(Math.PI * -0.5 + 0.24 - 0.5);
+         this.thorns9 = this.addImage(gameConsts.width + 15, 110, 'enemies', 'thorns2.png').setDepth(-1).setOrigin(0.5, 0.5).setScale(0.9, 0).setRotation(Math.PI * 0.5 - 0.24 -0.5);
+
+         this.thornsList.push(this.thorns7);
+         this.thornsList.push(this.thorns8);
+         this.thornsList.push(this.thorns9);
+
+         this.addTween({
+             targets: [this.thorns7, this.thorns8, this.thorns9],
+             duration: 750,
+             rotation: "+=0.5",
+             easeParams: [3],
+             ease: 'Back.easeOut',
+             scaleX: 1,
+             scaleY: 1.1,
+             onComplete: () => {
+                 this.addTween({
+                     targets: [this.thorns7],
+                     duration: 550,
+                     ease: 'Cubic.easeInOut',
+                     scaleY: 0.9,
+                 })
+             }
+         })
+         this.addTween({
+             targets: [this.thorns7],
+             duration: 1250,
+             ease: 'Cubic.easeInOut',
+             alpha: 0.78,
+             y: -25,
+         })
+         this.addTween({
+             targets: [this.thorns8],
+             duration: 1250,
+             ease: 'Cubic.easeInOut',
+             alpha: 0.78,
+             x: -20,
+         })
+         this.addTween({
+             targets: [this.thorns9],
+             duration: 1250,
+             ease: 'Cubic.easeInOut',
+             alpha: 0.78,
+             x: gameConsts.width + 20,
+         })
+     }
+
     animateBGRepeat() {
         this.bg1.setDepth(-5); this.bg2.setDepth(-5);
         let bgToUse = this.useFirstBG ? this.bg1 : this.bg2;
@@ -641,4 +900,89 @@
             }
         })
     }
+
+     adjustDamageTaken(amt, isAttack, isTrue ) {
+         if (isAttack && this.hasThorns && !isTrue && !this.dead) {
+
+             let glowSpike = getTempPoolObject('enemies', 'glowSpike2.png', 'glowSpike2', 1800);
+             let isLeft = Math.random() < 0.5;
+             glowSpike.setScale(0.5).setAlpha(0.9).setPosition(gameConsts.halfWidth + (isLeft ? -50 : 50), this.y).setDepth(999).setRotation(isLeft ? -8 : 8);
+
+             this.addTween({
+                 targets: glowSpike,
+                 x: gameConsts.halfWidth + (isLeft ? -80 : 80),
+                 ease: 'Cubic.easeOut',
+                 duration: 300,
+                 rotation: 0,
+                 onComplete: () => {
+                     this.addTween({
+                         rotation: isLeft ? 10 : -10,
+                         targets: glowSpike,
+                         ease: 'Cubic.easeIn',
+                         x: gameConsts.halfWidth,
+                         duration: 1100,
+                     });
+                 }
+             });
+             this.addTween({
+                 targets: glowSpike,
+                 ease: 'Quart.easeIn',
+                 scaleX: 1.8,
+                 scaleY: 1.8,
+                 duration: 300,
+                 onComplete: () => {
+                     playSound('matter_body');
+                     this.addTween({
+                         targets: glowSpike,
+                         ease: 'Cubic.easeOut',
+                         scaleX: 1,
+                         scaleY: 1,
+                         duration: 1100,
+                         onComplete: () => {
+                             glowSpike.setScale(1.15);
+                         }
+                     });
+                 }
+             });
+
+             this.addTween({
+                 targets: glowSpike,
+                 y: globalObjects.player.getY() - 270,
+                 alpha: 1.2,
+                 duration: 1300,
+                 easeParams: [2.5],
+                 ease: 'Back.easeIn',
+                 onComplete: () => {
+                     glowSpike.setDepth(20);
+                     this.addTween({
+                         targets: glowSpike,
+                         y: globalObjects.player.getY() - 205,
+                         duration: 100,
+                         onComplete: () => {
+                             messageBus.publish("selfTakeDamage", this.thornsAmt, false, glowSpike.x);
+                             playSound('razor_leaf', 0.75)
+                             this.addTween({
+                                 targets: glowSpike,
+                                 alpha: 0,
+                                 ease: 'Cubic.easeIn',
+                                 duration: 300,
+                             });
+                         }
+                     });
+                 }
+             });
+
+             this.thorns1.setScale(0.8).setAlpha(1);
+             this.thorns4.setScale(0.8).setAlpha(1);
+             this.thornsTween = this.addTween({
+                 targets: [this.thorns1, this.thorns4],
+                 scaleX: 0.65,
+                 scaleY: 0.65,
+                 alpha: 0.78,
+                 ease: 'Quart.easeOut',
+                 duration: 400,
+             });
+         }
+         return super.adjustDamageTaken(amt, isAttack, isTrue);
+     }
 }

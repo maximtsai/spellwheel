@@ -191,7 +191,7 @@ class SpellManager {
                         }
                         let rockGlow = getTempPoolObject('spells', 'rockglow.png', 'rockglow', 400);
                         rockGlow.setScale(rockObj.scaleX).setPosition(rockObj.x, rockObj.y).setRotation(rockObj.rotation).setAlpha(0).setDepth(rockObj.depth + 1);
-                            
+
                         this.scene.tweens.add({
                             targets: [rockObj, rockGlow],
                             delay: 110,
@@ -211,7 +211,7 @@ class SpellManager {
                                             duration: 500,
                                             alpha: 0,
                                             ease: 'Cubic.easeOut',
-                                        }); 
+                                        });
                                     }
                                 });
                             },
@@ -293,7 +293,7 @@ class SpellManager {
                 },
                 onComplete: () => {
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
-                    let baseDamage = gameVars.matterPlus ? 14 : 12;
+                    let baseDamage = gameVars.matterPlus ? 1400 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
                     messageBus.publish('setPauseDur', 20);
                     poolManager.returnItemToPool(rockObj, 'rock');

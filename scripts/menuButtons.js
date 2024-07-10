@@ -16,7 +16,7 @@ function clearOnlyMenuButtons() {
     globalObjects.cheatButton.destroy();
     globalObjects.cheatButton2.destroy();
     globalObjects.cheatButton3.destroy();
-
+    globalObjects.cheatButton4.destroy();
 
     globalObjects.level3Button.destroy();
     globalObjects.lvl5Button.destroy();
@@ -299,6 +299,31 @@ function showMainMenuButtons() {
     });
     globalObjects.cheatButton3.setScale(0.5);
     globalObjects.cheatButton3.addText("+1000 HP CHEAT", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+
+    globalObjects.cheatButton4 = new Button({
+        normal: {
+            ref: "menu_btn_normal.png",
+            atlas: 'buttons',
+            x: gameConsts.width - 100,
+            y: 300,
+        },
+        hover: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        press: {
+            ref: "menu_btn_press.png",
+            atlas: 'buttons',
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp: () => {
+            toggleCheat('inam')
+        }
+    });
+    globalObjects.cheatButton4.setScale(0.5);
+    globalObjects.cheatButton4.addText("INFINITE AMMO", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
 
     globalObjects.levelSelectButton = new Button({

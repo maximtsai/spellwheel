@@ -2477,7 +2477,7 @@ const ENABLE_KEYBOARD = true;
              this.spellElementText.setText('')
             this.spellActionText.setText('')
         }
-        if (this.disableSpellDescDisplay || this.manualDisabled) {
+        if (this.disableSpellDescDisplay || this.manualDisabled || globalObjects.bannerTextManager.isShowing || gameOptions.hideSpellDescriptor) {
             this.spellDescriptor.setText('');
         }
      }

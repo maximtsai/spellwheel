@@ -34,7 +34,7 @@ let config = {
 };
 
 function testMobile() {
-    return true;
+    // return false;
   const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
   return regex.test(navigator.userAgent);
 }
@@ -74,6 +74,10 @@ let cheats = {
 };
 let funnies = {
     mustache: false,
+};
+let gameOptions = {
+    hideSpellDescriptor: false,
+
 };
 let gameVars = {
     gameConstructed: false,

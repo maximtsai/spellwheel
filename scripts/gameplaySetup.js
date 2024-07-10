@@ -435,6 +435,7 @@ function recursiveCreateIntroText(delay = 150, num = 180) {
 
 function clickIntro() {
     clearDeathFog();
+    playSound('locket_open');
     globalObjects.tempIntroText = [];
     // recursiveCreateIntroText();
     gameVars.runningIntro = true;
@@ -462,7 +463,10 @@ function clickIntro() {
         rotation: 0,
         scrollY: 0,
         ease: 'Cubic.easeOut',
-        duration: 750
+        duration: 750,
+        onComplete: () => {
+            playSound('whoosh')
+        }
     });
 
 
@@ -703,6 +707,7 @@ function showLocket() {
     globalObjects.bannerTextManager.setOnFinishFunc(() => {
         updateManager.removeFunction(locketFlash);
         globalObjects.gameLocketOpenLight.destroy();
+        playSound('locket_close');
 
         globalObjects.magicCircle.enableMovement();
         globalObjects.gameLocketOpen.setFrame('locket4.png');

@@ -67,7 +67,7 @@
      }
 
      idleAnim() {
-         this.addTween({
+         this.idleAnimations.push(this.addTween({
              targets: this.sprite,
              y: "+=4",
              scaleY: this.sprite.startScale * 0.983,
@@ -75,9 +75,9 @@
              ease: 'Cubic.easeInOut',
              repeat: -1,
              duration: 2000
-         });
+         }));
 
-         this.addTween({
+         this.idleAnimations.push(this.addTween({
              targets: this.leftArm,
              rotation: -0.07,
              y: "+=3",
@@ -85,8 +85,8 @@
              ease: 'Cubic.easeInOut',
              repeat: -1,
              duration: 2000
-         });
-         this.addTween({
+         }));
+         this.idleAnimations.push(this.addTween({
              targets: this.rightArm,
              rotation: 0.07,
              y: "+=3",
@@ -94,15 +94,15 @@
              ease: 'Cubic.easeInOut',
              repeat: -1,
              duration: 2000
-         })
-         this.addTween({
+         }));
+         this.idleAnimations.push(this.addTween({
              targets: this.leftShoulder,
              y: "+=3",
              yoyo: true,
              ease: 'Cubic.easeInOut',
              repeat: -1,
              duration: 2000
-         })
+         }));
      }
 
 
@@ -110,6 +110,7 @@
         this.health = 600;
         this.fistObjects = [];
         this.thornsList = [];
+        this.idleAnimations = [];
         this.attackScale = 1.13;
         this.lastAttackLingerMult = 0.9;
         this.extraRepeatDelay = 500;
@@ -118,8 +119,8 @@
         this.attackEase = 'Quint.easeIn';
         this.customInitialPullback = 'Quint.easeOut';
         this.customRepeatPullback = 'Quart.easeInOut';
-        this.shieldOffsetY = 120;
-        this.shieldTextOffsetY = -60;
+        this.shieldOffsetY = 95;
+        this.shieldTextOffsetY = -40;
         this.shieldScale = 1.3;
         this.fistObjectPosX = [-140, 140, -75, 75, -250, 250, -220, 220, 0];
         this.fistObjectPosY = [100, 100, -15, -15, 160, 160, 20, 20, 65];
@@ -236,7 +237,7 @@
                 },
                 {
                     name: "|8x2",
-                    chargeAmt: 450,
+                    chargeAmt: 350,
                     damage: 8,
                     attackTimes: 2,
                     prepareSprite: ['death2windup.png', 'death2windupflip.png'],
@@ -261,7 +262,7 @@
                     prepareSprite: "death2crouch.png",
                     preAttackSprite: 'death2charge.png',
                     attackSprites: ['death2charge.png'],
-                    finishDelay: 2000,
+                    finishDelay: 1200,
                     startFunction: () => {
                         this.setSpriteIfNotInactive('max_death_2_full.png', undefined, true)
                         this.pullbackScale = 0.6;
@@ -356,9 +357,9 @@
                     startFunction: () => {
                         this.pullbackScale = 0.95;
                         this.attackScale = 1.05;
+                        this.attackSlownessMult = 1;
                     },
                     attackStartFunction: () => {
-                        let yOffset = 125;
                         this.createThornsAnimation();
                     },
                     attackFinishFunction: () => {
@@ -657,6 +658,9 @@
 
     die() {
          super.die();
+         for (let i = 0; i < this.idleAnimations.length; i++) {
+             this.idleAnimations[i].stop();
+         }
          this.clearFistObjects();
          if (this.bgMusic) {
              fadeAwaySound(this.bgMusic);
@@ -903,7 +907,6 @@
 
      adjustDamageTaken(amt, isAttack, isTrue ) {
          if (isAttack && this.hasThorns && !isTrue && !this.dead) {
-
              let glowSpike = getTempPoolObject('enemies', 'glowSpike2.png', 'glowSpike2', 1800);
              let isLeft = Math.random() < 0.5;
              glowSpike.setScale(0.5).setAlpha(0.9).setPosition(gameConsts.halfWidth + (isLeft ? -50 : 50), this.y).setDepth(999).setRotation(isLeft ? -8 : 8);

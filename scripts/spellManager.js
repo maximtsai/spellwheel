@@ -265,35 +265,38 @@ class SpellManager {
                 rotation: (Math.random() - 0.5) * 2,
                 ease: 'Quad.easeIn',
                 onStart: () => {
-                    let detuneAmt = Math.floor(Math.sqrt(additionalDamage * 0.75)) * -80;
-                    PhaserScene.time.delayedCall(durationAmt - 0, () => {
-                        let additionalVol = additionalDamage * 0.005;
-                        if (i === 0) {
-                            let randNum = Math.random()
-                            if (randNum < 0.3) {
-                                playSound('matter_strike_hit', 0.8 + additionalVol).detune = detuneAmt;
-                            } else if (randNum < 0.6) {
-                                playSound('matter_strike_hit_alt', 0.8 + additionalVol).detune = detuneAmt;
-                            } else {
-                                playSound('matter_strike_hit_alt_2', 0.85 + additionalVol).detune = detuneAmt;
-                            }
-                        } else if (rockObjects.length > 2 && i === rockObjects.length - 1) {
-                            // last hit
-                            if (Math.random() < 0.5) {
-                                playSound('matter_strike_hit', 0.7 + additionalVol).detune = detuneAmt;
-                            } else {
-                                playSound('matter_strike_hit_alt', 0.7 + additionalVol).detune = detuneAmt;
-                            }
-                        } else if (i % 2 == 1) {
-                            playSound('matter_strike_hit2', 0.95 + additionalVol).detune = detuneAmt;
-                        } else if (i % 2 == 0) {
-                            playSound('matter_strike_hit2', 0.6 + additionalVol).detune = detuneAmt;
-                        }
-                    })
+                    // PhaserScene.time.delayedCall(durationAmt, () => {
+                    //
+                    // })
                 },
                 onComplete: () => {
+                    let detuneAmt = Math.floor(Math.sqrt(additionalDamage * 0.75)) * -80;
+                    let additionalVol = additionalDamage * 0.005;
+                    if (i === 0) {
+                        let randNum = Math.random()
+                        if (randNum < 0.3) {
+                            playSound('matter_strike_hit', 0.8 + additionalVol).detune = detuneAmt;
+                        } else if (randNum < 0.6) {
+                            playSound('matter_strike_hit_alt', 0.8 + additionalVol).detune = detuneAmt;
+                        } else {
+                            playSound('matter_strike_hit_alt_2', 0.85 + additionalVol).detune = detuneAmt;
+                        }
+                    } else if (rockObjects.length > 2 && i === rockObjects.length - 1) {
+                        // last hit
+                        if (Math.random() < 0.5) {
+                            playSound('matter_strike_hit', 0.7 + additionalVol).detune = detuneAmt;
+                        } else {
+                            playSound('matter_strike_hit_alt', 0.7 + additionalVol).detune = detuneAmt;
+                        }
+                    } else if (i % 2 == 1) {
+                        playSound('matter_strike_hit2', 0.95 + additionalVol).detune = detuneAmt;
+                    } else if (i % 2 == 0) {
+                        playSound('matter_strike_hit2', 0.6 + additionalVol).detune = detuneAmt;
+                    }
+
+
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
-                    let baseDamage = gameVars.matterPlus ? 1400 : 12;
+                    let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
                     messageBus.publish('setPauseDur', 20);
                     poolManager.returnItemToPool(rockObj, 'rock');
@@ -2139,6 +2142,7 @@ class SpellManager {
         shieldObj.setScale(2.2);
 
         messageBus.publish("selfClearEffect");
+        messageBus.publish("castVoidBody");
         setTimeout(() => {
             playSound('void_body');
         }, 400);

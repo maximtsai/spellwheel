@@ -34,7 +34,7 @@ function getTempPoolObject(atlas, name, poolName, duration = 250) {
     } else {
         effect.setFrame(name).setAlpha(1).setVisible(true).setRotation(0)
     }
-    PhaserScene.time.delayedCall(duration, () => {
+    PhaserScene.time.delayedCall(duration / gameVars.timeScale, () => {
         poolManager.returnItemToPool(effect, poolName);
     });
 

@@ -43,6 +43,7 @@ const ENABLE_KEYBOARD = true;
             messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this)),
             messageBus.subscribe('selfClearEffect', this.clearMindForm.bind(this)),
             messageBus.subscribe('enemyHasDied', this.clearEffects.bind(this)),
+            messageBus.subscribe('enemyHasDied', this.cancelTimeSlow.bind(this)),
             messageBus.subscribe('selfClearStatuses', this.clearEffects.bind(this)),
 
             messageBus.subscribe("applyMindBurn", this.applyMindBurn.bind(this)),
@@ -616,7 +617,9 @@ const ENABLE_KEYBOARD = true;
         if (gameVars.timeSlowRatio !== 1) {
             gameVars.timeSlowRatio = 1;
             messageBus.publish('clearGameSlow');
-
+            if (globalObjects.currentEnemy && globalObjects.currentEnemy.bgMusic) {
+                globalObjects.currentEnemy.bgMusic.detune = 0;
+            }
             this.scene.tweens.add({
                 // this.timeStopLight,
                 targets: [this.timeStopHeavy],
@@ -686,6 +689,7 @@ const ENABLE_KEYBOARD = true;
     setTimeSlowRatio(ratio = 1, manual = false) {
         let oldRatio = gameVars.timeSlowRatio;
         gameVars.timeSlowRatio = ratio;
+        console.log("set time slow ratio: ", ratio);
         if (ratio < 0.99) {
             playSound('timeSlow');
             if (globalObjects.currentEnemy && globalObjects.currentEnemy.bgMusic) {
@@ -2654,6 +2658,8 @@ const ENABLE_KEYBOARD = true;
          this.lastDragTime = Math.min(this.lastDragTime, -9999);
          gameVars.playerNotMoved = false;
         this.disableSpellDescDisplay = true;
+         this.removeDelayedDamage();
+
      }
 
      clearVoidForm() {

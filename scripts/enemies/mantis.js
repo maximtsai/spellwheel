@@ -2,7 +2,6 @@
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
          this.initSprite('mantis_a.png', 0.9);
-         this.bgMusic = playMusic('bite_down', 0.7, true);
          this.backForthDelay = 300;
          this.addTimeout(() => {
              this.backForthAnim();
@@ -67,6 +66,8 @@
                             this.angrySymbol.x += 29;
                             this.attackName.setText("|;"+attackDamages+"x"+attackTimes+";| ");
                             this.addDelay(() => {
+                                this.bgMusic = playMusic('into_the_void', 0.82, true);
+
                                 playSound('enemy_attack_major');
                                 this.angrySymbol.x += 28;
                                 this.attackName.setText("}|;"+attackDamages+"x"+attackTimes+";|} ");
@@ -81,7 +82,9 @@
                                 return;
                             }
                             this.setSprite('mantis_reveal.png');
-                            this.bgMusic.stop();
+                            if (this.bgMusic) {
+                                this.bgMusic.stop();
+                            }
                             this.addDelayedCall(400, () => {
                                 if (this.dead) {
                                     return;

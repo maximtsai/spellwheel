@@ -36,5 +36,15 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "energy_tut_goblin": {
+        "en_us": "Energy spells can\ndeal True damage\nthat ignores\nenemy defenses.\n              +",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+
+    }
 }
 textData = { ...textData, ...textData4};

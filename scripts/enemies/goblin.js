@@ -75,7 +75,6 @@
                  // 1
                  {
                      name: gameVars.isHardMode ? "FANCY SHIELD {50 " : "FANCY SHIELD {40 ",
-                     desc: "The goblin hoists his\ntrusty shield (which\nwas definitely not stolen)",
                      block: gameVars.isHardMode ? 50 : 40,
                      isPassive: true,
                      customCall: " ",
@@ -109,10 +108,10 @@
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
                          let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
-                         this.rune3 = this.addImage(gameConsts.width - 150, gameConsts.halfHeight + 26, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
-                         this.rune4 = this.addImage(gameConsts.width - 70, gameConsts.halfHeight + 26, 'circle', 'rune_enhance_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+                         this.rune3 = this.addImage(gameConsts.width - 150, gameConsts.halfHeight + 28, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+                         this.rune4 = this.addImage(gameConsts.width - 70, gameConsts.halfHeight + 28, 'circle', 'rune_enhance_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
                          this.addTimeout(() => {
-                             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 80, "Energy spells can\ndeal True damage\nthat ignores\nenemy defenses.\n              +", 'right');
+                             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 80, getLangText("energy_tut_goblin"), 'right');
                              this.addTween({
                                  targets: [this.rune3, this.rune4],
                                  alpha: 1,

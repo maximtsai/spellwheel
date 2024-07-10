@@ -1304,11 +1304,12 @@ const ENABLE_KEYBOARD = true;
                      let goalRotTime = shieldObj.lockRotation + this.outerCircle.rotation;
                      let goalRotTime1 = goalRotTime;
                      let shieldFollowObjRot = shieldObj.animObj[1].rotation;
-                     if (goalRotTime > shieldFollowObjRot + Math.PI * 2) {
+                     if (goalRotTime > shieldFollowObjRot + Math.PI * 2 - 0.5) {
                          shieldFollowObjRot += Math.PI * 2;
-                     } else if (goalRotTime < shieldFollowObjRot - Math.PI * 2) {
+                     } else if (goalRotTime < shieldFollowObjRot - Math.PI * 2 + 0.5) {
                          shieldFollowObjRot -= Math.PI * 2;
                      }
+
                      let goalRotTime2 = goalRotTime * 0.5 + shieldFollowObjRot * 0.5;
                      shieldObj.animObj[0].rotation = goalRotTime1;
                      shieldObj.animObj[1].rotation = goalRotTime2;

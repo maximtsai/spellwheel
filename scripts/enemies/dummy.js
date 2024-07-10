@@ -91,7 +91,7 @@
             globalObjects.bannerTextManager.closeBanner();
              this.addTimeout(() => {
                  globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 135, getLangText('level1_tut_a'), 'right');
-                 this.rune2 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight - 40, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
+                 this.rune2 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight - 44, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
                  this.addTween({
                      targets: [this.rune2],
                      alpha: 1,

@@ -1,5 +1,5 @@
 let isMobile = testMobile();
-let gameVersion = "version 1.22";
+let gameVersion = "version 1.23";
 let config = {
     type: Phaser.AUTO,
     scale: {

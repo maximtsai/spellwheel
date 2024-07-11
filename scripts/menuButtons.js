@@ -540,7 +540,7 @@ function showMainMenuButtons() {
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: -200,
+            x: 100,
             y: 420,
         },
         hover: {
@@ -560,7 +560,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl10Button.setScale(0.5);
-    globalObjects.lvl10Button.addText("LEVEL 10", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl10Button.addText("LEVEL DEATH", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
 
     globalObjects.lvl11Button = new Button({

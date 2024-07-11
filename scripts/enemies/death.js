@@ -8,8 +8,8 @@
         setTimeout(() => {
             this.windSfx = playSound('wind', 0.01, true);
             fadeInSound(this.windSfx, 1, 2000);
-            globalObjects.player.setHealth(1);
-            globalObjects.player.recentlyTakenDamageAmt = 79;
+            globalObjects.player.reInitStats();
+            globalObjects.player.recentlyTakenDamageAmt = 0;
              this.setAsleep();
             globalObjects.magicCircle.disableMovement();
             this.healthBarCurr.setFrame('yellow_pixel.png');
@@ -21,6 +21,10 @@
          this.health = 4;
          this.scytheObjects = [];
          this.listOfAngryPopups = [];
+     }
+
+     takeEffect() {
+
      }
 
      swingScythe(damage = 444, fadeOutScythe = true, flipped = false, onComplete) {
@@ -209,7 +213,6 @@
              }
          });
      }
-
 
      repeatTweenBreathe(duration = 1500, magnitude = 1) {
          if (this.breatheTween) {

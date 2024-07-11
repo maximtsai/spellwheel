@@ -57,7 +57,6 @@ class Player {
             maxHealth += 80;
         }
         this.trueHealthMax = maxHealth;
-        console.log(this.trueHealthMax);
         this.healthMax = this.trueHealthMax;
         this.health = this.healthMax;
         this.lastInjuryHealth = this.healthMax;

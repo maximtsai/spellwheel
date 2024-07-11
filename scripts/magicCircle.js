@@ -2572,52 +2572,57 @@ const ENABLE_KEYBOARD = true;
              duration: gameVars.gameManualSlowSpeed * 150,
          });
          if (this.voidSliceImage1.anim) {
+             this.currVoidAnim.remove();
             this.voidSliceImage1.anim.stop();
             this.voidSliceImage3.anim.stop();
          }
 
         this.voidSliceImage1.anim = this.scene.tweens.add({
-            delay: 180,
+            delay: 100,
              targets: this.voidSliceImage1,
              scaleX: baseScale * 0.5,
              scaleY: baseScale * 0.95,
              alpha: 0.65,
              ease: 'Quad.easeOut',
-             duration: gameVars.gameManualSlowSpeed * 200,
+             duration: gameVars.gameManualSlowSpeed * 1000,
          });
         this.voidSliceImage3.anim = this.scene.tweens.add({
-            delay: 180,
+            delay: 100,
              targets: this.voidSliceImage3,
              scaleX: baseScale * 0.45,
              scaleY: baseScale * 1,
              alpha: 0.7,
              ease: 'Quad.easeOut',
-             duration: gameVars.gameManualSlowSpeed * 3000,
+             duration: gameVars.gameManualSlowSpeed * 2000,
          });
 
-         let effectName = 'voidBurn';
-         let effectObj;
-         effectObj = {
-             name: effectName,
-             duration: gameVars.gameManualSlowSpeed * 2,
-             isFirst: true,
-             onUpdate: () => {
-                 if (effectObj.isFirst) {
-                     effectObj.isFirst = false;
-                 } else if (effectObj && effectObj.duration > 0) {
-                     if (effectObj.duration <= 1) {
-                         this.fireVoidSpike(this.voidSliceImage3, baseScale, damage);
-                         PhaserScene.time.delayedCall(700, () => {
-                             this.fireVoidSpike(this.voidSliceImage1, baseScale, damage);
-                         })
-                     }
-                 }
-             },
-             cleanUp: (statuses) => {
-                 statuses[effectName] = null;
-             }
-         };
-         messageBus.publish('enemyTakeEffect', effectObj);
+         this.currVoidAnim = PhaserScene.time.delayedCall(1200, () => {
+             this.fireVoidSpike(this.voidSliceImage1, baseScale, damage);
+             this.currVoidAnim = PhaserScene.time.delayedCall(700, () => {
+                 this.fireVoidSpike(this.voidSliceImage3, baseScale, damage);
+             })
+         })
+
+         // let effectName = 'voidBurn';
+         // let effectObj;
+         // effectObj = {
+         //     name: effectName,
+         //     duration: gameVars.gameManualSlowSpeed * 2,
+         //     isFirst: true,
+         //     onUpdate: () => {
+         //         if (effectObj.isFirst) {
+         //             effectObj.isFirst = false;
+         //         } else if (effectObj && effectObj.duration > 0) {
+         //             if (effectObj.duration <= 1) {
+         //
+         //             }
+         //         }
+         //     },
+         //     cleanUp: (statuses) => {
+         //         statuses[effectName] = null;
+         //     }
+         // };
+         // messageBus.publish('enemyTakeEffect', effectObj);
      }
 
      fireVoidSpike(spike, baseScale, damage) {

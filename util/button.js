@@ -422,6 +422,10 @@ class Button {
         return this;
     }
 
+    getText() {
+        return this.text;
+    }
+
     setText(text) {
         if (this.text) {
             this.text.setText(text);

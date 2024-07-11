@@ -29,7 +29,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 100 : 80;
+         this.health = gameVars.isHardMode ? 90 : 75;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
         this.attackScale = 1.25;
@@ -227,7 +227,7 @@
              return;
          }
 
-         if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.95) {
+         if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.999) {
              this.angryEyes = true;
              this.flash = this.addSprite(this.x + 3, this.y - 65, 'blurry', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
             fadeAwaySound(this.bgMusic, 200);

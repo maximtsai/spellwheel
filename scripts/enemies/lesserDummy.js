@@ -24,7 +24,7 @@
     initSpriteAnim(scale) {
         let origY = this.sprite.y;
         this.sprite.setScale(scale * 0.85, scale * 0.85).setAlpha(1);
-        this.sprite.y += 92;
+        this.sprite.y += 86;
         this.addTween({
             targets: this.sprite,
             duration: 1500,

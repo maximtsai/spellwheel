@@ -13,6 +13,7 @@ function beginPreLevel(lvl) {
     let text6;
     let text7;
     let text8;
+    let text9;
     let introOverlay;
     if (lvl != 0) {
         switchLevelBackground(lvl);
@@ -35,10 +36,12 @@ function beginPreLevel(lvl) {
             text5.setDepth(99999).setAlpha(0).setOrigin(1, 1).setVisible(false);
             text6 = PhaserScene.add.text(text4.x, text4.y + 2, getLangText('pre_fight_0f'), {fontFamily: 'verdanabold', fontSize: 18, color: '#200000', align: 'right'});
             text6.setDepth(99999).setAlpha(0).setOrigin(1, 1).setVisible(false);
-            text7 = PhaserScene.add.text(gameConsts.halfWidth + 8, gameConsts.halfHeight + 19, getLangText('pre_fight_0g'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'center'});
-            text7.setDepth(99999).setAlpha(0).setOrigin(0.5, 1);
-            text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 246, getLangText('pre_fight_0h'), {fontFamily: 'verdanabold', fontSize: 16, color: '#200000', align: 'center'});
-            text8.setDepth(99999).setAlpha(0).setOrigin(0.5, 0.5);
+            text7 = PhaserScene.add.text(gameConsts.halfWidth + 220, gameConsts.halfHeight - 48, getLangText('pre_fight_0g'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'center'});
+            text7.setDepth(99999).setAlpha(0).setOrigin(1, 1);
+            text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 240, getLangText('pre_fight_0h'), {fontFamily: 'verdanabold', fontSize: 18, color: '#200000', align: 'center'});
+            text8.setDepth(99999).setAlpha(0).setOrigin(0.5, 1);
+            text9 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 246, getLangText('pre_fight_0i'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'center'});
+            text9.setDepth(99999).setAlpha(0).setOrigin(0.5, 0);
 
             createGlobalClickBlocker();
 
@@ -46,8 +49,8 @@ function beginPreLevel(lvl) {
                 normal: {
                     ref: "tut_btn.png",
                     atlas: 'buttons',
-                    x: gameConsts.halfWidth + 82,
-                    y: gameConsts.halfHeight - 260,
+                    x: gameConsts.halfWidth + 81,
+                    y: gameConsts.halfHeight - 252,
                     alpha: 0.3
                 },
                 hover: {
@@ -115,8 +118,8 @@ function beginPreLevel(lvl) {
                 normal: {
                     ref: "tut_btn.png",
                     atlas: 'buttons',
-                    x: gameConsts.halfWidth + 82,
-                    y: gameConsts.halfHeight - 180,
+                    x: gameConsts.halfWidth + 81,
+                    y: gameConsts.halfHeight - 184,
                     alpha: 0.3
                 },
                 hover: {
@@ -180,7 +183,7 @@ function beginPreLevel(lvl) {
             matterHoverBtn.setDepth(99999);
             matterHoverBtn.setState(DISABLE);
 
-            texts = [text1, text2, text3, text4, text5, text6, text7, text8, strikeHoverBtn, matterHoverBtn];
+            texts = [text1, text2, text3, text4, text5, text6, text7, text8, text9, strikeHoverBtn, matterHoverBtn];
             playSound('flip2')
             PhaserScene.tweens.add({
                 targets: texts,
@@ -485,6 +488,7 @@ function beginLevel(lvl) {
     if (lvl <= 1) {
         switchLevelBackground(lvl)
     }
+    console.log("Beginlevel", lvl);
 
     playSound('whoosh');
     createEnemyAfterDelay(lvl);

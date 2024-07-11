@@ -156,6 +156,8 @@ class PostFightScreen {
                 }
             });
             this.continueButton.addText(getLangText('post_fight_skip_training'), {fontFamily: 'garamondmax', fontSize: 19, color: '#000000', align: 'center'});
+            let text = this.continueButton.getText();
+            text.alpha = 0.1;
             this.continueButton.setDepth(100000);
         }
         if (!this.trainingButton) {

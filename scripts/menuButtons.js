@@ -225,11 +225,13 @@ function showMainMenuButtons() {
     globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
     globalObjects.startButton.setScale(0.9);
 
+    let hideCheatConst = 500;
+
     globalObjects.cheatButton = new Button({
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.width - 100,
+            x: gameConsts.width - 100 + hideCheatConst,
             y: 180,
         },
         hover: {
@@ -254,7 +256,7 @@ function showMainMenuButtons() {
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.width - 100,
+            x: gameConsts.width - 100 + hideCheatConst,
             y: 220,
         },
         hover: {
@@ -279,7 +281,7 @@ function showMainMenuButtons() {
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.width - 100,
+            x: gameConsts.width - 100 + hideCheatConst,
             y: 260,
         },
         hover: {
@@ -304,7 +306,7 @@ function showMainMenuButtons() {
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.width - 100,
+            x: gameConsts.width - 100 + hideCheatConst,
             y: 300,
         },
         hover: {
@@ -350,7 +352,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.levelSelectButton.setScale(0.5);
-    globalObjects.levelSelectButton.addText("LEVEL 2", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.levelSelectButton.addText("LEVEL GOBLIN", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.level3Button = new Button({
         normal: {
@@ -376,7 +378,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.level3Button.setScale(0.5);
-    globalObjects.level3Button.addText("LEVEL 3", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.level3Button.addText("LEVEL TREE", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvlButton = new Button({
         normal: {
@@ -402,7 +404,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvlButton.setScale(0.5);
-    globalObjects.lvlButton.addText("LEVEL 4", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvlButton.addText("LEVEL MAGICIAN", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl5Button = new Button({
         normal: {
@@ -428,7 +430,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl5Button.setScale(0.5);
-    globalObjects.lvl5Button.addText("LEVEL 5", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl5Button.addText("LEVEL KNIGHT", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl6Button = new Button({
         normal: {
@@ -454,7 +456,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl6Button.setScale(0.5);
-    globalObjects.lvl6Button.addText("LEVEL 6", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl6Button.addText("LEVEL WALL", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl7Button = new Button({
         normal: {
@@ -480,7 +482,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl7Button.setScale(0.5);
-    globalObjects.lvl7Button.addText("LEVEL 7", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl7Button.addText("LEVEL SUPER DUMMY", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl8Button = new Button({
         normal: {
@@ -506,7 +508,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl8Button.setScale(0.5);
-    globalObjects.lvl8Button.addText("LEVEL 8", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl8Button.addText("LEVEL ASSASSIN", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl9Button = new Button({
         normal: {
@@ -532,13 +534,13 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl9Button.setScale(0.5);
-    globalObjects.lvl9Button.addText("LEVEL 9", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl9Button.addText("LEVEL ROBOT", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl10Button = new Button({
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: 100,
+            x: -200,
             y: 420,
         },
         hover: {
@@ -565,7 +567,7 @@ function showMainMenuButtons() {
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: 100,
+            x: -200,
             y: 450,
         },
         hover: {

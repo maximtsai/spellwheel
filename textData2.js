@@ -406,7 +406,16 @@ let textData2 = {
         "jp": "12ダメージを与える"
     },
     "pre_fight_0h": {
-        "en_us": "Click to cast\nMatter+Strike\nspell",
+        "en_us": "CAST:\nCLICK/SPACE",
+        "fr": "Cliquez pour lancer le sort Matière+Frappe",
+        "zh_tw": "點擊施放 Matter+Strike 法術",
+        "zh_cn": "点击施放 Matter+Strike 法术",
+        "ru": "Нажмите, чтобы разыграть заклинание Matter+Strike",
+        "es": "Haz clic para lanzar el hechizo Materia+Golpe",
+        "jp": "クリックして物質+ストライクの呪文を唱える"
+    },
+    "pre_fight_0i": {
+        "en_us": "MATTER\nSTRIKE",
         "fr": "Cliquez pour lancer le sort Matière+Frappe",
         "zh_tw": "點擊施放 Matter+Strike 法術",
         "zh_cn": "点击施放 Matter+Strike 法术",

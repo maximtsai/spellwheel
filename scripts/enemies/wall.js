@@ -23,7 +23,7 @@
      }
 
      initSpriteAnim(scale) {
-         this.sprite.setScale(scale * 0.94, scale);
+         this.sprite.setScale(scale * 0.95, scale);
          playSound('matter_enhance_2', 0.35).detune = -1000;
          this.addTween({
              targets: this.sprite,
@@ -35,10 +35,12 @@
      }
 
      initBird() {
-         this.bird = this.addImage(this.x - 335 * this.trueStartScale, this.y - 223 * this.trueStartScale, 'enemies', 'bird_1.png').setAlpha(0).setDepth(10).setScale(this.trueStartScale);
+         this.bird = this.addImage(this.x - 267 * this.trueStartScale, this.y - 179 * this.trueStartScale, 'enemies', 'bird_1.png').setAlpha(0).setDepth(10).setScale(this.trueStartScale * 0.98);
          this.addTween({
              delay: 150,
              targets: [this.bird],
+             scaleX: this.trueStartScale,
+             scaleY: this.trueStartScale,
              alpha: 1,
              ease: 'Quad.easeIn',
              duration: 800,
@@ -350,7 +352,12 @@
                     bird = this.addImage(-999, 0, 'enemies', 'bird_2.png').setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
                 }
             }
-
+            bird.alpha = 1;
+            bird.visible = true;
+            bird.setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
+            if (!isBigPoop) {
+                bird.setFrame('bird_2.png');
+            }
             bird.y = 10 + Math.random() * 120;
             let isLeft = i % 2 == 0;
             if (!isLeft) {
@@ -368,12 +375,12 @@
                     rock.scaleX *= -1;
                 }
             }
-            let duration = hasRock ? 900 : 700;
+            let duration = hasRock ? 1100 : 900;
             if (hasBigRock) {
-                duration *= 2;
+                duration *= 1.8;
             }
             if (isBigPoop) {
-                duration *= 2;
+                duration *= 1.8;
             }
             let goalX = isLeft ? gameConsts.halfWidth + 15 - Math.random() * 45 : gameConsts.halfWidth + Math.random() * 45 - 15;
             this.addTween({
@@ -411,7 +418,7 @@
                                     targets: rock,
                                     y: globalObjects.player.getY() - 180 - Math.random() * 15,
                                     ease: 'Quad.easeIn',
-                                    duration: 500 + Math.floor(distToPlayer * 1.5),
+                                    duration: 550 + Math.floor(distToPlayer * 1.5),
                                     onComplete: () => {
                                         messageBus.publish("selfTakeDamage", hasBigRock ? 20 : 5);
                                         if (hasBigRock) {

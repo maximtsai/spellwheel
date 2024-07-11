@@ -363,8 +363,8 @@ class Encyclopedia {
         text5.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
         let text6 = PhaserScene.add.text(text4.x, text4.y + 6, getLangText('pre_fight_0f'), {fontFamily: 'verdanabold', fontSize: 17, color: '#200000', align: 'left'});
         text6.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
-        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 8, gameConsts.halfHeight + 11, getLangText('pre_fight_0g'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'center'});
-        text7.setDepth(this.baseDepth).setAlpha(0).setOrigin(0.5, 0.5);
+        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 200, gameConsts.halfHeight - 110, getLangText('pre_fight_0g'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'center'});
+        text7.setDepth(this.baseDepth).setAlpha(0).setOrigin(1, 0.5);
         let text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 219, getLangText('pre_fight_0h'), {fontFamily: 'verdanabold', fontSize: 15, color: '#200000', align: 'center'});
         text8.setDepth(this.baseDepth).setAlpha(0).setOrigin(0.5, 0.5);
         this.currentPageItems.push(imageCover);

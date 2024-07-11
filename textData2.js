@@ -361,22 +361,22 @@ let textData2 = {
         "jp": "ホイールをクリックしてドラッグします"
     },
     "pre_fight_0c": {
-        "en_us": "Strike",
-        "fr": "Frapper",
-        "zh_tw": "打",
-        "zh_cn": "打",
-        "ru": "Забастовка",
-        "es": "Huelga",
-        "jp": "打つ"
+        "en_us": "STRIKE",
+        "fr": "ATTAQUE",
+        "zh_tw": "攻擊",
+        "zh_cn": "攻击",
+        "ru": "АТАКА",
+        "es": "ATAQUE",
+        "jp": "攻撃"
     },
     "pre_fight_0d": {
-        "en_us": "Matter",
-        "fr": "Affaire",
-        "zh_tw": "事",
-        "zh_cn": "事",
-        "ru": "Материя",
-        "es": "Materia",
-        "jp": "事"
+        "en_us": "MATTER",
+        "fr": "MATIÈRE",
+        "zh_tw": "物質",
+        "zh_cn": "物质",
+        "ru": "МАТЕРИЯ",
+        "es": "MATERIA",
+        "jp": "物質"
     },
     "pre_fight_0e": {
         "en_us": "Casts attack spells",
@@ -389,12 +389,12 @@ let textData2 = {
     },
     "pre_fight_0f": {
         "en_us": "Uses solid rock and\nstone for your spells",
-        "fr": "Utilise de la roche et de la pierre solides pour vos sorts",
-        "zh_tw": "使用堅實的岩石和石頭進行你的法術",
-        "zh_cn": "使用坚实的岩石和石头进行你的法术",
-        "ru": "Использует твердый камень и камень для ваших заклинаний",
-        "es": "Usa roca sólida y piedra para tus hechizos",
-        "jp": "呪文に固体の岩と石を使用"
+        "fr": "Utilise de la roche et de\nla pierre solides pour vos sorts",
+        "zh_tw": "使用堅實的岩石和\n石頭進行你的法術",
+        "zh_cn": "使用坚实的岩石和\n石头进行你的法术",
+        "ru": "Использует твердый камень\nи камень для ваших заклинаний",
+        "es": "Usa roca sólida y\npiedra para tus hechizos",
+        "jp": "呪文に固体の\n岩と石を使用"
     },
     "pre_fight_0g": {
         "en_us": "Deal 12 Damage",

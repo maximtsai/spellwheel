@@ -92,11 +92,12 @@
 
      startIdleAnim(isSlow) {
          let initDur = isSlow ? 700 : 300;
+         let initEase = 'Quad.easeInOut';
          this.addTween({
              targets: this.sprite,
              y: 90,
              scaleY: this.sprite.startScale,
-             ease: 'Cubic.easeOut',
+             ease: initEase,
              duration: initDur,
          })
 
@@ -107,7 +108,7 @@
              y: 140.15,
              x: this.leftArm.startX,
              rotation: 0.08,
-             ease: 'Cubic.easeOut',
+             ease: initEase,
              duration: initDur,
          });
          this.addTween({
@@ -116,7 +117,7 @@
              scaleY: this.leftShoulder.startScaleX,
              x: this.leftShoulder.startX,
              y: 90,
-             ease: 'Cubic.easeOut',
+             ease: initEase,
              duration: initDur,
          });
 
@@ -127,7 +128,7 @@
              x: this.rightArm.startX,
              y: 139.3,
              rotation: -0.08,
-             ease: 'Cubic.easeOut',
+             ease: initEase,
              duration: initDur,
              onComplete: () => {
                  this.idleAnimations.push(this.addTween({

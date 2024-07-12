@@ -548,7 +548,7 @@ const ENABLE_KEYBOARD = true;
         this.timeStopHeavy.setScale(1.7);
 
         this.clockbg = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 2, 'lowq', 'clockbg.png').setAlpha(0).setScale(1.06);
-        this.clockbg.setDepth(1);
+        this.clockbg.setDepth(0);
         this.gear1 = this.scene.add.sprite(-40, 280, 'circle', 'gear.png').setAlpha(0);
         this.gear1.setDepth(1);
         this.gear2 = this.scene.add.sprite(120, 442, 'circle', 'gear_small.png').setAlpha(0);

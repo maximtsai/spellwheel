@@ -1235,31 +1235,6 @@
 					}
 				},
 				{
-					"filename": "rune_mind.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 60,
-						"h": 165
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 1,
-						"w": 34,
-						"h": 51
-					},
-					"frame": {
-						"x": 1369,
-						"y": 1791,
-						"w": 34,
-						"h": 51
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "rune_void.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1335,7 +1310,7 @@
 					}
 				},
 				{
-					"filename": "rune_mind_glow.png",
+					"filename": "rune_mind.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1343,16 +1318,16 @@
 						"h": 165
 					},
 					"spriteSourceSize": {
-						"x": 13,
-						"y": 1,
-						"w": 34,
-						"h": 51
+						"x": 14,
+						"y": 0,
+						"w": 32,
+						"h": 53
 					},
 					"frame": {
 						"x": 611,
 						"y": 1744,
-						"w": 34,
-						"h": 51
+						"w": 32,
+						"h": 53
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1374,7 +1349,7 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 647,
+						"x": 645,
 						"y": 1740,
 						"w": 58,
 						"h": 43
@@ -1399,10 +1374,35 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 707,
+						"x": 705,
 						"y": 1740,
 						"w": 58,
 						"h": 43
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_mind_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 165
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 0,
+						"w": 32,
+						"h": 53
+					},
+					"frame": {
+						"x": 611,
+						"y": 1799,
+						"w": 32,
+						"h": 53
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1424,8 +1424,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 611,
-						"y": 1797,
+						"x": 645,
+						"y": 1785,
 						"w": 50,
 						"h": 51
 					},
@@ -1449,35 +1449,10 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 663,
+						"x": 697,
 						"y": 1785,
 						"w": 54,
 						"h": 45
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_unload_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 60,
-						"h": 165
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 0,
-						"w": 47,
-						"h": 48
-					},
-					"frame": {
-						"x": 719,
-						"y": 1785,
-						"w": 47,
-						"h": 48
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1585,6 +1560,31 @@
 					}
 				},
 				{
+					"filename": "rune_unload_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 165
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 0,
+						"w": 47,
+						"h": 48
+					},
+					"frame": {
+						"x": 1598,
+						"y": 440,
+						"w": 47,
+						"h": 48
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "rune_protect.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1600,7 +1600,7 @@
 					},
 					"frame": {
 						"x": 1598,
-						"y": 440,
+						"y": 490,
 						"w": 46,
 						"h": 42
 					},
@@ -1625,7 +1625,7 @@
 					},
 					"frame": {
 						"x": 1598,
-						"y": 484,
+						"y": 534,
 						"w": 46,
 						"h": 42
 					},
@@ -1650,7 +1650,7 @@
 					},
 					"frame": {
 						"x": 1598,
-						"y": 528,
+						"y": 578,
 						"w": 44,
 						"h": 43
 					},
@@ -1675,7 +1675,7 @@
 					},
 					"frame": {
 						"x": 1598,
-						"y": 573,
+						"y": 623,
 						"w": 44,
 						"h": 43
 					},
@@ -1700,7 +1700,7 @@
 					},
 					"frame": {
 						"x": 1598,
-						"y": 618,
+						"y": 668,
 						"w": 40,
 						"h": 44
 					},
@@ -1725,7 +1725,7 @@
 					},
 					"frame": {
 						"x": 1598,
-						"y": 664,
+						"y": 714,
 						"w": 40,
 						"h": 44
 					},
@@ -1965,6 +1965,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:2de000dc1b8c63d01859b36c92280a23:d575dffe8645946086a51476a4ccb0d2:9a90585c5b43d68de58739bf36e3c98d$"
+		"smartupdate": "$TexturePacker:SmartUpdate:78260a5fd9bc875b515d29da56766728:f6271b5a0007d39a3f7a3cd73132296e:9a90585c5b43d68de58739bf36e3c98d$"
 	}
 }

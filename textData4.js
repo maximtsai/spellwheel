@@ -18,6 +18,15 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "deathFight2d": {
+        "en_us": "IMPRESSIVE DEFENSE, BUT\nYOU CAN'T DEFEND FOREVER.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "back_to_training": {
         "en_us": "BACK TO TRAINING",
         "fr": "",

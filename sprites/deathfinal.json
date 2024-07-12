@@ -4,7 +4,7 @@
 			"image": "sprites/deathfinal-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 2044,
+				"w": 2047,
 				"h": 2003
 			},
 			"scale": 1,
@@ -146,13 +146,13 @@
 						"x": 128,
 						"y": 106,
 						"w": 93,
-						"h": 51
+						"h": 50
 					},
 					"frame": {
 						"x": 1948,
 						"y": 494,
 						"w": 93,
-						"h": 51
+						"h": 50
 					},
 					"anchor": {
 						"x": 0.5,
@@ -175,7 +175,7 @@
 					},
 					"frame": {
 						"x": 1948,
-						"y": 547,
+						"y": 546,
 						"w": 90,
 						"h": 38
 					},
@@ -220,13 +220,13 @@
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 65,
-						"w": 336,
+						"w": 339,
 						"h": 344
 					},
 					"frame": {
 						"x": 497,
 						"y": 571,
-						"w": 336,
+						"w": 339,
 						"h": 344
 					},
 					"anchor": {
@@ -249,10 +249,35 @@
 						"h": 409
 					},
 					"frame": {
-						"x": 835,
+						"x": 838,
 						"y": 813,
 						"w": 435,
 						"h": 409
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_2_left.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 325,
+						"h": 283
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 4,
+						"w": 169,
+						"h": 199
+					},
+					"frame": {
+						"x": 1275,
+						"y": 813,
+						"w": 169,
+						"h": 199
 					},
 					"anchor": {
 						"x": 0.5,
@@ -278,31 +303,6 @@
 						"y": 917,
 						"w": 328,
 						"h": 95
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_2_left.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 325,
-						"h": 283
-					},
-					"spriteSourceSize": {
-						"x": 22,
-						"y": 4,
-						"w": 169,
-						"h": 199
-					},
-					"frame": {
-						"x": 1272,
-						"y": 813,
-						"w": 169,
-						"h": 199
 					},
 					"anchor": {
 						"x": 0.5,
@@ -524,7 +524,7 @@
 						"h": 204
 					},
 					"frame": {
-						"x": 1272,
+						"x": 1275,
 						"y": 1014,
 						"w": 146,
 						"h": 204
@@ -599,7 +599,7 @@
 						"h": 311
 					},
 					"frame": {
-						"x": 1443,
+						"x": 1446,
 						"y": 907,
 						"w": 293,
 						"h": 311
@@ -624,7 +624,7 @@
 						"h": 301
 					},
 					"frame": {
-						"x": 1738,
+						"x": 1741,
 						"y": 907,
 						"w": 305,
 						"h": 301
@@ -649,7 +649,7 @@
 						"h": 300
 					},
 					"frame": {
-						"x": 1738,
+						"x": 1741,
 						"y": 1210,
 						"w": 300,
 						"h": 300
@@ -715,6 +715,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:198a6ac9459d84874bdd26d5720a9acf:8ffbec36fdaccc10ff1d3951980f6629:dfb2cdd9e7b94615120d14c14cdfc785$"
+		"smartupdate": "$TexturePacker:SmartUpdate:603dd7ddc7d28f4228b1743abc919393:39ad17194cf13caabe93c8637a4c2df8:dfb2cdd9e7b94615120d14c14cdfc785$"
 	}
 }

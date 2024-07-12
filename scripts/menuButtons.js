@@ -567,8 +567,8 @@ function showMainMenuButtons() {
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: -200,
-            y: 450,
+            x: 100,
+            y: 460,
         },
         hover: {
             ref: "menu_btn_hover.png",

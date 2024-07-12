@@ -27,6 +27,15 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "deathFight2dx": {
+        "en_us": "IT'S TIME TO FINISH THIS.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "back_to_training": {
         "en_us": "BACK TO TRAINING",
         "fr": "",

@@ -283,9 +283,9 @@
         this.attacks = [
             [
                 {
-                    name: "|12",
+                    name: "|10",
                     chargeAmt: 450,
-                    damage: 12,
+                    damage: 10,
                     attackTimes: 1,
                     chargeMult: 4,
                     prepareSprite: 'death2windup.png',
@@ -299,7 +299,9 @@
                         if (this.isSecondPunchCycle && !this.thornForm) {
                             this.fireForm = true;
                             this.setAsleep();
-                            globalObjects.bannerTextManager.setDialog([getLangText('deathFight2d')]);
+                            let usedLangText = globalObjects.player.getHealth() >= 60 ? getLangText('deathFight2d') : getLangText('deathFight2dx')
+
+                            globalObjects.bannerTextManager.setDialog([usedLangText]);
                             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                             globalObjects.bannerTextManager.showBanner(0);
                             globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -335,7 +337,7 @@
                 },
                 {
                     name: ";30",
-                    chargeAmt: 500,
+                    chargeAmt: 650,
                     damage: 30,
                     attackTimes: 1,
                     prepareSprite: "death2crouch.png",
@@ -597,6 +599,8 @@
          punchPortal.setPosition(gameConsts.halfWidth * 0.5 + x * 0.5, globalObjects.player.getY() - 210 - randScale * 100 - Math.abs(x - gameConsts.halfWidth) * 0.1).setScale(0);
          let rotAmt = 0.0015*(x - gameConsts.halfWidth);
          punchPortal.setRotation(rotAmt).setDepth(119);
+        let detuneAmt = -200 + Math.random() * 100;
+
          this.addTween({
              targets: punchPortal,
              scaleX: randScale,
@@ -614,6 +618,8 @@
                  punchFistFade.setScale(punchFist.scaleX, punchFist.scaleY).setRotation(punchFist.rotation).setDepth(punchFist.depth + 1);
                  punchFistFade.setOrigin(0.6, 0.5).setAlpha(0.3);
                  punchFistFade.x = punchFist.x;
+                 let swishSound = playSound('swish').detune = detuneAmt;
+                 swishSound.pan = isLeft ? -0.4 : 0.4;
                  this.addTween({
                      targets: punchFistFade,
                      scaleX: isLeft ? randScale * 1.1: randScale * -1.1,
@@ -623,7 +629,6 @@
                      ease: 'Cubic.easeIn',
                      duration: 140,
                      onComplete: () => {
-                         playSound(isLeft ? 'punch' : 'punch2');
                          this.addTween({
                              targets: punchFistFade,
                              scaleX: isLeft ? randScale : -randScale,
@@ -647,10 +652,17 @@
                          if (pauseScreen) {
                              messageBus.publish('tempPause', 200, 0.05);
                              playSound('death_attack', 1).detune = 800;
-                             let scaleX = isFlipped ? -2 : 2;
-                             let fakeDeathBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', pauseScreen).setScale(scaleX, 2).setDepth(30);
+                             let scaleX = isFlipped ? -1.9 : 1.9;
+                             let fakeDeathBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', pauseScreen).setScale(scaleX, 1.9).setDepth(30);
                              fakeDeathBG.scrollFactorX = -0.1;
                              fakeDeathBG.scrollFactorY = 0;
+                             this.addTween({
+                                 targets: fakeDeathBG,
+                                 scaleX: scaleX * 1.1,
+                                 scaleY: 1.9 * 1.1,
+                                 ease: 'Cubic.easeOut',
+                                 duration: 200,
+                             })
                              this.addTween({
                                  targets: fakeDeathBG,
                                  alpha: 0,
@@ -668,7 +680,7 @@
                          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 130);
                          powEffect.setPosition(gameConsts.halfWidth * 0.4 + 0.6 * punchPortal.x, globalObjects.player.getY() - 185).setDepth(998).setScale(1.4);
                          screenShake(2);
-                         playSound(isLeft ? 'punch' : 'punch2');
+                         playSound(isLeft ? 'punch' : 'punch2').detune = detuneAmt + 150;
                          this.addTween({
                              targets: punchFist,
                              scaleX: isLeft ? randScale : -randScale,
@@ -1045,7 +1057,7 @@
                      y: 94,
                      scaleY: this.sprite.startScale * 0.983,
                      ease: 'Quart.easeIn',
-                     duration: 500,
+                     duration: 420,
                  })
                  this.addTween({
                      targets: this.leftShoulder,
@@ -1054,17 +1066,22 @@
                      x: this.leftShoulder.startX + 1,
                      y: 93,
                      ease: 'Cubic.easeIn',
-                     duration: 500,
+                     duration: 420,
+                 });
+                 this.addTween({
+                     targets: this.leftArm,
+                     x: this.leftArm.startX - 6,
+                     y: 141,
+                     rotation: -0.38,
+                     ease: 'Quart.easeIn',
+                     duration: 420,
                  });
                  this.addTween({
                      targets: this.leftArm,
                      scaleX: this.leftArm.startScaleX * 1.2,
                      scaleY: this.leftArm.startScaleX * 1.2,
-                     x: this.leftArm.startX - 6,
-                     y: 141,
-                     rotation: -0.38,
-                     ease: 'Quart.easeIn',
-                     duration: 500,
+                     ease: 'Quint.easeIn',
+                     duration: 420,
                  });
                  // this.addTween({
                  //     targets: this.leftArm,
@@ -1072,16 +1089,20 @@
                  //     duration: 500,
                  // });
 
-
                  this.addTween({
                      targets: this.rightArm,
                      scaleX: this.rightArm.startScaleX * 1.2,
                      scaleY: this.rightArm.startScaleX * 1.2,
+                     ease: 'Quint.easeIn',
+                     duration: 420,
+                 });
+                 this.addTween({
+                     targets: this.rightArm,
                      x: this.rightArm.startX + 8,
                      y: 140,
                      rotation: 0.36,
                      ease: 'Quart.easeIn',
-                     duration: 500,
+                     duration: 420,
                      onComplete: () => {
                         if (completeFunc) {
                             completeFunc()

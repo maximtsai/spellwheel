@@ -28,6 +28,7 @@ function clearOnlyMenuButtons() {
     globalObjects.lvl9Button.destroy();
     globalObjects.lvl10Button.destroy();
     globalObjects.lvl11Button.destroy();
+    globalObjects.lvl12Button.destroy();
 
 
     globalObjects.en_us_button.destroy();
@@ -588,6 +589,32 @@ function showMainMenuButtons() {
     });
     globalObjects.lvl11Button.setScale(0.5);
     globalObjects.lvl11Button.addText("LEVEL 11", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+
+    globalObjects.lvl12Button = new Button({
+        normal: {
+            ref: "menu_btn_normal.png",
+            atlas: 'buttons',
+            x: 100,
+            y: 490,
+        },
+        hover: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        press: {
+            ref: "menu_btn_press.png",
+            atlas: 'buttons',
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp: () => {
+            clearMenuButtons();
+            beginPreLevel(12);
+        }
+    });
+    globalObjects.lvl12Button.setScale(0.5);
+    globalObjects.lvl12Button.addText("LEVEL 11.5", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
 
     globalObjects.creditsButton = new Button({

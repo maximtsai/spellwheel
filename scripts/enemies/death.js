@@ -469,20 +469,20 @@
                      },
                  },
                  {
-                     name: ";20x6",
-                     chargeAmt: 1300,
-                     chargeMult: 1.3,
+                     name: ";16x6",
+                     chargeAmt: 1200,
+                     chargeMult: 1.4,
                      finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
                      attackStartFunction: () => {
                          // this.hideCurrentAttack();
-                         this.swingScytheFastIntro(20, false, false,() => {
-                             this.swingScytheFast(20, false, true,() => {
-                                 this.swingScytheFast(20, false, false,() => {
-                                     this.swingScytheFast(20, false, true,() => {
-                                         this.swingScytheFast(20, false, false,() => {
-                                             this.swingScytheFast(20, false, true,() => {
+                         this.swingScytheFastIntro(16, false, false,() => {
+                             this.swingScytheFast(16, false, true,() => {
+                                 this.swingScytheFast(16, false, false,() => {
+                                     this.swingScytheFast(16, false, true,() => {
+                                         this.swingScytheFast(16, false, false,() => {
+                                             this.swingScytheFast(16, false, true,() => {
                                                  super.setHealth(1);
                                                  PhaserScene.tweens.add({
                                                      targets: this.mainScythe,
@@ -502,8 +502,8 @@
                      }
                  },
                  {
-                     name: ";44",
-                     chargeAmt: 800,
+                     name: ";36",
+                     chargeAmt: 700,
                      chargeMult: 2,
                      finishDelay: 5000,
                      damage: -1,

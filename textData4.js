@@ -19,7 +19,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2d": {
-        "en_us": "IMPRESSIVE DEFENSE, BUT YOU\nCAN'T PROTECT YOURSELF FOREVER.",
+        "en_us": "IMPRESSIVE DEFENSE, BUT YOU\nCAN'T HOLD OUT FOREVER.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

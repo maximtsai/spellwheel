@@ -86,6 +86,7 @@
                      this.whiteBG.destroy();
                  }
              })
+             playSound('heartbeatfast');
              this.startIdleAnim(true)
          })
      }
@@ -299,15 +300,17 @@
                         if (this.isSecondPunchCycle && !this.thornForm) {
                             this.fireForm = true;
                             this.setAsleep();
-                            let usedLangText = globalObjects.player.getHealth() >= 60 ? getLangText('deathFight2d') : getLangText('deathFight2dx')
+                            let usedLangText = globalObjects.player.getHealth() >= 40 ? getLangText('deathFight2d') : getLangText('deathFight2dx')
 
-                            globalObjects.bannerTextManager.setDialog([usedLangText]);
-                            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-                            globalObjects.bannerTextManager.showBanner(0);
-                            globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                                this.setAwake();
-                                this.playFireFistsInitAnim();
-                            })
+                            if (!globalObjects.player.isDead()) {
+                                globalObjects.bannerTextManager.setDialog([usedLangText]);
+                                globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                                globalObjects.bannerTextManager.showBanner(0);
+                                globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                                    this.setAwake();
+                                    this.playFireFistsInitAnim();
+                                })
+                            }
                         }
                     },
                     attackFinishFunction: () => {
@@ -618,7 +621,8 @@
                  punchFistFade.setScale(punchFist.scaleX, punchFist.scaleY).setRotation(punchFist.rotation).setDepth(punchFist.depth + 1);
                  punchFistFade.setOrigin(0.6, 0.5).setAlpha(0.3);
                  punchFistFade.x = punchFist.x;
-                 let swishSound = playSound('swish').detune = detuneAmt;
+                 let swishSound = playSound('swish');
+                 swishSound.detune = detuneAmt;
                  swishSound.pan = isLeft ? -0.4 : 0.4;
                  this.addTween({
                      targets: punchFistFade,
@@ -652,22 +656,22 @@
                          if (pauseScreen) {
                              messageBus.publish('tempPause', 200, 0.05);
                              playSound('death_attack', 1).detune = 800;
-                             let scaleX = isFlipped ? -1.9 : 1.9;
-                             let fakeDeathBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', pauseScreen).setScale(scaleX, 1.9).setDepth(30);
+                             let scaleX = isFlipped ? -1.92 : 1.92;
+                             let fakeDeathBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight * 0.43, 'backgrounds', pauseScreen).setScale(scaleX, 1.92).setDepth(30).setOrigin(0.5, 0.25);
                              fakeDeathBG.scrollFactorX = -0.1;
                              fakeDeathBG.scrollFactorY = 0;
                              this.addTween({
                                  targets: fakeDeathBG,
                                  scaleX: scaleX * 1.1,
                                  scaleY: 1.9 * 1.1,
-                                 ease: 'Cubic.easeOut',
-                                 duration: 200,
+                                 ease: 'Quart.easeOut',
+                                 duration: 150,
                              })
                              this.addTween({
                                  targets: fakeDeathBG,
                                  alpha: 0,
                                  ease: 'Quad.easeIn',
-                                 duration: 250,
+                                 duration: 220,
                                  onComplete: () => {
                                      fakeDeathBG.destroy();
                                  }

@@ -6,7 +6,7 @@
          this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5);
          this.handTemp = this.addImage(gameConsts.halfWidth  + 150,gameConsts.halfHeight - 200, 'deathfinal', 'okay.png').setDepth(30);
          this.handTemp2 = this.addImage(gameConsts.halfWidth  - 150,gameConsts.halfHeight - 200, 'deathfinal', 'palm.png').setDepth(30);
-        setTimeout(() => {
+         this.addTimeout(() => {
              this.setAsleep();
          }, 10)
      }

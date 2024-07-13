@@ -14,7 +14,7 @@
              duration: 1000,
          })
         globalObjects.magicCircle.disableMovement();
-        setTimeout(() => {
+         this.addTimeout(() => {
              this.setAsleep();
              this.introSpeech();
             globalObjects.encyclopedia.hideButton();

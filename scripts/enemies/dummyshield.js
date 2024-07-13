@@ -13,7 +13,7 @@
      }
 
      initTutorial() {
-        setTimeout(() => {
+         this.addTimeout(() => {
             this.createPicketSign();
         }, 1000);
 
@@ -222,7 +222,7 @@
                      damage: -1,
                      isBigMove: true,
                     startFunction: () => {
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             this.takeDamage(10, false);
                         }, 10);
                     },
@@ -253,7 +253,7 @@
                         });
                      },
                     attackStartFunction: () => {
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             this.takeDamage(20, false);
                         }, 10);
                         playSound('clunk2');
@@ -278,7 +278,7 @@
                      transitionFast: true,
                      damage: -1,
                     startFunction: () => {
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             this.takeDamage(10, false);
                         }, 10);
                     },
@@ -299,7 +299,7 @@
                      damage: -1,
                      isBigMove: true,
                     startFunction: () => {
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             this.takeDamage(10, false);
                         }, 10);
                     },
@@ -330,7 +330,7 @@
                         });
                      },
                     attackStartFunction: () => {
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             this.takeDamage(20, false);
                         }, 10);
                         playSound('clunk');
@@ -356,7 +356,7 @@
                      damage: -1,
                      isBigMove: true,
                     startFunction: () => {
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             this.takeDamage(10, false);
                         }, 10);
                     },
@@ -381,7 +381,7 @@
                      damage: -1,
                      isBigMove: true,
                     startFunction: () => {
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             this.takeDamage(10, false);
                         }, 10);
                     },
@@ -404,7 +404,7 @@
                      chargeMult: 8,
                      damage: -1,
                     startFunction: () => {
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             this.takeDamage(10, false);
                         }, 10);
                     },
@@ -435,7 +435,7 @@
                         });
                      },
                     attackStartFunction: () => {
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             this.takeDamage(20, false);
                         }, 10);
                         playSound('clunk2');

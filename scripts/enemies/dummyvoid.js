@@ -380,7 +380,7 @@ class Dummyvoid extends Dummypractice {
                         });
                     },
                     attackStartFunction: () => {
-                        setTimeout(() => {
+                        this.addTimeout(() => {
                             this.takeDamage(20, false);
                         }, 10);
                         playSound('clunk2');

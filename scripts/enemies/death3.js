@@ -4,7 +4,7 @@
          this.initSprite('max_death_3.png', 0.7, 0, 0, 'deathfinal');
          this.bgMusic = playMusic('heartbeat', 0.75, true);
         swirlInReaperFog(1.25);
-        setTimeout(() => {
+         this.addTimeout(() => {
              this.setAsleep();
          }, 10)
      }

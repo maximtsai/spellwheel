@@ -487,8 +487,7 @@
                             duration: isBigPoop ? 1000 : 600,
                             onComplete: () => {
                                 if (isBigPoop) {
-                                    messageBus.publish("selfTakeDamage", 3);
-                                    messageBus.publish('playerAddDelayedDamage', 2);
+                                    messageBus.publish('playerAddDelayedDamage', 5);
 
                                     playSound('punch', 0.5);
                                     playSound('squish');
@@ -689,11 +688,11 @@
                      }
                  },
                  {
-                     name: "}5x4 (with extra)",
+                     name: "}5+$5",
                      chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
-                         this.birdPoops(4, true, false, true);
+                         this.birdPoops(2, true, false, true);
                          this.nextBirdIndex = 6;
                          this.checkCrumble(true);
                      }

@@ -281,7 +281,7 @@
                          });
                      },
                      attackStartFunction: () => {
-                         setTimeout(() => {
+                         this.addTimeout(() => {
                              this.takeDamage(50, false);
                          }, 10);
                          playSound('clunk');

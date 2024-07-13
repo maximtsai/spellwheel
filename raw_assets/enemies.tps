@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>85</uint>
+        <uint>84</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -570,6 +570,52 @@
                 <rect>105,106,210,211</rect>
                 <key>scale9Paddings</key>
                 <rect>105,106,210,211</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/gobbo_extinguish.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.72</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>93,107,185,213</rect>
+                <key>scale9Paddings</key>
+                <rect>93,107,185,213</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/gobbo_fire1.png</key>
+            <key type="filename">enemies/gobbo_fire2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.767</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>63,125,125,249</rect>
+                <key>scale9Paddings</key>
+                <rect>63,125,125,249</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/gobbo_knock.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.75</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>93,107,185,213</rect>
+                <key>scale9Paddings</key>
+                <rect>93,107,185,213</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

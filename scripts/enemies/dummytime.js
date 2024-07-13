@@ -109,7 +109,6 @@
              healAmt = this.healthMax;
          }
          this.currDummyAnim = this.addTween({
-             delay: 2300,
              targets: this.sprite,
              scaleX: this.sprite.startScale * 0.82,
              scaleY: this.sprite.startScale * 0.82,
@@ -117,7 +116,6 @@
              ease: "Quint.easeOut",
              duration: 750,
              onComplete: () => {
-                 this.highlightGoal();
                  this.currDummyAnim = this.addTween({
                      targets: this.sprite,
                      scaleX: this.sprite.startScale * 1.2,
@@ -128,7 +126,7 @@
                      onComplete: () => {
                          playSound('magic', 0.6);
                          this.heal(healAmt);
-                         messageBus.publish('animateHealNum', this.x, this.y - 50, '+' + this.healthMax, 0.5 + Math.sqrt(this.healthMax) * 0.2);
+                         messageBus.publish('animateHealNum', this.x, this.y - 50, '+' + healAmt, 0.5 + Math.sqrt(this.healthMax) * 0.2);
                          if (!this.healSprite) {
                              this.healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(0.9).setDepth(999).setAlpha(1);
                          }
@@ -193,8 +191,8 @@
                          let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                          let centerXPos = globalObjects.textPopupManager.getCenterPos();
 
-                         this.rune1 = this.addSprite(centerXPos - 30, runeYPos + 28, 'circle', 'rune_reinforce_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
-                         this.rune2 = this.addSprite(centerXPos + 26, runeYPos + 28, 'circle', 'rune_time_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
+                         this.rune1 = this.addSprite(centerXPos - 30, runeYPos + 30, 'circle', 'rune_reinforce_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
+                         this.rune2 = this.addSprite(centerXPos + 26, runeYPos + 30, 'circle', 'rune_time_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
                          this.addTween({
                              targets: [this.rune1, this.rune2],
                              alpha: 1,
@@ -234,16 +232,6 @@
 
                      },
                      attackStartFunction: () => {
-
-                     }
-                 },
-                 {
-                     name: "PREPARING ATTACKS!",
-                     chargeAmt: 450,
-                     transitionFast: true,
-                     isBigMove: true,
-                     damage: -1,
-                     startFunction: () => {
                          globalObjects.textPopupManager.hideInfoText();
                          if (this.rune1) {
                              this.addTween({
@@ -252,8 +240,6 @@
                                  duration: 200,
                              });
                          }
-                     },
-                     attackStartFunction: () => {
                          this.currentAttackSetIndex = 1;
                          this.nextAttackIndex = 0;
                      }
@@ -297,6 +283,7 @@
                  {
                      name: "FIXING SELF \\20",
                      chargeAmt: 350,
+                     finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
@@ -304,9 +291,9 @@
                      }
                  },
                  {
-                     name: "|10",
-                     chargeAmt: 375,
-                     chargeMult: 2,
+                     name: "|6x2",
+                     chargeAmt: 400,
+                     chargeMult: 2.3,
                      finishDelay: 300,
                      transitionFast: true,
                      damage: -1,
@@ -317,13 +304,13 @@
 
                      },
                      attackFinishFunction: () => {
-                         this.throwWeapon('sword.png', 10, 1);
+                         this.throwWeapon('dagger.png', 6, 2);
                      }
                  },
                  {
-                     name: "|6x3",
-                     chargeAmt: 500,
-                     chargeMult: 2,
+                     name: "|3x6",
+                     chargeAmt: 450,
+                     chargeMult: 2.3,
                      finishDelay: 300,
                      transitionFast: true,
                      damage: -1,
@@ -334,16 +321,17 @@
 
                      },
                      attackFinishFunction: () => {
-                         this.throwTriple('dagger.png', 6, 1);
+                         this.throwTriple('star.png', 3, 2);
                      }
                  },
                  {
-                     name: "FIXING SELF \\20",
+                     name: "FIXING SELF \\25",
                      chargeAmt: 350,
+                     finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(20);
+                         this.healAnim(25);
                      }
                  },
              ]

@@ -11,6 +11,7 @@
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3500)
+         messageBus.subscribe("clearMindBurn", this.clearMindBurn.bind(this))
 
      }
 
@@ -22,11 +23,31 @@
      }
 
      // update(dt) {}
+     clearMindBurn() {
+         this.burnAnim.stop();
+         this.isBurning = false;
+         if (this.dead) {
+             return;
+         } else {
+             this.setSprite('gobbo_extinguish.png');
+             this.addTimeout(() => {
+                 this.setSprite(this.defaultSprite);
+             }, 1000)
 
+             playSound('goblin_grunt', 0.4).detune = 500;
+             this.sprite.x = gameConsts.halfWidth + (Math.random() < 0.5 ? 15 : -15);
+             this.addTween({
+                 targets: this.sprite,
+                 x: gameConsts.halfWidth,
+                 ease: 'Bounce.easeOut',
+                 duration: 800
+             })
+         }
+     }
 
      takeEffect(newEffect) {
-         if (newEffect.name == 'mindStrike' && this.shield <= 0) {
-             if (this.sprite) {
+         if (this.sprite) {
+            if (newEffect.name == 'mindStrike' && this.shield <= 0) {
                  let oldSprite = this.sprite.frame.name;
                  if (oldSprite === 'gobbo_elec.png') {
                      oldSprite = this.defaultSprite;
@@ -45,7 +66,10 @@
                  setTimeout(() => {
                      this.setSpriteIfNotInactive(oldSprite);
                  }, 300)
-             }
+            } else if (this.shield >= 1 && newEffect.name == 'mindBurn') {
+                this.burnAnim = this.sprite.play('gobboshieldfire');
+                this.isBurning = true;
+            }
          }
          super.takeEffect(newEffect)
          this.statuses[newEffect.name] = newEffect;
@@ -76,7 +100,7 @@
                  this.interruptCurrentAttack();
                  this.currentAttackSetIndex = 3;
                  this.nextAttackIndex = 0;
-                 playSound('goblin_grunt');
+                 playSound('goblin_grunt').detune = 0;
                  playSound('clunk');
              }
          }
@@ -377,17 +401,19 @@
              this.breatheTween.stop();
          }
          let horizMove = Math.ceil(3.5 * magnitude);
+         let burningMult = this.isBurning ? 0.2 : 1;
          this.breatheTween = this.addTween({
              targets: this.sprite,
-             duration: duration * (Math.random() * 0.5 + 1),
+             duration: duration * (Math.random() * 0.5 + 1) * burningMult,
              rotation: -0.02 * magnitude,
              x: this.sprite.startX - horizMove,
              ease: 'Cubic.easeInOut',
              completeDelay: 150,
              onComplete: () => {
+                 let burningMult2 = this.isBurning ? 0.2 : 1;
                  this.breatheTween = this.addTween({
                      targets: this.sprite,
-                     duration: duration * (Math.random() * 0.5 + 1),
+                     duration: duration * (Math.random() * 0.5 + 1) * burningMult2,
                      rotation: 0.02 * magnitude,
                      x: this.sprite.startX + horizMove,
                      ease: 'Cubic.easeInOut',
@@ -405,6 +431,7 @@
              return;
         }
         super.die();
+         this.burnAnim.stop();
         if (this.currAnim) {
             this.currAnim.stop();
         }
@@ -435,7 +462,7 @@
              ease: "Cubic.easeIn",
              duration: 25,
              onComplete: () => {
-                 playSound('goblin_grunt');
+                 playSound('goblin_grunt').detune = 0;
                  this.setDefaultSprite('gobboDead.png');
                  this.sprite.setRotation(0);
                  this.x -= 5;

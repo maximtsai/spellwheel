@@ -434,7 +434,7 @@ const ENABLE_KEYBOARD = true;
         this.delayDamageText.alpha = 0;
         this.delayDamageText.setOrigin(0.5, -0.35);
 
-        this.altString = "alt2_";
+        this.altString = "";//"alt2_";
 
         this.outerCircle = scene.add.sprite(x, y, 'circle', this.altString + 'usage_normal.png').setDepth(101);
         this.outerCircle.torque = 0;
@@ -2547,6 +2547,7 @@ const ENABLE_KEYBOARD = true;
                      ease: 'Quad.easeOut'
                  });
                  statuses[effectName] = null;
+                 messageBus.publish("clearMindBurn");
              }
          };
          messageBus.publish('enemyTakeEffect', effectObj);

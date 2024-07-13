@@ -71,7 +71,7 @@
         if (this.runSfxLoop) {
             this.runSfxLoop.detune = 750;
             setVolume(this.runSfxLoop, 1, 300)
-            setTimeout(() => {
+            this.addTimeout(() => {
                 this.runSfxLoop.detune = 0;
                 setVolume(this.runSfxLoop, 0, 300)
             }, 600)
@@ -478,7 +478,7 @@
              duration: 500,
          });
         playSound('victory');
-         setTimeout(() => {
+        this.addTimeout(() => {
              continueText.alpha = 1;
          }, 1000);
 

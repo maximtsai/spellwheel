@@ -236,7 +236,7 @@
                  },
                  {
                      name: "Malfunctioning...",
-                     chargeAmt: 350,
+                     chargeAmt: 300,
                      chargeMult: 4,
                      damage: -1,
                      isPassive: true,
@@ -313,7 +313,7 @@
                  },
                  {
                      name: "Malfunctioning...",
-                     chargeAmt: 350,
+                     chargeAmt: 300,
                      chargeMult: 7,
                      damage: -1,
                      isPassive: true,
@@ -418,8 +418,8 @@
                  },
                  {
                      name: "Malfunctioning...",
-                     chargeAmt: 350,
-                     chargeMult: 4,
+                     chargeAmt: 300,
+                     chargeMult: 8,
                      damage: -1,
                      isPassive: true,
                      startFunction: () => {

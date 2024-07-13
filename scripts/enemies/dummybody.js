@@ -47,9 +47,29 @@
 
     showThornsTutorial() {
          this.addTimeout(() => {
-             this.rune3 = this.addImage(gameConsts.width - 160, gameConsts.halfHeight - 60, 'circle', 'rune_matter_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-             this.rune4 = this.addImage(gameConsts.width - 82, gameConsts.halfHeight - 60, 'circle', 'rune_reinforce_glow.png').setDepth(9999).setScale(0.8, 0.8).setAlpha(0);
-             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 165, "Thorns reduce\nincoming damage\nand can inflict\ndamage back.\n             +", 'right');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText('dummy_body_a'), 'right');
+             let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+             let centerXPos = globalObjects.textPopupManager.getCenterPos();
+             this.rune3 = this.addImage(centerXPos - 35, runeYPos + 28, 'circle', 'rune_matter_glow.png').setDepth(10001).setScale(0.8, 0.8).setAlpha(0);
+             this.rune4 = this.addImage(centerXPos + 35, runeYPos + 28, 'circle', 'rune_reinforce_glow.png').setDepth(10001).setScale(0.8, 0.8).setAlpha(0);
+
+             this.addTween({
+                 targets: [this.rune3, this.rune4],
+                 scaleX: 1,
+                 scaleY: 1,
+                 ease: 'Quart.easeOut',
+                 duration: 500,
+                 onComplete: () => {
+                     this.addTween({
+                         targets: [this.rune3, this.rune4],
+                         scaleX: 0.8,
+                         scaleY: 0.8,
+                         ease: 'Back.easeOut',
+                         duration: 300,
+                     });
+                 }
+             });
+
              this.addTween({
                  targets: [this.rune3, this.rune4],
                  alpha: 1,

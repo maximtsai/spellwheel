@@ -15,7 +15,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 180 : 100;
+         this.health = gameVars.isHardMode ? 180 : 110;
          this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.14;
@@ -23,6 +23,33 @@
 
      // update(dt) {}
 
+
+     takeEffect(newEffect) {
+         if (newEffect.name == 'mindStrike' && this.shield <= 0) {
+             if (this.sprite) {
+                 let oldSprite = this.sprite.frame.name;
+                 if (oldSprite === 'gobbo_elec.png') {
+                     oldSprite = this.defaultSprite;
+                 } else if (this.isUsingAttack) {
+                     oldSprite = this.defaultSprite;
+                 }
+                 this.setSprite('gobbo_elec.png');
+                 this.sprite.x = gameConsts.halfWidth + (Math.random() < 0.5 ? -13 : 13);
+                 this.addTween({
+                     targets: this.sprite,
+                     x: gameConsts.halfWidth,
+                     ease: 'Bounce.easeOut',
+                     easeParams: [1, 2.5],
+                     duration: 260,
+                 })
+                 setTimeout(() => {
+                     this.setSpriteIfNotInactive(oldSprite);
+                 }, 300)
+             }
+         }
+         super.takeEffect(newEffect)
+         this.statuses[newEffect.name] = newEffect;
+     }
 
      setHealth(newHealth) {
          super.setHealth(newHealth);
@@ -62,7 +89,7 @@
                  {
                      name: gameVars.isHardMode ? "}8 " : "}4 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
-                     chargeAmt: 450,
+                     chargeAmt: 455,
                      damage: gameVars.isHardMode ? 8 : 4,
                      attackSprites: ['gobbo0_atk.png'],
                      attackFinishFunction: () => {
@@ -108,10 +135,28 @@
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
                          let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
-                         this.rune3 = this.addImage(gameConsts.width - 150, gameConsts.halfHeight + 28, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
-                         this.rune4 = this.addImage(gameConsts.width - 70, gameConsts.halfHeight + 28, 'circle', 'rune_enhance_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
                          this.addTimeout(() => {
                              globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 80, getLangText("energy_tut_goblin"), 'right');
+                             let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+                             let centerXPos = globalObjects.textPopupManager.getCenterPos();
+                             this.rune3 = this.addImage(centerXPos - 32, runeYPos + 28, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+                             this.rune4 = this.addImage(centerXPos + 38, runeYPos + 28, 'circle', 'rune_enhance_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+                             this.addTween({
+                                 targets: [this.rune3, this.rune4],
+                                 scaleX: 1,
+                                 scaleY: 1,
+                                 ease: 'Quart.easeOut',
+                                 duration: 500,
+                                 onComplete: () => {
+                                     this.addTween({
+                                         targets: [this.rune3, this.rune4],
+                                         scaleX: 0.8,
+                                         scaleY: 0.8,
+                                         ease: 'Back.easeOut',
+                                         duration: 300,
+                                     });
+                                 }
+                             });
                              this.addTween({
                                  targets: [this.rune3, this.rune4],
                                  alpha: 1,

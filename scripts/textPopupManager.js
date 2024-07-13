@@ -11,7 +11,7 @@ class TextPopupManager {
         this.blockNums = [];
         this.armorNums = [];
         this.infoBox = this.scene.add.image(0, 0, 'blackPixel').setAlpha(0).setDepth(10000);
-        this.infoText = this.scene.add.text(0, 0, 'WELCOME', {fontFamily: 'Arial', fontSize: isMobile ? 25 : 23, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(10000);
+        this.infoText = this.scene.add.text(0, 0, 'WELCOME', {fontFamily: 'Arial', fontSize: isMobile ? 23 : 22, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(10000);
         this.infoText.setFontStyle('bold');
         messageBus.subscribe('animateDamageNum', this.animateDamageNum.bind(this));
         messageBus.subscribe('animateDamageNumAccumulate', this.animateDamageNumAccumulate.bind(this));
@@ -19,6 +19,14 @@ class TextPopupManager {
         messageBus.subscribe('animateHealNum', this.animateHealNum.bind(this));
         messageBus.subscribe('animateBlockNum', this.animateBlockNum.bind(this));
         messageBus.subscribe('animateArmorNum', this.animateArmorNum.bind(this));
+    }
+
+    getBoxBottomPos() {
+        return this.infoBox.y + this.infoBox.scaleY;
+    }
+
+    getCenterPos() {
+        return this.infoBox.x - this.infoBox.scaleX * (this.infoBox.originX - 0.5) * 2;
     }
 
     setInfoText(x, y, newText, align = 'center', useSmall) {

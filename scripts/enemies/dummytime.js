@@ -134,8 +134,11 @@
                      damage: -1,
                      startFunction: () => {
                          globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText('level4_train_tut_b'), 'right');
-                         this.rune1 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5 - 30, gameConsts.halfHeight - 80, 'circle', 'rune_reinforce_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
-                         this.rune2 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5 + 26, gameConsts.halfHeight - 81, 'circle', 'rune_time_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
+                         let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+                         let centerXPos = globalObjects.textPopupManager.getCenterPos();
+
+                         this.rune1 = this.addSprite(centerXPos - 30, runeYPos + 28, 'circle', 'rune_reinforce_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
+                         this.rune2 = this.addSprite(centerXPos + 26, runeYPos + 28, 'circle', 'rune_time_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
                          this.addTween({
                              targets: [this.rune1, this.rune2],
                              alpha: 1,

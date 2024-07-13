@@ -89,9 +89,9 @@ const ENABLE_KEYBOARD = true;
         let mouseDistY = gameVars.mouseposy - this.y;
         let totalDist = Math.sqrt(mouseDistX * mouseDistX + mouseDistY * mouseDistY);
 
-        this.setFrameLazy(this.castButton, 'cast_normal.png');
-        this.setFrameLazy(this.innerCircle,'element_normal.png');
-        this.setFrameLazy(this.outerCircle, 'usage_normal.png');
+        this.setFrameLazy(this.castButton, this.altString + 'cast_normal.png');
+        this.setFrameLazy(this.innerCircle,this.altString + 'element_normal.png');
+        this.setFrameLazy(this.outerCircle, this.altString + 'usage_normal.png');
         if (this.manualDisabled) {
             this.dragArrow.visible = false;
             this.dragCircle.visible = false;
@@ -173,19 +173,19 @@ const ENABLE_KEYBOARD = true;
                 // clicked
                 if (totalDist < this.castButtonSize) {
                     this.draggedObj = this.castButton;
-                    this.setFrameLazy(this.castButton,'cast_press.png');
+                    this.setFrameLazy(this.castButton,this.altString + 'cast_press.png');
                 } else if (totalDist < this.innerCircleSize && !this.innerDragDisabled) {
                     this.draggedObj = this.innerCircle;
                     this.dragPointDist = totalDist;
                     this.dragPointAngle = Math.atan2(mouseDistY, mouseDistX);
                     this.dragPointAngleVisual = this.dragPointAngle;
-                    this.setFrameLazy(this.innerCircle, 'element_drag.png');
+                    this.setFrameLazy(this.innerCircle, this.altString + 'element_drag.png');
                 } else if (!this.outerDragDisabled) {
                     this.draggedObj = this.outerCircle;
                     this.dragPointDist = Math.min(totalDist, this.trueSize);
                     this.dragPointAngle = Math.atan2(mouseDistY, mouseDistX);
                     this.dragPointAngleVisual = this.dragPointAngle;
-                    this.setFrameLazy(this.outerCircle,'usage_drag.png');
+                    this.setFrameLazy(this.outerCircle,this.altString + 'usage_drag.png');
                 }
             } else if (gameVars.mouseJustUpped) {
                 // this.draggedDuration = -2;
@@ -206,16 +206,16 @@ const ENABLE_KEYBOARD = true;
             } else if (gameVars.mousedown) {
                 this.draggedDuration += dScale;
                 if (totalDist < this.castButtonSize && this.draggedObj == this.castButton) {
-                    this.setFrameLazy(this.castButton,'cast_press.png');
+                    this.setFrameLazy(this.castButton,this.altString + 'cast_press.png');
                 }
             } else {
                 // plain ol hovering
                 if (totalDist < this.castButtonSize) {
-                    this.setFrameLazy(this.castButton,'cast_hover.png');
+                    this.setFrameLazy(this.castButton,this.altString + 'cast_hover.png');
                 } else if (!this.innerDragDisabled && totalDist < this.innerCircleSize) {
-                    this.setFrameLazy(this.innerCircle, 'element_hover.png');
+                    this.setFrameLazy(this.innerCircle, this.altString + 'element_hover.png');
                 } else if (!this.outerDragDisabled) {
-                    this.setFrameLazy(this.outerCircle,'usage_hover.png');
+                    this.setFrameLazy(this.outerCircle,this.altString + 'usage_hover.png');
                 }
             }
         }
@@ -365,9 +365,9 @@ const ENABLE_KEYBOARD = true;
 
             // dragging affects outside of circle
             if (this.draggedObj == this.innerCircle) {
-                this.setFrameLazy(this.innerCircle, 'element_drag.png');
+                this.setFrameLazy(this.innerCircle, this.altString + 'element_drag.png');
             } else if (this.draggedObj == this.outerCircle) {
-                this.setFrameLazy(this.outerCircle,'usage_drag.png');
+                this.setFrameLazy(this.outerCircle,this.altString + 'usage_drag.png');
             }
             this.prevDragAngleDiff = dragAngleDiff;
         } else {
@@ -434,9 +434,9 @@ const ENABLE_KEYBOARD = true;
         this.delayDamageText.alpha = 0;
         this.delayDamageText.setOrigin(0.5, -0.35);
 
+        this.altString = "alt2_";
 
-
-        this.outerCircle = scene.add.sprite(x, y, 'circle', 'usage_normal.png').setDepth(101);
+        this.outerCircle = scene.add.sprite(x, y, 'circle', this.altString + 'usage_normal.png').setDepth(101);
         this.outerCircle.torque = 0;
         this.outerCircle.torqueDecay = 0;
         this.outerCircle.torqueOnRelease = 0;
@@ -444,7 +444,7 @@ const ENABLE_KEYBOARD = true;
         this.outerCircle.nextRotation = 0;
         this.outerCircle.prevRotation = 0;
         this.innerCircleSize = isMobile ? 138 : 143;
-        this.innerCircle = scene.add.sprite(x, y, 'circle', 'element_normal.png').setDepth(102);
+        this.innerCircle = scene.add.sprite(x, y, 'circle', this.altString + 'element_normal.png').setDepth(102);
         this.innerCircle.setOrigin(0.5003, 0.5003);
         this.innerCircle
         this.innerCircle.torque = 0;
@@ -456,10 +456,10 @@ const ENABLE_KEYBOARD = true;
         this.shadowCircle = scene.add.sprite(x, y, 'circle', 'shadow.png').setAlpha(0).setDepth(99998).setBlendMode(Phaser.BlendModes.MULTIPLY);
 
         this.castButtonSize = isMobile ? 72 : 78;
-        this.castButton = scene.add.sprite(x, y, 'circle', 'cast_normal.png').setDepth(105);
-        this.castButtonSpare = scene.add.sprite(x, y, 'circle', 'cast_press.png').setDepth(106).setAlpha(0);
+        this.castButton = scene.add.sprite(x, y, 'circle', this.altString + 'cast_normal.png').setDepth(105);
+        this.castButtonSpare = scene.add.sprite(x, y, 'circle', this.altString + 'cast_press.png').setDepth(106).setAlpha(0);
         // this.castButtonFlash = scene.add.sprite(x, y, 'circle', 'cast_flash.png').setDepth(106).setAlpha(0);
-        this.castHoverTemp = scene.add.sprite(x, y, 'circle', 'cast_press.png').setDepth(106).setAlpha(0);
+        this.castHoverTemp = scene.add.sprite(x, y, 'circle', this.altString + 'cast_press.png').setDepth(106).setAlpha(0);
         this.castGlow = scene.add.sprite(x, y, 'circle', 'cast_glow.png').setDepth(106).setAlpha(0);
         this.greyedDead = scene.add.sprite(x, y, 'circle', 'greyed_dead.png').setVisible(false).setDepth(119);
 
@@ -1117,7 +1117,7 @@ const ENABLE_KEYBOARD = true;
     updateFramesLazy() {
         const key = 'circle';
         if (this.castDisabled) {
-            if (this.castButton.frame.name !== 'cast_disabled.png') {
+            if (this.castButton.frame.name !== (this.altString + 'cast_disabled.png')) {
                 this.castGlow.alpha = 0.5;
                 this.scene.tweens.add({
                     targets: this.castGlow,
@@ -1125,10 +1125,10 @@ const ENABLE_KEYBOARD = true;
                     ease: 'Quint.easeOut',
                     alpha: 0,
                 });
-                this.castButton.setTexture(key, 'cast_disabled.png');
+                this.castButton.setTexture(key, (this.altString + 'cast_disabled.png'));
             }
         } else if (this.castButton.frame.customData.filename !== this.castButton.lazyFrame) {
-            if (this.castButton.frame.customData.filename == 'cast_disabled.png' && this.castButton.lazyFrame == 'cast_normal.png') {
+            if (this.castButton.frame.customData.filename == (this.altString + 'cast_disabled.png') && this.castButton.lazyFrame == (this.altString + 'cast_normal.png')) {
                 this.castButtonSpare.alpha = 0.6;
                 this.scene.tweens.add({
                     targets: this.castButtonSpare,

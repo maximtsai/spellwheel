@@ -167,9 +167,13 @@
             this.canShowShieldTip = false;
              this.addTimeout(() => {
                  let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
-                 this.rune3 = this.addImage(gameConsts.width - 120, gameConsts.halfHeight + 1, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
-                 this.rune4 = this.addImage(gameConsts.width - 46, gameConsts.halfHeight + 1, 'circle', 'rune_strike_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+
                  globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 100, getLangText('dummy_mind_tut'), 'right');
+                 let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+                 let centerXPos = globalObjects.textPopupManager.getCenterPos();
+                 this.rune3 = this.addImage(centerXPos - 32, runeYPos + 28, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+                 this.rune4 = this.addImage(centerXPos + 38, runeYPos + 28, 'circle', 'rune_strike_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+
                  this.addTween({
                      targets: [this.rune3, this.rune4],
                      alpha: 1,

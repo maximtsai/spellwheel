@@ -91,7 +91,7 @@
             globalObjects.bannerTextManager.closeBanner();
              this.addTimeout(() => {
                  globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 135, getLangText('level1_tut_a'), 'right');
-                 this.rune2 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5, gameConsts.halfHeight - 44, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
+                 this.rune2 = this.addSprite(globalObjects.textPopupManager.getCenterPos(), globalObjects.textPopupManager.getBoxBottomPos() + 28, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
                  this.addTween({
                      targets: [this.rune2],
                      alpha: 1,
@@ -107,8 +107,8 @@
                              onComplete: () => {
                                  this.addTween({
                                      targets: [this.rune2],
-                                     scaleX: 0.85,
-                                     scaleY: 0.85,
+                                     scaleX: 0.82,
+                                     scaleY: 0.82,
                                      ease: 'Back.easeOut',
                                      duration: 300,
                                  });
@@ -446,10 +446,14 @@
                      isBigMove: true,
                     attackFinishFunction: () => {
                         playSound('body_slam')
-                        let dmgEffect = this.addSprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
+                        let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.4);
                         this.addTimeout(() => {
-                            dmgEffect.destroy();
-                        }, 150)
+                            dmgEffect.x += 30;
+                            dmgEffect.y += 10;
+                            this.addTimeout(() => {
+                                dmgEffect.destroy();
+                            }, 150)
+                        }, 75);
                     }
                  },
                  {

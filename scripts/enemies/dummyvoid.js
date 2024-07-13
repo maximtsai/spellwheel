@@ -141,8 +141,11 @@ class Dummyvoid extends Dummypractice {
                     damage: -1,
                     startFunction: () => {
                         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText('level5_train_tut_b'), 'right');
-                        this.rune1 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5 - 28, gameConsts.halfHeight - 80, 'circle', 'rune_reinforce_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
-                        this.rune2 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5 + 30, gameConsts.halfHeight - 82, 'circle', 'rune_void_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
+                        let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+                        let centerXPos = globalObjects.textPopupManager.getCenterPos();
+
+                        this.rune1 = this.addSprite(centerXPos - 28, runeYPos + 28, 'circle', 'rune_reinforce_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
+                        this.rune2 = this.addSprite(centerXPos + 30, runeYPos + 28, 'circle', 'rune_void_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
                         this.addTween({
                             targets: [this.rune1, this.rune2],
                             alpha: 1,
@@ -187,8 +190,11 @@ class Dummyvoid extends Dummypractice {
                     },
                     attackFinishFunction: () => {
                         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 180, getLangText('level5_train_tut_c'), 'right');
-                        this.rune3 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5 - 35, gameConsts.halfHeight - 85, 'circle', 'rune_protect_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
-                        this.rune4 = this.addSprite(gameConsts.width - globalObjects.textPopupManager.getWidth() * 0.5 + 28, gameConsts.halfHeight - 86, 'circle', 'rune_void_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
+                        let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+                        let centerXPos = globalObjects.textPopupManager.getCenterPos();
+
+                        this.rune3 = this.addSprite(centerXPos - 35, runeYPos - 27, 'circle', 'rune_protect_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
+                        this.rune4 = this.addSprite(centerXPos + 28, runeYPos - 28, 'circle', 'rune_void_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
                         this.addTween({
                             targets: [this.rune3, this.rune4],
                             alpha: 1,

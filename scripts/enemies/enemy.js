@@ -363,7 +363,6 @@ class Enemy {
             let oldFrame = this.sprite.frame;
             if (oldFrame.name !== name) {
                 this.sprite.setFrame(name);
-                console.log("set frame to ", name)
             }
             this.sprite.setOrigin(oldOriginX, oldOriginY);
             this.sprite.setDepth(depth);
@@ -1006,6 +1005,10 @@ class Enemy {
 
     takeEffect(newEffect) {
         this.statuses[newEffect.name] = newEffect;
+    }
+
+    hasEffect(name) {
+        return !!this.statuses[name];
     }
 
     clearEffects() {
@@ -1953,7 +1956,6 @@ class Enemy {
                     let origX = this.sprite.originX;
                     let origY = this.sprite.originY;
                     this.sprite.setFrame(preAttackSprite).setOrigin(origX, origY);
-                    console.log("set frame to pre attack ", preAttackSprite)
 
                 }
                 this.attackAnim = this.scene.tweens.add({

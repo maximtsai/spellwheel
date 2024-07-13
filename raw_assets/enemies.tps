@@ -558,6 +558,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/gobbo_elec.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.65</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>105,106,210,211</rect>
+                <key>scale9Paddings</key>
+                <rect>105,106,210,211</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/gobboshield1.png</key>
             <key type="filename">enemies/gobboshield2.png</key>
             <struct type="IndividualSpriteSettings">

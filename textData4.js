@@ -62,7 +62,16 @@ let textData4 = {
         "ru": "",
         "es": "",
         "jp": ""
-
+    },
+    "dummy_body_a": {
+        "en_us": "Thorns reduce\nincoming damage\nand can inflict\ndamage back.\n             +",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
     }
+
 }
 textData = { ...textData, ...textData4};

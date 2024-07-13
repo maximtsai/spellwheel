@@ -1243,7 +1243,7 @@
          let xOffset = isSwingingLeft ? -30 : 30;
          powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 180).setDepth(998).setScale(1.5);
 
-         let fistEffect = getTempPoolObject('dummyenemy', 'super_dummy_fist.png', 'fist', 250);
+         let fistEffect = getTempPoolObject('dummyenemy', 'super_dummy_fist.png', 'dummyfist', 250);
          let xOffset2 = isSwingingLeft ? -80 : 80;
          let leftMult = isSwingingLeft ? 1 : -1;
          fistEffect.setPosition(this.sprite.x + xOffset2, this.y - 8).setDepth(11).setScale(1.6 * leftMult, 1.6);
@@ -1552,8 +1552,8 @@
          let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 175);
          powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 180).setDepth(998).setScale(1.75);
 
-         let fistEffect = getTempPoolObject('dummyenemy', 'super_dummy_fist.png', 'fist', 250);
-         let fistEffect2 = getTempPoolObject('dummyenemy', 'super_dummy_fist.png', 'fist', 250);
+         let fistEffect = getTempPoolObject('dummyenemy', 'super_dummy_fist.png', 'dummyfist', 250);
+         let fistEffect2 = getTempPoolObject('dummyenemy', 'super_dummy_fist.png', 'dummyfist', 250);
          fistEffect.setPosition(this.sprite.x - 110, this.y - 8).setDepth(11).setScale(1.45, 1.45);
          fistEffect2.setPosition(this.sprite.x + 110, this.y - 8).setDepth(11).setScale(-1.45, 1.45);
          this.addTween({

@@ -486,7 +486,7 @@
         }
         let isLast = false;
         if (this.fistObjects.length >= 9) {
-            this.nextAttack.chargeMult = 5;
+            this.nextAttack.chargeMult = 8;
             return;
         } else if (this.fistObjects.length == 8) {
             isLast = true;
@@ -558,7 +558,7 @@
         }
         this.addDelay(() => {
             this.prepareManyFists();
-        }, 3000);
+        }, 2900);
     }
 
     launchFists() {

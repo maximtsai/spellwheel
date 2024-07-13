@@ -4,7 +4,7 @@
     }
 
      initStatsCustom() {
-        this.health = 160;
+        this.health = 120;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -102,6 +102,62 @@
             fadeAwaySound(this.runSfxLoop, 300)
          }
         super.die();
+     }
+
+     healAnim(healAmt = null) {
+         if (!healAmt) {
+             healAmt = this.healthMax;
+         }
+         this.currDummyAnim = this.addTween({
+             delay: 2300,
+             targets: this.sprite,
+             scaleX: this.sprite.startScale * 0.82,
+             scaleY: this.sprite.startScale * 0.82,
+             rotation: -0.25,
+             ease: "Quint.easeOut",
+             duration: 750,
+             onComplete: () => {
+                 this.highlightGoal();
+                 this.currDummyAnim = this.addTween({
+                     targets: this.sprite,
+                     scaleX: this.sprite.startScale * 1.2,
+                     scaleY: this.sprite.startScale * 1.2,
+                     rotation: 0.07,
+                     ease: "Quart.easeIn",
+                     duration: 600,
+                     onComplete: () => {
+                         playSound('magic', 0.6);
+                         this.heal(healAmt);
+                         messageBus.publish('animateHealNum', this.x, this.y - 50, '+' + this.healthMax, 0.5 + Math.sqrt(this.healthMax) * 0.2);
+                         if (!this.healSprite) {
+                             this.healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(0.9).setDepth(999).setAlpha(1);
+                         }
+                         this.healSprite.setAlpha(1).setPosition(gameConsts.halfWidth, this.y - 90);
+                         this.scene.tweens.add({
+                             targets: this.healSprite,
+                             y: "-=30",
+                             duration: 1000,
+                         });
+                         this.scene.tweens.add({
+                             targets: this.healSprite,
+                             alpha: 0,
+                             duration: 1000,
+                             ease: 'Cubic.easeIn',
+                         });
+
+                         this.currDummyAnim = this.addTween({
+                             targets: this.sprite,
+                             scaleX: this.sprite.startScale,
+                             scaleY: this.sprite.startScale,
+                             rotation: 0,
+                             easeParams: [2],
+                             ease: "Bounce.easeOut",
+                             duration: 600,
+                         })
+                     }
+                 })
+             }
+         });
      }
 
 
@@ -239,9 +295,13 @@
                      }
                  },
                  {
-                     name: "WAITING...",
+                     name: "FIXING SELF \\20",
                      chargeAmt: 350,
                      transitionFast: true,
+                     damage: -1,
+                     attackStartFunction: () => {
+                         this.healAnim(20);
+                     }
                  },
                  {
                      name: "|10",
@@ -278,9 +338,13 @@
                      }
                  },
                  {
-                     name: "WAITING...",
+                     name: "FIXING SELF \\20",
                      chargeAmt: 350,
                      transitionFast: true,
+                     damage: -1,
+                     attackStartFunction: () => {
+                         this.healAnim(20);
+                     }
                  },
              ]
          ];

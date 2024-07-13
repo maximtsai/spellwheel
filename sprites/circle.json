@@ -885,31 +885,6 @@
 					}
 				},
 				{
-					"filename": "drag_circle.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 40,
-						"h": 40
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 40,
-						"h": 40
-					},
-					"frame": {
-						"x": 1971,
-						"y": 746,
-						"w": 40,
-						"h": 40
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "rune_time.png",
 					"rotated": false,
 					"trimmed": true,
@@ -918,16 +893,16 @@
 						"h": 165
 					},
 					"spriteSourceSize": {
-						"x": 11,
+						"x": 10,
 						"y": 3,
-						"w": 38,
-						"h": 45
+						"w": 40,
+						"h": 43
 					},
 					"frame": {
 						"x": 1971,
-						"y": 788,
-						"w": 38,
-						"h": 45
+						"y": 746,
+						"w": 40,
+						"h": 43
 					},
 					"anchor": {
 						"x": 0.5,
@@ -943,16 +918,41 @@
 						"h": 165
 					},
 					"spriteSourceSize": {
-						"x": 11,
+						"x": 10,
 						"y": 3,
-						"w": 38,
-						"h": 45
+						"w": 40,
+						"h": 43
 					},
 					"frame": {
 						"x": 1971,
-						"y": 835,
-						"w": 38,
-						"h": 45
+						"y": 791,
+						"w": 40,
+						"h": 43
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "drag_circle.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 40,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 40,
+						"h": 40
+					},
+					"frame": {
+						"x": 1971,
+						"y": 836,
+						"w": 40,
+						"h": 40
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2301,6 +2301,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:2513003deed3bbedf47695b5fb9f075e:15930fd48cad4bb1ffee0b0453a1c994:1e6d99c7ebe83c9d4df22481bc2c00de$"
+		"smartupdate": "$TexturePacker:SmartUpdate:6dfb746ad5d73b7189db79901bda5a03:5ed5e30c3f29dbf1bac96de1b103aef9:1e6d99c7ebe83c9d4df22481bc2c00de$"
 	}
 }

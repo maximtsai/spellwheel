@@ -320,6 +320,10 @@
          })
      }
 
+     applyFire(amt) {
+         messageBus.publish('playerAddDelayedDamage', amt);
+     }
+
     initAttacks() {
         this.attacks = [
             [
@@ -339,6 +343,8 @@
                         this.setArmsVisible(true);
                         if (this.isSecondPunchCycle && !this.thornForm) {
                             this.fireForm = true;
+                            this.currentAttackSetIndex = 2;
+                            this.nextAttackIndex = 1;
                             this.setAsleep();
                             let usedLangText = globalObjects.player.getHealth() >= 40 ? getLangText('deathFight2d') : getLangText('deathFight2dx')
 
@@ -430,7 +436,7 @@
                 },
                 {
                     name: "}6   ",
-                    chargeAmt: 880,
+                    chargeAmt: 1000,
                     finishDelay: 1200,
                     chargeMult: 2,
                     damage: 6,
@@ -516,7 +522,143 @@
                         this.setArmsVisible(true);
                     },
                 },
-            ]
+            ],
+            [
+                {
+                    name: "|10+$3",
+                    chargeAmt: 450,
+                    damage: 10,
+                    attackTimes: 1,
+                    chargeMult: 4,
+                    prepareSprite: 'death2windup.png',
+                    attackSprites: ['death2punch.png'],
+                    startFunction: () => {
+                        this.pullbackScale = 0.88;
+                        this.attackScale = 1.13;
+                    },
+                    attackFinishFunction: () => {
+                        // this.makeSlashEffect();
+                        this.applyFire(3);
+                        this.createPunchEffect();
+                    },
+                    finaleFunction: () => {
+                        this.setArmsVisible(true);
+                    },
+
+                },
+                {
+                    name: "|8x2+$6",
+                    chargeAmt: 350,
+                    damage: 8,
+                    attackTimes: 2,
+                    prepareSprite: ['death2windup.png', 'death2windupflip.png'],
+                    attackSprites: ['death2punch.png', 'death2punchflip.png'],
+                    startFunction: () => {
+                        this.pullbackScale = 0.88;
+                        this.attackScale = 1.13;
+                    },
+                    finaleFunction: () => {
+                        this.setArmsVisible(true);
+                        this.isSecondPunchCycle = true;
+                    },
+                    attackFinishFunction: () => {
+                        this.applyFire(3);
+                        // this.makeSlashEffect();
+                        this.createPunchEffect();
+                    },
+                },
+                {
+                    name: ";30+$10",
+                    chargeAmt: 650,
+                    damage: 30,
+                    attackTimes: 1,
+                    prepareSprite: "death2crouch.png",
+                    preAttackSprite: 'death2charge.png',
+                    attackSprites: ['death2charge.png'],
+                    finishDelay: 1200,
+                    startFunction: () => {
+                        this.pullbackScale = 0.6;
+                        this.attackScale = 1.5;
+                        this.pullbackHoldRatio = 0.9;
+                        this.pullbackInitialDelay = 450;
+                        this.attackSlownessMult = 2;
+                        this.attackDurMult = 0.4;
+                    },
+                    finaleFunction: () => {
+                        this.pullbackInitialDelay = 0;
+                        // this.setDefaultSprite('max_death_2.png', null, true)
+                        this.setArmsVisible(true);
+                        this.pullbackHoldRatio = 0.5;
+                        globalObjects.encyclopedia.showButton();
+                        globalObjects.options.showButton();
+                    },
+                    attackStartFunction: () => {
+                        this.setSpriteIfNotInactive('max_death_2_full.png', undefined, true)
+                        // this.setDefaultSprite('death2charge.png', null, true)
+                        // this.sprite.setFrame('max_death_2.png')
+                        globalObjects.encyclopedia.hideButton();
+                        globalObjects.options.hideButton();
+                    },
+                    attackFinishFunction: () => {
+                        playSound('death_attack', 1).detune = 0;
+                        screenShake(6);
+                        this.applyFire(10);
+                        let fakeDeathBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'fake_death_bg.png').setScale(2).setDepth(30);
+                        fakeDeathBG.scrollFactorX = -0.1;
+                        fakeDeathBG.scrollFactorY = 0;
+                        this.addTween({
+                            targets: fakeDeathBG,
+                            alpha: 0,
+                            ease: "Quad.easeOut",
+                            duration: 3200,
+                            onComplete: () => {
+                                fakeDeathBG.destroy();
+                            }
+                        })
+                        // this.makeSlashEffect();
+                    },
+                },
+                {
+                    name: "}6   ",
+                    chargeAmt: 1000,
+                    finishDelay: 1200,
+                    chargeMult: 2,
+                    damage: 6,
+                    isBigMove: true,
+                    attackSprites: ['death2punch.png'],
+                    startFunction: () => {
+                        this.pullbackScale = 0.9;
+                        this.attackScale = 1.1;
+                        this.attackSlownessMult = 1;
+                        this.nextAttack.chargeMult = 2;
+                        this.setArmsVisible(false)
+                        this.setDefaultSprite('death2windup.png');
+                        this.addDelay(() => {
+                            this.isPreppingFists = true;
+                            this.prepareManyFists();
+                        }, 900)
+                    },
+                    attackStartFunction: () => {
+                        this.isPreppingFists = false;
+                        this.addTween({
+                            targets: this.blackBG,
+                            alpha: 0,
+                            duration: 600
+                        })
+                        this.launchFists();
+                    },
+                    attackFinishFunction: () => {
+                        // this.makeSlashEffect();
+                        playSound('punch');
+                        let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 400);
+                        powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 185).setDepth(998).setScale(1.45);
+                    },
+                    finaleFunction: () => {
+                        this.setDefaultSprite('max_death_2.png');
+                        this.setArmsVisible(true);
+                    },
+                },
+            ],
         ];
     }
 
@@ -591,14 +733,20 @@
         if (attackNum < 3) {
             this.attackName.setText("}6x" + attackNum);
         } else if (attackNum < 6) {
+            if (attackNum == 3) {
+                this.angrySymbol.x += 26;
+            }
             this.attackName.setText("}}6x" + attackNum);
         } else {
+            if (attackNum == 6) {
+                this.angrySymbol.x += 26;
+            }
             this.attackName.setText("}}}6x" + attackNum);
 
         }
         this.addDelay(() => {
             this.prepareManyFists();
-        }, 2900);
+        }, 3000);
     }
 
     launchFists() {

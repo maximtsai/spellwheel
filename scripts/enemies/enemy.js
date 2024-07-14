@@ -1451,6 +1451,7 @@ class Enemy {
     }
 
     destroy() {
+        console.log("detsror");
         if (this.isDestroyed) {
             return;
         }

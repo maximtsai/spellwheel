@@ -71,7 +71,42 @@ let textData4 = {
         "ru": "",
         "es": "",
         "jp": ""
+    },
+    "killer_robot_a": {
+        "en_us": "The stage lights are blinding.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "killer_robot_b": {
+        "en_us": "-4 damage to your attacks.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "killer_robot_c": {
+        "en_us": "The stage lights\nturn back on",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "killer_robot_d": {
+        "en_us": "The stage lights are off.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
     }
-
 }
 textData = { ...textData, ...textData4};

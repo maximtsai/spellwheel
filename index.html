@@ -123,6 +123,32 @@
         document.fonts.load('10pt "verdanamax"')
         document.fonts.load('10pt "verdanabold"')
         document.fonts.load('10pt "garamondmax"')
+        let testArr = [ 374, 40, 854, 203, 203, 156, 362, 279, 812, 955,
+            600, 947, 978, 46, 100, 953, 670, 862, 568, 188,
+            67, 669, 810, 704, 52, 861, 49, 640, 370, 908,
+            477, 245, 413, 109, 659, 401, 483, 308, 609, 120,
+            249, 22, 176, 279, 23, 22, 617, 462, 459, 244 ]
+        function longestZigZag(arr) {
+            if (arr.length <= 2) {
+                return arr.length;
+            }
+            // contains 1 for positive, -1 for negative, 0 for zero
+            // is zig zag if true, false, true, false etc.
+            let arrayOfZigZag = [];
+            let lastNum = arr[0];
+            for (let i = 1; i < arr.length; i++) {
+                let nextNum = arr[i];
+                let diff = nextNum - lastNum;
+                let numToAppend = 0;
+                if (diff > 0) {
+                    numToAppend = 1;
+                } else if (diff < 0) {
+                    numToAppend = -1;
+                }
+                arrayOfZigZag.push(numToAppend);
+            }
+
+        }
 
         function isPalin(str) {
             let maxLength = str.length;
@@ -133,7 +159,6 @@
             }
             return true;
         }
-        console.log(isPalin("abbca"));
 
         // console.log("test");
         // let N = 5;

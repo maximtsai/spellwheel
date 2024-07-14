@@ -426,7 +426,7 @@
         setVolume(this.bgMusic, 0.25, 1000)
 
         this.addTimeout(() => {
-            globalObjects.bannerTextManager.setDialog(["The stage lights are off."]);
+            globalObjects.bannerTextManager.setDialog([getLangText("killer_robot_d")]);
             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
             globalObjects.bannerTextManager.showBanner(false);
         }, 1000)
@@ -513,9 +513,9 @@
                             scaleY: 2,
                             onComplete: () => {
                                 messageBus.publish('showCircleShadow', 0.6);
-                                this.setDefense(2);
+                                this.setDefense(4);
                                 this.addTimeout(() => {
-                                    globalObjects.bannerTextManager.setDialog(["The stage lights are blinding.", "-2 damage to your attacks."]);
+                                    globalObjects.bannerTextManager.setDialog([getLangText("killer_robot_a"), getLangText("killer_robot_b")]);
                                     this.minusDamage1.setAlpha(0.5).setRotation(-0.12);
                                     this.minusDamage2.setAlpha(0.5).setRotation(0.12);
 
@@ -694,19 +694,24 @@
                                     scaleX: 1.9,
                                     scaleY: 1.9,
                                     onComplete: () => {
-                                        messageBus.publish('showCircleShadow', 0.7);
-                                        let dialogToSet = ["The stage lights shine\neven brighter.", "-4 damage to your attacks."];
-                                        if (!this.isShiningBrighter) {
-                                            this.isShiningBrighter = true;
-                                            this.setDefense(4);
-                                        } else {
-                                            dialogToSet = ["The stage lights are\nalready at max brightness."];
+                                        if (this.emergency) {
+                                            return;
                                         }
-                                        globalObjects.bannerTextManager.setDialog(dialogToSet);
+                                        messageBus.publish('showCircleShadow', 0.7);
+                                        //let dialogToSet = ["The stage lights shine\neven brighter.", "-4 damage to your attacks."];
+                                        if (!this.isShiningBrighter) {
+                                            globalObjects.bannerTextManager.setDialog([getLangText('killer_robot_c'), getLangText('killer_robot_b')]);
+                                            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                                            globalObjects.bannerTextManager.showBanner(false);
+                                            this.isShiningBrighter = true;
+                                        } else {
+                                            // dialogToSet = ["The stage lights are\nalready at max brightness."];
+                                        }
+                                        this.setDefense(4);
+
                                         this.minusDamage1.setAlpha(0.55).setRotation(0.14);
                                         this.minusDamage2.setAlpha(0.55).setRotation(-0.14);
-                                        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-                                        globalObjects.bannerTextManager.showBanner(false);
+
                                         this.shineAnim = this.addTween({
                                             targets: [this.lightShineLeftTop, this.lightShineRightTop, this.lightShineLeft,  this.lightShineRight],
                                             duration: 1500,

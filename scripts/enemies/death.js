@@ -23,10 +23,6 @@
          this.listOfAngryPopups = [];
      }
 
-     takeEffect() {
-
-     }
-
      swingScythe(damage = 444, fadeOutScythe = true, flipped = false, onComplete) {
 
          let flipMult = flipped ? -1 : 1;
@@ -245,10 +241,7 @@
 
         });
      }
-
-     takeEffect() {
-         // do nothing
-     }
+     
 
      beginFightReal() {
          this.bgMusic = playMusic('heartbeat', 0.75, true);
@@ -568,6 +561,7 @@
      }
 
      cleanUp() {
+         console.log("cleanup?");
          super.cleanUp();
          if (this.windSfx) {
              this.windSfx.stop();
@@ -576,7 +570,9 @@
             setFloatingDeathVisible(false);
          } else {
              clearReaper();
+             clearDeathFog();
          }
+
      }
 
      die() {
@@ -713,7 +709,6 @@
 
                                 }
                             })
-                            clearDeathFog();
                         });
                     }
                 })

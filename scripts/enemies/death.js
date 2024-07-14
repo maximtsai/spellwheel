@@ -241,7 +241,7 @@
 
         });
      }
-     
+
 
      beginFightReal() {
          this.bgMusic = playMusic('heartbeat', 0.75, true);

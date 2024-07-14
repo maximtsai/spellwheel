@@ -15,6 +15,7 @@
          })
         globalObjects.magicCircle.disableMovement();
          this.addTimeout(() => {
+             this.bgMusic = playMusic('but_never_forgotten', 1, true);
              this.setAsleep();
              this.introSpeech();
             globalObjects.encyclopedia.hideButton();
@@ -43,7 +44,6 @@
             globalObjects.magicCircle.enableMovement();
             globalObjects.encyclopedia.showButton();
             globalObjects.options.showButton();
-            this.bgMusic = playMusic('but_never_forgotten', 1, true);
         })
     }
 
@@ -83,7 +83,7 @@
                  alpha: 0,
                  duration: 1000,
                  onComplete: () => {
-                     this.whiteBG.destroy();
+                     // this.whiteBG.destroy();
                  }
              })
              playSound('heartbeatfast');
@@ -101,7 +101,15 @@
              ease: initEase,
              duration: initDur,
          })
-
+         this.addTween({
+             targets: this.leftShoulder,
+             scaleX: this.leftShoulder.startScaleX,
+             scaleY: this.leftShoulder.startScaleX,
+             x: this.leftShoulder.startX,
+             y: 90,
+             ease: initEase,
+             duration: initDur,
+         });
          this.addTween({
              targets: this.leftArm,
              scaleX: this.leftArm.startScaleX,
@@ -112,15 +120,24 @@
              ease: initEase,
              duration: initDur,
          });
-         this.addTween({
-             targets: this.leftShoulder,
-             scaleX: this.leftShoulder.startScaleX,
-             scaleY: this.leftShoulder.startScaleX,
-             x: this.leftShoulder.startX,
-             y: 90,
-             ease: initEase,
-             duration: initDur,
-         });
+         if (this.leftFire) {
+             let xOffset = -108;
+             let yOffset = -40;
+             this.addTween({
+                 targets: this.leftFire,
+                 x: gameConsts.halfWidth + xOffset,
+                 y: this.y + yOffset,
+                 ease: initEase,
+                 duration: initDur,
+             });
+             this.addTween({
+                 targets: this.rightFire,
+                 x: gameConsts.halfWidth - xOffset,
+                 y: this.y + yOffset,
+                 ease: initEase,
+                 duration: initDur,
+             });
+         }
 
          this.addTween({
              targets: this.rightArm,
@@ -161,6 +178,29 @@
                      repeat: -1,
                      duration: 2000
                  }));
+                 if (this.leftFire) {
+                     let xOffset = -122;
+                     let yOffset = -28;
+                     this.idleAnimations.push(this.addTween({
+                         targets: this.leftFire,
+                         x: gameConsts.halfWidth + xOffset,
+                         y: this.y + yOffset,
+                         yoyo: true,
+                         ease: 'Cubic.easeInOut',
+                         duration: 2000,
+                         repeat: -1,
+                     }));
+                     this.idleAnimations.push(this.addTween({
+                         targets: this.rightFire,
+                         x: gameConsts.halfWidth - xOffset,
+                         y: this.y + yOffset,
+                         yoyo: true,
+                         ease: 'Cubic.easeInOut',
+                         duration: 2000,
+                         repeat: -1
+                     }));
+                 }
+
                  this.idleAnimations.push(this.addTween({
                      targets: this.leftShoulder,
                      y: "+=3",
@@ -180,7 +220,7 @@
     }
 
     initStatsCustom() {
-        this.health = 600;
+        this.health = 500;
         this.isSecondPunchCycle = false;
         this.fistObjects = [];
         this.thornsList = [];
@@ -297,7 +337,7 @@
                     },
                     finaleFunction: () => {
                         this.setArmsVisible(true);
-                        if (this.isSecondPunchCycle && !this.thornForm) {
+                        if (!this.isSecondPunchCycle && !this.thornForm) {
                             this.fireForm = true;
                             this.setAsleep();
                             let usedLangText = globalObjects.player.getHealth() >= 40 ? getLangText('deathFight2d') : getLangText('deathFight2dx')
@@ -348,7 +388,6 @@
                     attackSprites: ['death2charge.png'],
                     finishDelay: 1200,
                     startFunction: () => {
-                        this.setSpriteIfNotInactive('max_death_2_full.png', undefined, true)
                         this.pullbackScale = 0.6;
                         this.attackScale = 1.5;
                         this.pullbackHoldRatio = 0.9;
@@ -365,6 +404,7 @@
                         globalObjects.options.showButton();
                     },
                     attackStartFunction: () => {
+                        this.setSpriteIfNotInactive('max_death_2_full.png', undefined, true)
                         // this.setDefaultSprite('death2charge.png', null, true)
                         // this.sprite.setFrame('max_death_2.png')
                         globalObjects.encyclopedia.hideButton();
@@ -578,9 +618,9 @@
                 onComplete: () => {
                     let pauseScreen = null;
                     let isFlipped = false;
-                    if (i == 2 || i == 8) {
+                    if (i == 7) {
                         pauseScreen = 'fake_death_punch.png';
-                    } else if (i == 5) {
+                    } else if (i == 3) {
                         isFlipped = true;
                         pauseScreen = 'fake_death_punch.png';
                     }
@@ -762,6 +802,10 @@
          this.leftArm.visible = val;
          this.rightArm.visible = val;
          this.leftShoulder.visible = val;
+         if (this.leftFire) {
+             this.leftFire.visible = val;
+             this.rightFire.visible = val;
+         }
      }
 
      clearFistObjects() {
@@ -1015,7 +1059,36 @@
      playFireFistsInitAnim() {
          this.stopIdleAnim();
          this.raiseArmsAnim(() => {
-             console.log("raised");
+             this.leftFire = this.addSprite(gameConsts.halfWidth - 160, this.y - 25, 'spells').play('mindBurnSlow').setOrigin(0.5, 0.65).setDepth(20).setBlendMode(Phaser.BlendModes.ADD).setScale(0.45).setAlpha(0.5);
+             this.rightFire = this.addSprite(gameConsts.halfWidth + 160, this.y - 25, 'spells').play('mindBurnSlow').setOrigin(0.5, 0.65).setDepth(20).setBlendMode(Phaser.BlendModes.ADD).setScale(0.45).setAlpha(0.5);
+
+             this.addTween({
+                 targets: [this.leftFire, this.rightFire],
+                 scaleX: 1.5,
+                 scaleY: 1.5,
+                 alpha: 1.1,
+                 duration: 110,
+                 ease: 'Quart.easeIn',
+                 onComplete: () => {
+
+                     this.whiteBG.alpha = 0.15;
+                     this.addTween({
+                         targets: [this.whiteBG],
+                         alpha: 0,
+                         duration: 1100,
+                     })
+                     this.addTween({
+                         targets: [this.leftFire, this.rightFire],
+                         scaleX: 0.6,
+                         scaleY: 0.6,
+                         alpha: 0.65,
+                         duration: 600,
+                         ease: 'Back.easeOut',
+                     })
+                 }
+             })
+             playSound('mind_enhance');
+             this.startIdleAnim(true)
          });
      }
 

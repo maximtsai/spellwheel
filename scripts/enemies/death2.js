@@ -337,7 +337,7 @@
                     },
                     finaleFunction: () => {
                         this.setArmsVisible(true);
-                        if (!this.isSecondPunchCycle && !this.thornForm) {
+                        if (this.isSecondPunchCycle && !this.thornForm) {
                             this.fireForm = true;
                             this.setAsleep();
                             let usedLangText = globalObjects.player.getHealth() >= 40 ? getLangText('deathFight2d') : getLangText('deathFight2dx')

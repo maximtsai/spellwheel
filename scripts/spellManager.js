@@ -2176,8 +2176,8 @@ class SpellManager {
                 this.scene.tweens.add({
                     targets: blackBall,
                     duration: 530,
-                    scaleX: 1.42 + i * 0.03,
-                    scaleY: 1.42 + i * 0.03,
+                    scaleX: 1.44 + i * 0.03,
+                    scaleY: 1.44 + i * 0.03,
                     ease: 'Quint.easeIn',
                 });
                 this.scene.tweens.add({

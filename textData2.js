@@ -506,38 +506,38 @@ let textData2 = {
     },
     "pre_fight_5b": {
         "en_us": "But if there is no entrance, then I\nwill simply make one.",
-        "fr": "Mais s’il n’y a pas d’entrée, alors j’en ferai simplement une.",
+        "fr": "Mais s’il n’y a pas d’entrée, alors\nj’en ferai simplement une.",
         "zh_tw": "但是如果沒有入口，那我就直接做一個。",
         "zh_cn": "但是如果没有入口，那我就直接做一个。",
-        "ru": "Но если входа нет, то я просто сделаю его.",
-        "es": "Pero si no hay entrada, entonces simplemente haré una.",
-        "jp": "しかし、入り口がない場合は、単に入り口を作ります。"
+        "ru": "Но если входа нет, то я просто\nсделаю его.",
+        "es": "Pero si no hay entrada, entonces\nsimplemente haré una.",
+        "jp": "しかし、入り口がない場合は、単に入り口\nを作ります。"
     },
     "pre_fight_7a": {
         "en_us": "The sound of skittering legs cuts\nthrough the fog.",
-        "fr": "Le bruit des jambes qui s’agitent traverse le brouillard.",
-        "zh_tw": "雙腿跳躍的聲音劃破了迷霧。",
-        "zh_cn": "双腿跳跃的声音划破了迷雾。",
+        "fr": "Le bruit des jambes qui s'agitent\ntraverse le brouillard",
+        "zh_tw": "輕微腳步的聲音劃破了迷霧。",
+        "zh_cn": "轻微脚步的声音划破了迷雾。",
         "ru": "Звук бегущих ног прорезает туман.",
-        "es": "El sonido de las piernas resbaladizas atraviesa la niebla.",
-        "jp": "足を小刻みに動かす音が霧を切り裂く。"
+        "es": "El sonido de las piernas resbaladizas\natraviesa la niebla.",
+        "jp": "足を小刻みに動かす\n音が霧を切り裂く。"
     },
     "pre_fight_7b": {
         "en_us": "Something is hunting me, but not\nif I hunt it first.",
-        "fr": "Quelque chose me chasse, mais pas si je le chasse en premier.",
-        "zh_tw": "有什麼東西在追捕我，但如果我先追捕它，就不會了。",
-        "zh_cn": "有什么东西在追捕我，但如果我先追捕它，就不会了。",
-        "ru": "Что-то охотится за мной, но не в том случае, если я охотлюсь на него первым.",
-        "es": "Algo me está persiguiendo, pero no si yo lo cazo primero.",
-        "jp": "何かが私を狩っているが、私が最初にそれを狩ればそうではない。"
+        "fr": "Quelque chose me chasse, mais pas\nsi je le chasse en premier.",
+        "zh_tw": "有什麼東西在追捕我，但如果我先追捕它，\n就不會了。",
+        "zh_cn": "有什么东西在追捕我，但如果我先追捕它，\n就不会了。",
+        "ru": "Что-то охотится за мной, но не в том\nслучае, если я охотлюсь на него первым.",
+        "es": "Algo me está persiguiendo, pero no\nsi yo lo cazo primero.",
+        "jp": "何かが私を狩っているが、私が最初にそれを\n狩ればそうではない。"
     },
     "pre_fight_8a": {
         "en_us": "I sense something dangerous barring\nthe path up ahead.",
-        "fr": "Je sens que quelque chose de dangereux barre le chemin devant moi.",
+        "fr": "Je sens que quelque chose de dangereux\nbarre le chemin devant moi.",
         "zh_tw": "我感覺到有什麼危險的東西擋住了前方的道路。",
         "zh_cn": "我感觉到有什么危险的东西挡住了前方的道路。",
-        "ru": "Я чувствую что-то опасное, преграждающее путь впереди.",
-        "es": "Siento que algo peligroso bloquea el camino que tengo por delante.",
+        "ru": "Я чувствую что-то опасное, преграждающее\nпуть впереди.",
+        "es": "Siento que algo peligroso bloquea el\ncamino que tengo por delante.",
         "jp": "前方の道を遮る危険なものを感じます。"
     },
     "pre_fight_8b": {
@@ -546,7 +546,7 @@ let textData2 = {
         "zh_tw": "但我確信我已經為任何事情做好了準備。",
         "zh_cn": "但我确信我已经为任何事情做好了准备。",
         "ru": "Но я уверен, что готов ко всему.",
-        "es": "Pero estoy seguro de que estoy listo para cualquier cosa.",
+        "es": "Pero estoy seguro de que estoy listo para\ncualquier cosa.",
         "jp": "でも、私は何でもできると確信しています。"
     },
     "pre_fight_za": {
@@ -557,15 +557,6 @@ let textData2 = {
         "ru": "Наконец-то я приехал.",
         "es": "Por fin he llegado.",
         "jp": "ようやくたどり着きました。"
-    },
-    "pre_fight_zb": {
-        "en_us": "I doubt the goblin's claim\nof ownership",
-        "fr": "Je doute de la revendication de propriété du gobelin",
-        "zh_tw": "我懷疑妖精的擁有權主張",
-        "zh_cn": "我怀疑妖精的所有权主张",
-        "ru": "Я сомневаюсь в притязаниях гоблина на право собственности",
-        "es": "Dudo de que el duende reclame la propiedad",
-        "jp": "ゴブリンの所有権の主張を疑う"
     },
     "level0_diag_a": {
         "en_us": "This thing is in the way.",
@@ -586,22 +577,22 @@ let textData2 = {
         "jp": "倒さなきゃ。"
     },
     "level0_tut_a": {
-        "en_us": "Spin the wheels to\n swap in fresh Runes ",
-        "fr": "Faites tourner les roues pour échanger de nouvelles runes",
-        "zh_tw": "旋轉輪子以換取新鮮的符文",
-        "zh_cn": "旋转轮子以换取新鲜的符文",
-        "ru": "Вращайте колеса, чтобы поменять местами новые руны",
-        "es": "Gira las ruedas para intercambiar runas nuevas",
-        "jp": "ホイールを回して新しいルーンに交換"
+        "en_us": "Spin the wheels to\nswap in fresh Runes ",
+        "fr": "Faites tourner les roues\npour échanger de nouvelles runes",
+        "zh_tw": "旋轉輪子以換取\n新鮮的符文",
+        "zh_cn": "旋转轮子以换取\n新鲜的符文",
+        "ru": "Вращайте колеса, чтобы\nпоменять местами новые руны",
+        "es": "Gira las ruedas para\nintercambiar runas nuevas",
+        "jp": "ホイールを回して新し\nいルーンに交換"
     },
     "level0_tut_b": {
         "en_us": "Defeat the =>\nenemy to win",
-        "fr": "Battez l’ennemi => pour gagner",
-        "zh_tw": "擊敗 => 個敵人以贏得勝利",
-        "zh_cn": "击败 => 个敌人以赢得胜利",
-        "ru": "Победите врага =>, чтобы победить",
-        "es": "Derrota al enemigo => para ganar",
-        "jp": "=>人の敵を倒して勝利"
+        "fr": "Battez l’ennemi =>\npour gagner",
+        "zh_tw": "擊敗 =>\n個敵人以贏得勝利",
+        "zh_cn": "击败 =>\n个敌人以赢得胜利",
+        "ru": "Победите врага =>\nчтобы победить",
+        "es": "Derrota al enemigo =>\npara ganar",
+        "jp": "人の敵を倒し=>\nて勝利"
     },
     "level1_diag_a": {
         "en_us": "Another obstacle?",
@@ -614,110 +605,110 @@ let textData2 = {
     },
     "level1_diag_b": {
         "en_us": "I should try my\nmore advanced spells.",
-        "fr": "Je devrais essayer mes sorts plus avancés.",
-        "zh_tw": "我應該試試我更高級的法術。",
-        "zh_cn": "我应该试试我更高级的法术。",
-        "ru": "Я должен попробовать свои более продвинутые заклинания.",
-        "es": "Debería probar mis hechizos más avanzados.",
-        "jp": "もっと高度な呪文を試してみるべきだ。"
+        "fr": "Je devrais essayer\nmes sorts plus avancés.",
+        "zh_tw": "我應該試試我更\n高級的法術。",
+        "zh_cn": "我应该试试我更\n高级的法术。",
+        "ru": "Я должен попробовать свои\nболее продвинутые заклинания.",
+        "es": "Debería probar mis\nhechizos más avanzados.",
+        "jp": "もっと高度な呪文を試し\nてみるべきだ。"
     },
     "level1_tut_a": {
         "en_us": "The Enhance Rune\nstrengthens your\nnext attack\n ",
-        "fr": "La rune Enhance renforce votre prochaine attaque",
-        "zh_tw": "增強符文可以增強你的下一次攻擊",
-        "zh_cn": "增强符文可以增强你的下一次攻击",
-        "ru": "Руна усиления усиливает вашу следующую атаку",
-        "es": "La runa mejorada fortalece tu próximo ataque",
-        "jp": "強化ルーンは次の攻撃を強化します"
+        "fr": "La rune Enhance\nrenforce votre\nprochaine attaque\n ",
+        "zh_tw": "增強符文可以增強\n你的下一次攻擊\n ",
+        "zh_cn": "增强符文可以增强\n你的下一次攻击\n ",
+        "ru": "Руна усиления\nусиливает вашу\nследующую атаку\n ",
+        "es": "La runa mejorada\nfortalece tu\npróximo ataque\n ",
+        "jp": "強化ルーンは次の\n攻撃を強化します\n "
     },
     "level1_tut_b": {
         "en_us": "Enemies get\nangry when\nattacked!",
-        "fr": "Les ennemis se mettent en colère lorsqu’ils sont attaqués !",
-        "zh_tw": "敵人在受到攻擊時會生氣！",
-        "zh_cn": "敌人在受到攻击时会生气！",
-        "ru": "Враги злятся, когда на них нападают!",
-        "es": "¡Los enemigos se enfadan cuando son atacados!",
-        "jp": "攻撃されると敵が怒る!"
+        "fr": "Les ennemis se\nmettent en colère\nlorsqu’ils sont\nattaqués!",
+        "zh_tw": "敵人在受到攻擊\n時會生氣！",
+        "zh_cn": "敌人在受到攻击\n时会生气！",
+        "ru": "Враги злятся,\nкогда на них\nнападают!",
+        "es": "¡Los enemigos\nse enfadan cuando\nson atacados!",
+        "jp": "攻撃されると\n敵が怒る!"
     },
     "level1_train_diag_a": {
         "en_us": "This new Rune I acquired\ncould be useful.",
-        "fr": "Cette nouvelle rune que j’ai acquise pourrait vous être utile.",
+        "fr": "Cette nouvelle rune que j’ai\nacquise pourrait vous être utile.",
         "zh_tw": "我獲得的這個新符文可能會有用。",
         "zh_cn": "我获得的这个新符文可能会有用。",
-        "ru": "Эта новая руна, которую я получил, может пригодиться.",
-        "es": "Esta nueva runa que adquirí podría ser útil.",
-        "jp": "私が手に入れたこの新しいルーンが役に立つかもしれません。"
+        "ru": "Эта новая руна, которую я\nполучил, может пригодиться.",
+        "es": "Esta nueva runa que\nadquirí podría ser útil.",
+        "jp": "私が手に入れたこの新しいル\nーンが役に立つかもしれません。"
     },
     "level1_train_diag_b": {
         "en_us": "I should carefully consider\nwhat order I use my spells in.",
-        "fr": "Je devrais bien réfléchir à l’ordre dans lequel j’utilise mes sorts.",
+        "fr": "Je devrais bien réfléchir à l’ordre\ndans lequel j’utilise mes sorts.",
         "zh_tw": "我應該仔細考慮我使用法術的順序。",
         "zh_cn": "我应该仔细考虑我使用法术的顺序。",
-        "ru": "Я должен тщательно обдумать, в каком порядке я использую свои заклинания.",
-        "es": "Debería considerar cuidadosamente en qué orden uso mis hechizos.",
-        "jp": "呪文をどの順番で使うかは慎重に考える必要があります。"
+        "ru": "Я должен тщательно обдумать, в каком\nпорядке я использую свои заклинания.",
+        "es": "Debería considerar cuidadosamente\nen qué orden uso mis hechizos.",
+        "jp": "呪文をどの順番で使うかは\n慎重に考える必要があります。"
     },
     "level1_train_diag_c": {
         "en_us": "I can do more damage if I follow up\nMind+Strike with Matter+Strike.",
-        "fr": "Je peux faire plus de dégâts si je fais suivre Esprit+Frappe avec Matière+Frappe.",
-        "zh_tw": "如果我用 Matter+Strike 跟進 Mind+Strike，我可以造成更多傷害。",
-        "zh_cn": "如果我用 Matter+Strike 跟进 Mind+Strike，我可以造成更多伤害。",
-        "ru": "Я могу нанести больше урона, если после Mind+Strike нажму Matter+Strike.",
-        "es": "Puedo hacer más daño si sigo Mente+Golpe con Materia+Golpe.",
-        "jp": "マインド+ストライクにマター+ストライクを付与すれば、より多くのダメージを与えることができます。"
+        "fr": "Je peux faire plus de\ndégâts si je fais suivre\nEsprit+Frappe avec Matière+Frappe.",
+        "zh_tw": "如果我用 Matter+Strike 跟進\nMind+Strike，我可以造成更多傷害。",
+        "zh_cn": "如果我用 Matter+Strike 跟进\nMind+Strike，我可以造成更多伤害。",
+        "ru": "Я могу нанести больше урона, если\nпосле Mind+Strike нажму Matter+Strike.",
+        "es": "Puedo hacer más daño si sigo\nMente+Golpe con Materia+Golpe.",
+        "jp": "マインド+ストライクにマター+\nストライクを付与すれば、\nより多くのダメージを与えることができます。"
     },
     "level1_train_tut_a": {
         "en_us": "Goal: Defeat the\nenemy in just\n4 spells",
-        "fr": "Objectif : Vaincre l’ennemi en seulement 4 sorts",
-        "zh_tw": "目標：在短短 4 個法術中擊敗敵人",
-        "zh_cn": "目标：在短短 4 个法术中击败敌人",
-        "ru": "Цель: победить врага всего за 4 заклинания",
-        "es": "Objetivo: Derrota al enemigo en solo 4 hechizos",
-        "jp": "方法:わずか4つの呪文で敵を倒す"
+        "fr": "Objectif : Vaincre\nl’ennemi en seulement\n4 sorts",
+        "zh_tw": "目標：使用少于\n4 個法術擊敗敵人",
+        "zh_cn": "目标：使用少于\n4 个法术击败敌人",
+        "ru": "Цель: победить\nврага всего за\n4 заклинания",
+        "es": "Objetivo: Derrota\nal enemigo en\nsolo 4 hechizos",
+        "jp": "方法:わずか\n4つの呪文で\n敵を倒す"
     },
     "level2_tut_a": {
         "en_us": "Some shields\nare more useful\nagainst certain\nattacks",
-        "fr": "Certains boucliers sont plus utiles contre certaines attaques",
-        "zh_tw": "一些盾牌對某些攻擊更有用",
-        "zh_cn": "一些盾牌对某些攻击更有用",
-        "ru": "Некоторые щиты более полезны против определенных атак",
-        "es": "Algunos escudos son más útiles contra ciertos ataques",
-        "jp": "一部のシールドは、特定の攻撃に対してより有用です"
+        "fr": "Certains boucliers\nsont plus utiles\ncontre certaines\nattaques",
+        "zh_tw": "一些盾牌對某些\n攻擊更有用",
+        "zh_cn": "一些盾牌对某些\n攻击更有用",
+        "ru": "Некоторые щиты\nболее полезны\nпротив определенных\nатак",
+        "es": "Algunos escudos\nson más útiles\ncontra ciertos\nataques",
+        "jp": "一部のシールドは、\n特定の攻撃に対して\nより有用です"
     },
     "level2_train_tut_a": {
-        "en_us": "Goal: Survive the\nenemy's attacks",
-        "fr": "Objectif : Survivre aux attaques de l’ennemi",
-        "zh_tw": "目標：在敵人的攻擊中倖存下來",
-        "zh_cn": "目标：在敌人的攻击中幸存下来",
-        "ru": "Цель: пережить атаки противника",
-        "es": "Objetivo: Sobrevivir a los ataques del enemigo",
-        "jp": "解除内容:敵の攻撃を生き延びる"
+        "en_us": "Goal: Defened against\nthe enemy's attacks",
+        "fr": "Objectif: Survivre\naux attaques de l’ennemi",
+        "zh_tw": "目標：防禦敵人的攻擊",
+        "zh_cn": "目标：防御敌人的攻击",
+        "ru": "Цель: Защититесь\nот атак врага",
+        "es": "Objetivo: Defenderse\nde los ataques\ndel enemigo.",
+        "jp": "目的:敵の攻撃から身を守る"
     },
     "level4_train_tut_a": {
         "en_us": "Goal: Defeat\nthe enemy",
-        "fr": "Objectif : Vaincre l’ennemi",
+        "fr": "Objectif: Vaincre\nl’ennemi",
         "zh_tw": "目標：擊敗敵人",
         "zh_cn": "目标：击败敌人",
-        "ru": "Цель: Победить врага",
-        "es": "Objetivo: Derrotar al enemigo",
+        "ru": "Цель: Победить\nврага",
+        "es": "Objetivo: Derrotar\nal enemigo",
         "jp": "解除方法:敵を倒す"
     },
     "level4_train_tut_b": {
         "en_us": "Heal your last\ninjury with\n          +",
-        "fr": "Soignez votre dernière blessure avec +",
-        "zh_tw": "用 + 治癒你最後的傷害",
-        "zh_cn": "用 + 治愈你最后的伤害",
-        "ru": "Залечите последнюю травму с помощью +",
-        "es": "Cura tu última herida con +",
-        "jp": "+で最後の怪我を治す"
+        "fr": "Soignez votre\ndernière blessure\navec\n        +",
+        "zh_tw": "治癒你最後的傷害\n       +",
+        "zh_cn": "治愈你最后的伤害\n       +",
+        "ru": "Залечите последнюю\nтравму с помощью\n         +",
+        "es": "Cura tu última\nherida con\n       +",
+        "jp": "で最後の怪我を治す\n         +"
     },
     "level5_train_tut_a": {
         "en_us": "Goal: Defeat\nthe dummy",
-        "fr": "Objectif : Vaincre le mannequin",
+        "fr": "Objectif : Vaincre\nle mannequin",
         "zh_tw": "目標：打敗假人",
         "zh_cn": "目标：打败假人",
-        "ru": "Цель: Победить манекена",
-        "es": "Objetivo: Derrotar al muñeco",
+        "ru": "Цель: Победить\nманекена",
+        "es": "Objetivo: Derrotar\nal muñeco",
         "jp": "解除方法:ダミーを倒す"
     },
     "level5_train_tut_b": {
@@ -731,12 +722,12 @@ let textData2 = {
     },
     "level5_train_tut_c": {
         "en_us": "Void shields can\nfully block single\npowerful attacks\n             +",
-        "fr": "Les boucliers du Néant peuvent bloquer complètement des attaques puissantes uniques +",
-        "zh_tw": "虛空護盾可以完全擋住單次強力攻擊+",
-        "zh_cn": "虚空护盾可以完全挡住单次强力攻击+",
-        "ru": "Щиты Бездны могут полностью блокировать одиночные мощные атаки +",
-        "es": "Los escudos de vacío pueden bloquear completamente ataques poderosos individuales +",
-        "jp": "ボイドシールドは、単一の強力な攻撃を完全にブロックできます+"
+        "fr": "Les boucliers du\nNéant peuvent bloquer\ncomplètement des attaques puissantes uniques +",
+        "zh_tw": "虛空護盾可以完全\n阻擋一次攻擊\n       +",
+        "zh_cn": "虚空护盾可以完全\n阻挡一次攻击\n      +",
+        "ru": "Пустотные щиты\nмогут полностью\nблокировать\nодну-единственную атаку\n          +",
+        "es": "Los escudos de\nvacío pueden\nbloquear completamente\nun solo ataque\n         +",
+        "jp": "ボイドシールドは\n1回の攻撃を完全\nにブロックできる\n         +"
     },
     "level7_diag_a": {
         "en_us": "Strange, I don't remember\nsetting up a training dummy here.",
@@ -748,13 +739,13 @@ let textData2 = {
         "jp": "奇妙なことに、私はここで訓練用ダミーを設置した覚えがありません。"
     },
     "dummy_mind_tut": {
-        "en_us": "Energy Strike\nmakes your\nnext attack hit\ntwice as hard.\n            +",
-        "fr": "Frappe d’énergie rend votre prochaine attaque deux fois plus puissante.             +",
-        "zh_tw": "能量打擊使你的下一次攻擊受到兩倍的打擊。            +",
-        "zh_cn": "能量打击使你的下一次攻击受到两倍的打击。            +",
-        "ru": "Энергетический удар делает вашу следующую атаку в два раза сильнее.             +",
-        "es": "Golpe de energía hace que tu próximo ataque golpee el doble de fuerte.             +",
-        "jp": "「エナジーストライク」は、次の攻撃のヒットを2倍にする。            +"
+        "en_us": "Energy Strike\nmakes your\nnext attack hit\ntwice as hard\n            +",
+        "fr": "La frappe énergétique\nrend votre prochaine\nattaque deux fois\nplus forte.\n          +",
+        "zh_tw": "能量打擊使你的\n下一次攻擊造成\n兩倍的傷害\n         +",
+        "zh_cn": "能量打击使你的\n下一次攻击造成\n双倍伤害\n         +",
+        "ru": "Энергетический удар делает вашу следующую атаку в два раза сильнее.\n             +",
+        "es": "Golpe de energía hace que tu próximo ataque golpee el doble de fuerte.\n             +",
+        "jp": "「エナジーストライク」は、次の攻撃のヒットを2倍にする。\n            +"
     },
     "new_game": {
         "en_us": "NEW GAME",

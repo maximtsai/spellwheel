@@ -10,7 +10,25 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2c": {
-        "en_us": "IMPRESSIVE OFFENSE, BUT\nNOT NEARLY ENOUGH.",
+        "en_us": "SO EAGERLY AGGRESSIVE.\nTHINK TWICE BEFORE ATTACKING.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2cx": {
+        "en_us": "THINK TWICE BEFORE ATTACKING",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2c": {
+        "en_us": "SO EAGERLY AGGRESSIVE.\nTRY ATTACKING THIS.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

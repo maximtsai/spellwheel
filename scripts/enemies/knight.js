@@ -30,6 +30,7 @@
          this.voidSlashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 260, 'spells', 'darkSlice.png').setScale(0.8).setDepth(130).setAlpha(0).setOrigin(0.15, 0.5);
          this.voidSlashEffect2 = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 260, 'spells', 'darkSlice.png').setScale(0.8).setDepth(130).setAlpha(0).setOrigin(0.15, 0.5);
         this.isFirstVoidSlash = true;
+         this.shieldTextOffsetY = -20;
      }
 
      initMisc() {
@@ -263,6 +264,7 @@
 
      damageVoidShield() {
          this.shieldAmts--;
+         this.shakeShieldText();
          playSound('meat_click_left', 0.4);
          playSound('meat_click_right', 0.4);
          if (this.shieldAmts <= 0) {
@@ -310,7 +312,61 @@
 
      }
 
+     shakeShieldText() {
+         if (this.shieldAmts <= 0) {
+             this.shieldText.visible = false;
+         }
+         this.shieldText.setText(this.shieldAmts);
+         let startLeft = Math.random() < 0.5;
+         this.scene.tweens.add({
+             targets: this.shieldText,
+             scaleX: this.shieldText.startScale + 1,
+             scaleY: this.shieldText.startScale + 1,
+             y: "-=3",
+             x: startLeft ? "-=6" : "+=6",
+             duration: gameVars.gameManualSlowSpeedInverse * 60,
+             ease: 'Quint.easeOut',
+             onComplete: () => {
+                 this.scene.tweens.add({
+                     targets: this.shieldText,
+                     scaleX: this.shieldText.startScale,
+                     scaleY: this.shieldText.startScale,
+                     y: "+=3",
+                     duration: gameVars.gameManualSlowSpeedInverse * 500,
+                     ease: 'Quart.easeOut',
+                 });
+                 this.scene.tweens.add({
+                     targets: this.shieldText,
+                     x: startLeft ? "+=13" : "-=13",
+                     duration: gameVars.gameManualSlowSpeedInverse * 100,
+                     ease: 'Quint.easeInOut',
+                     onComplete: () => {
+                         this.shieldText.setDepth(8);
+                         this.scene.tweens.add({
+                             targets: this.shieldText,
+                             x: this.shieldText.startX,
+                             duration: gameVars.gameManualSlowSpeedInverse * 400,
+                             ease: 'Bounce.easeOut',
+                         });
+                     }
+                 });
+             }
+         });
+     }
+
      createVoidShield(amt, doubleShield) {
+         this.shieldText.visible = true;
+         this.shieldText.setText(amt);
+         this.shieldText.setScale(0.1);
+         this.shieldText.startX = this.shieldText.x;
+         this.shieldText.startScale = 0.82;
+         this.scene.tweens.add({
+             targets: this.shieldText,
+             scaleX: this.shieldText.startScale,
+             scaleY: this.shieldText.startScale,
+             ease: 'Back.easeOut',
+             duration: gameVars.gameManualSlowSpeedInverse * 250,
+         });
          playSound('void_shield');
          let distMult = 1;
          if (doubleShield) {

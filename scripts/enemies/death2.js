@@ -250,28 +250,54 @@
              return;
          } else {
              let prevHealthPercent = this.prevHealth / this.healthMax;
-             if (prevHealthPercent > 0.5 && currHealthPercent <= 0.5 && !this.thornForm && !this.fireForm) {
-                 this.thornForm = true;
+             if (this.fireForm) {
+                 if (prevHealthPercent > 0.4 && currHealthPercent <= 0.4 && !this.thornForm) {
+                     this.thornForm = true;
 
-                 this.preventArmsVisible = true;
-                 this.isPreppingFists = false;
-                 this.interruptCurrentAttack();
-                this.clearFistObjects();
-                 playSound('clunk');
-                 this.setArmsVisible(false);
-                 this.forceOverrideSprite = 'death2crouch.png';
-                 this.setDefaultSprite('death2crouch.png');
-                 messageBus.publish("enemyAddShield", 120);
-                 this.currentAttackSetIndex = 1;
-                 this.nextAttackIndex = 0;
-                 this.setAsleep();
-                 globalObjects.bannerTextManager.setDialog([getLangText('deathFight2c')]);
-                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-                 globalObjects.bannerTextManager.showBanner(0);
-                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                     this.setAwake();
-                 })
+                     this.preventArmsVisible = true;
+                     this.isPreppingFists = false;
+                     this.interruptCurrentAttack();
+                     this.clearFistObjects();
+                     playSound('clunk');
+                     this.setArmsVisible(false);
+                     this.forceOverrideSprite = 'death2crouch.png';
+                     this.setDefaultSprite('death2crouch.png');
+                     messageBus.publish("enemyAddShield", 120);
+                     this.currentAttackSetIndex = 1;
+                     this.nextAttackIndex = 0;
+                     this.setAsleep();
+                     globalObjects.bannerTextManager.setDialog([getLangText('deathFight2cx')]);
+                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                     globalObjects.bannerTextManager.showBanner(0);
+                     globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                         this.setAwake();
+                     })
+                 }
+             } else {
+                 if (prevHealthPercent > 0.6 && currHealthPercent <= 0.6 && !this.thornForm) {
+                     this.thornForm = true;
+
+                     this.preventArmsVisible = true;
+                     this.isPreppingFists = false;
+                     this.interruptCurrentAttack();
+                     this.clearFistObjects();
+                     playSound('clunk');
+                     this.setArmsVisible(false);
+                     this.forceOverrideSprite = 'death2crouch.png';
+                     this.setDefaultSprite('death2crouch.png');
+                     messageBus.publish("enemyAddShield", 120);
+                     this.currentAttackSetIndex = 1;
+                     this.nextAttackIndex = 0;
+                     this.setAsleep();
+                     globalObjects.bannerTextManager.setDialog([getLangText('deathFight2c')]);
+                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                     globalObjects.bannerTextManager.showBanner(0);
+                     globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                         this.setAwake();
+                     })
+                 }
              }
+
          }
      }
 

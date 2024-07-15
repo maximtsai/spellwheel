@@ -13,6 +13,8 @@ class TextPopupManager {
         this.infoBox = this.scene.add.image(0, 0, 'blackPixel').setAlpha(0).setDepth(10000);
         this.infoText = this.scene.add.text(0, 0, 'WELCOME', {fontFamily: 'Arial', fontSize: isMobile ? 23 : 22, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(10000);
         this.infoText.setFontStyle('bold');
+        this.infoBorderTop = this.scene.add.image(0, 0, 'blurry', 'box_length.png').setAlpha(0).setDepth(10000);
+        this.infoBorderBot = this.scene.add.image(0, 0, 'blurry', 'box_length.png').setAlpha(0).setDepth(10000);
         messageBus.subscribe('animateDamageNum', this.animateDamageNum.bind(this));
         messageBus.subscribe('animateDamageNumAccumulate', this.animateDamageNumAccumulate.bind(this));
         messageBus.subscribe('animateTrueDamageNum', this.animateTrueDamageNum.bind(this));
@@ -33,31 +35,56 @@ class TextPopupManager {
         this.infoText.x = x; this.infoText.y = y;
         this.infoText.setAlpha(0);
         this.infoBox.setAlpha(0);
+        this.infoBorderTop.setAlpha(0);
+        this.infoBorderBot.setAlpha(0);
         this.infoText.setAlign('left');
+        this.infoBox.x = x; this.infoBox.y = y + 1;
         if (align == "left") {
+            this.infoText.x += 3;
             this.infoText.setOrigin(0, 0.5);
             this.infoBox.setOrigin(0, 0.5);
         } else if (align == "center") {
-            this.infoText.x -= 3;
+            // this.infoText.x -= 1;
             this.infoText.setAlign('center');
             this.infoText.setOrigin(0.5, 0.5);
             this.infoBox.setOrigin(0.5, 0.5);
+
         } else if (align == "right") {
             this.infoText.setOrigin(1, 0.5);
             this.infoText.x -= 6;
             this.infoBox.setOrigin(1, 0.5);
         }
-        this.infoBox.x = x; this.infoBox.y = y;
+
+        this.infoBorderTop.setAlpha(0);
+        this.infoBorderBot.setAlpha(0);
+
         this.infoText.setText(newText);
         let multScale = useSmall ? 0.9 : 1;
         this.infoText.setScale(multScale);
         let boxWidth = this.infoText.width * 0.5 + 8;
-        let boxHeight = this.infoText.height * 0.5 + 6;
+        let boxHeight = this.infoText.height * 0.5 + 9;
         this.infoBox.setScale(boxWidth * multScale, boxHeight * multScale);
+        let borderGoalScale = boxWidth * multScale * 0.02;
+        this.infoBorderTop.setScale(borderGoalScale*0.1, 0.5).setPosition(this.getCenterPos(), this.infoBox.y - boxHeight + 3);
+        this.infoBorderBot.setScale(borderGoalScale*0.1, -0.5).setPosition(this.getCenterPos(), this.infoBox.y + boxHeight - 3);
+
         this.currAnim = this.scene.tweens.add({
-            targets: [this.infoText],
+            targets: [this.infoText, this.infoBorderTop, this.infoBorderBot],
             alpha: 1,
             duration: 300,
+        });
+        this.currAnim3 = this.scene.tweens.add({
+            targets: [this.infoBorderTop, this.infoBorderBot],
+            scaleX: borderGoalScale,
+            ease: 'Quart.easeInOut',
+            duration: 1000,
+            onComplete: () => {
+                this.currAnim = this.scene.tweens.add({
+                    targets: [this.infoBorderTop, this.infoBorderBot],
+                    alpha: 0.7,
+                    duration: 1000,
+                });
+            }
         });
         this.currAnim2 = this.scene.tweens.add({
             targets: [this.infoBox],
@@ -74,9 +101,10 @@ class TextPopupManager {
         if (this.currAnim) {
             this.currAnim.stop();
             this.currAnim2.stop();
+            this.currAnim3.stop();
         }
         this.scene.tweens.add({
-            targets: [this.infoText, this.infoBox],
+            targets: [this.infoText, this.infoBox, this.infoBorderTop, this.infoBorderBot],
             alpha: 0,
             duration: 300,
         });

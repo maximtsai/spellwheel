@@ -2106,6 +2106,10 @@ const ENABLE_KEYBOARD = true;
      }
 
      tickDelayedDamage(amt = 1) {
+        if (this.delayedDamageRecentlyAdded) {
+            this.delayedDamageRecentlyAdded = false;
+            return;
+        }
          this.delayedDamage -= amt;
          this.delayDamageText.setText(this.delayedDamage);
          // this.delayDamageSandFull.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageBase));
@@ -2176,6 +2180,7 @@ const ENABLE_KEYBOARD = true;
      addDelayedDamage(amt) {
         let oldDelayedDamage = this.delayedDamage;
          this.delayedDamage += amt;
+         this.delayedDamageRecentlyAdded = true;
 
         if (globalObjects.player.canResetRecentDamage) {
 

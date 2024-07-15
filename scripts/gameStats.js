@@ -6,11 +6,6 @@
  class GameStats {
     constructor() {
         this.reset();
-        messageBus.subscribe("addDebt", this.addDebt.bind(this));
-        messageBus.subscribe("debtCleared", this.clearDebt.bind(this));
-        messageBus.subscribe("setInterest", this.setInterest.bind(this));
-        messageBus.subscribe("setTitle", this.setTitle.bind(this));
-        messageBus.subscribe("setMarketHistory", this.setMarketHistory.bind(this));
         messageBus.subscribe("tempPause", this.setTempPause.bind(this));
         messageBus.subscribe("pauseGame", this.setPermPause.bind(this));
         messageBus.subscribe("setGameSlow", this.setGameSlow.bind(this));

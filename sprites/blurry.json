@@ -385,6 +385,31 @@
 					}
 				},
 				{
+					"filename": "box_length.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 102,
+						"h": 9
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 102,
+						"h": 9
+					},
+					"frame": {
+						"x": 606,
+						"y": 2032,
+						"w": 102,
+						"h": 9
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "static2.png",
 					"rotated": false,
 					"trimmed": false,
@@ -651,6 +676,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:7cc44a8d302d9c832d9fa497815774ed:c8fca22e76b77714457830734c76cbc9:792234a2cebdb690faa7567a0f79f2d2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:6d7b5215631e8574b1927aa5af601b97:333078f3d43a4ada7bab1a50ea019460:792234a2cebdb690faa7567a0f79f2d2$"
 	}
 }

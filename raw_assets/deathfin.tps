@@ -248,20 +248,6 @@
             <key type="filename">deathfin/frame0072.png</key>
             <key type="filename">deathfin/frame0073.png</key>
             <key type="filename">deathfin/frame0074.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.5</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>308,175,615,350</rect>
-                <key>scale9Paddings</key>
-                <rect>308,175,615,350</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">deathfin/hood0000.png</key>
             <key type="filename">deathfin/hood0001.png</key>
             <key type="filename">deathfin/hood0002.png</key>
@@ -341,7 +327,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.54</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>

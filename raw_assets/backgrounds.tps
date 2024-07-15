@@ -269,6 +269,7 @@
             <key type="filename">backgrounds/firebg1.png</key>
             <key type="filename">backgrounds/firebg2.png</key>
             <key type="filename">backgrounds/graves.png</key>
+            <key type="filename">backgrounds/waterfall.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

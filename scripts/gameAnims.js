@@ -338,7 +338,8 @@ function createAnimations(scene) {
             end: 74,
             zeroPad: 2,
         }),
-        frameRate: 30
+        repeat: -1,
+        frameRate: 20
     });
     scene.anims.create({
         key: 'ladydeathhood',
@@ -349,7 +350,8 @@ function createAnimations(scene) {
             end: 74,
             zeroPad: 2,
         }),
-        frameRate: 30
+        repeat: -1,
+        frameRate: 20
     });
     scene.anims.create({
         key: 'weaken',

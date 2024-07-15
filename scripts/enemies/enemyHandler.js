@@ -60,6 +60,8 @@ function createEnemy(num) {
     case 12:
         globalObjects.currentEnemy = new Death2Plus(PhaserScene, gameConsts.halfWidth, 175, num);
         break;
+    case 13:
+        globalObjects.currentEnemy = new Death3(PhaserScene, gameConsts.halfWidth, 190, num);
         break;
     default:
         globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 185);

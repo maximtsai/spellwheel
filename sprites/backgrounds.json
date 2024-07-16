@@ -405,6 +405,31 @@
 						"x": 0.5,
 						"y": 0.5
 					}
+				},
+				{
+					"filename": "waterfallhard.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 350,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 350,
+						"h": 400
+					},
+					"frame": {
+						"x": 1459,
+						"y": 453,
+						"w": 350,
+						"h": 400
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
 				}
 			]
 		},
@@ -609,6 +634,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:b243e6882d33d426930e49b4a8a1aac3:709b8f6b866648d211a5bfd997b7d0bf:d36b2d12f94c3c84864533b00704d5ae$"
+		"smartupdate": "$TexturePacker:SmartUpdate:cf096423adc2c8b3624981423a656784:9819c7572b378c8314f1d98df323559c:d36b2d12f94c3c84864533b00704d5ae$"
 	}
 }

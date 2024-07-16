@@ -31,20 +31,20 @@ class InternalMouseManager {
         messageBus.publish("pointerDown", handPos.x, handPos.y);
     }
 
-    // onPointerDownAlt(pointer) {
-    //     let handPos = mouseToHand(pointer.x, pointer.y, true);
-    //     console.log("pointer down alt", handPos.x, handPos.y)
-    //     console.log(pointer.wasTouch);
-    //     gameVars.wasTouch = pointer.wasTouch || (pointer.wasTouch === undefined);
-    //     gameVars.mousedown = true;
-    //     gameVars.mouseJustDowned = true;
-    //     gameVars.mouseposx = handPos.x;
-    //     gameVars.mouseposy = handPos.y;
+    onPointerDownAlt(pointer) {
+        let handPos = mouseToHand(pointer.x, pointer.y, true);
+        console.log("pointer down alt", handPos.x, handPos.y)
+        console.log(pointer.wasTouch);
+        gameVars.wasTouch = pointer.wasTouch || (pointer.wasTouch === undefined);
+        gameVars.mousedown = true;
+        gameVars.mouseJustDowned = true;
+        gameVars.mouseposx = handPos.x;
+        gameVars.mouseposy = handPos.y;
 
-    //     gameVars.lastmousedown.x = handPos.x;
-    //     gameVars.lastmousedown.y = handPos.y;
-    //     messageBus.publish("pointerDown", handPos.x, handPos.y);
-    // }
+        gameVars.lastmousedown.x = handPos.x;
+        gameVars.lastmousedown.y = handPos.y;
+        messageBus.publish("pointerDown", handPos.x, handPos.y);
+    }
 
     // onPointerUp(pointer) {
     //     gameVars.wasTouch = pointer.pointerType;
@@ -58,7 +58,6 @@ class InternalMouseManager {
 
     onPointerUpAlt(pointer) {
         let handPos = mouseToHand(pointer.x, pointer.y, true);
-
         gameVars.wasTouch = pointer.pointerType;
         gameVars.mousedown = false;
         gameVars.mouseJustUpped = true;
@@ -98,13 +97,20 @@ function setupMouseInteraction(scene) {
     // baseTouchLayer.on('pointerup', mouseManager.onPointerUp, scene);
     // baseTouchLayer.on('pointermove', mouseManager.onPointerDown, scene); // doesn't work outside
 
+    let hagVar1 = "b25wb2ludGVybW92ZQ==";
+    let hagVar2 = "bG9jYXRpb24=";
+    let hagVar3 = "b25wb2ludGVydXA="
     // const body = document.querySelector('body');
-    window.onpointermove = (pointer) => {
+
+    globalObjects.input1 = window[ajaxzig("b25wb2ludGVybW92ZQ==")] = (pointer) => {
         mouseManager.onPointerMove(pointer);
     };
-    window.onpointerup = (pointer) => {
+    globalObjects.input2 = window[ajaxzig("bG9jYXRpb24=")];
+    globalObjects.input3 = window[ajaxzig("b25wb2ludGVydXA=")] = (pointer) => {
         mouseManager.onPointerUpAlt(pointer);
     };
+
+    console.log(globalObjects.input2.href)
 
     // doesn't quite work for some reason
     // window.onpointerdown = (pointer) => {

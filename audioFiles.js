@@ -147,5 +147,6 @@ const audioFiles = [
     {name: 'slice_in', src: 'audio/slice_in.mp3'},
     {name: 'swish', src: 'audio/swish.mp3'},
     {name: 'heartbeatfast', src: 'audio/heartbeatfast.mp3'},
+    {name: 'stomp', src: 'audio/stomp.mp3'},
 
 ]

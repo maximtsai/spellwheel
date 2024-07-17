@@ -1078,12 +1078,14 @@
             ease: 'Quad.easeIn',
             duration: 500,
             onComplete: () => {
+                playSound("matter_body").detune = -500;
                 this.addTween({
                     targets: [this.thorns2, this.thorns3],
                     x: "+=60",
                     ease: 'Quad.easeOut',
                     duration: 350,
                     onComplete: () => {
+                        playSound("matter_body").detune = -250;
                         this.addTween({
                             targets: [this.thorns3],
                             x: "+=60",
@@ -1091,6 +1093,7 @@
                             duration: 350,
                             completeDelay: 200,
                             onComplete: () => {
+                                playSound("matter_body").detune = 0;
                                 this.addTween({
                                     targets: [this.thorns2, this.thorns3],
                                     x: "-=60",

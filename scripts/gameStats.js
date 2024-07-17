@@ -42,6 +42,7 @@
     }
 
     setPermPause(amt = 0.002) {
+        gameVars.permTimeScale = amt;
         gameVars.timeScale = amt;
         PhaserScene.tweens.timeScale = amt;
         PhaserScene.time.timeScale = amt;
@@ -50,6 +51,8 @@
 
     setUnpause() {
         gameVars.timeScale = gameVars.gameManualSlowSpeed || 1;
+        gameVars.permTimeScale = gameVars.timeScale;
+
         PhaserScene.tweens.timeScale = gameVars.gameManualSlowSpeed || 1;
         PhaserScene.time.timeScale = gameVars.gameManualSlowSpeed || 1;
         PhaserScene.anims.globalTimeScale = gameVars.gameManualSlowSpeed || 1;

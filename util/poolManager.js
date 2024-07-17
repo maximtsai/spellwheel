@@ -34,8 +34,8 @@ function getTempPoolObject(atlas, name, poolName, duration = 250) {
     } else {
         effect.setFrame(name).setAlpha(1).setVisible(true).setRotation(0)
     }
-    console.log("temp ", name, duration);
-    let timeScale = gameVars.timeScale || 1;
+    let timeScale = gameVars.gameManualSlowSpeed || 1;
+    console.log("temp ", name, duration, timeScale);
     PhaserScene.time.delayedCall(duration / timeScale, () => {
         poolManager.returnItemToPool(effect, poolName);
     });

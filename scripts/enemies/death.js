@@ -5,6 +5,8 @@
         this.sprite.setOrigin(0.5, 0.45);
         swirlInReaperFog(1.25);
         this.setupCustomDeathSprite();
+         setFloatingDeathVisible(true);
+
         setTimeout(() => {
             this.windSfx = playSound('wind', 0.01, true);
             fadeInSound(this.windSfx, 1, 2000);
@@ -655,13 +657,13 @@
                             this.reaperHidden = true;
                             clearDeathFog();
                             this.darkOverlay = this.addImage(gameConsts.halfWidth,gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(90);
-                            this.whiteDeath = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'max_death_1b_angry_white.png').setScale(this.sprite.scaleX).setAlpha(0).setDepth(92).setOrigin(0.5, 0.45);
+                            this.whiteDeath = this.addImage(this.sprite.x, this.sprite.y + 0.5, 'enemies', 'max_death_1b_angry_white.png').setScale(this.sprite.scaleX).setAlpha(0).setDepth(92).setOrigin(0.5, 0.45);
 
                             this.addTween({
                                 targets: [this.sprite, this.whiteDeath],
-                                scaleX: 0.45,
-                                scaleY: 0.45,
-                                y: "+=10",
+                                scaleX: 0.38,
+                                scaleY: 0.38,
+                                y: "+=12",
                                 ease: 'Cubic.easeInOut',
                                 duration: 2750,
                                 onComplete: () => {
@@ -671,8 +673,8 @@
                             })
                             this.addTween({
                                 targets: [this.flashCover],
-                                scaleX: 4,
-                                scaleY: 6,
+                                scaleX: 3.7,
+                                scaleY: 5.4,
                                 alpha: 1,
                                 ease: 'Cubic.easeIn',
                                 duration: 2800,
@@ -697,23 +699,24 @@
                                 duration: 2800,
                                 onComplete: () => {
                                     this.whiteDeath.destroy();
-                                    this.muscleDeathWhite = this.addImage(this.sprite.x, 90, 'deathfinal', 'max_death_2_white.png').setScale(0.58, 0.6).setDepth(90).setOrigin(0.5, 0.2);
+                                    this.muscleDeathWhite = this.addImage(this.sprite.x, 82, 'deathfinal', 'max_death_2_white.png').setScale(0.46, 0.45).setDepth(90).setOrigin(0.5, 0.2);
                                     this.addTween({
                                         targets: this.muscleDeathWhite,
-                                        scaleX: 0.65,
-                                        scaleY: 0.65,
-                                        y: 65,
+                                        scaleX: 0.56,
+                                        scaleY: 0.57,
+                                        y: 55,
                                         ease: 'Cubic.easeInOut',
-                                        duration: 1400,
+                                        duration: 1200,
                                         onComplete: () => {
                                             this.addTween({
                                                 targets: this.muscleDeathWhite,
                                                 scaleX: 0.95,
                                                 scaleY: 0.95,
                                                 y: 90,
-                                                ease: 'Quart.easeIn',
-                                                duration: 800,
+                                                ease: 'Quint.easeIn',
+                                                duration: 700,
                                                 onComplete: () => {
+                                                    playSound('stomp');
                                                     screenShake(2);
                                                     this.darkOverlay.destroy();
                                                     this.beginDeath2();

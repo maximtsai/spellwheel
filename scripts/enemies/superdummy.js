@@ -187,7 +187,8 @@
             this.dummyRightArm.visible = false;
             this.setSprite('super_dummy_angry.png', 0.8);
             this.x += 8;
-             this.y += this.sprite.height * this.sprite.scaleY * 0.51; this.sprite.y = this.y;
+             this.y += this.sprite.height * this.sprite.scaleY * 0.51;
+             this.sprite.y = this.y;
              this.sprite.setOrigin(0.51, 0.96);
              this.dieClickBlocker = new Button({
                  normal: {
@@ -209,7 +210,7 @@
                  duration: 1500,
                  onComplete: () => {
                      this.x -= 80;
-                     this.y += 45;
+                     this.y += 54;
                      this.setSprite('super_dummy_broken.png', this.sprite.scaleX);
                      this.sprite.setRotation(0);
                      this.sprite.setOrigin(0.85, 0.78);
@@ -761,7 +762,8 @@
                                                     rotation: 1.7,
                                                     ease: 'Quart.easeIn',
                                                     onComplete: () => {
-                                                        let sfx = playSound('balloon', 0.4).detune = -250;
+                                                        let sfx = playSound('balloon', 0.4);
+                                                        sfx.detune = -250
                                                         this.dummyRightArm.setDepth(0);
                                                         this.dummyRightArm.setFrame('super_dummy_rightarm.png');
                                                         this.dummyRightArm.setRotation(0.3);

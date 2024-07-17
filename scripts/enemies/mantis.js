@@ -385,6 +385,7 @@
             this.gunFlash1.alpha = 0;
             this.gunFlash2.alpha = 0;
         }
+         this.isPaniking = false;
 
         playSound('goblin_grunt');
         if (this.isUnloading) {

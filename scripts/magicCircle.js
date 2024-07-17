@@ -2088,6 +2088,10 @@ const ENABLE_KEYBOARD = true;
 
      handleStatusesTicked() {
         if (this.delayedDamage > 0) {
+            if (this.delayedDamageRecentlyAdded) {
+                this.delayedDamageRecentlyAdded = false;
+                return;
+            }
             if (this.delayedDamageShouldTick) {
                 this.tickDelayedDamage();
                 let scale = this.getDelayedDamageClockScale();
@@ -2106,10 +2110,7 @@ const ENABLE_KEYBOARD = true;
      }
 
      tickDelayedDamage(amt = 1) {
-        if (this.delayedDamageRecentlyAdded) {
-            this.delayedDamageRecentlyAdded = false;
-            return;
-        }
+
          this.delayedDamage -= amt;
          this.delayDamageText.setText(this.delayedDamage);
          // this.delayDamageSandFull.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageBase));

@@ -65,7 +65,6 @@
     }
 
     clearGameSlow() {
-        console.log("clear game slow");
         gameVars.gameManualSlowSpeed = 1;
         gameVars.gameManualSlowSpeedInverse = 1;
         gameVars.timeScale = gameVars.gameManualSlowSpeed;

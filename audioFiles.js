@@ -120,6 +120,8 @@ const audioFiles = [
     {name: 'robot_sfx_2', src: 'audio/robot_sfx_2.mp3'},
     {name: 'robot_laser', src: 'audio/robot_laser.mp3'},
     {name: 'explosion', src: 'audio/explosion.mp3'},
+    {name: 'music_blast', src: 'audio/music_blast.mp3'},
+    {name: 'music_blast_weak', src: 'audio/music_blast_weak.mp3'},
 
     {name: 'magician_end', src: 'audio/magician_end.mp3'},
     {name: 'magician_theme_1', src: 'audio/magician_theme_1.mp3'},

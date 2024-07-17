@@ -495,7 +495,7 @@
                      }
                  },
                  {
-                     name: ";36",
+                     name: ";144",
                      chargeAmt: 700,
                      chargeMult: 2,
                      finishDelay: 5000,
@@ -523,7 +523,7 @@
                      },
                      attackStartFunction: () => {
                          this.scytheCanBreak = true;
-                         this.swingScytheFastIntro(44, true, false, () => {
+                         this.swingScytheFastIntro(144, true, false, () => {
                              this.addTween({
                                  targets: this.listOfAngryPopups, scaleX: 0, scaleY: 0,
                                  ease: 'Back.easeIn', duration: 400,

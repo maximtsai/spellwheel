@@ -431,7 +431,9 @@
              return;
         }
         super.die();
-         this.burnAnim.stop();
+        if (this.burnAnim) {
+            this.burnAnim.stop();
+        }
         if (this.currAnim) {
             this.currAnim.stop();
         }

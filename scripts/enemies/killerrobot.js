@@ -481,8 +481,66 @@
          this.animateBG(durMult, alpha);
      }
 
-     fireMusic(damage, scale, duration) {
-         messageBus.publish('playerAddDelayedDamage', damage);
+     fireMusic(damage, scale = 1, duration = 700, isWeak = false) {
+         let music_note = getTempPoolObject('enemies', 'music_note.png', 'music_note', duration * 2);
+         music_note.setScale(scale * 0.4).setPosition(gameConsts.halfWidth, this.y).setAlpha(0.75).setDepth(31);
+         let music_note_blue = getTempPoolObject('enemies', 'music_note_blue.png', 'music_note_blue', 450);
+         music_note_blue.setScale(music_note.scaleX).setPosition(music_note.x, music_note.y).setDepth(30).setAlpha(isWeak ? 0.1 : 1);
+         this.addTween({
+             targets: music_note_blue,
+             duration: 400,
+             alpha: 0,
+         })
+         this.addTween({
+             targets: music_note,
+             duration: duration * 0.5,
+             alpha: 1,
+             ease: 'Cubic.easeOut',
+             onComplete: () => {
+                 let music_note_blue = getTempPoolObject('enemies', 'music_note_blue.png', 'music_note_blue', 450);
+                 music_note_blue.setScale(music_note.scaleX).setPosition(music_note.x, music_note.y).setDepth(30).setAlpha(isWeak ? 0.1 : 1);
+                 this.addTween({
+                     targets: music_note_blue,
+                     duration: 400,
+                     alpha: 0,
+                 })
+             }
+         })
+
+         this.addTween({
+             targets: music_note,
+             duration: duration,
+             scaleX: scale,
+             scaleY: scale,
+             y: globalObjects.player.getY() - 190,
+             ease: 'Quad.easeOut',
+             onComplete: () => {
+                 playSound('voca_hello_short', isWeak ? 0.7 : 0.95).detune = isWeak ? -540 : -500;
+                 playSound(isWeak ? 'music_blast_weak' : 'music_blast', isWeak ? 0.8 : 1);
+                 messageBus.publish('playerAddDelayedDamage', damage);
+                 let music_note_blue = getTempPoolObject('enemies', 'music_note_blue.png', 'music_note_blue', 450);
+                 music_note_blue.setScale(music_note.scaleX).setPosition(music_note.x, music_note.y).setDepth(30).setAlpha(isWeak ? 0.1 : 1);
+                 this.addTween({
+                     targets: music_note_blue,
+                     duration: 400,
+                     alpha: 0,
+                 })
+                 this.addTween({
+                     targets: music_note,
+                     duration: 300 + duration,
+                     ease: 'Quad.easeOut',
+                     alpha: 0,
+                 });
+                 screenShake(1 + damage * 0.15);
+                 this.addTween({
+                     targets: music_note,
+                     duration: 300 + duration,
+                     scaleX: scale * 2.5,
+                     scaleY: scale * 2.5,
+                     ease: "Quart.easeOut",
+                 })
+             }
+         })
      }
 
      initAttacks() {
@@ -588,7 +646,7 @@
                      }
                  },
                  {
-                     name: "SHINE BRIGHTER! {" + this.nextShieldHealth,
+                     name: "RECHARGING! {" + this.nextShieldHealth,
                      chargeAmt: gameVars.isHardMode ? 900 : 1100,
                      block: this.nextShieldHealth,
                      isPassive: true,
@@ -598,7 +656,7 @@
                      startFunction: () => {
                          this.nextAttack.block = this.nextShieldHealth;
                          setTimeout(() => {
-                             this.attackName.setText("SHINE BRIGHTER! {" + this.nextShieldHealth);
+                             this.attackName.setText("RECHARGING! {" + this.nextShieldHealth);
                          }, 0)
                         if (this.health < this.criticalThreshold) {
                             this.startInjuredSequence()
@@ -890,35 +948,23 @@
                      }
                  },
                  {
-                     name: "|12",
+                     name: "$10",
                      chargeAmt: 400,
-                     damage: 12,
+                     damage: -1,
                      attackTimes: 1,
-                     attackSprites: ['robot_claw_1.png'],
+                     prepareSprite: 'robot_heart.png',
                      startFunction: () => {
-                         this.claw1Attacked = false;
-                         this.pullbackScale = this.pullbackScaleDefault;
-                         this.attackScale = this.attackScaleDefault;
-                         this.attackEase = "Cubic.easeIn";
-                         this.returnEase = "Cubic.easeOut";
+
+                     },
+                     attackStartFunction: () => {
+                         playSound('voca_hello_short', 0.9);
+                         this.fireMusic(10, 1.05, 850)
                      },
                      attackFinishFunction: () => {
-                         this.claw1Attacked = !this.claw1Attacked;
-                         playSound('voca_claw_1', 0.7);
-                         playSound('voca_claw_2', 0.7);
-                         playSound('sword_hit');
-                         this.addTimeout(() => {
-                             if (!this.dead && this.shieldAdded) {
-                                 this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
-                             }
-                         }, 80);
-                         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
-                         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 180).setDepth(998).setScale(1.6);
                          this.refreshAnimateBG(2, 0.1);
                      },
                      finaleFunction: () => {
-                         this.attackEase = "Quad.easeOut";
-                         this.returnEase = "Cubic.easeIn";
+
                      }
                  },
                  {
@@ -1036,7 +1082,7 @@
                                                      this.sprite.scaleX = this.sprite.startScale * 0.9;
                                                  },
                                                  onComplete: () => {
-                                                     this.fireMusic(20, 1.5, 400);
+                                                     this.fireMusic(20, 1.4, 850);
                                                      this.addDelay(() => {
                                                          this.sprite.y = this.sprite.startY;
                                                          this.setDefaultSprite('robot1.png', undefined, true);
@@ -1275,10 +1321,11 @@
                      }
                  },
                  {
-                     name: "FAILING CIRCUITS }12",
+                     name: "FAILING CIRCUITS $12",
                      chargeAmt: 1000,
-                     damage: 12,
+                     damage: -1,
                      startFunction: () => {
+                         this.failingAttack = 12;
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.02;
                          this.startWeakLaser();
@@ -1289,6 +1336,8 @@
                          if (!this.exhausted) {
                              playSound('voca_laser_broken', 0.8);
                          }
+                         this.fireMusic(this.failingAttack, 0.8, 3000, true);
+
                          this.laserFake = this.addSprite(this.x - 5, this.y -30, 'enemies', 'robot_blast_small1.png').setScale(0.8).setDepth(9999).setAlpha(0.1);
                          this.addTween({
                              targets: this.laserFake,
@@ -1366,8 +1415,8 @@
      startWeakLaser() {
          if (!this.dead && !this.weakLaserFinished) {
              this.addDelayedCall(2000, () => {
-                 this.nextAttack.damage = Math.max(1, this.nextAttack.damage - 1);
-                 this.attackName.setText("FAILING CIRCUITS }" + this.nextAttack.damage +" ");
+                 this.failingAttack = Math.max(1, this.failingAttack - 1);
+                 this.attackName.setText("FAILING CIRCUITS $" + this.failingAttack +" ");
                  this.startWeakLaser();
              });
          }

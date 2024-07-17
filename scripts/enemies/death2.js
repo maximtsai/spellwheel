@@ -220,8 +220,8 @@
     }
 
     initStatsCustom() {
-        this.health = 500;
-        this.isSecondPunchCycle = false;
+        this.health = 550;
+        this.punchCycleCount = 0;
         this.fistObjects = [];
         this.thornsList = [];
         this.idleAnimations = [];
@@ -241,8 +241,24 @@
     }
 
 
-     setHealth(newHealth) {
+    emergencyShield() {
+        this.thornForm = true;
+        this.preventArmsVisible = true;
+        this.isPreppingFists = false;
+        this.interruptCurrentAttack();
+        this.clearFistObjects();
+        playSound('clunk');
+        playSound('slice_in');
+        this.setArmsVisible(false);
+        this.forceOverrideSprite = 'death2crouch.png';
+        this.setDefaultSprite('death2crouch.png');
+        messageBus.publish("enemyAddShield", 120);
+        this.currentAttackSetIndex = 1;
+        this.nextAttackIndex = 0;
+        this.setAsleep();
+    }
 
+     setHealth(newHealth) {
          super.setHealth(newHealth);
          let currHealthPercent = this.health / this.healthMax;
          if (currHealthPercent == 0) {
@@ -252,20 +268,7 @@
              let prevHealthPercent = this.prevHealth / this.healthMax;
              if (this.fireForm) {
                  if (prevHealthPercent > 0.4 && currHealthPercent <= 0.4 && !this.thornForm) {
-                     this.thornForm = true;
-
-                     this.preventArmsVisible = true;
-                     this.isPreppingFists = false;
-                     this.interruptCurrentAttack();
-                     this.clearFistObjects();
-                     playSound('clunk');
-                     this.setArmsVisible(false);
-                     this.forceOverrideSprite = 'death2crouch.png';
-                     this.setDefaultSprite('death2crouch.png');
-                     messageBus.publish("enemyAddShield", 120);
-                     this.currentAttackSetIndex = 1;
-                     this.nextAttackIndex = 0;
-                     this.setAsleep();
+                    this.emergencyShield();
                      globalObjects.bannerTextManager.setDialog([getLangText('deathFight2cx')]);
                      globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                      globalObjects.bannerTextManager.showBanner(0);
@@ -275,20 +278,7 @@
                  }
              } else {
                  if (prevHealthPercent > 0.6 && currHealthPercent <= 0.6 && !this.thornForm) {
-                     this.thornForm = true;
-
-                     this.preventArmsVisible = true;
-                     this.isPreppingFists = false;
-                     this.interruptCurrentAttack();
-                     this.clearFistObjects();
-                     playSound('clunk');
-                     this.setArmsVisible(false);
-                     this.forceOverrideSprite = 'death2crouch.png';
-                     this.setDefaultSprite('death2crouch.png');
-                     messageBus.publish("enemyAddShield", 120);
-                     this.currentAttackSetIndex = 1;
-                     this.nextAttackIndex = 0;
-                     this.setAsleep();
+                     this.emergencyShield();
                      globalObjects.bannerTextManager.setDialog([getLangText('deathFight2c')]);
                      globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                      globalObjects.bannerTextManager.showBanner(0);
@@ -350,12 +340,34 @@
          messageBus.publish('playerAddDelayedDamage', amt);
      }
 
+     checkFireForm() {
+         if (!this.fireForm) {
+             if ((this.punchCycleCount == 1 && !this.thornForm) || this.punchCycleCount >= 2) {
+                 this.fireForm = true;
+                 this.currentAttackSetIndex = 2;
+                 this.nextAttackIndex = 1;
+                 this.setAsleep();
+                 let usedLangText = globalObjects.player.getHealth() >= 40 ? getLangText('deathFight2d') : getLangText('deathFight2dx')
+
+                 if (!globalObjects.player.isDead()) {
+                     globalObjects.bannerTextManager.setDialog([usedLangText]);
+                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                     globalObjects.bannerTextManager.showBanner(0);
+                     globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                         this.setAwake();
+                         this.playFireFistsInitAnim();
+                     })
+                 }
+             }
+         }
+     }
+
     initAttacks() {
         this.attacks = [
             [
                 {
                     name: "|10",
-                    chargeAmt: 450,
+                    chargeAmt: 550,
                     damage: 10,
                     attackTimes: 1,
                     chargeMult: 4,
@@ -367,23 +379,8 @@
                     },
                     finaleFunction: () => {
                         this.setArmsVisible(true);
-                        if (this.isSecondPunchCycle && !this.thornForm) {
-                            this.fireForm = true;
-                            this.currentAttackSetIndex = 2;
-                            this.nextAttackIndex = 1;
-                            this.setAsleep();
-                            let usedLangText = globalObjects.player.getHealth() >= 40 ? getLangText('deathFight2d') : getLangText('deathFight2dx')
-
-                            if (!globalObjects.player.isDead()) {
-                                globalObjects.bannerTextManager.setDialog([usedLangText]);
-                                globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-                                globalObjects.bannerTextManager.showBanner(0);
-                                globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                                    this.setAwake();
-                                    this.playFireFistsInitAnim();
-                                })
-                            }
-                        }
+                        this.checkFireForm();
+                        this.punchCycleCount += 1;
                     },
                     attackFinishFunction: () => {
                         // this.makeSlashEffect();
@@ -392,7 +389,7 @@
                 },
                 {
                     name: "|8x2",
-                    chargeAmt: 350,
+                    chargeAmt: 450,
                     damage: 8,
                     attackTimes: 2,
                     prepareSprite: ['death2windup.png', 'death2windupflip.png'],
@@ -403,7 +400,6 @@
                     },
                     finaleFunction: () => {
                         this.setArmsVisible(true);
-                        this.isSecondPunchCycle = true;
                     },
                     attackFinishFunction: () => {
                     // this.makeSlashEffect();
@@ -412,7 +408,7 @@
                 },
                 {
                     name: ";30",
-                    chargeAmt: 650,
+                    chargeAmt: 700,
                     damage: 30,
                     attackTimes: 1,
                     prepareSprite: "death2crouch.png",
@@ -504,7 +500,7 @@
             [
                 {
                     name: "THORNS {6",
-                    chargeAmt: 700,
+                    chargeAmt: 600,
                     finishDelay: 1000,
                     chargeMult: 10,
                     damage: -1,
@@ -552,7 +548,7 @@
             [
                 {
                     name: "|10+$3",
-                    chargeAmt: 450,
+                    chargeAmt: 600,
                     damage: 10,
                     attackTimes: 1,
                     chargeMult: 4,
@@ -569,12 +565,13 @@
                     },
                     finaleFunction: () => {
                         this.setArmsVisible(true);
+                        this.punchCycleCount += 1;
                     },
 
                 },
                 {
                     name: "|8x2+$6",
-                    chargeAmt: 350,
+                    chargeAmt: 500,
                     damage: 8,
                     attackTimes: 2,
                     prepareSprite: ['death2windup.png', 'death2windupflip.png'],
@@ -585,7 +582,6 @@
                     },
                     finaleFunction: () => {
                         this.setArmsVisible(true);
-                        this.isSecondPunchCycle = true;
                     },
                     attackFinishFunction: () => {
                         this.applyFire(3);
@@ -595,7 +591,7 @@
                 },
                 {
                     name: ";30+$10",
-                    chargeAmt: 650,
+                    chargeAmt: 750,
                     damage: 30,
                     attackTimes: 1,
                     prepareSprite: "death2crouch.png",
@@ -1003,6 +999,7 @@
     die() {
          super.die();
          this.stopIdleAnim();
+        playSound('death_attack', 0.4).detune = -800;
 
          this.clearFistObjects();
          if (this.bgMusic) {
@@ -1012,7 +1009,28 @@
         this.forceOverrideSprite = 'death2fall.png';
         this.setDefaultSprite('death2fall.png', this.sprite.startScale);
         this.clearThorns();
+        globalObjects.magicCircle.disableMovement();
 
+        globalObjects.encyclopedia.hideButton();
+        globalObjects.options.hideButton();
+        this.blackBG.currAnim = this.addTween({
+            targets: [this.blackBG],
+            duration: 5000,
+            alpha: 0.6,
+        });
+        globalObjects.bannerTextManager.setDialog([getLangText('deathFight2z1'), getLangText('deathFight2z2')]);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+        globalObjects.bannerTextManager.showBanner(0);
+        globalObjects.bannerTextManager.setOnFinishFunc(() => {
+            if (this.blackBG.currAnim) {
+                this.blackBG.currAnim.stop();
+            }
+            this.addTween({
+                targets: [this.blackBG],
+                duration: 2000,
+                alpha: 1,
+            });
+        })
 
     }
 
@@ -1227,6 +1245,13 @@
              ease: 'Cubic.easeInOut',
              alpha: 0.78,
              x: gameConsts.width + 20,
+             onComplete: () => {
+                 this.addTween({
+                     targets: this.blackBG,
+                     alpha: 0,
+                     duration: 600
+                 })
+             }
          })
      }
 

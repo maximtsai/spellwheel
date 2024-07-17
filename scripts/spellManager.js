@@ -500,9 +500,12 @@ class SpellManager {
                                 if (Math.random() < 0.25) {
                                     sfx.detune = -50;
                                 }
+                                else {
+                                    sfx.detune = 0;
+                                }
                             });
                         } else {
-                            playSound('matter_enhance_2', 1);
+                            playSound('matter_enhance_2', 1).detune = 0;
                         }
                     }
                 }

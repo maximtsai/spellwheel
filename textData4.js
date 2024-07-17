@@ -27,17 +27,8 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
-    "deathFight2c": {
-        "en_us": "SO EAGERLY AGGRESSIVE.\nTRY ATTACKING THIS.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
-    },
     "deathFight2d": {
-        "en_us": "IMPRESSIVE DEFENSE, BUT YOU\nCAN'T HOLD OUT FOREVER.",
+        "en_us": "YOU CAN'T HOLD\nOUT FOREVER.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -47,6 +38,24 @@ let textData4 = {
     },
     "deathFight2dx": {
         "en_us": "IT'S TIME TO FINISH THIS.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2z1": {
+        "en_us": "PLACEHOLDER TEXT ABOUT HOW\nPLAYER IS CAPABLE",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2z2": {
+        "en_us": "PLACEHOLDER TEXT ABOUT HOW\nTHIS ISN'T DEATH'S FINAL FORM",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -119,6 +128,15 @@ let textData4 = {
     },
     "killer_robot_d": {
         "en_us": "The stage lights are off.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "wall_unblockable": {
+        "en_us": "Some attacks\ncannot be\nblocked.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

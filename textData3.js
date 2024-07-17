@@ -136,7 +136,7 @@ let textData3 = {
         "jp": "だから、私はあなたに一言注意することしかできません"
     },
     "death7c": {
-        "en_us": "THAT DANGEROUS FOES LIE AHEAD.",
+        "en_us": "DANGEROUS FOES LIE AHEAD.",
         "fr": "QUE DE DANGEREUX ENNEMIS SE TROUVENT DEVANT VOUS.",
         "zh_tw": "危險的敵人就在前方。",
         "zh_cn": "危险的敌人就在前方。",

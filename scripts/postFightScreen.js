@@ -543,7 +543,11 @@ class PostFightScreen {
         this.trainingButton.setOnMouseUpFunc(() => {
             playSound('button_click');
             this.clearPostFightScreen();
-            beginPreLevel(-level);
+            if (level < 7) {
+                beginPreLevel(-level);
+            } else {
+                beginPreLevel(level + 1);
+            }
             if (canvas) {
                 canvas.style.cursor = 'default';
             }

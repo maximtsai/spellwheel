@@ -79,26 +79,26 @@
              this.setDefaultSprite('wall_3.png');
              this.closeEyes(0, () => {
                  this.eyes1.setFrame('wall_eyes_3_a.png');
-                 this.eyes1.setPosition(this.x - 91 * this.trueStartScale, this.y + 41 * this.trueStartScale);
-                 this.eyes1.startOffsetX = -91 * this.trueStartScale;
-                 this.eyes1.startOffsetY = 41 * this.trueStartScale;
-                 let xDiff = 125 * this.trueStartScale;
+                 this.eyes1.setPosition(this.x - 73 * this.trueStartScale, this.y + 33 * this.trueStartScale);
+                 this.eyes1.startOffsetX = -73 * this.trueStartScale;
+                 this.eyes1.startOffsetY = 33 * this.trueStartScale;
+                 let xDiff = 110 * this.trueStartScale;
                  let yDiff = -3 * this.trueStartScale;
                  this.eyes2 = this.addImage(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1);
                  this.addExtraSprite(this.eyes2, xDiff, yDiff);
                  this.eyeArray.push(this.eyes2);
                  this.reOpenEyes()
              });
-         } else if (currHealthPercent < 0.6 && !this.secondCanCrumble) {
+         } else if (currHealthPercent < 0.55 && !this.secondCanCrumble) {
              this.secondCanCrumble = true;
              this.setDefaultSprite('wall_4.png');
              this.closeEyes(0, () => {
-                 this.eyes1.setPosition(this.x - 91 * this.trueStartScale, this.y + 41 * this.trueStartScale);
-                 this.eyes1.startOffsetX = -91 * this.trueStartScale;
-                 this.eyes1.startOffsetY = 41 * this.trueStartScale;
+                 this.eyes1.setPosition(this.x - 73 * this.trueStartScale, this.y + 33 * this.trueStartScale);
+                 this.eyes1.startOffsetX = -73 * this.trueStartScale;
+                 this.eyes1.startOffsetY = 33 * this.trueStartScale;
                  if (!this.eyes2) {
-                     let xDiff = 100 * this.trueStartScale;
-                     let yDiff = -5 * this.trueStartScale;
+                     let xDiff = 68 * this.trueStartScale;
+                     let yDiff = -4 * this.trueStartScale;
                      this.eyes2 = this.addImage(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1);
                      this.eyeArray.push(this.eyes2);
                      this.addExtraSprite(this.eyes2, xDiff, yDiff);
@@ -106,15 +106,15 @@
 
                  this.reOpenEyes()
              })
-         } else if (currHealthPercent < 0.4 && !this.thirdCanCrumble) {
+         } else if (currHealthPercent < 0.3 && !this.thirdCanCrumble) {
              this.setDefaultSprite('wall_5.png');
              this.thirdCanCrumble = true;
              this.eyes1.setVisible(false);
              this.closeEyes(0, () => {
-                 let eye2OffsetX = 150 * this.trueStartScale;
-                 let eye2OffsetY = 34 * this.trueStartScale;
+                 let eye2OffsetX = 120 * this.trueStartScale;
+                 let eye2OffsetY = 27 * this.trueStartScale;
                  if (!this.eyes2) {
-                     this.eyes2 = this.addImage(this.x + 100 * this.trueStartScale, this.y - 5 * this.trueStartScale, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1);
+                     this.eyes2 = this.addImage(this.x + eye2OffsetX, this.y + eye2OffsetY, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1);
                      this.eyeArray.push(this.eyes2);
                      this.addExtraSprite(this.eyes2, eye2OffsetX, eye2OffsetY);
                  }
@@ -143,8 +143,8 @@
              },
              onComplete: () => {
                 this.addTimeout(() => {
-                    playSound('matter_enhance_2');
-                }, 500)
+                    playSound('matter_enhance_2').detune = -700;
+                }, 300)
                  this.addTween({
                      targets: [this.eyes1],
                      scaleY: this.trueStartScale * 1.1,
@@ -558,6 +558,7 @@
                      isPassive: true,
                      desc: "A pair of eyes watch you",
                      chargeAmt: 300,
+                     transitionFast: true,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.squintEyes(true);
@@ -660,6 +661,7 @@
                  {
                      name: "}2x4",
                      chargeAmt: 400,
+                     finishDelay: 800,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(4);
@@ -668,17 +670,31 @@
                      }
                  },
                  {
-                     name: "}5x3",
+                     name: "$5",
                      chargeAmt: 450,
+                     finishDelay: 3000,
                      damage: -1,
+                     startFunction: () => {
+                         this.addTimeout(() => {
+                             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 130, getLangText('wall_unblockable'), 'right');
+                             this.addTimeout(() => {
+                                 let spellListener;
+                                 spellListener = messageBus.subscribe('spellClicked', () => {
+                                     globalObjects.textPopupManager.hideInfoText();
+                                     spellListener.unsubscribe();
+                                 });
+                             }, 1500);
+                         }, 1000);
+                     },
                      attackFinishFunction: () => {
-                         this.birdPoops(3, true);
+                         this.birdPoops(1, true, false, true);
                          this.nextBirdIndex = 4;
                          this.checkCrumble(true);
                      }
                  },
                  {
                      name: "}2x7",
+                     finishDelay: 1300,
                      chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
@@ -688,11 +704,12 @@
                      }
                  },
                  {
-                     name: "}5+$5",
+                     name: "}5x2+$5",
                      chargeAmt: 450,
+                     finishDelay: 2000,
                      damage: -1,
                      attackFinishFunction: () => {
-                         this.birdPoops(2, true, false, true);
+                         this.birdPoops(3, true, false, true);
                          this.nextBirdIndex = 6;
                          this.checkCrumble(true);
                      }
@@ -710,6 +727,7 @@
                  {
                      name: "}2x12",
                      chargeAmt: 500,
+                     finishDelay: 3000,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(12);
@@ -720,6 +738,7 @@
                  {
                      name: "}5x6",
                      chargeAmt: 500,
+                     finishDelay: 2000,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(6, true);
@@ -730,6 +749,7 @@
                  {
                      name: "}20x2",
                      chargeAmt: 550,
+                     finishDelay: 800,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(2, true, true);

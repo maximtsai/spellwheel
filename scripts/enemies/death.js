@@ -24,7 +24,6 @@
      }
 
      swingScythe(damage = 444, fadeOutScythe = true, flipped = false, onComplete) {
-
          let flipMult = flipped ? -1 : 1;
          this.mainScythe.setPosition(this.x, 160).setDepth(999).setAlpha(0).setScale(0.65*flipMult, 0.65).setRotation(-1.5);
          let scythe = this.mainScythe;
@@ -404,6 +403,10 @@
                              }
                          })
                      },
+                     startFunction: () => {
+                         this.die();
+
+                     },
                      finaleFunction: () => {
                      }
                  },
@@ -652,17 +655,17 @@
                             this.reaperHidden = true;
                             clearDeathFog();
                             this.darkOverlay = this.addImage(gameConsts.halfWidth,gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(90);
-                            this.whiteDeath = this.addImage(this.sprite.x, this.sprite.y + 1, 'enemies', 'max_death_1b_angry_white.png').setScale(this.sprite.scaleX).setAlpha(0).setDepth(92).setOrigin(0.5, 0.45);
+                            this.whiteDeath = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'max_death_1b_angry_white.png').setScale(this.sprite.scaleX).setAlpha(0).setDepth(92).setOrigin(0.5, 0.45);
 
                             this.addTween({
                                 targets: [this.sprite, this.whiteDeath],
-                                scaleX: 0.5,
-                                scaleY: 0.5,
+                                scaleX: 0.45,
+                                scaleY: 0.45,
+                                y: "+=10",
                                 ease: 'Cubic.easeInOut',
-                                duration: 2800,
+                                duration: 2750,
                                 onComplete: () => {
                                     this.sprite.alpha = 0;
-                                    this.whiteDeath.destroy();
                                     setFloatingDeathVisible(false);
                                 }
                             })
@@ -672,7 +675,7 @@
                                 scaleY: 6,
                                 alpha: 1,
                                 ease: 'Cubic.easeIn',
-                                duration: 3000,
+                                duration: 2800,
                                 onComplete: () => {
                                     this.addTween({
                                         targets: [this.flashCover],
@@ -680,7 +683,7 @@
                                         scaleY: 4.5,
                                         alpha: 0,
                                         ease: 'Cubic.easeOut',
-                                        duration: 3000,
+                                        duration: 2100,
                                         onComplete: () => {
                                             this.flashCover.destroy();
                                         }
@@ -691,18 +694,31 @@
                             this.addTween({
                                 targets: [this.darkOverlay, this.whiteDeath],
                                 alpha: 1,
-                                duration: 2600,
+                                duration: 2800,
                                 onComplete: () => {
-                                    this.muscleDeathWhite = this.addImage(this.sprite.x, 90, 'deathfinal', 'max_death_2_white.png').setScale(0.55, 0.57).setDepth(90).setOrigin(0.5, 0.2);
+                                    this.whiteDeath.destroy();
+                                    this.muscleDeathWhite = this.addImage(this.sprite.x, 90, 'deathfinal', 'max_death_2_white.png').setScale(0.58, 0.6).setDepth(90).setOrigin(0.5, 0.2);
                                     this.addTween({
                                         targets: this.muscleDeathWhite,
-                                        scaleX: 0.9,
-                                        scaleY: 0.9,
-                                        ease: 'Quart.easeInOut',
-                                        duration: 3000,
+                                        scaleX: 0.65,
+                                        scaleY: 0.65,
+                                        y: 65,
+                                        ease: 'Cubic.easeInOut',
+                                        duration: 1400,
                                         onComplete: () => {
-                                            this.darkOverlay.destroy();
-                                            this.beginDeath2();
+                                            this.addTween({
+                                                targets: this.muscleDeathWhite,
+                                                scaleX: 0.95,
+                                                scaleY: 0.95,
+                                                y: 90,
+                                                ease: 'Quart.easeIn',
+                                                duration: 800,
+                                                onComplete: () => {
+                                                    screenShake(2);
+                                                    this.darkOverlay.destroy();
+                                                    this.beginDeath2();
+                                                }
+                                            })
                                         }
                                     })
                                     // this.whiteOverlay = this.addImage(gameConsts.halfWidth,gameConsts.halfHeight, 'whitePixel').setScale(500).setAlpha(0).setDepth(99999);

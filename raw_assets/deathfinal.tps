@@ -268,7 +268,37 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.75</double>
+                <double>0.45</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>266,180,533,359</rect>
+                <key>scale9Paddings</key>
+                <rect>266,180,533,359</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">deathfinal/death2final_highlight.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.6</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>285,180,570,359</rect>
+                <key>scale9Paddings</key>
+                <rect>285,180,570,359</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">deathfinal/death2final_white.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.6</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>

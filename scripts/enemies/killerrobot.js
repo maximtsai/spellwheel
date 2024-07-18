@@ -515,8 +515,8 @@
              y: globalObjects.player.getY() - 190,
              ease: 'Quad.easeOut',
              onComplete: () => {
-                 playSound('voca_hello_short', isWeak ? 0.7 : 0.95).detune = isWeak ? -540 : -500;
                  playSound(isWeak ? 'music_blast_weak' : 'music_blast', isWeak ? 0.8 : 1);
+                 playSound('metaljpop_short', isWeak ? 0.7 : 0.95).detune = isWeak ? -300 : 0;
                  messageBus.publish('playerAddDelayedDamage', damage);
                  let music_note_blue = getTempPoolObject('enemies', 'music_note_blue.png', 'music_note_blue', 450);
                  music_note_blue.setScale(music_note.scaleX).setPosition(music_note.x, music_note.y).setDepth(30).setAlpha(isWeak ? 0.1 : 1);
@@ -1080,9 +1080,9 @@
                                                  ease: 'Quart.easeOut',
                                                  onStart: () => {
                                                      this.sprite.scaleX = this.sprite.startScale * 0.9;
+                                                     this.fireMusic(20, 1.4, 850);
                                                  },
                                                  onComplete: () => {
-                                                     this.fireMusic(20, 1.4, 850);
                                                      this.addDelay(() => {
                                                          this.sprite.y = this.sprite.startY;
                                                          this.setDefaultSprite('robot1.png', undefined, true);

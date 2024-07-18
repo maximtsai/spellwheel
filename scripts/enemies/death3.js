@@ -6,6 +6,9 @@ class Death3 extends Enemy {
         this.cape = this.addSprite(x - 99, y - 35, 'deathfin', 'frame0000.png').setDepth(-2).play('ladydeathcape');
         this.hood = this.addSprite(x - 99, y - 35, 'deathfin', 'hood0000.png').setDepth(9).play('ladydeathhood');
         this.addTimeout(() => {
+            globalObjects.magicCircle.enableMovement();
+            globalObjects.encyclopedia.showButton();
+            globalObjects.options.showButton();
             // this.setAsleep();
         }, 10)
     }

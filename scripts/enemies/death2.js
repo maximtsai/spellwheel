@@ -83,7 +83,6 @@
                  alpha: 0,
                  duration: 1000,
                  onComplete: () => {
-                     // this.whiteBG.destroy();
                  }
              })
              playSound('heartbeatfast');
@@ -91,7 +90,7 @@
          })
      }
 
-     startIdleAnim(isSlow) {
+     startIdleAnim(isSlow, isRepeat = true) {
          let initDur = isSlow ? 700 : 300;
          let initEase = 'Quad.easeInOut';
          this.addTween({
@@ -155,7 +154,7 @@
                      scaleY: this.sprite.startScale * 0.983,
                      yoyo: true,
                      ease: 'Cubic.easeInOut',
-                     repeat: -1,
+                     repeat: isRepeat ? -1 : 0,
                      duration: 2000
                  }));
                  this.idleAnimations.push(this.addTween({
@@ -165,7 +164,7 @@
                      y: "+=3",
                      yoyo: true,
                      ease: 'Cubic.easeInOut',
-                     repeat: -1,
+                     repeat: isRepeat ? -1 : 0,
                      duration: 2000
                  }));
                  this.idleAnimations.push(this.addTween({
@@ -175,7 +174,7 @@
                      y: "+=3",
                      yoyo: true,
                      ease: 'Cubic.easeInOut',
-                     repeat: -1,
+                     repeat: isRepeat ? -1 : 0,
                      duration: 2000
                  }));
                  if (this.leftFire) {
@@ -188,7 +187,7 @@
                          yoyo: true,
                          ease: 'Cubic.easeInOut',
                          duration: 2000,
-                         repeat: -1,
+                         repeat: isRepeat ? -1 : 0,
                      }));
                      this.idleAnimations.push(this.addTween({
                          targets: this.rightFire,
@@ -197,7 +196,7 @@
                          yoyo: true,
                          ease: 'Cubic.easeInOut',
                          duration: 2000,
-                         repeat: -1
+                         repeat: isRepeat ? -1 : 0,
                      }));
                  }
 
@@ -206,7 +205,7 @@
                      y: "+=3",
                      yoyo: true,
                      ease: 'Cubic.easeInOut',
-                     repeat: -1,
+                     repeat: isRepeat ? -1 : 0,
                      duration: 2000
                  }));
              }
@@ -1018,17 +1017,119 @@
             duration: 5000,
             alpha: 0.6,
         });
+
         globalObjects.bannerTextManager.setDialog([getLangText('deathFight2z1'), getLangText('deathFight2z2')]);
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
         globalObjects.bannerTextManager.showBanner(0);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
+            playSound("whoosh")
             if (this.blackBG.currAnim) {
                 this.blackBG.currAnim.stop();
             }
+            if (this.sprite.currAnim2) {
+                this.sprite.currAnim2.stop();
+            }
+            this.whiteBG.visible = true;
+            this.whiteBG.setDepth(10020);
             this.addTween({
-                targets: [this.blackBG],
-                duration: 2000,
+                targets: this.sprite,
+                alpha: 0.6,
+                duration: 200,
+                onComplete: () => {
+                    let tempOldPose = this.addImage(this.sprite.x, this.sprite.y, "deathfinal", 'death2fall.png');
+                    tempOldPose.setScale(this.sprite.scaleX).setOrigin(this.sprite.originX, this.sprite.originY).setAlpha(0.6);
+                    this.addTween({
+                        targets: tempOldPose,
+                        alpha: 0,
+                        duration: 300,
+                    });
+                    this.forceOverrideSprite = 'max_death_2.png';
+                    this.setDefaultSprite('max_death_2.png', this.sprite.startScale);
+                    this.sprite.alpha = 0.1
+                    this.setArmsVisible(true);
+                    this.leftArm.alpha = 0.1;
+                    this.rightArm.alpha = 0.1;
+                    this.leftShoulder.alpha = 0.1;
+                    this.raiseArmsAnim(() => {
+                        playSound('heartbeatfast');
+                    }, 1.8)
+                    this.addTween({
+                        targets: [this.sprite, this.leftArm, this.rightArm, this.leftShoulder],
+                        alpha: 1,
+                        duration: 450,
+                    });
+                }
+            })
+
+            this.addTween({
+                targets: [this.blackBG, this.whiteBG],
+                duration: 2200,
+                ease: 'Quad.easeIn',
                 alpha: 1,
+                onComplete: () => {
+                    this.blackBG.destroy();
+                    this.blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(500).setAlpha(1).setDepth(10020);
+                    this.sprite.visible = false;
+                    this.setArmsVisible(false);
+
+                    let death6arm = this.addImage(this.sprite.x, this.sprite.y + 70, 'deathfinal', 'death2final_white.png').setScale(0.95).setDepth(10020).setAlpha(0);
+                    death6arm.currAnim = this.addTween({
+                        targets: [death6arm],
+                        duration: 2000,
+                        y: "+=6",
+                        yoyo: true,
+                        repeat: -1,
+                        ease: 'Quad.easeInOut',
+                    });
+                    this.addTween({
+                        targets: death6arm,
+                        ease: 'Cubic.easeOut',
+                        duration: 1500,
+                        alpha: 1,
+                    });
+                    this.addTween({
+                        targets: [this.whiteBG],
+                        duration: 2000,
+                        alpha: 0,
+                        onComplete: () => {
+                            this.whiteBG.destroy();
+                        }
+                    });
+                    this.addDelay(() => {
+                        globalObjects.bannerTextManager.setDialog(["BEHOLD"]);
+                        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight * 1.5 - 25, 0);
+                        globalObjects.bannerTextManager.showBanner(0);
+                        globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                            playFakeBGMusic('but_never_forgotten_metal_prelude');
+                            let death6arm_highlight = this.addImage(this.sprite.x, death6arm.y, 'deathfinal', 'death2final_highlight.png').setScale(death6arm.scaleX).setAlpha(0).setDepth(death6arm.depth);
+                            this.addTween({
+                                targets: [death6arm_highlight],
+                                duration: 1700,
+                                alpha: 1,
+                            });
+                            this.addTween({
+                                targets: [death6arm, death6arm_highlight],
+                                duration: 750,
+                                scaleX: 1,
+                                scaleY: 1,
+                                ease: 'Quint.easeOut',
+                                onComplete: () => {
+                                    this.addTween({
+                                        targets: [death6arm, death6arm_highlight],
+                                        duration: 1200,
+                                        scaleX: 0.5,
+                                        scaleY: 0.5,
+                                        ease: 'Quint.easeIn',
+                                        onComplete: () => {
+                                            this.blackBG.destroy();
+                                            this.beginDeath3();
+                                        }
+                                    });
+                                }
+                            });
+                        });
+                    }, 1500);
+                }
             });
         })
 
@@ -1085,7 +1186,6 @@
                     ease: 'Quad.easeOut',
                     duration: 350,
                     onComplete: () => {
-                        playSound("matter_body").detune = -250;
                         this.addTween({
                             targets: [this.thorns3],
                             x: "+=60",
@@ -1294,13 +1394,14 @@
          });
      }
 
-     raiseArmsAnim(completeFunc) {
+     raiseArmsAnim(completeFunc, mult = 1) {
+         // 1120 duration
          this.addTween({
              targets: this.sprite,
              y: 93,
              scaleY: this.sprite.startScale * 1.01,
              ease: 'Cubic.easeOut',
-             duration: 700,
+             duration: mult * 700,
          })
 
          this.addTween({
@@ -1310,7 +1411,7 @@
              y: 139,
              rotation: 0.33,
              ease: 'Cubic.easeOut',
-             duration: 700,
+             duration: mult * 700,
          });
 
          this.addTween({
@@ -1320,7 +1421,7 @@
              y: 139,
              rotation: -0.33,
              ease: 'Cubic.easeOut',
-             duration: 700,
+             duration: mult * 700,
          });
 
          this.addTween({
@@ -1329,14 +1430,14 @@
              scaleX: this.leftShoulder.startScaleX * 1,
              rotation: 0.15,
              ease: 'Cubic.easeOut',
-             duration: 700,
+             duration: mult * 700,
              onComplete: () => {
                  this.addTween({
                      targets: this.sprite,
                      y: 94,
                      scaleY: this.sprite.startScale * 0.983,
                      ease: 'Quart.easeIn',
-                     duration: 420,
+                     duration: mult * 420,
                  })
                  this.addTween({
                      targets: this.leftShoulder,
@@ -1345,7 +1446,7 @@
                      x: this.leftShoulder.startX + 1,
                      y: 93,
                      ease: 'Cubic.easeIn',
-                     duration: 420,
+                     duration: mult * 420,
                  });
                  this.addTween({
                      targets: this.leftArm,
@@ -1353,14 +1454,14 @@
                      y: 141,
                      rotation: -0.38,
                      ease: 'Quart.easeIn',
-                     duration: 420,
+                     duration: mult * 420,
                  });
                  this.addTween({
                      targets: this.leftArm,
                      scaleX: this.leftArm.startScaleX * 1.2,
                      scaleY: this.leftArm.startScaleX * 1.2,
                      ease: 'Quint.easeIn',
-                     duration: 420,
+                     duration: mult * 420,
                  });
                  // this.addTween({
                  //     targets: this.leftArm,
@@ -1373,7 +1474,7 @@
                      scaleX: this.rightArm.startScaleX * 1.2,
                      scaleY: this.rightArm.startScaleX * 1.2,
                      ease: 'Quint.easeIn',
-                     duration: 420,
+                     duration: mult * 420,
                  });
                  this.addTween({
                      targets: this.rightArm,
@@ -1381,7 +1482,7 @@
                      y: 140,
                      rotation: 0.36,
                      ease: 'Quart.easeIn',
-                     duration: 420,
+                     duration: mult * 420,
                      onComplete: () => {
                         if (completeFunc) {
                             completeFunc()
@@ -1493,5 +1594,11 @@
              });
          }
          return super.adjustDamageTaken(amt, isAttack, isTrue);
+     }
+
+     beginDeath3() {
+         gameVars.fromDeath2 = true;
+         createEnemy(12)
+         this.destroy();
      }
 }

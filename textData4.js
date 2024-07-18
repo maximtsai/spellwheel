@@ -55,7 +55,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2z2": {
-        "en_us": "PLACEHOLDER TEXT ABOUT HOW\nTHIS ISN'T DEATH'S FINAL FORM",
+        "en_us": "THIS ISN'T EVEN MY\nFINAL FORM (placeholder)",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

@@ -466,7 +466,7 @@
                      },
                  },
                  {
-                     name: ";16x6",
+                     name: ";20x5",
                      chargeAmt: 1200,
                      chargeMult: 1.4,
                      finishDelay: 5000,
@@ -474,21 +474,18 @@
                      isBigMove: true,
                      attackStartFunction: () => {
                          // this.hideCurrentAttack();
-                         this.swingScytheFastIntro(16, false, false,() => {
-                             this.swingScytheFast(16, false, true,() => {
-                                 this.swingScytheFast(16, false, false,() => {
-                                     this.swingScytheFast(16, false, true,() => {
-                                         this.swingScytheFast(16, false, false,() => {
-                                             this.swingScytheFast(16, false, true,() => {
-                                                 super.setHealth(1);
-                                                 PhaserScene.tweens.add({
-                                                     targets: this.mainScythe,
-                                                     alpha: 0,
-                                                     ease: 'Quad.easeOut',
-                                                     duration: 500,
-                                                 });
-                                                 // this.setAwake();
-                                             })
+                         this.swingScytheFastIntro(20, false, false,() => {
+                             this.swingScytheFast(20, false, true,() => {
+                                 this.swingScytheFast(20, false, false,() => {
+                                     this.swingScytheFast(20, false, true,() => {
+                                         this.swingScytheFast(20, false, false,() => {
+                                             super.setHealth(1);
+                                             PhaserScene.tweens.add({
+                                                 targets: this.mainScythe,
+                                                 alpha: 0,
+                                                 ease: 'Quad.easeOut',
+                                                 duration: 500,
+                                             });
                                          })
                                      })
                                  })
@@ -499,8 +496,8 @@
                      }
                  },
                  {
-                     name: ";144",
-                     chargeAmt: 700,
+                     name: ";114",
+                     chargeAmt: 800,
                      chargeMult: 2,
                      finishDelay: 5000,
                      damage: -1,

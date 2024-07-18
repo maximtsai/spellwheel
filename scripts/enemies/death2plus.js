@@ -1,13 +1,12 @@
  class Death2Plus extends Enemy {
      constructor(scene, x, y) {
          super(scene, x, y);
-         this.initSprite('death2final.png', 0.54, 0, 0, 'deathfinal');
-         this.bgMusic = playMusic('heartbeat', 0.75, true);
+         this.initSprite('death2final.png', 0.95, 0, 0, 'deathfinal');
+         this.bgMusic = playMusic('but_never_forgotten_metal', 0.9, true);
          this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5);
-         this.handTemp = this.addImage(gameConsts.halfWidth  + 150,gameConsts.halfHeight - 200, 'deathfinal', 'okay.png').setDepth(30);
-         this.handTemp2 = this.addImage(gameConsts.halfWidth  - 150,gameConsts.halfHeight - 200, 'deathfinal', 'palm.png').setDepth(30);
          this.addTimeout(() => {
              this.setAsleep();
+             this.repeatTweenBreathe()
          }, 10)
      }
 
@@ -20,6 +19,14 @@
          if (this.breatheTween) {
              this.breatheTween.stop();
          }
+         this.breathTween = this.addTween({
+             targets: this.sprite,
+             y: "+=10",
+             duration: 2000,
+             ease: 'Quad.easeInOut',
+             repeat: -1,
+             yoyo: true
+         })
      }
 
 

@@ -48,9 +48,11 @@ const audioFiles = [
     {name: 'echos_of_time', src: 'audio/echos_of_time.mp3'},
     {name: 'echos_of_time_finale', src: 'audio/echos_of_time_finale.mp3'},
     {name: 'metaljpop', src: 'audio/metaljpop.mp3'},
+    {name: 'metaljpop_short', src: 'audio/metaljpop_short.mp3'},
     {name: 'jpop', src: 'audio/jpop.mp3'},
     {name: 'heartbeat', src: 'audio/heartbeat.mp3'},
     {name: 'but_never_forgotten_metal', src: 'audio/but_never_forgotten_metal.mp3'},
+    {name: 'but_never_forgotten_metal_prelude', src: 'audio/but_never_forgotten_metal_prelude.mp3'},
     {name: 'but_never_forgotten', src: 'audio/but_never_forgotten.mp3'},
 
     {name: 'matter_body', src: 'audio/matter_body.mp3'},

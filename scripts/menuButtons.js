@@ -227,7 +227,7 @@ function showMainMenuButtons() {
     globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
     globalObjects.startButton.setScale(0.9);
 
-    let hideCheatConst = 500;
+    let hideCheatConst = 0;
 
     globalObjects.cheatButton = new Button({
         normal: {

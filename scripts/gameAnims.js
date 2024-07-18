@@ -93,6 +93,39 @@ function createAnimations(scene) {
         repeat: -1
     });
     scene.anims.create({
+        key: 'gobboknock2',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'gobbo_knock',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        frameRate: 6,
+    });
+    scene.anims.create({
+        key: 'gobboknock3',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'gobbo_knock',
+            suffix: '.png',
+            start: 1,
+            end: 3,
+            zeroPad: 0,
+        }),
+        frameRate: 8,
+    });
+    scene.anims.create({
+        key: 'gobboknock4',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'gobbo_knock',
+            suffix: '.png',
+            start: 1,
+            end: 4,
+            zeroPad: 0,
+        }),
+        frameRate: 10,
+    });
+    scene.anims.create({
         key: 'robotheart',
         frames: scene.anims.generateFrameNames('enemies', {
             prefix: 'robot_blast_small',

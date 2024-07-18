@@ -499,7 +499,7 @@
             ],
             [
                 {
-                    name: "THORNS {6",
+                    name: "THORNS {4",
                     chargeAmt: 600,
                     finishDelay: 1000,
                     chargeMult: 10,
@@ -532,9 +532,9 @@
                             scaleY: goalScale * 0.95
                         }
 
-                        messageBus.publish('animateArmorNum', gameConsts.halfWidth, this.y + 120, "+6 THORNS", goalScale, param, param2);
-                        this.thornsAmt = 6;
-                        this.setDefense(6);
+                        messageBus.publish('animateArmorNum', gameConsts.halfWidth, this.y + 120, "+4 THORNS", goalScale, param, param2);
+                        this.thornsAmt = 4;
+                        this.setDefense(4);
                         this.hasThorns = true;
                     },
                     finaleFunction: () => {

@@ -22,6 +22,7 @@
         this.attackScale = 1.22;
         this.isAnimating = false;
          this.attackEase = "Quart.easeIn";
+         this.accumulatedAnimDamage = 0;
      }
 
      // update(dt) {}
@@ -33,20 +34,20 @@
          if (this.dead) {
              return;
          } else {
-             if (!this.isAnimating) {
-                 let oldSprite = this.sprite.frame.name;
-                 if (this.goblinBeingShocked) {
-                     oldSprite = this.defaultSprite;
-                 } else if (this.isUsingAttack) {
-                     oldSprite = this.defaultSprite;
-                 }
+             if (!this.isAnimating && !this.dead) {
+                 // let oldSprite = this.sprite.frame.name;
+                 // if (this.goblinBeingShocked) {
+                 //     oldSprite = this.defaultSprite;
+                 // } else if (this.isUsingAttack) {
+                 //     oldSprite = this.defaultSprite;
+                 // }
                  this.setSprite('gobbo_extinguish1.png');
                  this.sprite.play('gobboextinguish');
                  this.isAnimating = true;
 
                  this.sprite.once('animationcomplete', () => {
                      this.isAnimating = false;
-                     this.setSpriteIfNotInactive(oldSprite);
+                     this.setSpriteIfNotInactive(this.defaultSprite);
                  });
                  playSound('goblin_grunt', 0.4).detune = 500;
              }
@@ -63,14 +64,14 @@
 
      takeEffect(newEffect) {
          if (this.sprite) {
-            if (newEffect.name == 'mindStrike' && this.shield <= 0) {
+            if (newEffect.name == 'mindStrike' && this.shield <= 0 && !this.dead) {
                 this.sprite.stop();
-                 let oldSprite = this.sprite.frame.name;
-                 if (oldSprite === 'gobbo_elec.png') {
-                     oldSprite = this.defaultSprite;
-                 } else if (this.isUsingAttack) {
-                     oldSprite = this.defaultSprite;
-                 }
+                 // let oldSprite = this.sprite.frame.name;
+                 // if (oldSprite === 'gobbo_elec.png') {
+                 //     oldSprite = this.defaultSprite;
+                 // } else if (this.isUsingAttack) {
+                 //     oldSprite = this.defaultSprite;
+                 // }
                  this.setSprite('gobbo_elec1.png');
                  this.sprite.x = gameConsts.halfWidth + (Math.random() < 0.5 ? -13 : 13);
                 this.goblinBeingShocked = true;
@@ -83,7 +84,7 @@
                      duration: 260,
                  });
                  this.sprite.once('animationcomplete', () => {
-                     this.setSpriteIfNotInactive(oldSprite);
+                     this.setSpriteIfNotInactive(this.defaultSprite);
                      this.goblinBeingShocked = false;
                  })
             } else if (this.shield >= 1 && newEffect.name == 'mindBurn') {
@@ -100,9 +101,63 @@
          super.setHealth(newHealth);
          let prevHealthPercent = this.prevHealth / this.healthMax;
          let currHealthPercent = this.health / this.healthMax;
+         let lastHealthLost = this.prevHealth - this.health;
          if (currHealthPercent == 0) {
              // dead, can't do anything
              return;
+         }
+         if (lastHealthLost >= 12 && this.shield === 0 && !this.goblinBeingShocked && !this.dead) {
+             this.accumulatedAnimDamage += lastHealthLost;
+             this.setSprite('gobbo_knock1.png');
+             if (this.accumTween) {
+                 this.accumTween.stop();
+             }
+             if (this.accumulatedAnimDamage <= 12){
+                 // do nothin
+             } else if (this.accumulatedAnimDamage <= 24) {
+                 playSound('derp', 0.4);
+                 this.addDelay(() => {
+                     playSound('derp', 0.5).detune = 300;
+                 }, 150)
+                 this.sprite.play('gobboknock2')
+             } else if (this.accumulatedAnimDamage <= 36) {
+                 this.sprite.play('gobboknock3')
+                 playSound('derp', 0.4);
+                 this.addDelay(() => {
+                     playSound('derp', 0.5).detune = 300;
+                     this.addDelay(() => {
+                         playSound('derp', 0.5).detune = 600;
+                     }, 120)
+                 }, 120)
+             } else if (this.accumulatedAnimDamage > 36) {
+                 this.sprite.play('gobboknock4')
+                 playSound('derp', 0.4);
+                 this.addDelay(() => {
+                     playSound('derp', 0.5).detune = 300;
+                     this.addDelay(() => {
+                         playSound('derp', 0.5).detune = 600;
+                         this.addDelay(() => {
+                             playSound('derp', 0.6).detune = 900;
+                         }, 100)
+                     }, 100)
+                 }, 100)
+             }
+             console.log(this.accumulatedAnimDamage);
+             this.sprite.rotation = -0.2;
+             this.accumTween = this.addTween({
+                 targets: this.sprite,
+                 rotation: 0.1,
+                 easeParams: [2.5],
+                 ease: 'Back.easeIn',
+                 duration: 720 + Math.floor(this.accumulatedAnimDamage * 5.5),
+                 onComplete: () => {
+                     this.accumulatedAnimDamage = 0;
+                     this.setSprite(this.defaultSprite);
+                     if (!this.dead) {
+                         this.sprite.rotation = 0;
+                     }
+                 }
+             });
          }
          if (prevHealthPercent >= 0.99) {
              if (currHealthPercent < 0.99) {

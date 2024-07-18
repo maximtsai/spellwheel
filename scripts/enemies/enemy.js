@@ -613,78 +613,19 @@ class Enemy {
     }
 
     adjustDamageTaken(amt, isAttack, isTrue = false) {
-
-        if (this.defense && isAttack && !isTrue) {
+        if (this.curse > 0) {
+            amt += this.curse;
+        }
+        if (this.defense && !isTrue) {
             amt = Math.max(0, amt - this.defense);
         }
         if (isAttack && this.statuses['mindStrike'] && !isTrue) {
-            let xPos = this.statuses['mindStrike'].x; let yPos = this.statuses['mindStrike'].y;
-            let damageToTake = Math.ceil(amt);
+            // let xPos = this.statuses['mindStrike'].x; let yPos = this.statuses['mindStrike'].y;
+            let damageToTake = Math.max(0, Math.ceil(amt) - this.curse);
             this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake);
             setTimeout(() => {
                 this.takeTrueDamage(damageToTake, false, 0, false);
-                // let startScale = 0.45 + Math.sqrt(damageToTake) * 0.1;
-                // let damageCircle = getTempPoolObject('lowq', 'circle_blue0.png', 'circle_blue', 1800).setDepth(100).setScale(startScale).setAlpha(0.3).setPosition(xPos, yPos);
-                // damageCircle.play('circleBlast')
-                // let damageStar = getTempPoolObject('lowq', 'star_white.png', 'star_white', 1800).setDepth(100).setScale(startScale).setAlpha(0.45).setPosition(xPos, yPos).setRotation(Math.PI * 0.25);
-                // this.scene.tweens.add({
-                //     targets: [damageCircle, damageStar],
-                //     alpha: 1,
-                //     duration: gameVars.gameManualSlowSpeedInverse * 900,
-                //     ease: 'Cubic.easeOut',
-                // });
-                // this.scene.tweens.add({
-                //     targets: damageCircle,
-                //     scaleX: 0,
-                //     scaleY: 0,
-                //     duration: gameVars.gameManualSlowSpeedInverse * 850 + damageToTake * 10,
-                //     ease: 'Quint.easeIn',
-                //     onComplete: () => {
-                //     }
-                // });
-                // damageStar.rotAnim = this.scene.tweens.add({
-                //     targets: damageStar,
-                //     rotation: "-=6.28",
-                //     duration: gameVars.gameManualSlowSpeedInverse * 1800,
-                // });
-                // this.scene.tweens.add({
-                //     targets: damageStar,
-                //     scaleX: startScale * 1.8,
-                //     scaleY: startScale * 1.8,
-                //     duration: gameVars.gameManualSlowSpeedInverse * 150,
-                //     ease: 'Cubic.easeOut',
-                //     onComplete: () => {
-                //         this.scene.tweens.add({
-                //             targets: damageStar,
-                //             scaleX: 0,
-                //             scaleY: 0,
-                //             duration: gameVars.gameManualSlowSpeedInverse * 550 + damageToTake * 10,
-                //             ease: 'Cubic.easeIn',
-                //             completeDelay: 50,
-                //             onComplete: () => {
-                //                 damageStar.rotAnim.stop();
-                //                 this.takeTrueDamage(damageToTake, undefined, 40);
-                //                 damageStar.setRotation(Math.PI * 0.25);
-                //                 damageStar.setScale(startScale * 1.25);
-                //                 this.scene.tweens.add({
-                //                     targets: damageStar,
-                //                     scaleX: startScale * 2,
-                //                     scaleY: startScale * 2,
-                //                     duration: gameVars.gameManualSlowSpeedInverse * 250,
-                //                     ease: 'Quad.easeOut',
-                //                     alpha: 0
-                //                 });
-                //             }
-                //         });
-                //     }
-                // });
-
-
             }, 0);
-        }
-
-        if (this.curse > 0) {
-            amt += this.curse;
         }
 
         if (this.shield > 0 && !isTrue) {

@@ -181,7 +181,7 @@ let textData3 = {
         "jp": "新しいトリックを学びましたね。悪くありません。"
     },
     "deathFight1d": {
-        "en_us": "BUT THAT DOES NOT\nABSOLVE YOU FROM YOUR FATE.",
+        "en_us": "BUT YOU WILL NOT\nESCAPE YOUR FATE.",
         "fr": "MAIS CELA NE VOUS DISPENSE PAS DE VOTRE DESTIN.",
         "zh_tw": "但這並不能免除你的命運。",
         "zh_cn": "但这并不能免除你的命运。",

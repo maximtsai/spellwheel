@@ -406,7 +406,6 @@
                          })
                      },
                      startFunction: () => {
-                         this.die();
 
                      },
                      finaleFunction: () => {
@@ -658,7 +657,7 @@
                             clearDeathFog();
                             this.darkOverlay = this.addImage(gameConsts.halfWidth,gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(90);
                             this.whiteDeath = this.addImage(this.sprite.x, this.sprite.y + 0.5, 'enemies', 'max_death_1b_angry_white.png').setScale(this.sprite.scaleX).setAlpha(0).setDepth(92).setOrigin(0.5, 0.45);
-
+                            playSound('whoosh');
                             this.addTween({
                                 targets: [this.sprite, this.whiteDeath],
                                 scaleX: 0.38,
@@ -698,6 +697,7 @@
                                 alpha: 1,
                                 duration: 2800,
                                 onComplete: () => {
+                                    playSound('deep_swish');
                                     this.whiteDeath.destroy();
                                     this.muscleDeathWhite = this.addImage(this.sprite.x, 82, 'deathfinal', 'max_death_2_white.png').setScale(0.46, 0.45).setDepth(90).setOrigin(0.5, 0.2);
                                     this.addTween({

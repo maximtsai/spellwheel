@@ -674,7 +674,7 @@
                          playSound('void_enhance', 0.5);
                          this.pulseCircleInward(this.x - 14, this.y - 39);
                          this.setDefaultSprite('void_knight_pullback.png');
-                         playSound('void_body', 0.9);
+                         playSound('void_body', 0.9).detune = 0;
                      },
                      attackStartFunction: () => {
                          this.isPulsing = false;
@@ -1130,7 +1130,7 @@
                                  alpha: 1,
                                  ease: 'Cubic.easeOut',
                                 })
-                                 playSound('void_body');
+                                 playSound('void_body').detune = 0;
                                  this.addTimeout(() => {
                                      playSound('meat_click_left');
                                      this.startPhase2();

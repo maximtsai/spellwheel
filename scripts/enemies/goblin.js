@@ -19,22 +19,38 @@
          this.health = gameVars.isHardMode ? 180 : 110;
          this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
         this.pullbackScale = 0.88;
-        this.attackScale = 1.14;
+        this.attackScale = 1.22;
+        this.isAnimating = false;
+         this.attackEase = "Quart.easeIn";
      }
 
      // update(dt) {}
      clearMindBurn() {
-         this.burnAnim.stop();
+         if (this.burnAnim) {
+             this.burnAnim.stop();
+         }
          this.isBurning = false;
          if (this.dead) {
              return;
          } else {
-             this.setSprite('gobbo_extinguish.png');
-             this.addTimeout(() => {
-                 this.setSprite(this.defaultSprite);
-             }, 1000)
+             if (!this.isAnimating) {
+                 let oldSprite = this.sprite.frame.name;
+                 if (this.goblinBeingShocked) {
+                     oldSprite = this.defaultSprite;
+                 } else if (this.isUsingAttack) {
+                     oldSprite = this.defaultSprite;
+                 }
+                 this.setSprite('gobbo_extinguish1.png');
+                 this.sprite.play('gobboextinguish');
+                 this.isAnimating = true;
 
-             playSound('goblin_grunt', 0.4).detune = 500;
+                 this.sprite.once('animationcomplete', () => {
+                     this.isAnimating = false;
+                     this.setSpriteIfNotInactive(oldSprite);
+                 });
+                 playSound('goblin_grunt', 0.4).detune = 500;
+             }
+
              this.sprite.x = gameConsts.halfWidth + (Math.random() < 0.5 ? 15 : -15);
              this.addTween({
                  targets: this.sprite,
@@ -48,25 +64,30 @@
      takeEffect(newEffect) {
          if (this.sprite) {
             if (newEffect.name == 'mindStrike' && this.shield <= 0) {
+                this.sprite.stop();
                  let oldSprite = this.sprite.frame.name;
                  if (oldSprite === 'gobbo_elec.png') {
                      oldSprite = this.defaultSprite;
                  } else if (this.isUsingAttack) {
                      oldSprite = this.defaultSprite;
                  }
-                 this.setSprite('gobbo_elec.png');
+                 this.setSprite('gobbo_elec1.png');
                  this.sprite.x = gameConsts.halfWidth + (Math.random() < 0.5 ? -13 : 13);
+                this.goblinBeingShocked = true;
+                 this.sprite.play('gobboshock')
                  this.addTween({
                      targets: this.sprite,
                      x: gameConsts.halfWidth,
                      ease: 'Bounce.easeOut',
                      easeParams: [1, 2.5],
                      duration: 260,
-                 })
-                 setTimeout(() => {
+                 });
+                 this.sprite.once('animationcomplete', () => {
                      this.setSpriteIfNotInactive(oldSprite);
-                 }, 300)
+                     this.goblinBeingShocked = false;
+                 })
             } else if (this.shield >= 1 && newEffect.name == 'mindBurn') {
+                this.sprite.stop();
                 this.burnAnim = this.sprite.play('gobboshieldfire');
                 this.isBurning = true;
             }
@@ -218,7 +239,7 @@
                      damage: gameVars.isHardMode ? 12 : 6,
                      startFunction: () => {
                         this.pullbackScale = 0.85;
-                        this.attackScale = 1.28;
+                        this.attackScale = 1.3;
                      },
                      attackFinishFunction: () => {
                          playSound('body_slam')
@@ -245,7 +266,7 @@
                      isBigMove: true,
                      startFunction: () => {
                         this.pullbackScale = 0.88;
-                        this.attackScale = 1.15;
+                        this.attackScale = 1.18;
                          this.setDefaultSprite('gobbo3.png', 0.92);
                      },
                      attackFinishFunction: () => {
@@ -401,7 +422,7 @@
              this.breatheTween.stop();
          }
          let horizMove = Math.ceil(3.5 * magnitude);
-         let burningMult = this.isBurning ? 0.2 : 1;
+         let burningMult = this.isBurning ? 0.18 : 1;
          this.breatheTween = this.addTween({
              targets: this.sprite,
              duration: duration * (Math.random() * 0.5 + 1) * burningMult,

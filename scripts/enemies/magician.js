@@ -1308,11 +1308,7 @@
                          this.addTimeout(() => {
                              let myCustomMusic = this.customBgMusic;
                              fadeAwaySound(myCustomMusic, 2000, ' ');
-                             this.addTimeout(() => {
-                                 if (!this.timeBarraged) {
-                                     this.tickSlow = playSound('tickslow');
-                                 }
-                             }, 1000);
+
                          }, 750);
                          this.usingTimeFreeze = true;
                      },
@@ -1323,9 +1319,7 @@
                             let clock = this.timeFallObjs[i];
                             clock.setAlpha(0);
                         }
-                         if (this.tickSlow) {
-                             fadeAwaySound(this.tickSlow, 400, ' ');
-                         }
+
                          playSound('timeSlow');
                          this.magicianTimeEpicTheme = playMusic('magician_theme_3', 0.8)
                          globalObjects.magicCircle.timeSlowFromEnemy();

@@ -157,17 +157,27 @@ class SpellManager {
             let rockObj = poolManager.getItemFromPool('rock')
             if (!rockObj) {
                 rockObj = this.scene.add.sprite(xPos, yPos, 'spells', 'rock.png');
+                rockObj.bg = this.scene.add.sprite(xPos, yPos, 'spells', 'rock_bg.png');
             }
-            rockObj.setPosition(xPos, yPos).setDepth(11);
+            if (!rockObj.bg) {
+                rockObj.bg = this.scene.add.sprite(xPos, yPos, 'spells', 'rock_bg.png');
+            }
+            rockObj.bg.alpha = isMobile ? 0.65 : 0.45;
+            rockObj.bg.visible = true;
+
+            rockObj.setPosition(xPos, yPos).setDepth(40);
+            rockObj.bg.setPosition(xPos, yPos).setDepth(39);
             rockObj.rotation = Math.random() - 0.5;
             rockObjects.push(rockObj);
-            rockObj.setScale(0.0);
+            rockObj.setScale(0);
+            rockObj.bg.setScale(0);
+            let rockObjTargetScale = (isMobile ? 0.56 : 0.5) + additionalScale + (isExtraBuff ? -0.05 : 0)
             this.scene.tweens.add({
-                targets: rockObj,
+                targets: [rockObj, rockObj.bg],
                 delay: 150,
                 duration: 400 + additionalDamage * 2,
-                scaleX: 0.5 + additionalScale + (isExtraBuff ? -0.05 : 0),
-                scaleY: 0.5 + additionalScale + (isExtraBuff ? -0.05 : 0),
+                scaleX: rockObjTargetScale,
+                scaleY: rockObjTargetScale,
                 ease: 'Back.easeOut',
                 onStart: () => {
                     let detuneAmt = detuneSqrtMult * (isExtraBuff ? -10 : -30) - 75 + Math.random() * 150;
@@ -193,7 +203,7 @@ class SpellManager {
                         rockGlow.setScale(rockObj.scaleX).setPosition(rockObj.x, rockObj.y).setRotation(rockObj.rotation).setAlpha(0).setDepth(rockObj.depth + 1);
 
                         this.scene.tweens.add({
-                            targets: [rockObj, rockGlow],
+                            targets: [rockObj, rockGlow, rockObj.bg],
                             delay: 110,
                             duration: 40,
                             scaleX: 0.65 + finalAdditionaScale,
@@ -217,7 +227,7 @@ class SpellManager {
                             },
                             onComplete: () => {
                                 this.scene.tweens.add({
-                                    targets: [rockObj, rockGlow],
+                                    targets: [rockObj, rockGlow, rockObj.bg],
                                     duration: 150,
                                     scaleX: 0.5 + finalAdditionaScale,
                                     scaleY: 0.5 + finalAdditionaScale,
@@ -242,7 +252,7 @@ class SpellManager {
                 }
             });
             this.scene.tweens.add({
-                targets: rockObj,
+                targets: [rockObj, rockObj.bg],
                 delay: 150,
                 duration: 450 + additionalDamage * 2,
                 rotation: (Math.random() - 0.5) * 3,
@@ -254,14 +264,15 @@ class SpellManager {
             let rockObj = rockObjects[i];
             let delayAmt = 600 + i * (220 - i * 12) + additionalDamage * 2 + (isExtraBuff ? 325 : 0);
             let durationAmt = 500 + additionalDamage * 5;
+            let rockGoalScale = (isMobile ? 0.37 : 0.34) + additionalScale * 0.6;
             this.scene.tweens.add({
-                targets: rockObj,
+                targets: [rockObj, rockObj.bg],
                 delay: delayAmt,
                 x: gameConsts.halfWidth + (Math.random() - 0.5) * 20,
                 y: 165 + (Math.random() - 0.5) * 15 - Math.floor(Math.sqrt(additionalDamage) * 2),
                 duration: durationAmt,
-                scaleX: 0.34 + additionalScale * 0.6,
-                scaleY: 0.34 + additionalScale * 0.6,
+                scaleX: rockGoalScale,
+                scaleY: rockGoalScale,
                 rotation: (Math.random() - 0.5) * 2,
                 ease: 'Quad.easeIn',
                 onStart: () => {
@@ -299,6 +310,7 @@ class SpellManager {
                     let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
                     messageBus.publish('setPauseDur', 20);
+                    rockObj.bg.visible = false;
                     poolManager.returnItemToPool(rockObj, 'rock');
                 }
             });
@@ -2147,7 +2159,7 @@ class SpellManager {
         messageBus.publish("selfClearEffect");
         messageBus.publish("castVoidBody");
         setTimeout(() => {
-            playSound('void_body');
+            playSound('void_body').detune = 0;
         }, 400);
         this.scene.tweens.add({
             targets: shieldObj,

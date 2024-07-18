@@ -57,6 +57,30 @@ function createAnimations(scene) {
         repeat: -1
     });
     scene.anims.create({
+        key: 'gobboshock',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'gobbo_elec',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        repeat: 1,
+        frameRate: 12,
+    });
+    scene.anims.create({
+        key: 'gobboextinguish',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'gobbo_extinguish',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        frameRate: 5,
+        repeat: 2
+    });
+    scene.anims.create({
         key: 'gobboshieldfire',
         frames: scene.anims.generateFrameNames('enemies', {
             prefix: 'gobbo_fire',
@@ -65,7 +89,7 @@ function createAnimations(scene) {
             end: 2,
             zeroPad: 0,
         }),
-        frameRate: 4,
+        frameRate: 5,
         repeat: -1
     });
     scene.anims.create({

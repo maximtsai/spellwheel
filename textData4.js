@@ -46,7 +46,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2z1": {
-        "en_us": "PLACEHOLDER TEXT ABOUT HOW\nPLAYER IS CAPABLE",
+        "en_us": "YOU HAVE FOUGHT WELL CHILD",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -55,7 +55,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2z2": {
-        "en_us": "THIS ISN'T EVEN MY\nFINAL FORM (placeholder)",
+        "en_us": "BUT MERE MIGHT IS\nNO MATCH FOR ME.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -63,6 +63,34 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "deathFight2z3": {
+        "en_us": "NOW WITNESS",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2plusz": {
+        "en_us": "ENOUGH!",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2plusz2": {
+        "en_us": "I WILL FINISH YOU\nONCE AND FOR ALL",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+
     "back_to_training": {
         "en_us": "BACK TO TRAINING",
         "fr": "",

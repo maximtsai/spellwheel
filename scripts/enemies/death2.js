@@ -1096,7 +1096,7 @@
                         }
                     });
                     this.addDelay(() => {
-                        globalObjects.bannerTextManager.setDialog(["BEHOLD"]);
+                        globalObjects.bannerTextManager.setDialog([getLangText("deathFight2z3")]);
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight * 1.5 - 25, 0);
                         globalObjects.bannerTextManager.showBanner(0);
                         globalObjects.bannerTextManager.setOnFinishFunc(() => {

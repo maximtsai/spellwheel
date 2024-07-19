@@ -68,7 +68,7 @@
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
-        <uint>1</uint>
+        <uint>5</uint>
         <key>webpQualityLevel</key>
         <uint>88</uint>
         <key>textureSubPath</key>
@@ -906,6 +906,21 @@
                 <rect>18,13,35,25</rect>
                 <key>scale9Paddings</key>
                 <rect>18,13,35,25</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/whiteout_circle.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>63,75,125,150</rect>
+                <key>scale9Paddings</key>
+                <rect>63,75,125,150</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

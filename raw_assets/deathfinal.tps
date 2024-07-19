@@ -188,6 +188,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">deathfinal/claw_glow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>141,172,281,345</rect>
+                <key>scale9Paddings</key>
+                <rect>141,172,281,345</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">deathfinal/death2charge.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -495,6 +510,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">deathfinal/okay_glow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>110,247,220,495</rect>
+                <key>scale9Paddings</key>
+                <rect>110,247,220,495</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">deathfinal/palm.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -510,6 +540,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">deathfinal/palm_glow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>101,223,203,445</rect>
+                <key>scale9Paddings</key>
+                <rect>101,223,203,445</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">deathfinal/poke.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -522,6 +567,21 @@
                 <rect>92,73,184,145</rect>
                 <key>scale9Paddings</key>
                 <rect>92,73,184,145</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">deathfinal/poke_glow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>114,125,227,250</rect>
+                <key>scale9Paddings</key>
+                <rect>114,125,227,250</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -231,7 +231,7 @@
             this.gunFlash1.setVisible(true);
             this.gunFlash2.setVisible(true);
         }
-        let flashDelay = 61;
+        let flashDelay = 54;
         for (let i = 1; i <= 6; i++) {
             this.addDelay(() => {
                 if (!this.dead) {

@@ -307,7 +307,7 @@ class SpellManager {
 
 
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
-                    let baseDamage = gameVars.matterPlus ? 1400 : 12;
+                    let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
                     messageBus.publish('setPauseDur', 20);
                     rockObj.bg.visible = false;
@@ -1535,8 +1535,8 @@ class SpellManager {
                     messageBus.publish('enemyTakeDamage', 1 + additionalDamage);
                     messageBus.publish('setPauseDur', 10);
 
-                    if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
-                        let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 4, 'spells').play('energyTarget').setAlpha(0.2).setScale(0.95).setRotation(Math.PI*0.15).setBlendMode(Phaser.BlendModes.ADD);
+                    if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead && !globalObjects.player.dead) {
+                        let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 4, 'spells', 'energyTarget1').play('energyTarget').setAlpha(0.2).setScale(0.95).setRotation(Math.PI*0.15).setBlendMode(Phaser.BlendModes.ADD);
                         animation1.setDepth(50);
                         animation1.setOrigin(0.5, 0.5);
                         this.scene.tweens.add({

@@ -400,6 +400,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">deathfinal/handshield.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>101,156,203,312</rect>
+                <key>scale9Paddings</key>
+                <rect>101,156,203,312</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">deathfinal/marker.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -613,6 +628,21 @@
                 <rect>75,115,150,230</rect>
                 <key>scale9Paddings</key>
                 <rect>75,115,150,230</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">deathfinal/spellcircle.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>200,200,401,401</rect>
+                <key>scale9Paddings</key>
+                <rect>200,200,401,401</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

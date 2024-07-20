@@ -786,6 +786,7 @@ function setupGame() {
     globalObjects.gameStats = new GameStats();
     globalObjects.hoverTextManager = new InternalHoverTextManager(PhaserScene);
     globalObjects.textPopupManager = new TextPopupManager(PhaserScene);
+    globalObjects.combatDialogManager = new CombatTextManager(PhaserScene);
     globalObjects.spellManager = new SpellManager(PhaserScene);
     globalObjects.spellRecorder = new SpellRecorder(PhaserScene);
     globalObjects.bannerTextManager = new BannerTextManager(PhaserScene);

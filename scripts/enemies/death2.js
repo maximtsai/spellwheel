@@ -1136,8 +1136,8 @@
     }
 
     createAnimatedHellBG() {
-        this.bg1 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 15, 'backgrounds', 'firebg1.png').setDepth(-5);
-        this.bg2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 15, 'backgrounds', 'firebg2.png').setDepth(-5);
+        this.bg1 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 5, 'backgrounds', 'firebg1.png').setDepth(-5).setScale(0.91);
+        this.bg2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 5, 'backgrounds', 'firebg2.png').setDepth(-5).setScale(0.91);
         this.nextBG = 0;
         this.useFirstBG = true;
         this.animateBGRepeat();
@@ -1503,7 +1503,7 @@
         bgToUse.setAlpha(0).setDepth(-4);
         this.addTween({
             targets: bgToUse,
-            duration: 1200,
+            duration: 850,
             alpha: 1,
             onComplete: () => {
                 this.useFirstBG = !this.useFirstBG;

@@ -437,11 +437,36 @@
 			"image": "sprites/backgrounds-3.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1414,
-				"h": 1804
+				"w": 1435,
+				"h": 1728
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "star.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 731,
+						"h": 823
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 731,
+						"h": 823
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 731,
+						"h": 823
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
 				{
 					"filename": "fake_death_punch2.png",
 					"rotated": false,
@@ -457,7 +482,7 @@
 						"h": 900
 					},
 					"frame": {
-						"x": 1,
+						"x": 734,
 						"y": 1,
 						"w": 700,
 						"h": 900
@@ -482,7 +507,7 @@
 						"h": 900
 					},
 					"frame": {
-						"x": 1,
+						"x": 734,
 						"y": 1,
 						"w": 700,
 						"h": 900
@@ -508,7 +533,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 903,
+						"y": 826,
 						"w": 700,
 						"h": 900
 					},
@@ -533,34 +558,9 @@
 					},
 					"frame": {
 						"x": 703,
-						"y": 1,
+						"y": 903,
 						"w": 710,
 						"h": 824
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "firebg1.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 700,
-						"h": 900
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 700,
-						"h": 900
-					},
-					"frame": {
-						"x": 703,
-						"y": 827,
-						"w": 700,
-						"h": 900
 					},
 					"anchor": {
 						"x": 0.5,
@@ -579,7 +579,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "star.png",
+					"filename": "firebg1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -634,6 +634,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:cf096423adc2c8b3624981423a656784:9819c7572b378c8314f1d98df323559c:d36b2d12f94c3c84864533b00704d5ae$"
+		"smartupdate": "$TexturePacker:SmartUpdate:873e3af2750ecd7b059580e4bbd54de4:78212833c4e65d10941338081a3732f1:d36b2d12f94c3c84864533b00704d5ae$"
 	}
 }

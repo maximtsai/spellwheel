@@ -1393,7 +1393,6 @@ class Enemy {
     }
 
     destroy() {
-        console.log("detsror");
         if (this.isDestroyed) {
             return;
         }
@@ -1402,6 +1401,7 @@ class Enemy {
         this.clearEffects()
         this.cleanUp();
         globalObjects.textPopupManager.hideInfoText();
+        messageBus.publish("closeCombatText");
 
         for (let i = 0; i < this.destructibles.length; i++) {
             if (this.destructibles[i]) {
@@ -1463,6 +1463,8 @@ class Enemy {
         if (this.breatheTween) {
             this.breatheTween.stop();
         }
+        messageBus.publish("closeCombatText");
+
         this.clearEffects();
         // undo any time magic
         this.sprite.setScale(this.sprite.startScale);

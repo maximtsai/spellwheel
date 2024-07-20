@@ -235,13 +235,21 @@ let textData2 = {
         "jp": "私は死者の禁じられた土地への門に到着しました。 すぐに、この領域は私の立ち入りに抵抗します。しかし、私はここであなたを見つけるでしょう、親愛なる最愛の人、そして私があなたに連絡を取るのを妨げるものは何もありません。"
     },
     "post_fight_story2": {
-        "en_us": "The legendary\nReaper has taken\nnotice of me, yet\nI hardly feel fear.\n\nIf anything, they seem more like a nagging\nparent than a dread specter of\nthe underworld.\n\nHence, I shall rightfully seize this shield\nas my own.",
-        "fr": "Le légendaire Faucheur m’a remarqué, mais j’ai à peine peur.  Au contraire, ils ressemblent plus à un parent harcelant qu’à un spectre redoutable de la pègre.  Par conséquent, je saisirai légitimement ce bouclier comme le mien.",
-        "zh_tw": "傳說中的死神注意到了我，但我幾乎不感到恐懼。 如果有的話，他們看起來更像是一個嘮叨的父母，而不是黑社會的可怕幽靈。 因此，我將理所當然地將這面盾牌據為己有。",
-        "zh_cn": "传说中的死神注意到了我，但我几乎不感到恐惧。 如果有的话，他们看起来更像是一个唠叨的父母，而不是黑社会的可怕幽灵。 因此，我将理所当然地将这面盾牌据为己有。",
-        "ru": "Легендарный Жнец обратил на меня внимание, но я почти не чувствую страха.  Во всяком случае, они больше похожи на ворчливых родителей, чем на ужасный призрак преступного мира.  Следовательно, я по праву завладею этим щитом как своим собственным.",
-        "es": "La legendaria Parca se ha fijado en mí, pero apenas siento miedo.  En todo caso, parecen más un padre fastidioso que un temible espectro del inframundo.  Por lo tanto, me apoderaré legítimamente de este escudo como si fuera mío.",
-        "jp": "伝説の死神は私に気づいていますが、私はほとんど恐怖を感じていません。 どちらかといえば、彼らは冥界の恐怖の亡霊というよりは、口うるさい親のように見えます。 それゆえ、私はこの盾を自分のものとして当然のことながら奪う。"
+        "en_us": "The legendary\nReaper has taken\nnotice of me, yet\nI hardly feel fear.\n\nIf anything, they remind me of a nagging\nparent than a dread specter of\nthe underworld.\n\nHence, I shall rightfully seize this shield\nas my own.",
+        "fr": "La légendaire\nFaucheuse m'avait\nremarqué, mais je\nressentais peu de peur.\n\nPour moi, ils ressemblent plus à un\nparent harcelant qu’à un fantôme\neffrayant de l’enfer.\n\nIl m’appartient donc de m’emparer de\nce bouclier.",
+        "zh_tw": "傳說中的死神已經\n注意到我了，但我幾乎\n感覺不到恐懼。\n\n" +
+            "在我看來，他們更像是一個嘮叨的父母，\n而不是地獄裡可怕的幽靈。\n\n因此，我理應奪取這面盾牌。",
+        "zh_cn": "传说中的死神已经\n注意到我了，但我几乎\n感觉不到恐惧。\n\n" +
+            "在我看来，他们更像是一个唠叨的父母，\n而不是地狱里可怕的幽灵。\n\n因此，我理应夺取这面盾牌。",
+        "ru": "Легендарный бог\nсмерти заметил меня,\nно я почти не\nчувствую страха.\n\n" +
+            "На мой взгляд, они больше похожи\nна надоедливого родителя, чем\nна страшного призрака из ада.\n\n" +
+            "Поэтому мне надлежит захватить\nэтот щит.",
+        "es": "El legendario dios de la muerte se ha fijado en mí, pero apenas siento miedo.\n\n" +
+            "Para mí, parecen más un padre molesto que un aterrador fantasma del infierno.\n\n" +
+            "Por lo tanto, me corresponde apoderarme de este escudo.",
+        "jp": "伝説の死神に気づかれているが、恐怖はほとんど感じない。\n\n" +
+            "私にとって、彼らは地獄から来た恐ろしい幽霊というよりも、口うるさい親のように見えます。\n\n" +
+            "したがって、この盾を奪うのは私に義務がある。"
     },
     "post_fight_story3": {
         "en_us": "It appears I\ngain the strength\nof every foe I vanquish!\n\nThe journey may be long, but if I conquer\nenough adversaries, I may one day be able to\nstand against Death itself!",
@@ -326,12 +334,12 @@ let textData2 = {
     },
     "post_fight_skip_training": {
         "en_us": "Journey On     ",
-        "fr": "Voyage sur",
-        "zh_tw": "旅程繼續",
-        "zh_cn": "旅程继续",
-        "ru": "Путешествие вперед",
-        "es": "Viaje en marcha",
-        "jp": "ジャーニー・オン"
+        "fr": "Voyage sur     ",
+        "zh_tw": "旅程繼續     ",
+        "zh_cn": "旅程继续     ",
+        "ru": "Путешествие вперед ",
+        "es": "Viaje en marcha   ",
+        "jp": "ジャーニー・オン    "
     },
     "post_fight_continue": {
         "en_us": "CONTINUE         ",

@@ -9,6 +9,24 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "deathFight1a": {
+        "en_us": "FIGHT BACK IF YOU MUST,\nBUT UNDERSTAND IT IS FUTILE.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight1b": {
+        "en_us": "...I MEAN IT. NOTHING\nYOU DO CAN HURT ME",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "deathFight2c": {
         "en_us": "SO EAGERLY AGGRESSIVE.\nTHINK TWICE BEFORE ATTACKING.",
         "fr": "",

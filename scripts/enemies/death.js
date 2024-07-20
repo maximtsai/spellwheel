@@ -21,6 +21,8 @@
 
      initStatsCustom() {
          this.health = 4;
+         this.timesAttacked = 0;
+         this.spellsCastCounter = 0;
          this.scytheObjects = [];
          this.listOfAngryPopups = [];
      }
@@ -363,9 +365,48 @@
          });
      }
 
+     adjustDamageTaken(amt, isAttack, isTrue = false) {
+         if (isAttack) {
+             this.timesAttacked++;
+             if (this.timesAttacked === 1) {
+                 messageBus.publish("showCombatText", getLangText('deathFight1a'));
+                 this.addTimeout(() => {
+                     this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                         this.spellsCastCounter++;
+                         if (this.spellsCastCounter > 2) {
+                             this.playerSpellCastSub.unsubscribe();
+                             messageBus.publish("closeCombatText")
+                         }
+                     });
+                     this.addTimeout(() => {
+                         messageBus.publish("closeCombatText")
+                     }, 5000);
+                 }, 4000)
+             } else if (this.timesAttacked === 13) {
+                 messageBus.publish("showCombatText", getLangText('deathFight1b'));
+                 this.addTimeout(() => {
+                     this.spellsCastCounter = 0;
+                     this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                         this.spellsCastCounter++;
+                         if (this.spellsCastCounter > 2) {
+                             this.playerSpellCastSub.unsubscribe();
+                             messageBus.publish("closeCombatText")
+                         }
+                     });
+                     this.addTimeout(() => {
+                         messageBus.publish("closeCombatText")
+                     }, 5000);
+                 }, 4000)
+             }
+         }
+
+         return super.adjustDamageTaken(amt, isAttack, isTrue);
+     }
 
      setHealth(newHealth) {
         messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'IMMATERIAL', 0.8, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.1, scaleY: 1.1});
+
+
 
          // super.setHealth(newHealth);
          // let prevHealthPercent = this.prevHealth / this.healthMax;
@@ -383,13 +424,15 @@
              [
                  {
                      name: ";444",
-                     chargeAmt: 700,
+                     chargeAmt: 750,
                      chargeMult: 2,
                      finishDelay: 3000,
                      damage: -1,
                      isBigMove: true,
                      attackStartFunction: () => {
                          // this.hideCurrentAttack();
+                         this.timesAttacked = 5;
+                         messageBus.publish("closeCombatText");
                          this.swingScythe(444, true, false, () => {
                              if (!globalObjects.player.dead) {
                                  this.setAsleep();
@@ -496,7 +539,7 @@
                      }
                  },
                  {
-                     name: ";114",
+                     name: ";100",
                      chargeAmt: 800,
                      chargeMult: 2,
                      finishDelay: 5000,
@@ -524,7 +567,7 @@
                      },
                      attackStartFunction: () => {
                          this.scytheCanBreak = true;
-                         this.swingScytheFastIntro(144, true, false, () => {
+                         this.swingScytheFastIntro(100, true, false, () => {
                              this.addTween({
                                  targets: this.listOfAngryPopups, scaleX: 0, scaleY: 0,
                                  ease: 'Back.easeIn', duration: 400,

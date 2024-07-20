@@ -543,12 +543,12 @@ const ENABLE_KEYBOARD = true;
         // this.timeStopLight = this.scene.add.sprite(this.x, this.y, 'blackPixel');
         // this.timeStopLight.alpha = 0;
         // this.timeStopLight.setScale(999);
-        this.timeStopHeavy = this.scene.add.sprite(this.x, this.y, 'spells', 'blackCircleLarge.png');
+        this.timeStopHeavy = this.scene.add.sprite(this.x, this.y, 'spells', 'blackCircleLarge.png').setDepth(-3);
         this.timeStopHeavy.alpha = 0;
         this.timeStopHeavy.setScale(1.7);
 
         this.clockbg = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 2, 'lowq', 'clockbg.png').setAlpha(0).setScale(1.06);
-        this.clockbg.setDepth(0);
+        this.clockbg.setDepth(-3);
         this.gear1 = this.scene.add.sprite(-40, 280, 'circle', 'gear.png').setAlpha(0);
         this.gear1.setDepth(1);
         this.gear2 = this.scene.add.sprite(120, 442, 'circle', 'gear_small.png').setAlpha(0);
@@ -2363,7 +2363,7 @@ const ENABLE_KEYBOARD = true;
                          break;
                      case RUNE_PROTECT:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateSpellDescriptorText(getLangText(gameVars.matterPlus ? 'matter_protect_desc' : 'matter_protect_plus_desc'));
+                         this.updateSpellDescriptorText(getLangText(gameVars.matterPlus ? 'matter_protect_plus_desc' : 'matter_protect_desc'));
                          break;
                      case RUNE_UNLOAD:
                          embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";

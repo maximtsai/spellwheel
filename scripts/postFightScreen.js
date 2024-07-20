@@ -157,7 +157,20 @@ class PostFightScreen {
             });
             this.continueButton.addText(getLangText('post_fight_skip_training'), {fontFamily: 'garamondmax', fontSize: 19, color: '#000000', align: 'center'});
             let text = this.continueButton.getText();
-            text.alpha = 0.1;
+            text.alpha = 0;
+            this.continueButton.setOnHoverFunc(() => {
+                playSound('button_hover');
+                if (canvas) {
+                    canvas.style.cursor = 'pointer';
+                }
+                text.alpha = 0.7;
+            });
+            this.continueButton.setOnHoverOutFunc(() => {
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
+                text.alpha = 0.2;
+            })
             this.continueButton.setDepth(100000);
         }
         if (!this.trainingButton) {
@@ -325,6 +338,8 @@ class PostFightScreen {
             setTimeout(() => {
                 if (this.trainingButton.getState() !== DISABLE) {
                     this.continueButton.setText(getLangText('post_fight_skip_training'));
+                    let text = this.continueButton.getText();
+                    text.alpha = 0;
                     this.continueButton.setState(NORMAL);
                 }
             }, 3000);

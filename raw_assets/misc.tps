@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>90</uint>
+        <uint>88</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -185,6 +185,37 @@
                 <rect>125,45,250,90</rect>
                 <key>scale9Paddings</key>
                 <rect>125,45,250,90</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/battletext_bg.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>25,3,50,5</rect>
+                <key>scale9Paddings</key>
+                <rect>25,3,50,5</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/battletext_border_bot.png</key>
+            <key type="filename">misc/battletext_border_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>125,4,250,7</rect>
+                <key>scale9Paddings</key>
+                <rect>125,4,250,7</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -457,22 +488,6 @@
                 <rect>188,188,375,375</rect>
                 <key>scale9Paddings</key>
                 <rect>188,188,375,375</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">misc/slice_back.png</key>
-            <key type="filename">misc/slice_front.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>155,140,310,280</rect>
-                <key>scale9Paddings</key>
-                <rect>155,140,310,280</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

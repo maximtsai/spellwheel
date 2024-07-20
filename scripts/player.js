@@ -1018,6 +1018,9 @@ class Player {
         playSound('you_died');
         this.deadBG.alpha = 0.85;
         this.clearAllEffects();
+        messageBus.publish("closeCombatText");
+        globalObjects.textPopupManager.hideInfoText();
+        globalObjects.bannerTextManager.closeBanner();
 
         if (!this.swirl1) {
             this.swirl2 = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'backgrounds', 'fog_swirl_glow.png').setDepth(30);
@@ -1082,8 +1085,6 @@ class Player {
                             onMouseUp: () => {
                                 this.revive();
                                 gotoMainMenu();
-                                globalObjects.textPopupManager.hideInfoText();
-                                globalObjects.bannerTextManager.closeBanner();
                                 deathRetryButton.destroy();
                                 deathMenuButton.destroy();
                                 deathTrainingButton.destroy();

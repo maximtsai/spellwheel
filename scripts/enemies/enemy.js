@@ -23,7 +23,6 @@ class Enemy {
             messageBus.subscribe("statusesTicked", this.updateStatuses.bind(this)),
             messageBus.subscribe("enemyStartDamageCountdown", this.startDamageCountdown.bind(this)),
             messageBus.subscribe("enemyAddShield", this.addShield.bind(this)),
-            messageBus.subscribe("increaseCurse", this.increaseCurse.bind(this)),
             messageBus.subscribe('spellClicked', this.playerClickedSpell.bind(this)),
             messageBus.subscribe("playerDied", this.playerDied.bind(this)),
         ];
@@ -91,7 +90,6 @@ class Enemy {
         this.attackDurMult = 1;
         this.attackScale = 1.1;
         this.attackScaleDefault = this.attackScale;
-        this.curse = 0;
         this.lastAttackLingerMult = 1;
         this.extraRepeatDelay = 0;
         this.attackSlownessMult = 1;
@@ -613,15 +611,16 @@ class Enemy {
     }
 
     adjustDamageTaken(amt, isAttack, isTrue = false) {
-        if (this.curse > 0) {
-            amt += this.curse;
+        let mindReinforceStatus = globalObjects.player.getStatuses()['mindReinforce'];
+        if (mindReinforceStatus) {
+            amt += mindReinforceStatus.displayAmt;
         }
         if (this.defense && !isTrue) {
             amt = Math.max(0, amt - this.defense);
         }
         if (isAttack && this.statuses['mindStrike'] && !isTrue) {
             // let xPos = this.statuses['mindStrike'].x; let yPos = this.statuses['mindStrike'].y;
-            let damageToTake = Math.max(0, Math.ceil(amt) - this.curse);
+            let damageToTake = Math.max(0, Math.ceil(amt));
             this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake);
             setTimeout(() => {
                 this.takeTrueDamage(damageToTake, false, 0, false);
@@ -1012,35 +1011,7 @@ class Enemy {
         });
     }
 
-    increaseCurse(amt = 1) {
-        if (this.delayLoad) {
-            return;
-        }
-        this.curse += amt;
-        this.curseSprite.visible = true;
-        this.curseText.visible = true;
 
-        let newScale = 0.3 + Math.sqrt(this.curse) * 0.25;
-        this.curseSprite.setScale(newScale + 0.25)
-        this.scene.tweens.add({
-            targets: this.curseSprite,
-            scaleX: newScale,
-            scaleY: newScale,
-            duration: gameVars.gameManualSlowSpeedInverse * 300,
-            ease: 'Back.easeOut',
-        });
-        this.curseText.setText(this.curse);
-        this.curseText.setScale(newScale + 0.25);
-        this.scene.tweens.add({
-            targets: this.curseText,
-            scaleX: newScale * 0.8 + 0.075,
-            scaleY: newScale * 0.8 + 0.075,
-            duration: gameVars.gameManualSlowSpeedInverse * 380,
-            ease: 'Back.easeOut',
-        });
-        this.curseSprite.x = gameConsts.halfWidth - this.healthBarLengthMax - 30 * this.curseSprite.scaleX;
-        this.curseText.x = this.curseSprite.x;
-    }
 
     clearShield() {
         this.shield = 0;

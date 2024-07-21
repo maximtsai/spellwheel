@@ -82,7 +82,16 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2z3": {
-        "en_us": "NOW WITNESS",
+        "en_us": "WITNESS",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2plusa": {
+        "en_us": "NOW STRIKE ME WITH YOUR BEST",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

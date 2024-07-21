@@ -2,6 +2,7 @@ class CombatTextManager {
     constructor(scene) {
         this.scene = scene;
         this.bg = this.scene.add.image(gameConsts.halfWidth, 240, 'misc', 'battletext_bg.png').setDepth(200).setAlpha(0).setScale(5);
+        this.bg.startY = this.bg.y;
         this.bgBorderTop = this.scene.add.image(gameConsts.halfWidth, this.bg.y - this.bg.scaleY * 5, 'misc', 'battletext_border_top.png').setDepth(200).setAlpha(0).setOrigin(0.5, 0);
         this.bgBorderBot = this.scene.add.image(gameConsts.halfWidth, this.bg.y + this.bg.scaleY * 5, 'misc', 'battletext_border_bot.png').setDepth(200).setAlpha(0).setOrigin(0.5, 1);
 
@@ -22,13 +23,14 @@ class CombatTextManager {
         this.text.setText(text);
     }
 
-    showCombatText(text, onComplete) {
+    showCombatText(text, yOffset = 0, onComplete) {
         this.isShowing = true;
         // this.setText(this.dialog[this.dialogIndex]);
         // if (this.funcArray[this.dialogIndex]) {
         //     this.funcArray[this.dialogIndex]();
         // }
         this.setText(text);
+        this.setPosition(this.bg.x, this.bg.startY + yOffset);
         this.bg.scaleX = 4;
         if (this.text.height > 50) {
             this.bg.scaleY = 8;

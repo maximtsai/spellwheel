@@ -77,7 +77,24 @@
 
              this.rotateSpellCircleTo(0, false, () => {
                  // this.fadeOutCurrentHand();
-                 this.createHandShield(10);
+                 this.createHandShield(12);
+                 this.addDelay(() => {
+                     messageBus.publish("showCombatText", getLangText('deathFight2plusa'), -40);
+                     this.addTimeout(() => {
+                         this.spellsCastCounter = 0;
+                         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                             this.spellsCastCounter++;
+                             if (this.spellsCastCounter > 2) {
+                                 this.playerSpellCastSub.unsubscribe();
+                                 messageBus.publish("closeCombatText")
+                             }
+                         });
+                         this.addTimeout(() => {
+                             messageBus.publish("closeCombatText")
+                         }, 5000);
+                     }, 3000)
+                 }, 1500)
+
              });
 
              this.addDelay(() => {
@@ -122,11 +139,10 @@
     }
 
     fadeMainBG(showup) {
-         console.log(showup);
          this.addTween({
              targets: this.bgtemp,
              alpha: showup ? 1 : 0,
-             duration: 1500
+             duration: 1000
          })
     }
 
@@ -141,16 +157,14 @@
                      isPassive: true,
                      startFunction: () => {
                          this.fadeMainBG(true);
-                         console.log("geeg");
-
                      },
                      attackStartFunction: () => {
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
-                         this.createHandShield(10);
                      },
                      finaleFunction: () => {
+
                      }
                  },
              ],
@@ -447,8 +461,8 @@
         this.addTween({
             targets: this.spellCircle,
             rotation: goalRot,
-            ease: 'Cubic.easeInOut',
-            duration: isFast ? 2500 : 3000,
+            ease: 'Quart.easeInOut',
+            duration: isFast ? 2400 : 2700,
             onUpdate: () => {
                 let handDist = this.spellCircle.scaleX * 166
                 for (let i = 0; i < this.glowHands.length; i++) {
@@ -495,25 +509,6 @@
                         if (onCompleteFunc) {
                             onCompleteFunc();
                         }
-                        // this.currentHandGlow.currAnim = this.addTween({
-                        //     targets: this.currentHandGlow,
-                        //     alpha: 0.4,
-                        //     ease: 'Quad.easeInOut',
-                        //     yoyo: true,
-                        //     repeat: -1,
-                        //     duration: 1200,
-                        //     onRepeat: () => {
-                        //         // this.currentHandGlowPulse.setPosition(this.currentHandGlow.x, this.currentHandGlow.y).setScale(this.currentHandGlow.scaleX).setAlpha(0.5);
-                        //         // this.currentHandGlowPulse.currAnim = this.addTween({
-                        //         //     targets: this.currentHandGlowPulse,
-                        //         //     alpha: 0,
-                        //         //     ease: 'Quad.easeOut',
-                        //         //     scaleX: this.currentHandGlow.scaleX * 1.3,
-                        //         //     scaleY: this.currentHandGlow.scaleX * 1.3,
-                        //         //     duration: 1400,
-                        //         // });
-                        //     }
-                        // });
                     }
                 });
             }

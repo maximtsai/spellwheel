@@ -1707,14 +1707,14 @@ class SpellManager {
             buffAmt = 2 * multiplier;
         }
         let param = {
-            duration: 1000,
+            duration: 1650,
         }
         let param2 = {
             alpha: 0,
             scaleX: 1,
             scaleY: 1
         }
-        messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + buffAmt + " DAMAGE", 1 + buffAmt * 0.15, param, param2);
+        messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + buffAmt + " ALL DAMAGE", 0.9 + Math.sqrt(buffAmt) * 0.15, param, param2);
 
         messageBus.publish('selfTakeEffect', {
             name: spellID,
@@ -2304,9 +2304,10 @@ class SpellManager {
         let multiplier = globalObjects.player.spellMultiplier();
         playSound('void_enhance', 0.55);
         let statusObj;
+        let buffAmt = 1;
         if (existingBuff) {
             statusObj = existingBuff.statusObj;
-            multiplier += existingBuff.multiplier;
+            buffAmt += existingBuff.multiplier;
         }
 
         if (!this.pulseCircle) {
@@ -2398,23 +2399,23 @@ class SpellManager {
 
 
         let param = {
-            duration: 1000,
+            duration: 1650,
         }
         let param2 = {
             alpha: 0,
             scaleX: 1,
             scaleY: 1
         }
-        messageBus.publish('animateVoidNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + multiplier + " DAMAGE", 1 + multiplier * 0.15, param, param2);
+        messageBus.publish('animateVoidNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + buffAmt + " ATK DAMAGE", 1 + Math.sqrt(buffAmt) * 0.18, param, param2);
 
         messageBus.publish('selfTakeEffect', {
             name: spellID,
             spellID: spellID,
-            multiplier: multiplier,
+            multiplier: buffAmt,
             statusObj: statusObj,
             spriteSrc1: 'rune_enhance_glow.png',
             spriteSrc2: 'rune_void_glow.png',
-            displayAmt: multiplier,
+            displayAmt: buffAmt,
             cleanUp: (statuses) => {
                 statuses[spellID] = null;
             }

@@ -3,15 +3,27 @@
          super(scene, x, y);
          this.initSprite('death2final.png', 0.93, 0, 0, 'deathfinal');
          this.bgMusic = playMusic('but_never_forgotten_metal', 0.9, true);
-         this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5);
+         this.bgtemp2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star2.png').setDepth(-5);
+         this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5)
+         this.bgBlur = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star_blur.png').setDepth(-5).setScale(2);
          this.blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(-2);
          // this.bgtemp.setScale(1.42);
-         // this.addTween({
-         //     targets: this.bgtemp,
-         //     rotation: "+=6.28",
-         //     repeat: 3,
-         //     duration: 25000,
-         // })
+         this.addTween({
+             targets: this.bgBlur,
+             alpha: 0,
+             duration: 1500,
+             onComplete: () => {
+                 // this.addTween({
+                 //     targets: this.bgtemp,
+                 //     alpha: 0.7,
+                 //     scaleY: 2.01,
+                 //     ease: 'Quad.easeInOut',
+                 //     repeat: -1,
+                 //     yoyo: true,
+                 //     duration: 2000,
+                 // })
+             }
+         })
          this.whiteoutTemp = this.addImage(x, y + 15, 'spells', 'whiteout_circle.png').setScale(2.55)
          this.addTween({
              targets: this.whiteoutTemp,
@@ -52,8 +64,8 @@
          this.handShieldBack.startScale = this.handShieldBack.scaleX;
          this.handShield = this.addSprite(this.x, this.y, 'shields', 'handshield10.png').setScale(1).setDepth(3).setAlpha(0);
          this.handShield.startScale = this.handShield.scaleX;
-         this.currentHandGlow = this.addImage(0, 0, 'deathfinal', 'claw_glow').setAlpha(0).setDepth(-1);
-         this.currentHandGlowPulse = this.addImage(0, 0, 'deathfinal', 'claw').setAlpha(0).setDepth(-1);
+         this.currentHandGlow = this.addImage(0, 0, 'deathfinal', 'claw_glow.png').setAlpha(0).setDepth(3);
+         this.currentHandGlowPulse = this.addImage(0, 0, 'deathfinal', 'claw.png').setAlpha(0).setDepth(3);
     }
 
      beginBattleAnim() {
@@ -63,7 +75,10 @@
          this.addDelay(() => {
              this.spellCircle = this.addImage(this.x, this.spellStartY, 'deathfinal', 'spellcircle.png').setAlpha(0.1).setScale(0.5);
 
-             this.rotateSpellCircleTo(0, false);
+             this.rotateSpellCircleTo(0, false, () => {
+                 // this.fadeOutCurrentHand();
+                 this.createHandShield(10);
+             });
 
              this.addDelay(() => {
                  this.setAwake();
@@ -106,31 +121,29 @@
         })
     }
 
+    fadeMainBG(showup) {
+         console.log(showup);
+         this.addTween({
+             targets: this.bgtemp,
+             alpha: showup ? 1 : 0,
+             duration: 1500
+         })
+    }
+
      initAttacks() {
          this.attacks = [
              [
-                 {
-                     name: "#10",
-                     chargeAmt: 1000,
-                     chargeMult: 12,
-                     finishDelay: 3000,
-                     damage: -1,
-                     isPassive: true,
-                     attackStartFunction: () => {
-                         this.fadeOutCurrentHand();
-                     },
-                     attackFinishFunction: () => {
-                         this.createHandShield(10);
-                     },
-                     finaleFunction: () => {
-                     }
-                 },
                  {
                      name: ";30",
                      chargeAmt: 1000,
                      finishDelay: 3000,
                      damage: 30,
                      isPassive: true,
+                     startFunction: () => {
+                         this.fadeMainBG(true);
+                         console.log("geeg");
+
+                     },
                      attackStartFunction: () => {
                          this.fadeOutCurrentHand();
                      },
@@ -218,7 +231,7 @@
              duration: 250,
          });
          playSound('swish');
-         playSound('stomp');
+         playSound('slice_in');
 
          this.handShield.visible = true;
          this.handShield.setScale(this.handShield.startScale * 0.5).setAlpha(0.2);
@@ -229,6 +242,7 @@
              duration: 320,
              ease: 'Quart.easeIn',
              onComplete: () => {
+                 playSound('stomp');
                  this.handShield.play('handShieldFull');
                  this.handShield.setScale(3);
                  this.handShield.once('animationcomplete', () => {
@@ -253,7 +267,6 @@
                          });
                      }
                  });
-                 playSound('slice_in');
              }
          });
          this.addTween({
@@ -265,23 +278,44 @@
      }
 
      clearHandShield() {
-
+        this.shieldText.setVisible(false);
+        this.handShield.setFrame('handshieldbroke.png');
+        this.handShield.setScale(1.7).setAlpha(1);
+         this.addTween({
+             targets: this.handShield,
+             scaleX: 1.5,
+             scaleY: 1.5,
+             ease: 'Cubic.easeOut',
+             duration: 250,
+         })
+        this.addTween({
+            targets: this.handShield,
+            alpha: 0,
+            ease: 'Cubic.easeIn',
+            duration: 750,
+        })
      }
 
      damageHandShield() {
          this.shieldAmts--;
          if (this.shieldAmts <= 0) {
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'NEGATED', 1.05, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1, scaleY: 1});
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, '-BROKE-', 1.2, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.25, scaleY: 1.25, ease: 'Back.easeOut'});
              this.clearHandShield();
          } else {
              messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random() * 150, this.sprite.y + 50 - Math.random() * 100, 'NEGATED', 0.75);
             this.handShield.play('handShieldFast');
              this.handShield.setScale(3);
              this.handShield.once('animationcomplete', () => {
-                 this.handShield.setScale(1);
-                 this.handShield.setFrame('handshield10.png');
+                 if (this.shieldAmts <= 2) {
+                     this.handShield.setScale(1.6);
+                     this.handShield.setFrame('handshieldbroke.png');
+                 } else {
+                     this.handShield.setScale(1);
+                     this.handShield.setFrame('handshield10.png');
+                 }
              });
          }
+         this.shieldText.setText(this.shieldAmts);
      }
 
 
@@ -313,11 +347,6 @@
              y: this.y + 25,
              ease: "Cubic.easeIn",
              onStart: () => {
-                 this.addTween({
-                     targets: this.bgtemp,
-                     duration: 2000,
-                     alpha: 0,
-                 })
                  this.addTween({
                      delay: 500,
                      targets: this.sprite,
@@ -362,9 +391,15 @@
             this.glowHands[i].setAlpha(0).setDepth(3).setScale(0.7);
         }
     }
-    rotateSpellCircleTo(idx, isFast = true) {
+    rotateSpellCircleTo(idx, isFast = true, onCompleteFunc) {
          let startRot = 0;
          let goalRot = 0;
+         this.addTween({
+             targets: this.bgtemp,
+             alpha: 0,
+             duration: 2000
+         })
+        this.fadeMainBG(false);
         this.spellCircle.setScale(0.5);
         this.addTween({
             targets: this.spellCircle,
@@ -439,42 +474,46 @@
                 let handToUse = this.glowHands[idx];
                 this.currentHandGlow.setFrame(handToUse.frame.name).setAlpha(0).setScale(handToUse.scaleX + 0.1).setPosition(handToUse.x, handToUse.y);
                 this.currentHandGlowPulse.setFrame(handToUse.frame.name);
-                let goalX = idx % 2 == 0 ? this.x - 200 : this.x + 200;
-                let goalY = (idx == 1 || idx == 2) ? this.y - 50 : this.y + 30;
+                // let goalX = idx % 2 == 0 ? this.x - 200 : this.x + 200;
+                // let goalY = (idx == 1 || idx == 2) ? this.y - 50 : this.y + 30;
                 this.addTween({
                     targets: this.currentHandGlow,
                     ease: 'Cubic.easeInOut',
-                    x: goalX,
-                    y: goalY,
-                    scaleX: 0.55,
-                    scaleY: 0.55,
+                    x: this.x,
+                    y: this.y,
+                    scaleX: 0.25,
+                    scaleY: 0.25,
+                    alpha: 0,
                     duration: 900,
                 });
+                this.currentHandGlow.alpha = 1;
                 this.currentHandGlow.currAnim = this.addTween({
                     targets: this.currentHandGlow,
-                    alpha: 1,
-                    ease: 'Quad.easeOut',
-                    duration: 100,
+                    alpha: 0,
+                    duration: 900,
                     onComplete: () => {
-                        this.currentHandGlow.currAnim = this.addTween({
-                            targets: this.currentHandGlow,
-                            alpha: 0.4,
-                            ease: 'Quad.easeInOut',
-                            yoyo: true,
-                            repeat: -1,
-                            duration: 1200,
-                            onRepeat: () => {
-                                this.currentHandGlowPulse.setPosition(this.currentHandGlow.x, this.currentHandGlow.y).setScale(this.currentHandGlow.scaleX).setAlpha(0.5);
-                                this.currentHandGlowPulse.currAnim = this.addTween({
-                                    targets: this.currentHandGlowPulse,
-                                    alpha: 0,
-                                    ease: 'Quad.easeOut',
-                                    scaleX: this.currentHandGlow.scaleX * 1.3,
-                                    scaleY: this.currentHandGlow.scaleX * 1.3,
-                                    duration: 1400,
-                                });
-                            }
-                        });
+                        if (onCompleteFunc) {
+                            onCompleteFunc();
+                        }
+                        // this.currentHandGlow.currAnim = this.addTween({
+                        //     targets: this.currentHandGlow,
+                        //     alpha: 0.4,
+                        //     ease: 'Quad.easeInOut',
+                        //     yoyo: true,
+                        //     repeat: -1,
+                        //     duration: 1200,
+                        //     onRepeat: () => {
+                        //         // this.currentHandGlowPulse.setPosition(this.currentHandGlow.x, this.currentHandGlow.y).setScale(this.currentHandGlow.scaleX).setAlpha(0.5);
+                        //         // this.currentHandGlowPulse.currAnim = this.addTween({
+                        //         //     targets: this.currentHandGlowPulse,
+                        //         //     alpha: 0,
+                        //         //     ease: 'Quad.easeOut',
+                        //         //     scaleX: this.currentHandGlow.scaleX * 1.3,
+                        //         //     scaleY: this.currentHandGlow.scaleX * 1.3,
+                        //         //     duration: 1400,
+                        //         // });
+                        //     }
+                        // });
                     }
                 });
             }

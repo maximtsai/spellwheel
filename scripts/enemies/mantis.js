@@ -27,7 +27,7 @@
          });
      }
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 250 : 200;
+         this.health = gameVars.isHardMode ? 260 : 220;
          this.pullbackDurMult = 0.5;
          this.pullbackScale = 0.99;
          this.pullbackScaleDefault = 0.99;
@@ -48,7 +48,7 @@
      }
 
      initAttacks() {
-        let attackDamages = 12;
+        let attackDamages = gameVars.isHardMode ? 14 : 12;
         let attackTimes = 16;
          this.attacks = [
              [

@@ -319,9 +319,9 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 500 : 400;
-         this.criticalThreshold = 90;
-         this.nextShieldHealth = gameVars.isHardMode ? 90 : 75;
+         this.health = gameVars.isHardMode ? 450 : 400;
+         this.criticalThreshold = 80;
+         this.nextShieldHealth = gameVars.isHardMode ? 90 : 70;
          this.shieldsBroken = 0;
          this.missileObjects = [];
          this.attackEase = "Quad.easeOut";
@@ -516,7 +516,11 @@
              ease: 'Quad.easeOut',
              onComplete: () => {
                  playSound(isWeak ? 'music_blast_weak' : 'music_blast', isWeak ? 0.8 : 1);
-                 playSound('metaljpop_short', isWeak ? 0.7 : 0.95).detune = isWeak ? -300 : 0;
+                 let metalVol = damage > 15 ? 0.95 : 0.8;
+                 if (isWeak) {
+                     metalVol = 0.6;
+                 }
+                 playSound('metaljpop_short', metalVol).detune = isWeak ? -300 : 0;
                  messageBus.publish('playerAddDelayedDamage', damage);
                  let music_note_blue = getTempPoolObject('enemies', 'music_note_blue.png', 'music_note_blue', 450);
                  music_note_blue.setScale(music_note.scaleX).setPosition(music_note.x, music_note.y).setDepth(30).setAlpha(isWeak ? 0.1 : 1);
@@ -614,7 +618,7 @@
                      startFunction: () => {
                          this.pullbackDurMult = 1;
                         if (this.health >= this.criticalThreshold) {
-                            this.nextShieldHealth += gameVars.isHardMode ? 30 : 25;
+                            this.nextShieldHealth += 30;
                             this.setDefaultSprite('robot1.png', undefined, true);
                             playSound('robot_sfx_1');
                             this.shieldAdded = false;
@@ -659,7 +663,7 @@
                              this.attackName.setText("RECHARGING! {" + this.nextShieldHealth);
                          }, 0)
                         if (this.health < this.criticalThreshold) {
-                            this.startInjuredSequence()
+                            this.startInjuredSequence();
                         } else {
                             this.addTween({
                                  targets: [this.minusDamage1, this.minusDamage2, this.lightShineLeft, this.lightShineLeftTop, this.lightShineRight, this.lightShineRightTop],
@@ -2055,7 +2059,7 @@
              this.backgroundTween.stop();
          }
          let backgroundBlack = getBackgroundBlackout();
-         playSound('robot_laser');
+         playSound('robot_laser').detune = repeat ? 0 : 150;
          this.laserBeam.setVisible(true);
 
          this.laserHeart.setAlpha(1).setScale(0.25).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 150);

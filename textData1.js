@@ -119,7 +119,7 @@ let textData = {
         "jp": "3回攻撃すると、1回の攻撃で敵の現在のHPが2%増加する"
     },
     "void_enhance_desc": {
-        "en_us": "Next attack curses\nthe enemy to\ntake +1 damage\nfrom all sources",
+        "en_us": "Your attacks\npermanently gain\n+1 damage",
         "fr": "La prochaine attaque\nmaudit l’ennemi\npour qu’il subisse\n+1 de dégâts de\ntoutes les sources",
         "zh_tw": "下一次攻擊詛咒\n敵人受到所有來源的 +1 傷害",
         "zh_cn": "下一次攻击诅咒\n敌人受到所有来源的 +1 伤害",

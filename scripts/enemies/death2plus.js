@@ -5,13 +5,13 @@
          this.bgMusic = playMusic('but_never_forgotten_metal', 0.9, true);
          this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5);
          this.blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(-2);
-         this.bgtemp.setScale(1.42);
-         this.addTween({
-             targets: this.bgtemp,
-             rotation: "+=6.28",
-             repeat: 3,
-             duration: 25000,
-         })
+         // this.bgtemp.setScale(1.42);
+         // this.addTween({
+         //     targets: this.bgtemp,
+         //     rotation: "+=6.28",
+         //     repeat: 3,
+         //     duration: 25000,
+         // })
          this.whiteoutTemp = this.addImage(x, y + 15, 'spells', 'whiteout_circle.png').setScale(2.55)
          this.addTween({
              targets: this.whiteoutTemp,
@@ -52,6 +52,8 @@
          this.handShieldBack.startScale = this.handShieldBack.scaleX;
          this.handShield = this.addSprite(this.x, this.y, 'shields', 'handshield10.png').setScale(1).setDepth(3).setAlpha(0);
          this.handShield.startScale = this.handShield.scaleX;
+         this.currentHandGlow = this.addImage(0, 0, 'deathfinal', 'claw_glow').setAlpha(0).setDepth(-1);
+         this.currentHandGlowPulse = this.addImage(0, 0, 'deathfinal', 'claw').setAlpha(0).setDepth(-1);
     }
 
      beginBattleAnim() {
@@ -61,11 +63,11 @@
          this.addDelay(() => {
              this.spellCircle = this.addImage(this.x, this.spellStartY, 'deathfinal', 'spellcircle.png').setAlpha(0.1).setScale(0.5);
 
-             this.rotateSpellCircleTo(0);
+             this.rotateSpellCircleTo(0, false);
 
              this.addDelay(() => {
                  this.setAwake();
-             }, 1000)
+             }, 3000)
          }, 1000)
      }
 
@@ -83,6 +85,26 @@
          })
      }
 
+    fadeOutCurrentHand() {
+         if (this.currentHandGlow.currAnim) {
+             this.currentHandGlow.currAnim.stop();
+         }
+        this.currentHandGlow.alpha = 1;
+        this.addTween({
+            targets: this.currentHandGlow,
+            alpha: 0,
+            duration: 400
+        })
+        this.currentHandGlow.currAnim = this.addTween({
+            targets: this.currentHandGlow,
+            scaleX: 0.25,
+            scaleY: 0.25,
+            x: this.x,
+            y: this.y,
+            ease: 'Cubic.easeIn',
+            duration: 500
+        })
+    }
 
      initAttacks() {
          this.attacks = [
@@ -95,6 +117,24 @@
                      damage: -1,
                      isPassive: true,
                      attackStartFunction: () => {
+                         this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
+                         this.createHandShield(10);
+                     },
+                     finaleFunction: () => {
+                     }
+                 },
+                 {
+                     name: ";30",
+                     chargeAmt: 1000,
+                     finishDelay: 3000,
+                     damage: 30,
+                     isPassive: true,
+                     attackStartFunction: () => {
+                         this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
                          this.createHandShield(10);
                      },
                      finaleFunction: () => {
@@ -319,10 +359,10 @@
         hand4.outerRot = Math.PI * -1.5;
         this.glowHands.push(hand1); this.glowHands.push(hand2); this.glowHands.push(hand3); this.glowHands.push(hand4);
         for (let i in this.glowHands) {
-            this.glowHands[i].setAlpha(0).setDepth(0).setScale(0.7);
+            this.glowHands[i].setAlpha(0).setDepth(3).setScale(0.7);
         }
     }
-    rotateSpellCircleTo(idx) {
+    rotateSpellCircleTo(idx, isFast = true) {
          let startRot = 0;
          let goalRot = 0;
         this.spellCircle.setScale(0.5);
@@ -331,19 +371,19 @@
             scaleX: 1.5,
             scaleY: 1.5,
             ease: 'Cubic.easeInOut',
-            duration: 650,
+            duration: isFast ? 600 : 700,
         });
         this.addTween({
             targets: this.spellCircle,
             alpha: 1,
             ease: 'Quart.easeOut',
-            duration: 500,
+            duration: isFast ? 500 : 550,
         })
         this.addTween({
             targets: this.glowHands,
             alpha: 0.8,
             ease: 'Cubic.easeInOut',
-            duration: 400,
+            duration: isFast ? 400 : 500,
         })
          switch(idx) {
              case 0:
@@ -352,14 +392,17 @@
                  // palm
                  break;
              case 1:
+                 // poke
                  startRot = Math.PI * 0.5;
                  goalRot = Math.PI * 1.5;
                  break;
              case 2:
+                 // ok
                  startRot = Math.PI;
                  goalRot = Math.PI * 2;
                  break;
              case 3:
+                 // claw
                  startRot = Math.PI * -0.5;
                  goalRot = Math.PI * 0.5;
                  break;
@@ -370,7 +413,7 @@
             targets: this.spellCircle,
             rotation: goalRot,
             ease: 'Cubic.easeInOut',
-            duration: 2500,
+            duration: isFast ? 2500 : 3000,
             onUpdate: () => {
                 let handDist = this.spellCircle.scaleX * 166
                 for (let i = 0; i < this.glowHands.length; i++) {
@@ -381,7 +424,59 @@
                 }
             },
             onComplete: () => {
-
+                this.addTween({
+                    targets: this.glowHands,
+                    alpha: 0,
+                    ease: 'Quad.easeOut',
+                    duration: 600
+                });
+                this.addTween({
+                    targets: this.spellCircle,
+                    ease: 'Cubic.easeOut',
+                    alpha: 0,
+                    duration: 600
+                });
+                let handToUse = this.glowHands[idx];
+                this.currentHandGlow.setFrame(handToUse.frame.name).setAlpha(0).setScale(handToUse.scaleX + 0.1).setPosition(handToUse.x, handToUse.y);
+                this.currentHandGlowPulse.setFrame(handToUse.frame.name);
+                let goalX = idx % 2 == 0 ? this.x - 200 : this.x + 200;
+                let goalY = (idx == 1 || idx == 2) ? this.y - 50 : this.y + 30;
+                this.addTween({
+                    targets: this.currentHandGlow,
+                    ease: 'Cubic.easeInOut',
+                    x: goalX,
+                    y: goalY,
+                    scaleX: 0.55,
+                    scaleY: 0.55,
+                    duration: 900,
+                });
+                this.currentHandGlow.currAnim = this.addTween({
+                    targets: this.currentHandGlow,
+                    alpha: 1,
+                    ease: 'Quad.easeOut',
+                    duration: 100,
+                    onComplete: () => {
+                        this.currentHandGlow.currAnim = this.addTween({
+                            targets: this.currentHandGlow,
+                            alpha: 0.4,
+                            ease: 'Quad.easeInOut',
+                            yoyo: true,
+                            repeat: -1,
+                            duration: 1200,
+                            onRepeat: () => {
+                                this.currentHandGlowPulse.setPosition(this.currentHandGlow.x, this.currentHandGlow.y).setScale(this.currentHandGlow.scaleX).setAlpha(0.5);
+                                this.currentHandGlowPulse.currAnim = this.addTween({
+                                    targets: this.currentHandGlowPulse,
+                                    alpha: 0,
+                                    ease: 'Quad.easeOut',
+                                    scaleX: this.currentHandGlow.scaleX * 1.3,
+                                    scaleY: this.currentHandGlow.scaleX * 1.3,
+                                    duration: 1400,
+                                });
+                            }
+                        });
+                    }
+                });
             }
         })
     }

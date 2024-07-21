@@ -4,7 +4,7 @@
 			"image": "sprites/deathfinal-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 2029,
+				"w": 2035,
 				"h": 2041
 			},
 			"scale": 1,
@@ -489,20 +489,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 203,
-						"h": 445
+						"w": 213,
+						"h": 455
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 201,
-						"h": 311
+						"x": 2,
+						"y": 1,
+						"w": 207,
+						"h": 318
 					},
 					"frame": {
 						"x": 1316,
 						"y": 1677,
-						"w": 201,
-						"h": 311
+						"w": 207,
+						"h": 318
 					},
 					"anchor": {
 						"x": 0.5,
@@ -524,7 +524,7 @@
 						"h": 95
 					},
 					"frame": {
-						"x": 1519,
+						"x": 1525,
 						"y": 1780,
 						"w": 328,
 						"h": 95
@@ -549,7 +549,7 @@
 						"h": 260
 					},
 					"frame": {
-						"x": 1849,
+						"x": 1855,
 						"y": 1780,
 						"w": 179,
 						"h": 260
@@ -574,7 +574,7 @@
 						"h": 142
 					},
 					"frame": {
-						"x": 1519,
+						"x": 1525,
 						"y": 1877,
 						"w": 245,
 						"h": 142
@@ -664,20 +664,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 220,
-						"h": 495
+						"w": 230,
+						"h": 505
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 193,
-						"h": 296
+						"x": 1,
+						"y": 2,
+						"w": 199,
+						"h": 302
 					},
 					"frame": {
 						"x": 610,
 						"y": 1735,
-						"w": 193,
-						"h": 296
+						"w": 199,
+						"h": 302
 					},
 					"anchor": {
 						"x": 0.5,
@@ -691,7 +691,7 @@
 			"format": "RGBA5555",
 			"size": {
 				"w": 933,
-				"h": 1100
+				"h": 1113
 			},
 			"scale": 1,
 			"frames": [
@@ -850,20 +850,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 281,
-						"h": 345
+						"w": 291,
+						"h": 355
 					},
 					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 280,
-						"h": 245
+						"x": 3,
+						"y": 2,
+						"w": 286,
+						"h": 251
 					},
 					"frame": {
 						"x": 1,
 						"y": 656,
-						"w": 280,
-						"h": 245
+						"w": 286,
+						"h": 251
 					},
 					"anchor": {
 						"x": 0.5,
@@ -910,7 +910,7 @@
 						"h": 274
 					},
 					"frame": {
-						"x": 283,
+						"x": 289,
 						"y": 821,
 						"w": 144,
 						"h": 274
@@ -925,20 +925,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 227,
-						"h": 250
+						"w": 237,
+						"h": 260
 					},
 					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 224,
-						"h": 196
+						"x": 3,
+						"y": 2,
+						"w": 230,
+						"h": 203
 					},
 					"frame": {
 						"x": 1,
-						"y": 903,
-						"w": 224,
-						"h": 196
+						"y": 909,
+						"w": 230,
+						"h": 203
 					},
 					"anchor": {
 						"x": 0.5,
@@ -976,6 +976,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:0ee62ecb61175f33f424f2e9aba7b575:3f3e78ecf609217e905754d67b7c1b32:2725434089d33248c3ff66863842e801$"
+		"smartupdate": "$TexturePacker:SmartUpdate:823d295ca79709996f30dbd84b93c3c2:ca222f6f825497dd767855f210c0b44f:2725434089d33248c3ff66863842e801$"
 	}
 }

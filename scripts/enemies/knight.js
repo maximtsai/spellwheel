@@ -22,6 +22,7 @@
          this.attackScale = 1.11;
          this.isFirstMode = true;
          this.shieldAmts = 0;
+         this.shieldTextFont = "void";
          this.shieldsActive = 0;
          this.eyeShieldObjects = [];
          this.eyeUpdateTick = 30;
@@ -615,7 +616,7 @@
              [
                  // 1
                  {
-                     name: "VOID SHIELD {3",
+                     name: "VOID SHIELD #3",
                      announceName: "VOID SHIELD (3)",
                      desc: "A strange protective shield surrounds the knight",
                      isPassive: true,
@@ -726,7 +727,7 @@
              [
                  // 5
                 {
-                     name: "VOID SHIELD {7 ",
+                     name: "VOID SHIELD #7 ",
                      announceName: "VOID SHIELD",
                      chargeAmt: 800,
                      isPassive: true,

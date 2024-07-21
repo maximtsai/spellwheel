@@ -321,7 +321,7 @@ class Enemy {
         this.shieldSprite.startScale = this.shieldSprite.scaleX;
 
         let textOffsetY = 85 * this.shieldSprite.startScale + (this.shieldTextOffsetY || 0);
-        this.shieldText = this.scene.add.bitmapText(this.x, this.y + textOffsetY + this.shieldOffsetY, 'armor', '', 48);
+        this.shieldText = this.scene.add.bitmapText(this.x, this.y + textOffsetY + this.shieldOffsetY, this.shieldTextFont || 'armor', '', 48);
         this.shieldText.alpha = 1;
         this.shieldText.setOrigin(0.5, 0.55);
         this.shieldText.setDepth(8);

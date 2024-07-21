@@ -275,6 +275,28 @@ function createAnimations(scene) {
         frameRate: 10
     });
     scene.anims.create({
+        key: 'handShieldFull',
+        frames: scene.anims.generateFrameNames('shields', {
+            prefix: 'handshield',
+            suffix: '.png',
+            start: 3,
+            end: 9,
+            zeroPad: 0,
+        }),
+        frameRate: 30
+    });
+    scene.anims.create({
+        key: 'handShieldFast',
+        frames: scene.anims.generateFrameNames('shields', {
+            prefix: 'handshield',
+            suffix: '.png',
+            start: 4,
+            end: 9,
+            zeroPad: 0,
+        }),
+        frameRate: 30
+    });
+    scene.anims.create({
         key: 'circleEffect',
         frames: scene.anims.generateFrameNames('circle', {
             prefix: 'circleEffect',

@@ -4,6 +4,7 @@
          this.initSprite('death2final.png', 0.93, 0, 0, 'deathfinal');
          this.bgMusic = playMusic('but_never_forgotten_metal', 0.9, true);
          this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5);
+         this.blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(-2);
          this.bgtemp.setScale(1.42);
          this.addTween({
              targets: this.bgtemp,
@@ -29,6 +30,7 @@
              ease: "Quad.easeIn"
          })
          this.addTimeout(() => {
+             this.initMisc();
              this.setAsleep();
              this.repeatTweenBreathe()
              this.beginBattleAnim();
@@ -42,7 +44,15 @@
          this.shieldScale = 1.5;
          this.shieldOffsetY = 40;
          this.shieldTextOffsetY = -65;
+         this.shieldTextFont = "void";
      }
+
+     initMisc() {
+         this.handShieldBack = this.addImage(this.x, this.y, 'blurry', 'handshield_back.png').setScale(2.4).setDepth(-1).setAlpha(0);
+         this.handShieldBack.startScale = this.handShieldBack.scaleX;
+         this.handShield = this.addSprite(this.x, this.y, 'shields', 'handshield10.png').setScale(1).setDepth(3).setAlpha(0);
+         this.handShield.startScale = this.handShield.scaleX;
+    }
 
      beginBattleAnim() {
          this.spellStartY = this.y + 10;
@@ -55,7 +65,7 @@
 
              this.addDelay(() => {
                  this.setAwake();
-             }, 650)
+             }, 1000)
          }, 1000)
      }
 
@@ -74,10 +84,52 @@
      }
 
 
-     setHealth(newHealth) {
-        // messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'IMMATERIAL', 0.8, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.1, scaleY: 1.1});
+     initAttacks() {
+         this.attacks = [
+             [
+                 {
+                     name: "#10",
+                     chargeAmt: 1000,
+                     chargeMult: 12,
+                     finishDelay: 3000,
+                     damage: -1,
+                     isPassive: true,
+                     attackStartFunction: () => {
+                         this.createHandShield(10);
+                     },
+                     finaleFunction: () => {
+                     }
+                 },
+             ],
+             [
+                 {
+                     name: "}44x4",
+                     chargeAmt: 1200,
+                     chargeMult: 2,
+                     finishDelay: 3000,
+                     damage: -1,
+                     isBigMove: true,
+                     attackStartFunction: () => {
 
-         super.setHealth(newHealth);
+                     },
+                     finaleFunction: () => {
+                     }
+                 },
+
+             ]
+         ];
+     }
+
+     setHealth(newHealth, isTrue) {
+        // messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'IMMATERIAL', 0.8, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.1, scaleY: 1.1});
+         if (this.shieldAmts > 0 && !isTrue) {
+             this.damageHandShield();
+             super.setHealth(this.health);
+             return;
+         } else {
+             super.setHealth(newHealth);
+         }
+
          let currHealthPercent = this.health / this.healthMax;
          if (currHealthPercent == 0) {
              // dead, can't do anything
@@ -112,41 +164,87 @@
          this.setAsleep();
      }
 
-     initAttacks() {
-         this.attacks = [
-             [
-                 {
-                     name: "|30",
-                     chargeAmt: 600,
-                     chargeMult: 2,
-                     finishDelay: 3000,
-                     damage: -1,
-                     isBigMove: true,
-                     attackStartFunction: () => {
+     createHandShield(amt) {
+         this.shieldText.visible = true;
+         this.shieldText.setText(amt);
+         this.shieldText.setScale(0.1);
+         this.shieldText.startX = this.shieldText.x;
+         this.shieldText.startScale = 1;
+         this.scene.tweens.add({
+             targets: this.shieldText,
+             scaleX: this.shieldText.startScale,
+             scaleY: this.shieldText.startScale,
+             ease: 'Back.easeOut',
+             duration: 250,
+         });
+         playSound('swish');
+         playSound('stomp');
 
-                     },
-                     finaleFunction: () => {
+         this.handShield.visible = true;
+         this.handShield.setScale(this.handShield.startScale * 0.5).setAlpha(0.2);
+         this.addTween({
+             targets: [this.handShield],
+             scaleX: this.handShield.startScale,
+             scaleY: this.handShield.startScale,
+             duration: 320,
+             ease: 'Quart.easeIn',
+             onComplete: () => {
+                 this.handShield.play('handShieldFull');
+                 this.handShield.setScale(3);
+                 this.handShield.once('animationcomplete', () => {
+                     this.handShield.setScale(1);
+                     this.handShield.setFrame('handshield10.png');
+                 });
+                 this.handShieldBack.setScale(1.9);
+                 this.handShieldBack.visible = true;
+                 this.handShieldBack.setAlpha(1);
+                 this.addTween({
+                     targets: [this.handShieldBack],
+                     duration: 1300,
+                     alpha: 0,
+                     scaleX: this.handShieldBack.startScale,
+                     scaleY: this.handShieldBack.startScale,
+                     ease: 'Quad.easeOut',
+                     onComplete: () => {
+                         this.addTween({
+                             targets: [this.handShield],
+                             duration: 500,
+                             alpha: 0.9,
+                         });
                      }
-                 },
-             ],
-             [
-                 {
-                     name: "}44x4",
-                     chargeAmt: 1200,
-                     chargeMult: 2,
-                     finishDelay: 3000,
-                     damage: -1,
-                     isBigMove: true,
-                     attackStartFunction: () => {
-
-                     },
-                     finaleFunction: () => {
-                     }
-                 },
-
-             ]
-         ];
+                 });
+                 playSound('slice_in');
+             }
+         });
+         this.addTween({
+             targets: [this.handShield],
+             duration: 300,
+             alpha: 1,
+         });
+         this.shieldAmts = amt;
      }
+
+     clearHandShield() {
+
+     }
+
+     damageHandShield() {
+         this.shieldAmts--;
+         if (this.shieldAmts <= 0) {
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'NEGATED', 1.05, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1, scaleY: 1});
+             this.clearHandShield();
+         } else {
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random() * 150, this.sprite.y + 50 - Math.random() * 100, 'NEGATED', 0.75);
+            this.handShield.play('handShieldFast');
+             this.handShield.setScale(3);
+             this.handShield.once('animationcomplete', () => {
+                 this.handShield.setScale(1);
+                 this.handShield.setFrame('handshield10.png');
+             });
+         }
+     }
+
+
 
      die() {
          super.die();

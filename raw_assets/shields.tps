@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>70</uint>
+        <uint>60</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -221,6 +221,42 @@
                 <rect>95,95,190,190</rect>
                 <key>scale9Paddings</key>
                 <rect>95,95,190,190</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">shields/handshield10.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>111,125,223,250</rect>
+                <key>scale9Paddings</key>
+                <rect>111,125,223,250</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">shields/handshield3.png</key>
+            <key type="filename">shields/handshield4.png</key>
+            <key type="filename">shields/handshield5.png</key>
+            <key type="filename">shields/handshield6.png</key>
+            <key type="filename">shields/handshield7.png</key>
+            <key type="filename">shields/handshield8.png</key>
+            <key type="filename">shields/handshield9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.334</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>111,125,223,250</rect>
+                <key>scale9Paddings</key>
+                <rect>111,125,223,250</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

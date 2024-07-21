@@ -10,6 +10,7 @@ class TextPopupManager {
         this.healNums = [];
         this.blockNums = [];
         this.armorNums = [];
+        this.voidNums = [];
         this.infoBox = this.scene.add.image(0, 0, 'blackPixel').setAlpha(0).setDepth(10000);
         this.infoText = this.scene.add.text(0, 0, 'WELCOME', {fontFamily: 'Arial', fontSize: isMobile ? 23 : 22, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(10000);
         this.infoText.setFontStyle('bold');
@@ -21,6 +22,9 @@ class TextPopupManager {
         messageBus.subscribe('animateHealNum', this.animateHealNum.bind(this));
         messageBus.subscribe('animateBlockNum', this.animateBlockNum.bind(this));
         messageBus.subscribe('animateArmorNum', this.animateArmorNum.bind(this));
+        messageBus.subscribe('animateVoidNum', this.animateVoidNum.bind(this));
+
+
     }
 
     getBoxBottomPos() {
@@ -231,6 +235,13 @@ class TextPopupManager {
         let mobileScale = isMobile ? 1.15 : 1;
         textObj.setScale(scale * mobileScale).setAlpha(1);
         this.animateNum(textObj, this.armorNums, param, param2);
+    }
+
+    animateVoidNum(x, y, text, scale, param, param2) {
+        let textObj = this.getTextObjFromArray(x, y, text, this.voidNums, 'void');
+        let mobileScale = isMobile ? 1.15 : 1;
+        textObj.setScale(scale * mobileScale).setAlpha(1);
+        this.animateNum(textObj, this.voidNums, param, param2);
     }
 
     getTextObjFromArray(x, y, text, array, fontName = 'block') {

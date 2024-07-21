@@ -138,9 +138,14 @@ class Player {
             let damageBoost = multiplier * flatDamage;
             addedAmt += damageBoost
         }
-        let mindReinforceStatus = this.statuses['mindReinforce'];
-        if (mindReinforceStatus) {
-            let additionalAmt = mindReinforceStatus.displayAmt || 0;
+        // let mindReinforceStatus = this.statuses['mindReinforce'];
+        // if (mindReinforceStatus) {
+        //     let additionalAmt = mindReinforceStatus.displayAmt || 0;
+        //     addedAmt += additionalAmt;
+        // }
+        let voidEnhanceStatus = this.statuses['voidEnhance'];
+        if (voidEnhanceStatus) {
+            let additionalAmt = voidEnhanceStatus.displayAmt || 0;
             addedAmt += additionalAmt;
         }
         return addedAmt;

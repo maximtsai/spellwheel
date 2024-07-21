@@ -150,7 +150,7 @@
          this.attacks = [
              [
                  {
-                     name: ";30",
+                     name: "...",
                      chargeAmt: 1000,
                      finishDelay: 3000,
                      damage: 30,

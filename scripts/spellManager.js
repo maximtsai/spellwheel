@@ -2301,78 +2301,153 @@ class SpellManager {
     castVoidEnhance() {
         const spellID = 'voidEnhance';
         let existingBuff = globalObjects.player.getStatuses()[spellID];
-        let voidObj;
         let multiplier = globalObjects.player.spellMultiplier();
         playSound('void_enhance', 0.55);
+        let statusObj;
         if (existingBuff) {
+            statusObj = existingBuff.statusObj;
             multiplier += existingBuff.multiplier;
-            let newScale = 0.3 + Math.sqrt(multiplier) * 0.9;
-            voidObj = existingBuff.animObj;
-            this.scene.tweens.add({
-                targets: voidObj,
-                duration: 300,
-                ease: 'back.easeOut',
-                scaleX: newScale,
-                scaleY: newScale,
-            });
-        } else {
-            voidObj = this.scene.add.sprite(gameConsts.halfWidth + 245, gameConsts.height - 210, 'enemies', 'curse_symbol_small.png');
-            voidObj.setScale(0);
-            voidObj.setDepth(20);
-            let newScale = 0.3 + Math.sqrt(multiplier) * 0.9;
-            this.scene.tweens.add({
-                targets: voidObj,
-                duration: 250,
-                ease: 'back.easeOut',
-                scaleX: newScale,
-                scaleY: newScale,
-            });
-            this.scene.tweens.add({
-                targets: voidObj,
-                duration: 12000,
-                rotation: 6.283,
-                repeat: -1
-            });
         }
 
         if (!this.pulseCircle) {
-            this.pulseCircle = this.scene.add.sprite(voidObj.x, voidObj.y, 'misc', 'black_circle_2.png');
+            this.pulseCircle = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'blurry', 'voidcirclelarge.png');
         }
-        this.pulseCircle.setScale(1.45 + 0.2 * multiplier).setDepth(121).setAlpha(0.05).setPosition(voidObj.x, voidObj.y).setRotation(Math.random() * 6);
+        if (!this.voidSpikeOutButton) {
+            this.voidSpikeOutOuter = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'blurry', 'void_spike_out.png');
+            this.voidSpikeOutInner = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'blurry', 'void_spike_out.png');
+            this.voidSpikeOutButton = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'blurry', 'void_spike_out.png');
+        }
+        this.pulseCircle.setScale(1.5).setDepth(210).setAlpha(0.05).setPosition(gameConsts.halfWidth, globalObjects.player.getY()).setRotation(Math.random() * 6);
+        this.voidSpikeOutOuter.setScale(1.6).setDepth(99).setRotation(Math.random() * 6);
+        this.voidSpikeOutInner.setScale(1.2).setDepth(101).setRotation(this.voidSpikeOutOuter.rotation + 0.15);
+        this.voidSpikeOutButton.setScale(0.6).setDepth(104).setRotation(this.voidSpikeOutOuter.rotation + 0.3);
         PhaserScene.tweens.add({
             targets: [this.pulseCircle],
-            scaleX: 0,
-            scaleY: 0,
-            duration: 400,
-            ease: 'Quad.easeOut',
-            alpha: 1,
+            scaleX: 0.5,
+            scaleY: 0.5,
+            duration: 500,
+            ease: 'Cubic.easeInOut',
         });
-
-        messageBus.publish("selfTakeEffect", {
-            ignoreBuff: true,
-            name: spellID,
-            spellID: spellID,
-            animObj: voidObj,
-            multiplier: multiplier,
-            cleanUp: (statuses) => {
-                if (statuses[spellID] && !statuses[spellID].currentAnim) {
-                    statuses[spellID].currentAnim = this.scene.tweens.add({
-                        targets: voidObj,
-                        duration: 100,
-                        alpha: 0,
-                        scaleX: voidObj.scaleX * 1.25,
-                        scaleY: voidObj.scaleY * 1.25,
-                        ease: 'Quad.easeOut',
-                        onComplete: () => {
-                            statuses[spellID] = null;
-                            voidObj.destroy();
-                        }
-                    });
-                }
+        PhaserScene.tweens.add({
+            targets: [this.pulseCircle],
+            duration: 200,
+            ease: 'Cubic.easeOut',
+            alpha: 1,
+            onComplete: () => {
+                PhaserScene.tweens.add({
+                    targets: [this.pulseCircle],
+                    duration: 300,
+                    alpha: 0,
+                });
+                let holdDelay = 200 + Math.floor(Math.sqrt(multiplier) * 20);
+                PhaserScene.tweens.add({
+                    targets: [this.voidSpikeOutButton],
+                    duration: 220,
+                    scaleX: 1 + multiplier * 0.05,
+                    scaleY: 1 + multiplier * 0.05,
+                    ease: 'Back.easeOut',
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: [this.voidSpikeOutButton],
+                            delay: holdDelay,
+                            duration: 450,
+                            scaleX: 0.6,
+                            scaleY: 0.6,
+                            ease: 'Quart.easeIn',
+                        });
+                    }
+                });
+                PhaserScene.tweens.add({
+                    delay: 100,
+                    targets: [this.voidSpikeOutInner],
+                    duration: 220,
+                    scaleX: 1.6 + multiplier * 0.098,
+                    scaleY: 1.6 + multiplier * 0.08,
+                    ease: 'Back.easeOut',
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: [this.voidSpikeOutInner],
+                            delay: holdDelay,
+                            duration: 450,
+                            scaleX: 1.2,
+                            scaleY: 1.2,
+                            ease: 'Quart.easeIn',
+                        });
+                    }
+                });
+                PhaserScene.tweens.add({
+                    delay: 200,
+                    targets: [this.voidSpikeOutOuter],
+                    duration: 220,
+                    scaleX: 2 + multiplier * 0.098,
+                    scaleY: 2 + multiplier * 0.08,
+                    ease: 'Back.easeOut',
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: [this.voidSpikeOutOuter],
+                            delay: holdDelay,
+                            duration: 450,
+                            scaleX: 1.6,
+                            scaleY: 1.6,
+                            ease: 'Quart.easeIn',
+                        });
+                    }
+                });
             }
         });
 
-        let spellName = "CURSE NEXT ATTACK";
+
+        let param = {
+            duration: 1000,
+        }
+        let param2 = {
+            alpha: 0,
+            scaleX: 1,
+            scaleY: 1
+        }
+        messageBus.publish('animateVoidNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + multiplier + " DAMAGE", 1 + multiplier * 0.15, param, param2);
+
+        messageBus.publish('selfTakeEffect', {
+            name: spellID,
+            spellID: spellID,
+            multiplier: multiplier,
+            statusObj: statusObj,
+            spriteSrc1: 'rune_enhance_glow.png',
+            spriteSrc2: 'rune_void_glow.png',
+            displayAmt: multiplier,
+            cleanUp: (statuses) => {
+                statuses[spellID] = null;
+            }
+        });
+
+
+
+        // messageBus.publish("selfTakeEffect", {
+        //     ignoreBuff: true,
+        //     name: spellID,
+        //     spellID: spellID,
+        //     spriteSrc1: 'rune_reinforce_glow.png',
+        //     spriteSrc2: 'rune_mind_glow.png',
+        //     displayAmt: multiplier,
+        //     cleanUp: (statuses) => {
+        //         if (statuses[spellID] && !statuses[spellID].currentAnim) {
+        //             statuses[spellID].currentAnim = this.scene.tweens.add({
+        //                 targets: voidObj,
+        //                 duration: 100,
+        //                 alpha: 0,
+        //                 scaleX: voidObj.scaleX * 1.25,
+        //                 scaleY: voidObj.scaleY * 1.25,
+        //                 ease: 'Quad.easeOut',
+        //                 onComplete: () => {
+        //                     statuses[spellID] = null;
+        //                     voidObj.destroy();
+        //                 }
+        //             });
+        //         }
+        //     }
+        // });
+
+        let spellName = "ENHANCE ALL ATTACKS";
         if (multiplier > 1) {
             spellName += " X" + multiplier;
         }
@@ -2798,6 +2873,7 @@ class SpellManager {
                 });
             }
 
+            /*
             let voidAttackBuff = globalObjects.player.getStatuses()['voidEnhance'];
             if (voidAttackBuff) {
                 let animObj = voidAttackBuff.animObj;
@@ -2842,6 +2918,8 @@ class SpellManager {
                     duration: 260,
                 });
             }
+
+             */
         });
         messageBus.publish('recordSpellAttack', spellID, spellName, undefined, additionalDamage, numAdditionalAttacks);
         messageBus.publish('clearAttackMultiplier');

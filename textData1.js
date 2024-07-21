@@ -102,7 +102,7 @@ let textData = {
     },
     "time_unload_desc": {
         "en_us": "Freeze time for\nthe next 7 spells.\nGets weaker\nwith repeat use.",
-        "fr": "Gelez le temps pour les 7 sorts suivants. S’affaiblit avec une utilisation répétée.",
+        "fr": "Geler le temps pour\nles 7 prochains sorts.\nS'affaiblit avec\nune utilisation\nrépétée.",
         "zh_tw": "接下來 7 個法術的凍結時間。重複使用會變弱。",
         "zh_cn": "接下来 7 个法术的冻结时间。重复使用会变弱。",
         "ru": "Заморозьте время на следующие 7 заклинаний. Слабеет при повторном использовании.",
@@ -111,21 +111,21 @@ let textData = {
     },
     "void_strike_desc": {
         "en_us": "Attack 3 times\nafter a delay,\neach attack\ndeals 2% enemy\ncurrent HP",
-        "fr": "Attaque 3 fois après un délai, chaque attaque inflige 2% des PV actuels de l’ennemi.",
-        "zh_tw": "延遲後攻擊 3 次，每次攻擊造成 2% 敵人當前生命值",
-        "zh_cn": "延迟后攻击 3 次，每次攻击造成 2% 敌人当前生命值",
-        "ru": "Атакует 3 раза после задержки, каждая атака наносит 2% от текущего здоровья противника",
-        "es": "Ataca 3 veces después de un retraso, cada ataque inflige un 2% de los PS actuales del enemigo",
-        "jp": "3回攻撃すると、1回の攻撃で敵の現在のHPが2%増加する"
+        "fr": "Attaque 3 fois après\nun délai, chaque\nattaque inflige 2%\ndes PV actuels\nde l’ennemi.",
+        "zh_tw": "延遲後攻擊 3 次，\n每次攻擊造成 2%\n敵人當前生命值",
+        "zh_cn": "延迟后攻击 3 次，\n每次攻击造成 2%\n敌人当前生命值",
+        "ru": "Атакует 3 раза после\nзадержки, каждая\nатака наносит 2%\nот текущего\nздоровья противника",
+        "es": "Ataca 3 veces después\nde un retraso, cada\nataque inflige un\n2% de los PS\nactuales del enemigo",
+        "jp": "遅延後に3回攻撃し、\n各攻撃で敵の現在のHP\nの2%にダメージを与える"
     },
     "void_enhance_desc": {
         "en_us": "Your attacks\npermanently gain\n+1 damage",
-        "fr": "La prochaine attaque\nmaudit l’ennemi\npour qu’il subisse\n+1 de dégâts de\ntoutes les sources",
-        "zh_tw": "下一次攻擊詛咒\n敵人受到所有來源的 +1 傷害",
-        "zh_cn": "下一次攻击诅咒\n敌人受到所有来源的 +1 伤害",
-        "ru": "Следующая атака проклинает врага, чтобы получить +1 к урону от всех источников",
-        "es": "El siguiente ataque maldice al enemigo para que reciba +1 de daño de todas las fuentes",
-        "jp": "次の攻撃は敵を呪い、すべての発生源から+1ダメージを受ける"
+        "fr": "Vos attaques\ngagnent en\npermanence +1\ndégâts",
+        "zh_tw": "你的攻擊永久獲得\n+1 傷害",
+        "zh_cn": "你的攻击永久获得\n+1 伤害",
+        "ru": "Ваша атака\nпостоянно\nусиливает +1 урон",
+        "es": "Tu ataque gana\npermanentemente\n+1 daño",
+        "jp": "あなたの攻撃力は\n永続的に増加します\n+1ダメージ"
     },
     "void_protect_desc": {
         "en_us": "Create a shield\nthat completely\nnegates one\nattack",
@@ -191,13 +191,13 @@ let textData = {
         "jp": "50%のダメージを吸収して吹き返すシールドを作成する"
     },
     "mind_reinforce_desc": {
-        "en_us": "Attacks gain\n+2 damage",
-        "fr": "Les attaques gagnent +2 de dégâts",
-        "zh_tw": "攻擊獲得 +2 傷害",
-        "zh_cn": "攻击获得 +2 伤害",
-        "ru": "Атаки дают +2 к урону",
-        "es": "Los ataques ganan +2 de daño",
-        "jp": "攻撃は+2ダメージを獲得"
+        "en_us": "All damage you\ndeal is increased\nby +2",
+        "fr": "Tous les dégâts\nque vous infligez\naugmentent de +2",
+        "zh_tw": "你造成的所有傷害\n增加 +2",
+        "zh_cn": "你造成的所有伤害\n增加 +2",
+        "ru": "Весь наносимый\nвами урон\nувеличивается\nна +2.",
+        "es": "Todo el daño\nque infliges\naumenta en +2",
+        "jp": "与えるダメージ\nはすべて +2\n増加します"
     },
     "mind_unload_desc": {
         "en_us": "Next non-attack\nspell has +200%\neffectiveness",

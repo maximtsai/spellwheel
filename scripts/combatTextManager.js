@@ -31,7 +31,13 @@ class CombatTextManager {
         // }
         this.setText(text);
         this.setPosition(this.bg.x, this.bg.startY + yOffset);
-        this.bg.scaleX = 4;
+        if (this.text.width > 360) {
+            this.bg.scaleX = (this.text.width + 40) * 0.01;
+        } else {
+            this.bg.scaleX = 4;
+        }
+        this.bgBorderTop.scaleX = this.bg.scaleX * 0.25;
+        this.bgBorderBot.scaleX = this.bg.scaleX * 0.25;
         if (this.text.height > 50) {
             this.bg.scaleY = 8;
         } else {

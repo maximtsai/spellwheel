@@ -142,12 +142,11 @@
                      }, 100)
                  }, 100)
              }
-             console.log(this.accumulatedAnimDamage);
-             this.sprite.rotation = -0.2;
+             this.sprite.rotation = -0.18;
              this.accumTween = this.addTween({
                  targets: this.sprite,
-                 rotation: 0.1,
-                 easeParams: [2.5],
+                 rotation: 0.03,
+                 easeParams: [1.8],
                  ease: 'Back.easeIn',
                  duration: 720 + Math.floor(this.accumulatedAnimDamage * 5.5),
                  onComplete: () => {
@@ -239,8 +238,8 @@
                              globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 80, getLangText("energy_tut_goblin"), 'right');
                              let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                              let centerXPos = globalObjects.textPopupManager.getCenterPos();
-                             this.rune3 = this.addImage(centerXPos - 32, runeYPos + 28, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
-                             this.rune4 = this.addImage(centerXPos + 38, runeYPos + 28, 'circle', 'rune_enhance_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+                             this.rune3 = this.addImage(centerXPos - 32, runeYPos + 27, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+                             this.rune4 = this.addImage(centerXPos + 38, runeYPos + 27, 'circle', 'rune_enhance_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
                              this.addTween({
                                  targets: [this.rune3, this.rune4],
                                  scaleX: 1,
@@ -512,6 +511,10 @@
         }
         if (this.currAnim) {
             this.currAnim.stop();
+        }
+        this.sprite.rotation = 0;
+        if (this.accumTween) {
+            this.accumTween.stop();
         }
         globalObjects.textPopupManager.hideInfoText();
 

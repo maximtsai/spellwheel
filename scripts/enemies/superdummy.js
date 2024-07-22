@@ -187,7 +187,7 @@
             this.dummyRightArm.visible = false;
             this.setSprite('super_dummy_angry.png', 0.8);
             this.x += 8;
-             this.y += this.sprite.height * this.sprite.scaleY * 0.51;
+             this.y += this.sprite.height * this.sprite.scaleY * 0.55;
              this.sprite.y = this.y;
              this.sprite.setOrigin(0.51, 0.96);
              this.dieClickBlocker = new Button({

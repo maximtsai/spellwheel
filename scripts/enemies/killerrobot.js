@@ -819,9 +819,9 @@
              [
                  // 2
                  {
-                     name: "|7x2",
+                     name: "|8x2",
                      chargeAmt: 450,
-                     damage: 7,
+                     damage: 8,
                      attackTimes: 2,
                      attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
                      startFunction: () => {
@@ -918,9 +918,9 @@
              [
                  // 3
                  {
-                     name: "|7x2",
+                     name: "|8x2",
                      chargeAmt: 450,
-                     damage: 7,
+                     damage: 8,
                      attackTimes: 2,
                      attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
                      startFunction: () => {
@@ -1249,9 +1249,9 @@
                      }
                  },
                  {
-                     name: "|7x2 ",
+                     name: "|8x2 ",
                      chargeAmt: 450,
-                     damage: 7,
+                     damage: 8,
                      attackTimes: 2,
                      attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
                      startFunction: () => {

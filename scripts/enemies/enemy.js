@@ -25,6 +25,9 @@ class Enemy {
             messageBus.subscribe("enemyAddShield", this.addShield.bind(this)),
             messageBus.subscribe('spellClicked', this.playerClickedSpell.bind(this)),
             messageBus.subscribe("playerDied", this.playerDied.bind(this)),
+            messageBus.subscribe("addCastAggravate", this.addCastAggravate.bind(this)),
+
+
         ];
 
 
@@ -555,7 +558,7 @@ class Enemy {
             }
         }
         this.timeSinceLastAttacked += timeChange;
-        if (this.timeSinceLastAttacked < 70) {
+        if (this.timeSinceLastAttacked < 40) {
             if (!this.isAngry) {
                 this.isAngry = true;
                 this.chargeBarAngry.alpha = 1;
@@ -693,7 +696,7 @@ class Enemy {
         this.chargeBarCurr.alpha = 1;
         this.chargeBarAngry.alpha = 1;
 
-        this.timeSinceLastAttacked += 60;
+        this.timeSinceLastAttacked += 35;
         this.castAggravateCharge = 0;
         if (this.nextAttack.damage !== 0) {
             this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.prepareSprite, this.nextAttack.preAttackSprite, this.nextAttack.attackSprites, undefined, this.nextAttack.finishDelay, this.nextAttack.transitionFast);
@@ -2053,6 +2056,10 @@ class Enemy {
     }
 
     playerClickedSpell() {
-        this.castAggravateCharge = 25;
+        this.castAggravateCharge = 31;
+    }
+
+    addCastAggravate(amt) {
+        this.castAggravateCharge += amt;
     }
 }

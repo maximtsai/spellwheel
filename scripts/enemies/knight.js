@@ -746,7 +746,7 @@
                      }
                  },
                 {
-                     name: "UNDULATING... ",
+                     name: "PREPARING... ",
                     isPassive: true,
                      chargeAmt: 450,
                      damage: -1,

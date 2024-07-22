@@ -2304,7 +2304,7 @@ class SpellManager {
         let multiplier = globalObjects.player.spellMultiplier();
         playSound('void_enhance', 0.55);
         let statusObj;
-        let buffAmt = 1;
+        let buffAmt = multiplier;
         if (existingBuff) {
             statusObj = existingBuff.statusObj;
             buffAmt += existingBuff.multiplier;
@@ -2343,54 +2343,54 @@ class SpellManager {
                 let holdDelay = 200 + Math.floor(Math.sqrt(multiplier) * 20);
                 PhaserScene.tweens.add({
                     targets: [this.voidSpikeOutButton],
-                    duration: 220,
-                    scaleX: 1 + multiplier * 0.05,
-                    scaleY: 1 + multiplier * 0.05,
+                    duration: 160,
+                    scaleX: 0.95 + multiplier * 0.04,
+                    scaleY: 0.95 + multiplier * 0.04,
                     ease: 'Back.easeOut',
                     onComplete: () => {
                         PhaserScene.tweens.add({
                             targets: [this.voidSpikeOutButton],
                             delay: holdDelay,
-                            duration: 450,
+                            duration: 400,
                             scaleX: 0.6,
                             scaleY: 0.6,
-                            ease: 'Quart.easeIn',
+                            ease: 'Quad.easeIn',
                         });
                     }
                 });
                 PhaserScene.tweens.add({
                     delay: 100,
                     targets: [this.voidSpikeOutInner],
-                    duration: 220,
-                    scaleX: 1.6 + multiplier * 0.098,
-                    scaleY: 1.6 + multiplier * 0.08,
+                    duration: 160,
+                    scaleX: 1.55 + multiplier * 0.06,
+                    scaleY: 1.55 + multiplier * 0.06,
                     ease: 'Back.easeOut',
                     onComplete: () => {
                         PhaserScene.tweens.add({
                             targets: [this.voidSpikeOutInner],
                             delay: holdDelay,
-                            duration: 450,
+                            duration: 400,
                             scaleX: 1.2,
                             scaleY: 1.2,
-                            ease: 'Quart.easeIn',
+                            ease: 'Quad.easeIn',
                         });
                     }
                 });
                 PhaserScene.tweens.add({
                     delay: 200,
                     targets: [this.voidSpikeOutOuter],
-                    duration: 220,
-                    scaleX: 2 + multiplier * 0.098,
-                    scaleY: 2 + multiplier * 0.08,
+                    duration: 160,
+                    scaleX: 1.95 + multiplier * 0.08,
+                    scaleY: 1.95 + multiplier * 0.08,
                     ease: 'Back.easeOut',
                     onComplete: () => {
                         PhaserScene.tweens.add({
                             targets: [this.voidSpikeOutOuter],
                             delay: holdDelay,
-                            duration: 450,
+                            duration: 400,
                             scaleX: 1.6,
                             scaleY: 1.6,
-                            ease: 'Quart.easeIn',
+                            ease: 'Quad.easeIn',
                         });
                     }
                 });
@@ -2862,7 +2862,7 @@ class SpellManager {
                     duration: 400,
                     onComplete: () => {
                         let mult = 5;
-                        messageBus.publish('applyMindBurn', mult * mindAttackBuff.multiplier);
+                        messageBus.publish('applyMindBurn', mult, mindAttackBuff.multiplier);
                         mindAttackBuff.cleanUp(globalObjects.player.getStatuses());
                     }
                 });

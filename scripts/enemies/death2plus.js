@@ -50,7 +50,7 @@
      }
 
      initStatsCustom() {
-         this.health = 110;
+         this.health = 750;
          this.handObjects = [];
          this.glowHands = [];
          this.shieldScale = 1.5;
@@ -71,10 +71,8 @@
      beginBattleAnim() {
          this.spellStartY = this.y + 10;
          this.createGlowHands();
-
          this.addDelay(() => {
              this.spellCircle = this.addImage(this.x, this.spellStartY, 'deathfinal', 'spellcircle.png').setAlpha(0.1).setScale(0.5);
-
              this.rotateSpellCircleTo(0, false, () => {
                  // this.fadeOutCurrentHand();
                  this.createHandShield(12);
@@ -99,7 +97,7 @@
 
              this.addDelay(() => {
                  this.setAwake();
-             }, 3000)
+             }, 4000)
          }, 1000)
      }
 
@@ -150,8 +148,8 @@
          this.attacks = [
              [
                  {
-                     name: "...",
-                     chargeAmt: 1000,
+                     name: "OBSERVING",
+                     chargeAmt: 300,
                      finishDelay: 3000,
                      damage: 30,
                      isPassive: true,

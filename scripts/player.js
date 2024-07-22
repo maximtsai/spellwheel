@@ -1034,13 +1034,16 @@ class Player {
         this.swirl1.setAlpha(0).setScale(3);
         this.swirl2.setAlpha(0).setScale(3);
 
-        this.scene.tweens.add({
+        this.currentSwirlAnim = this.scene.tweens.add({
             targets: [this.swirl1, this.swirl2],
             duration: 2500,
             alpha: 0.5,
             scaleX: 1.3,
             scaleY: 1.3,
             ease: 'Cubic.easeInOut',
+            onComplete: () => {
+
+            }
         });
         this.deadSwirlAnim = this.scene.tweens.add({
             targets: [this.swirl1, this.swirl2],
@@ -1134,7 +1137,7 @@ class Player {
                         });
                         deathTrainingButton.addText(getLangText('back_to_training'), {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
                         deathTrainingButton.setDepth(200);
-                        if (CURRENT_LEVEL >= 7) {
+                        if (CURRENT_LEVEL >= 7 || CURRENT_LEVEL < 0) {
                             deathTrainingButton.setState(DISABLE);
                         }
 
@@ -1185,6 +1188,9 @@ class Player {
         if (this.deadBGAnim) {
             this.deadSwirlAnim.stop();
             this.deadBGAnim.stop();
+            if (this.currentSwirlAnim) {
+                this.currentSwirlAnim.stop();
+            }
             this.scene.tweens.add({
                 targets: this.deadBG,
                 duration: 500,

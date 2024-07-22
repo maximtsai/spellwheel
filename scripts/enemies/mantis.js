@@ -48,8 +48,8 @@
      }
 
      initAttacks() {
-        let attackDamages = gameVars.isHardMode ? 14 : 12;
-        let attackTimes = 16;
+        let attackDamages = gameVars.isHardMode ? 14 : 10;
+        let attackTimes = 22;
          this.attacks = [
              [
                  // 0
@@ -231,7 +231,7 @@
             this.gunFlash1.setVisible(true);
             this.gunFlash2.setVisible(true);
         }
-        let flashDelay = 54;
+        let flashDelay = 36;
         for (let i = 1; i <= 6; i++) {
             this.addDelay(() => {
                 if (!this.dead) {
@@ -378,6 +378,8 @@
              return;
         }
         super.die();
+         globalObjects.encyclopedia.hideButton();
+         globalObjects.options.hideButton();
         if (this.currAnim) {
             this.currAnim.stop();
         }

@@ -2493,7 +2493,7 @@ const ENABLE_KEYBOARD = true;
         }
      }
 
-     applyMindBurn(duration = 5) {
+     applyMindBurn(duration = 5, multiplier = 1) {
         if (!globalObjects.currentEnemy || globalObjects.currentEnemy.dead) {
             return;
         }
@@ -2503,8 +2503,8 @@ const ENABLE_KEYBOARD = true;
              this.mindBurnTween.stop();
          }
          this.mindBurnAnim.alpha = 0.5;
-         let damageDealt = gameVars.mindPlus ? 3 : 2;
-         this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * duration);
+         let damageDealt = (gameVars.mindPlus ? 3 : 2) * multiplier;
+         this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * damageDealt);
         messageBus.publish('enemyTakeTrueDamage', damageDealt, false, 0, true);
         if (!this.flashBGWhite) {
             this.flashBGWhite = PhaserScene.add.image(gameConsts.halfWidth,gameConsts.halfHeight - 200,'blurry', 'circle.webp').setDepth(-1).setAlpha(0);
@@ -2538,6 +2538,8 @@ const ENABLE_KEYBOARD = true;
                      if (effectObj.firstTicked) {
                          this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * effectObj.duration);
                          messageBus.publish('enemyTakeTrueDamage', damageDealt, false, 0, true);
+                         messageBus.publish('addCastAggravate', Math.floor(2 + damageDealt));
+
                      } else {
                          effectObj.firstTicked = true;
                      }

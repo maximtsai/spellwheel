@@ -596,7 +596,7 @@ class SpellManager {
 
         let shieldFile = spellMultiplier > 1.1 ? 'stoneShieldTriple.png' : 'stoneShield.png';
 
-        let animation1 = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', shieldFile);
+        let animation1 = this.scene.add.image(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', shieldFile);
         animation1.setDepth(1);
         animation1.setOrigin(0.5, 1);
         animation1.setScale(0.75);
@@ -611,7 +611,7 @@ class SpellManager {
         textHealth.setScale(0);
 
         for (let i = 0; i < spellMultiplier; i++) {
-            let rockAnim =  this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 200, 'spells', 'rockCircle.png');
+            let rockAnim =  this.scene.add.image(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 200, 'spells', 'rockCircle.png');
             rockAnim.setDepth(120);
             rockAnim.setScale(0.75 + i * 0.3);
             rockAnim.setAlpha(0);
@@ -655,7 +655,7 @@ class SpellManager {
         }
         this.scene.tweens.add({
             targets: animation1,
-            duration: 300,
+            duration: 240,
             scaleX: 1.1,
             scaleY: 1.1,
             ease: 'Cubic.easeOut',
@@ -664,10 +664,10 @@ class SpellManager {
                 animation1.setDepth(117);
                 animation1.currAnim = this.scene.tweens.add({
                     targets: animation1,
-                    duration: 350,
+                    duration: 330,
                     scaleX: 1,
                     scaleY: 1,
-                    ease: 'Cubic.easeIn',
+                    ease: 'Quart.easeIn',
                     onComplete: () => {
                         animation1.currAnim = null;
                     }

@@ -819,11 +819,11 @@
              [
                  // 2
                  {
-                     name: "|8x2",
+                     name: "|6x3",
                      chargeAmt: 450,
-                     damage: 8,
-                     attackTimes: 2,
-                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
+                     damage: 6,
+                     attackTimes: 3,
+                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png', 'robot_claw_1.png'],
                      startFunction: () => {
                          this.claw1Attacked = false;
                          this.pullbackScale = this.pullbackScaleDefault;
@@ -880,7 +880,7 @@
                  },
                  {
                      name: "|12",
-                     chargeAmt: 400,
+                     chargeAmt: 350,
                      damage: 12,
                      attackTimes: 1,
                      attackSprites: ['robot_claw_1.png'],
@@ -918,11 +918,11 @@
              [
                  // 3
                  {
-                     name: "|8x2",
+                     name: "|6x3",
                      chargeAmt: 450,
-                     damage: 8,
-                     attackTimes: 2,
-                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
+                     damage: 6,
+                     attackTimes: 3,
+                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png', 'robot_claw_1.png'],
                      startFunction: () => {
                          this.claw1Attacked = true;
                          this.pullbackScale = this.pullbackScaleDefault;
@@ -1249,11 +1249,11 @@
                      }
                  },
                  {
-                     name: "|8x2 ",
+                     name: "|6x3 ",
                      chargeAmt: 450,
-                     damage: 8,
-                     attackTimes: 2,
-                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
+                     damage: 6,
+                     attackTimes: 3,
+                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png', 'robot_claw_1.png'],
                      startFunction: () => {
                          this.claw1Attacked = true;
                          this.pullbackScale = this.pullbackScaleDefault;
@@ -1286,11 +1286,11 @@
              [
                  // 8
                  {
-                     name: "EMERGENCY SHIELD {50",
+                     name: "EMERGENCY SHIELD {80",
                      isPassive: true,
                      chargeAmt: 500,
-                     block: 50,
-                     chargeMult: 5,
+                     block: 80,
+                     chargeMult: 8,
                      damage: -1,
                      startFunction: () => {
                          this.pullbackScale = 0.99;
@@ -1306,7 +1306,7 @@
                  },
                  {
                      name: "MIS-AIMED MISSILE }8x0",
-                     chargeAmt: 1000,
+                     chargeAmt: 800,
                      damage: -1,
                      startFunction: () => {
                          this.pullbackScale = 0.99;
@@ -1326,7 +1326,7 @@
                  },
                  {
                      name: "FAILING CIRCUITS $12",
-                     chargeAmt: 1000,
+                     chargeAmt: 800,
                      damage: -1,
                      startFunction: () => {
                          this.failingAttack = 12;
@@ -1400,7 +1400,7 @@
                  {
                      name: "}2",
                      isPassive: true,
-                     chargeAmt: 1000,
+                     chargeAmt: 800,
                      damage: 2,
                      startFunction: () => {
                          this.pullbackScale = 0.98;
@@ -2257,7 +2257,7 @@
              alpha: 0.75,
              easeParams: [4],
              ease: 'Back.easeOut',
-             duration: 250,
+             duration: 150,
              onComplete: () => {
                  this.laserCharge.setAlpha(0.5);
                  this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4);
@@ -2268,7 +2268,7 @@
                      alpha: 0.85,
                      easeParams: [4],
                      ease: 'Back.easeOut',
-                     duration: 350,
+                     duration: 200,
                      onComplete: () => {
                          this.laserCharge.setRotation(this.laserCharge.rotation + 0.4 + Math.random() * 0.4).setScale(0.65);
                          this.laserHeart.setAlpha(1.1);

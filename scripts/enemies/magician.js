@@ -974,7 +974,7 @@
                  {
                      name: "}4x3 ",
                      desc: "An advanced magic attack.",
-                     chargeAmt: 550,
+                     chargeAmt: 500,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -1019,7 +1019,7 @@
                 // 1
                  {
                      name: "\\50% MISSING HEALTH",
-                     chargeAmt: 500,
+                     chargeAmt: 400,
                      isPassive: true,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
@@ -1067,7 +1067,7 @@
                  {
                      name: "|20 ",
                      desc: "A devastating barrage\nof offensive magic.",
-                     chargeAmt: 700,
+                     chargeAmt: 600,
                      isBigMove: true,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {

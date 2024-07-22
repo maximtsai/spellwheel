@@ -558,7 +558,7 @@ class Enemy {
             }
         }
         this.timeSinceLastAttacked += timeChange;
-        if (this.timeSinceLastAttacked < 40) {
+        if (this.timeSinceLastAttacked < 38) {
             if (!this.isAngry) {
                 this.isAngry = true;
                 this.chargeBarAngry.alpha = 1;
@@ -696,7 +696,7 @@ class Enemy {
         this.chargeBarCurr.alpha = 1;
         this.chargeBarAngry.alpha = 1;
 
-        this.timeSinceLastAttacked += 35;
+        this.timeSinceLastAttacked += 30;
         this.castAggravateCharge = 0;
         if (this.nextAttack.damage !== 0) {
             this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.prepareSprite, this.nextAttack.preAttackSprite, this.nextAttack.attackSprites, undefined, this.nextAttack.finishDelay, this.nextAttack.transitionFast);
@@ -2056,7 +2056,7 @@ class Enemy {
     }
 
     playerClickedSpell() {
-        this.castAggravateCharge = 31;
+        this.castAggravateCharge = 35;
     }
 
     addCastAggravate(amt) {

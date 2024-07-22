@@ -209,9 +209,9 @@
                  ease: "Cubic.easeIn",
                  duration: 1500,
                  onComplete: () => {
-                     this.x -= 80;
-                     this.y += 54;
                      this.setSprite('super_dummy_broken.png', this.sprite.scaleX);
+                     this.x -= 80;
+                     this.y += 72;
                      this.sprite.setRotation(0);
                      this.sprite.setOrigin(0.85, 0.78);
 
@@ -607,7 +607,7 @@
                  },
                  {
                      name: "BUFF UP",
-                     chargeAmt: 900,
+                     chargeAmt: 800,
                      isPassive: true,
                      damage: -1,
                      chargeMult: 2,
@@ -821,7 +821,7 @@
                  {
                      name: "BUFF UP",
                      isPassive: true,
-                     chargeAmt: 900,
+                     chargeAmt: 800,
                      damage: -1,
                      chargeMult: 2,
                      startFunction: () => {

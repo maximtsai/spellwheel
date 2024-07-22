@@ -42,7 +42,7 @@ class TextPopupManager {
         this.infoBorderTop.setAlpha(0);
         this.infoBorderBot.setAlpha(0);
         this.infoText.setAlign('left');
-        this.infoBox.x = x; this.infoBox.y = y + 1;
+        this.infoBox.x = x; this.infoBox.y = y + 2;
         if (align == "left") {
             this.infoText.x += 3;
             this.infoText.setOrigin(0, 0.5);
@@ -66,11 +66,11 @@ class TextPopupManager {
         let multScale = useSmall ? 0.9 : 1;
         this.infoText.setScale(multScale);
         let boxWidth = this.infoText.width * 0.5 + 8;
-        let boxHeight = this.infoText.height * 0.5 + 9;
+        let boxHeight = this.infoText.height * 0.5 + 10;
         this.infoBox.setScale(boxWidth * multScale, boxHeight * multScale);
         let borderGoalScale = boxWidth * multScale * 0.02;
-        this.infoBorderTop.setScale(borderGoalScale*0.1, 0.5).setPosition(this.getCenterPos(), this.infoBox.y - boxHeight + 3);
-        this.infoBorderBot.setScale(borderGoalScale*0.1, -0.5).setPosition(this.getCenterPos(), this.infoBox.y + boxHeight - 3);
+        this.infoBorderTop.setScale(borderGoalScale*0.1, 0.5).setPosition(this.getCenterPos(), this.infoBox.y - boxHeight + 2);
+        this.infoBorderBot.setScale(borderGoalScale*0.1, -0.5).setPosition(this.getCenterPos(), this.infoBox.y + boxHeight - 2);
 
         this.currAnim = this.scene.tweens.add({
             targets: [this.infoText, this.infoBorderTop, this.infoBorderBot],

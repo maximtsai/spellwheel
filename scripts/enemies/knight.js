@@ -16,7 +16,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 165 : 135;
+         this.health = gameVars.isHardMode ? 170 : 135;
          this.eyeObjects = [];
          this.pullbackScale = 0.92;
          this.attackScale = 1.11;
@@ -600,7 +600,7 @@
                      name: "|8 ",
                      announceName: "INITIAL STRIKE",
                      desc: "The mysterious knight charges at you!",
-                     chargeAmt: 450,
+                     chargeAmt: 400,
                      damage: 8,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
@@ -620,7 +620,7 @@
                      announceName: "VOID SHIELD (3)",
                      desc: "A strange protective shield surrounds the knight",
                      isPassive: true,
-                     chargeAmt: 450,
+                     chargeAmt: 400,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.createVoidShield(3);
@@ -635,7 +635,7 @@
                  {
                      name: "}4 ",
                      announceName: "FEINT ATTACK",
-                     chargeAmt: 300,
+                     chargeAmt: 250,
                      damage: 4,
                      attackSprites: ['void_knight_attack.png'],
                      attackFinishFunction: () => {
@@ -650,7 +650,7 @@
                  {
                      name: "|6x3 ",
                      announceName: "ASSAULT",
-                     chargeAmt: 700,
+                     chargeAmt: 600,
                      damage: 6,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_pullback.png',
@@ -748,7 +748,7 @@
                 {
                      name: "PREPARING... ",
                     isPassive: true,
-                     chargeAmt: 450,
+                     chargeAmt: 400,
                      damage: -1,
                      attackStartFunction: () => {
                          this.voidTentacleFront.visible = true;
@@ -768,7 +768,7 @@
                      name: "|6x2 ",
                      announceName: "ASSAIL",
                      chargeAmt: 600,
-                     chargeMult: 1.7,
+                     chargeMult: 1.8,
                      damage: 6,
                      attackTimes: 2,
                      prepareSprite: 'void_knight_3.png',
@@ -789,7 +789,7 @@
                      name: "|14 ",
                      announceName: "ASSAIL",
                      chargeAmt: 500,
-                     chargeMult: 1.7,
+                     chargeMult: 1.8,
                      damage: 14,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -808,7 +808,7 @@
                      name: "|6x3 ",
                      announceName: "ASSAIL",
                      chargeAmt: 650,
-                     chargeMult: 1.7,
+                     chargeMult: 1.8,
                      damage: 6,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_3.png',
@@ -828,7 +828,7 @@
                      name: "|16 ",
                      announceName: "ASSAIL",
                      chargeAmt: 500,
-                     chargeMult: 1.7,
+                     chargeMult: 1.8,
                      damage: 16,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -847,7 +847,7 @@
                      name: "|6x4 ",
                      announceName: "ASSAIL",
                      chargeAmt: 700,
-                     chargeMult: 1.7,
+                     chargeMult: 1.8,
                      damage: 6,
                      attackTimes: 4,
                      prepareSprite: 'void_knight_3.png',
@@ -867,7 +867,7 @@
                      name: "|18 ",
                      announceName: "ASSAIL",
                      chargeAmt: 500,
-                     chargeMult: 1.7,
+                     chargeMult: 1.8,
                      damage: 18,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],

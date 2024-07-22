@@ -116,7 +116,7 @@ class Dummyvoid extends Dummypractice {
             [
                 // 0
                 {
-                    name: "|12x6",
+                    name: "|10x6",
                     chargeAmt: 500,
                     finishDelay: 1200,
                     chargeMult: 10,
@@ -130,12 +130,12 @@ class Dummyvoid extends Dummypractice {
 
                     },
                     attackFinishFunction: () => {
-                        this.throwTriple('sword.png', 12, 2);
+                        this.throwTriple('sword.png', 10, 2);
                     }
                 },
                 {
                     name: "WAITING...",
-                    chargeAmt: 500,
+                    chargeAmt: 400,
                     transitionFast: true,
                     isPassive: true,
                     damage: -1,
@@ -144,8 +144,8 @@ class Dummyvoid extends Dummypractice {
                         let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                         let centerXPos = globalObjects.textPopupManager.getCenterPos();
 
-                        this.rune1 = this.addSprite(centerXPos - 28, runeYPos + 28, 'circle', 'rune_reinforce_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
-                        this.rune2 = this.addSprite(centerXPos + 30, runeYPos + 28, 'circle', 'rune_void_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
+                        this.rune1 = this.addSprite(centerXPos - 28, runeYPos + 28, 'circle', 'rune_reinforce_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
+                        this.rune2 = this.addSprite(centerXPos + 30, runeYPos + 27, 'circle', 'rune_void_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
                         this.addTween({
                             targets: [this.rune1, this.rune2],
                             alpha: 1,
@@ -193,8 +193,8 @@ class Dummyvoid extends Dummypractice {
                         let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                         let centerXPos = globalObjects.textPopupManager.getCenterPos();
 
-                        this.rune3 = this.addSprite(centerXPos - 35, runeYPos - 27, 'circle', 'rune_protect_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
-                        this.rune4 = this.addSprite(centerXPos + 28, runeYPos - 28, 'circle', 'rune_void_glow.png').setDepth(9999).setScale(0.75).setAlpha(0);
+                        this.rune3 = this.addSprite(centerXPos - 35, runeYPos + 27, 'circle', 'rune_protect_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
+                        this.rune4 = this.addSprite(centerXPos + 28, runeYPos + 28, 'circle', 'rune_void_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
                         this.addTween({
                             targets: [this.rune3, this.rune4],
                             alpha: 1,
@@ -302,7 +302,7 @@ class Dummyvoid extends Dummypractice {
                     transitionFast: true,
                 },
                 {
-                    name: "|2x12",
+                    name: "|2x9",
                     chargeAmt: 600,
                     finishDelay: 2000,
                     transitionFast: true,
@@ -314,7 +314,7 @@ class Dummyvoid extends Dummypractice {
 
                     },
                     attackFinishFunction: () => {
-                        this.throwTriple('star.png', 2, 4);
+                        this.throwTriple('star.png', 2, 3);
                     }
                 },
                 {
@@ -346,7 +346,7 @@ class Dummyvoid extends Dummypractice {
                     transitionFast: true,
                 },
                 {
-                    name: "|2x15",
+                    name: "|2x12",
                     chargeAmt: 600,
                     finishDelay: 2400,
                     transitionFast: true,
@@ -358,7 +358,7 @@ class Dummyvoid extends Dummypractice {
 
                     },
                     attackFinishFunction: () => {
-                        this.throwTriple('star.png', 2, 5);
+                        this.throwTriple('star.png', 2, 4);
                     }
                 },
                 {

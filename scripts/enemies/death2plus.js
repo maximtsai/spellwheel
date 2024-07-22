@@ -243,7 +243,7 @@
              duration: 250,
          });
          playSound('swish');
-         playSound('slice_in');
+         // playSound('slice_in');
 
          this.handShield.visible = true;
          this.handShield.setScale(this.handShield.startScale * 0.5).setAlpha(0.2);
@@ -420,6 +420,9 @@
             ease: 'Cubic.easeInOut',
             duration: isFast ? 600 : 700,
         });
+        setTimeout(() => {
+            playSound('ringknell');
+        }, 150)
         this.addTween({
             targets: this.spellCircle,
             alpha: 1,

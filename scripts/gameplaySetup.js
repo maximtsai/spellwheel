@@ -716,11 +716,6 @@ function showLocket() {
         updateManager.removeFunction(locketFlash);
         globalObjects.gameLocketOpenLight.destroy();
         playSound('locket_close');
-
-        globalObjects.magicCircle.enableMovement();
-        globalObjects.gameLocketOpen.setFrame('locket4.png');
-
-        globalObjects.gameLocketOpen.setScale(0.98).setRotation(0.1);
         if (closeText.currAnim) {
             closeText.currAnim.stop();
         }
@@ -728,43 +723,84 @@ function showLocket() {
             targets: [closeText],
             alpha: 0,
             duration: 300,
-        });
-        PhaserScene.tweens.add({
-            targets: [globalObjects.gameLocketOpen],
-            rotation: 0,
-            ease: 'Back.easeOut',
-            duration: 250,
-        });
-        PhaserScene.tweens.add({
-            targets: [globalObjects.gameLocketOpen],
-            scaleX: 0.8,
-            scaleY: 0.8,
-            ease: 'Cubic.easeOut',
-            duration: 250,
             onComplete: () => {
-                globalObjects.encyclopedia.showButton();
-                globalObjects.options.showButton();
-                showMainMenuButtons();
-                PhaserScene.tweens.add({
-                    delay: 150,
-                    targets: globalObjects.gameLocketOpen,
-                    y: "+=150",
-                    alpha: 0,
-                    scaleX: 0.65,
-                    scaleY: 0.65,
-                    ease: 'Quart.easeIn',
-                    duration: 600,
-                    onComplete: () => {
-                        globalObjects.gameLocketOpen.destroy();
-                        closeText.destroy();
-                    }
-                });
+                closeText.destroy();
             }
         });
+
+        if (gameVars.latestLevel > 1) {
+            let ladyImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 90, 'ending', 'ending2_a.png').setAlpha(0.2).setDepth(200).setScale(0.5);
+            PhaserScene.tweens.add({
+                targets: ladyImage,
+                ease: 'Cubic.easeOut',
+                alpha: 0.55,
+                duration: 300,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        targets: ladyImage,
+                        ease: 'Quad.easeOut',
+                        alpha: 0,
+                        duration: 900,
+                    });
+                }
+            });
+            PhaserScene.tweens.add({
+                targets: ladyImage,
+                ease: 'Quad.easeOut',
+                scaleX: 0.46,
+                scaleY: 0.46,
+                duration: 1200,
+            });
+            setTimeout(() => {
+                fadeOutLocketDisplay();
+            }, 400);
+        } else {
+            fadeOutLocketDisplay();
+        }
+
+
 
     })
 }
 
+function fadeOutLocketDisplay() {
+    globalObjects.magicCircle.enableMovement();
+    globalObjects.gameLocketOpen.setFrame('locket4.png');
+
+    globalObjects.gameLocketOpen.setScale(0.98).setRotation(0.1);
+
+    PhaserScene.tweens.add({
+        targets: [globalObjects.gameLocketOpen],
+        rotation: 0,
+        ease: 'Back.easeOut',
+        duration: 250,
+    });
+    PhaserScene.tweens.add({
+        targets: [globalObjects.gameLocketOpen],
+        scaleX: 0.8,
+        scaleY: 0.8,
+        ease: 'Cubic.easeOut',
+        duration: 250,
+        onComplete: () => {
+            globalObjects.encyclopedia.showButton();
+            globalObjects.options.showButton();
+            showMainMenuButtons();
+            PhaserScene.tweens.add({
+                delay: 150,
+                targets: globalObjects.gameLocketOpen,
+                y: "+=150",
+                alpha: 0,
+                scaleX: 0.65,
+                scaleY: 0.65,
+                ease: 'Quart.easeIn',
+                duration: 600,
+                onComplete: () => {
+                    globalObjects.gameLocketOpen.destroy();
+                }
+            });
+        }
+    });
+}
 
 function resetGame() {
     for (let i in globalObjects) {

@@ -21,3 +21,7 @@ Unlocking lock.wav by Stefan21100190 -- https://freesound.org/s/593112/ -- Licen
 
 Rocks - Effects - Source Recordings - 05 by GregorQuendel -- https://freesound.org/s/424997/ -- License: Attribution 4.0
 rocks2.wav by mystiscool -- https://freesound.org/s/7136/ -- License: Attribution 4.0
+
+R4_00328-2_EXP.wav by kevp888 -- https://freesound.org/s/636777/ -- License: Attribution 4.0
+
+Big Bell_4.wav by eardeer -- https://freesound.org/s/337565/ -- License: Attribution 4.0

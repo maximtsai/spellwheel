@@ -33,7 +33,7 @@ function clearOnlyMenuButtons() {
 
 
     globalObjects.en_us_button.destroy();
-    globalObjects.fr_button.destroy();
+    globalObjects.es_button.destroy();
     globalObjects.zh_cn_button.destroy();
     globalObjects.zh_tw_button.destroy();
 
@@ -733,7 +733,7 @@ function showMainMenuButtons() {
     });
     globalObjects.en_us_button.addText("English", {fontFamily: 'garamondmax', fontSize: 17, color: '#000000', align: 'left'})
 
-    globalObjects.fr_button = new Button({
+    globalObjects.es_button = new Button({
         normal: {
             ref: "slip.png",
             atlas: 'buttons',
@@ -755,11 +755,11 @@ function showMainMenuButtons() {
             alpha: 0
         },
         onMouseUp: () => {
-            setLanguage('fr')
+            setLanguage('es')
             updateMenuLanguage();
         }
     });
-    globalObjects.fr_button.addText("français", {fontSize: 16, color: '#000000', align: 'left'})
+    globalObjects.es_button.addText("español", {fontSize: 16, color: '#000000', align: 'left'})
 
     globalObjects.zh_cn_button = new Button({
         normal: {

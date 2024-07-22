@@ -413,7 +413,7 @@ class Enemy {
                 timeChange = 0;
             }
             chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
-            let almostIshDone = this.attackCharge > this.nextAttackChargeNeeded - 120;
+            let almostIshDone = this.attackCharge > this.nextAttackChargeNeeded - 130;
             if (almostIshDone) {
                 if (!this.attackName.hasWarned && !this.nextAttack.isPassive) {
                     this.attackName.hasWarned = true;
@@ -440,10 +440,10 @@ class Enemy {
                 this.attackCharge += timeChange * increaseMult * this.slowMult;
                 this.castAggravateCharge = 0;
             } else {
-                let almostDone = this.attackCharge > this.nextAttackChargeNeeded - 55;
+                let almostDone = this.attackCharge > this.nextAttackChargeNeeded - 65;
                 if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone && this.castAggravateCharge <= 0) {
                     // this.attackCharge += timeChange * 0.02 * this.slowMult;
-                    this.chargeBarCurr.alpha = 0.45;
+                    this.chargeBarCurr.alpha = 0.47;
                 } else {
                     // Normal slow chargin
                     if (almostDone || chargeMult > 1 || this.castAggravateCharge > 0) {
@@ -461,8 +461,8 @@ class Enemy {
                         } else {
                             this.chargeBarCurr.alpha = 0.9;
                         }
-                        this.attackCharge += timeChange * 0.35 * this.slowMult * chargeMult;
-                        this.attackCharge += castAggravateBonus * 1.25;
+                        this.attackCharge += timeChange * 0.43 * this.slowMult * chargeMult;
+                        this.attackCharge += castAggravateBonus * 1.22;
 
                     } else {
                         this.chargeBarCurr.alpha = 0.6;

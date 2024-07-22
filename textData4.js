@@ -9,7 +9,7 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
-    "deathFight1a": {
+    "deathFightCombat1a": {
         "en_us": "FIGHT BACK IF YOU MUST,\nBUT UNDERSTAND IT IS FUTILE.",
         "fr": "",
         "zh_tw": "",
@@ -20,6 +20,15 @@ let textData4 = {
     },
     "deathFight1b": {
         "en_us": "...I MEAN IT. NOTHING\nYOU DO CAN HURT ME",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFightCombat1c": {
+        "en_us": "YOUR TIME MAGIC ONLY\nDELAYS THE INEVITABLE.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

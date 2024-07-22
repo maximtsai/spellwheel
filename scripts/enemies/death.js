@@ -369,7 +369,7 @@
          if (isAttack) {
              this.timesAttacked++;
              if (this.timesAttacked === 1) {
-                 messageBus.publish("showCombatText", getLangText('deathFight1a'));
+                 messageBus.publish("showCombatText", getLangText('deathFightCombat1a'));
                  this.addTimeout(() => {
                      this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                          this.spellsCastCounter++;

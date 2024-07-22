@@ -8,7 +8,7 @@ class CombatTextManager {
 
 
 
-        this.text = this.scene.add.text(gameConsts.halfWidth, this.bg.y, '...', {fontFamily: 'garamondmax', fontSize: 28, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(201);
+        this.text = this.scene.add.text(gameConsts.halfWidth, this.bg.y, '...', {fontFamily: 'garamondmax', fontSize: isMobile ? 28 : 26, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(201);
         // this.text.setFontStyle('bold');
         messageBus.subscribe("showCombatText", this.showCombatText.bind(this));
 
@@ -31,13 +31,13 @@ class CombatTextManager {
         // }
         this.setText(text);
         this.setPosition(this.bg.x, this.bg.startY + yOffset);
-        if (this.text.width > 360) {
-            this.bg.scaleX = (this.text.width + 40) * 0.01;
+        if (this.text.width > 370) {
+            this.bg.scaleX = (this.text.width + 30) * 0.01;
         } else {
             this.bg.scaleX = 4;
         }
-        this.bgBorderTop.scaleX = this.bg.scaleX * 0.25;
-        this.bgBorderBot.scaleX = this.bg.scaleX * 0.25;
+        this.bgBorderTop.scaleX = this.bg.scaleX * 0.22;
+        this.bgBorderBot.scaleX = this.bg.scaleX * 0.22;
         if (this.text.height > 50) {
             this.bg.scaleY = 8;
         } else {

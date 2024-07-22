@@ -150,5 +150,5 @@ const audioFiles = [
     {name: 'heartbeatfast', src: 'audio/heartbeatfast.mp3'},
     {name: 'stomp', src: 'audio/stomp.mp3'},
     {name: 'deep_swish', src: 'audio/deep_swish.mp3'},
-
+    {name: 'ringknell', src: 'audio/ringknell.mp3'},
 ]

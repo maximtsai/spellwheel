@@ -2406,7 +2406,7 @@ class SpellManager {
             scaleX: 1,
             scaleY: 1
         }
-        messageBus.publish('animateVoidNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + buffAmt + " ATK DAMAGE", 1 + Math.sqrt(buffAmt) * 0.18, param, param2);
+        messageBus.publish('animateVoidNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + buffAmt + " ATK\nDAMAGE", 1 + Math.sqrt(buffAmt) * 0.18, param, param2);
 
         messageBus.publish('selfTakeEffect', {
             name: spellID,

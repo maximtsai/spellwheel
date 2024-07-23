@@ -1375,6 +1375,12 @@ class Enemy {
         this.isDestroyed = true;
         this.clearEffects()
         this.cleanUp();
+        let blackBG = getBackgroundBlackout2();
+        this.addTween({
+            targets: blackBG,
+            duration: 500,
+            alpha: 0,
+        })
         globalObjects.textPopupManager.hideInfoText();
         messageBus.publish("closeCombatText");
 
@@ -1813,6 +1819,16 @@ class Enemy {
             return;
         }
         this.isUsingAttack = true;
+        let blackBG;
+        if (!this.nextAttack.isPassive) {
+            blackBG = getBackgroundBlackout2();
+            this.addTween({
+                targets: blackBG,
+                duration: 400,
+                alpha: 0.12,
+                ease: 'Quad.easeInOut'
+            })
+        }
 
         let extraTimeMult = (2 - gameVars.timeSlowRatio) * this.attackSlownessMult;
 
@@ -1934,6 +1950,14 @@ class Enemy {
                                 this.sprite.attackNum = 0;
                                 this.sprite.prepareNum = 0;
                                 this.attackDurMult = 1;
+                                if (blackBG) {
+                                    this.addTween({
+                                        targets: blackBG,
+                                        duration: 500,
+                                        alpha: 0
+                                    })
+                                }
+
                                 if (!this.dead && !this.isDestroyed) {
                                     this.setSpriteIfNotInactive(this.defaultSprite, undefined, true);
                                     if (this.nextAttack.finaleFunction) {

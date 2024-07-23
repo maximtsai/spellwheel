@@ -250,6 +250,7 @@ class TextPopupManager {
             textObj = this.scene.add.bitmapText(x, y, fontName, text, 32);
             textObj.setDepth(99999);
             textObj.setOrigin(0.5, 0.5);
+            textObj.setCenterAlign();
         }
         textObj.setPosition(x, y);
         textObj.setText(text);

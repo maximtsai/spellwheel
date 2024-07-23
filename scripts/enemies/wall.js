@@ -557,7 +557,7 @@
                      name: " STARE... ",
                      isPassive: true,
                      desc: "A pair of eyes watch you",
-                     chargeAmt: 300,
+                     chargeAmt: 225,
                      transitionFast: true,
                      damage: -1,
                      attackFinishFunction: () => {

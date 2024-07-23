@@ -488,7 +488,6 @@ function beginLevel(lvl) {
     if (lvl <= 1) {
         switchLevelBackground(lvl)
     }
-    console.log("Beginlevel", lvl);
 
     playSound('whoosh');
     createEnemyAfterDelay(lvl);

@@ -9,7 +9,7 @@
 
         setTimeout(() => {
             this.windSfx = playSound('wind', 0.01, true);
-            fadeInSound(this.windSfx, 1, 2000);
+            fadeInSound(this.windSfx, 1, 2600);
             globalObjects.player.reInitStats();
             globalObjects.player.recentlyTakenDamageAmt = 0;
              this.setAsleep();
@@ -383,7 +383,7 @@
                      }, 5000);
                  }, 4000)
              } else if (this.timesAttacked === 13) {
-                 messageBus.publish("showCombatText", getLangText('deathFight1b'));
+                 messageBus.publish("showCombatText", getLangText('deathFightCombat1b'));
                  this.addTimeout(() => {
                      this.spellsCastCounter = 0;
                      this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
@@ -1219,7 +1219,8 @@
      }
 
      beginDeath2() {
-        createEnemy(11)
+         beginLevel(11)
+        // createEnemy()
         this.destroy();
      }
 }

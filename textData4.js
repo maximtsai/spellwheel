@@ -18,7 +18,7 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
-    "deathFight1b": {
+    "deathFightCombat1b": {
         "en_us": "...I MEAN IT. NOTHING\nYOU DO CAN HURT ME",
         "fr": "",
         "zh_tw": "",
@@ -46,7 +46,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2cx": {
-        "en_us": "THINK TWICE BEFORE ATTACKING",
+        "en_us": "A FIERCE OFFENSE. BUT\nTHINK TWICE BEFORE ATTACKING",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

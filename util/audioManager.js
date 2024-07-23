@@ -107,6 +107,7 @@ function fadeInSound(sound, volume = 1, duration = 1000) {
     PhaserScene.tweens.add({
         targets: sound,
         volume: sound.fullVolume * globalToUse,
-        duration: duration
+        duration: duration,
+        ease: 'Quad.easeIn'
     });
 }

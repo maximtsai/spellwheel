@@ -17,7 +17,7 @@
 
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 180 : 110;
-         this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
+         this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 40, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.22;
         this.isAnimating = false;
@@ -188,7 +188,7 @@
                  {
                      name: gameVars.isHardMode ? "}8 " : "}4 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
-                     chargeAmt: 455,
+                     chargeAmt: 355,
                      damage: gameVars.isHardMode ? 8 : 4,
                      attackSprites: ['gobbo0_atk.png'],
                      attackFinishFunction: () => {
@@ -409,12 +409,17 @@
              this.slashEffectAnim.stop();
          }
          let isFlipped = this.slashEffect.scaleX > 0;
-         this.slashEffect.setAlpha(1).setScale(isFlipped ? -0.5 : 0.5, 0.4);
+         this.slashEffect.setAlpha(1.1).setScale(isFlipped ? -0.5 : 0.5, 0.4);
          this.slashEffectAnim = this.addTween({
+             targets: this.slashEffect,
+             duration: 280,
+             alpha: 0,
+         });
+         this.addTween({
              targets: this.slashEffect,
              scaleX: isFlipped ? -1 : 1,
              scaleY: 0.6,
-             duration: 250,
+             duration: 280,
              ease: 'Cubic.easeOut',
              alpha: 0,
          });

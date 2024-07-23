@@ -57,6 +57,8 @@
          this.shieldOffsetY = 40;
          this.shieldTextOffsetY = -65;
          this.shieldTextFont = "void";
+         this.pullbackScale = 0.97;
+         this.attackScale = 1.01;
      }
 
      initMisc() {
@@ -82,15 +84,15 @@
                          this.spellsCastCounter = 0;
                          this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                              this.spellsCastCounter++;
-                             if (this.spellsCastCounter > 2) {
+                             if (this.spellsCastCounter >= 2) {
                                  this.playerSpellCastSub.unsubscribe();
                                  messageBus.publish("closeCombatText")
                              }
                          });
                          this.addTimeout(() => {
                              messageBus.publish("closeCombatText")
-                         }, 5000);
-                     }, 3000)
+                         }, 7000);
+                     }, 2200)
                  }, 1500)
 
              });
@@ -147,16 +149,72 @@
      initAttacks() {
          this.attacks = [
              [
+                 // 0
                  {
                      name: "OBSERVING",
                      chargeAmt: 300,
                      finishDelay: 3000,
-                     damage: 30,
+                     damage: 0,
                      isPassive: true,
                      startFunction: () => {
                          this.fadeMainBG(true);
                      },
                      attackStartFunction: () => {
+                         // this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
+                     },
+                     finaleFunction: () => {
+
+                     }
+                 },
+                 {
+                     name: "}20x2",
+                     chargeAmt: 600,
+                     finishDelay: 2000,
+                     damage: -1,
+                     isBigMove: true,
+                     startFunction: () => {
+                         this.pulseHand(1);
+                     },
+                     attackStartFunction: () => {
+                         this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
+                     },
+                     finaleFunction: () => {
+
+                     }
+                 },
+                 {
+                     name: "$24",
+                     chargeAmt: 600,
+                     finishDelay: 2000,
+                     damage: -1,
+                     startFunction: () => {
+                         this.pulseHand(2);
+                     },
+                     attackStartFunction: () => {
+                         this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
+                     },
+                     finaleFunction: () => {
+
+                     }
+                 },
+                 {
+                     name: ";8x3",
+                     chargeAmt: 700,
+                     finishDelay: 4000,
+                     chargeMult: 2,
+                     damage: -1,
+                     startFunction: () => {
+                         this.pulseHand(3);
+                     },
+                     attackStartFunction: () => {
+                         this.currentAttackSetIndex = 1;
+                         this.nextAttackIndex = 0;
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
@@ -227,6 +285,50 @@
          this.currentAttackSetIndex = 1;
          this.nextAttackIndex = 0;
          this.setAsleep();
+     }
+
+     pulseHand(idx) {
+         let xPos = 0; let yPos = 0;
+         if (idx == 0) {
+            xPos = gameConsts.halfWidth - 200;
+            yPos = this.y - 20;
+             this.currentHandGlow.setFrame('palm_glow.png');
+             this.currentHandGlowPulse.setFrame('palm_glow.png');
+         } else if (idx == 1) {
+             xPos = gameConsts.halfWidth - 150;
+             yPos = this.y - 80;
+             this.currentHandGlow.setFrame('poke_glow.png');
+             this.currentHandGlowPulse.setFrame('poke_glow.png');
+         } else if (idx == 2) {
+             xPos = gameConsts.halfWidth + 150;
+             yPos = this.y - 80;
+             this.currentHandGlow.setFrame('okay_glow.png');
+             this.currentHandGlowPulse.setFrame('okay_glow.png');
+         } else if (idx == 3) {
+             xPos = gameConsts.halfWidth + 200;
+             yPos = this.y - 20;
+             this.currentHandGlow.setFrame('claw_glow.png');
+             this.currentHandGlowPulse.setFrame('claw_glow.png');
+         }
+         this.currentHandGlow.setPosition(xPos, yPos).setAlpha(0.6).setScale(0.25);
+         this.currentHandGlowPulse.setPosition(xPos, yPos).setAlpha(0.6).setScale(0.25);
+         this.currentHandGlow.currAnim = this.addTween({
+             targets: this.currentHandGlow,
+             alpha: 0.3,
+             duration: 1200,
+             yoyo: true,
+             repeat: -1,
+             onRepeat: () => {
+                 this.currentHandGlowPulse.setAlpha(0.5).setScale(0.25);
+                 this.addTween({
+                     targets: this.currentHandGlowPulse,
+                     alpha: 0,
+                     scaleX: 0.4,
+                     scaleY: 0.4,
+                     duration: 1500,
+                 });
+             }
+         })
      }
 
      createHandShield(amt) {
@@ -502,15 +604,16 @@
                     duration: 900,
                 });
                 this.currentHandGlow.alpha = 1;
+                this.addDelay(() => {
+                    if (onCompleteFunc) {
+                        onCompleteFunc();
+                    }
+                }, 500);
                 this.currentHandGlow.currAnim = this.addTween({
                     targets: this.currentHandGlow,
                     alpha: 0,
+                    ease: 'Quad.easeOut',
                     duration: 900,
-                    onComplete: () => {
-                        if (onCompleteFunc) {
-                            onCompleteFunc();
-                        }
-                    }
                 });
             }
         })

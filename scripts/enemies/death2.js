@@ -388,7 +388,7 @@
                 },
                 {
                     name: "|8x2",
-                    chargeAmt: 450,
+                    chargeAmt: 500,
                     damage: 8,
                     attackTimes: 2,
                     prepareSprite: ['death2windup.png', 'death2windupflip.png'],
@@ -407,7 +407,7 @@
                 },
                 {
                     name: ";30",
-                    chargeAmt: 700,
+                    chargeAmt: 750,
                     damage: 30,
                     attackTimes: 1,
                     prepareSprite: "death2crouch.png",
@@ -514,7 +514,11 @@
                         this.createThornsAnimation();
                     },
                     attackFinishFunction: () => {
-                        this.currentAttackSetIndex = 0;
+                        if (this.fireForm) {
+                            this.currentAttackSetIndex = 2;
+                        } else {
+                            this.currentAttackSetIndex = 0;
+                        }
                         this.nextAttackIndex = 0;
                         let goalScale = 1.35;
                         let param = {
@@ -570,7 +574,7 @@
                 },
                 {
                     name: "|8x2+$6",
-                    chargeAmt: 500,
+                    chargeAmt: 550,
                     damage: 8,
                     attackTimes: 2,
                     prepareSprite: ['death2windup.png', 'death2windupflip.png'],
@@ -590,7 +594,7 @@
                 },
                 {
                     name: ";30+$10",
-                    chargeAmt: 750,
+                    chargeAmt: 800,
                     damage: 30,
                     attackTimes: 1,
                     prepareSprite: "death2crouch.png",

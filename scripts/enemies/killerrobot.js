@@ -518,9 +518,11 @@
                  playSound(isWeak ? 'music_blast_weak' : 'music_blast', isWeak ? 0.8 : 1);
                  let metalVol = damage > 15 ? 0.95 : 0.8;
                  if (isWeak) {
-                     metalVol = 0.6;
+
+                 } else {
+                     playSound('metaljpop_short', metalVol).detune = 0;
                  }
-                 playSound('metaljpop_short', metalVol).detune = isWeak ? -300 : 0;
+
                  messageBus.publish('playerAddDelayedDamage', damage);
                  let music_note_blue = getTempPoolObject('enemies', 'music_note_blue.png', 'music_note_blue', 450);
                  music_note_blue.setScale(music_note.scaleX).setPosition(music_note.x, music_note.y).setDepth(30).setAlpha(isWeak ? 0.1 : 1);
@@ -819,11 +821,11 @@
              [
                  // 2
                  {
-                     name: "|6x3",
+                     name: "|8x2",
                      chargeAmt: 450,
-                     damage: 6,
-                     attackTimes: 3,
-                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png', 'robot_claw_1.png'],
+                     damage: 8,
+                     attackTimes: 2,
+                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
                      startFunction: () => {
                          this.claw1Attacked = false;
                          this.pullbackScale = this.pullbackScaleDefault;
@@ -918,11 +920,11 @@
              [
                  // 3
                  {
-                     name: "|6x3",
+                     name: "|8x2",
                      chargeAmt: 450,
-                     damage: 6,
-                     attackTimes: 3,
-                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png', 'robot_claw_1.png'],
+                     damage: 8,
+                     attackTimes: 2,
+                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
                      startFunction: () => {
                          this.claw1Attacked = true;
                          this.pullbackScale = this.pullbackScaleDefault;
@@ -1249,11 +1251,11 @@
                      }
                  },
                  {
-                     name: "|6x3 ",
+                     name: "|8x2",
                      chargeAmt: 450,
-                     damage: 6,
-                     attackTimes: 3,
-                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png', 'robot_claw_1.png'],
+                     damage: 8,
+                     attackTimes: 2,
+                     attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
                      startFunction: () => {
                          this.claw1Attacked = true;
                          this.pullbackScale = this.pullbackScaleDefault;

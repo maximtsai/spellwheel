@@ -684,10 +684,10 @@ let textData2 = {
         "jp": "一部のシールドは、\n特定の攻撃に対して\nより有用です"
     },
     "level2_train_tut_a": {
-        "en_us": "Goal: Defened against\nthe enemy's attacks",
+        "en_us": "Goal: Defend\nagainst incoming\nattacks",
         "fr": "Objectif: Survivre\naux attaques de l’ennemi",
-        "zh_tw": "目標：防禦敵人的攻擊",
-        "zh_cn": "目标：防御敌人的攻击",
+        "zh_tw": "目標：防禦\n敵人的攻擊",
+        "zh_cn": "目标：防御\n敌人的攻击",
         "ru": "Цель: Защититесь\nот атак врага",
         "es": "Objetivo: Defenderse\nde los ataques\ndel enemigo.",
         "jp": "目的:敵の攻撃から身を守る"

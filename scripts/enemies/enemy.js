@@ -195,8 +195,6 @@ class Enemy {
             duration: gameVars.gameManualSlowSpeedInverse * 400,
             alpha: 1
         });
-        this.curseSprite.x = gameConsts.halfWidth - this.healthBarLengthMax - 30 * this.curseSprite.scaleX;
-        this.curseText.x = this.curseSprite.x;
     }
 
     createChargeBar(x) {
@@ -327,18 +325,6 @@ class Enemy {
         this.shieldText.setOrigin(0.5, 0.55);
         this.shieldText.setDepth(8);
         this.shieldText.visible = false;
-
-        this.curseSprite = this.scene.add.sprite(25, 18, 'enemies', 'curse_symbol_small_2.png');
-        this.curseSprite.setScale(0.5);
-        this.curseSprite.setOrigin(0.5, 0.45);
-        this.curseSprite.setDepth(11);
-        this.curseSprite.visible = false;
-
-        this.curseText = this.scene.add.bitmapText(this.curseSprite.x, this.curseSprite.y - 4, 'normal', '', 50);
-        this.curseText.setOrigin(0.5, 0.4);
-        this.curseText.setDepth(11);
-        this.curseText.setScale(0.5);
-        this.curseText.visible = false;
     }
 
     setSpriteIfNotInactive(name, scale, noAnim, depth = 1) {
@@ -1277,6 +1263,7 @@ class Enemy {
             return;
         }
         this.timeSinceLastAttacked = 9999;
+        this.castAggravateCharge += 20;
         this.isAsleep = false;
         this.attackName.visible = true;
         this.attackPaused = false;
@@ -1410,9 +1397,6 @@ class Enemy {
         this.attackName.destroy();
         this.angrySymbol.destroy();
 
-        this.curseSprite.destroy();
-        this.curseText.destroy();
-
         this.sprite.destroy();
 
         this.delayedDamageText.destroy();
@@ -1468,9 +1452,6 @@ class Enemy {
         this.chargeBarCurr.visible = false; this.chargeBarCurr.scaleY = 100;
         this.hideAngrySymbol()
         this.voidPause.visible = false;
-
-        this.curseSprite.visible = false;
-        this.curseText.visible = false;
 
         this.attackName.visible = false;
         messageBus.publish('enemyHasDied');

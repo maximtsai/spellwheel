@@ -107,9 +107,13 @@
          }
          if (lastHealthLost >= 12 && this.shield === 0 && !this.goblinBeingShocked && !this.dead) {
              this.accumulatedAnimDamage += lastHealthLost;
+             this.isKnocked = true;
              this.setSprite('gobbo_knock1.png');
              if (this.accumTween) {
                  this.accumTween.stop();
+             }
+             if (this.breatheTween) {
+                 this.breatheTween.stop();
              }
              if (this.accumulatedAnimDamage <= 12){
                  // do nothin
@@ -149,6 +153,7 @@
                  ease: 'Back.easeIn',
                  duration: 720 + Math.floor(this.accumulatedAnimDamage * 5.5),
                  onComplete: () => {
+                     this.isKnocked = false;
                      this.accumulatedAnimDamage = 0;
                      this.setSprite(this.defaultSprite);
                      if (!this.dead) {
@@ -199,8 +204,8 @@
              [
                  // 1
                  {
-                     name: gameVars.isHardMode ? "FANCY SHIELD {60 " : "FANCY SHIELD {50 ",
-                     block: gameVars.isHardMode ? 60 : 50,
+                     name: "FANCY SHIELD {60",
+                     block: 60,
                      isPassive: true,
                      customCall: " ",
                      chargeAmt: 300,
@@ -484,7 +489,7 @@
          this.breatheTween = this.addTween({
              targets: this.sprite,
              duration: duration * (Math.random() * 0.5 + 1) * burningMult,
-             rotation: -0.02 * magnitude,
+             rotation: this.isKnocked ? undefined : -0.02 * magnitude,
              x: this.sprite.startX - horizMove,
              ease: 'Cubic.easeInOut',
              completeDelay: 150,
@@ -493,7 +498,7 @@
                  this.breatheTween = this.addTween({
                      targets: this.sprite,
                      duration: duration * (Math.random() * 0.5 + 1) * burningMult2,
-                     rotation: 0.02 * magnitude,
+                     rotation: this.isKnocked ? undefined : 0.02 * magnitude,
                      x: this.sprite.startX + horizMove,
                      ease: 'Cubic.easeInOut',
                      completeDelay: 150,

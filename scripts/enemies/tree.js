@@ -652,7 +652,7 @@
                      name: "}8 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: -1,
                      startFunction: () => {
 
@@ -1026,6 +1026,7 @@
              })
          }
          this.clearThorns()
+         globalObjects.bannerTextManager.closeBanner();
         globalObjects.textPopupManager.hideInfoText();
          this.addTween({
              targets: [this.rune1],

@@ -24,6 +24,7 @@
      initStatsCustom() {
          this.health = 110;
          this.damageNumOffset = 45;
+         this.damageNumOffsetDefault = this.damageNumOffset;
          this.lifeOne = true;
          this.timeObjects = [];
          this.numTimesHealed = 0;
@@ -50,6 +51,12 @@
      }
 
      setHealth(newHealth) {
+         let lastHealthLost = this.health - newHealth;
+         let canFlatten = false;
+         if (this.lifeOne && lastHealthLost >= 32) {
+             canFlatten = true;
+             this.damageNumOffset = -44;
+         }
          super.setHealth(newHealth);
          if (this.invulnHealthBar) {
              this.healthBarText.setText("INVULNERABLE");
@@ -64,18 +71,22 @@
              // dead, can't do anything
              return;
          }
-         let lastHealthLost = this.prevHealth - this.health;
-         if (this.lifeOne && lastHealthLost >= 32) {
+         if (canFlatten) {
              this.isBeingFlattened = true;
+             this.forceOverrideSprite = 'time_magi_flattened.png';
              this.setSprite('time_magi_flattened.png');
              playSound('punch2', 0.4);
              this.addTween({
                  targets: this.sprite,
-                 delay: 1000,
-                 duration: 1000,
-                 scaleY: 1.1,
+                 delay: 1200,
+                 duration: 700,
+                 scaleX: 0.95,
+                 scaleY: 1.14,
                  onComplete: () => {
+                     this.sprite.scaleX = 1;
                      this.sprite.scaleY = 1.04;
+                     this.forceOverrideSprite = null;
+                     this.damageNumOffset = this.damageNumOffsetDefault;
                      this.setSprite(this.defaultSprite);
                      this.addTween({
                          targets: this.sprite,
@@ -84,6 +95,7 @@
                          ease: 'Quart.easeOut',
                          onComplete: () => {
                              this.isBeingFlattened = false;
+
                              this.addTween({
                                  targets: this.sprite,
                                  duration: 300,
@@ -204,6 +216,7 @@
          if (this.dead || this.invincible) {
              return;
          }
+         this.forceOverrideSprite = null;
 
         if (this.currAnim) {
             this.currAnim.stop();
@@ -1097,7 +1110,7 @@
                             ease: 'Cubic.easeIn',
                             onComplete: () => {
                                 if (this.numTimesHealed === 2) {
-                                    globalObjects.bannerTextManager.setDialog(["\"Good try, but your\nattacks have no shock.\"", "\"Now have a taste of\nmy great big clock!\""]);
+                                    globalObjects.bannerTextManager.setDialog(["\"Good try, but your\nattacks lack shock.\"", "\"Now have a taste of\nmy great big clock!\""]);
                                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                                     globalObjects.bannerTextManager.showBanner(0.5);
                                 }

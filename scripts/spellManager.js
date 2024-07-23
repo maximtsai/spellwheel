@@ -1532,7 +1532,7 @@ class SpellManager {
                         ease: 'Quart.easeOut',
                     });
 
-                    messageBus.publish('enemyTakeTrueDamage', 1 + additionalDamage);
+                    messageBus.publish('enemyTakeTrueDamage', 1 + additionalDamage, true, undefined, true);
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead && !globalObjects.player.dead) {
                         let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 4, 'spells', 'energyTarget1.png').play('energyTarget').setAlpha(0.2).setScale(0.95).setRotation(Math.PI*0.15).setBlendMode(Phaser.BlendModes.ADD);

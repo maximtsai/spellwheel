@@ -25,8 +25,6 @@
      takeEffect(newEffect) {
          if (this.sprite) {
              if (newEffect.name == 'mindStrike' && !this.dead && !this.hasTimbered) {
-                 this.sprite.stop();
-                 // this.setSprite('gobbo_elec1.png');
                  this.sprite.setFrame('tree_shock1.png');
                  if (this.preparingTimber) {
                      this.sprite.setOrigin(0.52, 0.7);
@@ -49,19 +47,9 @@
                          }
                      }, 100)
                  }, 100)
-                 // this.addTween({
-                 //     targets: this.sprite,
-                 //     x: gameConsts.halfWidth,
-                 //     ease: 'Bounce.easeOut',
-                 //     easeParams: [1, 2.5],
-                 //     duration: 260,
-                 // });
-                 this.sprite.once('animationcomplete', () => {
-                 })
              }
          }
          super.takeEffect(newEffect)
-         this.statuses[newEffect.name] = newEffect;
      }
 
      setHealth(newHealth) {

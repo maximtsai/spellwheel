@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = 100;
+         this.health = 110;
          this.damageNumOffset = 45;
          this.lifeOne = true;
          this.timeObjects = [];
@@ -31,8 +31,29 @@
          this.initTemporalObjects();
      }
 
+     takeEffect(newEffect) {
+         if (this.sprite) {
+             if (newEffect.name == 'mindStrike' && this.lifeOne && !this.dead && !this.isBeingFlattened) {
+                 this.sprite.stop();
+                 this.isBeingShocked = true;
+                 this.setSprite('time_magi_shock1.png');
+                 this.addDelay(() => {
+                     this.sprite.setFrame('time_magi_shock2.png');
+                     this.addDelay(() => {
+                         this.setSpriteIfNotInactive(this.defaultSprite);
+                         this.isBeingShocked = false;
+                     }, 100);
+                 }, 100);
+             }
+         }
+         super.takeEffect(newEffect)
+     }
 
      setHealth(newHealth) {
+         super.setHealth(newHealth);
+         if (this.invulnHealthBar) {
+             this.healthBarText.setText("INVULNERABLE");
+         }
         // if (this.invincible) {
         //     messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random()*150, this.sprite.y + 50 - Math.random() * 100, 'DELAYED', 0.75);
         //     return;
@@ -43,11 +64,37 @@
              // dead, can't do anything
              return;
          }
-         super.setHealth(newHealth);
-        if (this.invulnHealthBar) {
-            this.healthBarText.setText("INVULNERABLE");
-
-        }
+         let lastHealthLost = this.prevHealth - this.health;
+         if (this.lifeOne && lastHealthLost >= 32) {
+             this.isBeingFlattened = true;
+             this.setSprite('time_magi_flattened.png');
+             playSound('punch2', 0.4);
+             this.addTween({
+                 targets: this.sprite,
+                 delay: 1000,
+                 duration: 1000,
+                 scaleY: 1.1,
+                 onComplete: () => {
+                     this.sprite.scaleY = 1.04;
+                     this.setSprite(this.defaultSprite);
+                     this.addTween({
+                         targets: this.sprite,
+                         duration: 200,
+                         scaleY: 1.1,
+                         ease: 'Quart.easeOut',
+                         onComplete: () => {
+                             this.isBeingFlattened = false;
+                             this.addTween({
+                                 targets: this.sprite,
+                                 duration: 300,
+                                 scaleY: 1,
+                                 ease: 'Back.easeOut',
+                             });
+                         }
+                     })
+                 }
+             })
+         }
 
          // if (!this.isNervous && this.statuses[0] && this.statuses[0].duration >= this.health) {
          //     this.isNervous = true;
@@ -859,7 +906,7 @@
     }
 
     beginPhaseTwo() {
-        globalObjects.bannerTextManager.setDialog(["\"You think you've defeated me?\"", "\"Witness my true power!\""]);
+        globalObjects.bannerTextManager.setDialog(["\"Have a taste of my true power!\"", "\"Time Stop!\""]);
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
         globalObjects.bannerTextManager.showBanner(0.5);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -1050,7 +1097,7 @@
                             ease: 'Cubic.easeIn',
                             onComplete: () => {
                                 if (this.numTimesHealed === 2) {
-                                    globalObjects.bannerTextManager.setDialog(["\"You can talk\nbut you've got no knock.\"", "\"Now have a taste of\nmy great big clock!\""]);
+                                    globalObjects.bannerTextManager.setDialog(["\"Good try, but your\nattacks have no shock.\"", "\"Now have a taste of\nmy great big clock!\""]);
                                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                                     globalObjects.bannerTextManager.showBanner(0.5);
                                 }

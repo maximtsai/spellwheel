@@ -94,7 +94,6 @@
             }
          }
          super.takeEffect(newEffect)
-         this.statuses[newEffect.name] = newEffect;
      }
 
      setHealth(newHealth) {

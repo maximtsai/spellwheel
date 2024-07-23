@@ -2072,6 +2072,7 @@ class Enemy {
 
     heal(amt) {
         this.health = Math.min(this.healthMax, this.health + amt);
+        this.prevHealth = this.health;
         this.updateHealthBar(true);
     }
 

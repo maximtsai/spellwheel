@@ -621,13 +621,14 @@ class Enemy {
         if (this.defense && !isTrue) {
             amt = Math.max(0, amt - this.defense);
         }
-        if (isAttack && this.statuses['mindStrike'] && !isTrue) {
+        if (isAttack && this.statuses['mindStrike']) {
             // let xPos = this.statuses['mindStrike'].x; let yPos = this.statuses['mindStrike'].y;
             let damageToTake = Math.max(0, Math.ceil(amt));
             this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake);
-            setTimeout(() => {
-                this.takeTrueDamage(damageToTake, false, 0, false);
-            }, 0);
+            amt += damageToTake;
+            // setTimeout(() => {
+            //     this.takeTrueDamage(damageToTake, false, 0, false);
+            // }, 0);
         }
 
         if (this.shield > 0 && !isTrue) {

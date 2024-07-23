@@ -729,7 +729,7 @@ let textData2 = {
         "jp": "+で完全に自分を癒します"
     },
     "level5_train_tut_c": {
-        "en_us": "Void shields can\nfully block single\npowerful attacks\n             +",
+        "en_us": "Void shield can\nblock strong attacks\n       +",
         "fr": "Les boucliers du\nNéant peuvent bloquer\ncomplètement des attaques puissantes uniques +",
         "zh_tw": "虛空護盾可以完全\n阻擋一次攻擊\n       +",
         "zh_cn": "虚空护盾可以完全\n阻挡一次攻击\n      +",

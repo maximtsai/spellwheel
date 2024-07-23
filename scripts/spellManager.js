@@ -1532,7 +1532,7 @@ class SpellManager {
                         ease: 'Quart.easeOut',
                     });
 
-                    messageBus.publish('enemyTakeDamage', 1 + additionalDamage);
+                    messageBus.publish('enemyTakeTrueDamage', 1 + additionalDamage);
                     messageBus.publish('setPauseDur', 10);
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead && !globalObjects.player.dead) {

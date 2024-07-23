@@ -2642,7 +2642,8 @@ const ENABLE_KEYBOARD = true;
         playSound('void_strike', 0.3);
         PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 100, () => {
             messageBus.publish('enemyTakeDamage', damage);
-            messageBus.publish('setPauseDur', 5);
+            messageBus.publish('setPauseDur', 30);
+
         })
         spike.setScale(baseScale * 4, baseScale * 0.6)
          this.scene.tweens.add({

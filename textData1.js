@@ -155,7 +155,7 @@ let textData = {
         "jp": "敵の現在HPの10%にダメージを与え、敵の行動を妨害する"
     },
     "mind_strike_desc": {
-        "en_us": "Deal 1 damage.\nEnemy takes x2\ndamage from\nyour next attack",
+        "en_us": "Deal 1 True\ndamage. Enemy\ntakes x2 damage\nfrom your next\nattack.",
         "fr": "Inflige 1 point de dégâts. L’ennemi subit x2 dégâts lors de votre prochaine attaque",
         "zh_tw": "造成 1 點傷害。敵人從你的下一次攻擊中受到 x2 傷害",
         "zh_cn": "造成 1 点伤害。敌人从你的下一次攻击中受到 x2 伤害",

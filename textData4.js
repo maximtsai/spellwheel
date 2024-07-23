@@ -137,7 +137,7 @@ let textData4 = {
         "jp": ""
     },
     "death8b": {
-        "en_us": "BUT UNDERSTAND THAT ALL THINGS\nEVENTUALLY MEET THEIR END.",
+        "en_us": "BUT UNDERSTAND THAT ALL\nTHINGS MUST MEET THEIR END.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -147,6 +147,15 @@ let textData4 = {
     },
     "energy_tut_goblin": {
         "en_us": "Energy spells can\ndeal True damage\nthat ignores\nenemy defenses.\n              +",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "shield_tut_knight": {
+        "en_us": "Void shields can\nblock the strongest\nattacks! But will\nbreak with one hit",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

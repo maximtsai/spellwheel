@@ -16,7 +16,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 170 : 135;
+         this.health = gameVars.isHardMode ? 160 : 130;
          this.eyeObjects = [];
          this.pullbackScale = 0.92;
          this.attackScale = 1.11;
@@ -269,7 +269,7 @@
          playSound('meat_click_left', 0.4);
          playSound('meat_click_right', 0.4);
          if (this.shieldAmts <= 0) {
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'NEGATED', 1.05, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1, scaleY: 1});
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, '-BROKE-', 1.05, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1, scaleY: 1});
              this.clearVoidShield();
          } else {
              messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random()*150, this.sprite.y + 50 - Math.random() * 100, 'NEGATED', 0.75);
@@ -627,6 +627,18 @@
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
                          this.sigilEffect.visible = true;
+
+                         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 80, getLangText("shield_tut_knight"), 'right');
+                          this.addDelay(() => {
+                             this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                                 this.playerSpellCastSub.unsubscribe();
+                                 this.addTimeout(() => {
+                                     globalObjects.textPopupManager.hideInfoText();
+                                 }, 400);
+                             });
+                         }, 1200)
+
+
                      }
                  }
              ],
@@ -650,7 +662,7 @@
                  {
                      name: "|6x3 ",
                      announceName: "ASSAULT",
-                     chargeAmt: 600,
+                     chargeAmt: 500,
                      damage: 6,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_pullback.png',
@@ -948,7 +960,7 @@
          this.setDefaultSprite('void_knight_3_empty.png');
          this.sprite.setDepth(2);
          playSound('meat_click_right');
-         this.setMaxHealth(gameVars.isHardMode ? 115 : 90);
+         this.setMaxHealth(gameVars.isHardMode ? 120 : 90);
          this.heal(this.healthMax);
          this.setAwake();
          this.sigilEffect.setFrame('void_knight_sigil2.png').setScale(this.sprite.startScale);

@@ -15,20 +15,68 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 300 : 240;
+         this.health = gameVars.isHardMode ? 300 : 250;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;
          this.attackScale = 1.03;
      }
 
+     takeEffect(newEffect) {
+         if (this.sprite) {
+             if (newEffect.name == 'mindStrike' && !this.dead && !this.hasTimbered) {
+                 this.sprite.stop();
+                 // this.setSprite('gobbo_elec1.png');
+                 this.sprite.setFrame('tree_shock1.png');
+                 if (this.preparingTimber) {
+                     this.sprite.setOrigin(0.52, 0.7);
+                 } else {
+                     this.sprite.setOrigin(0.52, 0.88);
+                 }
+                 this.addDelay(() => {
+                     this.sprite.setFrame('tree_shock2.png');
+                     if (this.preparingTimber) {
+                         this.sprite.setOrigin(0.52, 0.7);
+                     } else {
+                         this.sprite.setOrigin(0.52, 0.88);
+                     }
+                     this.addDelay(() => {
+                         this.setSpriteIfNotInactive(this.defaultSprite);
+                         if (this.preparingTimber) {
+                             this.sprite.setOrigin(0.52, 0.7);
+                         } else {
+                             this.sprite.setOrigin(0.52, 0.88);
+                         }
+                     }, 100)
+                 }, 100)
+                 // this.addTween({
+                 //     targets: this.sprite,
+                 //     x: gameConsts.halfWidth,
+                 //     ease: 'Bounce.easeOut',
+                 //     easeParams: [1, 2.5],
+                 //     duration: 260,
+                 // });
+                 this.sprite.once('animationcomplete', () => {
+                 })
+             }
+         }
+         super.takeEffect(newEffect)
+         this.statuses[newEffect.name] = newEffect;
+     }
+
      setHealth(newHealth) {
          super.setHealth(newHealth);
          let prevHealthPercent = this.prevHealth / this.healthMax;
          let currHealthPercent = this.health / this.healthMax;
+         let lastHealthLost = this.prevHealth - this.health;
          if (currHealthPercent == 0) {
              // dead, can't do anything
              return;
+         }
+         if (lastHealthLost >= 30) {
+             this.dropLeavesMany();
+         } else if (lastHealthLost >= 20) {
+             this.dropLeaves();
          }
          if (this.isAsleep) {
              if (this.breatheTween) {
@@ -146,6 +194,71 @@
                  });
              }
          });
+     }
+
+     dropLeaves() {
+         let leafObject = getTempPoolObject('enemies', 'falling_leaves.png', 'fallingLeaves', 1500);
+         let isFlipped = Math.random() < 0.5;
+         leafObject.setFrame('falling_leaves.png').setScale(isFlipped ? 1 : -1, 1).setDepth(10);
+         leafObject.setPosition(this.x + 300 * (Math.random() - 0.5), this.y - 250 + Math.random() * 25).setAlpha(0.5);
+         this.addTween({
+             targets: leafObject,
+             duration: 1400,
+             y: "+=90",
+         })
+         this.addTween({
+             targets: leafObject,
+             duration: 300,
+             alpha: 1,
+             ease: 'Cubic.easeOut',
+             scaleX: isFlipped ? 1.25 : -1.25,
+             scaleY: 1.33,
+             onComplete: () => {
+                 this.addTween({
+                     targets: leafObject,
+                     duration: 1000,
+                     alpha: 0,
+                 })
+             }
+         })
+     }
+
+     dropLeavesMany() {
+         let isFlipped = Math.random() < 0.5;
+         let leafObject = getTempPoolObject('enemies', 'falling_leaves_2.png', 'fallingLeaves', 2000);
+         leafObject.setFrame('falling_leaves_2.png').setScale(isFlipped ? 1 : -1, 1).setDepth(10);
+         leafObject.setPosition(this.x + 300 * (Math.random() - 0.5), this.y - 255 + Math.random() * 25).setAlpha(1);
+
+         let leafObject2 = getTempPoolObject('enemies', 'falling_leaves_3.png', 'fallingLeaves', 2000);
+         leafObject2.setFrame('falling_leaves_3.png').setScale(isFlipped ? 1 : -1, 1).setDepth(10);
+         leafObject2.setPosition(this.x + 250 * (Math.random() - 0.5), this.y - 240 + Math.random() * 25).setAlpha(1).setRotation(Math.random() * 6);
+
+         this.addTween({
+             targets: [leafObject, leafObject2],
+             duration: 1500,
+             y: "+=100",
+         });
+         let randRot = Math.random() > 0.5 ? 1 : -1;
+         this.addTween({
+             targets: [leafObject2],
+             duration: 1500,
+             rotation: "+="+randRot,
+         })
+         this.addTween({
+             targets: [leafObject, leafObject2],
+             duration: 300,
+             alpha: 1,
+             ease: 'Cubic.easeOut',
+             scaleX: isFlipped ? 1.25 : -1.25,
+             scaleY: 1.33,
+             onComplete: () => {
+                 this.addTween({
+                     targets: [leafObject, leafObject2],
+                     duration: 1100,
+                     alpha: 0,
+                 })
+             }
+         })
      }
 
      glowGreen() {
@@ -551,7 +664,7 @@
                      name: "}8 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 700,
+                     chargeAmt: 500,
                      damage: -1,
                      startFunction: () => {
 
@@ -623,7 +736,7 @@
                      name: "|10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 700,
+                     chargeAmt: 600,
                      damage: -1,
                      attackStartFunction: () => {
                          this.attackWithBranch(10);
@@ -638,7 +751,7 @@
                  },
                  {
                      name: "STARE... ",
-                     chargeAmt: 400,
+                     chargeAmt: 300,
                      damage: -1,
                      isPassive: true,
                      attackStartFunction: () => {
@@ -656,7 +769,7 @@
                      name: "|2x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 850,
+                     chargeAmt: 800,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');
@@ -740,7 +853,7 @@
                      name: "|2x5 ",
                      announceName: "LEAF STORM",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 850,
+                     chargeAmt: 800,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');
@@ -761,7 +874,7 @@
                      name: "|10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 700,
+                     chargeAmt: 600,
                      damage: -1,
                      attackStartFunction: () => {
 
@@ -797,6 +910,7 @@
 
                         this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
                         this.sprite.y -= this.sprite.height * 0.125;
+                        this.preparingTimber = true;
                         fadeAwaySound(this.bgMusic, 3000);
                         this.addTimeout(() => {
                              if (!this.dead) {

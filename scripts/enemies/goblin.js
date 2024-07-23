@@ -34,7 +34,7 @@
          if (this.dead) {
              return;
          } else {
-             if (!this.isAnimating && !this.dead) {
+             if (!this.isAnimating && !this.dead && this.shield > 0) {
                  // let oldSprite = this.sprite.frame.name;
                  // if (this.goblinBeingShocked) {
                  //     oldSprite = this.defaultSprite;
@@ -188,7 +188,7 @@
                  {
                      name: gameVars.isHardMode ? "}8 " : "}4 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
-                     chargeAmt: 355,
+                     chargeAmt: 340,
                      damage: gameVars.isHardMode ? 8 : 4,
                      attackSprites: ['gobbo0_atk.png'],
                      attackFinishFunction: () => {
@@ -235,7 +235,7 @@
                          this.nextAttackIndex = 0;
                          let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
                          this.addTimeout(() => {
-                             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 80, getLangText("energy_tut_goblin"), 'right');
+                             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText("energy_tut_goblin"), 'right');
                              let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                              let centerXPos = globalObjects.textPopupManager.getCenterPos();
                              this.rune3 = this.addImage(centerXPos - 32, runeYPos + 27, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
@@ -289,7 +289,7 @@
                  {
                      name: gameVars.isHardMode ? "}12 " : "}6 ",
                      desc: "Goblin rams you with\nhis shield",
-                     chargeAmt: 600,
+                     chargeAmt: 500,
                      damage: gameVars.isHardMode ? 12 : 6,
                      startFunction: () => {
                         this.pullbackScale = 0.85;

@@ -4,8 +4,8 @@
 			"image": "sprites/ending-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1421,
-				"h": 1408
+				"w": 1835,
+				"h": 1528
 			},
 			"scale": 1,
 			"frames": [
@@ -49,10 +49,60 @@
 						"h": 700
 					},
 					"frame": {
-						"x": 2,
-						"y": 706,
+						"x": 826,
+						"y": 2,
 						"w": 820,
 						"h": 700
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "ending_3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 700,
+						"h": 820
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 700,
+						"h": 820
+					},
+					"frame": {
+						"x": 2,
+						"y": 706,
+						"w": 700,
+						"h": 820
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "ending_3_2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 700,
+						"h": 820
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 700,
+						"h": 820
+					},
+					"frame": {
+						"x": 706,
+						"y": 706,
+						"w": 700,
+						"h": 820
 					},
 					"anchor": {
 						"x": 0.5,
@@ -74,10 +124,71 @@
 						"h": 644
 					},
 					"frame": {
-						"x": 826,
-						"y": 2,
+						"x": 1410,
+						"y": 706,
 						"w": 423,
 						"h": 644
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/ending-1.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 2005,
+				"h": 824
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ending_3_15.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 700,
+						"h": 820
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 700,
+						"h": 820
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 700,
+						"h": 820
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "ending_3_125.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 700,
+						"h": 820
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 700,
+						"h": 820
+					},
+					"frame": {
+						"x": 706,
+						"y": 2,
+						"w": 700,
+						"h": 820
 					},
 					"anchor": {
 						"x": 0.5,
@@ -99,8 +210,8 @@
 						"h": 636
 					},
 					"frame": {
-						"x": 826,
-						"y": 650,
+						"x": 1410,
+						"y": 2,
 						"w": 593,
 						"h": 636
 					},
@@ -115,6 +226,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:7e5e69003edb134f531c161b1f609353:038f32d6a76777f77d4427dbb86548b2:0cc6273b89e354305f742283094fa03a$"
+		"smartupdate": "$TexturePacker:SmartUpdate:134162d031bf090f46f11fdb9774e212:c3077bb0797e83a136b9cf5fc852fb9b:e06ebd374218d0db8b4640fdbfcddb74$"
 	}
 }

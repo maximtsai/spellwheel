@@ -309,7 +309,7 @@ class SpellManager {
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
-                    messageBus.publish('setPauseDur', 20);
+                    messageBus.publish('setPauseDur', 18);
                     rockObj.bg.visible = false;
                     poolManager.returnItemToPool(rockObj, 'rock');
                 }
@@ -1090,7 +1090,7 @@ class SpellManager {
 
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', spellDamage);
-                    messageBus.publish('setPauseDur', 12);
+                    messageBus.publish('setPauseDur', 20);
 
                 }
             });
@@ -1161,7 +1161,7 @@ class SpellManager {
 
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', halfSpellDamage);
-                    messageBus.publish('setPauseDur', 12);
+                    messageBus.publish('setPauseDur', 15);
                 }
             });
         }
@@ -1533,7 +1533,6 @@ class SpellManager {
                     });
 
                     messageBus.publish('enemyTakeTrueDamage', 1 + additionalDamage);
-                    messageBus.publish('setPauseDur', 10);
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead && !globalObjects.player.dead) {
                         let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 4, 'spells', 'energyTarget1.png').play('energyTarget').setAlpha(0.2).setScale(0.95).setRotation(Math.PI*0.15).setBlendMode(Phaser.BlendModes.ADD);
@@ -2406,7 +2405,7 @@ class SpellManager {
             scaleX: 1,
             scaleY: 1
         }
-        messageBus.publish('animateVoidNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + buffAmt + " ATK\nDAMAGE", 1 + Math.sqrt(buffAmt) * 0.18, param, param2);
+        messageBus.publish('animateVoidNum', gameConsts.halfWidth, globalObjects.player.getY() - 40, "+" + buffAmt + " ATK\nDAMAGE", 1 + Math.sqrt(buffAmt) * 0.18, param, param2);
 
         messageBus.publish('selfTakeEffect', {
             name: spellID,

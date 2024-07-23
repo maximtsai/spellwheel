@@ -380,6 +380,7 @@
                         this.setArmsVisible(true);
                         this.checkFireForm();
                         this.punchCycleCount += 1;
+                        this.sprite.attackNum = 0;
                     },
                     attackFinishFunction: () => {
                         // this.makeSlashEffect();
@@ -387,18 +388,19 @@
                     },
                 },
                 {
-                    name: "|8x2",
+                    name: "|6x3",
                     chargeAmt: 500,
-                    damage: 8,
-                    attackTimes: 2,
-                    prepareSprite: ['death2windup.png', 'death2windupflip.png'],
-                    attackSprites: ['death2punch.png', 'death2punchflip.png'],
+                    damage: 6,
+                    attackTimes: 3,
+                    prepareSprite: ['death2windup.png', 'death2windupflip.png', 'death2windup.png'],
+                    attackSprites: ['death2punch.png', 'death2punchflip.png', 'death2punch.png'],
                     startFunction: () => {
                         this.pullbackScale = 0.88;
                         this.attackScale = 1.13;
                     },
                     finaleFunction: () => {
                         this.setArmsVisible(true);
+                        this.sprite.attackNum = 0;
                     },
                     attackFinishFunction: () => {
                     // this.makeSlashEffect();
@@ -569,22 +571,24 @@
                     finaleFunction: () => {
                         this.setArmsVisible(true);
                         this.punchCycleCount += 1;
+                        this.sprite.attackNum = 0;
                     },
 
                 },
                 {
-                    name: "|8x2+$6",
+                    name: "|6x3+$6",
                     chargeAmt: 550,
-                    damage: 8,
-                    attackTimes: 2,
-                    prepareSprite: ['death2windup.png', 'death2windupflip.png'],
-                    attackSprites: ['death2punch.png', 'death2punchflip.png'],
+                    damage: 6,
+                    attackTimes: 3,
+                    prepareSprite: ['death2windup.png', 'death2windupflip.png', 'death2windup.png'],
+                    attackSprites: ['death2punch.png', 'death2punchflip.png', 'death2punch.png'],
                     startFunction: () => {
                         this.pullbackScale = 0.88;
                         this.attackScale = 1.13;
                     },
                     finaleFunction: () => {
                         this.setArmsVisible(true);
+                        this.sprite.attackNum = 0;
                     },
                     attackFinishFunction: () => {
                         this.applyFire(3);

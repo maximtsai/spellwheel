@@ -69,8 +69,8 @@ class TextPopupManager {
         let boxHeight = this.infoText.height * 0.5 + 10;
         this.infoBox.setScale(boxWidth * multScale, boxHeight * multScale);
         let borderGoalScale = boxWidth * multScale * 0.02;
-        this.infoBorderTop.setScale(borderGoalScale*0.1, 0.5).setPosition(this.getCenterPos(), this.infoBox.y - boxHeight + 2);
-        this.infoBorderBot.setScale(borderGoalScale*0.1, -0.5).setPosition(this.getCenterPos(), this.infoBox.y + boxHeight - 2);
+        this.infoBorderTop.setScale(borderGoalScale*0.1, 0.5).setPosition(this.getCenterPos(), this.infoBox.y - (boxHeight + 2) * multScale);
+        this.infoBorderBot.setScale(borderGoalScale*0.1, -0.5).setPosition(this.getCenterPos(), this.infoBox.y + (boxHeight - 2) * multScale);
 
         this.currAnim = this.scene.tweens.add({
             targets: [this.infoText, this.infoBorderTop, this.infoBorderBot],

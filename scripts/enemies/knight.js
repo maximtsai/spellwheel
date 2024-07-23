@@ -35,14 +35,10 @@
      }
 
      initMisc() {
-         this.voidShield1a = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_1.png').setScale(0.5).setDepth(3).setAlpha(0);
-         this.voidShield1b = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(0.5).setDepth(3).setAlpha(0);
-         this.voidShield1a.startScale = this.voidShield1a.scaleX;
-         this.voidShield1b.startScale = this.voidShield1a.scaleX;
+         this.voidShield1b = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(1).setDepth(3).setAlpha(0);
+         this.voidShield1b.startScale = this.voidShield1b.scaleX;
 
-         this.voidShield2a = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_1.png').setScale(0.64).setDepth(3).setAlpha(0);
-         this.voidShield2b = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(0.64).setDepth(3).setAlpha(0);
-         this.voidShield2a.startScale = this.voidShield2a.scaleX;
+         this.voidShield2b = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(1.28).setDepth(3).setAlpha(0);
          this.voidShield2b.startScale = this.voidShield2b.scaleX;
 
          this.sigilEffect = this.addImage(this.x, this.y, 'enemies', 'void_knight_sigil.png').setScale(this.sprite.startScale).setDepth(5).setAlpha(0);
@@ -275,32 +271,30 @@
              messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random()*150, this.sprite.y + 50 - Math.random() * 100, 'NEGATED', 0.75);
 
              if (this.shieldsActive == 1) {
-                 this.voidShield1a.setScale(this.voidShield1a.startScale * 1.12);
-                 this.voidShield1b.setScale(this.voidShield1a.startScale * 1.12);
+                 this.voidShield1b.setScale(this.voidShield1b.startScale * 1.12);
                  this.addTween({
-                     targets: [this.voidShield1a, this.voidShield1b],
-                     scaleX: this.voidShield1a.startScale,
-                     scaleY: this.voidShield1a.startScale,
+                     targets: [this.voidShield1b],
+                     scaleX: this.voidShield1b.startScale,
+                     scaleY: this.voidShield1b.startScale,
                      duration: 250,
                      ease: 'Cubic.easeOut',
                  });
              } else {
                  if (this.shieldAmts <= 3) {
                      this.addTween({
-                         targets: [this.voidShield2a, this.voidShield2b],
-                         scaleX: this.voidShield2a.startScale * 1.2,
-                         scaleY: this.voidShield2a.startScale * 1.2,
+                         targets: [this.voidShield2b],
+                         scaleX: this.voidShield2b.startScale * 1.2,
+                         scaleY: this.voidShield2b.startScale * 1.2,
                          alpha: 0,
                          duration: 250,
                          ease: 'Cubic.easeOut',
                      });
                  } else {
-                     this.voidShield2a.setScale(this.voidShield2a.startScale * 1.1);
                      this.voidShield2b.setScale(this.voidShield2b.startScale * 1.1);
                      this.addTween({
-                         targets: [this.voidShield2a, this.voidShield2b],
-                         scaleX: this.voidShield2a.startScale,
-                         scaleY: this.voidShield2a.startScale,
+                         targets: [this.voidShield2b],
+                         scaleX: this.voidShield2b.startScale,
+                         scaleY: this.voidShield2b.startScale,
                          duration: 250,
                          ease: 'Cubic.easeOut',
                      });
@@ -372,17 +366,13 @@
          let distMult = 1;
          if (doubleShield) {
              distMult = 1;
-             this.voidShield1a.startScale = this.voidShield1a.startScale * distMult;
              this.voidShield1b.startScale = this.voidShield1b.startScale * distMult;
          }
-         this.voidShield1a.visible = true;
-         this.voidShield1a.visible = true;
-         this.voidShield1a.setScale(this.voidShield1a.startScale * 1.15).setAlpha(0.5);
-         this.voidShield1b.setScale(this.voidShield1a.startScale * 1.15).setAlpha(0.5);
+         this.voidShield1b.setScale(this.voidShield1b.startScale * 1.15).setAlpha(0.5);
          this.addTween({
-             targets: [this.voidShield1a, this.voidShield1b],
-             scaleX: this.voidShield1a.startScale,
-             scaleY: this.voidShield1a.startScale,
+             targets: [this.voidShield1b],
+             scaleX: this.voidShield1b.startScale,
+             scaleY: this.voidShield1b.startScale,
              duration: 200,
              alpha: 1,
              ease: 'Cubic.easeIn',
@@ -391,19 +381,17 @@
          this.createShieldEye(this.x + 47 * distMult, this.y + 95 * distMult, 0.44);
          this.createShieldEye(this.x - 47 * distMult, this.y + 95 * distMult, 0.44);
          if (doubleShield) {
-             this.voidShield2a.setScale(this.voidShield2a.startScale * 1.15).setAlpha(0.5);
              this.voidShield2b.setScale(this.voidShield2b.startScale * 1.15).setAlpha(0.5);
              this.addTween({
                  delay: 400,
-                 targets: [this.voidShield2a, this.voidShield2b],
-                 scaleX: this.voidShield2a.startScale,
-                 scaleY: this.voidShield2a.startScale,
+                 targets: [this.voidShield2b],
+                 scaleX: this.voidShield2b.startScale,
+                 scaleY: this.voidShield2b.startScale,
                  duration: 200,
                  alpha: 1,
                  ease: 'Cubic.easeIn',
                  onStart: () => {
                      playSound('void_shield');
-                     this.voidShield2a.visible = true;
                      this.voidShield2b.visible = true;
                  }
              });
@@ -480,14 +468,13 @@
         if (clearSecondShield) {
             this.shieldsActive--;
             this.addTween({
-                targets: [this.voidShield2a, this.voidShield2b],
-                scaleX: this.voidShield2a.scaleX + 0.1,
-                scaleY: this.voidShield2a.scaleX + 0.1,
+                targets: [this.voidShield2b],
+                scaleX: this.voidShield2b.scaleX + 0.1,
+                scaleY: this.voidShield2b.scaleX + 0.1,
                 duration: 300,
                 ease: 'Cubic.easeOut',
                 alpha: 0,
                 onComplete: () => {
-                    this.voidShield2a.visible = false;
                     this.voidShield2b.visible = false;
                 }
             });
@@ -495,14 +482,13 @@
             if (this.shieldsActive > 0) {
                 this.shieldsActive = 0;
                 this.addTween({
-                    targets: [this.voidShield1a, this.voidShield1b],
-                    scaleX: this.voidShield1a.scaleX + 0.1,
-                    scaleY: this.voidShield1a.scaleX + 0.1,
+                    targets: [this.voidShield1b],
+                    scaleX: this.voidShield1b.scaleX + 0.1,
+                    scaleY: this.voidShield1b.scaleX + 0.1,
                     duration: 250,
                     ease: 'Cubic.easeOut',
                     alpha: 0,
                     onComplete: () => {
-                        this.voidShield2a.visible = false;
                         this.voidShield2b.visible = false;
                     }
                 });
@@ -777,11 +763,11 @@
              ],
              [
                  {
-                     name: "|6x2 ",
+                     name: "|5x2 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 600,
-                     chargeMult: 1.8,
-                     damage: 6,
+                     chargeAmt: 500,
+                     chargeMult: 2,
+                     damage: 5,
                      attackTimes: 2,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -798,10 +784,49 @@
                      }
                  },
                  {
+                     name: "|12 ",
+                     announceName: "ASSAIL",
+                     chargeAmt: 400,
+                     chargeMult: 2,
+                     damage: 12,
+                     prepareSprite: 'void_knight_3.png',
+                     attackSprites: ['void_knight_2.png'],
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect(true);
+                         playSound('void_strike_hit');
+                         playSound('void_strike', 0.4);
+                     },
+                     finaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: "|5x3 ",
+                     announceName: "ASSAIL",
+                     chargeAmt: 550,
+                     chargeMult: 2,
+                     damage: 5,
+                     attackTimes: 3,
+                     prepareSprite: 'void_knight_3.png',
+                     attackSprites: ['void_knight_2.png'],
+                     attackFinishFunction: () => {
+                         this.makeVoidSlashEffect();
+                         playSound('void_strike_hit');
+                         playSound('void_strike', 0.15);
+                     },
+                     finaleFunction: () => {
+                         this.voidTentacleFront.visible = true;
+                         this.voidTentacleBack.visible = true;
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
                      name: "|14 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 500,
-                     chargeMult: 1.8,
+                     chargeAmt: 450,
+                     chargeMult: 2,
                      damage: 14,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -817,12 +842,12 @@
                      }
                  },
                  {
-                     name: "|6x3 ",
+                     name: "|5x4 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 650,
-                     chargeMult: 1.8,
-                     damage: 6,
-                     attackTimes: 3,
+                     chargeAmt: 600,
+                     chargeMult: 2,
+                     damage: 5,
+                     attackTimes: 4,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
                      attackFinishFunction: () => {
@@ -840,47 +865,8 @@
                      name: "|16 ",
                      announceName: "ASSAIL",
                      chargeAmt: 500,
-                     chargeMult: 1.8,
+                     chargeMult: 2,
                      damage: 16,
-                     prepareSprite: 'void_knight_3.png',
-                     attackSprites: ['void_knight_2.png'],
-                     attackFinishFunction: () => {
-                         this.makeVoidSlashEffect(true);
-                         playSound('void_strike_hit');
-                         playSound('void_strike', 0.4);
-                     },
-                     finaleFunction: () => {
-                         this.voidTentacleFront.visible = true;
-                         this.voidTentacleBack.visible = true;
-                         this.sigilEffect.visible = true;
-                     }
-                 },
-                 {
-                     name: "|6x4 ",
-                     announceName: "ASSAIL",
-                     chargeAmt: 700,
-                     chargeMult: 1.8,
-                     damage: 6,
-                     attackTimes: 4,
-                     prepareSprite: 'void_knight_3.png',
-                     attackSprites: ['void_knight_2.png'],
-                     attackFinishFunction: () => {
-                         this.makeVoidSlashEffect();
-                         playSound('void_strike_hit');
-                         playSound('void_strike', 0.15);
-                     },
-                     finaleFunction: () => {
-                         this.voidTentacleFront.visible = true;
-                         this.voidTentacleBack.visible = true;
-                         this.sigilEffect.visible = true;
-                     }
-                 },
-                 {
-                     name: "|18 ",
-                     announceName: "ASSAIL",
-                     chargeAmt: 500,
-                     chargeMult: 1.8,
-                     damage: 18,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
                      attackFinishFunction: () => {
@@ -912,11 +898,11 @@
                      }
                  },
                  {
-                     name: ";6x6 ",
+                     name: ";5x6 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 1000,
-                     chargeMult: 1.8,
-                     damage: 6,
+                     chargeAmt: 900,
+                     chargeMult: 2,
+                     damage: 5,
                      attackTimes: 6,
                      isBigMove: true,
                      prepareSprite: 'void_knight_3.png',
@@ -933,11 +919,11 @@
                      }
                  },
                  {
-                     name: ";24 ",
+                     name: ";20 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 800,
-                     chargeMult: 1.8,
-                     damage: 24,
+                     chargeAmt: 750,
+                     chargeMult: 2,
+                     damage: 20,
                      isBigMove: true,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -957,10 +943,11 @@
      }
 
      startPhase2() {
+         this.forceOverrideSprite = null;
          this.setDefaultSprite('void_knight_3_empty.png');
          this.sprite.setDepth(2);
          playSound('meat_click_right');
-         this.setMaxHealth(gameVars.isHardMode ? 120 : 90);
+         this.setMaxHealth(gameVars.isHardMode ? 125 : 100);
          this.heal(this.healthMax);
          this.setAwake();
          this.sigilEffect.setFrame('void_knight_sigil2.png').setScale(this.sprite.startScale);
@@ -1086,6 +1073,7 @@
          this.isFirstMode = false;
          this.isLoading = true;
          playSound('clunk');
+         this.forceOverrideSprite = 'void_knight_3_empty.png';
          this.setSprite('void_knight_3_empty.png');
 
          let helmet = this.addImage(this.x + 34, this.y - 59, 'enemies', 'void_knight_helmet.png').setDepth(4);

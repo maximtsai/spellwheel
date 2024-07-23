@@ -90,7 +90,7 @@
                      this.setSprite(this.defaultSprite);
                      this.addTween({
                          targets: this.sprite,
-                         duration: 200,
+                         duration: 150,
                          scaleY: 1.1,
                          ease: 'Quart.easeOut',
                          onComplete: () => {
@@ -98,7 +98,7 @@
 
                              this.addTween({
                                  targets: this.sprite,
-                                 duration: 300,
+                                 duration: 250,
                                  scaleY: 1,
                                  ease: 'Back.easeOut',
                              });

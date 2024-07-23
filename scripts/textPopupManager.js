@@ -11,6 +11,7 @@ class TextPopupManager {
         this.blockNums = [];
         this.armorNums = [];
         this.voidNums = [];
+        this.infoBlur = this.scene.add.image(0, 0, 'blurry', 'display_backglow.png').setAlpha(0).setDepth(10000);
         this.infoBox = this.scene.add.image(0, 0, 'blackPixel').setAlpha(0).setDepth(10000);
         this.infoText = this.scene.add.text(0, 0, 'WELCOME', {fontFamily: 'Arial', fontSize: isMobile ? 23 : 22, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(10000);
         this.infoText.setFontStyle('bold');
@@ -39,10 +40,12 @@ class TextPopupManager {
         this.infoText.x = x; this.infoText.y = y;
         this.infoText.setAlpha(0);
         this.infoBox.setAlpha(0);
+        this.infoBlur.setAlpha(0)
         this.infoBorderTop.setAlpha(0);
         this.infoBorderBot.setAlpha(0);
         this.infoText.setAlign('left');
         this.infoBox.x = x; this.infoBox.y = y + 2;
+        this.infoBlur.y = this.infoBox.y;
         if (align == "left") {
             this.infoText.x += 3;
             this.infoText.setOrigin(0, 0.5);
@@ -52,7 +55,7 @@ class TextPopupManager {
             this.infoText.setAlign('center');
             this.infoText.setOrigin(0.5, 0.5);
             this.infoBox.setOrigin(0.5, 0.5);
-
+            this.infoBlur.x = this.infoBox.x;
         } else if (align == "right") {
             this.infoText.setOrigin(1, 0.5);
             this.infoText.x -= 6;
@@ -67,7 +70,13 @@ class TextPopupManager {
         this.infoText.setScale(multScale);
         let boxWidth = this.infoText.width * 0.5 + 8;
         let boxHeight = this.infoText.height * 0.5 + 10;
+        if (boxHeight > 50) {
+            this.infoText.y += 1;
+        }
         this.infoBox.setScale(boxWidth * multScale, boxHeight * multScale);
+        this.infoBlur.setScale(this.infoBox.scaleX * 0.021, this.infoBox.scaleY * 0.025);
+        this.infoBlur.x = this.getCenterPos();
+
         let borderGoalScale = boxWidth * multScale * 0.02;
         let yTopOffset = useSmall ? -2 : -2;
         this.infoBorderTop.setScale(borderGoalScale*0.1, 0.5).setPosition(this.getCenterPos(), this.infoBox.y - (boxHeight + yTopOffset) * multScale);
@@ -92,7 +101,7 @@ class TextPopupManager {
             }
         });
         this.currAnim2 = this.scene.tweens.add({
-            targets: [this.infoBox],
+            targets: [this.infoBox, this.infoBlur],
             alpha: 0.7,
             duration: 300,
         });
@@ -109,7 +118,7 @@ class TextPopupManager {
             this.currAnim3.stop();
         }
         this.scene.tweens.add({
-            targets: [this.infoText, this.infoBox, this.infoBorderTop, this.infoBorderBot],
+            targets: [this.infoText, this.infoBox, this.infoBorderTop, this.infoBorderBot, this.infoBlur],
             alpha: 0,
             duration: 300,
         });

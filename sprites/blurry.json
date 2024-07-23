@@ -510,6 +510,31 @@
 					}
 				},
 				{
+					"filename": "display_backglow.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 120,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 120,
+						"h": 100
+					},
+					"frame": {
+						"x": 1653,
+						"y": 1694,
+						"w": 120,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "staticlite1.png",
 					"rotated": false,
 					"trimmed": true,
@@ -553,6 +578,31 @@
 						"y": 720,
 						"w": 104,
 						"h": 9
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "battletext_bg.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 10
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 10
+					},
+					"frame": {
+						"x": 1347,
+						"y": 1903,
+						"w": 100,
+						"h": 10
 					},
 					"anchor": {
 						"x": 0.5,
@@ -751,6 +801,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:b4b92884839edea82bb32d3543d3ac85:65a2eab3c33bd727fdac37ab60634c8a:792234a2cebdb690faa7567a0f79f2d2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:b5cb7aade2a84f860098cad6dd794fd3:c4afa2ddc4d93de9ea9201f9f95a422a:792234a2cebdb690faa7567a0f79f2d2$"
 	}
 }

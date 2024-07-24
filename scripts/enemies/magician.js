@@ -73,6 +73,27 @@
          }
          if (canFlatten) {
              this.isBeingFlattened = true;
+             if (!this.bonk) {
+                 this.bonk = this.addImage(this.x, this.y - 80, 'enemies', 'bonk.png');
+             }
+             this.bonk.setScale(0.7);
+             this.addTween({
+                 targets: this.bonk,
+                 scaleX: 1.08,
+                 scaleY: 1.08,
+                 ease: 'Back.easeOut',
+                 duration: 300,
+                 onComplete: () => {
+                     this.addTween({
+                         delay: 700,
+                         targets: this.bonk,
+                         scaleX: 0,
+                         scaleY: 0,
+                         ease: 'Cubic.easeIn',
+                         duration: 250,
+                     })
+                 }
+             })
              this.forceOverrideSprite = 'time_magi_flattened.png';
              this.setSprite('time_magi_flattened.png');
              playSound('punch2', 0.4);
@@ -1147,9 +1168,9 @@
                 {
                      name: "}4x1}",
                      desc: "The Time Magician\nuses his ultimate attack",
-                     chargeAmt: 1350,
+                     chargeAmt: 1400,
                      isBigMove: true,
-                     chargeMult: 6,
+                     chargeMult: 5.75,
                      damage: -1,
                     finishDelay: 4200,
 

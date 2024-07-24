@@ -74,6 +74,8 @@
          this.spellStartY = this.y + 10;
          this.createGlowHands();
          this.addDelay(() => {
+             this.spellCirclePulse = this.addImage(this.x, this.spellStartY, 'blurry', 'spellcircle_pulse.png').setAlpha(0.1).setScale(0.5).setDepth(-3);
+             this.spellCircleGlow = this.addImage(this.x, this.spellStartY, 'blurry', 'spellcircle_bgglow.png').setAlpha(0.1).setScale(1).setDepth(-3);
              this.spellCircle = this.addImage(this.x, this.spellStartY, 'deathfinal', 'spellcircle.png').setAlpha(0.1).setScale(0.5);
              this.rotateSpellCircleTo(0, false, () => {
                  // this.fadeOutCurrentHand();
@@ -151,7 +153,7 @@
              [
                  // 0
                  {
-                     name: "OBSERVING",
+                     name: "OBSERVING...",
                      chargeAmt: 300,
                      finishDelay: 3000,
                      damage: 0,
@@ -514,7 +516,24 @@
              duration: 2000
          })
         this.fadeMainBG(false);
+         this.spellCirclePulse.setScale(0.5);
+        this.spellCircleGlow.setScale(1);
         this.spellCircle.setScale(0.5);
+        this.addTween({
+            targets: this.spellCircleGlow,
+            scaleX: 3,
+            scaleY: 3,
+            ease: 'Cubic.easeInOut',
+            duration: isFast ? 600 : 700,
+        });
+        this.addTween({
+            delay: 100,
+            targets: this.spellCirclePulse,
+            scaleX: 4.2,
+            scaleY: 4.2,
+            ease: 'Cubic.easeOut',
+            duration: 1400,
+        });
         this.addTween({
             targets: this.spellCircle,
             scaleX: 1.5,
@@ -526,10 +545,17 @@
             playSound('ringknell');
         }, 150)
         this.addTween({
-            targets: this.spellCircle,
+            targets: [this.spellCircle, this.spellCircleGlow, this.spellCirclePulse],
             alpha: 1,
             ease: 'Quart.easeOut',
             duration: isFast ? 500 : 550,
+            onComplete: () => {
+                this.addTween({
+                    targets: this.spellCirclePulse,
+                    alpha: 0,
+                    duration: 1000,
+                })
+            }
         })
         this.addTween({
             targets: this.glowHands,
@@ -562,7 +588,7 @@
         this.spellCircle.rotation = startRot;
 
         this.addTween({
-            targets: this.spellCircle,
+            targets: [this.spellCircle, this.spellCircleGlow],
             rotation: goalRot,
             ease: 'Quart.easeInOut',
             duration: isFast ? 2400 : 2700,
@@ -583,7 +609,7 @@
                     duration: 600
                 });
                 this.addTween({
-                    targets: this.spellCircle,
+                    targets: [this.spellCircle, this.spellCircleGlow],
                     ease: 'Cubic.easeOut',
                     alpha: 0,
                     duration: 600

@@ -1262,7 +1262,7 @@ class Enemy {
         if (this.isDestroyed) {
             return;
         }
-        this.timeSinceLastAttacked = 9999;
+        // this.timeSinceLastAttacked = 9999;
         this.castAggravateCharge += 20;
         this.isAsleep = false;
         this.attackName.visible = true;

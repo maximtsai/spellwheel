@@ -270,7 +270,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.5</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -354,6 +354,21 @@
                 <rect>131,145,263,290</rect>
                 <key>scale9Paddings</key>
                 <rect>131,145,263,290</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">blurry/red_vertical.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1,13,2,25</rect>
+                <key>scale9Paddings</key>
+                <rect>1,13,2,25</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -45,14 +45,14 @@
      }
 
      initFog() {
-        this.fogThick = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'blurry', 'fogthick.png').setDepth(9).setAlpha(0).setOrigin(0.5, 0.25);
+        this.fogThick = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'blurry', 'fogthick.png').setDepth(9).setAlpha(0).setOrigin(0.5, 0.25).setScale(2);
         this.graves = this.addImage(gameConsts.halfWidth, gameConsts.height + 8, 'backgrounds', 'graves.png').setDepth(9).setScale(1.25, 1).setAlpha(0).setOrigin(0.5, 1);
 
         this.addTween({
              targets: [this.fogThick],
              duration: 1000,
              alpha: 1,
-             scaleX: 1,
+             scaleX: 2,
              ease: 'Cubic.easeInOut',
          });
         this.addTween({
@@ -68,6 +68,7 @@
      launchAttack(attackTimes = 1, prepareSprite, preAttackSprite, attackSprites, isRepeatedAttack, finishDelay, transitionFast = false) {
          this.sigilEffect.visible = false;
          if (this.voidTentacleFront) {
+             console.log("Hide void tentacle")
              this.voidTentacleFront.visible = false;
              this.voidTentacleBack.visible = false;
              // this.setSprite('void_knight_3.png');
@@ -105,7 +106,7 @@
 
         let goalY = gameConsts.halfHeight - 200 + (fogExpand ? 3 : -2);
         let goalX = gameConsts.halfWidth + (fogExpand ? 40 : -40);
-        let goalScaleX = 1 + (fogExpand ? 0.03 : 0);
+        let goalScaleX = 2 + (fogExpand ? 0.06 : 0);
 
         this.fogTween = this.addTween({
             targets: this.fogThick,
@@ -281,12 +282,23 @@
                  });
              } else {
                  if (this.shieldAmts <= 3) {
+                     if (this.voidShield2b.repeatTween) {
+                         this.voidShield2b.repeatTween.stop();
+                     }
                      this.addTween({
                          targets: [this.voidShield2b],
                          scaleX: this.voidShield2b.startScale * 1.2,
                          scaleY: this.voidShield2b.startScale * 1.2,
                          alpha: 0,
                          duration: 250,
+                         ease: 'Cubic.easeOut',
+                     });
+                     this.voidShield1b.setScale(this.voidShield1b.startScale * 1.25);
+                     this.addTween({
+                         targets: [this.voidShield1b],
+                         scaleX: this.voidShield1b.startScale,
+                         scaleY: this.voidShield1b.startScale,
+                         duration: 350,
                          ease: 'Cubic.easeOut',
                      });
                  } else {
@@ -376,6 +388,18 @@
              duration: 200,
              alpha: 1,
              ease: 'Cubic.easeIn',
+             onComplete: () => {
+                 this.voidShield1b.repeatTween = this.addTween({
+                     targets: this.voidShield1b,
+                     alpha: 0.8,
+                     duration: 2000,
+                     scaleX: this.voidShield1b.startScale * 0.99,
+                     scaleY: this.voidShield1b.startScale * 0.99,
+                     yoyo: true,
+                     repeat: -1,
+                     ease: 'Quad.easeInOut'
+                 })
+             }
          });
          this.createShieldEye(this.x, this.y + 103 * distMult, 0.5);
          this.createShieldEye(this.x + 47 * distMult, this.y + 95 * distMult, 0.44);
@@ -385,14 +409,26 @@
              this.addTween({
                  delay: 400,
                  targets: [this.voidShield2b],
-                 scaleX: this.voidShield2b.startScale,
-                 scaleY: this.voidShield2b.startScale,
+                 scaleX: this.voidShield2b.startScale * 1.01,
+                 scaleY: this.voidShield2b.startScale * 1.01,
                  duration: 200,
                  alpha: 1,
                  ease: 'Cubic.easeIn',
                  onStart: () => {
                      playSound('void_shield');
                      this.voidShield2b.visible = true;
+                 },
+                 onComplete: () => {
+                     this.voidShield2b.repeatTween = this.addTween({
+                         targets: this.voidShield2b,
+                         alpha: 0.8,
+                         duration: 2000,
+                         scaleX: this.voidShield2b.startScale * 0.99,
+                         scaleY: this.voidShield2b.startScale * 0.99,
+                         yoyo: true,
+                         repeat: -1,
+                         ease: 'Quad.easeInOut'
+                     })
                  }
              });
              this.shieldsActive = 2;
@@ -465,6 +501,8 @@
          while (this.eyeShieldObjects.length > 0) {
              this.killEye(this.eyeShieldObjects.pop());
          }
+         this.shieldText.visible = false;
+
         if (clearSecondShield) {
             this.shieldsActive--;
             this.addTween({
@@ -478,6 +516,9 @@
                     this.voidShield2b.visible = false;
                 }
             });
+            if (this.voidShield2b.repeatTween) {
+                this.voidShield2b.repeatTween.stop();
+            }
         } else {
             if (this.shieldsActive > 0) {
                 this.shieldsActive = 0;
@@ -492,6 +533,9 @@
                         this.voidShield2b.visible = false;
                     }
                 });
+                if (this.voidShield1b.repeatTween) {
+                    this.voidShield1b.repeatTween.stop();
+                }
             }
         }
      }
@@ -614,7 +658,7 @@
                          this.nextAttackIndex = 0;
                          this.sigilEffect.visible = true;
 
-                         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 80, getLangText("shield_tut_knight"), 'right');
+                         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 80, getLangText("shield_tut_knight"), 'right', true);
                           this.addDelay(() => {
                              this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                                  this.playerSpellCastSub.unsubscribe();
@@ -1051,15 +1095,15 @@
          this.addTween({
              targets: [this.fogThick, this.fogSpook],
              duration: 1000,
-             scaleX: 5,
-             scaleY: 5,
+             scaleX: 10,
+             scaleY: 10,
              ease: 'Cubic.easeOut',
          })
          this.addTween({
              targets: [this.fogThick, this.fogSpook],
              duration: 1000,
-             scaleX: -4.5,
-             scaleY: 4.5,
+             scaleX: -9,
+             scaleY: 9,
              ease: 'Cubic.easeOut',
          })
          this.addTween({
@@ -1082,7 +1126,7 @@
          this.addExtraSprite(arm);
 
          this.addTimeout(() => {
-            this.fogSpook = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'blurry', 'fogspook.png').setDepth(9).setAlpha(0).setBlendMode(Phaser.BlendModes.ADD).setOrigin(0.5, 0.25).setScale(-1, 1);
+            this.fogSpook = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'blurry', 'fogspook.png').setDepth(9).setAlpha(0).setBlendMode(Phaser.BlendModes.ADD).setOrigin(0.5, 0.25).setScale(-2, 2);
             this.fogSpookTween = this.addTween({
                 targets: this.fogSpook,
                 alpha: 1,

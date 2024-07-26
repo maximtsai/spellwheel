@@ -896,7 +896,7 @@ class Player {
                                             laserAnim.rotation = shieldObj.animObj[0].rotation - startRotOffset + i * 0.06;
                                             laserAnim.scaleX = laserAnim.origScale * (1.2 + Math.sqrt(shieldObj.storedDamage) * 0.095);
                                             this.scene.tweens.add({
-                                                delay: i * 85,
+                                                delay: i * 90 - gameVars.avgDeltaScale * 7,
                                                 targets: laserAnim,
                                                 duration: 25,
                                                 scaleX: laserAnim.origScale * (0.9 + Math.sqrt(shieldObj.storedDamage) * 0.05),

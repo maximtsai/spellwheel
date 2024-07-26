@@ -1502,7 +1502,9 @@ const ENABLE_KEYBOARD = true;
             this.innerCircle.rotVel *= 0.01;
 
             this.createElementCast(closestElement);
-            this.createEmbodimentCast(closestEmbodiment);
+            this.createEmbodimentCast(closestEmbodiment, () => {
+                this.trueCastSpell(closestElement, closestEmbodiment, shieldId, closestEmbodiment.startRotation);
+            });
 
             if (this.spellNameTextAnim) {
                 this.spellNameTextAnim.stop();
@@ -1515,9 +1517,7 @@ const ENABLE_KEYBOARD = true;
                 duration: gameVars.gameManualSlowSpeed * 400,
             });
             messageBus.publish('spellClicked');
-            PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 1250, () => {
-                this.trueCastSpell(closestElement, closestEmbodiment, shieldId, closestEmbodiment.startRotation);
-            });
+
         } else {
             // failed cast
             let retryDelay = this.keyboardCasted ? 800 : 500;
@@ -1830,7 +1830,7 @@ const ENABLE_KEYBOARD = true;
         });
     }
 
-    createEmbodimentCast(elem) {
+    createEmbodimentCast(elem, castFunc) {
         let elemName = elem.runeName;
         let sprite = this.embodimentsAnimArray[elemName];
         if (!sprite) {
@@ -1924,6 +1924,7 @@ const ENABLE_KEYBOARD = true;
                         });
                     },
                     onComplete: () => {
+                        castFunc();
                         PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 250, () => {
                             this.bufferedCastAvailable = true;
                         });

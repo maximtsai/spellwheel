@@ -195,6 +195,7 @@ function update(time, delta) {
     }
 
     avgDeltaScale *= gameVars.timeScale;
+    gameVars.avgDeltaScale = avgDeltaScale;
 
 
     buttonManager.update(avgDeltaScale);

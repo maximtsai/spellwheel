@@ -485,7 +485,7 @@
          let music_note = getTempPoolObject('enemies', 'music_note.png', 'music_note', duration * 2);
          music_note.setScale(scale * 0.4).setPosition(gameConsts.halfWidth, this.y).setAlpha(0.75).setDepth(31);
          let music_note_blue = getTempPoolObject('enemies', 'music_note_blue.png', 'music_note_blue', 450);
-         music_note_blue.setScale(music_note.scaleX).setPosition(music_note.x, music_note.y).setDepth(30).setAlpha(isWeak ? 0.1 : 1);
+         music_note_blue.setScale(music_note.scaleX * 1.334).setPosition(music_note.x, music_note.y).setDepth(30).setAlpha(isWeak ? 0.1 : 1);
          this.addTween({
              targets: music_note_blue,
              duration: 400,
@@ -498,7 +498,7 @@
              ease: 'Cubic.easeOut',
              onComplete: () => {
                  let music_note_blue = getTempPoolObject('enemies', 'music_note_blue.png', 'music_note_blue', 450);
-                 music_note_blue.setScale(music_note.scaleX).setPosition(music_note.x, music_note.y).setDepth(30).setAlpha(isWeak ? 0.1 : 1);
+                 music_note_blue.setScale(music_note.scaleX * 1.334).setPosition(music_note.x, music_note.y).setDepth(30).setAlpha(isWeak ? 0.1 : 1);
                  this.addTween({
                      targets: music_note_blue,
                      duration: 400,
@@ -525,7 +525,7 @@
 
                  messageBus.publish('playerAddDelayedDamage', damage);
                  let music_note_blue = getTempPoolObject('enemies', 'music_note_blue.png', 'music_note_blue', 450);
-                 music_note_blue.setScale(music_note.scaleX).setPosition(music_note.x, music_note.y).setDepth(30).setAlpha(isWeak ? 0.1 : 1);
+                 music_note_blue.setScale(music_note.scaleX * 1.334).setPosition(music_note.x, music_note.y).setDepth(30).setAlpha(isWeak ? 0.1 : 1);
                  this.addTween({
                      targets: music_note_blue,
                      duration: 400,

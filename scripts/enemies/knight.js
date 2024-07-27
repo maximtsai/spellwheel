@@ -13,6 +13,43 @@
          this.addTimeout(() => {
             this.initFog();
          }, 0);
+         this.addDelay(() => {
+             let voidTentaEye = this.addImage(this.x + 50, this.y - 30, 'enemies', 'void_tentacle_eye.png').setDepth(-1).setRotation(-1.2).setScale(1.3);
+             playSound('meat_click_right', 0.2);
+             playSound('void_body', 0.35);
+             this.addTween({
+                 targets: voidTentaEye,
+                 rotation: 0.1,
+                 ease: 'Back.easeOut',
+                 scaleX: 1.2,
+                 x: "+=25",
+                 y: "-=20",
+                 scaleY: 1.2,
+                 duration: 750,
+                 onComplete: () => {
+                     this.addTween({
+                         targets: voidTentaEye,
+                         rotation: 0.05,
+                         ease: 'Back.easeOut',
+                         scaleX: 1.15,
+                         scaleY: 1.15,
+                         duration: 1200,
+                         onComplete: () => {
+                             this.addTween({
+                                 targets: voidTentaEye,
+                                 rotation: -1.2,
+                                 x: "-=40",
+                                 ease: 'Back.easeIn',
+                                 scaleX: 1,
+                                 scaleY: 1,
+                                 duration: 400,
+                             })
+                         }
+                     })
+
+                 }
+             })
+         }, 750)
      }
 
      initStatsCustom() {
@@ -27,7 +64,7 @@
          this.eyeShieldObjects = [];
          this.eyeUpdateTick = 30;
          this.lastAttackLingerMult = 1.2;
-         this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 25, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
+         this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 55, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
          this.voidSlashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 260, 'spells', 'darkSlice.png').setScale(0.8).setDepth(130).setAlpha(0).setOrigin(0.15, 0.5);
          this.voidSlashEffect2 = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 260, 'spells', 'darkSlice.png').setScale(0.8).setDepth(130).setAlpha(0).setOrigin(0.15, 0.5);
         this.isFirstVoidSlash = true;
@@ -545,11 +582,11 @@
              this.slashEffectAnim.stop();
          }
          let isFlipped = this.slashEffect.scaleX > 0;
-         this.slashEffect.setAlpha(1).setScale(isFlipped ? 0.5 : -0.5, 0.4).setRotation(isFlipped ? -1.5 : 1.5);
+         this.slashEffect.setAlpha(1.2).setScale(isFlipped ? 0.6 : -0.6, 0.54).setRotation(isFlipped ? -1.5 : 1.5);
          this.slashEffectAnim = this.addTween({
              targets: this.slashEffect,
              scaleX: isFlipped ? 1 : -1,
-             scaleY: 0.6,
+             scaleY: 0.9,
              duration: 250,
              ease: 'Cubic.easeOut',
              alpha: 0,

@@ -1085,7 +1085,7 @@
                          this.createTimeObject('clock3.png', this.x - 35, this.y - 100, 100);
                          this.addTimeout(() => {
                              this.fireTimeObjects(4);
-                         }, 800);
+                         }, 600);
                      },
                      attackFinishFunction: () => {
                         if (this.health < this.healthMax - 20) {

@@ -25,7 +25,7 @@
     }
 
      initStatsCustom() {
-        this.health = 175;
+        this.health = 200;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -50,8 +50,8 @@
             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText('dummy_body_a'), 'right');
              let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
              let centerXPos = globalObjects.textPopupManager.getCenterPos();
-             this.rune3 = this.addImage(centerXPos - 35, runeYPos + 28, 'circle', 'rune_matter_glow.png').setDepth(10001).setScale(0.8, 0.8).setAlpha(0);
-             this.rune4 = this.addImage(centerXPos + 35, runeYPos + 28, 'circle', 'rune_reinforce_glow.png').setDepth(10001).setScale(0.8, 0.8).setAlpha(0);
+             this.rune3 = this.addImage(centerXPos - 36, runeYPos + 28, 'circle', 'rune_matter_glow.png').setDepth(10001).setScale(0.8, 0.8).setAlpha(0);
+             this.rune4 = this.addImage(centerXPos + 36, runeYPos + 28, 'circle', 'rune_reinforce_glow.png').setDepth(10001).setScale(0.8, 0.8).setAlpha(0);
 
              this.addTween({
                  targets: [this.rune3, this.rune4],
@@ -153,7 +153,7 @@
                  // 0
                  {
                      name: "}2x3",
-                     chargeAmt: 500,
+                     chargeAmt: 400,
                      finishDelay: 500,
                      transitionFast: true,
                      isBigMove: true,
@@ -170,14 +170,14 @@
                  },
                  {
                      name: "WAITING...",
-                     chargeAmt: 400,
+                     chargeAmt: 300,
                      transitionFast: true,
                      damage: -1,
                  },
                  {
                      name: "}2x12",
-                     chargeAmt: 800,
-                     finishDelay: 3500,
+                     chargeAmt: 700,
+                     finishDelay: 2500,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
@@ -193,15 +193,15 @@
                  },
                  {
                      name: "WAITING...",
-                     chargeAmt: 400,
+                     chargeAmt: 300,
                      transitionFast: true,
                      damage: -1,
                  },
                  // 0
                  {
                      name: "}2x15",
-                     chargeAmt: 900,
-                     finishDelay: 4500,
+                     chargeAmt: 800,
+                     finishDelay: 3500,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
@@ -218,14 +218,14 @@
                  // 0
                  {
                      name: "WAITING...",
-                     chargeAmt: 400,
+                     chargeAmt: 300,
                      transitionFast: true,
                      damage: -1,
                  },
                  {
                      name: "}2x18",
-                     chargeAmt: 1000,
-                     finishDelay: 5500,
+                     chargeAmt: 900,
+                     finishDelay: 4500,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
@@ -241,14 +241,14 @@
                  },
                  {
                      name: "WAITING...",
-                     chargeAmt: 400,
+                     chargeAmt: 300,
                      transitionFast: true,
                      damage: -1,
                  },
                  {
                      name: "}15",
-                     chargeAmt: 600,
-                     finishDelay: 700,
+                     chargeAmt: 500,
+                     finishDelay: 500,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,

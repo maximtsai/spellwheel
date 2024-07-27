@@ -291,7 +291,7 @@
                     }
                  },
                  {
-                     name: "}12x2",
+                     name: "|12x2",
                      chargeAmt: 700,
                      finishDelay: 1600,
                      transitionFast: true,
@@ -348,9 +348,9 @@
                     },
                  },
                  {
-                     name: "}30",
+                     name: ";30",
                      chargeAmt: 1000,
-                     finishDelay: 1200,
+                     finishDelay: 800,
                      transitionFast: true,
                      chargeMult: 8,
                      damage: -1,
@@ -373,9 +373,9 @@
                     }
                  },
                  {
-                     name: "}30",
+                     name: ";30",
                      chargeAmt: 1000,
-                     finishDelay: 1200,
+                     finishDelay: 800,
                      transitionFast: true,
                      chargeMult: 8,
                      damage: -1,

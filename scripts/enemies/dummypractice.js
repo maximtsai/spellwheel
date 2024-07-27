@@ -213,8 +213,8 @@
                     scaleX: this.sprite.startScale * 1.1,
                     scaleY: this.sprite.startScale * 1.1,
                     rotation: numTimes % 2 == 1 ? 0.05 : -0.05,
-                    ease: "Quart.easeIn",
-                    duration: 450,
+                    ease: numTimes > 1 ? "Cubic.easeIn" : "Quart.easeIn",
+                    duration: numTimes > 1 ? 250 : 450,
                     onComplete: () => {
                         if (numTimes <= 1) {
                             this.currDummyAnim = this.addTween({
@@ -231,7 +231,7 @@
                 if (numTimes > 1) {
                     this.addTimeout(() => {
                         this.throwWeapon(name, damage, numTimes - 1);
-                    }, 450)
+                    }, 250)
                 }
 
             }

@@ -314,7 +314,16 @@
                      chargeAmt: 350,
                      chargeMult: 5,
                      customCall: " ",
-                     damage: 0
+                     damage: 0,
+                     startFunction: () => {
+                         this.sprite.x = gameConsts.halfWidth + (Math.random() < 0.5 ? 15 : -15);
+                         this.addTween({
+                             targets: this.sprite,
+                             x: gameConsts.halfWidth,
+                             ease: 'Bounce.easeOut',
+                             duration: 1000
+                         })
+                     }
                  },
                  {
                      name: "GETTING KNIVES!",

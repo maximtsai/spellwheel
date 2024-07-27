@@ -486,22 +486,22 @@ let textData2 = {
         "jp": "「俺と向き合え!」私が声をかけると、彼は自分の一時的な力を喜んで発揮しようとしているようだった。"
     },
     "pre_fight_4a": {
-        "en_us": "In front of me stands a knight,\nmotionless but with sword drawn.",
-        "fr": "Devant moi se tient un chevalier, immobile mais l’épée dégainée.",
-        "zh_tw": "在我面前站著一個騎士，一動不動，但拔出劍。",
-        "zh_cn": "在我面前站着一个骑士，一动不动，但拔出剑。",
-        "ru": "Передо мной стоит рыцарь, неподвижный, но с обнаженным мечом.",
-        "es": "Frente a mí está un caballero, inmóvil pero con la espada desenvainada.",
-        "jp": "私の前には、動かないが剣を抜いた騎士が立っている。"
+        "en_us": "A knight stands oddly still on the\npath up ahead.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "pre_fight_4b": {
-        "en_us": "I accept the wordless challenge and\nface them head-on.",
-        "fr": "J’accepte le défi sans paroles et je l’affronte de front.",
-        "zh_tw": "我接受無言的挑戰，並直面它們。",
-        "zh_cn": "我接受无言的挑战，并直面它们。",
-        "ru": "Я принимаю бессловесный вызов и встречаю их лицом к лицу.",
-        "es": "Acepto el desafío sin palabras y los enfrento de frente.",
-        "jp": "私は言葉のない挑戦を受け入れ、正面から立ち向かいます。"
+        "en_us": "My attempts at a greeting were met\nwith silence. I can only assume this\nis another enemy.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "pre_fight_5a": {
         "en_us": "No matter where I go, this wall\nalways seems to be blocking the way.",

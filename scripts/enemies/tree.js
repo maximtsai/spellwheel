@@ -705,8 +705,8 @@
              [
                  // 2
                  {
-                     name: "STARE... ",
-                     chargeAmt: 400,
+                     name: " STARE...",
+                     chargeAmt: 350,
                      damage: -1,
                      isPassive: true,
                      attackStartFunction: () => {
@@ -738,8 +738,8 @@
                      }
                  },
                  {
-                     name: "STARE... ",
-                     chargeAmt: 300,
+                     name: " STARE...",
+                     chargeAmt: 350,
                      damage: -1,
                      isPassive: true,
                      attackStartFunction: () => {
@@ -757,7 +757,7 @@
                      name: "|2x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 800,
+                     chargeAmt: 550,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');
@@ -822,8 +822,8 @@
              [
                  // 4
                  {
-                     name: "STARE... ",
-                     chargeAmt: 400,
+                     name: " STARE...",
+                     chargeAmt: 350,
                      damage: -1,
                      isPassive: true,
                      attackStartFunction: () => {
@@ -841,7 +841,7 @@
                      name: "|2x5 ",
                      announceName: "LEAF STORM",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 800,
+                     chargeAmt: 550,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');

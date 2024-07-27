@@ -448,7 +448,7 @@ class Enemy {
                             this.chargeBarCurr.alpha = 0.9;
                         }
                         this.attackCharge += timeChange * 0.5 * this.slowMult * chargeMult;
-                        this.attackCharge += castAggravateBonus * 1.5;
+                        this.attackCharge += castAggravateBonus * 1.8;
 
                     } else {
                         this.chargeBarCurr.alpha = 0.6;
@@ -2063,7 +2063,7 @@ class Enemy {
     }
 
     playerClickedSpell() {
-        this.castAggravateCharge = 26;
+        this.castAggravateCharge = 24;
     }
 
     addCastAggravate(amt) {

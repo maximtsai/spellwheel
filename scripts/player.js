@@ -881,8 +881,9 @@ class Player {
                             shieldObj.isBlasting = true;
                             shieldObj.eyeBlastAnim = this.scene.tweens.add({
                                 targets: [shieldObj.animObj[0], shieldObj.animObj[1]],
-                                duration: 1250,
+                                duration: 1300,
                                 alpha: 1.1,
+                                completeDelay: 20,
                                 onComplete: () => {
                                     if (!globalObjects.player.dead) {
                                         let retalVol = 0.4 + shieldObj.storedDamage * 0.015;

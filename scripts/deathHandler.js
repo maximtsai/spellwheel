@@ -98,7 +98,7 @@ function getFloatingDeath() {
         globalObjects.floatingDeath.setAlpha(0.4);
         globalObjects.floatingDeath2 = PhaserScene.add.image(gameConsts.halfWidth, 95, 'enemies', 'max_death_1b.png').setDepth(-1).setVisible(false);
         let leftHandOffsetX = -114; leftHandOffsetY = 26;
-        let rightHandOffsetX = 190; rightHandOffsetY = -49;
+        let rightHandOffsetX = 189; rightHandOffsetY = -50;
         globalObjects.deathLeftHand = PhaserScene.add.image(gameConsts.halfWidth + leftHandOffsetX, globalObjects.floatingDeath.y + leftHandOffsetY, 'enemies', 'max_death_left_arm.png');
         globalObjects.deathRightHand = PhaserScene.add.image(gameConsts.halfWidth + rightHandOffsetX, globalObjects.floatingDeath.y + rightHandOffsetY, 'enemies', 'max_death_right_hand.png');
 

@@ -2539,7 +2539,7 @@ const ENABLE_KEYBOARD = true;
                      if (effectObj.firstTicked) {
                          this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * effectObj.duration);
                          messageBus.publish('enemyTakeTrueDamage', damageDealt, false, 0, true);
-                         messageBus.publish('addCastAggravate', Math.floor(2 + damageDealt));
+                         messageBus.publish('addCastAggravate', Math.floor(1 + damageDealt));
 
                      } else {
                          effectObj.firstTicked = true;

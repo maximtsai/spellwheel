@@ -109,5 +109,13 @@ function updateCheatsDisplay() {
     } else {
         cheatsDisplay.setText(' ');
     }
+}
 
+function isUsingCheats() {
+    for (let i in cheats) {
+        if (cheats[i]) {
+            return true;
+        }
+    }
+    return false;
 }

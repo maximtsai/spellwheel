@@ -66,8 +66,8 @@
          this.handShieldBack.startScale = this.handShieldBack.scaleX;
          this.handShield = this.addSprite(this.x, this.y, 'shields', 'handshield10.png').setScale(1).setDepth(3).setAlpha(0);
          this.handShield.startScale = this.handShield.scaleX;
-         this.currentHandGlow = this.addImage(0, 0, 'deathfinal', 'claw_glow.png').setAlpha(0).setDepth(3);
-         this.currentHandGlowPulse = this.addImage(0, 0, 'deathfinal', 'claw.png').setAlpha(0).setDepth(3);
+         this.currentHandGlow = this.addImage(0, 0, 'deathfinal', 'claw_glow.png').setAlpha(0).setDepth(-1).setBlendMode(Phaser.BlendModes.ADD);
+         this.currentHandGlowPulse = this.addImage(0, 0, 'deathfinal', 'claw.png').setAlpha(0).setDepth(-1).setBlendMode(Phaser.BlendModes.ADD);
     }
 
      beginBattleAnim() {
@@ -80,6 +80,9 @@
              this.rotateSpellCircleTo(0, false, () => {
                  // this.fadeOutCurrentHand();
                  this.createHandShield(12);
+                 globalObjects.magicCircle.enableMovement();
+                 globalObjects.encyclopedia.showButton();
+                 globalObjects.options.showButton();
                  this.addDelay(() => {
                      messageBus.publish("showCombatText", getLangText('deathFight2plusa'), -40);
                      this.addTimeout(() => {
@@ -131,8 +134,8 @@
         })
         this.currentHandGlow.currAnim = this.addTween({
             targets: this.currentHandGlow,
-            scaleX: 0.25,
-            scaleY: 0.25,
+            scaleX: 0.5,
+            scaleY: 0.5,
             x: this.x,
             y: this.y,
             ease: 'Cubic.easeIn',
@@ -171,7 +174,7 @@
                      }
                  },
                  {
-                     name: "}20x2",
+                     name: "}15x2",
                      chargeAmt: 600,
                      finishDelay: 2000,
                      damage: -1,
@@ -183,13 +186,14 @@
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
+                         this.fireTwoPokes(15);
                      },
                      finaleFunction: () => {
 
                      }
                  },
                  {
-                     name: "$24",
+                     name: "$16",
                      chargeAmt: 600,
                      finishDelay: 2000,
                      damage: -1,
@@ -289,31 +293,38 @@
          this.setAsleep();
      }
 
+     fireTwoPokes(damage) {
+         this.addImage(this.x - 300, this.y - 150, 'deathfinal', 'poke.png').setScale(0.1);
+
+     }
+
      pulseHand(idx) {
          let xPos = 0; let yPos = 0;
          if (idx == 0) {
             xPos = gameConsts.halfWidth - 200;
             yPos = this.y - 20;
-             this.currentHandGlow.setFrame('palm_glow.png');
-             this.currentHandGlowPulse.setFrame('palm_glow.png');
+
          } else if (idx == 1) {
-             xPos = gameConsts.halfWidth - 150;
-             yPos = this.y - 80;
-             this.currentHandGlow.setFrame('poke_glow.png');
-             this.currentHandGlowPulse.setFrame('poke_glow.png');
+             xPos = gameConsts.halfWidth - 103;
+             yPos = this.y - 87;
          } else if (idx == 2) {
-             xPos = gameConsts.halfWidth + 150;
-             yPos = this.y - 80;
-             this.currentHandGlow.setFrame('okay_glow.png');
-             this.currentHandGlowPulse.setFrame('okay_glow.png');
+             xPos = gameConsts.halfWidth + 103;
+             yPos = this.y - 87;
          } else if (idx == 3) {
              xPos = gameConsts.halfWidth + 200;
              yPos = this.y - 20;
-             this.currentHandGlow.setFrame('claw_glow.png');
-             this.currentHandGlowPulse.setFrame('claw_glow.png');
          }
-         this.currentHandGlow.setPosition(xPos, yPos).setAlpha(0.6).setScale(0.25);
-         this.currentHandGlowPulse.setPosition(xPos, yPos).setAlpha(0.6).setScale(0.25);
+         this.currentHandGlow.setFrame('glow_hand.png');
+         this.currentHandGlowPulse.setFrame('glow_hand.png');
+         this.currentHandGlow.setPosition(xPos, yPos).setAlpha(0.6).setScale(0);
+         this.currentHandGlowPulse.setPosition(xPos, yPos).setAlpha(0).setScale(0.65);
+         this.addTween({
+             targets: this.currentHandGlow,
+             scaleX: 0.65,
+             scaleY: 0.65,
+             duration: 1200,
+             ease: 'Cubic.easeIn'
+         });
          this.currentHandGlow.currAnim = this.addTween({
              targets: this.currentHandGlow,
              alpha: 0.3,
@@ -321,12 +332,12 @@
              yoyo: true,
              repeat: -1,
              onRepeat: () => {
-                 this.currentHandGlowPulse.setAlpha(0.5).setScale(0.25);
+                 this.currentHandGlowPulse.setAlpha(0.65).setScale(0.65);
                  this.addTween({
                      targets: this.currentHandGlowPulse,
                      alpha: 0,
-                     scaleX: 0.4,
-                     scaleY: 0.4,
+                     scaleX: 1.1,
+                     scaleY: 1.1,
                      duration: 1500,
                  });
              }

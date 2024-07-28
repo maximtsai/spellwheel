@@ -226,7 +226,7 @@
         this.idleAnimations = [];
         this.attackScale = 1.13;
         this.lastAttackLingerMult = 0.9;
-        this.extraRepeatDelay = 500;
+        this.extraRepeatDelay = 250;
         this.pullbackHoldRatio = 0.5;
         this.attackSlownessMult = 1;
         this.attackEase = 'Quint.easeIn';
@@ -337,9 +337,21 @@
 
      applyFire(amt) {
          messageBus.publish('playerAddDelayedDamage', amt);
+         if (!this.mindBurn) {
+             this.mindBurn = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 68, 'spells', 'mindBurn1.png').setScale(3.35).setDepth(5);
+         }
+         this.mindBurn.scaleX = -this.mindBurn.scaleX;
+         this.mindBurn.alpha = 1;
+         this.addTween({
+             targets: this.mindBurn,
+             alpha: 0,
+             duration: 1300,
+             ease: 'Cubic.easeOut'
+         })
      }
 
      checkFireForm() {
+         console.log("Checking fire form, punch cycle", this.punchCycleCount);
          if (!this.fireForm) {
              if ((this.punchCycleCount == 1 && !this.thornForm) || this.punchCycleCount >= 2) {
                  this.fireForm = true;
@@ -369,7 +381,7 @@
                     chargeAmt: 550,
                     damage: 10,
                     attackTimes: 1,
-                    chargeMult: 4,
+                    chargeMult: 3.5,
                     prepareSprite: 'death2windup.png',
                     attackSprites: ['death2punch.png'],
                     startFunction: () => {
@@ -388,12 +400,12 @@
                     },
                 },
                 {
-                    name: "|6x3",
+                    name: "|7x3",
                     chargeAmt: 500,
-                    damage: 6,
+                    damage: 7,
                     attackTimes: 3,
-                    prepareSprite: ['death2windup.png', 'death2windupflip.png', 'death2windup.png'],
-                    attackSprites: ['death2punch.png', 'death2punchflip.png', 'death2punch.png'],
+                    prepareSprite: ['death2windup.png', 'death2windupflip.png'],
+                    attackSprites: ['death2punch.png', 'death2punchflip.png'],
                     startFunction: () => {
                         this.pullbackScale = 0.88;
                         this.attackScale = 1.13;
@@ -440,7 +452,8 @@
                         globalObjects.options.hideButton();
                     },
                     attackFinishFunction: () => {
-                        playSound('death_attack', 1).detune = 0;
+                        playSound('death_attack', 0.75).detune = 0;
+                        playSound('stomp', 0.85).detune = 0;
                         screenShake(6);
                         let fakeDeathBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'fake_death_bg.png').setScale(2).setDepth(30);
                         fakeDeathBG.scrollFactorX = -0.1;
@@ -459,7 +472,7 @@
                 },
                 {
                     name: "}6   ",
-                    chargeAmt: 1000,
+                    chargeAmt: 1100,
                     finishDelay: 1200,
                     chargeMult: 2,
                     damage: 6,
@@ -556,7 +569,7 @@
                     chargeAmt: 600,
                     damage: 10,
                     attackTimes: 1,
-                    chargeMult: 4,
+                    chargeMult: 3.5,
                     prepareSprite: 'death2windup.png',
                     attackSprites: ['death2punch.png'],
                     startFunction: () => {
@@ -570,18 +583,17 @@
                     },
                     finaleFunction: () => {
                         this.setArmsVisible(true);
-                        this.punchCycleCount += 1;
                         this.sprite.attackNum = 0;
                     },
 
                 },
                 {
-                    name: "|6x3+$6",
+                    name: "|7x3+$6",
                     chargeAmt: 550,
-                    damage: 6,
+                    damage: 7,
                     attackTimes: 3,
-                    prepareSprite: ['death2windup.png', 'death2windupflip.png', 'death2windup.png'],
-                    attackSprites: ['death2punch.png', 'death2punchflip.png', 'death2punch.png'],
+                    prepareSprite: ['death2windup.png', 'death2windupflip.png'],
+                    attackSprites: ['death2punch.png', 'death2punchflip.png'],
                     startFunction: () => {
                         this.pullbackScale = 0.88;
                         this.attackScale = 1.13;
@@ -629,7 +641,8 @@
                         globalObjects.options.hideButton();
                     },
                     attackFinishFunction: () => {
-                        playSound('death_attack', 1).detune = 0;
+                        playSound('death_attack', 0.9).detune = 0;
+                        playSound('stomp', 0.75).detune = 0;
                         screenShake(6);
                         this.applyFire(10);
                         let fakeDeathBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'fake_death_bg.png').setScale(2).setDepth(30);
@@ -649,7 +662,7 @@
                 },
                 {
                     name: "}6   ",
-                    chargeAmt: 1000,
+                    chargeAmt: 1100,
                     finishDelay: 1200,
                     chargeMult: 2,
                     damage: 6,
@@ -1008,6 +1021,10 @@
          this.stopIdleAnim();
         playSound('death_attack', 0.4).detune = -800;
 
+        if (this.leftFire) {
+            this.leftFire.destroy();
+            this.rightFire.destroy();
+        }
          this.clearFistObjects();
          if (this.bgMusic) {
              fadeAwaySound(this.bgMusic);
@@ -1026,7 +1043,33 @@
             alpha: 0.6,
         });
 
-        globalObjects.bannerTextManager.setDialog([getLangText('deathFight2z1'), getLangText('deathFight2z2')]);
+        if (isUsingCheats()) {
+            globalObjects.bannerTextManager.setDialog([getLangText('deathFight2z1'), getLangText('deathFight2z2cheats'), getLangText('deathFight2z3cheats')]);
+        } else {
+            globalObjects.bannerTextManager.setDialog([getLangText('deathFight2z1'), getLangText('deathFight2z2'), getLangText('deathFight2z3')]);
+        }
+        globalObjects.bannerTextManager.setDialogFunc([undefined, undefined, () => {
+            // Get back up on third text
+            let tempOldPose = this.addImage(this.sprite.x, this.sprite.y, "deathfinal", 'death2fall.png');
+            tempOldPose.setScale(this.sprite.scaleX).setOrigin(this.sprite.originX, this.sprite.originY).setAlpha(0.6);
+            this.addTween({
+                targets: tempOldPose,
+                alpha: 0,
+                duration: 300,
+            });
+            this.forceOverrideSprite = 'max_death_2.png';
+            this.setDefaultSprite('max_death_2.png', this.sprite.startScale);
+            this.sprite.alpha = 0.1
+            this.setArmsVisible(true);
+            this.leftArm.alpha = 0.1;
+            this.rightArm.alpha = 0.1;
+            this.leftShoulder.alpha = 0.1;
+            this.addTween({
+                targets: [this.sprite, this.leftArm, this.rightArm, this.leftShoulder],
+                alpha: 1,
+                duration: 450,
+            });
+        }])
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
         globalObjects.bannerTextManager.showBanner(0);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -1044,28 +1087,9 @@
                 alpha: 0.6,
                 duration: 200,
                 onComplete: () => {
-                    let tempOldPose = this.addImage(this.sprite.x, this.sprite.y, "deathfinal", 'death2fall.png');
-                    tempOldPose.setScale(this.sprite.scaleX).setOrigin(this.sprite.originX, this.sprite.originY).setAlpha(0.6);
-                    this.addTween({
-                        targets: tempOldPose,
-                        alpha: 0,
-                        duration: 300,
-                    });
-                    this.forceOverrideSprite = 'max_death_2.png';
-                    this.setDefaultSprite('max_death_2.png', this.sprite.startScale);
-                    this.sprite.alpha = 0.1
-                    this.setArmsVisible(true);
-                    this.leftArm.alpha = 0.1;
-                    this.rightArm.alpha = 0.1;
-                    this.leftShoulder.alpha = 0.1;
                     this.raiseArmsAnim(() => {
                         playSound('heartbeatfast');
                     }, 1.8)
-                    this.addTween({
-                        targets: [this.sprite, this.leftArm, this.rightArm, this.leftShoulder],
-                        alpha: 1,
-                        duration: 450,
-                    });
                 }
             })
 
@@ -1104,11 +1128,12 @@
                         }
                     });
                     this.addDelay(() => {
-                        globalObjects.bannerTextManager.setDialog([getLangText("deathFight2z3")]);
+                        globalObjects.bannerTextManager.setDialog([getLangText("deathFight2z4")]);
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight * 1.5 - 25, 0);
                         globalObjects.bannerTextManager.showBanner(0);
                         globalObjects.bannerTextManager.setOnFinishFunc(() => {
                             playFakeBGMusic('but_never_forgotten_metal_prelude');
+                            death6arm.currAnim.stop();
                             let death6arm_highlight = this.addImage(this.sprite.x, death6arm.y, 'deathfinal', 'death2final_highlight.png').setScale(death6arm.scaleX).setAlpha(0).setDepth(death6arm.depth);
                             this.addTween({
                                 targets: [death6arm_highlight],
@@ -1116,6 +1141,7 @@
                                 alpha: 1,
                             });
                             this.addTween({
+                                delay: 20,
                                 targets: [death6arm, death6arm_highlight],
                                 duration: 750,
                                 scaleX: 1,
@@ -1340,22 +1366,22 @@
              targets: [this.thorns7],
              duration: 1250,
              ease: 'Cubic.easeInOut',
-             alpha: 0.78,
-             y: -25,
+             alpha: 0.7,
+             y: -27,
          })
          this.addTween({
              targets: [this.thorns8],
              duration: 1250,
              ease: 'Cubic.easeInOut',
-             alpha: 0.78,
-             x: -20,
+             alpha: 0.7,
+             x: -24,
          })
          this.addTween({
              targets: [this.thorns9],
              duration: 1250,
              ease: 'Cubic.easeInOut',
-             alpha: 0.78,
-             x: gameConsts.width + 20,
+             alpha: 0.7,
+             x: gameConsts.width + 24,
              onComplete: () => {
                  this.addTween({
                      targets: this.blackBG,

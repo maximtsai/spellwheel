@@ -131,7 +131,7 @@ class SpellManager {
         let isExtraBuff = additionalDamage >= 12;
 
         let pebbles = getTempPoolObject('spells', 'rockCircle.png', 'rockCircle', 800);
-        pebbles.setPosition(gameConsts.halfWidth, gameConsts.height - 360);
+        pebbles.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 240);
         let additionalScale = Math.sqrt(additionalDamage) * 0.021;
         let finalAdditionaScale = additionalScale * 5;
         pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalScale).setRotation(Math.random() * 3)
@@ -153,7 +153,7 @@ class SpellManager {
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
-            let yPos = gameConsts.height - 360 + Math.abs(halfwayIdx - i) * 10;
+            let yPos = globalObjects.player.getY() - 240 + Math.abs(halfwayIdx - i) * 10;
             let rockObj = poolManager.getItemFromPool('rock')
             if (!rockObj) {
                 rockObj = this.scene.add.sprite(xPos, yPos, 'spells', 'rock.png');
@@ -1254,7 +1254,7 @@ class SpellManager {
             for (let i = 0; i < timeObjects.length; i += 2) {
                 let xPos = gameConsts.halfWidth + (numTotalAttacks - 1) * -25 + 25 * i;
                 let halfwayIdx = (numTotalAttacks - 1) * 0.5;
-                let yPos = gameConsts.height - 360 + Math.abs(halfwayIdx - i * 0.5) * 10;
+                let yPos = globalObjects.player.getY() - 240 + Math.abs(halfwayIdx - i * 0.5) * 10;
                 this.scene.tweens.add({
                     targets: [timeObjects[i], timeObjects[i+1]],
                     duration: 300,
@@ -1272,7 +1272,7 @@ class SpellManager {
             // set up new ones
             let xPos = gameConsts.halfWidth + (numTotalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numTotalAttacks - 1) * 0.5;
-            let yPos = gameConsts.height - 360 + Math.abs(halfwayIdx - i) * 10;
+            let yPos = globalObjects.player.getY() - 240 + Math.abs(halfwayIdx - i) * 10;
             let mindObj = this.scene.add.sprite(xPos, yPos, 'spells', 'timeEffect.png');
             let mindObj2 = this.scene.add.sprite(xPos, yPos, 'spells', 'timeEffect2.png');
 
@@ -1480,7 +1480,7 @@ class SpellManager {
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
-            let yPos = gameConsts.height - 360 + Math.abs(halfwayIdx - i) * 10 + additionalDamage;
+            let yPos = globalObjects.player.getY() - 225 + Math.abs(halfwayIdx - i) * 10 + additionalDamage;
             let attackObj = this.scene.add.sprite(xPos, yPos, 'spells', 'lightningBolt.png');
             attackObj.setDepth(10);
             attackObj.rotation = Math.random() - 0.5;
@@ -2064,7 +2064,7 @@ class SpellManager {
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let isLeftStrike = i % 2 == isNormalDir;
             let xPos = gameConsts.halfWidth + (isLeftStrike ? -10 : 10);
-            let yPos = gameConsts.height - 265;
+            let yPos = globalObjects.player.getY() - 145;
 
             let strikeObj = this.scene.add.sprite(xPos, yPos, 'spells', 'dark_tentacle.png');
             strikeObj.setOrigin(0.15, 1)

@@ -1831,6 +1831,7 @@ class Enemy {
                 } else {
                     this.sprite.prepareNum = (this.sprite.prepareNum + 1) % prepareSprite.length;
                 }
+                console.log(this.sprite.prepareNum, prepareSprite.length)
                 spriteToPrepare = prepareSprite[this.sprite.prepareNum];
             }
             if (isRepeatedAttack) {

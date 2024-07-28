@@ -229,8 +229,8 @@ function showCutscene2() {
 function showLoverApproach() {
     let star = PhaserScene.add.image(gameConsts.halfWidth, 225, 'blurry', 'star_blur.png').setAlpha(1).setScale(0.4).setDepth(CUTSCENE_DEPTH+2).setOrigin(0.5, 0.5);
     let lover = PhaserScene.add.image(gameConsts.halfWidth, 150, 'ending', 'ending2_a.png').setAlpha(0).setScale(0.4).setDepth(CUTSCENE_DEPTH+3).setOrigin(0.5, 0.1);
-    let horror = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blurry', 'static0.png').setAlpha(0).setScale(1.5, 3).setDepth(CUTSCENE_DEPTH+3);
-    let blotter = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blurry', 'static7.png').setAlpha(0).setScale(4).setDepth(CUTSCENE_DEPTH+3);
+    let horror = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blurry', 'static0.png').setAlpha(0).setScale(1.8, 3.6).setDepth(CUTSCENE_DEPTH+3);
+    let blotter = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blurry', 'static7.png').setAlpha(0).setScale(5).setDepth(CUTSCENE_DEPTH+3);
     PhaserScene.tweens.add({
         targets: star,
         scaleX: 0.8,
@@ -290,7 +290,7 @@ function showLoverApproach() {
             }, 30)
         });
     });
-    animateStatic(horror, 0.3, 1.4, 2, 5000);
+    animateStatic(horror, 0.3, 1.7, 2.4, 5000);
     PhaserScene.tweens.add({
         targets: lover,
         scaleX: 0.73,
@@ -298,13 +298,13 @@ function showLoverApproach() {
         duration: 5000,
         onComplete: () => {
             lover.setFrame('ending2_b.png').setOrigin(0.5, 0.3);
-            blotter.setAlpha(0.6).setScale(2);
+            blotter.setAlpha(0.6).setScale(2.4);
             setTimeout(() => {
                 blotter.x = gameConsts.halfWidth - 100;
                 lover.setFrame('ending2_a.png').setOrigin(0.5, 0.1);
                 setTimeout(() => {
                     blotter.x = gameConsts.halfWidth + 50;
-                    blotter.setScale(2.2, -2.2)
+                    blotter.setScale(2.65, -2.65)
                     setTimeout(() => {
                         blotter.setAlpha(0);
                     }, 40)
@@ -313,11 +313,11 @@ function showLoverApproach() {
 
             horror.setAlpha(0.6);
             horror.setFrame('static2.png')
-            animateStatic(horror, 1, 1.35, 1.4,4500);
+            animateStatic(horror, 1, 1.65, 1.6,4500);
             PhaserScene.time.delayedCall(2000, () => {
                 lover.setFrame('ending2_b.png').setOrigin(0.5, 0.1);
                 blotter.setAlpha(0.3);
-                animateStatic(blotter, 1, 1.35, 1.4,3500);
+                animateStatic(blotter, 1, 1.65, 1.7,3500);
                 globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH + 4);
                 setTimeout(() => {
                     lover.setFrame('ending2_a.png').setOrigin(0.5, 0.1);

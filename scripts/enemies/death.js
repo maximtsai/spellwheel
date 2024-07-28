@@ -424,7 +424,7 @@
              [
                  {
                      name: ";444",
-                     chargeAmt: 750,
+                     chargeAmt: 800,
                      chargeMult: 2,
                      finishDelay: 3000,
                      damage: -1,
@@ -456,7 +456,7 @@
                  },
                  {
                      name: "}5x12}",
-                     chargeAmt: 1300,
+                     chargeAmt: 1350,
                      chargeMult: 1.3,
                      finishDelay: 5000,
                      damage: -1,
@@ -510,7 +510,7 @@
                  },
                  {
                      name: ";20x5",
-                     chargeAmt: 1200,
+                     chargeAmt: 1250,
                      chargeMult: 1.4,
                      finishDelay: 5000,
                      damage: -1,
@@ -540,7 +540,7 @@
                  },
                  {
                      name: ";100",
-                     chargeAmt: 800,
+                     chargeAmt: 850,
                      chargeMult: 2,
                      finishDelay: 5000,
                      damage: -1,
@@ -746,7 +746,7 @@
                                         scaleY: 0.57,
                                         y: 55,
                                         ease: 'Cubic.easeInOut',
-                                        duration: 1200,
+                                        duration: 1100,
                                         onComplete: () => {
                                             this.addTween({
                                                 targets: this.muscleDeathWhite,

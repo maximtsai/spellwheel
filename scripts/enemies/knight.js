@@ -13,13 +13,12 @@
          this.addTimeout(() => {
             this.initFog();
          }, 0);
+         this.voidTentaEye = this.addImage(this.x + 50, this.y - 30, 'enemies', 'void_tentacle_eye.png').setDepth(-1).setRotation(-1.2).setScale(1.3).setVisible(false);
          this.addDelay(() => {
-             let voidTentaEye = this.addImage(this.x + 50, this.y - 30, 'enemies', 'void_tentacle_eye.png').setDepth(-1).setRotation(-1.2).setScale(1.3);
-             playSound('meat_click_right', 0.2);
-             playSound('void_body', 0.35);
+             this.voidTentaEye.visible = true;
              this.addTween({
-                 targets: voidTentaEye,
-                 rotation: 0.1,
+                 targets: this.voidTentaEye,
+                 rotation: 0,
                  ease: 'Back.easeOut',
                  scaleX: 1.2,
                  x: "+=25",
@@ -28,22 +27,27 @@
                  duration: 750,
                  onComplete: () => {
                      this.addTween({
-                         targets: voidTentaEye,
-                         rotation: 0.05,
+                         targets: this.voidTentaEye,
+                         rotation: -0.05,
                          ease: 'Back.easeOut',
                          scaleX: 1.15,
                          scaleY: 1.15,
                          duration: 1200,
                          onComplete: () => {
+                             playSound('meat_click_right', 0.2);
+                             playSound('void_body', 0.35);
                              this.addTween({
-                                 targets: voidTentaEye,
-                                 rotation: -1.2,
-                                 x: "-=40",
+                                 targets: this.voidTentaEye,
+                                 rotation: -1.1,
+                                 x: "-=38",
                                  ease: 'Back.easeIn',
                                  scaleX: 1,
                                  scaleY: 1,
                                  duration: 400,
-                             })
+                                 onComplete: () => {
+                                     this.voidTentaEye.x += 12;
+                                 }
+                             });
                          }
                      })
 
@@ -703,7 +707,7 @@
                                      globalObjects.textPopupManager.hideInfoText();
                                  }, 400);
                              });
-                         }, 1200)
+                         }, 2000)
 
 
                      }
@@ -1185,6 +1189,30 @@
                  ease: 'Cubic.easeIn',
                  onStart: () => {
                      this.addTween({
+                         delay: 300,
+                         targets: this.voidTentaEye,
+                         rotation: -1,
+                         ease: 'Quint.easeOut',
+                         scaleX: 1.1,
+                         scaleY: 1.1,
+                         duration: 500,
+                         onComplete: () => {
+                             this.addTween({
+                                 targets: this.voidTentaEye,
+                                 rotation: -1.2,
+                                 ease: 'Cubic.easeIn',
+                                 scaleX: 0.78,
+                                 scaleY: 0.78,
+                                 x: "-=10",
+                                 y: "+=20",
+                                 duration: 400,
+                                 onComplete: () => {
+                                     this.voidTentaEye.y += 32;
+                                 }
+                             })
+                         }
+                     })
+                     this.addTween({
                          targets: helmet,
                          rotation: 0.96,
                          duration: 350,
@@ -1299,6 +1327,23 @@
                  y: "+=145",
                  duration: 450,
                  ease: 'Cubic.easeIn',
+                 onStart: () => {
+                     this.addTween({
+                         delay: 500,
+                         targets: this.voidTentaEye,
+                         rotation: -1.5,
+                         ease: 'Back.easeIn',
+                         scaleX: 0.7,
+                         scaleY: 0.7,
+                         alpha: 0,
+                         x: "-=10",
+                         y: "+=15",
+                         duration: 600,
+                         onComplete: () => {
+                             this.voidTentaEye.destroy();
+                         }
+                     })
+                 },
                  onComplete: () => {
                      torso.destroy();
                      this.setDefaultSprite('void_knight_died.png', undefined, true);

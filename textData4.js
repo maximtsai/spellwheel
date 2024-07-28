@@ -46,7 +46,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2cx": {
-        "en_us": "A FIERCE OFFENSE. BUT\nTHINK TWICE BEFORE ATTACKING",
+        "en_us": "A PERSISTENT OFFENSE.\nTHINK TWICE BEFORE ATTACKING",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -55,7 +55,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2d": {
-        "en_us": "YOU CAN'T HOLD\nOUT FOREVER.",
+        "en_us": "YOU ARE RESILIENT, BUT\nNO DEFENSE IS PERFECT.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -73,7 +73,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2z1": {
-        "en_us": "YOU HAVE FOUGHT WELL CHILD",
+        "en_us": "YOU HAVE FOUGHT WELL CHILD.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -82,7 +82,16 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2z2": {
-        "en_us": "BUT MERE MIGHT IS\nNO MATCH FOR ME.",
+        "en_us": "TRULY YOU HAVE BOTH\nSTRENGTH AND SKILL",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2z2cheats": {
+        "en_us": "THOUGH I SENSE YOU ARE USING\n\"ASSISTANCE\" IN THIS FIGHT.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -91,6 +100,24 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2z3": {
+        "en_us": "BUT YOU ARE MISTAKEN IF YOU\nTHINK MERE MIGHT CAN DEFEAT ME.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2z3cheats": {
+        "en_us": "NO MATTER. YOU ARE MISTAKEN IF\nYOU THINK CHEATS CAN DEFEAT ME.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2z4": {
         "en_us": "WITNESS",
         "fr": "",
         "zh_tw": "",
@@ -155,7 +182,7 @@ let textData4 = {
         "jp": ""
     },
     "shield_tut_knight": {
-        "en_us": "Void shields can\nblock the strongest\nattacks! But will\nbreak with one hit",
+        "en_us": "Void shields can\nblock the strongest\nattacks! But will\nbreak with one hit.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

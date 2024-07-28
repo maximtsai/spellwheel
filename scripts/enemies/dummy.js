@@ -607,7 +607,7 @@
                      chargeAmt: 800,
                      damage: 50,
                      attackFinishFunction: () => {
-                         let dmgEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY() - 110, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                         let dmgEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
                          this.addTween({
                              targets: dmgEffect,
                              rotation: 1,

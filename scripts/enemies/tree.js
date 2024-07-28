@@ -981,9 +981,9 @@
                          playSound('body_slam')
                          let dmgEffect = poolManager.getItemFromPool('brickPattern2')
                          if (!dmgEffect) {
-                             dmgEffect = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 100, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                             dmgEffect = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
                          }
-                         dmgEffect.setDepth(998).setScale(0.85);
+                         dmgEffect.setDepth(998).setScale(0.85).setAlpha(1);
                          this.addTween({
                              targets: dmgEffect,
                              rotation: 1,

@@ -635,7 +635,7 @@
 					}
 				},
 				{
-					"filename": "glow_hand.png",
+					"filename": "marker.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -690,8 +690,8 @@
 			"image": "sprites/deathfinal-1.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 960,
-				"h": 1215
+				"w": 900,
+				"h": 1301
 			},
 			"scale": 1,
 			"frames": [
@@ -735,8 +735,8 @@
 						"h": 409
 					},
 					"frame": {
-						"x": 497,
-						"y": 1,
+						"x": 1,
+						"y": 414,
 						"w": 435,
 						"h": 409
 					},
@@ -761,7 +761,7 @@
 					},
 					"frame": {
 						"x": 497,
-						"y": 412,
+						"y": 1,
 						"w": 395,
 						"h": 395
 					},
@@ -771,24 +771,24 @@
 					}
 				},
 				{
-					"filename": "marker.png",
+					"filename": "glow_hand.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 310,
-						"h": 310
+						"w": 279,
+						"h": 279
 					},
 					"spriteSourceSize": {
 						"x": 5,
 						"y": 6,
-						"w": 300,
-						"h": 300
+						"w": 269,
+						"h": 269
 					},
 					"frame": {
 						"x": 1,
-						"y": 414,
-						"w": 300,
-						"h": 300
+						"y": 825,
+						"w": 269,
+						"h": 269
 					},
 					"anchor": {
 						"x": 0.5,
@@ -796,49 +796,24 @@
 					}
 				},
 				{
-					"filename": "max_death_3b.png",
+					"filename": "poke_glow.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 162,
-						"h": 275
+						"w": 237,
+						"h": 260
 					},
 					"spriteSourceSize": {
-						"x": 6,
-						"y": 1,
-						"w": 144,
-						"h": 274
+						"x": 3,
+						"y": 2,
+						"w": 230,
+						"h": 203
 					},
 					"frame": {
-						"x": 303,
-						"y": 414,
-						"w": 144,
-						"h": 274
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_3c.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 162,
-						"h": 275
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 1,
-						"w": 144,
-						"h": 274
-					},
-					"frame": {
-						"x": 303,
-						"y": 690,
-						"w": 144,
-						"h": 274
+						"x": 1,
+						"y": 1096,
+						"w": 230,
+						"h": 203
 					},
 					"anchor": {
 						"x": 0.5,
@@ -860,10 +835,35 @@
 						"h": 251
 					},
 					"frame": {
-						"x": 1,
-						"y": 716,
+						"x": 272,
+						"y": 825,
 						"w": 286,
 						"h": 251
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_3b.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 162,
+						"h": 275
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 1,
+						"w": 144,
+						"h": 274
+					},
+					"frame": {
+						"x": 438,
+						"y": 414,
+						"w": 144,
+						"h": 274
 					},
 					"anchor": {
 						"x": 0.5,
@@ -885,8 +885,8 @@
 						"h": 240
 					},
 					"frame": {
-						"x": 289,
-						"y": 966,
+						"x": 584,
+						"y": 398,
 						"w": 290,
 						"h": 240
 					},
@@ -910,60 +910,10 @@
 						"h": 239
 					},
 					"frame": {
-						"x": 1,
-						"y": 969,
+						"x": 584,
+						"y": 640,
 						"w": 253,
 						"h": 239
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "poke_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 237,
-						"h": 260
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 2,
-						"w": 230,
-						"h": 203
-					},
-					"frame": {
-						"x": 581,
-						"y": 809,
-						"w": 230,
-						"h": 203
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_2_right.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 292,
-						"h": 286
-					},
-					"spriteSourceSize": {
-						"x": 143,
-						"y": 0,
-						"w": 146,
-						"h": 204
-					},
-					"frame": {
-						"x": 813,
-						"y": 809,
-						"w": 146,
-						"h": 204
 					},
 					"anchor": {
 						"x": 0.5,
@@ -985,10 +935,60 @@
 						"h": 193
 					},
 					"frame": {
-						"x": 581,
-						"y": 1014,
+						"x": 560,
+						"y": 881,
 						"w": 193,
 						"h": 193
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_3c.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 162,
+						"h": 275
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 1,
+						"w": 144,
+						"h": 274
+					},
+					"frame": {
+						"x": 755,
+						"y": 881,
+						"w": 144,
+						"h": 274
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_2_right.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 292,
+						"h": 286
+					},
+					"spriteSourceSize": {
+						"x": 143,
+						"y": 0,
+						"w": 146,
+						"h": 204
+					},
+					"frame": {
+						"x": 233,
+						"y": 1096,
+						"w": 146,
+						"h": 204
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1010,8 +1010,8 @@
 						"h": 199
 					},
 					"frame": {
-						"x": 776,
-						"y": 1015,
+						"x": 381,
+						"y": 1078,
 						"w": 169,
 						"h": 199
 					},
@@ -1026,6 +1026,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:9a33a1b95bbeee37c10cacd2329b2566:3f6fd6e69a69c6e94e767c17c5594a49:2725434089d33248c3ff66863842e801$"
+		"smartupdate": "$TexturePacker:SmartUpdate:c6d5c910bad4e40d9ec258610821ed2c:3f6fd6e69a69c6e94e767c17c5594a49:2725434089d33248c3ff66863842e801$"
 	}
 }

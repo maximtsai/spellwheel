@@ -3,7 +3,6 @@
          super(scene, x, y);
          this.initSprite('death2final.png', 0.93, 0, 0, 'deathfinal');
          this.bgMusic = playMusic('but_never_forgotten_metal', 0.9, true);
-         this.bgtemp2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star2.png').setDepth(-5);
          this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5)
          this.bgBlur = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star_blur.png').setDepth(-5).setScale(2);
          this.blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(-2);
@@ -146,7 +145,7 @@
     fadeMainBG(showup) {
          this.addTween({
              targets: this.bgtemp,
-             alpha: showup ? 1 : 0,
+             alpha: showup ? 1 : 0.5,
              duration: 1000
          })
     }
@@ -162,7 +161,6 @@
                      damage: 0,
                      isPassive: true,
                      startFunction: () => {
-                         this.fadeMainBG(true);
                      },
                      attackStartFunction: () => {
                          // this.fadeOutCurrentHand();
@@ -523,8 +521,9 @@
          let goalRot = 0;
          this.addTween({
              targets: this.bgtemp,
-             alpha: 0,
-             duration: 2000
+             alpha: 0.5,
+             ease: "Quad.easeOut",
+             duration: 1400
          })
         this.fadeMainBG(false);
          this.spellCirclePulse.setScale(0.5);
@@ -642,6 +641,7 @@
                 });
                 this.currentHandGlow.alpha = 1;
                 this.addDelay(() => {
+                    this.fadeMainBG(true);
                     if (onCompleteFunc) {
                         onCompleteFunc();
                     }

@@ -52,6 +52,7 @@
 
      initStatsCustom() {
          this.health = 750;
+         this.customAngry = "angrybone";
          this.handObjects = [];
          this.glowHands = [];
          this.shieldScale = 1.5;
@@ -170,8 +171,8 @@
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
-                         let pokeHand = this.addImage(this.x + 180, this.y + 50, 'deathfinal', 'claw.png').setScale(0.1).setAlpha(0.65).setRotation(0.4);
-                         let pokeHandGlow = this.addImage(this.x + 180, this.y + 50, 'deathfinal', 'claw_glow.png').setScale(0.2).setAlpha(0).setRotation(0.4);
+                         let pokeHand = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw.png').setScale(0.1).setAlpha(0.65).setRotation(0.4);
+                         let pokeHandGlow = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw_glow.png').setScale(0.2).setAlpha(0).setRotation(0.4);
                          this.summonHand(pokeHand, pokeHandGlow, 0.26, 0.7, () => {
                              this.fireTwoClaws(4, 4, pokeHand);
                          })
@@ -614,7 +615,7 @@
          let handGoalY = globalObjects.player.getY() - 210;
          let handOvershootX = (handGoalX - handStartX) * 0.2;
          let handOvershootY = (handGoalY - handStartY) * 0.2;
-         let rotAmt = 1;
+         let rotAmt = 0.8;
         this.addTween({
             targets: handObj,
             rotation: rotAmt,
@@ -624,7 +625,8 @@
             duration: 400,
             ease: 'Cubic.easeInOut',
             onComplete: () => {
-                this.repeatScratch(handOvershootX, handOvershootY, handGoalY, () => {
+                handObj.setDepth(50);
+                this.repeatScratch(damage, times, handOvershootX, handOvershootY, handGoalY, () => {
                     this.addTween({
                         targets: handObj,
                         alpha: 0,
@@ -650,7 +652,7 @@
         })
      }
 
-     repeatScratch(handObj, handOvershootX, handOvershootY, onComplete) {
+     repeatScratch(damage, times, handObj, handOvershootX, handOvershootY, onComplete) {
          let handGoalX = gameConsts.halfWidth;
          let handGoalY = globalObjects.player.getY() - 210;
          this.addTween({
@@ -660,7 +662,7 @@
              duration: 500,
              ease: 'Quint.easeIn',
              onComplete: () => {
-                 for (let i = 0; i < 4; i++) {
+                 for (let i = 0; i < times; i++) {
                      this.addDelay(() => {
                          messageBus.publish("selfTakeDamage", damage);
                          playSound('slice_in')

@@ -23,6 +23,7 @@
          this.health = 4;
          this.timesAttacked = 0;
          this.spellsCastCounter = 0;
+         this.customAngry = "angrybone";
          this.scytheObjects = [];
          this.listOfAngryPopups = [];
      }
@@ -550,7 +551,7 @@
 
                          this.addDelay(() => {
                              this.nextAttack.chargeMult = 4.5;
-                             let angryPopup = this.addSprite(this.x +8, this.y - 15, 'enemies', 'angry1.png').play('angry').setScale(0.3);
+                             let angryPopup = this.addSprite(this.x +8, this.y - 15, 'misc', 'angry1.png').play('angry').setScale(0.3);
                              this.listOfAngryPopups.push(angryPopup);
                              this.addTween({
                                  targets: angryPopup, scaleX: 2.5, scaleY: 2.5, rotation: 0.1,

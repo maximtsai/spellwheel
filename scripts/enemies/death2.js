@@ -221,6 +221,8 @@
     initStatsCustom() {
         this.health = 550;
         this.punchCycleCount = 0;
+        this.customAngry = "angrybone";
+
         this.fistObjects = [];
         this.thornsList = [];
         this.idleAnimations = [];

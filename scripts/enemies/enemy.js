@@ -251,7 +251,7 @@ class Enemy {
 
         let attackNameYPos = isMobile ? this.chargeBarMax.y - 23 : this.chargeBarMax.y - 22
 
-        this.angrySymbol = this.scene.add.sprite(x, attackNameYPos - 8, 'enemies', 'angry1.png');
+        this.angrySymbol = this.scene.add.sprite(x, attackNameYPos - 8, 'misc', 'angry1.png');
         this.angrySymbol.setDepth(9);
         this.angrySymbol.visible = false;
         this.angrySymbolIsHiding = true;
@@ -550,7 +550,7 @@ class Enemy {
                 this.isAngry = true;
                 this.chargeBarAngry.alpha = 1;
                 this.chargeBarAngry.visible = true;
-                this.showAngrySymbol('angry');
+                this.showAngrySymbol(this.customAngry || 'angry');
                 this.chargeBarCurr.visible = false;
             }
         } else if (chargeMult > 1) {
@@ -1293,7 +1293,7 @@ class Enemy {
             if (this.angrySymbolAnim) {
                 this.angrySymbolAnim.stop();
             }
-            if (state === 'angry') {
+            if (state === 'angry' || state === 'angrybone') {
                 this.angrySymbolAnim = this.scene.tweens.add({
                     targets: this.angrySymbol,
                     scaleX: 2.2,

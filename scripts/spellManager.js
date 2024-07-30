@@ -1553,21 +1553,23 @@ class SpellManager {
                             y: animation1.y,
                             cleanUp: (statuses, damage) => {
                                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
-                                    let damageCircle = getTempPoolObject('lowq', 'circle_blue4.png', 'circle_blue', 1800).setDepth(100).setScale(0.65).setAlpha(0.85 + Math.sqrt(damage) * 0.025).setPosition(attackObj.x, attackObj.y - 4);
-                                    damageCircle.playReverse('circleBlast');
-                                    let newScale = 0.67 + Math.sqrt(damage) * 0.12;
-                                    this.scene.tweens.add({
-                                        targets: damageCircle,
-                                        duration: 500 + damage * 10,
-                                        scaleX: newScale,
-                                        scaleY: newScale,
-                                        ease: 'Cubic.easeOut',
-                                    });
-                                    this.scene.tweens.add({
-                                        targets: damageCircle,
-                                        duration: 500 + damage * 10,
-                                        alpha: 0,
-                                    });
+                                    if (!globalObjects.currentEnemy.isDestroyed) {
+                                        let damageCircle = getTempPoolObject('lowq', 'circle_blue4.png', 'circle_blue', 1800).setDepth(100).setScale(0.65).setAlpha(0.85 + Math.sqrt(damage) * 0.025).setPosition(attackObj.x, attackObj.y - 4);
+                                        damageCircle.playReverse('circleBlast');
+                                        let newScale = 0.67 + Math.sqrt(damage) * 0.12;
+                                        this.scene.tweens.add({
+                                            targets: damageCircle,
+                                            duration: 500 + damage * 10,
+                                            scaleX: newScale,
+                                            scaleY: newScale,
+                                            ease: 'Cubic.easeOut',
+                                        });
+                                        this.scene.tweens.add({
+                                            targets: damageCircle,
+                                            duration: 500 + damage * 10,
+                                            alpha: 0,
+                                        });
+                                    }
 
                                     this.scene.tweens.add({
                                         targets: [animation1],

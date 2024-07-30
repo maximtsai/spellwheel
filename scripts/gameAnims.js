@@ -34,7 +34,7 @@ function createAnimations(scene) {
     });
     scene.anims.create({
         key: 'exclamation',
-        frames: scene.anims.generateFrameNames('enemies', {
+        frames: scene.anims.generateFrameNames('misc', {
             prefix: 'exclamation',
             suffix: '.png',
             start: 1,
@@ -139,7 +139,7 @@ function createAnimations(scene) {
     });
     scene.anims.create({
         key: 'angry',
-        frames: scene.anims.generateFrameNames('enemies', {
+        frames: scene.anims.generateFrameNames('misc', {
             prefix: 'angry',
             suffix: '.png',
             start: 1,
@@ -151,7 +151,7 @@ function createAnimations(scene) {
     });
     scene.anims.create({
         key: 'angrybone',
-        frames: scene.anims.generateFrameNames('enemies', {
+        frames: scene.anims.generateFrameNames('misc', {
             prefix: 'bone',
             suffix: '.png',
             start: 1,

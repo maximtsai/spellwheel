@@ -387,16 +387,16 @@ let textData2 = {
         "jp": "物質"
     },
     "pre_fight_0e": {
-        "en_us": "Casts attack spells",
-        "fr": "Lance des sorts d’attaque",
+        "en_us": "Casts attack\nspells",
+        "fr": "Lance des\nsorts d’attaque",
         "zh_tw": "施放攻擊法術",
         "zh_cn": "施放攻击法术",
-        "ru": "Применяет атакующие заклинания",
-        "es": "Lanza hechizos de ataque",
-        "jp": "攻撃呪文を唱える"
+        "ru": "Применяет\nатакующие заклинания",
+        "es": "Lanza hechizos\nde ataque",
+        "jp": "攻撃呪文を\n唱える"
     },
     "pre_fight_0f": {
-        "en_us": "Uses solid rock and\nstone for your spells",
+        "en_us": "Uses solid rock\nand stone for\nyour spells",
         "fr": "Utilise de la roche et de\nla pierre solides pour vos sorts",
         "zh_tw": "使用堅實的岩石和\n石頭進行你的法術",
         "zh_cn": "使用坚实的岩石和\n石头进行你的法术",

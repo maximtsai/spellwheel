@@ -1,7 +1,7 @@
  class Wall extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
-         this.initSprite('wall_1.png', 1);
+         this.initSprite('wall_1.png', 1, undefined, undefined, 'wallenemy');
          this.shieldAdded = false;
          this.trueStartScale = 1;
         this.bgMusic = playMusic('bite_down', 0.7, true);
@@ -23,8 +23,8 @@
          setTimeout(() => {
              let xDiff = 110 * this.trueStartScale;
              let yDiff = -3 * this.trueStartScale;
-             this.voidedOutline = this.addImage(this.x, this.y, 'enemies', 'wall_voided_outline_2.png').setAlpha(0).setScale(1.333).setDepth(11);
-             this.eyes2 = this.addImage(this.x, this.y, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, 0).setAlpha(0);
+             this.voidedOutline = this.addImage(this.x, this.y, 'wallenemy', 'wall_voided_outline_2.png').setAlpha(0).setScale(1.333).setDepth(11);
+             this.eyes2 = this.addImage(this.x, this.y, 'wallenemy', 'wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, 0).setAlpha(0);
              this.eyes2.setPosition(this.x + xDiff, this.y + yDiff);
              this.addExtraSprite(this.eyes2, xDiff, yDiff);
              this.eyeArray.push(this.eyes2);
@@ -45,7 +45,7 @@
      }
 
      initBird() {
-         this.bird = this.addImage(this.x - 267 * this.trueStartScale, this.y - 179 * this.trueStartScale, 'enemies', 'bird_1.png').setAlpha(0).setDepth(10).setScale(this.trueStartScale * 0.98);
+         this.bird = this.addImage(this.x - 267 * this.trueStartScale, this.y - 179 * this.trueStartScale, 'wallenemy', 'bird_1.png').setAlpha(0).setDepth(10).setScale(this.trueStartScale * 0.98);
          this.addTween({
              delay: 150,
              targets: [this.bird],
@@ -187,7 +187,7 @@
      }
 
      initEye1() {
-         this.eyes1 = this.addImage(this.x + 5 * this.trueStartScale, this.y - 10 * this.trueStartScale, 'enemies', 'wall_eyes_2.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1).setVisible(false);
+         this.eyes1 = this.addImage(this.x + 5 * this.trueStartScale, this.y - 10 * this.trueStartScale, 'wallenemy', 'wall_eyes_2.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1).setVisible(false);
          this.addExtraSprite(this.eyes1, 5 * this.trueStartScale, -10 * this.trueStartScale);
          this.eyeArray.push(this.eyes1);
 
@@ -320,7 +320,7 @@
      throwWallChunk(spriteName, damage = 40, endScale = 1) {
          this.closeEyes(400);
 
-         let wallChunk = this.addImage(this.x, this.y - 115, 'enemies', spriteName).setDepth(0).setScale(this.trueStartScale * 0.9);
+         let wallChunk = this.addImage(this.x, this.y - 115, 'wallenemy', spriteName).setDepth(0).setScale(this.trueStartScale * 0.9);
          wallChunk.y += wallChunk.height * 0.5;
 
          this.addTween({
@@ -405,11 +405,11 @@
             if (hasBigPoop && i == numBirds - 1) {
                 delay += 500;
                 isBigPoop = true;
-                bird = this.addImage(-999, 0, 'enemies', 'bird_2_fat.png').setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
+                bird = this.addImage(-999, 0, 'wallenemy', 'bird_2_fat.png').setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
             } else {
                 bird = poolManager.getItemFromPool('bird');
                 if (!bird) {
-                    bird = this.addImage(-999, 0, 'enemies', 'bird_2.png').setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
+                    bird = this.addImage(-999, 0, 'wallenemy', 'bird_2.png').setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
                 }
             }
             bird.alpha = 1;
@@ -430,7 +430,7 @@
             let rock;
             let rockYOffset = 40;
             if (hasRock && !isBigPoop) {
-                rock = this.addImage(bird.x, bird.y + rockYOffset, 'enemies', hasBigRock ? 'wall_chunk.png' : 'brick.png').setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
+                rock = this.addImage(bird.x, bird.y + rockYOffset, 'wallenemy', hasBigRock ? 'wall_chunk.png' : 'brick.png').setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
                 if (!isLeft) {
                     rock.scaleX *= -1;
                 }
@@ -535,7 +535,7 @@
                         duration: 650,
                     });
                     if (!hasRock || isBigPoop) {
-                        let poop = this.addImage(bird.x, bird.y + 10, 'enemies', isBigPoop ? 'poopbig.png' : 'poop.png').setDepth(999);
+                        let poop = this.addImage(bird.x, bird.y + 10, 'wallenemy', isBigPoop ? 'poopbig.png' : 'poop.png').setDepth(999);
                         let targetY = globalObjects.player.getY() - 215;
                         if (!isBigPoop) {
                             targetY += Math.random() * 15;

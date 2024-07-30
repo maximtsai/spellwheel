@@ -25,7 +25,11 @@
      takeEffect(newEffect) {
          if (this.sprite) {
              if (newEffect.name == 'mindStrike' && !this.dead && !this.hasTimbered) {
+                 if (this.breatheTween) {
+                     this.breatheTween.stop();
+                 }
                  this.sprite.setFrame('tree_shock1.png');
+                 this.sprite.setScale(this.sprite.startScale * 3)
                  if (this.preparingTimber) {
                      this.sprite.setOrigin(0.52, 0.7);
                  } else {
@@ -33,6 +37,7 @@
                  }
                  this.addDelay(() => {
                      this.sprite.setFrame('tree_shock2.png');
+                     this.sprite.setScale(this.sprite.startScale * 3)
                      if (this.preparingTimber) {
                          this.sprite.setOrigin(0.52, 0.7);
                      } else {
@@ -40,6 +45,7 @@
                      }
                      this.addDelay(() => {
                          this.setSpriteIfNotInactive(this.defaultSprite);
+                         this.repeatTweenBreathe()
                          if (this.preparingTimber) {
                              this.sprite.setOrigin(0.52, 0.7);
                          } else {

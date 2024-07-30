@@ -28,6 +28,7 @@ const audioFiles = [
     {name: 'sword_slice', src: 'audio/sword_slice.mp3'},
     {name: 'sword_hit', src: 'audio/sword_hit.mp3'},
     {name: 'wind', src: 'audio/wind.mp3'},
+    {name: 'water_drop', src: 'audio/water_drop.mp3'},
     {name: 'locket_open', src: 'audio/locket_open.mp3'},
     {name: 'locket_close', src: 'audio/locket_close.mp3'},
     {name: 'sound_of_death', src: 'audio/sound_of_death.mp3'},
@@ -138,6 +139,7 @@ const audioFiles = [
 
     {name: 'timeSlow', src: 'audio/timeslow.mp3'},
     {name: 'squish', src: 'audio/squish.mp3'},
+    {name: 'lesserfall', src: 'audio/lesser_fall.mp3'},
 
     {name: 'flip1', src: 'audio/flip1.mp3'},
     {name: 'flip2', src: 'audio/flip2.mp3'},

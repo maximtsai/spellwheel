@@ -106,6 +106,29 @@
          });
      }
 
+     takeEffect(newEffect) {
+         if (this.sprite) {
+             if (newEffect.name == 'mindStrike' && this.shield <= 0 && !this.dead) {
+                 if (!this.shockEffect) {
+                     this.shockEffect = this.addImage(this.x, this.y, 'enemies', 'void_shock.png').setDepth(21)
+                 }
+                 this.shockEffect.x += 10;
+                 this.shockEffect.visible = true;
+                 this.addTween({
+                     targets: this.shockEffect,
+                     x: gameConsts.halfWidth,
+                     ease: 'Bounce.easeOut',
+                     easeParams: [1, 2.5],
+                     duration: 400,
+                     onComplete: () => {
+                         this.shockEffect.visible = 0;
+                     }
+                 });
+             }
+         }
+         super.takeEffect(newEffect)
+     }
+
      launchAttack(attackTimes = 1, prepareSprite, preAttackSprite, attackSprites, isRepeatedAttack, finishDelay, transitionFast = false) {
          this.sigilEffect.visible = false;
          if (this.voidTentacleFront) {
@@ -310,7 +333,7 @@
              messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, '-BROKE-', 1.05, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1, scaleY: 1});
              this.clearVoidShield();
          } else {
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random()*150, this.sprite.y + 50 - Math.random() * 100, 'NEGATED', 0.75);
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random()*150, this.sprite.y + 50 - Math.random() * 100, 'NEGATED', 0.75, {alpha: 0.8}, {alpha: 0});
 
              if (this.shieldsActive == 1) {
                  this.voidShield1b.setScale(this.voidShield1b.startScale * 1.12);

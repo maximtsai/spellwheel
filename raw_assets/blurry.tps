@@ -357,6 +357,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">blurry/pulser.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>57,57,113,113</rect>
+                <key>scale9Paddings</key>
+                <rect>57,57,113,113</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">blurry/red_vertical.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

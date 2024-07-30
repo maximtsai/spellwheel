@@ -98,6 +98,7 @@ class Enemy {
         this.attackSlownessMult = 1;
         this.pullbackHoldRatio = 0.5;
         this.chargeBarAlphaOffset = isMobile ? 0 : -0.12;
+        this.accumulatedDamageReaction = 0;
 
         this.initStatsCustom();
 
@@ -1036,7 +1037,21 @@ class Enemy {
         return amt;
     }
 
-    takeDamage(amt, isAttack = true, yOffset = 0) {
+    reactToDamageTypes(amt, isAttack, type) {
+        if (!type) {
+            return;
+        }
+        this.accumulatedDamageReaction += amt;
+        if (this.reactTimeout) {
+            clearTimeout(this.reactTimeout);
+        }
+        this.reactTimeout = setTimeout(() => {
+            this.accumulatedDamageReaction = 0;
+            this.reactTimeout = null;
+        }, 1700)
+    }
+
+    takeDamage(amt, isAttack = true, yOffset = 0, type) {
         if (globalObjects.player.isDead()) {
             return;
         }
@@ -1050,33 +1065,8 @@ class Enemy {
             amt *= 2;
         }
         let origHealth = this.health;
-        // if (this.storeDamage) {
-        //     // time storage
-        //     this.accumulatedTimeDamage += amt;
-        //     let clockLargeGoalScale = 0.15 + Math.sqrt(this.accumulatedTimeDamage) * 0.018;
-        //     this.clockLarge.setScale(clockLargeGoalScale * 1.02);
-        //     this.clockLargeHand.setScale(this.clockLarge.scaleX * 20, this.clockLarge.scaleY * 140);
-        //     this.delayedDamageText.setText(this.accumulatedTimeDamage);
-        //     this.delayedDamageText.setScale(this.clockLarge.scaleX * 3 + 0.1);
-        //
-        //     this.scene.tweens.add({
-        //         targets: this.clockLarge,
-        //         scaleX: clockLargeGoalScale,
-        //         scaleY: clockLargeGoalScale,
-        //         ease: "Cubic.easeOut",
-        //         duration: gameVars.gameManualSlowSpeedInverse * 100 + amt * 5
-        //     });
-        //
-        //     this.scene.tweens.add({
-        //         targets: this.delayedDamageText,
-        //         scaleX: this.clockLarge.scaleX * 3,
-        //         scaleY: this.clockLarge.scaleX * 3,
-        //         ease: "Cubic.easeOut",
-        //         duration: gameVars.gameManualSlowSpeedInverse * 100 + amt * 5
-        //     });
-        //     amt = 0;
-        // }
 
+        this.reactToDamageTypes(amt, isAttack, type);
         let damageTaken = this.adjustDamageTaken(amt, isAttack);
         if (this.specialDamageAbsorptionActive) {
             damageTaken = this.handleSpecialDamageAbsorption(damageTaken);
@@ -1094,7 +1084,6 @@ class Enemy {
         if (isAttack) {
             this.timeSinceLastAttacked = 0;
         }
-
 
         if (this.health <= 0) {
             this.die();
@@ -1154,7 +1143,7 @@ class Enemy {
     }
 
 
-    takeTrueDamage(amt, isAttack = true, extraOffsetY = 0, canAmplify) {
+    takeTrueDamage(amt, isAttack = true, extraOffsetY = 0, canAmplify, type) {
         if (globalObjects.player.isDead()) {
             return;
         }
@@ -1167,6 +1156,7 @@ class Enemy {
         if (canAmplify && cheats.extraExtraDmg) {
             amt *= 2;
         }
+        this.reactToDamageTypes(amt, isAttack, type);
 
         let origHealth = this.health;
         // if (this.storeDamage) {

@@ -308,8 +308,8 @@ class SpellManager {
 
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     let baseDamage = gameVars.matterPlus ? 14 : 12;
-                    messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage);
-                    messageBus.publish('setPauseDur', 18);
+                    messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage, true, undefined, 'matter');
+                    messageBus.publish('setPauseDur', isExtraBuff ? 25 : 15);
                     rockObj.bg.visible = false;
                     poolManager.returnItemToPool(rockObj, 'rock');
                 }
@@ -871,7 +871,7 @@ class SpellManager {
                     });
                 },
                 onComplete: () => {
-                    messageBus.publish('enemyTakeDamage', basePower + additionalDamage);
+                    messageBus.publish('enemyTakeDamage', basePower + additionalDamage, true, undefined, 'matter');
                     zoomTemp(1.01 + additionalDamage * 0.00025);
                     this.createDamageEffect(gameConsts.halfWidth, 140, rockObj.depth);
                     this.scene.tweens.add({
@@ -1089,7 +1089,7 @@ class SpellManager {
                     }
 
                     // messageBus.publish('enemyStartDamageCountdown');
-                    messageBus.publish('enemyTakeDamage', spellDamage);
+                    messageBus.publish('enemyTakeDamage', spellDamage, true, undefined, 'time');
                     messageBus.publish('setPauseDur', 20);
 
                 }
@@ -1160,7 +1160,7 @@ class SpellManager {
                     });
 
                     // messageBus.publish('enemyStartDamageCountdown');
-                    messageBus.publish('enemyTakeDamage', halfSpellDamage);
+                    messageBus.publish('enemyTakeDamage', halfSpellDamage, true, undefined, 'time');
                     messageBus.publish('setPauseDur', 15);
                 }
             });
@@ -1532,7 +1532,7 @@ class SpellManager {
                         ease: 'Quart.easeOut',
                     });
 
-                    messageBus.publish('enemyTakeTrueDamage', 1 + additionalDamage, true, undefined, true);
+                    messageBus.publish('enemyTakeTrueDamage', 1 + additionalDamage, true, undefined, true, 'mind');
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead && !globalObjects.player.dead) {
                         let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 4, 'spells', 'energyTarget1.png').play('energyTarget').setAlpha(0.2).setScale(0.95).setRotation(Math.PI*0.15).setBlendMode(Phaser.BlendModes.ADD);
@@ -2114,8 +2114,8 @@ class SpellManager {
                             let healthPercent = globalObjects.currentEnemy.getHealth() * 0.02 + additionalDamage;
                             let damageDealt = Math.ceil(healthPercent)
                             playSound('void_strike_hit');
-                            messageBus.publish('enemyTakeDamage', damageDealt);
-                            messageBus.publish('setPauseDur', 30);
+                            messageBus.publish('enemyTakeDamage', damageDealt, true, undefined, 'void');
+                            messageBus.publish('setPauseDur', 25);
                             messageBus.publish('inflictVoidBurn', damageDealt, 2);
                             currStrikeObj.setScale(currStrikeObj.scaleX * 1.03, currStrikeObj.scaleY * 1.03);
                             this.scene.tweens.add({
@@ -2777,8 +2777,8 @@ class SpellManager {
                         });
                     }, 15);
                     messageBus.publish('enemyTakeDamagePercent', 10, additionalDamage);
-                    messageBus.publish('disruptOpponentAttackPercent', isFirstAttack ? 0.6 : 0.4);
-                    messageBus.publish('setPauseDur', 40);
+                    messageBus.publish('disruptOpponentAttackPercent', isFirstAttack ? 0.6 : 0.35);
+                    messageBus.publish('setPauseDur', 25);
                 });
                 if (additionalDamage > 1) {
                     let rockObj = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'rockCircle.png');

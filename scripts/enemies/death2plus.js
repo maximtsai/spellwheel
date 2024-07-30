@@ -1,19 +1,21 @@
  class Death2Plus extends Enemy {
      constructor(scene, x, y) {
          super(scene, x, y);
-         this.initSprite('death2final.png', 0.9, 0, 0, 'deathfinal');
+         this.initSprite('death2final.png', 0.92, 0, 0, 'deathfinal');
          this.bgMusic = playMusic('but_never_forgotten_metal', 0.9, true);
-         this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5)
+         this.bgMain = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5)
          this.bgBlur = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star_blur.png').setDepth(-5).setScale(2);
-         this.blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(-2);
-         // this.bgtemp.setScale(1.42);
+         globalObjects.player.reInitStats();
+         globalObjects.player.refreshHealthBar();
+         messageBus.publish('showCircleShadow', 0.7, -50);
+
          this.addTween({
              targets: this.bgBlur,
              alpha: 0,
              duration: 1500,
              onComplete: () => {
                  // this.addTween({
-                 //     targets: this.bgtemp,
+                 //     targets: this.bgMain,
                  //     alpha: 0.7,
                  //     scaleY: 2.01,
                  //     ease: 'Quad.easeInOut',
@@ -28,7 +30,7 @@
              targets: this.whiteoutTemp,
              scaleX: 21,
              scaleY: 21,
-             duration: 540,
+             duration: 575,
              ease: "Cubic.easeInOut",
              onComplete: () => {
                  this.whiteoutTemp.destroy();
@@ -37,7 +39,7 @@
          this.addTween({
              targets: this.whiteoutTemp,
              alpha: 0,
-             duration: 540,
+             duration: 575,
              ease: "Quad.easeIn"
          })
          this.addTimeout(() => {
@@ -67,10 +69,13 @@
          this.handShield.startScale = this.handShield.scaleX;
          this.currentHandGlow = this.addImage(0, 0, 'deathfinal', 'claw_glow.png').setAlpha(0).setDepth(-1);
          this.currentHandGlowPulse = this.addImage(0, 0, 'deathfinal', 'claw.png').setAlpha(0).setDepth(-1);
+
+         this.redClockTemp = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'enemies', 'red_clock_back_large_red.png').setAlpha(0);
+
     }
 
      beginBattleAnim() {
-         this.spellStartY = this.y + 10;
+         this.spellStartY = this.y - 60;
          this.createGlowHands();
          this.addDelay(() => {
              this.spellCirclePulse = this.addImage(this.x, this.spellStartY, 'blurry', 'spellcircle_pulse.png').setAlpha(0.1).setScale(0.5).setDepth(-3);
@@ -96,7 +101,7 @@
                          this.addTimeout(() => {
                              messageBus.publish("closeCombatText")
                          }, 7000);
-                     }, 2200)
+                     }, 100)
                  }, 1500)
 
              });
@@ -125,18 +130,16 @@
          if (this.currentHandGlow.currAnim) {
              this.currentHandGlow.currAnim.stop();
          }
-        this.currentHandGlow.alpha = 1;
+        this.currentHandGlow.alpha = 1.1;
         this.addTween({
             targets: this.currentHandGlow,
             alpha: 0,
-            duration: 400
+            duration: 500
         })
         this.currentHandGlow.currAnim = this.addTween({
             targets: this.currentHandGlow,
             scaleX: 0.5,
             scaleY: 0.5,
-            x: this.x,
-            y: this.y,
             ease: 'Cubic.easeIn',
             duration: 500
         })
@@ -144,7 +147,7 @@
 
     fadeMainBG(showup) {
          this.addTween({
-             targets: this.bgtemp,
+             targets: this.bgMain,
              alpha: showup ? 1 : 0.5,
              duration: 1000
          })
@@ -154,6 +157,29 @@
          this.attacks = [
              [
                  // 0
+                 {
+                     name: ";4x8",
+                     chargeAmt: 900,
+                     finishDelay: 3000,
+                     chargeMult: 2,
+                     damage: -1,
+                     startFunction: () => {
+                         this.pulseHand(3);
+                     },
+                     attackStartFunction: () => {
+                         this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
+                         let pokeHand = this.addImage(this.x + 180, this.y + 50, 'deathfinal', 'claw.png').setScale(0.1).setAlpha(0.65).setRotation(0.4);
+                         let pokeHandGlow = this.addImage(this.x + 180, this.y + 50, 'deathfinal', 'claw_glow.png').setScale(0.2).setAlpha(0).setRotation(0.4);
+                         this.summonHand(pokeHand, pokeHandGlow, 0.26, 0.7, () => {
+                             this.fireTwoClaws(4, 4, pokeHand);
+                         })
+                     },
+                     finaleFunction: () => {
+
+                     }
+                 },
                  {
                      name: "OBSERVING...",
                      chargeAmt: 300,
@@ -172,7 +198,7 @@
                      }
                  },
                  {
-                     name: "}15x2",
+                     name: "}16x2",
                      chargeAmt: 450,
                      finishDelay: 2000,
                      damage: -1,
@@ -184,14 +210,15 @@
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
-                         this.fireTwoPokes(15);
+                         let pokeHand = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'poke.png').setScale(0.1).setAlpha(0.65);
+                         let pokeHandGlow = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'poke_glow.png').setScale(0.2).setAlpha(0);
+                         this.summonHand(pokeHand, pokeHandGlow, 0.26, 0.6, () => {
+                             this.fireTwoPokes(16, pokeHand);
+                         })
                      },
-                     finaleFunction: () => {
-
-                     }
                  },
                  {
-                     name: "$16",
+                     name: "$20",
                      chargeAmt: 600,
                      finishDelay: 2000,
                      damage: -1,
@@ -202,31 +229,32 @@
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
+                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65);
+                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0);
+                         okayHand.setDepth(50);
+                         okayHandGlow.setDepth(50);
+                         let damage = 20;
+
+                         this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
+                             this.fireTimeAttack(damage, okayHand, () => {
+                                 this.redClockTemp = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'enemies', 'red_clock_back_large_red.png');
+                                 this.redClockTemp.setAlpha(1).setScale(1.4).setDepth(50);
+                                 this.addTween({
+                                     targets: this.redClockTemp,
+                                     alpha: 0,
+                                     scaleX: 1.45,
+                                     scaleY: 1.45,
+                                     duration: 1000,
+                                 })
+                                 messageBus.publish('playerAddDelayedDamage', damage);
+                             });
+                         })
                      },
                      finaleFunction: () => {
 
                      }
                  },
-                 {
-                     name: ";8x3",
-                     chargeAmt: 700,
-                     finishDelay: 4000,
-                     chargeMult: 2,
-                     damage: -1,
-                     startFunction: () => {
-                         this.pulseHand(3);
-                     },
-                     attackStartFunction: () => {
-                         this.currentAttackSetIndex = 1;
-                         this.nextAttackIndex = 0;
-                         this.fadeOutCurrentHand();
-                     },
-                     attackFinishFunction: () => {
-                     },
-                     finaleFunction: () => {
 
-                     }
-                 },
              ],
              [
                  {
@@ -291,14 +319,11 @@
          this.setAsleep();
      }
 
-     fireTwoPokes(damage) {
-         let pokeHand = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'poke.png').setScale(0.1).setAlpha(0.65);
-         let pokeHandGlow = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'poke_glow.png').setScale(0.2).setAlpha(0);
-
-         let scaleAmt = 0.28;
+     summonHand(hand, glow, scaleAmt = 0.26, goalAlpha = 0.6, onComplete) {
+         let startAlpha = hand.alpha;
          for (let i = 0; i < 2; i++) {
              let pebbles = getTempPoolObject('blurry', 'rock_rush.png', 'rockRush', 800);
-             pebbles.setPosition(pokeHand.x, pokeHand.y).setAlpha(0).setScale(1);
+             pebbles.setPosition(hand.x, hand.y).setAlpha(0).setScale(1);
              this.addTween({
                  delay: i * 350,
                  targets: pebbles,
@@ -319,99 +344,22 @@
                  onComplete: () => {
                      let scaleGoal = (i + 1) * scaleAmt;
                      this.addTween({
-                         targets: [pokeHand],
+                         targets: [hand],
+                         alpha: startAlpha * 0.5 - (i * 0.25) + goalAlpha * 0.5 + (i * 0.25),
                          duration: 150,
                          ease: 'Quad.easeIn',
                          scaleX: scaleGoal,
                          scaleY: scaleGoal,
                          onComplete: () => {
                              if (i == 1) {
-                                 pokeHandGlow.setAlpha(0.8).setScale(scaleGoal * 2)
+                                 glow.setAlpha(0.8).setScale(scaleGoal * 2)
                                  this.addTween({
-                                     targets: pokeHandGlow,
+                                     targets: glow,
                                      alpha: 0,
                                      duration: 500,
                                      onComplete: () => {
-                                         pokeHand.setDepth(50);
-                                         this.addTween({
-                                             targets: pokeHand,
-                                             duration: 400,
-                                             alpha: 1,
-                                             ease: 'Cubic.easeOut',
-                                         })
-                                         this.addTween({
-                                             targets: pokeHand,
-                                             duration: 500,
-                                             x: gameConsts.halfWidth - 15,
-                                             y: globalObjects.player.getY() - 215,
-                                             scaleX: 1,
-                                             scaleY: 1,
-                                             ease: 'Quart.easeIn',
-                                             onComplete: () => {
-                                                 messageBus.publish("selfTakeDamage", damage);
-                                                screenShake(4);
-                                                 playSound('body_slam')
-                                                 let dmgEffect = poolManager.getItemFromPool('brickPattern2')
-                                                 if (!dmgEffect) {
-                                                     dmgEffect = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
-                                                 }
-                                                 dmgEffect.setDepth(998).setScale(0.88).setAlpha(0.8).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 120);
-                                                 this.addTween({
-                                                     targets: dmgEffect,
-                                                     rotation: 1,
-                                                     alpha: 0,
-                                                     duration: 750,
-                                                 });
-                                                 this.addTween({
-                                                     delay: 300,
-                                                     targets: pokeHand,
-                                                     duration: 350,
-                                                     y: globalObjects.player.getY() - 275,
-                                                     ease: "Cubic.easeInOut",
-                                                     scaleX: 0.85,
-                                                     scaleY: 0.85,
-                                                     onComplete: () => {
-                                                         this.addTween({
-                                                             targets: pokeHand,
-                                                             duration: 400,
-                                                             y: globalObjects.player.getY() - 215,
-                                                             scaleX: 1,
-                                                             scaleY: 1,
-                                                             ease: 'Quart.easeIn',
-                                                             onComplete: () => {
-                                                                 messageBus.publish("selfTakeDamage", damage);
-                                                                 screenShake(5);
-                                                                 playSound('body_slam')
-                                                                 dmgEffect.setDepth(998).setScale(1).setAlpha(0.8).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 120);
-                                                                 this.addTween({
-                                                                     targets: dmgEffect,
-                                                                     rotation: 2.2,
-                                                                     alpha: 0,
-                                                                     duration: 800,
-                                                                     onComplete: () => {
-                                                                         poolManager.returnItemToPool(dmgEffect, 'brickPattern2');
-                                                                     }
-                                                                 });
-                                                                 this.addTween({
-                                                                     delay: 500,
-                                                                     targets: pokeHand,
-                                                                     duration: 400,
-                                                                     y: globalObjects.player.getY() - 240,
-                                                                     scaleX: 0.9,
-                                                                     scaleY: 0.9,
-                                                                     alpha: 0,
-                                                                     ease: 'Quart.easeIn',
-                                                                     onComplete: () => {
-                                                                         pokeHand.destroy();
-                                                                         pokeHandGlow.destroy();
-                                                                     }
-                                                                 })
-                                                             }
-                                                         })
-                                                     }
-                                                 })
-                                             }
-                                         })
+                                         glow.destroy();
+                                        onComplete();
                                      }
                                  })
                              }
@@ -426,7 +374,456 @@
                  }
              })
          }
+     }
 
+     fireTwoPokes(damage, pokeHand) {
+         pokeHand.setDepth(22);
+         this.addTween({
+             targets: pokeHand,
+             duration: 400,
+             alpha: 1,
+             ease: 'Cubic.easeOut',
+         })
+         this.addTween({
+             targets: pokeHand,
+             duration: 500,
+             x: gameConsts.halfWidth - 15,
+             y: globalObjects.player.getY() - 215,
+             scaleX: 1,
+             scaleY: 1,
+             ease: 'Quart.easeIn',
+             onComplete: () => {
+                 messageBus.publish("selfTakeDamage", damage);
+                 this.bgMain.setAlpha(0.75);
+                 this.addTween({
+                     targets: this.bgMain,
+                     alpha: 1,
+                     ease: "Quad.easeOut",
+                     duration: 800
+                 })
+                 screenShake(6);
+                 playSound('body_slam')
+                 let dmgEffect = poolManager.getItemFromPool('brickPattern2')
+                 if (!dmgEffect) {
+                     dmgEffect = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                 }
+                 dmgEffect.setDepth(998).setScale(0.88).setAlpha(0.8).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 120);
+                 this.addTween({
+                     targets: dmgEffect,
+                     rotation: 1,
+                     alpha: 0,
+                     duration: 750,
+                 });
+                 this.addTween({
+                     delay: 250,
+                     targets: pokeHand,
+                     duration: 500,
+                     y: globalObjects.player.getY() - 305,
+                     ease: "Cubic.easeInOut",
+                     scaleX: 0.7,
+                     scaleY: 0.7,
+                     onComplete: () => {
+                         this.addTween({
+                             targets: pokeHand,
+                             duration: 400,
+                             y: globalObjects.player.getY() - 215,
+                             scaleX: 1,
+                             scaleY: 1,
+                             ease: 'Quint.easeIn',
+                             onComplete: () => {
+                                 let hitEffect = getTempPoolObject('blurry', 'pulser.png', 'pulser', 1100);
+                                 hitEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 220).setDepth(pokeHand.depth + 1).setScale(0.3, 0.15).setVisible(true);
+                                 this.addTween({
+                                     targets: hitEffect,
+                                     scaleX: 3.5,
+                                     scaleY: 1.75,
+                                     ease: 'Quint.easeOut',
+                                     duration: 900,
+                                 });
+                                 this.addTween({
+                                     targets: hitEffect,
+                                     alpha: 0,
+                                     duration: 900,
+                                     ease: 'Quad.easeOut'
+                                 });
+
+                                 messageBus.publish("selfTakeDamage", damage);
+                                 screenShake(7);
+                                 playSound('body_slam');
+                                 this.bgMain.setAlpha(0.75);
+                                 this.addTween({
+                                     targets: this.bgMain,
+                                     alpha: 1,
+                                     ease: "Quad.easeOut",
+                                     duration: 800
+                                 })
+                                 dmgEffect.setDepth(998).setScale(1).setAlpha(0.8).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 120);
+                                 this.addTween({
+                                     targets: dmgEffect,
+                                     rotation: 2.2,
+                                     alpha: 0,
+                                     duration: 800,
+                                     onComplete: () => {
+                                         poolManager.returnItemToPool(dmgEffect, 'brickPattern2');
+                                     }
+                                 });
+                                 this.addTween({
+                                     delay: 600,
+                                     targets: pokeHand,
+                                     duration: 400,
+                                     y: globalObjects.player.getY() - 240,
+                                     scaleX: 0.9,
+                                     scaleY: 0.9,
+                                     alpha: 0,
+                                     ease: 'Quart.easeIn',
+                                     onComplete: () => {
+                                         pokeHand.destroy();
+                                     }
+                                 })
+                             }
+                         })
+                     }
+                 })
+             }
+         })
+     }
+
+     fireTimeAttack(damage, okayHand, onComplete) {
+         let blackBG = getBackgroundBlackout();
+         blackBG.setDepth(okayHand.depth - 1).setAlpha(0);
+         let flash = this.addImage(okayHand.x - 40, okayHand.y - 2, 'blurry', 'flash.webp');
+         flash.setPosition(okayHand.x - 45, okayHand.y - 2).setScale(0.1).setDepth(okayHand.depth + 1).setAlpha(1).setRotation(-0.8);
+         let starBlack = this.addImage(okayHand.x - 40, okayHand.y - 2, 'lowq', 'star_black.png').setAlpha(0.1).setScale(0.75).setDepth(-1);
+         this.addTween({
+             targets: starBlack,
+             alpha: 0.5,
+             scaleX: 1.5,
+             scaleY: 1.5,
+             duration: 700,
+             ease: 'Quad.easeOut',
+             onComplete: () => {
+                 this.addTween({
+                     targets: starBlack,
+                     alpha: 0,
+                     scaleX: 1.3,
+                     scaleY: 1.3,
+                     duration: 900,
+                     ease: 'Quad.easeIn',
+                     onComplete: () => {
+                         starBlack.destroy();
+                     }
+                 });
+             }
+         });
+         this.addTween({
+             targets: flash,
+             rotation: 3,
+             duration: 1500,
+             ease: 'Quad.easeInOut'
+         });
+         this.addTween({
+             targets: blackBG,
+             alpha: 0.4,
+             duration: 1800,
+             ease: 'Quad.easeOut',
+         });
+         this.addTween({
+             targets: flash,
+             scaleX: 2.5,
+             scaleY: 2.5,
+             duration: 700,
+             ease: 'Quad.easeIn',
+             onComplete: () => {
+                 this.addTween({
+                     targets: flash,
+                     scaleX: 0,
+                     scaleY: 0,
+                     duration: 800,
+                     ease: 'Quad.easeOut',
+                     onComplete: () => {
+                         let pulser = getTempPoolObject('circle', 'blastEffect1.png', 'blastEffect', 1300);
+                         let pulser2 = getTempPoolObject('blurry', 'pulser.png', 'pulser', 600);
+                         pulser.setPosition(flash.x, flash.y).setDepth(okayHand.depth + 1).setScale(0.2).setVisible(true).setAlpha(0);
+                         pulser2.setPosition(flash.x, flash.y).setDepth(okayHand.depth + 1).setScale(0.5, 0.5).setVisible(true).setAlpha(0.6);
+                         playSound('ringknell').detune = 700;
+                         this.addTween({
+                             targets: pulser,
+                             alpha: 1.3,
+                             ease: 'Quint.easeIn',
+                             duration: 500,
+                             onComplete: () => {
+                                 playSound('water_drop', 0.7);
+                                 this.addTween({
+                                     targets: pulser,
+                                     scaleX: 12,
+                                     scaleY: 12,
+                                     duration: 750,
+                                     ease: 'Quart.easeIn',
+                                     onComplete: () => {
+                                         pulser.alpha = 0;
+                                     }
+                                 });
+                             }
+                         });
+                         this.addTween({
+                             targets: pulser2,
+                             scaleX: 1.7,
+                             scaleY: 1.7,
+                             duration: 550,
+                             ease: 'Cubic.easeOut',
+                         });
+                         this.addTween({
+                             targets: pulser2,
+                             alpha: 0,
+                             duration: 550,
+                         });
+
+                         this.addDelay(() => {
+                             playSound('slice_in');
+                             blackBG.setAlpha(0.75);
+                             this.addTween({
+                                 targets: blackBG,
+                                 alpha: 0,
+                                 duration: 2000,
+                                 ease: 'Quad.easeOut'
+                             });
+                             playSound('time_strike_alt');
+                             playSound('heartbeatfast');
+                             this.addTween({
+                                 delay: 2000,
+                                 targets: okayHand,
+                                 alpha: 0,
+                                 ease: 'Quad.easeIn',
+                                 duration: 500,
+                                 scaleX: 0.5,
+                                 scaleY: 0.5
+                             })
+                             onComplete();
+                         }, 850)
+
+                     }
+                 });
+             }
+         });
+     }
+
+     fireTwoClaws(damage, times, handObj) {
+         let handStartX = handObj.x;
+         let handStartY = handObj.y;
+         let handGoalX = gameConsts.halfWidth;
+         let handGoalY = globalObjects.player.getY() - 210;
+         let handOvershootX = (handGoalX - handStartX) * 0.2;
+         let handOvershootY = (handGoalY - handStartY) * 0.2;
+         let rotAmt = 1;
+        this.addTween({
+            targets: handObj,
+            rotation: rotAmt,
+            alpha: handObj.alpha * 0.9,
+            scaleX: handObj.scaleX * 0.9,
+            scaleY: handObj.scaleX * 0.9,
+            duration: 400,
+            ease: 'Cubic.easeInOut',
+            onComplete: () => {
+                this.repeatScratch(handOvershootX, handOvershootY, handGoalY, () => {
+                    this.addTween({
+                        targets: handObj,
+                        alpha: 0,
+                        scaleX: 0.8,
+                        scaleY: 0.8,
+                        duration: 500,
+                        ease: 'Quad.easeIn',
+                        onComplete: () => {
+                            handObj.destroy();
+                        }
+                    })
+                });
+
+                this.addTween({
+                    targets: handObj,
+                    alpha: 1,
+                    scaleX: 1,
+                    scaleY: 1,
+                    duration: 500,
+                    ease: 'Quad.easeIn',
+                })
+            }
+        })
+     }
+
+     repeatScratch(handObj, handOvershootX, handOvershootY, onComplete) {
+         let handGoalX = gameConsts.halfWidth;
+         let handGoalY = globalObjects.player.getY() - 210;
+         this.addTween({
+             targets: handObj,
+             x: handGoalX,
+             y: handGoalY,
+             duration: 500,
+             ease: 'Quint.easeIn',
+             onComplete: () => {
+                 for (let i = 0; i < 4; i++) {
+                     this.addDelay(() => {
+                         messageBus.publish("selfTakeDamage", damage);
+                         playSound('slice_in')
+                     }, i * 100)
+                 }
+                 this.addTween({
+                     targets: handObj,
+                     x: handGoalX + handOvershootX,
+                     y: handGoalY + handOvershootY,
+                     duration: 300,
+                     ease: 'Quint.easeOut',
+                     onComplete: () => {
+                         this.addTween({
+                             targets: handObj,
+                             x: handGoalX + handOvershootX * 4,
+                             y: handGoalY - handOvershootY * 4,
+                             scaleX: 0.8,
+                             scaleY: 0.8,
+                             duration: 600,
+                             rotation: -handObj.rotation,
+                             ease: 'Cubic.easeInOut',
+                             onComplete: () => {
+                                // next swipe
+                                 this.addTween({
+                                     targets: handObj,
+                                     x: handGoalX,
+                                     y: handGoalY,
+                                     duration: 500,
+                                     ease: 'Quint.easeIn',
+                                     onComplete: () => {
+                                         for (let i = 0; i < 4; i++) {
+                                             this.addDelay(() => {
+                                                 messageBus.publish("selfTakeDamage", damage);
+                                                 playSound('slice_in')
+                                             }, i * 100)
+                                         }
+                                         this.addTween({
+                                             targets: handObj,
+                                             x: handGoalX - handOvershootX,
+                                             y: handGoalY - handOvershootY,
+                                             duration: 300,
+                                             ease: 'Quint.easeOut',
+                                             onComplete: () => {
+                                                 this.addTween({
+                                                     targets: handObj,
+                                                     x: handGoalX - handOvershootX * 4,
+                                                     y: handGoalY - handOvershootY * 4,
+                                                     scaleX: 0.8,
+                                                     scaleY: 0.8,
+                                                     duration: 600,
+                                                     rotation: -handObj.rotation,
+                                                     ease: 'Cubic.easeInOut',
+                                                     onComplete: onComplete
+                                                 })
+                                             }
+                                         })
+                                     }
+                                 });
+                             }
+                         })
+                     }
+                 })
+             }
+         });
+     }
+
+     countdown(depth, damage) {
+         this.redClockTemp.setAlpha(0).setScale(1.5).setRotation(-2).setDepth(depth + 1);
+         this.addTween({
+             targets: redClockTemp,
+             scaleX: 1.2,
+             scaleY: 1.2,
+             duration: 500,
+             ease: 'Cubic.easeIn',
+         })
+         this.addTween({
+             targets: this.redClockTemp,
+             rotation: 0,
+             alpha: 0.8,
+             duration: 500,
+             onComplete: () => {
+                 this.redClockTemp.setAlpha(1);
+                 this.addTween({
+                     targets: this.redClockTemp,
+                     alpha: 0.9,
+                     duration: 500,
+                     ease: 'Cubic.easeOut',
+                 });
+                 let redClockArmBack = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'enemies', 'red_clock_arm_large.png');
+                 let redClockArmFront = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'enemies', 'red_clock_arm_large.png');
+                 redClockArmBack.setDepth(1).setAlpha(1).setRotation(Math.PI * 0.5).setScale(1.15).setOrigin(0.5, 1.1);
+                 redClockArmFront.setDepth(10001).setAlpha(0.95).setRotation(Math.PI * 0.5).setBlendMode(Phaser.BlendModes.LIGHTEN).setScale(1.15).setOrigin(0.5, 1.1);
+                 this.addTween({
+                     targets: [redClockArmBack],
+                     duration: 500,
+                     alpha: 0.8,
+                     scaleX: 1.2,
+                     scaleY: 1.2
+                 });
+                 this.addTween({
+                     targets: [redClockArmFront],
+                     duration: 500,
+                     alpha: 0.4,
+                     scaleX: 1.2,
+                     scaleY: 1.2,
+                     onComplete: () => {
+                         for (let i = 5; i >= 0; i--) {
+                             this.addDelay(() => {
+                                 redClockArmBack.setAlpha(1).setRotation(Math.PI * 0.25 * 0.33 * i - 0.04).setScale(1.05);
+                                 redClockArmFront.setAlpha(0.75).setRotation(Math.PI * 0.25 * 0.33 * i - 0.04).setScale(1.05);
+                                 if (i == 0) {
+                                     messageBus.publish('playerAddDelayedDamage', damage);
+                                     screenShake(5);
+                                     this.addTween({
+                                         targets: [this.redClockTemp, redClockArmBack, redClockArmFront],
+                                         alpha: 0,
+                                         duration: 1000,
+                                     })
+                                     this.addTween({
+                                         targets: this.redClockTemp,
+                                         scaleX: 1.4,
+                                         scaleY: 1.4,
+                                         ease: 'Quad.easeOut',
+                                         duration: 1000,
+                                         onComplete: () => {
+                                             this.redClockTemp.alpha = 0;
+                                             redClockArmBack.destroy();
+                                             redClockArmFront.destroy();
+                                         }
+                                     });
+                                     this.bgMain.setAlpha(0.75);
+                                     this.addTween({
+                                         targets: this.bgMain,
+                                         alpha: 1,
+                                         duration: 1000,
+                                     })
+                                 }
+                                 this.addTween({
+                                     targets: [redClockArmBack, redClockArmFront],
+                                     duration: 150,
+                                     scaleX: 1.2,
+                                     scaleY: 1.2,
+                                     rotation: Math.PI * 0.25 * 0.33 * i,
+                                     ease: 'Back.easeOut'
+                                 });
+                                 this.addTween({
+                                     targets: [redClockArmBack],
+                                     duration: 500,
+                                     alpha: 0.8,
+                                 });
+                                 this.addTween({
+                                     targets: [redClockArmFront],
+                                     duration: 500,
+                                     alpha: 0.4,
+                                 });
+                                 playSound('clocktick1', 1).detune = 100 - i * 50;
+
+                             }, (5 - i) * 1000)
+                         }
+                     }
+                 })
+             }
+         })
      }
 
      pulseHand(idx) {
@@ -436,11 +833,11 @@
             yPos = this.y - 20;
 
          } else if (idx == 1) {
-             xPos = gameConsts.halfWidth - 103;
+             xPos = gameConsts.halfWidth - 102;
              yPos = this.y - 87;
          } else if (idx == 2) {
-             xPos = gameConsts.halfWidth + 103;
-             yPos = this.y - 87;
+             xPos = gameConsts.halfWidth + 90;
+             yPos = this.y - 90;
          } else if (idx == 3) {
              xPos = gameConsts.halfWidth + 200;
              yPos = this.y - 20;
@@ -470,6 +867,7 @@
                      scaleX: 1.1,
                      scaleY: 1.1,
                      duration: 1500,
+                     ease: 'Quad.easeOut'
                  });
              }
          })
@@ -541,16 +939,15 @@
         this.handShield.setScale(1.7).setAlpha(1);
          this.addTween({
              targets: this.handShield,
-             scaleX: 1.5,
-             scaleY: 1.5,
+             scaleX: 1.9,
+             scaleY: 1.9,
              ease: 'Cubic.easeOut',
              duration: 250,
          })
         this.addTween({
             targets: this.handShield,
             alpha: 0,
-            ease: 'Cubic.easeIn',
-            duration: 750,
+            duration: 600,
         })
      }
 
@@ -560,7 +957,7 @@
              messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, '-BROKE-', 1.2, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.25, scaleY: 1.25, ease: 'Back.easeOut'});
              this.clearHandShield();
          } else {
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random() * 150, this.sprite.y + 50 - Math.random() * 100, 'NEGATED', 0.75);
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random() * 150, this.sprite.y + 50 - Math.random() * 100, 'NEGATED', 0.70, {alpha: 0.6}, {alpha: 0});
             this.handShield.play('handShieldFast');
              this.handShield.setScale(3);
              this.handShield.once('animationcomplete', () => {
@@ -592,7 +989,7 @@
      }
 
      fallAnim() {
-         this.bgtemp.setAlpha(0.5);
+         this.bgMain.setAlpha(0.5);
          this.sprite.setRotation(-0.07);
          let deathFallTemp = this.addImage(this.sprite.x, this.y + 30, "deathfinal", 'death2fall.png').setScale(0.58).setAlpha(0).setDepth(this.sprite.depth);
          this.addTween({
@@ -653,7 +1050,7 @@
          let startRot = 0;
          let goalRot = 0;
          this.addTween({
-             targets: this.bgtemp,
+             targets: this.bgMain,
              alpha: 0.5,
              ease: "Quad.easeOut",
              duration: 1100

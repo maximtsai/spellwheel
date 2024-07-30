@@ -20,6 +20,16 @@
          this.nextBirdIndex = 0;
          this.eyeArray = [];
          this.eyeHealth = 50;
+         setTimeout(() => {
+             let xDiff = 110 * this.trueStartScale;
+             let yDiff = -3 * this.trueStartScale;
+             this.voidedOutline = this.addImage(this.x, this.y, 'enemies', 'wall_voided_outline_2.png').setAlpha(0).setScale(1.333).setDepth(11);
+             this.eyes2 = this.addImage(this.x, this.y, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, 0).setAlpha(0);
+             this.eyes2.setPosition(this.x + xDiff, this.y + yDiff);
+             this.addExtraSprite(this.eyes2, xDiff, yDiff);
+             this.eyeArray.push(this.eyes2);
+         }, 10)
+
      }
 
      initSpriteAnim(scale) {
@@ -54,6 +64,61 @@
      //     this.y = y;
      // }
 
+     reactToDamageTypes(amt, isAttack, type) {
+         super.reactToDamageTypes(amt, isAttack, type);
+         console.log(amt, isAttack, type)
+        if (type == "void" && !this.thirdCanCrumble && !this.dead) {
+            console.log(this.accumulatedDamageReaction);
+            if (this.accumulatedDamageReaction > 34) {
+                this.voidedOutline.setAlpha(1);
+                this.voidedOutline.setFrame('wall_voided_outline.png')
+                if (this.voidOutlineTween) {
+                    this.voidOutlineTween.stop();
+                }
+                this.voidOutlineTween = this.addTween({
+                    delay: 500,
+                    targets: this.voidedOutline,
+                    alpha: 0,
+                    ease: 'Cubic.easeIn',
+                    duration: 900
+                });
+                this.voidedOutline.x = this.x + 11;
+                this.sprite.x = this.x + 11;
+                this.addTween({
+                    targets: [this.voidedOutline, this.sprite],
+                    x: this.x,
+                    duration: 400,
+                    ease:'Bounce.easeOut',
+                })
+            } else {
+                this.voidedOutline.setAlpha(0.55 + this.accumulatedDamageReaction * 0.033);
+                this.voidedOutline.setFrame('wall_voided_outline_2.png')
+                if (this.voidOutlineTween) {
+                    this.voidOutlineTween.stop();
+                }
+                this.voidOutlineTween = this.addTween({
+                    targets: this.voidedOutline,
+                    alpha: 0,
+                    ease: "Quad.easeOut",
+                    duration: 350
+                })
+            }
+            // this.accumulatedAnimDamage += amt;
+            this.accumTween = this.addTween({
+                targets: this.sprite,
+                easeParams: [1.8],
+                duration: 900,
+                onComplete: () => {
+                    // this.accumulatedAnimDamage = 0;
+                    this.setSprite(this.defaultSprite);
+                    if (!this.dead) {
+                        this.sprite.rotation = 0;
+                    }
+                }
+            });
+        }
+     }
+
      setHealth(newHealth) {
          super.setHealth(newHealth);
          let prevHealthPercent = this.prevHealth / this.healthMax;
@@ -71,7 +136,7 @@
          }
          if (currHealthPercent < 0.9999 && this.isAsleep && !this.isStarting) {
              this.isStarting = true;
-             this.setDefaultSprite('wall_2.png');
+             // this.setDefaultSprite('wall_2.png');
              this.initEye1();
              this.birdFalls();
          } else if (currHealthPercent < 0.8 && !this.firstCanCrumble) {
@@ -84,9 +149,11 @@
                  this.eyes1.startOffsetY = 33 * this.trueStartScale;
                  let xDiff = 110 * this.trueStartScale;
                  let yDiff = -3 * this.trueStartScale;
-                 this.eyes2 = this.addImage(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1);
-                 this.addExtraSprite(this.eyes2, xDiff, yDiff);
-                 this.eyeArray.push(this.eyes2);
+                 this.eyes2.alpha = 1;
+                 this.eyes2.setPosition(this.x + xDiff, this.y + yDiff);
+                 this.eyes2.startOffsetX = xDiff;
+                 this.eyes2.startOffsetY = yDiff;
+                 this.eyes2.setFrame('wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1);
                  this.reOpenEyes()
              });
          } else if (currHealthPercent < 0.55 && !this.secondCanCrumble) {
@@ -96,14 +163,10 @@
                  this.eyes1.setPosition(this.x - 73 * this.trueStartScale, this.y + 33 * this.trueStartScale);
                  this.eyes1.startOffsetX = -73 * this.trueStartScale;
                  this.eyes1.startOffsetY = 33 * this.trueStartScale;
-                 if (!this.eyes2) {
-                     let xDiff = 68 * this.trueStartScale;
-                     let yDiff = -4 * this.trueStartScale;
-                     this.eyes2 = this.addImage(this.x + xDiff, this.y + yDiff, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1);
-                     this.eyeArray.push(this.eyes2);
-                     this.addExtraSprite(this.eyes2, xDiff, yDiff);
-                 }
 
+                 this.eyes2.alpha = 1;
+                 this.eyes2.startOffsetX = 68 * this.trueStartScale;
+                 this.eyes2.startOffsetY = -4 * this.trueStartScale;
                  this.reOpenEyes()
              })
          } else if (currHealthPercent < 0.3 && !this.thirdCanCrumble) {
@@ -113,12 +176,9 @@
              this.closeEyes(0, () => {
                  let eye2OffsetX = 120 * this.trueStartScale;
                  let eye2OffsetY = 27 * this.trueStartScale;
-                 if (!this.eyes2) {
-                     this.eyes2 = this.addImage(this.x + eye2OffsetX, this.y + eye2OffsetY, 'enemies', 'wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1);
-                     this.eyeArray.push(this.eyes2);
-                     this.addExtraSprite(this.eyes2, eye2OffsetX, eye2OffsetY);
-                 }
+
                  this.eyes2.setFrame('wall_eyes_4.png').setPosition(this.x + eye2OffsetX, this.y + eye2OffsetY);
+                 this.eyes2.alpha = 1;
                  this.eyes2.startOffsetX = eye2OffsetX;
                  this.eyes2.startOffsetY = eye2OffsetY;
                  this.reOpenEyes()

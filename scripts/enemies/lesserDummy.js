@@ -429,7 +429,14 @@
      setHealth(newHealth) {
          super.setHealth(newHealth);
          if (newHealth > 0) {
-             this.eyeSprite.play('dummyblink');
+             if (newHealth > 14) {
+                 this.eyeSprite.play('dummyblink');
+             } else {
+                 let oldOriginX = this.sprite.originX;
+                 let oldOriginY = this.sprite.originY;
+                 this.setDefaultSprite('lesser_dummy_hurt.png').setOrigin(oldOriginX, oldOriginY);
+                 this.eyeSprite.destroy();
+             }
 
              this.addTween({
                  targets: [this.sprite, this.eyeSprite],
@@ -487,7 +494,7 @@
          if (this.glowCirc) {
             this.glowCirc.destroy();
          }
-        this.setDefaultSprite('lesser_dummy_noshadow.png', this.sprite.scaleX);
+        this.setDefaultSprite('lesser_dummy_hurt.png', this.sprite.scaleX);
         this.sprite.setOrigin(0.5, 0.99);
 
          this.addTween({
@@ -501,7 +508,7 @@
                  this.sprite.y += 54;
                  this.sprite.x -= 81;
                  this.showVictory();
-
+                 playSound('lesserfall', 0.75);
              }
          });
 

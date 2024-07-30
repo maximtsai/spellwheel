@@ -435,7 +435,8 @@ function recursiveCreateIntroText(delay = 150, num = 180) {
 
 function clickIntro() {
     clearDeathFog();
-    playSound('locket_open', 0.56);
+    playSound('locket_open', 0.7);
+    playSound('water_drop', 0.16);
     globalObjects.tempIntroText = [];
     // recursiveCreateIntroText();
     gameVars.runningIntro = true;

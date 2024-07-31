@@ -435,7 +435,7 @@
                  let oldOriginX = this.sprite.originX;
                  let oldOriginY = this.sprite.originY;
                  this.setDefaultSprite('lesser_dummy_hurt.png').setOrigin(oldOriginX, oldOriginY);
-                 this.eyeSprite.destroy();
+                 // this.eyeSprite.destroy();
              }
 
              this.addTween({

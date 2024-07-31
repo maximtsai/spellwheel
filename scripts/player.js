@@ -174,7 +174,7 @@ class Player {
             this.statuses['mindUnload'].cleanUp(this.statuses);
             this.statuses['mindUnload'] = null;
         }
-        globalObjects.magicCircle.setAuraAlpha(0.02);
+        globalObjects.magicCircle.setAuraAlpha(0);
     }
 
     clearAttackMultiplier() {

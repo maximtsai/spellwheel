@@ -524,9 +524,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">spells/energyTarget1 - Copy.png</key>
             <key type="filename">spells/energyTarget1.png</key>
-            <key type="filename">spells/energyTarget2 - Copy.png</key>
             <key type="filename">spells/energyTarget2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -673,7 +671,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.8</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>

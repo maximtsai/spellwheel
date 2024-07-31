@@ -304,7 +304,24 @@ class SpellManager {
                     } else if (i % 2 == 0) {
                         playSound('matter_strike_hit2', 0.6 + additionalVol).detune = detuneAmt;
                     }
-
+                    if (isExtraBuff) {
+                        let rockHitEffect = getTempPoolObject('blurry', 'rock_rush.png', 'rockRush', 300);
+                        rockHitEffect.setVisible(true).setAlpha(0.9 + additionalDamage * 0.003).setScale(0.25 + additionalDamage * 0.0025).setRotation(Math.random() * 6);
+                        rockHitEffect.setDepth(rockObj.depth - 1).setPosition(rockObj.x, rockObj.y);
+                        this.scene.tweens.add({
+                            targets: rockHitEffect,
+                            duration: 250,
+                            alpha: 0,
+                            scaleX: 0.5 + additionalDamage * 0.008,
+                            scaleY: 0.5 + additionalDamage * 0.008,
+                        });
+                        this.scene.tweens.add({
+                            targets: rockHitEffect,
+                            duration: 250,
+                            y: "+=20",
+                            ease: "Cubic.easeIn"
+                        });
+                    }
 
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     let baseDamage = gameVars.matterPlus ? 14 : 12;
@@ -312,6 +329,8 @@ class SpellManager {
                     messageBus.publish('setPauseDur', isExtraBuff ? 25 : 15);
                     rockObj.bg.visible = false;
                     poolManager.returnItemToPool(rockObj, 'rock');
+
+
                 }
             });
         }
@@ -872,6 +891,7 @@ class SpellManager {
                 },
                 onComplete: () => {
                     messageBus.publish('enemyTakeDamage', basePower + additionalDamage, true, undefined, 'matter');
+                    screenShake(5);
                     zoomTemp(1.01 + additionalDamage * 0.00025);
                     this.createDamageEffect(gameConsts.halfWidth, 140, rockObj.depth);
                     this.scene.tweens.add({
@@ -1976,7 +1996,7 @@ class SpellManager {
         }
 
         magicObj.setDepth(0);
-        magicObj.setScale(0.75);
+        magicObj.setScale(0.95);
         magicObj.setAlpha(0.25);
         magicObjects.push(magicObj);
 
@@ -1987,8 +2007,8 @@ class SpellManager {
             duration: 500,
             alpha: 0.75,
             ease: 'Cubic.easeOut',
-            scaleX: 1,
-            scaleY: 1,
+            scaleX: 1.25,
+            scaleY: 1.25,
             onStart: () => {
                 // BUGGY WARNING
                 if (existingBuff && existingBuff.soundObj) {
@@ -2781,6 +2801,7 @@ class SpellManager {
                     messageBus.publish('enemyTakeDamagePercent', 10, additionalDamage);
                     messageBus.publish('disruptOpponentAttackPercent', isFirstAttack ? 0.6 : 0.35);
                     messageBus.publish('setPauseDur', 25);
+                    screenShake(5);
                 });
                 if (additionalDamage > 1) {
                     let rockObj = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'rockCircle.png');

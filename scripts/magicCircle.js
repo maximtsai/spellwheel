@@ -401,7 +401,7 @@ const ENABLE_KEYBOARD = true;
         this.aura.setDepth(101);
         this.aura.setScale(0.9);
         this.aura.rotVel = 0;
-        this.aura.alpha = 0.02;
+        this.aura.alpha = 0;
 
         this.voidArm = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHoleArms.png').setScale(1.25);
         this.voidArm.setDepth(15);
@@ -2012,7 +2012,7 @@ const ENABLE_KEYBOARD = true;
         messageBus.publish('castSpell', elem, embodi, actualShieldId, rotation);
     }
 
-    setAuraAlpha(alpha = 0.02) {
+    setAuraAlpha(alpha = 0) {
         this.aura.alpha = alpha;
     }
 

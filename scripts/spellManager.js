@@ -6,7 +6,7 @@ class SpellManager {
         this.initializePoolStuff();
     }
     initializePoolStuff() {
-        let rockObj = this.scene.add.sprite(0, 0, 'spells', 'rock.png');
+        let rockObj = this.scene.add.image(0, 0, 'spells', 'rock.png');
         poolManager.returnItemToPool(rockObj, 'rock');
     }
 
@@ -156,11 +156,11 @@ class SpellManager {
             let yPos = globalObjects.player.getY() - 240 + Math.abs(halfwayIdx - i) * 10;
             let rockObj = poolManager.getItemFromPool('rock')
             if (!rockObj) {
-                rockObj = this.scene.add.sprite(xPos, yPos, 'spells', 'rock.png');
-                rockObj.bg = this.scene.add.sprite(xPos, yPos, 'spells', 'rock_bg.png');
+                rockObj = this.scene.add.image(xPos, yPos, 'spells', 'rock.png');
+                rockObj.bg = this.scene.add.image(xPos, yPos, 'spells', 'rock_bg.png');
             }
             if (!rockObj.bg) {
-                rockObj.bg = this.scene.add.sprite(xPos, yPos, 'spells', 'rock_bg.png');
+                rockObj.bg = this.scene.add.image(xPos, yPos, 'spells', 'rock_bg.png');
             }
             rockObj.bg.alpha = isMobile ? 0.65 : 0.45;
             rockObj.bg.visible = true;
@@ -351,8 +351,8 @@ class SpellManager {
             statusObj = existingBuff.statusObj;
         } else {
             this.cleanseForms();
-            brickObj = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'brickPattern1.png');
-            brickObj2 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'brickPattern2.png');
+            brickObj = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'brickPattern1.png');
+            brickObj2 = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'brickPattern2.png');
         }
 
         let spellMult = globalObjects.player.spellMultiplier();
@@ -782,7 +782,7 @@ class SpellManager {
                 duration: 200
             });
         } else {
-            stoneCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'stoneCircle.png');
+            stoneCircle = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'stoneCircle.png');
             stoneCircle.setAlpha(0.5).setScale(0.9).setRotation(-0.3);
 
             textHealth = this.scene.add.bitmapText(gameConsts.halfWidth, globalObjects.player.getY() - 44, 'armor', '0', 48, 1);
@@ -1193,12 +1193,12 @@ class SpellManager {
         const spellID = 'timeReinforce';
         let multiplier = globalObjects.player.spellMultiplier();
         let healthRewoundPercent = 1 - 0.5 ** multiplier;
-        let bigClock = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large.png');
+        let bigClock = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large.png');
         this.cleanseForms();
         playSound('time_body')
         bigClock.setDepth(120).setScale(1.05);
         bigClock.alpha = 0;
-        let clockArm = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_arm_large.png');
+        let clockArm = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_arm_large.png');
         clockArm.setDepth(120).setScale(1.2);
         clockArm.setOrigin(0.01, 0.5);
         clockArm.alpha = 0;
@@ -1293,8 +1293,8 @@ class SpellManager {
             let xPos = gameConsts.halfWidth + (numTotalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numTotalAttacks - 1) * 0.5;
             let yPos = globalObjects.player.getY() - 240 + Math.abs(halfwayIdx - i) * 10;
-            let mindObj = this.scene.add.sprite(xPos, yPos, 'spells', 'timeEffect.png');
-            let mindObj2 = this.scene.add.sprite(xPos, yPos, 'spells', 'timeEffect2.png');
+            let mindObj = this.scene.add.image(xPos, yPos, 'spells', 'timeEffect.png');
+            let mindObj2 = this.scene.add.image(xPos, yPos, 'spells', 'timeEffect2.png');
 
             mindObj.setDepth(10);
             mindObj.rotation = Math.random() - 0.5;
@@ -1384,7 +1384,7 @@ class SpellManager {
             shieldName = "clockShieldTriple.png";
         }
 
-        let animation1 = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', shieldName);
+        let animation1 = this.scene.add.image(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', shieldName);
         animation1.setDepth(118);
         animation1.setOrigin(0.5, 1);
         animation1.setScale(0.75);
@@ -1642,8 +1642,8 @@ class SpellManager {
         }
         let electricCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells').play('powerEffect').setScale(3.4).setDepth(117);
         let repeatCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells').play('powerEffectRepeat').setScale(1.5).setDepth(117);
-        let energyCircle1 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'energy_body.png').setScale(0.9).setAlpha(0.75).setDepth(104);
-        let energyCircle2 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'energy_body.png').setScale(0.8).setAlpha(0.25).setRotation(Math.PI / 8).setDepth(104);
+        let energyCircle1 = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'energy_body.png').setScale(0.9).setAlpha(0.75).setDepth(104);
+        let energyCircle2 = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'energy_body.png').setScale(0.8).setAlpha(0.25).setRotation(Math.PI / 8).setDepth(104);
 
         playSound('power_surge');
 
@@ -1870,7 +1870,7 @@ class SpellManager {
         animation2.alpha = 0.3;
         animation2.visible = false;
 
-        let animation3 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY() - 225, 'spells', 'weakenLines_00.png');
+        let animation3 = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY() - 225, 'spells', 'weakenLines_00.png');
         animation3.startX = animation3.x;
         animation3.startY = animation3.y;
         animation3.setDepth(110);
@@ -1878,10 +1878,6 @@ class SpellManager {
         animation3.rotation = 0;
         animation3.alpha = 0;
         animation3.rotateOffset = 0;
-
-        // let animation4 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blast.png').setScale(2 + spellMultiplier * 0.2, 5);
-        // animation4.setDepth(990).setOrigin(0.5, 1.205).setAlpha(0);
-        // animation4.origScale = animation4.scaleX;
 
         let textDisplay = this.scene.add.bitmapText(gameConsts.halfWidth, animation2.y, 'bonus', '', 48, 1);
         textDisplay.setOrigin(0.5, 0.5);
@@ -1960,7 +1956,7 @@ class SpellManager {
         if (existingMultiplier > 1) {
             playSound('mind_ultimate_2', 0.95);
             newMultiplier = existingMultiplier + 2;
-            magicObj = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'mind_boost_2.png');
+            magicObj = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'mind_boost_2.png');
             PhaserScene.tweens.add({
                 targets: PhaserScene.cameras.main,
                 zoom: 0.95,
@@ -1978,7 +1974,7 @@ class SpellManager {
         } else {
             playSound('mind_ultimate_1', 0.7);
 
-            magicObj = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'mind_boost.png');
+            magicObj = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'mind_boost.png');
             PhaserScene.tweens.add({
                 targets: PhaserScene.cameras.main,
                 zoom: 0.988,
@@ -2088,7 +2084,7 @@ class SpellManager {
             let xPos = gameConsts.halfWidth + (isLeftStrike ? -10 : 10);
             let yPos = globalObjects.player.getY() - 145;
 
-            let strikeObj = this.scene.add.sprite(xPos, yPos, 'spells', 'dark_tentacle.png');
+            let strikeObj = this.scene.add.image(xPos, yPos, 'spells', 'dark_tentacle.png');
             strikeObj.setOrigin(0.15, 1)
             strikeObj.setDepth(11);
             strikeObj.setScale(0);
@@ -2173,7 +2169,7 @@ class SpellManager {
         let multiplier = globalObjects.player.spellMultiplier();
         this.cleanseForms();
 
-        let shieldObj = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blackHoleBig.png');
+        let shieldObj = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blackHoleBig.png');
         shieldObj.setDepth(11);
         shieldObj.setScale(2.2);
 
@@ -2192,7 +2188,7 @@ class SpellManager {
                 shieldObj.destroy();
             }
         });
-        let whiteFade = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setDepth(99).setScale(500, 500);
+        let whiteFade = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setDepth(99).setScale(500, 500);
         whiteFade.setAlpha(0);
         this.scene.tweens.add({
             targets: whiteFade,
@@ -2206,7 +2202,7 @@ class SpellManager {
                 let dist = 235 + Math.random() * 80;
                 let randX = gameConsts.halfWidth + Math.sin(randAngle) * dist;
                 let randY = globalObjects.player.getY() - Math.cos(randAngle) * dist;
-                let blackBall = this.scene.add.sprite(randX, randY, 'spells', 'blackCircleLarge.png').setDepth(998).setScale(0,0);
+                let blackBall = this.scene.add.image(randX, randY, 'spells', 'blackCircleLarge.png').setDepth(998).setScale(0,0);
                 blackBall.setRotation(Math.random() * 6);
 
                 this.scene.tweens.add({
@@ -2227,8 +2223,8 @@ class SpellManager {
                         let fades = [];
                         if (i == 2) {
                             let healPerTick = Math.ceil((globalObjects.player.getHealthMax() - globalObjects.player.getHealth()) / 3);
-                            let whiteBall = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'whiteCircle.png').setDepth(99).setScale(6,6).setAlpha(0.6);
-                            let blackFade = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(99).setScale(500, 500).setAlpha(0);
+                            let whiteBall = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'whiteCircle.png').setDepth(99).setScale(6,6).setAlpha(0.6);
+                            let blackFade = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(99).setScale(500, 500).setAlpha(0);
                             fades.push(whiteBall);
                             fades.push(blackFade);
                             fades.push(whiteFade);
@@ -2486,7 +2482,7 @@ class SpellManager {
         for (let i = 0; i < 9 + spellMultiplier; i++) {
             let blackCircle = poolManager.getItemFromPool('blackCircle');
             if (!blackCircle) {
-                blackCircle = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 210, 'spells', 'blackCircle.png');
+                blackCircle = this.scene.add.image(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 210, 'spells', 'blackCircle.png');
             }
             blackCircle.setPosition(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 210);
             blackCircle.setDepth(120);
@@ -2543,7 +2539,7 @@ class SpellManager {
             let rotationPos = (i - ((numCircleParticles - 1) / 2)) * 0.12;
             let blackShieldPiece = poolManager.getItemFromPool('blackCirclePlain');
             if (!blackShieldPiece) {
-                blackShieldPiece = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', 'blackCirclePlain.png');
+                blackShieldPiece = this.scene.add.image(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', 'blackCirclePlain.png');
             }
             blackShieldPiece.startX = gameConsts.halfWidth; blackShieldPiece.startY = MAGIC_CIRCLE_HEIGHT;
             let xPos = gameConsts.halfWidth + startDist * Math.sin(rotationPos);
@@ -2559,7 +2555,7 @@ class SpellManager {
         // Create the eyes
         for (let i = 0; i < spellMultiplier; i++) {
             let rotationPos = (i - ((spellMultiplier - 1) / 2)) * 0.088;
-            let eyeAnim = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', 'voidParticle.png');
+            let eyeAnim = this.scene.add.image(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', 'voidParticle.png');
             eyeAnim.startX = eyeAnim.x; eyeAnim.startY = eyeAnim.y;
             eyeAnim.rotation = Math.random() * 1;
             let xPos = gameConsts.halfWidth + startDist * Math.sin(rotationPos);
@@ -2586,7 +2582,7 @@ class SpellManager {
                 ease: 'Back.easeOut'
             });
         }
-        let voidBG = this.scene.add.sprite(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 20, 'spells', 'shield_glow.png').setScale(1.5, 1.15).setAlpha(0.05).setOrigin(0.5, 1);
+        let voidBG = this.scene.add.image(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 20, 'spells', 'shield_glow.png').setScale(1.5, 1.15).setAlpha(0.05).setOrigin(0.5, 1);
         this.scene.tweens.add({
             targets: voidBG,
             delay: 250,
@@ -2679,7 +2675,7 @@ class SpellManager {
             numBlackHolePre = 2;
         }
         for (let i = 0; i < numBlackHolePre; i++) {
-            let voidObjPre = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHolePre.png');
+            let voidObjPre = this.scene.add.image(gameConsts.halfWidth, 210, 'spells', 'blackHolePre.png');
             voidObjPre.rotation = Math.random() * 6.28;
             voidObjPre.setAlpha(0.05);
             voidObjPre.setScale(1 + 0.25 * i);
@@ -2710,7 +2706,7 @@ class SpellManager {
             });
         }
 
-        let voidObj = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'blackHoleBig.png');
+        let voidObj = this.scene.add.image(gameConsts.halfWidth, 210, 'spells', 'blackHoleBig.png');
         voidObj.setDepth(15);
         voidObj.rotation = Math.random() * 0.1;
         voidObj.setScale(1 + numTotalAttacks * 0.15);
@@ -2804,7 +2800,7 @@ class SpellManager {
                     screenShake(5);
                 });
                 if (additionalDamage > 1) {
-                    let rockObj = this.scene.add.sprite(gameConsts.halfWidth, 210, 'spells', 'rockCircle.png');
+                    let rockObj = this.scene.add.image(gameConsts.halfWidth, 210, 'spells', 'rockCircle.png');
                     rockObj.alpha = 0.05;
                     rockObj.rotation = Math.random() * Math.PI * 2;
                     rockObj.setScale(1 + additionalDamage * 0.005);
@@ -2828,7 +2824,7 @@ class SpellManager {
     createRockParticle(x, y, velX, velY, duration) {
         let particle = this.particlesRock.pop();
         if (!particle) {
-            particle = this.scene.add.sprite(x, y, 'spells', 'rock_chip.png');
+            particle = this.scene.add.image(x, y, 'spells', 'rock_chip.png');
             particle.setDepth(15);
         }
         particle.setScale(1.25);

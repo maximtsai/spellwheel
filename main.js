@@ -1,7 +1,7 @@
 let isMobile = testMobile();
 let gameVersion = "version 1.26";
 let config = {
-    type: Phaser.CANVAS,
+    type: Phaser.AUTO,
     scale: {
         parent: 'spellwheel',
         autoRound: true,

@@ -110,7 +110,7 @@
              this.addDelay(() => {
                  this.setAwake();
              }, 4000)
-         }, 1000)
+         }, 900)
      }
 
      repeatTweenBreathe(duration = 1500, magnitude = 1) {
@@ -159,8 +159,8 @@
              [
                  // 0
                  {
-                     name: ";4x8",
-                     chargeAmt: 900,
+                     name: ";4x4",
+                     chargeAmt: 750,
                      finishDelay: 3000,
                      chargeMult: 2,
                      damage: -1,
@@ -173,8 +173,8 @@
                      attackFinishFunction: () => {
                          let pokeHand = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw.png').setScale(0.1).setAlpha(0.65).setRotation(0.4);
                          let pokeHandGlow = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw_glow.png').setScale(0.2).setAlpha(0).setRotation(0.4);
-                         this.summonHand(pokeHand, pokeHandGlow, 0.26, 0.7, () => {
-                             this.fireTwoClaws(4, 4, pokeHand);
+                         this.summonHand(pokeHand, pokeHandGlow, 0.4, 0.7, () => {
+                             this.fireTwoClaws(4, 2, pokeHand);
                          })
                      },
                      finaleFunction: () => {
@@ -611,23 +611,29 @@
      fireTwoClaws(damage, times, handObj) {
          let handStartX = handObj.x;
          let handStartY = handObj.y;
-         let handGoalX = gameConsts.halfWidth;
-         let handGoalY = globalObjects.player.getY() - 210;
-         let handOvershootX = (handGoalX - handStartX) * 0.2;
-         let handOvershootY = (handGoalY - handStartY) * 0.2;
+
+
+
+         let handGoalX = gameConsts.halfWidth - 90;
+         let handGoalY = globalObjects.player.getY() - 60;
+         let handOvershootX = (handGoalX - handStartX) * 0.24;
+         let handOvershootY = (handGoalY - handStartY) * 0.24;
          let rotAmt = 0.8;
+         this.addDelay(() => {
+             handObj.setDepth(50);
+         }, 300)
         this.addTween({
             targets: handObj,
             rotation: rotAmt,
-            alpha: handObj.alpha * 0.9,
-            scaleX: handObj.scaleX * 0.9,
-            scaleY: handObj.scaleX * 0.9,
+            alpha: handObj.alpha * 0.7,
+            scaleX: handObj.scaleX * 0.6,
+            scaleY: handObj.scaleX * 0.6,
             duration: 400,
             ease: 'Cubic.easeInOut',
             onComplete: () => {
-                handObj.setDepth(50);
-                this.repeatScratch(damage, times, handOvershootX, handOvershootY, handGoalY, () => {
+                this.repeatScratch(damage, times, handObj, handOvershootX, handOvershootY, () => {
                     this.addTween({
+                        delay: 500,
                         targets: handObj,
                         alpha: 0,
                         scaleX: 0.8,
@@ -645,7 +651,7 @@
                     alpha: 1,
                     scaleX: 1,
                     scaleY: 1,
-                    duration: 500,
+                    duration: 400,
                     ease: 'Quad.easeIn',
                 })
             }
@@ -653,13 +659,13 @@
      }
 
      repeatScratch(damage, times, handObj, handOvershootX, handOvershootY, onComplete) {
-         let handGoalX = gameConsts.halfWidth;
-         let handGoalY = globalObjects.player.getY() - 210;
+         let handGoalXOffset = -90;
+         let handGoalY = globalObjects.player.getY() - 60;
          this.addTween({
              targets: handObj,
-             x: handGoalX,
+             x: gameConsts.halfWidth + handGoalXOffset,
              y: handGoalY,
-             duration: 500,
+             duration: 400,
              ease: 'Quint.easeIn',
              onComplete: () => {
                  for (let i = 0; i < times; i++) {
@@ -673,27 +679,31 @@
                      x: handGoalX + handOvershootX,
                      y: handGoalY + handOvershootY,
                      duration: 300,
+                     alpha: 0,
                      ease: 'Quint.easeOut',
                      onComplete: () => {
+                         handObj.scaleX = -handObj.scaleX
                          this.addTween({
                              targets: handObj,
                              x: handGoalX + handOvershootX * 4,
                              y: handGoalY - handOvershootY * 4,
-                             scaleX: 0.8,
+                             scaleX: -0.8,
                              scaleY: 0.8,
-                             duration: 600,
+                             alpha: 0.9,
+                             duration: 350,
                              rotation: -handObj.rotation,
-                             ease: 'Cubic.easeInOut',
+                             ease: 'Quart.easeInOut',
                              onComplete: () => {
                                 // next swipe
                                  this.addTween({
                                      targets: handObj,
                                      x: handGoalX,
                                      y: handGoalY,
-                                     duration: 500,
+                                     alpha: 1,
+                                     duration: 400,
                                      ease: 'Quint.easeIn',
                                      onComplete: () => {
-                                         for (let i = 0; i < 4; i++) {
+                                         for (let i = 0; i < times; i++) {
                                              this.addDelay(() => {
                                                  messageBus.publish("selfTakeDamage", damage);
                                                  playSound('slice_in')
@@ -1085,7 +1095,7 @@
         });
         setTimeout(() => {
             playSound('ringknell');
-        }, 150)
+        }, 100)
         this.addTween({
             targets: [this.spellCircle, this.spellCircleGlow, this.spellCirclePulse],
             alpha: 1,

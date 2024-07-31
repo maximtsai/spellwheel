@@ -397,7 +397,7 @@ const ENABLE_KEYBOARD = true;
     }
 
     buildCircles(x, y, scene) {
-        this.aura = scene.add.sprite(x, y, 'circle', 'aura.png');
+        this.aura = scene.add.image(x, y, 'circle', 'aura.png');
         this.aura.setDepth(101);
         this.aura.setScale(0.9);
         this.aura.rotVel = 0;

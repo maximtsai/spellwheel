@@ -10,7 +10,7 @@ let canvas;
 
 function setupLoadingBar(scene) {
     PhaserScene.cameras.main.setZoom(0.98);
-    fadeInBackground('backgroundPreload', 5000, 3.28);
+    // fadeInBackground('backgroundPreload', 5000, 3.28);
 
     // Basic loading bar visual
     let iconsHeight = gameConsts.height - (isMobile ? 134 : 124);

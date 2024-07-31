@@ -547,7 +547,7 @@ const ENABLE_KEYBOARD = true;
         this.timeStopHeavy.alpha = 0;
         this.timeStopHeavy.setScale(1.7);
 
-        this.clockbg = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 2, 'lowq', 'clockbg.png').setAlpha(0).setScale(1.06);
+        this.clockbg = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 5, 'lowq', 'clockbg.png').setAlpha(0).setScale(1.4);
         this.clockbg.setDepth(-3);
         this.gear1 = this.scene.add.sprite(-40, 280, 'circle', 'gear.png').setAlpha(0);
         this.gear1.setDepth(1);
@@ -600,9 +600,9 @@ const ENABLE_KEYBOARD = true;
 
         this.scene.tweens.add({
             targets: this.clockbg,
-            alpha: 0.15,
-            scaleX: 1.1,
-            scaleY: 1.1,
+            alpha: 0.12,
+            scaleX: 1.3,
+            scaleY: 1.3,
             duration: gameVars.gameManualSlowSpeed * 250,
         });
         this.scene.tweens.add({
@@ -673,9 +673,9 @@ const ENABLE_KEYBOARD = true;
 
          this.scene.tweens.add({
              targets: this.clockbg,
-             alpha: 0.08 + multiplierAddition * 0.1,
-             scaleX: 1.1 - multiplier * 0.005,
-             scaleY: 1.1 - multiplier * 0.005,
+             alpha: 0.07 + multiplierAddition * 0.04,
+             scaleX: 1.3,
+             scaleY: 1.3,
              duration: gameVars.gameManualSlowSpeed * 250,
          });
          this.scene.tweens.add({

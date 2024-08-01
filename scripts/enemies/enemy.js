@@ -112,9 +112,9 @@ class Enemy {
 
     createHealthBar(x, y) {
         this.healthBarLengthMax = 65 + Math.floor(Math.sqrt(this.healthMax) * 5);
-        this.healthBarMax = this.scene.add.sprite(x, 19, 'blackPixel');
+        this.healthBarMax = this.scene.add.sprite(x, 16, 'blackPixel');
         this.healthBarMaxGoalScale = this.healthBarLengthMax + 3;
-        this.healthBarMax.setScale(0, isMobile ? 14 : 12);
+        this.healthBarMax.setScale(0, isMobile ? 11 : 10);
         this.healthBarMax.startScaleY = this.healthBarMax.scaleY;
         this.healthBarMax.setOrigin(0.5, 0.5);
         this.healthBarMax.setDepth(10);
@@ -1099,8 +1099,35 @@ class Enemy {
 
         this.healthBarRed.alpha = 0.4 + 0.4 * mult;
 
+        if (mult > 1.05) {
+            this.healthBarMax.scaleY = this.healthBarMax.startScaleY + 3;
+            this.healthBarRed.scaleY = this.healthBarMax.scaleY;
+            this.healthBarCurr.scaleY = this.healthBarMax.scaleY - 1.5;
+            PhaserScene.tweens.add({
+                targets: [this.healthBarMax, this.healthBarRed],
+                scaleY: this.healthBarMax.startScaleY,
+                ease: "Quad.easeIn",
+                duration: gameVars.gameManualSlowSpeedInverse * 700
+            });
+            PhaserScene.tweens.add({
+                targets: this.healthBarCurr,
+                scaleY: this.healthBarMax.startScaleY - 2,
+                ease: "Quad.easeIn",
+                duration: gameVars.gameManualSlowSpeedInverse * 700
+            });
+            this.healthBarText.setScale(1.4);
+            PhaserScene.tweens.add({
+                targets: this.healthBarText,
+                scaleX: 1,
+                scaleY: 1,
+                ease: 'Cubic.easeOut',
+                duration: gameVars.gameManualSlowSpeedInverse * 500
+            });
+        }
+
+
         this.healthBarFlash.scaleX = this.healthBarCurr.scaleX;
-        this.healthBarFlash.scaleY = this.healthBarCurr.scaleY;
+        this.healthBarFlash.scaleY = this.healthBarMax.scaleY;
         this.healthBarFlash.alpha = 1 + 0.2 * mult;
         if (this.healthBarFlashTween) {
             this.healthBarFlashTween.stop();
@@ -1133,7 +1160,11 @@ class Enemy {
         } else {
             let healthBarRatio = 1 + this.healthBarLengthMax * this.health / this.healthMax;
             if (hurtAmt >= 4) {
-                this.flashHealthChange(this.healthBarCurr.scaleX);
+                if (hurtAmt >= 13) {
+                    this.flashHealthChange(this.healthBarCurr.scaleX, 1.1);
+                } else {
+                    this.flashHealthChange(this.healthBarCurr.scaleX);
+                }
             } else if (hurtAmt > 0) {
                 this.flashHealthChange(this.healthBarCurr.scaleX, 0.4);
             }

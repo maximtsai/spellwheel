@@ -43,8 +43,8 @@ class CombatTextManager {
         } else {
             this.bg.scaleY = 5;
         }
-        this.bgBorderTop.y = this.bg.y - this.bg.scaleY * 5;
-        this.bgBorderBot.y = this.bg.y + this.bg.scaleY * 5;
+        this.bgBorderTop.y = this.bg.y - this.bg.scaleY * 5 - 1;
+        this.bgBorderBot.y = this.bg.y + this.bg.scaleY * 5 + 1;
         if (this.currAnim) {
             this.currAnim.stop();
         }

@@ -1502,6 +1502,7 @@ class SpellManager {
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
             let yPos = globalObjects.player.getY() - 225 + Math.abs(halfwayIdx - i) * 10 + additionalDamage;
             let attackObj = this.scene.add.sprite(xPos, yPos, 'spells', 'lightningBolt.png');
+            attackObj.play('lightningbolt');
             attackObj.setDepth(10);
             attackObj.rotation = Math.random() - 0.5;
             attackObjects.push(attackObj);
@@ -1509,7 +1510,7 @@ class SpellManager {
             attackObj.setOrigin(0.5, 0.1);
         }
 
-        let yPos = 190;
+        let yPos = 200;
         for (let i = 0; i < attackObjects.length; i++) {
             let attackObj = attackObjects[i];
             let delayAmt = 50 + i * (190 - attackObjects.length * 6);
@@ -1517,8 +1518,8 @@ class SpellManager {
                 targets: attackObj,
                 delay: delayAmt,
                 duration: 200,
-                scaleX: 0.45 + additionalDamage * 0.004,
-                scaleY: 0.45 + additionalDamage * 0.004,
+                scaleX: 0.7 + additionalDamage * 0.006,
+                scaleY: 0.8 + additionalDamage * 0.007,
                 rotation: (-Math.atan2(yPos, gameConsts.halfWidth - attackObj.x) + 1.57),
                 ease: 'Cubic.easeOut'
             });
@@ -1533,8 +1534,8 @@ class SpellManager {
                     playSound('mind_strike');
                 },
                 onComplete: () => {
-                    let dmgBG = getTempPoolObject('spells', 'blackPulse.png', 'blackPulse', 310).setDepth(attackObj.depth).setScale(0.5).setAlpha(0.6).setPosition(attackObj.x, attackObj.y);
-                    let dmgEffect = getTempPoolObject('spells', 'shockEffect1.png', 'shockEffect', 310).play('shockEffect').setPosition(attackObj.x, attackObj.y).setDepth(attackObj.depth).setScale(0.5).setRotation(Math.random() * 6);
+                    let dmgBG = getTempPoolObject('spells', 'blackPulse.png', 'blackPulse', 310).setDepth(attackObj.depth).setScale(0.5).setAlpha(0.6).setPosition(attackObj.x, attackObj.y - 12);
+                    let dmgEffect = getTempPoolObject('spells', 'shockEffect1.png', 'shockEffect', 310).play('shockEffect').setPosition(attackObj.x, attackObj.y - 12).setDepth(attackObj.depth).setScale(0.5).setRotation(Math.random() * 6);
                     let randScale = 1.3 + 0.1 * Math.random();
                     playSound('mind_strike_hit');
 
@@ -1555,7 +1556,7 @@ class SpellManager {
                     messageBus.publish('enemyTakeTrueDamage', 1 + additionalDamage, true, undefined, true, 'mind');
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead && !globalObjects.player.dead) {
-                        let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 4, 'spells', 'energyTarget1.png').play('energyTarget').setAlpha(0.2).setScale(0.95).setRotation(Math.PI*0.15).setBlendMode(Phaser.BlendModes.ADD);
+                        let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 14, 'spells', 'energyTarget1.png').play('energyTarget').setAlpha(0.2).setScale(0.95).setRotation(Math.PI*0.15).setBlendMode(Phaser.BlendModes.ADD);
                         animation1.setDepth(50);
                         animation1.setOrigin(0.5, 0.5);
                         this.scene.tweens.add({
@@ -1574,7 +1575,7 @@ class SpellManager {
                             cleanUp: (statuses, damage) => {
                                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
                                     if (!globalObjects.currentEnemy.isDestroyed) {
-                                        let damageCircle = getTempPoolObject('lowq', 'circle_blue4.png', 'circle_blue', 1800).setDepth(100).setScale(0.65).setAlpha(0.85 + Math.sqrt(damage) * 0.025).setPosition(attackObj.x, attackObj.y - 4);
+                                        let damageCircle = getTempPoolObject('lowq', 'circle_blue4.png', 'circle_blue', 1800).setDepth(100).setScale(0.65).setAlpha(0.85 + Math.sqrt(damage) * 0.025).setPosition(attackObj.x, attackObj.y - 14);
                                         damageCircle.playReverse('circleBlast');
                                         let newScale = 0.67 + Math.sqrt(damage) * 0.12;
                                         this.scene.tweens.add({
@@ -1615,8 +1616,9 @@ class SpellManager {
                     this.scene.tweens.add({
                         targets: attackObj,
                         alpha: 0,
-                        scaleX: "+= 0.2",
-                        duration: 150,
+                        scaleX: "-=0.2",
+                        scaleY: "-=0.1",
+                        duration: 120,
                         onComplete: () => {
                             attackObj.destroy();
                         }

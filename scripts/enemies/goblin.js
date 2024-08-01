@@ -298,6 +298,8 @@
                      startFunction: () => {
                         this.pullbackScale = 0.85;
                         this.attackScale = 1.3;
+                         messageBus.publish("showCombatText", "My beautiful wife Goblina is going to\ndivorce me and take the kids if I were to die.", 4);
+
                      },
                      attackFinishFunction: () => {
                          playSound('body_slam')

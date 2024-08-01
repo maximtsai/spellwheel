@@ -70,9 +70,7 @@
          this.handShield.startScale = this.handShield.scaleX;
          this.currentHandGlow = this.addImage(0, 0, 'deathfinal', 'claw_glow.png').setAlpha(0).setDepth(-1);
          this.currentHandGlowPulse = this.addImage(0, 0, 'deathfinal', 'claw.png').setAlpha(0).setDepth(-1);
-
          this.redClockTemp = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'enemies', 'red_clock_back_large_red.png').setAlpha(0);
-
     }
 
      beginBattleAnim() {
@@ -100,6 +98,7 @@
                              }
                          });
                          this.addTimeout(() => {
+                             this.playerSpellCastSub.unsubscribe();
                              messageBus.publish("closeCombatText")
                          }, 7000);
                      }, 100)
@@ -254,6 +253,7 @@
                      finaleFunction: () => {
                          this.currentAttackSetIndex = 1;
                          this.nextAttackIndex = 0;
+                         this.setAsleep();
                      }
                  },
              ],

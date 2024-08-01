@@ -323,6 +323,38 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">deathfinal/death2laugh1.png</key>
+            <key type="filename">deathfinal/death2laugh2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.78</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>105,130,210,260</rect>
+                <key>scale9Paddings</key>
+                <rect>105,130,210,260</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">deathfinal/death2laughtext1.png</key>
+            <key type="filename">deathfinal/death2laughtext2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.78</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>158,214,315,427</rect>
+                <key>scale9Paddings</key>
+                <rect>158,214,315,427</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">deathfinal/death2punch.png</key>
             <key type="filename">deathfinal/death2punchflip.png</key>
             <struct type="IndividualSpriteSettings">

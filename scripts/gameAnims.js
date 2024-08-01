@@ -126,6 +126,31 @@ function createAnimations(scene) {
         frameRate: 10,
     });
     scene.anims.create({
+        key: 'death2laugh',
+        frames: scene.anims.generateFrameNames('deathfinal', {
+            prefix: 'death2laugh',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        frameRate: 3,
+        repeat: -1,
+    });
+    scene.anims.create({
+        key: 'death2laughtext',
+        frames: scene.anims.generateFrameNames('deathfinal', {
+            prefix: 'death2laughtext',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        frameRate: 6,
+        repeat: -1,
+    });
+
+    scene.anims.create({
         key: 'robotheart',
         frames: scene.anims.generateFrameNames('enemies', {
             prefix: 'robot_blast_small',
@@ -135,6 +160,18 @@ function createAnimations(scene) {
             zeroPad: 0,
         }),
         frameRate: 20,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: 'lightningbolt',
+        frames: scene.anims.generateFrameNames('spells', {
+            prefix: 'lightningBolt',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        frameRate: 10,
         repeat: -1
     });
     scene.anims.create({

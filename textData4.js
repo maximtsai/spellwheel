@@ -36,8 +36,26 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "deathFight2CombatLaugh1": {
+        "en_us": "HA-HA THAT TICKLES!",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2CombatLaugh2": {
+        "en_us": "IT'S BEEN TOO LONG SINCE\nI'VE HAD A GOOD FIGHT.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "deathFight2c": {
-        "en_us": "SO EAGERLY AGGRESSIVE.\nTHINK TWICE BEFORE ATTACKING.",
+        "en_us": "GOOD OFFENSE! BUT THINK\nTWICE BEFORE ATTACKING.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -46,7 +64,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2cx": {
-        "en_us": "A PERSISTENT OFFENSE.\nTHINK TWICE BEFORE ATTACKING",
+        "en_us": "A PERSISTENT OFFENSE!\nTHINK TWICE BEFORE ATTACKING.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -55,7 +73,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2d": {
-        "en_us": "YOU ARE RESILIENT, BUT\nNO DEFENSE IS PERFECT.",
+        "en_us": "GOOD DEFENSE! BUT YOU\nCAN'T STOP THESE FISTS.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -64,7 +82,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2dx": {
-        "en_us": "IT'S TIME TO FINISH THIS.",
+        "en_us": "YOUR HEALTH WANES.\nTIME TO FINISH THIS.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -73,7 +91,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2z1": {
-        "en_us": "YOU HAVE FOUGHT WELL CHILD.",
+        "en_us": "WELL FOUGHT CHILD!",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -82,7 +100,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2z2": {
-        "en_us": "TRULY YOU HAVE BOTH\nSTRENGTH AND SKILL",
+        "en_us": "YOU HAVE BOTH\nSTRENGTH AND SKILL",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -91,7 +109,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2z2cheats": {
-        "en_us": "THOUGH I SENSE YOU ARE USING\n\"ASSISTANCE\" IN THIS FIGHT.",
+        "en_us": "THOUGH I SENSE YOU ARE NOT\nPLAYING FAIR IN THIS FIGHT.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -100,7 +118,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2z3": {
-        "en_us": "BUT YOU ARE MISTAKEN IF YOU\nTHINK MERE MIGHT CAN DEFEAT ME.",
+        "en_us": "PERHAPS IT IS TIME THAT\nI CAN TRULY LET LOOSE.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -109,7 +127,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2z3cheats": {
-        "en_us": "NO MATTER. YOU ARE MISTAKEN IF\nYOU THINK CHEATS CAN DEFEAT ME.",
+        "en_us": "NO MATTER. I WILL SHOW\nYOU MY FULL POWER.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

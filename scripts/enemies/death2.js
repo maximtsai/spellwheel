@@ -2,7 +2,8 @@
      constructor(scene, x, y) {
          super(scene, x, y);
          this.initSprite('max_death_2.png', 0.85, 0, 0, 'deathfinal');
-         this.sprite.setOrigin(0.5, 0.2)
+         this.sprite.setOrigin(0.5, 0.2);
+         this.forcedOriginY = 0.2;
          this.blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0.7).setDepth(-2);
          this.createAnimatedHellBG();
          globalObjects.player.reInitStats();
@@ -222,6 +223,7 @@
         this.health = 550;
         this.punchCycleCount = 0;
         this.customAngry = "angrybone";
+        this.firstLaugh = false;
 
         this.fistObjects = [];
         this.thornsList = [];
@@ -241,7 +243,6 @@
         this.fistObjectPosY = [100, 100, -15, -15, 160, 160, 20, 20, 65];
     }
 
-
     emergencyShield() {
         this.thornForm = true;
         this.preventArmsVisible = true;
@@ -257,6 +258,54 @@
         this.currentAttackSetIndex = 1;
         this.nextAttackIndex = 0;
         this.setAsleep();
+    }
+
+    showLaughText() {
+        this.sprite.play('death2laugh')
+        this.laughText = this.addImage(this.sprite.x, this.sprite.y, 'deathfinal', 'death2laughtext1.png');
+        this.laughText.play('death2laughtext');
+        // this.sprite
+        this.setArmsVisible(false);
+
+        messageBus.publish("showCombatText", getLangText('deathFight2CombatLaugh1'), 10);
+        this.addTimeout(() => {
+            this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                this.playerSpellCastSub.unsubscribe();
+                clearTimeout(this.spellCastTimeout);
+                this.showLaughText2();
+            });
+            this.spellCastTimeout = this.addTimeout(() => {
+                this.playerSpellCastSub.unsubscribe();
+                this.showLaughText2();
+            }, 2500);
+        }, 2000)
+    }
+
+    showLaughText2() {
+         this.sprite.stop();
+        this.laughText.stop();
+        this.laughText.visible = false;
+        if (!this.isUsingAttack) {
+            this.setSpriteIfNotInactive(this.defaultSprite);
+            this.setArmsVisible(true);
+        }
+         if (this.showedSecondLaughText || this.dead || this.thornForm || this.fireForm) {
+             messageBus.publish("closeCombatText")
+             return;
+         }
+         this.showedSecondLaughText = true;
+        messageBus.publish("showCombatText", getLangText('deathFight2CombatLaugh2'), 4);
+        this.addTimeout(() => {
+            this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                this.playerSpellCastSub.unsubscribe();
+                clearTimeout(this.spellCastTimeout);
+                messageBus.publish("closeCombatText")
+            });
+            this.spellCastTimeout = this.addTimeout(() => {
+                this.playerSpellCastSub.unsubscribe();
+                messageBus.publish("closeCombatText")
+            }, 5000);
+        }, 2500)
     }
 
      setHealth(newHealth) {
@@ -286,9 +335,15 @@
                      globalObjects.bannerTextManager.setOnFinishFunc(() => {
                          this.setAwake();
                      })
+                 } else if (this.health <= this.healthMax - 20 && this.canLaugh && !this.firstLaugh && !this.isUsingAttack) {
+                     this.firstLaugh = true;
+                     if (this.thornForm || this.fireForm) {
+                         // nope too late
+                     } else {
+                         this.showLaughText();
+                     }
                  }
              }
-
          }
      }
 
@@ -395,6 +450,7 @@
                         this.checkFireForm();
                         this.punchCycleCount += 1;
                         this.sprite.attackNum = 0;
+                        this.canLaugh = true;
                     },
                     attackFinishFunction: () => {
                         // this.makeSlashEffect();
@@ -1022,7 +1078,16 @@
          super.die();
          this.stopIdleAnim();
         playSound('death_attack', 0.4).detune = -800;
-
+        messageBus.publish("closeCombatText")
+        // if (!this.laughText) {
+        //     this.laughText = this.addImage(this.sprite.x, this.sprite.y, 'deathfinal', 'death2laughtext1.png');
+        // }
+        if (this.laughText) {
+            this.laughText.stop();
+            this.laughText.visible = false;
+        }
+        // this.laughText.visible = true;
+        // this.laughText.play('death2laughtext');
         if (this.leftFire) {
             this.leftFire.destroy();
             this.rightFire.destroy();
@@ -1032,8 +1097,10 @@
              fadeAwaySound(this.bgMusic);
          }
         this.setArmsVisible(false);
-        this.forceOverrideSprite = 'death2fall.png';
-        this.setDefaultSprite('death2fall.png', this.sprite.startScale);
+        //this.forceOverrideSprite = 'death2fall.png';
+        //this.setDefaultSprite('death2fall.png', this.sprite.startScale);
+        this.sprite.play('death2laugh')
+
         this.clearThorns();
         globalObjects.magicCircle.disableMovement();
 
@@ -1052,7 +1119,14 @@
         }
         globalObjects.bannerTextManager.setDialogFunc([undefined, undefined, () => {
             // Get back up on third text
-            let tempOldPose = this.addImage(this.sprite.x, this.sprite.y, "deathfinal", 'death2fall.png');
+            this.sprite.stop();
+            // this.laughText.stop();
+            // this.addTween({
+            //     targets: this.laughText,
+            //     alpha: 0,
+            //     duration: 250
+            // })
+            let tempOldPose = this.addImage(this.sprite.x, this.sprite.y, "deathfinal", 'death2laugh1.png');
             tempOldPose.setScale(this.sprite.scaleX).setOrigin(this.sprite.originX, this.sprite.originY).setAlpha(0.6);
             this.addTween({
                 targets: tempOldPose,
@@ -1152,7 +1226,7 @@
                                 onComplete: () => {
                                     this.addTween({
                                         targets: [death6arm, death6arm_highlight],
-                                        duration: 1200,
+                                        duration: 1250,
                                         scaleX: 0.5,
                                         scaleY: 0.5,
                                         ease: 'Quint.easeIn',

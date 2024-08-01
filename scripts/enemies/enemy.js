@@ -26,8 +26,6 @@ class Enemy {
             messageBus.subscribe('spellClicked', this.playerClickedSpell.bind(this)),
             messageBus.subscribe("playerDied", this.playerDied.bind(this)),
             messageBus.subscribe("addCastAggravate", this.addCastAggravate.bind(this)),
-
-
         ];
 
 
@@ -348,8 +346,9 @@ class Enemy {
         } else {
             newScale = scale ? scale : this.sprite.startScale;
             let oldOriginX = this.sprite.originX;
-            let oldOriginY = this.sprite.originY;
+            let oldOriginY = this.forcedOriginY || this.sprite.originY;
             let oldFrame = this.sprite.frame;
+            this.sprite.stop();
             if (oldFrame.name !== name) {
                 this.sprite.setFrame(name);
             }
@@ -1125,7 +1124,6 @@ class Enemy {
             });
         }
 
-
         this.healthBarFlash.scaleX = this.healthBarCurr.scaleX;
         this.healthBarFlash.scaleY = this.healthBarMax.scaleY;
         this.healthBarFlash.alpha = 1 + 0.2 * mult;
@@ -1718,8 +1716,8 @@ class Enemy {
         globalObjects.encyclopedia.hideButton();
         globalObjects.options.hideButton();
         globalObjects.magicCircle.disableMovement();
-         let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_banner.png').setScale(100, 1.3).setDepth(9998).setAlpha(0);
-         let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
+         let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
+         let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
          let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, getLangText('cont_ui')).setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998).setFontSize(22);
          swirlInReaperFog();
 
@@ -1852,7 +1850,6 @@ class Enemy {
                 } else {
                     this.sprite.prepareNum = (this.sprite.prepareNum + 1) % prepareSprite.length;
                 }
-                console.log(this.sprite.prepareNum, prepareSprite.length)
                 spriteToPrepare = prepareSprite[this.sprite.prepareNum];
             }
             if (isRepeatedAttack) {

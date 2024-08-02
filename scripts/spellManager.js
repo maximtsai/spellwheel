@@ -2378,12 +2378,13 @@ class SpellManager {
                     }
                 });
                 PhaserScene.tweens.add({
-                    delay: 100,
+                    delay: 10,
                     targets: [this.voidSpikeOutInner],
                     duration: 160,
                     scaleX: 1.55 + multiplier * 0.06,
                     scaleY: 1.55 + multiplier * 0.06,
                     ease: 'Back.easeOut',
+                    completeDelay: 90,
                     onComplete: () => {
                         PhaserScene.tweens.add({
                             targets: [this.voidSpikeOutInner],
@@ -2396,12 +2397,13 @@ class SpellManager {
                     }
                 });
                 PhaserScene.tweens.add({
-                    delay: 200,
+                    delay: 20,
                     targets: [this.voidSpikeOutOuter],
                     duration: 160,
                     scaleX: 1.95 + multiplier * 0.08,
                     scaleY: 1.95 + multiplier * 0.08,
                     ease: 'Back.easeOut',
+                    completeDelay: 180,
                     onComplete: () => {
                         PhaserScene.tweens.add({
                             targets: [this.voidSpikeOutOuter],

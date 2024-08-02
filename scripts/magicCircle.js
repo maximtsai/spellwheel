@@ -28,6 +28,7 @@ const ENABLE_KEYBOARD = true;
         this.dScaleAccumulate = 0;
         this.draggedDuration = 0;
         this.preventRotDecay = 0;
+        this.lastPlayedClickTime = 0;
         this.subscriptions = [
             messageBus.subscribe('attackLaunched', this.attackLaunched.bind(this)),
             messageBus.subscribe('manualSetTimeSlowRatio', this.manualSetTimeSlowRatio.bind(this)),
@@ -1609,6 +1610,7 @@ const ENABLE_KEYBOARD = true;
             this.spellElementText.setText('');
             this.spellActionText.setText('');
             this.spellDescriptor.setText('');
+            this.spellDescriptor.stopNextAudio();
         }
         let spinAmt = useLongDelay ? "+=12.566" : "+=6.283"
         this.scene.tweens.add({
@@ -2306,7 +2308,28 @@ const ENABLE_KEYBOARD = true;
      }
 
      updateSpellDescriptorText(newTextStr) {
-         if (this.spellDescriptor.getText() !== newTextStr) {
+        let currText = this.spellDescriptor.getText();
+         if (currText !== newTextStr) {
+             if (this.disableSpellDescDisplay || this.manualDisabled || globalObjects.bannerTextManager.isShowing || gameOptions.hideSpellDescriptor) {
+                 this.spellDescriptor.setText('');
+                 this.spellDescriptor.stopNextAudio();
+                 return;
+             }
+             if (!this.spellDescriptor.getStopNextAudio()) {
+                 let currTime = Date.now();
+                 let detuneAmt = 0;
+                 let volAmt = 1;
+                 let lastClickedDelay = currTime - this.lastPlayedClickTime;
+                 if (lastClickedDelay > 25) {
+                     if (lastClickedDelay < 1000) {
+                         detuneAmt = Math.floor((lastClickedDelay - 900 - Math.floor(Math.random() * 100)) * 0.5);
+                         volAmt = 1 + detuneAmt * 0.001;
+                     }
+                     playSound('click', volAmt).detune = detuneAmt;
+                     this.lastPlayedClickTime = Date.now();
+                 }
+             }
+
              messageBus.publish("spellNameTextUpdate", newTextStr)
              this.spellDescriptor.setText(newTextStr);
              this.spellDescriptor.setAlpha(0.8);
@@ -2491,6 +2514,7 @@ const ENABLE_KEYBOARD = true;
         }
         if (this.disableSpellDescDisplay || this.manualDisabled || globalObjects.bannerTextManager.isShowing || gameOptions.hideSpellDescriptor) {
             this.spellDescriptor.setText('');
+            this.spellDescriptor.stopNextAudio();
         }
      }
 

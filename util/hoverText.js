@@ -92,13 +92,14 @@ class HoverDisplay {
         this.hoverBacking.setDepth(data.depth || 9992);
 
         // this.hoverTextDisplay = PhaserScene.add.bitmapText(0, 0, 'plainBold', '', isMobile ? 19 : 18);
-        this.hoverTextDisplay = PhaserScene.add.text(0, 0, 'desc.', {fontFamily: 'verdanamax', fontSize: 19, color: '#FFFFBB', align: 'left'});
+        this.hoverTextDisplay = PhaserScene.add.text(0, 0, ' ', {fontFamily: 'verdanamax', fontSize: 19, color: '#FFFFBB', align: 'left'});
         this.hoverTextDisplay.visible = false;
         this.hoverTextDisplay.setDepth(data.depth || 9992);
 
         this.setPosition(data.x, data.y)
         this.setOrigin(data.originX, data.originY);
         this.hoverTextDisplay.setOrigin(data.originX, 0.5);
+        this.stopAudioTemp = true;
     }
 
     addTween(tweenObj) {
@@ -126,6 +127,16 @@ class HoverDisplay {
 
     getText() {
         return this.hoverTextDisplay.text;
+    }
+    stopNextAudio() {
+        this.stopAudioTemp = true;
+    }
+    getStopNextAudio() {
+        if (this.stopAudioTemp) {
+            this.stopAudioTemp = false;
+            return true;
+        }
+        return false;
     }
 
     setText(text) {

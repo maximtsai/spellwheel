@@ -61,6 +61,7 @@
          this.shieldTextFont = "void";
          this.pullbackScale = 0.97;
          this.attackScale = 1.01;
+         this.extraAttackDamage = 0;
      }
 
      initMisc() {
@@ -103,7 +104,6 @@
                          }, 7000);
                      }, 100)
                  }, 1500)
-
              });
 
              this.addDelay(() => {
@@ -232,7 +232,7 @@
                      }
                  },
                  {
-                     name: ";4x4",
+                     name: "|4x4",
                      chargeAmt: 750,
                      finishDelay: 3000,
                      chargeMult: 2,
@@ -254,28 +254,60 @@
                          this.currentAttackSetIndex = 1;
                          this.nextAttackIndex = 0;
                          this.setAsleep();
+                         this.rotateSpellCircleTo(1, true, () => {
+                             // this.fadeOutCurrentHand();
+                             this.addDelay(() => {
+                                 messageBus.publish("showCombatText", getLangText('deathFight2plusb'), -40);
+                                 this.addTimeout(() => {
+                                     this.spellsCastCounter = 0;
+                                     this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                                         this.spellsCastCounter++;
+                                         if (this.spellsCastCounter == 1) {
+                                             this.setAwake();
+                                             this.spellAbsorber = messageBus.subscribe('playerCastedSpell', () => {
+                                                 this.addExtraDamage();
+                                             });
+                                         }
+                                         if (this.spellsCastCounter >= 2) {
+                                             this.playerSpellCastSub.unsubscribe();
+                                             messageBus.publish("closeCombatText")
+                                         }
+                                     });
+                                     // this.addTimeout(() => {
+                                     //     this.playerSpellCastSub.unsubscribe();
+                                     //     messageBus.publish("closeCombatText")
+                                     // }, 6500);
+                                 }, 100)
+                             }, 1000)
+                         });
                      }
                  },
              ],
              [
                  {
-                     name: "}36+#3",
+                     name: ";40+#3",
                      chargeAmt: 600,
                      finishDelay: 2000,
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
+                         this.attackToStrengthen = 0;
+                         this.attackToStrengthenStartDmg = 40;
                          this.pulseHand(0);
                      },
                      attackStartFunction: () => {
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
+                         this.attackToStrengthen = undefined;
                          let palmHand = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'palm.png').setScale(0.1).setAlpha(0.65);
                          let palmHandGlow = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'palm_glow.png').setScale(0.2).setAlpha(0);
+                         let finalDamage = 40 + this.extraAttackDamage;
                          this.summonHand(palmHand, palmHandGlow, 0.2, 0.6, () => {
-                             this.fireTwoPokes(36, palmHand);
+                             this.fireTwoPokes(finalDamage, palmHand);
                          }, 3)
+                         this.clearExtraAttackDamage();
+
                      },
                  },
                  {
@@ -284,6 +316,8 @@
                      finishDelay: 2000,
                      damage: -1,
                      startFunction: () => {
+                         this.attackToStrengthen = 2;
+                         this.attackToStrengthenStartDmg = 24;
                          this.pulseHand(2);
                      },
                      attackStartFunction: () => {
@@ -294,7 +328,8 @@
                          let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0);
                          okayHand.setDepth(50);
                          okayHandGlow.setDepth(50);
-                         let damage = 24;
+                         let damage = 24 + this.extraAttackDamage;
+                         this.attackToStrengthen = undefined;
 
                          this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
                              this.fireTimeAttack(damage, okayHand, () => {
@@ -309,30 +344,36 @@
                                  })
                                  messageBus.publish('playerAddDelayedDamage', damage);
                              });
-                         })
+                         });
+                         this.clearExtraAttackDamage();
+
                      },
                      finaleFunction: () => {
 
                      }
                  },
                  {
-                     name: ";4x4",
+                     name: "|4x4",
                      chargeAmt: 750,
                      finishDelay: 3000,
                      chargeMult: 2,
                      damage: -1,
                      startFunction: () => {
+                         this.attackToStrengthen = 3;
+                         this.attackToStrengthenStartDmg = 4;
                          this.pulseHand(3);
                      },
                      attackStartFunction: () => {
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
+                         this.attackToStrengthen = undefined;
                          let pokeHand = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw.png').setScale(0.1).setAlpha(0.65).setRotation(0.4);
                          let pokeHandGlow = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw_glow.png').setScale(0.2).setAlpha(0).setRotation(0.4);
                          this.summonHand(pokeHand, pokeHandGlow, 0.4, 0.7, () => {
-                             this.fireTwoClaws(4, 2, pokeHand);
-                         })
+                             this.fireTwoClaws(4 + this.extraAttackDamage, 2, pokeHand);
+                         });
+                         this.clearExtraAttackDamage();
                      },
                      finaleFunction: () => {
                          this.currentAttackSetIndex = 1;
@@ -1136,6 +1177,9 @@
              this.breathTween.stop();
          }
          this.clearHandObjects();
+         if (this.spellAbsorber) {
+             this.spellAbsorber.unsubscribe();
+         }
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();
          globalObjects.magicCircle.disableMovement();
@@ -1187,7 +1231,30 @@
      }
 
 
-    createGlowHands() {
+     addExtraDamage() {
+         if (this.attackToStrengthen !== undefined) {
+             this.extraAttackDamage++;
+             let damageAmt = this.attackToStrengthenStartDmg + this.extraAttackDamage;
+             if (this.attackToStrengthen === 0) {
+                 this.attackName.setText(";"+damageAmt+"+#3");
+             } else if (this.attackToStrengthen === 2) {
+                 this.attackName.setText("$"+damageAmt);
+             } else if (this.attackToStrengthen === 3) {
+                 if (damageAmt >= 6) {
+                     this.attackName.setText(";"+damageAmt+"x4");
+                 } else {
+                     this.attackName.setText("|"+damageAmt+"x4");
+                 }
+             }
+         }
+
+     }
+
+     clearExtraAttackDamage() {
+         this.extraAttackDamage = 0;
+     }
+
+     createGlowHands() {
         let hand1 = this.addImage(this.x, this.spellStartY, 'deathfinal', 'palm_glow.png');
         let hand2 = this.addImage(this.x, this.spellStartY, 'deathfinal', 'poke_glow.png');
         let hand3 = this.addImage(this.x, this.spellStartY, 'deathfinal', 'okay_glow.png');

@@ -261,8 +261,12 @@
     }
 
     showLaughText() {
-        this.sprite.play('death2laugh')
-        this.laughText = this.addImage(this.sprite.x, this.sprite.y, 'deathfinal', 'death2laughtext1.png');
+        this.sprite.play('death2laugh');
+        this.addTimeout(() => {
+            this.timeSinceLastAttacked = 999;
+        }, 0);
+
+        this.laughText = this.addSprite(this.sprite.x, this.sprite.y, 'deathfinal', 'death2laughtext1.png');
         this.laughText.play('death2laughtext');
         // this.sprite
         this.setArmsVisible(false);
@@ -278,16 +282,42 @@
                 this.playerSpellCastSub.unsubscribe();
                 this.showLaughText2();
             }, 2500);
-        }, 2000)
+        }, 2500)
     }
 
     showLaughText2() {
          this.sprite.stop();
-        this.laughText.stop();
-        this.laughText.visible = false;
+         this.addTween({
+             targets: this.laughText,
+             alpha: 0,
+             duration: 250,
+             onComplete: () => {
+                 this.laughText.stop();
+                 this.laughText.visible = false;
+             }
+         })
+
         if (!this.isUsingAttack) {
             this.setSpriteIfNotInactive(this.defaultSprite);
             this.setArmsVisible(true);
+            this.laughTempFade = this.addImage(this.x, this.y, 'deathfinal', 'death2laugh1.png').setDepth(-1);
+            this.sprite.setAlpha(0.8);
+            this.addTween({
+                targets: [this.sprite, this.leftShoulder, this.leftArm, this.rightArm],
+                alpha: 1,
+                duration: 150,
+                ease: "Cubic.easeOut",
+            });
+            this.laughTempFade.setAlpha(0.5);
+            this.addTween({
+                targets: this.laughTempFade,
+                alpha: 0,
+                duration: 150,
+                ease: "Cubic.easeOut",
+                onComplete: () => {
+                    this.laughTempFade.destroy();
+                }
+            })
         }
          if (this.showedSecondLaughText || this.dead || this.thornForm || this.fireForm) {
              messageBus.publish("closeCombatText")
@@ -305,7 +335,7 @@
                 this.playerSpellCastSub.unsubscribe();
                 messageBus.publish("closeCombatText")
             }, 5000);
-        }, 2500)
+        }, 3000)
     }
 
      setHealth(newHealth) {
@@ -1080,7 +1110,7 @@
         playSound('death_attack', 0.4).detune = -800;
         messageBus.publish("closeCombatText")
         // if (!this.laughText) {
-        //     this.laughText = this.addImage(this.sprite.x, this.sprite.y, 'deathfinal', 'death2laughtext1.png');
+        //     this.laughText = this.addSprite(this.sprite.x, this.sprite.y, 'deathfinal', 'death2laughtext1.png');
         // }
         if (this.laughText) {
             this.laughText.stop();

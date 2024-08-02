@@ -37,7 +37,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2CombatLaugh1": {
-        "en_us": "HA-HA THAT TICKLES!",
+        "en_us": "THAT TICKLES!",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -46,7 +46,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2CombatLaugh2": {
-        "en_us": "IT'S BEEN TOO LONG SINCE\nI'VE HAD A GOOD FIGHT.",
+        "en_us": "HOW LONG IT'S BEEN\nSINCE MY LAST GOOD FIGHT",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -146,6 +146,15 @@ let textData4 = {
     },
     "deathFight2plusa": {
         "en_us": "NOW STRIKE ME WITH YOUR BEST",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2plusb": {
+        "en_us": "YOUR SPELLS NOW EMPOWER ME",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

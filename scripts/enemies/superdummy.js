@@ -562,9 +562,9 @@
                     }
                  },
                  {
-                     name: "}18",
+                     name: "}20",
                      chargeAmt: 600,
-                     damage: 18,
+                     damage: 20,
                      prepareSprite: 'super_dummy_wide.png',
                      startFunction: () => {
                         this.pullbackScale = 0.8;
@@ -651,7 +651,7 @@
                     }
                  },
                  {
-                     name: "|20",
+                     name: "|22",
                      damage: -1,
                     finishDelay: 2200,
                      chargeAmt: 600,
@@ -721,7 +721,7 @@
                                         this.dummyRightArm.setFrame('super_dummy_leftarm_fist_large.png');
                                         this.dummyRightArm.setRotation(3).setScale(-1.33, 1.38).setDepth(200);
 
-                                        messageBus.publish("selfTakeDamage", 20);
+                                        messageBus.publish("selfTakeDamage", 22);
                                          let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 800);
                                          shinePattern.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 220).setScale(0.7).setDepth(9999).setAlpha(1);
                                          this.addTween({

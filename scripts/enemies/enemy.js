@@ -1065,13 +1065,14 @@ class Enemy {
         }
         let origHealth = this.health;
 
-        this.reactToDamageTypes(amt, isAttack, type);
         let damageTaken = this.adjustDamageTaken(amt, isAttack);
         if (this.specialDamageAbsorptionActive) {
             damageTaken = this.handleSpecialDamageAbsorption(damageTaken);
         }
+
         this.setHealth(Math.max(0, this.health - damageTaken));
         let healthLoss = origHealth - this.health;
+        this.reactToDamageTypes(healthLoss, isAttack, type);
         if (healthLoss > 0) {
             if (healthLoss > 20) {
                 this.animateShake(1.5);
@@ -1185,7 +1186,6 @@ class Enemy {
         if (canAmplify && cheats.extraExtraDmg) {
             amt *= 2;
         }
-        this.reactToDamageTypes(amt, isAttack, type);
 
         let origHealth = this.health;
         // if (this.storeDamage) {
@@ -1211,6 +1211,7 @@ class Enemy {
         }
         this.setHealth(Math.max(0, this.health - damageTaken), true);
         let healthLoss = origHealth - this.health;
+        this.reactToDamageTypes(healthLoss, isAttack, type);
         if (healthLoss > 0) {
             this.animateShake();
             let offsetY = -damageTaken * 0.1 + extraOffsetY;
@@ -1236,11 +1237,11 @@ class Enemy {
         return this.health;
     }
 
-    takeDamagePercent(amt, bonusDamage = 0) {
+    takeDamagePercent(amt, bonusDamage = 0, type) {
         let origHealth = this.health;
         let timeUpdatedHealth = origHealth - this.accumulatedTimeDamage;
         let healthRemoved = Math.ceil(amt * 0.01 * timeUpdatedHealth) + bonusDamage;
-        this.takeDamage(healthRemoved);
+        this.takeDamage(healthRemoved, undefined, undefined, type);
     }
 
     takeDamagePercentTotal(amt, bonusDamage = 0) {

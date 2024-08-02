@@ -2796,7 +2796,7 @@ class SpellManager {
                             }
                         });
                     }, 15);
-                    messageBus.publish('enemyTakeDamagePercent', 10, additionalDamage);
+                    messageBus.publish('enemyTakeDamagePercent', 10, additionalDamage, 'void');
                     messageBus.publish('disruptOpponentAttackPercent', isFirstAttack ? 0.6 : 0.35);
                     messageBus.publish('setPauseDur', 25);
                     screenShake(5);

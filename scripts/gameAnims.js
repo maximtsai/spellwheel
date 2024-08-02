@@ -151,6 +151,29 @@ function createAnimations(scene) {
     });
 
     scene.anims.create({
+        key: 'robottime',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'robot_time',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        frameRate: 10,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: 'robotmind',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'robot_energy',
+            suffix: '.png',
+            start: 1,
+            end: 3,
+            zeroPad: 0,
+        }),
+        frameRate: 12,
+    });
+    scene.anims.create({
         key: 'robotheart',
         frames: scene.anims.generateFrameNames('enemies', {
             prefix: 'robot_blast_small',

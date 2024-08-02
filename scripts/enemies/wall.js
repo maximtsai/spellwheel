@@ -66,7 +66,6 @@
 
      reactToDamageTypes(amt, isAttack, type) {
          super.reactToDamageTypes(amt, isAttack, type);
-         console.log(amt, isAttack, type)
         if (type == "void" && !this.thirdCanCrumble && !this.dead) {
             console.log(this.accumulatedDamageReaction);
             if (this.accumulatedDamageReaction > 34) {

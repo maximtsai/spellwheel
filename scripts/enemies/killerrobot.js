@@ -86,10 +86,6 @@
 
         this.lightShineRight = this.addSprite(gameConsts.halfWidth + 220, gameConsts.halfHeight - 320, 'blurry', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(0.5);
         this.lightShineRightTop = this.addSprite(this.lightShineRight.x, this.lightShineRight.y, 'blurry', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineRight.rotation);
-        this.addToDestructibles(this.lightShineLeft);
-        this.addToDestructibles(this.lightShineLeftTop);
-        this.addToDestructibles(this.lightShineRight);
-        this.addToDestructibles(this.lightShineRightTop);
 
         this.minusDamage1 = this.addBitmapText(this.lightShineLeft.x, this.lightShineLeft.y + 5, 'block', '-4 DMG', 32, 1);
         this.minusDamage1.setOrigin(0.5, -0.2).setAlpha(0).setDepth(12);
@@ -97,16 +93,10 @@
         this.minusDamage2 = this.addBitmapText(this.lightShineRight.x, this.lightShineRight.y + 5, 'block', '-4 DMG', 32, 1);
         this.minusDamage2.setOrigin(0.5, -0.2).setAlpha(0).setDepth(12);
 
-
-
         this.laserCharge = this.addSprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_charge.png').setDepth(11).setAlpha(0);
         this.laserHeart = this.addSprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_blast.png').setDepth(11).setOrigin(0.5, 0.65).setAlpha(0);
          this.eyeShine = this.addSprite(this.sprite.x, this.sprite.y - 57, 'enemies', 'roboteye.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth);
-         this.blush = this.addSprite(this.sprite.x, this.sprite.y, 'enemies', 'robot_blush.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth + 1);
-         this.addToDestructibles(this.blush);
-         this.addToDestructibles(this.eyeShine);
-        this.addToDestructibles(this.laserHeart);
-        this.addToDestructibles(this.laserCharge);
+         this.blush = this.addSprite(this.sprite.x, this.sprite.y + 10, 'enemies', 'robot_blush.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth + 1);
 
          this.addTween({
              targets: this.sprite,
@@ -334,6 +324,71 @@
 
      // update(dt) {}
 
+     reactToDamageTypes(amt, isAttack, type) {
+         super.reactToDamageTypes(amt, isAttack, type);
+         if (this.emergency || this.dead || this.isRecharging) {
+             return;
+         }
+         if (!this.isUsingAttack) {
+             if (type == "mind") {
+                 if (this.accumulatedDamageReaction >= 8) {
+                     this.sprite.play('robotmind');
+                     this.sprite.setScale(1.5);
+                     this.sprite.once('animationcomplete', () => {
+                         if (!this.isUsingAttack) {
+                             this.setSpriteIfNotInactive(this.defaultSprite);
+                         }
+                     });
+                 }
+             } else if (type == "matter") {
+                 if (this.accumulatedDamageReaction >= 8) {
+                     if (this.blush) {
+                         this.blush.alpha = 0;
+                         if (this.blushAnim) {
+                             this.blushAnim.stop();
+                         }
+                     }
+                     playSound('clunk', 1);
+                     this.setSprite('robot_matter.png')
+                     this.sprite.x = this.x + 9;
+                     this.addTween({
+                         targets: [this.sprite],
+                         x: this.x,
+                         duration: 400,
+                         ease:'Bounce.easeOut',
+                     })
+                 }
+             } else if (type == "time") {
+                 if (this.accumulatedDamageReaction >= 8) {
+                     if (this.blush) {
+                         this.blush.alpha = 0;
+                         if (this.blushAnim) {
+                             this.blushAnim.stop();
+                         }
+                     }
+                     this.sprite.play('robottime')
+                 }
+             }else if (type == "void") {
+                 if (this.accumulatedDamageReaction >= 8) {
+                     if (this.blush) {
+                         this.blush.alpha = 0;
+                         if (this.blushAnim) {
+                             this.blushAnim.stop();
+                         }
+                     }
+                     this.setSprite('robot_void.png')
+                     this.sprite.x = this.x + 9;
+                     this.addTween({
+                         targets: [this.sprite],
+                         x: this.x,
+                         duration: 400,
+                         ease:'Bounce.easeOut',
+                     })
+                 }
+             }
+         }
+
+     }
 
      setHealth(newHealth) {
          super.setHealth(newHealth);
@@ -613,7 +668,7 @@
                  // 1
                  {
                      name: "ERROR: SHIELD MISSING",
-                     chargeAmt: 250,
+                     chargeAmt: 300,
                      isPassive: true,
                      damage: 0,
                      transitionFast: true,
@@ -621,9 +676,10 @@
                          this.pullbackDurMult = 1;
                         if (this.health >= this.criticalThreshold) {
                             this.nextShieldHealth += 30;
-                            this.setDefaultSprite('robot1.png', undefined, true);
+                            // this.setDefaultSprite('robot1.png', undefined, true);
                             playSound('robot_sfx_1');
                             this.shieldAdded = false;
+                            this.blush.rotation = 0;
                             this.blushAnim = this.addTween({
                                  targets: this.blush,
                                  scaleX: this.sprite.startScale,
@@ -653,13 +709,14 @@
                  },
                  {
                      name: "RECHARGING! {" + this.nextShieldHealth,
-                     chargeAmt: gameVars.isHardMode ? 900 : 1100,
+                     chargeAmt: gameVars.isHardMode ? 900 : 1000,
                      block: this.nextShieldHealth,
                      isPassive: true,
                      transitionFast: true,
-                     chargeMult: 6,
+                     chargeMult: 6.5,
                      damage: -1,
                      startFunction: () => {
+                         this.isRecharging = true;
                          this.nextAttack.block = this.nextShieldHealth;
                          setTimeout(() => {
                              this.attackName.setText("RECHARGING! {" + this.nextShieldHealth);
@@ -684,6 +741,7 @@
                              this.setDefaultSprite('robot_hide.png');
                              playSound('voca_kya');
                              this.sprite.rotation = 0.15;
+                             this.blush.rotation = 0;
                              this.kyaTween = this.addTween({
                                  targets: [this.sprite, this.blush],
                                  y: 240,
@@ -719,7 +777,8 @@
                                  playSound('cutesy_up');
                                  this.setDefaultSprite('robot_heart.png');
                                  this.sprite.y = this.sprite.startY;
-                                 this.blush.y = this.sprite.startY;
+                                 this.blush.y = this.sprite.startY + 10;
+                                 this.blush.rotation = 0;
                                  this.heartImage.setAlpha(1).setScale(0.9);
                                  this.addTween({
                                      targets: this.heartImage,
@@ -795,6 +854,7 @@
                         }
                      },
                      attackFinishFunction: () => {
+                         this.isRecharging = false;
                         if (this.health < this.criticalThreshold) {
                             this.startInjuredSequence()
                         } else {
@@ -1717,8 +1777,6 @@
              }, 1000)
          }, 1000)
         }, 750);
-
-         this.addToDestructibles(selfDestructText);
      }
 
      animateBoomEyeshine() {
@@ -1933,7 +1991,6 @@
              if (!this.dead && this.shieldAdded) {
                  if (!this.fireEffect) {
                      this.fireEffect = this.addSprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_fire_1.png').setDepth(11);
-                     this.addToDestructibles(this.fireEffect);
                  }
                  let fireDelay = 120;
                  this.fireEffect.setVisible(true);
@@ -1986,7 +2043,6 @@
          if (!this.dead && this.shieldAdded) {
              if (!this.laserBeam) {
                  this.laserBeam = this.addSprite(this.sprite.x, this.sprite.y - 5, 'enemies', 'robot_laser_fire.png').setDepth(11).setOrigin(0.5, 0.1);
-                 this.addToDestructibles(this.laserBeam);
              }
              let backgroundBlack = getBackgroundBlackout();
              backgroundBlack.setDepth(-3).setAlpha(0);

@@ -1085,6 +1085,23 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/robot_energy1.png</key>
+            <key type="filename">enemies/robot_energy2.png</key>
+            <key type="filename">enemies/robot_energy3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.37</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>205,149,409,299</rect>
+                <key>scale9Paddings</key>
+                <rect>205,149,409,299</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/robot_fire_1.png</key>
             <key type="filename">enemies/robot_fire_2.png</key>
             <struct type="IndividualSpriteSettings">
@@ -1136,7 +1153,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.575</double>
+                <double>0.55</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -1151,7 +1168,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.575</double>
+                <double>0.55</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -1191,6 +1208,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/robot_matter.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.59</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>143,138,285,275</rect>
+                <key>scale9Paddings</key>
+                <rect>143,138,285,275</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/robot_shoot.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -1203,6 +1235,37 @@
                 <rect>151,91,301,182</rect>
                 <key>scale9Paddings</key>
                 <rect>151,91,301,182</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/robot_time1.png</key>
+            <key type="filename">enemies/robot_time2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.59</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>125,125,250,250</rect>
+                <key>scale9Paddings</key>
+                <rect>125,125,250,250</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/robot_void.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.58</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>125,125,250,250</rect>
+                <key>scale9Paddings</key>
+                <rect>125,125,250,250</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

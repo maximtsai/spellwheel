@@ -154,4 +154,5 @@ const audioFiles = [
     {name: 'deep_swish', src: 'audio/deep_swish.mp3'},
     {name: 'ringknell', src: 'audio/ringknell.mp3'},
     {name: 'roar', src: 'audio/roar.mp3'},
+    {name: 'click', src: 'audio/click.mp3'},
 ]

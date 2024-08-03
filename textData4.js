@@ -162,6 +162,15 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "deathFight2plusc": {
+        "en_us": "I HEAL FROM YOUR ATTACKS",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "deathFight2plusz": {
         "en_us": "ENOUGH!",
         "fr": "",

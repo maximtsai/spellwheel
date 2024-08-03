@@ -146,13 +146,13 @@ let textData = {
         "jp": "最大回復するが、最大HPを10減少"
     },
     "void_unload_desc": {
-        "en_us": "Damage 10% of\nenemy current HP\nand disrupt their\naction",
-        "fr": "Endommagez 10 % des PV actuels de l’ennemi et perturbez son action.",
-        "zh_tw": "傷害敵人當前生命值的 10% 並破壞他們的行動",
-        "zh_cn": "伤害敌人当前生命值的 10% 并破坏他们的行动",
-        "ru": "Наносит урон 10% от текущего здоровья противника и мешает его действиям",
-        "es": "Inflige daño al 10% de los PS actuales del enemigo e interrumpe su acción",
-        "jp": "敵の現在HPの10%にダメージを与え、敵の行動を妨害する"
+        "en_us": "Damage 9% of\nenemy current HP\nand disrupt their\naction",
+        "fr": "Endommagez 9% des PV actuels de l’ennemi et perturbez son action.",
+        "zh_tw": "傷害敵人當前生命值的 9% 並破壞他們的行動",
+        "zh_cn": "伤害敌人当前生命值的 9% 并破坏他们的行动",
+        "ru": "Наносит урон 9% от текущего здоровья противника и мешает его действиям",
+        "es": "Inflige daño al 9% de los PS actuales del enemigo e interrumpe su acción",
+        "jp": "敵の現在HPの9%にダメージを与え、敵の行動を妨害する"
     },
     "mind_strike_desc": {
         "en_us": "Deal 1 True\ndamage. Enemy\ntakes x2 damage\nfrom your next\nattack.",

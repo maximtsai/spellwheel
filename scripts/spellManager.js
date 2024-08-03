@@ -1501,7 +1501,7 @@ class SpellManager {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
             let yPos = globalObjects.player.getY() - 225 + Math.abs(halfwayIdx - i) * 10 + additionalDamage;
-            let attackObj = this.scene.add.sprite(xPos, yPos, 'spells', 'lightningBolt.png');
+            let attackObj = this.scene.add.sprite(xPos, yPos, 'spells', 'lightningBolt1.png');
             attackObj.play('lightningbolt');
             attackObj.setDepth(10);
             attackObj.rotation = Math.random() - 0.5;
@@ -2798,7 +2798,7 @@ class SpellManager {
                             }
                         });
                     }, 15);
-                    messageBus.publish('enemyTakeDamagePercent', 10, additionalDamage, 'void');
+                    messageBus.publish('enemyTakeDamagePercent', 9, additionalDamage, 'void');
                     messageBus.publish('disruptOpponentAttackPercent', isFirstAttack ? 0.6 : 0.35);
                     messageBus.publish('setPauseDur', 25);
                     screenShake(5);

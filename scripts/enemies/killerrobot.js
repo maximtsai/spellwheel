@@ -246,7 +246,7 @@
                          this.addTween({
                              delay: 800,
                              targets: this.sprite,
-                             duration: 900,
+                             duration: 800,
                              rotation: -0.06,
                              ease: 'Cubic.easeIn',
                              scaleX: this.sprite.startScale * 0.985,
@@ -256,7 +256,11 @@
                                  this.setAwake();
                              },
                              onComplete: () => {
-                                this.bgMusic = playMusic('jpop', 1, true);
+                                 playFakeBGMusic('jpop_intro', 0.9);
+                                 this.addDelay(() => {
+                                     this.bgMusic = playMusic('jpop', 1, true);
+                                 }, 580)
+
                                  this.sprite.setOrigin(0.5, 0.5).setPosition(this.sprite.x, spriteOrigY).setRotation(0);
                                  this.setDefaultSprite('robot1.png');
                                  this.sprite.y = this.sprite.startY;
@@ -310,8 +314,8 @@
 
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 450 : 400;
-         this.criticalThreshold = 80;
-         this.nextShieldHealth = gameVars.isHardMode ? 90 : 70;
+         this.criticalThreshold = 75;
+         this.nextShieldHealth = gameVars.isHardMode ? 100 : 80;
          this.shieldsBroken = 0;
          this.missileObjects = [];
          this.attackEase = "Quad.easeOut";
@@ -332,6 +336,13 @@
          if (!this.isUsingAttack) {
              if (type == "mind") {
                  if (this.accumulatedDamageReaction >= 8) {
+                     if (!this.cantplayvocashock) {
+                         playSound('voca_shock');
+                         this.cantplayvocashock = true;
+                         this.addTimeout(() => {
+                             this.cantplayvocashock = false;
+                         }, 800)
+                     }
                      this.sprite.play('robotmind');
                      this.sprite.setScale(1.5);
                      this.sprite.once('animationcomplete', () => {
@@ -360,6 +371,14 @@
                  }
              } else if (type == "time") {
                  if (this.accumulatedDamageReaction >= 8) {
+                     if (!this.cantplayvocatime) {
+                         playSound('clocktick1', 0.8).detune = this.lastTickLow ? 200 : -200;
+                         this.lastTickLow = !this.lastTickLow;
+                         this.cantplayvocatime = true;
+                         this.addTimeout(() => {
+                             this.cantplayvocatime = false;
+                         }, 250)
+                     }
                      if (this.blush) {
                          this.blush.alpha = 0;
                          if (this.blushAnim) {
@@ -370,6 +389,14 @@
                  }
              }else if (type == "void") {
                  if (this.accumulatedDamageReaction >= 8) {
+                     if (!this.cantplayvocascared) {
+                         playSound('voca_shock', 0.8).detune = -200;
+                         this.cantplayvocascared = true;
+                         this.addTimeout(() => {
+                             this.cantplayvocascared = false;
+                         }, 3000)
+                     }
+                     playSound('voca_short_pain')
                      if (this.blush) {
                          this.blush.alpha = 0;
                          if (this.blushAnim) {
@@ -410,6 +437,9 @@
                  if (!this.cannotInterrupt) {
                      this.cleanUpTweens();
                      this.interruptCurrentAttack();
+                     if (this.fireEffect) {
+                         this.fireEffect.setVisible(false);
+                     }
                      this.currentAttackSetIndex = 1;
                      this.nextAttackIndex = 0;
                  }
@@ -466,6 +496,9 @@
          this.blush.visible = false;
          this.eyeShine.visible = false;
          this.interruptCurrentAttack();
+        if (this.fireEffect) {
+            this.fireEffect.setVisible(false);
+        }
          this.setDefaultSprite('robot_broken.png');
         if (this.shineAnim) {
             this.shineAnim.stop();
@@ -675,7 +708,7 @@
                      startFunction: () => {
                          this.pullbackDurMult = 1;
                         if (this.health >= this.criticalThreshold) {
-                            this.nextShieldHealth += 30;
+                            this.nextShieldHealth += 40;
                             // this.setDefaultSprite('robot1.png', undefined, true);
                             playSound('robot_sfx_1');
                             this.shieldAdded = false;
@@ -882,7 +915,7 @@
                  // 2
                  {
                      name: "|8x2",
-                     chargeAmt: 450,
+                     chargeAmt: 400,
                      damage: 8,
                      attackTimes: 2,
                      attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
@@ -981,7 +1014,7 @@
                  // 3
                  {
                      name: "|8x2",
-                     chargeAmt: 450,
+                     chargeAmt: 400,
                      damage: 8,
                      attackTimes: 2,
                      attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
@@ -1178,7 +1211,8 @@
                  // 5 laser
                  {
                      name: ";16x2 ",
-                     chargeAmt: 700,
+                     chargeAmt: 600,
+                     finishDelay: 2000,
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
@@ -1215,7 +1249,7 @@
                  // 6 missiles
                  {
                      name: ";8x6 ",
-                     chargeAmt: 750,
+                     chargeAmt: 700,
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
@@ -1278,7 +1312,7 @@
                  },
                  {
                      name: "}14",
-                     chargeAmt: 400,
+                     chargeAmt: 350,
                      damage: 14,
                      attackTimes: 1,
                      attackSprites: ['robot_claw_1.png'],
@@ -1312,7 +1346,7 @@
                  },
                  {
                      name: "|8x2",
-                     chargeAmt: 450,
+                     chargeAmt: 400,
                      damage: 8,
                      attackTimes: 2,
                      attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
@@ -1368,7 +1402,7 @@
                  },
                  {
                      name: "MIS-AIMED MISSILE }8x0",
-                     chargeAmt: 800,
+                     chargeAmt: 600,
                      damage: -1,
                      startFunction: () => {
                          this.pullbackScale = 0.99;
@@ -1388,7 +1422,7 @@
                  },
                  {
                      name: "FAILING CIRCUITS $12",
-                     chargeAmt: 800,
+                     chargeAmt: 600,
                      damage: -1,
                      startFunction: () => {
                          this.failingAttack = 12;
@@ -1462,7 +1496,7 @@
                  {
                      name: "}2",
                      isPassive: true,
-                     chargeAmt: 800,
+                     chargeAmt: 600,
                      damage: 2,
                      startFunction: () => {
                          this.pullbackScale = 0.98;
@@ -2040,7 +2074,7 @@
      }
 
      fireLaser(damage = 16) {
-         if (!this.dead && this.shieldAdded) {
+         if (!this.dead) {
              if (!this.laserBeam) {
                  this.laserBeam = this.addSprite(this.sprite.x, this.sprite.y - 5, 'enemies', 'robot_laser_fire.png').setDepth(11).setOrigin(0.5, 0.1);
              }

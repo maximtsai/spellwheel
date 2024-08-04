@@ -64,7 +64,7 @@ class Options {
                     ref: "menu_btn_normal.png",
                     atlas: 'buttons',
                     x: gameConsts.halfWidth,
-                    y: gameConsts.halfHeight + 200,
+                    y: gameConsts.halfHeight + 240,
                     alpha: 1,
                 },
                 hover: {
@@ -107,6 +107,7 @@ class Options {
             });
             this.menuBtn.addText('MENU', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
             this.menuBtn.setDepth(this.baseDepth + 1);
+            this.menuBtn.setScale(0.75, 0.75);
             this.listOfButtonsToDisable.push(this.menuBtn);
         }
 
@@ -116,7 +117,7 @@ class Options {
                     ref: "menu_btn_normal.png",
                     atlas: 'buttons',
                     x: gameConsts.halfWidth,
-                    y: gameConsts.halfHeight + 130,
+                    y: gameConsts.halfHeight + 180,
                     alpha: 1,
                 },
                 hover: {
@@ -148,8 +149,9 @@ class Options {
                     this.hideOptions();
                 }
             });
-            this.resumeBtn.addText('RESUME', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
+            this.resumeBtn.addText('RESUME', {fontFamily: 'garamondmax', fontSize: 32, color: '#000000', align: 'center'});
             this.resumeBtn.setDepth(this.baseDepth + 1);
+            this.resumeBtn.setScale(0.75, 0.75);
             this.listOfButtonsToDisable.push(this.resumeBtn);
         }
 

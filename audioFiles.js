@@ -51,6 +51,7 @@ const audioFiles = [
     {name: 'metaljpop', src: 'audio/metaljpop.mp3'},
     {name: 'metaljpop_short', src: 'audio/metaljpop_short.mp3'},
     {name: 'jpop', src: 'audio/jpop.mp3'},
+    {name: 'jpop_intro', src: 'audio/jpop_intro.mp3'},
     {name: 'heartbeat', src: 'audio/heartbeat.mp3'},
     {name: 'but_never_forgotten_metal', src: 'audio/but_never_forgotten_metal.mp3'},
     {name: 'but_never_forgotten_metal_prelude', src: 'audio/but_never_forgotten_metal_prelude.mp3'},
@@ -105,6 +106,8 @@ const audioFiles = [
     {name: 'victory_false', src: 'audio/victory_false.mp3'},
 
     {name: 'voca_hello', src: 'audio/voca_hello.mp3'},
+    {name: 'voca_shock', src: 'audio/voca_shock.mp3'},
+    {name: 'voca_short_pain', src: 'audio/voca_shock.mp3'},
     {name: 'voca_hello_short', src: 'audio/voca_hello_short.mp3'},
     {name: 'voca_pain', src: 'audio/voca_pain.mp3'},
     {name: 'voca_missile', src: 'audio/voca_missile.mp3'},

@@ -145,7 +145,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2plusa": {
-        "en_us": "NOW STRIKE ME WITH YOUR BEST",
+        "en_us": "NOW GIVE ME YOUR BEST",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -154,7 +154,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2plusb": {
-        "en_us": "YOUR SPELLS NOW EMPOWER ME",
+        "en_us": "YOUR SPELLS EMPOWER ME",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -163,7 +163,16 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2plusc": {
-        "en_us": "I HEAL FROM YOUR ATTACKS",
+        "en_us": "YOUR ATTACKS HEAL ME",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2plusd": {
+        "en_us": "LET'S SPEED THINGS UP",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

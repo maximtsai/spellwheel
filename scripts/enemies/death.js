@@ -426,7 +426,7 @@
                  {
                      name: ";444",
                      chargeAmt: 800,
-                     chargeMult: 2,
+                     chargeMult: 1.5,
                      finishDelay: 3000,
                      damage: -1,
                      isBigMove: true,
@@ -511,8 +511,8 @@
                  },
                  {
                      name: ";20x5",
-                     chargeAmt: 1250,
-                     chargeMult: 1.4,
+                     chargeAmt: 1300,
+                     chargeMult: 1.35,
                      finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
@@ -540,9 +540,9 @@
                      }
                  },
                  {
-                     name: ";100",
+                     name: ";88",
                      chargeAmt: 850,
-                     chargeMult: 2,
+                     chargeMult: 1.5,
                      finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
@@ -568,7 +568,7 @@
                      },
                      attackStartFunction: () => {
                          this.scytheCanBreak = true;
-                         this.swingScytheFastIntro(100, true, false, () => {
+                         this.swingScytheFastIntro(88, true, false, () => {
                              this.addTween({
                                  targets: this.listOfAngryPopups, scaleX: 0, scaleY: 0,
                                  ease: 'Back.easeIn', duration: 400,

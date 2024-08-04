@@ -4,7 +4,7 @@
          this.initSprite('death2final.png', 0.92, 0, 0, 'deathfinal');
          this.bgMusic = playMusic('but_never_forgotten_metal', 0.9, true);
          this.bgMain = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5)
-         this.bgBlur = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star_blur.png').setDepth(-5).setScale(2);
+         this.bgBlur = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star_blur.png').setDepth(-5).setScale(2).setAlpha(1.5);
          globalObjects.player.reInitStats();
          globalObjects.player.refreshHealthBar();
          messageBus.publish('showCircleShadow', 0.7, -50);
@@ -12,17 +12,18 @@
          this.addTween({
              targets: this.bgBlur,
              alpha: 0,
-             duration: 1500,
+             duration: 1000,
              onComplete: () => {
-                 // this.addTween({
-                 //     targets: this.bgMain,
-                 //     alpha: 0.7,
-                 //     scaleY: 2.01,
-                 //     ease: 'Quad.easeInOut',
-                 //     repeat: -1,
-                 //     yoyo: true,
-                 //     duration: 2000,
-                 // })
+                 this.addTween({
+                     targets: this.bgBlur,
+                     alpha: 0.24,
+                     scaleX: 2.005,
+                     scaleY: 2.005,
+                     ease: 'Quad.easeInOut',
+                     repeat: -1,
+                     yoyo: true,
+                     duration: 2000,
+                 })
              }
          })
          this.whiteoutTemp = this.addImage(x, y + 15, 'spells', 'whiteout_circle.png').setScale(2.55)

@@ -468,7 +468,7 @@
                     chargeAmt: 550,
                     damage: 10,
                     attackTimes: 1,
-                    chargeMult: 3.5,
+                    chargeMult: 3,
                     prepareSprite: 'death2windup.png',
                     attackSprites: ['death2punch.png'],
                     startFunction: () => {
@@ -562,7 +562,7 @@
                     name: "}6   ",
                     chargeAmt: 1100,
                     finishDelay: 1200,
-                    chargeMult: 2,
+                    chargeMult: 1.75,
                     damage: 6,
                     isBigMove: true,
                     attackSprites: ['death2punch.png'],
@@ -570,7 +570,7 @@
                         this.pullbackScale = 0.9;
                         this.attackScale = 1.1;
                         this.attackSlownessMult = 1;
-                        this.nextAttack.chargeMult = 2;
+                        this.nextAttack.chargeMult = 1.75;
                         this.setArmsVisible(false)
                         this.setDefaultSprite('death2windup.png');
                         this.addDelay(() => {
@@ -604,7 +604,7 @@
                     name: "THORNS {4",
                     chargeAmt: 600,
                     finishDelay: 1000,
-                    chargeMult: 10,
+                    chargeMult: 8,
                     damage: -1,
                     isPassive: true,
                     isBigMove: true,
@@ -657,7 +657,7 @@
                     chargeAmt: 600,
                     damage: 10,
                     attackTimes: 1,
-                    chargeMult: 3.5,
+                    chargeMult: 3,
                     prepareSprite: 'death2windup.png',
                     attackSprites: ['death2punch.png'],
                     startFunction: () => {
@@ -752,7 +752,7 @@
                     name: "}6   ",
                     chargeAmt: 1100,
                     finishDelay: 1200,
-                    chargeMult: 2,
+                    chargeMult: 1.5,
                     damage: 6,
                     isBigMove: true,
                     attackSprites: ['death2punch.png'],
@@ -760,7 +760,7 @@
                         this.pullbackScale = 0.9;
                         this.attackScale = 1.1;
                         this.attackSlownessMult = 1;
-                        this.nextAttack.chargeMult = 2;
+                        this.nextAttack.chargeMult = 1.5;
                         this.setArmsVisible(false)
                         this.setDefaultSprite('death2windup.png');
                         this.addDelay(() => {

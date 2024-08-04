@@ -129,6 +129,35 @@
          super.takeEffect(newEffect)
      }
 
+     reactToDamageTypes(amt, isAttack, type) {
+         super.reactToDamageTypes(amt, isAttack, type);
+         if (this.emergency || this.dead || !this.isFirstMode) {
+             return;
+         }
+         if (!this.isUsingAttack) {
+             if (type == "mind") {
+             } else if (type == "time") {
+                 if (this.accumulatedDamageReaction >= 9) {
+                     this.setSprite('void_knight_dazed.png');
+                     if (this.reactTween) {
+                         this.reactTween.stop();
+                     }
+                     this.reactTween = this.addTween({
+                         targets: this.sprite,
+                         rotation: 0,
+                         duration: 1100,
+                         onComplete: () => {
+                             if (!this.isUsingAttack && !this.dead && this.isFirstMode) {
+                                 this.setSprite(this.defaultSprite);
+                             }
+                         }
+                     })
+                 }
+             }
+         }
+
+     }
+
      launchAttack(attackTimes = 1, prepareSprite, preAttackSprite, attackSprites, isRepeatedAttack, finishDelay, transitionFast = false) {
          this.sigilEffect.visible = false;
          if (this.voidTentacleFront) {
@@ -775,7 +804,7 @@
                      announceName: "void strike",
                      chargeAmt: 650,
                      damage: 5,
-                     chargeMult: 2,
+                     chargeMult: 1.75,
                      attackSprites: ['void_knight_attack.png'],
                      startFunction: () => {
                          playSound('void_enhance', 0.5);
@@ -837,7 +866,7 @@
                      announceName: "VOID SHIELD",
                      chargeAmt: 800,
                      isPassive: true,
-                     chargeMult: 15,
+                     chargeMult: 13,
                      prepareSprite: 'void_knight_3.png',
                      damage: -1,
                      attackFinishFunction: () => {
@@ -874,7 +903,7 @@
                      name: "|5x2 ",
                      announceName: "ASSAIL",
                      chargeAmt: 500,
-                     chargeMult: 2,
+                     chargeMult: 1.8,
                      damage: 5,
                      attackTimes: 2,
                      prepareSprite: 'void_knight_3.png',
@@ -895,7 +924,7 @@
                      name: "|12 ",
                      announceName: "ASSAIL",
                      chargeAmt: 400,
-                     chargeMult: 2,
+                     chargeMult: 1.8,
                      damage: 12,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -914,7 +943,7 @@
                      name: "|5x3 ",
                      announceName: "ASSAIL",
                      chargeAmt: 550,
-                     chargeMult: 2,
+                     chargeMult: 1.8,
                      damage: 5,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_3.png',
@@ -934,7 +963,7 @@
                      name: "|14 ",
                      announceName: "ASSAIL",
                      chargeAmt: 450,
-                     chargeMult: 2,
+                     chargeMult: 1.75,
                      damage: 14,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -953,7 +982,7 @@
                      name: "|5x4 ",
                      announceName: "ASSAIL",
                      chargeAmt: 600,
-                     chargeMult: 2,
+                     chargeMult: 1.75,
                      damage: 5,
                      attackTimes: 4,
                      prepareSprite: 'void_knight_3.png',
@@ -973,7 +1002,7 @@
                      name: "|16 ",
                      announceName: "ASSAIL",
                      chargeAmt: 500,
-                     chargeMult: 2,
+                     chargeMult: 1.75,
                      damage: 16,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -1009,7 +1038,7 @@
                      name: ";5x6 ",
                      announceName: "ASSAIL",
                      chargeAmt: 900,
-                     chargeMult: 2,
+                     chargeMult: 1.75,
                      damage: 5,
                      attackTimes: 6,
                      isBigMove: true,
@@ -1030,7 +1059,7 @@
                      name: ";20 ",
                      announceName: "ASSAIL",
                      chargeAmt: 750,
-                     chargeMult: 2,
+                     chargeMult: 1.75,
                      damage: 20,
                      isBigMove: true,
                      prepareSprite: 'void_knight_3.png',

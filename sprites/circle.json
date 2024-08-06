@@ -1410,56 +1410,6 @@
 					}
 				},
 				{
-					"filename": "rune_strike_glow_bright.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 60,
-						"h": 165
-					},
-					"spriteSourceSize": {
-						"x": 9,
-						"y": 3,
-						"w": 42,
-						"h": 46
-					},
-					"frame": {
-						"x": 379,
-						"y": 1897,
-						"w": 42,
-						"h": 46
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_time_glow_bright.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 60,
-						"h": 165
-					},
-					"spriteSourceSize": {
-						"x": 9,
-						"y": 2,
-						"w": 42,
-						"h": 45
-					},
-					"frame": {
-						"x": 1451,
-						"y": 1579,
-						"w": 42,
-						"h": 45
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "error_box.png",
 					"rotated": false,
 					"trimmed": false,
@@ -1478,31 +1428,6 @@
 						"y": 1154,
 						"w": 65,
 						"h": 59
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_matter_glow_bright.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 60,
-						"h": 165
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
-						"w": 56,
-						"h": 47
-					},
-					"frame": {
-						"x": 1978,
-						"y": 1154,
-						"w": 56,
-						"h": 47
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1535,7 +1460,7 @@
 					}
 				},
 				{
-					"filename": "rune_enhance.png",
+					"filename": "bright_rune_enhance.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1560,24 +1485,24 @@
 					}
 				},
 				{
-					"filename": "rune_unload_glow_bright.png",
+					"filename": "rune_enhance.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 60,
+						"w": 59,
 						"h": 165
 					},
 					"spriteSourceSize": {
-						"x": 5,
-						"y": 0,
-						"w": 49,
-						"h": 49
+						"x": 0,
+						"y": 2,
+						"w": 58,
+						"h": 43
 					},
 					"frame": {
-						"x": 720,
-						"y": 1726,
-						"w": 49,
-						"h": 49
+						"x": 1181,
+						"y": 1508,
+						"w": 58,
+						"h": 43
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1599,8 +1524,8 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 1181,
-						"y": 1508,
+						"x": 1756,
+						"y": 1870,
 						"w": 58,
 						"h": 43
 					},
@@ -1610,24 +1535,24 @@
 					}
 				},
 				{
-					"filename": "rune_enhance_glow2.png",
+					"filename": "bright_rune_matter.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 59,
+						"w": 60,
 						"h": 165
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 58,
-						"h": 43
+						"x": 3,
+						"y": 3,
+						"w": 54,
+						"h": 45
 					},
 					"frame": {
-						"x": 1181,
-						"y": 1508,
-						"w": 58,
-						"h": 43
+						"x": 1911,
+						"y": 1215,
+						"w": 54,
+						"h": 45
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1649,8 +1574,8 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 1756,
-						"y": 1870,
+						"x": 1978,
+						"y": 1154,
 						"w": 54,
 						"h": 45
 					},
@@ -1674,8 +1599,8 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 1911,
-						"y": 1215,
+						"x": 1756,
+						"y": 1915,
 						"w": 54,
 						"h": 45
 					},
@@ -1710,32 +1635,7 @@
 					}
 				},
 				{
-					"filename": "rune_void_glow_bright.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 60,
-						"h": 165
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 2,
-						"w": 47,
-						"h": 49
-					},
-					"frame": {
-						"x": 1756,
-						"y": 1917,
-						"w": 47,
-						"h": 49
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_unload.png",
+					"filename": "bright_rune_unload.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1760,32 +1660,7 @@
 					}
 				},
 				{
-					"filename": "rune_protect_glow_bright.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 59,
-						"h": 165
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 4,
-						"w": 48,
-						"h": 44
-					},
-					"frame": {
-						"x": 1812,
-						"y": 1870,
-						"w": 48,
-						"h": 44
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_mind_glow_bright.png",
+					"filename": "rune_unload.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1793,16 +1668,16 @@
 						"h": 165
 					},
 					"spriteSourceSize": {
-						"x": 13,
+						"x": 6,
 						"y": 0,
-						"w": 33,
-						"h": 52
+						"w": 47,
+						"h": 48
 					},
 					"frame": {
-						"x": 379,
-						"y": 1945,
-						"w": 33,
-						"h": 52
+						"x": 1816,
+						"y": 1870,
+						"w": 47,
+						"h": 48
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1824,8 +1699,8 @@
 						"h": 48
 					},
 					"frame": {
-						"x": 940,
-						"y": 1964,
+						"x": 1756,
+						"y": 1962,
 						"w": 47,
 						"h": 48
 					},
@@ -1835,7 +1710,7 @@
 					}
 				},
 				{
-					"filename": "rune_void.png",
+					"filename": "bright_rune_strike.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1843,16 +1718,16 @@
 						"h": 165
 					},
 					"spriteSourceSize": {
-						"x": 7,
-						"y": 3,
-						"w": 45,
-						"h": 46
+						"x": 10,
+						"y": 4,
+						"w": 40,
+						"h": 44
 					},
 					"frame": {
-						"x": 989,
-						"y": 1964,
-						"w": 45,
-						"h": 46
+						"x": 379,
+						"y": 1897,
+						"w": 40,
+						"h": 44
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1860,7 +1735,7 @@
 					}
 				},
 				{
-					"filename": "rune_reinforce_glow_bright.png",
+					"filename": "rune_strike.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1868,16 +1743,66 @@
 						"h": 165
 					},
 					"spriteSourceSize": {
-						"x": 7,
-						"y": 2,
-						"w": 46,
-						"h": 45
+						"x": 10,
+						"y": 4,
+						"w": 40,
+						"h": 44
 					},
 					"frame": {
-						"x": 1036,
+						"x": 1451,
+						"y": 1579,
+						"w": 40,
+						"h": 44
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_strike_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 165
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 4,
+						"w": 40,
+						"h": 44
+					},
+					"frame": {
+						"x": 379,
+						"y": 1943,
+						"w": 40,
+						"h": 44
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bright_rune_protect.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 165
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 5,
+						"w": 46,
+						"h": 42
+					},
+					"frame": {
+						"x": 940,
 						"y": 1964,
 						"w": 46,
-						"h": 45
+						"h": 42
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1899,8 +1824,8 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1756,
-						"y": 1968,
+						"x": 988,
+						"y": 1964,
 						"w": 46,
 						"h": 42
 					},
@@ -1910,7 +1835,82 @@
 					}
 				},
 				{
-					"filename": "rune_mind.png",
+					"filename": "rune_protect_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 165
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 5,
+						"w": 46,
+						"h": 42
+					},
+					"frame": {
+						"x": 1036,
+						"y": 1964,
+						"w": 46,
+						"h": 42
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bright_rune_void.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 165
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 3,
+						"w": 45,
+						"h": 46
+					},
+					"frame": {
+						"x": 1812,
+						"y": 1920,
+						"w": 45,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_void.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 165
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 3,
+						"w": 45,
+						"h": 46
+					},
+					"frame": {
+						"x": 1805,
+						"y": 1968,
+						"w": 45,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bright_rune_mind.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1935,7 +1935,7 @@
 					}
 				},
 				{
-					"filename": "rune_mind_glow.png",
+					"filename": "rune_mind.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1960,24 +1960,24 @@
 					}
 				},
 				{
-					"filename": "healthbar_end.png",
+					"filename": "rune_mind_glow.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 173,
-						"h": 173
+						"w": 60,
+						"h": 165
 					},
 					"spriteSourceSize": {
-						"x": 17,
-						"y": 130,
-						"w": 25,
-						"h": 19
+						"x": 14,
+						"y": 1,
+						"w": 31,
+						"h": 50
 					},
 					"frame": {
-						"x": 732,
-						"y": 1705,
-						"w": 25,
-						"h": 19
+						"x": 829,
+						"y": 532,
+						"w": 31,
+						"h": 50
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1999,8 +1999,8 @@
 						"h": 46
 					},
 					"frame": {
-						"x": 771,
-						"y": 1705,
+						"x": 1281,
+						"y": 1937,
 						"w": 45,
 						"h": 46
 					},
@@ -2010,7 +2010,7 @@
 					}
 				},
 				{
-					"filename": "rune_strike.png",
+					"filename": "bright_rune_reinforce.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -2018,66 +2018,16 @@
 						"h": 165
 					},
 					"spriteSourceSize": {
-						"x": 10,
-						"y": 4,
-						"w": 40,
-						"h": 44
+						"x": 8,
+						"y": 3,
+						"w": 44,
+						"h": 43
 					},
 					"frame": {
-						"x": 818,
-						"y": 1705,
-						"w": 40,
-						"h": 44
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_strike_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 60,
-						"h": 165
-					},
-					"spriteSourceSize": {
-						"x": 10,
-						"y": 4,
-						"w": 40,
-						"h": 44
-					},
-					"frame": {
-						"x": 829,
-						"y": 532,
-						"w": 40,
-						"h": 44
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_protect_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 59,
-						"h": 165
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 5,
-						"w": 46,
-						"h": 42
-					},
-					"frame": {
-						"x": 1281,
+						"x": 1328,
 						"y": 1937,
-						"w": 46,
-						"h": 42
+						"w": 44,
+						"h": 43
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2099,7 +2049,7 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 1329,
+						"x": 1374,
 						"y": 1937,
 						"w": 44,
 						"h": 43
@@ -2124,9 +2074,34 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 1375,
+						"x": 1420,
 						"y": 1937,
 						"w": 44,
+						"h": 43
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bright_rune_time.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 165
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 3,
+						"w": 40,
+						"h": 43
+					},
+					"frame": {
+						"x": 1466,
+						"y": 1937,
+						"w": 40,
 						"h": 43
 					},
 					"anchor": {
@@ -2149,7 +2124,7 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 1421,
+						"x": 1508,
 						"y": 1937,
 						"w": 40,
 						"h": 43
@@ -2174,7 +2149,7 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 1463,
+						"x": 1550,
 						"y": 1937,
 						"w": 40,
 						"h": 43
@@ -2199,8 +2174,8 @@
 						"h": 40
 					},
 					"frame": {
-						"x": 1505,
-						"y": 1937,
+						"x": 732,
+						"y": 1705,
 						"w": 40,
 						"h": 40
 					},
@@ -2285,6 +2260,31 @@
 					}
 				},
 				{
+					"filename": "healthbar_end.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 173,
+						"h": 173
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 130,
+						"w": 25,
+						"h": 19
+					},
+					"frame": {
+						"x": 1894,
+						"y": 390,
+						"w": 25,
+						"h": 19
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "healthbar_tiny.png",
 					"rotated": false,
 					"trimmed": true,
@@ -2324,8 +2324,8 @@
 						"h": 15
 					},
 					"frame": {
-						"x": 1894,
-						"y": 390,
+						"x": 1272,
+						"y": 1418,
 						"w": 16,
 						"h": 15
 					},
@@ -2349,8 +2349,8 @@
 						"h": 15
 					},
 					"frame": {
-						"x": 1894,
-						"y": 390,
+						"x": 1272,
+						"y": 1418,
 						"w": 16,
 						"h": 15
 					},
@@ -2374,8 +2374,8 @@
 						"h": 14
 					},
 					"frame": {
-						"x": 1272,
-						"y": 1418,
+						"x": 1673,
+						"y": 985,
 						"w": 15,
 						"h": 14
 					},
@@ -2391,6 +2391,31 @@
 					"sourceSize": {
 						"w": 129,
 						"h": 129
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 3,
+						"h": 3
+					},
+					"frame": {
+						"x": 1055,
+						"y": 1772,
+						"w": 3,
+						"h": 3
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bright_null.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 2,
+						"h": 2
 					},
 					"spriteSourceSize": {
 						"x": 0,
@@ -2440,6 +2465,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:eebe9e6606a074be8b45220ba45f43ba:e5ff770b054e044371d2a362a379eb09:c8df78951edfca457722a32a56a2d448$"
+		"smartupdate": "$TexturePacker:SmartUpdate:ad1a670148ef4a87a74a2e745a3ffe24:a7c471eed4ce534bb78f70662c7bfa92:c8df78951edfca457722a32a56a2d448$"
 	}
 }

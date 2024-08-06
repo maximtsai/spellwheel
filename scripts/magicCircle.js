@@ -536,6 +536,9 @@ const ENABLE_KEYBOARD = true;
         this.dragArrow.setDepth(100001);
         this.dragArrow.setOrigin(0.2, 0.5);
         this.dragArrow.visible = false;
+
+        this.elementHighlight = this.scene.add.sprite(x, y, 'circle', 'bright_rune_matter.png').setOrigin(0.5, 0.84).setDepth(104);
+        this.embodimentHighlight = this.scene.add.sprite(x, y, 'circle', 'bright_rune_strike.png').setOrigin(0.5, 1.22).setDepth(104);
         this.buildRunes();
     }
 
@@ -818,7 +821,7 @@ const ENABLE_KEYBOARD = true;
 
             this.elements[i].glow = this.scene.add.sprite(x, y, 'circle', ELEMENT_ARRAY[i] + '_glow.png');
             this.elements[i].glow.setOrigin(0.5, 0.84);
-            this.elements[i].glow.setDepth(103);
+            this.elements[i].glow.setDepth(103).setAlpha(0.98);
             this.elements[i].glow.rotation = this.elements[i].rotation;
         }
         for (let i = 0; i < EMBODIMENT_ARRAY.length; i++) {
@@ -832,9 +835,11 @@ const ENABLE_KEYBOARD = true;
 
             this.embodiments[i].glow = this.scene.add.sprite(x, y, 'circle', EMBODIMENT_ARRAY[i] + '_glow.png');
             this.embodiments[i].glow.setOrigin(0.5, 1.22);
-            this.embodiments[i].glow.setDepth(103);
+            this.embodiments[i].glow.setDepth(103).setAlpha(0.98);
             this.embodiments[i].glow.rotation = this.embodiments[i].rotation;
         }
+         //blastEffect6.png
+
         // const ELEMENT_ARRAY = ['rune_time', 'rune_mind', 'rune_matter', 'rune_void'];
         // const EMBODIMENT_ARRAY = ['rune_enhance', 'rune_protect', 'rune_reinforce', 'rune_strike', 'rune_unload'];
     }
@@ -857,8 +862,12 @@ const ENABLE_KEYBOARD = true;
              this.embodiments[i].rotation = this.outerCircle.rotation + this.embodiments[i].startRotation;
              this.embodiments[i].glow.rotation = this.embodiments[i].rotation;
          }
+         if (this.elementHighlight.closest) {
+             this.elementHighlight.rotation = this.elementHighlight.closest.rotation;
+             this.embodimentHighlight.rotation = this.embodimentHighlight.closest.rotation;
+         }
 
-     }
+    }
 
     calculateRotations(dt, distToTarget = 99) {
         if (this.innerDragDisabled || this.outerDragDisabled) {
@@ -886,6 +895,26 @@ const ENABLE_KEYBOARD = true;
             if (Math.abs(distToRuneEmbodi) < Math.abs(distToClosestRuneEmbodiment)) {
                 distToClosestRuneEmbodiment = distToRuneEmbodi;
                 closestEmbodiment = this.embodiments[i];
+            }
+        }
+
+        if (this.outerDragDisabled || this.castDisabled || this.manualDisabled || this.recharging) {
+            this.elementHighlight.visible = false;
+            this.embodimentHighlight.visible = false;
+        } else {
+            if (closestElement.glow.visible) {
+                this.elementHighlight.closest = closestElement;
+                this.elementHighlight.visible = true;
+                this.elementHighlight.setRotation(closestElement.rotation).setFrame("bright_" + closestElement.frame.name).setOrigin(0.5, 0.84);
+            } else {
+                this.elementHighlight.visible = false;
+            }
+            if (closestEmbodiment.glow.visible) {
+                this.embodimentHighlight.closest = closestEmbodiment;
+                this.embodimentHighlight.visible = true;
+                this.embodimentHighlight.setRotation(closestEmbodiment.rotation).setFrame("bright_" + closestEmbodiment.frame.name).setOrigin(0.5, 1.22);
+            } else {
+                this.embodimentHighlight.visible = false;
             }
         }
 
@@ -1605,6 +1634,8 @@ const ENABLE_KEYBOARD = true;
         this.castDisabled = true;
         this.recharging = true;
         this.lastDragTime = -1000;
+        this.elementHighlight.visible = false;
+        this.embodimentHighlight.visible = false;
         if (useLongDelay) {
             this.spellNameText.visible = false;
             this.spellElementText.setText('');
@@ -1634,6 +1665,8 @@ const ENABLE_KEYBOARD = true;
                 this.elements[i].burnedOut = false;
             }
         }
+        this.elementHighlight.visible = false;
+        this.embodimentHighlight.visible = false;
         let sprite = this.elemCircle;
         if (!sprite) {
             this.elemCircle = this.scene.add.sprite(this.x, this.y, 'circle', 'circle.png');
@@ -1745,7 +1778,7 @@ const ENABLE_KEYBOARD = true;
         let elemName = elem.runeName;
         let sprite = this.elementsAnimArray[elemName];
         if (!sprite) {
-            sprite = this.scene.add.sprite(0, -999, 'circle', elemName + '_glow' + '.png');
+            sprite = this.scene.add.sprite(0, -999, 'circle', "bright_" + elemName + '.png');
             sprite.setOrigin(0.5, 0.14);
             this.elementsAnimArray[elemName] = sprite;
             sprite.setDepth(119);
@@ -1763,7 +1796,7 @@ const ENABLE_KEYBOARD = true;
         sprite.setPosition(this.x + Math.sin(elem.rotation) * 115, this.y - Math.cos(elem.rotation) * 115);
         sprite.setAlpha(1);
         castCircle.setPosition(sprite.x, sprite.y);
-        sprite.setScale(1.07);
+        sprite.setScale(1.2);
         this.scene.tweens.add({
             targets: sprite,
             duration: gameVars.gameManualSlowSpeed * 100,
@@ -1836,7 +1869,7 @@ const ENABLE_KEYBOARD = true;
         let elemName = elem.runeName;
         let sprite = this.embodimentsAnimArray[elemName];
         if (!sprite) {
-            sprite = this.scene.add.sprite(0, -999, 'circle', elemName + '_glow' + '.png');
+            sprite = this.scene.add.sprite(0, -999, 'circle', "bright_" + elemName + '.png');
             sprite.setOrigin(0.5, 0.14);
             this.elementsAnimArray[elemName] = sprite;
             sprite.setDepth(119);
@@ -1854,7 +1887,7 @@ const ENABLE_KEYBOARD = true;
         sprite.setAlpha(1);
         castCircle.setPosition(sprite.x, sprite.y);
 
-        sprite.setScale(1.07);
+        sprite.setScale(1.2);
         this.scene.tweens.add({
             targets: sprite,
             duration: gameVars.gameManualSlowSpeed * 100,
@@ -1888,6 +1921,9 @@ const ENABLE_KEYBOARD = true;
         this.scene.tweens.add({
             targets: castCircle,
             ease: 'Cubic.easeIn',
+            duration: gameVars.gameManualSlowSpeed * 250,
+            scaleX: 1,
+            scaleY: 1,
             onComplete: () => {
                 castCircle.alpha = 1;
                 this.scene.tweens.add({
@@ -1980,9 +2016,6 @@ const ENABLE_KEYBOARD = true;
                     }
                 });
             },
-            duration: gameVars.gameManualSlowSpeed * 250,
-            scaleX: 1,
-            scaleY: 1
         });
     }
 

@@ -349,6 +349,58 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">circle/bright_null.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1,1,1,1</rect>
+                <key>scale9Paddings</key>
+                <rect>1,1,1,1</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">circle/bright_rune_enhance.png</key>
+            <key type="filename">circle/bright_rune_protect.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>15,41,29,83</rect>
+                <key>scale9Paddings</key>
+                <rect>15,41,29,83</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">circle/bright_rune_matter.png</key>
+            <key type="filename">circle/bright_rune_mind.png</key>
+            <key type="filename">circle/bright_rune_reinforce.png</key>
+            <key type="filename">circle/bright_rune_strike.png</key>
+            <key type="filename">circle/bright_rune_time.png</key>
+            <key type="filename">circle/bright_rune_unload.png</key>
+            <key type="filename">circle/bright_rune_void.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>15,41,30,83</rect>
+                <key>scale9Paddings</key>
+                <rect>15,41,30,83</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">circle/cast_circle.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -689,43 +741,6 @@
                 <rect>13,10,25,20</rect>
                 <key>scale9Paddings</key>
                 <rect>13,10,25,20</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">circle/rune_enhance_glow2.png</key>
-            <key type="filename">circle/rune_protect_glow_bright.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>15,41,29,83</rect>
-                <key>scale9Paddings</key>
-                <rect>15,41,29,83</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">circle/rune_matter_glow_bright.png</key>
-            <key type="filename">circle/rune_mind_glow_bright.png</key>
-            <key type="filename">circle/rune_reinforce_glow_bright.png</key>
-            <key type="filename">circle/rune_strike_glow_bright.png</key>
-            <key type="filename">circle/rune_time_glow_bright.png</key>
-            <key type="filename">circle/rune_unload_glow_bright.png</key>
-            <key type="filename">circle/rune_void_glow_bright.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>15,41,30,83</rect>
-                <key>scale9Paddings</key>
-                <rect>15,41,30,83</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

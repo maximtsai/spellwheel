@@ -96,8 +96,8 @@ class HoverDisplay {
         this.hoverTextDisplay.visible = false;
         this.hoverTextDisplay.setDepth(data.depth || 9992);
 
-        this.setPosition(data.x, data.y)
         this.setOrigin(data.originX, data.originY);
+        this.setPosition(data.x, data.y)
         this.hoverTextDisplay.setOrigin(data.originX, 0.5);
         this.stopAudioTemp = true;
     }
@@ -116,13 +116,13 @@ class HoverDisplay {
 
     setPosition(x, y) {
         this.hoverBacking.x = x - 3; this.hoverBacking.y = y;
-        this.hoverTextDisplay.x = this.hoverBacking.x + 2 * (1 - this.hoverBacking.originX * 2 - 2);
-        this.hoverTextDisplay.y = this.hoverBacking.y - 14 * (this.hoverBacking.originY * 2 - 1);
+        this.hoverTextDisplay.x = this.hoverBacking.x + 3 * (1 - this.hoverBacking.originX * 2 - (this.hoverBacking.originX - 0.5) * 4);
+        this.hoverTextDisplay.y = this.hoverBacking.y - this.hoverTextDisplay.height * 0.5 * (this.hoverBacking.originY * 2 - 1) - 3;
     }
 
     setOrigin(x = 0.5, y = 0.5) {
         this.hoverBacking.setOrigin(x, y);
-        this.hoverTextDisplay.setOrigin(x, y);
+        this.hoverTextDisplay.setOrigin(x, 0.5);
     }
 
     getText() {
@@ -151,6 +151,7 @@ class HoverDisplay {
         }
         this.hoverTextDisplay.x = this.hoverBacking.x + 3 * (1 - this.hoverBacking.originX * 2 - (this.hoverBacking.originX - 0.5) * 4);
         this.hoverTextDisplay.y = this.hoverBacking.y - this.hoverTextDisplay.height * 0.5 * (this.hoverBacking.originY * 2 - 1) - 3;
+        console.log(this.hoverTextDisplay.y, this.hoverTextDisplay.originY)
 
         this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX + 3, (this.hoverTextDisplay.height + 6) * 0.5 * this.hoverTextDisplay.scaleY);
         if (text.length > 0) {

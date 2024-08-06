@@ -751,7 +751,7 @@
                          this.nextAttackIndex = 0;
                          this.sigilEffect.visible = true;
 
-                         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 80, getLangText("shield_tut_knight"), 'right', true);
+                         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 143, getLangText("shield_tut_knight"), 'right', true);
                           this.addDelay(() => {
                              this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                                  this.playerSpellCastSub.unsubscribe();
@@ -760,8 +760,6 @@
                                  }, 400);
                              });
                          }, 2000)
-
-
                      }
                  }
              ],

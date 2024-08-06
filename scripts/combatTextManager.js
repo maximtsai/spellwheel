@@ -36,8 +36,8 @@ class CombatTextManager {
         } else {
             this.bg.scaleX = 4;
         }
-        this.bgBorderTop.scaleX = this.bg.scaleX * 0.22;
-        this.bgBorderBot.scaleX = this.bg.scaleX * 0.22;
+        this.bgBorderTop.scaleX = this.bg.scaleX * 0.25;
+        this.bgBorderBot.scaleX = this.bg.scaleX * 0.25;
         if (this.text.height > 50) {
             this.bg.scaleY = 8;
         } else {

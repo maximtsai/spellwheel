@@ -54,7 +54,8 @@ const ENABLE_KEYBOARD = true;
             messageBus.subscribe("unhighlightRunes", this.unhighlightRunes.bind(this)),
             messageBus.subscribe("showCircleShadow", this.showCircleShadow.bind(this)),
 
-            messageBus.subscribe("setCircleShadow", this.setCircleShadow.bind(this))
+            messageBus.subscribe("setCircleShadow", this.setCircleShadow.bind(this)),
+            messageBus.subscribe("refreshHoverDisplay", this.refreshHoverText.bind(this))
 
         ];
 
@@ -1584,6 +1585,8 @@ const ENABLE_KEYBOARD = true;
             }
         }
         if (!hasRemainingElement || !hasRemainingEmbodiment) {
+            this.elementHighlight.visible = false;
+            this.embodimentHighlight.visible = false;
             this.innerDragDisabled = true;
             this.outerDragDisabled = true;
             this.castDisabled = true;
@@ -1693,6 +1696,8 @@ const ENABLE_KEYBOARD = true;
          this.disableSpellDescDisplay = true;
          this.recharging = true;
          this.lastDragTime = -1000;
+         this.elementHighlight.visible = false;
+         this.embodimentHighlight.visible = false;
          PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 250, () => {
              this.bufferedCastAvailable = true;
          });
@@ -1750,6 +1755,8 @@ const ENABLE_KEYBOARD = true;
                 this.embodiments[i].burnedOut = false;
             }
         }
+        this.elementHighlight.visible = false;
+        this.embodimentHighlight.visible = false;
         let sprite = this.embodiCircle;
         if (!sprite) {
             this.embodiCircle = this.scene.add.sprite(this.x, this.y, 'circle', 'circle.png');
@@ -2232,6 +2239,7 @@ const ENABLE_KEYBOARD = true;
          if (this.delayedDamage > 0) {
              this.delayDamageText.setText(this.delayedDamage);
              let scaleAmtTotal = this.getDelayedDamageClockScale();
+             console.log(scaleAmtTotal);
             let textScaleFinal = Math.sqrt(scaleAmtTotal * 2) * 0.75;
              if (oldDelayedDamage <= 0) {
                  // animation in
@@ -2246,7 +2254,7 @@ const ENABLE_KEYBOARD = true;
                 let rotateAmt = this.delayedDamage / this.delayedDamageBase * 6.283 - 1.5708;
                 let xPos = this.delayDamageHourglass.x;
                 let yPos = this.delayDamageHourglass.y;
-                let size = 98 * scaleAmtTotal;
+                let size = 98 * (scaleAmtTotal - 0.1);
                 this.delayDamagePartial.visible = true;
                 this.delayDamagePartial.clear();
                 this.delayDamagePartial.slice(xPos, yPos, size, -1.5708, rotateAmt, false);
@@ -2840,4 +2848,16 @@ const ENABLE_KEYBOARD = true;
         this.shadowCircle.alpha = intensity;
     }
 
+     refreshHoverText() {
+         if (!gameVars.infoBoxAlign || gameVars.infoBoxAlign == 'center') {
+             this.spellDescriptor.setOrigin(0.5, 1);
+             this.spellDescriptor.setPosition(gameConsts.halfWidth, gameConsts.height - 362);
+         } else if (gameVars.infoBoxAlign == "none") {
+             this.spellDescriptor.setPosition(-9999, 0);
+
+         } else if (gameVars.infoBoxAlign == 'left') {
+             this.spellDescriptor.setOrigin(0, 1);
+             this.spellDescriptor.setPosition(0, gameConsts.height - 305);
+         }
+     }
 }

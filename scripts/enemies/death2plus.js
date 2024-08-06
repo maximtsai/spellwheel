@@ -178,30 +178,6 @@
                      }
                  },
                  {
-                     name: ";40",
-                     chargeAmt: 600,
-                     finishDelay: 2000,
-                     damage: -1,
-                     isBigMove: true,
-                     startFunction: () => {
-                         this.attackToStrengthen = 0;
-                         this.attackToStrengthenStartDmg = 40;
-                         this.pulseHand(0);
-                     },
-                     attackStartFunction: () => {
-                         this.fadeOutCurrentHand();
-                     },
-                     attackFinishFunction: () => {
-                         this.attackToStrengthen = undefined;
-                         let palmHand = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'palm.png').setScale(0.1).setAlpha(0.65);
-                         let palmHandGlow = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'palm_glow.png').setScale(0.2).setAlpha(0);
-                         let finalDamage = 40 + this.extraAttackDamage;
-                         this.summonHand(palmHand, palmHandGlow, 0.2, 0.7, () => {
-                             this.firePalm(finalDamage, palmHand, 0);
-                         }, 3)
-                     },
-                 },
-                 {
                      name: "}14x2",
                      chargeAmt: 450,
                      finishDelay: 2000,
@@ -222,7 +198,7 @@
                      },
                  },
                  {
-                     name: "$24",
+                     name: "$20",
                      chargeAmt: 550,
                      finishDelay: 2000,
                      damage: -1,
@@ -237,7 +213,7 @@
                          let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0);
                          okayHand.setDepth(50);
                          okayHandGlow.setDepth(50);
-                         let damage = 24;
+                         let damage = 20;
 
                          this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
                              this.fireTimeAttack(damage, okayHand, () => {
@@ -247,8 +223,8 @@
                                      targets: this.redClockTemp,
                                      rotation: 0,
                                      alpha: 1,
-                                     scaleX: 1.32,
-                                     scaleY: 1.32,
+                                     scaleX: 1.27,
+                                     scaleY: 1.27,
                                      ease: 'Cubic.easeIn',
                                      duration: 200,
                                      onComplete: () => {
@@ -268,8 +244,8 @@
                      }
                  },
                  {
-                     name: "}4x4",
-                     chargeAmt: 750,
+                     name: "}4x2",
+                     chargeAmt: 500,
                      finishDelay: 100,
                      chargeMult: 2,
                      damage: -1,
@@ -283,7 +259,7 @@
                          let pokeHand = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw.png').setScale(0.1).setAlpha(0.65).setRotation(0.4);
                          let pokeHandGlow = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw_glow.png').setScale(0.2).setAlpha(0).setRotation(0.4);
                          this.summonHand(pokeHand, pokeHandGlow, 0.4, 0.7, () => {
-                             this.fireTwoClaws(4, 2, pokeHand);
+                             this.fireTwoClaws(4, 1, pokeHand);
                          })
                      },
                      finaleFunction: () => {
@@ -321,7 +297,7 @@
              [
                  {
                      name: ";40+#1",
-                     chargeAmt: 600,
+                     chargeAmt: 700,
                      finishDelay: 2000,
                      damage: -1,
                      isBigMove: true,
@@ -373,8 +349,8 @@
                                  this.addTween({
                                      targets: this.redClockTemp,
                                      alpha: 0,
-                                     scaleX: 1.45,
-                                     scaleY: 1.45,
+                                     scaleX: 1.27,
+                                     scaleY: 1.27,
                                      duration: 1000,
                                  })
                                  messageBus.publish('playerAddDelayedDamage', damage);
@@ -441,8 +417,25 @@
              ],
              [
                  {
-                     name: ";40+#1",
-                     chargeAmt: 600,
+                     name: "OBSERVING...",
+                     chargeAmt: 300,
+                     finishDelay: 3000,
+                     damage: 0,
+                     isPassive: true,
+                     startFunction: () => {
+                     },
+                     attackStartFunction: () => {
+                         // this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
+                     },
+                     finaleFunction: () => {
+
+                     }
+                 },
+                 {
+                     name: ";40+#2",
+                     chargeAmt: 700,
                      finishDelay: 2000,
                      damage: -1,
                      isBigMove: true,
@@ -460,14 +453,34 @@
                          let palmHandGlow = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'palm_glow.png').setScale(0.2).setAlpha(0);
                          let finalDamage = 40 + this.extraAttackDamage;
                          this.summonHand(palmHand, palmHandGlow, 0.2, 0.7, () => {
-                             this.firePalm(finalDamage, palmHand);
+                             this.firePalm(finalDamage, palmHand, 2);
                          }, 3)
                          this.clearExtraAttackDamage();
 
                      },
                  },
                  {
-                     name: "$24",
+                     name: "}16x2",
+                     chargeAmt: 450,
+                     finishDelay: 2000,
+                     damage: -1,
+                     isBigMove: true,
+                     startFunction: () => {
+                         this.pulseHand(1);
+                     },
+                     attackStartFunction: () => {
+                         this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
+                         let pokeHand = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'poke.png').setScale(0.1).setAlpha(0.65);
+                         let pokeHandGlow = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'poke_glow.png').setScale(0.2).setAlpha(0);
+                         this.summonHand(pokeHand, pokeHandGlow, 0.26, 0.6, () => {
+                             this.fireTwoPokes(16, pokeHand);
+                         })
+                     },
+                 },
+                 {
+                     name: "$28",
                      chargeAmt: 550,
                      finishDelay: 2000,
                      damage: -1,
@@ -484,7 +497,7 @@
                          let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0);
                          okayHand.setDepth(50);
                          okayHandGlow.setDepth(50);
-                         let damage = 24 + this.extraAttackDamage;
+                         let damage = 28 + this.extraAttackDamage;
                          this.attackToStrengthen = undefined;
 
                          this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
@@ -494,8 +507,8 @@
                                  this.addTween({
                                      targets: this.redClockTemp,
                                      alpha: 0,
-                                     scaleX: 1.45,
-                                     scaleY: 1.45,
+                                     scaleX: 1.27,
+                                     scaleY: 1.27,
                                      duration: 1000,
                                  })
                                  messageBus.publish('playerAddDelayedDamage', damage);

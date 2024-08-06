@@ -138,6 +138,10 @@ class Button {
         }
     }
 
+    setVisible(vis) {
+
+    }
+
     checkCoordOver(valX, valY) {
         if (this.state === DISABLE) {
             return false;

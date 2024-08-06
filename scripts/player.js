@@ -196,6 +196,7 @@ class Player {
         this.barAssetsGrey = [];
         this.barAssetsLarge = [];
         this.barAssetsSmall = [];
+
         for (let i = 0; i < 3; i++) {
             let healthBar = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_quarter.png');
             healthBar.setDepth(9997);

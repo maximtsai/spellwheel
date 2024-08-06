@@ -227,7 +227,7 @@ let textData4 = {
         "jp": ""
     },
     "shield_tut_knight": {
-        "en_us": "Void shields can\nblock the strongest\nattacks! But will\nbreak with any hit.",
+        "en_us": "This shield can\nblock the strongest\nattacks! But will\nbreak with any hit.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

@@ -159,9 +159,9 @@ class Options {
             this.draggerBGM;
             this.draggerSFX;
 
-            let startX = gameConsts.halfWidth + 40;
-            this.BGMIcon = PhaserScene.add.image(gameConsts.halfWidth - 170, gameConsts.halfHeight - 210, 'ui', 'music.png').setDepth(this.baseDepth);
-            this.SFXIcon = PhaserScene.add.image(gameConsts.halfWidth - 170, gameConsts.halfHeight - 120, 'ui', 'sound_full.png').setDepth(this.baseDepth);
+            let startX = gameConsts.halfWidth + 25;
+            this.BGMIcon = PhaserScene.add.image(gameConsts.halfWidth - 185, gameConsts.halfHeight - 230, 'ui', 'music.png').setDepth(this.baseDepth);
+            this.SFXIcon = PhaserScene.add.image(gameConsts.halfWidth - 185, gameConsts.halfHeight - 150, 'ui', 'sound_full.png').setDepth(this.baseDepth);
 
             this.sliderBGM = new Button({
                 isDraggable: true,
@@ -170,7 +170,7 @@ class Options {
                     ref: "slider.png",
                     alpha: 0,
                     x: startX,
-                    y: gameConsts.halfHeight - 210,
+                    y: gameConsts.halfHeight - 230,
                 },
                 onDrag: (x, y) => {
                     this.updateBGMSlider(startX, x);
@@ -205,7 +205,7 @@ class Options {
                     ref: "slider.png",
                     alpha: 0,
                     x: startX,
-                    y: gameConsts.halfHeight - 120,
+                    y: gameConsts.halfHeight - 150,
                 },
                 onDrag: (x, y) => {
                     this.updateSFXSlider(startX, x)
@@ -224,7 +224,7 @@ class Options {
                     this.updateSFXSlider(startX, x)
                 },
                 onDrop: (x) => {
-                    this.sliderSFX.setPos(startX, gameConsts.halfHeight - 120);
+                    this.sliderSFX.setPos(startX, gameConsts.halfHeight - 150);
                     this.updateSFXSlider(startX, x);
                     playSound('button');
                     this.draggerSFX.setFrame('slider_indicator.png');
@@ -232,13 +232,13 @@ class Options {
             });
             this.sliderSFX.setDepth(this.baseDepth);
             this.listOfButtonsToDisable.push(this.sliderSFX);
-            this.BGMVisual = PhaserScene.add.image(startX, gameConsts.halfHeight - 210, 'ui', 'slider.png').setDepth(this.baseDepth);
-            this.SFXVisual = PhaserScene.add.image(startX, gameConsts.halfHeight - 120, 'ui', 'slider.png').setDepth(this.baseDepth);
+            this.BGMVisual = PhaserScene.add.image(startX, gameConsts.halfHeight - 230, 'ui', 'slider.png').setDepth(this.baseDepth);
+            this.SFXVisual = PhaserScene.add.image(startX, gameConsts.halfHeight - 150, 'ui', 'slider.png').setDepth(this.baseDepth);
 
             let musicExtraXPos = ((globalMusicVol * 10) - 9) * 30;
             let sfxExtraXPos = ((globalVolume * 10) - 9) * 30;
-            this.draggerBGM = PhaserScene.add.image(startX + 4 * 30 + musicExtraXPos, gameConsts.halfHeight - 210, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
-            this.draggerSFX = PhaserScene.add.image(startX + 4 * 30 + sfxExtraXPos, gameConsts.halfHeight - 120, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
+            this.draggerBGM = PhaserScene.add.image(startX + 4 * 30 + musicExtraXPos, gameConsts.halfHeight - 230, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
+            this.draggerSFX = PhaserScene.add.image(startX + 4 * 30 + sfxExtraXPos, gameConsts.halfHeight - 150, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
 
             this.listOfThingsToHide.push(this.BGMIcon);
             this.listOfThingsToHide.push(this.SFXIcon);
@@ -246,6 +246,161 @@ class Options {
             this.listOfThingsToHide.push(this.SFXVisual);
             this.listOfThingsToHide.push(this.draggerBGM);
             this.listOfThingsToHide.push(this.draggerSFX);
+        }
+
+        if (!this.infoBoxPosText) {
+            this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight - 55, "SPELL INFO POSITION", {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setOrigin(0.5, 1).setDepth(this.baseDepth);
+            this.listOfThingsToHide.push(this.infoBoxPosText);
+
+            this.infoBoxPosTextLeft = PhaserScene.add.text(gameConsts.halfWidth - 183, gameConsts.halfHeight - 30, "LEFT", {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.listOfThingsToHide.push(this.infoBoxPosTextLeft);
+
+            this.infoBoxPosTextCenter = PhaserScene.add.text(gameConsts.halfWidth - 13, gameConsts.halfHeight - 30, "CENTER", {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.listOfThingsToHide.push(this.infoBoxPosTextCenter);
+
+            this.infoBoxPosTextNone = PhaserScene.add.text(gameConsts.halfWidth + 157, gameConsts.halfHeight - 30, "NONE", {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.listOfThingsToHide.push(this.infoBoxPosTextNone);
+
+            this.infoLeftButton = new Button({
+                normal: {
+                    atlas: 'buttons',
+                    ref: "select_btn_normal.png",
+                    alpha: 1,
+                    x: gameConsts.halfWidth - 168,
+                    y: gameConsts.halfHeight - 30,
+                },
+                hover: {
+                    atlas: 'buttons',
+                    ref: "select_btn_hover.png",
+                    alpha: 1,
+                },
+                press: {
+                    atlas: 'buttons',
+                    ref: "select_btn_press.png",
+                    alpha: 1,
+                },
+                disable: {
+                    atlas: 'buttons',
+                    ref: "select_btn_disable.png",
+                    alpha: 1,
+                },
+                onHover: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: (x, y) => {
+                    this.infoLeftButton.setState(DISABLE);
+                    this.infoCenterButton.setState(NORMAL);
+                    this.infoNoneButton.setState(NORMAL);
+                    gameVars.infoBoxAlign = "left";
+                    messageBus.publish('refreshHoverDisplay');
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+            });
+            this.infoLeftButton.setDepth(this.baseDepth + 10);
+            this.listOfButtonsToDisable.push(this.infoLeftButton);
+
+            this.infoCenterButton = new Button({
+                normal: {
+                    atlas: 'buttons',
+                    ref: "select_btn_normal.png",
+                    alpha: 1,
+                    x: gameConsts.halfWidth,
+                    y: gameConsts.halfHeight - 30,
+                },
+                hover: {
+                    atlas: 'buttons',
+                    ref: "select_btn_hover.png",
+                    alpha: 1,
+                },
+                press: {
+                    atlas: 'buttons',
+                    ref: "select_btn_press.png",
+                    alpha: 1,
+                },
+                disable: {
+                    atlas: 'buttons',
+                    ref: "select_btn_disable.png",
+                    alpha: 1,
+                },
+                onHover: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: (x, y) => {
+                    this.infoLeftButton.setState(NORMAL);
+                    this.infoCenterButton.setState(DISABLE);
+                    this.infoNoneButton.setState(NORMAL);
+                    gameVars.infoBoxAlign = "center";
+                    messageBus.publish('refreshHoverDisplay');
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+            });
+            this.infoCenterButton.setDepth(this.baseDepth + 10);
+            this.listOfButtonsToDisable.push(this.infoCenterButton);
+
+            this.infoNoneButton = new Button({
+                normal: {
+                    atlas: 'buttons',
+                    ref: "select_btn_normal.png",
+                    alpha: 1,
+                    x: gameConsts.halfWidth + 168,
+                    y: gameConsts.halfHeight - 30,
+                },
+                hover: {
+                    atlas: 'buttons',
+                    ref: "select_btn_hover.png",
+                    alpha: 1,
+                },
+                press: {
+                    atlas: 'buttons',
+                    ref: "select_btn_press.png",
+                    alpha: 1,
+                },
+                disable: {
+                    atlas: 'buttons',
+                    ref: "select_btn_disable.png",
+                    alpha: 1,
+                },
+                onHover: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: (x, y) => {
+                    this.infoLeftButton.setState(NORMAL);
+                    this.infoCenterButton.setState(NORMAL);
+                    this.infoNoneButton.setState(DISABLE);
+                    gameVars.infoBoxAlign = "none";
+                    messageBus.publish('refreshHoverDisplay');
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+            });
+            this.infoNoneButton.setDepth(this.baseDepth + 10);
+            this.listOfButtonsToDisable.push(this.infoNoneButton);
         }
 
         createGlobalClickBlocker();
@@ -302,6 +457,14 @@ class Options {
             this.listOfButtonsToDisable[i].setState(NORMAL);
             buttonManager.bringButtonToTop(this.listOfButtonsToDisable[i]);
         }
+        if (gameVars.infoBoxAlign == 'left') {
+            this.infoLeftButton.setState(DISABLE);
+        } else if (gameVars.infoBoxAlign == 'center') {
+            this.infoCenterButton.setState(DISABLE);
+        } else if (gameVars.infoBoxAlign == 'none') {
+            this.infoNoneButton.setState(DISABLE);
+        }
+
         for (let i = 0; i < this.listOfThingsToHide.length; i++) {
             this.listOfThingsToHide[i].alpha = 1;
         }
@@ -373,6 +536,7 @@ class Options {
 
         for (let i = 0; i < this.listOfButtonsToDisable.length; i++) {
             this.listOfButtonsToDisable[i].setState(DISABLE);
+            this.listOfButtonsToDisable[i].setAlpha(0);
         }
     }
 

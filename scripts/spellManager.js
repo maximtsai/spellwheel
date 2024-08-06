@@ -1296,7 +1296,7 @@ class SpellManager {
             let mindObj = this.scene.add.image(xPos, yPos, 'spells', 'timeEffect.png');
             let mindObj2 = this.scene.add.image(xPos, yPos, 'spells', 'timeEffect2.png');
 
-            mindObj.setDepth(10);
+            mindObj.setDepth(11);
             mindObj.rotation = Math.random() - 0.5;
             mindObj.setScale(0);
 

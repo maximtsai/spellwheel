@@ -3,22 +3,22 @@
          super(scene, x, y);
          this.initSprite('death2final.png', 0.92, 0, 0, 'deathfinal');
          this.bgMusic = playMusic('but_never_forgotten_metal', 0.9, true);
-         this.bgMain = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5)
-         this.bgBlur = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star_blur.png').setDepth(-5).setScale(2).setAlpha(1.5);
+         this.bgMain = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5)
+         this.bgBlur = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star_blur.png').setDepth(-5).setScale(2.5).setAlpha(1.5);
          globalObjects.player.reInitStats();
          globalObjects.player.refreshHealthBar();
          messageBus.publish('showCircleShadow', 0.7, -50);
 
-         this.addTween({
+         this.bgBlur.currAnim = this.addTween({
              targets: this.bgBlur,
              alpha: 0,
              duration: 1000,
              onComplete: () => {
-                 this.addTween({
+                 this.bgBlur.currAnim = this.addTween({
                      targets: this.bgBlur,
                      alpha: 0.24,
-                     scaleX: 2.005,
-                     scaleY: 2.005,
+                     scaleX: 2.505,
+                     scaleY: 2.505,
                      ease: 'Quad.easeInOut',
                      repeat: -1,
                      yoyo: true,
@@ -52,7 +52,7 @@
      }
 
      initStatsCustom() {
-         this.health = 800;
+         this.health = 777;
          this.customAngry = "angrybone";
          this.handObjects = [];
          this.glowHands = [];
@@ -178,7 +178,7 @@
                      }
                  },
                  {
-                     name: ";40+#2",
+                     name: ";40",
                      chargeAmt: 600,
                      finishDelay: 2000,
                      damage: -1,
@@ -197,12 +197,12 @@
                          let palmHandGlow = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'palm_glow.png').setScale(0.2).setAlpha(0);
                          let finalDamage = 40 + this.extraAttackDamage;
                          this.summonHand(palmHand, palmHandGlow, 0.2, 0.7, () => {
-                             this.firePalm(finalDamage, palmHand);
+                             this.firePalm(finalDamage, palmHand, 0);
                          }, 3)
                      },
                  },
                  {
-                     name: "}16x2",
+                     name: "}14x2",
                      chargeAmt: 450,
                      finishDelay: 2000,
                      damage: -1,
@@ -217,7 +217,7 @@
                          let pokeHand = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'poke.png').setScale(0.1).setAlpha(0.65);
                          let pokeHandGlow = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'poke_glow.png').setScale(0.2).setAlpha(0);
                          this.summonHand(pokeHand, pokeHandGlow, 0.26, 0.6, () => {
-                             this.fireTwoPokes(16, pokeHand);
+                             this.fireTwoPokes(14, pokeHand);
                          })
                      },
                  },
@@ -242,13 +242,22 @@
                          this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
                              this.fireTimeAttack(damage, okayHand, () => {
                                  this.redClockTemp = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'enemies', 'red_clock_back_large_red.png');
-                                 this.redClockTemp.setAlpha(1).setScale(1.4).setDepth(50);
+                                 this.redClockTemp.setAlpha(0).setScale(1.5).setDepth(50).setRotation(-1);
                                  this.addTween({
                                      targets: this.redClockTemp,
-                                     alpha: 0,
-                                     scaleX: 1.45,
-                                     scaleY: 1.45,
-                                     duration: 1000,
+                                     rotation: 0,
+                                     alpha: 1,
+                                     scaleX: 1.32,
+                                     scaleY: 1.32,
+                                     ease: 'Cubic.easeIn',
+                                     duration: 200,
+                                     onComplete: () => {
+                                         this.addTween({
+                                             targets: this.redClockTemp,
+                                             alpha: 0,
+                                             duration: 800,
+                                         })
+                                     }
                                  })
                                  messageBus.publish('playerAddDelayedDamage', damage);
                              });
@@ -311,7 +320,7 @@
              ],
              [
                  {
-                     name: ";40+#2",
+                     name: ";40+#1",
                      chargeAmt: 600,
                      finishDelay: 2000,
                      damage: -1,
@@ -432,7 +441,7 @@
              ],
              [
                  {
-                     name: ";40+#2",
+                     name: ";40+#1",
                      chargeAmt: 600,
                      finishDelay: 2000,
                      damage: -1,
@@ -584,7 +593,11 @@
          } else {
              let prevHealthPercent = this.prevHealth / this.healthMax;
              if (this.health <= 99 && this.prevHealth > 99) {
+                 messageBus.publish("closeCombatText")
                  this.emergencyShield();
+                 this.clearExtraAttackDamage();
+                 this.clearPower();
+
                  globalObjects.bannerTextManager.setDialog([getLangText('deathFight2plusz'), getLangText('deathFight2plusz2')]);
                  globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                  globalObjects.bannerTextManager.showBanner(0);
@@ -612,7 +625,7 @@
          this.interruptCurrentAttack();
          this.clearHandObjects();
          playSound('slice_in');
-         messageBus.publish("enemyAddShield", 999);
+         this.createHandShield(10, true);
          this.currentAttackSetIndex = 1;
          this.nextAttackIndex = 0;
          this.setAsleep();
@@ -675,7 +688,7 @@
          }
      }
 
-     firePalm(damage, palmHand) {
+     firePalm(damage, palmHand, shields = 1) {
          palmHand.setDepth(22);
          this.addTween({
              targets: palmHand,
@@ -735,9 +748,11 @@
                              scaleY: 0.65,
                              onStart: () => {
                                  playSound('whoosh', 0.8).setSeek(0.1);
-                                 this.addDelay(() => {
-                                     this.createHandShield(2);
-                                 }, 200)
+                                 if (shields >= 1) {
+                                     this.addDelay(() => {
+                                         this.createHandShield(shields);
+                                     }, 200);
+                                 }
                              },
                              onComplete: () => {
 
@@ -1189,6 +1204,9 @@
      }
 
      countdown(depth, damage) {
+         if (this.dead) {
+             return;
+         }
          this.redClockTemp.setAlpha(0).setScale(1.5).setRotation(-2).setDepth(depth + 1);
          this.addTween({
              targets: redClockTemp,
@@ -1288,6 +1306,9 @@
      }
 
      pulseHand(idx) {
+         if (this.dead) {
+             return;
+         }
          let xPos = 0; let yPos = 0;
          if (idx == 0) {
             xPos = gameConsts.halfWidth - 185;
@@ -1334,7 +1355,11 @@
          })
      }
 
-     createHandShield(amt) {
+     createHandShield(amt, instant) {
+         if (this.dead) {
+             return;
+         }
+         let durMut = instant ? 0.25 : 1;
          let oldShieldAmts = this.shieldAmts;
          this.shieldAmts += amt;
          this.shieldText.visible = true;
@@ -1346,13 +1371,13 @@
                  scaleX: this.shieldText.startScale,
                  scaleY: this.shieldText.startScale,
                  ease: 'Back.easeOut',
-                 duration: 250,
+                 duration: durMut * 250,
              });
              this.handShieldBack.setScale(1.9).setAlpha(1);
              this.handShieldBack.visible = true;
              this.addTween({
                  targets: [this.handShieldBack],
-                 duration: 1000,
+                 duration: durMut * 1000,
                  alpha: 0,
                  scaleX: this.handShieldBack.startScale,
                  scaleY: this.handShieldBack.startScale,
@@ -1370,7 +1395,7 @@
              scaleX: this.shieldText.startScale,
              scaleY: this.shieldText.startScale,
              ease: 'Back.easeOut',
-             duration: 250,
+             duration: durMut * 250,
          });
          playSound('swish');
          // playSound('slice_in');
@@ -1381,7 +1406,7 @@
              targets: [this.handShield],
              scaleX: this.handShield.startScale,
              scaleY: this.handShield.startScale,
-             duration: 320,
+             duration: durMut * 320,
              ease: 'Quart.easeIn',
              onComplete: () => {
                  playSound('stomp');
@@ -1396,7 +1421,7 @@
                  this.handShieldBack.setAlpha(1);
                  this.addTween({
                      targets: [this.handShieldBack],
-                     duration: 1300,
+                     duration: durMut * 1300,
                      alpha: 0,
                      scaleX: this.handShieldBack.startScale,
                      scaleY: this.handShieldBack.startScale,
@@ -1404,7 +1429,7 @@
                      onComplete: () => {
                          this.addTween({
                              targets: [this.handShield],
-                             duration: 500,
+                             duration: durMut * 500,
                              alpha: 0.9,
                          });
                      }
@@ -1413,7 +1438,7 @@
          });
          this.addTween({
              targets: [this.handShield],
-             duration: 300,
+             duration: durMut * 300,
              alpha: 1,
          });
      }
@@ -1470,7 +1495,10 @@
          if (this.breathTween) {
              this.breathTween.stop();
          }
+         this.bgBlur.currAnim.stop();
          this.clearHandObjects();
+         this.fadeOutCurrentHand();
+         this.clearHandShield();
          if (this.currentPowerHand) {
              this.currentPowerHand.destroy();
          }
@@ -1483,18 +1511,79 @@
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();
          globalObjects.magicCircle.disableMovement();
+         setTimeout(() => {
+             globalObjects.bannerTextManager.closeBanner();
+         }, 0);
+         this.bgMain.setFrame('star_shatter.png').setAlpha(1);
+
+         this.glassBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'glass_break.png').setOrigin(0.5, 0.5).setAlpha(1).setDepth(1000).setBlendMode(Phaser.BlendModes.ADD).setScale(1.333);
+         this.glassBG2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'glass_break.png').setOrigin(0.5, 0.5).setAlpha(1).setDepth(0).setBlendMode(Phaser.BlendModes.MULTIPLY).setScale(1.333);
+         this.bgBlur.destroy();
+         this.addTween({
+             targets: this.bgMain,
+             scaleX: 1.03,
+             scaleY: 1.03,
+             duration: 50,
+             ease: 'Quart.easeOut',
+             onComplete: () => {
+                 this.addTween({
+                     targets: this.bgMain,
+                     scaleX: 1,
+                     scaleY: 1,
+                     duration: 250,
+                     ease: 'Quart.easeOut'
+                 })
+             }
+         })
+         this.addTween({
+             targets: [this.glassBG, this.glassBG2],
+             scaleX: 1.37,
+             scaleY: 1.37,
+             duration: 50,
+             ease: 'Quart.easeOut',
+             onComplete: () => {
+                 this.addTween({
+                     targets: [this.glassBG, this.glassBG2],
+                     scaleX: 1.333,
+                     scaleY: 1.333,
+                     duration: 250,
+                     ease: 'Quart.easeOut',
+                     onComplete: () => {
+
+                     }
+                 })
+             }
+         })
+         this.addTween({
+             targets: [this.bgMain],
+             alpha: 0.9,
+             duration: 750,
+             ease: 'Cubic.easeOut'
+         })
+         this.addTween({
+             targets: [this.glassBG],
+             alpha: 0.15,
+             duration: 500,
+             ease: 'Quart.easeOut'
+         })
+         this.addTween({
+             targets: [this.glassBG2],
+             alpha: 0.4,
+             duration: 750,
+             ease: 'Cubic.easeOut'
+         })
+
          this.fallAnim();
          fadeAwaySound(this.bgMusic);
      }
 
      fallAnim() {
-         this.bgMain.setAlpha(0.5);
          this.sprite.setRotation(-0.07);
          let deathFallTemp = this.addImage(this.sprite.x, this.y + 30, "deathfinal", 'death2fall.png').setScale(0.58).setAlpha(0).setDepth(this.sprite.depth);
          this.addTween({
-             delay: 1000,
+             delay: 1300,
              targets: this.sprite,
-             duration: 1000,
+             duration: 2200,
              rotation: -0.08,
              scaleX: this.sprite.startScale * 0.9,
              scaleY: this.sprite.startScale * 0.9,
@@ -1502,14 +1591,14 @@
              ease: "Cubic.easeIn",
              onStart: () => {
                  this.addTween({
-                     delay: 500,
+                     delay: 1500,
                      targets: this.sprite,
                      ease: 'Quint.easeIn',
                      duration: 500,
                      alpha: 0,
                  })
                  this.addTween({
-                     delay: 800,
+                     delay: 1800,
                      targets: deathFallTemp,
                      duration: 600,
                      alpha: 1,
@@ -1523,6 +1612,16 @@
                      scaleY: 0.62,
                      ease: "Cubic.easeInOut",
                      onStart: () => {
+                         this.addTween({
+                             targets: [this.bgMain, this.glassBG, this.glassBG2],
+                             alpha: 0,
+                             duration: 1000,
+                             onComplete: () => {
+                                 this.bgMain.destroy();
+                                 this.glassBG.destroy();
+                                 this.glassBG2.destroy();
+                             }
+                         })
                          playSound("whoosh");
                      }
                  })
@@ -1706,7 +1805,7 @@
      clearPower() {
          let currentPowerText = this.currentPowerText;
          let currentPowerHand = this.currentPowerHand;
-         if (currentPowerText.currAnim) {
+         if (currentPowerText && currentPowerText.currAnim) {
              currentPowerText.currAnim.stop()
          }
          if (this.currentPowerExtra) {
@@ -1725,30 +1824,35 @@
                  }
              });
          }
-         this.addTween({
-             targets: [currentPowerText, currentPowerHand],
-             alpha: 0,
-             scaleX: 0.5,
-             scaleY: 0.5,
-             duration: 500,
-             ease: 'Cubic.easeIn',
-             onComplete: () => {
-                 if (currentPowerText) {
-                     currentPowerText.destroy();
+         if (currentPowerText) {
+             this.addTween({
+                 targets: [currentPowerText],
+                 alpha: 0,
+                 scaleX: 0.5,
+                 scaleY: 0.5,
+                 duration: 500,
+                 ease: 'Cubic.easeIn',
+                 onComplete: () => {
+                     if (currentPowerText) {
+                         currentPowerText.destroy();
+                     }
                  }
-             }
-         });
-         this.addTween({
-             targets: [currentPowerHand],
-             alpha: 0,
-             scaleX: 0.5,
-             scaleY: 0.5,
-             duration: 500,
-             ease: 'Cubic.easeIn',
-             onComplete: () => {
-                 currentPowerHand.destroy();
-             }
-         });
+             });
+         }
+
+         if (currentPowerHand) {
+             this.addTween({
+                 targets: [currentPowerHand],
+                 alpha: 0,
+                 scaleX: 0.5,
+                 scaleY: 0.5,
+                 duration: 500,
+                 ease: 'Cubic.easeIn',
+                 onComplete: () => {
+                     currentPowerHand.destroy();
+                 }
+             });
+         }
      }
 
      createOkayPower() {

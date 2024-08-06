@@ -315,6 +315,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">backgrounds/glass_break.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.75</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>180,205,360,410</rect>
+                <key>scale9Paddings</key>
+                <rect>180,205,360,410</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">backgrounds/menu_back.png</key>
             <key type="filename">backgrounds/menu_bot.png</key>
             <key type="filename">backgrounds/menu_top.png</key>
@@ -337,13 +352,28 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.8</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
                 <rect>92,103,183,206</rect>
                 <key>scale9Paddings</key>
                 <rect>92,103,183,206</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">backgrounds/star_shatter.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>182,208,363,415</rect>
+                <key>scale9Paddings</key>
+                <rect>182,208,363,415</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

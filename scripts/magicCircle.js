@@ -493,24 +493,27 @@ const ENABLE_KEYBOARD = true;
         this.errorBoxEmbodiment.setDepth(121);
         this.errorBoxEmbodiment.alpha = 0;
 
-        this.spellElementText = this.scene.add.bitmapText(this.x - 11, this.y - 238, 'normal', 'MATTER STRIKE', 30, 1);
+        this.spellElementText = this.scene.add.bitmapText(this.x - 11, this.y - 283, 'normal', 'MATTER STRIKE', 30, 1);
         this.spellElementText.setScale(0.7);
         this.spellElementText.setOrigin(1, 0.5);
         this.spellElementText.setDepth(125);
         this.spellElementText.alpha = 0.4;
-        this.spellElementSprite = this.scene.add.sprite(this.spellElementText.x, this.spellElementText.y, 'vfx', 'blank.png').setDepth(119).setOrigin(1, 0.5);
+        this.spellElementText.startY = this.spellElementText.y;
+        // this.spellElementSprite = this.scene.add.sprite(this.spellElementText.x, this.spellElementText.y, 'vfx', 'blank.png').setDepth(119).setOrigin(1, 0.5);
 
-        this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 238, 'normal', '+', 30, 1);
+        this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 283, 'normal', '+', 30, 1);
         this.spellNameText.setScale(0.7);
         this.spellNameText.setOrigin(0.5, 0.5);
         this.spellNameText.setDepth(125);
+        this.spellNameText.startY = this.spellNameText.y;
         this.spellNameText.alpha = 0.4;
 
-        this.spellActionText = this.scene.add.bitmapText(this.x + 13, this.y - 238, 'normal', 'MATTER STRIKE', 30, 1);
+        this.spellActionText = this.scene.add.bitmapText(this.x + 13, this.y - 283, 'normal', 'MATTER STRIKE', 30, 1);
         this.spellActionText.setScale(0.7);
         this.spellActionText.setOrigin(0, 0.5);
         this.spellActionText.setDepth(125);
         this.spellActionText.alpha = 0.4;
+        this.spellActionText.startY = this.spellActionText.y;
 
         this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(21).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);
         this.voidSliceImage3 = scene.add.sprite(gameConsts.halfWidth + 100, 255, 'spells', 'darkSlice.png').setDepth(21).setRotation(-Math.PI * 0.5 - 0.6).setAlpha(0).setOrigin(0.17, 0.5);
@@ -523,12 +526,13 @@ const ENABLE_KEYBOARD = true;
         // this.spellDescText.setDepth(120);
 
         this.spellDescriptor = new HoverDisplay({
-            x: 0,
-            y: gameConsts.height - 305,
-            originX: 0,
+            x: gameConsts.halfWidth,
+            y: gameConsts.height - 366,
+            originX: 0.485,
             originY: 1,
-            depth: 20
+            depth: 200
         })
+        this.spellDescriptor.setAlpha(gameOptions.infoBoxAlign == 'center' ? 0.85 : 0.95);
 
         this.dragCircle = scene.add.sprite(x, y, 'circle', 'drag_circle.png').setAlpha(isMobile ? 0.75 : 0.55);
         this.dragCircle.setDepth(100001);
@@ -1540,9 +1544,10 @@ const ENABLE_KEYBOARD = true;
             if (this.spellNameTextAnim) {
                 this.spellNameTextAnim.stop();
             }
+
+            this.spellDescriptor.addTween({ease: 'Cubic.easeIn', alpha: 0, duration: gameVars.gameManualSlowSpeed * 400});
             this.spellNameTextAnim = this.scene.tweens.add({
                 targets: [this.spellNameText, this.spellElementText, this.spellActionText],
-                delay: 50,
                 ease: 'Cubic.easeIn',
                 alpha: 0,
                 duration: gameVars.gameManualSlowSpeed * 400,
@@ -1643,7 +1648,7 @@ const ENABLE_KEYBOARD = true;
             this.spellNameText.visible = false;
             this.spellElementText.setText('');
             this.spellActionText.setText('');
-            this.spellDescriptor.setText('');
+            this.clearSpellDescriptorText();
             this.spellDescriptor.stopNextAudio();
         }
         let spinAmt = useLongDelay ? "+=12.566" : "+=6.283"
@@ -2001,18 +2006,31 @@ const ENABLE_KEYBOARD = true;
                                     if (!this.outerDragDisabled) {
                                         this.castDisabled = false;
                                     }
+                                    if (gameOptions.infoBoxAlign == 'center') {
+                                        this.disableSpellDescDisplay = true;
+                                    }
+
                                     if (this.spellNameTextAnim) {
                                         this.spellNameTextAnim.stop();
                                     }
                                     this.spellNameTextAnim = this.scene.tweens.add({
                                         targets: [this.spellNameText, this.spellActionText, this.spellElementText],
-                                        delay: 1400,
+                                        delay: 1250,
                                         alpha: 0.55,
                                         duration: gameVars.gameManualSlowSpeed * 150,
-                                        onComplete: () => {
+                                        onStart: () => {
                                             this.disableSpellDescDisplay = false;
+                                            //this.spellDescriptor.setAlpha(0.8);
+                                            this.spellDescriptor.addTween({
+                                                ease: 'Cubic.easeInOut',
+                                                alpha: gameOptions.infoBoxAlign == 'center' ? 0.85 : 0.95,
+                                                duration: gameVars.gameManualSlowSpeed * 150,
+                                            });
                                         }
                                     });
+
+
+
                                     this.bufferedCastAvailable = false;
                                     if (this.useBufferedSpellCast) {
                                         this.castSpell(true);
@@ -2351,8 +2369,8 @@ const ENABLE_KEYBOARD = true;
      updateSpellDescriptorText(newTextStr) {
         let currText = this.spellDescriptor.getText();
          if (currText !== newTextStr) {
-             if (this.disableSpellDescDisplay || this.manualDisabled || globalObjects.bannerTextManager.isShowing || gameOptions.hideSpellDescriptor) {
-                 this.spellDescriptor.setText('');
+             if (this.disableSpellDescDisplay || this.manualDisabled || globalObjects.bannerTextManager.isShowing) {
+                 this.clearSpellDescriptorText();
                  this.spellDescriptor.stopNextAudio();
                  return;
              }
@@ -2372,10 +2390,39 @@ const ENABLE_KEYBOARD = true;
              }
 
              messageBus.publish("spellNameTextUpdate", newTextStr)
+             console.log("spell name ", newTextStr);
              this.spellDescriptor.setText(newTextStr);
-             this.spellDescriptor.setAlpha(0.8);
-             this.spellDescriptor.addTween({ease: 'Cubic.easeInOut', alpha: 1, duration: 250, delay: 500});
+             // //this.spellDescriptor.setAlpha(0.8);
+             // this.spellDescriptor.addTween({
+             //     ease: 'Cubic.easeInOut',
+             //     alpha: 1,
+             //     duration: gameVars.gameManualSlowSpeed * 150,
+             // });
+             // this.spellDescriptor.addTween({ease: 'Cubic.easeInOut', alpha: 1, duration: 250, delay: 500});
+
+             if (gameOptions.infoBoxAlign == 'center') {
+                 if (this.spellDescriptor.isMultiLine()) {
+                     this.spellElementText.y = this.spellElementText.startY - 15;
+                     this.spellNameText.y = this.spellNameText.startY - 15;
+                     this.spellActionText.y = this.spellActionText.startY - 15;
+                 } else {
+                     this.spellElementText.y = this.spellElementText.startY;
+                     this.spellNameText.y = this.spellNameText.startY;
+                     this.spellActionText.y = this.spellActionText.startY;
+                 }
+             }
          }
+     }
+
+     clearSpellDescriptorText() {
+        if (this.spellDescriptor.getText() !== '') {
+            this.spellDescriptor.setText('');
+            if (gameOptions.infoBoxAlign == 'center') {
+                this.spellElementText.y = this.spellElementText.startY;
+                this.spellNameText.y = this.spellNameText.startY;
+                this.spellActionText.y = this.spellActionText.startY;
+            }
+        }
      }
 
      updateSpellHover(closestElement, closestEmbodiment, closestElementDist, closestEmbodimentDist) {
@@ -2384,163 +2431,185 @@ const ENABLE_KEYBOARD = true;
         if (multiplier > 1.1) {
             multText = " X" + multiplier;
         }
-        // LEt enemy finish last 3% of charge always.
-         let embodimentText = '';
-         switch (closestEmbodiment.runeName) {
-             case RUNE_STRIKE:
-                 embodimentText = 'STRIKE';
-                 break;
-             case RUNE_REINFORCE:
-                 embodimentText = 'BODY';
-                 break;
-             case RUNE_ENHANCE:
-                 embodimentText = 'ENHANCE';
-                 break;
-             case RUNE_PROTECT:
-                 embodimentText = 'SHIELD';
-                 break;
-             case RUNE_UNLOAD:
-                 embodimentText = 'ULTIMATE';
-                 break;
-             default:
-                 break;
+        let hideSpellDescriptor = false;
+         if (gameOptions.infoBoxAlign == 'left') {
+             if (this.disableSpellDescDisplay || this.manualDisabled || globalObjects.bannerTextManager.isShowing) {
+                 this.clearSpellDescriptorText();
+                 this.spellDescriptor.stopNextAudio();
+                 hideSpellDescriptor = true;
+             }
+         } else {
+             if (this.castDisabled || this.disableSpellDescDisplay || this.manualDisabled || globalObjects.bannerTextManager.isShowing) {
+                 this.clearSpellDescriptorText();
+                 this.spellDescriptor.stopNextAudio();
+                 hideSpellDescriptor = true;
+             }
          }
 
-         // let displayText = "+";
-         switch (closestElement.runeName) {
-             case RUNE_MATTER:
-                 this.spellElementText.setText('MATTER');
-                 switch (closestEmbodiment.runeName) {
-                     case RUNE_STRIKE:
-                         if (gameVars.matterPlus) {
-                            this.updateSpellDescriptorText(getLangText('matter_strike_plus_desc'));
-                         } else {
-                            this.updateSpellDescriptorText(getLangText('matter_strike_desc'));
-                         }
-                         break;
-                     case RUNE_REINFORCE:
-                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateSpellDescriptorText(getLangText('matter_reinforce_desc'));
-                         break;
-                     case RUNE_ENHANCE:
-                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateSpellDescriptorText(getLangText('matter_enhance_desc'));
-                         break;
-                     case RUNE_PROTECT:
-                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateSpellDescriptorText(getLangText(gameVars.matterPlus ? 'matter_protect_plus_desc' : 'matter_protect_desc'));
-                         break;
-                     case RUNE_UNLOAD:
-                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateSpellDescriptorText(getLangText('matter_unload_desc'));
-                         break;
-                     default:
-                         this.spellDescriptor.setText('');
-                         break;
-                 }
-                 break;
-             case RUNE_TIME:
-                 this.spellElementText.setText('TIME');
-                 switch (closestEmbodiment.runeName) {
-                     case RUNE_STRIKE:
-                         this.updateSpellDescriptorText(getLangText('time_strike_desc'));
-                         break;
-                     case RUNE_REINFORCE:
-                        let healMult = (1 - (0.5 ** multiplier));
-                        let recentlyTakenDamage = globalObjects.player.getRecentlyTakenDamageAmt();
-                        let recentlyHealAmt = Math.ceil(recentlyTakenDamage * healMult);
-                        let overheal = Math.max(0, globalObjects.player.health + recentlyHealAmt - globalObjects.player.healthMax)
-                        let healDelayed = this.delayedDamage - overheal;
-                         let healAmt = recentlyHealAmt + Math.ceil(healDelayed * healMult);
-                         // this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS (\\'+ healAmt + ")")
-                         embodimentText += " (\\" + healAmt + ")";
-                         this.updateSpellDescriptorText(getLangText('time_reinforce_desc'));
-                         break;
-                     case RUNE_ENHANCE:
-                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateSpellDescriptorText(getLangText('time_enhance_desc'));
-                         break;
-                     case RUNE_PROTECT:
-                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateSpellDescriptorText(getLangText('time_protect_desc'));
-                         break;
-                     case RUNE_UNLOAD:
-                         let turnsAdded = 0;
-                        let tempMult = multiplier;
-                        while (tempMult > 0) {
-                            tempMult--;
-                            turnsAdded += Math.max(3, 7 - globalObjects.player.getPlayerTimeExhaustion() - tempMult);
-                        }
-                         embodimentText += " (" + turnsAdded + ")"
-                         this.updateSpellDescriptorText(getLangText('time_unload_desc'));
-                         break;
-                     default:
-                         this.spellDescriptor.setText('');
-                         break;
-                 }
-                 break;
-             case RUNE_MIND:
-                 this.spellElementText.setText('ENERGY');
-                 switch (closestEmbodiment.runeName) {
-                     case RUNE_STRIKE:
-                         this.updateSpellDescriptorText(getLangText('mind_strike_desc'));
-                         break;
-                     case RUNE_REINFORCE:
-                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateSpellDescriptorText(getLangText('mind_reinforce_desc'));
-                         break;
-                     case RUNE_ENHANCE:
-                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         if (gameVars.mindPlus) {
-                            this.updateSpellDescriptorText(getLangText('mind_enhance_plus_desc'));
-                         } else {
-                            this.updateSpellDescriptorText(getLangText('mind_enhance_desc'));
-                         }
-                         break;
-                     case RUNE_PROTECT:
-                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateSpellDescriptorText(getLangText('mind_protect_desc'));
-                         break;
-                     case RUNE_UNLOAD:
-                         embodimentText += multiplier > 1.1 ? " (DOUBLE)" : "";
-                         this.updateSpellDescriptorText(getLangText('mind_unload_desc'));
-                         break;
-                     default:
-                         this.spellDescriptor.setText('');
-                         break;
-                 }
-                 break;
-             case RUNE_VOID:
-                 this.spellElementText.setText('VOID');
-                 switch (closestEmbodiment.runeName) {
-                     case RUNE_STRIKE:
-                         this.updateSpellDescriptorText(getLangText('void_strike_desc'));
-                         break;
-                     case RUNE_REINFORCE:
-                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateSpellDescriptorText(getLangText('void_reinforce_desc'));
-                         break;
-                     case RUNE_ENHANCE:
-                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateSpellDescriptorText(getLangText('void_enhance_desc'));
-                         break;
-                     case RUNE_PROTECT:
-                         embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
-                         this.updateSpellDescriptorText(getLangText('void_protect_desc'));
-                         break;
-                     case RUNE_UNLOAD:
-                         this.updateSpellDescriptorText(getLangText('void_unload_desc'));
-                         break;
-                     default:
-                         this.spellDescriptor.setText('');
-                         break;
-                 }
-                 break;
-             default:
-                 this.spellElementText.setText('');
-                this.spellDescriptor.setText('');
-                 break;
+        // LEt enemy finish last 3% of charge always.
+         let embodimentText = '';
+         if (!hideSpellDescriptor) {
+             switch (closestEmbodiment.runeName) {
+                 case RUNE_STRIKE:
+                     embodimentText = 'STRIKE';
+                     break;
+                 case RUNE_REINFORCE:
+                     embodimentText = 'BODY';
+                     break;
+                 case RUNE_ENHANCE:
+                     embodimentText = 'ENHANCE';
+                     break;
+                 case RUNE_PROTECT:
+                     embodimentText = 'SHIELD';
+                     break;
+                 case RUNE_UNLOAD:
+                     embodimentText = 'ULTIMATE';
+                     break;
+                 default:
+                     break;
+             }
          }
+
+
+         let postPendTextName = gameOptions.infoBoxAlign == 'center' ? "_long" : "";
+         // let displayText = "+";
+         if (!hideSpellDescriptor) {
+             switch (closestElement.runeName) {
+                 case RUNE_MATTER:
+                     this.spellElementText.setText('MATTER');
+                     switch (closestEmbodiment.runeName) {
+                         case RUNE_STRIKE:
+                             if (gameVars.matterPlus) {
+                                 this.updateSpellDescriptorText(getLangText('matter_strike_plus_desc' + postPendTextName));
+                             } else {
+                                 this.updateSpellDescriptorText(getLangText('matter_strike_desc' + postPendTextName));
+                             }
+                             break;
+                         case RUNE_REINFORCE:
+                             embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+                             this.updateSpellDescriptorText(getLangText('matter_reinforce_desc' + postPendTextName));
+                             break;
+                         case RUNE_ENHANCE:
+                             embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+                             this.updateSpellDescriptorText(getLangText('matter_enhance_desc' + postPendTextName));
+                             break;
+                         case RUNE_PROTECT:
+                             embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+                             this.updateSpellDescriptorText(getLangText((gameVars.matterPlus ? 'matter_protect_plus_desc' : 'matter_protect_desc') + postPendTextName));
+                             break;
+                         case RUNE_UNLOAD:
+                             embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+                             this.updateSpellDescriptorText(getLangText('matter_unload_desc' + postPendTextName));
+                             break;
+                         default:
+                             this.clearSpellDescriptorText()
+                             break;
+                     }
+                     break;
+                 case RUNE_TIME:
+                     this.spellElementText.setText('TIME');
+                     switch (closestEmbodiment.runeName) {
+                         case RUNE_STRIKE:
+                             this.updateSpellDescriptorText(getLangText('time_strike_desc' + postPendTextName));
+                             break;
+                         case RUNE_REINFORCE:
+                             let healMult = (1 - (0.5 ** multiplier));
+                             let recentlyTakenDamage = globalObjects.player.getRecentlyTakenDamageAmt();
+                             let recentlyHealAmt = Math.ceil(recentlyTakenDamage * healMult);
+                             let overheal = Math.max(0, globalObjects.player.health + recentlyHealAmt - globalObjects.player.healthMax)
+                             let healDelayed = this.delayedDamage - overheal;
+                             let healAmt = recentlyHealAmt + Math.ceil(healDelayed * healMult);
+                             // this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS (\\'+ healAmt + ")")
+                             embodimentText += " (\\" + healAmt + ")";
+                             this.updateSpellDescriptorText(getLangText('time_reinforce_desc' + postPendTextName));
+                             break;
+                         case RUNE_ENHANCE:
+                             embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+                             this.updateSpellDescriptorText(getLangText('time_enhance_desc' + postPendTextName));
+                             break;
+                         case RUNE_PROTECT:
+                             embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+                             this.updateSpellDescriptorText(getLangText('time_protect_desc' + postPendTextName));
+                             break;
+                         case RUNE_UNLOAD:
+                             let turnsAdded = 0;
+                             let tempMult = multiplier;
+                             while (tempMult > 0) {
+                                 tempMult--;
+                                 turnsAdded += Math.max(3, 7 - globalObjects.player.getPlayerTimeExhaustion() - tempMult);
+                             }
+                             embodimentText += " (" + turnsAdded + ")"
+                             this.updateSpellDescriptorText(getLangText('time_unload_desc' + postPendTextName));
+                             break;
+                         default:
+                             this.clearSpellDescriptorText()
+                             break;
+                     }
+                     break;
+                 case RUNE_MIND:
+                     this.spellElementText.setText('ENERGY');
+                     switch (closestEmbodiment.runeName) {
+                         case RUNE_STRIKE:
+                             this.updateSpellDescriptorText(getLangText('mind_strike_desc' + postPendTextName));
+                             break;
+                         case RUNE_REINFORCE:
+                             embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+                             this.updateSpellDescriptorText(getLangText('mind_reinforce_desc' + postPendTextName));
+                             break;
+                         case RUNE_ENHANCE:
+                             embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+                             if (gameVars.mindPlus) {
+                                 this.updateSpellDescriptorText(getLangText('mind_enhance_plus_desc' + postPendTextName));
+                             } else {
+                                 this.updateSpellDescriptorText(getLangText('mind_enhance_desc' + postPendTextName));
+                             }
+                             break;
+                         case RUNE_PROTECT:
+                             embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+                             this.updateSpellDescriptorText(getLangText('mind_protect_desc' + postPendTextName));
+                             break;
+                         case RUNE_UNLOAD:
+                             embodimentText += multiplier > 1.1 ? " (DOUBLE)" : "";
+                             this.updateSpellDescriptorText(getLangText('mind_unload_desc' + postPendTextName));
+                             break;
+                         default:
+                             this.clearSpellDescriptorText();
+                             break;
+                     }
+                     break;
+                 case RUNE_VOID:
+                     this.spellElementText.setText('VOID');
+                     switch (closestEmbodiment.runeName) {
+                         case RUNE_STRIKE:
+                             this.updateSpellDescriptorText(getLangText('void_strike_desc' + postPendTextName));
+                             break;
+                         case RUNE_REINFORCE:
+                             embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+                             this.updateSpellDescriptorText(getLangText('void_reinforce_desc' + postPendTextName));
+                             break;
+                         case RUNE_ENHANCE:
+                             embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+                             this.updateSpellDescriptorText(getLangText('void_enhance_desc' + postPendTextName));
+                             break;
+                         case RUNE_PROTECT:
+                             embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+                             this.updateSpellDescriptorText(getLangText('void_protect_desc' + postPendTextName));
+                             break;
+                         case RUNE_UNLOAD:
+                             this.updateSpellDescriptorText(getLangText('void_unload_desc' + postPendTextName));
+                             break;
+                         default:
+                             this.clearSpellDescriptorText()
+                             break;
+                     }
+                     break;
+                 default:
+                     this.spellElementText.setText('');
+                     this.clearSpellDescriptorText()
+                     break;
+             }
+         }
+
          if (this.spellElementText.text == '' && this.spellActionText.text == '') {
              this.spellNameText.visible = false;
          } else {
@@ -2552,10 +2621,6 @@ const ENABLE_KEYBOARD = true;
              this.spellNameText.visible = false;
              this.spellElementText.setText('')
             this.spellActionText.setText('')
-        }
-        if (this.disableSpellDescDisplay || this.manualDisabled || globalObjects.bannerTextManager.isShowing || gameOptions.hideSpellDescriptor) {
-            this.spellDescriptor.setText('');
-            this.spellDescriptor.stopNextAudio();
         }
      }
 
@@ -2849,15 +2914,26 @@ const ENABLE_KEYBOARD = true;
     }
 
      refreshHoverText() {
-         if (!gameVars.infoBoxAlign || gameVars.infoBoxAlign == 'center') {
-             this.spellDescriptor.setOrigin(0.5, 1);
-             this.spellDescriptor.setPosition(gameConsts.halfWidth, gameConsts.height - 362);
-         } else if (gameVars.infoBoxAlign == "none") {
-             this.spellDescriptor.setPosition(-9999, 0);
+         if (gameOptions.infoBoxAlign == 'center') {
+             this.spellDescriptor.setOrigin(0.48, 1);
+             this.spellDescriptor.setPosition(gameConsts.halfWidth, gameConsts.height - 366);
+             this.spellDescriptor.setAlign('center');
+             this.spellElementText.y = this.spellElementText.startY;
+             this.spellNameText.y = this.spellNameText.startY;
+             this.spellActionText.y = this.spellActionText.startY;
 
-         } else if (gameVars.infoBoxAlign == 'left') {
+         } else if (gameOptions.infoBoxAlign == "none") {
+             this.spellDescriptor.setPosition(-9999, 0);
+             this.spellElementText.y = this.y - 241;
+             this.spellNameText.y = this.y - 241;
+             this.spellActionText.y = this.y - 241;
+         } else if (gameOptions.infoBoxAlign == 'left') {
              this.spellDescriptor.setOrigin(0, 1);
              this.spellDescriptor.setPosition(0, gameConsts.height - 305);
+             this.spellDescriptor.setAlign('left');
+             this.spellElementText.y = this.y - 241;
+             this.spellNameText.y = this.y - 241;
+             this.spellActionText.y = this.y - 241;
          }
      }
 }

@@ -298,7 +298,7 @@ class Options {
                     this.infoLeftButton.setState(DISABLE);
                     this.infoCenterButton.setState(NORMAL);
                     this.infoNoneButton.setState(NORMAL);
-                    gameVars.infoBoxAlign = "left";
+                    gameOptions.infoBoxAlign = "left";
                     messageBus.publish('refreshHoverDisplay');
                     if (canvas) {
                         canvas.style.cursor = 'default';
@@ -345,7 +345,7 @@ class Options {
                     this.infoLeftButton.setState(NORMAL);
                     this.infoCenterButton.setState(DISABLE);
                     this.infoNoneButton.setState(NORMAL);
-                    gameVars.infoBoxAlign = "center";
+                    gameOptions.infoBoxAlign = "center";
                     messageBus.publish('refreshHoverDisplay');
                     if (canvas) {
                         canvas.style.cursor = 'default';
@@ -392,7 +392,7 @@ class Options {
                     this.infoLeftButton.setState(NORMAL);
                     this.infoCenterButton.setState(NORMAL);
                     this.infoNoneButton.setState(DISABLE);
-                    gameVars.infoBoxAlign = "none";
+                    gameOptions.infoBoxAlign = "none";
                     messageBus.publish('refreshHoverDisplay');
                     if (canvas) {
                         canvas.style.cursor = 'default';
@@ -457,11 +457,11 @@ class Options {
             this.listOfButtonsToDisable[i].setState(NORMAL);
             buttonManager.bringButtonToTop(this.listOfButtonsToDisable[i]);
         }
-        if (gameVars.infoBoxAlign == 'left') {
+        if (gameOptions.infoBoxAlign == 'left') {
             this.infoLeftButton.setState(DISABLE);
-        } else if (gameVars.infoBoxAlign == 'center') {
+        } else if (gameOptions.infoBoxAlign == 'center') {
             this.infoCenterButton.setState(DISABLE);
-        } else if (gameVars.infoBoxAlign == 'none') {
+        } else if (gameOptions.infoBoxAlign == 'none') {
             this.infoNoneButton.setState(DISABLE);
         }
 

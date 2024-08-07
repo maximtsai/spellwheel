@@ -114,6 +114,10 @@ class HoverDisplay {
         this.currTween = PhaserScene.tweens.add(tweenParams);
     }
 
+    isMultiLine() {
+        return this.hoverBacking.scaleY > 20;
+    }
+
     setPosition(x, y) {
         this.hoverBacking.x = x - 3; this.hoverBacking.y = y;
         this.hoverTextDisplay.x = this.hoverBacking.x + 3 * (1 - this.hoverBacking.originX * 2 - (this.hoverBacking.originX - 0.5) * 4);
@@ -123,10 +127,20 @@ class HoverDisplay {
     setOrigin(x = 0.5, y = 0.5) {
         this.hoverBacking.setOrigin(x, y);
         this.hoverTextDisplay.setOrigin(x, 0.5);
+        if (x == 0) {
+            this.hoverTextDisplay.setAlign('left');
+        } else if (x == 1) {
+            this.hoverTextDisplay.setAlign('right');
+        } else {
+            this.hoverTextDisplay.setAlign('center');
+        }
     }
 
     getText() {
         return this.hoverTextDisplay.text;
+    }
+    setAlign(align) {
+        this.hoverTextDisplay.setAlign(align);
     }
     stopNextAudio() {
         this.stopAudioTemp = true;
@@ -144,14 +158,22 @@ class HoverDisplay {
             return;
         }
         this.hoverTextDisplay.setText(text);
-        if (this.hoverTextDisplay.width > 170) {
-            this.hoverTextDisplay.setFontSize(17);
+        if (gameOptions.infoBoxAlign == "left") {
+            if (this.hoverTextDisplay.width > 170) {
+                this.hoverTextDisplay.setFontSize(17);
+            } else {
+                this.hoverTextDisplay.setFontSize(19);
+            }
         } else {
-            this.hoverTextDisplay.setFontSize(19);
+            if (this.hoverTextDisplay.text.length > 80) {
+                this.hoverTextDisplay.setFontSize(17);
+            } else {
+                this.hoverTextDisplay.setFontSize(19);
+            }
         }
+
         this.hoverTextDisplay.x = this.hoverBacking.x + 3 * (1 - this.hoverBacking.originX * 2 - (this.hoverBacking.originX - 0.5) * 4);
         this.hoverTextDisplay.y = this.hoverBacking.y - this.hoverTextDisplay.height * 0.5 * (this.hoverBacking.originY * 2 - 1) - 3;
-        console.log(this.hoverTextDisplay.y, this.hoverTextDisplay.originY)
 
         this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX + 3, (this.hoverTextDisplay.height + 6) * 0.5 * this.hoverTextDisplay.scaleY);
         if (text.length > 0) {
@@ -202,6 +224,8 @@ class HoverText {
 
         this.depth = 0;
     }
+
+
 
     checkCoordOver(x, y) {
         if (x < this.x || x > this.endX) {

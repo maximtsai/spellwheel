@@ -76,8 +76,7 @@ let funnies = {
     mustache: false,
 };
 let gameOptions = {
-    hideSpellDescriptor: false,
-
+    infoBoxAlign: 'center',
 };
 let gameVars = {
     gameConstructed: false,
@@ -85,7 +84,6 @@ let gameVars = {
     mouseJustDowned: false,
     mouseposx: 0,
     mouseposy: 0,
-    infoBoxAlign: 'left',
     lastmousedown: {x: 0, y: 0},
     timeSlowRatio: 1,
     timeScale: 1,

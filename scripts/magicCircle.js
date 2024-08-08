@@ -2013,9 +2013,14 @@ const ENABLE_KEYBOARD = true;
                                     if (this.spellNameTextAnim) {
                                         this.spellNameTextAnim.stop();
                                     }
+                                    let extraDur = 0;
+                                    if (elemName == "rune_strike" || elemName == "rune_ultimate") {
+                                        extraDur = 400;
+                                    }
+                                    console.log(extraDur);
                                     this.spellNameTextAnim = this.scene.tweens.add({
                                         targets: [this.spellNameText, this.spellActionText, this.spellElementText],
-                                        delay: 1250,
+                                        delay: 1000 + extraDur,
                                         alpha: 0.55,
                                         duration: gameVars.gameManualSlowSpeed * 150,
                                         onStart: () => {
@@ -2028,8 +2033,6 @@ const ENABLE_KEYBOARD = true;
                                             });
                                         }
                                     });
-
-
 
                                     this.bufferedCastAvailable = false;
                                     if (this.useBufferedSpellCast) {
@@ -2390,7 +2393,6 @@ const ENABLE_KEYBOARD = true;
              }
 
              messageBus.publish("spellNameTextUpdate", newTextStr)
-             console.log("spell name ", newTextStr);
              this.spellDescriptor.setText(newTextStr);
              // //this.spellDescriptor.setAlpha(0.8);
              // this.spellDescriptor.addTween({
@@ -2669,7 +2671,7 @@ const ENABLE_KEYBOARD = true;
                      if (effectObj.firstTicked) {
                          this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * effectObj.duration);
                          messageBus.publish('enemyTakeTrueDamage', damageDealt, false, 0, true);
-                         messageBus.publish('addCastAggravate', Math.floor(1 + damageDealt));
+                         messageBus.publish('addCastAggravate', Math.floor(2 + damageDealt));
 
                      } else {
                          effectObj.firstTicked = true;

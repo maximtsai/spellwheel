@@ -46,7 +46,7 @@ let textData3 = {
         "jp": "もう一度だけ警告します。"
     },
     "death3b": {
-        "en_us": "THAT WHICH YOU SEEK HERE\nCANNOT BE ATTAINED.",
+        "en_us": "WHAT YOU SEEK HERE\nCANNOT BE ATTAINED.",
         "fr": "CE QUE VOUS CHERCHEZ ICI NE PEUT PAS ÊTRE ATTEINT.",
         "zh_tw": "你在此尋求的東西無法實現。",
         "zh_cn": "你在此寻求的东西无法实现。",
@@ -64,22 +64,10 @@ let textData3 = {
         "jp": "魔術師は自分の魔法が私を逃れると思った。"
     },
     "death4b": {
-        "en_us": "BUT THE PASSAGE OF TIME\nCANNOT BE UNDONE.",
-        "fr": "MAIS LE PASSAGE DU TEMPS NE PEUT PAS ÊTRE EFFACÉ.",
-        "zh_tw": "但時間的流逝是無法挽回的。",
-        "zh_cn": "但时间的流逝是无法挽回的。",
-        "ru": "НО ХОД ВРЕМЕНИ НЕЛЬЗЯ ОТМЕНИТЬ.",
-        "es": "PERO EL PASO DEL TIEMPO NO SE PUEDE DESHACER.",
-        "jp": "しかし、時間の経過は元に戻せません。"
+        "en_us": "BUT THE END OF ONE'S FATE\nCANNOT BE UNDONE.",
     },
     "death4c": {
-        "en_us": "AND NEITHER CAN YOU RECLAIM\nWHAT YOU'VE LOST.",
-        "fr": "ET VOUS NE POUVEZ PAS NON PLUS RÉCUPÉRER CE QUE VOUS AVEZ PERDU.",
-        "zh_tw": "你也無法找回你失去的東西。",
-        "zh_cn": "你也无法找回你失去的东西。",
-        "ru": "И ВЫ ТАКЖЕ НЕ МОЖЕТЕ ВЕРНУТЬ ТО, ЧТО ПОТЕРЯЛИ.",
-        "es": "Y TAMPOCO PUEDES RECLAMAR LO QUE HAS PERDIDO.",
-        "jp": "そして、失ったものを取り戻すこともできません。"
+        "en_us": "REMEMBER THIS AS YOU\nCONTINUE YOUR \"QUEST\".",
     },
     "death5a": {
         "en_us": "YOU MAY THINK YOURSELF A\nHERO, BUT UNDERSTAND THIS",

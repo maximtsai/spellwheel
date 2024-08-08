@@ -23,7 +23,7 @@ class CombatTextManager {
         this.text.setText(text);
     }
 
-    showCombatText(text, yOffset = 0, onComplete) {
+    showCombatText(text, yOffset = 0, onComplete, alpha = 0.92) {
         this.isShowing = true;
         // this.setText(this.dialog[this.dialogIndex]);
         // if (this.funcArray[this.dialogIndex]) {
@@ -52,7 +52,7 @@ class CombatTextManager {
         this.onFinishFunc = onComplete;
         PhaserScene.tweens.add({
             targets: [this.bg],
-            alpha: 1,
+            alpha: alpha,
             scaleX: 5,
             duration: 300,
             ease: 'Cubic.easeOut'

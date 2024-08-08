@@ -288,6 +288,42 @@ let textData4 = {
         "ru": "",
         "es": "",
         "jp": ""
+    },
+    "magician_a": {
+        "en_us": "Nice try, but your\nattacks have no shock.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "magician_b": {
+        "en_us": "Now have a taste\nof my great big clock!",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "magician_c": {
+        "en_us": "You think you've won,\nbut I'm not done yet.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "magician_d": {
+        "en_us": "I'll show you a\ntrue time threat!",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
     }
 }
 textData = { ...textData, ...textData4};

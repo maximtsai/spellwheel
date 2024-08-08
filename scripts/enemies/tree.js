@@ -28,31 +28,40 @@
                  if (this.breatheTween) {
                      this.breatheTween.stop();
                  }
-                 this.sprite.setFrame('tree_shock1.png');
-                 this.sprite.setScale(this.sprite.startScale * 3)
+                 this.sprite.setVisible(false);
+
+                 if (!this.tempOverlaySprite) {
+                     this.tempOverlaySprite = this.addSprite(this.x, this.y, 'enemies', 'tree_shock1.png').setScale(this.sprite.startScale * 3).setDepth(8);
+                 }
+                 this.tempOverlaySprite.setFrame('tree_shock1.png').setVisible(true);
+                 this.tempOverlaySprite.x = this.x + 10;
+                 this.addTween({
+                     targets: this.tempOverlaySprite,
+                     x: this.x,
+                     duration: 250,
+                     ease: 'Bounce.easeOut'
+                 })
+
                  if (this.preparingTimber) {
-                     this.sprite.setOrigin(0.52, 0.7);
+                     this.tempOverlaySprite.setOrigin(0.52, 0.7);
                  } else {
-                     this.sprite.setOrigin(0.52, 0.88);
+                     this.tempOverlaySprite.setOrigin(0.52, 0.88);
                  }
                  this.addDelay(() => {
-                     this.sprite.setFrame('tree_shock2.png');
-                     this.sprite.setScale(this.sprite.startScale * 3)
+                     this.tempOverlaySprite.setFrame('tree_shock2.png');
+                     this.tempOverlaySprite.setScale(this.sprite.startScale * 3)
                      if (this.preparingTimber) {
-                         this.sprite.setOrigin(0.52, 0.7);
+                         this.tempOverlaySprite.setOrigin(0.52, 0.7);
                      } else {
-                         this.sprite.setOrigin(0.52, 0.88);
+                         this.tempOverlaySprite.setOrigin(0.52, 0.88);
                      }
                      this.addDelay(() => {
                          this.setSpriteIfNotInactive(this.defaultSprite);
                          this.repeatTweenBreathe()
-                         if (this.preparingTimber) {
-                             this.sprite.setOrigin(0.52, 0.7);
-                         } else {
-                             this.sprite.setOrigin(0.52, 0.88);
-                         }
-                     }, 100)
-                 }, 100)
+                         this.tempOverlaySprite.setVisible(false);
+                         this.sprite.setVisible(true);
+                     }, 110)
+                 }, 110)
              }
          }
          super.takeEffect(newEffect)
@@ -796,7 +805,7 @@
                      startFunction: () => {
                          this.addTimeout(() => {
                              if (!this.dead) {
-                                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 139, getLangText('level2_tut_a'), 'right', true);
+                                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 142, getLangText('level2_tut_a'), 'right', true);
                                  setTimeout(() => {
                                      globalObjects.textPopupManager.hideInfoText();
                                  }, 11000);

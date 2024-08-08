@@ -162,7 +162,8 @@ class SpellManager {
             if (!rockObj.bg) {
                 rockObj.bg = this.scene.add.image(xPos, yPos, 'spells', 'rock_bg.png');
             }
-            rockObj.bg.alpha = isMobile ? 0.65 : 0.45;
+            rockObj.bg.alpha = isMobile ? 0.5 : 0.35;
+            rockObj.bg.alpha += Math.min(0.24, numAdditionalAttacks * 0.04);
             rockObj.bg.visible = true;
 
             rockObj.setPosition(xPos, yPos).setDepth(40);

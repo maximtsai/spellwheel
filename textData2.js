@@ -468,7 +468,7 @@ let textData2 = {
         "jp": "まさか、私の気のせいでしょうか?"
     },
     "pre_fight_3a": {
-        "en_us": "A diminutive man laughs\nat me from his throne of\ntime-telling paraphernelia.",
+        "en_us": "A diminutive man laughs\nat me from his throne of\ntime-telling paraphernalia.",
         "fr": "Un petit homme se moque de moi depuis son trône de paraphenelia qui dit le temps.",
         "zh_tw": "一個身材矮小的男人從他那位會說時間的副長袍的寶座上嘲笑我。",
         "zh_cn": "一个身材矮小的男人从他那位会说时间的副长袍的宝座上嘲笑我。",

@@ -940,7 +940,7 @@
     }
 
     beginPhaseTwo() {
-        globalObjects.bannerTextManager.setDialog(["\"Have a taste of my true power!\"", "\"Time Stop!\""]);
+        globalObjects.bannerTextManager.setDialog([getLangText('magician_c'), getLangText('magician_d')]);
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
         globalObjects.bannerTextManager.showBanner(0.5);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -1131,7 +1131,7 @@
                             ease: 'Cubic.easeIn',
                             onComplete: () => {
                                 if (this.numTimesHealed === 2) {
-                                    globalObjects.bannerTextManager.setDialog(["\"Good try, but your\nattacks lack shock.\"", "\"Now have a taste of\nmy great big clock!\""]);
+                                    globalObjects.bannerTextManager.setDialog([getLangText('magician_a'), getLangText('magician_b')]);
                                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                                     globalObjects.bannerTextManager.showBanner(0.5);
                                 }
@@ -1168,7 +1168,7 @@
                 {
                      name: "}4x1}",
                      desc: "The Time Magician\nuses his ultimate attack",
-                     chargeAmt: 1400,
+                     chargeAmt: 1300,
                      isBigMove: true,
                      chargeMult: 5.75,
                      damage: -1,

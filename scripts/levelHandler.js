@@ -81,22 +81,25 @@ function beginPreLevel(lvl) {
                     })
                 },
                 onHoverOut: () => {
-                    text3.visible = true;
-                    PhaserScene.tweens.add({
-                        targets: text3,
-                        alpha: 0.65,
-                        duration: 150
-                    })
-                    PhaserScene.tweens.add({
-                        targets: text5,
-                        alpha: 0,
-                        duration: 150
-                    })
+                    if (!text3.locked) {
+                        text3.visible = true;
+                        PhaserScene.tweens.add({
+                            targets: text3,
+                            alpha: 0.65,
+                            duration: 150
+                        })
+                        PhaserScene.tweens.add({
+                            targets: text5,
+                            alpha: 0,
+                            duration: 150
+                        })
+                    }
                 },
                 onMouseUp: () => {
                     if (gameVars.wasTouch) {
                         text5.visible = !text5.visible;
                         text3.visible = !text5.visible;
+                        text3.locked = true;
                         PhaserScene.tweens.add({
                             targets: text3,
                             alpha: text3.visible ? 0.65 : 0,
@@ -150,7 +153,10 @@ function beginPreLevel(lvl) {
                     })
                 },
                 onHoverOut: () => {
-                    targets: text4.visible = true;
+                    if (text4.locked) {
+                        
+                    }
+                    text4.visible = true;
                     PhaserScene.tweens.add({
                         targets: text4,
                         alpha: 0.65,

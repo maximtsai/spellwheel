@@ -12,6 +12,7 @@
          }, 3500);
          this.addTimeout(() => {
             this.initFog();
+            this.setAsleep();
          }, 0);
          this.voidTentaEye = this.addImage(this.x + 50, this.y - 30, 'enemies', 'void_tentacle_eye.png').setDepth(-1).setRotation(-1.2).setScale(1.3).setVisible(false);
          this.addDelay(() => {
@@ -46,14 +47,25 @@
                                  duration: 400,
                                  onComplete: () => {
                                      this.voidTentaEye.x += 12;
+                                     this.voidTentaEye.visible = false;
                                  }
                              });
                          }
                      })
 
                  }
-             })
+             });
+             messageBus.publish("showCombatText", "...", -2, () => {
+                 this.setAwake();
+             }, 0.6);
+             this.addTimeout(() => {
+                 this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                     this.playerSpellCastSub.unsubscribe();
+                     messageBus.publish("closeCombatText");
+                 });
+             }, 200)
          }, 750)
+
      }
 
      initStatsCustom() {
@@ -675,10 +687,9 @@
                      duration: 450,
                      alpha: 0,
                      ease: 'Cubic.easeOut',
-                     completeDelay: 1200,
+                     completeDelay: 900,
                      onComplete: () => {
                          if (this.isPulsing && !this.dead) {
-
                              this.pulseCircleInward(x, y);
                          }
                      }
@@ -800,7 +811,7 @@
                  {
                      name: "|5 ",
                      announceName: "void strike",
-                     chargeAmt: 650,
+                     chargeAmt: 700,
                      damage: 5,
                      chargeMult: 1.75,
                      attackSprites: ['void_knight_attack.png'],
@@ -900,8 +911,8 @@
                  {
                      name: "|5x2 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 500,
-                     chargeMult: 1.8,
+                     chargeAmt: 550,
+                     chargeMult: 2,
                      damage: 5,
                      attackTimes: 2,
                      prepareSprite: 'void_knight_3.png',
@@ -921,8 +932,8 @@
                  {
                      name: "|12 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 400,
-                     chargeMult: 1.8,
+                     chargeAmt: 450,
+                     chargeMult: 2,
                      damage: 12,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -940,8 +951,8 @@
                  {
                      name: "|5x3 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 550,
-                     chargeMult: 1.8,
+                     chargeAmt: 600,
+                     chargeMult: 2,
                      damage: 5,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_3.png',
@@ -960,8 +971,8 @@
                  {
                      name: "|14 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 450,
-                     chargeMult: 1.75,
+                     chargeAmt: 500,
+                     chargeMult: 2,
                      damage: 14,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -979,8 +990,8 @@
                  {
                      name: "|5x4 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 600,
-                     chargeMult: 1.75,
+                     chargeAmt: 650,
+                     chargeMult: 2,
                      damage: 5,
                      attackTimes: 4,
                      prepareSprite: 'void_knight_3.png',
@@ -999,8 +1010,8 @@
                  {
                      name: "|16 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 500,
-                     chargeMult: 1.75,
+                     chargeAmt: 550,
+                     chargeMult: 2,
                      damage: 16,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -1035,8 +1046,8 @@
                  {
                      name: ";5x6 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 900,
-                     chargeMult: 1.75,
+                     chargeAmt: 950,
+                     chargeMult: 2,
                      damage: 5,
                      attackTimes: 6,
                      isBigMove: true,
@@ -1056,8 +1067,8 @@
                  {
                      name: ";20 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 750,
-                     chargeMult: 1.75,
+                     chargeAmt: 800,
+                     chargeMult: 2,
                      damage: 20,
                      isBigMove: true,
                      prepareSprite: 'void_knight_3.png',
@@ -1238,6 +1249,7 @@
                  duration: 350,
                  ease: 'Cubic.easeIn',
                  onStart: () => {
+                     this.voidTentaEye.visible = true;
                      this.addTween({
                          delay: 300,
                          targets: this.voidTentaEye,
@@ -1258,6 +1270,7 @@
                                  duration: 400,
                                  onComplete: () => {
                                      this.voidTentaEye.y += 32;
+                                     this.voidTentaEye.visible = false;
                                  }
                              })
                          }
@@ -1378,6 +1391,7 @@
                  duration: 450,
                  ease: 'Cubic.easeIn',
                  onStart: () => {
+                     this.voidTentaEye.visible = true;
                      this.addTween({
                          delay: 500,
                          targets: this.voidTentaEye,

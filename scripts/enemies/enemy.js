@@ -422,7 +422,7 @@ class Enemy {
                 }
             }
             if (this.isAngry) {
-                let increaseMult = Math.max(4.4, 0.33 * chargeMult);
+                let increaseMult = Math.max(5, 0.33 * chargeMult);
                 this.attackCharge += timeChange * increaseMult * this.slowMult;
                 this.castAggravateCharge = 0;
             } else {
@@ -452,7 +452,7 @@ class Enemy {
 
                     } else {
                         this.chargeBarCurr.alpha = 0.6;
-                        this.attackCharge += timeChange * 0.1 * this.slowMult * chargeMult;
+                        this.attackCharge += timeChange * 0.06 * this.slowMult * chargeMult;
                     }
 
                 }
@@ -544,7 +544,7 @@ class Enemy {
             }
         }
         this.timeSinceLastAttacked += timeChange;
-        if (this.timeSinceLastAttacked < 38) {
+        if (this.timeSinceLastAttacked < 35) {
             if (!this.isAngry) {
                 this.isAngry = true;
                 this.chargeBarAngry.alpha = 1;

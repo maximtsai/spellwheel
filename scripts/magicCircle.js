@@ -537,7 +537,7 @@ const ENABLE_KEYBOARD = true;
             originY: 1,
             depth: 200
         })
-        this.spellDescriptor.setAlpha(gameOptions.infoBoxAlign == 'center' ? 0.88 : 0.95);
+        this.spellDescriptor.setAlpha(gameOptions.infoBoxAlign == 'center' ? 0.9 : 0.98);
 
         this.dragCircle = scene.add.sprite(x, y, 'circle', 'drag_circle.png').setAlpha(isMobile ? 0.75 : 0.55);
         this.dragCircle.setDepth(100001);
@@ -2030,10 +2030,9 @@ const ENABLE_KEYBOARD = true;
                                         duration: gameVars.gameManualSlowSpeed * 150,
                                         onStart: () => {
                                             this.disableSpellDescDisplay = false;
-                                            //this.spellDescriptor.setAlpha(0.8);
                                             this.spellDescriptor.addTween({
                                                 ease: 'Cubic.easeInOut',
-                                                alpha: gameOptions.infoBoxAlign == 'center' ? 0.88 : 0.95,
+                                                alpha: gameOptions.infoBoxAlign == 'center' ? 0.9 : 0.98,
                                                 duration: gameVars.gameManualSlowSpeed * 150,
                                             });
                                         }
@@ -2925,7 +2924,7 @@ const ENABLE_KEYBOARD = true;
              this.spellDescriptor.setOrigin(0.48, 1);
              this.spellDescriptor.setPosition(gameConsts.halfWidth, gameConsts.height - 366);
              this.spellDescriptor.setAlign('center');
-             this.spellDescriptor.setAlpha(0.88);
+             this.spellDescriptor.setAlpha(0.9);
              this.spellElementText.y = this.spellElementText.startY;
              this.spellNameText.y = this.spellNameText.startY;
              this.spellActionText.y = this.spellActionText.startY;
@@ -2939,7 +2938,7 @@ const ENABLE_KEYBOARD = true;
              this.spellDescriptor.setOrigin(0, 1);
              this.spellDescriptor.setPosition(0, gameConsts.height - 305);
              this.spellDescriptor.setAlign('left');
-             this.spellDescriptor.setAlpha(0.95);
+             this.spellDescriptor.setAlpha(0.98);
              this.spellElementText.y = this.y - 241;
              this.spellNameText.y = this.y - 241;
              this.spellActionText.y = this.y - 241;

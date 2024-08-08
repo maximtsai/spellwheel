@@ -258,7 +258,7 @@
                              onComplete: () => {
                                  playFakeBGMusic('jpop_intro', 0.9);
                                  this.addDelay(() => {
-                                     this.bgMusic = playMusic('jpop', 1, true);
+                                     this.bgMusic = playMusic('jpop', 0.9, true);
                                  }, 580)
 
                                  this.sprite.setOrigin(0.5, 0.5).setPosition(this.sprite.x, spriteOrigY).setRotation(0);
@@ -388,15 +388,14 @@
                      this.sprite.play('robottime')
                  }
              }else if (type == "void") {
-                 if (this.accumulatedDamageReaction >= 8) {
+                 if (this.accumulatedDamageReaction >= 10) {
                      if (!this.cantplayvocascared) {
-                         playSound('voca_shock', 0.8).detune = -200;
+                         playSound('voca_short_pain', 1);
                          this.cantplayvocascared = true;
                          this.addTimeout(() => {
                              this.cantplayvocascared = false;
-                         }, 3000)
+                         }, 4000)
                      }
-                     playSound('voca_short_pain')
                      if (this.blush) {
                          this.blush.alpha = 0;
                          if (this.blushAnim) {

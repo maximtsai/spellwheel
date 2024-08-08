@@ -92,6 +92,8 @@ const ENABLE_KEYBOARD = true;
         let totalDist = Math.sqrt(mouseDistX * mouseDistX + mouseDistY * mouseDistY);
 
         this.setFrameLazy(this.castButton, this.altString + 'cast_normal.png');
+        globalObjects.player.setCastTextAlpha(0.7);
+
         this.setFrameLazy(this.innerCircle,this.altString + 'element_normal.png');
         this.setFrameLazy(this.outerCircle, this.altString + 'usage_normal.png');
         if (this.manualDisabled) {
@@ -176,6 +178,7 @@ const ENABLE_KEYBOARD = true;
                 if (totalDist < this.castButtonSize) {
                     this.draggedObj = this.castButton;
                     this.setFrameLazy(this.castButton,this.altString + 'cast_press.png');
+                    globalObjects.player.setCastTextAlpha(0.65);
                 } else if (totalDist < this.innerCircleSize && !this.innerDragDisabled) {
                     this.draggedObj = this.innerCircle;
                     this.dragPointDist = totalDist;
@@ -191,8 +194,8 @@ const ENABLE_KEYBOARD = true;
                 }
             } else if (gameVars.mouseJustUpped) {
                 // this.draggedDuration = -2;
-                if (this.draggedDuration < 11) {
-                    this.preventRotDecay = (11 - this.draggedDuration) * 0.4;
+                if (this.draggedDuration < 12) {
+                    this.preventRotDecay = (12 - this.draggedDuration) * 0.4;
                 }
                 // let go
                 if (totalDist < this.castButtonSize && this.draggedObj == this.castButton) {
@@ -209,11 +212,13 @@ const ENABLE_KEYBOARD = true;
                 this.draggedDuration += dScale;
                 if (totalDist < this.castButtonSize && this.draggedObj == this.castButton) {
                     this.setFrameLazy(this.castButton,this.altString + 'cast_press.png');
+                    globalObjects.player.setCastTextAlpha(0.65);
                 }
             } else {
                 // plain ol hovering
                 if (totalDist < this.castButtonSize) {
                     this.setFrameLazy(this.castButton,this.altString + 'cast_hover.png');
+                    globalObjects.player.setCastTextAlpha(0.75);
                 } else if (!this.innerDragDisabled && totalDist < this.innerCircleSize) {
                     this.setFrameLazy(this.innerCircle, this.altString + 'element_hover.png');
                 } else if (!this.outerDragDisabled) {
@@ -532,7 +537,7 @@ const ENABLE_KEYBOARD = true;
             originY: 1,
             depth: 200
         })
-        this.spellDescriptor.setAlpha(gameOptions.infoBoxAlign == 'center' ? 0.85 : 0.95);
+        this.spellDescriptor.setAlpha(gameOptions.infoBoxAlign == 'center' ? 0.88 : 0.95);
 
         this.dragCircle = scene.add.sprite(x, y, 'circle', 'drag_circle.png').setAlpha(isMobile ? 0.75 : 0.55);
         this.dragCircle.setDepth(100001);
@@ -2028,7 +2033,7 @@ const ENABLE_KEYBOARD = true;
                                             //this.spellDescriptor.setAlpha(0.8);
                                             this.spellDescriptor.addTween({
                                                 ease: 'Cubic.easeInOut',
-                                                alpha: gameOptions.infoBoxAlign == 'center' ? 0.85 : 0.95,
+                                                alpha: gameOptions.infoBoxAlign == 'center' ? 0.88 : 0.95,
                                                 duration: gameVars.gameManualSlowSpeed * 150,
                                             });
                                         }
@@ -2920,6 +2925,7 @@ const ENABLE_KEYBOARD = true;
              this.spellDescriptor.setOrigin(0.48, 1);
              this.spellDescriptor.setPosition(gameConsts.halfWidth, gameConsts.height - 366);
              this.spellDescriptor.setAlign('center');
+             this.spellDescriptor.setAlpha(0.88);
              this.spellElementText.y = this.spellElementText.startY;
              this.spellNameText.y = this.spellNameText.startY;
              this.spellActionText.y = this.spellActionText.startY;
@@ -2933,6 +2939,7 @@ const ENABLE_KEYBOARD = true;
              this.spellDescriptor.setOrigin(0, 1);
              this.spellDescriptor.setPosition(0, gameConsts.height - 305);
              this.spellDescriptor.setAlign('left');
+             this.spellDescriptor.setAlpha(0.95);
              this.spellElementText.y = this.y - 241;
              this.spellNameText.y = this.y - 241;
              this.spellActionText.y = this.y - 241;

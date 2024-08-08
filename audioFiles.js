@@ -107,7 +107,7 @@ const audioFiles = [
 
     {name: 'voca_hello', src: 'audio/voca_hello.mp3'},
     {name: 'voca_shock', src: 'audio/voca_shock.mp3'},
-    {name: 'voca_short_pain', src: 'audio/voca_shock.mp3'},
+    {name: 'voca_short_pain', src: 'audio/voca_short_pain.mp3'},
     {name: 'voca_hello_short', src: 'audio/voca_hello_short.mp3'},
     {name: 'voca_pain', src: 'audio/voca_pain.mp3'},
     {name: 'voca_missile', src: 'audio/voca_missile.mp3'},

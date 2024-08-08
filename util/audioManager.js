@@ -25,6 +25,10 @@ function playSound(name, volume = 1, loop = false, isMusic = false) {
     soundList[name].volume = soundList[name].fullVolume * globalVolume;
     soundList[name].loop = loop;
     soundList[name].isMusic = isMusic;
+    if (soundList[name].currTween) {
+        soundList[name].currTween.stop();
+        soundList[name].currTween = null;
+    }
     if (isMusic) {
         soundList[name].volume = volume * globalMusicVol;
         globalMusic = soundList[name];
@@ -43,6 +47,10 @@ function playFakeBGMusic(name) {
         soundList[name] = PhaserScene.sound.add(name);
     }
     globalTempMusic = soundList[name];
+    if (soundList[name].currTween) {
+        soundList[name].currTween.stop();
+        soundList[name].currTween = null;
+    }
     soundList[name].volume = globalMusicVol;
     soundList[name].play();
 }
@@ -87,7 +95,7 @@ function setVolume(sound, volume = 0, duration) {
 
 function fadeAwaySound(sound, duration = 650, ease, onComplete) {
     sound.fullVolume = 0
-    PhaserScene.tweens.add({
+    sound.currTween = PhaserScene.tweens.add({
         targets: sound,
         volume: sound.fullVolume,
         ease: ease,

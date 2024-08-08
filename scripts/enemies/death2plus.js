@@ -395,7 +395,6 @@
 
                          this.addDelay(() => {
                              this.rotateSpellCircleTo(2, true, () => {
-                                 // this.fadeOutCurrentHand();
                                  this.createOkayPower();
                                  this.addDelay(() => {
                                      messageBus.publish("showCombatText", getLangText('deathFight2plusc'), -40);
@@ -502,10 +501,10 @@
                          this.setAsleep();
                          this.addDelay(() => {
                              this.healFromAttacks = false;
+                             this.clearPower();
                              this.rotateSpellCircleTo(3, true, () => {
                                  // this.fadeOutCurrentHand();
                                  this.createClawPower();
-                                 this.clearPower();
                                  this.addDelay(() => {
                                      messageBus.publish("showCombatText", getLangText('deathFight2plusd'), -40);
                                      this.addTimeout(() => {
@@ -640,11 +639,10 @@
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
-                         this.attackToStrengthen = undefined;
                          let palmHand = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'palm.png').setScale(0.1).setAlpha(0.65);
                          let palmHandGlow = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'palm_glow.png').setScale(0.2).setAlpha(0);
-                         let finalDamage = 40 + this.extraAttackDamage;
-                         this.summonHand(palmHand, palmHandGlow, 0.16, 0.7, () => {
+                         let finalDamage = 100;
+                         this.summonHand(palmHand, palmHandGlow, 0.18, 0.7, () => {
                              this.firePalm(finalDamage, palmHand, 0);
                          }, 4)
                      },
@@ -2086,7 +2084,7 @@
                  scaleY: 0.9,
                  duration: 350,
                  onComplete: () => {
-                     this.currentPowerText.setText("DMG\n+" + this.extraAttackDamage);
+                     this.currentPowerText.destroy();
                  }
              })
          }
@@ -2094,6 +2092,7 @@
 
 
      clearPower() {
+         console.log("clear power");
          let currentPowerText = this.currentPowerText;
          let currentPowerHand = this.currentPowerHand;
          if (currentPowerText && currentPowerText.currAnim) {
@@ -2289,6 +2288,7 @@
      }
 
      createClawPower() {
+         console.log("claw power");
          this.currentPowerHand = this.addImage(gameConsts.halfWidth, this.y - 50, 'deathfinal', 'claw_glow.png').setAlpha(0).setScale(0.7);
          this.addTween({
              targets: [this.currentPowerHand],
@@ -2321,6 +2321,7 @@
         for (let i in this.glowHands) {
             this.glowHands[i].setAlpha(0).setDepth(3).setScale(0.7);
         }
+        this.glowHands[3].setScale(1);
     }
     pulseSpellCircle(isFast) {
         this.spellCirclePulse.setScale(0.5);

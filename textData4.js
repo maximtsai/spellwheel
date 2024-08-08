@@ -181,7 +181,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2pluse": {
-        "en_us": "I TIRE OF THIS FIGHT. BEGONE.",
+        "en_us": "I TIRE OF THIS FIGHT.  BEGONE.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

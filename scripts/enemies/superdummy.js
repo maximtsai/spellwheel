@@ -3,6 +3,7 @@
         super(scene, x, y, level);
         this.initSprite('dummy.png', 0.95, undefined, undefined, 'dummyenemy');
         this.bgMusic = playMusic('bite_down', 0.65, true);
+        console.log("create super dummy and bgmusic");
         this.startY = this.sprite.y;
         // this.temp = this.addSprite(x - 50, 170, 'deathfin', 'frame_00.png').setDepth(6).play({key: 'ladydeath', repeat: -1});
 

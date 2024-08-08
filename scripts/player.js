@@ -87,7 +87,6 @@ class Player {
     }
 
     setHealth(amt = 80) {
-        console.log("Setting health to ", amt);
         this.health = amt;
         this.refreshHealthBar();
     }
@@ -95,6 +94,9 @@ class Player {
     setHealthMaxTemp(amt = 80) {
         this.healthMax = amt;
         this.refreshHealthBar();
+        if (this.healthMax <= 0) {
+            this.die();
+        }
     }
 
     incrementSpellsCast() {
@@ -1178,7 +1180,9 @@ class Player {
                                 if (globalObjects.player) {
                                     globalObjects.player.resetStats();
                                 }
-                                createEnemy(CURRENT_LEVEL);
+                                setTimeout(() => {
+                                    createEnemy(CURRENT_LEVEL);
+                                }, 0)
                                 deathMenuButton.destroy();
                                 deathRetryButton.destroy();
                                 deathTrainingButton.destroy();

@@ -2022,7 +2022,6 @@ const ENABLE_KEYBOARD = true;
                                     if (elemName == "rune_strike" || elemName == "rune_ultimate") {
                                         extraDur = 400;
                                     }
-                                    console.log(extraDur);
                                     this.spellNameTextAnim = this.scene.tweens.add({
                                         targets: [this.spellNameText, this.spellActionText, this.spellElementText],
                                         delay: 1000 + extraDur,

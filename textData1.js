@@ -56,7 +56,7 @@ let textData = {
         "jp": "次の通常攻撃は+6ダメージを獲得"
     },
     "matter_protect_desc": {
-        "en_us": "Create a shield\nthat blocks 12\ndamage",
+        "en_us": "Create shield\nthat blocks 12\ndamage",
         "fr": "Crée un bouclier\nqui bloque 12\npoints de dégâts",
         "zh_tw": "創建一個可以阻擋\n12 點傷害的盾牌",
         "zh_cn": "创建一个可以阻挡\n12 点伤害的盾牌",
@@ -65,7 +65,7 @@ let textData = {
         "jp": "12ダメージをブロ\nックするシール\nドを作成する"
     },
     "matter_protect_desc_long": {
-        "en_us": "Create a shield that\nblocks 12 damage",
+        "en_us": "Create shield that\nblocks 12 damage",
         "fr": "Crée un bouclier qui bloque\n12 points de dégâts",
         "zh_tw": "創建一個可以阻擋 12 點傷害的盾牌",
         "zh_cn": "创建一个可以阻挡 12 点伤害的盾牌",
@@ -74,7 +74,7 @@ let textData = {
         "jp": "12ダメージをブロックす\nるシールドを作成する"
     },
     "matter_protect_plus_desc": {
-        "en_us": "Create a shield\nthat blocks 14\ndamage",
+        "en_us": "Create shield\nthat blocks 14\ndamage",
         "fr": "Crée un bouclier\nqui bloque 14\npoints de dégâts",
         "zh_tw": "創建一個可以阻擋\n14 點傷害的盾牌",
         "zh_cn": "创建一个可以阻挡\n14 点伤害的盾牌",
@@ -83,7 +83,7 @@ let textData = {
         "jp": "14ダメージをブロ\nックするシール\nドを作成する"
     },
     "matter_protect_plus_desc_long": {
-        "en_us": "Create a shield that\nblocks 14 damage",
+        "en_us": "Create shield that\nblocks 14 damage",
         "fr": "Crée un bouclier qui bloque\n14 points de dégâts",
         "zh_tw": "創建一個可以阻擋 14 點傷害的盾牌",
         "zh_cn": "创建一个可以阻挡 14 点伤害的盾牌",
@@ -164,7 +164,7 @@ let textData = {
         "jp": "次の攻撃は追加で発射されます"
     },
     "time_protect_desc": {
-        "en_us": "Create a shield\nthat delays up\nto 60 damage",
+        "en_us": "Create shield\nthat delays up\nto 60 damage",
         "fr": "Crée un bouclier\nqui retarde jusqu’à\n60 points de dégâts",
         "zh_tw": "創建一個盾牌，\n延遲多達 60 點傷害",
         "zh_cn": "创建一个盾牌，\n延迟多达 60 点伤害",
@@ -173,7 +173,7 @@ let textData = {
         "jp": "最大60ダメージ\nを遅らせるシール\nドを作成"
     },
     "time_protect_desc_long": {
-        "en_us": "Create a shield that\ndelays up to 60 damage",
+        "en_us": "Create shield that\ndelays up to 60 damage",
         "fr": "Crée un bouclier qui retarde\njusqu’à 60 points de dégâts",
         "zh_tw": "創建一個盾牌，延遲多達 60 點傷害",
         "zh_cn": "创建一个盾牌，延迟多达 60 点伤害",
@@ -254,7 +254,7 @@ let textData = {
         "jp": "あなたの攻撃力は永続的に増加します+1ダメージ"
     },
     "void_protect_desc": {
-        "en_us": "Create a shield\nthat completely\nnegates one\nattack",
+        "en_us": "Create shield\nthat completely\nnegates one\nattack",
         "fr": "Crée un bouclier\nqui annule\ncomplètement\nune attaque",
         "zh_tw": "創建一個完全抵消\n一次攻擊的盾牌",
         "zh_cn": "创建一个完全抵消\n一次攻击的盾牌",
@@ -263,7 +263,7 @@ let textData = {
         "jp": "1回の攻撃を完全\nに無効にするシ\nールドを作る"
     },
     "void_protect_desc_long": {
-        "en_us": "Create a shield that\ncompletely negates one attack",
+        "en_us": "Create shield that\ncompletely negates one attack",
         "fr": "Crée un bouclier qui annule\ncomplètement une attaque",
         "zh_tw": "創建一個完全抵消一次攻擊的盾牌",
         "zh_cn": "创建一个完全抵消一次攻击的盾牌",
@@ -362,7 +362,7 @@ let textData = {
         "jp": "次の通常攻撃で敵を5秒間15確定ダメージで燃やす"
     },
     "mind_protect_desc": {
-        "en_us": "Create a shield\nthat absorbs 50%\nincoming damage,\nthen reflects it\nback",
+        "en_us": "Create shield\nthat absorbs 50%\nincoming damage,\nthen reflects it\nback",
         "fr": "Crée un bouclier\nqui absorbe 50%\ndes dégâts puis\nles renvoie",
         "zh_tw": "创建一个吸收 50%\n伤害并将其反射回去\n的盾牌",
         "zh_cn": "创建一个吸收 50%\n伤害并将其反射回去\n的盾牌",
@@ -371,7 +371,7 @@ let textData = {
         "jp": "受けるダメージの\n50%を吸収し、反射する\nシールドを作成する"
     },
     "mind_protect_desc_long": {
-        "en_us": "Create a shield that absorbs 50%\nincoming damage then reflects it back",
+        "en_us": "Create shield that absorbs 50%\nincoming damage then reflects it back",
         "fr": "Crée un bouclier qui absorbe 50%\ndes dégâts puis les renvoie",
         "zh_tw": "创建一个吸收 50% 伤害\n并将其反射回去的盾牌",
         "zh_cn": "创建一个吸收 50% 伤害\n并将其反射回去的盾牌",

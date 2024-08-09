@@ -1095,48 +1095,48 @@ const ENABLE_KEYBOARD = true;
 
     // snap to rune
     autolockRune(dt) {
-        if (this.dragCircle.visible) {
-            return;
-        }
-
-        let distToClosestRuneEmbodiment = 999;
-        let distToClosestRuneElement = 999;
-        for (let i = 0; i < this.elements.length; i++) {
-            let distToRune = this.getRotationDiff(this.innerCircle.nextRotation + this.innerCircle.rotVel * 2, this.elements[i].startRotation);
-            if (Math.abs(distToRune) < Math.abs(distToClosestRuneElement)) {
-                distToClosestRuneElement = distToRune;
+        if (this.draggedObj !== this.innerCircle) {
+            let distToClosestRuneElement = 999;
+            for (let i = 0; i < this.elements.length; i++) {
+                let distToRune = this.getRotationDiff(this.innerCircle.nextRotation + this.innerCircle.rotVel * 2, this.elements[i].startRotation);
+                if (Math.abs(distToRune) < Math.abs(distToClosestRuneElement)) {
+                    distToClosestRuneElement = distToRune;
+                }
             }
-        }
-        for (let i = 0; i < this.embodiments.length; i++) {
-            let distToRune = this.getRotationDiff(this.outerCircle.nextRotation + this.outerCircle.rotVel * 2, this.embodiments[i].startRotation);
-            if (Math.abs(distToRune) < Math.abs(distToClosestRuneEmbodiment)) {
-                distToClosestRuneEmbodiment = distToRune;
-            }
-        }
 
-        let absDistToClosestRuneElement = Math.abs(distToClosestRuneElement);
-        if (distToClosestRuneElement < 0.45 && absDistToClosestRuneElement > 0.005) {
-            let strengthRatio = Math.min(1, Math.max(0, 1 - absDistToClosestRuneElement * 1.8))
-            strengthRatio *= strengthRatio * strengthRatio * strengthRatio;
+            let absDistToClosestRuneElement = Math.abs(distToClosestRuneElement);
+            if (distToClosestRuneElement < 0.45 && absDistToClosestRuneElement > 0.005) {
+                let strengthRatio = Math.min(1, Math.max(0, 1 - absDistToClosestRuneElement * 1.8))
+                strengthRatio *= strengthRatio * strengthRatio * strengthRatio;
 
-            this.innerCircle.rotation -= distToClosestRuneElement * strengthRatio;// Math.max(-0.05, Math.min(0.05, turnAmount)) * dt * rotVelMult;
-            if (!this.dragCircle.visible) {
-                // player isn't pulling
-                let absRotVelMult = Math.max(0, 1 - Math.max(0, Math.abs(this.innerCircle.rotVel) * 25));
-                this.innerCircle.nextRotation -= distToClosestRuneElement * 0.24 * absRotVelMult;
+                this.innerCircle.rotation -= distToClosestRuneElement * strengthRatio;// Math.max(-0.05, Math.min(0.05, turnAmount)) * dt * rotVelMult;
+                //if (!this.dragCircle.visible) {
+                    // player isn't pulling
+                    let absRotVelMult = Math.max(0, 1 - Math.max(0, Math.abs(this.innerCircle.rotVel) * 25));
+                    this.innerCircle.nextRotation -= distToClosestRuneElement * 0.24 * absRotVelMult;
+                //}
             }
         }
 
-        let absDistToClosestRuneEmbodiment = Math.abs(distToClosestRuneEmbodiment);
-        if (Math.abs(distToClosestRuneEmbodiment) < 0.4 && absDistToClosestRuneEmbodiment > 0.005) {
-            let strengthRatio = Math.min(1, Math.max(0, 1 - absDistToClosestRuneEmbodiment * 2))
-            strengthRatio *= strengthRatio * strengthRatio * strengthRatio;
+        if (this.draggedObj !== this.outerCircle) {
+            let distToClosestRuneEmbodiment = 999;
+            for (let i = 0; i < this.embodiments.length; i++) {
+                let distToRune = this.getRotationDiff(this.outerCircle.nextRotation + this.outerCircle.rotVel * 2, this.embodiments[i].startRotation);
+                if (Math.abs(distToRune) < Math.abs(distToClosestRuneEmbodiment)) {
+                    distToClosestRuneEmbodiment = distToRune;
+                }
+            }
+            let absDistToClosestRuneEmbodiment = Math.abs(distToClosestRuneEmbodiment);
+            if (Math.abs(distToClosestRuneEmbodiment) < 0.4 && absDistToClosestRuneEmbodiment > 0.005) {
+                let strengthRatio = Math.min(1, Math.max(0, 1 - absDistToClosestRuneEmbodiment * 2))
+                strengthRatio *= strengthRatio * strengthRatio * strengthRatio;
 
-            this.outerCircle.rotation -= distToClosestRuneEmbodiment * strengthRatio;// Math.max(-0.05, Math.min(0.05, turnAmount)) * dt * rotVelMult;
-            if (!this.dragCircle.visible) {
-                // player isn't pulling
-                let absRotVelMult = Math.max(0, 1 - Math.max(0, Math.abs(this.outerCircle.rotVel) * 25));
-                this.outerCircle.nextRotation -= distToClosestRuneEmbodiment * 0.2 * absRotVelMult;
+                this.outerCircle.rotation -= distToClosestRuneEmbodiment * strengthRatio;// Math.max(-0.05, Math.min(0.05, turnAmount)) * dt * rotVelMult;
+                //if (!this.dragCircle.visible) {
+                    // player isn't pulling
+                    let absRotVelMult = Math.max(0, 1 - Math.max(0, Math.abs(this.outerCircle.rotVel) * 25));
+                    this.outerCircle.nextRotation -= distToClosestRuneEmbodiment * 0.2 * absRotVelMult;
+                //}
             }
         }
 
@@ -1643,6 +1643,10 @@ const ENABLE_KEYBOARD = true;
     }
 
     manualResetElements(elemUsed, useLongDelay = false) {
+        if (this.innerDragDisabled) {
+            return;
+        }
+        this.manuallyResettingElements = true;
         this.innerDragDisabled = true;
         this.castDisabled = true;
         this.recharging = true;
@@ -1701,6 +1705,9 @@ const ENABLE_KEYBOARD = true;
 
 
      manualResetEmbodiments(embodiUsed, useLongDelay = false) {
+         if (this.outerDragDisabled) {
+             return;
+         }
          this.outerDragDisabled = true;
          this.castDisabled = true;
          this.disableSpellDescDisplay = true;

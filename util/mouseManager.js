@@ -120,6 +120,7 @@ function setupMouseInteraction(scene) {
 
 canResizeGame = false;
 function resizeGame() {
+    return;
     if (!canResizeGame) {
         return;
     }

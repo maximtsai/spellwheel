@@ -7,7 +7,6 @@ let config = {
         autoRound: true,
         width: isMobile ? 596 : 610,
         height: isMobile ? 810: 770,
-        mode: Phaser.Scale.FIT,
         orientation: 'landscape',
         forceLandscape: true
     },

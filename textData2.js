@@ -677,11 +677,11 @@ let textData2 = {
     "level2_tut_a": {
         "en_us": "Choose which\nshield to\nuse carefully!",
         "fr": "Certains boucliers\nsont plus utiles\ncontre certaines\nattaques",
-        "zh_tw": "一些盾牌對某些\n攻擊更有用",
-        "zh_cn": "一些盾牌对某些\n攻击更有用",
-        "ru": "Некоторые щиты\nболее полезны\nпротив определенных\nатак",
-        "es": "Algunos escudos\nson más útiles\ncontra ciertos\nataques",
-        "jp": "一部のシールドは、\n特定の攻撃に対して\nより有用です"
+        "zh_tw": "不同的盾牌適合\n抵禦不同的攻擊",
+        "zh_cn": "不同的盾牌适合\n抵御不同的攻击",
+        "ru": "Разные щиты подходят\nдля сопротивления\nразным атакам.",
+        "es": "Diferentes escudos\nson adecuados\npara resistir\ndiferentes ataques.",
+        "jp": "さまざまな攻撃に抵抗\nするために、さまざまなシ\nールドが適しています"
     },
     "level2_train_tut_a": {
         "en_us": "Goal: Defend\nagainst incoming\nattacks",

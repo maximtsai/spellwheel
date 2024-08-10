@@ -1738,7 +1738,7 @@ class SpellManager {
             scaleX: 1,
             scaleY: 1
         }
-        messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + buffAmt + " ALL DAMAGE", 0.9 + Math.sqrt(buffAmt) * 0.15, param, param2);
+        messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + buffAmt + " ALL\nDAMAGE", 0.9 + Math.sqrt(buffAmt) * 0.15, param, param2);
 
         messageBus.publish('selfTakeEffect', {
             name: spellID,

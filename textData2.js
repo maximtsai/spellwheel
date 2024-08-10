@@ -675,7 +675,7 @@ let textData2 = {
         "jp": "方法:わずか\n4つの呪文で\n敵を倒す"
     },
     "level2_tut_a": {
-        "en_us": "Some shields\nare more useful\nagainst certain\nattacks",
+        "en_us": "Choose which\nshield to\nuse carefully!",
         "fr": "Certains boucliers\nsont plus utiles\ncontre certaines\nattaques",
         "zh_tw": "一些盾牌對某些\n攻擊更有用",
         "zh_cn": "一些盾牌对某些\n攻击更有用",

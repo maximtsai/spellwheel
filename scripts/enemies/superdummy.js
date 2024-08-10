@@ -186,9 +186,9 @@
 
             this.dummyLeftArm.visible = false;
             this.dummyRightArm.visible = false;
-            this.setSprite('super_dummy_angry.png', 0.8);
+            this.setSprite('super_dummy_angry.png', this.sprite.startScale);
             this.x += 8;
-             this.y += this.sprite.height * this.sprite.scaleY * 0.55;
+             this.y += this.sprite.height * this.sprite.scaleY * 0.45;
              this.sprite.y = this.y;
              this.sprite.setOrigin(0.51, 0.96);
              this.dieClickBlocker = new Button({
@@ -212,7 +212,7 @@
                  onComplete: () => {
                      this.setSprite('super_dummy_broken.png', this.sprite.scaleX);
                      this.x -= 80;
-                     this.y += 72;
+                     this.y += 78;
                      this.sprite.setRotation(0);
                      this.sprite.setOrigin(0.85, 0.78);
 

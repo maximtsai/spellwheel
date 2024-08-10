@@ -547,9 +547,11 @@ class Enemy {
         if (this.timeSinceLastAttacked < 35) {
             if (!this.isAngry) {
                 this.isAngry = true;
-                this.chargeBarAngry.alpha = 1;
-                this.chargeBarAngry.visible = true;
-                this.showAngrySymbol(this.customAngry || 'angry');
+                if (!this.isAsleep) {
+                    this.chargeBarAngry.alpha = 1;
+                    this.chargeBarAngry.visible = true;
+                    this.showAngrySymbol(this.customAngry || 'angry');
+                }
                 this.chargeBarCurr.visible = false;
             }
         } else if (chargeMult > 1) {

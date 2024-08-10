@@ -22,6 +22,7 @@
             globalObjects.encyclopedia.hideButton();
             globalObjects.options.hideButton();
          }, 10)
+         console.log("made death 2");
      }
 
      initSpriteAnim(scale) {
@@ -334,7 +335,7 @@
             this.spellCastTimeout = this.addTimeout(() => {
                 this.playerSpellCastSub.unsubscribe();
                 messageBus.publish("closeCombatText")
-            }, 5000);
+            }, 5500);
         }, 3000)
     }
 

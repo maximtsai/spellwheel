@@ -154,7 +154,7 @@ function beginPreLevel(lvl) {
                 },
                 onHoverOut: () => {
                     if (text4.locked) {
-                        
+
                     }
                     text4.visible = true;
                     PhaserScene.tweens.add({
@@ -481,7 +481,7 @@ function switchLevelBackground(lvl) {
     }
 }
 
-function beginLevel(lvl) {
+function beginLevel(lvl, instant = false) {
     CURRENT_LEVEL = lvl;
     globalObjects.encyclopedia.showButton();
     globalObjects.options.showButton();
@@ -496,11 +496,15 @@ function beginLevel(lvl) {
     }
 
     playSound('whoosh');
-    createEnemyAfterDelay(lvl);
+    if (instant) {
+        createEnemy(lvl);
+    } else {
+        createEnemyAfterDelay(lvl);
+    }
 }
 
 function createEnemyAfterDelay(lvl) {
-    let delayAmt = 1400;
+    let delayAmt = 1200;
     if (lvl == 0) {
         delayAmt = 0;
     }

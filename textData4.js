@@ -10,7 +10,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFightCombat1a": {
-        "en_us": "FIGHT BACK IF YOU MUST,\nBUT UNDERSTAND IT IS FUTILE.",
+        "en_us": "FIGHT BACK IF YOU MUST...",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -19,7 +19,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFightCombat1b": {
-        "en_us": "...I MEAN IT. NOTHING\nYOU DO CAN HURT ME",
+        "en_us": "NOTHING YOU DO CAN HURT ME",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -46,7 +46,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2CombatLaugh2": {
-        "en_us": "HOW LONG IT'S BEEN\nSINCE MY LAST GOOD FIGHT",
+        "en_us": "IT'S BEEN AGES\nSINCE MY LAST GOOD FIGHT!",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -236,7 +236,7 @@ let textData4 = {
         "jp": ""
     },
     "shield_tut_knight": {
-        "en_us": "This shield can\nblock the strongest\nattacks! But will\nbreak with any hit.",
+        "en_us": "This shield can\nblock the strongest\nattacks! But breaks\nwith any hit.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

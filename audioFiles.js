@@ -55,6 +55,7 @@ const audioFiles = [
     {name: 'heartbeat', src: 'audio/heartbeat.mp3'},
     {name: 'but_never_forgotten_metal', src: 'audio/but_never_forgotten_metal.mp3'},
     {name: 'but_never_forgotten_metal_prelude', src: 'audio/but_never_forgotten_metal_prelude.mp3'},
+    {name: 'but_never_forgotten_choir', src: 'audio/but_never_forgotten_choir.mp3'},
     {name: 'but_never_forgotten', src: 'audio/but_never_forgotten.mp3'},
 
     {name: 'matter_body', src: 'audio/matter_body.mp3'},

@@ -4,7 +4,7 @@
     }
 
      initStatsCustom() {
-        this.health = 150;
+        this.health = 175;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -164,8 +164,8 @@
              [
                  // 0
                  {
-                     name: "|12x2",
-                     chargeAmt: 500,
+                     name: "|12x3",
+                     chargeAmt: 400,
                      finishDelay: 800,
                      isBigMove: true,
                      transitionFast: true,
@@ -177,7 +177,7 @@
 
                     },
                     attackFinishFunction: () => {
-                        this.throwWeapon('sword.png', 12, 2);
+                        this.throwWeapon('sword.png', 12, 3);
                     }
                  },
                  {
@@ -248,7 +248,7 @@
              [
                  {
                      name: "|10",
-                     chargeAmt: 375,
+                     chargeAmt: 500,
                      chargeMult: 2,
                      finishDelay: 500,
                      transitionFast: true,
@@ -265,7 +265,7 @@
                  },
                  {
                      name: "|6x3",
-                     chargeAmt: 500,
+                     chargeAmt: 650,
                      chargeMult: 2,
                      finishDelay: 500,
                      transitionFast: true,
@@ -281,19 +281,19 @@
                      }
                  },
                  {
-                     name: "FIXING SELF \\20",
-                     chargeAmt: 350,
+                     name: "FIXING SELF \\15",
+                     chargeAmt: 400,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(20);
+                         this.healAnim(15);
                      }
                  },
                  {
-                     name: "|6x2",
-                     chargeAmt: 400,
-                     chargeMult: 2.3,
+                     name: "|8x2",
+                     chargeAmt: 650,
+                     chargeMult: 2,
                      finishDelay: 300,
                      transitionFast: true,
                      damage: -1,
@@ -304,13 +304,13 @@
 
                      },
                      attackFinishFunction: () => {
-                         this.throwWeapon('dagger.png', 6, 2);
+                         this.throwWeapon('sword.png', 8, 2);
                      }
                  },
                  {
                      name: "|3x6",
-                     chargeAmt: 450,
-                     chargeMult: 2.3,
+                     chargeAmt: 700,
+                     chargeMult: 2,
                      finishDelay: 300,
                      transitionFast: true,
                      damage: -1,
@@ -326,7 +326,7 @@
                  },
                  {
                      name: "FIXING SELF \\25",
-                     chargeAmt: 350,
+                     chargeAmt: 500,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,

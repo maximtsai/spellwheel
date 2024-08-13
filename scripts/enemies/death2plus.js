@@ -612,6 +612,7 @@
                          this.addDelay(() => {
                              this.clearPower();
                              this.addDelay(() => {
+                                fadeAwaySound(this.bgMusic, 1500);
                                  messageBus.publish("showCombatText", getLangText('deathFight2pluse'), -40);
                                  this.addTimeout(() => {
                                      this.setAwake();
@@ -632,6 +633,7 @@
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
+
                          this.pulseSpellCircle(true)
                          this.pulseHand(0);
                      },
@@ -734,6 +736,7 @@
                      damage: -1,
                      isBigMove: true,
                      attackStartFunction: () => {
+                        this.bgMusic = playMusic('but_never_forgotten_choir', 0.9, true);
 
                      },
                      finaleFunction: () => {

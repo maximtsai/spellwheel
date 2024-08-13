@@ -10,34 +10,34 @@ let textData3 = {
         "jp": "もうすぐ連絡するよ、愛する人よ..."
     },
     "death2a": {
-        "en_us": "...OH? IT'S YOU AGAIN.",
-        "fr": "... OH? C’EST ENCORE VOUS.",
-        "zh_tw": "...哦？又是你。",
-        "zh_cn": "...哦？又是你。",
-        "ru": "... О? ЭТО СНОВА ВЫ.",
-        "es": "... ¿OH? ERES TÚ OTRA VEZ.",
-        "jp": "...おや。またあなたです。"
+        "en_us": "...YOU AGAIN.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "death2b": {
-        "en_us": "YOU DO NOT BELONG HERE,\nIN THE LANDS OF PASSING.",
-        "fr": "VOUS N’APPARTENEZ PAS À ICI, DANS LES PAYS DE PASSAGE.",
-        "zh_tw": "你不屬於這裡，在逝去的土地上。",
-        "zh_cn": "你不属于这里，在逝去的土地上。",
-        "ru": "ТЕБЕ НЕ МЕСТО ЗДЕСЬ, В ЗЕМЛЯХ ПЕРЕХОДА.",
-        "es": "NO PERTENECES AQUÍ, EN LAS TIERRAS DE PASO.",
-        "jp": "あなたはここ、通りすがりの地に属していません。"
+        "en_us": "FORSAKE YOUR JOURNEY.\nYOU DO NOT YET BELONG HERE",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "death2c": {
-        "en_us": "TURN BACK TO WHERE\nYOU CAME FROM.",
-        "fr": "RETOURNEZ D’OÙ VOUS VENEZ.",
-        "zh_tw": "回到你來自的地方。",
-        "zh_cn": "回到你来自的地方。",
-        "ru": "ВЕРНИТЕСЬ ТУДА, ОТКУДА ВЫ ПРИШЛИ.",
-        "es": "REGRESA AL LUGAR DE DONDE VINISTE.",
-        "jp": "元の場所に戻ります。"
+        "en_us": "IN THE LAND OF THE DEAD.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "death3a": {
-        "en_us": "I WILL ONLY\nWARN YOU ONCE MORE,",
+        "en_us": "I ISSUE YOU ONE FINAL WARNING -",
         "fr": "JE NE FERAI QUE TE PRÉVENIR UNE FOIS DE PLUS,",
         "zh_tw": "我只會再次警告你，",
         "zh_cn": "我只会再次警告你，",
@@ -46,7 +46,7 @@ let textData3 = {
         "jp": "もう一度だけ警告します。"
     },
     "death3b": {
-        "en_us": "WHAT YOU SEEK HERE\nCANNOT BE ATTAINED.",
+        "en_us": "TURN BACK. YOU SEEK THE UNOBTAINABLE.",
         "fr": "CE QUE VOUS CHERCHEZ ICI NE PEUT PAS ÊTRE ATTEINT.",
         "zh_tw": "你在此尋求的東西無法實現。",
         "zh_cn": "你在此寻求的东西无法实现。",

@@ -8,6 +8,7 @@ let config = {
         width: isMobile ? 596 : 610,
         height: isMobile ? 810: 770,
         orientation: 'landscape',
+        mode: Phaser.Scale.FIT,
         forceLandscape: true
     },
     render: {

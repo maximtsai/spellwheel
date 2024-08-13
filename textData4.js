@@ -298,6 +298,24 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "tree_a": {
+        "en_us": "The spiky thorns on the tree\nredirects 2 damage back onto you!",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "tree_b": {
+        "en_us": "Attack and defend carefully!",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "magician_a": {
         "en_us": "Nice try, but your\nattacks have no shock.",
         "fr": "",

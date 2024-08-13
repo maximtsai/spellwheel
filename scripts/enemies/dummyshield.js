@@ -4,7 +4,7 @@
     }
 
      initStatsCustom() {
-        this.health = 120;
+        this.health = 75;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -223,7 +223,7 @@
                      isBigMove: true,
                     startFunction: () => {
                         this.addTimeout(() => {
-                            this.takeDamage(10, false);
+                            //this.takeDamage(10, false);
                         }, 10);
                     },
                     attackStartFunction: () => {
@@ -279,7 +279,7 @@
                      damage: -1,
                     startFunction: () => {
                         this.addTimeout(() => {
-                            this.takeDamage(10, false);
+                            //this.takeDamage(10, false);
                         }, 10);
                     },
                     attackStartFunction: () => {
@@ -300,7 +300,7 @@
                      isBigMove: true,
                     startFunction: () => {
                         this.addTimeout(() => {
-                            this.takeDamage(10, false);
+                            //this.takeDamage(10, false);
                         }, 10);
                     },
                     attackStartFunction: () => {
@@ -331,7 +331,7 @@
                      },
                     attackStartFunction: () => {
                         this.addTimeout(() => {
-                            this.takeDamage(20, false);
+                            this.takeDamage(25, false);
                         }, 10);
                         playSound('clunk');
                         this.runSfxLoop.detune = 0;
@@ -357,7 +357,7 @@
                      isBigMove: true,
                     startFunction: () => {
                         this.addTimeout(() => {
-                            this.takeDamage(10, false);
+                            //this.takeDamage(10, false);
                         }, 10);
                     },
                     attackStartFunction: () => {
@@ -382,7 +382,7 @@
                      isBigMove: true,
                     startFunction: () => {
                         this.addTimeout(() => {
-                            this.takeDamage(10, false);
+                            //this.takeDamage(10, false);
                         }, 10);
                     },
                     attackStartFunction: () => {
@@ -405,7 +405,7 @@
                      damage: -1,
                     startFunction: () => {
                         this.addTimeout(() => {
-                            this.takeDamage(10, false);
+                            //this.takeDamage(10, false);
                         }, 10);
                     },
                     attackStartFunction: () => {
@@ -436,7 +436,7 @@
                      },
                     attackStartFunction: () => {
                         this.addTimeout(() => {
-                            this.takeDamage(20, false);
+                            this.takeDamage(30, false);
                         }, 10);
                         playSound('clunk2');
                         this.runSfxLoop.detune = 0;

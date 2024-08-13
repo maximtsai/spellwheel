@@ -450,22 +450,13 @@ let textData2 = {
         "jp": "物々交換する時間はないし、手に入る限りの資源を奪わなければならない。"
     },
     "pre_fight_2a": {
-        "en_us": "I feel like this forest is watching me.",
-        "fr": "J’ai l’impression que cette forêt me regarde.",
-        "zh_tw": "我覺得這片森林在看著我。",
-        "zh_cn": "我觉得这片森林在看着我。",
-        "ru": "Я чувствую, что этот лес наблюдает за мной.",
-        "es": "Siento que este bosque me está observando.",
-        "jp": "この森が私を見ているような気がします。"
-    },
-    "pre_fight_2b": {
-        "en_us": "Surely it is only my imagination?",
-        "fr": "N’est-ce que ce n’est que mon imagination ?",
-        "zh_tw": "肯定這隻是我想像嗎？",
-        "zh_cn": "肯定这只是我的想象吗？",
-        "ru": "Конечно, это только мое воображение?",
-        "es": "¿Seguramente es solo mi imaginación?",
-        "jp": "まさか、私の気のせいでしょうか?"
+        "en_us": "The forest makes me feel uneasy.\nIs something watching me?",
+        "fr": "La forêt me met mal à l'aise.\nQuelque chose m'observe-t-il ?",
+        "zh_tw": "森林讓我感到不安。\n有什麼東西在看著我嗎？",
+        "zh_cn": "这片森林让我感到不安。\n有什么东西在看着我吗？",
+        "ru": "Лес заставляет меня чувствовать себя неуютно.\nЧто-то наблюдает за мной?",
+        "es": "El bosque me inquieta.\n¿Hay algo observándome?",
+        "jp": "森は不安を感じさせます。\n何かが私を監視しているのでしょうか？"
     },
     "pre_fight_3a": {
         "en_us": "A diminutive man laughs\nat me from his throne of\ntime-telling paraphernalia.",
@@ -486,7 +477,7 @@ let textData2 = {
         "jp": "「俺と向き合え!」私が声をかけると、彼は自分の一時的な力を喜んで発揮しようとしているようだった。"
     },
     "pre_fight_4a": {
-        "en_us": "A knight stands oddly still on the\npath up ahead.",
+        "en_us": "You: \"Hail! Are you friend or foe?\"\nKnight: ...\nYou: ...\nKnight: ...\nYou: \"...Enough said, fight me!\"",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -495,7 +486,7 @@ let textData2 = {
         "jp": ""
     },
     "pre_fight_4b": {
-        "en_us": "My attempts at a greeting were met\nwith silence. I can only assume this\nis another enemy.",
+        "en_us": " ",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -557,35 +548,26 @@ let textData2 = {
         "es": "Pero estoy seguro de que estoy listo para\ncualquier cosa.",
         "jp": "でも、私は何でもできると確信しています。"
     },
-    "pre_fight_za": {
-        "en_us": "I've finally arrived.",
-        "fr": "Je suis enfin arrivé.",
-        "zh_tw": "我終於到了。",
-        "zh_cn": "我终于到了。",
-        "ru": "Наконец-то я приехал.",
-        "es": "Por fin he llegado.",
-        "jp": "ようやくたどり着きました。"
-    },
     "level0_diag_a": {
-        "en_us": "This thing is in the way.",
-        "fr": "Cette chose est sur le chemin.",
-        "zh_tw": "這東西擋路了。",
-        "zh_cn": "这东西挡路了。",
-        "ru": "Эта штука мешает.",
-        "es": "Esta cosa está en el camino.",
-        "jp": "これは邪魔です。"
+        "en_us": "This stick doll is\nblocking the entrance.",
+        "fr": "Cette poupée bâton\nbloque l'entrée.",
+        "zh_tw": "這根木棒娃娃\n擋住了入口。",
+        "zh_cn": "这根木棒娃娃\n挡住了入口。",
+        "ru": "Эта кукла-палка блокирует вход.",
+        "es": "Este muñeco de palo está\nbloqueando la entrada.",
+        "jp": "この棒人形が入り口を塞いでいます。"
     },
     "level0_diag_b": {
-        "en_us": "I should knock it over.",
-        "fr": "Je devrais le renverser.",
-        "zh_tw": "我應該把它打翻。",
-        "zh_cn": "我应该把它打翻。",
-        "ru": "Я должен опрокинуть его.",
-        "es": "Debería derribarlo.",
-        "jp": "倒さなきゃ。"
+        "en_us": "Is it trying to\nthwart my noble rescue?",
+        "fr": "JEst-ce qu'il essaie de\ncontrecarrer mon noble sauvetage ?",
+        "zh_tw": "它是想阻止我的崇高救援嗎？",
+        "zh_cn": "它是想阻止我的崇高救援吗？",
+        "ru": "Он пытается помешать моему\nблагородному спасению?",
+        "es": "¿Está intentando frustrar\nmi noble rescate?",
+        "jp": "私の高貴な救出を妨害\nしようとしているのでしょうか?"
     },
     "level0_tut_a": {
-        "en_us": "Spin the wheels to\nswap in fresh Runes ",
+        "en_us": "Spin the wheels to\nreplace used Runes.",
         "fr": "Faites tourner les roues\npour échanger de nouvelles runes",
         "zh_tw": "旋轉輪子以換取\n新鮮的符文",
         "zh_cn": "旋转轮子以换取\n新鲜的符文",
@@ -603,7 +585,7 @@ let textData2 = {
         "jp": "人の敵を倒し=>\nて勝利"
     },
     "level1_diag_a": {
-        "en_us": "Another obstacle?",
+        "en_us": "Another one?",
         "fr": "Un autre obstacle ?",
         "zh_tw": "另一個障礙？",
         "zh_cn": "另一个障碍？",
@@ -612,16 +594,16 @@ let textData2 = {
         "jp": "もう一つの障害は?"
     },
     "level1_diag_b": {
-        "en_us": "I should try my\nmore advanced spells.",
-        "fr": "Je devrais essayer\nmes sorts plus avancés.",
-        "zh_tw": "我應該試試我更\n高級的法術。",
-        "zh_cn": "我应该试试我更\n高级的法术。",
-        "ru": "Я должен попробовать свои\nболее продвинутые заклинания.",
-        "es": "Debería probar mis\nhechizos más avanzados.",
-        "jp": "もっと高度な呪文を試し\nてみるべきだ。"
+        "en_us": "Time to use my\nmore advanced spells!",
+        "fr": "J",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "level1_tut_a": {
-        "en_us": "The Enhance Rune\nstrengthens your\nnext attack\n ",
+        "en_us": "Enhance Rune\nstrengthens your\nnext attack\n ",
         "fr": "La rune Enhance\nrenforce votre\nprochaine attaque\n ",
         "zh_tw": "增強符文可以增強\n你的下一次攻擊\n ",
         "zh_cn": "增强符文可以增强\n你的下一次攻击\n ",
@@ -630,7 +612,7 @@ let textData2 = {
         "jp": "強化ルーンは次の\n攻撃を強化します\n "
     },
     "level1_tut_b": {
-        "en_us": "Enemies get\nangry when\nattacked!",
+        "en_us": "Watch out!\nEnemies get angry\nwhen attacked!",
         "fr": "Les ennemis se\nmettent en colère\nlorsqu’ils sont\nattaqués!",
         "zh_tw": "敵人在受到攻擊\n時會生氣！",
         "zh_cn": "敌人在受到攻击\n时会生气！",

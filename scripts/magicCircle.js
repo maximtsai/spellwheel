@@ -329,7 +329,7 @@ const ENABLE_KEYBOARD = true;
 
             let dragForceSqr = horizForce + vertForce;
 
-            let torqueConst = gameVars.wasTouch ? 0.046 : 0.042;
+            let torqueConst = gameVars.wasTouch ? 0.054 : 0.05;
             // castDisable
 
             // Using both rotation diff and mult val to calculate
@@ -339,7 +339,7 @@ const ENABLE_KEYBOARD = true;
                 this.draggedObj.torque = dragForce * Math.sqrt(dragForceSqr) * torqueConst * (1 + dScale * 0.00);
             }
             // TODO: Remove if not needed
-            this.draggedObj.torque += dragAngleDiff * torqueConst * 0.65 - this.draggedObj.rotVel * 0.325;
+            this.draggedObj.torque += dragAngleDiff * torqueConst * 0.6 - this.draggedObj.rotVel * 0.4;
             // this.draggedObj.torque = this.draggedObj.torque + (this.draggedObj.torque * this.draggedObj.torque) * minusMult * 150;
             //this.draggedObj.torque += this.draggedObj.torqueOnRelease * 0.5;
 
@@ -2581,7 +2581,7 @@ const ENABLE_KEYBOARD = true;
                              this.updateSpellDescriptorText(getLangText('mind_protect_desc' + postPendTextName));
                              break;
                          case RUNE_UNLOAD:
-                             embodimentText += multiplier > 1.1 ? " (DOUBLE)" : "";
+                             embodimentText += multiplier > 1.1 ? "" : "";
                              this.updateSpellDescriptorText(getLangText('mind_unload_desc' + postPendTextName));
                              break;
                          default:

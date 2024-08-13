@@ -15,7 +15,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 300 : 250;
+         this.health = gameVars.isHardMode ? 300 : 240;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;
@@ -151,7 +151,7 @@
              // CRUSH
              this.setNextAttack(3, 0);
              // Going to shield
-         } else if (currHealthPercent <= 0.25 && !this.hasTimbered) {
+         } else if (this.health <= 70 && !this.hasTimbered) {
              this.setNextAttack(5, 0);
              if (!this.hasPreparedFinal) {
                  this.hasPreparedFinal = true;
@@ -564,7 +564,7 @@
                     alpha: 0.7,
                      duration: 400,
                      onComplete: () => {
-                        globalObjects.bannerTextManager.setDialog(["The tree gains spiky thorns that\nreflect 2 damage.", "Block them\n+ Make your attacks count."]);
+                        globalObjects.bannerTextManager.setDialog([getLangText('tree_a'), getLangText('tree_b')]);
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                         globalObjects.bannerTextManager.showBanner(0.5);
                         this.setDefense(2);
@@ -824,7 +824,7 @@
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.03;
                          let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent >= 0.25) {
+                         if (this.health > 70) {
                              this.currentAttackSetIndex = 4;
                              this.nextAttackIndex = 0;
                          } else if (!this.hasTimbered) {

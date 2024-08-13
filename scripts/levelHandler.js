@@ -251,11 +251,11 @@ function beginPreLevel(lvl) {
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'tree_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +165, getLangText('pre_fight_2a'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, getLangText('pre_fight_2b'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
-            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            // text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, getLangText('pre_fight_2b'), {fontFamily: 'verdanabold', fontSize: 23, color: '#200000', align: 'left'});
+            // text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
-            fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
+            fadeInPreFightStuff(lvl, [text1], [introPaper, introOverlay])
             break;
         case 4:
             // magician

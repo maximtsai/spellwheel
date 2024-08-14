@@ -4,12 +4,13 @@
     }
 
      initStatsCustom() {
-        this.health = 175;
+        this.health = 200;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
         this.damageCanEmit = true;
          this.spellsCastCount = 0;
+         this.cyclesLooped = 0;
      }
 
     initTutorial() {
@@ -86,6 +87,9 @@
          }
          if (this.playerSpellBodyTrack) {
              this.playerSpellBodyTrack.unsubscribe();
+         }
+         if (this.playerSpellBodyTrack2) {
+             this.playerSpellBodyTrack2.unsubscribe();
          }
          if (this.playerSpellCastSub) {
              this.playerSpellCastSub.unsubscribe();
@@ -217,6 +221,7 @@
                          this.playerSpellBodyTrack = messageBus.subscribe('recordSpell', (spellId) => {
                              if (spellId == 'timeReinforce') {
                                  this.playerSpellBodyTrack.unsubscribe();
+                                 this.playerSpellBodyTrack = null;
                                  globalObjects.textPopupManager.hideInfoText();
                                  this.addTween({
                                      targets: [this.rune1, this.rune2],
@@ -247,47 +252,20 @@
              ],
              [
                  {
-                     name: "|10",
-                     chargeAmt: 500,
-                     chargeMult: 2,
-                     finishDelay: 500,
-                     transitionFast: true,
-                     damage: -1,
-                     startFunction: () => {
-
-                     },
-                     attackStartFunction: () => {
-
-                     },
-                     attackFinishFunction: () => {
-                         this.throwWeapon('sword.png', 10, 1);
-                     }
-                 },
-                 {
-                     name: "|6x3",
-                     chargeAmt: 650,
-                     chargeMult: 2,
-                     finishDelay: 500,
-                     transitionFast: true,
-                     damage: -1,
-                     startFunction: () => {
-
-                     },
-                     attackStartFunction: () => {
-
-                     },
-                     attackFinishFunction: () => {
-                         this.throwTriple('dagger.png', 6, 1);
-                     }
-                 },
-                 {
-                     name: "FIXING SELF \\15",
+                     name: "|12",
                      chargeAmt: 400,
-                     finishDelay: 2000,
+                     chargeMult: 2,
+                     finishDelay: 500,
                      transitionFast: true,
                      damage: -1,
+                     startFunction: () => {
+
+                     },
                      attackStartFunction: () => {
-                         this.healAnim(15);
+
+                     },
+                     attackFinishFunction: () => {
+                         this.throwWeapon('sword.png', 12, 1);
                      }
                  },
                  {
@@ -308,8 +286,71 @@
                      }
                  },
                  {
-                     name: "|3x6",
-                     chargeAmt: 700,
+                     name: "FIX SELF \\25",
+                     chargeAmt: 600,
+                     finishDelay: 2000,
+                     transitionFast: true,
+                     damage: -1,
+                     startFunction: () => {
+                        this.cyclesLooped++;
+                        if (this.cyclesLooped % 2 == 1 && this.health > 30) {
+                            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 172, getLangText('level4_train_tut_c'), 'right');
+                             let runeYPos = globalObjects.textPopupManager.getBoxTopPos();
+                             let centerXPos = globalObjects.textPopupManager.getCenterPos();
+
+                             this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 93, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
+                             this.rune4 = this.addSprite(centerXPos - 0, runeYPos + 93, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
+                             this.rune5 = this.addSprite(centerXPos + 48, runeYPos + 93, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
+                             this.addTween({
+                                 targets: [this.rune3, this.rune4, this.rune5],
+                                 alpha: 1,
+                                 duration: 200,
+                             });
+                             this.addTween({
+                                 targets: [this.rune3, this.rune4, this.rune5],
+                                 scaleX: 1,
+                                 scaleY: 1,
+                                 ease: 'Quart.easeOut',
+                                 duration: 600,
+                                 onComplete: () => {
+                                     this.addTween({
+                                         targets: [this.rune3, this.rune4, this.rune5],
+                                         scaleX: 0.8,
+                                         scaleY: 0.8,
+                                         ease: 'Back.easeOut',
+                                         duration: 400,
+                                     });
+                                 }
+                             });
+                             this.addDelay(() => {
+                                 this.playerSpellBodyTrack2 = messageBus.subscribe('recordSpell', (spellId) => {
+                                     if (spellId == 'timeEnhance' || spellId == 'matterEnhance') {
+                                         this.playerSpellBodyTrack2.unsubscribe();
+                                         this.playerSpellBodyTrack2 = null;
+                                         globalObjects.textPopupManager.hideInfoText();
+                                         this.addTween({
+                                             targets: [this.rune3, this.rune4, this.rune5],
+                                             alpha: 0,
+                                             duration: 200,
+                                             onComplete: () => {
+                                                 this.rune3.destroy();
+                                                 this.rune4.destroy();
+                                                 this.rune5.destroy();
+                                             }
+                                         });
+                                     }
+                                 })
+                             }, 2000)
+                        }
+
+                     },
+                     attackStartFunction: () => {
+                         this.healAnim(25);
+                     }
+                 },
+                 {
+                     name: "|8x2",
+                     chargeAmt: 650,
                      chargeMult: 2,
                      finishDelay: 300,
                      transitionFast: true,
@@ -321,12 +362,30 @@
 
                      },
                      attackFinishFunction: () => {
-                         this.throwTriple('star.png', 3, 2);
+                         this.throwWeapon('sword.png', 8, 2);
                      }
                  },
                  {
-                     name: "FIXING SELF \\25",
-                     chargeAmt: 500,
+                     name: "|3x9",
+                     chargeAmt: 800,
+                     chargeMult: 2,
+                     finishDelay: 300,
+                     transitionFast: true,
+                     isBigMove: true,
+                     damage: -1,
+                     startFunction: () => {
+
+                     },
+                     attackStartFunction: () => {
+
+                     },
+                     attackFinishFunction: () => {
+                         this.throwTriple('star.png', 3, 3);
+                     }
+                 },
+                 {
+                     name: "FIX SELF \\25",
+                     chargeAmt: 600,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,

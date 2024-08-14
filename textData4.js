@@ -181,7 +181,7 @@ let textData4 = {
         "jp": ""
     },
     "deathFight2pluse": {
-        "en_us": "I TIRE OF THIS FIGHT.  BEGONE.",
+        "en_us": "STILL ALIVE? YOUR END IS NOW.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -344,13 +344,49 @@ let textData4 = {
         "jp": ""
     },
     "magician_d": {
-        "en_us": "I'll show you a\ntrue time threat!",
+        "en_us": "It's time I show you\na true temporal threat!",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
         "ru": "",
         "es": "",
         "jp": ""
-    }
+    },
+    "magician_e": {
+        "en_us": "Had... enough... yet?",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "shield_dummy_overwrite": {
+        "en_us": "Only one shield\ncan exist per\nspot.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "pre_fight_3a": {
+        "en_us": "\"Your fighting skill I\nmust commend, but if\nyou keep going your doom\nwill impend!",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "pre_fight_3b": {
+        "en_us": "This \"Magician\" has\nannoyed me enough.\nMy magic itches\nfor a fight.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
 }
 textData = { ...textData, ...textData4};

@@ -1876,7 +1876,7 @@ class SpellManager {
         let animation3 = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY() - 225, 'spells', 'weakenLines_00.png');
         animation3.startX = animation3.x;
         animation3.startY = animation3.y;
-        animation3.setDepth(110);
+        animation3.setDepth(9999);
         animation3.setOrigin(0.5, 1);
         animation3.rotation = 0;
         animation3.alpha = 0;

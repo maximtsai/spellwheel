@@ -458,26 +458,8 @@ let textData2 = {
         "es": "El bosque me inquieta.\n¿Hay algo observándome?",
         "jp": "森は不安を感じさせます。\n何かが私を監視しているのでしょうか？"
     },
-    "pre_fight_3a": {
-        "en_us": "A diminutive man laughs\nat me from his throne of\ntime-telling paraphernalia.",
-        "fr": "Un petit homme se moque de moi depuis son trône de paraphenelia qui dit le temps.",
-        "zh_tw": "一個身材矮小的男人從他那位會說時間的副長袍的寶座上嘲笑我。",
-        "zh_cn": "一个身材矮小的男人从他那位会说时间的副长袍的宝座上嘲笑我。",
-        "ru": "Миниатюрный мужчина смеется надо мной со своего трона парафернелии, предсказывающей время.",
-        "es": "Un hombre diminuto se ríe de mí desde su trono de parafernelia.",
-        "jp": "小柄な男が、時間を伝える道具の玉座から私を笑っている。"
-    },
-    "pre_fight_3b": {
-        "en_us": "\"Face me!\" I call out,\nand he seems more\nthan willing to\ndemonstrate his\ntemporal powers.",
-        "fr": "« Fais-moi face ! » J’appelle, et il semble plus que disposé à démontrer ses pouvoirs temporels.",
-        "zh_tw": "“面對我！”我大聲呼喊，他似乎更願意展示他的世俗力量。",
-        "zh_cn": "“面对我！”我大声呼喊，他似乎更愿意展示他的世俗力量。",
-        "ru": "— Повернись ко мне! Я кричу, и он, кажется, более чем готов продемонстрировать свои светские силы.",
-        "es": "\"¡Enfréntate a mí!\" —grito, y parece más que dispuesto a demostrar sus poderes temporales.",
-        "jp": "「俺と向き合え!」私が声をかけると、彼は自分の一時的な力を喜んで発揮しようとしているようだった。"
-    },
     "pre_fight_4a": {
-        "en_us": "You: \"Hail! Are you friend or foe?\"\nKnight: ...\nYou: ...\nKnight: ...\nYou: \"...Enough said, fight me!\"",
+        "en_us": "You: \"Hail! Are you friend or foe?\"\nKnight: ...\nYou: ....\nKnight: .....\nYou: \"Enough said, fight me!\"",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -691,6 +673,15 @@ let textData2 = {
         "ru": "Залечите последнюю\nтравму с помощью\n         +",
         "es": "Cura tu última\nherida con\n       +",
         "jp": "で最後の怪我を治す\n         +"
+    },
+    "level4_train_tut_c": {
+        "en_us": "Cast multiple\n\ntogether for a\npowerful attack",
+        "fr": "Lancez plusieurs\n\nsorts ensemble\npour des attaques\npuissantes",
+        "zh_tw": "一起施放多個\n\n法術以進行強大\n的攻擊",
+        "zh_cn": "一起施放多个\n\n法术以进行强大\n的攻击",
+        "ru": "Используйте несколько\n\nзаклинаний вместе\nдля мощных атак.",
+        "es": "Lanza múltiples\n\njuntos para\nlograr combos\npoderosos",
+        "jp": "複数の呪文を\n\n一緒に唱えて強力な\n攻撃を行います"
     },
     "level5_train_tut_a": {
         "en_us": "Goal: Defeat\nthe dummy",

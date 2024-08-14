@@ -162,6 +162,169 @@
              [
                  // 0
                  {
+                     name: "$28",
+                     chargeAmt: 700,
+                     chargeMult: 2,
+                     finishDelay: 2000,
+                     damage: -1,
+                     isBigMove: true,
+                     startFunction: () => {
+                         this.pulseHand(2);
+                     },
+                     attackStartFunction: () => {
+                         this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
+                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65);
+                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0);
+                         okayHand.setDepth(50);
+                         okayHandGlow.setDepth(50);
+                         let damage = 28
+
+                         this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
+                             this.fireTimeAttack(damage, okayHand, () => {
+                                 this.redClockTemp.setAlpha(1).setScale(1.4).setDepth(50).setPosition(gameConsts.halfWidth, globalObjects.player.getY());
+                                 this.addTween({
+                                     targets: this.redClockTemp,
+                                     alpha: 0,
+                                     scaleX: 1.27,
+                                     scaleY: 1.27,
+                                     duration: 1000,
+                                 })
+                                 messageBus.publish('playerAddDelayedDamage', damage);
+                             });
+                         });
+                     },
+                     finaleFunction: () => {
+                         this.interruptCurrentAttack();
+                         this.setAsleep();
+                         this.addDelay(() => {
+                             this.clearPower();
+                             this.addDelay(() => {
+                                fadeAwaySound(this.bgMusic, 1500);
+                                 messageBus.publish("showCombatText", getLangText('deathFight2pluse'), -40);
+                                 this.addTimeout(() => {
+                                     this.setAwake();
+                                     this.spellsCastCounter = 0;
+                                     this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                                         this.playerSpellCastSub.unsubscribe();
+                                         messageBus.publish("closeCombatText")
+                                     });
+                                 }, 1800)
+                             }, 600)
+                         }, 3000)
+                     }
+                 },
+                 {
+                     name: ";100",
+                     chargeAmt: 700,
+                     finishDelay: 2500,
+                     damage: -1,
+                     isBigMove: true,
+                     startFunction: () => {
+                        this.bgMusic.stop();
+                        this.bgMusic = playMusic('but_never_forgotten', 0.85, true);
+                        this.bgMusic2 = playFakeBGMusic('but_never_forgotten_metal', 0.1);
+                        this.bgMusic.on('complete', () => {
+                            if (this.bgMusic2) {
+                                this.bgMusic2.stop();
+                                this.bgMusic2 = playFakeBGMusic('but_never_forgotten_metal', 0.1);
+                            }
+                        });
+
+                         this.pulseSpellCircle(true)
+                         this.pulseHand(0);
+                     },
+                     attackStartFunction: () => {
+                         this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
+                         let palmHand = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'palm.png').setScale(0.1).setAlpha(0.65);
+                         let palmHandGlow = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'palm_glow.png').setScale(0.2).setAlpha(0);
+                         let finalDamage = 100;
+                         this.summonHand(palmHand, palmHandGlow, 0.18, 0.7, () => {
+                             this.firePalm(finalDamage, palmHand, 0);
+                         }, 4)
+                     },
+                 },
+                 {
+                     name: "}16x3",
+                     chargeAmt: 450,
+                     finishDelay: 5000,
+                     damage: -1,
+                     isBigMove: true,
+                     startFunction: () => {
+                         this.pulseSpellCircle(true)
+                         this.pulseHand(1);
+                     },
+                     attackStartFunction: () => {
+                         this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
+                         let pokeHand = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'poke.png').setScale(0.1).setAlpha(0.65);
+                         let pokeHandGlow = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'poke_glow.png').setScale(0.2).setAlpha(0);
+                         this.summonHand(pokeHand, pokeHandGlow, 0.26, 0.6, () => {
+                             this.fireTwoPokes(16, pokeHand, true);
+                         })
+                     },
+                 },
+                 {
+                     name: "$999",
+                     chargeAmt: 550,
+                     finishDelay: 5000,
+                     damage: -1,
+                     startFunction: () => {
+                         this.pulseSpellCircle(true)
+                         this.pulseHand(2);
+                     },
+                     attackStartFunction: () => {
+                         this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
+                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65);
+                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0);
+                         okayHand.setDepth(50);
+                         okayHandGlow.setDepth(50);
+                         let damage = 999;
+
+                         this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
+                             this.fireTimeAttack(damage, okayHand, () => {
+                                this.countdown(50, 999);
+                             });
+                         });
+                     },
+                     finaleFunction: () => {
+
+                     }
+                 },
+                 {
+                     name: "|4x10",
+                     chargeAmt: 750,
+                     finishDelay: 2000,
+                     chargeMult: 2,
+                     damage: -1,
+                     startFunction: () => {
+                         this.pulseSpellCircle(true)
+                         this.pulseHand(3);
+                     },
+                     attackStartFunction: () => {
+                         this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
+                         let pokeHand = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw.png').setScale(0.1).setAlpha(0.65).setRotation(0.4);
+                         let pokeHandGlow = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw_glow.png').setScale(0.2).setAlpha(0).setRotation(0.4);
+                         this.summonHand(pokeHand, pokeHandGlow, 0.4, 0.7, () => {
+                             this.fireTwoClaws(4, 10, pokeHand);
+                         })
+                     },
+                     finaleFunction: () => {
+                         this.currentAttackSetIndex = 4;
+                         this.nextAttackIndex = 0;
+                         //this.interruptCurrentAttack();
+                         //this.setAsleep();
+                     }
+                 },
+                 {
                      name: "OBSERVING...",
                      chargeAmt: 300,
                      finishDelay: 3000,
@@ -218,8 +381,7 @@
 
                          this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
                              this.fireTimeAttack(damage, okayHand, () => {
-                                 this.redClockTemp = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'enemies', 'red_clock_back_large_red.png');
-                                 this.redClockTemp.setAlpha(0).setScale(1.5).setDepth(50).setRotation(-1);
+                                 this.redClockTemp.setAlpha(0).setScale(1.5).setDepth(50).setRotation(-1).setPosition(gameConsts.halfWidth, globalObjects.player.getY());
                                  this.addTween({
                                      targets: this.redClockTemp,
                                      rotation: 0,
@@ -344,8 +506,7 @@
 
                          this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
                              this.fireTimeAttack(damage, okayHand, () => {
-                                 this.redClockTemp = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'enemies', 'red_clock_back_large_red.png');
-                                 this.redClockTemp.setAlpha(1).setScale(1.4).setDepth(50);
+                                 this.redClockTemp.setAlpha(1).setScale(1.4).setDepth(50).setPosition(gameConsts.halfWidth, globalObjects.player.getY());
                                  this.addTween({
                                      targets: this.redClockTemp,
                                      alpha: 0,
@@ -571,161 +732,7 @@
                          })
                      },
                  },
-                 {
-                     name: "$28",
-                     chargeAmt: 700,
-                     chargeMult: 2,
-                     finishDelay: 2000,
-                     damage: -1,
-                     isBigMove: true,
-                     startFunction: () => {
-                         this.pulseHand(2);
-                     },
-                     attackStartFunction: () => {
-                         this.fadeOutCurrentHand();
-                     },
-                     attackFinishFunction: () => {
-                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65);
-                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0);
-                         okayHand.setDepth(50);
-                         okayHandGlow.setDepth(50);
-                         let damage = 28
 
-                         this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
-                             this.fireTimeAttack(damage, okayHand, () => {
-                                 this.redClockTemp = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'enemies', 'red_clock_back_large_red.png');
-                                 this.redClockTemp.setAlpha(1).setScale(1.4).setDepth(50);
-                                 this.addTween({
-                                     targets: this.redClockTemp,
-                                     alpha: 0,
-                                     scaleX: 1.27,
-                                     scaleY: 1.27,
-                                     duration: 1000,
-                                 })
-                                 messageBus.publish('playerAddDelayedDamage', damage);
-                             });
-                         });
-                     },
-                     finaleFunction: () => {
-                         this.interruptCurrentAttack();
-                         this.setAsleep();
-                         this.addDelay(() => {
-                             this.clearPower();
-                             this.addDelay(() => {
-                                fadeAwaySound(this.bgMusic, 1500);
-                                 messageBus.publish("showCombatText", getLangText('deathFight2pluse'), -40);
-                                 this.addTimeout(() => {
-                                     this.setAwake();
-                                     this.spellsCastCounter = 0;
-                                     this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
-                                         this.playerSpellCastSub.unsubscribe();
-                                         messageBus.publish("closeCombatText")
-                                     });
-                                 }, 1800)
-                             }, 600)
-                         }, 3000)
-                     }
-                 },
-                 {
-                     name: ";100",
-                     chargeAmt: 700,
-                     finishDelay: 2500,
-                     damage: -1,
-                     isBigMove: true,
-                     startFunction: () => {
-
-                         this.pulseSpellCircle(true)
-                         this.pulseHand(0);
-                     },
-                     attackStartFunction: () => {
-                         this.fadeOutCurrentHand();
-                     },
-                     attackFinishFunction: () => {
-                         let palmHand = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'palm.png').setScale(0.1).setAlpha(0.65);
-                         let palmHandGlow = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'palm_glow.png').setScale(0.2).setAlpha(0);
-                         let finalDamage = 100;
-                         this.summonHand(palmHand, palmHandGlow, 0.18, 0.7, () => {
-                             this.firePalm(finalDamage, palmHand, 0);
-                         }, 4)
-                     },
-                 },
-                 {
-                     name: "}16x3",
-                     chargeAmt: 450,
-                     finishDelay: 2500,
-                     damage: -1,
-                     isBigMove: true,
-                     startFunction: () => {
-                         this.pulseSpellCircle(true)
-                         this.pulseHand(1);
-                     },
-                     attackStartFunction: () => {
-                         this.fadeOutCurrentHand();
-                     },
-                     attackFinishFunction: () => {
-                         let pokeHand = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'poke.png').setScale(0.1).setAlpha(0.65);
-                         let pokeHandGlow = this.addImage(this.x - 180, this.y - 50, 'deathfinal', 'poke_glow.png').setScale(0.2).setAlpha(0);
-                         this.summonHand(pokeHand, pokeHandGlow, 0.26, 0.6, () => {
-                             this.fireTwoPokes(16, pokeHand, true);
-                         })
-                     },
-                 },
-                 {
-                     name: "$999",
-                     chargeAmt: 550,
-                     finishDelay: 5000,
-                     damage: -1,
-                     startFunction: () => {
-                         this.pulseSpellCircle(true)
-                         this.pulseHand(2);
-                     },
-                     attackStartFunction: () => {
-                         this.fadeOutCurrentHand();
-                     },
-                     attackFinishFunction: () => {
-                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65);
-                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0);
-                         okayHand.setDepth(50);
-                         okayHandGlow.setDepth(50);
-                         let damage = 999;
-
-                         this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
-                             this.fireTimeAttack(damage, okayHand, () => {
-                                 countdown(50, 999);
-                             });
-                         });
-                     },
-                     finaleFunction: () => {
-
-                     }
-                 },
-                 {
-                     name: "|4x10",
-                     chargeAmt: 750,
-                     finishDelay: 2000,
-                     chargeMult: 2,
-                     damage: -1,
-                     startFunction: () => {
-                         this.pulseSpellCircle(true)
-                         this.pulseHand(3);
-                     },
-                     attackStartFunction: () => {
-                         this.fadeOutCurrentHand();
-                     },
-                     attackFinishFunction: () => {
-                         let pokeHand = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw.png').setScale(0.1).setAlpha(0.65).setRotation(0.4);
-                         let pokeHandGlow = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw_glow.png').setScale(0.2).setAlpha(0).setRotation(0.4);
-                         this.summonHand(pokeHand, pokeHandGlow, 0.4, 0.7, () => {
-                             this.fireTwoClaws(4, 10, pokeHand);
-                         })
-                     },
-                     finaleFunction: () => {
-                         this.currentAttackSetIndex = 4;
-                         this.nextAttackIndex = 0;
-                         //this.interruptCurrentAttack();
-                         //this.setAsleep();
-                     }
-                 },
              ],
              [
                  {
@@ -1083,9 +1090,9 @@
                                  });
                                  if (hasExtraPoke) {
                                      this.addTween({
-                                         delay: 250,
+                                         delay: 200,
                                          targets: pokeHand,
-                                         duration: 1200,
+                                         duration: 1000,
                                          y: globalObjects.player.getY() - 335,
                                          ease: "Cubic.easeInOut",
                                          scaleX: 0.7,
@@ -1538,7 +1545,7 @@
          }
          this.redClockTemp.setAlpha(0).setScale(1.5).setRotation(-2).setDepth(depth + 1);
          this.addTween({
-             targets: redClockTemp,
+             targets: this.redClockTemp,
              scaleX: 1.2,
              scaleY: 1.2,
              duration: 500,
@@ -1905,6 +1912,9 @@
 
          this.fallAnim();
          fadeAwaySound(this.bgMusic);
+         if (this.bgMusic2) {
+                fadeAwaySound(this.bgMusic2);
+         }
      }
 
      fallAnim() {

@@ -19,6 +19,9 @@
 
          this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
              this.spellsCastCount++;
+             if (this.spellsCastCount == 5) {
+                globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText('shield_dummy_overwrite'), 'right');
+             }
              if (this.spellsCastCount >= 3 && this.spellsCastCount % 2 == 1) {
                  this.picketButton.setScale(1.02, 1.05);
                  this.picketVisual.setScale(1.02, 1.05);
@@ -126,6 +129,7 @@
     clickPicketSign() {
         this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
         this.playerSpellCastSub.unsubscribe();
+        globalObjects.textPopupManager.hideInfoText();
         this.picketButton.destroy();
         playSound('balloon', 0.5).detune = -500;
         this.addTween({

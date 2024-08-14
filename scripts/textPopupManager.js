@@ -28,6 +28,10 @@ class TextPopupManager {
 
     }
 
+    getBoxTopPos() {
+        return this.infoBox.y - this.infoBox.scaleY;
+    }
+
     getBoxBottomPos() {
         return this.infoBox.y + this.infoBox.scaleY;
     }

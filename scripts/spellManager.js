@@ -354,6 +354,7 @@ class SpellManager {
             this.cleanseForms();
             brickObj = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'brickPattern1.png');
             brickObj2 = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'brickPattern2.png');
+            brickObj3 = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'spikeout.png');
         }
 
         let spellMult = globalObjects.player.spellMultiplier();
@@ -366,6 +367,9 @@ class SpellManager {
         brickObj2.alpha = 0.02;
         brickObj.setScale(0.8);
         brickObj2.setScale(0.8);
+        brickObj3.setAlpha(0);
+        brickObj3.setScale(1.15);
+
         let protectionAmt = 1;
         let damageAmt = 1;
         let duration = 400 + 50 * spellMult;

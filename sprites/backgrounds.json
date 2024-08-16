@@ -135,32 +135,7 @@
 					}
 				},
 				{
-					"filename": "fake_death_punch2.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 700,
-						"h": 900
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 700,
-						"h": 900
-					},
-					"frame": {
-						"x": 1302,
-						"y": 1003,
-						"w": 700,
-						"h": 900
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "firebg2.png",
+					"filename": "firebg0.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -568,7 +543,7 @@
 					}
 				},
 				{
-					"filename": "firebg0.png",
+					"filename": "firebg1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -593,7 +568,7 @@
 					}
 				},
 				{
-					"filename": "firebg1.png",
+					"filename": "firebg2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -709,6 +684,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:cc3112f7501e6d54dcbb82df6175b515:36b6da9f6f735702e0a4132c58270dff:d36b2d12f94c3c84864533b00704d5ae$"
+		"smartupdate": "$TexturePacker:SmartUpdate:50b7d19d0b2e92dbf7835ab722a5f24d:abefaaa9b994fdc51d64c4462d443cbc:d36b2d12f94c3c84864533b00704d5ae$"
 	}
 }

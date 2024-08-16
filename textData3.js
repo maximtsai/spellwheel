@@ -46,13 +46,13 @@ let textData3 = {
         "jp": "もう一度だけ警告します。"
     },
     "death3b": {
-        "en_us": "TURN BACK. YOU SEEK THE UNOBTAINABLE.",
-        "fr": "CE QUE VOUS CHERCHEZ ICI NE PEUT PAS ÊTRE ATTEINT.",
-        "zh_tw": "你在此尋求的東西無法實現。",
-        "zh_cn": "你在此寻求的东西无法实现。",
-        "ru": "ТО, ЧТО ВЫ ИЩЕТЕ ЗДЕСЬ, НЕ МОЖЕТ БЫТЬ ДОСТИГНУТО.",
-        "es": "AQUELLO QUE BUSCAS AQUÍ NO SE PUEDE ALCANZAR.",
-        "jp": "あなたがここで探し求めているものは、達成することができません。"
+        "en_us": "TURN BACK.\nYOU SEEK THE UNOBTAINABLE.",
+        "fr": "CE QUE VOUS CHERCHEZ\nICI NE PEUT PAS ÊTRE ATTEINT.",
+        "zh_tw": "你在此尋求的\n東西無法實現。",
+        "zh_cn": "你在此寻求的\n东西无法实现。",
+        "ru": "ТО, ЧТО ВЫ ИЩЕТЕ ЗДЕСЬ,\nНЕ МОЖЕТ БЫТЬ ДОСТИГНУТО.",
+        "es": "AQUELLO QUE BUSCAS AQUÍ\nNO SE PUEDE ALCANZAR.",
+        "jp": "あなたがここで探し求めているものは、\n達成することができません。"
     },
     "death4a": {
         "en_us": "THE MAGICIAN THOUGHT HIS\nMAGIC COULD ELUDE ME,",

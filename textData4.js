@@ -362,7 +362,7 @@ let textData4 = {
         "jp": ""
     },
     "shield_dummy_overwrite": {
-        "en_us": "Only one shield\ncan exist per\nspot.",
+        "en_us": "Only one shield\ncan be active\nper spot.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

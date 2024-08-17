@@ -25,6 +25,7 @@ const ENABLE_KEYBOARD = true;
         this.tempLockRot = 0;
         this.lastDragTime = 0;
         this.prevDragAngleDiff = null;
+        this.storedDragAngleDiff = 0;
         this.dScaleAccumulate = 0;
         this.draggedDuration = 0;
         this.preventRotDecay = 0;
@@ -299,7 +300,9 @@ const ENABLE_KEYBOARD = true;
             if (!this.prevDragAngleDiff) {
                 this.prevDragAngleDiff = dragAngleDiff;
             }
+            this.storedDragAngleDiff = dragAngleDiff;
             let dragAngleDiffDiff = (dragAngleDiff - this.prevDragAngleDiff) * Math.abs(dragAngleDiff);
+
             if (dragAngleDiffDiff < -0.24) {
                 dragAngleDiffDiff = -0.24;
             } else if (dragAngleDiffDiff > 0.24) {
@@ -329,25 +332,25 @@ const ENABLE_KEYBOARD = true;
 
             let dragForceSqr = horizForce + vertForce;
 
-            let torqueConst = gameVars.wasTouch ? 0.054 : 0.05;
+            let torqueConst = gameVars.wasTouch ? 0.043 : 0.038;
             // castDisable
 
             // Using both rotation diff and mult val to calculate
             if (dragForceSqr < 0) {
-                this.draggedObj.torque = dragForce * -Math.sqrt(-dragForceSqr) * torqueConst * (1 + dScale * 0.00);
+                this.draggedObj.torque = dragForce * -Math.sqrt(-dragForceSqr) * torqueConst * (1 + dScale * 0.01);
             } else {
-                this.draggedObj.torque = dragForce * Math.sqrt(dragForceSqr) * torqueConst * (1 + dScale * 0.00);
+                this.draggedObj.torque = dragForce * Math.sqrt(dragForceSqr) * torqueConst * (1 + dScale * 0.01);
             }
             // TODO: Remove if not needed
-            this.draggedObj.torque += dragAngleDiff * torqueConst * 0.6 - this.draggedObj.rotVel * 0.4;
+            this.draggedObj.torque += dragAngleDiff * torqueConst * 0.9 - this.draggedObj.rotVel * 0.35;
             // this.draggedObj.torque = this.draggedObj.torque + (this.draggedObj.torque * this.draggedObj.torque) * minusMult * 150;
             //this.draggedObj.torque += this.draggedObj.torqueOnRelease * 0.5;
 
-            this.draggedObj.torqueOnRelease = this.draggedObj.torque * 5; // there's some more oomph to when you sling out a spin
+            this.draggedObj.torqueOnRelease = this.draggedObj.torque * 4; // there's some more oomph to when you sling out a spin
 
             if (this.draggedObj.rotVel * dragAngleDiff < -0.01) {
                 // if drag force is acting opposite of current velocity, slow down current velocity
-                this.draggedObj.rotVel *= 0.25;
+                this.draggedObj.rotVel *= 0.2;
             }
 
             let oldObjVisualRot = this.draggedObj.rotation;
@@ -1039,8 +1042,38 @@ const ENABLE_KEYBOARD = true;
         // low torque but high speed = strong stop force
         let spinAmpFromRestInner = Math.abs(this.innerCircle.rotVel) < 0.01 ? 2 : 1;
         let spinAmpFromRestOuter = Math.abs(this.outerCircle.rotVel) < 0.01 ? 2.25 : 1;
-        let spinAmtInner = this.innerCircle.rotVel + this.innerCircle.torque * dt * 5.5 * spinAmpFromRestInner;
-        let spinAmtOuter = this.outerCircle.rotVel + this.outerCircle.torque * dt * 3 * spinAmpFromRestOuter;
+
+        let flatMoveInner = 0; //this.innerCircle.torque > 0.01;
+        let flatMoveOuter = 0;
+
+        // flat drag amount
+        let alteredDT = dt + 0.1;
+        let multDT = alteredDT * alteredDT;
+        let angleCutoff = gameVars.wasTouch ? 0.15 : 0.08;
+        if (this.storedDragAngleDiff > angleCutoff) {
+            this.storedDragAngleDiff = angleCutoff;
+        } else if (this.storedDragAngleDiff < -angleCutoff) {
+            this.storedDragAngleDiff = -angleCutoff;
+        }
+        if (this.draggedObj == this.innerCircle) {
+            flatMoveInner = this.storedDragAngleDiff * (gameVars.wasTouch ? 0.06 : 0.05) * multDT;
+        } else if (this.draggedObj == this.outerCircle) {
+            flatMoveOuter = this.storedDragAngleDiff * (gameVars.wasTouch ? 0.06 : 0.05) * multDT;
+        }
+        this.storedDragAngleDiff = 0;
+
+        if (this.innerCircle.torque > 0.003) {
+            flatMoveInner = 0;
+        } else if (this.innerCircle.torque < -0.003) {
+            flatMoveInner = -0;
+        }
+        if (this.outerCircle.torque > 0.0025) {
+            flatMoveOuter = 0;
+        } else if (this.outerCircle.torque < -0.0025) {
+            flatMoveOuter = -0;
+        }
+        let spinAmtInner = this.innerCircle.rotVel + this.innerCircle.torque * dt * 4.6 * spinAmpFromRestInner + flatMoveInner;
+        let spinAmtOuter = this.outerCircle.rotVel + this.outerCircle.torque * dt * 3.5 * spinAmpFromRestOuter + flatMoveOuter;
 
         let spinSlowTimeDilation = 1 - (1-gameVars.timeSlowRatio)*0.02;
         let spinSnapSlowAmtInner = this.handleSpinSnapSlowAmt(this.innerCircle, this.elements);

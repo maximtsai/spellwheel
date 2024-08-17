@@ -2550,8 +2550,7 @@ const ENABLE_KEYBOARD = true;
                                  tempMult--;
                                  turnsAdded += Math.max(3, 7 - globalObjects.player.getPlayerTimeExhaustion() - tempMult);
                              }
-                             embodimentText += " (" + turnsAdded + ")"
-                             this.updateSpellDescriptorText(getLangText('time_unload_desc' + postPendTextName));
+                             this.updateSpellDescriptorText(getLangText('time_unload_desc' + postPendTextName) + turnsAdded + getLangText('time_unload_desc_2' + postPendTextName));
                              break;
                          default:
                              this.clearSpellDescriptorText()

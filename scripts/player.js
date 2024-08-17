@@ -32,7 +32,7 @@ class Player {
         ];
         updateManager.addFunction(this.update.bind(this));
         // Handles weird phaser initial lag issue. TODO: replace with something else later
-        this.bleedObj = this.scene.add.sprite(x, y, 'pixels', 'red_pixel.png');
+        this.bleedObj = this.scene.add.image(x, y, 'pixels', 'red_pixel.png');
         this.bleedObj.alpha = 0.001;
         this.scene.tweens.add({
             targets: this.bleedObj,
@@ -196,8 +196,8 @@ class Player {
     createHealthBar(x, y) {
         this.healthBarReady = true;
         this.barAssetsGrey = [];
-        this.barAssetsLarge = [];
         this.barAssetsSmall = [];
+        this.healthBarMain = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_full.png').setDepth(999);
 
         for (let i = 0; i < 3; i++) {
             let healthBar = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_quarter.png');
@@ -209,23 +209,14 @@ class Player {
         }
         this.healthBarTiny = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_tiny.png').setDepth(9998);
         this.healthBarTiny.setRotation(Math.PI * 0.85).setScale(1);
-
-        for (let i = 0; i < 3; i++) {
-            let healthBar = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_quarter.png');
-            healthBar.setDepth(9997);
-            healthBar.rotation = Math.PI * (1.25 + 0.5 * i) + 0.01;
-            //healthBar.setScale(0.999, 0.999);
-            this.barAssetsLarge.push(healthBar);
-        }
+        this.healthBarTiny.visible = false;
 
         for (let i = 0; i < 4; i++) {
             let healthBar = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_sixteenth.png').setDepth(9998);
             healthBar.rotation = Math.PI * (0.882 + i * 0.125);
-            healthBar.visible = true;
+            healthBar.visible = false;
             this.barAssetsSmall.push(healthBar);
         }
-
-        let healthBarEnd = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_end.png').setDepth(9998);
 
         this.healthBarPeak = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_tip.png');
         this.healthBarPeak.setDepth(9998);
@@ -290,10 +281,7 @@ class Player {
         this.healthBarPeak.visible = true;
         if (healthRatio < 0.341) {
             drawStartSpot = 0.334 - healthRatio;
-            for (let i = 0; i < 3; i++) {
-                let healthBar = this.barAssetsLarge[i];
-                healthBar.visible = false;
-            }
+            this.healthBarMain.setFrame('healthbar_0thirds.png'); // TODO
             for (let i = 0; i < this.barAssetsSmall.length; i++) {
                 let healthBarSmall = this.barAssetsSmall[i];
                 healthBarSmall.visible = true;
@@ -335,32 +323,15 @@ class Player {
 
         } else if (healthRatio < 0.671) {
             drawStartSpot = 0.667 - healthRatio;
-            for (let i = 1; i < 3; i++) {
-                let healthBar = this.barAssetsLarge[i];
+            this.healthBarMain.setFrame('healthbar_1thirds.png'); // TODO
 
-                if (i == 1) {
-                    healthBar.visible = true;
-                    healthBar.rotation = Math.PI * (0.25 - 0.5 * i - drawStartSpot * 0.5 * Math.PI) - 0.01;
-                } else {
-                    healthBar.visible = false;
-                }
-            }
         } else if (healthRatio < 1) {
             drawStartSpot = 1 - healthRatio;
-            for (let i = 0; i < 3; i++) {
-                let healthBar = this.barAssetsLarge[i];
-                healthBar.visible = true;
-                if (i >= 1) {
-                    healthBar.rotation = Math.PI * (0.75 - 0.5 * i - drawStartSpot * 0.5 * Math.PI) - 0.01;
-                }
-            }
+            this.healthBarMain.setFrame('healthbar_2thirds.png'); // TODO
+
         } else {
             // max health
-            for (let i = 0; i < 3; i++) {
-                let healthBar = this.barAssetsLarge[i];
-                healthBar.visible = true;
-                healthBar.rotation = Math.PI * (1.25 + 0.5 * i) + 0.01;
-            }
+            this.healthBarMain.setFrame('healthbar_full.png'); // TODO
             this.healthBarPeak.visible = false;
         }
     }
@@ -481,8 +452,8 @@ class Player {
         return this.recentlyTakenDamageAmt + this.recentlyTakenDelayedDamageAmt;
     }
 
-    takeDamage(amt, isTime = false, xPos = null) {
-        if (globalObjects.currentEnemy.dead) {
+    takeDamage(amt, isTime = false, xPos = null, force = false) {
+        if (globalObjects.currentEnemy.dead && !force) {
             return;
         }
         if (this.blackBalls) {
@@ -824,6 +795,31 @@ class Player {
                         });
                     }
                 }
+                let brickObj3 = getTempPoolObject('spells', 'spikeout.png', 'spikeout', 460);
+                brickObj3.setScale(2.35).setAlpha(1).setDepth(150).setPosition(this.x, this.y).setRotation((Math.random() - 1) * 0.1);
+                this.scene.tweens.add({
+                    targets: brickObj3,
+                    duration: 50,
+                    scaleX: brickObj3.scaleX * 1.04,
+                    scaleY: brickObj3.scaleX * 1.04,
+                    ease: 'Cubic.easeIn',
+                    onComplete: () => {
+                        this.scene.tweens.add({
+                            targets: brickObj3,
+                            duration: 400,
+                            scaleX: 2.1,
+                            scaleY: 2.1,
+                            ease: 'Quint.easeOut',
+                        });
+                    }
+                });
+
+                this.scene.tweens.add({
+                    targets: brickObj3,
+                    duration: 450,
+                    alpha: 0,
+                });
+
                 hurtAmt = Math.max(0, hurtAmt - this.statuses['matterReinforce'].protection);
                 messageBus.publish('enemyTakeDamage', this.statuses['matterReinforce'].damage, false, 30);
             }

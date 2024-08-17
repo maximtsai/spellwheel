@@ -194,8 +194,9 @@
                  {
                      name: gameVars.isHardMode ? "}8 " : "}4 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
-                     chargeAmt: 300,
-                     damage: gameVars.isHardMode ? 8 : 4,
+                     chargeAmt: 150,
+                     damage: gameVars.isHardMode ? 8 : 7,
+                     chargeMult: 10,
                      attackSprites: ['gobbo0_atk.png'],
                      attackFinishFunction: () => {
                          this.makeSlashEffect();
@@ -400,19 +401,10 @@
                      }
                  },
                  {
-                     name: "}4x5 ",
-                     chargeAmt: gameVars.isHardMode ? 210 : 260,
-                     damage: 4,
-                     attackTimes: 5,
-                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
-                     attackFinishFunction: () => {
-                         this.makeSlashEffect();
-                     }
-                 },
-                 {
                      name: "LAUGH IN YOUR FACE",
                      isPassive: true,
                      chargeAmt: 600,
+                     finishDelay: 1000,
                      chargeMult: 5,
                      damage: -1,
                      tease: true,

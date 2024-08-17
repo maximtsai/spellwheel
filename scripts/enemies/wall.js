@@ -675,7 +675,7 @@
              [
                  // 3
                  {
-                     name: ";100",
+                     name: ";80",
                      chargeAmt: 1200,
                      damage: -1,
                      chargeMult: 1.5,
@@ -684,7 +684,7 @@
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.04;
                          this.addTimeout(() => {
-                             this.throwWallChunk('wall_chunk_2.png', 100, 1.25);
+                             this.throwWallChunk('wall_chunk_2.png', 80, 1.25);
                          }, 300);
                      },
                      attackFinishFunction: () => {

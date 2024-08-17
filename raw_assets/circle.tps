@@ -665,13 +665,15 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">circle/healthbar_end.png</key>
-            <key type="filename">circle/healthbar_tiny.png</key>
+            <key type="filename">circle/healthbar_0thirds.png</key>
+            <key type="filename">circle/healthbar_1thirds.png</key>
+            <key type="filename">circle/healthbar_2thirds.png</key>
+            <key type="filename">circle/healthbar_full.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.95</double>
+                <double>1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -693,6 +695,21 @@
                 <rect>45,45,90,90</rect>
                 <key>scale9Paddings</key>
                 <rect>45,45,90,90</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">circle/healthbar_tiny.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.95</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>46,46,91,91</rect>
+                <key>scale9Paddings</key>
+                <rect>46,46,91,91</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -200,22 +200,40 @@ let textData = {
         "jp": "直近の負傷の50%と\n遅延ダメージの50%を回復"
     },
     "time_unload_desc": {
-        "en_us": "Freeze time for\nthe next 7 spells.\nGets weaker\nwith repeat use.",
-        "fr": "Geler le temps pour\nles 7 prochains sorts.\nS'affaiblit avec\nune utilisation\nrépétée.",
-        "zh_tw": "為接下來 7 個法術\n凍結時間。重複使用\n會變弱。",
-        "zh_cn": "为接下来 7 个法术\n冻结时间。重复使用\n会变弱。",
-        "ru": "Заморозьте времяна\nследующие 7\nзаклинаний. Слабеет\nпри повторном\nиспользовании.",
-        "es": "Congela el tiempo\ndurante los\nsiguientes 7 hechizos.\nSe debilita con\nel uso repetido.",
-        "jp": "次の7つの呪文の凍結\n時間。繰り返し使用\nすると弱くなります。"
+        "en_us": "Freeze time for\nthe next ",
+        "fr": "Geler le temps pour\nles ",
+        "zh_tw": "為接下來 ",
+        "zh_cn": "为接下来 ",
+        "ru": "Заморозьте времяна\nследующие ",
+        "es": "Congela el tiempo\ndurante los\nsiguientes ",
+        "jp": "次の"
+    },
+    "time_unload_desc_2": {
+        "en_us": " spells.\nGets weaker\nwith repeat use.",
+        "fr": " prochains sorts.\nS'affaiblit avec\nune utilisation\nrépétée.",
+        "zh_tw": " 個法術\n凍結時間。重複使用\n會變弱。",
+        "zh_cn": " 个法术\n冻结时间。重复使用\n会变弱。",
+        "ru": "\nзаклинаний. Слабеет\nпри повторном\nиспользовании.",
+        "es": " hechizos.\nSe debilita con\nel uso repetido.",
+        "jp": "つの呪文の凍結\n時間。繰り返し使用\nすると弱くなります。"
     },
     "time_unload_desc_long": {
-        "en_us": "Freeze time for the next 7 spells.\nGets weaker with repeat use.",
-        "fr": "Geler le temps pour les 7 prochains sorts.\nS'affaiblit avec une utilisation répétée.",
-        "zh_tw": "為接下來 7 個法術\n凍結時間。重複使用會變弱。",
-        "zh_cn": "为接下来 7 个法术\n冻结时间。重复使用会变弱。",
-        "ru": "Заморозьте времяна следующие 7 заклинаний.\nСлабеет при повторном использовании.",
-        "es": "Congela el tiempo durante los siguientes\n7 hechizos. Se debilita con el uso repetido.",
-        "jp": "次の7つの呪文の凍結時間。\n繰り返し使用すると弱くなります。"
+        "en_us": "Freeze time for the next ",
+        "fr": "Geler le temps pour les ",
+        "zh_tw": "為接下來 ",
+        "zh_cn": "为接下来 ",
+        "ru": "Заморозьте времяна следующие ",
+        "es": "Congela el tiempo durante los siguientes\n",
+        "jp": "次の"
+    },
+    "time_unload_desc_2_long": {
+        "en_us": " spells.\nGets weaker with repeat use.",
+        "fr": " prochains sorts.\nS'affaiblit avec une utilisation répétée.",
+        "zh_tw": " 個法術\n凍結時間。重複使用會變弱。",
+        "zh_cn": " 个法术\n冻结时间。重复使用会变弱。",
+        "ru": " заклинаний.\nСлабеет при повторном использовании.",
+        "es": " hechizos. Se debilita con el uso repetido.",
+        "jp": "つの呪文の凍結時間。\n繰り返し使用すると弱くなります。"
     },
     "void_strike_desc": {
         "en_us": "Attack 3 times\nafter a delay,\neach attack\ndeals 2% enemy\ncurrent HP",

@@ -745,7 +745,7 @@
                      block: this.nextShieldHealth,
                      isPassive: true,
                      transitionFast: true,
-                     chargeMult: 6.5,
+                     chargeMult: 6,
                      damage: -1,
                      startFunction: () => {
                          this.isRecharging = true;
@@ -1046,7 +1046,7 @@
                      }
                  },
                  {
-                     name: "$10",
+                     name: "$12",
                      chargeAmt: 400,
                      damage: -1,
                      attackTimes: 1,
@@ -1056,7 +1056,7 @@
                      },
                      attackStartFunction: () => {
                          playSound('voca_hello_short', 0.9);
-                         this.fireMusic(10, 1.05, 850)
+                         this.fireMusic(12, 1.05, 850)
                      },
                      attackFinishFunction: () => {
                          this.refreshAnimateBG(2, 0.1);
@@ -1066,9 +1066,9 @@
                      }
                  },
                  {
-                     name: "|7x3",
+                     name: "|8x3",
                      chargeAmt: 550,
-                     damage: 7,
+                     damage: 8,
                      attackTimes: 3,
                      attackSprites: ['robot_claw_1.png', 'robot_claw_1.png'],
                      startFunction: () => {
@@ -1209,7 +1209,7 @@
              [
                  // 5 laser
                  {
-                     name: ";16x2 ",
+                     name: ";18x2 ",
                      chargeAmt: 600,
                      finishDelay: 2000,
                      damage: -1,
@@ -1231,7 +1231,7 @@
                          }
                      },
                      attackFinishFunction: () => {
-                         this.fireLaser(16);
+                         this.fireLaser(18);
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
                      },

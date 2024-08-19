@@ -123,8 +123,8 @@ class Enemy {
         this.healthBarRed.alpha = 0;
         this.healthBarRed.setDepth(10);
 
-        this.healthBarFlash = this.scene.add.sprite(x - this.healthBarLengthMax - 1, this.healthBarMax.y, 'pixels', 'white_pixel.png');
-        this.healthBarFlash.setScale(this.healthBarLengthMax + 1, this.healthBarMax.scaleY - 2);
+        this.healthBarFlash = this.scene.add.sprite(x - this.healthBarLengthMax - 3, this.healthBarMax.y, 'pixels', 'white_pixel.png');
+        this.healthBarFlash.setScale(this.healthBarLengthMax + 3, this.healthBarMax.scaleY - 2);
         this.healthBarFlash.setOrigin(0, 0.5);
         this.healthBarFlash.alpha = 0;
         this.healthBarFlash.setDepth(10);
@@ -174,10 +174,17 @@ class Enemy {
         });
 
         this.scene.tweens.add({
-            targets: [this.healthBarCurr, this.healthBarFlash],
+            targets: [this.healthBarCurr],
             duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
             x: this.x - this.healthBarLengthMax - 1,
             scaleX: this.healthBarLengthMax + 1,
+            ease: 'Quint.easeInOut',
+        });
+        this.scene.tweens.add({
+            targets: [this.healthBarFlash],
+            duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
+            x: this.x - this.healthBarLengthMax - 3,
+            scaleX: this.healthBarLengthMax + 3,
             ease: 'Quint.easeInOut',
         });
 
@@ -743,17 +750,17 @@ class Enemy {
 
         if (!this.nextAttack.isPassive) {
             let widthToScale = this.attackName.width / 200;
-            this.attackNameHighlight.setScale(widthToScale, 2.2).setAlpha(0.2);
+            this.attackNameHighlight.setScale(widthToScale, 2.25).setAlpha(0.24);
             PhaserScene.tweens.add({
                 targets: this.attackNameHighlight,
                 duration: gameVars.gameManualSlowSpeedInverse * 300,
                 ease: 'Quad.easeOut',
-                alpha: this.nextAttack.isBigMove ? 1 : 0.85,
+                alpha: this.nextAttack.isBigMove ? 1.1 : 0.9,
                 onComplete: () => {
                     PhaserScene.tweens.add({
                         targets: this.attackNameHighlight,
                         ease: 'Quad.easeOut',
-                        duration: gameVars.gameManualSlowSpeedInverse * this.nextAttack.isBigMove ? 1200 : 800,
+                        duration: gameVars.gameManualSlowSpeedInverse * this.nextAttack.isBigMove ? 1250 : 850,
                         alpha: 0,
                     });
                 }
@@ -762,10 +769,10 @@ class Enemy {
                 targets: this.attackNameHighlight,
                 duration: gameVars.gameManualSlowSpeedInverse * this.nextAttack.isBigMove ? 1500 : 1100,
                 ease: 'Cubic.easeOut',
-                scaleX: widthToScale + (this.nextAttack.isBigMove ? 1.75 : 1.4),
+                scaleX: widthToScale + (this.nextAttack.isBigMove ? 1.8 : 1.5),
             });
             PhaserScene.tweens.add({
-                delay: 200,
+                delay: 300,
                 targets: this.attackNameHighlight,
                 ease: this.nextAttack.isBigMove ? 'Quad.easeIn' : 'Quad.easeOut',
                 duration: gameVars.gameManualSlowSpeedInverse * this.nextAttack.isBigMove ? 1300 : 900,
@@ -1127,7 +1134,7 @@ class Enemy {
             });
         }
 
-        this.healthBarFlash.scaleX = this.healthBarCurr.scaleX;
+        this.healthBarFlash.scaleX = this.healthBarCurr.scaleX + 2;
         this.healthBarFlash.scaleY = this.healthBarMax.scaleY;
         this.healthBarFlash.alpha = 1 + 0.2 * mult;
         if (this.healthBarFlashTween) {

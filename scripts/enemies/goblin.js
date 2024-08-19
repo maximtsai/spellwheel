@@ -194,9 +194,8 @@
                  {
                      name: gameVars.isHardMode ? "}8 " : "}4 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
-                     chargeAmt: 150,
-                     damage: gameVars.isHardMode ? 8 : 7,
-                     chargeMult: 10,
+                     chargeAmt: 250,
+                     damage: gameVars.isHardMode ? 8 : 4,
                      attackSprites: ['gobbo0_atk.png'],
                      attackFinishFunction: () => {
                          this.makeSlashEffect();
@@ -418,23 +417,25 @@
      }
 
      makeSlashEffect() {
-         playSound('sword_slice', 0.7);
+         playSound('sword_slice', 0.7).detune = Math.floor(Math.random() * 200 - 100);
          if (this.slashEffectAnim) {
              this.slashEffectAnim.stop();
          }
          let isFlipped = this.slashEffect.scaleX > 0;
-         this.slashEffect.setAlpha(1.1).setScale(isFlipped ? -0.5 : 0.5, 0.4);
+         this.slashEffect.setAlpha(1.2).setScale(isFlipped ? -0.5 : 0.5, 0.4);
          this.slashEffectAnim = this.addTween({
              targets: this.slashEffect,
-             duration: 280,
+             delay: 20,
+             duration: 300,
+             ease: 'Quart.easeIn',
              alpha: 0,
          });
          this.addTween({
              targets: this.slashEffect,
              scaleX: isFlipped ? -1 : 1,
              scaleY: 0.6,
-             duration: 280,
-             ease: 'Cubic.easeOut',
+             duration: 320,
+             ease: 'Quart.easeOut',
              alpha: 0,
          });
      }

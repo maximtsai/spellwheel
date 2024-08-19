@@ -239,16 +239,20 @@ const ENABLE_KEYBOARD = true;
             this.draggedObj = null;
         }
 
-        if (dScale > 1.05) {
+        if (dScale > 1 && dScale < 1.1) {
+            dScale = 1;
+        }
+        if (dScale > 1.1) {
             this.dScaleAccumulate += dScale;
             while (this.dScaleAccumulate > 1) {
                 this.dScaleAccumulate -= 1;
                 this.updateInterval(1, mouseDistX, mouseDistY);
             }
-            if (this.dScaleAccumulate > 0.3) {
-                this.updateInterval(this.dScaleAccumulate, mouseDistX, mouseDistY);
-                this.dScaleAccumulate = 0;
-            }
+            // causes jitter, unfortunate bad
+            // if (this.dScaleAccumulate > 0.3) {
+            //     this.updateInterval(this.dScaleAccumulate, mouseDistX, mouseDistY);
+            //     this.dScaleAccumulate = 0;
+            // }
         } else {
             this.updateInterval(dScale, mouseDistX, mouseDistY);
         }
@@ -332,7 +336,7 @@ const ENABLE_KEYBOARD = true;
 
             let dragForceSqr = horizForce + vertForce;
 
-            let torqueConst = gameVars.wasTouch ? 0.043 : 0.038;
+            let torqueConst = gameVars.wasTouch ? 0.046 : 0.042;
             // castDisable
 
             // Using both rotation diff and mult val to calculate
@@ -342,7 +346,7 @@ const ENABLE_KEYBOARD = true;
                 this.draggedObj.torque = dragForce * Math.sqrt(dragForceSqr) * torqueConst * (1 + dScale * 0.01);
             }
             // TODO: Remove if not needed
-            this.draggedObj.torque += dragAngleDiff * torqueConst * 0.9 - this.draggedObj.rotVel * 0.35;
+            this.draggedObj.torque += dragAngleDiff * torqueConst - this.draggedObj.rotVel * 0.38;
             // this.draggedObj.torque = this.draggedObj.torque + (this.draggedObj.torque * this.draggedObj.torque) * minusMult * 150;
             //this.draggedObj.torque += this.draggedObj.torqueOnRelease * 0.5;
 
@@ -939,7 +943,7 @@ const ENABLE_KEYBOARD = true;
         }
 
         // high torque = lower friction
-        let torqueMultInner = this.innerCircle.torque * this.innerCircle.torque > 0.00001 ? 0.6: 1;
+        let torqueMultInner = this.innerCircle.torque * this.innerCircle.torque > 0.00001 ? 0.6 : 1;
         let torqueMultOuter = this.outerCircle.torque * this.outerCircle.torque > 0.00001 ? 0.6 : 1;
 
         let velMultInner = (Math.abs(this.innerCircle.rotVel) + 0.001) / 0.004;
@@ -1062,17 +1066,17 @@ const ENABLE_KEYBOARD = true;
         }
         this.storedDragAngleDiff = 0;
 
-        if (this.innerCircle.torque > 0.003) {
-            flatMoveInner = 0;
-        } else if (this.innerCircle.torque < -0.003) {
-            flatMoveInner = -0;
-        }
-        if (this.outerCircle.torque > 0.0025) {
-            flatMoveOuter = 0;
-        } else if (this.outerCircle.torque < -0.0025) {
-            flatMoveOuter = -0;
-        }
-        let spinAmtInner = this.innerCircle.rotVel + this.innerCircle.torque * dt * 4.6 * spinAmpFromRestInner + flatMoveInner;
+        // if (this.innerCircle.torque > 0.003) {
+        //     flatMoveInner = 0;
+        // } else if (this.innerCircle.torque < -0.003) {
+        //     flatMoveInner = -0;
+        // }
+        // if (this.outerCircle.torque > 0.0025) {
+        //     flatMoveOuter = 0;
+        // } else if (this.outerCircle.torque < -0.0025) {
+        //     flatMoveOuter = -0;
+        // }
+        let spinAmtInner = this.innerCircle.rotVel + this.innerCircle.torque * dt * 5 * spinAmpFromRestInner + flatMoveInner;
         let spinAmtOuter = this.outerCircle.rotVel + this.outerCircle.torque * dt * 3.5 * spinAmpFromRestOuter + flatMoveOuter;
 
         let spinSlowTimeDilation = 1 - (1-gameVars.timeSlowRatio)*0.02;

@@ -195,34 +195,22 @@ class Player {
 
     createHealthBar(x, y) {
         this.healthBarReady = true;
-        this.barAssetsGrey = [];
         this.barAssetsSmall = [];
+        this.healthBarPartial = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_partial.png').setDepth(999).setVisible(false);
         this.healthBarMain = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_full.png').setDepth(999);
 
-        for (let i = 0; i < 3; i++) {
-            let healthBar = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_quarter.png');
-            healthBar.setDepth(9997);
-            healthBar.rotation = Math.PI * (0.75 - 0.5 * i);
-            healthBar.visible = false;
-            //healthBar.setScale(0.999, 0.999);
-            this.barAssetsGrey.push(healthBar);
-        }
-        this.healthBarTiny = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_tiny.png').setDepth(9998);
-        this.healthBarTiny.setRotation(Math.PI * 0.85).setScale(1);
-        this.healthBarTiny.visible = false;
-
-        for (let i = 0; i < 4; i++) {
-            let healthBar = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_sixteenth.png').setDepth(9998);
-            healthBar.rotation = Math.PI * (0.882 + i * 0.125);
+        for (let i = 0; i < 5; i++) {
+            let healthBar = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_sliver.png').setDepth(998);
+            healthBar.rotation = 0;
             healthBar.visible = false;
             this.barAssetsSmall.push(healthBar);
         }
 
-        this.healthBarPeak = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_tip.png');
-        this.healthBarPeak.setDepth(9998);
-        this.healthBarPeak.rotation = Math.PI * (0.75 + 1.5);
-        this.healthBarPeak.setScale(1, 1);
-        this.healthBarPeak.visible = true;
+        // this.healthBarPeak = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_tip.png');
+        // this.healthBarPeak.setDepth(9998);
+        // this.healthBarPeak.rotation = Math.PI * (0.75 + 1.5);
+        // this.healthBarPeak.setScale(1, 1);
+        // this.healthBarPeak.visible = true;
 
         this.castText = this.scene.add.text(x, y, 'CAST', {fontFamily: 'Arial', fontSize: 28, color: '#040404', align: 'center'}).setOrigin(0.5, 0.5).setDepth(9998);
         this.castText.setFontStyle('bold').setAlpha(0.6);
@@ -273,67 +261,45 @@ class Player {
     refreshHealthBar(overrideHealth) {
         let healthRatio = overrideHealth || this.health / this.healthMax;
         this.healthText.setText('HP ' + this.health + '/' + this.healthMax);
-        this.healthBarPeak.rotation = Math.PI * (0.75 + 1.5 * healthRatio);
-        if (this.healthBarPeak.rotation < 2.5 && this.healthBarPeak.rotation > 1.8) {
-            this.healthBarPeak.rotation = 2.5;
+
+        for (let i = 0; i < this.barAssetsSmall.length; i++) {
+            this.barAssetsSmall[i].visible = false;
         }
-        let drawStartSpot = 0;
-        this.healthBarPeak.visible = true;
-        if (healthRatio < 0.341) {
-            drawStartSpot = 0.334 - healthRatio;
-            this.healthBarMain.setFrame('healthbar_0thirds.png'); // TODO
+        this.healthBarPartial.visible = true;
+        let furthestRotation = (healthRatio - 1) * Math.PI * 6/4;
+
+        if (healthRatio <= 0) {
+            this.healthBarMain.setFrame('circleEffect10.png'); // empty
+            this.healthBarPartial.visible = false;
+        } else if (healthRatio < 0.018) {
+            this.healthBarMain.setFrame('healthbar_0thirds.png');
+            this.healthBarPartial.setFrame('circleEffect10.png');
+        } else if (healthRatio < 0.038) {
+            this.healthBarMain.setFrame('healthbar_0thirds.png');
+            this.healthBarPartial.setFrame('healthbar_partial_sliver.png');
+        } else if (healthRatio < 0.17) {
+            this.healthBarMain.setFrame('healthbar_0thirds.png');
+            this.healthBarPartial.setFrame('healthbar_partial_sliver.png');
+            let distToFinal = Math.max(0, (furthestRotation - Math.PI * -6/4) * 1.25 - 0.28);
             for (let i = 0; i < this.barAssetsSmall.length; i++) {
-                let healthBarSmall = this.barAssetsSmall[i];
-                healthBarSmall.visible = true;
+                this.barAssetsSmall[i].visible = true;
+                this.barAssetsSmall[i].rotation = Math.PI * -6/4 + ((distToFinal * i / (this.barAssetsSmall.length))) + 0.16;
             }
-            if (healthRatio < 0.0001) {
-                // basically dead
-                for (let i = 0; i < this.barAssetsSmall.length; i++) {
-                    let healthBarSmall = this.barAssetsSmall[i];
-                    healthBarSmall.visible = false;
-                }
-                this.healthBarTiny.visible = false;
-                this.healthBarPeak.visible = false;
-            } else if (healthRatio < 0.09) {
-                for (let i = 0; i < this.barAssetsSmall.length; i++) {
-                    let healthBarSmall = this.barAssetsSmall[i];
-                    healthBarSmall.visible = false;
-                }
-                if (healthRatio > 0.055) {
-                    this.healthBarTiny.setRotation(Math.PI * 0.918 - drawStartSpot * 0.35 * Math.PI);
-                    this.healthBarTiny.visible = true;
-                } else {
-                    this.healthBarTiny.visible = false;
-                }
-            } else if (healthRatio < 0.171) {
-                for (let i = 1; i < this.barAssetsSmall.length - 1; i++) {
-                    let healthBarSmall = this.barAssetsSmall[i];
-                    healthBarSmall.visible = false;
-                }
-                this.barAssetsSmall[this.barAssetsSmall.length - 1].rotation = Math.PI * (0.882 + 3 * 0.125 - drawStartSpot * 0.5 * Math.PI) - 0.01;
-            } else if (healthRatio < 0.256) {
-                for (let i = 2; i < this.barAssetsSmall.length - 1; i++) {
-                    let healthBarSmall = this.barAssetsSmall[i];
-                    healthBarSmall.visible = false;
-                }
-                this.barAssetsSmall[this.barAssetsSmall.length - 1].rotation = Math.PI * (0.882 + 3 * 0.125 - drawStartSpot * 0.5 * Math.PI) - 0.01;
-            } else {
-                this.barAssetsSmall[this.barAssetsSmall.length - 1].rotation = Math.PI * (0.882 + 3 * 0.125 - drawStartSpot * 0.5 * Math.PI) - 0.01;
-            }
-
+        } else if (healthRatio < 0.341) {
+            this.healthBarMain.setFrame('healthbar_1thirds_half.png');
+            this.healthBarPartial.setFrame('healthbar_partial_half.png');
         } else if (healthRatio < 0.671) {
-            drawStartSpot = 0.667 - healthRatio;
-            this.healthBarMain.setFrame('healthbar_1thirds.png'); // TODO
-
+            this.healthBarMain.setFrame('healthbar_1thirds.png');
+            this.healthBarPartial.setFrame('healthbar_partial.png');
         } else if (healthRatio < 1) {
-            drawStartSpot = 1 - healthRatio;
-            this.healthBarMain.setFrame('healthbar_2thirds.png'); // TODO
-
+            this.healthBarMain.setFrame('healthbar_2thirds.png');
+            this.healthBarPartial.setFrame('healthbar_partial.png');
         } else {
             // max health
-            this.healthBarMain.setFrame('healthbar_full.png'); // TODO
-            this.healthBarPeak.visible = false;
+            this.healthBarMain.setFrame('healthbar_full.png');
+            this.healthBarPartial.visible = false;
         }
+        this.healthBarPartial.rotation = furthestRotation;
     }
 
     resetStats() {

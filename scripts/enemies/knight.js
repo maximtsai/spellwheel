@@ -649,14 +649,24 @@
          if (this.slashEffectAnim) {
              this.slashEffectAnim.stop();
          }
+         if (this.slashEffectAnim2) {
+             this.slashEffectAnim2.stop();
+         }
          let isFlipped = this.slashEffect.scaleX > 0;
-         this.slashEffect.setAlpha(1.2).setScale(isFlipped ? 0.6 : -0.6, 0.54).setRotation(isFlipped ? -1.5 : 1.5);
+         this.slashEffect.setAlpha(1.3).setScale(isFlipped ? 0.6 : -0.6, 0.54).setRotation(isFlipped ? -1.5 : 1.5);
          this.slashEffectAnim = this.addTween({
              targets: this.slashEffect,
              scaleX: isFlipped ? 1 : -1,
              scaleY: 0.9,
-             duration: 250,
-             ease: 'Cubic.easeOut',
+             duration: 310,
+             ease: 'Quint.easeOut',
+             alpha: 0,
+         });
+         this.slashEffectAnim2 = this.addTween({
+             targets: this.slashEffect,
+             delay: 10,
+             ease: 'Quart.easeIn'
+             duration: 300,
              alpha: 0,
          });
      }

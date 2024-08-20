@@ -180,11 +180,12 @@ class Enemy {
             scaleX: this.healthBarLengthMax + 1,
             ease: 'Quint.easeInOut',
         });
+        let flashLength = this.healthBarLengthMax == 0 ? 0 : this.healthBarLengthMax + 3;
         this.scene.tweens.add({
             targets: [this.healthBarFlash],
             duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
             x: this.x - this.healthBarLengthMax - 3,
-            scaleX: this.healthBarLengthMax + 3,
+            scaleX: flashLength,
             ease: 'Quint.easeInOut',
         });
 
@@ -406,7 +407,7 @@ class Enemy {
                 timeChange = 0;
             }
             chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
-            let almostIshDone = this.attackCharge > this.nextAttackChargeNeeded - 130;
+            let almostIshDone = this.attackCharge > this.nextAttackChargeNeeded - 145;
             if (almostIshDone) {
                 if (!this.attackName.hasWarned && !this.nextAttack.isPassive) {
                     this.attackName.hasWarned = true;
@@ -1135,6 +1136,9 @@ class Enemy {
         }
 
         this.healthBarFlash.scaleX = this.healthBarCurr.scaleX + 2;
+        if (this.healthBarCurr.scaleX == 0) {
+            this.healthBarFlash.scaleX = 0;
+        }
         this.healthBarFlash.scaleY = this.healthBarMax.scaleY;
         this.healthBarFlash.alpha = 1 + 0.2 * mult;
         if (this.healthBarFlashTween) {

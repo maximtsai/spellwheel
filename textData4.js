@@ -388,5 +388,41 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "superdummy_void": {
+        "en_us": "Deals lots of\n%health damage\n             +",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "superdummy_mind": {
+        "en_us": "Amplifies your next\nnon-attack spell\n               +",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "superdummy_matter": {
+        "en_us": "Deals damage\nand defends\n            +",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "superdummy_time": {
+        "en_us": "Freezes time for\nnext few spells\n               +",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
 }
 textData = { ...textData, ...textData4};

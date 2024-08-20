@@ -234,7 +234,6 @@
                                  });
                              }
                          })
-
                      },
                      attackStartFunction: () => {
                          globalObjects.textPopupManager.hideInfoText();

@@ -37,80 +37,6 @@
 
      }
 
-    tryInitTutorial4() {
-        if (!this.dead && !this.isAsleep && !this.shownTut4) {
-            // return;
-            this.shownTut4 = true;
-            globalObjects.textPopupManager.setInfoText(gameConsts.width, 275, "Enemies get\nangry when\nattacked!", 'right');
-            messageBus.publish('setSlowMult', 0.25, 50);
-            let glowBar = this.addSprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
-            this.addTween({
-                targets: glowBar,
-                alpha: 0.25,
-                scaleY: 4,
-                scaleX: 5,
-                ease: 'Cubic.easeInOut',
-                duration: 600,
-                onComplete: () => {
-                    this.glowBarAnim = this.addTween({
-                        delay: 1500,
-                        targets: glowBar,
-                        alpha: 0,
-                        scaleY: 5,
-                        scaleX: 6,
-                        ease: 'Cubic.easeInOut',
-                        duration: 1200
-                    });
-                }
-            });
-            this.addTimeout(() => {
-                let spellListener = messageBus.subscribe('spellClicked', () => {
-                    if (!this.hasShownAttackWarning) {
-                        this.hasShownAttackWarning = true;
-                        if (this.glowBarAnim) {
-                            this.glowBarAnim.stop();
-                        }
-                        this.addTween({
-                            targets: glowBar,
-                            alpha: 0,
-                            scaleY: 5,
-                            scaleX: 6,
-                            ease: 'Quad.easeInOut',
-                            duration: 1000,
-                            onComplete: () => {
-                                glowBar.destroy();
-                            }
-                        });
-                    }
-                    spellListener.unsubscribe();
-                    this.addTimeout(() => {
-                        globalObjects.textPopupManager.hideInfoText();
-                    }, 1000);
-                });
-                this.addTimeout(() => {
-                    if (!this.hasShownAttackWarning) {
-                        this.hasShownAttackWarning = true;
-                        messageBus.publish('setSlowMult', 0.99, 1);
-                        if (this.glowBarAnim) {
-                            this.glowBarAnim.stop();
-                        }
-                        this.addTween({
-                            targets: glowBar,
-                            alpha: 0,
-                            scaleY: 5,
-                            scaleX: 6,
-                            ease: 'Quad.easeInOut',
-                            duration: 1000,
-                            onComplete: () => {
-                                glowBar.destroy();
-                            }
-                        });
-                    }
-                }, 4500);
-            }, 800);
-        }
-    }
-
      setHealth(newHealth) {
          super.setHealth(newHealth);
          let prevHealthPercent = this.prevHealth / this.healthMax;
@@ -164,6 +90,16 @@
          if (this.breatheTween2) {
             this.breatheTween2.stop()
          }
+
+        if (this.playerSpellBodyTrack) {
+            this.playerSpellBodyTrack.unsubscribe();
+        }
+        globalObjects.textPopupManager.hideInfoText();
+        if (this.rune1) {
+            this.rune1.destroy();
+            this.rune2.destroy();
+        }
+
          if (this.isFirstMode) {
             this.isLoading = true;
             this.isFirstMode = false;
@@ -518,7 +454,6 @@
                                 if (this.isDestroyed) {
                                     return;
                                 }
-                                this.tryInitTutorial4()
                              }
                          });
 
@@ -540,12 +475,63 @@
         this.dummyRightArm.visible = true;
     }
 
+    createTutIcon(text, rune1Text, rune2Text) {
+        globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 133, text, 'right');
+        let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+        let centerXPos = globalObjects.textPopupManager.getCenterPos();
+
+        if (this.rune1) {
+            this.rune1.setFrame(rune1Text).setDepth(10001).setScale(0.75).setAlpha(0);
+            this.rune2.setFrame(rune2Text).setDepth(10001).setScale(0.75).setAlpha(0);
+        } else {
+            this.rune1 = this.addSprite(centerXPos - 30, runeYPos + 27, 'circle', rune1Text).setDepth(10001).setScale(0.75).setAlpha(0);
+            this.rune2 = this.addSprite(centerXPos + 30, runeYPos + 27, 'circle', rune2Text).setDepth(10001).setScale(0.75).setAlpha(0);
+        }
+        this.addTween({
+            targets: [this.rune1, this.rune2],
+            alpha: 1,
+            duration: 200,
+        });
+        this.addTween({
+             targets: [this.rune1, this.rune2],
+             scaleX: 1.1,
+             scaleY: 1.1,
+             ease: 'Quart.easeOut',
+             duration: 600,
+             onComplete: () => {
+                 this.addTween({
+                     targets: [this.rune1, this.rune2],
+                     scaleX: 0.85,
+                     scaleY: 0.85,
+                     ease: 'Back.easeOut',
+                     duration: 400,
+                 });
+             }
+        });
+        this.playerSpellBodyTrack = messageBus.subscribe('recordSpell', (spellId) => {
+             if (spellId == 'timeUnload' || spellId == 'mindUnload' || spellId == 'matterUnload' || spellId == 'voidUnload') {
+                 this.playerSpellBodyTrack.unsubscribe();
+                 this.playerSpellBodyTrack = null;
+                 globalObjects.textPopupManager.hideInfoText();
+                 this.addTween({
+                     targets: [this.rune1, this.rune2],
+                     alpha: 0,
+                     duration: 200,
+                     onComplete: () => {
+                         this.rune1.visible = false;
+                         this.rune2.visible = false;
+                     }
+                 });
+             }
+        });
+    }
+
      initAttacks() {
          this.attacks = [
              [
                  {
                      name: "|6x2",
-                     chargeAmt: 500,
+                     chargeAmt: 400,
                      damage: 6,
                      attackTimes: 2,
                      prepareSprite: 'super_dummy_swinging.png',
@@ -553,6 +539,7 @@
                      startFunction: () => {
                          this.pullbackScale = 0.9;
                         this.attackScale = 1.2;
+                        this.createTutIcon(getLangText('superdummy_void'), 'rune_unload_glow.png', 'rune_void_glow.png')
                      },
                     attackFinishFunction: () => {
                         this.createPunchEffect();
@@ -634,14 +621,15 @@
                  },
                  {
                      name: "|8x2",
-                     chargeAmt: 450,
+                     chargeAmt: 400,
                      damage: 8,
                      attackTimes: 2,
                      prepareSprite: 'super_dummy_swinging.png',
                      attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
                      startFunction: () => {
-                         this.pullbackScale = 0.9;
+                        this.pullbackScale = 0.9;
                         this.attackScale = 1.2;
+                        this.createTutIcon(getLangText('superdummy_mind'), 'rune_unload_glow.png', 'rune_mind_glow.png')
                      },
                     attackFinishFunction: () => {
                         this.createPunchEffect();
@@ -845,11 +833,14 @@
                  },
                  {
                      name: "|10x2",
-                     chargeAmt: 400,
+                     chargeAmt: 450,
                      damage: 10,
                      attackTimes: 2,
                      prepareSprite: 'super_dummy_swinging.png',
                      attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
+                     startFunction: () => {
+                        this.createTutIcon(getLangText('superdummy_matter'), 'rune_unload_glow.png', 'rune_matter_glow.png')
+                     },
                     attackFinishFunction: () => {
                         this.createPunchEffect();
                     },
@@ -859,11 +850,11 @@
                     }
                  },
                  {
-                     name: "|6",
-                     chargeAmt: 250,
-                     damage: 6,
-                     attackTimes: 1,
-                     prepareSprite: 'super_dummy_wide.png',
+                     name: "|10x3",
+                     chargeAmt: 500,
+                     damage: 10,
+                     attackTimes: 3,
+                     prepareSprite: 'super_dummy_swinging.png',
                      attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
                     attackFinishFunction: () => {
                         this.createPunchEffect();
@@ -929,21 +920,6 @@
                         this.attackScale = 1.2;
                         this.lastAttackLingerMult = 0.55;
                      }
-                 },
-                 {
-                     name: "|10x3",
-                     chargeAmt: 400,
-                     damage: 10,
-                     attackTimes: 3,
-                     prepareSprite: 'super_dummy_swinging.png',
-                     attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
-                    attackFinishFunction: () => {
-                        this.createPunchEffect();
-                    },
-                    finaleFunction: () => {
-                        this.setSprite('dummy_angry.png');
-                        this.reEnableArms();
-                    }
                  },
                  {
                      name: "T-POSE",
@@ -1030,6 +1006,7 @@
                      isBigMove: true,
                      chargeMult: 2,
                      startFunction: () => {
+                        this.createTutIcon(getLangText('superdummy_time'), 'rune_unload_glow.png', 'rune_time_glow.png')
                         this.pullbackDurMult = 0;
                         this.disableAnimateShake = true;
                         globalObjects.tempBG.setDepth(0).setVisible(true);
@@ -1211,10 +1188,15 @@
 
     buffUp() {
         if (this.isBuffing) {
+            let buffDur = this.isAngry ? 250 : 500;
+            if (this.buffFast) {
+                buffDur = buffDur * 0.25 + 140;
+            }
+            let buffMult = this.buffFast ? 0.4 : 1;
             this.buffTween = this.addTween({
                  targets: this.sprite,
                  scaleY: 0.9,
-                 duration: this.isAngry ? 250 : 500,
+                 duration: buffDur,
                  ease: 'Quart.easeOut',
                  onStart: () => {
                     this.isPushingUp = !this.isPushingUp;
@@ -1231,7 +1213,7 @@
                     this.sprite.setOrigin(0.5, 0.75).setPosition(this.x, this.startY + 160);
                     this.sprite.scaleY = this.isPushingUp ? 1 : 0.8;
                 },
-                completeDelay: this.isAngry ? 250 : 500,
+                completeDelay: buffDur,
                  onComplete: () => {
                     this.buffUp();
                  }

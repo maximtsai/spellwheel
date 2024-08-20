@@ -96,7 +96,8 @@
              })
              this.forceOverrideSprite = 'time_magi_flattened.png';
              this.setSprite('time_magi_flattened.png');
-             playSound('punch2', 0.4);
+             playSound('derp', 0.3).detune = -500;
+             playSound('punch2', 0.65);
              this.addTween({
                  targets: this.sprite,
                  delay: 1200,

@@ -4,7 +4,7 @@
     }
 
      initStatsCustom() {
-        this.health = 200;
+        this.health = 170;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -269,24 +269,7 @@
                      }
                  },
                  {
-                     name: "|8x2",
-                     chargeAmt: 650,
-                     chargeMult: 2,
-                     finishDelay: 300,
-                     transitionFast: true,
-                     damage: -1,
-                     startFunction: () => {
-
-                     },
-                     attackStartFunction: () => {
-
-                     },
-                     attackFinishFunction: () => {
-                         this.throwWeapon('sword.png', 8, 2);
-                     }
-                 },
-                 {
-                     name: "FIX SELF \\25",
+                     name: "FIX SELF \\20",
                      chargeAmt: 600,
                      finishDelay: 2000,
                      transitionFast: true,
@@ -298,9 +281,9 @@
                              let runeYPos = globalObjects.textPopupManager.getBoxTopPos();
                              let centerXPos = globalObjects.textPopupManager.getCenterPos();
 
-                             this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 93, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
-                             this.rune4 = this.addSprite(centerXPos - 0, runeYPos + 93, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
-                             this.rune5 = this.addSprite(centerXPos + 48, runeYPos + 93, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
+                             this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 95, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
+                             this.rune4 = this.addSprite(centerXPos - 0, runeYPos + 95, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
+                             this.rune5 = this.addSprite(centerXPos + 48, runeYPos + 95, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
                              this.addTween({
                                  targets: [this.rune3, this.rune4, this.rune5],
                                  alpha: 1,
@@ -345,12 +328,12 @@
 
                      },
                      attackStartFunction: () => {
-                         this.healAnim(25);
+                         this.healAnim(20);
                      }
                  },
                  {
                      name: "|8x2",
-                     chargeAmt: 650,
+                     chargeAmt: 550,
                      chargeMult: 2,
                      finishDelay: 300,
                      transitionFast: true,
@@ -367,7 +350,7 @@
                  },
                  {
                      name: "|3x9",
-                     chargeAmt: 800,
+                     chargeAmt: 850,
                      chargeMult: 2,
                      finishDelay: 300,
                      transitionFast: true,
@@ -384,13 +367,13 @@
                      }
                  },
                  {
-                     name: "FIX SELF \\25",
+                     name: "FIX SELF \\30",
                      chargeAmt: 600,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(25);
+                         this.healAnim(30);
                      }
                  },
              ]

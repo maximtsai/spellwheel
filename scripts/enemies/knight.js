@@ -118,28 +118,6 @@
          });
      }
 
-     takeEffect(newEffect) {
-         if (this.sprite) {
-             if (newEffect.name == 'mindStrike' && this.shield <= 0 && !this.dead) {
-                 if (!this.shockEffect) {
-                     this.shockEffect = this.addImage(this.x, this.y, 'enemies', 'void_shock.png').setDepth(21)
-                 }
-                 this.shockEffect.x += 10;
-                 this.shockEffect.visible = true;
-                 this.addTween({
-                     targets: this.shockEffect,
-                     x: gameConsts.halfWidth,
-                     ease: 'Bounce.easeOut',
-                     easeParams: [1, 2.5],
-                     duration: 400,
-                     onComplete: () => {
-                         this.shockEffect.visible = 0;
-                     }
-                 });
-             }
-         }
-         super.takeEffect(newEffect)
-     }
 
      reactToDamageTypes(amt, isAttack, type) {
          super.reactToDamageTypes(amt, isAttack, type);
@@ -147,8 +125,9 @@
              return;
          }
          if (!this.isUsingAttack) {
-             if (type == "mind") {
-             } else if (type == "time") {
+            let accDamage = this.accumulatedDamageReaction;
+             if (type == "time") {
+                accDamage -= 10;
                  if (this.accumulatedDamageReaction >= 9) {
                      this.setSprite('void_knight_dazed.png');
                      if (this.reactTween) {
@@ -166,14 +145,49 @@
                      })
                  }
              }
-         }
+            let voidSpikes = 0;
+            if (accDamage >= 26) {
+                voidSpikes = 1;
+                if (accDamage >= 42) {
+                    voidSpikes = 2;
+                }
+            }
+            let isLeft = Math.random() < 0.5;
+            if (voidSpikes > 0) {
+                for (let i = 0; i < voidSpikes; i++) {
+                    let tempObj = getTempPoolObject('enemies', 'void_shock.png', 'voidshock', 750);
+                    tempObj.setDepth(0).setPosition(this.x, this.y).setScale(isLeft ? -0.1 : 0.1, 0.6).setAlpha(0.15);
+                    let randScale = 1.4 + Math.random();
+                    tempObj.setRotation(Math.random() - 0.5);
+                    this.addTween({
+                        delay: i * 70,
+                        targets: tempObj,
+                        scaleX: isLeft ? -randScale : randScale,
+                        scaleY: randScale - 0.25,
+                        ease: 'Cubic.easeIn',
+                        alpha: 0.25 + voidSpikes * 0.25,
+                        duration: 100,
+                        onComplete: () => {
+                            this.addTween({
+                                targets: tempObj,
+                                scaleX: 0.4,
+                                scaleY: 0.7,
+                                ease: 'Cubic.easeOut',
+                                alpha: 0,
+                                duration: 450,
+                            })
+                        }
+                    });
+                }
+
+            }
+        }
 
      }
 
      launchAttack(attackTimes = 1, prepareSprite, preAttackSprite, attackSprites, isRepeatedAttack, finishDelay, transitionFast = false) {
          this.sigilEffect.visible = false;
          if (this.voidTentacleFront) {
-             console.log("Hide void tentacle")
              this.voidTentacleFront.visible = false;
              this.voidTentacleBack.visible = false;
              // this.setSprite('void_knight_3.png');
@@ -665,7 +679,7 @@
          this.slashEffectAnim2 = this.addTween({
              targets: this.slashEffect,
              delay: 10,
-             ease: 'Quart.easeIn'
+             ease: 'Quart.easeIn',
              duration: 300,
              alpha: 0,
          });

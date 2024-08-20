@@ -1143,7 +1143,6 @@ class Enemy {
         this.healthBarFlashTween = PhaserScene.tweens.add({
             targets: this.healthBarFlash,
             alpha: 0,
-            scaleY: this.healthBarCurr.scaleY,
             ease: "Cubic.easeOut",
             duration: gameVars.gameManualSlowSpeedInverse * 600 * mult + 150
         });

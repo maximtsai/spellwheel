@@ -969,7 +969,7 @@ class Player {
                             if (exceedAmt <= 0) {
                                 messageBus.publish('playerAddDelayedDamage', hurtAmt);
                                 hurtAmt = 0;
-                                messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'DELAYED', 1.2);
+                                messageBus.publish('animateBlockNum', gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 185, 'DELAYED', 1.05);
                             } else {
                                 hurtAmt = exceedAmt;
                                 let delayAmt = shieldObj.maxAmt - globalObjects.magicCircle.delayedDamage;

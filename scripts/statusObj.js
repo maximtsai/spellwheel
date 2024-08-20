@@ -11,11 +11,11 @@ class StatusObj {
         this.sprite2 = this.scene.add.sprite(x - 10, y + 8, 'circle', 'rune_void_glow.png');
         this.sprite2.setScale(0.6, 0.6);
         this.sprite2.visible = false;
-        this.timeLeftText = this.scene.add.bitmapText(x + 27, y, 'normalStroke', '99', 24, 0);
-        this.timeLeftText.setOrigin(0, 0.5);
-        this.amtText = this.scene.add.bitmapText(x + 9, y+9, 'normalStroke', '0', 18, 0);
+        this.amtText = this.scene.add.bitmapText(x + 8, y+11, 'normalStroke', '0', isMobile ? 24 : 22, 0);
         this.amtText.visible = false;
-        this.amtText.setOrigin(0.3, 0.5);
+        this.amtText.setOrigin(isMobile ? 0.2 : 0.26, 0.5);
+        this.timeLeftText = this.scene.add.bitmapText(x + 27, y, 'normalStroke', '99', isMobile ? 30 : 28, 0);
+        this.timeLeftText.setOrigin(0, 0.5);
 
         this.sprite.setDepth(9999);
         this.sprite2.setDepth(9999);

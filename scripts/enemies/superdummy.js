@@ -481,12 +481,14 @@
         let centerXPos = globalObjects.textPopupManager.getCenterPos();
 
         if (this.rune1) {
-            this.rune1.setFrame(rune1Text).setDepth(10001).setScale(0.75).setAlpha(0);
-            this.rune2.setFrame(rune2Text).setDepth(10001).setScale(0.75).setAlpha(0);
+            this.rune1.setFrame(rune1Text).setDepth(10001).setScale(0.75).setAlpha(0).setPosition(centerXPos - 30, runeYPos + 27);
+            this.rune2.setFrame(rune2Text).setDepth(10001).setScale(0.75).setAlpha(0).setPosition(centerXPos + 30, runeYPos + 27);
         } else {
             this.rune1 = this.addSprite(centerXPos - 30, runeYPos + 27, 'circle', rune1Text).setDepth(10001).setScale(0.75).setAlpha(0);
             this.rune2 = this.addSprite(centerXPos + 30, runeYPos + 27, 'circle', rune2Text).setDepth(10001).setScale(0.75).setAlpha(0);
         }
+        this.rune1.visible = true;
+        this.rune2.visible = true;
         this.addTween({
             targets: [this.rune1, this.rune2],
             alpha: 1,
@@ -508,22 +510,24 @@
                  });
              }
         });
-        this.playerSpellBodyTrack = messageBus.subscribe('recordSpell', (spellId) => {
-             if (spellId == 'timeUnload' || spellId == 'mindUnload' || spellId == 'matterUnload' || spellId == 'voidUnload') {
-                 this.playerSpellBodyTrack.unsubscribe();
-                 this.playerSpellBodyTrack = null;
-                 globalObjects.textPopupManager.hideInfoText();
-                 this.addTween({
-                     targets: [this.rune1, this.rune2],
-                     alpha: 0,
-                     duration: 200,
-                     onComplete: () => {
-                         this.rune1.visible = false;
-                         this.rune2.visible = false;
-                     }
-                 });
-             }
+        this.playerSpellBodyTrack = messageBus.subscribe('messageAllSpell', (spellId) => {
+            if (spellId == 'timeUnload' || spellId == 'mindUnload' || spellId == 'matterUnload' || spellId == 'voidUnload') {
+                this.clearPlayerSpellTrack();
+            }
         });
+    }
+
+    clearPlayerSpellTrack() {
+        if (this.playerSpellBodyTrack) {
+             this.playerSpellBodyTrack.unsubscribe();
+             this.playerSpellBodyTrack = null;
+             globalObjects.textPopupManager.hideInfoText();
+             this.addTween({
+                 targets: [this.rune1, this.rune2],
+                 alpha: 0,
+                 duration: 200,
+             });
+        }
     }
 
      initAttacks() {
@@ -560,6 +564,7 @@
                         this.lastAttackLingerMult = 1.25;
                      },
                      attackStartFunction: () => {
+                        this.clearPlayerSpellTrack();
                         this.setSprite('super_dummy_wide.png');
                      },
                      attackFinishFunction: () => {
@@ -651,6 +656,7 @@
                      },
                      attackStartFunction: () => {
                         playSound('inflate');
+                        this.clearPlayerSpellTrack();
                         this.reEnableArms();
                         this.setSprite('dummy_angry.png');
                         this.disableAnimateShake = true;
@@ -856,6 +862,9 @@
                      attackTimes: 3,
                      prepareSprite: 'super_dummy_swinging.png',
                      attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
+                     attackStartFunction: () => {
+                        this.clearPlayerSpellTrack();
+                     },
                     attackFinishFunction: () => {
                         this.createPunchEffect();
                     },
@@ -1018,6 +1027,7 @@
                         });
                      },
                      attackStartFunction: () => {
+                        this.clearPlayerSpellTrack();
                         PhaserScene.sound.pauseOnBlur = false;
                         if (globalObjects.tempBG.currAnim) {
                             globalObjects.tempBG.currAnim.stop();

@@ -463,9 +463,9 @@ class SpellManager {
                     statuses[spellID].currentAnim = this.scene.tweens.add({
                         targets: statuses[spellID].animObj,
                         duration: 300,
-                        scaleX: 0.5,
-                        scaleY: 0.5,
-                        alpha: 0,
+                        scaleX: 0.55,
+                        scaleY: 0.55,
+                        alpha: 0.6,
                         ease: 'Back.easeIn',
                         onComplete: () => {
                             while (statuses[spellID] && statuses[spellID].animObj.length > 0) {
@@ -1638,16 +1638,22 @@ class SpellManager {
         let multiplier = globalObjects.player.spellMultiplier();
         let existingBuff = globalObjects.player.getStatuses()[spellID];
         let statusObj;
+        let energyCircle1;
+        let energyCircle2;
+        let repeatCircle;
         if (existingBuff) {
             // already got a buff in place
+            repeatCircle = existingBuff.animObj[0];
+            energyCircle1 = existingBuff.animObj[1];
+            energyCircle2 = existingBuff.animObj[2];
             statusObj = existingBuff.statusObj;
         } else {
             this.cleanseForms();
+            energyCircle1 = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'energy_body.png').setScale(0.9).setAlpha(0.75).setDepth(104);
+            energyCircle2 = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'energy_body.png').setScale(0.8).setAlpha(0.25).setRotation(Math.PI / 8).setDepth(104);
+            repeatCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells').play('powerEffectRepeat').setScale(1.5).setDepth(117);
         }
         let electricCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells').play('powerEffect').setScale(3.4).setDepth(117);
-        let repeatCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells').play('powerEffectRepeat').setScale(1.5).setDepth(117);
-        let energyCircle1 = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'energy_body.png').setScale(0.9).setAlpha(0.75).setDepth(104);
-        let energyCircle2 = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'energy_body.png').setScale(0.8).setAlpha(0.25).setRotation(Math.PI / 8).setDepth(104);
 
         playSound('power_surge');
 
@@ -1755,14 +1761,11 @@ class SpellManager {
                     statuses[spellID].currentAnim = this.scene.tweens.add({
                         targets: statuses[spellID].animObj,
                         duration: 300,
-                        scaleX: 0.55,
-                        scaleY: 0.55,
+                        scaleX: 1,
+                        scaleY: 1,
                         alpha: 0,
-                        ease: 'Cubic.easeOut',
+                        ease: 'Back.easeIn',
                         onComplete: () => {
-                            repeatCircle.destroy();
-                            energyCircle1.destroy();
-                            energyCircle2.destroy();
                             while (statuses[spellID] && statuses[spellID].animObj.length > 0) {
                                 let item = statuses[spellID].animObj.pop()
                                 item.destroy();
@@ -2947,12 +2950,14 @@ class SpellManager {
              */
         });
         messageBus.publish('recordSpellAttack', spellID, spellName, undefined, additionalDamage, numAdditionalAttacks);
+        messageBus.publish('messageAllSpell', spellID, spellName);
         messageBus.publish('clearAttackMultiplier');
         messageBus.publish('clearDamageAdder');
     }
 
     postNonAttackCast(spellID, spellName = "UNNAMED SPELL") {
         messageBus.publish('recordSpell', spellID, spellName);
+        messageBus.publish('messageAllSpell', spellID, spellName);
         messageBus.publish('clearSpellMultiplier');
     }
 

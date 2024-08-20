@@ -398,7 +398,7 @@ let textData4 = {
         "jp": ""
     },
     "superdummy_mind": {
-        "en_us": "Amplifies your next\nnon-attack spell\n               +",
+        "en_us": "Amplifies next\nnon-attack spell\n                  +",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -407,7 +407,7 @@ let textData4 = {
         "jp": ""
     },
     "superdummy_matter": {
-        "en_us": "Deals damage\nand defends\n            +",
+        "en_us": "Deals damage\nand defends\n           +",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

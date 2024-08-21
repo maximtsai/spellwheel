@@ -666,11 +666,17 @@
             <key type="filename">circle/healthbar_1thirds.png</key>
             <key type="filename">circle/healthbar_1thirds_half.png</key>
             <key type="filename">circle/healthbar_2thirds.png</key>
+            <key type="filename">circle/healthbar_full - Copy.png</key>
             <key type="filename">circle/healthbar_full.png</key>
             <key type="filename">circle/healthbar_partial.png</key>
             <key type="filename">circle/healthbar_partial_half.png</key>
             <key type="filename">circle/healthbar_partial_sliver.png</key>
             <key type="filename">circle/healthbar_seg_red.png</key>
+            <key type="filename">circle/healthbar_seg_red_eighth.png</key>
+            <key type="filename">circle/healthbar_seg_red_eith_flash.png</key>
+            <key type="filename">circle/healthbar_seg_red_half.png</key>
+            <key type="filename">circle/healthbar_seg_red_half_flash.png</key>
+            <key type="filename">circle/healthbar_seg_red_quarter.png</key>
             <key type="filename">circle/healthbar_sliver.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

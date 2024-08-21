@@ -193,9 +193,16 @@ class Player {
         }
     }
 
+
+
     createHealthBar(x, y) {
         this.healthBarReady = true;
         this.barAssetsSmall = [];
+        this.injureBarRecentLast = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_seg_red.png').setDepth(130).setVisible(false).setRotation(-Math.PI);
+        this.injureBarRecent2 = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_seg_red.png').setDepth(130);
+        this.injureBarRecent = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_seg_red.png').setDepth(130);
+        this.injureBarRecentFlash = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_seg_red_half_flash.png').setDepth(130).setAlpha(0);
+
         this.healthBarPartial = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_partial.png').setDepth(999).setVisible(false);
         this.healthBarMain = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_full.png').setDepth(999);
 
@@ -268,6 +275,7 @@ class Player {
         this.healthBarPartial.visible = true;
         let furthestRotation = (healthRatio - 1) * Math.PI * 6/4;
 
+
         if (healthRatio <= 0) {
             this.healthBarMain.setFrame('circleEffect10.png'); // empty
             this.healthBarPartial.visible = false;
@@ -300,6 +308,84 @@ class Player {
             this.healthBarPartial.visible = false;
         }
         this.healthBarPartial.rotation = furthestRotation;
+        this.refreshRecentInjuryBar();
+    }
+
+    flashRecentInjury(recentDamageIsZero = false, manualAmt = null, preventRapidFlash = false) {
+        if (preventRapidFlash && this.injureBarRecentFlash.isFlashing) {
+            return;
+        }
+        let healthRatio = this.health / this.healthMax;
+        let recentTakenDamage = recentDamageIsZero ? 0 : Math.max(0, (this.lastInjuryHealth - this.health));
+        let FlashDamageLevel = manualAmt === null ? recentTakenDamage : manualAmt;
+        let healthPlusInjureRatio = Math.min(1, (this.health + FlashDamageLevel) / this.healthMax);
+        let furthestInjureRotation = (healthPlusInjureRatio - 1) * Math.PI * 6/4;
+        this.injureBarRecentFlash.rotation = furthestInjureRotation;
+        if (this.injureBarRecentFlash.currAnim) {
+            this.injureBarRecentFlash.currAnim.stop();
+        }
+        this.injureBarRecentFlash.alpha = 1.3;
+        if (healthRatio < 0.15) {
+            this.injureBarRecentFlash.setFrame('healthbar_seg_red_eith_flash.png');
+        } else {
+            this.injureBarRecentFlash.setFrame('healthbar_seg_red_half_flash.png');
+        }
+        this.injureBarRecentFlash.isFlashing = true;
+        this.injureBarRecentFlash.currAnim = PhaserScene.tweens.add({
+            targets: this.injureBarRecentFlash,
+            duration: 1000,
+            alpha: 0,
+            ease: 'Quad.easeOut',
+            onComplete: () => {
+                this.injureBarRecentFlash.isFlashing = false;
+            }
+        });
+    }
+
+    refreshRecentInjuryBar(recentDamageIsZero = false) {
+        let recentTakenDamage = recentDamageIsZero ? 0 : Math.max(0, (this.lastInjuryHealth - this.health));
+        let healthRatio = this.health / this.healthMax;
+        let healthPlusInjureRatio = Math.min(1, (this.health + recentTakenDamage) / this.healthMax);
+        let recentDamageRatio = Math.min(1, recentTakenDamage / this.healthMax);
+        let furthestInjureRotation = (healthPlusInjureRatio - 1) * Math.PI * 6/4;
+        let secondInjureOffset = ((healthPlusInjureRatio + healthRatio) * 0.5 - 1) * Math.PI * 6/4;
+
+        this.injureBarRecent.rotation = furthestInjureRotation;
+        this.injureBarRecent2.rotation = secondInjureOffset;
+        this.flashRecentInjury(recentDamageIsZero, 1);
+
+        if (recentDamageRatio > 0.62) {
+            this.injureBarRecentLast.visible = true;
+        } else {
+             this.injureBarRecentLast.visible = false;
+        }
+        this.injureBarRecent.alpha = 1;
+        this.injureBarRecent2.alpha = 1;
+
+        let thirdHealthRatio = 0.33;
+        let isDead = healthRatio == 0;
+
+        if (healthRatio == 0) {
+            this.injureBarRecent.setFrame('blastEffect6.png');
+            this.injureBarRecent2.setFrame('blastEffect6.png');
+        } else if (recentDamageRatio < thirdHealthRatio) {
+            if (recentDamageRatio < thirdHealthRatio * 0.5) {
+                if (recentDamageRatio < thirdHealthRatio * 0.25) {
+                    this.injureBarRecent.setFrame('healthbar_seg_red_eighth.png');
+                    this.injureBarRecent2.setFrame('healthbar_seg_red_eighth.png');
+                } else {
+                    this.injureBarRecent.setFrame('healthbar_seg_red_quarter.png');
+                    this.injureBarRecent2.setFrame('healthbar_seg_red_quarter.png');
+                }
+            } else {
+                this.injureBarRecent.setFrame('healthbar_seg_red_half.png');
+                this.injureBarRecent2.setFrame('healthbar_seg_red_half.png');
+            }
+        } else {
+            this.injureBarRecent.setFrame('healthbar_seg_red.png');
+            this.injureBarRecent2.setFrame('healthbar_seg_red.png');
+            this.injureBarRecent2.rotation = Math.max(secondInjureOffset, Math.PI * -1/2);
+        }
     }
 
     resetStats() {
@@ -526,7 +612,6 @@ class Player {
             // this.recentlyTakenDelayedDamageAmt -= overflowHeal;
             healAmt = maxHealAmt;
         }
-        console.log("healAmt actual: ", healAmt);
         this.selfHeal(healAmt, false);
         let delayedDamageRemaining = globalObjects.magicCircle.getDelayedDamage() - overflowHeal;
         let delayedDamageReduced = Math.ceil(delayedDamageRemaining * percent);
@@ -546,6 +631,7 @@ class Player {
         setTimeout(() => {
             this.recentlyTakenDamageAmt = 0;
         }, 250)
+        this.refreshRecentInjuryBar(true);
     }
 
     takeTrueDamage(amt) {
@@ -983,7 +1069,6 @@ class Player {
                 }
             }
         }
-
         return hurtAmt;
     }
 

@@ -2307,7 +2307,6 @@ const ENABLE_KEYBOARD = true;
          if (this.delayedDamage > 0) {
              this.delayDamageText.setText(this.delayedDamage);
              let scaleAmtTotal = this.getDelayedDamageClockScale();
-             console.log(scaleAmtTotal);
             let textScaleFinal = Math.sqrt(scaleAmtTotal * 2) * 0.75;
              if (oldDelayedDamage <= 0) {
                  // animation in
@@ -2571,6 +2570,10 @@ const ENABLE_KEYBOARD = true;
                              // this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS (\\'+ healAmt + ")")
                              embodimentText += " (\\" + healAmt + ")";
                              this.updateSpellDescriptorText(getLangText('time_reinforce_desc' + postPendTextName));
+                            if (healAmt > 1) {
+                                globalObjects.player.flashRecentInjury(false, recentlyHealAmt, true)
+                            }
+
                              break;
                          case RUNE_ENHANCE:
                              embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";

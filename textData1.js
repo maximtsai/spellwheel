@@ -344,7 +344,7 @@ let textData = {
         "jp": "1の真のダメージを与える。敵は次の\n攻撃で2倍のダメージを受ける"
     },
     "mind_enhance_desc": {
-        "en_us": "Next attack burns\nenemy for 10\nTrue damage\nover 5 seconds",
+        "en_us": "Next attack burns\nenemy for 2\nTrue damage/sec\nfor 5 seconds",
         "fr": "La prochaine attaque\nbrûle l’ennemi et\nlui inflige 10\npoints de dégâts\nbruts en 5 secondes",
         "zh_tw": "下一次攻擊在5秒內\n燃燒敵人10點\n真實傷害",
         "zh_cn": "下一次攻击在5秒内\n燃烧敌人10点\n真实伤害",
@@ -353,7 +353,7 @@ let textData = {
         "jp": "次の通常攻撃で敵を\n5秒間10確定ダメー\nジで燃やす"
     },
     "mind_enhance_desc_long": {
-        "en_us": "Next attack burns enemy for 10\nTrue damage over 5 seconds",
+        "en_us": "Next attack burns enemy for\n2 True damage/sec for 5 seconds",
         "fr": "La prochaine attaque brûle l’ennemi et lui\ninflige 10 points de dégâts bruts en 5 secondes",
         "zh_tw": "下一次攻擊在5秒內燃燒\n敵人10點真實傷害",
         "zh_cn": "下一次攻击在5秒内燃烧\n敌人10点真实伤害",
@@ -362,7 +362,7 @@ let textData = {
         "jp": "次の通常攻撃で敵を5秒間10確定ダメージで燃やす"
     },
     "mind_enhance_plus_desc": {
-        "en_us": "Next attack burns\nenemy for 15\nTrue damage\nover 5 seconds",
+        "en_us": "Next attack burns\nenemy for 3\nTrue damage/sec\nfor 5 seconds",
         "fr": "La prochaine attaque\nbrûle l’ennemi et\nlui inflige 15\npoints de dégâts\nbruts en 5 secondes",
         "zh_tw": "下一次攻擊在5秒內\n燃燒敵人15點\n真實傷害",
         "zh_cn": "下一次攻击在5秒内\n燃烧敌人15点\n真实伤害",
@@ -371,7 +371,7 @@ let textData = {
         "jp": "次の通常攻撃で敵を\n5秒間15確定ダメー\nジで燃やす"
     },
     "mind_enhance_plus_desc_long": {
-        "en_us": "Next attack burns enemy for 15\nTrue damage over 5 seconds",
+        "en_us": "Next attack burns enemy for\n3 True damage/sec for 5 seconds",
         "fr": "La prochaine attaque brûle l’ennemi et lui\ninflige 15 points de dégâts bruts en 5 secondes",
         "zh_tw": "下一次攻擊在5秒內燃燒敵人15點真實傷害",
         "zh_cn": "下一次攻击在5秒内燃烧敌人15点真实伤害",

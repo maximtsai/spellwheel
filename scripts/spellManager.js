@@ -2555,7 +2555,7 @@ class SpellManager {
             let xPos = gameConsts.halfWidth + startDist * Math.sin(rotationPos);
             let yPos = MAGIC_CIRCLE_HEIGHT - 30 - startDist * Math.cos(rotationPos);
             blackShieldPiece.setPosition(xPos, yPos);
-            blackShieldPiece.setDepth(11);
+            blackShieldPiece.setDepth(108);
             blackShieldPiece.scaleVel = (Math.random() - 0.45) * 0.2;
             blackShieldPiece.setScale(0);
             blackShieldPiece.rotationOffset = rotationPos;
@@ -2573,11 +2573,10 @@ class SpellManager {
             eyeAnim.rotationOffset = rotationPos;
             eyeAnim.rotVel = 0;
             eyeAnim.setPosition(xPos, yPos);
-            eyeAnim.setDepth(12);
+            eyeAnim.setDepth(109);
             eyeAnim.setScale(1, 0);
             voidEyes.push(eyeAnim);
         }
-
 
 
         for (let i = voidEyes.length - 1; i >= 0; i--) {

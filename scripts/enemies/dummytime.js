@@ -4,7 +4,7 @@
     }
 
      initStatsCustom() {
-        this.health = 170;
+        this.health = 160;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -98,6 +98,12 @@
              this.rune1.destroy();
              this.rune2.destroy();
          }
+         if (this.rune3) {
+            this.rune3.destroy();
+            this.rune4.destroy();
+            this.rune5.destroy();
+         }
+    
         playSound('clunk2');
          if (this.runTween) {
             this.runTween.stop();
@@ -252,7 +258,7 @@
              [
                  {
                      name: "|12",
-                     chargeAmt: 400,
+                     chargeAmt: 350,
                      chargeMult: 2,
                      finishDelay: 500,
                      transitionFast: true,
@@ -268,7 +274,7 @@
                      }
                  },
                  {
-                     name: "FIX SELF \\20",
+                     name: "FIX SELF \\25",
                      chargeAmt: 600,
                      finishDelay: 2000,
                      transitionFast: true,
@@ -280,9 +286,11 @@
                              let runeYPos = globalObjects.textPopupManager.getBoxTopPos();
                              let centerXPos = globalObjects.textPopupManager.getCenterPos();
 
-                             this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 95, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
-                             this.rune4 = this.addSprite(centerXPos - 0, runeYPos + 95, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
-                             this.rune5 = this.addSprite(centerXPos + 48, runeYPos + 95, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
+                            if (!this.rune3) {
+                                 this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 96, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
+                                 this.rune4 = this.addSprite(centerXPos - 0, runeYPos + 96, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
+                                 this.rune5 = this.addSprite(centerXPos + 48, runeYPos + 96, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
+                            }
                              this.addTween({
                                  targets: [this.rune3, this.rune4, this.rune5],
                                  alpha: 1,
@@ -314,11 +322,6 @@
                                              targets: [this.rune3, this.rune4, this.rune5],
                                              alpha: 0,
                                              duration: 200,
-                                             onComplete: () => {
-                                                 this.rune3.destroy();
-                                                 this.rune4.destroy();
-                                                 this.rune5.destroy();
-                                             }
                                          });
                                      }
                                  })
@@ -327,12 +330,12 @@
 
                      },
                      attackStartFunction: () => {
-                         this.healAnim(20);
+                         this.healAnim(25);
                      }
                  },
                  {
                      name: "|8x2",
-                     chargeAmt: 550,
+                     chargeAmt: 500,
                      chargeMult: 2,
                      finishDelay: 300,
                      transitionFast: true,
@@ -366,13 +369,13 @@
                      }
                  },
                  {
-                     name: "FIX SELF \\30",
-                     chargeAmt: 600,
+                     name: "FIX SELF \\40",
+                     chargeAmt: 700,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(30);
+                         this.healAnim(40);
                      }
                  },
              ]

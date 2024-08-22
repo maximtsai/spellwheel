@@ -243,6 +243,10 @@
         if (this.currAnim) {
             this.currAnim.stop();
         }
+        if (this.playerSpellCastSub) {
+            this.playerSpellCastSub.unsubscribe();
+        }
+        messageBus.publish("closeCombatText")
         globalObjects.magicCircle.cancelTimeSlow();
         if (this.lifeOne) {
             this.interruptCurrentAttack();
@@ -420,7 +424,7 @@
         globalObjects.magicCircle.disableMovement();
         swirlInReaperFog();
         setTimeout(() => {
-            playReaperDialog(["TIME'S UP"], [], () => {
+            playReaperDialog([getLangText('magician_death')], [], () => {
                  PhaserScene.tweens.add({
                      targets: this.timeFallObjs,
                      duration: 1000,
@@ -1049,6 +1053,61 @@
         }
     }
 
+    showTiredText() {
+        if (this.dead) {
+            return;
+        }
+        messageBus.publish("showCombatText", getLangText('magician_e'), 10);
+        this.addTimeout(() => {
+            this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                this.playerSpellCastSub.unsubscribe();
+                clearTimeout(this.spellCastTimeout);
+                this.showTiredText2();
+            });
+            this.spellCastTimeout = this.addTimeout(() => {
+                this.playerSpellCastSub.unsubscribe();
+                this.showTiredText2();
+            }, 2000);
+        }, 3500)
+    }
+
+
+    showTiredText2() {
+        if (this.dead) {
+            return;
+        }
+        messageBus.publish("showCombatText", getLangText('magician_f'), 10);
+        this.addTimeout(() => {
+            this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                this.playerSpellCastSub.unsubscribe();
+                clearTimeout(this.spellCastTimeout);
+                this.showTiredText3();
+            });
+            this.spellCastTimeout = this.addTimeout(() => {
+                this.playerSpellCastSub.unsubscribe();
+                this.showTiredText3();
+            }, 2000);
+        }, 3500)
+    }
+
+    showTiredText3() {
+        if (this.dead) {
+            return;
+        }
+        messageBus.publish("showCombatText", getLangText('magician_g'), 10);
+        this.addTimeout(() => {
+            this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                this.playerSpellCastSub.unsubscribe();
+                clearTimeout(this.spellCastTimeout);
+                messageBus.publish("closeCombatText")
+            });
+            this.spellCastTimeout = this.addTimeout(() => {
+                this.playerSpellCastSub.unsubscribe();
+                messageBus.publish("closeCombatText")
+            }, 3000);
+        }, 3500)
+    }
+
      initAttacks() {
          this.attacks = [
              [
@@ -1237,45 +1296,26 @@
                      }
                  },
                  {
-                     name: "}4 ",
+                     name: "...",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
                      chargeAmt: 400,
-                     chargeMult: 2,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
+                     startFunction: () => {
+                        this.showTiredText();
+                     },
                      attackStartFunction: () => {
-                         this.createTimeObject('clock2.png', this.x - 60, this.y - 70, 0);
-                         this.addTimeout(() => {
-                             this.fireTimeObjects(4);
-                         }, 800);
+
                      },
                  },
                  {
-                     name: "}4 ",
+                     name: ":(",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
                      chargeAmt: 400,
-                     chargeMult: 2,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
-                         this.createTimeObject('clock2.png', this.x - 60, this.y - 70, 0);
-                         this.addTimeout(() => {
-                             this.fireTimeObjects(4);
-                         }, 800);
-                     },
-                 },
-                 {
-                     name: "}4 ",
-                     desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: 400,
-                     chargeMult: 2,
-                     damage: -1,
-                     prepareSprite: 'time_magi_cast.png',
-                     attackStartFunction: () => {
-                         this.createTimeObject('clock2.png', this.x - 60, this.y - 70, 0);
-                         this.addTimeout(() => {
-                             this.fireTimeObjects(4);
-                         }, 800);
+
                      },
                  },
                  // 1
@@ -1597,7 +1637,7 @@
              this.addTween({
                  targets: currObj,
                  delay: delayAmt,
-                 y: globalObjects.player.getY() - 175 + Math.random() * 10,
+                 y: globalObjects.player.getY() - 185 + Math.random() * 10,
                  ease: 'Quad.easeIn',
                  duration: projDur,
                  rotation: (Math.random() - 0.5) * 3,

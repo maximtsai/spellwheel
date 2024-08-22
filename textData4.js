@@ -344,7 +344,7 @@ let textData4 = {
         "jp": ""
     },
     "magician_d": {
-        "en_us": "It's time I show you\na true temporal threat!",
+        "en_us": "Let me show you\na true temporal threat!",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -353,7 +353,7 @@ let textData4 = {
         "jp": ""
     },
     "magician_e": {
-        "en_us": "Had... enough... yet?",
+        "en_us": "Oh... you're still... here?",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -361,6 +361,25 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "magician_f": {
+        "en_us": "My time is short I fear.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "magician_g": {
+        "en_us": "Have mercy please?",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+
     "shield_dummy_overwrite": {
         "en_us": "Only one shield\ncan be active\nper spot.",
         "fr": "",
@@ -388,6 +407,15 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "superdummy_start": {
+        "en_us": "Strange, I don't remember\nsetting up a training dummy.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "superdummy_void": {
         "en_us": "Deals lots of\n%health damage\n             +",
         "fr": "",
@@ -398,7 +426,7 @@ let textData4 = {
         "jp": ""
     },
     "superdummy_mind": {
-        "en_us": "Amplifies next\nnon-attack spell\n                  +",
+        "en_us": "Amplifies next\nnon-attack spell\n             +",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -416,7 +444,7 @@ let textData4 = {
         "jp": ""
     },
     "superdummy_time": {
-        "en_us": "Freezes time for\nnext few spells\n               +",
+        "en_us": "Freezes time for\nnext few spells\n             +",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

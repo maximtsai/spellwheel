@@ -94,7 +94,7 @@ function toggleCheat(code) {
 function updateCheatsDisplay() {
     let cheatsText = "CHEATS:";
     if (!cheatsDisplay) {
-        cheatsDisplay = PhaserScene.add.text(gameConsts.width - 7, gameConsts.height , ' ', {fontFamily: 'verdanamax', fontSize: 15, color: '#FF0000', align: 'right'}).setOrigin(1, 1);
+        cheatsDisplay = PhaserScene.add.text(gameConsts.width - 7, gameConsts.height , ' ', {fontFamily: 'dejavusans', fontSize: 15, color: '#FF0000', align: 'right'}).setOrigin(1, 1);
         cheatsDisplay.setDepth(500);
     }
     let hasCheats = false;

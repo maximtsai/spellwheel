@@ -3,7 +3,6 @@
          super(scene, x, y);
          this.initSprite('death2final.png', 0.92, 0, 0, 'deathfinal');
          this.bgMusic = playMusic('but_never_forgotten_metal', 0.9, true);
-         console.log("play Music");
          this.bgMain = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5)
          this.bgBlur = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star_blur.png').setDepth(-5).setScale(2.5).setAlpha(1.5);
          globalObjects.player.reInitStats();
@@ -210,7 +209,7 @@
                                          this.playerSpellCastSub.unsubscribe();
                                          messageBus.publish("closeCombatText")
                                      });
-                                 }, 1800)
+                                 }, 1500)
                              }, 600)
                          }, 3000)
                      }

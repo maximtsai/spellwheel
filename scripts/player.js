@@ -27,6 +27,11 @@ class Player {
 
             messageBus.subscribe("spellClicked", this.incrementSpellsCast.bind(this)),
             messageBus.subscribe("enemyHasDied", this.clearAllEffects.bind(this)),
+
+            messageBus.subscribe("enemyHasDied", () => {
+                this.refreshRecentInjuryBar(true);
+            }),
+
             messageBus.subscribe("wheelReloaded", this.incrementMindReinforceStatus.bind(this)),
 
         ];
@@ -317,8 +322,8 @@ class Player {
         }
         let healthRatio = this.health / this.healthMax;
         let recentTakenDamage = recentDamageIsZero ? 0 : Math.max(0, (this.lastInjuryHealth - this.health));
-        let FlashDamageLevel = manualAmt === null ? recentTakenDamage : manualAmt;
-        let healthPlusInjureRatio = Math.min(1, (this.health + FlashDamageLevel) / this.healthMax);
+        let flashDamageLevel = manualAmt === null ? recentTakenDamage : manualAmt;
+        let healthPlusInjureRatio = Math.min(1, (this.health + flashDamageLevel) / this.healthMax);
         let furthestInjureRotation = (healthPlusInjureRatio - 1) * Math.PI * 6/4;
         this.injureBarRecentFlash.rotation = furthestInjureRotation;
         if (this.injureBarRecentFlash.currAnim) {
@@ -352,18 +357,13 @@ class Player {
 
         this.injureBarRecent.rotation = furthestInjureRotation;
         this.injureBarRecent2.rotation = secondInjureOffset;
-        this.flashRecentInjury(recentDamageIsZero, 1);
-
-        if (recentDamageRatio > 0.62) {
-            this.injureBarRecentLast.visible = true;
-        } else {
-             this.injureBarRecentLast.visible = false;
+        if (recentTakenDamage > 0) {
+            this.flashRecentInjury(recentDamageIsZero);
         }
-        this.injureBarRecent.alpha = 1;
-        this.injureBarRecent2.alpha = 1;
 
         let thirdHealthRatio = 0.33;
         let isDead = healthRatio == 0;
+        this.injureBarRecentLast.visible = false;
 
         if (healthRatio == 0) {
             this.injureBarRecent.setFrame('blastEffect6.png');
@@ -384,6 +384,7 @@ class Player {
         } else {
             this.injureBarRecent.setFrame('healthbar_seg_red.png');
             this.injureBarRecent2.setFrame('healthbar_seg_red.png');
+            this.injureBarRecentLast.visible = true;
             this.injureBarRecent2.rotation = Math.max(secondInjureOffset, Math.PI * -1/2);
         }
     }

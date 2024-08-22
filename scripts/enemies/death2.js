@@ -439,7 +439,6 @@
      }
 
      checkFireForm() {
-         console.log("Checking fire form, punch cycle", this.punchCycleCount);
          if (!this.fireForm) {
              if ((this.punchCycleCount == 1 && !this.thornForm) || this.punchCycleCount >= 2) {
                  this.fireForm = true;
@@ -490,7 +489,7 @@
                 },
                 {
                     name: "|7x3",
-                    chargeAmt: 500,
+                    chargeAmt: this.firstLaugh ? 650 : 500,
                     damage: 7,
                     attackTimes: 3,
                     prepareSprite: ['death2windup.png', 'death2windupflip.png'],

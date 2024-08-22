@@ -235,7 +235,7 @@ let textData2 = {
         "jp": "私は死者の禁じられた土地への門に到着しました。 すぐに、この領域は私の立ち入りに抵抗します。しかし、私はここであなたを見つけるでしょう、親愛なる最愛の人、そして私があなたに連絡を取るのを妨げるものは何もありません。"
     },
     "post_fight_story2": {
-        "en_us": "The legendary\nReaper has taken\nnotice of me, yet\nI hardly feel fear.\n\nIf anything, they remind me of a nagging\nparent than a dread specter of\nthe underworld.\n\nHence, I shall rightfully seize this shield\nas my own.",
+        "en_us": "The legendary\nReaper has taken\nnotice of me, but\nI don't feel an ounce of fear.\n\nThey remind me more of a nagging\nparent than a dread specter of\nthe underworld.\n\nHence, I shall rightfully seize this shield\nas my own.",
         "fr": "La légendaire\nFaucheuse m'avait\nremarqué, mais je\nressentais peu de peur.\n\nPour moi, ils ressemblent plus à un\nparent harcelant qu’à un fantôme\neffrayant de l’enfer.\n\nIl m’appartient donc de m’emparer de\nce bouclier.",
         "zh_tw": "傳說中的死神已經\n注意到我了，但我幾乎\n感覺不到恐懼。\n\n" +
             "在我看來，他們更像是一個嘮叨的父母，\n而不是地獄裡可怕的幽靈。\n\n因此，我理應奪取這面盾牌。",
@@ -279,13 +279,13 @@ let textData2 = {
         "jp": "私の力は増すが、この土地が耐える抵抗も大きくなる。 愛する人を取り戻すという私の崇高な探求は、それほど間違っているのでしょうか? もちろん、そうではないし、どんな犠牲を払おうとも、必要なことは何でもする。"
     },
     "post_fight_story6": {
-        "en_us": "Whether it's\nsoldiers or\nassassins, none can\nstand against me.\n\nSurely Death must be growing desperate\nknowing I am approaching my destination.",
-        "fr": "Qu’il s’agisse de soldats ou d’assassins, personne ne peut me résister.  La Mort doit sûrement être de plus en plus désespérée, sachant que j’approche de ma destination.",
-        "zh_tw": "無論是士兵還是刺客，都沒有能抵擋得住我的對手。 當然，死神一定越來越絕望，因為我知道我正在接近我的目的地。",
-        "zh_cn": "无论是士兵还是刺客，都没有能抵挡得住我的对手。 当然，死神一定越来越绝望，因为我知道我正在接近我的目的地。",
-        "ru": "Будь то солдаты или убийцы, никто не может противостоять мне.  Конечно, Смерть должна быть в отчаянии, зная, что я приближаюсь к своей цели.",
-        "es": "Ya sean soldados o asesinos, ninguno puede oponerse a mí.  Seguramente la Muerte debe estar cada vez más desesperada al saber que me estoy acercando a mi destino.",
-        "jp": "兵士であろうと暗殺者であろうと、誰も私に敵わなかった。 確かに、私が目的地に近づいていることを知って、死は絶望的になっているに違いない。"
+        "en_us": "The land of the\ndead is a labyrinth\nof dangers, but\nslowly and steadily I am forcing\nmy way through its walls.\n\nSurely Death must be growing desperate\nknowing I am approaching my destination.",
+        "fr": "Le pays des morts\nest un labyrinthe\nde dangers, mais\nje me fraye un chemin à travers\nses murs.\n\nLa Mort doit sûrement être désespérée sachant\nque je m'approche de ma destination.",
+        "zh_tw": "亡靈之地是一個\n危險的迷宮，\n但我正穩定地\n衝破它的圍牆。\n\n當死神知道我即將到達目的地時，\n他一定越來越絕望。",
+        "zh_cn": "亡灵之地是一个\n危险的迷宫，\n但我正稳步地\n冲破它的围墙。\n\n当死神知道我即将到达目的地时，\n他一定越来越绝望。",
+        "ru": "Земля мертвых — это\nлабиринт опасностей,\nно я неуклонно\nпрокладываю себе\nпуть сквозь его стены.\n\nНаверняка Смерть отчаивается, зная,\nчто я приближаюсь к своей цели.",
+        "es": "La tierra de los\nmuertos es un\nlaberinto de peligros,\npero constantemente me\nabro paso a través de sus muros.\n\nSeguramente la Muerte debe estar cada vez más desesperada\nal saber que me acerco a mi destino.",
+        "jp": "死者の国は危険\nに満ちた迷宮だが、\n私はゆっくりと着\n実にその壁を突破している。\n\n私が目的地に近づいていることを知って、\n死神はきっと絶望しているに違いない。"
     },
     "post_fight_story7": {
         "en_us": "The opponents I\nencounter are\nformidable, but my\nown strength is greater still.\n\nThere may still be room for growth, but my\nmagic should now more than suffice to rescue\nyou, my dearest beloved.",
@@ -459,7 +459,7 @@ let textData2 = {
         "jp": "森は不安を感じさせます。\n何かが私を監視しているのでしょうか？"
     },
     "pre_fight_4a": {
-        "en_us": "You: \"Hail! Are you friend or foe?\"\nKnight: ...\nYou: ....\nKnight: .....\nYou: \"Enough said, fight me!\"",
+        "en_us": "You: \"Halt! Are you friend or foe?\"\nKnight: ...\nYou: \"Do you mock me with your silence?\"\nKnight: ...\nYou: \"Enough, fight me now!\"",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

@@ -78,7 +78,7 @@ class Encyclopedia {
             this.listOfThingsToHide.push(this.bgPage);
         }
         if (!this.title) {
-            this.title = PhaserScene.add.text(gameConsts.halfWidth - 242, gameConsts.halfHeight - 242, getLangText('pre_fight_0a'), {fontFamily: 'verdanabold', fontSize: 24, color: '#000000', align: 'left'}).setDepth(this.baseDepth).setAlpha(0);
+            this.title = PhaserScene.add.text(gameConsts.halfWidth - 242, gameConsts.halfHeight - 242, getLangText('pre_fight_0a'), {fontFamily: 'opensans', fontSize: 24, color: '#000000', align: 'left'}).setDepth(this.baseDepth).setAlpha(0);
             this.listOfThingsToHide.push(this.title);
         }
         this.setFirstPage();
@@ -353,19 +353,19 @@ class Encyclopedia {
         playSound('flip1');
         this.title.setText(getLangText('pre_fight_0a'));
         let imageCover = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight + 4, 'ui', 'newgame_paper.png').setDepth(this.baseDepth).setAlpha(0).setScale(0.92);
-        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight + 58, getLangText('pre_fight_0b'), {fontFamily: 'verdanabold', fontSize: 15, color: '#200000', align: 'left'});
+        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight + 58, getLangText('pre_fight_0b'), {fontFamily: 'opensans', fontSize: 15, color: '#200000', align: 'left'});
         text2.setDepth(this.baseDepth).setOrigin(0, 0).setAlpha(0);
-        let text3 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 89, getLangText('pre_fight_0c'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'left'});
+        let text3 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 89, getLangText('pre_fight_0c'), {fontFamily: 'opensans', fontSize: 22, color: '#200000', align: 'left'});
         text3.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5);
-        let text4 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 37, getLangText('pre_fight_0d'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'left'});
+        let text4 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 37, getLangText('pre_fight_0d'), {fontFamily: 'opensans', fontSize: 22, color: '#200000', align: 'left'});
         text4.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5);
-        let text5 = PhaserScene.add.text(text3.x, text3.y + 5, getLangText('pre_fight_0e'), {fontFamily: 'verdanabold', fontSize: 17, color: '#200000', align: 'left'});
+        let text5 = PhaserScene.add.text(text3.x, text3.y + 5, getLangText('pre_fight_0e'), {fontFamily: 'opensans', fontSize: 17, color: '#200000', align: 'left'});
         text5.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
-        let text6 = PhaserScene.add.text(text4.x, text4.y + 6, getLangText('pre_fight_0f'), {fontFamily: 'verdanabold', fontSize: 17, color: '#200000', align: 'left'});
+        let text6 = PhaserScene.add.text(text4.x, text4.y + 6, getLangText('pre_fight_0f'), {fontFamily: 'opensans', fontSize: 17, color: '#200000', align: 'left'});
         text6.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
-        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 200, gameConsts.halfHeight - 110, getLangText('pre_fight_0g'), {fontFamily: 'verdanabold', fontSize: 22, color: '#200000', align: 'center'});
+        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 200, gameConsts.halfHeight - 110, getLangText('pre_fight_0g'), {fontFamily: 'opensans', fontSize: 22, color: '#200000', align: 'center'});
         text7.setDepth(this.baseDepth).setAlpha(0).setOrigin(1, 0.5);
-        let text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 219, getLangText('pre_fight_0h'), {fontFamily: 'verdanabold', fontSize: 15, color: '#200000', align: 'center'});
+        let text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 219, getLangText('pre_fight_0h'), {fontFamily: 'opensans', fontSize: 15, color: '#200000', align: 'center'});
         text8.setDepth(this.baseDepth).setAlpha(0).setOrigin(0.5, 0.5);
         this.currentPageItems.push(imageCover);
         // this.currentPageItems.push(text1);
@@ -385,8 +385,8 @@ class Encyclopedia {
     setSecondPage() {
         playSound('flip2');
         this.title.setText(" ")
-        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 238, getLangText('encyclopedia_rune_element'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
-        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 2, getLangText('encyclopedia_rune_action'), {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 238, getLangText('encyclopedia_rune_element'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 2, getLangText('encyclopedia_rune_action'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
         this.currentPageItems.push(text1);
         this.currentPageItems.push(text2);
 
@@ -425,7 +425,7 @@ class Encyclopedia {
                 break;
             }
             let newIcon = PhaserScene.add.image(gameConsts.halfWidth - 212, listOfPositions[i], 'tutorial', listOfRunes[i]).setAlpha(0).setDepth(this.baseDepth).setScale(0.55);
-            let newText = PhaserScene.add.text(gameConsts.halfWidth - 170, listOfPositions[i], listOfText[i], {fontFamily: 'verdanabold', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth).setOrigin(0, 0.5);
+            let newText = PhaserScene.add.text(gameConsts.halfWidth - 170, listOfPositions[i], listOfText[i], {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth).setOrigin(0, 0.5);
             this.currentPageItems.push(newIcon);
             this.currentPageItems.push(newText);
 

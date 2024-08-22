@@ -742,7 +742,7 @@
                                      globalObjects.textPopupManager.hideInfoText();
                                      spellListener.unsubscribe();
                                  });
-                             }, 1500);
+                             }, 3000);
                          }, 1000);
                      },
                      attackFinishFunction: () => {

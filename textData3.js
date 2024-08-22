@@ -19,7 +19,7 @@ let textData3 = {
         "jp": ""
     },
     "death2b": {
-        "en_us": "FORSAKE YOUR JOURNEY.\nYOU DO NOT YET BELONG HERE",
+        "en_us": "FORSAKE YOUR JOURNEY.\nYOU DO NOT YET BELONG HERE,",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -54,17 +54,8 @@ let textData3 = {
         "es": "AQUELLO QUE BUSCAS AQUÍ\nNO SE PUEDE ALCANZAR.",
         "jp": "あなたがここで探し求めているものは、\n達成することができません。"
     },
-    "death4a": {
-        "en_us": "THE MAGICIAN THOUGHT HIS\nMAGIC COULD ELUDE ME,",
-        "fr": "LE MAGICIEN PENSAIT QUE SA MAGIE POUVAIT M’ÉCHAPPER,",
-        "zh_tw": "魔術師以為他的魔法可以躲避我，",
-        "zh_cn": "魔术师以为他的魔法可以躲避我，",
-        "ru": "ВОЛШЕБНИК ДУМАЛ, ЧТО ЕГО МАГИЯ МОЖЕТ УСКОЛЬЗНУТЬ ОТ МЕНЯ,",
-        "es": "EL MAGO PENSÓ QUE SU MAGIA PODÍA ELUDIRME,",
-        "jp": "魔術師は自分の魔法が私を逃れると思った。"
-    },
     "death4b": {
-        "en_us": "BUT THE END OF ONE'S FATE\nCANNOT BE UNDONE.",
+        "en_us": "THE END OF ONE'S FATE CAN\nBE DELAYED, BUT NOT UNDONE.",
     },
     "death4c": {
         "en_us": "REMEMBER THIS AS YOU\nCONTINUE YOUR \"QUEST\".",
@@ -338,7 +329,18 @@ let textData3 = {
         "ru": "И ТЫ БУДЕШЬ ВЕЧНО СКИТАТЬСЯ ПО МИРУ БЕЗ ОТДЫХА.",
         "es": "Y VAGARÁS POR EL MUNDO ETERNAMENTE SIN DESCANSO.",
         "jp": "そして、あなたは休むことなく永遠に世界をさまようでしょう。"
-    }
+    },
+
+    "magician_death": {
+        "en_us": "YOUR TIME HAS COME",
+        "fr": "Le temps s'est écoulé",
+        "zh_tw": "時間到了",
+        "zh_cn": "时间到了",
+        "ru": "Время истекло",
+        "es": "El tiempo ha terminado",
+        "jp": "時間切れです"
+    },
+
 }
 
 textData = { ...textData, ...textData3};

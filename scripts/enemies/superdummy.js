@@ -3,15 +3,16 @@
         super(scene, x, y, level);
         this.initSprite('dummy.png', 0.95, undefined, undefined, 'dummyenemy');
         this.bgMusic = playMusic('bite_down', 0.65, true);
-        console.log("create super dummy and bgmusic");
         this.startY = this.sprite.y;
         // this.temp = this.addSprite(x - 50, 170, 'deathfin', 'frame_00.png').setDepth(6).play({key: 'ladydeath', repeat: -1});
 
         this.popupTimeout = this.addTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
-
-        }, 1500)
+            globalObjects.bannerTextManager.setDialog([getLangText('superdummy_start')]);
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+            globalObjects.bannerTextManager.showBanner(0.5);
+        }, 1000)
         this.initMisc();
     }
 
@@ -484,8 +485,8 @@
             this.rune1.setFrame(rune1Text).setDepth(10001).setScale(0.75).setAlpha(0).setPosition(centerXPos - 30, runeYPos + 27);
             this.rune2.setFrame(rune2Text).setDepth(10001).setScale(0.75).setAlpha(0).setPosition(centerXPos + 30, runeYPos + 27);
         } else {
-            this.rune1 = this.addSprite(centerXPos - 30, runeYPos + 27, 'circle', rune1Text).setDepth(10001).setScale(0.75).setAlpha(0);
-            this.rune2 = this.addSprite(centerXPos + 30, runeYPos + 27, 'circle', rune2Text).setDepth(10001).setScale(0.75).setAlpha(0);
+            this.rune1 = this.addSprite(centerXPos - 34, runeYPos + 27, 'circle', rune1Text).setDepth(10001).setScale(0.75).setAlpha(0);
+            this.rune2 = this.addSprite(centerXPos + 34, runeYPos + 27, 'circle', rune2Text).setDepth(10001).setScale(0.75).setAlpha(0);
         }
         this.rune1.visible = true;
         this.rune2.visible = true;
@@ -1008,7 +1009,7 @@
                     },
                  },
                  {
-                     name: "FINISHER ;8x8",
+                     name: ";8x8;",
                      chargeAmt: 600,
                     finishDelay: 6000,
                      damage: -1,

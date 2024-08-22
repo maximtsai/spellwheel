@@ -2074,6 +2074,7 @@ class SpellManager {
         } else if (newMultiplier > 2) {
             bonusSize = 0.2;
         }
+        messageBus.publish('messageAllSpell', spellID);
         messageBus.publish('recordSpell', spellID, spellName, bonusSize);
     }
 

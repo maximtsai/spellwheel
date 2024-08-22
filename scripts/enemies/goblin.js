@@ -194,9 +194,8 @@
                  {
                      name: gameVars.isHardMode ? "}8 " : "}4 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
-                     chargeAmt: 25,
-                     chargeMult: 5,
-                     damage: gameVars.isHardMode ? 8 : 7,
+                     chargeAmt: 250,
+                     damage: gameVars.isHardMode ? 8 : 4,
                      attackSprites: ['gobbo0_atk.png'],
                      attackFinishFunction: () => {
                          this.makeSlashEffect();

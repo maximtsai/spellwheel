@@ -353,7 +353,7 @@ function showLoverApproach() {
                     globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH + 4);
                     let finalText1 = 'You age, yet cannot die.';
                     let finalText2 = 'You wither, yet cannot find rest.';
-                    let finalText3 = 'Your suffering remains unending until\nonly madness brings your minds to oblivion.';
+                    let finalText3 = 'Your suffering persists until only\nmadness brings your minds to oblivion.';
                     // ', yet no longer able to die,\nyou and your lover live the rest of\neternity without ever '
                     let closeText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 260, finalText1, {fontFamily: 'garamondmax', fontSize: 26, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 0);
                     let closeText2 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 230, finalText2, {fontFamily: 'garamondmax', fontSize: 26, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 0);

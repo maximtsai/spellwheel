@@ -189,6 +189,15 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "deathFight2plusy": {
+        "en_us": "THIS HAS DRAGGED ON ENOUGH!",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "deathFight2plusz": {
         "en_us": "ENOUGH!",
         "fr": "",
@@ -207,6 +216,89 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "deathFight2plusending": {
+        "en_us": "...HOW ARE YOU STILL STANDING?",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2plusending2": {
+        "en_us": "IT SHOULD BE IMPOSSIBLE,\nYET I SENSE NO FOUL PLAY...",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2plusending3": {
+        "en_us": "...AH OF COURSE, \'ASSISTANCE\'.\n>:(",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2plusending4": {
+        "en_us": "REGARDLESS, YOU HAVE BESTED ME,\nAND I WILL ACQUIESCE.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2plusending5": {
+        "en_us": "But please, hear my last request.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2plusbeaten1": {
+        "en_us": "...OUCH ",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2plusbeaten2": {
+        "en_us": "YOU HAVE... DEFEATED ME.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2plusbeaten3": {
+        "en_us": "YOUR DETERMINATION IS GREAT,\nAND I WILL RESIST NO LONGER",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "deathFight2plusbeaten4": {
+        "en_us": "I WILL ALLOW YOU TO\nMEET WITH YOUR BELOVED",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+
+
 
     "back_to_training": {
         "en_us": "BACK TO TRAINING",
@@ -227,7 +319,7 @@ let textData4 = {
         "jp": ""
     },
     "energy_tut_goblin": {
-        "en_us": "Energy spells can\ndeal True damage\nthat ignores\nenemy defenses.\n              +",
+        "en_us": "Energy spells\ndeal True damage\nthat ignores\nenemy defenses.\n              +",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -452,5 +544,15 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "goblin_shield": {
+        "en_us": "Ha! Can't hurts me now!",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+
 }
 textData = { ...textData, ...textData4};

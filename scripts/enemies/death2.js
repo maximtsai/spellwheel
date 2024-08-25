@@ -4,14 +4,14 @@
          this.initSprite('max_death_2.png', 0.85, 0, 0, 'deathfinal');
          this.sprite.setOrigin(0.5, 0.2);
          this.forcedOriginY = 0.2;
-         this.blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0.7).setDepth(-2);
+         this.blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(550).setAlpha(0.05).setDepth(-2);
          this.createAnimatedHellBG();
          globalObjects.player.reInitStats();
          globalObjects.player.refreshHealthBar();
          this.createArms();
          this.blackBG.currAnim = this.addTween({
              targets: this.blackBG,
-             alpha: 0.95,
+             alpha: 0.25,
              duration: 1000,
          })
         globalObjects.magicCircle.disableMovement();
@@ -79,7 +79,9 @@
                  this.blackBG.currAnim.stop();
              }
              this.blackBG.alpha = 0;
-             this.whiteBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(500).setAlpha(0.6);
+
+
+             this.whiteBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(500).setAlpha(0.62);
              this.addTween({
                  targets: [this.whiteBG],
                  alpha: 0,
@@ -1276,8 +1278,8 @@
     }
 
     createAnimatedHellBG() {
-        this.bg1 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 5, 'backgrounds', 'firebg1.png').setDepth(-5).setScale(0.91);
-        this.bg2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 5, 'backgrounds', 'firebg2.png').setDepth(-5).setScale(0.91);
+        this.bg2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 28, 'backgrounds', 'firebg1.png').setDepth(-5).setScale(1.02);
+        this.bg1 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 28, 'backgrounds', 'firebg0.png').setDepth(-5).setScale(1.02).setAlpha(0);
         this.nextBG = 0;
         this.useFirstBG = true;
         this.animateBGRepeat();
@@ -1635,19 +1637,40 @@
      }
 
     animateBGRepeat() {
-        this.bg1.setDepth(-5); this.bg2.setDepth(-5);
-        let bgToUse = this.useFirstBG ? this.bg1 : this.bg2;
-        let newFrame = 'firebg' + this.nextBG + '.png';
-        bgToUse.setFrame(newFrame);
-        this.nextBG = (this.nextBG + 1) % 3;
-        bgToUse.setAlpha(0).setDepth(-4);
+        if (this.dead) {
+            return;
+        }
         this.addTween({
-            targets: bgToUse,
-            duration: 850,
-            alpha: 1,
+            targets: this.bg1,
+            duration: 2000,
+            ease: 'Quad.easeIn',
+            alpha: 0.85,
             onComplete: () => {
-                this.useFirstBG = !this.useFirstBG;
-                this.animateBGRepeat();
+                this.addTween({
+                    targets: this.bg1,
+                    duration: 1000,
+                    ease: 'Quad.easeOut',
+                    alpha: 0.5,
+                    onComplete: () => {
+                        this.addTween({
+                            targets: this.bg1,
+                            duration: 1000,
+                            ease: 'Quad.easeIn',
+                            alpha: 1,
+                            onComplete: () => {
+                                this.addTween({
+                                    targets: this.bg1,
+                                    duration: 2000,
+                                    ease: 'Quad.easeOut',
+                                    alpha: 0,
+                                    onComplete: () => {
+                                        this.animateBGRepeat();
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
             }
         })
     }

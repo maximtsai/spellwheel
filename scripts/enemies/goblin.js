@@ -241,7 +241,7 @@
                          this.nextAttackIndex = 0;
                          this.repeatTweenBreathe()
 
-                         messageBus.publish("showCombatText", "Haha! Can't hurts me now!", -18);
+                         messageBus.publish("showCombatText", getLangText('goblin_shield'), -18);
                      }
                  }
              ],
@@ -325,6 +325,7 @@
                      customCall: " ",
                      damage: 0,
                      startFunction: () => {
+                        messageBus.publish("closeCombatText")
                          this.sprite.x = gameConsts.halfWidth + (Math.random() < 0.5 ? 15 : -15);
                          this.addTween({
                              targets: this.sprite,
@@ -526,6 +527,7 @@
              return;
         }
         super.die();
+        messageBus.publish("closeCombatText")
         if (this.burnAnim) {
             this.burnAnim.stop();
         }

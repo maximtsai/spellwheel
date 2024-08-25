@@ -37,7 +37,7 @@ let textData3 = {
         "jp": ""
     },
     "death3a": {
-        "en_us": "I ISSUE YOU ONE FINAL WARNING -",
+        "en_us": "I ISSUE YOU ONE FINAL WARNING-",
         "fr": "JE NE FERAI QUE TE PRÉVENIR UNE FOIS DE PLUS,",
         "zh_tw": "我只會再次警告你，",
         "zh_cn": "我只会再次警告你，",

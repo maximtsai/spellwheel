@@ -666,7 +666,6 @@
             <key type="filename">circle/healthbar_1thirds.png</key>
             <key type="filename">circle/healthbar_1thirds_half.png</key>
             <key type="filename">circle/healthbar_2thirds.png</key>
-            <key type="filename">circle/healthbar_full - Copy.png</key>
             <key type="filename">circle/healthbar_full.png</key>
             <key type="filename">circle/healthbar_partial.png</key>
             <key type="filename">circle/healthbar_partial_half.png</key>

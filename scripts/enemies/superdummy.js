@@ -6,7 +6,7 @@
         this.startY = this.sprite.y;
         // this.temp = this.addSprite(x - 50, 170, 'deathfin', 'frame_00.png').setDepth(6).play({key: 'ladydeath', repeat: -1});
 
-        this.popupTimeout = this.addTimeout(() => {
+        this.popupTimeout = this.addTimeoutIfAlive(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
             globalObjects.bannerTextManager.setDialog([getLangText('superdummy_start')]);
@@ -1081,27 +1081,25 @@
                                         this.repeatTweenBreathe();
                                      }
                                 });
-                                this.addTimeout(() => {
+                                this.addTimeoutIfAlive(() => {
                                     for (let i = 0; i < 8; i++) {
                                         let delay = i * 90;
-                                        this.addTimeout(() => {
-                                            if (!this.dead) {
-                                                playSound('punch');
-                                                 let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 200);
-                                                 let xPosOffset = Math.random() * 80;
-                                                 let yPosOffset = Math.abs(xPosOffset * 0.2) + Math.random() * 30;
-                                                 powEffect.setPosition(gameConsts.halfWidth - xPosOffset, globalObjects.player.getY() - 205 + yPosOffset).setDepth(999).setScale(1).setAlpha(1).setRotation(Math.random() - 0.5);
+                                        this.addTimeoutIfAlive(() => {
+                                            playSound('punch');
+                                             let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 200);
+                                             let xPosOffset = Math.random() * 80;
+                                             let yPosOffset = Math.abs(xPosOffset * 0.2) + Math.random() * 30;
+                                             powEffect.setPosition(gameConsts.halfWidth - xPosOffset, globalObjects.player.getY() - 205 + yPosOffset).setDepth(999).setScale(1).setAlpha(1).setRotation(Math.random() - 0.5);
 
-                                                this.addTimeout(() => {
-                                                    playSound('punch2');
-                                                     let powEffect2 = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 200);
-                                                     let xPosOffset2 = Math.random() * 80;
-                                                     let yPosOffset2 = Math.abs(xPosOffset * 0.2) + Math.random() * 30;
-                                                     powEffect.setPosition(gameConsts.halfWidth + xPosOffset2, globalObjects.player.getY() - 200 + yPosOffset2).setDepth(999).setScale(1).setAlpha(1).setRotation(Math.random() - 0.5);
+                                            this.addTimeoutIfAlive(() => {
+                                                playSound('punch2');
+                                                 let powEffect2 = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 200);
+                                                 let xPosOffset2 = Math.random() * 80;
+                                                 let yPosOffset2 = Math.abs(xPosOffset * 0.2) + Math.random() * 30;
+                                                 powEffect.setPosition(gameConsts.halfWidth + xPosOffset2, globalObjects.player.getY() - 200 + yPosOffset2).setDepth(999).setScale(1).setAlpha(1).setRotation(Math.random() - 0.5);
 
-                                                }, 45)
-                                                messageBus.publish("selfTakeDamage", 8);
-                                            }
+                                            }, 45)
+                                            messageBus.publish("selfTakeDamage", 8);
                                         }, delay)
                                     }
 

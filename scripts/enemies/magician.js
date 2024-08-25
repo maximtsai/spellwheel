@@ -641,56 +641,6 @@
      }
 
      handleSpecialDamageAbsorption(amt) {
-        /*
-         if (!this.statuses[0]) {
-             if (amt > this.health) {
-                 amt = this.health + 1;
-             }
-
-             let healthText = this.scene.add.bitmapText(gameConsts.halfWidth, 100, 'damage', '40', 60).setDepth(999).setOrigin(0.5, 0.5);
-             healthText.setText(amt);
-             healthText.setScale(0.7 + 0.01 * amt);
-             let statusObj = {};
-             statusObj = {
-                 animObj: healthText,
-                 duration: amt,
-                 onUpdate: () => {
-                     healthText.setScale(0.7 + 0.01 * statusObj.duration);
-                     if (this.health == 1) {
-                         // drag out last second
-                         this.addTimeout(() => {
-                             this.die();
-                         }, 1000);
-                     } else {
-                         healthText.setText(Math.max(0, statusObj.duration - 1));
-                         this.setHealth(this.health - 1);
-                        this.castAggravateCharge = 35;
-
-                         if (!this.isTerrified && !this.freezingTime && this.timeBarraged) {
-                            if (this.health % 2 == 0) {
-                                if (this.health % 4 == 0) {
-                                    playSound('clocktick2', 1);
-                                } else {
-                                    playSound('clocktick1', 1);
-                                }
-                            }
-                         }
-                     }
-                 },
-                 cleanUp: () => {
-                     statusObj.animObj.destroy();
-                     this.statuses[0] = null;
-                 }
-             }
-             this.statuses[0] = statusObj;
-         } else {
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random()*150, this.sprite.y + 50 - Math.random() * 100, 'DELAYED', 0.75);
-
-             // this.statuses[0].duration = Math.min(this.statuses[0].duration + amt, this.health + 1);
-             // this.statuses[0].animObj.setText(Math.max(0, this.statuses[0].duration - 1));
-             // this.statuses[0].animObj.setScale(0.7 + 0.01 * this.statuses[0].duration);
-         }
-         */
         if (amt == 1) {
             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 25 - Math.random()*50, this.sprite.y - Math.random() * 50, 'DELAYED', 0.75);
         } else {

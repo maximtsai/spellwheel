@@ -278,6 +278,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">deathfinal/death2fall_white.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>104,125,207,250</rect>
+                <key>scale9Paddings</key>
+                <rect>104,125,207,250</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">deathfinal/death2final.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -539,6 +554,21 @@
                 <rect>138,125,275,249</rect>
                 <key>scale9Paddings</key>
                 <rect>138,125,275,249</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">deathfinal/max_death_3_white.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,143,150,285</rect>
+                <key>scale9Paddings</key>
+                <rect>75,143,150,285</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

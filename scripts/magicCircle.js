@@ -103,13 +103,16 @@ const ENABLE_KEYBOARD = true;
         }
 
         if (this.delayedDamage > this.delayedDamageBase) {
-            let extraOverload = this.delayedDamage - this.delayedDamageBase;
+            let extraOverload = Math.sqrt(Math.max(0, this.delayedDamage - this.delayedDamageBase) * 6);
             if (this.delayedDamage > this.delayedDamageBase * 1.25) {
                 // way overflow
                 this.delayDamageSandFull.x += Math.random() * extraOverload * 0.03;
             }
             this.delayDamageSandFull.x = this.delayDamageSandFull.origX + (this.delayDamageSandFull.origX - this.delayDamageSandFull.x) * 0.75;
             this.delayDamageSandFull.x += Math.random() * (extraOverload * 0.12 + 0.5);
+            this.delayDamageHourglass.x = this.delayDamageSandFull.x;
+        } else {
+            this.delayDamageSandFull.x = this.delayDamageSandFull.origX
             this.delayDamageHourglass.x = this.delayDamageSandFull.x;
         }
 
@@ -2157,7 +2160,7 @@ const ENABLE_KEYBOARD = true;
     }
 
     getDelayedDamageClockScale() {
-        return 0.5 + 0.1 * Math.floor(this.delayedDamage / this.delayedDamageBase);
+        return 0.5 + 0.1 * Math.sqrt(Math.floor(this.delayedDamage / this.delayedDamageBase) * 0.5) * 2;
     }
 
     plainUpdateDelayedDamageVisual(scale) {

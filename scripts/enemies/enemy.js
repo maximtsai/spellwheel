@@ -2038,6 +2038,17 @@ class Enemy {
         }, gameVars.gameManualSlowSpeedInverse * delay);
     }
 
+    addTimeoutIfAlive(func, delay) {
+        if (this.isDestroyed || this.dead) {
+            return setTimeout(() => {}, 0);
+        }
+        return setTimeout(() => {
+            if (!this.isDestroyed && !this.dead) {
+                func()
+            }
+        }, gameVars.gameManualSlowSpeedInverse * delay);
+    }
+
     addBitmapText(x, y, source, text, size, param1, param2, param3) {
         let newText = PhaserScene.add.bitmapText(x, y, source, text, size, param1, param2, param3)
         this.addToDestructibles(newText);
@@ -2046,6 +2057,17 @@ class Enemy {
 
     addDelay(func, delay) {
         return this.addDelayedCall(delay, func);
+    }
+
+    addDelayIfAlive(func, delay) {
+        if (this.isDestroyed || this.dead) {
+            return PhaserScene.time.delayedCall(0, () => {})
+        }
+        return PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeedInverse * delay, () => {
+            if (!this.isDestroyed && !this.dead) {
+                func();
+            }
+        })
     }
 
     addDelayedCall(delay, func) {

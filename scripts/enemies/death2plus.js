@@ -1,13 +1,14 @@
  class Death2Plus extends Enemy {
      constructor(scene, x, y) {
          super(scene, x, y);
-         this.initSprite('death2final.png', 0.92, 0, 0, 'deathfinal');
+         this.initSprite('death2final.png', 0.92, 0, -15, 'deathfinal');
          this.bgMusic = playMusic('but_never_forgotten_metal', 0.9, true);
          this.bgMain = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5)
          this.bgBlur = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star_blur.png').setDepth(-5).setScale(2.5).setAlpha(1.5);
          globalObjects.player.reInitStats();
          globalObjects.player.refreshHealthBar();
          messageBus.publish('showCircleShadow', 0.7, -50);
+         this.sprite.setOrigin(0.5, 0.4);
 
          this.bgBlur.currAnim = this.addTween({
              targets: this.bgBlur,
@@ -58,6 +59,7 @@
          this.glowHands = [];
          this.shieldScale = 1.5;
          this.shieldOffsetY = 40;
+        this.lastAttackLingerMult = 2;
          this.shieldTextOffsetY = -65;
          this.shieldTextFont = "void";
          this.pullbackScale = 0.97;
@@ -80,7 +82,7 @@
      beginBattleAnim() {
          this.spellStartY = this.y - 60;
          this.createGlowHands();
-         this.addDelay(() => {
+         this.addDelayIfAlive(() => {
              this.spellCirclePulse = this.addImage(this.x, this.spellStartY, 'blurry', 'spellcircle_pulse.png').setAlpha(0.1).setScale(0.5).setDepth(-3);
              this.spellCircleGlow = this.addImage(this.x, this.spellStartY, 'blurry', 'spellcircle_bgglow.png').setAlpha(0.1).setScale(1).setDepth(-3);
              this.spellCircle = this.addImage(this.x, this.spellStartY, 'deathfinal', 'spellcircle.png').setAlpha(0.1).setScale(0.5);
@@ -90,7 +92,7 @@
                  globalObjects.magicCircle.enableMovement();
                  globalObjects.encyclopedia.showButton();
                  globalObjects.options.showButton();
-                 this.addDelay(() => {
+                 this.addDelayIfAlive(() => {
                      messageBus.publish("showCombatText", getLangText('deathFight2plusa'), -40);
                      this.addTimeout(() => {
                          this.spellsCastCounter = 0;
@@ -109,7 +111,7 @@
                  }, 1500)
              });
 
-             this.addDelay(() => {
+             this.addDelayIfAlive(() => {
                  this.setAwake();
              }, 4000)
          }, 900)
@@ -156,13 +158,114 @@
          })
     }
 
+    showHurtFinale() {
+        fadeAwaySound(this.bgMusic, 2000);
+        if (this.bgMusic2) {
+            fadeAwaySound(this.bgMusic2, 2000);
+        }
+        this.showFinalPrelude();
+        this.emergencyShield();
+        globalObjects.bannerTextManager.setDialog([getLangText('deathFight2plusz'), getLangText('deathFight2plusz2')]);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+        globalObjects.bannerTextManager.showBanner(0);
+        globalObjects.bannerTextManager.setOnFinishFunc(() => {
+            this.showActualFinale();
+        })
+    }
+
+    showImpatienceFinale() {
+        this.showFinalPrelude();
+        this.addDelayIfAlive(() => {
+            fadeAwaySound(this.bgMusic, 2000);
+            if (this.bgMusic2) {
+                fadeAwaySound(this.bgMusic2, 2000);
+            }
+            globalObjects.bannerTextManager.setDialog([getLangText('deathFight2plusy'), getLangText('deathFight2plusz2')]);
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+            globalObjects.bannerTextManager.showBanner(0);
+            globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                this.showActualFinale();
+            })
+        }, 6000)
+    }
+
+    showFinalPrelude() {
+        this.interruptCurrentAttack();
+        this.setAsleep();
+        messageBus.publish("closeCombatText");
+        this.clearExtraAttackDamage();
+        this.clearPower();
+        this.fadeOutCurrentHand();
+        this.currentAttackSetIndex = 4;
+        this.nextAttackIndex = 0;
+    }
+
+    showActualFinale() {
+        playFakeBGMusic('but_never_forgotten_metal_prelude');
+        this.addTween({
+            delay: 200,
+            targets: this.sprite,
+             duration: 900,
+             scaleX: this.sprite.startScale * 1.12,
+             scaleY: this.sprite.startScale * 1.12,
+             ease: "Cubic.easeInOut",
+             onComplete: () => {
+                 this.addTween({
+                     targets: this.sprite,
+                     duration: 900,
+                     scaleX: this.sprite.startScale * 0.7,
+                     scaleY: this.sprite.startScale * 0.7,
+                     ease: "Quint.easeIn",
+                     onComplete: () => {
+                        this.bgMusic3 = playMusic('but_never_forgotten_epicchoir', 0.9, true);
+                        this.bgMain.setFrame('star_red.png').setScale(1.24);
+                        this.fadedDeath = this.addImage(this.sprite.x, this.sprite.y, 'deathfinal', 'death2final.png').setOrigin(0.5, 0.4).setScale(this.sprite.startScale * 0.7).setDepth(-1).setAlpha(0.4);
+                        this.addTween({
+                             targets: this.fadedDeath,
+                             alpha: 0,
+                             ease: 'Quad.easeOut',
+                             duration: 1000,
+                         })
+                        this.addTween({
+                             targets: this.fadedDeath,
+                             scaleX: this.sprite.startScale * 1.1,
+                             scaleY: this.sprite.startScale * 1.1,
+                             ease: 'Quad.easeOut',
+                             duration: 1000,
+                         })
+
+                        this.setAwake();
+                         messageBus.publish('showCircleShadow', 0.7, -50);
+                         this.whiteoutTemp = this.addImage(this.x, this.y + 15, 'spells', 'whiteout_circle.png').setScale(2.75)
+                         this.addTween({
+                             targets: this.whiteoutTemp,
+                             scaleX: 21,
+                             scaleY: 21,
+                             duration: 500,
+                             ease: "Cubic.easeInOut",
+                             onComplete: () => {
+                                 this.whiteoutTemp.destroy();
+                             }
+                         })
+                         this.addTween({
+                             targets: this.whiteoutTemp,
+                             alpha: 0,
+                             duration: 500,
+                             ease: "Quad.easeIn"
+                         })
+                     }
+                 });
+             }
+        })
+    }
+
      initAttacks() {
          this.attacks = [
              [
                  // 0
                  {
                      name: "$28",
-                     chargeAmt: 700,
+                     chargeAmt: 70,
                      chargeMult: 2,
                      finishDelay: 2000,
                      damage: -1,
@@ -197,9 +300,9 @@
                      finaleFunction: () => {
                          this.interruptCurrentAttack();
                          this.setAsleep();
-                         this.addDelay(() => {
+                         this.addDelayIfAlive(() => {
                              this.clearPower();
-                             this.addDelay(() => {
+                             this.addDelayIfAlive(() => {
                                 fadeAwaySound(this.bgMusic, 1500);
                                  messageBus.publish("showCombatText", getLangText('deathFight2pluse'), -40);
                                  this.addTimeout(() => {
@@ -215,6 +318,31 @@
                      }
                  },
                  {
+                     name: "|4x10",
+                     chargeAmt: 75,
+                     finishDelay: 7000,
+                     chargeMult: 2,
+                     damage: -1,
+                     startFunction: () => {
+                        this.lastAttackLingerMult = 3.5;
+                         this.pulseSpellCircle(true)
+                         this.pulseHand(3);
+                     },
+                     attackStartFunction: () => {
+                         this.fadeOutCurrentHand();
+                     },
+                     attackFinishFunction: () => {
+                         let pokeHand = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw.png').setScale(0.1).setAlpha(0.65).setRotation(0.4);
+                         let pokeHandGlow = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw_glow.png').setScale(0.2).setAlpha(0).setRotation(0.4);
+                         this.summonHand(pokeHand, pokeHandGlow, 0.4, 0.7, () => {
+                             this.fireTwoClaws(4, 10, pokeHand);
+                         })
+                     },
+                     finaleFunction: () => {
+                        this.showImpatienceFinale();
+                     }
+                 },
+                 {
                      name: ";100",
                      chargeAmt: 700,
                      finishDelay: 2500,
@@ -222,13 +350,9 @@
                      isBigMove: true,
                      startFunction: () => {
                         this.bgMusic.stop();
-                        this.bgMusic = playMusic('but_never_forgotten', 0.85, true);
-                        this.bgMusic2 = playFakeBGMusic('but_never_forgotten_metal', 0.1);
-                        this.bgMusic.on('complete', () => {
-                            if (this.bgMusic2) {
-                                this.bgMusic2.stop();
-                                this.bgMusic2 = playFakeBGMusic('but_never_forgotten_metal', 0.1);
-                            }
+                        this.bgMusic = playMusic('but_never_forgotten_afterthought', 0.95, false);
+                        this.bgMusic.once('complete', () => {
+                            this.bgMusic = playMusic('but_never_forgotten', 0.85, true);
                         });
 
                          this.pulseSpellCircle(true)
@@ -248,7 +372,7 @@
                  },
                  {
                      name: "}16x3",
-                     chargeAmt: 450,
+                     chargeAmt: 600,
                      finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
@@ -296,33 +420,7 @@
 
                      }
                  },
-                 {
-                     name: "|4x10",
-                     chargeAmt: 750,
-                     finishDelay: 2000,
-                     chargeMult: 2,
-                     damage: -1,
-                     startFunction: () => {
-                         this.pulseSpellCircle(true)
-                         this.pulseHand(3);
-                     },
-                     attackStartFunction: () => {
-                         this.fadeOutCurrentHand();
-                     },
-                     attackFinishFunction: () => {
-                         let pokeHand = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw.png').setScale(0.1).setAlpha(0.65).setRotation(0.4);
-                         let pokeHandGlow = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw_glow.png').setScale(0.2).setAlpha(0).setRotation(0.4);
-                         this.summonHand(pokeHand, pokeHandGlow, 0.4, 0.7, () => {
-                             this.fireTwoClaws(4, 10, pokeHand);
-                         })
-                     },
-                     finaleFunction: () => {
-                         this.currentAttackSetIndex = 4;
-                         this.nextAttackIndex = 0;
-                         //this.interruptCurrentAttack();
-                         //this.setAsleep();
-                     }
-                 },
+
                  {
                      name: "OBSERVING...",
                      chargeAmt: 300,
@@ -429,11 +527,11 @@
                          this.nextAttackIndex = 0;
                          this.interruptCurrentAttack();
                          this.setAsleep();
-                         this.addDelay(() => {
+                         this.addDelayIfAlive(() => {
                              this.rotateSpellCircleTo(1, true, () => {
                                  // this.fadeOutCurrentHand();
                                  this.createPokePower();
-                                 this.addDelay(() => {
+                                 this.addDelayIfAlive(() => {
                                      messageBus.publish("showCombatText", getLangText('deathFight2plusb'), -40);
                                      this.addTimeout(() => {
                                          this.setAwake();
@@ -553,10 +651,10 @@
                          this.setAsleep();
                          this.clearPower();
 
-                         this.addDelay(() => {
+                         this.addDelayIfAlive(() => {
                              this.rotateSpellCircleTo(2, true, () => {
                                  this.createOkayPower();
-                                 this.addDelay(() => {
+                                 this.addDelayIfAlive(() => {
                                      messageBus.publish("showCombatText", getLangText('deathFight2plusc'), -40);
                                      this.healFromAttacks = true;
                                      this.addTimeout(() => {
@@ -659,13 +757,13 @@
                          this.nextAttackIndex = 0;
                          this.interruptCurrentAttack();
                          this.setAsleep();
-                         this.addDelay(() => {
+                         this.addDelayIfAlive(() => {
                              this.healFromAttacks = false;
                              this.clearPower();
                              this.rotateSpellCircleTo(3, true, () => {
                                  // this.fadeOutCurrentHand();
                                  this.createClawPower();
-                                 this.addDelay(() => {
+                                 this.addDelayIfAlive(() => {
                                      messageBus.publish("showCombatText", getLangText('deathFight2plusd'), -40);
                                      this.addTimeout(() => {
                                          this.setAwake();
@@ -735,20 +833,28 @@
              ],
              [
                  {
-                     name: "}44x4",
-                     chargeAmt: 1200,
+                     name: ";;;99x9;;;",
+                     chargeAmt: 1300,
                      chargeMult: 2,
-                     finishDelay: 3000,
-                     damage: -1,
+                     finishDelay: 10000,
+                     damage: 0,
                      isBigMove: true,
-                     attackStartFunction: () => {
-                        this.bgMusic = playMusic('but_never_forgotten_choir', 0.9, true);
-
+                     startFunction: () => {
+                        this.lastAttackLingerMult = 10
                      },
                      finaleFunction: () => {
+                        this.interruptCurrentAttack();
+                        this.setAsleep();
+                        this.secondDie();
                      }
                  },
+                 {
+                     name: "...",
+                     chargeAmt: 1200,
+                     finishDelay: 5000,
+                     damage: -1,
 
+                 },
              ]
          ];
      }
@@ -799,7 +905,6 @@
       */
 
      setHealth(newHealth, isTrue) {
-        // messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'IMMATERIAL', 0.8, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.1, scaleY: 1.1});
          if (this.shieldAmts > 0 && !isTrue) {
              this.damageHandShield();
              super.setHealth(this.health);
@@ -815,17 +920,7 @@
          } else {
              let prevHealthPercent = this.prevHealth / this.healthMax;
              if (this.health <= 99 && this.prevHealth > 99) {
-                 messageBus.publish("closeCombatText")
-                 this.emergencyShield();
-                 this.clearExtraAttackDamage();
-                 this.clearPower();
-
-                 globalObjects.bannerTextManager.setDialog([getLangText('deathFight2plusz'), getLangText('deathFight2plusz2')]);
-                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-                 globalObjects.bannerTextManager.showBanner(0);
-                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                     this.setAwake();
-                 })
+                 this.showHurtFinale();
              }
          }
      }
@@ -972,7 +1067,7 @@
                              onStart: () => {
                                  playSound('whoosh', 0.8).setSeek(0.1);
                                  if (shields >= 1) {
-                                     this.addDelay(() => {
+                                     this.addDelayIfAlive(() => {
                                          this.createHandShield(shields);
                                      }, 200);
                                  }
@@ -1238,7 +1333,7 @@
                      targets: flash,
                      scaleX: 0,
                      scaleY: 0,
-                     duration: 800,
+                     duration: 700,
                      ease: 'Quad.easeOut',
                      onComplete: () => {
                          let pulser = getTempPoolObject('circle', 'blastEffect1.png', 'blastEffect', 1300);
@@ -1286,7 +1381,7 @@
                          //     duration: 550,
                          // });
 
-                         this.addDelay(() => {
+                         this.addDelayIfAlive(() => {
                              playSound('slice_in');
                              blackBG.setAlpha(0.75);
                              this.addTween({
@@ -1380,11 +1475,11 @@
      }
 
      repeatScratch(damage, times, handObj, handMoveX, handMoveY, onComplete) {
-         this.addDelay(() => {
+         this.addDelayIfAlive(() => {
              let max2Scratch = times >= 2 ? 2 : times;
              times -= max2Scratch;
              for (let i = 0; i < max2Scratch; i++) {
-                 this.addDelay(() => {
+                 this.addDelayIfAlive(() => {
                      let scratch = getTempPoolObject('deathfinal', 'scratch.png', 'scratch', 1500);
                      scratch.rotation = 0.8;
                      scratch.setPosition(gameConsts.halfWidth - 35 + 70 * i, globalObjects.player.getY() - 206 + i * 40);
@@ -1451,11 +1546,11 @@
                                  ease: 'Quart.easeInOut',
                                  onComplete: () => {
                                      // next swipe
-                                     this.addDelay(() => {
+                                     this.addDelayIfAlive(() => {
                                          let max2Scratch = times >= 2 ? 2 : times;
                                          times -= max2Scratch;
                                          for (let i = 0; i < max2Scratch; i++) {
-                                             this.addDelay(() => {
+                                             this.addDelayIfAlive(() => {
                                                  let scratch = getTempPoolObject('deathfinal', 'scratch.png', 'scratch', 1500);
                                                  scratch.rotation = -0.8;
                                                  scratch.setPosition(gameConsts.halfWidth + 35 - 70 * i, globalObjects.player.getY() - 206 + i * 40);
@@ -1477,7 +1572,7 @@
                                              targets: handObj,
                                              x: "-=" + overshootX,
                                              y: "+=" + overshootY,
-                                             duration: 400,
+                                             duration: 350,
                                              ease: 'Quint.easeOut',
                                              onComplete: () => {
                                                  if (times <= 0) {
@@ -1497,7 +1592,7 @@
                                                          alpha: 0.75,
                                                          scaleX: 0.65,
                                                          scaleY: 0.65,
-                                                         duration: 350,
+                                                         duration: 300,
                                                          ease: 'Quart.easeInOut',
                                                          completeDelay: 10,
                                                          onComplete: () => {
@@ -1582,7 +1677,7 @@
                      scaleY: 1.2,
                      onComplete: () => {
                          for (let i = 5; i >= 0; i--) {
-                             this.addDelay(() => {
+                             this.addDelayIfAlive(() => {
                                  redClockArmBack.setAlpha(1).setRotation(Math.PI * 0.25 * 0.33 * i - 0.04).setScale(1.05);
                                  redClockArmFront.setAlpha(0.75).setRotation(Math.PI * 0.25 * 0.33 * i - 0.04).setScale(1.05);
                                  if (i == 0) {
@@ -1823,17 +1918,22 @@
          this.shieldText.setText(this.shieldAmts);
      }
 
+     handleSpecialDamageAbsorption(amt) {
+         return 0;
+     }
 
-
-     die() {
-         super.die();
+     sharedDie() {
+        fadeAwaySound(this.bgMusic);
+         if (this.bgMusic2) {
+            fadeAwaySound(this.bgMusic2);
+         }
+         if (this.bgMusic3) {
+            fadeAwaySound(this.bgMusic3);
+         }
          if (this.breathTween) {
              this.breathTween.stop();
          }
-         this.bgBlur.currAnim.stop();
-         this.clearHandObjects();
-         this.fadeOutCurrentHand();
-         this.clearHandShield();
+
          if (this.currentPowerHand) {
              this.currentPowerHand.destroy();
          }
@@ -1844,9 +1944,84 @@
              this.spellAbsorber.unsubscribe();
              this.spellAbsorber = null;
          }
+
+         this.bgBlur.destroy();
+         this.clearHandObjects();
+         this.fadeOutCurrentHand();
+         this.clearHandShield();
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();
          globalObjects.magicCircle.disableMovement();
+     }
+
+     secondDie() {
+        this.specialDamageAbsorptionActive = true;
+        this.sharedDie();
+
+
+         playSound("whoosh");
+        globalObjects.bannerTextManager.setDialog([
+            getLangText('deathFight2plusending'), 
+            isUsingCheats() ? getLangText('deathFight2plusending3') : getLangText('deathFight2plusending2'),
+            getLangText('deathFight2plusending4'),
+            getLangText('deathFight2plusending5'),
+        ]);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 20, 0);
+        globalObjects.bannerTextManager.showBanner(0);
+
+
+        globalObjects.bannerTextManager.setDialogFunc([
+            null,
+            () => {
+                 this.addTween({
+                     targets: [this.bgMain],
+                     alpha: 0,
+                     duration: 1000,
+                     onComplete: () => {
+                         this.bgMain.destroy();
+                     }
+                 })
+            }, () => {
+
+                super.die();
+                this.deathFallTemp = this.addImage(this.sprite.x, this.y + 30, "deathfinal", 'death2fall.png').setScale(0.58).setAlpha(0).setDepth(this.sprite.depth);
+                this.addTween({
+                    targets: this.sprite,
+                    alpha: 0,
+                    y: "+=10",
+                    ease: 'Cubic.easeOut',
+                    duration: 1200,
+                    onComplete: () => {
+                         this.addTween({
+                             targets: this.deathFallTemp,
+                             duration: 2000,
+                             scaleX: 0.62,
+                             scaleY: 0.62,
+                             ease: "Cubic.easeInOut",
+                             onStart: () => {
+                                 playSound("whoosh");
+                             }
+                         })
+                    }
+                })
+                 this.addTween({
+                     delay: 1000,
+                     targets: this.deathFallTemp,
+                     duration: 600,
+                     alpha: 1,
+                 })
+            }, () => {
+
+            }
+            ]);
+
+     }
+
+     die() {
+         super.die();
+        this.sharedDie()
+
+
          setTimeout(() => {
              globalObjects.bannerTextManager.closeBanner();
          }, 0);
@@ -1854,7 +2029,6 @@
 
          this.glassBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'glass_break.png').setOrigin(0.5, 0.5).setAlpha(1).setDepth(1000).setBlendMode(Phaser.BlendModes.ADD).setScale(1.333);
          this.glassBG2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'glass_break.png').setOrigin(0.5, 0.5).setAlpha(1).setDepth(0).setBlendMode(Phaser.BlendModes.MULTIPLY).setScale(1.333);
-         this.bgBlur.destroy();
          this.addTween({
              targets: this.bgMain,
              scaleX: 1.03,
@@ -1870,7 +2044,9 @@
                      ease: 'Quart.easeOut'
                  })
              }
-         })
+         });
+
+
          this.addTween({
              targets: [this.glassBG, this.glassBG2],
              scaleX: 1.37,
@@ -1885,7 +2061,10 @@
                      duration: 250,
                      ease: 'Quart.easeOut',
                      onComplete: () => {
-
+                        messageBus.publish("showCombatText", getLangText('deathFight2plusbeaten1'), -40);
+                         this.addTimeout(() => {
+                            messageBus.publish("closeCombatText")
+                         }, 1500)
                      }
                  })
              }
@@ -1910,10 +2089,6 @@
          })
 
          this.fallAnim();
-         fadeAwaySound(this.bgMusic);
-         if (this.bgMusic2) {
-                fadeAwaySound(this.bgMusic2);
-         }
      }
 
      fallAnim() {
@@ -1962,10 +2137,20 @@
                              }
                          })
                          playSound("whoosh");
-                     }
-                 })
-             }
-         })
+
+                        globalObjects.bannerTextManager.setDialog([
+                            getLangText('deathFight2plusbeaten2'), 
+                            getLangText('deathFight2plusbeaten3'),
+                            getLangText('deathFight2plusbeaten4'),
+                            getLangText('deathFight2plusending5'),
+                        ]);
+                        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 20, 0);
+                        globalObjects.bannerTextManager.showBanner(0);
+
+                    }
+                })
+            }
+        })
      }
 
      createPokePower() {
@@ -2485,7 +2670,7 @@
                     duration: 900,
                 });
                 this.currentHandGlow.alpha = 1;
-                this.addDelay(() => {
+                this.addDelayIfAlive(() => {
                     this.fadeMainBG(true);
                     if (onCompleteFunc) {
                         onCompleteFunc();

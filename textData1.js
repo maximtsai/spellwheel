@@ -59,7 +59,7 @@ let textData = {
         "en_us": "Create shield\nthat blocks 12\ndamage",
         "fr": "Crée un bouclier\nqui bloque 12\npoints de dégâts",
         "zh_tw": "創建一個可以阻擋\n12 點傷害的盾牌",
-        "zh_cn": "创建一个可以阻挡\n12 点伤害的盾牌",
+        "zh_cn": "打造一个可以阻挡\n12 点伤害的盾牌",
         "ru": "Создает щит,\nблокирующий\n12 ед. урона.",
         "es": "Crea un escudo\nque bloquea\n12 de daño",
         "jp": "12ダメージをブロ\nックするシール\nドを作成する"
@@ -68,7 +68,7 @@ let textData = {
         "en_us": "Create shield that\nblocks 12 damage",
         "fr": "Crée un bouclier qui bloque\n12 points de dégâts",
         "zh_tw": "創建一個可以阻擋 12 點傷害的盾牌",
-        "zh_cn": "创建一个可以阻挡 12 点伤害的盾牌",
+        "zh_cn": "打造一个可以阻挡 12 点伤害的盾牌",
         "ru": "Создает щит, блокирующий\n12 ед. урона.",
         "es": "Crea un escudo que\nbloquea 12 de daño",
         "jp": "12ダメージをブロックす\nるシールドを作成する"
@@ -77,7 +77,7 @@ let textData = {
         "en_us": "Create shield\nthat blocks 14\ndamage",
         "fr": "Crée un bouclier\nqui bloque 14\npoints de dégâts",
         "zh_tw": "創建一個可以阻擋\n14 點傷害的盾牌",
-        "zh_cn": "创建一个可以阻挡\n14 点伤害的盾牌",
+        "zh_cn": "打造一个可以阻挡\n14 点伤害的盾牌",
         "ru": "Создает щит,\nблокирующий\n14 ед. урона.",
         "es": "Crea un escudo\nque bloquea\n14 de daño",
         "jp": "14ダメージをブロ\nックするシール\nドを作成する"
@@ -86,7 +86,7 @@ let textData = {
         "en_us": "Create shield that\nblocks 14 damage",
         "fr": "Crée un bouclier qui bloque\n14 points de dégâts",
         "zh_tw": "創建一個可以阻擋 14 點傷害的盾牌",
-        "zh_cn": "创建一个可以阻挡 14 点伤害的盾牌",
+        "zh_cn": "打造一个可以阻挡 14 点伤害的盾牌",
         "ru": "Создает щит, блокирующий\n14 ед. урона.",
         "es": "Crea un escudo que\nbloquea 14 de daño",
         "jp": "14ダメージをブロックす\nるシールドを作成する"
@@ -145,20 +145,20 @@ let textData = {
         "es": "Ataca dos veces. El primer ataque inflige 6 de\ndaño, el segundo ataque inflige el 50% del primero.",
         "jp": "2回攻撃する。最初の攻撃は6ダメージを与え、\n2回目の攻撃は最初の攻撃の50%を与えます。"
     },
-    "time_enhance_desc": {
+    "time_enhance_desc": {//todo
         "en_us": "Your next attack\nis fired an\nadditional time",
         "fr": "Votre prochaine\nattaque tirera\nune fois\nsupplémentaire",
         "zh_tw": "你的下一次攻擊\n將額外發射一次",
-        "zh_cn": "你的下一次攻击\n将额外发射一次",
+        "zh_cn": "你的下一次攻击\n将多发射一次",
         "ru": "Ваша следующая\nатака произойдет\nеще один раз",
         "es": "Tu próximo\nataque se dispara\nuna vez más",
         "jp": "次の攻撃は追加\nで発射されます"
     },
-    "time_enhance_desc_long": {
+    "time_enhance_desc_long": {//todo
         "en_us": "Your next attack is fired\nan additional time",
         "fr": "Votre prochaine attaque tirera\nune fois supplémentaire",
         "zh_tw": "你的下一次攻擊將額外發射一次",
-        "zh_cn": "你的下一次攻击将额外发射一次",
+        "zh_cn": "你的下一次攻击将多发射一次",
         "ru": "Ваша следующая атака\nпроизойдет еще один раз",
         "es": "Tu próximo ataque se\ndispara una vez más",
         "jp": "次の攻撃は追加で発射されます"
@@ -167,7 +167,7 @@ let textData = {
         "en_us": "Create shield\nthat delays up\nto 60 damage",
         "fr": "Crée un bouclier\nqui retarde jusqu’à\n60 points de dégâts",
         "zh_tw": "創建一個盾牌，\n延遲多達 60 點傷害",
-        "zh_cn": "创建一个盾牌，\n延迟多达 60 点伤害",
+        "zh_cn": "打造一个盾牌，\n延迟多达 60 点伤害",
         "ru": "Создает щит,\nкоторый задерживает\nдо 60 ед. урона",
         "es": "Crea un escudo\nque retrasa hasta\n60 de daño",
         "jp": "最大60ダメージ\nを遅らせるシール\nドを作成"
@@ -176,7 +176,7 @@ let textData = {
         "en_us": "Create shield that\ndelays up to 60 damage",
         "fr": "Crée un bouclier qui retarde\njusqu’à 60 points de dégâts",
         "zh_tw": "創建一個盾牌，延遲多達 60 點傷害",
-        "zh_cn": "创建一个盾牌，延迟多达 60 点伤害",
+        "zh_cn": "打造一个盾牌，延迟多达 60 点伤害",
         "ru": "Создает щит, который\nзадерживает до 60 ед. урона",
         "es": "Crea un escudo que\nretrasa hasta 60 de daño",
         "jp": "最大60ダメージを遅らせるシールドを作成"
@@ -235,11 +235,11 @@ let textData = {
         "es": " hechizos. Se debilita con el uso repetido.",
         "jp": "つの呪文の凍結時間。\n繰り返し使用すると弱くなります。"
     },
-    "void_strike_desc": {
+    "void_strike_desc": {//todo
         "en_us": "Attack 3 times\nafter a delay,\neach attack\ndeals 2% enemy\ncurrent HP",
         "fr": "Attaque 3 fois après\nun délai, chaque\nattaque inflige 2%\ndes PV actuels\nde l’ennemi.",
         "zh_tw": "延遲後攻擊 3 次，\n每次攻擊造成 2%\n敵人當前生命值",
-        "zh_cn": "延迟后攻击 3 次，\n每次攻击造成 2%\n敌人当前生命值",
+        "zh_cn": "延迟后再攻击 3 次，\n每次攻伤害 2%\n敌人当前生命值",
         "ru": "Атакует 3 раза после\nзадержки, каждая\nатака наносит 2%\nот текущего\nздоровья противника",
         "es": "Ataca 3 veces después\nde un retraso, cada\nataque inflige un\n2% de los PS\nactuales del enemigo",
         "jp": "遅延後に3回攻撃し、\n各攻撃で敵の現在のHP\nの2%にダメージを与える"
@@ -275,7 +275,7 @@ let textData = {
         "en_us": "Create shield\nthat completely\nnegates one\nattack",
         "fr": "Crée un bouclier\nqui annule\ncomplètement\nune attaque",
         "zh_tw": "創建一個完全抵消\n一次攻擊的盾牌",
-        "zh_cn": "创建一个完全抵消\n一次攻击的盾牌",
+        "zh_cn": "打造一个完全抵消\n一次攻击的盾牌",
         "ru": "Создайте щит,\nкоторый полностью\nнейтрализует\nодну атаку",
         "es": "Crea un escudo\nque anula por\ncompleto un ataque",
         "jp": "1回の攻撃を完全\nに無効にするシ\nールドを作る"
@@ -284,7 +284,7 @@ let textData = {
         "en_us": "Create shield that\ncompletely negates one attack",
         "fr": "Crée un bouclier qui annule\ncomplètement une attaque",
         "zh_tw": "創建一個完全抵消一次攻擊的盾牌",
-        "zh_cn": "创建一个完全抵消一次攻击的盾牌",
+        "zh_cn": "打造一个完全抵消一次攻击的盾牌",
         "ru": "Создайте щит, который полностью\nнейтрализует одну атаку",
         "es": "Crea un escudo que anula\npor completo un ataque",
         "jp": "1回の攻撃を完全に無効に\nするシールドを作る"
@@ -292,8 +292,8 @@ let textData = {
     "void_reinforce_desc": {
         "en_us": "Heal to full,\nbut lose 10\nmax hp",
         "fr": "Soignez\ncomplètement, mais\nperdez 10 PV max.",
-        "zh_tw": "完全治癒自己，但失去\n10 點最大生命值",
-        "zh_cn": "完全治愈自己，但失去\n10 点最大生命值",
+        "zh_tw": "完全治癒自己，但失去\n10 點總生命值",
+        "zh_cn": "完全治愈自己，但失去\n10 点总生命值",
         "ru": "исцеляется\nполностью, но\nтеряет 10 макс\nхп",
         "es": "Se cura por\ncompleto, pero\npierde 10 puntos\nde salud máximos.",
         "jp": "完全に回復するが、\n最大HPの10を失う"
@@ -346,8 +346,8 @@ let textData = {
     "mind_enhance_desc": {
         "en_us": "Next attack burns\nenemy for 2\nTrue damage/sec\nfor 5 seconds",
         "fr": "La prochaine attaque\nbrûle l’ennemi et\nlui inflige 10\npoints de dégâts\nbruts en 5 secondes",
-        "zh_tw": "下一次攻擊在5秒內\n燃燒敵人10點\n真實傷害",
-        "zh_cn": "下一次攻击在5秒内\n燃烧敌人10点\n真实伤害",
+        "zh_tw": "下一次攻擊對敵人\n造成每秒 2 點真實\n傷害，持續 5 秒",
+        "zh_cn": "下一次攻击对敌人\n造成每秒 2 点真实\n伤害，持续 5 秒",
         "ru": "Следующая атака\nсжигает противника,\nнанося 10 ед.\nчистого урона в\nтечение 5 сек.",
         "es": "El siguiente ataque\nquema al enemigo\ne inflige 10 de\ndaño verdadero\ndurante 5 segundos",
         "jp": "次の通常攻撃で敵を\n5秒間10確定ダメー\nジで燃やす"
@@ -382,8 +382,8 @@ let textData = {
     "mind_protect_desc": {
         "en_us": "Create shield\nthat absorbs 50%\nincoming damage,\nthen reflects it\nback",
         "fr": "Crée un bouclier\nqui absorbe 50%\ndes dégâts puis\nles renvoie",
-        "zh_tw": "创建一个吸收 50%\n伤害并将其反射回去\n的盾牌",
-        "zh_cn": "创建一个吸收 50%\n伤害并将其反射回去\n的盾牌",
+        "zh_tw": "打造一个吸收 50%\n伤害并将其反射回去\n的盾牌",
+        "zh_cn": "打造一个吸收 50%\n伤害并将其反射回去\n的盾牌",
         "ru": "Создает щит, \nкоторый поглощает\n50 % урона, а\nзатем отбрасывает\nего назад.",
         "es": "Crea un escudo\nque absorbe el 50%\ndel daño entrante\ny luego lo refleja.",
         "jp": "受けるダメージの\n50%を吸収し、反射する\nシールドを作成する"
@@ -391,8 +391,8 @@ let textData = {
     "mind_protect_desc_long": {
         "en_us": "Create shield that absorbs 50%\nincoming damage then reflects it back",
         "fr": "Crée un bouclier qui absorbe 50%\ndes dégâts puis les renvoie",
-        "zh_tw": "创建一个吸收 50% 伤害\n并将其反射回去的盾牌",
-        "zh_cn": "创建一个吸收 50% 伤害\n并将其反射回去的盾牌",
+        "zh_tw": "打造一个吸收 50% 伤害\n并将其反射回去的盾牌",
+        "zh_cn": "打造一个吸收 50% 伤害\n并将其反射回去的盾牌",
         "ru": "Создает щит, который поглощает 50%\nурона, а затем отбрасывает его назад.",
         "es": "Crea un escudo que absorbe el 50%\ndel daño entrante y luego lo refleja.",
         "jp": "受けるダメージの50%を吸収し、\n反射するシールドを作成する"
@@ -473,7 +473,7 @@ let textData = {
         "en_us": "Creates a shield that blocks\na flat amount of damage.",
         "fr": "Crée un bouclier qui bloque une quantité fixe de dégâts.",
         "zh_tw": "創建一個盾牌，阻擋一定量的傷害。",
-        "zh_cn": "创建一个盾牌，阻挡一定量的伤害。",
+        "zh_cn": "打造一个盾牌，阻挡一定量的伤害。",
         "ru": "Создает щит, который блокирует фиксированное количество урона.",
         "es": "Crea un escudo que bloquea una cantidad fija de daño.",
         "jp": "一定量のダメージをブロックするシールドを作成します。"
@@ -497,7 +497,7 @@ let textData = {
         "jp": "敵を粉砕すると同時に、自分自身を守るために、多くの物質を召喚します。"
     },
     "mind_tut_desc": {
-        "en_us": "The Energy rune grants\ncontrol over raw energy.\nEnergy spells have powerful supportive\neffects and can deal True damage that\nbypasses enemy defenses.",
+        "en_us": "The Energy rune grants\ncontrol over raw energy.\nEnergy spells have powerful supportive\neffects and deal True damage that\nbypasses enemy defenses.",
         "fr": "La rune Énergie accorde le contrôle de l’énergie brute. Les sorts d’énergie ont de puissants effets de soutien et peuvent infliger des dégâts bruts qui contournent les défenses ennemies.",
         "zh_tw": "能量符文授予對原始能量的控制權。能量法術具有強大的支援效果，可以造成繞過敵人防禦的真實傷害。",
         "zh_cn": "能量符文授予对原始能量的控制权。能量法术具有强大的支持效果，可以造成绕过敌人防御的真实伤害。",
@@ -506,7 +506,7 @@ let textData = {
         "jp": "エネルギーのルーンは、生のエネルギーをコントロールすることを可能にします。エネルギー呪文は強力なサポート効果を持ち、敵の防御を迂回するトゥルーダメージを与えることができます。"
     },
     "mind_plus_tut_desc": {
-        "en_us": "Your mastery over the element strengthens\nsome of your existing Energy spells.",
+        "en_us": "Your mastery over the element\nstrengthens some of your\nexisting Energy spells.",
         "fr": "Votre maîtrise de l’élément renforce certains de vos sorts d’énergie existants.",
         "zh_tw": "你對元素的掌握加強了你現有的一些能量法術。",
         "zh_cn": "你对元素的掌握加强了你现有的一些能量法术。",
@@ -536,7 +536,7 @@ let textData = {
         "en_us": "Creates a shield that blocks\nhalf of all damage, while\nstoring up and retaliating with\nthe damage you do take.",
         "fr": "Crée un bouclier qui bloque la moitié de tous les dégâts, tout en accumulant et en ripostant avec les dégâts que vous subissez.",
         "zh_tw": "創建一個盾牌，可以阻擋所有傷害的一半，同時儲存並利用你所受到的傷害進行報復。",
-        "zh_cn": "创建一个盾牌，可以阻挡所有伤害的一半，同时储存并利用你所受到的伤害进行报复。",
+        "zh_cn": "打造一个盾牌，可以阻挡所有伤害的一半，同时储存并利用你所受到的伤害进行报复。",
         "ru": "Создает щит, который блокирует половину всего урона, накапливая и нанося ответный урон.",
         "es": "Crea un escudo que bloquea la mitad de todo el daño, mientras acumula y toma represalias con el daño que recibes.",
         "jp": "ダメージの半分をブロックし、受けたダメージを溜め込んで報復するシールドを作成します。"
@@ -590,7 +590,7 @@ let textData = {
         "en_us": "Creates a shield that delays\nthe damage you take to a\nslow trickle, up to a limit.",
         "fr": "Crée un bouclier qui retarde les dégâts que vous subissez à un filet lent, jusqu’à une limite.",
         "zh_tw": "創建一個盾牌，可以將您受到的傷害延遲到緩慢的涓涓細流，直至達到極限。",
-        "zh_cn": "创建一个盾牌，可以将您受到的伤害延迟到缓慢的涓涓细流，直至达到极限。",
+        "zh_cn": "打造一个盾牌，可以将您受到的伤害延迟到缓慢的涓涓细流，直至达到极限。",
         "ru": "Создает щит, который задерживает получаемый вами урон до медленной струйки, до предела.",
         "es": "Crea un escudo que retrasa el daño que recibes a un goteo lento, hasta un límite.",
         "jp": "受けるダメージを限界までゆっくりと遅らせるシールドを作成します。"
@@ -644,7 +644,7 @@ let textData = {
         "en_us": "Creates a shield that negates\nall damage from a single\nenemy attack hit, no matter\nhow strong.",
         "fr": "Crée un bouclier qui annule tous les dégâts infligés par une seule attaque ennemie, quelle que soit sa force.",
         "zh_tw": "創建一個盾牌，無論強度如何，都可以抵消單次敵人攻擊造成的所有傷害。",
-        "zh_cn": "创建一个盾牌，无论强度如何，都可以抵消单次敌人攻击造成的所有伤害。",
+        "zh_cn": "打造一个盾牌，无论强度如何，都可以抵消单次敌人攻击造成的所有伤害。",
         "ru": "Создает щит, который сводит на нет весь урон от одной вражеской атаки, независимо от того, насколько она сильна.",
         "es": "Crea un escudo que niega todo el daño de un solo golpe de ataque enemigo, sin importar cuán fuerte sea.",
         "jp": "敵の攻撃が1回受けても、どんなに強くてもすべてのダメージを無効化するシールドを生成する。"

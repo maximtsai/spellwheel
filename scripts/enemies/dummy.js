@@ -141,7 +141,7 @@
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
             this.timeSinceLastAttacked = -50;
-            globalObjects.textPopupManager.setInfoText(gameConsts.width, 275, getLangText('level1_tut_b'), 'right');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, 272, getLangText('level1_tut_b'), 'right');
             if (this.rune2) {
                 this.rune2.destroy();
             }

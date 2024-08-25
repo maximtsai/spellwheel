@@ -66,14 +66,14 @@ let textData2 = {
     "encyc_void": {
         "en_us": "Void",
         "fr": "Vide",
-        "zh_tw": "無效",
-        "zh_cn": "无效",
+        "zh_tw": "空虛",
+        "zh_cn": "空虚",
         "ru": "Пустота",
         "es": "Vacío",
-        "jp": "無効"
+        "jp": "空虚"
     },
     "encyc_desc_void": {
-        "en_us": "Controls dark space to cast spells",
+        "en_us": "Controls dark empty space to cast spells",
         "fr": "Contrôle l’espace sombre pour lancer des sorts",
         "zh_tw": "控制黑暗空間施放法術",
         "zh_cn": "控制黑暗空间施放法术",
@@ -174,8 +174,8 @@ let textData2 = {
     "post_fight_health": {
         "en_us": "Health Left: ",
         "fr": "Santé Gauche :",
-        "zh_tw": "剩餘健康：",
-        "zh_cn": "剩余健康：",
+        "zh_tw": "剩餘生命值：",
+        "zh_cn": "剩余生命值：",
         "ru": "Осталось здоровья:",
         "es": "Salud Izquierda:",
         "jp": "ヘルス残量:"
@@ -488,8 +488,8 @@ let textData2 = {
     "pre_fight_5b": {
         "en_us": "But if there is no entrance, then I\nwill simply make one.",
         "fr": "Mais s’il n’y a pas d’entrée, alors\nj’en ferai simplement une.",
-        "zh_tw": "但是如果沒有入口，那我就直接做一個。",
-        "zh_cn": "但是如果没有入口，那我就直接做一个。",
+        "zh_tw": "但是如果沒有入口，那我就自己造一個。",
+        "zh_cn": "但是如果没有入口，那我就自己造一个。",
         "ru": "Но если входа нет, то я просто\nсделаю его.",
         "es": "Pero si no hay entrada, entonces\nsimplemente haré una.",
         "jp": "しかし、入り口がない場合は、単に入り口\nを作ります。"
@@ -531,7 +531,7 @@ let textData2 = {
         "jp": "でも、私は何でもできると確信しています。"
     },
     "level0_diag_a": {
-        "en_us": "This stick doll is\nblocking the entrance.",
+        "en_us": "This bundle of sticks is\nblocking the entrance.",
         "fr": "Cette poupée bâton\nbloque l'entrée.",
         "zh_tw": "這根木棒娃娃\n擋住了入口。",
         "zh_cn": "这根木棒娃娃\n挡住了入口。",
@@ -539,11 +539,11 @@ let textData2 = {
         "es": "Este muñeco de palo está\nbloqueando la entrada.",
         "jp": "この棒人形が入り口を塞いでいます。"
     },
-    "level0_diag_b": {
-        "en_us": "Is it trying to\nthwart my noble rescue?",
+    "level0_diag_b": { // todo fix
+        "en_us": "Is it trying to\nthwart my righteous rescue?",
         "fr": "JEst-ce qu'il essaie de\ncontrecarrer mon noble sauvetage ?",
         "zh_tw": "它是想阻止我的崇高救援嗎？",
-        "zh_cn": "它是想阻止我的崇高救援吗？",
+        "zh_cn": "它是想阻止我的正义救援吗？",
         "ru": "Он пытается помешать моему\nблагородному спасению?",
         "es": "¿Está intentando frustrar\nmi noble rescate?",
         "jp": "私の高貴な救出を妨害\nしようとしているのでしょうか?"

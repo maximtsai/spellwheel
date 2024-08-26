@@ -540,13 +540,13 @@ let textData2 = {
         "jp": "この棒人形が入り口を塞いでいます。"
     },
     "level0_diag_b": { // todo fix
-        "en_us": "Is it trying to\nthwart my righteous rescue?",
-        "fr": "JEst-ce qu'il essaie de\ncontrecarrer mon noble sauvetage ?",
-        "zh_tw": "它是想阻止我的崇高救援嗎？",
-        "zh_cn": "它是想阻止我的正义救援吗？",
-        "ru": "Он пытается помешать моему\nблагородному спасению?",
-        "es": "¿Está intentando frustrar\nmi noble rescate?",
-        "jp": "私の高貴な救出を妨害\nしようとしているのでしょうか?"
+        "en_us": "Is it trying to block me\nfrom saving my beloved?",
+        "fr": "Est-ce que cela m'empêche\nde sauver ma bien-aimée ?",
+        "zh_tw": "它是在阻止我拯救我心愛的嗎？",
+        "zh_cn": "它是在阻止我拯救我心爱的吗？",
+        "ru": "Мешает ли это мне\nспасти любимого?",
+        "es": "¿Me está impidiendo salvar\na mi amado?",
+        "jp": "それは私が愛する人を救うのを妨害\nしようとしているのでしょうか?"
     },
     "level0_tut_a": {
         "en_us": "Spin the wheels to\nreplace used Runes.",

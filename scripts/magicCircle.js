@@ -451,7 +451,7 @@ const ENABLE_KEYBOARD = true;
         this.delayDamageText.alpha = 0;
         this.delayDamageText.setOrigin(0.5, -0.35);
 
-        this.altString = "";//"alt2_";
+        this.altString = "alt2_";
 
         this.outerCircle = scene.add.sprite(x, y, 'circle', this.altString + 'usage_normal.png').setDepth(101);
         this.outerCircle.torque = 0;
@@ -475,7 +475,6 @@ const ENABLE_KEYBOARD = true;
         this.castButtonSize = isMobile ? 72 : 78;
         this.castButton = scene.add.sprite(x, y, 'circle', this.altString + 'cast_normal.png').setDepth(105);
         this.castButtonSpare = scene.add.sprite(x, y, 'circle', this.altString + 'cast_press.png').setDepth(106).setAlpha(0);
-        // this.castButtonFlash = scene.add.sprite(x, y, 'circle', 'cast_flash.png').setDepth(106).setAlpha(0);
         this.castHoverTemp = scene.add.sprite(x, y, 'circle', this.altString + 'cast_press.png').setDepth(106).setAlpha(0);
         this.castGlow = scene.add.sprite(x, y, 'circle', 'cast_glow.png').setDepth(106).setAlpha(0);
         this.greyedDead = scene.add.sprite(x, y, 'circle', 'greyed_dead.png').setVisible(false).setDepth(119);

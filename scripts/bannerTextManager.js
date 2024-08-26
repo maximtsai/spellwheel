@@ -126,8 +126,12 @@ class BannerTextManager {
         this.onFinishFunc = func;
     }
 
+    setForcePause(val = true) {
+        this.pauseForced = val;
+    }
+
     continueDialog() {
-        if (this.continuePause || !this.isShowing) {
+        if (this.pauseForced || this.continuePause || !this.isShowing) {
             return;
         }
 

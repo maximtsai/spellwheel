@@ -64,6 +64,54 @@
                      y: 90,
                      ease: 'Cubic.easeInOut',
                      duration: 900,
+                     onComplete: () => {
+                         let leftBell = this.addImage(50, 40, 'deathfinal', 'bell.png').setScale(0.5).setAlpha(0).setOrigin(0.5, 0.1).setRotation(0.6);
+                         let rightBell = this.addImage(gameConsts.width - 50, 40, 'deathfinal', 'bell.png').setScale(0.5).setAlpha(0).setOrigin(0.5, 0.1).setRotation(-0.6);
+                         this.addTween({
+                            delay: 200,
+                            targets: [leftBell, rightBell],
+                            duration: 1300,
+                            ease: 'Quad.easeIn',
+                            alpha: 0.35,
+                            scaleX: 0.55,
+                            scaleY: 0.55,
+                            onComplete: () => {
+                                playSound('death_cast', 0.55);
+                                this.addDelay(() => {
+                                    playSound('death_cast', 0.35)
+                                }, 3000)
+
+                                 this.addTween({
+                                    targets: [leftBell, rightBell],
+                                    duration: 4500,
+                                    ease: 'Quad.easeOut',
+                                    alpha: 0,
+                                    onComplete: () => {
+                                        leftBell.destroy();
+                                        rightBell.destroy();
+                                    }
+                                 })
+                            }
+                         });
+                         this.addTween({
+                            targets: leftBell,
+                            duration: 1500,
+                            ease: 'Cubic.easeInOut',
+                            rotation: -0.6,
+                            yoyo: true,
+                            repeat: 2
+                         })
+                         this.addDelayIfAlive(() => {
+                             this.addTween({
+                                targets: rightBell,
+                                duration: 1500,
+                                ease: 'Cubic.easeInOut',
+                                rotation: 0.6,
+                                yoyo: true,
+                                repeat: 2
+                             })
+                         }, 200)
+                     }
                  });
                  PhaserScene.tweens.add({
                      targets: scythe,
@@ -73,6 +121,7 @@
                      completeDelay: 200,
                      onComplete: () => {
                          scythe.play('scytheReap');
+
                          PhaserScene.tweens.add({
                              targets: scythe,
                              rotation: "-=1.5",
@@ -374,15 +423,15 @@
                  this.addTimeout(() => {
                      this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                          this.spellsCastCounter++;
-                         if (this.spellsCastCounter > 2) {
+                         if (this.spellsCastCounter > 1) {
                              this.playerSpellCastSub.unsubscribe();
                              messageBus.publish("closeCombatText")
                          }
                      });
                      this.addTimeout(() => {
                          messageBus.publish("closeCombatText")
-                     }, 5000);
-                 }, 4000)
+                     }, 3000);
+                 }, 2000)
              } else if (this.timesAttacked === 13) {
                  messageBus.publish("showCombatText", getLangText('deathFightCombat1b'));
                  this.addTimeout(() => {
@@ -992,7 +1041,6 @@
                      // this.sprite.setRotation(0.1);
                      this.attackName.setText(";;;5x36;;;");
                      this.repositionAngrySymbol();
-                     playSound('death_cast', 0.6)
                  }
              },
              onComplete: () => {

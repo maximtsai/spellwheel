@@ -212,7 +212,7 @@
              onComplete: () => {
                 this.addDelay(() => {
                     let deathHead = this.addImage(this.x, this.y + 10, 'deathfinal', 'death_2_laugh.png').setScale(0.8, 0.5).setOrigin(0.5, 0.45).setAlpha(0).setDepth(-1)
-                    screenShakeLong(7);
+                    screenShakeLong(12);
                     this.addTween({
                          targets: deathHead,
                          alpha: 0.6,
@@ -223,7 +223,6 @@
                          onComplete: () => {
                             deathHead.setAlpha(0.9).setScale(0.95, 1)
                             this.setAwake();
-                            screenShake(4);
                             this.addTween({
                                  targets: deathHead,
                                  alpha: 0,
@@ -237,43 +236,42 @@
                                  ease: 'Quart.easeOut',
                                  duration: 80,
                                  scaleX: "-=0.015",
-                                 scaleY: "-=0.03",
+                                 scaleY: "-=0.025",
                                  onComplete: () => {
                                     this.addTween({
+                                        screenShakeLong(10);
                                          targets: deathHead,
                                          duration: 20,
                                          scaleX: "+=0.03",
-                                         scaleY: "+=0.07",
+                                         scaleY: "+=0.06",
                                          onComplete: () => {
-                                            screenShake(3);
                                             this.addTween({
                                                  targets: deathHead,
                                                  ease: 'Quart.easeOut',
                                                  duration: 80,
                                                  scaleX: "-=0.015",
-                                                 scaleY: "-=0.03",
+                                                 scaleY: "-=0.025",
                                                  onComplete: () => {
                                                     this.addTween({
                                                          targets: deathHead,
                                                          duration: 20,
                                                         scaleX: "+=0.03",
-                                                        scaleY: "+=0.07",
+                                                        scaleY: "+=0.06",
                                                          onComplete: () => {
-                                                            screenShake(3);
                                                             this.addTween({
                                                                  targets: deathHead,
                                                                  ease: 'Quart.easeOut',
                                                                  duration: 80,
                                                                  scaleX: "-=0.015",
-                                                                 scaleY: "-=0.03",
+                                                                 scaleY: "-=0.025",
                                                                  onComplete: () => {
                                                                     this.addTween({
                                                                          targets: deathHead,
                                                                          duration: 20,
                                                                          scaleX: "+=0.03",
-                                                                         scaleY: "+=0.07",
+                                                                         scaleY: "+=0.06",
                                                                          onComplete: () => {
-                                                                        screenShakeLong(6);
+                                                                        screenShakeLong(10);
 
                                         let redFlash = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'red_pixel.png').setScale(500).setAlpha(0.8).setDepth(-1)
                                         this.addTween({
@@ -293,12 +291,13 @@
                                                                  scaleX: "-=0.015",
                                                                  scaleY: "-=0.03",
                                                                  onComplete: () => {
+                                                                    deathHead.setScale(deathHead.scaleX + 0.05, deathHead.scaleY + 0.07);
                                                                     this.addTween({
                                                                          targets: deathHead,
                                                                          ease: 'Cubic.easeIn',
                                                                          duration: 1400,
                                                                          scaleX: "-=0.15",
-                                                                         scaleY: "-=0.04",
+                                                                         scaleY: "-=0.08",
                                                                      })
                                                                  }
                                                              })
@@ -371,8 +370,8 @@
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
-                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65).setRotation(0.18);
-                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0.18);
+                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65).setRotation(0.14);
+                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0.14);
                          okayHand.setDepth(50);
                          okayHandGlow.setDepth(50);
                          let damage = 28
@@ -497,8 +496,8 @@
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
-                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65).setRotation(0.18);;
-                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0.18);;
+                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65).setRotation(0.14);;
+                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0.14);;
                          okayHand.setDepth(50);
                          okayHandGlow.setDepth(50);
                          let damage = 999;
@@ -563,8 +562,8 @@
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
-                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65).setRotation(0.18);;
-                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0.18);;
+                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65).setRotation(0.14);;
+                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0.14);;
                          okayHand.setDepth(50);
                          okayHandGlow.setDepth(50);
                          let damage = 20;
@@ -687,8 +686,8 @@
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
-                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65).setRotation(0.18);;
-                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0.18);;
+                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65).setRotation(0.14);;
+                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0.14);;
                          okayHand.setDepth(50);
                          okayHandGlow.setDepth(50);
                          let damage = 24 + this.extraAttackDamage;
@@ -1014,8 +1013,8 @@
                          this.fadeOutCurrentHand();
                      },
                      attackFinishFunction: () => {
-                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65).setRotation(0.18);;
-                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0.18);;
+                         let okayHand = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay.png').setScale(0.1).setAlpha(0.65).setRotation(0.14);;
+                         let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0.14);;
                          okayHand.setDepth(50);
                          okayHandGlow.setDepth(50);
                          let damage = 28 + this.extraAttackDamage;
@@ -1423,8 +1422,8 @@
          this.addTween({
              targets: okayHand,
              rotation: 0,
-             duration: 250,
-             ease: 'Cubic.easeOut'
+             duration: 500,
+             ease: 'Cubic.easeInOut'
          })
          let blackBG = getBackgroundBlackout();
          blackBG.setDepth(okayHand.depth - 1).setAlpha(0);

@@ -91,6 +91,7 @@ class Death3 extends Enemy {
 
                 playSound('water_drop');
                 this.setDefaultSprite('max_death_3.png', 1);
+                gameVars.fromDeath2Plus = false;
                 this.sprite.y += 5;
                  this.addTween({
                      targets: blackBG,

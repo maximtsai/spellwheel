@@ -86,9 +86,12 @@ class BannerTextManager {
             });
 
             setTimeout(() => {
-                this.dialogButton.setOnMouseUpFunc(() => {
-                    this.continueDialog();
-                })
+                if (this.dialogButton) {
+                    this.dialogButton.setOnMouseUpFunc(() => {
+                        this.continueDialog();
+                    })
+                }
+
             }, 650)
         }
     }

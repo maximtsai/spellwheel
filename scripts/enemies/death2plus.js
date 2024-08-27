@@ -3,8 +3,8 @@
          super(scene, x, y);
          this.initSprite('death2final.png', 0.92, 0, -15, 'deathfinal');
          this.bgMusic = playMusic('but_never_forgotten_metal', 0.9, true);
-         this.bgMain = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5)
-         this.bgBlur = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star_blur.png').setDepth(-5).setScale(2.5).setAlpha(1.5);
+         this.bgMain = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5).setScale(1.04, 1.05)
+         this.bgBlur = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star_blur.png').setDepth(-5).setScale(2.63).setAlpha(1.5);
          globalObjects.player.reInitStats();
          globalObjects.player.refreshHealthBar();
          messageBus.publish('showCircleShadow', 0.7, -50);
@@ -18,8 +18,8 @@
                  this.bgBlur.currAnim = this.addTween({
                      targets: this.bgBlur,
                      alpha: 0.24,
-                     scaleX: 2.505,
-                     scaleY: 2.505,
+                     scaleX: 2.64,
+                     scaleY: 2.64,
                      ease: 'Quad.easeInOut',
                      repeat: -1,
                      yoyo: true,
@@ -218,7 +218,7 @@
                      ease: "Quint.easeIn",
                      onComplete: () => {
                         this.bgMusic3 = playMusic('but_never_forgotten_epicchoir', 0.9, true);
-                        this.bgMain.setFrame('star_red.png').setScale(1.24);
+                        this.bgMain.setFrame('star_red.png').setScale(1.32);
                         let redFlash = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'red_pixel.png').setScale(500).setAlpha(0.4).setDepth(-1)
                         this.addTween({
                              targets: redFlash,
@@ -248,7 +248,7 @@
                              targets: this.whiteoutTemp,
                              scaleX: 21,
                              scaleY: 21,
-                             duration: 500,
+                             duration: 400,
                              ease: "Cubic.easeInOut",
                              onComplete: () => {
                                  this.whiteoutTemp.destroy();
@@ -257,7 +257,7 @@
                          this.addTween({
                              targets: this.whiteoutTemp,
                              alpha: 0,
-                             duration: 500,
+                             duration: 400,
                              ease: "Quad.easeIn"
                          })
                      }
@@ -296,8 +296,8 @@
                                  this.addTween({
                                      targets: this.redClockTemp,
                                      alpha: 0,
-                                     scaleX: 1.27,
-                                     scaleY: 1.27,
+                                     scaleX: 1.2,
+                                     scaleY: 1.2,
                                      duration: 1000,
                                  })
                                  messageBus.publish('playerAddDelayedDamage', damage);
@@ -489,8 +489,8 @@
                                      targets: this.redClockTemp,
                                      rotation: 0,
                                      alpha: 1,
-                                     scaleX: 1.27,
-                                     scaleY: 1.27,
+                                     scaleX: 1.2,
+                                     scaleY: 1.2,
                                      ease: 'Cubic.easeIn',
                                      duration: 200,
                                      onComplete: () => {
@@ -613,8 +613,8 @@
                                  this.addTween({
                                      targets: this.redClockTemp,
                                      alpha: 0,
-                                     scaleX: 1.27,
-                                     scaleY: 1.27,
+                                     scaleX: 1.2,
+                                     scaleY: 1.2,
                                      duration: 1000,
                                  })
                                  messageBus.publish('playerAddDelayedDamage', damage);
@@ -894,8 +894,8 @@
                                  this.addTween({
                                      targets: this.redClockTemp,
                                      alpha: 0,
-                                     scaleX: 1.27,
-                                     scaleY: 1.27,
+                                     scaleX: 1.2,
+                                     scaleY: 1.2,
                                      duration: 1000,
                                  })
                                  messageBus.publish('playerAddDelayedDamage', damage);
@@ -955,6 +955,7 @@
      }
 
      summonHand(hand, glow, scaleAmt = 0.26, goalAlpha = 0.6, onComplete, enlargeTimes = 2) {
+        this.currentRockHand = hand;
          let startAlpha = hand.alpha;
          for (let i = 0; i < enlargeTimes; i++) {
              let pebbles = getTempPoolObject('blurry', 'rock_rush.png', 'rockRush', 800);
@@ -1482,7 +1483,7 @@
 
      repeatScratch(damage, times, handObj, handMoveX, handMoveY, isFast, onComplete) {
         let maxScratchAmt = isFast ? 3 : 2;
-         this.addDelayIfAlive(() => {
+         this.addDelay(() => {
              let max2Scratch = times >= maxScratchAmt ? maxScratchAmt : times;
              times -= max2Scratch;
              for (let i = 0; i < max2Scratch; i++) {
@@ -1555,11 +1556,11 @@
                                  ease: 'Quart.easeInOut',
                                  onComplete: () => {
                                      // next swipe
-                                     this.addDelayIfAlive(() => {
+                                     this.addDelay(() => {
                                          let max2Scratch = times >= maxScratchAmt ? maxScratchAmt : times;
                                          times -= max2Scratch;
                                          for (let i = 0; i < max2Scratch; i++) {
-                                             this.addDelayIfAlive(() => {
+                                            this.addDelayIfAlive(() => {
                                                  let scratch = getTempPoolObject('deathfinal', 'scratch.png', 'scratch', 1500);
                                                  scratch.rotation = -0.8;
                                                  let scratchX = gameConsts.halfWidth - (isFast ? (-70 + 55 * i) : (-40 + 65 * i))
@@ -1570,7 +1571,7 @@
 
                                                  messageBus.publish("selfTakeDamage", damage);
                                                  playSound('slice_in')
-                                             }, i * 60);
+                                            }, i * 60);
                                          }
                                          zoomTemp(1.02);
                                          messageBus.publish('tempPause', 60, 0.5);
@@ -1688,7 +1689,7 @@
                      scaleY: 1.2,
                      onComplete: () => {
                          for (let i = 5; i >= 0; i--) {
-                             this.addDelayIfAlive(() => {
+                             this.addDelay(() => {
                                  redClockArmBack.setAlpha(1).setRotation(Math.PI * 0.25 * 0.33 * i - 0.04).setScale(1.05);
                                  redClockArmFront.setAlpha(0.75).setRotation(Math.PI * 0.25 * 0.33 * i - 0.04).setScale(1.05);
                                  if (i == 0) {
@@ -1944,6 +1945,16 @@
          if (this.breathTween) {
              this.breathTween.stop();
          }
+         if (this.currentRockHand) {
+            this.addTween({
+                targets: this.currentRockHand,
+                alpha: 0,
+                duration: 500,
+                onComplete: () => {
+                    this.currentRockHand.visible = false;
+                }
+            })
+         }
 
          if (this.currentPowerHand) {
              this.currentPowerHand.destroy();
@@ -1981,7 +1992,6 @@
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 20, 0);
         globalObjects.bannerTextManager.showBanner(0);
 
-
         globalObjects.bannerTextManager.setDialogFunc([
             null,
             () => {
@@ -1997,7 +2007,7 @@
                 globalObjects.bannerTextManager.setForcePause(true);
                 super.die();
                 playSound("whoosh");
-                this.deathFallTemp = this.addImage(this.sprite.x, this.y + 50, "deathfinal", 'death2fall.png').setScale(0.58).setAlpha(0).setDepth(this.sprite.depth);
+                this.deathFallTemp = this.addImage(this.sprite.x, this.y + 40, "deathfinal", 'death2fall.png').setScale(0.58).setAlpha(0).setDepth(this.sprite.depth);
                 this.addTween({
                     targets: this.sprite,
                     alpha: 0,
@@ -2008,8 +2018,8 @@
                          this.deathFallTemp.currAnim2 = this.addTween({
                              targets: this.deathFallTemp,
                              duration: 2000,
-                             scaleX: 0.62,
-                             scaleY: 0.62,
+                             scaleX: 0.56,
+                             scaleY: 0.56,
                              ease: "Cubic.easeInOut",
                          })
                         globalObjects.bannerTextManager.setForcePause(false);
@@ -2022,49 +2032,48 @@
                      alpha: 1,
                  })
             }, () => {
-                if (this.deathFallTemp && this.deathFallTemp.currAnim) {
-                    this.deathFallTemp.currAnim.stop();
-                    if (this.deathFallTemp.currAnim2) {
-                        this.deathFallTemp.currAnim2.stop();
-                    }
-                    this.deathFallTempWhite = this.addImage(this.deathFallTemp.x, this.deathFallTemp.y, "deathfinal", 'death2fall_white.png').setScale(this.deathFallTemp.scaleX).setAlpha(0).setDepth(this.deathFallTemp.depth);
-                    this.flashCover = this.addImage(this.deathFallTemp.x, this.deathFallTemp.y - 120, 'blurry', 'flash_bg.webp').setScale(0.1, 0.15).setRotation(-1.5).setDepth(this.deathFallTemp.depth).setAlpha(0.5);
-
-                    this.addTween({
-                        targets: this.deathFallTempWhite,
-                        y: "-=45",
-                        scaleX: 0.4,
-                        scaleY: 0.55,
-                        duration: 1700,
-                        ease: 'Quad.easeIn',
-                        alpha: 1.5,
-                    })
-                    this.addTween({
-                        targets: this.deathFallTemp,
-                        y: "-=45",
-                        scaleX: 0.4,
-                        scaleY: 0.55,
-                        duration: 1700,
-                        ease: 'Quad.easeIn',
-                        alpha: 0,
-                    });
-
-
-                    this.addTween({
-                        targets: [this.flashCover],
-                        scaleX: 3.5,
-                        scaleY: 3.5,
-                        alpha: 1,
-                        rotation: Math.PI * 0.5,
-                        ease: 'Cubic.easeIn',
-                        duration: 1700,
-                        onComplete: () => {
-                            gameVars.flashCoverY = this.flashCover.y;
-                            this.beginDeathLast();
-                        }
-                    })
-
+                globalObjects.bannerTextManager.setForcePause(true);
+                this.deathFallTemp.currAnim.stop();
+                if (this.deathFallTemp.currAnim2) {
+                    this.deathFallTemp.currAnim2.stop();
                 }
+                this.deathFallTempWhite = this.addImage(this.deathFallTemp.x, this.deathFallTemp.y, "deathfinal", 'death2fall_white.png').setScale(this.deathFallTemp.scaleX).setAlpha(0).setDepth(this.deathFallTemp.depth);
+                this.flashCover = this.addImage(this.deathFallTemp.x, this.deathFallTemp.y - 60, 'blurry', 'flash_bg.webp').setScale(0.075, 0.15).setRotation(-1.5).setDepth(this.deathFallTemp.depth).setAlpha(0.5);
+
+                this.addTween({
+                    targets: this.deathFallTempWhite,
+                    y: "-=45",
+                    scaleX: 0.36,
+                    scaleY: 0.42,
+                    duration: 1700,
+                    ease: 'Quad.easeIn',
+                    alpha: 1.5,
+                })
+                this.addTween({
+                    targets: this.deathFallTemp,
+                    y: "-=45",
+                    scaleX: 0.36,
+                    scaleY: 0.42,
+                    duration: 1700,
+                    ease: 'Quad.easeIn',
+                    alpha: 0,
+                });
+
+
+                this.addTween({
+                    targets: [this.flashCover],
+                    scaleX: 3,
+                    scaleY: 3.75,
+                    alpha: 1,
+                    rotation: Math.PI * 0.5,
+                    ease: 'Cubic.easeIn',
+                    duration: 1700,
+                    onComplete: () => {
+                        globalObjects.bannerTextManager.setForcePause(false);
+                        gameVars.flashCoverY = this.flashCover.y;
+                        this.beginDeathLast();
+                    }
+                })
             }
             ]);
 
@@ -2084,15 +2093,15 @@
          this.glassBG2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'glass_break.png').setOrigin(0.5, 0.5).setAlpha(1).setDepth(0).setBlendMode(Phaser.BlendModes.MULTIPLY).setScale(1.333);
          this.addTween({
              targets: this.bgMain,
-             scaleX: 1.03,
-             scaleY: 1.03,
+             scaleX: 1.09,
+             scaleY: 1.09,
              duration: 50,
              ease: 'Quart.easeOut',
              onComplete: () => {
                  this.addTween({
                      targets: this.bgMain,
-                     scaleX: 1,
-                     scaleY: 1,
+                     scaleX: 1.06,
+                     scaleY: 1.06,
                      duration: 250,
                      ease: 'Quart.easeOut'
                  })
@@ -2146,7 +2155,7 @@
 
      fallAnim() {
          this.sprite.setRotation(-0.07);
-         let deathFallTemp = this.addImage(this.sprite.x, this.y + 30, "deathfinal", 'death2fall.png').setScale(0.58).setAlpha(0).setDepth(this.sprite.depth);
+         let deathFallTemp = this.addImage(this.sprite.x, this.y + 30, "deathfinal", 'death2fall.png').setScale(0.6).setAlpha(0).setDepth(this.sprite.depth);
          this.addTween({
              delay: 1300,
              targets: this.sprite,
@@ -2172,11 +2181,11 @@
                  })
              },
              onComplete: () => {
-                 this.addTween({
+                deathFallTemp.currAnim = this.addTween({
                      targets: deathFallTemp,
                      duration: 2000,
-                     scaleX: 0.62,
-                     scaleY: 0.62,
+                     scaleX: 0.55,
+                     scaleY: 0.55,
                      ease: "Cubic.easeInOut",
                      onStart: () => {
                          this.addTween({
@@ -2189,7 +2198,6 @@
                                  this.glassBG2.destroy();
                              }
                          })
-                         playSound("whoosh");
 
                         globalObjects.bannerTextManager.setDialog([
                             getLangText('deathFight2plusbeaten2'), 
@@ -2199,6 +2207,62 @@
                         ]);
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 20, 0);
                         globalObjects.bannerTextManager.showBanner(0);
+
+                        globalObjects.bannerTextManager.setDialogFunc([
+                            null,
+                            null, 
+                            null, () => {
+                                 playSound("whoosh");
+                                globalObjects.bannerTextManager.setForcePause(true);
+                                deathFallTemp.currAnim.stop();
+                                this.deathFallTempWhite = this.addImage(deathFallTemp.x, deathFallTemp.y, "deathfinal", 'death2fall_white.png').setScale(deathFallTemp.scaleX * 0.9).setAlpha(0).setDepth(deathFallTemp.depth);
+                                this.flashCover = this.addImage(deathFallTemp.x, deathFallTemp.y - 60, 'blurry', 'flash_bg.webp').setScale(0.075, 0.15).setRotation(-1.5).setDepth(deathFallTemp.depth).setAlpha(0.5);
+
+                                this.addTween({
+                                    targets: this.deathFallTempWhite,
+                                    y: "-=45",
+                                    duration: 2200,
+                                    ease: 'Quad.easeIn',
+                                })
+                                this.addTween({
+                                    targets: deathFallTemp,
+                                    y: "-=45",
+                                    duration: 2200,
+                                    ease: 'Quad.easeIn',
+                                })
+                                this.addTween({
+                                    targets: this.deathFallTempWhite,
+                                    scaleX: 0.35,
+                                    scaleY: 0.4,
+                                    duration: 2200,
+                                    alpha: 1.5,
+                                });
+                                this.addTween({
+                                    targets: deathFallTemp,
+                                    scaleX: 0.35,
+                                    scaleY: 0.4,
+                                    duration: 2200,
+                                    alpha: 0
+                                });
+
+
+                                this.addTween({
+                                    targets: [this.flashCover],
+                                    scaleX: 3,
+                                    scaleY: 3.75,
+                                    alpha: 1,
+                                    rotation: Math.PI * 0.5,
+                                    ease: 'Cubic.easeIn',
+                                    duration: 1700,
+                                    onComplete: () => {
+                                        globalObjects.bannerTextManager.setForcePause(false);
+                                        gameVars.flashCoverY = this.flashCover.y;
+                                        this.beginDeathLast();
+                                    }
+                                })
+                            }
+                            ]);
+
 
                     }
                 })

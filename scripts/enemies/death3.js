@@ -16,7 +16,7 @@ class Death3 extends Enemy {
     animateDeath3In() {
         let blackBG = getBackgroundBlackout();
         blackBG.setDepth(-2).setAlpha(1);
-        this.flashCover = this.addImage(gameConsts.halfWidth, gameVars.flashCoverY || 45, 'blurry', 'flash_bg.webp').setScale(3.5).setRotation(Math.PI*0.5).setDepth(1);
+        this.flashCover = this.addImage(gameConsts.halfWidth, gameVars.flashCoverY || 105, 'blurry', 'flash_bg.webp').setScale(3, 3.75).setRotation(Math.PI*0.5).setDepth(1);
         this.addTween({
             targets: [this.flashCover],
             scaleX: 0.5,
@@ -34,7 +34,7 @@ class Death3 extends Enemy {
                 this.flashCover.destroy();
             }
         });
-        this.sprite.setScale(0.8).setAlpha(0.4);
+        this.sprite.setScale(0.8, 0.65).setAlpha(0.4);
         this.sprite.y -= 50;
         this.addTween({
             targets: this.sprite,
@@ -84,10 +84,39 @@ class Death3 extends Enemy {
                         globalObjects.encyclopedia.showButton();
                         globalObjects.options.showButton();
                      }
-                 })
+                 });
+
+                this.startFightLogic();
 
             }
         })
+    }
+
+
+    startFightLogic() {
+        if (!this.redEffect) {
+            this.redEffect = this.addImage(this.sprite.x, this.sprite.y + 130, 'lowq', 'circle_blue2.png').setScale(0.4, 0.09).setOrigin(0.5, 0.45).setDepth(-4).setBlendMode(Phaser.BlendModes.MULTIPLY);
+        } else {
+            this.redEffect.setAlpha(0.65).setScale(0.4, 0.09);
+        }
+         this.addTween({
+             targets: this.redEffect,
+             scaleX: 3,
+             scaleY: 0.7,
+             duration: 3500,
+             ease: "Cubic.easeOut",
+             onComplete: () => {
+
+             }
+         });
+         this.addTween({
+             targets: this.redEffect,
+             alpha: 0,
+             duration: 3500,
+             onComplete: () => {
+                this.startFightLogic();
+             }
+         });
     }
 
     initStatsCustom() {

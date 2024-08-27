@@ -451,7 +451,7 @@ const ENABLE_KEYBOARD = true;
         this.delayDamageText.alpha = 0;
         this.delayDamageText.setOrigin(0.5, -0.35);
 
-        this.altString = "alt2_";
+        this.altString = ""//"alt2_";
 
         this.outerCircle = scene.add.sprite(x, y, 'circle', this.altString + 'usage_normal.png').setDepth(101);
         this.outerCircle.torque = 0;
@@ -2223,7 +2223,9 @@ const ENABLE_KEYBOARD = true;
      }
 
      tickDelayedDamage(amt = 1) {
-
+        if (!globalObjects.currentEnemy || globalObjects.currentEnemy.dead) {
+            return;
+        }
          this.delayedDamage -= amt;
          this.delayDamageText.setText(this.delayedDamage);
          // this.delayDamageSandFull.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageBase));
@@ -2292,6 +2294,9 @@ const ENABLE_KEYBOARD = true;
      }
 
      addDelayedDamage(amt) {
+        if (!globalObjects.currentEnemy || globalObjects.currentEnemy.dead) {
+            return;
+        }
         let oldDelayedDamage = this.delayedDamage;
          this.delayedDamage += amt;
          this.delayedDamageRecentlyAdded = true;

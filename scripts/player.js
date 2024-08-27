@@ -506,7 +506,7 @@ class Player {
     }
 
     takeDamage(amt, isTime = false, xPos = null, force = false) {
-        if (globalObjects.currentEnemy.dead && !force) {
+        if ((!globalObjects.currentEnemy || globalObjects.currentEnemy.dead) && !force) {
             return;
         }
         if (this.blackBalls) {
@@ -636,6 +636,9 @@ class Player {
     }
 
     takeTrueDamage(amt) {
+        if (!globalObjects.currentEnemy || globalObjects.currentEnemy.dead) {
+            return;
+        }
         this.health = Math.max(0, this.health - amt);
         this.animateHealthChange(-amt);
         this.refreshHealthBar();

@@ -257,6 +257,26 @@ function screenShake(amt) {
     });
 }
 
+function screenShakeLong(amt) {
+    PhaserScene.cameras.main.scrollX = amt;
+    let durMult = 1 + 0.1 * amt;
+    PhaserScene.tweens.add({
+        targets: PhaserScene.cameras.main,
+        scrollX: amt,
+        ease: "Quint.easeOut",
+        duration: 150*durMult,
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                targets: PhaserScene.cameras.main,
+                scrollX: 0,
+                ease: "Bounce.easeOut",
+                easeParams: [3],
+                duration: 400*durMult,
+            });
+        }
+    });
+}
+
 function zoomTemp(zoomAmt) {
     PhaserScene.cameras.main.setZoom(zoomAmt);
     PhaserScene.tweens.add({

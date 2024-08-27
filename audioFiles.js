@@ -40,6 +40,7 @@ const audioFiles = [
     {name: 'inflate', src: 'audio/inflate.mp3'},
     {name: 'balloon', src: 'audio/balloon.mp3'},
     {name: 'death_attack', src: 'audio/death_attack.mp3'},
+    {name: 'death_cast', src: 'audio/death_cast.mp3'},
 
     {name: 'bite_down', src: 'audio/bite_down.mp3'},
     {name: 'bite_down_simplified', src: 'audio/bite_down_simplified.mp3'},

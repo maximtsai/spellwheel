@@ -25,3 +25,5 @@ rocks2.wav by mystiscool -- https://freesound.org/s/7136/ -- License: Attributio
 R4_00328-2_EXP.wav by kevp888 -- https://freesound.org/s/636777/ -- License: Attribution 4.0
 
 Big Bell_4.wav by eardeer -- https://freesound.org/s/337565/ -- License: Attribution 4.0
+
+Church Bell Sound Effects by Lara Sluyter (LARA’S HORROR SOUNDS on YouTube)

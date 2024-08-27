@@ -16,6 +16,7 @@ class Death3 extends Enemy {
     animateDeath3In() {
         let blackBG = getBackgroundBlackout();
         blackBG.setDepth(-2).setAlpha(1);
+
         this.flashCover = this.addImage(gameConsts.halfWidth, gameVars.flashCoverY || 105, 'blurry', 'flash_bg.webp').setScale(3, 3.75).setRotation(Math.PI*0.5).setDepth(1);
         this.addTween({
             targets: [this.flashCover],
@@ -34,13 +35,55 @@ class Death3 extends Enemy {
                 this.flashCover.destroy();
             }
         });
+
+        let flashStar = this.addImage(this.flashCover.x, this.flashCover.y + 10, 'blurry', 'star_blur.png').setScale(3.25).setDepth(this.flashCover.depth)
+        this.addTween({
+            targets: flashStar,
+            scaleX: 2.6,
+            scaleY: 2.6,
+            ease: 'Cubic.easeOut',
+            duration: 3000,
+        })
+        if (gameVars.fromDeath2Plus) {
+            this.addTween({
+                targets: flashStar,
+                alpha: 0,
+                duration: 3000,
+                onComplete: () => {
+                    flashStar.destroy();
+                }
+            })
+        } else {
+            flashStar.setAlpha(0);
+            console.log(flashStar.alpha)
+            this.addTween({
+                targets: flashStar,
+                alpha: 1,
+                ease: 'Cubic.easeOut',
+                duration: 300,
+                onComplete: () => {
+                    this.addTween({
+                        targets: flashStar,
+                        alpha: 0,
+                        duration: 2700,
+                        onComplete: () => {
+                            flashStar.destroy();
+                        }
+                    })
+                }
+            })
+        }
+
+
+
+
         this.sprite.setScale(0.8, 0.65).setAlpha(0.4);
         this.sprite.y -= 50;
         this.addTween({
             targets: this.sprite,
             y: this.sprite.y + 45,
             alpha: 1,
-            duration: gameVars.fromDeath3 ? 3000 : 2600,
+            duration: gameVars.fromDeath2Plus ? 3000 : 2600,
             ease: 'Cubic.easeOut',
             scaleX: 1.06,
             scaleY: 1.06,

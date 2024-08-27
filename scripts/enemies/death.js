@@ -992,6 +992,7 @@
                      // this.sprite.setRotation(0.1);
                      this.attackName.setText(";;;5x36;;;");
                      this.repositionAngrySymbol();
+                     playSound('death_cast', 0.6)
                  }
              },
              onComplete: () => {

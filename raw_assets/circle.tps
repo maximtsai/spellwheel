@@ -173,10 +173,10 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">circle/alt2_cast_disabled.png</key>
-            <key type="filename">circle/alt2_cast_hover.png</key>
-            <key type="filename">circle/alt2_cast_normal.png</key>
-            <key type="filename">circle/alt2_cast_press.png</key>
+            <key type="filename">circle/1cast_disabled.png</key>
+            <key type="filename">circle/1cast_hover.png</key>
+            <key type="filename">circle/1cast_normal.png</key>
+            <key type="filename">circle/1cast_press.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -185,14 +185,13 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>46,46,93,93</rect>
+                <rect>45,45,91,91</rect>
                 <key>scale9Paddings</key>
-                <rect>46,46,93,93</rect>
+                <rect>45,45,91,91</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">circle/alt2_cast_normal - Copy (2).png</key>
-            <key type="filename">circle/alt2_cast_normal - Copy.png</key>
+            <key type="filename">circle/1element_drag.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -201,17 +200,14 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>44,44,87,87</rect>
+                <rect>78,78,155,155</rect>
                 <key>scale9Paddings</key>
-                <rect>44,44,87,87</rect>
+                <rect>78,78,155,155</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">circle/alt2_element_drag.png</key>
-            <key type="filename">circle/alt2_element_hover.png</key>
-            <key type="filename">circle/alt2_element_normal.png</key>
-            <key type="filename">circle/element_drag.png</key>
-            <key type="filename">circle/element_glow.png</key>
+            <key type="filename">circle/1element_hover.png</key>
+            <key type="filename">circle/1element_normal.png</key>
             <key type="filename">circle/element_hover.png</key>
             <key type="filename">circle/element_normal.png</key>
             <struct type="IndividualSpriteSettings">
@@ -228,8 +224,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">circle/alt2_element_normal - Copy (2).png</key>
-            <key type="filename">circle/alt2_element_normal - Copy.png</key>
+            <key type="filename">circle/1usage_drag.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -238,29 +233,14 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>76,76,153,153</rect>
+                <rect>110,110,219,219</rect>
                 <key>scale9Paddings</key>
-                <rect>76,76,153,153</rect>
+                <rect>110,110,219,219</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">circle/alt2_usage_drag.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>108,108,217,217</rect>
-                <key>scale9Paddings</key>
-                <rect>108,108,217,217</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">circle/alt2_usage_hover.png</key>
-            <key type="filename">circle/alt2_usage_normal.png</key>
+            <key type="filename">circle/1usage_hover.png</key>
+            <key type="filename">circle/1usage_normal.png</key>
             <key type="filename">circle/shadow.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -273,22 +253,6 @@
                 <rect>106,106,213,213</rect>
                 <key>scale9Paddings</key>
                 <rect>106,106,213,213</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">circle/alt2_usage_normal - Copy (2).png</key>
-            <key type="filename">circle/alt2_usage_normal - Copy.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>107,107,213,213</rect>
-                <key>scale9Paddings</key>
-                <rect>107,107,213,213</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -473,7 +437,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.95</double>
+                <double>1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -618,6 +582,37 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">circle/element_disabled.png</key>
+            <key type="filename">circle/gear.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>74,74,147,147</rect>
+                <key>scale9Paddings</key>
+                <rect>74,74,147,147</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">circle/element_drag.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,75,150,151</rect>
+                <key>scale9Paddings</key>
+                <rect>75,75,150,151</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">circle/energy_body.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -663,7 +658,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">circle/gear.png</key>
+            <key type="filename">circle/focus_lines_glow.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -672,9 +667,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>74,74,147,147</rect>
+                <rect>27,32,54,65</rect>
                 <key>scale9Paddings</key>
-                <rect>74,74,147,147</rect>
+                <rect>27,32,54,65</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -786,7 +781,36 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">circle/usage_disabled.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>105,105,211,211</rect>
+                <key>scale9Paddings</key>
+                <rect>105,105,211,211</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">circle/usage_drag.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>107,107,213,213</rect>
+                <key>scale9Paddings</key>
+                <rect>107,107,213,213</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">circle/usage_hover.png</key>
             <key type="filename">circle/usage_normal.png</key>
             <struct type="IndividualSpriteSettings">

@@ -479,7 +479,7 @@ const ENABLE_KEYBOARD = true;
         this.castGlow = scene.add.sprite(x, y, 'circle', 'cast_glow.png').setDepth(106).setAlpha(0);
         this.greyedDead = scene.add.sprite(x, y, 'circle', 'greyed_dead.png').setVisible(false).setDepth(119);
 
-        this.focusLines = scene.add.sprite(x, y - 137, 'circle', 'focus_lines.png').setDepth(120);
+        this.focusLines = scene.add.sprite(x, y - 130, 'circle', 'focus_lines.png').setDepth(120);
         this.greyed = scene.add.sprite(x, y, 'circle', 'greyed.png').setVisible(false).setDepth(120).setVisible(false);
 
         this.castTriangles = [];

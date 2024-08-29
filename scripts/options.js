@@ -94,6 +94,8 @@ class Options {
                 },
                 onMouseUp: () => {
                     this.hideOptions();
+                    let bgBlackout = getBackgroundBlackout();
+                    bgBlackout.alpha = 0;
                     globalObjects.player.revive();
                     gotoMainMenu();
                     globalObjects.textPopupManager.hideInfoText();

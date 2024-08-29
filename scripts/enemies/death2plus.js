@@ -93,22 +93,8 @@
                  globalObjects.encyclopedia.showButton();
                  globalObjects.options.showButton();
                  this.addDelayIfAlive(() => {
-                     messageBus.publish("showCombatText", getLangText('deathFight2plusa'), -40);
-                     this.addTimeout(() => {
-                         this.spellsCastCounter = 0;
-                         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
-                             this.spellsCastCounter++;
-                             if (this.spellsCastCounter >= 2) {
-                                 this.playerSpellCastSub.unsubscribe();
-                                 messageBus.publish("closeCombatText")
-                             }
-                         });
-                         this.addTimeout(() => {
-                             this.playerSpellCastSub.unsubscribe();
-                             messageBus.publish("closeCombatText")
-                         }, 7000);
-                     }, 100)
-                 }, 1500)
+                    this.nowgivemeyourall()
+                 }, 1200)
              });
 
              this.addDelayIfAlive(() => {
@@ -116,6 +102,94 @@
              }, 4000)
          }, 900)
      }
+
+
+     quickZoom(img, scale = 1) {
+        this.addTween({
+            targets: img,
+            scaleX: scale,
+            scaleY: scale,
+            duration: 100,
+            ease: 'Quint.easeIn'
+        })
+     }
+
+    nowgivemeyourall() {
+        let img_now = this.addImage(gameConsts.halfWidth - 145, 150, 'deathfinal', 'x_now.png').setDepth(9999).setScale(1.16);
+        this.quickZoom(img_now, 1.1)
+        screenShake(3);
+        zoomTemp(1.02);
+        playSound('stomp', 0.5);
+        this.addDelay(() => {
+            let img_give = this.addImage(gameConsts.halfWidth + 145, 150, 'deathfinal', 'x_give.png').setDepth(9999).setScale(1.16);
+            this.quickZoom(img_give, 1.1)
+            screenShake(4);
+            zoomTemp(1.02);
+            playSound('stomp', 0.6);
+            this.addDelay(() => {
+                let img_me = this.addImage(gameConsts.halfWidth - 145, 380, 'deathfinal', 'x_me.png').setDepth(9999).setScale(1.16);
+                this.quickZoom(img_me, 1.1)
+                screenShake(5);
+                zoomTemp(1.02);
+                playSound('stomp', 0.7);
+                this.addDelay(() => {
+                    let img_your = this.addImage(gameConsts.halfWidth + 145, 380, 'deathfinal', 'x_your.png').setDepth(9999).setScale(1.16);
+                    this.quickZoom(img_your, 1.1)
+                    screenShake(6);
+                    zoomTemp(1.02);
+                    playSound('stomp', 0.8);
+                    this.addDelay(() => {
+                        let img_all = this.addSprite(gameConsts.halfWidth, 630, 'deathfinal', 'x_all2.png').setDepth(9999).setScale(1.22);
+                        this.quickZoom(img_all, 1.1)
+                        zoomTemp(1.1);
+                        screenShakeManual(20, 0.8);
+                        playSound('stomp', 0.95);
+                        playSound('rock_crumble', 0.8);
+
+                        if (this.bgBlur.currAnim) {
+                            this.bgBlur.currAnim.stop();
+                        }
+                        this.bgBlur.alpha = 1;
+                         this.bgBlur.currAnim = this.addTween({
+                             targets: this.bgBlur,
+                             alpha: 0,
+                             ease: 'Cubic.easeIn',
+                             duration: 1700,
+                             onComplete: () => {
+                                 this.bgBlur.currAnim = this.addTween({
+                                     targets: this.bgBlur,
+                                     alpha: 0.24,
+                                     scaleX: 2.64,
+                                     scaleY: 2.64,
+                                     ease: 'Quad.easeInOut',
+                                     repeat: -1,
+                                     yoyo: true,
+                                     duration: 2000,
+                                 })
+                             }
+                         });
+                         this.addDelay(() => {
+                            this.addTween({
+                                targets: [img_now, img_give, img_me, img_your, img_all],
+                                alpha: 0,
+                                scaleX: 1.14,
+                                scaleY: 1.14,
+                                duration: 200,
+                                ease: 'Cubic.easeIn',
+                                onComplete: () => {
+                                    img_now.destroy();
+                                    img_give.destroy();
+                                    img_me.destroy();
+                                    img_your.destroy();
+                                    img_all.destroy();
+                                }
+                            })
+                         }, 1400)
+                    }, 400) 
+                }, 400) 
+            }, 400) 
+        }, 400) 
+    }
 
      repeatTweenBreathe(duration = 1500, magnitude = 1) {
          if (this.breatheTween) {

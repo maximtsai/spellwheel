@@ -480,25 +480,8 @@ const ENABLE_KEYBOARD = true;
         this.greyedDead = scene.add.sprite(x, y, 'circle', 'greyed_dead.png').setVisible(false).setDepth(119);
 
         this.focusLines = scene.add.sprite(x, y - 130, 'circle', 'focus_lines.png').setDepth(120);
+        this.focusLinesOn = scene.add.sprite(x, y - 130, 'circle', 'focus_lines_on.png').setDepth(120);
         this.greyed = scene.add.sprite(x, y, 'circle', 'greyed.png').setVisible(false).setDepth(120).setVisible(false);
-
-        this.castTriangles = [];
-        let triangle1 = scene.add.sprite(x - 35, y - 113.5, 'circle', 'cast_triangle.png');
-        triangle1.setDepth(120).setScale(0.8, 0.7);
-        this.castTriangles.push(triangle1)
-        let triangle2 = scene.add.sprite(x + 35, y - 113.5, 'circle', 'cast_triangle.png');
-        triangle2.setDepth(120).setScale(-0.8, 0.7);
-        this.castTriangles.push(triangle2)
-        let triangle3 = scene.add.sprite(x + 34, y - 167, 'circle', 'cast_triangle.png');
-        triangle3.setDepth(120).setScale(-0.8, 0.7);
-        this.castTriangles.push(triangle3)
-        let triangle4 = scene.add.sprite(x - 34, y - 167, 'circle', 'cast_triangle.png');
-        triangle4.setDepth(120).setScale(0.8, 0.7);
-        this.castTriangles.push(triangle4)
-        for (let i = 0; i < this.castTriangles.length; i++) {
-            this.castTriangles[i].startScaleX = this.castTriangles[i].scaleX;
-            this.castTriangles[i].startScaleY = this.castTriangles[i].scaleY;
-        }
 
         this.errorBoxElement = scene.add.sprite(x, y - 115, 'circle', 'error_box.png');
         this.errorBoxElement.setDepth(121);
@@ -1974,11 +1957,19 @@ const ENABLE_KEYBOARD = true;
             duration: gameVars.gameManualSlowSpeed * 250,
             alpha: 0.85,
         });
-
+        if (this.focusLinesOn.currAnim) {
+            this.focusLinesOn.currAnim.stop();
+        }
+        this.focusLinesOn.setFrame('focus_lines_glow.png');
+        this.focusLinesOn.alpha = 1;
         this.scene.tweens.add({
-            targets: this.castTriangles,
-            duration: gameVars.gameManualSlowSpeed * 200,
-            alpha: 0
+            targets: this.focusLinesOn,
+            duration: gameVars.gameManualSlowSpeed * 350,
+            ease: 'Quart.easeIn',
+            alpha: 0,
+            onComplete: () => {
+                this.focusLinesOn.setFrame('focus_lines_on.png')
+            }
         });
 
         this.scene.tweens.add({
@@ -1998,20 +1989,6 @@ const ENABLE_KEYBOARD = true;
                     alpha: 0.5
                 });
                 this.scene.tweens.add({
-                    delay: 340,
-                    targets: this.castTriangles[0],
-                    duration: gameVars.gameManualSlowSpeed * 300,
-                    alpha: 0.6,
-                    ease: 'Cubic.easeOut'
-                });
-                this.scene.tweens.add({
-                    delay: 600,
-                    targets: this.castTriangles[1],
-                    duration: gameVars.gameManualSlowSpeed * 200,
-                    alpha: 0.6,
-                    ease: 'Cubic.easeOut'
-                });
-                this.scene.tweens.add({
                     targets: [sprite, castCircle],
                     ease: 'Quart.easeInOut',
                     delay: 60,
@@ -2029,18 +2006,17 @@ const ENABLE_KEYBOARD = true;
                         PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 250, () => {
                             this.bufferedCastAvailable = true;
                         });
-                        this.scene.tweens.add({
-                            targets: this.castTriangles[2],
-                            duration: gameVars.gameManualSlowSpeed * 200,
-                            alpha: 0.6,
-                            ease: 'Cubic.easeOut'
-                        });
-                        this.scene.tweens.add({
-                            delay: 450,
-                            targets: this.castTriangles,
-                            duration: gameVars.gameManualSlowSpeed * 100,
-                            alpha: 1,
-                            ease: 'Cubic.easeOut'
+                        let reEnableDelay = this.keyboardCasted ? 250 : 0;
+                        this.focusLinesOn.currAnim = this.scene.tweens.add({
+                            delay: 250 + reEnableDelay,
+                            targets: this.focusLinesOn,
+                            duration: gameVars.gameManualSlowSpeed * 300,
+                            alpha: 0.7,
+                            ease: 'Cubic.easeIn',
+                            onComplete: () => {
+                                this.focusLinesOn.currAnim = null;
+                                this.focusLinesOn.setAlpha(0.9);
+                            }
                         });
                         this.scene.tweens.add({
                             targets: [sprite, castCircle],
@@ -2048,12 +2024,12 @@ const ENABLE_KEYBOARD = true;
                             scaleX: 1.5,
                             scaleY: 1.5,
                             duration: gameVars.gameManualSlowSpeed * 500,
-                            onComplete: () => {
+                            onComplete: () => {                                
                                 poolManager.returnItemToPool(castCircle, 'castCircle');
                                 sprite.setScale(1);
-                                let reEnableDelay = this.keyboardCasted ? 400 : 0;
 
                                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * reEnableDelay, () => {
+
                                     if (!this.outerDragDisabled) {
                                         this.castDisabled = false;
                                     }

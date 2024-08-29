@@ -6,7 +6,7 @@ let config = {
         parent: 'spellwheel',
         autoRound: true,
         width: isMobile ? 596 : 610,
-        height: isMobile ? 810: 770,
+        height: isMobile ? 810 : 770,
         orientation: 'landscape',
         mode: Phaser.Scale.FIT,
         forceLandscape: true
@@ -237,9 +237,16 @@ function loadFileList(scene, filesList, type) {
     }
 }
 
-function screenShake(amt) {
-    PhaserScene.cameras.main.scrollX = amt;
+let lastShakeLeft = true;
+
+function screenShake(amt, durMultManual = 1) {
+    lastShakeLeft = !lastShakeLeft;
+    if (lastShakeLeft) {
+        amt = -amt;
+    }
+    PhaserScene.cameras.main.scrollX = -amt;
     let durMult = 1 + 0.1 * amt;
+    durMult *= durMultManual;
     PhaserScene.tweens.add({
         targets: PhaserScene.cameras.main,
         scrollX: amt,
@@ -257,8 +264,13 @@ function screenShake(amt) {
     });
 }
 
+
 function screenShakeLong(amt) {
-    PhaserScene.cameras.main.scrollX = amt;
+    lastShakeLeft = !lastShakeLeft;
+    if (lastShakeLeft) {
+        amt = -amt;
+    }
+    PhaserScene.cameras.main.scrollX = -amt;
     let durMult = 1 + 0.1 * amt;
     PhaserScene.tweens.add({
         targets: PhaserScene.cameras.main,
@@ -272,6 +284,39 @@ function screenShakeLong(amt) {
                 ease: "Bounce.easeOut",
                 easeParams: [3],
                 duration: 400*durMult,
+            });
+        }
+    });
+}
+
+function screenShakeManual(amt, durMultManual = 1) {
+    lastShakeLeft = !lastShakeLeft;
+    if (lastShakeLeft) {
+        amt = -amt;
+    }
+    PhaserScene.cameras.main.scrollX = -amt;
+    let durMult = 1 + 0.1 * amt;
+    durMult *= durMultManual;
+    PhaserScene.tweens.add({
+        targets: PhaserScene.cameras.main,
+        scrollX: amt,
+        ease: "Quint.easeOut",
+        duration: 50*durMult,
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                targets: PhaserScene.cameras.main,
+                scrollX: -amt * 0.9,
+                ease: "Quint.easeInOut",
+                duration: 50*durMult,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        targets: PhaserScene.cameras.main,
+                        scrollX: 0,
+                        ease: "Bounce.easeOut",
+                        easeParams: [3],
+                        duration: 150*durMult,
+                    });
+                }
             });
         }
     });

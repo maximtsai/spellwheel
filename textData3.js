@@ -3,8 +3,8 @@ let textData3 = {
     "beginLocket1": {
         "en_us": "I'll reach you soon,\nmy beloved...",
         "fr": "Je vous rejoindrai bientôt, mes bien-aimés...",
-        "zh_tw": "我很快就會聯繫到你，我心愛的人......",
-        "zh_cn": "我很快就会联系到你，我心爱的人......",
+        "zh_tw": "我很快就會聯繫到你，\n我心愛的人......",
+        "zh_cn": "我很快就会联系到你，\n我心爱的人......",
         "ru": "Я скоро доберусь до тебя, моя любимая...",
         "es": "Pronto te alcanzaré, mi amado...",
         "jp": "もうすぐ連絡するよ、愛する人よ..."
@@ -56,9 +56,21 @@ let textData3 = {
     },
     "death4b": {
         "en_us": "THE END OF ONE'S FATE CAN\nBE DELAYED, BUT NOT UNDONE.",
+        "fr": "",
+        "zh_tw": "一個人命運的終結可以被延遲，\n但無法被改變。",
+        "zh_cn": "一个人命运的终结可以被延迟，\n但无法被改变。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "death4c": {
         "en_us": "REMEMBER THIS AS YOU\nCONTINUE YOUR \"QUEST\".",
+        "fr": "",
+        "zh_tw": "在繼續你的「崇高任務」時記住這一點。",
+        "zh_cn": "在继续你的“崇高任务”时记住这一点。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "death5a": {
         "en_us": "YOU MAY THINK YOURSELF A\nHERO, BUT UNDERSTAND THIS",

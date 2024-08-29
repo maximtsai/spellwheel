@@ -299,8 +299,8 @@ let textData2 = {
     "post_fight_story8": {
         "en_us": "It becomes clearer\nwith each step\nthat Death itself\nis orchestrating these obstacles\nto thwart my quest. Yet this only fuels my resolve.\n\nIf Death thinks it can deter me with these\ntrials, it underestimates the depth of\nmy determination.\n\nMy beloved awaits, and no force, not even Death,\nshall keep us apart.",
         "fr": "Il devient de plus en plus clair à chaque pas que la Mort elle-même orchestre ces obstacles pour contrecarrer ma quête. Pourtant, cela ne fait qu’alimenter ma détermination.  Si la Mort pense qu’elle peut me dissuader dans ces épreuves, elle sous-estime la profondeur de ma détermination.  Mon bien-aimé vous attend, et aucune force, pas même la Mort, ne nous séparera.",
-        "zh_tw": "每走一步，我都越來越清楚，死神本身正在精心策劃這些障礙，以阻撓我的探索。然而，這隻會激發我的決心。 如果死神認為它可以在這些試驗中阻止我，那麼它低估了我決心的深度。 我心愛的人等待著，沒有任何力量，甚至死亡，不能使我們分開。",
-        "zh_cn": "每走一步，我都越来越清楚，死神本身正在精心策划这些障碍，以阻挠我的探索。然而，这只会激发我的决心。 如果死神认为它可以在这些试验中阻止我，那么它低估了我决心的深度。 我心爱的人等待着，没有任何力量，甚至死亡，不能使我们分开。",
+        "zh_tw": "每走一步，我都越來越\n清楚，死神本身正\n在精心策劃這些障礙，\n以阻撓我的任务。然而，這隻會激發我的\n決心。\n\n如果死神認為它可以在這些試驗中阻止我，那麼它低估了\n我決心的深度。 我心愛的人等待著，沒有任何力量，\n甚至死亡，不能使我們分開。",
+        "zh_cn": "每走一步，我都越来越\n清楚，死神本身正\n在精心策划这些障碍，\n以阻挠我的任务。然而，这只会激发我的\n决心。\n\n如果死神认为它可以在这些试验中阻止我，那么它低估了\n我决心的深度。 我心爱的人等待着，没有任何力量，\n甚至死亡，不能使我们分开。",
         "ru": "С каждым шагом становится все яснее, что сама Смерть организует эти препятствия, чтобы помешать моему поиску. Но это только подпитывает мою решимость.  Если Смерть думает, что может удержать меня в этих испытаниях, она недооценивает глубину моей решимости.  Мой возлюбленный ждет, и никакая сила, даже смерть, не разлучит нас.",
         "es": "Se hace más claro con cada paso que la propia Muerte está orquestando estos obstáculos para frustrar mi búsqueda. Sin embargo, esto solo alimenta mi determinación.  Si la muerte piensa que puede disuadirme con estas pruebas, subestima la profundidad de mi determinación.  Mi amado espera, y ninguna fuerza, ni siquiera la Muerte, nos separará de nosotros.",
         "jp": "一歩進むごとに、死そのものが私の探求を妨害するためにこれらの障害を画策していることが明らかになる。しかし、これは私の決意を煽るだけです。 もし死神が、このような試練で私を思いとどまらせることができると考えているのなら、それは私の決意の深さを過小評価していることになる。 私の最愛の人が待っており、どんな力も、死でさえも、私たちを引き離すことはできません。"
@@ -424,18 +424,18 @@ let textData2 = {
     },
     "pre_fight_0i": {
         "en_us": "MATTER\nSTRIKE",
-        "fr": "Cliquez pour lancer le sort Matière+Frappe",
-        "zh_tw": "點擊施放 Matter+Strike 法術",
-        "zh_cn": "点击施放 Matter+Strike 法术",
-        "ru": "Нажмите, чтобы разыграть заклинание Matter+Strike",
-        "es": "Haz clic para lanzar el hechizo Materia+Golpe",
-        "jp": "クリックして物質+ストライクの呪文を唱える"
+        "fr": "MATIÈRE\nATTAQUE",
+        "zh_tw": "物質攻擊",
+        "zh_cn": "物质攻击",
+        "ru": "МАТЕРИЯ\nАТАКА",
+        "es": "MATERIA\nATAQUE",
+        "jp": "物質攻撃"
     },
     "pre_fight_1a": {
         "en_us": "\"This is my shield, mine!\n Is family treasure from\n father's brother's aunt's\n grandpa's cousin's\n friend's neighbor!!\"",
         "fr": "« Ceci est mon bouclier, le mien !  C’est un trésor de famille du frère du père, de la tante du grand-père, du voisin de l’ami du cousin du grand-père !!\"",
-        "zh_tw": "“這是我的盾牌，我的盾牌！ 是爸爸的哥哥的阿姨的爺爺的堂兄朋友的鄰居的家寶！！",
-        "zh_cn": "“这是我的盾牌，我的盾牌！ 是爸爸的哥哥的阿姨的爷爷的堂兄朋友的邻居的家宝！！",
+        "zh_tw": "“這是我的盾牌，我的！\n是我爸爸的哥哥的阿姨的\n爺爺的堂兄朋友的鄰居\n的家寶！！",
+        "zh_cn": "“这是我的盾牌，我的！\n是我爸爸的哥哥的阿姨的\n爷爷的堂兄朋友的邻居\n的家宝！！",
         "ru": "«Это мой щит, мой!  Это семейное сокровище от отца, брата, тети, дедушки, двоюродного брата, соседа друга двоюродного брата!!»",
         "es": "\"¡Este es mi escudo, el mío!  ¡¡Es un tesoro familiar del hermano del padre, la tía del abuelo, el primo del abuelo, el amigo del vecino!!\"",
         "jp": "「これは私の盾、私の盾です! 父の兄の叔母の祖父のいとこの友人の隣人からの家宝ですか!!」"
@@ -443,8 +443,8 @@ let textData2 = {
     "pre_fight_1b": {
         "en_us": "There is no time to barter,\nand I must take every\nresource I can get.",
         "fr": "Je n’ai pas le temps de faire du troc, et je dois prendre toutes les ressources que je peux obtenir.",
-        "zh_tw": "沒有時間以物易物，我必須利用我能得到的一切資源。",
-        "zh_cn": "没有时间以物易物，我必须利用我能得到的一切资源。",
+        "zh_tw": "沒有時間進行物物交換，我必須\n拿走我能得到的一切資源。",
+        "zh_cn": "沒有時間進行物物交換，我必須\n拿走我能得到的一切資源。",
         "ru": "Нет времени на торг, и я должен использовать все ресурсы, которые я могу достать.",
         "es": "No hay tiempo para el trueque, y debo tomar todos los recursos que pueda conseguir.",
         "jp": "物々交換する時間はないし、手に入る限りの資源を奪わなければならない。"
@@ -478,11 +478,11 @@ let textData2 = {
     },
     "pre_fight_5a": {
         "en_us": "No matter where I go, this wall\nalways seems to be blocking the way.",
-        "fr": "Où que j’aille, ce mur semble toujours me barrer la route.",
-        "zh_tw": "無論我走到哪裡，這堵牆似乎總是擋住了去路。",
-        "zh_cn": "无论我走到哪里，这堵墙似乎总是挡住了去路。",
-        "ru": "Куда бы я ни пошел, эта стена, кажется, всегда преграждает путь.",
-        "es": "No importa a dónde vaya, este muro siempre parece estar bloqueando el camino.",
+        "fr": "Où que j’aille, ce mur semble\ntoujours me barrer la route.",
+        "zh_tw": "無論我走到哪裡，這堵牆似乎總是\n擋住了去路。",
+        "zh_cn": "无论我走到哪里，这堵墙似乎总是\n挡住了去路。",
+        "ru": "Куда бы я ни пошел, эта стена,\nкажется, всегда преграждает путь.",
+        "es": "No importa a dónde vaya, este muro\nsiempre parece estar bloqueando el camino.",
         "jp": "どこに行っても、この壁はいつも道を塞いでいるようです。"
     },
     "pre_fight_5b": {
@@ -539,8 +539,8 @@ let textData2 = {
         "es": "Este muñeco de palo está\nbloqueando la entrada.",
         "jp": "この棒人形が入り口を塞いでいます。"
     },
-    "level0_diag_b": { // todo fix
-        "en_us": "Is it trying to block me\nfrom saving my beloved?",
+    "level0_diag_b": {
+        "en_us": "Is it trying to prevent me\nfrom saving my beloved?",
         "fr": "Est-ce que cela m'empêche\nde sauver ma bien-aimée ?",
         "zh_tw": "它是在阻止我拯救我心愛的嗎？",
         "zh_cn": "它是在阻止我拯救我心爱的吗？",
@@ -576,13 +576,13 @@ let textData2 = {
         "jp": "もう一つの障害は?"
     },
     "level1_diag_b": {
-        "en_us": "Time to use my\nmore advanced spells!",
-        "fr": "J",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "en_us": "I should use my\nmore advanced spells",
+        "fr": "Je devrais utiliser mes\nsorts les plus avancés",
+        "zh_tw": "我應該使用我的更高級的法術",
+        "zh_cn": "我应该使用我的更高级的法术",
+        "ru": "Мне следует использовать\nболее продвинутые заклинания",
+        "es": "¡Debería usar mis\nhechizos más avanzados",
+        "jp": "もっと高度な呪文を使うべきだ"
     },
     "level1_tut_a": {
         "en_us": "Enhance Rune\nstrengthens your\nnext attack\n ",
@@ -693,13 +693,13 @@ let textData2 = {
         "jp": "解除方法:ダミーを倒す"
     },
     "level5_train_tut_b": {
-        "en_us": "Fully heal\nyourself with\n          +",
-        "fr": "Guérissez-vous complètement avec +",
-        "zh_tw": "用+完全治癒自己",
-        "zh_cn": "用+完全治愈自己",
-        "ru": "Полностью исцеляйте себя с помощью +",
-        "es": "Cúrate completamente con +",
-        "jp": "+で完全に自分を癒します"
+        "en_us": "Fully heal\nyourself\n         +",
+        "fr": "Soignez-vous\ncomplètement\n ",
+        "zh_tw": "完全治癒自己\n ",
+        "zh_cn": "完全治愈自己\n ",
+        "ru": "Полностью\nисцелите себя\n ",
+        "es": "Cúrate\ncompletamente\n ",
+        "jp": "完全に自分を癒す\n "
     },
     "level5_train_tut_c": {
         "en_us": "Void + Shield\ncan block\nstrong attacks\n           +",
@@ -712,12 +712,12 @@ let textData2 = {
     },
     "level7_diag_a": {
         "en_us": "Strange, I don't remember\nsetting up a training dummy here.",
-        "fr": "Étrange, je ne me souviens pas d’avoir installé un mannequin d’entraînement ici.",
-        "zh_tw": "奇怪的是，我不記得在這裡設置過訓練假人。",
-        "zh_cn": "奇怪的是，我不记得在这里设置过训练假人。",
-        "ru": "Странно, я не помню, чтобы я устанавливал здесь тренировочный манекен.",
-        "es": "Extraño, no recuerdo haber montado un maniquí de entrenamiento aquí.",
-        "jp": "奇妙なことに、私はここで訓練用ダミーを設置した覚えがありません。"
+        "fr": "Étrange, je ne me souviens pas d'avoir installé un mannequin d'entraînement ici.",
+        "zh_tw": "奇怪，我不記得在這裡\n設置過訓練假人。",
+        "zh_cn": "奇怪，我不记得在这里\n设置过训练假人。",
+        "ru": "Странно, я не помню, чтобы ставил\nздесь тренировочный манекен.",
+        "es": "Qué raro, no recuerdo haber instalado\nun muñeco de entrenamiento aquí.",
+        "jp": "奇妙なことに、ここにトレーニングダミ\nーを設置した覚えはありません"
     },
     "dummy_mind_tut": {
         "en_us": "Energy Strike\nmakes your\nnext attack hit\ntwice as hard\n            +",

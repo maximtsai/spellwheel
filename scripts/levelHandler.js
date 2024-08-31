@@ -112,6 +112,7 @@ function beginPreLevel(lvl) {
                         })
                     }
                     text3.locked = true;
+                    strikeHoverBtn.setVisible(false);
                 }
             });
             strikeHoverBtn.setOrigin(0.5, 0.5);
@@ -185,6 +186,7 @@ function beginPreLevel(lvl) {
                         })
                     }
                     text4.locked = true;
+                    matterHoverBtn.setVisible(false);
                 }
             });
             matterHoverBtn.setOrigin(0.5, 0.5);

@@ -1,5 +1,68 @@
 
 let textData3 = {
+    "spell_info_position": {
+        "en_us": "SPELL INFO POSITION",
+        "fr": "position des informations magiques",
+        "zh_tw": "法術資訊位置",
+        "zh_cn": "法术信息位置",
+        "ru": "ИНФОРМАЦИЯ О ЗАКЛИНАНИЯХ ПОЗИЦИЯ",
+        "es": "Posición de la información del hechizo",
+        "jp": "呪文情報の場所"
+    },
+    "language_text": {
+        "en_us": "LANGUAGE",
+        "fr": "langue",
+        "zh_tw": "語言",
+        "zh_cn": "语言",
+        "ru": "язык",
+        "es": "idioma",
+        "jp": "言語"
+    },
+    "left": {
+        "en_us": "LEFT",
+        "fr": "Gauche",
+        "zh_tw": "左",
+        "zh_cn": "左",
+        "ru": "Лево",
+        "es": "Izquierda",
+        "jp": "左"
+    },
+    "center": {
+        "en_us": "CENTER",
+        "fr": "Centre",
+        "zh_tw": "中心",
+        "zh_cn": "中心",
+        "ru": "Центр",
+        "es": "Centro",
+        "jp": "中心"
+    },
+    "hidden": {
+        "en_us": "HIDDEN",
+        "fr": "Caché",
+        "zh_tw": "隱藏",
+        "zh_cn": "隐藏",
+        "ru": "Скрытый",
+        "es": "Oculto",
+        "jp": "隠された"
+    }, 
+    "resume": {
+        "en_us": "RESUME",
+        "fr": "Continuer",
+        "zh_tw": "繼續",
+        "zh_cn": "继续",
+        "ru": "Продолжить",
+        "es": "Continuar",
+        "jp": "続ける"
+    }, 
+    "menu": {
+        "en_us": "MENU",
+        "fr": "Menu",
+        "zh_tw": "主页",
+        "zh_cn": "主页",
+        "ru": "Меню",
+        "es": "Oculto",
+        "jp": "ホームページ"
+    }, 
     "beginLocket1": {
         "en_us": "I'll reach you soon,\nmy beloved...",
         "fr": "Je vous rejoindrai bientôt, mes bien-aimés...",

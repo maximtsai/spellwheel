@@ -224,7 +224,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.6</double>
+                <double>0.65</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>

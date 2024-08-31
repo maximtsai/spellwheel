@@ -85,8 +85,9 @@ class Button {
                 newImage.setDepth(this.depth);
                 this.imageRefs[stateData.ref] = newImage;
             }
-
-            newImage.visible = true;
+            if (!this.forceInvis) {
+                newImage.visible = true;
+            }
         } else {
             stateData.ref = this.normal.ref;
         }
@@ -138,7 +139,15 @@ class Button {
         }
     }
 
-    setVisible(vis) {
+    setVisible(vis = true) {
+        for (let i in this.imageRefs) {
+            this.imageRefs[i].setVisible(vis);
+        }
+        if (vis === false) {
+            this.forceInvis = true;
+        } else {
+            this.forceInvis = false;
+        }
 
     }
 

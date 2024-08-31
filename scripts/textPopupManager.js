@@ -17,6 +17,8 @@ class TextPopupManager {
         this.infoText.setFontStyle('bold');
         this.infoBorderTop = this.scene.add.image(0, 0, 'blurry', 'box_length.png').setAlpha(0).setDepth(10000);
         this.infoBorderBot = this.scene.add.image(0, 0, 'blurry', 'box_length.png').setAlpha(0).setDepth(10000);
+        
+        this.infoWhiteFlashLeft = this.scene.add.image(0, 0, 'pixels', 'white_pixel.png').setDepth(10000).setOrigin(0, 0.5).setScale(0).setAlpha(0.7);
         messageBus.subscribe('animateDamageNum', this.animateDamageNum.bind(this));
         messageBus.subscribe('animateDamageNumAccumulate', this.animateDamageNumAccumulate.bind(this));
         messageBus.subscribe('animateTrueDamageNum', this.animateTrueDamageNum.bind(this));
@@ -78,6 +80,11 @@ class TextPopupManager {
             this.infoText.y += 1;
         }
         this.infoBox.setScale(boxWidth * multScale, boxHeight * multScale);
+
+        this.infoWhiteFlashLeft.setScale(1, this.infoBox.scaleY);
+        this.infoWhiteFlashLeft.x = this.infoBox.x - this.infoBox.scaleX * 2 * this.infoBox.originX;
+        this.infoWhiteFlashLeft.y = this.infoBox.y;
+
         this.infoBlur.setScale(this.infoBox.scaleX * 0.021, this.infoBox.scaleY * 0.025);
         this.infoBlur.x = this.getCenterPos();
 
@@ -108,6 +115,24 @@ class TextPopupManager {
             targets: [this.infoBox, this.infoBlur],
             alpha: 0.7,
             duration: 300,
+        });
+        this.currAnim4 = this.scene.tweens.add({
+            delay: 50,
+            targets: [this.infoWhiteFlashLeft],
+            scaleX: this.infoBox.scaleX,
+            ease: 'Quint.easeIn',
+            duration: 550,
+            alpha: 1,
+            onComplete: () => {
+                this.currAnim4 = this.scene.tweens.add({
+                    targets: [this.infoWhiteFlashLeft],
+                    x: this.infoBox.x + this.infoBox.scaleX,
+                    scaleX: 0,
+                    ease: 'Quint.easeOut',
+                    duration: 550,
+                    alpha: 0.7
+                });
+            }
         });
     }
 

@@ -314,7 +314,7 @@
 
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 450 : 400;
-         this.criticalThreshold = 75;
+         this.criticalThreshold = 70;
          this.nextShieldHealth = gameVars.isHardMode ? 100 : 80;
          this.shieldsBroken = 0;
          this.missileObjects = [];
@@ -1381,11 +1381,11 @@
              [
                  // 8
                  {
-                     name: "EMERGENCY SHIELD {80",
+                     name: "EMERGENCY SHIELD {250",
                      isPassive: true,
-                     chargeAmt: 500,
-                     block: 80,
-                     chargeMult: 8,
+                     chargeAmt: 600,
+                     block: 250,
+                     chargeMult: 12,
                      damage: -1,
                      startFunction: () => {
                          this.pullbackScale = 0.99;
@@ -1394,14 +1394,17 @@
                      },
                      attackStartFunction: () => {
                          playSound('power_surge_plain');
-
+                        this.currentAttackSetIndex = 9;
+                        this.nextAttackIndex = 0;
                      },
                      attackFinishFunction: () => {
                      }
                  },
+            ],
+            [
                  {
                      name: "MIS-AIMED MISSILE }8x0",
-                     chargeAmt: 600,
+                     chargeAmt: 800,
                      damage: -1,
                      startFunction: () => {
                          this.pullbackScale = 0.99;
@@ -1421,7 +1424,7 @@
                  },
                  {
                      name: "FAILING CIRCUITS $12",
-                     chargeAmt: 600,
+                     chargeAmt: 800,
                      damage: -1,
                      startFunction: () => {
                          this.failingAttack = 12;
@@ -1495,7 +1498,7 @@
                  {
                      name: "}2",
                      isPassive: true,
-                     chargeAmt: 600,
+                     chargeAmt: 800,
                      damage: 2,
                      startFunction: () => {
                          this.pullbackScale = 0.98;
@@ -1795,8 +1798,9 @@
                         this.addTween({
                             targets: explosion,
                             duration: 300,
-                            scaleX: 4,
-                            scaleY: 4,
+                            y: "-=10",
+                            scaleX: 4.15,
+                            scaleY: 4.15,
                             rotation: "+=100",
                             alpha: 4,
                             ease: 'Quad.easeIn',
@@ -2462,11 +2466,11 @@
          fadeInBackgroundAtlas('backgrounds', 'background4.png', 2000, 1, 1, 1, 'Cubic.easeInOut', 0, false);
         swirlInReaperFog(1.25);
         PhaserScene.tweens.add({
+            delay: 200,
             targets: explosion,
             alpha: 0,
             duration: 800,
-            completeDelay: 200,
-            onComplete: () => {
+            onStart: () => {
                 beginLevel(10)
             }
         })

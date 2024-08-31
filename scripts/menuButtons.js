@@ -186,7 +186,7 @@ function showMainMenuButtons() {
             }
         });
         globalObjects.continueButton.setOrigin(0.5, 0.5);
-        globalObjects.continueButton.addText(getLangText('cont_game'), {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
+        globalObjects.continueButton.addText(getLangText('cont_ui'), {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
         globalObjects.continueButton.setScale(0.9);
     }
     globalObjects.startButton = new Button({
@@ -824,6 +824,6 @@ function updateMenuLanguage() {
         globalObjects.startButton.setText(getLangText('new_game'))
     }
     if (globalObjects.continueButton) {
-        globalObjects.continueButton.setText(getLangText('cont_game'))
+        globalObjects.continueButton.setText(getLangText('cont_ui'))
     }
 }

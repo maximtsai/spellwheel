@@ -38,9 +38,9 @@ function beginPreLevel(lvl) {
             text6.setDepth(99999).setAlpha(0).setOrigin(1, 0.85).setVisible(false);
             text7 = PhaserScene.add.text(gameConsts.halfWidth + 220, gameConsts.halfHeight - 48, getLangText('pre_fight_0g'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'center'});
             text7.setDepth(99999).setAlpha(0).setOrigin(1, 1);
-            text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 240, getLangText('pre_fight_0h'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'center'});
+            text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 236, getLangText('pre_fight_0h'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'center'});
             text8.setDepth(99999).setAlpha(0).setOrigin(0.5, 1);
-            text9 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 246, getLangText('pre_fight_0i'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'center'});
+            text9 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 248, getLangText('pre_fight_0i'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'center'});
             text9.setDepth(99999).setAlpha(0).setOrigin(0.5, 0);
 
             createGlobalClickBlocker();
@@ -70,14 +70,14 @@ function beginPreLevel(lvl) {
                     PhaserScene.tweens.add({
                         targets: text3,
                         alpha: 0,
-                        duration: 100
+                        duration: 0
                     })
                     text5.visible = true;
                     text5.alpha = 0;
                     PhaserScene.tweens.add({
                         targets: text5,
                         alpha: 0.65,
-                        duration: 100
+                        duration: 0
                     })
                 },
                 onHoverOut: () => {
@@ -96,10 +96,10 @@ function beginPreLevel(lvl) {
                     }
                 },
                 onMouseUp: () => {
-                    if (gameVars.wasTouch) {
+                    if (text3.locked && gameVars.wasTouch) {
                         text5.visible = !text5.visible;
                         text3.visible = !text5.visible;
-                        text3.locked = true;
+
                         PhaserScene.tweens.add({
                             targets: text3,
                             alpha: text3.visible ? 0.65 : 0,
@@ -111,6 +111,7 @@ function beginPreLevel(lvl) {
                             duration: 100
                         })
                     }
+                    text3.locked = true;
                 }
             });
             strikeHoverBtn.setOrigin(0.5, 0.5);
@@ -154,22 +155,22 @@ function beginPreLevel(lvl) {
                 },
                 onHoverOut: () => {
                     if (text4.locked) {
-
+                        return;
                     }
                     text4.visible = true;
                     PhaserScene.tweens.add({
                         targets: text4,
                         alpha: 0.65,
-                        duration: 150
+                        duration: 0
                     })
                     PhaserScene.tweens.add({
                         targets: text6,
                         alpha: 0,
-                        duration: 150
+                        duration: 0
                     })
                 },
                 onMouseUp: () => {
-                    if (gameVars.wasTouch) {
+                    if (text4.locked && gameVars.wasTouch) {
                         text6.visible = !text6.visible;
                         text4.visible = !text6.visible;
                         PhaserScene.tweens.add({
@@ -183,6 +184,7 @@ function beginPreLevel(lvl) {
                             duration: 100
                         })
                     }
+                    text4.locked = true;
                 }
             });
             matterHoverBtn.setOrigin(0.5, 0.5);
@@ -218,7 +220,7 @@ function beginPreLevel(lvl) {
                 y: "-=60",
                 onComplete: () => {
                     let itemsToClear = texts.concat(introbgs);
-                    createLvlCloseButton(lvl, itemsToClear, 5, 35);
+                    createLvlCloseButton(lvl, itemsToClear, 5, 35, [strikeHoverBtn, matterHoverBtn]);
                 }
             });
             PhaserScene.tweens.add({
@@ -235,11 +237,11 @@ function beginPreLevel(lvl) {
             // goblin
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'gobbo_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth - 40, gameConsts.halfHeight - 205, getLangText('pre_fight_1a'), {fontFamily: 'garamondbold', fontSize: 21, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth - 40, gameConsts.halfHeight - 205, getLangText('pre_fight_1a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
             // text2 = PhaserScene.add.text(gameConsts.halfWidth - 68, gameConsts.halfHeight - 5, "Its spittle filled mouth\ntaunts me for a fight.", {fontFamily: 'garamondbold', fontSize: 23, color: '#200000', align: 'left'});
             // text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text3 = PhaserScene.add.text(gameConsts.halfWidth - 240 , gameConsts.halfHeight + 100, getLangText('pre_fight_1b'), {fontFamily: 'garamondbold', fontSize: 21, color: '#200000', align: 'left'});
+            text3 = PhaserScene.add.text(gameConsts.halfWidth - 240 , gameConsts.halfHeight + 100, getLangText('pre_fight_1b'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text3.setDepth(99999).setAlpha(0).setOrigin(0, 0);
 
             createGlobalClickBlocker();
@@ -249,9 +251,9 @@ function beginPreLevel(lvl) {
             // tree
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'tree_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +165, getLangText('pre_fight_2a'), {fontFamily: 'garamondbold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +165, getLangText('pre_fight_2a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            // text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, getLangText('pre_fight_2b'), {fontFamily: 'garamondbold', fontSize: 23, color: '#200000', align: 'left'});
+            // text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, getLangText('pre_fight_2b'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             // text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -261,9 +263,9 @@ function beginPreLevel(lvl) {
             // magician
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 40, 'ui', 'magician_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 248, gameConsts.halfHeight - 180, getLangText('pre_fight_3a'), {fontFamily: 'garamondbold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 248, gameConsts.halfHeight - 180, getLangText('pre_fight_3a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth - 40, gameConsts.halfHeight +65, getLangText('pre_fight_3b'), {fontFamily: 'garamondbold', fontSize: 23, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth - 40, gameConsts.halfHeight +65, getLangText('pre_fight_3b'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -273,9 +275,9 @@ function beginPreLevel(lvl) {
             // knight
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'knight_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 130, getLangText('pre_fight_4a'), {fontFamily: 'garamondbold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 130, getLangText('pre_fight_4a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, getLangText('pre_fight_4b'), {fontFamily: 'garamondbold', fontSize: 23, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, getLangText('pre_fight_4b'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -286,9 +288,9 @@ function beginPreLevel(lvl) {
             // wall
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'wall_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 55, getLangText('pre_fight_5a'), {fontFamily: 'garamondbold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 55, getLangText('pre_fight_5a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +160, getLangText('pre_fight_5b'), {fontFamily: 'garamondbold', fontSize: 23, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +160, getLangText('pre_fight_5b'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -313,9 +315,9 @@ function beginPreLevel(lvl) {
             // mantis
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'mantis_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 65, getLangText('pre_fight_7a'), {fontFamily: 'garamondbold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 65, getLangText('pre_fight_7a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +140, getLangText('pre_fight_7b'), {fontFamily: 'garamondbold', fontSize: 23, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +140, getLangText('pre_fight_7b'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -325,9 +327,9 @@ function beginPreLevel(lvl) {
             // robot
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'robot_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 140, getLangText('pre_fight_8a'), {fontFamily: 'garamondbold', fontSize: 23, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 140, getLangText('pre_fight_8a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +220, getLangText('pre_fight_8b'), {fontFamily: 'garamondbold', fontSize: 23, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +220, getLangText('pre_fight_8b'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -369,7 +371,7 @@ function fadeInPreFightStuff(lvl, texts, introbgs) {
     });
 }
 
-function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0) {
+function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose = []) {
     let lvlCloseButton = new Button({
         normal: {
             ref: "menu_btn_normal.png",
@@ -404,6 +406,9 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0) {
             if (canvas) {
                 canvas.style.cursor = 'default';
             }
+            for (let i = 0; i < instaClose.length; i++) {
+                instaClose[i].destroy();
+            }
             PhaserScene.tweens.add({
                 targets: items,
                 alpha: 0,
@@ -422,7 +427,7 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0) {
         }
     });
     lvlCloseButton.setOrigin(0.5, 0.5);
-    lvlCloseButton.addText("CONTINUE", {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
+    lvlCloseButton.addText(getLangText('cont_ui'), {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
     lvlCloseButton.setScale(0.9);
     lvlCloseButton.setDepth(99999);
 

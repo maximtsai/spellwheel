@@ -415,12 +415,12 @@ let textData2 = {
     },
     "pre_fight_0h": {
         "en_us": "CAST:\nCLICK/SPACE",
-        "fr": "Cliquez pour lancer le sort Matière+Frappe",
-        "zh_tw": "點擊施放 Matter+Strike 法術",
-        "zh_cn": "点击施放 Matter+Strike 法术",
-        "ru": "Нажмите, чтобы разыграть заклинание Matter+Strike",
-        "es": "Haz clic para lanzar el hechizo Materia+Golpe",
-        "jp": "クリックして物質+ストライクの呪文を唱える"
+        "fr": "",
+        "zh_tw": "法術施放:\n滑鼠點選/空白鍵",
+        "zh_cn": "法术施放:\n鼠标单击/空格键",
+        "ru": "Щелчок мышью\nпробел",
+        "es": "Lanzar hechizo:\nClic mouse\n/nespaciadora",
+        "jp": "呪文の詠唱:\nマウスをクリック\n/スペースバー"
     },
     "pre_fight_0i": {
         "en_us": "MATTER\nSTRIKE",
@@ -461,8 +461,8 @@ let textData2 = {
     "pre_fight_4a": {
         "en_us": "You: \"Halt! Are you friend or foe?\"\nKnight: ...\nYou: \"Do you mock me with your silence?\"\nKnight: ...\nYou: \"Enough, fight me now!\"",
         "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "zh_tw": '你："停下！你是朋友還是敵人？"\n騎士：…\n你："你在用沉默嘲笑我嗎？"\n騎士：…\n你："夠了，立刻跟我打！',
+        "zh_cn": '你："停下！你是朋友还是敌人？"\n骑士：…\n你："你在用沉默嘲笑我吗？"\n骑士：…\n你："够了，立刻跟我打！"',
         "ru": "",
         "es": "",
         "jp": ""
@@ -560,8 +560,8 @@ let textData2 = {
     "level0_tut_b": {
         "en_us": "Defeat the =>\nenemy to win",
         "fr": "Battez l’ennemi =>\npour gagner",
-        "zh_tw": "擊敗 =>\n個敵人以贏得勝利",
-        "zh_cn": "击败 =>\n个敌人以赢得胜利",
+        "zh_tw": "擊敗 =>\n敵人以贏得勝利",
+        "zh_cn": "击败 =>\n敌人以赢得胜利",
         "ru": "Победите врага =>\nчтобы победить",
         "es": "Derrota al enemigo =>\npara ganar",
         "jp": "人の敵を倒し=>\nて勝利"
@@ -587,8 +587,8 @@ let textData2 = {
     "level1_tut_a": {
         "en_us": "Enhance Rune\nstrengthens your\nnext attack\n ",
         "fr": "La rune Enhance\nrenforce votre\nprochaine attaque\n ",
-        "zh_tw": "增強符文可以增強\n你的下一次攻擊\n ",
-        "zh_cn": "增强符文可以增强\n你的下一次攻击\n ",
+        "zh_tw": "增強符文增強\n你的下一次攻擊\n ",
+        "zh_cn": "增强符文增强\n你的下一次攻击\n ",
         "ru": "Руна усиления\nусиливает вашу\nследующую атаку\n ",
         "es": "La runa mejorada\nfortalece tu\npróximo ataque\n ",
         "jp": "強化ルーンは次の\n攻撃を強化します\n "
@@ -736,15 +736,6 @@ let textData2 = {
         "ru": "НОВАЯ ИГРА",
         "es": "NUEVO JUEGO",
         "jp": "新しいゲーム"
-    },
-    "cont_game": {
-        "en_us": "CONTINUE",
-        "fr": "CONTINUER",
-        "zh_tw": "繼續",
-        "zh_cn": "继续",
-        "ru": "ПРОДОЛЖАТЬ",
-        "es": "CONTINUAR",
-        "jp": "続ける"
     },
     "cont_ui": {
         "en_us": "CONTINUE",

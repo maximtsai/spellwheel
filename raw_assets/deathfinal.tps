@@ -233,21 +233,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">deathfinal/death2charge.vfx.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.85</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>200,185,400,370</rect>
-                <key>scale9Paddings</key>
-                <rect>200,185,400,370</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">deathfinal/death2crouch.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -459,21 +444,6 @@
                 <rect>67,63,134,125</rect>
                 <key>scale9Paddings</key>
                 <rect>67,63,134,125</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">deathfinal/deathhalo.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.8</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>127,135,253,270</rect>
-                <key>scale9Paddings</key>
-                <rect>127,135,253,270</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

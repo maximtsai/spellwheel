@@ -37,7 +37,8 @@
              onComplete: () => {
                  this.whiteoutTemp.destroy();
              }
-         })
+         });
+
          this.addTween({
              targets: this.whiteoutTemp,
              alpha: 0,
@@ -70,6 +71,8 @@
      }
 
      initMisc() {
+        this.deathhalo1 = this.addImage(this.x, this.y , 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setBlendMode(Phaser.BlendModes.LIGHTEN);
+        this.deathhalo2 = this.addImage(this.x, this.y , 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setRotation(1).setBlendMode(Phaser.BlendModes.LIGHTEN);
          this.handShieldBack = this.addImage(this.x, this.y, 'blurry', 'handshield_back.png').setScale(2.4).setDepth(-1).setAlpha(0);
          this.handShieldBack.startScale = this.handShieldBack.scaleX;
          this.handShield = this.addSprite(this.x, this.y - 6, 'shields', 'handshield10.png').setScale(1).setDepth(3).setAlpha(0);
@@ -77,10 +80,11 @@
          this.currentHandGlow = this.addImage(0, 0, 'deathfinal', 'claw_glow.png').setAlpha(0).setDepth(-1);
          this.currentHandGlowPulse = this.addImage(0, 0, 'deathfinal', 'claw.png').setAlpha(0).setDepth(-1);
          this.redClockTemp = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'enemies', 'red_clock_back_large_red.png').setAlpha(0);
+
     }
 
      beginBattleAnim() {
-         this.spellStartY = this.y - 60;
+         this.spellStartY = this.y - 40;
          this.createGlowHands();
          this.addDelayIfAlive(() => {
              this.spellCirclePulse = this.addImage(this.x, this.spellStartY, 'blurry', 'spellcircle_pulse.png').setAlpha(0.1).setScale(0.5).setDepth(-3);
@@ -100,6 +104,60 @@
              this.addDelayIfAlive(() => {
                  this.setAwake();
              }, 4000)
+
+
+            this.addTween({
+                targets: [this.deathhalo1],
+                alpha: 1,
+                scaleX: 3,
+                scaleY: 3,
+                duration: 1000,
+                onComplete: () => {
+                    this.addTween({
+                        targets: [this.deathhalo2],
+                        alpha: 1,
+                        scaleX: 3,
+                        scaleY: 3,
+                        duration: 1000,
+                        onComplete: () => {
+                            this.addTween({
+                                targets: [this.deathhalo2],
+                                alpha: 0,
+                                scaleX: 5,
+                                scaleY: 5,
+                                duration: 1000,
+                            })
+                        }
+                    });
+            
+                    this.addTween({
+                        targets: [this.deathhalo1],
+                        alpha: 0,
+                        scaleX: 5,
+                        scaleY: 5,
+                        duration: 1000,
+                        onComplete: () => {
+                            this.addTween({
+                                targets: [this.deathhalo1],
+                                alpha: 1,
+                                scaleX: 3,
+                                scaleY: 3,
+                                duration: 1000,
+                                onComplete: () => {
+                                    this.addTween({
+                                        targets: [this.deathhalo1],
+                                        alpha: 0,
+                                        scaleX: 5,
+                                        scaleY: 5,
+                                        duration: 1000,
+                                    });
+                                }
+                            });
+                        }
+                    })
+                }
+            })
+
          }, 900)
      }
 
@@ -127,19 +185,19 @@
             zoomTemp(1.02);
             playSound('stomp', 0.6);
             this.addDelay(() => {
-                let img_me = this.addImage(gameConsts.halfWidth - 145, 380, 'deathfinal', 'x_me.png').setDepth(9999).setScale(1.16);
+                let img_me = this.addImage(gameConsts.halfWidth - 145, 360, 'deathfinal', 'x_me.png').setDepth(9999).setScale(1.16);
                 this.quickZoom(img_me, 1.1)
                 screenShake(5);
                 zoomTemp(1.02);
                 playSound('stomp', 0.7);
                 this.addDelay(() => {
-                    let img_your = this.addImage(gameConsts.halfWidth + 145, 380, 'deathfinal', 'x_your.png').setDepth(9999).setScale(1.16);
+                    let img_your = this.addImage(gameConsts.halfWidth + 145, 360, 'deathfinal', 'x_your.png').setDepth(9999).setScale(1.16);
                     this.quickZoom(img_your, 1.1)
                     screenShake(6);
                     zoomTemp(1.02);
                     playSound('stomp', 0.8);
                     this.addDelay(() => {
-                        let img_all = this.addSprite(gameConsts.halfWidth, 630, 'deathfinal', 'x_all2.png').setDepth(9999).setScale(1.22);
+                        let img_all = this.addSprite(gameConsts.halfWidth, 625, 'deathfinal', 'x_all2.png').setDepth(9999).setScale(1.22);
                         this.quickZoom(img_all, 1.1)
                         zoomTemp(1.1);
                         screenShakeManual(20, 0.8);
@@ -172,9 +230,9 @@
                             this.addTween({
                                 targets: [img_now, img_give, img_me, img_your, img_all],
                                 alpha: 0,
-                                scaleX: 1.14,
-                                scaleY: 1.14,
-                                duration: 200,
+                                scaleX: 1.05,
+                                scaleY: 1.05,
+                                duration: 300,
                                 ease: 'Cubic.easeIn',
                                 onComplete: () => {
                                     img_now.destroy();
@@ -184,11 +242,52 @@
                                     img_all.destroy();
                                 }
                             })
-                         }, 1400)
+                         }, 1800)
                     }, 400) 
                 }, 400) 
             }, 400) 
         }, 400) 
+    }
+
+    repeatTweenHalo() {
+        if (this.dead || this.stopHalo) {
+            return;
+        }
+        this.deathhalo1.setScale(0.1).setAlpha(0).setRotation(Math.random() * 6);
+        this.addTween({
+            targets: [this.deathhalo2],
+            alpha: 0,
+            scaleX: 4.5,
+            scaleY: 4.5,
+            duration: 2000,
+        });
+        this.addTween({
+            targets: [this.deathhalo1],
+            alpha: 1,
+            scaleX: 2.5,
+            scaleY: 2.5,
+            duration: 2000,
+            onComplete: () => {
+                this.deathhalo2.setScale(0.1).setAlpha(0).setRotation(Math.random() * 6);
+                this.addTween({
+                    targets: [this.deathhalo2],
+                    alpha: 1,
+                    scaleX: 2.5,
+                    scaleY: 2.5,
+                    duration: 2000,
+                });
+                this.addTween({
+                    targets: [this.deathhalo1],
+                    alpha: 0,
+                    scaleX: 4.5,
+                    scaleY: 4.5,
+                    duration: 2000,
+                    onComplete: () => {
+                        this.repeatTweenHalo()
+                    }
+                })
+            }
+        })
     }
 
      repeatTweenBreathe(duration = 1500, magnitude = 1) {
@@ -196,13 +295,13 @@
              this.breatheTween.stop();
          }
          this.breathTween = this.addTween({
-             targets: this.sprite,
+             targets: [this.sprite, this.deathhalo1, this.deathhalo2],
              y: "+=10",
              duration: 2000,
              ease: 'Quad.easeInOut',
              repeat: -1,
              yoyo: true
-         })
+         });
      }
 
     fadeOutCurrentHand() {
@@ -397,7 +496,36 @@
                      scaleY: this.sprite.startScale * 0.7,
                      ease: "Quint.easeIn",
                      onComplete: () => {
-                        screenShake(2);
+                        this.addTween({
+                            targets: [this.deathhalo1],
+                            alpha: 1,
+                            scaleX: 3,
+                            scaleY: 3,
+                            duration: 1000,
+                            onComplete: () => {
+                                this.addTween({
+                                    targets: [this.deathhalo2],
+                                    alpha: 1,
+                                    scaleX: 3,
+                                    scaleY: 3,
+                                    duration: 1000,
+                                });
+                        
+                                this.addTween({
+                                    targets: [this.deathhalo1],
+                                    alpha: 0,
+                                    scaleX: 5,
+                                    scaleY: 5,
+                                    duration: 1000,
+                                    onComplete: () => {
+                                        this.repeatTweenHalo()
+                                    }
+                                })
+                            }
+                        })
+
+                        screenShake(3);
+                        zoomTemp(1.02)
                         this.bgMusic3 = playMusic('but_never_forgotten_epicchoir', 0.9, true);
                         this.bgMain.setFrame('star_red.png').setScale(1.32);
                         playSound('sound_of_death', 1.2).setSeek(0.2);
@@ -2191,6 +2319,7 @@
      }
 
      sharedDie() {
+        this.stopHalo = true;
         fadeAwaySound(this.bgMusic);
          if (this.bgMusic2) {
             fadeAwaySound(this.bgMusic2);

@@ -4,8 +4,8 @@
 			"image": "sprites/blurry-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1985,
-				"h": 1970
+				"w": 1982,
+				"h": 1999
 			},
 			"scale": 1,
 			"frames": [
@@ -19,15 +19,15 @@
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 152,
-						"w": 725,
-						"h": 717
+						"y": 153,
+						"w": 722,
+						"h": 713
 					},
 					"frame": {
 						"x": 1,
 						"y": 1,
-						"w": 725,
-						"h": 717
+						"w": 722,
+						"h": 713
 					},
 					"anchor": {
 						"x": 0.5,
@@ -50,7 +50,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 720,
+						"y": 716,
 						"w": 604,
 						"h": 607
 					},
@@ -74,7 +74,7 @@
 						"h": 500
 					},
 					"frame": {
-						"x": 728,
+						"x": 725,
 						"y": 1,
 						"w": 500,
 						"h": 500
@@ -93,241 +93,16 @@
 						"h": 610
 					},
 					"spriteSourceSize": {
-						"x": 58,
-						"y": 57,
-						"w": 495,
-						"h": 495
+						"x": 70,
+						"y": 69,
+						"w": 471,
+						"h": 471
 					},
 					"frame": {
 						"x": 1,
-						"y": 1329,
-						"w": 495,
-						"h": 495
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "explod.webp",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 400,
-						"h": 500
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 400,
-						"h": 500
-					},
-					"frame": {
-						"x": 1230,
-						"y": 1,
-						"w": 400,
-						"h": 500
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "static2.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 352,
-						"h": 528
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 352,
-						"h": 528
-					},
-					"frame": {
-						"x": 1632,
-						"y": 1,
-						"w": 352,
-						"h": 528
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "voidcirclelarge.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 441,
-						"h": 441
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 440,
-						"h": 440
-					},
-					"frame": {
-						"x": 728,
-						"y": 503,
-						"w": 440,
-						"h": 440
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rock_rush.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 444,
-						"h": 488
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 21,
-						"w": 408,
-						"h": 446
-					},
-					"frame": {
-						"x": 1170,
-						"y": 503,
-						"w": 408,
-						"h": 446
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "static0.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 352,
-						"h": 528
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 352,
-						"h": 527
-					},
-					"frame": {
-						"x": 1580,
-						"y": 531,
-						"w": 352,
-						"h": 527
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "spike_glow_yellow.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 380,
-						"h": 380
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 380,
-						"h": 380
-					},
-					"frame": {
-						"x": 607,
-						"y": 945,
-						"w": 380,
-						"h": 380
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "fogspook.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 350,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 17,
-						"w": 350,
-						"h": 383
-					},
-					"frame": {
-						"x": 989,
-						"y": 951,
-						"w": 350,
-						"h": 383
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "fogthick.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 350,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 19,
-						"w": 350,
-						"h": 381
-					},
-					"frame": {
-						"x": 498,
-						"y": 1329,
-						"w": 350,
-						"h": 381
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "spellcircle_pulse.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 351,
-						"h": 351
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 351,
-						"h": 351
-					},
-					"frame": {
-						"x": 850,
-						"y": 1336,
-						"w": 351,
-						"h": 351
+						"y": 1325,
+						"w": 471,
+						"h": 471
 					},
 					"anchor": {
 						"x": 0.5,
@@ -349,8 +124,8 @@
 						"h": 200
 					},
 					"frame": {
-						"x": 498,
-						"y": 1712,
+						"x": 1,
+						"y": 1798,
 						"w": 394,
 						"h": 200
 					},
@@ -360,99 +135,249 @@
 					}
 				},
 				{
-					"filename": "flash_bg.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 480,
-						"h": 280
-					},
-					"spriteSourceSize": {
-						"x": 63,
-						"y": 0,
-						"w": 353,
-						"h": 280
-					},
-					"frame": {
-						"x": 894,
-						"y": 1689,
-						"w": 353,
-						"h": 280
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "green_star.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 305,
-						"h": 305
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 304,
-						"h": 305
-					},
-					"frame": {
-						"x": 1203,
-						"y": 1336,
-						"w": 304,
-						"h": 305
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "void_spike_out.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 334,
-						"h": 334
-					},
-					"spriteSourceSize": {
-						"x": 34,
-						"y": 33,
-						"w": 266,
-						"h": 268
-					},
-					"frame": {
-						"x": 1249,
-						"y": 1643,
-						"w": 266,
-						"h": 268
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "glow.webp",
+					"filename": "explod.webp",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 220,
-						"h": 220
+						"w": 400,
+						"h": 500
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 220,
-						"h": 220
+						"w": 400,
+						"h": 500
 					},
 					"frame": {
-						"x": 1341,
-						"y": 951,
-						"w": 220,
-						"h": 220
+						"x": 1227,
+						"y": 1,
+						"w": 400,
+						"h": 500
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "static0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 352,
+						"h": 528
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 352,
+						"h": 527
+					},
+					"frame": {
+						"x": 1629,
+						"y": 1,
+						"w": 352,
+						"h": 527
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "voidcirclelarge.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 441,
+						"h": 441
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 4,
+						"w": 434,
+						"h": 434
+					},
+					"frame": {
+						"x": 725,
+						"y": 503,
+						"w": 434,
+						"h": 434
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rock_rush.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 444,
+						"h": 488
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 22,
+						"w": 406,
+						"h": 444
+					},
+					"frame": {
+						"x": 1161,
+						"y": 503,
+						"w": 406,
+						"h": 444
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "static2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 352,
+						"h": 528
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 352,
+						"h": 528
+					},
+					"frame": {
+						"x": 1569,
+						"y": 530,
+						"w": 352,
+						"h": 528
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "deathhalo.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 390,
+						"h": 390
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 11,
+						"w": 373,
+						"h": 365
+					},
+					"frame": {
+						"x": 607,
+						"y": 939,
+						"w": 373,
+						"h": 365
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "spike_glow_yellow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 380,
+						"h": 380
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 6,
+						"w": 367,
+						"h": 366
+					},
+					"frame": {
+						"x": 982,
+						"y": 949,
+						"w": 367,
+						"h": 366
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fogspook.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 350,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 17,
+						"w": 350,
+						"h": 383
+					},
+					"frame": {
+						"x": 474,
+						"y": 1325,
+						"w": 350,
+						"h": 383
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fogthick.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 350,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 20,
+						"w": 350,
+						"h": 380
+					},
+					"frame": {
+						"x": 826,
+						"y": 1317,
+						"w": 350,
+						"h": 380
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "spellcircle_pulse.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 351,
+						"h": 351
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 7,
+						"w": 337,
+						"h": 337
+					},
+					"frame": {
+						"x": 1178,
+						"y": 1317,
+						"w": 337,
+						"h": 337
 					},
 					"anchor": {
 						"x": 0.5,
@@ -474,8 +399,8 @@
 						"h": 264
 					},
 					"frame": {
-						"x": 1563,
-						"y": 1060,
+						"x": 474,
+						"y": 1710,
 						"w": 352,
 						"h": 264
 					},
@@ -485,49 +410,24 @@
 					}
 				},
 				{
-					"filename": "spellcircle_bgglow.png",
+					"filename": "flash_bg.webp",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 401,
-						"h": 401
+						"w": 480,
+						"h": 280
 					},
 					"spriteSourceSize": {
 						"x": 68,
-						"y": 67,
-						"w": 265,
-						"h": 266
+						"y": 0,
+						"w": 343,
+						"h": 280
 					},
 					"frame": {
-						"x": 1509,
-						"y": 1326,
-						"w": 265,
-						"h": 266
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "handshield_back.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 263,
-						"h": 290
-					},
-					"spriteSourceSize": {
-						"x": 11,
-						"y": 8,
-						"w": 244,
-						"h": 260
-					},
-					"frame": {
-						"x": 1517,
-						"y": 1594,
-						"w": 244,
-						"h": 260
+						"x": 828,
+						"y": 1699,
+						"w": 343,
+						"h": 280
 					},
 					"anchor": {
 						"x": 0.5,
@@ -549,10 +449,135 @@
 						"h": 199
 					},
 					"frame": {
-						"x": 1776,
-						"y": 1326,
+						"x": 1351,
+						"y": 949,
 						"w": 199,
 						"h": 199
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "green_star.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 305,
+						"h": 305
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 303,
+						"h": 304
+					},
+					"frame": {
+						"x": 1552,
+						"y": 1060,
+						"w": 303,
+						"h": 304
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "void_spike_out.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 334,
+						"h": 334
+					},
+					"spriteSourceSize": {
+						"x": 35,
+						"y": 34,
+						"w": 263,
+						"h": 266
+					},
+					"frame": {
+						"x": 1517,
+						"y": 1366,
+						"w": 263,
+						"h": 266
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "spellcircle_bgglow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 401,
+						"h": 401
+					},
+					"spriteSourceSize": {
+						"x": 74,
+						"y": 74,
+						"w": 253,
+						"h": 253
+					},
+					"frame": {
+						"x": 1178,
+						"y": 1656,
+						"w": 253,
+						"h": 253
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "handshield_back.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 263,
+						"h": 290
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 9,
+						"w": 244,
+						"h": 258
+					},
+					"frame": {
+						"x": 1433,
+						"y": 1656,
+						"w": 244,
+						"h": 258
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "glow.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 220,
+						"h": 220
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 220,
+						"h": 220
+					},
+					"frame": {
+						"x": 1679,
+						"y": 1634,
+						"w": 220,
+						"h": 220
 					},
 					"anchor": {
 						"x": 0.5,
@@ -568,16 +593,16 @@
 						"h": 170
 					},
 					"spriteSourceSize": {
-						"x": 11,
-						"y": 11,
-						"w": 147,
-						"h": 147
+						"x": 12,
+						"y": 12,
+						"w": 145,
+						"h": 145
 					},
 					"frame": {
-						"x": 1341,
-						"y": 1173,
-						"w": 147,
-						"h": 147
+						"x": 1351,
+						"y": 1150,
+						"w": 145,
+						"h": 145
 					},
 					"anchor": {
 						"x": 0.5,
@@ -593,41 +618,16 @@
 						"h": 226
 					},
 					"spriteSourceSize": {
-						"x": 14,
-						"y": 14,
-						"w": 197,
-						"h": 197
+						"x": 16,
+						"y": 16,
+						"w": 193,
+						"h": 193
 					},
 					"frame": {
-						"x": 1776,
-						"y": 1527,
-						"w": 197,
-						"h": 197
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "glow_flat.webp",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 200,
-						"h": 50
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 200,
-						"h": 50
-					},
-					"frame": {
-						"x": 1,
-						"y": 1826,
-						"w": 200,
-						"h": 50
+						"x": 1782,
+						"y": 1366,
+						"w": 193,
+						"h": 193
 					},
 					"anchor": {
 						"x": 0.5,
@@ -649,8 +649,8 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 1249,
-						"y": 1913,
+						"x": 1679,
+						"y": 1856,
 						"w": 200,
 						"h": 50
 					},
@@ -674,9 +674,34 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 1517,
-						"y": 1856,
+						"x": 1173,
+						"y": 1911,
 						"w": 200,
+						"h": 50
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "glow_flat.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 0,
+						"w": 195,
+						"h": 50
+					},
+					"frame": {
+						"x": 1782,
+						"y": 1561,
+						"w": 195,
 						"h": 50
 					},
 					"anchor": {
@@ -694,40 +719,15 @@
 					},
 					"spriteSourceSize": {
 						"x": 1,
-						"y": 4,
+						"y": 5,
 						"w": 199,
-						"h": 13
+						"h": 11
 					},
 					"frame": {
-						"x": 1,
-						"y": 1878,
+						"x": 607,
+						"y": 1306,
 						"w": 199,
-						"h": 13
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "display_backglow.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 120,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 120,
-						"h": 100
-					},
-					"frame": {
-						"x": 1763,
-						"y": 1726,
-						"w": 120,
-						"h": 100
+						"h": 11
 					},
 					"anchor": {
 						"x": 0.5,
@@ -749,10 +749,35 @@
 						"h": 9
 					},
 					"frame": {
-						"x": 607,
-						"y": 720,
+						"x": 808,
+						"y": 1306,
 						"w": 104,
 						"h": 9
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "display_backglow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 120,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 118,
+						"h": 98
+					},
+					"frame": {
+						"x": 1857,
+						"y": 1060,
+						"w": 118,
+						"h": 98
 					},
 					"anchor": {
 						"x": 0.5,
@@ -774,35 +799,10 @@
 						"h": 10
 					},
 					"frame": {
-						"x": 1341,
-						"y": 1322,
+						"x": 607,
+						"y": 716,
 						"w": 100,
 						"h": 10
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "staticlite5.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 40,
-						"h": 12
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 40,
-						"h": 12
-					},
-					"frame": {
-						"x": 1443,
-						"y": 1322,
-						"w": 40,
-						"h": 12
 					},
 					"anchor": {
 						"x": 0.5,
@@ -824,35 +824,10 @@
 						"h": 48
 					},
 					"frame": {
-						"x": 1934,
-						"y": 531,
+						"x": 397,
+						"y": 1798,
 						"w": 39,
 						"h": 48
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "staticlite0.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 30,
-						"h": 7
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 30,
-						"h": 7
-					},
-					"frame": {
-						"x": 850,
-						"y": 1327,
-						"w": 30,
-						"h": 7
 					},
 					"anchor": {
 						"x": 0.5,
@@ -874,10 +849,35 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 1563,
-						"y": 951,
+						"x": 1552,
+						"y": 949,
 						"w": 4,
 						"h": 50
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "staticlite5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 40,
+						"h": 12
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 40,
+						"h": 12
+					},
+					"frame": {
+						"x": 1569,
+						"y": 503,
+						"w": 40,
+						"h": 12
 					},
 					"anchor": {
 						"x": 0.5,
@@ -899,8 +899,8 @@
 						"h": 15
 					},
 					"frame": {
-						"x": 1580,
-						"y": 503,
+						"x": 1517,
+						"y": 1634,
 						"w": 25,
 						"h": 15
 					},
@@ -918,16 +918,41 @@
 						"h": 16
 					},
 					"spriteSourceSize": {
-						"x": 1,
+						"x": 2,
 						"y": 4,
-						"w": 15,
+						"w": 14,
 						"h": 9
 					},
 					"frame": {
-						"x": 1580,
-						"y": 520,
-						"w": 15,
+						"x": 914,
+						"y": 1306,
+						"w": 14,
 						"h": 9
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "staticlite0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 30,
+						"h": 7
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 30,
+						"h": 7
+					},
+					"frame": {
+						"x": 982,
+						"y": 939,
+						"w": 30,
+						"h": 7
 					},
 					"anchor": {
 						"x": 0.5,
@@ -940,6 +965,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:5b1a91972dc85af2f19941f50edfa5c7:9e32ffef87ce8d5b545b855d330488aa:7b3d117fb7424a39791474629de16171$"
+		"smartupdate": "$TexturePacker:SmartUpdate:632fc69dfdc2114a6924ff896532f1e0:d4365eb5b2c2d0a5a1d9efcada39eb50:7b3d117fb7424a39791474629de16171$"
 	}
 }

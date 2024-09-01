@@ -397,7 +397,7 @@ let textData2 = {
     },
     "pre_fight_0f": {
         "en_us": "Uses solid rock\nand stone for\nyour spells",
-        "fr": "Utilise de la roche et de\nla pierre solides pour vos sorts",
+        "fr": "Utilise des\nroches lourdes\npour vos sorts",
         "zh_tw": "使用堅實的岩石和\n石頭進行你的法術",
         "zh_cn": "使用坚实的岩石和\n石头进行你的法术",
         "ru": "Использует твердый камень\nи камень для ваших заклинаний",
@@ -406,16 +406,16 @@ let textData2 = {
     },
     "pre_fight_0g": {
         "en_us": "Deal 12 Damage",
-        "fr": "Inflige 12 points de dégâts",
+        "fr": "Inflige 12 points\nde dégâts",
         "zh_tw": "造成12點傷害",
         "zh_cn": "造成 12 点伤害",
-        "ru": "Наносит 12 ед. урона",
+        "ru": "Наносит 12 ед.\nурона",
         "es": "Inflige 12 de daño",
         "jp": "12ダメージを与える"
     },
     "pre_fight_0h": {
         "en_us": "CAST:\nCLICK/SPACE",
-        "fr": "",
+        "fr": "Casting:\nClic/barre\nd'espace",
         "zh_tw": "法術施放:\n滑鼠點選/空白鍵",
         "zh_cn": "法术施放:\n鼠标单击/空格键",
         "ru": "Щелчок мышью\nпробел",

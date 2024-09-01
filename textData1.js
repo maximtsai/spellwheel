@@ -497,7 +497,7 @@ let textData = {
         "jp": "敵を粉砕すると同時に、自分自身を守るために、多くの物質を召喚します。"
     },
     "mind_tut_desc": {
-        "en_us": "The Energy rune grants\ncontrol over raw energy.\nEnergy spells have powerful supportive\neffects and deal True damage that\nbypasses enemy defenses.",
+        "en_us": "The Energy rune\ncontrols raw energy.\nEnergy spells have powerful utility\neffects and deal True damage that\nbypasses enemy defenses.",
         "fr": "La rune Énergie accorde le contrôle de l’énergie brute. Les sorts d’énergie ont de puissants effets de soutien et peuvent infliger des dégâts bruts qui contournent les défenses ennemies.",
         "zh_tw": "能量符文授予對原始能量的控制權。能量法術具有強大的支援效果，可以造成繞過敵人防禦的真實傷害。",
         "zh_cn": "能量符文授予对原始能量的控制权。能量法术具有强大的支持效果，可以造成绕过敌人防御的真实伤害。",
@@ -526,8 +526,8 @@ let textData = {
     "mind_tut_enhance_desc": {
         "en_us": "Your next attack sets the\nenemy on fire, which deals\nTrue damage over time that\nignores defenses.",
         "fr": "Votre prochaine attaque met le feu à l’ennemi, ce qui lui inflige des dégâts bruts sur la durée qui ignorent les défenses.",
-        "zh_tw": "你的下一次攻擊會讓敵人著火，隨著時間的推移會造成真正的傷害，而忽略了防禦。",
-        "zh_cn": "你的下一次攻击会让敌人着火，随着时间的推移会造成真正的伤害，而忽略了防御。",
+        "zh_tw": "你的下一次攻擊會讓敵人\n著火，隨著時間的推移會造成\n真正的傷害，而忽略了防禦。",
+        "zh_cn": "你的下一次攻击会让敌人\n着火，随着时间的推移会造成\n真正的伤害，而忽略了防御。",
         "ru": "Ваша следующая атака поджигает врага, который наносит периодический чистый урон, игнорируя защиту.",
         "es": "Tu próximo ataque prende fuego al enemigo, lo que inflige daño verdadero con el tiempo que ignora las defensas.",
         "jp": "次の通常攻撃で敵に火をつけ、防御を無視して継続ダメージを与える。"
@@ -535,8 +535,8 @@ let textData = {
     "mind_tut_protect_desc": {
         "en_us": "Creates a shield that blocks\nhalf of all damage, while\nstoring up and retaliating with\nthe damage you do take.",
         "fr": "Crée un bouclier qui bloque la moitié de tous les dégâts, tout en accumulant et en ripostant avec les dégâts que vous subissez.",
-        "zh_tw": "創建一個盾牌，可以阻擋所有傷害的一半，同時儲存並利用你所受到的傷害進行報復。",
-        "zh_cn": "打造一个盾牌，可以阻挡所有伤害的一半，同时储存并利用你所受到的伤害进行报复。",
+        "zh_tw": "創建一個盾牌，可以阻擋所有\n傷害的一半，同時儲存並利用你所\n受到的傷害進行報復。",
+        "zh_cn": "打造一个盾牌，可以阻挡所有\n伤害的一半，同时储存并利用你所\n受到的伤害进行报复。",
         "ru": "Создает щит, который блокирует половину всего урона, накапливая и нанося ответный урон.",
         "es": "Crea un escudo que bloquea la mitad de todo el daño, mientras acumula y toma represalias con el daño que recibes.",
         "jp": "ダメージの半分をブロックし、受けたダメージを溜め込んで報復するシールドを作成します。"

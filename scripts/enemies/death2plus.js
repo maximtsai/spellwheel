@@ -71,8 +71,8 @@
      }
 
      initMisc() {
-        this.deathhalo1 = this.addImage(this.x, this.y , 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setBlendMode(Phaser.BlendModes.LIGHTEN);
-        this.deathhalo2 = this.addImage(this.x, this.y , 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setRotation(1).setBlendMode(Phaser.BlendModes.LIGHTEN);
+        this.deathhalo1 = this.addImage(this.x, this.y + 3, 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setBlendMode(Phaser.BlendModes.LIGHTEN);
+        this.deathhalo2 = this.addImage(this.x, this.y + 3, 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setRotation(1).setBlendMode(Phaser.BlendModes.LIGHTEN);
          this.handShieldBack = this.addImage(this.x, this.y, 'blurry', 'handshield_back.png').setScale(2.4).setDepth(-1).setAlpha(0);
          this.handShieldBack.startScale = this.handShieldBack.scaleX;
          this.handShield = this.addSprite(this.x, this.y - 6, 'shields', 'handshield10.png').setScale(1).setDepth(3).setAlpha(0);
@@ -129,7 +129,7 @@
                             })
                         }
                     });
-            
+
                     this.addTween({
                         targets: [this.deathhalo1],
                         alpha: 0,
@@ -243,10 +243,61 @@
                                 }
                             })
                          }, 1800)
-                    }, 400) 
-                }, 400) 
-            }, 400) 
-        }, 400) 
+                    }, 400)
+                }, 400)
+            }, 400)
+        }, 400)
+    }
+
+
+    ringBells() {
+        let leftBell = this.addImage(30, 40, 'deathfinal', 'bell.png').setScale(0.75).setAlpha(0).setOrigin(0.5, 0.1).setRotation(0.6);
+        let rightBell = this.addImage(gameConsts.width - 30, 40, 'deathfinal', 'bell.png').setScale(0.75).setAlpha(0).setOrigin(0.5, 0.1).setRotation(-0.6);
+        this.addDelay(() => {
+            playSound('death_cast', 0.95)
+            this.addDelay(() => {
+                playSound('death_cast', 0.5)
+            }, 4500)
+        },800)
+        this.addTween({
+            delay: 200,
+            targets: [leftBell, rightBell],
+            duration: 1300,
+            ease: 'Quad.easeIn',
+            alpha: 1.2,
+            scaleX: 0.8,
+            scaleY: 0.8,
+            onComplete: () => {
+                this.addTween({
+                    targets: [leftBell, rightBell],
+                    duration: 6000,
+                    ease: 'Quad.easeOut',
+                    alpha: 0,
+                    onComplete: () => {
+                        leftBell.destroy();
+                        rightBell.destroy();
+                    }
+                })
+            }
+        });
+        this.addTween({
+            targets: leftBell,
+            duration: 1500,
+            ease: 'Cubic.easeInOut',
+            rotation: -0.6,
+            yoyo: true,
+            repeat: 3
+        })
+        this.addDelayIfAlive(() => {
+            this.addTween({
+                targets: rightBell,
+                duration: 1500,
+                ease: 'Cubic.easeInOut',
+                rotation: 0.6,
+                yoyo: true,
+                repeat: 3
+            })
+        }, 200)
     }
 
     repeatTweenHalo() {
@@ -383,6 +434,7 @@
              scaleY: this.sprite.startScale * 1.12,
              ease: "Cubic.easeInOut",
              onComplete: () => {
+                 this.clearHandShield();
                 this.addDelay(() => {
                     let deathHead = this.addImage(this.x, this.y + 10, 'deathfinal', 'death_2_laugh.png').setScale(0.8, 0.5).setOrigin(0.5, 0.45).setAlpha(0).setDepth(-1)
                     screenShakeLong(12);
@@ -510,7 +562,7 @@
                                     scaleY: 3,
                                     duration: 1000,
                                 });
-                        
+
                                 this.addTween({
                                     targets: [this.deathhalo1],
                                     alpha: 0,
@@ -1135,59 +1187,14 @@
                      isBigMove: true,
                      startFunction: () => {
                         this.lastAttackLingerMult = 10;
-                         let leftBell = this.addImage(30, 40, 'deathfinal', 'bell.png').setScale(0.75).setAlpha(0).setOrigin(0.5, 0.1).setRotation(0.6);
-                         let rightBell = this.addImage(gameConsts.width - 30, 40, 'deathfinal', 'bell.png').setScale(0.75).setAlpha(0).setOrigin(0.5, 0.1).setRotation(-0.6);
-                         this.addDelay(() => {
-                            playSound('death_cast', 0.95)
-                            this.addDelay(() => {
-                                playSound('death_cast', 0.5)
-                            }, 4500)
-                         },800)
-                         this.addTween({
-                            delay: 200,
-                            targets: [leftBell, rightBell],
-                            duration: 1300,
-                            ease: 'Quad.easeIn',
-                            alpha: 1.2,
-                            scaleX: 0.8,
-                            scaleY: 0.8,
-                            onComplete: () => {
-                                 this.addTween({
-                                    targets: [leftBell, rightBell],
-                                    duration: 6000,
-                                    ease: 'Quad.easeOut',
-                                    alpha: 0,
-                                    onComplete: () => {
-                                        leftBell.destroy();
-                                        rightBell.destroy();
-                                    }
-                                 })
-                            }
-                         });
-                         this.addTween({
-                            targets: leftBell,
-                            duration: 1500,
-                            ease: 'Cubic.easeInOut',
-                            rotation: -0.6,
-                            yoyo: true,
-                            repeat: 3
-                         })
-                         this.addDelayIfAlive(() => {
-                             this.addTween({
-                                targets: rightBell,
-                                duration: 1500,
-                                ease: 'Cubic.easeInOut',
-                                rotation: 0.6,
-                                yoyo: true,
-                                repeat: 3
-                             })
-                         }, 200)
-                         let arms = [];
+
+                         this.finalArms = [];
                          for (let i = 0; i < 4; i++) {
                             let startRot = 0.5;
                             let goalRot = 1 + 0.5 * i;
                             let longArm = this.addImage(this.x, this.y + 40, 'deathfinal', 'long_arm.png').setRotation(startRot).setOrigin(0.5, 0.95).setScale(0.3).setAlpha(0.2).setDepth(-1);
-                            arms.push(longArm);
+                            this.finalArms.push(longArm);
+                             longArm.goalRot = goalRot;
                             this.addTween({
                                 targets: longArm,
                                 duration: 250,
@@ -1204,11 +1211,13 @@
                                 ease: 'Cubic.easeInOut'
                             })
                          }
+
                          for (let i = 0; i < 4; i++) {
                             let startRot = -0.5;
                             let goalRot = -1 - 0.5 * i;
                             let longArm = this.addImage(this.x, this.y + 40, 'deathfinal', 'long_arm.png').setRotation(startRot).setOrigin(0.5, 0.95).setScale(-0.3, 0.3).setAlpha(0.2).setDepth(-1);
-                            arms.push(longArm);
+                            this.finalArms.push(longArm);
+                             longArm.goalRot = goalRot;
                             this.addTween({
                                 targets: longArm,
                                 duration: 250,
@@ -1225,6 +1234,18 @@
                                 ease: 'Cubic.easeInOut'
                             })
                          }
+                         this.addDelay(() => {
+                             this.pulses = [];
+                             for (let i in this.finalArms) {
+                                 let arm = this.finalArms[i];
+                                 let pulsePosX = arm.x + Math.sin(arm.goalRot) * 220;
+                                 let pulsePosY = arm.y - Math.cos(arm.goalRot) * 220;
+                                 let pulseCircle = this.addImage(pulsePosX, pulsePosY, 'blurry', 'pulser.png').setAlpha(0.1).setScale(2).setDepth(-1);
+                                 this.pulses.push(pulseCircle);
+                             }
+                             playSound('heartbeatfast');
+                             this.runPulses(this.pulses, 2)
+                         }, 1800)
                      },
                      finaleFunction: () => {
                         this.interruptCurrentAttack();
@@ -1241,6 +1262,103 @@
                  },
              ]
          ];
+     }
+
+     createEightHands(arr) {
+         this.finalHands = [];
+         let handToUse = ['palm.png', 'poke.png', 'okay.png', 'claw.png'];
+         let glowToUse = ['palm_glow.png', 'poke_glow.png', 'okay_glow.png', 'claw_glow.png'];
+
+         for (let i in arr) {
+             let img = arr[i];
+             let scale = handToUse[i % 4] == 'claw.png' ? 1.42 : 1;
+             let flip = (handToUse[i % 4] == 'claw.png' || handToUse[i % 4] == 'okay.png') ? 1 : -1;
+             if (i >= 4) {
+                 flip *= -1;
+             }
+             let newHand = this.addImage(img.x, img.y, 'deathfinal', handToUse[i % 4]).setScale(flip * scale, scale).setAlpha(0.1);
+             this.finalHands.push(newHand);
+             this.addTween({
+                 targets: newHand,
+                 scaleX: 0.3 * flip * scale,
+                 scaleY: 0.3 * scale,
+                 duration: 500,
+                 ease: 'Cubic.easeIn',
+                 onComplete: () => {
+                     let newGlow = this.addImage(newHand.x, newHand.y, 'deathfinal', glowToUse[i % 4]).setScale(0.605 * flip * scale, 0.605 * scale).setAlpha(0.9);
+                     this.addTween({
+                         targets: newGlow,
+                         alpha: 0,
+                         ease: 'Quad.easeOut',
+                         duration: 750,
+                         onComplete: () => {
+                             newGlow.destroy();
+                         }
+                     })
+                 }
+             })
+         }
+
+         this.addTween({
+             targets: this.finalHands,
+             alpha: 1,
+             duration: 500,
+             ease: 'Cubic.easeIn',
+             onComplete: () => {
+                 this.addTween({
+                     targets: this.finalHands,
+                     alpha: 0.8,
+                     duration: 400,
+                 });
+                 zoomTemp(1.02);
+                 screenShakeLong(8);
+                 this.addTween({
+                     targets: this.finalArms,
+                     alpha: 0,
+                     duration: 200,
+                     ease: 'Cubic.easeIn',
+                     onComplete: () => {
+                         for (let i in this.finalArms) {
+                             this.finalArms[i].destroy();
+                         }
+                     }
+                 })
+             }
+         })
+     }
+
+     runPulses(arr, num) {
+         if (num <= 0) {
+             this.createEightHands(arr);
+             for (let i in arr) {
+                 arr[i].destroy();
+             }
+             return;
+         }
+         this.addTween({
+             targets: arr,
+             scaleX: 1.1,
+             scaleY: 1.1,
+             ease: 'Quad.easeIn',
+             alpha: 1,
+             duration: 350,
+             onComplete: () => {
+                 this.addTween({
+                     targets: arr,
+                     scaleX: 0.2,
+                     scaleY: 0.2,
+                     ease: 'Quad.easeOut',
+                     alpha: 0.2,
+                     duration: 325,
+                     onComplete: () => {
+                         for (let i in arr) {
+                             arr[i].setScale(2)
+                         }
+                         this.runPulses(arr, num-1)
+                     }
+                 })
+             }
+         })
      }
 
      /*
@@ -1303,7 +1421,7 @@
              return;
          } else {
              let prevHealthPercent = this.prevHealth / this.healthMax;
-             if (this.health <= 99 && this.prevHealth > 99) {
+             if (this.health <= 111 && this.prevHealth > 111) {
                  this.showHurtFinale();
              }
          }
@@ -2330,6 +2448,15 @@
          if (this.breathTween) {
              this.breathTween.stop();
          }
+         if (this.finalHands) {
+             for (let i in this.finalHands) {
+                 this.finalHands[i].destroy();
+             }
+         }
+         if (this.deathhalo1) {
+             this.deathhalo1.visible = false;
+             this.deathhalo2.visible = false;
+         }
          if (this.currentRockHand) {
             this.addTween({
                 targets: this.currentRockHand,
@@ -2369,7 +2496,7 @@
 
          playSound("whoosh");
         globalObjects.bannerTextManager.setDialog([
-            getLangText('deathFight2plusending'), 
+            getLangText('deathFight2plusending'),
             isUsingCheats() ? getLangText('deathFight2plusending3') : getLangText('deathFight2plusending2'),
             getLangText('deathFight2plusending4'),
             getLangText('deathFight2plusending5'),
@@ -2596,7 +2723,7 @@
                          })
 
                         globalObjects.bannerTextManager.setDialog([
-                            getLangText('deathFight2plusbeaten2'), 
+                            getLangText('deathFight2plusbeaten2'),
                             getLangText('deathFight2plusbeaten3'),
                             getLangText('deathFight2plusbeaten4'),
                             getLangText('deathFight2plusending5'),
@@ -2606,7 +2733,7 @@
 
                         globalObjects.bannerTextManager.setDialogFunc([
                             null,
-                            null, 
+                            null,
                             null, () => {
                                  playSound("whoosh");
                                 globalObjects.bannerTextManager.setForcePause(true);

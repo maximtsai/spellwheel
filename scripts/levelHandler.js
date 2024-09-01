@@ -32,13 +32,13 @@ function beginPreLevel(lvl) {
             text3.setDepth(99999).setAlpha(0).setOrigin(1, 1);
             text4 = PhaserScene.add.text(gameConsts.halfWidth + 140, gameConsts.halfHeight - 105, getLangText('pre_fight_0d'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
             text4.setDepth(99999).setAlpha(0).setOrigin(1, 1);
-            text5 = PhaserScene.add.text(text3.x + 10, text3.y + 1, getLangText('pre_fight_0e'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'right'});
+            text5 = PhaserScene.add.text(text3.x + 10, text3.y + 1, getLangText('pre_fight_0e'), {fontFamily: 'opensans', fontSize: 20, color: '#200000', align: 'right'});
             text5.setDepth(99999).setAlpha(0).setOrigin(1, 1).setVisible(false);
-            text6 = PhaserScene.add.text(text4.x + 7, text4.y + 2, getLangText('pre_fight_0f'), {fontFamily: 'opensans', fontSize: 16, color: '#200000', align: 'right'});
+            text6 = PhaserScene.add.text(text4.x + 7, text4.y + 2, getLangText('pre_fight_0f'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'right'});
             text6.setDepth(99999).setAlpha(0).setOrigin(1, 0.85).setVisible(false);
             text7 = PhaserScene.add.text(gameConsts.halfWidth + 220, gameConsts.halfHeight - 48, getLangText('pre_fight_0g'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'center'});
             text7.setDepth(99999).setAlpha(0).setOrigin(1, 1);
-            text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 236, getLangText('pre_fight_0h'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'center'});
+            text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 236, getLangText('pre_fight_0h'), {fontFamily: 'opensans', fontSize: 20, color: '#200000', align: 'center'});
             text8.setDepth(99999).setAlpha(0).setOrigin(0.5, 1);
             text9 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 248, getLangText('pre_fight_0i'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'center'});
             text9.setDepth(99999).setAlpha(0).setOrigin(0.5, 0);

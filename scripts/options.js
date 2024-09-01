@@ -262,11 +262,6 @@ class Options {
         }
 
         this.createInfoBoxPosText();
-        this.createLanguageSelect();
-
-
-
-
 
         createGlobalClickBlocker();
         if (!this.closeButton) {
@@ -322,6 +317,9 @@ class Options {
             this.listOfButtonsToDisable[i].setState(NORMAL);
             buttonManager.bringButtonToTop(this.listOfButtonsToDisable[i]);
         }
+
+        this.createLanguageSelect();
+
         if (gameOptions.infoBoxAlign == 'left') {
             this.infoLeftButton.setState(DISABLE);
         } else if (gameOptions.infoBoxAlign == 'center') {
@@ -516,8 +514,8 @@ class Options {
     }
 
     createLanguageSelect() {
-        let listOfLanguages = ['english', '简体中文', '繁体中文', 'español'];
-        let listOfLanguageCodes = ['en_us', 'zh_cn', 'zh_tw', 'es'];
+        let listOfLanguages = ['english', '简体中文', '繁体中文', 'français'];
+        let listOfLanguageCodes = ['en_us', 'zh_cn', 'zh_tw', 'fr'];
         if (!this.langSelectText) {
             this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 20, getLangText('language_text'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setOrigin(0.5, 1).setDepth(this.baseDepth);
             this.addLangTextUpdateable(this.langSelectText, 'language_text')
@@ -583,12 +581,22 @@ class Options {
                         this.updateOptionsLanguage();
                     },
                 });
+                if (language == listOfLanguageCodes[i]) {
+                    newBtn.setState(DISABLE);
+                }
+                newBtn.language = listOfLanguageCodes[i];
                 newBtn.setDepth(this.baseDepth + 10);
                 this.listOfButtonsToDisable.push(newBtn);
                 this.listOfLangButtons.push(newBtn);
             }
         } else {
             this.langSelectText.setText(getLangText('language_text'));
+        }
+        for (let i in this.listOfLangButtons) {
+            if (language == this.listOfLangButtons[i].language) {
+                this.listOfLangButtons[i].setState(DISABLE);
+            }
+            
         }
     }
 

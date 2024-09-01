@@ -228,8 +228,8 @@ let textData2 = {
     "post_fight_story1": {
         "en_us": "I have arrived\nat the gates to\nthe forbidden land\nof the departed.\n\nImmediately, this realm resists my entry.\nBut I know I will find you here, dear beloved,\nand nothing will stop me from reaching you.",
         "fr": "Je suis arrivé aux portes de la terre interdite des défunts.  Immédiatement, ce royaume résiste à mon entrée. Mais je sais que je vous trouverai ici, chers bien-aimés, et rien ne m’empêchera de vous atteindre.",
-        "zh_tw": "我已經到達了通往逝者禁地的大門。 立刻，這個境界就抵擋住了我的進入。但我知道我會在這裡找到你，親愛的摯愛，沒有什麼能阻止我接近你。",
-        "zh_cn": "我已经到达了通往逝者禁地的大门。 立刻，这个境界就抵挡住了我的进入。但我知道我会在这里找到你，亲爱的挚爱，没有什么能阻止我接近你。",
+        "zh_tw": "我已經到達了\n通往逝者禁地的\n大門。 \n\n立刻，這個境界就抵擋住了我的進入。\n但我知道我會在這裡找到你，親愛的摯愛，\n沒有什麼能阻止我接近你。",
+        "zh_cn": "我已经到达了\n通往逝者禁地的\n大门。 \n\n立刻，这个境界就抵挡住了我的进入。\n但我知道我会在这里找到你，亲爱的挚爱，\n没有什么能阻止我接近你。",
         "ru": "Я прибыл к воротам запретной земли усопших.  Этот мир сразу же сопротивляется моему входу. Но я знаю, что найду тебя здесь, дорогая возлюбленная, и ничто не помешает мне добраться до тебя.",
         "es": "He llegado a las puertas de la tierra prohibida de los difuntos.  Inmediatamente, este reino se resiste a mi entrada. Pero sé que te encontraré aquí, querido amado, y nada me impedirá llegar a ti.",
         "jp": "私は死者の禁じられた土地への門に到着しました。 すぐに、この領域は私の立ち入りに抵抗します。しかし、私はここであなたを見つけるでしょう、親愛なる最愛の人、そして私があなたに連絡を取るのを妨げるものは何もありません。"
@@ -254,8 +254,8 @@ let textData2 = {
     "post_fight_story3": {
         "en_us": "It appears I\ngain the strength\nof every foe I vanquish!\n\nThe journey may be long, but if I conquer\nenough adversaries, I may one day be able to\nstand against Death itself!",
         "fr": "Il semble que je gagne la force de chaque ennemi que je vainc !  Le voyage peut être long, mais si je conquiert suffisamment d’adversaires, je pourrai peut-être un jour résister à la Mort elle-même !",
-        "zh_tw": "看來我征服的每一個敵人的力量都得到了！ 旅程可能很長，但如果我征服了足夠多的敵人，我也許有一天能夠對抗死神本身！",
-        "zh_cn": "看来我征服的每一个敌人的力量都得到了！ 旅程可能很长，但如果我征服了足够多的敌人，我也许有一天能够对抗死神本身！",
+        "zh_tw": "看來我征服的每\n一個敵人的力量都\n得到了！\n\n旅程可能很長，但如果我征服了足夠多的敵人，\n\n我也許有一天能夠對抗死神本身！",
+        "zh_cn": "看来我征服的每\n一个敌人的力量都\n得到了！\n\n旅程可能很长，但如果我征服了足够多的敌人，\n\n我也许有一天能够对抗死神本身！",
         "ru": "Кажется, я получаю силу каждого врага, которого побеждаю!  Путешествие может быть долгим, но если я победлю достаточное количество противников, я смогу однажды противостоять самой Смерти!",
         "es": "¡Parece que obtengo la fuerza de cada enemigo al que venzo!  El viaje puede ser largo, pero si conquisto suficientes adversarios, ¡algún día podré enfrentarme a la muerte misma!",
         "jp": "どうやら私は倒すすべての敵の力を手に入れたようだ! 旅は長いかもしれないが、十分な数の敵を倒せば、いつの日か死そのものに立ち向かえるようになるかもしれない!"

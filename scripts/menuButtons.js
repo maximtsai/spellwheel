@@ -755,11 +755,11 @@ function showMainMenuButtons() {
             alpha: 0
         },
         onMouseUp: () => {
-            setLanguage('es')
+            setLanguage('fr')
             updateMenuLanguage();
         }
     });
-    globalObjects.es_button.addText("español", {fontSize: 16, color: '#000000', align: 'left'})
+    globalObjects.es_button.addText("francais", {fontSize: 16, color: '#000000', align: 'left'})
 
     globalObjects.zh_cn_button = new Button({
         normal: {
@@ -819,11 +819,10 @@ function showMainMenuButtons() {
 }
 
 function updateMenuLanguage() {
-    console.log("todo");
-    if (globalObjects.startButton) {
+    if (globalObjects.startButton && !globalObjects.startButton.isDestroyed) {
         globalObjects.startButton.setText(getLangText('new_game'))
     }
-    if (globalObjects.continueButton) {
+    if (globalObjects.continueButton && !globalObjects.continueButton.isDestroyed) {
         globalObjects.continueButton.setText(getLangText('cont_ui'))
     }
 }

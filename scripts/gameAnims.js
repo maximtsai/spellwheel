@@ -485,8 +485,8 @@ function createAnimations(scene) {
         frames: scene.anims.generateFrameNames('deathfin', {
             prefix: 'hood00',
             suffix: '.png',
-            start: 0,
-            end: 74,
+            start: 1,
+            end: 75,
             zeroPad: 2,
         }),
         repeat: -1,

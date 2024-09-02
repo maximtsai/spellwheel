@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>phaser-maxim</string>
         <key>textureFileName</key>
-        <filename>../sprites/deathfin-{n}.png</filename>
+        <filename>../sprites/deathfin-{n}.webp</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrQualityLevel</key>
@@ -74,7 +74,7 @@
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
-        <enum type="SettingsBase::TextureFormat">png</enum>
+        <enum type="SettingsBase::TextureFormat">webp</enum>
         <key>borderPadding</key>
         <uint>0</uint>
         <key>maxTextureSize</key>
@@ -248,7 +248,6 @@
             <key type="filename">deathfin/frame0072.png</key>
             <key type="filename">deathfin/frame0073.png</key>
             <key type="filename">deathfin/frame0074.png</key>
-            <key type="filename">deathfin/hood0000.png</key>
             <key type="filename">deathfin/hood0001.png</key>
             <key type="filename">deathfin/hood0002.png</key>
             <key type="filename">deathfin/hood0003.png</key>
@@ -323,6 +322,7 @@
             <key type="filename">deathfin/hood0072.png</key>
             <key type="filename">deathfin/hood0073.png</key>
             <key type="filename">deathfin/hood0074.png</key>
+            <key type="filename">deathfin/hood0075.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

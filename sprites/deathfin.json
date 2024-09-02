@@ -1,7 +1,7 @@
 {
 	"textures": [
 		{
-			"image": "sprites/deathfin-0.png",
+			"image": "sprites/deathfin-0.webp",
 			"format": "RGBA8888",
 			"size": {
 				"w": 1979,
@@ -1510,31 +1510,6 @@
 					}
 				},
 				{
-					"filename": "hood0000.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 664,
-						"h": 378
-					},
-					"spriteSourceSize": {
-						"x": 400,
-						"y": 84,
-						"w": 69,
-						"h": 89
-					},
-					"frame": {
-						"x": 1679,
-						"y": 1,
-						"w": 69,
-						"h": 89
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "hood0001.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1611,6 +1586,31 @@
 				},
 				{
 					"filename": "hood0004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 664,
+						"h": 378
+					},
+					"spriteSourceSize": {
+						"x": 400,
+						"y": 84,
+						"w": 69,
+						"h": 89
+					},
+					"frame": {
+						"x": 1679,
+						"y": 1,
+						"w": 69,
+						"h": 89
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "hood0075.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -2787,7 +2787,7 @@
 			]
 		},
 		{
-			"image": "sprites/deathfin-1.png",
+			"image": "sprites/deathfin-1.webp",
 			"format": "RGBA8888",
 			"size": {
 				"w": 1990,
@@ -3776,6 +3776,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:806f38712510c2293018fbe1e80b4593:56f95e565ebd1e7c9695718500ebb0f3:0dbe6a6145cb20bda4bac8ab7cd7c145$"
+		"smartupdate": "$TexturePacker:SmartUpdate:2a5f8fbe38c450679bcda731b20f1280:cce2dcde2c8dc7bb12cbd6da8692dd47:5f4ae1a571a6cf156334dbfa52c89430$"
 	}
 }

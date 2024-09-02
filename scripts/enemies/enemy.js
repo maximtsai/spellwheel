@@ -249,6 +249,7 @@ class Enemy {
         this.chargeBarCurr.setDepth(9);
 
         this.chargeBarAngry = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
+        this.chargeBarAngry.midAlpha = 0.55;
         this.chargeBarAngry.setScale(0, this.chargeBarMax.scaleY - 2);
         this.chargeBarAngry.setOrigin(0.5, 0.5);
         this.chargeBarAngry.alpha = 0.9;
@@ -566,7 +567,7 @@ class Enemy {
             this.isAngry = false;
             this.chargeBarAngry.visible = true;
             this.chargeBarCurr.visible = true;
-            this.chargeBarAngry.alpha = 0.55;
+            this.chargeBarAngry.alpha = this.chargeBarAngry.midAlpha;
             if (chargeMult > 1.1) {
                 this.showAngrySymbol('exclamation');
             }
@@ -581,11 +582,11 @@ class Enemy {
         if (this.slowMultDuration > 0) {
             // slow multiplier expired
             this.slowMultDuration -= timeChange;
-            this.chargeBarAngry.alpha = 0.6;
+            this.chargeBarAngry.alpha = this.chargeBarAngry.midAlpha + 0.05;
             this.chargeBarCurr.alpha = 0.55;
             if (this.slowMultDuration <= 0) {
                 this.slowMult = 1;
-                this.chargeBarAngry.alpha = 0.9;
+                this.chargeBarAngry.alpha = this.chargeBarAngry.midAlpha * 1.63;
                 this.chargeBarCurr.alpha = 0.9;
             }
         }

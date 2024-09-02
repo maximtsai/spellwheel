@@ -4,15 +4,18 @@ class Death3 extends Enemy {
         this.initSprite('max_death_3_white.png', 1, 0, 0, 'deathfinal');
         this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfall.png').setDepth(-5).setScale(1, 1.03);
         this.cape = this.addSprite(x - 99, y - 35, 'deathfin', 'frame0000.png').setDepth(-3).play('ladydeathcape').setAlpha(0);
-        this.hood = this.addSprite(x - 99, y - 35, 'deathfin', 'hood0000.png').setDepth(9).play('ladydeathhood').setAlpha(0);
+        this.hood = this.addSprite(x - 99, y - 35, 'deathfin', 'hood0001.png').setDepth(9).play('ladydeathhood').setAlpha(0);
         this.hourglass = this.addSprite(x - 67, y - 105, 'deathfinal', 'hourglass.png').setDepth(-3).setRotation(0.1).setOrigin(0.5, 0.03);
 
+        this.adjustChargeBar();
 
         this.animateDeath3In();
 
         this.addTimeout(() => {
             this.setAsleep();
             this.tweenHourglass();
+            this.pullbackScale = 1;
+            this.attackScale = 1;
         }, 10)
     }
 
@@ -157,6 +160,8 @@ class Death3 extends Enemy {
         } else {
             this.redEffect.setAlpha(0.65).setScale(0.4, 0.09);
         }
+        this.setAwake();
+
          this.addTween({
              targets: this.redEffect,
              scaleX: 3,
@@ -164,7 +169,6 @@ class Death3 extends Enemy {
              duration: 3500,
              ease: "Cubic.easeOut",
              onComplete: () => {
-
              }
          });
          this.addTween({
@@ -206,23 +210,60 @@ class Death3 extends Enemy {
     }
 
 
+    adjustChargeBar() {
+        this.chargeBarWarning.y = -100;
+        this.chargeBarCurr.destroy();
+
+        this.chargeBarMax.scaleY = 6;
+        this.voidPause.scaleY = this.chargeBarMax.scaleY - 2;
+        this.chargeBarCurr.scaleY = this.chargeBarMax.scaleY - 2;
+        this.chargeBarAngry.scaleY = this.chargeBarMax.scaleY - 2;
+        this.chargeBarOutline.scaleY = this.chargeBarMax.scaleY + 2;
+
+        this.chargeBarCurr = this.scene.add.image(this.x, this.chargeBarMax.y, 'pixels', 'white_pixel.png');
+        this.chargeBarCurr.setScale(0, this.chargeBarMax.scaleY - 2);
+        this.chargeBarCurr.setOrigin(0.5, 0.5);
+        this.chargeBarCurr.alpha = 0.9;
+        this.chargeBarCurr.setDepth(9);
+        this.chargeBarAngry.midAlpha = 0;
+
+        // this.chargeBarAngry = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'red_pixel.png');
+        // this.chargeBarAngry.setScale(0, this.chargeBarMax.scaleY - 2);
+        // this.chargeBarAngry.setOrigin(0.5, 0.5);
+        // this.chargeBarAngry.alpha = 0.9;
+        // this.chargeBarAngry.setDepth(9);
+        // this.chargeBarAngry.visible = false;
+    }
+
+    showAngrySymbol() {
+
+    }
+
     initAttacks() {
         this.attacks = [
             [
                 {
-                    name: "|8x2",
-                    chargeAmt: 600,
+                    name: " ",
+                    chargeAmt: 400,
                     chargeMult: 2,
-                    finishDelay: 3000,
-                    damage: -1,
-                    isBigMove: true,
-                    attackStartFunction: () => {
-
+                    isPassive: true,
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", "Dear child, you must understand this\nfirst before you can see your beloved. ", -14);
                     },
                     finaleFunction: () => {
                     }
                 },
-
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 2,
+                    isPassive: true,
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", "Every life has its end,\nand every end has its purpose", -14);
+                    },
+                    finaleFunction: () => {
+                    }
+                },
             ]
         ];
     }

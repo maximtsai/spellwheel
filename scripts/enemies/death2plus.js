@@ -73,7 +73,7 @@
      initMisc() {
         this.deathhalo1 = this.addImage(this.x, this.y + 3, 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setBlendMode(Phaser.BlendModes.NORMAL);
         this.deathhalo2 = this.addImage(this.x, this.y + 3, 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setRotation(1).setBlendMode(Phaser.BlendModes.NORMAL);
-        this.circleHalo = this.addImage(this.x, this.y, 'blurry', 'spellcircle_pulse.png').setAlpha(0).setScale(0.5).setDepth(-1);
+        this.circleHalo = this.addImage(this.x, this.y - 4, 'blurry', 'spellcircle_pulse.png').setAlpha(0).setScale(0.5).setDepth(-1);
 
          this.handShieldBack = this.addImage(this.x, this.y, 'blurry', 'handshield_back.png').setScale(2.4).setDepth(-1).setAlpha(0);
          this.handShieldBack.startScale = this.handShieldBack.scaleX;
@@ -139,6 +139,7 @@
                         scaleY: 5,
                         duration: 1000,
                         onComplete: () => {
+                            this.deathhalo1.setScale(0.1).setAlpha(0)
                             this.addTween({
                                 targets: [this.deathhalo1],
                                 alpha: 0.5,

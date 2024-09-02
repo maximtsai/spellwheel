@@ -71,8 +71,10 @@
      }
 
      initMisc() {
-        this.deathhalo1 = this.addImage(this.x, this.y + 3, 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setBlendMode(Phaser.BlendModes.LIGHTEN);
-        this.deathhalo2 = this.addImage(this.x, this.y + 3, 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setRotation(1).setBlendMode(Phaser.BlendModes.LIGHTEN);
+        this.deathhalo1 = this.addImage(this.x, this.y + 3, 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setBlendMode(Phaser.BlendModes.NORMAL);
+        this.deathhalo2 = this.addImage(this.x, this.y + 3, 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setRotation(1).setBlendMode(Phaser.BlendModes.NORMAL);
+        this.circleHalo = this.addImage(this.x, this.y, 'blurry', 'spellcircle_pulse.png').setAlpha(0).setScale(0.5).setDepth(-1);
+
          this.handShieldBack = this.addImage(this.x, this.y, 'blurry', 'handshield_back.png').setScale(2.4).setDepth(-1).setAlpha(0);
          this.handShieldBack.startScale = this.handShieldBack.scaleX;
          this.handShield = this.addSprite(this.x, this.y - 6, 'shields', 'handshield10.png').setScale(1).setDepth(3).setAlpha(0);
@@ -87,7 +89,7 @@
          this.spellStartY = this.y - 40;
          this.createGlowHands();
          this.addDelayIfAlive(() => {
-             this.spellCirclePulse = this.addImage(this.x, this.spellStartY, 'blurry', 'spellcircle_pulse.png').setAlpha(0.1).setScale(0.5).setDepth(-3);
+             this.spellCirclePulse = this.addImage(this.x, this.y, 'blurry', 'spellcircle_pulse.png').setAlpha(0.1).setScale(0.5).setDepth(-1);
              this.spellCircleGlow = this.addImage(this.x, this.spellStartY, 'blurry', 'spellcircle_bgglow.png').setAlpha(0.1).setScale(1).setDepth(-3);
              this.spellCircle = this.addImage(this.x, this.spellStartY, 'deathfinal', 'spellcircle.png').setAlpha(0.1).setScale(0.5);
              this.rotateSpellCircleTo(0, false, () => {
@@ -108,14 +110,14 @@
 
             this.addTween({
                 targets: [this.deathhalo1],
-                alpha: 1,
+                alpha: 0.5,
                 scaleX: 3,
                 scaleY: 3,
                 duration: 1000,
                 onComplete: () => {
                     this.addTween({
                         targets: [this.deathhalo2],
-                        alpha: 1,
+                        alpha: 0.5,
                         scaleX: 3,
                         scaleY: 3,
                         duration: 1000,
@@ -139,7 +141,7 @@
                         onComplete: () => {
                             this.addTween({
                                 targets: [this.deathhalo1],
-                                alpha: 1,
+                                alpha: 0.5,
                                 scaleX: 3,
                                 scaleY: 3,
                                 duration: 1000,
@@ -314,7 +316,7 @@
         });
         this.addTween({
             targets: [this.deathhalo1],
-            alpha: 1,
+            alpha: 0.5,
             scaleX: 2.5,
             scaleY: 2.5,
             duration: 2000,
@@ -322,7 +324,7 @@
                 this.deathhalo2.setScale(0.1).setAlpha(0).setRotation(Math.random() * 6);
                 this.addTween({
                     targets: [this.deathhalo2],
-                    alpha: 1,
+                    alpha: 0.5,
                     scaleX: 2.5,
                     scaleY: 2.5,
                     duration: 2000,
@@ -346,8 +348,8 @@
              this.breatheTween.stop();
          }
          this.breathTween = this.addTween({
-             targets: [this.sprite, this.deathhalo1, this.deathhalo2],
-             y: "+=10",
+             targets: [this.sprite, this.deathhalo1, this.deathhalo2, this.circleHalo],
+             y: "+=9",
              duration: 2000,
              ease: 'Quad.easeInOut',
              repeat: -1,
@@ -548,16 +550,23 @@
                      scaleY: this.sprite.startScale * 0.7,
                      ease: "Quint.easeIn",
                      onComplete: () => {
+                         this.addTween({
+                             targets: this.circleHalo,
+                             alpha: 1,
+                             scaleX: 0.4,
+                             scaleY: 0.4,
+                             duration: 400
+                         })
                         this.addTween({
                             targets: [this.deathhalo1],
-                            alpha: 1,
+                            alpha: 0.5,
                             scaleX: 3,
                             scaleY: 3,
                             duration: 1000,
                             onComplete: () => {
                                 this.addTween({
                                     targets: [this.deathhalo2],
-                                    alpha: 1,
+                                    alpha: 0.5,
                                     scaleX: 3,
                                     scaleY: 3,
                                     duration: 1000,
@@ -2453,6 +2462,12 @@
                  this.finalHands[i].destroy();
              }
          }
+         if (this.spellCirclePulse) {
+             this.spellCirclePulse.visible = false;
+         }
+         if (this.circleHalo) {
+             this.circleHalo.visible = false;
+         }
          if (this.deathhalo1) {
              this.deathhalo1.visible = false;
              this.deathhalo2.visible = false;
@@ -3214,6 +3229,15 @@
             ease: 'Cubic.easeInOut',
             duration: isFast ? 600 : 700,
         });
+        this.circleHalo.setScale(0.3);
+        this.addTween({
+            targets: this.circleHalo,
+             alpha: 1,
+            scaleX: 0.5,
+            scaleY: 0.5,
+            duration: 500,
+            ease: 'Cubic.easeOut',
+        })
 
         this.addTween({
             targets: this.spellCircle,
@@ -3283,6 +3307,11 @@
                 }
             },
             onComplete: () => {
+                this.addTween({
+                    targets: this.circleHalo,
+                    alpha: 0,
+                    duration: 500,
+                })
                 this.addTween({
                     targets: this.glowHands,
                     alpha: 0,

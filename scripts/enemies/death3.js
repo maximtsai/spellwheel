@@ -5,12 +5,26 @@ class Death3 extends Enemy {
         this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfall.png').setDepth(-5).setScale(1, 1.03);
         this.cape = this.addSprite(x - 99, y - 35, 'deathfin', 'frame0000.png').setDepth(-3).play('ladydeathcape').setAlpha(0);
         this.hood = this.addSprite(x - 99, y - 35, 'deathfin', 'hood0000.png').setDepth(9).play('ladydeathhood').setAlpha(0);
+        this.hourglass = this.addSprite(x - 67, y - 105, 'deathfinal', 'hourglass.png').setDepth(-3).setRotation(0.1).setOrigin(0.5, 0.03);
+
 
         this.animateDeath3In();
 
         this.addTimeout(() => {
             this.setAsleep();
+            this.tweenHourglass();
         }, 10)
+    }
+
+    tweenHourglass() {
+        this.hourglassTween = this.addTween({
+            targets: this.hourglass,
+            rotation: -0.1,
+            ease: 'Quad.easeInOut',
+            duration: 3000,
+            repeat: -1,
+            yoyo: true
+        })
     }
 
     animateDeath3In() {
@@ -214,7 +228,9 @@ class Death3 extends Enemy {
     }
 
     die() {
+        console.log("die right");
         fadeAwaySound(this.bgMusic);
+        this.hourglassTween.stop();
 
     }
 }

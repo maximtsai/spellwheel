@@ -1,8 +1,8 @@
 {
 	"textures": [
 		{
-			"image": "sprites/deathfin-0.webp",
-			"format": "RGBA5555",
+			"image": "sprites/deathfin-0.png",
+			"format": "RGBA8888",
 			"size": {
 				"w": 1979,
 				"h": 1708
@@ -2787,8 +2787,8 @@
 			]
 		},
 		{
-			"image": "sprites/deathfin-1.webp",
-			"format": "RGBA5555",
+			"image": "sprites/deathfin-1.png",
+			"format": "RGBA8888",
 			"size": {
 				"w": 1990,
 				"h": 1944
@@ -3776,6 +3776,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:56069574e5d4c16de0dc847c8c29b97a:56f95e565ebd1e7c9695718500ebb0f3:5f4ae1a571a6cf156334dbfa52c89430$"
+		"smartupdate": "$TexturePacker:SmartUpdate:806f38712510c2293018fbe1e80b4593:56f95e565ebd1e7c9695718500ebb0f3:0dbe6a6145cb20bda4bac8ab7cd7c145$"
 	}
 }

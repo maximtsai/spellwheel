@@ -433,7 +433,7 @@ let textData2 = {
     },
     "pre_fight_1a": {
         "en_us": "\"This is my shield, mine!\n Is family treasure from\n father's brother's aunt's\n grandpa's cousin's\n friend's neighbor!!\"",
-        "fr": "« Ceci est mon bouclier, le mien !  C’est un trésor de famille du frère du père, de la tante du grand-père, du voisin de l’ami du cousin du grand-père !!\"",
+        "fr": "« Ceci est mon bouclier, le\nmien !  C’est un trésor de\nfamille du frère du père,\nde la tante du grand-père,\ndu voisin de l’ami du\ncousin du grand-père!!\"",
         "zh_tw": "“這是我的盾牌，我的！\n是我爸爸的哥哥的阿姨的\n爺爺的堂兄朋友的鄰居\n的家寶！！",
         "zh_cn": "“这是我的盾牌，我的！\n是我爸爸的哥哥的阿姨的\n爷爷的堂兄朋友的邻居\n的家宝！！",
         "ru": "«Это мой щит, мой!  Это семейное сокровище от отца, брата, тети, дедушки, двоюродного брата, соседа друга двоюродного брата!!»",
@@ -442,9 +442,9 @@ let textData2 = {
     },
     "pre_fight_1b": {
         "en_us": "There is no time to barter,\nand I must take every\nresource I can get.",
-        "fr": "Je n’ai pas le temps de faire du troc, et je dois prendre toutes les ressources que je peux obtenir.",
-        "zh_tw": "沒有時間進行物物交換，我必須\n拿走我能得到的一切資源。",
-        "zh_cn": "沒有時間進行物物交換，我必須\n拿走我能得到的一切資源。",
+        "fr": "Je n’ai pas le temps de\nfaire du troc, et je dois\nprendre toutes les\nressources que je peux\nobtenir.",
+        "zh_tw": "沒有時間進行物物交換，\n我必須拿走我能得到的\n一切資源。",
+        "zh_cn": "沒有時間進行物物交換，\n我必須拿走我能得到的\n一切資源。",
         "ru": "Нет времени на торг, и я должен использовать все ресурсы, которые я могу достать.",
         "es": "No hay tiempo para el trueque, y debo tomar todos los recursos que pueda conseguir.",
         "jp": "物々交換する時間はないし、手に入る限りの資源を奪わなければならない。"
@@ -587,8 +587,8 @@ let textData2 = {
     "level1_tut_a": {
         "en_us": "Enhance Rune\nstrengthens your\nnext attack\n ",
         "fr": "La rune Enhance\nrenforce votre\nprochaine attaque\n ",
-        "zh_tw": "增強符文增強\n你的下一次攻擊\n ",
-        "zh_cn": "增强符文增强\n你的下一次攻击\n ",
+        "zh_tw": "增強符文增強\n能你的下一次攻擊\n ",
+        "zh_cn": "增强符文增强\n能你的下一次攻击\n ",
         "ru": "Руна усиления\nусиливает вашу\nследующую атаку\n ",
         "es": "La runa mejorada\nfortalece tu\npróximo ataque\n ",
         "jp": "強化ルーンは次の\n攻撃を強化します\n "
@@ -722,8 +722,8 @@ let textData2 = {
     "dummy_mind_tut": {
         "en_us": "Energy Strike\nmakes your\nnext attack hit\ntwice as hard\n            +",
         "fr": "La frappe énergétique\nrend votre prochaine\nattaque deux fois\nplus forte.\n          +",
-        "zh_tw": "能量打擊使你的\n下一次攻擊造成\n兩倍的傷害\n         +",
-        "zh_cn": "能量打击使你的\n下一次攻击造成\n双倍伤害\n         +",
+        "zh_tw": "你的下一次攻擊\n造成兩倍的傷害\n         +",
+        "zh_cn": "你的下一次攻击\n造成双倍伤害\n         +",
         "ru": "Энергетический удар делает вашу следующую атаку в два раза сильнее.\n             +",
         "es": "Golpe de energía hace que tu próximo ataque golpee el doble de fuerte.\n             +",
         "jp": "「エナジーストライク」は、次の攻撃のヒットを2倍にする。\n            +"

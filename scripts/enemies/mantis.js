@@ -1,7 +1,7 @@
  class Mantis extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
-         this.initSprite('mantis_a.png', 0.9);
+         this.initSprite('mantis_a.png', 1);
          this.backForthDelay = 300;
          this.addTimeout(() => {
              this.backForthAnim();
@@ -97,11 +97,11 @@
                                     return;
                                 }
                                 this.setDefaultSprite('mantis_unveiled.png');
-                                this.sprite.setScale(0.88, 0.93);
+                                this.sprite.setScale(1.01, 1.05);
                                 this.addTween({
                                     targets: this.sprite,
-                                    scaleX: 0.9,
-                                    scaleY: 0.9,
+                                    scaleX: 1,
+                                    scaleY: 1,
                                     duration: 600,
                                     ease: 'Back.easeOut',
                                 });
@@ -433,14 +433,14 @@
              });
 
 
-            this.setDefaultSprite('mantis_shoot_headless.png').setScale(this.sprite.startScale * 0.94);
+            this.setDefaultSprite('mantis_shoot_headless.png').setScale(this.sprite.startScale *1.05);
             this.sprite.setOrigin(0.5, 0.98).setPosition(this.sprite.x, this.sprite.y + 275 * 0.57)
              this.addTween({
                 delay: 3000,
                  targets: this.sprite,
                  rotation: -0.3,
-                 scaleX: this.sprite.startScale * 0.88,
-                 scaleY: this.sprite.startScale * 0.5,
+                 scaleX: this.sprite.startScale * 1,
+                 scaleY: this.sprite.startScale * 0.55,
                  ease: "Cubic.easeIn",
                  duration: 1200,
                  onComplete: () => {

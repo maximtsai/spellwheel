@@ -2535,7 +2535,7 @@
                 globalObjects.bannerTextManager.setForcePause(true);
                 super.die();
                 playSound("whoosh");
-                this.deathFallTemp = this.addImage(this.sprite.x, this.y + 40, "deathfinal", 'death2fall.png').setScale(0.58).setAlpha(0).setDepth(this.sprite.depth);
+                this.deathFallTemp = this.addImage(this.sprite.x, this.y + 40, "deathfinal", 'death2fall.png').setScale(1.05).setAlpha(0).setDepth(this.sprite.depth);
                 this.addTween({
                     targets: this.sprite,
                     alpha: 0,
@@ -2546,8 +2546,8 @@
                          this.deathFallTemp.currAnim2 = this.addTween({
                              targets: this.deathFallTemp,
                              duration: 2000,
-                             scaleX: 0.56,
-                             scaleY: 0.56,
+                             scaleX: 1,
+                             scaleY: 1,
                              ease: "Cubic.easeInOut",
                          })
                         globalObjects.bannerTextManager.setForcePause(false);
@@ -2571,8 +2571,8 @@
                 this.addTween({
                     targets: this.deathFallTempWhite,
                     y: "-=45",
-                    scaleX: 0.33,
-                    scaleY: 0.36,
+                    scaleX: 0.85,
+                    scaleY: 0.9,
                     duration: 2000,
                     ease: 'Quad.easeIn',
                     alpha: 1.5,
@@ -2580,8 +2580,8 @@
                 this.addTween({
                     targets: this.deathFallTemp,
                     y: "-=45",
-                    scaleX: 0.33,
-                    scaleY: 0.36,
+                    scaleX: 0.85,
+                    scaleY: 0.9,
                     duration: 2000,
                     ease: 'Quad.easeIn',
                     alpha: 0,
@@ -2694,7 +2694,7 @@
 
      fallAnim() {
          this.sprite.setRotation(-0.07);
-         let deathFallTemp = this.addImage(this.sprite.x, this.y + 30, "deathfinal", 'death2fall.png').setScale(0.6).setAlpha(0).setDepth(this.sprite.depth);
+         let deathFallTemp = this.addImage(this.sprite.x, this.y + 30, "deathfinal", 'death2fall.png').setScale(1.05).setAlpha(0).setDepth(this.sprite.depth);
          this.addTween({
              delay: 1300,
              targets: this.sprite,
@@ -2723,8 +2723,8 @@
                 deathFallTemp.currAnim = this.addTween({
                      targets: deathFallTemp,
                      duration: 2000,
-                     scaleX: 0.55,
-                     scaleY: 0.55,
+                     scaleX: 1,
+                     scaleY: 1,
                      ease: "Cubic.easeInOut",
                      onStart: () => {
                          this.addTween({
@@ -2754,7 +2754,7 @@
                                  playSound("whoosh");
                                 globalObjects.bannerTextManager.setForcePause(true);
                                 deathFallTemp.currAnim.stop();
-                                this.deathFallTempWhite = this.addImage(deathFallTemp.x, deathFallTemp.y, "deathfinal", 'death2fall_white.png').setScale(deathFallTemp.scaleX * 0.9).setAlpha(0).setDepth(deathFallTemp.depth);
+                                this.deathFallTempWhite = this.addImage(deathFallTemp.x, deathFallTemp.y, "deathfinal", 'death2fall_white.png').setScale(deathFallTemp.scaleX).setAlpha(0).setDepth(deathFallTemp.depth);
                                 this.flashCover = this.addImage(deathFallTemp.x, deathFallTemp.y - 60, 'blurry', 'flash_bg.webp').setScale(0.075, 0.15).setRotation(-1.5).setDepth(deathFallTemp.depth).setAlpha(0.5);
 
                                 this.addTween({
@@ -2771,15 +2771,15 @@
                                 })
                                 this.addTween({
                                     targets: this.deathFallTempWhite,
-                                    scaleX: 0.35,
-                                    scaleY: 0.4,
+                                    scaleX: 0.85,
+                                    scaleY: 0.9,
                                     duration: 2000,
                                     alpha: 1.5,
                                 });
                                 this.addTween({
                                     targets: deathFallTemp,
-                                    scaleX: 0.35,
-                                    scaleY: 0.4,
+                                    scaleX: 0.85,
+                                    scaleY: 0.9,
                                     duration: 2000,
                                     alpha: 0
                                 });

@@ -182,30 +182,23 @@ class Death3 extends Enemy {
     }
 
     initStatsCustom() {
-        this.health = 100;
+        this.health = 111;
+    }
+
+    setHealth(newHealth, isTrue) {
+        super.setHealth(this.health);
+        if (this.health < 100 && !this.firstWarning) {
+            this.firstWarning = true;
+            this.leftOffIndex = this.nextAttackIndex;
+            this.currentAttackSetIndex = 1;
+            this.nextAttackIndex = 0;
+        }
+
     }
 
     repeatTweenBreathe(duration = 1500, magnitude = 1) {
         if (this.breatheTween) {
             this.breatheTween.stop();
-        }
-    }
-
-
-    setHealth(newHealth) {
-        // messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, 'IMMATERIAL', 0.8, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.1, scaleY: 1.1});
-
-        super.setHealth(newHealth);
-        let currHealthPercent = this.health / this.healthMax;
-        if (currHealthPercent == 0) {
-            // dead, can't do anything
-            return;
-        } else {
-            let prevHealthPercent = this.prevHealth / this.healthMax;
-            if (prevHealthPercent > 0.5 && currHealthPercent <= 0.5 && !this.thornForm) {
-                this.thornForm = true;
-                this.interruptCurrentAttack();
-            }
         }
     }
 
@@ -240,6 +233,7 @@ class Death3 extends Enemy {
     }
 
     initAttacks() {
+
         this.attacks = [
             [
                 {
@@ -248,7 +242,7 @@ class Death3 extends Enemy {
                     chargeMult: 2,
                     isPassive: true,
                     startFunction: () => {
-                        messageBus.publish("showCombatText", "Dear child, you must understand this\nfirst before you can see your beloved. ", -14);
+                        messageBus.publish("showCombatText", "Dear child, you must understand this\nfirst before you can see your beloved.", -14);
                     },
                     finaleFunction: () => {
                     }
@@ -259,7 +253,20 @@ class Death3 extends Enemy {
                     chargeMult: 2,
                     isPassive: true,
                     startFunction: () => {
-                        messageBus.publish("showCombatText", "Every life has its end,\nand every end has its purpose", -14);
+                        messageBus.publish("showCombatText", "Every life has its end,\nand every end has its purpose.", -14);
+                    },
+                    finaleFunction: () => {
+                    }
+                },
+            ],
+            [
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 3,
+                    isPassive: true,
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", "Please, do not interrupt me\nwhile I am speaking.", -14);
                     },
                     finaleFunction: () => {
                     }

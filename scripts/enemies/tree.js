@@ -180,6 +180,9 @@
      }
 
      repeatTweenBreathe(duration = 2500) {
+         if (this.breatheTween) {
+             this.breatheTween.stop();
+         }
          this.breatheTween = this.addTween({
              targets: this.sprite,
              duration: duration,
@@ -1243,11 +1246,11 @@
     }
 
     adjustDamageTaken(amt, isAttack, isTrue ) {
-        if (isAttack && this.hasThorns && !isTrue && !this.dead) {
+        if (isAttack && this.hasThorns && !this.dead) {
 
             let glowSpike = getTempPoolObject('enemies', 'glowSpike.png', 'glowSpike', 1800);
             let isLeft = Math.random() < 0.5;
-            glowSpike.setScale(0.5).setAlpha(0.9).setPosition(gameConsts.halfWidth + (isLeft ? -50 : 50), this.y - 150).setDepth(999).setRotation(isLeft ? -8 : 8);
+            glowSpike.setScale(0.5).setAlpha(1).setPosition(gameConsts.halfWidth + (isLeft ? -50 : 50), this.y - 150).setDepth(999).setRotation(isLeft ? -8 : 8);
 
             this.addTween({
                 targets: glowSpike,

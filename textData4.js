@@ -1,558 +1,543 @@
-
 let textData4 = {
     "epilogue2d": {
         "en_us": "BUT SUCH A FATE WOULD NOT\nBEFIT ONE LIKE YOU.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "MAIS UN TEL SORT NE CONVIENDRAIT PAS À QUELQU’UN COMME VOUS.",
+        "zh_tw": "但這樣的命運並不適合像你這樣的人。",
+        "zh_cn": "但这样的命运并不适合像你这样的人。",
+        "ru": "НО ТАКАЯ СУДЬБА НЕ ПРИЛИЧЕСТВУЕТ ТАКОМУ, КАК ВЫ.",
+        "es": "PERO TAL DESTINO NO SERÍA PROPIO DE ALGUIEN COMO TÚ.",
+        "jp": "しかし、そのような運命はあなたのような者にはふさわしくないでしょう。"
     },
     "deathFightCombat1a": {
         "en_us": "FIGHT BACK IF YOU MUST...",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "BATTEZ-VOUS S’IL LE FAUT...",
+        "zh_tw": "如果你必須反擊...",
+        "zh_cn": "如果你必须反击...",
+        "ru": "ДАЙТЕ ОТПОР, ЕСЛИ НУЖНО...",
+        "es": "DEFIÉNDETE SI ES NECESARIO...",
+        "jp": "どうしても必要なら反撃しろ..."
     },
     "deathFightCombat1b": {
         "en_us": "NOTHING YOU DO CAN HURT ME",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "RIEN DE CE QUE TU FAIS NE PEUT ME FAIRE DE MAL",
+        "zh_tw": "你做的任何事情都傷害不了我",
+        "zh_cn": "你做的任何事情都伤害不了我",
+        "ru": "НИЧТО ИЗ ТОГО, ЧТО ТЫ ДЕЛАЕШЬ, НЕ МОЖЕТ ПРИЧИНИТЬ МНЕ БОЛЬ",
+        "es": "NADA DE LO QUE HAGAS PUEDE HERIRME",
+        "jp": "あなたが私を傷つけることは何もできません"
     },
     "deathFightCombat1c": {
         "en_us": "YOUR TIME MAGIC ONLY\nDELAYS THE INEVITABLE.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "LA MAGIE DE VOTRE TEMPS NE FAIT QUE RETARDER L’INÉVITABLE.",
+        "zh_tw": "你的時間魔法只會延遲不可避免的事情。",
+        "zh_cn": "你的时间魔法只会延迟不可避免的事情。",
+        "ru": "ВАША МАГИЯ ВРЕМЕНИ ТОЛЬКО ОТТЯГИВАЕТ НЕИЗБЕЖНОЕ.",
+        "es": "TU MAGIA DEL TIEMPO SOLO RETRASA LO INEVITABLE.",
+        "jp": "あなたの時間の魔法は、避けられないことを遅らせるだけです。"
     },
     "deathFight2CombatLaugh1": {
         "en_us": "THAT TICKLES!",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "ÇA CHATOUILLE !",
+        "zh_tw": "那真癢癢！",
+        "zh_cn": "那真痒痒！",
+        "ru": "ЭТО ЩЕКОТНО!",
+        "es": "¡ESO HACE COSQUILLAS!",
+        "jp": "くすぐったい!"
     },
     "deathFight2CombatLaugh2": {
         "en_us": "IT'S BEEN AGES\nSINCE MY LAST GOOD FIGHT!",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "CELA FAIT UNE ÉTERNITÉ DEPUIS\nMON DERNIER BON COMBAT !",
+        "zh_tw": "距離我上次精彩戰鬥\n已經太久了！",
+        "zh_cn": "距离我上次精彩战斗\n已经太久了！",
+        "ru": "ПРОШЛА ЦЕЛАЯ ВЕЧНОСТЬ С МОМЕНТА\nМОЕГО ПОСЛЕДНЕГО ХОРОШЕГО БОЯ!",
+        "es": "¡HAN PASADO SIGLOS DESDE\nMI ÚLTIMA BUENA PELEA!",
+        "jp": "前回の素晴らしい戦いからあ\nまりにも時間が経ちました！"
     },
     "deathFight2c": {
         "en_us": "GOOD OFFENSE! BUT THINK\nTWICE BEFORE ATTACKING.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "BONNE ATTAQUE ! MAIS RÉFLÉCHISSEZ-Y À DEUX FOIS AVANT D’ATTAQUER.",
+        "zh_tw": "好進攻！但在攻擊\n之前要三思而後行。",
+        "zh_cn": "好进攻！但在攻击\n之前要三思而后行。",
+        "ru": "ХОРОШЕЕ НАПАДЕНИЕ! НО ПОДУМАЙТЕ ДВАЖДЫ, ПРЕЖДЕ ЧЕМ АТАКОВАТЬ.",
+        "es": "¡BUENA OFENSIVA! PERO PIÉNSALO DOS VECES ANTES DE ATACAR.",
+        "jp": "良い攻撃!しかし、攻撃する前によく考えてください。"
     },
     "deathFight2cx": {
         "en_us": "A PERSISTENT OFFENSE!\nTHINK TWICE BEFORE ATTACKING.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "UNE OFFENSE PERSISTANTE ! RÉFLÉCHISSEZ-Y\nÀ DEUX FOIS AVANT D’ATTAQUER.",
+        "zh_tw": "持續的冒犯！在攻擊\n之前要三思而後行。",
+        "zh_cn": "持续的冒犯！在攻击\n之前要三思而后行。",
+        "ru": "УПОРНОЕ ОСКОРБЛЕНИЕ! ПОДУМАЙТЕ\nДВАЖДЫ, ПРЕЖДЕ ЧЕМ АТАКОВАТЬ.",
+        "es": "¡UNA OFENSA PERSISTENTE!\nPIÉNSALO DOS VECES ANTES DE ATACAR.",
+        "jp": "執拗な犯罪!攻撃する前\nによく考えてください。"
     },
     "deathFight2d": {
         "en_us": "GOOD DEFENSE! BUT YOU\nCAN'T STOP THESE FISTS.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "BONNE DÉFENSE ! MAIS VOUS NE\nPOUVEZ PAS BLOQUER CES POINGS.",
+        "zh_tw": "防守不错！但你挡不住这些拳头。",
+        "zh_cn": "防守不错！但你挡不住这些拳头。",
+        "ru": "ХОРОШАЯ ЗАЩИТА! НО\nЭТИ КУЛАКИ НЕ ОСТАНОВИШЬ.",
+        "es": "¡BUENA DEFENSA! PERO\nNO PUEDES DETENER ESTOS PUÑOS.",
+        "jp": "良い防御!しかし、この拳を\n止めることはできません。"
     },
     "deathFight2dx": {
         "en_us": "YOUR HEALTH WANES.\nTIME TO FINISH THIS.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "VOTRE SANTÉ DÉCLINE.\nIL EST TEMPS DE TERMINER CELA.",
+        "zh_tw": "你的生命正在衰退。\n是時候結束這一切了。",
+        "zh_cn": "你的生命正在衰退。\n是时候结束这一切了。",
+        "ru": "ВАШЕ ЗДОРОВЬЕ УХУДШАЕТСЯ. ПОРА ЗАКОНЧИТЬ С ЭТИМ.",
+        "es": "TU SALUD SE DETERIORA. ES HORA DE TERMINAR ESTO.",
+        "jp": "あなたの健康は衰えていきます。これを完成させる時が来ました。"
     },
     "deathFight2z1": {
         "en_us": "WELL FOUGHT CHILD!",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "BIEN COMBATTU, ENFANT !",
+        "zh_tw": "打得好孩子！",
+        "zh_cn": "打得好孩子！",
+        "ru": "ХОРОШО СРАЖАВШИЙСЯ РЕБЕНОК!",
+        "es": "¡NIÑO BIEN PELEADO!",
+        "jp": "よく戦った子!"
     },
     "deathFight2z2": {
         "en_us": "YOU HAVE BOTH\nSTRENGTH AND SKILL",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "VOUS AVEZ À LA FOIS DE\nLA FORCE ET DE L’HABILETÉ",
+        "zh_tw": "你既有力量又有技巧",
+        "zh_cn": "你既有力量又有技巧",
+        "ru": "У ВАС ЕСТЬ И СИЛА,\nИ МАСТЕРСТВО",
+        "es": "TIENES FUERZA Y HABILIDAD",
+        "jp": "あなたには強さとス\nキルの両方があります"
     },
     "deathFight2z2cheats": {
         "en_us": "THOUGH I SENSE YOU ARE NOT\nPLAYING FAIR IN THIS FIGHT.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "BIEN QUE JE SENTE QUE VOUS NE JOUEZ\nPAS FRANC-JEU DANS CE COMBAT.",
+        "zh_tw": "雖然我感覺到你在這場\n鬥爭中沒有公平競爭。",
+        "zh_cn": "虽然我感觉到你在这场\n斗争中没有公平竞争。",
+        "ru": "ХОТЯ Я ЧУВСТВУЮ, ЧТО ВЫ\nИГРАЕТЕ НЕЧЕСТНО В ЭТОМ БОЮ.",
+        "es": "AUNQUE SIENTO QUE NO ESTÁS\nJUGANDO LIMPIO EN ESTA PELEA.",
+        "jp": "私はあなたがこの戦いで公正にプレ\nーしていないと感じていますが。"
     },
     "deathFight2z3": {
         "en_us": "PERHAPS IT IS TIME THAT\nI CAN TRULY LET LOOSE.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Maintenant, je peux vraiment\nlibérer tout mon potentiel.",
+        "zh_tw": "現在我可以真正\n釋放我的全力。",
+        "zh_cn": "现在我可以真正\n释放我的全力。",
+        "ru": "ВОЗМОЖНО, ПРИШЛО ВРЕМЯ, КОГДА Я\nМОГУ ПО-НАСТОЯЩЕМУ РАССЛАБИТЬСЯ.",
+        "es": "TAL VEZ SEA HORA DE\nQUE REALMENTE PUEDA SOLTARLO.",
+        "jp": "もしかしたら、今こそ本当に解\nき放てる時なのかもしれません。"
     },
     "deathFight2z3cheats": {
         "en_us": "NO MATTER. I WILL SHOW\nYOU MY FULL POWER.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "PEU IMPORTE. JE VAIS VOUS\nMONTRER TOUTE MA PUISSANCE.",
+        "zh_tw": "不管怎樣。我會向你\n展示我的全部力量。",
+        "zh_cn": "不管怎样。我会向你\n展示我的全部力量。",
+        "ru": "НЕ ИМЕЕТ ЗНАЧЕНИЯ. Я\nПОКАЖУ ВАМ ВСЮ СВОЮ СИЛУ.",
+        "es": "NO IMPORTA. TE\nMOSTRARÉ TODO MI PODER.",
+        "jp": "かまいません。私の\n全力を見せてあげる。"
     },
     "deathFight2z4": {
         "en_us": "WITNESS",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
-    },
-    "deathFight2plusa": {
-        "en_us": "NOW GIVE ME YOUR BEST",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "TÉMOIN",
+        "zh_tw": "見證我",
+        "zh_cn": "见证我",
+        "ru": "СВИДЕТЕЛЬ",
+        "es": "TESTIGO",
+        "jp": "私を目撃してください"
     },
     "deathFight2plusb": {
         "en_us": "YOUR SPELLS EMPOWER ME",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "TES SORTS ME RENFORCENT",
+        "zh_tw": "你的法術賦予我力量",
+        "zh_cn": "你的法术赋予我力量",
+        "ru": "ТВОИ ЗАКЛИНАНИЯ ПРИДАЮТ МНЕ СИЛ",
+        "es": "TUS HECHIZOS ME DAN PODER",
+        "jp": "あなたの呪文が私に力を与える"
     },
     "deathFight2plusc": {
         "en_us": "YOUR ATTACKS HEAL ME",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "TES ATTAQUES ME GUÉRIRONT",
+        "zh_tw": "你的攻擊將會使我恢復",
+        "zh_cn": "你的攻击将会使我恢复",
+        "ru": "ТВОИ АТАКИ ИСЦЕЛЯЮТ МЕНЯ",
+        "es": "TUS ATAQUES ME CURAN",
+        "jp": "あなたの攻撃が私を癒す"
     },
     "deathFight2plusd": {
         "en_us": "LET'S SPEED THINGS UP",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "ACCÉLÉRONS LES CHOSES",
+        "zh_tw": "讓我們加快速度",
+        "zh_cn": "让我们加快速度",
+        "ru": "ДАВАЙТЕ УСКОРИМ ПРОЦЕСС",
+        "es": "ACELEREMOS LAS COSAS",
+        "jp": "スピードアップしましょう"
     },
     "deathFight2pluse": {
         "en_us": "STILL ALIVE? YOUR END IS NOW.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "TOUJOURS VIVANT? VOTRE FIN EST MAINTENANT.",
+        "zh_tw": "仍然活著？你的結局就是現在。",
+        "zh_cn": "仍然活着？你的结局就是现在。",
+        "ru": "ВСЕ ЕЩЁ ЖИВ? ВАШ КОНЕЦ УЖЕ НАСТУПИЛ.",
+        "es": "¿SIGO VIVO? TU FIN ES AHORA.",
+        "jp": "まだ生きています。あなたの終わりは今です。"
     },
     "deathFight2plusy": {
         "en_us": "THIS HAS DRAGGED ON ENOUGH!",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "CELA A ASSEZ TRAÎNÉ !",
+        "zh_tw": "這已經拖得夠久了！",
+        "zh_cn": "这已经拖得够久了！",
+        "ru": "ЭТО УЖЕ ДОСТАТОЧНО ЗАТЯНУЛОСЬ!",
+        "es": "¡ESTO SE HA PROLONGADO LO SUFICIENTE!",
+        "jp": "これは十分に長引いています!"
     },
     "deathFight2plusz": {
         "en_us": "ENOUGH!",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "ASSEZ!",
+        "zh_tw": "够了！",
+        "zh_cn": "够了！",
+        "ru": "ДОСТАТОЧНО!",
+        "es": "¡BASTANTE!",
+        "jp": "うんざり！"
     },
     "deathFight2plusz2": {
         "en_us": "I WILL FINISH YOU\nONCE AND FOR ALL",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "JE VAIS VOUS ACHEVER\nUNE FOIS POUR TOUTES",
+        "zh_tw": "我會一勞永逸\n地結束你",
+        "zh_cn": "我会一劳永逸\n地结束你",
+        "ru": "Я ПРИКОНЧУ ТЕБЯ\nРАЗ И НАВСЕГДА",
+        "es": "ACABARÉ CONTIGO DE\nUNA VEZ POR TODAS",
+        "jp": "私はあなたをきっ\nぱりと終わらせます"
     },
     "deathFight2plusending": {
         "en_us": "...HOW ARE YOU STILL STANDING?",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "... COMMENT ÊTES-VOUS ENCORE DEBOUT ?",
+        "zh_tw": "...你怎麼還能站得住？",
+        "zh_cn": "...你怎么还能站得住？",
+        "ru": "... КАК ВЫ ВСЕ ЕЩЕ СТОИТЕ?",
+        "es": "... ¿CÓMO SIGUES EN PIE?",
+        "jp": "...まだ立っているのはどうですか?"
     },
     "deathFight2plusending2": {
         "en_us": "IT SHOULD BE IMPOSSIBLE,\nYET I SENSE NO FOUL PLAY...",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Cela devrait être impossible, mais je\nn’ai pas l’impression que vous trichez...",
+        "zh_tw": "這應該是不可能的，但我\n並沒感到任何作弊行為...",
+        "zh_cn": "这应该是不可能的，但我\n并没感到任何作弊行为...",
+        "ru": "ЭТО ДОЛЖНО БЫТЬ НЕВОЗМОЖНО, НО Я НЕ ЧУВСТВУЮ НИКАКОЙ НЕЧЕСТНОЙ ИГРЫ...",
+        "es": "DEBERÍA SER IMPOSIBLE, PERO NO PERCIBO NINGÚN JUEGO SUCIO...",
+        "jp": "あり得ないはずなのに、反則は感じない...。"
     },
     "deathFight2plusending3": {
-        "en_us": "...AH OF COURSE, \'ASSISTANCE\'.\n>:(",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "en_us": "...AH OF COURSE, 'ASSISTANCE'.\n>:(",
+        "fr": "... AH, BIEN SÛR, « ASSISTANCE ».\n>:(",
+        "zh_tw": "...啊，當然是“協助”。\n>:(",
+        "zh_cn": "...啊，当然是“协助”。\n>:(",
+        "ru": "... НУ КОНЕЧНО, «ПОМОЩЬ».\n>:(",
+        "es": "... AH, POR SUPUESTO, 'ASISTENCIA'.\n>:(",
+        "jp": "...ああ、もちろん「アシスタンス」です。\n>:("
     },
     "deathFight2plusending4": {
         "en_us": "REGARDLESS, YOU HAVE BESTED ME,\nAND I WILL ACQUIESCE.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "QUOI QU’IL EN SOIT, VOUS\nM’AVEZ BATTU, ET J’ACQUIESCERAI.",
+        "zh_tw": "無論如何，你已經\n打敗了我，我會默許。",
+        "zh_cn": "无论如何，你已经\n打败了我，我会默许。",
+        "ru": "КАК БЫ ТО НИ БЫЛО, ТЫ\nПРЕВЗОШЕЛ МЕНЯ, И Я УСТУПЛЮ.",
+        "es": "A PESAR DE TODO, ME HAS\nVENCIDO Y LO ACEPTARÉ.",
+        "jp": "いずれにせよ、あなたは私を打ち\n負かしました、そして私は黙認します。"
     },
     "deathFight2plusending5": {
         "en_us": "But please, hear my last request.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Mais s’il vous plaît, écoutez ma dernière demande.",
+        "zh_tw": "但是，請聽聽我最後的請求。",
+        "zh_cn": "但是，请听听我最后的请求。",
+        "ru": "Но, пожалуйста, услышьте мою последнюю просьбу.",
+        "es": "Pero, por favor, escuchen mi última petición.",
+        "jp": "しかし、どうか、私の最後の要求を聞いてください。"
     },
     "deathFight2plusbeaten1": {
         "en_us": "...OUCH ",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "... AÏE",
+        "zh_tw": "...哎喲",
+        "zh_cn": "...哎哟",
+        "ru": "... ОЙ",
+        "es": "... ¡ Ay",
+        "jp": "...痛い"
     },
     "deathFight2plusbeaten2": {
         "en_us": "YOU HAVE... DEFEATED ME.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "VOUS AVEZ... M’A VAINCU.",
+        "zh_tw": "你有。。。打敗了我。",
+        "zh_cn": "你有。。。打败了我。",
+        "ru": "У ВАС ЕСТЬ... ПОБЕДИЛ МЕНЯ.",
+        "es": "TÚ TIENES... ME DERROTÓ.",
+        "jp": "あなたは...私を倒した。"
     },
     "deathFight2plusbeaten3": {
         "en_us": "YOUR DETERMINATION IS GREAT,\nAND I WILL RESIST NO LONGER",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "TA DÉTERMINATION EST GRANDE,\nET JE NE RÉSISTERAI PLUS",
+        "zh_tw": "你的決心很大，我不會再抵抗了",
+        "zh_cn": "你的决心很大，我不会再抵抗了",
+        "ru": "ТВОЯ РЕШИМОСТЬ ВЕЛИКА, И Я\nБОЛЬШЕ НЕ БУДУ СОПРОТИВЛЯТЬСЯ",
+        "es": "TU DETERMINACIÓN ES GRANDE,\nY NO RESISTIRÉ MÁS",
+        "jp": "あなたの決意は偉大で、\n私はこれ以上抵抗しません"
     },
     "deathFight2plusbeaten4": {
         "en_us": "I WILL ALLOW YOU TO\nMEET WITH YOUR BELOVED",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "JE VOUS PERMETTRAI DE\nRENCONTRER VOTRE BIEN-AIMÉ",
+        "zh_tw": "我會讓你與你的愛人見面",
+        "zh_cn": "我会让你与你的爱人见面",
+        "ru": "Я ПОЗВОЛЮ ВАМ\bВСТРЕТИТЬСЯ С ЛЮБИМЫМ",
+        "es": "TE PERMITIRÉ ENCONTRARTE\bCON TU AMADO",
+        "jp": "私はあなたがあなたの最愛の\n人と会うことを許可します"
     },
-
-
-
     "back_to_training": {
         "en_us": "BACK TO TRAINING",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "RETOUR À LA PRATIQUE",
+        "zh_tw": "返回練習",
+        "zh_cn": "返回练习",
+        "ru": "ВЕРНУТЬСЯ К ПРАКТИКЕ",
+        "es": "REGRESO A LA PRÁCTICA",
+        "jp": "練習に復帰"
     },
     "death8b": {
         "en_us": "BUT UNDERSTAND THAT ALL\nTHINGS MUST MEET THEIR END.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "MAIS COMPRENEZ QUE TOUTES\nCHOSES DOIVENT CONNAÎTRE UNE FIN.",
+        "zh_tw": "但要明白，萬事萬物\n都必須達到其終點。",
+        "zh_cn": "但要明白，万事万物\n都必须达到其终点。",
+        "ru": "НО ПОЙМИТЕ, ЧТО ВСЕ СУЩЕЕ\nДОЛЖНО ИМЕТЬ СВОЙ КОНЕЦ.",
+        "es": "PERO ENTIENDE QUE TODAS LAS\nCOSAS DEBEN ENCONTRAR SU FIN.",
+        "jp": "しかし、すべてのものはその終わりを\n迎えなければならないことを理解してください。"
     },
     "energy_tut_goblin": {
         "en_us": "Energy spells\ndeal True damage\nthat ignores\nenemy defenses.\n              +",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Les sorts d’énergie\ninfligent des dégâts\nbruts qui ignorent\nles défenses ennemies.\n                  +",
+        "zh_tw": "能量法術造成\n無視敵人防禦\n的真实傷害。        +",
+        "zh_cn": "能量法术造成\n无视敌人防御\n的真实伤害。        +",
+        "ru": "Энергетические заклинания наносят чистый урон, игнорирующий защиту противника.               +",
+        "es": "Los hechizos de energía infligen daño verdadero que ignora las defensas enemigas.               +",
+        "jp": "エネルギー呪文は敵の防御を無視したトゥルーダメージを与える。              +"
     },
     "shield_tut_knight": {
-        "en_us": "This shield can\nblock the strongest\nattacks! But breaks\nwith any hit.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "en_us": "This shield can\nblock the strongest\nattacks! But will\nbreak with any hit.",
+        "fr": "Ce bouclier peut\nbloquer les attaques\nles plus puissantes!\nMais casse avec\nn’importe quel coup.",
+        "zh_tw": "這個盾牌可以擋住\n最強的攻擊！但受到\n任何打擊都會破碎。",
+        "zh_cn": "这个盾牌可以挡住\n最强的攻击！但受到\n任何打击都会破碎。",
+        "ru": "Этот щит может блокировать самые сильные атаки! Но ломается при любом попадании.",
+        "es": "¡Este escudo puede bloquear los ataques más fuertes! Pero se rompe con cualquier golpe.",
+        "jp": "このシールドは最強の攻撃を防げます!しかし、どんなヒットでも壊れます。"
     },
     "dummy_body_a": {
         "en_us": "Thorns reduce\nincoming damage\nand can inflict\ndamage back.\n              +",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Les épines réduisent les dégâts subis et peuvent infliger des dégâts en retour.               +",
+        "zh_tw": "荊棘可以減少受到的傷害，並可以造成傷害。              +",
+        "zh_cn": "荆棘可以减少受到的伤害，并可以造成伤害。              +",
+        "ru": "Шипы уменьшают входящий урон и могут наносить урон в ответ.               +",
+        "es": "Las espinas reducen el daño recibido y pueden infligir daño.               +",
+        "jp": "トゲは受けるダメージを減らし、ダメージを戻すことができます。              +"
     },
     "killer_robot_a": {
         "en_us": "The stage lights are blinding.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Les lumières de la scène sont aveuglantes.",
+        "zh_tw": "舞台燈光令人眼花繚亂。",
+        "zh_cn": "舞台灯光令人眼花缭乱。",
+        "ru": "Свет на сцене ослепляет.",
+        "es": "Las luces del escenario son cegadoras.",
+        "jp": "ステージの照明は目がくらむほどです。"
     },
     "killer_robot_b": {
         "en_us": "-4 damage to your attacks.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "-4 dégâts à vos attaques.",
+        "zh_tw": "你的攻擊傷害 -4。",
+        "zh_cn": "你的攻击伤害 -4。",
+        "ru": "Урон от ваших атак: -4.",
+        "es": "-4 de daño a tus ataques.",
+        "jp": "自身の攻撃に-4ダメージ。"
     },
     "killer_robot_c": {
         "en_us": "The stage lights\nturn back on",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Les lumières de la scène se rallument",
+        "zh_tw": "舞臺燈光重新亮起",
+        "zh_cn": "舞台灯光重新亮起",
+        "ru": "На сцене снова зажигается свет",
+        "es": "Las luces del escenario se vuelven a encender",
+        "jp": "ステージライトが再び点灯します"
     },
     "killer_robot_d": {
         "en_us": "The stage lights are off.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Les lumières de la scène sont éteintes.",
+        "zh_tw": "舞臺燈光熄滅。",
+        "zh_cn": "舞台灯光熄灭。",
+        "ru": "Свет на сцене выключен.",
+        "es": "Las luces del escenario están apagadas.",
+        "jp": "ステージの照明が消灯しています。"
     },
     "wall_unblockable": {
         "en_us": "Some attacks\ncannot be\nblocked.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Certaines attaques ne peuvent pas être bloquées.",
+        "zh_tw": "某些攻擊無法格擋。",
+        "zh_cn": "某些攻击无法格挡。",
+        "ru": "Некоторые атаки не могут быть заблокированы.",
+        "es": "Algunos ataques no se pueden bloquear.",
+        "jp": "一部の攻撃はブロックできません。"
     },
     "tree_a": {
         "en_us": "The spiky thorns on the tree\nredirects 2 damage back onto you!",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Les épines hérissées sur l’arbre redirigent 2 dégâts sur vous !",
+        "zh_tw": "樹上的尖刺會將 2 點傷害重定向回你身上！",
+        "zh_cn": "树上的尖刺会将 2 点伤害重定向回你身上！",
+        "ru": "Колючие шипы на дереве перенаправляют на вас 2 ед. урона!",
+        "es": "¡Las espinas puntiagudas en el árbol redirigen 2 puntos de daño hacia ti!",
+        "jp": "木のとがったとげは、2ダメージをあなたに戻してくれます!"
     },
     "tree_b": {
         "en_us": "Attack and defend carefully!",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Attaquez et défendez-vous prudemment !",
+        "zh_tw": "小心攻守！",
+        "zh_cn": "小心攻守！",
+        "ru": "Атакуйте и защищайтесь осторожно!",
+        "es": "¡Ataca y defiende con cuidado!",
+        "jp": "丁寧に攻めと守りを!"
     },
     "magician_a": {
         "en_us": "Nice try, but your\nattacks have no shock.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "C’est bien essayé, mais vos attaques n’ont pas de choc.",
+        "zh_tw": "不錯的嘗試，但你的攻擊沒有電擊。",
+        "zh_cn": "不错的尝试，但你的攻击没有电击。",
+        "ru": "Хорошая попытка, но ваши атаки не вызывают шока.",
+        "es": "Buen intento, pero tus ataques no tienen impacto.",
+        "jp": "ナイストライですが、あなたの攻撃にはショックがありません。"
     },
     "magician_b": {
         "en_us": "Now have a taste\nof my great big clock!",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Maintenant, goûtez à ma grande horloge !",
+        "zh_tw": "現在來嘗嘗我的大鍾吧！",
+        "zh_cn": "现在来尝尝我的大钟吧！",
+        "ru": "Теперь попробуйте мои большие часы!",
+        "es": "¡Ahora prueba mi gran reloj!",
+        "jp": "さあ、私の大きな大きな時計を味わってください!"
     },
     "magician_c": {
         "en_us": "You think you've won,\nbut I'm not done yet.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Vous pensez que vous avez gagné, mais je n’ai pas encore fini.",
+        "zh_tw": "你認為你贏了，但我還沒有結束。",
+        "zh_cn": "你认为你赢了，但我还没有结束。",
+        "ru": "Вы думаете, что выиграли, но я еще не закончил.",
+        "es": "Crees que has ganado, pero yo aún no he terminado.",
+        "jp": "あなたは勝ったと思っていますが、私はまだ終わっていません。"
     },
     "magician_d": {
         "en_us": "Let me show you\na true temporal threat!",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Permettez-moi de vous montrer une véritable menace temporelle !",
+        "zh_tw": "讓我向你展示一個真正的時間威脅！",
+        "zh_cn": "让我向你展示一个真正的时间威胁！",
+        "ru": "Позвольте мне показать вам истинную временную угрозу!",
+        "es": "¡Déjame mostrarte una verdadera amenaza temporal!",
+        "jp": "真の時間的脅威をお見せしましょう!"
     },
     "magician_e": {
         "en_us": "Oh... you're still... here?",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Oh... Vous êtes toujours... ici?",
+        "zh_tw": "哦。。。你還是......這裡？",
+        "zh_cn": "哦。。。你还是......这里？",
+        "ru": "О... ты все еще... здесь?",
+        "es": "Oh... Todavía estás... ¿aquí?",
+        "jp": "おや。。。まだ...ここは。"
     },
     "magician_f": {
         "en_us": "My time is short I fear.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Je crains que mon temps ne soit compté.",
+        "zh_tw": "恐怕我的時間不多了。",
+        "zh_cn": "恐怕我的时间不多了。",
+        "ru": "Боюсь, у меня мало времени.",
+        "es": "Me temo que mi tiempo es corto.",
+        "jp": "私の時間は短いです、私は恐れています。"
     },
     "magician_g": {
         "en_us": "Have mercy please?",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Ayez pitié s’il vous plaît ?",
+        "zh_tw": "請手下留情嗎？",
+        "zh_cn": "请手下留情吗？",
+        "ru": "Помилуйте, пожалуйста?",
+        "es": "¿Ten piedad, por favor?",
+        "jp": "どうか慈悲をお願いします。"
     },
-
     "shield_dummy_overwrite": {
         "en_us": "Only one shield\ncan be active\nper spot.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Un seul bouclier peut être actif par endroit.",
+        "zh_tw": "每個點只能啟動一個盾牌。",
+        "zh_cn": "每个点只能激活一个盾牌。",
+        "ru": "В каждой точке может быть активен только один щит.",
+        "es": "Solo puede haber un escudo activo por punto.",
+        "jp": "1つのスポットでアクティブにできるシールドは1つだけです。"
     },
     "pre_fight_3a": {
         "en_us": "\"Your fighting skill I\nmust commend, but if\nyou keep going your doom\nwill impend!",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "« Je dois saluer votre talent de combatteur, mais si vous continuez, votre destin vous attendra !",
+        "zh_tw": "“我必須稱讚你的戰鬥技巧，但如果你繼續前進，你的厄運就會來臨！",
+        "zh_cn": "“我必须称赞你的战斗技巧，但如果你继续前进，你的厄运就会来临！",
+        "ru": "«Я должен похвалить ваше боевое мастерство, но если вы будете продолжать в том же духе, ваша гибель неминуема!",
+        "es": "\"Debo elogiar tu habilidad de lucha, pero si sigues adelante, ¡tu perdición se avecinará!",
+        "jp": "「お前の戦闘技術は称賛に値する。しかし、このまま続ければ破滅が破滅するぞ!"
     },
     "pre_fight_3b": {
         "en_us": "This \"Magician\" has\nannoyed me enough.\nMy magic itches\nfor a fight.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Ce « Magicien » m’a assez agacé. Ma magie me démange de se battre.",
+        "zh_tw": "這個「魔術師」已經讓我煩惱得夠多了。我的魔法癢乎乎的。",
+        "zh_cn": "这个“魔术师”已经让我烦恼得够多了。我的魔法痒乎乎的。",
+        "ru": "Этот \"Волшебник\" меня достаточно насолил. Моя магия жаждет драки.",
+        "es": "Este \"Mago\" me ha molestado bastante. Mi magia tiene ganas de pelear.",
+        "jp": "この「マジシャン」は私を十分に苛立たせました。私の魔法は戦いを欲しがる。"
     },
     "superdummy_start": {
         "en_us": "Strange, I don't remember\nsetting up a training dummy.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Étrange, je ne me souviens pas d’avoir mis en place un mannequin d’entraînement.",
+        "zh_tw": "奇怪，我不記得設置了一個訓練假人。",
+        "zh_cn": "奇怪，我不记得设置了一个训练假人。",
+        "ru": "Странно, я не помню, чтобы настраивал тренировочный манекен.",
+        "es": "Extraño, no recuerdo haber montado un maniquí de entrenamiento.",
+        "jp": "不思議なことに、トレーニングダミーを設定した覚えはありません。"
     },
     "superdummy_void": {
         "en_us": "Deals lots of\n%health damage\n             +",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Inflige beaucoup de %dégâts de santé +",
+        "zh_tw": "造成大量 %生命值傷害 +",
+        "zh_cn": "造成大量 %生命值伤害 +",
+        "ru": "Наносит много % урона от здоровья +",
+        "es": "Inflige un montón de % de daño de salud +",
+        "jp": "大量の%ヘルスダメージを与えます+"
     },
     "superdummy_mind": {
         "en_us": "Amplifies next\nnon-attack spell\n             +",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Amplifie le sort de non-attaque suivant +",
+        "zh_tw": "增幅下一個非攻擊技能 +",
+        "zh_cn": "增幅下一个非攻击技能 +",
+        "ru": "Усиливает следующее неатакующее заклинание +",
+        "es": "Amplifica el siguiente hechizo que no es de ataque +",
+        "jp": "次の非攻撃呪文を増幅します +"
     },
     "superdummy_matter": {
         "en_us": "Deals damage\nand defends\n           +",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Inflige des dégâts et défend +",
+        "zh_tw": "造成傷害和防禦 +",
+        "zh_cn": "造成伤害和防御 +",
+        "ru": "Наносит урон и защищается +",
+        "es": "Inflige daño y defiende +",
+        "jp": "ダメージを与えて防御する +"
     },
     "superdummy_time": {
         "en_us": "Freezes time for\nnext few spells\n             +",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "fr": "Gèle le temps pour les prochains sorts +",
+        "zh_tw": "凍結接下來幾個法術的時間 +",
+        "zh_cn": "冻结接下来几个法术的时间 +",
+        "ru": "Замораживает время на следующие несколько заклинаний +",
+        "es": "Congela el tiempo para los próximos hechizos +",
+        "jp": "次のいくつかの呪文の時間を凍結します +"
     },
     "goblin_shield": {
         "en_us": "Ha! Can't hurts me now!",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
-        "ru": "",
-        "es": "",
-        "jp": ""
-    },
-
+        "fr": "Ha! Ça ne peut pas me faire de mal maintenant !",
+        "zh_tw": "醫 管 局！現在傷害不了我了！",
+        "zh_cn": "医 管 局！现在伤害不了我了！",
+        "ru": "Ха! Теперь мне не может быть больно!",
+        "es": "¡Ja! ¡No puede hacerme daño ahora!",
+        "jp": "ハッ!今は痛くない!"
+    }
 }
 textData = { ...textData, ...textData4};

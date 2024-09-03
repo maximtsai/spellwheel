@@ -603,13 +603,13 @@ let textData2 = {
         "jp": "攻撃されると\n敵が怒る!"
     },
     "level1_train_diag_a": {
-        "en_us": "This new Rune I acquired\ncould be useful.",
-        "fr": "Cette nouvelle rune que j’ai\nacquise pourrait vous être utile.",
-        "zh_tw": "我獲得的這個新符文可能會有用。",
-        "zh_cn": "我获得的这个新符文可能会有用。",
-        "ru": "Эта новая руна, которую я\nполучил, может пригодиться.",
-        "es": "Esta nueva runa que\nadquirí podría ser útil.",
-        "jp": "私が手に入れたこの新しいル\nーンが役に立つかもしれません。"
+        "en_us": "I've set up a training dummy\nto test out this new rune.",
+        "fr": "J'ai installé un mannequin\nd'entraînement pour tester ma nouvelle rune.",
+        "zh_tw": "我設定了一個訓練假人\n來測試這個新的符文。",
+        "zh_cn": "我设置了一个训练假人\n来测试这个新的符文。。",
+        "ru": "Я установил учебный манекен,\nчтобы опробовать свою новую руну.",
+        "es": "Preparé un muñeco de entrenamiento\npara probar mi nueva runa.",
+        "jp": "新しいルーンをテストするためにトレーニ\nングダミーをセットアップしました。"
     },
     "level1_train_diag_b": {
         "en_us": "I should carefully consider\nwhat order I use my spells in.",

@@ -1676,7 +1676,7 @@
     }
 
      adjustDamageTaken(amt, isAttack, isTrue ) {
-         if (isAttack && this.hasThorns && !isTrue && !this.dead) {
+         if (isAttack && this.hasThorns && !this.dead) {
              let glowSpike = getTempPoolObject('enemies', 'glowSpike2.png', 'glowSpike2', 1800);
              let isLeft = Math.random() < 0.5;
              glowSpike.setScale(0.5).setAlpha(0.9).setPosition(gameConsts.halfWidth + (isLeft ? -50 : 50), this.y).setDepth(999).setRotation(isLeft ? -8 : 8);

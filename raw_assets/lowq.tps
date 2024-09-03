@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>55</uint>
+        <uint>42</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -249,6 +249,21 @@
                 <rect>150,150,300,300</rect>
                 <key>scale9Paddings</key>
                 <rect>150,150,300,300</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">lowq/long_arm.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>63,200,125,400</rect>
+                <key>scale9Paddings</key>
+                <rect>63,200,125,400</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -44,7 +44,7 @@ let textData3 = {
         "ru": "Скрытый",
         "es": "Oculto",
         "jp": "隠された"
-    }, 
+    },
     "resume": {
         "en_us": "RESUME",
         "fr": "Continuer",
@@ -53,7 +53,7 @@ let textData3 = {
         "ru": "Продолжить",
         "es": "Continuar",
         "jp": "続ける"
-    }, 
+    },
     "menu": {
         "en_us": "MENU",
         "fr": "Menu",
@@ -62,7 +62,7 @@ let textData3 = {
         "ru": "Меню",
         "es": "Oculto",
         "jp": "ホームページ"
-    }, 
+    },
     "beginLocket1": {
         "en_us": "I'll reach you soon,\nmy beloved...",
         "fr": "Je vous rejoindrai bientôt, mes bien-aimés...",
@@ -82,7 +82,7 @@ let textData3 = {
         "jp": ""
     },
     "death2b": {
-        "en_us": "FORSAKE YOUR JOURNEY.\nYOU DO NOT YET BELONG HERE,",
+        "en_us": "LOST CHILD, TURN BACK.\nYOU DO NOT YET BELONG HERE,",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

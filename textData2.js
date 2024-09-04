@@ -235,12 +235,12 @@ let textData2 = {
         "jp": "私は死者の禁じられた土地への門に到着しました。 すぐに、この領域は私の立ち入りに抵抗します。しかし、私はここであなたを見つけるでしょう、親愛なる最愛の人、そして私があなたに連絡を取るのを妨げるものは何もありません。"
     },
     "post_fight_story2": {
-        "en_us": "The legendary\nReaper has taken\nnotice of me, but\nI don't feel an ounce of fear.\n\nThey remind me more of a nagging\nparent than a dread specter of\nthe underworld.\n\nHence, I shall rightfully seize this shield\nas my own.",
-        "fr": "La légendaire\nFaucheuse m'avait\nremarqué, mais je\nressentais peu de peur.\n\nPour moi, ils ressemblent plus à un\nparent harcelant qu’à un fantôme\neffrayant de l’enfer.\n\nIl m’appartient donc de m’emparer de\nce bouclier.",
-        "zh_tw": "傳說中的死神已經\n注意到我了，但我幾乎\n感覺不到恐懼。\n\n" +
-            "在我看來，他們更像是一個嘮叨的父母，\n而不是地獄裡可怕的幽靈。\n\n因此，我理應奪取這面盾牌。",
-        "zh_cn": "传说中的死神已经\n注意到我了，但我几乎\n感觉不到恐惧。\n\n" +
-            "在我看来，他们更像是一个唠叨的父母，\n而不是地狱里可怕的幽灵。\n\n因此，我理应夺取这面盾牌。",
+        "en_us": "The fabled Reaper has taken\bnotice of me, but I hardly feel afraid.\n\nThey remind me more of my nagging parents\nthan an underworld spectre.\n\nPerhaps I'll take this shield before\nthey start chastising me any further.",
+        "fr": "Le légendaire Faucheur m'a remarqué,\nmais je n'ai guère peur.\n\nIls me rappellent plus mes parents\nharcelants qu'un spectre des enfers.\n\nJe devrais lui retirer ce bouclier\navant qu'il continue à me harceler.",
+        "zh_tw": "傳說中的死神已經注意到我了，\n但我幾乎不覺得害怕。\n\n" +
+            "在我看來，他們更像是個嘮叨的父母，\n而不是地獄裡可怕的幽靈。\n\n我該在他繼續嘮叨前拿走這面盾牌。",
+        "zh_cn": "传说中的死神已经注意到我了，\n但我几乎不觉得害怕。\n\n" +
+            "在我看来，他们更像是一个唠叨的父母，\n而不是地狱里可怕的幽灵。\n\n我该在他继续唠叨前拿走这个盾牌。",
         "ru": "Легендарный бог\nсмерти заметил меня,\nно я почти не\nчувствую страха.\n\n" +
             "На мой взгляд, они больше похожи\nна надоедливого родителя, чем\nна страшного призрака из ада.\n\n" +
             "Поэтому мне надлежит захватить\nэтот щит.",

@@ -6,6 +6,7 @@ class PostFightScreen {
         this.titleText = null;
         this.healthLeftText = null;
         this.locketSprite = null;
+        this.locketDialogImage = null;
         this.locketDialog = null;
         this.locketRecentlyClicked = false;
         this.locketDialogIndex = 0;
@@ -38,7 +39,7 @@ class PostFightScreen {
             this.backing = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 30, 'ui', 'battleOverScreen.png').setDepth(100000).setAlpha(0);
         }
         if (!this.titleText) {
-            this.titleText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 260, '(placeholder title)', {fontFamily: 'garamondmax', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
+            this.titleText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 268, '(placeholder title)', {fontFamily: 'garamondmax', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
         if (!this.healthLeftText) {
             this.healthLeftText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 200, getLangText('post_fight_health'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
@@ -49,8 +50,11 @@ class PostFightScreen {
         if (!this.locketSprite) {
             this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 120, 'misc', 'locket1.png').setScale(0.75).setDepth(100003).setAlpha(0).setOrigin(0.5, 0.5);
         }
+        if (!this.locketDialogImage) {
+            this.locketDialogImage = this.scene.add.sprite(gameConsts.halfWidth - 146, gameConsts.halfHeight - 172, 'lowq', 'story_img_1.png').setDepth(100003).setAlpha(0).setOrigin(0.46, 0.1);
+        }
         if (!this.locketDialog) {
-            this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 200, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
+            this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 85, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
         }
         if (!this.newRuneAnnounce) {
             this.newRuneAnnounce =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 154, getLangText('post_fight_newrune'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
@@ -123,7 +127,7 @@ class PostFightScreen {
                     visible: true,
                     alpha: 0.95,
                     x: gameConsts.halfWidth - 161,
-                    y: gameConsts.halfHeight + 220,
+                    y: gameConsts.halfHeight + 226,
                 },
                 hover: {
                     atlas: "ui",
@@ -163,13 +167,13 @@ class PostFightScreen {
                 if (canvas) {
                     canvas.style.cursor = 'pointer';
                 }
-                text.alpha = 0.7;
+                text.alpha = 1;
             });
             this.continueButton.setOnHoverOutFunc(() => {
                 if (canvas) {
                     canvas.style.cursor = 'default';
                 }
-                text.alpha = 0.2;
+                text.alpha = 0.7;
             })
             this.continueButton.setDepth(100000);
         }
@@ -181,7 +185,7 @@ class PostFightScreen {
                     visible: true,
                     alpha: 0.95,
                     x: gameConsts.halfWidth,
-                    y: gameConsts.halfHeight + 162,
+                    y: gameConsts.halfHeight + 175,
                 },
                 hover: {
                     atlas: "ui",
@@ -339,7 +343,12 @@ class PostFightScreen {
                 if (this.trainingButton.getState() !== DISABLE) {
                     this.continueButton.setText(getLangText('post_fight_skip_training'));
                     let text = this.continueButton.getText();
-                    text.alpha = 0;
+
+                    if (this.currLevel < gameVars.latestLevel) {
+                        text.alpha = 0.7;
+                    } else {
+                        text.alpha = 0;
+                    }
                     this.continueButton.setState(NORMAL);
                 }
             }, 3000);
@@ -583,8 +592,8 @@ class PostFightScreen {
         this.canShowRuneBtn = true;
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
-
         this.createWinScreenUIMin(level);
+
         this.continueButton.setState(DISABLE);
         this.trainingButton.setState(NORMAL);
         this.trainingButton.setOnMouseUpFunc(() => {
@@ -618,6 +627,8 @@ class PostFightScreen {
         if (this.trainingRuneIcon) {
             this.trainingRuneIcon.visible = true;
         }
+        this.locketRecentlyClicked = false;
+
         this.initAssets(true);
         globalObjects.magicCircle.disableMovement();
         this.titleText.setText(getLangText('post_fight_title'));
@@ -635,7 +646,7 @@ class PostFightScreen {
 
         this.codeText.setText("LEVEL CODE: placeholder\n(placeholder)");
         this.locketDialog.setText(this.getStoryDialog(level));
-
+        this.locketDialogImage.setFrame('story_img_' + level + ".png");
         globalObjects.bannerTextManager.setDialog(this.locketDialog);
     }
 
@@ -653,6 +664,7 @@ class PostFightScreen {
         // this.newRuneIcon.setFrame(' ');
         this.codeText.setText(' ');
         this.locketDialog.setText(this.getStoryDialog(level));
+        this.locketDialogImage.setFrame('story_img_' + level + ".png");
 
         this.continueButton.setState(DISABLE);
         this.trainingButton.setText(getLangText('post_fight_no_training'));
@@ -698,7 +710,7 @@ class PostFightScreen {
         this.showRuneDescBtn.setState(DISABLE);
         PhaserScene.tweens.add({
             delay: 100,
-            targets: this.locketDialog,
+            targets: [this.locketDialog, this.locketDialogImage],
             alpha: 1,
             ease: 'Cubic.easeIn',
             duration: 500,
@@ -731,7 +743,7 @@ class PostFightScreen {
         }
         let objectsToFade = [this.titleText, this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
         PhaserScene.tweens.add({
-            targets: this.locketDialog,
+            targets: [this.locketDialog, this.locketDialogImage],
             alpha: 0,
             ease: 'Cubic.easeOut',
             duration: 500,
@@ -870,7 +882,7 @@ class PostFightScreen {
             duration: 500,
         })
         PhaserScene.tweens.add({
-            targets: [this.bgShade, this.backing, this.titleText, this.healthLeftText, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon, this.newRuneAnnounce, this.locketSprite, this.codeText, this.locketDialog],
+            targets: [this.bgShade, this.backing, this.titleText, this.healthLeftText, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon, this.newRuneAnnounce, this.locketSprite, this.codeText, this.locketDialog, this.locketDialogImage],
             alpha: 0,
             ease: 'Quad.easeOut',
             duration: 600,

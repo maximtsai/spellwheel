@@ -1202,7 +1202,7 @@
                          for (let i = 0; i < 4; i++) {
                             let startRot = 0.5;
                             let goalRot = 1 + 0.5 * i;
-                            let longArm = this.addImage(this.x, this.y + 40, 'deathfinal', 'long_arm.png').setRotation(startRot).setOrigin(0.5, 0.95).setScale(0.3).setAlpha(0.2).setDepth(-1);
+                            let longArm = this.addImage(this.x, this.y + 40, 'deathfinal', 'long_arm.png').setRotation(startRot).setOrigin(0.5, 0.95).setAlpha(0.2).setDepth(-1);
                             this.finalArms.push(longArm);
                              longArm.goalRot = goalRot;
                             this.addTween({

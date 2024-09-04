@@ -440,11 +440,12 @@
              [
                  // 0
                  {
-                     name: "}5 ",
+                     name: "}8 ",
                      chargeAmt: 500,
-                     damage: 5,
+                     damage: 8,
                      isBigMove: true,
                     attackFinishFunction: () => {
+                         screenShake(3);
                         playSound('body_slam')
                         let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.4);
                         this.addTimeout(() => {
@@ -461,6 +462,8 @@
                      chargeAmt: 550,
                      damage: 10,
                      attackFinishFunction: () => {
+                         screenShake(4);
+                         zoomTemp(1.01)
                          let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.4);
                          this.addTimeout(() => {
                              dmgEffect.x += 30;

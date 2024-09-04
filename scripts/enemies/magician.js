@@ -260,8 +260,8 @@
              for (let i = 0; i < 5; i++) {
                 let textIndex = i * 2;
                 let text = 'temporal' + textIndex + ".png";
-                let tempClock = this.addImage(this.x, this.y, 'lowq', text).setScale(0.5).setRotation(Math.random() * 6).setAlpha(0.6);
-                let randScale = 0.75 + Math.random() * 0.2;
+                let tempClock = this.addImage(this.x, this.y, 'lowq', text).setScale(0.6).setRotation(Math.random() * 6).setAlpha(0.6);
+                let randScale = 0.95 + Math.random() * 0.25;
                 let randDur1 = 150 + Math.floor(Math.random() * 100);
                 let randDur2Bonus = Math.floor(Math.random() * 200);
                 let randDur2 = 1500 + randDur2Bonus;
@@ -800,7 +800,7 @@
     }
 
     revive() {
-        this.backClock = PhaserScene.add.image(this.x, this.y, 'lowq', 'temporal9.png').setDepth(-1).setAlpha(0.05).setScale(0.4);
+        this.backClock = PhaserScene.add.image(this.x, this.y, 'lowq', 'temporal9.png').setDepth(-1).setAlpha(0.05).setScale(0.55);
         this.backClock.baseScale = this.backClock.scaleX;
         let delayAmt = 0;
         let delayAdded = 460;
@@ -1007,7 +1007,7 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_e'), 10);
+        messageBus.publish("showCombatText", getLangText('magician_e'), 0);
         this.addTimeout(() => {
             this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1026,7 +1026,7 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_f'), 10);
+        messageBus.publish("showCombatText", getLangText('magician_f'), 0);
         this.addTimeout(() => {
             this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1044,7 +1044,7 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_g'), 10);
+        messageBus.publish("showCombatText", getLangText('magician_g'), 0);
         this.addTimeout(() => {
             this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1247,10 +1247,8 @@
                  },
                  {
                      name: "...",
-                     desc: "The Time Magician cautiously\npokes you with his\nwand.",
                      chargeAmt: 400,
                      damage: -1,
-                     prepareSprite: 'time_magi_cast.png',
                      startFunction: () => {
                         this.showTiredText();
                      },
@@ -1260,10 +1258,8 @@
                  },
                  {
                      name: ":(",
-                     desc: "The Time Magician cautiously\npokes you with his\nwand.",
                      chargeAmt: 400,
                      damage: -1,
-                     prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
 
                      },
@@ -1648,7 +1644,7 @@
                     clock.y = -75;
                     let randFrame = 'temporal' + Math.floor(Math.random() * 10) + ".png";
                     clock.setFrame(randFrame).setRotation(Math.random() * 6);
-                    let randDist = 0.25 + Math.random() * 0.45;
+                    let randDist = 0.3 + Math.random() * 0.55;
                     clock.setScale(randDist);
                     clock.rotSpeed = (1 + Math.random()) * (Math.random < 0.5 ? 1 : -1);
                     clock.setScale(clock.scaleX);
@@ -1673,7 +1669,7 @@
             1, 4, 3, 2, 0];
         let numObjects = 15;
         for (let i = 0; i < numObjects; i++) {
-            let randDist = 0.25 + Math.random() * 0.45;
+            let randDist = 0.3 + Math.random() * 0.55;
 
             let randFrame = 'temporal' + Math.floor(Math.random() * 10) + ".png";
             let newClock = this.addSprite(0, (i * gameConsts.height / (numObjects - 2)) - 70, 'lowq', randFrame).setRotation(Math.random() * 6).setScale(randDist).setDepth(-1);
@@ -1681,7 +1677,7 @@
 
              this.addTween({
                  targets: newClock,
-                 alpha: newClock.scaleX * 0.5 - 0.05,
+                 alpha: newClock.scaleX * 0.34,
                  duration: 500
              });
 

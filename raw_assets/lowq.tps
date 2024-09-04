@@ -252,21 +252,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">lowq/long_arm.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>63,200,125,400</rect>
-                <key>scale9Paddings</key>
-                <rect>63,200,125,400</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">lowq/sharpflashred.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -312,12 +297,65 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">lowq/story_img_0.png</key>
+            <key type="filename">lowq/story_img_1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>58,43,115,85</rect>
+                <key>scale9Paddings</key>
+                <rect>58,43,115,85</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">lowq/story_img_10.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>35,39,71,77</rect>
+                <key>scale9Paddings</key>
+                <rect>35,39,71,77</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">lowq/story_img_2.png</key>
+            <key type="filename">lowq/story_img_3.png</key>
+            <key type="filename">lowq/story_img_4.png</key>
+            <key type="filename">lowq/story_img_5.png</key>
+            <key type="filename">lowq/story_img_6.png</key>
+            <key type="filename">lowq/story_img_7.png</key>
+            <key type="filename">lowq/story_img_8.png</key>
+            <key type="filename">lowq/story_img_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>28,27,57,53</rect>
+                <key>scale9Paddings</key>
+                <rect>28,27,57,53</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">lowq/temporal0.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.6</double>
+                <double>0.48</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -332,7 +370,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.5</double>
+                <double>0.44</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -347,7 +385,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.6</double>
+                <double>0.48</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -362,7 +400,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.6</double>
+                <double>0.48</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -377,7 +415,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.6</double>
+                <double>0.48</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -392,7 +430,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.6</double>
+                <double>0.48</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -407,7 +445,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.6</double>
+                <double>0.48</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -422,7 +460,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.6</double>
+                <double>0.48</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -437,7 +475,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.6</double>
+                <double>0.48</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -452,7 +490,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.6</double>
+                <double>0.48</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>

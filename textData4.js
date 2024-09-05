@@ -296,15 +296,7 @@ let textData4 = {
         "es": "REGRESO A LA PRÁCTICA",
         "jp": "練習に復帰"
     },
-    "death8b": {
-        "en_us": "BUT UNDERSTAND THAT ALL\nTHINGS MUST MEET THEIR END.",
-        "fr": "MAIS COMPRENEZ QUE TOUTES\nCHOSES DOIVENT CONNAÎTRE UNE FIN.",
-        "zh_tw": "但要明白，萬事萬物\n都必須達到其終點。",
-        "zh_cn": "但要明白，万事万物\n都必须达到其终点。",
-        "ru": "НО ПОЙМИТЕ, ЧТО ВСЕ СУЩЕЕ\nДОЛЖНО ИМЕТЬ СВОЙ КОНЕЦ.",
-        "es": "PERO ENTIENDE QUE TODAS LAS\nCOSAS DEBEN ENCONTRAR SU FIN.",
-        "jp": "しかし、すべてのものはその終わりを\n迎えなければならないことを理解してください。"
-    },
+
     "energy_tut_goblin": {
         "en_us": "Energy spells\ndeal True damage\nthat ignores\nenemy defenses.\n              +",
         "fr": "Les sorts d’énergie\ninfligent des dégâts\nbruts qui ignorent\nles défenses ennemies.\n                  +",

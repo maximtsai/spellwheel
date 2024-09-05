@@ -226,16 +226,16 @@ let textData2 = {
         "jp": ""
     },
     "post_fight_story1": {
-        "en_us": "I have arrived\nat the gates to\nthe forbidden land\nof the departed.\n\nImmediately, this realm resists my entry.\nBut I know I will find you here, dear beloved,\nand nothing will stop me from reaching you.",
+        "en_us": "I have arrived at the gates to\nthe forbidden land of the departed.\n\nImmediately, this realm resists my entry.\nBut I know I will find you here, dear beloved,\nand nothing will stop me from reaching you.",
         "fr": "Je suis arrivé aux portes de la terre interdite des défunts.  Immédiatement, ce royaume résiste à mon entrée. Mais je sais que je vous trouverai ici, chers bien-aimés, et rien ne m’empêchera de vous atteindre.",
-        "zh_tw": "我已經到達了\n通往逝者禁地的\n大門。 \n\n立刻，這個境界就抵擋住了我的進入。\n但我知道我會在這裡找到你，親愛的摯愛，\n沒有什麼能阻止我接近你。",
-        "zh_cn": "我已经到达了\n通往逝者禁地的\n大门。 \n\n立刻，这个境界就抵挡住了我的进入。\n但我知道我会在这里找到你，亲爱的挚爱，\n没有什么能阻止我接近你。",
+        "zh_tw": "我已經到達了通往逝者禁地的大門。 \n\n立刻，這個境界就抵擋住了我的進入。\n但我知道我會在這裡找到你，親愛的摯愛，\n沒有什麼能阻止我接近你。",
+        "zh_cn": "我已经到达了通往逝者禁地的大门。 \n\n立刻，这个境界就抵挡住了我的进入。\n但我知道我会在这里找到你，亲爱的挚爱，\n没有什么能阻止我接近你。",
         "ru": "Я прибыл к воротам запретной земли усопших.  Этот мир сразу же сопротивляется моему входу. Но я знаю, что найду тебя здесь, дорогая возлюбленная, и ничто не помешает мне добраться до тебя.",
         "es": "He llegado a las puertas de la tierra prohibida de los difuntos.  Inmediatamente, este reino se resiste a mi entrada. Pero sé que te encontraré aquí, querido amado, y nada me impedirá llegar a ti.",
         "jp": "私は死者の禁じられた土地への門に到着しました。 すぐに、この領域は私の立ち入りに抵抗します。しかし、私はここであなたを見つけるでしょう、親愛なる最愛の人、そして私があなたに連絡を取るのを妨げるものは何もありません。"
     },
     "post_fight_story2": {
-        "en_us": "The fabled Reaper has taken\bnotice of me, but I hardly feel afraid.\n\nThey remind me more of my nagging parents\nthan an underworld spectre.\n\nPerhaps I'll take this shield before\nthey start chastising me any further.",
+        "en_us": "The fabled Reaper has taken\nnotice of me, but I hardly feel afraid.\n\nThey remind me more of my nagging parents\nthan an underworld spectre.\n\nPerhaps I'll grab this shield before they\nstart chastising me any further.",
         "fr": "Le légendaire Faucheur m'a remarqué,\nmais je n'ai guère peur.\n\nIls me rappellent plus mes parents\nharcelants qu'un spectre des enfers.\n\nJe devrais lui retirer ce bouclier\navant qu'il continue à me harceler.",
         "zh_tw": "傳說中的死神已經注意到我了，\n但我幾乎不覺得害怕。\n\n" +
             "在我看來，他們更像是個嘮叨的父母，\n而不是地獄裡可怕的幽靈。\n\n我該在他繼續嘮叨前拿走這面盾牌。",
@@ -251,26 +251,30 @@ let textData2 = {
             "私にとって、彼らは地獄から来た恐ろしい幽霊というよりも、口うるさい親のように見えます。\n\n" +
             "したがって、この盾を奪うのは私に義務がある。"
     },
+    "land_of_the_dead": {
+       "en_us": "test",
+       "zh_cn": "亡灵之地"
+    },
     "post_fight_story3": {
-        "en_us": "It appears I\ngain the strength\nof every foe I vanquish!\n\nThe journey may be long, but if I conquer\nenough adversaries, I may one day be able to\nstand against Death itself!",
-        "fr": "Il semble que je gagne la force de chaque ennemi que je vainc !  Le voyage peut être long, mais si je conquiert suffisamment d’adversaires, je pourrai peut-être un jour résister à la Mort elle-même !",
-        "zh_tw": "看來我征服的每\n一個敵人的力量都\n得到了！\n\n旅程可能很長，但如果我征服了足夠多的敵人，\n\n我也許有一天能夠對抗死神本身！",
-        "zh_cn": "看来我征服的每\n一个敌人的力量都\n得到了！\n\n旅程可能很长，但如果我征服了足够多的敌人，\n\n我也许有一天能够对抗死神本身！",
+        "en_us": "Though this is the land of the dead,\nthe foes I face seem oddly... alive.\n\nBut each victory also grants me strength,\nand I must take as much power as I can get\nfor this journey.",
+        "fr": "Les ennemis que j’ai affrontés au\nPays des Morts semblaient… vivants.\n\nMais chaque victoire me donne aussi du pouvoir.\nJe dois acquérir autant de force que possible\npour sauver ma bien-aimée.",
+        "zh_tw": "我在亡靈之地所面對的敵人看起來就像…活著一樣。\n\n但每一次勝利也賦予我力量。\n我必須獲得盡可能多的力量來拯救我心愛的。",
+        "zh_cn": "我在亡灵之地所面对的敌人看起来就像…活着一样。\n\n但每一次胜利也赋予我力量。\n我必须获得尽可能多的力量来拯救我心爱的。",
         "ru": "Кажется, я получаю силу каждого врага, которого побеждаю!  Путешествие может быть долгим, но если я победлю достаточное количество противников, я смогу однажды противостоять самой Смерти!",
         "es": "¡Parece que obtengo la fuerza de cada enemigo al que venzo!  El viaje puede ser largo, pero si conquisto suficientes adversarios, ¡algún día podré enfrentarme a la muerte misma!",
         "jp": "どうやら私は倒すすべての敵の力を手に入れたようだ! 旅は長いかもしれないが、十分な数の敵を倒せば、いつの日か死そのものに立ち向かえるようになるかもしれない!"
     },
     "post_fight_story4": {
-        "en_us": "How I yearn\nto feel your\nembrace once again,\nmy dearest beloved.\n\nYour passing was too soon, too unjust,\nand I will right this wrong even if I must\noverturn the entire land.",
-        "fr": "Comme j’aspire à sentir à nouveau ton étreinte, ma très chère bien-aimée.  Votre décès a été trop tôt, trop injuste, et je réparerai cette injustice même si je dois renverser tout le pays.",
-        "zh_tw": "我多麼渴望再次感受到你的擁抱，我最親愛的。 你的逝世太早了，太不公正了，即使我必須推翻整個土地，我也會糾正這個錯誤。",
-        "zh_cn": "我多么渴望再次感受到你的拥抱，我最亲爱的。 你的逝世太早了，太不公正了，即使我必须推翻整个土地，我也会纠正这个错误。",
+        "en_us": "Sometimes I question myself, whether entering\nthese forbidden lands and battling every foe\nI encounter is truly the right choice.\n\nBut when I close my eyes and think of\nyour smile, I feel that every sacrifice will be\nworth it in the end.",
+        "fr": "Parfois, je me demande si aller au Pays des\nMorts et combattre tous les ennemis est vraiment\nla bonne chose à faire.\n\nMais quand je ferme les yeux et pense à ton\nsourire, j’ai l’impression que tous les sacrifices\nen valaient la peine au final.",
+        "zh_tw": "有時我會懷疑進入亡靈之地，與每個敵人戰鬥是否\n真的是正確的選擇。\n\n但當我閉上眼睛，想起你的笑容時，我覺得最終所有的\n犧牲都是值得的。",
+        "zh_cn": "有时我会怀疑进入亡灵之地，与每个敌人战斗是否\n真的是正确的选择。\n\n但当我闭上眼睛，想起你的笑容时，我觉得最终所有的\n牺牲都是值得的。",
         "ru": "Как же я жажду снова ощутить твои объятия, моя дорогая возлюбленная.  Твоя смерть была слишком поспешной, слишком несправедливой, и я исправлю эту ошибку, даже если мне придется опрокинуть всю страну.",
         "es": "¡Cómo anhelo sentir tu abrazo una vez más, mi queridísimo amado!  Tu muerte fue demasiado prematura, demasiado injusta, y corregiré este error incluso si tengo que trastornar toda la tierra.",
         "jp": "あなたの抱擁をもう一度感じたいと切望しています、私の最愛の人。 あなたの死はあまりにも早く、あまりにも不当であり、たとえ私が国全体を覆さなければならないとしても、私はこの間違いを正します。"
     },
     "post_fight_story5": {
-        "en_us": "My power grows,\nbut so too does\nthe resistance\nthis land puts up.\n\nIs my noble quest to reclaim a loved one\nso wrong?\n\nSurely not, and I shall do whatever it takes,\nregardless of the cost.",
+        "en_us": "The Reaper appears every time to sour my\nvictories. Is my quest to reclaim a loved one\nso wrong?\n\nSurely not, which means it must be the\nReaper themselves who is setting up all\nthese obstacles!",
         "fr": "Mon pouvoir augmente, mais la résistance que cette terre oppose aussi aussi.  Ma noble quête pour récupérer un être cher est-elle si mauvaise ?  Sûrement pas, et je ferai tout ce qu’il faut, quel qu’en soit le prix.",
         "zh_tw": "我的力量在增長，但這片土地所施加的抵抗也在增長。 我找回親人的崇高追求有這麼大的錯誤嗎？ 當然不會，我會不惜一切代價，不惜一切代價。",
         "zh_cn": "我的力量在增长，但这片土地所施加的抵抗也在增长。 我找回亲人的崇高追求有这么大的错误吗？ 当然不会，我会不惜一切代价，不惜一切代价。",
@@ -279,7 +283,7 @@ let textData2 = {
         "jp": "私の力は増すが、この土地が耐える抵抗も大きくなる。 愛する人を取り戻すという私の崇高な探求は、それほど間違っているのでしょうか? もちろん、そうではないし、どんな犠牲を払おうとも、必要なことは何でもする。"
     },
     "post_fight_story6": {
-        "en_us": "The land of the\ndead is a labyrinth\nof dangers, but\nslowly and steadily I am forcing\nmy way through its walls.\n\nSurely Death must be growing desperate\nknowing I am approaching my destination.",
+        "en_us": "The land of the dead is a labyrinth\nof dangers, but steadily I am forcing my way\nthrough its walls.\n\nI bet Death is growing desperate knowing\nI am near my destination.",
         "fr": "Le pays des morts\nest un labyrinthe\nde dangers, mais\nje me fraye un chemin à travers\nses murs.\n\nLa Mort doit sûrement être désespérée sachant\nque je m'approche de ma destination.",
         "zh_tw": "亡靈之地是一個\n危險的迷宮，\n但我正穩定地\n衝破它的圍牆。\n\n當死神知道我即將到達目的地時，\n他一定越來越絕望。",
         "zh_cn": "亡灵之地是一个\n危险的迷宫，\n但我正稳步地\n冲破它的围墙。\n\n当死神知道我即将到达目的地时，\n他一定越来越绝望。",
@@ -288,7 +292,7 @@ let textData2 = {
         "jp": "死者の国は危険\nに満ちた迷宮だが、\n私はゆっくりと着\n実にその壁を突破している。\n\n私が目的地に近づいていることを知って、\n死神はきっと絶望しているに違いない。"
     },
     "post_fight_story7": {
-        "en_us": "The opponents I\nencounter are\nformidable, but my\nown strength is greater still.\n\nThere may still be room for growth, but my\nmagic should now more than suffice to rescue\nyou, my dearest beloved.",
+        "en_us": "The opponents I encounter are formidable,\nbut my own strength is greater still.\n\nMy magic feels complete. All that's left\nis to use it well.",
         "fr": "Les adversaires que je rencontre sont redoutables, mais ma propre force est encore plus grande.  Il y a peut-être encore de la place pour la croissance, mais ma magie devrait maintenant plus que suffire à te sauver, ma très chère bien-aimée.",
         "zh_tw": "我遇到的對手很強大，但我自己的力量更大。 可能還有成長的空間，但我的魔法現在應該足以拯救你，我最親愛的人。",
         "zh_cn": "我遇到的对手很强大，但我自己的力量更大。 可能还有成长的空间，但我的魔法现在应该足以拯救你，我最亲爱的人。",
@@ -297,7 +301,7 @@ let textData2 = {
         "jp": "私が遭遇する相手は手ごわいですが、私自身の強さはさらに大きいです。 まだ成長の余地はあるかもしれないが、私の魔法は今や、私の最愛の愛するあなたを救うには十分すぎるほどのはずだ。"
     },
     "post_fight_story8": {
-        "en_us": "It becomes clearer\nwith each step\nthat Death itself\nis orchestrating these obstacles\nto thwart my quest. Yet this only fuels my resolve.\n\nIf Death thinks it can deter me with these\ntrials, it underestimates the depth of\nmy determination.\n\nMy beloved awaits, and no force, not even Death,\nshall keep us apart.",
+        "en_us": "If Death thinks it can deter me with these\ntrials, it underestimates the depth of\nmy determination.\n\nMy beloved awaits, and no force, not even Death,\nshall keep us apart.",
         "fr": "Il devient de plus en plus clair à chaque pas que la Mort elle-même orchestre ces obstacles pour contrecarrer ma quête. Pourtant, cela ne fait qu’alimenter ma détermination.  Si la Mort pense qu’elle peut me dissuader dans ces épreuves, elle sous-estime la profondeur de ma détermination.  Mon bien-aimé vous attend, et aucune force, pas même la Mort, ne nous séparera.",
         "zh_tw": "每走一步，我都越來越\n清楚，死神本身正\n在精心策劃這些障礙，\n以阻撓我的任务。然而，這隻會激發我的\n決心。\n\n如果死神認為它可以在這些試驗中阻止我，那麼它低估了\n我決心的深度。 我心愛的人等待著，沒有任何力量，\n甚至死亡，不能使我們分開。",
         "zh_cn": "每走一步，我都越来越\n清楚，死神本身正\n在精心策划这些障碍，\n以阻挠我的任务。然而，这只会激发我的\n决心。\n\n如果死神认为它可以在这些试验中阻止我，那么它低估了\n我决心的深度。 我心爱的人等待着，没有任何力量，\n甚至死亡，不能使我们分开。",
@@ -306,7 +310,7 @@ let textData2 = {
         "jp": "一歩進むごとに、死そのものが私の探求を妨害するためにこれらの障害を画策していることが明らかになる。しかし、これは私の決意を煽るだけです。 もし死神が、このような試練で私を思いとどまらせることができると考えているのなら、それは私の決意の深さを過小評価していることになる。 私の最愛の人が待っており、どんな力も、死でさえも、私たちを引き離すことはできません。"
     },
     "post_fight_story9": {
-        "en_us": "Not even the\nmachines of death\ncan best me!\n\nI am at the height of my power,\nand nothing remains that can stand in my way.\n\nAll I have to do now is get around this broken\nrobot and I know I shall find my beloved just\naround the corner.",
+        "en_us": "Not even Death's deadliest machines can\nbest me!\n\nI am at the height of my power, and\nthere is nothing that can stand in my way.\n\nAll that's left is to get around this broken\nrobot and I know I shall find my beloved just\naround the corner.",
         "fr": "Même les machines de mort ne peuvent pas me battre !  Je suis au sommet de ma puissance, et il ne reste plus rien qui puisse se mettre en travers de mon chemin.  Tout ce que j’ai à faire maintenant est de contourner ce robot en panne et je sais que je trouverai mon bien-aimé juste au coin de la rue.",
         "zh_tw": "即使是死亡的機器也無法戰勝我！ 我正處於權力的巔峰，沒有什麼可以阻擋我的。 我現在所要做的就是繞過這個破碎的機器人，我知道我會在拐角處找到我心愛的人。",
         "zh_cn": "即使是死亡的机器也无法战胜我！ 我正处于权力的巅峰，没有什么可以阻挡我的。 我现在所要做的就是绕过这个破碎的机器人，我知道我会在拐角处找到我心爱的人。",
@@ -333,10 +337,10 @@ let textData2 = {
         "jp": "旅を続ける    "
     },
     "post_fight_skip_training": {
-        "en_us": "Journey On     ",
-        "fr": "Voyage sur     ",
-        "zh_tw": "旅程繼續     ",
-        "zh_cn": "旅程继续     ",
+        "en_us": "Skip Test     ",
+        "fr": "Sauter le test     ",
+        "zh_tw": "跳過測試     ",
+        "zh_cn": "跳过测试     ",
         "ru": "Путешествие вперед ",
         "es": "Viaje en marcha   ",
         "jp": "ジャーニー・オン    "
@@ -477,8 +481,8 @@ let textData2 = {
         "jp": ""
     },
     "pre_fight_5a": {
-        "en_us": "No matter where I go, this wall\nalways seems to be blocking the way.",
-        "fr": "Où que j’aille, ce mur semble\ntoujours me barrer la route.",
+        "en_us": "No matter where I go, this wall always\nseems to be blocking the way.",
+        "fr": "Où que j’aille, ce mur semble toujours me\nbarrer la route.",
         "zh_tw": "無論我走到哪裡，這堵牆似乎總是\n擋住了去路。",
         "zh_cn": "无论我走到哪里，这堵墙似乎总是\n挡住了去路。",
         "ru": "Куда бы я ни пошел, эта стена,\nкажется, всегда преграждает путь.",
@@ -486,11 +490,11 @@ let textData2 = {
         "jp": "どこに行っても、この壁はいつも道を塞いでいるようです。"
     },
     "pre_fight_5b": {
-        "en_us": "But if there is no entrance, then I\nwill simply make one.",
-        "fr": "Mais s’il n’y a pas d’entrée, alors\nj’en ferai simplement une.",
+        "en_us": "But if there is no entrance, then I will\nsimply make one.",
+        "fr": "Mais s’il n’y a pas d’entrée, alors j’en\nferai simplement une.",
         "zh_tw": "但是如果沒有入口，那我就自己造一個。",
         "zh_cn": "但是如果没有入口，那我就自己造一个。",
-        "ru": "Но если входа нет, то я просто\nсделаю его.",
+        "ru": "Но если входа нет, то я просто сделаю его.",
         "es": "Pero si no hay entrada, entonces\nsimplemente haré una.",
         "jp": "しかし、入り口がない場合は、単に入り口\nを作ります。"
     },

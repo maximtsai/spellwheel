@@ -51,7 +51,7 @@ class PostFightScreen {
             this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 120, 'misc', 'locket1.png').setScale(0.75).setDepth(100003).setAlpha(0).setOrigin(0.5, 0.5);
         }
         if (!this.locketDialogImage) {
-            this.locketDialogImage = this.scene.add.sprite(gameConsts.halfWidth - 146, gameConsts.halfHeight - 172, 'lowq', 'story_img_1.png').setDepth(100003).setAlpha(0).setOrigin(0.46, 0.1);
+            this.locketDialogImage = this.scene.add.sprite(gameConsts.halfWidth - 146, gameConsts.halfHeight - 170, 'lowq', 'story_img_1.png').setDepth(100003).setAlpha(0).setOrigin(0.46, 0.1).setBlendMode(Phaser.BlendModes.MULTIPLY);
         }
         if (!this.locketDialog) {
             this.locketDialog = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 85, '(placeholder story)', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);

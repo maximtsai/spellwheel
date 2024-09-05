@@ -1007,7 +1007,7 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_e'), 0);
+        messageBus.publish("showCombatText", getLangText('magician_e'), 20);
         this.addTimeout(() => {
             this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1026,7 +1026,7 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_f'), 0);
+        messageBus.publish("showCombatText", getLangText('magician_f'), 20);
         this.addTimeout(() => {
             this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1044,7 +1044,7 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_g'), 0);
+        messageBus.publish("showCombatText", getLangText('magician_g'), 20);
         this.addTimeout(() => {
             this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();

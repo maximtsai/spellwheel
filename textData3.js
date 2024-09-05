@@ -100,6 +100,33 @@ let textData3 = {
         "jp": ""
     },
     "death3a": {
+        "en_us": "I SEE YOU SEEK REUNION\nWITH YOUR BELOVED,",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": ",",
+        "es": "",
+        "jp": ""
+    },
+    "death3b": {
+        "en_us": "BUT THIS PATH LEADS ONLY TO SORROW.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": ",",
+        "es": "",
+        "jp": ""
+    },
+    "death3c": {
+        "en_us": "TURN BACK BEFORE\nYOUR HEART BREAKS TWICE.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "xxxdeath3a": {
         "en_us": "I ISSUE YOU ONE FINAL WARNING-",
         "fr": "JE NE FERAI QUE TE PRÉVENIR UNE FOIS DE PLUS,",
         "zh_tw": "我只會再次警告你，",
@@ -108,7 +135,7 @@ let textData3 = {
         "es": "SOLO TE ADVERTIRÉ UNA VEZ MÁS,",
         "jp": "もう一度だけ警告します。"
     },
-    "death3b": {
+    "xxxdeath3b": {
         "en_us": "TURN BACK.\nYOU SEEK THE UNOBTAINABLE.",
         "fr": "CE QUE VOUS CHERCHEZ\nICI NE PEUT PAS ÊTRE ATTEINT.",
         "zh_tw": "你在此尋求的\n東西無法實現。",
@@ -118,7 +145,7 @@ let textData3 = {
         "jp": "あなたがここで探し求めているものは、\n達成することができません。"
     },
     "death4b": {
-        "en_us": "THE END OF ONE'S FATE CAN\nBE DELAYED, BUT NOT UNDONE.",
+        "en_us": "YOU MARCH FORWARD, YET REMAIN TETHERED\nTO A TIME THAT HAS LONG PASSED.",
         "fr": "",
         "zh_tw": "一個人命運的終結可以被延遲，\n但無法被改變。",
         "zh_cn": "一个人命运的终结可以被延迟，\n但无法被改变。",
@@ -127,16 +154,25 @@ let textData3 = {
         "jp": ""
     },
     "death4c": {
-        "en_us": "REMEMBER THIS AS YOU\nCONTINUE YOUR \"QUEST\".",
+        "en_us": "YOU WILL NEVER FIND PEACE-\nFOR HER, OR FOR YOURSELF,",
         "fr": "",
-        "zh_tw": "在繼續你的「崇高任務」時記住這一點。",
-        "zh_cn": "在继续你的“崇高任务”时记住这一点。",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death4d": {
+        "en_us": "UNTIL YOU LET GO.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death5a": {
-        "en_us": "YOU MAY THINK YOURSELF A\nHERO, BUT UNDERSTAND THIS",
+        "en_us": "PERHAPS YOU THINK YOURSELF\nA HERO, BUT UNDERSTAND THIS",
         "fr": "VOUS POUVEZ VOUS CONSIDÉRER COMME UN HÉROS, MAIS COMPRENEZ CECI",
         "zh_tw": "你可能認為自己是英雄，但要明白這一點",
         "zh_cn": "你可能认为自己是英雄，但要明白这一点",
@@ -146,27 +182,27 @@ let textData3 = {
     },
     "death5b": {
         "en_us": "NOTHING NOBLE CAN COME\nFROM THIS JOURNEY.",
-        "fr": "RIEN DE NOBLE NE PEUT SORTIR DE CE VOYAGE.",
-        "zh_tw": "從這段旅程中可以得到任何高尚的東西。",
-        "zh_cn": "从这段旅程中可以得到任何高尚的东西。",
+        "fr": "RIEN DE NOBLE NE PEUT SORTIR\nDE CE VOYAGE.",
+        "zh_tw": "你的旅程不會有任何高尚的結尾。",
+        "zh_cn": "你的旅程不会有任何高尚的结尾。",
         "ru": "НИЧТО БЛАГОРОДНОЕ НЕ МОЖЕТ ПРОИЗОЙТИ ИЗ ЭТОГО ПУТЕШЕСТВИЯ.",
         "es": "NADA NOBLE PUEDE SALIR DE ESTE VIAJE.",
         "jp": "この旅から高貴なものは何も生まれません。"
     },
     "death6a": {
         "en_us": "YOU ARE TRULY MAKING\nA MESS OF THINGS.",
-        "fr": "VOUS ÊTES VRAIMENT EN TRAIN DE METTRE LE BAZAR DANS LE PÉTRIN.",
-        "zh_tw": "你真的把事情搞得一團糟。",
-        "zh_cn": "你真的把事情搞得一团糟。",
+        "fr": "TU ES VRAIMENT EN TRAIN DE\nMETTRE LES CHOSES EN DÉSORDRE.",
+        "zh_tw": "你確實把一切搞得一團糟。",
+        "zh_cn": "你确实把一切搞得一团糟。",
         "ru": "ВЫ ДЕЙСТВИТЕЛЬНО ВСЕ ПОРТИТЕ.",
         "es": "REALMENTE ESTÁS HACIENDO UN LÍO CON LAS COSAS.",
         "jp": "あなたは本当に物事をめちゃくちゃにしています。"
     },
     "death6b": {
-        "en_us": "A MESS THAT I HAVE\nTO CLEAN UP.",
-        "fr": "UN GÂCHIS QUE JE DOIS NETTOYER.",
-        "zh_tw": "我必須清理的爛攤子。",
-        "zh_cn": "我必须清理的烂摊子。",
+        "en_us": "A MESS OF THIS LAND,\nAND OF YOUR VERY SOUL.",
+        "fr": "UN DÉSORDRE DE CETTE TERRE,\nET DE VOTRE ÂME MÊME.",
+        "zh_tw": "讓這個世界陷入混亂，\n也讓你的靈魂陷入混亂。",
+        "zh_cn": "让这个世界陷入混乱，\n也让你的灵魂陷入混乱。",
         "ru": "БЕСПОРЯДОК, КОТОРЫЙ Я ДОЛЖЕН УБРАТЬ.",
         "es": "UN DESASTRE QUE TENGO QUE LIMPIAR.",
         "jp": "私が片付けなければならない混乱。"
@@ -199,7 +235,7 @@ let textData3 = {
         "jp": "危険な敵が待ち受けていること。"
     },
     "death8a": {
-        "en_us": "YOUR SKILL IS REMARKABLE\nTO REACH THIS FAR",
+        "en_us": "YOU ARE INDEED CLOSE TO REACHING\nYOUR BELOVED.",
         "fr": "VOTRE COMPÉTENCE EST REMARQUABLE\nPOUR ATTEINDRE SI LOIN",
         "zh_tw": "你的技能已經非常出色了，\n能達到這麼遠",
         "zh_cn": "你的技能已经非常出色了，\n能达到这么远",
@@ -207,11 +243,20 @@ let textData3 = {
         "es": "TU HABILIDAD ES NOTABLE\nPARA LLEGAR HASTA TAN LEJOS",
         "jp": "ここまで来るのは驚\nくべきことです"
     },
+    "death8b": {
+        "en_us": "BUT WHAT YOU ATTEMPT IS NOT\nAN ACT OF LOVE, BUT SELFISHNESS.",
+        "fr": "MAIS COMPRENEZ QUE TOUTES\nCHOSES DOIVENT CONNAÎTRE UNE FIN.",
+        "zh_tw": "但要明白，萬事萬物\n都必須達到其終點。",
+        "zh_cn": "但要明白，万事万物\n都必须达到其终点。",
+        "ru": "НО ПОЙМИТЕ, ЧТО ВСЕ СУЩЕЕ\nДОЛЖНО ИМЕТЬ СВОЙ КОНЕЦ.",
+        "es": "PERO ENTIENDE QUE TODAS LAS\nCOSAS DEBEN ENCONTRAR SU FIN.",
+        "jp": "しかし、すべてのものはその終わりを\n迎えなければならないことを理解してください。"
+    },
     "deathFight1a": {
-        "en_us": "UNFORTUNATE, YOUR JOURNEY\nWAS NOT MEANT TO BE.",
-        "fr": "MALHEUREUSEMENT, VOTRE VOYAGE N’ÉTAIT PAS CENSÉ ÊTRE.",
-        "zh_tw": "不幸的是，你的旅程註定不是這樣的。",
-        "zh_cn": "不幸的是，你的旅程注定不是这样的。",
+        "en_us": "ALAS, YOUR JOURNEY\nWAS NOT MEANT TO BE.",
+        "fr": "HÉLAS, VOTRE VOYAGE\nN'ÉTAIT PAS PRÉVU.",
+        "zh_tw": "。。。看来你的旅程注定不会实现。",
+        "zh_cn": "。。。看来你的旅程注定不会实现。",
         "ru": "К СОЖАЛЕНИЮ, ВАШЕМУ ПУТЕШЕСТВИЮ НЕ СУЖДЕНО БЫЛО СБЫТЬСЯ.",
         "es": "DESAFORTUNADAMENTE, SU VIAJE NO ESTABA DESTINADO A SER.",
         "jp": "残念なことに、あなたの旅はそうするはずではありませんでした。"
@@ -227,20 +272,20 @@ let textData3 = {
     },
     "deathFight1c": {
         "en_us": "YOU'VE LEARNED SOME\nNEW TRICKS. NOT BAD.",
-        "fr": "VOUS AVEZ APPRIS DE NOUVELLES ASTUCES. PAS MAL.",
-        "zh_tw": "你已經學會了一些新技巧。不錯。",
-        "zh_cn": "你已经学会了一些新技巧。不错。",
-        "ru": "ВЫ УЗНАЛИ НЕСКОЛЬКО НОВЫХ ТРЮКОВ. НЕПЛОХО.",
-        "es": "HAS APRENDIDO ALGUNOS TRUCOS NUEVOS. BIEN.",
+        "fr": "VOUS AVEZ APPRIS DE\nNOUVELLES ASTUCES. PAS MAL.",
+        "zh_tw": "你學會了一些新技巧。不錯。",
+        "zh_cn": "你学会了一些新技巧。不错。",
+        "ru": "ВЫ УЗНАЛИ НЕСКОЛЬКО\nНОВЫХ ТРЮКОВ. НЕПЛОХО.",
+        "es": "HAS APRENDIDO ALGUNOS\nTRUCOS NUEVOS. BIEN.",
         "jp": "新しいトリックを学びましたね。悪くありません。"
     },
     "deathFight1d": {
         "en_us": "BUT YOU WILL NOT\nESCAPE YOUR FATE.",
-        "fr": "MAIS CELA NE VOUS DISPENSE PAS DE VOTRE DESTIN.",
+        "fr": "MAIS CELA NE VOUS DISPENSE\nPAS DE VOTRE DESTIN.",
         "zh_tw": "但這並不能免除你的命運。",
         "zh_cn": "但这并不能免除你的命运。",
-        "ru": "НО ЭТО НЕ ОСВОБОЖДАЕТ ВАС ОТ ВАШЕЙ СУДЬБЫ.",
-        "es": "PERO ESO NO TE ABSUELVE DE TU DESTINO.",
+        "ru": "НО ЭТО НЕ ОСВОБОЖДАЕТ\nВАС ОТ ВАШЕЙ СУДЬБЫ.",
+        "es": "PERO ESO NO TE ABSUELVE\nDE TU DESTINO.",
         "jp": "しかし、それはあなたの運命を免除するものではありません。"
     },
     "deathFight1e": {
@@ -263,7 +308,7 @@ let textData3 = {
     },
     "deathFight1g": {
         "en_us": "NO MORE MESSING AROUND",
-        "fr": "PLUS BESOIN DE DÉCONNER",
+        "fr": "Plus de futilités.",
         "zh_tw": "再也不用胡鬧了",
         "zh_cn": "再也不用胡闹了",
         "ru": "БОЛЬШЕ НЕ НУЖНО БЕЗДЕЛЬНИЧАТЬ",
@@ -271,7 +316,7 @@ let textData3 = {
         "jp": "もういじくり回す必要はありません"
     },
     "deathFight1h": {
-        "en_us": "...HMPH,\nSHODDY EQUIPMENT",
+        "en_us": "...HMPH, SHODDY EQUIPMENT",
         "fr": "... HMPH, ÉQUIPEMENT DE MAUVAISE QUALITÉ",
         "zh_tw": "...哼，以次充好的設備",
         "zh_cn": "...哼，以次充好的设备",
@@ -281,21 +326,12 @@ let textData3 = {
     },
     "deathFight1i": {
         "en_us": "SEEMS I HAVE TO BE\nMORE HANDS ON.",
-        "fr": "IL SEMBLE QUE JE DOIVE ÊTRE PLUS PRATIQUE.",
-        "zh_tw": "看來我必須多一點親力親為。",
-        "zh_cn": "看来我必须多一点亲力亲为。",
+        "fr": "On dirait que je dois\nme salir les mains.",
+        "zh_tw": "看來我需要親自動手。",
+        "zh_cn": "看来我需要亲自动手。",
         "ru": "КАЖЕТСЯ, МНЕ НУЖНО БЫТЬ БОЛЕЕ ПРАКТИЧНЫМ.",
         "es": "PARECE QUE TENGO QUE SER MÁS PRÁCTICO.",
         "jp": "もっと手を動かさなければならないようです。"
-    },
-    "deathFight1j": {
-        "en_us": "IT'S BEEN A LONG TIME SINCE\nI'VE HAD TO BE \"HANDS ON\".",
-        "fr": "CELA FAIT LONGTEMPS QUE JE N’AI PAS EU À METTRE LA MAIN À LA PÂTE.",
-        "zh_tw": "自從我不得不“親力親為”以來，已經有很長一段時間了。",
-        "zh_cn": "自从我不得不“亲力亲为”以来，已经有很长一段时间了。",
-        "ru": "ПРОШЛО МНОГО ВРЕМЕНИ С ТЕХ ПОР, КАК МНЕ ПРИХОДИЛОСЬ БЫТЬ «НА РУКАХ».",
-        "es": "HA PASADO MUCHO TIEMPO DESDE QUE TUVE QUE SER \"MANOS A LA OBRA\".",
-        "jp": "「ハンズオン」でなければならなかったのは久しぶりです。"
     },
     "deathFight2a": {
         "en_us": "PREPARE YOURSELF!",
@@ -306,18 +342,9 @@ let textData3 = {
         "es": "¡PREPARARSE!",
         "jp": "準備してください!"
     },
-    "deathFight2b": {
-        "en_us": "FAREWELL",
-        "fr": "ADIEU",
-        "zh_tw": "告別",
-        "zh_cn": "告别",
-        "ru": "ПРОЩАЛЬНЫЙ",
-        "es": "DESPEDIDA",
-        "jp": "お別れ"
-    },
     "epilogue1a": {
         "en_us": "ALAS, YOUR WOUNDS\nWERE TOO MANY TO BEAR.",
-        "fr": "HÉLAS, VOS BLESSURES ÉTAIENT TROP NOMBREUSES POUR ÊTRE PORTÉES.",
+        "fr": "HÉLAS, VOS BLESSURES ÉTAIENT\nTROP NOMBREUSES POUR ÊTRE PORTÉES.",
         "zh_tw": "唉，你的傷口太多了，無法承受。",
         "zh_cn": "唉，你的伤口太多了，无法承受。",
         "ru": "УВЫ, ТВОИХ РАН БЫЛО СЛИШКОМ МНОГО, ЧТОБЫ ВЫНЕСТИ.",
@@ -326,25 +353,25 @@ let textData3 = {
     },
     "epilogue1b": {
         "en_us": "BUT FOR YOUR EFFORTS, I SHALL\nAT LEAST GRANT YOUR WISH...",
-        "fr": "MAIS POUR VOS EFFORTS, J’EXAUCERAI AU MOINS VOTRE SOUHAIT...",
-        "zh_tw": "但看在你的努力上，我至少要滿足你的願望......",
-        "zh_cn": "但看在你的努力上，我至少要满足你的愿望......",
+        "fr": "MAIS POUR VOS EFFORTS,\nJ’EXAUCERAI AU MOINS VOTRE SOUHAIT...",
+        "zh_tw": "但為了你的努力，\n我至少會滿足你的願望。 。 。",
+        "zh_cn": "但为了你的努力，\n我至少会满足你的愿望。。。",
         "ru": "НО ЗА ТВОИ УСИЛИЯ Я, ПО КРАЙНЕЙ МЕРЕ, ИСПОЛНЮ ТВОЕ ЖЕЛАНИЕ...",
         "es": "PERO POR TUS ESFUERZOS, AL MENOS TE CONCEDERÉ TU DESEO...",
         "jp": "しかし、あなたの努力のために、私は少なくともあなたの願いを叶えてあげましょう..."
     },
     "epilogue1c": {
         "en_us": "TO BE BESIDE YOUR BELOVED.",
-        "fr": "POUR ÊTRE AUX CÔTÉS DE VOTRE BIEN-AIMÉ.",
-        "zh_tw": "在你心愛的人身邊。",
-        "zh_cn": "在你心爱的人身边。",
+        "fr": "POUR ÊTRE AUX CÔTÉS\nDE VOTRE BIEN-AIMÉ.",
+        "zh_tw": "讓你陪伴在你心愛的人身邊。",
+        "zh_cn": "让你陪伴在你心爱的人身边。",
         "ru": "БЫТЬ РЯДОМ С ЛЮБИМЫМ.",
         "es": "ESTAR AL LADO DE TU AMADA.",
         "jp": "あなたの最愛の人のそばにいるために。"
     },
     "epilogue1d": {
         "en_us": "MAY YOU FIND PEACE\nIN ETERNAL SLUMBER.",
-        "fr": "PUISSIEZ-VOUS TROUVER LA PAIX DANS LE SOMMEIL ÉTERNEL.",
+        "fr": "PUISSIEZ-VOUS TROUVER LA\nPAIX DANS LE SOMMEIL ÉTERNEL.",
         "zh_tw": "願你在永恆的沉睡中找到平安。",
         "zh_cn": "愿你在永恒的沉睡中找到平安。",
         "ru": "ПУСТЬ ТЫ НАЙДЕШЬ ПОКОЙ В ВЕЧНОМ СНЕ.",
@@ -353,19 +380,19 @@ let textData3 = {
     },
     "epilogue1e": {
         "en_us": "Ending 1\nEternal Rest",
-        "fr": "Fin 1 : Le repos éternel",
-        "zh_tw": "結束 1 永恆的安息",
-        "zh_cn": "结束 1 永恒的安息",
+        "fr": "Fin 1 :\nLe repos éternel",
+        "zh_tw": "結束 1\n永恆的安息",
+        "zh_cn": "结束 1\n永恒的安息",
         "ru": "Концовка 1 Вечный покой",
         "es": "Final 1 Descanso eterno",
         "jp": "エンディング1 永遠の休息"
     },
     "epilogue2a": {
         "en_us": "I SEE YOUR DESIRE TO\nSEEK VICTORY REMAINS INSATIABLE.",
-        "fr": "JE VOIS QUE VOTRE DÉSIR DE CHERCHER LA VICTOIRE RESTE INSATIABLE.",
-        "zh_tw": "我看到你尋求勝利的慾望仍然永不滿足。",
-        "zh_cn": "我看到你寻求胜利的欲望仍然永不满足。",
-        "ru": "Я ВИЖУ, ЧТО ВАШЕ ЖЕЛАНИЕ ДОБИВАТЬСЯ ПОБЕДЫ ОСТАЕТСЯ НЕНАСЫТНЫМ.",
+        "fr": "JE VOIS QUE VOTRE DÉSIR DE\nCHERCHER LA VICTOIRE RESTE INSATIABLE.",
+        "zh_tw": "看来你尋求勝利的慾望仍然永不滿足。",
+        "zh_cn": "看来你寻求胜利的欲望仍然永不满足。",
+        "ru": "Я ВИЖУ, ЧТО ВАШЕ ЖЕЛАНИЕ ДОБИВАТЬСЯ\nПОБЕДЫ ОСТАЕТСЯ НЕНАСЫТНЫМ.",
         "es": "VEO QUE TU DESEO DE BUSCAR LA VICTORIA SIGUE SIENDO INSACIABLE.",
         "jp": "あなたの勝利を求める欲望は飽くなきままです。"
     },
@@ -398,7 +425,7 @@ let textData3 = {
     },
     "epilogue2f": {
         "en_us": "AND YOU SHALL WANDER THE\nWORLD ETERNALLY WITHOUT REST.",
-        "fr": "ET TU ERRERAS ÉTERNELLEMENT DANS LE MONDE SANS REPOS.",
+        "fr": "ET TU ERRERAS ÉTERNELLEMENT\nDANS LE MONDE SANS REPOS.",
         "zh_tw": "你將永遠在世界上流浪，沒有休息。",
         "zh_cn": "你将永远在世界上流浪，没有休息。",
         "ru": "И ТЫ БУДЕШЬ ВЕЧНО СКИТАТЬСЯ ПО МИРУ БЕЗ ОТДЫХА.",

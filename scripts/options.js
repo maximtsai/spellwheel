@@ -59,7 +59,7 @@ class Options {
             this.listOfThingsToHide.push(this.darkenBG);
         }
         if (!this.bgPage) {
-            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 25, 'ui', 'paper.png').setDepth(this.baseDepth);
+            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 15, 'ui', 'paper.png').setDepth(this.baseDepth).setScale(1, 1.1);
             this.listOfThingsToHide.push(this.bgPage);
         }
 
@@ -69,7 +69,7 @@ class Options {
                     ref: "menu_btn_normal.png",
                     atlas: 'buttons',
                     x: gameConsts.halfWidth,
-                    y: gameConsts.halfHeight + 240,
+                    y: gameConsts.halfHeight + 280,
                     alpha: 1,
                 },
                 hover: {
@@ -127,7 +127,7 @@ class Options {
                     ref: "menu_btn_normal.png",
                     atlas: 'buttons',
                     x: gameConsts.halfWidth,
-                    y: gameConsts.halfHeight + 180,
+                    y: gameConsts.halfHeight + 220,
                     alpha: 1,
                 },
                 hover: {
@@ -173,8 +173,8 @@ class Options {
             this.draggerSFX;
 
             let startX = gameConsts.halfWidth + 25;
-            this.BGMIcon = PhaserScene.add.image(gameConsts.halfWidth - 185, gameConsts.halfHeight - 230, 'ui', 'music.png').setDepth(this.baseDepth);
-            this.SFXIcon = PhaserScene.add.image(gameConsts.halfWidth - 185, gameConsts.halfHeight - 150, 'ui', 'sound_full.png').setDepth(this.baseDepth);
+            this.BGMIcon = PhaserScene.add.image(gameConsts.halfWidth - 185, gameConsts.halfHeight - 270, 'ui', 'music.png').setDepth(this.baseDepth);
+            this.SFXIcon = PhaserScene.add.image(gameConsts.halfWidth - 185, gameConsts.halfHeight - 190, 'ui', 'sound_full.png').setDepth(this.baseDepth);
 
             this.sliderBGM = new Button({
                 isDraggable: true,
@@ -183,7 +183,7 @@ class Options {
                     ref: "slider.png",
                     alpha: 0,
                     x: startX,
-                    y: gameConsts.halfHeight - 230,
+                    y: gameConsts.halfHeight - 270,
                 },
                 onDrag: (x, y) => {
                     this.updateBGMSlider(startX, x);
@@ -202,7 +202,7 @@ class Options {
                     this.updateBGMSlider(startX, x);
                 },
                 onDrop: (x, y) => {
-                    this.sliderBGM.setPos(startX, gameConsts.halfHeight - 210);
+                    this.sliderBGM.setPos(startX, gameConsts.halfHeight - 250);
                     this.updateBGMSlider(startX, x);
                     playFakeBGMusic('button');
                     this.draggerBGM.setFrame('slider_indicator.png');
@@ -218,7 +218,7 @@ class Options {
                     ref: "slider.png",
                     alpha: 0,
                     x: startX,
-                    y: gameConsts.halfHeight - 150,
+                    y: gameConsts.halfHeight - 190,
                 },
                 onDrag: (x, y) => {
                     this.updateSFXSlider(startX, x)
@@ -237,7 +237,7 @@ class Options {
                     this.updateSFXSlider(startX, x)
                 },
                 onDrop: (x) => {
-                    this.sliderSFX.setPos(startX, gameConsts.halfHeight - 150);
+                    this.sliderSFX.setPos(startX, gameConsts.halfHeight - 190);
                     this.updateSFXSlider(startX, x);
                     playSound('button');
                     this.draggerSFX.setFrame('slider_indicator.png');
@@ -245,13 +245,13 @@ class Options {
             });
             this.sliderSFX.setDepth(this.baseDepth);
             this.listOfButtonsToDisable.push(this.sliderSFX);
-            this.BGMVisual = PhaserScene.add.image(startX, gameConsts.halfHeight - 230, 'ui', 'slider.png').setDepth(this.baseDepth);
-            this.SFXVisual = PhaserScene.add.image(startX, gameConsts.halfHeight - 150, 'ui', 'slider.png').setDepth(this.baseDepth);
+            this.BGMVisual = PhaserScene.add.image(startX, gameConsts.halfHeight - 270, 'ui', 'slider.png').setDepth(this.baseDepth);
+            this.SFXVisual = PhaserScene.add.image(startX, gameConsts.halfHeight - 190, 'ui', 'slider.png').setDepth(this.baseDepth);
 
             let musicExtraXPos = ((globalMusicVol * 10) - 9) * 30;
             let sfxExtraXPos = ((globalVolume * 10) - 9) * 30;
-            this.draggerBGM = PhaserScene.add.image(startX + 4 * 30 + musicExtraXPos, gameConsts.halfHeight - 230, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
-            this.draggerSFX = PhaserScene.add.image(startX + 4 * 30 + sfxExtraXPos, gameConsts.halfHeight - 150, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
+            this.draggerBGM = PhaserScene.add.image(startX + 4 * 30 + musicExtraXPos, gameConsts.halfHeight - 270, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
+            this.draggerSFX = PhaserScene.add.image(startX + 4 * 30 + sfxExtraXPos, gameConsts.halfHeight - 190, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
 
             this.listOfThingsToHide.push(this.BGMIcon);
             this.listOfThingsToHide.push(this.SFXIcon);
@@ -270,8 +270,8 @@ class Options {
                     atlas: 'buttons',
                     ref: "closebtn.png",
                     alpha: 0.9,
-                    x: gameConsts.halfWidth + 244,
-                    y: 105,
+                    x: gameConsts.halfWidth + 238,
+                    y: 91,
                 },
                 hover: {
                     alpha: 1,
@@ -346,16 +346,17 @@ class Options {
     createInfoBoxPosText() {
 
         if (!this.infoBoxPosText) {
-            this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight - 75, getLangText('spell_info_position'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setOrigin(0.5, 1).setDepth(this.baseDepth);
+            let startPos = gameConsts.halfHeight - 75;
+            this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth - 215, startPos - 25, getLangText('spell_info_position'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
             this.listOfThingsToHide.push(this.infoBoxPosText);
 
-            this.infoBoxPosTextLeft = PhaserScene.add.text(gameConsts.halfWidth - 183, gameConsts.halfHeight - 55, getLangText('left'), {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.infoBoxPosTextLeft = PhaserScene.add.text(gameConsts.halfWidth - 183, startPos, getLangText('left'), {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
             this.listOfThingsToHide.push(this.infoBoxPosTextLeft);
 
-            this.infoBoxPosTextCenter = PhaserScene.add.text(gameConsts.halfWidth - 13, gameConsts.halfHeight - 55, getLangText('center'), {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.infoBoxPosTextCenter = PhaserScene.add.text(gameConsts.halfWidth - 13, startPos, getLangText('center'), {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
             this.listOfThingsToHide.push(this.infoBoxPosTextCenter);
 
-            this.infoBoxPosTextNone = PhaserScene.add.text(gameConsts.halfWidth + 157, gameConsts.halfHeight - 55, getLangText('hidden'), {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.infoBoxPosTextNone = PhaserScene.add.text(gameConsts.halfWidth + 157, startPos, getLangText('hidden'), {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
             this.listOfThingsToHide.push(this.infoBoxPosTextNone);
 
 
@@ -371,7 +372,7 @@ class Options {
                     ref: "select_btn_normal.png",
                     alpha: 1,
                     x: gameConsts.halfWidth - 168,
-                    y: gameConsts.halfHeight - 55,
+                    y: startPos,
                 },
                 hover: {
                     atlas: 'buttons',
@@ -418,7 +419,7 @@ class Options {
                     ref: "select_btn_normal.png",
                     alpha: 1,
                     x: gameConsts.halfWidth,
-                    y: gameConsts.halfHeight - 55,
+                    y: startPos,
                 },
                 hover: {
                     atlas: 'buttons',
@@ -465,7 +466,7 @@ class Options {
                     ref: "select_btn_normal.png",
                     alpha: 1,
                     x: gameConsts.halfWidth + 168,
-                    y: gameConsts.halfHeight - 55,
+                    y: startPos,
                 },
                 hover: {
                     atlas: 'buttons',
@@ -517,7 +518,8 @@ class Options {
         let listOfLanguages = ['english', '简体中文', '繁体中文', 'français'];
         let listOfLanguageCodes = ['en_us', 'zh_cn', 'zh_tw', 'fr'];
         if (!this.langSelectText) {
-            this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 20, getLangText('language_text'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setOrigin(0.5, 1).setDepth(this.baseDepth);
+            let startPos = gameConsts.halfHeight + 15;
+            this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 215, startPos - 25, getLangText('language_text'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
             this.addLangTextUpdateable(this.langSelectText, 'language_text')
 
             this.listOfThingsToHide.push(this.langSelectText);
@@ -531,7 +533,7 @@ class Options {
                 let furthestRight = gameConsts.halfWidth + 157;
                 let totalDist = furthestRight - furthestLeft;
                 let intervalDist = totalDist / (listOfLanguages.length - 1)
-                let newLangText = PhaserScene.add.text(furthestLeft + intervalDist * i, gameConsts.halfHeight + 45, language, {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+                let newLangText = PhaserScene.add.text(furthestLeft + intervalDist * i, startPos, language, {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
                 this.listOfThingsToHide.push(newLangText);
 
                 let newBtn = new Button({
@@ -540,7 +542,7 @@ class Options {
                         ref: "select_btn_normal.png",
                         alpha: 1,
                         x: furthestLeft + intervalDist * i + 15,
-                        y: gameConsts.halfHeight + 45,
+                        y: startPos,
                     },
                     hover: {
                         atlas: 'buttons',
@@ -596,7 +598,7 @@ class Options {
             if (language == this.listOfLangButtons[i].language) {
                 this.listOfLangButtons[i].setState(DISABLE);
             }
-            
+
         }
     }
 

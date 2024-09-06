@@ -289,7 +289,9 @@
     }
 
     showLaughText2() {
-         this.sprite.stop();
+         if (this.sprite) {
+             this.sprite.stop();
+         }
          this.addTween({
              targets: this.laughText,
              alpha: 0,
@@ -519,7 +521,7 @@
                     attackSprites: ['death2charge.png'],
                     finishDelay: 1200,
                     startFunction: () => {
-                        this.pullbackScale = 0.6;
+                        this.pullbackScale = 0.66;
                         this.attackScale = 1.5;
                         this.pullbackHoldRatio = 0.9;
                         this.pullbackInitialDelay = 450;
@@ -708,7 +710,7 @@
                     attackSprites: ['death2charge.png'],
                     finishDelay: 1200,
                     startFunction: () => {
-                        this.pullbackScale = 0.6;
+                        this.pullbackScale = 0.66;
                         this.attackScale = 1.5;
                         this.pullbackHoldRatio = 0.9;
                         this.pullbackInitialDelay = 450;

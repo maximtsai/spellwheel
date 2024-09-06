@@ -264,6 +264,7 @@ class Enemy {
         this.angrySymbolIsHiding = true;
 
         this.attackNameHighlight = this.scene.add.image(x, attackNameYPos - 13, 'blurry', 'glow_flat_red.webp').setAlpha(0).setDepth(9);
+        this.attackGlow = this.scene.add.image(x, attackNameYPos - 10, 'blurry', 'glow_flat.webp').setAlpha(0).setDepth(9).setVisible(false);
 
         this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', isMobile ? 38 : 36);
         this.attackName.setDepth(9);
@@ -416,18 +417,34 @@ class Enemy {
                     if (this.attackName.currAnim) {
                         this.attackName.currAnim.stop();
                     }
-                    this.attackName.setAlpha(0.5);
+                    if (this.attackGlow.currAnim) {
+                        this.attackGlow.currAnim.stop();
+                    }
+                    this.attackGlow.visible = true;
+                    this.attackGlow.setScale(this.attackName.width * 0.009, 1.4);
+                    this.attackName.setAlpha(0.95);
                     let isShortName = this.nextAttack.name.length <= 7;
                     this.attackName.currAnim = PhaserScene.tweens.add({
                         targets: this.attackName,
                         ease: 'Cubic.easeIn',
                         duration: gameVars.gameManualSlowSpeedInverse * 500,
-                        alpha: 2.5,
+                        alpha: 1,
                         yoyo: true,
                         repeat: -1,
                         scaleX: origScale + (isShortName ? 0.25 : 0.09),
                         scaleY: origScale + (isShortName ? 0.35 : 0.2),
                     });
+                    this.attackGlow.currAnim = PhaserScene.tweens.add({
+                        targets: this.attackGlow,
+                        duration: gameVars.gameManualSlowSpeedInverse * 500,
+                        alpha: 0.7,
+                        ease: 'Quad.easeIn',
+                        yoyo: true,
+                        repeat: -1,
+                        scaleX: this.attackName.width * 0.014,
+                        scaleY: 1.55,
+                    });
+
                 }
             }
             if (this.isAngry) {
@@ -790,6 +807,14 @@ class Enemy {
         if (this.attackName.currAnim) {
             this.attackName.currAnim.stop();
         }
+        if (this.attackGlow.currAnim) {
+            this.attackGlow.currAnim.stop();
+            this.attackGlow.currAnim = PhaserScene.tweens.add({
+                targets: this.attackGlow,
+                duration: gameVars.gameManualSlowSpeedInverse * 200,
+                alpha: 0,
+            });
+        }
         this.attackName.origScale = finalScale;
         PhaserScene.tweens.add({
             targets: this.attackName,
@@ -814,6 +839,20 @@ class Enemy {
                                 repeat: -1,
                                 scaleX: this.attackName.origScale + 0.065,
                                 scaleY: this.attackName.origScale + 0.14,
+                            });
+                            this.attackGlow.setAlpha(0);
+                            this.attackGlow.setScale(this.attackName.width * 0.009, 1.4);
+                            this.attackGlow.visible = true;
+
+                            this.attackGlow.currAnim = PhaserScene.tweens.add({
+                                targets: this.attackGlow,
+                                duration: gameVars.gameManualSlowSpeedInverse * 750,
+                                ease: 'Quad.easeIn',
+                                yoyo: true,
+                                alpha: 0.95,
+                                repeat: -1,
+                                scaleX: this.attackName.width * 0.014,
+                                scaleY: 1.5,
                             });
                         }
                     }
@@ -1288,6 +1327,7 @@ class Enemy {
         });
         if (this.attackName) {
             this.attackName.visible = false;
+            this.attackGlow.visible = false;
         }
     }
 
@@ -1487,6 +1527,7 @@ class Enemy {
         this.voidPause.visible = false;
 
         this.attackName.visible = false;
+        this.attackGlow.visible = false;
         messageBus.publish('enemyHasDied');
 
         for (let i in this.statuses) {

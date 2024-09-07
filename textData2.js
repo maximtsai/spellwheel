@@ -616,7 +616,7 @@ let textData2 = {
         "jp": "攻撃されると\n敵が怒る!"
     },
     "level1_train_diag_a": {
-        "en_us": "I've set up a training dummy\nto test out this new rune.",
+        "en_us": "I've set up a training doll\nto test out this new rune.",
         "fr": "J'ai installé un mannequin\nd'entraînement pour tester ma nouvelle rune.",
         "zh_tw": "我設定了一個訓練假人\n來測試這個新的符文。",
         "zh_cn": "我设置了一个训练假人\n来测试这个新的符文。。",
@@ -722,15 +722,6 @@ let textData2 = {
         "ru": "Пустотные щиты\nмогут полностью\nблокировать\nодну-единственную атаку\n          +",
         "es": "Los escudos de\nvacío pueden\nbloquear completamente\nun solo ataque\n         +",
         "jp": "ボイドシールドは\n1回の攻撃を完全\nにブロックできる\n         +"
-    },
-    "level7_diag_a": {
-        "en_us": "Strange, I don't remember\nsetting up a training dummy here.",
-        "fr": "Étrange, je ne me souviens pas d'avoir installé un mannequin d'entraînement ici.",
-        "zh_tw": "奇怪，我不記得在這裡\n設置過訓練假人。",
-        "zh_cn": "奇怪，我不记得在这里\n设置过训练假人。",
-        "ru": "Странно, я не помню, чтобы ставил\nздесь тренировочный манекен.",
-        "es": "Qué raro, no recuerdo haber instalado\nun muñeco de entrenamiento aquí.",
-        "jp": "奇妙なことに、ここにトレーニングダミ\nーを設置した覚えはありません"
     },
     "dummy_mind_tut": {
         "en_us": "Energy Strike\nmakes your\nnext attack hit\ntwice as hard\n            +",

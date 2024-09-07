@@ -371,8 +371,8 @@
                 }
 
             }, 800);
-            this.glowHealth = this.addSprite(gameConsts.halfWidth, 21, 'blurry', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
-            this.glowHealth2 = this.addSprite(gameConsts.halfWidth, 21, 'blurry', 'glow_flat_red.webp').setDepth(0).setAlpha(1.1).setScale(0.5, 2);
+            this.glowHealth = this.addSprite(gameConsts.halfWidth, 18, 'blurry', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
+            this.glowHealth2 = this.addSprite(gameConsts.halfWidth, 20, 'blurry', 'glow_flat_red.webp').setDepth(0).setAlpha(1.1).setScale(0.5, 2);
             this.addTween({
                 targets: this.glowHealth2,
                 scaleX: 3,

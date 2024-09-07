@@ -88,16 +88,15 @@
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
             globalObjects.bannerTextManager.closeBanner();
-             this.addTimeout(() => {
                  globalObjects.magicCircle.enableMovement();
-                 this.shadow = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(22).setDepth(9999).setAlpha(0);
+                 this.shadow = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(15).setDepth(9999).setAlpha(0);
                  this.shadowSmall = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'greyed.png').setAlpha(0.05).setDepth(104).setScale(0.71);
 
                  this.shadow.currAnim = this.addTween({
                      targets: [this.shadow],
                      alpha: 0.8,
                      ease: "Cubic.easeOut",
-                     duration: 400,
+                     duration: 500,
                      scaleX: 13.7,
                      scaleY: 13.7,
                      onComplete: () => {
@@ -114,35 +113,59 @@
                  });
                  this.shadowSmall.currAnim = this.addTween({
                      targets: [this.shadowSmall],
-                     alpha: 0.8,
+                     alpha: 0.9,
                      ease: "Back.easeOut",
                      duration: 750,
                      easeParams: [2]
                  });
 
-                 this.glowCirc2 = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'circle_highlight_outer.png').setAlpha(0.05).setDepth(999).setScale(1.25);
+                 this.glowCirc2 = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'circle_highlight_outer.png').setAlpha(0.1).setDepth(999).setScale(1);
 
 
                  this.glowCirc2.currAnim = this.addTween({
                      targets: this.glowCirc2,
-                     alpha: 0.75,
-                     duration: 500,
+                     alpha: 1,
+                     ease: 'Cubic.easeOut',
+                     duration: 400,
                      onComplete: () => {
-                         this.glowCirc2.setAlpha(1.05);
                          this.glowCirc2.currAnim = this.addTween({
                              targets: this.glowCirc2,
-                             alpha: 0.75,
-                             ease: 'Quad.easeOut',
-                             duration: 600
+                             alpha: 0.2,
+                             ease: 'Cubic.easeIn',
+                             duration: 400,
+                             onComplete: () => {
+                                 this.glowCirc2.currAnim = this.addTween({
+                                     targets: this.glowCirc2,
+                                     alpha: 1,
+                                     ease: 'Cubic.easeOut',
+                                     duration: 400,
+                                     onComplete: () => {
+                                         this.glowCirc2.currAnim = this.addTween({
+                                             targets: this.glowCirc2,
+                                             alpha: 0,
+                                             duration: 1200,
+                                         })
+                                     }
+                                 })
+                             }
                          })
                      }
                  })
                  this.addTween({
                      targets: this.glowCirc2,
-                     scaleX: 1.02,
-                     scaleY: 1.02,
-                     duration: 500,
-                     ease: 'Quart.easeOut',
+                     scaleX: 0.72,
+                     scaleY: 0.72,
+                     duration: 800,
+                     ease: 'Cubic.easeInOut',
+                     onComplete: () => {
+                         this.addTween({
+                             targets: this.glowCirc2,
+                             scaleX: 1,
+                             scaleY: 1,
+                             duration: 800,
+                             ease: 'Cubic.easeInOut',
+                         })
+                     }
                  })
                  globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 38, getLangText('level1_tut_z'), 'center');
 
@@ -175,7 +198,6 @@
                  //     }
                  // });
 
-             }, 50)
         });
     }
 
@@ -282,11 +304,11 @@
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 272, getLangText('level1_tut_b'), 'right');
 
             messageBus.publish('setSlowMult', 0.25, 50);
-            let glowBar = this.addSprite(gameConsts.halfWidth, 325, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
+            let glowBar = this.addSprite(gameConsts.halfWidth, 320, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             this.addTween({
                 targets: glowBar,
                 alpha: 0.4,
-                scaleY: 4,
+                scaleY: 4.2,
                 scaleX: 5,
                 ease: 'Cubic.easeInOut',
                 duration: 800,
@@ -295,7 +317,7 @@
                         delay: 2750,
                         targets: glowBar,
                         alpha: 0,
-                        scaleY: 5,
+                        scaleY: 5.2,
                         scaleX: 6,
                         ease: 'Cubic.easeInOut',
                         duration: 1200
@@ -314,7 +336,7 @@
                         this.addTween({
                             targets: glowBar,
                             alpha: 0,
-                            scaleY: 5,
+                            scaleY: 5.2,
                             scaleX: 6,
                             ease: 'Quad.easeInOut',
                             duration: 1000,
@@ -338,7 +360,7 @@
                         this.addTween({
                             targets: glowBar,
                             alpha: 0,
-                            scaleY: 5,
+                            scaleY: 5.2,
                             scaleX: 6,
                             ease: 'Quad.easeInOut',
                             duration: 1000,

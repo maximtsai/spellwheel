@@ -488,7 +488,7 @@ let textData4 = {
         "jp": "この「マジシャン」は私を十分に苛立たせました。私の魔法は戦いを欲しがる。"
     },
     "superdummy_start": {
-        "en_us": "Strange, I don't remember\nsetting up a training dummy.",
+        "en_us": "Strange, I don't remember\nsetting up a training doll.",
         "fr": "Étrange, je ne me souviens pas d’avoir\nmis en place un mannequin d’entraînement.",
         "zh_tw": "奇怪，我不記得設置了一個訓練假人。",
         "zh_cn": "奇怪，我不记得设置了一个训练假人。",

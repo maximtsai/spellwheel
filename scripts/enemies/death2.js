@@ -274,7 +274,7 @@
         // this.sprite
         this.setArmsVisible(false);
 
-        messageBus.publish("showCombatText", getLangText('deathFight2CombatLaugh1'), 10);
+        messageBus.publish("showCombatText", getLangText('deathFight2CombatLaugh1'), -5);
         this.addTimeout(() => {
             this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -329,7 +329,7 @@
              return;
          }
          this.showedSecondLaughText = true;
-        messageBus.publish("showCombatText", getLangText('deathFight2CombatLaugh2'), 4);
+        messageBus.publish("showCombatText", getLangText('deathFight2CombatLaugh2'), -5);
         this.addTimeout(() => {
             this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();

@@ -90,6 +90,16 @@
             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
             globalObjects.bannerTextManager.closeBanner();
              this.addTimeout(() => {
+
+                 this.glowCirc2 = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'circle_highlight_outer.png').setAlpha(0).setDepth(9999);
+                 this.addTween({
+                     targets: this.glowCirc2,
+                     alpha: 0.75,
+                     duration: 500,
+                     ease: 'Back.easeOut',
+                     easeParams: [2]
+                 })
+
                  globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 135, getLangText('level1_tut_a'), 'right');
                  this.rune2 = this.addSprite(globalObjects.textPopupManager.getCenterPos(), globalObjects.textPopupManager.getBoxBottomPos() + 28, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
                  this.addTween({
@@ -365,7 +375,7 @@
          }
         super.die();
          if (this.rune2) {
-             this.rune2.visible = false;
+             this.rune2.destroy();
          }
          if (this.eyes) {
              this.removeExtraSprite(this.eyes);

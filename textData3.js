@@ -264,8 +264,8 @@ let textData3 = {
     "deathFight1b": {
         "en_us": "FAREWELL",
         "fr": "ADIEU",
-        "zh_tw": "告別",
-        "zh_cn": "告别",
+        "zh_tw": "再见",
+        "zh_cn": "再见",
         "ru": "ПРОЩАЛЬНЫЙ",
         "es": "DESPEDIDA",
         "jp": "お別れ"

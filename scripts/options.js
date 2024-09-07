@@ -52,6 +52,8 @@ class Options {
     }
 
     showOptions() {
+        globalObjects.encyclopedia.hideButton();
+        globalObjects.options.hideButton();
         playSound('flip2')
         if (!this.darkenBG) {
             this.darkenBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(this.baseDepth);
@@ -654,6 +656,8 @@ class Options {
     }
 
     hideOptions() {
+        globalObjects.encyclopedia.showButton();
+        globalObjects.options.showButton();
         messageBus.publish('unpauseGame');
         hideGlobalClickBlocker();
         PhaserScene.tweens.add({

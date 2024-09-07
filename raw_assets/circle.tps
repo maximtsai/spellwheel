@@ -477,7 +477,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">circle/circle_highlight.png</key>
+            <key type="filename">circle/circle_highlight_inner.png</key>
+            <key type="filename">circle/circle_highlight_outer.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

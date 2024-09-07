@@ -50,7 +50,7 @@ function beginPreLevel(lvl) {
                     ref: "tut_btn.png",
                     atlas: 'buttons',
                     x: gameConsts.halfWidth + 81,
-                    y: text3.y - 91,
+                    y: text3.y - 84,
                     alpha: 0.3
                 },
                 hover: {
@@ -124,7 +124,7 @@ function beginPreLevel(lvl) {
                     ref: "tut_btn.png",
                     atlas: 'buttons',
                     x: gameConsts.halfWidth + 81,
-                    y: text4.y - 91,
+                    y: text4.y - 84,
                     alpha: 0.3
                 },
                 hover: {

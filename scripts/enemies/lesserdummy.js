@@ -74,15 +74,16 @@
                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
                 globalObjects.bannerTextManager.showBanner(false);
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                    this.glowCirc = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'circle_highlight.png').setAlpha(0).setDepth(9999);
+                    this.glowCirc = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'circle_highlight_inner.png').setAlpha(0).setDepth(9999);
+                    this.glowCirc2 = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'circle_highlight_outer.png').setAlpha(0).setDepth(9999);
                     this.glowCirc.currAnim = this.addTween({
-                        targets: this.glowCirc,
+                        targets: [this.glowCirc, this.glowCirc2],
                         alpha: 1,
                         ease: "Cubic.easeIn",
                         duration: 1500,
                         onComplete: () => {
                             this.glowCirc.currAnim = this.addTween({
-                                targets: this.glowCirc,
+                                targets: [this.glowCirc, this.glowCirc2],
                                 alpha: 0.7,
                                 ease: "Quint.easeOut",
                                 duration: 3000,
@@ -118,7 +119,7 @@
                                 this.glowCirc.currAnim.stop();
                             }
                             this.glowCirc.currAnim = this.addTween({
-                                targets: this.glowCirc,
+                                targets: [this.glowCirc, this.glowCirc2],
                                 alpha: 0,
                                 ease: "Cubic.easeOut",
                                 duration: 500,
@@ -150,7 +151,7 @@
                                         this.glowCirc.currAnim.stop();
                                     }
                                     this.glowCirc.currAnim = this.addTween({
-                                        targets: this.glowCirc,
+                                        targets: [this.glowCirc, this.glowCirc2],
                                         alpha: 0,
                                         ease: "Cubic.easeOut",
                                         duration: 500,
@@ -255,13 +256,13 @@
                 if (this.glowCirc) {
                     this.glowCirc.currAnim.stop();
                     this.glowCirc.currAnim = this.addTween({
-                        targets: this.glowCirc,
+                        targets: [this.glowCirc, this.glowCirc2],
                         alpha: 0.95,
                         ease: "Cubic.easeOut",
                         duration: 1200,
                         onComplete: () => {
                             this.glowCirc.currAnim = this.addTween({
-                                targets: this.glowCirc,
+                                targets: [this.glowCirc, this.glowCirc2],
                                 alpha: 0.85,
                                 ease: "Cubic.easeInOut",
                                 duration: 1200,
@@ -277,7 +278,7 @@
                     this.currShadowTween.stop();
                     this.glowCirc.currAnim.stop();
                     this.glowCirc.currAnim = this.addTween({
-                        targets: this.glowCirc,
+                        targets: [this.glowCirc, this.glowCirc2],
                         alpha: 0,
                         ease: "Cubic.easeOut",
                         duration: 500,
@@ -309,7 +310,7 @@
                             spellListener.unsubscribe();
                             this.glowCirc.currAnim.stop();
                             this.glowCirc.currAnim = this.addTween({
-                                targets: this.glowCirc,
+                                targets: [this.glowCirc, this.glowCirc2],
                                 alpha: 0,
                                 ease: "Cubic.easeOut",
                                 duration: 500,
@@ -494,6 +495,10 @@
          if (this.glowCirc) {
             this.glowCirc.destroy();
          }
+         if (this.glowCirc2) {
+             this.glowCirc2.destroy();
+         }
+
         this.setDefaultSprite('lesser_dummy_hurt.png', this.sprite.scaleX);
         this.sprite.setOrigin(0.5, 0.99);
 

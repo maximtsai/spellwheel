@@ -28,9 +28,9 @@ let textData4 = {
     },
     "deathFightCombat1c": {
         "en_us": "YOUR TIME MAGIC ONLY\nDELAYS THE INEVITABLE.",
-        "fr": "LA MAGIE DE VOTRE TEMPS NE FAIT QUE RETARDER L’INÉVITABLE.",
-        "zh_tw": "你的時間魔法只會延遲不可避免的事情。",
-        "zh_cn": "你的时间魔法只会延迟不可避免的事情。",
+        "fr": "LA MAGIE DE VOTRE TEMPS NE\nFAIT QUE RETARDER L’INÉVITABLE.",
+        "zh_tw": "你的時間魔法只會延遲\n不可避免的命運。",
+        "zh_cn": "你的时间魔法只会延迟\n不可避免的命运。",
         "ru": "ВАША МАГИЯ ВРЕМЕНИ ТОЛЬКО ОТТЯГИВАЕТ НЕИЗБЕЖНОЕ.",
         "es": "TU MAGIA DEL TIEMPO SOLO RETRASA LO INEVITABLE.",
         "jp": "あなたの時間の魔法は、避けられないことを遅らせるだけです。"
@@ -244,7 +244,7 @@ let textData4 = {
     },
     "deathFight2plusending5": {
         "en_us": "But please, hear my last request.",
-        "fr": "Mais s’il vous plaît, écoutez ma dernière demande.",
+        "fr": "Mais s’il vous plaît,\nécoutez ma dernière demande.",
         "zh_tw": "但是，請聽聽我最後的請求。",
         "zh_cn": "但是，请听听我最后的请求。",
         "ru": "Но, пожалуйста, услышьте мою последнюю просьбу.",

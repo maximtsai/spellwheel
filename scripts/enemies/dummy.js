@@ -2,17 +2,17 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('dummy.png', 0.95,0, 5, 'dummyenemy');
-        this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
-            if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
-                // this.initTutorial2();
-            } else if (globalObjects.player.getPlayerCastSpellsCount() > 1 && this.canHideStartTut) {
-                this.playerSpellCastSub.unsubscribe();
-                this.initTutorial3();
-            } else if (globalObjects.player.getPlayerCastSpellsCount() >= 3) {
-                this.playerSpellCastSub.unsubscribe();
-                this.initTutorial3();
-            }
-        });
+        // this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+        //     if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
+        //         // this.initTutorial2();
+        //     } else if (globalObjects.player.getPlayerCastSpellsCount() > 1 && this.canHideStartTut) {
+        //         this.playerSpellCastSub.unsubscribe();
+        //         this.initTutorial3();
+        //     } else if (globalObjects.player.getPlayerCastSpellsCount() >= 3) {
+        //         this.playerSpellCastSub.unsubscribe();
+        //         this.initTutorial3();
+        //     }
+        // });
         let spellHoverListener = messageBus.subscribe('spellNameTextUpdate', (text) => {
             if (!globalObjects.magicCircle.innerDragDisabled && text.includes('ENHANCE')) {
                 this.canHideStartTut = true;
@@ -86,50 +86,103 @@
 
 
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
-            globalObjects.magicCircle.enableMovement();
             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
             globalObjects.bannerTextManager.closeBanner();
              this.addTimeout(() => {
+                 globalObjects.magicCircle.enableMovement();
+                 this.shadow = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY() - 50, 'misc', 'shadow_circle.png').setScale(22).setDepth(9999).setAlpha(0);
+                 this.shadowSmall = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'greyed.png').setAlpha(0.05).setDepth(104).setScale(0.71);
 
-                 this.glowCirc2 = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'circle_highlight_outer.png').setAlpha(0).setDepth(9999);
+                 this.currShadowTween = this.addTween({
+                     targets: [this.shadow],
+                     alpha: 0.4,
+                     ease: "Cubic.easeOut",
+                     scaleX: 15.7,
+                     scaleY: 15.7,
+                 });
                  this.addTween({
+                     targets: [this.shadowSmall],
+                     alpha: 0.8,
+                     ease: "Cubic.easeOut",
+                 });
+
+                 this.glowCirc2 = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'circle_highlight_outer.png').setAlpha(0.05).setDepth(999).setScale(1.25);
+
+
+                 this.glowCirc2.currAnim = this.addTween({
                      targets: this.glowCirc2,
                      alpha: 0.75,
                      duration: 500,
-                     ease: 'Back.easeOut',
-                     easeParams: [2]
-                 })
-
-                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 135, getLangText('level1_tut_a'), 'right');
-                 this.rune2 = this.addSprite(globalObjects.textPopupManager.getCenterPos(), globalObjects.textPopupManager.getBoxBottomPos() + 28, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
-                 this.addTween({
-                     targets: [this.rune2],
-                     alpha: 1,
-                     duration: 200,
-                     completeDelay: 200,
                      onComplete: () => {
-                         this.addTween({
-                             targets: [this.rune2],
-                             scaleX: 1,
-                             scaleY: 1,
-                             ease: 'Quart.easeOut',
-                             duration: 500,
-                             onComplete: () => {
-                                 this.addTween({
-                                     targets: [this.rune2],
-                                     scaleX: 0.82,
-                                     scaleY: 0.82,
-                                     ease: 'Back.easeOut',
-                                     duration: 300,
-                                 });
-                             }
-                         });
+                         this.glowCirc2.setAlpha(1.05);
+                         this.glowCirc2.currAnim = this.addTween({
+                             targets: this.glowCirc2,
+                             alpha: 0.75,
+                             ease: 'Quad.easeOut',
+                             duration: 600
+                         })
+                     }
+                 })
+                 this.addTween({
+                     targets: this.glowCirc2,
+                     scaleX: 1.02,
+                     scaleY: 1.02,
+                     duration: 500,
+                     ease: 'Quart.easeOut',
+                 })
+                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 38, getLangText('level1_tut_z'), 'center');
+
+                 this.playerSpellCastSub = messageBus.subscribe('recordSpell', (id, spellName) => {
+                     if (id === 'matterReinforce') {
+                         this.playerSpellCastSub.unsubscribe();
+                         this.createEnhancePopup();
                      }
                  });
-             }, 500)
+                 this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                     if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
+                         // this.initTutorial2();
+                     } else if (globalObjects.player.getPlayerCastSpellsCount() > 1 && this.canHideStartTut) {
+                         this.playerSpellCastSub.unsubscribe();
+                         this.initTutorial3();
+                     } else if (globalObjects.player.getPlayerCastSpellsCount() >= 3) {
+                         this.playerSpellCastSub.unsubscribe();
+                         this.initTutorial3();
+                     }
+                 });
+
+             }, 50)
         });
     }
 
+    createEnhancePopup() {
+        globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 135, getLangText('level1_tut_a'), 'right');
+
+        this.rune2 = this.addSprite(globalObjects.textPopupManager.getCenterPos(), globalObjects.textPopupManager.getBoxBottomPos() + 28, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
+        this.addTween({
+            targets: [this.rune2],
+            alpha: 1,
+            duration: 200,
+            completeDelay: 200,
+            onComplete: () => {
+                this.addTween({
+                    targets: [this.rune2],
+                    scaleX: 1,
+                    scaleY: 1,
+                    ease: 'Quart.easeOut',
+                    duration: 500,
+                    onComplete: () => {
+                        this.addTween({
+                            targets: [this.rune2],
+                            scaleX: 0.82,
+                            scaleY: 0.82,
+                            ease: 'Back.easeOut',
+                            duration: 300,
+                        });
+                    }
+                });
+            }
+        });
+    }
 
     initTutorial3() {
         this.addTimeout(() => {

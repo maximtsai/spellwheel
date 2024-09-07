@@ -597,6 +597,15 @@ let textData2 = {
         "es": "La runa mejorada\nfortalece tu\npróximo ataque\n ",
         "jp": "強化ルーンは次の\n攻撃を強化します\n "
     },
+    "level1_tut_z": {
+        "en_us": "The Outer Wheel\ndetermines your ACTION",
+        "fr": "La roue extérieure\ndétermine votre ACTION",
+        "zh_tw": "外輪決定你的行動",
+        "zh_cn": "外轮决定你的行动",
+        "ru": "Внешнее колесо\nопределяет ваши ДЕЙСТВИЯ",
+        "es": "La Rueda Exterior\ndetermina tu ACCIÓN",
+        "jp": "外側の車輪があなたの\n行動を決定します"
+    },
     "level1_tut_b": {
         "en_us": "Watch out!\nEnemies get angry\nwhen attacked!",
         "fr": "Les ennemis se\nmettent en colère\nlorsqu’ils sont\nattaqués!",

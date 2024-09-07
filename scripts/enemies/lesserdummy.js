@@ -110,7 +110,6 @@
                     if (!this.bgMusic) {
                         this.bgMusic = playMusic('bite_down_simplified', 0.6, true);
                         // this.shadow.setPosition(globalObjects.player.getX(), globalObjects.player.getY() - 1);
-                        // globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, "Click to cast\na spell");
                         let spellListener = messageBus.subscribe('spellClicked', () => {
                             this.firstPopupClosed = true;
                             // globalObjects.textPopupManager.hideInfoText();
@@ -246,7 +245,7 @@
         this.addTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1 && !this.dead) {
                 // player only casted 1 spell so far
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth + 1, gameConsts.height - 38, getLangText('level0_tut_a'));
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 38, getLangText('level0_tut_a'));
                 this.arrowRotate1 = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
                 this.arrowRotate2 = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
                 this.destructibles.push(this.arrowRotate1);

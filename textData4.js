@@ -317,13 +317,23 @@ let textData4 = {
     },
     "dummy_body_a": {
         "en_us": "Thorns reduce\nincoming damage\nand can inflict\ndamage back.\n              +",
-        "fr": "Les épines réduisent les dégâts subis et peuvent infliger des dégâts en retour.               +",
-        "zh_tw": "荊棘可以減少受到的傷害，並可以造成傷害。              +",
-        "zh_cn": "荆棘可以减少受到的伤害，并可以造成伤害。              +",
+        "fr": "Les épines réduisent\nles dégâts subis\net peuvent infliger\ndes dégâts en retour.\n               +",
+        "zh_tw": "荊棘減少受到的傷害，\n並可以造成傷害。\n         +",
+        "zh_cn": "荆棘减少受到的伤害，\n并可以造成伤害。\n         +",
         "ru": "Шипы уменьшают входящий урон и могут наносить урон в ответ.               +",
         "es": "Las espinas reducen el daño recibido y pueden infligir daño.               +",
         "jp": "トゲは受けるダメージを減らし、ダメージを戻すことができます。              +"
     },
+    "dummy_body_one": {
+        "en_us": "Only one Body\nspell effect can\nbe active at\na time.",
+        "fr": "Un seul effet\nde sort Corps\npeut être actif\nà la fois",
+        "zh_tw": "每次只能啟動一個身體法術效果。",
+        "zh_cn": "每次只能激活一个身体法术效果。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+
     "killer_robot_a": {
         "en_us": "The stage lights are blinding.",
         "fr": "Les lumières de la scène sont aveuglantes.",
@@ -344,7 +354,7 @@ let textData4 = {
     },
     "killer_robot_c": {
         "en_us": "The stage lights\nturn back on",
-        "fr": "Les lumières de la scène se rallument",
+        "fr": "Les lumières de la\nscène se rallument",
         "zh_tw": "舞臺燈光重新亮起",
         "zh_cn": "舞台灯光重新亮起",
         "ru": "На сцене снова зажигается свет",
@@ -353,7 +363,7 @@ let textData4 = {
     },
     "killer_robot_d": {
         "en_us": "The stage lights are off.",
-        "fr": "Les lumières de la scène sont éteintes.",
+        "fr": "Les lumières de la\nscène sont éteintes.",
         "zh_tw": "舞臺燈光熄滅。",
         "zh_cn": "舞台灯光熄灭。",
         "ru": "Свет на сцене выключен.",
@@ -362,18 +372,18 @@ let textData4 = {
     },
     "wall_unblockable": {
         "en_us": "Some attacks\ncannot be\nblocked.",
-        "fr": "Certaines attaques ne peuvent pas être bloquées.",
-        "zh_tw": "某些攻擊無法格擋。",
-        "zh_cn": "某些攻击无法格挡。",
+        "fr": "Certaines attaques\nne peuvent pas\nêtre bloquées.",
+        "zh_tw": "有些攻擊無法擋住。",
+        "zh_cn": "有些攻击无法挡住。",
         "ru": "Некоторые атаки не могут быть заблокированы.",
         "es": "Algunos ataques no se pueden bloquear.",
         "jp": "一部の攻撃はブロックできません。"
     },
     "tree_a": {
         "en_us": "The spiky thorns on the tree\nredirects 2 damage back onto you!",
-        "fr": "Les épines hérissées sur l’arbre redirigent 2 dégâts sur vous !",
-        "zh_tw": "樹上的尖刺會將 2 點傷害重定向回你身上！",
-        "zh_cn": "树上的尖刺会将 2 点伤害重定向回你身上！",
+        "fr": "Les épines hérissées sur l’arbre\nredirigent 2 dégâts sur vous !",
+        "zh_tw": "樹上的尖刺會將 2 點傷害\n反弹回你身上！",
+        "zh_cn": "树上的尖刺会将 2 点伤害\n反弹回你身上！",
         "ru": "Колючие шипы на дереве перенаправляют на вас 2 ед. урона!",
         "es": "¡Las espinas puntiagudas en el árbol redirigen 2 puntos de daño hacia ti!",
         "jp": "木のとがったとげは、2ダメージをあなたに戻してくれます!"
@@ -381,26 +391,26 @@ let textData4 = {
     "tree_b": {
         "en_us": "Attack and defend carefully!",
         "fr": "Attaquez et défendez-vous prudemment !",
-        "zh_tw": "小心攻守！",
-        "zh_cn": "小心攻守！",
+        "zh_tw": "謹慎的進攻並防守！",
+        "zh_cn": "谨慎的进攻并防守！",
         "ru": "Атакуйте и защищайтесь осторожно!",
         "es": "¡Ataca y defiende con cuidado!",
         "jp": "丁寧に攻めと守りを!"
     },
     "magician_a": {
         "en_us": "Nice try, but your\nattacks have no shock.",
-        "fr": "C’est bien essayé, mais vos attaques n’ont pas de choc.",
-        "zh_tw": "不錯的嘗試，但你的攻擊沒有電擊。",
-        "zh_cn": "不错的尝试，但你的攻击没有电击。",
+        "fr": "Bien tenté, mais tes coups n'ont aucun choc.",
+        "zh_tw": "打得不錯，但你攻擊缺威力。",
+        "zh_cn": "打得不错，但你攻击缺威力。",
         "ru": "Хорошая попытка, но ваши атаки не вызывают шока.",
         "es": "Buen intento, pero tus ataques no tienen impacto.",
         "jp": "ナイストライですが、あなたの攻撃にはショックがありません。"
     },
     "magician_b": {
         "en_us": "Now have a taste\nof my great big clock!",
-        "fr": "Maintenant, goûtez à ma grande horloge !",
-        "zh_tw": "現在來嘗嘗我的大鍾吧！",
-        "zh_cn": "现在来尝尝我的大钟吧！",
+        "fr": "Maintenant, goûtez à ma immense horloge!",
+        "zh_tw": "現在瞧看我巨大的時計！",
+        "zh_cn": "现在瞧看我巨大的时计！",
         "ru": "Теперь попробуйте мои большие часы!",
         "es": "¡Ahora prueba mi gran reloj!",
         "jp": "さあ、私の大きな大きな時計を味わってください!"
@@ -425,18 +435,18 @@ let textData4 = {
     },
     "magician_e": {
         "en_us": "Oh... you're still... here?",
-        "fr": "Oh... Vous êtes toujours... ici?",
-        "zh_tw": "哦。。。你還是......這裡？",
-        "zh_cn": "哦。。。你还是......这里？",
+        "fr": "Oh... tu es... encore là ?",
+        "zh_tw": "哦。。。你還。。。未死？",
+        "zh_cn": "哦。。。你还。。。未死？",
         "ru": "О... ты все еще... здесь?",
         "es": "Oh... Todavía estás... ¿aquí?",
         "jp": "おや。。。まだ...ここは。"
     },
     "magician_f": {
         "en_us": "My time is short I fear.",
-        "fr": "Je crains que mon temps ne soit compté.",
-        "zh_tw": "恐怕我的時間不多了。",
-        "zh_cn": "恐怕我的时间不多了。",
+        "fr": "Mon temps est déjà bas.",
+        "zh_tw": "我的時間。。。快到止。",
+        "zh_cn": "我的时间。。。快到止。",
         "ru": "Боюсь, у меня мало времени.",
         "es": "Me temo que mi tiempo es corto.",
         "jp": "私の時間は短いです、私は恐れています。"
@@ -444,42 +454,42 @@ let textData4 = {
     "magician_g": {
         "en_us": "Have mercy please?",
         "fr": "Ayez pitié s’il vous plaît ?",
-        "zh_tw": "請手下留情嗎？",
-        "zh_cn": "请手下留情吗？",
+        "zh_tw": "能饒恕我嗎？",
+        "zh_cn": "能饶恕我吗？",
         "ru": "Помилуйте, пожалуйста?",
         "es": "¿Ten piedad, por favor?",
         "jp": "どうか慈悲をお願いします。"
     },
     "shield_dummy_overwrite": {
         "en_us": "Only one shield\ncan be active\nper spot.",
-        "fr": "Un seul bouclier peut être actif par endroit.",
-        "zh_tw": "每個點只能啟動一個盾牌。",
-        "zh_cn": "每个点只能激活一个盾牌。",
+        "fr": "Un seul bouclier\npeut être actif\npar endroit.",
+        "zh_tw": "每個位置只能\n啟動一個盾牌。",
+        "zh_cn": "每个位置只能\n激活一个盾牌。",
         "ru": "В каждой точке может быть активен только один щит.",
         "es": "Solo puede haber un escudo activo por punto.",
         "jp": "1つのスポットでアクティブにできるシールドは1つだけです。"
     },
     "pre_fight_3a": {
-        "en_us": "\"Your fighting skill I\nmust commend, but if\nyou keep going your doom\nwill impend!",
-        "fr": "« Je dois saluer votre talent de combatteur, mais si vous continuez, votre destin vous attendra !",
+        "en_us": "\"Your fighting skill is\nquite a feat, but keep on\ngoing and doom you'll meet!\"",
+        "fr": "\"Ton skill au combat est\nbien, mais continue\net tu verras la fin!\"",
         "zh_tw": "“我必須稱讚你的戰鬥技巧，但如果你繼續前進，你的厄運就會來臨！",
-        "zh_cn": "“我必须称赞你的战斗技巧，但如果你继续前进，你的厄运就会来临！",
-        "ru": "«Я должен похвалить ваше боевое мастерство, но если вы будете продолжать в том же духе, ваша гибель неминуема!",
-        "es": "\"Debo elogiar tu habilidad de lucha, pero si sigues adelante, ¡tu perdición se avecinará!",
-        "jp": "「お前の戦闘技術は称賛に値する。しかし、このまま続ければ破滅が破滅するぞ!"
+        "zh_cn": "\"你的战斗技艺高，\n但继续前行命运难逃。\"",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "pre_fight_3b": {
-        "en_us": "This \"Magician\" has\nannoyed me enough.\nMy magic itches\nfor a fight.",
-        "fr": "Ce « Magicien » m’a assez agacé. Ma magie me démange de se battre.",
-        "zh_tw": "這個「魔術師」已經讓我煩惱得夠多了。我的魔法癢乎乎的。",
-        "zh_cn": "这个“魔术师”已经让我烦恼得够多了。我的魔法痒乎乎的。",
+        "en_us": "If this \"Magician\" is\ntrying to stop me, then\nI'll take him down\nlike all the rest.",
+        "fr": "Si ce « Magicien » essaie\nde m’arrêter, alors\nje le vaincrai comme\ntous les autres.",
+        "zh_tw": "如果這個魔術師試\n圖阻止我，那我會\n一了把他打敗！",
+        "zh_cn": "如果这个魔术师试\n图阻止我，那我会\n一了把他打败！",
         "ru": "Этот \"Волшебник\" меня достаточно насолил. Моя магия жаждет драки.",
         "es": "Este \"Mago\" me ha molestado bastante. Mi magia tiene ganas de pelear.",
         "jp": "この「マジシャン」は私を十分に苛立たせました。私の魔法は戦いを欲しがる。"
     },
     "superdummy_start": {
         "en_us": "Strange, I don't remember\nsetting up a training dummy.",
-        "fr": "Étrange, je ne me souviens pas d’avoir mis en place un mannequin d’entraînement.",
+        "fr": "Étrange, je ne me souviens pas d’avoir\nmis en place un mannequin d’entraînement.",
         "zh_tw": "奇怪，我不記得設置了一個訓練假人。",
         "zh_cn": "奇怪，我不记得设置了一个训练假人。",
         "ru": "Странно, я не помню, чтобы настраивал тренировочный манекен.",
@@ -488,18 +498,18 @@ let textData4 = {
     },
     "superdummy_void": {
         "en_us": "Deals lots of\n%health damage\n             +",
-        "fr": "Inflige beaucoup de %dégâts de santé +",
-        "zh_tw": "造成大量 %生命值傷害 +",
-        "zh_cn": "造成大量 %生命值伤害 +",
+        "fr": "Inflige beaucoup\nde %dégâts\nde santé\n         +",
+        "zh_tw": "造成大量\n%生命值傷害\n      +",
+        "zh_cn": "造成大量\n%生命值伤害\n      +",
         "ru": "Наносит много % урона от здоровья +",
         "es": "Inflige un montón de % de daño de salud +",
         "jp": "大量の%ヘルスダメージを与えます+"
     },
     "superdummy_mind": {
         "en_us": "Amplifies next\nnon-attack spell\n             +",
-        "fr": "Amplifie le sort de non-attaque suivant +",
-        "zh_tw": "增幅下一個非攻擊技能 +",
-        "zh_cn": "增幅下一个非攻击技能 +",
+        "fr": "AAmplifie le prochain\nsort non-attaquant\n             +",
+        "zh_tw": "大量增幅下一個\n非攻擊法術\n     +",
+        "zh_cn": "大量增幅下一个\n非攻击法术\n     +",
         "ru": "Усиливает следующее неатакующее заклинание +",
         "es": "Amplifica el siguiente hechizo que no es de ataque +",
         "jp": "次の非攻撃呪文を増幅します +"
@@ -507,26 +517,26 @@ let textData4 = {
     "superdummy_matter": {
         "en_us": "Deals damage\nand defends\n           +",
         "fr": "Inflige des dégâts et défend +",
-        "zh_tw": "造成傷害和防禦 +",
-        "zh_cn": "造成伤害和防御 +",
+        "zh_tw": "同時進行攻擊\n和防禦\n     +",
+        "zh_cn": "同时进行攻击\n和防御\n     +",
         "ru": "Наносит урон и защищается +",
         "es": "Inflige daño y defiende +",
         "jp": "ダメージを与えて防御する +"
     },
     "superdummy_time": {
         "en_us": "Freezes time for\nnext few spells\n             +",
-        "fr": "Gèle le temps pour les prochains sorts +",
-        "zh_tw": "凍結接下來幾個法術的時間 +",
-        "zh_cn": "冻结接下来几个法术的时间 +",
+        "fr": "Geler le temps pour\nles prochains sorts\n          +",
+        "zh_tw": "為接下來幾個法術\n凍結時間\n      +",
+        "zh_cn": "为接下来几个法术\n冻结时间\n      +",
         "ru": "Замораживает время на следующие несколько заклинаний +",
         "es": "Congela el tiempo para los próximos hechizos +",
         "jp": "次のいくつかの呪文の時間を凍結します +"
     },
     "goblin_shield": {
         "en_us": "Ha! Can't hurts me now!",
-        "fr": "Ha! Ça ne peut pas me faire de mal maintenant !",
-        "zh_tw": "醫 管 局！現在傷害不了我了！",
-        "zh_cn": "医 管 局！现在伤害不了我了！",
+        "fr": "Ha! Tu ne peux plus me\nfaire de mal maintenant!",
+        "zh_tw": "哈！現在傷不了我了！",
+        "zh_cn": "哈！现在伤不了我了！",
         "ru": "Ха! Теперь мне не может быть больно!",
         "es": "¡Ja! ¡No puede hacerme daño ahora!",
         "jp": "ハッ!今は痛くない!"

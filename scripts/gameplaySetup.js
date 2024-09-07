@@ -845,10 +845,10 @@ function setupPlayer() {
     });
     globalObjects.magicCircle = new MagicCircle(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
     globalObjects.player = new Player(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
-    let encycX = isMobile ? gameConsts.width - 35 : gameConsts.width - 80;
-    let encycY = isMobile ? 80 : 30;
+    let encycX = isMobile ? gameConsts.width - 28 : gameConsts.width - 71;
+    let encycY = isMobile ? 75 : 25;
     globalObjects.encyclopedia = new Encyclopedia(PhaserScene, encycX, encycY);
-    globalObjects.options = new Options(PhaserScene, gameConsts.width - 35, 30);
+    globalObjects.options = new Options(PhaserScene, gameConsts.width - 28, 25);
 }
 
 function onCreditsButtonClicked() {

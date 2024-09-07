@@ -42,7 +42,7 @@
                 globalObjects.textPopupManager.hideInfoText();
             });
         }, 2000)
-        globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, "Only one Body\nspell effect can\nbe active at\na time.", 'right');
+        globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText("dummy_body_one"), 'right');
     }
 
     showThornsTutorial() {

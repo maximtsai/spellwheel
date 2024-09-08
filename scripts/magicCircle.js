@@ -118,6 +118,13 @@ const ENABLE_KEYBOARD = true;
 
         if (!this.recentSkipped && (this.keyEnter.isDown || this.keySpace.isDown)) {
             messageBus.publish("continueDialog");
+            // click through victory
+            if (globalObjects.currentEnemy && globalObjects.currentEnemy.dieClickBlocker && !globalObjects.currentEnemy.dieClickBlocker.isDestroyed) {
+                if (globalObjects.currentEnemy.dieClickBlocker.onMouseUpFunc) {
+                    globalObjects.currentEnemy.dieClickBlocker.onMouseUpFunc();
+                }
+            }
+
             this.recentSkipped = true;
         } else if (this.recentSkipped && !this.keyEnter.isDown && !this.keySpace.isDown) {
             this.recentSkipped = false;
@@ -2024,7 +2031,7 @@ const ENABLE_KEYBOARD = true;
                             scaleX: 1.5,
                             scaleY: 1.5,
                             duration: gameVars.gameManualSlowSpeed * 500,
-                            onComplete: () => {                                
+                            onComplete: () => {
                                 poolManager.returnItemToPool(castCircle, 'castCircle');
                                 sprite.setScale(1);
 

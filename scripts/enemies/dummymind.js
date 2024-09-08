@@ -44,6 +44,46 @@
              });
              this.canShowShieldTip = true;
              this.showGoal();
+
+            this.glowCirc2 = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY(), 'shields', 'ring_flash0.png').setAlpha(0.3).setDepth(999).setScale(1.12);
+            this.addDelay(() => {
+                this.glowCirc2.playReverse('ring_flash');
+                this.glowCirc2.currAnim = this.addTween({
+                    targets: this.glowCirc2,
+                    alpha: 1,
+                    ease: 'Cubic.easeOut',
+                    duration: 150,
+                    scaleX: 1.35,
+                    scaleY: 1.35,
+                    completeDelay: 1000,
+                    onComplete: () => {
+                        this.playerSpellCastSub = messageBus.subscribe('recordSpellAttack', (id, spellName) => {
+                            this.playerSpellCastSub.unsubscribe();
+                            globalObjects.textPopupManager.hideInfoText();
+                        });
+                        this.glowCirc2.currAnim = this.addTween({
+                            targets: this.glowCirc2,
+                            alpha: 0.3,
+                            ease: 'Cubic.easeIn',
+                            duration: 150,
+                            onComplete: () => {
+                                this.glowCirc2.setAlpha(0.6)
+                                this.glowCirc2.currAnim = this.addTween({
+                                    targets: this.glowCirc2,
+                                    alpha: 1,
+                                    ease: 'Cubic.easeIn',
+                                    scaleX: 1.12,
+                                    scaleY: 1.12,
+                                    duration: 200,
+                                })
+                                this.glowCirc2.play('ring_flash')
+                            }
+                        })
+                    }
+                })
+            }, 400)
+            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 38, getLangText('level1_train_popup'), 'center');
+
              // messageBus.publish('enemyAddShield', 500)
         });
     }

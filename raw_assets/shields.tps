@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>60</uint>
+        <uint>57</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -180,7 +180,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.92</double>
+                <double>0.75</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -214,7 +214,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.82</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -272,6 +272,47 @@
                 <rect>111,125,223,250</rect>
                 <key>scale9Paddings</key>
                 <rect>111,125,223,250</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">shields/ring_flash0.png</key>
+            <key type="filename">shields/ring_flash1.png</key>
+            <key type="filename">shields/ring_flash10.png</key>
+            <key type="filename">shields/ring_flash11.png</key>
+            <key type="filename">shields/ring_flash2.png</key>
+            <key type="filename">shields/ring_flash3.png</key>
+            <key type="filename">shields/ring_flash4.png</key>
+            <key type="filename">shields/ring_flash5.png</key>
+            <key type="filename">shields/ring_flash6.png</key>
+            <key type="filename">shields/ring_flash7.png</key>
+            <key type="filename">shields/ring_flash8.png</key>
+            <key type="filename">shields/ring_flash9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>114,114,227,227</rect>
+                <key>scale9Paddings</key>
+                <rect>114,114,227,227</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">shields/ring_flash12.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>114,114,227,227</rect>
+                <key>scale9Paddings</key>
+                <rect>114,114,227,227</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

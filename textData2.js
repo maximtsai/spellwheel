@@ -28,8 +28,8 @@ let textData2 = {
         "jp": "呪文に固体の岩と石を使用"
     },
     "encyc_energy": {
-        "en_us": "Energy",
-        "fr": "Énergie",
+        "en_us": "ENERGY",
+        "fr": "ÉNERGIE",
         "zh_tw": "能源",
         "zh_cn": "能源",
         "ru": "Энергия",
@@ -46,8 +46,8 @@ let textData2 = {
         "jp": "生のエネルギーを使って呪文を唱える"
     },
     "encyc_time": {
-        "en_us": "Time",
-        "fr": "Heure",
+        "en_us": "TIME",
+        "fr": "HEURE",
         "zh_tw": "時間",
         "zh_cn": "时间",
         "ru": "Время",
@@ -64,8 +64,8 @@ let textData2 = {
         "jp": "時間を操って呪文を唱える"
     },
     "encyc_void": {
-        "en_us": "Void",
-        "fr": "Vide",
+        "en_us": "VOID",
+        "fr": "VIDE",
         "zh_tw": "空虛",
         "zh_cn": "空虚",
         "ru": "Пустота",
@@ -82,10 +82,10 @@ let textData2 = {
         "jp": "呪文を唱えるための暗い空間をコントロールする"
     },
     "encyc_enhance": {
-        "en_us": "Enhance",
-        "fr": "Améliorer",
-        "zh_tw": "提高",
-        "zh_cn": "提高",
+        "en_us": "ENHANCE",
+        "fr": "RENFORCEMENT",
+        "zh_tw": "強化",
+        "zh_cn": "强化",
         "ru": "Увеличивать",
         "es": "Mejorar",
         "jp": "強化"
@@ -100,13 +100,13 @@ let textData2 = {
         "jp": "次の攻撃を強化します"
     },
     "encyc_shield": {
-        "en_us": "Shield",
-        "fr": "Bouclier",
-        "zh_tw": "盾",
-        "zh_cn": "盾",
+        "en_us": "SHIELD",
+        "fr": "BOUCLIER",
+        "zh_tw": "護盾",
+        "zh_cn": "护盾",
         "ru": "Щит",
         "es": "Escudo",
-        "jp": "盾"
+        "jp": "シールド"
     },
     "encyc_desc_shield": {
         "en_us": "Creates shields to protect you",
@@ -118,8 +118,8 @@ let textData2 = {
         "jp": "あなたを守る盾を作る"
     },
     "encyc_body": {
-        "en_us": "Body",
-        "fr": "Corps",
+        "en_us": "BODY",
+        "fr": "CORPS",
         "zh_tw": "身體",
         "zh_cn": "身体",
         "ru": "Тело",
@@ -136,10 +136,10 @@ let textData2 = {
         "jp": "さまざまな持続効果を付与します"
     },
     "encyc_ultimate": {
-        "en_us": "Ultimate",
-        "fr": "Ultime",
-        "zh_tw": "最終",
-        "zh_cn": "最终",
+        "en_us": "ULTIMATE",
+        "fr": "ULTIME",
+        "zh_tw": "大招",
+        "zh_cn": "大招",
         "ru": "Конечный",
         "es": "Último",
         "jp": "究極"
@@ -374,12 +374,12 @@ let textData2 = {
     },
     "pre_fight_0c": {
         "en_us": "STRIKE",
-        "fr": "ATTAQUE",
-        "zh_tw": "攻擊",
-        "zh_cn": "攻击",
-        "ru": "АТАКА",
+        "fr": "FRAPPE",
+        "zh_tw": "打擊",
+        "zh_cn": "打击",
+        "ru": "ДУТЬ",
         "es": "ATAQUE",
-        "jp": "攻撃"
+        "jp": "吹く"
     },
     "pre_fight_0d": {
         "en_us": "MATTER",
@@ -428,9 +428,9 @@ let textData2 = {
     },
     "pre_fight_0i": {
         "en_us": "MATTER\nSTRIKE",
-        "fr": "MATIÈRE\nATTAQUE",
-        "zh_tw": "物質攻擊",
-        "zh_cn": "物质攻击",
+        "fr": "MATIÈRE\nFRAPPE",
+        "zh_tw": "物質打擊",
+        "zh_cn": "物质打击",
         "ru": "МАТЕРИЯ\nАТАКА",
         "es": "MATERIA\nATAQUE",
         "jp": "物質攻撃"
@@ -544,7 +544,7 @@ let textData2 = {
         "jp": "この棒人形が入り口を塞いでいます。"
     },
     "level0_diag_b": {
-        "en_us": "Is it trying to prevent me\nfrom saving my beloved?",
+        "en_us": "Is it trying to stop me\nfrom saving my beloved?",
         "fr": "Est-ce que cela m'empêche\nde sauver ma bien-aimée ?",
         "zh_tw": "它是在阻止我拯救我心愛的嗎？",
         "zh_cn": "它是在阻止我拯救我心爱的吗？",
@@ -590,21 +590,21 @@ let textData2 = {
     },
     "level1_tut_a": {
         "en_us": "Enhance Rune\nstrengthens your\nnext attack\n ",
-        "fr": "La rune Enhance\nrenforce votre\nprochaine attaque\n ",
-        "zh_tw": "增強符文增強\n能你的下一次攻擊\n ",
-        "zh_cn": "增强符文增强\n能你的下一次攻击\n ",
+        "fr": "La rune Renforcement\naméliore votre\nprochaine attaque\n ",
+        "zh_tw": "强化符文增強\n能你的下一次攻擊\n ",
+        "zh_cn": "强化符文增强\n能你的下一次攻击\n ",
         "ru": "Руна усиления\nусиливает вашу\nследующую атаку\n ",
         "es": "La runa mejorada\nfortalece tu\npróximo ataque\n ",
         "jp": "強化ルーンは次の\n攻撃を強化します\n "
     },
     "level1_tut_z": {
-        "en_us": "The Outer Wheel\ndetermines your ACTION",
-        "fr": "La roue extérieure\ndétermine votre ACTION",
-        "zh_tw": "外輪決定你的行動",
-        "zh_cn": "外轮决定你的行动",
-        "ru": "Внешнее колесо\nопределяет ваши ДЕЙСТВИЯ",
-        "es": "La Rueda Exterior\ndetermina tu ACCIÓN",
-        "jp": "外側の車輪があなたの\n行動を決定します"
+        "en_us": "The OUTER Wheel\ndetermines your ACTION",
+        "fr": "La roue EXTÉRIEURE\ndétermine votre ACTION",
+        "zh_tw": "外輪決定使用的行動",
+        "zh_cn": "外轮决定使用的行动",
+        "ru": "ВНЕШНЕЕ Колесо\nопределяет ваши ДЕЙСТВИЯ",
+        "es": "La Rueda EXTERIOR\ndetermina tu ACCIÓN",
+        "jp": "外側のホイールがあな\nたの行動を決定します"
     },
     "level1_tut_b": {
         "en_us": "Watch out!\nEnemies get angry\nwhen attacked!",
@@ -623,6 +623,15 @@ let textData2 = {
         "ru": "Я установил учебный манекен,\nчтобы опробовать свою новую руну.",
         "es": "Preparé un muñeco de entrenamiento\npara probar mi nueva runa.",
         "jp": "新しいルーンをテストするためにトレーニ\nングダミーをセットアップしました。"
+    },
+    "level1_train_popup": {
+        "en_us": "The INNER Wheel\ndetermines your ELEMENT",
+        "fr": "La roue intérieure\ndétermine l'ÉLÉMENT utilisé",
+        "zh_tw": "內輪決定使用的元素",
+        "zh_cn": "内轮决定使用的元素",
+        "ru": "ВНУТРЕННЕЕ Колесо определяет\nиспользуемый ЭЛЕМЕНТ",
+        "es": "La Rueda INTERIOR\ndetermina el ELEMENTO utilizado",
+        "jp": "内側のホイールは使用\nされる要素を決定します"
     },
     "level1_train_diag_b": {
         "en_us": "I should carefully consider\nwhat order I use my spells in.",
@@ -724,7 +733,7 @@ let textData2 = {
         "jp": "ボイドシールドは\n1回の攻撃を完全\nにブロックできる\n         +"
     },
     "dummy_mind_tut": {
-        "en_us": "Energy Strike\nmakes your\nnext attack hit\ntwice as hard\n            +",
+        "en_us": "Energy Strike makes\nyour next attack\nhit X2 as hard\n            +",
         "fr": "La frappe énergétique\nrend votre prochaine\nattaque deux fois\nplus forte.\n          +",
         "zh_tw": "你的下一次攻擊\n造成兩倍的傷害\n         +",
         "zh_cn": "你的下一次攻击\n造成双倍伤害\n         +",

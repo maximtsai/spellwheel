@@ -78,7 +78,7 @@
         this.shieldSprite.damageAnim = "forceFieldHit";
         this.shieldSprite.flashAnim = "forceFieldFlash";
          this.shieldSprite.setFrame('forceField12.png').setVisible(false).setOrigin(0.5, 0.45);
-         this.shieldSprite.startScale = 1.05;
+         this.shieldSprite.startScale = 1.25;
          this.lastAttackLingerMult = 1.75;
          this.attackSlownessMult = 1.25;
         this.lightShineLeft = this.addSprite(gameConsts.halfWidth - 220, gameConsts.halfHeight - 320, 'blurry', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(-0.5);

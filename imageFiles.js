@@ -34,7 +34,6 @@ const imageAtlases = [
     {name: 'deathfin', src: 'sprites/deathfin.json'},
     {name: 'deathfinal', src: 'sprites/deathfinal.json'},
     {name: 'shields', src: 'sprites/shields.json'},
-    {name: 'vfx', src: 'sprites/vfx.json'},
     {name: 'ending', src: 'sprites/ending.json'},
 ];
 

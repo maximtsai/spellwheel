@@ -89,20 +89,19 @@
             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
             globalObjects.bannerTextManager.closeBanner();
                  globalObjects.magicCircle.enableMovement();
-                 this.shadow = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(15).setDepth(9999).setAlpha(0);
+                 this.shadow = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(14).setDepth(9999).setAlpha(0);
                  this.shadowSmall = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'greyed.png').setAlpha(0.05).setDepth(104).setScale(0.71);
 
                  this.shadow.currAnim = this.addTween({
                      targets: [this.shadow],
-                     alpha: 0.8,
-                     ease: "Cubic.easeOut",
+                     alpha: 0.55,
                      duration: 500,
                      scaleX: 13.7,
                      scaleY: 13.7,
                      onComplete: () => {
                          this.shadow.currAnim = this.addTween({
                              targets: [this.shadow],
-                             alpha: 0.4,
+                             alpha: 0.25,
                              y: globalObjects.player.getY() - 50,
                              ease: "Quart.easeInOut",
                              duration: 2800,
@@ -113,60 +112,41 @@
                  });
                  this.shadowSmall.currAnim = this.addTween({
                      targets: [this.shadowSmall],
-                     alpha: 0.9,
+                     alpha: 0.5,
                      ease: "Back.easeOut",
                      duration: 750,
                      easeParams: [2]
                  });
 
-                 this.glowCirc2 = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'circle_highlight_outer.png').setAlpha(0.1).setDepth(999).setScale(1);
+                 this.glowCirc2 = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY(), 'shields', 'ring_flash0.png').setAlpha(0.3).setDepth(999).setScale(2);
+                this.addDelay(() => {
+                    this.glowCirc2.playReverse('ring_flash');
+                    this.glowCirc2.currAnim = this.addTween({
+                        targets: this.glowCirc2,
+                        alpha: 1,
+                        ease: 'Cubic.easeOut',
+                        duration: 150,
+                        completeDelay: 1000,
+                        onComplete: () => {
+                            this.glowCirc2.currAnim = this.addTween({
+                                targets: this.glowCirc2,
+                                alpha: 0.3,
+                                ease: 'Cubic.easeIn',
+                                duration: 150,
+                                onComplete: () => {
+                                    this.glowCirc2.currAnim = this.addTween({
+                                        targets: this.glowCirc2,
+                                        alpha: 1,
+                                        ease: 'Cubic.easeOut',
+                                        duration: 150,
+                                    })
+                                    this.glowCirc2.play('ring_flash')
+                                }
+                            })
+                        }
+                    })
+                }, 400)
 
-
-                 this.glowCirc2.currAnim = this.addTween({
-                     targets: this.glowCirc2,
-                     alpha: 1,
-                     ease: 'Cubic.easeOut',
-                     duration: 400,
-                     onComplete: () => {
-                         this.glowCirc2.currAnim = this.addTween({
-                             targets: this.glowCirc2,
-                             alpha: 0.2,
-                             ease: 'Cubic.easeIn',
-                             duration: 400,
-                             onComplete: () => {
-                                 this.glowCirc2.currAnim = this.addTween({
-                                     targets: this.glowCirc2,
-                                     alpha: 1,
-                                     ease: 'Cubic.easeOut',
-                                     duration: 400,
-                                     onComplete: () => {
-                                         this.glowCirc2.currAnim = this.addTween({
-                                             targets: this.glowCirc2,
-                                             alpha: 0,
-                                             duration: 1200,
-                                         })
-                                     }
-                                 })
-                             }
-                         })
-                     }
-                 })
-                 this.addTween({
-                     targets: this.glowCirc2,
-                     scaleX: 0.72,
-                     scaleY: 0.72,
-                     duration: 800,
-                     ease: 'Cubic.easeInOut',
-                     onComplete: () => {
-                         this.addTween({
-                             targets: this.glowCirc2,
-                             scaleX: 1,
-                             scaleY: 1,
-                             duration: 800,
-                             ease: 'Cubic.easeInOut',
-                         })
-                     }
-                 })
                  globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 38, getLangText('level1_tut_z'), 'center');
 
                  this.addTimeout(() => {

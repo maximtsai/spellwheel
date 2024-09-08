@@ -357,6 +357,17 @@ function createAnimations(scene) {
         frameRate: 30
     });
     scene.anims.create({
+        key: 'ring_flash',
+        frames: scene.anims.generateFrameNames('shields', {
+            prefix: 'ring_flash',
+            suffix: '.png',
+            start: 0,
+            end: 12,
+            zeroPad: 0,
+        }),
+        frameRate: 30
+    });
+    scene.anims.create({
         key: 'circleEffect',
         frames: scene.anims.generateFrameNames('circle', {
             prefix: 'circleEffect',

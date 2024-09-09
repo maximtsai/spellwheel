@@ -116,6 +116,7 @@
              }
              if (this.breatheTween) {
                  this.breatheTween.stop();
+                 this.breatheTween = null;
              }
              if (this.accumulatedAnimDamage <= 12){
                  // do nothin
@@ -176,6 +177,7 @@
                  // shield must have broke
                  if (this.breatheTween) {
                      this.breatheTween.stop();
+                     this.breatheTween = null;
                  }
                  this.setDefaultSprite('gobbo2.png', 0.92);
                  this.interruptCurrentAttack();
@@ -234,12 +236,12 @@
                          });
 
                          this.setDefaultSprite('gobboshield1.png', 0.92).play('gobboshield');
-                         this.shieldAdded = true;
                      },
                      attackFinishFunction: () => {
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
                          this.repeatTweenBreathe()
+                         this.shieldAdded = true;
 
                          messageBus.publish("showCombatText", getLangText('goblin_shield'), -18);
                      }
@@ -489,33 +491,41 @@
          });
      }
 
-     repeatTweenBreathe(duration = 1500, magnitude = 1) {
+     repeatTweenBreathe(duration = 1500, magnitude = 1, isRepeat = false) {
         if (this.dead || this.isDestroyed) {
             return;
         }
          if (this.breatheTween) {
              this.breatheTween.stop();
+             this.breatheTween = null;
          }
          let horizMove = Math.ceil(3.5 * magnitude);
          let burningMult = this.isBurning ? 0.18 : 1;
-         this.breatheTween = this.addTween({
+         PhaserScene.tweens.add({
+             targets: this.sprite,
+             duration: 500,
+             rotation: 5,
+              x: 2,
+             ease: 'Cubic.easeInOut',
+         })
+         this.addTween({
              targets: this.sprite,
              duration: duration * (Math.random() * 0.5 + 1) * burningMult,
-             rotation: this.isKnocked ? undefined : -0.02 * magnitude,
+             rotation: this.isKnocked ? 0 : -0.02 * magnitude,
              x: this.sprite.startX - horizMove,
              ease: 'Cubic.easeInOut',
              completeDelay: 150,
              onComplete: () => {
                  let burningMult2 = this.isBurning ? 0.2 : 1;
-                 this.breatheTween = this.addTween({
+                 this.addTween({
                      targets: this.sprite,
                      duration: duration * (Math.random() * 0.5 + 1) * burningMult2,
-                     rotation: this.isKnocked ? undefined : 0.02 * magnitude,
+                     rotation: this.isKnocked ? 0 : 0.02 * magnitude,
                      x: this.sprite.startX + horizMove,
                      ease: 'Cubic.easeInOut',
                      completeDelay: 150,
                      onComplete: () => {
-                         this.repeatTweenBreathe(duration, magnitude);
+                         this.repeatTweenBreathe(duration, magnitude, true);
                      }
                  });
              }

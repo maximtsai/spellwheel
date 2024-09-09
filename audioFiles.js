@@ -60,6 +60,7 @@ const audioFiles = [
     {name: 'but_never_forgotten_gameover', src: 'audio/butneverforgotten_gameover.mp3'},
     {name: 'but_never_forgotten', src: 'audio/but_never_forgotten.mp3'},
     {name: 'but_never_forgotten_afterthought', src: 'audio/but_never_forgotten_afterthought.mp3'},
+    {name: 'sleepless', src: 'audio/sleepless.mp3'},
 
 
     {name: 'matter_body', src: 'audio/matter_body.mp3'},

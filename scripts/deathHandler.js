@@ -626,12 +626,14 @@ function handleReaperDialog(level = 0, onComplete) {
         reaperDialog = [
             getLangText('death3a'),
             getLangText('death3b'),
+            getLangText('death3c'),
         ];
         break;
     case 4:
         reaperDialog = [
             getLangText('death4b'),
             getLangText('death4c'),
+            getLangText('death4d'),
         ];
         break;
     case 5:

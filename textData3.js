@@ -109,7 +109,7 @@ let textData3 = {
         "jp": ""
     },
     "death3b": {
-        "en_us": "BUT THIS PATH LEADS ONLY TO SORROW.",
+        "en_us": "BUT THIS PATH LEADS\nONLY TO SORROW.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -128,7 +128,7 @@ let textData3 = {
     },
     "xxxdeath3a": {
         "en_us": "I ISSUE YOU ONE FINAL WARNING-",
-        "fr": "JE NE FERAI QUE TE PRÉVENIR UNE FOIS DE PLUS,",
+        "fr": "JE NE FERAI QUE TE PRÉVENIR\nUNE FOIS DE PLUS,",
         "zh_tw": "我只會再次警告你，",
         "zh_cn": "我只会再次警告你，",
         "ru": "Я ТОЛЬКО ЕЩЕ РАЗ ПРЕДУПРЕЖДАЮ,",
@@ -145,7 +145,7 @@ let textData3 = {
         "jp": "あなたがここで探し求めているものは、\n達成することができません。"
     },
     "death4b": {
-        "en_us": "YOU MARCH FORWARD, YET REMAIN TETHERED\nTO A TIME THAT HAS LONG PASSED.",
+        "en_us": "YOU MARCH FORWARD, YET ARE TETHERED\nTO A TIME THAT HAS LONG PASSED.",
         "fr": "",
         "zh_tw": "一個人命運的終結可以被延遲，\n但無法被改變。",
         "zh_cn": "一个人命运的终结可以被延迟，\n但无法被改变。",

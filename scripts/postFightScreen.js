@@ -8,6 +8,7 @@ class PostFightScreen {
         this.locketSprite = null;
         this.locketDialogImage = null;
         this.locketDialog = null;
+        this.locketMusic = null;
         this.locketRecentlyClicked = false;
         this.locketDialogIndex = 0;
         this.isActive = false;
@@ -542,7 +543,8 @@ class PostFightScreen {
 
     createWinScreen(level = 0) {
         this.windSfx = playSound('wind', 0.01, true);
-        fadeInSound(this.windSfx);
+        this.windSfx.detune = -700;
+        fadeInSound(this.windSfx, 0.7);
         this.canShowRuneBtn = true;
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
@@ -707,6 +709,7 @@ class PostFightScreen {
     showStoryText(level) {
         let objectsToFade = [this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
 
+        this.locketMusic = playMusic('sleepless', 0.5, true);
         this.showRuneDescBtn.setState(DISABLE);
         PhaserScene.tweens.add({
             delay: 100,
@@ -740,6 +743,9 @@ class PostFightScreen {
     returnStatText() {
         if (!this.newRuneDesc.visible && this.trainingButton.getState() !== DISABLE) {
             this.showRuneDescBtn.setState(NORMAL);
+        }
+        if (this.locketMusic) {
+            fadeAwaySound(this.locketMusic, 3500, 'Quad.easeOut');
         }
         let objectsToFade = [this.titleText, this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
         PhaserScene.tweens.add({
@@ -887,6 +893,11 @@ class PostFightScreen {
             ease: 'Quad.easeOut',
             duration: 600,
         });
+        if (this.locketMusic) {
+            fadeAwaySound(this.locketMusic, 800, undefined, () => {
+                this.locketMusic = null;
+            });
+        }
         globalObjects.bannerTextManager.setOnFinishFunc(() => {});
         globalObjects.bannerTextManager.closeBanner();
         this.continueButton.setState(DISABLE);

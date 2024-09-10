@@ -399,7 +399,7 @@ let textData4 = {
     },
     "magician_a": {
         "en_us": "Nice try, but your\nattacks have no shock.",
-        "fr": "Bien tenté, mais tes coups n'ont aucun choc.",
+        "fr": "Bien tenté, mais tes\ncoups n'ont aucun choc.",
         "zh_tw": "打得不錯，但你攻擊缺威力。",
         "zh_cn": "打得不错，但你攻击缺威力。",
         "ru": "Хорошая попытка, но ваши атаки не вызывают шока.",
@@ -407,8 +407,8 @@ let textData4 = {
         "jp": "ナイストライですが、あなたの攻撃にはショックがありません。"
     },
     "magician_b": {
-        "en_us": "Now have a taste\nof my great big clock!",
-        "fr": "Maintenant, goûtez à ma immense horloge!",
+        "en_us": "Now face the power\nof my great big clock!",
+        "fr": "Maintenant, goûtez à\nma immense horloge!",
         "zh_tw": "現在瞧看我巨大的時計！",
         "zh_cn": "现在瞧看我巨大的时计！",
         "ru": "Теперь попробуйте мои большие часы!",
@@ -417,18 +417,18 @@ let textData4 = {
     },
     "magician_c": {
         "en_us": "You think you've won,\nbut I'm not done yet.",
-        "fr": "Vous pensez que vous avez gagné, mais je n’ai pas encore fini.",
-        "zh_tw": "你認為你贏了，但我還沒有結束。",
-        "zh_cn": "你认为你赢了，但我还没有结束。",
+        "fr": "Tu crois avoir gagné,\nmais je n’ai pas fini.",
+        "zh_tw": "你以為你贏了，但我還沒完結。",
+        "zh_cn": "你以为你赢了，但我还未完结。",
         "ru": "Вы думаете, что выиграли, но я еще не закончил.",
         "es": "Crees que has ganado, pero yo aún no he terminado.",
         "jp": "あなたは勝ったと思っていますが、私はまだ終わっていません。"
     },
     "magician_d": {
         "en_us": "Let me show you\na true temporal threat!",
-        "fr": "Permettez-moi de vous montrer une véritable menace temporelle !",
-        "zh_tw": "讓我向你展示一個真正的時間威脅！",
-        "zh_cn": "让我向你展示一个真正的时间威胁！",
+        "fr": "Laisse-moi te montrer\nun vrai ennemi !",
+        "zh_tw": "讓我展示時間的威脅！",
+        "zh_cn": "让我展示时间的威胁！",
         "ru": "Позвольте мне показать вам истинную временную угрозу!",
         "es": "¡Déjame mostrarte una verdadera amenaza temporal!",
         "jp": "真の時間的脅威をお見せしましょう!"
@@ -480,7 +480,7 @@ let textData4 = {
     },
     "pre_fight_3b": {
         "en_us": "If this \"Magician\" is\ntrying to stop me, then\nI'll take him down\nlike all the rest.",
-        "fr": "Si ce « Magicien » essaie\nde m’arrêter, alors\nje le vaincrai comme\ntous les autres.",
+        "fr": "Si ce Magicien essaie\nde m’arrêter, alors\nje le vaincrai comme\ntous les autres.",
         "zh_tw": "如果這個魔術師試\n圖阻止我，那我會\n一了把他打敗！",
         "zh_cn": "如果这个魔术师试\n图阻止我，那我会\n一了把他打败！",
         "ru": "Этот \"Волшебник\" меня достаточно насолил. Моя магия жаждет драки.",

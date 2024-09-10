@@ -2,21 +2,21 @@
 let textData2 = {
     "encyclopedia_rune_element": {
         "en_us": "Elemental Runes: ",
-        "fr": "Runes élémentaires:",
+        "fr": "Runes élémentaires: ",
         "zh_tw": "元素符文：",
         "zh_cn": "元素符文：",
-        "ru": "Руны стихий:",
-        "es": "Runas elementales:",
-        "jp": "エレメンタルルーン:"
+        "ru": "Руны стихий: ",
+        "es": "Runas elementales: ",
+        "jp": "エレメンタルルーン: "
     },
     "encyclopedia_rune_action": {
         "en_us": "Action Runes: ",
-        "fr": "Runes d’action:",
+        "fr": "Runes d’action: ",
         "zh_tw": "動作符文：",
         "zh_cn": "动作符文：",
-        "ru": "Руны действия:",
-        "es": "Runas de acción:",
-        "jp": "アクションルーン:"
+        "ru": "Руны действия: ",
+        "es": "Runas de acción: ",
+        "jp": "アクションルーン: "
     },
     "encyc_desc_matter": {
         "en_us": "Uses solid rock and stone for your spells",
@@ -164,21 +164,21 @@ let textData2 = {
     },
     "post_fight_title2": {
         "en_us": "Rune Test Complete",
-        "fr": "Test de runes terminé",
+        "fr": "Test terminé",
         "zh_tw": "符文測試完成",
         "zh_cn": "符文测试完成",
         "ru": "Испытание рун завершено",
-        "es": "Prueba de runas completa",
+        "es": "Prueba completa",
         "jp": "ルーンテスト完了"
     },
     "post_fight_health": {
         "en_us": "Health Left: ",
-        "fr": "Santé Reste:",
+        "fr": "Santé Reste: ",
         "zh_tw": "剩餘生命值：",
         "zh_cn": "剩余生命值：",
-        "ru": "Осталось здоровья:",
-        "es": "Salud Izquierda:",
-        "jp": "ヘルス残量:"
+        "ru": "Осталось здоровья: ",
+        "es": "Salud Izquierda: ",
+        "jp": "ヘルス残量: "
     },
     "post_fight_newrune": {
         "en_us": "New Rune",
@@ -227,7 +227,7 @@ let textData2 = {
     },
     "post_fight_story1": {
         "en_us": "I have arrived at the gates to\nthe forbidden land of the departed.\n\nImmediately, this realm resists my entry.\nBut I know I will find you here, dear beloved,\nand nothing will stop me from reaching you.",
-        "fr": "Je suis arrivé aux portes de la\nterre interdite des défunts.\n\nImmédiatement, ce royaume résiste à mon entrée.\nMais je sais que je vous trouverai ici, chers\nbien-aimés, et rien ne m’empêchera de vous\natteindre.",
+        "fr": "Je suis arrivé aux portes de la\nterre interdite des défunts.\n\nImmédiatement, ce royaume résiste à mon\nentrée. Mais je sais que je vous trouverai ici,\nchers bien-aimés, et rien ne m’empêchera de\nvous atteindre.",
         "zh_tw": "我已經到達了通往逝者禁地的大門。 \n\n立刻，這個境界就抵擋住了我的進入。\n但我知道我會在這裡找到你，親愛的摯愛，\n沒有什麼能阻止我接近你。",
         "zh_cn": "我已经到达了通往逝者禁地的大门。 \n\n立刻，这个境界就抵挡住了我的进入。\n但我知道我会在这里找到你，亲爱的挚爱，\n没有什么能阻止我接近你。",
         "ru": "Я прибыл к воротам запретной земли усопших.  Этот мир сразу же сопротивляется моему входу. Но я знаю, что найду тебя здесь, дорогая возлюбленная, и ничто не помешает мне добраться до тебя.",
@@ -320,7 +320,7 @@ let textData2 = {
     },
     "post_fight_training": {
         "en_us": "    TEST NEW RUNE",
-        "fr": "TESTER UNE NOUVELLE RUNE",
+        "fr": "TESTER NOUVELLE RUNE",
         "zh_tw": "測試新符文",
         "zh_cn": "测试新符文",
         "ru": "ИСПЫТАЙТЕ НОВУЮ РУНУ",
@@ -437,7 +437,7 @@ let textData2 = {
     },
     "pre_fight_1a": {
         "en_us": "\"This is my shield, mine!\n Is family treasure from\n father's brother's aunt's\n grandpa's cousin's\n friend's neighbor!!\"",
-        "fr": "« Ceci est mon bouclier, le\nmien !  C’est un trésor de\nfamille du frère du père,\nde la tante du grand-père,\ndu voisin de l’ami du\ncousin du grand-père!!\"",
+        "fr": "« Ceci est mon bouclier, le\nmien! C’est un trésor de\nfamille du frère du père,\nde la tante du grand-père,\ndu voisin de l’ami du\ncousin du grand-père!! »",
         "zh_tw": "“這是我的盾牌，我的！\n是我爸爸的哥哥的阿姨的\n爺爺的堂兄朋友的鄰居\n的家寶！！",
         "zh_cn": "“这是我的盾牌，我的！\n是我爸爸的哥哥的阿姨的\n爷爷的堂兄朋友的邻居\n的家宝！！",
         "ru": "«Это мой щит, мой!  Это семейное сокровище от отца, брата, тети, дедушки, двоюродного брата, соседа друга двоюродного брата!!»",
@@ -446,7 +446,7 @@ let textData2 = {
     },
     "pre_fight_1b": {
         "en_us": "There is no time to barter,\nand I must take every\nresource I can get.",
-        "fr": "Je n’ai pas le temps de\nfaire du troc, et je dois\nprendre toutes les\nressources que je peux\nobtenir.",
+        "fr": "Je n’ai pas le temps de faire\ndu troc, et je dois prendre\ntoutes les ressources que\nje peux obtenir.",
         "zh_tw": "沒有時間進行物物交換，\n我必須拿走我能得到的\n一切資源。",
         "zh_cn": "沒有時間進行物物交換，\n我必須拿走我能得到的\n一切資源。",
         "ru": "Нет времени на торг, и я должен использовать все ресурсы, которые я могу достать.",
@@ -464,7 +464,7 @@ let textData2 = {
     },
     "pre_fight_4a": {
         "en_us": "You: \"Halt! Are you friend or foe?\"\nKnight: ...\nYou: \"Do you mock me with your silence?\"\nKnight: ...\nYou: \"Enough, fight me now!\"",
-        "fr": "",
+        "fr": "Toi : « Halte ! Es-tu ami ou ennemi ? »\nChevalier : ...\nToi : « Tu te moques de moi avec ton silence ? »\nChevalier : ...\nToi : « Assez, combats-moi maintenant ! »",
         "zh_tw": '你："停下！你是朋友還是敵人？"\n騎士：…\n你："你在用沉默嘲笑我嗎？"\n騎士：…\n你："夠了，立刻跟我打！',
         "zh_cn": '你："停下！你是朋友还是敌人？"\n骑士：…\n你："你在用沉默嘲笑我吗？"\n骑士：…\n你："够了，立刻跟我打！"',
         "ru": "",
@@ -616,8 +616,8 @@ let textData2 = {
         "jp": "攻撃されると\n敵が怒る!"
     },
     "level1_train_diag_a": {
-        "en_us": "I've set up a training doll\nto test out this new rune.",
-        "fr": "J'ai installé un mannequin\nd'entraînement pour tester ma nouvelle rune.",
+        "en_us": "I've set up a training doll\nto test this new rune.",
+        "fr": "Pour tester cette rune, j'ai\ninstallé un mannequin d'entraînement.",
         "zh_tw": "我設定了一個訓練假人\n來測試這個新的符文。",
         "zh_cn": "我设置了一个训练假人\n来测试这个新的符文。。",
         "ru": "Я установил учебный манекен,\nчтобы опробовать свою новую руну.",
@@ -653,7 +653,7 @@ let textData2 = {
     },
     "level1_train_tut_a": {
         "en_us": "Goal: Defeat the\nenemy in just\n4 spells",
-        "fr": "Objectif : Vaincre\nl’ennemi en seulement\n4 sorts",
+        "fr": "Objectif : Vaincre\nl’ennemi en\nseulement 4 sorts",
         "zh_tw": "目標：使用少于\n4 個法術擊敗敵人",
         "zh_cn": "目标：使用少于\n4 个法术击败敌人",
         "ru": "Цель: победить\nврага всего за\n4 заклинания",
@@ -671,7 +671,7 @@ let textData2 = {
     },
     "level2_train_tut_a": {
         "en_us": "Goal: Defend\nagainst incoming\nattacks",
-        "fr": "Objectif: Survivre\naux attaques de l’ennemi",
+        "fr": "Objectif: Survivre\naux attaques de\nl’ennemi",
         "zh_tw": "目標：防禦\n敵人的攻擊",
         "zh_cn": "目标：防御\n敌人的攻击",
         "ru": "Цель: Защититесь\nот атак врага",
@@ -734,7 +734,7 @@ let textData2 = {
     },
     "dummy_mind_tut": {
         "en_us": "Energy Strike\nmakes your next\nattack hit X2\nas hard\n           +",
-        "fr": "La frappe\nénergétique rend\nvotre prochaine\nattaque deux fois\nplus forte.\n          +",
+        "fr": "La frappe\nénergétique rend\nvotre prochaine\nattaque deux fois\nplus forte.\n              +",
         "zh_tw": "你的下一次攻擊\n造成兩倍的傷害\n         +",
         "zh_cn": "你的下一次攻击\n造成双倍伤害\n         +",
         "ru": "Энергетический удар делает вашу следующую атаку в два раза сильнее.\n             +",

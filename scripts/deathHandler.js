@@ -410,7 +410,7 @@ function playReaperAnim(enemy, customFinFunc) {
                                         globalObjects.reapSound = null;
                                         messageBus.publish('tempPause', 50, 0.1);
                                     }, 100);
-                                    setFloatingDeathDepth(1000);
+                                    // setFloatingDeathDepth(1000);
                                     let darkScreen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(980).setAlpha(1)
                                     if (!this.scytheBlur) {
                                         this.scytheBlur = PhaserScene.add.image(gameConsts.halfWidth, scythe.y, 'blurry', 'scytheblur.png').setDepth(1002).setBlendMode(Phaser.BlendModes.LIGHTEN)

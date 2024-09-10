@@ -173,7 +173,7 @@ let textData2 = {
     },
     "post_fight_health": {
         "en_us": "Health Left: ",
-        "fr": "Santé Gauche :",
+        "fr": "Santé Reste:",
         "zh_tw": "剩餘生命值：",
         "zh_cn": "剩余生命值：",
         "ru": "Осталось здоровья:",
@@ -227,7 +227,7 @@ let textData2 = {
     },
     "post_fight_story1": {
         "en_us": "I have arrived at the gates to\nthe forbidden land of the departed.\n\nImmediately, this realm resists my entry.\nBut I know I will find you here, dear beloved,\nand nothing will stop me from reaching you.",
-        "fr": "Je suis arrivé aux portes de la terre interdite des défunts.  Immédiatement, ce royaume résiste à mon entrée. Mais je sais que je vous trouverai ici, chers bien-aimés, et rien ne m’empêchera de vous atteindre.",
+        "fr": "Je suis arrivé aux portes de la\nterre interdite des défunts.\n\nImmédiatement, ce royaume résiste à mon entrée.\nMais je sais que je vous trouverai ici, chers\nbien-aimés, et rien ne m’empêchera de vous\natteindre.",
         "zh_tw": "我已經到達了通往逝者禁地的大門。 \n\n立刻，這個境界就抵擋住了我的進入。\n但我知道我會在這裡找到你，親愛的摯愛，\n沒有什麼能阻止我接近你。",
         "zh_cn": "我已经到达了通往逝者禁地的大门。 \n\n立刻，这个境界就抵挡住了我的进入。\n但我知道我会在这里找到你，亲爱的挚爱，\n没有什么能阻止我接近你。",
         "ru": "Я прибыл к воротам запретной земли усопших.  Этот мир сразу же сопротивляется моему входу. Но я знаю, что найду тебя здесь, дорогая возлюбленная, и ничто не помешает мне добраться до тебя.",
@@ -275,9 +275,9 @@ let textData2 = {
     },
     "post_fight_story5": {
         "en_us": "The Reaper appears every time to sour my\nvictories. Is my quest to reclaim a loved one\nso wrong?\n\nSurely not, which means it must be the\nReaper themselves who is setting up all\nthese obstacles!",
-        "fr": "Mon pouvoir augmente, mais la résistance que cette terre oppose aussi aussi.  Ma noble quête pour récupérer un être cher est-elle si mauvaise ?  Sûrement pas, et je ferai tout ce qu’il faut, quel qu’en soit le prix.",
-        "zh_tw": "我的力量在增長，但這片土地所施加的抵抗也在增長。 我找回親人的崇高追求有這麼大的錯誤嗎？ 當然不會，我會不惜一切代價，不惜一切代價。",
-        "zh_cn": "我的力量在增长，但这片土地所施加的抵抗也在增长。 我找回亲人的崇高追求有这么大的错误吗？ 当然不会，我会不惜一切代价，不惜一切代价。",
+        "fr": "Le Faucheur apparaît à chaque fois pour\ngâcher mes victoires. Ma quête pour récupérer un\nêtre cher est-elle si mauvaise?\n\nCertainement pas, ce qui signifie que\nc'est le Faucheur lui-même qui met en\nplace tous ces obstacles!",
+        "zh_tw": "死神每次出現都會讓我的勝利灰飛煙滅。\n我找回親人的任務就這麼錯嗎？\n\n當然不是，這意味著一定是死神自己在設置\n所有這些障礙！",
+        "zh_cn": "死神每次出现都会让我的胜利灰飞烟灭。\n我找回亲人的任务难道就这么错误吗？\n\n当然不是，这意味着一定是死神自己在设置\n所有这些障碍！",
         "ru": "Моя сила растет, но растет и сопротивление, которое оказывает эта земля.  Неужели мое благородное стремление вернуть любимого человека так неправильно?  Конечно, нет, и я сделаю все, что потребуется, независимо от цены.",
         "es": "Mi poder crece, pero también lo hace la resistencia que opone esta tierra.  ¿Está tan equivocada mi noble búsqueda de recuperar a un ser querido?  Seguramente no, y haré lo que sea necesario, sin importar el costo.",
         "jp": "私の力は増すが、この土地が耐える抵抗も大きくなる。 愛する人を取り戻すという私の崇高な探求は、それほど間違っているのでしょうか? もちろん、そうではないし、どんな犠牲を払おうとも、必要なことは何でもする。"
@@ -419,11 +419,11 @@ let textData2 = {
     },
     "pre_fight_0h": {
         "en_us": "CAST:\nCLICK/SPACE",
-        "fr": "Casting:\nClic/barre\nd'espace",
+        "fr": "LANCER:\nClic/barre\nd'espace",
         "zh_tw": "法術施放:\n滑鼠點選/空白鍵",
         "zh_cn": "法术施放:\n鼠标单击/空格键",
         "ru": "Щелчок мышью\nпробел",
-        "es": "Lanzar hechizo:\nClic mouse\n/nespaciadora",
+        "es": "LANZAR HECHIZO:\nClic mouse\n/nespaciadora",
         "jp": "呪文の詠唱:\nマウスをクリック\n/スペースバー"
     },
     "pre_fight_0i": {
@@ -733,8 +733,8 @@ let textData2 = {
         "jp": "ボイドシールドは\n1回の攻撃を完全\nにブロックできる\n         +"
     },
     "dummy_mind_tut": {
-        "en_us": "Energy Strike makes\nyour next attack\nhit X2 as hard\n            +",
-        "fr": "La frappe énergétique\nrend votre prochaine\nattaque deux fois\nplus forte.\n          +",
+        "en_us": "Energy Strike\nmakes your next\nattack hit X2\nas hard\n           +",
+        "fr": "La frappe\nénergétique rend\nvotre prochaine\nattaque deux fois\nplus forte.\n          +",
         "zh_tw": "你的下一次攻擊\n造成兩倍的傷害\n         +",
         "zh_cn": "你的下一次攻击\n造成双倍伤害\n         +",
         "ru": "Энергетический удар делает вашу следующую атаку в два раза сильнее.\n             +",

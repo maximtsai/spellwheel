@@ -1381,6 +1381,7 @@
              this.breatheTween2.stop();
          }
          this.clearVoidShield();
+         this.shieldAmts = 0;
 
          if (this.isFirstMode) {
              this.animateDeathOne();

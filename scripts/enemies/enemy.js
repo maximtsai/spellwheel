@@ -1507,6 +1507,12 @@ class Enemy {
         if (this.breatheTween) {
             this.breatheTween.stop();
         }
+        if (this.attackGlow) {
+            if (this.attackGlow.currAnim) {
+                this.attackGlow.currAnim.stop();
+            }
+            this.attackGlow.visible = true;
+        }
         messageBus.publish("closeCombatText");
 
         this.clearEffects();

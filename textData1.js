@@ -677,7 +677,7 @@ let textData = {
         "jp": "シールドルーンは、あなたと敵の間に配置されている限り、あなたを保護するバリアを作成します。"
     },
     "reinforce_tut_desc": {
-        "en_us": "The Body rune grants effects\nthat persist until you cast\na new body spell.\nSome Body+Rune combos can even heal you.",
+        "en_us": "The Body rune grants effects\nthat persist until you cast\na new body spell. Some\nBody+Rune combos can even heal you.",
         "fr": "La rune Corps confère des effets qui persistent jusqu’à ce que vous lanciez un nouveau sort corporel. Certains combos corps+runes peuvent même vous soigner.",
         "zh_tw": "身體符文賦予的效果會一直持續到你施放新的身體法術。一些身體+符文組合甚至可以治癒你。",
         "zh_cn": "身体符文赋予的效果会一直持续到你施放新的身体法术。一些身体+符文组合甚至可以治愈你。",

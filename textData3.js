@@ -145,7 +145,7 @@ let textData3 = {
         "jp": "あなたがここで探し求めているものは、\n達成することができません。"
     },
     "death4b": {
-        "en_us": "YOU MARCH FORWARD, YET ARE TETHERED\nTO A TIME THAT HAS LONG PASSED.",
+        "en_us": "YOU MARCH FORWARD,\nYET YOU TETHER YOURSELF",
         "fr": "",
         "zh_tw": "一個人命運的終結可以被延遲，\n但無法被改變。",
         "zh_cn": "一个人命运的终结可以被延迟，\n但无法被改变。",
@@ -154,7 +154,7 @@ let textData3 = {
         "jp": ""
     },
     "death4c": {
-        "en_us": "YOU WILL NEVER FIND PEACE-\nFOR HER, OR FOR YOURSELF,",
+        "en_us": "TO A TIME THAT HAS ALREADY PASSED.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -163,7 +163,7 @@ let textData3 = {
         "jp": ""
     },
     "death4d": {
-        "en_us": "UNTIL YOU LET GO.",
+        "en_us": "YOU WILL NEVER KNOW PEACE\nUNTIL YOU LET HER GO.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

@@ -490,8 +490,6 @@ function switchLevelBackground(lvl) {
 
 function beginLevel(lvl, instant = false) {
     CURRENT_LEVEL = lvl;
-    globalObjects.encyclopedia.showButton();
-    globalObjects.options.showButton();
     updateSpellState(lvl)
     globalObjects.player.resetStats();
     messageBus.publish('manualResetElements', undefined, true);
@@ -517,6 +515,8 @@ function createEnemyAfterDelay(lvl) {
     }
     levelTimeoutID = setTimeout(() => {
         if (lvl === CURRENT_LEVEL) {
+            globalObjects.encyclopedia.showButton();
+            globalObjects.options.showButton();
             createEnemy(lvl);
         }
     }, delayAmt);

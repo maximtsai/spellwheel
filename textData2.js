@@ -266,7 +266,7 @@ let textData2 = {
     },
     "post_fight_story4": {
         "en_us": "Sometimes I question myself, whether entering\nthese forbidden lands and battling every foe\nI encounter is truly the right choice.\n\nBut when I close my eyes and think of\nyour smile, I feel that every sacrifice will be\nworth it in the end.",
-        "fr": "Parfois, je me demande si aller au Pays des\nMorts et combattre tous les ennemis est vraiment\nla bonne chose à faire.\n\nMais quand je ferme les yeux et pense à ton\nsourire, j’ai l’impression que tous les sacrifices\nen valaient la peine au final.",
+        "fr": "Parfois, je me demande si aller au Pays des\nMorts et combattre tous les ennemis est\nvraiment la bonne chose à faire.\n\nMais quand je ferme les yeux et pense à ton\nsourire, j’ai l’impression que tous les sacrifices\nen valaient la peine au final.",
         "zh_tw": "有時我會懷疑進入亡靈之地，與每個敵人戰鬥是否\n真的是正確的選擇。\n\n但當我閉上眼睛，想起你的笑容時，我覺得最終所有的\n犧牲都是值得的。",
         "zh_cn": "有时我会怀疑进入亡灵之地，与每个敌人战斗是否\n真的是正确的选择。\n\n但当我闭上眼睛，想起你的笑容时，我觉得最终所有的\n牺牲都是值得的。",
         "ru": "Как же я жажду снова ощутить твои объятия, моя дорогая возлюбленная.  Твоя смерть была слишком поспешной, слишком несправедливой, и я исправлю эту ошибку, даже если мне придется опрокинуть всю страну.",
@@ -275,7 +275,7 @@ let textData2 = {
     },
     "post_fight_story5": {
         "en_us": "The Reaper appears every time to sour my\nvictories. Is my quest to reclaim a loved one\nso wrong?\n\nSurely not, which means it must be the\nReaper themselves who is setting up all\nthese obstacles!",
-        "fr": "Le Faucheur apparaît à chaque fois pour\ngâcher mes victoires. Ma quête pour récupérer un\nêtre cher est-elle si mauvaise?\n\nCertainement pas, ce qui signifie que\nc'est le Faucheur lui-même qui met en\nplace tous ces obstacles!",
+        "fr": "Le Faucheur apparaît à chaque fois pour\ngâcher mes victoires. Ma quête pour récupérer\nun être cher est-elle si mauvaise?\n\nCertainement pas, ce qui signifie que c'est\nle Faucheur lui-même qui met en place tous\nces obstacles!",
         "zh_tw": "死神每次出現都會讓我的勝利灰飛煙滅。\n我找回親人的任務就這麼錯嗎？\n\n當然不是，這意味著一定是死神自己在設置\n所有這些障礙！",
         "zh_cn": "死神每次出现都会让我的胜利灰飞烟灭。\n我找回亲人的任务难道就这么错误吗？\n\n当然不是，这意味着一定是死神自己在设置\n所有这些障碍！",
         "ru": "Моя сила растет, но растет и сопротивление, которое оказывает эта земля.  Неужели мое благородное стремление вернуть любимого человека так неправильно?  Конечно, нет, и я сделаю все, что потребуется, независимо от цены.",
@@ -680,7 +680,7 @@ let textData2 = {
     },
     "level4_train_tut_a": {
         "en_us": "Goal: Defeat\nthe enemy",
-        "fr": "Objectif: Vaincre\nl’ennemi",
+        "fr": "Objectif:\nVaincre l’ennemi",
         "zh_tw": "目標：擊敗敵人",
         "zh_cn": "目标：击败敌人",
         "ru": "Цель: Победить\nврага",
@@ -725,9 +725,9 @@ let textData2 = {
     },
     "level5_train_tut_c": {
         "en_us": "Void + Shield\ncan block\nstrong attacks\n           +",
-        "fr": "Les boucliers du\nNéant peuvent bloquer\ncomplètement des attaques puissantes uniques +",
+        "fr": "Les boucliers du\nNéant peuvent bloquer\ncomplètement des\nattaques puissantes\nuniques           +",
         "zh_tw": "虛空護盾可以完全\n阻擋一次攻擊\n       +",
-        "zh_cn": "虚空护盾可以完全\n阻挡一次攻击\n      +",
+        "zh_cn": "虚空护盾可以完全\n阻挡一次攻击\n       +",
         "ru": "Пустотные щиты\nмогут полностью\nблокировать\nодну-единственную атаку\n          +",
         "es": "Los escudos de\nvacío pueden\nbloquear completamente\nun solo ataque\n         +",
         "jp": "ボイドシールドは\n1回の攻撃を完全\nにブロックできる\n         +"

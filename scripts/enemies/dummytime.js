@@ -103,7 +103,7 @@
             this.rune4.destroy();
             this.rune5.destroy();
          }
-    
+
         playSound('clunk2');
          if (this.runTween) {
             this.runTween.stop();
@@ -175,7 +175,7 @@
                  // 0
                  {
                      name: "|12x3",
-                     chargeAmt: 400,
+                     chargeAmt: 300,
                      finishDelay: 800,
                      isBigMove: true,
                      transitionFast: true,

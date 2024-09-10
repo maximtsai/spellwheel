@@ -1583,7 +1583,7 @@
              this.addTween({
                  targets: currObj,
                  delay: delayAmt,
-                 y: globalObjects.player.getY() - 185 + Math.random() * 10,
+                 y: globalObjects.player.getY() - 170 + Math.random() * 10 - currObj.width * 0.5,
                  ease: 'Quad.easeIn',
                  duration: projDur,
                  rotation: (Math.random() - 0.5) * 3,

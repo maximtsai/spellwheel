@@ -173,7 +173,7 @@ let textData3 = {
     },
     "death5a": {
         "en_us": "PERHAPS YOU THINK YOURSELF\nA HERO, BUT UNDERSTAND THIS",
-        "fr": "VOUS POUVEZ VOUS CONSIDÉRER COMME\nUN HÉROS, MAIS COMPRENEZ CECI",
+        "fr": "VVOUS POUVEZ VOUS VOIR COMME\nUN HÉROS, MAIS COMPRENEZ CECI",
         "zh_tw": "你可能認為自己是英雄，\n但要明白這一點",
         "zh_cn": "你可能认为自己是英雄，\n但要明白这一点",
         "ru": "ВЫ МОЖЕТЕ СЧИТАТЬ СЕБЯ ГЕРОЕМ, НО ПОЙМИТЕ ЭТО",

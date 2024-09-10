@@ -407,7 +407,7 @@ let textData4 = {
         "jp": "ナイストライですが、あなたの攻撃にはショックがありません。"
     },
     "magician_b": {
-        "en_us": "Now face the power\nof my great big clock!",
+        "en_us": "Now have a taste\nof my great big clock!",
         "fr": "Maintenant, goûtez à\nma immense horloge!",
         "zh_tw": "現在瞧看我巨大的時計！",
         "zh_cn": "现在瞧看我巨大的时计！",

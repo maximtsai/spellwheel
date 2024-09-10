@@ -1190,18 +1190,22 @@
              [
                  {
                      name: ";;;99x9;;;",
-                     chargeAmt: 1350,
-                     chargeMult: 2,
+                     chargeAmt: 1380,
+                     chargeMult: 1.1,
                      finishDelay: 10000,
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
-                        this.lastAttackLingerMult = 10;
+                         this.oldStartScale = this.sprite.startScale;
+                         this.sprite.startScale = this.sprite.startScale * 0.7;
+                        this.lastAttackLingerMult = 0;
 
                          this.finalArms = [];
+                         playSound('death_cast', 0.6).detune = -500;
+
                          for (let i = 0; i < 4; i++) {
                             let startRot = 0.5;
-                            let goalRot = 1 + 0.5 * i;
+                            let goalRot = 1 + 0.45 * i;
                             let longArm = this.addImage(this.x, this.y + 40, 'deathfinal', 'long_arm.png').setRotation(startRot).setOrigin(0.5, 0.95).setAlpha(0.2).setDepth(-1);
                             this.finalArms.push(longArm);
                              longArm.goalRot = goalRot;
@@ -1224,7 +1228,7 @@
 
                          for (let i = 0; i < 4; i++) {
                             let startRot = -0.5;
-                            let goalRot = -1 - 0.5 * i;
+                            let goalRot = -1 - 0.45 * i;
                             let longArm = this.addImage(this.x, this.y + 40, 'deathfinal', 'long_arm.png').setRotation(startRot).setOrigin(0.5, 0.95).setScale(-0.3, 0.3).setAlpha(0.2).setDepth(-1);
                             this.finalArms.push(longArm);
                              longArm.goalRot = goalRot;
@@ -1256,11 +1260,17 @@
                              playSound('heartbeatfast');
                              this.runPulses(this.pulses, 2)
                          }, 1800)
+                         this.lastAttackLingerMult = 20;
+                     },
+                     attackStartFunction: () => {
+                         this.interruptCurrentAttack();
+                         this.setAsleep();
+                        this.launchSuperHands();
                      },
                      finaleFunction: () => {
-                        this.interruptCurrentAttack();
-                        this.setAsleep();
-                        this.secondDie();
+                         if (!globalObjects.player.isDead()) {
+                             this.secondDie();
+                         }
                      }
                  },
                  {
@@ -1274,8 +1284,179 @@
          ];
      }
 
+     launchSuperHands() {
+         if (!this.finalHands) {
+             return;
+         }
+         let extraDelay = 0;
+         this.reapHand = this.addSprite(0, 0, 'deathfinal', 'claw_glow.png').setAlpha(0).setDepth(1000);
+         for (let i = 0; i < this.finalHands.length; i++) {
+             if ( i >= 5) {
+                 extraDelay += 250;
+             }
+             this.addDelayIfAlive(() => {
+                 this.fireNextSuperHand(i >= 4)
+             }, 800 + i * 800 + extraDelay)
+         }
+     }
+
+     createScytheAttackSfx(flipped) {
+         let darkScreen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(980).setAlpha(1.1)
+         if (!this.scytheBlur) {
+             this.scytheBlur = PhaserScene.add.image(gameConsts.halfWidth, this.y + 125, 'blurry', 'scytheblur.png').setDepth(1002).setBlendMode(Phaser.BlendModes.LIGHTEN)
+         }
+
+         let flipScale = flipped ? -1 : 1;
+         this.scytheBlur.setAlpha(1.1).setScale(flipScale, 1).setRotation(-0.15);
+         PhaserScene.tweens.add({
+             targets: [darkScreen],
+             alpha: 0,
+             duration: 1200,
+             ease: 'Quad.easeOut',
+             onComplete: () => {
+                 darkScreen.destroy();
+             }
+         });
+         PhaserScene.tweens.add({
+             targets: [this.scytheBlur],
+             alpha: 0,
+             scaleX: 1.02*flipScale,
+             scaleY: 1.01,
+             ease: 'Cubic.easeOut',
+             duration: 700,
+         });
+     }
+
+     fireNextSuperHand(isHeavy) {
+         if (!this.finalHands || this.finalHands.length === 0) {
+             return;
+         }
+        let nextHand = this.finalHands.pop();
+         nextHand.setDepth(100);
+        let isFlipped = nextHand.scaleX < 0;
+        let isFlippedMult = isFlipped ? -1 : 1;
+
+        let scaleMult = nextHand.frame.name == 'claw_glow.png' ? 2.2 : 1;
+
+         this.addTween({
+             targets: nextHand,
+             duration: 250,
+             alpha: 0.7,
+             ease: 'Cubic.easeOut',
+             onComplete: () => {
+                 this.addTween({
+                     targets: nextHand,
+                     duration: 300,
+                     alpha: 1,
+                     ease: 'Cubic.easeIn',
+                 })
+             }
+         })
+         this.addTween({
+             targets: nextHand,
+             duration: 250,
+             scaleX: 0.45 * isFlippedMult * scaleMult,
+             scaleY: 0.45 * scaleMult,
+             ease: 'Quart.easeInOut',
+             onComplete: () => {
+                 this.addTween({
+                     targets: nextHand,
+                     duration: isHeavy ? 450 : 400,
+                     x: gameConsts.halfWidth - 15,
+                     y: globalObjects.player.getY() - 215,
+                     scaleX: 1.04 * isFlippedMult * scaleMult,
+                     scaleY: 1.04 * scaleMult,
+                     ease: 'Quart.easeIn',
+                     onComplete: () => {
+                         messageBus.publish("selfTakeDamage", 99);
+                         if (isHeavy) {
+                             let glowName = nextHand.frame.name.substring(0, nextHand.frame.name.length - 4) + "_glow" + ".png";
+                             let glowScale = nextHand.scaleX * 2;
+                             // if (glowName == 'claw_glow.png') {
+                             //     glowScale *= 1.4;
+                             // }
+                             this.reapHand.setAlpha(1).setPosition(nextHand.x, nextHand.y).setScale(glowScale, Math.abs(glowScale)).setFrame(glowName);
+                             this.createScytheAttackSfx(this.finalHands.length % 2 == 0);
+                             this.addTween({
+                                 targets: this.reapHand,
+                                 alpha: 0,
+                                 ease: "Quad.easeIn",
+                                 duration: 450
+                             });
+                         }
+
+                         this.bgMain.setAlpha(isHeavy ? 0 : 0.75);
+                         this.addTween({
+                             targets: this.bgMain,
+                             alpha: 1,
+                             ease: "Quad.easeOut",
+                             duration: 700
+                         });
+                         screenShake(7);
+                         playSound('body_slam', isHeavy ? 0.5 : 0.6);
+                         if (isHeavy) {
+                             playSound('death_attack', 1);
+                         } else {
+                             playSound('rock_crumble', 0.7);
+                             playSound('shield_block', 0.7).detune = -800;
+                         }
+
+                         let dmgEffect = poolManager.getItemFromPool('brickPattern2')
+                         if (!dmgEffect) {
+                             dmgEffect = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.9);
+                         }
+                         dmgEffect.setDepth(998).setScale(0.95).setAlpha(0.9).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 120);
+                         this.addTween({
+                             targets: dmgEffect,
+                             rotation: 1,
+                             alpha: 0,
+                             duration: 800,
+                         });
+                         this.addTween({
+                             targets: nextHand,
+                             duration: 150,
+                             y: "-=30",
+                             scaleX: nextHand.scaleX * 0.9,
+                             scaleY: nextHand.scaleY * 0.9,
+                             ease: "Back.easeOut",
+                             completeDelay: 400,
+                             onComplete: () => {
+                                 this.addTween({
+                                     delay: 100,
+                                     targets: nextHand,
+                                     duration: 300,
+                                     y: this.y + 150,
+                                     alpha: 0.4,
+                                     ease: "Cubic.easeIn",
+                                     scaleX: 0.75 * isFlippedMult,
+                                     scaleY: 0.75,
+                                     onComplete: () => {
+                                         this.addTween({
+                                             targets: nextHand,
+                                             duration: 150,
+                                             alpha: 0,
+                                             scaleX: 1 * isFlippedMult,
+                                             scaleY: 1,
+                                             ease: 'Quint.easeOut',
+                                             onComplete: () => {
+                                                 nextHand.destroy();
+                                             }
+                                         })
+                                     }
+                                 })
+                             }
+                         })
+                     }
+                 })
+             }
+         })
+
+     }
+
+
      createEightHands(arr) {
          this.finalHands = [];
+
          let handToUse = ['palm.png', 'poke.png', 'okay.png', 'claw.png'];
          let glowToUse = ['palm_glow.png', 'poke_glow.png', 'okay_glow.png', 'claw_glow.png'];
 
@@ -1295,6 +1476,8 @@
                  duration: 500,
                  ease: 'Cubic.easeIn',
                  onComplete: () => {
+                     playSound('stomp', 0.95);
+                     playSound('rock_crumble', 0.7);
                      let newGlow = this.addImage(newHand.x, newHand.y, 'deathfinal', glowToUse[i % 4]).setScale(0.605 * flip * scale, 0.605 * scale).setAlpha(0.9);
                      this.addTween({
                          targets: newGlow,
@@ -2447,6 +2630,9 @@
      }
 
      sharedDie() {
+        if (this.oldStartScale) {
+            this.sprite.startScale = this.oldStartScale
+        }
         this.stopHalo = true;
         fadeAwaySound(this.bgMusic);
          if (this.bgMusic2) {
@@ -2510,7 +2696,6 @@
         this.specialDamageAbsorptionActive = true;
         this.sharedDie();
 
-         playSound("whoosh");
         globalObjects.bannerTextManager.setDialog([
             getLangText('deathFight2plusending'),
             isUsingCheats() ? getLangText('deathFight2plusending3') : getLangText('deathFight2plusending2'),

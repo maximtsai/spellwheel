@@ -544,7 +544,7 @@ class PostFightScreen {
     createWinScreen(level = 0) {
         this.windSfx = playSound('wind', 0.01, true);
         this.windSfx.detune = -700;
-        fadeInSound(this.windSfx, 0.7);
+        fadeInSound(this.windSfx, 0.85, 2000);
         this.canShowRuneBtn = true;
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
@@ -709,7 +709,9 @@ class PostFightScreen {
     showStoryText(level) {
         let objectsToFade = [this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
 
-        this.locketMusic = playMusic('sleepless', 0.5, true);
+        this.locketMusic = playMusic('sleepless', 0.5);
+        fadeInSound(this.windSfx, 0.3, 2000);
+
         this.showRuneDescBtn.setState(DISABLE);
         PhaserScene.tweens.add({
             delay: 100,

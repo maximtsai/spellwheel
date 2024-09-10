@@ -501,14 +501,7 @@
          }
          let horizMove = Math.ceil(3.5 * magnitude);
          let burningMult = this.isBurning ? 0.18 : 1;
-         PhaserScene.tweens.add({
-             targets: this.sprite,
-             duration: 500,
-             rotation: 5,
-              x: 2,
-             ease: 'Cubic.easeInOut',
-         })
-         this.addTween({
+         this.breatheTween = this.addTween({
              targets: this.sprite,
              duration: duration * (Math.random() * 0.5 + 1) * burningMult,
              rotation: this.isKnocked ? 0 : -0.02 * magnitude,
@@ -517,7 +510,7 @@
              completeDelay: 150,
              onComplete: () => {
                  let burningMult2 = this.isBurning ? 0.2 : 1;
-                 this.addTween({
+                 this.breatheTween = this.addTween({
                      targets: this.sprite,
                      duration: duration * (Math.random() * 0.5 + 1) * burningMult2,
                      rotation: this.isKnocked ? 0 : 0.02 * magnitude,

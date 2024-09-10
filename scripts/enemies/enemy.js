@@ -1416,6 +1416,12 @@ class Enemy {
         if (this.bgMusic) {
             fadeAwaySound(this.bgMusic, 350);
         }
+        if (this.bgMusic2) {
+            fadeAwaySound(this.bgMusic2, 350);
+        }
+        if (this.bgMusic3) {
+            fadeAwaySound(this.bgMusic3, 350);
+        }
         this.setAsleep();
         for (let i = 0; i < this.subscriptions.length; i++) {
             this.subscriptions[i].unsubscribe();
@@ -1887,6 +1893,7 @@ class Enemy {
 
         let extraTimeMult = (2 - gameVars.timeSlowRatio) * this.attackSlownessMult;
 
+        console.log("attack start function launch")
         if (this.nextAttack.attackStartFunction) {
             this.nextAttack.attackStartFunction();
         }

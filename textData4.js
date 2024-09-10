@@ -225,10 +225,10 @@ let textData4 = {
         "jp": "あり得ないはずなのに、反則は感じない...。"
     },
     "deathFight2plusending3": {
-        "en_us": "...AH OF COURSE, 'ASSISTANCE'.\n>:(",
-        "fr": "... AH, BIEN SÛR, « ASSISTANCE ».\n>:(",
-        "zh_tw": "...啊，當然是“協助”。\n>:(",
-        "zh_cn": "...啊，当然是“协助”。\n>:(",
+        "en_us": "...AH OF COURSE, 'CHEATS'.\n>:(",
+        "fr": "... AH, BIEN SÛR, « TRICHE ».\n>:(",
+        "zh_tw": "...啊，你在用“秘籍”。\n>:(",
+        "zh_cn": "...啊，你在用“秘籍”。\n>:(",
         "ru": "... НУ КОНЕЧНО, «ПОМОЩЬ».\n>:(",
         "es": "... AH, POR SUPUESTO, 'ASISTENCIA'.\n>:(",
         "jp": "...ああ、もちろん「アシスタンス」です。\n>:("
@@ -540,6 +540,27 @@ let textData4 = {
         "ru": "Ха! Теперь мне не может быть больно!",
         "es": "¡Ja! ¡No puede hacerme daño ahora!",
         "jp": "ハッ!今は痛くない!"
+    },
+    "death3_a": {
+        "en_us": "Dear child, you must understand this\nfirst before you can see your beloved.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_b": {
+        "en_us": "Every life has its end,\nand every end has its purpose.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
     }
+
+
+
 }
 textData = { ...textData, ...textData4};

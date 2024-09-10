@@ -242,7 +242,8 @@ class Death3 extends Enemy {
                     chargeMult: 2,
                     isPassive: true,
                     startFunction: () => {
-                        messageBus.publish("showCombatText", "Dear child, you must understand this\nfirst before you can see your beloved.", -14);
+                        globalObjects.bannerTextManager.closeBanner();
+                        messageBus.publish("showCombatText", getLangText('death3_a'), 0);
                     },
                     finaleFunction: () => {
                     }
@@ -253,7 +254,7 @@ class Death3 extends Enemy {
                     chargeMult: 2,
                     isPassive: true,
                     startFunction: () => {
-                        messageBus.publish("showCombatText", "Every life has its end,\nand every end has its purpose.", -14);
+                        messageBus.publish("showCombatText", getLangText('death3_b'), 0);
                     },
                     finaleFunction: () => {
                     }

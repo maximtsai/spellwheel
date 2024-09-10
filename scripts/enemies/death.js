@@ -9,7 +9,7 @@
 
         setTimeout(() => {
             this.windSfx = playSound('wind', 0.01, true);
-            fadeInSound(this.windSfx, 1, 2600);
+            fadeInSound(this.windSfx, 0.85, 2000);
             globalObjects.player.reInitStats();
             globalObjects.player.recentlyTakenDamageAmt = 0;
              this.setAsleep();
@@ -76,7 +76,7 @@
                             scaleX: 0.55,
                             scaleY: 0.55,
                             onComplete: () => {
-                                playSound('death_cast', 0.55);
+                                playSound('death_cast', 0.65);
                                 this.addDelay(() => {
                                     playSound('death_cast', 0.35)
                                 }, 3000)

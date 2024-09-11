@@ -208,7 +208,7 @@ let textData4 = {
     },
     "deathFight2plusending": {
         "en_us": "...HOW ARE YOU STILL STANDING?",
-        "fr": "... COMMENT ÊTES-VOUS ENCORE DEBOUT ?",
+        "fr": "... COMMENT ÊTES-VOUS\nENCORE DEBOUT ?",
         "zh_tw": "...你怎麼還能站得住？",
         "zh_cn": "...你怎么还能站得住？",
         "ru": "... КАК ВЫ ВСЕ ЕЩЕ СТОИТЕ?",

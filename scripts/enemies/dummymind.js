@@ -24,8 +24,8 @@
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
         globalObjects.bannerTextManager.showBanner(false);
         let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
-        this.rune1 = this.addImage(gameConsts.halfWidth - 260, gameConsts.height - 130, 'tutorial', 'rune_mind_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
-        this.rune2 = this.addImage(gameConsts.halfWidth + 260, gameConsts.height - 130, 'tutorial', 'rune_mind_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+        this.rune1 = this.addImage(gameConsts.halfWidth - 260, gameConsts.height - 130, 'tutorial', 'rune_energy_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+        this.rune2 = this.addImage(gameConsts.halfWidth + 260, gameConsts.height - 130, 'tutorial', 'rune_energy_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
          this.addTween({
              targets: [this.rune1, this.rune2],
              alpha: 1,

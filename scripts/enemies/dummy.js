@@ -565,7 +565,7 @@
 
                  this.showFlash(this.x, this.y - 75);
 
-                 let rune = this.addSprite(this.x, this.y - 75, 'tutorial', 'rune_mind_large.png').setScale(0.5).setDepth(10001);
+                 let rune = this.addSprite(this.x, this.y - 75, 'tutorial', 'rune_energy_large.png').setScale(0.5).setDepth(10001);
                  this.addTween({
                      targets: rune,
                      x: gameConsts.halfWidth,

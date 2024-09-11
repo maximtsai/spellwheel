@@ -411,7 +411,7 @@ class Enemy {
             chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
             let almostIshDone = this.attackCharge > this.nextAttackChargeNeeded - 145;
             if (almostIshDone) {
-                if (!this.attackName.hasWarned && !this.nextAttack.isPassive) {
+                if (!this.attackName.hasWarned && !this.nextAttack.isPassive && this.attackName.active) {
                     this.attackName.hasWarned = true;
                     let origScale = this.attackName.origScale;
                     if (this.attackName.currAnim) {
@@ -421,7 +421,9 @@ class Enemy {
                         this.attackGlow.currAnim.stop();
                     }
                     this.attackGlow.visible = true;
-                    this.attackGlow.setScale(this.attackName.width * 0.009, 1.4);
+                    if (this.attackName.width) {
+                        this.attackGlow.setScale(this.attackName.width * 0.009, 1.4);
+                    }
                     this.attackName.setAlpha(0.95);
                     let isShortName = this.nextAttack.name.length <= 7;
                     this.attackName.currAnim = PhaserScene.tweens.add({
@@ -830,7 +832,7 @@ class Enemy {
                     scaleX: finalScale,
                     scaleY: finalScale,
                     onComplete: () => {
-                        if (this.nextAttack.isBigMove) {
+                        if (this.nextAttack.isBigMove && this.attackName.active) {
                             this.attackName.currAnim = PhaserScene.tweens.add({
                                 targets: this.attackName,
                                 ease: 'Cubic.easeIn',
@@ -841,7 +843,9 @@ class Enemy {
                                 scaleY: this.attackName.origScale + 0.14,
                             });
                             this.attackGlow.setAlpha(0);
-                            this.attackGlow.setScale(this.attackName.width * 0.009, 1.4);
+                            if (this.attackName.width) {
+                                this.attackGlow.setScale(this.attackName.width * 0.009, 1.4);
+                            }
                             this.attackGlow.visible = true;
 
                             this.attackGlow.currAnim = PhaserScene.tweens.add({
@@ -1447,6 +1451,12 @@ class Enemy {
             duration: 500,
             alpha: 0,
         })
+        if (this.attackName.currAnim) {
+            this.attackName.currAnim.stop();
+        }
+        if (this.attackGlow.currAnim) {
+            this.attackGlow.currAnim.stop();
+        }
         globalObjects.textPopupManager.hideInfoText();
         messageBus.publish("closeCombatText");
 
@@ -1457,6 +1467,12 @@ class Enemy {
         }
         if (this.bgMusic) {
             fadeAwaySound(this.bgMusic, 200);
+        }
+        if (this.bgMusic2) {
+            fadeAwaySound(this.bgMusic2, 200);
+        }
+        if (this.bgMusic3) {
+            fadeAwaySound(this.bgMusic3, 200);
         }
         if (this.popupTimeout) {
             clearTimeout(this.popupTimeout);
@@ -1503,6 +1519,9 @@ class Enemy {
         }
         if (this.bgMusic) {
             this.bgMusic.stop();
+        }
+        if (this.bgMusic3) {
+            this.bgMusic3.stop();
         }
         if (this.breatheTween) {
             this.breatheTween.stop();

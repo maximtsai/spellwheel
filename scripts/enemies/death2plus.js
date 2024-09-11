@@ -1292,11 +1292,11 @@
          this.reapHand = this.addSprite(0, 0, 'deathfinal', 'claw_glow.png').setAlpha(0).setDepth(1000);
          for (let i = 0; i < this.finalHands.length; i++) {
              if ( i >= 5) {
-                 extraDelay += 250;
+                 extraDelay += 150;
              }
              this.addDelayIfAlive(() => {
                  this.fireNextSuperHand(i >= 4)
-             }, 800 + i * 800 + extraDelay)
+             }, 800 + i * 850 + extraDelay)
          }
      }
 
@@ -1336,7 +1336,7 @@
         let isFlipped = nextHand.scaleX < 0;
         let isFlippedMult = isFlipped ? -1 : 1;
 
-        let scaleMult = nextHand.frame.name == 'claw_glow.png' ? 2.2 : 1;
+        let scaleMult = nextHand.frame.name == 'claw.png' ? 1.5 : 1;
 
          this.addTween({
              targets: nextHand,
@@ -1354,18 +1354,18 @@
          })
          this.addTween({
              targets: nextHand,
-             duration: 250,
+             duration: 300,
              scaleX: 0.45 * isFlippedMult * scaleMult,
              scaleY: 0.45 * scaleMult,
              ease: 'Quart.easeInOut',
              onComplete: () => {
                  this.addTween({
                      targets: nextHand,
-                     duration: isHeavy ? 450 : 400,
+                     duration: isHeavy ? 350 : 300,
                      x: gameConsts.halfWidth - 15,
                      y: globalObjects.player.getY() - 215,
-                     scaleX: 1.04 * isFlippedMult * scaleMult,
-                     scaleY: 1.04 * scaleMult,
+                     scaleX: 1.03 * isFlippedMult * scaleMult,
+                     scaleY: 1.03 * scaleMult,
                      ease: 'Quart.easeIn',
                      onComplete: () => {
                          messageBus.publish("selfTakeDamage", 99);
@@ -1383,7 +1383,19 @@
                                  ease: "Quad.easeIn",
                                  duration: 450
                              });
+                         } else {
+                             nextHand.setScale(1.1 * isFlippedMult * scaleMult, 1.1 * scaleMult);
+                             this.addTween({
+                                 targets: nextHand,
+                                 duration: 50,
+                                 scaleX: 1.04 * isFlippedMult * scaleMult,
+                                 scaleY: 1.04 * scaleMult,
+                                 ease: 'Quart.easeOut',
+                             })
                          }
+
+
+
 
                          this.bgMain.setAlpha(isHeavy ? 0 : 0.75);
                          this.addTween({
@@ -1414,7 +1426,7 @@
                          });
                          this.addTween({
                              targets: nextHand,
-                             duration: 150,
+                             duration: 100,
                              y: "-=30",
                              scaleX: nextHand.scaleX * 0.9,
                              scaleY: nextHand.scaleY * 0.9,
@@ -1469,6 +1481,8 @@
              }
              let newHand = this.addImage(img.x, img.y, 'deathfinal', handToUse[i % 4]).setScale(flip * scale, scale).setAlpha(0.1);
              this.finalHands.push(newHand);
+             newHand.rotation = this.finalArms[this.finalHands.length - 1].rotation;
+
              this.addTween({
                  targets: newHand,
                  scaleX: 0.3 * flip * scale,
@@ -1488,13 +1502,27 @@
                              newGlow.destroy();
                          }
                      })
+
+                     let rotateDelay = 1500 - (i % 4) * 200;
+                     this.addTween({
+                         targets: newHand,
+                         delay: rotateDelay,
+                         rotation: 0,
+                         duration: 400,
+                         alpha: 1,
+                         ease: 'Quad.easeIn',
+                         onComplete: () => {
+                             playSound('matter_enhance', 0.5).detune = -1200 + rotateDelay * 0.3;
+                         },
+                     })
+
                  }
              })
          }
 
          this.addTween({
              targets: this.finalHands,
-             alpha: 1,
+             alpha: 0.9,
              duration: 500,
              ease: 'Cubic.easeIn',
              onComplete: () => {

@@ -267,8 +267,27 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">tutorial/rune_energy_large.png</key>
+            <key type="filename">tutorial/rune_protect_large.png</key>
+            <key type="filename">tutorial/rune_reinforce_large.png</key>
+            <key type="filename">tutorial/rune_strike_large.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>26,23,52,45</rect>
+                <key>scale9Paddings</key>
+                <rect>26,23,52,45</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">tutorial/rune_enhance_large.png</key>
             <key type="filename">tutorial/rune_matter_large.png</key>
+            <key type="filename">tutorial/rune_question_large.png</key>
             <key type="filename">tutorial/rune_time_large.png</key>
             <key type="filename">tutorial/rune_unload_large.png</key>
             <key type="filename">tutorial/rune_void_large.png</key>
@@ -298,24 +317,6 @@
                 <rect>27,27,53,53</rect>
                 <key>scale9Paddings</key>
                 <rect>27,27,53,53</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">tutorial/rune_mind_large.png</key>
-            <key type="filename">tutorial/rune_protect_large.png</key>
-            <key type="filename">tutorial/rune_reinforce_large.png</key>
-            <key type="filename">tutorial/rune_strike_large.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>26,23,52,45</rect>
-                <key>scale9Paddings</key>
-                <rect>26,23,52,45</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

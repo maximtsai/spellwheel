@@ -26,8 +26,6 @@ function beginPreLevel(lvl) {
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 10, 'ui', 'newgame_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth - 253, gameConsts.halfHeight - 282, getLangText('pre_fight_0a'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth - 253, gameConsts.halfHeight - 195, getLangText('pre_fight_0b'), {fontFamily: 'opensans', fontSize: 16, color: '#200000', align: 'left'});
-            text2.setDepth(99999).setOrigin(0, 0).setAlpha(0).setVisible(false);
             text3 = PhaserScene.add.text(gameConsts.halfWidth + 137, gameConsts.halfHeight - 170, getLangText('pre_fight_0c'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
             text3.setDepth(99999).setAlpha(0).setOrigin(1, 1);
             text4 = PhaserScene.add.text(gameConsts.halfWidth + 140, gameConsts.halfHeight - 105, getLangText('pre_fight_0d'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
@@ -193,7 +191,7 @@ function beginPreLevel(lvl) {
             matterHoverBtn.setDepth(99999);
             matterHoverBtn.setState(DISABLE);
 
-            texts = [text1, text2, text3, text4, text5, text6, text7, text8, text9, strikeHoverBtn, matterHoverBtn];
+            texts = [text1, text3, text4, text5, text6, text7, text8, text9, strikeHoverBtn, matterHoverBtn];
             playSound('flip2')
             PhaserScene.tweens.add({
                 targets: texts,
@@ -535,7 +533,7 @@ function createTutorialBtn(lvl) {
             return buildTutorialButton('rune_matter_large.png', buildTutorialMatter);
             break;
         case 2:
-            return buildTutorialButton('rune_mind_large.png', buildTutorialMind);
+            return buildTutorialButton('rune_energy_large.png', buildTutorialMind);
             break;
         case 3:
             return buildTutorialButton('rune_protect_large.png', buildTutorialProtect);

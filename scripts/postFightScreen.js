@@ -812,7 +812,7 @@ class PostFightScreen {
     getNewRuneFrame(level) {
         switch(level) {
             case 1:
-                return 'rune_mind_large.png';
+                return 'rune_energy_large.png';
                 break;
             case 2:
                 return 'rune_protect_large.png';
@@ -833,7 +833,7 @@ class PostFightScreen {
                 return 'rune_matter_large.png';
                 break;
             case 8:
-                return 'rune_mind_large.png';
+                return 'rune_energy_large.png';
                 break
             case 9:
                 return 'blank.png';

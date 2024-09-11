@@ -56,29 +56,29 @@ class Encyclopedia {
             this.darkenBG.setScale(500, 500);
         }
         if (!this.tab1) {
-            this.tab1 = PhaserScene.add.image(gameConsts.halfWidth - 180, gameConsts.halfHeight - 245, 'ui', 'paperTab.png').setDepth(this.baseDepth - 1).setAlpha(0);
-            this.tab1Icon = PhaserScene.add.image(this.tab1.x, this.tab1.y - 30, 'ui', 'tab_icon_control.png').setDepth(this.baseDepth - 1).setAlpha(0);
+            this.tab1 = PhaserScene.add.image(gameConsts.halfWidth - 190, gameConsts.halfHeight - 310, 'ui', 'paperTab.png').setDepth(this.baseDepth - 1).setAlpha(0);
+            this.tab1Icon = PhaserScene.add.image(this.tab1.x, this.tab1.y - 70, 'ui', 'tab_icon_control.png').setDepth(this.baseDepth - 1).setAlpha(0);
             this.listOfThingsToHide.push(this.tab1);
             this.listOfThingsToHide.push(this.tab1Icon);
         }
         if (!this.tab2) {
-            this.tab2 = PhaserScene.add.image(gameConsts.halfWidth - 90, gameConsts.halfHeight - 245, 'ui', 'paperTab.png').setDepth(this.baseDepth - 1).setAlpha(0);
-            this.tab2Icon = PhaserScene.add.image(this.tab2.x, this.tab2.y - 30, 'ui', 'tab_icon_runes.png').setDepth(this.baseDepth - 1).setAlpha(0);
+            this.tab2 = PhaserScene.add.image(gameConsts.halfWidth - 90, gameConsts.halfHeight - 310, 'ui', 'paperTab.png').setDepth(this.baseDepth - 1).setAlpha(0);
+            this.tab2Icon = PhaserScene.add.image(this.tab2.x, this.tab2.y - 70, 'ui', 'tab_icon_runes.png').setDepth(this.baseDepth - 1).setAlpha(0);
             this.listOfThingsToHide.push(this.tab2);
             this.listOfThingsToHide.push(this.tab2Icon);
         }
         if (!this.tab3) {
-            this.tab3 = PhaserScene.add.image(gameConsts.halfWidth - 0, gameConsts.halfHeight - 245, 'ui', 'paperTab.png').setDepth(this.baseDepth - 1).setAlpha(0);
-            this.tab3Icon = PhaserScene.add.image(this.tab3.x, this.tab3.y - 30, 'ui', 'tab_icon_combos.png').setDepth(this.baseDepth - 1).setAlpha(0);
+            this.tab3 = PhaserScene.add.image(gameConsts.halfWidth + 10, gameConsts.halfHeight - 310, 'ui', 'paperTab.png').setDepth(this.baseDepth - 1).setAlpha(0);
+            this.tab3Icon = PhaserScene.add.image(this.tab3.x, this.tab3.y - 70, 'ui', 'tab_icon_combos.png').setDepth(this.baseDepth - 1).setAlpha(0);
             this.listOfThingsToHide.push(this.tab3);
             this.listOfThingsToHide.push(this.tab3Icon);
         }
         if (!this.bgPage) {
-            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight + 30, 'ui', 'battleOverScreen.png').setDepth(this.baseDepth).setAlpha(0);
+            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight + 22, 'ui', 'battleOverScreen.png').setDepth(this.baseDepth).setAlpha(0).setScale(1, 1.14);
             this.listOfThingsToHide.push(this.bgPage);
         }
         if (!this.title) {
-            this.title = PhaserScene.add.text(gameConsts.halfWidth - 242, gameConsts.halfHeight - 242, getLangText('pre_fight_0a'), {fontFamily: 'opensans', fontSize: 24, color: '#000000', align: 'left'}).setDepth(this.baseDepth).setAlpha(0);
+            this.title = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 290, getLangText('pre_fight_0a'), {fontFamily: 'opensans', fontSize: 24, color: '#000000', align: 'left'}).setDepth(this.baseDepth).setAlpha(0);
             this.listOfThingsToHide.push(this.title);
         }
         this.setFirstPage();
@@ -158,17 +158,17 @@ class Encyclopedia {
                     ref: "blackPixel",
                     alpha: 0,
                     x: this.tab1Icon.x,
-                    y: this.tab1Icon.y - 30,
+                    y: this.tab1Icon.y + 26,
                     scaleX: 42,
-                    scaleY: 42
+                    scaleY: 52
                 },
                 hover: {
                     ref: "blackPixel",
                     alpha: 0,
                     x: this.tab1Icon.x,
-                    y: this.tab1Icon.y - 30,
+                    y: this.tab1Icon.y + 26,
                     scaleX: 43,
-                    scaleY: 43
+                    scaleY: 53
                 },
                 disable: {
                     alpha: 0
@@ -203,17 +203,17 @@ class Encyclopedia {
                     ref: "blackPixel",
                     alpha: 0,
                     x: this.tab2Icon.x,
-                    y: this.tab2Icon.y - 30,
+                    y: this.tab2Icon.y + 26,
                     scaleX: 42,
-                    scaleY: 42
+                    scaleY: 52
                 },
                 hover: {
                     ref: "blackPixel",
                     alpha: 0,
                     x: this.tab2Icon.x,
-                    y: this.tab2Icon.y - 30,
+                    y: this.tab2Icon.y + 26,
                     scaleX: 43,
-                    scaleY: 43
+                    scaleY: 53
                 },
                 disable: {
                     alpha: 0
@@ -248,17 +248,17 @@ class Encyclopedia {
                     ref: "blackPixel",
                     alpha: 0,
                     x: this.tab3Icon.x,
-                    y: this.tab3Icon.y - 30,
+                    y: this.tab3Icon.y + 26,
                     scaleX: 42,
-                    scaleY: 42
+                    scaleY: 52
                 },
                 hover: {
                     ref: "blackPixel",
                     alpha: 0,
                     x: this.tab3Icon.x,
-                    y: this.tab3Icon.y - 30,
+                    y: this.tab3Icon.y + 26,
                     scaleX: 43,
-                    scaleY: 43
+                    scaleY: 53
                 },
                 disable: {
                     alpha: 0
@@ -277,7 +277,7 @@ class Encyclopedia {
                 },
                 onMouseUp: () => {
                     this.clearCurrentPage();
-                    this.setFirstPage();
+                    this.setThirdPage();
                     this.raiseTab(3);
                 }
             });
@@ -308,26 +308,26 @@ class Encyclopedia {
         }
         PhaserScene.tweens.add({
             targets: restOfTabs,
-            y: gameConsts.halfHeight - 243,
+            y: gameConsts.halfHeight - 293,
             ease: 'Cubic.easeOut',
             duration: 1,
         });
         PhaserScene.tweens.add({
             targets: restOfTabIcons,
-            y: gameConsts.halfHeight - 273,
+            y: gameConsts.halfHeight - 323,
             ease: 'Cubic.easeOut',
             duration: 1,
         });
 
         PhaserScene.tweens.add({
             targets: [currTab],
-            y: gameConsts.halfHeight - 275,
+            y: gameConsts.halfHeight - 325,
             ease: 'Cubic.easeOut',
             duration: 1,
         });
         PhaserScene.tweens.add({
             targets: [currTabIcon],
-            y: gameConsts.halfHeight - 300,
+            y: gameConsts.halfHeight - 350,
             ease: 'Cubic.easeOut',
             duration: 1,
         });
@@ -352,47 +352,61 @@ class Encyclopedia {
     setFirstPage() {
         playSound('flip1');
         this.title.setText(getLangText('pre_fight_0a'));
-        let imageCover = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight + 4, 'ui', 'newgame_paper.png').setDepth(this.baseDepth).setAlpha(0).setScale(0.92);
-        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight + 58, getLangText('pre_fight_0b'), {fontFamily: 'opensans', fontSize: 15, color: '#200000', align: 'left'});
-        text2.setDepth(this.baseDepth).setOrigin(0, 0).setAlpha(0);
-        let text3 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 89, getLangText('pre_fight_0c'), {fontFamily: 'opensans', fontSize: 22, color: '#200000', align: 'left'});
-        text3.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5);
-        let text4 = PhaserScene.add.text(gameConsts.halfWidth - 63, gameConsts.halfHeight - 37, getLangText('pre_fight_0d'), {fontFamily: 'opensans', fontSize: 22, color: '#200000', align: 'left'});
-        text4.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5);
-        let text5 = PhaserScene.add.text(text3.x, text3.y + 5, getLangText('pre_fight_0e'), {fontFamily: 'opensans', fontSize: 17, color: '#200000', align: 'left'});
-        text5.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
-        let text6 = PhaserScene.add.text(text4.x, text4.y + 6, getLangText('pre_fight_0f'), {fontFamily: 'opensans', fontSize: 17, color: '#200000', align: 'left'});
-        text6.setDepth(this.baseDepth).setAlpha(0).setOrigin(0, 0.5).setVisible(false);
-        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 200, gameConsts.halfHeight - 110, getLangText('pre_fight_0g'), {fontFamily: 'opensans', fontSize: 22, color: '#200000', align: 'center'});
+        let imageCover = PhaserScene.add.image(gameConsts.halfWidth - 3, gameConsts.halfHeight + 10, 'ui', 'newgame_paper.png').setDepth(this.baseDepth).setAlpha(0).setScale(1);
+        let text1 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 47, getLangText('encyc_action'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'center'});
+        text1.setDepth(this.baseDepth).setOrigin(0.5, 0).setAlpha(0).setStroke('#ffffff', 2);
+        let text2 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 115, getLangText('encyc_element'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'center'});
+        text2.setDepth(this.baseDepth).setOrigin(0.5, 0).setAlpha(0).setStroke('#ffffff', 2);
+
+        let text3 = PhaserScene.add.text(gameConsts.halfWidth + 138, gameConsts.halfHeight - 185, getLangText('pre_fight_0c'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
+        text3.setDepth(this.baseDepth).setAlpha(0).setOrigin(1, 0.5);
+        let text4 = PhaserScene.add.text(gameConsts.halfWidth + 138, gameConsts.halfHeight - 125, getLangText('pre_fight_0d'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
+        text4.setDepth(this.baseDepth).setAlpha(0).setOrigin(1, 0.5);
+
+        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 212, gameConsts.halfHeight - 55, getLangText('pre_fight_0g'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
         text7.setDepth(this.baseDepth).setAlpha(0).setOrigin(1, 0.5);
-        let text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 219, getLangText('pre_fight_0h'), {fontFamily: 'opensans', fontSize: 15, color: '#200000', align: 'center'});
+        let text8 = PhaserScene.add.text(gameConsts.halfWidth - 1, gameConsts.halfHeight + 236, getLangText('pre_fight_0h'), {fontFamily: 'opensans', fontSize: 20, color: '#200000', align: 'center'});
         text8.setDepth(this.baseDepth).setAlpha(0).setOrigin(0.5, 0.5);
         this.currentPageItems.push(imageCover);
-        // this.currentPageItems.push(text1);
+        this.currentPageItems.push(text1);
         this.currentPageItems.push(text2);
         this.currentPageItems.push(text3);
         this.currentPageItems.push(text4);
-        this.currentPageItems.push(text5);
-        this.currentPageItems.push(text6);
         this.currentPageItems.push(text7);
         this.currentPageItems.push(text8);
         PhaserScene.tweens.add({
             targets: this.currentPageItems, alpha: 1, ease: 'Cubic.easeOut', duration: 1,
         });
 
+        PhaserScene.tweens.add({
+            targets: this.bgPage,
+            scaleY: 1.14,
+            y: gameConsts.halfHeight + 22,
+            ease: 'Cubic.easeOut',
+            duration: 1
+        })
+
     }
 
     setSecondPage() {
         playSound('flip2');
         this.title.setText(" ")
-        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 238, getLangText('encyclopedia_rune_element'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
-        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 2, getLangText('encyclopedia_rune_action'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 290, getLangText('encyclopedia_rune_element'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 15, getLangText('encyclopedia_rune_action'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
         this.currentPageItems.push(text1);
         this.currentPageItems.push(text2);
 
+        PhaserScene.tweens.add({
+            targets: this.bgPage,
+            scaleY: 1.14,
+            y: gameConsts.halfHeight + 22,
+            ease: 'Cubic.easeOut',
+            duration: 1
+        })
+
         let listOfRunes = ["rune_matter_large.png",
             "rune_strike_large.png", "rune_enhance_large.png",
-            "rune_mind_large.png",
+            "rune_energy_large.png",
             "rune_protect_large.png", "rune_reinforce_large.png",
             "rune_time_large.png", "rune_void_large.png",
             "rune_unload_large.png"];
@@ -409,9 +423,9 @@ class Encyclopedia {
             getLangText("encyc_desc_time"), getLangText("encyc_desc_void"),
             getLangText('encyc_desc_ultimate')
         ];
-        let startPos1 = gameConsts.halfHeight - 183;
-        let offset = 50;
-        let startPos2 = gameConsts.halfHeight + 58;
+        let startPos1 = gameConsts.halfHeight - 226;
+        let offset = 56;
+        let startPos2 = gameConsts.halfHeight + 49;
         let listOfPositions = [startPos1,
             startPos2, startPos2 + offset,
             startPos1 + offset,
@@ -419,17 +433,167 @@ class Encyclopedia {
             startPos1 + offset * 2, startPos1 + offset * 3,
             startPos2 + offset * 4,
         ]
-        console.log(gameVars.latestLevel);
         for (let i = 0; i < listOfRunes.length; i++) {
             if (i > gameVars.latestLevel + 2) {
                 break;
             }
-            let newIcon = PhaserScene.add.image(gameConsts.halfWidth - 212, listOfPositions[i], 'tutorial', listOfRunes[i]).setAlpha(0).setDepth(this.baseDepth).setScale(0.55);
+            let newIcon = PhaserScene.add.image(gameConsts.halfWidth - 212, listOfPositions[i], 'tutorial', listOfRunes[i]).setAlpha(0).setDepth(this.baseDepth).setScale(0.6);
             let newText = PhaserScene.add.text(gameConsts.halfWidth - 170, listOfPositions[i], listOfText[i], {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth).setOrigin(0, 0.5);
             this.currentPageItems.push(newIcon);
             this.currentPageItems.push(newText);
 
         }
+
+        PhaserScene.tweens.add({
+            targets: this.currentPageItems, alpha: 1, ease: 'Cubic.easeOut', duration: 1,
+        });
+    }
+
+    createDescLong(action, element) {
+        if (action == 'unload' && element == 'time') {
+            return 'time_unload_desc_long_full';
+        }
+        return element + "_" + action + "_desc_long";
+    }
+
+    removeNewlinesIfLong(str) {
+        let strToReturn = str;
+        if (language == 'zh_cn' || language == 'zh_tw' || language == 'jp') {
+            strToReturn = str.replace('\n', '');
+            let textLim = 28;
+            let numSpaces = 0;
+            for (let i = 0; i < Math.min(32, strToReturn.length); i++) {
+                if (strToReturn[i] == ' ') {
+                    numSpaces++;
+                }
+            }
+
+            let trueLength = Math.floor(textLim + numSpaces * 0.5);
+            if (strToReturn.length > trueLength) {
+                strToReturn = strToReturn.substring(0, trueLength) + '\n' + strToReturn.substring(trueLength);
+            }
+        } else {
+            strToReturn = str.replace('\n', ' ');
+            let textLim = 54;
+            if (language == 'fr') {
+                textLim = 56;
+            }
+            if (strToReturn.length > textLim) {
+                //let lastSpacePos = 0;
+                for (let i = textLim; i > 0; i--) {
+                    if (strToReturn[i] == ' ') {
+                        //lastSpacePos = i;
+                        strToReturn = strToReturn.substring(0, i) + '\n' + strToReturn.substring(i + 1);
+                        break;
+                    }
+                }
+                //return str.replace('\n', ' ');
+            }
+        }
+
+        return strToReturn;
+    }
+
+    setThirdPage() {
+        playSound('flip2');
+        this.title.setText(" ")
+        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 303, getLangText('encyclopedia_rune_combos'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        this.currentPageItems.push(text1);
+        PhaserScene.tweens.add({
+            targets: text1,
+            y: "-=20",
+            ease: 'Cubic.easeOut',
+            duration: 1
+        })
+        PhaserScene.tweens.add({
+            targets: this.bgPage,
+            scaleY: 1.25,
+            y: gameConsts.halfHeight + 31,
+            ease: 'Cubic.easeOut',
+            duration: 1
+        })
+
+        let listOfRunes = ["rune_matter_large.png",
+            "rune_strike_large.png",
+            "rune_enhance_large.png",
+            "rune_energy_large.png",
+            "rune_protect_large.png",
+            "rune_reinforce_large.png",
+            "rune_time_large.png",
+            "rune_void_large.png",
+            "rune_unload_large.png"];
+        let allRunes = [
+            "enhance",
+            "energy",
+            "protect",
+            "reinforce",
+            "time",
+            "void",
+            "unload"];
+        let availableRunes = ["strike",
+            "matter"];
+        for (let i = 0; i < Math.min(allRunes.length, gameVars.latestLevel); i++) {
+            availableRunes.push(allRunes[i]);
+        }
+        //rune_question_large.png
+        let listOfText = [
+            ['strike', 'matter'],
+            ['strike', 'energy'],
+            ['strike', 'time'],
+            ['strike', 'void'],
+            ['enhance', 'matter'],
+            ['enhance', 'energy'],
+            ['enhance', 'time'],
+            ['enhance', 'void'],
+            ['protect', 'matter'],
+            ['protect', 'energy'],
+            ['protect', 'time'],
+            ['protect', 'void'],
+            ['reinforce', 'matter'],
+            ['reinforce', 'energy'],
+            ['reinforce', 'time'],
+            ['reinforce', 'void'],
+            ['unload', 'matter'],
+            ['unload', 'energy'],
+            ['unload', 'time'],
+            ['unload', 'void'],
+        ];
+        let startPos1 = gameConsts.halfHeight - 279;
+        let offset = 33.4;
+
+        for (let i = 0; i < listOfText.length; i++) {
+            let action = listOfText[i][0];
+            let element = listOfText[i][1];
+            let actionAvailable = availableRunes.indexOf(action) != -1;
+            let elementAvailable = availableRunes.indexOf(element) != -1;
+
+            let actionRuneName = "rune_" + (actionAvailable ? action : 'question') + "_large.png"
+            let actionRune = PhaserScene.add.image(gameConsts.halfWidth - 226, startPos1 + i * offset, 'tutorial', actionRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
+            this.currentPageItems.push(actionRune);
+
+            let elementRuneName = "rune_" + (elementAvailable ? element : 'question') + "_large.png"
+            let elementRune = PhaserScene.add.image(gameConsts.halfWidth - 183, startPos1 + i * offset, 'tutorial', elementRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
+            this.currentPageItems.push(elementRune);
+
+            if (actionAvailable && elementAvailable) {
+                if (element == 'energy') {
+                    element = 'mind'
+                }
+                let descText = PhaserScene.add.text(gameConsts.halfWidth - 157, startPos1 + i * offset, this.removeNewlinesIfLong(getLangText(this.createDescLong(action, element))), {fontFamily: 'robotomedium', fontSize: 16, color: '#200000', align: 'left', lineSpacing: -3}).setAlpha(0).setDepth(this.baseDepth).setScale(0.95, 1);
+                descText.setOrigin(0, 0.5);
+                this.currentPageItems.push(descText);
+            }
+
+        }
+        // for (let i = 0; i < listOfRunes.length; i++) {
+        //     if (i > gameVars.latestLevel + 2) {
+        //         break;
+        //     }
+        //     let newIcon = PhaserScene.add.image(gameConsts.halfWidth - 212, listOfPositions[i], 'tutorial', listOfRunes[i]).setAlpha(0).setDepth(this.baseDepth).setScale(0.55);
+        //     let newText = PhaserScene.add.text(gameConsts.halfWidth - 170, listOfPositions[i], listOfText[i], {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth).setOrigin(0, 0.5);
+        //     this.currentPageItems.push(newIcon);
+        //     this.currentPageItems.push(newText);
+        // }
 
         PhaserScene.tweens.add({
             targets: this.currentPageItems, alpha: 1, ease: 'Cubic.easeOut', duration: 1,

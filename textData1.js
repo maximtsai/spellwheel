@@ -65,7 +65,7 @@ let textData = {
         "jp": "12ダメージをブロ\nックするシール\nドを作成する"
     },
     "matter_protect_desc_long": {
-        "en_us": "Create shield that\nblocks 12 damage",
+        "en_us": "Create shield that blocks 12 damage",
         "fr": "Crée un bouclier qui bloque\n12 points de dégâts",
         "zh_tw": "創建一個可以阻擋 12 點傷害的盾牌",
         "zh_cn": "打造一个可以阻挡 12 点伤害的盾牌",
@@ -83,7 +83,7 @@ let textData = {
         "jp": "14ダメージをブロ\nックするシール\nドを作成する"
     },
     "matter_protect_plus_desc_long": {
-        "en_us": "Create shield that\nblocks 14 damage",
+        "en_us": "Create shield that blocks 14 damage",
         "fr": "Crée un bouclier qui bloque\n14 points de dégâts",
         "zh_tw": "創建一個可以阻擋 14 點傷害的盾牌",
         "zh_cn": "打造一个可以阻挡 14 点伤害的盾牌",
@@ -235,6 +235,15 @@ let textData = {
         "es": " hechizos. Se debilita con el uso repetido.",
         "jp": "つの呪文の凍結時間。\n繰り返し使用すると弱くなります。"
     },
+    "time_unload_desc_long_full": {
+        "en_us": "Freeze time for the next 7 spells.\nGets weaker with repeat use.",
+        "fr": "Geler le temps pour les 7 prochains sorts.\nS'affaiblit avec une utilisation répétée.",
+        "zh_tw": "為接下來 7 個法術\n凍結時間。重複使用會變弱。",
+        "zh_cn": "为接下来 7 个法术\n冻结时间。重复使用会变弱。",
+        "ru": "Заморозьте времяна следующие 7 заклинаний.\nСлабеет при повторном использовании.",
+        "es": "Congela el tiempo durante los siguientes 7 hechizos. Se debilita con el uso repetido.",
+        "jp": "次の7つの呪文の凍結時間。\n繰り返し使用すると弱くなります。"
+    },
     "void_strike_desc": {//todo
         "en_us": "Attack 3 times\nafter a delay,\neach attack\ndeals 2% enemy\ncurrent HP",
         "fr": "Attaque 3 fois après\nun délai, chaque\nattaque inflige 2%\ndes PV actuels\nde l’ennemi.",
@@ -328,8 +337,8 @@ let textData = {
     "mind_strike_desc": {
         "en_us": "Deal 1 True\ndamage. Enemy\ntakes x2 damage\nfrom your next\nattack.",
         "fr": "Inflige 1 point\nde dégâts. L’ennemi\nsubit x2 dégâts\nlors de votre\nprochaine attaque",
-        "zh_tw": "造成 1 點真實傷害。\n敵人將在你的下一次\n攻擊中受到 2 倍傷害。",
-        "zh_cn": "造成 1 点真实伤害。\n敌人从你的下一次\n攻击中受到 2 倍伤害。",
+        "zh_tw": "造成 1 點真實傷害。\n敵人將在你下一次\n攻擊中受到 2 倍傷害。",
+        "zh_cn": "造成 1 点真实伤害。\n敌人从你下一次\n攻击中受到 2 倍伤害。",
         "ru": "Наносит 1 чистый\nурон. Враг получает\nх2 урона от вашей\nследующей атаки.",
         "es": "Inflige 1 daño\nverdadero. El\nenemigo recibe x2\nde daño de tu\npróximo ataque",
         "jp": "1の真のダメージを\n与える。敵は次の\n攻撃で2倍のダメー\nジを受ける"
@@ -337,8 +346,8 @@ let textData = {
     "mind_strike_desc_long": {
         "en_us": "Deal 1 True damage. Enemy takes\nx2 damage from your next attack.",
         "fr": "Inflige 1 point de dégâts. L’ennemi subit\nx2 dégâts lors de votre prochaine attaque",
-        "zh_tw": "造成 1 點真實傷害。敵人將在你的\n下一次攻擊中受到 2 倍傷害。",
-        "zh_cn": "造成 1 点真实伤害。敌人从你的\n下一次攻击中受到 2 倍伤害。",
+        "zh_tw": "造成 1 點真實傷害。敵人將在你\n下一次攻擊中受到 2 倍傷害。",
+        "zh_cn": "造成 1 点真实伤害。敌人从你\n下一次攻击中受到 2 倍伤害。",
         "ru": "Наносит 1 чистый урон. Враг получает х2 урона от вашей следующей атаки.",
         "es": "Inflige 1 daño verdadero. El enemigo\nrecibe x2 de daño de tu próximo ataque",
         "jp": "1の真のダメージを与える。敵は次の\n攻撃で2倍のダメージを受ける"

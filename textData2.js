@@ -18,6 +18,16 @@ let textData2 = {
         "es": "Runas de acción: ",
         "jp": "アクションルーン: "
     },
+    "encyclopedia_rune_combos": {
+        "en_us": "Spell list",
+        "fr": "Liste de sorts",
+        "zh_tw": "法术列表",
+        "zh_cn": "法术列表",
+        "ru": "список заклинаний",
+        "es": "Lista de hechizos",
+        "jp": "呪文リスト:"
+    },
+
     "encyc_desc_matter": {
         "en_us": "Uses solid rock and stone for your spells",
         "fr": "Utilise de la roche et de la pierre solides pour vos sorts",
@@ -354,6 +364,24 @@ let textData2 = {
         "es": "CONTINUAR",
         "jp": "続ける"
     },
+    "encyc_action": {
+        "en_us": "ACTIONS",
+        "fr": "ACTIONS",
+        "zh_tw": "行動",
+        "zh_cn": "行动",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "encyc_element": {
+        "en_us": "ELEMENTS",
+        "fr": "ÉLÉMENTS",
+        "zh_tw": "元素",
+        "zh_cn": "元素",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "pre_fight_0a": {
         "en_us": "CONTROLS:",
         "fr": "CONTRÔLES:",
@@ -365,7 +393,7 @@ let textData2 = {
     },
     "pre_fight_0b": {
         "en_us": "Click and drag\nthe wheels",
-        "fr": "Cliquez et faites glisser les roues",
+        "fr": "Cliquez et faites\nglisser les roues",
         "zh_tw": "按兩下並拖動滾輪",
         "zh_cn": "单击并拖动滚轮",
         "ru": "Нажмите и перетащите колесики",

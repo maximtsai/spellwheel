@@ -145,7 +145,7 @@ let textData = {
         "es": "Ataca dos veces. El primer ataque inflige 6 de\ndaño, el segundo ataque inflige el 50% del primero.",
         "jp": "2回攻撃する。最初の攻撃は6ダメージを与え、\n2回目の攻撃は最初の攻撃の50%を与えます。"
     },
-    "time_enhance_desc": {//todo
+    "time_enhance_desc": {
         "en_us": "Your next attack\nis fired an\nadditional time",
         "fr": "Votre prochaine\nattaque tirera\nune fois\nsupplémentaire",
         "zh_tw": "你的下一次攻擊\n將額外發射一次",
@@ -154,7 +154,7 @@ let textData = {
         "es": "Tu próximo\nataque se dispara\nuna vez más",
         "jp": "次の攻撃は追加\nで発射されます"
     },
-    "time_enhance_desc_long": {//todo
+    "time_enhance_desc_long": {
         "en_us": "Your next attack is fired\nan additional time",
         "fr": "Votre prochaine attaque tirera\nune fois supplémentaire",
         "zh_tw": "你的下一次攻擊將額外發射一次",
@@ -244,7 +244,7 @@ let textData = {
         "es": "Congela el tiempo durante los siguientes 7 hechizos. Se debilita con el uso repetido.",
         "jp": "次の7つの呪文の凍結時間。\n繰り返し使用すると弱くなります。"
     },
-    "void_strike_desc": {//todo
+    "void_strike_desc": {
         "en_us": "Attack 3 times\nafter a delay,\neach attack\ndeals 2% enemy\ncurrent HP",
         "fr": "Attaque 3 fois après\nun délai, chaque\nattaque inflige 2%\ndes PV actuels\nde l’ennemi.",
         "zh_tw": "延遲後攻擊 3 次，\n每次攻擊造成 2%\n敵人當前生命值",
@@ -488,19 +488,19 @@ let textData = {
         "jp": "一定量のダメージをブロックするシールドを作成します。"
     },
     "matter_tut_reinforce_desc": {
-        "en_us": "Defensive buff that protects\nyou with spiky skin.\nGreat against large quantities\nof weaker attacks.",
-        "fr": "Buff défensif qui vous protège avec une peau hérissée. Idéal contre de grandes quantités d’attaques plus faibles.",
-        "zh_tw": "防禦增益，保護你的尖刺皮膚。非常適合對抗大量較弱的攻擊。",
-        "zh_cn": "防御增益，保护你的尖刺皮肤。非常适合对抗大量较弱的攻击。",
+        "en_us": "Protect yourself with spiky skin.\nGreat against large quantities of\nweaker attacks.",
+        "fr": "Protégez-vous avec une peau hérissée.\n Idéal contre de grandes quantités\nd’attaques plus faibles.",
+        "zh_tw": "用帶刺的皮膚保護自己。有效抵禦大量較弱的攻擊。",
+        "zh_cn": "用带刺的皮肤保护自己。有效抵御大量较弱的攻击。",
         "ru": "Защитный бафф, защищающий вас с помощью колючей кожи. Отлично справляется с большим количеством слабых атак.",
         "es": "Buff defensivo que te protege con piel puntiaguda. Excelente contra grandes cantidades de ataques más débiles.",
         "jp": "とがった肌で身を守る防御バフ。大量の弱い攻撃に対して最適です。"
     },
     "matter_tut_unload_desc": {
-        "en_us": "Conjures a great deal of matter\nto simultaneously crush your\nenemies while keeping yourself\nprotected.",
-        "fr": "Invoque beaucoup de matière pour écraser simultanément vos ennemis tout en vous protégeant.",
-        "zh_tw": "召喚出大量的物質，在粉碎敵人的同時保護自己。",
-        "zh_cn": "召唤出大量的物质，在粉碎敌人的同时保护自己。",
+        "en_us": "Conjures a great deal of matter\nto deal heavy damage while keeping\nyourself protected.",
+        "fr": "Invoque une grande quantité de\nmatière pour infliger de lourds dégâts\ntout en vous protégeant.",
+        "zh_tw": "召喚大量物質來造成重大傷害，\n同時保護自己。",
+        "zh_cn": "召唤大量物质来造成重大伤害，\n同时保护自己。",
         "ru": "Создает множество материи, чтобы одновременно сокрушить врагов и защитить себя.",
         "es": "Conjura una gran cantidad de materia para aplastar simultáneamente a tus enemigos mientras te mantienes protegido.",
         "jp": "敵を粉砕すると同時に、自分自身を守るために、多くの物質を召喚します。"
@@ -508,15 +508,15 @@ let textData = {
     "mind_tut_desc": {
         "en_us": "The Energy rune\ncontrols raw energy.\nEnergy spells have powerful utility\neffects and deal True damage that\nbypasses enemy defenses.",
         "fr": "La rune Énergie accorde le contrôle de l’énergie brute. Les sorts d’énergie ont de puissants effets de soutien et peuvent infliger des dégâts bruts qui contournent les défenses ennemies.",
-        "zh_tw": "能量符文授予對原始能量的控制權。能量法術具有強大的支援效果，可以造成繞過敵人防禦的真實傷害。",
-        "zh_cn": "能量符文授予对原始能量的控制权。能量法术具有强大的支持效果，可以造成绕过敌人防御的真实伤害。",
+        "zh_tw": "能量符文授予對原始能量的控制權。\n能量法術具有強大的支援效果，\n可以造成繞過敵人防禦的真實傷害。",
+        "zh_cn": "能量符文授予对原始能量的控制权。\n能量法术具有强大的支持效果，\n可以造成绕过敌人防御的真实伤害。",
         "ru": "Руна Энергия дает контроль над сырой энергией. Энергетические заклинания обладают мощными вспомогательными эффектами и могут наносить чистый урон, обойдя вражескую оборону.",
         "es": "La runa de energía otorga control sobre la energía bruta. Los hechizos de energía tienen poderosos efectos de apoyo y pueden infligir daño verdadero que supera las defensas enemigas.",
         "jp": "エネルギーのルーンは、生のエネルギーをコントロールすることを可能にします。エネルギー呪文は強力なサポート効果を持ち、敵の防御を迂回するトゥルーダメージを与えることができます。"
     },
     "mind_plus_tut_desc": {
         "en_us": "Your mastery over the element\nstrengthens some of your\nexisting Energy spells.",
-        "fr": "Votre maîtrise de l’élément renforce certains de vos sorts d’énergie existants.",
+        "fr": "Votre maîtrise de l’élément\nrenforce certains de vos sorts\nd’énergie existants.",
         "zh_tw": "你對元素的掌握加強了你現有的一些能量法術。",
         "zh_cn": "你对元素的掌握加强了你现有的一些能量法术。",
         "ru": "Ваше мастерство над стихией усиливает некоторые из ваших существующих энергетических заклинаний.",
@@ -551,13 +551,13 @@ let textData = {
         "jp": "ダメージの半分をブロックし、受けたダメージを溜め込んで報復するシールドを作成します。"
     },
     "mind_tut_reinforce_desc": {
-        "en_us": "Offensive buff that electrifies\nyourself to boost your\nattacks with extra damage.",
-        "fr": "Buff offensif qui vous électrise pour booster vos attaques avec des dégâts supplémentaires.",
-        "zh_tw": "攻擊性增益，使自己興奮，以額外的傷害增強您的攻擊。",
-        "zh_cn": "攻击性增益，使自己兴奋，以额外的伤害增强您的攻击。",
-        "ru": "Атакующий бафф, который электризует вас, усиливая ваши атаки дополнительным уроном.",
-        "es": "Beneficio ofensivo que te electrifica para potenciar tus ataques con daño extra.",
-        "jp": "攻撃バフは、自分自身に電撃を与え、追加ダメージで攻撃力を高めます。"
+        "en_us": "Energize yourself to increase all damage you deal.",
+        "fr": "Dynamisez-vous pour augmenter tous les dégâts que vous infligez.",
+        "zh_tw": "激發自我能量來增加你造成的所有傷害。",
+        "zh_cn": "激发自我能量来增加你造成的所有伤害。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "mind_tut_unload_desc": {
         "en_us": "Multiplies the effectiveness\nof your next non-attack spell.\nThose clever enough to cast\nthis spell twice in a row\ncan attain breathtaking\nspell-amplifying power.",
@@ -641,10 +641,10 @@ let textData = {
         "jp": "一定の割合の体力ダメージを与え、遅延後にさらに2回攻撃する攻撃。"
     },
     "void_tut_enhance_desc": {
-        "en_us": "Curses an enemy, causing them\nto take more damage from\neverything. Works well with\nother spells that deal damage\nmultiple times.",
-        "fr": "Maudit un ennemi, lui faisant subir plus de dégâts de tout. Fonctionne bien avec d’autres sorts qui infligent des dégâts plusieurs fois.",
-        "zh_tw": "詛咒敵人，使他們從一切事物中受到更多傷害。適用於其他多次造成傷害的法術。",
-        "zh_cn": "诅咒敌人，使他们从一切事物中受到更多伤害。适用于其他多次造成伤害的法术。",
+        "en_us": "Increases the damage of your\nattacks for the rest of the\nfight. Good for long fights.",
+        "fr": "Augmente les dégâts de vos attaques\npour le reste du combat. Idéal\npour les combats de longue durée.",
+        "zh_tw": "增加你在接下來的戰鬥中攻擊造成的傷害。適合長時間戰鬥。",
+        "zh_cn": "增加你在接下来的战斗中攻击造成的伤害。适合长时间战斗。",
         "ru": "Проклинает врага, заставляя его получать больше урона от всего. Хорошо работает с другими заклинаниями, которые наносят урон несколько раз.",
         "es": "Maldice a un enemigo, lo que hace que reciba más daño de todo. Funciona bien con otros hechizos que infligen daño varias veces.",
         "jp": "敵を呪い、敵があらゆるものから受けるダメージが増加する。複数回ダメージを与える他の呪文とうまく連携します。"

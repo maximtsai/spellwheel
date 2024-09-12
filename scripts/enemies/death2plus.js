@@ -317,7 +317,7 @@
         });
         this.addTween({
             targets: [this.deathhalo1],
-            alpha: 0.5,
+            alpha: 0.6,
             scaleX: 2.5,
             scaleY: 2.5,
             duration: 2000,
@@ -325,7 +325,7 @@
                 this.deathhalo2.setScale(0.1).setAlpha(0).setRotation(Math.random() * 6);
                 this.addTween({
                     targets: [this.deathhalo2],
-                    alpha: 0.5,
+                    alpha: 0.6,
                     scaleX: 2.5,
                     scaleY: 2.5,
                     duration: 2000,
@@ -1294,9 +1294,22 @@
              if ( i >= 5) {
                  extraDelay += 150;
              }
+             let rotateDelay = 800 - (i % 4) * 200;
+             this.addTween({
+                 targets: this.finalHands[i],
+                 delay: rotateDelay,
+                 rotation: 0,
+                 duration: 400,
+                 alpha: 1,
+                 ease: 'Cubic.easeIn',
+                 onComplete: () => {
+                     playSound('matter_enhance', 0.7).detune = -800 + Math.floor(rotateDelay * 0.3);
+                 },
+             })
+
              this.addDelayIfAlive(() => {
                  this.fireNextSuperHand(i >= 4)
-             }, 800 + i * 850 + extraDelay)
+             }, 1000 + i * 850 + extraDelay)
          }
      }
 
@@ -1479,7 +1492,7 @@
              if (i >= 4) {
                  flip *= -1;
              }
-             let newHand = this.addImage(img.x, img.y, 'deathfinal', handToUse[i % 4]).setScale(flip * scale, scale).setAlpha(0.1);
+             let newHand = this.addImage(img.x, img.y, 'deathfinal', handToUse[i % 4]).setScale(flip * scale, scale).setAlpha(0);
              this.finalHands.push(newHand);
              newHand.rotation = this.finalArms[this.finalHands.length - 1].rotation;
 
@@ -1502,20 +1515,6 @@
                              newGlow.destroy();
                          }
                      })
-
-                     let rotateDelay = 1500 - (i % 4) * 200;
-                     this.addTween({
-                         targets: newHand,
-                         delay: rotateDelay,
-                         rotation: 0,
-                         duration: 400,
-                         alpha: 1,
-                         ease: 'Quad.easeIn',
-                         onComplete: () => {
-                             playSound('matter_enhance', 0.5).detune = -1200 + rotateDelay * 0.3;
-                         },
-                     })
-
                  }
              })
          }
@@ -1536,8 +1535,7 @@
                  this.addTween({
                      targets: this.finalArms,
                      alpha: 0,
-                     duration: 200,
-                     ease: 'Cubic.easeIn',
+                     duration: 600,
                      onComplete: () => {
                          for (let i in this.finalArms) {
                              this.finalArms[i].destroy();

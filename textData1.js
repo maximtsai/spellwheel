@@ -310,8 +310,8 @@ let textData = {
     "void_reinforce_desc_long": {
         "en_us": "Heal to full, but lose 10 max hp",
         "fr": "Soigne complètement, mais\nréduit vos PV maximum de 10",
-        "zh_tw": "完全治癒自己，但失去 10 點最大生命值",
-        "zh_cn": "完全治愈自己，但失去 10 点最大生命值",
+        "zh_tw": "完全治癒自己，但失去 10 點总生命值",
+        "zh_cn": "完全治愈自己，但失去 10 点总生命值",
         "ru": "исцеляется полностью,\nно теряет 10 макс хп",
         "es": "Se cura por completo, pero\npierde 10 puntos de salud máximos.",
         "jp": "完全に回復するが、最大HPの10を失う"
@@ -597,7 +597,7 @@ let textData = {
     },
     "time_tut_protect_desc": {
         "en_us": "Creates a shield that delays\nthe damage you take to a\nslow trickle, up to a limit.",
-        "fr": "Crée un bouclier qui retarde les dégâts que vous subissez à un filet lent, jusqu’à une limite.",
+        "fr": "Crée un bouclier qui retarde\nles dégâts que vous subissez\nà un filet lent, jusqu’à une\nlimite.",
         "zh_tw": "創建一個盾牌，可以將您受到的傷害延遲到緩慢的涓涓細流，直至達到極限。",
         "zh_cn": "打造一个盾牌，可以将您受到的伤害延迟到缓慢的涓涓细流，直至达到极限。",
         "ru": "Создает щит, который задерживает получаемый вами урон до медленной струйки, до предела.",
@@ -606,25 +606,25 @@ let textData = {
     },
     "time_tut_reinforce_desc": {
         "en_us": "Heals you by partially\nundoing your most recent\ninjury.",
-        "fr": "Vous guérit en réparant partiellement votre blessure la plus récente.",
-        "zh_tw": "通過部分消除您最近的傷害來治癒您。",
-        "zh_cn": "通过部分消除您最近的伤害来治愈您。",
+        "fr": "Vous guérit en réparant\npartiellement votre blessure\nla plus récente.",
+        "zh_tw": "通過部分消除您最近的傷害\n來治癒您。",
+        "zh_cn": "通过部分消除您最近的伤害\n来治愈您。",
         "ru": "Исцеляет вас, частично устраняя вашу последнюю травму.",
         "es": "Te cura deshaciendo parcialmente tu lesión más reciente.",
         "jp": "直近の怪我を部分的に元に戻すことで、あなたを癒します。"
     },
     "time_tut_unload_desc": {
         "en_us": "Slows down time to a near\nstand-still for several easy\nand stress-free spell casts.",
-        "fr": "Ralentit le temps jusqu’à ce qu’il s’arrête pour plusieurs sorts faciles et sans stress.",
-        "zh_tw": "將時間減慢到幾乎靜止，以進行幾次簡單且無壓力的法術施放。",
-        "zh_cn": "将时间减慢到几乎静止，以进行几次简单且无压力的法术施放。",
+        "fr": "Ralentit le temps jusqu’à ce\nqu’il s’arrête pour plusieurs\nsorts faciles et sans stress.",
+        "zh_tw": "將時間減慢到幾乎靜止，\n以進行幾次簡單且無壓力的法術施放。",
+        "zh_cn": "将时间减慢到几乎静止，\n以进行几次简单且无压力的法术施放。",
         "ru": "Замедляет время почти до полной остановки для нескольких простых и беззаботных применений заклинаний.",
         "es": "Ralentiza el tiempo hasta casi detenerlo durante varios lanzamientos de hechizos fáciles y sin estrés.",
         "jp": "時間をほぼ停止状態まで遅くし、簡単でストレスのない呪文を何度か唱えます。"
     },
     "void_tut_desc": {
         "en_us": "The Void rune grants \ncontrol over the power of empty\nspace. Void spells can deal\npercentage health damage,\nnegate enemy attacks, or even\nfully heal you at a cost.",
-        "fr": "La rune du Vide confère le contrôle du pouvoir de l’espace vide. Les sorts du Vide peuvent infliger un pourcentage de dégâts de santé, annuler les attaques ennemies ou même vous soigner complètement à un coût.",
+        "fr": "La rune du Vide confère\nle contrôle du pouvoir de l’espace\nvide. Les sorts du Vide peuvent\ninfliger un pourcentage de dégâts\nde santé, annuler les attaques\nennemies ou même vous soigner\ncomplètement à un coût.",
         "zh_tw": "虛空符文賦予了對虛空力量的控制權。虛空法術可以造成一定比例的生命傷害，抵消敵人的攻擊，甚至需要付出一定代價才能完全治癒你。",
         "zh_cn": "虚空符文赋予了对虚空力量的控制权。虚空法术可以造成一定比例的生命伤害，抵消敌人的攻击，甚至需要付出一定代价才能完全治愈你。",
         "ru": "Руна Пустоты дает контроль над силой пустого пространства. Заклинания Бездны могут наносить процент урона от здоровья, нейтрализовать вражеские атаки или даже полностью исцелять вас за определенную плату.",
@@ -633,9 +633,9 @@ let textData = {
     },
     "void_tut_strike_desc": {
         "en_us": "An attack that deals percentage\nhealth damage and strikes an\nadditional 2 more times after\na delay.",
-        "fr": "Une attaque qui inflige un pourcentage de dégâts de santé et frappe 2 fois de plus après un certain délai.",
-        "zh_tw": "造成一定百分比生命傷害並在延遲後再攻擊 2 次的攻擊。",
-        "zh_cn": "造成一定百分比生命伤害并在延迟后再攻击 2 次的攻击。",
+        "fr": "Une attaque qui inflige un pourcentage\nde dégâts de santé et frappe 2\nfois de plus après un certain délai.",
+        "zh_tw": "造成一定百分比生命傷害並在延遲後\n再攻擊 2 次的攻擊。",
+        "zh_cn": "造成一定百分比生命伤害并在延迟后\n再攻击 2 次的攻击。",
         "ru": "Атака, которая наносит процентный урон здоровью и наносит еще 2 удара после задержки.",
         "es": "Un ataque que inflige un porcentaje de daño de vida y golpea 2 veces más después de un retraso.",
         "jp": "一定の割合の体力ダメージを与え、遅延後にさらに2回攻撃する攻撃。"
@@ -651,25 +651,25 @@ let textData = {
     },
     "void_tut_protect_desc": {
         "en_us": "Creates a shield that negates\nall damage from a single\nenemy attack hit, no matter\nhow strong.",
-        "fr": "Crée un bouclier qui annule tous les dégâts infligés par une seule attaque ennemie, quelle que soit sa force.",
-        "zh_tw": "創建一個盾牌，無論強度如何，都可以抵消單次敵人攻擊造成的所有傷害。",
-        "zh_cn": "打造一个盾牌，无论强度如何，都可以抵消单次敌人攻击造成的所有伤害。",
+        "fr": "Crée un bouclier qui annule tous\nles dégâts infligés par une\nseule attaque ennemie, quelle\nque soit sa force.",
+        "zh_tw": "創建一個盾牌，無論強度如何，\n都可以抵消單次敵人攻擊造成的所有傷害。",
+        "zh_cn": "打造一个盾牌，无论强度如何，\n都可以抵消单次敌人攻击造成的所有伤害。",
         "ru": "Создает щит, который сводит на нет весь урон от одной вражеской атаки, независимо от того, насколько она сильна.",
         "es": "Crea un escudo que niega todo el daño de un solo golpe de ataque enemigo, sin importar cuán fuerte sea.",
         "jp": "敵の攻撃が1回受けても、どんなに強くてもすべてのダメージを無効化するシールドを生成する。"
     },
     "void_tut_reinforce_desc": {
         "en_us": "Become briefly invulnerable\nand heal to full, but at\nthe cost of some max health.",
-        "fr": "Devient brièvement invulnérable et guérit complètement, mais au prix d’une santé maximale.",
-        "zh_tw": "變得短暫無敵並完全恢復，但以一些最大生命值為代價。",
-        "zh_cn": "变得短暂无敌并完全恢复，但以一些最大生命值为代价。",
+        "fr": "Devient brièvement invulnérable\net guérit complètement, mais\nau prix d’une santé maximale.",
+        "zh_tw": "變得短暫無敵並完全恢復，\n但以一些总生命值為代價。",
+        "zh_cn": "变得短暂无敌并完全恢复，\n但以一些总生命值为代价。",
         "ru": "Ненадолго становится неуязвимым и полностью исцеляется, но ценой некоторого максимального здоровья.",
         "es": "Te vuelves brevemente invulnerable y te curas por completo, pero a costa de algo de salud máxima.",
         "jp": "一時的に無敵状態になり、完全に回復しますが、最大体力がいくらか犠牲になります。"
     },
     "void_tut_unload_desc": {
         "en_us": "Creates a vortex that deals\nheavy percent health damage\nwhile disrupting any action\nthe enemy is trying to make.",
-        "fr": "Crée un vortex qui inflige un pourcentage élevé de dégâts de santé tout en perturbant toute action de l’ennemi.",
+        "fr": "Crée un vortex qui inflige un\npourcentage élevé de dégâts\nde santé tout en perturbant\ntoute action de l’ennemi.",
         "zh_tw": "創造一個漩渦，造成嚴重的生命傷害，同時破壞敵人試圖做出的任何行動。",
         "zh_cn": "创造一个漩涡，造成严重的生命伤害，同时破坏敌人试图做出的任何行动。",
         "ru": "Создает вихрь, который наносит большой урон в процентах здоровья, прерывая любые действия противника.",
@@ -678,9 +678,9 @@ let textData = {
     },
     "protect_tut_desc": {
         "en_us": "The Shield rune creates\nbarriers that protect you as\nlong as they are positioned\nbetween you and the enemy.",
-        "fr": "La rune Bouclier crée des barrières qui vous protègent tant qu’elles sont positionnées entre vous et l’ennemi.",
-        "zh_tw": "盾牌符文會創造障礙物，只要它們位於你和敵人之間，就可以保護你。",
-        "zh_cn": "盾牌符文会创造障碍物，只要它们位于你和敌人之间，就可以保护你。",
+        "fr": "La rune Bouclier crée des\nbarrières qui vous protègent\ntant qu’elles sont positionnées\nentre vous et l’ennemi.",
+        "zh_tw": "盾牌符文會創造盾牌，只要盾牌位於你和敵人之間，就可以保護你。",
+        "zh_cn": "盾牌符文会创造盾牌，只要盾牌位于你和敌人之间，就可以保护你。",
         "ru": "Руна Щит создает барьеры, которые защищают вас, пока они находятся между вами и врагом.",
         "es": "La runa escudo crea barreras que te protegen siempre que estén colocadas entre tú y el enemigo.",
         "jp": "シールドルーンは、あなたと敵の間に配置されている限り、あなたを保護するバリアを作成します。"

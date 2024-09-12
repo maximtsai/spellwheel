@@ -9,7 +9,7 @@
          globalObjects.player.refreshHealthBar();
          messageBus.publish('showCircleShadow', 0.7, -50);
          this.sprite.setOrigin(0.5, 0.4);
-
+         this.sprite.startY = y;
          this.bgBlur.currAnim = this.addTween({
              targets: this.bgBlur,
              alpha: 0,
@@ -349,7 +349,15 @@
              this.breatheTween.stop();
          }
          this.breathTween = this.addTween({
-             targets: [this.sprite, this.deathhalo1, this.deathhalo2, this.circleHalo],
+             targets: [this.sprite],
+             y: "+=9",
+             duration: 2000,
+             ease: 'Quad.easeInOut',
+             repeat: -1,
+             yoyo: true
+         });
+         this.haloBreathTween = this.addTween({
+             targets: [this.deathhalo1, this.deathhalo2, this.circleHalo],
              y: "+=9",
              duration: 2000,
              ease: 'Quad.easeInOut',
@@ -1260,7 +1268,7 @@
                              playSound('heartbeatfast');
                              this.runPulses(this.pulses, 2)
                          }, 1800)
-                         this.lastAttackLingerMult = 20;
+                         this.lastAttackLingerMult = 24;
                      },
                      attackStartFunction: () => {
                          this.interruptCurrentAttack();
@@ -1268,9 +1276,7 @@
                         this.launchSuperHands();
                      },
                      finaleFunction: () => {
-                         if (!globalObjects.player.isDead()) {
-                             this.secondDie();
-                         }
+
                      }
                  },
                  {
@@ -1311,6 +1317,83 @@
                  this.fireNextSuperHand(i >= 4)
              }, 1000 + i * 850 + extraDelay)
          }
+         this.addDelayIfAlive(() => {
+             if (globalObjects.player.isDead()) {
+                 return;
+             }
+             this.sprite.visible = false;
+             this.fakeDeath = this.addImage(this.sprite.x, this.sprite.y, 'deathfinal', 'death2final.png').setScale(this.sprite.scaleX);
+             this.fakeDeath.setOrigin(0.5, 0.41);
+
+             this.haloBreathTween.stop();
+
+             this.addTween({
+                 targets: this.fakeDeath,
+                 rotation: 0.5,
+                 scaleX: this.sprite.scaleX * 0.9,
+                 scaleY: this.sprite.scaleY * 0.9,
+                 duration: 700,
+                 ease: 'Cubic.easeInOut',
+                 onComplete: () => {
+                     this.stopHalo = true;
+                     this.addTween({
+                         targets: [this.deathhalo1, this.deathhalo2, this.circleHalo],
+                         y: globalObjects.player.getY() - 330,
+                         duration: 1400,
+                         ease: 'Cubic.easeIn',
+                         onComplete: () => {
+                         }
+                     });
+                     this.addTween({
+                         targets: this.circleHalo,
+                         scaleX: 1,
+                         scaleY: 1,
+                         duration: 1400,
+                         ease: 'Cubic.easeIn',
+                     })
+                     this.addTween({
+                         targets: [this.deathhalo1, this.deathhalo2, this.circleHalo],
+                         alpha: 0,
+                         duration: 1500,
+                         ease: 'Cubic.easeIn'
+                     })
+                     playSound('swish', 0.5);
+                     playSound('slice_in', 0.5);
+
+                     this.addTween({
+                         targets: this.fakeDeath,
+                         rotation: "-=19.6",
+                         y: globalObjects.player.getY() - 330,
+                         scaleX: 1.8,
+                         scaleY: 1.8,
+                         duration: 1400,
+                         ease: 'Cubic.easeIn',
+                         onComplete: () => {
+                             messageBus.publish("selfTakeDamage", 99);
+                             playSound('death_attack', 1);
+                             playSound('punch', 1);
+                             this.createScytheAttackSfx();
+                             this.addTween({
+                                 targets: this.fakeDeath,
+                                 delay: 750,
+                                 rotation: 0,
+                                 scaleX: this.sprite.scaleX,
+                                 scaleY: this.sprite.scaleY,
+                                 y: this.sprite.startY,
+                                 ease: 'Cubic.easeInOut',
+                                 duration: 1800,
+                                 completeDelay: 700,
+                                 onComplete: () => {
+                                     if (!globalObjects.player.isDead()) {
+                                         this.secondDie();
+                                     }
+                                 }
+                             })
+                         }
+                     })
+                 }
+             })
+         }, 1000 + 8 * 1000);
      }
 
      createScytheAttackSfx(flipped) {
@@ -1349,7 +1432,7 @@
         let isFlipped = nextHand.scaleX < 0;
         let isFlippedMult = isFlipped ? -1 : 1;
 
-        let scaleMult = nextHand.frame.name == 'claw.png' ? 1.5 : 1;
+        let scaleMult = nextHand.frame.name == 'claw.png' ? 1.4 : 1;
 
          this.addTween({
              targets: nextHand,
@@ -2659,6 +2742,11 @@
         if (this.oldStartScale) {
             this.sprite.startScale = this.oldStartScale
         }
+         this.sprite.visible = true;
+        if (this.fakeDeath) {
+            this.fakeDeath.destroy();
+        }
+
         this.stopHalo = true;
         fadeAwaySound(this.bgMusic);
          if (this.bgMusic2) {
@@ -2669,6 +2757,7 @@
          }
          if (this.breathTween) {
              this.breathTween.stop();
+             this.haloBreathTween.stop();
          }
          if (this.finalHands) {
              for (let i in this.finalHands) {

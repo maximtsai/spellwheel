@@ -19,8 +19,8 @@ let textData2 = {
         "jp": "アクションルーン: "
     },
     "encyclopedia_rune_combos": {
-        "en_us": "Spell list",
-        "fr": "Liste de sorts",
+        "en_us": "Spell List",
+        "fr": "Liste Des Sorts",
         "zh_tw": "法术列表",
         "zh_cn": "法术列表",
         "ru": "список заклинаний",

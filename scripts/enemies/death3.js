@@ -91,9 +91,6 @@ class Death3 extends Enemy {
             })
         }
 
-
-
-
         this.sprite.setScale(0.8, 0.65).setAlpha(0.4);
         this.sprite.y -= 50;
         this.addTween({
@@ -148,11 +145,9 @@ class Death3 extends Enemy {
                  });
 
                 this.startFightLogic();
-
             }
         })
     }
-
 
     startFightLogic() {
         if (!this.redEffect) {

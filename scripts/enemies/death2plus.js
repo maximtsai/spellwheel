@@ -1197,7 +1197,7 @@
              ],
              [
                  {
-                     name: ";;;99x9;;;",
+                     name: gameVars.isHardMode ? ";;;99x9;;;" : ";;;88x8;;;",
                      chargeAmt: 1380,
                      chargeMult: 1.1,
                      finishDelay: 10000,
@@ -1210,7 +1210,7 @@
 
                          this.finalArms = [];
                          playSound('death_cast', 0.6).detune = -500;
-
+                         playSound('ringknell', 0.4);
                          for (let i = 0; i < 4; i++) {
                             let startRot = 0.5;
                             let goalRot = 1 + 0.45 * i;
@@ -1260,8 +1260,8 @@
                              this.pulses = [];
                              for (let i in this.finalArms) {
                                  let arm = this.finalArms[i];
-                                 let pulsePosX = arm.x + Math.sin(arm.goalRot) * 220;
-                                 let pulsePosY = arm.y - Math.cos(arm.goalRot) * 220;
+                                 let pulsePosX = arm.x + Math.sin(arm.goalRot) * 217;
+                                 let pulsePosY = arm.y - Math.cos(arm.goalRot) * 217;
                                  let pulseCircle = this.addImage(pulsePosX, pulsePosY, 'blurry', 'pulser.png').setAlpha(0.1).setScale(2).setDepth(-1);
                                  this.pulses.push(pulseCircle);
                              }
@@ -1327,6 +1327,18 @@
 
              this.haloBreathTween.stop();
 
+             this.stopHalo = true;
+             this.addTween({
+                 targets: [this.deathhalo1, this.deathhalo2, this.circleHalo],
+                 alpha: 0,
+                 duration: 900,
+                 ease: 'Cubic.easeOut',
+                 onComplete: () => {
+                     this.deathhalo1.visible = false;
+                     this.deathhalo2.visible = false;
+                     this.circleHalo.visible = false;
+                 }
+             })
              this.addTween({
                  targets: this.fakeDeath,
                  rotation: 0.5,
@@ -1335,30 +1347,8 @@
                  duration: 700,
                  ease: 'Cubic.easeInOut',
                  onComplete: () => {
-                     this.stopHalo = true;
-                     this.addTween({
-                         targets: [this.deathhalo1, this.deathhalo2, this.circleHalo],
-                         y: globalObjects.player.getY() - 330,
-                         duration: 1400,
-                         ease: 'Cubic.easeIn',
-                         onComplete: () => {
-                         }
-                     });
-                     this.addTween({
-                         targets: this.circleHalo,
-                         scaleX: 1,
-                         scaleY: 1,
-                         duration: 1400,
-                         ease: 'Cubic.easeIn',
-                     })
-                     this.addTween({
-                         targets: [this.deathhalo1, this.deathhalo2, this.circleHalo],
-                         alpha: 0,
-                         duration: 1500,
-                         ease: 'Cubic.easeIn'
-                     })
                      playSound('swish', 0.5);
-                     playSound('slice_in', 0.5);
+                     playSound('deep_swish');
 
                      this.addTween({
                          targets: this.fakeDeath,
@@ -1464,7 +1454,7 @@
                      scaleY: 1.03 * scaleMult,
                      ease: 'Quart.easeIn',
                      onComplete: () => {
-                         messageBus.publish("selfTakeDamage", 99);
+                         messageBus.publish("selfTakeDamage", gameVars.isHardMode ? 99 : 88);
                          if (isHeavy) {
                              let glowName = nextHand.frame.name.substring(0, nextHand.frame.name.length - 4) + "_glow" + ".png";
                              let glowScale = nextHand.scaleX * 2;
@@ -1575,7 +1565,9 @@
              if (i >= 4) {
                  flip *= -1;
              }
-             let newHand = this.addImage(img.x, img.y, 'deathfinal', handToUse[i % 4]).setScale(flip * scale, scale).setAlpha(0);
+             let xPos = img.x * 0.95 + this.sprite.x * 0.05;
+             let yPos = img.y * 0.92 + this.sprite.y * 0.08;
+             let newHand = this.addImage(xPos, yPos, 'deathfinal', handToUse[i % 4]).setScale(flip * scale, scale).setAlpha(0);
              this.finalHands.push(newHand);
              newHand.rotation = this.finalArms[this.finalHands.length - 1].rotation;
 
@@ -3255,7 +3247,6 @@
 
 
      clearPower() {
-         console.log("clear power");
          let currentPowerText = this.currentPowerText;
          let currentPowerHand = this.currentPowerHand;
          if (currentPowerText && currentPowerText.currAnim) {
@@ -3451,7 +3442,6 @@
      }
 
      createClawPower() {
-         console.log("claw power");
          this.currentPowerHand = this.addImage(gameConsts.halfWidth, this.y - 50, 'deathfinal', 'claw_glow.png').setAlpha(0).setScale(0.7);
          this.addTween({
              targets: [this.currentPowerHand],

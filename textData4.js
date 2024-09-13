@@ -542,7 +542,7 @@ let textData4 = {
         "jp": "ハッ!今は痛くない!"
     },
     "death3_a": {
-        "en_us": "Dear child, you must understand this\nfirst before you can see your beloved.",
+        "en_us": "Dear child, you have fought\nso hard to get here.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -551,16 +551,197 @@ let textData4 = {
         "jp": ""
     },
     "death3_b": {
-        "en_us": "Every life has its end,\nand every end has its purpose.",
+        "en_us": "I offer my heartfelt understanding\nfor your anguish.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
         "ru": "",
         "es": "",
         "jp": ""
-    }
+    },
+    "death3_understand": {
+        "en_us": "But understand what you\nare doing is not love,",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_obsess": {
+        "en_us": "but infatuation become obsession.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_odyssey": {
+        "en_us": "Was your expedition a noble odyssey?",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_indulgence": {
+        "en_us": "Or a self indulgence to fill\nthe emptiness in your heart?",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_yield": {
+        "en_us": "You think if you force me to yield,\nyou can have her back.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_within": {
+        "en_us": "Perhaps.\nThat would be within my power.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_both": {
+        "en_us": "But bringing her back won’t heal you.\nIt will only hurt you both.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_strength": {
+        "en_us": "You’ve proven your strength.\nBut real strength now...",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_letting": {
+        "en_us": "Is letting go.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_memory": {
+        "en_us": "Let her memory live with you,\nbut allow her soul be free.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_calm": {
+        "en_us": "It seems you've calmed down.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_patience": {
+        "en_us": "For your patience, perhaps I\ncould bend the rules a bit.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_once": {
+        "en_us": "Just this once.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_talk": {
+        "en_us": "Talk to her. Say what you need to say.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_letgo": {
+        "en_us": "And then... let her go.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
 
+    "death3_warn0": {
+        "en_us": "Now where was I...",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
 
+    "death3_warn1a": {
+        "en_us": "I know that your blood\nis still hot from battle.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_warn1b": {
+        "en_us": "But please, allow me a moment\nto finish what I must say.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
 
+    "death3_warn2a": {
+        "en_us": "I dislike it when I am\ninterrupted while speaking.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+
+    "death3_warn2b": {
+        "en_us": "This is your last warning.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
 }
 textData = { ...textData, ...textData4};

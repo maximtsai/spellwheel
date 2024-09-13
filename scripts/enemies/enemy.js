@@ -938,7 +938,7 @@ class Enemy {
         if (animate) {
             if (customCall) {
                 if (customCall != "" && customCall != " ") {
-                    playSound('customCall', 0.7);
+                    playSound(customCall, 0.7);
                 }
             } else {
                 if (isBigMove) {

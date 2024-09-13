@@ -30,6 +30,34 @@ class Death3 extends Enemy {
         })
     }
 
+    setDeathFace(face) {
+        if (!face) {
+            if (this.deathFaceSprite) {
+                this.addTween({
+                    targets: this.deathFaceSprite,
+                    alpha: 0,
+                    duration: 300,
+                })
+            }
+            return;
+        }
+        if (!this.deathFaceSprite) {
+            this.deathFaceSprite = this.addSprite(this.sprite.x, this.sprite.y, 'deathfinal', face).setDepth(this.sprite.depth);
+            this.addExtraSprite(this.deathFaceSprite);
+        } else {
+            this.deathFaceSprite.setFrame(face);
+        }
+        this.deathFaceSprite.setScale(1.1, 1);
+        this.deathFaceSprite.setAlpha(0.90);
+        this.addTween({
+            targets: this.deathFaceSprite,
+            scaleX: 1,
+            alpha: 1,
+            ease: 'Quad.easeOut',
+            duration: 300,
+        })
+    }
+
     animateDeath3In() {
         let blackBG = getBackgroundBlackout();
         blackBG.setDepth(-2).setAlpha(1);
@@ -102,7 +130,6 @@ class Death3 extends Enemy {
             scaleX: 1.06,
             scaleY: 1.06,
             onComplete: () => {
-
                 playSound('water_drop');
                 this.setDefaultSprite('max_death_3.png', 1);
                 gameVars.fromDeath2Plus = false;
@@ -118,6 +145,9 @@ class Death3 extends Enemy {
                      targets: this.whiteoutTemp,
                      alpha: 0,
                      duration: 1200,
+                     onComplete: () => {
+                         this.bgMusic = playMusic('death3_harp', 0.63, true);
+                     }
                  })
                  this.addTween({
                     targets: [this.cape],
@@ -234,11 +264,13 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 2,
+                    chargeMult: 3.4,
+                    transitionFast: true,
                     isPassive: true,
+                    customCall: 'flip1',
                     startFunction: () => {
                         globalObjects.bannerTextManager.closeBanner();
-                        messageBus.publish("showCombatText", getLangText('death3_a'), 0);
+                        messageBus.publish("showCombatText", getLangText('death3_a'), 6);
                     },
                     finaleFunction: () => {
                     }
@@ -246,10 +278,206 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 2,
+                    chargeMult: 3.4,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip2',
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_b'), 6);
+                    },
+                    finaleFunction: () => {
+                    }
+                },
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 3.4,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip1',
+                    startFunction: () => {
+                        this.setDeathFace('max_death_3b.png')
+                        messageBus.publish("showCombatText", getLangText('death3_understand'), 6);
+                    },
+                    finaleFunction: () => {
+                    }
+                },
+                {
+                    name: " ",
+                    chargeAmt: 300,
+                    chargeMult: 3.4,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip3',
+                    startFunction: () => {
+                        this.setDeathFace()
+                        messageBus.publish("showCombatText", getLangText('death3_obsess'), 6);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 300,
+                    chargeMult: 3.4,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip1',
+                    startFunction: () => {
+                        this.setDeathFace('max_death_3b.png')
+                        messageBus.publish("showCombatText", getLangText('death3_odyssey'), 6);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 3.4,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip2',
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_indulgence'), 6);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 3.4,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip1',
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_yield'), 6);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 350,
+                    chargeMult: 3.4,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip3',
+                    startFunction: () => {
+                        this.setDeathFace()
+                        messageBus.publish("showCombatText", getLangText('death3_within'), 6);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 450,
+                    chargeMult: 3.4,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip1',
+                    startFunction: () => {
+                        this.setDeathFace('max_death_3b.png')
+                        messageBus.publish("showCombatText", getLangText('death3_both'), 6);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 3.4,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip2',
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_strength'), 6);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 300,
+                    chargeMult: 3.4,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip1',
+                    startFunction: () => {
+                        this.setDeathFace()
+                        messageBus.publish("showCombatText", getLangText('death3_letting'), 6);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 3.4,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip3',
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_memory'), 6);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 200,
+                    chargeMult: 3.4,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip1',
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", "...", 6);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 3,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip2',
+                    startFunction: () => {
+                        this.setDeathFace('max_death_3c.png')
+                        messageBus.publish("showCombatText", getLangText('death3_calm'), 6);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 3,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip1',
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_patience'), 6);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 300,
+                    chargeMult: 3,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip3',
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_once'), 6);
+                    },
+                },
+            ],
+            [
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 4,
                     isPassive: true,
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_b'), 0);
+                        messageBus.publish("showCombatText", getLangText('death3_warn1a'), -9);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 4,
+                    isPassive: true,
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_warn1b'), -9);
+                    },
+                },
+                {
+                    name: " ",
+                    chargeAmt: 250,
+                    chargeMult: 4,
+                    isPassive: true,
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_warn0'), -9);
                     },
                     finaleFunction: () => {
                     }
@@ -262,9 +490,56 @@ class Death3 extends Enemy {
                     chargeMult: 3,
                     isPassive: true,
                     startFunction: () => {
-                        messageBus.publish("showCombatText", "Please, do not interrupt me\nwhile I am speaking.", -14);
+                        messageBus.publish("showCombatText", getLangText('death3_warn2a'), -9);
                     },
                     finaleFunction: () => {
+                    }
+                },
+                {
+                    name: " ",
+                    chargeAmt: 250,
+                    chargeMult: 4,
+                    isPassive: true,
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_warn0'), -9);
+                    },
+                    finaleFunction: () => {
+                    }
+                },
+            ],
+            [
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 3,
+                    isPassive: true,
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_warn2a'), -9);
+                    },
+                    finaleFunction: () => {
+                    }
+                },
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 3,
+                    isPassive: true,
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_warn2b'), -9);
+                    },
+                    finaleFunction: () => {
+                    }
+                },
+                {
+                    name: " ",
+                    chargeAmt: 250,
+                    chargeMult: 4,
+                    isPassive: true,
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_warn0'), -9);
+                    },
+                    finaleFunction: () => {
+                        this.setDefense(-999);
                     }
                 },
             ]

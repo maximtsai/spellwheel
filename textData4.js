@@ -546,7 +546,7 @@ let textData4 = {
         "en_us": "Rest now, and allow me\na moment to explain things.",
         "fr": "",
         "zh_tw": "",
-        "zh_cn": "",
+        "zh_cn": "现在休息一下，请容我稍作解释。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -555,7 +555,7 @@ let textData4 = {
         "en_us": "...We won't be\nneeding these anymore.",
         "fr": "",
         "zh_tw": "",
-        "zh_cn": "",
+        "zh_cn": "。。。我们不再需要\n这些武器了。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -564,7 +564,7 @@ let textData4 = {
         "en_us": "First, I offer my heartfelt\nunderstanding for your anguish.",
         "fr": "",
         "zh_tw": "",
-        "zh_cn": "",
+        "zh_cn": "首先，我衷心理解你的痛苦。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -573,7 +573,7 @@ let textData4 = {
         "en_us": "But understand what you\nare doing is not love.",
         "fr": "",
         "zh_tw": "",
-        "zh_cn": "",
+        "zh_cn": "但请明白，你所做的并非是爱，",
         "ru": "",
         "es": "",
         "jp": ""
@@ -582,7 +582,7 @@ let textData4 = {
         "en_us": "It is infatuation turned obsession.",
         "fr": "",
         "zh_tw": "",
-        "zh_cn": "",
+        "zh_cn": "而是迷恋变成了执念。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -591,7 +591,7 @@ let textData4 = {
         "en_us": "Was your expedition a noble odyssey?",
         "fr": "",
         "zh_tw": "",
-        "zh_cn": "",
+        "zh_cn": "你的远征是一次高尚的历程吗？",
         "ru": "",
         "es": "",
         "jp": ""
@@ -600,7 +600,7 @@ let textData4 = {
         "en_us": "Or a self indulgence to fill\nthe emptiness in your heart?",
         "fr": "",
         "zh_tw": "",
-        "zh_cn": "",
+        "zh_cn": "还是一种自我放纵，用以填补你内心的空虚？",
         "ru": "",
         "es": "",
         "jp": ""
@@ -609,7 +609,7 @@ let textData4 = {
         "en_us": "You think if you force me to yield,\nyou can have her back.",
         "fr": "",
         "zh_tw": "",
-        "zh_cn": "",
+        "zh_cn": "你以为只要逼我屈服，就能把她抢回来吗？",
         "ru": "",
         "es": "",
         "jp": ""
@@ -627,7 +627,7 @@ let textData4 = {
         "en_us": "But bringing her back won’t heal you.\nIt will only hurt you both.",
         "fr": "",
         "zh_tw": "",
-        "zh_cn": "",
+        "zh_cn": "但将她带回来并不能治愈你。\n这只会对你们双方造成伤害。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -636,7 +636,7 @@ let textData4 = {
         "en_us": "You’ve proven your strength.\nBut real strength now...",
         "fr": "",
         "zh_tw": "",
-        "zh_cn": "",
+        "zh_cn": "你已经证明了你的力量。\n但真正的力量。。。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -645,7 +645,7 @@ let textData4 = {
         "en_us": "Is letting go.",
         "fr": "",
         "zh_tw": "",
-        "zh_cn": "",
+        "zh_cn": "在于放手。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -660,37 +660,37 @@ let textData4 = {
         "jp": ""
     },
     "death3_calm": {
-        "en_us": "It seems you've calmed down.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "en_us": "It seems you have calmed down.",
+        "fr": "On dirait que tu t'es calmé.",
+        "zh_tw": "看起來你已經冷靜下來了。",
+        "zh_cn": "看起来你已经冷静下来了。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death3_patience": {
         "en_us": "For your patience, perhaps I\ncould bend the rules a bit.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Pour votre patience, je pourrais\npeut-être assouplir un peu les règles.",
+        "zh_tw": "鑑於您的耐心，也許我可以稍作通融。",
+        "zh_cn": "鉴于您的耐心，也许我可以稍作通融。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death3_once": {
         "en_us": "Just this once.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Juste cette fois.",
+        "zh_tw": "就這一次。",
+        "zh_cn": "就这一次。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death3_talk": {
-        "en_us": "Talk to her. Say what you need to say.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "en_us": "Talk to her.\nSay what you need to say.",
+        "fr": "Parle-lui.\nDis ce que tu as à dire.",
+        "zh_tw": "對她說出你必要說的話。",
+        "zh_cn": "对她说出你必要说的话。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -707,38 +707,38 @@ let textData4 = {
 
     "death3_warn0": {
         "en_us": "Now where was I...",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Où est-ce que je\nviens de dire...",
+        "zh_tw": "我剛說到哪裡了...",
+        "zh_cn": "我刚说到哪儿了...",
         "ru": "",
         "es": "",
         "jp": ""
     },
 
     "death3_warn1a": {
-        "en_us": "I know that your blood\nis still hot from battle.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "en_us": "I know that your blood\nis still hot from battle,",
+        "fr": "Je sais que votre sang est\nencore chaud après la bataille,",
+        "zh_tw": "我知你戰後熱血未冷，",
+        "zh_cn": "我知你战后热血未冷，",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death3_warn1b": {
-        "en_us": "But please, allow me a moment\nto finish what I must say.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "en_us": "but please allow me a moment\nto finish what I must say.",
+        "fr": "mais je vous prie de me laisser\nfinir ce que j’ai à dire.",
+        "zh_tw": "但請容我將話說完。",
+        "zh_cn": "但请容我将话说完。",
         "ru": "",
         "es": "",
         "jp": ""
     },
 
     "death3_warn2a": {
-        "en_us": "I dislike it when I am\ninterrupted while speaking.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "en_us": "I dislike being interrupted\nwhile speaking.",
+        "fr": "Je n’aime pas être interrompu\npendant que je parle.",
+        "zh_tw": "我不喜歡在說話時被打斷。",
+        "zh_cn": "我不喜欢在说话时被打断。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -746,6 +746,26 @@ let textData4 = {
 
     "death3_warn2b": {
         "en_us": "This is your last warning.",
+        "fr": "Ceci est votre dernier avertissement.",
+        "zh_tw": "這是你最後的警告。",
+        "zh_cn": "这是你最后的警告。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+
+    "death3_angry": {
+        "en_us": "DISAPPOINTING",
+        "fr": "QUELLE DÉCEPTION",
+        "zh_tw": "真令人失望",
+        "zh_cn": "真令人失望",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+
+    "death3_angry2": {
+        "en_us": "I WILL RETURN TO YOU\nYOUR BELOVED.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -753,5 +773,69 @@ let textData4 = {
         "es": "",
         "jp": ""
     },
+    "death3_angry3": {
+        "en_us": "AND I SHALL LEAVE\nYOU TWO ALONE...",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_angry4": {
+        "en_us": "FOR ETERNITY.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "badend_1": {
+        "en_us": "At last, you are with your beloved.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "badend_2": {
+        "en_us": "But your fates soon become apparent.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "badend_3": {
+        "en_us": "Aging, withering, yet unable to find rest.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "badend_4": {
+        "en_us": "Death has truly forsaken the two of you",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "badend_5": {
+        "en_us": "Forever.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    }
+
 }
 textData = { ...textData, ...textData4};

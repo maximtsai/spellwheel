@@ -726,6 +726,10 @@ class Death3 extends Enemy {
                     alpha: 0,
                     ease: 'Quad.easeIn',
                     duration: 1000,
+                    completeDelay: 500,
+                    onComplete: () => {
+                        showCutscene2();
+                    }
                 })
             }
         })

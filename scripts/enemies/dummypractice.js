@@ -390,7 +390,7 @@
         super.die();
 
         globalObjects.textPopupManager.hideInfoText();
-        this.globalClickBlocker = createGlobalClickBlocker(false);
+        this.dieClickBlocker = createGlobalClickBlocker(false);
         this.sprite.setScale(this.sprite.startScale).setRotation(0);
         let darkDummy = this.addSprite(this.sprite.startX, this.sprite.y, 'dummyenemy', 'dummy_paper_dark.png').setScale(this.sprite.startScale).setDepth(11).setAlpha(0.1);
         if (this.currDummyAnim) {
@@ -488,7 +488,7 @@
              scaleY: 1,
              duration: 800,
              onComplete: () => {
-                this.globalClickBlocker.setOnMouseUpFunc(() => {
+                this.dieClickBlocker.setOnMouseUpFunc(() => {
                     PhaserScene.tweens.add({
                          targets: [this.sprite, darkDummy],
                          alpha: 0,

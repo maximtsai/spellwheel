@@ -275,10 +275,10 @@ let textData2 = {
         "jp": "どうやら私は倒すすべての敵の力を手に入れたようだ! 旅は長いかもしれないが、十分な数の敵を倒せば、いつの日か死そのものに立ち向かえるようになるかもしれない!"
     },
     "post_fight_story4": {
-        "en_us": "Sometimes I question myself, whether entering\nthese forbidden lands and battling every foe\nI encounter is truly the right choice.\n\nBut when I close my eyes and think of\nyour smile, I feel that every sacrifice will be\nworth it in the end.",
+        "en_us": "Sometimes I question myself, whether entering\nthese forbidden lands and battling every foe\nI encounter is truly the right choice.\n\nBut when I close my eyes and think of your\nsmile, I am sure that every sacrifice will be\nworth it in the end.",
         "fr": "Parfois, je me demande si aller au Pays des\nMorts et combattre tous les ennemis est\nvraiment la bonne chose à faire.\n\nMais quand je ferme les yeux et pense à ton\nsourire, j’ai l’impression que tous les sacrifices\nen valaient la peine au final.",
-        "zh_tw": "有時我會懷疑進入亡靈之地，與每個敵人戰鬥是否\n真的是正確的選擇。\n\n但當我閉上眼睛，想起你的笑容時，我覺得最終所有的\n犧牲都是值得的。",
-        "zh_cn": "有时我会怀疑进入亡灵之地，与每个敌人战斗是否\n真的是正确的选择。\n\n但当我闭上眼睛，想起你的笑容时，我觉得最终所有的\n牺牲都是值得的。",
+        "zh_tw": "有時我會懷疑進入亡靈之地，與每個敵人戰鬥是否\n真的是正確的選擇。\n\n但當我閉上眼睛，想起你的笑容時，我我相信最終\n所有的犧牲都是值得的。",
+        "zh_cn": "有时我会怀疑进入亡灵之地，与每个敌人战斗是否\n真的是正确的选择。\n\n但当我闭上眼睛，想起你的笑容时，我我相信最终\n所有的牺牲都是值得的。",
         "ru": "Как же я жажду снова ощутить твои объятия, моя дорогая возлюбленная.  Твоя смерть была слишком поспешной, слишком несправедливой, и я исправлю эту ошибку, даже если мне придется опрокинуть всю страну.",
         "es": "¡Cómo anhelo sentir tu abrazo una vez más, mi queridísimo amado!  Tu muerte fue demasiado prematura, demasiado injusta, y corregiré este error incluso si tengo que trastornar toda la tierra.",
         "jp": "あなたの抱擁をもう一度感じたいと切望しています、私の最愛の人。 あなたの死はあまりにも早く、あまりにも不当であり、たとえ私が国全体を覆さなければならないとしても、私はこの間違いを正します。"
@@ -761,8 +761,8 @@ let textData2 = {
         "jp": "ボイドシールドは\n1回の攻撃を完全\nにブロックできる\n         +"
     },
     "dummy_mind_tut": {
-        "en_us": "Energy Strike\nmakes your next\nattack hit X2\nas hard\n           +",
-        "fr": "La frappe\nénergétique rend\nvotre prochaine\nattaque deux fois\nplus forte.\n              +",
+        "en_us": "Energy Strike\nmakes your next\nattack hit X2 as\nhard\n             +",
+        "fr": "La frappe\nénergétique rend\nvotre prochaine\nattaque deux fois\nplus forte.\n               +",
         "zh_tw": "你的下一次攻擊\n造成兩倍的傷害\n         +",
         "zh_cn": "你的下一次攻击\n造成双倍伤害\n         +",
         "ru": "Энергетический удар делает вашу следующую атаку в два раза сильнее.\n             +",

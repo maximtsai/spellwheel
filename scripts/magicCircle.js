@@ -119,9 +119,17 @@ const ENABLE_KEYBOARD = true;
         if (!this.recentSkipped && (this.keyEnter.isDown || this.keySpace.isDown)) {
             messageBus.publish("continueDialog");
             // click through victory
-            if (globalObjects.currentEnemy && globalObjects.currentEnemy.dieClickBlocker && !globalObjects.currentEnemy.dieClickBlocker.isDestroyed) {
-                if (globalObjects.currentEnemy.dieClickBlocker.onMouseUpFunc) {
-                    globalObjects.currentEnemy.dieClickBlocker.onMouseUpFunc();
+            if (globalObjects.currentEnemy) {
+                if (globalObjects.currentEnemy.dieClickBlocker && !globalObjects.currentEnemy.dieClickBlocker.isDestroyed) {
+                    if (globalObjects.currentEnemy.dieClickBlocker.onMouseUpFunc) {
+                        globalObjects.currentEnemy.dieClickBlocker.onMouseUpFunc();
+                    }
+                }
+            }
+
+            if (globalObjects.lvlCloseButton && !globalObjects.lvlCloseButton.isDestroyed) {
+                if (globalObjects.lvlCloseButton.onMouseUpFunc) {
+                    globalObjects.lvlCloseButton.onMouseUpFunc();
                 }
             }
 
@@ -873,7 +881,9 @@ const ENABLE_KEYBOARD = true;
          }
          if (this.elementHighlight.closest) {
              this.elementHighlight.rotation = this.elementHighlight.closest.rotation;
-             this.embodimentHighlight.rotation = this.embodimentHighlight.closest.rotation;
+         }
+         if (this.embodimentHighlight.closest) {
+            this.embodimentHighlight.rotation = this.embodimentHighlight.closest.rotation;
          }
 
     }

@@ -154,7 +154,7 @@ let textData3 = {
         "jp": ""
     },
     "death4c": {
-        "en_us": "TO A TIME THAT HAS ALREADY PASSED.",
+        "en_us": "TO A TIME THAT\nHAS ALREADY PASSED.",
         "fr": "À UN TEMPS QUI EST DÉJÀ PASSÉ.",
         "zh_tw": "但你卻停留在早已過去的時間里。",
         "zh_cn": "但你却停留在早已过去的时间里。",
@@ -163,10 +163,10 @@ let textData3 = {
         "jp": ""
     },
     "death4d": {
-        "en_us": "YOU WILL NEVER KNOW PEACE\nUNTIL YOU LET HER GO.",
-        "fr": "VOUS NE CONNAÎTREZ LA PAIX QUE\nSI VOUS LA LAISSEZ PARTIR.",
-        "zh_tw": "你永遠不會感到平靜直到你放棄她。",
-        "zh_cn": "你永远不会感到平静直到你放弃她。",
+        "en_us": "YOU WILL NEVER KNOW PEACE\nUNTIL YOU LET GO OF YOUR BELOVED.",
+        "fr": "VOUS NE CONNAÎTREZ JAMAIS LA PAIX TANT\nQUE VOUS NE LÂCHEREZ PAS VOTRE BIEN-AIMÉ.",
+        "zh_tw": "你永远不会感到平静\n直到你放手你心愛的。",
+        "zh_cn": "你永远不会感到平静\n直到你放手你心愛的。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -434,7 +434,7 @@ let textData3 = {
     },
 
     "magician_death": {
-        "en_us": "YOUR TIME HAS COME",
+        "en_us": "TIME'S UP",
         "fr": "Le temps s'est écoulé",
         "zh_tw": "時間到了",
         "zh_cn": "时间到了",

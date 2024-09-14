@@ -219,6 +219,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">blurry/dark_blur.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>43,43,85,85</rect>
+                <key>scale9Paddings</key>
+                <rect>43,43,85,85</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">blurry/deathhalo.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -369,6 +384,21 @@
                 <rect>131,145,263,290</rect>
                 <key>scale9Paddings</key>
                 <rect>131,145,263,290</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">blurry/lantern_glow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>95,93,191,185</rect>
+                <key>scale9Paddings</key>
+                <rect>95,93,191,185</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

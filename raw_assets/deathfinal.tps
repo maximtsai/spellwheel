@@ -467,7 +467,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.54</double>
+                <double>0.6</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -614,6 +614,21 @@
                 <rect>74,136,149,271</rect>
                 <key>scale9Paddings</key>
                 <rect>74,136,149,271</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">deathfinal/max_death_3e.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.56</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,128,150,255</rect>
+                <key>scale9Paddings</key>
+                <rect>75,128,150,255</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

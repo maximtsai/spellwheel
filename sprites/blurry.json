@@ -5,7 +5,7 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 2001,
-				"h": 2012
+				"h": 2029
 			},
 			"scale": 1,
 			"frames": [
@@ -610,6 +610,31 @@
 					}
 				},
 				{
+					"filename": "lantern_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 192,
+						"h": 172
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 5,
+						"w": 180,
+						"h": 161
+					},
+					"frame": {
+						"x": 1280,
+						"y": 1867,
+						"w": 180,
+						"h": 161
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "glow_flat_red.webp",
 					"rotated": false,
 					"trimmed": true,
@@ -674,10 +699,35 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 1280,
-						"y": 1867,
+						"x": 779,
+						"y": 1967,
 						"w": 200,
 						"h": 50
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dark_blur.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 170,
+						"h": 170
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 170,
+						"h": 170
+					},
+					"frame": {
+						"x": 1807,
+						"y": 1803,
+						"w": 170,
+						"h": 170
 					},
 					"anchor": {
 						"x": 0.5,
@@ -699,10 +749,35 @@
 						"h": 145
 					},
 					"frame": {
-						"x": 1807,
-						"y": 1803,
+						"x": 1462,
+						"y": 1876,
 						"w": 145,
 						"h": 145
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "display_backglow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 120,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 118,
+						"h": 98
+					},
+					"frame": {
+						"x": 1609,
+						"y": 1876,
+						"w": 118,
+						"h": 98
 					},
 					"anchor": {
 						"x": 0.5,
@@ -774,35 +849,10 @@
 						"h": 10
 					},
 					"frame": {
-						"x": 779,
-						"y": 1967,
+						"x": 826,
+						"y": 1687,
 						"w": 100,
 						"h": 10
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "display_backglow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 120,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 118,
-						"h": 98
-					},
-					"frame": {
-						"x": 1482,
-						"y": 1876,
-						"w": 118,
-						"h": 98
 					},
 					"anchor": {
 						"x": 0.5,
@@ -828,6 +878,56 @@
 						"y": 1798,
 						"w": 39,
 						"h": 48
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "staticlite3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 25,
+						"h": 22
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 25,
+						"h": 15
+					},
+					"frame": {
+						"x": 1,
+						"y": 2013,
+						"w": 25,
+						"h": 15
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "staticlite0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 30,
+						"h": 7
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 30,
+						"h": 7
+					},
+					"frame": {
+						"x": 1462,
+						"y": 1867,
+						"w": 30,
+						"h": 7
 					},
 					"anchor": {
 						"x": 0.5,
@@ -885,56 +985,6 @@
 					}
 				},
 				{
-					"filename": "staticlite3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 25,
-						"h": 22
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 3,
-						"w": 25,
-						"h": 15
-					},
-					"frame": {
-						"x": 1923,
-						"y": 530,
-						"w": 25,
-						"h": 15
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "staticlite0.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 30,
-						"h": 7
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 30,
-						"h": 7
-					},
-					"frame": {
-						"x": 959,
-						"y": 939,
-						"w": 30,
-						"h": 7
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "staticlite2.png",
 					"rotated": false,
 					"trimmed": true,
@@ -965,6 +1015,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:1223282b2e29939b77a55c309e52b102:533cb7e7f7f8393f8ae3d42b10c2dab9:7b3d117fb7424a39791474629de16171$"
+		"smartupdate": "$TexturePacker:SmartUpdate:0b1bedaa3001bb56ca6f52d1cd0a0477:84f6b99c98084c6a85cf079a7eba50a0:7b3d117fb7424a39791474629de16171$"
 	}
 }

@@ -225,13 +225,13 @@ let textData4 = {
         "jp": "あり得ないはずなのに、反則は感じない...。"
     },
     "deathFight2plusending3": {
-        "en_us": "...AH OF COURSE, 'CHEATS'.\n>:(",
-        "fr": "... AH, BIEN SÛR, « TRICHE ».\n>:(",
-        "zh_tw": "...啊，你在用“秘籍”。\n>:(",
-        "zh_cn": "...啊，你在用“秘籍”。\n>:(",
-        "ru": "... НУ КОНЕЧНО, «ПОМОЩЬ».\n>:(",
-        "es": "... AH, POR SUPUESTO, 'ASISTENCIA'.\n>:(",
-        "jp": "...ああ、もちろん「アシスタンス」です。\n>:("
+        "en_us": "...AH OF COURSE,\n'CHEATER'",
+        "fr": "... AH, BIEN SÛR,\n« TRICHE ».",
+        "zh_tw": "...啊，你在用\n“秘籍”。",
+        "zh_cn": "...啊，你在用\n“秘籍”。",
+        "ru": "... НУ КОНЕЧНО,\n«ПОМОЩЬ».",
+        "es": "... AH, POR SUPUESTO,\n'ASISTENCIA'",
+        "jp": "...ああ、もちろん\n「アシスタンス」です。"
     },
     "deathFight2plusending4": {
         "en_us": "REGARDLESS, YOU HAVE BESTED ME,\nAND I WILL ACQUIESCE.",
@@ -542,7 +542,8 @@ let textData4 = {
         "jp": "ハッ!今は痛くない!"
     },
     "death3_a": {
-        "en_us": "Dear child, you have fought\nso hard to get here.",
+        "before": "\"But please, hear my last request.",
+        "en_us": "Rest now, and allow me\na moment to explain things.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -551,7 +552,16 @@ let textData4 = {
         "jp": ""
     },
     "death3_b": {
-        "en_us": "I offer my heartfelt understanding\nfor your anguish.",
+        "en_us": "...We won't be\nneeding these anymore.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_c": {
+        "en_us": "First, I offer my heartfelt\nunderstanding for your anguish.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -560,7 +570,7 @@ let textData4 = {
         "jp": ""
     },
     "death3_understand": {
-        "en_us": "But understand what you\nare doing is not love,",
+        "en_us": "But understand what you\nare doing is not love.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -569,7 +579,7 @@ let textData4 = {
         "jp": ""
     },
     "death3_obsess": {
-        "en_us": "but infatuation become obsession.",
+        "en_us": "It is infatuation turned obsession.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

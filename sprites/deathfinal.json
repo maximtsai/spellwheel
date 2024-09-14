@@ -4,8 +4,8 @@
 			"image": "sprites/deathfinal-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 2016,
-				"h": 2017
+				"w": 2029,
+				"h": 2046
 			},
 			"scale": 1,
 			"frames": [
@@ -78,31 +78,6 @@
 						"y": 1,
 						"w": 614,
 						"h": 443
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "death2punch.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 528,
-						"h": 493
-					},
-					"spriteSourceSize": {
-						"x": 111,
-						"y": 3,
-						"w": 379,
-						"h": 480
-					},
-					"frame": {
-						"x": 1636,
-						"y": 1,
-						"w": 379,
-						"h": 480
 					},
 					"anchor": {
 						"x": 0.5,
@@ -210,6 +185,56 @@
 					}
 				},
 				{
+					"filename": "death2punch.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 528,
+						"h": 493
+					},
+					"spriteSourceSize": {
+						"x": 111,
+						"y": 3,
+						"w": 379,
+						"h": 480
+					},
+					"frame": {
+						"x": 1636,
+						"y": 1,
+						"w": 379,
+						"h": 480
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "death2crouch_actionlines.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 421,
+						"h": 480
+					},
+					"spriteSourceSize": {
+						"x": 49,
+						"y": 39,
+						"w": 328,
+						"h": 95
+					},
+					"frame": {
+						"x": 1,
+						"y": 1950,
+						"w": 328,
+						"h": 95
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "death2windupflip.png",
 					"rotated": false,
 					"trimmed": true,
@@ -260,49 +285,24 @@
 					}
 				},
 				{
-					"filename": "max_death_2_white.png",
+					"filename": "death2final.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 438,
-						"h": 424
+						"w": 513,
+						"h": 323
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 435,
-						"h": 424
+						"x": 35,
+						"y": 1,
+						"w": 476,
+						"h": 321
 					},
 					"frame": {
 						"x": 896,
 						"y": 859,
-						"w": 435,
-						"h": 424
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_2_full.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 438,
-						"h": 412
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 435,
-						"h": 409
-					},
-					"frame": {
-						"x": 1333,
-						"y": 896,
-						"w": 435,
-						"h": 409
+						"w": 476,
+						"h": 321
 					},
 					"anchor": {
 						"x": 0.5,
@@ -335,7 +335,182 @@
 					}
 				},
 				{
-					"filename": "death2laugh2.png",
+					"filename": "max_death_2_white.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 438,
+						"h": 424
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 435,
+						"h": 424
+					},
+					"frame": {
+						"x": 823,
+						"y": 1182,
+						"w": 435,
+						"h": 424
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "claw.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 393,
+						"h": 454
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 7,
+						"w": 379,
+						"h": 328
+					},
+					"frame": {
+						"x": 442,
+						"y": 1634,
+						"w": 379,
+						"h": 328
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_2_full.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 438,
+						"h": 412
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 435,
+						"h": 409
+					},
+					"frame": {
+						"x": 823,
+						"y": 1608,
+						"w": 435,
+						"h": 409
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "poke.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 454,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 9,
+						"w": 425,
+						"h": 373
+					},
+					"frame": {
+						"x": 1374,
+						"y": 896,
+						"w": 425,
+						"h": 373
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "spellcircle.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 801,
+						"h": 801
+					},
+					"spriteSourceSize": {
+						"x": 203,
+						"y": 203,
+						"w": 395,
+						"h": 395
+					},
+					"frame": {
+						"x": 1260,
+						"y": 1271,
+						"w": 395,
+						"h": 395
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_3_banshee.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 413,
+						"h": 374
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 5,
+						"w": 410,
+						"h": 369
+					},
+					"frame": {
+						"x": 1260,
+						"y": 1668,
+						"w": 410,
+						"h": 369
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bell.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 350,
+						"h": 370
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 1,
+						"w": 312,
+						"h": 367
+					},
+					"frame": {
+						"x": 1657,
+						"y": 1271,
+						"w": 312,
+						"h": 367
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "death2laugh1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -343,66 +518,16 @@
 						"h": 671
 					},
 					"spriteSourceSize": {
-						"x": 18,
-						"y": 317,
-						"w": 300,
-						"h": 346
+						"x": 21,
+						"y": 312,
+						"w": 293,
+						"h": 351
 					},
 					"frame": {
-						"x": 442,
-						"y": 1634,
-						"w": 300,
-						"h": 346
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "marker.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 310,
-						"h": 310
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 6,
-						"w": 300,
-						"h": 300
-					},
-					"frame": {
-						"x": 823,
-						"y": 1285,
-						"w": 300,
-						"h": 300
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "punchportal.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 300,
-						"h": 440
-					},
-					"spriteSourceSize": {
-						"x": 27,
-						"y": 138,
-						"w": 245,
-						"h": 142
-					},
-					"frame": {
-						"x": 1770,
-						"y": 896,
-						"w": 245,
-						"h": 142
+						"x": 1672,
+						"y": 1640,
+						"w": 293,
+						"h": 351
 					},
 					"anchor": {
 						"x": 0.5,
@@ -424,260 +549,10 @@
 						"h": 301
 					},
 					"frame": {
-						"x": 1125,
-						"y": 1285,
+						"x": 1801,
+						"y": 896,
 						"w": 199,
 						"h": 301
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "glow_hand.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 279,
-						"h": 279
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 6,
-						"w": 269,
-						"h": 269
-					},
-					"frame": {
-						"x": 1326,
-						"y": 1307,
-						"w": 269,
-						"h": 269
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "palm_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 428
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 1,
-						"w": 195,
-						"h": 299
-					},
-					"frame": {
-						"x": 1770,
-						"y": 1040,
-						"w": 195,
-						"h": 299
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 162,
-						"h": 275
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 1,
-						"w": 144,
-						"h": 274
-					},
-					"frame": {
-						"x": 1597,
-						"y": 1307,
-						"w": 144,
-						"h": 274
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "deathfist.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 268,
-						"h": 251
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 4,
-						"w": 253,
-						"h": 239
-					},
-					"frame": {
-						"x": 1743,
-						"y": 1341,
-						"w": 253,
-						"h": 239
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "long_arm.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 336
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 5,
-						"w": 117,
-						"h": 331
-					},
-					"frame": {
-						"x": 744,
-						"y": 1634,
-						"w": 117,
-						"h": 331
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "x_now.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 244,
-						"h": 228
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 233,
-						"h": 223
-					},
-					"frame": {
-						"x": 863,
-						"y": 1587,
-						"w": 233,
-						"h": 223
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_2_right.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 292,
-						"h": 286
-					},
-					"spriteSourceSize": {
-						"x": 143,
-						"y": 0,
-						"w": 146,
-						"h": 204
-					},
-					"frame": {
-						"x": 863,
-						"y": 1812,
-						"w": 146,
-						"h": 204
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "death2crouch.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 337,
-						"h": 384
-					},
-					"spriteSourceSize": {
-						"x": 39,
-						"y": 63,
-						"w": 290,
-						"h": 240
-					},
-					"frame": {
-						"x": 1098,
-						"y": 1588,
-						"w": 290,
-						"h": 240
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "death2laughtext2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 491,
-						"h": 671
-					},
-					"spriteSourceSize": {
-						"x": 116,
-						"y": 231,
-						"w": 375,
-						"h": 157
-					},
-					"frame": {
-						"x": 1011,
-						"y": 1830,
-						"w": 375,
-						"h": 157
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "puncharmblur.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 300,
-						"h": 460
-					},
-					"spriteSourceSize": {
-						"x": 90,
-						"y": 178,
-						"w": 126,
-						"h": 277
-					},
-					"frame": {
-						"x": 1390,
-						"y": 1578,
-						"w": 126,
-						"h": 277
 					},
 					"anchor": {
 						"x": 0.5,
@@ -699,135 +574,10 @@
 						"h": 328
 					},
 					"frame": {
-						"x": 1518,
-						"y": 1578,
+						"x": 1967,
+						"y": 1640,
 						"w": 61,
 						"h": 328
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_3_white.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 150,
-						"h": 285
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 16,
-						"w": 103,
-						"h": 268
-					},
-					"frame": {
-						"x": 1581,
-						"y": 1583,
-						"w": 103,
-						"h": 268
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_3b.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 162,
-						"h": 275
-					},
-					"spriteSourceSize": {
-						"x": 63,
-						"y": 14,
-						"w": 33,
-						"h": 261
-					},
-					"frame": {
-						"x": 1967,
-						"y": 1040,
-						"w": 33,
-						"h": 261
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "x_your.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 276,
-						"h": 183
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 2,
-						"w": 267,
-						"h": 180
-					},
-					"frame": {
-						"x": 1743,
-						"y": 1582,
-						"w": 267,
-						"h": 180
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "death2crouch_actionlines.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 421,
-						"h": 480
-					},
-					"spriteSourceSize": {
-						"x": 49,
-						"y": 39,
-						"w": 328,
-						"h": 95
-					},
-					"frame": {
-						"x": 1686,
-						"y": 1764,
-						"w": 328,
-						"h": 95
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "death2laughtext1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 491,
-						"h": 671
-					},
-					"spriteSourceSize": {
-						"x": 116,
-						"y": 231,
-						"w": 375,
-						"h": 154
-					},
-					"frame": {
-						"x": 1581,
-						"y": 1861,
-						"w": 375,
-						"h": 154
 					},
 					"anchor": {
 						"x": 0.5,
@@ -849,7 +599,7 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 1,
+						"x": 331,
 						"y": 1950,
 						"w": 93,
 						"h": 50
@@ -889,20 +639,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 36,
-						"h": 91
+						"w": 40,
+						"h": 101
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 35,
-						"h": 91
+						"w": 38,
+						"h": 101
 					},
 					"frame": {
-						"x": 823,
+						"x": 364,
 						"y": 1152,
-						"w": 35,
-						"h": 91
+						"w": 38,
+						"h": 101
 					},
 					"anchor": {
 						"x": 0.5,
@@ -949,7 +699,7 @@
 						"h": 34
 					},
 					"frame": {
-						"x": 1333,
+						"x": 1374,
 						"y": 859,
 						"w": 32,
 						"h": 34
@@ -965,30 +715,30 @@
 			"image": "sprites/deathfinal-1.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 980,
-				"h": 1582
+				"w": 967,
+				"h": 1526
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "death2final.png",
+					"filename": "death2laughtext2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 513,
-						"h": 323
+						"w": 491,
+						"h": 671
 					},
 					"spriteSourceSize": {
-						"x": 35,
-						"y": 1,
-						"w": 476,
-						"h": 321
+						"x": 116,
+						"y": 231,
+						"w": 375,
+						"h": 157
 					},
 					"frame": {
 						"x": 1,
 						"y": 1,
-						"w": 476,
-						"h": 321
+						"w": 375,
+						"h": 157
 					},
 					"anchor": {
 						"x": 0.5,
@@ -996,149 +746,24 @@
 					}
 				},
 				{
-					"filename": "poke.png",
+					"filename": "death2laughtext1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 454,
-						"h": 500
+						"w": 491,
+						"h": 671
 					},
 					"spriteSourceSize": {
-						"x": 14,
-						"y": 9,
-						"w": 425,
-						"h": 373
+						"x": 116,
+						"y": 231,
+						"w": 375,
+						"h": 154
 					},
 					"frame": {
-						"x": 479,
+						"x": 378,
 						"y": 1,
-						"w": 425,
-						"h": 373
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_3_banshee.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 413,
-						"h": 374
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 5,
-						"w": 410,
-						"h": 369
-					},
-					"frame": {
-						"x": 1,
-						"y": 324,
-						"w": 410,
-						"h": 369
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "spellcircle.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 801,
-						"h": 801
-					},
-					"spriteSourceSize": {
-						"x": 203,
-						"y": 203,
-						"w": 395,
-						"h": 395
-					},
-					"frame": {
-						"x": 413,
-						"y": 376,
-						"w": 395,
-						"h": 395
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "max_death_2_left.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 325,
-						"h": 283
-					},
-					"spriteSourceSize": {
-						"x": 22,
-						"y": 4,
-						"w": 169,
-						"h": 199
-					},
-					"frame": {
-						"x": 810,
-						"y": 376,
-						"w": 169,
-						"h": 199
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "claw.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 393,
-						"h": 454
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 7,
-						"w": 379,
-						"h": 328
-					},
-					"frame": {
-						"x": 1,
-						"y": 695,
-						"w": 379,
-						"h": 328
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "bell.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 350,
-						"h": 370
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 1,
-						"w": 312,
-						"h": 367
-					},
-					"frame": {
-						"x": 1,
-						"y": 1025,
-						"w": 312,
-						"h": 367
+						"w": 375,
+						"h": 154
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1160,85 +785,10 @@
 						"h": 176
 					},
 					"frame": {
-						"x": 1,
-						"y": 1394,
+						"x": 755,
+						"y": 1,
 						"w": 201,
 						"h": 176
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "x_me.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 193,
-						"h": 172
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 0,
-						"w": 186,
-						"h": 170
-					},
-					"frame": {
-						"x": 204,
-						"y": 1394,
-						"w": 186,
-						"h": 170
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "death2laugh1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 328,
-						"h": 671
-					},
-					"spriteSourceSize": {
-						"x": 21,
-						"y": 312,
-						"w": 293,
-						"h": 351
-					},
-					"frame": {
-						"x": 315,
-						"y": 1025,
-						"w": 293,
-						"h": 351
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "poke_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 237,
-						"h": 260
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 2,
-						"w": 230,
-						"h": 203
-					},
-					"frame": {
-						"x": 392,
-						"y": 1378,
-						"w": 230,
-						"h": 203
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1260,8 +810,8 @@
 						"h": 344
 					},
 					"frame": {
-						"x": 624,
-						"y": 773,
+						"x": 378,
+						"y": 157,
 						"w": 339,
 						"h": 344
 					},
@@ -1271,24 +821,49 @@
 					}
 				},
 				{
-					"filename": "x_give.png",
+					"filename": "max_death_3b.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 225,
-						"h": 197
+						"w": 162,
+						"h": 275
 					},
 					"spriteSourceSize": {
-						"x": 3,
-						"y": 8,
-						"w": 222,
-						"h": 188
+						"x": 63,
+						"y": 14,
+						"w": 33,
+						"h": 261
 					},
 					"frame": {
-						"x": 382,
-						"y": 773,
-						"w": 222,
-						"h": 188
+						"x": 719,
+						"y": 157,
+						"w": 33,
+						"h": 261
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "punchportal.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 440
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 138,
+						"w": 245,
+						"h": 142
+					},
+					"frame": {
+						"x": 719,
+						"y": 420,
+						"w": 245,
+						"h": 142
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1310,8 +885,8 @@
 						"h": 197
 					},
 					"frame": {
-						"x": 610,
-						"y": 1119,
+						"x": 754,
+						"y": 179,
 						"w": 187,
 						"h": 197
 					},
@@ -1321,7 +896,357 @@
 					}
 				},
 				{
-					"filename": "puncharm.png",
+					"filename": "death2laugh2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 328,
+						"h": 671
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 317,
+						"w": 300,
+						"h": 346
+					},
+					"frame": {
+						"x": 1,
+						"y": 160,
+						"w": 300,
+						"h": 346
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "marker.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 310,
+						"h": 310
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 6,
+						"w": 300,
+						"h": 300
+					},
+					"frame": {
+						"x": 303,
+						"y": 503,
+						"w": 300,
+						"h": 300
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_3_white.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 150,
+						"h": 285
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 16,
+						"w": 103,
+						"h": 268
+					},
+					"frame": {
+						"x": 605,
+						"y": 503,
+						"w": 103,
+						"h": 268
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "deathfist.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 268,
+						"h": 251
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 4,
+						"w": 253,
+						"h": 239
+					},
+					"frame": {
+						"x": 710,
+						"y": 564,
+						"w": 253,
+						"h": 239
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "death2crouch.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 337,
+						"h": 384
+					},
+					"spriteSourceSize": {
+						"x": 39,
+						"y": 63,
+						"w": 290,
+						"h": 240
+					},
+					"frame": {
+						"x": 1,
+						"y": 508,
+						"w": 290,
+						"h": 240
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "glow_hand.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 279,
+						"h": 279
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 6,
+						"w": 269,
+						"h": 269
+					},
+					"frame": {
+						"x": 1,
+						"y": 750,
+						"w": 269,
+						"h": 269
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "long_arm.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 336
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 5,
+						"w": 117,
+						"h": 331
+					},
+					"frame": {
+						"x": 1,
+						"y": 1021,
+						"w": 117,
+						"h": 331
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "x_me.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 193,
+						"h": 172
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 0,
+						"w": 186,
+						"h": 170
+					},
+					"frame": {
+						"x": 1,
+						"y": 1354,
+						"w": 186,
+						"h": 170
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "palm_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 428
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 1,
+						"w": 195,
+						"h": 299
+					},
+					"frame": {
+						"x": 120,
+						"y": 1021,
+						"w": 195,
+						"h": 299
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "poke_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 237,
+						"h": 260
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 2,
+						"w": 230,
+						"h": 203
+					},
+					"frame": {
+						"x": 189,
+						"y": 1322,
+						"w": 230,
+						"h": 203
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_2_right.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 292,
+						"h": 286
+					},
+					"spriteSourceSize": {
+						"x": 143,
+						"y": 0,
+						"w": 146,
+						"h": 204
+					},
+					"frame": {
+						"x": 272,
+						"y": 805,
+						"w": 146,
+						"h": 204
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_3e.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 168,
+						"h": 286
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 1,
+						"w": 151,
+						"h": 285
+					},
+					"frame": {
+						"x": 317,
+						"y": 1011,
+						"w": 151,
+						"h": 285
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "x_now.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 244,
+						"h": 228
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 233,
+						"h": 223
+					},
+					"frame": {
+						"x": 421,
+						"y": 1298,
+						"w": 233,
+						"h": 223
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_2_left.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 325,
+						"h": 283
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 4,
+						"w": 169,
+						"h": 199
+					},
+					"frame": {
+						"x": 420,
+						"y": 805,
+						"w": 169,
+						"h": 199
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "puncharmblur.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1329,16 +1254,16 @@
 						"h": 460
 					},
 					"spriteSourceSize": {
-						"x": 32,
-						"y": 188,
-						"w": 179,
-						"h": 260
+						"x": 90,
+						"y": 178,
+						"w": 126,
+						"h": 277
 					},
 					"frame": {
-						"x": 799,
-						"y": 1119,
-						"w": 179,
-						"h": 260
+						"x": 470,
+						"y": 1006,
+						"w": 126,
+						"h": 277
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1360,10 +1285,110 @@
 						"h": 195
 					},
 					"frame": {
-						"x": 624,
-						"y": 1381,
+						"x": 591,
+						"y": 805,
 						"w": 185,
 						"h": 195
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "puncharm.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 460
+					},
+					"spriteSourceSize": {
+						"x": 32,
+						"y": 188,
+						"w": 179,
+						"h": 260
+					},
+					"frame": {
+						"x": 778,
+						"y": 805,
+						"w": 179,
+						"h": 260
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "max_death_3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 162,
+						"h": 275
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 1,
+						"w": 144,
+						"h": 274
+					},
+					"frame": {
+						"x": 598,
+						"y": 1002,
+						"w": 144,
+						"h": 274
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "x_give.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 225,
+						"h": 197
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 8,
+						"w": 222,
+						"h": 188
+					},
+					"frame": {
+						"x": 744,
+						"y": 1067,
+						"w": 222,
+						"h": 188
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "x_your.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 276,
+						"h": 183
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 2,
+						"w": 267,
+						"h": 180
+					},
+					"frame": {
+						"x": 656,
+						"y": 1278,
+						"w": 267,
+						"h": 180
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1376,6 +1401,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:97c4616c777b257f71f043b1731d96b1:a68618921be49612e86aa4c06756af53:2725434089d33248c3ff66863842e801$"
+		"smartupdate": "$TexturePacker:SmartUpdate:e7d268bf9b2d4d579753328056d1fb15:2d14306c2156a1fc68f7b70c7645cdff:2725434089d33248c3ff66863842e801$"
 	}
 }

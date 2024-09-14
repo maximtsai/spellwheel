@@ -2,14 +2,34 @@ class Death3 extends Enemy {
     constructor(scene, x, y) {
         super(scene, x, y);
         this.initSprite('max_death_3_white.png', 1, 0, 0, 'deathfinal');
-        this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfall.png').setDepth(-5).setScale(1, 1.03);
+        this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfall.png').setDepth(-6).setScale(1, 1.03);
+        this.bgtemprocks = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfallrocks.png').setDepth(-4).setScale(1,1.03);
+        this.bgtemp2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfall.png').setBlendMode(Phaser.BlendModes.ADD).setDepth(-6).setScale(1,1.03).setAlpha(0);
+        this.addTween({
+            targets: this.bgtemp2,
+            alpha: 0.1,
+            duration: 2000,
+            ease: 'Cubic.easeInOut',
+            repeat: -1,
+            yoyo: true
+        })
+        globalObjects.magicCircle.disableMovement();
+        this.hourglassdark = this.addSprite(x - 67, y - 55, 'blurry', 'dark_blur.png').setDepth(-3).setRotation(0.09).setAlpha(0.65).setScale(1.5, 1.2).setOrigin(0.5, 0.42);
+        this.hourglassdark.startY = this.hourglassdark.y;
         this.cape = this.addSprite(x - 99, y - 35, 'deathfin', 'frame0000.png').setDepth(-3).play('ladydeathcape').setAlpha(0);
         this.hood = this.addSprite(x - 99, y - 35, 'deathfin', 'hood0001.png').setDepth(9).play('ladydeathhood').setAlpha(0);
-        this.hourglass = this.addSprite(x - 67, y - 105, 'deathfinal', 'hourglass.png').setDepth(-3).setRotation(0.1).setOrigin(0.5, 0.03);
+        this.hood.startY = this.hood.y;
+        this.hourglassglow = this.addSprite(x - 67, y - 105, 'blurry', 'lantern_glow.png').setDepth(-3).setRotation(0.09).setAlpha(0.75).setScale(1.07).setOrigin(0.5, 0.11).setBlendMode(Phaser.BlendModes.ADD);
+        this.hourglass = this.addSprite(x - 67, y - 105, 'deathfinal', 'hourglass.png').setDepth(-3).setRotation(0.09).setOrigin(0.5, 0.03);
+        this.addExtraSprite(this.hood);
+        this.addExtraSprite(this.hourglass);
+        this.addExtraSprite(this.hourglassglow);
 
         this.adjustChargeBar();
 
         this.animateDeath3In();
+
+        this.addRocks();
 
         this.addTimeout(() => {
             this.setAsleep();
@@ -19,9 +39,17 @@ class Death3 extends Enemy {
         }, 10)
     }
 
+    addRocks() {
+       this.rock1 = this.addImage(gameConsts.halfWidth - 250, gameConsts.halfHeight - 240, 'deathfinal', 'claw.png').setDepth(-5).setBlendMode(Phaser.BlendModes.LIGHTEN).setScale(0.85).setRotation(0.2).setAlpha(0.7)
+        this.rock1b = this.addImage(gameConsts.halfWidth - 250, gameConsts.halfHeight - 240, 'deathfinal', 'claw.png').setDepth(-5).setBlendMode(Phaser.BlendModes.MULTIPLY).setScale(0.85).setRotation(0.2).setAlpha(1)
+        this.rock2 = this.addImage(gameConsts.halfWidth + 250, gameConsts.halfHeight - 270, 'deathfinal', 'palm.png').setDepth(-5).setBlendMode(Phaser.BlendModes.LIGHTEN).setScale(0.7).setRotation(-0.4).setAlpha(0.7)
+        this.rock2b = this.addImage(gameConsts.halfWidth + 250, gameConsts.halfHeight - 270, 'deathfinal', 'palm.png').setDepth(-5).setBlendMode(Phaser.BlendModes.MULTIPLY).setScale(0.7).setRotation(-0.4).setAlpha(1)
+
+    }
+
     tweenHourglass() {
         this.hourglassTween = this.addTween({
-            targets: this.hourglass,
+            targets: [this.hourglass, this.hourglassglow, this.hourglassdark],
             rotation: -0.1,
             ease: 'Quad.easeInOut',
             duration: 3000,
@@ -47,14 +75,35 @@ class Death3 extends Enemy {
         } else {
             this.deathFaceSprite.setFrame(face);
         }
-        this.deathFaceSprite.setScale(1.1, 1);
+
+        this.hood.y = this.hood.startY - 1.5;
+        this.addTween({
+            targets: this.hood,
+            y: this.hood.startY,
+            easeParams: [3],
+            ease: 'Back.easeIn',
+            duration: 500,
+        })
+        this.sprite.setScale(1.01, 1.012);
+        this.addTween({
+            targets: this.sprite,
+            scaleX: 1,
+            scaleY: 1,
+            easeParams: [3],
+            ease: 'Back.easeIn',
+            duration: 500,
+        })
+
+        this.deathFaceSprite.setScale(1.15, 1.012);
         this.deathFaceSprite.setAlpha(0.90);
         this.addTween({
             targets: this.deathFaceSprite,
             scaleX: 1,
+            scaleY: 1,
             alpha: 1,
-            ease: 'Quad.easeOut',
-            duration: 300,
+            easeParams: [3],
+            ease: 'Back.easeIn',
+            duration: 500,
         })
     }
 
@@ -100,7 +149,6 @@ class Death3 extends Enemy {
             })
         } else {
             flashStar.setAlpha(0);
-            console.log(flashStar.alpha)
             this.addTween({
                 targets: flashStar,
                 alpha: 1,
@@ -145,9 +193,6 @@ class Death3 extends Enemy {
                      targets: this.whiteoutTemp,
                      alpha: 0,
                      duration: 1200,
-                     onComplete: () => {
-                         this.bgMusic = playMusic('death3_harp', 0.63, true);
-                     }
                  })
                  this.addTween({
                     targets: [this.cape],
@@ -167,6 +212,8 @@ class Death3 extends Enemy {
                      duration: 1200,
                      ease: "Quint.easeOut",
                      onComplete: () => {
+                         this.canInterruptSpeech = true;
+                         this.bgMusic = playMusic('death3_harp', 0.63, true);
                          this.whiteoutTemp.destroy();
                         globalObjects.magicCircle.enableMovement();
                         globalObjects.encyclopedia.showButton();
@@ -211,13 +258,27 @@ class Death3 extends Enemy {
     }
 
     setHealth(newHealth, isTrue) {
-        super.setHealth(this.health);
-        if (this.health < 100 && !this.firstWarning) {
-            this.firstWarning = true;
-            this.leftOffIndex = this.nextAttackIndex;
-            this.currentAttackSetIndex = 1;
-            this.nextAttackIndex = 0;
+        if (this.health <= 0) {
+            return;
         }
+        super.setHealth(newHealth, isTrue);
+        if (this.canInterruptSpeech) {
+            this.canInterruptSpeech = false;
+            if (!this.firstWarning) {
+                this.setDeathFace('max_death_3d.png')
+                this.firstWarning = true;
+                this.leftOffIndex = this.nextAttackIndex - 1;
+                this.currentAttackSetIndex = 1;
+                this.nextAttackIndex = 0;
+            } else if (!this.secondWarning) {
+                this.setDeathFace('max_death_3d.png')
+                this.secondWarning = true;
+                this.leftOffIndex = this.nextAttackIndex - 1;
+                this.currentAttackSetIndex = 2;
+                this.nextAttackIndex = 0;
+            }
+        }
+
 
     }
 
@@ -263,27 +324,109 @@ class Death3 extends Enemy {
             [
                 {
                     name: " ",
-                    chargeAmt: 400,
-                    chargeMult: 3.4,
+                    chargeAmt: 450,
+                    chargeMult: 1.9,
                     transitionFast: true,
                     isPassive: true,
                     customCall: 'flip1',
                     startFunction: () => {
                         globalObjects.bannerTextManager.closeBanner();
-                        messageBus.publish("showCombatText", getLangText('death3_a'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_a'), 15);
                     },
                     finaleFunction: () => {
                     }
                 },
                 {
                     name: " ",
-                    chargeAmt: 400,
-                    chargeMult: 3.4,
+                    chargeAmt: 350,
+                    chargeMult: 2.4,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip2',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_b'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_b'), 15);
+
+                        this.addTween({
+                            targets: this.hourglassdark,
+                            alpha: 1,
+                            scaleX: 2.5,
+                            scaleY: 2,
+                            duration: 600,
+                            ease: 'Cubic.easeIn',
+                        })
+                        this.addTween({
+                            targets: this.hourglassglow,
+                            alpha: 1.2,
+                            scaleX: 1.5,
+                            scaleY: 1.5,
+                            y: this.hourglass.y - 30,
+                            duration: 600,
+                            ease: 'Cubic.easeIn',
+                            onComplete: () => {
+                                let glowTemp = this.addSprite(this.hourglassglow.x, this.hourglass.y + 65, 'blurry', 'lantern_glow.png').setDepth(-3).setAlpha(1).setScale(1.5).setOrigin(0.5, 0.5).setBlendMode(Phaser.BlendModes.ADD);
+                                this.addTween({
+                                    targets: glowTemp,
+                                    alpha: 0,
+                                    scaleX: 3,
+                                    scaleY: 2,
+                                    duration: 1200,
+                                    ease: 'Cubic.easeOut',
+                                });
+                                this.addTween({
+                                    targets: this.hourglassglow,
+                                    alpha: 0.95,
+                                    scaleX: 1.4,
+                                    scaleY: 1.4,
+                                    y: this.hourglass.y - 25,
+                                    duration: 600,
+                                    ease: 'Cubic.easeOut',
+                                });
+                                this.addTween({
+                                    targets: [this.rock1, this.rock1b],
+                                    x: "-=250",
+                                    alpha: 1,
+                                    rotation: "-=1",
+                                    ease: 'Back.easeIn',
+                                    duration: 1000,
+                                    completeDelay: 200,
+                                    onComplete: () => {
+                                        this.addTween({
+                                            targets: [this.rock2, this.rock2b],
+                                            x: "+=250",
+                                            alpha: 1,
+                                            rotation: "+=1",
+                                            ease: 'Back.easeIn',
+                                            duration: 1000,
+                                            onComplete: () => {
+                                                this.rock1.destroy();
+                                                this.rock1b.destroy();
+                                                this.rock2.destroy();
+                                                this.rock2b.destroy();
+                                                this.addTween({
+                                                    targets: this.hourglassdark,
+                                                    alpha: 0.65,
+                                                    scaleX: 1.5,
+                                                    scaleY: 1.2,
+                                                    duration: 2400,
+                                                    ease: 'Back.easeOut',
+                                                })
+                                                this.addTween({
+                                                    targets: this.hourglassglow,
+                                                    alpha: 0.75,
+                                                    scaleX: 1.07,
+                                                    scaleY: 1.07,
+                                                    duration: 2400,
+                                                    y: this.hourglass.y,
+                                                    ease: 'Back.easeOut',
+                                                })
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
+
+
                     },
                     finaleFunction: () => {
                     }
@@ -291,13 +434,26 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 3.4,
+                    chargeMult: 2.4,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip2',
+                    startFunction: () => {
+                        messageBus.publish("showCombatText", getLangText('death3_c'), 15);
+                    },
+                    finaleFunction: () => {
+                    }
+                },
+                {
+                    name: " ",
+                    chargeAmt: 400,
+                    chargeMult: 2.4,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
                     startFunction: () => {
                         this.setDeathFace('max_death_3b.png')
-                        messageBus.publish("showCombatText", getLangText('death3_understand'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_understand'), 15);
                     },
                     finaleFunction: () => {
                     }
@@ -305,116 +461,124 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 300,
-                    chargeMult: 3.4,
+                    chargeMult: 2.4,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip3',
                     startFunction: () => {
                         this.setDeathFace()
-                        messageBus.publish("showCombatText", getLangText('death3_obsess'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_obsess'), 15);
+                        this.addTween({
+                            targets: this.hourglassdark,
+                            alpha: 0.8,
+                            scaleX: 15,
+                            scaleY: 15,
+                            duration: 1500,
+                            ease: 'Cubic.easeInOut',
+                        })
                     },
                 },
                 {
                     name: " ",
                     chargeAmt: 300,
-                    chargeMult: 3.4,
+                    chargeMult: 2.4,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
                     startFunction: () => {
                         this.setDeathFace('max_death_3b.png')
-                        messageBus.publish("showCombatText", getLangText('death3_odyssey'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_odyssey'), 15);
                     },
                 },
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 3.4,
+                    chargeMult: 2.4,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip2',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_indulgence'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_indulgence'), 15);
                     },
                 },
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 3.4,
+                    chargeMult: 2.4,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_yield'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_yield'), 15);
                     },
                 },
                 {
                     name: " ",
                     chargeAmt: 350,
-                    chargeMult: 3.4,
+                    chargeMult: 2.4,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip3',
                     startFunction: () => {
                         this.setDeathFace()
-                        messageBus.publish("showCombatText", getLangText('death3_within'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_within'), 15);
                     },
                 },
                 {
                     name: " ",
                     chargeAmt: 450,
-                    chargeMult: 3.4,
+                    chargeMult: 2.4,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
                     startFunction: () => {
                         this.setDeathFace('max_death_3b.png')
-                        messageBus.publish("showCombatText", getLangText('death3_both'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_both'), 15);
                     },
                 },
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 3.4,
+                    chargeMult: 2.4,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip2',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_strength'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_strength'), 15);
                     },
                 },
                 {
                     name: " ",
                     chargeAmt: 300,
-                    chargeMult: 3.4,
+                    chargeMult: 2.4,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
                     startFunction: () => {
                         this.setDeathFace()
-                        messageBus.publish("showCombatText", getLangText('death3_letting'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_letting'), 15);
                     },
                 },
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 3.4,
+                    chargeMult: 2.4,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip3',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_memory'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_memory'), 15);
                     },
                 },
                 {
                     name: " ",
                     chargeAmt: 200,
-                    chargeMult: 3.4,
+                    chargeMult: 2.4,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", "...", 6);
+                        messageBus.publish("showCombatText", "...", 15);
                     },
                 },
                 {
@@ -426,7 +590,7 @@ class Death3 extends Enemy {
                     customCall: 'flip2',
                     startFunction: () => {
                         this.setDeathFace('max_death_3c.png')
-                        messageBus.publish("showCombatText", getLangText('death3_calm'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_calm'), 15);
                     },
                 },
                 {
@@ -437,7 +601,7 @@ class Death3 extends Enemy {
                     transitionFast: true,
                     customCall: 'flip1',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_patience'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_patience'), 15);
                     },
                 },
                 {
@@ -448,7 +612,7 @@ class Death3 extends Enemy {
                     transitionFast: true,
                     customCall: 'flip3',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_once'), 6);
+                        messageBus.publish("showCombatText", getLangText('death3_once'), 15);
                     },
                 },
             ],
@@ -458,7 +622,9 @@ class Death3 extends Enemy {
                     chargeAmt: 400,
                     chargeMult: 4,
                     isPassive: true,
+                    transitionFast: true,
                     startFunction: () => {
+                        this.setDeathFace('max_death_3d.png')
                         messageBus.publish("showCombatText", getLangText('death3_warn1a'), -9);
                     },
                 },
@@ -467,7 +633,9 @@ class Death3 extends Enemy {
                     chargeAmt: 400,
                     chargeMult: 4,
                     isPassive: true,
+                    transitionFast: true,
                     startFunction: () => {
+                        this.setDeathFace()
                         messageBus.publish("showCombatText", getLangText('death3_warn1b'), -9);
                     },
                 },
@@ -476,10 +644,15 @@ class Death3 extends Enemy {
                     chargeAmt: 250,
                     chargeMult: 4,
                     isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip3',
                     startFunction: () => {
                         messageBus.publish("showCombatText", getLangText('death3_warn0'), -9);
+                        this.currentAttackSetIndex = 0;
+                        this.nextAttackIndex = this.leftOffIndex;
                     },
                     finaleFunction: () => {
+                        this.canInterruptSpeech = true;
                     }
                 },
             ],
@@ -489,31 +662,9 @@ class Death3 extends Enemy {
                     chargeAmt: 400,
                     chargeMult: 3,
                     isPassive: true,
+                    transitionFast: true,
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_warn2a'), -9);
-                    },
-                    finaleFunction: () => {
-                    }
-                },
-                {
-                    name: " ",
-                    chargeAmt: 250,
-                    chargeMult: 4,
-                    isPassive: true,
-                    startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_warn0'), -9);
-                    },
-                    finaleFunction: () => {
-                    }
-                },
-            ],
-            [
-                {
-                    name: " ",
-                    chargeAmt: 400,
-                    chargeMult: 3,
-                    isPassive: true,
-                    startFunction: () => {
+                        this.setDeathFace('max_death_3d.png')
                         messageBus.publish("showCombatText", getLangText('death3_warn2a'), -9);
                     },
                     finaleFunction: () => {
@@ -524,6 +675,7 @@ class Death3 extends Enemy {
                     chargeAmt: 400,
                     chargeMult: 3,
                     isPassive: true,
+                    transitionFast: true,
                     startFunction: () => {
                         messageBus.publish("showCombatText", getLangText('death3_warn2b'), -9);
                     },
@@ -535,11 +687,17 @@ class Death3 extends Enemy {
                     chargeAmt: 250,
                     chargeMult: 4,
                     isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip3',
                     startFunction: () => {
+                        this.setDefense(-999);
+                        this.setDeathFace()
                         messageBus.publish("showCombatText", getLangText('death3_warn0'), -9);
+                        this.currentAttackSetIndex = 0;
+                        this.nextAttackIndex = this.leftOffIndex;
                     },
                     finaleFunction: () => {
-                        this.setDefense(-999);
+                        this.canInterruptSpeech = true;
                     }
                 },
             ]
@@ -547,9 +705,78 @@ class Death3 extends Enemy {
     }
 
     die() {
-        console.log("die right");
+        if (this.dead) {
+            return;
+        }
+        super.die();
+        this.deathFaceSprite.destroy();
+        this.setDefaultSprite('max_death_3e.png', undefined, true);
+        this.bgtemp2.destroy();
+        this.cape.stop();
+        this.hood.stop();
+        this.addTween({
+            delay: 2000,
+            targets: [this.cape],
+            alpha: 0,
+            ease: 'Quad.easeIn',
+            duration: 1000,
+            onComplete: () => {
+                this.addTween({
+                    targets: [this.hood],
+                    alpha: 0,
+                    ease: 'Quad.easeIn',
+                    duration: 1000,
+                })
+            }
+        })
+        this.hood.y -= 3;
         fadeAwaySound(this.bgMusic);
         this.hourglassTween.stop();
-
+        messageBus.publish("closeCombatText");
+        this.hourglassdark.visible = false;
+        // this.addImage(gameConsts.halfWidth, this.sprite.y, 'deathfinal', 'death_2_laugh.png').setDepth(-4);
+        this.addTween({
+            targets: [this.hourglass],
+            x: "-=60",
+            rotation: -Math.PI * 0.46,
+            duration: 650,
+             onComplete: () => {
+                 this.hourglass.rotation = -Math.PI * 0.5;
+             }
+        })
+        this.addTween({
+            targets: [this.hourglassglow],
+            x: "-=10",
+            duration: 650,
+        })
+        this.addTween({
+            targets: [this.hourglassglow],
+            originX: 0.5,
+            originY: 0.5,
+            y: this.y + 30,
+            duration: 650,
+            ease: 'Quad.easeIn',
+        })
+        this.addTween({
+            targets: [this.hourglass],
+            y: this.y + 106,
+            ease: 'Quad.easeIn',
+            duration: 650,
+            onComplete: () => {
+                playSound('glass_break')
+                this.hourglassglow.alpha = 1;
+                this.addTween({
+                    targets: [this.hourglassglow],
+                    alpha: 0,
+                    duration: 1000,
+                    onComplete: () => {
+                        this.hourglassglow.visible = false;
+                    }
+                })
+                let bgDark = getBackgroundBlackout();
+                bgDark.setDepth(-4);
+                bgDark.setAlpha(0.5)
+            }
+        })
     }
 }

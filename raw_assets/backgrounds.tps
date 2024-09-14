@@ -313,6 +313,7 @@
             </struct>
             <key type="filename">backgrounds/graves.png</key>
             <key type="filename">backgrounds/waterfall.png</key>
+            <key type="filename">backgrounds/waterfallrocks.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -418,21 +419,6 @@
                 <rect>225,250,450,500</rect>
                 <key>scale9Paddings</key>
                 <rect>225,250,450,500</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/waterfallhard.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>88,100,175,200</rect>
-                <key>scale9Paddings</key>
-                <rect>88,100,175,200</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

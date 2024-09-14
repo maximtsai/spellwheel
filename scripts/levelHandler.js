@@ -36,7 +36,7 @@ function beginPreLevel(lvl) {
             text6.setDepth(99999).setAlpha(0).setOrigin(1, 0.85).setVisible(false);
             text7 = PhaserScene.add.text(gameConsts.halfWidth + 220, gameConsts.halfHeight - 78, getLangText('pre_fight_0g'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
             text7.setDepth(99999).setAlpha(0).setOrigin(1, 0);
-            text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 210, getLangText('pre_fight_0h'), {fontFamily: 'opensans', fontSize: 20, color: '#200000', align: 'center'});
+            text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 238, getLangText('pre_fight_0h'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'center'});
             text8.setDepth(99999).setAlpha(0).setOrigin(0.5, 0.5);
             text9 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 248, getLangText('pre_fight_0i'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'center'});
             text9.setDepth(99999).setAlpha(0).setOrigin(0.5, 0);
@@ -139,18 +139,9 @@ function beginPreLevel(lvl) {
                     alpha: 0
                 },
                 onHover: () => {
-                    PhaserScene.tweens.add({
-                        targets: text4,
-                        alpha: 0,
-                        duration: 100
-                    })
+                    text4.alpha = 0;
                     text6.visible = true;
-                    text6.alpha = 0;
-                    PhaserScene.tweens.add({
-                        targets: text6,
-                        alpha: 0.65,
-                        duration: 100
-                    })
+                    text6.alpha = 0.65;
                 },
                 onHoverOut: () => {
                     if (text4.locked) {

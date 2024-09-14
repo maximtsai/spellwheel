@@ -474,9 +474,9 @@ class Encyclopedia {
             }
         } else {
             strToReturn = str.replace('\n', ' ');
-            let textLim = 54;
+            let textLim = 55;
             if (language == 'fr') {
-                textLim = 56;
+                textLim = 57;
             }
             if (strToReturn.length > textLim) {
                 //let lastSpacePos = 0;
@@ -568,18 +568,18 @@ class Encyclopedia {
             let elementAvailable = availableRunes.indexOf(element) != -1;
 
             let actionRuneName = "rune_" + (actionAvailable ? action : 'question') + "_large.png"
-            let actionRune = PhaserScene.add.image(gameConsts.halfWidth - 226, startPos1 + i * offset, 'tutorial', actionRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
+            let actionRune = PhaserScene.add.image(gameConsts.halfWidth - 230, startPos1 + i * offset, 'tutorial', actionRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
             this.currentPageItems.push(actionRune);
 
             let elementRuneName = "rune_" + (elementAvailable ? element : 'question') + "_large.png"
-            let elementRune = PhaserScene.add.image(gameConsts.halfWidth - 183, startPos1 + i * offset, 'tutorial', elementRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
+            let elementRune = PhaserScene.add.image(gameConsts.halfWidth - 188, startPos1 + i * offset, 'tutorial', elementRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
             this.currentPageItems.push(elementRune);
 
             if (actionAvailable && elementAvailable) {
                 if (element == 'energy') {
                     element = 'mind'
                 }
-                let descText = PhaserScene.add.text(gameConsts.halfWidth - 157, startPos1 + i * offset, this.removeNewlinesIfLong(getLangText(this.createDescLong(action, element))), {fontFamily: 'robotomedium', fontSize: 16, color: '#200000', align: 'left', lineSpacing: -3}).setAlpha(0).setDepth(this.baseDepth).setScale(0.95, 1);
+                let descText = PhaserScene.add.text(gameConsts.halfWidth - 161, startPos1 + i * offset, this.removeNewlinesIfLong(getLangText(this.createDescLong(action, element))), {fontFamily: 'robotomedium', fontSize: 16, color: '#200000', align: 'left', lineSpacing: -3}).setAlpha(0).setDepth(this.baseDepth).setScale(0.95, 1);
                 descText.setOrigin(0, 0.5);
                 this.currentPageItems.push(descText);
             }

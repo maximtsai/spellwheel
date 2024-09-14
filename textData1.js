@@ -166,8 +166,8 @@ let textData = {
     "time_protect_desc": {
         "en_us": "Create a shield\nthat delays up\nto 60 damage",
         "fr": "Crée un bouclier\nqui retarde jusqu’à\n60 points de dégâts",
-        "zh_tw": "創建一個盾牌，\n延遲多達 60 點傷害",
-        "zh_cn": "打造一个盾牌，\n延迟多达 60 点伤害",
+        "zh_tw": "打造一個能延遲\n多達 60 點傷害的盾牌",
+        "zh_cn": "打造一个能延迟\n多达 60 点伤害的盾牌",
         "ru": "Создает щит,\nкоторый задерживает\nдо 60 ед. урона",
         "es": "Crea un escudo\nque retrasa hasta\n60 de daño",
         "jp": "最大60ダメージ\nを遅らせるシール\nドを作成"
@@ -175,8 +175,8 @@ let textData = {
     "time_protect_desc_long": {
         "en_us": "Create a shield that\ndelays up to 60 damage",
         "fr": "Crée un bouclier qui retarde\njusqu’à 60 points de dégâts",
-        "zh_tw": "創建一個盾牌，延遲多達 60 點傷害",
-        "zh_cn": "打造一个盾牌，延迟多达 60 点伤害",
+        "zh_tw": "打造一個能延遲多達 60 點傷害的盾牌",
+        "zh_cn": "打造一个能延迟多达 60 点伤害的盾牌",
         "ru": "Создает щит, который\nзадерживает до 60 ед. урона",
         "es": "Crea un escudo que\nretrasa hasta 60 de daño",
         "jp": "最大60ダメージを遅らせるシールドを作成"

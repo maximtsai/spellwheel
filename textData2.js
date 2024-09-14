@@ -402,7 +402,7 @@ let textData2 = {
     },
     "pre_fight_0c": {
         "en_us": "STRIKE",
-        "fr": "FRAPPE",
+        "fr": "FRAPPE ",
         "zh_tw": "打擊",
         "zh_cn": "打击",
         "ru": "ДУТЬ",
@@ -454,7 +454,7 @@ let textData2 = {
         "es": "LANZAR HECHIZO:\nClic mouse\n/nespaciadora",
         "jp": "呪文の詠唱:\nマウスをクリック\n/スペースバー"
     },
-    "pre_fight_0i": {
+    "pre_fight_0ix": {
         "en_us": "MATTER\nSTRIKE",
         "fr": "MATIÈRE\nFRAPPE",
         "zh_tw": "物質打擊",
@@ -462,6 +462,15 @@ let textData2 = {
         "ru": "МАТЕРИЯ\nАТАКА",
         "es": "MATERIA\nATAQUE",
         "jp": "物質攻撃"
+    },
+    "pre_fight_0i": {
+        "en_us": " ",
+        "fr": " ",
+        "zh_tw": " ",
+        "zh_cn": " ",
+        "ru": " ",
+        "es": " ",
+        "jp": " "
     },
     "pre_fight_1a": {
         "en_us": "\"This is my shield, mine!\n Is family treasure from\n father's brother's aunt's\n grandpa's cousin's\n friend's neighbor!!\"",

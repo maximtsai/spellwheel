@@ -149,7 +149,7 @@
                  onComplete: () => {
                      this.setSprite('super_dummy_broken.png', this.sprite.scaleX);
                      this.x -= 80;
-                     this.y += 78;
+                     this.y += 83;
                      this.sprite.setRotation(0);
                      this.sprite.setOrigin(0.85, 0.78);
 

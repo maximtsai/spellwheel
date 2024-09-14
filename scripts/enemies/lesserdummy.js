@@ -365,7 +365,7 @@
             // });
             this.addTimeout(() => {
                 if (!this.dead) {
-                    globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth - 195, 30, getLangText('level0_tut_b'));
+                    globalObjects.textPopupManager.setInfoText(0, 30, getLangText('level0_tut_b'), 'left');
                     this.eyeSprite.play('dummyblink');
                 }
 

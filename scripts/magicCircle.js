@@ -122,14 +122,14 @@ const ENABLE_KEYBOARD = true;
             if (globalObjects.currentEnemy) {
                 if (globalObjects.currentEnemy.dieClickBlocker && !globalObjects.currentEnemy.dieClickBlocker.isDestroyed) {
                     if (globalObjects.currentEnemy.dieClickBlocker.onMouseUpFunc) {
-                        globalObjects.currentEnemy.dieClickBlocker.onMouseUpFunc();
+                        globalObjects.currentEnemy.dieClickBlocker.clickMouseUp();
                     }
                 }
             }
 
             if (globalObjects.lvlCloseButton && !globalObjects.lvlCloseButton.isDestroyed) {
                 if (globalObjects.lvlCloseButton.onMouseUpFunc) {
-                    globalObjects.lvlCloseButton.onMouseUpFunc();
+                    globalObjects.lvlCloseButton.clickMouseUp();
                 }
             }
 

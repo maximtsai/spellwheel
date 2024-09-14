@@ -504,7 +504,7 @@
                          onComplete: () => {
                             victoryText.destroy();
                             banner.destroy();
-                            globalObjects.magicCircle.enableMovement();
+                            // globalObjects.magicCircle.enableMovement();
                             globalObjects.postFightScreen.createWinScreenMin(-this.level);
                         }
                     });

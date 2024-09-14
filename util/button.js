@@ -219,6 +219,15 @@ class Button {
         }
     }
 
+    // Force click but only if button isn't disabled
+    clickMouseUp() {
+        if (this.state !== DISABLE) {
+            if (this.onMouseUpFunc) {
+                this.onMouseUpFunc();
+            }
+        }
+    }
+
     onMouseUp(x, y) {
         if (this.state === PRESS) {
             this.setState(HOVER);

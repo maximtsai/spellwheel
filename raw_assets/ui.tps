@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>86</uint>
+        <uint>80</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -386,6 +386,21 @@
                 <rect>35,13,69,25</rect>
                 <key>scale9Paddings</key>
                 <rect>35,13,69,25</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ui/secretcode.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>154,194,307,387</rect>
+                <key>scale9Paddings</key>
+                <rect>154,194,307,387</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

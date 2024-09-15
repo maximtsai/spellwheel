@@ -70,7 +70,7 @@ class Options {
                 normal: {
                     ref: "menu_btn_normal.png",
                     atlas: 'buttons',
-                    x: gameConsts.halfWidth,
+                    x: gameConsts.halfWidth - 140,
                     y: gameConsts.halfHeight + 280,
                     alpha: 1,
                 },
@@ -128,8 +128,8 @@ class Options {
                 normal: {
                     ref: "menu_btn_normal.png",
                     atlas: 'buttons',
-                    x: gameConsts.halfWidth,
-                    y: gameConsts.halfHeight + 220,
+                    x: gameConsts.halfWidth + 140,
+                    y: gameConsts.halfHeight + 280,
                     alpha: 1,
                 },
                 hover: {
@@ -174,9 +174,9 @@ class Options {
             this.draggerBGM;
             this.draggerSFX;
 
-            let startX = gameConsts.halfWidth + 25;
-            this.BGMIcon = PhaserScene.add.image(gameConsts.halfWidth - 185, gameConsts.halfHeight - 270, 'ui', 'music.png').setDepth(this.baseDepth);
-            this.SFXIcon = PhaserScene.add.image(gameConsts.halfWidth - 185, gameConsts.halfHeight - 190, 'ui', 'sound_full.png').setDepth(this.baseDepth);
+            let startX = gameConsts.halfWidth + 15;
+            this.BGMIcon = PhaserScene.add.image(gameConsts.halfWidth - 190, gameConsts.halfHeight - 270, 'ui', 'music.png').setDepth(this.baseDepth);
+            this.SFXIcon = PhaserScene.add.image(gameConsts.halfWidth - 190, gameConsts.halfHeight - 190, 'ui', 'sound_full.png').setDepth(this.baseDepth);
 
             this.sliderBGM = new Button({
                 isDraggable: true,
@@ -271,14 +271,14 @@ class Options {
                 normal: {
                     atlas: 'buttons',
                     ref: "closebtn.png",
-                    alpha: 0.9,
+                    alpha: 0.95,
                     x: gameConsts.halfWidth + 238,
                     y: 91,
                 },
                 hover: {
                     alpha: 1,
                     atlas: 'buttons',
-                    ref: "closebtn.png",
+                    ref: "closebtn_hover.png",
                 },
                 press: {
                     atlas: 'buttons',
@@ -321,6 +321,7 @@ class Options {
         }
 
         this.createLanguageSelect();
+        this.createCodeItem();
 
         if (gameOptions.infoBoxAlign == 'left') {
             this.infoLeftButton.setState(DISABLE);
@@ -523,7 +524,7 @@ class Options {
             let startPos = gameConsts.halfHeight + 9;
             this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 215, startPos - 39, getLangText('language_text'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
             this.addLangTextUpdateable(this.langSelectText, 'language_text')
-            
+
             this.langWarningText = PhaserScene.add.text(gameConsts.halfWidth + 215, startPos - 39, getLangText('translate_warn'), {fontFamily: 'garamondmax', fontSize: 18, color: '#604A4A', align: 'right'}).setOrigin(1, 0.5).setDepth(this.baseDepth).setAlpha(0.5);
             this.addLangTextUpdateable(this.langWarningText, 'translate_warn')
 
@@ -606,6 +607,13 @@ class Options {
                 this.listOfLangButtons[i].setState(DISABLE);
             }
 
+        }
+    }
+
+    createCodeItem() {
+        if (!this.codeItem) {
+            // let startPos = gameConsts.halfHeight + 100;
+            this.codeItem = PhaserScene.add.image(gameConsts.halfWidth, this.bgPage.y, 'ui', 'secretcode.png').setDepth(this.baseDepth);
         }
     }
 

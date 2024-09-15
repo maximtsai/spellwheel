@@ -91,14 +91,14 @@ class Encyclopedia {
                 normal: {
                     atlas: 'buttons',
                     ref: "closebtn.png",
-                    alpha: 0.9,
+                    alpha: 0.95,
                     x: gameConsts.width - 50,
                     y: 50,
                 },
                 hover: {
                     alpha: 1,
                     atlas: 'buttons',
-                    ref: "closebtn.png",
+                    ref: "closebtn_hover.png",
                 },
                 press: {
                     atlas: 'buttons',

@@ -329,8 +329,8 @@ let textData = {
     "void_unload_desc": {
         "en_us": "Deal damage equal\nto 9% of enemy's\ncurrent HP and\ndisrupt their action",
         "fr": "Inflige des dégâts\négaux à 9% des PV\nactuels de l'ennemi\net perturbe son action.",
-        "zh_tw": "傷害敵人當前生命\n值 9% 並干扰他們\n的行動",
-        "zh_cn": "伤害敌人当前生命\n值 9% 并干扰他们\n的行动",
+        "zh_tw": "傷害敵人當前生命\n值 9% 並打断他們\n的行動",
+        "zh_cn": "伤害敌人当前生命\n值 9% 并打断他们\n的行动",
         "ru": "Наносит урон 9%\nот текущего здоровья\nпротивника и мешает\nего действиям",
         "es": "Inflige daño al\n9% de los PS\nactuales del enemigo\ne interrumpe su acción",
         "jp": "敵の現在HPの9%にダ\nメージを与え、敵の\n行動を妨害する"
@@ -338,8 +338,8 @@ let textData = {
     "void_unload_desc_long": {
         "en_us": "Deal damage equal to 9% of enemy's\ncurrent HP and disrupt their action",
         "fr": "Inflige des dégâts égaux à 9% des PV\nactuels de l'ennemi et perturbe son action.",
-        "zh_tw": "傷害敵人當前生命值 9% 並干扰他們的行動",
-        "zh_cn": "伤害敌人当前生命值 9% 并干扰他们的行动",
+        "zh_tw": "傷害敵人當前生命值 9% 並打断他們的行動",
+        "zh_cn": "伤害敌人当前生命值 9% 并打断他们的行动",
         "ru": "Наносит урон 9% от текущего здоровья\nпротивника и мешает его действиям",
         "es": "Inflige daño al 9% de los PS actuales\ndel enemigo e interrumpe su acción",
         "jp": "敵の現在HPの9%にダメージを\n与え、敵の行動を妨害する"
@@ -516,8 +516,8 @@ let textData = {
         "jp": "敵を粉砕すると同時に、自分自身を守るために、多くの物質を召喚します。"
     },
     "mind_tut_desc": {
-        "en_us": "The Energy rune controls raw energy.\nEnergy spells have powerful utility\neffects and deal True damage that\nbypasses enemy defenses.",
-        "fr": "La rune Énergie permet de contrôler\nl'énergie brute, avec des sorts qui\noffrent un soutien puissant et\ninfligent des dégâts bruts contournant\nles défenses ennemies.",
+        "en_us": "The Energy rune controls raw\nenergy. Energy spells have\npowerful utility effects and deal\nTrue damage that bypasses enemy defenses.",
+        "fr": "La rune Énergie permet de\ncontrôler l'énergie brute, avec des\nsorts qui offrent un soutien puissant\net infligent des dégâts bruts contournant\nles défenses ennemies.",
         "zh_tw": "能量符文授予對原始能量的\n控制權。能量法術具有強大\n的支援效果，可以造成繞過\n敵人防禦的真實傷害。",
         "zh_cn": "能量符文授予对原始能量的\n控制权。能量法术具有强大\n的支持效果，可以造成绕过\n敌人防御的真实伤害。",
         "ru": "Руна Энергия дает контроль над сырой энергией. Энергетические заклинания обладают мощными вспомогательными эффектами и могут наносить чистый урон, обойдя вражескую оборону.",
@@ -680,8 +680,8 @@ let textData = {
     "void_tut_unload_desc": {
         "en_us": "Creates a vortex that deals\nheavy percent health damage\nwhile disrupting any action\nthe enemy is trying to make.",
         "fr": "Crée un vortex qui inflige un\npourcentage élevé de dégâts\nde santé tout en perturbant\ntoute action de l’ennemi.",
-        "zh_tw": "創造一個漩渦，造成嚴重的生命傷害，同時破壞敵人試圖做出的任何行動。",
-        "zh_cn": "创造一个漩涡，造成严重的生命伤害，同时破坏敌人试图做出的任何行动。",
+        "zh_tw": "創造一個漩渦，造成嚴重的生命傷害，\n同時打断敵人的行動。",
+        "zh_cn": "创造一个漩涡，造成严重的生命伤害，\n同时打断敌人的行动。",
         "ru": "Создает вихрь, который наносит большой урон в процентах здоровья, прерывая любые действия противника.",
         "es": "Crea un vórtice que inflige un gran porcentaje de daño de salud mientras interrumpe cualquier acción que el enemigo esté tratando de hacer.",
         "jp": "敵が行おうとしている行動を妨害しながら、重い体力パーセントダメージを与える渦を発生させます。"
@@ -689,26 +689,26 @@ let textData = {
     "protect_tut_desc": {
         "en_us": "The Shield rune creates\nbarriers that protect you as\nlong as they are positioned\nbetween you and the enemy.",
         "fr": "La rune Bouclier crée des\nbarrières qui vous protègent\ntant qu’elles sont positionnées\nentre vous et l’ennemi.",
-        "zh_tw": "盾牌符文會創造盾牌，只要盾牌位於你和敵人之間，就可以保護你。",
-        "zh_cn": "盾牌符文会创造盾牌，只要盾牌位于你和敌人之间，就可以保护你。",
+        "zh_tw": "盾牌符文會創造盾牌，\n要盾牌位於你和敵人之間，\n就可以保護你。",
+        "zh_cn": "盾牌符文会创造盾牌，\n只要盾牌位于你和敌人之间，\n就可以保护你。",
         "ru": "Руна Щит создает барьеры, которые защищают вас, пока они находятся между вами и врагом.",
         "es": "La runa escudo crea barreras que te protegen siempre que estén colocadas entre tú y el enemigo.",
         "jp": "シールドルーンは、あなたと敵の間に配置されている限り、あなたを保護するバリアを作成します。"
     },
     "reinforce_tut_desc": {
-        "en_us": "The Body rune grants effects\nthat persist until you cast\na new body spell. Some\nBody+Rune combos can even heal you.",
-        "fr": "La rune Corps confère des effets qui persistent jusqu’à ce que vous lanciez un nouveau sort corporel. Certains combos corps+runes peuvent même vous soigner.",
-        "zh_tw": "身體符文賦予的效果會一直持續到你施放新的身體法術。一些身體+符文組合甚至可以治癒你。",
-        "zh_cn": "身体符文赋予的效果会一直持续到你施放新的身体法术。一些身体+符文组合甚至可以治愈你。",
+        "en_us": "The Body rune grants effects\nthat persist until you cast\na new body spell. Some Body+Rune\ncombos can even heal you.",
+        "fr": "La rune Corps confère des effets\nqui persistent jusqu’à ce que\nvous lanciez un nouveau sort corporel.\nCertains combos corps+runes peuvent même\nvous soigner.",
+        "zh_tw": "身體符文賦予的效果會一直持續到\n你施放新的身體法術。\n一些身體+符文組合甚至可以治癒你。",
+        "zh_cn": "身体符文赋予的效果会一直持续到\n你施放新的身体法术。\n一些身体+符文组合甚至可以治愈你。",
         "ru": "Руна Тела дает эффекты, которые сохраняются до тех пор, пока вы не разыграете новое заклинание тела. Некоторые комбинации Тело+Руна могут даже исцелить вас.",
         "es": "La runa Cuerpo otorga efectos que persisten hasta que lanzas un nuevo hechizo de cuerpo. Algunos combos de Cuerpo + Runa pueden incluso curarte.",
         "jp": "身体のルーンは、あなたが新しい身体呪文を唱えるまで持続する効果を付与する。一部のボディ+ルーンコンボはあなたを癒すことさえできます。"
     },
     "unload_tut_desc": {
         "en_us": "The Ultimate rune grants you\nsome of the most powerful\nspells in your arsenal.\nUse this rune wisely.",
-        "fr": "La rune ultime vous confère certains des sorts les plus puissants de votre arsenal. Utilisez cette rune à bon escient.",
-        "zh_tw": "終極符文賦予您武器庫中一些最強大的法術。明智地使用這個符文。",
-        "zh_cn": "终极符文赋予您武器库中一些最强大的法术。明智地使用这个符文。",
+        "fr": "La rune ultime vous confère\ncertains des sorts les plus\npuissants de votre arsenal.\nUtilisez cette rune à bon escient.",
+        "zh_tw": "大招符文賦予您武器庫中一些最強大的法術。明智地使用這個符文。",
+        "zh_cn": "大招符文赋予您武器库中一些最强大的法术。明智地使用这个符文。",
         "ru": "Руна Ultimate дает вам одни из самых мощных заклинаний в вашем арсенале. Используйте эту руну с умом.",
         "es": "La runa definitiva te otorga algunos de los hechizos más poderosos de tu arsenal. Usa esta runa sabiamente.",
         "jp": "アルティメットルーンは、あなたの武器の中で最も強力な呪文のいくつかをあなたに与えます。このルーンを賢く使いましょう。"
@@ -726,6 +726,7 @@ let textData = {
 
 function setLanguage(lang) {
     language = lang;
+    messageBus.publish('language_switch', lang)
 }
 
 function getLangText(textName) {

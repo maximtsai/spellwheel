@@ -190,6 +190,15 @@ let textData2 = {
         "es": "Salud Izquierda: ",
         "jp": "ヘルス残量: "
     },
+    "level_code": {
+        "en_us": "LEVEL CODE: ",
+        "fr": "CODE DE NIVEAU :",
+        "zh_tw": "級別代碼：",
+        "zh_cn": "级别代码： ",
+        "ru": "КОД УРОВНЯ: ",
+        "es": "CÓDIGO DE NIVEL: ",
+        "jp": "レベルコード: "
+    },
     "post_fight_newrune": {
         "en_us": "New Rune",
         "fr": "Nouvelle rune",
@@ -286,51 +295,51 @@ let textData2 = {
     "post_fight_story5": {
         "en_us": "The Reaper appears every time to sour my\nvictories. Is my quest to reclaim a loved one\nso wrong?\n\nSurely not, which means it must be the\nReaper themselves who is setting up all\nthese obstacles!",
         "fr": "Le Faucheur apparaît à chaque fois pour\ngâcher mes victoires. Ma quête pour récupérer\nun être cher est-elle si mauvaise?\n\nCertainement pas, ce qui signifie que c'est\nle Faucheur lui-même qui met en place tous\nces obstacles!",
-        "zh_tw": "死神每次出現都會讓我的勝利灰飛煙滅。\n我找回親人的任務就這麼錯嗎？\n\n當然不是，這意味著一定是死神自己在設置\n所有這些障礙！",
-        "zh_cn": "死神每次出现都会让我的胜利灰飞烟灭。\n我找回亲人的任务难道就这么错误吗？\n\n当然不是，这意味着一定是死神自己在设置\n所有这些障碍！",
+        "zh_tw": "死神每次出現都會讓我的勝利灰飛煙滅。\n我找回愛人的任務難道就這麼錯嗎？\n\n當然不是，這意味著一定是死神自己在\n設置所有這些障礙！",
+        "zh_cn": "死神每次出现都会让我的胜利灰飞烟灭。\n我找回爱人的任务难道就这么错误吗？\n\n当然不是，这意味着一定是死神自己在\n设置所有这些障碍！",
         "ru": "Моя сила растет, но растет и сопротивление, которое оказывает эта земля.  Неужели мое благородное стремление вернуть любимого человека так неправильно?  Конечно, нет, и я сделаю все, что потребуется, независимо от цены.",
         "es": "Mi poder crece, pero también lo hace la resistencia que opone esta tierra.  ¿Está tan equivocada mi noble búsqueda de recuperar a un ser querido?  Seguramente no, y haré lo que sea necesario, sin importar el costo.",
         "jp": "私の力は増すが、この土地が耐える抵抗も大きくなる。 愛する人を取り戻すという私の崇高な探求は、それほど間違っているのでしょうか? もちろん、そうではないし、どんな犠牲を払おうとも、必要なことは何でもする。"
     },
     "post_fight_story6": {
         "en_us": "The land of the dead is a labyrinth\nof dangers, but steadily I am forcing my way\nthrough its walls.\n\nI bet Death is growing desperate knowing\nI am near my destination.",
-        "fr": "Le pays des morts\nest un labyrinthe\nde dangers, mais\nje me fraye un chemin à travers\nses murs.\n\nLa Mort doit sûrement être désespérée sachant\nque je m'approche de ma destination.",
-        "zh_tw": "亡靈之地是一個\n危險的迷宮，\n但我正穩定地\n衝破它的圍牆。\n\n當死神知道我即將到達目的地時，\n他一定越來越絕望。",
-        "zh_cn": "亡灵之地是一个\n危险的迷宫，\n但我正稳步地\n冲破它的围墙。\n\n当死神知道我即将到达目的地时，\n他一定越来越绝望。",
+        "fr": "Le pays des morts est un labyrinthe de\ndangers,mais je me fraye un chemin à travers\nses murs.\n\nLa Mort doit sûrement être désespérée sachant\nque je m'approche de ma destination.",
+        "zh_tw": "亡靈之地是一個危險的迷宮，\n但我正穩定地衝破它的圍牆。\n\n當死神知道我即將到達目的地時，\n他一定越來越絕望。",
+        "zh_cn": "亡灵之地是一个危险的迷宫，\n但我正稳步地冲破它的围墙。\n\n当死神知道我即将到达目的地时，\n他一定越来越绝望。",
         "ru": "Земля мертвых — это\nлабиринт опасностей,\nно я неуклонно\nпрокладываю себе\nпуть сквозь его стены.\n\nНаверняка Смерть отчаивается, зная,\nчто я приближаюсь к своей цели.",
         "es": "La tierra de los\nmuertos es un\nlaberinto de peligros,\npero constantemente me\nabro paso a través de sus muros.\n\nSeguramente la Muerte debe estar cada vez más desesperada\nal saber que me acerco a mi destino.",
         "jp": "死者の国は危険\nに満ちた迷宮だが、\n私はゆっくりと着\n実にその壁を突破している。\n\n私が目的地に近づいていることを知って、\n死神はきっと絶望しているに違いない。"
     },
     "post_fight_story7": {
         "en_us": "The opponents I encounter are formidable,\nbut my own strength is greater still.\n\nMy magic feels complete. All that's left\nis to use it well.",
-        "fr": "Les adversaires que je rencontre sont redoutables, mais ma propre force est encore plus grande.  Il y a peut-être encore de la place pour la croissance, mais ma magie devrait maintenant plus que suffire à te sauver, ma très chère bien-aimée.",
-        "zh_tw": "我遇到的對手很強大，但我自己的力量更大。 可能還有成長的空間，但我的魔法現在應該足以拯救你，我最親愛的人。",
-        "zh_cn": "我遇到的对手很强大，但我自己的力量更大。 可能还有成长的空间，但我的魔法现在应该足以拯救你，我最亲爱的人。",
+        "fr": "Les adversaires que je rencontre sont redoutables,\nmais ma propre force est encore plus grande.\n\nMa magie semble complète. Il ne me reste plus\nqu'à l'utiliser à bon escient.",
+        "zh_tw": "我遇到的對手很強大，但我自己的實力更強大。\n我的魔法感覺很完整。剩下的就是好好利用它。",
+        "zh_cn": "我遇到的对手很强大，但我自己的实力更强大。\n我的魔法感觉很完整。剩下的就是好好利用它。",
         "ru": "Противники, с которыми я сталкиваюсь, грозны, но моя собственная сила еще больше.  Может быть, еще есть место для роста, но теперь моей магии должно быть более чем достаточно, чтобы спасти тебя, моя дорогая возлюбленная.",
         "es": "Los oponentes con los que me encuentro son formidables, pero mi propia fuerza es aún mayor.  Puede que todavía haya espacio para el crecimiento, pero mi magia debería ser ahora más que suficiente para rescatarte, mi querida amada.",
         "jp": "私が遭遇する相手は手ごわいですが、私自身の強さはさらに大きいです。 まだ成長の余地はあるかもしれないが、私の魔法は今や、私の最愛の愛するあなたを救うには十分すぎるほどのはずだ。"
     },
     "post_fight_story8": {
-        "en_us": "If Death thinks it can deter me with these\ntrials, it underestimates the depth of\nmy determination.\n\nMy beloved awaits, and no force, not even Death,\nshall keep us apart.",
-        "fr": "Il devient de plus en plus clair à chaque pas que la Mort elle-même orchestre ces obstacles pour contrecarrer ma quête. Pourtant, cela ne fait qu’alimenter ma détermination.  Si la Mort pense qu’elle peut me dissuader dans ces épreuves, elle sous-estime la profondeur de ma détermination.  Mon bien-aimé vous attend, et aucune force, pas même la Mort, ne nous séparera.",
-        "zh_tw": "每走一步，我都越來越\n清楚，死神本身正\n在精心策劃這些障礙，\n以阻撓我的任务。然而，這隻會激發我的\n決心。\n\n如果死神認為它可以在這些試驗中阻止我，那麼它低估了\n我決心的深度。 我心愛的人等待著，沒有任何力量，\n甚至死亡，不能使我們分開。",
-        "zh_cn": "每走一步，我都越来越\n清楚，死神本身正\n在精心策划这些障碍，\n以阻挠我的任务。然而，这只会激发我的\n决心。\n\n如果死神认为它可以在这些试验中阻止我，那么它低估了\n我决心的深度。 我心爱的人等待着，没有任何力量，\n甚至死亡，不能使我们分开。",
+        "en_us": "If Death thinks it can deter me with\nthese trials, it underestimates the depth\nof my determination.\n\nMy beloved awaits, and no force, not even Death,\nshall keep us apart.",
+        "fr": "Si la Mort pense pouvoir me dissuader avec\nces épreuves, elle sous-estime la profondeur de\nma détermination.\n\nMon bien-aimé m'attend, et aucune force,\npas même la Mort, ne nous séparera.",
+        "zh_tw": "如果死神認為這些考驗能阻止我，那它就低估了我的決心。\n\n我心愛的人在等待，沒有任何力量，甚至死亡，能將我們分開。",
+        "zh_cn": "如果死神认为这些考验能阻止我，那它就低估了我的决心。\n\n我心爱的人在等待，没有任何力量，甚至死亡，能将我们分开。",
         "ru": "С каждым шагом становится все яснее, что сама Смерть организует эти препятствия, чтобы помешать моему поиску. Но это только подпитывает мою решимость.  Если Смерть думает, что может удержать меня в этих испытаниях, она недооценивает глубину моей решимости.  Мой возлюбленный ждет, и никакая сила, даже смерть, не разлучит нас.",
         "es": "Se hace más claro con cada paso que la propia Muerte está orquestando estos obstáculos para frustrar mi búsqueda. Sin embargo, esto solo alimenta mi determinación.  Si la muerte piensa que puede disuadirme con estas pruebas, subestima la profundidad de mi determinación.  Mi amado espera, y ninguna fuerza, ni siquiera la Muerte, nos separará de nosotros.",
         "jp": "一歩進むごとに、死そのものが私の探求を妨害するためにこれらの障害を画策していることが明らかになる。しかし、これは私の決意を煽るだけです。 もし死神が、このような試練で私を思いとどまらせることができると考えているのなら、それは私の決意の深さを過小評価していることになる。 私の最愛の人が待っており、どんな力も、死でさえも、私たちを引き離すことはできません。"
     },
     "post_fight_story9": {
-        "en_us": "Not even Death's deadliest machines can\nbest me!\n\nI am at the height of my power, and\nthere is nothing that can stand in my way.\n\nAll that's left is to get around this broken\nrobot and I know I shall find my beloved just\naround the corner.",
-        "fr": "Même les machines de mort ne peuvent pas me battre !  Je suis au sommet de ma puissance, et il ne reste plus rien qui puisse se mettre en travers de mon chemin.  Tout ce que j’ai à faire maintenant est de contourner ce robot en panne et je sais que je trouverai mon bien-aimé juste au coin de la rue.",
-        "zh_tw": "即使是死亡的機器也無法戰勝我！ 我正處於權力的巔峰，沒有什麼可以阻擋我的。 我現在所要做的就是繞過這個破碎的機器人，我知道我會在拐角處找到我心愛的人。",
-        "zh_cn": "即使是死亡的机器也无法战胜我！ 我正处于权力的巅峰，没有什么可以阻挡我的。 我现在所要做的就是绕过这个破碎的机器人，我知道我会在拐角处找到我心爱的人。",
+        "en_us": "Not even the machines of Death can\nbest me!\n\nI am at the height of my power, and nothing\ncan stand in my way.\n\nAll that's left is to get around this broken\nrobot and I know I shall find my beloved just\naround the corner.",
+        "fr": "Même les machines de la Mort ne peuvent\nme vaincre!\n\nJe suis au sommet de ma puissance et rien\nne peut m'arrêter.\n\nIl ne me reste plus qu'à contourner ce robot\nbrisé et je sais que je retrouverai ma\nbien-aimée au coin de la rue.",
+        "zh_tw": "即使是死神的機器也無法戰勝我！\n我正處於權力的巔峰，沒有什麼可以阻擋我的。\n\n繞過這個破碎的機器人後，我知道我會馬上找到我心愛的人。",
+        "zh_cn": "即使是死神的机器也无法战胜我！\n我正处于权力的巅峰，没有什么可以阻挡我的。\n\n绕过这个破碎的机器人后，我知道我会马上找到我心爱的人。",
         "ru": "Даже машины смерти не могут превзойти меня!  Я нахожусь на вершине своего могущества, и не осталось ничего, что могло бы встать у меня на пути.  Все, что мне теперь нужно сделать, это обойти этого сломанного робота, и я знаю, что найду своего любимого прямо за углом.",
         "es": "¡Ni siquiera las máquinas de la muerte pueden vencerme!  Estoy en la cima de mi poder, y no queda nada que pueda interponerse en mi camino.  Todo lo que tengo que hacer ahora es sortear este robot roto y sé que encontraré a mi amada a la vuelta de la esquina.",
         "jp": "死の機械でさえ、私を打ち負かすことはできない! 私は力の絶頂にあり、私の邪魔になるものは何も残っていません。 今やらなければならないのは、この壊れたロボットの周りを回ることだけで、私の最愛の人がすぐ近くにいることを知っています。"
     },
     "post_fight_training": {
         "en_us": "    TEST NEW RUNE",
-        "fr": "TESTER NOUVELLE RUNE",
+        "fr": "     TESTER RUNE",
         "zh_tw": "測試新符文",
         "zh_cn": "测试新符文",
         "ru": "ИСПЫТАЙТЕ НОВУЮ РУНУ",
@@ -519,9 +528,9 @@ let textData2 = {
     },
     "pre_fight_5a": {
         "en_us": "No matter where I go, this wall always\nseems to be blocking the way.",
-        "fr": "Où que j’aille, ce mur semble toujours me\nbarrer la route.",
-        "zh_tw": "無論我走到哪裡，這堵牆似乎總是\n擋住了去路。",
-        "zh_cn": "无论我走到哪里，这堵墙似乎总是\n挡住了去路。",
+        "fr": "Où que j’aille, ce mur semble toujours\nme barrer la route.",
+        "zh_tw": "無論我走到哪裡，這堵牆似乎總是擋住了\n去路。",
+        "zh_cn": "无论我走到哪里，这堵墙似乎总是挡住了\n去路。",
         "ru": "Куда бы я ни пошел, эта стена,\nкажется, всегда преграждает путь.",
         "es": "No importa a dónde vaya, este muro\nsiempre parece estar bloqueando el camino.",
         "jp": "どこに行っても、この壁はいつも道を塞いでいるようです。"
@@ -599,13 +608,13 @@ let textData2 = {
         "jp": "ホイールを回して新し\nいルーンに交換"
     },
     "level0_tut_b": {
-        "en_us": "Defeat the =>\nenemy to win",
-        "fr": "Battez l’ennemi =>\npour gagner",
-        "zh_tw": "擊敗 =>\n敵人以贏得勝利",
-        "zh_cn": "击败 =>\n敌人以赢得胜利",
-        "ru": "Победите врага =>\nчтобы победить",
-        "es": "Derrota al enemigo =>\npara ganar",
-        "jp": "人の敵を倒し=>\nて勝利"
+        "en_us": " Defeat the =>\n enemy to win",
+        "fr": " Battez l’ennemi =>\n pour gagner",
+        "zh_tw": " 擊敗 =>\n 敵人以贏得勝利",
+        "zh_cn": " 击败 =>\n 敌人以赢得胜利",
+        "ru": " Победите врага =>\n чтобы победить",
+        "es": " Derrota al enemigo =>\n para ganar",
+        "jp": " 人の敵を倒し=>\n て勝利"
     },
     "level1_diag_a": {
         "en_us": "Another one?",
@@ -635,8 +644,8 @@ let textData2 = {
         "jp": "強化ルーンは次の\n攻撃を強化します\n "
     },
     "level1_tut_z": {
-        "en_us": "The OUTER Wheel\ndetermines your ACTION",
-        "fr": "La roue EXTÉRIEURE\ndétermine votre ACTION",
+        "en_us": "The OUTER Wheel\nselects your ACTION",
+        "fr": "La roue EXTÉRIEURE\nsélectionne votre ACTION",
         "zh_tw": "外輪決定使用的行動",
         "zh_cn": "外轮决定使用的行动",
         "ru": "ВНЕШНЕЕ Колесо\nопределяет ваши ДЕЙСТВИЯ",
@@ -662,8 +671,8 @@ let textData2 = {
         "jp": "新しいルーンをテストするためにトレーニ\nングダミーをセットアップしました。"
     },
     "level1_train_popup": {
-        "en_us": "The INNER Wheel\ndetermines your ELEMENT",
-        "fr": "La roue intérieure\ndétermine l'ÉLÉMENT utilisé",
+        "en_us": "The INNER Wheel\nselects your ELEMENT",
+        "fr": "La roue intérieure\nsélectionne l'ÉLÉMENT utilisé",
         "zh_tw": "內輪決定使用的元素",
         "zh_cn": "内轮决定使用的元素",
         "ru": "ВНУТРЕННЕЕ Колесо определяет\nиспользуемый ЭЛЕМЕНТ",
@@ -716,13 +725,13 @@ let textData2 = {
         "jp": "目的:敵の攻撃から身を守る"
     },
     "level4_train_tut_a": {
-        "en_us": "Goal: Defeat\nthe enemy",
-        "fr": "Objectif:\nVaincre l’ennemi",
-        "zh_tw": "目標：擊敗敵人",
-        "zh_cn": "目标：击败敌人",
-        "ru": "Цель: Победить\nврага",
-        "es": "Objetivo: Derrotar\nal enemigo",
-        "jp": "解除方法:敵を倒す"
+        "en_us": "Goal: Defeat\nthe dummy",
+        "fr": "Objectif : \nVaincre le\nmannequin",
+        "zh_tw": "目標：\n打敗假人",
+        "zh_cn": "目标：\n打败假人",
+        "ru": "Цель:\nПобедить\nманекена",
+        "es": "Objetivo:\nDerrotar al\nmuñeco",
+        "jp": "解除方法:\nダミーを倒す"
     },
     "level4_train_tut_b": {
         "en_us": "Heal your last\ninjury with\n          +",
@@ -744,12 +753,12 @@ let textData2 = {
     },
     "level5_train_tut_a": {
         "en_us": "Goal: Defeat\nthe dummy",
-        "fr": "Objectif : Vaincre\nle mannequin",
-        "zh_tw": "目標：打敗假人",
-        "zh_cn": "目标：打败假人",
-        "ru": "Цель: Победить\nманекена",
-        "es": "Objetivo: Derrotar\nal muñeco",
-        "jp": "解除方法:ダミーを倒す"
+        "fr": "Objectif : \nVaincre le\nmannequin",
+        "zh_tw": "目標：\n打敗假人",
+        "zh_cn": "目标：\n打败假人",
+        "ru": "Цель:\nПобедить\nманекена",
+        "es": "Objetivo:\nDerrotar al\nmuñeco",
+        "jp": "解除方法:\nダミーを倒す"
     },
     "level5_train_tut_b": {
         "en_us": "Fully heal\nyourself\n         +",

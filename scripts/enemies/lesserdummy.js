@@ -7,9 +7,9 @@
         globalObjects.options.hideButton();
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
-                if (!this.bgMusic) {
-                    this.bgMusic = playMusic('bite_down_simplified', 0.6, true);
-                }
+                // if (!this.bgMusic) {
+                //     this.bgMusic = playMusic('bite_down_simplified', 0.6, true);
+                // }
                 this.initTutorial2();
             } else if (globalObjects.player.getPlayerCastSpellsCount() === 2) {
                 this.addTimeout(() => {
@@ -68,6 +68,7 @@
         this.addTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
                 globalObjects.magicCircle.disableMovement();
+                this.bgMusic = playMusic('bite_down_simplified', 0.6, true);
 
                 // TODO Add for main dummy too
                 globalObjects.bannerTextManager.setDialog([getLangText('level0_diag_a'), getLangText('level0_diag_b')]);
@@ -106,84 +107,81 @@
                     });
                     globalObjects.bannerTextManager.setOnFinishFunc(() => {});
                     globalObjects.bannerTextManager.closeBanner();
-                    if (!this.bgMusic) {
-                        this.bgMusic = playMusic('bite_down_simplified', 0.6, true);
-                        // this.shadow.setPosition(globalObjects.player.getX(), globalObjects.player.getY() - 1);
-                        let spellListener = messageBus.subscribe('spellClicked', () => {
-                            this.firstPopupClosed = true;
-                            // globalObjects.textPopupManager.hideInfoText();
-                            messageBus.publish("unhighlightRunes");
-                            if (this.glowCirc.currAnim) {
-                                this.glowCirc.currAnim.stop();
-                            }
-                            this.glowCirc.currAnim = this.addTween({
-                                targets: [this.glowCirc],
-                                alpha: 0,
-                                ease: "Cubic.easeOut",
-                                duration: 500,
-                            });
-                            spellListener.unsubscribe();
-                            if (this.currShadowTween) {
-                                this.currShadowTween.stop();
-                            }
-                            this.addTween({
-                                targets: this.shadow,
-                                alpha: 0,
-                                ease: "Cubic.easeOut",
-                                scaleX: 8,
-                                scaleY: 8,
-                                duration: 500,
-                            });
-                        });
-                        this.currShadowTween = this.addTween({
-                            targets: this.shadow,
-                            alpha: 0.65,
+                    // this.shadow.setPosition(globalObjects.player.getX(), globalObjects.player.getY() - 1);
+                    let spellListener = messageBus.subscribe('spellClicked', () => {
+                        this.firstPopupClosed = true;
+                        // globalObjects.textPopupManager.hideInfoText();
+                        messageBus.publish("unhighlightRunes");
+                        if (this.glowCirc.currAnim) {
+                            this.glowCirc.currAnim.stop();
+                        }
+                        this.glowCirc.currAnim = this.addTween({
+                            targets: [this.glowCirc],
+                            alpha: 0,
                             ease: "Cubic.easeOut",
-                            scaleX: 5.6,
-                            scaleY: 5.6,
-                            duration: 1000,
-                            onComplete: () => {
-                                if (globalObjects.player.getPlayerCastSpellsCount() !== 0 && !this.firstPopupClosed) {
-                                    messageBus.publish("unhighlightRunes");
-                                    if (this.glowCirc.currAnim) {
-                                        this.glowCirc.currAnim.stop();
-                                    }
-                                    this.glowCirc.currAnim = this.addTween({
-                                        targets: [this.glowCirc],
-                                        alpha: 0,
-                                        ease: "Cubic.easeOut",
-                                        duration: 500,
-                                    });
-                                    globalObjects.textPopupManager.hideInfoText();
-                                    spellListener.unsubscribe();
-                                    this.addTween({
-                                        targets: this.shadow,
-                                        alpha: 0,
-                                        ease: "Cubic.easeOut",
-                                        scaleX: 8,
-                                        scaleY: 8,
-                                        duration: 750,
-                                        onComplete: () => {
-                                            this.eyeSprite.play('dummyblink');
-                                        }
-                                    });
-                                }
-                            }
+                            duration: 500,
                         });
-                        // this.addTimeout(() => {
-                        //     globalObjects.magicCircle.showReadySprite();
-                        // }, 1000);
-                        this.addTimeout(() => {
-                            if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
-                                globalObjects.magicCircle.showReadySprite();
-                                this.addTimeout(() => {
-                                    if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
-                                        globalObjects.magicCircle.showReadySprite();
+                        spellListener.unsubscribe();
+                        if (this.currShadowTween) {
+                            this.currShadowTween.stop();
+                        }
+                        this.addTween({
+                            targets: this.shadow,
+                            alpha: 0,
+                            ease: "Cubic.easeOut",
+                            scaleX: 8,
+                            scaleY: 8,
+                            duration: 500,
+                        });
+                    });
+                    this.currShadowTween = this.addTween({
+                        targets: this.shadow,
+                        alpha: 0.65,
+                        ease: "Cubic.easeOut",
+                        scaleX: 5.6,
+                        scaleY: 5.6,
+                        duration: 1000,
+                        onComplete: () => {
+                            if (globalObjects.player.getPlayerCastSpellsCount() !== 0 && !this.firstPopupClosed) {
+                                messageBus.publish("unhighlightRunes");
+                                if (this.glowCirc.currAnim) {
+                                    this.glowCirc.currAnim.stop();
+                                }
+                                this.glowCirc.currAnim = this.addTween({
+                                    targets: [this.glowCirc],
+                                    alpha: 0,
+                                    ease: "Cubic.easeOut",
+                                    duration: 500,
+                                });
+                                globalObjects.textPopupManager.hideInfoText();
+                                spellListener.unsubscribe();
+                                this.addTween({
+                                    targets: this.shadow,
+                                    alpha: 0,
+                                    ease: "Cubic.easeOut",
+                                    scaleX: 8,
+                                    scaleY: 8,
+                                    duration: 750,
+                                    onComplete: () => {
+                                        this.eyeSprite.play('dummyblink');
                                     }
-                                }, 6000)
+                                });
                             }
-                        }, 4000)
-                    }
+                        }
+                    });
+                    // this.addTimeout(() => {
+                    //     globalObjects.magicCircle.showReadySprite();
+                    // }, 1000);
+                    this.addTimeout(() => {
+                        if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
+                            globalObjects.magicCircle.showReadySprite();
+                            this.addTimeout(() => {
+                                if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
+                                    globalObjects.magicCircle.showReadySprite();
+                                }
+                            }, 6000)
+                        }
+                    }, 4000)
                 });
             }
         }, 1100)

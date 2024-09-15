@@ -64,14 +64,14 @@ class PostFightScreen {
             this.newRuneDesc =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 120, '(insert rune description)', {fontFamily: 'garamondmax', fontSize: 22, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
         }
         if (!this.newRuneIcon) {
-            this.newRuneIcon =  this.scene.add.image(gameConsts.halfWidth - 63, gameConsts.halfHeight - 158, 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
+            this.newRuneIcon =  this.scene.add.image(gameConsts.halfWidth - 59, gameConsts.halfHeight - 158, 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
             this.showRuneDescBtn = new Button({
                 normal: {
                     atlas: "ui",
                     ref: "more.png",
                     visible: true,
                     alpha: 0.85,
-                    x: gameConsts.halfWidth - 120,
+                    x: gameConsts.halfWidth - 113,
                     y: gameConsts.halfHeight - 157,
                 },
                 hover: {
@@ -302,6 +302,17 @@ class PostFightScreen {
                 }
             });
             this.locketButton.setDepth(100001);
+        }
+
+        if (!this.subscription) {
+            this.subscription = messageBus.subscribe("language_switch", (lang) => {
+                if (this.currLevel <= 6 && this.currLevel >= 0) {
+                    this.trainingButton.setText(getLangText('post_fight_training'))
+                } else {
+                    this.trainingButton.setText(getLangText('post_fight_no_training'))
+                }
+                this.setTextUI(this.currLevel);
+            });
         }
         this.locketButton.setState(DISABLE);
 
@@ -624,6 +635,7 @@ class PostFightScreen {
     }
 
     createWinScreenUI(level = 0) {
+        this.isMin = false;
         this.canShowRuneBtn = true;
         this.isCreated = true;
         if (this.trainingRuneIcon) {
@@ -633,43 +645,54 @@ class PostFightScreen {
 
         this.initAssets(true);
         globalObjects.magicCircle.disableMovement();
-        this.titleText.setText(getLangText('post_fight_title'));
-        // this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
-        this.healthLeftText.setText(getLangText('post_fight_health') + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
-        this.newRuneAnnounce.setText(this.getNewRuneAnnounce(level));
+
         this.newRuneDesc.visible = false;
         this.newRuneDesc.alpha = 0;
-        this.newRuneDesc.setText(this.getNewRuneDesc(level))
         this.newRuneIcon.visible = true;
         this.gloom.alpha = 0;
 
         this.newRuneIcon.setFrame(this.getNewRuneFrame(level));
         this.trainingRuneIcon.setFrame(this.getNewRuneFrame(level));
 
-        this.codeText.setText("LEVEL CODE: placeholder\n(placeholder)");
-        this.locketDialog.setText(this.getStoryDialog(level));
+        this.setTextUI(level);
         this.locketDialogImage.setFrame('story_img_' + level + ".png");
         globalObjects.bannerTextManager.setDialog(this.locketDialog);
     }
 
+    setTextUI(level = this.currLevel) {
+        if (this.isMin) {
+            this.titleText.setText(getLangText('post_fight_title2'));
+            this.newRuneAnnounce.setText(' ');
+            this.newRuneDesc.setText(' ')
+            this.codeText.setText(' ');
+            this.trainingButton.setText(getLangText('post_fight_no_training'));
+        } else {
+            this.titleText.setText(getLangText('post_fight_title'));
+            // this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
+            this.newRuneAnnounce.setText(this.getNewRuneAnnounce(level));
+            this.newRuneDesc.setText(this.getNewRuneDesc(level))
+            this.codeText.setText(getLangText('level_code'));
+        }
+        this.healthLeftText.setText(getLangText('post_fight_health') + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
+        this.locketDialog.setText(this.getStoryDialog(level));
+        this.titleText.setText(getLangText('post_fight_day') + level + getLangText('post_fight_day2'));
+
+    }
+
     createWinScreenUIMin(level = 0) {
+        this.isMin = true;
         this.canShowRuneBtn = false;
         this.isCreated = true;
         this.initAssets(true, true);
         globalObjects.magicCircle.disableMovement();
-        this.titleText.setText(getLangText('post_fight_title2'));
-        this.healthLeftText.setText(getLangText('post_fight_health') + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
-        this.newRuneAnnounce.setText(' ');
-        this.newRuneDesc.setText(' ')
         this.newRuneIcon.visible = false;
         this.trainingRuneIcon.visible = false;
         // this.newRuneIcon.setFrame(' ');
-        this.codeText.setText(' ');
-        this.locketDialog.setText(this.getStoryDialog(level));
         this.locketDialogImage.setFrame('story_img_' + level + ".png");
 
         this.continueButton.setState(DISABLE);
-        this.trainingButton.setText(getLangText('post_fight_no_training'));
+
+        this.setTextUI(level);
         this.trainingButton.setState(NORMAL);
         this.trainingButton.setOnMouseUpFunc(() => {
             this.locketRecentlyClicked = false;

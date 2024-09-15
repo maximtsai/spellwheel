@@ -15,6 +15,7 @@ class BannerTextManager {
         this.dialog = dialogArray;
     }
 
+
     setDialogFunc(funcArray = []) {
         this.funcArray = funcArray;
     }
@@ -33,7 +34,7 @@ class BannerTextManager {
     }
 
 
-    showBanner(haveBGDarken = 0.5) {
+    showBanner(haveBGDarken = 0.5, isSmall = false) {
         this.isShowing = true;
         this.setText(this.dialog[this.dialogIndex]);
         if (this.funcArray[this.dialogIndex]) {
@@ -57,6 +58,11 @@ class BannerTextManager {
             alpha: 1,
             duration: 300,
         });
+        if (isSmall) {
+            this.text.setScale(0.95);
+        } else {
+            this.text.setScale(1);
+        }
 
         if (!this.dialogButton) {
             this.dialogButton = new Button({

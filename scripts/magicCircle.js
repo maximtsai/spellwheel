@@ -139,13 +139,13 @@ const ENABLE_KEYBOARD = true;
         }
 
         if (ENABLE_KEYBOARD && !this.outerDragDisabled && !this.innerDragDisabled) {
-            if (this.keyA.isDown || this.keyLeft.isDown) {
+            if (this.keyA.isDown || this.keyDown.isDown) {
                 if (this.keyboardRotateInner > -1) {
                     this.keyboardRotateInner = -1.4;
                 } else {
                     this.keyboardRotateInner = -1;
                 }
-            } else if (this.keyD.isDown || this.keyRight.isDown) {
+            } else if (this.keyD.isDown || this.keyUp.isDown) {
                 if (this.keyboardRotateInner < 1) {
                     this.keyboardRotateInner = 1.4;
                 } else {
@@ -155,13 +155,13 @@ const ENABLE_KEYBOARD = true;
                 this.keyboardRotateInner = 0;
             }
 
-            if (this.keyW.isDown || this.keyUp.isDown || this.keyE.isDown) {
+            if (this.keyW.isDown || this.keyRight.isDown || this.keyE.isDown) {
                 if (this.keyboardRotateOuter < 1) {
                     this.keyboardRotateOuter = 1.4;
                 } else {
                     this.keyboardRotateOuter = 1;
                 }
-            } else if (this.keyS.isDown || this.keyDown.isDown || this.keyQ.isDown) {
+            } else if (this.keyS.isDown || this.keyLeft.isDown || this.keyQ.isDown) {
                 if (this.keyboardRotateOuter > -1) {
                     this.keyboardRotateOuter = -1.4;
                 } else {

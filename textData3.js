@@ -201,8 +201,8 @@ let textData3 = {
     "death6b": {
         "en_us": "A MESS OF THIS LAND,\nAND OF YOUR VERY SOUL.",
         "fr": "UN DÉSORDRE DE CETTE TERRE,\nET DE VOTRE ÂME MÊME.",
-        "zh_tw": "讓這個世界陷入混亂，\n也讓你的靈魂陷入混亂。",
-        "zh_cn": "让这个世界陷入混乱，\n也让你的灵魂陷入混乱。",
+        "zh_tw": "讓這個世界陷入混亂，\n也讓你的心靈陷入混亂。",
+        "zh_cn": "让这个世界陷入混乱，\n也让你的心灵陷入混乱。",
         "ru": "БЕСПОРЯДОК, КОТОРЫЙ Я ДОЛЖЕН УБРАТЬ.",
         "es": "UN DESASTRE QUE TENGO QUE LIMPIAR.",
         "jp": "私が片付けなければならない混乱。"
@@ -308,16 +308,16 @@ let textData3 = {
     },
     "deathFight1g": {
         "en_us": "NO MORE MESSING AROUND",
-        "fr": "Plus de futilités.",
-        "zh_tw": "再也不用胡鬧了",
-        "zh_cn": "再也不用胡闹了",
+        "fr": "ON NE VA PLUS JOUER",
+        "zh_tw": "我不會再胡鬧了",
+        "zh_cn": "我不会再胡闹了",
         "ru": "БОЛЬШЕ НЕ НУЖНО БЕЗДЕЛЬНИЧАТЬ",
         "es": "NO MÁS LÍOS",
         "jp": "もういじくり回す必要はありません"
     },
     "deathFight1h": {
         "en_us": "...HMPH, SHODDY EQUIPMENT",
-        "fr": "... HMPH, ÉQUIPEMENT DE MAUVAISE QUALITÉ",
+        "fr": "... HMPH, ÉQUIPEMENT\nDE MAUVAISE QUALITÉ",
         "zh_tw": "...哼，以次充好的設備",
         "zh_cn": "...哼，以次充好的设备",
         "ru": "... HMPH, НИЗКОПРОБНОЕ ОБОРУДОВАНИЕ",
@@ -398,7 +398,7 @@ let textData3 = {
     },
     "epilogue2b": {
         "en_us": "SHOULD I WISH, IT WOULD BE\nTRIVIAL TO SIMPLY...",
-        "fr": "SI JE LE SOUHAITAIS, IL SERAIT TRIVIAL DE SIMPLEMENT...",
+        "fr": "SI JE LE SOUHAITAIS, IL SERAIT\nTRIVIAL DE SIMPLEMENT...",
         "zh_tw": "如果我願意，簡單地說是微不足道的......",
         "zh_cn": "如果我愿意，简单地说是微不足道的......",
         "ru": "ЕСЛИ БЫ Я ЗАХОТЕЛ, БЫЛО БЫ ТРИВИАЛЬНО ПРОСТО...",
@@ -417,8 +417,8 @@ let textData3 = {
     "epilogue2e": {
         "en_us": "I WILL GIVE YOU BACK\nYOUR BELOVED",
         "fr": "JE TE RENDRAI TON BIEN-AIMÉ",
-        "zh_tw": "我會把你心愛的人還給你",
-        "zh_cn": "我会把你心爱的人还给你",
+        "zh_tw": "我會把你心愛的還給你",
+        "zh_cn": "我会把你心爱的还给你",
         "ru": "Я ВЕРНУ ТЕБЕ ЛЮБИМОГО",
         "es": "TE DEVOLVERÉ A TU AMADO",
         "jp": "愛する人を返す"
@@ -435,7 +435,7 @@ let textData3 = {
 
     "magician_death": {
         "en_us": "TIME'S UP",
-        "fr": "Le temps s'est écoulé",
+        "fr": "LE TEMPS EST ÉCOULÉ",
         "zh_tw": "時間到了",
         "zh_cn": "时间到了",
         "ru": "Время истекло",

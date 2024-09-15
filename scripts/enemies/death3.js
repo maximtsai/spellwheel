@@ -709,6 +709,9 @@ class Death3 extends Enemy {
             return;
         }
         super.die();
+        globalObjects.encyclopedia.hideButton();
+        globalObjects.options.hideButton();
+        globalObjects.magicCircle.disableMovement();
         this.deathFaceSprite.destroy();
         this.setDefaultSprite('max_death_3e.png', undefined, true);
         this.bgtemp2.destroy();
@@ -726,8 +729,10 @@ class Death3 extends Enemy {
                     alpha: 0,
                     ease: 'Quad.easeIn',
                     duration: 1000,
-                    completeDelay: 500,
+                    completeDelay: 1500,
                     onComplete: () => {
+                        playSound('sound_of_death');
+
                         showCutscene2();
                     }
                 })

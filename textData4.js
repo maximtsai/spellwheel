@@ -498,9 +498,9 @@ let textData4 = {
     },
     "superdummy_void": {
         "en_us": "Deals lots of\n%health damage\n             +",
-        "fr": "Inflige beaucoup\nde %dégâts\nde santé\n         +",
-        "zh_tw": "造成大量\n%生命值傷害\n      +",
-        "zh_cn": "造成大量\n%生命值伤害\n      +",
+        "fr": "Inflige beaucoup\nde %dégâts\nde santé\n          +",
+        "zh_tw": "造成大量\n%生命值傷害\n         +",
+        "zh_cn": "造成大量\n%生命值伤害\n         +",
         "ru": "Наносит много % урона от здоровья +",
         "es": "Inflige un montón de % de daño de salud +",
         "jp": "大量の%ヘルスダメージを与えます+"
@@ -508,8 +508,8 @@ let textData4 = {
     "superdummy_mind": {
         "en_us": "Amplifies next\nnon-attack spell\n             +",
         "fr": "AAmplifie le prochain\nsort non-attaquant\n             +",
-        "zh_tw": "大量增幅下一個\n非攻擊法術\n     +",
-        "zh_cn": "大量增幅下一个\n非攻击法术\n     +",
+        "zh_tw": "大量增幅下一個\n非攻擊法術\n        +",
+        "zh_cn": "大量增幅下一个\n非攻击法术\n        +",
         "ru": "Усиливает следующее неатакующее заклинание +",
         "es": "Amplifica el siguiente hechizo que no es de ataque +",
         "jp": "次の非攻撃呪文を増幅します +"
@@ -517,8 +517,8 @@ let textData4 = {
     "superdummy_matter": {
         "en_us": "Deals damage\nand defends\n           +",
         "fr": "Inflige des dégâts et défend +",
-        "zh_tw": "同時進行攻擊\n和防禦\n     +",
-        "zh_cn": "同时进行攻击\n和防御\n     +",
+        "zh_tw": "同時進行攻擊\n和防禦\n       +",
+        "zh_cn": "同时进行攻击\n和防御\n       +",
         "ru": "Наносит урон и защищается +",
         "es": "Inflige daño y defiende +",
         "jp": "ダメージを与えて防御する +"
@@ -526,8 +526,8 @@ let textData4 = {
     "superdummy_time": {
         "en_us": "Freezes time for\nnext few spells\n             +",
         "fr": "Geler le temps pour\nles prochains sorts\n          +",
-        "zh_tw": "為接下來幾個法術\n凍結時間\n      +",
-        "zh_cn": "为接下来几个法术\n冻结时间\n      +",
+        "zh_tw": "為接下來幾個法術\n凍結時間\n           +",
+        "zh_cn": "为接下来几个法术\n冻结时间\n           +",
         "ru": "Замораживает время на следующие несколько заклинаний +",
         "es": "Congela el tiempo para los próximos hechizos +",
         "jp": "次のいくつかの呪文の時間を凍結します +"

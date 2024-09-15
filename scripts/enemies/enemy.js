@@ -1918,7 +1918,6 @@ class Enemy {
 
         let extraTimeMult = (2 - gameVars.timeSlowRatio) * this.attackSlownessMult;
 
-        console.log("attack start function launch")
         if (this.nextAttack.attackStartFunction) {
             this.nextAttack.attackStartFunction();
         }

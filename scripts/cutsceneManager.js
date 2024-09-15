@@ -144,7 +144,6 @@ function showCutscene1() {
 }
 let bansheeCanTween = false;
 function showCutscene2() {
-    playSound('sound_of_death');
     readyShowCutsceneLogic();
     globalObjects.cutsceneBarTop.y = gameConsts.height;
     globalObjects.cutsceneBarTop.alpha = 0;

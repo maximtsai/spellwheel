@@ -623,12 +623,12 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 46,
-						"h": 46
+						"w": 52,
+						"h": 52
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
+						"x": 5,
+						"y": 5,
 						"w": 42,
 						"h": 42
 					},
@@ -644,12 +644,12 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 46,
-						"h": 46
+						"w": 52,
+						"h": 52
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
+						"x": 5,
+						"y": 5,
 						"w": 42,
 						"h": 42
 					},
@@ -665,12 +665,12 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 46,
-						"h": 46
+						"w": 52,
+						"h": 52
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
+						"x": 5,
+						"y": 5,
 						"w": 42,
 						"h": 42
 					},
@@ -686,12 +686,12 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 46,
-						"h": 46
+						"w": 52,
+						"h": 52
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
+						"x": 5,
+						"y": 5,
 						"w": 42,
 						"h": 42
 					},
@@ -707,12 +707,12 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 46,
-						"h": 46
+						"w": 52,
+						"h": 52
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
+						"x": 5,
+						"y": 5,
 						"w": 42,
 						"h": 42
 					},
@@ -728,12 +728,12 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 46,
-						"h": 46
+						"w": 52,
+						"h": 52
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
+						"x": 5,
+						"y": 5,
 						"w": 42,
 						"h": 42
 					},
@@ -855,6 +855,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:58df5ed97c3f469f46526fa5c9245923:d9fcaab4cbd4447bdfb5b7edaff5f917:76d98c9e3f665caad5fa5a5151215d9e$"
+		"smartupdate": "$TexturePacker:SmartUpdate:48ee2e3240ae21d5d6f9b24e95d95e35:808268303afe824061aedcedd2165966:76d98c9e3f665caad5fa5a5151215d9e$"
 	}
 }

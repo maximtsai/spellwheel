@@ -1,6 +1,16 @@
 let language = 'en_us';
 
 let textData = {
+    "translate_warn": {
+        "en_us": " ",
+        "fr": "(Remarque: Certaines traductions\npeuvent être inexactes)",
+        "zh_tw": "(註：有些翻譯可能不準確)",
+        "zh_cn": "(注：有些翻译可能不准确)",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+
     "matter_strike_desc": {
         "en_us": "Deal 12 damage",
         "fr": "Inflige 12 points de dégâts",
@@ -506,10 +516,10 @@ let textData = {
         "jp": "敵を粉砕すると同時に、自分自身を守るために、多くの物質を召喚します。"
     },
     "mind_tut_desc": {
-        "en_us": "The Energy rune\ncontrols raw energy.\nEnergy spells have powerful utility\neffects and deal True damage that\nbypasses enemy defenses.",
-        "fr": "La rune Énergie accorde le contrôle de l’énergie brute. Les sorts d’énergie ont de puissants effets de soutien et peuvent infliger des dégâts bruts qui contournent les défenses ennemies.",
-        "zh_tw": "能量符文授予對原始能量的控制權。\n能量法術具有強大的支援效果，\n可以造成繞過敵人防禦的真實傷害。",
-        "zh_cn": "能量符文授予对原始能量的控制权。\n能量法术具有强大的支持效果，\n可以造成绕过敌人防御的真实伤害。",
+        "en_us": "The Energy rune controls raw energy.\nEnergy spells have powerful utility\neffects and deal True damage that\nbypasses enemy defenses.",
+        "fr": "La rune Énergie permet de contrôler\nl'énergie brute, avec des sorts qui\noffrent un soutien puissant et\ninfligent des dégâts bruts contournant\nles défenses ennemies.",
+        "zh_tw": "能量符文授予對原始能量的\n控制權。能量法術具有強大\n的支援效果，可以造成繞過\n敵人防禦的真實傷害。",
+        "zh_cn": "能量符文授予对原始能量的\n控制权。能量法术具有强大\n的支持效果，可以造成绕过\n敌人防御的真实伤害。",
         "ru": "Руна Энергия дает контроль над сырой энергией. Энергетические заклинания обладают мощными вспомогательными эффектами и могут наносить чистый урон, обойдя вражескую оборону.",
         "es": "La runa de energía otorga control sobre la energía bruta. Los hechizos de energía tienen poderosos efectos de apoyo y pueden infligir daño verdadero que supera las defensas enemigas.",
         "jp": "エネルギーのルーンは、生のエネルギーをコントロールすることを可能にします。エネルギー呪文は強力なサポート効果を持ち、敵の防御を迂回するトゥルーダメージを与えることができます。"
@@ -525,16 +535,16 @@ let textData = {
     },
     "mind_tut_strike_desc": {
         "en_us": "Fires a bolt of energy that\ndeals little damage by itself,\nbut amplifies your next\nattack for double (x2) damage.",
-        "fr": "Tire un éclair d’énergie qui inflige peu de dégâts en soi, mais amplifie votre prochaine attaque pour doubler (x2) de dégâts.",
-        "zh_tw": "發射一道能量彈，本身造成的傷害很小，但會放大你的下一次攻擊，造成雙倍 （x2） 傷害。",
-        "zh_cn": "发射一道能量弹，本身造成的伤害很小，但会放大你的下一次攻击，造成双倍 （x2） 伤害。",
+        "fr": "Tire un éclair d’énergie qui\binflige peu de dégâts en soi,\bmais amplifie votre prochaine\battaque pour doubler (x2) de\bdégâts.",
+        "zh_tw": "發射一道能量彈，本身造成的傷害很小，\n但會放大你的下一次攻擊，造成雙倍\n（x2）傷害。",
+        "zh_cn": "发射一道能量弹，本身造成的伤害很小，\n但会放大你的下一次攻击，造成双倍\n（x2）伤害。",
         "ru": "Выпускает заряд энергии, который сам по себе наносит небольшой урон, но усиливает вашу следующую атаку, нанося двойной (x2) урон.",
         "es": "Dispara un rayo de energía que inflige poco daño por sí solo, pero amplifica tu próximo ataque para infligir el doble (x2) de daño.",
         "jp": "それ自体はほとんどダメージを与えないエネルギーの稲妻を発射しますが、次の攻撃を増幅して2倍(x2)のダメージを与えます。"
     },
     "mind_tut_enhance_desc": {
         "en_us": "Your next attack sets the\nenemy on fire, which deals\nTrue damage over time that\nignores defenses.",
-        "fr": "Votre prochaine attaque met le feu à l’ennemi, ce qui lui inflige des dégâts bruts sur la durée qui ignorent les défenses.",
+        "fr": "Votre prochaine attaque met\nle feu à l’ennemi, ce qui\nlui inflige des dégâts bruts\nsur la durée qui ignorent les\ndéfenses.",
         "zh_tw": "你的下一次攻擊會讓敵人\n著火，隨著時間的推移會造成\n真正的傷害，而忽略了防禦。",
         "zh_cn": "你的下一次攻击会让敌人\n着火，随着时间的推移会造成\n真正的伤害，而忽略了防御。",
         "ru": "Ваша следующая атака поджигает врага, который наносит периодический чистый урон, игнорируя защиту.",
@@ -543,7 +553,7 @@ let textData = {
     },
     "mind_tut_protect_desc": {
         "en_us": "Creates a shield that blocks\nhalf of all damage, while\nstoring up and retaliating with\nthe damage you do take.",
-        "fr": "Crée un bouclier qui bloque la moitié de tous les dégâts, tout en accumulant et en ripostant avec les dégâts que vous subissez.",
+        "fr": "Crée un bouclier qui bloque la\nmoitié de tous les dégâts,\ntout en accumulant et en ripostant\navec les dégâts que vous subissez.",
         "zh_tw": "創建一個盾牌，可以阻擋所有\n傷害的一半，同時儲存並利用你所\n受到的傷害進行報復。",
         "zh_cn": "打造一个盾牌，可以阻挡所有\n伤害的一半，同时储存并利用你所\n受到的伤害进行报复。",
         "ru": "Создает щит, который блокирует половину всего урона, накапливая и нанося ответный урон.",

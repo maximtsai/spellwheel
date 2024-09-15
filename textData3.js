@@ -2,7 +2,7 @@
 let textData3 = {
     "spell_info_position": {
         "en_us": "SPELL INFO POSITION",
-        "fr": "position des informations magiques",
+        "fr": "POSITION DES INFOS MAGIQUES",
         "zh_tw": "法術資訊位置",
         "zh_cn": "法术信息位置",
         "ru": "ИНФОРМАЦИЯ О ЗАКЛИНАНИЯХ ПОЗИЦИЯ",
@@ -11,7 +11,7 @@ let textData3 = {
     },
     "language_text": {
         "en_us": "LANGUAGE",
-        "fr": "langue",
+        "fr": "LANGUE",
         "zh_tw": "語言",
         "zh_cn": "语言",
         "ru": "язык",
@@ -20,7 +20,7 @@ let textData3 = {
     },
     "left": {
         "en_us": "LEFT",
-        "fr": "Gauche",
+        "fr": "GAUCHE",
         "zh_tw": "左",
         "zh_cn": "左",
         "ru": "Лево",
@@ -29,7 +29,7 @@ let textData3 = {
     },
     "center": {
         "en_us": "CENTER",
-        "fr": "Centre",
+        "fr": "CENTRE",
         "zh_tw": "中心",
         "zh_cn": "中心",
         "ru": "Центр",
@@ -38,7 +38,7 @@ let textData3 = {
     },
     "hidden": {
         "en_us": "HIDDEN",
-        "fr": "Caché",
+        "fr": "CACHÉ",
         "zh_tw": "隱藏",
         "zh_cn": "隐藏",
         "ru": "Скрытый",
@@ -47,7 +47,7 @@ let textData3 = {
     },
     "resume": {
         "en_us": "RESUME",
-        "fr": "Continuer",
+        "fr": "CONTINUER",
         "zh_tw": "繼續",
         "zh_cn": "继续",
         "ru": "Продолжить",
@@ -56,7 +56,7 @@ let textData3 = {
     },
     "menu": {
         "en_us": "MENU",
-        "fr": "Menu",
+        "fr": "MENU",
         "zh_tw": "主页",
         "zh_cn": "主页",
         "ru": "Меню",

@@ -348,7 +348,7 @@ class Options {
     createInfoBoxPosText() {
 
         if (!this.infoBoxPosText) {
-            let startPos = gameConsts.halfHeight - 75;
+            let startPos = gameConsts.halfHeight - 78;
             this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth - 215, startPos - 25, getLangText('spell_info_position'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
             this.listOfThingsToHide.push(this.infoBoxPosText);
 
@@ -517,14 +517,19 @@ class Options {
     }
 
     createLanguageSelect() {
-        let listOfLanguages = ['english', '简体中文', '繁体中文', 'français'];
+        let listOfLanguages = ['English', '简体中文', '繁体中文', 'Français'];
         let listOfLanguageCodes = ['en_us', 'zh_cn', 'zh_tw', 'fr'];
         if (!this.langSelectText) {
-            let startPos = gameConsts.halfHeight + 15;
-            this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 215, startPos - 25, getLangText('language_text'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
+            let startPos = gameConsts.halfHeight + 9;
+            this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 215, startPos - 39, getLangText('language_text'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
             this.addLangTextUpdateable(this.langSelectText, 'language_text')
+            
+            this.langWarningText = PhaserScene.add.text(gameConsts.halfWidth + 215, startPos - 39, getLangText('translate_warn'), {fontFamily: 'garamondmax', fontSize: 18, color: '#604A4A', align: 'right'}).setOrigin(1, 0.5).setDepth(this.baseDepth).setAlpha(0.5);
+            this.addLangTextUpdateable(this.langWarningText, 'translate_warn')
+
 
             this.listOfThingsToHide.push(this.langSelectText);
+            this.listOfThingsToHide.push(this.langWarningText);
 
             this.listOfLanguageText = [];
             this.listOfLangButtons = [];

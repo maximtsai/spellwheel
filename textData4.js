@@ -810,7 +810,7 @@ let textData4 = {
         "jp": ""
     },
     "badend_3": {
-        "en_us": "Aging, withering, yet unable to find rest.",
+        "en_us": "You age and wither, yet cannot find rest.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

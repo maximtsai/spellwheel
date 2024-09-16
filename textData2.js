@@ -12,8 +12,8 @@ let textData2 = {
     "encyclopedia_rune_action": {
         "en_us": "Action Runes: ",
         "fr": "Runes d’action: ",
-        "zh_tw": "動作符文：",
-        "zh_cn": "动作符文：",
+        "zh_tw": "作用符文：",
+        "zh_cn": "作用符文：",
         "ru": "Руны действия: ",
         "es": "Runas de acción: ",
         "jp": "アクションルーン: "
@@ -148,8 +148,8 @@ let textData2 = {
     "encyc_ultimate": {
         "en_us": "ULTIMATE",
         "fr": "ULTIME",
-        "zh_tw": "大招",
-        "zh_cn": "大招",
+        "zh_tw": "究極",
+        "zh_cn": "究极",
         "ru": "Конечный",
         "es": "Último",
         "jp": "究極"
@@ -377,19 +377,19 @@ let textData2 = {
         "en_us": "ACTIONS",
         "fr": "ACTIONS",
         "zh_tw": "行動",
-        "zh_cn": "行动",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "zh_cn": "作用",
+        "ru": "ДЕЙСТВИЯ",
+        "es": "COMPORTAMIENTO",
+        "jp": "アクション"
     },
     "encyc_element": {
         "en_us": "ELEMENTS",
         "fr": "ÉLÉMENTS",
         "zh_tw": "元素",
         "zh_cn": "元素",
-        "ru": "",
-        "es": "",
-        "jp": ""
+        "ru": "ЭЛЕМЕНТЫ",
+        "es": "ELEMENTOS",
+        "jp": "要素"
     },
     "pre_fight_0a": {
         "en_us": "CONTROLS:",
@@ -637,8 +637,8 @@ let textData2 = {
     "level1_tut_a": {
         "en_us": "Enhance Rune\nstrengthens your\nnext attack\n ",
         "fr": "La rune Renforcement\naméliore votre\nprochaine attaque\n ",
-        "zh_tw": "强化符文增強\n能你的下一次攻擊\n ",
-        "zh_cn": "强化符文增强\n能你的下一次攻击\n ",
+        "zh_tw": "强化符文能增強\n你的下一次攻擊\n ",
+        "zh_cn": "强化符文能增强\n你的下一次攻击\n ",
         "ru": "Руна усиления\nусиливает вашу\nследующую атаку\n ",
         "es": "La runa mejorada\nfortalece tu\npróximo ataque\n ",
         "jp": "強化ルーンは次の\n攻撃を強化します\n "

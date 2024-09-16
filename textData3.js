@@ -1,5 +1,14 @@
 
 let textData3 = {
+    "codes": {
+        "en_us": "SECRET\NCODES",
+        "fr": "CODES\nSECRETS",
+        "zh_tw": "密碼",
+        "zh_cn": "密码",
+        "ru": "СЕКРЕТНЫЕ\nКОДЫ",
+        "es": "CÓDIGOS\nSECRETOS",
+        "jp": "秘密のコード"
+    },
     "spell_info_position": {
         "en_us": "SPELL INFO POSITION",
         "fr": "POSITION DES INFOS MAGIQUES",

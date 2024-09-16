@@ -353,9 +353,10 @@ class Encyclopedia {
         playSound('flip1');
         this.title.setText(getLangText('pre_fight_0a'));
         let imageCover = PhaserScene.add.image(gameConsts.halfWidth - 3, gameConsts.halfHeight + 10, 'ui', 'newgame_paper.png').setDepth(this.baseDepth).setAlpha(0).setScale(1);
-        let text1 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 47, getLangText('encyc_action'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'center'});
+        let smallFontSize = (language == 'zh_cn' || language == 'zh_tw') ? 24 : 18;
+        let text1 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 47, getLangText('encyc_action'), {fontFamily: 'opensans', fontSize: smallFontSize, color: '#200000', align: 'center'});
         text1.setDepth(this.baseDepth).setOrigin(0.5, 0).setAlpha(0).setStroke('#ffffff', 2);
-        let text2 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 115, getLangText('encyc_element'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'center'});
+        let text2 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 115, getLangText('encyc_element'), {fontFamily: 'opensans', fontSize: smallFontSize, color: '#200000', align: 'center'});
         text2.setDepth(this.baseDepth).setOrigin(0.5, 0).setAlpha(0).setStroke('#ffffff', 2);
 
         let text3 = PhaserScene.add.text(gameConsts.halfWidth + 138, gameConsts.halfHeight - 185, getLangText('pre_fight_0c'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});

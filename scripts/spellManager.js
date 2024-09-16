@@ -132,7 +132,7 @@ class SpellManager {
 
         let pebbles = getTempPoolObject('spells', 'rockCircle.png', 'rockCircle', 800);
         pebbles.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 240);
-        let additionalScale = Math.sqrt(additionalDamage) * 0.021;
+        let additionalScale = Math.sqrt(additionalDamage) * 0.022;
         let finalAdditionaScale = additionalScale * 5;
         pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalScale).setRotation(Math.random() * 3)
         this.scene.tweens.add({
@@ -176,7 +176,7 @@ class SpellManager {
             this.scene.tweens.add({
                 targets: [rockObj, rockObj.bg],
                 delay: 150,
-                duration: 400 + additionalDamage * 2,
+                duration: 400 + Math.floor(additionalDamage * 1.5),
                 scaleX: rockObjTargetScale,
                 scaleY: rockObjTargetScale,
                 ease: 'Back.easeOut',
@@ -255,7 +255,7 @@ class SpellManager {
             this.scene.tweens.add({
                 targets: [rockObj, rockObj.bg],
                 delay: 150,
-                duration: 450 + additionalDamage * 2,
+                duration: 450 + Math.floor(additionalDamage * 1.5),
                 rotation: (Math.random() - 0.5) * 3,
                 ease: 'Quart.easeOut'
             });
@@ -264,8 +264,8 @@ class SpellManager {
         for (let i = 0; i < rockObjects.length; i++) {
             let rockObj = rockObjects[i];
             let delayAmt = 600 + i * (220 - i * 12) + additionalDamage * 2 + (isExtraBuff ? 325 : 0);
-            let durationAmt = 500 + additionalDamage * 5;
-            let rockGoalScale = (isMobile ? 0.37 : 0.34) + additionalScale * 0.6;
+            let durationAmt = 500 + additionalDamage * 4;
+            let rockGoalScale = (isMobile ? 0.37 : 0.35) + additionalScale * 0.68;
             this.scene.tweens.add({
                 targets: [rockObj, rockObj.bg],
                 delay: delayAmt,

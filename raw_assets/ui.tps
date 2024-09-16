@@ -188,6 +188,23 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">ui/combo_btn.png</key>
+            <key type="filename">ui/combo_btn_hover.png</key>
+            <key type="filename">ui/combo_btn_press.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>13,11,25,21</rect>
+                <key>scale9Paddings</key>
+                <rect>13,11,25,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">ui/credits.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

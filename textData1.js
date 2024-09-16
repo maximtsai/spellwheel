@@ -707,8 +707,8 @@ let textData = {
     "unload_tut_desc": {
         "en_us": "The Ultimate rune grants you\nsome of the most powerful\nspells in your arsenal.\nUse this rune wisely.",
         "fr": "La rune ultime vous confère\ncertains des sorts les plus\npuissants de votre arsenal.\nUtilisez cette rune à bon escient.",
-        "zh_tw": "大招符文賦予您武器庫中一些最強大的法術。明智地使用這個符文。",
-        "zh_cn": "大招符文赋予您武器库中一些最强大的法术。明智地使用这个符文。",
+        "zh_tw": "究極符文賦予您武器庫中一些最強大的法術。明智地使用這個符文。",
+        "zh_cn": "究极符文赋予您武器库中一些最强大的法术。明智地使用这个符文。",
         "ru": "Руна Ultimate дает вам одни из самых мощных заклинаний в вашем арсенале. Используйте эту руну с умом.",
         "es": "La runa definitiva te otorga algunos de los hechizos más poderosos de tu arsenal. Usa esta runa sabiamente.",
         "jp": "アルティメットルーンは、あなたの武器の中で最も強力な呪文のいくつかをあなたに与えます。このルーンを賢く使いましょう。"

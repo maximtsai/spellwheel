@@ -61,12 +61,14 @@ let gameConsts = {
     SDK: null
 };
 let cheats = {
+    calmEnemies: false,
     extraHealth: false,
     bonusHealth: false,
     extraDmg: false,
     extraExtraDmg: false,
     superShield: false,
     fullArsenal: false,
+    extraUlt: false,
     infiniteAmmo: false,
     slowEnemies: false,
     frail: false,

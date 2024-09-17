@@ -13,10 +13,13 @@ let highestLevel = 0;
 let ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MATTER, null, null, null, null, null];
 let EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, null, null, null, null, null, null, null, null];
 
-function updateSpellState(level = 0) {
+function updateSpellState(level) {
     if (cheats.fullArsenal) {
         EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, RUNE_UNLOAD, RUNE_REINFORCE, RUNE_ENHANCE, RUNE_PROTECT, RUNE_STRIKE];
         ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_TIME, RUNE_VOID, RUNE_MATTER, RUNE_MIND, RUNE_TIME];
+        if (cheats.extraUlt) {
+            EMBODIMENT_ARRAY[0] = RUNE_UNLOAD;
+        }
         return;
     }
     highestLevel = level;
@@ -114,8 +117,11 @@ function updateSpellState(level = 0) {
             gameVars.mindPlus = true;
             break;
         default:
-            EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_ENHANCE, null, null, null, null, RUNE_ENHANCE, RUNE_STRIKE];
-            ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MATTER, null, null, null, RUNE_MIND];
+            // do nothing
             break;
+    }
+
+    if (cheats.extraUlt) {
+        EMBODIMENT_ARRAY[0] = RUNE_UNLOAD;
     }
 }

@@ -1105,16 +1105,44 @@ class Options {
                     this.codeAnnounce.setScale(0.9);
                 }
                 break;
-            case '16a36e86f6fed5d465ff332511a0ce1a863b55d364b25a7cdaa25db19abf9648':
-                toggleCheat('hpdx')
-                if (cheats.bonusHealth) {
-                    this.codeAnnounce.setText("+20 EXTRA HEALTH ENABLED");
-                    playSound('magic', 0.6);
+            case '7468eb2fafacc40a127adab1f3e84914ddb48c8daa63f4992ef42d5390aa8e2b':
+                toggleCheat('ultr')
+                if (cheats.extraUlt) {
+                    this.codeAnnounce.setText("EXTRA ULT RUNE ENABLED");
+                    playSound('matter_body', 0.6);
                 } else {
-                    this.codeAnnounce.setText("+20 EXTRA HEALTH DISABLED");
+                    this.codeAnnounce.setText("EXTRA ULT RUNE DISABLED");
                     this.codeAnnounce.setColor('#888888');
                     this.codeAnnounce.setScale(0.9);
                 }
+                break;
+            case '16a36e86f6fed5d465ff332511a0ce1a863b55d364b25a7cdaa25db19abf9648':
+                toggleCheat('hpdx')
+                if (cheats.bonusHealth) {
+                    this.codeAnnounce.setText("+20 HEALTH ENABLED");
+                    playSound('magic', 0.6);
+                } else {
+                    this.codeAnnounce.setText("+20 HEALTH DISABLED");
+                    this.codeAnnounce.setColor('#888888');
+                    this.codeAnnounce.setScale(0.9);
+                }
+                break;
+            case '96c89195a5a61917821ba4bef1e432bebcc13db08e6c36b6210f5bc6a0268fab':
+                this.codeAnnounce.setText("HEAL SELF");
+                playSound('magic', 0.6);
+                globalObjects.player.selfHeal(80);
+                break;
+            case 'ec3851e00c9a510bd82c08299cc9366df7291b0e35e3cc8577c6e18c913d944e':
+                toggleCheat('cene');
+                if (cheats.calmEnemies) {
+                    this.codeAnnounce.setText("CALM ENEMIES ENABLED");
+                    playSound('mind_enhance', 0.7);
+                } else {
+                    this.codeAnnounce.setText("CALM ENEMIES DISABLED");
+                    this.codeAnnounce.setColor('#888888');
+                    this.codeAnnounce.setScale(0.9);
+                }
+                playSound('magic', 0.6);
                 break;
             case 'd7b9a5d383a37262fe24f1985d7eb39c9c664292cf2c313911978467f2cb583b':
                 toggleCheat('dd')
@@ -1145,6 +1173,17 @@ class Options {
                     playSound('matter_shield', 0.7);
                 } else {
                     this.codeAnnounce.setText("SUPER SHIELD DISABLED");
+                    this.codeAnnounce.setColor('#888888');
+                    this.codeAnnounce.setScale(0.9);
+                }
+                break;
+            case 'bf8ee00cae00a44aaabcc577dd4bdcb97f1ec6e53d776cb23ac1b3e683aea14a':
+                toggleCheat('hpx')
+                if (cheats.extraHealth) {
+                    this.codeAnnounce.setText("+1000 HEALTH ENABLED");
+                    playSound('magic', 0.75);
+                } else {
+                    this.codeAnnounce.setText("+1000 HEALTH DISABLED");
                     this.codeAnnounce.setColor('#888888');
                     this.codeAnnounce.setScale(0.9);
                 }

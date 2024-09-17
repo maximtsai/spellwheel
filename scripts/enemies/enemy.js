@@ -409,6 +409,9 @@ class Enemy {
                 timeChange = 0;
             }
             chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
+            if (chargeMult > 1 && cheats.calmEnemies) {
+                chargeMult = chargeMult * 0.5 + 1;
+            }
             let almostIshDone = this.attackCharge > this.nextAttackChargeNeeded - 145;
             if (almostIshDone) {
                 if (!this.attackName.hasWarned && !this.nextAttack.isPassive && this.attackName.active) {
@@ -451,6 +454,9 @@ class Enemy {
             }
             if (this.isAngry) {
                 let increaseMult = Math.max(5, 0.33 * chargeMult);
+                if (cheats.calmEnemies) {
+                    increaseMult = 1 + increaseMult * 0.6;
+                }
                 this.attackCharge += timeChange * increaseMult * this.slowMult;
                 this.castAggravateCharge = 0;
             } else {
@@ -2191,7 +2197,7 @@ class Enemy {
     }
 
     playerClickedSpell() {
-        this.castAggravateCharge = 24;
+        this.castAggravateCharge = cheats.calmEnemies ? 18 : 25;
     }
 
     addCastAggravate(amt) {

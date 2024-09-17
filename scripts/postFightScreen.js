@@ -306,12 +306,12 @@ class PostFightScreen {
 
         if (!this.subscription) {
             this.subscription = messageBus.subscribe("language_switch", (lang) => {
-                if (this.currLevel <= 6 && this.currLevel >= 0) {
+                if (gameVars.currLevel <= 6 && gameVars.currLevel >= 0) {
                     this.trainingButton.setText(getLangText('post_fight_training'))
                 } else {
                     this.trainingButton.setText(getLangText('post_fight_no_training'))
                 }
-                this.setTextUI(this.currLevel);
+                this.setTextUI(gameVars.currLevel);
             });
         }
         this.locketButton.setState(DISABLE);
@@ -348,7 +348,7 @@ class PostFightScreen {
             }
         }
         this.continueButton.setState(DISABLE);
-        if (this.currLevel <= 6 && this.currLevel >= 0) {
+        if (gameVars.currLevel <= 6 && gameVars.currLevel >= 0) {
             this.trainingButton.setText(getLangText('post_fight_training'))
             this.trainingButton.setState(NORMAL);
             setTimeout(() => {
@@ -356,7 +356,7 @@ class PostFightScreen {
                     this.continueButton.setText(getLangText('post_fight_skip_training'));
                     let text = this.continueButton.getText();
 
-                    if (this.currLevel < gameVars.latestLevel) {
+                    if (gameVars.currLevel < gameVars.latestLevel) {
                         text.alpha = 0.7;
                     } else {
                         text.alpha = 0;
@@ -528,7 +528,7 @@ class PostFightScreen {
                 ease: 'Cubic.easeOut',
                 duration: 250,
             });
-            this.showStoryText(this.currLevel);
+            this.showStoryText(gameVars.currLevel);
             // PhaserScene.tweens.add({
             //     targets: [this.locketSprite],
             //     x: gameConsts.halfWidth + 120,
@@ -564,7 +564,7 @@ class PostFightScreen {
             localStorage.setItem("latestLevel", level.toString());
         }
 
-        this.currLevel = level;
+        gameVars.currLevel = level;
         this.createWinScreenUI(level);
         this.continueButton.setOnMouseUpFunc(() => {
             this.locketRecentlyClicked = false;
@@ -659,7 +659,7 @@ class PostFightScreen {
         globalObjects.bannerTextManager.setDialog(this.locketDialog);
     }
 
-    setTextUI(level = this.currLevel) {
+    setTextUI(level = gameVars.currLevel) {
         if (this.isMin) {
             this.titleText.setText(getLangText('post_fight_title2'));
             this.newRuneAnnounce.setText(' ');

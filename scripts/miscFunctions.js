@@ -59,6 +59,9 @@ function hideGlobalClickBlocker() {
 let cheatsDisplay;
 function toggleCheat(code) {
     switch(code) {
+        case 'cene':
+            cheats.calmEnemies = !cheats.calmEnemies;
+            break;
         case 'dd':
             cheats.extraDmg = !cheats.extraDmg;
             break;
@@ -90,7 +93,14 @@ function toggleCheat(code) {
             break;
         case 'flal':
             cheats.fullArsenal = !cheats.fullArsenal;
-            updateSpellState(gameVars.latestLevel);
+            updateSpellState(gameVars.currLevel);
+            globalObjects.magicCircle.buildRunes()
+            messageBus.publish('manualResetElements');
+            messageBus.publish('manualResetEmbodiments');
+            break;
+        case 'ultr':
+            cheats.extraUlt = !cheats.extraUlt;
+            updateSpellState(gameVars.currLevel);
             globalObjects.magicCircle.buildRunes()
             messageBus.publish('manualResetElements');
             messageBus.publish('manualResetEmbodiments');

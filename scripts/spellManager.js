@@ -26,6 +26,9 @@ class SpellManager {
                     case RUNE_PROTECT:
                         this.castMatterProtect(shieldID, rotation);
                         break;
+                    case "rune_superprotect":
+                        this.castMatterProtect(shieldID, rotation, true);
+                        break;
                     case RUNE_UNLOAD:
                         this.castMatterUltimate();
                         break;
@@ -601,7 +604,7 @@ class SpellManager {
         this.postNonAttackCast(spellID, spellName);
     }
 
-    castMatterProtect(shieldID, rotation) {
+    castMatterProtect(shieldID, rotation, isSuper) {
         const spellID = 'matterProtect';
         this.cleanUpExistingShield(shieldID);
         let spellMultiplier = globalObjects.player.spellMultiplier();
@@ -616,6 +619,9 @@ class SpellManager {
         animation2.rotateOffset = 0;
 
         let shieldFile = spellMultiplier > 1.1 ? 'stoneShieldTriple.png' : 'stoneShield.png';
+        if (isSuper) {
+            shieldFile = 'stoneShieldTriple.png';
+        }
 
         let animation1 = this.scene.add.image(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', shieldFile);
         animation1.setDepth(1);
@@ -659,6 +665,9 @@ class SpellManager {
         let shieldBaseHealth = gameVars.matterPlus ? 14 : 12;
 
         let shieldHealth = shieldBaseHealth * spellMultiplier;
+        if (isSuper) {
+            shieldHealth = 100;
+        }
         textHealth.setText(shieldHealth);
         messageBus.publish('setTempRotObjs', [animation1], rotation);
 
@@ -738,6 +747,9 @@ class SpellManager {
         if (spellMultiplier >= 3) {
             spellName = "SHIELD OF STONE X" + spellMultiplier;
             bonusSize = 0.1;
+        }
+        if (isSuper) {
+            spellName = "SUPER STONE SHIELD"
         }
         this.postNonAttackCast(spellID, spellName, bonusSize);
     }

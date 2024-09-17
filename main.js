@@ -65,6 +65,7 @@ let cheats = {
     bonusHealth: false,
     extraDmg: false,
     extraExtraDmg: false,
+    superShield: false,
     fullArsenal: false,
     infiniteAmmo: false,
     slowEnemies: false,

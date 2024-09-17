@@ -1127,6 +1127,29 @@ class Options {
                     this.codeAnnounce.setScale(0.9);
                 }
                 break;
+            case 'd81bbd22822c4b94dd25738ab60f2fa452f0359d0c5f2634c07c7a7b6aa7b16b':
+                toggleCheat('edd')
+                if (cheats.extraExtraDmg) {
+                    this.codeAnnounce.setText("X2 MORE DAMAGE ENABLED");
+                    playSound('mind_enhance', 0.7);
+                } else {
+                    this.codeAnnounce.setText("X2 MORE DAMAGE DISABLED");
+                    this.codeAnnounce.setColor('#888888');
+                    this.codeAnnounce.setScale(0.9);
+                }
+                break;
+            case '663409641b29b53f255ed4e01ce8ad89dd6179119a2abb8845552c38735342a6':
+                toggleCheat('sshd')
+                if (cheats.superShield) {
+                    this.codeAnnounce.setText("SUPER SHIELD ENABLED");
+                    playSound('matter_shield', 0.7);
+                } else {
+                    this.codeAnnounce.setText("SUPER SHIELD DISABLED");
+                    this.codeAnnounce.setColor('#888888');
+                    this.codeAnnounce.setScale(0.9);
+                }
+                break;
+
             default:
                 playSound('fizzle', 0.8)
                 this.codeAnnounce.setText(getLangText('unknown_code'))

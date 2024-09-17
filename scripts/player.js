@@ -401,6 +401,9 @@ class Player {
         if (this.healthBarReady) {
             this.refreshHealthBar();
         }
+        if (cheats.superShield) {
+            messageBus.publish('castSpell', {runeName: "rune_matter"}, {runeName: "rune_superprotect"}, 'shield9', 0);
+        }
     }
 
 

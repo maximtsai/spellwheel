@@ -75,6 +75,14 @@ function toggleCheat(code) {
             globalObjects.player.reInitStats();
             globalObjects.player.resetStats();
             break;
+        case 'sshd':
+            cheats.superShield = !cheats.superShield;
+            if (cheats.superShield) {
+                messageBus.publish('castSpell', {runeName: "rune_matter"}, {runeName: "rune_superprotect"}, 'shield9', 0);
+            } else {
+                globalObjects.player.clearSpecificEffect('shield9')
+            }
+            break;
         case 'inam':
             cheats.infiniteAmmo = !cheats.infiniteAmmo;
             messageBus.publish('manualResetElements');

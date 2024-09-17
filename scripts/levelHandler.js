@@ -2,6 +2,7 @@ let CURRENT_LEVEL = null;
 let levelTimeoutID = null;
 
 function beginPreLevel(lvl) {
+
     globalObjects.encyclopedia.hideButton();
     globalObjects.options.hideButton();
     let introPaper;

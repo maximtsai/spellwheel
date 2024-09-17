@@ -726,6 +726,8 @@ let textData = {
 
 function setLanguage(lang) {
     language = lang;
+    localStorage.setItem("language", lang);
+
     messageBus.publish('language_switch', lang)
 }
 

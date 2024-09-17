@@ -389,6 +389,37 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">ui/play_btn.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,16,31,31</rect>
+                <key>scale9Paddings</key>
+                <rect>16,16,31,31</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ui/play_btn_hover.png</key>
+            <key type="filename">ui/play_btn_press.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,16,33,33</rect>
+                <key>scale9Paddings</key>
+                <rect>16,16,33,33</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">ui/retry.png</key>
             <key type="filename">ui/retry_hover.png</key>
             <key type="filename">ui/retry_press.png</key>

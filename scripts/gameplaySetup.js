@@ -561,7 +561,7 @@ function clickIntro() {
             cleanupIntro(PhaserScene);
         }
     });
-    loadObjects.skipIntroText = PhaserScene.add.text(gameConsts.width - 5, gameConsts.height - 5, 'CLICK TO SKIP', {fontFamily: 'verdana', fontSize: 18, color: '#FFFFFF', align: 'right'}).setDepth(1005).setAlpha(0).setOrigin(1, 1);
+    loadObjects.skipIntroText = PhaserScene.add.text(gameConsts.width - 5, gameConsts.height - 5, getLangText('click_to_skip'), {fontFamily: 'verdana', fontSize: 18, color: '#FFFFFF', align: 'right'}).setDepth(1005).setAlpha(0).setOrigin(1, 1);
     loadObjects.loadingText.setText(" ").setAlpha(0).setScale(0.75).y -= 18;
     loadObjects.whiteOverall = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setDepth(2000).setAlpha(0).setScale(1000);
     PhaserScene.tweens.add({
@@ -572,7 +572,7 @@ function clickIntro() {
     });
     PhaserScene.time.delayedCall(1200, () => {
         if (!gameVars.introFinished) {
-            loadObjects.loadingText.setAlpha(0).setText("I will find you").setAlign('center');
+            loadObjects.loadingText.setAlpha(0).setText(getLangText('find_you')).setAlign('center');
             PhaserScene.tweens.add({
                 targets: loadObjects.loadingText,
                 alpha: 1,

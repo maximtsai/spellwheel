@@ -544,8 +544,7 @@ const ENABLE_KEYBOARD = true;
             originY: 1,
             depth: 200
         })
-        this.spellDescriptor.setAlpha(gameOptions.infoBoxAlign == 'center' ? 0.9 : 0.98);
-
+        this.refreshHoverText();
         this.dragCircle = scene.add.sprite(x, y, 'circle', 'drag_circle.png').setAlpha(isMobile ? 0.75 : 0.55);
         this.dragCircle.setDepth(100001);
         this.dragCircle.visible = false;

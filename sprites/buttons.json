@@ -52,16 +52,16 @@
 					}
 				},
 				{
-					"filename": "closebtn.png",
+					"filename": "closebtn_press.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 46,
-						"h": 46
+						"w": 56,
+						"h": 56
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
+						"x": 7,
+						"y": 7,
 						"w": 42,
 						"h": 42
 					},
@@ -73,16 +73,16 @@
 					}
 				},
 				{
-					"filename": "closebtn_hover.png",
+					"filename": "encyclopedia_btn_hover.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 46,
-						"h": 46
+						"w": 52,
+						"h": 52
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
+						"x": 5,
+						"y": 5,
 						"w": 42,
 						"h": 42
 					},
@@ -115,16 +115,16 @@
 					}
 				},
 				{
-					"filename": "closebtn_press.png",
+					"filename": "encyclopedia_btn_normal.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 46,
-						"h": 46
+						"w": 52,
+						"h": 52
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
+						"x": 5,
+						"y": 5,
 						"w": 42,
 						"h": 42
 					},
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "encyclopedia_btn_hover.png",
+					"filename": "encyclopedia_btn_press.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "encyclopedia_btn_normal.png",
+					"filename": "options_btn_hover.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "encyclopedia_btn_press.png",
+					"filename": "options_btn_normal.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "options_btn_hover.png",
+					"filename": "options_btn_press.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,24 +346,24 @@
 					}
 				},
 				{
-					"filename": "options_btn_normal.png",
+					"filename": "tut_btn.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 52,
-						"h": 52
+						"w": 228,
+						"h": 54
 					},
 					"spriteSourceSize": {
-						"x": 5,
-						"y": 5,
-						"w": 42,
-						"h": 42
+						"x": 48,
+						"y": 13,
+						"w": 138,
+						"h": 41
 					},
 					"frame": {
 						"x": 309,
 						"y": 75,
-						"w": 42,
-						"h": 42
+						"w": 138,
+						"h": 41
 					}
 				},
 				{
@@ -388,48 +388,6 @@
 					}
 				},
 				{
-					"filename": "options_btn_press.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 52,
-						"h": 52
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 5,
-						"w": 42,
-						"h": 42
-					},
-					"frame": {
-						"x": 353,
-						"y": 75,
-						"w": 42,
-						"h": 42
-					}
-				},
-				{
-					"filename": "tut_btn.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 228,
-						"h": 54
-					},
-					"spriteSourceSize": {
-						"x": 48,
-						"y": 13,
-						"w": 138,
-						"h": 41
-					},
-					"frame": {
-						"x": 397,
-						"y": 75,
-						"w": 138,
-						"h": 41
-					}
-				},
-				{
 					"filename": "new_btn_anim_4.png",
 					"rotated": false,
 					"trimmed": true,
@@ -448,6 +406,27 @@
 						"y": 1,
 						"w": 83,
 						"h": 72
+					}
+				},
+				{
+					"filename": "slip.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 85,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 83,
+						"h": 39
+					},
+					"frame": {
+						"x": 449,
+						"y": 75,
+						"w": 83,
+						"h": 39
 					}
 				},
 				{
@@ -472,7 +451,7 @@
 					}
 				},
 				{
-					"filename": "slip.png",
+					"filename": "slip_hover.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -486,7 +465,7 @@
 						"h": 39
 					},
 					"frame": {
-						"x": 537,
+						"x": 534,
 						"y": 75,
 						"w": 83,
 						"h": 39
@@ -528,31 +507,31 @@
 						"h": 55
 					},
 					"frame": {
-						"x": 622,
+						"x": 619,
 						"y": 72,
 						"w": 55,
 						"h": 55
 					}
 				},
 				{
-					"filename": "new_btn_anim_13.png",
+					"filename": "closebtn.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 86,
-						"h": 86
+						"w": 54,
+						"h": 54
 					},
 					"spriteSourceSize": {
-						"x": 20,
-						"y": 19,
-						"w": 66,
-						"h": 53
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 54
 					},
 					"frame": {
-						"x": 679,
+						"x": 676,
 						"y": 72,
-						"w": 66,
-						"h": 53
+						"w": 54,
+						"h": 54
 					}
 				},
 				{
@@ -591,7 +570,7 @@
 						"h": 56
 					},
 					"frame": {
-						"x": 747,
+						"x": 732,
 						"y": 70,
 						"w": 85,
 						"h": 56
@@ -619,6 +598,27 @@
 					}
 				},
 				{
+					"filename": "new_btn_anim_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 13,
+						"w": 85,
+						"h": 59
+					},
+					"frame": {
+						"x": 819,
+						"y": 68,
+						"w": 85,
+						"h": 59
+					}
+				},
+				{
 					"filename": "new_btn_anim_12.png",
 					"rotated": false,
 					"trimmed": true,
@@ -637,27 +637,6 @@
 						"y": 1,
 						"w": 66,
 						"h": 64
-					}
-				},
-				{
-					"filename": "new_btn_anim_2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 86,
-						"h": 86
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 13,
-						"w": 85,
-						"h": 59
-					},
-					"frame": {
-						"x": 834,
-						"y": 67,
-						"w": 85,
-						"h": 59
 					}
 				},
 				{
@@ -696,7 +675,7 @@
 						"h": 62
 					},
 					"frame": {
-						"x": 921,
+						"x": 906,
 						"y": 65,
 						"w": 377,
 						"h": 62
@@ -724,24 +703,45 @@
 					}
 				},
 				{
-					"filename": "slip_hover.png",
+					"filename": "closebtn_hover.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 85,
-						"h": 42
+						"w": 56,
+						"h": 56
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 2,
-						"w": 83,
-						"h": 39
+						"y": 0,
+						"w": 56,
+						"h": 56
 					},
 					"frame": {
-						"x": 1300,
+						"x": 1285,
 						"y": 65,
-						"w": 83,
-						"h": 39
+						"w": 56,
+						"h": 56
+					}
+				},
+				{
+					"filename": "new_btn_anim_13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 19,
+						"w": 66,
+						"h": 53
+					},
+					"frame": {
+						"x": 1343,
+						"y": 65,
+						"w": 66,
+						"h": 53
 					}
 				},
 				{
@@ -759,7 +759,7 @@
 						"h": 39
 					},
 					"frame": {
-						"x": 1385,
+						"x": 1411,
 						"y": 65,
 						"w": 83,
 						"h": 39
@@ -780,7 +780,7 @@
 						"h": 27
 					},
 					"frame": {
-						"x": 1470,
+						"x": 1496,
 						"y": 65,
 						"w": 53,
 						"h": 27
@@ -801,7 +801,7 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 1470,
+						"x": 1496,
 						"y": 94,
 						"w": 24,
 						"h": 24
@@ -822,7 +822,7 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 1496,
+						"x": 1522,
 						"y": 94,
 						"w": 24,
 						"h": 24
@@ -843,7 +843,7 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 1522,
+						"x": 1548,
 						"y": 94,
 						"w": 24,
 						"h": 24
@@ -864,7 +864,7 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 1525,
+						"x": 1551,
 						"y": 65,
 						"w": 24,
 						"h": 24
@@ -876,6 +876,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:19e5cbe8b0c13ab29d39b6cad20290ad:7d1e2a5d17dbc211901322a755c2d43e:76d98c9e3f665caad5fa5a5151215d9e$"
+		"smartupdate": "$TexturePacker:SmartUpdate:c34a06703a5afcf3177e46bcf41a2472:2bcddcb7f360768da524a4e0b5f45f7c:76d98c9e3f665caad5fa5a5151215d9e$"
 	}
 }

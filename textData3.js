@@ -1,13 +1,40 @@
 
 let textData3 = {
+    "unknown_code": {
+        "en_us": "UNKNOWN CODE",
+        "fr": "CODE INCONNU",
+        "zh_tw": "未知密碼",
+        "zh_cn": "未知代码",
+        "ru": "НЕИЗВЕСТНЫЙ КОД",
+        "es": "CÓDIGO DESCONOCIDO",
+        "jp": "不明なコード"
+    },
+    "find_you": {
+        "en_us": "I will find you",
+        "fr": "Je te trouverai",
+        "zh_tw": "我會找到你",
+        "zh_cn": "我会找到你",
+        "ru": "Я найду тебя",
+        "es": "Te encontraré",
+        "jp": "あなたを見つけるよ"
+    },
+    "click_to_skip": {
+        "en_us": 'CLICK TO SKIP',
+        "fr": "CLIQUEZ POUR PASSER",
+        "zh_tw": "點擊跳過",
+        "zh_cn": "点击跳过",
+        "ru": "НАЖМИТЕ, ЧТОБЫ ПРОПУСТИТЬ",
+        "es": "HAGA CLIC PARA SALTAR",
+        "jp": "スキップするにはクリック"
+    },
     "codes": {
-        "en_us": "SECRET\NCODES",
-        "fr": "CODES\nSECRETS",
+        "en_us": "ACCESS CODE",
+        "fr": "CODE D'ACCÈS",
         "zh_tw": "密碼",
         "zh_cn": "密码",
-        "ru": "СЕКРЕТНЫЕ\nКОДЫ",
-        "es": "CÓDIGOS\nSECRETOS",
-        "jp": "秘密のコード"
+        "ru": "КОД ДОСТУПА",
+        "es": "CÓDIGOS SECRETOS",
+        "jp": "アクセスコード"
     },
     "spell_info_position": {
         "en_us": "SPELL INFO POSITION",

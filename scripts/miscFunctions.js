@@ -69,6 +69,7 @@ function toggleCheat(code) {
             cheats.extraHealth = !cheats.extraHealth;
             globalObjects.player.reInitStats();
             globalObjects.player.resetStats();
+            break;
         case 'hpdx':
             cheats.extraExtraHealth = !cheats.extraExtraHealth;
             globalObjects.player.reInitStats();

@@ -5,6 +5,7 @@ class Options {
         this.baseDepth = 101000;
         this.langTextToUpdate = [];
         this.listOfThingsToHide = [];
+        this.listOfThingsToHideSemiAlpha = [];
         this.listOfButtonsToDisable = [];
         this.button = new Button({
             normal: {
@@ -114,10 +115,10 @@ class Options {
                     globalObjects.postFightScreen.clearPostFightScreen();
                 }
             });
-            this.menuBtn.addText(getLangText('menu'), {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
+            this.menuBtn.addText(getLangText('menu'), {fontFamily: 'opensans', fontSize: 34, color: '#000000', align: 'center'});
             this.addLangTextUpdateable(this.menuBtn, 'menu')
             this.menuBtn.setDepth(this.baseDepth + 1);
-            this.menuBtn.setScale(0.75, 0.75);
+            this.menuBtn.setScale(0.82, 0.82);
             this.listOfButtonsToDisable.push(this.menuBtn);
         } else {
             this.menuBtn.setText(getLangText('menu'));
@@ -161,10 +162,10 @@ class Options {
                     this.hideOptions();
                 }
             });
-            this.resumeBtn.addText(getLangText('resume'), {fontFamily: 'garamondmax', fontSize: 32, color: '#000000', align: 'center'});
+            this.resumeBtn.addText(getLangText('resume'), {fontFamily: 'opensans', fontSize: 32, color: '#000000', align: 'center'});
             this.addLangTextUpdateable(this.resumeBtn, 'resume')
             this.resumeBtn.setDepth(this.baseDepth + 1);
-            this.resumeBtn.setScale(0.75, 0.75);
+            this.resumeBtn.setScale(0.82, 0.82);
             this.listOfButtonsToDisable.push(this.resumeBtn);
         } else {
             this.resumeBtn.setText(getLangText('resume'));
@@ -255,10 +256,10 @@ class Options {
             this.draggerBGM = PhaserScene.add.image(startX + 4 * 30 + musicExtraXPos, gameConsts.halfHeight - 280, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
             this.draggerSFX = PhaserScene.add.image(startX + 4 * 30 + sfxExtraXPos, gameConsts.halfHeight - 200, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
 
-            this.listOfThingsToHide.push(this.BGMIcon);
-            this.listOfThingsToHide.push(this.SFXIcon);
-            this.listOfThingsToHide.push(this.BGMVisual);
-            this.listOfThingsToHide.push(this.SFXVisual);
+            this.listOfThingsToHideSemiAlpha.push(this.BGMIcon);
+            this.listOfThingsToHideSemiAlpha.push(this.SFXIcon);
+            this.listOfThingsToHideSemiAlpha.push(this.BGMVisual);
+            this.listOfThingsToHideSemiAlpha.push(this.SFXVisual);
             this.listOfThingsToHide.push(this.draggerBGM);
             this.listOfThingsToHide.push(this.draggerSFX);
         }
@@ -334,6 +335,9 @@ class Options {
         for (let i = 0; i < this.listOfThingsToHide.length; i++) {
             this.listOfThingsToHide[i].alpha = 1;
         }
+        for (let i = 0; i < this.listOfThingsToHideSemiAlpha.length; i++) {
+            this.listOfThingsToHideSemiAlpha[i].alpha = 0.82;
+        }
         this.darkenBG.setAlpha(0.4);
         this.bgPage.setAlpha(0.2);
         PhaserScene.tweens.add({
@@ -350,17 +354,17 @@ class Options {
 
         if (!this.infoBoxPosText) {
             let startPos = gameConsts.halfHeight - 90;
-            this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth - 215, startPos - 16, getLangText('spell_info_position'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
-            this.listOfThingsToHide.push(this.infoBoxPosText);
+            this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth - 215, startPos - 16, getLangText('spell_info_position'), {fontFamily: 'opensans', fontSize: 26, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
+            this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosText);
 
-            this.infoBoxPosTextLeft = PhaserScene.add.text(gameConsts.halfWidth - 183, startPos, getLangText('left'), {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
-            this.listOfThingsToHide.push(this.infoBoxPosTextLeft);
+            this.infoBoxPosTextLeft = PhaserScene.add.text(gameConsts.halfWidth - 183, startPos, getLangText('left'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosTextLeft);
 
-            this.infoBoxPosTextCenter = PhaserScene.add.text(gameConsts.halfWidth - 13, startPos, getLangText('center'), {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
-            this.listOfThingsToHide.push(this.infoBoxPosTextCenter);
+            this.infoBoxPosTextCenter = PhaserScene.add.text(gameConsts.halfWidth - 13, startPos, getLangText('center'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosTextCenter);
 
-            this.infoBoxPosTextNone = PhaserScene.add.text(gameConsts.halfWidth + 157, startPos, getLangText('hidden'), {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
-            this.listOfThingsToHide.push(this.infoBoxPosTextNone);
+            this.infoBoxPosTextNone = PhaserScene.add.text(gameConsts.halfWidth + 157, startPos, getLangText('hidden'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosTextNone);
 
 
             this.addLangTextUpdateable(this.infoBoxPosText, 'spell_info_position')
@@ -407,6 +411,7 @@ class Options {
                     this.infoCenterButton.setState(NORMAL);
                     this.infoNoneButton.setState(NORMAL);
                     gameOptions.infoBoxAlign = "left";
+                    localStorage.setItem("info_align", gameOptions.infoBoxAlign);
                     messageBus.publish('refreshHoverDisplay');
                     if (canvas) {
                         canvas.style.cursor = 'default';
@@ -454,6 +459,7 @@ class Options {
                     this.infoCenterButton.setState(DISABLE);
                     this.infoNoneButton.setState(NORMAL);
                     gameOptions.infoBoxAlign = "center";
+                    localStorage.setItem("info_align", gameOptions.infoBoxAlign);
                     messageBus.publish('refreshHoverDisplay');
                     if (canvas) {
                         canvas.style.cursor = 'default';
@@ -501,6 +507,7 @@ class Options {
                     this.infoCenterButton.setState(NORMAL);
                     this.infoNoneButton.setState(DISABLE);
                     gameOptions.infoBoxAlign = "none";
+                    localStorage.setItem("info_align", gameOptions.infoBoxAlign);
                     messageBus.publish('refreshHoverDisplay');
                     if (canvas) {
                         canvas.style.cursor = 'default';
@@ -522,15 +529,15 @@ class Options {
         let listOfLanguageCodes = ['en_us', 'zh_cn', 'zh_tw', 'fr'];
         if (!this.langSelectText) {
             let startPos = gameConsts.halfHeight - 10;
-            this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 215, startPos - 31, getLangText('language_text'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 215, startPos - 31, getLangText('language_text'), {fontFamily: 'opensans', fontSize: 26, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
             this.addLangTextUpdateable(this.langSelectText, 'language_text')
 
-            this.langWarningText = PhaserScene.add.text(gameConsts.halfWidth + 215, startPos - 31, getLangText('translate_warn'), {fontFamily: 'garamondmax', fontSize: 18, color: '#604A4A', align: 'right'}).setOrigin(1, 0.5).setDepth(this.baseDepth).setAlpha(0.5);
+            this.langWarningText = PhaserScene.add.text(gameConsts.halfWidth + 215, startPos - 31, getLangText('translate_warn'), {fontFamily: 'opensans', fontSize: 16, color: '#604A4A', align: 'right'}).setOrigin(1, 0.6).setDepth(this.baseDepth).setAlpha(0.82);
             this.addLangTextUpdateable(this.langWarningText, 'translate_warn')
 
 
-            this.listOfThingsToHide.push(this.langSelectText);
-            this.listOfThingsToHide.push(this.langWarningText);
+            this.listOfThingsToHideSemiAlpha.push(this.langSelectText);
+            this.listOfThingsToHideSemiAlpha.push(this.langWarningText);
 
             this.listOfLanguageText = [];
             this.listOfLangButtons = [];
@@ -541,8 +548,8 @@ class Options {
                 let furthestRight = gameConsts.halfWidth + 157;
                 let totalDist = furthestRight - furthestLeft;
                 let intervalDist = totalDist / (listOfLanguages.length - 1)
-                let newLangText = PhaserScene.add.text(furthestLeft + intervalDist * i, startPos, language, {fontFamily: 'garamondmax', fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
-                this.listOfThingsToHide.push(newLangText);
+                let newLangText = PhaserScene.add.text(furthestLeft + intervalDist * i, startPos, language, {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+                this.listOfThingsToHideSemiAlpha.push(newLangText);
 
                 let newBtn = new Button({
                     normal: {
@@ -617,9 +624,57 @@ class Options {
             this.listOfThingsToHide.push(this.codeItem);
             let arrowStartX = gameConsts.halfWidth - 125;
             let spacing = 62;
-            let arrowUpY = this.bgPage.y + 80;
-            let arrowDownY = this.bgPage.y + 186;
+            let arrowUpY = this.bgPage.y + 90;
+            let arrowDownY = this.bgPage.y + 206;
             let centerPos = (arrowUpY + arrowDownY) * 0.5;
+            this.codeAnnounce = PhaserScene.add.text(gameConsts.halfWidth, arrowDownY + 10, "TEST", {fontFamily: 'opensans', fontSize: 30, color: '#00FF33', align: 'center'}).setOrigin(0.5, 0).setDepth(this.baseDepth + 2).setStroke('#200000', 5);
+            this.listOfThingsToHide.push(this.codeAnnounce);
+            this.codeAnnounce.visible = false;
+
+            this.codeItemText = PhaserScene.add.text(gameConsts.halfWidth - 215, gameConsts.halfHeight + 44, getLangText('codes'), {fontFamily: 'opensans', fontSize: 26, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth + 1);
+            this.listOfThingsToHideSemiAlpha.push(this.codeItemText);
+
+            this.playButton = new Button({
+                normal: {
+                    ref: "play_btn.png",
+                    atlas: 'ui',
+                    x: arrowStartX + 5 * spacing,
+                    y: centerPos,
+                    alpha: 1,
+                },
+                hover: {
+                    ref: "play_btn_hover.png",
+                    atlas: 'ui',
+                    alpha: 1,
+                },
+                press: {
+                    ref: "play_btn_press.png",
+                    atlas: 'ui',
+                    alpha: 1,
+                },
+                disable: {
+                    ref: "play_btn.png",
+                    atlas: 'ui',
+                    alpha: 0
+                },
+                onHover: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: () => {
+                    this.activateCode();
+                }
+            });
+            this.playButton.setDepth(this.baseDepth + 1);
+            this.listOfButtonsToDisable.push(this.playButton);
+
+            this.addLangTextUpdateable(this.codeItemText, 'codes')
             for (let i = 0; i < 5; i++) {
                 let arrowBtn = new Button({
                     normal: {
@@ -662,7 +717,7 @@ class Options {
                     }
                 });
                 arrowBtn.setDepth(this.baseDepth + 1);
-                // this.resumeBtn.setScale(0.75, 0.75);
+                // this.resumeBtn.setScale(0.82, 0.82);
                 this.listOfButtonsToDisable.push(arrowBtn);
             }
             for (let i = 0; i < 5; i++) {
@@ -711,7 +766,7 @@ class Options {
                     }
                 });
                 arrowBtnUp.setDepth(this.baseDepth + 1);
-                // this.resumeBtn.setScale(0.75, 0.75);
+                // this.resumeBtn.setScale(0.82, 0.82);
                 this.listOfButtonsToDisable.push(arrowBtnUp);
             }
 
@@ -725,15 +780,15 @@ class Options {
                 this.icon1PosY = centerPos - 34;
                 this.icon2PosY = centerPos ;
                 this.icon3PosY = centerPos + 34;
-                let rune1 = PhaserScene.add.sprite(arrowStartX + spacing * i, this.icon1PosY, 'circle', this.listOfRunes[1]).setDepth(this.baseDepth).setOrigin(0.5, 0.16).setScale(0.92, 0.41);
-                let rune2 = PhaserScene.add.sprite(arrowStartX + spacing * i, this.icon2PosY, 'circle', this.listOfRunes[0]).setDepth(this.baseDepth).setOrigin(0.5, 0.16).setScale(0.92);
-                let rune3 = PhaserScene.add.sprite(arrowStartX + spacing * i, this.icon3PosY, 'circle', this.listOfRunes[8]).setDepth(this.baseDepth).setOrigin(0.5, 0.16).setScale(0.92, 0.41);
+                let rune1 = PhaserScene.add.sprite(arrowStartX + spacing * i, this.icon1PosY, 'circle', this.listOfRunes[1]).setDepth(this.baseDepth).setOrigin(0.5, 0.16).setScale(0.92, 0.41).setAlpha(0.82);
+                let rune2 = PhaserScene.add.sprite(arrowStartX + spacing * i, this.icon2PosY, 'circle', this.listOfRunes[0]).setDepth(this.baseDepth).setOrigin(0.5, 0.16).setScale(0.92).setAlpha(1);
+                let rune3 = PhaserScene.add.sprite(arrowStartX + spacing * i, this.icon3PosY, 'circle', this.listOfRunes[8]).setDepth(this.baseDepth).setOrigin(0.5, 0.16).setScale(0.92, 0.41).setAlpha(0.82);
                 this.listOfIcons[i].push(rune1);
                 this.listOfIcons[i].push(rune2);
                 this.listOfIcons[i].push(rune3);
-                this.listOfThingsToHide.push(rune1);
+                this.listOfThingsToHideSemiAlpha.push(rune1);
                 this.listOfThingsToHide.push(rune2);
-                this.listOfThingsToHide.push(rune3);
+                this.listOfThingsToHideSemiAlpha.push(rune3);
             }
         }
     }
@@ -748,7 +803,6 @@ class Options {
     }
 
     scrollDown(idx) {
-
         let rune1 = this.listOfIcons[idx][0];
         let rune2 = this.listOfIcons[idx][1];
         let rune3 = this.listOfIcons[idx][2];
@@ -774,32 +828,33 @@ class Options {
         rune1.currAnim1 = PhaserScene.tweens.add({
             targets: rune1,
             y: this.icon2PosY,
-            duration: 2,
+            duration: 0.2,
         });
         rune1.currAnim2 = PhaserScene.tweens.add({
             targets: rune1,
             scaleY: 0.92,
             ease: 'Cubic.easeOut',
-            duration: 2,
+            duration: 0.2,
 
         });
         rune2.currAnim1 = PhaserScene.tweens.add({
             targets: rune2,
             y: this.icon3PosY,
             ease: 'Quad.easeOut',
-            duration: 2,
+            duration: 0.2,
         });
         rune2.currAnim2 = PhaserScene.tweens.add({
             targets: rune2,
             scaleY: 0.41,
+            alpha: 0.82,
             ease: 'Quad.easeIn',
-            duration: 2,
+            duration: 0.2,
         });
 
         rune3.currAnim1 = PhaserScene.tweens.add({
             targets: rune3,
             y: this.icon3PosY + 4,
-            duration: 1,
+            duration: 0.1,
             ease: 'Quad.easeOut',
             onComplete: () => {
                 rune3.y = this.icon1PosY - 4
@@ -808,12 +863,13 @@ class Options {
                 rune3.currAnim1 = PhaserScene.tweens.add({
                     targets: rune3,
                     y: this.icon1PosY,
-                    duration: 1,
+                    duration: 0.1,
                     onComplete: () => {
                         rune1.scaleY = 0.41;
                         rune1.y = this.icon1PosY;
                         rune2.scaleY = 0.92;
                         rune2.y = this.icon2PosY;
+                        rune2.alpha = 1;
                         rune3.scaleY = 0.41;
                         rune3.y = this.icon3PosY;
                         this.updateRunes(rune1, rune2, rune3, idx);
@@ -822,7 +878,7 @@ class Options {
                 rune3.currAnim2 = PhaserScene.tweens.add({
                     targets: rune3,
                     scaleY: 0.41,
-                    duration: 1,
+                    duration: 0.1,
                 });
             }
         });
@@ -830,18 +886,216 @@ class Options {
             targets: rune3,
             ease: 'Quad.easeOut',
             scaleY: 0,
-            duration: 1,
-            onComplete: () => {
-
-            }
+            duration: 0.1,
         });
-
     }
 
     scrollUp(idx) {
         let rune1 = this.listOfIcons[idx][0];
         let rune2 = this.listOfIcons[idx][1];
         let rune3 = this.listOfIcons[idx][2];
+        this.updateRunes(rune1, rune2, rune3, idx);
+
+        this.listOfIconPos[idx] = (this.listOfIconPos[idx] + 8) % 9;
+        if (rune1.currAnim1) {
+            rune1.currAnim1.stop();
+            rune1.currAnim2.stop();
+            rune2.currAnim1.stop();
+            rune2.currAnim2.stop();
+            rune3.currAnim1.stop();
+            rune3.currAnim2.stop();
+        }
+        rune1.y = this.icon1PosY;
+        rune2.y = this.icon2PosY;
+        rune3.y = this.icon3PosY;
+
+        rune1.setScale(0.92, 0.41);
+        rune2.setScale(0.92);
+        rune3.setScale(0.92, 0.41);
+
+        rune3.currAnim1 = PhaserScene.tweens.add({
+            targets: rune3,
+            y: this.icon2PosY,
+            duration: 0.2,
+        });
+        rune3.currAnim2 = PhaserScene.tweens.add({
+            targets: rune3,
+            scaleY: 0.92,
+            ease: 'Cubic.easeOut',
+            duration: 0.2,
+
+        });
+        rune2.currAnim1 = PhaserScene.tweens.add({
+            targets: rune2,
+            y: this.icon1PosY,
+            ease: 'Quad.easeOut',
+            duration: 0.2,
+        });
+        rune2.currAnim2 = PhaserScene.tweens.add({
+            targets: rune2,
+            scaleY: 0.41,
+            alpha: 0.82,
+            ease: 'Quad.easeIn',
+            duration: 0.2,
+        });
+
+        rune1.currAnim1 = PhaserScene.tweens.add({
+            targets: rune1,
+            y: this.icon1PosY - 4,
+            duration: 0.1,
+            ease: 'Quad.easeOut',
+            onComplete: () => {
+                rune1.y = this.icon3PosY + 4;
+                rune1.setFrame(this.listOfRunes[(this.listOfIconPos[idx] + 8) % 9])
+                rune1.setOrigin(0.5, 0.16);
+                rune1.currAnim1 = PhaserScene.tweens.add({
+                    targets: rune1,
+                    y: this.icon3PosY,
+                    duration: 0.1,
+                    onComplete: () => {
+                        rune1.scaleY = 0.41;
+                        rune1.y = this.icon1PosY;
+                        rune2.scaleY = 0.92;
+                        rune2.y = this.icon2PosY;
+                        rune2.alpha = 1;
+                        rune3.scaleY = 0.41;
+                        rune3.y = this.icon3PosY;
+                        this.updateRunes(rune1, rune2, rune3, idx);
+                    }
+                });
+                rune1.currAnim2 = PhaserScene.tweens.add({
+                    targets: rune1,
+                    scaleY: 0.41,
+                    duration: 0.1,
+                });
+            }
+        });
+        rune1.currAnim2 = PhaserScene.tweens.add({
+            targets: rune1,
+            ease: 'Quad.easeOut',
+            scaleY: 0,
+            duration: 0.1,
+        });
+    }
+
+    activateCode() {
+        if (!this.listOfIconPos) {
+            return;
+        }
+        if (this.listOfIconPos.length < 5) {
+            return;
+        }
+        let codeVal = this.listOfIconPos[1] * 1000 + this.listOfIconPos[2] * 100 + this.listOfIconPos[3] * 10 + this.listOfIconPos[4];
+        codeVal = String.fromCharCode(this.listOfIconPos[0] + 65) + codeVal.toString();
+        console.log(codeVal);
+        console.log(sha256(codeVal));
+        this.codeAnnounce.visible = true;
+        this.codeAnnounce.alpha = 1;
+        this.codeAnnounce.setColor('#00FF33');
+        this.codeAnnounce.setScale(1);
+        if (this.codeAnnounce.currAnim) {
+            this.codeAnnounce.currAnim.stop();
+        }
+        this.codeAnnounce.currAnim = PhaserScene.tweens.add({
+            delay: 5,
+            targets: this.codeAnnounce,
+            alpha: 0,
+            duration: 1,
+            onComplete: () => {
+                this.codeAnnounce.visible = false;
+            }
+        });
+
+        switch(sha256(codeVal)) {
+            case 'aa508c2187fca56f397ff75adc52b94e02f38122cdd48bd42105106e5e0f8e14':
+                // all matter
+                console.log("One")
+                break;
+            case '1865223aedef36687e7506a828eb83b78f139d3a927946593cca1636933be360':
+                this.codeAnnounce.setText("Level: Goblin")
+                clearMenuButtons();
+                beginPreLevel(2);
+                this.hideOptions();
+                break;
+            case '959c1c84d4572ce1b60ed01e0ffef02db605a973792b7c632b0bdc402654a456':
+                this.codeAnnounce.setText("Level: Tree")
+                clearMenuButtons();
+                beginPreLevel(3);
+                this.hideOptions();
+                break;
+            case '4fb04b4ad0f01d65f9848680910fbb8587136f3845c0edca243f827005d86eb8':
+                this.codeAnnounce.setText("Level: Magician")
+                clearMenuButtons();
+                beginPreLevel(4);
+                this.hideOptions();
+                break;
+            case 'eb0c0da2a8245bf41ab37672ee7b3497e5ec47b4b69d0d58741a280aa250763c':
+                this.codeAnnounce.setText("Level: Knight")
+                clearMenuButtons();
+                beginPreLevel(5);
+                this.hideOptions();
+                break;
+            case '5c864ebe1619f609becf7c741d074a54e66f3d77b0d4274ad290a5b68a4b8468':
+                this.codeAnnounce.setText("Level: Wall")
+                clearMenuButtons();
+                beginPreLevel(6);
+                this.hideOptions();
+                break;
+            case '65daf73e9bc15ea710fdb3873b397d2b6eb180fecaf9bf43507a63f22a857b5b':
+                this.codeAnnounce.setText("Level: Super Doll")
+                clearMenuButtons();
+                beginPreLevel(7);
+                this.hideOptions();
+                break;
+            case '445714fa45b496cd630e03e196c77fcb1710e285cb5180f22c9cf9210cff4603':
+                this.codeAnnounce.setText("Level: Assassin")
+                clearMenuButtons();
+                beginPreLevel(8);
+                this.hideOptions();
+                break;
+            case '26d38d317704c4982064ac2867e0556d6935cb53a81889ce85ea60be7f1771c5':
+                this.codeAnnounce.setText("Level: Robot")
+                clearMenuButtons();
+                beginPreLevel(9);
+                this.hideOptions();
+                break;
+            case '74291ba36b6bdc4c9cf428eda60dcaac0b867971312a61240c1d834b06b34fd7':
+                this.codeAnnounce.setText("Level: Death The Reaper")
+                clearMenuButtons();
+                beginPreLevel(10);
+                this.hideOptions();
+                break;
+            case 'dd0e5c288c1062d8abb0b28f1dfd35129c576a28ee7ba1603c43e696cbe6a8cb':
+                this.codeAnnounce.setText("Level: Death The Destroyer")
+                clearMenuButtons();
+                beginPreLevel(11);
+                this.hideOptions();
+                break;
+            case '85ea9896b888eae23cb13e39826cde6c2511183518f2c31d218be4cc7fd51446':
+                this.codeAnnounce.setText("Level: Death The Destroyer++")
+                clearMenuButtons();
+                beginPreLevel(12);
+                this.hideOptions();
+                break;
+            case 'f8fefa9c66edaa0100adb94e85641e9ec3e612a76573e2a18d5dcdbfb4426482':
+                this.codeAnnounce.setText("Level: Death The Guide")
+                clearMenuButtons();
+                beginPreLevel(13);
+                this.hideOptions();
+                break;
+            case 'b71eb988a0e29ad88f899faa4123a6eaa2d7978b230989fca0dd112f08efec2e':
+                this.codeAnnounce.setText("Skipping entire game!!!")
+                this.codeAnnounce.setScale(0.9);
+                setTimeout(() => {
+                    this.codeAnnounce.setText("(joking)")
+                }, 2500)
+                break;
+            default:
+                this.codeAnnounce.setText(getLangText('unknown_code'))
+                this.codeAnnounce.setColor('#E01010');
+                this.codeAnnounce.setScale(0.9);
+                break;
+        }
     }
 
     updateOptionsLanguage() {
@@ -905,6 +1159,12 @@ class Options {
              alpha: 0,
              ease: 'Cubic.easeOut',
              duration: 400,
+        });
+        PhaserScene.tweens.add({
+            targets: this.listOfThingsToHideSemiAlpha,
+            alpha: 0,
+            ease: 'Cubic.easeOut',
+            duration: 400,
         });
 
         for (let i = 0; i < this.listOfButtonsToDisable.length; i++) {

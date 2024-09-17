@@ -156,7 +156,13 @@ function onPreloadComplete (scene)
 
 function onLoadComplete(scene) {
     initializeSounds(scene);
+    initializeMiscLocalstorage();
     setupGame(scene);
+}
+
+function initializeMiscLocalstorage() {
+    language = localStorage.getItem("language") || 'en_us';
+    gameOptions.infoBoxAlign = localStorage.getItem("info_align") || 'center';
 }
 
 let lastUpdateValues = [1, 1, 1, 1, 1];

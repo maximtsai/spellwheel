@@ -302,7 +302,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.cheatButton3.setScale(0.5);
-    globalObjects.cheatButton3.addText("+1000 HP CHEAT", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.cheatButton3.addText("+20 HP CHEAT", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.cheatButton4 = new Button({
         normal: {

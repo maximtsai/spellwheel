@@ -1441,6 +1441,7 @@ class Enemy {
         if (this.isDestroyed) {
             return;
         }
+        console.log("destrororor");
         this.dead = true;
         this.isDestroyed = true;
         this.clearEffects()

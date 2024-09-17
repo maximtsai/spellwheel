@@ -621,6 +621,7 @@ class Options {
         if (!this.codeItem) {
             // let startPos = gameConsts.halfHeight + 100;
             this.codeItem = PhaserScene.add.image(gameConsts.halfWidth, this.bgPage.y, 'ui', 'secretcode.png').setDepth(this.baseDepth + 1);
+            this.codeItem.startX = this.codeItem.x;
             this.listOfThingsToHide.push(this.codeItem);
             let arrowStartX = gameConsts.halfWidth - 125;
             let spacing = 62;
@@ -996,15 +997,6 @@ class Options {
         if (this.codeAnnounce.currAnim) {
             this.codeAnnounce.currAnim.stop();
         }
-        this.codeAnnounce.currAnim = PhaserScene.tweens.add({
-            delay: 5,
-            targets: this.codeAnnounce,
-            alpha: 0,
-            duration: 1,
-            onComplete: () => {
-                this.codeAnnounce.visible = false;
-            }
-        });
 
         switch(sha256(codeVal)) {
             case 'aa508c2187fca56f397ff75adc52b94e02f38122cdd48bd42105106e5e0f8e14':
@@ -1088,14 +1080,86 @@ class Options {
                 this.codeAnnounce.setScale(0.9);
                 setTimeout(() => {
                     this.codeAnnounce.setText("(joking)")
+                    playSound('derp', 0.4);
                 }, 2500)
                 break;
+            case '4ce5c0152be75f840fc291699586c69dc49aacd4b66d44ed82bac3ab81fba232':
+                toggleCheat('inam')
+                if (cheats.infiniteAmmo) {
+                    this.codeAnnounce.setText("INFINITE AMMO ENABLED");
+                    playSound('mind_ultimate_2', 0.75);
+                } else {
+                    this.codeAnnounce.setText("INFINITE AMMO DISABLED");
+                    this.codeAnnounce.setColor('#888888');
+                    this.codeAnnounce.setScale(0.9);
+                }
+                break;
+            case '07a3f553bd83604c46badf5d59495e72a539c570fbc58ab16d5c0fb6a5a1535a':
+                toggleCheat('flal')
+                if (cheats.fullArsenal) {
+                    this.codeAnnounce.setText("FULL ARSENAL ENABLED");
+                    playSound('matter_body', 0.6);
+                } else {
+                    this.codeAnnounce.setText("FULL ARSENAL DISABLED");
+                    this.codeAnnounce.setColor('#888888');
+                    this.codeAnnounce.setScale(0.9);
+                }
+                break;
+            case '16a36e86f6fed5d465ff332511a0ce1a863b55d364b25a7cdaa25db19abf9648':
+                toggleCheat('hpdx')
+                if (cheats.bonusHealth) {
+                    this.codeAnnounce.setText("+20 EXTRA HEALTH ENABLED");
+                    playSound('magic', 0.6);
+                } else {
+                    this.codeAnnounce.setText("+20 EXTRA HEALTH DISABLED");
+                    this.codeAnnounce.setColor('#888888');
+                    this.codeAnnounce.setScale(0.9);
+                }
+                break;
+            case 'd7b9a5d383a37262fe24f1985d7eb39c9c664292cf2c313911978467f2cb583b':
+                toggleCheat('dd')
+                if (cheats.extraDmg) {
+                    this.codeAnnounce.setText("X2 DAMAGE ENABLED");
+                    playSound('mind_enhance', 0.7);
+                } else {
+                    this.codeAnnounce.setText("X2 DAMAGE DISABLED");
+                    this.codeAnnounce.setColor('#888888');
+                    this.codeAnnounce.setScale(0.9);
+                }
+                break;
             default:
+                playSound('fizzle', 0.8)
                 this.codeAnnounce.setText(getLangText('unknown_code'))
                 this.codeAnnounce.setColor('#E01010');
                 this.codeAnnounce.setScale(0.9);
+                this.codeItem.x = this.codeItem.startX + 4;
+                PhaserScene.tweens.add({
+                    targets: this.codeItem,
+                    x: this.codeItem.startX - 5,
+                    ease: 'Back.easeIn',
+                    duration: 0.15,
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: this.codeItem,
+                            x: this.codeItem.startX,
+                            ease: 'Bounce.easeOut',
+                            easeParams: [3],
+                            duration: 0.45,
+                        });
+                    }
+                });
                 break;
         }
+
+        this.codeAnnounce.currAnim = PhaserScene.tweens.add({
+            delay: 3.6 + (0.2 * this.codeAnnounce.text.length),
+            targets: this.codeAnnounce,
+            alpha: 0,
+            duration: 1,
+            onComplete: () => {
+                this.codeAnnounce.visible = false;
+            }
+        });
     }
 
     updateOptionsLanguage() {

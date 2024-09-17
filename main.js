@@ -62,7 +62,7 @@ let gameConsts = {
 };
 let cheats = {
     extraHealth: false,
-    extraExtraHealth: false,
+    bonusHealth: false,
     extraDmg: false,
     extraExtraDmg: false,
     fullArsenal: false,

@@ -71,7 +71,7 @@ function toggleCheat(code) {
             globalObjects.player.resetStats();
             break;
         case 'hpdx':
-            cheats.extraExtraHealth = !cheats.extraExtraHealth;
+            cheats.bonusHealth = !cheats.bonusHealth;
             globalObjects.player.reInitStats();
             globalObjects.player.resetStats();
             break;
@@ -83,7 +83,7 @@ function toggleCheat(code) {
         case 'flal':
             cheats.fullArsenal = !cheats.fullArsenal;
             updateSpellState(gameVars.latestLevel);
-            globalObjects.player.resetStats();
+            globalObjects.magicCircle.buildRunes()
             messageBus.publish('manualResetElements');
             messageBus.publish('manualResetEmbodiments');
             break;

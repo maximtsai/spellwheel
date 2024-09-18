@@ -66,6 +66,10 @@ class Options {
             this.listOfThingsToHide.push(this.bgPage);
         }
 
+        this.settingsTitle = PhaserScene.add.text(gameConsts.halfWidth - 230, gameConsts.halfWidth - 190, getLangText('settings'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
+        this.listOfThingsToHideSemiAlpha.push(this.settingsTitle);
+        this.addLangTextUpdateable(this.settingsTitle, 'settings')
+
         if (!this.menuBtn) {
             this.menuBtn = new Button({
                 normal: {
@@ -176,8 +180,8 @@ class Options {
             this.draggerSFX;
 
             let startX = gameConsts.halfWidth + 15;
-            this.BGMIcon = PhaserScene.add.image(gameConsts.halfWidth - 190, gameConsts.halfHeight - 280, 'ui', 'music.png').setDepth(this.baseDepth);
-            this.SFXIcon = PhaserScene.add.image(gameConsts.halfWidth - 190, gameConsts.halfHeight - 200, 'ui', 'sound_full.png').setDepth(this.baseDepth);
+            this.BGMIcon = PhaserScene.add.image(gameConsts.halfWidth - 200, gameConsts.halfHeight - 255, 'ui', 'music.png').setDepth(this.baseDepth);
+            this.SFXIcon = PhaserScene.add.image(gameConsts.halfWidth - 200, gameConsts.halfHeight - 180, 'ui', 'sound_full.png').setDepth(this.baseDepth);
 
             this.sliderBGM = new Button({
                 isDraggable: true,
@@ -186,7 +190,7 @@ class Options {
                     ref: "slider.png",
                     alpha: 0,
                     x: startX,
-                    y: gameConsts.halfHeight - 280,
+                    y: this.BGMIcon.y,
                 },
                 onDrag: (x, y) => {
                     this.updateBGMSlider(startX, x);
@@ -205,7 +209,7 @@ class Options {
                     this.updateBGMSlider(startX, x);
                 },
                 onDrop: (x, y) => {
-                    this.sliderBGM.setPos(startX, gameConsts.halfHeight - 280);
+                    this.sliderBGM.setPos(startX, this.BGMIcon.y);
                     this.updateBGMSlider(startX, x);
                     playFakeBGMusic('button');
                     this.draggerBGM.setFrame('slider_indicator.png');
@@ -221,7 +225,7 @@ class Options {
                     ref: "slider.png",
                     alpha: 0,
                     x: startX,
-                    y: gameConsts.halfHeight - 200,
+                    y: this.SFXIcon.y,
                 },
                 onDrag: (x, y) => {
                     this.updateSFXSlider(startX, x)
@@ -240,7 +244,7 @@ class Options {
                     this.updateSFXSlider(startX, x)
                 },
                 onDrop: (x) => {
-                    this.sliderSFX.setPos(startX, gameConsts.halfHeight - 200);
+                    this.sliderSFX.setPos(startX, this.SFXIcon.y);
                     this.updateSFXSlider(startX, x);
                     playSound('button');
                     this.draggerSFX.setFrame('slider_indicator.png');
@@ -248,13 +252,13 @@ class Options {
             });
             this.sliderSFX.setDepth(this.baseDepth);
             this.listOfButtonsToDisable.push(this.sliderSFX);
-            this.BGMVisual = PhaserScene.add.image(startX, gameConsts.halfHeight - 280, 'ui', 'slider.png').setDepth(this.baseDepth);
-            this.SFXVisual = PhaserScene.add.image(startX, gameConsts.halfHeight - 200, 'ui', 'slider.png').setDepth(this.baseDepth);
+            this.BGMVisual = PhaserScene.add.image(startX, this.BGMIcon.y, 'ui', 'slider.png').setDepth(this.baseDepth);
+            this.SFXVisual = PhaserScene.add.image(startX, this.SFXIcon.y, 'ui', 'slider.png').setDepth(this.baseDepth);
 
             let musicExtraXPos = ((globalMusicVol * 10) - 9) * 30;
             let sfxExtraXPos = ((globalVolume * 10) - 9) * 30;
-            this.draggerBGM = PhaserScene.add.image(startX + 4 * 30 + musicExtraXPos, gameConsts.halfHeight - 280, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
-            this.draggerSFX = PhaserScene.add.image(startX + 4 * 30 + sfxExtraXPos, gameConsts.halfHeight - 200, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
+            this.draggerBGM = PhaserScene.add.image(startX + 4 * 30 + musicExtraXPos, this.BGMIcon.y, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
+            this.draggerSFX = PhaserScene.add.image(startX + 4 * 30 + sfxExtraXPos, this.SFXIcon.y, 'ui', 'slider_indicator.png').setDepth(this.baseDepth);
 
             this.listOfThingsToHideSemiAlpha.push(this.BGMIcon);
             this.listOfThingsToHideSemiAlpha.push(this.SFXIcon);
@@ -353,14 +357,14 @@ class Options {
     createInfoBoxPosText() {
 
         if (!this.infoBoxPosText) {
-            let startPos = gameConsts.halfHeight - 90;
-            this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth - 215, startPos - 16, getLangText('spell_info_position'), {fontFamily: 'opensans', fontSize: 26, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
+            let startPos = gameConsts.halfHeight - 81;
+            this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 18, getLangText('spell_info_position'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosText);
 
-            this.infoBoxPosTextLeft = PhaserScene.add.text(gameConsts.halfWidth - 183, startPos, getLangText('left'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.infoBoxPosTextLeft = PhaserScene.add.text(gameConsts.halfWidth - 193, startPos, getLangText('left'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosTextLeft);
 
-            this.infoBoxPosTextCenter = PhaserScene.add.text(gameConsts.halfWidth - 13, startPos, getLangText('center'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.infoBoxPosTextCenter = PhaserScene.add.text(gameConsts.halfWidth - 18, startPos, getLangText('center'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosTextCenter);
 
             this.infoBoxPosTextNone = PhaserScene.add.text(gameConsts.halfWidth + 157, startPos, getLangText('hidden'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
@@ -378,7 +382,7 @@ class Options {
                     atlas: 'buttons',
                     ref: "select_btn_normal.png",
                     alpha: 1,
-                    x: gameConsts.halfWidth - 168,
+                    x: gameConsts.halfWidth - 178,
                     y: startPos,
                 },
                 hover: {
@@ -426,7 +430,7 @@ class Options {
                     atlas: 'buttons',
                     ref: "select_btn_normal.png",
                     alpha: 1,
-                    x: gameConsts.halfWidth,
+                    x: gameConsts.halfWidth - 5,
                     y: startPos,
                 },
                 hover: {
@@ -528,8 +532,8 @@ class Options {
         let listOfLanguages = ['English', '简体中文', '繁体中文', 'Français'];
         let listOfLanguageCodes = ['en_us', 'zh_cn', 'zh_tw', 'fr'];
         if (!this.langSelectText) {
-            let startPos = gameConsts.halfHeight - 10;
-            this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 215, startPos - 31, getLangText('language_text'), {fontFamily: 'opensans', fontSize: 26, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
+            let startPos = gameConsts.halfHeight + 3;
+            this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 33, getLangText('language_text'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
             this.addLangTextUpdateable(this.langSelectText, 'language_text')
 
             this.langWarningText = PhaserScene.add.text(gameConsts.halfWidth + 215, startPos - 31, getLangText('translate_warn'), {fontFamily: 'opensans', fontSize: 16, color: '#604A4A', align: 'right'}).setOrigin(1, 0.6).setDepth(this.baseDepth).setAlpha(0.82);
@@ -544,7 +548,7 @@ class Options {
 
             for (let i in listOfLanguages) {
                 let language = listOfLanguages[i];
-                let furthestLeft = gameConsts.halfWidth - 183;
+                let furthestLeft = gameConsts.halfWidth - 193;
                 let furthestRight = gameConsts.halfWidth + 157;
                 let totalDist = furthestRight - furthestLeft;
                 let intervalDist = totalDist / (listOfLanguages.length - 1)
@@ -620,19 +624,19 @@ class Options {
     createCodeItem() {
         if (!this.codeItem) {
             // let startPos = gameConsts.halfHeight + 100;
-            this.codeItem = PhaserScene.add.image(gameConsts.halfWidth, this.bgPage.y, 'ui', 'secretcode.png').setDepth(this.baseDepth + 1);
+            this.codeItem = PhaserScene.add.image(gameConsts.halfWidth, this.bgPage.y + 20, 'ui', 'secretcode.png').setDepth(this.baseDepth + 1);
             this.codeItem.startX = this.codeItem.x;
             this.listOfThingsToHide.push(this.codeItem);
             let arrowStartX = gameConsts.halfWidth - 125;
             let spacing = 62;
-            let arrowUpY = this.bgPage.y + 90;
-            let arrowDownY = this.bgPage.y + 206;
+            let arrowUpY = this.bgPage.y + 90 + 20;
+            let arrowDownY = this.bgPage.y + 206 + 20;
             let centerPos = (arrowUpY + arrowDownY) * 0.5;
-            this.codeAnnounce = PhaserScene.add.text(gameConsts.halfWidth, arrowDownY + 30, "HELLO!", {fontFamily: 'opensans', fontSize: 30, color: '#00FF33', align: 'center'}).setOrigin(0.5, 0.4).setDepth(this.baseDepth + 2).setStroke('#200000', 5);
+            this.codeAnnounce = PhaserScene.add.text(gameConsts.halfWidth, arrowDownY + 26, "HELLO!", {fontFamily: 'opensans', fontSize: 30, color: '#00FF33', align: 'center'}).setOrigin(0.5, 0.4).setDepth(this.baseDepth + 2).setStroke('#200000', 5);
             this.listOfThingsToHide.push(this.codeAnnounce);
             this.codeAnnounce.visible = false;
 
-            this.codeItemText = PhaserScene.add.text(gameConsts.halfWidth - 215, gameConsts.halfHeight + 44, getLangText('codes'), {fontFamily: 'opensans', fontSize: 26, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth + 1);
+            this.codeItemText = PhaserScene.add.text(gameConsts.halfWidth - 230, gameConsts.halfHeight + 57, getLangText('access_code'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth + 1);
             this.listOfThingsToHideSemiAlpha.push(this.codeItemText);
 
             this.playButton = new Button({
@@ -1099,7 +1103,7 @@ class Options {
             case '4ce5c0152be75f840fc291699586c69dc49aacd4b66d44ed82bac3ab81fba232':
                 toggleCheat('inam')
                 if (cheats.infiniteAmmo) {
-                    this.codeAnnounce.setText("INFINITE AMMO ENABLED");
+                    this.codeAnnounce.setText("CHEAT: INFINITE AMMO ENABLED");
                     playSound('mind_ultimate_2', 0.75);
                 } else {
                     this.codeAnnounce.setText("INFINITE AMMO DISABLED");
@@ -1110,7 +1114,7 @@ class Options {
             case '07a3f553bd83604c46badf5d59495e72a539c570fbc58ab16d5c0fb6a5a1535a':
                 toggleCheat('flal')
                 if (cheats.fullArsenal) {
-                    this.codeAnnounce.setText("FULL ARSENAL ENABLED");
+                    this.codeAnnounce.setText("CHEAT: FULL ARSENAL ENABLED");
                     playSound('matter_body', 0.6);
                 } else {
                     this.codeAnnounce.setText("FULL ARSENAL DISABLED");
@@ -1121,7 +1125,7 @@ class Options {
             case '7468eb2fafacc40a127adab1f3e84914ddb48c8daa63f4992ef42d5390aa8e2b':
                 toggleCheat('ultr')
                 if (cheats.extraUlt) {
-                    this.codeAnnounce.setText("EXTRA ULT RUNE ENABLED");
+                    this.codeAnnounce.setText("CHEAT: EXTRA ULT RUNE ENABLED");
                     playSound('matter_body', 0.6);
                 } else {
                     this.codeAnnounce.setText("EXTRA ULT RUNE DISABLED");
@@ -1132,7 +1136,7 @@ class Options {
             case '16a36e86f6fed5d465ff332511a0ce1a863b55d364b25a7cdaa25db19abf9648':
                 toggleCheat('hpdx')
                 if (cheats.bonusHealth) {
-                    this.codeAnnounce.setText("+20 HEALTH ENABLED");
+                    this.codeAnnounce.setText("CHEAT: +20 HEALTH ENABLED");
                     playSound('magic', 0.6);
                 } else {
                     this.codeAnnounce.setText("+20 HEALTH DISABLED");
@@ -1143,12 +1147,14 @@ class Options {
             case '96c89195a5a61917821ba4bef1e432bebcc13db08e6c36b6210f5bc6a0268fab':
                 this.codeAnnounce.setText("HEAL SELF");
                 playSound('magic', 0.6);
+                gameVars.hasCheated = true;
+                updateCheatsDisplay();
                 globalObjects.player.selfHeal(80);
                 break;
             case 'ec3851e00c9a510bd82c08299cc9366df7291b0e35e3cc8577c6e18c913d944e':
                 toggleCheat('cene');
                 if (cheats.calmEnemies) {
-                    this.codeAnnounce.setText("CALM ENEMIES ENABLED");
+                    this.codeAnnounce.setText("CHEAT: CALM ENEMIES ENABLED");
                     playSound('mind_enhance', 0.7);
                 } else {
                     this.codeAnnounce.setText("CALM ENEMIES DISABLED");
@@ -1159,7 +1165,7 @@ class Options {
             case '38a5be817f63fcd1d3207358368ad2f7ef81e1c21d225c6c15efcc8184c4ca49':
                 challenges.angryEnemies = !challenges.angryEnemies;
                 if (challenges.angryEnemies) {
-                    this.codeAnnounce.setText("ANGRY ENEMIES ENABLED");
+                    this.codeAnnounce.setText("CHALLENGE: ANGRY ENEMIES ENABLED");
                     this.codeAnnounce.setColor('#FF0000');
                     playSound('mind_shield_retaliate', 0.7);
                 } else {
@@ -1168,10 +1174,24 @@ class Options {
                     this.codeAnnounce.setScale(0.9);
                 }
                 break;
+            case 'c283b107c9be924f5be08e4f91abf2a042d2b58b0770ff9810bd4dc2620fcf0c':
+                challenges.lowHealth = !challenges.lowHealth;
+                globalObjects.player.reInitStats();
+                globalObjects.player.resetStats();
+                if (challenges.lowHealth) {
+                    this.codeAnnounce.setText("CHALLENGE: LOW HEALTH ENABLED");
+                    this.codeAnnounce.setColor('#FF0000');
+                    playSound('void_body', 0.7);
+                } else {
+                    this.codeAnnounce.setText("CHALLENGE: LOW HEALTH DISABLED");
+                    this.codeAnnounce.setColor('#888888');
+                    this.codeAnnounce.setScale(0.9);
+                }
+                break;
             case 'd7b9a5d383a37262fe24f1985d7eb39c9c664292cf2c313911978467f2cb583b':
                 toggleCheat('dd')
                 if (cheats.extraDmg) {
-                    this.codeAnnounce.setText("X2 DAMAGE ENABLED");
+                    this.codeAnnounce.setText("CHEAT: X2 DAMAGE ENABLED");
                     playSound('mind_enhance', 0.7);
                 } else {
                     this.codeAnnounce.setText("X2 DAMAGE DISABLED");
@@ -1182,7 +1202,7 @@ class Options {
             case 'd81bbd22822c4b94dd25738ab60f2fa452f0359d0c5f2634c07c7a7b6aa7b16b':
                 toggleCheat('edd')
                 if (cheats.extraExtraDmg) {
-                    this.codeAnnounce.setText("X2 MORE DAMAGE ENABLED");
+                    this.codeAnnounce.setText("CHEAT: X2 MORE DAMAGE ENABLED");
                     playSound('mind_enhance', 0.7);
                 } else {
                     this.codeAnnounce.setText("X2 MORE DAMAGE DISABLED");
@@ -1193,7 +1213,7 @@ class Options {
             case '663409641b29b53f255ed4e01ce8ad89dd6179119a2abb8845552c38735342a6':
                 toggleCheat('sshd')
                 if (cheats.superShield) {
-                    this.codeAnnounce.setText("SUPER SHIELD ENABLED");
+                    this.codeAnnounce.setText("CHEAT: SUPER SHIELD ENABLED");
                     playSound('matter_shield', 0.7);
                 } else {
                     this.codeAnnounce.setText("SUPER SHIELD DISABLED");
@@ -1204,7 +1224,7 @@ class Options {
             case 'bf8ee00cae00a44aaabcc577dd4bdcb97f1ec6e53d776cb23ac1b3e683aea14a':
                 toggleCheat('hpx')
                 if (cheats.extraHealth) {
-                    this.codeAnnounce.setText("+1000 HEALTH ENABLED");
+                    this.codeAnnounce.setText("CHEAT: +1000 HEALTH ENABLED");
                     playSound('magic', 0.75);
                 } else {
                     this.codeAnnounce.setText("+1000 HEALTH DISABLED");

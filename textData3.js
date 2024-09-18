@@ -27,7 +27,7 @@ let textData3 = {
         "es": "HAGA CLIC PARA SALTAR",
         "jp": "スキップするにはクリック"
     },
-    "codes": {
+    "access_code": {
         "en_us": "ACCESS CODE",
         "fr": "CODE D'ACCÈS",
         "zh_tw": "密碼",
@@ -80,6 +80,15 @@ let textData3 = {
         "ru": "Скрытый",
         "es": "Oculto",
         "jp": "隠された"
+    },
+    "settings": {
+        "en_us": "SETTINGS",
+        "fr": "PARAMÈTRES",
+        "zh_tw": "設定",
+        "zh_cn": "设置",
+        "ru": "НАСТРОЙКИ",
+        "es": "AJUSTES",
+        "jp": "設定"
     },
     "resume": {
         "en_us": "RESUME",

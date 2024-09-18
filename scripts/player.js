@@ -61,6 +61,9 @@ class Player {
         if (cheats.bonusHealth) {
             maxHealth += 20;
         }
+        if (challenges.lowHealth) {
+            maxHealth -= 78;
+        }
         this.trueHealthMax = maxHealth;
         this.healthMax = this.trueHealthMax;
         this.health = this.healthMax;

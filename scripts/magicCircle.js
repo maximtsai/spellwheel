@@ -478,7 +478,6 @@ const ENABLE_KEYBOARD = true;
         this.innerCircleSize = isMobile ? 138 : 143;
         this.innerCircle = scene.add.sprite(x, y, 'circle', this.altString + 'element_normal.png').setDepth(102);
         this.innerCircle.setOrigin(0.5003, 0.5003);
-        this.innerCircle
         this.innerCircle.torque = 0;
         this.innerCircle.torqueDecay = 0;
         this.innerCircle.torqueOnRelease = 0;
@@ -496,7 +495,7 @@ const ENABLE_KEYBOARD = true;
 
         this.focusLines = scene.add.sprite(x, y - 130, 'circle', 'focus_lines.png').setDepth(120);
         this.focusLinesOn = scene.add.sprite(x, y - 130, 'circle', 'focus_lines_on.png').setDepth(120);
-        this.greyed = scene.add.sprite(x, y, 'circle', 'greyed.png').setVisible(false).setDepth(120).setVisible(false);
+        this.greyed = scene.add.sprite(x, y, 'circle', 'greyed.png').setVisible(false).setDepth(122).setVisible(false).setScale(1.01);
 
         this.errorBoxElement = scene.add.sprite(x, y - 115, 'circle', 'error_box.png');
         this.errorBoxElement.setDepth(121);

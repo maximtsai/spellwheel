@@ -17,6 +17,7 @@ function clearOnlyMenuButtons() {
     globalObjects.cheatButton2.destroy();
     globalObjects.cheatButton3.destroy();
     globalObjects.cheatButton4.destroy();
+    globalObjects.cheatButton5.destroy();
 
     globalObjects.level3Button.destroy();
     globalObjects.lvl5Button.destroy();
@@ -31,11 +32,6 @@ function clearOnlyMenuButtons() {
     globalObjects.lvl12Button.destroy();
     globalObjects.lvl13Button.destroy();
 
-
-    globalObjects.en_us_button.destroy();
-    globalObjects.es_button.destroy();
-    globalObjects.zh_cn_button.destroy();
-    globalObjects.zh_tw_button.destroy();
 
 }
 
@@ -328,6 +324,34 @@ function showMainMenuButtons() {
     });
     globalObjects.cheatButton4.setScale(0.5);
     globalObjects.cheatButton4.addText("INFINITE AMMO", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+
+    globalObjects.cheatButton5 = new Button({
+        normal: {
+            ref: "menu_btn_normal.png",
+            atlas: 'buttons',
+            x: gameConsts.width - 100 + hideCheatConst,
+            y: 340,
+        },
+        hover: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        press: {
+            ref: "menu_btn_press.png",
+            atlas: 'buttons',
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp: () => {
+            challenges.lowHealth = !challenges.lowHealth;
+            globalObjects.player.reInitStats();
+            globalObjects.player.resetStats();
+        }
+    });
+    globalObjects.cheatButton5.setScale(0.5);
+    globalObjects.cheatButton5.addText("LOW HEALTH", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+
 
 
     globalObjects.levelSelectButton = new Button({
@@ -705,117 +729,6 @@ function showMainMenuButtons() {
     globalObjects.creditsButton.setScale(0.5, 0.5);
     globalObjects.creditsButton.addText("CREDITS", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
 
-    globalObjects.en_us_button = new Button({
-        normal: {
-            ref: "slip.png",
-            atlas: 'buttons',
-            alpha: 1,
-            x: 45,
-            y: gameConsts.height - 230,
-        },
-        hover: {
-            alpha: 1,
-            ref: "slip_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            alpha: 1,
-            ref: "slip_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0
-        },
-        onMouseUp: () => {
-            setLanguage('en_us')
-            updateMenuLanguage();
-        }
-    });
-    globalObjects.en_us_button.addText("English", {fontFamily: 'garamondmax', fontSize: 17, color: '#000000', align: 'left'})
-
-    globalObjects.es_button = new Button({
-        normal: {
-            ref: "slip.png",
-            atlas: 'buttons',
-            alpha: 1,
-            x: 45,
-            y: gameConsts.height - 190,
-        },
-        hover: {
-            alpha: 1,
-            ref: "slip_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            alpha: 1,
-            ref: "slip_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0
-        },
-        onMouseUp: () => {
-            setLanguage('fr')
-            updateMenuLanguage();
-        }
-    });
-    globalObjects.es_button.addText("francais", {fontSize: 16, color: '#000000', align: 'left'})
-
-    globalObjects.zh_cn_button = new Button({
-        normal: {
-            ref: "slip.png",
-            atlas: 'buttons',
-            alpha: 1,
-            x: 45,
-            y: gameConsts.height - 150,
-        },
-        hover: {
-            alpha: 1,
-            ref: "slip_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            alpha: 1,
-            ref: "slip_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0
-        },
-        onMouseUp: () => {
-            setLanguage('zh_cn')
-            updateMenuLanguage();
-        }
-    });
-    globalObjects.zh_cn_button.addText("中文(简体)", {fontSize: 16, color: '#000000', align: 'left'})
-
-    globalObjects.zh_tw_button = new Button({
-        normal: {
-            ref: "slip.png",
-            atlas: 'buttons',
-            alpha: 1,
-            x: -85,
-            y: gameConsts.height - 110,
-        },
-        hover: {
-            alpha: 1,
-            ref: "slip_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            alpha: 1,
-            ref: "slip_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0
-        },
-        onMouseUp: () => {
-            setLanguage('zh_tw')
-            updateMenuLanguage();
-        }
-    });
-    globalObjects.zh_tw_button.addText("中文(繁體)", {fontSize: 16, color: '#000000', align: 'left'})
 }
 
 function updateMenuLanguage() {

@@ -62,6 +62,7 @@ let gameConsts = {
 };
 let challenges = {
     angryEnemies: false,
+    lowHealth: false,
 };
 let cheats = {
     calmEnemies: false,

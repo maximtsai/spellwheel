@@ -17,7 +17,7 @@ class TextPopupManager {
         this.infoText.setFontStyle('bold');
         this.infoBorderTop = this.scene.add.image(0, 0, 'blurry', 'box_length.png').setAlpha(0).setDepth(10000);
         this.infoBorderBot = this.scene.add.image(0, 0, 'blurry', 'box_length.png').setAlpha(0).setDepth(10000);
-        
+
         this.infoWhiteFlashLeft = this.scene.add.image(0, 0, 'pixels', 'white_pixel.png').setDepth(10000).setOrigin(0, 0.5).setScale(0).setAlpha(0.7);
         messageBus.subscribe('animateDamageNum', this.animateDamageNum.bind(this));
         messageBus.subscribe('animateDamageNumAccumulate', this.animateDamageNumAccumulate.bind(this));
@@ -124,9 +124,15 @@ class TextPopupManager {
             duration: 550,
             alpha: 1,
             onComplete: () => {
+                let xPos = this.infoBox.x + this.infoBox.scaleX;
+                if (align == "left") {
+                    xPos += this.infoBox.scaleX;
+                } else if (align == "right") {
+                    xPos -= this.infoBox.scaleX;
+                }
                 this.currAnim4 = this.scene.tweens.add({
                     targets: [this.infoWhiteFlashLeft],
-                    x: this.infoBox.x + this.infoBox.scaleX,
+                    x: xPos,
                     scaleX: 0,
                     ease: 'Quint.easeOut',
                     duration: 550,

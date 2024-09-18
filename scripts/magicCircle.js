@@ -488,11 +488,11 @@ const ENABLE_KEYBOARD = true;
         this.shadowCircle = scene.add.sprite(x, y, 'circle', 'shadow.png').setAlpha(0).setDepth(99998).setBlendMode(Phaser.BlendModes.MULTIPLY);
 
         this.castButtonSize = isMobile ? 72 : 78;
-        this.castButton = scene.add.sprite(x, y, 'circle', this.altString + 'cast_normal.png').setDepth(105);
-        this.castButtonSpare = scene.add.sprite(x, y, 'circle', this.altString + 'cast_press.png').setDepth(106).setAlpha(0);
-        this.castHoverTemp = scene.add.sprite(x, y, 'circle', this.altString + 'cast_press.png').setDepth(106).setAlpha(0);
-        this.castGlow = scene.add.sprite(x, y, 'circle', 'cast_glow.png').setDepth(106).setAlpha(0);
-        this.greyedDead = scene.add.sprite(x, y, 'circle', 'greyed_dead.png').setVisible(false).setDepth(119);
+        this.castButton = scene.add.sprite(x, y, 'circle', this.altString + 'cast_normal.png').setDepth(121);
+        this.castButtonSpare = scene.add.sprite(x, y, 'circle', this.altString + 'cast_press.png').setDepth(121).setAlpha(0);
+        this.castHoverTemp = scene.add.sprite(x, y, 'circle', this.altString + 'cast_press.png').setDepth(121).setAlpha(0);
+        this.castGlow = scene.add.sprite(x, y, 'circle', 'cast_glow.png').setDepth(121).setAlpha(0);
+        this.greyedDead = scene.add.sprite(x, y, 'circle', 'greyed_dead.png').setVisible(false).setDepth(122);
 
         this.focusLines = scene.add.sprite(x, y - 130, 'circle', 'focus_lines.png').setDepth(120);
         this.focusLinesOn = scene.add.sprite(x, y - 130, 'circle', 'focus_lines_on.png').setDepth(120);

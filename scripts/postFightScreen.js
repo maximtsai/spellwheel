@@ -45,9 +45,6 @@ class PostFightScreen {
         if (!this.healthLeftText) {
             this.healthLeftText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 200, getLangText('post_fight_health'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
-        if (!this.codeText) {
-            this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 65, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
-        }
         if (!this.locketSprite) {
             this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 120, 'misc', 'locket1.png').setScale(0.75).setDepth(100003).setAlpha(0).setOrigin(0.5, 0.5);
         }
@@ -118,6 +115,17 @@ class PostFightScreen {
         }
         if (!this.flashObj) {
             this.flashObj = this.scene.add.image(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'blurry', 'flash.webp').setScale(0).setDepth(100002).setAlpha(0.5);
+        }
+
+        if (!this.codeText) {
+            this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 60, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
+        }
+        if (!this.listOfCodes) {
+            this.listOfCodes = [];
+            for (let i = 0; i < 5; i++) {
+                let newImage = this.scene.add.sprite(gameConsts.halfWidth - 100 + i * 50, this.codeText.y + 106, 'circle', 'bright_rune_matter.png').setScale(0.92).setAlpha(0).setDepth(100000);
+                this.listOfCodes.push(newImage);
+            }
         }
 
         if (!this.continueButton) {
@@ -416,6 +424,13 @@ class PostFightScreen {
                     scaleY: 1,
                     alpha: 1,
                     duration: 250,
+                    onStart: () => {
+                        PhaserScene.tweens.add({
+                            targets: this.listOfCodes,
+                            alpha: 1,
+                            duration: 250,
+                        });
+                    }
                 });
                 if (isWin) {
                     if (this.locketRecentlyClicked) {
@@ -665,18 +680,51 @@ class PostFightScreen {
             this.newRuneAnnounce.setText(' ');
             this.newRuneDesc.setText(' ')
             this.codeText.setText(' ');
+            for (let i in this.listOfCodes) {
+                this.listOfCodes[i].visible = false;
+            }
             this.trainingButton.setText(getLangText('post_fight_no_training'));
         } else {
             this.titleText.setText(getLangText('post_fight_title'));
             // this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
             this.newRuneAnnounce.setText(this.getNewRuneAnnounce(level));
-            this.newRuneDesc.setText(this.getNewRuneDesc(level))
-            this.codeText.setText(getLangText('level_code'));
+            this.newRuneDesc.setText(this.getNewRuneDesc(level));
+            if (gameVars.hasCheated) {
+                this.codeText.setText(getLangText('level_code_cheat'));
+                for (let i in this.listOfCodes) {
+                    this.listOfCodes[i].visible = false;
+                }
+            } else {
+                this.codeText.setText(getLangText('level_code'));
+                this.getLevelCodes(level);
+            }
         }
         this.healthLeftText.setText(getLangText('post_fight_health') + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
         this.locketDialog.setText(this.getStoryDialog(level));
         this.titleText.setText(getLangText('post_fight_day') + level + getLangText('post_fight_day2'));
+    }
 
+    getLevelCodes(level) {
+        let listOfCodes = [
+            ["bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png"],
+            ["bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png"],
+            ["bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_strike.png"],
+            ["bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_protect.png"],
+            ["bright_rune_reinforce.png", "bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_protect.png"],
+            ["bright_rune_time.png", "bright_rune_time.png", "bright_rune_time.png", "bright_rune_time.png", "bright_rune_reinforce.png"],
+            ["bright_rune_void.png", "bright_rune_void.png", "bright_rune_void.png", "bright_rune_void.png", "bright_rune_enhance.png"],
+            ["bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_time.png", "bright_rune_void.png", "bright_rune_strike.png"],
+            ["bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_unload.png", "bright_rune_unload.png"],
+            ["bright_rune_mind.png", "bright_rune_strike.png", "bright_rune_mind.png", "bright_rune_unload.png", "bright_rune_mind.png"],
+            ["bright_rune_unload.png", "bright_rune_protect.png", "bright_rune_protect.png", "bright_rune_protect.png", "bright_rune_protect.png"],
+            ["bright_rune_reinforce.png", "bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_time.png", "bright_rune_void.png"],
+            ["bright_rune_unload.png", "bright_rune_unload.png", "bright_rune_unload.png", "bright_rune_unload.png", "bright_rune_reinforce.png"],
+            ["bright_rune_reinforce.png", "bright_rune_time.png", "bright_rune_protect.png", "bright_rune_unload.png", "bright_rune_void.png"],
+        ];
+        for (let i in this.listOfCodes) {
+            this.listOfCodes[i].setFrame(listOfCodes[level][i]);
+            this.listOfCodes[i].visible = true;
+        }
     }
 
     createWinScreenUIMin(level = 0) {
@@ -731,6 +779,7 @@ class PostFightScreen {
 
     showStoryText(level) {
         let objectsToFade = [this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
+        objectsToFade = objectsToFade.concat(this.listOfCodes);
 
         this.locketMusic = playMusic('sleepless', 0.5);
         fadeInSound(this.windSfx, 0.3, 2000);
@@ -773,6 +822,8 @@ class PostFightScreen {
             fadeAwaySound(this.locketMusic, 3500, 'Quad.easeOut');
         }
         let objectsToFade = [this.titleText, this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
+        objectsToFade = objectsToFade.concat(this.listOfCodes);
+
         PhaserScene.tweens.add({
             targets: [this.locketDialog, this.locketDialogImage],
             alpha: 0,
@@ -918,6 +969,13 @@ class PostFightScreen {
             ease: 'Quad.easeOut',
             duration: 600,
         });
+        PhaserScene.tweens.add({
+            targets: this.listOfCodes,
+            alpha: 0,
+            ease: 'Quad.easeOut',
+            duration: 600,
+        });
+
         if (this.locketMusic) {
             fadeAwaySound(this.locketMusic, 800, undefined, () => {
                 this.locketMusic = null;

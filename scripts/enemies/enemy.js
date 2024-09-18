@@ -409,8 +409,12 @@ class Enemy {
                 timeChange = 0;
             }
             chargeMult = this.nextAttack.chargeMult ? this.nextAttack.chargeMult : 1;
-            if (chargeMult > 1 && cheats.calmEnemies) {
-                chargeMult = chargeMult * 0.5 + 1;
+            if (chargeMult > 1) {
+                if (challenges.angryEnemies) {
+                    chargeMult = chargeMult * 1.1;
+                } else if (cheats.calmEnemies) {
+                    chargeMult = chargeMult * 0.5 + 1;
+                }
             }
             let almostIshDone = this.attackCharge > this.nextAttackChargeNeeded - 145;
             if (almostIshDone) {
@@ -454,7 +458,9 @@ class Enemy {
             }
             if (this.isAngry) {
                 let increaseMult = Math.max(5, 0.33 * chargeMult);
-                if (cheats.calmEnemies) {
+                if (challenges.angryEnemies) {
+                    increaseMult = 1 * 1.2;
+                } else if (cheats.calmEnemies) {
                     increaseMult = 1 + increaseMult * 0.6;
                 }
                 this.attackCharge += timeChange * increaseMult * this.slowMult;
@@ -482,7 +488,7 @@ class Enemy {
                             this.chargeBarCurr.alpha = 0.9;
                         }
                         this.attackCharge += timeChange * 0.5 * this.slowMult * chargeMult;
-                        this.attackCharge += castAggravateBonus * 1.8;
+                        this.attackCharge += castAggravateBonus * 2;
 
                     } else {
                         this.chargeBarCurr.alpha = 0.6;
@@ -1537,7 +1543,7 @@ class Enemy {
             if (this.attackGlow.currAnim) {
                 this.attackGlow.currAnim.stop();
             }
-            this.attackGlow.visible = true;
+            this.attackGlow.visible = false;
         }
         messageBus.publish("closeCombatText");
 
@@ -2197,7 +2203,10 @@ class Enemy {
     }
 
     playerClickedSpell() {
-        this.castAggravateCharge = cheats.calmEnemies ? 18 : 25;
+        this.castAggravateCharge = cheats.calmEnemies ? 18 : 22;
+        if (challenges.angryEnemies) {
+            this.castAggravateCharge = 26;
+        }
     }
 
     addCastAggravate(amt) {

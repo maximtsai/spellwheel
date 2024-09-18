@@ -105,7 +105,6 @@ function toggleCheat(code) {
             messageBus.publish('manualResetElements');
             messageBus.publish('manualResetEmbodiments');
             break;
-
         default:
             break;
     }
@@ -125,11 +124,14 @@ function updateCheatsDisplay() {
             cheatsText += "\n" + i;
         }
     }
+    cheatsDisplay.visible = true;
     if (hasCheats) {
         cheatsDisplay.setText(cheatsText);
-
+        gameVars.hasCheated = true;
+    } else if (gameVars.hasCheated) {
+        cheatsDisplay.setText('CHEATS ACTIVE');
     } else {
-        cheatsDisplay.setText(' ');
+        cheatsDisplay.visible = false;
     }
 }
 

@@ -2,7 +2,8 @@ let CURRENT_LEVEL = null;
 let levelTimeoutID = null;
 
 function beginPreLevel(lvl) {
-
+    gameVars.hasCheated = isUsingCheats();
+    updateCheatsDisplay();
     globalObjects.encyclopedia.hideButton();
     globalObjects.options.hideButton();
     let introPaper;

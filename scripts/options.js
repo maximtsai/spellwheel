@@ -628,7 +628,7 @@ class Options {
             let arrowUpY = this.bgPage.y + 90;
             let arrowDownY = this.bgPage.y + 206;
             let centerPos = (arrowUpY + arrowDownY) * 0.5;
-            this.codeAnnounce = PhaserScene.add.text(gameConsts.halfWidth, arrowDownY + 10, "TEST", {fontFamily: 'opensans', fontSize: 30, color: '#00FF33', align: 'center'}).setOrigin(0.5, 0).setDepth(this.baseDepth + 2).setStroke('#200000', 5);
+            this.codeAnnounce = PhaserScene.add.text(gameConsts.halfWidth, arrowDownY + 30, "HELLO!", {fontFamily: 'opensans', fontSize: 30, color: '#00FF33', align: 'center'}).setOrigin(0.5, 0.4).setDepth(this.baseDepth + 2).setStroke('#200000', 5);
             this.listOfThingsToHide.push(this.codeAnnounce);
             this.codeAnnounce.visible = false;
 
@@ -1001,77 +1001,90 @@ class Options {
         switch(sha256(codeVal)) {
             case 'aa508c2187fca56f397ff75adc52b94e02f38122cdd48bd42105106e5e0f8e14':
                 // all matter
-                console.log("One")
+                this.codeAnnounce.setText("DIFFERENT CODES CAN UNLOCK\nPARTS OF THE GAME.");
+                this.codeAnnounce.setScale(0.75);
                 break;
             case '1865223aedef36687e7506a828eb83b78f139d3a927946593cca1636933be360':
                 this.codeAnnounce.setText("Level: Goblin")
                 clearMenuButtons();
+                globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(2);
                 this.hideOptions();
                 break;
             case '959c1c84d4572ce1b60ed01e0ffef02db605a973792b7c632b0bdc402654a456':
                 this.codeAnnounce.setText("Level: Tree")
                 clearMenuButtons();
+                globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(3);
                 this.hideOptions();
                 break;
             case '4fb04b4ad0f01d65f9848680910fbb8587136f3845c0edca243f827005d86eb8':
                 this.codeAnnounce.setText("Level: Magician")
                 clearMenuButtons();
+                globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(4);
                 this.hideOptions();
                 break;
             case 'eb0c0da2a8245bf41ab37672ee7b3497e5ec47b4b69d0d58741a280aa250763c':
                 this.codeAnnounce.setText("Level: Knight")
                 clearMenuButtons();
+                globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(5);
                 this.hideOptions();
                 break;
             case '5c864ebe1619f609becf7c741d074a54e66f3d77b0d4274ad290a5b68a4b8468':
                 this.codeAnnounce.setText("Level: Wall")
                 clearMenuButtons();
+                globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(6);
                 this.hideOptions();
                 break;
             case '65daf73e9bc15ea710fdb3873b397d2b6eb180fecaf9bf43507a63f22a857b5b':
                 this.codeAnnounce.setText("Level: Super Doll")
                 clearMenuButtons();
+                globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(7);
                 this.hideOptions();
                 break;
             case '445714fa45b496cd630e03e196c77fcb1710e285cb5180f22c9cf9210cff4603':
                 this.codeAnnounce.setText("Level: Assassin")
                 clearMenuButtons();
+                globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(8);
                 this.hideOptions();
                 break;
             case '26d38d317704c4982064ac2867e0556d6935cb53a81889ce85ea60be7f1771c5':
                 this.codeAnnounce.setText("Level: Robot")
                 clearMenuButtons();
+                globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(9);
                 this.hideOptions();
                 break;
             case '74291ba36b6bdc4c9cf428eda60dcaac0b867971312a61240c1d834b06b34fd7':
                 this.codeAnnounce.setText("Level: Death The Reaper")
                 clearMenuButtons();
+                globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(10);
                 this.hideOptions();
                 break;
             case 'dd0e5c288c1062d8abb0b28f1dfd35129c576a28ee7ba1603c43e696cbe6a8cb':
                 this.codeAnnounce.setText("Level: Death The Destroyer")
                 clearMenuButtons();
+                globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(11);
                 this.hideOptions();
                 break;
             case '85ea9896b888eae23cb13e39826cde6c2511183518f2c31d218be4cc7fd51446':
                 this.codeAnnounce.setText("Level: Death The Destroyer++")
                 clearMenuButtons();
+                globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(12);
                 this.hideOptions();
                 break;
             case 'f8fefa9c66edaa0100adb94e85641e9ec3e612a76573e2a18d5dcdbfb4426482':
                 this.codeAnnounce.setText("Level: Death The Guide")
                 clearMenuButtons();
+                globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(13);
                 this.hideOptions();
                 break;
@@ -1142,7 +1155,18 @@ class Options {
                     this.codeAnnounce.setColor('#888888');
                     this.codeAnnounce.setScale(0.9);
                 }
-                playSound('magic', 0.6);
+                break;
+            case '38a5be817f63fcd1d3207358368ad2f7ef81e1c21d225c6c15efcc8184c4ca49':
+                challenges.angryEnemies = !challenges.angryEnemies;
+                if (challenges.angryEnemies) {
+                    this.codeAnnounce.setText("ANGRY ENEMIES ENABLED");
+                    this.codeAnnounce.setColor('#FF0000');
+                    playSound('mind_shield_retaliate', 0.7);
+                } else {
+                    this.codeAnnounce.setText("ANGRY ENEMIES DISABLED");
+                    this.codeAnnounce.setColor('#888888');
+                    this.codeAnnounce.setScale(0.9);
+                }
                 break;
             case 'd7b9a5d383a37262fe24f1985d7eb39c9c664292cf2c313911978467f2cb583b':
                 toggleCheat('dd')

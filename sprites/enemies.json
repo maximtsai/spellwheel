@@ -1535,6 +1535,31 @@
 					}
 				},
 				{
+					"filename": "bird_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 45,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 0,
+						"w": 39,
+						"h": 38
+					},
+					"frame": {
+						"x": 1399,
+						"y": 1261,
+						"w": 39,
+						"h": 38
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "music_note_blue.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1625,7 +1650,7 @@
 					},
 					"frame": {
 						"x": 1399,
-						"y": 1261,
+						"y": 1301,
 						"w": 37,
 						"h": 35
 					},
@@ -1960,6 +1985,31 @@
 					}
 				},
 				{
+					"filename": "bird_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 66,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 7,
+						"w": 45,
+						"h": 39
+					},
+					"frame": {
+						"x": 1746,
+						"y": 2008,
+						"w": 45,
+						"h": 39
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "lesser_dummy_mouth6.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1975,7 +2025,7 @@
 					},
 					"frame": {
 						"x": 1746,
-						"y": 2008,
+						"y": 1971,
 						"w": 71,
 						"h": 35
 					},
@@ -1999,8 +2049,8 @@
 						"h": 35
 					},
 					"frame": {
-						"x": 1746,
-						"y": 1971,
+						"x": 1793,
+						"y": 2008,
 						"w": 71,
 						"h": 35
 					},
@@ -2025,7 +2075,7 @@
 					},
 					"frame": {
 						"x": 1819,
-						"y": 2008,
+						"y": 1971,
 						"w": 71,
 						"h": 35
 					},
@@ -2049,8 +2099,8 @@
 						"h": 35
 					},
 					"frame": {
-						"x": 1819,
-						"y": 1971,
+						"x": 1866,
+						"y": 2008,
 						"w": 71,
 						"h": 35
 					},
@@ -2075,7 +2125,7 @@
 					},
 					"frame": {
 						"x": 1399,
-						"y": 1298,
+						"y": 1338,
 						"w": 30,
 						"h": 27
 					},
@@ -2100,7 +2150,7 @@
 					},
 					"frame": {
 						"x": 1399,
-						"y": 1298,
+						"y": 1338,
 						"w": 30,
 						"h": 27
 					},
@@ -2111,56 +2161,6 @@
 				},
 				{
 					"filename": "lesser_dummy_eyes3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 184,
-						"h": 248
-					},
-					"spriteSourceSize": {
-						"x": 55,
-						"y": 30,
-						"w": 30,
-						"h": 27
-					},
-					"frame": {
-						"x": 1399,
-						"y": 1327,
-						"w": 30,
-						"h": 27
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "lesser_dummy_eyes4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 184,
-						"h": 248
-					},
-					"spriteSourceSize": {
-						"x": 55,
-						"y": 30,
-						"w": 30,
-						"h": 27
-					},
-					"frame": {
-						"x": 1399,
-						"y": 1327,
-						"w": 30,
-						"h": 27
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "lesser_dummy_eyes5.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -2185,6 +2185,56 @@
 					}
 				},
 				{
+					"filename": "lesser_dummy_eyes4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 184,
+						"h": 248
+					},
+					"spriteSourceSize": {
+						"x": 55,
+						"y": 30,
+						"w": 30,
+						"h": 27
+					},
+					"frame": {
+						"x": 2006,
+						"y": 1252,
+						"w": 30,
+						"h": 27
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "lesser_dummy_eyes5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 184,
+						"h": 248
+					},
+					"spriteSourceSize": {
+						"x": 55,
+						"y": 30,
+						"w": 30,
+						"h": 27
+					},
+					"frame": {
+						"x": 2006,
+						"y": 1281,
+						"w": 30,
+						"h": 27
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "lesser_dummy_eyes1.png",
 					"rotated": false,
 					"trimmed": true,
@@ -2200,7 +2250,7 @@
 					},
 					"frame": {
 						"x": 2006,
-						"y": 1281,
+						"y": 1310,
 						"w": 29,
 						"h": 26
 					},
@@ -2225,7 +2275,7 @@
 					},
 					"frame": {
 						"x": 2006,
-						"y": 1281,
+						"y": 1310,
 						"w": 29,
 						"h": 26
 					},
@@ -2250,7 +2300,7 @@
 					},
 					"frame": {
 						"x": 2006,
-						"y": 1281,
+						"y": 1310,
 						"w": 29,
 						"h": 26
 					},
@@ -2275,7 +2325,7 @@
 					},
 					"frame": {
 						"x": 2006,
-						"y": 1309,
+						"y": 1338,
 						"w": 29,
 						"h": 26
 					},
@@ -4337,6 +4387,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:fb651640553a308fb7ef414d4fe688b9:2365bcef8a1e2230e72de4d72fdd6676:ef05bb2e08b15355d77e46a2cc7ab503$"
+		"smartupdate": "$TexturePacker:SmartUpdate:2aace1534e0ed351c6974ebcbbeda91e:db86b07941080dec42be1a786fe9f755:ef05bb2e08b15355d77e46a2cc7ab503$"
 	}
 }

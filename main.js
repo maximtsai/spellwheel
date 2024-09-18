@@ -60,6 +60,9 @@ let gameConsts = {
     halfHeight: config.scale.height * 0.5,
     SDK: null
 };
+let challenges = {
+    angryEnemies: false,
+};
 let cheats = {
     calmEnemies: false,
     extraHealth: false,

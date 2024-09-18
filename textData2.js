@@ -199,6 +199,16 @@ let textData2 = {
         "es": "CÓDIGO DE NIVEL: ",
         "jp": "レベルコード: "
     },
+    "level_code_cheat": {
+        "en_us": " \n(Code not displayed due to cheats)",
+        "fr": " \n(Non affiché en raison de triches)",
+        "zh_tw": " \n(因作弊而未顯示代碼)",
+        "zh_cn": " \n（因作弊而未显示代码）",
+        "ru": " \n(Не отображается из-за читов)",
+        "es": "",
+        "jp": ""
+    },
+
     "post_fight_newrune": {
         "en_us": "New Rune",
         "fr": "Nouvelle rune",

@@ -1,6 +1,6 @@
  class Death2Plus extends Enemy {
-     constructor(scene, x, y) {
-         super(scene, x, y);
+     constructor(scene, x, y, level) {
+         super(scene, x, y, level);
          this.initSprite('death2final.png', 0.92, 0, -15, 'deathfinal');
          this.bgMusic = playMusic('but_never_forgotten_metal', 0.9, true);
          this.bgMain = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5).setScale(1.04, 1.05)

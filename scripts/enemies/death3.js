@@ -1,6 +1,6 @@
 class Death3 extends Enemy {
-    constructor(scene, x, y) {
-        super(scene, x, y);
+    constructor(scene, x, y, level) {
+        super(scene, x, y, level);
         this.initSprite('max_death_3_white.png', 1, 0, 0, 'deathfinal');
         this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfall.png').setDepth(-6).setScale(1, 1.03);
         this.bgtemprocks = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfallrocks.png').setDepth(-4).setScale(1,1.03);

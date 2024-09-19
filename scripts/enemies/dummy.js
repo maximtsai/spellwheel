@@ -80,7 +80,7 @@
      initTutorial() {
         this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
         globalObjects.magicCircle.disableMovement();
-        globalObjects.bannerTextManager.setDialog([getLangText('level1_diag_a'), getLangText('level1_diag_b')]);
+        globalObjects.bannerTextManager.setDialog([getLangText('level1_diag_b')]);
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
         globalObjects.bannerTextManager.showBanner(false);
 

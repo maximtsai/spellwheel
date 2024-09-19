@@ -287,6 +287,15 @@ let textData4 = {
         "es": "TE PERMITIRÉ ENCONTRARTE\bCON TU AMADO",
         "jp": "私はあなたがあなたの最愛の\n人と会うことを許可します"
     },
+    "retry": {
+        "en_us": "RETRY",
+        "fr": "RÉESSAYER",
+        "zh_tw": "重試",
+        "zh_cn": "重试",
+        "ru": "ПОВТОРИТЬ",
+        "es": "REVER",
+        "jp": "リトライ"
+    },
     "back_to_training": {
         "en_us": "BACK TO TRAINING",
         "fr": "RETOUR À LA PRATIQUE",
@@ -384,9 +393,9 @@ let textData4 = {
         "fr": "Les épines hérissées sur l’arbre\nredirigent 2 dégâts sur vous !",
         "zh_tw": "樹上的尖刺會將 2 點傷害\n反弹回你身上！",
         "zh_cn": "树上的尖刺会将 2 点伤害\n反弹回你身上！",
-        "ru": "Колючие шипы на дереве перенаправляют на вас 2 ед. урона!",
-        "es": "¡Las espinas puntiagudas en el árbol redirigen 2 puntos de daño hacia ti!",
-        "jp": "木のとがったとげは、2ダメージをあなたに戻してくれます!"
+        "ru": "Колючие шипы на дереве\nперенаправляют на вас 2 ед. урона!",
+        "es": "¡Las espinas puntiagudas en el árbol\nredirigen 2 puntos de daño hacia ti!",
+        "jp": "木のとがったとげは、2ダメ\nージをあなたに戻してくれます!"
     },
     "tree_b": {
         "en_us": "Attack and defend carefully!",
@@ -402,9 +411,9 @@ let textData4 = {
         "fr": "Bien tenté, mais tes\ncoups n'ont aucun choc.",
         "zh_tw": "打得不錯，但你攻擊缺威力。",
         "zh_cn": "打得不错，但你攻击缺威力。",
-        "ru": "Хорошая попытка, но ваши атаки не вызывают шока.",
-        "es": "Buen intento, pero tus ataques no tienen impacto.",
-        "jp": "ナイストライですが、あなたの攻撃にはショックがありません。"
+        "ru": "Хорошая попытка, но\nваши атаки не вызывают шока.",
+        "es": "Buen intento, pero tus\nataques no tienen impacto.",
+        "jp": "ナイストライですが、あなたの\n攻撃にはショックがありません。"
     },
     "magician_b": {
         "en_us": "Now have a taste\nof my great big clock!",

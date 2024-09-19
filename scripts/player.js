@@ -1137,9 +1137,10 @@ class Player {
                     alpha: 1,
                     ease: 'Cubic.easeIn',
                     onComplete: () => {
-                        let cheatsDisplay = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 70, getLangText('cheat_code'), {fontFamily: 'opensans', fontSize: 28, color: '#EEEEEE', align: 'center'}).setDepth(200).setStroke('#000000', 4).setVisible(false).setOrigin(0.5, 0.5);
+                        let cheatsDisplay = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 95, getLangText('cheat_code'), {fontFamily: 'opensans', fontSize: 28, color: '#EEEEEE', align: 'center'}).setDepth(1000).setStroke('#000000', 4).setVisible(false).setOrigin(0.5, 0.5);
                         this.cheatIcons = [];
-                        this.createCheatCode(gameVars.currLevel || globalObjects.currentEnemy.level, cheatsDisplay);
+                        let levelToGet = globalObjects.currentEnemy ? globalObjects.currentEnemy.level : 2;
+                        this.createCheatCode(levelToGet, cheatsDisplay);
                         let deathMenuButton;
                         let deathRetryButton;
                         let deathTrainingButton;
@@ -1263,7 +1264,7 @@ class Player {
                                 this.cheatIcons = [];
                             }
                         });
-                        deathRetryButton.addText('RETRY', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
+                        deathRetryButton.addText(getLangText('retry'), {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
                         deathRetryButton.setDepth(200);
                     }
                 });
@@ -1276,6 +1277,12 @@ class Player {
             cheatsDisplay.visible = true;
         }
         cheatsDisplay.alpha = 0;
+        let cheatName = this.getCheatName(currLevel);
+        if (currLevel < 10) {
+            cheatsDisplay.setText('CHEAT UNLOCKED\n' + cheatName);
+        } else {
+            cheatsDisplay.setText('CHALLENGE UNLOCKED\n' + cheatName);
+        }
         let cheatList = this.getCheatList(currLevel);
         for (let i = 0; i < 5; i++) {
             let xPos = gameConsts.halfWidth - 120 + 60 * i;
@@ -1283,29 +1290,52 @@ class Player {
             this.cheatIcons.push(newIcon);
         }
         PhaserScene.tweens.add({
-            delay: 3000,
+            delay: 1700,
             targets: this.cheatIcons,
             alpha: 1,
+            ease: "Quad.easeIn",
             duration: 2000
         })
         PhaserScene.tweens.add({
-            delay: 1000,
             targets: cheatsDisplay,
             alpha: 1,
             duration: 2000
         })
     }
 
+    getCheatName(level) {
+        let list = [
+            "Access Code Test",
+            "+1000 HEALTH",
+            "+20 HEALTH",
+            "SUPER SHIELD",
+            "X2 DAMAGE",
+            "SUPER SHIELD",
+            "X2 DAMAGE AGAIN",
+            "EXTRA ULTIMATE",
+            "CALM ENEMIES",
+            "INFINITE AMMO",
+            "LOW HEALTH",
+            "ANGRY ENEMIES",
+            "Access Code Test",
+            "Access Code Test",
+        ];
+        return list[level];
+    }
     getCheatList(level) {
         let list = [
             ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
-            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
-            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
-            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
-            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
-            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
-            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
-            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
+            ['bright_rune_void.png', 'bright_rune_reinforce.png', 'bright_rune_time.png', 'bright_rune_reinforce.png', 'bright_rune_unload.png'],
+            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_mind.png'],
+            ['bright_rune_matter.png', 'bright_rune_protect.png', 'bright_rune_protect.png', 'bright_rune_protect.png', 'bright_rune_protect.png'],
+            ['bright_rune_strike.png', 'bright_rune_strike.png', 'bright_rune_strike.png', 'bright_rune_strike.png', 'bright_rune_strike.png'],
+            ['bright_rune_matter.png', 'bright_rune_protect.png', 'bright_rune_protect.png', 'bright_rune_protect.png', 'bright_rune_protect.png'],
+            ['bright_rune_mind.png', 'bright_rune_reinforce.png', 'bright_rune_mind.png', 'bright_rune_reinforce.png', 'bright_rune_mind.png'],
+            ['bright_rune_unload.png', 'bright_rune_unload.png', 'bright_rune_reinforce.png', 'bright_rune_unload.png', 'bright_rune_unload.png'],
+            ['bright_rune_void.png', 'bright_rune_void.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_protect.png'],
+            ['bright_rune_mind.png', 'bright_rune_mind.png', 'bright_rune_mind.png', 'bright_rune_mind.png', 'bright_rune_strike.png'],
+            ['bright_rune_void.png', 'bright_rune_void.png', 'bright_rune_void.png', 'bright_rune_reinforce.png', 'bright_rune_reinforce.png'],
+            ['bright_rune_void.png', 'bright_rune_void.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_strike.png'],
             ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
             ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
         ];

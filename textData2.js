@@ -1,5 +1,6 @@
 
 let textData2 = {
+
     "encyclopedia_rune_element": {
         "en_us": "Elemental Runes: ",
         "fr": "Runes élémentaires: ",
@@ -591,22 +592,22 @@ let textData2 = {
         "jp": "でも、私は何でもできると確信しています。"
     },
     "level0_diag_a": {
-        "en_us": "This bundle of sticks is\nblocking the entrance.",
-        "fr": "Cette poupée bâton\nbloque l'entrée.",
-        "zh_tw": "這根木棒娃娃\n擋住了入口。",
-        "zh_cn": "这根木棒娃娃\n挡住了入口。",
-        "ru": "Эта кукла-палка блокирует вход.",
-        "es": "Este muñeco de palo está\nbloqueando la entrada.",
-        "jp": "この棒人形が入り口を塞いでいます。"
+        "en_us": "I must save my beloved.",
+        "fr": "Je dois sauver mon bien-aimé.",
+        "zh_tw": "我必須拯救我所愛的人。",
+        "zh_cn": "我必须拯救我心爱的人。",
+        "ru": "Я должен спасти\nсвою возлюбленную.",
+        "es": "Debo salvar a mi amado.",
+        "jp": "私は愛する人を救わなければなりません。"
     },
     "level0_diag_b": {
-        "en_us": "Is it trying to stop me\nfrom saving my beloved?",
-        "fr": "Est-ce que cela m'empêche\nde sauver ma bien-aimée ?",
-        "zh_tw": "它是在阻止我拯救我心愛的嗎？",
-        "zh_cn": "它是在阻止我拯救我心爱的吗？",
-        "ru": "Мешает ли это мне\nспасти любимого?",
-        "es": "¿Me está impidiendo salvar\na mi amado?",
-        "jp": "それは私が愛する人を救うのを妨害\nしようとしているのでしょうか?"
+        "en_us": "But this stick dummy\nis blocking the entrance.",
+        "fr": "Mais ce mannequin en forme\nde bâton bloque l'entrée.",
+        "zh_tw": "但這個木棍人偶擋住了入口。",
+        "zh_cn": "但这个木棍人偶挡住了入口。",
+        "ru": "Но фигурка заблокировала вход.",
+        "es": "Pero la figura de palo\nbloqueó la entrada.",
+        "jp": "しかし、棒人間が入り\n口を塞いでしまいました。"
     },
     "level0_tut_a": {
         "en_us": "Spin the wheels to\nreplace used Runes.",

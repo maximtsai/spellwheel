@@ -1,6 +1,6 @@
  class Death2 extends Enemy {
-     constructor(scene, x, y) {
-         super(scene, x, y);
+     constructor(scene, x, y, level) {
+         super(scene, x, y, level);
          this.initSprite('max_death_2.png', 0.85, 0, 0, 'deathfinal');
          this.sprite.setOrigin(0.5, 0.2);
          this.forcedOriginY = 0.2;

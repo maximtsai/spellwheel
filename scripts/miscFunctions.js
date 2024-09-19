@@ -129,7 +129,7 @@ function updateCheatsDisplay() {
         cheatsDisplay.setText(cheatsText);
         gameVars.hasCheated = true;
     } else if (gameVars.hasCheated) {
-        cheatsDisplay.setText('CHEATS ACTIVE');
+        cheatsDisplay.setText('C');
     } else {
         cheatsDisplay.visible = false;
     }

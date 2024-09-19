@@ -1,6 +1,6 @@
  class Death extends Enemy {
-     constructor(scene, x, y) {
-         super(scene, x, y);
+     constructor(scene, x, y, level) {
+         super(scene, x, y, level);
          this.initSprite('blank.png', 0.7);
         this.sprite.setOrigin(0.5, 0.45);
         swirlInReaperFog(1.25);
@@ -432,7 +432,7 @@
                          messageBus.publish("closeCombatText")
                      }, 3000);
                  }, 2000)
-             } else if (this.timesAttacked === 13) {
+             } else if (this.timesAttacked === 7) {
                  messageBus.publish("showCombatText", getLangText('deathFightCombat1b'));
                  this.addTimeout(() => {
                      this.spellsCastCounter = 0;
@@ -499,9 +499,9 @@
                          })
                      },
                      startFunction: () => {
-
                      },
                      finaleFunction: () => {
+                         this.timesAttacked = Math.max(0, this.timesAttacked - 5);
                      }
                  },
                  {
@@ -543,6 +543,8 @@
                      },
                      attackFinishFunction: () => {
                          this.setAsleep();
+                         this.timesAttacked = Math.max(0, this.timesAttacked - 5);
+
                          // this.hideCurrentAttack();
                          this.fireScytheObjects(5, undefined, () => {
                              if (!globalObjects.player.dead) {
@@ -586,6 +588,7 @@
                          })
                      },
                      finaleFunction: () => {
+                         this.timesAttacked = Math.max(0, this.timesAttacked - 8);
                      }
                  },
                  {

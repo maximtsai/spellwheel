@@ -6,7 +6,7 @@
 	let topics;
 	let index;
 	let messageBus;
-	
+
 	//     messageBus.publish(messages.gameStarted);
 	class InternalMessageBus {
 		constructor() {
@@ -24,7 +24,6 @@
 			if(!topic) {
 				console.error("Undefined subscription topic for callback: ");
 				console.error(callback);
-				debugger;
 				return;
 			}
 			if (typeof callback !== 'function') {

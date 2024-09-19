@@ -36,6 +36,15 @@ let textData3 = {
         "es": "CÓDIGOS SECRETOS",
         "jp": "アクセスコード"
     },
+    "cheat_code": {
+        "en_us": "CHEAT UNLOCKED",
+        "fr": "CODE SECRETES",
+        "zh_tw": "密技",
+        "zh_cn": "密技",
+        "ru": "ЧИТ-КОД",
+        "es": "CÓDIGOS SECRETOS",
+        "jp": "チートコード"
+    },
     "spell_info_position": {
         "en_us": "SPELL INFO POSITION",
         "fr": "POSITION DES INFOS MAGIQUES",

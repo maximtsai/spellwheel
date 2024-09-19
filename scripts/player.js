@@ -1137,6 +1137,9 @@ class Player {
                     alpha: 1,
                     ease: 'Cubic.easeIn',
                     onComplete: () => {
+                        let cheatsDisplay = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 70, getLangText('cheat_code'), {fontFamily: 'opensans', fontSize: 28, color: '#EEEEEE', align: 'center'}).setDepth(200).setStroke('#000000', 4).setVisible(false).setOrigin(0.5, 0.5);
+                        this.cheatIcons = [];
+                        this.createCheatCode(gameVars.currLevel || globalObjects.currentEnemy.level, cheatsDisplay);
                         let deathMenuButton;
                         let deathRetryButton;
                         let deathTrainingButton;
@@ -1161,9 +1164,14 @@ class Player {
                             onMouseUp: () => {
                                 this.revive();
                                 gotoMainMenu();
+                                cheatsDisplay.destroy();
                                 deathRetryButton.destroy();
                                 deathMenuButton.destroy();
                                 deathTrainingButton.destroy();
+                                for (let i in this.cheatIcons) {
+                                    this.cheatIcons[i].destroy();
+                                }
+                                this.cheatIcons = [];
                             }
                         });
                         deathMenuButton.addText('MENU', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
@@ -1198,9 +1206,14 @@ class Player {
                                     globalObjects.player.resetStats();
                                 }
                                 beginLevel(CURRENT_LEVEL * -1 + 1);
+                                cheatsDisplay.destroy();
                                 deathMenuButton.destroy();
                                 deathRetryButton.destroy();
                                 deathTrainingButton.destroy();
+                                for (let i in this.cheatIcons) {
+                                    this.cheatIcons[i].destroy();
+                                }
+                                this.cheatIcons = [];
                             }
                         });
                         deathTrainingButton.addText(getLangText('back_to_training'), {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
@@ -1240,9 +1253,14 @@ class Player {
                                 setTimeout(() => {
                                     createEnemy(CURRENT_LEVEL);
                                 }, 0)
+                                cheatsDisplay.destroy();
                                 deathMenuButton.destroy();
                                 deathRetryButton.destroy();
                                 deathTrainingButton.destroy();
+                                for (let i in this.cheatIcons) {
+                                    this.cheatIcons[i].destroy();
+                                }
+                                this.cheatIcons = [];
                             }
                         });
                         deathRetryButton.addText('RETRY', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
@@ -1251,6 +1269,47 @@ class Player {
                 });
             }
         });
+    }
+
+    createCheatCode(currLevel, cheatsDisplay) {
+        if (currLevel > 0 && currLevel < 13) {
+            cheatsDisplay.visible = true;
+        }
+        cheatsDisplay.alpha = 0;
+        let cheatList = this.getCheatList(currLevel);
+        for (let i = 0; i < 5; i++) {
+            let xPos = gameConsts.halfWidth - 120 + 60 * i;
+            let newIcon = PhaserScene.add.sprite(xPos, gameConsts.height + 25, 'circle', cheatList[i]).setDepth(200).setAlpha(0);
+            this.cheatIcons.push(newIcon);
+        }
+        PhaserScene.tweens.add({
+            delay: 3000,
+            targets: this.cheatIcons,
+            alpha: 1,
+            duration: 2000
+        })
+        PhaserScene.tweens.add({
+            delay: 1000,
+            targets: cheatsDisplay,
+            alpha: 1,
+            duration: 2000
+        })
+    }
+
+    getCheatList(level) {
+        let list = [
+            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
+            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
+            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
+            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
+            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
+            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
+            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
+            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
+            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
+            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
+        ];
+        return list[level];
     }
 
     revive() {

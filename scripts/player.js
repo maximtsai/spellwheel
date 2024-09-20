@@ -1311,7 +1311,7 @@ class Player {
             "SUPER SHIELD",
             "X2 DAMAGE",
             "SUPER SHIELD",
-            "X2 DAMAGE AGAIN",
+            "X2 MORE DAMAGE",
             "EXTRA ULTIMATE",
             "CALM ENEMIES",
             "INFINITE AMMO",

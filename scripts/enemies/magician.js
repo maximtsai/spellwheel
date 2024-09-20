@@ -1110,7 +1110,7 @@
                 // 1
                  {
                      name: "\\50% MISSING HEALTH",
-                     chargeAmt: 400,
+                     chargeAmt: 350,
                      isPassive: true,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',

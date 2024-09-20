@@ -172,12 +172,12 @@ let textData4 = {
     },
     "deathFight2pluse": {
         "en_us": "STILL ALIVE? YOUR END IS NOW.",
-        "fr": "TOUJOURS VIVANT? VOTRE FIN EST MAINTENANT.",
+        "fr": "TOUJOURS VIVANT?\nVOTRE FIN EST MAINTENANT.",
         "zh_tw": "仍然活著？你的結局就是現在。",
         "zh_cn": "仍然活着？你的结局就是现在。",
-        "ru": "ВСЕ ЕЩЁ ЖИВ? ВАШ КОНЕЦ УЖЕ НАСТУПИЛ.",
-        "es": "¿SIGO VIVO? TU FIN ES AHORA.",
-        "jp": "まだ生きています。あなたの終わりは今です。"
+        "ru": "ВСЕ ЕЩЁ ЖИВ?\nВАШ КОНЕЦ УЖЕ НАСТУПИЛ.",
+        "es": "¿SIGO VIVO?\nTU FIN ES AHORA.",
+        "jp": "まだ生きています。\nあなたの終わりは今です。"
     },
     "deathFight2plusy": {
         "en_us": "THIS HAS DRAGGED ON ENOUGH!",

@@ -180,7 +180,7 @@ let textData4 = {
         "jp": "まだ生きています。\nあなたの終わりは今です。"
     },
     "deathFight2plusy": {
-        "en_us": "THIS HAS DRAGGED ON ENOUGH!",
+        "en_us": "THIS HAS DRAGGED ON\nTOO LONG!",
         "fr": "CELA A ASSEZ TRAÎNÉ !",
         "zh_tw": "這已經拖得夠久了！",
         "zh_cn": "这已经拖得够久了！",

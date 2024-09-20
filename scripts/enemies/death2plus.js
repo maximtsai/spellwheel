@@ -3408,7 +3408,7 @@
                  ease: 'Cubic.easeIn',
                  onComplete: () => {
                      if (currentPowerText) {
-                         currentPowerText.destroy();
+                         currentPowerText.visible = false;
                      }
                  }
              });
@@ -3423,7 +3423,7 @@
                  duration: 500,
                  ease: 'Cubic.easeIn',
                  onComplete: () => {
-                     currentPowerHand.destroy();
+                     currentPowerHand.visible = false;
                  }
              });
          }

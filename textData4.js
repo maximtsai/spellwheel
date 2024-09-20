@@ -261,10 +261,10 @@ let textData4 = {
         "jp": "...痛い"
     },
     "deathFight2plusbeaten2": {
-        "en_us": "I AM... DEFEATED.",
-        "fr": "JE SUIS... VAINCUE.",
-        "zh_tw": "你。。。打敗了我。",
-        "zh_cn": "你。。。打败了我。",
+        "en_us": "YOU HAVE... WON.",
+        "fr": "VOUS AVEZ... GAGNÉ.",
+        "zh_tw": "你。。。获胜了。",
+        "zh_cn": "你。。。获胜了。",
         "ru": "У ВАС ЕСТЬ... ПОБЕДИЛ МЕНЯ.",
         "es": "TÚ TIENES... ME DERROTÓ.",
         "jp": "あなたは...私を倒した。"

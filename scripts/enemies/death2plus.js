@@ -60,7 +60,7 @@
          this.glowHands = [];
          this.shieldScale = 1.5;
          this.shieldOffsetY = 40;
-        this.lastAttackLingerMult = 2;
+        this.lastAttackLingerMult = 2.5;
          this.shieldTextOffsetY = -55;
          this.shieldTextFont = "void";
          this.shieldTextSize = 56;
@@ -705,7 +705,7 @@
                      },
                  },
                  {
-                     name: "$22",
+                     name: "$20",
                      chargeAmt: 600,
                      finishDelay: 2000,
                      damage: -1,
@@ -720,7 +720,7 @@
                          let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0.03);;
                          okayHand.setDepth(50);
                          okayHandGlow.setDepth(50);
-                         let damage = 22;
+                         let damage = 20;
 
                          this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
                              this.fireTimeAttack(damage, okayHand, () => {
@@ -828,13 +828,13 @@
                      },
                  },
                  {
-                     name: "$26",
+                     name: "$25",
                      chargeAmt: 650,
                      finishDelay: 2000,
                      damage: -1,
                      startFunction: () => {
                          this.attackToStrengthen = 2;
-                         this.attackToStrengthenStartDmg = 26;
+                         this.attackToStrengthenStartDmg = 25;
                          this.pulseHand(2);
                      },
                      attackStartFunction: () => {
@@ -845,7 +845,7 @@
                          let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0.03);;
                          okayHand.setDepth(50);
                          okayHandGlow.setDepth(50);
-                         let damage = 26 + this.extraAttackDamage;
+                         let damage = 25 + this.extraAttackDamage;
                          this.attackToStrengthen = undefined;
 
                          this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
@@ -927,7 +927,7 @@
                  //2
                  {
                      name: "OBSERVING...",
-                     chargeAmt: 300,
+                     chargeAmt: 400,
                      finishDelay: 3000,
                      damage: 0,
                      isPassive: true,
@@ -1460,7 +1460,7 @@
      }
 
      fireNextSuperHand(isHeavy) {
-         if (!this.finalHands || this.finalHands.length === 0) {
+         if (!this.finalHands || this.finalHands.length === 0 || this.isDefeated) {
              return;
          }
         let nextHand = this.finalHands.pop();
@@ -1599,6 +1599,9 @@
 
 
      createEightHands(arr) {
+         if (this.isDefeated) {
+             return;
+         }
          this.finalHands = [];
 
          let handToUse = ['palm.png', 'poke.png', 'okay.png', 'claw.png'];
@@ -1776,7 +1779,8 @@
 
      clearHandObjects() {
          for (let i = 0; i < this.handObjects.length; i++) {
-             let currObj = this.handObjects[i]
+             let currObj = this.handObjects[i];
+             currObj.visible = false;
          }
      }
 
@@ -2693,6 +2697,11 @@
                          targets: [this.handShieldBack],
                          duration: durMut * 400,
                          alpha: 0.35,
+                         onComplete: () => {
+                             if (this.shieldAmts == 0) {
+                                 this.clearHandShield(true);
+                             }
+                         }
                      });
                  }
              });
@@ -2749,7 +2758,6 @@
                              alpha: 0,
                              ease: 'Cubic.easeIn',
                              duration: 400,
-
                          })
                      }
                  })
@@ -2772,7 +2780,13 @@
                              targets: [this.handShield],
                              duration: durMut * 500,
                              alpha: 0.95,
+                             onComplete: () => {
+                                 if (this.shieldAmts == 0) {
+                                     this.clearHandShield(true);
+                                 }
+                             }
                          });
+
                      }
                  });
              }
@@ -2799,7 +2813,7 @@
              ease: 'Cubic.easeOut',
              duration: 250,
          })
-        this.addTween({
+         this.handShield.currAnim = this.addTween({
             targets: [this.handShield, this.handShieldBack],
             alpha: 0,
             duration: 600,
@@ -2844,6 +2858,7 @@
      }
 
      sharedDie() {
+         this.isDefeated = true;
         if (this.oldStartScale) {
             this.sprite.startScale = this.oldStartScale
         }
@@ -2906,7 +2921,7 @@
          this.bgBlur.destroy();
          this.clearHandObjects();
          this.fadeOutCurrentHand();
-         this.clearHandShield();
+         this.clearHandShield(true);
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();
          globalObjects.magicCircle.disableMovement();
@@ -3144,6 +3159,7 @@
                          })
 
                         globalObjects.bannerTextManager.setDialog([
+                            "...",
                             getLangText('deathFight2plusbeaten2'),
                             getLangText('deathFight2plusbeaten3'),
                             getLangText('deathFight2plusbeaten4'),
@@ -3153,6 +3169,7 @@
                         globalObjects.bannerTextManager.showBanner(0);
 
                         globalObjects.bannerTextManager.setDialogFunc([
+                            null,
                             null,
                             null,
                             null, () => {
@@ -3505,7 +3522,9 @@
                      duration: 500,
                      ease: 'Quint.easeIn',
                      onComplete: () => {
-                         this.currentPowerText.setText("");
+                         if (this.currentPowerText.active) {
+                             this.currentPowerText.setText("");
+                         }
                          this.heal(this.storedHeal, 0.45 + Math.sqrt(this.storedHeal) * 0.12);
                          playSound('magic', 0.75);
                          messageBus.publish('animateHealNum', this.x, this.y + 20, '+' + this.storedHeal, 0.5 + Math.sqrt(this.storedHeal) * 0.15);

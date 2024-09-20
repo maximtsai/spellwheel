@@ -325,7 +325,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 450,
-                    chargeMult: 1.9,
+                    chargeMult: 2,
                     transitionFast: true,
                     isPassive: true,
                     customCall: 'flip1',
@@ -339,7 +339,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 350,
-                    chargeMult: 2.4,
+                    chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip2',
@@ -445,7 +445,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 2.4,
+                    chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip2',
@@ -458,7 +458,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 2.4,
+                    chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
@@ -472,7 +472,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 300,
-                    chargeMult: 2.4,
+                    chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip3',
@@ -492,7 +492,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 300,
-                    chargeMult: 2.4,
+                    chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
@@ -504,7 +504,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 2.4,
+                    chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip2',
@@ -515,7 +515,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 2.4,
+                    chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
@@ -526,7 +526,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 350,
-                    chargeMult: 2.4,
+                    chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip3',
@@ -538,7 +538,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 450,
-                    chargeMult: 2.4,
+                    chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
@@ -550,7 +550,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 2.4,
+                    chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip2',
@@ -561,7 +561,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 300,
-                    chargeMult: 2.4,
+                    chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
@@ -573,7 +573,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 2.4,
+                    chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip3',
@@ -584,7 +584,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 200,
-                    chargeMult: 2.4,
+                    chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',

@@ -188,7 +188,7 @@ class Death3 extends Enemy {
                      duration: 500,
                      ease: "Quad.easeOut"
                  })
-                 this.whiteoutTemp = this.addImage(this.sprite.x, this.sprite.y + 50, 'spells', 'whiteout_circle.png').setScale(4, 1).setOrigin(0.5, 0.45);
+                 this.whiteoutTemp = this.addImage(this.sprite.x, this.sprite.y + 60, 'spells', 'whiteout_circle.png').setScale(4, 1).setOrigin(0.5, 0.45);
                  this.addTween({
                      targets: this.whiteoutTemp,
                      alpha: 0,
@@ -381,6 +381,12 @@ class Death3 extends Enemy {
                                     duration: 600,
                                     ease: 'Cubic.easeOut',
                                 });
+                                this.addDelay(() => {
+                                    let sfx = playSound('matter_enhance_2', 0.6);
+                                    sfx.detune = -900;
+                                    sfx.pan = -0.3;
+                                }, 200)
+
                                 this.addTween({
                                     targets: [this.rock1, this.rock1b],
                                     x: "-=250",
@@ -390,6 +396,11 @@ class Death3 extends Enemy {
                                     duration: 1000,
                                     completeDelay: 200,
                                     onComplete: () => {
+                                        this.addDelay(() => {
+                                            let sfx = playSound('matter_enhance_2', 0.6);
+                                            sfx.detune = -1300;
+                                            sfx.pan = 0.3;
+                                        }, 200)
                                         this.addTween({
                                             targets: [this.rock2, this.rock2b],
                                             x: "+=250",
@@ -578,7 +589,7 @@ class Death3 extends Enemy {
                     transitionFast: true,
                     customCall: 'flip1',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", "...", 15);
+                        messageBus.publish("showCombatText", getLangText('now...'), 15);
                     },
                 },
                 {

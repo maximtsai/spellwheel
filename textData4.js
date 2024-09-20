@@ -261,31 +261,31 @@ let textData4 = {
         "jp": "...痛い"
     },
     "deathFight2plusbeaten2": {
-        "en_us": "YOU HAVE... DEFEATED ME.",
-        "fr": "VOUS AVEZ... M’A VAINCU.",
-        "zh_tw": "你有。。。打敗了我。",
-        "zh_cn": "你有。。。打败了我。",
+        "en_us": "I AM... DEFEATED.",
+        "fr": "JE SUIS... VAINCUE.",
+        "zh_tw": "你。。。打敗了我。",
+        "zh_cn": "你。。。打败了我。",
         "ru": "У ВАС ЕСТЬ... ПОБЕДИЛ МЕНЯ.",
         "es": "TÚ TIENES... ME DERROTÓ.",
         "jp": "あなたは...私を倒した。"
     },
     "deathFight2plusbeaten3": {
-        "en_us": "YOUR DETERMINATION IS GREAT,\nAND I WILL RESIST NO LONGER",
-        "fr": "TA DÉTERMINATION EST GRANDE,\nET JE NE RÉSISTERAI PLUS",
-        "zh_tw": "你的決心很大，我不會再抵抗了",
-        "zh_cn": "你的决心很大，我不会再抵抗了",
-        "ru": "ТВОЯ РЕШИМОСТЬ ВЕЛИКА, И Я\nБОЛЬШЕ НЕ БУДУ СОПРОТИВЛЯТЬСЯ",
-        "es": "TU DETERMINACIÓN ES GRANDE,\nY NO RESISTIRÉ MÁS",
-        "jp": "あなたの決意は偉大で、\n私はこれ以上抵抗しません"
+        "en_us": "YOUR DETERMINATION IS STRONG,\nAND I WILL RESIST NO LONGER.",
+        "fr": "VOTRE DÉTERMINATION EST FORTE,\nET JE NE RÉSISTERAI PLUS.",
+        "zh_tw": "你的決心很坚定，我不會再抵抗了.",
+        "zh_cn": "你的决心很坚定，我不会再抵抗了.",
+        "ru": "ТВОЯ РЕШИМОСТЬ ВЕЛИКА, И Я\nБОЛЬШЕ НЕ БУДУ СОПРОТИВЛЯТЬСЯ.",
+        "es": "TU DETERMINACIÓN ES GRANDE,\nY NO RESISTIRÉ MÁ.S",
+        "jp": "あなたの決意は偉大で、\n私はこれ以上抵抗しません."
     },
     "deathFight2plusbeaten4": {
-        "en_us": "I WILL ALLOW YOU TO\nMEET WITH YOUR BELOVED",
-        "fr": "JE VOUS PERMETTRAI DE\nRENCONTRER VOTRE BIEN-AIMÉ",
-        "zh_tw": "我會讓你與你的愛人見面",
-        "zh_cn": "我会让你与你的爱人见面",
-        "ru": "Я ПОЗВОЛЮ ВАМ\bВСТРЕТИТЬСЯ С ЛЮБИМЫМ",
-        "es": "TE PERMITIRÉ ENCONTRARTE\bCON TU AMADO",
-        "jp": "私はあなたがあなたの最愛の\n人と会うことを許可します"
+        "en_us": "I WILL ALLOW YOU TO\nMEET WITH YOUR BELOVED.",
+        "fr": "JE VOUS PERMETTRAI DE\nRENCONTRER VOTRE BIEN-AIMÉ.",
+        "zh_tw": "我會讓你與你的愛人見面.",
+        "zh_cn": "我会让你与你的爱人见面.",
+        "ru": "Я ПОЗВОЛЮ ВАМ\bВСТРЕТИТЬСЯ С ЛЮБИМЫМ.",
+        "es": "TE PERMITIRÉ ENCONTRARTE\bCON TU AMADO.",
+        "jp": "私はあなたがあなたの最愛の\n人と会うことを許可します."
     },
     "retry": {
         "en_us": "RETRY",
@@ -664,6 +664,15 @@ let textData4 = {
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "now...": {
+        "en_us": "Now...",
+        "fr": "...",
+        "zh_tw": "现在。。。",
+        "zh_cn": "现在。。。",
         "ru": "",
         "es": "",
         "jp": ""

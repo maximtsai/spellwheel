@@ -4,7 +4,7 @@
 			"image": "sprites/buttons.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1620,
+				"w": 1685,
 				"h": 128
 			},
 			"scale": 1,
@@ -52,16 +52,16 @@
 					}
 				},
 				{
-					"filename": "closebtn_press.png",
+					"filename": "encyclopedia_btn_hover.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 56,
-						"h": 56
+						"w": 52,
+						"h": 52
 					},
 					"spriteSourceSize": {
-						"x": 7,
-						"y": 7,
+						"x": 5,
+						"y": 5,
 						"w": 42,
 						"h": 42
 					},
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "encyclopedia_btn_hover.png",
+					"filename": "encyclopedia_btn_normal.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "encyclopedia_btn_normal.png",
+					"filename": "encyclopedia_btn_press.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "encyclopedia_btn_press.png",
+					"filename": "options_btn_hover.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,6 +220,69 @@
 					}
 				},
 				{
+					"filename": "closebtn.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 54,
+						"h": 54
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 50,
+						"h": 50
+					},
+					"frame": {
+						"x": 177,
+						"y": 75,
+						"w": 50,
+						"h": 50
+					}
+				},
+				{
+					"filename": "closebtn_press.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 58,
+						"h": 58
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 4,
+						"w": 50,
+						"h": 50
+					},
+					"frame": {
+						"x": 229,
+						"y": 75,
+						"w": 50,
+						"h": 50
+					}
+				},
+				{
+					"filename": "new_btn_anim_8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 86,
+						"h": 86
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 86,
+						"h": 72
+					},
+					"frame": {
+						"x": 255,
+						"y": 1,
+						"w": 86,
+						"h": 72
+					}
+				},
+				{
 					"filename": "new_btn_anim_15.png",
 					"rotated": false,
 					"trimmed": true,
@@ -262,27 +325,6 @@
 					}
 				},
 				{
-					"filename": "options_btn_hover.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 52,
-						"h": 52
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 5,
-						"w": 42,
-						"h": 42
-					},
-					"frame": {
-						"x": 177,
-						"y": 75,
-						"w": 42,
-						"h": 42
-					}
-				},
-				{
 					"filename": "options_btn_normal.png",
 					"rotated": false,
 					"trimmed": true,
@@ -297,31 +339,10 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 221,
+						"x": 281,
 						"y": 75,
 						"w": 42,
 						"h": 42
-					}
-				},
-				{
-					"filename": "new_btn_anim_8.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 86,
-						"h": 86
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 86,
-						"h": 72
-					},
-					"frame": {
-						"x": 255,
-						"y": 1,
-						"w": 86,
-						"h": 72
 					}
 				},
 				{
@@ -339,31 +360,10 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 265,
+						"x": 325,
 						"y": 75,
 						"w": 42,
 						"h": 42
-					}
-				},
-				{
-					"filename": "tut_btn.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 228,
-						"h": 54
-					},
-					"spriteSourceSize": {
-						"x": 48,
-						"y": 13,
-						"w": 138,
-						"h": 41
-					},
-					"frame": {
-						"x": 309,
-						"y": 75,
-						"w": 138,
-						"h": 41
 					}
 				},
 				{
@@ -388,6 +388,48 @@
 					}
 				},
 				{
+					"filename": "stonex_press.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 56,
+						"h": 56
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 7,
+						"w": 42,
+						"h": 42
+					},
+					"frame": {
+						"x": 369,
+						"y": 75,
+						"w": 42,
+						"h": 42
+					}
+				},
+				{
+					"filename": "tut_btn.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 228,
+						"h": 54
+					},
+					"spriteSourceSize": {
+						"x": 48,
+						"y": 13,
+						"w": 138,
+						"h": 41
+					},
+					"frame": {
+						"x": 413,
+						"y": 75,
+						"w": 138,
+						"h": 41
+					}
+				},
+				{
 					"filename": "new_btn_anim_4.png",
 					"rotated": false,
 					"trimmed": true,
@@ -406,27 +448,6 @@
 						"y": 1,
 						"w": 83,
 						"h": 72
-					}
-				},
-				{
-					"filename": "slip.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 85,
-						"h": 42
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 83,
-						"h": 39
-					},
-					"frame": {
-						"x": 449,
-						"y": 75,
-						"w": 83,
-						"h": 39
 					}
 				},
 				{
@@ -451,7 +472,7 @@
 					}
 				},
 				{
-					"filename": "slip_hover.png",
+					"filename": "slip.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -465,7 +486,7 @@
 						"h": 39
 					},
 					"frame": {
-						"x": 534,
+						"x": 553,
 						"y": 75,
 						"w": 83,
 						"h": 39
@@ -507,31 +528,10 @@
 						"h": 55
 					},
 					"frame": {
-						"x": 619,
+						"x": 638,
 						"y": 72,
 						"w": 55,
 						"h": 55
-					}
-				},
-				{
-					"filename": "closebtn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 54,
-						"h": 54
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 54,
-						"h": 54
-					},
-					"frame": {
-						"x": 676,
-						"y": 72,
-						"w": 54,
-						"h": 54
 					}
 				},
 				{
@@ -570,7 +570,7 @@
 						"h": 56
 					},
 					"frame": {
-						"x": 732,
+						"x": 695,
 						"y": 70,
 						"w": 85,
 						"h": 56
@@ -612,7 +612,7 @@
 						"h": 59
 					},
 					"frame": {
-						"x": 819,
+						"x": 782,
 						"y": 68,
 						"w": 85,
 						"h": 59
@@ -637,6 +637,27 @@
 						"y": 1,
 						"w": 66,
 						"h": 64
+					}
+				},
+				{
+					"filename": "closebtn_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 58,
+						"h": 58
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 58,
+						"h": 58
+					},
+					"frame": {
+						"x": 869,
+						"y": 67,
+						"w": 58,
+						"h": 58
 					}
 				},
 				{
@@ -675,7 +696,7 @@
 						"h": 62
 					},
 					"frame": {
-						"x": 906,
+						"x": 929,
 						"y": 65,
 						"w": 377,
 						"h": 62
@@ -703,7 +724,7 @@
 					}
 				},
 				{
-					"filename": "closebtn_hover.png",
+					"filename": "stonex_hover.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -717,10 +738,31 @@
 						"h": 56
 					},
 					"frame": {
-						"x": 1285,
+						"x": 1308,
 						"y": 65,
 						"w": 56,
 						"h": 56
+					}
+				},
+				{
+					"filename": "stonex.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 54,
+						"h": 54
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 54,
+						"h": 54
+					},
+					"frame": {
+						"x": 1366,
+						"y": 65,
+						"w": 54,
+						"h": 54
 					}
 				},
 				{
@@ -738,31 +780,10 @@
 						"h": 53
 					},
 					"frame": {
-						"x": 1343,
+						"x": 1422,
 						"y": 65,
 						"w": 66,
 						"h": 53
-					}
-				},
-				{
-					"filename": "slip_press.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 85,
-						"h": 42
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 83,
-						"h": 39
-					},
-					"frame": {
-						"x": 1411,
-						"y": 65,
-						"w": 83,
-						"h": 39
 					}
 				},
 				{
@@ -780,10 +801,52 @@
 						"h": 27
 					},
 					"frame": {
-						"x": 1496,
-						"y": 65,
+						"x": 1621,
+						"y": 1,
 						"w": 53,
 						"h": 27
+					}
+				},
+				{
+					"filename": "slip_hover.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 85,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 83,
+						"h": 39
+					},
+					"frame": {
+						"x": 1490,
+						"y": 65,
+						"w": 83,
+						"h": 39
+					}
+				},
+				{
+					"filename": "slip_press.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 85,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 83,
+						"h": 39
+					},
+					"frame": {
+						"x": 1575,
+						"y": 65,
+						"w": 83,
+						"h": 39
 					}
 				},
 				{
@@ -801,8 +864,8 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 1496,
-						"y": 94,
+						"x": 1660,
+						"y": 30,
 						"w": 24,
 						"h": 24
 					}
@@ -822,8 +885,8 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 1522,
-						"y": 94,
+						"x": 1660,
+						"y": 56,
 						"w": 24,
 						"h": 24
 					}
@@ -843,8 +906,8 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 1548,
-						"y": 94,
+						"x": 1660,
+						"y": 82,
 						"w": 24,
 						"h": 24
 					}
@@ -864,8 +927,8 @@
 						"h": 24
 					},
 					"frame": {
-						"x": 1551,
-						"y": 65,
+						"x": 1621,
+						"y": 30,
 						"w": 24,
 						"h": 24
 					}
@@ -876,6 +939,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:c34a06703a5afcf3177e46bcf41a2472:2bcddcb7f360768da524a4e0b5f45f7c:76d98c9e3f665caad5fa5a5151215d9e$"
+		"smartupdate": "$TexturePacker:SmartUpdate:c78c02159f059ab4c0d5318b77dbd2c3:a3486cb2082d28cdbad9d9ca9ce6a963:76d98c9e3f665caad5fa5a5151215d9e$"
 	}
 }

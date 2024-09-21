@@ -785,10 +785,14 @@
                                              this.addExtraDamage();
                                          });
                                          this.spellsCastCounter = 0;
+                                         if (this.playerSpellCastSub) {
+                                             this.playerSpellCastSub.unsubscribe();
+                                         }
                                          this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                                              this.spellsCastCounter++;
                                              if (this.spellsCastCounter >= 2) {
                                                  this.playerSpellCastSub.unsubscribe();
+                                                 this.playerSpellCastSub = null;
                                                  messageBus.publish("closeCombatText")
                                              }
                                          });
@@ -911,8 +915,12 @@
                                              this.spellAbsorber = null;
                                          }
                                          this.spellsCastCounter = 0;
+                                         if (this.playerSpellCastSub) {
+                                             this.playerSpellCastSub.unsubscribe();
+                                         }
                                          this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                                              this.playerSpellCastSub.unsubscribe();
+                                             this.playerSpellCastSub = null;
                                              messageBus.publish("closeCombatText")
                                          });
 
@@ -1020,8 +1028,12 @@
                                              this.spellAbsorber = null;
                                          }
                                          this.spellsCastCounter = 0;
+                                         if (this.playerSpellCastSub) {
+                                             this.playerSpellCastSub.unsubscribe();
+                                         }
                                          this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                                              this.playerSpellCastSub.unsubscribe();
+                                             this.playerSpellCastSub = null;
                                              messageBus.publish("closeCombatText")
                                          });
                                      }, 1800)
@@ -1125,9 +1137,13 @@
                                  this.addTimeout(() => {
                                      this.setAwake();
                                      this.spellsCastCounter = 0;
+                                     if (this.playerSpellCastSub) {
+                                         this.playerSpellCastSub.unsubscribe();
+                                     }
                                      this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                                          this.playerSpellCastSub.unsubscribe();
-                                         messageBus.publish("closeCombatText")
+                                         this.playerSpellCastSub = null;
+                                         messageBus.publish("closeCombatText");
                                      });
                                  }, 1500)
                              }, 600)
@@ -2857,6 +2873,17 @@
          return 0;
      }
 
+     destroy() {
+         if (this.playerSpellCastSub) {
+             this.playerSpellCastSub.unsubscribe();
+         }
+         if (this.spellAbsorber) {
+             this.spellAbsorber.unsubscribe();
+             this.spellAbsorber = null;
+         }
+         super.destroy();
+     }
+
      sharedDie() {
          this.isDefeated = true;
         if (this.oldStartScale) {
@@ -3281,6 +3308,9 @@
      }
 
      addExtraDamage() {
+         if (this.isDestroyed || this.isDefeated || this.dead) {
+             return;
+         }
          if (this.attackToStrengthen !== undefined) {
              this.extraAttackDamage++;
 

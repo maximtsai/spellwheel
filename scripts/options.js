@@ -1005,7 +1005,7 @@ class Options {
         switch(sha256(codeVal)) {
             case 'aa508c2187fca56f397ff75adc52b94e02f38122cdd48bd42105106e5e0f8e14':
                 // all matter
-                this.codeAnnounce.setText("DIFFERENT CODES CAN UNLOCK\nPARTS OF THE GAME.");
+                this.codeAnnounce.setText("CODES CAN UNLOCK\nDIFFERENT PARTS OF THE GAME.");
                 this.codeAnnounce.setScale(0.75);
                 break;
             case '1865223aedef36687e7506a828eb83b78f139d3a927946593cca1636933be360':

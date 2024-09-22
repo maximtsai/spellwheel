@@ -745,12 +745,14 @@ class Death3 extends Enemy {
                     targets: [this.hood],
                     alpha: 0,
                     ease: 'Quad.easeIn',
-                    duration: 1000,
-                    completeDelay: 1500,
+                    duration: 2000,
+                    completeDelay: 500,
                     onComplete: () => {
-                        playSound('sound_of_death');
-
-                        showCutscene2();
+                        playSound('sound_of_death').setSeek(0.25);
+                        this.showDeathHead();
+                        this.addDelay(() => {
+                            showCutscene2();
+                        }, 600)
                     }
                 })
             }
@@ -779,7 +781,7 @@ class Death3 extends Enemy {
             targets: [this.hourglassglow],
             originX: 0.5,
             originY: 0.5,
-            y: this.y + 30,
+            y: this.y + 37,
             duration: 650,
             ease: 'Quad.easeIn',
         })
@@ -802,6 +804,132 @@ class Death3 extends Enemy {
                 let bgDark = getBackgroundBlackout();
                 bgDark.setDepth(-4);
                 bgDark.setAlpha(0.5)
+            }
+        })
+    }
+
+    showDeathHead() {
+        let deathHead = this.addImage(this.x, this.y + 10, 'deathfinal', 'death_2_laugh.png').setScale(0.85, 0.55).setOrigin(0.5, 0.45).setAlpha(0).setDepth(-1)
+        this.addTween({
+            targets: deathHead,
+            alpha: 0.6,
+            ease: 'Quint.easeIn',
+            duration: 500,
+            scaleX: 0.9,
+            scaleY: 0.75,
+            onComplete: () => {
+                let redFlash = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'red_pixel.png').setScale(500).setAlpha(0.6).setDepth(-1)
+                this.addTween({
+                    targets: redFlash,
+                    alpha: 0,
+                    ease: 'Cubic.easeOut',
+                    duration: 400,
+                    onComplete: () => {
+                        redFlash.destroy();
+                    }
+                })
+                deathHead.setAlpha(0.9).setScale(1, 0.95)
+                this.setAwake();
+                this.addTween({
+                    targets: deathHead,
+                    alpha: 0,
+                    duration: 1800,
+                    onComplete: () => {
+                        deathHead.destroy();
+                    }
+                })
+                this.addTween({
+                    targets: deathHead,
+                    ease: 'Quart.easeOut',
+                    duration: 80,
+                    scaleX: "-=0.015",
+                    scaleY: "-=0.025",
+                    onComplete: () => {
+                        screenShakeLong(10);
+                        this.addTween({
+                            targets: deathHead,
+                            duration: 20,
+                            scaleX: "+=0.03",
+                            scaleY: "+=0.06",
+                            onComplete: () => {
+                                this.addTween({
+                                    targets: deathHead,
+                                    ease: 'Quart.easeOut',
+                                    duration: 80,
+                                    scaleX: "-=0.015",
+                                    scaleY: "-=0.025",
+                                    onComplete: () => {
+                                        this.addTween({
+                                            targets: deathHead,
+                                            duration: 20,
+                                            scaleX: "+=0.03",
+                                            scaleY: "+=0.06",
+                                            onComplete: () => {
+                                                this.addTween({
+                                                    targets: deathHead,
+                                                    ease: 'Quart.easeOut',
+                                                    duration: 80,
+                                                    scaleX: "-=0.015",
+                                                    scaleY: "-=0.025",
+                                                    onComplete: () => {
+                                                        this.addTween({
+                                                            targets: deathHead,
+                                                            duration: 20,
+                                                            scaleX: "+=0.03",
+                                                            scaleY: "+=0.06",
+                                                            onComplete: () => {
+                                                                screenShakeLong(10);
+                                                                    this.addTween({
+                                                                    targets: deathHead,
+                                                                    ease: 'Quart.easeOut',
+                                                                    duration: 100,
+                                                                    scaleX: "-=0.015",
+                                                                    scaleY: "-=0.03",
+                                                                    onComplete: () => {
+                                                                        this.addTween({
+                                                                            targets: deathHead,
+                                                                            duration: 40,
+                                                                            scaleX: "+=0.03",
+                                                                            scaleY: "+=0.06",
+                                                                            onComplete: () => {
+                                                                                screenShakeLong(10);
+                                                                                this.addTween({
+                                                                                    targets: deathHead,
+                                                                                    ease: 'Quart.easeOut',
+                                                                                    duration: 120,
+                                                                                    scaleX: "-=0.015",
+                                                                                    scaleY: "-=0.03",
+                                                                                    onComplete: () => {
+                                                                                        deathHead.setScale(deathHead.scaleX + 0.05, deathHead.scaleY + 0.07);
+                                                                                        this.addTween({
+                                                                                            targets: deathHead,
+                                                                                            ease: 'Cubic.easeIn',
+                                                                                            alpha: 0,
+                                                                                            duration: 1400,
+                                                                                            scaleX: "-=0.15",
+                                                                                            scaleY: "-=0.08",
+                                                                                            onComplete: () => {
+                                                                                                deathHead.destroy();
+                                                                                            }
+                                                                                        })
+                                                                                    }
+                                                                                })
+                                                                            }
+                                                                        })
+                                                                    }
+                                                                })
+                                                            }
+                                                        })
+                                                    }
+                                                })
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
             }
         })
     }

@@ -245,6 +245,7 @@
         }
         if (this.playerSpellCastSub) {
             this.playerSpellCastSub.unsubscribe();
+            this.playerSpellCastSub = null;
         }
         messageBus.publish("closeCombatText")
         globalObjects.magicCircle.cancelTimeSlow();
@@ -337,7 +338,13 @@
         if (this.customBgMusic) {
             this.customBgMusic.stop();
         }
-        this.magicianReaped.unsubscribe();
+        if (this.magicianReaped) {
+            this.magicianReaped.unsubscribe();
+        }
+         if (this.playerSpellCastSub) {
+             this.playerSpellCastSub.unsubscribe();
+             this.playerSpellCastSub = null;
+         }
      }
 
      showRune() {
@@ -642,9 +649,9 @@
 
      handleSpecialDamageAbsorption(amt) {
         if (amt == 1) {
-            messageBus.publish('animateBlockNum', gameConsts.halfWidth + 25 - Math.random()*50, this.sprite.y - Math.random() * 50, 'DELAYED', 0.75);
+            messageBus.publish('animateBlockNum', gameConsts.halfWidth + 25 - Math.random()*50, this.sprite.y - Math.random() * 50, 'INVULNERABLE', 0.75);
         } else {
-            messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 20, 'DELAYED', 1.25);
+            messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 20, 'INVULNERABLE', 1.25);
         }
 
          if (this.clockShield.alpha < 0.3) {

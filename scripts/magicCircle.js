@@ -508,7 +508,7 @@ const ENABLE_KEYBOARD = true;
         this.spellElementText.setScale(0.7);
         this.spellElementText.setOrigin(1, 0.5);
         this.spellElementText.setDepth(125);
-        this.spellElementText.alpha = 0.4;
+        this.spellElementText.alpha = 0.5;
         this.spellElementText.startY = this.spellElementText.y;
         // this.spellElementSprite = this.scene.add.sprite(this.spellElementText.x, this.spellElementText.y, 'vfx', 'blank.png').setDepth(119).setOrigin(1, 0.5);
 
@@ -517,13 +517,13 @@ const ENABLE_KEYBOARD = true;
         this.spellNameText.setOrigin(0.5, 0.5);
         this.spellNameText.setDepth(125);
         this.spellNameText.startY = this.spellNameText.y;
-        this.spellNameText.alpha = 0.4;
+        this.spellNameText.alpha = 0.5;
 
         this.spellActionText = this.scene.add.bitmapText(this.x + 13, this.y - 283, 'normal', 'MATTER STRIKE', 30, 1);
         this.spellActionText.setScale(0.7);
         this.spellActionText.setOrigin(0, 0.5);
         this.spellActionText.setDepth(125);
-        this.spellActionText.alpha = 0.4;
+        this.spellActionText.alpha = 0.5;
         this.spellActionText.startY = this.spellActionText.y;
 
         this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(21).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);

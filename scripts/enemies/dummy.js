@@ -589,7 +589,7 @@
                  // 0
                  {
                      name: "}8 ",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: 8,
                      isBigMove: true,
                     attackFinishFunction: () => {

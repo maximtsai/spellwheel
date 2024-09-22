@@ -334,92 +334,71 @@
         if (!this.dead && !this.attemptedTutThree) {
             this.attemptedTutThree = true;
             this.addTimeout(() => {
-            this.shadow.destroy();
-            if (this.dead) {
-                return;
-            }
-            // setFrame('shadow_bar.png').setPosition(gameConsts.halfWidth, 25).setScale(3.5).setAlpha(0.2);
-            // // = this.addSprite(gameConsts.halfWidth, 30, 'misc', 'shadow_bar.png').setScale(6).setDepth(9999).setAlpha(0);
-            // this.addTween({
-            //     targets: this.shadow,
-            //     scaleX: 3.4,
-            //     scaleY: 3.4,
-            //     y: 20,
-            //     ease: 'Cubic.easeOut',
-            //     alpha: 0.5,
-            //     duration: 250,
-            //     onComplete: () => {
-            //         this.addTween({
-            //             scaleX: 5,
-            //             scaleY: 5,
-            //             targets: this.shadow,
-            //             alpha: 0,
-            //             duration: 1000,
-            //             onComplete: () => {
-            //                         this.shadow.destroy();
-            //             }
-            //         });
-            //     }
-            // });
-            this.addTimeout(() => {
+                this.shadow.destroy();
+                if (this.dead) {
+                    return;
+                }
                 if (!this.dead) {
                     globalObjects.textPopupManager.setInfoText(0, 30, getLangText('level0_tut_b'), 'left');
-                    this.eyeSprite.play('dummyblink');
                 }
+                this.addTimeout(() => {
+                    if (!this.dead) {
+                        this.eyeSprite.play('dummyblink');
+                    }
 
-            }, 800);
-            this.glowHealth = this.addSprite(gameConsts.halfWidth, 18, 'blurry', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
-            this.glowHealth2 = this.addSprite(gameConsts.halfWidth, 20, 'blurry', 'glow_flat_red.webp').setDepth(0).setAlpha(1.1).setScale(0.5, 2);
-            this.addTween({
-                targets: this.glowHealth2,
-                scaleX: 3,
-                ease: 'Quad.easeOut',
-                duration: 800,
-                onComplete: () => {
-                    this.glowHealth2.destroy();
-                }
-            });
-            this.addTween({
-                targets: this.glowHealth2,
-                scaleY: 0,
-                alpha: 0,
-                ease: 'Quad.easeIn',
-                duration: 800,
-            });
+                }, 800);
+                this.glowHealth = this.addSprite(gameConsts.halfWidth, 18, 'blurry', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
+                this.glowHealth2 = this.addSprite(gameConsts.halfWidth, 20, 'blurry', 'glow_flat_red.webp').setDepth(0).setAlpha(1.1).setScale(0.5, 2);
+                this.addTween({
+                    targets: this.glowHealth2,
+                    scaleX: 3,
+                    ease: 'Quad.easeOut',
+                    duration: 800,
+                    onComplete: () => {
+                        this.glowHealth2.destroy();
+                    }
+                });
+                this.addTween({
+                    targets: this.glowHealth2,
+                    scaleY: 0,
+                    alpha: 0,
+                    ease: 'Quad.easeIn',
+                    duration: 800,
+                });
 
-            this.addTween({
-                targets: this.glowHealth,
-                alpha: 0.75,
-                scaleX: 1,
-                ease: 'Cubic.easeInOut',
-                duration: 1500,
-                onComplete: () => {
-                    this.addTween({
-                        targets: this.glowHealth,
-                        alpha: 0,
-                        scaleX: 0.7,
-                        ease: 'Cubic.easeIn',
-                        duration: 1500,
-                        onComplete: () => {
-                            this.addTween({
-                                targets: this.glowHealth,
-                                alpha: 0.55,
-                                scaleX: 0.9,
-                                ease: 'Cubic.easeInOut',
-                                duration: 1500,
-                                onComplete: () => {
-                                    this.addTween({
-                                        targets: this.glowHealth,
-                                        alpha: 0,
-                                        duration: 1000,
-                                    });
-                                }
-                            });
-                        }
-                    });
-                }
-            });
-            }, 1200);
+                this.addTween({
+                    targets: this.glowHealth,
+                    alpha: 0.75,
+                    scaleX: 1,
+                    ease: 'Cubic.easeInOut',
+                    duration: 1500,
+                    onComplete: () => {
+                        this.addTween({
+                            targets: this.glowHealth,
+                            alpha: 0,
+                            scaleX: 0.7,
+                            ease: 'Cubic.easeIn',
+                            duration: 1500,
+                            onComplete: () => {
+                                this.addTween({
+                                    targets: this.glowHealth,
+                                    alpha: 0.55,
+                                    scaleX: 0.9,
+                                    ease: 'Cubic.easeInOut',
+                                    duration: 1500,
+                                    onComplete: () => {
+                                        this.addTween({
+                                            targets: this.glowHealth,
+                                            alpha: 0,
+                                            duration: 1000,
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }, 60);
         }
     }
 

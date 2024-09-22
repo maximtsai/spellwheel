@@ -1014,6 +1014,8 @@ class Options {
                 globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(2);
                 this.hideOptions();
+                globalObjects.encyclopedia.hideButton();
+                globalObjects.options.hideButton();
                 break;
             case '959c1c84d4572ce1b60ed01e0ffef02db605a973792b7c632b0bdc402654a456':
                 this.codeAnnounce.setText("Level: Tree")
@@ -1021,6 +1023,8 @@ class Options {
                 globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(3);
                 this.hideOptions();
+                globalObjects.encyclopedia.hideButton();
+                globalObjects.options.hideButton();
                 break;
             case '4fb04b4ad0f01d65f9848680910fbb8587136f3845c0edca243f827005d86eb8':
                 this.codeAnnounce.setText("Level: Magician")
@@ -1028,6 +1032,8 @@ class Options {
                 globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(4);
                 this.hideOptions();
+                globalObjects.encyclopedia.hideButton();
+                globalObjects.options.hideButton();
                 break;
             case 'eb0c0da2a8245bf41ab37672ee7b3497e5ec47b4b69d0d58741a280aa250763c':
                 this.codeAnnounce.setText("Level: Knight")
@@ -1035,6 +1041,8 @@ class Options {
                 globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(5);
                 this.hideOptions();
+                globalObjects.encyclopedia.hideButton();
+                globalObjects.options.hideButton();
                 break;
             case '5c864ebe1619f609becf7c741d074a54e66f3d77b0d4274ad290a5b68a4b8468':
                 this.codeAnnounce.setText("Level: Wall")
@@ -1042,6 +1050,8 @@ class Options {
                 globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(6);
                 this.hideOptions();
+                globalObjects.encyclopedia.hideButton();
+                globalObjects.options.hideButton();
                 break;
             case '65daf73e9bc15ea710fdb3873b397d2b6eb180fecaf9bf43507a63f22a857b5b':
                 this.codeAnnounce.setText("Level: Super Doll")
@@ -1049,6 +1059,8 @@ class Options {
                 globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(7);
                 this.hideOptions();
+                globalObjects.encyclopedia.hideButton();
+                globalObjects.options.hideButton();
                 break;
             case '445714fa45b496cd630e03e196c77fcb1710e285cb5180f22c9cf9210cff4603':
                 this.codeAnnounce.setText("Level: Assassin")
@@ -1056,6 +1068,8 @@ class Options {
                 globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(8);
                 this.hideOptions();
+                globalObjects.encyclopedia.hideButton();
+                globalObjects.options.hideButton();
                 break;
             case '26d38d317704c4982064ac2867e0556d6935cb53a81889ce85ea60be7f1771c5':
                 this.codeAnnounce.setText("Level: Robot")
@@ -1063,6 +1077,8 @@ class Options {
                 globalObjects.postFightScreen.clearPostFightScreen();
                 beginPreLevel(9);
                 this.hideOptions();
+                globalObjects.encyclopedia.hideButton();
+                globalObjects.options.hideButton();
                 break;
             case '74291ba36b6bdc4c9cf428eda60dcaac0b867971312a61240c1d834b06b34fd7':
                 this.codeAnnounce.setText("Level: Death The Reaper")

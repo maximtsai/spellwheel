@@ -707,7 +707,6 @@ class PostFightScreen {
     getLevelCodes(level) {
         let listOfCodes = [
             ["bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png"],
-            ["bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png"],
             ["bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_strike.png"],
             ["bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_protect.png"],
             ["bright_rune_reinforce.png", "bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_protect.png"],
@@ -720,6 +719,8 @@ class PostFightScreen {
             ["bright_rune_reinforce.png", "bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_time.png", "bright_rune_void.png"],
             ["bright_rune_unload.png", "bright_rune_unload.png", "bright_rune_unload.png", "bright_rune_unload.png", "bright_rune_reinforce.png"],
             ["bright_rune_reinforce.png", "bright_rune_time.png", "bright_rune_protect.png", "bright_rune_unload.png", "bright_rune_void.png"],
+            ["bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png"],
+
         ];
         for (let i in this.listOfCodes) {
             this.listOfCodes[i].setFrame(listOfCodes[level][i]);

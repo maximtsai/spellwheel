@@ -1276,4 +1276,10 @@
         // createEnemy()
         this.destroy();
      }
+     destroy() {
+         super.destroy();
+         if (this.playerSpellCastSub) {
+             this.playerSpellCastSub.unsubscribe();
+         }
+     }
 }

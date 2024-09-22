@@ -399,6 +399,8 @@
             <key type="filename">circle/bright_rune_time.png</key>
             <key type="filename">circle/bright_rune_unload.png</key>
             <key type="filename">circle/bright_rune_void.png</key>
+            <key type="filename">circle/rune_mind - Copy.png</key>
+            <key type="filename">circle/rune_mind_glow - Copy.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

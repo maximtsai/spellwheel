@@ -679,7 +679,7 @@ class Options {
             this.playButton.setDepth(this.baseDepth + 1);
             this.listOfButtonsToDisable.push(this.playButton);
 
-            this.addLangTextUpdateable(this.codeItemText, 'codes')
+            this.addLangTextUpdateable(this.codeItemText, 'access_code')
             for (let i = 0; i < 5; i++) {
                 let arrowBtn = new Button({
                     normal: {

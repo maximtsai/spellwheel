@@ -192,10 +192,10 @@ let textData2 = {
         "jp": "ヘルス残量: "
     },
     "level_code": {
-        "en_us": "LEVEL CODE: ",
-        "fr": "CODE DE NIVEAU :",
-        "zh_tw": "級別代碼：",
-        "zh_cn": "级别代码： ",
+        "en_us": "LEVEL SKIP CODE: ",
+        "fr": "CODE DE SAUT DE NIVEAU :",
+        "zh_tw": "級別跳过代码：",
+        "zh_cn": "级别跳过代码： ",
         "ru": "КОД УРОВНЯ: ",
         "es": "CÓDIGO DE NIVEL: ",
         "jp": "レベルコード: "
@@ -592,13 +592,13 @@ let textData2 = {
         "jp": "でも、私は何でもできると確信しています。"
     },
     "level0_diag_a": {
-        "en_us": "I must save my beloved.",
-        "fr": "Je dois sauver mon bien-aimé.",
-        "zh_tw": "我必須拯救我所愛的人。",
-        "zh_cn": "我必须拯救我心爱的人。",
-        "ru": "Я должен спасти\nсвою возлюбленную.",
-        "es": "Debo salvar a mi amado.",
-        "jp": "私は愛する人を救わなければなりません。"
+        "en_us": "My beloved is just beyond\nthis gate.",
+        "fr": "Mon bien-aimé est juste\nau-delà de cette porte.",
+        "zh_tw": "我的愛人就在這扇門外。",
+        "zh_cn": "我的爱人就在这门外。",
+        "ru": "Мой возлюбленный прямо\nза этими воротами.",
+        "es": "Mi amada está justo más\nallá de esta puerta.",
+        "jp": "私の愛する人はこの\n門の向こうにいる。"
     },
     "level0_diag_b": {
         "en_us": "But this stick dummy\nis blocking the entrance.",
@@ -646,10 +646,10 @@ let textData2 = {
         "jp": "もっと高度な呪文を使うべきだ"
     },
     "level1_tut_a": {
-        "en_us": "Enhance Rune\nstrengthens your\nnext attack\n ",
-        "fr": "La rune Renforcement\naméliore votre\nprochaine attaque\n ",
-        "zh_tw": "强化符文能增強\n你的下一次攻擊\n ",
-        "zh_cn": "强化符文能增强\n你的下一次攻击\n ",
+        "en_us": "Enhance Rune\nmakes your\nattacks stronger\n ",
+        "fr": "La rune Renforcement\nrend vos attaques\nplus fortes\n ",
+        "zh_tw": "强化符文使你的\n攻擊更加強大\n ",
+        "zh_cn": "强化符文使你的\n攻击更加强大\n ",
         "ru": "Руна усиления\nусиливает вашу\nследующую атаку\n ",
         "es": "La runa mejorada\nfortalece tu\npróximo ataque\n ",
         "jp": "強化ルーンは次の\n攻撃を強化します\n "

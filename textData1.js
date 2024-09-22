@@ -463,36 +463,36 @@ let textData = {
     },
     "matter_plus_tut_desc": {
         "en_us": "Your mastery over the\nMatter element strengthens\nsome of your existing Matter spells.",
-        "fr": "Votre maîtrise de l’élément Matière renforce certains de vos sorts de Matière existants.",
-        "zh_tw": "你對物質元素的掌握加強了你現有的一些物質法術。",
-        "zh_cn": "你对物质元素的掌握加强了你现有的一些物质法术。",
+        "fr": "Votre maîtrise de l’élément\nMatière renforce certains\nde vos sorts de Matière existants.",
+        "zh_tw": "你對物質元素的掌握加強\n了你現有的一些物質法術。",
+        "zh_cn": "你对物质元素的掌握加强\n了你现有的一些物质法术。",
         "ru": "Ваше мастерство над элементом Материи усиливает некоторые из ваших существующих заклинаний Материи.",
         "es": "Tu maestría sobre el elemento Materia fortalece algunos de tus hechizos de Materia existentes.",
         "jp": "物質元素をマスターすると、既存の物質呪文の一部が強化されます。"
     },
     "matter_tut_strike_desc": {
         "en_us": "Conjure a ball of rock\nthat deals solid damage.\nSimple but effective.",
-        "fr": "Invoque une boule de roche qui inflige des dégâts solides. Simple mais efficace.",
-        "zh_tw": "召喚出一個造成固體傷害的岩石球。簡單但有效。",
-        "zh_cn": "召唤出一个造成固体伤害的岩石球。简单但有效。",
+        "fr": "Invoque une boule de roche\nqui inflige des dégâts solides.\nSimple mais efficace.",
+        "zh_tw": "召喚出一個造成固體\n傷害的岩石球。簡單但有效。",
+        "zh_cn": "召唤出一个造成固体\n伤害的岩石球。简单但有效。",
         "ru": "Наколдуйте каменный шар, который наносит солидный урон. Просто, но эффективно.",
         "es": "Conjura una bola de roca que inflige daño sólido. Simple pero efectivo.",
         "jp": "固体ダメージを与える岩の球を召喚する。シンプルだけど効果的。"
     },
     "matter_tut_enhance_desc": {
         "en_us": "Makes your next attack\ndeal extra damage.\nAlso makes the attack a\nlittle bit bigger.",
-        "fr": "Fait en sorte que votre prochaine attaque inflige des dégâts supplémentaires. Rend également l’attaque un peu plus grande.",
-        "zh_tw": "使你的下一次攻擊造成額外的傷害。也使攻擊更大一點。",
-        "zh_cn": "使你的下一次攻击造成额外的伤害。也使攻击更大一点。",
+        "fr": "Fait en sorte que votre\nprochaine attaque inflige\ndes dégâts supplémentaires.\nRend également l’attaque un\npeu plus grande.",
+        "zh_tw": "使你的下一次攻擊造成\n額外的傷害。也使攻擊更大一點。",
+        "zh_cn": "使你的下一次攻击造成\n额外的伤害。也使攻击更大一点。",
         "ru": "Ваша следующая атака наносит дополнительный урон. Также делает атаку немного больше.",
         "es": "Hace que tu próximo ataque inflija daño extra. También hace que el ataque sea un poco más grande.",
         "jp": "次の通常攻撃が追加ダメージを与えるようになる。また、攻撃を少し大きくします。"
     },
     "matter_tut_protect_desc": {
         "en_us": "Creates a shield that blocks\na flat amount of damage.",
-        "fr": "Crée un bouclier qui bloque une quantité fixe de dégâts.",
-        "zh_tw": "創建一個盾牌，阻擋一定量的傷害。",
-        "zh_cn": "打造一个盾牌，阻挡一定量的伤害。",
+        "fr": "Crée un bouclier qui bloque\nune quantité fixe de dégâts.",
+        "zh_tw": "創建一個盾牌，\n阻擋一定量的傷害。",
+        "zh_cn": "打造一个盾牌，\n阻挡一定量的伤害。",
         "ru": "Создает щит, который блокирует фиксированное количество урона.",
         "es": "Crea un escudo que bloquea una cantidad fija de daño.",
         "jp": "一定量のダメージをブロックするシールドを作成します。"
@@ -500,8 +500,8 @@ let textData = {
     "matter_tut_reinforce_desc": {
         "en_us": "Protect yourself with spiky skin.\nGreat against large quantities of\nweaker attacks.",
         "fr": "Protégez-vous avec une peau hérissée.\n Idéal contre de grandes quantités\nd’attaques plus faibles.",
-        "zh_tw": "用帶刺的皮膚保護自己。有效抵禦大量較弱的攻擊。",
-        "zh_cn": "用带刺的皮肤保护自己。有效抵御大量较弱的攻击。",
+        "zh_tw": "用帶刺的皮膚保護自己。\n有效抵禦大量較弱的攻擊。",
+        "zh_cn": "用带刺的皮肤保护自己。\n有效抵御大量较弱的攻击。",
         "ru": "Защитный бафф, защищающий вас с помощью колючей кожи. Отлично справляется с большим количеством слабых атак.",
         "es": "Buff defensivo que te protege con piel puntiaguda. Excelente contra grandes cantidades de ataques más débiles.",
         "jp": "とがった肌で身を守る防御バフ。大量の弱い攻撃に対して最適です。"
@@ -525,10 +525,10 @@ let textData = {
         "jp": "エネルギーのルーンは、生のエネルギーをコントロールすることを可能にします。エネルギー呪文は強力なサポート効果を持ち、敵の防御を迂回するトゥルーダメージを与えることができます。"
     },
     "mind_plus_tut_desc": {
-        "en_us": "Your mastery over the element\nstrengthens some of your\nexisting Energy spells.",
-        "fr": "Votre maîtrise de l’élément\nrenforce certains de vos sorts\nd’énergie existants.",
-        "zh_tw": "你對元素的掌握加強了你現有的\n一些能量法術。",
-        "zh_cn": "你对元素的掌握加强了你现有的\n一些能量法术。",
+        "en_us": "Your mastery over the Energy\nelement strengthens some of\nyour existing Energy spells.",
+        "fr": "Votre maîtrise de l'élément\nÉnergie renforce certains\nde vos sorts Énergie existants",
+        "zh_tw": "你對能量元素的掌握加強了\n你現有的一些能量法術。",
+        "zh_cn": "你对能量元素的掌握加强了\n你现有的一些能量法术。",
         "ru": "Ваше мастерство над стихией усиливает некоторые из ваших существующих энергетических заклинаний.",
         "es": "Tu dominio sobre el elemento fortalece algunos de tus hechizos de Energía existentes.",
         "jp": "元素をマスターすると、既存のエネルギー呪文の一部が強化されます。"
@@ -696,8 +696,8 @@ let textData = {
         "jp": "シールドルーンは、あなたと敵の間に配置されている限り、あなたを保護するバリアを作成します。"
     },
     "reinforce_tut_desc": {
-        "en_us": "The Body rune grants effects\nthat persist until you cast\na new body spell. Some Body Rune\ncombos can even heal you.",
-        "fr": "La Rune Corps confère des effets\nqui persistent jusqu’à ce que\nvous lanciez un nouveau sort corporel.\nCertains combos Rune Corps peuvent même\nvous soigner.",
+        "en_us": "The Body rune grants effects\nthat persist until you cast\na new body spell. Some Body rune\ncombos can even heal you.",
+        "fr": "La rune Corps confère des effets\nqui persistent jusqu’à ce que\nvous lanciez un nouveau sort corporel.\nCertains combos rune Corps peuvent même\nvous soigner.",
         "zh_tw": "身體符文賦予的效果會\n一直持續到你施放新的\n體法術。\n某些身體符文組合甚至可以治癒你。",
         "zh_cn": "身体符文赋予的效果会\n一直持续到你施放新的\n身体法术。\n某些身体符文组合甚至可以治愈你。",
         "ru": "Руна Тела дает эффекты, которые сохраняются до тех пор, пока вы не разыграете новое заклинание тела. Некоторые комбинации Тело+Руна могут даже исцелить вас.",
@@ -706,7 +706,7 @@ let textData = {
     },
     "unload_tut_desc": {
         "en_us": "The Ultimate rune grants you\nsome of the most powerful\nspells in your arsenal.\nUse this rune wisely.",
-        "fr": "La rune ultime vous confère\ncertains des sorts les plus\npuissants de votre arsenal.\nUtilisez cette rune à bon escient.",
+        "fr": "La rune Ultime vous confère\ncertains des sorts les plus\npuissants de votre arsenal.\nUtilisez cette rune à bon escient.",
         "zh_tw": "究極符文賦予您最強大的法術。\n明智地使用這個符文。",
         "zh_cn": "究极符文赋予您最强大的法术。\n明智地使用这个符文。",
         "ru": "Руна Ultimate дает вам одни из самых мощных заклинаний в вашем арсенале. Используйте эту руну с умом.",

@@ -333,8 +333,8 @@ let textData2 = {
     "post_fight_story8": {
         "en_us": "If Death thinks it can deter me with\nthese trials, it underestimates the depth\nof my determination.\n\nMy beloved awaits, and no force, not even Death,\nshall keep us apart.",
         "fr": "Si la Mort pense pouvoir me dissuader avec\nces épreuves, elle sous-estime la profondeur de\nma détermination.\n\nMon bien-aimé m'attend, et aucune force,\npas même la Mort, ne nous séparera.",
-        "zh_tw": "如果死神認為這些考驗能阻止我，那它就低估了我的決心。\n\n我心愛的人在等待，沒有任何力量，甚至死亡，能將我們分開。",
-        "zh_cn": "如果死神认为这些考验能阻止我，那它就低估了我的决心。\n\n我心爱的人在等待，没有任何力量，甚至死亡，能将我们分开。",
+        "zh_tw": "如果死神認為這些考驗能\n阻止我，那它就低估了我的決心。\n\n我心愛的人在等待，沒有任何力量，\n甚至死亡，能將我們分開。",
+        "zh_cn": "如果死神认为这些考验能\n阻止我，那它就低估了我的决心。\n\n我心爱的人在等待，没有任何力量，\n甚至死亡，能将我们分开。",
         "ru": "С каждым шагом становится все яснее, что сама Смерть организует эти препятствия, чтобы помешать моему поиску. Но это только подпитывает мою решимость.  Если Смерть думает, что может удержать меня в этих испытаниях, она недооценивает глубину моей решимости.  Мой возлюбленный ждет, и никакая сила, даже смерть, не разлучит нас.",
         "es": "Se hace más claro con cada paso que la propia Muerte está orquestando estos obstáculos para frustrar mi búsqueda. Sin embargo, esto solo alimenta mi determinación.  Si la muerte piensa que puede disuadirme con estas pruebas, subestima la profundidad de mi determinación.  Mi amado espera, y ninguna fuerza, ni siquiera la Muerte, nos separará de nosotros.",
         "jp": "一歩進むごとに、死そのものが私の探求を妨害するためにこれらの障害を画策していることが明らかになる。しかし、これは私の決意を煽るだけです。 もし死神が、このような試練で私を思いとどまらせることができると考えているのなら、それは私の決意の深さを過小評価していることになる。 私の最愛の人が待っており、どんな力も、死でさえも、私たちを引き離すことはできません。"
@@ -342,8 +342,8 @@ let textData2 = {
     "post_fight_story9": {
         "en_us": "Not even the machines of Death can\nbest me!\n\nI am at the height of my power, and nothing\ncan stand in my way.\n\nAll that's left is to get around this broken\nrobot and I know I shall find my beloved just\naround the corner.",
         "fr": "Même les machines de la Mort ne peuvent\nme vaincre!\n\nJe suis au sommet de ma puissance et rien\nne peut m'arrêter.\n\nIl ne me reste plus qu'à contourner ce robot\nbrisé et je sais que je retrouverai ma\nbien-aimée au coin de la rue.",
-        "zh_tw": "即使是死神的機器也無法戰勝我！\n我正處於權力的巔峰，沒有什麼可以阻擋我的。\n\n繞過這個破碎的機器人後，我知道我會馬上找到我心愛的人。",
-        "zh_cn": "即使是死神的机器也无法战胜我！\n我正处于权力的巅峰，没有什么可以阻挡我的。\n\n绕过这个破碎的机器人后，我知道我会马上找到我心爱的人。",
+        "zh_tw": "即使是死神的機器也無法戰勝我！\n我正處於權力的巔峰，沒有什麼可以阻擋我的。\n\n繞過這個破碎的機器人後，我知道我會馬上\n找到我心愛的人。",
+        "zh_cn": "即使是死神的机器也无法战胜我！\n我正处于权力的巅峰，没有什么可以阻挡我的。\n\n绕过这个破碎的机器人后，我知道我会马上\n找到我心爱的人。",
         "ru": "Даже машины смерти не могут превзойти меня!  Я нахожусь на вершине своего могущества, и не осталось ничего, что могло бы встать у меня на пути.  Все, что мне теперь нужно сделать, это обойти этого сломанного робота, и я знаю, что найду своего любимого прямо за углом.",
         "es": "¡Ni siquiera las máquinas de la muerte pueden vencerme!  Estoy en la cima de mi poder, y no queda nada que pueda interponerse en mi camino.  Todo lo que tengo que hacer ahora es sortear este robot roto y sé que encontraré a mi amada a la vuelta de la esquina.",
         "jp": "死の機械でさえ、私を打ち負かすことはできない! 私は力の絶頂にあり、私の邪魔になるものは何も残っていません。 今やらなければならないのは、この壊れたロボットの周りを回ることだけで、私の最愛の人がすぐ近くにいることを知っています。"
@@ -646,7 +646,7 @@ let textData2 = {
         "jp": "もっと高度な呪文を使うべきだ"
     },
     "level1_tut_a": {
-        "en_us": "Enhance Rune\nmakes your\nattacks stronger\n ",
+        "en_us": "Enhance rune\nmakes your\nattacks stronger\n ",
         "fr": "La rune Renforcement\nrend vos attaques\nplus fortes\n ",
         "zh_tw": "强化符文使你的\n攻擊更加強大\n ",
         "zh_cn": "强化符文使你的\n攻击更加强大\n ",

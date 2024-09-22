@@ -290,21 +290,21 @@ let textData3 = {
     },
     "death8a": {
         "en_us": "YOU ARE INDEED CLOSE TO\nREACHING YOUR BELOVED.",
-        "fr": "VOTRE COMPÉTENCE EST REMARQUABLE\nPOUR ATTEINDRE SI LOIN",
-        "zh_tw": "你的技能已經非常出色了，\n能達到這麼遠",
-        "zh_cn": "你的技能已经非常出色了，\n能达到这么远",
-        "ru": "ВАШИ НАВЫКИ ЗАМЕЧАТЕЛЬНЫ,\nЧТОБЫ ДОСТАТЬ ТАК ДОЛГО",
-        "es": "TU HABILIDAD ES NOTABLE\nPARA LLEGAR HASTA TAN LEJOS",
-        "jp": "ここまで来るのは驚\nくべきことです"
+        "fr": "VOUS ÊTES EN EFFET SUR LE\nPOINT D’ATTEINDRE VOTRE BIEN-AIMÉ.",
+        "zh_tw": "您確實已經接近您所愛的人了。",
+        "zh_cn": "您确实已经接近您所爱的人了。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "death8b": {
         "en_us": "BUT WHAT YOU ATTEMPT IS NOT\nAN ACT OF LOVE, BUT SELFISHNESS.",
-        "fr": "MAIS COMPRENEZ QUE TOUTES\nCHOSES DOIVENT CONNAÎTRE UNE FIN.",
-        "zh_tw": "但要明白，萬事萬物\n都必須達到其終點。",
-        "zh_cn": "但要明白，万事万物\n都必须达到其终点。",
-        "ru": "НО ПОЙМИТЕ, ЧТО ВСЕ СУЩЕЕ\nДОЛЖНО ИМЕТЬ СВОЙ КОНЕЦ.",
-        "es": "PERO ENTIENDE QUE TODAS LAS\nCOSAS DEBEN ENCONTRAR SU FIN.",
-        "jp": "しかし、すべてのものはその終わりを\n迎えなければならないことを理解してください。"
+        "fr": "MAIS CE QUE VOUS TENTEZ N’EST PAS\nUN ACTE D’AMOUR, MAIS DE L’ÉGOÏSME.",
+        "zh_tw": "但你所做的並不是愛的行為，\n而是出於自私。",
+        "zh_cn": "但你所做的并不是爱的行为，\n而是出于自私。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "deathFight1a": {
         "en_us": "ALAS, YOUR JOURNEY\nWAS NOT MEANT TO BE.",

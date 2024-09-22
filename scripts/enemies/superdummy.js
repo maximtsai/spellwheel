@@ -585,7 +585,7 @@
                      startFunction: () => {
                          this.pullbackScale = 0.9;
                         this.attackScale = 1.2;
-                        this.createTutSolo(getLangText('superdummy_void'), 'rune_unload_glow.png');
+                        this.createTutSolo(getLangText('superdummy_ult'), 'rune_unload_glow.png');
                         // this.createTutIcon(getLangText('superdummy_void'), 'rune_unload_glow.png', 'rune_void_glow.png')
                      },
                     attackFinishFunction: () => {

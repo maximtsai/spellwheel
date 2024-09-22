@@ -7,7 +7,7 @@ class StatusObj {
 
     setup(x, y) {
         this.active = true;
-        this.sprite = this.scene.add.sprite(x, y, 'circle', 'rune_void_glow.png');
+        this.sprite = this.scene.add.sprite(x, y, 'circle', 'rune_void_glow.png').setAlpha(0.75);
         this.sprite2 = this.scene.add.sprite(x - 10, y + 8, 'circle', 'rune_void_glow.png');
         this.sprite2.setScale(0.6, 0.6);
         this.sprite2.visible = false;

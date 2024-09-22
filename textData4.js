@@ -506,10 +506,10 @@ let textData4 = {
         "jp": "不思議なことに、トレーニングダミーを設定した覚えはありません。"
     },
     "superdummy_ult": {
-        "en_us": "Ultimate Rune\ngives you your\nmost powerful\nspells\n",
-        "fr": "Inflige beaucoup\nde %dégâts\nde santé\n          +",
-        "zh_tw": "造成大量\n%生命值傷害\n         +",
-        "zh_cn": "造成大量\n%生命值伤害\n         +",
+        "en_us": "Ultimate rune\ngives you your\nmost powerful\nspells\n ",
+        "fr": "La rune Ultime\nvous offrent les\nsorts les plus\npuissants\n",
+        "zh_tw": "究極符文賦予你\n最強大的法術\n ",
+        "zh_cn": "究极符文赋予你\n最强大的法术\n ",
         "ru": "Наносит много % урона от здоровья +",
         "es": "Inflige un montón de % de daño de salud +",
         "jp": "大量の%ヘルスダメージを与えます+"

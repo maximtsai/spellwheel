@@ -307,10 +307,10 @@ let textData4 = {
     },
 
     "energy_tut_goblin": {
-        "en_us": "Energy spells\nbypass all\nenemy defenses.\n            +",
-        "fr": "Les sorts d'énergie\ncontournent toutes\nles défenses ennemies.\n               +",
-        "zh_tw": "能量法術可以\n繞過所有敵\n人的防禦。\n       +",
-        "zh_cn": "能量法术可以\n绕过所有敌\n人的防御。\n       +",
+        "en_us": "Energy spells\nbypass all\nenemy defenses.\n             +",
+        "fr": "Les sorts d'énergie\ncontournent toutes\nles défenses ennemies.\n                +",
+        "zh_tw": "能量法術可以\n繞過所有敵\n人的防禦。\n         +",
+        "zh_cn": "能量法术可以\n绕过所有敌\n人的防御。\n         +",
         "ru": "Энергетические заклинания обходят любую защиту противника.               +",
         "es": "Los hechizos de energía eluden todas las defensas enemigas.               +",
         "jp": "エネルギー呪文は敵の防御を無視したトゥルーダメージを与える。              +"
@@ -327,8 +327,8 @@ let textData4 = {
     "dummy_body_a": {
         "en_us": "Thorns reduce\nincoming damage\nand can inflict\ndamage back.\n              +",
         "fr": "Les épines réduisent\nles dégâts subis\net peuvent infliger\ndes dégâts en retour.\n               +",
-        "zh_tw": "荊棘減少受到的傷害，\n並可以造成傷害。\n         +",
-        "zh_cn": "荆棘减少受到的伤害，\n并可以造成伤害。\n         +",
+        "zh_tw": "荊棘減少並\n反彈傷害。\n       +",
+        "zh_cn": "荆棘减少并\n反弹伤害。\n       +",
         "ru": "Шипы уменьшают входящий урон и могут наносить урон в ответ.               +",
         "es": "Las espinas reducen el daño recibido y pueden infligir daño.               +",
         "jp": "トゲは受けるダメージを減らし、ダメージを戻すことができます。              +"
@@ -336,8 +336,8 @@ let textData4 = {
     "dummy_body_one": {
         "en_us": "Only one Body\nspell effect can\nbe active at\na time.",
         "fr": "Un seul effet\nde sort Corps\npeut être actif\nà la fois",
-        "zh_tw": "每次只能啟動一個身體法術效果。",
-        "zh_cn": "每次只能激活一个身体法术效果。",
+        "zh_tw": "每次只能啟動一個\n身體法術效果。",
+        "zh_cn": "每次只能激活一个\n身体法术效果。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -504,6 +504,15 @@ let textData4 = {
         "ru": "Странно, я не помню, чтобы настраивал тренировочный манекен.",
         "es": "Extraño, no recuerdo haber montado un maniquí de entrenamiento.",
         "jp": "不思議なことに、トレーニングダミーを設定した覚えはありません。"
+    },
+    "superdummy_ult": {
+        "en_us": "Ultimate Rune\ngives you your\nmost powerful\nspells\n",
+        "fr": "Inflige beaucoup\nde %dégâts\nde santé\n          +",
+        "zh_tw": "造成大量\n%生命值傷害\n         +",
+        "zh_cn": "造成大量\n%生命值伤害\n         +",
+        "ru": "Наносит много % урона от здоровья +",
+        "es": "Inflige un montón de % de daño de salud +",
+        "jp": "大量の%ヘルスダメージを与えます+"
     },
     "superdummy_void": {
         "en_us": "Deals lots of\n%health damage\n             +",

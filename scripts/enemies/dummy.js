@@ -476,6 +476,28 @@
          if (prevHealthPercent >= 0.95) {
              if (currHealthPercent < 0.95) {
                  this.canAngryEyes = true;
+                 let angrySymbol = this.scene.add.sprite(this.x + 35, this.y - 52, 'misc', 'angry1.png').play('angry').setScale(0.3).setDepth(3);
+                 this.addTween({
+                     targets: angrySymbol,
+                     scaleX: 0.9,
+                     scaleY: 0.9,
+                     duration: 300,
+                     easeParams: [3],
+                     ease: 'Back.easeOut',
+                     onComplete: () => {
+                         this.addTween({
+                             delay: 1000,
+                             targets: angrySymbol,
+                             scaleX: 0,
+                             scaleY: 0,
+                             duration: 300,
+                             ease: 'Back.easeIn',
+                             onComplete: () => {
+                                 angrySymbol.destroy();
+                             }
+                         });
+                     }
+                 });
                  this.eyes = this.addSprite(this.x + 1 , this.y - 41, 'dummyenemy', 'dummyeyes.png').setOrigin(0.5, 0.75).setScale(this.sprite.startScale, 0);
                  this.addExtraSprite(this.eyes, 1, -40)
                  this.addTween({

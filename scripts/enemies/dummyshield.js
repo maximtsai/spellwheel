@@ -317,7 +317,7 @@
                  },
                  {
                      name: "Malfunctioning...",
-                     chargeAmt: 300,
+                     chargeAmt: 400,
                      chargeMult: 7,
                      damage: -1,
                      isPassive: true,
@@ -377,28 +377,28 @@
                     }
                  },
                  {
-                     name: ";30",
+                     name: ";12x3",
                      chargeAmt: 1000,
                      finishDelay: 800,
                      transitionFast: true,
                      chargeMult: 8,
                      damage: -1,
                      isBigMove: true,
-                    startFunction: () => {
-                        this.addTimeout(() => {
-                            //this.takeDamage(10, false);
-                        }, 10);
-                    },
-                    attackStartFunction: () => {
+                     startFunction: () => {
+                         this.addTimeout(() => {
+                             //this.takeDamage(10, false);
+                         }, 10);
+                     },
+                     attackStartFunction: () => {
 
-                    },
+                     },
                     attackFinishFunction: () => {
                         let throwSprite = 'super_dummy_tpose.png';
                         if (gameVars.latestLevel > 4 || Math.random() < 0.96) {
-                            throwSprite = 'scythe.png';
+                            throwSprite = 'sword.png';
                         }
                         this.tempShiftSFX();
-                        this.throwWeapon(throwSprite, 30, 1);
+                        this.throwWeapon(throwSprite, 12, 3);
                     }
                 },
                  {
@@ -422,7 +422,7 @@
                  },
                  {
                      name: "Malfunctioning...",
-                     chargeAmt: 300,
+                     chargeAmt: 600,
                      chargeMult: 8,
                      damage: -1,
                      isPassive: true,

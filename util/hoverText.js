@@ -92,7 +92,7 @@ class HoverDisplay {
         this.hoverBacking.setDepth(data.depth || 9992);
 
         // this.hoverTextDisplay = PhaserScene.add.bitmapText(0, 0, 'plainBold', '', isMobile ? 19 : 18);
-        this.hoverTextDisplay = PhaserScene.add.text(0, 0, ' ', {fontFamily: 'robotomedium', fontSize: 19, color: '#FFFFBB', align: 'left'});
+        this.hoverTextDisplay = PhaserScene.add.text(0, 0, ' ', {fontFamily: 'robotomedium', fontSize: 20, color: '#FFFFBB', align: 'left'});
         this.hoverTextDisplay.visible = false;
         this.hoverTextDisplay.setDepth(data.depth || 9992);
 
@@ -166,9 +166,9 @@ class HoverDisplay {
             }
         } else {
             if (this.hoverTextDisplay.text.length > 80) {
-                this.hoverTextDisplay.setFontSize(17);
+                this.hoverTextDisplay.setFontSize(18);
             } else {
-                this.hoverTextDisplay.setFontSize(19);
+                this.hoverTextDisplay.setFontSize(20);
             }
         }
 

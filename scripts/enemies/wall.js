@@ -763,12 +763,12 @@
                      }
                  },
                  {
-                     name: "}5x2+$5",
+                     name: "}5+$5",
                      chargeAmt: 450,
                      finishDelay: 2000,
                      damage: -1,
                      attackFinishFunction: () => {
-                         this.birdPoops(3, true, false, true);
+                         this.birdPoops(2, true, false, true);
                          this.nextBirdIndex = 6;
                          this.checkCrumble(true);
                      }

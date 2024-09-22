@@ -94,6 +94,7 @@
 
         if (this.playerSpellBodyTrack) {
             this.playerSpellBodyTrack.unsubscribe();
+            this.playerSpellBodyTrack = null;
         }
         globalObjects.textPopupManager.hideInfoText();
         if (this.rune1) {
@@ -476,6 +477,45 @@
         this.dummyRightArm.visible = true;
     }
 
+     createTutSolo(text, rune1Text) {
+         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 133, text, 'right');
+         let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+         let centerXPos = globalObjects.textPopupManager.getCenterPos();
+
+         if (this.rune1) {
+             this.rune1.setFrame(rune1Text).setDepth(10001).setScale(0.75).setAlpha(0).setPosition(centerXPos, runeYPos + 27);
+         } else {
+             this.rune1 = this.addSprite(centerXPos, runeYPos + 27, 'circle', rune1Text).setDepth(10001).setScale(0.8).setAlpha(0);
+         }
+         this.rune1.visible = true;
+         this.addTween({
+             targets: [this.rune1],
+             alpha: 1,
+             duration: 200,
+         });
+         this.addTween({
+             targets: [this.rune1],
+             scaleX: 1.1,
+             scaleY: 1.1,
+             ease: 'Quart.easeOut',
+             duration: 600,
+             onComplete: () => {
+                 this.addTween({
+                     targets: [this.rune1],
+                     scaleX: 0.85,
+                     scaleY: 0.85,
+                     ease: 'Back.easeOut',
+                     duration: 400,
+                 });
+             }
+         });
+         this.playerSpellBodyTrack = messageBus.subscribe('messageAllSpell', (spellId) => {
+             if (spellId == 'timeUnload' || spellId == 'mindUnload' || spellId == 'matterUnload' || spellId == 'voidUnload') {
+                 this.clearPlayerSpellTrack();
+             }
+         });
+     }
+
     createTutIcon(text, rune1Text, rune2Text) {
         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 133, text, 'right');
         let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
@@ -544,6 +584,7 @@
                      startFunction: () => {
                          this.pullbackScale = 0.9;
                         this.attackScale = 1.2;
+                        this.createTutSolo(getLangText('superdummy_void'), 'rune_unload_glow.png');
                         this.createTutIcon(getLangText('superdummy_void'), 'rune_unload_glow.png', 'rune_void_glow.png')
                      },
                     attackFinishFunction: () => {
@@ -635,7 +676,7 @@
                      startFunction: () => {
                         this.pullbackScale = 0.9;
                         this.attackScale = 1.2;
-                        this.createTutIcon(getLangText('superdummy_mind'), 'rune_unload_glow.png', 'rune_mind_glow.png')
+                        //this.createTutIcon(getLangText('superdummy_mind'), 'rune_unload_glow.png', 'rune_mind_glow.png')
                      },
                     attackFinishFunction: () => {
                         this.createPunchEffect();
@@ -846,7 +887,7 @@
                      prepareSprite: 'super_dummy_swinging.png',
                      attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
                      startFunction: () => {
-                        this.createTutIcon(getLangText('superdummy_matter'), 'rune_unload_glow.png', 'rune_matter_glow.png')
+                        //this.createTutIcon(getLangText('superdummy_matter'), 'rune_unload_glow.png', 'rune_matter_glow.png')
                      },
                     attackFinishFunction: () => {
                         this.createPunchEffect();
@@ -1016,7 +1057,7 @@
                      isBigMove: true,
                      chargeMult: 2,
                      startFunction: () => {
-                        this.createTutIcon(getLangText('superdummy_time'), 'rune_unload_glow.png', 'rune_time_glow.png')
+                        //this.createTutIcon(getLangText('superdummy_time'), 'rune_unload_glow.png', 'rune_time_glow.png')
                         this.pullbackDurMult = 0;
                         this.disableAnimateShake = true;
                         globalObjects.tempBG.setDepth(0).setVisible(true);
@@ -1536,6 +1577,14 @@
         //     }
         // });
 
+    }
+
+    destroy() {
+        super.destroy();
+        if (this.playerSpellBodyTrack) {
+            this.playerSpellBodyTrack.unsubscribe();
+            this.playerSpellBodyTrack = null;
+        }
     }
 
      createDoublePunchEffect() {

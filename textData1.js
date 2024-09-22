@@ -113,8 +113,8 @@ let textData = {
     "matter_reinforce_desc_long": {
         "en_us": "Gain thorns that\nreflect 1 damage when hit",
         "fr": "Gagne des épines qui renvoient\n1 dégât lorsque vous êtes touché",
-        "zh_tw": "獲得荊棘來保護你並反射 1 點傷害",
-        "zh_cn": "获得荆棘来保护你并反射 1 点伤害",
+        "zh_tw": "獲得荊棘來保護\n你並反射 1 點傷害",
+        "zh_cn": "获得荆棘来保护\n你并反射 1 点伤害",
         "ru": "Получите шипы, которые\nзащитят вас и отразят 1 урон.",
         "es": "Gana espinas para protegerte\ny reflejar 1 daño.",
         "jp": "とげを獲得してあなたを守り、1ダメージを反射します"
@@ -356,8 +356,8 @@ let textData = {
     "mind_strike_desc_long": {
         "en_us": "Deal 1 True damage. Enemy takes\nx2 damage from your next attack.",
         "fr": "Inflige 1 dégât véritable. L'ennemi subit le\ndouble de dégâts lors de votre prochaine attaque.",
-        "zh_tw": "造成 1 點真實傷害。敵人將在你\n下一次攻擊中受到 2 倍傷害。",
-        "zh_cn": "造成 1 点真实伤害。敌人从你\n下一次攻击中受到 2 倍伤害。",
+        "zh_tw": "造成 1 點真實傷害。\n你下一次攻擊造成 2 倍傷害。",
+        "zh_cn": "造成 1 点真实伤害。\n你下一次攻击造成 2 倍伤害。",
         "ru": "Наносит 1 чистый урон. Враг получает х2 урона от вашей следующей атаки.",
         "es": "Inflige 1 daño verdadero. El enemigo\nrecibe x2 de daño de tu próximo ataque",
         "jp": "1の真のダメージを与える。敵は次の\n攻撃で2倍のダメージを受ける"
@@ -527,8 +527,8 @@ let textData = {
     "mind_plus_tut_desc": {
         "en_us": "Your mastery over the element\nstrengthens some of your\nexisting Energy spells.",
         "fr": "Votre maîtrise de l’élément\nrenforce certains de vos sorts\nd’énergie existants.",
-        "zh_tw": "你對元素的掌握加強了你現有的一些能量法術。",
-        "zh_cn": "你对元素的掌握加强了你现有的一些能量法术。",
+        "zh_tw": "你對元素的掌握加強了你現有的\n一些能量法術。",
+        "zh_cn": "你对元素的掌握加强了你现有的\n一些能量法术。",
         "ru": "Ваше мастерство над стихией усиливает некоторые из ваших существующих энергетических заклинаний.",
         "es": "Tu dominio sobre el elemento fortalece algunos de tus hechizos de Energía existentes.",
         "jp": "元素をマスターすると、既存のエネルギー呪文の一部が強化されます。"
@@ -562,45 +562,45 @@ let textData = {
     },
     "mind_tut_reinforce_desc": {
         "en_us": "Energize yourself to increase all damage you deal.",
-        "fr": "Dynamisez-vous pour augmenter tous les dégâts que vous infligez.",
-        "zh_tw": "激發自我能量來增加你造成的所有傷害。",
-        "zh_cn": "激发自我能量来增加你造成的所有伤害。",
+        "fr": "Dynamisez-vous pour augmenter tous\nles dégâts que vous infligez.",
+        "zh_tw": "增加你造成的所有傷害。",
+        "zh_cn": "增加你造成的所有伤害。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "mind_tut_unload_desc": {
         "en_us": "Multiplies the effectiveness\nof your next non-attack spell.\nThose clever enough to cast\nthis spell twice in a row\ncan attain breathtaking\nspell-amplifying power.",
-        "fr": "Multiplie l’efficacité de votre prochain sort de non-attaque. Ceux qui sont assez intelligents pour lancer ce sort deux fois de suite peuvent atteindre un pouvoir d’amplification des sorts à couper le souffle.",
-        "zh_tw": "使你的下一個非攻擊法術的效果成倍增加。那些足夠聰明的人可以連續兩次施放這個咒語，可以獲得驚人的咒語放大能力。",
-        "zh_cn": "使你的下一个非攻击法术的效果成倍增加。那些足够聪明的人可以连续两次施放这个咒语，可以获得惊人的咒语放大能力。",
+        "fr": "Multiplie l'efficacité de votre\nprochain sort non offensif.\nLancer ce sort deux fois de suite\npeut donner un incroyable\npouvoir d'amplification des sorts.",
+        "zh_tw": "使你的下一個非攻擊法術的效果\n成倍增加。\n連續施放此法術兩次可以獲得驚人\n的法術增強力量。",
+        "zh_cn": "使你的下一个非攻击法术的效果\n成倍增加。\n连续施放此法术两次可以获得惊人\n的法术增强力量。",
         "ru": "Умножает эффективность вашего следующего заклинания, не связанного с атакой. Те, кто достаточно умен, чтобы произнести это заклинание два раза подряд, могут достичь захватывающей дух силы, усиливающей заклинания.",
         "es": "Multiplica la efectividad de tu próximo hechizo que no sea de ataque. Aquellos lo suficientemente inteligentes como para lanzar este hechizo dos veces seguidas pueden alcanzar un impresionante poder amplificador de hechizos.",
         "jp": "次の非攻撃呪文の効果を倍増させる。この呪文を2回連続で唱える賢い人は、息を呑むような呪文増幅力を得ることができます。"
     },
     "time_tut_desc": {
         "en_us": "The Time rune grants \ncontrol over the temporal.\nTime spells let you attack multiple\ntimes, delay injuries, or even slow\nyour enemies to a stand-still.",
-        "fr": "La rune du temps donne le contrôle sur le temporel. Les sorts temporels vous permettent d’attaquer plusieurs fois, de retarder les blessures ou même de ralentir vos ennemis jusqu’à ce qu’ils s’arrêtent.",
-        "zh_tw": "時間符文授予對時間的控制權。時間法術讓你可以多次攻擊，延緩受傷時間，甚至減慢敵人的速度，使其停滯不前。",
-        "zh_cn": "时间符文授予对时间的控制权。时间法术让你可以多次攻击，延缓受伤时间，甚至减慢敌人的速度，使其停滞不前。",
+        "fr": "La rune du temps donne le\ncontrôle sur le temporel.\nLes sorts temporels vous permettent\nd’attaquer plusieurs fois, de retarder\nles blessures ou même de ralentir\nvos ennemis jusqu’à ce qu’ils s’arrêtent.",
+        "zh_tw": "時間符文授予對時間的控\n制權。時間法術讓你能多次\n攻擊，延緩受傷時間，甚至\n凍結時間來減慢敵人的行動。",
+        "zh_cn": "时间符文授予对时间的控\n制权。时间法术让你能多次\n攻击，延缓受伤时间，甚至\n冻结时间来减慢敌人的行动。",
         "ru": "Руна Время дает контроль над временным. Заклинания времени позволяют атаковать несколько раз, задерживать ранения или даже замедлять врагов.",
         "es": "La runa del tiempo otorga control sobre lo temporal. Los hechizos de tiempo te permiten atacar varias veces, retrasar las lesiones o incluso ralentizar a tus enemigos hasta detenerlos.",
         "jp": "タイムルーンは、時間的なものに対するコントロールを与える。時間呪文を使用すると、複数回攻撃したり、負傷を遅らせたり、敵の動きを鈍らせたりすることができます。"
     },
     "time_tut_strike_desc": {
         "en_us": "An attack that strikes twice.\nEach attack does modest damage\nbut can be powered\nup greatly with +damage\nenhancements.",
-        "fr": "Une attaque qui frappe deux fois. Chaque attaque inflige des dégâts modestes, mais peut être considérablement renforcée avec des améliorations de +dégâts.",
-        "zh_tw": "兩次攻擊。每次攻擊都會造成適度的傷害，但可以通過+傷害增強來大大增強。",
-        "zh_cn": "两次攻击。每次攻击都会造成适度的伤害，但可以通过+伤害增强来大大增强。",
+        "fr": "Une attaque qui frappe deux\nfois. Chaque attaque inflige des\ndégâts modestes, mais peut être\nconsidérablement renforcée avec\ndes améliorations de +dégâts.",
+        "zh_tw": "兩次攻擊。每次攻擊都會造成\n適度的傷害，但可以通過+傷害增強\n來大大增強。",
+        "zh_cn": "两次攻击。每次攻击都会造成\n适度的伤害，但可以通过+伤害增强\n来大大增强。",
         "ru": "Атака, которая наносит двойной удар. Каждая атака наносит небольшой урон, но может быть значительно усилена с помощью улучшений +урона.",
         "es": "Un ataque que golpea dos veces. Cada ataque hace un daño modesto, pero se puede potenciar en gran medida con mejoras de +daño.",
         "jp": "2回攻撃する攻撃。各攻撃は中程度のダメージを与えますが、+ダメージ強化で大幅にパワーアップできます。"
     },
     "time_tut_enhance_desc": {
         "en_us": "Your next attack is duplicated\nallowing you to fire multiple\nattacks at the same time.",
-        "fr": "Votre prochaine attaque est dupliquée, ce qui vous permet de lancer plusieurs attaques en même temps.",
-        "zh_tw": "你的下一次攻擊是重複的，允許你同時發射多次攻擊。",
-        "zh_cn": "你的下一次攻击是重复的，允许你同时发射多次攻击。",
+        "fr": "Votre prochaine attaque est\ndupliquée, ce qui vous permet\nde lancer plusieurs attaques\nen même temps.",
+        "zh_tw": "你的下一次攻擊是重複的，\n允許你同時發射多次攻擊。",
+        "zh_cn": "你的下一次攻击是重复的，\n允许你同时发射多次攻击。",
         "ru": "Ваша следующая атака дублируется, что позволяет вам проводить несколько атак одновременно.",
         "es": "Tu próximo ataque se duplica, lo que te permite disparar varios ataques al mismo tiempo.",
         "jp": "次の攻撃は複製され、同時に複数の攻撃を発射することができます。"
@@ -608,8 +608,8 @@ let textData = {
     "time_tut_protect_desc": {
         "en_us": "Creates a shield that delays\nthe damage you take to a\nslow trickle, up to a limit.",
         "fr": "Crée un bouclier qui retarde\nles dégâts que vous subissez\nà un filet lent, jusqu’à une\nlimite.",
-        "zh_tw": "創建一個盾牌，可以將您受到的傷害延遲到緩慢的涓涓細流，直至達到極限。",
-        "zh_cn": "打造一个盾牌，可以将您受到的伤害延迟到缓慢的涓涓细流，直至达到极限。",
+        "zh_tw": "創建一個盾牌，可以將您\n受到的傷害延遲到緩慢的\n細流。",
+        "zh_cn": "打造一个盾牌，可以将您\n受到的伤害延迟到缓慢的\n细流。",
         "ru": "Создает щит, который задерживает получаемый вами урон до медленной струйки, до предела.",
         "es": "Crea un escudo que retrasa el daño que recibes a un goteo lento, hasta un límite.",
         "jp": "受けるダメージを限界までゆっくりと遅らせるシールドを作成します。"
@@ -635,8 +635,8 @@ let textData = {
     "void_tut_desc": {
         "en_us": "The Void rune grants \ncontrol over the power of empty\nspace. Void spells can deal\npercentage health damage,\nnegate enemy attacks, or even\nfully heal you at a cost.",
         "fr": "La rune du Vide confère\nle contrôle du pouvoir de l’espace\nvide. Les sorts du Vide peuvent\ninfliger un pourcentage de dégâts\nde santé, annuler les attaques\nennemies ou même vous soigner\ncomplètement à un coût.",
-        "zh_tw": "虛空符文賦予了對虛空力量的控制權。虛空法術可以造成一定比例的生命傷害，抵消敵人的攻擊，甚至需要付出一定代價才能完全治癒你。",
-        "zh_cn": "虚空符文赋予了对虚空力量的控制权。虚空法术可以造成一定比例的生命伤害，抵消敌人的攻击，甚至需要付出一定代价才能完全治愈你。",
+        "zh_tw": "虛空符文賦予了對虛空\n力量的控制權。虛空法術\n可以造成一定比例的生命傷害，\n抵消敵人的攻擊，甚至可以\n付出總生命代價來完全治癒你。",
+        "zh_cn": "虚空符文赋予了对虚空\n力量的控制权。虚空法术\n可以造成一定比例的生命伤害，\n抵消敌人的攻击，甚至可以\n付出总生命代价来完全治愈你。",
         "ru": "Руна Пустоты дает контроль над силой пустого пространства. Заклинания Бездны могут наносить процент урона от здоровья, нейтрализовать вражеские атаки или даже полностью исцелять вас за определенную плату.",
         "es": "La runa del Vacío otorga control sobre el poder del espacio vacío. Los hechizos de vacío pueden infligir un porcentaje de daño de salud, negar los ataques enemigos o incluso curarte por completo a un costo.",
         "jp": "ボイドルーンでは、何もない空間の力をコントロールすることができます。ボイド呪文は、一定の割合の体力ダメージを与えたり、敵の攻撃を無効にしたり、コストをかければ完全に回復したりします。"
@@ -653,8 +653,8 @@ let textData = {
     "void_tut_enhance_desc": {
         "en_us": "Increases the damage of your\nattacks for the rest of the\nfight. Good for long fights.",
         "fr": "Augmente les dégâts de vos attaques\npour le reste du combat. Idéal\npour les combats de longue durée.",
-        "zh_tw": "增加你在接下來的戰鬥中攻擊造成的傷害。適合長時間戰鬥。",
-        "zh_cn": "增加你在接下来的战斗中攻击造成的伤害。适合长时间战斗。",
+        "zh_tw": "增加你在接下來的戰鬥中攻擊\n造成的傷害。適合長時間戰鬥。",
+        "zh_cn": "增加你在接下来的战斗中攻击\n造成的伤害。适合长时间战斗。",
         "ru": "Проклинает врага, заставляя его получать больше урона от всего. Хорошо работает с другими заклинаниями, которые наносят урон несколько раз.",
         "es": "Maldice a un enemigo, lo que hace que reciba más daño de todo. Funciona bien con otros hechizos que infligen daño varias veces.",
         "jp": "敵を呪い、敵があらゆるものから受けるダメージが増加する。複数回ダメージを与える他の呪文とうまく連携します。"
@@ -696,10 +696,10 @@ let textData = {
         "jp": "シールドルーンは、あなたと敵の間に配置されている限り、あなたを保護するバリアを作成します。"
     },
     "reinforce_tut_desc": {
-        "en_us": "The Body rune grants effects\nthat persist until you cast\na new body spell. Some Body+Rune\ncombos can even heal you.",
-        "fr": "La rune Corps confère des effets\nqui persistent jusqu’à ce que\nvous lanciez un nouveau sort corporel.\nCertains combos corps+runes peuvent même\nvous soigner.",
-        "zh_tw": "身體符文賦予的效果會一直持續到\n你施放新的身體法術。\n一些身體+符文組合甚至可以治癒你。",
-        "zh_cn": "身体符文赋予的效果会一直持续到\n你施放新的身体法术。\n一些身体+符文组合甚至可以治愈你。",
+        "en_us": "The Body rune grants effects\nthat persist until you cast\na new body spell. Some Body Rune\ncombos can even heal you.",
+        "fr": "La Rune Corps confère des effets\nqui persistent jusqu’à ce que\nvous lanciez un nouveau sort corporel.\nCertains combos Rune Corps peuvent même\nvous soigner.",
+        "zh_tw": "身體符文賦予的效果會\n一直持續到你施放新的\n體法術。\n某些身體符文組合甚至可以治癒你。",
+        "zh_cn": "身体符文赋予的效果会\n一直持续到你施放新的\n身体法术。\n某些身体符文组合甚至可以治愈你。",
         "ru": "Руна Тела дает эффекты, которые сохраняются до тех пор, пока вы не разыграете новое заклинание тела. Некоторые комбинации Тело+Руна могут даже исцелить вас.",
         "es": "La runa Cuerpo otorga efectos que persisten hasta que lanzas un nuevo hechizo de cuerpo. Algunos combos de Cuerpo + Runa pueden incluso curarte.",
         "jp": "身体のルーンは、あなたが新しい身体呪文を唱えるまで持続する効果を付与する。一部のボディ+ルーンコンボはあなたを癒すことさえできます。"
@@ -707,17 +707,17 @@ let textData = {
     "unload_tut_desc": {
         "en_us": "The Ultimate rune grants you\nsome of the most powerful\nspells in your arsenal.\nUse this rune wisely.",
         "fr": "La rune ultime vous confère\ncertains des sorts les plus\npuissants de votre arsenal.\nUtilisez cette rune à bon escient.",
-        "zh_tw": "究極符文賦予您武器庫中一些最強大的法術。明智地使用這個符文。",
-        "zh_cn": "究极符文赋予您武器库中一些最强大的法术。明智地使用这个符文。",
+        "zh_tw": "究極符文賦予您最強大\n的法術。明智地使用\n這個符文。",
+        "zh_cn": "究极符文赋予您最强大\n的法术。明智地使用\n这个符文。",
         "ru": "Руна Ultimate дает вам одни из самых мощных заклинаний в вашем арсенале. Используйте эту руну с умом.",
         "es": "La runa definitiva te otorga algunos de los hechizos más poderosos de tu arsenal. Usa esta runa sabiamente.",
         "jp": "アルティメットルーンは、あなたの武器の中で最も強力な呪文のいくつかをあなたに与えます。このルーンを賢く使いましょう。"
     },
     "no_improve_tut_desc": {
         "en_us": "You see no more need to\nimprove. You are certain that\nyou are strong enough to take\non any challenge.",
-        "fr": "Vous ne voyez plus la nécessité de vous améliorer. Vous êtes certain d’être assez fort pour relever n’importe quel défi.",
-        "zh_tw": "你認為沒有必要再改進了。你確信你足夠強大，可以接受任何挑戰。",
-        "zh_cn": "你认为没有必要再改进了。你确信你足够强大，可以接受任何挑战。",
+        "fr": "Vous ne voyez plus la\nnécessité de vous améliorer.\nVous êtes certain d’être\nassez fort pour relever\nn’importe quel défi.",
+        "zh_tw": "你認為沒有必要再改進了。\n你確信你足夠強大，可以\n接受任何挑戰。",
+        "zh_cn": "你认为没有必要再改进了。\n你确信你足够强大，可以\n接受任何挑战。",
         "ru": "Вы больше не видите необходимости совершенствоваться. Вы уверены, что достаточно сильны, чтобы принять любой вызов.",
         "es": "Ya no ves la necesidad de mejorar. Estás seguro de que eres lo suficientemente fuerte como para asumir cualquier desafío.",
         "jp": "これ以上改善する必要はないと思います。あなたは、どんな挑戦にも立ち向かうのに十分な強さを持っていると確信しています。"

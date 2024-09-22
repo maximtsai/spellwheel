@@ -1210,7 +1210,7 @@ class SpellManager {
         let bigClock = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_back_large.png');
         this.cleanseForms();
         playSound('time_body')
-        bigClock.setDepth(120).setScale(1.05);
+        bigClock.setDepth(120).setScale(1.08);
         bigClock.alpha = 0;
         let clockArm = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'clock_arm_large.png');
         clockArm.setDepth(120).setScale(1.2);
@@ -1222,19 +1222,19 @@ class SpellManager {
             targets: [bigClock],
             duration: 300,
             alpha: 0.4 + multiplier * 0.1,
-            scaleX: 0.95,
-            scaleY: 0.95,
+            scaleX: 0.99,
+            scaleY: 0.99,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 messageBus.publish('selfHealRecent', healthRewoundPercent);
             }
         });
         this.scene.tweens.add({
-            targets: [bigClock, clockArm],
+            targets: [clockArm],
             duration: 400,
             alpha: 0.55 + multiplier * 0.12,
-            scaleX: 0.92,
-            scaleY: 0.92,
+            scaleX: 0.95,
+            scaleY: 0.95,
             ease: 'Cubic.easeOut',
         });
 
@@ -1256,8 +1256,8 @@ class SpellManager {
             targets: [bigClock, clockArm],
             delay: 900,
             duration: 500,
-            scaleX: 1.1,
-            scaleY: 1.1,
+            scaleX: 1.12,
+            scaleY: 1.12,
             alpha: 0
         });
 

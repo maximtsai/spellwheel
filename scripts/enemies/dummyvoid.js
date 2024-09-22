@@ -156,7 +156,7 @@ class Dummyvoid extends Dummypractice {
                             scaleX: 1,
                             scaleY: 1,
                             ease: 'Quart.easeOut',
-                            duration: 500,
+                            duration: 450,
                             onComplete: () => {
                                 this.addTween({
                                     targets: [this.rune1, this.rune2],
@@ -170,16 +170,18 @@ class Dummyvoid extends Dummypractice {
                         this.playerSpellBodyTrack = messageBus.subscribe('recordSpell', (spellId) => {
                             if (spellId == 'voidReinforce') {
                                 this.playerSpellBodyTrack.unsubscribe();
-                                globalObjects.textPopupManager.hideInfoText();
-                                this.addTween({
-                                    targets: [this.rune1, this.rune2],
-                                    alpha: 0,
-                                    duration: 200,
-                                    onComplete: () => {
-                                        this.rune1.visible = false;
-                                        this.rune2.visible = false;
-                                    }
-                                });
+                                this.addDelay(() => {
+                                    globalObjects.textPopupManager.hideInfoText();
+                                    this.addTween({
+                                        targets: [this.rune1, this.rune2],
+                                        alpha: 0,
+                                        duration: 200,
+                                        onComplete: () => {
+                                            this.rune1.visible = false;
+                                            this.rune2.visible = false;
+                                        }
+                                    });
+                                }, 650)
                             }
                         })
 

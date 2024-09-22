@@ -174,8 +174,8 @@ let textData3 = {
     "death3c": {
         "en_us": "TURN BACK BEFORE\nYOUR HEART BREAKS TWICE.",
         "fr": "REVIENS ARRIÈRE AVANT QUE\nTON CŒUR SE BRISE DEUX FOIS.",
-        "zh_tw": "在你的心兩次破碎之前回頭吧。",
-        "zh_cn": "在你的心再次破碎之前回头。",
+        "zh_tw": "立即回頭，莫讓心碎兩次。",
+        "zh_cn": "立即回头，莫让心碎两次。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -208,19 +208,19 @@ let textData3 = {
         "jp": ""
     },
     "death4c": {
-        "en_us": "TO A TIME THAT\nHAS ALREADY PASSED.",
+        "en_us": "TO YOUR MEMORIES\nOF THE PAST.",
         "fr": "À UN TEMPS QUI EST DÉJÀ PASSÉ.",
-        "zh_tw": "但你卻停留在早已過去的時間里。",
-        "zh_cn": "但你却停留在早已过去的时间里。",
+        "zh_tw": "但你卻將自己束縛在過去的記憶中。",
+        "zh_cn": "却将自己束缚在过去的记忆中。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death4d": {
-        "en_us": "YOU WILL NEVER KNOW PEACE\nUNTIL YOU LET GO OF YOUR BELOVED.",
-        "fr": "VOUS NE CONNAÎTREZ JAMAIS LA PAIX TANT\nQUE VOUS NE LÂCHEREZ PAS VOTRE BIEN-AIMÉ.",
-        "zh_tw": "你永远不会感到平静\n直到你放手你心愛的。",
-        "zh_cn": "你永远不会感到平静\n直到你放手你心愛的。",
+        "en_us": "YOUR BELOVED HAS LONG PASSED.\nIT IS TIME TO MOVE ON.",
+        "fr": "VOTRE PROCHE EST MORT DEPUIS LONGTEMPS.\nIL EST TEMPS D'ABANDONNER VOS OBSESSIONS.",
+        "zh_tw": "你的摯愛早已去世。\n是時候放手你的執念。",
+        "zh_cn": "你的挚爱早已去世。\n是时候放手你的执念。",
         "ru": "",
         "es": "",
         "jp": ""

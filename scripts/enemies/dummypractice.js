@@ -500,12 +500,15 @@
                     PhaserScene.tweens.add({
                          targets: [victoryText, banner],
                          alpha: 0,
-                         duration: 400,
+                         duration: 800,
+                        completeDelay: 200,
                          onComplete: () => {
                             victoryText.destroy();
                             banner.destroy();
                             // globalObjects.magicCircle.enableMovement();
-                            globalObjects.postFightScreen.createWinScreenMin(-this.level);
+                             // TODO: maybe just skip straight to enemy
+                            // globalObjects.postFightScreen.createWinScreenMin();
+                             beginPreLevel(-this.level + 1);
                         }
                     });
                 });

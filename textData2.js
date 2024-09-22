@@ -258,14 +258,14 @@ let textData2 = {
     "post_fight_story1": {
         "en_us": "I have arrived at the gates to\nthe forbidden land of the departed.\n\nImmediately, this realm resists my entry.\nBut I know I will find you here, dear beloved,\nand nothing will stop me from reaching you.",
         "fr": "Je suis arrivé aux portes de la\nterre interdite des défunts.\n\nImmédiatement, ce royaume résiste à mon\nentrée. Mais je sais que je vous trouverai ici,\nchers bien-aimés, et rien ne m’empêchera de\nvous atteindre.",
-        "zh_tw": "我已經到達了通往逝者禁地的大門。 \n\n立刻，這個境界就抵擋住了我的進入。\n但我知道我會在這裡找到你，親愛的摯愛，\n沒有什麼能阻止我接近你。",
-        "zh_cn": "我已经到达了通往逝者禁地的大门。 \n\n立刻，这个境界就抵挡住了我的进入。\n但我知道我会在这里找到你，亲爱的挚爱，\n没有什么能阻止我接近你。",
+        "zh_tw": "我已經到達了通往逝者禁地的大門。 \n\n立刻，這個境界就抵擋住了我的進入。\n但我知道我會在這裡找到你，親愛的。\n沒有什麼能阻止我接近你。",
+        "zh_cn": "我已经到达了通往逝者禁地的大门。 \n\n立刻，这个境界就抵挡住了我的进入。\n但我知道我会在这里找到你，亲爱的。\n没有什么能阻止我接近你。",
         "ru": "Я прибыл к воротам запретной земли усопших.  Этот мир сразу же сопротивляется моему входу. Но я знаю, что найду тебя здесь, дорогая возлюбленная, и ничто не помешает мне добраться до тебя.",
         "es": "He llegado a las puertas de la tierra prohibida de los difuntos.  Inmediatamente, este reino se resiste a mi entrada. Pero sé que te encontraré aquí, querido amado, y nada me impedirá llegar a ti.",
         "jp": "私は死者の禁じられた土地への門に到着しました。 すぐに、この領域は私の立ち入りに抵抗します。しかし、私はここであなたを見つけるでしょう、親愛なる最愛の人、そして私があなたに連絡を取るのを妨げるものは何もありません。"
     },
     "post_fight_story2": {
-        "en_us": "The fabled Reaper has taken\nnotice of me, but I hardly feel afraid.\n\nThey remind me more of my nagging parents\nthan an underworld spectre.\n\nPerhaps I'll grab this shield before they\nstart chastising me any further.",
+        "en_us": "The fabled Reaper has taken\nnotice of me, but I don't fear it at all.\n\nThey remind me more of my nagging parents\nthan an underworld spectre.\n\nPerhaps I'll grab this shield before they\nstart chastising me any further.",
         "fr": "Le légendaire Faucheur m'a remarqué,\nmais je n'ai guère peur.\n\nIls me rappellent plus mes parents\nharcelants qu'un spectre des enfers.\n\nJe devrais lui retirer ce bouclier\navant qu'il continue à me harceler.",
         "zh_tw": "傳說中的死神已經注意到我了，\n但我幾乎不覺得害怕。\n\n" +
             "在我看來，他們更像是個嘮叨的父母，\n而不是地獄裡可怕的幽靈。\n\n我該在他繼續嘮叨前拿走這面盾牌。",
@@ -288,8 +288,8 @@ let textData2 = {
     "post_fight_story3": {
         "en_us": "Though this is the land of the dead,\nthe foes I face seem oddly... alive.\n\nBut each victory also grants me strength,\nand I must take as much power as I can get\nfor this journey.",
         "fr": "Les ennemis que j’ai affrontés au\nPays des Morts semblaient… vivants.\n\nMais chaque victoire me donne aussi du pouvoir.\nJe dois acquérir autant de force que possible\npour sauver ma bien-aimée.",
-        "zh_tw": "我在亡靈之地所面對的敵人看起來就像…活著一樣。\n\n但每一次勝利也賦予我力量。\n我必須獲得盡可能多的力量來拯救我心愛的。",
-        "zh_cn": "我在亡灵之地所面对的敌人看起来就像…活着一样。\n\n但每一次胜利也赋予我力量。\n我必须获得尽可能多的力量来拯救我心爱的。",
+        "zh_tw": "我在亡靈之地所面對的敵人\n看起來就像…活著一樣.\n\n但每一次勝利也賦予我力量。\n我必須獲得盡可能多的力量來拯救我心愛的。",
+        "zh_cn": "我在亡灵之地所面对的敌人\n看起来就像…活着一样.\n\n但每一次胜利也赋予我力量。\n我必须获得尽可能多的力量来拯救我心爱的。",
         "ru": "Кажется, я получаю силу каждого врага, которого побеждаю!  Путешествие может быть долгим, но если я победлю достаточное количество противников, я смогу однажды противостоять самой Смерти!",
         "es": "¡Parece que obtengo la fuerza de cada enemigo al que venzo!  El viaje puede ser largo, pero si conquisto suficientes adversarios, ¡algún día podré enfrentarme a la muerte misma!",
         "jp": "どうやら私は倒すすべての敵の力を手に入れたようだ! 旅は長いかもしれないが、十分な数の敵を倒せば、いつの日か死そのものに立ち向かえるようになるかもしれない!"
@@ -297,14 +297,14 @@ let textData2 = {
     "post_fight_story4": {
         "en_us": "Sometimes I question myself, whether entering\nthese forbidden lands and battling every foe\nI encounter is truly the right choice.\n\nBut when I close my eyes and think of your\nsmile, I am sure that every sacrifice will be\nworth it in the end.",
         "fr": "Parfois, je me demande si aller au Pays des\nMorts et combattre tous les ennemis est\nvraiment la bonne chose à faire.\n\nMais quand je ferme les yeux et pense à ton\nsourire, j’ai l’impression que tous les sacrifices\nen valaient la peine au final.",
-        "zh_tw": "有時我會懷疑進入亡靈之地，與每個敵人戰鬥是否\n真的是正確的選擇。\n\n但當我閉上眼睛，想起你的笑容時，我我相信最終\n所有的犧牲都是值得的。",
-        "zh_cn": "有时我会怀疑进入亡灵之地，与每个敌人战斗是否\n真的是正确的选择。\n\n但当我闭上眼睛，想起你的笑容时，我我相信最终\n所有的牺牲都是值得的。",
+        "zh_tw": "有時我會懷疑進入亡靈之地，\n與每個敵人戰鬥是否真的是正確的選擇。\n\n但當我閉上眼睛，想起你的笑容時，\n我我相信最終所有的犧牲都是值得的。",
+        "zh_cn": "有时我会怀疑进入亡灵之地，\n与每个敌人战斗是否真的是正确的选择。\n\n但当我闭上眼睛，想起你的笑容时，\n我我相信最终所有的牺牲都是值得的。",
         "ru": "Как же я жажду снова ощутить твои объятия, моя дорогая возлюбленная.  Твоя смерть была слишком поспешной, слишком несправедливой, и я исправлю эту ошибку, даже если мне придется опрокинуть всю страну.",
         "es": "¡Cómo anhelo sentir tu abrazo una vez más, mi queridísimo amado!  Tu muerte fue demasiado prematura, demasiado injusta, y corregiré este error incluso si tengo que trastornar toda la tierra.",
         "jp": "あなたの抱擁をもう一度感じたいと切望しています、私の最愛の人。 あなたの死はあまりにも早く、あまりにも不当であり、たとえ私が国全体を覆さなければならないとしても、私はこの間違いを正します。"
     },
     "post_fight_story5": {
-        "en_us": "The Reaper appears every time to sour my\nvictories. Is my quest to reclaim a loved one\nso wrong?\n\nSurely not, which means it must be the\nReaper themselves who is setting up all\nthese obstacles!",
+        "en_us": "The Reaper appears every time to sour my\nvictories. Is my quest to reclaim a loved one\nso wrong?\n\nSurely not, so perhaps it's actually the\nReaper themselves who is setting up all\nthese obstacles!",
         "fr": "Le Faucheur apparaît à chaque fois pour\ngâcher mes victoires. Ma quête pour récupérer\nun être cher est-elle si mauvaise?\n\nCertainement pas, ce qui signifie que c'est\nle Faucheur lui-même qui met en place tous\nces obstacles!",
         "zh_tw": "死神每次出現都會讓我的勝利灰飛煙滅。\n我找回愛人的任務難道就這麼錯嗎？\n\n當然不是，這意味著一定是死神自己在\n設置所有這些障礙！",
         "zh_cn": "死神每次出现都会让我的胜利灰飞烟灭。\n我找回爱人的任务难道就这么错误吗？\n\n当然不是，这意味着一定是死神自己在\n设置所有这些障碍！",
@@ -592,7 +592,7 @@ let textData2 = {
         "jp": "でも、私は何でもできると確信しています。"
     },
     "level0_diag_a": {
-        "en_us": "My beloved is just beyond\nthis gate.",
+        "en_us": "My beloved is just beyond\nthe gate.",
         "fr": "Mon bien-aimé est juste\nau-delà de cette porte.",
         "zh_tw": "我的愛人就在這扇門外。",
         "zh_cn": "我的爱人就在这门外。",
@@ -676,7 +676,7 @@ let textData2 = {
         "en_us": "I've set up a training doll\nto test this new rune.",
         "fr": "Pour tester cette rune, j'ai\ninstallé un mannequin d'entraînement.",
         "zh_tw": "我設定了一個訓練假人\n來測試這個新的符文。",
-        "zh_cn": "我设置了一个训练假人\n来测试这个新的符文。。",
+        "zh_cn": "我设置了一个训练假人\n来测试这个新的符文。",
         "ru": "Я установил учебный манекен,\nчтобы опробовать свою новую руну.",
         "es": "Preparé un muñeco de entrenamiento\npara probar mi nueva runa.",
         "jp": "新しいルーンをテストするためにトレーニ\nングダミーをセットアップしました。"
@@ -746,18 +746,18 @@ let textData2 = {
     },
     "level4_train_tut_b": {
         "en_us": "Heal your last\ninjury with\n          +",
-        "fr": "Soignez votre\ndernière blessure\navec\n        +",
-        "zh_tw": "治癒你最後的傷害\n       +",
-        "zh_cn": "治愈你最后的伤害\n       +",
+        "fr": "Soignez votre\ndernière blessure\navec\n          +",
+        "zh_tw": "治癒你最後的傷害\n           +",
+        "zh_cn": "治愈你最后的伤害\n           +",
         "ru": "Залечите последнюю\nтравму с помощью\n         +",
         "es": "Cura tu última\nherida con\n       +",
         "jp": "で最後の怪我を治す\n         +"
     },
     "level4_train_tut_c": {
-        "en_us": "Cast multiple\n\ntogether for a\npowerful attack",
-        "fr": "Lancez plusieurs\n\nsorts ensemble\npour des attaques\npuissantes",
-        "zh_tw": "一起施放多個\n\n法術以進行強大\n的攻擊",
-        "zh_cn": "一起施放多个\n\n法术以进行强大\n的攻击",
+        "en_us": "Cast multiple\n\ntogether for a\npowerful attack.",
+        "fr": "Lancez plusieurs\n\nsorts ensemble\npour des attaques\npuissantes.",
+        "zh_tw": "一起施放多個\n\n法術以進行強大\n的攻擊。",
+        "zh_cn": "一起施放多个\n\n法术以进行强大\n的攻击。",
         "ru": "Используйте несколько\n\nзаклинаний вместе\nдля мощных атак.",
         "es": "Lanza múltiples\n\njuntos para\nlograr combos\npoderosos",
         "jp": "複数の呪文を\n\n一緒に唱えて強力な\n攻撃を行います"
@@ -772,7 +772,7 @@ let textData2 = {
         "jp": "解除方法:\nダミーを倒す"
     },
     "level5_train_tut_b": {
-        "en_us": "Fully heal\nyourself\n         +",
+        "en_us": "Fully heal\nyourself\n      +",
         "fr": "Soignez-vous\ncomplètement\n ",
         "zh_tw": "完全治癒自己\n ",
         "zh_cn": "完全治愈自己\n ",
@@ -790,10 +790,10 @@ let textData2 = {
         "jp": "ボイドシールドは\n1回の攻撃を完全\nにブロックできる\n         +"
     },
     "dummy_mind_tut": {
-        "en_us": "Energy Strike\nmakes your next\nattack hit X2 as\nhard\n             +",
+        "en_us": "Energy Strike\nmakes your\nnext attack\nhit X2 as hard\n           +",
         "fr": "La frappe\nénergétique rend\nvotre prochaine\nattaque deux fois\nplus forte.\n               +",
-        "zh_tw": "你的下一次攻擊\n造成兩倍的傷害\n         +",
-        "zh_cn": "你的下一次攻击\n造成双倍伤害\n         +",
+        "zh_tw": "你的下一次攻擊\n造成兩倍的傷害\n           +",
+        "zh_cn": "你的下一次攻击\n造成双倍伤害\n           +",
         "ru": "Энергетический удар делает вашу следующую атаку в два раза сильнее.\n             +",
         "es": "Golpe de energía hace que tu próximo ataque golpee el doble de fuerte.\n             +",
         "jp": "「エナジーストライク」は、次の攻撃のヒットを2倍にする。\n            +"

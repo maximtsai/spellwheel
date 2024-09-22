@@ -538,7 +538,7 @@ const ENABLE_KEYBOARD = true;
 
         this.spellDescriptor = new HoverDisplay({
             x: gameConsts.halfWidth,
-            y: gameConsts.height - 366,
+            y: gameConsts.height - 367,
             originX: 0.485,
             originY: 1,
             depth: 200

@@ -99,9 +99,10 @@
         globalObjects.textPopupManager.hideInfoText();
         if (this.rune1) {
             this.rune1.destroy();
-            this.rune2.destroy();
         }
-
+         if (this.rune2) {
+             this.rune2.destroy();
+         }
          if (this.isFirstMode) {
             this.isLoading = true;
             this.isFirstMode = false;
@@ -585,7 +586,7 @@
                          this.pullbackScale = 0.9;
                         this.attackScale = 1.2;
                         this.createTutSolo(getLangText('superdummy_void'), 'rune_unload_glow.png');
-                        this.createTutIcon(getLangText('superdummy_void'), 'rune_unload_glow.png', 'rune_void_glow.png')
+                        // this.createTutIcon(getLangText('superdummy_void'), 'rune_unload_glow.png', 'rune_void_glow.png')
                      },
                     attackFinishFunction: () => {
                         this.createPunchEffect();

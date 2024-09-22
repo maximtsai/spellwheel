@@ -572,8 +572,8 @@ let textData = {
     "mind_tut_unload_desc": {
         "en_us": "Multiplies the effectiveness\nof your next non-attack spell.\nThose clever enough to cast\nthis spell twice in a row\ncan attain breathtaking\nspell-amplifying power.",
         "fr": "Multiplie l'efficacité de votre\nprochain sort non offensif.\nLancer ce sort deux fois de suite\npeut donner un incroyable\npouvoir d'amplification des sorts.",
-        "zh_tw": "使你的下一個非攻擊法術的效果\n成倍增加。\n連續施放此法術兩次可以獲得驚人\n的法術增強力量。",
-        "zh_cn": "使你的下一个非攻击法术的效果\n成倍增加。\n连续施放此法术两次可以获得惊人\n的法术增强力量。",
+        "zh_tw": "使你的下一個非攻擊法術的效果\n成倍增加。\n連續施放此法術兩次可以獲得驚\n人的法術增強力量。",
+        "zh_cn": "使你的下一个非攻击法术的效果\n成倍增加。\n连续施放此法术两次可以获得惊\n人的法术增强力量。",
         "ru": "Умножает эффективность вашего следующего заклинания, не связанного с атакой. Те, кто достаточно умен, чтобы произнести это заклинание два раза подряд, могут достичь захватывающей дух силы, усиливающей заклинания.",
         "es": "Multiplica la efectividad de tu próximo hechizo que no sea de ataque. Aquellos lo suficientemente inteligentes como para lanzar este hechizo dos veces seguidas pueden alcanzar un impresionante poder amplificador de hechizos.",
         "jp": "次の非攻撃呪文の効果を倍増させる。この呪文を2回連続で唱える賢い人は、息を呑むような呪文増幅力を得ることができます。"
@@ -626,8 +626,8 @@ let textData = {
     "time_tut_unload_desc": {
         "en_us": "Slows down time to a near\nstand-still for several easy\nand stress-free spell casts.",
         "fr": "Ralentit le temps jusqu’à ce\nqu’il s’arrête pour plusieurs\nsorts faciles et sans stress.",
-        "zh_tw": "將時間減慢到幾乎靜止，\n以進行幾次簡單且無壓力的法術施放。",
-        "zh_cn": "将时间减慢到几乎静止，\n以进行几次简单且无压力的法术施放。",
+        "zh_tw": "將時間減慢到幾乎靜止，\n以進行幾次簡單且無壓力的\n法術施放。",
+        "zh_cn": "将时间减慢到几乎静止，\n以进行几次简单且无压力的\n法术施放。",
         "ru": "Замедляет время почти до полной остановки для нескольких простых и беззаботных применений заклинаний.",
         "es": "Ralentiza el tiempo hasta casi detenerlo durante varios lanzamientos de hechizos fáciles y sin estrés.",
         "jp": "時間をほぼ停止状態まで遅くし、簡単でストレスのない呪文を何度か唱えます。"
@@ -680,8 +680,8 @@ let textData = {
     "void_tut_unload_desc": {
         "en_us": "Creates a vortex that deals\nheavy percent health damage\nwhile disrupting any action\nthe enemy is trying to make.",
         "fr": "Crée un vortex qui inflige un\npourcentage élevé de dégâts\nde santé tout en perturbant\ntoute action de l’ennemi.",
-        "zh_tw": "創造一個漩渦，造成嚴重的生命傷害，\n同時打断敵人的行動。",
-        "zh_cn": "创造一个漩涡，造成严重的生命伤害，\n同时打断敌人的行动。",
+        "zh_tw": "創造一個漩渦，造成嚴重的生命\n傷害，同時打断敵人的行動。",
+        "zh_cn": "创造一个漩涡，造成严重的生命\n伤害，同时打断敌人的行动。",
         "ru": "Создает вихрь, который наносит большой урон в процентах здоровья, прерывая любые действия противника.",
         "es": "Crea un vórtice que inflige un gran porcentaje de daño de salud mientras interrumpe cualquier acción que el enemigo esté tratando de hacer.",
         "jp": "敵が行おうとしている行動を妨害しながら、重い体力パーセントダメージを与える渦を発生させます。"
@@ -707,8 +707,8 @@ let textData = {
     "unload_tut_desc": {
         "en_us": "The Ultimate rune grants you\nsome of the most powerful\nspells in your arsenal.\nUse this rune wisely.",
         "fr": "La rune ultime vous confère\ncertains des sorts les plus\npuissants de votre arsenal.\nUtilisez cette rune à bon escient.",
-        "zh_tw": "究極符文賦予您最強大\n的法術。明智地使用\n這個符文。",
-        "zh_cn": "究极符文赋予您最强大\n的法术。明智地使用\n这个符文。",
+        "zh_tw": "究極符文賦予您最強大的法術。\n明智地使用這個符文。",
+        "zh_cn": "究极符文赋予您最强大的法术。\n明智地使用这个符文。",
         "ru": "Руна Ultimate дает вам одни из самых мощных заклинаний в вашем арсенале. Используйте эту руну с умом.",
         "es": "La runa definitiva te otorga algunos de los hechizos más poderosos de tu arsenal. Usa esta runa sabiamente.",
         "jp": "アルティメットルーンは、あなたの武器の中で最も強力な呪文のいくつかをあなたに与えます。このルーンを賢く使いましょう。"

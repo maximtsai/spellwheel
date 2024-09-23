@@ -266,7 +266,7 @@ let textData2 = {
     },
     "post_fight_story2": {
         "en_us": "The fabled Reaper has taken\nnotice of me, but I don't fear it at all.\n\nThey remind me more of my nagging parents\nthan an underworld spectre.\n\nPerhaps I'll grab this shield before they\nstart chastising me any further.",
-        "fr": "Le légendaire Faucheur m'a remarqué,\nmais je n'ai guère peur.\n\nIls me rappellent plus mes parents\nharcelants qu'un spectre des enfers.\n\nJe devrais lui retirer ce bouclier\navant qu'il continue à me harceler.",
+        "fr": "Le légendaire Faucheur m'a remarqué,\nmais je n'ai guère peur.\n\nIls me rappellent plus mes parents harcelants\nqu'un spectre des enfers.\n\nJe devrais lui retirer ce bouclier avant qu'il\ncontinue à me harceler.",
         "zh_tw": "傳說中的死神已經注意到我了，\n但我幾乎不覺得害怕。\n\n" +
             "在我看來，他們更像是個嘮叨的父母，\n而不是地獄裡可怕的幽靈。\n\n我該在他繼續嘮叨前拿走這面盾牌。",
         "zh_cn": "传说中的死神已经注意到我了，\n但我几乎不觉得害怕。\n\n" +

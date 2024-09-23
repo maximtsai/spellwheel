@@ -422,7 +422,7 @@
                  },
                  {
                      name: "Malfunctioning...",
-                     chargeAmt: 600,
+                     chargeAmt: 700,
                      chargeMult: 8,
                      damage: -1,
                      isPassive: true,

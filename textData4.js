@@ -308,7 +308,7 @@ let textData4 = {
 
     "energy_tut_goblin": {
         "en_us": "Energy spells\nbypass all\nenemy defenses.\n             +",
-        "fr": "Les sorts d'énergie\ncontournent toutes\nles défenses ennemies.\n                +",
+        "fr": "Les sorts d'énergie\ncontournent toutes\nles défenses ennemies.\n                  +",
         "zh_tw": "能量法術可以\n繞過所有敵\n人的防禦。\n         +",
         "zh_cn": "能量法术可以\n绕过所有敌\n人的防御。\n         +",
         "ru": "Энергетические заклинания обходят любую защиту противника.               +",
@@ -481,8 +481,8 @@ let textData4 = {
     "pre_fight_3a": {
         "en_us": "\"Your fighting skill is\nquite a feat, but keep on\ngoing and doom you'll meet!\"",
         "fr": "\"Ton skill au combat est\nbien, mais continue\net tu verras la fin!\"",
-        "zh_tw": "“我必須稱讚你的戰鬥技巧，但如果你繼續前進，你的厄運就會來臨！",
-        "zh_cn": "\"你的战斗技艺高，\n但继续前行命运难逃。\"",
+        "zh_tw": "\"你的戰鬥技藝非凡驚艷，\n但繼續前行會厄運將現!\"",
+        "zh_cn": "\"你的战斗技艺非凡惊艳，\n但继续前行会厄运将现!\"",
         "ru": "",
         "es": "",
         "jp": ""
@@ -562,8 +562,8 @@ let textData4 = {
     "death3_a": {
         "before": "\"But please, hear my last request.",
         "en_us": "Rest now, and allow me\na moment to explain things.",
-        "fr": "",
-        "zh_tw": "",
+        "fr": "Maintenant reposez-vous et\nlaissez-moi vous expliquer.",
+        "zh_tw": "現在休息一下，請容我稍作解釋。",
         "zh_cn": "现在休息一下，请容我稍作解释。",
         "ru": "",
         "es": "",
@@ -571,8 +571,8 @@ let textData4 = {
     },
     "death3_b": {
         "en_us": "...We won't be\nneeding these anymore.",
-        "fr": "",
-        "zh_tw": "",
+        "fr": "...Nous n'aurons plus\nbesoin de ces armes",
+        "zh_tw": "。。。我們不再需要\n這些武器了。",
         "zh_cn": "。。。我们不再需要\n这些武器了。",
         "ru": "",
         "es": "",
@@ -580,8 +580,8 @@ let textData4 = {
     },
     "death3_c": {
         "en_us": "First, I offer my heartfelt\nunderstanding for your anguish.",
-        "fr": "",
-        "zh_tw": "",
+        "fr": "Tout d’abord, je vous offre ma sincère\ncompréhension pour votre angoisse.",
+        "zh_tw": "首先，我衷心理解你的痛苦。",
         "zh_cn": "首先，我衷心理解你的痛苦。",
         "ru": "",
         "es": "",
@@ -589,8 +589,8 @@ let textData4 = {
     },
     "death3_understand": {
         "en_us": "But understand what you\nare doing is not love.",
-        "fr": "",
-        "zh_tw": "",
+        "fr": "Mais comprenez que ce que vous\nfaites n’est pas de l’amour.",
+        "zh_tw": "但請明白，你所做的並非是愛，",
         "zh_cn": "但请明白，你所做的并非是爱，",
         "ru": "",
         "es": "",
@@ -598,8 +598,8 @@ let textData4 = {
     },
     "death3_obsess": {
         "en_us": "It is infatuation turned obsession.",
-        "fr": "",
-        "zh_tw": "",
+        "fr": "C'est de l'engouement devenu obsession.",
+        "zh_tw": "而是迷戀變成了執念。",
         "zh_cn": "而是迷恋变成了执念。",
         "ru": "",
         "es": "",
@@ -607,8 +607,8 @@ let textData4 = {
     },
     "death3_odyssey": {
         "en_us": "Was your expedition a noble odyssey?",
-        "fr": "",
-        "zh_tw": "",
+        "fr": "Votre expédition était-elle\nune noble odyssée ?",
+        "zh_tw": "你的遠徵是一次高貴的歷程嗎？",
         "zh_cn": "你的远征是一次高尚的历程吗？",
         "ru": "",
         "es": "",
@@ -616,44 +616,44 @@ let textData4 = {
     },
     "death3_indulgence": {
         "en_us": "Or a self indulgence to fill\nthe emptiness in your heart?",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "还是一种自我放纵，用以填补你内心的空虚？",
+        "fr": "Ou un acte de complaisance pour\ncombler le vide de votre cœur ?",
+        "zh_tw": "還是一種自我放縱，\n用以填補你內心的空虛？",
+        "zh_cn": "还是一种自我放纵，\n用以填补你内心的空虚？",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death3_yield": {
         "en_us": "You think if you force me to yield,\nyou can have her back.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "你以为只要逼我屈服，就能把她抢回来吗？",
+        "fr": "Tu penses que si tu me forces à céder,\ntu pourras la récupérer.",
+        "zh_tw": "你以為只要逼我屈服，\n就能把她搶回來嗎？",
+        "zh_cn": "你以为只要逼我屈服，\n就能把她抢回来吗？",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death3_within": {
-        "en_us": "Perhaps.\nThat would be within my power.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "en_us": "...That may be within my power,\nbut bringing her back won’t heal you.",
+        "fr": "...C'est peut-être en mon pouvoir,\nmais la ramener ne te guérira pas.",
+        "zh_tw": "...這也許在我的能力範圍之內，\n但將她帶回來並不能治癒你的心。",
+        "zh_cn": "...这也许在我的能力范围之内，\n但将她带回来并不能治愈你的心。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death3_both": {
-        "en_us": "But bringing her back won’t heal you.\nIt will only hurt you both.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "但将她带回来并不能治愈你。\n这只会对你们双方造成伤害。",
+        "en_us": "It will only hurt you both.",
+        "fr": "Cela ne fera que vous faire\ndu mal à tous les deux.",
+        "zh_tw": "而只會對你們雙方造成傷害。",
+        "zh_cn": "而只会对你们双方造成伤害。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death3_strength": {
         "en_us": "You’ve proven your strength.\nBut real strength now...",
-        "fr": "",
-        "zh_tw": "",
+        "fr": "Tu as prouvé ta force. Mais la\nvraie force maintenant...",
+        "zh_tw": "你已經證明了你的力量。\n但真正的力量。。。",
         "zh_cn": "你已经证明了你的力量。\n但真正的力量。。。",
         "ru": "",
         "es": "",
@@ -661,8 +661,8 @@ let textData4 = {
     },
     "death3_letting": {
         "en_us": "Is letting go.",
-        "fr": "",
-        "zh_tw": "",
+        "fr": "Il s'agit de lâcher prise.",
+        "zh_tw": "在於放手。",
         "zh_cn": "在于放手。",
         "ru": "",
         "es": "",
@@ -670,9 +670,9 @@ let textData4 = {
     },
     "death3_memory": {
         "en_us": "Let her memory live with you,\nbut allow her soul be free.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Laissez sa mémoire vivre avec vous,\nmais laissez son âme être libre.",
+        "zh_tw": "讓她的記憶與你同在，\n但讓她的靈魂得到自由。",
+        "zh_cn": "让她的记忆与你同在，\n但让她的灵魂得到自由。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -724,9 +724,9 @@ let textData4 = {
     },
     "death3_letgo": {
         "en_us": "And then... let her go.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Alors. . . Laissez-la partir.",
+        "zh_tw": "然後。。。放手她。",
+        "zh_cn": "然后。。。放手她。",
         "ru": "",
         "es": "",
         "jp": ""

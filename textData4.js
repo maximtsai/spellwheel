@@ -651,7 +651,7 @@ let textData4 = {
         "jp": ""
     },
     "death3_strength": {
-        "en_us": "You’ve proven your strength.\nBut real strength now...",
+        "en_us": "You’ve proven your strength.\nBut true strength now...",
         "fr": "Tu as prouvé ta force. Mais la\nvraie force maintenant...",
         "zh_tw": "你已經證明了你的力量。\n但真正的力量。。。",
         "zh_cn": "你已经证明了你的力量。\n但真正的力量。。。",
@@ -660,17 +660,17 @@ let textData4 = {
         "jp": ""
     },
     "death3_letting": {
-        "en_us": "Is letting go.",
-        "fr": "Il s'agit de lâcher prise.",
-        "zh_tw": "在於放手。",
-        "zh_cn": "在于放手。",
+        "en_us": "comes from moving on.",
+        "fr": "vient du fait de tourner la page.",
+        "zh_tw": "在於放下過去，繼續前行。",
+        "zh_cn": "在于放下过去，继续前行。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death3_memory": {
-        "en_us": "Let her memory live with you,\nbut allow her soul be free.",
-        "fr": "Laissez sa mémoire vivre avec vous,\nmais laissez son âme être libre.",
+        "en_us": "Let her memory live with you,\nbut allow her soul to be free.",
+        "fr": "Laissez sa mémoire vivre avec vous,\nmais laisse son âme continuer son chemin.",
         "zh_tw": "讓她的記憶與你同在，\n但讓她的靈魂得到自由。",
         "zh_cn": "让她的记忆与你同在，\n但让她的灵魂得到自由。",
         "ru": "",
@@ -714,10 +714,19 @@ let textData4 = {
         "jp": ""
     },
     "death3_talk": {
-        "en_us": "Talk to her.\nSay what you need to say.",
-        "fr": "Parle-lui.\nDis ce que tu as à dire.",
+        "en_us": "Talk to her.",
+        "fr": "Parle-lui.",
         "zh_tw": "對她說出你必要說的話。",
         "zh_cn": "对她说出你必要说的话。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_say": {
+        "en_us": "Say what you need to say.",
+        "fr": "Dis ce que tu as à dire.",
+        "zh_tw": "說出你内心深处的話。",
+        "zh_cn": "说出你内心深处的话。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -727,6 +736,16 @@ let textData4 = {
         "fr": "Alors. . . Laissez-la partir.",
         "zh_tw": "然後。。。放手她。",
         "zh_cn": "然后。。。放手她。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+
+    "talk_to_beloved": {
+        "en_us": "Meet your beloved.",
+        "fr": ".",
+        "zh_tw": "",
+        "zh_cn": "",
         "ru": "",
         "es": "",
         "jp": ""

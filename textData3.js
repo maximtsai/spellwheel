@@ -397,31 +397,31 @@ let textData3 = {
         "jp": "準備してください!"
     },
     "epilogue1a": {
-        "en_us": "ALAS, YOUR WOUNDS\nWERE TOO MANY TO BEAR.",
-        "fr": "HÉLAS, VOS BLESSURES ÉTAIENT\nTROP NOMBREUSES POUR ÊTRE PORTÉES.",
-        "zh_tw": "唉，你的傷口太多了，無法承受。",
-        "zh_cn": "唉，你的伤口太多了，无法承受。",
-        "ru": "УВЫ, ТВОИХ РАН БЫЛО СЛИШКОМ МНОГО, ЧТОБЫ ВЫНЕСТИ.",
-        "es": "¡AY!, TUS HERIDAS ERAN DEMASIADAS PARA SOPORTARLAS.",
-        "jp": "悲しいかな、あなたの傷は耐え難いほど多すぎました。"
+        "en_us": "DEAR ME, I WASN'T QUITE\nEXPECTING THIS OUTCOME.",
+        "fr": "CHER MOI, JE NE M'ATTENDAIS\nPAS VRAIMENT À CE RÉSULTAT.",
+        "zh_tw": "唉，我並沒預料到會出現這樣的結果。",
+        "zh_cn": "唉，我并没预料到会出现这样的结果。",
+        "ru": "ДОРОГОЙ МЕНЯ, Я НЕ СОВЕРШЕННО\nОЖИДАЛ ТАКОГО РЕЗУЛЬТАТА.",
+        "es": "QUERIDO YO, NO ESPERABA\nESTE RESULTADO.",
+        "jp": "親愛なる私、この結果はまったく予想していませんでした。"
     },
     "epilogue1b": {
-        "en_us": "BUT FOR YOUR EFFORTS, I SHALL\nAT LEAST GRANT YOUR WISH...",
-        "fr": "MAIS POUR VOS EFFORTS,\nJ’EXAUCERAI AU MOINS VOTRE SOUHAIT...",
-        "zh_tw": "但為了你的努力，\n我至少會滿足你的願望。 。 。",
-        "zh_cn": "但为了你的努力，\n我至少会满足你的愿望。。。",
-        "ru": "НО ЗА ТВОИ УСИЛИЯ Я, ПО КРАЙНЕЙ МЕРЕ, ИСПОЛНЮ ТВОЕ ЖЕЛАНИЕ...",
-        "es": "PERO POR TUS ESFUERZOS, AL MENOS TE CONCEDERÉ TU DESEO...",
-        "jp": "しかし、あなたの努力のために、私は少なくともあなたの願いを叶えてあげましょう..."
+        "en_us": "BUT AS PROMISED, I WILL\nSTILL GRANT YOU YOUR DESIRE...",
+        "fr": "MAIS COMME PROMIS, JE\nT'ACCORDERAI TOUJOURS TON DÉSIR...",
+        "zh_tw": "但按照先前的承諾，\n我仍然會滿足你的願望。。。",
+        "zh_cn": "但按照之前的承诺，\n我仍然会满足你的愿望。。。",
+        "ru": "НО, КАК ОБЕЩАНО, Я ВСЕ\nЕЩЕ ВЫПОЛНЮ ВАМ ВАШЕ ЖЕЛАНИЕ...",
+        "es": "PERO COMO LO PROMETÍ,\nAÚN TE CONCEDERÉ TU DESEO...",
+        "jp": "でも約束通り、あなたの\n望みは必ず叶えます..."
     },
     "epilogue1c": {
-        "en_us": "TO BE BESIDE YOUR BELOVED.",
-        "fr": "POUR ÊTRE AUX CÔTÉS\nDE VOTRE BIEN-AIMÉ.",
+        "en_us": "TO BE WITH YOUR BELOVED.",
+        "fr": "ÊTRE AVEC VOTRE BIEN-AIMÉ.",
         "zh_tw": "讓你陪伴在你心愛的人身邊。",
         "zh_cn": "让你陪伴在你心爱的人身边。",
-        "ru": "БЫТЬ РЯДОМ С ЛЮБИМЫМ.",
-        "es": "ESTAR AL LADO DE TU AMADA.",
-        "jp": "あなたの最愛の人のそばにいるために。"
+        "ru": "БЫТЬ С ЛЮБИМЫМ.",
+        "es": "PARA ESTAR CON TU AMADO.",
+        "jp": "愛する人と一緒にいること。"
     },
     "epilogue1d": {
         "en_us": "MAY YOU FIND PEACE\nIN ETERNAL SLUMBER.",
@@ -433,13 +433,13 @@ let textData3 = {
         "jp": "永遠の眠りの中で安らぎを見いだせますように。"
     },
     "epilogue1e": {
-        "en_us": "Ending 1\nEternal Rest",
-        "fr": "Fin 1 :\nLe repos éternel",
-        "zh_tw": "結束 1\n永恆的安息",
-        "zh_cn": "结束 1\n永恒的安息",
-        "ru": "Концовка 1 Вечный покой",
-        "es": "Final 1 Descanso eterno",
-        "jp": "エンディング1 永遠の休息"
+        "en_us": "Ending 3\nEternal Rest",
+        "fr": "Fin 3 :\nLe Repos Éternel",
+        "zh_tw": "結束 3\n永恆的安息",
+        "zh_cn": "结束 3\n永恒的安息",
+        "ru": "Концовка 3\nВечный покой",
+        "es": "Final 3\nDescanso eterno",
+        "jp": "エンディング3\n永遠の休息"
     },
     "epilogue2a": {
         "en_us": "I SEE YOUR DESIRE TO\nSEEK VICTORY REMAINS INSATIABLE.",

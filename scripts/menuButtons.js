@@ -2,7 +2,6 @@ function setupMainMenuBG() {
     if (!globalObjects.menuBack) {
         globalObjects.menuBack = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-9).setScale(0.92);
         globalObjects.menuTop = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9).setScale(0.92);
-        globalObjects.menuBot = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_bot.png').setDepth(-9).setScale(0.92);
     }
 }
 
@@ -53,17 +52,6 @@ function minorZoomMenu() {
              ease: 'Quint.easeInOut',
              duration: 1500,
          });
-
-        globalObjects.menuBot.destroy();
-
-        // PhaserScene.tweens.add({
-        //      targets: [globalObjects.menuBot],
-        //      scaleX: 1.2,
-        //      scaleY: 1.2,
-        //      y: gameConsts.halfHeight - 70,
-        //      ease: 'Cubic.easeInOut',
-        //      duration: 1500,
-        //  });
     }
 }
 
@@ -88,17 +76,8 @@ function clearOnlyMenuBack() {
          });
 
         PhaserScene.tweens.add({
-             targets: [globalObjects.menuBot],
-             scaleX: 2.1,
-             scaleY: 1.4,
-             y: gameConsts.halfHeight + 130,
-             ease: 'Cubic.easeInOut',
-             duration: 2500,
-         });
-
-        PhaserScene.tweens.add({
             delay: 1000,
-             targets: [globalObjects.menuTop, globalObjects.menuBot],
+             targets: [globalObjects.menuTop],
              alpha: 0,
              duration: 1500,
              onComplete: () => {
@@ -144,7 +123,6 @@ function gotoMainMenuNoButtons() {
 
     globalObjects.menuBack.setAlpha(1).setScale(0.902).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
     globalObjects.menuTop.setAlpha(1).setScale(0.902).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
-    globalObjects.menuBot.setAlpha(1).setScale(0.902).setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 89).setOrigin(0.5, 0.4);
 
     if (globalObjects.startButton && !globalObjects.startButton.isDestroyed) {
         return;

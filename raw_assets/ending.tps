@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>85</uint>
+        <uint>79</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -205,15 +205,15 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">ending/ending_3.png</key>
-            <key type="filename">ending/ending_3_125.png</key>
-            <key type="filename">ending/ending_3_15.png</key>
-            <key type="filename">ending/ending_3_2.png</key>
+            <key type="filename">ending/ending_3a.png</key>
+            <key type="filename">ending/ending_3b.png</key>
+            <key type="filename">ending/ending_3c.png</key>
+            <key type="filename">ending/ending_3d.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.915</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>

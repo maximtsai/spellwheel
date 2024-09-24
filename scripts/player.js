@@ -1083,17 +1083,26 @@ class Player {
     }
 
     die() {
-        if (this.dead) {
+        if (this.dead || (globalObjects.currentEnemy && globalObjects.currentEnemy.dead)) {
             return;
         }
         globalObjects.magicCircle.setAuraAlpha(0);
-        this.dead = true;
-        playSound('you_died');
-        this.deadBG.alpha = 0.85;
-        this.clearAllEffects();
+
         messageBus.publish("closeCombatText");
         globalObjects.textPopupManager.hideInfoText();
         globalObjects.bannerTextManager.closeBanner();
+        this.dead = true;
+        this.clearAllEffects();
+        messageBus.publish("playerDied");
+        playSound('you_died');
+        if (gameVars.isDeathThree) {
+            showCutscene1();
+            return;
+        }
+
+
+        this.deadBG.alpha = 0.85;
+
 
         if (!this.swirl1) {
             this.swirl2 = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'backgrounds', 'fog_swirl_glow.png').setDepth(30);
@@ -1120,7 +1129,6 @@ class Player {
             repeat: -1,
         });
 
-        messageBus.publish("playerDied");
         this.deadBGAnim = this.scene.tweens.add({
             targets: this.deadBG,
             duration: 750,

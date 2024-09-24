@@ -2,6 +2,8 @@ class Death3 extends Enemy {
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         gameVars.isDeathThree = true;
+        playSound("whoosh")
+
         this.initSprite('max_death_3_white.png', 1, 0, 0, 'deathfinal');
         this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfall.png').setDepth(-6).setScale(1, 1.03);
         this.bgtemprocks = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfallrocks.png').setDepth(-4).setScale(1,1.03);
@@ -608,6 +610,14 @@ class Death3 extends Enemy {
                     startFunction: () => {
                         this.setDeathFace('max_death_3c.png')
                         messageBus.publish("showCombatText", getLangText('death3_calm'), 15);
+                        this.addTween({
+                            targets: this.hourglassdark,
+                            alpha: 0,
+                            scaleX: 15,
+                            scaleY: 15,
+                            duration: 1500,
+                            ease: 'Cubic.easeInOut',
+                        })
                     },
                 },
                 {
@@ -623,14 +633,23 @@ class Death3 extends Enemy {
                 },
                 {
                     name: " ",
-                    chargeAmt: 300,
-                    chargeMult: 3,
+                    chargeAmt: 500,
+                    chargeMult: 1.1,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip3',
                     startFunction: () => {
+                        fadeAwaySound(this.bgMusic, 3000, 'Quad.easeIn');
+                        showCutscene3();
                         messageBus.publish("showCombatText", getLangText('death3_once'), 15);
                     },
+                },
+                {
+                    name: "...",
+                    chargeAmt: 500,
+                    isPassive: true,
+                    transitionFast: true,
+                    customCall: 'flip3',
                 },
             ],
             [

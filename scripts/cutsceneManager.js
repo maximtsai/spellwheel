@@ -237,6 +237,140 @@ function showCutscene2() {
     });
 }
 
+function showCutscene3() {
+    readyShowCutsceneLogic();
+    globalObjects.cutsceneBarTop.y = gameConsts.height;
+    globalObjects.cutsceneBarTop.alpha = 0;
+    globalObjects.cutsceneBack.alpha = 0;
+    PhaserScene.tweens.add({
+        targets: globalObjects.cutsceneBack,
+        alpha: 1,
+        duration: 3000,
+        onComplete: () => {
+            if (globalObjects.currentEnemy) {
+                globalObjects.currentEnemy.destroy();
+            }
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
+            globalObjects.bannerTextManager.setDialog([getLangText('talk_to_beloved')]);
+            globalObjects.bannerTextManager.showBanner(false);
+            globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                let bgMusic = playMusic('death3_harp', 0.63, true);
+
+                globalObjects.cutsceneBarTop.y = gameConsts.halfHeight - 278;
+                globalObjects.cutsceneBarBot.y = gameConsts.halfHeight + 278;
+                globalObjects.cutsceneBarTop.alpha = 0;
+                let cutsceneBG2 = setCutscene2('ending_3b.png');
+                cutsceneBG2.alpha = 0;
+                let cutsceneBG1 = setCutscene1('ending_3a.png');
+                cutsceneBG1.alpha = 0;
+                cutsceneBG1.setRotation(0.12).setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 30).setScale(1.1);
+                cutsceneBG2.setRotation(0.12).setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 30).setScale(1.1);
+                PhaserScene.tweens.add({
+                    targets: cutsceneBG1,
+                    alpha: 1,
+                    duration: 1000,
+                });
+                PhaserScene.tweens.add({
+                    targets: [cutsceneBG1, cutsceneBG2],
+                    rotation: 0,
+                    duration: 12000,
+                    scaleX: 0.95,
+                    scaleY: 0.95,
+                    ease: 'Quart.easeInOut'
+                });
+
+                setTimeout(() => {
+                    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 58, 0);
+                    globalObjects.bannerTextManager.setDialog([getLangText('death3_talk'), getLangText('death3_say'), getLangText('death3_letgo')]);
+                    globalObjects.bannerTextManager.setDialogFunc([() => {
+                        globalObjects.bannerTextManager.setForcePause(true);
+                        setTimeout(() => {
+                            globalObjects.bannerTextManager.setForcePause(false);
+                        }, 1500)
+                    }, () => {
+                        cutsceneBG1.setDepth(CUTSCENE_DEPTH)
+                        cutsceneBG2.setDepth(CUTSCENE_DEPTH + 1)
+                        PhaserScene.tweens.add({
+                            targets: cutsceneBG2,
+                            alpha: 1,
+                            duration: 1000,
+                        });
+                        globalObjects.bannerTextManager.setForcePause(true);
+                        setTimeout(() => {
+                            globalObjects.bannerTextManager.setForcePause(false);
+                        }, 1500)
+                    }, () => {
+                        cutsceneBG1.setDepth(CUTSCENE_DEPTH + 1).setAlpha(0).setFrame('ending_3c.png')
+                        cutsceneBG2.setDepth(CUTSCENE_DEPTH)
+                        PhaserScene.tweens.add({
+                            targets: cutsceneBG1,
+                            alpha: 1,
+                            duration: 1000,
+                        });
+                        globalObjects.bannerTextManager.setForcePause(true);
+                        setTimeout(() => {
+                            globalObjects.bannerTextManager.setForcePause(false);
+                        }, 1500)
+                    }]);
+                    globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                        globalObjects.cutSceneLastClicked = true;
+                        cutsceneBG1.setDepth(CUTSCENE_DEPTH)
+                        cutsceneBG2.setDepth(CUTSCENE_DEPTH + 1).setAlpha(0).setFrame('ending_3d.png')
+                        PhaserScene.tweens.add({
+                            targets: cutsceneBG2,
+                            alpha: 1,
+                            duration: 1490,
+                            onComplete: () => {
+                                if (globalObjects.cutsceneBack.currAnim) {
+                                    globalObjects.cutsceneBack.currAnim.stop();
+                                    PhaserScene.tweens.add({
+                                        targets: globalObjects.cutsceneBack,
+                                        alpha: 0,
+                                        duration: 500,
+                                    });
+                                }
+                                fadeAwaySound(bgMusic, 3400, 'Quad.easeIn');
+                                let whiteBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setDepth(CUTSCENE_DEPTH + 2).setScale(500);
+                                whiteBG.setAlpha(0);
+
+                                PhaserScene.tweens.add({
+                                    delay: 400,
+                                    targets: whiteBG,
+                                    alpha: 1,
+                                    ease: 'Quad.easeInOut',
+                                    duration: 4000,
+                                    onComplete: () => {
+                                        this.cleanupCutscene();
+                                        this.playFinalScene();
+                                        PhaserScene.tweens.add({
+                                            targets: whiteBG,
+                                            alpha: 0,
+                                            duration: 2000,
+                                            ease: 'Quad.easeOut',
+                                            onComplete: () => {
+                                                whiteBG.destroy();
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    })
+
+                    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 58, 0);
+                    globalObjects.bannerTextManager.showBanner(false);
+                }, 750)
+
+                globalObjects.cutsceneBack.currAnim = PhaserScene.tweens.add({
+                    targets: globalObjects.cutsceneBack,
+                    alpha: 0,
+                    duration: 6000,
+                });
+            })
+        }
+    });
+}
+
 function showLoverApproach() {
     let star = PhaserScene.add.image(gameConsts.halfWidth, 225, 'blurry', 'star_blur.png').setAlpha(1).setScale(0.4).setDepth(CUTSCENE_DEPTH+2).setOrigin(0.5, 0.5);
     let lover = PhaserScene.add.image(gameConsts.halfWidth, 150, 'ending', 'ending2_a.png').setAlpha(0).setScale(0.4).setDepth(CUTSCENE_DEPTH+3).setOrigin(0.5, 0.1);
@@ -487,6 +621,40 @@ function tweenRandomBanshee(image, x, y, scale) {
     })
 }
 
-function showCutscene3() {
-    readyShowCutsceneLogic();
+function playFinalScene() {
+    globalObjects.menuBack.setAlpha(1).setScale(1.3).setVisible(true).setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 80);
+    globalObjects.menuTop.setAlpha(1).setScale(1.3).setVisible(true).setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 80);
+    PhaserScene.tweens.add({
+        targets: [globalObjects.menuBack, globalObjects.menuTop],
+        y: gameConsts.halfHeight,
+        scaleX: 0.91,
+        scaleY: 0.91,
+        duration: 850,
+        ease: 'Quart.easeOut',
+        onComplete: () => {
+
+        }
+    })
+}
+
+function cleanupCutscene() {
+    if (!globalObjects.cutsceneBarTop) {
+        globalObjects.cutsceneBack = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(CUTSCENE_DEPTH + 2).setScale(500);
+        globalObjects.cutsceneBarTop = PhaserScene.add.image(gameConsts.halfWidth, 0, 'blackPixel').setDepth(CUTSCENE_DEPTH + 1).setOrigin(0.5, 1).setScale(500);
+        globalObjects.cutsceneBarBot = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.height, 'blackPixel').setDepth(CUTSCENE_DEPTH + 1).setOrigin(0.5, 0).setScale(500);
+    }
+    globalObjects.cutsceneBack.destroy();
+    globalObjects.cutsceneBarTop.destroy();
+    globalObjects.cutsceneBarBot.destroy();
+    delete globalObjects.cutsceneBarTop;
+    delete globalObjects.cutsceneBarBot;
+    delete globalObjects.cutsceneBack;
+    if (globalObjects.cutsceneBG1) {
+        globalObjects.cutsceneBG1.destroy();
+        delete globalObjects.cutsceneBG1;
+    }
+    if (globalObjects.cutsceneBG2) {
+        globalObjects.cutsceneBG2.destroy();
+        delete globalObjects.cutsceneBG2;
+    }
 }

@@ -2228,8 +2228,8 @@ class SpellManager {
                 this.scene.tweens.add({
                     targets: blackBall,
                     duration: 530,
-                    scaleX: 1.44 + i * 0.03,
-                    scaleY: 1.44 + i * 0.03,
+                    scaleX: 1.47 + i * 0.03,
+                    scaleY: 1.47 + i * 0.03,
                     ease: 'Quint.easeIn',
                 });
                 this.scene.tweens.add({
@@ -2242,7 +2242,7 @@ class SpellManager {
                         blackBalls.push(blackBall);
                         let fades = [];
                         if (i == 2) {
-                            let healPerTick = Math.ceil((globalObjects.player.getHealthMax() - globalObjects.player.getHealth()) / 3);
+                            let healPerTick = Math.ceil((globalObjects.player.getHealthMax() - globalObjects.player.getHealth()) * multiplier / 3);
                             let whiteBall = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'whiteCircle.png').setDepth(99).setScale(6,6).setAlpha(0.6);
                             let blackFade = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(99).setScale(500, 500).setAlpha(0);
                             fades.push(whiteBall);
@@ -2267,7 +2267,7 @@ class SpellManager {
                                     messageBus.publish("selfHeal", healPerTick);
                                     PhaserScene.time.delayedCall(750, () => {
                                         messageBus.publish("selfHeal", healPerTick);
-                                        let newMaxHealth = Math.ceil(globalObjects.player.getHealthMax() - 10);
+                                        let newMaxHealth = Math.ceil(globalObjects.player.getHealthMax() - (10 * multiplier));
                                         globalObjects.player.setHealth(newMaxHealth);
                                         globalObjects.player.setHealthMaxTemp(newMaxHealth);
                                         for (let i = 0; i < blackBalls.length; i++) {

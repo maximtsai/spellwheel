@@ -682,7 +682,14 @@ function locketFlash() {
     } else {
         globalObjects.gameLocketOpen.scaleY = 0.95;
     }
-    globalObjects.gameLocketOpen.x = (gameConsts.halfWidth - scaleDiff * 400) * 0.2 + globalObjects.gameLocketOpen.x * 0.8;
+    let locketGoalX = (gameConsts.halfWidth - scaleDiff * 400) * 0.2 + globalObjects.gameLocketOpen.x * 0.8;
+    if (globalObjects.gameLocketOpen.shakey) {
+        globalObjects.gameLocketOpen.x = locketGoalX * 0.2 + globalObjects.gameLocketOpen.x * 0.8 + (Math.random() - 0.5) * 2.5 ;
+        globalObjects.gameLocketOpen.y = globalObjects.gameLocketOpen.origY * 0.2 + globalObjects.gameLocketOpen.y * 0.8 + (Math.random() - 0.5);
+    } else {
+        globalObjects.gameLocketOpen.x = locketGoalX;
+    }
+
     globalObjects.gameLocketOpen.rotation = (-scaleDiff + goalY * 0.5) * 0.05 + globalObjects.gameLocketOpen.rotation * 0.95;
     globalObjects.gameLocketOpenLight.rotation = globalObjects.gameLocketOpen.rotation;
     globalObjects.gameLocketOpenLight.alpha = -globalObjects.gameLocketOpenLight.rotation * 12 - 0.1 - goalY * 1.18;

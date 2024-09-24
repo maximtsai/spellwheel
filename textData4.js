@@ -723,7 +723,7 @@ let textData4 = {
         "jp": ""
     },
     "death3_talk2": {
-        "en_us": "Tell her what your heart yearns to say.",
+        "en_us": "Speak what your heart yearns to say.",
         "fr": "Dis-lui ce que ton cœur désire dire.",
         "zh_tw": "說出你心裡渴望說的話。",
         "zh_cn": "说出你心里渴望说的话。",
@@ -732,8 +732,8 @@ let textData4 = {
         "jp": ""
     },
     "death3_say": {
-        "en_us": "Treasure this ephemeral moment.",
-        "fr": "Chérissez ce moment éphémère.",
+        "en_us": "Treasure this moment.",
+        "fr": "Chérissez ce moment.",
         "zh_tw": "珍惜這短暫的時刻。",
         "zh_cn": "珍惜这短暂的时刻。",
         "ru": "",
@@ -751,7 +751,7 @@ let textData4 = {
     },
 
     "reunite_beloved": {
-        "en_us": "Reunite with beloved",
+        "en_us": "Reunite with your beloved",
         "fr": "Retrouvailles avec l'être aimé",
         "zh_tw": "與心愛的人重逢",
         "zh_cn": "与挚爱重聚",
@@ -761,8 +761,8 @@ let textData4 = {
     },
 
     "put_away_locket": {
-        "en_us": "Put Away Locket",
-        "fr": "Rangez Le Médaillon",
+        "en_us": "Put Away Memories",
+        "fr": "Range ces souvenirs dans ton cœur.",
         "zh_tw": "收起心鎖",
         "zh_cn": "收起心锁",
         "ru": "",

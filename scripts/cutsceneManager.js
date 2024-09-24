@@ -245,7 +245,7 @@ function showCutscene3() {
     PhaserScene.tweens.add({
         targets: globalObjects.cutsceneBack,
         alpha: 1,
-        duration: 3000,
+        duration: 3800,
         onComplete: () => {
             if (globalObjects.currentEnemy) {
                 globalObjects.currentEnemy.destroy();
@@ -263,18 +263,18 @@ function showCutscene3() {
             globalObjects.bannerTextManager.setOnFinishFunc(() => {
                 promptText.currAnim.stop();
                 promptText.destroy();
-                let bgMusic = playMusic('death3_harp', 0.63, true);
+                let bgMusic = playMusic('death3_harp', 0.65, true);
                 playSound('flip1');
 
-                globalObjects.cutsceneBarTop.y = -278;
+                globalObjects.cutsceneBarTop.y = gameConsts.halfHeight - 318;
                 globalObjects.cutsceneBarBot.y = gameConsts.halfHeight + 278;
-                globalObjects.cutsceneBarTop.alpha = 0;
+                globalObjects.cutsceneBarTop.alpha = 1;
                 let cutsceneBG2 = setCutscene2('ending_3b.png');
                 cutsceneBG2.alpha = 0;
                 let cutsceneBG1 = setCutscene1('ending_3a.png');
                 cutsceneBG1.alpha = 0;
-                cutsceneBG1.setRotation(0.12).setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 30).setScale(1.1);
-                cutsceneBG2.setRotation(0.12).setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 30).setScale(1.1);
+                cutsceneBG1.setRotation(0.12).setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 30).setScale(1.1);
+                cutsceneBG2.setRotation(0.12).setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 30).setScale(1.1);
                 PhaserScene.tweens.add({
                     targets: cutsceneBG1,
                     alpha: 1,
@@ -284,14 +284,20 @@ function showCutscene3() {
                     targets: [cutsceneBG1, cutsceneBG2],
                     rotation: 0,
                     duration: 12000,
-                    scaleX: 0.95,
-                    scaleY: 0.95,
+                    y: "-=50",
+                    scaleX: 0.96,
+                    scaleY: 0.97,
+                    ease: 'Quart.easeInOut'
+                });
+                PhaserScene.tweens.add({
+                    targets: globalObjects.cutsceneBarTop,
+                    y: "-=50",
                     ease: 'Quart.easeInOut'
                 });
 
                 setTimeout(() => {
                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 58, 0);
-                    globalObjects.bannerTextManager.setDialog([getLangText('death3_talk'), getLangText('death3_say'), getLangText('death3_talk2'), getLangText('death3_letgo')]);
+                    globalObjects.bannerTextManager.setDialog([getLangText('death3_talk'), getLangText('death3_talk2'), getLangText('death3_say'), getLangText('death3_letgo')]);
                     globalObjects.bannerTextManager.setDialogFunc([() => {
                         globalObjects.bannerTextManager.setForcePause(true);
                         setTimeout(() => {
@@ -336,7 +342,10 @@ function showCutscene3() {
                         })
                         PhaserScene.tweens.add({
                             targets: cutsceneBG2,
+                            scaleX: 0.95,
+                            scaleY: 0.96,
                             alpha: 1,
+                            ease: 'Cubic.easeInOut',
                             duration: 1490,
                             onComplete: () => {
                                 if (globalObjects.cutsceneBack.currAnim) {
@@ -348,7 +357,7 @@ function showCutscene3() {
                                         duration: 500,
                                     });
                                 }
-                                fadeAwaySound(bgMusic, 4500, 'Quad.easeIn');
+                                fadeAwaySound(bgMusic, 5000, 'Quad.easeIn');
                                 let whiteBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setDepth(CUTSCENE_DEPTH + 2).setScale(500);
                                 whiteBG.setAlpha(0);
 
@@ -663,21 +672,27 @@ function playFinalScene() {
 function showFinalLocket() {
     let darkBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(CUTSCENE_DEPTH+1).setScale(500).setAlpha(0);
     globalObjects.gameLocketOpen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.height + 180, 'misc', 'locket3.png').setScale(0.8).setDepth(CUTSCENE_DEPTH+1);
+    globalObjects.gameLocketOpen.origY = gameConsts.halfHeight - 50;
     globalObjects.gameLocketOpenLight = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.height + 180, 'misc', 'locketwhite.png').setScale(0.8).setDepth(CUTSCENE_DEPTH+1).setAlpha(0);
     let closeText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 80, getLangText('put_away_locket'), {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH+1).setOrigin(0.5, 0).setAlpha(0);
-
+    let windSFX = playMusic('wind', 0.05, true);
+    windSFX.volume = 0.05;
+    windSFX.detune = -500;
+    setTimeout(() => {
+        fadeInSound(windSFX, 0.5, 2000);
+    }, 100)
     PhaserScene.tweens.add({
         targets: darkBG,
-        alpha: 0.5,
+        alpha: 0.65,
         duration: 800
     });
 
     PhaserScene.tweens.add({
         targets: [globalObjects.gameLocketOpen, globalObjects.gameLocketOpenLight],
-        y: gameConsts.halfHeight - 50,
+        y: globalObjects.gameLocketOpen.origY,
         ease: 'Quint.easeOut',
         scaleX: 1, scaleY: 1,
-        duration: 700,
+        duration: 950,
         onComplete: () => {
             updateManager.addFunction(locketFlash);
             closeText.currAnim = PhaserScene.tweens.add({
@@ -688,8 +703,8 @@ function showFinalLocket() {
                 onStart: () => {
                     globalObjects.bannerTextManager.setDialog([".", "."]);
                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height + 230, 0);
-                    globalObjects.bannerTextManager.showBanner(false);
                     globalObjects.bannerTextManager.setDialogFunc([null, () => {
+                        globalObjects.gameLocketOpen.shakey = true;
                         if (closeText.currAnim) {
                             closeText.currAnim.stop();
                         }
@@ -698,10 +713,17 @@ function showFinalLocket() {
                             alpha: 0,
                             duration: 400,
                         });
+                        globalObjects.gameLocketOpen.scaleX = 0.91;
+                        globalObjects.gameLocketOpen.currAnim = PhaserScene.tweens.add({
+                            targets: globalObjects.gameLocketOpen,
+                            scaleX: 1,
+                            scaleY: 1,
+                            duration: 400,
+                            ease: 'Cubic.easeInOut'
+                        });
                     }
                     ]);
                     globalObjects.bannerTextManager.setOnFinishFunc(() => {
-
                         updateManager.removeFunction(locketFlash);
                         globalObjects.gameLocketOpenLight.destroy();
                         if (closeText.currAnim) {
@@ -711,26 +733,47 @@ function showFinalLocket() {
                         PhaserScene.tweens.add({
                             targets: [closeText],
                             alpha: 0,
-                            duration: 180,
+                            duration: 150,
+                            completeDelay: 400,
                             onComplete: () => {
                                 closeText.destroy();
                                 darkBG.alpha = 1;
                                 darkBG.setDepth(CUTSCENE_DEPTH+3);
                                 globalObjects.menuBack.setDepth(globalObjects.menuBack.origDepth);
                                 globalObjects.menuTop.setDepth(globalObjects.menuTop.origDepth);
+                                globalObjects.gameLocketOpen.destroy();
+                                this.rollCredits();
+                                fadeAwaySound(windSFX, 350);
                             }
                         });
+                        if (globalObjects.gameLocketOpen.currAnim) {
+                            globalObjects.gameLocketOpen.currAnim.stop();
+                            delete globalObjects.gameLocketOpen.currAnim;
+                        }
+                        globalObjects.gameLocketOpen.shakey = false;
                         PhaserScene.tweens.add({
                             targets: globalObjects.gameLocketOpen,
-                            scaleX: 1.02,
-                            scaleY: 1.02,
-                            duration: 60,
+                            scaleX: 1.07,
+                            scaleY: 1.05,
+                            ease: 'Cubic.easeOut',
+                            duration: 220,
                             onComplete: () => {
-                                globalObjects.gameLocketOpen.setFrame('locket4.png');
-                                playSound('locket_close');
+                                setTimeout(() => {
+                                    globalObjects.gameLocketOpen.setFrame('locket4.png');
+                                    playSound('locket_close');
+                                }, 150)
+                                PhaserScene.tweens.add({
+                                    targets: globalObjects.gameLocketOpen,
+                                    scaleX: 0.98,
+                                    scaleY: 0.98,
+                                    easeParams: [3],
+                                    ease: 'Back.easeOut',
+                                    duration: 250,
+                                });
                             }
                         });
                     })
+                    globalObjects.bannerTextManager.showBanner(false);
                 }
             });
         }
@@ -754,3 +797,46 @@ function cleanupCutscene() {
     }
 }
 
+function rollCredits() {
+    let bgMusic = playMusic('death3_harp', 0.1);
+    fadeInSound(bgMusic, 0.8, 3000);
+    let textCredits = [
+        "Game by Maxim Tsai",
+        "Character art by Theresa Kao @mothmeatstore",
+        "Background and wheel art by Alex Volchek @love_sickening",
+        "SFX and Battle Music by Chandler G @rocad_guitar",
+        "Robot Voice and Music by @eidendalion",
+        "Special thanks to @hby, Victor Kao, and Alex Arango",
+    ];
+    let textObjects = [];
+    let textAnims = [];
+    for (let i = 0; i < textCredits.length; i++) {
+        let nextYPos = 25 + i * 35;
+        let nextText = PhaserScene.add.text(25, nextYPos, textCredits[i], {fontFamily: 'garamondmax', fontSize: 24, color: '#FFFFFF', align: 'left'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(0, 0).setAlpha(0);
+        nextText.scaleX = 0.95;
+        textObjects.push(nextText);
+        let tweenObj = PhaserScene.tweens.add({
+            delay: 1000 + i * 2800,
+            targets: nextText,
+            alpha: 1,
+            duration: 1200,
+        });
+        textAnims.push(tweenObj);
+    }
+
+    globalObjects.bannerTextManager.setDialog(["."]);
+    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height + 230, 0);
+    globalObjects.bannerTextManager.setDialogFunc([null]);
+    globalObjects.bannerTextManager.setOnFinishFunc(() => {
+        for (let i in textAnims) {
+            textAnims[i].stop();
+        }
+        PhaserScene.tweens.add({
+            targets: textObjects,
+            alpha: 1,
+            duration: 750,
+        });
+    })
+    globalObjects.bannerTextManager.showBanner(false);
+
+}

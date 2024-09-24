@@ -2429,7 +2429,7 @@ const ENABLE_KEYBOARD = true;
                  if (lastClickedDelay > 25) {
                      if (lastClickedDelay < 1000) {
                          detuneAmt = Math.floor((lastClickedDelay - 900 - Math.floor(Math.random() * 100)) * 0.5);
-                         volAmt = 1 + detuneAmt * 0.001;
+                         volAmt = 0.8 + detuneAmt * 0.001;
                      }
                      playSound('click', volAmt).detune = detuneAmt;
                      this.lastPlayedClickTime = Date.now();

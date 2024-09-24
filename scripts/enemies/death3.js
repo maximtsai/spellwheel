@@ -641,7 +641,7 @@ class Death3 extends Enemy {
                     transitionFast: true,
                     customCall: 'flip3',
                     startFunction: () => {
-                        fadeAwaySound(this.bgMusic, 3500, 'Quad.easeIn');
+                        fadeAwaySound(this.bgMusic, 4200, 'Quad.easeIn');
                         this.addTimeout(() => {
                             showCutscene3();
                         }, 500)

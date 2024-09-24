@@ -27,6 +27,15 @@ let textData3 = {
         "es": "HAGA CLIC PARA SALTAR",
         "jp": "スキップするにはクリック"
     },
+    "click_to_continue": {
+        "en_us": 'CLICK TO CONTINUE',
+        "fr": "Cliquez pour continuer",
+        "zh_tw": "點擊繼續",
+        "zh_cn": "点击继续",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "access_code": {
         "en_us": "ACCESS CODE",
         "fr": "CODE D'ACCÈS",

@@ -3,7 +3,8 @@ class Death3 extends Enemy {
         super(scene, x, y, level);
         gameVars.isDeathThree = true;
         playSound("whoosh")
-
+        globalObjects.encyclopedia.hideButton();
+        globalObjects.options.hideButton();
         this.initSprite('max_death_3_white.png', 1, 0, 0, 'deathfinal');
         this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfall.png').setDepth(-6).setScale(1, 1.03);
         this.bgtemprocks = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfallrocks.png').setDepth(-4).setScale(1,1.03);
@@ -458,6 +459,7 @@ class Death3 extends Enemy {
                     transitionFast: true,
                     customCall: 'flip2',
                     startFunction: () => {
+                        this.bgtemprocks.destroy();
                         messageBus.publish("showCombatText", getLangText('death3_c'), 15);
                     },
                     finaleFunction: () => {
@@ -492,7 +494,7 @@ class Death3 extends Enemy {
                             alpha: 0.8,
                             scaleX: 15,
                             scaleY: 15,
-                            duration: 1500,
+                            duration: 3000,
                             ease: 'Cubic.easeInOut',
                         })
                     },
@@ -533,7 +535,7 @@ class Death3 extends Enemy {
                 },
                 {
                     name: " ",
-                    chargeAmt: 350,
+                    chargeAmt: 500,
                     chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
@@ -545,7 +547,7 @@ class Death3 extends Enemy {
                 },
                 {
                     name: " ",
-                    chargeAmt: 450,
+                    chargeAmt: 300,
                     chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
@@ -557,7 +559,7 @@ class Death3 extends Enemy {
                 },
                 {
                     name: " ",
-                    chargeAmt: 400,
+                    chargeAmt: 450,
                     chargeMult: 2.5,
                     isPassive: true,
                     transitionFast: true,
@@ -615,7 +617,7 @@ class Death3 extends Enemy {
                             alpha: 0,
                             scaleX: 15,
                             scaleY: 15,
-                            duration: 1500,
+                            duration: 4500,
                             ease: 'Cubic.easeInOut',
                         })
                     },
@@ -639,8 +641,10 @@ class Death3 extends Enemy {
                     transitionFast: true,
                     customCall: 'flip3',
                     startFunction: () => {
-                        fadeAwaySound(this.bgMusic, 3000, 'Quad.easeIn');
-                        showCutscene3();
+                        fadeAwaySound(this.bgMusic, 3500, 'Quad.easeIn');
+                        this.addTimeout(() => {
+                            showCutscene3();
+                        }, 500)
                         messageBus.publish("showCombatText", getLangText('death3_once'), 15);
                     },
                 },

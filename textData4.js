@@ -579,10 +579,10 @@ let textData4 = {
         "jp": ""
     },
     "death3_c": {
-        "en_us": "First, I offer my heartfelt\nunderstanding for your anguish.",
-        "fr": "Tout d’abord, je vous offre ma sincère\ncompréhension pour votre angoisse.",
-        "zh_tw": "首先，我衷心理解你的痛苦。",
-        "zh_cn": "首先，我衷心理解你的痛苦。",
+        "en_us": "I offer my heartfelt understanding\nfor your anguish.",
+        "fr": "Je vous offre ma sincère compréhension\npour votre angoisse.",
+        "zh_tw": "我衷心理解你的痛苦。",
+        "zh_cn": "我衷心理解你的痛苦。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -660,8 +660,8 @@ let textData4 = {
         "jp": ""
     },
     "death3_letting": {
-        "en_us": "comes from moving on.",
-        "fr": "vient du fait de tourner la page.",
+        "en_us": "...lies in moving on.",
+        "fr": "...vient du fait de tourner la page.",
         "zh_tw": "在於放下過去，繼續前行。",
         "zh_cn": "在于放下过去，继续前行。",
         "ru": "",
@@ -716,17 +716,26 @@ let textData4 = {
     "death3_talk": {
         "en_us": "Talk to her.",
         "fr": "Parle-lui.",
-        "zh_tw": "對她說出你必要說的話。",
-        "zh_cn": "对她说出你必要说的话。",
+        "zh_tw": "她在這裡。",
+        "zh_cn": "她在这里。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death3_talk2": {
+        "en_us": "Tell her what your heart yearns to say.",
+        "fr": "Dis-lui ce que ton cœur désire dire.",
+        "zh_tw": "說出你心裡渴望說的話。",
+        "zh_cn": "说出你心里渴望说的话。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death3_say": {
-        "en_us": "Say what you need to say.",
-        "fr": "Dis ce que tu as à dire.",
-        "zh_tw": "說出你内心深处的話。",
-        "zh_cn": "说出你内心深处的话。",
+        "en_us": "Treasure this ephemeral moment.",
+        "fr": "Chérissez ce moment éphémère.",
+        "zh_tw": "珍惜這短暫的時刻。",
+        "zh_cn": "珍惜这短暂的时刻。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -741,14 +750,25 @@ let textData4 = {
         "jp": ""
     },
 
-    "talk_to_beloved": {
-        "en_us": "Meet your beloved.",
-        "fr": ".",
-        "zh_tw": "",
-        "zh_cn": "",
+    "reunite_beloved": {
+        "en_us": "Reunite with beloved",
+        "fr": "Retrouvailles avec l'être aimé",
+        "zh_tw": "與心愛的人重逢",
+        "zh_cn": "与挚爱重聚",
         "ru": "",
         "es": "",
         "jp": ""
+    },
+
+    "put_away_locket": {
+        "en_us": "Put Away Locket",
+        "fr": "Rangez Le Médaillon",
+        "zh_tw": "收起心鎖",
+        "zh_cn": "收起心锁",
+        "ru": "",
+        "es": "",
+        "jp": ""
+
     },
 
     "death3_warn0": {

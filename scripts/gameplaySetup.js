@@ -758,9 +758,6 @@ function showLocket() {
         } else {
             fadeOutLocketDisplay();
         }
-
-
-
     })
 }
 

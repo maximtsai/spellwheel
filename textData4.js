@@ -563,8 +563,8 @@ let textData4 = {
         "before": "\"But please, hear my last request.",
         "en_us": "Rest now, and allow me\na moment to explain things.",
         "fr": "Maintenant reposez-vous et\nlaissez-moi vous expliquer.",
-        "zh_tw": "現在休息一下，請容我稍作解釋。",
-        "zh_cn": "现在休息一下，请容我稍作解释。",
+        "zh_tw": "現在休息一下，\n請容我稍作解釋。",
+        "zh_cn": "现在休息一下，\n请容我稍作解释。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -698,8 +698,8 @@ let textData4 = {
     "death3_patience": {
         "en_us": "For your patience, perhaps I\ncould bend the rules a bit.",
         "fr": "Pour votre patience, je pourrais\npeut-être assouplir un peu les règles.",
-        "zh_tw": "鑑於您的耐心，也許我可以稍作通融。",
-        "zh_cn": "鉴于您的耐心，也许我可以稍作通融。",
+        "zh_tw": "鑑於您的耐心，\n也許我可以稍作通融。",
+        "zh_cn": "鉴于您的耐心，\n也许我可以稍作通融。",
         "ru": "",
         "es": "",
         "jp": ""

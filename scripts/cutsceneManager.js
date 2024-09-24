@@ -753,9 +753,9 @@ function showFinalLocket() {
                         globalObjects.gameLocketOpen.shakey = false;
                         PhaserScene.tweens.add({
                             targets: globalObjects.gameLocketOpen,
-                            scaleX: 1.07,
-                            scaleY: 1.05,
-                            ease: 'Cubic.easeOut',
+                            scaleX: 0.97,
+                            scaleY: 1,
+                            ease: 'Quart.easeOut',
                             duration: 220,
                             onComplete: () => {
                                 setTimeout(() => {
@@ -764,11 +764,19 @@ function showFinalLocket() {
                                 }, 150)
                                 PhaserScene.tweens.add({
                                     targets: globalObjects.gameLocketOpen,
-                                    scaleX: 0.98,
-                                    scaleY: 0.98,
-                                    easeParams: [3],
-                                    ease: 'Back.easeOut',
-                                    duration: 250,
+                                    scaleX: 0.96,
+                                    scaleY: 0.96,
+                                    ease: 'Quart.easeOut',
+                                    duration: 170,
+                                    onComplete: () => {
+                                        PhaserScene.tweens.add({
+                                            targets: globalObjects.gameLocketOpen,
+                                            scaleX: 1,
+                                            scaleY: 1,
+                                            ease: 'Quart.easeIn',
+                                            duration: 100,
+                                        });
+                                    }
                                 });
                             }
                         });
@@ -807,6 +815,7 @@ function rollCredits() {
         "SFX and Battle Music by Chandler G @rocad_guitar",
         "Robot Voice and Music by @eidendalion",
         "Special thanks to @hby, Victor Kao, and Alex Arango",
+        " \nRandom Stats:\n- Game Engine: Phaser 3\n- Sprites: ~1030\n- Audio files: 156\n- Lines of code: Approx. 40,000\n- Development time: Approx 9 months",
     ];
     let textObjects = [];
     let textAnims = [];

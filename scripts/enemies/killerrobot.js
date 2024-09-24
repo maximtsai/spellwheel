@@ -5,6 +5,8 @@
          this.shieldAdded = false;
          this.sprite.startY = y;
         this.bgMusic = playMusic('metaljpop', 0.9, false);
+         globalObjects.encyclopedia.hideButton();
+         globalObjects.options.hideButton();
 
         this.addTimeout(() => {
             this.setAsleep();
@@ -259,6 +261,8 @@
                                  playFakeBGMusic('jpop_intro', 0.9);
                                  this.addDelay(() => {
                                      this.bgMusic = playMusic('jpop', 0.9, true);
+                                     globalObjects.encyclopedia.showButton();
+                                     globalObjects.options.showButton();
                                  }, 580)
 
                                  this.sprite.setOrigin(0.5, 0.5).setPosition(this.sprite.x, spriteOrigY).setRotation(0);
@@ -546,7 +550,7 @@
          this.tunnelBG.setAlpha(0.81 + extraAlpha + this.baseBGAlpha);
          this.currBGAnim = this.addTween({
              targets: this.tunnelBG,
-             duration: 549 * durationMult,
+             duration: 550 * durationMult,
              alpha: 0.76 + this.baseBGAlpha,
              ease: 'Cubic.easeOut',
              onComplete: () => {

@@ -1785,8 +1785,8 @@ const ENABLE_KEYBOARD = true;
 
                          this.scene.tweens.add({
                              targets: this.readySprite,
-                             scaleX: useLongDelay ? 2.2 : 1.95,
-                             scaleY: useLongDelay ? 2.2 : 1.95,
+                             scaleX: useLongDelay ? 2.5 : 2,
+                             scaleY: useLongDelay ? 2.5 : 2,
                              duration: gameVars.gameManualSlowSpeed * useLongDelay ? 1200 : 600,
                              ease: 'Cubic.easeOut',
                              onComplete: () => {

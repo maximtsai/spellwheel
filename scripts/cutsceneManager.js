@@ -532,6 +532,8 @@ function showLoverApproach() {
                 onComplete: () => {
                     stopHorror = true;
                     lover.destroy();
+                    blotter.destroy();
+                    horror.destroy();
                     globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH + 4);
 
                     // ', yet no longer able to die,\nyou and your lover live the rest of\neternity without ever '
@@ -566,7 +568,7 @@ function showLoverApproach() {
                                                 duration: 1000,
                                                 onComplete: () => {
                                                     PhaserScene.tweens.add({
-                                                        delay: closeText5.text.length < 1 ? 10 : 3000,
+                                                        delay: closeText5.text.length < 1 ? 10 : 2000,
                                                         targets: closeText5,
                                                         alpha: 1,
                                                         duration: closeText5.text.length < 1 ? 500 : 1000,
@@ -576,6 +578,26 @@ function showLoverApproach() {
                                                                 targets: closeText6,
                                                                 alpha: 1,
                                                                 duration: 1000,
+                                                                onComplete: () => {
+                                                                    let clickBlocker = createGlobalClickBlocker(true);
+                                                                    clickBlocker.setOnMouseUpFunc(() => {
+                                                                        hideGlobalClickBlocker();
+                                                                        PhaserScene.tweens.add({
+                                                                            targets: [closeText, closeText2, closeText3, closeText4, closeText5, closeText6, globalObjects.cutsceneBack],
+                                                                            alpha: 0,
+                                                                            duration: 750,
+                                                                            onComplete: () => {
+                                                                                closeText.destroy();
+                                                                                closeText2.destroy();
+                                                                                closeText3.destroy();
+                                                                                closeText4.destroy();
+                                                                                closeText5.destroy();
+                                                                                closeText6.destroy();
+                                                                                gotoMainMenu();
+                                                                            }
+                                                                        });
+                                                                    });
+                                                                }
                                                             })
                                                         }
                                                     })
@@ -873,7 +895,6 @@ function rollCredits() {
                 hideGlobalClickBlocker();
                 setupCreditsReturnMainMenu(textObjects);
                 fadeAwaySound(bgMusic, 2000);
-
             });
         }, 450)
         clickBlocker.setOnMouseUpFunc(() => {});

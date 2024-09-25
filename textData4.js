@@ -840,8 +840,8 @@ let textData4 = {
     },
 
     "death3_angry2": {
-        "en_us": "YOU CAN HAVE YOUR BELOVED BACK.",
-        "fr": "JE TE RENDRAI TON BIEN-AIMÉ.",
+        "en_us": "YOU CAN HAVE\nYOUR BELOVED BACK.",
+        "fr": "JE TE RENDRAI\nTON BIEN-AIMÉ.",
         "zh_tw": "我會把你所愛的人還給你。",
         "zh_cn": "我会把你心爱的人还给你。",
         "ru": "",
@@ -849,7 +849,7 @@ let textData4 = {
         "jp": ""
     },
     "death3_angry3": {
-        "en_us": "BUT I SHALL LEAVE\nYOU TWO ALONE...",
+        "en_us": "AND I SHALL LEAVE\nYOU TWO ALONE...",
         "fr": "ET JE VOUS LAISSERAIS\nTOUS LES DEUX SEULS...",
         "zh_tw": "但我將再也不會於你們兩人見面。。。",
         "zh_cn": "但我将再也不会于你们两人见面。。。",

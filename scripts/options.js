@@ -56,6 +56,13 @@ class Options {
         globalObjects.encyclopedia.hideButton();
         globalObjects.options.hideButton();
         playSound('flip2')
+        if (this.hidingAnim1) {
+            this.hidingAnim1.stop();
+        }
+        if (this.hidingAnim2) {
+            this.hidingAnim2.stop();
+        }
+
         if (!this.darkenBG) {
             this.darkenBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(this.baseDepth);
             this.darkenBG.setScale(500, 500).setAlpha(0.4);
@@ -348,7 +355,10 @@ class Options {
              targets: this.bgPage,
              alpha: 1,
              ease: 'Cubic.easeOut',
-             duration: 1,
+             duration: 0.5,
+            onComplete: () => {
+                 this.canClose = true;
+            }
         });
         messageBus.publish('pauseGame', 0.002);
 
@@ -1336,17 +1346,21 @@ class Options {
     }
 
     hideOptions() {
+        if (!this.canClose) {
+            return;
+        }
+        this.canClose = false;
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
         messageBus.publish('unpauseGame');
         hideGlobalClickBlocker();
-        PhaserScene.tweens.add({
+        this.hidingAnim1 = PhaserScene.tweens.add({
              targets: this.listOfThingsToHide,
              alpha: 0,
              ease: 'Cubic.easeOut',
              duration: 400,
         });
-        PhaserScene.tweens.add({
+        this.hidingAnim2 = PhaserScene.tweens.add({
             targets: this.listOfThingsToHideSemiAlpha,
             alpha: 0,
             ease: 'Cubic.easeOut',

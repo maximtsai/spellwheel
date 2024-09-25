@@ -51,6 +51,9 @@ class Encyclopedia {
     showEncyclopedia() {
         globalObjects.encyclopedia.hideButton();
         globalObjects.options.hideButton();
+        if (this.hidingAnim1) {
+            this.hidingAnim1.stop();
+        }
         if (!this.darkenBG) {
             this.darkenBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(this.baseDepth - 1);
             this.darkenBG.setScale(500, 500);
@@ -135,7 +138,10 @@ class Encyclopedia {
             targets: this.listOfThingsToHide,
             alpha: 1,
             ease: 'Cubic.easeOut',
-            duration: 1,
+            duration: 0.5,
+            onComplete: () => {
+                this.canClose = true;
+            }
         });
 
         this.raiseTab(1);
@@ -602,12 +608,17 @@ class Encyclopedia {
     }
 
     hideEncyclopedia() {
+        if (!this.canClose) {
+            return;
+        }
+        this.canClose = false;
+
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
         messageBus.publish('unpauseGame');
         hideGlobalClickBlocker();
         this.darkenBG.setAlpha(0);
-        PhaserScene.tweens.add({
+        this.hidingAnim1 = PhaserScene.tweens.add({
              targets: this.listOfThingsToHide,
              alpha: 0,
              ease: 'Cubic.easeOut',

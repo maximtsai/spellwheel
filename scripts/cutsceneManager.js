@@ -75,10 +75,15 @@ function showCutscene1() {
         alpha: 1,
         duration: 1500,
         onComplete: () => {
+            if (globalObjects.currentEnemy && !globalObjects.currentEnemy.isDestroyed) {
+                globalObjects.currentEnemy.destroy();
+            }
             globalObjects.cutsceneBarTop.y = gameConsts.halfHeight - 272;
             globalObjects.cutsceneBarBot.y = gameConsts.halfHeight + 272;
             globalObjects.cutsceneBarTop.alpha = 1;
             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 58, 0);
+            let bgMusic = playMusic('sleepless_long', 1);
+
             globalObjects.bannerTextManager.setDialog([getLangText('epilogue1a'), getLangText('epilogue1b'), getLangText('epilogue1c')]);
             globalObjects.bannerTextManager.setDialogFunc([null, null, () => {
                 if (globalObjects.cutSceneAnim) {
@@ -273,14 +278,14 @@ function showCutscene3() {
                 cutsceneBG2.alpha = 0;
                 let cutsceneBG1 = setCutscene1('ending_3a.png');
                 cutsceneBG1.alpha = 0;
-                cutsceneBG1.setRotation(0.12).setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 30).setScale(1.1);
-                cutsceneBG2.setRotation(0.12).setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 30).setScale(1.1);
+                cutsceneBG1.setRotation(0.09).setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 32).setScale(1.11);
+                cutsceneBG2.setRotation(0.09).setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 32).setScale(1.11);
                 PhaserScene.tweens.add({
                     targets: cutsceneBG1,
                     alpha: 1,
                     duration: 1000,
                 });
-                PhaserScene.tweens.add({
+                cutsceneBG1.currAnim = PhaserScene.tweens.add({
                     targets: [cutsceneBG1, cutsceneBG2],
                     rotation: 0,
                     duration: 12000,
@@ -331,6 +336,9 @@ function showCutscene3() {
                         }, 1500)
                     }]);
                     globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                        if (cutsceneBG1.currAnim) {
+                            cutsceneBG1.currAnim.stop();
+                        }
                         globalObjects.cutSceneLastClicked = true;
                         cutsceneBG1.setDepth(CUTSCENE_DEPTH)
                         cutsceneBG2.setDepth(CUTSCENE_DEPTH + 1).setAlpha(0).setFrame('ending_3d.png');
@@ -344,6 +352,7 @@ function showCutscene3() {
                             targets: cutsceneBG2,
                             scaleX: 0.95,
                             scaleY: 0.96,
+                            rotation: 0,
                             alpha: 1,
                             ease: 'Cubic.easeInOut',
                             duration: 1490,
@@ -670,7 +679,7 @@ function playFinalScene() {
 }
 
 function showFinalLocket() {
-    let darkBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(CUTSCENE_DEPTH+1).setScale(500).setAlpha(0);
+    let darkBG = getBackgroundBlackout().setDepth(CUTSCENE_DEPTH+1).setScale(500).setAlpha(0);
     globalObjects.gameLocketOpen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.height + 180, 'misc', 'locket3.png').setScale(0.8).setDepth(CUTSCENE_DEPTH+1);
     globalObjects.gameLocketOpen.origY = gameConsts.halfHeight - 50;
     globalObjects.gameLocketOpenLight = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.height + 180, 'misc', 'locketwhite.png').setScale(0.8).setDepth(CUTSCENE_DEPTH+1).setAlpha(0);
@@ -684,7 +693,7 @@ function showFinalLocket() {
     PhaserScene.tweens.add({
         targets: darkBG,
         alpha: 0.65,
-        duration: 800
+        duration: 750
     });
 
     PhaserScene.tweens.add({
@@ -692,7 +701,7 @@ function showFinalLocket() {
         y: globalObjects.gameLocketOpen.origY,
         ease: 'Quint.easeOut',
         scaleX: 1, scaleY: 1,
-        duration: 950,
+        duration: 850,
         onComplete: () => {
             updateManager.addFunction(locketFlash);
             closeText.currAnim = PhaserScene.tweens.add({
@@ -715,7 +724,7 @@ function showFinalLocket() {
                         });
                         globalObjects.gameLocketOpen.scaleX = 0.91;
                         globalObjects.gameLocketOpen.currAnim = PhaserScene.tweens.add({
-                            targets: globalObjects.gameLocketOpen,
+                            targets: [globalObjects.gameLocketOpen, globalObjects.gameLocketOpenLight],
                             scaleX: 1,
                             scaleY: 1,
                             duration: 400,
@@ -725,7 +734,6 @@ function showFinalLocket() {
                     ]);
                     globalObjects.bannerTextManager.setOnFinishFunc(() => {
                         updateManager.removeFunction(locketFlash);
-                        globalObjects.gameLocketOpenLight.destroy();
                         if (closeText.currAnim) {
                             closeText.currAnim.stop();
                             delete closeText.currAnim;
@@ -750,9 +758,10 @@ function showFinalLocket() {
                             globalObjects.gameLocketOpen.currAnim.stop();
                             delete globalObjects.gameLocketOpen.currAnim;
                         }
+                        globalObjects.gameLocketOpenLight.destroy();
                         globalObjects.gameLocketOpen.shakey = false;
                         PhaserScene.tweens.add({
-                            targets: globalObjects.gameLocketOpen,
+                            targets: [globalObjects.gameLocketOpen, globalObjects.gameLocketOpenLight],
                             scaleX: 0.97,
                             scaleY: 1,
                             ease: 'Quart.easeOut',
@@ -766,6 +775,7 @@ function showFinalLocket() {
                                     targets: globalObjects.gameLocketOpen,
                                     scaleX: 0.96,
                                     scaleY: 0.96,
+                                    y: "+=12",
                                     ease: 'Quart.easeOut',
                                     duration: 170,
                                     onComplete: () => {
@@ -773,6 +783,7 @@ function showFinalLocket() {
                                             targets: globalObjects.gameLocketOpen,
                                             scaleX: 1,
                                             scaleY: 1,
+                                            y: "-=7",
                                             ease: 'Quart.easeIn',
                                             duration: 100,
                                         });
@@ -815,28 +826,38 @@ function rollCredits() {
         "SFX and Battle Music by Chandler G @rocad_guitar",
         "Robot Voice and Music by @eidendalion",
         "Special thanks to @hby, Victor Kao, and Alex Arango",
-        " \nRandom Stats:\n- Game Engine: Phaser 3\n- Sprites: ~1030\n- Audio files: 156\n- Lines of code: Approx. 40,000\n- Development time: Approx 9 months",
+        " \nRandom Stats:\n- Game Engine: Phaser 3\n- Sprites: +1000\n- Audio files: +155\n- Lines of code: Approx. 40,000\n- Development time: Approx 9 months",
     ];
     let textObjects = [];
     let textAnims = [];
+    let clickBlocker = createGlobalClickBlocker(true);
+
     for (let i = 0; i < textCredits.length; i++) {
         let nextYPos = 25 + i * 35;
         let nextText = PhaserScene.add.text(25, nextYPos, textCredits[i], {fontFamily: 'garamondmax', fontSize: 24, color: '#FFFFFF', align: 'left'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(0, 0).setAlpha(0);
         nextText.scaleX = 0.95;
         textObjects.push(nextText);
-        let tweenObj = PhaserScene.tweens.add({
+        let tweenObjData = {
             delay: 1000 + i * 2800,
             targets: nextText,
             alpha: 1,
             duration: 1200,
-        });
+        }
+        if (i == textCredits.length - 1) {
+            tweenObjData.onComplete = () => {
+                let menuText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 20, getLangText('return_menu'), {fontFamily: 'garamondmax', fontSize: 16, color: '#FFFFFF', align: 'riht'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(1, 1).setAlpha(0.6);
+                clickBlocker.setOnMouseUpFunc(() => {
+                    menuText.destroy();
+                    hideGlobalClickBlocker();
+                    setupCreditsReturnMainMenu(textObjects);
+                    fadeAwaySound(bgMusic, 2000);
+                });
+            }
+        }
+        let tweenObj = PhaserScene.tweens.add(tweenObjData);
         textAnims.push(tweenObj);
     }
-
-    globalObjects.bannerTextManager.setDialog(["."]);
-    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height + 230, 0);
-    globalObjects.bannerTextManager.setDialogFunc([null]);
-    globalObjects.bannerTextManager.setOnFinishFunc(() => {
+    clickBlocker.setOnMouseUpFunc(() => {
         for (let i in textAnims) {
             textAnims[i].stop();
         }
@@ -845,7 +866,39 @@ function rollCredits() {
             alpha: 1,
             duration: 750,
         });
-    })
-    globalObjects.bannerTextManager.showBanner(false);
+        setTimeout(() => {
+            let menuText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 20, getLangText('return_menu'), {fontFamily: 'garamondmax', fontSize: 16, color: '#FFFFFF', align: 'riht'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(1, 1).setAlpha(0.6);
+            clickBlocker.setOnMouseUpFunc(() => {
+                menuText.destroy();
+                hideGlobalClickBlocker();
+                setupCreditsReturnMainMenu(textObjects);
+                fadeAwaySound(bgMusic, 2000);
 
+            });
+        }, 450)
+        clickBlocker.setOnMouseUpFunc(() => {});
+    });
+}
+
+function setupCreditsReturnMainMenu(objectsToCleanup) {
+    let darkBG = getBackgroundBlackout();
+    PhaserScene.tweens.add({
+        delay: 250,
+        targets: darkBG,
+        alpha: 0,
+        ease: 'Cubic.easeIn',
+        duration: 1000,
+    });
+    PhaserScene.tweens.add({
+        targets: objectsToCleanup,
+        alpha: 0,
+        duration: 500,
+        onComplete: () => {
+            for (let i in objectsToCleanup) {
+                objectsToCleanup[i].destroy();
+            }
+        }
+    });
+    // globalObjects.player.revive();
+    gotoMainMenu();
 }

@@ -100,6 +100,8 @@
          this.eyeShine = this.addSprite(this.sprite.x, this.sprite.y - 57, 'enemies', 'roboteye.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth);
          this.blush = this.addSprite(this.sprite.x, this.sprite.y + 10, 'enemies', 'robot_blush.png').setAlpha(0).setScale(this.sprite.startScale * 0.8).setDepth(this.sprite.depth + 1);
 
+         this.disco = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight + 18, 'shields', 'frame0000.png').setScale(1.7).setDepth(5).play('disco');
+
          this.addTween({
              targets: this.sprite,
              duration: 2500,

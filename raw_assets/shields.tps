@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>57</uint>
+        <uint>54</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -221,6 +221,46 @@
                 <rect>95,95,190,190</rect>
                 <key>scale9Paddings</key>
                 <rect>95,95,190,190</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">shields/frame0000.png</key>
+            <key type="filename">shields/frame0001.png</key>
+            <key type="filename">shields/frame0002.png</key>
+            <key type="filename">shields/frame0003.png</key>
+            <key type="filename">shields/frame0004.png</key>
+            <key type="filename">shields/frame0005.png</key>
+            <key type="filename">shields/frame0006.png</key>
+            <key type="filename">shields/frame0007.png</key>
+            <key type="filename">shields/frame0008.png</key>
+            <key type="filename">shields/frame0009.png</key>
+            <key type="filename">shields/frame0010.png</key>
+            <key type="filename">shields/frame0011.png</key>
+            <key type="filename">shields/frame0012.png</key>
+            <key type="filename">shields/frame0013.png</key>
+            <key type="filename">shields/frame0014.png</key>
+            <key type="filename">shields/frame0015.png</key>
+            <key type="filename">shields/frame0016.png</key>
+            <key type="filename">shields/frame0017.png</key>
+            <key type="filename">shields/frame0018.png</key>
+            <key type="filename">shields/frame0019.png</key>
+            <key type="filename">shields/frame0020.png</key>
+            <key type="filename">shields/frame0021.png</key>
+            <key type="filename">shields/frame0022.png</key>
+            <key type="filename">shields/frame0023.png</key>
+            <key type="filename">shields/frame0024.png</key>
+            <key type="filename">shields/frame0025.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>188,238,375,475</rect>
+                <key>scale9Paddings</key>
+                <rect>188,238,375,475</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

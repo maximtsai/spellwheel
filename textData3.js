@@ -126,6 +126,15 @@ let textData3 = {
         "es": "Oculto",
         "jp": "ホームページ"
     },
+    "return_menu": {
+        "en_us": "RETURN TO MENU",
+        "fr": "MENU",
+        "zh_tw": "主页",
+        "zh_cn": "主页",
+        "ru": "Меню",
+        "es": "Oculto",
+        "jp": "ホームページ"
+    },
     "beginLocket1": {
         "en_us": "I'll reach you soon,\nmy beloved...",
         "fr": "Je vous rejoindrai bientôt,\nmes bien-aimés...",

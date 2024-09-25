@@ -263,13 +263,13 @@ function setupLoadingBar(scene) {
             alpha: 0,
             duration: 300,
             onComplete: () => {
-                loadObjects.loadingText.setText("START").setScale(1).setPosition(loadObjects.loadingText.x, loadObjects.loadingText.y - 20);
+                loadObjects.loadingText.setText(getLangText('start')).setScale(1).setPosition(loadObjects.loadingText.x, loadObjects.loadingText.y - 20);
                 loadObjects.loadingText.alpha = 1;
 
-                loadObjects.loadingText2 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, "START", {fontFamily: 'opensans', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+                loadObjects.loadingText2 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, getLangText('start'), {fontFamily: 'opensans', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
                 loadObjects.loadingText2.setScale(1).setAlign('center').setOrigin(0.5, 0);
 
-                loadObjects.loadingText3 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, "START", {fontFamily: 'opensans', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+                loadObjects.loadingText3 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, getLangText('start'), {fontFamily: 'opensans', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
                 loadObjects.loadingText3.setScale(1).setAlign('center').setOrigin(0.5, 0);
 
                 this.animateStart();

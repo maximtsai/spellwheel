@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>79</uint>
+        <uint>66</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -213,7 +213,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.915</double>
+                <double>0.91</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>

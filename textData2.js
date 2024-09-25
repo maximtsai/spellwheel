@@ -574,11 +574,11 @@ let textData2 = {
         "jp": "何かが私を狩っているが、私が最初にそれを\n狩ればそうではない。"
     },
     "pre_fight_8a": {
-        "en_us": "I sense something dangerous barring\nthe path up ahead.",
+        "en_us": "I sense something particularly dangerous\nblocking the path up ahead.",
         "fr": "Je sens que quelque chose de dangereux\nbarre le chemin devant moi.",
-        "zh_tw": "我感覺到有什麼危險的東西擋住了前方的道路。",
-        "zh_cn": "我感觉到有什么危险的东西挡住了前方的道路。",
-        "ru": "Я чувствую что-то опасное, преграждающее\nпуть впереди.",
+        "zh_tw": "我感覺到前方有個特別危險的敵人在擋路。",
+        "zh_cn": "我感到前方有一个特别危险的敌人在挡路。",
+        "ru": "Я чувствую что-то опасное,\nпреграждающее путь впереди.",
         "es": "Siento que algo peligroso bloquea el\ncamino que tengo por delante.",
         "jp": "前方の道を遮る危険なものを感じます。"
     },

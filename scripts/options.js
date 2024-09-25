@@ -187,8 +187,8 @@ class Options {
             this.draggerSFX;
 
             let startX = gameConsts.halfWidth + 15;
-            this.BGMIcon = PhaserScene.add.image(gameConsts.halfWidth - 200, gameConsts.halfHeight - 255, 'ui', 'music.png').setDepth(this.baseDepth);
-            this.SFXIcon = PhaserScene.add.image(gameConsts.halfWidth - 200, gameConsts.halfHeight - 180, 'ui', 'sound_full.png').setDepth(this.baseDepth);
+            this.BGMIcon = PhaserScene.add.image(gameConsts.halfWidth - 200, gameConsts.halfHeight - 260, 'ui', 'music.png').setDepth(this.baseDepth);
+            this.SFXIcon = PhaserScene.add.image(gameConsts.halfWidth - 200, gameConsts.halfHeight - 194, 'ui', 'sound_full.png').setDepth(this.baseDepth);
 
             this.sliderBGM = new Button({
                 isDraggable: true,
@@ -367,7 +367,7 @@ class Options {
     createInfoBoxPosText() {
 
         if (!this.infoBoxPosText) {
-            let startPos = gameConsts.halfHeight - 81;
+            let startPos = gameConsts.halfHeight - 95;
             this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 18, getLangText('spell_info_position'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosText);
 
@@ -542,7 +542,7 @@ class Options {
         let listOfLanguages = ['English', '简体中文', '繁体中文', 'Français'];
         let listOfLanguageCodes = ['en_us', 'zh_cn', 'zh_tw', 'fr'];
         if (!this.langSelectText) {
-            let startPos = gameConsts.halfHeight + 3;
+            let startPos = gameConsts.halfHeight - 10;
             this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 33, getLangText('language_text'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
             this.addLangTextUpdateable(this.langSelectText, 'language_text')
 
@@ -646,7 +646,7 @@ class Options {
             this.listOfThingsToHide.push(this.codeAnnounce);
             this.codeAnnounce.visible = false;
 
-            this.codeItemText = PhaserScene.add.text(gameConsts.halfWidth - 230, gameConsts.halfHeight + 57, getLangText('access_code'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth + 1);
+            this.codeItemText = PhaserScene.add.text(gameConsts.halfWidth - 230, gameConsts.halfHeight + 45, getLangText('access_code'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth + 1);
             this.listOfThingsToHideSemiAlpha.push(this.codeItemText);
 
             this.playButton = new Button({

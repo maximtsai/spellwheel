@@ -257,7 +257,7 @@ const ENABLE_KEYBOARD = true;
             this.draggedObj = null;
         }
 
-        if (dScale > 1 && dScale < 1.1) {
+        if (dScale > 0.9 && dScale < 1.14) {
             dScale = 1;
         }
         if (dScale > 1.1) {

@@ -346,7 +346,7 @@ let textData = {
     },
     "mind_strike_desc": {
         "en_us": "Deal 1 True\ndamage. Enemy\ntakes x2 damage\nfrom your next\nattack.",
-        "fr": "Inflige 1 dégât\nvéritable. L'ennemi\nsubit le double de\ndégâts lors de votre\nprochaine attaque.",
+        "fr": "Inflige 1 dégât\nvéritable. L'ennemi\nsubit x2 de dégâts\nlors de votre\nprochaine attaque.",
         "zh_tw": "造成 1 點真實傷害。\n敵人將在你下一次\n攻擊中受到 2 倍傷害。",
         "zh_cn": "造成 1 点真实伤害。\n敌人从你下一次\n攻击中受到 2 倍伤害。",
         "ru": "Наносит 1 чистый\nурон. Враг получает\nх2 урона от вашей\nследующей атаки.",
@@ -355,7 +355,7 @@ let textData = {
     },
     "mind_strike_desc_long": {
         "en_us": "Deal 1 True damage. Enemy takes\nx2 damage from your next attack.",
-        "fr": "Inflige 1 dégât véritable. L'ennemi subit le\ndouble de dégâts lors de votre prochaine attaque.",
+        "fr": "Inflige 1 dégât véritable. L'ennemi subit x2\nde dégâts lors de votre prochaine attaque.",
         "zh_tw": "造成 1 點真實傷害。\n你下一次攻擊造成 2 倍傷害。",
         "zh_cn": "造成 1 点真实伤害。\n你下一次攻击造成 2 倍伤害。",
         "ru": "Наносит 1 чистый урон. Враг получает х2 урона от вашей следующей атаки.",

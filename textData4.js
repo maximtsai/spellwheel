@@ -761,14 +761,23 @@ let textData4 = {
     },
 
     "put_away_locket": {
-        "en_us": "Put Away Memories",
+        "en_us": "Put Away Memory",
         "fr": "Range ces souvenirs dans ton cœur.",
         "zh_tw": "收起心鎖",
         "zh_cn": "收起心锁",
         "ru": "",
         "es": "",
         "jp": ""
+    },
 
+    "start": {
+        "en_us": "START",
+        "fr": "COMMENCER",
+        "zh_tw": "開始",
+        "zh_cn": "开始",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
 
     "death3_warn0": {

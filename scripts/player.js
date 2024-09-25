@@ -1183,7 +1183,7 @@ class Player {
                                 this.cheatIcons = [];
                             }
                         });
-                        deathMenuButton.addText('MENU', {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
+                        deathMenuButton.addText(getLangText('menu'), {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
                         deathMenuButton.setDepth(200);
 
                         deathTrainingButton = new Button({

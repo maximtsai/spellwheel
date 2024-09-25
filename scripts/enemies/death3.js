@@ -341,6 +341,11 @@ class Death3 extends Enemy {
                     startFunction: () => {
                         globalObjects.bannerTextManager.closeBanner();
                         messageBus.publish("showCombatText", getLangText('death3_a'), 15);
+                        // TEMPORARY
+                        fadeAwaySound(this.bgMusic, 4200, 'Quad.easeIn');
+                        this.addTimeout(() => {
+                            showCutscene3();
+                        }, 500)
                     },
                     finaleFunction: () => {
                     }
@@ -445,8 +450,6 @@ class Death3 extends Enemy {
                                 })
                             }
                         })
-
-
                     },
                     finaleFunction: () => {
                     }

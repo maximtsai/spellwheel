@@ -291,6 +291,18 @@ function createAnimations(scene) {
         frameRate: 20
     });
     scene.anims.create({
+        key: 'disco',
+        frames: scene.anims.generateFrameNames('shields', {
+            prefix: 'frame',
+            suffix: '.png',
+            start: 0,
+            end: 25,
+            zeroPad: 4,
+        }),
+        repeat: -1,
+        frameRate: 30
+    });
+    scene.anims.create({
         key: 'forceFieldHit',
         frames: scene.anims.generateFrameNames('shields', {
             prefix: 'forceField',

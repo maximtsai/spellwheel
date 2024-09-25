@@ -104,6 +104,7 @@ function clearMenuButtons() {
 function gotoMainMenu() {
     gotoMainMenuNoButtons()
     showMainMenuButtons();
+    globalObjects.magicCircle.enableMovement();
 }
 
 

@@ -159,7 +159,7 @@ function setupLoadingBar(scene) {
                     loadObjects.loadingText.setText('LOADED\nULTIMATE RUNE');
                     break;
                 case 9:
-                    loadObjects.loadingText.setText('LOADING\nPRECIOUS MEMORIES');
+                    loadObjects.loadingText.setText('RECALLING\nPRECIOUS MEMORIES');
                     break;
             }
 
@@ -170,7 +170,7 @@ function setupLoadingBar(scene) {
         onLoadComplete(scene);
 
         updateManager.addFunction(tempLoadFinFunc);
-        loadObjects.loadingText.setText('LOADING\nPRECIOUS MEMORIES');
+        loadObjects.loadingText.setText('RECALLING\nPRECIOUS MEMORIES');
         for (let i = 0; i < loadingIcons.length; i++) {
             let loadIcon = loadingIcons[i];
             scene.tweens.add({

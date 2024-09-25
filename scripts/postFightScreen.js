@@ -783,7 +783,9 @@ class PostFightScreen {
         objectsToFade = objectsToFade.concat(this.listOfCodes);
 
         this.locketMusic = playMusic('sleepless', 0.5);
-        fadeInSound(this.windSfx, 0.3, 2000);
+        if (this.windSfx) {
+            fadeInSound(this.windSfx, 0.3, 2000);
+        }
 
         this.showRuneDescBtn.setState(DISABLE);
         PhaserScene.tweens.add({

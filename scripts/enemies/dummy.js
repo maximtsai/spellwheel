@@ -282,7 +282,6 @@
             this.clearStartShadow();
 
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 272, getLangText('level1_tut_b'), 'right');
-
             messageBus.publish('setSlowMult', 0.25, 50);
             let glowBar = this.addSprite(gameConsts.halfWidth, 320, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             this.addTween({
@@ -354,6 +353,21 @@
         }
     }
 
+
+    tryInitTutorial5() {
+        if (!this.dead && !this.isAsleep && !this.shownTut5) {
+            this.shownTut5 = true;
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, 272, getLangText('level1_tut_c'), 'right');
+            this.addTimeout(() => {
+                let spellListener = messageBus.subscribe('spellClicked', () => {
+                    spellListener.unsubscribe();
+                    this.addTimeout(() => {
+                        globalObjects.textPopupManager.hideInfoText();
+                    }, 1200);
+                });
+            }, 1500);
+        }
+    }
 
      setHealth(newHealth) {
          super.setHealth(newHealth);

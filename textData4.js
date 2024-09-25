@@ -851,8 +851,8 @@ let textData4 = {
     "death3_angry3": {
         "en_us": "AND I SHALL LEAVE\nYOU TWO ALONE...",
         "fr": "ET JE VOUS LAISSERAIS\nTOUS LES DEUX SEULS...",
-        "zh_tw": "但我將再也不會於你們兩人見面。。。",
-        "zh_cn": "但我将再也不会于你们两人见面。。。",
+        "zh_tw": "但我將再也不會於\n你們兩人見面。。。",
+        "zh_cn": "但我将再也不会于\n你们两人见面。。。",
         "ru": "",
         "es": "",
         "jp": ""

@@ -341,11 +341,6 @@ class Death3 extends Enemy {
                     startFunction: () => {
                         globalObjects.bannerTextManager.closeBanner();
                         messageBus.publish("showCombatText", getLangText('death3_a'), 15);
-                        // TEMPORARY
-                        fadeAwaySound(this.bgMusic, 4200, 'Quad.easeIn');
-                        this.addTimeout(() => {
-                            showCutscene3();
-                        }, 500)
                     },
                     finaleFunction: () => {
                     }
@@ -771,14 +766,14 @@ class Death3 extends Enemy {
                     targets: [this.hood],
                     alpha: 0,
                     ease: 'Quad.easeIn',
-                    duration: 2000,
-                    completeDelay: 500,
+                    duration: 2500,
+                    completeDelay: 800,
                     onComplete: () => {
                         playSound('sound_of_death').setSeek(0.25);
                         this.showDeathHead();
                         this.addDelay(() => {
                             showCutscene2();
-                        }, 600)
+                        }, 550)
                     }
                 })
             }
@@ -867,7 +862,7 @@ class Death3 extends Enemy {
                 this.addTween({
                     targets: deathHead,
                     ease: 'Quart.easeOut',
-                    duration: 80,
+                    duration: 70,
                     scaleX: "-=0.015",
                     scaleY: "-=0.025",
                     onComplete: () => {
@@ -881,7 +876,7 @@ class Death3 extends Enemy {
                                 this.addTween({
                                     targets: deathHead,
                                     ease: 'Quart.easeOut',
-                                    duration: 80,
+                                    duration: 70,
                                     scaleX: "-=0.015",
                                     scaleY: "-=0.025",
                                     onComplete: () => {
@@ -894,7 +889,7 @@ class Death3 extends Enemy {
                                                 this.addTween({
                                                     targets: deathHead,
                                                     ease: 'Quart.easeOut',
-                                                    duration: 80,
+                                                    duration: 70,
                                                     scaleX: "-=0.015",
                                                     scaleY: "-=0.025",
                                                     onComplete: () => {
@@ -908,7 +903,7 @@ class Death3 extends Enemy {
                                                                     this.addTween({
                                                                     targets: deathHead,
                                                                     ease: 'Quart.easeOut',
-                                                                    duration: 100,
+                                                                    duration: 90,
                                                                     scaleX: "-=0.015",
                                                                     scaleY: "-=0.03",
                                                                     onComplete: () => {

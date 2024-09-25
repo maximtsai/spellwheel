@@ -140,8 +140,8 @@ let textData = {
     "time_strike_desc": {
         "en_us": "Attack twice.\nFirst attack deals\n6 damage, second\nattack deals 50%\nof first.",
         "fr": "Attaque deux fois.\nLa première attaque\ninflige 6 dégâts,\nla seconde inflige\n50% des dégâts de\nla première.",
-        "zh_tw": "攻擊兩次。第一次\n攻擊造成 6 點傷害，\n第二次攻擊造成第一次\n傷害的 50%。",
-        "zh_cn": "攻击两次。第一次\n攻击造成 6 点伤害，\n第二次攻击造成第一次\n伤害的 50%。",
+        "zh_tw": "攻擊兩次。第一次\n造成 6 點傷害，\n第二次造成第一次\n攻擊傷害的 50%。",
+        "zh_cn": "攻击两次。第一次\n造成 6 点伤害，\n第二次造成第一次\n攻擊伤害的 50%。",
         "ru": "Атакуйте дважды.\nПервая атака\nнаносит 6 урона,\nвторая — 50% от\nпервой.",
         "es": "Ataca dos veces.\nEl primer ataque\ninflige 6 de daño,\nel segundo ataque\ninflige el 50%\ndel primero.",
         "jp": "2回攻撃する。最初の\n攻撃は6ダメージを与え、\n2回目の攻撃は最初の\n攻撃の50%を与えます。"
@@ -149,8 +149,8 @@ let textData = {
     "time_strike_desc_long": {
         "en_us": "Attack twice. First attack deals 6 damage,\nsecond attack deals 50% of first.",
         "fr": "Attaque deux fois. La première attaque inflige 6 dégâts,\nla seconde inflige 50% des dégâts de la première.",
-        "zh_tw": "攻擊兩次。第一次攻擊造成 6 點傷害，\n第二次攻擊造成第一次傷害的 50%。",
-        "zh_cn": "攻击两次。第一次攻击造成 6 点伤害，\n第二次攻击造成第一次伤害的 50%。",
+        "zh_tw": "攻擊兩次。第一次造成 6 點傷害，\n第二次造成第一次攻擊傷害的 50%。",
+        "zh_cn": "攻击两次。第一次造成 6 点伤害，\n第二次造成第一次攻擊伤害的 50%。",
         "ru": "Атакуйте дважды. Первая атака\nнаносит 6 урона, вторая — 50% от первой.",
         "es": "Ataca dos veces. El primer ataque inflige 6 de\ndaño, el segundo ataque inflige el 50% del primero.",
         "jp": "2回攻撃する。最初の攻撃は6ダメージを与え、\n2回目の攻撃は最初の攻撃の50%を与えます。"

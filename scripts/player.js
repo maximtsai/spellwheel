@@ -36,15 +36,8 @@ class Player {
 
         ];
         updateManager.addFunction(this.update.bind(this));
-        // Handles weird phaser initial lag issue. TODO: replace with something else later
-        this.bleedObj = this.scene.add.image(x, y, 'pixels', 'red_pixel.png');
-        this.bleedObj.alpha = 0.001;
-        this.scene.tweens.add({
-            targets: this.bleedObj,
-            duration: 1,
-            scaleX: 1000,
-            scaleY: 1000,
-        });
+        // Handles weird phaser initial lag issue.
+        this.bleedObj = this.scene.add.image(x, y, 'pixels', 'red_pixel.png').setAlpha(0).setScale(1000);
     }
 
     initStats(x, y) {

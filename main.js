@@ -1,5 +1,5 @@
 let isMobile = testMobile();
-let gameVersion = "version 1.28";
+let gameVersion = "version 2.0";
 let config = {
     type: Phaser.AUTO,
     scale: {
@@ -34,7 +34,6 @@ let config = {
 };
 
 function testMobile() {
-    return true;
   const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
   return regex.test(navigator.userAgent);
 }

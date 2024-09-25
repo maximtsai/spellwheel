@@ -1607,7 +1607,7 @@
              targets: this.sprite,
              rotation: -0.2,
              ease: "Cubic.easeIn",
-             duration: 250,
+             duration: 300,
              onComplete: () => {
                  this.setDefaultSprite('robot_dead_left.png', this.sprite.scaleX, true);
                  this.sprite.y = this.sprite.startY;
@@ -1616,7 +1616,7 @@
                      targets: this.sprite,
                      y: "+=125",
                      ease: "Cubic.easeIn",
-                     duration: 800,
+                     duration: 950,
                      onComplete: () => {
                          playSound('clunk');
                          this.addTween({
@@ -1624,7 +1624,7 @@
                              y: "-=30",
                              rotation: "+=0.3",
                              ease: "Cubic.easeOut",
-                             duration: 500,
+                             duration: 600,
                              onComplete: () => {
                                  this.setDefaultSprite('robot_dead_right.png', this.sprite.scaleX, true);
                                  this.sprite.setRotation(-0.3);
@@ -1633,7 +1633,7 @@
                                      y: "+=30",
                                      rotation: "+=0.3",
                                      ease: "Cubic.easeIn",
-                                     duration: 400,
+                                     duration: 450,
                                      onComplete: () => {
                                          playSound('clunk2');
                                          this.setDefaultSprite('robot_dead.png', this.sprite.scaleX, true);
@@ -1643,13 +1643,13 @@
                                              y: "-=5",
                                              rotation: "-=0.3",
                                              ease: "Cubic.easeOut",
-                                             duration: 150,
+                                             duration: 200,
                                              onComplete: () => {
                                                  this.addTween({
                                                      targets: this.sprite,
                                                      y: "+=5",
                                                      ease: "Cubic.easeIn",
-                                                     duration: 150,
+                                                     duration: 200,
                                                      onComplete: () => {
                                                          this.sprite.setRotation(0);
                                                          playSound('clunk2');
@@ -1668,7 +1668,7 @@
                                                                      this.showVictory(rune);
                                                                  }
                                                              });
-                                                         }, 500)
+                                                         }, 3000)
 
                                                      }
                                                  });

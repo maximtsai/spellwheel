@@ -31,23 +31,31 @@ function setCutscene2(name) {
     return globalObjects.cutsceneBG2;
 }
 
-function tryRunCutscene1End() {
+function tryRunCutscene1End(bgMusic) {
+    if (globalObjects.cutSceneAnim) {
+        globalObjects.cutSceneAnim.stop();
+        delete globalObjects.cutSceneAnim;
+    }
     if (globalObjects.cutSceneLastClicked && globalObjects.cutSceneLastTweened && !globalObjects.isCutsceneLastRunning) {
         globalObjects.isCutsceneLastRunning = true;
         let cutsceneBG2 = setCutscene2('ending_1_blue.png');
         cutsceneBG2.setScale(0.78).setAlpha(0).setDepth(CUTSCENE_DEPTH + 1);
-        PhaserScene.time.delayedCall(1000, () => {
+        PhaserScene.time.delayedCall(800, () => {
             globalObjects.bannerTextManager.setDialog([getLangText('epilogue1d'), getLangText('epilogue1e')]);
             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 58, 0);
             globalObjects.bannerTextManager.showBanner(false);
             globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                fadeAwaySound(bgMusic, 3400, 'Quad.easeIn');
+                globalObjects.cutSceneLastClicked = false;
+                globalObjects.cutSceneLastTweened = false;
+                globalObjects.isCutsceneLastRunning = false;
                 PhaserScene.tweens.add({
                     targets: globalObjects.cutsceneBack,
                     alpha: 1,
                     ease: 'Quad.easeInOut',
                     duration: 2500,
                     onComplete: () => {
-
+                        rollCredits();
                     }
                 });
             });
@@ -101,7 +109,7 @@ function showCutscene1() {
                             ease: globalObjects.cutSceneAnim.totalProgress > 0.45 ? 'Cubic.easeOut' : 'Cubic.easeInOut',
                             onComplete: () => {
                                 globalObjects.cutSceneLastTweened = true;
-                                tryRunCutscene1End();
+                                tryRunCutscene1End(bgMusic);
                             }
                         });
                     }
@@ -109,7 +117,7 @@ function showCutscene1() {
             }]);
             globalObjects.bannerTextManager.setOnFinishFunc(() => {
                 globalObjects.cutSceneLastClicked = true;
-                tryRunCutscene1End();
+                tryRunCutscene1End(bgMusic);
             })
             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 58, 0);
             globalObjects.bannerTextManager.showBanner(false);
@@ -133,7 +141,7 @@ function showCutscene1() {
                         ease: 'Cubic.easeInOut',
                         onComplete: () => {
                             globalObjects.cutSceneLastTweened = true;
-                            tryRunCutscene1End();
+                            tryRunCutscene1End(bgMusic);
                         }
                     });
                 }
@@ -594,6 +602,14 @@ function showLoverApproach() {
                                                                                 closeText5.destroy();
                                                                                 closeText6.destroy();
                                                                                 gotoMainMenu();
+                                                                                let darkBG = getBackgroundBlackout();
+                                                                                PhaserScene.tweens.add({
+                                                                                    delay: 250,
+                                                                                    targets: [darkBG],
+                                                                                    alpha: 0,
+                                                                                    ease: 'Cubic.easeIn',
+                                                                                    duration: 1000,
+                                                                                });
                                                                             }
                                                                         });
                                                                     });
@@ -822,12 +838,22 @@ function showFinalLocket() {
 }
 
 function cleanupCutscene() {
-    globalObjects.cutsceneBack.destroy();
-    globalObjects.cutsceneBarTop.destroy();
-    globalObjects.cutsceneBarBot.destroy();
-    delete globalObjects.cutsceneBarTop;
-    delete globalObjects.cutsceneBarBot;
-    delete globalObjects.cutsceneBack;
+    if (globalObjects.cutsceneBack) {
+        PhaserScene.tweens.add({
+            targets: [globalObjects.cutsceneBack],
+            alpha: 0,
+            duration: 750,
+            onComplete: () => {
+                globalObjects.cutsceneBack.destroy();
+                delete globalObjects.cutsceneBack;
+            }
+        });
+        globalObjects.cutsceneBarTop.destroy();
+        globalObjects.cutsceneBarBot.destroy();
+        delete globalObjects.cutsceneBarTop;
+        delete globalObjects.cutsceneBarBot;
+    }
+
     if (globalObjects.cutsceneBG1) {
         globalObjects.cutsceneBG1.destroy();
         delete globalObjects.cutsceneBG1;
@@ -854,13 +880,14 @@ function rollCredits() {
     let textAnims = [];
     let clickBlocker = createGlobalClickBlocker(true);
 
+
     for (let i = 0; i < textCredits.length; i++) {
         let nextYPos = 25 + i * 35;
         let nextText = PhaserScene.add.text(25, nextYPos, textCredits[i], {fontFamily: 'garamondmax', fontSize: 24, color: '#FFFFFF', align: 'left'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(0, 0).setAlpha(0);
         nextText.scaleX = 0.95;
         textObjects.push(nextText);
         let tweenObjData = {
-            delay: 1000 + i * 2800,
+            delay: 100 + i * 2800,
             targets: nextText,
             alpha: 1,
             duration: 1200,
@@ -870,6 +897,7 @@ function rollCredits() {
                 let menuText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 20, getLangText('return_menu'), {fontFamily: 'garamondmax', fontSize: 16, color: '#FFFFFF', align: 'riht'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(1, 1).setAlpha(0.6);
                 clickBlocker.setOnMouseUpFunc(() => {
                     menuText.destroy();
+                    cleanupCutscene()
                     hideGlobalClickBlocker();
                     setupCreditsReturnMainMenu(textObjects);
                     fadeAwaySound(bgMusic, 2000);
@@ -892,6 +920,7 @@ function rollCredits() {
             let menuText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 20, getLangText('return_menu'), {fontFamily: 'garamondmax', fontSize: 16, color: '#FFFFFF', align: 'riht'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(1, 1).setAlpha(0.6);
             clickBlocker.setOnMouseUpFunc(() => {
                 menuText.destroy();
+                cleanupCutscene()
                 hideGlobalClickBlocker();
                 setupCreditsReturnMainMenu(textObjects);
                 fadeAwaySound(bgMusic, 2000);
@@ -905,7 +934,7 @@ function setupCreditsReturnMainMenu(objectsToCleanup) {
     let darkBG = getBackgroundBlackout();
     PhaserScene.tweens.add({
         delay: 250,
-        targets: darkBG,
+        targets: [darkBG],
         alpha: 0,
         ease: 'Cubic.easeIn',
         duration: 1000,

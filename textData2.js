@@ -672,6 +672,15 @@ let textData2 = {
         "es": "¡Los enemigos\nse enfadan cuando\nson atacados!",
         "jp": "攻撃されると\n敵が怒る!"
     },
+    "level1_tut_c": {
+        "en_us": "Cast multiple\n\nfor a powerful\nattack.",
+        "fr": "Lancez plusieurs\n\npour une attaque\npuissante",
+        "zh_tw": "施放多個\n\n以進行強力攻擊。",
+        "zh_cn": "施放多个\n\n以进行强力攻击。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "level1_train_diag_a": {
         "en_us": "I've set up a training doll\nto test this new rune.",
         "fr": "Pour tester cette rune, j'ai\ninstallé un mannequin d'entraînement.",

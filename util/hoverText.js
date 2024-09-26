@@ -4,7 +4,6 @@ class InternalHoverTextManager {
         this.hoverTextList = [];
         this.lastHovered = null;
 
-        // this.hoverDisplay = new HoverDisplay();
 
         // messageBus.subscribe("pointerUp", this.onPointerUp.bind(this));
         messageBus.subscribe("pointerMove", this.onPointerMove.bind(this));

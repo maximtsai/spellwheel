@@ -772,8 +772,18 @@ class Death3 extends Enemy {
                         playSound('sound_of_death').setSeek(0.25);
                         this.showDeathHead();
                         this.addDelay(() => {
+                            let redFlash = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'red_pixel.png').setScale(500).setAlpha(0.6).setDepth(-1)
+                            this.addTween({
+                                targets: redFlash,
+                                alpha: 0,
+                                ease: 'Cubic.easeOut',
+                                duration: 400,
+                                onComplete: () => {
+                                    redFlash.destroy();
+                                }
+                            })
                             showCutscene2();
-                        }, 550)
+                        }, 680)
                     }
                 })
             }
@@ -830,26 +840,16 @@ class Death3 extends Enemy {
     }
 
     showDeathHead() {
-        let deathHead = this.addImage(this.x, this.y + 10, 'deathfinal', 'death_2_laugh.png').setScale(0.85, 0.55).setOrigin(0.5, 0.45).setAlpha(0).setDepth(-1)
+        let deathHead = this.addImage(this.x, this.y + 10, 'deathfinal', 'death_2_laugh.png').setScale(0.85, 0.5).setOrigin(0.5, 0.45).setAlpha(0).setDepth(-1)
         this.addTween({
             targets: deathHead,
             alpha: 0.6,
             ease: 'Quint.easeIn',
             duration: 500,
             scaleX: 0.9,
-            scaleY: 0.75,
+            scaleY: 0.8,
             onComplete: () => {
-                let redFlash = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'red_pixel.png').setScale(500).setAlpha(0.6).setDepth(-1)
-                this.addTween({
-                    targets: redFlash,
-                    alpha: 0,
-                    ease: 'Cubic.easeOut',
-                    duration: 400,
-                    onComplete: () => {
-                        redFlash.destroy();
-                    }
-                })
-                deathHead.setAlpha(0.9).setScale(1, 0.95)
+                deathHead.setAlpha(0.9).setScale(1, 0.9)
                 this.setAwake();
                 this.addTween({
                     targets: deathHead,

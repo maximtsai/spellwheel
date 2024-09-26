@@ -508,7 +508,7 @@ const ENABLE_KEYBOARD = true;
         this.spellElementText.setScale(0.7);
         this.spellElementText.setOrigin(1, 0.5);
         this.spellElementText.setDepth(125);
-        this.spellElementText.alpha = 0.5;
+        this.spellElementText.alpha = 0.55;
         this.spellElementText.startY = this.spellElementText.y;
         // this.spellElementSprite = this.scene.add.sprite(this.spellElementText.x, this.spellElementText.y, 'vfx', 'blank.png').setDepth(119).setOrigin(1, 0.5);
 
@@ -517,13 +517,13 @@ const ENABLE_KEYBOARD = true;
         this.spellNameText.setOrigin(0.5, 0.5);
         this.spellNameText.setDepth(125);
         this.spellNameText.startY = this.spellNameText.y;
-        this.spellNameText.alpha = 0.5;
+        this.spellNameText.alpha = 0.55;
 
         this.spellActionText = this.scene.add.bitmapText(this.x + 13, this.y - 283, 'normal', 'MATTER STRIKE', 30, 1);
         this.spellActionText.setScale(0.7);
         this.spellActionText.setOrigin(0, 0.5);
         this.spellActionText.setDepth(125);
-        this.spellActionText.alpha = 0.5;
+        this.spellActionText.alpha = 0.55;
         this.spellActionText.startY = this.spellActionText.y;
 
         this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(21).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);
@@ -538,7 +538,7 @@ const ENABLE_KEYBOARD = true;
 
         this.spellDescriptor = new HoverDisplay({
             x: gameConsts.halfWidth,
-            y: gameConsts.height - 367,
+            y: 0,
             originX: 0.485,
             originY: 1,
             depth: 200
@@ -2965,7 +2965,7 @@ const ENABLE_KEYBOARD = true;
      refreshHoverText() {
          if (gameOptions.infoBoxAlign == 'center') {
              this.spellDescriptor.setOrigin(0.48, 1);
-             this.spellDescriptor.setPosition(gameConsts.halfWidth, gameConsts.height - 366);
+             this.spellDescriptor.setPosition(gameConsts.halfWidth, isMobile ? gameConsts.height - 366 : gameConsts.height - 358);
              this.spellDescriptor.setAlign('center');
              this.spellDescriptor.setAlpha(0.9);
              this.spellElementText.y = this.spellElementText.startY;
@@ -2974,17 +2974,17 @@ const ENABLE_KEYBOARD = true;
 
          } else if (gameOptions.infoBoxAlign == "none") {
              this.spellDescriptor.setPosition(-9999, 0);
-             this.spellElementText.y = this.y - 241;
-             this.spellNameText.y = this.y - 241;
-             this.spellActionText.y = this.y - 241;
+             this.spellElementText.y = this.y - 249;
+             this.spellNameText.y = this.y - 249;
+             this.spellActionText.y = this.y - 249;
          } else if (gameOptions.infoBoxAlign == 'left') {
              this.spellDescriptor.setOrigin(0, 1);
              this.spellDescriptor.setPosition(0, gameConsts.height - 305);
              this.spellDescriptor.setAlign('left');
              this.spellDescriptor.setAlpha(0.98);
-             this.spellElementText.y = this.y - 241;
-             this.spellNameText.y = this.y - 241;
-             this.spellActionText.y = this.y - 241;
+             this.spellElementText.y = this.y - 249;
+             this.spellNameText.y = this.y - 249;
+             this.spellActionText.y = this.y - 249;
          }
      }
 }

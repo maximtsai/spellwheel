@@ -73,7 +73,7 @@ class Options {
             this.listOfThingsToHide.push(this.bgPage);
         }
 
-        this.settingsTitle = PhaserScene.add.text(gameConsts.halfWidth - 230, gameConsts.halfWidth - 190, getLangText('settings'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
+        this.settingsTitle = PhaserScene.add.text(gameConsts.halfWidth - 230, isMobile ? gameConsts.halfWidth - 193 : gameConsts.halfWidth - 206, getLangText('settings'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
         this.listOfThingsToHideSemiAlpha.push(this.settingsTitle);
         this.addLangTextUpdateable(this.settingsTitle, 'settings')
 

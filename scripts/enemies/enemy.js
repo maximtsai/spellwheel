@@ -5,6 +5,8 @@ class Enemy {
         this.initPreStats();
         this.initStats();
         this.initAttacks();
+        let extraOffset = isMobile ? 0 : -8;
+        y = y + extraOffset;
         this.resetStats(x, y);
         this.createHealthBar(x, y);
         this.createChargeBar(x);
@@ -112,7 +114,7 @@ class Enemy {
         this.healthBarLengthMax = 65 + Math.floor(Math.sqrt(this.healthMax) * 5);
         this.healthBarMax = this.scene.add.sprite(x, 16, 'blackPixel');
         this.healthBarMaxGoalScale = this.healthBarLengthMax + 3;
-        this.healthBarMax.setScale(0, isMobile ? 11 : 10);
+        this.healthBarMax.setScale(0, 11);
         this.healthBarMax.startScaleY = this.healthBarMax.scaleY;
         this.healthBarMax.setOrigin(0.5, 0.5);
         this.healthBarMax.setDepth(10);
@@ -212,17 +214,17 @@ class Enemy {
         this.chargeBarWarningBig.alpha = 0
         this.chargeBarWarningBig.setDepth(1);
 
-        this.chargeBarReady1 = this.scene.add.image(x, isMobile ? 339 : 337, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
-        this.chargeBarReady2 = this.scene.add.image(x, isMobile ? 339 : 337, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
+        this.chargeBarReady1 = this.scene.add.image(x, isMobile ? 339 : 329, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
+        this.chargeBarReady2 = this.scene.add.image(x, isMobile ? 339 : 329, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
 
-        this.chargeBarOutline = this.scene.add.image(x, isMobile ? 339 : 337, 'whitePixel');
+        this.chargeBarOutline = this.scene.add.image(x, isMobile ? 339 : 329, 'whitePixel');
         this.chargeBarOutline.setScale(chargeBarLength + 4, isMobile ? 16 : 13);
         this.chargeBarOutline.setOrigin(0.5, 0.5);
         this.chargeBarOutline.visible = false;
         this.chargeBarOutline.alpha = 0.4;
         this.chargeBarOutline.setDepth(9);
 
-        this.chargeBarMax = this.scene.add.image(x, isMobile ? 339 : 337, 'blackPixel');
+        this.chargeBarMax = this.scene.add.image(x, isMobile ? 339 : 329, 'blackPixel');
         this.chargeBarMax.setScale(chargeBarLength + 2, isMobile ? 13 : 11);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;

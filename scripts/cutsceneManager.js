@@ -195,7 +195,7 @@ function showCutscene2() {
                 globalObjects.currentEnemy.destroy();
             }
 
-            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 20, 0);
             globalObjects.bannerTextManager.setDialog([getLangText('death3_angry'), getLangText('death3_angry2'), getLangText('death3_angry3'), getLangText('death3_angry4')]);
 
             globalObjects.bannerTextManager.setDialogFunc([null, null, () => {

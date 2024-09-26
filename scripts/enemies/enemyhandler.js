@@ -2,7 +2,6 @@ function createEnemy(num) {
     if (globalObjects.currentEnemy) {
         globalObjects.currentEnemy.destroy();
     }
-    console.log("Create enemy ", num);
     switch(num) {
     case -6:
         globalObjects.currentEnemy = new SuperDummy(PhaserScene, gameConsts.halfWidth, 170, 7, true);

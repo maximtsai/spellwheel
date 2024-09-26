@@ -222,19 +222,19 @@
             zoomTemp(1.02);
             playSound('stomp', 0.6);
             this.addDelay(() => {
-                let img_me = this.addImage(gameConsts.halfWidth - 145, 360, 'deathfinal', 'x_me.png').setDepth(9999).setScale(1.16);
+                let img_me = this.addImage(gameConsts.halfWidth - 145, isMobile ? 360 : 348, 'deathfinal', 'x_me.png').setDepth(9999).setScale(1.16);
                 this.quickZoom(img_me, 1.1)
                 screenShake(5);
                 zoomTemp(1.02);
                 playSound('stomp', 0.7);
                 this.addDelay(() => {
-                    let img_your = this.addImage(gameConsts.halfWidth + 145, 360, 'deathfinal', 'x_your.png').setDepth(9999).setScale(1.16);
+                    let img_your = this.addImage(gameConsts.halfWidth + 145, isMobile ? 360 : 348, 'deathfinal', 'x_your.png').setDepth(9999).setScale(1.16);
                     this.quickZoom(img_your, 1.1)
                     screenShake(6);
                     zoomTemp(1.02);
                     playSound('stomp', 0.8);
                     this.addDelay(() => {
-                        let img_all = this.addSprite(gameConsts.halfWidth, 625, 'deathfinal', 'x_all2.png').setDepth(9999).setScale(1.22);
+                        let img_all = this.addSprite(gameConsts.halfWidth, isMobile ? 625 : 600, 'deathfinal', 'x_all2.png').setDepth(9999).setScale(1.22);
                         this.quickZoom(img_all, 1.1)
                         zoomTemp(1.1);
                         screenShakeManual(20, 0.8);
@@ -280,10 +280,10 @@
                                 }
                             })
                          }, 1800)
-                    }, 400)
-                }, 400)
-            }, 400)
-        }, 400)
+                    }, 380)
+                }, 380)
+            }, 380)
+        }, 380)
     }
 
 

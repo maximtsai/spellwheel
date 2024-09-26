@@ -690,7 +690,7 @@ let textData = {
         "en_us": "The Shield rune creates\nbarriers that protect you as\nlong as they are positioned\nbetween you and the enemy.",
         "fr": "La rune Bouclier crée des\nbarrières qui vous protègent\ntant qu’elles sont positionnées\nentre vous et l’ennemi.",
         "zh_tw": "盾牌符文會創造盾牌，\n要盾牌位於你和敵人之間，\n就可以保護你。",
-        "zh_cn": "盾牌符文会创造盾牌，\n只要盾牌位于你和敌人之间，\n就可以保护你。",
+        "zh_cn": "盾牌符文会创造盾牌，\n只要盾牌位与你和敌人之间，\n就可以保护你。",
         "ru": "Руна Щит создает барьеры, которые защищают вас, пока они находятся между вами и врагом.",
         "es": "La runa escudo crea barreras que te protegen siempre que estén colocadas entre tú y el enemigo.",
         "jp": "シールドルーンは、あなたと敵の間に配置されている限り、あなたを保護するバリアを作成します。"

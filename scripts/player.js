@@ -1282,7 +1282,7 @@ class Player {
         if (currLevel < 10) {
             cheatsDisplay.setText('CHEAT UNLOCKED\n' + cheatName);
         } else {
-            cheatsDisplay.setText('CHALLENGE UNLOCKED\n' + cheatName);
+            cheatsDisplay.setText('ACCESS UNLOCKED\n' + cheatName);
         }
         let cheatList = this.getCheatList(currLevel);
         for (let i = 0; i < 5; i++) {
@@ -1316,10 +1316,10 @@ class Player {
             "EXTRA ULTIMATE",
             "CALM ENEMIES",
             "INFINITE AMMO",
-            "LOW HEALTH",
-            "ANGRY ENEMIES",
-            "Access Code Test",
-            "Access Code Test",
+            "ACCESS DEATH LEVEL",
+            "ACCESS DEATH LEVEL 2",
+            "ACCESS DEATH LEVEL 3",
+            "ACCESS DEATH LEVEL 4",
         ];
         return list[level];
     }
@@ -1335,10 +1335,10 @@ class Player {
             ['bright_rune_unload.png', 'bright_rune_unload.png', 'bright_rune_reinforce.png', 'bright_rune_unload.png', 'bright_rune_unload.png'],
             ['bright_rune_void.png', 'bright_rune_void.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_protect.png'],
             ['bright_rune_mind.png', 'bright_rune_mind.png', 'bright_rune_mind.png', 'bright_rune_mind.png', 'bright_rune_strike.png'],
-            ['bright_rune_void.png', 'bright_rune_void.png', 'bright_rune_void.png', 'bright_rune_reinforce.png', 'bright_rune_reinforce.png'],
-            ['bright_rune_void.png', 'bright_rune_void.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_strike.png'],
-            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
-            ['bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png', 'bright_rune_matter.png'],
+            ['bright_rune_unload.png', 'bright_rune_protect.png', 'bright_rune_protect.png', 'bright_rune_protect.png', 'bright_rune_protect.png'],
+            ['bright_rune_reinforce.png', 'bright_rune_matter.png', 'bright_rune_mind.png', 'bright_rune_time.png', 'bright_rune_void.png'],
+            ['bright_rune_unload.png', 'bright_rune_unload.png', 'bright_rune_unload.png', 'bright_rune_unload.png', 'bright_rune_reinforce.png'],
+            ['bright_rune_reinforce.png', 'bright_rune_time.png', 'bright_rune_protect.png', 'bright_rune_unload.png', 'bright_rune_void.png'],
         ];
         return list[level];
     }

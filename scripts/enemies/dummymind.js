@@ -82,7 +82,7 @@
                     }
                 })
             }, 400)
-            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 38, getLangText('level1_train_popup'), 'center');
+            globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level1_train_popup'), 'center');
 
              // messageBus.publish('enemyAddShield', 500)
         });

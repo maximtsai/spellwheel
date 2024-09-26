@@ -29,7 +29,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 90 : 70;
+         this.health = gameVars.isHardMode ? 90 : 80;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
         this.attackScale = 1.25;
@@ -83,7 +83,6 @@
         globalObjects.bannerTextManager.setDialog([getLangText('level1_diag_b')]);
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
         globalObjects.bannerTextManager.showBanner(false);
-
 
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
@@ -147,7 +146,7 @@
                     })
                 }, 400)
 
-                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 38, getLangText('level1_tut_z'), 'center');
+                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level1_tut_z'), 'center');
 
                  this.addTimeout(() => {
                      this.playerSpellCastSub = messageBus.subscribe('recordSpell', (id, spellName) => {
@@ -277,12 +276,12 @@
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
-            this.timeSinceLastAttacked = -50;
+            this.timeSinceLastAttacked = -15;
             this.clearEnhancePopup();
             this.clearStartShadow();
 
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 272, getLangText('level1_tut_b'), 'right');
-            messageBus.publish('setSlowMult', 0.25, 50);
+            messageBus.publish('setSlowMult', 0.25, 15);
             let glowBar = this.addSprite(gameConsts.halfWidth, 320, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             this.addTween({
                 targets: glowBar,
@@ -357,10 +356,43 @@
     tryInitTutorial5() {
         if (!this.dead && !this.isAsleep && !this.shownTut5) {
             this.shownTut5 = true;
-            globalObjects.textPopupManager.setInfoText(gameConsts.width, 272, getLangText('level1_tut_c'), 'right');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, 262, getLangText('level1_tut_c'), 'right');
+            this.rune3 = this.addSprite(globalObjects.textPopupManager.getCenterPos() - 24, globalObjects.textPopupManager.getBoxCenterPos() + 36, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
+            this.rune4 = this.addSprite(globalObjects.textPopupManager.getCenterPos() + 24, globalObjects.textPopupManager.getBoxCenterPos() + 36, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
+            this.addTween({
+                targets: [this.rune3, this.rune4],
+                alpha: 1,
+                duration: 200,
+                completeDelay: 200,
+                onComplete: () => {
+                    this.addTween({
+                        targets: [this.rune3, this.rune4],
+                        scaleX: 1,
+                        scaleY: 1,
+                        ease: 'Quart.easeOut',
+                        duration: 500,
+                        onComplete: () => {
+                            this.addTween({
+                                targets: [this.rune3, this.rune4],
+                                scaleX: 0.82,
+                                scaleY: 0.82,
+                                ease: 'Back.easeOut',
+                                duration: 300,
+                            });
+                        }
+                    });
+                }
+            });
+
             this.addTimeout(() => {
                 let spellListener = messageBus.subscribe('spellClicked', () => {
                     spellListener.unsubscribe();
+                    this.addTween({
+                        targets: [this.rune3, this.rune4],
+                        alpha: 0,
+                        ease: 'Cubic.easeIn',
+                        duration: 1300,
+                    });
                     this.addTimeout(() => {
                         globalObjects.textPopupManager.hideInfoText();
                     }, 1200);
@@ -449,19 +481,19 @@
                                  }
                              });
 
-                             this.snort = this.addSprite(this.x - 3, this.y - 101, 'dummyenemy', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(999);
+                             this.snort = this.addSprite(this.x - 3, this.y - 71, 'dummyenemy', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(999);
                              this.destructibles.push(this.snort);
 
                              this.addTween({
                                  targets: this.snort,
                                  scaleX: this.sprite.startScale * 1.1,
                                  scaleY: this.sprite.startScale * 1.1,
-                                 duration: 400,
+                                 duration: 500,
                                  ease: 'Cubic.easeOut'
                              });
                              this.addTween({
                                  targets: this.snort,
-                                 duration: 400,
+                                 duration: 500,
                                  alpha: 0,
                                  ease: 'Quad.easeIn',
                              });
@@ -618,6 +650,63 @@
          });
      }
 
+     healAnim(amt = 25) {
+         this.currDummyAnim = this.addTween({
+             targets: this.sprite,
+             scaleX: this.sprite.startScale * 0.82,
+             scaleY: this.sprite.startScale * 0.82,
+             rotation: -0.2,
+             x: gameConsts.halfWidth - 19,
+             y: this.sprite.startY + 19,
+             ease: "Quint.easeOut",
+             duration: 600,
+             onComplete: () => {
+                 this.currDummyAnim = this.addTween({
+                     targets: this.sprite,
+                     scaleX: this.sprite.startScale * 1.2,
+                     scaleY: this.sprite.startScale * 1.2,
+                     rotation: 0.07,
+                     x: gameConsts.halfWidth + 8,
+                     y: this.sprite.startY - 15,
+                     ease: "Quart.easeIn",
+                     duration: 550,
+                     onComplete: () => {
+                         playSound('magic', 0.6);
+                         this.heal(amt);
+                         messageBus.publish('animateHealNum', this.x, this.y - 50, '+' + amt, 0.5 + Math.sqrt(this.healthMax) * 0.2);
+                         if (!this.healSprite) {
+                             this.healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(0.9).setDepth(999).setAlpha(1);
+                         }
+                         this.healSprite.setAlpha(1).setPosition(gameConsts.halfWidth, this.y - 90);
+                         this.scene.tweens.add({
+                             targets: this.healSprite,
+                             y: "-=30",
+                             duration: 1000,
+                         });
+                         this.scene.tweens.add({
+                             targets: this.healSprite,
+                             alpha: 0,
+                             duration: 1000,
+                             ease: 'Cubic.easeIn',
+                         });
+
+                         this.currDummyAnim = this.addTween({
+                             targets: this.sprite,
+                             scaleX: this.sprite.startScale,
+                             scaleY: this.sprite.startScale,
+                             rotation: 0,
+                             x: gameConsts.halfWidth,
+                             y: this.sprite.startY,
+                             easeParams: [2],
+                             ease: "Bounce.easeOut",
+                             duration: 600,
+                         })
+                     }
+                 })
+             }
+         });
+     }
+
 
      initAttacks() {
          this.attacks = [
@@ -625,29 +714,12 @@
                  // 0
                  {
                      name: "}8 ",
-                     chargeAmt: 450,
+                     chargeAmt: 400,
                      damage: 8,
-                     isBigMove: true,
-                    attackFinishFunction: () => {
-                         screenShake(3);
-                        playSound('body_slam')
-                        let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.4);
-                        this.addTimeout(() => {
-                            dmgEffect.x += 30;
-                            dmgEffect.y += 10;
-                            this.addTimeout(() => {
-                                dmgEffect.destroy();
-                            }, 150)
-                        }, 75);
-                    }
-                 },
-                 {
-                     name: "|10 ",
-                     chargeAmt: 550,
-                     damage: 10,
+
                      attackFinishFunction: () => {
-                         screenShake(4);
-                         zoomTemp(1.01)
+                         screenShake(5);
+                         zoomTemp(1.015)
                          let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.4);
                          this.addTimeout(() => {
                              dmgEffect.x += 30;
@@ -672,6 +744,44 @@
                              alpha: 0,
                              ease: 'Quad.easeIn',
                          });
+                     }
+                 },
+                 {
+                     name: "\\30",
+                     chargeAmt: 320,
+                     damage: 0,
+                     startFunction: () => {
+                         this.addTimeout(() => {
+                             this.tryInitTutorial5();
+                         }, 800);
+                     },
+                     finaleFunction: () => {
+                        this.healAnim(30);
+                     }
+                 },
+                 {
+                     name: "|12 ",
+                     chargeAmt: 400,
+                     damage: 12,
+                     isBigMove: true,
+                     attackFinishFunction: () => {
+                         screenShake(5);
+                         zoomTemp(1.015)
+                         playSound('body_slam')
+                         let dmgEffect = poolManager.getItemFromPool('brickPattern2')
+                         if (!dmgEffect) {
+                             dmgEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                         }
+                         dmgEffect.setDepth(998).setScale(0.75).setAlpha(1).setVisible(true);
+                         this.addTween({
+                             targets: dmgEffect,
+                             rotation: 1,
+                             alpha: 0,
+                             duration: 800,
+                             onComplete: () => {
+                                 poolManager.returnItemToPool(dmgEffect, 'brickPattern2');
+                             }
+                         });
                          this.addTimeout(() => {
                              globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 23, "Watch your health", 'center');
                              this.addTimeout(() => {
@@ -686,114 +796,21 @@
                      }
                  },
                  {
-                     name: ";15",
-                     chargeAmt: 850,
-                     damage: 15,
-                     isBigMove: true,
-                     attackFinishFunction: () => {
-                         playSound('body_slam')
-                         let dmgEffect = poolManager.getItemFromPool('brickPattern2')
-                         if (!dmgEffect) {
-                             dmgEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
-                         }
-                         dmgEffect.setDepth(998).setScale(0.75);
-                         this.addTween({
-                             targets: dmgEffect,
-                             rotation: 1,
-                             alpha: 0,
-                             duration: 800,
-                             onComplete: () => {
-                                 poolManager.returnItemToPool(dmgEffect, 'brickPattern2');
-                             }
-                         });
-
-
-                         this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
-                         this.addTween({
-                             targets: this.snort,
-                             scaleX: this.sprite.startScale * 1.1,
-                             scaleY: this.sprite.startScale * 1.1,
-                             duration: 400,
-                             ease: 'Cubic.easeOut'
-                         });
-                         this.addTween({
-                             targets: this.snort,
-                             duration: 400,
-                             alpha: 0,
-                             ease: 'Quad.easeIn',
-                         });
-                     }
-                 },
-                 {
-                     name: " TAKING A BREAK...",
-                     chargeAmt: 400,
+                     name: "\\30",
+                     chargeAmt: 320,
                      damage: 0,
-                     startFunction: () => {
-                         this.setDefaultSprite('dummy_w_eyes.png', 0.95);
-                     },
-                     attackFinishFunction: () => {
-                         this.setDefaultSprite('dummy_angry.png', 0.95);
+                     finaleFunction: () => {
+                         this.healAnim(30);
                      }
                  },
                  {
-                     name: "}10 ",
-                     chargeAmt: 500,
-                     damage: 10,
-                     attackFinishFunction: () => {
-                         let dmgEffect = this.addSprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.4);
-                         this.addTimeout(() => {
-                             dmgEffect.destroy();
-                         }, 150)
-                         this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
-                         this.addTween({
-                             targets: this.snort,
-                             scaleX: this.sprite.startScale * 1.1,
-                             scaleY: this.sprite.startScale * 1.1,
-                             duration: 400,
-                             ease: 'Cubic.easeOut'
-                         });
-                         this.addTween({
-                             targets: this.snort,
-                             duration: 400,
-                             alpha: 0,
-                             ease: 'Quad.easeIn',
-                         });
-                     }
-                 },
-                 {
-                     name: "}15",
-                     chargeAmt: 500,
-                     damage: 15,
-                     attackFinishFunction: () => {
-                         let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.4);
-                         this.addTimeout(() => {
-                             dmgEffect.x += 30;
-                             dmgEffect.y += 10;
-                             this.addTimeout(() => {
-                                 dmgEffect.destroy();
-                             }, 150)
-                         }, 75)
-                         this.snort.setScale(this.sprite.startScale * 0.8).setAlpha(1);
-                         this.addTween({
-                             targets: this.snort,
-                             scaleX: this.sprite.startScale * 1.1,
-                             scaleY: this.sprite.startScale * 1.1,
-                             duration: 400,
-                             ease: 'Cubic.easeOut'
-                         });
-                         this.addTween({
-                             targets: this.snort,
-                             duration: 400,
-                             alpha: 0,
-                             ease: 'Quad.easeIn',
-                         });
-                     }
-                 },
-                 {
-                     name: "ULTIMATE ATTACK }50",
+                     name: ";50",
                      chargeAmt: 800,
                      damage: 50,
+                     isBigMove: true,
                      attackFinishFunction: () => {
+                         playSound('punch');
+                         playSound('body_slam')
                          let dmgEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
                          this.addTween({
                              targets: dmgEffect,
@@ -807,12 +824,52 @@
                      }
                  },
                  {
-                     name: "GOING BACK TO SLEEP...",
-                     chargeAmt: 250,
+                     name: "\\30",
+                     chargeAmt: 320,
                      damage: 0,
+                     startFunction: () => {
+                         this.addTimeout(() => {
+                             this.tryInitTutorial5();
+                         }, 800);
+                     },
+                     finaleFunction: () => {
+                         this.healAnim(30);
+                     }
+                 },
+                 {
+                     name: "|12 ",
+                     chargeAmt: 400,
+                     damage: 12,
+                     isBigMove: true,
                      attackFinishFunction: () => {
-                         this.setSprite('dummy.png', 0.95);
-                         this.setAsleep();
+                         screenShake(5);
+                         zoomTemp(1.015)
+                         playSound('body_slam')
+                         let dmgEffect = poolManager.getItemFromPool('brickPattern2')
+                         if (!dmgEffect) {
+                             dmgEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                         }
+                         dmgEffect.setDepth(998).setScale(0.75).setAlpha(1).setVisible(true);
+                         this.addTween({
+                             targets: dmgEffect,
+                             rotation: 1,
+                             alpha: 0,
+                             duration: 800,
+                             onComplete: () => {
+                                 poolManager.returnItemToPool(dmgEffect, 'brickPattern2');
+                             }
+                         });
+                         this.addTimeout(() => {
+                             globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 23, "Watch your health", 'center');
+                             this.addTimeout(() => {
+                                 this.playerSpellCastAny = messageBus.subscribe('playerCastedSpell', () => {
+                                     this.addTimeout(() => {
+                                         globalObjects.textPopupManager.hideInfoText();
+                                     }, 1200);
+                                     this.playerSpellCastAny.unsubscribe();
+                                 });
+                             }, 1200)
+                         }, 1000)
                      }
                  },
              ]

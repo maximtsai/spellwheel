@@ -313,6 +313,7 @@ class Enemy {
         this.sprite.setDepth(1);
         this.sprite.setAlpha(0);
         this.sprite.startX = this.sprite.x;
+        this.sprite.startY = this.sprite.y;
         this.defaultSprite = name;
 
         this.initSpriteAnim(scale);
@@ -494,7 +495,7 @@ class Enemy {
 
                     } else {
                         this.chargeBarCurr.alpha = 0.47;
-                        this.attackCharge += timeChange * 0.05 * this.slowMult * chargeMult;
+                        this.attackCharge += timeChange * 0.01 * this.slowMult * chargeMult;
                     }
 
                 }

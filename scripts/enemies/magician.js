@@ -1123,7 +1123,6 @@
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
 
-
                      },
                      attackFinishFunction: () => {
                         this.numTimesHealed++;

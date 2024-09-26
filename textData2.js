@@ -495,17 +495,17 @@ let textData2 = {
     "pre_fight_1a": {
         "en_us": "\"This is my shield, mine!\n Is family treasure from\n father's brother's aunt's\n grandpa's cousin's\n friend's neighbor!!\"",
         "fr": "« Ceci est mon bouclier, le\nmien! C’est un trésor de\nfamille du frère du père,\nde la tante du grand-père,\ndu voisin de l’ami du\ncousin du grand-père!! »",
-        "zh_tw": "“這是我的盾牌，我的！\n是我爸爸的哥哥的阿姨的\n爺爺的堂兄朋友的鄰居\n的家寶！！",
-        "zh_cn": "“这是我的盾牌，我的！\n是我爸爸的哥哥的阿姨的\n爷爷的堂兄朋友的邻居\n的家宝！！",
+        "zh_tw": "“這是我的盾牌，我的！\n是我爸爸的哥哥的阿姨\n的爺爺的堂兄朋友的鄰\n居的家寶！！",
+        "zh_cn": "“这是我的盾牌，我的！\n是我爸爸的哥哥的阿姨\n的爷爷的堂兄朋友的邻\n居的家宝！！",
         "ru": "«Это мой щит, мой!  Это семейное сокровище от отца, брата, тети, дедушки, двоюродного брата, соседа друга двоюродного брата!!»",
         "es": "\"¡Este es mi escudo, el mío!  ¡¡Es un tesoro familiar del hermano del padre, la tía del abuelo, el primo del abuelo, el amigo del vecino!!\"",
         "jp": "「これは私の盾、私の盾です! 父の兄の叔母の祖父のいとこの友人の隣人からの家宝ですか!!」"
     },
     "pre_fight_1b": {
-        "en_us": "There is no time to barter,\nand I must take every\nresource I can get.",
-        "fr": "Je n’ai pas le temps de faire\ndu troc, et je dois prendre\ntoutes les ressources que\nje peux obtenir.",
-        "zh_tw": "沒有時間進行物物交換，\n我必須拿走我能得到的\n一切資源。",
-        "zh_cn": "沒有時間進行物物交換，\n我必須拿走我能得到的\n一切資源。",
+        "en_us": "I have no time to barter\nwith this creature, and I\nmust take every resource\nI can get.",
+        "fr": "Je n'ai pas le temps de\nnégocier avec ce monstre, je\ndois prendre toutes les\nressources que je peux obtenir.",
+        "zh_tw": "我沒有時間與這個怪物進\n行討價還價。我必須拿走\n一切能得到的資源。",
+        "zh_cn": "我没有时间与这个怪物进\n行讨价还价。我必須拿走\n一切能得到的資源。",
         "ru": "Нет времени на торг, и я должен использовать все ресурсы, которые я могу достать.",
         "es": "No hay tiempo para el trueque, y debo tomar todos los recursos que pueda conseguir.",
         "jp": "物々交換する時間はないし、手に入る限りの資源を奪わなければならない。"

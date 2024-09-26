@@ -78,10 +78,11 @@
 
                     this.glowCirc = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'circle_highlight_outer.png').setAlpha(0).setDepth(9999);
                     this.glowCirc.currAnim = this.addTween({
+                        delay: 200,
                         targets: [this.glowCirc],
                         alpha: 1,
                         ease: "Cubic.easeIn",
-                        duration: 1500,
+                        duration: 900,
                         onComplete: () => {
                             this.glowCirc.currAnim = this.addTween({
                                 targets: [this.glowCirc],
@@ -243,7 +244,7 @@
         this.addTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1 && !this.dead) {
                 // player only casted 1 spell so far
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 38, getLangText('level0_tut_a'));
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level0_tut_a'));
                 this.arrowRotate1 = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
                 this.arrowRotate2 = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
                 this.destructibles.push(this.arrowRotate1);
@@ -348,7 +349,7 @@
                     }
 
                 }, 800);
-                this.glowHealth = this.addSprite(gameConsts.halfWidth, 18, 'blurry', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
+                this.glowHealth = this.addSprite(gameConsts.halfWidth, 17, 'blurry', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
                 this.glowHealth2 = this.addSprite(gameConsts.halfWidth, 20, 'blurry', 'glow_flat_red.webp').setDepth(0).setAlpha(1.1).setScale(0.5, 2);
                 this.addTween({
                     targets: this.glowHealth2,
@@ -370,21 +371,21 @@
                 this.addTween({
                     targets: this.glowHealth,
                     alpha: 0.75,
-                    scaleX: 1,
+                    scaleX: 1.2,
                     ease: 'Cubic.easeInOut',
                     duration: 1500,
                     onComplete: () => {
                         this.addTween({
                             targets: this.glowHealth,
                             alpha: 0,
-                            scaleX: 0.7,
+                            scaleX: 1,
                             ease: 'Cubic.easeIn',
                             duration: 1500,
                             onComplete: () => {
                                 this.addTween({
                                     targets: this.glowHealth,
                                     alpha: 0.55,
-                                    scaleX: 0.9,
+                                    scaleX: 1.3,
                                     ease: 'Cubic.easeInOut',
                                     duration: 1500,
                                     onComplete: () => {

@@ -108,7 +108,8 @@ let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 3;
 let canResizeGame = false;
 let url1 = null;// 'crazygames';
-let url2 = null;// '1001juegos';
+let url2 = 'localhost';// 'localhost';
+let url3 = null;// '1001juegos';
 
 function preload ()
 {
@@ -124,8 +125,9 @@ function preload ()
         myScreenOrientation.lock('portrait')
     }
     if (!document.location.href.includes(url1) && !document.location.href.includes(url2)) {
-        // TODO turn on
-        // return;
+        // Stops execution of rest of game
+        console.log(document.location.href);
+        return;
     }
     canResizeGame = true;
     resizeGame();

@@ -11,7 +11,7 @@
             this.windSfx = playSound('wind', 0.01, true);
             fadeInSound(this.windSfx, 0.85, 2000);
             globalObjects.player.reInitStats();
-            globalObjects.player.recentlyTakenDamageAmt = 0;
+            globalObjects.player.resetRecentDamage();
              this.setAsleep();
             globalObjects.magicCircle.disableMovement();
             this.healthBarCurr.setFrame('yellow_pixel.png');

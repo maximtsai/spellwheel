@@ -673,7 +673,7 @@
                      onComplete: () => {
                          playSound('magic', 0.6);
                          this.heal(amt);
-                         messageBus.publish('animateHealNum', this.x, this.y - 50, '+' + amt, 0.5 + Math.sqrt(this.healthMax) * 0.2);
+                         messageBus.publish('animateHealNum', this.x, this.y, '+' + amt, 0.5 + Math.sqrt(this.healthMax) * 0.2);
                          if (!this.healSprite) {
                              this.healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(0.9).setDepth(999).setAlpha(1);
                          }
@@ -747,7 +747,7 @@
                      }
                  },
                  {
-                     name: "\\30",
+                     name: "HEAL\\30",
                      chargeAmt: 320,
                      damage: 0,
                      startFunction: () => {
@@ -796,7 +796,7 @@
                      }
                  },
                  {
-                     name: "\\30",
+                     name: "HEAL\\30",
                      chargeAmt: 320,
                      damage: 0,
                      finaleFunction: () => {

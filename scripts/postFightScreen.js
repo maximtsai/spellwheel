@@ -61,15 +61,33 @@ class PostFightScreen {
             this.newRuneDesc =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 120, '(insert rune description)', {fontFamily: 'garamondmax', fontSize: 22, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
         }
         if (!this.newRuneIcon) {
-            this.newRuneIcon =  this.scene.add.image(gameConsts.halfWidth - 59, gameConsts.halfHeight - 158, 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
-            this.showRuneDescBtn = new Button({
+            this.newRuneIcon =  this.scene.add.image(gameConsts.halfWidth - 55, gameConsts.halfHeight - 158, 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
+        }
+        if (!this.flashObj) {
+            this.flashObj = this.scene.add.image(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'blurry', 'flash.webp').setScale(0).setDepth(100002).setAlpha(0.5);
+        }
+
+        if (!this.codeText) {
+            this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 80, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 1).setDepth(100000);
+        }
+        if (!this.listOfCodes) {
+            this.listOfCodes = [];
+            for (let i = 0; i < 5; i++) {
+                let newImage = this.scene.add.sprite(gameConsts.halfWidth - 100 + i * 50, this.codeText.y + 76, 'circle', 'bright_rune_matter.png').setScale(0.92).setAlpha(0).setDepth(100000);
+                //newImage.setVisible(false);
+                this.listOfCodes.push(newImage);
+            }
+        }
+
+        if (!this.showCodeBtn) {
+            this.showCodeBtn = new Button({
                 normal: {
                     atlas: "ui",
                     ref: "more.png",
                     visible: true,
                     alpha: 0.85,
-                    x: gameConsts.halfWidth - 113,
-                    y: gameConsts.halfHeight - 157,
+                    x: gameConsts.halfWidth,
+                    y: this.codeText.y - 13,
                 },
                 hover: {
                     atlas: "ui",
@@ -97,37 +115,24 @@ class PostFightScreen {
                     }
                 },
                 onMouseUp: () => {
-                    this.showRuneDescBtn.setState(DISABLE);
+                    this.showCodeBtn.setState(DISABLE);
                     if (canvas) {
                         canvas.style.cursor = 'default';
                     }
-                    this.newRuneDesc.visible = true;
+                    for (let i = 0; i < this.listOfCodes.length; i++) {
+                        this.listOfCodes[i].visible = true;
+                    }
                     PhaserScene.tweens.add({
-                        targets: [this.newRuneDesc],
+                        targets: this.listOfCodes,
                         alpha: 1,
                         ease: 'Cubic.easeOut',
                         duration: 250,
                     });
                 }
             });
-            this.showRuneDescBtn.setDepth(100000);
-            this.showRuneDescBtn.setState(DISABLE)
+            this.showCodeBtn.setDepth(100000);
+            this.showCodeBtn.setState(DISABLE)
         }
-        if (!this.flashObj) {
-            this.flashObj = this.scene.add.image(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'blurry', 'flash.webp').setScale(0).setDepth(100002).setAlpha(0.5);
-        }
-
-        if (!this.codeText) {
-            this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 60, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 0).setDepth(100000);
-        }
-        if (!this.listOfCodes) {
-            this.listOfCodes = [];
-            for (let i = 0; i < 5; i++) {
-                let newImage = this.scene.add.sprite(gameConsts.halfWidth - 100 + i * 50, this.codeText.y + 106, 'circle', 'bright_rune_matter.png').setScale(0.92).setAlpha(0).setDepth(100000);
-                this.listOfCodes.push(newImage);
-            }
-        }
-
         if (!this.continueButton) {
             this.continueButton = new Button({
                 normal: {
@@ -403,15 +408,15 @@ class PostFightScreen {
                     alpha: 1,
                     duration: 250,
                     onComplete: () => {
-                        if (this.canShowRuneBtn) {
-                            this.showRuneDescBtn.setState(NORMAL);
+                        if (this.canShowCodeBtn) {
+                            this.showCodeBtn.setState(NORMAL);
                         }
                     }
                 });
 
                 PhaserScene.tweens.add({
                     delay: 200,
-                    targets: [this.healthLeftText, this.newRuneAnnounce],
+                    targets: [this.healthLeftText, this.newRuneAnnounce, this.newRuneDesc],
                     scaleX: 1,
                     scaleY: 1,
                     alpha: 1,
@@ -424,13 +429,6 @@ class PostFightScreen {
                     scaleY: 1,
                     alpha: 1,
                     duration: 250,
-                    onStart: () => {
-                        PhaserScene.tweens.add({
-                            targets: this.listOfCodes,
-                            alpha: 1,
-                            duration: 250,
-                        });
-                    }
                 });
                 if (isWin) {
                     if (this.locketRecentlyClicked) {
@@ -571,10 +569,10 @@ class PostFightScreen {
         this.windSfx = playSound('wind', 0.01, true);
         this.windSfx.detune = -700;
         fadeInSound(this.windSfx, 0.85, 2000);
-        this.canShowRuneBtn = true;
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
         if (level > gameVars.latestLevel) {
+            console.log("set latest level");
             gameVars.latestLevel = level;
             localStorage.setItem("latestLevel", level.toString());
         }
@@ -617,7 +615,6 @@ class PostFightScreen {
     }
 
     createWinScreenMin(level = 0) {
-        this.canShowRuneBtn = true;
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
         this.createWinScreenUIMin(level);
@@ -635,7 +632,6 @@ class PostFightScreen {
     }
 
     createWinScreenBoom(level = 0) {
-        this.canShowRuneBtn = true;
         this.createWinScreenUI(level);
         this.continueButton.setState(DISABLE);
         this.trainingButton.setState(NORMAL);
@@ -651,7 +647,6 @@ class PostFightScreen {
 
     createWinScreenUI(level = 0) {
         this.isMin = false;
-        this.canShowRuneBtn = true;
         this.isCreated = true;
         if (this.trainingRuneIcon) {
             this.trainingRuneIcon.visible = true;
@@ -661,7 +656,6 @@ class PostFightScreen {
         this.initAssets(true);
         globalObjects.magicCircle.disableMovement();
 
-        this.newRuneDesc.visible = false;
         this.newRuneDesc.alpha = 0;
         this.newRuneIcon.visible = true;
         this.gloom.alpha = 0;
@@ -675,15 +669,14 @@ class PostFightScreen {
     }
 
     setTextUI(level = gameVars.currLevel) {
+
         if (this.isMin) {
             this.titleText.setText(getLangText('post_fight_title2'));
             this.newRuneAnnounce.setText(' ');
             this.newRuneDesc.setText(' ')
             this.codeText.setText(' ');
-            for (let i in this.listOfCodes) {
-                this.listOfCodes[i].visible = false;
-            }
             this.trainingButton.setText(getLangText('post_fight_no_training'));
+            this.canShowCodeBtn = false;
         } else {
             this.titleText.setText(getLangText('post_fight_title'));
             // this.spellsCastText.setText("Spells Cast: " + globalObjects.player.getPlayerCastSpellsCount());
@@ -691,14 +684,16 @@ class PostFightScreen {
             this.newRuneDesc.setText(this.getNewRuneDesc(level));
             if (gameVars.hasCheated) {
                 this.codeText.setText(getLangText('level_code_cheat'));
-                for (let i in this.listOfCodes) {
-                    this.listOfCodes[i].visible = false;
-                }
+                this.codeText.setFontSize(20);
+                this.canShowCodeBtn = false;
             } else {
+                this.canShowCodeBtn = true;
                 this.codeText.setText(getLangText('level_code'));
+                this.codeText.setFontSize(24);
                 this.getLevelCodes(level);
             }
         }
+
         this.healthLeftText.setText(getLangText('post_fight_health') + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
         this.locketDialog.setText(this.getStoryDialog(level));
         this.titleText.setText(getLangText('post_fight_day') + level + getLangText('post_fight_day2'));
@@ -724,13 +719,11 @@ class PostFightScreen {
         ];
         for (let i in this.listOfCodes) {
             this.listOfCodes[i].setFrame(listOfCodes[level][i]);
-            this.listOfCodes[i].visible = true;
         }
     }
 
     createWinScreenUIMin(level = 0) {
         this.isMin = true;
-        this.canShowRuneBtn = false;
         this.isCreated = true;
         this.initAssets(true, true);
         globalObjects.magicCircle.disableMovement();
@@ -755,7 +748,6 @@ class PostFightScreen {
     }
 
     createLoseScreen(level) {
-        this.canShowRuneBtn = true;
         this.initAssets(false);
         this.titleText.setText("You Have Fallen");
         // healthLeftText
@@ -789,7 +781,7 @@ class PostFightScreen {
         }
         fadeInSound(this.windSfx, 0.3, 2000);
 
-        this.showRuneDescBtn.setState(DISABLE);
+        this.showCodeBtn.setState(DISABLE);
         PhaserScene.tweens.add({
             delay: 100,
             targets: [this.locketDialog, this.locketDialogImage],
@@ -821,7 +813,7 @@ class PostFightScreen {
 
     returnStatText() {
         if (!this.newRuneDesc.visible && this.trainingButton.getState() !== DISABLE) {
-            this.showRuneDescBtn.setState(NORMAL);
+            this.showCodeBtn.setState(NORMAL);
         }
         if (this.locketMusic) {
             fadeAwaySound(this.locketMusic, 3500, 'Quad.easeOut');
@@ -954,7 +946,6 @@ class PostFightScreen {
     }
 
     clearPostFightScreen(clearFog = true) {
-        this.canShowRuneBtn = false;
         if (!this.isCreated) {
             return;
         }
@@ -991,7 +982,7 @@ class PostFightScreen {
         this.continueButton.setState(DISABLE);
         this.trainingButton.setState(DISABLE);
         this.locketButton.setState(DISABLE);
-        this.showRuneDescBtn.setState(DISABLE);
+        this.showCodeBtn.setState(DISABLE);
         globalObjects.magicCircle.enableMovement();
         if (clearFog) {
             clearDeathFog();

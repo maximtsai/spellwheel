@@ -153,13 +153,13 @@ let textData4 = {
         "jp": "あなたの呪文が私に力を与える"
     },
     "deathFight2plusc": {
-        "en_us": "YOUR ATTACKS HEAL ME",
-        "fr": "TES ATTAQUES ME GUÉRIRONT",
-        "zh_tw": "你的攻擊將會使我恢復",
-        "zh_cn": "你的攻击将会使我恢复",
-        "ru": "ТВОИ АТАКИ ИСЦЕЛЯЮТ МЕНЯ",
-        "es": "TUS ATAQUES ME CURAN",
-        "jp": "あなたの攻撃が私を癒す"
+        "en_us": "I RECOVER FROM ATTACKS",
+        "fr": "JE RÉCUPÉRERAI APRÈS\nAVOIR ÉTÉ ATTAQUÉ",
+        "zh_tw": "我被攻擊後會恢復",
+        "zh_cn": "我被攻击后会恢复",
+        "ru": "Я оправлюсь после нападения",
+        "es": "Me recuperaré después\nde ser atacado.",
+        "jp": "攻撃を受けても回復する"
     },
     "deathFight2plusd": {
         "en_us": "LET'S SPEED THINGS UP",

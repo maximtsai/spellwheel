@@ -148,13 +148,14 @@
                      }, 100)
                  }, 100)
              }
-             this.sprite.rotation = -0.18;
+             this.sprite.rotation = -0.17;
              this.accumTween = this.addTween({
                  targets: this.sprite,
                  rotation: 0.03,
                  easeParams: [1.8],
                  ease: 'Back.easeIn',
-                 duration: 720 + Math.floor(this.accumulatedAnimDamage * 5.5),
+                 duration: 650 + Math.floor(this.accumulatedAnimDamage * 5.5),
+                 completeDelay: 100,
                  onComplete: () => {
                      this.isKnocked = false;
                      this.accumulatedAnimDamage = 0;

@@ -61,10 +61,14 @@ class Player {
         this.healthMax = this.trueHealthMax;
         this.health = this.healthMax;
         this.lastInjuryHealth = this.healthMax;
-        this.recentlyTakenDamageAmt = 0;
+        this.resetRecentDamage();
         this.recentlyTakenDelayedDamageAmt = 0;
         this.playerCastSpells = 0;
         this.statuses = {};
+    }
+
+    resetRecentDamage() {
+        this.recentlyTakenDamageAmt = 0;
     }
 
     getX() {
@@ -391,7 +395,7 @@ class Player {
         this.playerCastSpells = 0;
         this.timeExhaustion = 0;
         this.lastInjuryHealth = this.healthMax;
-        this.recentlyTakenDamageAmt = 0;
+        this.resetRecentDamage();
         this.recentlyTakenDelayedDamageAmt = 0;
         this.clearAllEffects();
         if (this.healthBarReady) {
@@ -521,7 +525,7 @@ class Player {
             if (this.canResetRecentDamage) {
                 this.canResetRecentDamage = false;
                 this.lastInjuryHealth = origHealth;
-                this.recentlyTakenDamageAmt = 0;
+                this.resetRecentDamage();
                 this.recentlyTakenDelayedDamageAmt = 0;
             }
 
@@ -604,7 +608,7 @@ class Player {
         this.recentlyTakenDamageAmt = this.recentlyTakenDamageAmt - healAmt;
         if (this.recentlyTakenDamageAmt < 0) {
             this.recentlyTakenDelayedDamageAmt -= Math.abs(this.recentlyTakenDamageAmt);
-            this.recentlyTakenDamageAmt = 0;
+            this.resetRecentDamage();
         }
         let overflowHeal = 0;
         if (healAmt > maxHealAmt) {
@@ -629,7 +633,7 @@ class Player {
             messageBus.publish('playerReduceDelayedDamage', overflowHeal);
         }
         setTimeout(() => {
-            this.recentlyTakenDamageAmt = 0;
+            this.resetRecentDamage();
         }, 250)
         this.refreshRecentInjuryBar(true);
     }
@@ -1276,6 +1280,9 @@ class Player {
     createCheatCode(currLevel, cheatsDisplay) {
         if (currLevel > 0 && currLevel < 13) {
             cheatsDisplay.visible = true;
+        } else {
+            cheatsDisplay.visible = false;
+            return;
         }
         cheatsDisplay.alpha = 0;
         let cheatName = this.getCheatName(currLevel);

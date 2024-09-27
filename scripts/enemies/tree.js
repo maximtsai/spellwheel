@@ -1,7 +1,7 @@
  class Tree extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
-         this.initSprite('tree.png', 0.7);// 0.7
+         this.initSprite('tree.png', 0.875);// 0.7
          this.sprite.setOrigin(0.52, 0.88); // 0.9
          this.shieldAdded = false;
          this.bgMusic = playMusic('echos_of_time', 0.9, true);
@@ -31,7 +31,7 @@
                  this.sprite.setVisible(false);
 
                  if (!this.tempOverlaySprite) {
-                     this.tempOverlaySprite = this.addSprite(this.x, this.y, 'enemies', 'tree_shock1.png').setScale(this.sprite.startScale * 3).setDepth(8);
+                     this.tempOverlaySprite = this.addSprite(this.x, this.y, 'enemies', 'tree_shock1.png').setScale(2.1).setDepth(8);
                  }
                  this.tempOverlaySprite.setFrame('tree_shock1.png').setVisible(true);
                  this.tempOverlaySprite.x = this.x + 10;
@@ -49,7 +49,7 @@
                  }
                  this.addDelay(() => {
                      this.tempOverlaySprite.setFrame('tree_shock2.png');
-                     this.tempOverlaySprite.setScale(this.sprite.startScale * 3)
+                     this.tempOverlaySprite.setScale(2.1)
                      if (this.preparingTimber) {
                          this.tempOverlaySprite.setOrigin(0.52, 0.7);
                      } else {
@@ -88,7 +88,7 @@
              }
              this.setAwake();
              let eyePosX = this.x + 130 * this.sprite.startScale;
-             let eyePosY = this.y - 84 * this.sprite.startScale;
+             let eyePosY = this.y - 68.5 * this.sprite.startScale;
 
              let tree = this.addImage(this.x, this.y, 'enemies', 'tree_open.png').setDepth(1).setOrigin(this.sprite.originX, this.sprite.originY).setScale(this.sprite.startScale).setAlpha(0);
              this.addExtraSprite(tree);
@@ -899,7 +899,7 @@
                      damage: 40,
                      isBigMove: true,
                      startFunction: () => {
-                         this.attackSlownessMult = 1.5;
+                         this.attackSlownessMult = 1.8;
 
                          if (!this.glowBG) {
                              this.glowBG = this.addImage(this.sprite.x, this.sprite.y, 'blurry', 'explod.webp').setDepth(-1).setAlpha(0.01).setScale(9).setBlendMode(Phaser.BlendModes.MULTIPLY);
@@ -977,7 +977,6 @@
                                 greenSpike.destroy();
                              }
                          });
-
                      },
                      attackFinishFunction: () => {
                          this.addTween({
@@ -1009,7 +1008,6 @@
                              duration: 800,
                              onComplete: () => {
                                  poolManager.returnItemToPool(dmgEffect, 'brickPattern2');
-
                              }
                          });
                      }
@@ -1022,6 +1020,15 @@
                      desc: "The tree is stumped",
                      chargeAmt: 600,
                      damage: 0,
+                     startFunction: () => {
+                         this.addTween({
+                             targets: this.sprite,
+                             scaleX: this.sprite.startScale,
+                             scaleY: this.sprite.startScale,
+                             duration: 2000,
+                             ease: 'Cubic.easeInOut'
+                         })
+                     }
                  },
              ],
          ];

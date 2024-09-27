@@ -840,7 +840,7 @@ function setupGame() {
 }
 
 function setupPlayer() {
-    MAGIC_CIRCLE_HEIGHT = gameConsts.height - (isMobile ? 134 : 124);
+    MAGIC_CIRCLE_HEIGHT = gameConsts.height - (isMobile ? 134 : 123);
     PhaserScene.tweens.add({
         targets: PhaserScene.cameras.main,
         zoom: 1,

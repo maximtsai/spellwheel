@@ -193,7 +193,7 @@ let textData2 = {
     },
     "level_code": {
         "en_us": "LEVEL SKIP CODE: ",
-        "fr": "CODE DE SAUT DE NIVEAU :",
+        "fr": "CODE DE NIVEAU :",
         "zh_tw": "級別跳过代码：",
         "zh_cn": "级别跳过代码： ",
         "ru": "КОД УРОВНЯ: ",
@@ -620,7 +620,7 @@ let textData2 = {
     },
     "level0_tut_b": {
         "en_us": " Defeat the =>\n enemy to win",
-        "fr": " Battez l’ennemi =>\n pour gagner",
+        "fr": " Battez l’ennemi\npour gagner =>",
         "zh_tw": " 擊敗 =>\n 敵人以贏得勝利",
         "zh_cn": " 击败 =>\n 敌人以赢得胜利",
         "ru": " Победите врага =>\n чтобы победить",
@@ -800,7 +800,7 @@ let textData2 = {
     },
     "dummy_mind_tut": {
         "en_us": "Energy Strike\nmakes your\nnext attack\nhit X2 as hard\n           +",
-        "fr": "La frappe\nénergétique rend\nvotre prochaine\nattaque deux fois\nplus forte.\n               +",
+        "fr": "La frappe\nénergétique rend\nvotre prochaine\nattaque deux fois\nplus forte.\n              +",
         "zh_tw": "你的下一次攻擊\n造成兩倍的傷害\n           +",
         "zh_cn": "你的下一次攻击\n造成双倍伤害\n           +",
         "ru": "Энергетический удар делает вашу следующую атаку в два раза сильнее.\n             +",

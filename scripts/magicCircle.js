@@ -2295,7 +2295,7 @@ const ENABLE_KEYBOARD = true;
         if (globalObjects.player.canResetRecentDamage) {
 
             globalObjects.player.canResetRecentDamage = false;
-            globalObjects.player.recentlyTakenDamageAmt = 0;
+            globalObjects.player.resetRecentDamage();
             globalObjects.player.recentlyTakenDelayedDamageAmt = 0;
             globalObjects.player.lastInjuryHealth = globalObjects.player.health;
 
@@ -2708,33 +2708,11 @@ const ENABLE_KEYBOARD = true;
         });
 
         messageBus.publish('showCircleShadow', 0.03 + duration * 0.005, -90 + duration * 20);
-        for (let i = 0; i < 5; i++) {
-            this.scene.tweens.add({
-                delay: 1500 * i,
-                targets: this.mindBurnAnim,
-                alpha: 0.5,
-                duration: 500,
-                scaleX: 0.55 + 0.05 * Math.sqrt(5 - i) + 0.05 * damageDealt,
-                scaleY: 0.55 + 0.05 * Math.sqrt(5 - i) + 0.05 * damageDealt,
-                onStart: () => {
-                    this.mindBurnAnim.alpha = 0.9;
-                    this.mindBurnAnim.setScale(0.76 + 0.05 * Math.sqrt(6 - i) + 0.05 * damageDealt);
-                    messageBus.publish('enemyTakeTrueDamage', damageDealt, false, 0, true);
-                },
-                onComplete: () => {
-                    if (i == 4) {
-                        PhaserScene.tweens.add({
-                            targets: [this.mindBurnAnim],
-                            alpha: 0,
-                            scaleX: 1,
-                            scaleY: 1,
-                            duration: 250,
-                            ease: 'Quad.easeOut'
-                        });
-                    }
-                }
-            })
+        if (this.mindBurnAnim.currAnim) {
+            this.mindBurnAnim.currAnim.stop();
         }
+        this.animateMindBurn(5, damageDealt)
+
          // effectObj = {
          //     name: effectName,
          //     duration: gameVars.gameManualSlowSpeed * duration,
@@ -2765,6 +2743,34 @@ const ENABLE_KEYBOARD = true;
          //     }
          // };
          // messageBus.publish('enemyTakeEffect', effectObj);
+     }
+
+     animateMindBurn(duration, damage) {
+         this.mindBurnAnim.setScale(0.75 + 0.052 * damage);
+         this.mindBurnAnim.alpha = 0.9;
+         messageBus.publish('enemyTakeTrueDamage', damage, false, 0, true);
+         if (duration <= 1) {
+             this.mindBurnAnim.currAnim = PhaserScene.tweens.add({
+                 targets: [this.mindBurnAnim],
+                 alpha: 0,
+                 scaleX: 1 + 0.05 * damage,
+                 scaleY: 1 + 0.05 * damage,
+                 duration: 250,
+                 ease: 'Quad.easeOut'
+             });
+         } else {
+             this.mindBurnAnim.currAnim = this.scene.tweens.add({
+                 targets: this.mindBurnAnim,
+                 alpha: 0.42,
+                 duration: 500,
+                 scaleX: 0.65 + 0.05 * damage,
+                 scaleY: 0.65 + 0.05 * damage,
+                 completeDelay: 1000,
+                 onComplete: () => {
+                     this.animateMindBurn(duration - 1, damage)
+                 }
+             });
+         }
      }
 
      applyVoidBurn(damage = 1, number = 5) {

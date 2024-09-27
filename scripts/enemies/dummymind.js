@@ -208,7 +208,7 @@
              this.addTimeout(() => {
                  let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
 
-                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 100, getLangText('dummy_mind_tut'), 'right');
+                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 110, getLangText('dummy_mind_tut'), 'right');
                  let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                  let centerXPos = globalObjects.textPopupManager.getCenterPos();
                  this.rune3 = this.addImage(centerXPos - 32, runeYPos + 26, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);

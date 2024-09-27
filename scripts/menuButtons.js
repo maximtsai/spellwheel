@@ -131,33 +131,30 @@ function gotoMainMenuNoButtons() {
 }
 
 function showMainMenuButtons() {
-    let hasContinue = false;
+    let hasContinue = gameVars.latestLevel >= 1;
 
     if (hasContinue) {
         globalObjects.continueButton = new Button({
             normal: {
-                ref: "continue_game.png",
+                ref: "menu_btn_normal.png",
                 atlas: 'buttons',
                 x: gameConsts.halfWidth,
                 y: gameConsts.halfHeight - 200,
-                alpha: 0.95
             },
             hover: {
-                ref: "continue_game_hover.png",
+                ref: "menu_btn_hover.png",
                 atlas: 'buttons',
-                alpha: 1
             },
             press: {
-                ref: "continue_game_hover.png",
+                ref: "menu_btn_hover.png",
                 atlas: 'buttons',
-                alpha: 0.8
             },
             disable: {
-                alpha: 0.001
+                alpha: 0
             },
             onMouseUp: () => {
                 clearMenuButtons();
-                beginPreLevel(1);
+                beginPreLevel(gameVars.latestLevel + 1);
             }
         });
         globalObjects.continueButton.setOrigin(0.5, 0.5);
@@ -180,7 +177,7 @@ function showMainMenuButtons() {
             atlas: 'buttons',
         },
         disable: {
-            alpha: 0.001
+            alpha: 0
         },
         onHover: () => {
             if (canvas) {

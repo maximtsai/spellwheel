@@ -403,7 +403,7 @@
                 },
                  {
                      name: "}6",
-                     chargeAmt: 500,
+                     chargeAmt: 550,
                      transitionFast: true,
                      chargeMult: 8,
                      damage: -1,

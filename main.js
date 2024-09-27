@@ -107,9 +107,9 @@ let deltaScale = 1;
 let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 3;
 let canResizeGame = false;
-let url1 = null;// 'crazygames';
+let url1 = 'itch.';// 'crazygames';
 let url2 = 'localhost';// 'localhost';
-let url3 = null;// '1001juegos';
+let url3 = 'adayofjoy';// '1001juegos';
 
 function preload ()
 {

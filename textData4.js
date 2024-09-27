@@ -427,8 +427,8 @@ let textData4 = {
     "magician_c": {
         "en_us": "You think you've won,\nbut I'm not done yet.",
         "fr": "Tu crois avoir gagné,\nmais je n’ai pas fini.",
-        "zh_tw": "你以為你贏了，但我還沒完結。",
-        "zh_cn": "你以为你赢了，但我还未完结。",
+        "zh_tw": "你以為你贏了，但我還沒被擊敗。",
+        "zh_cn": "你以为你赢了，但我还没被击败。",
         "ru": "Вы думаете, что выиграли, но я еще не закончил.",
         "es": "Crees que has ganado, pero yo aún no he terminado.",
         "jp": "あなたは勝ったと思っていますが、私はまだ終わっていません。"
@@ -436,8 +436,8 @@ let textData4 = {
     "magician_d": {
         "en_us": "Let me show you\na true temporal threat!",
         "fr": "Laisse-moi te montrer\nun vrai ennemi !",
-        "zh_tw": "讓我展示時間的威脅！",
-        "zh_cn": "让我展示时间的威胁！",
+        "zh_tw": "讓你瞧瞧時間的厲害！",
+        "zh_cn": "让你瞧瞧时间的厉害！",
         "ru": "Позвольте мне показать вам истинную временную угрозу!",
         "es": "¡Déjame mostrarte una verdadera amenaza temporal!",
         "jp": "真の時間的脅威をお見せしましょう!"

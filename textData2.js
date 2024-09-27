@@ -756,8 +756,8 @@ let textData2 = {
     "level4_train_tut_b": {
         "en_us": "Heal your last\ninjury with\n          +",
         "fr": "Soignez votre\ndernière blessure\navec\n          +",
-        "zh_tw": "治癒你最後的傷害\n           +",
-        "zh_cn": "治愈你最后的伤害\n           +",
+        "zh_tw": "治癒你最後的傷害\n            +",
+        "zh_cn": "治愈你最后的伤害\n            +",
         "ru": "Залечите последнюю\nтравму с помощью\n         +",
         "es": "Cura tu última\nherida con\n       +",
         "jp": "で最後の怪我を治す\n         +"

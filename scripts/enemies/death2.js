@@ -223,7 +223,7 @@
     }
 
     initStatsCustom() {
-        this.health = 550;
+        this.health = 555;
         this.punchCycleCount = 0;
         this.customAngry = "angrybone";
         this.firstLaugh = false;
@@ -472,7 +472,7 @@
                     chargeAmt: 550,
                     damage: 10,
                     attackTimes: 1,
-                    chargeMult: 3,
+                    chargeMult: 2,
                     prepareSprite: 'death2windup.png',
                     attackSprites: ['death2punch.png'],
                     startFunction: () => {
@@ -493,7 +493,7 @@
                 },
                 {
                     name: "|7x3",
-                    chargeAmt: this.firstLaugh ? 650 : 500,
+                    chargeAmt: this.firstLaugh ? 650 : 550,
                     damage: 7,
                     attackTimes: 3,
                     prepareSprite: ['death2windup.png', 'death2windupflip.png'],
@@ -661,7 +661,7 @@
                     chargeAmt: 600,
                     damage: 10,
                     attackTimes: 1,
-                    chargeMult: 3,
+                    chargeMult: 2,
                     prepareSprite: 'death2windup.png',
                     attackSprites: ['death2punch.png'],
                     startFunction: () => {
@@ -681,7 +681,7 @@
                 },
                 {
                     name: "|7x3+$6",
-                    chargeAmt: 550,
+                    chargeAmt: 600,
                     damage: 7,
                     attackTimes: 3,
                     prepareSprite: ['death2windup.png', 'death2windupflip.png'],

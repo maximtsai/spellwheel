@@ -417,22 +417,22 @@ let textData = {
         "jp": "受けるダメージの50%を吸収し、\n反射するシールドを作成する"
     },
     "mind_reinforce_desc": {
-        "en_us": "All damage you\ndeal is increased\nby +2",
-        "fr": "Tous les dégâts\nque vous infligez\nsont augmentés de +2",
-        "zh_tw": "你造成的所有傷害\n增加 +2",
-        "zh_cn": "你造成的所有伤害\n增加 +2",
-        "ru": "Весь наносимый\nвами урон\nувеличивается\nна +2.",
-        "es": "Todo el daño\nque infliges\naumenta en +2",
-        "jp": "与えるダメージ\nはすべて +2\n増加します"
+        "en_us": "All damage you\ndeal is increased\nby +3",
+        "fr": "Tous les dégâts\nque vous infligez\nsont augmentés de +3",
+        "zh_tw": "你造成的所有傷害\n增加 +3",
+        "zh_cn": "你造成的所有伤害\n增加 +3",
+        "ru": "Весь наносимый\nвами урон\nувеличивается\nна +3.",
+        "es": "Todo el daño\nque infliges\naumenta en +3",
+        "jp": "与えるダメージ\nはすべて +3\n増加します"
     },
     "mind_reinforce_desc_long": {
-        "en_us": "All damage you deal is increased by +2",
-        "fr": "Tous les dégâts que vous\ninfligez sont augmentés de +2",
-        "zh_tw": "你造成的所有傷害增加 +2",
-        "zh_cn": "你造成的所有伤害增加 +2",
-        "ru": "Весь наносимый вами урон увеличивается на +2.",
-        "es": "Todo el daño que infliges aumenta en +2",
-        "jp": "与えるダメージは\nすべて +2増加します"
+        "en_us": "All damage you deal is increased by +3",
+        "fr": "Tous les dégâts que vous\ninfligez sont augmentés de +3",
+        "zh_tw": "你造成的所有傷害增加 +3",
+        "zh_cn": "你造成的所有伤害增加 +3",
+        "ru": "Весь наносимый вами урон увеличивается на +3.",
+        "es": "Todo el daño que infliges aumenta en +3",
+        "jp": "与えるダメージは\nすべて +3増加します"
     },
     "mind_unload_desc": {
         "en_us": "Your next non-attack\nspell has +200%\neffectiveness",
@@ -633,7 +633,7 @@ let textData = {
         "jp": "時間をほぼ停止状態まで遅くし、簡単でストレスのない呪文を何度か唱えます。"
     },
     "void_tut_desc": {
-        "en_us": "The Void rune grants \ncontrol over the power of empty\nspace. Void spells can deal\npercentage health damage,\nnegate enemy attacks, or even\nfully heal you at a cost.",
+        "en_us": "The Void rune grants control\nover the power of empty space.\nVoid spells can deal percentage\nhealth damage, negate enemy attacks, or\neven fully heal you at a cost.",
         "fr": "La rune du Vide confère\nle contrôle du pouvoir de l’espace\nvide. Les sorts du Vide peuvent\ninfliger un pourcentage de dégâts\nde santé, annuler les attaques\nennemies ou même vous soigner\ncomplètement à un coût.",
         "zh_tw": "虛空符文賦予了對虛空\n力量的控制權。虛空法術\n可以造成一定比例的生命傷害，\n抵消敵人的攻擊，甚至可以\n付出總生命代價來完全治癒你。",
         "zh_cn": "虚空符文赋予了对虚空\n力量的控制权。虚空法术\n可以造成一定比例的生命伤害，\n抵消敌人的攻击，甚至可以\n付出总生命代价来完全治愈你。",

@@ -319,7 +319,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 450 : 400;
+         this.health = gameVars.isHardMode ? 500 : 425;
          this.criticalThreshold = 70;
          this.nextShieldHealth = gameVars.isHardMode ? 100 : 80;
          this.shieldsBroken = 0;

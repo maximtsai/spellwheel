@@ -669,7 +669,7 @@
                  // 0
                  {
                      name: "OBSERVING...",
-                     chargeAmt: 400,
+                     chargeAmt: gameVars.isHardMode ? 400 : 550,
                      finishDelay: 3000,
                      damage: 0,
                      isPassive: true,
@@ -939,7 +939,7 @@
                  //2
                  {
                      name: "OBSERVING...",
-                     chargeAmt: 400,
+                     chargeAmt: gameVars.isHardMode ? 450 : 600,
                      finishDelay: 3000,
                      damage: 0,
                      isPassive: true,

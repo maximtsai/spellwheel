@@ -360,6 +360,7 @@ function fadeInPreFightStuff(lvl, texts, introbgs) {
         onComplete: () => {
             let itemsToClear = texts.concat(introbgs);
             createLvlCloseButton(lvl, itemsToClear);
+            createMenuCloseButton(itemsToClear)
         }
     });
 }
@@ -370,7 +371,7 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose =
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
             x: gameConsts.width - 180 + offsetX,
-            y: gameConsts.height - 125 + offsetY,
+            y: gameConsts.height - 100 + offsetY,
         },
         hover: {
             ref: "menu_btn_hover.png",
@@ -381,7 +382,7 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose =
             atlas: 'buttons',
         },
         disable: {
-            alpha: 0.001
+            alpha: 0
         },
         onHover: () => {
             playSound('button_hover');
@@ -415,6 +416,9 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose =
                 }
             });
             lvlCloseButton.destroy();
+            if (globalObjects.menuCloseButton) {
+                globalObjects.menuCloseButton.destroy();
+            }
             hideGlobalClickBlocker();
             beginLevel(lvl);
         }
@@ -426,6 +430,70 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose =
     globalObjects.lvlCloseButton = lvlCloseButton;
 
     return lvlCloseButton;
+}
+
+function createMenuCloseButton(items) {
+    let menuCloseButton = new Button({
+        normal: {
+            ref: "menu_btn_normal.png",
+            atlas: 'buttons',
+            x: 180,
+            y: gameConsts.height - 100,
+        },
+        hover: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        press: {
+            ref: "menu_btn_hover.png",
+            atlas: 'buttons',
+        },
+        disable: {
+            alpha: 0
+        },
+        onHover: () => {
+            playSound('button_hover');
+            if (canvas) {
+                canvas.style.cursor = 'pointer';
+            }
+        },
+        onHoverOut: () => {
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        },
+        onMouseUp: () => {
+            playSound('button_click');
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+            PhaserScene.tweens.add({
+                targets: items,
+                alpha: 0,
+                duration: 400,
+                ease: 'Quad.easeOut',
+                y: "+=40",
+                onComplete: () => {
+                    for (let i = 0; i < items.length; i++) {
+                        items[i].destroy();
+                    }
+                }
+            });
+            menuCloseButton.destroy();
+            if (globalObjects.lvlCloseButton) {
+                globalObjects.lvlCloseButton.destroy();
+            }
+            gotoMainMenu();
+            hideGlobalClickBlocker();
+        }
+    });
+    menuCloseButton.setOrigin(0.5, 0.5);
+    menuCloseButton.addText(getLangText('menu'), {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
+    menuCloseButton.setScale(0.9);
+    menuCloseButton.setDepth(99999);
+    globalObjects.menuCloseButton = menuCloseButton;
+
+    return menuCloseButton;
 }
 
 function switchLevelBackground(lvl) {
@@ -568,7 +636,7 @@ function buildTutorialButton(icon = "rune_matter_large.png", popup) {
             alpha: 1,
         },
         disable: {
-            alpha: 0.0001
+            alpha: 0
         },
         onHover: () => {
             if (canvas) {

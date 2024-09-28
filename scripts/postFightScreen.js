@@ -67,18 +67,6 @@ class PostFightScreen {
             this.flashObj = this.scene.add.image(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'blurry', 'flash.webp').setScale(0).setDepth(100002).setAlpha(0.5);
         }
 
-        if (!this.codeText) {
-            this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 80, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 1).setDepth(100000);
-        }
-        if (!this.listOfCodes) {
-            this.listOfCodes = [];
-            for (let i = 0; i < 5; i++) {
-                let newImage = this.scene.add.sprite(gameConsts.halfWidth - 100 + i * 50, this.codeText.y + 76, 'circle', 'bright_rune_matter.png').setScale(0.92).setAlpha(0).setDepth(100000);
-                //newImage.setVisible(false);
-                this.listOfCodes.push(newImage);
-            }
-        }
-
         if (!this.showCodeBtn) {
             this.showCodeBtn = new Button({
                 normal: {
@@ -87,7 +75,7 @@ class PostFightScreen {
                     visible: true,
                     alpha: 0.85,
                     x: gameConsts.halfWidth,
-                    y: this.codeText.y - 13,
+                    y: gameConsts.halfHeight + 67,
                 },
                 hover: {
                     atlas: "ui",
@@ -132,6 +120,18 @@ class PostFightScreen {
             });
             this.showCodeBtn.setDepth(100000);
             this.showCodeBtn.setState(DISABLE)
+        }
+
+        if (!this.codeText) {
+            this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 80, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 1).setDepth(100000);
+        }
+        if (!this.listOfCodes) {
+            this.listOfCodes = [];
+            for (let i = 0; i < 5; i++) {
+                let newImage = this.scene.add.sprite(gameConsts.halfWidth - 100 + i * 50, this.codeText.y + 76, 'circle', 'bright_rune_matter.png').setScale(0.92).setAlpha(0).setDepth(100000);
+                //newImage.setVisible(false);
+                this.listOfCodes.push(newImage);
+            }
         }
         if (!this.continueButton) {
             this.continueButton = new Button({

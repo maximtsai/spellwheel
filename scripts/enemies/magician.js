@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = 110;
+         this.health = 120;
          this.damageNumOffset = 45;
          this.damageNumOffsetDefault = this.damageNumOffset;
          this.lifeOne = true;
@@ -958,8 +958,8 @@
     startChargingUltimate() {
         for (let i = 0; i < 24; i++) {
             this.addTween({
-                delay: i * 300,
-                duration: 150,
+                delay: i * 180,
+                duration: 175,
                 targets: this.sprite,
                 scaleX: this.sprite.startScale,
                 scaleY: this.sprite.startScale,
@@ -967,8 +967,11 @@
                 ease: 'Cubic.easeOut',
                 onStart: () => {
                     if (!this.finishedChargingUltimate) {
-                        this.sprite.setScale(this.sprite.startScale * 1.05);
-                        this.sprite.setRotation(0.1);
+                        if (i % 2 == 0) {
+                            this.sprite.setScale(this.sprite.startScale * 1.03);
+                            this.sprite.setRotation(0.07);
+                        }
+
                         let startX = this.x;
                         let startY = this.y;
                         let dirAngle = i * Math.PI / 12;
@@ -1001,7 +1004,7 @@
                         } else {
                             this.attackName.setText("}}}}4x" + numAttacks + "}}}}");
                             this.repositionAngrySymbol();
-                            this.nextAttack.chargeMult = 12;
+                            this.nextAttack.chargeMult = 9;
                             this.setDefaultSprite('time_magi.png');
                         }
                     }
@@ -1186,7 +1189,7 @@
                      desc: "The Time Magician\nuses his ultimate attack",
                      chargeAmt: 1300,
                      isBigMove: true,
-                     chargeMult: 5.75,
+                     chargeMult: 4,
                      damage: -1,
                     finishDelay: 4200,
 

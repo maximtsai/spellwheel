@@ -91,7 +91,7 @@ class HoverDisplay {
         this.hoverBacking.setDepth(data.depth || 9992);
 
         // this.hoverTextDisplay = PhaserScene.add.bitmapText(0, 0, 'plainBold', '', isMobile ? 19 : 18);
-        this.hoverTextDisplay = PhaserScene.add.text(0, 0, ' ', {fontFamily: 'robotomedium', fontSize: 20, color: '#FFFFBB', align: 'left'});
+        this.hoverTextDisplay = PhaserScene.add.text(0, 0, ' ', {fontFamily: 'robotomedium', fontSize: isMobile ? 20 : 19, color: '#FFFFBB', align: 'left'});
         this.hoverTextDisplay.visible = false;
         this.hoverTextDisplay.setDepth(data.depth || 9992);
 
@@ -167,14 +167,14 @@ class HoverDisplay {
             if (this.hoverTextDisplay.text.length > 80) {
                 this.hoverTextDisplay.setFontSize(18);
             } else {
-                this.hoverTextDisplay.setFontSize(20);
+                this.hoverTextDisplay.setFontSize(isMobile ? 20 : 19);
             }
         }
 
         this.hoverTextDisplay.x = this.hoverBacking.x + 3 * (1 - this.hoverBacking.originX * 2 - (this.hoverBacking.originX - 0.5) * 4);
         this.hoverTextDisplay.y = this.hoverBacking.y - this.hoverTextDisplay.height * 0.5 * (this.hoverBacking.originY * 2 - 1) - 3;
 
-        this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX + 3, (this.hoverTextDisplay.height + 6) * 0.5 * this.hoverTextDisplay.scaleY);
+        this.hoverBacking.setScale((this.hoverTextDisplay.width + 13) * 0.5 * this.hoverTextDisplay.scaleX + 3, (this.hoverTextDisplay.height + 4) * 0.5 * this.hoverTextDisplay.scaleY);
         if (text.length > 0) {
             this.setVisible(true);
         } else {
@@ -184,7 +184,7 @@ class HoverDisplay {
 
     setAlpha(val) {
         this.hoverTextDisplay.alpha = val;
-        this.hoverBacking.alpha = 0.6 * val;
+        this.hoverBacking.alpha = 0.85 * val;
     }
 
     setVisible(val) {

@@ -25,7 +25,7 @@
     }
 
      initStatsCustom() {
-        this.health = 200;
+        this.health = 225;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;

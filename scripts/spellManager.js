@@ -1745,9 +1745,9 @@ class SpellManager {
             }
         });
 
-        let buffAmt = 2;
+        let buffAmt = 3;
         if (multiplier > 1) {
-            buffAmt = 2 * multiplier;
+            buffAmt = 3 * multiplier;
         }
         let param = {
             duration: 1650,

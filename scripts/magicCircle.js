@@ -504,7 +504,7 @@ const ENABLE_KEYBOARD = true;
         this.errorBoxEmbodiment.setDepth(121);
         this.errorBoxEmbodiment.alpha = 0;
 
-        this.spellElementText = this.scene.add.bitmapText(this.x - 11, this.y - 283, 'normal', 'MATTER STRIKE', 30, 1);
+        this.spellElementText = this.scene.add.bitmapText(this.x - 11, this.y - 283, 'normal', 'MATTER', isMobile ? 30 : 28, 1);
         this.spellElementText.setScale(0.7);
         this.spellElementText.setOrigin(1, 0.5);
         this.spellElementText.setDepth(125);
@@ -512,14 +512,14 @@ const ENABLE_KEYBOARD = true;
         this.spellElementText.startY = this.spellElementText.y;
         // this.spellElementSprite = this.scene.add.sprite(this.spellElementText.x, this.spellElementText.y, 'vfx', 'blank.png').setDepth(119).setOrigin(1, 0.5);
 
-        this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 283, 'normal', '+', 30, 1);
+        this.spellNameText = this.scene.add.bitmapText(this.x + 1, this.y - 283, 'normal', '+', isMobile ? 30 : 28, 1);
         this.spellNameText.setScale(0.7);
         this.spellNameText.setOrigin(0.5, 0.5);
         this.spellNameText.setDepth(125);
         this.spellNameText.startY = this.spellNameText.y;
         this.spellNameText.alpha = 0.55;
 
-        this.spellActionText = this.scene.add.bitmapText(this.x + 13, this.y - 283, 'normal', 'MATTER STRIKE', 30, 1);
+        this.spellActionText = this.scene.add.bitmapText(this.x + 13, this.y - 283, 'normal', 'STRIKE', isMobile ? 30 : 28, 1);
         this.spellActionText.setScale(0.7);
         this.spellActionText.setOrigin(0, 0.5);
         this.spellActionText.setDepth(125);
@@ -1598,7 +1598,7 @@ const ENABLE_KEYBOARD = true;
 
         } else {
             // failed cast
-            let retryDelay = this.keyboardCasted ? 800 : 500;
+            let retryDelay = this.keyboardCasted ? 700 : 450;
             PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * (retryDelay - 250), () => {
                 this.bufferedCastAvailable = true;
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 250, () => {

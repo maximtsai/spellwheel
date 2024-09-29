@@ -424,7 +424,7 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose =
         }
     });
     lvlCloseButton.setOrigin(0.5, 0.5);
-    lvlCloseButton.addText(getLangText('cont_ui'), {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
+    lvlCloseButton.addText(getLangText('cont_ui'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
     lvlCloseButton.setScale(0.9);
     lvlCloseButton.setDepth(99999);
     globalObjects.lvlCloseButton = lvlCloseButton;
@@ -488,7 +488,7 @@ function createMenuCloseButton(items) {
         }
     });
     menuCloseButton.setOrigin(0.5, 0.5);
-    menuCloseButton.addText(getLangText('menu'), {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
+    menuCloseButton.addText(getLangText('menu'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
     menuCloseButton.setScale(0.9);
     menuCloseButton.setDepth(99999);
     globalObjects.menuCloseButton = menuCloseButton;

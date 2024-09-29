@@ -956,7 +956,9 @@
     }
 
     startChargingUltimate() {
-        for (let i = 0; i < 24; i++) {
+        let totalAmt = gameVars.isHardMode ? 28 : 24;
+        let angleDivider = gameVars.isHardMode ? 14 : 12;
+        for (let i = 0; i < totalAmt; i++) {
             this.addTween({
                 delay: i * 180,
                 duration: 175,
@@ -974,7 +976,7 @@
 
                         let startX = this.x;
                         let startY = this.y;
-                        let dirAngle = i * Math.PI / 12;
+                        let dirAngle = i * Math.PI / angleDivider;
                         let offsetX = Math.sin(dirAngle) * 90;
                         let offsetY = -Math.cos(dirAngle) * 80;
                         let clockName = 'clock2.png';
@@ -993,12 +995,12 @@
                             ease: 'Quart.easeOut'
                         });
                         let numAttacks = i + 1;
-                        if (i < 7) {
+                        if (i < gameVars.isHardMode ? 8 : 7) {
                             this.attackName.setText("}4x" + numAttacks + "}");
-                        } else if (i < 15) {
+                        } else if (i < gameVars.isHardMode ? 17 : 15) {
                             this.attackName.setText("}}4x" + numAttacks + "}}");
                             this.repositionAngrySymbol();
-                        } else if (i < 23) {
+                        } else if (i < gameVars.isHardMode ? 26 : 23) {
                             this.attackName.setText("}}}4x" + numAttacks + "}}}");
                             this.repositionAngrySymbol();
                         } else {
@@ -1189,7 +1191,7 @@
                      desc: "The Time Magician\nuses his ultimate attack",
                      chargeAmt: 1300,
                      isBigMove: true,
-                     chargeMult: 4,
+                     chargeMult: gameVars.isHardMode ? 5 : 4,
                      damage: -1,
                     finishDelay: 4200,
 

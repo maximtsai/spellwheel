@@ -666,7 +666,7 @@ class SpellManager {
 
         let shieldHealth = shieldBaseHealth * spellMultiplier;
         if (isSuper) {
-            shieldHealth = 100;
+            shieldHealth = 80;
         }
         textHealth.setText(shieldHealth);
         messageBus.publish('setTempRotObjs', [animation1], rotation);

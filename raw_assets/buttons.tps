@@ -188,6 +188,37 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">buttons/big_menu_btn_hover.png</key>
+            <key type="filename">buttons/big_menu_btn_press.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>144,36,287,72</rect>
+                <key>scale9Paddings</key>
+                <rect>144,36,287,72</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">buttons/big_menu_btn_small_normal.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>143,35,285,70</rect>
+                <key>scale9Paddings</key>
+                <rect>143,35,285,70</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">buttons/btn_small.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -260,22 +291,8 @@
                 <false/>
             </struct>
             <key type="filename">buttons/menu_btn_hover.png</key>
-            <key type="filename">buttons/menu_btn_press.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>95,16,190,31</rect>
-                <key>scale9Paddings</key>
-                <rect>95,16,190,31</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">buttons/menu_btn_normal.png</key>
+            <key type="filename">buttons/menu_btn_press.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -290,18 +307,20 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">buttons/menu_btn_small_hover.png</key>
             <key type="filename">buttons/menu_btn_small_normal.png</key>
+            <key type="filename">buttons/menu_btn_small_press.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.5</double>
+                <double>1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>143,35,285,70</rect>
+                <rect>108,35,215,70</rect>
                 <key>scale9Paddings</key>
-                <rect>143,35,285,70</rect>
+                <rect>108,35,215,70</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

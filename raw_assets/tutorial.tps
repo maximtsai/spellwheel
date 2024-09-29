@@ -220,6 +220,32 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">tutorial/level10btn.png</key>
+            <key type="filename">tutorial/level11btn.png</key>
+            <key type="filename">tutorial/level12btn.png</key>
+            <key type="filename">tutorial/level1btn.png</key>
+            <key type="filename">tutorial/level2btn.png</key>
+            <key type="filename">tutorial/level3btn.png</key>
+            <key type="filename">tutorial/level4btn.png</key>
+            <key type="filename">tutorial/level5btn.png</key>
+            <key type="filename">tutorial/level6btn.png</key>
+            <key type="filename">tutorial/level7btn.png</key>
+            <key type="filename">tutorial/level8btn.png</key>
+            <key type="filename">tutorial/level9btn.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>25,25,50,50</rect>
+                <key>scale9Paddings</key>
+                <rect>25,25,50,50</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">tutorial/plus_symbol.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

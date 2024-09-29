@@ -85,6 +85,8 @@ let gameOptions = {
     infoBoxAlign: 'center',
 };
 let gameVars = {
+    latestLevel: 0,
+    isHardMode: false,
     gameConstructed: false,
     mousedown: false,
     mouseJustDowned: false,

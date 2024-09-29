@@ -824,6 +824,15 @@ let textData2 = {
         "ru": "ПРОДОЛЖАТЬ",
         "es": "CONTINUAR",
         "jp": "続ける"
+    },
+    "lvl_select": {
+        "en_us": "LEVEL SELECT",
+        "fr": "SÉLECTION NIVEAU",
+        "zh_tw": "等級選擇",
+        "zh_cn": "级别选择",
+        "ru": "ПРОДОЛЖАТЬ",
+        "es": "CONTINUAR",
+        "jp": "続ける"
     }
 };
 

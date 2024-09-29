@@ -84,7 +84,6 @@ class Encyclopedia {
             this.title = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 290, getLangText('pre_fight_0a'), {fontFamily: 'opensans', fontSize: 24, color: '#000000', align: 'left'}).setDepth(this.baseDepth).setAlpha(0);
             this.listOfThingsToHide.push(this.title);
         }
-        this.setFirstPage();
 
         createGlobalClickBlocker();
         this.activateTabButtons();
@@ -95,8 +94,8 @@ class Encyclopedia {
                     atlas: 'buttons',
                     ref: "closebtn.png",
                     alpha: 0.95,
-                    x: gameConsts.width - 50,
-                    y: 50,
+                    x: gameConsts.halfWidth + 220,
+                    y: gameConsts.halfHeight - 275,
                 },
                 hover: {
                     alpha: 1,
@@ -133,6 +132,9 @@ class Encyclopedia {
             buttonManager.bringButtonToTop(this.closeButton);
             this.closeButton.setState(NORMAL);
         }
+
+        this.setFirstPage();
+
         this.darkenBG.setAlpha(0.55);
         PhaserScene.tweens.add({
             targets: this.listOfThingsToHide,
@@ -384,6 +386,7 @@ class Encyclopedia {
         PhaserScene.tweens.add({
             targets: this.currentPageItems, alpha: 1, ease: 'Cubic.easeOut', duration: 1,
         });
+        this.closeButton.tweenToPos(this.closeButton.getXPos(), gameConsts.halfHeight - 275, 1, 'Cubic.easeOut')
 
         PhaserScene.tweens.add({
             targets: this.bgPage,
@@ -402,6 +405,7 @@ class Encyclopedia {
         let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 15, getLangText('encyclopedia_rune_action'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
         this.currentPageItems.push(text1);
         this.currentPageItems.push(text2);
+        this.closeButton.tweenToPos(this.closeButton.getXPos(), gameConsts.halfHeight - 275, 1, 'Cubic.easeOut')
 
         PhaserScene.tweens.add({
             targets: this.bgPage,
@@ -512,13 +516,16 @@ class Encyclopedia {
             ease: 'Cubic.easeOut',
             duration: 1
         })
+        this.closeButton.tweenToPos(this.closeButton.getXPos(), gameConsts.halfHeight - 298, 1, 'Cubic.easeOut')
+
         PhaserScene.tweens.add({
             targets: this.bgPage,
             scaleY: 1.25,
             y: gameConsts.halfHeight + 31,
             ease: 'Cubic.easeOut',
             duration: 1
-        })
+        });
+
 
         let listOfRunes = ["rune_matter_large.png",
             "rune_strike_large.png",

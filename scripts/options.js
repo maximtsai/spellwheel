@@ -173,7 +173,7 @@ class Options {
                     this.hideOptions();
                 }
             });
-            this.resumeBtn.addText(getLangText('resume'), {fontFamily: 'opensans', fontSize: 32, color: '#000000', align: 'center'});
+            this.resumeBtn.addText(getLangText('resume'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'center'});
             this.addLangTextUpdateable(this.resumeBtn, 'resume')
             this.resumeBtn.setDepth(this.baseDepth + 1);
             this.resumeBtn.setScale(0.82, 0.82);
@@ -284,8 +284,8 @@ class Options {
                     atlas: 'buttons',
                     ref: "closebtn.png",
                     alpha: 0.95,
-                    x: gameConsts.halfWidth + 243,
-                    y: 85,
+                    x: gameConsts.halfWidth + 240,
+                    y: gameConsts.halfHeight - 315,
                 },
                 hover: {
                     alpha: 1,

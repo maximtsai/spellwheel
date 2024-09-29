@@ -173,89 +173,6 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">circle/1cast_disabled.png</key>
-            <key type="filename">circle/1cast_hover.png</key>
-            <key type="filename">circle/1cast_normal.png</key>
-            <key type="filename">circle/1cast_press.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>45,45,91,91</rect>
-                <key>scale9Paddings</key>
-                <rect>45,45,91,91</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">circle/1element_drag.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>78,78,155,155</rect>
-                <key>scale9Paddings</key>
-                <rect>78,78,155,155</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">circle/1element_hover.png</key>
-            <key type="filename">circle/1element_normal.png</key>
-            <key type="filename">circle/element_hover.png</key>
-            <key type="filename">circle/element_normal.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>76,76,152,152</rect>
-                <key>scale9Paddings</key>
-                <rect>76,76,152,152</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">circle/1usage_drag.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>110,110,219,219</rect>
-                <key>scale9Paddings</key>
-                <rect>110,110,219,219</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">circle/1usage_hover.png</key>
-            <key type="filename">circle/1usage_normal.png</key>
-            <key type="filename">circle/shadow.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>106,106,213,213</rect>
-                <key>scale9Paddings</key>
-                <rect>106,106,213,213</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">circle/arrow_rotate.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -399,8 +316,6 @@
             <key type="filename">circle/bright_rune_time.png</key>
             <key type="filename">circle/bright_rune_unload.png</key>
             <key type="filename">circle/bright_rune_void.png</key>
-            <key type="filename">circle/rune_mind - Copy.png</key>
-            <key type="filename">circle/rune_mind_glow - Copy.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -615,6 +530,22 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">circle/element_hover.png</key>
+            <key type="filename">circle/element_normal.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>76,76,152,152</rect>
+                <key>scale9Paddings</key>
+                <rect>76,76,152,152</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">circle/energy_body.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -795,6 +726,21 @@
                 <rect>13,10,25,20</rect>
                 <key>scale9Paddings</key>
                 <rect>13,10,25,20</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">circle/shadow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>106,106,213,213</rect>
+                <key>scale9Paddings</key>
+                <rect>106,106,213,213</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

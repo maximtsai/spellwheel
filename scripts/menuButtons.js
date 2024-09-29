@@ -10,7 +10,6 @@ function clearOnlyMenuButtons() {
         globalObjects.continueButton.destroy();
     }
     globalObjects.startButton.destroy();
-    globalObjects.levelSelectButton.destroy();
     globalObjects.lvlButton.destroy();
     globalObjects.cheatButton.destroy();
     globalObjects.cheatButton2.destroy();
@@ -139,7 +138,7 @@ function showMainMenuButtons() {
                 ref: "menu_btn_normal.png",
                 atlas: 'buttons',
                 x: gameConsts.halfWidth,
-                y: gameConsts.halfHeight - 200,
+                y: gameConsts.halfHeight - 227,
             },
             hover: {
                 ref: "menu_btn_hover.png",
@@ -158,15 +157,41 @@ function showMainMenuButtons() {
             }
         });
         globalObjects.continueButton.setOrigin(0.5, 0.5);
-        globalObjects.continueButton.addText(getLangText('cont_ui'), {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
+        globalObjects.continueButton.addText(getLangText('cont_ui'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
         globalObjects.continueButton.setScale(0.9);
+
+        globalObjects.lvlPickButton = new Button({
+            normal: {
+                ref: "menu_btn_normal.png",
+                atlas: 'buttons',
+                x: gameConsts.halfWidth,
+                y: gameConsts.halfHeight - 150,
+            },
+            hover: {
+                ref: "menu_btn_hover.png",
+                atlas: 'buttons',
+            },
+            press: {
+                ref: "menu_btn_hover.png",
+                atlas: 'buttons',
+            },
+            disable: {
+                alpha: 0
+            },
+            onMouseUp: () => {
+                showLevelSelectScreen();
+            }
+        });
+        globalObjects.lvlPickButton.setOrigin(0.5, 0.5);
+        globalObjects.lvlPickButton.addText(getLangText('lvl_select'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
+        globalObjects.lvlPickButton.setScale(0.9);
     }
     globalObjects.startButton = new Button({
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
             x: gameConsts.halfWidth,
-            y: 40,
+            y: 80,
         },
         hover: {
             ref: "menu_btn_hover.png",
@@ -196,7 +221,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.startButton.setOrigin(0.5, 0.5);
-    globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'garamondmax', fontSize: 28, color: '#000000', align: 'left'})
+    globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
     globalObjects.startButton.setScale(0.9);
 
     let hideCheatConst = 0;
@@ -224,7 +249,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.cheatButton.setScale(0.5);
-    globalObjects.cheatButton.addText("2X DAMAGE CHEAT", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.cheatButton.addText("2X DAMAGE CHEAT", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.cheatButton2 = new Button({
         normal: {
@@ -249,7 +274,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.cheatButton2.setScale(0.5);
-    globalObjects.cheatButton2.addText("2X DAMAGE CHEAT", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.cheatButton2.addText("2X DAMAGE CHEAT", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.cheatButton3 = new Button({
         normal: {
@@ -274,7 +299,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.cheatButton3.setScale(0.5);
-    globalObjects.cheatButton3.addText("+20 HP CHEAT", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.cheatButton3.addText("+20 HP CHEAT", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.cheatButton4 = new Button({
         normal: {
@@ -299,7 +324,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.cheatButton4.setScale(0.5);
-    globalObjects.cheatButton4.addText("INFINITE AMMO", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.cheatButton4.addText("INFINITE AMMO", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.cheatButton5 = new Button({
         normal: {
@@ -326,35 +351,35 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.cheatButton5.setScale(0.5);
-    globalObjects.cheatButton5.addText("LOW HEALTH", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.cheatButton5.addText("LOW HEALTH", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
 
 
-    globalObjects.levelSelectButton = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: 100,
-            y: 100,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            clearMenuButtons();
-            beginPreLevel(2);
-        }
-    });
-    globalObjects.levelSelectButton.setScale(0.5);
-    globalObjects.levelSelectButton.addText("LEVEL GOBLIN", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    // globalObjects.levelSelectButton = new Button({
+    //     normal: {
+    //         ref: "menu_btn_normal.png",
+    //         atlas: 'buttons',
+    //         x: 100,
+    //         y: 100,
+    //     },
+    //     hover: {
+    //         ref: "menu_btn_hover.png",
+    //         atlas: 'buttons',
+    //     },
+    //     press: {
+    //         ref: "menu_btn_press.png",
+    //         atlas: 'buttons',
+    //     },
+    //     disable: {
+    //         alpha: 0.001
+    //     },
+    //     onMouseUp: () => {
+    //         clearMenuButtons();
+    //         beginPreLevel(2);
+    //     }
+    // });
+    // globalObjects.levelSelectButton.setScale(0.5);
+    // globalObjects.levelSelectButton.addText("LEVEL GOBLIN", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.level3Button = new Button({
         normal: {
@@ -380,7 +405,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.level3Button.setScale(0.5);
-    globalObjects.level3Button.addText("LEVEL TREE", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.level3Button.addText("LEVEL TREE", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvlButton = new Button({
         normal: {
@@ -406,7 +431,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvlButton.setScale(0.5);
-    globalObjects.lvlButton.addText("LEVEL MAGICIAN", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvlButton.addText("LEVEL MAGICIAN", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl5Button = new Button({
         normal: {
@@ -432,7 +457,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl5Button.setScale(0.5);
-    globalObjects.lvl5Button.addText("LEVEL KNIGHT", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl5Button.addText("LEVEL KNIGHT", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl6Button = new Button({
         normal: {
@@ -458,7 +483,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl6Button.setScale(0.5);
-    globalObjects.lvl6Button.addText("LEVEL WALL", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl6Button.addText("LEVEL WALL", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl7Button = new Button({
         normal: {
@@ -484,7 +509,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl7Button.setScale(0.5);
-    globalObjects.lvl7Button.addText("LEVEL SUPER DUMMY", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl7Button.addText("LEVEL SUPER DUMMY", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl8Button = new Button({
         normal: {
@@ -510,7 +535,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl8Button.setScale(0.5);
-    globalObjects.lvl8Button.addText("LEVEL ASSASSIN", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl8Button.addText("LEVEL ASSASSIN", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl9Button = new Button({
         normal: {
@@ -536,7 +561,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl9Button.setScale(0.5);
-    globalObjects.lvl9Button.addText("LEVEL ROBOT", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl9Button.addText("LEVEL ROBOT", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl10Button = new Button({
         normal: {
@@ -562,7 +587,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl10Button.setScale(0.5);
-    globalObjects.lvl10Button.addText("LEVEL DEATH", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl10Button.addText("LEVEL DEATH", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
 
     globalObjects.lvl11Button = new Button({
@@ -589,7 +614,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl11Button.setScale(0.5);
-    globalObjects.lvl11Button.addText("LEVEL 11", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl11Button.addText("LEVEL 11", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl12Button = new Button({
         normal: {
@@ -615,7 +640,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl12Button.setScale(0.5);
-    globalObjects.lvl12Button.addText("LEVEL 11.5", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'});
+    globalObjects.lvl12Button.addText("LEVEL 11.5", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'});
 
     globalObjects.lvl13Button = new Button({
         normal: {
@@ -641,7 +666,27 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl13Button.setScale(0.5);
-    globalObjects.lvl13Button.addText("LEVEL 13", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'});
+    globalObjects.lvl13Button.addText("LEVEL 13", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'});
+
+
+    // globalObjects.lvlButton.destroy();
+    // globalObjects.cheatButton.destroy();
+    // globalObjects.cheatButton2.destroy();
+    // globalObjects.cheatButton3.destroy();
+    // globalObjects.cheatButton4.destroy();
+    // globalObjects.cheatButton5.destroy();
+    //
+    // globalObjects.level3Button.destroy();
+    // globalObjects.lvl5Button.destroy();
+    // globalObjects.lvl6Button.destroy();
+    //
+    // globalObjects.lvl7Button.destroy();
+    // globalObjects.lvl8Button.destroy();
+    // globalObjects.lvl9Button.destroy();
+    // globalObjects.lvl10Button.destroy();
+    // globalObjects.lvl11Button.destroy();
+    // globalObjects.lvl12Button.destroy();
+    // globalObjects.lvl13Button.destroy();
 
     globalObjects.creditsButton = new Button({
         normal: {
@@ -703,7 +748,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.creditsButton.setScale(0.5, 0.5);
-    globalObjects.creditsButton.addText("CREDITS", {fontFamily: 'garamondmax', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.creditsButton.addText("CREDITS", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
 }
 
@@ -714,4 +759,157 @@ function updateMenuLanguage() {
     if (globalObjects.continueButton && !globalObjects.continueButton.isDestroyed) {
         globalObjects.continueButton.setText(getLangText('cont_ui'))
     }
+}
+
+
+function showLevelSelectScreen(){
+    globalObjects.encyclopedia.hideButton();
+    globalObjects.options.hideButton();
+    let clickBlocker = createGlobalClickBlocker(false);
+    let levelSelectBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 10, 'ui', 'paper.png').setDepth(10000).setScale(0.98, 0.88);
+    let blackBG = getBackgroundBlackout();
+    blackBG.setDepth(9999).setAlpha(0);
+    let title = PhaserScene.add.text(gameConsts.halfWidth, levelSelectBG.y - 251, getLangText('lvl_select'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.8).setScale(0.98).setDepth(10000);
+    PhaserScene.tweens.add({
+        targets: levelSelectBG,
+        scaleX: 1,
+        scaleY: 0.89,
+        ease: 'Back.easeOut',
+        duration: 250
+    })
+    PhaserScene.tweens.add({
+        targets: title,
+        scaleX: 1,
+        scaleY: 1,
+        ease: 'Cubic.easeOut',
+        duration: 250
+    })
+    PhaserScene.tweens.add({
+        targets: blackBG,
+        alpha: 0.67,
+        ease: 'Quart.easeOut',
+        duration: 250
+    });
+
+    let closeButton = new Button({
+        normal: {
+            atlas: 'buttons',
+            ref: "closebtn.png",
+            alpha: 0.95,
+            x: gameConsts.width - 66,
+            y: levelSelectBG.y - 236,
+        },
+        hover: {
+            alpha: 1,
+            atlas: 'buttons',
+            ref: "closebtn_hover.png",
+        },
+        press: {
+            atlas: 'buttons',
+            ref: "closebtn_press.png",
+            alpha: 1
+        },
+        disable: {
+            atlas: 'buttons',
+            ref: "closebtn.png",
+            alpha: 0
+        },
+        onHover: () => {
+            if (canvas) {
+                canvas.style.cursor = 'pointer';
+            }
+        },
+        onHoverOut: () => {
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        },
+        onMouseUp: () => {
+            closeLevelSelectScreen();
+            // clearMenuButtons();
+            blackBG.setAlpha(0);
+            title.destroy();
+            levelSelectBG.destroy();
+            closeButton.destroy();
+            for (let i in listOfBtns) {
+                listOfBtns[i].destroy();
+            }
+        }
+    });
+    closeButton.setDepth(this.baseDepth + 10);
+
+    let listOfBtns = [];
+    let maxLevel = Math.min(gameVars.latestLevel, 12);
+    for (let i = 1; i <= maxLevel; i++) {
+        let xPos = gameConsts.halfWidth + ((i - 1) % 4) * 120 - 180;
+        let yPos = levelSelectBG.y + Math.floor((i - 1) * 0.25) * 125 - 146;
+        let imgRef = `level${i}btn.png`;
+        let newBtn = new Button({
+            normal: {
+                ref: imgRef,
+                atlas: 'tutorial',
+                x: xPos,
+                y: yPos,
+                alpha: 0.75,
+                scaleX: 0.98,
+                scaleY: 0.98
+            },
+            hover: {
+                alpha: 0.9,
+                scaleX: 1,
+                scaleY: 1
+            },
+            press: {
+                alpha: 1,
+                scaleX: 1,
+                scaleY: 1
+            },
+            disable: {
+                alpha: 0,
+                scaleX: 1,
+                scaleY: 1
+            },
+            onHover: () => {
+                if (canvas) {
+                    playSound('button_hover');
+                    canvas.style.cursor = 'pointer';
+                }
+            },
+            onHoverOut: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
+            },
+            onMouseUp: () => {
+                closeLevelSelectScreen();
+                clearMenuButtons();
+                beginPreLevel(i);
+                blackBG.setAlpha(0);
+                title.destroy();
+                levelSelectBG.destroy();
+                closeButton.destroy();
+                for (let i in listOfBtns) {
+                    listOfBtns[i].destroy();
+                }
+            }
+        });
+        newBtn.setDepth(10000);
+        listOfBtns.push(newBtn);
+    }
+
+    if (gameVars.latestLevel >= 13) {
+
+    }
+    // clickBlocker.setOnMouseUpFunc(() => {
+    //     cleanupCutscene()
+    //     hideGlobalClickBlocker();
+    //     setupCreditsReturnMainMenu(textObjects);
+    //     fadeAwaySound(bgMusic, 2000);
+    // });
+}
+
+function closeLevelSelectScreen() {
+    hideGlobalClickBlocker();
+    globalObjects.encyclopedia.showButton();
+    globalObjects.options.showButton();
 }

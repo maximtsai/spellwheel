@@ -9,6 +9,9 @@ function clearOnlyMenuButtons() {
     if (globalObjects.continueButton) {
         globalObjects.continueButton.destroy();
     }
+    if (globalObjects.lvlPickButton) {
+        globalObjects.lvlPickButton.destroy();
+    }
     globalObjects.startButton.destroy();
     globalObjects.lvlButton.destroy();
     globalObjects.cheatButton.destroy();

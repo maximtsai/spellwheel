@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = 120;
+         this.health = gameVars.isHardMode ? 125 : 110;
          this.damageNumOffset = 45;
          this.damageNumOffsetDefault = this.damageNumOffset;
          this.lifeOne = true;
@@ -1077,7 +1077,7 @@
                  {
                      name: "}4x3 ",
                      desc: "An advanced magic attack.",
-                     chargeAmt: 450,
+                     chargeAmt: gameVars.isHardMode ? 400 : 500,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -1099,7 +1099,7 @@
                  {
                      name: "}4x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: 300,
+                     chargeAmt: gameVars.isHardMode ? 250 : 350,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
@@ -1122,7 +1122,7 @@
                 // 1
                  {
                      name: "\\50% MISSING HEALTH",
-                     chargeAmt: 350,
+                     chargeAmt: gameVars.isHardMode ? 250 : 350,
                      isPassive: true,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
@@ -1167,9 +1167,9 @@
                      },
                  },
                  {
-                     name: "|20 ",
+                     name: ";20 ",
                      desc: "A devastating barrage\nof offensive magic.",
-                     chargeAmt: 600,
+                     chargeAmt: gameVars.isHardMode ? 550 : 600,
                      isBigMove: true,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {

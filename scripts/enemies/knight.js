@@ -85,6 +85,7 @@
          this.voidSlashEffect2 = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 260, 'spells', 'darkSlice.png').setScale(0.8).setDepth(130).setAlpha(0).setOrigin(0.15, 0.5);
         this.isFirstVoidSlash = true;
          this.shieldTextOffsetY = -20;
+
      }
 
      initMisc() {
@@ -95,6 +96,8 @@
          this.voidShield2b.startScale = this.voidShield2b.scaleX;
 
          this.sigilEffect = this.addImage(this.x, this.y, 'enemies', 'void_knight_sigil.png').setScale(this.sprite.startScale).setDepth(5).setAlpha(0);
+         this.shieldExtraText = this.scene.add.bitmapText(gameConsts.halfWidth, this.y + this.shieldTextOffsetY + 24, 'void', 'SHIELDED', 52).setOrigin(0.5).setDepth(18).setVisible(false);
+
      }
 
      initFog() {
@@ -481,6 +484,27 @@
      }
 
      createVoidShield(amt, doubleShield) {
+         this.shieldExtraText.setVisible(true).setScale(0.4).setAlpha(1);
+         this.addTween({
+             targets: this.shieldExtraText,
+             scaleX: 1,
+             scaleY: 1,
+             ease: 'Back.easeOut',
+             duration: 150,
+             completeDelay: 1800,
+             onComplete: () => {
+                 this.addTween({
+                     targets: this.shieldExtraText,
+                     scaleX: 0.2,
+                     scaleY: 0.25,
+                     alpha: 0,
+                     ease: 'Quart.easeIn',
+                     duration: 400,
+
+                 })
+             }
+         })
+
          this.shieldText.visible = true;
          this.shieldText.setText(amt);
          this.shieldText.setScale(0.1);
@@ -755,11 +779,11 @@
              [
                  // 0
                  {
-                     name: "|8 ",
+                     name: gameVars.isHardMode ? "|10" : "|8",
                      announceName: "INITIAL STRIKE",
                      desc: "The mysterious knight charges at you!",
                      chargeAmt: 400,
-                     damage: 8,
+                     damage: gameVars.isHardMode ? 10 : 8,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
                      attackFinishFunction: () => {

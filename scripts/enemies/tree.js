@@ -15,7 +15,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 300 : 240;
+         this.health = gameVars.isHardMode ? 260 : 240;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;
@@ -695,6 +695,7 @@
                      announceName: "THORNS",
                      desc: "The tree creates protective thorns!",
                      chargeAmt: 400,
+                     chargeMult: gameVars.isHardMode ? 2 : 1,
                      isPassive: true,
                      damage: -1,
                      attackStartFunction: () => {
@@ -797,10 +798,10 @@
              [
                  // 3
                  {
-                     name: ";26",
+                     name: gameVars.isHardMode ? ";30" : ";26",
                      announceName: "CRUSH",
                      desc: "The tree tries to crush you",
-                     chargeAmt: 1100,
+                     chargeAmt: gameVars.isHardMode ? 1000 : 1100,
                     finishDelay: 3000,
                      chargeMult: 1.5,
                      damage: -1,
@@ -821,7 +822,7 @@
                          playSound('magic');
                         globalObjects.textPopupManager.hideInfoText();
                          this.hasCrushed = true;
-                         this.createCrushAttack(26);
+                         this.createCrushAttack(gameVars.isHardMode ? 30 : 26);
                      },
                      attackFinishFunction: () => {
                          this.pullbackScale = 0.99;
@@ -841,7 +842,7 @@
                  // 4
                  {
                      name: " STARE...",
-                     chargeAmt: 350,
+                     chargeAmt: gameVars.isHardMode ? 300 : 350,
                      damage: -1,
                      isPassive: true,
                      attackStartFunction: () => {
@@ -859,7 +860,7 @@
                      name: "|2x5 ",
                      announceName: "LEAF STORM",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 550,
+                     chargeAmt: gameVars.isHardMode ? 500 : 550,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');
@@ -891,12 +892,12 @@
              [
                  // 5
                  {
-                     name: "TIMBER!;40 ",
+                     name: gameVars.isHardMode ? "TIMBER!;44" : "TIMBER!;40",
                      announceName: "TIMBER!!!",
                      desc: "The tree tries to crush you",
                      chargeAmt: 1250,
                      chargeMult: 2.5,
-                     damage: 40,
+                     damage: gameVars.isHardMode ? 44 : 40,
                      isBigMove: true,
                      startFunction: () => {
                          this.attackSlownessMult = 1.8;

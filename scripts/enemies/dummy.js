@@ -183,7 +183,6 @@
     createEnhancePopup() {
         this.clearStartShadow();
         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 135, getLangText('level1_tut_a'), 'right');
-
         this.rune2 = this.addSprite(globalObjects.textPopupManager.getCenterPos(), globalObjects.textPopupManager.getBoxBottomPos() + 28, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
 
         this.enhancePopupListener = messageBus.subscribe('recordSpell', (id, spellName) => {

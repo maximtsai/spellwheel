@@ -572,7 +572,6 @@ class PostFightScreen {
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
         if (level > gameVars.latestLevel) {
-            console.log("set latest level");
             gameVars.latestLevel = level;
             localStorage.setItem("latestLevel", level.toString());
         }

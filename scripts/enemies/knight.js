@@ -500,7 +500,6 @@
                      alpha: 0,
                      ease: 'Quart.easeIn',
                      duration: 400,
-
                  })
              }
          })

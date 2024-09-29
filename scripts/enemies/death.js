@@ -676,6 +676,8 @@
          fadeAwaySound(this.bgMusic);
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();
+         gameVars.latestLevel = this.level;
+         localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
 
          PhaserScene.tweens.add({
             targets: this.mainScythe,

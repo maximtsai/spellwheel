@@ -1111,6 +1111,9 @@
     die() {
          super.die();
          this.stopIdleAnim();
+        gameVars.latestLevel = this.level;
+        localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
+
         playSound('death_attack', 0.4).detune = -800;
         messageBus.publish("closeCombatText")
         // if (!this.laughText) {

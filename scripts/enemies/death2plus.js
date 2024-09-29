@@ -475,6 +475,9 @@
     }
 
     showActualFinale() {
+         if (this.dead) {
+             return;
+         }
         playFakeBGMusic('but_never_forgotten_metal_prelude');
         this.addTween({
             delay: 200,
@@ -484,8 +487,14 @@
              scaleY: this.sprite.startScale * 1.12,
              ease: "Cubic.easeInOut",
              onComplete: () => {
+                 if (this.dead) {
+                     return;
+                 }
                  this.clearHandShield();
                 this.addDelay(() => {
+                    if (this.dead) {
+                        return;
+                    }
                     let deathHead = this.addImage(this.x, this.y + 10, 'deathfinal', 'death_2_laugh.png').setScale(0.8, 0.5).setOrigin(0.5, 0.45).setAlpha(0).setDepth(-1)
                     screenShakeLong(12);
                     this.addTween({
@@ -598,6 +607,9 @@
                      scaleY: this.sprite.startScale * 0.7,
                      ease: "Quint.easeIn",
                      onComplete: () => {
+                         if (this.dead) {
+                             return;
+                         }
                          this.addTween({
                              targets: this.circleHalo,
                              alpha: 1,
@@ -2889,6 +2901,9 @@
 
      sharedDie() {
          this.isDefeated = true;
+         gameVars.latestLevel = this.level;
+         localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
+
         if (this.oldStartScale) {
             this.sprite.startScale = this.oldStartScale
         }

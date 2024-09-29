@@ -137,6 +137,7 @@ class SpellManager {
         pebbles.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 240);
         let additionalScale = Math.sqrt(additionalDamage) * 0.022;
         let finalAdditionaScale = additionalScale * 5;
+        let isPowerful = numAdditionalAttacks * (12 + additionalDamage) > 72
         pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalScale).setRotation(Math.random() * 3)
         this.scene.tweens.add({
             targets: pebbles,
@@ -325,6 +326,36 @@ class SpellManager {
                             y: "+=20",
                             ease: "Cubic.easeIn"
                         });
+
+                        if (isPowerful && i === rockObjects.length - 2) {
+                            let powerfulEffect = getTempPoolObject('tutorial', 'rune_matter_large.png', 'specialAttack', 1000);
+                            powerfulEffect.setAlpha(0.05).setDepth(999).setScale(4.5).setPosition(rockObj.x, rockObj.y);
+                            playSound('rock_crumble');
+                            this.scene.tweens.add({
+                                targets: powerfulEffect,
+                                duration: 110,
+                                alpha: 1,
+                                scaleX: 3,
+                                scaleY: 3,
+                                ease: "Quint.easeIn",
+                                onComplete: () => {
+                                    messageBus.publish('setSlowMult', 0.25, 15);
+                                    this.scene.tweens.add({
+                                        targets: powerfulEffect,
+                                        duration: 850,
+                                        alpha: 0,
+                                        ease: "Quart.easeOut"
+                                    });
+                                    this.scene.tweens.add({
+                                        targets: powerfulEffect,
+                                        duration: 850,
+                                        scaleX: 2.8,
+                                        scaleY: 2.8,
+                                        ease: 'Cubic.easeIn'
+                                    });
+                                }
+                            });
+                        }
                     }
 
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);

@@ -842,7 +842,7 @@ function showLevelSelectScreen(){
     closeButton.setDepth(this.baseDepth + 10);
 
     let listOfBtns = [];
-    let maxLevel = Math.min(gameVars.latestLevel, 12);
+    let maxLevel = Math.min(gameVars.latestLevel + 1, 12);
     for (let i = 1; i <= maxLevel; i++) {
         let xPos = gameConsts.halfWidth + ((i - 1) % 4) * 120 - 180;
         let yPos = levelSelectBG.y + Math.floor((i - 1) * 0.25) * 125 - 146;

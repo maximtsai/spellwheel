@@ -346,16 +346,16 @@ class SpellManager {
                                 onComplete: () => {
                                     messageBus.publish('setSlowMult', 0.25, 15);
                                     this.scene.tweens.add({
-                                        delay: 100,
+                                        delay: 200,
                                         targets: powerfulEffect,
-                                        duration: 1000,
+                                        duration: 900,
                                         alpha: 0,
                                         ease: "Cubic.easeOut"
                                     });
                                     this.scene.tweens.add({
-                                        delay: 100,
+                                        delay: 200,
                                         targets: powerfulEffect,
-                                        duration: 1000,
+                                        duration: 900,
                                         scaleX: 4,
                                         scaleY: 4,
                                         ease: 'Cubic.easeIn'
@@ -968,16 +968,16 @@ class SpellManager {
                             onComplete: () => {
                                 messageBus.publish('setSlowMult', 0.25, 15);
                                 this.scene.tweens.add({
-                                    delay: 100,
+                                    delay: 200,
                                     targets: powerfulEffect,
-                                    duration: 1000,
+                                    duration: 900,
                                     alpha: 0,
                                     ease: "Cubic.easeOut"
                                 });
                                 this.scene.tweens.add({
-                                    delay: 100,
+                                    delay: 200,
                                     targets: powerfulEffect,
-                                    duration: 1000,
+                                    duration: 900,
                                     scaleX: 4,
                                     scaleY: 4,
                                     ease: 'Cubic.easeIn'
@@ -1021,8 +1021,9 @@ class SpellManager {
         let additionalDamage = globalObjects.player.attackDamageAdder();
         let hasFirstBuff = additionalDamage >= 6;
         let hasSecondBuff = additionalDamage >= 14;
-
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
+        let isPowerful = numAdditionalAttacks * (6 + additionalDamage) > 50;
+
         let strikeObjects = [];
         let finalStrikeScale = 0.5 + Math.sqrt(additionalDamage) * 0.075 + additionalDamage * 0.02;
         let goalScale = 0.4 + Math.sqrt(additionalDamage) * 0.05 + additionalDamage * 0.015;
@@ -1203,6 +1204,43 @@ class SpellManager {
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', spellDamage, true, undefined, 'time');
                     messageBus.publish('setPauseDur', 20);
+
+                    if (isPowerful && parseInt(i) === strikeObjects.length - 2) {
+                        let powerfulEffect = getTempPoolObject('tutorial', 'rune_time_large.png', 'specialAttack', 1300);
+                        powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5).setPosition(gameConsts.halfWidth, strikeObject.y + 33);
+                        playSound('time_hard');
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 125,
+                            alpha: 1,
+                        });
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 125,
+                            scaleX: 3.2,
+                            scaleY: 3.2,
+                            ease: "Quint.easeIn",
+                            onComplete: () => {
+                                messageBus.publish('setSlowMult', 0.25, 15);
+                                this.scene.tweens.add({
+                                    delay: 200,
+                                    targets: powerfulEffect,
+                                    duration: 900,
+                                    alpha: 0,
+                                    ease: "Cubic.easeOut"
+                                });
+                                this.scene.tweens.add({
+                                    delay: 200,
+                                    targets: powerfulEffect,
+                                    duration: 900,
+                                    scaleX: 4,
+                                    scaleY: 4,
+                                    ease: 'Cubic.easeIn'
+                                });
+                            }
+                        });
+                    }
+
 
                 }
             });
@@ -1588,6 +1626,7 @@ class SpellManager {
         let attackObjects = [];
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let additionalDamage = globalObjects.player.attackDamageAdder();
+        let isPowerful = numAdditionalAttacks * (1 + additionalDamage) > 36;
 
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
@@ -1646,6 +1685,54 @@ class SpellManager {
                     });
 
                     messageBus.publish('enemyTakeTrueDamage', 1 + additionalDamage, true, undefined, true, 'mind');
+
+                    if (isPowerful && i === attackObjects.length - 2) {
+                        let powerfulEffect = getTempPoolObject('tutorial', 'rune_energy_large.png', 'specialAttack', 1300);
+                        powerfulEffect.setAlpha(0.05).setDepth(999).setScale(3.9, 2.5).setPosition(attackObj.x, attackObj.y - 80);
+                        playSound('thunder');
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 125,
+                            alpha: 1,
+                        });
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 300,
+                            y: "+=76",
+                            ease: 'Back.easeOut'
+                        });
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 125,
+                            scaleX: 3.5,
+                            scaleY: 4.2,
+                            ease: "Quint.easeIn",
+                            onComplete: () => {
+                                messageBus.publish('setSlowMult', 0.25, 15);
+                                this.scene.tweens.add({
+                                    targets: powerfulEffect,
+                                    duration: 100,
+                                    scaleY: 3.5,
+                                    ease: "Cubic.easeOut"
+                                });
+                                this.scene.tweens.add({
+                                    delay: 200,
+                                    targets: powerfulEffect,
+                                    duration: 900,
+                                    alpha: 0,
+                                    ease: "Cubic.easeOut"
+                                });
+                                this.scene.tweens.add({
+                                    delay: 200,
+                                    targets: powerfulEffect,
+                                    duration: 900,
+                                    scaleX: 4,
+                                    scaleY: 4,
+                                    ease: 'Cubic.easeIn'
+                                });
+                            }
+                        });
+                    }
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead && !globalObjects.player.dead) {
                         let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 14, 'spells', 'energyTarget1.png').play('energyTarget').setAlpha(0.2).setScale(0.95).setRotation(Math.PI*0.15).setBlendMode(Phaser.BlendModes.ADD);
@@ -2191,7 +2278,7 @@ class SpellManager {
         }
 
         let yOffset = Math.floor(additionalDamage * 0.25);
-
+        let isPowerful = additionalDamage * numAdditionalAttacks + additionalDamage * 3 > 52;
         for (let i = 0; i < allStrikeObjects.length; i++) {
             let currStrikeObj = allStrikeObjects[i];
             let isLeftStrike = i % 2 == isNormalDir;
@@ -2232,7 +2319,7 @@ class SpellManager {
                             playSound('void_strike_hit');
                             messageBus.publish('enemyTakeDamage', damageDealt, true, undefined, 'void');
                             messageBus.publish('setPauseDur', 25);
-                            messageBus.publish('inflictVoidBurn', damageDealt, 2);
+                            messageBus.publish('inflictVoidBurn', damageDealt, 2, isPowerful);
                             currStrikeObj.setScale(currStrikeObj.scaleX * 1.03, currStrikeObj.scaleY * 1.03);
                             this.scene.tweens.add({
                                 targets: currStrikeObj,
@@ -2774,6 +2861,8 @@ class SpellManager {
         } else if (numTotalAttacks >= 2) {
             numBlackHolePre = 2;
         }
+        let isPowerful = numTotalAttacks * (20 + additionalDamage) > 58;
+
         for (let i = 0; i < numBlackHolePre; i++) {
             let voidObjPre = this.scene.add.image(gameConsts.halfWidth, 210, 'spells', 'blackHolePre.png');
             voidObjPre.rotation = Math.random() * 6.28;
@@ -2898,6 +2987,49 @@ class SpellManager {
                     messageBus.publish('disruptOpponentAttackPercent', isFirstAttack ? 0.6 : 0.35);
                     messageBus.publish('setPauseDur', 25);
                     screenShake(5);
+
+                    if (isPowerful && i === numTotalAttacks - 1) {
+                        let powerfulEffect = getTempPoolObject('tutorial', 'rune_void_large.png', 'specialAttack', 1300);
+                        powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5.2).setPosition(gameConsts.halfWidth, 235).setRotation(-3);
+                        playSound('void_body');
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 125,
+                            alpha: 1,
+                        });
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 1250,
+                            rotation: 0,
+                            ease: 'Quart.easeOut'
+                        });
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 125,
+                            scaleX: 3.2,
+                            scaleY: 3.2,
+                            ease: "Quint.easeIn",
+                            onComplete: () => {
+                                messageBus.publish('setSlowMult', 0.25, 15);
+                                this.scene.tweens.add({
+                                    delay: 200,
+                                    targets: powerfulEffect,
+                                    duration: 900,
+                                    alpha: 0,
+                                    ease: "Cubic.easeOut"
+                                });
+                                this.scene.tweens.add({
+                                    delay: 200,
+                                    targets: powerfulEffect,
+                                    duration: 900,
+                                    scaleX: 4,
+                                    scaleY: 4,
+                                    ease: 'Cubic.easeIn'
+                                });
+                            }
+                        });
+                    }
+
                 });
                 if (additionalDamage > 1) {
                     let rockObj = this.scene.add.image(gameConsts.halfWidth, 210, 'spells', 'rockCircle.png');

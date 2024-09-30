@@ -2771,7 +2771,7 @@ const ENABLE_KEYBOARD = true;
          }
      }
 
-     applyVoidBurn(damage = 1, number = 5) {
+     applyVoidBurn(damage = 1, number = 5, isPowerful) {
         if (!globalObjects.currentEnemy) {
             return;
         }
@@ -2819,6 +2819,47 @@ const ENABLE_KEYBOARD = true;
              this.fireVoidSpike(this.voidSliceImage1, baseScale, damage);
              this.currVoidAnim = PhaserScene.time.delayedCall(700, () => {
                  this.fireVoidSpike(this.voidSliceImage3, baseScale, damage);
+                 if (isPowerful) {
+                     let powerfulEffect = getTempPoolObject('tutorial', 'rune_void_large.png', 'specialAttack', 1300);
+                     powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5).setPosition(gameConsts.halfWidth, this.voidSliceImage3.y - 42).setRotation(-3);
+                     playSound('void_body');
+                     this.scene.tweens.add({
+                         targets: powerfulEffect,
+                         duration: 125,
+                         alpha: 1,
+                     });
+                     this.scene.tweens.add({
+                         targets: powerfulEffect,
+                         duration: 1250,
+                         rotation: 0,
+                         ease: 'Quart.easeOut'
+                     });
+                     this.scene.tweens.add({
+                         targets: powerfulEffect,
+                         duration: 125,
+                         scaleX: 3.2,
+                         scaleY: 3.2,
+                         ease: "Quint.easeIn",
+                         onComplete: () => {
+                             messageBus.publish('setSlowMult', 0.25, 15);
+                             this.scene.tweens.add({
+                                 delay: 200,
+                                 targets: powerfulEffect,
+                                 duration: 900,
+                                 alpha: 0,
+                                 ease: "Cubic.easeOut"
+                             });
+                             this.scene.tweens.add({
+                                 delay: 200,
+                                 targets: powerfulEffect,
+                                 duration: 900,
+                                 scaleX: 4,
+                                 scaleY: 4,
+                                 ease: 'Cubic.easeIn'
+                             });
+                         }
+                     });
+                 }
              })
          })
 

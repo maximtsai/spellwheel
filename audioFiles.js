@@ -89,8 +89,10 @@ const audioFiles = [
     {name: 'mind_ultimate_cast', src: 'audio/mind_ultimate_cast.mp3'},
     {name: 'mind_ultimate_loop_1', src: 'audio/mind_ultimate_loop_1.mp3'},
     {name: 'mind_ultimate_loop_2', src: 'audio/mind_ultimate_loop_2.mp3'},
+    {name: 'thunder', src: 'audio/thunder.mp3'},
 
     {name: 'clocktick1', src: 'audio/clocktick1.mp3'},
+    {name: 'time_hard', src: 'audio/time_hard.mp3'},
     {name: 'time_body', src: 'audio/time_body.mp3'},
     {name: 'time_strike_buff', src: 'audio/time_strike_buff.mp3'},
     {name: 'time_strike', src: 'audio/time_strike.mp3'},

@@ -3287,8 +3287,8 @@
      }
 
      createPokePower() {
-         this.currentPowerHand = this.addImage(gameConsts.halfWidth, this.y - 50, 'deathfinal', 'poke_glow.png').setAlpha(0).setScale(0.7);
-         this.currentPowerText = this.addBitmapText(gameConsts.halfWidth, this.currentPowerHand.y - 35, 'damage', "DMG\n+0", 34, 1).setAlpha(0).setDepth(50).setOrigin(0.5, 0.5);
+         this.currentPowerHand = this.addImage(gameConsts.halfWidth - 10, this.y - 48, 'deathfinal', 'poke_glow.png').setAlpha(0).setScale(0.7);
+         this.currentPowerText = this.addBitmapText(gameConsts.halfWidth, this.currentPowerHand.y - 30, 'damage', "DMG\n+0", 34, 1).setAlpha(0).setDepth(50).setOrigin(0.5, 0.5);
          this.addTween({
              targets: this.currentPowerText,
              alpha: 1,
@@ -3479,8 +3479,8 @@
      }
 
      createOkayPower() {
-         this.currentPowerHand = this.addImage(gameConsts.halfWidth + 35, this.y - 55, 'deathfinal', 'okay_glow.png').setAlpha(0).setScale(0.7);
-         this.currentPowerText = this.addBitmapText(gameConsts.halfWidth, this.currentPowerHand.y - 35, 'heal', "", 34, 1).setAlpha(0).setDepth(50).setOrigin(0.5, 0.5);
+         this.currentPowerHand = this.addImage(gameConsts.halfWidth + 35, this.y - 52, 'deathfinal', 'okay_glow.png').setAlpha(0).setScale(0.7);
+         this.currentPowerText = this.addBitmapText(gameConsts.halfWidth, this.currentPowerHand.y - 31, 'heal', "", 40, 1).setAlpha(0).setDepth(50).setOrigin(0.5, 0.5);
          this.currentPowerText.startY = this.currentPowerText.y;
          this.currentPowerExtra = this.addImage(gameConsts.halfWidth, this.y + 10, 'blurry', 'green_star.webp').setAlpha(0).setRotation(Math.PI * 0.25);
          this.addTween({

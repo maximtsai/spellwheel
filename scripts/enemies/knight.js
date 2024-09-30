@@ -781,6 +781,48 @@
                      name: gameVars.isHardMode ? "|10" : "|8",
                      announceName: "INITIAL STRIKE",
                      desc: "The mysterious knight charges at you!",
+                     chargeAmt: 200,
+                     damage: 20,
+                     prepareSprite: 'void_knight_pullback.png',
+                     attackSprites: ['void_knight_attack.png'],
+                     attackFinishFunction: () => {
+                         this.makeSlashEffect();
+                         playSound('sword_hit', 0.75);
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: gameVars.isHardMode ? "|10" : "|8",
+                     announceName: "INITIAL STRIKE",
+                     desc: "The mysterious knight charges at you!",
+                     chargeAmt: 200,
+                     damage: 20,
+                     prepareSprite: 'void_knight_pullback.png',
+                     attackSprites: ['void_knight_attack.png'],
+                     attackFinishFunction: () => {
+                         this.makeSlashEffect();
+                         playSound('sword_hit', 0.75);
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: gameVars.isHardMode ? "|10" : "|8",
+                     announceName: "INITIAL STRIKE",
+                     desc: "The mysterious knight charges at you!",
+                     chargeAmt: 200,
+                     damage: 20,
+                     prepareSprite: 'void_knight_pullback.png',
+                     attackSprites: ['void_knight_attack.png'],
+                     attackFinishFunction: () => {
+                         this.makeSlashEffect();
+                         playSound('sword_hit', 0.75);
+                         this.sigilEffect.visible = true;
+                     }
+                 },
+                 {
+                     name: gameVars.isHardMode ? "|10" : "|8",
+                     announceName: "INITIAL STRIKE",
+                     desc: "The mysterious knight charges at you!",
                      chargeAmt: 400,
                      damage: gameVars.isHardMode ? 10 : 8,
                      prepareSprite: 'void_knight_pullback.png',
@@ -797,7 +839,7 @@
              [
                  // 1
                  {
-                     name: "VOID SHIELD #3",
+                     name: "DARK SHIELD #3",
                      announceName: "VOID SHIELD (3)",
                      desc: "A strange protective shield surrounds the knight",
                      isPassive: true,
@@ -918,7 +960,7 @@
              [
                  // 5
                 {
-                     name: "VOID SHIELD #7 ",
+                     name: "DARK SHIELD #7 ",
                      announceName: "VOID SHIELD",
                      chargeAmt: 800,
                      isPassive: true,

@@ -2560,16 +2560,14 @@ const ENABLE_KEYBOARD = true;
                              break;
                          case RUNE_REINFORCE:
                              let healMult = (1 - (0.5 ** multiplier));
-                             let recentlyTakenDamage = globalObjects.player.getRecentlyTakenDamageAmt();
-                             let recentlyHealAmt = Math.ceil(recentlyTakenDamage * healMult);
-                             let overheal = Math.max(0, globalObjects.player.health + recentlyHealAmt - globalObjects.player.healthMax)
-                             let healDelayed = this.delayedDamage - overheal;
-                             let healAmt = recentlyHealAmt + Math.ceil(healDelayed * healMult);
-                             // this.updateTextIfDifferent(this.spellNameText, 'UNDO WOUNDS (\\'+ healAmt + ")")
-                             embodimentText += " (\\" + healAmt + ")";
+                             let healToDisplay = globalObjects.player.getSelfHealAmt(healMult);
+                             let maxHealAmt = globalObjects.player.lastInjuryHealth - globalObjects.player.health;
+                             let healToFlash = Math.min(maxHealAmt, globalObjects.player.recentlyTakenDamageAmt * healMult);
+
+                             embodimentText += " (\\" + healToDisplay + ")";
                              this.updateSpellDescriptorText(getLangText('time_reinforce_desc' + postPendTextName));
-                            if (healAmt > 1) {
-                                globalObjects.player.flashRecentInjury(false, recentlyHealAmt, true)
+                            if (healToFlash > 1) {
+                                globalObjects.player.flashRecentInjury(false, healToFlash, true)
                             }
 
                              break;

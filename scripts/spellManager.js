@@ -335,6 +335,10 @@ class SpellManager {
                                 targets: powerfulEffect,
                                 duration: 125,
                                 alpha: 1,
+                            });
+                            this.scene.tweens.add({
+                                targets: powerfulEffect,
+                                duration: 125,
                                 y: "+=16",
                                 scaleX: 3.5,
                                 scaleY: 3.5,
@@ -342,14 +346,14 @@ class SpellManager {
                                 onComplete: () => {
                                     messageBus.publish('setSlowMult', 0.25, 15);
                                     this.scene.tweens.add({
-                                        delay: 10,
+                                        delay: 100,
                                         targets: powerfulEffect,
                                         duration: 1000,
                                         alpha: 0,
                                         ease: "Cubic.easeOut"
                                     });
                                     this.scene.tweens.add({
-                                        delay: 10,
+                                        delay: 100,
                                         targets: powerfulEffect,
                                         duration: 1000,
                                         scaleX: 4,
@@ -799,6 +803,8 @@ class SpellManager {
         let bonusScaleX = additionalDamage * 0.007;
         let bonusScaleY = additionalDamage * 0.0025;
 
+        let isPowerful = numAdditionalAttacks * (24 + additionalDamage) > 74;
+
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -separationAmtX + separationAmtX * 2 * i;
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
@@ -942,6 +948,44 @@ class SpellManager {
                     screenShake(5);
                     zoomTemp(1.01 + additionalDamage * 0.00025);
                     this.createDamageEffect(gameConsts.halfWidth, 140, rockObj.depth);
+
+                    if (isPowerful && i === attackObjects.length - 2) {
+                        let powerfulEffect = getTempPoolObject('tutorial', 'rune_matter_large.png', 'specialAttack', 1300);
+                        powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5.2).setPosition(gameConsts.halfWidth, 190);
+                        playSound('rock_crumble');
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 125,
+                            alpha: 1,
+                        });
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 125,
+                            y: "+=16",
+                            scaleX: 3.5,
+                            scaleY: 3.5,
+                            ease: "Quint.easeIn",
+                            onComplete: () => {
+                                messageBus.publish('setSlowMult', 0.25, 15);
+                                this.scene.tweens.add({
+                                    delay: 100,
+                                    targets: powerfulEffect,
+                                    duration: 1000,
+                                    alpha: 0,
+                                    ease: "Cubic.easeOut"
+                                });
+                                this.scene.tweens.add({
+                                    delay: 100,
+                                    targets: powerfulEffect,
+                                    duration: 1000,
+                                    scaleX: 4,
+                                    scaleY: 4,
+                                    ease: 'Cubic.easeIn'
+                                });
+                            }
+                        });
+                    }
+
                     this.scene.tweens.add({
                         targets: rockObj,
                         scaleY: 0.65 + bonusScaleY,

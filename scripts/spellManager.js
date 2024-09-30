@@ -328,29 +328,32 @@ class SpellManager {
                         });
 
                         if (isPowerful && i === rockObjects.length - 2) {
-                            let powerfulEffect = getTempPoolObject('tutorial', 'rune_matter_large.png', 'specialAttack', 1000);
-                            powerfulEffect.setAlpha(0.05).setDepth(999).setScale(4.5).setPosition(rockObj.x, rockObj.y);
+                            let powerfulEffect = getTempPoolObject('tutorial', 'rune_matter_large.png', 'specialAttack', 1300);
+                            powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5.2).setPosition(rockObj.x, rockObj.y);
                             playSound('rock_crumble');
                             this.scene.tweens.add({
                                 targets: powerfulEffect,
-                                duration: 110,
+                                duration: 125,
                                 alpha: 1,
-                                scaleX: 3,
-                                scaleY: 3,
+                                y: "+=16",
+                                scaleX: 3.5,
+                                scaleY: 3.5,
                                 ease: "Quint.easeIn",
                                 onComplete: () => {
                                     messageBus.publish('setSlowMult', 0.25, 15);
                                     this.scene.tweens.add({
+                                        delay: 10,
                                         targets: powerfulEffect,
-                                        duration: 850,
+                                        duration: 1000,
                                         alpha: 0,
-                                        ease: "Quart.easeOut"
+                                        ease: "Cubic.easeOut"
                                     });
                                     this.scene.tweens.add({
+                                        delay: 10,
                                         targets: powerfulEffect,
-                                        duration: 850,
-                                        scaleX: 2.8,
-                                        scaleY: 2.8,
+                                        duration: 1000,
+                                        scaleX: 4,
+                                        scaleY: 4,
                                         ease: 'Cubic.easeIn'
                                     });
                                 }

@@ -721,6 +721,16 @@ let textData = {
         "ru": "Вы больше не видите необходимости совершенствоваться. Вы уверены, что достаточно сильны, чтобы принять любой вызов.",
         "es": "Ya no ves la necesidad de mejorar. Estás seguro de que eres lo suficientemente fuerte como para asumir cualquier desafío.",
         "jp": "これ以上改善する必要はないと思います。あなたは、どんな挑戦にも立ち向かうのに十分な強さを持っていると確信しています。"
+    },
+    "watch_health": {
+        "en_us": "Watch your health",
+        "fr": "Surveillez votre santé",
+        "zh_tw": "注意你的生命",
+        "zh_cn": "注意你的生命",
+        "ru": "",
+        "es": "",
+        "jp": "。"
+
     }
 }
 

@@ -1238,7 +1238,7 @@ class Player {
                                 this.cheatIcons = [];
                             }
                         });
-                        deathTrainingButton.addText(getLangText('back_to_training'), {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
+                        deathTrainingButton.addText(getLangText('back_to_training'), {fontFamily: 'opensans', fontSize: 34, color: '#000000', align: 'center'});
                         deathTrainingButton.setDepth(200);
                         if (CURRENT_LEVEL >= 7 || CURRENT_LEVEL < 0) {
                             deathTrainingButton.setState(DISABLE);
@@ -1285,7 +1285,7 @@ class Player {
                                 this.cheatIcons = [];
                             }
                         });
-                        deathRetryButton.addText(getLangText('retry'), {fontFamily: 'garamondmax', fontSize: 34, color: '#000000', align: 'center'});
+                        deathRetryButton.addText(getLangText('retry'), {fontFamily: 'opensans', fontSize: 34, color: '#000000', align: 'center'});
                         deathRetryButton.setDepth(200);
                     }
                 });

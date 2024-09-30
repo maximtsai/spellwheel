@@ -865,6 +865,13 @@ function cleanupCutscene() {
 }
 
 function rollCredits() {
+    let darkBG = getBackgroundBlackout(CUTSCENE_DEPTH);
+    darkBG.setDepth()
+    PhaserScene.tweens.add({
+        targets: [darkBG],
+        alpha: 1,
+        duration: 1000,
+    });
     let bgMusic = playMusic('death3_harp', 0.1);
     fadeInSound(bgMusic, 0.8, 3000);
     let textCredits = [

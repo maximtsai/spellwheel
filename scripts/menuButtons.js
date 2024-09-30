@@ -13,18 +13,20 @@ function clearOnlyMenuButtons() {
         globalObjects.lvlPickButton.destroy();
     }
     globalObjects.startButton.destroy();
-    globalObjects.lvlButton.destroy();
-    globalObjects.cheatButton.destroy();
-    globalObjects.cheatButton2.destroy();
-    globalObjects.cheatButton3.destroy();
+    // globalObjects.cheatButton.destroy();
+    // globalObjects.cheatButton2.destroy();
+    // globalObjects.cheatButton3.destroy();
     globalObjects.cheatButton4.destroy();
-    globalObjects.cheatButton5.destroy();
+    // globalObjects.cheatButton5.destroy();
 
+
+
+    globalObjects.creditsButton.destroy();
+    /*
+    globalObjects.lvlButton.destroy();
     globalObjects.level3Button.destroy();
     globalObjects.lvl5Button.destroy();
     globalObjects.lvl6Button.destroy();
-
-    globalObjects.creditsButton.destroy();
     globalObjects.lvl7Button.destroy();
     globalObjects.lvl8Button.destroy();
     globalObjects.lvl9Button.destroy();
@@ -32,6 +34,7 @@ function clearOnlyMenuButtons() {
     globalObjects.lvl11Button.destroy();
     globalObjects.lvl12Button.destroy();
     globalObjects.lvl13Button.destroy();
+     */
 
 
 }
@@ -229,6 +232,7 @@ function showMainMenuButtons() {
 
     let hideCheatConst = 0;
 
+    /*
     globalObjects.cheatButton = new Button({
         normal: {
             ref: "menu_btn_normal.png",
@@ -303,6 +307,7 @@ function showMainMenuButtons() {
     });
     globalObjects.cheatButton3.setScale(0.5);
     globalObjects.cheatButton3.addText("+20 HP CHEAT", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    */
 
     globalObjects.cheatButton4 = new Button({
         normal: {
@@ -328,7 +333,7 @@ function showMainMenuButtons() {
     });
     globalObjects.cheatButton4.setScale(0.5);
     globalObjects.cheatButton4.addText("INFINITE AMMO", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
-
+    /*
     globalObjects.cheatButton5 = new Button({
         normal: {
             ref: "menu_btn_normal.png",
@@ -355,7 +360,7 @@ function showMainMenuButtons() {
     });
     globalObjects.cheatButton5.setScale(0.5);
     globalObjects.cheatButton5.addText("LOW HEALTH", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
-
+*/
 
 
     // globalObjects.levelSelectButton = new Button({
@@ -384,6 +389,7 @@ function showMainMenuButtons() {
     // globalObjects.levelSelectButton.setScale(0.5);
     // globalObjects.levelSelectButton.addText("LEVEL GOBLIN", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
 
+    /*
     globalObjects.level3Button = new Button({
         normal: {
             ref: "menu_btn_normal.png",
@@ -670,7 +676,7 @@ function showMainMenuButtons() {
     });
     globalObjects.lvl13Button.setScale(0.5);
     globalObjects.lvl13Button.addText("LEVEL 13", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'});
-
+    */
 
     // globalObjects.lvlButton.destroy();
     // globalObjects.cheatButton.destroy();
@@ -711,7 +717,7 @@ function showMainMenuButtons() {
         },
         onMouseUp: () => {
             //showCutscene1();
-            showCutscene1();
+            rollCredits();
             return;
             let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'credits.png').setDepth(100000).setScale(0.975);
             PhaserScene.tweens.add({

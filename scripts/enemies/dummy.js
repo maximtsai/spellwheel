@@ -782,7 +782,7 @@
                              }
                          });
                          this.addTimeout(() => {
-                             globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 23, "Watch your health", 'center');
+                             globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 23, getLangText('watch_health'), 'center');
                              this.addTimeout(() => {
                                  this.playerSpellCastAny = messageBus.subscribe('playerCastedSpell', () => {
                                      this.addTimeout(() => {
@@ -859,7 +859,7 @@
                              }
                          });
                          this.addTimeout(() => {
-                             globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 23, "Watch your health", 'center');
+                             globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 23, getLangText('watch_health'), 'center');
                              this.addTimeout(() => {
                                  this.playerSpellCastAny = messageBus.subscribe('playerCastedSpell', () => {
                                      this.addTimeout(() => {

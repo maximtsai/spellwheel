@@ -760,7 +760,7 @@
                  },
                  {
                      name: "|12 ",
-                     chargeAmt: 400,
+                     chargeAmt: 350,
                      damage: 12,
                      isBigMove: true,
                      attackFinishFunction: () => {
@@ -804,7 +804,7 @@
                  },
                  {
                      name: ";50",
-                     chargeAmt: 800,
+                     chargeAmt: 700,
                      damage: 50,
                      isBigMove: true,
                      attackFinishFunction: () => {

@@ -2662,6 +2662,23 @@ const ENABLE_KEYBOARD = true;
          } else {
              this.spellNameText.visible = true;
          }
+         if (globalObjects.currentEnemy && !globalObjects.currentEnemy.isDestroyed && !globalObjects.currentEnemy.dead) {
+             if (embodimentText == '' || !closestElement.runeName) {
+             } else if (embodimentText == 'STRIKE') {
+                 if (closestElement.runeName == RUNE_VOID) {
+                     globalObjects.currentEnemy.setPredictScale(36.5);
+                 } else {
+                     globalObjects.currentEnemy.setPredictScale(25);
+                 }
+             } else if (embodimentText == 'ULTIMATE') {
+                 if (closestElement.runeName == RUNE_MATTER) {
+                     globalObjects.currentEnemy.setPredictScale(25);
+                 }
+             } else {
+                 globalObjects.currentEnemy.setPredictScale();
+             }
+         }
+
          this.spellActionText.setText(embodimentText)
 
         if (this.castDisabled || this.manualDisabled) {
@@ -2815,7 +2832,7 @@ const ENABLE_KEYBOARD = true;
              duration: gameVars.gameManualSlowSpeed * 2000,
          });
 
-         this.currVoidAnim = PhaserScene.time.delayedCall(1200, () => {
+         this.currVoidAnim = PhaserScene.time.delayedCall(1100, () => {
              this.fireVoidSpike(this.voidSliceImage1, baseScale, damage);
              this.currVoidAnim = PhaserScene.time.delayedCall(700, () => {
                  this.fireVoidSpike(this.voidSliceImage3, baseScale, damage);

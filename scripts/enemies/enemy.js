@@ -258,17 +258,19 @@ class Enemy {
         this.chargeBarAngry.setDepth(9);
         this.chargeBarAngry.visible = false;
 
-        this.chargeBarEst1 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'white_pixel.png');
+        this.chargeBarEst1 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'soft_blue_pixel.png');
         this.chargeBarEst1.setScale(6.6, this.chargeBarMax.scaleY - 2);
         this.chargeBarEst1.setOrigin(1, 0.5);
         this.chargeBarEst1.alpha = 0;
-        this.chargeBarEst1.setDepth(9).setVisible(false);
+        this.chargeBarEst1.setDepth(9);
+        this.chargeBarShow = false;
+        this.chargeBarEstScale = 6.6;
 
-        this.chargeBarEst2 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'white_pixel.png');
+        this.chargeBarEst2 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'soft_blue_pixel.png');
         this.chargeBarEst2.setScale(6.6, this.chargeBarMax.scaleY - 2);
         this.chargeBarEst2.setOrigin(0, 0.5);
         this.chargeBarEst2.alpha = 0;
-        this.chargeBarEst2.setDepth(9).setVisible(false);
+        this.chargeBarEst2.setDepth(9);
 
 
         let attackNameYPos = isMobile ? this.chargeBarMax.y - 23 : this.chargeBarMax.y - 22
@@ -472,8 +474,7 @@ class Enemy {
 
                 }
             }
-            this.chargeBarEst1.visible = false;
-            this.chargeBarEst2.visible = false;
+            this.chargeBarShow = false;
             if (this.isAngry) {
                 let increaseMult = Math.max(5, 0.33 * chargeMult);
                 if (challenges.angryEnemies) {
@@ -487,9 +488,8 @@ class Enemy {
                 let almostDone = this.attackCharge > this.nextAttackChargeNeeded - 65;
                 if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone && this.castAggravateCharge <= 0) {
                     // this.attackCharge += timeChange * 0.02 * this.slowMult;
-                    this.chargeBarCurr.alpha = 0.47;
-                    this.chargeBarEst1.visible = true;
-                    this.chargeBarEst2.visible = true;
+                    this.chargeBarCurr.alpha = 0.62;
+                    this.chargeBarShow = true;
                 } else {
                     // Normal slow chargin
                     if (almostDone || chargeMult > 1 || this.castAggravateCharge > 0) {
@@ -503,7 +503,7 @@ class Enemy {
                             }
                         }
                         if (!(chargeMult > 1) && !almostDone) {
-                            this.chargeBarCurr.alpha = 0.6;
+                            this.chargeBarCurr.alpha = 0.83;
                         } else {
                             this.chargeBarCurr.alpha = 0.9;
                         }
@@ -511,27 +511,25 @@ class Enemy {
                         this.attackCharge += castAggravateBonus * 2;
 
                     } else {
-                        this.chargeBarCurr.alpha = 0.47;
-                        this.chargeBarEst1.visible = true;
-                        this.chargeBarEst2.visible = true;
+                        this.chargeBarCurr.alpha = 0.62;
+                        this.chargeBarShow = true;
                     }
 
                 }
             }
             this.chargeBarCurr.scaleX = Math.min(this.nextAttackChargeNeeded * 0.2, this.attackCharge * 0.2 + 1);
-            if (this.chargeBarEst1.visible) {
+            if (this.chargeBarShow) {
                 this.chargeBarEst1.x = gameConsts.halfWidth - this.chargeBarCurr.scaleX;
                 this.chargeBarEst2.x = gameConsts.halfWidth + this.chargeBarCurr.scaleX;
                 if (!this.chargeBarEst1.currAnim) {
                     this.chargeBarEst1.alpha = 0;
                     this.chargeBarEst2.alpha = 0;
                     this.chargeBarEst1.currAnim = PhaserScene.tweens.add({
-                        delay: 250,
+                        delay: 300,
                         targets: [this.chargeBarEst1, this.chargeBarEst2],
-                        duration: 1500,
-                        alpha: 0.25,
+                        duration: 1250,
+                        alpha: 0.33,
                         yoyo: true,
-                        ease: 'Quad.easeIn',
                         repeat: -1
                     });
                 }
@@ -539,10 +537,19 @@ class Enemy {
                 if (this.chargeBarEst1.currAnim) {
                     this.chargeBarEst1.currAnim.stop();
                     this.chargeBarEst1.currAnim = null;
-                    this.chargeBarEst1.alpha = 0;
-                    this.chargeBarEst2.alpha = 0;
+                    PhaserScene.tweens.add({
+                        targets: [this.chargeBarEst1, this.chargeBarEst2],
+                        duration: 470 + this.chargeBarEst1.scaleX * 4,
+                        alpha: 0,
+                        ease: 'Quad.easeOut',
+                    });
                 }
             }
+            let trueScale = Math.min(this.chargeBarEstScale, (this.chargeBarMax.scaleX - this.chargeBarCurr.scaleX) * 0.5 - 1)
+            this.chargeBarEst1.scaleX = trueScale;
+            this.chargeBarEst2.scaleX = trueScale;
+            // this.setPredictScale();
+
             let goalAlpha = 1 * this.chargeBarCurr.scaleX / (this.chargeBarMax.scaleX + 1) + this.chargeBarAlphaOffset;
 
             let changeSpd = 0.06 * dt;
@@ -659,7 +666,7 @@ class Enemy {
             // slow multiplier expired
             this.slowMultDuration -= timeChange;
             this.chargeBarAngry.alpha = this.chargeBarAngry.midAlpha + 0.05;
-            this.chargeBarCurr.alpha = 0.55;
+            this.chargeBarCurr.alpha = 0.58;
             if (this.slowMultDuration <= 0) {
                 this.slowMult = 1;
                 this.chargeBarAngry.alpha = this.chargeBarAngry.midAlpha * 1.63;
@@ -2265,5 +2272,25 @@ class Enemy {
 
     addCastAggravate(amt) {
         this.castAggravateCharge += amt;
+    }
+
+    setPredictScale(amt = 6.6) {
+        if (this.lastChargeEstScale != this.chargeBarEstScale) {
+            this.lastChargeEstScale = this.chargeBarEstScale;
+            if (this.chargeBarEst1.currAnim) {
+                this.chargeBarEst1.currAnim.stop();
+                this.chargeBarEst1.alpha = 0.33;
+                this.chargeBarEst2.alpha = 0.33;
+                this.chargeBarEst1.currAnim = PhaserScene.tweens.add({
+                    delay: 300,
+                    targets: [this.chargeBarEst1, this.chargeBarEst2],
+                    duration: 1250,
+                    alpha: 0,
+                    yoyo: true,
+                    repeat: -1,
+                });
+            }
+        }
+        this.chargeBarEstScale = amt;
     }
 }

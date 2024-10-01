@@ -866,6 +866,8 @@ function cleanupCutscene() {
 
 function rollCredits() {
     let darkBG = getBackgroundBlackout(CUTSCENE_DEPTH);
+    globalObjects.encyclopedia.hideButton();
+    globalObjects.options.hideButton();
     darkBG.setDepth()
     PhaserScene.tweens.add({
         targets: [darkBG],

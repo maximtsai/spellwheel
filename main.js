@@ -109,8 +109,8 @@ let deltaScale = 1;
 let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 3;
 let canResizeGame = false;
-let url1 = 'itch.';// 'crazygames';
-let url2 = 'localhost';// 'localhost';
+let url1 = '';// 'crazygames';
+let url2 = 'maximtsai';// 'localhost';
 let url3 = 'adayofjoy';// '1001juegos';
 
 function preload ()
@@ -123,14 +123,9 @@ function preload ()
 
     if (isMobile && screen && screen.orientation && screen.orientation.lock) {
         var myScreenOrientation = window.screen.orientation;
-        console.log(myScreenOrientation)
         myScreenOrientation.lock('portrait')
     }
-    if (!document.location.href.includes(url1) && !document.location.href.includes(url2)) {
-        // Stops execution of rest of game
-        console.log(document.location.href);
-        return;
-    }
+
     canResizeGame = true;
     resizeGame();
     let gameDiv = document.getElementById('preload-notice');
@@ -143,6 +138,10 @@ function preload ()
 
 function create ()
 {
+    if (!document.location.href.includes(url1) && !document.location.href.includes(url2)) {
+        // Stops execution of rest of game
+        return;
+    }
     oldTime = Date.now();
     PhaserScene = this;
     onPreloadComplete(this);

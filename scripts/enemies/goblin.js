@@ -244,7 +244,7 @@
                          this.repeatTweenBreathe()
                          this.shieldAdded = true;
 
-                         messageBus.publish("showCombatText", getLangText('goblin_shield'), -18);
+                         messageBus.publish("showCombatText", getLangText('goblin_shield'), -22);
                      }
                  }
              ],
@@ -592,7 +592,7 @@
                             }
                         });
                     }, 250)
-                 }, 1400);
+                 }, 2100);
              }
          });
     }

@@ -75,7 +75,7 @@ function setupLoadingBar(scene) {
         icons[i].scrollFactorX = 0.3; icons[i].scrollFactorY = 0.3;
     }
 
-    loadObjects.loadingText = scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 60, 'LOADING...', {fontFamily: 'opensans', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+    loadObjects.loadingText = scene.add.text(gameConsts.halfWidth, gameConsts.height - 332, 'LOADING...', {fontFamily: 'opensans', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
     loadObjects.loadingText.setScale(0.6);
     loadObjects.loadingText.setAlign('center');
     loadObjects.loadingText.setOrigin(0.5, 0);

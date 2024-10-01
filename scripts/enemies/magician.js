@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 125 : 110;
+         this.health = gameVars.isHardMode ? 130 : 110;
          this.damageNumOffset = 45;
          this.damageNumOffsetDefault = this.damageNumOffset;
          this.lifeOne = true;
@@ -979,8 +979,9 @@
                         let dirAngle = i * Math.PI / angleDivider;
                         let offsetX = Math.sin(dirAngle) * 90;
                         let offsetY = -Math.cos(dirAngle) * 80;
+                        let isExtraLarge = i % (gameVars.isHardMode ? 7 : 6) == 0;
                         let clockName = 'clock2.png';
-                        if (i % 6 == 0) {
+                        if (isExtraLarge) {
                             clockName = 'clock4.png';
                         }
 
@@ -990,21 +991,21 @@
                         this.addTween({
                             duration: 400,
                             targets: timeObj,
-                            x: startX + offsetX * (i % 6 == 0 ? 1.55 : 1.6),
-                            y: startY + offsetY * (i % 6 == 0 ? 1.55 : 1.6),
+                            x: startX + offsetX * (isExtraLarge ? 1.55 : 1.6),
+                            y: startY + offsetY * (isExtraLarge ? 1.55 : 1.6),
                             ease: 'Quart.easeOut'
                         });
-                        let numAttacks = i + 1;
-                        if (i < gameVars.isHardMode ? 8 : 7) {
-                            this.attackName.setText("}4x" + numAttacks + "}");
-                        } else if (i < gameVars.isHardMode ? 17 : 15) {
-                            this.attackName.setText("}}4x" + numAttacks + "}}");
+                        let numAttacks = (i + 1) * 2;
+                        if (i < (gameVars.isHardMode ? 8 : 7)) {
+                            this.attackName.setText("}2x" + numAttacks + "}");
+                        } else if (i < (gameVars.isHardMode ? 17 : 15)) {
+                            this.attackName.setText("}}2x" + numAttacks + "}}");
                             this.repositionAngrySymbol();
-                        } else if (i < gameVars.isHardMode ? 26 : 23) {
-                            this.attackName.setText("}}}4x" + numAttacks + "}}}");
+                        } else if (i < (gameVars.isHardMode ? 25 : 22)) {
+                            this.attackName.setText("}}}2x" + numAttacks + "}}}");
                             this.repositionAngrySymbol();
                         } else {
-                            this.attackName.setText("}}}}4x" + numAttacks + "}}}}");
+                            this.attackName.setText("}}}}2x" + numAttacks + "}}}}");
                             this.repositionAngrySymbol();
                             this.nextAttack.chargeMult = 9;
                             this.setDefaultSprite('time_magi.png');
@@ -1099,7 +1100,7 @@
                  {
                      name: "}4x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: gameVars.isHardMode ? 250 : 350,
+                     chargeAmt: gameVars.isHardMode ? 300 : 350,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
@@ -1122,7 +1123,7 @@
                 // 1
                  {
                      name: "\\50% MISSING HEALTH",
-                     chargeAmt: gameVars.isHardMode ? 250 : 350,
+                     chargeAmt: gameVars.isHardMode ? 250 : 300,
                      isPassive: true,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
@@ -1187,7 +1188,7 @@
             [
                 // 2
                 {
-                     name: "}4x1}",
+                     name: "}2x1}",
                      desc: "The Time Magician\nuses his ultimate attack",
                      chargeAmt: 1300,
                      isBigMove: true,
@@ -1205,7 +1206,7 @@
                          this.finishedChargingUltimate = true;
                      },
                      attackFinishFunction: () => {
-                        this.fireTimeObjects(4, undefined, 135);
+                        this.fireTimeObjects(2, undefined, 135, true);
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
                      },
@@ -1583,7 +1584,7 @@
          });
      }
 
-     fireTimeObjects(damage = 10, durBonus = 0, interval = 175) {
+     fireTimeObjects(damage = 10, durBonus = 0, interval = 175, hitTwice = false) {
          let totalTimeObjects = this.timeObjects.length;
          let projDur = 600 - Math.floor(Math.sqrt(totalTimeObjects) * 50) + durBonus;
          let timeObjectsFired = 0;
@@ -1627,7 +1628,12 @@
                      } else {
                          playSound('time_strike_hit_2');
                      }
-                     messageBus.publish("selfTakeDamage", damage, undefined, currObj.x);
+                     messageBus.publish("selfTakeDamage", damage, undefined, currObj.x + 20);
+                     if (hitTwice) {
+                         setTimeout(() => {
+                             messageBus.publish("selfTakeDamage", damage, undefined, currObj.x - 20);
+                         }, 50)
+                     }
                      currObj.destroy();
 
                  }

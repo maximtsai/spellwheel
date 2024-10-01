@@ -313,8 +313,8 @@ function showMainMenuButtons() {
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.width - 100 + hideCheatConst,
-            y: 300,
+            x: gameConsts.width - 80,
+            y: 390,
         },
         hover: {
             ref: "menu_btn_hover.png",
@@ -717,6 +717,7 @@ function showMainMenuButtons() {
         },
         onMouseUp: () => {
             //showCutscene1();
+            clearOnlyMenuButtons()
             rollCredits();
             return;
             let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'credits.png').setDepth(100000).setScale(0.975);

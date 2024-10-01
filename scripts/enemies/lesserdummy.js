@@ -534,10 +534,16 @@
                  this.addTween({
                      targets: this.sprite,
                      alpha: 0,
-                     scaleX: this.sprite.startScale * 1.2,
-                     scaleY: this.sprite.startScale * 1.2,
-                     y: "+=30",
-                     duration: 700,
+                     duration: 800,
+                 });
+                 this.addTween({
+                     targets: this.sprite,
+                     alpha: 0,
+                     scaleX: this.sprite.startScale * 1.03,
+                     scaleY: this.sprite.startScale * 1.03,
+                     y: "+=5",
+                     ease: 'Quad.easeIn',
+                     duration: 800,
                      onComplete: () => {
                          this.destroy();
                      }

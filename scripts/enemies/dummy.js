@@ -713,7 +713,7 @@
                  // 0
                  {
                      name: "}8 ",
-                     chargeAmt: 400,
+                     chargeAmt: 420,
                      damage: 8,
 
                      attackFinishFunction: () => {

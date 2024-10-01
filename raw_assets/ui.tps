@@ -280,6 +280,7 @@
                 <false/>
             </struct>
             <key type="filename">ui/newgame_paper.png</key>
+            <key type="filename">ui/newgame_paper_bot.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -387,6 +388,21 @@
                 <rect>45,24,90,49</rect>
                 <key>scale9Paddings</key>
                 <rect>45,24,90,49</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ui/paper_half.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>154,100,307,200</rect>
+                <key>scale9Paddings</key>
+                <rect>154,100,307,200</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

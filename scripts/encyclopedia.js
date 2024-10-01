@@ -360,7 +360,8 @@ class Encyclopedia {
     setFirstPage() {
         playSound('flip1');
         this.title.setText(getLangText('pre_fight_0a'));
-        let imageCover = PhaserScene.add.image(gameConsts.halfWidth - 3, gameConsts.halfHeight + 10, 'ui', 'newgame_paper.png').setDepth(this.baseDepth).setAlpha(0).setScale(1);
+        let imageCover = PhaserScene.add.image(gameConsts.halfWidth - 3, gameConsts.halfHeight + 14, 'ui', 'newgame_paper.png').setDepth(this.baseDepth).setAlpha(0).setScale(1);
+        let imageCover2 = PhaserScene.add.image(gameConsts.halfWidth - 3, gameConsts.halfHeight + 10, 'ui', 'newgame_paper_bot.png').setDepth(this.baseDepth).setAlpha(0).setScale(1);
         let smallFontSize = (language == 'zh_cn' || language == 'zh_tw') ? 24 : 18;
         let text1 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 47, getLangText('encyc_action'), {fontFamily: 'opensans', fontSize: smallFontSize, color: '#200000', align: 'center'});
         text1.setDepth(this.baseDepth).setOrigin(0.5, 0).setAlpha(0).setStroke('#ffffff', 2);
@@ -372,11 +373,12 @@ class Encyclopedia {
         let text4 = PhaserScene.add.text(gameConsts.halfWidth + 138, gameConsts.halfHeight - 125, getLangText('pre_fight_0d'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
         text4.setDepth(this.baseDepth).setAlpha(0).setOrigin(1, 0.5);
 
-        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 212, gameConsts.halfHeight - 55, getLangText('pre_fight_0g'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
+        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 212, gameConsts.halfHeight - 66, getLangText('pre_fight_0g'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
         text7.setDepth(this.baseDepth).setAlpha(0).setOrigin(1, 0.5);
         let text8 = PhaserScene.add.text(gameConsts.halfWidth - 1, gameConsts.halfHeight + 236, getLangText('pre_fight_0h'), {fontFamily: 'opensans', fontSize: 20, color: '#200000', align: 'center'});
         text8.setDepth(this.baseDepth).setAlpha(0).setOrigin(0.5, 0.5);
         this.currentPageItems.push(imageCover);
+        this.currentPageItems.push(imageCover2);
         this.currentPageItems.push(text1);
         this.currentPageItems.push(text2);
         this.currentPageItems.push(text3);

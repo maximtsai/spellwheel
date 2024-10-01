@@ -18,13 +18,14 @@ class Death3 extends Enemy {
             yoyo: true
         })
         globalObjects.magicCircle.disableMovement();
-        this.hourglassdark = this.addSprite(x - 67, y - 55, 'blurry', 'dark_blur.png').setDepth(-3).setRotation(0.09).setAlpha(0.65).setScale(1.5, 1.2).setOrigin(0.5, 0.42);
+        let mobileOffset = isMobile ? 0 : -8;
+        this.hourglassdark = this.addSprite(x - 67, y - 56 + mobileOffset, 'blurry', 'dark_blur.png').setDepth(-3).setRotation(0.09).setAlpha(0.65).setScale(1.5, 1.2).setOrigin(0.5, 0.42);
         this.hourglassdark.startY = this.hourglassdark.y;
-        this.cape = this.addSprite(x - 99, y - 35, 'deathfin', 'frame0000.png').setDepth(-3).play('ladydeathcape').setAlpha(0);
-        this.hood = this.addSprite(x - 99, y - 35, 'deathfin', 'hood0001.png').setDepth(9).play('ladydeathhood').setAlpha(0);
+        this.cape = this.addSprite(x - 99, y - 35 + mobileOffset, 'deathfin', 'frame0000.png').setDepth(-3).play('ladydeathcape').setAlpha(0);
+        this.hood = this.addSprite(x - 99, y - 35 + mobileOffset, 'deathfin', 'hood0001.png').setDepth(9).play('ladydeathhood').setAlpha(0);
         this.hood.startY = this.hood.y;
-        this.hourglassglow = this.addSprite(x - 67, y - 105, 'blurry', 'lantern_glow.png').setDepth(-3).setRotation(0.09).setAlpha(0.75).setScale(1.07).setOrigin(0.5, 0.11).setBlendMode(Phaser.BlendModes.ADD);
-        this.hourglass = this.addSprite(x - 67, y - 105, 'deathfinal', 'hourglass.png').setDepth(-3).setRotation(0.09).setOrigin(0.5, 0.03);
+        this.hourglassglow = this.addSprite(x - 67, y - 105 + mobileOffset * 1.4, 'blurry', 'lantern_glow.png').setDepth(-3).setRotation(0.09).setAlpha(0.75).setScale(1.07).setOrigin(0.5, 0.11).setBlendMode(Phaser.BlendModes.ADD);
+        this.hourglass = this.addSprite(x - 67, y - 105 + mobileOffset * 1.4, 'deathfinal', 'hourglass.png').setDepth(-3).setRotation(0.09).setOrigin(0.5, 0.03);
         this.addExtraSprite(this.hood);
         this.addExtraSprite(this.hourglass);
         this.addExtraSprite(this.hourglassglow);

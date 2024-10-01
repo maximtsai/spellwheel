@@ -258,6 +258,19 @@ class Enemy {
         this.chargeBarAngry.setDepth(9);
         this.chargeBarAngry.visible = false;
 
+        this.chargeBarEst1 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'white_pixel.png');
+        this.chargeBarEst1.setScale(6.6, this.chargeBarMax.scaleY - 2);
+        this.chargeBarEst1.setOrigin(1, 0.5);
+        this.chargeBarEst1.alpha = 0;
+        this.chargeBarEst1.setDepth(9).setVisible(false);
+
+        this.chargeBarEst2 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'white_pixel.png');
+        this.chargeBarEst2.setScale(6.6, this.chargeBarMax.scaleY - 2);
+        this.chargeBarEst2.setOrigin(0, 0.5);
+        this.chargeBarEst2.alpha = 0;
+        this.chargeBarEst2.setDepth(9).setVisible(false);
+
+
         let attackNameYPos = isMobile ? this.chargeBarMax.y - 23 : this.chargeBarMax.y - 22
 
         this.angrySymbol = this.scene.add.sprite(x, attackNameYPos - 8, 'misc', 'angry1.png');
@@ -459,6 +472,8 @@ class Enemy {
 
                 }
             }
+            this.chargeBarEst1.visible = false;
+            this.chargeBarEst2.visible = false;
             if (this.isAngry) {
                 let increaseMult = Math.max(5, 0.33 * chargeMult);
                 if (challenges.angryEnemies) {
@@ -473,6 +488,8 @@ class Enemy {
                 if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone && this.castAggravateCharge <= 0) {
                     // this.attackCharge += timeChange * 0.02 * this.slowMult;
                     this.chargeBarCurr.alpha = 0.47;
+                    this.chargeBarEst1.visible = true;
+                    this.chargeBarEst2.visible = true;
                 } else {
                     // Normal slow chargin
                     if (almostDone || chargeMult > 1 || this.castAggravateCharge > 0) {
@@ -495,12 +512,37 @@ class Enemy {
 
                     } else {
                         this.chargeBarCurr.alpha = 0.47;
-                        this.attackCharge += timeChange * 0.01 * this.slowMult * chargeMult;
+                        this.chargeBarEst1.visible = true;
+                        this.chargeBarEst2.visible = true;
                     }
 
                 }
             }
             this.chargeBarCurr.scaleX = Math.min(this.nextAttackChargeNeeded * 0.2, this.attackCharge * 0.2 + 1);
+            if (this.chargeBarEst1.visible) {
+                this.chargeBarEst1.x = gameConsts.halfWidth - this.chargeBarCurr.scaleX;
+                this.chargeBarEst2.x = gameConsts.halfWidth + this.chargeBarCurr.scaleX;
+                if (!this.chargeBarEst1.currAnim) {
+                    this.chargeBarEst1.alpha = 0;
+                    this.chargeBarEst2.alpha = 0;
+                    this.chargeBarEst1.currAnim = PhaserScene.tweens.add({
+                        delay: 250,
+                        targets: [this.chargeBarEst1, this.chargeBarEst2],
+                        duration: 1500,
+                        alpha: 0.25,
+                        yoyo: true,
+                        ease: 'Quad.easeIn',
+                        repeat: -1
+                    });
+                }
+            } else {
+                if (this.chargeBarEst1.currAnim) {
+                    this.chargeBarEst1.currAnim.stop();
+                    this.chargeBarEst1.currAnim = null;
+                    this.chargeBarEst1.alpha = 0;
+                    this.chargeBarEst2.alpha = 0;
+                }
+            }
             let goalAlpha = 1 * this.chargeBarCurr.scaleX / (this.chargeBarMax.scaleX + 1) + this.chargeBarAlphaOffset;
 
             let changeSpd = 0.06 * dt;
@@ -1504,6 +1546,13 @@ class Enemy {
         this.chargeBarWarning.destroy();
         this.chargeBarAngry.destroy();
         this.chargeBarCurr.destroy();
+
+        if (this.chargeBarEst1.currAnim) {
+            this.chargeBarEst1.currAnim.stop();
+            this.chargeBarEst1.currAnim = null;
+        }
+        this.chargeBarEst1.destroy();
+        this.chargeBarEst2.destroy();
         this.voidPause.destroy();
         this.attackName.destroy();
         this.angrySymbol.destroy();
@@ -1570,6 +1619,8 @@ class Enemy {
         this.chargeBarWarning.visible = false; this.chargeBarWarning.scaleY = 100;
         this.chargeBarAngry.visible = false; this.chargeBarAngry.scaleY = 100;
         this.chargeBarCurr.visible = false; this.chargeBarCurr.scaleY = 100;
+        this.chargeBarEst1.visible = false;
+        this.chargeBarEst2.visible = false;
         this.hideAngrySymbol()
         this.voidPause.visible = false;
 
@@ -2206,9 +2257,9 @@ class Enemy {
     }
 
     playerClickedSpell() {
-        this.castAggravateCharge = cheats.calmEnemies ? 18 : 22;
+        this.castAggravateCharge = cheats.calmEnemies ? 18 : 26;
         if (challenges.angryEnemies) {
-            this.castAggravateCharge = 26;
+            this.castAggravateCharge = 30;
         }
     }
 

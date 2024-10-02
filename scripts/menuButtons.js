@@ -725,17 +725,29 @@ function showMainMenuButtons() {
         },
         onMouseUp: () => {
             //showCutscene1();
-            clearOnlyMenuButtons()
-            rollCredits();
-            return;
-            let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'credits.png').setDepth(100000).setScale(0.975);
+            // clearOnlyMenuButtons()
+            // rollCredits();
+            // return;
+            let text1 = "Game by Maxim Tsai\n" +
+                "Character art by Theresa Kao\n@mothmeatstore\n" +
+                "Background and wheel art by Alex Volchek\n@love_sickening\n" +
+                "SFX and Battle Music by Chandler G\n@rocad_guitar\n" +
+                "Robot Voice and Music by @eidendalion\n" +
+                "Special thanks to @hby, Victor Kao,\nand Alex Arango";
+            let text2 = "\"Magic Escape Room\" by Kevin MacLeod (incompetech.com)\n" +
+                "Licensed under Creative Commons: By Attribution 4.0 License\n\n" +
+                "Rocks - Effects - Source Recordings - 05 by GregorQuendel\n- https://freesound.org/s/424997/\n- License: Attribution 4.0\n\n" +
+                "rocks2.wav by mystiscool\n- https://freesound.org/s/7136/\n- License: Attribution 4.0\n\n" +
+                "R4_00328-2_EXP.wav by kevp888\n- https://freesound.org/s/636777/\n- License: Attribution 4.0\n\n";
+            let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'paper.png').setDepth(100000).setScale(0.975);
+            let creditsText = PhaserScene.add.text(gameConsts.halfWidth, creditsUI.y - 290, text1, {fontFamily: 'opensans', fontSize: 21, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(100000).setAlpha(0.1);
+            let creditsText2 = PhaserScene.add.text(gameConsts.halfWidth, creditsUI.y - 20, text2, {fontSize: 16, color: '#000000', align: 'left'}).setOrigin(0, 0).setDepth(100000).setAlpha(0.1);
             PhaserScene.tweens.add({
-                targets: creditsUI,
-                duration: 250,
+                targets: [creditsUI, creditsText, creditsText2],
+                duration: 180,
                 scaleX: 1,
                 scaleY: 1,
                 alpha: 1,
-                ease: 'Cubic.easeOut',
             });
             if (canvas) {
                 canvas.style.cursor = 'pointer';
@@ -757,6 +769,7 @@ function showMainMenuButtons() {
                 onMouseUp: () => {
                     creditsButton.destroy();
                     creditsUI.destroy();
+                    creditsText.destroy();
                     if (canvas) {
                         canvas.style.cursor = 'default';
                     }
@@ -766,7 +779,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.creditsButton.setScale(0.5, 0.5);
-    globalObjects.creditsButton.addText("CREDITS", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.creditsButton.addText("CREDITS", {fontFamily: 'opensans', fontSize: 24, color: '#000000', align: 'left'})
 
 }
 

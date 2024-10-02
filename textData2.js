@@ -191,6 +191,15 @@ let textData2 = {
         "es": "Salud Izquierda: ",
         "jp": "ヘルス残量: "
     },
+    "post_fight_spells": {
+        "en_us": "Spells Cast: ",
+        "fr": "Sorts Lancés: ",
+        "zh_tw": "法術施放數量: ",
+        "zh_cn": "法术施放数量: ",
+        "ru": "произнесено заклинание: ",
+        "es": "Hechizos Lanzados: ",
+        "jp": "唱えられる呪文の数: "
+    },
     "level_code": {
         "en_us": "LEVEL SKIP CODE: ",
         "fr": "CODE DE NIVEAU :",

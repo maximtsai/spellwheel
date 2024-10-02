@@ -174,8 +174,8 @@ let textData3 = {
     "death3a": {
         "en_us": "I SEE YOU SEEK REUNION\nWITH YOUR BELOVED,",
         "fr": "JE VOIS QUE VOUS CHERCHEZ LA\nRÉUNION AVEC VOTRE BIEN-AIMÉ,",
-        "zh_tw": "我看到你尋求與你所愛的人重聚，",
-        "zh_cn": "我看到你寻求与你所爱的人重聚，",
+        "zh_tw": "我知道你想和你所愛之人團聚，",
+        "zh_cn": "我知道你想和你所爱之人团聚，",
         "ru": ",",
         "es": "",
         "jp": ""

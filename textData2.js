@@ -675,8 +675,8 @@ let textData2 = {
     "level1_tut_c": {
         "en_us": "Cast multiple\n\nfor a powerful\nattack.",
         "fr": "Lancez plusieurs\n\npour une attaque\npuissante",
-        "zh_tw": "施放多個\n\n以進行強力攻擊。",
-        "zh_cn": "施放多个\n\n以进行强力攻击。",
+        "zh_tw": "施放多個\n\n以進行強\n力攻擊。",
+        "zh_cn": "施放多个\n\n以进行强\n力攻击。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -806,6 +806,42 @@ let textData2 = {
         "ru": "Энергетический удар делает вашу следующую атаку в два раза сильнее.\n             +",
         "es": "Golpe de energía hace que tu próximo ataque golpee el doble de fuerte.\n             +",
         "jp": "「エナジーストライク」は、次の攻撃のヒットを2倍にする。\n            +"
+    },
+    "exit": {
+        "en_us": "EXIT",
+        "fr": "QUITTER",
+        "zh_tw": "退出",
+        "zh_cn": "退出",
+        "ru": "ПОКИДАТЬ",
+        "es": "ABANDONAR",
+        "jp": "やめる"
+    },
+    "back": {
+        "en_us": "BACK",
+        "fr": "RETOUR",
+        "zh_tw": "返回",
+        "zh_cn": "返回",
+        "ru": "ОТМЕНА",
+        "es": "CANCELAR",
+        "jp": "キャンセル"
+    },
+    "main_menu": {
+        "en_us": "MAIN MENU?",
+        "fr": "MENU PRINCIPAL?",
+        "zh_tw": "主選單",
+        "zh_cn": "主菜单",
+        "ru": "ГЛАВНОЕ МЕНЮ?",
+        "es": "MENÚ PRINCIPAL?",
+        "jp": "メインメニュー？"
+    },
+    "exit_long": {
+        "en_us": "Exit the fight and\nreturn to main menu?",
+        "fr": "Quitter le combat et\nrevenir au menu principal ?",
+        "zh_tw": "退出戰鬥並返回主選單？",
+        "zh_cn": "退出战斗并返回主菜单？",
+        "ru": "Выйти из боя и вернуться\nв главное меню?",
+        "es": "¿Salir de la pelea y\nvolver al menú principal?",
+        "jp": "戦闘を終了してメイン\nメニューに戻りますか?"
     },
     "new_game": {
         "en_us": "NEW GAME",

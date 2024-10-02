@@ -69,7 +69,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 160 : 130;
+         this.health = gameVars.isHardMode ? 160 : 125;
          this.eyeObjects = [];
          this.pullbackScale = 0.92;
          this.attackScale = 1.11;
@@ -957,8 +957,8 @@
                  {
                      name: "|5x2 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 550,
-                     chargeMult: 1.75,
+                     chargeAmt: 600,
+                     chargeMult: 1.68,
                      damage: 5,
                      attackTimes: 2,
                      prepareSprite: 'void_knight_3.png',
@@ -978,8 +978,8 @@
                  {
                      name: "|12 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 450,
-                     chargeMult: 1.75,
+                     chargeAmt: 500,
+                     chargeMult: 1.68,
                      damage: 12,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -997,8 +997,8 @@
                  {
                      name: "|5x3 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 600,
-                     chargeMult: 1.75,
+                     chargeAmt: 650,
+                     chargeMult: 1.68,
                      damage: 5,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_3.png',
@@ -1017,8 +1017,8 @@
                  {
                      name: "|14 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 500,
-                     chargeMult: 1.75,
+                     chargeAmt: 550,
+                     chargeMult: 1.68,
                      damage: 14,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -1036,8 +1036,8 @@
                  {
                      name: "|5x4 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 650,
-                     chargeMult: 1.75,
+                     chargeAmt: 700,
+                     chargeMult: 1.68,
                      damage: 5,
                      attackTimes: 4,
                      prepareSprite: 'void_knight_3.png',
@@ -1056,8 +1056,8 @@
                  {
                      name: "|16 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 550,
-                     chargeMult: 1.75,
+                     chargeAmt: 600,
+                     chargeMult: 1.68,
                      damage: 16,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -1092,8 +1092,8 @@
                  {
                      name: ";5x6 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 950,
-                     chargeMult: 1.75,
+                     chargeAmt: 1000,
+                     chargeMult: 1.68,
                      damage: 5,
                      attackTimes: 6,
                      isBigMove: true,
@@ -1113,8 +1113,8 @@
                  {
                      name: ";20 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 800,
-                     chargeMult: 1.75,
+                     chargeAmt: 850,
+                     chargeMult: 1.68,
                      damage: 20,
                      isBigMove: true,
                      prepareSprite: 'void_knight_3.png',

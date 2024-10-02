@@ -447,7 +447,7 @@ class Encyclopedia {
             startPos2 + offset * 4,
         ]
         for (let i = 0; i < listOfRunes.length; i++) {
-            if (i > gameVars.latestLevel + 2) {
+            if (i > gameVars.maxLevel + 2) {
                 break;
             }
             let newIcon = PhaserScene.add.image(gameConsts.halfWidth - 212, listOfPositions[i], 'tutorial', listOfRunes[i]).setAlpha(0).setDepth(this.baseDepth).setScale(0.6);
@@ -548,7 +548,7 @@ class Encyclopedia {
             "unload"];
         let availableRunes = ["strike",
             "matter"];
-        for (let i = 0; i < Math.min(allRunes.length, gameVars.latestLevel); i++) {
+        for (let i = 0; i < Math.min(allRunes.length, gameVars.maxLevel); i++) {
             availableRunes.push(allRunes[i]);
         }
         //rune_question_large.png

@@ -369,7 +369,7 @@ class PostFightScreen {
                     this.continueButton.setText(getLangText('post_fight_skip_training'));
                     let text = this.continueButton.getText();
 
-                    if (gameVars.currLevel < gameVars.latestLevel) {
+                    if (gameVars.currLevel < gameVars.maxLevel) {
                         text.alpha = 0.7;
                     } else {
                         text.alpha = 0;
@@ -573,7 +573,9 @@ class PostFightScreen {
         globalObjects.options.showButton();
         if (level > gameVars.latestLevel) {
             gameVars.latestLevel = level;
-            localStorage.setItem("latestLevel", level.toString());
+            localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
+            gameVars.maxLevel = Math.max(gameVars.maxLevel, level);
+            localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
         }
 
         gameVars.currLevel = level;

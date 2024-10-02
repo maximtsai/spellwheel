@@ -86,6 +86,7 @@ let gameOptions = {
 };
 let gameVars = {
     latestLevel: 0,
+    maxLevel: 0,
     isHardMode: false,
     gameConstructed: false,
     mousedown: false,
@@ -116,10 +117,13 @@ let url3 = 'adayofjoy';// '1001juegos';
 function preload ()
 {
     gameVars.latestLevel = parseInt(localStorage.getItem("latestLevel"));
+    gameVars.maxLevel = parseInt(localStorage.getItem("maxLevel"));
     if (!gameVars.latestLevel) {
         gameVars.latestLevel = 0;
     }
-    console.log("latest level reached: ", gameVars.latestLevel);
+    if (!gameVars.maxLevel) {
+        gameVars.maxLevel = 0;
+    }
 
     if (isMobile && screen && screen.orientation && screen.orientation.lock) {
         var myScreenOrientation = window.screen.orientation;

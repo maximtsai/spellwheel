@@ -102,14 +102,19 @@ function clearOnlyMenuBack() {
 }
 
 function clearMenuButtons() {
+    gameVars.isInMainMenu = false;
     clearOnlyMenuButtons();
     clearOnlyMenuBack();
 }
 
 function gotoMainMenu() {
+    globalObjects.magicCircle.enableMovement();
+    if (gameVars.isInMainMenu) {
+        return;
+    }
+    gameVars.isInMainMenu = true;
     gotoMainMenuNoButtons()
     showMainMenuButtons();
-    globalObjects.magicCircle.enableMovement();
 }
 
 
@@ -137,6 +142,7 @@ function gotoMainMenuNoButtons() {
 
 function showMainMenuButtons() {
     let hasContinue = gameVars.latestLevel >= 1;
+    let hasLvlSelect = gameVars.maxLevel >= 1;
 
     if (hasContinue) {
         globalObjects.continueButton = new Button({
@@ -165,7 +171,9 @@ function showMainMenuButtons() {
         globalObjects.continueButton.setOrigin(0.5, 0.5);
         globalObjects.continueButton.addText(getLangText('cont_ui'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
         globalObjects.continueButton.setScale(0.9);
+    }
 
+    if (hasLvlSelect) {
         globalObjects.lvlPickButton = new Button({
             normal: {
                 ref: "menu_btn_normal.png",
@@ -776,14 +784,28 @@ function showLevelSelectScreen(){
     globalObjects.encyclopedia.hideButton();
     globalObjects.options.hideButton();
     let clickBlocker = createGlobalClickBlocker(false);
-    let levelSelectBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 10, 'ui', 'paper.png').setDepth(10000).setScale(0.98, 0.88);
+    let positionsX = [
+        gameConsts.halfWidth,
+        gameConsts.halfWidth - 180, gameConsts.halfWidth - 60, gameConsts.halfWidth + 60, gameConsts.halfWidth + 180,
+        gameConsts.halfWidth - 120, gameConsts.halfWidth, gameConsts.halfWidth + 120,
+        gameConsts.halfWidth - 180, gameConsts.halfWidth - 60, gameConsts.halfWidth + 60, gameConsts.halfWidth + 180,
+        gameConsts.halfWidth,
+    ]
+    let positionsY = [
+        gameConsts.halfHeight - 220,
+        gameConsts.halfHeight - 110, gameConsts.halfHeight - 110, gameConsts.halfHeight - 110, gameConsts.halfHeight - 110,
+        gameConsts.halfHeight, gameConsts.halfHeight, gameConsts.halfHeight,
+        gameConsts.halfHeight + 110, gameConsts.halfHeight + 110, gameConsts.halfHeight + 110, gameConsts.halfHeight + 110,
+        gameConsts.halfHeight + 220,
+    ]
+    let levelSelectBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 22, 'ui', 'paper.png').setDepth(10000).setScale(0.92, 0.98);
     let blackBG = getBackgroundBlackout();
     blackBG.setDepth(9999).setAlpha(0);
-    let title = PhaserScene.add.text(gameConsts.halfWidth, levelSelectBG.y - 251, getLangText('lvl_select'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.8).setScale(0.98).setDepth(10000);
+    let title = PhaserScene.add.text(gameConsts.halfWidth, levelSelectBG.y - 295, getLangText('lvl_select'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.8).setScale(0.89, 0.89).setDepth(10000);
     PhaserScene.tweens.add({
         targets: levelSelectBG,
-        scaleX: 1,
-        scaleY: 0.89,
+        scaleX: 0.93,
+        scaleY: 1.025,
         ease: 'Back.easeOut',
         duration: 250
     })
@@ -806,8 +828,8 @@ function showLevelSelectScreen(){
             atlas: 'buttons',
             ref: "closebtn.png",
             alpha: 0.95,
-            x: gameConsts.width - 66,
-            y: levelSelectBG.y - 236,
+            x: gameConsts.halfWidth + 217,
+            y: title.y + 20
         },
         hover: {
             alpha: 1,
@@ -849,10 +871,10 @@ function showLevelSelectScreen(){
     closeButton.setDepth(this.baseDepth + 10);
 
     let listOfBtns = [];
-    let maxLevel = Math.min(gameVars.latestLevel + 1, 12);
+    let maxLevel = Math.min(gameVars.maxLevel + 1, 13);
     for (let i = 1; i <= maxLevel; i++) {
-        let xPos = gameConsts.halfWidth + ((i - 1) % 4) * 120 - 180;
-        let yPos = levelSelectBG.y + Math.floor((i - 1) * 0.25) * 125 - 146;
+        let xPos = positionsX[i-1];
+        let yPos = positionsY[i-1];
         let imgRef = `level${i}btn.png`;
         let newBtn = new Button({
             normal: {
@@ -905,10 +927,6 @@ function showLevelSelectScreen(){
         });
         newBtn.setDepth(10000);
         listOfBtns.push(newBtn);
-    }
-
-    if (gameVars.latestLevel >= 13) {
-
     }
     // clickBlocker.setOnMouseUpFunc(() => {
     //     cleanupCutscene()

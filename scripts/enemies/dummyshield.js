@@ -369,7 +369,7 @@
                     },
                     attackFinishFunction: () => {
                         let throwSprite = 'super_dummy_tpose.png';
-                        if (gameVars.latestLevel > 4 || Math.random() < 0.96) {
+                        if (gameVars.maxLevel > 4 || Math.random() < 0.96) {
                             throwSprite = 'scythe.png';
                         }
                         this.tempShiftSFX();
@@ -394,7 +394,7 @@
                      },
                     attackFinishFunction: () => {
                         let throwSprite = 'super_dummy_tpose.png';
-                        if (gameVars.latestLevel > 4 || Math.random() < 0.96) {
+                        if (gameVars.maxLevel > 4 || Math.random() < 0.96) {
                             throwSprite = 'sword.png';
                         }
                         this.tempShiftSFX();

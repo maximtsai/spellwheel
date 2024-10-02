@@ -536,8 +536,8 @@ let textData = {
     "mind_tut_strike_desc": {
         "en_us": "Fires a bolt of energy that\ndeals little damage by itself,\nbut amplifies your next\nattack for double (x2) damage.",
         "fr": "Tire un éclair d’énergie qui\binflige peu de dégâts en soi,\bmais amplifie votre prochaine\battaque pour doubler (x2) de\bdégâts.",
-        "zh_tw": "發射一道能量彈，本身造成的傷害很小，\n但會放大你的下一次攻擊，造成雙倍\n（x2）傷害。",
-        "zh_cn": "发射一道能量弹，本身造成的伤害很小，\n但会放大你的下一次攻击，造成双倍\n（x2）伤害。",
+        "zh_tw": "發射一道能量彈，本身造成的\n傷害很小，但會放大你的下一次攻擊，\n造成雙倍（x2）傷害。",
+        "zh_cn": "发射一道能量弹，本身造成的\n伤害很小，但会放大你的下一次攻击，\n造成双倍（x2）伤害。",
         "ru": "Выпускает заряд энергии, который сам по себе наносит небольшой урон, но усиливает вашу следующую атаку, нанося двойной (x2) урон.",
         "es": "Dispara un rayo de energía que inflige poco daño por sí solo, pero amplifica tu próximo ataque para infligir el doble (x2) de daño.",
         "jp": "それ自体はほとんどダメージを与えないエネルギーの稲妻を発射しますが、次の攻撃を増幅して2倍(x2)のダメージを与えます。"
@@ -545,8 +545,8 @@ let textData = {
     "mind_tut_enhance_desc": {
         "en_us": "Your next attack sets the\nenemy on fire, which deals\nTrue damage over time that\nignores defenses.",
         "fr": "Votre prochaine attaque met\nle feu à l’ennemi, ce qui\nlui inflige des dégâts bruts\nsur la durée qui ignorent les\ndéfenses.",
-        "zh_tw": "你的下一次攻擊會讓敵人\n著火，隨著時間的推移會造成\n真正的傷害，而忽略了防禦。",
-        "zh_cn": "你的下一次攻击会让敌人\n着火，随着时间的推移会造成\n真正的伤害，而忽略了防御。",
+        "zh_tw": "你的下一次攻擊會讓敵人著火，\n隨著時間的推移會造成真\n正的傷害，而忽略了防禦。",
+        "zh_cn": "你的下一次攻击会让敌人着火，\n随着时间的推移会造成真\n正的伤害，而忽略了防御。",
         "ru": "Ваша следующая атака поджигает врага, который наносит периодический чистый урон, игнорируя защиту.",
         "es": "Tu próximo ataque prende fuego al enemigo, lo que inflige daño verdadero con el tiempo que ignora las defensas.",
         "jp": "次の通常攻撃で敵に火をつけ、防御を無視して継続ダメージを与える。"

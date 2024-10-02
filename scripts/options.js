@@ -73,7 +73,7 @@ class Options {
             this.listOfThingsToHide.push(this.bgPage);
         }
 
-        this.settingsTitle = PhaserScene.add.text(gameConsts.halfWidth - 230, isMobile ? gameConsts.halfWidth - 193 : gameConsts.halfWidth - 206, getLangText('settings'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
+        this.settingsTitle = PhaserScene.add.text(gameConsts.halfWidth - 230, isMobile ? gameConsts.halfWidth - 195 : gameConsts.halfWidth - 212, getLangText('settings'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
         this.listOfThingsToHideSemiAlpha.push(this.settingsTitle);
         this.addLangTextUpdateable(this.settingsTitle, 'settings')
 
@@ -112,21 +112,38 @@ class Options {
                     }
                 },
                 onMouseUp: () => {
-                    this.hideOptions();
-                    let bgBlackout = getBackgroundBlackout();
-                    bgBlackout.alpha = 0;
-                    globalObjects.player.revive();
-                    gotoMainMenu();
-                    globalObjects.textPopupManager.hideInfoText();
-                    globalObjects.bannerTextManager.closeBanner();
-                    if (globalObjects.floatingDeath) {
-                        globalObjects.floatingDeath.visible = false;
-                        globalObjects.floatingDeath2.visible = false;
+                    if (globalObjects.currentEnemy && !globalObjects.currentEnemy.isDestroyed) {
+                        showYesNoPopup(getLangText('exit'), getLangText('back'), getLangText('main_menu'), getLangText('exit_long'), () => {
+                            this.hideOptions();
+                            let bgBlackout = getBackgroundBlackout();
+                            bgBlackout.alpha = 0;
+                            globalObjects.player.revive();
+                            gotoMainMenu();
+                            globalObjects.textPopupManager.hideInfoText();
+                            globalObjects.bannerTextManager.closeBanner();
+                            if (globalObjects.floatingDeath) {
+                                globalObjects.floatingDeath.visible = false;
+                                globalObjects.floatingDeath2.visible = false;
+                            }
+                            globalObjects.postFightScreen.clearPostFightScreen();
+                        }, true)
+                    } else {
+                        this.hideOptions();
+                        let bgBlackout = getBackgroundBlackout();
+                        bgBlackout.alpha = 0;
+                        globalObjects.player.revive();
+                        gotoMainMenu();
+                        globalObjects.textPopupManager.hideInfoText();
+                        globalObjects.bannerTextManager.closeBanner();
+                        if (globalObjects.floatingDeath) {
+                            globalObjects.floatingDeath.visible = false;
+                            globalObjects.floatingDeath2.visible = false;
+                        }
+                        globalObjects.postFightScreen.clearPostFightScreen();
                     }
-                    globalObjects.postFightScreen.clearPostFightScreen();
                 }
             });
-            this.menuBtn.addText(getLangText('menu'), {fontFamily: 'opensans', fontSize: 34, color: '#000000', align: 'center'});
+            this.menuBtn.addText(getLangText('menu'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'center'});
             this.addLangTextUpdateable(this.menuBtn, 'menu')
             this.menuBtn.setDepth(this.baseDepth + 1);
             this.menuBtn.setScale(0.82, 0.82);
@@ -1357,14 +1374,12 @@ class Options {
         this.hidingAnim1 = PhaserScene.tweens.add({
              targets: this.listOfThingsToHide,
              alpha: 0,
-             ease: 'Cubic.easeOut',
-             duration: 400,
+             duration: 180,
         });
         this.hidingAnim2 = PhaserScene.tweens.add({
             targets: this.listOfThingsToHideSemiAlpha,
             alpha: 0,
-            ease: 'Cubic.easeOut',
-            duration: 400,
+            duration: 180,
         });
 
         for (let i = 0; i < this.listOfButtonsToDisable.length; i++) {

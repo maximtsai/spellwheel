@@ -259,15 +259,15 @@ class Enemy {
         this.chargeBarAngry.visible = false;
 
         this.chargeBarEst1 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'soft_blue_pixel.png');
-        this.chargeBarEst1.setScale(6.6, this.chargeBarMax.scaleY - 2);
+        this.chargeBarEst1.setScale(6.7, this.chargeBarMax.scaleY - 2);
         this.chargeBarEst1.setOrigin(1, 0.5);
         this.chargeBarEst1.alpha = 0;
         this.chargeBarEst1.setDepth(9);
         this.chargeBarShow = false;
-        this.chargeBarEstScale = 6.6;
+        this.chargeBarEstScale = 6.7;
 
         this.chargeBarEst2 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'soft_blue_pixel.png');
-        this.chargeBarEst2.setScale(6.6, this.chargeBarMax.scaleY - 2);
+        this.chargeBarEst2.setScale(6.7, this.chargeBarMax.scaleY - 2);
         this.chargeBarEst2.setOrigin(0, 0.5);
         this.chargeBarEst2.alpha = 0;
         this.chargeBarEst2.setDepth(9);
@@ -2274,7 +2274,7 @@ class Enemy {
         this.castAggravateCharge += amt;
     }
 
-    setPredictScale(amt = 6.6) {
+    setPredictScale(amt = 6.7) {
         if (this.lastChargeEstScale != this.chargeBarEstScale) {
             this.lastChargeEstScale = this.chargeBarEstScale;
             if (this.chargeBarEst1.currAnim) {

@@ -956,8 +956,8 @@
     }
 
     startChargingUltimate() {
-        let totalAmt = gameVars.isHardMode ? 28 : 24;
-        let angleDivider = gameVars.isHardMode ? 14 : 12;
+        let totalAmt = gameVars.isHardMode ? 28 : 22;
+        let angleDivider = gameVars.isHardMode ? 14 : 11;
         for (let i = 0; i < totalAmt; i++) {
             this.addTween({
                 delay: i * 180,
@@ -979,7 +979,12 @@
                         let dirAngle = i * Math.PI / angleDivider;
                         let offsetX = Math.sin(dirAngle) * 90;
                         let offsetY = -Math.cos(dirAngle) * 80;
-                        let isExtraLarge = i % (gameVars.isHardMode ? 7 : 6) == 0;
+                        let isExtraLarge = false;
+                        if (gameVars.isHardMode) {
+                            isExtraLarge = i % 7 === 0;
+                        } else {
+                            isExtraLarge = i === 0 || i === 11 || i === 6 || i === 16;
+                        }
                         let clockName = 'clock2.png';
                         if (isExtraLarge) {
                             clockName = 'clock4.png';
@@ -1001,7 +1006,7 @@
                         } else if (i < (gameVars.isHardMode ? 17 : 15)) {
                             this.attackName.setText("}}2x" + numAttacks + "}}");
                             this.repositionAngrySymbol();
-                        } else if (i < (gameVars.isHardMode ? 25 : 22)) {
+                        } else if (i < (gameVars.isHardMode ? 25 : 21)) {
                             this.attackName.setText("}}}2x" + numAttacks + "}}}");
                             this.repositionAngrySymbol();
                         } else {

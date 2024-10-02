@@ -34,6 +34,7 @@ function playSound(name, volume = 1, loop = false, isMusic = false) {
         globalMusic = soundList[name];
     }
     soundList[name].detune = 0;
+    soundList[name].pan = 0;
     soundList[name].play();
     return soundList[name];
 }

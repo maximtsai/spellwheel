@@ -168,4 +168,6 @@ const audioFiles = [
     {name: 'ringknell', src: 'audio/ringknell.mp3'},
     {name: 'roar', src: 'audio/roar.mp3'},
     {name: 'click', src: 'audio/click.mp3'},
+    {name: 'chirp1', src: 'audio/chirp1.mp3'},
+    {name: 'chirpmany', src: 'audio/chirp_many.mp3'},
 ]

@@ -274,8 +274,8 @@
                      }
                  },
                  {
-                     name: "FIX SELF \\25",
-                     chargeAmt: 600,
+                     name: "FIX SELF \\30",
+                     chargeAmt: 500,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
@@ -330,7 +330,7 @@
 
                      },
                      attackStartFunction: () => {
-                         this.healAnim(25);
+                         this.healAnim(30);
                      }
                  },
                  {
@@ -354,7 +354,7 @@
                      name: "|3x9",
                      chargeAmt: 850,
                      chargeMult: 2,
-                     finishDelay: 300,
+                     finishDelay: 2000,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
@@ -370,7 +370,7 @@
                  },
                  {
                      name: "FIX SELF \\40",
-                     chargeAmt: 700,
+                     chargeAmt: 650,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,

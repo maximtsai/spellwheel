@@ -215,7 +215,7 @@ function beginPreLevel(lvl) {
                 y: "-=60",
                 onComplete: () => {
                     let itemsToClear = texts.concat(introbgs);
-                    createLvlCloseButton(lvl, itemsToClear, 20, -352, [strikeHoverBtn, matterHoverBtn]);
+                    createLvlCloseButton(lvl, itemsToClear, 20, -342, [strikeHoverBtn, matterHoverBtn]);
                 }
             });
             PhaserScene.tweens.add({
@@ -373,7 +373,7 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose =
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
             x: gameConsts.width - 180 + offsetX,
-            y: gameConsts.height - 100 + offsetY,
+            y: gameConsts.height - 110 + offsetY,
         },
         hover: {
             ref: "menu_btn_hover.png",
@@ -427,7 +427,7 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose =
     });
     lvlCloseButton.setOrigin(0.5, 0.5);
     lvlCloseButton.addText(getLangText('cont_ui'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
-    lvlCloseButton.setScale(0.9);
+    lvlCloseButton.setScale(0.78);
     lvlCloseButton.setDepth(99999);
     globalObjects.lvlCloseButton = lvlCloseButton;
 
@@ -440,7 +440,7 @@ function createMenuCloseButton(items) {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
             x: 180,
-            y: gameConsts.height - 100,
+            y: gameConsts.height - 110,
         },
         hover: {
             ref: "menu_btn_hover.png",
@@ -491,7 +491,7 @@ function createMenuCloseButton(items) {
     });
     menuCloseButton.setOrigin(0.5, 0.5);
     menuCloseButton.addText(getLangText('menu'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
-    menuCloseButton.setScale(0.9);
+    menuCloseButton.setScale(0.78);
     menuCloseButton.setDepth(99999);
     globalObjects.menuCloseButton = menuCloseButton;
 

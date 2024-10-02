@@ -525,7 +525,7 @@ class Enemy {
                     this.chargeBarEst1.alpha = 0;
                     this.chargeBarEst2.alpha = 0;
                     this.chargeBarEst1.currAnim = PhaserScene.tweens.add({
-                        delay: 300,
+                        delay: 250,
                         targets: [this.chargeBarEst1, this.chargeBarEst2],
                         duration: 1250,
                         alpha: 0.33,
@@ -602,14 +602,14 @@ class Enemy {
                 }
 
                 this.chargeBarWarning.visible = true;
-                this.chargeBarWarning.alpha = 0.8;
+                this.chargeBarWarning.alpha = 0.83;
                 this.chargeBarWarningBig.alpha = Math.min(0.5, this.chargeBarWarningBig.alpha + timeChange * 0.05);
                 this.useMove();
             } else if (this.attackCharge >= this.nextAttackChargeNeeded * 0.9 - 30) {
                 this.chargeBarWarning.visible = true;
                 this.chargeBarWarning.alpha += (this.slowMult * (timeChange + 0.5)) * 0.03 * this.chargeBarWarning.alphaMult;
                 this.chargeBarWarningBig.alpha = this.chargeBarWarning.alpha * 0.5 - 0.1;
-                if (this.chargeBarWarning.alpha > 0.85) {
+                if (this.chargeBarWarning.alpha > 0.89) {
                     this.chargeBarWarning.alphaMult = -1;
                 } else if (this.chargeBarWarning.alpha < 0.05) {
                     this.chargeBarWarning.alphaMult = 1;
@@ -618,7 +618,7 @@ class Enemy {
                 this.chargeBarWarning.visible = true;
                 this.chargeBarWarning.alpha += (this.slowMult * (timeChange + 0.5)) * 0.01 * this.chargeBarWarning.alphaMult;
                 this.chargeBarWarningBig.alpha = this.chargeBarWarning.alpha * 0.4 - 0.12;
-                if (this.chargeBarWarning.alpha > 0.5) {
+                if (this.chargeBarWarning.alpha > 0.53) {
                     this.chargeBarWarning.alphaMult = -1;
                 } else if (this.chargeBarWarning.alpha < 0.04) {
                     this.chargeBarWarning.alphaMult = 1;
@@ -1386,6 +1386,8 @@ class Enemy {
             alpha: 0,
             duration: gameVars.gameManualSlowSpeedInverse * 400,
         });
+        this.chargeBarEst1.visible = false;
+        this.chargeBarEst2.visible = false;
 
         PhaserScene.tweens.add({
             targets: [this.chargeBarMax, this.chargeBarCurr, this.chargeBarOutline],
@@ -2282,7 +2284,7 @@ class Enemy {
                 this.chargeBarEst1.alpha = 0.33;
                 this.chargeBarEst2.alpha = 0.33;
                 this.chargeBarEst1.currAnim = PhaserScene.tweens.add({
-                    delay: 300,
+                    delay: 250,
                     targets: [this.chargeBarEst1, this.chargeBarEst2],
                     duration: 1250,
                     alpha: 0,

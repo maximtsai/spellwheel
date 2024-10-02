@@ -579,7 +579,7 @@ let textData = {
         "jp": "次の非攻撃呪文の効果を倍増させる。この呪文を2回連続で唱える賢い人は、息を呑むような呪文増幅力を得ることができます。"
     },
     "time_tut_desc": {
-        "en_us": "The Time rune grants \ncontrol over the temporal.\nTime spells let you attack multiple\ntimes, delay injuries, or even slow\nyour enemies to a stand-still.",
+        "en_us": "The Time rune grants control\nover the temporal.\nTime spells let you attack multiple times, delay\ninjuries, or even slow your enemies to a\nstand-still.",
         "fr": "La rune du temps donne le\ncontrôle sur le temporel.\nLes sorts temporels vous permettent\nd’attaquer plusieurs fois, de retarder\nles blessures ou même de ralentir\nvos ennemis jusqu’à ce qu’ils s’arrêtent.",
         "zh_tw": "時間符文授予對時間的控\n制權。時間法術讓你能多次\n攻擊，延緩受傷時間，甚至\n凍結時間來減慢敵人的行動。",
         "zh_cn": "时间符文授予对时间的控\n制权。时间法术让你能多次\n攻击，延缓受伤时间，甚至\n冻结时间来减慢敌人的行动。",
@@ -588,7 +588,7 @@ let textData = {
         "jp": "タイムルーンは、時間的なものに対するコントロールを与える。時間呪文を使用すると、複数回攻撃したり、負傷を遅らせたり、敵の動きを鈍らせたりすることができます。"
     },
     "time_tut_strike_desc": {
-        "en_us": "An attack that strikes twice.\nEach attack does modest damage\nbut can be powered\nup greatly with +damage\nenhancements.",
+        "en_us": "An attack that strikes twice.\nEach attack does modest\ndamage but can be powered\nup greatly with +damage\nenhancements.",
         "fr": "Une attaque qui frappe deux\nfois. Chaque attaque inflige des\ndégâts modestes, mais peut être\nconsidérablement renforcée avec\ndes améliorations de +dégâts.",
         "zh_tw": "兩次攻擊。每次攻擊都會造成\n適度的傷害，但可以通過+傷害增強\n來大大增強。",
         "zh_cn": "两次攻击。每次攻击都会造成\n适度的伤害，但可以通过+伤害增强\n来大大增强。",

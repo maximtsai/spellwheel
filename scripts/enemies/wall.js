@@ -45,7 +45,7 @@
      }
 
      initBird() {
-         this.bird = this.addImage(this.x - 267 * this.trueStartScale, this.y - 179 * this.trueStartScale, 'wallenemy', 'bird_1.png').setAlpha(0).setDepth(10).setScale(this.trueStartScale * 0.98);
+         this.bird = this.addImage(this.x - 267 * this.trueStartScale, this.y - 179 * this.trueStartScale, 'wallenemy', 'bird_1.png').setAlpha(0).setDepth(25).setScale(this.trueStartScale * 0.98);
          this.addTween({
              delay: 150,
              targets: [this.bird],
@@ -281,6 +281,9 @@
      }
 
      birdFalls() {
+        setTimeout(() => {
+            playSound('chirp1', 0.75);
+        }, 750)
          this.addTween({
              targets: [this.bird],
              x: "+=90",
@@ -702,7 +705,8 @@
                      chargeAmt: 300,
                      damage: -1,
                      attackFinishFunction: () => {
-                        this.birdPoops(1);
+                         playSound('chirp1', 0.5).detune = -150;
+                         this.birdPoops(1);
                          this.nextBirdIndex = 1;
                         this.checkCrumble();
                      }
@@ -712,6 +716,7 @@
                      chargeAmt: 350,
                      damage: -1,
                      attackFinishFunction: () => {
+                         playSound('chirp1', 0.65).detune = 0;
                          this.birdPoops(1, true);
                          this.nextBirdIndex = 2;
                          this.checkCrumble(true);
@@ -723,6 +728,7 @@
                      finishDelay: 800,
                      damage: -1,
                      attackFinishFunction: () => {
+                         playSound('chirpmany', 1);
                          this.birdPoops(4);
                          this.nextBirdIndex = 3;
                          this.checkCrumble();
@@ -757,6 +763,7 @@
                      chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
+                         playSound('chirpmany', 1);
                          this.birdPoops(7);
                          this.nextBirdIndex = 5;
                          this.checkCrumble();
@@ -768,6 +775,7 @@
                      finishDelay: 2000,
                      damage: -1,
                      attackFinishFunction: () => {
+                         playSound('chirp1', 1);
                          this.birdPoops(2, true, false, true);
                          this.nextBirdIndex = 6;
                          this.checkCrumble(true);
@@ -789,6 +797,7 @@
                      finishDelay: 3000,
                      damage: -1,
                      attackFinishFunction: () => {
+                         playSound('chirpmany', 1).detune = 200;
                          this.birdPoops(12);
                          this.nextBirdIndex = 8;
                          this.checkCrumble(true);

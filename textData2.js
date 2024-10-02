@@ -304,7 +304,7 @@ let textData2 = {
         "jp": "どうやら私は倒すすべての敵の力を手に入れたようだ! 旅は長いかもしれないが、十分な数の敵を倒せば、いつの日か死そのものに立ち向かえるようになるかもしれない!"
     },
     "post_fight_story4": {
-        "en_us": "Sometimes I question myself, whether entering\nthese forbidden lands and battling every foe\nI encounter is truly the right choice.\n\nBut when I close my eyes and think of your\nsmile, I am sure that every sacrifice will be\nworth it in the end.",
+        "en_us": "Sometimes I question myself, if entering\nthese forbidden lands and battling every foe\nI encounter is truly the right choice.\n\nBut when I close my eyes and think of your\nsmile, I am sure that every sacrifice will be\nworth it in the end.",
         "fr": "Parfois, je me demande si aller au Pays des\nMorts et combattre tous les ennemis est\nvraiment la bonne chose à faire.\n\nMais quand je ferme les yeux et pense à ton\nsourire, j’ai l’impression que tous les sacrifices\nen valaient la peine au final.",
         "zh_tw": "有時我會懷疑進入亡靈之地，\n與每個敵人戰鬥是否真的是正確的選擇。\n\n但當我閉上眼睛，想起你的笑容時，\n我我相信最終所有的犧牲都是值得的。",
         "zh_cn": "有时我会怀疑进入亡灵之地，\n与每个敌人战斗是否真的是正确的选择。\n\n但当我闭上眼睛，想起你的笑容时，\n我我相信最终所有的牺牲都是值得的。",
@@ -848,6 +848,15 @@ let textData2 = {
         "fr": "Quitter le combat et\nrevenir au menu principal ?",
         "zh_tw": "退出戰鬥並返回主選單？",
         "zh_cn": "退出战斗并返回主菜单？",
+        "ru": "Выйти из боя и вернуться\nв главное меню?",
+        "es": "¿Salir de la pelea y\nvolver al menú principal?",
+        "jp": "戦闘を終了してメイン\nメニューに戻りますか?"
+    },
+    "new_game_long": {
+        "en_us": "This will start a\nnew game. Continue?",
+        "fr": "Cela va démarrer une\nnouvelle partie. Continuer ?",
+        "zh_tw": "這將開始新的遊戲。\n繼續？",
+        "zh_cn": "这将开始新的游戏。\n继续？",
         "ru": "Выйти из боя и вернуться\nв главное меню?",
         "es": "¿Salir de la pelea y\nvolver al menú principal?",
         "jp": "戦闘を終了してメイン\nメニューに戻りますか?"

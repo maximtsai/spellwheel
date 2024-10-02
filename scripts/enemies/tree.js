@@ -86,6 +86,9 @@
                  this.breatheTween.stop();
                  this.sprite.setScale(this.sprite.startScale);
              }
+            setTimeout(() => {
+                playSound('chirpmany', 0.4).detune = -50;
+            }, 500)
              this.setAwake();
              let eyePosX = this.x + 130 * this.sprite.startScale;
              let eyePosY = this.y - 68.5 * this.sprite.startScale;
@@ -149,11 +152,28 @@
          }
          if (currHealthPercent < 0.667 && !this.hasCrushed) {
              // CRUSH
+             if (!this.crushBirdFall) {
+                 this.dropBird();
+                 setTimeout(() => {
+                     playSound('chirp1').pan = -0.2;
+                 }, 900)
+                 this.crushBirdFall = true;
+             }
              this.setNextAttack(3, 0);
              // Going to shield
          } else if (this.health <= 70 && !this.hasTimbered) {
              this.setNextAttack(5, 0);
              if (!this.hasPreparedFinal) {
+                 this.dropBird();
+                 setTimeout(() => {
+                     playSound('chirp1').detune = -40;
+                 }, 900)
+                 this.addTimeout(() => {
+                     this.dropBird();
+                     setTimeout(() => {
+                         playSound('chirp1').detune = 60;
+                     }, 1100)
+                 }, 150)
                  this.hasPreparedFinal = true;
              }
          }
@@ -1252,6 +1272,49 @@
             }
         });
     }
+
+     dropBird() {
+         let isFlipped = !!this.birdFlipped;
+         let flipMult = this.birdFlipped ? -1 : 1;
+         let birdImg = this.addSprite(gameConsts.halfWidth - 130 * flipMult, this.y - (isFlipped ? 220 : 200), 'enemies', 'bird_1.png').setDepth(999);
+         this.addTween({
+             targets: birdImg,
+             x: isFlipped ? "-=50" : "+=50",
+             rotation: isFlipped ? "-=4.5" : "+=4.5",
+             duration: 1500
+         })
+         this.addTween({
+             targets: birdImg,
+             y: "+=145",
+             ease: 'Back.easeIn',
+             duration: 1500,
+             onComplete: () => {
+                 birdImg.setFrame('bird_2.png');
+                 if (isFlipped) {
+                     birdImg.scaleX = -1;
+                 }
+                 birdImg.setRotation(0.2 * flipMult);
+                 this.addTween({
+                     targets: birdImg,
+                     x: isFlipped ? "-=400" : "+=400",
+                     rotation: -0.1 * flipMult,
+                     ease: 'Quad.easeIn',
+                     duration: 1500
+                 })
+                 this.addTween({
+                     targets: birdImg,
+                     y: "-=300",
+                     ease: 'Back.easeIn',
+                     duration: 1500,
+                     onComplete: () => {
+                         birdImg.destroy();
+                     }
+                 })
+             }
+         })
+
+         this.birdFlipped = !this.birdFlipped;
+     }
 
     adjustDamageTaken(amt, isAttack, isTrue ) {
         if (isAttack && this.hasThorns && !this.dead) {

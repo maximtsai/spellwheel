@@ -157,7 +157,7 @@ function showMainMenuButtons() {
                 atlas: 'buttons',
             },
             press: {
-                ref: "menu_btn_hover.png",
+                ref: "menu_btn_press.png",
                 atlas: 'buttons',
             },
             disable: {
@@ -186,7 +186,7 @@ function showMainMenuButtons() {
                 atlas: 'buttons',
             },
             press: {
-                ref: "menu_btn_hover.png",
+                ref: "menu_btn_press.png",
                 atlas: 'buttons',
             },
             disable: {
@@ -212,7 +212,7 @@ function showMainMenuButtons() {
             atlas: 'buttons',
         },
         press: {
-            ref: "menu_btn_hover.png",
+            ref: "menu_btn_press.png",
             atlas: 'buttons',
         },
         disable: {
@@ -230,8 +230,16 @@ function showMainMenuButtons() {
             }
         },
         onMouseUp: () => {
-            clearOnlyMenuButtons();
-            beginPreLevel(0)
+            if (gameVars.latestLevel >= 1) {
+                let titleText = getLangText('new_game') + "?";
+                showYesNoPopup(getLangText('cont_ui'), getLangText('back'), titleText, getLangText('new_game_long'), () => {
+                    clearOnlyMenuButtons();
+                    beginPreLevel(0)
+                }, true)
+            } else {
+                clearOnlyMenuButtons();
+                beginPreLevel(0)
+            }
         }
     });
     globalObjects.startButton.setOrigin(0.5, 0.5);
@@ -333,7 +341,7 @@ function showMainMenuButtons() {
             atlas: 'buttons',
         },
         disable: {
-            alpha: 0.001
+            alpha: 0
         },
         onMouseUp: () => {
             toggleCheat('inam')
@@ -721,7 +729,7 @@ function showMainMenuButtons() {
             atlas: 'buttons',
         },
         disable: {
-            alpha: 0.001
+            alpha: 0
         },
         onMouseUp: () => {
             //showCutscene1();

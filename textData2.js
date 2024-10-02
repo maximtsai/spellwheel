@@ -666,8 +666,8 @@ let textData2 = {
     "level1_tut_b": {
         "en_us": "Watch out!\nEnemies get angry\nwhen attacked!",
         "fr": "Les ennemis se\nmettent en colère\nlorsqu’ils sont\nattaqués!",
-        "zh_tw": "敵人在受到攻擊\n時會生氣！",
-        "zh_cn": "敌人在受到攻击\n时会生气！",
+        "zh_tw": "敵人受到攻擊\n時會生氣！",
+        "zh_cn": "敌人受到攻击\n时会生气！",
         "ru": "Враги злятся,\nкогда на них\nнападают!",
         "es": "¡Los enemigos\nse enfadan cuando\nson atacados!",
         "jp": "攻撃されると\n敵が怒る!"

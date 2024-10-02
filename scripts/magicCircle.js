@@ -2663,7 +2663,10 @@ const ENABLE_KEYBOARD = true;
              this.spellNameText.visible = true;
          }
          if (globalObjects.currentEnemy && !globalObjects.currentEnemy.isDestroyed && !globalObjects.currentEnemy.dead) {
-             if (embodimentText == '' || !closestElement.runeName) {
+             if (!this.spellNameText.visible) {
+                 globalObjects.currentEnemy.setPredictScale(0);
+             } else if (embodimentText == '' || !closestElement.runeName) {
+
              } else if (embodimentText == 'STRIKE') {
                  if (closestElement.runeName == RUNE_VOID) {
                      globalObjects.currentEnemy.setPredictScale(36.5);

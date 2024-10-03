@@ -249,20 +249,20 @@ let textData2 = {
     "post_fight_day": {
         "en_us": "Day ",
         "fr": "Jour",
-        "zh_tw": "日",
-        "zh_cn": "日",
+        "zh_tw": "第",
+        "zh_cn": "第",
         "ru": "День",
         "es": "Día",
-        "jp": "日"
+        "jp": ""
     },
     "post_fight_day2": {
         "en_us": "",
         "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "zh_tw": "天",
+        "zh_cn": "天",
         "ru": "",
         "es": "",
-        "jp": ""
+        "jp": "日目"
     },
     "post_fight_story1": {
         "en_us": "I have arrived at the gates to\nthe forbidden land of the departed.\n\nImmediately, this realm resists my entry.\nBut I know I will find you here, dear beloved,\nand nothing will stop me from reaching you.",
@@ -864,8 +864,8 @@ let textData2 = {
     "new_game": {
         "en_us": "NEW GAME",
         "fr": "NOUVEAU JEU",
-        "zh_tw": "新遊戲",
-        "zh_cn": "新游戏",
+        "zh_tw": "開始遊戲",
+        "zh_cn": "开始游戏",
         "ru": "НОВАЯ ИГРА",
         "es": "NUEVO JUEGO",
         "jp": "新しいゲーム"

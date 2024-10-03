@@ -387,6 +387,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">blurry/icon_glow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>48,48,95,95</rect>
+                <key>scale9Paddings</key>
+                <rect>48,48,95,95</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">blurry/lantern_glow.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -523,12 +538,26 @@
                 <false/>
             </struct>
             <key type="filename">blurry/star_blur.png</key>
-            <key type="filename">blurry/star_blur_sharp.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
                 <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>153,153,305,305</rect>
+                <key>scale9Paddings</key>
+                <rect>153,153,305,305</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">blurry/star_blur_sharp.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.8</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>

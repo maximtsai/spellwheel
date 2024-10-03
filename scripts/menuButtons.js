@@ -746,7 +746,10 @@ function showMainMenuButtons() {
                 "Licensed under Creative Commons: By Attribution 4.0 License\n\n" +
                 "Rocks - Effects - Source Recordings - 05 by GregorQuendel\n- https://freesound.org/s/424997/\n- License: Attribution 4.0\n\n" +
                 "rocks2.wav by mystiscool\n- https://freesound.org/s/7136/\n- License: Attribution 4.0\n\n" +
-                "R4_00328-2_EXP.wav by kevp888\n- https://freesound.org/s/636777/\n- License: Attribution 4.0\n\n";
+                "R4_00328-2_EXP.wav by kevp888\n- https://freesound.org/s/636777/\n- License: Attribution 4.0\n\n"+
+                "Big Bell_4.wav by eardeer\n- https://freesound.org/s/337565/\n- License: Attribution 4.0\n\n"+
+                "Unlocking lock.wav by Stefan21100190\n- https://freesound.org/s/593112/ - License: Attribution 4.0\n\n"+
+                "Sound Effects by Lara Sluyter (LARA’S HORROR SOUNDS on YouTube)";
             let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'paper.png').setDepth(100000).setScale(0.975);
             let creditsText = PhaserScene.add.text(gameConsts.halfWidth, creditsUI.y - 290, text1, {fontFamily: 'opensans', fontSize: 21, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(100000).setAlpha(0.1);
             let creditsText2 = PhaserScene.add.text(gameConsts.halfWidth, creditsUI.y - 20, text2, {fontSize: 16, color: '#000000', align: 'left'}).setOrigin(0, 0).setDepth(100000).setAlpha(0.1);

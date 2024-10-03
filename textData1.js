@@ -183,7 +183,7 @@ let textData = {
         "jp": "最大60ダメージ\nを遅らせるシール\nドを作成"
     },
     "time_protect_desc_long": {
-        "en_us": "Create a shield that defers\nup to 60 damage, dealing it slowly  deals damage slowly over time",
+        "en_us": "Create a shield that\ndefers up to 60 damage",
         "fr": "Crée un bouclier qui retarde\njusqu’à 60 points de dégâts",
         "zh_tw": "打造一個能延遲多達 60 點傷害的盾牌",
         "zh_cn": "打造一个能延迟多达 60 点伤害的盾牌",
@@ -651,7 +651,7 @@ let textData = {
         "jp": ""
     },
     "void_tut_enhance_desc": {
-        "en_us": "Increase your attack damage for the rest of the fight.",
+        "en_us": "Increase your attack damage for\nthe rest of the fight.",
         "fr": "",
         "zh_tw": "永久增加你的攻擊傷害。",
         "zh_cn": "永久增加你的攻击伤害。",

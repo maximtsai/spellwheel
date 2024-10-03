@@ -539,16 +539,4 @@ function createAnimations(scene) {
         frameRate: 2,
         repeat: -1
     });
-    scene.anims.create({
-        key: 'newButtonAnim',
-        frames: scene.anims.generateFrameNames('buttons', {
-            prefix: 'new_btn_anim_',
-            suffix: '.png',
-            start: 1,
-            end: 15,
-            zeroPad: 1,
-        }),
-        frameRate: 15,
-        repeat: -1
-    });
 }

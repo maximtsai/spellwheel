@@ -758,25 +758,25 @@
                      }
                  },
                  {
-                     name: "}2x7",
+                     name: gameVars.isHardMode ? "}2x8" : "}2x7",
                      finishDelay: 1300,
                      chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
                          playSound('chirpmany', 1);
-                         this.birdPoops(7);
+                         this.birdPoops(gameVars.isHardMode ? 8 : 7);
                          this.nextBirdIndex = 5;
                          this.checkCrumble();
                      }
                  },
                  {
-                     name: "}5+$5",
+                     name: gameVars.isHardMode ? "}5x2+$5" : "}5+$5",
                      chargeAmt: 450,
                      finishDelay: 2000,
                      damage: -1,
                      attackFinishFunction: () => {
                          playSound('chirp1', 1);
-                         this.birdPoops(2, true, false, true);
+                         this.birdPoops(gameVars.isHardMode ? 3 : 2, true, false, true);
                          this.nextBirdIndex = 6;
                          this.checkCrumble(true);
                      }

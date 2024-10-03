@@ -185,8 +185,8 @@ let textData2 = {
     "post_fight_health": {
         "en_us": "Health Left: ",
         "fr": "Santé Reste: ",
-        "zh_tw": "剩餘生命值：",
-        "zh_cn": "剩余生命值：",
+        "zh_tw": "生命值：",
+        "zh_cn": "生命值：",
         "ru": "Осталось здоровья: ",
         "es": "Salud Izquierda: ",
         "jp": "ヘルス残量: "

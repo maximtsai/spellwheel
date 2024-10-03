@@ -716,7 +716,7 @@ class Player {
                     y: "-=3",
                     ease: 'Cubic.easeOut'
                 });
-                messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 40, 'BLOCKED', 1.2);
+                messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 70, 'BLOCKED', 1.2);
 
             } else {
                 hurtAmt = hurtAmt - this.statuses['matterUnload'].health;

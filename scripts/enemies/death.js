@@ -505,7 +505,7 @@
                      }
                  },
                  {
-                     name: "}5x12}",
+                     name: gameVars.isHardMode ? "}5x12}" : "}4x12}",
                      chargeAmt: 1350,
                      chargeMult: 1.3,
                      finishDelay: 5000,
@@ -546,7 +546,7 @@
                          this.timesAttacked = Math.max(0, this.timesAttacked - 5);
 
                          // this.hideCurrentAttack();
-                         this.fireScytheObjects(5, undefined, () => {
+                         this.fireScytheObjects(gameVars.isHardMode ? 5 : 4, undefined, () => {
                              if (!globalObjects.player.dead) {
                                  super.setHealth(2);
                                  globalObjects.bannerTextManager.setDialog([getLangText('deathFight1f'), getLangText('deathFight1g')]);
@@ -990,7 +990,7 @@
                      playSound('enemy_attack');
                      // this.sprite.setScale(this.sprite.startScale * 1.05);
                      // this.sprite.setRotation(0.1);
-                     this.attackName.setText("}}}5x12}}}");
+                     this.attackName.setText(gameVars.isHardMode ? "}}}5x12}}}" : "}}}4x12}}}");
                      this.repositionAngrySymbol();
                  }
              },
@@ -1020,7 +1020,7 @@
                      playSound('enemy_attack_2');
                      // this.sprite.setScale(this.sprite.startScale * 1.05);
                      // this.sprite.setRotation(0.1);
-                     this.attackName.setText("|||5x24|||");
+                     this.attackName.setText(gameVars.isHardMode ? "|||5x24|||" : "|||4x24|||");
                      this.repositionAngrySymbol();
                  }
              },
@@ -1046,7 +1046,7 @@
                      playSound('enemy_attack_major');
                      // this.sprite.setScale(this.sprite.startScale * 1.05);
                      // this.sprite.setRotation(0.1);
-                     this.attackName.setText(";;;5x36;;;");
+                     this.attackName.setText(gameVars.isHardMode ? ";;;5x36;;;" : ";;;4x36;;;");
                      this.repositionAngrySymbol();
                  }
              },

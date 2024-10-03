@@ -618,23 +618,42 @@ function createTutorialBtn(lvl) {
 }
 
 function buildTutorialButton(icon = "rune_matter_large.png", popup) {
-    let buttonX = gameConsts.width - 45; let buttonY = 120;
-    let btnPopBack = PhaserScene.add.sprite(buttonX, buttonY, 'buttons', 'new_btn_back.png').setScale(0.1).setDepth(130);
+    let buttonX = gameConsts.width - 45; let buttonY = 140;
+    let btnPopBack = PhaserScene.add.sprite(buttonX + 90, buttonY, 'buttons', 'btn_small.png').setScale(0.5, 1).setDepth(130).setOrigin(0.5, 0.5);
+    let iconGlow = PhaserScene.add.sprite(buttonX, buttonY, 'blurry', 'icon_glow.png').setScale(0.1).setDepth(130).setAlpha(0);
     let btnIcon = PhaserScene.add.sprite(buttonX, buttonY, 'tutorial', icon).setScale(0.05).setDepth(130);
-    let btnPop = PhaserScene.add.sprite(buttonX, buttonY, 'buttons', 'new_btn.png').setScale(0.1).setDepth(131);
+
+    let glowSpin = PhaserScene.tweens.add({
+        targets: [iconGlow],
+        rotation: "+=6.283",
+        duration: 4000,
+        repeat: 40,
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                targets: [iconGlow],
+                alpha: 0,
+                duration: 4000,
+            });
+        }
+    });
 
     let returnButton;
     returnButton = new Button({
         normal: {
             atlas: "buttons",
-            ref: "new_btn.png",
+            ref: "btn_small.png",
             alpha: 1,
-            x: buttonX,
+            x: buttonX + 55,
             y: buttonY,
         },
         hover: {
             atlas: "buttons",
-            ref: "new_btn_hover.png",
+            ref: "btn_small_hover.png",
+            alpha: 1,
+        },
+        press: {
+            atlas: "buttons",
+            ref: "btn_small_press.png",
             alpha: 1,
         },
         disable: {
@@ -653,28 +672,37 @@ function buildTutorialButton(icon = "rune_matter_large.png", popup) {
         onMouseUp: () => {
             showTutorialImage();
             returnButton.destroy();
+            iconGlow.destroy();
+            glowSpin.stop();
             popup();
         }
     });
-    returnButton.setDepth(130);
+    returnButton.setDepth(129);
     returnButton.setState(DISABLE);
+    returnButton.setOrigin(0.5, 0.5);
 
     PhaserScene.tweens.add({
-        targets: [btnPopBack, btnPop],
+        targets: [btnPopBack, iconGlow],
         scaleX: 1,
         scaleY: 1,
+        alpha: 1,
         easeParams: [5],
         ease: "Back.easeOut",
         duration: 900,
         onComplete: () => {
-            btnPop.destroy();
             if (returnButton.isDestroyed) {
                 return;
             }
             returnButton.setState(NORMAL);
-            let anim = PhaserScene.add.sprite(buttonX, buttonY, 'buttons').setDepth(130).play('newButtonAnim');
-            returnButton.addToDestructibles(anim);
+            btnPopBack.destroy();
         }
+    });
+    PhaserScene.tweens.add({
+        targets: [btnPopBack],
+        x: buttonX + 55,
+        easeParams: [4],
+        ease: "Back.easeOut",
+        duration: 900,
     });
 
     PhaserScene.tweens.add({
@@ -687,6 +715,7 @@ function buildTutorialButton(icon = "rune_matter_large.png", popup) {
     });
     returnButton.addToDestructibles(btnIcon);
     returnButton.addToDestructibles(btnPopBack);
+    returnButton.addToDestructibles(iconGlow);
 
     return returnButton;
 }

@@ -223,6 +223,7 @@
             <key type="filename">circle/blastEffect3.png</key>
             <key type="filename">circle/blastEffect5.png</key>
             <key type="filename">circle/blastEffect6.png</key>
+            <key type="filename">circle/pulseIn.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

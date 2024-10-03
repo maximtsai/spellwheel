@@ -5,7 +5,7 @@ function buildTutorialMatter() {
     let enhanceText = getLangText('matter_tut_enhance_desc');
     let startFrame = 'rune_matter_large.png';
 
-    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 24, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
+    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
     globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
     PhaserScene.tweens.add({
         delay: 1,
@@ -52,7 +52,7 @@ function buildTutorialMind() {
     let enhanceText = getLangText('mind_tut_enhance_desc');
     let startFrame = 'rune_energy_large.png';
 
-    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 24, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
+    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
     globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
     PhaserScene.tweens.add({
         delay: 1,
@@ -99,7 +99,7 @@ function buildTutorialTime() {
     let reinforceText = getLangText('time_tut_reinforce_desc');
     let startFrame = 'rune_time_large.png';
 
-    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 24, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
+    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
     globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
     PhaserScene.tweens.add({
         delay: 1,
@@ -157,7 +157,7 @@ function buildTutorialVoid() {
     let reinforceText = getLangText('void_tut_reinforce_desc');
     let startFrame = 'rune_void_large.png';
 
-    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 24, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
+    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
     globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
     PhaserScene.tweens.add({
         delay: 1,
@@ -214,7 +214,7 @@ function buildTutorialProtect() {
     let firstText = getLangText('matter_tut_protect_desc');
     let secondText = getLangText('mind_tut_protect_desc');
 
-    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 24, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34).setAlpha(0.5);
+    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34).setAlpha(0.5);
     globalObjects.runePicture.setVisible(true).setAlpha(0.5).setScale(0.96);
     PhaserScene.tweens.add({
         targets: [tutText, globalObjects.runePicture],
@@ -258,7 +258,7 @@ function buildTutorialReinforce() {
     let firstText = getLangText('matter_tut_reinforce_desc');
     let secondText = getLangText('mind_tut_reinforce_desc');
 
-    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 24, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
+    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
     globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
     PhaserScene.tweens.add({
         delay: 1,
@@ -305,7 +305,7 @@ function buildTutorialUnload() {
     let thirdText = getLangText('time_tut_unload_desc');
     let fourthText = getLangText('void_tut_unload_desc');
 
-    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 24, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
+    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
     globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
     PhaserScene.tweens.add({
         delay: 1,

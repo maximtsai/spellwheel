@@ -110,6 +110,31 @@
 					}
 				},
 				{
+					"filename": "pulseIn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 129,
+						"h": 129
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 129,
+						"h": 129
+					},
+					"frame": {
+						"x": 1499,
+						"y": 1,
+						"w": 129,
+						"h": 129
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "cast_triangle.png",
 					"rotated": false,
 					"trimmed": false,
@@ -2490,6 +2515,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:05e4afc3bc63fe38d71a9343cad85072:e8fd109c24c34d5a8d720288722f6081:c8df78951edfca457722a32a56a2d448$"
+		"smartupdate": "$TexturePacker:SmartUpdate:af3f7ec46d3c704eed3803851436f148:a80199a8b6b98d36ae8b7bc28f205a4c:c8df78951edfca457722a32a56a2d448$"
 	}
 }

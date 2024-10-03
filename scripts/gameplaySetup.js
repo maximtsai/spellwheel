@@ -510,8 +510,8 @@ function clickIntro() {
     PhaserScene.tweens.add({
         targets: loadObjects.sharpStar,
         alpha: 0.9,
-        scaleX: 0.9,
-        scaleY: 0.15,
+        scaleX: 1.1,
+        scaleY: 0.18,
         duration: 50,
         rotation: 0.02,
         ease: 'Cubic.easeOut',
@@ -519,8 +519,8 @@ function clickIntro() {
             PhaserScene.tweens.add({
                 targets: loadObjects.sharpStar,
                 alpha: 0.4,
-                scaleX: 0.1,
-                scaleY: 0.15,
+                scaleX: 0.12,
+                scaleY: 0.18,
                 duration: 250,
                 rotation: 0.03,
                 ease: 'Cubic.easeOut',
@@ -532,8 +532,8 @@ function clickIntro() {
     PhaserScene.tweens.add({
         targets: loadObjects.sharpStar2,
         alpha: 0.9,
-        scaleX: 1.7,
-        scaleY: 0.5,
+        scaleX: 1.95,
+        scaleY: 0.58,
         duration: 200,
         rotation: -0.03,
         ease: 'Cubic.easeOut',
@@ -541,8 +541,8 @@ function clickIntro() {
             PhaserScene.tweens.add({
                 targets: loadObjects.sharpStar2,
                 alpha: 0.4,
-                scaleX: 0.1,
-                scaleY: 0.2,
+                scaleX: 0.12,
+                scaleY: 0.24,
                 duration: 550,
                 ease: 'Cubic.easeOut',
             });

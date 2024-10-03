@@ -194,7 +194,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -209,7 +209,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -224,7 +224,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.6</double>
+                <double>0.62</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -234,13 +234,24 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">buttons/btn_small_hover.png</key>
+            <key type="filename">buttons/btn_small_press.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.62</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>91,40,181,80</rect>
+                <key>scale9Paddings</key>
+                <rect>91,40,181,80</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">buttons/closebtn.png</key>
             <key type="filename">buttons/closebtn_press.png</key>
-            <key type="filename">buttons/new_btn.png</key>
-            <key type="filename">buttons/new_btn_anim.png</key>
-            <key type="filename">buttons/new_btn_back.png</key>
-            <key type="filename">buttons/new_btn_basic.png</key>
-            <key type="filename">buttons/new_btn_hover.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -324,35 +335,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">buttons/new_btn_anim_1.png</key>
-            <key type="filename">buttons/new_btn_anim_10.png</key>
-            <key type="filename">buttons/new_btn_anim_11.png</key>
-            <key type="filename">buttons/new_btn_anim_12.png</key>
-            <key type="filename">buttons/new_btn_anim_13.png</key>
-            <key type="filename">buttons/new_btn_anim_14.png</key>
-            <key type="filename">buttons/new_btn_anim_15.png</key>
-            <key type="filename">buttons/new_btn_anim_2.png</key>
-            <key type="filename">buttons/new_btn_anim_3.png</key>
-            <key type="filename">buttons/new_btn_anim_4.png</key>
-            <key type="filename">buttons/new_btn_anim_5.png</key>
-            <key type="filename">buttons/new_btn_anim_6.png</key>
-            <key type="filename">buttons/new_btn_anim_7.png</key>
-            <key type="filename">buttons/new_btn_anim_8.png</key>
-            <key type="filename">buttons/new_btn_anim_9.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>17,17,35,35</rect>
-                <key>scale9Paddings</key>
-                <rect>17,17,35,35</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">buttons/select_btn_disable.png</key>
             <key type="filename">buttons/select_btn_hover.png</key>
             <key type="filename">buttons/select_btn_normal.png</key>
@@ -368,23 +350,6 @@
                 <rect>13,13,26,26</rect>
                 <key>scale9Paddings</key>
                 <rect>13,13,26,26</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">buttons/slip.png</key>
-            <key type="filename">buttons/slip_hover.png</key>
-            <key type="filename">buttons/slip_press.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>14,11,27,21</rect>
-                <key>scale9Paddings</key>
-                <rect>14,11,27,21</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

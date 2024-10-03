@@ -25,7 +25,7 @@
     }
 
      initStatsCustom() {
-        this.health = 230;
+        this.health = 240;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -154,7 +154,7 @@
                  {
                      name: "}2x3",
                      chargeAmt: 400,
-                     finishDelay: 500,
+                     finishDelay: 600,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
@@ -170,14 +170,14 @@
                  },
                  {
                      name: "WAITING...",
-                     chargeAmt: 400,
+                     chargeAmt: 450,
                      transitionFast: true,
                      damage: -1,
                  },
                  {
-                     name: "}2x12",
+                     name: "}}2x12",
                      chargeAmt: 700,
-                     finishDelay: 2500,
+                     finishDelay: 2600,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
@@ -193,15 +193,15 @@
                  },
                  {
                      name: "WAITING...",
-                     chargeAmt: 400,
+                     chargeAmt: 500,
                      transitionFast: true,
                      damage: -1,
                  },
                  // 0
                  {
-                     name: "}2x15",
+                     name: "}}}2x15",
                      chargeAmt: 800,
-                     finishDelay: 3500,
+                     finishDelay: 3600,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
@@ -218,12 +218,12 @@
                  // 0
                  {
                      name: "WAITING...",
-                     chargeAmt: 400,
+                     chargeAmt: 500,
                      transitionFast: true,
                      damage: -1,
                  },
                  {
-                     name: "}2x18",
+                     name: "}}}}2x18",
                      chargeAmt: 900,
                      finishDelay: 4500,
                      transitionFast: true,
@@ -246,7 +246,7 @@
                      damage: -1,
                  },
                  {
-                     name: "}15",
+                     name: ";18",
                      chargeAmt: 500,
                      finishDelay: 500,
                      transitionFast: true,
@@ -259,12 +259,12 @@
 
                      },
                      attackFinishFunction: () => {
-                         this.throwWeapon('sword.png', 5, 1);
+                         this.throwWeapon('scythe.png', 18, 1);
                      }
                  },
                  {
                      name: "Malfunctioning...",
-                     chargeAmt: 300,
+                     chargeAmt: 350,
                      chargeMult: 10,
                      damage: -1,
                      isPassive: true,

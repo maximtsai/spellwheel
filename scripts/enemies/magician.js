@@ -961,7 +961,7 @@
         for (let i = 0; i < totalAmt; i++) {
             this.addTween({
                 delay: i * 180,
-                duration: 175,
+                duration: 300,
                 targets: this.sprite,
                 scaleX: this.sprite.startScale,
                 scaleY: this.sprite.startScale,
@@ -1012,7 +1012,7 @@
                         } else {
                             this.attackName.setText("}}}}2x" + numAttacks + "}}}}");
                             this.repositionAngrySymbol();
-                            this.nextAttack.chargeMult = 9;
+                            this.nextAttack.chargeMult = 7.5;
                             this.setDefaultSprite('time_magi.png');
                         }
                     }
@@ -1197,7 +1197,7 @@
                      desc: "The Time Magician\nuses his ultimate attack",
                      chargeAmt: 1300,
                      isBigMove: true,
-                     chargeMult: gameVars.isHardMode ? 5 : 4,
+                     chargeMult: gameVars.isHardMode ? 4 : 3,
                      damage: -1,
                     finishDelay: 4200,
 

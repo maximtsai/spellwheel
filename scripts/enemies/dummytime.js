@@ -4,7 +4,7 @@
     }
 
      initStatsCustom() {
-        this.health = 160;
+        this.health = 130;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -174,9 +174,9 @@
              [
                  // 0
                  {
-                     name: ";20x4;",
-                     chargeAmt: 750,
-                     finishDelay: 800,
+                     name: ";15x5;",
+                     chargeAmt: 700,
+                     finishDelay: 2800,
                      isBigMove: true,
                      transitionFast: true,
                      damage: -1,
@@ -187,12 +187,12 @@
 
                     },
                     attackFinishFunction: () => {
-                        this.throwWeapon('scythe.png', 20, 4);
+                        this.throwWeapon('sword.png', 15, 5);
                     }
                  },
                  {
                      name: "OUT OF AMMO...",
-                     chargeAmt: 300,
+                     chargeAmt: 350,
                      transitionFast: true,
                      isPassive: true,
                      damage: -1,
@@ -270,9 +270,9 @@
                              let centerXPos = globalObjects.textPopupManager.getCenterPos();
 
                             if (!this.rune3) {
-                                 this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 96, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
-                                 this.rune4 = this.addSprite(centerXPos - 0, runeYPos + 96, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
-                                 this.rune5 = this.addSprite(centerXPos + 48, runeYPos + 96, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
+                                 this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 93, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
+                                 this.rune4 = this.addSprite(centerXPos - 0, runeYPos + 93, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
+                                 this.rune5 = this.addSprite(centerXPos + 48, runeYPos + 93, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
                             }
                              this.addTween({
                                  targets: [this.rune3, this.rune4, this.rune5],
@@ -288,8 +288,8 @@
                                  onComplete: () => {
                                      this.addTween({
                                          targets: [this.rune3, this.rune4, this.rune5],
-                                         scaleX: 0.8,
-                                         scaleY: 0.8,
+                                         scaleX: 0.78,
+                                         scaleY: 0.78,
                                          ease: 'Back.easeOut',
                                          duration: 400,
                                      });

@@ -6,7 +6,7 @@ let config = {
         parent: 'spellwheel',
         autoRound: true,
         width: isMobile ? 596 : 610,
-        height: isMobile ? 810 : 770,
+        height: isMobile ? 810 : 775,
         orientation: 'landscape',
         mode: Phaser.Scale.FIT,
         forceLandscape: true

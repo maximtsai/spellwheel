@@ -890,7 +890,7 @@ let textData2 = {
     },
     "shield_rune_spells": {
         "en_us": "SHIELD RUNE SPELLS",
-        "fr": "SORT DE RUNE DE BOUCLIER",
+        "fr": "SORT DE RUNE\nBOUCLIER",
         "zh_tw": "盾牌符文法術",
         "zh_cn": "盾牌符文法术",
         "ru": "",
@@ -899,7 +899,7 @@ let textData2 = {
     },
     "body_rune_spells": {
         "en_us": "BODY RUNE SPELLS",
-        "fr": "SORT DE RUNE CORPS",
+        "fr": "SORT DE RUNE\nCORPS",
         "zh_tw": "身體符文法術",
         "zh_cn": "身体符文法术",
         "ru": "",
@@ -908,7 +908,7 @@ let textData2 = {
     },
     "ultimate_rune_spells": {
         "en_us": "ULTIMATE RUNE SPELLS",
-        "fr": "SORT DE RUNE ULTIME",
+        "fr": "SORT DE RUNE\nULTIME",
         "zh_tw": "究極符文法術",
         "zh_cn": "究极符文法术",
         "ru": "",
@@ -917,7 +917,7 @@ let textData2 = {
     },
     "energy_rune_spells": {
         "en_us": "ENERGY RUNE SPELLS",
-        "fr": "SORT DE RUNE D'ÉNERGIE",
+        "fr": "SORT DE RUNE\nD'ÉNERGIE",
         "zh_tw": "能量符文法術",
         "zh_cn": "能量符文法术",
         "ru": "",
@@ -926,7 +926,7 @@ let textData2 = {
     },
     "time_rune_spells": {
         "en_us": "TIME RUNE SPELLS",
-        "fr": "SORT DE RUNE TEMPORELLE",
+        "fr": "SORT DE RUNE\nTEMPORELLE",
         "zh_tw": "時間符文法術",
         "zh_cn": "时间符文法术",
         "ru": "",

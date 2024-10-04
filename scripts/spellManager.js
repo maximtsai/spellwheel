@@ -131,7 +131,7 @@ class SpellManager {
         let rockObjects = [];
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let additionalDamage = globalObjects.player.attackDamageAdder();
-        let isExtraBuff = additionalDamage >= 12;
+        let isExtraBuff = additionalDamage >= 6;
 
         let pebbles = getTempPoolObject('spells', 'rockCircle.png', 'rockCircle', 800);
         pebbles.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 240);

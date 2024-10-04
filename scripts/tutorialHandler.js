@@ -8,12 +8,12 @@ function buildTutorialMatter() {
     let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
     globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
     PhaserScene.tweens.add({
-        delay: 1,
+        delay: 0.25,
         targets: [tutText, globalObjects.runePicture],
         alpha: 1,
         scaleX: 1,
         scaleY: 1,
-        duration: 1,
+        duration: 0.5,
     });
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);
 
@@ -55,12 +55,12 @@ function buildTutorialMind() {
     let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
     globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
     PhaserScene.tweens.add({
-        delay: 1,
+        delay: 0.25,
         targets: [tutText, globalObjects.runePicture],
         alpha: 1,
         scaleX: 1,
         scaleY: 1,
-        duration: 1,
+        duration: 0.5,
     });
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);
 
@@ -102,12 +102,12 @@ function buildTutorialTime() {
     let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
     globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
     PhaserScene.tweens.add({
-        delay: 1,
+        delay: 0.25,
         targets: [tutText, globalObjects.runePicture],
         alpha: 1,
         scaleX: 1,
         scaleY: 1,
-        duration: 1,
+        duration: 0.5,
     });
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);
 
@@ -160,12 +160,12 @@ function buildTutorialVoid() {
     let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
     globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
     PhaserScene.tweens.add({
-        delay: 1,
+        delay: 0.25,
         targets: [tutText, globalObjects.runePicture],
         alpha: 1,
         scaleX: 1,
         scaleY: 1,
-        duration: 1,
+        duration: 0.5,
     });
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);
 
@@ -221,7 +221,7 @@ function buildTutorialProtect() {
         alpha: 1,
         scaleX: 1,
         scaleY: 1,
-        duration: 1,
+        duration: 0.5,
     });
     let startFrame = 'rune_protect_large.png'
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);
@@ -261,12 +261,12 @@ function buildTutorialReinforce() {
     let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
     globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
     PhaserScene.tweens.add({
-        delay: 1,
+        delay: 0.25,
         targets: [tutText, globalObjects.runePicture],
         alpha: 1,
         scaleX: 1,
         scaleY: 1,
-        duration: 1,
+        duration: 0.5,
     });
     let startFrame = 'rune_reinforce_large.png'
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);
@@ -308,12 +308,12 @@ function buildTutorialUnload() {
     let tutText = PhaserScene.add.text(gameConsts.halfWidth - 125, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
     globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
     PhaserScene.tweens.add({
-        delay: 1,
+        delay: 0.25,
         targets: [tutText, globalObjects.runePicture],
         alpha: 1,
         scaleX: 1,
         scaleY: 1,
-        duration: 1,
+        duration: 0.5,
     });
     let startFrame = 'rune_unload_large.png'
     globalObjects.runePicture.setFrame(startFrame).setRotation(0);

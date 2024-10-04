@@ -508,7 +508,7 @@
                             // globalObjects.magicCircle.enableMovement();
                              // TODO: maybe just skip straight to enemy
                             // globalObjects.postFightScreen.createWinScreenMin();
-                             beginPreLevel(-this.level + 1);
+                             beginPreLevel(this.targetLevel ? this.targetLevel : -this.level + 1);
                         }
                     });
                 });

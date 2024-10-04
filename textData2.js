@@ -558,8 +558,8 @@ let textData2 = {
     "pre_fight_5b": {
         "en_us": "But if there is no entrance, then I will\nsimply make one.",
         "fr": "Mais s’il n’y a pas d’entrée, alors j’en\nferai simplement une.",
-        "zh_tw": "但是如果沒有入口，那我就自己造一個。",
-        "zh_cn": "但是如果没有入口，那我就自己造一个。",
+        "zh_tw": "但如果沒有入口，我就自己打通一個。",
+        "zh_cn": "但如果没有入口，我就自己打通一个。",
         "ru": "Но если входа нет, то я просто сделаю его.",
         "es": "Pero si no hay entrada, entonces\nsimplemente haré una.",
         "jp": "しかし、入り口がない場合は、単に入り口\nを作ります。"
@@ -887,6 +887,60 @@ let textData2 = {
         "ru": "ПРОДОЛЖАТЬ",
         "es": "CONTINUAR",
         "jp": "続ける"
+    },
+    "shield_rune_spells": {
+        "en_us": "SHIELD RUNE SPELLS",
+        "fr": "SORT DE RUNE DE BOUCLIER",
+        "zh_tw": "盾牌符文法術",
+        "zh_cn": "盾牌符文法术",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "body_rune_spells": {
+        "en_us": "BODY RUNE SPELLS",
+        "fr": "SORT DE RUNE CORPS",
+        "zh_tw": "身體符文法術",
+        "zh_cn": "身体符文法术",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "ultimate_rune_spells": {
+        "en_us": "ULTIMATE RUNE SPELLS",
+        "fr": "SORT DE RUNE ULTIME",
+        "zh_tw": "究極符文法術",
+        "zh_cn": "究极符文法术",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "energy_rune_spells": {
+        "en_us": "ENERGY RUNE SPELLS",
+        "fr": "SORT DE RUNE D'ÉNERGIE",
+        "zh_tw": "能量符文法術",
+        "zh_cn": "能量符文法术",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "time_rune_spells": {
+        "en_us": "TIME RUNE SPELLS",
+        "fr": "SORT DE RUNE TEMPORELLE",
+        "zh_tw": "時間符文法術",
+        "zh_cn": "时间符文法术",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "void_rune_spells": {
+        "en_us": "VOID RUNE SPELLS",
+        "fr": "SORT DE RUNE DU VIDE",
+        "zh_tw": "虛空符文法術",
+        "zh_cn": "虚空符文法术",
+        "ru": "",
+        "es": "",
+        "jp": ""
     }
 };
 

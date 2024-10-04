@@ -644,17 +644,17 @@ let textData = {
     "void_tut_strike_desc": {
         "en_us": "An attack that hits 3 times\nafter a delay and deals deals\npercentage health damage.\nScales incredibly well with +damage\nenhancements.",
         "fr": "Une attaque qui frappe trois\nfois après un délai et inflige\ndes dégâts en pourcentage de santé.",
-        "zh_tw": "延遲後發動 3 次攻擊,每次攻\n擊造成百分比的生命傷害。",
-        "zh_cn": "延迟后发动 3 次攻击,每次攻\n击造成百分比的生命伤害。",
+        "zh_tw": "延遲後發動 3 次攻擊,每次攻\n擊造成百分比的生命傷害。\n加強攻擊力的法術會三倍\n增加攻擊威力。",
+        "zh_cn": "延迟后发动 3 次攻击,每次攻\n击造成百分比的生命伤害。\n加强攻击力的法术会三倍\n增加攻击威力。",
         "ru": "Атака, которая наносит три удара\nс задержкой и наносит урон в\nпроцентах от здоровья.",
         "es": "",
         "jp": ""
     },
     "void_tut_enhance_desc": {
-        "en_us": "Increase your attack damage for\nthe rest of the fight.",
-        "fr": "Augmente les dégâts de votre\nattaque pour le reste du combat.",
-        "zh_tw": "永久增加你的攻擊傷害。",
-        "zh_cn": "永久增加你的攻击伤害。",
+        "en_us": "Increase your attack damage for\nthe rest of the fight. Good for\nlong battles.",
+        "fr": "Augmente les dégâts de votre\nattaque pour le reste du combat.\nIdéal pour les longues batailles.",
+        "zh_tw": "永久增加你的攻擊力。\n适合长时间战斗。",
+        "zh_cn": "永久增加你的攻击力。\n适合长时间战斗。",
         "ru": "Увеличьте свой урон от атаки\nдо конца боя.",
         "es": ".",
         "jp": ""
@@ -671,8 +671,8 @@ let textData = {
     "void_tut_reinforce_desc": {
         "en_us": "Heals you to full, but at the\ncost of permanently reducing your\nmax health.",
         "fr": "Vous soigne entièrement, mais\nréduit définitivement votre santé\nmaximale.",
-        "zh_tw": "完全恢复生命值，但以\n一些总生命值為代價。",
-        "zh_cn": "完全恢复生命值，但以\n一些总生命值为代价。",
+        "zh_tw": "完全恢复生命值，但以一些\n总生命值為代價。",
+        "zh_cn": "完全恢复生命值，但以一些\n总生命值为代价。",
         "ru": "Полностью исцеляет вас, но навсегда\nуменьшает ваше максимальное здоровье.",
         "es": "Te vuelves brevemente invulnerable y te curas por completo, pero a costa de algo de salud máxima.",
         "jp": "一時的に無敵状態になり、完全に回復しますが、最大体力がいくらか犠牲になります。"

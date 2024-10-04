@@ -809,27 +809,25 @@ function showLevelSelectScreen(){
     globalObjects.options.hideButton();
     let clickBlocker = createGlobalClickBlocker(false);
     let positionsX = [
-        gameConsts.halfWidth,
+        gameConsts.halfWidth - 120, gameConsts.halfWidth, gameConsts.halfWidth + 120,
         gameConsts.halfWidth - 180, gameConsts.halfWidth - 60, gameConsts.halfWidth + 60, gameConsts.halfWidth + 180,
         gameConsts.halfWidth - 120, gameConsts.halfWidth, gameConsts.halfWidth + 120,
         gameConsts.halfWidth - 180, gameConsts.halfWidth - 60, gameConsts.halfWidth + 60, gameConsts.halfWidth + 180,
-        gameConsts.halfWidth,
     ]
     let positionsY = [
-        gameConsts.halfHeight - 220,
-        gameConsts.halfHeight - 110, gameConsts.halfHeight - 110, gameConsts.halfHeight - 110, gameConsts.halfHeight - 110,
-        gameConsts.halfHeight, gameConsts.halfHeight, gameConsts.halfHeight,
-        gameConsts.halfHeight + 110, gameConsts.halfHeight + 110, gameConsts.halfHeight + 110, gameConsts.halfHeight + 110,
-        gameConsts.halfHeight + 220,
+        gameConsts.halfHeight - 180, gameConsts.halfHeight - 180, gameConsts.halfHeight - 180,
+        gameConsts.halfHeight - 60, gameConsts.halfHeight - 60, gameConsts.halfHeight - 60, gameConsts.halfHeight - 60,
+        gameConsts.halfHeight + 60, gameConsts.halfHeight + 60, gameConsts.halfHeight + 60,
+        gameConsts.halfHeight + 180, gameConsts.halfHeight + 180, gameConsts.halfHeight + 180, gameConsts.halfHeight + 180,
     ]
-    let levelSelectBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 22, 'ui', 'paper.png').setDepth(10000).setScale(0.92, 0.98);
+    let levelSelectBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 22, 'ui', 'paper.png').setDepth(10000).setScale(0.92, 0.9);
     let blackBG = getBackgroundBlackout();
     blackBG.setDepth(9999).setAlpha(0);
-    let title = PhaserScene.add.text(gameConsts.halfWidth, levelSelectBG.y - 295, getLangText('lvl_select'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.8).setScale(0.89, 0.89).setDepth(10000);
+    let title = PhaserScene.add.text(gameConsts.halfWidth, levelSelectBG.y - 260, getLangText('lvl_select'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.8).setScale(0.89, 0.89).setDepth(10000);
     PhaserScene.tweens.add({
         targets: levelSelectBG,
         scaleX: 0.93,
-        scaleY: 1.025,
+        scaleY: 0.91,
         ease: 'Back.easeOut',
         duration: 250
     })
@@ -896,9 +894,9 @@ function showLevelSelectScreen(){
 
     let listOfBtns = [];
     let maxLevel = Math.min(gameVars.maxLevel + 1, 13);
-    for (let i = 1; i <= maxLevel; i++) {
-        let xPos = positionsX[i-1];
-        let yPos = positionsY[i-1];
+    for (let i = 0; i <= maxLevel; i++) {
+        let xPos = positionsX[i];
+        let yPos = positionsY[i];
         let imgRef = `level${i}btn.png`;
         let newBtn = new Button({
             normal: {

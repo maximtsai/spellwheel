@@ -262,7 +262,7 @@
                         if (!this.shownTut) {
                             this.addDelay(() => {
                                 this.shownTut = true;
-                                globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText("energy_tut_goblin"), 'right');
+                                globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 150, getLangText("energy_tut_goblin"), 'right');
                                 let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                                 let centerXPos = globalObjects.textPopupManager.getCenterPos();
                                 let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;

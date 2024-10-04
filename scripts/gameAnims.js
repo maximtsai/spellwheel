@@ -227,10 +227,10 @@ function createAnimations(scene) {
             prefix: 'mindBurn',
             suffix: '.png',
             start: 1,
-            end: 4,
+            end: 6,
             zeroPad: 0,
         }),
-        frameRate: 10,
+        frameRate: 15,
         repeat: -1
     });
     scene.anims.create({
@@ -239,11 +239,11 @@ function createAnimations(scene) {
             prefix: 'mindBurn',
             suffix: '.png',
             start: 1,
-            end: 4,
+            end: 6,
             zeroPad: 0,
             yoyo: true,
         }),
-        frameRate: 5,
+        frameRate: 6,
         repeat: -1
     });
     scene.anims.create({

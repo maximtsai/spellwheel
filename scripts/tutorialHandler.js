@@ -254,7 +254,7 @@ function buildTutorialProtect() {
 
 function buildTutorialReinforce() {
     let clickBlocker = buildClickblocker();
-    let initTutText = getLangText('reinforce_tut_desc');
+    let initTutText = getLangText('reinforce_tut_desc_sh');
     let firstText = getLangText('matter_tut_reinforce_desc');
     let secondText = getLangText('mind_tut_reinforce_desc');
 

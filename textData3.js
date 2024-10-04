@@ -216,7 +216,7 @@ let textData3 = {
         "es": "AQUELLO QUE BUSCAS AQUÍ\nNO SE PUEDE ALCANZAR.",
         "jp": "あなたがここで探し求めているものは、\n達成することができません。"
     },
-    "death4b": {
+    "death4bx": {
         "en_us": "YOU MARCH FORWARD,\nYET YOU TETHER YOURSELF",
         "fr": "VOUS MARCHEZ DE L'AVANT,\nMAIS VOUS VOUS ATTACHEZ",
         "zh_tw": "你不斷地向前邁進",
@@ -225,7 +225,7 @@ let textData3 = {
         "es": "",
         "jp": ""
     },
-    "death4c": {
+    "death4cx": {
         "en_us": "TO YOUR MEMORIES\nOF THE PAST.",
         "fr": "À UN TEMPS QUI EST DÉJÀ PASSÉ.",
         "zh_tw": "但你卻將自己束縛在過去的記憶中。",
@@ -234,11 +234,38 @@ let textData3 = {
         "es": "",
         "jp": ""
     },
-    "death4d": {
+    "death4dx": {
         "en_us": "YOUR BELOVED HAS LONG PASSED.\nIT IS TIME TO MOVE ON.",
         "fr": "VOTRE PROCHE EST MORT DEPUIS LONGTEMPS.\nIL EST TEMPS D'ABANDONNER VOS OBSESSIONS.",
         "zh_tw": "你的摯愛早已去世。\n是時候放手你的執念。",
         "zh_cn": "你的挚爱早已去世。\n是时候放手你的执念。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death4b": {
+        "en_us": "...",
+        "fr": "...",
+        "zh_tw": "。。。",
+        "zh_cn": "。。。",
+        "ru": "...",
+        "es": "",
+        "jp": ""
+    },
+    "death4c": {
+        "en_us": "YOU IGNORE MY WARNINGS AND\nCONTINUE YOUR JOURNEY OF DESTRUCTION.",
+        "fr": "VOUS IGNOREZ MES AVERTISSEMENTS ET\nCONTINUEZ VOTRE VOYAGE DE DESTRUCTION.",
+        "zh_tw": "你無視我的警告，\n繼續你的毀滅之旅。",
+        "zh_cn": "你无视我的警告，\n继续你的毁灭之旅。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death4d": {
+        "en_us": "I WILL NOT STOP YOU, BUT KNOW\nTHAT YOUR ACTIONS WILL HAVE CONSEQUENCE.",
+        "fr": "JE NE VOUS ARRÊTERAI PAS, MAIS\nVOS ACTES AURONT DES CONSÉQUENCES.",
+        "zh_tw": "我不會阻止你，但了解你的\n行為最終會產生後果。",
+        "zh_cn": "我不会阻止你，但了解你的\n行为最终会产生后果。",
         "ru": "",
         "es": "",
         "jp": ""

@@ -304,10 +304,10 @@ let textData2 = {
         "jp": "どうやら私は倒すすべての敵の力を手に入れたようだ! 旅は長いかもしれないが、十分な数の敵を倒せば、いつの日か死そのものに立ち向かえるようになるかもしれない!"
     },
     "post_fight_story4": {
-        "en_us": "Sometimes I question myself, if entering\nthese forbidden lands and battling every foe\nI encounter is truly the right choice.\n\nBut when I close my eyes and think of your\nsmile, I am sure that every sacrifice will be\nworth it in the end.",
-        "fr": "Parfois, je me demande si aller au Pays des\nMorts et combattre tous les ennemis est\nvraiment la bonne chose à faire.\n\nMais quand je ferme les yeux et pense à ton\nsourire, j’ai l’impression que tous les sacrifices\nen valaient la peine au final.",
-        "zh_tw": "有時我會懷疑進入亡靈之地，\n與每個敵人戰鬥是否真的是正確的選擇。\n\n但當我閉上眼睛，想起你的笑容時，\n我我相信最終所有的犧牲都是值得的。",
-        "zh_cn": "有时我会怀疑进入亡灵之地，\n与每个敌人战斗是否真的是正确的选择。\n\n但当我闭上眼睛，想起你的笑容时，\n我我相信最终所有的牺牲都是值得的。",
+        "en_us": "The nagging Reaper once again comes\nto sow doubt in my mind.\n\nBut when I close my eyes and think of your\nsmile, I am sure that every sacrifice will be\nworth it in the end.",
+        "fr": "Le Reaper lancinant essaie encore une\nfois de me faire douter de mon chemin.\n\nMais quand je ferme les yeux et pense à ton\nsourire, j’ai l’impression que tous les sacrifices\nen valaient la peine au final.",
+        "zh_tw": "嘮叨的死神再次試圖讓我\n懷疑我的道路。\n\n但只要我閉上眼睛，想起你的笑容時，\n我相信最終所有的犧牲都是值得的。",
+        "zh_cn": "唠叨的死神再次试图让我\n怀疑我的道路。\n\n但只要我闭上眼睛，想起你的笑容时，\n我相信最终所有的牺牲都是值得的。",
         "ru": "Как же я жажду снова ощутить твои объятия, моя дорогая возлюбленная.  Твоя смерть была слишком поспешной, слишком несправедливой, и я исправлю эту ошибку, даже если мне придется опрокинуть всю страну.",
         "es": "¡Cómo anhelo sentir tu abrazo una vez más, mi queridísimo amado!  Tu muerte fue demasiado prematura, demasiado injusta, y corregiré este error incluso si tengo que trastornar toda la tierra.",
         "jp": "あなたの抱擁をもう一度感じたいと切望しています、私の最愛の人。 あなたの死はあまりにも早く、あまりにも不当であり、たとえ私が国全体を覆さなければならないとしても、私はこの間違いを正します。"

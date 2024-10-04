@@ -25,7 +25,7 @@
     }
 
      initStatsCustom() {
-        this.health = 240;
+        this.health = 250;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -170,7 +170,7 @@
                  },
                  {
                      name: "WAITING...",
-                     chargeAmt: 450,
+                     chargeAmt: 500,
                      transitionFast: true,
                      damage: -1,
                  },
@@ -193,7 +193,7 @@
                  },
                  {
                      name: "WAITING...",
-                     chargeAmt: 500,
+                     chargeAmt: 550,
                      transitionFast: true,
                      damage: -1,
                  },
@@ -218,7 +218,7 @@
                  // 0
                  {
                      name: "WAITING...",
-                     chargeAmt: 500,
+                     chargeAmt: 600,
                      transitionFast: true,
                      damage: -1,
                  },

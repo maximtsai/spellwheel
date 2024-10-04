@@ -316,7 +316,7 @@ let textData4 = {
         "jp": "エネルギー呪文は敵の防御を無視したトゥルーダメージを与える。              +"
     },
     "shield_tut_knight": {
-        "en_us": "This shield can\nblock the strongest\nattacks! But will\nbreak with any hit.",
+        "en_us": "Void shields can\nblock the strongest\nattacks! But will\nbreak with any hit.",
         "fr": "Ce bouclier peut\nbloquer les attaques\nles plus puissantes!\nMais casse avec\nn’importe quel coup.",
         "zh_tw": "這個盾牌可以擋住\n最強的攻擊！但受到\n任何打擊都會破碎。",
         "zh_cn": "这个盾牌可以挡住\n最强的攻击！但受到\n任何打击都会破碎。",

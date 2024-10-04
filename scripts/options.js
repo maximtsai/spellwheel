@@ -69,7 +69,7 @@ class Options {
             this.listOfThingsToHide.push(this.darkenBG);
         }
         if (!this.bgPage) {
-            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 15, 'ui', 'paper.png').setDepth(this.baseDepth).setScale(1, 1.1);
+            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 10, 'ui', 'paper.png').setDepth(this.baseDepth).setScale(1, 1.1);
             this.listOfThingsToHide.push(this.bgPage);
         }
 

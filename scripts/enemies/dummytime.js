@@ -174,8 +174,8 @@
              [
                  // 0
                  {
-                     name: "|12x3",
-                     chargeAmt: 300,
+                     name: ";20x4;",
+                     chargeAmt: 750,
                      finishDelay: 800,
                      isBigMove: true,
                      transitionFast: true,
@@ -187,12 +187,12 @@
 
                     },
                     attackFinishFunction: () => {
-                        this.throwWeapon('sword.png', 12, 3);
+                        this.throwWeapon('scythe.png', 20, 4);
                     }
                  },
                  {
-                     name: "WAITING...",
-                     chargeAmt: 350,
+                     name: "OUT OF AMMO...",
+                     chargeAmt: 300,
                      transitionFast: true,
                      isPassive: true,
                      damage: -1,
@@ -257,23 +257,6 @@
              ],
              [
                  {
-                     name: "|12",
-                     chargeAmt: 350,
-                     chargeMult: 2,
-                     finishDelay: 500,
-                     transitionFast: true,
-                     damage: -1,
-                     startFunction: () => {
-
-                     },
-                     attackStartFunction: () => {
-
-                     },
-                     attackFinishFunction: () => {
-                         this.throwWeapon('sword.png', 12, 1);
-                     }
-                 },
-                 {
                      name: "FIX SELF \\35",
                      chargeAmt: 550,
                      finishDelay: 2000,
@@ -334,48 +317,33 @@
                      }
                  },
                  {
-                     name: "|8x2",
-                     chargeAmt: 500,
-                     chargeMult: 2,
-                     finishDelay: 300,
-                     transitionFast: true,
-                     damage: -1,
-                     startFunction: () => {
-
-                     },
-                     attackStartFunction: () => {
-
-                     },
-                     attackFinishFunction: () => {
-                         this.throwWeapon('sword.png', 8, 2);
-                     }
-                 },
-                 {
-                     name: "|3x9",
-                     chargeAmt: 850,
-                     chargeMult: 2,
-                     finishDelay: 2000,
-                     transitionFast: true,
-                     isBigMove: true,
-                     damage: -1,
-                     startFunction: () => {
-
-                     },
-                     attackStartFunction: () => {
-
-                     },
-                     attackFinishFunction: () => {
-                         this.throwTriple('star.png', 3, 3);
-                     }
-                 },
-                 {
-                     name: "FIX SELF \\40",
-                     chargeAmt: 650,
+                     name: "FIX SELF \\45",
+                     chargeAmt: 750,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(40);
+                         this.healAnim(45);
+                     }
+                 },
+                 {
+                     name: "FIX SELF \\35",
+                     chargeAmt: 550,
+                     finishDelay: 2000,
+                     transitionFast: true,
+                     damage: -1,
+                     attackStartFunction: () => {
+                         this.healAnim(35);
+                     }
+                 },
+                 {
+                     name: "FIX SELF \\45",
+                     chargeAmt: 750,
+                     finishDelay: 2000,
+                     transitionFast: true,
+                     damage: -1,
+                     attackStartFunction: () => {
+                         this.healAnim(45);
                      }
                  },
              ]

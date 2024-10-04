@@ -38,7 +38,7 @@ class PostFightScreen {
             this.bgShade = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(100000).setAlpha(0).setScale(500, 500);
         }
         if (!this.backing) {
-            this.backing = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 30, 'ui', 'battleOverScreen.png').setDepth(100000).setAlpha(0);
+            this.backing = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 30, 'backgrounds', 'battleOverScreen.png').setDepth(100000).setAlpha(0);
         }
         if (!this.titleText) {
             this.titleText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 268, '(placeholder title)', {fontFamily: 'garamondmax', fontSize: 42, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
@@ -972,6 +972,9 @@ class PostFightScreen {
             alpha: 0,
             ease: 'Quad.easeOut',
             duration: 600,
+            onComplete: () => {
+                this.locketSprite.visible = false;
+            }
         });
         PhaserScene.tweens.add({
             targets: this.listOfCodes,

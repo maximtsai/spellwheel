@@ -77,11 +77,11 @@ class Encyclopedia {
             this.listOfThingsToHide.push(this.tab3Icon);
         }
         if (!this.bgPage) {
-            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight + 22, 'ui', 'battleOverScreen.png').setDepth(this.baseDepth).setAlpha(0).setScale(1, 1.14);
+            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight + 22, 'ui', 'paper.png').setDepth(this.baseDepth).setAlpha(0).setScale(1, 1.08);
             this.listOfThingsToHide.push(this.bgPage);
         }
         if (!this.title) {
-            this.title = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 290, getLangText('pre_fight_0a'), {fontFamily: 'opensans', fontSize: 24, color: '#000000', align: 'left'}).setDepth(this.baseDepth).setAlpha(0);
+            this.title = PhaserScene.add.text(gameConsts.halfWidth - 255, gameConsts.halfHeight - 290, getLangText('pre_fight_0a'), {fontFamily: 'opensans', fontSize: 24, color: '#000000', align: 'left'}).setDepth(this.baseDepth).setAlpha(0);
             this.listOfThingsToHide.push(this.title);
         }
 
@@ -94,7 +94,7 @@ class Encyclopedia {
                     atlas: 'buttons',
                     ref: "closebtn.png",
                     alpha: 0.95,
-                    x: gameConsts.halfWidth + 220,
+                    x: gameConsts.halfWidth + 230,
                     y: gameConsts.halfHeight - 275,
                 },
                 hover: {
@@ -392,7 +392,7 @@ class Encyclopedia {
 
         PhaserScene.tweens.add({
             targets: this.bgPage,
-            scaleY: 1.14,
+            scaleY: 1.08,
             y: gameConsts.halfHeight + 22,
             ease: 'Cubic.easeOut',
             duration: 1
@@ -403,15 +403,15 @@ class Encyclopedia {
     setSecondPage() {
         playSound('flip2');
         this.title.setText(" ")
-        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 290, getLangText('encyclopedia_rune_element'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
-        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 15, getLangText('encyclopedia_rune_action'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 252, gameConsts.halfHeight - 290, getLangText('encyclopedia_rune_element'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 252, gameConsts.halfHeight - 15, getLangText('encyclopedia_rune_action'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
         this.currentPageItems.push(text1);
         this.currentPageItems.push(text2);
         this.closeButton.tweenToPos(this.closeButton.getXPos(), gameConsts.halfHeight - 275, 1, 'Cubic.easeOut')
 
         PhaserScene.tweens.add({
             targets: this.bgPage,
-            scaleY: 1.14,
+            scaleY: 1.08,
             y: gameConsts.halfHeight + 22,
             ease: 'Cubic.easeOut',
             duration: 1
@@ -473,9 +473,9 @@ class Encyclopedia {
         let strToReturn = str;
         if (language == 'zh_cn' || language == 'zh_tw' || language == 'jp') {
             strToReturn = str.replace('\n', '');
-            let textLim = 28;
+            let textLim = 29;
             let numSpaces = 0;
-            for (let i = 0; i < Math.min(32, strToReturn.length); i++) {
+            for (let i = 0; i < Math.min(33, strToReturn.length); i++) {
                 if (strToReturn[i] == ' ') {
                     numSpaces++;
                 }
@@ -489,7 +489,7 @@ class Encyclopedia {
             strToReturn = str.replace('\n', ' ');
             let textLim = 55;
             if (language == 'fr') {
-                textLim = 57;
+                textLim = 59;
             }
             if (strToReturn.length > textLim) {
                 //let lastSpacePos = 0;
@@ -510,7 +510,7 @@ class Encyclopedia {
     setThirdPage() {
         playSound('flip2');
         this.title.setText(" ")
-        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 238, gameConsts.halfHeight - 303, getLangText('encyclopedia_rune_combos'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 252, gameConsts.halfHeight - 303, getLangText('encyclopedia_rune_combos'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
         this.currentPageItems.push(text1);
         PhaserScene.tweens.add({
             targets: text1,
@@ -522,7 +522,7 @@ class Encyclopedia {
 
         PhaserScene.tweens.add({
             targets: this.bgPage,
-            scaleY: 1.25,
+            scaleY: 1.18,
             y: gameConsts.halfHeight + 31,
             ease: 'Cubic.easeOut',
             duration: 1
@@ -574,7 +574,7 @@ class Encyclopedia {
             ['unload', 'time'],
             ['unload', 'void'],
         ];
-        let startPos1 = gameConsts.halfHeight - 279;
+        let startPos1 = gameConsts.halfHeight - 278;
         let offset = 33.4;
 
         for (let i = 0; i < listOfText.length; i++) {
@@ -584,18 +584,18 @@ class Encyclopedia {
             let elementAvailable = availableRunes.indexOf(element) != -1;
 
             let actionRuneName = "rune_" + (actionAvailable ? action : 'question') + "_large.png"
-            let actionRune = PhaserScene.add.image(gameConsts.halfWidth - 230, startPos1 + i * offset, 'tutorial', actionRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
+            let actionRune = PhaserScene.add.image(gameConsts.halfWidth - 240, startPos1 + i * offset, 'tutorial', actionRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
             this.currentPageItems.push(actionRune);
 
             let elementRuneName = "rune_" + (elementAvailable ? element : 'question') + "_large.png"
-            let elementRune = PhaserScene.add.image(gameConsts.halfWidth - 188, startPos1 + i * offset, 'tutorial', elementRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
+            let elementRune = PhaserScene.add.image(gameConsts.halfWidth - 195, startPos1 + i * offset, 'tutorial', elementRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
             this.currentPageItems.push(elementRune);
 
             if (actionAvailable && elementAvailable) {
                 if (element == 'energy') {
                     element = 'mind'
                 }
-                let descText = PhaserScene.add.text(gameConsts.halfWidth - 161, startPos1 + i * offset, this.removeNewlinesIfLong(getLangText(this.createDescLong(action, element))), {fontFamily: 'robotomedium', fontSize: 16, color: '#200000', align: 'left', lineSpacing: -3}).setAlpha(0).setDepth(this.baseDepth).setScale(0.95, 1);
+                let descText = PhaserScene.add.text(gameConsts.halfWidth - 168, startPos1 + i * offset, this.removeNewlinesIfLong(getLangText(this.createDescLong(action, element))), {fontFamily: 'robotomedium', fontSize: 16, color: '#200000', align: 'left', lineSpacing: -3}).setAlpha(0).setDepth(this.baseDepth).setScale(0.95, 1);
                 descText.setOrigin(0, 0.5);
                 this.currentPageItems.push(descText);
             }

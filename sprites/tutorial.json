@@ -4,55 +4,30 @@
 			"image": "sprites/tutorial-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 997,
-				"h": 902
+				"w": 1024,
+				"h": 1393
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "popupTutorial.png",
+					"filename": "battleOverScreen.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 540,
-						"h": 350
+						"w": 676,
+						"h": 820
 					},
 					"spriteSourceSize": {
-						"x": 11,
-						"y": 11,
-						"w": 518,
-						"h": 323
+						"x": 0,
+						"y": 57,
+						"w": 648,
+						"h": 762
 					},
 					"frame": {
 						"x": 1,
 						"y": 1,
-						"w": 518,
-						"h": 323
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "tab.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 155,
-						"h": 229
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 155,
-						"h": 229
-					},
-					"frame": {
-						"x": 1,
-						"y": 326,
-						"w": 155,
-						"h": 229
+						"w": 648,
+						"h": 762
 					},
 					"anchor": {
 						"x": 0.5,
@@ -74,10 +49,35 @@
 						"h": 75
 					},
 					"frame": {
-						"x": 521,
+						"x": 651,
 						"y": 1,
 						"w": 285,
 						"h": 75
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_protect_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 90
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 5,
+						"w": 85,
+						"h": 81
+					},
+					"frame": {
+						"x": 938,
+						"y": 1,
+						"w": 85,
+						"h": 81
 					},
 					"anchor": {
 						"x": 0.5,
@@ -99,10 +99,460 @@
 						"h": 128
 					},
 					"frame": {
-						"x": 158,
-						"y": 326,
+						"x": 651,
+						"y": 78,
 						"w": 230,
 						"h": 128
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "plus_symbol.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 1,
+						"w": 46,
+						"h": 47
+					},
+					"frame": {
+						"x": 883,
+						"y": 78,
+						"w": 46,
+						"h": 47
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "blank.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 2,
+						"h": 2
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 3,
+						"h": 3
+					},
+					"frame": {
+						"x": 931,
+						"y": 78,
+						"w": 3,
+						"h": 3
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_reinforce_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 90
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 7,
+						"w": 84,
+						"h": 76
+					},
+					"frame": {
+						"x": 931,
+						"y": 84,
+						"w": 84,
+						"h": 76
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_question_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 32,
+						"y": 4,
+						"w": 43,
+						"h": 71
+					},
+					"frame": {
+						"x": 883,
+						"y": 127,
+						"w": 43,
+						"h": 71
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_matter_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 3,
+						"w": 93,
+						"h": 76
+					},
+					"frame": {
+						"x": 928,
+						"y": 162,
+						"w": 93,
+						"h": 76
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "popupClose.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 168,
+						"h": 58
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 168,
+						"h": 58
+					},
+					"frame": {
+						"x": 651,
+						"y": 208,
+						"w": 168,
+						"h": 58
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_strike_large.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 104,
+						"h": 90
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 104,
+						"h": 90
+					},
+					"frame": {
+						"x": 821,
+						"y": 208,
+						"w": 104,
+						"h": 90
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "popupClose_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 168,
+						"h": 58
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 168,
+						"h": 58
+					},
+					"frame": {
+						"x": 651,
+						"y": 268,
+						"w": 168,
+						"h": 58
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_void_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 0,
+						"w": 77,
+						"h": 80
+					},
+					"frame": {
+						"x": 927,
+						"y": 240,
+						"w": 77,
+						"h": 80
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_enhance_large.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 104,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 104,
+						"h": 80
+					},
+					"frame": {
+						"x": 821,
+						"y": 300,
+						"w": 104,
+						"h": 80
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "popupClose_press.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 168,
+						"h": 58
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 168,
+						"h": 58
+					},
+					"frame": {
+						"x": 651,
+						"y": 328,
+						"w": 168,
+						"h": 58
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_unload_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 3,
+						"w": 76,
+						"h": 76
+					},
+					"frame": {
+						"x": 927,
+						"y": 322,
+						"w": 76,
+						"h": 76
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_time_large.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 104,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 104,
+						"h": 80
+					},
+					"frame": {
+						"x": 821,
+						"y": 382,
+						"w": 104,
+						"h": 80
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "tab.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 155,
+						"h": 229
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 155,
+						"h": 229
+					},
+					"frame": {
+						"x": 651,
+						"y": 388,
+						"w": 155,
+						"h": 229
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_energy_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 90
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 3,
+						"w": 63,
+						"h": 86
+					},
+					"frame": {
+						"x": 927,
+						"y": 400,
+						"w": 63,
+						"h": 86
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level1btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 808,
+						"y": 464,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level2btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 910,
+						"y": 488,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level3btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 808,
+						"y": 566,
+						"w": 100,
+						"h": 100
 					},
 					"anchor": {
 						"x": 0.5,
@@ -124,10 +574,185 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 1,
-						"y": 557,
+						"x": 651,
+						"y": 619,
 						"w": 150,
 						"h": 150
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level4btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 910,
+						"y": 590,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level5btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 803,
+						"y": 668,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level6btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 905,
+						"y": 692,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level7btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 803,
+						"y": 770,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level8btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 905,
+						"y": 794,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "popupTutorial.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 540,
+						"h": 350
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 11,
+						"w": 518,
+						"h": 323
+					},
+					"frame": {
+						"x": 1,
+						"y": 765,
+						"w": 518,
+						"h": 323
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_highlight.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 125,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 125,
+						"h": 125
+					},
+					"frame": {
+						"x": 521,
+						"y": 765,
+						"w": 125,
+						"h": 125
 					},
 					"anchor": {
 						"x": 0.5,
@@ -149,10 +774,85 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 521,
-						"y": 78,
+						"x": 648,
+						"y": 771,
 						"w": 150,
 						"h": 150
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level9btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 800,
+						"y": 872,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level10btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 902,
+						"y": 896,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level11btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 521,
+						"y": 892,
+						"w": 100,
+						"h": 100
 					},
 					"anchor": {
 						"x": 0.5,
@@ -174,10 +874,60 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 1,
-						"y": 709,
+						"x": 623,
+						"y": 923,
 						"w": 150,
 						"h": 150
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level12btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 521,
+						"y": 994,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level13btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 775,
+						"y": 974,
+						"w": 100,
+						"h": 100
 					},
 					"anchor": {
 						"x": 0.5,
@@ -199,8 +949,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 673,
-						"y": 78,
+						"x": 623,
+						"y": 1075,
 						"w": 150,
 						"h": 150
 					},
@@ -224,8 +974,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 390,
-						"y": 326,
+						"x": 775,
+						"y": 1076,
 						"w": 150,
 						"h": 150
 					},
@@ -249,8 +999,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 158,
-						"y": 456,
+						"x": 1,
+						"y": 1090,
 						"w": 150,
 						"h": 150
 					},
@@ -275,34 +1025,9 @@
 					},
 					"frame": {
 						"x": 153,
-						"y": 608,
+						"y": 1090,
 						"w": 150,
 						"h": 150
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "popupClose.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 168,
-						"h": 58
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 168,
-						"h": 58
-					},
-					"frame": {
-						"x": 808,
-						"y": 1,
-						"w": 168,
-						"h": 58
 					},
 					"anchor": {
 						"x": 0.5,
@@ -324,35 +1049,10 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 825,
-						"y": 61,
+						"x": 305,
+						"y": 1090,
 						"w": 150,
 						"h": 150
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "popupClose_hover.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 168,
-						"h": 58
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 168,
-						"h": 58
-					},
-					"frame": {
-						"x": 521,
-						"y": 230,
-						"w": 168,
-						"h": 58
 					},
 					"anchor": {
 						"x": 0.5,
@@ -374,35 +1074,10 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 542,
-						"y": 290,
+						"x": 457,
+						"y": 1096,
 						"w": 150,
 						"h": 150
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_highlight.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 125,
-						"h": 125
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 125,
-						"h": 125
-					},
-					"frame": {
-						"x": 153,
-						"y": 760,
-						"w": 125,
-						"h": 125
 					},
 					"anchor": {
 						"x": 0.5,
@@ -424,8 +1099,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 694,
-						"y": 230,
+						"x": 609,
+						"y": 1227,
 						"w": 150,
 						"h": 150
 					},
@@ -449,8 +1124,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 846,
-						"y": 213,
+						"x": 761,
+						"y": 1228,
 						"w": 150,
 						"h": 150
 					},
@@ -474,8 +1149,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 846,
-						"y": 365,
+						"x": 1,
+						"y": 1242,
 						"w": 150,
 						"h": 150
 					},
@@ -499,8 +1174,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 846,
-						"y": 365,
+						"x": 1,
+						"y": 1242,
 						"w": 150,
 						"h": 150
 					},
@@ -524,8 +1199,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 846,
-						"y": 365,
+						"x": 1,
+						"y": 1242,
 						"w": 150,
 						"h": 150
 					},
@@ -549,8 +1224,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 694,
-						"y": 382,
+						"x": 153,
+						"y": 1242,
 						"w": 150,
 						"h": 150
 					},
@@ -574,8 +1249,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 846,
-						"y": 517,
+						"x": 305,
+						"y": 1242,
 						"w": 150,
 						"h": 150
 					},
@@ -599,8 +1274,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 846,
-						"y": 517,
+						"x": 305,
+						"y": 1242,
 						"w": 150,
 						"h": 150
 					},
@@ -624,8 +1299,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 846,
-						"y": 517,
+						"x": 305,
+						"y": 1242,
 						"w": 150,
 						"h": 150
 					},
@@ -649,8 +1324,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 846,
-						"y": 517,
+						"x": 305,
+						"y": 1242,
 						"w": 150,
 						"h": 150
 					},
@@ -674,660 +1349,10 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 846,
-						"y": 517,
+						"x": 305,
+						"y": 1242,
 						"w": 150,
 						"h": 150
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_void_large.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 104,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 12,
-						"y": 0,
-						"w": 77,
-						"h": 80
-					},
-					"frame": {
-						"x": 310,
-						"y": 456,
-						"w": 77,
-						"h": 80
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "popupClose_press.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 168,
-						"h": 58
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 168,
-						"h": 58
-					},
-					"frame": {
-						"x": 389,
-						"y": 478,
-						"w": 168,
-						"h": 58
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_strike_large.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 104,
-						"h": 90
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 104,
-						"h": 90
-					},
-					"frame": {
-						"x": 310,
-						"y": 538,
-						"w": 104,
-						"h": 90
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level1btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 305,
-						"y": 630,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level2btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 416,
-						"y": 538,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level3btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 407,
-						"y": 640,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level4btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 559,
-						"y": 442,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level5btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 518,
-						"y": 544,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level6btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 509,
-						"y": 646,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level7btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 620,
-						"y": 544,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level8btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 611,
-						"y": 646,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level9btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 722,
-						"y": 534,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level10btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 305,
-						"y": 732,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level11btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 407,
-						"y": 742,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level12btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 509,
-						"y": 748,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level13btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 611,
-						"y": 748,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_enhance_large.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 104,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 104,
-						"h": 80
-					},
-					"frame": {
-						"x": 722,
-						"y": 636,
-						"w": 104,
-						"h": 80
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_time_large.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 104,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 104,
-						"h": 80
-					},
-					"frame": {
-						"x": 713,
-						"y": 718,
-						"w": 104,
-						"h": 80
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_matter_large.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 104,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 3,
-						"w": 93,
-						"h": 76
-					},
-					"frame": {
-						"x": 713,
-						"y": 800,
-						"w": 93,
-						"h": 76
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_protect_large.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 104,
-						"h": 90
-					},
-					"spriteSourceSize": {
-						"x": 9,
-						"y": 5,
-						"w": 85,
-						"h": 81
-					},
-					"frame": {
-						"x": 828,
-						"y": 669,
-						"w": 85,
-						"h": 81
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_unload_large.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 104,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 14,
-						"y": 3,
-						"w": 76,
-						"h": 76
-					},
-					"frame": {
-						"x": 915,
-						"y": 669,
-						"w": 76,
-						"h": 76
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_reinforce_large.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 104,
-						"h": 90
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 7,
-						"w": 84,
-						"h": 76
-					},
-					"frame": {
-						"x": 819,
-						"y": 752,
-						"w": 84,
-						"h": 76
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_energy_large.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 104,
-						"h": 90
-					},
-					"spriteSourceSize": {
-						"x": 19,
-						"y": 3,
-						"w": 63,
-						"h": 86
-					},
-					"frame": {
-						"x": 905,
-						"y": 752,
-						"w": 63,
-						"h": 86
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "plus_symbol.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 50
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 1,
-						"w": 46,
-						"h": 47
-					},
-					"frame": {
-						"x": 808,
-						"y": 830,
-						"w": 46,
-						"h": 47
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_question_large.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 104,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 32,
-						"y": 4,
-						"w": 43,
-						"h": 71
-					},
-					"frame": {
-						"x": 856,
-						"y": 830,
-						"w": 43,
-						"h": 71
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "blank.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 2,
-						"h": 2
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 3,
-						"h": 3
-					},
-					"frame": {
-						"x": 153,
-						"y": 557,
-						"w": 3,
-						"h": 3
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1340,6 +1365,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:8e1372d0d1a3d7993965b344b65aaa1a:f78bbd8e797531419e8635441312bd69:77e5ef39ce5a344d4157739a7d363d2d$"
+		"smartupdate": "$TexturePacker:SmartUpdate:d63ab9e03e23d1ee471f19572d3e98e1:9a4b0a5e0c9e78ec4804a3d0b99a4921:77e5ef39ce5a344d4157739a7d363d2d$"
 	}
 }

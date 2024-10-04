@@ -576,8 +576,12 @@
              this.shieldsActive = 2;
              this.createShieldEye(this.x - 86, this.y + 111, 0.38);
              this.createShieldEye(this.x + 86, this.y + 111, 0.38);
-             this.createShieldEye(this.x - 120, this.y + 75, 0.38);
-             this.createShieldEye(this.x + 120, this.y + 75, 0.38);
+             if (gameVars.isHardMode) {
+                 this.createShieldEye(this.x - 120, this.y + 75, 0.38);
+                 this.createShieldEye(this.x + 120, this.y + 75, 0.38);
+             } else {
+                 this.createShieldEye(this.x, this.y - 75, 0.4);
+             }
          } else {
              this.shieldsActive = 1;
          }
@@ -809,14 +813,52 @@
                          this.sigilEffect.visible = true;
 
                          globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 143, getLangText("shield_tut_knight"), 'right', true);
-                          this.addDelay(() => {
+                         let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+                         let centerXPos = globalObjects.textPopupManager.getCenterPos();
+                         this.rune1 = this.addImage(centerXPos - 30, runeYPos + 29, 'circle', 'bright_rune_time.png').setDepth(10001).setScale(0.84).setAlpha(0);
+                         this.rune2 = this.addImage(centerXPos + 30, runeYPos + 29, 'circle', 'bright_rune_strike.png').setDepth(10001).setScale(0.84).setAlpha(0);
+
+                         this.addTween({
+                             targets: [this.rune1, this.rune2],
+                             alpha: 1,
+                             duration: 200,
+                         });
+                         this.rune1.currAnim = this.addTween({
+                             targets: [this.rune1, this.rune2],
+                             scaleX: 1.1,
+                             scaleY: 1.1,
+                             ease: 'Quart.easeOut',
+                             duration: 600,
+                             onComplete: () => {
+                                 this.rune1.currAnim = this.addTween({
+                                     targets: [this.rune1, this.rune2],
+                                     scaleX: 0.85,
+                                     scaleY: 0.85,
+                                     ease: 'Back.easeOut',
+                                     duration: 400,
+                                 });
+                             }
+                         });
+                         this.addDelay(() => {
                              this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
                                  this.playerSpellCastSub.unsubscribe();
                                  this.addTimeout(() => {
                                      globalObjects.textPopupManager.hideInfoText();
+                                     if (this.rune1.currAnim) {
+                                         this.rune1.currAnim.stop();
+                                     }
+                                     this.addTween({
+                                         targets: [this.rune1, this.rune2],
+                                         alpha: 0,
+                                         duration: 350,
+                                         onComplete: () => {
+                                             this.rune1.destroy();
+                                             this.rune2.destroy();
+                                         }
+                                     });
                                  }, 400);
                              });
-                         }, 2000)
+                         }, 2100)
                      }
                  }
              ],
@@ -917,7 +959,7 @@
              [
                  // 5
                 {
-                     name: "VOID SHIELD #7 ",
+                     name: gameVars.isHardMode ? "VOID SHIELD #7" : "VOID SHIELD #6",
                      announceName: "VOID SHIELD",
                      chargeAmt: 800,
                      isPassive: true,
@@ -925,7 +967,7 @@
                      prepareSprite: 'void_knight_3.png',
                      damage: -1,
                      attackFinishFunction: () => {
-                         this.createVoidShield(7, true);
+                         this.createVoidShield(gameVars.isHardMode ? 7 : 6, true);
                      },
                      finaleFunction: () => {
                          this.voidTentacleFront.visible = true;
@@ -957,8 +999,8 @@
                  {
                      name: "|5x2 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 600,
-                     chargeMult: 1.68,
+                     chargeAmt: 550,
+                     chargeMult: 1.7,
                      damage: 5,
                      attackTimes: 2,
                      prepareSprite: 'void_knight_3.png',
@@ -979,7 +1021,7 @@
                      name: "|12 ",
                      announceName: "ASSAIL",
                      chargeAmt: 500,
-                     chargeMult: 1.68,
+                     chargeMult: 1.7,
                      damage: 12,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -997,8 +1039,8 @@
                  {
                      name: "|5x3 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 650,
-                     chargeMult: 1.68,
+                     chargeAmt: 600,
+                     chargeMult: 1.7,
                      damage: 5,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_3.png',
@@ -1018,7 +1060,7 @@
                      name: "|14 ",
                      announceName: "ASSAIL",
                      chargeAmt: 550,
-                     chargeMult: 1.68,
+                     chargeMult: 1.7,
                      damage: 14,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -1036,8 +1078,8 @@
                  {
                      name: "|5x4 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 700,
-                     chargeMult: 1.68,
+                     chargeAmt: 650,
+                     chargeMult: 1.7,
                      damage: 5,
                      attackTimes: 4,
                      prepareSprite: 'void_knight_3.png',
@@ -1057,7 +1099,7 @@
                      name: "|16 ",
                      announceName: "ASSAIL",
                      chargeAmt: 600,
-                     chargeMult: 1.68,
+                     chargeMult: 1.7,
                      damage: 16,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -1093,7 +1135,7 @@
                      name: ";5x6 ",
                      announceName: "ASSAIL",
                      chargeAmt: 1000,
-                     chargeMult: 1.68,
+                     chargeMult: 1.7,
                      damage: 5,
                      attackTimes: 6,
                      isBigMove: true,
@@ -1114,7 +1156,7 @@
                      name: ";20 ",
                      announceName: "ASSAIL",
                      chargeAmt: 850,
-                     chargeMult: 1.68,
+                     chargeMult: 1.7,
                      damage: 20,
                      isBigMove: true,
                      prepareSprite: 'void_knight_3.png',
@@ -1397,6 +1439,11 @@
          if (this.bgMusic) {
             this.bgMusic.stop();
          }
+         if (this.rune1) {
+             this.rune1.visible = false;
+             this.rune2.visible = false;
+         }
+
          this.sigilEffect.alpha = 0;
          this.breatheTween.stop();
          if (this.breatheTween2) {

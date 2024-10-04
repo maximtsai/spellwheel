@@ -634,9 +634,9 @@ let textData = {
     },
     "void_tut_desc": {
         "en_us": "The Void rune grants control\nover empty space.\nVoid spells can deal percentage\nhealth damage, negate enemy attacks, or\neven fully heal you at a cost.",
-        "fr": "La rune du Vide permet de contrôler\nl’espace vide. Les sorts du Vide\npeuvent infliger des dégâts basés\nsur un pourcentage de santé, annuler\nles attaques ennemies ou même vous\nsoigner complètement à un certain coût.",
-        "zh_tw": "虛空符文賦予了你對虛\n空空間的控制權。虛空法術\n可以造成一定比例的生命值傷害、\n抵消敵人的攻擊，甚至可以完全治癒你，\n但需要付出一定代價。",
-        "zh_cn": "虚空符文赋予了你对虚\n空空间的控制权。虚空法术\n可以造成一定比例的生命值伤害、\n抵消敌人的攻击，甚至可以完全治愈你，\n但需要付出一定代价。",
+        "fr": "La rune du Vide permet de contrôler\nl’espace vide. Les sorts du Vide peuvent infliger\ndes dégâts basés sur un pourcentage de santé,\nannuler les attaques ennemies ou même vous\nsoigner complètement à un certain coût.",
+        "zh_tw": "虛空符文賦予了你對虛\n空空間的控制權。虛空法術\n可以造成一定比例的生命值傷害、\n抵消敵人的攻擊，甚至可以完全治癒你。",
+        "zh_cn": "虚空符文赋予了你对虚\n空空间的控制权。虚空法术\n可以造成一定比例的生命值伤害、\n抵消敌人的攻击，甚至可以完全治愈你。",
         "ru": "Руна Пустоты дает контроль над\nпустым пространством. Заклинания\nПустоты могут наносить урон в процентах\nот здоровья, нейтрализовать атаки врагов\nили полностью исцелить вас за\nопределенную цену.",
         "es": "",
         "jp": ""

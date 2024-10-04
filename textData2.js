@@ -314,7 +314,7 @@ let textData2 = {
     },
     "post_fight_story5": {
         "en_us": "The Reaper appears every time to sour my\nvictories. Is my quest to reclaim a loved one\nso wrong?\n\nSurely not, so perhaps it's actually the\nReaper themselves who is setting up all\nthese obstacles!",
-        "fr": "Le Faucheur apparaît à chaque fois pour\ngâcher mes victoires. Ma quête pour récupérer\nun être cher est-elle si mauvaise?\n\nCertainement pas, ce qui signifie que c'est\nle Faucheur lui-même qui met en place tous\nces obstacles!",
+        "fr": "Le Faucheur apparaît à chaque fois pour\ngâcher mes victoires. Ma quête pour\nrécupérer un être cher est-elle si mauvaise?\n\nCertainement pas, ce qui signifie que c'est\nle Faucheur lui-même qui met en place tous\nces obstacles!",
         "zh_tw": "死神每次出現都會讓我的勝利灰飛煙滅。\n我找回愛人的任務難道就這麼錯嗎？\n\n當然不是，這意味著一定是死神自己在\n設置所有這些障礙！",
         "zh_cn": "死神每次出现都会让我的胜利灰飞烟灭。\n我找回爱人的任务难道就这么错误吗？\n\n当然不是，这意味着一定是死神自己在\n设置所有这些障碍！",
         "ru": "Моя сила растет, но растет и сопротивление, которое оказывает эта земля.  Неужели мое благородное стремление вернуть любимого человека так неправильно?  Конечно, нет, и я сделаю все, что потребуется, независимо от цены.",

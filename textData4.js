@@ -317,9 +317,9 @@ let textData4 = {
     },
     "shield_tut_knight": {
         "en_us": "Void shields will\nblock strong\nattacks! But\nbreak after X hits.\n              +",
-        "fr": "Ce bouclier peut\nbloquer les attaques\nles plus puissantes!\nMais casse avec\nn’importe quel coup.",
-        "zh_tw": "這個盾牌可以擋住\n最強的攻擊！但受到\n任何打擊都會破碎。",
-        "zh_cn": "虚空护盾能挡住\n强力攻击！但 X 次\n打击后就会破裂。\n       +",
+        "fr": "Ce bouclier peut bloquer\nles attaques les plus\npuissantes ! Mais il\nse brise après X coups.\n                  +",
+        "zh_tw": "虛空護盾能擋住\n強力攻擊！但 X 次\n打擊後就會破裂。\n           +",
+        "zh_cn": "虚空护盾能挡住\n强力攻击！但 X 次\n打击后就会破裂。\n           +",
         "ru": "Этот щит может блокировать самые сильные атаки! Но ломается при любом попадании.",
         "es": "¡Este escudo puede bloquear los ataques más fuertes! Pero se rompe con cualquier golpe.",
         "jp": "このシールドは最強の攻撃を防げます!しかし、どんなヒットでも壊れます。"

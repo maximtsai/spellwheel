@@ -3841,7 +3841,7 @@
 
      beginDeathLast() {
          gameVars.fromDeath2Plus = true;
-         createEnemy(13)
+         createEnemy(14)
          this.destroy();
      }
 

@@ -1276,7 +1276,7 @@
      }
 
      beginDeath2() {
-         beginLevel(11, true)
+         beginLevel(12, true)
         // createEnemy()
         this.destroy();
      }

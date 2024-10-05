@@ -267,6 +267,15 @@ function beginPreLevel(lvl) {
             fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
             break;
         case 5:
+            // statue
+            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'statue_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 120, getLangText('pre_fight_3_5a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
+            text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+            createGlobalClickBlocker();
+            fadeInPreFightStuff(lvl, [text1], [introPaper, introOverlay])
+            break;
+        case 6:
             // knight
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'knight_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
@@ -279,7 +288,7 @@ function beginPreLevel(lvl) {
             fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
             break;
 
-        case 6:
+        case 7:
             // wall
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'wall_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
@@ -292,7 +301,7 @@ function beginPreLevel(lvl) {
             fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
             break;
 
-        case 7:
+        case 8:
             // superdummy
             // introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             // introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'dummy_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
@@ -306,7 +315,7 @@ function beginPreLevel(lvl) {
             beginLevel(lvl);
             break;
 
-        case 8:
+        case 9:
             // mantis
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'mantis_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
@@ -318,7 +327,7 @@ function beginPreLevel(lvl) {
             createGlobalClickBlocker();
             fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
             break;
-        case 9:
+        case 10:
             // robot
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'robot_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
@@ -530,21 +539,24 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case 5:
-            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
         case 6:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1.1, 1.1, 1.1,'Quart.easeIn', 0, false);
+            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
         case 7:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 5, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1.1, 1.1, 1.1,'Quart.easeIn', 0, false);
             break;
         case 8:
-            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 5, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case 9:
-            fadeInBackgroundAtlas('backgrounds', 'tunnel.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
+            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case 10:
+            fadeInBackgroundAtlas('backgrounds', 'tunnel.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
+            break;
+        case 11:
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 2500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
     }

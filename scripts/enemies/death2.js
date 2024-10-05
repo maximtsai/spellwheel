@@ -1768,7 +1768,7 @@
 
      beginDeath3() {
          gameVars.fromDeath2 = true;
-         createEnemy(12)
+         createEnemy(13)
          this.destroy();
      }
 }

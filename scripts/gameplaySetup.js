@@ -555,7 +555,7 @@ function clickIntro() {
         alpha: 1.25,
         scaleX: 14,
         scaleY: 14,
-        duration: 600,
+        duration: 500,
         ease: 'Quart.easeIn',
         onComplete: () => {
             cleanupIntro(PhaserScene);
@@ -568,16 +568,16 @@ function clickIntro() {
         targets: loadObjects.whiteOverall,
         alpha: 1,
         ease: 'Cubic.easeIn',
-        duration: 2700
+        duration: 2100
     });
-    PhaserScene.time.delayedCall(1200, () => {
+    PhaserScene.time.delayedCall(1800, () => {
         if (!gameVars.introFinished) {
             loadObjects.loadingText.setAlpha(0).setText(getLangText('find_you')).setAlign('center');
             PhaserScene.tweens.add({
                 targets: loadObjects.loadingText,
                 alpha: 1,
                 ease: 'Quad.easeIn',
-                duration: 1300,
+                duration: 500,
             });
         }
     });

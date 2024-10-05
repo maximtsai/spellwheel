@@ -10,10 +10,10 @@ let textData3 = {
         "jp": "不明なコード"
     },
     "find_you": {
-        "en_us": "I will find you",
+        "en_us": "Find you...",
         "fr": "Je te trouverai",
-        "zh_tw": "我會找到你",
-        "zh_cn": "我会找到你",
+        "zh_tw": "找到你...",
+        "zh_cn": "找到你...",
         "ru": "Я найду тебя",
         "es": "Te encontraré",
         "jp": "あなたを見つけるよ"
@@ -253,19 +253,19 @@ let textData3 = {
         "jp": ""
     },
     "death4c": {
-        "en_us": "YOU IGNORE MY WARNINGS AND\nCONTINUE YOUR JOURNEY OF DESTRUCTION.",
-        "fr": "VOUS IGNOREZ MES AVERTISSEMENTS ET\nCONTINUEZ VOTRE VOYAGE DE DESTRUCTION.",
-        "zh_tw": "你無視我的警告，\n繼續你的毀滅之旅。",
-        "zh_cn": "你无视我的警告，\n继续你的毁灭之旅。",
+        "en_us": "HOW MANY MORE MUST FALL ON\nYOUR PATH OF DESTRUCTION?",
+        "fr": "COMBIEN D'AUTRES DOIVENT TOMBER SUR\nTON CHEMIN DE DESTRUCTION?",
+        "zh_tw": "還有多少人必須倒在\n你的毀滅之路上？",
+        "zh_cn": "还有多少人必须倒在\n你的毁灭之路上？",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death4d": {
-        "en_us": "I WILL NOT STOP YOU, BUT KNOW\nTHAT YOUR ACTIONS WILL HAVE CONSEQUENCE.",
-        "fr": "JE NE VOUS ARRÊTERAI PAS, MAIS\nVOS ACTES AURONT DES CONSÉQUENCES.",
-        "zh_tw": "我不會阻止你，但了解你的\n行為最終會產生後果。",
-        "zh_cn": "我不会阻止你，但了解你的\n行为最终会产生后果。",
+        "en_us": "OR WILL YOU IGNORE MY\nWARNINGS UNTIL THE VERY END?",
+        "fr": "OU BIEN ALLEZ-VOUS IGNORER MES\nAVERTISSEMENTS JUSQU'À LA TOUTE FIN ?",
+        "zh_tw": "或者你會一直忽視我的\n警告直到最後。 。 。",
+        "zh_cn": "或者你会一直忽视我的\n警告直到最后。。。",
         "ru": "",
         "es": "",
         "jp": ""

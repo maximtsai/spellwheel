@@ -528,6 +528,15 @@ let textData2 = {
         "es": "El bosque me inquieta.\n¿Hay algo observándome?",
         "jp": "森は不安を感じさせます。\n何かが私を監視しているのでしょうか？"
     },
+    "pre_fight_3_5a": {
+        "en_us": "In my travels, I came across a statue by\nthe roadside that radiated a strange energy.\nSomething about its design taunts me.\nPerhaps I should test my growing magic\non it.",
+        "fr": "En voyageant, je suis tombé sur une statue au\nbord de la route qui dégageait une étrange énergie.\n\nCela semble être une bonne cible pour\ntester ma magie grandissante.",
+        "zh_tw": '旅行时，我在路边遇到了一个\n散发着奇怪能量的雕像。\n\n这看起来是个不错的攻击靶子，\n可以测试一下我日益增长的魔法。',
+        "zh_cn": '旅行时，我在路边遇到了一个\n散发着奇怪能量的雕像。\n\n这看起来是个不错的攻击靶子，\n可以测试一下我日益增长的魔法。',
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "pre_fight_4a": {
         "en_us": "You: \"Halt! Are you friend or foe?\"\nKnight: ...\nYou: \"Do you mock me with your silence?\"\nKnight: ...\nYou: \"Enough, fight me now!\"",
         "fr": "Toi : « Halte ! Es-tu ami ou ennemi ? »\nChevalier : ...\nToi : « Tu te moques de moi avec ton silence ? »\nChevalier : ...\nToi : « Assez, combats-moi maintenant ! »",
@@ -761,6 +770,15 @@ let textData2 = {
         "ru": "Цель:\nПобедить\nманекена",
         "es": "Objetivo:\nDerrotar al\nmuñeco",
         "jp": "解除方法:\nダミーを倒す"
+    },
+    "level4_train_tut_b1": {
+        "en_us": "Slows down\nheavy damage\n           +",
+        "fr": "Ralentit les\ndégâts importants\n             +",
+        "zh_tw": "减缓严重伤害\n       +",
+        "zh_cn": "减缓严重伤害\n       +",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "level4_train_tut_b": {
         "en_us": "Heal your last\ninjury with\n          +",

@@ -4,7 +4,7 @@
     }
 
      initStatsCustom() {
-        this.health = 130;
+        this.health = 120;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -175,12 +175,58 @@
                  // 0
                  {
                      name: ";15x5;",
-                     chargeAmt: 700,
+                     chargeAmt: 550,
                      finishDelay: 2800,
                      isBigMove: true,
                      transitionFast: true,
                      damage: -1,
                     startFunction: () => {
+                        this.addDelay(() => {
+                            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText('level4_train_tut_b1'), 'right');
+                            let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+                            let centerXPos = globalObjects.textPopupManager.getCenterPos();
+
+                            this.runea = this.addSprite(centerXPos - 30, runeYPos + 30, 'circle', 'rune_protect_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
+                            this.runeb = this.addSprite(centerXPos + 26, runeYPos + 30, 'circle', 'rune_time_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
+                            this.addTween({
+                                targets: [this.runea, this.runeb],
+                                alpha: 1,
+                                duration: 200,
+                            });
+                            this.addTween({
+                                targets: [this.runea, this.runeb],
+                                scaleX: 1.1,
+                                scaleY: 1.1,
+                                ease: 'Quart.easeOut',
+                                duration: 600,
+                                onComplete: () => {
+                                    this.addTween({
+                                        targets: [this.runea, this.runeb],
+                                        scaleX: 0.85,
+                                        scaleY: 0.85,
+                                        ease: 'Back.easeOut',
+                                        duration: 400,
+                                    });
+                                }
+                            });
+                            this.playerSpellShieldTrack = messageBus.subscribe('recordSpell', (spellId) => {
+                                if (spellId == 'timeProtect') {
+                                    this.playerSpellShieldTrack.unsubscribe();
+                                    this.playerSpellShieldTrack = null;
+                                    globalObjects.textPopupManager.hideInfoText();
+                                    this.addTween({
+                                        targets: [this.runea, this.runeb],
+                                        alpha: 0,
+                                        duration: 200,
+                                        onComplete: () => {
+                                            this.runea.visible = false;
+                                            this.runeb.visible = false;
+                                        }
+                                    });
+                                }
+                            })
+                        }, 1500)
+
 
                     },
                     attackStartFunction: () => {
@@ -257,7 +303,7 @@
              ],
              [
                  {
-                     name: "FIX SELF \\35",
+                     name: "FIX SELF \\30",
                      chargeAmt: 550,
                      finishDelay: 2000,
                      transitionFast: true,
@@ -313,37 +359,49 @@
 
                      },
                      attackStartFunction: () => {
-                         this.healAnim(35);
+                         this.healAnim(30);
                      }
                  },
                  {
-                     name: "FIX SELF \\45",
-                     chargeAmt: 750,
-                     finishDelay: 2000,
+                     name: "}6",
+                     chargeAmt: 400,
+                     finishDelay: 1000,
                      transitionFast: true,
                      damage: -1,
+                     startFunction: () => {
+
+                     },
                      attackStartFunction: () => {
-                         this.healAnim(45);
+
+                     },
+                     attackFinishFunction: () => {
+                         this.throwWeapon('sword.png', 6, 1);
                      }
                  },
                  {
-                     name: "FIX SELF \\35",
+                     name: "FIX SELF \\30",
                      chargeAmt: 550,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(35);
+                         this.healAnim(30);
                      }
                  },
                  {
-                     name: "FIX SELF \\45",
-                     chargeAmt: 750,
-                     finishDelay: 2000,
+                     name: "}6",
+                     chargeAmt: 400,
+                     finishDelay: 1000,
                      transitionFast: true,
                      damage: -1,
+                     startFunction: () => {
+
+                     },
                      attackStartFunction: () => {
-                         this.healAnim(45);
+
+                     },
+                     attackFinishFunction: () => {
+                         this.throwWeapon('sword.png', 6, 1);
                      }
                  },
              ]

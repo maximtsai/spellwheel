@@ -499,7 +499,7 @@ let textData = {
     },
     "matter_tut_reinforce_desc": {
         "en_us": "Protect yourself with thorny skin.\nGreat against weaker attacks.",
-        "fr": "Protégez-vous avec une peau\népineuse.Idéal contre les attaques\nplus faibles.",
+        "fr": "Protégez-vous avec une peau\népineuse. Idéal contre les\nattaques plus faibles.",
         "zh_tw": "用帶刺的皮膚保護自己。\n有效抵禦較弱的攻擊。",
         "zh_cn": "用带刺的皮肤保护自己。\n有效抵御较弱的攻击。",
         "ru": "Защитите себя шипованной кожей.\nОтлично подходит против слабых\nатак.",
@@ -562,7 +562,7 @@ let textData = {
     },
     "mind_tut_reinforce_desc": {
         "en_us": "Energize yourself to increase all\ndamage you deal.",
-        "fr": "Dynamisez-vous pour augmenter tous\nles dégâts que vous infligez.",
+        "fr": "Dynamisez-vous pour augmenter\ntous les dégâts que vous\ninfligez.",
         "zh_tw": "增加你造成的所有傷害。",
         "zh_cn": "增加你造成的所有伤害。",
         "ru": "Энергизируйте себя, чтобы увеличить\nвесь наносимый вами урон",
@@ -579,8 +579,17 @@ let textData = {
         "jp": "次の非攻撃呪文の効果を倍増させる。この呪文を2回連続で唱える賢い人は、息を呑むような呪文増幅力を得ることができます。"
     },
     "time_tut_desc": {
-        "en_us": "The Time rune grants control\nover time itself.\nTime spells let you attack multiple times, defer\ndamage, or slow your enemies to a crawl.",
-        "fr": "La rune du Temps accorde le\ncontrôle du temporel.\nLes sorts de temps vous permettent d'attaquer\nplusieurs fois, de retarder les blessures,\nvoire de ralentir vos ennemis jusqu'à l'immobilité.",
+        "en_us": "The Time rune grants control\nover time itself. Time spells let\nyou attack multiple times, defer damage,\nor slow your enemies to a crawl.",
+        "fr": "La rune du Temps accorde le\ncontrôle du temporel. Les sorts de\ntemps vous permettent d'attaquer plusieurs\nfois, de retarder les blessures, voire\nde ralentir vos ennemis jusqu'à l'immobilité.",
+        "zh_tw": "時間符文授予對時間的控\n制權。時間法術讓你能多次\n攻擊，延緩受傷時間，甚至\n凍結時間來減慢敵人的行動。",
+        "zh_cn": "时间符文授予对时间的控\n制权。时间法术让你能多次\n攻击，延缓受伤时间，甚至\n冻结时间来减慢敌人的行动。",
+        "ru": "Руна Времени предоставляет\nконтроль над самим временем.\nЗаклинания Времени позволяют вам атаковать\nнесколько раз, откладывать урон или\nзамедлять ваших врагов до предела.",
+        "es": "La runa del tiempo otorga control sobre lo temporal. Los hechizos de tiempo te permiten atacar varias veces, retrasar las lesiones o incluso ralentizar a tus enemigos hasta detenerlos.",
+        "jp": "タイムルーンは、時間的なものに対するコントロールを与える。時間呪文を使用すると、複数回攻撃したり、負傷を遅らせたり、敵の動きを鈍らせたりすることができます。"
+    },
+    "time_tut_desc_sh": {
+        "en_us": "The Time rune grants control\nover time itself. Time spells let\nyou attack multiple times, defer\ndamage, or slow your enemies to\na crawl.",
+        "fr": "La rune du Temps accorde le\ncontrôle du temporel. Les sorts de\ntemps vous permettent d'attaquer\nplusieurs fois, de retarder les\nblessures, voire de ralentir vos\nennemis jusqu'à l'immobilité.",
         "zh_tw": "時間符文授予對時間的控\n制權。時間法術讓你能多次\n攻擊，延緩受傷時間，甚至\n凍結時間來減慢敵人的行動。",
         "zh_cn": "时间符文授予对时间的控\n制权。时间法术让你能多次\n攻击，延缓受伤时间，甚至\n冻结时间来减慢敌人的行动。",
         "ru": "Руна Времени предоставляет\nконтроль над самим временем.\nЗаклинания Времени позволяют вам атаковать\nнесколько раз, откладывать урон или\nзамедлять ваших врагов до предела.",
@@ -606,7 +615,7 @@ let textData = {
         "jp": ""
     },
     "time_tut_protect_desc": {
-        "en_us": "Creates a shield that defers\nthe damage you take so that\nyou take damage gradually rather\nthan all at once.",
+        "en_us": "Creates a shield that defers\nthe damage you take so that\nyou take damage gradually\nrather than all at once.",
         "fr": "Crée un bouclier qui reporte les\ndégâts que vous subissez pour que\nvous les subissiez progressivement au\nlieu de tout d’un coup.",
         "zh_tw": "打造一個盾牌，可以延遲你受到的傷害，讓你的生命值緩慢減少。",
         "zh_cn": "打造一个盾牌，可以延迟\n你受到的伤害，让你的生命值\n缓慢减少。",
@@ -615,7 +624,7 @@ let textData = {
         "jp": ""
     },
     "time_tut_reinforce_desc": {
-        "en_us": "Heals you by partially\nundoing your most recent\ninjury.",
+        "en_us": "Heals you by partially undoing\nyour most recent injury.",
         "fr": "",
         "zh_tw": "治療你最近傷害的一部分。",
         "zh_cn": "治疗你最近伤害的一部分。",
@@ -706,7 +715,7 @@ let textData = {
     },
     "reinforce_tut_desc_sh": {
         "en_us": "The Body rune grants effects\nthat persist until you cast a new\nbody spell. Some Body rune spells\ncan even heal you.",
-        "fr": "La rune Corps confère des effets\nqui persistent jusqu’à ce que vous\nlanciez un nouveau sort corporel.\nCertains combos rune Corps peuvent même\nvous soigner.",
+        "fr": "La rune Corps confère des effets\nqui persistent jusqu’à ce que\nvous lanciez un nouveau sort\ncorporel. Certains combos rune Corps\npeuvent même vous soigner.",
         "zh_tw": "身體符文賦予的效果會\n一直持續到你施放新的\n體法術。\n某些身體符文組合甚至可以治癒你。",
         "zh_cn": "身体符文赋予的效果会\n一直持续到你施放新的\n身体法术。\n某些身体符文组合甚至可以治愈你。",
         "ru": "Руна Тела дает эффекты, которые сохраняются до тех пор, пока вы не разыграете новое заклинание тела. Некоторые комбинации Тело+Руна могут даже исцелить вас.",

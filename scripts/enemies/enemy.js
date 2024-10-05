@@ -8,8 +8,8 @@ class Enemy {
         let extraOffset = isMobile ? 0 : -8;
         y = y + extraOffset;
         this.resetStats(x, y);
-        this.createHealthBar(x, y);
-        this.createChargeBar(x);
+        this.createHealthBar(gameConsts.halfWidth, y);
+        this.createChargeBar(gameConsts.halfWidth);
         this.subscriptions = [
             messageBus.subscribe("enemyTakeEffect", this.takeEffect.bind(this)),
             messageBus.subscribe("enemyClearEffect", this.clearEffects.bind(this)),
@@ -178,7 +178,7 @@ class Enemy {
         this.scene.tweens.add({
             targets: [this.healthBarCurr],
             duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
-            x: this.x - this.healthBarLengthMax - 1,
+            x: gameConsts.halfWidth - this.healthBarLengthMax - 1,
             scaleX: this.healthBarLengthMax + 1,
             ease: 'Quint.easeInOut',
         });
@@ -186,7 +186,7 @@ class Enemy {
         this.scene.tweens.add({
             targets: [this.healthBarFlash],
             duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
-            x: this.x - this.healthBarLengthMax - 3,
+            x: gameConsts.halfWidth - this.healthBarLengthMax - 3,
             scaleX: flashLength,
             ease: 'Quint.easeInOut',
         });
@@ -194,7 +194,7 @@ class Enemy {
         this.scene.tweens.add({
             targets: [this.healthBarRed],
             duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
-            x: this.x - this.healthBarLengthMax - 3,
+            x: gameConsts.halfWidth - this.healthBarLengthMax - 3,
             scaleX: this.healthBarLengthMax + 3,
             ease: 'Quint.easeInOut',
         });
@@ -347,7 +347,7 @@ class Enemy {
         this.shieldSprite.startScale = this.shieldSprite.scaleX;
 
         let textOffsetY = 85 * this.shieldSprite.startScale + (this.shieldTextOffsetY || 0);
-        this.shieldText = this.scene.add.bitmapText(this.x, this.y + textOffsetY + this.shieldOffsetY, this.shieldTextFont || 'armor', '', this.shieldTextSize || 48);
+        this.shieldText = this.scene.add.bitmapText(gameConsts.halfWidth, this.y + textOffsetY + this.shieldOffsetY, this.shieldTextFont || 'armor', '', this.shieldTextSize || 48);
         this.shieldText.alpha = 1;
         this.shieldText.setOrigin(0.5, 0.55);
         this.shieldText.setDepth(8);
@@ -636,7 +636,10 @@ class Enemy {
             }
         }
         this.timeSinceLastAttacked += timeChange;
-        if (this.timeSinceLastAttacked < 35) {
+        if (this.isAsleep) {
+            this.chargeBarAngry.visible = false;
+            this.chargeBarCurr.visible = false;
+        } else if (this.timeSinceLastAttacked < 35) {
             if (!this.isAngry) {
                 this.isAngry = true;
                 if (!this.isAsleep) {
@@ -1420,6 +1423,9 @@ class Enemy {
         }
         if (!this.angrySymbolIsHiding) {
             this.angrySymbolIsHiding = true;
+            if (this.angrySymbolAnim) {
+                this.angrySymbolAnim.stop();
+            }
             this.angrySymbolAnim = PhaserScene.tweens.add({
                 targets: [this.angrySymbol],
                 scaleX: 0,
@@ -1785,7 +1791,7 @@ class Enemy {
         this.timeWhenLastDamageTaken = timeNow;
         let scale = 0.5 + Math.sqrt(val) * 0.2;
         if (isTrueDamage) {
-            messageBus.publish("animateTrueDamageNum", this.x + randX, 100 + randY + offsetY, '-' + val, scale);
+            messageBus.publish("animateTrueDamageNum", gameConsts.halfWidth + randX, 100 + randY + offsetY, '-' + val, scale);
         } else {
             messageBus.publish("animateDamageNumAccumulate", val, offsetY);
         }

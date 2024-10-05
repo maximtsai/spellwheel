@@ -33,7 +33,7 @@ function updateSpellState(level) {
             break;
         case -4:
             // time dummy
-            EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, RUNE_ENHANCE, RUNE_ENHANCE, RUNE_ENHANCE, RUNE_REINFORCE, RUNE_STRIKE];
+            EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, null, RUNE_ENHANCE, RUNE_ENHANCE, RUNE_REINFORCE, RUNE_STRIKE];
             ELEMENT_ARRAY = [RUNE_TIME, RUNE_TIME, RUNE_TIME, RUNE_TIME, RUNE_MATTER, null, null];
             break;
         case -3:

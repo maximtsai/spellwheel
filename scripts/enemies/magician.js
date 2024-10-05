@@ -594,7 +594,7 @@
                      }
 
                      if (!this.isTerrified) {
-                        if (this.health < 13) {
+                        if (this.health < 12) {
                             this.pullbackScale = 1;
                             this.attackScale = 1;
                             this.isTerrified = true;
@@ -617,7 +617,7 @@
                             }
                         }
                      } else {
-                        if (this.health < 7 && this.currentAttackSetIndex !== 8) {
+                        if (this.health < 6 && this.currentAttackSetIndex !== 8) {
                             this.setDefaultSprite('time_magi_terrified.png')
                             this.currentAttackSetIndex = 8;
                             this.nextAttackIndex = 0;
@@ -920,7 +920,7 @@
                         duration: 500,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            this.setMaxHealth(24);
+                            this.setMaxHealth(20);
                             this.heal(this.healthMax);
                             this.invulnHealthBar = true;
                             this.healthBarCurr.setFrame('yellow_pixel.png');
@@ -956,8 +956,9 @@
     }
 
     startChargingUltimate() {
-        let totalAmt = gameVars.isHardMode ? 28 : 22;
-        let angleDivider = gameVars.isHardMode ? 14 : 11;
+        let damageAmt = gameVars.isHardMode ? 3 : 2;
+        let totalAmt = gameVars.isHardMode ? 20 : 22;
+        let angleDivider = gameVars.isHardMode ? 10 : 11;
         for (let i = 0; i < totalAmt; i++) {
             this.addTween({
                 delay: i * 180,
@@ -981,7 +982,7 @@
                         let offsetY = -Math.cos(dirAngle) * 80;
                         let isExtraLarge = false;
                         if (gameVars.isHardMode) {
-                            isExtraLarge = i % 7 === 0;
+                            isExtraLarge = i % 5 === 0;
                         } else {
                             isExtraLarge = i === 0 || i === 11 || i === 6 || i === 16;
                         }
@@ -1002,15 +1003,15 @@
                         });
                         let numAttacks = (i + 1) * 2;
                         if (i < (gameVars.isHardMode ? 8 : 7)) {
-                            this.attackName.setText("}2x" + numAttacks + "}");
+                            this.attackName.setText("}" + damageAmt + "x" + numAttacks + "}");
                         } else if (i < (gameVars.isHardMode ? 17 : 15)) {
-                            this.attackName.setText("}}2x" + numAttacks + "}}");
+                            this.attackName.setText("}}" + damageAmt + "x" + numAttacks + "}}");
                             this.repositionAngrySymbol();
                         } else if (i < (gameVars.isHardMode ? 25 : 21)) {
-                            this.attackName.setText("}}}2x" + numAttacks + "}}}");
+                            this.attackName.setText("}}}" + damageAmt + "x" + numAttacks + "}}}");
                             this.repositionAngrySymbol();
                         } else {
-                            this.attackName.setText("}}}}2x" + numAttacks + "}}}}");
+                            this.attackName.setText("}}}}" + damageAmt + "x" + numAttacks + "}}}}");
                             this.repositionAngrySymbol();
                             this.nextAttack.chargeMult = 7.5;
                             this.setDefaultSprite('time_magi.png');
@@ -1103,16 +1104,17 @@
                     }
                  },
                  {
-                     name: "}4x2 ",
+                     name: "}3x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
                      chargeAmt: gameVars.isHardMode ? 300 : 350,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
-                         this.createTimeObject('clock2.png', this.x - 110, this.y - 70, 0);
-                         this.createTimeObject('clock3.png', this.x - 35, this.y - 100, 100);
+                         this.createTimeObject('clock2.png', this.x - 120, this.y - 70);
+                         this.createTimeObject('clock3.png', this.x - 40, this.y - 80, 125);
+                         this.createTimeObject('clock2.png', this.x + 40, this.y - 80, 250);
                          this.addTimeout(() => {
-                             this.fireTimeObjects(4);
+                             this.fireTimeObjects(3);
                          }, 600);
                      },
                      attackFinishFunction: () => {
@@ -1193,7 +1195,7 @@
             [
                 // 2
                 {
-                     name: "}2x1}",
+                     name: gameVars.isHardMode ? "}3x1}" : "}2x1}",
                      desc: "The Time Magician\nuses his ultimate attack",
                      chargeAmt: 1300,
                      isBigMove: true,
@@ -1211,7 +1213,7 @@
                          this.finishedChargingUltimate = true;
                      },
                      attackFinishFunction: () => {
-                        this.fireTimeObjects(2, undefined, 135, true);
+                        this.fireTimeObjects(gameVars.isHardMode ? 3 : 2, undefined, 135, true);
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
                      },

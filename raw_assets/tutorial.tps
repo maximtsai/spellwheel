@@ -193,6 +193,7 @@
             <key type="filename">tutorial/level11btn.png</key>
             <key type="filename">tutorial/level12btn.png</key>
             <key type="filename">tutorial/level13btn.png</key>
+            <key type="filename">tutorial/level14btn.png</key>
             <key type="filename">tutorial/level1btn.png</key>
             <key type="filename">tutorial/level2btn.png</key>
             <key type="filename">tutorial/level3btn.png</key>

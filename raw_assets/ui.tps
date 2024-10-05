@@ -211,6 +211,7 @@
             <key type="filename">ui/mantis_paper.png</key>
             <key type="filename">ui/paper - Copy.png</key>
             <key type="filename">ui/robot_paper.png</key>
+            <key type="filename">ui/statue_paper.png</key>
             <key type="filename">ui/tree_paper.png</key>
             <key type="filename">ui/wall_paper.png</key>
             <struct type="IndividualSpriteSettings">

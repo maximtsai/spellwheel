@@ -197,8 +197,8 @@ function showMainMenuButtons() {
             }
         });
         globalObjects.lvlPickButton.setOrigin(0.5, 0.5);
-        globalObjects.lvlPickButton.addText(getLangText('lvl_select'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
-        globalObjects.lvlPickButton.setScale(0.9);
+        globalObjects.lvlPickButton.addText(getLangText('lvl_select'), {fontFamily: 'opensans', fontSize: 23, color: '#000000', align: 'left'})
+        globalObjects.lvlPickButton.setScale(0.86, 0.9);
     }
     globalObjects.startButton = new Button({
         normal: {
@@ -801,6 +801,11 @@ function updateMenuLanguage() {
     if (globalObjects.continueButton && !globalObjects.continueButton.isDestroyed) {
         globalObjects.continueButton.setText(getLangText('cont_ui'))
     }
+    if (globalObjects.lvlPickButton && !globalObjects.lvlPickButton.isDestroyed) {
+        globalObjects.lvlPickButton.setText(getLangText('lvl_select'))
+    }
+
+
 }
 
 
@@ -893,10 +898,10 @@ function showLevelSelectScreen(){
     closeButton.setDepth(this.baseDepth + 10);
 
     let listOfBtns = [];
-    let maxLevel = Math.min(gameVars.maxLevel + 1, 13);
-    for (let i = 0; i <= maxLevel; i++) {
-        let xPos = positionsX[i];
-        let yPos = positionsY[i];
+    let maxLevel = Math.min(gameVars.maxLevel + 1, 14);
+    for (let i = 1; i <= maxLevel; i++) {
+        let xPos = positionsX[i - 1];
+        let yPos = positionsY[i - 1];
         let imgRef = `level${i}btn.png`;
         let newBtn = new Button({
             normal: {

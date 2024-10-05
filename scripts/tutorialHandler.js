@@ -92,7 +92,7 @@ function buildTutorialMind() {
 
 function buildTutorialTime() {
     let clickBlocker = buildClickblocker();
-    let initTutText = getLangText('time_tut_desc');
+    let initTutText = getLangText('time_tut_desc_sh');
     let strikeText = getLangText('time_tut_strike_desc');
     let enhanceText = getLangText('time_tut_enhance_desc');
     let protectText = getLangText('time_tut_protect_desc');

@@ -122,7 +122,7 @@ function preload ()
         gameVars.latestLevel = 0;
     }
     if (!gameVars.maxLevel) {
-        gameVars.maxLevel = 0;
+        gameVars.maxLevel = gameVars.latestLevel;
     }
 
     if (isMobile && screen && screen.orientation && screen.orientation.lock) {

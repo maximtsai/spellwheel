@@ -274,7 +274,7 @@ let textData2 = {
         "jp": "私は死者の禁じられた土地への門に到着しました。 すぐに、この領域は私の立ち入りに抵抗します。しかし、私はここであなたを見つけるでしょう、親愛なる最愛の人、そして私があなたに連絡を取るのを妨げるものは何もありません。"
     },
     "post_fight_story2": {
-        "en_us": "The fabled Reaper has taken\nnotice of me, but I don't fear it at all.\n\nThey remind me more of my nagging parents\nthan an underworld spectre.\n\nPerhaps I'll grab this shield before they\nstart chastising me any further.",
+        "en_us": "The fabled Reaper has taken notice\nof me, but I don't fear it at all.\n\nThey remind me more of my nagging parents\nthan an underworld spectre.\n\nPerhaps I'll grab this shield before they\nstart chastising me further.",
         "fr": "Le légendaire Faucheur m'a remarqué,\nmais je n'ai guère peur.\n\nIls me rappellent plus mes parents harcelants\nqu'un spectre des enfers.\n\nJe devrais lui retirer ce bouclier avant qu'il\ncontinue à me harceler.",
         "zh_tw": "傳說中的死神已經注意到我了，\n但我幾乎不覺得害怕。\n\n" +
             "在我看來，他們更像是個嘮叨的父母，\n而不是地獄裡可怕的幽靈。\n\n我該在他繼續嘮叨前拿走這面盾牌。",
@@ -529,10 +529,10 @@ let textData2 = {
         "jp": "森は不安を感じさせます。\n何かが私を監視しているのでしょうか？"
     },
     "pre_fight_3_5a": {
-        "en_us": "In my travels, I came across a statue by\nthe roadside that radiated a strange energy.\nSomething about its design taunts me.\nPerhaps I should test my growing magic\non it.",
+        "en_us": "In my travels, I came across a statue by\nthe roadside that radiated a strange energy.\nSomething about its design taunts me.\nPerhaps I should test my newly acquired\nmagic on it.",
         "fr": "En voyageant, je suis tombé sur une statue au\nbord de la route qui dégageait une étrange énergie.\n\nCela semble être une bonne cible pour\ntester ma magie grandissante.",
-        "zh_tw": '旅行时，我在路边遇到了一个\n散发着奇怪能量的雕像。\n\n这看起来是个不错的攻击靶子，\n可以测试一下我日益增长的魔法。',
-        "zh_cn": '旅行时，我在路边遇到了一个\n散发着奇怪能量的雕像。\n\n这看起来是个不错的攻击靶子，\n可以测试一下我日益增长的魔法。',
+        "zh_tw": '旅行时，我在路边遇到了一个\n散发着奇怪能量的雕像。\n\n这看起来是个不错的攻击靶子，\n可以测试一下我新获得的魔法。',
+        "zh_cn": '旅行时，我在路边遇到了一个\n散发着奇怪能量的雕像。\n\n这看起来是个不错的攻击靶子，\n可以测试一下我新获得的魔法。',
         "ru": "",
         "es": "",
         "jp": ""

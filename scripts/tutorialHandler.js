@@ -47,7 +47,7 @@ function buildTutorialMatter() {
 
 function buildTutorialMind() {
     let clickBlocker = buildClickblocker();
-    let initTutText = getLangText('mind_tut_desc');
+    let initTutText = getLangText('mind_tut_desc_sh');
     let strikeText = getLangText('mind_tut_strike_desc');
     let enhanceText = getLangText('mind_tut_enhance_desc');
     let startFrame = 'rune_energy_large.png';

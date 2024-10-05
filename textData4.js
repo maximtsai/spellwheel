@@ -496,6 +496,33 @@ let textData4 = {
         "es": "Este \"Mago\" me ha molestado bastante. Mi magia tiene ganas de pelear.",
         "jp": "この「マジシャン」は私を十分に苛立たせました。私の魔法は戦いを欲しがる。"
     },
+    "statue_info_a": {
+        "en_us": "What a curious shield.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "statue_info_b": {
+        "en_us": "It fully blocks strong attacks, yet\nbreaks easily from weak hits.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "time_strike_info": {
+        "en_us": "Hits twice\n       +",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "superdummy_start": {
         "en_us": "Strange, I don't remember\nsetting up a training doll.",
         "fr": "Étrange, je ne me souviens pas d’avoir\nmis en place un mannequin d’entraînement.",

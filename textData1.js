@@ -524,6 +524,15 @@ let textData = {
         "es": "La runa de energía otorga control sobre la energía bruta. Los hechizos de energía tienen poderosos efectos de apoyo y pueden infligir daño verdadero que supera las defensas enemigas.",
         "jp": "エネルギーのルーンは、生のエネルギーをコントロールすることを可能にします。エネルギー呪文は強力なサポート効果を持ち、敵の防御を迂回するトゥルーダメージを与えることができます。"
     },
+    "mind_tut_desc_sh": {
+        "en_us": "The Energy rune controls raw\nenergy. Energy spells have\npowerful utility effects and deal\nTrue damage that bypasses\nenemy defenses.",
+        "fr": "La rune Énergie permet de\ncontrôler l'énergie brute, avec\ndes sorts qui offrent un soutien\npuissant et infligent des dégâts\nbruts contournant les défenses ennemies.",
+        "zh_tw": "能量符文授予對原始能量的\n控制權。能量法術具有強大\n的支援效果，可以造成繞過\n敵人防禦的真實傷害。",
+        "zh_cn": "能量符文授予对原始能量的\n控制权。能量法术具有强大\n的支持效果，可以造成绕过\n敌人防御的真实伤害。",
+        "ru": "Руна Энергия дает контроль над сырой энергией. Энергетические заклинания обладают мощными вспомогательными эффектами и могут наносить чистый урон, обойдя вражескую оборону.",
+        "es": "La runa de energía otorga control sobre la energía bruta. Los hechizos de energía tienen poderosos efectos de apoyo y pueden infligir daño verdadero que supera las defensas enemigas.",
+        "jp": "エネルギーのルーンは、生のエネルギーをコントロールすることを可能にします。エネルギー呪文は強力なサポート効果を持ち、敵の防御を迂回するトゥルーダメージを与えることができます。"
+    },
     "mind_plus_tut_desc": {
         "en_us": "Your mastery over the Energy\nelement strengthens some of\nyour existing Energy spells.",
         "fr": "Votre maîtrise de l'élément\nÉnergie renforce certains de\nvos sorts Énergie existants.",

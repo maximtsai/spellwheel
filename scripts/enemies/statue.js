@@ -39,13 +39,74 @@
     }
 
 
+    showTimeStrike() {
+        this.addDelay(() => {
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 70, getLangText("time_strike_info"), 'right');
+            let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+            let centerXPos = globalObjects.textPopupManager.getCenterPos();
+            let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
+            this.rune3 = this.addImage(centerXPos - 32, runeYPos + 27, 'circle', 'rune_time_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+            this.rune4 = this.addImage(centerXPos + 38, runeYPos + 27, 'circle', 'rune_strike_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+            this.addTween({
+                targets: [this.rune3, this.rune4],
+                scaleX: 1,
+                scaleY: 1,
+                ease: 'Quart.easeOut',
+                duration: 500,
+                onComplete: () => {
+                    this.addTween({
+                        targets: [this.rune3, this.rune4],
+                        scaleX: 0.8,
+                        scaleY: 0.8,
+                        ease: 'Back.easeOut',
+                        duration: 300,
+                    });
+                }
+            });
+            this.addTween({
+                targets: [this.rune3, this.rune4],
+                alpha: 1,
+                duration: 200,
+                completeDelay: 1000,
+                onComplete: () => {
+                    this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                        this.playerSpellCastSub.unsubscribe();
+                        this.addTimeout(() => {
+                            this.addTween({
+                                targets: [this.rune3, this.rune4],
+                                alpha: 0,
+                                duration: 300,
+                                onComplete: () => {
+                                    this.rune3.visible = false;
+                                    this.rune4.visible = false;
+                                }
+                            });
+                            globalObjects.textPopupManager.hideInfoText();
+                        }, 300);
+                    });
+                }
+            });
+        }, 1000)
+    }
+
      damageHandShield() {
          this.shieldAmts--;
          if (this.shieldAmts <= 0) {
              messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, '-BROKE-', 1.2, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.25, scaleY: 1.25, ease: 'Back.easeOut'});
              this.clearHandShield(true);
          } else {
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random() * 150, this.sprite.y + 50 - Math.random() * 100, 'NEGATED', 0.90, {alpha: 0.85}, {alpha: 0});
+            if (this.shieldAmts == 4 || (this.canShowEarlyInfo && this.shieldAmts <= 7)) {
+                if (!this.shownInfo) {
+                    this.shownInfo = true;
+                    globalObjects.bannerTextManager.setDialog([getLangText('statue_info_a'), getLangText('statue_info_b')]);
+                    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+                    globalObjects.bannerTextManager.showBanner(0.5);
+                    globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                        this.showTimeStrike();
+                    });
+                }
+            }
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random() * 150, this.sprite.y - 20 - Math.random() * 90, 'NEGATED', 0.95, {alpha: 0.85}, {alpha: 0});
              this.handShield.setAlpha(1);
              this.handShield.play('handShieldFast');
              this.addTween({
@@ -206,6 +267,10 @@
              alpha: 0,
              ease: 'Cubic.easeOut',
              duration: 1000,
+             completeDelay: 2000,
+             onComplete: () => {
+                this.canShowEarlyInfo = true;
+             }
          });
 
          this.shieldText.visible = true;
@@ -319,7 +384,9 @@
         this.sprite.setScale(this.sprite.startScale).setRotation(0);
          this.addTween({
              targets: [this.sprite],
-             rotation: -0.1,
+             scaleX: 0.92,
+             scaleY: 0.92,
+             rotation: -0.24,
              ease: "Quad.easeIn",
              duration: 400,
              onComplete: () => {

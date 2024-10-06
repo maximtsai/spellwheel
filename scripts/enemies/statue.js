@@ -378,17 +378,18 @@
              this.secondTempShield.destroy();
          }
         super.die();
-        playSound('rock_crumble')
+        playSound('rock_crumble', 0.8)
+        playSound('matter_enhance', 0.6).detune = -800
         globalObjects.textPopupManager.hideInfoText();
         this.dieClickBlocker = createGlobalClickBlocker(false);
         this.sprite.setScale(this.sprite.startScale).setRotation(0);
          this.addTween({
              targets: [this.sprite],
-             scaleX: 0.92,
-             scaleY: 0.92,
+             scaleX: 0.9,
+             scaleY: 0.9,
              rotation: -0.24,
-             ease: "Quad.easeIn",
-             duration: 400,
+             ease: "Cubic.easeOut",
+             duration: 500,
              onComplete: () => {
                  playSound('victory_2');
              }

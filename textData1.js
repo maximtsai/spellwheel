@@ -138,7 +138,7 @@ let textData = {
         "jp": "24ダメージを与える。\n24個の一時的な保護を得る。"
     },
     "time_strike_desc": {
-        "en_us": "Attack twice.\nFirst attack deals\n6 damage, second\nattack deals 50%\nof first.",
+        "en_us": "Hits twice.\nFirst hit deals\n6 damage, second\nhit deals 50%\nof first.",
         "fr": "Attaque deux fois.\nLa première attaque\ninflige 6 dégâts,\nla seconde inflige\n50% des dégâts de\nla première.",
         "zh_tw": "攻擊兩次。第一次\n造成 6 點傷害，\n第二次造成第一次\n攻擊傷害的 50%。",
         "zh_cn": "攻击两次。第一次\n造成 6 点伤害，\n第二次造成第一次\n攻擊伤害的 50%。",
@@ -147,7 +147,7 @@ let textData = {
         "jp": "2回攻撃する。最初の\n攻撃は6ダメージを与え、\n2回目の攻撃は最初の\n攻撃の50%を与えます。"
     },
     "time_strike_desc_long": {
-        "en_us": "Attack twice. First attack deals 6 damage,\nsecond attack deals 50% of first.",
+        "en_us": "Hits twice. First hit deals 6 damage,\nsecond hit deals 50% of first.",
         "fr": "Attaque deux fois. La première attaque inflige 6 dégâts,\nla seconde inflige 50% des dégâts de la première.",
         "zh_tw": "攻擊兩次。第一次造成 6 點傷害，\n第二次造成第一次攻擊傷害的 50%。",
         "zh_cn": "攻击两次。第一次造成 6 点伤害，\n第二次造成第一次攻擊伤害的 50%。",

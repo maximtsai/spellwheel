@@ -498,27 +498,27 @@ let textData4 = {
     },
     "statue_info_a": {
         "en_us": "What a curious shield.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Quel curieux bouclier.",
+        "zh_tw": "多麼奇特的護盾啊。",
+        "zh_cn": "多么奇特的护盾啊。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "statue_info_b": {
         "en_us": "It fully blocks strong attacks, yet\nbreaks easily from weak hits.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Il bloque les attaques puissantes, mais\nest facilement brisé par les faibles.",
+        "zh_tw": "它能完全阻擋強力的攻擊，\n但卻很容易被弱攻擊擊破。",
+        "zh_cnAttaquez deux fois": "它能完全阻挡强力的攻击，\n但却很容易被弱攻击击破。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "time_strike_info": {
         "en_us": "Hits twice\n       +",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Attaquez deux\nfois\n        +",
+        "zh_tw": "攻击两次\n     +",
+        "zh_cn": "攻击两次\n     +",
         "ru": "",
         "es": "",
         "jp": ""
@@ -526,8 +526,8 @@ let textData4 = {
     "superdummy_start": {
         "en_us": "Strange, I don't remember\nsetting up a training doll.",
         "fr": "Étrange, je ne me souviens pas d’avoir\nmis en place un mannequin d’entraînement.",
-        "zh_tw": "奇怪，我不記得設置了一個訓練假人。",
-        "zh_cn": "奇怪，我不记得设置了一个训练假人。",
+        "zh_tw": "奇怪，我不記得在這裡\n設置過訓練假人。",
+        "zh_cn": "奇怪，我不记得在这里\n设置过训练假人。",
         "ru": "Странно, я не помню, чтобы настраивал тренировочный манекен.",
         "es": "Extraño, no recuerdo haber montado un maniquí de entrenamiento.",
         "jp": "不思議なことに、トレーニングダミーを設定した覚えはありません。"

@@ -351,7 +351,6 @@
             <key type="filename">spells/burnParticle8.png</key>
             <key type="filename">spells/burnParticle9.png</key>
             <key type="filename">spells/clock_redStrike.png</key>
-            <key type="filename">spells/timeGreen.png</key>
             <key type="filename">spells/timeRed1.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

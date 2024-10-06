@@ -45,10 +45,10 @@ let textData4 = {
         "jp": "くすぐったい!"
     },
     "deathFight2CombatLaugh2": {
-        "en_us": "IT'S BEEN AGES\nSINCE MY LAST GOOD FIGHT!",
-        "fr": "CELA FAIT UNE ÉTERNITÉ DEPUIS\nMON DERNIER BON COMBAT !",
-        "zh_tw": "距離我上次精彩戰鬥\n已經太久了！",
-        "zh_cn": "距离我上次精彩战斗\n已经太久了！",
+        "en_us": "THIS SHOULD BE A GOOD FIGHT!",
+        "fr": "CELA DEVRAIT ÊTRE UN BON COMBAT !",
+        "zh_tw": "這將會是一場精彩的戰鬥！！",
+        "zh_cn": "这将会是一场精彩的战斗！",
         "ru": "ПРОШЛА ЦЕЛАЯ ВЕЧНОСТЬ С МОМЕНТА\nМОЕГО ПОСЛЕДНЕГО ХОРОШЕГО БОЯ!",
         "es": "¡HAN PASADO SIGLOS DESDE\nMI ÚLTIMA BUENA PELEA!",
         "jp": "前回の素晴らしい戦いからあ\nまりにも時間が経ちました！"

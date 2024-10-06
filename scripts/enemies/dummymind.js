@@ -212,7 +212,7 @@
                  let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                  let centerXPos = globalObjects.textPopupManager.getCenterPos();
                  this.rune3 = this.addImage(centerXPos - 32, runeYPos + 26, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
-                 this.rune4 = this.addImage(centerXPos + 38, runeYPos + 26, 'circle', 'rune_strike_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+                 this.rune4 = this.addImage(centerXPos + 37, runeYPos + 26, 'circle', 'rune_strike_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
 
                  this.addTween({
                      targets: [this.rune3, this.rune4],

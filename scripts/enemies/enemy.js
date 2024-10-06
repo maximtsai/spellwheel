@@ -1379,7 +1379,6 @@ class Enemy {
         }
         this.isAsleep = true;
         this.isUsingAttack = false;
-        this.chargeBarWarning.visible = false;
         this.chargeBarWarningBig.visible = false;
         this.chargeBarAngry.visible = false;
         this.chargeBarWarning.visible = false;
@@ -1408,6 +1407,8 @@ class Enemy {
         if (this.isDestroyed) {
             return;
         }
+        this.chargeBarAngry.scaleX = 0;
+        this.chargeBarWarning.scaleX = 0;
         // this.timeSinceLastAttacked = 9999;
         this.castAggravateCharge += 20;
         this.isAsleep = false;

@@ -531,8 +531,8 @@ let textData2 = {
     "pre_fight_3_5a": {
         "en_us": "In my travels, I came across a statue by\nthe roadside that radiated a strange energy.\nSomething about its design taunts me.\nPerhaps I should test my newly acquired\nmagic on it.",
         "fr": "En voyageant, je suis tombé sur une statue au\nbord de la route qui dégageait une étrange énergie.\n\nCela semble être une bonne cible pour\ntester ma magie grandissante.",
-        "zh_tw": '旅行时，我在路边遇到了一个\n散发着奇怪能量的雕像。\n\n这看起来是个不错的攻击靶子，\n可以测试一下我新获得的魔法。',
-        "zh_cn": '旅行时，我在路边遇到了一个\n散发着奇怪能量的雕像。\n\n这看起来是个不错的攻击靶子，\n可以测试一下我新获得的魔法。',
+        "zh_tw": '旅行时，我在路边遇到了一个散发着\n奇怪能量的雕像。\n\n这看起来是个不错的攻击靶子，可以\n测试一下我新获得的魔法。',
+        "zh_cn": '旅行时，我在路边遇到了一个散发着\n奇怪能量的雕像。\n\n这看起来是个不错的攻击靶子，可以\n测试一下我新获得的魔法。',
         "ru": "",
         "es": "",
         "jp": ""
@@ -774,8 +774,8 @@ let textData2 = {
     "level4_train_tut_b1": {
         "en_us": "Slows down\nheavy damage\n           +",
         "fr": "Ralentit les\ndégâts importants\n             +",
-        "zh_tw": "减缓严重伤害\n       +",
-        "zh_cn": "减缓严重伤害\n       +",
+        "zh_tw": "减缓严重伤害\n         +",
+        "zh_cn": "减缓严重伤害\n         +",
         "ru": "",
         "es": "",
         "jp": ""

@@ -374,8 +374,8 @@ let textData = {
     "mind_enhance_desc_long": {
         "en_us": "Your next attack burns enemy for\n2 True damage/sec for 5 seconds",
         "fr": "Votre prochaine attaque brûle l'ennemi pour\n2 dégâts véritables par seconde pendant 5 secondes.",
-        "zh_tw": "你的下一次攻擊對敵人\n造成每秒 3 點真實\n傷害，持續 5 秒",
-        "zh_cn": "你的下一次攻击对敌人\n造成每秒 3 点真实\n伤害，持续 5 秒",
+        "zh_tw": "你的下一次攻擊對敵人造成每秒\n2 點真實傷害，持續 5 秒",
+        "zh_cn": "你的下一次攻击对敌人造成每秒\n2 点真实伤害，持续 5 秒",
         "ru": "Следующая атака поджигает врага, нанося 3\nистинного урона в секунду в течение 5 секунд",
         "es": "",
         "jp": ""
@@ -392,8 +392,8 @@ let textData = {
     "mind_enhance_plus_desc_long": {
         "en_us": "Your next attack burns enemy for\n3 True damage/sec for 5 seconds",
         "fr": "Votre prochaine attaque brûle l'ennemi pour\n2 dégâts véritables par seconde pendant 5 secondes.",
-        "zh_tw": "你的下一次攻擊對敵人\n造成每秒 3 點真實\n傷害，持續 5 秒",
-        "zh_cn": "你的下一次攻击对敌人\n造成每秒 3 点真实\n伤害，持续 5 秒",
+        "zh_tw": "你的下一次攻擊對敵人造成每秒\n3 點真實傷害，持續 5 秒",
+        "zh_cn": "你的下一次攻击对敌人造成每秒\n3 点真实伤害，持续 5 秒",
         "ru": "Следующая атака поджигает врага, нанося 3\nистинного урона в секунду в течение 5 секунд",
         "es": "",
         "jp": ""

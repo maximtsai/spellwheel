@@ -2899,7 +2899,7 @@ class SpellManager {
         voidObj.setDepth(15);
         voidObj.rotation = Math.random() * 0.1;
         voidObj.setScale(1 + numTotalAttacks * 0.15);
-        voidObj.setAlpha(0);
+        voidObj.setAlpha(0.5);
 
         let initialDelay = 200 + numTotalAttacks * 10 + additionalDamage;
         let voidDuration = 1700 + numTotalAttacks * 150 + additionalDamage * 2;

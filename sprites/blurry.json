@@ -4,8 +4,8 @@
 			"image": "sprites/blurry-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2048,
-				"h": 1919
+				"w": 2041,
+				"h": 1900
 			},
 			"scale": 1,
 			"frames": [
@@ -135,6 +135,31 @@
 					}
 				},
 				{
+					"filename": "star_blur_sharp.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 488,
+						"h": 488
+					},
+					"spriteSourceSize": {
+						"x": 56,
+						"y": 55,
+						"w": 377,
+						"h": 377
+					},
+					"frame": {
+						"x": 1663,
+						"y": 1,
+						"w": 377,
+						"h": 377
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "static2.png",
 					"rotated": false,
 					"trimmed": false,
@@ -149,8 +174,8 @@
 						"h": 528
 					},
 					"frame": {
-						"x": 1663,
-						"y": 1,
+						"x": 403,
+						"y": 1325,
 						"w": 352,
 						"h": 528
 					},
@@ -174,10 +199,35 @@
 						"h": 527
 					},
 					"frame": {
-						"x": 403,
-						"y": 1325,
+						"x": 607,
+						"y": 716,
 						"w": 352,
 						"h": 527
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "flash.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 400,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 394,
+						"h": 200
+					},
+					"frame": {
+						"x": 725,
+						"y": 503,
+						"w": 394,
+						"h": 200
 					},
 					"anchor": {
 						"x": 0.5,
@@ -199,35 +249,10 @@
 						"h": 444
 					},
 					"frame": {
-						"x": 725,
-						"y": 503,
+						"x": 961,
+						"y": 705,
 						"w": 406,
 						"h": 444
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "spike_glow_yellow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 380,
-						"h": 380
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 6,
-						"w": 367,
-						"h": 366
-					},
-					"frame": {
-						"x": 607,
-						"y": 949,
-						"w": 367,
-						"h": 366
 					},
 					"anchor": {
 						"x": 0.5,
@@ -250,7 +275,7 @@
 					},
 					"frame": {
 						"x": 757,
-						"y": 1317,
+						"y": 1245,
 						"w": 350,
 						"h": 383
 					},
@@ -260,24 +285,24 @@
 					}
 				},
 				{
-					"filename": "deathhalo.png",
+					"filename": "static7.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 390,
-						"h": 390
+						"w": 352,
+						"h": 264
 					},
 					"spriteSourceSize": {
-						"x": 17,
-						"y": 17,
-						"w": 365,
-						"h": 361
+						"x": 0,
+						"y": 0,
+						"w": 352,
+						"h": 264
 					},
 					"frame": {
-						"x": 976,
-						"y": 949,
-						"w": 365,
-						"h": 361
+						"x": 757,
+						"y": 1630,
+						"w": 352,
+						"h": 264
 					},
 					"anchor": {
 						"x": 0.5,
@@ -300,7 +325,7 @@
 					},
 					"frame": {
 						"x": 1109,
-						"y": 1312,
+						"y": 1151,
 						"w": 350,
 						"h": 380
 					},
@@ -310,174 +335,24 @@
 					}
 				},
 				{
-					"filename": "flash.webp",
+					"filename": "spike_glow_yellow.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 400,
-						"h": 200
+						"w": 380,
+						"h": 380
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 0,
-						"w": 394,
-						"h": 200
+						"x": 8,
+						"y": 6,
+						"w": 367,
+						"h": 366
 					},
 					"frame": {
-						"x": 757,
-						"y": 1702,
-						"w": 394,
-						"h": 200
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "star_blur_sharp.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 488,
-						"h": 488
-					},
-					"spriteSourceSize": {
-						"x": 56,
-						"y": 55,
-						"w": 377,
-						"h": 377
-					},
-					"frame": {
-						"x": 1133,
-						"y": 503,
-						"w": 377,
-						"h": 377
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "spellcircle_pulse.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 351,
-						"h": 351
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
-						"w": 347,
-						"h": 347
-					},
-					"frame": {
-						"x": 1512,
-						"y": 531,
-						"w": 347,
-						"h": 347
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "glow.webp",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 220,
-						"h": 220
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 220,
-						"h": 220
-					},
-					"frame": {
-						"x": 1153,
-						"y": 1694,
-						"w": 220,
-						"h": 220
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "green_star.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 305,
-						"h": 305
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 303,
-						"h": 304
-					},
-					"frame": {
-						"x": 1343,
-						"y": 882,
-						"w": 303,
-						"h": 304
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "flash_bg.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 480,
-						"h": 280
-					},
-					"spriteSourceSize": {
-						"x": 68,
-						"y": 0,
-						"w": 343,
-						"h": 280
-					},
-					"frame": {
-						"x": 1648,
-						"y": 880,
-						"w": 343,
-						"h": 280
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "static7.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 352,
-						"h": 264
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 352,
-						"h": 264
-					},
-					"frame": {
-						"x": 1648,
-						"y": 1162,
-						"w": 352,
-						"h": 264
+						"x": 1111,
+						"y": 1533,
+						"w": 367,
+						"h": 366
 					},
 					"anchor": {
 						"x": 0.5,
@@ -499,10 +374,85 @@
 						"h": 266
 					},
 					"frame": {
-						"x": 1461,
-						"y": 1428,
+						"x": 1227,
+						"y": 437,
 						"w": 263,
 						"h": 266
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "deathhalo.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 390,
+						"h": 390
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 17,
+						"w": 365,
+						"h": 361
+					},
+					"frame": {
+						"x": 1369,
+						"y": 705,
+						"w": 365,
+						"h": 361
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "spellcircle_pulse.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 351,
+						"h": 351
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 347,
+						"h": 347
+					},
+					"frame": {
+						"x": 1461,
+						"y": 1068,
+						"w": 347,
+						"h": 347
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "flash_bg.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 480,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 68,
+						"y": 0,
+						"w": 343,
+						"h": 280
+					},
+					"frame": {
+						"x": 1480,
+						"y": 1417,
+						"w": 343,
+						"h": 280
 					},
 					"anchor": {
 						"x": 0.5,
@@ -524,8 +474,8 @@
 						"h": 253
 					},
 					"frame": {
-						"x": 1726,
-						"y": 1428,
+						"x": 1492,
+						"y": 437,
 						"w": 253,
 						"h": 253
 					},
@@ -535,49 +485,24 @@
 					}
 				},
 				{
-					"filename": "dark_blur.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 170,
-						"h": 170
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 170,
-						"h": 170
-					},
-					"frame": {
-						"x": 1861,
-						"y": 531,
-						"w": 170,
-						"h": 170
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "lantern_glow.png",
+					"filename": "staticlite1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 192,
-						"h": 172
+						"w": 200,
+						"h": 20
 					},
 					"spriteSourceSize": {
-						"x": 6,
+						"x": 1,
 						"y": 5,
-						"w": 180,
-						"h": 161
+						"w": 199,
+						"h": 11
 					},
 					"frame": {
-						"x": 1861,
-						"y": 703,
-						"w": 180,
-						"h": 161
+						"x": 1492,
+						"y": 692,
+						"w": 199,
+						"h": 11
 					},
 					"anchor": {
 						"x": 0.5,
@@ -599,35 +524,10 @@
 						"h": 199
 					},
 					"frame": {
-						"x": 1375,
-						"y": 1696,
+						"x": 1480,
+						"y": 1699,
 						"w": 199,
 						"h": 199
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "pulser.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 226,
-						"h": 226
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 16,
-						"w": 193,
-						"h": 193
-					},
-					"frame": {
-						"x": 1576,
-						"y": 1696,
-						"w": 193,
-						"h": 193
 					},
 					"anchor": {
 						"x": 0.5,
@@ -649,10 +549,135 @@
 						"h": 235
 					},
 					"frame": {
-						"x": 1771,
-						"y": 1683,
+						"x": 1747,
+						"y": 380,
 						"w": 220,
 						"h": 235
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "pulser.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 226,
+						"h": 226
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 14,
+						"w": 197,
+						"h": 197
+					},
+					"frame": {
+						"x": 1681,
+						"y": 1699,
+						"w": 197,
+						"h": 197
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "green_star.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 305,
+						"h": 305
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 303,
+						"h": 304
+					},
+					"frame": {
+						"x": 1736,
+						"y": 692,
+						"w": 303,
+						"h": 304
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "glow.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 220,
+						"h": 220
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 220,
+						"h": 220
+					},
+					"frame": {
+						"x": 1810,
+						"y": 998,
+						"w": 220,
+						"h": 220
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "lantern_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 192,
+						"h": 172
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 5,
+						"w": 180,
+						"h": 161
+					},
+					"frame": {
+						"x": 1810,
+						"y": 1220,
+						"w": 180,
+						"h": 161
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dark_blur.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 170,
+						"h": 170
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 170,
+						"h": 170
+					},
+					"frame": {
+						"x": 1825,
+						"y": 1383,
+						"w": 170,
+						"h": 170
 					},
 					"anchor": {
 						"x": 0.5,
@@ -699,8 +724,8 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 1227,
-						"y": 437,
+						"x": 1747,
+						"y": 617,
 						"w": 200,
 						"h": 50
 					},
@@ -724,110 +749,10 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 1133,
-						"y": 882,
+						"x": 1825,
+						"y": 1555,
 						"w": 200,
 						"h": 50
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "display_backglow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 120,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 118,
-						"h": 98
-					},
-					"frame": {
-						"x": 1343,
-						"y": 1188,
-						"w": 118,
-						"h": 98
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "pulser_green.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 170,
-						"h": 170
-					},
-					"spriteSourceSize": {
-						"x": 12,
-						"y": 12,
-						"w": 145,
-						"h": 145
-					},
-					"frame": {
-						"x": 1463,
-						"y": 1188,
-						"w": 145,
-						"h": 145
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "staticlite1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 20
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 5,
-						"w": 199,
-						"h": 11
-					},
-					"frame": {
-						"x": 1375,
-						"y": 1897,
-						"w": 199,
-						"h": 11
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "icon_glow.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 95,
-						"h": 95
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 95,
-						"h": 95
-					},
-					"frame": {
-						"x": 607,
-						"y": 716,
-						"w": 95,
-						"h": 95
 					},
 					"anchor": {
 						"x": 0.5,
@@ -849,10 +774,85 @@
 						"h": 9
 					},
 					"frame": {
-						"x": 1861,
-						"y": 866,
+						"x": 725,
+						"y": 705,
 						"w": 104,
 						"h": 9
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "pulser_green.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 170,
+						"h": 170
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 12,
+						"w": 145,
+						"h": 145
+					},
+					"frame": {
+						"x": 1880,
+						"y": 1607,
+						"w": 145,
+						"h": 145
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "display_backglow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 120,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 118,
+						"h": 98
+					},
+					"frame": {
+						"x": 1880,
+						"y": 1754,
+						"w": 118,
+						"h": 98
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "icon_glow.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 95,
+						"h": 95
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 95,
+						"h": 95
+					},
+					"frame": {
+						"x": 1121,
+						"y": 503,
+						"w": 95,
+						"h": 95
 					},
 					"anchor": {
 						"x": 0.5,
@@ -874,35 +874,10 @@
 						"h": 10
 					},
 					"frame": {
-						"x": 1576,
-						"y": 1891,
+						"x": 607,
+						"y": 1245,
 						"w": 100,
 						"h": 10
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "staticlite5.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 40,
-						"h": 12
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 40,
-						"h": 12
-					},
-					"frame": {
-						"x": 1227,
-						"y": 489,
-						"w": 40,
-						"h": 12
 					},
 					"anchor": {
 						"x": 0.5,
@@ -924,8 +899,8 @@
 						"h": 48
 					},
 					"frame": {
-						"x": 213,
-						"y": 1827,
+						"x": 961,
+						"y": 1151,
 						"w": 39,
 						"h": 48
 					},
@@ -949,10 +924,35 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 2017,
-						"y": 1,
+						"x": 1369,
+						"y": 1068,
 						"w": 4,
 						"h": 50
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "staticlite5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 40,
+						"h": 12
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 40,
+						"h": 12
+					},
+					"frame": {
+						"x": 1663,
+						"y": 380,
+						"w": 40,
+						"h": 12
 					},
 					"anchor": {
 						"x": 0.5,
@@ -974,35 +974,10 @@
 						"h": 15
 					},
 					"frame": {
-						"x": 1,
-						"y": 1879,
+						"x": 1969,
+						"y": 380,
 						"w": 25,
 						"h": 15
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "staticlite0.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 30,
-						"h": 7
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 30,
-						"h": 7
-					},
-					"frame": {
-						"x": 1726,
-						"y": 1683,
-						"w": 30,
-						"h": 7
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1024,10 +999,35 @@
 						"h": 9
 					},
 					"frame": {
-						"x": 2033,
-						"y": 1,
+						"x": 831,
+						"y": 705,
 						"w": 14,
 						"h": 9
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "staticlite0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 30,
+						"h": 7
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 30,
+						"h": 7
+					},
+					"frame": {
+						"x": 1693,
+						"y": 692,
+						"w": 30,
+						"h": 7
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1040,6 +1040,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:52353d4eb761ac457ac089251b02cc21:bd85a5877740e7fac2880bd8c75d1899:7b3d117fb7424a39791474629de16171$"
+		"smartupdate": "$TexturePacker:SmartUpdate:0da15c639663454ff557eea2f48cf1ca:5d6f9bc65c93fc9a6da176d2e7598d6b:7b3d117fb7424a39791474629de16171$"
 	}
 }

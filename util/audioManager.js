@@ -54,6 +54,7 @@ function playFakeBGMusic(name) {
     }
     soundList[name].volume = globalMusicVol;
     soundList[name].play();
+    return soundList[name];
 }
 
 function updateGlobalVolume(newVol = 1) {
@@ -95,7 +96,7 @@ function setVolume(sound, volume = 0, duration) {
 
 
 function fadeAwaySound(sound, duration = 650, ease, onComplete) {
-    sound.fullVolume = 0
+    sound.fullVolume = 0;
     sound.currTween = PhaserScene.tweens.add({
         targets: sound,
         volume: sound.fullVolume,

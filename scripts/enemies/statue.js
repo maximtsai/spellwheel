@@ -23,7 +23,8 @@
      }
 
      initTutorial() {
-        this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
+         this.bgMusic = playMusic('wind', 0.01, true);
+         fadeInSound(this.bgMusic, 0.7, 2000);
     }
 
     initMisc() {
@@ -192,8 +193,9 @@
              alpha: 0.9,
              duration: 2000,
          });
+         // playFakeBGMusic('but_never_forgotten_metal_prelude');
          this.addDelayIfAlive(() => {
-             playSound('slice_in')
+             playSound('ringknell')
              this.secondTempShield = this.addSprite(this.handShieldTemp.x + 5, this.handShieldTemp.y + 99, 'deathfinal', 'palm_glow.png').setScale(this.handShieldTemp.startScale * 1.2, this.handShieldTemp.startScale * 1.15).setDepth(3).setAlpha(0).setRotation(this.sprite.rotation).setOrigin(0.5, 0.55);
 
              this.addTween({
@@ -262,8 +264,9 @@
          })
          let darkBG = getBackgroundBlackout();
          darkBG.setDepth(-3).setAlpha(0.45);
+         let spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.55);
          this.scene.tweens.add({
-             targets: darkBG,
+             targets: [spaceBG, darkBG],
              alpha: 0,
              ease: 'Cubic.easeOut',
              duration: 1000,
@@ -272,6 +275,13 @@
                 this.canShowEarlyInfo = true;
              }
          });
+         this.bgMusic = playMusic('bite_down', 0.65, true);
+
+         // let fakeMusic = playFakeBGMusic('but_never_forgotten_epicchoir');
+         // this.addTimeout(() => {
+         //     console.log('fade away');
+         //     fadeAwaySound(fakeMusic, 1000)
+         // }, 2000);
 
          this.shieldText.visible = true;
          this.shieldText.setText(amt);
@@ -380,20 +390,33 @@
         super.die();
         playSound('rock_crumble')
         globalObjects.textPopupManager.hideInfoText();
-        this.dieClickBlocker = createGlobalClickBlocker(false);
+        // this.dieClickBlocker = createGlobalClickBlocker(false);
         this.sprite.setScale(this.sprite.startScale).setRotation(0);
+        this.clearHandShield();
+         swirlInReaperFog();
+         globalObjects.encyclopedia.hideButton();
+         globalObjects.options.hideButton();
+         globalObjects.magicCircle.disableMovement();
+
          this.addTween({
              targets: [this.sprite],
              scaleX: 0.92,
              scaleY: 0.92,
              rotation: -0.24,
-             ease: "Quad.easeIn",
+             alpha: 0.98,
+             ease: "Cubic.easeOut",
              duration: 400,
+             completeDelay: 2500,
              onComplete: () => {
-                 playSound('victory_2');
+                 this.customVictory();
+                 // playSound('victory_2');
              }
          });
      }
+
+    customVictory() {
+        playReaperPassiveAnim(this);
+    }
 
 
      initAttacks() {

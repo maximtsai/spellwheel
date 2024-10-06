@@ -270,6 +270,35 @@ let textData3 = {
         "es": "",
         "jp": ""
     },
+    "death_statue1": {
+        "en_us": "THIS IS A DANGEROUS\nINSTRUMENT OF COMBAT.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death_statue2": {
+        "en_us": "",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death_statue3": {
+        "en_us": "IT IS BEST YOU DO NOT\nPLAY WITH IT ANY FURTHER.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+
+
     "death5a": {
         "en_us": "PERHAPS YOU THINK YOURSELF\nA HERO, BUT UNDERSTAND THIS",
         "fr": "VVOUS POUVEZ VOUS VOIR COMME\nUN HÉROS, MAIS COMPRENEZ CECI",
@@ -352,10 +381,10 @@ let textData3 = {
         "jp": ""
     },
     "deathFight1a": {
-        "en_us": "ALAS, YOUR JOURNEY\nWAS NOT MEANT TO BE.",
-        "fr": "HÉLAS, VOTRE VOYAGE\nN'ÉTAIT PAS PRÉVU.",
-        "zh_tw": "。。。看来你的旅程注定不会实现。",
-        "zh_cn": "。。。看来你的旅程注定不会实现。",
+        "en_us": "...UNFORTUNATE, BUT YOUR FATE\nNOW DEMANDS THAT I TAKE ACTION.",
+        "fr": "C'est malheureux, mais ton destin\nexige maintenant que j'agisse.",
+        "zh_tw": "這很不幸，但你的命運\n現在要求我採取行動。",
+        "zh_cn": "这很不幸，但你的命运\n现在要求我采取行动。",
         "ru": "К СОЖАЛЕНИЮ, ВАШЕМУ ПУТЕШЕСТВИЮ НЕ СУЖДЕНО БЫЛО СБЫТЬСЯ.",
         "es": "DESAFORTUNADAMENTE, SU VIAJE NO ESTABA DESTINADO A SER.",
         "jp": "残念なことに、あなたの旅はそうするはずではありませんでした。"

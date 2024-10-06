@@ -2,8 +2,9 @@
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('palm.png', 0.96, 0, 0);
+        this.sprite.startScale = 0.96;
         this.defaultRotation = -0.045;
-        this.sprite.setRotation(-0.045).setAlpha(0.95)
+        this.sprite.setAlpha(0.2)
         this.initMisc();
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
@@ -13,7 +14,32 @@
     }
 
      initSpriteAnim(scale) {
-         super.initSpriteAnim(scale);
+         this.sprite.y -= 23;
+         this.sprite.setRotation(0).setScale(0.96 * 0.9);
+         this.addTween({
+             targets: this.sprite,
+             alpha: 0.965,
+             duration: 300,
+             ease: 'Quad.easeOut',
+         })
+         this.addTween({
+             targets: this.sprite,
+             y: "+=23",
+             scaleX: 0.96,
+             scaleY: 0.96,
+             duration: 250,
+             ease: 'Cubic.easeIn',
+             onComplete: () => {
+                 let stompSound = playSound('stomp', 0.4);
+                 stompSound.detune = -400;
+                 this.addTween({
+                     targets: this.sprite,
+                     rotation: this.defaultRotation,
+                     duration: 100,
+                     ease: 'Cubic.easeOut',
+                 })
+             }
+         })
      }
 
      initStatsCustom() {
@@ -176,7 +202,7 @@
                  }
              });
              this.setAwake();
-         } else if (this.health <= 200 && !this.beganAttack) {
+         } else if (this.shieldSettedUp && this.health <= 200 && !this.beganAttack) {
              this.beganAttack = true;
              this.currentAttackSetIndex = 1;
              this.nextAttackIndex = 0;
@@ -284,8 +310,9 @@
              }
          });
          this.addDelayIfAlive(() => {
+             this.shieldSettedUp = true;
              this.bgMusic = playMusic('but_never_forgotten', 0.7, true);
-         }, 600)
+         }, 800)
 
          // let fakeMusic = playFakeBGMusic('but_never_forgotten_epicchoir');
          // this.addTimeout(() => {
@@ -442,8 +469,14 @@
                      finaleFunction: () => {
                          fadeAwaySound(this.bgMusic, 1500);
                          this.animateCreateHandShield();
-                         this.setAsleep();
-                         this.interruptCurrentAttack();
+                         if (this.health > 200) {
+                             this.setAsleep();
+                             this.interruptCurrentAttack();
+                         } else {
+                             this.currentAttackSetIndex = 1;
+                             this.nextAttackIndex = 0;
+                         }
+
                          // uncomment to try and fix some bugs
                          // this.hideCurrentAttack();
                      }
@@ -451,8 +484,21 @@
              ],
              [
                  {
+                     name: "}2x2",
+                     chargeAmt: 350,
+                     finishDelay: 1000,
+                     damage: -1,
+                     startFunction: () => {
+                         this.prepAttack();
+                     },
+                     attackFinishFunction: () => {
+                         this.fireVoidAttacks(2, 2);
+                     }
+                 },
+                 {
                      name: "}3x3",
                      chargeAmt: 400,
+                     finishDelay: 1500,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -464,6 +510,7 @@
                  {
                      name: "}4x4",
                      chargeAmt: 500,
+                     finishDelay: 2000,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -474,6 +521,7 @@
                  },
                  {
                      name: "}5x5",
+                     finishDelay: 2500,
                      chargeAmt: 600,
                      damage: -1,
                      startFunction: () => {
@@ -486,6 +534,7 @@
                  {
                      name: "}6x6",
                      chargeAmt: 700,
+                     finishDelay: 3000,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -497,6 +546,7 @@
                  {
                      name: "}7x7",
                      chargeAmt: 800,
+                     finishDelay: 3400,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -508,6 +558,7 @@
                  {
                      name: "}8x8",
                      chargeAmt: 900,
+                     finishDelay: 3800,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -519,6 +570,7 @@
                  {
                      name: "}9x9",
                      chargeAmt: 1000,
+                     finishDelay: 4200,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -530,6 +582,7 @@
                  {
                      name: "}10x10",
                      chargeAmt: 1100,
+                     finishDelay: 4500,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -553,70 +606,94 @@
      }
 
      fireVoidAttacks(damage = 3, times = 3) {
+        playSound('ringknell')
+         let darkBG = getBackgroundBlackout();
+         darkBG.setDepth(-3);
+         this.addTween({
+             targets: darkBG,
+             alpha: 0.4,
+             duration: 500
+         })
         for (let i = 0; i < times; i++) {
             this.addDelay(() => {
-                let pulse = getTempPoolObject('blurry', 'pulser.png', 'pulser', 450);
-                pulse.setAlpha(0).setScale(0.1);
+                let pulse = getTempPoolObject('blurry', 'pulser.png', 'pulser', 725);
+                pulse.setAlpha(0).setScale(0.15).setPosition(this.x, this.y - 60).setDepth(10);
                 this.addTween({
                     targets: pulse,
-                    scaleX: 12,
-                    scaleY: 12,
-                    ease: 'Cubic.easeIn',
-                    duration: 500,
+                    scaleX: 8.5,
+                    scaleY: 8.5,
+                    ease: 'Quart.easeIn',
+                    duration: 700,
                 })
                 this.addTween({
                     targets: pulse,
                     alpha: 1,
                     ease: 'Cubic.easeInOut',
-                    duration: 150,
+                    duration: 200,
                 })
                 this.addDelayIfAlive(() => {
                     messageBus.publish("selfTakeDamage", damage);
-                }, 400)
+                    let vol = 0.4;
+                    if (i % 2 == 1) {
+                        vol = 0.6;
+                    }
+                    if (i == times - 1) {
+                        vol = 0.7
+                    }
+                    let slamSfx = playSound('body_slam', vol);
+                    slamSfx = 200 - Math.floor(Math.random() * 450);
+                    if (i == times - 1) {
+                        this.addTween({
+                            targets: darkBG,
+                            alpha: 0,
+                            duration: 800
+                        })
+                    }
+                }, 600)
             }, i * 600 - times * 25)
         }
      }
 
      prepAttack() {
         if (!this.flashPic) {
-            this.darkBlur = this.addImage(this.x, this.y - 50, 'blurry', 'dark_blur.png').setDepth(-1).setScale(6).setAlpha(0);
-            this.flashPic = this.addImage(this.x, this.y - 50, 'blurry', 'flash.webp').setDepth(-1);
+            this.darkBlur = this.addImage(this.x, this.y - 55, 'blurry', 'dark_blur.png').setDepth(-1).setScale(7).setAlpha(0);
+            this.flashPic = this.addImage(this.x, this.y - 65, 'blurry', 'flash.webp').setDepth(-1);
         }
-        this.flashPic.setScale(0.1).setRotation(-0.5);
+        this.flashPic.setScale(0.1).setRotation(-0.3);
          this.addTween({
              targets: this.darkBlur,
-             alpha: 0.4,
+             alpha: 0.45,
              ease: 'Quad.easeOut',
-             duration: 500,
+             duration: 570,
              onComplete: () => {
                  this.addTween({
                      targets: this.darkBlur,
                      alpha: 0,
-                     ease: 'Quad.easeIn',
-                     duration: 500,
+                     duration: 1000,
                  });
              }
          });
 
 
         this.addDelay(() => {
-            playSound('slice_in');
+            let sliceSfx = playSound('slice_in', 0.6);
+            sliceSfx.detune = -200 + Math.floor(Math.random() * 200)
         }, 200)
         this.addTween({
             targets: this.flashPic,
             rotation: 0,
-            scaleX: 2,
-            scaleY: 1.5,
+            scaleX: 3,
+            scaleY: 2.2,
             ease: 'Cubic.easeIn',
-            duration: 500,
+            duration: 570,
             onComplete: () => {
                 this.addTween({
                     targets: this.flashPic,
-                    rotation: 0.5,
+                    rotation: 0.3,
                     scaleX: 0,
                     scaleY: 0,
                     ease: 'Cubic.easeOut',
-                    duration: 500,
+                    duration: 570,
                 })
             }
         })

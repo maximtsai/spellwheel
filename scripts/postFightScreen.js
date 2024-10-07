@@ -845,9 +845,9 @@ class PostFightScreen {
     }
 
     getNewRuneAnnounce(level) {
-        if (level < 7) {
+        if (level < 8) {
             return getLangText('post_fight_newrune');
-        } else if (level >= 9) {
+        } else if (level >= 10) {
             return getLangText('post_fight_noupgrade');
         } else {
             return getLangText('post_fight_upgrade');
@@ -869,18 +869,19 @@ class PostFightScreen {
                 return getLangText('time_tut_desc');
                 break
             case 5:
+            case 6:
                 return getLangText('void_tut_desc');
                 break;
-            case 6:
+            case 7:
                 return getLangText('unload_tut_desc');
                 break
-            case 7:
+            case 8:
                 return getLangText('matter_plus_tut_desc');
                 break;
-            case 8:
+            case 9:
                 return getLangText('mind_plus_tut_desc');
                 break
-            case 9:
+            case 10:
                 return getLangText('no_improve_tut_desc');
                 break;
             default:
@@ -903,18 +904,19 @@ class PostFightScreen {
                 return 'rune_time_large.png';
                 break
             case 5:
+            case 6:
                 return 'rune_void_large.png';
                 break;
-            case 6:
+            case 7:
                 return 'rune_unload_large.png';
                 break
-            case 7:
+            case 8:
                 return 'rune_matter_large.png';
                 break;
-            case 8:
+            case 9:
                 return 'rune_energy_large.png';
                 break
-            case 9:
+            case 10:
                 return 'blank.png';
                 break;
             default:
@@ -1001,73 +1003,4 @@ class PostFightScreen {
         }
     }
 
-
-    getLevelDialog(level) {
-        switch(level) {
-            case 0:
-                return [
-                    "And so my journey begins. It won't be long\nbefore I see you again, Rosemary."
-                ]
-                break;
-            case 1:
-                return [
-                    "DAY 1",
-                    "I'm sure this is the right place."
-                ]
-                break;
-            case 2:
-                return [
-                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
-                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
-                ]
-                break;
-            case 3:
-                return [
-                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
-                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
-                ]
-                break;
-            case 4:
-                return [
-                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
-                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
-                ]
-                break;
-            case 5:
-                return [
-                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
-                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
-                ]
-                break;
-            case 6:
-                return [
-                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
-                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
-                ]
-                break;
-            case 7:
-                return [
-                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
-                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
-                ]
-                break;
-            case 8:
-                return [
-                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
-                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
-                ]
-                break;
-            case 9:
-                return [
-                    "This strange wheel device I've found is capable\nof storing the strength of defeated opponents.",
-                    "Perhaps if I defeat enough enemies, I can gain\nthe power to bring you back, Rosemary."
-                ]
-                break;
-            default:
-                return [
-                    "I must keep pressing on.",
-                ]
-                break;
-        }
-    }
 }

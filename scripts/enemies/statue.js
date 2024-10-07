@@ -43,7 +43,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 333 : 280;
+         this.health = gameVars.isHardMode ? 300 : 275;
          this.isAsleep = true;
          this.attackScale = 1;
          this.pullbackScale = 1;
@@ -51,6 +51,7 @@
          this.shieldAmts = 0;
          this.shieldTextFont = "void";
          this.shieldTextOffsetY = -95;
+         this.shieldTextSize = 58;
      }
 
      initTutorial() {
@@ -70,16 +71,19 @@
             this.addTween({
                 targets: this.sprite,
                 rotation: 0,
-                y: "-=7",
+                y: "-=9",
+                easeParams: [2],
                 ease: 'Back.easeOut',
                 duration: 400,
                 completeDelay: 400,
                 onComplete: () => {
                     this.addTween({
                         targets: this.sprite,
+                        scaleX: 0.8,
+                        scaleY: 0.8,
                         alpha: 0,
-                        y: "-=200",
-                        ease: 'Cubic.easeIn',
+                        y: "-=300",
+                        ease: 'Quart.easeIn',
                         duration: 1500,
                     })
                 }
@@ -192,7 +196,7 @@
          this.shakeShieldText();
 
          if (this.shieldAmts <= 0) {
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y - 50, '-BROKE-', 1.2, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.25, scaleY: 1.25, ease: 'Back.easeOut'});
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y - 15, '-BROKE-', 1.2, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.25, scaleY: 1.25, ease: 'Back.easeOut'});
              this.clearHandShield(true);
          } else {
             if (this.shieldAmts == 4 || (this.canShowEarlyInfo && this.shieldAmts <= 7)) {
@@ -323,7 +327,7 @@
                              playSound('rock_crumble', 0.35)
                              this.handShieldTemp.currAnim.stop();
                              this.handShieldTemp.alpha = 1;
-                             this.createHandShield(10);
+                             this.createHandShield(gameVars.isHardMode ? 10 : 9);
 
                              this.addTween({
                                  delay: 400,
@@ -364,7 +368,7 @@
          })
          let darkBG = getBackgroundBlackout();
          darkBG.setDepth(-3).setAlpha(0.45);
-         let spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.6);
+         let spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.6).setScale(1.2);
          this.scene.tweens.add({
              targets: [spaceBG, darkBG],
              alpha: 0,
@@ -558,6 +562,9 @@
                         scaleY: 1,
                         duration: 800,
                         onComplete: () => {
+                            if (globalObjects.player.isDead()) {
+                                return;
+                            }
                             this.dieClickBlocker = createGlobalClickBlocker(false);
                             this.dieClickBlocker.setOnMouseUpFunc(() => {
                                 hideGlobalClickBlocker();
@@ -589,10 +596,11 @@
              [
                  // 0
                  {
-                     name: "SHIELD? #10",
+                     name: gameVars.isHardMode ? "STRANGE SHIELD #10" : "STRANGE SHIELD #9",
                      chargeAmt: 888,
                      chargeMult: 20,
-                     damage: 0,
+                     finishDelay: 2500,
+                     damage: -1,
                      finaleFunction: () => {
                          fadeAwaySound(this.bgMusic, 1500);
                          this.animateCreateHandShield();
@@ -607,12 +615,12 @@
              [
                  {
                      name: "CHARGING...",
-                     chargeAmt: gameVars.isHardMode ? 500 : 1000,
+                     chargeAmt: gameVars.isHardMode ? 500 : 1100,
                      damage: 0,
                  },
                  {
                      name: "}2x2}",
-                     chargeAmt: 450,
+                     chargeAmt: 500,
                      finishDelay: 1600,
                      damage: -1,
                      startFunction: () => {
@@ -624,7 +632,7 @@
                  },
                  {
                      name: "}3x3}",
-                     chargeAmt: 500,
+                     chargeAmt: 600,
                      finishDelay: 2400,
                      damage: -1,
                      startFunction: () => {
@@ -636,7 +644,7 @@
                  },
                  {
                      name: "|4x4|",
-                     chargeAmt: 600,
+                     chargeAmt: 700,
                      finishDelay: 3000,
                      damage: -1,
                      startFunction: () => {
@@ -649,7 +657,7 @@
                  {
                      name: "|5x5|",
                      finishDelay: 3500,
-                     chargeAmt: 700,
+                     chargeAmt: 800,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -660,7 +668,7 @@
                  },
                  {
                      name: ";6x6;",
-                     chargeAmt: 800,
+                     chargeAmt: 900,
                      finishDelay: 4000,
                      damage: -1,
                      startFunction: () => {
@@ -672,7 +680,7 @@
                  },
                  {
                      name: ";7x7;",
-                     chargeAmt: 900,
+                     chargeAmt: 1000,
                      finishDelay: 4400,
                      damage: -1,
                      startFunction: () => {
@@ -684,7 +692,7 @@
                  },
                  {
                      name: ";;8x8;;",
-                     chargeAmt: 1000,
+                     chargeAmt: 1100,
                      finishDelay: 4800,
                      isBigMove: true,
                      damage: -1,
@@ -697,7 +705,7 @@
                  },
                  {
                      name: ";;9x9;;",
-                     chargeAmt: 1100,
+                     chargeAmt: 1150,
                      finishDelay: 5200,
                      isBigMove: true,
                      damage: -1,

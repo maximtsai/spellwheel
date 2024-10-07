@@ -150,7 +150,7 @@ function buildTutorialTime() {
 
 function buildTutorialVoid() {
     let clickBlocker = buildClickblocker();
-    let initTutText = getLangText('void_tut_desc');
+    let initTutText = getLangText('void_tut_desc_sh');
     let strikeText = getLangText('void_tut_strike_desc');
     let enhanceText = getLangText('void_tut_enhance_desc');
     let protectText = getLangText('void_tut_protect_desc');

@@ -651,7 +651,7 @@ let textData = {
         "jp": ""
     },
     "void_tut_desc": {
-        "en_us": "The Void rune grants control\nover empty space.\nVoid spells can deal percentage\nhealth damage, negate enemy attacks, or\neven fully heal you at a cost.",
+        "en_us": "The Void rune grants control\nover empty space. Void spells\ncan deal percentage health damage,\nnegate enemy attacks, or even\nfully heal you at a cost.",
         "fr": "La rune du Vide permet de contrôler\nl’espace vide. Les sorts du Vide peuvent infliger\ndes dégâts basés sur un pourcentage de santé,\nannuler les attaques ennemies ou même vous\nsoigner complètement à un certain coût.",
         "zh_tw": "虛空符文賦予了你對虛\n空空間的控制權。虛空法術\n可以造成一定比例的生命值傷害、\n抵消敵人的攻擊，甚至可以完全治癒你。",
         "zh_cn": "虚空符文赋予了你对虚\n空空间的控制权。虚空法术\n可以造成一定比例的生命值伤害、\n抵消敌人的攻击，甚至可以完全治愈你。",
@@ -659,8 +659,17 @@ let textData = {
         "es": "",
         "jp": ""
     },
+    "void_tut_desc_sh": {
+        "en_us": "The Void rune grants control\nover empty space. Void spells\ncan deal percentage health damage,\nnegate enemy attacks, or even\nfully heal you at a cost.",
+        "fr": "La rune du Vide permet de\ncontrôler l’espace vide. Les sorts\ndu Vide peuvent infliger des dégâts\nbasés sur un pourcentage de santé,\nannuler les attaques ennemies ou\nmême vous soigner complètement.",
+        "zh_tw": "虛空符文賦予了你對虛\n空空間的控制權。虛空法術\n可以造成一定比例的生命值傷害、\n抵消敵人的攻擊，甚至可以完全治癒你。",
+        "zh_cn": "虚空符文赋予了你对虚\n空空间的控制权。虚空法术\n可以造成一定比例的生命值伤害、\n抵消敌人的攻击，甚至可以完全治愈你。",
+        "ru": "Руна Пустоты дает контроль над\nпустым пространством. Заклинания\nПустоты могут наносить урон в процентах\nот здоровья, нейтрализовать атаки врагов\nили полностью исцелить вас за\nопределенную цену.",
+        "es": "",
+        "jp": ""
+    },
     "void_tut_strike_desc": {
-        "en_us": "An attack that hits 3 times\nafter a delay and deals deals\npercentage health damage.\nScales incredibly well with +damage\nenhancements.",
+        "en_us": "An attack that hits 3 times\nafter a delay and deals deals\npercentage health damage.\nScales incredibly well with\n+damage enhancements.",
         "fr": "Une attaque qui frappe trois\nfois après un délai et inflige\ndes dégâts en pourcentage de santé.",
         "zh_tw": "延遲後發動 3 次攻擊,每次攻\n擊造成百分比的生命傷害。\n加強攻擊力的法術會三倍\n增加攻擊威力。",
         "zh_cn": "延迟后发动 3 次攻击,每次攻\n击造成百分比的生命伤害。\n加强攻击力的法术会三倍\n增加攻击威力。",
@@ -669,7 +678,7 @@ let textData = {
         "jp": ""
     },
     "void_tut_enhance_desc": {
-        "en_us": "Increase your attack damage for\nthe rest of the fight. Good for\nlong battles.",
+        "en_us": "Increase your attack damage\nfor the rest of the fight. Good\nfor long battles.",
         "fr": "Augmente les dégâts de votre\nattaque pour le reste du combat.\nIdéal pour les longues batailles.",
         "zh_tw": "永久增加你的攻擊力。\n适合长时间战斗。",
         "zh_cn": "永久增加你的攻击力。\n适合长时间战斗。",
@@ -687,7 +696,7 @@ let textData = {
         "jp": ""
     },
     "void_tut_reinforce_desc": {
-        "en_us": "Heals you to full, but at the\ncost of permanently reducing your\nmax health.",
+        "en_us": "Heals you to full, but at the\ncost of reducing your\nmax health.",
         "fr": "Vous soigne entièrement, mais\nréduit définitivement votre santé\nmaximale.",
         "zh_tw": "完全恢复生命值，但以一些\n总生命值為代價。",
         "zh_cn": "完全恢复生命值，但以一些\n总生命值为代价。",

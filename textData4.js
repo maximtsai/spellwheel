@@ -515,19 +515,19 @@ let textData4 = {
         "jp": ""
     },
     "statue_info_b": {
-        "en_us": "It fully blocks strong attacks, yet\nbreaks easily from weak hits.",
-        "fr": "Il bloque les attaques puissantes, mais\nest facilement brisé par les faibles.",
-        "zh_tw": "它能完全阻擋強力的攻擊，\n但卻很容易被弱攻擊擊破。",
-        "zh_cnAttaquez deux fois": "它能完全阻挡强力的攻击，\n但却很容易被弱攻击击破。",
+        "en_us": "It fully blocks strong attacks, yet\nbreaks easily from multiple weak hits.",
+        "fr": "Il bloque les attaques puissantes, mais\nse brise sous de faibles coups répétés",
+        "zh_tw": "它能完全阻擋強力的攻擊，\n但卻容易多次弱勢攻擊擊破。",
+        "zh_cn": "它能完全阻挡强力的攻击，\n但却容易多次弱势攻击击破。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "time_strike_info": {
         "en_us": "Hits twice\n       +",
-        "fr": "Frappe deux\nfois\n        +",
-        "zh_tw": "打擊两次\n     +",
-        "zh_cn": "打击两次\n     +",
+        "fr": "Frappe deux\nfois\n         +",
+        "zh_tw": "打擊两次\n      +",
+        "zh_cn": "打击两次\n      +",
         "ru": "",
         "es": "",
         "jp": ""

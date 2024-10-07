@@ -1108,6 +1108,7 @@ class Player {
         this.clearAllEffects();
         messageBus.publish("playerDied");
         playSound('you_died');
+        messageBus.publish("enemyClearEffect");
         if (gameVars.isDeathThree) {
             showCutscene1();
             return;

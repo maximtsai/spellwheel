@@ -20,7 +20,7 @@ let textData2 = {
         "jp": "アクションルーン: "
     },
     "encyclopedia_rune_combos": {
-        "en_us": "Spell List",
+        "en_us": "Spell Cheat Sheet",
         "fr": "Liste Des Sorts",
         "zh_tw": "法术列表",
         "zh_cn": "法术列表",
@@ -529,10 +529,10 @@ let textData2 = {
         "jp": "森は不安を感じさせます。\n何かが私を監視しているのでしょうか？"
     },
     "pre_fight_3_5a": {
-        "en_us": "In my travels, I came across a statue by the\nroadside that radiated a strange energy.\nSomething about its design taunts me.\nPerhaps I should test my newly acquired\nmagic on it.",
-        "fr": "En voyageant, je suis tombé sur une statue au\nbord de la route qui dégageait une étrange énergie.\n\nCela semble être une bonne cible pour\ntester ma magie grandissante.",
-        "zh_tw": '旅行时，我在路边遇到了一个散发着\n奇怪能量的雕像。\n\n这看起来是个不错的攻击靶子，可以\n测试一下我新获得的魔法。',
-        "zh_cn": '旅行时，我在路边遇到了一个散发着\n奇怪能量的雕像。\n\n这看起来是个不错的攻击靶子，可以\n测试一下我新获得的魔法。',
+        "en_us": "I came across a statue by the roadside that\nis radiating a strange aura.\nSomething about its design taunts me.\nPerhaps I should test my newly acquired\nmagic on it.",
+        "fr": "Je suis tombé sur une statue au bord de la\nroute qui dégage une aura étrange.\nQuelque chose dans sa conception me nargue.\nPeut-être devrais-je tester ma magie\nnouvellement acquise dessus.",
+        "zh_tw": '我在路邊看到一座雕像。這雕像好像在\n散發一個奇異的氣息，讓我感到不适。\n\n也許我該在它身上測試我新獲得的法術。',
+        "zh_cn": '我在路边看到一座雕像。这雕像好像在\n散发一个奇异的气息，让我感到不适。\n\n也许我该在它身上测试我新获得的法术。',
         "ru": "",
         "es": "",
         "jp": ""

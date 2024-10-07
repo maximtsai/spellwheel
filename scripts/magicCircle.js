@@ -2670,13 +2670,13 @@ const ENABLE_KEYBOARD = true;
 
              } else if (embodimentText == 'STRIKE') {
                  if (closestElement.runeName == RUNE_VOID) {
-                     globalObjects.currentEnemy.setPredictScale(36.5);
+                     globalObjects.currentEnemy.setPredictScale(34);
                  } else {
-                     globalObjects.currentEnemy.setPredictScale(25);
+                     globalObjects.currentEnemy.setPredictScale(24);
                  }
              } else if (embodimentText == 'ULTIMATE') {
                  if (closestElement.runeName == RUNE_MATTER) {
-                     globalObjects.currentEnemy.setPredictScale(25);
+                     globalObjects.currentEnemy.setPredictScale(24);
                  }
              } else {
                  globalObjects.currentEnemy.setPredictScale();
@@ -2768,6 +2768,9 @@ const ENABLE_KEYBOARD = true;
          this.mindBurnAnim.setScale(0.75 + 0.052 * damage);
          this.mindBurnAnim.alpha = 0.9;
          messageBus.publish('enemyTakeTrueDamage', damage, false, 0, true);
+         let aggAmt = Math.max(0, damage + 1) * 0.4;
+         messageBus.publish('addCastAggravate', aggAmt, false, 0, true);
+
          if (duration <= 1) {
              this.mindBurnAnim.currAnim = PhaserScene.tweens.add({
                  targets: [this.mindBurnAnim],

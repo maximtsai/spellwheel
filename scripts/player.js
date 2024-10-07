@@ -1171,7 +1171,7 @@ class Player {
                                 ref: "menu_btn_normal.png",
                                 atlas: 'buttons',
                                 x: gameConsts.halfWidth,
-                                y: gameConsts.height - 380,
+                                y: gameConsts.height - 385,
                             },
                             hover: {
                                 ref: "menu_btn_hover.png",
@@ -1205,7 +1205,7 @@ class Player {
                                 ref: "menu_btn_normal.png",
                                 atlas: 'buttons',
                                 x: gameConsts.halfWidth,
-                                y: gameConsts.height - 540,
+                                y: gameConsts.height - 555,
                             },
                             hover: {
                                 ref: "menu_btn_hover.png",
@@ -1250,7 +1250,7 @@ class Player {
                                 ref: "menu_btn_normal.png",
                                 atlas: 'buttons',
                                 x: gameConsts.halfWidth,
-                                y: gameConsts.height - 460,
+                                y: gameConsts.height - 470,
                             },
                             hover: {
                                 ref: "menu_btn_hover.png",

@@ -259,15 +259,15 @@ class Enemy {
         this.chargeBarAngry.visible = false;
 
         this.chargeBarEst1 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'soft_blue_pixel.png');
-        this.chargeBarEst1.setScale(6.7, this.chargeBarMax.scaleY - 2);
+        this.chargeBarEst1.setScale(6.9, this.chargeBarMax.scaleY - 2);
         this.chargeBarEst1.setOrigin(1, 0.5);
         this.chargeBarEst1.alpha = 0;
         this.chargeBarEst1.setDepth(9);
         this.chargeBarShow = false;
-        this.chargeBarEstScale = 6.7;
+        this.chargeBarEstScale = 6.9;
 
         this.chargeBarEst2 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'soft_blue_pixel.png');
-        this.chargeBarEst2.setScale(6.7, this.chargeBarMax.scaleY - 2);
+        this.chargeBarEst2.setScale(6.9, this.chargeBarMax.scaleY - 2);
         this.chargeBarEst2.setOrigin(0, 0.5);
         this.chargeBarEst2.alpha = 0;
         this.chargeBarEst2.setDepth(9);
@@ -476,7 +476,7 @@ class Enemy {
             }
             this.chargeBarShow = false;
             if (this.isAngry) {
-                let increaseMult = Math.max(5, 0.33 * chargeMult);
+                let increaseMult = Math.max(5.3, 0.34 * chargeMult);
                 if (challenges.angryEnemies) {
                     increaseMult = 1 * 1.2;
                 } else if (cheats.calmEnemies) {
@@ -508,7 +508,7 @@ class Enemy {
                             this.chargeBarCurr.alpha = 0.9;
                         }
                         this.attackCharge += timeChange * 0.5 * this.slowMult * chargeMult;
-                        this.attackCharge += castAggravateBonus * 2;
+                        this.attackCharge += castAggravateBonus * 3.3;
 
                     } else {
                         this.chargeBarCurr.alpha = 0.62;
@@ -639,7 +639,7 @@ class Enemy {
         if (this.isAsleep) {
             this.chargeBarAngry.visible = false;
             this.chargeBarCurr.visible = false;
-        } else if (this.timeSinceLastAttacked < 35) {
+        } else if (this.timeSinceLastAttacked < 30) {
             if (!this.isAngry) {
                 this.isAngry = true;
                 if (!this.isAsleep) {
@@ -780,7 +780,7 @@ class Enemy {
         this.chargeBarCurr.alpha = 1;
         this.chargeBarAngry.alpha = 1;
 
-        this.timeSinceLastAttacked += 30;
+        this.timeSinceLastAttacked += 24;
         this.castAggravateCharge = 0;
         if (this.nextAttack.damage !== 0) {
             this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.prepareSprite, this.nextAttack.preAttackSprite, this.nextAttack.attackSprites, undefined, this.nextAttack.finishDelay, this.nextAttack.transitionFast);
@@ -2278,9 +2278,9 @@ class Enemy {
     }
 
     playerClickedSpell() {
-        this.castAggravateCharge = cheats.calmEnemies ? 18 : 26;
+        this.castAggravateCharge = cheats.calmEnemies ? 16 : 20;
         if (challenges.angryEnemies) {
-            this.castAggravateCharge = 30;
+            this.castAggravateCharge = 24;
         }
     }
 
@@ -2288,7 +2288,7 @@ class Enemy {
         this.castAggravateCharge += amt;
     }
 
-    setPredictScale(amt = 6.7) {
+    setPredictScale(amt = 6.9) {
         if (this.lastChargeEstScale != this.chargeBarEstScale) {
             this.lastChargeEstScale = this.chargeBarEstScale;
             if (this.chargeBarEst1.currAnim) {

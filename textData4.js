@@ -946,7 +946,15 @@ let textData4 = {
         "ru": "",
         "es": "",
         "jp": ""
+    },
+    "got_it": {
+        "en_us": "GOT IT",
+        "fr": "J'AI COMPRIS",
+        "zh_tw": "知道了",
+        "zh_cn": "知道了",
+        "ru": "",
+        "es": "",
+        "jp": ""
     }
-
 }
 textData = { ...textData, ...textData4};

@@ -747,21 +747,21 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
     let closeButton;
     closeButton = new Button({
         normal: {
-            atlas: "tutorial",
-            ref: "popupClose.png",
-            x: gameConsts.halfWidth + 200,
-            y: gameConsts.halfHeight + 100,
+            atlas: "buttons",
+            ref: "btn_small.png",
+            x: gameConsts.halfWidth + 180,
+            y: gameConsts.halfHeight + 70,
             alpha: 1,
             scaleX: 1,
             scaleY: 1
         },
         hover: {
-            atlas: "tutorial",
-            ref: "popupClose_hover.png",
+            atlas: "buttons",
+            ref: "btn_small_hover.png",
         },
         press: {
-            atlas: "tutorial",
-            ref: "popupClose_press.png",
+            atlas: "buttons",
+            ref: "btn_small_press.png",
         },
         onMouseUp: () => {
             messageBus.publish('unpauseGame');
@@ -780,6 +780,7 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
             });
         }
     });
+    closeButton.addText(getLangText('got_it'), {fontFamily: 'opensans', fontSize: 26, color: '#000000', align: 'center'})
     closeButton.setDepth(10002);
 
     PhaserScene.tweens.add({

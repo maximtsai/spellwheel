@@ -708,6 +708,11 @@ class Enemy {
             // let xPos = this.statuses['mindStrike'].x; let yPos = this.statuses['mindStrike'].y;
             let damageToTake = Math.max(0, Math.ceil(amt));
             this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake);
+            let damageSqrt = Math.sqrt(damageToTake);
+            setTimeout(() => {
+                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, 265, 'X2', 0.7 + damageSqrt * 0.14);
+            }, 280 + Math.floor(damageSqrt) * 5)
+
             amt += damageToTake;
             // setTimeout(() => {
             //     this.takeTrueDamage(damageToTake, false, 0, false);

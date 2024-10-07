@@ -1735,16 +1735,16 @@ class SpellManager {
                     }
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead && !globalObjects.player.dead) {
-                        let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 14, 'spells', 'energyTarget1.png').play('energyTarget').setAlpha(0.2).setScale(0.95).setBlendMode(Phaser.BlendModes.ADD);
+                        let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 14, 'spells', 'energyTarget1.png').play('energyTarget').setAlpha(1).setScale(0.96);
                         animation1.setDepth(50);
                         animation1.setOrigin(0.5, 0.5);
                         this.scene.tweens.add({
                             targets: [animation1],
-                            duration: 350,
-                            alpha: 0.5,
+                            duration: 500,
+                            alpha: 0.58,
                             scaleX: 0.9,
                             scaleY: 0.9,
-                            ease: 'Cubic.easeOut',
+                            ease: 'Quad.easeOut',
                         });
                         messageBus.publish('enemyTakeEffect', {
                             name: spellID,

@@ -526,7 +526,7 @@ let textData = {
     },
     "mind_tut_desc_sh": {
         "en_us": "The Energy rune controls raw\nenergy. Energy spells have\npowerful utility effects and deal\nTrue damage that bypasses\nenemy defenses.",
-        "fr": "La rune Énergie permet de\ncontrôler l'énergie brute, avec\ndes sorts qui offrent un soutien\npuissant et infligent des dégâts\nbruts contournant les défenses ennemies.",
+        "fr": "La rune Énergie permet de\ncontrôler l'énergie brute, avec\ndes sorts qui offrent un soutien\npuissant et infligent des dégâts\nbruts contournant les défenses\nennemies.",
         "zh_tw": "能量符文授予對原始能量的\n控制權。能量法術具有強大\n的支援效果，可以造成繞過\n敵人防禦的真實傷害。",
         "zh_cn": "能量符文授予对原始能量的\n控制权。能量法术具有强大\n的支持效果，可以造成绕过\n敌人防御的真实伤害。",
         "ru": "Руна Энергия дает контроль над сырой энергией. Энергетические заклинания обладают мощными вспомогательными эффектами и могут наносить чистый урон, обойдя вражескую оборону.",
@@ -544,7 +544,7 @@ let textData = {
     },
     "mind_tut_strike_desc": {
         "en_us": "Fires a bolt of energy that\ndeals little damage by itself,\nbut amplifies your next\nattack for double (x2) damage.",
-        "fr": "Tire un éclair d'énergie qui\ninflige peu de dégâts en soi,\nmais amplifie votre prochaine\nattaque pour doubler (x2) de dégâts.",
+        "fr": "Tire un éclair d'énergie qui\ninflige peu de dégâts en soi,\nmais amplifie votre prochaine\nattaque pour doubler (x2)\nde dégâts.",
         "zh_tw": "發射一道能量彈，本身造成的\n傷害很小，但會放大你的下一次攻擊，\n造成雙倍（x2）傷害。",
         "zh_cn": "发射一道能量弹，本身造成的\n伤害很小，但会放大你的下一次攻击，\n造成双倍（x2）伤害。",
         "ru": "Выпускает заряд энергии, который\nсам по себе наносит небольшой\nурон, но усиливает вашу следующую\nатаку, нанося двойной (x2) урон.",

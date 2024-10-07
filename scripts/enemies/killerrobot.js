@@ -262,7 +262,7 @@
                              onComplete: () => {
                                  playFakeBGMusic('jpop_intro', 0.9);
                                  this.addDelay(() => {
-                                     this.bgMusic = playMusic('jpop', 0.9, true);
+                                     this.bgMusic = playMusic('jpop', 0.85, true);
                                      globalObjects.encyclopedia.showButton();
                                      globalObjects.options.showButton();
                                  }, 580)

@@ -662,8 +662,8 @@ let textData = {
     "void_tut_desc_sh": {
         "en_us": "The Void rune grants control\nover empty space. Void spells\ncan deal percentage health damage,\nnegate enemy attacks, or even\nfully heal you at a cost.",
         "fr": "La rune du Vide permet de\ncontrôler l’espace vide. Les sorts\ndu Vide peuvent infliger des dégâts\nbasés sur un pourcentage de santé,\nannuler les attaques ennemies ou\nmême vous soigner complètement.",
-        "zh_tw": "虛空符文賦予了你對虛\n空空間的控制權。虛空法術\n可以造成一定比例的生命值傷害、\n抵消敵人的攻擊，甚至可以完全治癒你。",
-        "zh_cn": "虚空符文赋予了你对虚\n空空间的控制权。虚空法术\n可以造成一定比例的生命值伤害、\n抵消敌人的攻击，甚至可以完全治愈你。",
+        "zh_tw": "虛空符文賦予了你對虛空空間的\n控制權。虛空法術可以造成一定\n比例的生命值傷害、抵消敵人的\n攻擊，甚至可以完全治癒你。",
+        "zh_cn": "虚空符文赋予了你对虚空空间的\n控制权。虚空法术可以造成一定\n比例的生命值伤害、抵消敌人的\n攻击，甚至可以完全治愈你。",
         "ru": "Руна Пустоты дает контроль над\nпустым пространством. Заклинания\nПустоты могут наносить урон в процентах\nот здоровья, нейтрализовать атаки врагов\nили полностью исцелить вас за\nопределенную цену.",
         "es": "",
         "jp": ""
@@ -671,8 +671,8 @@ let textData = {
     "void_tut_strike_desc": {
         "en_us": "An attack that hits 3 times\nafter a delay and deals deals\npercentage health damage.\nScales incredibly well with\n+damage enhancements.",
         "fr": "Une attaque qui frappe trois\nfois après un délai et inflige\ndes dégâts en pourcentage de santé.",
-        "zh_tw": "延遲後發動 3 次攻擊,每次攻\n擊造成百分比的生命傷害。\n加強攻擊力的法術會三倍\n增加攻擊威力。",
-        "zh_cn": "延迟后发动 3 次攻击,每次攻\n击造成百分比的生命伤害。\n加强攻击力的法术会三倍\n增加攻击威力。",
+        "zh_tw": "延遲後發動 3 次攻擊,每次攻擊\n造成百分比的生命傷害。\n\n加強攻擊力的法術會三倍增加\n攻擊威力。",
+        "zh_cn": "延迟后发动 3 次攻击,每次攻击\n造成百分比的生命伤害。\n\n加强攻击力的法术会三倍增加\n攻击威力。",
         "ru": "Атака, которая наносит три удара\nс задержкой и наносит урон в\nпроцентах от здоровья.",
         "es": "",
         "jp": ""
@@ -707,8 +707,8 @@ let textData = {
     "void_tut_unload_desc": {
         "en_us": "Deal heavy percent health damage\nwhile disrupting any action\nthe enemy is trying to make.",
         "fr": "Inflige de lourds dégâts en\npourcentage de santé tout en\nperturbant l’action que l’ennemi\ntente d’effectuer.",
-        "zh_tw": "造成嚴重的生命傷害，\n同時打断敵人的行動。",
-        "zh_cn": "造成严重的生命伤害，\n同时打断敌人的行动。",
+        "zh_tw": "造成嚴重的百分比生命伤害，\n同時打断敵人的行動。",
+        "zh_cn": "造成严重的百分比生命伤害，\n同时打断敌人的行动。",
         "ru": "Наносит сильный процентный урон\nздоровью и нарушает любое\nдействие, которое враг пытается\nсовершить.",
         "es": "",
         "jp": ""

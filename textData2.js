@@ -333,8 +333,8 @@ let textData2 = {
     "post_fight_story7": {
         "en_us": "The opponents I encounter are formidable,\nbut my own strength is greater still.\n\nMy magic feels complete. All that's left\nis to use it well.",
         "fr": "Les adversaires que je rencontre sont redoutables,\nmais ma propre force est encore plus grande.\n\nMa magie semble complète. Il ne me reste plus\nqu'à l'utiliser à bon escient.",
-        "zh_tw": "我遇到的對手很強大，但我自己的實力更強大。\n我的魔法感覺很完整。剩下的就是好好利用它。",
-        "zh_cn": "我遇到的对手很强大，但我自己的实力更强大。\n我的魔法感觉很完整。剩下的就是好好利用它。",
+        "zh_tw": "我遇到的對手很強大，但我自己\n的實力更厲害!\n\n我的魔法感覺很完整。剩下的就是好好\n利用它。",
+        "zh_cn": "我遇到的对手很强大，但我自己\n的实力更厉害!\n\n我的魔法感觉很完整。剩下的就是好好\n利用它。",
         "ru": "Противники, с которыми я сталкиваюсь, грозны, но моя собственная сила еще больше.  Может быть, еще есть место для роста, но теперь моей магии должно быть более чем достаточно, чтобы спасти тебя, моя дорогая возлюбленная.",
         "es": "Los oponentes con los que me encuentro son formidables, pero mi propia fuerza es aún mayor.  Puede que todavía haya espacio para el crecimiento, pero mi magia debería ser ahora más que suficiente para rescatarte, mi querida amada.",
         "jp": "私が遭遇する相手は手ごわいですが、私自身の強さはさらに大きいです。 まだ成長の余地はあるかもしれないが、私の魔法は今や、私の最愛の愛するあなたを救うには十分すぎるほどのはずだ。"
@@ -351,8 +351,8 @@ let textData2 = {
     "post_fight_story9": {
         "en_us": "Not even the machines of Death can\nbest me!\n\nI am at the height of my power, and nothing\ncan stand in my way.\n\nAll that's left is to get around this broken\nrobot and I know I shall find my beloved just\naround the corner.",
         "fr": "Même les machines de la Mort ne peuvent\nme vaincre!\n\nJe suis au sommet de ma puissance et rien\nne peut m'arrêter.\n\nIl ne me reste plus qu'à contourner ce robot\nbrisé et je sais que je retrouverai ma\nbien-aimée au coin de la rue.",
-        "zh_tw": "即使是死神的機器也無法戰勝我！\n我正處於權力的巔峰，沒有什麼可以阻擋我的。\n\n繞過這個破碎的機器人後，我知道我會馬上\n找到我心愛的人。",
-        "zh_cn": "即使是死神的机器也无法战胜我！\n我正处于权力的巅峰，没有什么可以阻挡我的。\n\n绕过这个破碎的机器人后，我知道我会马上\n找到我心爱的人。",
+        "zh_tw": "即使是死神的機器也無法戰勝我！\n我正處於權力的巔峰，沒有什麼可以\n阻擋我的。\n\n繞過這個破碎的機器人後，我知道我\n會馬上找到我心愛的人。",
+        "zh_cn": "即使是死神的机器也无法战胜我！\n我正处于权力的巅峰，没有什么可以\n阻挡我的。\n\n绕过这个破碎的机器人后，我知道我\n会马上找到我心爱的人。",
         "ru": "Даже машины смерти не могут превзойти меня!  Я нахожусь на вершине своего могущества, и не осталось ничего, что могло бы встать у меня на пути.  Все, что мне теперь нужно сделать, это обойти этого сломанного робота, и я знаю, что найду своего любимого прямо за углом.",
         "es": "¡Ni siquiera las máquinas de la muerte pueden vencerme!  Estoy en la cima de mi poder, y no queda nada que pueda interponerse en mi camino.  Todo lo que tengo que hacer ahora es sortear este robot roto y sé que encontraré a mi amada a la vuelta de la esquina.",
         "jp": "死の機械でさえ、私を打ち負かすことはできない! 私は力の絶頂にあり、私の邪魔になるものは何も残っていません。 今やらなければならないのは、この壊れたロボットの周りを回ることだけで、私の最愛の人がすぐ近くにいることを知っています。"
@@ -585,8 +585,8 @@ let textData2 = {
     "pre_fight_7b": {
         "en_us": "Something is hunting me, but not\nif I hunt it first.",
         "fr": "Quelque chose me chasse, mais pas\nsi je le chasse en premier.",
-        "zh_tw": "有什麼東西在追捕我，但如果我先追捕它，\n就不會了。",
-        "zh_cn": "有什么东西在追捕我，但如果我先追捕它，\n就不会了。",
+        "zh_tw": "有什麼東西在追捕我，\n但我也可以反過來追捕它。",
+        "zh_cn": "有什么东西在追捕我，\n但我也可以反过来追捕它。",
         "ru": "Что-то охотится за мной, но не в том\nслучае, если я охотлюсь на него первым.",
         "es": "Algo me está persiguiendo, pero no\nsi yo lo cazo primero.",
         "jp": "何かが私を狩っているが、私が最初にそれを\n狩ればそうではない。"

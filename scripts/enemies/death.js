@@ -28,7 +28,7 @@
          this.listOfAngryPopups = [];
      }
 
-     swingScythe(damage = 444, fadeOutScythe = true, flipped = false, onComplete) {
+     swingScythe(damage = 144, fadeOutScythe = true, flipped = false, onComplete) {
          let flipMult = flipped ? -1 : 1;
          this.mainScythe.setPosition(this.x, 160).setDepth(999).setAlpha(0).setScale(0.65*flipMult, 0.65).setRotation(-1.5);
          let scythe = this.mainScythe;
@@ -418,7 +418,8 @@
      adjustDamageTaken(amt, isAttack, isTrue = false) {
          if (isAttack) {
              this.timesAttacked++;
-             if (this.timesAttacked === 1) {
+             if (this.timesAttacked === 1 && !this.shownFirstAttackMessage) {
+                 this.shownFirstAttackMessage = true;
                  messageBus.publish("showCombatText", getLangText('deathFightCombat1a'));
                  this.addTimeout(() => {
                      this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
@@ -432,7 +433,8 @@
                          messageBus.publish("closeCombatText")
                      }, 3000);
                  }, 2000)
-             } else if (this.timesAttacked === 7) {
+             } else if (this.timesAttacked === 7 && !this.shownSecondAttackMessage) {
+                 this.shownSecondAttackMessage = true;
                  messageBus.publish("showCombatText", getLangText('deathFightCombat1b'));
                  this.addTimeout(() => {
                      this.spellsCastCounter = 0;
@@ -473,7 +475,7 @@
          this.attacks = [
              [
                  {
-                     name: ";444",
+                     name: ";144",
                      chargeAmt: 800,
                      chargeMult: 1.5,
                      finishDelay: 3000,
@@ -483,7 +485,7 @@
                          // this.hideCurrentAttack();
                          this.timesAttacked = 5;
                          messageBus.publish("closeCombatText");
-                         this.swingScythe(444, true, false, () => {
+                         this.swingScythe(144, true, false, () => {
                              if (!globalObjects.player.dead) {
                                  this.setAsleep();
                                  super.setHealth(3);
@@ -1083,7 +1085,7 @@
          })
      }
 
-     swingScytheFastIntro(damage = 444, fadeOutScythe = true, flipped = false, onComplete) {
+     swingScytheFastIntro(damage = 144, fadeOutScythe = true, flipped = false, onComplete) {
          this.mainScythe.setPosition(this.x, 160).setDepth(999).setAlpha(0).setScale(0.65, 0.65).setRotation(-1.5);
          let scythe = this.mainScythe;
          scythe.play('scytheFlash');
@@ -1175,7 +1177,7 @@
          });
      }
 
-     swingScytheFast(damage = 4444, fadeOutScythe = true, flipped = false, onComplete) {
+     swingScytheFast(damage = 144, fadeOutScythe = true, flipped = false, onComplete) {
 
          let flipMult = flipped ? -1 : 1;
          let scythe = this.mainScythe;

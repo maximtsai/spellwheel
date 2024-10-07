@@ -364,8 +364,8 @@ let textData4 = {
     "killer_robot_b": {
         "en_us": "-4 damage to your attacks.",
         "fr": "-4 dégâts à vos attaques.",
-        "zh_tw": "你的攻擊傷害 -4。",
-        "zh_cn": "你的攻击伤害 -4。",
+        "zh_tw": "你的攻擊威力 -4。",
+        "zh_cn": "你的攻击威力 -4。",
         "ru": "Урон от ваших атак: -4.",
         "es": "-4 de daño a tus ataques.",
         "jp": "自身の攻撃に-4ダメージ。"

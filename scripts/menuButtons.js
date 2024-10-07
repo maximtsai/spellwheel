@@ -150,7 +150,7 @@ function showMainMenuButtons() {
                 ref: "menu_btn_normal.png",
                 atlas: 'buttons',
                 x: gameConsts.halfWidth,
-                y: gameConsts.halfHeight - 227,
+                y: gameConsts.halfHeight - 235,
             },
             hover: {
                 ref: "menu_btn_hover.png",
@@ -200,7 +200,7 @@ function showMainMenuButtons() {
         globalObjects.lvlPickButton.addText(getLangText('lvl_select'), {fontFamily: 'opensans', fontSize: 24, color: '#000000', align: 'left'})
         globalObjects.lvlPickButton.setScale(0.95, 0.9);
     }
-    let yPos = (hasLvlSelect || hasContinue) ? 80 : gameConsts.halfHeight - 120;
+    let yPos = (hasLvlSelect || hasContinue) ? gameConsts.halfHeight - 320 : gameConsts.halfHeight - 120;
     globalObjects.startButton = new Button({
         normal: {
             ref: "menu_btn_normal.png",

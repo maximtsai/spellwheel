@@ -716,7 +716,7 @@ class Player {
                     y: "-=3",
                     ease: 'Cubic.easeOut'
                 });
-                messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 70, 'BLOCKED', 1.2);
+                messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.getY() - 150, 'BLOCKED', 1.2);
 
             } else {
                 hurtAmt = hurtAmt - this.statuses['matterUnload'].health;
@@ -749,7 +749,7 @@ class Player {
                             shieldObj.shakeAmt = 0.05 + hurtAmt * 0.005;
                             shieldObj.impactVisibleTime = 6;
                             shieldObj.animObj[2].rotateOffset = -shieldObj.animObj[0].rotation * 0.92;
-                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y - 5, 'BLOCKED', 0.9, {y: "-=5", ease: 'Quart.easeOut'}, {scaleX: 0.85, scaleY: 0.85, alpha: 0, });
+                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y + 35, 'BLOCKED', 0.9, {y: "-=5", ease: 'Quart.easeOut'}, {scaleX: 0.85, scaleY: 0.85, alpha: 0, });
                         } else {
                             playSound('shield_break', 0.6);
                             hurtAmt = hurtAmt - shieldObj.health;

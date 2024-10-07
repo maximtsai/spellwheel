@@ -262,16 +262,16 @@ let textData3 = {
         "jp": ""
     },
     "death4d": {
-        "en_us": "OR WILL YOU IGNORE MY\nWARNINGS UNTIL THE VERY END?",
-        "fr": "OU BIEN ALLEZ-VOUS IGNORER MES\nAVERTISSEMENTS JUSQU'À LA TOUTE FIN ?",
-        "zh_tw": "或者你會一直忽視我的\n警告直到最後。 。 。",
-        "zh_cn": "或者你会一直忽视我的\n警告直到最后。。。",
+        "en_us": "ONE DAY, THESE ACTIONS\nWILL REAP CONSEQUENCES.",
+        "fr": "UN JOUR, CES ACTIONS\nAURONT DES CONSÉQUENCES.",
+        "zh_tw": "有一天，這些行為\n必將帶來後果。",
+        "zh_cn": "有一天，这些行为\n必将带来后果。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death_statue1": {
-        "en_us": "THIS IS A DANGEROUS\nINSTRUMENT OF COMBAT.",
+        "en_us": "AH, SO THIS IS WHERE I\nLAST LEFT THE THING...",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -280,7 +280,7 @@ let textData3 = {
         "jp": ""
     },
     "death_statue2": {
-        "en_us": "",
+        "en_us": "CHILD, THIS IS A DANGEROUS\nINSTRUMENT OF COMBAT.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

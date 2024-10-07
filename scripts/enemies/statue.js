@@ -43,7 +43,7 @@
      }
 
      initStatsCustom() {
-         this.health = 300;
+         this.health = gameVars.isHardMode ? 333 : 300;
          this.isAsleep = true;
          this.attackScale = 1;
          this.pullbackScale = 1;
@@ -65,7 +65,26 @@
         this.handShieldBack.startScale = this.handShieldBack.scaleX;
         this.handShield = this.addSprite(this.x + 4, this.y - 84, 'shields', 'handshield3.png').setScale(3).setDepth(3).setAlpha(0);
         this.handShield.startScale = this.handShield.scaleX;
-
+        this.statueSubscribe = messageBus.subscribe('lift_statue', () => {
+            this.statueSubscribe.unsubscribe();
+            this.addTween({
+                targets: this.sprite,
+                rotation: 0,
+                y: "-=7",
+                ease: 'Back.easeOut',
+                duration: 400,
+                completeDelay: 400,
+                onComplete: () => {
+                    this.addTween({
+                        targets: this.sprite,
+                        alpha: 0,
+                        y: "-=200",
+                        ease: 'Cubic.easeIn',
+                        duration: 1500,
+                    })
+                }
+            })
+        });
     }
 
 
@@ -116,11 +135,62 @@
                     });
                 }
             });
-        }, 1000)
+        }, 700)
     }
+
+     shakeShieldText() {
+         if (this.shieldAmts <= 0) {
+             this.shieldText.visible = false;
+         }
+         this.shieldText.setAlpha(1);
+         this.shieldText.setText(this.shieldAmts);
+         let startLeft = Math.random() < 0.5;
+         this.scene.tweens.add({
+             targets: this.shieldText,
+             scaleX: this.shieldText.startScale + 1,
+             scaleY: this.shieldText.startScale + 1,
+             y: "-=3",
+             x: startLeft ? "-=6" : "+=6",
+             duration: gameVars.gameManualSlowSpeedInverse * 60,
+             ease: 'Quint.easeOut',
+             onComplete: () => {
+                 this.scene.tweens.add({
+                     targets: this.shieldText,
+                     scaleX: this.shieldText.startScale,
+                     scaleY: this.shieldText.startScale,
+                     y: "+=3",
+                     duration: gameVars.gameManualSlowSpeedInverse * 500,
+                     ease: 'Quart.easeOut',
+                 });
+                 this.scene.tweens.add({
+                     targets: this.shieldText,
+                     x: startLeft ? "+=13" : "-=13",
+                     duration: gameVars.gameManualSlowSpeedInverse * 100,
+                     ease: 'Quint.easeInOut',
+                     onComplete: () => {
+                         this.shieldText.setDepth(8);
+                         this.scene.tweens.add({
+                             targets: this.shieldText,
+                             x: this.shieldText.startX,
+                             duration: gameVars.gameManualSlowSpeedInverse * 400,
+                             ease: 'Bounce.easeOut',
+                         });
+                         this.scene.tweens.add({
+                             delay: 1000,
+                             targets: this.shieldText,
+                             alpha: 0.75,
+                             duration: 1500,
+                         });
+                     }
+                 });
+             }
+         });
+     }
 
      damageHandShield() {
          this.shieldAmts--;
+         this.shakeShieldText();
+
          if (this.shieldAmts <= 0) {
              messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, '-BROKE-', 1.2, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.25, scaleY: 1.25, ease: 'Back.easeOut'});
              this.clearHandShield(true);
@@ -136,7 +206,8 @@
                     });
                 }
             }
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random() * 150, this.sprite.y - 20 - Math.random() * 90, 'NEGATED', 0.95, {alpha: 0.85}, {alpha: 0});
+            let extraHoldLength = this.shieldAmts >= 9 ? 400 : 200;
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random() * 150, this.sprite.y - 20 - Math.random() * 90, 'NEGATED', 1.02, {alpha: 0.95, completeDelay: extraHoldLength}, {alpha: 0});
              this.handShield.setAlpha(1);
              this.handShield.play('handShieldFast');
              this.addTween({
@@ -201,11 +272,6 @@
                      this.flash.destroy();
                  }
              });
-             this.setAwake();
-         } else if (this.shieldSettedUp && this.health <= 200 && !this.beganAttack) {
-             this.beganAttack = true;
-             this.currentAttackSetIndex = 1;
-             this.nextAttackIndex = 0;
              this.setAwake();
          }
      }
@@ -298,13 +364,13 @@
          })
          let darkBG = getBackgroundBlackout();
          darkBG.setDepth(-3).setAlpha(0.45);
-         let spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.55);
+         let spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.6);
          this.scene.tweens.add({
              targets: [spaceBG, darkBG],
              alpha: 0,
              ease: 'Cubic.easeOut',
-             duration: 1000,
-             completeDelay: 2000,
+             duration: 2500,
+             completeDelay: 750,
              onComplete: () => {
                 this.canShowEarlyInfo = true;
              }
@@ -413,6 +479,14 @@
          this.shieldAmts = 0;
      }
 
+     destroy() {
+        super.destroy();
+        if (this.statueSubscribe) {
+            this.statueSubscribe.unsubscribe();
+        }
+
+     }
+
      die() {
          if (this.dead) {
              return;
@@ -425,10 +499,9 @@
              this.secondTempShield.destroy();
          }
         super.die();
-        playSound('rock_crumble', 0.8)
-        playSound('matter_enhance', 0.6).detune = -800
+        playSound('rock_crumble', 0.4).detune = -300;
+        playSound('shield_break', 0.6).detune = -800;
         globalObjects.textPopupManager.hideInfoText();
-        // this.dieClickBlocker = createGlobalClickBlocker(false);
         this.sprite.setScale(this.sprite.startScale).setRotation(0);
         this.clearHandShield();
          swirlInReaperFog();
@@ -447,13 +520,67 @@
              completeDelay: 2500,
              onComplete: () => {
                  this.customVictory();
-                 // playSound('victory_2');
              }
          });
      }
 
     customVictory() {
-        playReaperPassiveAnim(this);
+        playReaperPassiveAnim(this, () => {
+            clearDeathFog();
+            this.addDelay(() => {
+
+                playSound('victory_2');
+                this.addDelay(() => {
+                    let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
+                    let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'complete.png').setScale(0.95).setDepth(9998).setAlpha(0);
+                    let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 20}).setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998);
+
+                    PhaserScene.tweens.add({
+                        targets: banner,
+                        alpha: 0.75,
+                        duration: 500,
+                    });
+
+                    PhaserScene.tweens.add({
+                        targets: [victoryText],
+                        alpha: 1,
+                        ease: 'Quad.easeOut',
+                        duration: 500,
+                    });
+                    playSound('victory');
+                    this.addTimeout(() => {
+                        continueText.alpha = 1;
+                    }, 1000);
+
+                    PhaserScene.tweens.add({
+                        targets: victoryText,
+                        scaleX: 1,
+                        scaleY: 1,
+                        duration: 800,
+                        onComplete: () => {
+                            this.dieClickBlocker = createGlobalClickBlocker(false);
+                            this.dieClickBlocker.setOnMouseUpFunc(() => {
+                                hideGlobalClickBlocker();
+                                continueText.destroy();
+                                PhaserScene.tweens.add({
+                                    targets: [victoryText, banner],
+                                    alpha: 0,
+                                    duration: 800,
+                                    completeDelay: 200,
+                                    onComplete: () => {
+                                        victoryText.destroy();
+                                        banner.destroy();
+                                        beginPreLevel(this.level + 1);
+                                        this.destroy();
+                                    }
+                                });
+                            });
+                        }
+                    });
+                }, 1100)
+            }, 1200)
+
+        });
     }
 
 
@@ -469,13 +596,8 @@
                      finaleFunction: () => {
                          fadeAwaySound(this.bgMusic, 1500);
                          this.animateCreateHandShield();
-                         if (this.health > 200) {
-                             this.setAsleep();
-                             this.interruptCurrentAttack();
-                         } else {
-                             this.currentAttackSetIndex = 1;
-                             this.nextAttackIndex = 0;
-                         }
+                         this.currentAttackSetIndex = 1;
+                         this.nextAttackIndex = 0;
 
                          // uncomment to try and fix some bugs
                          // this.hideCurrentAttack();
@@ -484,9 +606,14 @@
              ],
              [
                  {
-                     name: "}2x2",
-                     chargeAmt: 350,
-                     finishDelay: 1000,
+                     name: "CHARGING...",
+                     chargeAmt: gameVars.isHardMode ? 500 : 1000,
+                     damage: 0,
+                 },
+                 {
+                     name: "}2x2}",
+                     chargeAmt: 450,
+                     finishDelay: 2000,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -496,9 +623,9 @@
                      }
                  },
                  {
-                     name: "}3x3",
-                     chargeAmt: 400,
-                     finishDelay: 1500,
+                     name: "}3x3}",
+                     chargeAmt: 500,
+                     finishDelay: 2500,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -508,9 +635,9 @@
                      }
                  },
                  {
-                     name: "}4x4",
-                     chargeAmt: 500,
-                     finishDelay: 2000,
+                     name: "|4x4|",
+                     chargeAmt: 600,
+                     finishDelay: 3000,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -520,9 +647,9 @@
                      }
                  },
                  {
-                     name: "}5x5",
-                     finishDelay: 2500,
-                     chargeAmt: 600,
+                     name: "|5x5|",
+                     finishDelay: 3500,
+                     chargeAmt: 700,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -532,9 +659,9 @@
                      }
                  },
                  {
-                     name: "}6x6",
-                     chargeAmt: 700,
-                     finishDelay: 3000,
+                     name: ";6x6;",
+                     chargeAmt: 800,
+                     finishDelay: 4000,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -544,9 +671,9 @@
                      }
                  },
                  {
-                     name: "}7x7",
-                     chargeAmt: 800,
-                     finishDelay: 3400,
+                     name: ";7x7;",
+                     chargeAmt: 900,
+                     finishDelay: 4400,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -556,9 +683,10 @@
                      }
                  },
                  {
-                     name: "}8x8",
-                     chargeAmt: 900,
-                     finishDelay: 3800,
+                     name: ";;8x8;;",
+                     chargeAmt: 1000,
+                     finishDelay: 4800,
+                     isBigMove: true,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -568,9 +696,10 @@
                      }
                  },
                  {
-                     name: "}9x9",
-                     chargeAmt: 1000,
-                     finishDelay: 4200,
+                     name: ";;9x9;;",
+                     chargeAmt: 1100,
+                     finishDelay: 5200,
+                     isBigMove: true,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -580,9 +709,10 @@
                      }
                  },
                  {
-                     name: "}10x10",
-                     chargeAmt: 1100,
-                     finishDelay: 4500,
+                     name: ";;;10x10;;;",
+                     chargeAmt: 1200,
+                     finishDelay: 5500,
+                     isBigMove: true,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -607,23 +737,17 @@
 
      fireVoidAttacks(damage = 3, times = 3) {
         playSound('ringknell')
-         let darkBG = getBackgroundBlackout();
-         darkBG.setDepth(-3);
-         this.addTween({
-             targets: darkBG,
-             alpha: 0.4,
-             duration: 500
-         })
         for (let i = 0; i < times; i++) {
             this.addDelay(() => {
-                let pulse = getTempPoolObject('blurry', 'pulser.png', 'pulser', 725);
-                pulse.setAlpha(0).setScale(0.15).setPosition(this.x, this.y - 60).setDepth(10);
+                let pulse = getTempPoolObject('blurry', 'pulser.png', 'pulser', 825);
+                pulse.setAlpha(0).setScale(0.75).setPosition(this.x, this.y - 60).setDepth(10);
                 this.addTween({
+                    delay: 50,
                     targets: pulse,
-                    scaleX: 8.5,
-                    scaleY: 8.5,
-                    ease: 'Quart.easeIn',
-                    duration: 700,
+                    scaleX: 9,
+                    scaleY: 9,
+                    ease: 'Quint.easeIn',
+                    duration: 750,
                 })
                 this.addTween({
                     targets: pulse,
@@ -633,24 +757,27 @@
                 })
                 this.addDelayIfAlive(() => {
                     messageBus.publish("selfTakeDamage", damage);
+                    let isLast = i == times - 1;
+
+                    let darkBG = getBackgroundBlackout();
+                    darkBG.setDepth(-3).setAlpha(isLast ? (0.33 + times * 0.04) : 0.3);
+                    this.addTween({
+                        targets: darkBG,
+                        alpha: 0,
+                        ease: 'Cubic.easeOut',
+                        duration: isLast ? 800 : 400
+                    })
                     let vol = 0.4;
                     if (i % 2 == 1) {
                         vol = 0.6;
                     }
-                    if (i == times - 1) {
+                    if (isLast) {
                         vol = 0.7
                     }
                     let slamSfx = playSound('body_slam', vol);
                     slamSfx = 200 - Math.floor(Math.random() * 450);
-                    if (i == times - 1) {
-                        this.addTween({
-                            targets: darkBG,
-                            alpha: 0,
-                            duration: 800
-                        })
-                    }
-                }, 600)
-            }, i * 600 - times * 25)
+                }, 650)
+            }, i * 600 - times * 30)
         }
      }
 
@@ -698,64 +825,5 @@
             }
         })
 
-     }
-
-    showComplete(darkDummy) {
-        globalObjects.encyclopedia.hideButton();
-        globalObjects.options.hideButton();
-        globalObjects.magicCircle.disableMovement();
-        let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
-        let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'complete.png').setScale(0.95).setDepth(9998).setAlpha(0);
-        let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 20}).setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998);
-
-        PhaserScene.tweens.add({
-            targets: banner,
-            alpha: 0.75,
-            duration: 500,
-        });
-
-         PhaserScene.tweens.add({
-             targets: [victoryText],
-             alpha: 1,
-             ease: 'Quad.easeOut',
-             duration: 500,
-         });
-        playSound('victory');
-        this.addTimeout(() => {
-             continueText.alpha = 1;
-         }, 1000);
-
-         PhaserScene.tweens.add({
-             targets: victoryText,
-             scaleX: 1,
-             scaleY: 1,
-             duration: 800,
-             onComplete: () => {
-                this.dieClickBlocker.setOnMouseUpFunc(() => {
-                    PhaserScene.tweens.add({
-                         targets: [this.sprite, darkDummy],
-                         alpha: 0,
-                         duration: 800,
-                    });
-
-                    hideGlobalClickBlocker();
-                    continueText.destroy();
-                    PhaserScene.tweens.add({
-                         targets: [victoryText, banner],
-                         alpha: 0,
-                         duration: 800,
-                        completeDelay: 200,
-                         onComplete: () => {
-                            victoryText.destroy();
-                            banner.destroy();
-                            // globalObjects.magicCircle.enableMovement();
-                             // TODO: maybe just skip straight to enemy
-                            // globalObjects.postFightScreen.createWinScreenMin();
-                             beginPreLevel(this.targetLevel ? this.targetLevel : -this.level + 1);
-                        }
-                    });
-                });
-             }
-         });
      }
 }

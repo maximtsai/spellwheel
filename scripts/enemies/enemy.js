@@ -1064,7 +1064,6 @@ class Enemy {
     }
 
     clearEffects() {
-        console.log("cleaned up effects");
         for (let i in this.statuses) {
             let effect = this.statuses[i];
             if (effect) {
@@ -1119,6 +1118,12 @@ class Enemy {
             scaleY: this.shieldText.startScale,
             ease: 'Back.easeOut',
             duration: gameVars.gameManualSlowSpeedInverse * 250,
+        });
+        this.scene.tweens.add({
+            delay: 1000,
+            targets: this.shieldText,
+            alpha: 0.75,
+            duration: 1500,
         });
     }
 

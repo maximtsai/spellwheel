@@ -2693,6 +2693,12 @@
                  ease: 'Back.easeOut',
                  duration: durMut * 250,
              });
+             this.scene.tweens.add({
+                 delay: 1000,
+                 targets: this.shieldText,
+                 alpha: 0.75,
+                 duration: 1500,
+             });
              this.handShieldBack.setScale(1.9).setAlpha(1);
              this.shieldExtraText.setVisible(true).setScale(1.15).setAlpha(1);
              this.addTween({
@@ -2854,8 +2860,57 @@
          this.shieldAmts = 0;
      }
 
+     shakeShieldText() {
+         if (this.shieldAmts <= 0) {
+             this.shieldText.visible = false;
+         }
+         this.shieldText.setText(this.shieldAmts);
+         let startLeft = Math.random() < 0.5;
+         this.scene.tweens.add({
+             targets: this.shieldText,
+             scaleX: this.shieldText.startScale + 1,
+             scaleY: this.shieldText.startScale + 1,
+             y: "-=3",
+             x: startLeft ? "-=6" : "+=6",
+             duration: gameVars.gameManualSlowSpeedInverse * 60,
+             ease: 'Quint.easeOut',
+             onComplete: () => {
+                 this.scene.tweens.add({
+                     targets: this.shieldText,
+                     scaleX: this.shieldText.startScale,
+                     scaleY: this.shieldText.startScale,
+                     y: "+=3",
+                     duration: gameVars.gameManualSlowSpeedInverse * 500,
+                     ease: 'Quart.easeOut',
+                 });
+                 this.scene.tweens.add({
+                     targets: this.shieldText,
+                     x: startLeft ? "+=13" : "-=13",
+                     duration: gameVars.gameManualSlowSpeedInverse * 100,
+                     ease: 'Quint.easeInOut',
+                     onComplete: () => {
+                         this.shieldText.setDepth(8);
+                         this.scene.tweens.add({
+                             targets: this.shieldText,
+                             x: this.shieldText.startX,
+                             duration: gameVars.gameManualSlowSpeedInverse * 400,
+                             ease: 'Bounce.easeOut',
+                         });
+                         this.scene.tweens.add({
+                             delay: 1000,
+                             targets: this.shieldText,
+                             alpha: 0.75,
+                             duration: 1500,
+                         });
+                     }
+                 });
+             }
+         });
+     }
+
      damageHandShield() {
          this.shieldAmts--;
+         this.shakeShieldText();
          if (this.shieldAmts <= 0) {
              messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, '-BROKE-', 1.2, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.25, scaleY: 1.25, ease: 'Back.easeOut'});
              this.clearHandShield(true);

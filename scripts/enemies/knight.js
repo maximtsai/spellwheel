@@ -69,7 +69,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 160 : 125;
+         this.health = gameVars.isHardMode ? 160 : 130;
          this.eyeObjects = [];
          this.pullbackScale = 0.92;
          this.attackScale = 1.11;
@@ -477,6 +477,12 @@
                              duration: gameVars.gameManualSlowSpeedInverse * 400,
                              ease: 'Bounce.easeOut',
                          });
+                         this.scene.tweens.add({
+                             delay: 1000,
+                             targets: this.shieldText,
+                             alpha: 0.75,
+                             duration: 1500,
+                         });
                      }
                  });
              }
@@ -515,6 +521,12 @@
              scaleY: this.shieldText.startScale,
              ease: 'Back.easeOut',
              duration: gameVars.gameManualSlowSpeedInverse * 250,
+         });
+         this.scene.tweens.add({
+             delay: 1000,
+             targets: this.shieldText,
+             alpha: 0.75,
+             duration: 1500,
          });
          playSound('void_shield');
          let distMult = 1;
@@ -812,6 +824,10 @@
                          this.nextAttackIndex = 0;
                          this.sigilEffect.visible = true;
 
+                         globalObjects.bannerTextManager.setDialog([getLangText('statue_info_a'), getLangText('statue_info_b')]);
+                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+                         globalObjects.bannerTextManager.showBanner(0.5);
+                         /*
                          globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 143, getLangText("shield_tut_knight"), 'right', true);
                          let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                          let centerXPos = globalObjects.textPopupManager.getCenterPos();
@@ -859,6 +875,7 @@
                                  }, 400);
                              });
                          }, 2100)
+                         */
                      }
                  }
              ],
@@ -897,10 +914,10 @@
                      }
                  },
                  {
-                     name: "|5 ",
+                     name: "|6 ",
                      announceName: "void strike",
                      chargeAmt: 750,
-                     damage: 5,
+                     damage: 6,
                      chargeMult: 1.5,
                      attackSprites: ['void_knight_attack.png'],
                      startFunction: () => {
@@ -918,7 +935,7 @@
                          playSound('sword_hit', 0.2);
                      },
                      finaleFunction: () => {
-                        this.nextAttack.damage = 5;
+                        this.nextAttack.damage = 6;
                          this.setDefaultSprite('void_knight.png');
                          this.sigilEffect.visible = true;
                      }
@@ -963,7 +980,7 @@
                      announceName: "VOID SHIELD",
                      chargeAmt: 800,
                      isPassive: true,
-                     chargeMult: 12,
+                     chargeMult: 16,
                      prepareSprite: 'void_knight_3.png',
                      damage: -1,
                      attackFinishFunction: () => {

@@ -25,12 +25,14 @@ function updateSpellState(level) {
     highestLevel = level;
     gameVars.matterPlus = false;
     gameVars.mindPlus = false;
+    console.log("updateSpellState: ", level)
     switch(level) {
-        case -5:
+        case -6:
             // void dummy
             EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, null, null, RUNE_REINFORCE, RUNE_ENHANCE, RUNE_STRIKE];
             ELEMENT_ARRAY = [RUNE_VOID, RUNE_VOID, RUNE_MATTER, null, null, RUNE_VOID, RUNE_VOID];
             break;
+        case -5:
         case -4:
             // time dummy
             EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, null, RUNE_ENHANCE, RUNE_ENHANCE, RUNE_REINFORCE, RUNE_STRIKE];
@@ -77,39 +79,41 @@ function updateSpellState(level) {
             ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MATTER, null, null, RUNE_MATTER, RUNE_MIND];
             break;
         case 5:
+        case 6:
+            // fight statue
             // fight knight
             EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, null, RUNE_REINFORCE, RUNE_ENHANCE, RUNE_PROTECT, RUNE_STRIKE];
             ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_TIME, null, RUNE_MATTER, RUNE_MIND, RUNE_TIME];
             break;
-        case 6:
+        case 7:
             // fight wall
             EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, RUNE_ENHANCE, RUNE_REINFORCE, RUNE_ENHANCE, RUNE_PROTECT, RUNE_STRIKE];
             ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_TIME, RUNE_VOID, RUNE_MATTER, RUNE_MIND, RUNE_TIME];
             break;
-        case -6:
-        case 7:
+        case -7:
+        case 8:
             // fight super dummy
             EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, RUNE_UNLOAD, RUNE_REINFORCE, RUNE_ENHANCE, RUNE_PROTECT, RUNE_STRIKE];
             ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_TIME, RUNE_VOID, RUNE_MATTER, RUNE_MIND, RUNE_TIME];
             break;
-        case 8:
+        case 9:
             // fight mitochondria
             EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, RUNE_UNLOAD, RUNE_REINFORCE, RUNE_ENHANCE, RUNE_PROTECT, RUNE_STRIKE];
             ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_TIME, RUNE_VOID, RUNE_MATTER, RUNE_MIND, RUNE_TIME];
             gameVars.matterPlus = true;
             break;
-        case 9:
+        case 10:
             // fight robot
             EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, RUNE_UNLOAD, RUNE_REINFORCE, RUNE_ENHANCE, RUNE_PROTECT, RUNE_STRIKE];
             ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_TIME, RUNE_VOID, RUNE_MATTER, RUNE_MIND, RUNE_TIME];
             gameVars.matterPlus = true;
             gameVars.mindPlus = true;
             break;
-        case 10:
         case 11:
         case 12:
         case 13:
         case 14:
+        case 15:
             // fight death
             EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, RUNE_UNLOAD, RUNE_REINFORCE, RUNE_ENHANCE, RUNE_PROTECT, RUNE_STRIKE];
             ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_TIME, RUNE_VOID, RUNE_MATTER, RUNE_MIND, RUNE_TIME];

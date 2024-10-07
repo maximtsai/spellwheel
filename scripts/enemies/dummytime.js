@@ -94,6 +94,10 @@
          if (this.playerSpellCastSub) {
              this.playerSpellCastSub.unsubscribe();
          }
+         if (this.runea) {
+             this.runea.destroy();
+             this.runeb.destroy();
+         }
          if (this.rune1) {
              this.rune1.destroy();
              this.rune2.destroy();

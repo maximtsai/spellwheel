@@ -463,9 +463,9 @@ function playReaperPassiveAnim(enemy, customFinFunc) {
         gameVars.deathFlutterDelay = 450;
         // repeatDeathFlutterAnimation();
         setFloatingDeathDepth(100010);
+        repeatDeathFlutterAnimation(-0.25);
         handleReaperDialog(level, () => {
             gameVars.deathFlutterDelay = 10;
-            repeatDeathFlutterAnimation(-0.25);
             clearReaper();
             PhaserScene.tweens.add({
                 targets: [globalObjects.fogSliceDarken],
@@ -478,8 +478,8 @@ function playReaperPassiveAnim(enemy, customFinFunc) {
             if (customFinFunc) {
                 customFinFunc();
             } else {
-                globalObjects.magicCircle.enableMovement();
-                globalObjects.postFightScreen.createWinScreen(level);
+                //globalObjects.magicCircle.enableMovement();
+                //globalObjects.postFightScreen.createWinScreen(level);
             }
 
         })
@@ -673,6 +673,9 @@ function handleReaperDialog(level = 0, onComplete) {
             getLangText('death_statue2'),
             getLangText('death_statue3'),
         ];
+        reaperFuncList = [null, null, () => {
+            messageBus.publish('lift_statue');
+        }]
         break;
     case 6:
         reaperDialog = [

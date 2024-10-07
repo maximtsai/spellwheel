@@ -324,6 +324,15 @@ let textData4 = {
         "es": "¡Este escudo puede bloquear los ataques más fuertes! Pero se rompe con cualquier golpe.",
         "jp": "このシールドは最強の攻撃を防げます!しかし、どんなヒットでも壊れます。"
     },
+    "shield_comment_knight": {
+        "en_us": "This shield feels similar\nto the statue I fought earlier.",
+        "fr": "Ce bouclier ressemble à la statue\nque j'ai combattue plus tôt.",
+        "zh_tw": "虛空護盾能擋住\n強力攻擊！但 X 次\n打擊後就會破裂。\n           +",
+        "zh_cn": "虚空护盾能挡住\n强力攻击！但 X 次\n打击后就会破裂。\n           +",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "dummy_body_a": {
         "en_us": "Thorns reduce\nincoming damage\nand can inflict\ndamage back.\n              +",
         "fr": "Les épines réduisent\nles dégâts subis\net peuvent infliger\ndes dégâts en retour.\n               +",

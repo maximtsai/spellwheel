@@ -232,23 +232,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">tutorial/popupClose.png</key>
-            <key type="filename">tutorial/popupClose_hover.png</key>
-            <key type="filename">tutorial/popupClose_press.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>42,15,84,29</rect>
-                <key>scale9Paddings</key>
-                <rect>42,15,84,29</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">tutorial/popupTutorial.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -302,7 +285,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">tutorial/rune_highlight.png</key>
+            <key type="filename">tutorial/rune_highlight - Copy.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -311,9 +294,31 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>27,27,53,53</rect>
+                <rect>31,31,63,63</rect>
                 <key>scale9Paddings</key>
-                <rect>27,27,53,53</rect>
+                <rect>31,31,63,63</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">tutorial/rune_highlight1.png</key>
+            <key type="filename">tutorial/rune_highlight2.png</key>
+            <key type="filename">tutorial/rune_highlight3.png</key>
+            <key type="filename">tutorial/rune_highlight4.png</key>
+            <key type="filename">tutorial/rune_highlight5.png</key>
+            <key type="filename">tutorial/rune_highlight6.png</key>
+            <key type="filename">tutorial/rune_highlight7.png</key>
+            <key type="filename">tutorial/rune_highlight8.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>30,30,60,60</rect>
+                <key>scale9Paddings</key>
+                <rect>30,30,60,60</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

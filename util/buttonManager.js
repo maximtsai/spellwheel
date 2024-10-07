@@ -24,23 +24,27 @@ class InternalButtonManager {
         // check hovering
         let hasHovered = false;
         let currentHovered = null;
+        let newHovered = null;
 
         for (let i = this.buttonList.length - 1; i >= 0; i--) {
             let buttonObj = this.buttonList[i];
             if (buttonObj && buttonObj.checkCoordOver(handX, handY)) {
                 if (this.lastHovered !== buttonObj) {
-                    buttonObj.onHover();
+                    newHovered = buttonObj;
                 }
                 hasHovered = true;
                 currentHovered = buttonObj;
                 break;
             }
         }
-        if (this.lastHovered && this.lastHovered !== currentHovered 
-            && this.lastHovered.getState() !== 'disable') {
+        if (this.lastHovered && this.lastHovered !== currentHovered && this.lastHovered.getState() !== 'disable') {
             this.lastHovered.setState('normal');
             this.lastHovered.onHoverOut();
         }
+        if (newHovered) {
+            newHovered.onHover();
+        }
+
 
         this.lastHovered = currentHovered;
     }

@@ -5,7 +5,7 @@
         this.popupTimeout = this.addTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
-        }, 3500)
+        }, 3000)
         this.addTimeout(() => {
             if (!this.isDestroyed) {
                 this.customBgMusic = playMusic('magician_theme_1', 0.95, true);

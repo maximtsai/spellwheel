@@ -597,9 +597,11 @@ function createEnemyAfterDelay(lvl) {
 }
 
 function createTutorialBtn(lvl) {
+    playSound('flip3');
+
     if (!globalObjects.runeHighlight) {
-        globalObjects.runeHighlight = PhaserScene.add.sprite(0, 0, 'tutorial', 'rune_highlight.png').setDepth(10002).setVisible(false);
-        globalObjects.runeHighlightTemp = PhaserScene.add.sprite(0, 0, 'tutorial', 'rune_highlight.png').setDepth(10002).setAlpha(0);
+        globalObjects.runeHighlight = PhaserScene.add.sprite(0, 0, 'tutorial', 'rune_highlight8.png').setDepth(10001).setVisible(false);
+        globalObjects.runeHighlightTemp = PhaserScene.add.image(0, 0, 'tutorial', 'rune_highlight8.png').setDepth(10002).setAlpha(0);
         globalObjects.runePicture = PhaserScene.add.sprite(gameConsts.halfWidth - 210, gameConsts.halfHeight - 40, 'tutorial', 'blank.png').setDepth(10002).setVisible(false).setRotation(-0.15);
     }
     switch(lvl) {
@@ -733,7 +735,8 @@ function buildTutorialButton(icon = "rune_matter_large.png", popup) {
 }
 
 function showTutorialImage() {
-    console.log("hey");
+    playSound('flip2');
+
 }
 
 function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
@@ -741,8 +744,8 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
     globalObjects.magicCircle.disableMovement();
 
     let tutTitleBg = PhaserScene.add.sprite(gameConsts.halfWidth - 138, gameConsts.halfHeight - 285, 'tutorial', 'title.png').setDepth(10000);
-    let tutBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 100, 'tutorial', 'popupTutorial.png').setScale(0.985).setAlpha(0.5).setDepth(10000);
-    let tutPlus = PhaserScene.add.sprite(gameConsts.halfWidth - 124, gameConsts.halfHeight - 193, 'tutorial', 'plus_symbol.png').setScale(0.96).setAlpha(0.5).setDepth(10000);
+    let tutBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 100, 'tutorial', 'popupTutorial.png').setScale(1).setAlpha(0.5).setDepth(10000);
+    let tutPlus = PhaserScene.add.sprite(gameConsts.halfWidth - 124, gameConsts.halfHeight - 193, 'tutorial', 'plus_symbol.png').setScale(0.96).setAlpha(0.5).setDepth(10002);
 
     let closeButton;
     closeButton = new Button({
@@ -785,8 +788,8 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
 
     PhaserScene.tweens.add({
         targets: [tutBackground, tutPlus],
-        scaleX: 1,
-        scaleY: 1,
+        scaleX: 1.02,
+        scaleY: 1.01,
         alpha: 1,
         ease: "Back.easeOut",
         duration: 1,
@@ -827,6 +830,15 @@ function buildRuneclicker(x, y, onClick) {
         onMouseUp: () => {
             onClick();
             globalObjects.runeHighlight.setPosition(x, y);
+            globalObjects.runeHighlight.play('runeHighlight');
+            globalObjects.runeHighlight.alpha = 1;
+            PhaserScene.tweens.add({
+                delay: 1,
+                targets: globalObjects.runeHighlight,
+                alpha: 0.85,
+                duration: 1,
+            });
+            playSound(Math.random() > 0.5 ? 'flip1' : 'flip2');
 
         }
     });

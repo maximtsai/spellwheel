@@ -1,3 +1,15 @@
+function initRuneHighlight(x, y) {
+    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(x, y);
+    globalObjects.runeHighlight.play('runeHighlight');
+    globalObjects.runeHighlight.alpha = 1;
+    PhaserScene.tweens.add({
+        delay: 1,
+        targets: globalObjects.runeHighlight,
+        alpha: 0.9,
+        duration: 1,
+    });
+}
+
 function buildTutorialMatter() {
     let clickBlocker = buildClickblocker();
     let initTutText = getLangText('matter_tut_desc');
@@ -30,8 +42,8 @@ function buildTutorialMatter() {
         tutText.setText(strikeText);
         globalObjects.runePicture.setFrame('tut_matter_strike.png').setRotation(-0.1);
 
-    })
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
+    });
+    initRuneHighlight(tutRune2.x, tutRune2.y)
     tutText.setText(strikeText);
     globalObjects.runePicture.setFrame('tut_matter_strike.png').setRotation(-0.1);
 
@@ -74,7 +86,8 @@ function buildTutorialMind() {
     tutText.setText(strikeText);
     globalObjects.runePicture.setFrame('tut_mind_strike.png').setRotation(-0.1);
     let tutRune2 = PhaserScene.add.sprite(gameConsts.halfWidth - 0, gameConsts.halfHeight - 200, 'tutorial', 'rune_strike_large.png').setScale(0.96).setAlpha(0.5).setDepth(10001);
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
+    initRuneHighlight(tutRune2.x, tutRune2.y)
+
     let runeClicker2 = buildRuneclicker(tutRune2.x, tutRune2.y, () => {
         tutText.setText(strikeText);
         globalObjects.runePicture.setFrame('tut_mind_strike.png').setRotation(-0.1);
@@ -123,7 +136,7 @@ function buildTutorialTime() {
         tutText.setText(strikeText);
         globalObjects.runePicture.setFrame('tut_time_strike.png').setRotation(-0.1);
     })
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
+    initRuneHighlight(tutRune2.x, tutRune2.y)
     tutText.setText(strikeText);
     globalObjects.runePicture.setFrame('tut_time_strike.png').setRotation(-0.1);
 
@@ -182,7 +195,7 @@ function buildTutorialVoid() {
         globalObjects.runePicture.setFrame('tut_void_strike.png').setRotation(-0.1);
 
     })
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
+    initRuneHighlight(tutRune2.x, tutRune2.y)
     tutText.setText(strikeText);
     globalObjects.runePicture.setFrame('tut_void_strike.png').setRotation(-0.1);
 
@@ -239,7 +252,7 @@ function buildTutorialProtect() {
         globalObjects.runePicture.setFrame('tut_matter_shield.png').setRotation(-0.1);
     })
 
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
+    initRuneHighlight(tutRune2.x, tutRune2.y)
     tutText.setText(firstText);
     globalObjects.runePicture.setFrame('tut_matter_shield.png').setRotation(-0.1);
 
@@ -284,7 +297,7 @@ function buildTutorialReinforce() {
         globalObjects.runePicture.setFrame('tut_matter_reinforce.png').setRotation(-0.1);
     })
 
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
+    initRuneHighlight(tutRune2.x, tutRune2.y)
     tutText.setText(firstText);
     globalObjects.runePicture.setFrame('tut_matter_reinforce.png').setRotation(-0.1);
 
@@ -331,7 +344,7 @@ function buildTutorialUnload() {
         globalObjects.runePicture.setFrame('tut_matter_unload.png').setRotation(-0.1);
     })
 
-    globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(tutRune2.x, tutRune2.y);
+    initRuneHighlight(tutRune2.x, tutRune2.y)
     tutText.setText(firstText);
     globalObjects.runePicture.setFrame('tut_matter_unload.png').setRotation(-0.1);
 

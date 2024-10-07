@@ -11,6 +11,10 @@
         this.addTimeout(() => {
             this.initTutorial();
         }, 10)
+        this.popupTimeout = this.addTimeout(() => {
+            this.tutorialButton = createTutorialBtn(this.level);
+            this.addToDestructibles(this.tutorialButton);
+        }, 3000)
     }
 
      initSpriteAnim(scale) {
@@ -94,7 +98,7 @@
 
     showTimeStrike() {
         this.addDelay(() => {
-            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 107, getLangText("time_strike_info"), 'right');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 110, getLangText("time_strike_info"), 'right');
             let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
             let centerXPos = globalObjects.textPopupManager.getCenterPos();
             let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
@@ -294,8 +298,8 @@
 
          this.handShieldTemp.currAnim = this.addTween({
              targets: this.handShieldTemp,
-             alpha: 0.9,
-             duration: 2000,
+             alpha: 1,
+             duration: 1700,
          });
          // playFakeBGMusic('but_never_forgotten_metal_prelude');
          this.addDelayIfAlive(() => {
@@ -343,7 +347,7 @@
                      })
                  }
              });
-         }, 1300)
+         }, 1000)
      }
 
      createHandShield(amt) {
@@ -596,7 +600,7 @@
              [
                  // 0
                  {
-                     name: gameVars.isHardMode ? "STRANGE SHIELD #10" : "STRANGE SHIELD #9",
+                     name: gameVars.isHardMode ? "SHIELD? #10" : "SHIELD? #9",
                      chargeAmt: 888,
                      chargeMult: 20,
                      finishDelay: 2500,
@@ -759,8 +763,7 @@
                 this.addTween({
                     targets: pulse,
                     alpha: 1,
-                    ease: 'Cubic.easeInOut',
-                    duration: 200,
+                    duration: 250,
                 })
                 this.addDelayIfAlive(() => {
                     messageBus.publish("selfTakeDamage", damage);

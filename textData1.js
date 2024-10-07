@@ -597,7 +597,7 @@ let textData = {
         "jp": "タイムルーンは、時間的なものに対するコントロールを与える。時間呪文を使用すると、複数回攻撃したり、負傷を遅らせたり、敵の動きを鈍らせたりすることができます。"
     },
     "time_tut_desc_sh": {
-        "en_us": "The Time rune grants control\nover time itself. Time spells let\nyou attack multiple times, defer\ndamage, or slow your enemies to\na crawl.",
+        "en_us": "The Time rune grants control\nover time itself. Time spells let\nyou attack multiple times, defer\ndamage, or slow your enemies\nto a crawl.",
         "fr": "La rune du Temps accorde le\ncontrôle du temporel. Les sorts de\ntemps vous permettent d'attaquer\nplusieurs fois, de retarder les\nblessures, voire de ralentir vos\nennemis jusqu'à l'immobilité.",
         "zh_tw": "時間符文授予對時間的控\n制權。時間法術讓你能多次\n攻擊，延緩受傷時間，甚至\n凍結時間來減慢敵人的行動。",
         "zh_cn": "时间符文授予对时间的控\n制权。时间法术让你能多次\n攻击，延缓受伤时间，甚至\n冻结时间来减慢敌人的行动。",
@@ -606,8 +606,8 @@ let textData = {
         "jp": "タイムルーンは、時間的なものに対するコントロールを与える。時間呪文を使用すると、複数回攻撃したり、負傷を遅らせたり、敵の動きを鈍らせたりすることができます。"
     },
     "time_tut_strike_desc": {
-        "en_us": "An attack that strikes twice.\nEach attack does modest damage\nbut can be powered up greatly\nwith +damage enhancements.",
-        "fr": "Une attaque qui frappe deux fois.\nChaque attaque inflige des dégâts\nmodérés, mais peut être considérablement\naméliorée avec des bonus de dégâts.",
+        "en_us": "An attack that strikes twice.\nEach attack does modest\ndamage but can be powered up\ngreatly with +damage\nenhancements.",
+        "fr": "Une attaque qui frappe deux fois.\nChaque attaque inflige des\ndégâts modérés, mais peut être\nconsidérablement améliorée avec des\nbonus de dégâts.",
         "zh_tw": "攻擊兩次。攻擊本身造成的\n傷害不高，但加強攻擊力的\n法術可以大量增加威力。",
         "zh_cn": "攻击两次。攻击本身造成的\n伤害不高，但加强攻击力的\n法术可以大量增加威力。",
         "ru": "Атака, которая наносит два удара.\nКаждый удар наносит небольшой урон,\nно может быть значительно усилен\nулучшениями урона.",
@@ -624,9 +624,9 @@ let textData = {
         "jp": ""
     },
     "time_tut_protect_desc": {
-        "en_us": "Creates a shield that defers\nthe damage you take so that\nyou take damage gradually\nrather than all at once.",
+        "en_us": "Creates a shield that defers\nthe damage you take so that\nyou lose health gradually\nrather than all at once.",
         "fr": "Crée un bouclier qui reporte les\ndégâts que vous subissez pour que\nvous les subissiez progressivement au\nlieu de tout d’un coup.",
-        "zh_tw": "打造一個盾牌，可以延遲你受到的傷害，讓你的生命值緩慢減少。",
+        "zh_tw": "打造一個盾牌，可以延遲\n你受到的傷害，讓你的生命值\n緩慢減少。",
         "zh_cn": "打造一个盾牌，可以延迟\n你受到的伤害，让你的生命值\n缓慢减少。",
         "ru": "Создает щит, который откладывает\nполученный вами урон, так что вы\nполучаете его постепенно, а не сразу.",
         "es": "",

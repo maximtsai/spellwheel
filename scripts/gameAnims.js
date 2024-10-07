@@ -550,4 +550,15 @@ function createAnimations(scene) {
         frameRate: 2,
         repeat: -1
     });
+    scene.anims.create({
+        key: 'runeHighlight',
+        frames: scene.anims.generateFrameNames('tutorial', {
+            prefix: 'rune_highlight',
+            suffix: '.png',
+            start: 1,
+            end: 8,
+            zeroPad: 1,
+        }),
+        frameRate: 15000,
+    });
 }

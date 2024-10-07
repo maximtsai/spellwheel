@@ -10,7 +10,7 @@
          this.popupTimeout = this.addTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
-         }, 3500)
+         }, 3000)
          messageBus.subscribe("clearMindBurn", this.clearMindBurn.bind(this))
 
      }

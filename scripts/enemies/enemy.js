@@ -711,7 +711,7 @@ class Enemy {
             let damageSqrt = Math.sqrt(damageToTake);
             setTimeout(() => {
                 messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, 265, 'X2', 0.7 + damageSqrt * 0.14);
-            }, 280 + Math.floor(damageSqrt) * 5)
+            }, 240 + Math.floor(damageSqrt) * 8)
 
             amt += damageToTake;
             // setTimeout(() => {
@@ -727,12 +727,12 @@ class Enemy {
                 this.shield -= amt;
                 amt = 0;
                 this.playShieldHitAnim();
-                this.shieldText.setText(this.shield);
+                this.shieldText.setText(this.shield).setAlpha(1);
                 let startLeft = Math.random() < 0.5;
                 this.scene.tweens.add({
                     targets: this.shieldText,
-                    scaleX: this.shieldText.startScale + 1,
-                    scaleY: this.shieldText.startScale + 1,
+                    scaleX: this.shieldText.startScale + 1.25,
+                    scaleY: this.shieldText.startScale + 1.25,
                     y: "-=3",
                     x: startLeft ? "-=6" : "+=6",
                     duration: gameVars.gameManualSlowSpeedInverse * 60,
@@ -758,6 +758,12 @@ class Enemy {
                                     x: this.shieldText.startX,
                                     duration: gameVars.gameManualSlowSpeedInverse * 400,
                                     ease: 'Bounce.easeOut',
+                                });
+                                this.scene.tweens.add({
+                                    delay: 1500,
+                                    targets: this.shieldText,
+                                    alpha: 0.75,
+                                    duration: 1500,
                                 });
                             }
                         });

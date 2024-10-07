@@ -340,7 +340,7 @@ let textData2 = {
         "jp": "私が遭遇する相手は手ごわいですが、私自身の強さはさらに大きいです。 まだ成長の余地はあるかもしれないが、私の魔法は今や、私の最愛の愛するあなたを救うには十分すぎるほどのはずだ。"
     },
     "post_fight_story8": {
-        "en_us": "If Death thinks it can deter me with\nthese trials, it underestimates the depth\nof my determination.\n\nMy beloved awaits, and no force, not even Death,\nshall keep us apart.",
+        "en_us": "If Death thinks it can deter me with\nthese trials, it underestimates the depth\nof my determination.\n\nMy beloved awaits, and no force, not even\nDeath, shall keep us apart.",
         "fr": "Si la Mort pense pouvoir me dissuader avec\nces épreuves, elle sous-estime la profondeur de\nma détermination.\n\nMon bien-aimé m'attend, et aucune force,\npas même la Mort, ne nous séparera.",
         "zh_tw": "如果死神認為這些考驗能\n阻止我，那它就低估了我的決心。\n\n我心愛的人在等待，沒有任何力量，\n甚至死亡，能將我們分開。",
         "zh_cn": "如果死神认为这些考验能\n阻止我，那它就低估了我的决心。\n\n我心爱的人在等待，没有任何力量，\n甚至死亡，能将我们分开。",

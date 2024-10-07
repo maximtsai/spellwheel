@@ -328,6 +328,7 @@
                 <false/>
             </struct>
             <key type="filename">lowq/story_img_10.png</key>
+            <key type="filename">lowq/story_img_11.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

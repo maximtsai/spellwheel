@@ -297,8 +297,8 @@ let textData4 = {
         "jp": "リトライ"
     },
     "back_to_training": {
-        "en_us": "BACK TO TRAINING",
-        "fr": "RETOUR À LA PRATIQUE",
+        "en_us": "BACK TO\nTRAINING",
+        "fr": "RETOUR À LA\nPRATIQUE",
         "zh_tw": "返回練習",
         "zh_cn": "返回练习",
         "ru": "ВЕРНУТЬСЯ К ПРАКТИКЕ",
@@ -325,10 +325,10 @@ let textData4 = {
         "jp": "このシールドは最強の攻撃を防げます!しかし、どんなヒットでも壊れます。"
     },
     "shield_comment_knight": {
-        "en_us": "This shield feels similar\nto the statue I fought earlier.",
+        "en_us": "This shield feels similar to the\nshield that statue was using earlier.",
         "fr": "Ce bouclier ressemble à la statue\nque j'ai combattue plus tôt.",
-        "zh_tw": "虛空護盾能擋住\n強力攻擊！但 X 次\n打擊後就會破裂。\n           +",
-        "zh_cn": "虚空护盾能挡住\n强力攻击！但 X 次\n打击后就会破裂。\n           +",
+        "zh_tw": "這個護盾看起來很像之前\n那座雕像用的護盾。",
+        "zh_cn": "这个护盾看起来很像之前\n那座雕像用的护盾。",
         "ru": "",
         "es": "",
         "jp": ""

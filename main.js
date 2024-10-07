@@ -1,5 +1,5 @@
 let isMobile = testMobile();
-let gameVersion = "version 2.0";
+let gameVersion = "version 2.02";
 let config = {
     type: Phaser.AUTO,
     scale: {
@@ -110,7 +110,7 @@ let deltaScale = 1;
 let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 3;
 let canResizeGame = false;
-let url1 = '';// 'crazygames';
+let url1 = 'localhost';// 'crazygames';
 let url2 = 'maximtsai';// 'localhost';
 let url3 = 'adayofjoy';// '1001juegos';
 

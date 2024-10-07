@@ -824,7 +824,7 @@
                          this.nextAttackIndex = 0;
                          this.sigilEffect.visible = true;
 
-                         globalObjects.bannerTextManager.setDialog([getLangText('statue_info_a'), getLangText('statue_info_b')]);
+                         globalObjects.bannerTextManager.setDialog([getLangText('shield_comment_knight')]);
                          globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
                          globalObjects.bannerTextManager.showBanner(0.5);
                          /*

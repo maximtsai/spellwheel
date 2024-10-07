@@ -760,7 +760,7 @@ function showMainMenuButtons() {
                 "Sound Effects by Lara Sluyter (LARA’S HORROR SOUNDS on YouTube)";
             let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'paper.png').setDepth(100000).setScale(0.975);
             let creditsText = PhaserScene.add.text(gameConsts.halfWidth, creditsUI.y - 290, text1, {fontFamily: 'opensans', fontSize: 21, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(100000).setAlpha(0.1);
-            let creditsText2 = PhaserScene.add.text(gameConsts.halfWidth, creditsUI.y - 20, text2, {fontSize: 16, color: '#000000', align: 'left'}).setOrigin(0, 0).setDepth(100000).setAlpha(0.1);
+            let creditsText2 = PhaserScene.add.text(gameConsts.halfWidth - 260, creditsUI.y - 40, text2, {fontSize: 16, color: '#000000', align: 'left'}).setOrigin(0, 0).setDepth(100000).setAlpha(0.1);
             PhaserScene.tweens.add({
                 targets: [creditsUI, creditsText, creditsText2],
                 duration: 180,
@@ -789,6 +789,7 @@ function showMainMenuButtons() {
                     creditsButton.destroy();
                     creditsUI.destroy();
                     creditsText.destroy();
+                    creditsText2.destroy();
                     if (canvas) {
                         canvas.style.cursor = 'default';
                     }

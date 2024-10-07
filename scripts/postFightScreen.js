@@ -935,17 +935,18 @@ class PostFightScreen {
             case 4:
                 return getLangText('post_fight_story4');
             case 5:
-                return getLangText('post_fight_story5')
             case 6:
+                return getLangText('post_fight_story5')
+            case 7:
                 return getLangText("post_fight_story6");
 
-            case 7:
+            case 8:
                 return getLangText("post_fight_story7");
 
-            case 8:
+            case 9:
                 return getLangText("post_fight_story8");
 
-            case 9:
+            case 10:
                 return getLangText("post_fight_story9");
 
             default:

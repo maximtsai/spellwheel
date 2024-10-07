@@ -525,9 +525,9 @@ let textData4 = {
     },
     "time_strike_info": {
         "en_us": "Hits twice\n       +",
-        "fr": "Attaquez deux\nfois\n        +",
-        "zh_tw": "攻击两次\n     +",
-        "zh_cn": "攻击两次\n     +",
+        "fr": "Frappe deux\nfois\n        +",
+        "zh_tw": "打擊两次\n     +",
+        "zh_cn": "打击两次\n     +",
         "ru": "",
         "es": "",
         "jp": ""

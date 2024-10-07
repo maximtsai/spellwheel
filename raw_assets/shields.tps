@@ -173,6 +173,32 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">shields/btnFlash1.png</key>
+            <key type="filename">shields/btnFlash10.png</key>
+            <key type="filename">shields/btnFlash11.png</key>
+            <key type="filename">shields/btnFlash12.png</key>
+            <key type="filename">shields/btnFlash2.png</key>
+            <key type="filename">shields/btnFlash3.png</key>
+            <key type="filename">shields/btnFlash4.png</key>
+            <key type="filename">shields/btnFlash5.png</key>
+            <key type="filename">shields/btnFlash6.png</key>
+            <key type="filename">shields/btnFlash7.png</key>
+            <key type="filename">shields/btnFlash8.png</key>
+            <key type="filename">shields/btnFlash9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.8</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>72,21,143,43</rect>
+                <key>scale9Paddings</key>
+                <rect>72,21,143,43</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">shields/forceBreak1.png</key>
             <key type="filename">shields/forceBreak2.png</key>
             <key type="filename">shields/forceBreak3.png</key>

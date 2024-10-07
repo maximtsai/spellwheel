@@ -336,6 +336,17 @@ function createAnimations(scene) {
         frameRate: 15
     });
     scene.anims.create({
+        key: 'btnFlash',
+        frames: scene.anims.generateFrameNames('shields', {
+            prefix: 'btnFlash',
+            suffix: '.png',
+            start: 1,
+            end: 12,
+            zeroPad: 0,
+        }),
+        frameRate: 24
+    });
+    scene.anims.create({
         key: 'forceBreak',
         frames: scene.anims.generateFrameNames('shields', {
             prefix: 'forceBreak',

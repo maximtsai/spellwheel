@@ -90,7 +90,7 @@
 
     showTimeStrike() {
         this.addDelay(() => {
-            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 70, getLangText("time_strike_info"), 'right');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 107, getLangText("time_strike_info"), 'right');
             let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
             let centerXPos = globalObjects.textPopupManager.getCenterPos();
             let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
@@ -192,7 +192,7 @@
          this.shakeShieldText();
 
          if (this.shieldAmts <= 0) {
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 50, '-BROKE-', 1.2, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.25, scaleY: 1.25, ease: 'Back.easeOut'});
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y - 50, '-BROKE-', 1.2, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.25, scaleY: 1.25, ease: 'Back.easeOut'});
              this.clearHandShield(true);
          } else {
             if (this.shieldAmts == 4 || (this.canShowEarlyInfo && this.shieldAmts <= 7)) {
@@ -613,7 +613,7 @@
                  {
                      name: "}2x2}",
                      chargeAmt: 450,
-                     finishDelay: 2000,
+                     finishDelay: 1600,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -625,7 +625,7 @@
                  {
                      name: "}3x3}",
                      chargeAmt: 500,
-                     finishDelay: 2500,
+                     finishDelay: 2400,
                      damage: -1,
                      startFunction: () => {
                          this.prepAttack();
@@ -740,14 +740,13 @@
         for (let i = 0; i < times; i++) {
             this.addDelay(() => {
                 let pulse = getTempPoolObject('blurry', 'pulser.png', 'pulser', 825);
-                pulse.setAlpha(0).setScale(0.75).setPosition(this.x, this.y - 60).setDepth(10);
+                pulse.setAlpha(0).setScale(0.65).setPosition(this.x, this.y - 60).setDepth(10);
                 this.addTween({
-                    delay: 50,
                     targets: pulse,
                     scaleX: 9,
                     scaleY: 9,
                     ease: 'Quint.easeIn',
-                    duration: 750,
+                    duration: 800,
                 })
                 this.addTween({
                     targets: pulse,

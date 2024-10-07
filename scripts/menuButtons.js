@@ -197,15 +197,16 @@ function showMainMenuButtons() {
             }
         });
         globalObjects.lvlPickButton.setOrigin(0.5, 0.5);
-        globalObjects.lvlPickButton.addText(getLangText('lvl_select'), {fontFamily: 'opensans', fontSize: 23, color: '#000000', align: 'left'})
-        globalObjects.lvlPickButton.setScale(0.86, 0.9);
+        globalObjects.lvlPickButton.addText(getLangText('lvl_select'), {fontFamily: 'opensans', fontSize: 24, color: '#000000', align: 'left'})
+        globalObjects.lvlPickButton.setScale(0.95, 0.9);
     }
+    let yPos = (hasLvlSelect || hasContinue) ? 80 : gameConsts.halfHeight - 120;
     globalObjects.startButton = new Button({
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
             x: gameConsts.halfWidth,
-            y: 80,
+            y: yPos,
         },
         hover: {
             ref: "menu_btn_hover.png",
@@ -245,6 +246,13 @@ function showMainMenuButtons() {
     globalObjects.startButton.setOrigin(0.5, 0.5);
     globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
     globalObjects.startButton.setScale(0.9);
+    globalObjects.startButton.isSolo = !hasLvlSelect && !hasContinue;
+    if (globalObjects.startButton.isSolo) {
+        setTimeout(() => {
+            let flash = PhaserScene.add.sprite(gameConsts.halfWidth, globalObjects.startButton.getYPos(), 'shields', 'btnFlash12.png').setScale(1.12).setDepth(100).play('btnFlash');
+            globalObjects.startButton.addToDestructibles(flash)
+        }, 850)
+    }
 
     let hideCheatConst = 0;
 

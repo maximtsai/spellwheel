@@ -1940,7 +1940,13 @@ class Enemy {
              completeDelay: 300,
              onComplete: () => {
                 if (this.dieClickBlocker) {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
                      this.dieClickBlocker.setOnMouseUpFunc(() => {
+                         if (canvas) {
+                             canvas.style.cursor = 'default';
+                         }
                         this.dieClickBlocker.destroy();
                          PhaserScene.tweens.add({
                              targets: [victoryText, banner],

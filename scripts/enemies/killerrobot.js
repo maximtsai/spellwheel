@@ -2447,7 +2447,13 @@
              ease: 'Cubic.easeOut',
              duration: 400,
              onComplete: () => {
+                 if (canvas) {
+                     canvas.style.cursor = 'pointer';
+                 }
                  this.dieClickBlocker.setOnMouseUpFunc(() => {
+                     if (canvas) {
+                         canvas.style.cursor = 'default';
+                     }
                      this.dieClickBlocker.destroy();
                      continueText.destroy();
                      this.addTween({

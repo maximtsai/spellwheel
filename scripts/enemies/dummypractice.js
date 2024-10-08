@@ -488,7 +488,13 @@
              scaleY: 1,
              duration: 800,
              onComplete: () => {
+                 if (canvas) {
+                     canvas.style.cursor = 'pointer';
+                 }
                 this.dieClickBlocker.setOnMouseUpFunc(() => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
                     PhaserScene.tweens.add({
                          targets: [this.sprite, darkDummy],
                          alpha: 0,

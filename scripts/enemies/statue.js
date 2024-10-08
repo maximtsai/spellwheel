@@ -571,7 +571,13 @@
                                 return;
                             }
                             this.dieClickBlocker = createGlobalClickBlocker(false);
+                            if (canvas) {
+                                canvas.style.cursor = 'pointer';
+                            }
                             this.dieClickBlocker.setOnMouseUpFunc(() => {
+                                if (canvas) {
+                                    canvas.style.cursor = 'default';
+                                }
                                 hideGlobalClickBlocker();
                                 continueText.destroy();
                                 PhaserScene.tweens.add({

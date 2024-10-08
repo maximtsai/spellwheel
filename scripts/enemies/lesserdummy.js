@@ -528,7 +528,13 @@
          });
          this.addTimeout(() => {
              continueText.alpha = 1;
+             if (canvas) {
+                 canvas.style.cursor = 'pointer';
+             }
              this.dieClickBlocker.setOnMouseUpFunc(() => {
+                 if (canvas) {
+                     canvas.style.cursor = 'default';
+                 }
                  this.dieClickBlocker.destroy();
 
                  this.addTween({

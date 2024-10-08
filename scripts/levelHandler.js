@@ -688,6 +688,8 @@ function buildTutorialButton(icon = "rune_matter_large.png", popup) {
             returnButton.destroy();
             iconGlow.destroy();
             glowSpin.stop();
+            globalObjects.encyclopedia.hideButton();
+            globalObjects.options.hideButton();
             popup();
         }
     });
@@ -770,6 +772,8 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
             messageBus.publish('unpauseGame');
             globalObjects.magicCircle.enableMovement();
             closeButton.destroy();
+            globalObjects.encyclopedia.showButton();
+            globalObjects.options.showButton();
             cleanupTutorialElements([tutTitleBg, tutBackground, tutPlus]);
             cleanupTutorialElements(scalingDestructibles);
             cleanupTutorialElements(nonscalingDestructibles, true);

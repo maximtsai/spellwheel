@@ -153,7 +153,7 @@ let textData4 = {
         "jp": "あなたの呪文が私に力を与える"
     },
     "deathFight2plusc": {
-        "en_us": "I RECOVER FROM ATTACKS",
+        "en_us": "I RECOVER AFTER\nBEING ATTACKED",
         "fr": "JE RÉCUPÉRERAI APRÈS\nAVOIR ÉTÉ ATTAQUÉ",
         "zh_tw": "我被攻擊後會恢復",
         "zh_cn": "我被攻击后会恢复",

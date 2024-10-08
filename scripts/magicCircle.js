@@ -2779,7 +2779,7 @@ const ENABLE_KEYBOARD = true;
          this.mindBurnAnim.setScale(0.75 + 0.052 * damage);
          this.mindBurnAnim.alpha = 0.9;
          messageBus.publish('enemyTakeTrueDamage', damage, false, 0, true);
-         let aggAmt = Math.max(0, damage + 1) * 0.4;
+         let aggAmt = Math.max(0, damage + 2) * 0.85
          messageBus.publish('addCastAggravate', aggAmt, false, 0, true);
 
          if (duration <= 1) {

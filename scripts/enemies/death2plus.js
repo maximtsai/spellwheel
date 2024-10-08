@@ -917,6 +917,7 @@
                          this.interruptCurrentAttack();
                          this.setAsleep();
                          this.clearPower();
+                         this.currentPowerText.visible = false;
 
                          this.addDelayIfAlive(() => {
                              this.rotateSpellCircleTo(2, true, () => {
@@ -1187,6 +1188,7 @@
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
+                         this.currentPowerText.visible = false;
                          this.bgMusic.stop();
                          this.bgMusic = playMusic('but_never_forgotten_afterthought', 1, false);
                          this.bgMusic.once('complete', () => {
@@ -1808,7 +1810,8 @@
              return;
          } else {
              let prevHealthPercent = this.prevHealth / this.healthMax;
-             if (this.health <= 111 && this.prevHealth > 111) {
+             if (this.health <= 111 && this.prevHealth > 111 && !this.shownFinale) {
+                 this.shownFinale = true;
                  this.showHurtFinale();
              }
          }
@@ -1829,6 +1832,8 @@
      }
 
      emergencyShield() {
+         this.currentPowerText.visible = false;
+         this.healFromAttacks = false;
          this.interruptCurrentAttack();
          this.clearHandObjects();
          playSound('slice_in');
@@ -3389,31 +3394,30 @@
          if (this.attackToStrengthen !== undefined) {
              this.extraAttackDamage++;
 
-             let hitEffect = getTempPoolObject('blurry', 'pulser.png', 'pulser', 700);
-             hitEffect.setPosition(this.currentPowerText.x, this.currentPowerText.y).setDepth(50).setScale(2).setVisible(true).setAlpha(0.05);
+             let hitEffect = getTempPoolObject('blurry', 'pulser.png', 'pulser', 800);
+             hitEffect.setPosition(this.currentPowerText.x, this.currentPowerText.y).setDepth(50).setScale(2.5).setVisible(true).setAlpha(0.01);
              this.addTween({
                  targets: hitEffect,
                  scaleX: 0,
                  scaleY: 0,
                  ease: 'Cubic.easeIn',
-                 duration: 700,
+                 duration: 750,
              });
              this.addTween({
                  targets: hitEffect,
                  alpha: 1,
-                 duration: 450,
+                 duration: 475,
                  ease: "Quad.easeIn",
                  onComplete: () => {
                      this.addTween({
                          delay: 100,
                          targets: hitEffect,
                          alpha: 0,
-                         ease: 'Quad.easeOut',
-                         duration: 150,
+                         duration: 175,
                      });
                  }
              });
-
+             this.currentPowerText.visible = true;
              this.currentPowerText.setAlpha(1.05).setScale(1.1 + this.extraAttackDamage * 0.024);
              this.currentPowerText.setText("DMG\n+" + this.extraAttackDamage);
              playSound('time_strike').detune = this.extraAttackDamage * 50;
@@ -3474,9 +3478,6 @@
                  scaleX: 0.9,
                  scaleY: 0.9,
                  duration: 350,
-                 onComplete: () => {
-                     this.currentPowerText.visible = false;
-                 }
              })
          }
      }

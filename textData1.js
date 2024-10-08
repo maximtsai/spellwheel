@@ -399,19 +399,19 @@ let textData = {
         "jp": ""
     },
     "mind_protect_desc": {
-        "en_us": "Create a shield\nthat absorbs 50%\nof incoming damage\nand reflects it\nback",
-        "fr": "Crée un bouclier\nqui absorbe 50%\ndes dégâts puis\nles renvoie",
-        "zh_tw": "打造一个吸收 50%\n伤害并将其反射回去\n的盾牌",
-        "zh_cn": "打造一个吸收 50%\n伤害并将其反射回去\n的盾牌",
+        "en_us": "Create a shield\nthat reflects 50%\nof the next\enemy nattack",
+        "fr": "Créez un bouclier\nqui reflète 50%\nde la prochaine\nattaque ennemie.",
+        "zh_tw": "創建一個盾牌，\n反射50% 的下\n一次敵人攻擊",
+        "zh_cn": "创建一个盾牌，\n反射50% 的下\n一次敌人攻击",
         "ru": "Создать щит\nпоглощающий 50%\nвходящего урона\nи отражающий\nего обратно.",
         "es": "Crea un escudo\nque absorbe el 50%\ndel daño entrante\ny luego lo refleja.",
         "jp": "受けるダメージの\n50%を吸収し、反射する\nシールドを作成する"
     },
     "mind_protect_desc_long": {
-        "en_us": "Create a shield that absorbs 50%\nof incoming damage and reflects it back",
-        "fr": "Crée un bouclier qui absorbe 50% des\ndégâts entrants et les renvoie à l'attaquant.",
-        "zh_tw": "打造一个吸收 50% 伤害\n并将其反射回去的盾牌",
-        "zh_cn": "打造一个吸收 50% 伤害\n并将其反射回去的盾牌",
+        "en_us": "Create a shield that reflects\n50% of the next enemy attack",
+        "fr": "Créez un bouclier qui reflète\n50% de la prochaine attaque ennemie.",
+        "zh_tw": "創建一個盾牌，反射\n50% 的下一次敵人攻擊",
+        "zh_cn": "创建一个盾牌，反射\n50% 的下一次敌人攻击",
         "ru": "Создать щит поглощающий 50% входящего\nурона и отражающий его обратно.",
         "es": "Crea un escudo que absorbe el 50%\ndel daño entrante y luego lo refleja.",
         "jp": "受けるダメージの50%を吸収し、\n反射するシールドを作成する"

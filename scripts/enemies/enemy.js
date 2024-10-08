@@ -272,7 +272,6 @@ class Enemy {
         this.chargeBarEst2.alpha = 0;
         this.chargeBarEst2.setDepth(9);
 
-
         let attackNameYPos = isMobile ? this.chargeBarMax.y - 23 : this.chargeBarMax.y - 22
 
         this.angrySymbol = this.scene.add.sprite(x, attackNameYPos - 8, 'misc', 'angry1.png');
@@ -1429,6 +1428,8 @@ class Enemy {
         this.castAggravateCharge += 20;
         this.isAsleep = false;
         this.attackName.visible = true;
+        this.chargeBarEst1.visible = true;
+        this.chargeBarEst2.visible = true;
         this.attackPaused = false;
         this.unhideCurrentAttack();
 
@@ -2306,15 +2307,23 @@ class Enemy {
             this.lastChargeEstScale = this.chargeBarEstScale;
             if (this.chargeBarEst1.currAnim) {
                 this.chargeBarEst1.currAnim.stop();
-                this.chargeBarEst1.alpha = 0.33;
-                this.chargeBarEst2.alpha = 0.33;
+                this.chargeBarEst1.alpha = this.level < 4 ? 0.5 : 0.43;
+                this.chargeBarEst2.alpha = this.level < 4 ? 0.5 : 0.43;
                 this.chargeBarEst1.currAnim = PhaserScene.tweens.add({
                     delay: 250,
                     targets: [this.chargeBarEst1, this.chargeBarEst2],
                     duration: 1250,
                     alpha: 0,
-                    yoyo: true,
-                    repeat: -1,
+                    onComplete: () => {
+                        this.chargeBarEst1.currAnim = PhaserScene.tweens.add({
+                            delay: 250,
+                            targets: [this.chargeBarEst1, this.chargeBarEst2],
+                            duration: 1250,
+                            alpha: 0.375,
+                            yoyo: true,
+                            repeat: -1,
+                        });
+                    }
                 });
             }
         }

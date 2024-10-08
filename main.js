@@ -145,7 +145,7 @@ function create ()
     if (!document.location.href.includes(url1) && !document.location.href.includes(url2) && !document.location.href.includes(url2) || true) {
         // Stops execution of rest of game
         let gameDiv = document.getElementById('preload-notice');
-        gameDiv.innerHTML = "Invalid site. Try the game on Crazygames.com!";
+        gameDiv.innerHTML = document.location.href + "\nis an invalid site.\n\n\n" + "Try the game on Crazygames.com!";
         return;
     }
     oldTime = Date.now();

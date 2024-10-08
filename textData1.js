@@ -561,10 +561,10 @@ let textData = {
         "jp": "次の通常攻撃で敵に火をつけ、防御を無視して継続ダメージを与える。"
     },
     "mind_tut_protect_desc": {
-        "en_us": "Creates a shield that blocks\n50% of the next attack, and\nretaliates with the damage you\ndo take.",
-        "fr": "Crée un bouclier qui bloque la\nmoitié de tous les dégâts,\ntout en accumulant et en ripostant\navec les dégâts que vous subissez.",
-        "zh_tw": "創建一個盾牌，可以阻擋所有\n傷害的一半，同時儲存並利用你所\n受到的傷害進行報復。",
-        "zh_cn": "打造一个盾牌，可以阻挡所有\n伤害的一半，同时储存并利用你所\n受到的伤害进行报复。",
+        "en_us": "Creates a shield that blocks\n50% of the next attack, and\nretaliates with damage equal\nto the amount blocked.",
+        "fr": "Créer un bouclier qui bloque\n50 % de la prochaine attaque\net riposte avec des dégâts\négaux au montant bloqué.",
+        "zh_tw": "打造一個盾牌，阻擋下一次\n攻擊的 50%，並以等於阻擋量\n的傷害進行反擊。",
+        "zh_cn": "打造一个盾牌，阻挡下一次\n攻击的 50%，并以等于阻挡量\n的伤害进行反击。",
         "ru": "Создает щит, который блокирует половину всего урона, накапливая и нанося ответный урон.",
         "es": "Crea un escudo que bloquea la mitad de todo el daño, mientras acumula y toma represalias con el daño que recibes.",
         "jp": "ダメージの半分をブロックし、受けたダメージを溜め込んで報復するシールドを作成します。"

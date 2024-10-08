@@ -2755,6 +2755,7 @@ const ENABLE_KEYBOARD = true;
             this.mindBurnAnim.currAnim.stop();
         }
         this.animateMindBurn(5, damageDealt)
+         messageBus.publish('enemyOnFire', 5);
 
          // effectObj = {
          //     name: effectName,

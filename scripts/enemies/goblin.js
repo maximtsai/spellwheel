@@ -11,7 +11,10 @@
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3000)
-         messageBus.subscribe("clearMindBurn", this.clearMindBurn.bind(this))
+         let sub1 = messageBus.subscribe("clearMindBurn", this.clearMindBurn.bind(this))
+         let sub2 = messageBus.subscribe("enemyOnFire", this.setOnFire.bind(this))
+         this.subscriptions.push(sub1);
+         this.subscriptions.push(sub2);
 
      }
 
@@ -30,6 +33,7 @@
      clearMindBurn() {
          if (this.burnAnim) {
              this.sprite.stop();
+             this.isAnimating = false;
              this.burnAnim = null;
          }
          this.isBurning = false;
@@ -64,10 +68,31 @@
          }
      }
 
+     setOnFire(duration) {
+         if (this.shield >= 1) {
+             this.sprite.stop();
+             this.isAnimating = false;
+             this.burnAnim = this.sprite.play('gobboshieldfire');
+             this.isBurning = true;
+         }
+         // if (this.currDelay) {
+         //     this.currDelay.stop();
+         // }
+         this.currDelay = this.addTween({
+             targets: this.sprite,
+             alpha: 1,
+             duration: duration * 1500 - 1500,
+             onComplete: () => {
+                 this.clearMindBurn();
+             }
+         });
+     }
+
      takeEffect(newEffect) {
          if (this.sprite) {
             if (newEffect.name == 'mindStrike' && this.shield <= 0 && !this.dead) {
                 this.sprite.stop();
+                this.isAnimating = false;
                  // let oldSprite = this.sprite.frame.name;
                  // if (oldSprite === 'gobbo_elec.png') {
                  //     oldSprite = this.defaultSprite;
@@ -91,6 +116,7 @@
                  })
             } else if (this.shield >= 1 && newEffect.name == 'mindBurn') {
                 this.sprite.stop();
+                this.isAnimating = false;
                 this.burnAnim = this.sprite.play('gobboshieldfire');
                 this.isBurning = true;
             }
@@ -535,6 +561,8 @@
         if (this.burnAnim) {
             this.burnAnim.stop();
         }
+        this.sprite.stop();
+         this.isAnimating = false;
         if (this.currAnim) {
             this.currAnim.stop();
         }

@@ -602,7 +602,8 @@ function createTutorialBtn(lvl) {
     if (!globalObjects.runeHighlight) {
         globalObjects.runeHighlight = PhaserScene.add.sprite(0, 0, 'tutorial', 'rune_highlight8.png').setDepth(10001).setVisible(false);
         globalObjects.runeHighlightTemp = PhaserScene.add.image(0, 0, 'tutorial', 'rune_highlight8.png').setDepth(10002).setAlpha(0);
-        globalObjects.runePicture = PhaserScene.add.sprite(gameConsts.halfWidth - 210, gameConsts.halfHeight - 40, 'tutorial', 'blank.png').setDepth(10002).setVisible(false).setRotation(-0.15);
+        globalObjects.runePictureFrame = PhaserScene.add.image(gameConsts.halfWidth - 210, gameConsts.halfHeight - 40, 'tutorial', 'tut_border.png').setDepth(10002).setVisible(false).setRotation(-0.08);
+        globalObjects.runePicture = PhaserScene.add.sprite(gameConsts.halfWidth - 210, gameConsts.halfHeight - 40, 'tutorial', 'blank.png').setDepth(10002).setVisible(false).setRotation(-0.08);
     }
     switch(lvl) {
         case 0:
@@ -780,6 +781,8 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
             globalObjects.runeHighlight.setVisible(false).setScale(0.96);
             globalObjects.runeHighlightTemp.setAlpha(0);
             globalObjects.runePicture.setAlpha(0);
+            globalObjects.runePictureFrame.setAlpha(0);
+
             PhaserScene.tweens.add({
                 targets: [globalObjects.runePicture, globalObjects.runeHighlightTemp],
                 alpha: 0,

@@ -170,6 +170,7 @@ class Dummyvoid extends Dummypractice {
                         this.playerSpellBodyTrack = messageBus.subscribe('recordSpell', (spellId) => {
                             if (spellId == 'voidReinforce') {
                                 this.playerSpellBodyTrack.unsubscribe();
+                                this.playerSpellBodyTrack = null;
                                 this.addDelay(() => {
                                     globalObjects.textPopupManager.hideInfoText();
                                     this.addTween({
@@ -194,6 +195,14 @@ class Dummyvoid extends Dummypractice {
                         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 180, getLangText('level5_train_tut_c'), 'right');
                         let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                         let centerXPos = globalObjects.textPopupManager.getCenterPos();
+                        if (this.rune1) {
+                            this.addTween({
+                                targets: [this.rune1, this.rune2],
+                                alpha: 0,
+                                duration: 200,
+                            });
+                        }
+
 
                         this.rune3 = this.addSprite(centerXPos - 35, runeYPos + 27, 'circle', 'rune_protect_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
                         this.rune4 = this.addSprite(centerXPos + 28, runeYPos + 28, 'circle', 'rune_void_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
@@ -218,9 +227,13 @@ class Dummyvoid extends Dummypractice {
                                 });
                             }
                         });
+                        if (this.playerSpellBodyTrack) {
+                            this.playerSpellBodyTrack.unsubscribe();
+                        }
                         this.playerSpellShieldTrack = messageBus.subscribe('recordSpell', (spellId) => {
                             if (spellId == 'voidProtect') {
                                 this.playerSpellShieldTrack.unsubscribe();
+                                this.playerSpellShieldTrack = null;
                                 globalObjects.textPopupManager.hideInfoText();
                                 this.addTween({
                                     targets: [this.rune3, this.rune4],

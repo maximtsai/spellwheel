@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>82</uint>
+        <uint>78</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -364,6 +364,21 @@
                 <rect>32,11,65,22</rect>
                 <key>scale9Paddings</key>
                 <rect>32,11,65,22</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">tutorial/tut_border.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>40,40,80,80</rect>
+                <key>scale9Paddings</key>
+                <rect>40,40,80,80</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

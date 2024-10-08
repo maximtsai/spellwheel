@@ -304,9 +304,10 @@ class PostFightScreen {
                             this.locketButton.setState(DISABLE);
                             PhaserScene.tweens.add({
                                 targets: [this.locketSprite],
-                                x: gameConsts.width + 120,
+                                x: gameConsts.width + 140,
+                                alpha: 0,
                                 ease: 'Cubic.easeIn',
-                                duration: 400,
+                                duration: 450,
                             });
                             if (canvas) {
                                 canvas.style.cursor = 'default';

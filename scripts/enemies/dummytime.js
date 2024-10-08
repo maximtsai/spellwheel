@@ -10,7 +10,6 @@
         this.pullbackScale = 1;
         this.damageCanEmit = true;
          this.spellsCastCount = 0;
-         this.cyclesLooped = 0;
      }
 
     initTutorial() {
@@ -250,6 +249,13 @@
                          globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText('level4_train_tut_b'), 'right');
                          let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                          let centerXPos = globalObjects.textPopupManager.getCenterPos();
+                         if (this.runea) {
+                             this.addTween({
+                                 targets: [this.runea, this.runeb],
+                                 alpha: 0,
+                                 duration: 200,
+                             });
+                         }
 
                          this.rune1 = this.addSprite(centerXPos - 30, runeYPos + 30, 'circle', 'rune_reinforce_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
                          this.rune2 = this.addSprite(centerXPos + 26, runeYPos + 30, 'circle', 'rune_time_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
@@ -274,6 +280,9 @@
                                  });
                              }
                          });
+                         if (this.playerSpellShieldTrack) {
+                             this.playerSpellShieldTrack.unsubscribe();
+                         }
                          this.playerSpellBodyTrack = messageBus.subscribe('recordSpell', (spellId) => {
                              if (spellId == 'timeReinforce') {
                                  this.playerSpellBodyTrack.unsubscribe();
@@ -313,11 +322,17 @@
                      transitionFast: true,
                      damage: -1,
                      startFunction: () => {
-                        this.cyclesLooped++;
-                        if (this.cyclesLooped % 2 == 1 && this.health > 30) {
+                        if (this.health > 30) {
                             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 172, getLangText('level4_train_tut_c'), 'right');
                              let runeYPos = globalObjects.textPopupManager.getBoxTopPos();
                              let centerXPos = globalObjects.textPopupManager.getCenterPos();
+                            if (this.rune1) {
+                                this.addTween({
+                                    targets: [this.rune1, this.rune2],
+                                    alpha: 0,
+                                    duration: 200,
+                                });
+                            }
 
                             if (!this.rune3) {
                                  this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 93, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.71).setAlpha(0);
@@ -346,6 +361,9 @@
                                  }
                              });
                              this.addDelay(() => {
+                                 if (this.playerSpellBodyTrack) {
+                                     this.playerSpellBodyTrack.unsubscribe();
+                                 }
                                  this.playerSpellBodyTrack2 = messageBus.subscribe('recordSpell', (spellId) => {
                                      if (spellId == 'timeEnhance' || spellId == 'matterEnhance') {
                                          this.playerSpellBodyTrack2.unsubscribe();

@@ -297,15 +297,25 @@ class PostFightScreen {
                         this.openLocket();
                     } else if (this.locketIsClosable) {
                         playSound('locket_close');
-                        if (this.locketSprite.frame.name == 'locket1.png') {
-                            globalObjects.bannerTextManager.setDialog(["I must press on."]);
-                            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
-                            globalObjects.bannerTextManager.showBanner();
+                        if (this.locketSprite.frame.name == 'locket4.png') {
+                            // globalObjects.bannerTextManager.setDialog(["I must press on."]);
+                            // globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+                            // globalObjects.bannerTextManager.showBanner();
+                            this.locketButton.setState(DISABLE);
+                            PhaserScene.tweens.add({
+                                targets: [this.locketSprite],
+                                x: gameConsts.width + 120,
+                                ease: 'Cubic.easeIn',
+                                duration: 400,
+                            });
+                            if (canvas) {
+                                canvas.style.cursor = 'default';
+                            }
                         }
-
 
                         this.locketSprite.setFrame('locket4.png').setOrigin(0.5, 0.8);
                         this.locketSprite.setScale(this.locketSprite.scaleX + 0.02);
+
                         PhaserScene.tweens.add({
                             targets: [this.locketSprite],
                             scaleX: 0.75,

@@ -1089,7 +1089,7 @@
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
                          this.createTimeObject('clock2.png', this.x - 120, this.y - 70);
-                         this.createTimeObject('clock3.png', this.x - 40, this.y - 80, 150);
+                         this.createTimeObject('clock3.png', this.x - 40, this.y - 95, 150);
                          this.createTimeObject('clock4.png', this.x + 40, this.y - 80, 300);
                          this.addTimeout(() => {
                              this.fireTimeObjects(4);
@@ -1111,7 +1111,7 @@
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
                          this.createTimeObject('clock2.png', this.x - 120, this.y - 70);
-                         this.createTimeObject('clock3.png', this.x - 40, this.y - 80, 150);
+                         this.createTimeObject('clock3.png', this.x - 40, this.y - 95, 150);
                          this.createTimeObject('clock2.png', this.x + 40, this.y - 80, 300);
                          this.addTimeout(() => {
                              this.fireTimeObjects(3);

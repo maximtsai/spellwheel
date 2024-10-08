@@ -628,13 +628,19 @@ const ENABLE_KEYBOARD = true;
             scaleY: 1.3,
             duration: gameVars.gameManualSlowSpeed * 250,
         });
-        this.gear1.setPosition(gameConsts.halfWidth, 185).setScale(1.2);
-        this.gear2.setPosition(gameConsts.halfWidth, 185).setScale(0.9)
-        this.gear3.setPosition(gameConsts.halfWidth, 185).setScale(1.9);
+        this.gear1.setPosition(gameConsts.halfWidth, 190).setScale(1.3);
+        this.gear2.setPosition(gameConsts.halfWidth, 190).setScale(0.9)
+        this.gear3.setPosition(gameConsts.halfWidth, 190).setScale(2.07);
         this.scene.tweens.add({
-            targets: [this.gear1, this.gear2, this.gear3, this.gear4],
+            targets: [this.gear1, this.gear2, this.gear3],
             ease: 'Quart.easeOut',
             alpha: 0.15,
+            duration: gameVars.gameManualSlowSpeed * 1000,
+        });
+        this.scene.tweens.add({
+            targets: [this.gear4],
+            ease: 'Quart.easeOut',
+            alpha: 0,
             duration: gameVars.gameManualSlowSpeed * 1000,
         });
     }
@@ -1787,22 +1793,29 @@ const ENABLE_KEYBOARD = true;
                              this.castSpell(true);
                          }
                          if (!this.readySprite) {
-                             this.readySprite = this.scene.add.sprite(this.x, this.y, 'circle').play('circleEffect').setScale(1.1).setDepth(100000);
+                             this.readySprite = this.scene.add.sprite(this.x, this.y, 'circle').play('circleEffect').setScale(1.1).setDepth(1000);
                          } else {
                              this.readySprite.visible = true;
                              this.readySprite.play(useLongDelay ? 'circleEffect' : 'circleEffectSmall');
                              this.readySprite.setScale(1.1);
                          }
-
+                         this.readySprite.setAlpha(1);
+                         let tweenDur = gameVars.gameManualSlowSpeed * (useLongDelay ? 1200 : 900);
                          this.scene.tweens.add({
                              targets: this.readySprite,
-                             scaleX: useLongDelay ? 2.65 : 2.15,
-                             scaleY: useLongDelay ? 2.65 : 2.15,
-                             duration: gameVars.gameManualSlowSpeed * useLongDelay ? 1200 : 600,
+                             scaleX: useLongDelay ? 2.63 : 2.57,
+                             scaleY: useLongDelay ? 2.63 : 2.57,
+                             duration: tweenDur,
                              ease: 'Cubic.easeOut',
                              onComplete: () => {
                                  this.readySprite.visible = false;
                              }
+                         });
+                         this.scene.tweens.add({
+                             targets: this.readySprite,
+                             alpha: 0,
+                             duration: tweenDur,
+                             ease: 'Quad.easeIn',
                          });
                      }
                  }, useLongDelay ? 800 : 0)
@@ -2101,10 +2114,10 @@ const ENABLE_KEYBOARD = true;
 
     showReadySprite(light = true, scaleMult = 1) {
         if (this.readySprite) {
-            console.log("readysprite");
             if (this.readySprite.currAnim) {
                 this.readySprite.currAnim.stop();
             }
+            this.readySprite.setAlpha(1);
             this.readySprite.setScale(1.15 * scaleMult);
             this.readySprite.play(light ? 'circleEffect' : 'circleEffectSmall');
             this.readySprite.visible = true;

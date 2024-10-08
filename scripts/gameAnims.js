@@ -417,7 +417,7 @@ function createAnimations(scene) {
         frames: scene.anims.generateFrameNames('circle', {
             prefix: 'circleEffect',
             suffix: '.png',
-            start: 5,
+            start: 4,
             end: 10,
             zeroPad: 0,
         }),

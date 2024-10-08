@@ -710,7 +710,7 @@ class Enemy {
             let damageSqrt = Math.sqrt(damageToTake);
             setTimeout(() => {
                 messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, 265, 'X2', 0.7 + damageSqrt * 0.14);
-            }, 240 + Math.floor(damageSqrt) * 8)
+            }, Math.floor(damageSqrt) * 15)
 
             amt += damageToTake;
             // setTimeout(() => {

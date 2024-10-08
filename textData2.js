@@ -772,7 +772,7 @@ let textData2 = {
         "jp": "解除方法:\nダミーを倒す"
     },
     "level4_train_tut_b1": {
-        "en_us": "Slows down\nincoming damage\n             +",
+        "en_us": "Slows down\nincoming damage\n              +",
         "fr": "Ralentit les\ndégâts importants\n              +",
         "zh_tw": "减缓严重伤害\n         +",
         "zh_cn": "减缓严重伤害\n         +",

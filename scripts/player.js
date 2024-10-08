@@ -725,6 +725,7 @@ class Player {
                 this.statuses['matterUnload'].animObj[1].setScale(1.1);
                 this.statuses['matterUnload'].animObj[1].setText(this.statuses['matterUnload'].health);
                 this.statuses['matterUnload'].cleanUp(this.statuses);
+                messageBus.publish('selfClearStatuses', 'matterUnload');
                 messageBus.publish('animateBlockNum', gameConsts.halfWidth, gameConsts.halfHeight + 40, -shieldedDamage, 1.5 + Math.sqrt(shieldedDamage) * 0.125);
             }
 

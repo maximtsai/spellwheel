@@ -839,13 +839,13 @@ class SpellManager {
             stoneCircle = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'stoneCircle.png');
             stoneCircle.setAlpha(0.5).setScale(0.9).setRotation(-0.3);
 
-            textHealth = this.scene.add.bitmapText(gameConsts.halfWidth, globalObjects.player.getY() - 44, 'armor', '0', 48, 1);
+            textHealth = this.scene.add.bitmapText(gameConsts.halfWidth, globalObjects.player.getY() - 46, 'armor', '0', 48, 1);
             textHealth.startX = textHealth.x;
             textHealth.startY = textHealth.y;
         }
         // messageBus.publish('setTempRotObjs', [stoneCircle], rotation);
 
-        textHealth.setDepth(120).setOrigin(0.5, 0.5).setScale(0);
+        textHealth.setDepth(125).setOrigin(0.5, 0.5).setScale(0).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 46);
         stoneCircle.setDepth(10);
         let basePower = 24;
         let shieldHealth = basePower * multiplier;
@@ -864,10 +864,10 @@ class SpellManager {
                 textHealth.setText(shieldHealth);
                 this.scene.tweens.add({
                     targets: textHealth,
-                    duration: 350,
+                    duration: 250,
                     scaleX: 1,
                     scaleY: 1,
-                    ease: 'Cubic.easeOut',
+                    ease: 'Quad.easeIn',
                 });
             },
             onComplete: () => {

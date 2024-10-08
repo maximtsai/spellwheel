@@ -666,6 +666,7 @@ class Options {
             this.codeItemText = PhaserScene.add.text(gameConsts.halfWidth - 230, gameConsts.halfHeight + 45, getLangText('access_code'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth + 1);
             this.listOfThingsToHideSemiAlpha.push(this.codeItemText);
 
+            /*
             this.playButton = new Button({
                 normal: {
                     ref: "play_btn.png",
@@ -822,6 +823,7 @@ class Options {
                 this.listOfThingsToHide.push(rune2);
                 this.listOfThingsToHideSemiAlpha.push(rune3);
             }
+             */
         }
     }
 

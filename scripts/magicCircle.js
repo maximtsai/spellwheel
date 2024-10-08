@@ -628,8 +628,8 @@ const ENABLE_KEYBOARD = true;
             scaleY: 1.3,
             duration: gameVars.gameManualSlowSpeed * 250,
         });
-        this.gear1.setPosition(gameConsts.halfWidth, 190).setScale(1.3);
-        this.gear2.setPosition(gameConsts.halfWidth, 190).setScale(0.9)
+        this.gear1.setPosition(gameConsts.halfWidth, 190).setScale(1.15);
+        this.gear2.setPosition(gameConsts.halfWidth, 190).setScale(0.88)
         this.gear3.setPosition(gameConsts.halfWidth, 190).setScale(2.07);
         this.scene.tweens.add({
             targets: [this.gear1, this.gear2, this.gear3],

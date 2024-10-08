@@ -144,6 +144,9 @@
                  this.breatheTween.stop();
                  this.breatheTween = null;
              }
+             if (lastHealthLost >= 30) {
+                 messageBus.publish('newUnlock', 'gobbohit')
+             }
              if (this.accumulatedAnimDamage <= 12){
                  // do nothin
              } else if (this.accumulatedAnimDamage <= 24) {

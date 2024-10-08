@@ -1202,6 +1202,8 @@
          this.sprite.setDepth(2);
          playSound('meat_click_right');
          this.setMaxHealth(gameVars.isHardMode ? 125 : 110);
+         this.bg2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'gravedark.png').setDepth(-4);
+         this.graves.setVisible(false);
          this.heal(this.healthMax);
          this.setAwake();
          this.sigilEffect.setFrame('void_knight_sigil2.png').setScale(this.sprite.startScale);
@@ -1463,6 +1465,17 @@
              this.rune1.visible = false;
              this.rune2.visible = false;
          }
+
+         if (this.bg2) {
+             this.addTween({
+                 targets: this.bg2,
+                 alpha: 0,
+                 duration: 800,
+                 ease: 'Quad.easeIn'
+             })
+         }
+
+         this.graves.setVisible(true).setDepth(-4);
 
          this.sigilEffect.alpha = 0;
          this.breatheTween.stop();

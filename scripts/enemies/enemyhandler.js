@@ -7,26 +7,26 @@ function createEnemy(num) {
         globalObjects.currentEnemy = new SuperDummy(PhaserScene, gameConsts.halfWidth, 170, 7, true);
         break;
     case -6:
-        globalObjects.currentEnemy = new Dummyvoid(PhaserScene, gameConsts.halfWidth, 320, num);
+        globalObjects.currentEnemy = new Dummyvoid(PhaserScene, gameConsts.halfWidth, 310, num);
         break;
     case -5:
     case -4:
-        globalObjects.currentEnemy = new Dummytime(PhaserScene, gameConsts.halfWidth, 320, num);
+        globalObjects.currentEnemy = new Dummytime(PhaserScene, gameConsts.halfWidth, 310, num);
         break;
     case -3:
-        globalObjects.currentEnemy = new Dummybody(PhaserScene, gameConsts.halfWidth, 320, num);
+        globalObjects.currentEnemy = new Dummybody(PhaserScene, gameConsts.halfWidth, 310, num);
         break;
     case -2:
-        globalObjects.currentEnemy = new Dummyshield(PhaserScene, gameConsts.halfWidth, 320, num);
+        globalObjects.currentEnemy = new Dummyshield(PhaserScene, gameConsts.halfWidth, 310, num);
         break;
     case -1:
-        globalObjects.currentEnemy = new Dummymind(PhaserScene, gameConsts.halfWidth, 320, num);
+        globalObjects.currentEnemy = new Dummymind(PhaserScene, gameConsts.halfWidth, 310, num);
         break;
     case 0:
         globalObjects.currentEnemy = new LesserDummy(PhaserScene, gameConsts.halfWidth, 318, num);
         break;
     case 1:
-        globalObjects.currentEnemy = new Dummy(PhaserScene, gameConsts.halfWidth, 150, num);
+        globalObjects.currentEnemy = new Dummy(PhaserScene, gameConsts.halfWidth, 125, num);
         break;
     case 2:
         globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 185, num);

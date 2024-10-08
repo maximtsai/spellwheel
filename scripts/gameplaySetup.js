@@ -837,6 +837,7 @@ function setupGame() {
     globalObjects.postFightScreen = new PostFightScreen(PhaserScene);
     globalObjects.confirmPopup = new ConfirmPopup(PhaserScene);
     globalObjects.bgHandler = new BgHandler();
+    globalObjects.unlocks = new Unlocks();
 }
 
 function setupPlayer() {

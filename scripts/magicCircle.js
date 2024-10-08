@@ -570,13 +570,17 @@ const ENABLE_KEYBOARD = true;
         this.clockbg.setDepth(-3);
         this.gear1 = this.scene.add.sprite(-40, 280, 'circle', 'gear.png').setAlpha(0);
         this.gear1.setDepth(1);
+        this.gear1.startX = this.gear1.x; this.gear1.startY = this.gear1.y;
         this.gear2 = this.scene.add.sprite(120, 442, 'circle', 'gear_small.png').setAlpha(0);
         this.gear2.setDepth(1);
         this.gear2.rotation = -0.25;
+        this.gear2.startX = this.gear2.x; this.gear2.startY = this.gear2.y;
         this.gear3 = this.scene.add.sprite(565, -15, 'circle', 'gear.png').setAlpha(0);
         this.gear3.setDepth(1);
+        this.gear3.startX = this.gear3.x; this.gear3.startY = this.gear3.y;
         this.gear4 = this.scene.add.sprite(538, 575, 'circle', 'gear_small.png').setAlpha(0);
         this.gear4.setDepth(1);
+        this.gear4.startX = this.gear4.x; this.gear4.startY = this.gear4.y;
     }
 
      finishUpMindDamage(charge) {
@@ -619,15 +623,18 @@ const ENABLE_KEYBOARD = true;
 
         this.scene.tweens.add({
             targets: this.clockbg,
-            alpha: 0.12,
+            alpha: 0.10,
             scaleX: 1.3,
             scaleY: 1.3,
             duration: gameVars.gameManualSlowSpeed * 250,
         });
+        this.gear1.setPosition(gameConsts.halfWidth, 185).setScale(1.2);
+        this.gear2.setPosition(gameConsts.halfWidth, 185).setScale(0.9)
+        this.gear3.setPosition(gameConsts.halfWidth, 185).setScale(1.9);
         this.scene.tweens.add({
             targets: [this.gear1, this.gear2, this.gear3, this.gear4],
             ease: 'Quart.easeOut',
-            alpha: 0.5,
+            alpha: 0.15,
             duration: gameVars.gameManualSlowSpeed * 1000,
         });
     }
@@ -692,15 +699,19 @@ const ENABLE_KEYBOARD = true;
 
          this.scene.tweens.add({
              targets: this.clockbg,
-             alpha: 0.07 + multiplierAddition * 0.04,
+             alpha: 0.07 + multiplierAddition * 0.025,
              scaleX: 1.3,
              scaleY: 1.3,
              duration: gameVars.gameManualSlowSpeed * 250,
          });
+         this.gear1.setPosition(this.gear1.startX, this.gear1.startY).setScale(1);
+         this.gear2.setPosition(this.gear2.startX, this.gear2.startY).setScale(1);
+         this.gear3.setPosition(this.gear3.startX, this.gear3.startY).setScale(1);
+         this.gear4.setPosition(this.gear4.startX, this.gear4.startY);
          this.scene.tweens.add({
              targets: [this.gear1, this.gear2, this.gear3, this.gear4],
              ease: 'Quart.easeOut',
-             alpha: 0.4 + multiplierAddition * 0.2,
+             alpha: 0.2 + multiplierAddition * 0.11,
              duration: gameVars.gameManualSlowSpeed * 1000,
          });
      }

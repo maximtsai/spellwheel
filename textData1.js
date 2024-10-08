@@ -138,7 +138,7 @@ let textData = {
         "jp": "24ダメージを与える。\n24個の一時的な保護を得る。"
     },
     "time_strike_desc": {
-        "en_us": "Hits twice.\nFirst hit deals\n6 damage, second\nhit deals 50%\nof first.",
+        "en_us": "Hits twice.\nFirst hit deals\n6 damage, second\nhit deals 50%\nof the first.",
         "fr": "Attaque deux fois.\nLa première attaque\ninflige 6 dégâts,\nla seconde inflige\n50% des dégâts de\nla première.",
         "zh_tw": "攻擊兩次。第一次\n造成 6 點傷害，\n第二次造成第一次\n攻擊傷害的 50%。",
         "zh_cn": "攻击两次。第一次\n造成 6 点伤害，\n第二次造成第一次\n攻擊伤害的 50%。",
@@ -147,7 +147,7 @@ let textData = {
         "jp": "2回攻撃する。最初の\n攻撃は6ダメージを与え、\n2回目の攻撃は最初の\n攻撃の50%を与えます。"
     },
     "time_strike_desc_long": {
-        "en_us": "Hits twice. First hit deals 6 damage,\nsecond hit deals 50% of first.",
+        "en_us": "Hits twice. First hit deals 6 damage,\nsecond hit deals 50% of the first.",
         "fr": "Attaque deux fois. La première attaque inflige 6 dégâts,\nla seconde inflige 50% des dégâts de la première.",
         "zh_tw": "攻擊兩次。第一次造成 6 點傷害，\n第二次造成第一次攻擊傷害的 50%。",
         "zh_cn": "攻击两次。第一次造成 6 点伤害，\n第二次造成第一次攻擊伤害的 50%。",
@@ -453,8 +453,8 @@ let textData = {
         "jp": "次の非攻撃呪文の有効性は+200%です"
     },
     "matter_tut_desc": {
-        "en_us": "The Matter rune grants\ncontrol over solid matter.\nMatter spells are good at dealing direct\ndamage and providing reliable protection.",
-        "fr": "La rune Matière permet de\ncontrôler la matière solide.\nLes sorts de matière permettent d'infliger\ndes dégâts directs et d'assurer une\nprotection fiable.",
+        "en_us": "The Matter Rune grants\ncontrol over solid matter.\nMatter spells are good at dealing direct\ndamage and providing reliable protection.",
+        "fr": "La Rune Matière permet de\ncontrôler la matière solide.\nLes sorts de matière permettent d'infliger\ndes dégâts directs et d'assurer une\nprotection fiable.",
         "zh_tw": "物質符文可控制固體物質。\n物質法術擅長造成直接\n傷害並提供可靠的保護。",
         "zh_cn": "物质符文可控制固体物质。\n物质法术擅长造成直接\n伤害并提供可靠的保护。",
         "ru": "Руна «Материя» дает контроль\nнад твердой материей. Заклинания\nматерии хороши для нанесения\nпрямого урона и обеспечения\nнадежной защиты.",
@@ -561,7 +561,7 @@ let textData = {
         "jp": "次の通常攻撃で敵に火をつけ、防御を無視して継続ダメージを与える。"
     },
     "mind_tut_protect_desc": {
-        "en_us": "Creates a shield that blocks\nhalf of all damage, while\nstoring up and retaliating with\nthe damage you do take.",
+        "en_us": "Creates a shield that blocks\n50% of the next attack, and\nretaliates with the damage you\ndo take.",
         "fr": "Crée un bouclier qui bloque la\nmoitié de tous les dégâts,\ntout en accumulant et en ripostant\navec les dégâts que vous subissez.",
         "zh_tw": "創建一個盾牌，可以阻擋所有\n傷害的一半，同時儲存並利用你所\n受到的傷害進行報復。",
         "zh_cn": "打造一个盾牌，可以阻挡所有\n伤害的一半，同时储存并利用你所\n受到的伤害进行报复。",
@@ -588,8 +588,8 @@ let textData = {
         "jp": "次の非攻撃呪文の効果を倍増させる。この呪文を2回連続で唱える賢い人は、息を呑むような呪文増幅力を得ることができます。"
     },
     "time_tut_desc": {
-        "en_us": "The Time rune grants control\nover time itself. Time spells let\nyou attack multiple times, defer damage,\nor slow your enemies to a crawl.",
-        "fr": "La rune du Temps accorde le\ncontrôle du temporel. Les sorts de\ntemps vous permettent d'attaquer plusieurs\nfois, de retarder les blessures, voire\nde ralentir vos ennemis jusqu'à l'immobilité.",
+        "en_us": "The Time Rune grants control\nover time itself. Time spells let\nyou attack multiple times, defer damage,\nor slow your enemies to a crawl.",
+        "fr": "La Rune du Temps accorde le\ncontrôle du temporel. Les sorts de\ntemps vous permettent d'attaquer plusieurs\nfois, de retarder les blessures, voire\nde ralentir vos ennemis jusqu'à l'immobilité.",
         "zh_tw": "時間符文授予對時間的控\n制權。時間法術讓你能多次\n攻擊，延緩受傷時間，甚至\n凍結時間來減慢敵人的行動。",
         "zh_cn": "时间符文授予对时间的控\n制权。时间法术让你能多次\n攻击，延缓受伤时间，甚至\n冻结时间来减慢敌人的行动。",
         "ru": "Руна Времени предоставляет\nконтроль над самим временем.\nЗаклинания Времени позволяют вам атаковать\nнесколько раз, откладывать урон или\nзамедлять ваших врагов до предела.",
@@ -597,8 +597,8 @@ let textData = {
         "jp": "タイムルーンは、時間的なものに対するコントロールを与える。時間呪文を使用すると、複数回攻撃したり、負傷を遅らせたり、敵の動きを鈍らせたりすることができます。"
     },
     "time_tut_desc_sh": {
-        "en_us": "The Time rune grants control\nover time itself. Time spells let\nyou attack multiple times, defer\ndamage, or slow your enemies\nto a crawl.",
-        "fr": "La rune du Temps accorde le\ncontrôle du temporel. Les sorts de\ntemps vous permettent d'attaquer\nplusieurs fois, de retarder les\nblessures, voire de ralentir vos\nennemis jusqu'à l'immobilité.",
+        "en_us": "The Time Rune grants control\nover time itself. Time spells let\nyou attack multiple times, defer\ndamage, or slow your enemies\nto a crawl.",
+        "fr": "La Rune du Temps accorde le\ncontrôle du temporel. Les sorts de\ntemps vous permettent d'attaquer\nplusieurs fois, de retarder les\nblessures, voire de ralentir vos\nennemis jusqu'à l'immobilité.",
         "zh_tw": "時間符文授予對時間的控\n制權。時間法術讓你能多次\n攻擊，延緩受傷時間，甚至\n凍結時間來減慢敵人的行動。",
         "zh_cn": "时间符文授予对时间的控\n制权。时间法术让你能多次\n攻击，延缓受伤时间，甚至\n冻结时间来减慢敌人的行动。",
         "ru": "Руна Времени предоставляет\nконтроль над самим временем.\nЗаклинания Времени позволяют вам атаковать\nнесколько раз, откладывать урон или\nзамедлять ваших врагов до предела.",
@@ -606,7 +606,7 @@ let textData = {
         "jp": "タイムルーンは、時間的なものに対するコントロールを与える。時間呪文を使用すると、複数回攻撃したり、負傷を遅らせたり、敵の動きを鈍らせたりすることができます。"
     },
     "time_tut_strike_desc": {
-        "en_us": "An attack that strikes twice.\nEach attack does modest\ndamage but can be powered up\ngreatly with +damage\nenhancements.",
+        "en_us": "An attack that hits twice.\nEach attack does medium\ndamage but can be powered up\ngreatly with damage\nenhancements.",
         "fr": "Une attaque qui frappe deux fois.\nChaque attaque inflige des\ndégâts modérés, mais peut être\nconsidérablement améliorée avec des\nbonus de dégâts.",
         "zh_tw": "攻擊兩次。攻擊本身造成的\n傷害不高，但加強攻擊力的\n法術可以大量增加威力。",
         "zh_cn": "攻击两次。攻击本身造成的\n伤害不高，但加强攻击力的\n法术可以大量增加威力。",
@@ -651,8 +651,8 @@ let textData = {
         "jp": ""
     },
     "void_tut_desc": {
-        "en_us": "The Void rune grants control\nover empty space. Void spells\ncan deal percentage health damage,\nnegate enemy attacks, or even\nfully heal you at a cost.",
-        "fr": "La rune du Vide permet de contrôler\nl’espace vide. Les sorts du Vide peuvent infliger\ndes dégâts basés sur un pourcentage de santé,\nannuler les attaques ennemies ou même vous\nsoigner complètement à un certain coût.",
+        "en_us": "The Void Rune grants control\nover empty space. Void spells\ncan deal percentage health damage,\nnegate enemy attacks, or even\nfully heal you... at a cost.",
+        "fr": "La Rune du Vide permet de contrôler\nl’espace vide. Les sorts du Vide peuvent infliger\ndes dégâts basés sur un pourcentage de santé,\nannuler les attaques ennemies ou même vous\nsoigner complètement à un certain coût.",
         "zh_tw": "虛空符文賦予了你對虛\n空空間的控制權。虛空法術\n可以造成一定比例的生命值傷害、\n抵消敵人的攻擊，甚至可以完全治癒你。",
         "zh_cn": "虚空符文赋予了你对虚\n空空间的控制权。虚空法术\n可以造成一定比例的生命值伤害、\n抵消敌人的攻击，甚至可以完全治愈你。",
         "ru": "Руна Пустоты дает контроль над\nпустым пространством. Заклинания\nПустоты могут наносить урон в процентах\nот здоровья, нейтрализовать атаки врагов\nили полностью исцелить вас за\nопределенную цену.",
@@ -660,8 +660,8 @@ let textData = {
         "jp": ""
     },
     "void_tut_desc_sh": {
-        "en_us": "The Void rune grants control\nover empty space. Void spells\ncan deal percentage health damage,\nnegate enemy attacks, or even\nfully heal you at a cost.",
-        "fr": "La rune du Vide permet de\ncontrôler l’espace vide. Les sorts\ndu Vide peuvent infliger des dégâts\nbasés sur un pourcentage de santé,\nannuler les attaques ennemies ou\nmême vous soigner complètement.",
+        "en_us": "The Void Rune grants control\nover empty space. Void spells\ncan deal percentage health damage,\nnegate enemy attacks, or even\nfully heal you... at a cost.",
+        "fr": "La Rune du Vide permet de\ncontrôler l’espace vide. Les sorts\ndu Vide peuvent infliger des dégâts\nbasés sur un pourcentage de santé,\nannuler les attaques ennemies ou\nmême vous soigner complètement.",
         "zh_tw": "虛空符文賦予了你對虛空空間的\n控制權。虛空法術可以造成一定\n比例的生命值傷害、抵消敵人的\n攻擊，甚至可以完全治癒你。",
         "zh_cn": "虚空符文赋予了你对虚空空间的\n控制权。虚空法术可以造成一定\n比例的生命值伤害、抵消敌人的\n攻击，甚至可以完全治愈你。",
         "ru": "Руна Пустоты дает контроль над\nпустым пространством. Заклинания\nПустоты могут наносить урон в процентах\nот здоровья, нейтрализовать атаки врагов\nили полностью исцелить вас за\nопределенную цену.",
@@ -723,8 +723,8 @@ let textData = {
         "jp": "シールドルーンは、あなたと敵の間に配置されている限り、あなたを保護するバリアを作成します。"
     },
     "reinforce_tut_desc": {
-        "en_us": "The Body rune grants effects\nthat persist until you cast a new\nbody spell. Some Body rune spells can\neven heal you.",
-        "fr": "La rune Corps confère des effets\nqui persistent jusqu’à ce que vous\nlanciez un nouveau sort corporel. Certains\ncombos rune Corps peuvent même\nvous soigner.",
+        "en_us": "The Body Rune grants effects\nthat persist until you cast a new\nbody spell. Some Body rune spells can\neven heal you.",
+        "fr": "La Rune Corps confère des effets\nqui persistent jusqu’à ce que vous\nlanciez un nouveau sort corporel. Certains\ncombos rune Corps peuvent même\nvous soigner.",
         "zh_tw": "身體符文賦予的效果會\n一直持續到你施放新的\n體法術。\n某些身體符文組合甚至可以治癒你。",
         "zh_cn": "身体符文赋予的效果会\n一直持续到你施放新的\n身体法术。\n某些身体符文组合甚至可以治愈你。",
         "ru": "Руна Тела дает эффекты, которые сохраняются до тех пор, пока вы не разыграете новое заклинание тела. Некоторые комбинации Тело+Руна могут даже исцелить вас.",
@@ -732,8 +732,8 @@ let textData = {
         "jp": "身体のルーンは、あなたが新しい身体呪文を唱えるまで持続する効果を付与する。一部のボディ+ルーンコンボはあなたを癒すことさえできます。"
     },
     "reinforce_tut_desc_sh": {
-        "en_us": "The Body rune grants effects\nthat persist until you cast a new\nbody spell. Some Body rune spells\ncan even heal you.",
-        "fr": "La rune Corps confère des effets\nqui persistent jusqu’à ce que\nvous lanciez un nouveau sort\ncorporel. Certains combos rune Corps\npeuvent même vous soigner.",
+        "en_us": "The Body Rune grants effects\nthat persist until you cast a new\nbody spell. Some Body rune\nspells can even heal you.",
+        "fr": "La Rune Corps confère des effets\nqui persistent jusqu’à ce que\nvous lanciez un nouveau sort\ncorporel. Certains combos rune\nCorps peuvent même vous soigner.",
         "zh_tw": "身體符文賦予的效果會\n一直持續到你施放新的\n體法術。\n某些身體符文組合甚至可以治癒你。",
         "zh_cn": "身体符文赋予的效果会\n一直持续到你施放新的\n身体法术。\n某些身体符文组合甚至可以治愈你。",
         "ru": "Руна Тела дает эффекты, которые сохраняются до тех пор, пока вы не разыграете новое заклинание тела. Некоторые комбинации Тело+Руна могут даже исцелить вас.",
@@ -742,7 +742,7 @@ let textData = {
     },
     "unload_tut_desc": {
         "en_us": "The Ultimate rune grants you\nsome of the most powerful\nspells in your arsenal.\nUse this rune wisely.",
-        "fr": "La rune Ultime vous confère\ncertains des sorts les plus\npuissants de votre arsenal.\nUtilisez cette rune à bon escient.",
+        "fr": "La Rune Ultime vous confère\ncertains des sorts les plus\npuissants de votre arsenal.\nUtilisez cette rune à bon escient.",
         "zh_tw": "究極符文賦予您最強大的法術。\n明智地使用這個符文。",
         "zh_cn": "究极符文赋予您最强大的法术。\n明智地使用这个符文。",
         "ru": "Руна Ultimate дает вам одни из самых мощных заклинаний в вашем арсенале. Используйте эту руну с умом.",

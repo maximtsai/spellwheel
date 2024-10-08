@@ -461,6 +461,8 @@ function playReaperPassiveAnim(enemy, customFinFunc) {
 
     tweenFloatingDeath(0.75, 1, 1200, "Cubic.easeInOut", () => {
         gameVars.deathFlutterDelay = 450;
+        repeatDeathHandsRotate();
+
         // repeatDeathFlutterAnimation();
         setFloatingDeathDepth(100010);
         repeatDeathFlutterAnimation(-0.25);

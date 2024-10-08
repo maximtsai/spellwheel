@@ -98,7 +98,7 @@
 
     showTimeStrike() {
         this.addDelay(() => {
-            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 110, getLangText("time_strike_info"), 'right');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 111, getLangText("time_strike_info"), 'right');
             let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
             let centerXPos = globalObjects.textPopupManager.getCenterPos();
             let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
@@ -293,18 +293,19 @@
         //     duration: 800,
         //     ease: 'Quad.easeInOut'
         // })
-         this.handShieldTemp = this.addSprite(this.x - 3, this.y - 72, 'deathfinal', 'palm_glow.png').setScale(this.sprite.startScale * 1.355).setDepth(3).setAlpha(0).setRotation(this.defaultRotation).setOrigin(0.5, 0.373);
+         this.handShieldTemp = this.addSprite(this.x - 3, this.y - 72, 'deathfinal', 'palm_glow.png').setScale(this.sprite.startScale * 1.355).setDepth(3).setAlpha(0).setOrigin(0.5, 0.373);
          this.handShieldTemp.startScale = this.handShieldTemp.scaleX;
 
          this.handShieldTemp.currAnim = this.addTween({
              targets: this.handShieldTemp,
              alpha: 1,
-             duration: 1700,
+             ease: 'Quad.easeOut',
+             duration: 1850,
          });
          // playFakeBGMusic('but_never_forgotten_metal_prelude');
          this.addDelayIfAlive(() => {
              playSound('ringknell')
-             this.secondTempShield = this.addSprite(this.handShieldTemp.x + 5, this.handShieldTemp.y + 99, 'deathfinal', 'palm_glow.png').setScale(this.handShieldTemp.startScale * 1.2, this.handShieldTemp.startScale * 1.15).setDepth(3).setAlpha(0).setRotation(this.defaultRotation).setOrigin(0.5, 0.55);
+             this.secondTempShield = this.addSprite(this.handShieldTemp.x + 5, this.handShieldTemp.y + 99, 'deathfinal', 'palm_glow.png').setScale(this.handShieldTemp.startScale * 1.2, this.handShieldTemp.startScale * 1.15).setDepth(3).setAlpha(0).setOrigin(0.5, 0.55);
 
              this.addTween({
                  targets: this.secondTempShield,
@@ -347,7 +348,7 @@
                      })
                  }
              });
-         }, 1000)
+         }, 1150)
      }
 
      createHandShield(amt) {
@@ -372,13 +373,13 @@
          })
          let darkBG = getBackgroundBlackout();
          darkBG.setDepth(-3).setAlpha(0.45);
-         let spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.6).setScale(1.2);
+         let spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.95).setScale(1.2);
          this.scene.tweens.add({
              targets: [spaceBG, darkBG],
              alpha: 0,
              ease: 'Cubic.easeOut',
-             duration: 2500,
-             completeDelay: 750,
+             duration: 2600,
+             completeDelay: 650,
              onComplete: () => {
                 this.canShowEarlyInfo = true;
              }
@@ -386,7 +387,7 @@
          this.addDelayIfAlive(() => {
              this.shieldSettedUp = true;
              this.bgMusic = playMusic('but_never_forgotten', 0.7, true);
-         }, 800)
+         }, 300)
 
          // let fakeMusic = playFakeBGMusic('but_never_forgotten_epicchoir');
          // this.addTimeout(() => {
@@ -628,7 +629,7 @@
                      finishDelay: 1600,
                      damage: -1,
                      startFunction: () => {
-                         this.prepAttack();
+                         //this.prepAttack();
                      },
                      attackFinishFunction: () => {
                          this.fireVoidAttacks(2, 2);
@@ -640,7 +641,7 @@
                      finishDelay: 2400,
                      damage: -1,
                      startFunction: () => {
-                         this.prepAttack();
+                         //this.prepAttack();
                      },
                      attackFinishFunction: () => {
                          this.fireVoidAttacks(3, 3);
@@ -652,7 +653,7 @@
                      finishDelay: 3000,
                      damage: -1,
                      startFunction: () => {
-                         this.prepAttack();
+                         //this.prepAttack();
                      },
                      attackFinishFunction: () => {
                          this.fireVoidAttacks(4, 4);
@@ -664,7 +665,7 @@
                      chargeAmt: 800,
                      damage: -1,
                      startFunction: () => {
-                         this.prepAttack();
+                         //this.prepAttack();
                      },
                      attackFinishFunction: () => {
                          this.fireVoidAttacks(5, 5);
@@ -676,7 +677,7 @@
                      finishDelay: 4000,
                      damage: -1,
                      startFunction: () => {
-                         this.prepAttack();
+                         //this.prepAttack();
                      },
                      attackFinishFunction: () => {
                          this.fireVoidAttacks(6, 6);
@@ -688,7 +689,7 @@
                      finishDelay: 4400,
                      damage: -1,
                      startFunction: () => {
-                         this.prepAttack();
+                         //this.prepAttack();
                      },
                      attackFinishFunction: () => {
                          this.fireVoidAttacks(7, 7);
@@ -701,7 +702,7 @@
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
-                         this.prepAttack();
+                         //this.prepAttack();
                      },
                      attackFinishFunction: () => {
                          this.fireVoidAttacks(8, 8);
@@ -714,7 +715,7 @@
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
-                         this.prepAttack();
+                         //this.prepAttack();
                      },
                      attackFinishFunction: () => {
                          this.fireVoidAttacks(9, 9);
@@ -727,7 +728,6 @@
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
-                         this.prepAttack();
                      },
                      attackFinishFunction: () => {
                          this.fireVoidAttacks(10, 10);
@@ -748,9 +748,26 @@
      }
 
      fireVoidAttacks(damage = 3, times = 3) {
-        playSound('ringknell')
+         this.prepAttack();
+         this.handShieldTemp.currAnim = this.addTween({
+             targets: this.handShieldTemp,
+             alpha: 1,
+             duration: 1300
+         })
+        this.addDelay(() => {
+            playSound('ringknell')
+        }, 500)
         for (let i = 0; i < times; i++) {
             this.addDelay(() => {
+                if (i == 0) {
+                    this.handShieldTemp.currAnim.stop();
+                    this.addTween({
+                        targets: this.handShieldTemp,
+                        alpha: 0,
+                        ease: 'Quad.easeOut',
+                        duration: 500
+                    })
+                }
                 let pulse = getTempPoolObject('blurry', 'pulser.png', 'pulser', 825);
                 pulse.setAlpha(0).setScale(0.65).setPosition(this.x, this.y - 60).setDepth(10);
                 this.addTween({
@@ -787,7 +804,7 @@
                     let slamSfx = playSound('body_slam', vol);
                     slamSfx = 200 - Math.floor(Math.random() * 450);
                 }, 650)
-            }, i * 600 - times * 30)
+            }, i * 600 - times * 30 + 1100)
         }
      }
 
@@ -796,7 +813,7 @@
             this.darkBlur = this.addImage(this.x, this.y - 55, 'blurry', 'dark_blur.png').setDepth(-1).setScale(7).setAlpha(0);
             this.flashPic = this.addImage(this.x, this.y - 65, 'blurry', 'flash.webp').setDepth(-1);
         }
-        this.flashPic.setScale(0.1).setRotation(-0.3);
+        this.flashPic.setScale(0.1).setRotation(-0.05);
          this.addTween({
              targets: this.darkBlur,
              alpha: 0.45,
@@ -812,13 +829,11 @@
          });
 
 
-        this.addDelay(() => {
-            let sliceSfx = playSound('slice_in', 0.6);
-            sliceSfx.detune = -200 + Math.floor(Math.random() * 200)
-        }, 200)
+        let sliceSfx = playSound('slice_in', 0.6);
+        sliceSfx.detune = -200 + Math.floor(Math.random() * 200)
         this.addTween({
             targets: this.flashPic,
-            rotation: 0,
+            rotation: 0.05,
             scaleX: 3,
             scaleY: 2.2,
             ease: 'Cubic.easeIn',
@@ -826,7 +841,7 @@
             onComplete: () => {
                 this.addTween({
                     targets: this.flashPic,
-                    rotation: 0.3,
+                    rotation: 0.15,
                     scaleX: 0,
                     scaleY: 0,
                     ease: 'Cubic.easeOut',

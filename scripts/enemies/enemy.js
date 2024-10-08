@@ -1578,6 +1578,8 @@ class Enemy {
         this.chargeBarWarning.destroy();
         this.chargeBarAngry.destroy();
         this.chargeBarCurr.destroy();
+        this.attackGlow.destroy();
+        this.attackNameHighlight.destroy();
 
         if (this.chargeBarEst1.currAnim) {
             this.chargeBarEst1.currAnim.stop();

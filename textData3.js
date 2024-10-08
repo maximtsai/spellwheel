@@ -271,7 +271,7 @@ let textData3 = {
         "jp": ""
     },
     "death_statue1": {
-        "en_us": "AH, SO THIS IS WHERE I\nLAST LEFT THE THING...",
+        "en_us": "AH, SO THIS IS WHERE\nI LEFT THIS OLD BOULDER...",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -300,10 +300,10 @@ let textData3 = {
 
 
     "death5a": {
-        "en_us": "PERHAPS YOU THINK YOURSELF\nA HERO, BUT UNDERSTAND THIS",
-        "fr": "VVOUS POUVEZ VOUS VOIR COMME\nUN HÉROS, MAIS COMPRENEZ CECI",
-        "zh_tw": "你認為自己是英雄，\n但要明白這一點",
-        "zh_cn": "你认为自己是英雄，\n但要明白这一点",
+        "en_us": "PERHAPS YOU THINK YOURSELF\nA HERO, BUT UNDERSTAND THIS:",
+        "fr": "VVOUS POUVEZ VOUS VOIR COMME\nUN HÉROS, MAIS COMPRENEZ CECI:",
+        "zh_tw": "你認為自己是英雄，\n但要明白這一點:",
+        "zh_cn": "你认为自己是英雄，\n但要明白这一点:",
         "ru": "ВЫ МОЖЕТЕ СЧИТАТЬ СЕБЯ ГЕРОЕМ, НО ПОЙМИТЕ ЭТО",
         "es": "PUEDE QUE PIENSES QUE ERES UN HÉROE, PERO ENTIENDE ESTO",
         "jp": "あなたは自分のことをヒーローだと思うかもしれませんが、これを理解してください"

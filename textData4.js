@@ -325,8 +325,8 @@ let textData4 = {
         "jp": "このシールドは最強の攻撃を防げます!しかし、どんなヒットでも壊れます。"
     },
     "shield_comment_knight": {
-        "en_us": "This shield feels similar to the\nshield that statue was using earlier.",
-        "fr": "Ce bouclier ressemble à la statue\nque j'ai combattue plus tôt.",
+        "en_us": "This shield feels similar to\nthat statue's shield from earlier.",
+        "fr": "Ce bouclier ressemble au bouclier\nde cette statue plus tôt",
         "zh_tw": "這個護盾看起來很像之前\n那座雕像用的護盾。",
         "zh_cn": "这个护盾看起来很像之前\n那座雕像用的护盾。",
         "ru": "",
@@ -488,7 +488,7 @@ let textData4 = {
         "jp": "1つのスポットでアクティブにできるシールドは1つだけです。"
     },
     "pre_fight_3a": {
-        "en_us": "\"Your fighting skill is\nquite a feat, but keep on\ngoing and doom you'll meet!\"",
+        "en_us": "\"Your skill in battle is\nquite a feat, but press on\nfurther and doom you'll meet!\"",
         "fr": "\"Ton skill au combat est\nbien, mais continue\net tu verras la fin!\"",
         "zh_tw": "\"你的戰鬥技藝非凡驚艷，\n但繼續前行會厄運將現!\"",
         "zh_cn": "\"你的战斗技艺非凡惊艳，\n但继续前行会厄运将现!\"",

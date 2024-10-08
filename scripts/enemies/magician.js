@@ -1089,11 +1089,11 @@
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
                          this.createTimeObject('clock2.png', this.x - 120, this.y - 70);
-                         this.createTimeObject('clock3.png', this.x - 40, this.y - 80, 125);
-                         this.createTimeObject('clock4.png', this.x + 40, this.y - 80, 250);
+                         this.createTimeObject('clock3.png', this.x - 40, this.y - 80, 150);
+                         this.createTimeObject('clock4.png', this.x + 40, this.y - 80, 300);
                          this.addTimeout(() => {
                              this.fireTimeObjects(4);
-                         }, 600);
+                         }, 800);
                      },
                      attackFinishFunction: () => {
                         if (this.health < this.healthMax - 20) {
@@ -1111,11 +1111,11 @@
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
                          this.createTimeObject('clock2.png', this.x - 120, this.y - 70);
-                         this.createTimeObject('clock3.png', this.x - 40, this.y - 80, 125);
-                         this.createTimeObject('clock2.png', this.x + 40, this.y - 80, 250);
+                         this.createTimeObject('clock3.png', this.x - 40, this.y - 80, 150);
+                         this.createTimeObject('clock2.png', this.x + 40, this.y - 80, 300);
                          this.addTimeout(() => {
                              this.fireTimeObjects(3);
-                         }, 600);
+                         }, 800);
                      },
                      attackFinishFunction: () => {
                         if (this.health < this.healthMax - 20) {
@@ -1186,7 +1186,7 @@
                      attackFinishFunction: () => {
                          this.addTimeout(() => {
                              this.fireTimeObjects(20, 600);
-                         }, 350);
+                         }, 550);
                         this.currentAttackSetIndex = 0;
                         this.nextAttackIndex = 0;
                      }
@@ -1318,7 +1318,7 @@
                          this.createTimeObject('clock3.png', this.x - 75, this.y - 20);
                          this.addTimeout(() => {
                              this.fireTimeObjects(5);
-                         }, 300);
+                         }, 500);
                      },
                  },
                  {

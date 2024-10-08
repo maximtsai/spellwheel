@@ -29,7 +29,7 @@ function updateSpellState(level) {
     switch(level) {
         case -6:
             // void dummy
-            EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, null, null, RUNE_REINFORCE, RUNE_ENHANCE, RUNE_STRIKE];
+            EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_PROTECT, RUNE_ENHANCE, null, RUNE_ENHANCE, RUNE_REINFORCE, RUNE_ENHANCE, RUNE_STRIKE];
             ELEMENT_ARRAY = [RUNE_VOID, RUNE_VOID, RUNE_MATTER, null, null, RUNE_VOID, RUNE_VOID];
             break;
         case -5:

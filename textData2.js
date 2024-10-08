@@ -274,7 +274,7 @@ let textData2 = {
         "jp": "私は死者の禁じられた土地への門に到着しました。 すぐに、この領域は私の立ち入りに抵抗します。しかし、私はここであなたを見つけるでしょう、親愛なる最愛の人、そして私があなたに連絡を取るのを妨げるものは何もありません。"
     },
     "post_fight_story2": {
-        "en_us": "The fabled Reaper has taken notice\nof me, but I don't fear it at all.\n\nThey remind me more of my nagging parents\nthan an underworld spectre.\n\nPerhaps I'll grab this shield before they\nstart chastising me further.",
+        "en_us": "The fabled Reaper has taken notice\nof me, but I don't fear it at all.\n\nThey remind me more of my nagging\nparents than an underworld spectre.\n\nPerhaps I'll grab this shield before they\nstart chastising me further.",
         "fr": "Le légendaire Faucheur m'a remarqué,\nmais je n'ai guère peur.\n\nIls me rappellent plus mes parents harcelants\nqu'un spectre des enfers.\n\nJe devrais lui retirer ce bouclier avant qu'il\ncontinue à me harceler.",
         "zh_tw": "傳說中的死神已經注意到我了，\n但我幾乎不覺得害怕。\n\n" +
             "在我看來，他們更像是個嘮叨的父母，\n而不是地獄裡可怕的幽靈。\n\n我該在他繼續嘮叨前拿走這面盾牌。",
@@ -313,7 +313,7 @@ let textData2 = {
         "jp": "あなたの抱擁をもう一度感じたいと切望しています、私の最愛の人。 あなたの死はあまりにも早く、あまりにも不当であり、たとえ私が国全体を覆さなければならないとしても、私はこの間違いを正します。"
     },
     "post_fight_story5": {
-        "en_us": "The Reaper appears every time to sour my\nvictories. Is my quest to reclaim a loved one\nso wrong?\n\nSurely not, so perhaps it's actually the\nReaper themselves who is setting up all\nthese obstacles!",
+        "en_us": "The Reaper appears every time to sour my\nvictories. Is my quest to reclaim my loved one\nso wrong?\n\nSurely not, so perhaps it's actually the\nReaper themselves who is setting up all\nthese obstacles!",
         "fr": "Le Faucheur apparaît à chaque fois pour\ngâcher mes victoires. Ma quête pour\nrécupérer un être cher est-elle si mauvaise?\n\nCertainement pas, ce qui signifie que c'est\nle Faucheur lui-même qui met en place tous\nces obstacles!",
         "zh_tw": "死神每次出現都會讓我的勝利灰飛煙滅。\n我找回愛人的任務難道就這麼錯嗎？\n\n當然不是，這意味著一定是死神自己在\n設置所有這些障礙！",
         "zh_cn": "死神每次出现都会让我的胜利灰飞烟灭。\n我找回爱人的任务难道就这么错误吗？\n\n当然不是，这意味着一定是死神自己在\n设置所有这些障碍！",
@@ -772,8 +772,8 @@ let textData2 = {
         "jp": "解除方法:\nダミーを倒す"
     },
     "level4_train_tut_b1": {
-        "en_us": "Slows down\nheavy damage\n           +",
-        "fr": "Ralentit les\ndégâts importants\n             +",
+        "en_us": "Slows down\nincoming damage\n             +",
+        "fr": "Ralentit les\ndégâts importants\n              +",
         "zh_tw": "减缓严重伤害\n         +",
         "zh_cn": "减缓严重伤害\n         +",
         "ru": "",

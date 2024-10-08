@@ -443,10 +443,10 @@ let textData4 = {
         "jp": "あなたは勝ったと思っていますが、私はまだ終わっていません。"
     },
     "magician_d": {
-        "en_us": "Let me show you\na true temporal threat!",
+        "en_us": "Let me show you\nmy Time Attack Threat!",
         "fr": "Laisse-moi te montrer\nun vrai ennemi !",
-        "zh_tw": "讓你瞧瞧時間的厲害！",
-        "zh_cn": "让你瞧瞧时间的厉害！",
+        "zh_tw": "讓你來瞧瞧時間的厲害！",
+        "zh_cn": "让你来瞧瞧时间的厉害！",
         "ru": "Позвольте мне показать вам истинную временную угрозу!",
         "es": "¡Déjame mostrarte una verdadera amenaza temporal!",
         "jp": "真の時間的脅威をお見せしましょう!"

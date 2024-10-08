@@ -37,13 +37,13 @@ let textData3 = {
         "jp": ""
     },
     "access_code": {
-        "en_us": "ACCESS CODE",
-        "fr": "CODE D'ACCÈS",
-        "zh_tw": "密碼",
-        "zh_cn": "密码",
-        "ru": "КОД ДОСТУПА",
-        "es": "CÓDIGOS SECRETOS",
-        "jp": "アクセスコード"
+        "en_us": "UNLOCKS",
+        "fr": "DÉVERROUILLE",
+        "zh_tw": "已解鎖內容",
+        "zh_cn": "已解锁内容",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "cheat_code": {
         "en_us": "CHEAT UNLOCKED",

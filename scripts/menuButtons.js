@@ -337,7 +337,7 @@ function showMainMenuButtons() {
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.width - 80,
+            x: gameConsts.width + 180,
             y: 390,
         },
         hover: {
@@ -744,6 +744,8 @@ function showMainMenuButtons() {
             // clearOnlyMenuButtons()
             // rollCredits();
             // return;
+            globalObjects.encyclopedia.hideButton();
+            globalObjects.options.hideButton();
             let text1 = "Game by Maxim Tsai\n" +
                 "Character art by Theresa Kao\n@mothmeatstore\n" +
                 "Background and wheel art by Alex Volchek\n@love_sickening\n" +
@@ -768,16 +770,14 @@ function showMainMenuButtons() {
                 scaleY: 1,
                 alpha: 1,
             });
-            if (canvas) {
-                canvas.style.cursor = 'pointer';
-            }
-            let creditsButton;
-            creditsButton = new Button({
+
+            let clickBlock;
+            clickBlock = new Button({
                 normal: {
                     ref: "blackPixel",
                     scaleX: 1000,
                     scaleY: 1000,
-                    alpha: 0.5,
+                    alpha: 0.6,
                     x: gameConsts.halfWidth,
                     y: gameConsts.halfHeight,
                 },
@@ -786,16 +786,56 @@ function showMainMenuButtons() {
                 },
 
                 onMouseUp: () => {
-                    creditsButton.destroy();
+
+                }
+            });
+            this.closeButton = new Button({
+                normal: {
+                    atlas: 'buttons',
+                    ref: "closebtn.png",
+                    alpha: 0.95,
+                    x: gameConsts.halfWidth + 230,
+                    y: gameConsts.halfHeight - 275,
+                },
+                hover: {
+                    alpha: 1,
+                    atlas: 'buttons',
+                    ref: "closebtn_hover.png",
+                },
+                press: {
+                    atlas: 'buttons',
+                    ref: "closebtn_press.png",
+                    alpha: 1
+                },
+                disable: {
+                    atlas: 'buttons',
+                    ref: "closebtn.png",
+                    alpha: 0
+                },
+                onHover: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: () => {
+                    globalObjects.encyclopedia.showButton();
+                    globalObjects.options.showButton();
+                    clickBlock.destroy();
                     creditsUI.destroy();
                     creditsText.destroy();
                     creditsText2.destroy();
+                    this.closeButton.destroy();
                     if (canvas) {
                         canvas.style.cursor = 'default';
                     }
                 }
             });
-            creditsButton.setDepth(99999);
+            this.closeButton.setDepth(100000);
         }
     });
     globalObjects.creditsButton.setScale(0.5, 0.5);

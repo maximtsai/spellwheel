@@ -101,7 +101,7 @@
             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 111, getLangText("time_strike_info"), 'right');
             let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
             let centerXPos = globalObjects.textPopupManager.getCenterPos();
-            let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
+            let runeDepth = globalObjects.textPopupManager.getDepth() + 1;
             this.rune3 = this.addImage(centerXPos - 32, runeYPos + 27, 'circle', 'rune_time_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
             this.rune4 = this.addImage(centerXPos + 34, runeYPos + 27, 'circle', 'rune_strike_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
             this.addTween({
@@ -293,7 +293,7 @@
         //     duration: 800,
         //     ease: 'Quad.easeInOut'
         // })
-         this.handShieldTemp = this.addSprite(this.x - 3, this.y - 72, 'deathfinal', 'palm_glow.png').setScale(this.sprite.startScale * 1.355).setDepth(3).setAlpha(0).setOrigin(0.5, 0.373);
+         this.handShieldTemp = this.addSprite(this.x - 1, this.y - 72, 'deathfinal', 'palm_glow.png').setScale(this.sprite.startScale * 1.355).setDepth(3).setAlpha(0).setOrigin(0.5, 0.373);
          this.handShieldTemp.startScale = this.handShieldTemp.scaleX;
 
          this.handShieldTemp.currAnim = this.addTween({
@@ -305,7 +305,7 @@
          // playFakeBGMusic('but_never_forgotten_metal_prelude');
          this.addDelayIfAlive(() => {
              playSound('ringknell')
-             this.secondTempShield = this.addSprite(this.handShieldTemp.x + 5, this.handShieldTemp.y + 99, 'deathfinal', 'palm_glow.png').setScale(this.handShieldTemp.startScale * 1.2, this.handShieldTemp.startScale * 1.15).setDepth(3).setAlpha(0).setOrigin(0.5, 0.55);
+             this.secondTempShield = this.addSprite(this.handShieldTemp.x, this.handShieldTemp.y + 99, 'deathfinal', 'palm_glow.png').setScale(this.handShieldTemp.startScale * 1.2, this.handShieldTemp.startScale * 1.15).setDepth(3).setAlpha(0).setOrigin(0.5, 0.55);
 
              this.addTween({
                  targets: this.secondTempShield,
@@ -607,7 +607,7 @@
              [
                  // 0
                  {
-                     name: gameVars.isHardMode ? "SHIELD? #10" : "SHIELD? #9",
+                     name: gameVars.isHardMode ? "VOID SHIELD? #10" : "VOID SHIELD? #9",
                      chargeAmt: 888,
                      chargeMult: 20,
                      finishDelay: 2500,

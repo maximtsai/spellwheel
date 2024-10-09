@@ -2,7 +2,7 @@ class TextPopupManager {
     constructor(scene) {
         this.scene = scene;
         this.damageNums = []; // Depreciated, currently just using one damage num
-        this.damageNum = this.scene.add.bitmapText(gameConsts.halfWidth, 200, 'damage', '', isMobile ? 34 : 32).setDepth(100000).setOrigin(0.5, 0.65);
+        this.damageNum = this.scene.add.bitmapText(gameConsts.halfWidth, 200, 'damage', '', isMobile ? 34 : 32).setDepth(99900).setOrigin(0.5, 0.65);
         this.damageNum.startY = this.damageNum.y;
         this.damageTween = null;
         this.damageNumber = 0;
@@ -11,14 +11,14 @@ class TextPopupManager {
         this.blockNums = [];
         this.armorNums = [];
         this.voidNums = [];
-        this.infoBlur = this.scene.add.image(0, 0, 'blurry', 'display_backglow.png').setAlpha(0).setDepth(10000);
-        this.infoBox = this.scene.add.image(0, 0, 'blackPixel').setAlpha(0).setDepth(10000);
-        this.infoText = this.scene.add.text(0, 0, 'WELCOME', {fontFamily: 'Arial', fontSize: isMobile ? 23 : 22, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(10000);
+        this.infoBlur = this.scene.add.image(0, 0, 'blurry', 'display_backglow.png').setAlpha(0).setDepth(9990);
+        this.infoBox = this.scene.add.image(0, 0, 'blackPixel').setAlpha(0).setDepth(9990);
+        this.infoText = this.scene.add.text(0, 0, 'WELCOME', {fontFamily: 'Arial', fontSize: isMobile ? 23 : 22, color: '#FFFFFF', align: 'center'}).setAlpha(0).setOrigin(0.5, 0.5).setDepth(9990);
         this.infoText.setFontStyle('bold');
-        this.infoBorderTop = this.scene.add.image(0, 0, 'blurry', 'box_length.png').setAlpha(0).setDepth(10000);
-        this.infoBorderBot = this.scene.add.image(0, 0, 'blurry', 'box_length.png').setAlpha(0).setDepth(10000);
+        this.infoBorderTop = this.scene.add.image(0, 0, 'blurry', 'box_length.png').setAlpha(0).setDepth(9990);
+        this.infoBorderBot = this.scene.add.image(0, 0, 'blurry', 'box_length.png').setAlpha(0).setDepth(9990);
 
-        this.infoWhiteFlashLeft = this.scene.add.image(0, 0, 'pixels', 'white_pixel.png').setDepth(10000).setOrigin(0, 0.5).setScale(0).setAlpha(0.7);
+        this.infoWhiteFlashLeft = this.scene.add.image(0, 0, 'pixels', 'white_pixel.png').setDepth(9990).setOrigin(0, 0.5).setScale(0).setAlpha(0.7);
         messageBus.subscribe('animateDamageNum', this.animateDamageNum.bind(this));
         messageBus.subscribe('animateDamageNumAccumulate', this.animateDamageNumAccumulate.bind(this));
         messageBus.subscribe('animateTrueDamageNum', this.animateTrueDamageNum.bind(this));
@@ -44,6 +44,10 @@ class TextPopupManager {
 
     getCenterPos() {
         return this.infoBox.x - this.infoBox.scaleX * (this.infoBox.originX - 0.5) * 2;
+    }
+
+    getDepth() {
+        return this.infoBox.depth;
     }
 
     setInfoText(x, y, newText, align = 'center', useSmall) {

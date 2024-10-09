@@ -1,4 +1,5 @@
 function initRuneHighlight(x, y) {
+    globalObjects.runeHighlightRune.setVisible(true).setScale(1);
     globalObjects.runeHighlight.setVisible(true).setScale(1).setPosition(x, y);
     globalObjects.runeHighlight.play('runeHighlight');
     globalObjects.runeHighlight.alpha = 1;

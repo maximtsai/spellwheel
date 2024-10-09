@@ -34,7 +34,7 @@ class BannerTextManager {
     }
 
 
-    showBanner(haveBGDarken = 0.5, isSmall = false) {
+    showBanner(haveBGDarken = 0.5, isSmall = false, pauseTime) {
         this.isShowing = true;
         this.setText(this.dialog[this.dialogIndex]);
         if (this.funcArray[this.dialogIndex]) {

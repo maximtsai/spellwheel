@@ -4,8 +4,8 @@
 			"image": "sprites/tutorial-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 954,
-				"h": 1205
+				"w": 992,
+				"h": 1143
 			},
 			"scale": 1,
 			"frames": [
@@ -224,31 +224,6 @@
 						"h": 148
 					},
 					"frame": {
-						"x": 1,
-						"y": 1007,
-						"w": 148,
-						"h": 148
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "tut_matter_unload.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 148,
-						"h": 148
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 148,
-						"h": 148
-					},
-					"frame": {
 						"x": 683,
 						"y": 78,
 						"w": 148,
@@ -260,7 +235,7 @@
 					}
 				},
 				{
-					"filename": "tut_mind_enhance.png",
+					"filename": "tut_matter_unload.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -285,7 +260,7 @@
 					}
 				},
 				{
-					"filename": "tut_mind_reinforce.png",
+					"filename": "tut_mind_enhance.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -310,7 +285,7 @@
 					}
 				},
 				{
-					"filename": "tut_mind_shield.png",
+					"filename": "tut_mind_reinforce.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -335,7 +310,7 @@
 					}
 				},
 				{
-					"filename": "tut_mind_strike.png",
+					"filename": "tut_mind_shield.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -360,7 +335,7 @@
 					}
 				},
 				{
-					"filename": "tut_mind_unload.png",
+					"filename": "tut_mind_strike.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -385,6 +360,56 @@
 					}
 				},
 				{
+					"filename": "rune_highlight5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 120,
+						"h": 120
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 120,
+						"h": 118
+					},
+					"frame": {
+						"x": 1,
+						"y": 1007,
+						"w": 120,
+						"h": 118
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "tut_mind_unload.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 148,
+						"h": 148
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 148,
+						"h": 148
+					},
+					"frame": {
+						"x": 833,
+						"y": 1,
+						"w": 148,
+						"h": 148
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "tut_time_enhance.png",
 					"rotated": false,
 					"trimmed": false,
@@ -399,8 +424,8 @@
 						"h": 148
 					},
 					"frame": {
-						"x": 151,
-						"y": 1056,
+						"x": 833,
+						"y": 151,
 						"w": 148,
 						"h": 148
 					},
@@ -424,8 +449,8 @@
 						"h": 148
 					},
 					"frame": {
-						"x": 540,
-						"y": 240,
+						"x": 683,
+						"y": 228,
 						"w": 148,
 						"h": 148
 					},
@@ -449,8 +474,8 @@
 						"h": 148
 					},
 					"frame": {
-						"x": 690,
-						"y": 228,
+						"x": 833,
+						"y": 301,
 						"w": 148,
 						"h": 148
 					},
@@ -461,56 +486,6 @@
 				},
 				{
 					"filename": "tut_time_strike.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 148,
-						"h": 148
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 148,
-						"h": 148
-					},
-					"frame": {
-						"x": 540,
-						"y": 390,
-						"w": 148,
-						"h": 148
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "tut_time_unload.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 148,
-						"h": 148
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 148,
-						"h": 148
-					},
-					"frame": {
-						"x": 690,
-						"y": 378,
-						"w": 148,
-						"h": 148
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "tut_void_enhance.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -535,7 +510,7 @@
 					}
 				},
 				{
-					"filename": "tut_void_protect.png",
+					"filename": "tut_time_unload.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -560,7 +535,7 @@
 					}
 				},
 				{
-					"filename": "tut_void_reinforce.png",
+					"filename": "tut_void_enhance.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -585,7 +560,7 @@
 					}
 				},
 				{
-					"filename": "tut_void_strike.png",
+					"filename": "tut_void_protect.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -610,24 +585,24 @@
 					}
 				},
 				{
-					"filename": "rune_highlight - Copy.png",
+					"filename": "tut_void_reinforce.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 125,
-						"h": 125
+						"w": 148,
+						"h": 148
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 125,
-						"h": 125
+						"w": 148,
+						"h": 148
 					},
 					"frame": {
-						"x": 301,
-						"y": 1076,
-						"w": 125,
-						"h": 125
+						"x": 458,
+						"y": 476,
+						"w": 148,
+						"h": 148
 					},
 					"anchor": {
 						"x": 0.5,
@@ -635,124 +610,24 @@
 					}
 				},
 				{
-					"filename": "rune_highlight5.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 120,
-						"h": 120
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 120,
-						"h": 118
-					},
-					"frame": {
-						"x": 833,
-						"y": 1,
-						"w": 120,
-						"h": 118
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_highlight2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 120,
-						"h": 120
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 22,
-						"w": 110,
-						"h": 98
-					},
-					"frame": {
-						"x": 833,
-						"y": 121,
-						"w": 110,
-						"h": 98
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_highlight3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 120,
-						"h": 120
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 8,
-						"w": 110,
-						"h": 112
-					},
-					"frame": {
-						"x": 840,
-						"y": 221,
-						"w": 110,
-						"h": 112
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_highlight1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 120,
-						"h": 120
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 22,
-						"w": 107,
-						"h": 98
-					},
-					"frame": {
-						"x": 840,
-						"y": 335,
-						"w": 107,
-						"h": 98
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_strike_large.png",
+					"filename": "tut_void_strike.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 104,
-						"h": 90
+						"w": 148,
+						"h": 148
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 104,
-						"h": 90
+						"w": 148,
+						"h": 148
 					},
 					"frame": {
-						"x": 840,
-						"y": 435,
-						"w": 104,
-						"h": 90
+						"x": 451,
+						"y": 626,
+						"w": 148,
+						"h": 148
 					},
 					"anchor": {
 						"x": 0.5,
@@ -774,85 +649,10 @@
 						"h": 148
 					},
 					"frame": {
-						"x": 690,
-						"y": 528,
+						"x": 451,
+						"y": 776,
 						"w": 148,
 						"h": 148
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level0btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 840,
-						"y": 527,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_void_large.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 104,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 12,
-						"y": 0,
-						"w": 77,
-						"h": 80
-					},
-					"frame": {
-						"x": 458,
-						"y": 476,
-						"w": 77,
-						"h": 80
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level1btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 840,
-						"y": 629,
-						"w": 100,
-						"h": 100
 					},
 					"anchor": {
 						"x": 0.5,
@@ -874,10 +674,35 @@
 						"h": 118
 					},
 					"frame": {
-						"x": 458,
-						"y": 558,
+						"x": 451,
+						"y": 926,
 						"w": 120,
 						"h": 118
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_enhance_large.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 104,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 104,
+						"h": 80
+					},
+					"frame": {
+						"x": 521,
+						"y": 240,
+						"w": 104,
+						"h": 80
 					},
 					"anchor": {
 						"x": 0.5,
@@ -899,10 +724,60 @@
 						"h": 118
 					},
 					"frame": {
-						"x": 451,
-						"y": 678,
+						"x": 540,
+						"y": 322,
 						"w": 120,
 						"h": 118
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_energy_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 90
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 3,
+						"w": 63,
+						"h": 86
+					},
+					"frame": {
+						"x": 123,
+						"y": 1056,
+						"w": 63,
+						"h": 86
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_time_large.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 104,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 104,
+						"h": 80
+					},
+					"frame": {
+						"x": 188,
+						"y": 1056,
+						"w": 104,
+						"h": 80
 					},
 					"anchor": {
 						"x": 0.5,
@@ -924,8 +799,8 @@
 						"h": 118
 					},
 					"frame": {
-						"x": 451,
-						"y": 798,
+						"x": 662,
+						"y": 378,
 						"w": 120,
 						"h": 118
 					},
@@ -949,8 +824,8 @@
 						"h": 118
 					},
 					"frame": {
-						"x": 451,
-						"y": 918,
+						"x": 608,
+						"y": 498,
 						"w": 119,
 						"h": 118
 					},
@@ -960,24 +835,24 @@
 					}
 				},
 				{
-					"filename": "level2btn.png",
+					"filename": "rune_highlight3.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 100,
-						"h": 100
+						"w": 120,
+						"h": 120
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
+						"y": 8,
+						"w": 110,
+						"h": 112
 					},
 					"frame": {
-						"x": 580,
-						"y": 540,
-						"w": 100,
-						"h": 100
+						"x": 729,
+						"y": 498,
+						"w": 110,
+						"h": 112
 					},
 					"anchor": {
 						"x": 0.5,
@@ -985,24 +860,74 @@
 					}
 				},
 				{
-					"filename": "rune_enhance_large.png",
+					"filename": "rune_highlight2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 120,
+						"h": 120
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 22,
+						"w": 110,
+						"h": 98
+					},
+					"frame": {
+						"x": 841,
+						"y": 451,
+						"w": 110,
+						"h": 98
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_highlight1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 120,
+						"h": 120
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 22,
+						"w": 107,
+						"h": 98
+					},
+					"frame": {
+						"x": 841,
+						"y": 551,
+						"w": 107,
+						"h": 98
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_strike_large.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
 						"w": 104,
-						"h": 80
+						"h": 90
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
 						"w": 104,
-						"h": 80
+						"h": 90
 					},
 					"frame": {
 						"x": 451,
-						"y": 1038,
+						"y": 1046,
 						"w": 104,
-						"h": 80
+						"h": 90
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1010,57 +935,7 @@
 					}
 				},
 				{
-					"filename": "rune_time_large.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 104,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 104,
-						"h": 80
-					},
-					"frame": {
-						"x": 428,
-						"y": 1120,
-						"w": 104,
-						"h": 80
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level3btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 580,
-						"y": 642,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level4btn.png",
+					"filename": "level0btn.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -1075,7 +950,7 @@
 					},
 					"frame": {
 						"x": 573,
-						"y": 744,
+						"y": 926,
 						"w": 100,
 						"h": 100
 					},
@@ -1085,7 +960,7 @@
 					}
 				},
 				{
-					"filename": "level5btn.png",
+					"filename": "level1btn.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -1100,182 +975,7 @@
 					},
 					"frame": {
 						"x": 573,
-						"y": 846,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level6btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 572,
-						"y": 948,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level7btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 682,
-						"y": 678,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level8btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 675,
-						"y": 780,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level9btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 675,
-						"y": 882,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level10btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 674,
-						"y": 984,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level11btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 557,
-						"y": 1050,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level12btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 659,
-						"y": 1086,
+						"y": 1028,
 						"w": 100,
 						"h": 100
 					},
@@ -1299,10 +999,310 @@
 						"h": 71
 					},
 					"frame": {
-						"x": 784,
-						"y": 678,
+						"x": 627,
+						"y": 240,
 						"w": 43,
 						"h": 71
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level2btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 608,
+						"y": 618,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level3btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 601,
+						"y": 720,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level4btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 601,
+						"y": 822,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level5btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 675,
+						"y": 924,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level6btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 675,
+						"y": 1026,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level7btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 710,
+						"y": 618,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level8btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 703,
+						"y": 720,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level9btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 703,
+						"y": 822,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level10btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 812,
+						"y": 651,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_void_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 0,
+						"w": 77,
+						"h": 80
+					},
+					"frame": {
+						"x": 914,
+						"y": 651,
+						"w": 77,
+						"h": 80
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level11btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 805,
+						"y": 753,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level12btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 805,
+						"y": 855,
+						"w": 100,
+						"h": 100
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1324,33 +1324,8 @@
 						"h": 100
 					},
 					"frame": {
-						"x": 761,
-						"y": 1086,
-						"w": 100,
-						"h": 100
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "level14btn.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 100,
-						"h": 100
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 100,
-						"h": 100
-					},
-					"frame": {
-						"x": 776,
-						"y": 984,
+						"x": 777,
+						"y": 957,
 						"w": 100,
 						"h": 100
 					},
@@ -1374,35 +1349,10 @@
 						"h": 76
 					},
 					"frame": {
-						"x": 829,
-						"y": 731,
+						"x": 777,
+						"y": 1059,
 						"w": 93,
 						"h": 76
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_protect_large.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 104,
-						"h": 90
-					},
-					"spriteSourceSize": {
-						"x": 9,
-						"y": 5,
-						"w": 85,
-						"h": 81
-					},
-					"frame": {
-						"x": 777,
-						"y": 809,
-						"w": 85,
-						"h": 81
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1424,35 +1374,10 @@
 						"h": 76
 					},
 					"frame": {
-						"x": 777,
-						"y": 892,
+						"x": 907,
+						"y": 753,
 						"w": 84,
 						"h": 76
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_energy_large.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 104,
-						"h": 90
-					},
-					"spriteSourceSize": {
-						"x": 19,
-						"y": 3,
-						"w": 63,
-						"h": 86
-					},
-					"frame": {
-						"x": 864,
-						"y": 809,
-						"w": 63,
-						"h": 86
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1474,10 +1399,60 @@
 						"h": 76
 					},
 					"frame": {
-						"x": 863,
-						"y": 897,
+						"x": 907,
+						"y": 831,
 						"w": 76,
 						"h": 76
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "level14btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 100
+					},
+					"frame": {
+						"x": 879,
+						"y": 957,
+						"w": 100,
+						"h": 100
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_protect_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 90
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 5,
+						"w": 85,
+						"h": 81
+					},
+					"frame": {
+						"x": 872,
+						"y": 1059,
+						"w": 85,
+						"h": 81
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1499,8 +1474,8 @@
 						"h": 47
 					},
 					"frame": {
-						"x": 1,
-						"y": 1157,
+						"x": 784,
+						"y": 378,
 						"w": 46,
 						"h": 47
 					},
@@ -1540,6 +1515,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:7a50aee1cad6af826492966b6897b661:eadf8a522808a858e06614201ad3639d:77e5ef39ce5a344d4157739a7d363d2d$"
+		"smartupdate": "$TexturePacker:SmartUpdate:536a65bb5e145ab8476ca24d01b96e2e:8a6cbf8d2e67fa898c18c86091a929ec:77e5ef39ce5a344d4157739a7d363d2d$"
 	}
 }

@@ -826,9 +826,15 @@
                          this.nextAttackIndex = 0;
                          this.sigilEffect.visible = true;
 
-                         globalObjects.bannerTextManager.setDialog([getLangText('shield_comment_knight')]);
-                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
-                         globalObjects.bannerTextManager.showBanner(0.5);
+                         // if (gameVars.maxLevel > this.level || gameVars.knightShieldCommented) {
+                         //     // no comment
+                         // } else {
+                         //     globalObjects.bannerTextManager.setDialog([getLangText('shield_comment_knight')]);
+                         //     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+                         //     globalObjects.bannerTextManager.showBanner(0.5, false, true);
+                         //     gameVars.knightShieldCommented = true;
+                         // }
+
                          /*
                          globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 143, getLangText("shield_tut_knight"), 'right', true);
                          let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();

@@ -1212,9 +1212,14 @@ class Enemy {
         if (healthLoss > 0) {
             if (healthLoss > 20) {
                 this.animateShake(1.5);
+                messageBus.publish('tempPause', 50, 0.15);
             } else {
                 this.animateShake(1.1);
+                if (healthLoss >= 6) {
+                    messageBus.publish('tempPause', 30, 0.2);
+                }
             }
+
             this.animateDamageNum(healthLoss, undefined, this.damageNumOffset + yOffset);
         }
         if (isAttack) {

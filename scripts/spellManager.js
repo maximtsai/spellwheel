@@ -137,7 +137,7 @@ class SpellManager {
         pebbles.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 240);
         let additionalScale = Math.sqrt(additionalDamage) * 0.022;
         let finalAdditionaScale = additionalScale * 5;
-        let isPowerful = numAdditionalAttacks * (12 + additionalDamage) > 72
+        let isPowerful = numAdditionalAttacks * (12 + additionalDamage) > 70;
         pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalScale).setRotation(Math.random() * 3)
         this.scene.tweens.add({
             targets: pebbles,
@@ -327,14 +327,17 @@ class SpellManager {
                             ease: "Cubic.easeIn"
                         });
 
-                        if (isPowerful && i === rockObjects.length - 2) {
+                        if (isPowerful && i === rockObjects.length - 1) {
                             let powerfulEffect = getTempPoolObject('tutorial', 'rune_matter_large.png', 'specialAttack', 1300);
                             powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5.2).setPosition(rockObj.x, rockObj.y);
                             playSound('rock_crumble');
                             this.scene.tweens.add({
                                 targets: powerfulEffect,
-                                duration: 125,
+                                duration: 110,
                                 alpha: 1,
+                                onComplete: () => {
+                                    messageBus.publish('tempPause', 250, 0.05);
+                                }
                             });
                             this.scene.tweens.add({
                                 targets: powerfulEffect,
@@ -950,14 +953,17 @@ class SpellManager {
                     zoomTemp(1.01 + additionalDamage * 0.00025);
                     this.createDamageEffect(gameConsts.halfWidth, 140, rockObj.depth);
 
-                    if (isPowerful && i === attackObjects.length - 2) {
+                    if (isPowerful && i === attackObjects.length - 1) {
                         let powerfulEffect = getTempPoolObject('tutorial', 'rune_matter_large.png', 'specialAttack', 1300);
                         powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5.2).setPosition(gameConsts.halfWidth, 190);
                         playSound('rock_crumble');
                         this.scene.tweens.add({
                             targets: powerfulEffect,
-                            duration: 125,
+                            duration: 110,
                             alpha: 1,
+                            onComplete: () => {
+                                messageBus.publish('tempPause', 250, 0.05);
+                            }
                         });
                         this.scene.tweens.add({
                             targets: powerfulEffect,
@@ -1029,7 +1035,7 @@ class SpellManager {
         let finalStrikeScale = 0.5 + Math.sqrt(additionalDamage) * 0.075 + additionalDamage * 0.02;
         let goalScale = 0.4 + Math.sqrt(additionalDamage) * 0.05 + additionalDamage * 0.015;
         if (!hasSecondBuff) {
-            playSound('time_strike_buff', hasFirstBuff ? 0.7 : 0.9).detune = 400;
+            playSound('time_strike_buff', hasFirstBuff ? 0.7 : 0.9).detune = Math.floor(Math.random() * 50) + 375;
         }
 
         for (let i = 0; i < numAdditionalAttacks; i++) {
@@ -1059,7 +1065,7 @@ class SpellManager {
                     }
                     let randRotAmt = 1.1 + Math.random() * 0.5;
                     if (i === 0 && hasSecondBuff) {
-                        playSound('time_strike_buff', 0.7).detune = 0;
+                        playSound('time_strike_buff', 0.7).detune = Math.floor(Math.random() * 50) - 100;
                     }
 
                     this.scene.tweens.add({
@@ -1074,7 +1080,7 @@ class SpellManager {
                         onStart: () => {
                             if (i === 0 && !hasSecondBuff) {
                                 setTimeout(() => {
-                                    playSound('time_strike_buff', 0.9).detune = 0;
+                                    playSound('time_strike_buff', 0.9).detune = Math.floor(Math.random() * 50) - 100;
                                 }, 100)
                             }
                         },
@@ -1083,7 +1089,7 @@ class SpellManager {
                                 return;
                             }
                             if (i === 0) {
-                                playSound('time_strike_buff', 1).detune = -400;
+                                playSound('time_strike_buff', 1).detune = -Math.floor(Math.random() * 50) - 375;
                             }
                             let randRotMultiplied = randRotAmt * 1.8;
                             this.scene.tweens.add({
@@ -1097,7 +1103,7 @@ class SpellManager {
                                 ease: 'Back.easeOut',
                                 onComplete: () => {
                                     if (i === 0) {
-                                        playSound('time_strike_buff', 1.2).detune = -800;
+                                        playSound('time_strike_buff', 1.2).detune = -Math.floor(Math.random() * 50) - 775;
                                     }
                                 },
                             });
@@ -1133,7 +1139,7 @@ class SpellManager {
                 duration: 550,
                 rotation: randRotation,
                 onStart: () => {
-                    playSound('time_strike');
+                    playSound('time_strike').detune = Math.floor(Math.random() * 250) - 125;
                 }
             });
 
@@ -1192,7 +1198,7 @@ class SpellManager {
                     });
                     let idxNum = parseInt(i);
                     if (idxNum === 0) {
-                        playSound('time_strike_hit', 0.92);
+                        playSound('time_strike_hit', 0.92).detune = Math.floor(Math.random() * 100) - 50;
                     } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
                         // last hit
                         playSound('time_strike_hit', 0.85);
@@ -1206,14 +1212,17 @@ class SpellManager {
                     messageBus.publish('enemyTakeDamage', spellDamage, true, undefined, 'time');
                     messageBus.publish('setPauseDur', 20);
 
-                    if (isPowerful && parseInt(i) === strikeObjects.length - 2) {
+                    if (isPowerful && parseInt(i) === strikeObjects.length - 1) {
                         let powerfulEffect = getTempPoolObject('tutorial', 'rune_time_large.png', 'specialAttack', 1300);
                         powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5).setPosition(gameConsts.halfWidth, strikeObject.y + 33);
                         playSound('time_hard');
                         this.scene.tweens.add({
                             targets: powerfulEffect,
-                            duration: 125,
+                            duration: 110,
                             alpha: 1,
+                            onComplete: () => {
+                                messageBus.publish('tempPause', 250, 0.05);
+                            }
                         });
                         this.scene.tweens.add({
                             targets: powerfulEffect,
@@ -1687,14 +1696,17 @@ class SpellManager {
 
                     messageBus.publish('enemyTakeTrueDamage', 1 + additionalDamage, true, undefined, true, 'mind');
 
-                    if (isPowerful && i === attackObjects.length - 2) {
+                    if (isPowerful && i === attackObjects.length - 1) {
                         let powerfulEffect = getTempPoolObject('tutorial', 'rune_energy_large.png', 'specialAttack', 1300);
                         powerfulEffect.setAlpha(0.05).setDepth(999).setScale(3.9, 2.5).setPosition(attackObj.x, attackObj.y - 80);
                         playSound('thunder');
                         this.scene.tweens.add({
                             targets: powerfulEffect,
-                            duration: 125,
+                            duration: 110,
                             alpha: 1,
+                            onComplete: () => {
+                                messageBus.publish('tempPause', 250, 0.05);
+                            }
                         });
                         this.scene.tweens.add({
                             targets: powerfulEffect,
@@ -2994,8 +3006,11 @@ class SpellManager {
                         playSound('void_body');
                         this.scene.tweens.add({
                             targets: powerfulEffect,
-                            duration: 125,
+                            duration: 110,
                             alpha: 1,
+                            onComplete: () => {
+                                messageBus.publish('tempPause', 250, 0.05);
+                            }
                         });
                         this.scene.tweens.add({
                             targets: powerfulEffect,

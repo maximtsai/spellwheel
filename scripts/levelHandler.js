@@ -510,6 +510,8 @@ function createMenuCloseButton(items) {
 function switchLevelBackground(lvl) {
     switch(lvl) {
         case -7:
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 0.95, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
+            break;
         case -6:
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
@@ -524,9 +526,9 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
             break;
         case -1:
-        // mind dummy
+            // mind dummy
             fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeIn', 0, false, 0);
-        break;
+            break;
         case 0:
             // zoomInCurrBackground(1500, 2, 'Cubic.easeIn');
             minorZoomMenu()
@@ -555,7 +557,7 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case 8:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 5, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 0.95, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case 9:
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
@@ -788,11 +790,12 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
             cleanupTutorialElements(nonscalingDestructibles, true);
             globalObjects.runeHighlight.setVisible(false).setScale(0.96);
             globalObjects.runeHighlightTemp.setAlpha(0);
+            globalObjects.runeHighlightRune.setAlpha(0);
             globalObjects.runePicture.setAlpha(0);
             globalObjects.runePictureFrame.setAlpha(0);
 
             PhaserScene.tweens.add({
-                targets: [globalObjects.runePicture, globalObjects.runeHighlightTemp],
+                targets: [globalObjects.runePicture, globalObjects.runeHighlightTemp, globalObjects.runeHighlightRune],
                 alpha: 0,
                 duration: 1,
             });

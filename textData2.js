@@ -313,7 +313,7 @@ let textData2 = {
         "jp": "あなたの抱擁をもう一度感じたいと切望しています、私の最愛の人。 あなたの死はあまりにも早く、あまりにも不当であり、たとえ私が国全体を覆さなければならないとしても、私はこの間違いを正します。"
     },
     "post_fight_story5": {
-        "en_us": "The Reaper appears every time to sour my\nvictories. Is my quest to reclaim my loved one\nso wrong?\n\nSurely not, so perhaps it's actually the\nReaper themselves who is setting up all\nthese obstacles!",
+        "en_us": "The Reaper appears every time to sour my\nvictories. Is my quest to reclaim my loved\none so wrong?\n\nSurely not, so perhaps it's actually the\nReaper themselves who is setting up all\nthese obstacles!",
         "fr": "Le Faucheur apparaît à chaque fois pour\ngâcher mes victoires. Ma quête pour\nrécupérer un être cher est-elle si mauvaise?\n\nCertainement pas, ce qui signifie que c'est\nle Faucheur lui-même qui met en place tous\nces obstacles!",
         "zh_tw": "死神每次出現都會讓我的勝利灰飛煙滅。\n我找回愛人的任務難道就這麼錯嗎？\n\n當然不是，這意味著一定是死神自己在\n設置所有這些障礙！",
         "zh_cn": "死神每次出现都会让我的胜利灰飞烟灭。\n我找回爱人的任务难道就这么错误吗？\n\n当然不是，这意味着一定是死神自己在\n设置所有这些障碍！",
@@ -322,7 +322,7 @@ let textData2 = {
         "jp": "私の力は増すが、この土地が耐える抵抗も大きくなる。 愛する人を取り戻すという私の崇高な探求は、それほど間違っているのでしょうか? もちろん、そうではないし、どんな犠牲を払おうとも、必要なことは何でもする。"
     },
     "post_fight_story6": {
-        "en_us": "The land of the dead is a labyrinth\nof dangers, but steadily I am forcing my way\nthrough its walls.\n\nI bet Death is growing desperate knowing\nI am near my destination.",
+        "en_us": "The land of the dead is a labyrinth\nof dangers, but steadily I am forcing my\nway through its walls.\n\nI bet Death is growing desperate knowing\nI am near my destination.",
         "fr": "Le pays des morts est un labyrinthe de\ndangers,mais je me fraye un chemin à travers\nses murs.\n\nLa Mort doit sûrement être désespérée sachant\nque je m'approche de ma destination.",
         "zh_tw": "亡靈之地是一個危險的迷宮，\n但我正穩定地衝破它的圍牆。\n\n當死神知道我即將到達目的地時，\n他一定越來越絕望。",
         "zh_cn": "亡灵之地是一个危险的迷宫，\n但我正稳步地冲破它的围墙。\n\n当死神知道我即将到达目的地时，\n他一定越来越绝望。",
@@ -925,7 +925,7 @@ let textData2 = {
         "jp": ""
     },
     "ultimate_rune_spells": {
-        "en_us": "ULTIMATE RUNE SPELLS",
+        "en_us": "ULTIMATE\nRUNE SPELLS",
         "fr": "SORT DE RUNE\nULTIME",
         "zh_tw": "究極符文法術",
         "zh_cn": "究极符文法术",

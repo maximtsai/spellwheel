@@ -81,6 +81,7 @@
                 duration: 400,
                 completeDelay: 400,
                 onComplete: () => {
+                    playSound("whoosh");
                     this.addTween({
                         targets: this.sprite,
                         scaleX: 0.8,
@@ -538,7 +539,7 @@
             clearDeathFog();
             this.addDelay(() => {
 
-                playSound('victory_2');
+                // playSound('victory_2');
                 this.addDelay(() => {
                     let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
                     let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'complete.png').setScale(0.95).setDepth(9998).setAlpha(0);
@@ -835,8 +836,8 @@
          });
 
 
-        let sliceSfx = playSound('slice_in', 0.6);
-        sliceSfx.detune = -200 + Math.floor(Math.random() * 200)
+        // let sliceSfx = playSound('slice_in', 0.6);
+        // sliceSfx.detune = -200 + Math.floor(Math.random() * 200)
         this.addTween({
             targets: this.flashPic,
             rotation: 0.05,

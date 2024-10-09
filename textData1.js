@@ -642,7 +642,7 @@ let textData = {
         "jp": ""
     },
     "time_tut_unload_desc": {
-        "en_us": "Freeze time temporarily. While\nfrozen, you can cast multiple\nspells without any time passing,\nthough repeated use of this spell\nmakes it weaker.",
+        "en_us": "Freeze time temporarily\nletting you cast multiple\nspells without any time passing.\nRepeated use of this spell\nmakes it weaker.",
         "fr": "Gèle temporairement le temps.\nPendant cette période, vous pouvez\nlancer plusieurs sorts sans que le\ntemps ne passe, bien que l'utilisation\nrépétée de ce sort l'affaiblisse.",
         "zh_tw": "暫時凍結時間。在凍結期間，\n你可以施展多個法術而不產\n生時間流逝，但重複使用此法\n術會使法術變弱。",
         "zh_cn": "暂时冻结时间。冻结期间，\n你可以施展多个法术而不产生\n时间流逝，但重复使用此法术\n会使法术变弱。",
@@ -660,7 +660,7 @@ let textData = {
         "jp": ""
     },
     "void_tut_desc_sh": {
-        "en_us": "The Void Rune grants control\nover empty space. Void spells\ncan deal percentage health damage,\nnegate enemy attacks, or even\nfully heal you... at a cost.",
+        "en_us": "The Void Rune grants control\nover empty space. Void spells\ncan deal percentage health \ndamage, negate enemy attacks,\nor even fully heal you...\nat a cost.",
         "fr": "La Rune du Vide permet de\ncontrôler l’espace vide. Les sorts\ndu Vide peuvent infliger des dégâts\nbasés sur un pourcentage de santé,\nannuler les attaques ennemies ou\nmême vous soigner complètement.",
         "zh_tw": "虛空符文賦予了你對虛空空間的\n控制權。虛空法術可以造成一定\n比例的生命值傷害、抵消敵人的\n攻擊，甚至可以完全治癒你。",
         "zh_cn": "虚空符文赋予了你对虚空空间的\n控制权。虚空法术可以造成一定\n比例的生命值伤害、抵消敌人的\n攻击，甚至可以完全治愈你。",
@@ -669,7 +669,7 @@ let textData = {
         "jp": ""
     },
     "void_tut_strike_desc": {
-        "en_us": "An attack that hits 3 times\nafter a delay and deals deals\npercentage health damage.\nScales incredibly well with\n+damage enhancements.",
+        "en_us": "An attack that hits 3 times\nafter a delay and deals deals\npercentage health damage.\nScales incredibly well with\ndamage enhancements.",
         "fr": "Une attaque qui frappe trois\nfois après un délai et inflige\ndes dégâts en pourcentage de santé.",
         "zh_tw": "延遲後發動 3 次攻擊,每次攻擊\n造成百分比的生命傷害。\n\n加強攻擊力的法術會三倍增加\n攻擊威力。",
         "zh_cn": "延迟后发动 3 次攻击,每次攻击\n造成百分比的生命伤害。\n\n加强攻击力的法术会三倍增加\n攻击威力。",
@@ -705,7 +705,7 @@ let textData = {
         "jp": "一時的に無敵状態になり、完全に回復しますが、最大体力がいくらか犠牲になります。"
     },
     "void_tut_unload_desc": {
-        "en_us": "Deal heavy percent health damage\nwhile disrupting any action\nthe enemy is trying to make.",
+        "en_us": "Deal heavy percent health\ndamage while disrupting any\naction the enemy is trying\nto make.",
         "fr": "Inflige de lourds dégâts en\npourcentage de santé tout en\nperturbant l’action que l’ennemi\ntente d’effectuer.",
         "zh_tw": "造成嚴重的百分比生命伤害，\n同時打断敵人的行動。",
         "zh_cn": "造成严重的百分比生命伤害，\n同时打断敌人的行动。",

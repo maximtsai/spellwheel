@@ -517,6 +517,7 @@
         this.setDefense(0);
         this.bgMusic.detune = -900;
         setVolume(this.bgMusic, 0.25, 1000)
+        this.disco.destroy();
 
         this.addTimeout(() => {
             globalObjects.bannerTextManager.setDialog([getLangText("killer_robot_d")]);
@@ -1534,10 +1535,12 @@
         if (this.dead) {
              return;
         }
+
         super.die();
         if (this.blush) {
             this.blush.visible = false;
         }
+         this.disco.destroy();
         if (this.currAnim) {
             this.currAnim.stop();
         }

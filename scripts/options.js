@@ -46,6 +46,19 @@ class Options {
         });
         this.button.setDepth(this.baseDepth);
         this.button.setScrollFactor(0, 0)
+        messageBus.subscribe('cancelScreen', this.cancelScreen.bind(this));
+    }
+
+    cancelScreen() {
+        if (this.popupElements && this.popupElements.length > 0) {
+            if (!this.popupElements[0].isDestroyed) {
+                for (let i in this.popupElements) {
+                    this.popupElements[i].destroy();
+                }
+                return;
+            }
+        }
+        this.hideOptions();
     }
 
     addLangTextUpdateable(obj, textid) {
@@ -113,7 +126,7 @@ class Options {
                 },
                 onMouseUp: () => {
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.isDestroyed) {
-                        showYesNoPopup(getLangText('exit'), getLangText('back'), getLangText('main_menu'), getLangText('exit_long'), () => {
+                        this.popupElements = showYesNoPopup(getLangText('exit'), getLangText('back'), getLangText('main_menu'), getLangText('exit_long'), () => {
                             this.hideOptions();
                             let bgBlackout = getBackgroundBlackout();
                             bgBlackout.alpha = 0;
@@ -372,7 +385,7 @@ class Options {
              targets: this.bgPage,
              alpha: 1,
              ease: 'Cubic.easeOut',
-             duration: 0.5,
+             duration: 0.25,
             onComplete: () => {
                  this.canClose = true;
             }
@@ -862,27 +875,27 @@ class Options {
         rune1.currAnim1 = PhaserScene.tweens.add({
             targets: rune1,
             y: this.icon2PosY,
-            duration: 0.2,
+            duration: 0.15,
         });
         rune1.currAnim2 = PhaserScene.tweens.add({
             targets: rune1,
             scaleY: 0.92,
             ease: 'Cubic.easeOut',
-            duration: 0.2,
+            duration: 0.15,
 
         });
         rune2.currAnim1 = PhaserScene.tweens.add({
             targets: rune2,
             y: this.icon3PosY,
             ease: 'Quad.easeOut',
-            duration: 0.2,
+            duration: 0.15,
         });
         rune2.currAnim2 = PhaserScene.tweens.add({
             targets: rune2,
             scaleY: 0.41,
             alpha: 0.82,
             ease: 'Quad.easeIn',
-            duration: 0.2,
+            duration: 0.15,
         });
 
         rune3.currAnim1 = PhaserScene.tweens.add({

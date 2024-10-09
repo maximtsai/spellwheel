@@ -77,6 +77,7 @@ const ENABLE_KEYBOARD = true;
         this.keyDown = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
         this.keyEnter = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
         this.keySpace = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        this.keyEscape = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
     }
 
     update(dScale) {
@@ -116,7 +117,7 @@ const ENABLE_KEYBOARD = true;
             this.delayDamageHourglass.x = this.delayDamageSandFull.x;
         }
 
-        if (!this.recentSkipped && (this.keyEnter.isDown || this.keySpace.isDown)) {
+        if (!this.recentSkipped && (this.keyEnter.isDown || this.keySpace.isDown || this.keyEscape.isDown)) {
             messageBus.publish("continueDialog");
             // click through victory
             if (globalObjects.currentEnemy) {
@@ -134,7 +135,10 @@ const ENABLE_KEYBOARD = true;
             }
 
             this.recentSkipped = true;
-        } else if (this.recentSkipped && !this.keyEnter.isDown && !this.keySpace.isDown) {
+            if (this.keyEscape.isDown) {
+                messageBus.publish("cancelScreen");
+            }
+        } else if (this.recentSkipped && !this.keyEnter.isDown && !this.keySpace.isDown && !this.keyEscape.isDown) {
             this.recentSkipped = false;
         }
 

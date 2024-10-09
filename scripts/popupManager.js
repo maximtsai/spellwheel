@@ -140,6 +140,8 @@ function showYesNoPopup(yesText, noText, titleText = '...', bodyText = "...", on
     closeBtn.setOrigin(0.5, 0.5);
     closeBtn.setDepth(111000);
 
+    let itemsToDestroy = []; //[closeBtn, noBtn, yesBtn, darkBG, dieClickBlocker, newText, descText, popupBG];
+
     noBtn = new Button({
         normal: {
             ref: "menu_btn_normal.png",
@@ -170,19 +172,18 @@ function showYesNoPopup(yesText, noText, titleText = '...', bodyText = "...", on
             }
         },
         onMouseUp: () => {
-            closeBtn.destroy();
-            noBtn.destroy();
-            yesBtn.destroy();
-            darkBG.destroy();
-            dieClickBlocker.destroy();
-            newText.destroy();
-            descText.destroy();
-            popupBG.destroy();
+            for (let i in itemsToDestroy) {
+                itemsToDestroy[i].destroy();
+            }
+            itemsToDestroy = [];
         }
     });
+    itemsToDestroy = [closeBtn, noBtn, yesBtn, darkBG, dieClickBlocker, newText, descText, popupBG];
+
     noBtn.setOrigin(0.5, 0.5);
     noBtn.addText(noText, {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'center'})
     noBtn.setDepth(111000);
     noBtn.setScale(0.7);
 
+    return itemsToDestroy;
 }

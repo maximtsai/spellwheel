@@ -76,7 +76,7 @@
         this.deathhalo1 = this.addImage(this.x, this.y + 3, 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setBlendMode(Phaser.BlendModes.NORMAL);
         this.deathhalo2 = this.addImage(this.x, this.y + 3, 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setRotation(1).setBlendMode(Phaser.BlendModes.NORMAL);
         this.circleHalo = this.addImage(this.x, this.y - 4, 'blurry', 'spellcircle_pulse.png').setAlpha(0).setScale(0.5).setDepth(-1);
-         this.shieldExtraText = this.scene.add.bitmapText(this.x, this.y + this.shieldTextOffsetY + 108, 'void', 'SHIELDED', 60).setOrigin(0.5).setDepth(this.shieldText.depth).setVisible(false);
+         this.shieldExtraText = this.addBitmapText(this.x, this.y + this.shieldTextOffsetY + 108, 'void', 'SHIELDED', 60).setOrigin(0.5).setDepth(this.shieldText.depth).setVisible(false);
 
          this.handShieldBack = this.addImage(this.x, this.y + 2, 'blurry', 'handshield_back.png').setScale(2.4).setDepth(-5).setAlpha(0);
          this.handShieldBack.startScale = this.handShieldBack.scaleX;
@@ -2691,14 +2691,14 @@
          this.shieldText.setText(this.shieldAmts);
          if (oldShieldAmts > 0) {
              this.shieldText.setScale(1.3);
-             this.scene.tweens.add({
+             this.addTween({
                  targets: this.shieldText,
                  scaleX: this.shieldText.startScale,
                  scaleY: this.shieldText.startScale,
                  ease: 'Back.easeOut',
                  duration: durMut * 250,
              });
-             this.scene.tweens.add({
+             this.addTween({
                  delay: 1000,
                  targets: this.shieldText,
                  alpha: 0.75,
@@ -2754,7 +2754,7 @@
          this.shieldText.setScale(0.1);
          this.shieldText.startX = this.shieldText.x;
          this.shieldText.startScale = 1;
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.shieldText,
              scaleX: this.shieldText.startScale,
              scaleY: this.shieldText.startScale,
@@ -2871,7 +2871,7 @@
          }
          this.shieldText.setText(this.shieldAmts);
          let startLeft = Math.random() < 0.5;
-         this.scene.tweens.add({
+         this.addTween({
              targets: this.shieldText,
              scaleX: this.shieldText.startScale + 1,
              scaleY: this.shieldText.startScale + 1,
@@ -2880,7 +2880,7 @@
              duration: gameVars.gameManualSlowSpeedInverse * 60,
              ease: 'Quint.easeOut',
              onComplete: () => {
-                 this.scene.tweens.add({
+                 this.addTween({
                      targets: this.shieldText,
                      scaleX: this.shieldText.startScale,
                      scaleY: this.shieldText.startScale,
@@ -2888,20 +2888,20 @@
                      duration: gameVars.gameManualSlowSpeedInverse * 500,
                      ease: 'Quart.easeOut',
                  });
-                 this.scene.tweens.add({
+                 this.addTween({
                      targets: this.shieldText,
                      x: startLeft ? "+=13" : "-=13",
                      duration: gameVars.gameManualSlowSpeedInverse * 100,
                      ease: 'Quint.easeInOut',
                      onComplete: () => {
                          this.shieldText.setDepth(8);
-                         this.scene.tweens.add({
+                         this.addTween({
                              targets: this.shieldText,
                              x: this.shieldText.startX,
                              duration: gameVars.gameManualSlowSpeedInverse * 400,
                              ease: 'Bounce.easeOut',
                          });
-                         this.scene.tweens.add({
+                         this.addTween({
                              delay: 1000,
                              targets: this.shieldText,
                              alpha: 0.75,
@@ -3639,12 +3639,12 @@
                              this.healSprite = this.addImage(gameConsts.halfWidth, this.y - 20, 'misc', 'heal.png').setScale(1).setDepth(999).setAlpha(1);
                          }
                          this.healSprite.setAlpha(1).setPosition(gameConsts.halfWidth, this.y - 20).setScale(Math.random() < 0.5 ? -1 : 1, 1);
-                         this.scene.tweens.add({
+                         this.addTween({
                              targets: this.healSprite,
                              y: "-=30",
                              duration: 1000,
                          });
-                         this.scene.tweens.add({
+                         this.addTween({
                              targets: this.healSprite,
                              alpha: 0,
                              duration: 1000,

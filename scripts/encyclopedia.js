@@ -44,6 +44,7 @@ class Encyclopedia {
             }
         });
         this.button.setDepth(this.baseDepth);
+        messageBus.subscribe('cancelScreen', this.hideEncyclopedia.bind(this));
 
         this.button.setScrollFactor(0, 0)
     }
@@ -140,7 +141,7 @@ class Encyclopedia {
             targets: this.listOfThingsToHide,
             alpha: 1,
             ease: 'Cubic.easeOut',
-            duration: 0.5,
+            duration: 0.25,
             onComplete: () => {
                 this.canClose = true;
             }
@@ -153,7 +154,7 @@ class Encyclopedia {
         //      targets: this.bgPage,
         //      alpha: 1,
         //      ease: 'Cubic.easeOut',
-        //      duration: 1,
+        //      duration: 0.5,
         // });
         messageBus.publish('pauseGame', 0.002);
 
@@ -318,26 +319,26 @@ class Encyclopedia {
             targets: restOfTabs,
             y: gameConsts.halfHeight - 293,
             ease: 'Cubic.easeOut',
-            duration: 1,
+            duration: 0.5,
         });
         PhaserScene.tweens.add({
             targets: restOfTabIcons,
             y: gameConsts.halfHeight - 323,
             ease: 'Cubic.easeOut',
-            duration: 1,
+            duration: 0.5,
         });
 
         PhaserScene.tweens.add({
             targets: [currTab],
             y: gameConsts.halfHeight - 325,
             ease: 'Cubic.easeOut',
-            duration: 1,
+            duration: 0.5,
         });
         PhaserScene.tweens.add({
             targets: [currTabIcon],
             y: gameConsts.halfHeight - 350,
             ease: 'Cubic.easeOut',
-            duration: 1,
+            duration: 0.5,
         });
     }
 
@@ -347,7 +348,7 @@ class Encyclopedia {
             targets: currentPageItemsTemp,
             alpha: 0,
             ease: 'Cubic.easeOut',
-            duration: 1,
+            duration: 0.5,
             onComplete: () => {
                 for (let i in currentPageItemsTemp) {
                     currentPageItemsTemp[i].destroy();
@@ -386,16 +387,16 @@ class Encyclopedia {
         this.currentPageItems.push(text7);
         this.currentPageItems.push(text8);
         PhaserScene.tweens.add({
-            targets: this.currentPageItems, alpha: 1, ease: 'Cubic.easeOut', duration: 1,
+            targets: this.currentPageItems, alpha: 1, ease: 'Cubic.easeOut', duration: 0.5,
         });
-        this.closeButton.tweenToPos(this.closeButton.getXPos(), gameConsts.halfHeight - 275, 1, 'Cubic.easeOut')
+        this.closeButton.tweenToPos(this.closeButton.getXPos(), gameConsts.halfHeight - 275, 0.5, 'Cubic.easeOut')
 
         PhaserScene.tweens.add({
             targets: this.bgPage,
             scaleY: 1.08,
             y: gameConsts.halfHeight + 22,
             ease: 'Cubic.easeOut',
-            duration: 1
+            duration: 0.5
         })
 
     }
@@ -407,14 +408,14 @@ class Encyclopedia {
         let text2 = PhaserScene.add.text(gameConsts.halfWidth - 252, gameConsts.halfHeight - 15, getLangText('encyclopedia_rune_action'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
         this.currentPageItems.push(text1);
         this.currentPageItems.push(text2);
-        this.closeButton.tweenToPos(this.closeButton.getXPos(), gameConsts.halfHeight - 275, 1, 'Cubic.easeOut')
+        this.closeButton.tweenToPos(this.closeButton.getXPos(), gameConsts.halfHeight - 275, 0.5, 'Cubic.easeOut')
 
         PhaserScene.tweens.add({
             targets: this.bgPage,
             scaleY: 1.08,
             y: gameConsts.halfHeight + 22,
             ease: 'Cubic.easeOut',
-            duration: 1
+            duration: 0.5
         })
 
         let listOfRunes = ["rune_matter_large.png",
@@ -458,7 +459,7 @@ class Encyclopedia {
         }
 
         PhaserScene.tweens.add({
-            targets: this.currentPageItems, alpha: 1, ease: 'Cubic.easeOut', duration: 1,
+            targets: this.currentPageItems, alpha: 1, ease: 'Cubic.easeOut', duration: 0.5,
         });
     }
 
@@ -516,16 +517,16 @@ class Encyclopedia {
             targets: text1,
             y: "-=20",
             ease: 'Cubic.easeOut',
-            duration: 1
+            duration: 0.5
         })
-        this.closeButton.tweenToPos(this.closeButton.getXPos(), gameConsts.halfHeight - 298, 1, 'Cubic.easeOut')
+        this.closeButton.tweenToPos(this.closeButton.getXPos(), gameConsts.halfHeight - 298, 0.5, 'Cubic.easeOut')
 
         PhaserScene.tweens.add({
             targets: this.bgPage,
             scaleY: 1.18,
             y: gameConsts.halfHeight + 31,
             ease: 'Cubic.easeOut',
-            duration: 1
+            duration: 0.5
         });
 
 
@@ -612,7 +613,7 @@ class Encyclopedia {
         // }
 
         PhaserScene.tweens.add({
-            targets: this.currentPageItems, alpha: 1, ease: 'Cubic.easeOut', duration: 1,
+            targets: this.currentPageItems, alpha: 1, ease: 'Cubic.easeOut', duration: 0.5,
         });
     }
 

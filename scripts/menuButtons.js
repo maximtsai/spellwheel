@@ -815,6 +815,7 @@ function showMainMenuButtons() {
 
                 }
             });
+            clickBlock.setDepth(1000);
 
             let page1Btn = new Button({
                 normal: {
@@ -963,7 +964,24 @@ function showMainMenuButtons() {
             });
             page2Btn.setDepth(100000);
 
-
+            let sub = messageBus.subscribe("cancelScreen", () => {
+                globalObjects.encyclopedia.showButton();
+                globalObjects.options.showButton();
+                clickBlock.destroy();
+                creditsUI.destroy();
+                creditsText.destroy();
+                creditsText2.destroy();
+                artbook.destroy();
+                tab1.destroy();
+                tab2.destroy();
+                tab1Icon.destroy();
+                tab2Icon.destroy();
+                sub.unsubscribe();
+                this.closeButton.destroy();
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
+            })
             this.closeButton = new Button({
                 normal: {
                     atlas: 'buttons',
@@ -1009,6 +1027,7 @@ function showMainMenuButtons() {
                     tab2.destroy();
                     tab1Icon.destroy();
                     tab2Icon.destroy();
+                    sub.unsubscribe();
                     this.closeButton.destroy();
                     if (canvas) {
                         canvas.style.cursor = 'default';
@@ -1079,6 +1098,7 @@ function showLevelSelectScreen(){
         duration: 250
     });
 
+    let sub;
     let closeButton = new Button({
         normal: {
             atlas: 'buttons',
@@ -1119,12 +1139,25 @@ function showLevelSelectScreen(){
             title.destroy();
             levelSelectBG.destroy();
             closeButton.destroy();
+            sub.unsubscribe();
             for (let i in listOfBtns) {
                 listOfBtns[i].destroy();
             }
         }
     });
     closeButton.setDepth(this.baseDepth + 10);
+
+    sub = messageBus.subscribe("cancelScreen", () => {
+        closeLevelSelectScreen();
+        blackBG.setAlpha(0);
+        title.destroy();
+        levelSelectBG.destroy();
+        closeButton.destroy();
+        sub.unsubscribe();
+        for (let i in listOfBtns) {
+            listOfBtns[i].destroy();
+        }
+    })
 
     let listOfBtns = [];
     let maxLevel = Math.min(gameVars.maxLevel + 1, 14);
@@ -1176,6 +1209,7 @@ function showLevelSelectScreen(){
                 title.destroy();
                 levelSelectBG.destroy();
                 closeButton.destroy();
+                sub.unsubscribe();
                 for (let i in listOfBtns) {
                     listOfBtns[i].destroy();
                 }

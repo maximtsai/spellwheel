@@ -9,7 +9,7 @@
 
         setTimeout(() => {
             this.windSfx = playSound('wind', 0.01, true);
-            gameVars.latestLevel = this.level;
+            gameVars.latestLevel = this.level - 1;
             localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
             gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
             localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
@@ -683,7 +683,7 @@
          fadeAwaySound(this.bgMusic);
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();
-         gameVars.latestLevel = this.level + 1;
+         gameVars.latestLevel = this.level;
          localStorage.setItem("latestLevel", (gameVars.latestLevel).toString());
          gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
          localStorage.setItem("maxLevel", gameVars.maxLevel.toString());

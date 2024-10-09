@@ -2961,7 +2961,7 @@
 
      sharedDie() {
          this.isDefeated = true;
-         gameVars.latestLevel = this.level + 1;
+         gameVars.latestLevel = this.level;
          localStorage.setItem("latestLevel", (gameVars.latestLevel).toString());
          gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
          localStorage.setItem("maxLevel", gameVars.maxLevel.toString());

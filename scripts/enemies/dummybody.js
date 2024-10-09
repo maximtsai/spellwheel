@@ -152,7 +152,7 @@
              [
                  // 0
                  {
-                     name: "}2x3",
+                     name: "}2x6",
                      chargeAmt: 400,
                      finishDelay: 600,
                      transitionFast: true,
@@ -165,7 +165,7 @@
 
                      },
                      attackFinishFunction: () => {
-                         this.throwTriple('star.png', 2, 1);
+                         this.throwTriple('star.png', 2, 2);
                      }
                  },
                  {
@@ -175,7 +175,7 @@
                      damage: -1,
                  },
                  {
-                     name: "}}2x12",
+                     name: "}2x12}",
                      chargeAmt: 700,
                      finishDelay: 2600,
                      transitionFast: true,
@@ -199,7 +199,7 @@
                  },
                  // 0
                  {
-                     name: "}}}2x15",
+                     name: "}}2x15}}",
                      chargeAmt: 800,
                      finishDelay: 3600,
                      transitionFast: true,
@@ -223,7 +223,7 @@
                      damage: -1,
                  },
                  {
-                     name: "}}}}2x18",
+                     name: "}}}2x18}}}",
                      chargeAmt: 900,
                      finishDelay: 4500,
                      transitionFast: true,

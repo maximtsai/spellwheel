@@ -571,6 +571,11 @@
          if (this.rune2) {
              this.rune2.destroy();
          }
+         if (this.rune3) {
+             this.rune3.destroy();
+             this.rune4.destroy();
+         }
+
          if (this.playerSpellCastSub) {
              this.playerSpellCastSub.unsubscribe();
              this.playerSpellCastSub2.unsubscribe()

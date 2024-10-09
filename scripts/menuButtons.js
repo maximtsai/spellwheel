@@ -746,30 +746,56 @@ function showMainMenuButtons() {
             // return;
             globalObjects.encyclopedia.hideButton();
             globalObjects.options.hideButton();
+            let page1Content = [];
+            let page2Content = [];
+            let tab1 = PhaserScene.add.image(gameConsts.halfWidth - 190, gameConsts.halfHeight - 305, 'ui', 'paperTab.png').setDepth(99999).setAlpha(0);
+            let tab1Icon = PhaserScene.add.text(tab1.x, tab1.y - 55, "PAGE 1", {fontFamily: 'opensans', fontSize: 18, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(99999).setAlpha(0);
+
+            let tab2 = PhaserScene.add.image(gameConsts.halfWidth - 90, gameConsts.halfHeight - 278, 'ui', 'paperTab.png').setDepth(99999).setAlpha(0);
+            let tab2Icon = PhaserScene.add.text(tab2.x, tab2.y - 55, "PAGE 2", {fontFamily: 'opensans', fontSize: 18, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(99999).setAlpha(0);
+
             let text1 = "Game by Maxim Tsai\n" +
                 "Character art by Theresa Kao\n@mothmeatstore\n" +
                 "Background and wheel art by Alex Volchek\n@love_sickening\n" +
                 "SFX and Battle Music by Chandler G\n@rocad_guitar\n" +
                 "Robot Voice and Music by @eidendalion\n" +
                 "Special thanks to @hby, Victor Kao,\nand Alex Arango";
-            let text2 = "\"Magic Escape Room\" by Kevin MacLeod (incompetech.com)\n" +
-                "Licensed under Creative Commons: By Attribution 4.0 License\n\n" +
-                "Rocks - Effects - Source Recordings - 05 by GregorQuendel\n- https://freesound.org/s/424997/\n- License: Attribution 4.0\n\n" +
+            let text2 = "Additional Credits:\n\n\"Magic Escape Room\" by Kevin MacLeod\n(incompetech.com)\n" +
+                "Licensed under Creative Commons:\nBy Attribution 4.0 License\n\n" +
+                "Rocks - Effects - Source Recordings\n- 05 by GregorQuendel\n- https://freesound.org/s/424997/\n- License: Attribution 4.0\n\n" +
                 "rocks2.wav by mystiscool\n- https://freesound.org/s/7136/\n- License: Attribution 4.0\n\n" +
                 "R4_00328-2_EXP.wav by kevp888\n- https://freesound.org/s/636777/\n- License: Attribution 4.0\n\n"+
                 "Big Bell_4.wav by eardeer\n- https://freesound.org/s/337565/\n- License: Attribution 4.0\n\n"+
-                "Unlocking lock.wav by Stefan21100190\n- https://freesound.org/s/593112/ - License: Attribution 4.0\n\n"+
-                "Sound Effects by Lara Sluyter (LARA’S HORROR SOUNDS on YouTube)";
+                "Unlocking lock.wav by Stefan21100190\n- https://freesound.org/s/593112/\n- License: Attribution 4.0\n\n"+
+                "Sound Effects by Lara Sluyter\n(LARA’S HORROR SOUNDS on YouTube)";
             let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'paper.png').setDepth(100000).setScale(0.975);
-            let creditsText = PhaserScene.add.text(gameConsts.halfWidth, creditsUI.y - 290, text1, {fontFamily: 'opensans', fontSize: 21, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(100000).setAlpha(0.1);
-            let creditsText2 = PhaserScene.add.text(gameConsts.halfWidth - 260, creditsUI.y - 40, text2, {fontSize: 16, color: '#000000', align: 'left'}).setOrigin(0, 0).setDepth(100000).setAlpha(0.1);
+            let creditsText = PhaserScene.add.text(gameConsts.halfWidth, creditsUI.y - 285, text1, {fontFamily: 'opensans', fontSize: 21, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(100000).setAlpha(0.1);
+            let artbook = PhaserScene.add.image(gameConsts.halfWidth, creditsUI.y + 124, 'misc', 'artbook.png').setDepth(100000).setScale(0.94).setAlpha(0.9);
+
+            let creditsText2 = PhaserScene.add.text(gameConsts.halfWidth - 260, creditsUI.y - 285, text2, {fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0).setDepth(100000).setAlpha(0);
             PhaserScene.tweens.add({
-                targets: [creditsUI, creditsText, creditsText2],
+                targets: [creditsUI, creditsText, tab1, tab1Icon, tab2, tab2Icon],
                 duration: 180,
                 scaleX: 1,
                 scaleY: 1,
                 alpha: 1,
             });
+
+            PhaserScene.tweens.add({
+                targets: [artbook],
+                duration: 180,
+                alpha: 1,
+            });
+            PhaserScene.tweens.add({
+                targets: [artbook],
+                duration: 250,
+                scaleX: 1,
+                scaleY: 1,
+                easeParams: [3],
+                ease: 'Back.easeOut'
+            });
+            page1Content.push(artbook, creditsText)
+            page2Content.push(creditsText2)
 
             let clickBlock;
             clickBlock = new Button({
@@ -789,12 +815,161 @@ function showMainMenuButtons() {
 
                 }
             });
+
+            let page1Btn = new Button({
+                normal: {
+                    ref: "blackPixel",
+                    alpha: 0,
+                    x: tab1Icon.x,
+                    y: tab1Icon.y + 26,
+                    scaleX: 45,
+                    scaleY: 48
+                },
+                hover: {
+                    ref: "blackPixel",
+                    alpha: 0,
+                    x: tab1Icon.x,
+                    y: tab1Icon.y + 26,
+                    scaleX: 46,
+                    scaleY: 49
+                },
+                disable: {
+                    alpha: 0
+                },
+                onHover: () => {
+                    tab1.setFrame('paperTab_glow.png')
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    tab1.setFrame('paperTab.png')
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: () => {
+                    PhaserScene.tweens.add({
+                        targets: tab1,
+                        y: gameConsts.halfHeight - 305,
+                        duration: 180,
+                        ease: 'Cubic.easeOut'
+                    })
+                    PhaserScene.tweens.add({
+                        targets: tab1Icon,
+                        y: gameConsts.halfHeight - 305 - 55,
+                        duration: 180,
+                        ease: 'Cubic.easeOut'
+                    })
+                    PhaserScene.tweens.add({
+                        targets: tab2,
+                        y: gameConsts.halfHeight - 278,
+                        duration: 180,
+                        ease: 'Cubic.easeOut'
+                    })
+                    PhaserScene.tweens.add({
+                        targets: tab2Icon,
+                        y: gameConsts.halfHeight - 278 - 55,
+                        duration: 180,
+                        ease: 'Cubic.easeOut'
+                    })
+                    PhaserScene.tweens.add({
+                        targets: page1Content,
+                        alpha: 1,
+                        duration: 180,
+                        ease: 'Cubic.easeIn'
+                    })
+                    PhaserScene.tweens.add({
+                        targets: page2Content,
+                        alpha: 0,
+                        duration: 180,
+                        ease: 'Cubic.easeOut'
+                    })
+
+                }
+            });
+            page1Btn.setDepth(100000);
+
+            let page2Btn = new Button({
+                normal: {
+                    ref: "blackPixel",
+                    alpha: 0,
+                    x: tab2Icon.x,
+                    y: tab1Icon.y + 26,
+                    scaleX: 45,
+                    scaleY: 48
+                },
+                hover: {
+                    ref: "blackPixel",
+                    alpha: 0,
+                    x: tab2Icon.x,
+                    y: tab1Icon.y + 26,
+                    scaleX: 46,
+                    scaleY: 49
+                },
+                disable: {
+                    alpha: 0
+                },
+                onHover: () => {
+                    tab2.setFrame('paperTab_glow.png')
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    tab2.setFrame('paperTab.png')
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: () => {
+                    PhaserScene.tweens.add({
+                        targets: tab1,
+                        y: gameConsts.halfHeight - 278,
+                        duration: 180,
+                        ease: 'Cubic.easeOut'
+                    })
+                    PhaserScene.tweens.add({
+                        targets: tab1Icon,
+                        y: gameConsts.halfHeight - 278 - 55,
+                        duration: 180,
+                        ease: 'Cubic.easeOut'
+                    })
+                    PhaserScene.tweens.add({
+                        targets: tab2,
+                        y: gameConsts.halfHeight - 305,
+                        duration: 180,
+                        ease: 'Cubic.easeOut'
+                    })
+                    PhaserScene.tweens.add({
+                        targets: tab2Icon,
+                        y: gameConsts.halfHeight - 305 - 55,
+                        duration: 180,
+                        ease: 'Cubic.easeOut'
+                    })
+                    PhaserScene.tweens.add({
+                        targets: page2Content,
+                        alpha: 1,
+                        duration: 180,
+                        ease: 'Cubic.easeIn'
+                    })
+                    PhaserScene.tweens.add({
+                        targets: page1Content,
+                        alpha: 0,
+                        duration: 180,
+                        ease: 'Cubic.easeOut'
+                    })
+                }
+            });
+            page2Btn.setDepth(100000);
+
+
             this.closeButton = new Button({
                 normal: {
                     atlas: 'buttons',
                     ref: "closebtn.png",
                     alpha: 0.95,
-                    x: gameConsts.halfWidth + 230,
+                    x: gameConsts.halfWidth + 244,
                     y: gameConsts.halfHeight - 275,
                 },
                 hover: {
@@ -829,6 +1004,11 @@ function showMainMenuButtons() {
                     creditsUI.destroy();
                     creditsText.destroy();
                     creditsText2.destroy();
+                    artbook.destroy();
+                    tab1.destroy();
+                    tab2.destroy();
+                    tab1Icon.destroy();
+                    tab2Icon.destroy();
                     this.closeButton.destroy();
                     if (canvas) {
                         canvas.style.cursor = 'default';

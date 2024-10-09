@@ -511,14 +511,21 @@ function switchLevelBackground(lvl) {
     switch(lvl) {
         case -7:
         case -6:
-            fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91, 'Quart.easeIn', 0, true, -1);
+            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
+            break;
         case -5:
         case -4:
+            fadeInBackgroundAtlas('backgrounds', 'background4.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
+            break;
         case -3:
+            fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 0.95, 0.95, 0.95,'Quart.easeIn', 0, false, -10);
+            break;
         case -2:
+            fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
+            break;
         case -1:
         // mind dummy
-            fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeIn', 0, false, -74);
+            fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeIn', 0, false, 0);
         break;
         case 0:
             // zoomInCurrBackground(1500, 2, 'Cubic.easeIn');

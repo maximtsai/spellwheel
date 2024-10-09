@@ -219,6 +219,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">misc/artbook.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.4</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>308,177,616,353</rect>
+                <key>scale9Paddings</key>
+                <rect>308,177,616,353</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/battletext_bg.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

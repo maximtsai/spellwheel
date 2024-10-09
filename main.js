@@ -113,6 +113,7 @@ let canResizeGame = false;
 let url1 = 'localhost';// 'crazygames';
 let url2 = 'maximtsai';// 'localhost';
 let url3 = 'adayofjoy';// '1001juegos';
+let url4 = 'classic.itch';// '1001juegos';
 
 function preload ()
 {
@@ -142,10 +143,11 @@ function preload ()
 
 function create ()
 {
-    if (!document.location.href.includes(url1) && !document.location.href.includes(url2) && !document.location.href.includes(url2) || true) {
+    if (!document.location.href.includes(url1) && !document.location.href.includes(url2) && !document.location.href.includes(url4)) {
         // Stops execution of rest of game
         let gameDiv = document.getElementById('preload-notice');
-        gameDiv.innerHTML = document.location.href + "\nis an invalid site.\n\n\n" + "Try the game on Crazygames.com!";
+        let invalidSite = document.location.href.substring(0, 25);
+        gameDiv.innerHTML = invalidSite + "...\nis an invalid site.\n\n\n" + "Try the game on Crazygames.com!";
         return;
     }
     oldTime = Date.now();

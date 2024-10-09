@@ -567,6 +567,7 @@ class SpellManager {
                         if (Math.random() < 0.25) {
                             sfx.detune = -50;
                         }
+                        sfx.detune + Math.floor(Math.random() * 100) - 50;
                     } else if (i === itemsToAnimate.length - 1) {
                         if (itemsToAnimate.length < 4) {
                             PhaserScene.time.delayedCall( 50, () => {

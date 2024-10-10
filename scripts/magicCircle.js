@@ -94,7 +94,7 @@ const ENABLE_KEYBOARD = true;
         let totalDist = Math.sqrt(mouseDistX * mouseDistX + mouseDistY * mouseDistY);
 
         this.setFrameLazy(this.castButton, this.altString + 'cast_normal.png');
-        globalObjects.player.setCastTextAlpha(0.7);
+        globalObjects.player.setCastTextAlpha(0.65);
 
         this.setFrameLazy(this.innerCircle,this.altString + 'element_normal.png');
         this.setFrameLazy(this.outerCircle, this.altString + 'usage_normal.png');
@@ -235,13 +235,13 @@ const ENABLE_KEYBOARD = true;
                 this.draggedDuration += dScale;
                 if (totalDist < this.castButtonSize && this.draggedObj == this.castButton) {
                     this.setFrameLazy(this.castButton,this.altString + 'cast_press.png');
-                    globalObjects.player.setCastTextAlpha(0.65);
+                    globalObjects.player.setCastTextAlpha(0.6);
                 }
             } else {
                 // plain ol hovering
                 if (totalDist < this.castButtonSize) {
                     this.setFrameLazy(this.castButton,this.altString + 'cast_hover.png');
-                    globalObjects.player.setCastTextAlpha(0.75);
+                    globalObjects.player.setCastTextAlpha(0.7);
                 } else if (!this.innerDragDisabled && totalDist < this.innerCircleSize) {
                     this.setFrameLazy(this.innerCircle, this.altString + 'element_hover.png');
                 } else if (!this.outerDragDisabled) {

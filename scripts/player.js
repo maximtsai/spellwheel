@@ -225,10 +225,10 @@ class Player {
         // this.healthBarPeak.setScale(1, 1);
         // this.healthBarPeak.visible = true;
 
-        this.castText = this.scene.add.text(x, y, 'CAST', {fontFamily: 'Arial', fontSize: 28, color: '#040404', align: 'center'}).setOrigin(0.5, 0.5).setDepth(9998);
-        this.castText.setFontStyle('bold').setAlpha(0.6);
+        this.castText = this.scene.add.text(x, y, 'CAST', {fontFamily: 'germania', fontSize: 30, color: '#040404', align: 'center'}).setOrigin(0.5, 0.5).setDepth(9998);
+        this.castText.setAlpha(0.5);
 
-        this.healthText = this.scene.add.text(x, y + 38, 'HP ' + this.health + '/' + this.healthMax, {fontFamily: 'Arial', fontSize: isMobile ? 24 : 21, color: '#040404', align: 'left'});
+        this.healthText = this.scene.add.text(x, y + 38, 'HP ' + this.health + '/' + this.healthMax, {fontFamily: 'germania', fontSize: isMobile ? 24 : 21, color: '#040404', align: 'left'});
         this.healthText.setAlpha(0.7);
         this.healthText.setFontStyle('bold')
         this.healthText.setTint(0x000000);
@@ -236,7 +236,7 @@ class Player {
         this.healthText.setDepth(9998);
     }
 
-    setCastTextAlpha(amt = 0.7) {
+    setCastTextAlpha(amt = 0.65) {
         this.castText.setAlpha(amt);
     }
 

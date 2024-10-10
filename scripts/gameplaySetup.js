@@ -75,7 +75,7 @@ function setupLoadingBar(scene) {
         icons[i].scrollFactorX = 0.3; icons[i].scrollFactorY = 0.3;
     }
 
-    loadObjects.loadingText = scene.add.text(gameConsts.halfWidth, gameConsts.height - (isMobile ? 345 : 332), 'LOADING...', {fontFamily: 'opensans', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+    loadObjects.loadingText = scene.add.text(gameConsts.halfWidth, gameConsts.height - (isMobile ? 345 : 332), 'LOADING...', {fontFamily: 'germania', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
     loadObjects.loadingText.setScale(0.6);
     loadObjects.loadingText.setAlign('center');
     loadObjects.loadingText.setOrigin(0.5, 0);
@@ -266,10 +266,10 @@ function setupLoadingBar(scene) {
                 loadObjects.loadingText.setText(getLangText('start')).setScale(1).setPosition(loadObjects.loadingText.x, loadObjects.loadingText.y - 20);
                 loadObjects.loadingText.alpha = 1;
 
-                loadObjects.loadingText2 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, getLangText('start'), {fontFamily: 'opensans', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+                loadObjects.loadingText2 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, getLangText('start'), {fontFamily: 'germania', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
                 loadObjects.loadingText2.setScale(1).setAlign('center').setOrigin(0.5, 0);
 
-                loadObjects.loadingText3 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, getLangText('start'), {fontFamily: 'opensans', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+                loadObjects.loadingText3 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, getLangText('start'), {fontFamily: 'germania', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
                 loadObjects.loadingText3.setScale(1).setAlign('center').setOrigin(0.5, 0);
 
                 this.animateStart();
@@ -398,7 +398,7 @@ function recursiveCreateIntroText(delay = 150, num = 180) {
     }
 
     let extraAlpha = 0.6 - delay * 0.0038;
-    let newText = PhaserScene.add.text(randX, randY, generateRandIntroText(), {fontFamily: 'opensans', fontSize: 28, color: '#EEEEEE', align: 'center'}).setDepth(100).setAlpha(Math.random() * 0.25 - 0.15).setOrigin(0.5, 0.5).setScale(1 + Math.random() * 1);
+    let newText = PhaserScene.add.text(randX, randY, generateRandIntroText(), {fontFamily: 'germania', fontSize: 28, color: '#EEEEEE', align: 'center'}).setDepth(100).setAlpha(Math.random() * 0.25 - 0.15).setOrigin(0.5, 0.5).setScale(1 + Math.random() * 1);
     PhaserScene.tweens.add({
         targets: newText,
         alpha: Math.max(0.1, newText.alpha + extraAlpha),

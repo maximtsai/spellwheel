@@ -247,12 +247,12 @@ let textData2 = {
         "jp": "アップグレード！"
     },
     "post_fight_day": {
-        "en_us": "Day ",
-        "fr": "Jour",
+        "en_us": "DAY ",
+        "fr": "JOUR",
         "zh_tw": "第",
         "zh_cn": "第",
         "ru": "День",
-        "es": "Día",
+        "es": "DIA",
         "jp": ""
     },
     "post_fight_day2": {

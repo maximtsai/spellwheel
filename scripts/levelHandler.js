@@ -28,21 +28,21 @@ function beginPreLevel(lvl) {
             let bgDim = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(-1).setAlpha(0).setScale(500);
             introPaper = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 110, 'ui', 'paper_half.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'newgame_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth - 253, gameConsts.halfHeight - 288, getLangText('pre_fight_0a'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth - 253, gameConsts.halfHeight - 288, getLangText('pre_fight_0a'), {fontFamily: 'germania', fontSize: 26, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text3 = PhaserScene.add.text(gameConsts.halfWidth + 137, gameConsts.halfHeight - 185, getLangText('pre_fight_0c'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
+            text3 = PhaserScene.add.text(gameConsts.halfWidth + 137, gameConsts.halfHeight - 185, getLangText('pre_fight_0c'), {fontFamily: 'germania', fontSize: 26, color: '#200000', align: 'right'});
             text3.setDepth(99999).setAlpha(0).setOrigin(1, 1);
-            text4 = PhaserScene.add.text(gameConsts.halfWidth + 140, gameConsts.halfHeight - 124, getLangText('pre_fight_0d'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
+            text4 = PhaserScene.add.text(gameConsts.halfWidth + 140, gameConsts.halfHeight - 124, getLangText('pre_fight_0d'), {fontFamily: 'germania', fontSize: 26, color: '#200000', align: 'right'});
             text4.setDepth(99999).setAlpha(0).setOrigin(1, 1);
-            text5 = PhaserScene.add.text(text3.x + 10, text3.y + 1, getLangText('pre_fight_0e'), {fontFamily: 'opensans', fontSize: 20, color: '#200000', align: 'right'});
+            text5 = PhaserScene.add.text(text3.x + 10, text3.y + 1, getLangText('pre_fight_0e'), {fontFamily: 'germania', fontSize: 20, color: '#200000', align: 'right'});
             text5.setDepth(99999).setAlpha(0).setOrigin(1, 1).setVisible(false);
-            text6 = PhaserScene.add.text(text4.x + 7, text4.y + 2, getLangText('pre_fight_0f'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'right'});
+            text6 = PhaserScene.add.text(text4.x + 7, text4.y + 2, getLangText('pre_fight_0f'), {fontFamily: 'germania', fontSize: 18, color: '#200000', align: 'right'});
             text6.setDepth(99999).setAlpha(0).setOrigin(1, 0.85).setVisible(false);
-            text7 = PhaserScene.add.text(gameConsts.halfWidth + 220, gameConsts.halfHeight - 98, getLangText('pre_fight_0g'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
+            text7 = PhaserScene.add.text(gameConsts.halfWidth + 220, gameConsts.halfHeight - 98, getLangText('pre_fight_0g'), {fontFamily: 'germania', fontSize: 26, color: '#200000', align: 'right'});
             text7.setDepth(99999).setAlpha(0).setOrigin(1, 0);
-            //text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 238, getLangText('pre_fight_0h'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'center'});
+            //text8 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 238, getLangText('pre_fight_0h'), {fontFamily: 'germania', fontSize: 26, color: '#200000', align: 'center'});
             //text8.setDepth(99999).setAlpha(0).setOrigin(0.5, 0.5);
-            text9 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 238, getLangText('pre_fight_0i'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'center'});
+            text9 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 238, getLangText('pre_fight_0i'), {fontFamily: 'germania', fontSize: 26, color: '#200000', align: 'center'});
             text9.setDepth(99999).setAlpha(0).setOrigin(0.5, 0);
 
             // createGlobalClickBlocker();
@@ -435,7 +435,7 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose =
         }
     });
     lvlCloseButton.setOrigin(0.5, 0.5);
-    lvlCloseButton.addText(getLangText('cont_ui'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
+    lvlCloseButton.addText(getLangText('cont_ui'), {fontFamily: 'germania', fontSize: 28, color: '#000000', align: 'left'})
     lvlCloseButton.setScale(0.78);
     lvlCloseButton.setDepth(99999);
     globalObjects.lvlCloseButton = lvlCloseButton;
@@ -499,7 +499,7 @@ function createMenuCloseButton(items) {
         }
     });
     menuCloseButton.setOrigin(0.5, 0.5);
-    menuCloseButton.addText(getLangText('menu'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
+    menuCloseButton.addText(getLangText('menu'), {fontFamily: 'germania', fontSize: 28, color: '#000000', align: 'left'})
     menuCloseButton.setScale(0.78);
     menuCloseButton.setDepth(99999);
     globalObjects.menuCloseButton = menuCloseButton;
@@ -510,7 +510,7 @@ function createMenuCloseButton(items) {
 function switchLevelBackground(lvl) {
     switch(lvl) {
         case -7:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 0.95, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case -6:
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
@@ -554,10 +554,10 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
         case 7:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1, 0.94, 0.94,'Quart.easeIn', 0, false);
             break;
         case 8:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 0.95, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 0.92, 1, 0.1,'Quart.easeIn', 0, true, -1);
             break;
         case 9:
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
@@ -801,7 +801,7 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
             });
         }
     });
-    closeButton.addText(getLangText('got_it'), {fontFamily: 'opensans', fontSize: 26, color: '#000000', align: 'center'})
+    closeButton.addText(getLangText('got_it'), {fontFamily: 'germania', fontSize: 26, color: '#000000', align: 'center'})
     closeButton.setDepth(10002);
 
     PhaserScene.tweens.add({

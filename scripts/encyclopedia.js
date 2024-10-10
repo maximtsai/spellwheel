@@ -82,7 +82,7 @@ class Encyclopedia {
             this.listOfThingsToHide.push(this.bgPage);
         }
         if (!this.title) {
-            this.title = PhaserScene.add.text(gameConsts.halfWidth - 255, gameConsts.halfHeight - 290, getLangText('pre_fight_0a'), {fontFamily: 'opensans', fontSize: 24, color: '#000000', align: 'left'}).setDepth(this.baseDepth).setAlpha(0);
+            this.title = PhaserScene.add.text(gameConsts.halfWidth - 255, gameConsts.halfHeight - 290, getLangText('pre_fight_0a'), {fontFamily: 'germania', fontSize: 24, color: '#000000', align: 'left'}).setDepth(this.baseDepth).setAlpha(0);
             this.listOfThingsToHide.push(this.title);
         }
 
@@ -364,19 +364,19 @@ class Encyclopedia {
         let imageCover = PhaserScene.add.image(gameConsts.halfWidth - 3, gameConsts.halfHeight + 14, 'ui', 'newgame_paper.png').setDepth(this.baseDepth).setAlpha(0).setScale(1);
         let imageCover2 = PhaserScene.add.image(gameConsts.halfWidth - 3, gameConsts.halfHeight + 10, 'ui', 'newgame_paper_bot.png').setDepth(this.baseDepth).setAlpha(0).setScale(1);
         let smallFontSize = (language == 'zh_cn' || language == 'zh_tw') ? 24 : 18;
-        let text1 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 47, getLangText('encyc_action'), {fontFamily: 'opensans', fontSize: smallFontSize, color: '#200000', align: 'center'});
+        let text1 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 47, getLangText('encyc_action'), {fontFamily: 'germania', fontSize: smallFontSize, color: '#200000', align: 'center'});
         text1.setDepth(this.baseDepth).setOrigin(0.5, 0).setAlpha(0).setStroke('#ffffff', 2);
-        let text2 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 115, getLangText('encyc_element'), {fontFamily: 'opensans', fontSize: smallFontSize, color: '#200000', align: 'center'});
+        let text2 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 115, getLangText('encyc_element'), {fontFamily: 'germania', fontSize: smallFontSize, color: '#200000', align: 'center'});
         text2.setDepth(this.baseDepth).setOrigin(0.5, 0).setAlpha(0).setStroke('#ffffff', 2);
 
-        let text3 = PhaserScene.add.text(gameConsts.halfWidth + 138, gameConsts.halfHeight - 185, getLangText('pre_fight_0c'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
+        let text3 = PhaserScene.add.text(gameConsts.halfWidth + 138, gameConsts.halfHeight - 185, getLangText('pre_fight_0c'), {fontFamily: 'germania', fontSize: 24, color: '#200000', align: 'right'});
         text3.setDepth(this.baseDepth).setAlpha(0).setOrigin(1, 0.5);
-        let text4 = PhaserScene.add.text(gameConsts.halfWidth + 138, gameConsts.halfHeight - 125, getLangText('pre_fight_0d'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
+        let text4 = PhaserScene.add.text(gameConsts.halfWidth + 138, gameConsts.halfHeight - 125, getLangText('pre_fight_0d'), {fontFamily: 'germania', fontSize: 24, color: '#200000', align: 'right'});
         text4.setDepth(this.baseDepth).setAlpha(0).setOrigin(1, 0.5);
 
-        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 212, gameConsts.halfHeight - 66, getLangText('pre_fight_0g'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'right'});
+        let text7 = PhaserScene.add.text(gameConsts.halfWidth + 212, gameConsts.halfHeight - 66, getLangText('pre_fight_0g'), {fontFamily: 'germania', fontSize: 24, color: '#200000', align: 'right'});
         text7.setDepth(this.baseDepth).setAlpha(0).setOrigin(1, 0.5);
-        let text8 = PhaserScene.add.text(gameConsts.halfWidth - 1, gameConsts.halfHeight + 236, getLangText('pre_fight_0h'), {fontFamily: 'opensans', fontSize: 20, color: '#200000', align: 'center'});
+        let text8 = PhaserScene.add.text(gameConsts.halfWidth - 1, gameConsts.halfHeight + 236, getLangText('pre_fight_0h'), {fontFamily: 'germania', fontSize: 20, color: '#200000', align: 'center'});
         text8.setDepth(this.baseDepth).setAlpha(0).setOrigin(0.5, 0.5);
         this.currentPageItems.push(imageCover);
         this.currentPageItems.push(imageCover2);
@@ -404,8 +404,8 @@ class Encyclopedia {
     setSecondPage() {
         playSound('flip2');
         this.title.setText(" ")
-        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 252, gameConsts.halfHeight - 290, getLangText('encyclopedia_rune_element'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
-        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 252, gameConsts.halfHeight - 15, getLangText('encyclopedia_rune_action'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 252, gameConsts.halfHeight - 290, getLangText('encyclopedia_rune_element'), {fontFamily: 'germania', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 252, gameConsts.halfHeight - 15, getLangText('encyclopedia_rune_action'), {fontFamily: 'germania', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
         this.currentPageItems.push(text1);
         this.currentPageItems.push(text2);
         this.closeButton.tweenToPos(this.closeButton.getXPos(), gameConsts.halfHeight - 275, 0.5, 'Cubic.easeOut')
@@ -452,7 +452,7 @@ class Encyclopedia {
                 break;
             }
             let newIcon = PhaserScene.add.image(gameConsts.halfWidth - 212, listOfPositions[i], 'tutorial', listOfRunes[i]).setAlpha(0).setDepth(this.baseDepth).setScale(0.6);
-            let newText = PhaserScene.add.text(gameConsts.halfWidth - 170, listOfPositions[i], listOfText[i], {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth).setOrigin(0, 0.5);
+            let newText = PhaserScene.add.text(gameConsts.halfWidth - 170, listOfPositions[i], listOfText[i], {fontFamily: 'germania', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth).setOrigin(0, 0.5);
             this.currentPageItems.push(newIcon);
             this.currentPageItems.push(newText);
 
@@ -511,7 +511,7 @@ class Encyclopedia {
     setThirdPage() {
         playSound('flip2');
         this.title.setText(" ")
-        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 252, gameConsts.halfHeight - 303, getLangText('encyclopedia_rune_combos'), {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        let text1 = PhaserScene.add.text(gameConsts.halfWidth - 252, gameConsts.halfHeight - 303, getLangText('encyclopedia_rune_combos'), {fontFamily: 'germania', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
         this.currentPageItems.push(text1);
         PhaserScene.tweens.add({
             targets: text1,
@@ -607,7 +607,7 @@ class Encyclopedia {
         //         break;
         //     }
         //     let newIcon = PhaserScene.add.image(gameConsts.halfWidth - 212, listOfPositions[i], 'tutorial', listOfRunes[i]).setAlpha(0).setDepth(this.baseDepth).setScale(0.55);
-        //     let newText = PhaserScene.add.text(gameConsts.halfWidth - 170, listOfPositions[i], listOfText[i], {fontFamily: 'opensans', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth).setOrigin(0, 0.5);
+        //     let newText = PhaserScene.add.text(gameConsts.halfWidth - 170, listOfPositions[i], listOfText[i], {fontFamily: 'germania', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth).setOrigin(0, 0.5);
         //     this.currentPageItems.push(newIcon);
         //     this.currentPageItems.push(newText);
         // }

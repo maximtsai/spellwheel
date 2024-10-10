@@ -23,8 +23,8 @@ function showYesNoPopup(yesText, noText, titleText = '...', bodyText = "...", on
     });
 
     let popupBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'ui', 'paper_half.png').setDepth(111000).setScale(0.7, 0.58);
-    let newText = PhaserScene.add.text(gameConsts.halfWidth, popupBG.y - 75, titleText, {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'center'}).setOrigin(0.5, 0.5).setDepth(111000).setAlpha(0.1);
-    let descText = PhaserScene.add.text(gameConsts.halfWidth, popupBG.y - 17, bodyText, {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'center'}).setOrigin(0.5, 0.5).setDepth(111000).setAlpha(0.1);
+    let newText = PhaserScene.add.text(gameConsts.halfWidth, popupBG.y - 75, titleText, {fontFamily: 'germania', fontSize: 30, color: '#000000', align: 'center'}).setOrigin(0.5, 0.5).setDepth(111000).setAlpha(0.1);
+    let descText = PhaserScene.add.text(gameConsts.halfWidth, popupBG.y - 17, bodyText, {fontFamily: 'germania', fontSize: 24, color: '#000000', align: 'center'}).setOrigin(0.5, 0.5).setDepth(111000).setAlpha(0.1);
     PhaserScene.tweens.add({
         targets: [newText, descText],
         alpha: 1,
@@ -88,7 +88,7 @@ function showYesNoPopup(yesText, noText, titleText = '...', bodyText = "...", on
         }
     });
     yesBtn.setOrigin(0.5, 0.5);
-    yesBtn.addText(yesText, {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'center'})
+    yesBtn.addText(yesText, {fontFamily: 'germania', fontSize: 28, color: '#000000', align: 'center'})
     yesBtn.setDepth(111000);
     yesBtn.setScale(0.7);
 
@@ -181,7 +181,7 @@ function showYesNoPopup(yesText, noText, titleText = '...', bodyText = "...", on
     itemsToDestroy = [closeBtn, noBtn, yesBtn, darkBG, dieClickBlocker, newText, descText, popupBG];
 
     noBtn.setOrigin(0.5, 0.5);
-    noBtn.addText(noText, {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'center'})
+    noBtn.addText(noText, {fontFamily: 'germania', fontSize: 28, color: '#000000', align: 'center'})
     noBtn.setDepth(111000);
     noBtn.setScale(0.7);
 

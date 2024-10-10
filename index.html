@@ -127,9 +127,15 @@
             font-weight:bold;
         }
         @font-face {
-            font-family: opensans;
-            src: local('opensans'), url('fonts/OpenSans-ExtraBold.ttf') format('truetype');
-            font-weight:500;
+            font-family: germania;
+            src: local('germania'), url('fonts/GermaniaOne-Bold.ttf') format('truetype');
+            font-weight:800;
+            font-weight:bold;
+        }
+        @font-face {
+            font-family: germania_italics;
+            src: local('germania_italics'), url('fonts/GermaniaOne-BoldItalic.ttf') format('truetype');
+            font-weight:800;
             font-weight:bold;
         }
     </style>
@@ -140,12 +146,14 @@
         document.fonts.load('10pt "robotomedium"')
         document.fonts.load('10pt "garamondbold"')
         document.fonts.load('10pt "garamondmax"')
-        document.fonts.load('10pt "opensans"')
+        document.fonts.load('10pt "germania"')
+        document.fonts.load('10pt "germania_italics"')
     </script>
     <div style="font-family:robotomedium; position:absolute; left:-1000px; visibility:hidden;">.</div>
     <div style="font-family:garamondbold; position:absolute; left:-1000px; visibility:hidden;">.</div>
     <div style="font-family:garamondmax; position:absolute; left:-1000px; visibility:hidden;">.</div>
-    <div style="font-family:opensans; position:absolute; left:-1000px; visibility:hidden;">.</div>
+    <div style="font-family:germania; position:absolute; left:-1000px; visibility:hidden;">.</div>
+    <div style="font-family:germania_italics; position:absolute; left:-1000px; visibility:hidden;">.</div>
     <div id="preload-notice">Loading Preloader ...</div>
     <script src="main.js"></script>
 </body>

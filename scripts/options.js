@@ -86,7 +86,7 @@ class Options {
             this.listOfThingsToHide.push(this.bgPage);
         }
 
-        this.settingsTitle = PhaserScene.add.text(gameConsts.halfWidth - 230, isMobile ? gameConsts.halfWidth - 195 : gameConsts.halfWidth - 212, getLangText('settings'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
+        this.settingsTitle = PhaserScene.add.text(gameConsts.halfWidth - 230, isMobile ? gameConsts.halfWidth - 195 : gameConsts.halfWidth - 212, getLangText('settings'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
         this.listOfThingsToHideSemiAlpha.push(this.settingsTitle);
         this.addLangTextUpdateable(this.settingsTitle, 'settings')
 
@@ -156,7 +156,7 @@ class Options {
                     }
                 }
             });
-            this.menuBtn.addText(getLangText('menu'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'center'});
+            this.menuBtn.addText(getLangText('menu'), {fontFamily: 'germania', fontSize: 28, color: '#000000', align: 'center'});
             this.addLangTextUpdateable(this.menuBtn, 'menu')
             this.menuBtn.setDepth(this.baseDepth + 1);
             this.menuBtn.setScale(0.82, 0.82);
@@ -203,7 +203,7 @@ class Options {
                     this.hideOptions();
                 }
             });
-            this.resumeBtn.addText(getLangText('resume'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'center'});
+            this.resumeBtn.addText(getLangText('resume'), {fontFamily: 'germania', fontSize: 28, color: '#000000', align: 'center'});
             this.addLangTextUpdateable(this.resumeBtn, 'resume')
             this.resumeBtn.setDepth(this.baseDepth + 1);
             this.resumeBtn.setScale(0.82, 0.82);
@@ -398,16 +398,16 @@ class Options {
 
         if (!this.infoBoxPosText) {
             let startPos = gameConsts.halfHeight - 95;
-            this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 18, getLangText('spell_info_position'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
+            this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 18, getLangText('spell_info_position'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosText);
 
-            this.infoBoxPosTextLeft = PhaserScene.add.text(gameConsts.halfWidth - 193, startPos, getLangText('left'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.infoBoxPosTextLeft = PhaserScene.add.text(gameConsts.halfWidth - 193, startPos, getLangText('left'), {fontFamily: 'germania', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosTextLeft);
 
-            this.infoBoxPosTextCenter = PhaserScene.add.text(gameConsts.halfWidth - 18, startPos, getLangText('center'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.infoBoxPosTextCenter = PhaserScene.add.text(gameConsts.halfWidth - 18, startPos, getLangText('center'), {fontFamily: 'germania', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosTextCenter);
 
-            this.infoBoxPosTextNone = PhaserScene.add.text(gameConsts.halfWidth + 157, startPos, getLangText('hidden'), {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.infoBoxPosTextNone = PhaserScene.add.text(gameConsts.halfWidth + 157, startPos, getLangText('hidden'), {fontFamily: 'germania', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosTextNone);
 
 
@@ -573,10 +573,10 @@ class Options {
         let listOfLanguageCodes = ['en_us', 'zh_cn', 'zh_tw', 'fr'];
         if (!this.langSelectText) {
             let startPos = gameConsts.halfHeight - 10;
-            this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 33, getLangText('language_text'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
+            this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 33, getLangText('language_text'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
             this.addLangTextUpdateable(this.langSelectText, 'language_text')
 
-            this.langWarningText = PhaserScene.add.text(gameConsts.halfWidth + 215, startPos - 31, getLangText('translate_warn'), {fontFamily: 'opensans', fontSize: 16, color: '#604A4A', align: 'right'}).setOrigin(1, 0.6).setDepth(this.baseDepth).setAlpha(0.82);
+            this.langWarningText = PhaserScene.add.text(gameConsts.halfWidth + 215, startPos - 31, getLangText('translate_warn'), {fontFamily: 'germania', fontSize: 16, color: '#604A4A', align: 'right'}).setOrigin(1, 0.6).setDepth(this.baseDepth).setAlpha(0.82);
             this.addLangTextUpdateable(this.langWarningText, 'translate_warn')
 
 
@@ -592,7 +592,7 @@ class Options {
                 let furthestRight = gameConsts.halfWidth + 157;
                 let totalDist = furthestRight - furthestLeft;
                 let intervalDist = totalDist / (listOfLanguages.length - 1)
-                let newLangText = PhaserScene.add.text(furthestLeft + intervalDist * i, startPos, language, {fontFamily: 'opensans', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+                let newLangText = PhaserScene.add.text(furthestLeft + intervalDist * i, startPos, language, {fontFamily: 'germania', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
                 this.listOfThingsToHideSemiAlpha.push(newLangText);
 
                 let newBtn = new Button({
@@ -672,11 +672,11 @@ class Options {
             let arrowUpY = this.bgPage.y + 90 + 20;
             let arrowDownY = this.bgPage.y + 206 + 20;
             let centerPos = (arrowUpY + arrowDownY) * 0.5;
-            this.codeAnnounce = PhaserScene.add.text(gameConsts.halfWidth, arrowDownY + 26, "HELLO!", {fontFamily: 'opensans', fontSize: 30, color: '#00FF33', align: 'center'}).setOrigin(0.5, 0.4).setDepth(this.baseDepth + 2).setStroke('#200000', 5);
+            this.codeAnnounce = PhaserScene.add.text(gameConsts.halfWidth, arrowDownY + 26, "HELLO!", {fontFamily: 'germania', fontSize: 30, color: '#00FF33', align: 'center'}).setOrigin(0.5, 0.4).setDepth(this.baseDepth + 2).setStroke('#200000', 5);
             this.listOfThingsToHide.push(this.codeAnnounce);
             this.codeAnnounce.visible = false;
 
-            this.codeItemText = PhaserScene.add.text(gameConsts.halfWidth - 230, gameConsts.halfHeight + 45, getLangText('access_code'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth + 1);
+            this.codeItemText = PhaserScene.add.text(gameConsts.halfWidth - 230, gameConsts.halfHeight + 45, getLangText('access_code'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth + 1);
             this.listOfThingsToHideSemiAlpha.push(this.codeItemText);
 
             /*

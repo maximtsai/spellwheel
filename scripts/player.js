@@ -1160,10 +1160,10 @@ class Player {
                     alpha: 1,
                     ease: 'Cubic.easeIn',
                     onComplete: () => {
-                        let cheatsDisplay = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 95, getLangText('cheat_code'), {fontFamily: 'opensans', fontSize: 28, color: '#EEEEEE', align: 'center'}).setDepth(1000).setStroke('#000000', 4).setVisible(false).setOrigin(0.5, 0.5);
+                        // let cheatsDisplay = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 95, getLangText('cheat_code'), {fontFamily: 'germania', fontSize: 28, color: '#EEEEEE', align: 'center'}).setDepth(1000).setStroke('#000000', 4).setVisible(false).setOrigin(0.5, 0.5);
                         this.cheatIcons = [];
-                        let levelToGet = globalObjects.currentEnemy ? globalObjects.currentEnemy.level : 2;
-                        this.createCheatCode(levelToGet, cheatsDisplay);
+                        // let levelToGet = globalObjects.currentEnemy ? globalObjects.currentEnemy.level : 2;
+                        // this.createCheatCode(levelToGet, cheatsDisplay);
                         let deathMenuButton;
                         let deathRetryButton;
                         let deathTrainingButton;
@@ -1188,17 +1188,17 @@ class Player {
                             onMouseUp: () => {
                                 this.revive();
                                 gotoMainMenu();
-                                cheatsDisplay.destroy();
+                                // cheatsDisplay.destroy();
                                 deathRetryButton.destroy();
                                 deathMenuButton.destroy();
                                 deathTrainingButton.destroy();
-                                for (let i in this.cheatIcons) {
-                                    this.cheatIcons[i].destroy();
-                                }
-                                this.cheatIcons = [];
+                                // for (let i in this.cheatIcons) {
+                                //     this.cheatIcons[i].destroy();
+                                // }
+                                // this.cheatIcons = [];
                             }
                         });
-                        deathMenuButton.addText(getLangText('menu'), {fontFamily: 'opensans', fontSize: 34, color: '#000000', align: 'center'});
+                        deathMenuButton.addText(getLangText('menu'), {fontFamily: 'germania', fontSize: 34, color: '#000000', align: 'center'});
                         deathMenuButton.setDepth(200);
 
                         deathTrainingButton = new Button({
@@ -1230,17 +1230,17 @@ class Player {
                                     globalObjects.player.resetStats();
                                 }
                                 beginLevel(CURRENT_LEVEL * -1 + 1);
-                                cheatsDisplay.destroy();
+                                // cheatsDisplay.destroy();
                                 deathMenuButton.destroy();
                                 deathRetryButton.destroy();
                                 deathTrainingButton.destroy();
-                                for (let i in this.cheatIcons) {
-                                    this.cheatIcons[i].destroy();
-                                }
-                                this.cheatIcons = [];
+                                // for (let i in this.cheatIcons) {
+                                //     this.cheatIcons[i].destroy();
+                                // }
+                                // this.cheatIcons = [];
                             }
                         });
-                        deathTrainingButton.addText(getLangText('back_to_training'), {fontFamily: 'opensans', fontSize: 24, color: '#000000', align: 'center'});
+                        deathTrainingButton.addText(getLangText('back_to_training'), {fontFamily: 'germania', fontSize: 24, color: '#000000', align: 'center'});
                         deathTrainingButton.setDepth(200);
                         if (CURRENT_LEVEL >= 7 || CURRENT_LEVEL < 0) {
                             deathTrainingButton.setState(DISABLE);
@@ -1277,17 +1277,17 @@ class Player {
                                 setTimeout(() => {
                                     createEnemy(CURRENT_LEVEL);
                                 }, 0)
-                                cheatsDisplay.destroy();
+                                // cheatsDisplay.destroy();
                                 deathMenuButton.destroy();
                                 deathRetryButton.destroy();
                                 deathTrainingButton.destroy();
-                                for (let i in this.cheatIcons) {
-                                    this.cheatIcons[i].destroy();
-                                }
-                                this.cheatIcons = [];
+                                // for (let i in this.cheatIcons) {
+                                //     this.cheatIcons[i].destroy();
+                                // }
+                                // this.cheatIcons = [];
                             }
                         });
-                        deathRetryButton.addText(getLangText('retry'), {fontFamily: 'opensans', fontSize: 34, color: '#000000', align: 'center'});
+                        deathRetryButton.addText(getLangText('retry'), {fontFamily: 'germania', fontSize: 34, color: '#000000', align: 'center'});
                         deathRetryButton.setDepth(200);
                     }
                 });

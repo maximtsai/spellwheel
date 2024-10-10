@@ -169,7 +169,7 @@ function showMainMenuButtons() {
             }
         });
         globalObjects.continueButton.setOrigin(0.5, 0.5);
-        globalObjects.continueButton.addText(getLangText('cont_ui'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
+        globalObjects.continueButton.addText(getLangText('cont_ui'), {fontFamily: 'germania', fontSize: 30, color: '#000000', align: 'left'})
         globalObjects.continueButton.setScale(0.9);
     }
 
@@ -197,7 +197,7 @@ function showMainMenuButtons() {
             }
         });
         globalObjects.lvlPickButton.setOrigin(0.5, 0.5);
-        globalObjects.lvlPickButton.addText(getLangText('lvl_select'), {fontFamily: 'opensans', fontSize: 24, color: '#000000', align: 'left'})
+        globalObjects.lvlPickButton.addText(getLangText('lvl_select'), {fontFamily: 'germania', fontSize: 26, color: '#000000', align: 'left'})
         globalObjects.lvlPickButton.setScale(0.95, 0.9);
     }
     let yPos = (hasLvlSelect || hasContinue) ? gameConsts.halfHeight - 320 : gameConsts.halfHeight - 120;
@@ -244,7 +244,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.startButton.setOrigin(0.5, 0.5);
-    globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'opensans', fontSize: 28, color: '#000000', align: 'left'})
+    globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'germania', fontSize: 30, color: '#000000', align: 'left'})
     globalObjects.startButton.setScale(0.9);
     globalObjects.startButton.isSolo = !hasLvlSelect && !hasContinue;
     if (globalObjects.startButton.isSolo) {
@@ -280,7 +280,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.cheatButton.setScale(0.5);
-    globalObjects.cheatButton.addText("2X DAMAGE CHEAT", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.cheatButton.addText("2X DAMAGE CHEAT", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.cheatButton2 = new Button({
         normal: {
@@ -305,7 +305,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.cheatButton2.setScale(0.5);
-    globalObjects.cheatButton2.addText("2X DAMAGE CHEAT", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.cheatButton2.addText("2X DAMAGE CHEAT", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.cheatButton3 = new Button({
         normal: {
@@ -330,7 +330,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.cheatButton3.setScale(0.5);
-    globalObjects.cheatButton3.addText("+20 HP CHEAT", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.cheatButton3.addText("+20 HP CHEAT", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
     */
 
     globalObjects.cheatButton4 = new Button({
@@ -356,7 +356,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.cheatButton4.setScale(0.5);
-    globalObjects.cheatButton4.addText("INFINITE AMMO", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.cheatButton4.addText("INFINITE AMMO", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
     /*
     globalObjects.cheatButton5 = new Button({
         normal: {
@@ -383,7 +383,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.cheatButton5.setScale(0.5);
-    globalObjects.cheatButton5.addText("LOW HEALTH", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.cheatButton5.addText("LOW HEALTH", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 */
 
 
@@ -411,7 +411,7 @@ function showMainMenuButtons() {
     //     }
     // });
     // globalObjects.levelSelectButton.setScale(0.5);
-    // globalObjects.levelSelectButton.addText("LEVEL GOBLIN", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    // globalObjects.levelSelectButton.addText("LEVEL GOBLIN", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
     /*
     globalObjects.level3Button = new Button({
@@ -438,7 +438,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.level3Button.setScale(0.5);
-    globalObjects.level3Button.addText("LEVEL TREE", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.level3Button.addText("LEVEL TREE", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvlButton = new Button({
         normal: {
@@ -464,7 +464,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvlButton.setScale(0.5);
-    globalObjects.lvlButton.addText("LEVEL MAGICIAN", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvlButton.addText("LEVEL MAGICIAN", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl5Button = new Button({
         normal: {
@@ -490,7 +490,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl5Button.setScale(0.5);
-    globalObjects.lvl5Button.addText("LEVEL KNIGHT", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl5Button.addText("LEVEL KNIGHT", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl6Button = new Button({
         normal: {
@@ -516,7 +516,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl6Button.setScale(0.5);
-    globalObjects.lvl6Button.addText("LEVEL WALL", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl6Button.addText("LEVEL WALL", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl7Button = new Button({
         normal: {
@@ -542,7 +542,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl7Button.setScale(0.5);
-    globalObjects.lvl7Button.addText("LEVEL SUPER DUMMY", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl7Button.addText("LEVEL SUPER DUMMY", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl8Button = new Button({
         normal: {
@@ -568,7 +568,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl8Button.setScale(0.5);
-    globalObjects.lvl8Button.addText("LEVEL ASSASSIN", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl8Button.addText("LEVEL ASSASSIN", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl9Button = new Button({
         normal: {
@@ -594,7 +594,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl9Button.setScale(0.5);
-    globalObjects.lvl9Button.addText("LEVEL ROBOT", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl9Button.addText("LEVEL ROBOT", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl10Button = new Button({
         normal: {
@@ -620,7 +620,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl10Button.setScale(0.5);
-    globalObjects.lvl10Button.addText("LEVEL DEATH", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl10Button.addText("LEVEL DEATH", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
 
     globalObjects.lvl11Button = new Button({
@@ -647,7 +647,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl11Button.setScale(0.5);
-    globalObjects.lvl11Button.addText("LEVEL 11", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'})
+    globalObjects.lvl11Button.addText("LEVEL 11", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
     globalObjects.lvl12Button = new Button({
         normal: {
@@ -673,7 +673,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl12Button.setScale(0.5);
-    globalObjects.lvl12Button.addText("LEVEL 11.5", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'});
+    globalObjects.lvl12Button.addText("LEVEL 11.5", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'});
 
     globalObjects.lvl13Button = new Button({
         normal: {
@@ -699,7 +699,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.lvl13Button.setScale(0.5);
-    globalObjects.lvl13Button.addText("LEVEL 13", {fontFamily: 'opensans', fontSize: 20, color: '#000000', align: 'left'});
+    globalObjects.lvl13Button.addText("LEVEL 13", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'});
     */
 
     // globalObjects.lvlButton.destroy();
@@ -749,10 +749,10 @@ function showMainMenuButtons() {
             let page1Content = [];
             let page2Content = [];
             let tab1 = PhaserScene.add.image(gameConsts.halfWidth - 190, gameConsts.halfHeight - 305, 'ui', 'paperTab.png').setDepth(99999).setAlpha(0);
-            let tab1Icon = PhaserScene.add.text(tab1.x, tab1.y - 55, "PAGE 1", {fontFamily: 'opensans', fontSize: 18, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(99999).setAlpha(0);
+            let tab1Icon = PhaserScene.add.text(tab1.x, tab1.y - 55, "PAGE 1", {fontFamily: 'germania', fontSize: 18, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(99999).setAlpha(0);
 
             let tab2 = PhaserScene.add.image(gameConsts.halfWidth - 90, gameConsts.halfHeight - 278, 'ui', 'paperTab.png').setDepth(99999).setAlpha(0);
-            let tab2Icon = PhaserScene.add.text(tab2.x, tab2.y - 55, "PAGE 2", {fontFamily: 'opensans', fontSize: 18, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(99999).setAlpha(0);
+            let tab2Icon = PhaserScene.add.text(tab2.x, tab2.y - 55, "PAGE 2", {fontFamily: 'germania', fontSize: 18, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(99999).setAlpha(0);
 
             let text1 = "Game by Maxim Tsai\n" +
                 "Character art by Theresa Kao\n@mothmeatstore\n" +
@@ -769,7 +769,7 @@ function showMainMenuButtons() {
                 "Unlocking lock.wav by Stefan21100190\n- https://freesound.org/s/593112/\n- License: Attribution 4.0\n\n"+
                 "Sound Effects by Lara Sluyter\n(LARA’S HORROR SOUNDS on YouTube)";
             let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'paper.png').setDepth(100000).setScale(0.975);
-            let creditsText = PhaserScene.add.text(gameConsts.halfWidth, creditsUI.y - 285, text1, {fontFamily: 'opensans', fontSize: 21, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(100000).setAlpha(0.1);
+            let creditsText = PhaserScene.add.text(gameConsts.halfWidth, creditsUI.y - 285, text1, {fontFamily: 'germania', fontSize: 21, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(100000).setAlpha(0.1);
             let artbook = PhaserScene.add.image(gameConsts.halfWidth, creditsUI.y + 124, 'misc', 'artbook.png').setDepth(100000).setScale(0.94).setAlpha(0.9);
 
             let creditsText2 = PhaserScene.add.text(gameConsts.halfWidth - 260, creditsUI.y - 285, text2, {fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0).setDepth(100000).setAlpha(0);
@@ -1038,7 +1038,7 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.creditsButton.setScale(0.5, 0.5);
-    globalObjects.creditsButton.addText("CREDITS", {fontFamily: 'opensans', fontSize: 24, color: '#000000', align: 'left'})
+    globalObjects.creditsButton.addText("CREDITS", {fontFamily: 'germania', fontSize: 24, color: '#000000', align: 'left'})
 
 }
 
@@ -1076,7 +1076,7 @@ function showLevelSelectScreen(){
     let levelSelectBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 22, 'ui', 'paper.png').setDepth(10000).setScale(0.92, 0.9);
     let blackBG = getBackgroundBlackout();
     blackBG.setDepth(9999).setAlpha(0);
-    let title = PhaserScene.add.text(gameConsts.halfWidth, levelSelectBG.y - 260, getLangText('lvl_select'), {fontFamily: 'opensans', fontSize: 28, color: '#200000', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.8).setScale(0.89, 0.89).setDepth(10000);
+    let title = PhaserScene.add.text(gameConsts.halfWidth, levelSelectBG.y - 260, getLangText('lvl_select'), {fontFamily: 'germania', fontSize: 30, color: '#200000', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.8).setScale(0.89, 0.89).setDepth(10000);
     PhaserScene.tweens.add({
         targets: levelSelectBG,
         scaleX: 0.93,

@@ -147,17 +147,17 @@ function showMainMenuButtons() {
     if (hasContinue) {
         globalObjects.continueButton = new Button({
             normal: {
-                ref: "menu_btn_normal.png",
+                ref: "menu_btn2_normal.png",
                 atlas: 'buttons',
                 x: gameConsts.halfWidth,
                 y: gameConsts.halfHeight - 235,
             },
             hover: {
-                ref: "menu_btn_hover.png",
+                ref: "menu_btn2_hover.png",
                 atlas: 'buttons',
             },
             press: {
-                ref: "menu_btn_press.png",
+                ref: "menu_btn2_press.png",
                 atlas: 'buttons',
             },
             disable: {
@@ -723,17 +723,17 @@ function showMainMenuButtons() {
 
     globalObjects.creditsButton = new Button({
         normal: {
-            ref: "menu_btn_normal.png",
+            ref: "menu_btn2_normal.png",
             atlas: 'buttons',
             x: gameConsts.width - 80,
             y: gameConsts.height - 330,
         },
         hover: {
-            ref: "menu_btn_hover.png",
+            ref: "menu_btn2_hover.png",
             atlas: 'buttons',
         },
         press: {
-            ref: "menu_btn_press.png",
+            ref: "menu_btn2_press.png",
             atlas: 'buttons',
         },
         disable: {

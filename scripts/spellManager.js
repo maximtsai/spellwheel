@@ -695,7 +695,7 @@ class SpellManager {
                 alpha: 1,
                 onStart: () => {
                     if (i === 0) {
-                        playSound('matter_shield');
+                        playSound('matter_shield').detune = 200 - Math.floor(Math.random() * 300);
                     }
                 },
                 onComplete: () => {
@@ -2533,9 +2533,14 @@ class SpellManager {
             this.voidSpikeOutButton = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'blurry', 'void_spike_out.png');
         }
         this.pulseCircle.setScale(1.5).setDepth(210).setAlpha(0.05).setPosition(gameConsts.halfWidth, globalObjects.player.getY()).setRotation(Math.random() * 6);
-        this.voidSpikeOutOuter.setScale(1.6).setDepth(99).setRotation(Math.random() * 6);
-        this.voidSpikeOutInner.setScale(1.2).setDepth(101).setRotation(this.voidSpikeOutOuter.rotation + 0.15);
-        this.voidSpikeOutButton.setScale(0.6).setDepth(104).setRotation(this.voidSpikeOutOuter.rotation + 0.3);
+
+        if (this.voidSpikeOutOuter.currAnim) {
+            this.voidSpikeOutOuter.currAnim.stop();
+        }
+        this.voidSpikeOutOuter.setScale(1.6).setDepth(99).setRotation(Math.random() * 6).setVisible(true);
+        this.voidSpikeOutInner.setScale(1.2).setDepth(101).setRotation(this.voidSpikeOutOuter.rotation + 0.15).setVisible(true);
+        this.voidSpikeOutButton.setScale(0.6).setDepth(104).setRotation(this.voidSpikeOutOuter.rotation + 0.3).setVisible(true);
+
         PhaserScene.tweens.add({
             targets: [this.pulseCircle],
             scaleX: 0.5,
@@ -2591,7 +2596,7 @@ class SpellManager {
                         });
                     }
                 });
-                PhaserScene.tweens.add({
+                this.voidSpikeOutOuter.currAnim = PhaserScene.tweens.add({
                     delay: 20,
                     targets: [this.voidSpikeOutOuter],
                     duration: 160,
@@ -2600,13 +2605,19 @@ class SpellManager {
                     ease: 'Back.easeOut',
                     completeDelay: 180,
                     onComplete: () => {
-                        PhaserScene.tweens.add({
+                        this.voidSpikeOutOuter.curranim = PhaserScene.tweens.add({
                             targets: [this.voidSpikeOutOuter],
                             delay: holdDelay,
                             duration: 400,
-                            scaleX: 1.6,
-                            scaleY: 1.6,
+                            scaleX: 1.56,
+                            scaleY: 1.56,
                             ease: 'Quad.easeIn',
+                            onComplete: () => {
+                                this.voidSpikeOutOuter.visible = false;
+                                this.voidSpikeOutInner.visible = false;
+                                this.voidSpikeOutButton.visible = false;
+
+                            }
                         });
                     }
                 });

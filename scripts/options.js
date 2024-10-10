@@ -95,8 +95,8 @@ class Options {
                 normal: {
                     ref: "menu_btn_normal.png",
                     atlas: 'buttons',
-                    x: gameConsts.halfWidth - 140,
-                    y: gameConsts.halfHeight + 280,
+                    x: gameConsts.halfWidth - 125,
+                    y: gameConsts.halfHeight + 275,
                     alpha: 1,
                 },
                 hover: {
@@ -159,7 +159,7 @@ class Options {
             this.menuBtn.addText(getLangText('menu'), {fontFamily: 'germania', fontSize: 28, color: '#000000', align: 'center'});
             this.addLangTextUpdateable(this.menuBtn, 'menu')
             this.menuBtn.setDepth(this.baseDepth + 1);
-            this.menuBtn.setScale(0.82, 0.82);
+            this.menuBtn.setScale(0.8, 0.8);
             this.listOfButtonsToDisable.push(this.menuBtn);
         } else {
             this.menuBtn.setText(getLangText('menu'));
@@ -168,24 +168,24 @@ class Options {
         if (!this.resumeBtn) {
             this.resumeBtn = new Button({
                 normal: {
-                    ref: "menu_btn_normal.png",
+                    ref: "menu_btn2_normal.png",
                     atlas: 'buttons',
-                    x: gameConsts.halfWidth + 140,
-                    y: gameConsts.halfHeight + 280,
+                    x: gameConsts.halfWidth + 125,
+                    y: gameConsts.halfHeight + 275,
                     alpha: 1,
                 },
                 hover: {
-                    ref: "menu_btn_hover.png",
+                    ref: "menu_btn2_hover.png",
                     atlas: 'buttons',
                     alpha: 1,
                 },
                 press: {
-                    ref: "menu_btn_normal.png",
+                    ref: "menu_btn2_normal.png",
                     atlas: 'buttons',
                     alpha: 1,
                 },
                 disable: {
-                    ref: "menu_btn_normal.png",
+                    ref: "menu_btn2_normal.png",
                     atlas: 'buttons',
                     alpha: 0
                 },
@@ -206,7 +206,7 @@ class Options {
             this.resumeBtn.addText(getLangText('resume'), {fontFamily: 'germania', fontSize: 28, color: '#000000', align: 'center'});
             this.addLangTextUpdateable(this.resumeBtn, 'resume')
             this.resumeBtn.setDepth(this.baseDepth + 1);
-            this.resumeBtn.setScale(0.82, 0.82);
+            this.resumeBtn.setScale(0.8, 0.8);
             this.listOfButtonsToDisable.push(this.resumeBtn);
         } else {
             this.resumeBtn.setText(getLangText('resume'));

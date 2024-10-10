@@ -5,198 +5,12 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 1880,
-				"h": 2041
-			},
-			"scale": 1,
-			"frames": [
-				{
-					"filename": "fog_swirl.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 1080,
-						"h": 1335
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 1080,
-						"h": 1335
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 1080,
-						"h": 1335
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "star_red.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 585,
-						"h": 658
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 585,
-						"h": 658
-					},
-					"frame": {
-						"x": 1,
-						"y": 1338,
-						"w": 585,
-						"h": 658
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "menu_bot.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 769,
-						"h": 1000
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 3,
-						"h": 3
-					},
-					"frame": {
-						"x": 1,
-						"y": 1998,
-						"w": 3,
-						"h": 3
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "glass_break.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 533,
-						"h": 623
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 533,
-						"h": 623
-					},
-					"frame": {
-						"x": 588,
-						"y": 1338,
-						"w": 533,
-						"h": 623
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "fog_slice.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 820,
-						"h": 970
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 9,
-						"w": 796,
-						"h": 950
-					},
-					"frame": {
-						"x": 1083,
-						"y": 1,
-						"w": 796,
-						"h": 950
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "waterfallrocks.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 700,
-						"h": 800
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 700,
-						"h": 334
-					},
-					"frame": {
-						"x": 1083,
-						"y": 953,
-						"w": 700,
-						"h": 334
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "settingsScreen.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 669,
-						"h": 812
-					},
-					"spriteSourceSize": {
-						"x": 34,
-						"y": 59,
-						"w": 635,
-						"h": 751
-					},
-					"frame": {
-						"x": 1123,
-						"y": 1289,
-						"w": 635,
-						"h": 751
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				}
-			]
-		},
-		{
-			"image": "sprites/backgrounds-1.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 1853,
 				"h": 1928
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "fog_swirl_glow.png",
+					"filename": "fog_swirl.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -246,6 +60,56 @@
 					}
 				},
 				{
+					"filename": "menu_bot.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 769,
+						"h": 1000
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 3,
+						"h": 3
+					},
+					"frame": {
+						"x": 1,
+						"y": 1886,
+						"w": 3,
+						"h": 3
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fog_slice.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 820,
+						"h": 970
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 9,
+						"w": 796,
+						"h": 950
+					},
+					"frame": {
+						"x": 1083,
+						"y": 1,
+						"w": 796,
+						"h": 950
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "menu_back.png",
 					"rotated": false,
 					"trimmed": true,
@@ -261,34 +125,9 @@
 					},
 					"frame": {
 						"x": 1083,
-						"y": 1,
+						"y": 953,
 						"w": 769,
 						"h": 974
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "background4.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 750,
-						"h": 950
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 750,
-						"h": 950
-					},
-					"frame": {
-						"x": 1083,
-						"y": 977,
-						"w": 750,
-						"h": 950
 					},
 					"anchor": {
 						"x": 0.5,
@@ -323,14 +162,39 @@
 			]
 		},
 		{
-			"image": "sprites/backgrounds-2.webp",
+			"image": "sprites/backgrounds-1.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1816,
-				"h": 1806
+				"w": 1853,
+				"h": 1854
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "fog_swirl_glow.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1080,
+						"h": 1335
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1080,
+						"h": 1335
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 1080,
+						"h": 1335
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
 				{
 					"filename": "path.png",
 					"rotated": false,
@@ -346,7 +210,7 @@
 						"h": 900
 					},
 					"frame": {
-						"x": 1,
+						"x": 1083,
 						"y": 1,
 						"w": 769,
 						"h": 900
@@ -356,6 +220,92 @@
 						"y": 0.5
 					}
 				},
+				{
+					"filename": "background4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 750,
+						"h": 950
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 750,
+						"h": 950
+					},
+					"frame": {
+						"x": 1083,
+						"y": 903,
+						"w": 750,
+						"h": 950
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fake_death_bg.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 350,
+						"h": 450
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 350,
+						"h": 450
+					},
+					"frame": {
+						"x": 1,
+						"y": 1338,
+						"w": 350,
+						"h": 450
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "graves.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 700,
+						"h": 800
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 381,
+						"w": 700,
+						"h": 419
+					},
+					"frame": {
+						"x": 353,
+						"y": 1338,
+						"w": 700,
+						"h": 419
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/backgrounds-2.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 2042,
+				"h": 1737
+			},
+			"scale": 1,
+			"frames": [
 				{
 					"filename": "background5.webp",
 					"rotated": false,
@@ -371,7 +321,7 @@
 						"h": 900
 					},
 					"frame": {
-						"x": 772,
+						"x": 1,
 						"y": 1,
 						"w": 750,
 						"h": 900
@@ -396,8 +346,8 @@
 						"h": 900
 					},
 					"frame": {
-						"x": 1,
-						"y": 903,
+						"x": 753,
+						"y": 1,
 						"w": 750,
 						"h": 900
 					},
@@ -407,49 +357,24 @@
 					}
 				},
 				{
-					"filename": "background8.webp",
+					"filename": "glass_break.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 710,
-						"h": 870
+						"w": 533,
+						"h": 623
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 710,
-						"h": 870
+						"w": 533,
+						"h": 623
 					},
 					"frame": {
-						"x": 753,
-						"y": 903,
-						"w": 710,
-						"h": 870
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "fake_death_bg.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 350,
-						"h": 450
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 350,
-						"h": 450
-					},
-					"frame": {
-						"x": 1465,
-						"y": 903,
-						"w": 350,
-						"h": 450
+						"x": 1505,
+						"y": 1,
+						"w": 533,
+						"h": 623
 					},
 					"anchor": {
 						"x": 0.5,
@@ -471,10 +396,85 @@
 						"h": 450
 					},
 					"frame": {
-						"x": 1465,
-						"y": 1355,
+						"x": 1505,
+						"y": 626,
 						"w": 350,
 						"h": 450
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "star.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 731,
+						"h": 823
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 731,
+						"h": 823
+					},
+					"frame": {
+						"x": 1,
+						"y": 903,
+						"w": 731,
+						"h": 823
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "star_shatter.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 720,
+						"h": 830
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 720,
+						"h": 830
+					},
+					"frame": {
+						"x": 734,
+						"y": 903,
+						"w": 720,
+						"h": 830
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "star_red.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 585,
+						"h": 658
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 585,
+						"h": 658
+					},
+					"frame": {
+						"x": 1456,
+						"y": 1078,
+						"w": 585,
+						"h": 658
 					},
 					"anchor": {
 						"x": 0.5,
@@ -487,11 +487,36 @@
 			"image": "sprites/backgrounds-3.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2016,
-				"h": 1718
+				"w": 2039,
+				"h": 2031
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "background8.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 710,
+						"h": 870
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 710,
+						"h": 870
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 710,
+						"h": 870
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
 				{
 					"filename": "tunnel.png",
 					"rotated": false,
@@ -507,10 +532,60 @@
 						"h": 857
 					},
 					"frame": {
-						"x": 1,
+						"x": 713,
 						"y": 1,
 						"w": 675,
 						"h": 857
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gravedark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 710,
+						"h": 870
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 36,
+						"w": 701,
+						"h": 834
+					},
+					"frame": {
+						"x": 713,
+						"y": 860,
+						"w": 701,
+						"h": 834
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "firebg0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 648,
+						"h": 855
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 648,
+						"h": 855
+					},
+					"frame": {
+						"x": 1390,
+						"y": 1,
+						"w": 648,
+						"h": 855
 					},
 					"anchor": {
 						"x": 0.5,
@@ -533,34 +608,9 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 860,
+						"y": 873,
 						"w": 675,
 						"h": 857
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "star.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 731,
-						"h": 823
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 731,
-						"h": 823
-					},
-					"frame": {
-						"x": 678,
-						"y": 1,
-						"w": 731,
-						"h": 823
 					},
 					"anchor": {
 						"x": 0.5,
@@ -577,15 +627,76 @@
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 60,
-						"w": 604,
-						"h": 710
+						"y": 83,
+						"w": 606,
+						"h": 682
 					},
 					"frame": {
-						"x": 1411,
+						"x": 1416,
+						"y": 858,
+						"w": 606,
+						"h": 682
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "waterfallrocks.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 700,
+						"h": 800
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 700,
+						"h": 334
+					},
+					"frame": {
+						"x": 678,
+						"y": 1696,
+						"w": 700,
+						"h": 334
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/backgrounds-4.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1379,
+				"h": 1659
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "waterfall.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 700,
+						"h": 800
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 700,
+						"h": 800
+					},
+					"frame": {
+						"x": 1,
 						"y": 1,
-						"w": 604,
-						"h": 710
+						"w": 700,
+						"h": 800
 					},
 					"anchor": {
 						"x": 0.5,
@@ -607,71 +718,10 @@
 						"h": 857
 					},
 					"frame": {
-						"x": 678,
-						"y": 826,
+						"x": 703,
+						"y": 1,
 						"w": 675,
 						"h": 857
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "firebg0.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 648,
-						"h": 855
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 648,
-						"h": 855
-					},
-					"frame": {
-						"x": 1355,
-						"y": 826,
-						"w": 648,
-						"h": 855
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				}
-			]
-		},
-		{
-			"image": "sprites/backgrounds-4.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 1405,
-				"h": 1668
-			},
-			"scale": 1,
-			"frames": [
-				{
-					"filename": "star_shatter.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 720,
-						"h": 830
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 720,
-						"h": 830
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 720,
-						"h": 830
 					},
 					"anchor": {
 						"x": 0.5,
@@ -693,8 +743,8 @@
 						"h": 855
 					},
 					"frame": {
-						"x": 723,
-						"y": 1,
+						"x": 1,
+						"y": 803,
 						"w": 648,
 						"h": 855
 					},
@@ -704,85 +754,24 @@
 					}
 				},
 				{
-					"filename": "gravedark.png",
+					"filename": "settingsScreen.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 710,
-						"h": 870
+						"w": 645,
+						"h": 804
 					},
 					"spriteSourceSize": {
-						"x": 9,
-						"y": 36,
-						"w": 701,
-						"h": 834
+						"x": 12,
+						"y": 85,
+						"w": 633,
+						"h": 716
 					},
 					"frame": {
-						"x": 1,
-						"y": 833,
-						"w": 701,
-						"h": 834
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "waterfall.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 700,
-						"h": 800
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 700,
-						"h": 800
-					},
-					"frame": {
-						"x": 704,
-						"y": 858,
-						"w": 700,
-						"h": 800
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				}
-			]
-		},
-		{
-			"image": "sprites/backgrounds-5.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 702,
-				"h": 421
-			},
-			"scale": 1,
-			"frames": [
-				{
-					"filename": "graves.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 700,
-						"h": 800
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 381,
-						"w": 700,
-						"h": 419
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 700,
-						"h": 419
+						"x": 651,
+						"y": 860,
+						"w": 633,
+						"h": 716
 					},
 					"anchor": {
 						"x": 0.5,
@@ -795,6 +784,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:f9e65c0d52f52d16b414311345072edb:fb64edf28230c79a05fef8e5f3e71331:78d9df4e1197d3677727ae92cf39d227$"
+		"smartupdate": "$TexturePacker:SmartUpdate:f2f3d2f75396d7bb05952b657e07176a:0d281cbe426533f8c7650b64b3b9580c:d36b2d12f94c3c84864533b00704d5ae$"
 	}
 }

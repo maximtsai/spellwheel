@@ -637,6 +637,15 @@ let textData2 = {
         "jp": "ホイールを回して新し\nいルーンに交換"
     },
     "level0_tut_b": {
+        "en_us": "ENEMY HEALTH",
+        "fr": " HP ENNEMI",
+        "zh_tw": "敵人生命值",
+        "zh_cn": "敌人生命值",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "level0_tut_backup": {
         "en_us": " Defeat the =>\n enemy to win",
         "fr": " Battez l’ennemi\npour gagner =>",
         "zh_tw": " 擊敗 =>\n 敵人以贏得勝利",

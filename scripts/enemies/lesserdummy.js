@@ -64,7 +64,7 @@
             duration: 1500,
         });
 
-         this.shadow = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(6).setDepth(9999).setAlpha(0);
+         this.shadow = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(6).setDepth(9975).setAlpha(0);
         this.addTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
                 globalObjects.magicCircle.disableMovement();
@@ -76,7 +76,7 @@
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
                     this.bgMusic = playMusic('bite_down_simplified', 0.6, true);
 
-                    this.glowCirc = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'circle_highlight_outer.png').setAlpha(0).setDepth(9999);
+                    this.glowCirc = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'circle_highlight_outer.png').setAlpha(0).setDepth(9980);
                     this.glowCirc.currAnim = this.addTween({
                         delay: 200,
                         targets: [this.glowCirc],
@@ -341,7 +341,31 @@
                     return;
                 }
                 if (!this.dead) {
-                    globalObjects.textPopupManager.setInfoText(0, 30, getLangText('level0_tut_b'), 'left');
+                    this.healthShowText = this.addText(gameConsts.halfWidth, 41, getLangText('level0_tut_b'), {fontFamily: 'garamondbold', color: '#F0F0F0', fontSize: 20}).setOrigin(0.5, 0.5).setAlpha(0).setDepth(1001);
+                    this.healthBack = this.addImage(gameConsts.halfWidth, 40, 'blurry', 'battletext_bg.png').setScale(this.healthShowText.width * 0.013, this.healthShowText.height * 0.11).setDepth(1000);
+                    this.underline = this.addImage(gameConsts.halfWidth, this.healthBack.y - 11, 'blurry', 'box_length.png').setScale(0, -0.5).setDepth(1002);
+                    this.underline2 = this.addImage(gameConsts.halfWidth, this.healthBack.y + 11, 'blurry', 'box_length.png').setScale(0, 0.5).setDepth(1002);
+                    this.addTween({
+                        targets: [this.healthShowText, this.healthBack],
+                        alpha: 1,
+                        ease: 'Cubic.easeOut',
+                        duration: 1000,
+                    })
+                    this.addTween({
+                        targets: [this.underline, this.underline2],
+                        scaleX: this.healthShowText.width * 0.016,
+                        ease: 'Cubic.easeIn',
+                        duration: 800,
+                        onComplete: () => {
+                            this.addTween({
+                                targets: [this.underline, this.underline2],
+                                scaleX: this.healthShowText.width * 0.013,
+                                ease: 'Cubic.easeOut',
+                                duration: 700,
+                            })
+                        }
+                    })
+                    // globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, 30, getLangText('level0_tut_b'), 'left');
                 }
                 this.addTimeout(() => {
                     if (!this.dead) {
@@ -349,7 +373,7 @@
                     }
 
                 }, 800);
-                this.glowHealth = this.addSprite(gameConsts.halfWidth, 17, 'blurry', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.25, 1.5);
+                this.glowHealth = this.addSprite(gameConsts.halfWidth, 12, 'blurry', 'glow_flat_green.webp').setDepth(0).setAlpha(0).setScale(0.28, 1.5);
                 this.glowHealth2 = this.addSprite(gameConsts.halfWidth, 20, 'blurry', 'glow_flat_red.webp').setDepth(0).setAlpha(1.1).setScale(0.5, 2);
                 this.addTween({
                     targets: this.glowHealth2,
@@ -371,21 +395,21 @@
                 this.addTween({
                     targets: this.glowHealth,
                     alpha: 0.75,
-                    scaleX: 1.2,
+                    scaleX: 1.3,
                     ease: 'Cubic.easeInOut',
                     duration: 1500,
                     onComplete: () => {
                         this.addTween({
                             targets: this.glowHealth,
                             alpha: 0,
-                            scaleX: 1,
+                            scaleX: 1.2,
                             ease: 'Cubic.easeIn',
                             duration: 1500,
                             onComplete: () => {
                                 this.addTween({
                                     targets: this.glowHealth,
                                     alpha: 0.55,
-                                    scaleX: 1.3,
+                                    scaleX: 1.35,
                                     ease: 'Cubic.easeInOut',
                                     duration: 1500,
                                     onComplete: () => {
@@ -452,6 +476,21 @@
              return;
          }
         super.die();
+
+         if (this.healthShowText) {
+             this.addTween({
+                 targets: [this.healthShowText, this.healthBack, this.underline, this.underline2],
+                 alpha: 0,
+                 ease: 'Cubic.easeOut',
+                 duration: 1000
+             })
+             this.addTween({
+                 targets: [this.underline, this.underline2],
+                 scaleX: 0,
+                 ease: 'Cubic.easeOut',
+                 duration: 1000
+             })
+         }
         globalObjects.textPopupManager.hideInfoText();
          this.dieClickBlocker = new Button({
              normal: {

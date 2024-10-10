@@ -36,7 +36,7 @@ function beginPreLevel(lvl) {
             text4.setDepth(99999).setAlpha(0).setOrigin(1, 1);
             text5 = PhaserScene.add.text(text3.x + 10, text3.y + 1, getLangText('pre_fight_0e'), {fontFamily: 'germania', fontSize: 20, color: '#200000', align: 'right'});
             text5.setDepth(99999).setAlpha(0).setOrigin(1, 1).setVisible(false);
-            text6 = PhaserScene.add.text(text4.x + 7, text4.y + 2, getLangText('pre_fight_0f'), {fontFamily: 'germania', fontSize: 18, color: '#200000', align: 'right'});
+            text6 = PhaserScene.add.text(text4.x + 7, text4.y, getLangText('pre_fight_0f'), {fontFamily: 'germania', fontSize: 18, color: '#200000', align: 'right'});
             text6.setDepth(99999).setAlpha(0).setOrigin(1, 0.85).setVisible(false);
             text7 = PhaserScene.add.text(gameConsts.halfWidth + 220, gameConsts.halfHeight - 98, getLangText('pre_fight_0g'), {fontFamily: 'germania', fontSize: 26, color: '#200000', align: 'right'});
             text7.setDepth(99999).setAlpha(0).setOrigin(1, 0);

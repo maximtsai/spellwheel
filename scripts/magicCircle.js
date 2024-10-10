@@ -1746,7 +1746,7 @@ const ENABLE_KEYBOARD = true;
         if (!sprite) {
             this.elemCircle = this.scene.add.sprite(this.x, this.y, 'circle', 'circle.png');
             sprite = this.elemCircle;
-            sprite.setDepth(101);
+            sprite.setDepth(131);
         }
 
         sprite.setScale(0.8).setAlpha(1);
@@ -1843,7 +1843,7 @@ const ENABLE_KEYBOARD = true;
         if (!sprite) {
             this.embodiCircle = this.scene.add.sprite(this.x, this.y, 'circle', 'circle.png');
             sprite = this.embodiCircle;
-            sprite.setDepth(100);
+            sprite.setDepth(130);
         }
         sprite.setAlpha(0).setScale(1.05);
 
@@ -2797,7 +2797,7 @@ const ENABLE_KEYBOARD = true;
          this.mindBurnAnim.setScale(0.75 + 0.052 * damage);
          this.mindBurnAnim.alpha = 0.9;
          messageBus.publish('enemyTakeTrueDamage', damage, false, 0, true);
-         let aggAmt = Math.max(0, damage + 2) * 0.85
+         let aggAmt = Math.max(0, damage + 1) * 0.85
          messageBus.publish('addCastAggravate', aggAmt, false, 0, true);
 
          if (duration <= 1) {

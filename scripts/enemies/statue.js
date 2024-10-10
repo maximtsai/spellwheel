@@ -47,7 +47,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 300 : 275;
+         this.health = gameVars.isHardMode ? 300 : 280;
          this.isAsleep = true;
          this.attackScale = 1;
          this.pullbackScale = 1;
@@ -64,7 +64,7 @@
     }
 
     initMisc() {
-        this.shieldExtraText = this.scene.add.bitmapText(gameConsts.halfWidth, this.y + this.shieldTextOffsetY + 24, 'void', 'SHIELDED', 52).setOrigin(0.5).setDepth(18).setVisible(false);
+        this.shieldExtraText = this.addBitmapText(gameConsts.halfWidth, this.y + this.shieldTextOffsetY + 24, 'void', 'SHIELDED', 52).setOrigin(0.5).setDepth(18).setVisible(false);
 
         this.handShieldBack = this.addImage(this.x + 4, this.y - 84, 'blurry', 'handshield_back.png').setScale(2).setDepth(-1).setAlpha(0);
         this.handShieldBack.startScale = this.handShieldBack.scaleX;
@@ -103,8 +103,8 @@
             let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
             let centerXPos = globalObjects.textPopupManager.getCenterPos();
             let runeDepth = globalObjects.textPopupManager.getDepth() + 1;
-            this.rune3 = this.addImage(centerXPos - 32, runeYPos + 27, 'circle', 'rune_time_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
-            this.rune4 = this.addImage(centerXPos + 34, runeYPos + 27, 'circle', 'rune_strike_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+            this.rune3 = this.addImage(centerXPos - 31, runeYPos + 26, 'circle', 'rune_time_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+            this.rune4 = this.addImage(centerXPos + 33, runeYPos + 26, 'circle', 'rune_strike_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
             this.addTween({
                 targets: [this.rune3, this.rune4],
                 scaleX: 1,
@@ -294,7 +294,7 @@
         //     duration: 800,
         //     ease: 'Quad.easeInOut'
         // })
-         this.handShieldTemp = this.addSprite(this.x - 1, this.y - 72, 'deathfinal', 'palm_glow.png').setScale(this.sprite.startScale * 1.355).setDepth(3).setAlpha(0).setOrigin(0.5, 0.373);
+         this.handShieldTemp = this.addSprite(this.x, this.y - 72, 'deathfinal', 'palm_glow.png').setScale(this.sprite.startScale * 1.355).setDepth(3).setAlpha(0).setOrigin(0.5, 0.373);
          this.handShieldTemp.startScale = this.handShieldTemp.scaleX;
 
          this.handShieldTemp.currAnim = this.addTween({
@@ -604,6 +604,7 @@
 
 
      initAttacks() {
+        let hardModeCharge = gameVars.isHardMode ? -50 : 0;
          this.attacks = [
              [
                  // 0
@@ -611,7 +612,7 @@
                      name: gameVars.isHardMode ? "VOID SHIELD? #10" : "VOID SHIELD? #9",
                      chargeAmt: 888,
                      chargeMult: 20,
-                     finishDelay: 2500,
+                     finishDelay: 2300,
                      damage: -1,
                      finaleFunction: () => {
                          fadeAwaySound(this.bgMusic, 1500);
@@ -627,25 +628,37 @@
              [
                  {
                      name: "CHARGING...",
-                     chargeAmt: gameVars.isHardMode ? 500 : 1100,
+                     chargeAmt: gameVars.isHardMode ? 400 : 700,
                      damage: 0,
                  },
                  {
-                     name: "}2x2}",
-                     chargeAmt: 500,
+                     name: "}3x2}",
+                     chargeAmt: 500 + hardModeCharge,
+                     finishDelay: 1000,
+                     damage: -1,
+                     startFunction: () => {
+                         //this.prepAttack();
+                     },
+                     attackFinishFunction: () => {
+                         this.fireVoidAttacks(3, 1);
+                     }
+                 },
+                 {
+                     name: "}3x4}",
+                     chargeAmt: 550 + hardModeCharge,
                      finishDelay: 1600,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(2, 2);
+                         this.fireVoidAttacks(3, 2);
                      }
                  },
                  {
-                     name: "}3x3}",
-                     chargeAmt: 600,
-                     finishDelay: 2400,
+                     name: "}3x6}",
+                     chargeAmt: 600 + hardModeCharge,
+                     finishDelay: 2200,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
@@ -655,89 +668,77 @@
                      }
                  },
                  {
-                     name: "|4x4|",
-                     chargeAmt: 700,
-                     finishDelay: 3000,
+                     name: "}}3x8}}",
+                     chargeAmt: 650 + hardModeCharge,
+                     finishDelay: 2800,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(4, 4);
+                         this.fireVoidAttacks(3, 4);
                      }
                  },
                  {
-                     name: "|5x5|",
-                     finishDelay: 3500,
-                     chargeAmt: 800,
+                     name: "}}3x10}}",
+                     chargeAmt: 700 + hardModeCharge,
+                     finishDelay: 3250,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(5, 5);
+                         this.fireVoidAttacks(3, 5);
                      }
                  },
                  {
-                     name: ";6x6;",
-                     chargeAmt: 900,
-                     finishDelay: 4000,
+                     name: "}}3x12}}",
+                     chargeAmt: 750 + hardModeCharge,
+                     finishDelay: 3750,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(6, 6);
+                         this.fireVoidAttacks(3, 6);
                      }
                  },
                  {
-                     name: ";7x7;",
-                     chargeAmt: 1000,
-                     finishDelay: 4400,
-                     damage: -1,
-                     startFunction: () => {
-                         //this.prepAttack();
-                     },
-                     attackFinishFunction: () => {
-                         this.fireVoidAttacks(7, 7);
-                     }
-                 },
-                 {
-                     name: ";;8x8;;",
-                     chargeAmt: 1100,
-                     finishDelay: 4800,
+                     name: "}}}3x14}}}",
+                     chargeAmt: 800 + hardModeCharge,
+                     finishDelay: 4200,
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(8, 8);
+                         this.fireVoidAttacks(3, 7);
                      }
                  },
                  {
-                     name: ";;9x9;;",
-                     chargeAmt: 1150,
-                     finishDelay: 5200,
+                     name: "}}}3x16}}}",
+                     chargeAmt: 850 + hardModeCharge,
+                     finishDelay: 4600,
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(9, 9);
+                         this.fireVoidAttacks(3, 8);
                      }
                  },
                  {
-                     name: ";;;10x10;;;",
-                     chargeAmt: 1200,
-                     finishDelay: 5500,
+                     name: "}}}3x18}}}",
+                     chargeAmt: 900 + hardModeCharge,
+                     finishDelay: 5000,
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(10, 10);
+                         this.fireVoidAttacks(3, 9);
                      }
                  },
                  {
@@ -765,7 +766,7 @@
             playSound('ringknell')
         }, 500)
         for (let i = 0; i < times; i++) {
-            this.addDelay(() => {
+            this.addDelayIfAlive(() => {
                 if (i == 0) {
                     this.handShieldTemp.currAnim.stop();
                     this.addTween({
@@ -791,6 +792,15 @@
                 })
                 this.addDelayIfAlive(() => {
                     messageBus.publish("selfTakeDamage", damage);
+                    let dmgEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 200);
+                    dmgEffect.setPosition(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 195).setDepth(998).setScale(1.25)
+                    this.addTimeout(() => {
+                        messageBus.publish("selfTakeDamage", damage);
+                        let slamSfx = playSound('body_slam', vol);
+                        slamSfx.detune = 50 + Math.floor(Math.random() * 100);
+                        let dmgEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 200);
+                        dmgEffect.setPosition(gameConsts.halfWidth + (Math.random() - 0.5) * 25, globalObjects.player.getY() - 180).setDepth(998).setScale(1.35)
+                    }, 150)
                     let isLast = i == times - 1;
 
                     let darkBG = getBackgroundBlackout();
@@ -809,9 +819,9 @@
                         vol = 0.7
                     }
                     let slamSfx = playSound('body_slam', vol);
-                    slamSfx = 200 - Math.floor(Math.random() * 450);
-                }, 650)
-            }, i * 600 - times * 30 + 1100)
+                    slamSfx.detune = -100 - Math.floor(Math.random() * 100);
+                }, 590)
+            }, i * (600 - times * (40 - i)) + 1100)
         }
      }
 

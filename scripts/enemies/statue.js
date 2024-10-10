@@ -374,9 +374,9 @@
          })
          let darkBG = getBackgroundBlackout();
          darkBG.setDepth(-3).setAlpha(0.45);
-         let spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.95).setScale(1.2);
+         this.spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.95).setScale(1.2);
          this.scene.tweens.add({
-             targets: [spaceBG, darkBG],
+             targets: [this.spaceBG, darkBG],
              alpha: 0,
              ease: 'Cubic.easeOut',
              duration: 2600,
@@ -628,7 +628,7 @@
              [
                  {
                      name: "CHARGING...",
-                     chargeAmt: gameVars.isHardMode ? 400 : 700,
+                     chargeAmt: gameVars.isHardMode ? 300 : 700,
                      damage: 0,
                  },
                  {
@@ -736,9 +736,22 @@
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
+                         //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 9);
+                         this.fireVoidAttacks(3, 8);
+                     }
+                 },
+                 {
+                     name: ";40",
+                     chargeAmt: 700,
+                     finishDelay: 3500,
+                     isBigMove: true,
+                     damage: -1,
+                     startFunction: () => {
+                     },
+                     attackFinishFunction: () => {
+                         this.fireBigAttack(40);
                      }
                  },
                  {
@@ -747,6 +760,8 @@
                      chargeMult: 20,
                      damage: 0,
                      finaleFunction: () => {
+                         this.bgMusic = playMusic('wind', 0.01, true);
+                         fadeInSound(this.bgMusic, 0.7, 2000);
                          this.setAsleep();
                          this.interruptCurrentAttack();
                      }
@@ -823,6 +838,67 @@
                 }, 590)
             }, i * (600 - times * (40 - i)) + 1100)
         }
+     }
+
+     fireBigAttack(damage) {
+         this.prepAttack();
+         fadeAwaySound(this.bgMusic, 2200);
+
+         this.handShieldTemp.currAnim = this.addTween({
+             targets: this.handShieldTemp,
+             alpha: 1,
+             duration: 2000,
+             onComplete: () => {
+                 this.handShieldTemp.currAnim.stop();
+                 this.addTween({
+                     targets: this.handShieldTemp,
+                     alpha: 0,
+                     ease: 'Quad.easeOut',
+                     duration: 500,
+                     onComplete: () => {
+                         playSound('death_cast', 0.65);
+                         this.addDelay(() => {
+                             playSound('death_cast', 0.35)
+                         }, 3000)
+                     }
+                 });
+                 playSound('death_attack', 0.95);
+                 zoomTemp(1.02);
+                 screenShakeLong(3);
+                 this.shoutSprite = this.addImage(this.x, this.y -60, 'misc', 'black_circle.png').setDepth(11).setScale(0.15);
+
+                 if (this.spaceBG) {
+                     this.spaceBG.setAlpha(1.1);
+                     this.scene.tweens.add({
+                         targets: [this.spaceBG],
+                         alpha: 0,
+                         ease: 'Cubic.easeIn',
+                         duration: 3000,
+                     });
+                 }
+
+                 this.shoutSprite.setScale(0.15).setAlpha(1);
+                 this.addTween({
+                     targets: [this.shoutSprite],
+                     scaleX: 9,
+                     scaleY: 9,
+                     duration: 900,
+                     ease: 'Quad.easeOut',
+                 });
+                 this.addTween({
+                     targets: [this.shoutSprite],
+                     alpha: 0,
+                     duration: 1000,
+                 });
+                 this.addDelayIfAlive(() => {
+                     messageBus.publish("selfTakeDamage", damage);
+
+                 }, 250)
+             }
+         })
+         this.addDelay(() => {
+             playSound('ringknell')
+         }, 500)
      }
 
      prepAttack() {

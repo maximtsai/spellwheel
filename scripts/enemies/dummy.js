@@ -717,10 +717,9 @@
              [
                  // 0
                  {
-                     name: "}8 ",
+                     name: gameVars.isHardMode ? "}10 " : "}8 ",
                      chargeAmt: 420,
-                     damage: 8,
-
+                     damage: gameVars.isHardMode ? 10 : 8,
                      attackFinishFunction: () => {
                          screenShake(5);
                          zoomTemp(1.015)
@@ -764,9 +763,9 @@
                      }
                  },
                  {
-                     name: "|12 ",
+                     name: gameVars.isHardMode ? "|15" : "|12 ",
                      chargeAmt: 350,
-                     damage: 12,
+                     damage: gameVars.isHardMode ? 15 : 12,
                      isBigMove: true,
                      attackFinishFunction: () => {
                          screenShake(5);

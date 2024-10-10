@@ -719,7 +719,7 @@
                  {
                      name: "}3+$21",
                      chargeAmt: 600,
-                     finishDelay: 3000,
+                     finishDelay: 3500,
                      damage: -1,
                      startFunction: () => {
                          this.pulseHand(2);
@@ -764,9 +764,9 @@
                      }
                  },
                  {
-                     name: "}4x3",
-                     chargeAmt: 600,
-                     finishDelay: 100,
+                     name: "}4x4",
+                     chargeAmt: 750,
+                     finishDelay: 1000,
                      chargeMult: 2,
                      damage: -1,
                      startFunction: () => {
@@ -779,7 +779,7 @@
                          let pokeHand = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw.png').setScale(0.1).setAlpha(0.65).setRotation(0.4);
                          let pokeHandGlow = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw_glow.png').setScale(0.2).setAlpha(0).setRotation(0.4);
                          this.summonHand(pokeHand, pokeHandGlow, 0.4, 0.7, () => {
-                             this.fireTwoClaws(4, 3, pokeHand);
+                             this.fireTwoClaws(4, 4, pokeHand);
                          })
                      },
                      finaleFunction: () => {
@@ -848,7 +848,7 @@
                  {
                      name: "}3+$24",
                      chargeAmt: 650,
-                     finishDelay: 3000,
+                     finishDelay: 3500,
                      damage: -1,
                      startFunction: () => {
                          this.attackToStrengthen = 2;
@@ -890,9 +890,9 @@
                  },
                  {
                      name: "}4x4",
-                     chargeAmt: 700,
-                     finishDelay: 100,
-                     chargeMult: 2,
+                     chargeAmt: 800,
+                     finishDelay: 1000,
+                     chargeMult: 1.5,
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
@@ -990,7 +990,7 @@
                  {
                      name: "}16x2",
                      chargeAmt: 600,
-                     finishDelay: 2000,
+                     finishDelay: 2500,
                      damage: -1,
                      startFunction: () => {
                          this.pulseHand(1);
@@ -1007,10 +1007,10 @@
                      },
                  },
                  {
-                     name: "|4x5",
-                     chargeAmt: 750,
+                     name: "|4x6",
+                     chargeAmt: 800,
                      finishDelay: 1000,
-                     chargeMult: 2,
+                     chargeMult: 1.5,
                      damage: -1,
                      startFunction: () => {
                          this.pulseHand(3);
@@ -1022,7 +1022,7 @@
                          let pokeHand = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw.png').setScale(0.1).setAlpha(0.65).setRotation(0.4);
                          let pokeHandGlow = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw_glow.png').setScale(0.2).setAlpha(0).setRotation(0.4);
                          this.summonHand(pokeHand, pokeHandGlow, 0.4, 0.7, () => {
-                             this.fireTwoClaws(4, 5, pokeHand);
+                             this.fireTwoClaws(4, 6, pokeHand);
                          })
                      },
                      finaleFunction: () => {
@@ -1234,7 +1234,7 @@
                  {
                      name: "}3+$999",
                      chargeAmt: 650,
-                     finishDelay: 5000,
+                     finishDelay: 6000,
                      damage: -1,
                      startFunction: () => {
                          this.pulseSpellCircle(true)
@@ -1263,9 +1263,9 @@
                  },
                  {
                      name: "|4x12",
-                     chargeAmt: 750,
+                     chargeAmt: 800,
                      finishDelay: 6000,
-                     chargeMult: 2,
+                     chargeMult: 1.5,
                      damage: -1,
                      startFunction: () => {
                          this.pulseSpellCircle(true)

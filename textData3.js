@@ -272,27 +272,27 @@ let textData3 = {
     },
     "death_statue1": {
         "en_us": "AH, SO THIS IS WHERE\nI LEFT THIS OLD BOULDER...",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "AH, ALORS C'EST LÀ QUE\nJ'AI LAISSÉ CE VIEUX ROCHER...",
+        "zh_tw": "啊，原來我把這塊\n老石頭留在這裡。",
+        "zh_cn": "啊，原来我把这块\n老石头留在这里。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death_statue2": {
         "en_us": "CHILD, THIS IS A DANGEROUS\nINSTRUMENT OF COMBAT.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "ENFANT, CECI EST UN\nINSTRUMENT DE COMBAT DANGEREUX.",
+        "zh_tw": "孩子，這是一座\n危險的作戰武器。",
+        "zh_cn": "孩子，这是一座\n危险的作战工具。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death_statue3": {
         "en_us": "IT IS BEST YOU DO NOT\nPLAY WITH IT ANY FURTHER.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "VOUS NE DEVEZ PLUS\nJOUER AVEC CET APPAREIL.",
+        "zh_tw": "你最好不要再用它來玩了。",
+        "zh_cn": "你最好不要再用它来玩了。",
         "ru": "",
         "es": "",
         "jp": ""

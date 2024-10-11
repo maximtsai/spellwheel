@@ -643,7 +643,7 @@ let textData = {
     },
     "time_tut_unload_desc": {
         "en_us": "Freeze time temporarily\nletting you cast multiple\nspells without any time passing.\nRepeated use of this spell\nmakes it weaker.",
-        "fr": "Gèle temporairement le temps.\nPendant cette période, vous pouvez\nlancer plusieurs sorts sans que le\ntemps ne passe, bien que l'utilisation\nrépétée de ce sort l'affaiblisse.",
+        "fr": "Gèle temporairement le temps.\nPendant cette période, vous\npouvez lancer plusieurs sorts\nsans que le temps ne passe, bien\nque l'utilisation répétée de ce\nsort l'affaiblisse.",
         "zh_tw": "暫時凍結時間。在凍結期間，\n你可以施展多個法術而不產\n生時間流逝，但重複使用此法\n術會使法術變弱。",
         "zh_cn": "暂时冻结时间。冻结期间，\n你可以施展多个法术而不产生\n时间流逝，但重复使用此法术\n会使法术变弱。",
         "ru": "Временно замораживает время. Пока\nоно заморожено, вы можете применять\nнесколько заклинаний, не тратя время.\nОднако повторное использование\nослабляет это заклинание.",
@@ -661,7 +661,7 @@ let textData = {
     },
     "void_tut_desc_sh": {
         "en_us": "The Void Rune grants control\nover empty space. Void spells\ncan deal percentage health \ndamage, negate enemy attacks,\nor even fully heal you...\nat a cost.",
-        "fr": "La Rune du Vide permet de\ncontrôler l’espace vide. Les sorts\ndu Vide peuvent infliger des dégâts\nbasés sur un pourcentage de santé,\nannuler les attaques ennemies ou\nmême vous soigner complètement.",
+        "fr": "La Rune du Vide permet de\ncontrôler l’espace vide. Les sorts\ndu Vide peuvent infliger des\ndégâts basés sur un pourcentage\nde santé, annuler les attaques\nennemies ou même vous soigner\ncomplètement.",
         "zh_tw": "虛空符文賦予了你對虛空空間的\n控制權。虛空法術可以造成一定\n比例的生命值傷害、抵消敵人的\n攻擊，甚至可以完全治癒你。",
         "zh_cn": "虚空符文赋予了你对虚空空间的\n控制权。虚空法术可以造成一定\n比例的生命值伤害、抵消敌人的\n攻击，甚至可以完全治愈你。",
         "ru": "Руна Пустоты дает контроль над\nпустым пространством. Заклинания\nПустоты могут наносить урон в процентах\nот здоровья, нейтрализовать атаки врагов\nили полностью исцелить вас за\nопределенную цену.",
@@ -670,7 +670,7 @@ let textData = {
     },
     "void_tut_strike_desc": {
         "en_us": "An attack that hits 3 times\nafter a delay and deals deals\npercentage health damage.\nScales incredibly well with\ndamage enhancements.",
-        "fr": "Une attaque qui frappe trois\nfois après un délai et inflige\ndes dégâts en pourcentage de santé.",
+        "fr": "Une attaque qui frappe trois\nfois après un délai et inflige\ndes dégâts en pourcentage\nde santé.",
         "zh_tw": "延遲後發動 3 次攻擊,每次攻擊\n造成百分比的生命傷害。\n\n加強攻擊力的法術會三倍增加\n攻擊威力。",
         "zh_cn": "延迟后发动 3 次攻击,每次攻击\n造成百分比的生命伤害。\n\n加强攻击力的法术会三倍增加\n攻击威力。",
         "ru": "Атака, которая наносит три удара\nс задержкой и наносит урон в\nпроцентах от здоровья.",

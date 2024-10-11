@@ -5,8 +5,9 @@
         this.bgMusic = playMusic('bite_down', 0.65, true);
         this.startY = this.sprite.y;
         // this.temp = this.addSprite(x - 50, 170, 'deathfin', 'frame_00.png').setDepth(6).play({key: 'ladydeath', repeat: -1});
-
+        this.showTut1 = gameVars.hasFoughtSuper;
         this.popupTimeout = this.addTimeoutIfAlive(() => {
+            gameVars.hasFoughtSuper = true;
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
             globalObjects.bannerTextManager.setDialog([getLangText('superdummy_start')]);
@@ -585,8 +586,10 @@
                      startFunction: () => {
                          this.pullbackScale = 0.9;
                         this.attackScale = 1.2;
-                        this.createTutSolo(getLangText('superdummy_ult'), 'rune_unload_glow.png');
-                        // this.createTutIcon(getLangText('superdummy_void'), 'rune_unload_glow.png', 'rune_void_glow.png')
+                        // this.createTutSolo(getLangText('superdummy_ult'), 'rune_unload_glow.png');
+                         if (!this.showTut1) {
+                             this.createTutIcon(getLangText('superdummy_void'), 'rune_unload_glow.png', 'rune_void_glow.png')
+                         }
                      },
                     attackFinishFunction: () => {
                         this.createPunchEffect();
@@ -677,7 +680,9 @@
                      startFunction: () => {
                         this.pullbackScale = 0.9;
                         this.attackScale = 1.2;
-                        //this.createTutIcon(getLangText('superdummy_mind'), 'rune_unload_glow.png', 'rune_mind_glow.png')
+                         if (this.showTut1) {
+                             this.createTutIcon(getLangText('superdummy_mind'), 'rune_unload_glow.png', 'rune_mind_glow.png')
+                         }
                      },
                     attackFinishFunction: () => {
                         this.createPunchEffect();
@@ -888,7 +893,9 @@
                      prepareSprite: 'super_dummy_swinging.png',
                      attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
                      startFunction: () => {
-                        //this.createTutIcon(getLangText('superdummy_matter'), 'rune_unload_glow.png', 'rune_matter_glow.png')
+                         if (!this.showTut1) {
+                             this.createTutIcon(getLangText('superdummy_matter'), 'rune_unload_glow.png', 'rune_matter_glow.png')
+                         }
                      },
                     attackFinishFunction: () => {
                         this.createPunchEffect();
@@ -1058,7 +1065,9 @@
                      isBigMove: true,
                      chargeMult: 2,
                      startFunction: () => {
-                        //this.createTutIcon(getLangText('superdummy_time'), 'rune_unload_glow.png', 'rune_time_glow.png')
+                         if (this.showTut1) {
+                             this.createTutIcon(getLangText('superdummy_time'), 'rune_unload_glow.png', 'rune_time_glow.png')
+                         }
                         this.pullbackDurMult = 0;
                         this.disableAnimateShake = true;
                         globalObjects.tempBG.setDepth(0).setVisible(true);

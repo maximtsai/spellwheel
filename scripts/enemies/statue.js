@@ -99,7 +99,7 @@
 
     showTimeStrike() {
         this.addDelay(() => {
-            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 126, getLangText("time_strike_info"), 'right');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 126, getLangText("time_strike_info"), "right");
             let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
             let centerXPos = globalObjects.textPopupManager.getCenterPos();
             let runeDepth = globalObjects.textPopupManager.getDepth() + 1;

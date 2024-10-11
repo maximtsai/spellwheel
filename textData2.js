@@ -296,7 +296,7 @@ let textData2 = {
     },
     "post_fight_story3": {
         "en_us": "Though this is the land of the dead,\nthe foes I face seem oddly... alive.\n\nBut each victory also grants me strength,\nand I must take as much power as I can get\nfor this journey.",
-        "fr": "Les ennemis que j’ai affrontés au\nPays des Morts semblaient… vivants.\n\nMais chaque victoire me donne aussi du\npouvoir. Je dois acquérir autant de force que\npossible pour sauver ma bien-aimée.",
+        "fr": "Les ennemis que j’ai affrontés au\nPays des Morts semblaient… vivants.\n\nMais chaque victoire me donne aussi du\npouvoir. Je dois acquérir autant de force\nque possible pour sauver ma bien-aimée.",
         "zh_tw": "我在亡靈之地所面對的敵人\n看起來就像…活著一樣.\n\n但每一次勝利也賦予我力量。\n我必須獲得盡可能多的力量來拯救我心愛的。",
         "zh_cn": "我在亡灵之地所面对的敌人\n看起来就像…活着一样.\n\n但每一次胜利也赋予我力量。\n我必须获得尽可能多的力量来拯救我心爱的。",
         "ru": "Кажется, я получаю силу каждого врага, которого побеждаю!  Путешествие может быть долгим, но если я победлю достаточное количество противников, я смогу однажды противостоять самой Смерти!",
@@ -323,7 +323,7 @@ let textData2 = {
     },
     "post_fight_story6": {
         "en_us": "The land of the dead is a labyrinth\nof dangers, but steadily I am forcing my\nway through its walls.\n\nI bet Death is growing desperate knowing\nI am near my destination.",
-        "fr": "Le pays des morts est un labyrinthe de\ndangers,mais je me fraye un chemin à travers\nses murs.\n\nLa Mort doit sûrement être désespérée sachant\nque je m'approche de ma destination.",
+        "fr": "Le pays des morts est un labyrinthe de\ndangers,mais je me fraye un chemin à\ntravers ses murs.\n\nLa Mort doit sûrement être désespérée\nsachant que je m'approche de ma\ndestination.",
         "zh_tw": "亡靈之地是一個危險的迷宮，\n但我正穩定地衝破它的圍牆。\n\n當死神知道我即將到達目的地時，\n他一定越來越絕望。",
         "zh_cn": "亡灵之地是一个危险的迷宫，\n但我正稳步地冲破它的围墙。\n\n当死神知道我即将到达目的地时，\n他一定越来越绝望。",
         "ru": "Земля мертвых — это\nлабиринт опасностей,\nно я неуклонно\nпрокладываю себе\nпуть сквозь его стены.\n\nНаверняка Смерть отчаивается, зная,\nчто я приближаюсь к своей цели.",
@@ -827,7 +827,7 @@ let textData2 = {
     },
     "level5_train_tut_c": {
         "en_us": "Void + Shield\ncan block\nstrong attacks\n           +",
-        "fr": "Les boucliers du\nNéant peuvent bloquer\ncomplètement des\nattaques puissantes\nuniques           +",
+        "fr": "Bloquer\ncomplètement\nune attaque\n          +",
         "zh_tw": "虛空護盾可以完全\n阻擋一次攻擊\n       +",
         "zh_cn": "虚空护盾可以完全\n阻挡一次攻击\n       +",
         "ru": "Пустотные щиты\nмогут полностью\nблокировать\nодну-единственную атаку\n          +",

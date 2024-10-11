@@ -557,7 +557,7 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1, 0.94, 0.94,'Quart.easeIn', 0, false);
             break;
         case 8:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 0.92, 1, 0.1,'Quart.easeIn', 0, true, -1);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 0.92, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case 9:
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
@@ -850,10 +850,17 @@ function buildRuneclicker(x, y, onClick) {
             globalObjects.runeHighlight.setPosition(x, y);
             globalObjects.runeHighlight.play('runeHighlight');
             globalObjects.runeHighlight.alpha = 1;
+            globalObjects.runeHighlightRune.alpha = 1;
             PhaserScene.tweens.add({
                 delay: 1,
                 targets: globalObjects.runeHighlight,
                 alpha: 0.85,
+                duration: 1,
+            });
+            PhaserScene.tweens.add({
+                delay: 1,
+                targets: globalObjects.runeHighlight,
+                alpha: 0.76,
                 duration: 1,
             });
             playSound(Math.random() > 0.5 ? 'flip1' : 'flip2');

@@ -183,7 +183,7 @@
     createEnhancePopup() {
         this.clearStartShadow();
         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 135, getLangText('level1_tut_a'), 'right');
-        this.rune2 = this.addSprite(globalObjects.textPopupManager.getCenterPos(), globalObjects.textPopupManager.getBoxBottomPos() + 28, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
+        this.rune2 = this.addSprite(globalObjects.textPopupManager.getCenterPos(), globalObjects.textPopupManager.getBoxBottomPos() + 28, 'circle', 'rune_enhance_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
 
         this.enhancePopupListener = messageBus.subscribe('recordSpell', (id, spellName) => {
             if (this.firstEnhanceCast) {
@@ -356,8 +356,8 @@
         if (!this.dead && !this.isAsleep && !this.shownTut5) {
             this.shownTut5 = true;
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 262, getLangText('level1_tut_c'), 'right');
-            this.rune3 = this.addSprite(globalObjects.textPopupManager.getCenterPos() - 24, globalObjects.textPopupManager.getBoxCenterPos() + 36, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
-            this.rune4 = this.addSprite(globalObjects.textPopupManager.getCenterPos() + 24, globalObjects.textPopupManager.getBoxCenterPos() + 36, 'circle', 'rune_enhance_glow.png').setDepth(10001).setScale(0.75).setAlpha(0);
+            this.rune3 = this.addSprite(globalObjects.textPopupManager.getCenterPos() - 24, globalObjects.textPopupManager.getBoxCenterPos() + 36, 'circle', 'rune_enhance_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
+            this.rune4 = this.addSprite(globalObjects.textPopupManager.getCenterPos() + 24, globalObjects.textPopupManager.getBoxCenterPos() + 36, 'circle', 'rune_enhance_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
             this.addTween({
                 targets: [this.rune3, this.rune4],
                 alpha: 1,

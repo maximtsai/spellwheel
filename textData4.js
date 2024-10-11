@@ -552,9 +552,9 @@ let textData4 = {
     },
     "superdummy_void": {
         "en_us": "Deals lots of\n%health damage\n             +",
-        "fr": "Inflige beaucoup\nde %dégâts\nde santé\n          +",
-        "zh_tw": "造成大量\n%生命值傷害\n         +",
-        "zh_cn": "造成大量\n%生命值伤害\n         +",
+        "fr": "Inflige beaucoup\nde %dégâts de\nsanté\n              +",
+        "zh_tw": "造成大量\n%生命值傷害\n          +",
+        "zh_cn": "造成大量\n%生命值伤害\n          +",
         "ru": "Наносит много % урона от здоровья +",
         "es": "Inflige un montón de % de daño de salud +",
         "jp": "大量の%ヘルスダメージを与えます+"
@@ -571,8 +571,8 @@ let textData4 = {
     "superdummy_matter": {
         "en_us": "Deals damage\nand defends\n           +",
         "fr": "Inflige des dégâts et défend +",
-        "zh_tw": "同時進行攻擊\n和防禦\n       +",
-        "zh_cn": "同时进行攻击\n和防御\n       +",
+        "zh_tw": "同時進行攻擊\n和防禦\n         +",
+        "zh_cn": "同时进行攻击\n和防御\n         +",
         "ru": "Наносит урон и защищается +",
         "es": "Inflige daño y defiende +",
         "jp": "ダメージを与えて防御する +"

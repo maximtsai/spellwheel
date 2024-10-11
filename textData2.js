@@ -341,7 +341,7 @@ let textData2 = {
     },
     "post_fight_story8": {
         "en_us": "If Death thinks it can deter me with\nthese trials, it underestimates the depth\nof my determination.\n\nMy beloved awaits, and no force, not even\nDeath, shall keep us apart.",
-        "fr": "Si la Mort pense pouvoir me dissuader avec\nces épreuves, elle sous-estime la profondeur de\nma détermination.\n\nMon bien-aimé m'attend, et aucune force,\npas même la Mort, ne nous séparera.",
+        "fr": "Si la Mort pense pouvoir me dissuader\navec ces épreuves, elle sous-estime la\nprofondeur de ma détermination.\n\nMon bien-aimé m'attend, et aucune force,\npas même la Mort, ne nous séparera.",
         "zh_tw": "如果死神認為這些考驗能\n阻止我，那它就低估了我的決心。\n\n我心愛的人在等待，沒有任何力量，\n甚至死亡，能將我們分開。",
         "zh_cn": "如果死神认为这些考验能\n阻止我，那它就低估了我的决心。\n\n我心爱的人在等待，没有任何力量，\n甚至死亡，能将我们分开。",
         "ru": "С каждым шагом становится все яснее, что сама Смерть организует эти препятствия, чтобы помешать моему поиску. Но это только подпитывает мою решимость.  Если Смерть думает, что может удержать меня в этих испытаниях, она недооценивает глубину моей решимости.  Мой возлюбленный ждет, и никакая сила, даже смерть, не разлучит нас.",

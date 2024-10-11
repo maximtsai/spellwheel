@@ -700,7 +700,7 @@ function locketFlash() {
 function showLocket() {
     globalObjects.gameLocketOpen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 119, 'misc', 'locket3.png').setScale(0.8).setDepth(100003);
     globalObjects.gameLocketOpenLight = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 119, 'misc', 'locketwhite.png').setScale(0.8).setDepth(100003).setAlpha(0);
-    let closeText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 20, 'Put away locket', {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'right'}).setDepth(100003).setOrigin(1, 1).setAlpha(0);
+    let closeText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 180, 'Put away locket', {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'right'}).setDepth(100003).setOrigin(1, 1).setAlpha(0);
     PhaserScene.tweens.add({
         targets: [globalObjects.gameLocketOpen, globalObjects.gameLocketOpenLight],
         y: "+=25",

@@ -142,7 +142,7 @@ const ENABLE_KEYBOARD = true;
             this.recentSkipped = false;
         }
 
-        if (ENABLE_KEYBOARD && !this.outerDragDisabled && !this.innerDragDisabled) {
+        if (ENABLE_KEYBOARD && !this.outerDragDisabled && !this.innerDragDisabled && !this.manualDisabled) {
             if (this.keyA.isDown || this.keyDown.isDown) {
                 if (this.keyboardRotateInner > -1) {
                     this.keyboardRotateInner = -1.4;

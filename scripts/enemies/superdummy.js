@@ -485,9 +485,9 @@
          let centerXPos = globalObjects.textPopupManager.getCenterPos();
 
          if (this.rune1) {
-             this.rune1.setFrame(rune1Text).setDepth(10001).setScale(0.75).setAlpha(0).setPosition(centerXPos, runeYPos + 27);
+             this.rune1.setFrame(rune1Text).setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0).setPosition(centerXPos, runeYPos + 27);
          } else {
-             this.rune1 = this.addSprite(centerXPos, runeYPos + 27, 'circle', rune1Text).setDepth(10001).setScale(0.8).setAlpha(0);
+             this.rune1 = this.addSprite(centerXPos, runeYPos + 27, 'circle', rune1Text).setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.8).setAlpha(0);
          }
          this.rune1.visible = true;
          this.addTween({
@@ -524,11 +524,11 @@
         let centerXPos = globalObjects.textPopupManager.getCenterPos();
 
         if (this.rune1) {
-            this.rune1.setFrame(rune1Text).setDepth(10001).setScale(0.75).setAlpha(0).setPosition(centerXPos - 30, runeYPos + 27);
-            this.rune2.setFrame(rune2Text).setDepth(10001).setScale(0.75).setAlpha(0).setPosition(centerXPos + 30, runeYPos + 27);
+            this.rune1.setFrame(rune1Text).setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0).setPosition(centerXPos - 30, runeYPos + 27);
+            this.rune2.setFrame(rune2Text).setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0).setPosition(centerXPos + 30, runeYPos + 27);
         } else {
-            this.rune1 = this.addSprite(centerXPos - 34, runeYPos + 27, 'circle', rune1Text).setDepth(10001).setScale(0.75).setAlpha(0);
-            this.rune2 = this.addSprite(centerXPos + 34, runeYPos + 27, 'circle', rune2Text).setDepth(10001).setScale(0.75).setAlpha(0);
+            this.rune1 = this.addSprite(centerXPos - 34, runeYPos + 27, 'circle', rune1Text).setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
+            this.rune2 = this.addSprite(centerXPos + 34, runeYPos + 27, 'circle', rune2Text).setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
         }
         this.rune1.visible = true;
         this.rune2.visible = true;

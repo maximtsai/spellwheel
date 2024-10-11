@@ -50,8 +50,8 @@
             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText('dummy_body_a'), 'right');
              let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
              let centerXPos = globalObjects.textPopupManager.getCenterPos();
-             this.rune3 = this.addImage(centerXPos - 36, runeYPos + 28, 'circle', 'rune_matter_glow.png').setDepth(10001).setScale(0.8, 0.8).setAlpha(0);
-             this.rune4 = this.addImage(centerXPos + 36, runeYPos + 28, 'circle', 'rune_reinforce_glow.png').setDepth(10001).setScale(0.8, 0.8).setAlpha(0);
+             this.rune3 = this.addImage(centerXPos - 36, runeYPos + 28, 'circle', 'rune_matter_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.8, 0.8).setAlpha(0);
+             this.rune4 = this.addImage(centerXPos + 36, runeYPos + 28, 'circle', 'rune_reinforce_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.8, 0.8).setAlpha(0);
 
              this.addTween({
                  targets: [this.rune3, this.rune4],

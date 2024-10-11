@@ -276,7 +276,7 @@
                                  this.addTween({
                                      targets: this.tunnelBG,
                                      duration: 1500,
-                                     alpha: 0.8,
+                                     alpha: 0.88,
                                      ease: 'Quad.easeOut',
                                      scaleX: 1,
                                      scaleY: 1,
@@ -550,11 +550,11 @@
          if (this.dead) {
              return;
          }
-         this.tunnelBG.setAlpha(0.81 + extraAlpha + this.baseBGAlpha);
+         this.tunnelBG.setAlpha(0.94 + extraAlpha + this.baseBGAlpha);
          this.currBGAnim = this.addTween({
              targets: this.tunnelBG,
              duration: 550 * durationMult,
-             alpha: 0.76 + this.baseBGAlpha,
+             alpha: 0.85 + this.baseBGAlpha,
              ease: 'Cubic.easeOut',
              onComplete: () => {
                  this.animateBG();
@@ -957,7 +957,7 @@
                  },
                  {
                      name: "|4x6",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: -1,
                      startFunction: () => {
                          this.pullbackScale = 0.99;
@@ -1294,7 +1294,7 @@
                  // 7
                  {
                      name: "}4x6 ",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: -1,
                      startFunction: () => {
                          this.pullbackScale = 0.99;

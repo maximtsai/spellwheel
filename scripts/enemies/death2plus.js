@@ -647,7 +647,7 @@
 
                         screenShake(3);
                         zoomTemp(1.02)
-                        this.bgMusic3 = playMusic('but_never_forgotten_epicchoir', 0.9, true);
+                        this.bgMusic3 = playMusic('but_never_forgotten_epicchoir', 1, true);
                         this.bgMain.setFrame('star_red.png').setScale(1.32);
                         playSound('sound_of_death', 1.2).setSeek(0.2);
 
@@ -3149,7 +3149,8 @@
          super.die();
         this.sharedDie()
 
-
+        playSound('shield_break', 0.5).detune = -150;
+        playSound('glass_break').detune = -500;
          setTimeout(() => {
              globalObjects.bannerTextManager.closeBanner();
          }, 0);
@@ -3192,7 +3193,7 @@
                         messageBus.publish("showCombatText", getLangText('deathFight2plusbeaten1'), 10);
                          this.addTimeout(() => {
                             messageBus.publish("closeCombatText")
-                         }, 2400)
+                         }, 3000)
                      }
                  })
              }
@@ -3223,9 +3224,9 @@
          this.sprite.setRotation(-0.07);
          let deathFallTemp = this.addImage(this.sprite.x, this.y + 30, "deathfinal", 'death2fall.png').setScale(0.92).setAlpha(0).setDepth(this.sprite.depth);
          this.addTween({
-             delay: 1300,
+             delay: 1500,
              targets: this.sprite,
-             duration: 2200,
+             duration: 2400,
              rotation: -0.08,
              scaleX: this.sprite.startScale * 0.9,
              scaleY: this.sprite.startScale * 0.9,
@@ -3233,14 +3234,14 @@
              ease: "Cubic.easeIn",
              onStart: () => {
                  this.addTween({
-                     delay: 1500,
+                     delay: 1700,
                      targets: this.sprite,
                      ease: 'Quint.easeIn',
                      duration: 500,
                      alpha: 0,
                  })
                  this.addTween({
-                     delay: 1800,
+                     delay: 2000,
                      targets: deathFallTemp,
                      duration: 600,
                      alpha: 1,
@@ -3277,9 +3278,10 @@
 
                         globalObjects.bannerTextManager.setDialogFunc([
                             null,
-                            null,
-                            null,
-                            null, () => {
+                            () => {playSound('whoosh', 0.6).detune = -100},
+                            () => {playSound('whoosh', 0.5).detune = -250},
+                            () => {playSound('whoosh', 0.45).detune = -350},
+                            , () => {
                                  playSound("whoosh");
                                 globalObjects.bannerTextManager.setForcePause(true);
                                 deathFallTemp.currAnim.stop();
@@ -3681,6 +3683,9 @@
      }
 
      createClawPower() {
+         this.addDelayIfAlive(() => {
+             playSound('slice_in', 0.4)
+         }, 200)
          this.currentPowerHand = this.addImage(gameConsts.halfWidth, this.y - 50, 'deathfinal', 'claw_glow.png').setAlpha(0).setScale(0.7);
          this.addTween({
              targets: [this.currentPowerHand],

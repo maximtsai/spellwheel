@@ -1117,7 +1117,9 @@ class Player {
         playSound('you_died');
         messageBus.publish("enemyClearEffect");
         if (gameVars.isDeathThree) {
-            showCutscene1();
+            setTimeout(() => {
+                showCutscene1();
+            }, 1200)
             return;
         }
 

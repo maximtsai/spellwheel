@@ -43,16 +43,21 @@ function playMusic(name, volume = 1, loop = false) {
     return this.playSound(name, volume, loop, true);
 }
 
-function playFakeBGMusic(name) {
+function playFakeBGMusic(name, volume, loop = false) {
     if (!soundList[name]) {
         soundList[name] = PhaserScene.sound.add(name);
     }
     globalTempMusic = soundList[name];
+
+    soundList[name].fullVolume = volume;
+    soundList[name].volume = soundList[name].fullVolume * globalMusicVol;
+    soundList[name].loop = loop;
+
     if (soundList[name].currTween) {
         soundList[name].currTween.stop();
         soundList[name].currTween = null;
     }
-    soundList[name].volume = globalMusicVol;
+    soundList[name].isMusic = true;
     soundList[name].play();
     return soundList[name];
 }

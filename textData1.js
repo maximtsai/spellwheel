@@ -607,7 +607,7 @@ let textData = {
     },
     "time_tut_strike_desc": {
         "en_us": "An attack that hits twice.\nEach attack does medium\ndamage but can be powered up\ngreatly with damage\nenhancements.",
-        "fr": "Une attaque qui frappe deux fois.\nChaque attaque inflige des\ndégâts modérés, mais peut être\nconsidérablement améliorée avec des\nbonus de dégâts.",
+        "fr": "Une attaque qui frappe deux fois.\nChaque attaque inflige des\ndégâts modérés, mais peut être\nconsidérablement améliorée avec\ndes bonus de dégâts.",
         "zh_tw": "攻擊兩次。攻擊本身造成的\n傷害不高，但加強攻擊力的\n法術可以大量增加威力。",
         "zh_cn": "攻击两次。攻击本身造成的\n伤害不高，但加强攻击力的\n法术可以大量增加威力。",
         "ru": "Атака, которая наносит два удара.\nКаждый удар наносит небольшой урон,\nно может быть значительно усилен\nулучшениями урона.",
@@ -616,7 +616,7 @@ let textData = {
     },
     "time_tut_enhance_desc": {
         "en_us": "Your next attack is duplicated\nallowing you to fire multiple\nattacks at the same time.",
-        "fr": "Votre prochaine attaque est dupliquée,\nvous permettant de lancer plusieurs\nattaques en même temps.",
+        "fr": "Votre prochaine attaque est\ndupliquée, vous permettant de lancer\nplusieurs attaques en même temps.",
         "zh_tw": "複製你的下一次攻擊，\n使你能同時發射多次攻擊。",
         "zh_cn": "复制你的下一次攻击，\n使你能同时发射多次攻击。",
         "ru": "аша следующая атака дублируется,\nпозволяя вам выпустить несколько\nатак одновременно.",
@@ -625,7 +625,7 @@ let textData = {
     },
     "time_tut_protect_desc": {
         "en_us": "Creates a shield that defers\nthe damage you take so that\nyou lose health gradually\nrather than all at once.",
-        "fr": "Crée un bouclier qui reporte les\ndégâts que vous subissez pour que\nvous les subissiez progressivement au\nlieu de tout d’un coup.",
+        "fr": "Crée un bouclier qui reporte les\ndégâts que vous subissez pour que\nvous les subissiez progressivement\nau lieu de tout d’un coup.",
         "zh_tw": "打造一個盾牌，可以延遲\n你受到的傷害，讓你的生命值\n緩慢減少。",
         "zh_cn": "打造一个盾牌，可以延迟\n你受到的伤害，让你的生命值\n缓慢减少。",
         "ru": "Создает щит, который откладывает\nполученный вами урон, так что вы\nполучаете его постепенно, а не сразу.",
@@ -634,7 +634,7 @@ let textData = {
     },
     "time_tut_reinforce_desc": {
         "en_us": "Heals you by partially undoing\nyour most recent injury.",
-        "fr": "",
+        "fr": "Vous soigne en annulant\npartiellement votre blessure\nla plus récente.",
         "zh_tw": "治療你最近傷害的一部分。",
         "zh_cn": "治疗你最近伤害的一部分。",
         "ru": "",

@@ -335,7 +335,7 @@ let textData4 = {
     },
     "dummy_body_a": {
         "en_us": "Thorns reduce\nincoming damage\nand can inflict\ndamage back.\n              +",
-        "fr": "Les épines réduisent\nles dégâts subis\net peuvent infliger\ndes dégâts en retour.\n               +",
+        "fr": "Les épines réduisent\nles dégâts subis\net peuvent infliger\ndes dégâts en retour.\n                  +",
         "zh_tw": "荊棘減少並\n反彈傷害。\n       +",
         "zh_cn": "荆棘减少并\n反弹伤害。\n       +",
         "ru": "Шипы уменьшают входящий урон и могут наносить урон в ответ.               +",

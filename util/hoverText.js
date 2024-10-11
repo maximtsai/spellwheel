@@ -91,7 +91,7 @@ class HoverDisplay {
         this.hoverBacking.setDepth(data.depth || 9992);
 
         // this.hoverTextDisplay = PhaserScene.add.bitmapText(0, 0, 'plainBold', '', isMobile ? 19 : 18);
-        this.hoverTextDisplay = PhaserScene.add.text(0, 0, ' ', {fontFamily: 'arial', fontSize: isMobile ? 20 : 19, color: '#FFFFBB', align: 'left'});
+        this.hoverTextDisplay = PhaserScene.add.text(0, 0, ' ', {fontFamily: 'robotomedium', fontSize: isMobile ? 20 : 19, color: '#FFFFBB', align: 'left'});
         this.hoverTextDisplay.visible = false;
         this.hoverTextDisplay.setDepth(data.depth || 9992);
 

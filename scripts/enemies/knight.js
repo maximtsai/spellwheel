@@ -91,7 +91,7 @@
      }
 
      initMisc() {
-         this.voidShield1b = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(1).setDepth(3).setAlpha(0);
+         this.voidShield1b = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(1.04).setDepth(3).setAlpha(0);
          this.voidShield1b.startScale = this.voidShield1b.scaleX;
 
          this.voidShield2b = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(1.28).setDepth(3).setAlpha(0);
@@ -131,7 +131,7 @@
          }
          if (!this.isUsingAttack) {
             let accDamage = this.accumulatedDamageReaction;
-             if (type == "time") {
+             if (type === "time") {
                 accDamage -= 10;
                  if (this.accumulatedDamageReaction >= 9) {
                      this.setSprite('void_knight_dazed.png');

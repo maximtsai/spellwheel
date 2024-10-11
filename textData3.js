@@ -254,7 +254,7 @@ let textData3 = {
     },
     "death4c": {
         "en_us": "HOW MANY MORE MUST FALL ON\nYOUR PATH OF DESTRUCTION?",
-        "fr": "COMBIEN D'AUTRES DOIVENT TOMBER SUR\nTON CHEMIN DE DESTRUCTION?",
+        "fr": "COMBIEN D'AUTRES DOIVENT TOMBER\nSUR TON CHEMIN DE DESTRUCTION?",
         "zh_tw": "還有多少人必須倒在\n你的毀滅之路上？",
         "zh_cn": "还有多少人必须倒在\n你的毁灭之路上？",
         "ru": "",

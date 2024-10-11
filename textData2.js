@@ -248,7 +248,7 @@ let textData2 = {
     },
     "post_fight_day": {
         "en_us": "DAY ",
-        "fr": "JOUR",
+        "fr": "JOUR ",
         "zh_tw": "第",
         "zh_cn": "第",
         "ru": "День",
@@ -296,7 +296,7 @@ let textData2 = {
     },
     "post_fight_story3": {
         "en_us": "Though this is the land of the dead,\nthe foes I face seem oddly... alive.\n\nBut each victory also grants me strength,\nand I must take as much power as I can get\nfor this journey.",
-        "fr": "Les ennemis que j’ai affrontés au\nPays des Morts semblaient… vivants.\n\nMais chaque victoire me donne aussi du pouvoir.\nJe dois acquérir autant de force que possible\npour sauver ma bien-aimée.",
+        "fr": "Les ennemis que j’ai affrontés au\nPays des Morts semblaient… vivants.\n\nMais chaque victoire me donne aussi du\npouvoir. Je dois acquérir autant de force que\npossible pour sauver ma bien-aimée.",
         "zh_tw": "我在亡靈之地所面對的敵人\n看起來就像…活著一樣.\n\n但每一次勝利也賦予我力量。\n我必須獲得盡可能多的力量來拯救我心愛的。",
         "zh_cn": "我在亡灵之地所面对的敌人\n看起来就像…活着一样.\n\n但每一次胜利也赋予我力量。\n我必须获得尽可能多的力量来拯救我心爱的。",
         "ru": "Кажется, я получаю силу каждого врага, которого побеждаю!  Путешествие может быть долгим, но если я победлю достаточное количество противников, я смогу однажды противостоять самой Смерти!",
@@ -305,7 +305,7 @@ let textData2 = {
     },
     "post_fight_story4": {
         "en_us": "The nagging Reaper once again comes\nto sow doubt in my mind.\n\nBut when I close my eyes and think of your\nsmile, I am sure that every sacrifice will be\nworth it in the end.",
-        "fr": "Le Reaper lancinant essaie encore une\nfois de me faire douter de mon chemin.\n\nMais quand je ferme les yeux et pense à ton\nsourire, j’ai l’impression que tous les sacrifices\nen valaient la peine au final.",
+        "fr": "Le Reaper lancinant essaie encore une\nfois de me faire douter de mon chemin.\n\nMais quand je ferme les yeux et pense à\nton sourire, j’ai l’impression que tous les\nsacrifices en valaient la peine au final.",
         "zh_tw": "嘮叨的死神再次試圖讓我\n懷疑我的道路。\n\n但只要我閉上眼睛，想起你的笑容時，\n我相信最終所有的犧牲都是值得的。",
         "zh_cn": "唠叨的死神再次试图让我\n怀疑我的道路。\n\n但只要我闭上眼睛，想起你的笑容时，\n我相信最终所有的牺牲都是值得的。",
         "ru": "Как же я жажду снова ощутить твои объятия, моя дорогая возлюбленная.  Твоя смерть была слишком поспешной, слишком несправедливой, и я исправлю эту ошибку, даже если мне придется опрокинуть всю страну.",
@@ -782,7 +782,7 @@ let textData2 = {
     },
     "level4_train_tut_b1": {
         "en_us": "Slows down\nincoming damage\n              +",
-        "fr": "Ralentit les\ndégâts importants\n              +",
+        "fr": "Ralentit les\ndégâts entrants\n             +",
         "zh_tw": "减缓严重伤害\n         +",
         "zh_cn": "减缓严重伤害\n         +",
         "ru": "",
@@ -791,7 +791,7 @@ let textData2 = {
     },
     "level4_train_tut_b": {
         "en_us": "Heal your last\ninjury with\n          +",
-        "fr": "Soignez votre\ndernière blessure\navec\n          +",
+        "fr": "Soignez votre\ndernière blessure\navec\n              +",
         "zh_tw": "治癒你最後的傷害\n            +",
         "zh_cn": "治愈你最后的伤害\n            +",
         "ru": "Залечите последнюю\nтравму с помощью\n         +",

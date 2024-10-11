@@ -788,6 +788,7 @@ function showFinalLocket() {
                     globalObjects.bannerTextManager.setDialog([".", "."]);
                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height + 230, 0);
                     globalObjects.bannerTextManager.setDialogFunc([null, () => {
+                        playSound('deep_swish', 0.5)
                         globalObjects.gameLocketOpen.shakey = true;
                         if (closeText.currAnim) {
                             closeText.currAnim.stop();

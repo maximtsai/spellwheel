@@ -245,8 +245,8 @@ let textData4 = {
     "deathFight2plusending5": {
         "en_us": "But please, hear my last request.",
         "fr": "Mais s’il vous plaît,\nécoutez ma dernière demande.",
-        "zh_tw": "但是，請聽聽我最後的請求。",
-        "zh_cn": "但是，请听听我最后的请求。",
+        "zh_tw": "但是，請聽我最後的請求。",
+        "zh_cn": "但是，请听我最后的请求。",
         "ru": "Но, пожалуйста, услышьте мою последнюю просьбу.",
         "es": "Pero, por favor, escuchen mi última petición.",
         "jp": "しかし、どうか、私の最後の要求を聞いてください。"
@@ -670,9 +670,9 @@ let textData4 = {
     },
     "death3_within": {
         "en_us": "...That may be within my power,\nbut bringing her back won’t heal you.",
-        "fr": "...C'est peut-être en mon pouvoir,\nmais la ramener ne te guérira pas.",
-        "zh_tw": "...這也許在我的能力範圍之內，\n但將她帶回來並不能治癒你的心。",
-        "zh_cn": "...这也许在我的能力范围之内，\n但将她带回来并不能治愈你的心。",
+        "fr": "...C'est en mon pouvoir,\nmais la ramener ne te guérira pas.",
+        "zh_tw": "...這在我的能力範圍之內，\n但將她帶回來並不能治癒你的心。",
+        "zh_cn": "...这在我的能力范围之内，\n但将她带回来并不能治愈你的心。",
         "ru": "",
         "es": "",
         "jp": ""

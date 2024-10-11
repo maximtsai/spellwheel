@@ -128,7 +128,7 @@
              this.spellCircle = this.addImage(this.x, this.spellStartY, 'deathfinal', 'spellcircle.png').setAlpha(0.1).setScale(0.5);
              this.rotateSpellCircleTo(0, false, () => {
                  // this.fadeOutCurrentHand();
-                 this.createHandShield(10);
+                 this.createHandShield(gameVars.isHardMode ? 10 : 9);
                  globalObjects.magicCircle.enableMovement();
                  globalObjects.encyclopedia.showButton();
                  globalObjects.options.showButton();
@@ -403,8 +403,8 @@
                      tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(1);
                      this.addTween({
                          targets: tempPulse,
-                         scaleX: 6,
-                         scaleY: 6,
+                         scaleX: 5,
+                         scaleY: 5,
                          ease: 'Quad.easeIn',
                          duration: 800,
                          alpha: 0,
@@ -782,9 +782,9 @@
                  },
                  {
                      name: "}4x4",
-                     chargeAmt: 750,
+                     chargeAmt: 850,
                      finishDelay: 1000,
-                     chargeMult: 2,
+                     chargeMult: 1.6,
                      damage: -1,
                      startFunction: () => {
                          this.pulseHand(3);
@@ -907,9 +907,9 @@
                  },
                  {
                      name: "}4x4",
-                     chargeAmt: 800,
+                     chargeAmt: 850,
                      finishDelay: 1000,
-                     chargeMult: 1.5,
+                     chargeMult: 2,
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
@@ -1025,9 +1025,9 @@
                  },
                  {
                      name: "|4x6",
-                     chargeAmt: 800,
+                     chargeAmt: 850,
                      finishDelay: 1000,
-                     chargeMult: 1.5,
+                     chargeMult: 1.6,
                      damage: -1,
                      startFunction: () => {
                          this.pulseHand(3);
@@ -1280,7 +1280,7 @@
                  },
                  {
                      name: "|4x12",
-                     chargeAmt: 800,
+                     chargeAmt: 950,
                      finishDelay: 6000,
                      chargeMult: 1.5,
                      damage: -1,
@@ -1409,7 +1409,7 @@
          this.reapHand = this.addSprite(0, 0, 'deathfinal', 'claw_glow.png').setAlpha(0).setDepth(1000);
          for (let i = 0; i < this.finalHands.length; i++) {
              if ( i >= 5) {
-                 extraDelay += 150;
+                 extraDelay += 125;
              }
              let rotateDelay = 800 - (i % 4) * 200;
              this.addTween({
@@ -1426,7 +1426,7 @@
 
              this.addDelayIfAlive(() => {
                  this.fireNextSuperHand(i >= 4)
-             }, 1000 + i * 850 + extraDelay)
+             }, 1000 + i * 925 + extraDelay)
          }
          this.addDelayIfAlive(() => {
              if (globalObjects.player.isDead()) {
@@ -1743,6 +1743,7 @@
              }
              return;
          }
+         playSound('deep_swish');
          this.addTween({
              targets: arr,
              scaleX: 1.1,

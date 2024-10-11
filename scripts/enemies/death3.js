@@ -534,7 +534,7 @@ class Death3 extends Enemy {
                 },
                 {
                     name: " ",
-                    chargeAmt: 500,
+                    chargeAmt: 550,
                     chargeMult: 3.5,
                     isPassive: true,
                     transitionFast: true,
@@ -581,7 +581,7 @@ class Death3 extends Enemy {
                 },
                 {
                     name: " ",
-                    chargeAmt: 400,
+                    chargeAmt: 475,
                     chargeMult: 3.5,
                     isPassive: true,
                     transitionFast: true,

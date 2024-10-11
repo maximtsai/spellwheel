@@ -43,7 +43,7 @@ function playMusic(name, volume = 1, loop = false) {
     return this.playSound(name, volume, loop, true);
 }
 
-function playFakeBGMusic(name, volume, loop = false) {
+function playFakeBGMusic(name, volume = 1, loop = false) {
     if (!soundList[name]) {
         soundList[name] = PhaserScene.sound.add(name);
     }
@@ -118,10 +118,13 @@ function fadeAwaySound(sound, duration = 650, ease, onComplete) {
 
 function fadeInSound(sound, volume = 1, duration = 1000) {
     let globalToUse = sound.isMusic ? globalMusicVol : globalVolume;
-    sound.fullVolume = volume
+    sound.fullVolume = volume;
+    let goalVol = sound.fullVolume * globalToUse;
+    console.log(sound.volume, goalVol);
     PhaserScene.tweens.add({
+        delay: 100,
         targets: sound,
-        volume: sound.fullVolume * globalToUse,
+        volume: goalVol,
         duration: duration,
         ease: 'Quad.easeIn'
     });

@@ -968,6 +968,15 @@ let textData2 = {
         "ru": "",
         "es": "",
         "jp": ""
+    },
+    "cast": {
+        "en_us": "CAST",
+        "fr": "LANCER",
+        "zh_tw": "施放",
+        "zh_cn": "施放",
+        "ru": "",
+        "es": "",
+        "jp": ""
     }
 };
 

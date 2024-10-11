@@ -34,6 +34,8 @@ class Player {
 
             messageBus.subscribe("wheelReloaded", this.incrementMindReinforceStatus.bind(this)),
 
+
+
         ];
         updateManager.addFunction(this.update.bind(this));
         // Handles weird phaser initial lag issue.
@@ -225,7 +227,7 @@ class Player {
         // this.healthBarPeak.setScale(1, 1);
         // this.healthBarPeak.visible = true;
 
-        this.castText = this.scene.add.text(x, y, 'CAST', {fontFamily: 'germania', fontSize: 30, color: '#040404', align: 'center'}).setOrigin(0.5, 0.5).setDepth(9998);
+        this.castText = this.scene.add.text(x, y, "CAST", {fontFamily: 'germania', fontSize: 30, color: '#040404', align: 'center'}).setOrigin(0.5, 0.5).setDepth(9998);
         this.castText.setAlpha(0.5);
 
         this.healthText = this.scene.add.text(x, y + 38, 'HP ' + this.health + '/' + this.healthMax, {fontFamily: 'germania', fontSize: isMobile ? 24 : 21, color: '#040404', align: 'left'});

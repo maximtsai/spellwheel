@@ -171,10 +171,10 @@ let textData4 = {
         "jp": "スピードアップしましょう"
     },
     "deathFight2pluse": {
-        "en_us": "STILL ALIVE? YOUR END IS NOW.",
-        "fr": "TOUJOURS VIVANT?\nVOTRE FIN EST MAINTENANT.",
-        "zh_tw": "仍然活著？你的結局就是現在。",
-        "zh_cn": "仍然活着？你的结局就是现在。",
+        "en_us": "STILL ALIVE? YOUR END IS NOW!",
+        "fr": "TOUJOURS VIVANT?\nVOTRE FIN EST MAINTENANT!",
+        "zh_tw": "仍然活著？你的末日到了！",
+        "zh_cn": "仍然活着？你的末日到了！",
         "ru": "ВСЕ ЕЩЁ ЖИВ?\nВАШ КОНЕЦ УЖЕ НАСТУПИЛ.",
         "es": "¿SIGO VIVO?\nTU FIN ES AHORA.",
         "jp": "まだ生きています。\nあなたの終わりは今です。"
@@ -200,8 +200,8 @@ let textData4 = {
     "deathFight2plusz2": {
         "en_us": "I WILL FINISH YOU\nONCE AND FOR ALL",
         "fr": "JE VAIS VOUS ACHEVER\nUNE FOIS POUR TOUTES",
-        "zh_tw": "我會一勞永逸\n地結束你",
-        "zh_cn": "我会一劳永逸\n地结束你",
+        "zh_tw": "我會徹底結束你",
+        "zh_cn": "我会彻底结束你",
         "ru": "Я ПРИКОНЧУ ТЕБЯ\nРАЗ И НАВСЕГДА",
         "es": "ACABARÉ CONTIGO DE\nUNA VEZ POR TODAS",
         "jp": "私はあなたをきっ\nぱりと終わらせます"

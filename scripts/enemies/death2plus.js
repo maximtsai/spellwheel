@@ -396,7 +396,22 @@
              duration: 2000,
              ease: 'Quad.easeInOut',
              repeat: -1,
-             yoyo: true
+             yoyo: true,
+             onRepeat: () => {
+                 if (this.pulseFinalEnabled) {
+                     let tempPulse = getTempPoolObject('blurry', 'spellcircle_pulse.png', 'spellcircle_pulse', 900);
+                     tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(1);
+                     this.addTween({
+                         targets: tempPulse,
+                         scaleX: 6,
+                         scaleY: 6,
+                         ease: 'Quad.easeIn',
+                         duration: 800,
+                         alpha: 0,
+                     })
+                 }
+
+             }
          });
      }
 
@@ -435,7 +450,7 @@
         this.showFinalPrelude();
         this.emergencyShield();
         globalObjects.bannerTextManager.setDialog([getLangText('deathFight2plusz'), getLangText('deathFight2plusz2')]);
-        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 10, 0);
         globalObjects.bannerTextManager.showBanner(0);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
             this.showActualFinale();
@@ -443,6 +458,7 @@
     }
 
     showImpatienceFinale() {
+         console.log("show impatience finale")
         this.currentAttackSetIndex = 5;
         this.nextAttackIndex = 0;
         this.showFinalPrelude();
@@ -455,7 +471,7 @@
                 return;
             }
             globalObjects.bannerTextManager.setDialog([getLangText('deathFight2plusy'), getLangText('deathFight2plusz2')]);
-            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 10, 0);
             globalObjects.bannerTextManager.showBanner(0);
             globalObjects.bannerTextManager.setOnFinishFunc(() => {
                 this.showActualFinale();
@@ -470,7 +486,7 @@
         this.clearExtraAttackDamage();
         this.clearPower();
         this.fadeOutCurrentHand();
-        this.currentAttackSetIndex = 4;
+        this.currentAttackSetIndex = 5;
         this.nextAttackIndex = 0;
     }
 
@@ -555,18 +571,19 @@
                                                                          scaleX: "+=0.03",
                                                                          scaleY: "+=0.06",
                                                                          onComplete: () => {
-                                                                        screenShakeLong(10);
+                                                                             this.pulseFinalEnabled = true;
+                                                                            screenShakeLong(10);
 
-                                        let redFlash = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'red_pixel.png').setScale(500).setAlpha(0.8).setDepth(-1)
-                                        this.addTween({
-                                             targets: redFlash,
-                                             alpha: 0,
-                                             ease: 'Cubic.easeOut',
-                                             duration: 500,
-                                             onComplete: () => {
-                                                redFlash.destroy();
-                                             }
-                                         })
+                                                                            let redFlash = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'red_pixel.png').setScale(500).setAlpha(0.8).setDepth(-1)
+                                                                            this.addTween({
+                                                                                 targets: redFlash,
+                                                                                 alpha: 0,
+                                                                                 ease: 'Cubic.easeOut',
+                                                                                 duration: 500,
+                                                                                 onComplete: () => {
+                                                                                    redFlash.destroy();
+                                                                                 }
+                                                                             })
 
                                                           this.addTween({
                                                                  targets: deathHead,
@@ -681,7 +698,7 @@
                  // 0
                  {
                      name: "OBSERVING...",
-                     chargeAmt: gameVars.isHardMode ? 400 : 550,
+                     chargeAmt: gameVars.isHardMode ? 450 : 600,
                      finishDelay: 3000,
                      damage: 0,
                      isPassive: true,
@@ -698,7 +715,7 @@
                  },
                  {
                      name: "|14x2",
-                     chargeAmt: 550,
+                     chargeAmt: 600,
                      finishDelay: 2000,
                      damage: -1,
                      isBigMove: true,
@@ -718,7 +735,7 @@
                  },
                  {
                      name: "}3+$21",
-                     chargeAmt: 600,
+                     chargeAmt: 650,
                      finishDelay: 3500,
                      damage: -1,
                      startFunction: () => {
@@ -847,7 +864,7 @@
                  },
                  {
                      name: "}3+$24",
-                     chargeAmt: 650,
+                     chargeAmt: 700,
                      finishDelay: 3500,
                      damage: -1,
                      startFunction: () => {
@@ -989,7 +1006,7 @@
                  },
                  {
                      name: "}16x2",
-                     chargeAmt: 600,
+                     chargeAmt: 650,
                      finishDelay: 2500,
                      damage: -1,
                      startFunction: () => {
@@ -1088,7 +1105,7 @@
                  },
                  {
                      name: "}18x2",
-                     chargeAmt: 650,
+                     chargeAmt: 700,
                      chargeMult: 2,
                      finishDelay: 2000,
                      damage: -1,
@@ -1109,7 +1126,7 @@
                  },
                  {
                      name: "}3+$27",
-                     chargeAmt: 700,
+                     chargeAmt: 750,
                      chargeMult: 2,
                      finishDelay: 3000,
                      damage: -1,
@@ -1183,7 +1200,7 @@
                  //4
                  {
                      name: ";100",
-                     chargeAmt: 700,
+                     chargeAmt: 800,
                      finishDelay: 2500,
                      damage: -1,
                      isBigMove: true,
@@ -1212,7 +1229,7 @@
                  },
                  {
                      name: "}20x3",
-                     chargeAmt: 650,
+                     chargeAmt: 700,
                      finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
@@ -1233,8 +1250,8 @@
                  },
                  {
                      name: "}3+$999",
-                     chargeAmt: 650,
-                     finishDelay: 6000,
+                     chargeAmt: 750,
+                     finishDelay: 8000,
                      damage: -1,
                      startFunction: () => {
                          this.pulseSpellCircle(true)
@@ -1273,6 +1290,8 @@
                      },
                      attackStartFunction: () => {
                          this.fadeOutCurrentHand();
+                         this.currentAttackSetIndex = 5;
+                         this.nextAttackIndex = 0;
                      },
                      attackFinishFunction: () => {
                          let pokeHand = this.addImage(this.x + 180, this.y + 150, 'deathfinal', 'claw.png').setScale(0.1).setAlpha(0.65).setRotation(0.4);
@@ -2080,9 +2099,9 @@
                                  });
                                  if (hasExtraPoke) {
                                      this.addTween({
-                                         delay: 200,
+                                         delay: 100,
                                          targets: pokeHand,
-                                         duration: 1000,
+                                         duration: 700,
                                          y: globalObjects.player.getY() - 335,
                                          rotation: "+=6.2832",
                                          ease: "Cubic.easeInOut",
@@ -2090,9 +2109,9 @@
                                          scaleY: 0.7,
                                          onComplete: () => {
                                              this.addTween({
-                                                 delay: 100,
+                                                 delay: 50,
                                                  targets: pokeHand,
-                                                 duration: 350,
+                                                 duration: 275,
                                                  y: globalObjects.player.getY() - 215,
                                                  scaleX: 1,
                                                  scaleY: 1,
@@ -2576,6 +2595,7 @@
                                  redClockArmBack.setAlpha(1).setRotation(Math.PI * 0.25 * 0.33 * i - 0.04).setScale(1.05);
                                  redClockArmFront.setAlpha(0.75).setRotation(Math.PI * 0.25 * 0.33 * i - 0.04).setScale(1.05);
                                  if (i == 0) {
+                                     playSound('death_attack')
                                      messageBus.publish('playerAddDelayedDamage', damage);
                                      screenShake(5);
                                      this.addTween({
@@ -3351,6 +3371,10 @@
      }
 
      createPokePower() {
+         this.addDelayIfAlive(() => {
+             playSound('deep_swish', 0.4)
+             playSound('void_strike_hit', 0.4)
+         }, 150)
          this.currentPowerHand = this.addImage(gameConsts.halfWidth - 10, this.y - 48, 'deathfinal', 'poke_glow.png').setAlpha(0).setScale(0.7);
          this.currentPowerText = this.addBitmapText(gameConsts.halfWidth, this.currentPowerHand.y - 30, 'damage', "DMG\n+0", 34, 1).setAlpha(0).setDepth(50).setOrigin(0.5, 0.5);
          this.addTween({
@@ -3439,7 +3463,6 @@
                  this.attackName.setText("}"+hurtAmt+"+$"+damageAmt);
              } else if (this.attackToStrengthen === 3) {
                  if (damageAmt > 6) {
-                     this.attackName.setScale(1.4);
                      this.addTween({
                          targets: this.attackName,
                          duration: 400,
@@ -3453,7 +3476,6 @@
                      }
                      this.attackName.setText(";"+damageAmt+"x4");
                  } else {
-                     this.attackName.setScale(1.3);
                      this.addTween({
                          targets: this.attackName,
                          duration: 300,
@@ -3539,6 +3561,10 @@
      }
 
      createOkayPower() {
+         this.addDelayIfAlive(() => {
+             playSound('time_body', 0.4).setSeek(0.2);
+             playSound('void_strike_hit', 0.4)
+         }, 150)
          this.currentPowerHand = this.addImage(gameConsts.halfWidth + 35, this.y - 52, 'deathfinal', 'okay_glow.png').setAlpha(0).setScale(0.7);
          this.currentPowerText = this.addBitmapText(gameConsts.halfWidth, this.currentPowerHand.y - 31, 'heal', "", 40, 1).setAlpha(0).setDepth(50).setOrigin(0.5, 0.5);
          this.currentPowerText.startY = this.currentPowerText.y;
@@ -3636,7 +3662,7 @@
                          }
                          this.heal(this.storedHeal, 0.45 + Math.sqrt(this.storedHeal) * 0.12);
                          playSound('magic', 0.75);
-                         messageBus.publish('animateHealNum', this.x, this.y + 20, '+' + this.storedHeal, 0.5 + Math.sqrt(this.storedHeal) * 0.15);
+                         messageBus.publish('animateHealNum', this.x, this.y + 48, '+' + this.storedHeal, 0.5 + Math.sqrt(this.storedHeal) * 0.15);
                          if (!this.healSprite) {
                              this.healSprite = this.addImage(gameConsts.halfWidth, this.y - 20, 'misc', 'heal.png').setScale(1).setDepth(999).setAlpha(1);
                          }
@@ -3685,6 +3711,7 @@
      createClawPower() {
          this.addDelayIfAlive(() => {
              playSound('slice_in', 0.4)
+             playSound('void_strike_hit', 0.4)
          }, 200)
          this.currentPowerHand = this.addImage(gameConsts.halfWidth, this.y - 50, 'deathfinal', 'claw_glow.png').setAlpha(0).setScale(0.7);
          this.addTween({

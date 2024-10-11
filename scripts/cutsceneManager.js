@@ -87,7 +87,7 @@ function showCutscene1() {
             if (globalObjects.currentEnemy && !globalObjects.currentEnemy.isDestroyed) {
                 globalObjects.currentEnemy.destroy();
             }
-            let wind = playFakeBGMusic('wind', 0.01, true);
+            let wind = playFakeBGMusic('wind', 0.04, true);
             fadeInSound(wind, 0.55, 1800)
 
             globalObjects.cutsceneBarTop.y = gameConsts.halfHeight - 272;
@@ -100,8 +100,15 @@ function showCutscene1() {
                 setTimeout(() => {
                     globalObjects.bannerTextManager.setDialog([getLangText('epilogue1b'), getLangText('epilogue1c')]);
                     globalObjects.bannerTextManager.setDialogFunc([() => {
-
+                        globalObjects.bannerTextManager.setForcePause(true);
+                        setTimeout(() => {
+                            globalObjects.bannerTextManager.setForcePause(false);
+                        }, 1000)
                     }, () => {
+                        globalObjects.bannerTextManager.setForcePause(true);
+                        setTimeout(() => {
+                            globalObjects.bannerTextManager.setForcePause(false);
+                        }, 1000)
                         if (globalObjects.cutSceneAnim) {
                             let remainingDur = globalObjects.cutSceneAnim.duration - globalObjects.cutSceneAnim.elapsed;
                             if (remainingDur > 100) {

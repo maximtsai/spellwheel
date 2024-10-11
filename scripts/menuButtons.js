@@ -200,7 +200,7 @@ function showMainMenuButtons() {
         globalObjects.lvlPickButton.addText(getLangText('lvl_select'), {fontFamily: 'germania', fontSize: 26, color: '#000000', align: 'left'})
         globalObjects.lvlPickButton.setScale(0.95, 0.9);
     }
-    let yPos = (hasLvlSelect || hasContinue) ? gameConsts.halfHeight - 320 : gameConsts.halfHeight - 120;
+    let yPos = (hasLvlSelect || hasContinue) ? gameConsts.halfHeight - 320 : gameConsts.halfHeight - 132;
     globalObjects.startButton = new Button({
         normal: {
             ref: "menu_btn_normal.png",

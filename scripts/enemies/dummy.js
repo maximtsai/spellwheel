@@ -279,7 +279,7 @@
             this.clearEnhancePopup();
             this.clearStartShadow();
 
-            globalObjects.textPopupManager.setInfoText(gameConsts.width, 265, getLangText('level1_tut_b'), 'right');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, 261, getLangText('level1_tut_b'), 'right');
             messageBus.publish('setSlowMult', 0.25, 15);
             let glowBar = this.addSprite(gameConsts.halfWidth, 320, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
             this.addTween({

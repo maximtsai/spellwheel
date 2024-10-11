@@ -974,13 +974,17 @@ class Player {
                                         let startRotOffset = shieldObj.multiplier * 0.03 - 0.03;
                                         for (let i = 0; i < shieldObj.multiplier; i++) {
                                             let laserAnim = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blast.png').setScale(1.3, 4);
+                                            let laserAnim2 = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blast2.png').setScale(1.3, 3.95);
                                             laserAnim.setDepth(99).setOrigin(0.5, 1.165).setAlpha(0);
+                                            laserAnim2.setDepth(9999).setOrigin(0.5, 1.165).setAlpha(0);
                                             laserAnim.origScale = laserAnim.scaleX;
                                             laserAnim.rotation = shieldObj.animObj[0].rotation - startRotOffset + i * 0.06;
+                                            laserAnim2.rotation = laserAnim.rotation;
                                             laserAnim.scaleX = laserAnim.origScale * (1.2 + Math.sqrt(shieldObj.storedDamage) * 0.095);
+                                            laserAnim2.scaleX = laserAnim.scaleX;
                                             this.scene.tweens.add({
                                                 delay: i * 90 - gameVars.avgDeltaScale * 7,
-                                                targets: laserAnim,
+                                                targets: [laserAnim, laserAnim2],
                                                 duration: 25,
                                                 scaleX: laserAnim.origScale * (0.9 + Math.sqrt(shieldObj.storedDamage) * 0.05),
                                                 ease: 'Quint.easeIn',
@@ -988,16 +992,18 @@ class Player {
                                                 repeat: shieldObj.multiplier > 1.1 ? 5 : 6,
                                                 onStart: () => {
                                                     laserAnim.setAlpha(1);
+                                                    laserAnim2.setAlpha(1);
                                                 },
                                                 onComplete: () => {
                                                     laserAnim.destroy();
+                                                    laserAnim2.destroy();
                                                 }
                                             });
                                         }
 
                                         let dist = 210;
-                                        let xPos = gameConsts.halfWidth + Math.sin(shieldObj.animObj[0].rotation) * dist;
-                                        let yPos = globalObjects.player.getY() - Math.cos(shieldObj.animObj[0].rotation) * dist;
+                                        let xPos = gameConsts.halfWidth + Math.sin(shieldObj.animObj[0].rotation) * (dist - 6);
+                                        let yPos = globalObjects.player.getY() - Math.cos(shieldObj.animObj[0].rotation) * (dist - 6);
 
                                         let shockEffect = getTempPoolObject('spells', 'shockEffect1.png', 'shockEffect', 1100).play('powerEffect');
                                         let goalScale = 2.4 + shieldObj.storedDamage * 0.05;

@@ -87,7 +87,7 @@
                  this.sprite.setScale(this.sprite.startScale);
              }
             setTimeout(() => {
-                playSound('chirpmany', 0.4).detune = -50;
+                playSound('chirpmany', 0.3).detune = -50;
             }, 500)
              this.setAwake();
              let eyePosX = this.x + 130 * this.sprite.startScale;

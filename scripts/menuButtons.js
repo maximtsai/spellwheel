@@ -163,7 +163,19 @@ function showMainMenuButtons() {
             disable: {
                 alpha: 0
             },
+            onHover: () => {
+                if (canvas) {
+                    playSound('button_hover').detune = -75;
+                    canvas.style.cursor = 'pointer';
+                }
+            },
+            onHoverOut: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
+            },
             onMouseUp: () => {
+                playSound('click')
                 clearMenuButtons();
                 beginPreLevel(gameVars.latestLevel + 1);
             }
@@ -192,7 +204,19 @@ function showMainMenuButtons() {
             disable: {
                 alpha: 0
             },
+            onHover: () => {
+                if (canvas) {
+                    playSound('button_hover').detune = -150;
+                    canvas.style.cursor = 'pointer';
+                }
+            },
+            onHoverOut: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
+            },
             onMouseUp: () => {
+                playSound('click')
                 showLevelSelectScreen();
             }
         });
@@ -221,7 +245,7 @@ function showMainMenuButtons() {
         },
         onHover: () => {
             if (canvas) {
-                playSound('button_hover');
+                playSound('button_hover').detune = 0;
                 canvas.style.cursor = 'pointer';
             }
         },
@@ -231,6 +255,7 @@ function showMainMenuButtons() {
             }
         },
         onMouseUp: () => {
+            playSound('click')
             if (gameVars.latestLevel >= 1) {
                 let titleText = getLangText('new_game') + "?";
                 showYesNoPopup(getLangText('cont_ui'), getLangText('back'), titleText, getLangText('new_game_long'), () => {
@@ -352,6 +377,7 @@ function showMainMenuButtons() {
             alpha: 0
         },
         onMouseUp: () => {
+            playSound('click')
             toggleCheat('inam')
         }
     });
@@ -739,11 +765,23 @@ function showMainMenuButtons() {
         disable: {
             alpha: 0
         },
+        onHover: () => {
+            if (canvas) {
+                playSound('button_hover', 0.5).detune = 200;
+                canvas.style.cursor = 'pointer';
+            }
+        },
+        onHoverOut: () => {
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        },
         onMouseUp: () => {
             //showCutscene1();
             // clearOnlyMenuButtons()
             // rollCredits();
             // return;
+            playSound('flip3');
             globalObjects.encyclopedia.hideButton();
             globalObjects.options.hideButton();
             let page1Content = [];
@@ -850,6 +888,7 @@ function showMainMenuButtons() {
                     }
                 },
                 onMouseUp: () => {
+                    playSound('flip1');
                     PhaserScene.tweens.add({
                         targets: tab1,
                         y: gameConsts.halfHeight - 305,
@@ -924,6 +963,7 @@ function showMainMenuButtons() {
                     }
                 },
                 onMouseUp: () => {
+                    playSound('flip2');
                     PhaserScene.tweens.add({
                         targets: tab1,
                         y: gameConsts.halfHeight - 278,
@@ -1016,6 +1056,7 @@ function showMainMenuButtons() {
                     }
                 },
                 onMouseUp: () => {
+                    playSound('flip1', 0.7).detune = -200;
                     globalObjects.encyclopedia.showButton();
                     globalObjects.options.showButton();
                     clickBlock.destroy();
@@ -1192,7 +1233,6 @@ function showLevelSelectScreen(){
             },
             onHover: () => {
                 if (canvas) {
-                    playSound('button_hover');
                     canvas.style.cursor = 'pointer';
                 }
             },

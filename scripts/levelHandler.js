@@ -463,7 +463,7 @@ function createMenuCloseButton(items) {
             alpha: 0
         },
         onHover: () => {
-            playSound('button_hover');
+            playSound('button_hover').detune = 30 - Math.floor(Math.random() * 60);
             if (canvas) {
                 canvas.style.cursor = 'pointer';
             }

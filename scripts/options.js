@@ -31,6 +31,7 @@ class Options {
                 alpha: 0
             },
             onHover: () => {
+                playSound('button_hover',0.75).detune = 220;
                 if (canvas) {
                     canvas.style.cursor = 'pointer';
                 }

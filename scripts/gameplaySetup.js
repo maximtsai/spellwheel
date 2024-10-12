@@ -858,7 +858,6 @@ function setupPlayer() {
 
 function onCreditsButtonClicked() {
     globalObjects.creditsText.visible = true;
-    playSound('button');
 }
 
 // function repeatFlash() {

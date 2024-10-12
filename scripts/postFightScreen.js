@@ -163,7 +163,7 @@ class PostFightScreen {
                     alpha: 0
                 },
                 onHover: () => {
-                    playSound('button_hover');
+                    playSound('button_hover').detune = 100;
                     if (canvas) {
                         canvas.style.cursor = 'pointer';
                     }
@@ -181,7 +181,7 @@ class PostFightScreen {
             let text = this.continueButton.getText();
             text.alpha = 0;
             this.continueButton.setOnHoverFunc(() => {
-                playSound('button_hover');
+                playSound('button_hover').detune = 75;
                 if (canvas) {
                     canvas.style.cursor = 'pointer';
                 }
@@ -221,7 +221,7 @@ class PostFightScreen {
                     alpha: 0
                 },
                 onHover: () => {
-                    playSound('button_hover');
+                    playSound('button_hover').detune = 60;
                     if (canvas) {
                         canvas.style.cursor = 'pointer';
                     }

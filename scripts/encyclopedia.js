@@ -30,6 +30,7 @@ class Encyclopedia {
                 alpha: 0
             },
             onHover: () => {
+                playSound('button_hover',0.75).detune = 100;
                 if (canvas) {
                     canvas.style.cursor = 'pointer';
                 }

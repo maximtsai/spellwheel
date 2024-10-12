@@ -62,7 +62,7 @@ function showYesNoPopup(yesText, noText, titleText = '...', bodyText = "...", on
         },
         onHover: () => {
             if (canvas) {
-                playSound('button_hover');
+                playSound('button_hover').detune = 50;
                 canvas.style.cursor = 'pointer';
             }
         },
@@ -117,7 +117,7 @@ function showYesNoPopup(yesText, noText, titleText = '...', bodyText = "...", on
         },
         onHover: () => {
             if (canvas) {
-                playSound('button_hover');
+                playSound('button_hover').detune = -50;
                 canvas.style.cursor = 'pointer';
             }
         },
@@ -162,7 +162,7 @@ function showYesNoPopup(yesText, noText, titleText = '...', bodyText = "...", on
         },
         onHover: () => {
             if (canvas) {
-                playSound('button_hover');
+                playSound('button_hover').detune = -100;
                 canvas.style.cursor = 'pointer';
             }
         },

@@ -786,7 +786,7 @@ class PostFightScreen {
     }
 */
     showStoryText(level) {
-        let objectsToFade = [this.spellsCastText, this.healthLeftText, this.codeText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
+        let objectsToFade = [this.spellsCastText, this.healthLeftText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
         // objectsToFade = objectsToFade.concat(this.listOfCodes);
 
         this.locketMusic = playMusic('sleepless', 0.5);
@@ -978,7 +978,7 @@ class PostFightScreen {
             duration: 500,
         })
         PhaserScene.tweens.add({
-            targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon, this.newRuneAnnounce, this.locketSprite, this.codeText, this.locketDialog, this.locketDialogImage],
+            targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon, this.newRuneAnnounce, this.locketSprite, this.locketDialog, this.locketDialogImage],
             alpha: 0,
             ease: 'Quad.easeOut',
             duration: 600,

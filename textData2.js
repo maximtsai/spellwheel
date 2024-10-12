@@ -349,8 +349,8 @@ let textData2 = {
         "jp": "一歩進むごとに、死そのものが私の探求を妨害するためにこれらの障害を画策していることが明らかになる。しかし、これは私の決意を煽るだけです。 もし死神が、このような試練で私を思いとどまらせることができると考えているのなら、それは私の決意の深さを過小評価していることになる。 私の最愛の人が待っており、どんな力も、死でさえも、私たちを引き離すことはできません。"
     },
     "post_fight_story9": {
-        "en_us": "Not even the machines of Death can\nbest me!\n\nI am at the height of my power, and nothing\ncan stand in my way.\n\nAll that's left is to get around this broken\nrobot and I know I shall find my beloved just\naround the corner.",
-        "fr": "Même les machines de la Mort ne peuvent\nme vaincre!\n\nJe suis au sommet de ma puissance et rien\nne peut m'arrêter.\n\nIl ne me reste plus qu'à contourner ce robot\nbrisé et je sais que je retrouverai ma\nbien-aimée au coin de la rue.",
+        "en_us": "Not even the machines of Death can\nbest me! I am at the height of my power,\nand nothing can stand in my way.\n\nAll that's left is to get around this broken\nrobot and I know I shall find my beloved\njust around the corner.",
+        "fr": "Même les machines de la Mort ne peuvent\nme vaincre! Je suis au sommet de ma\npuissance et rien ne peut m'arrêter.\n\nIl ne me reste plus qu'à contourner ce robot\nbrisé et je sais que je retrouverai ma\nbien-aimée au coin de la rue.",
         "zh_tw": "即使是死神的機器也無法戰勝我！\n我正處於權力的巔峰，沒有什麼可以\n阻擋我的。\n\n繞過這個破碎的機器人後，我知道我\n會馬上找到我心愛的人。",
         "zh_cn": "即使是死神的机器也无法战胜我！\n我正处于权力的巅峰，没有什么可以\n阻挡我的。\n\n绕过这个破碎的机器人后，我知道我\n会马上找到我心爱的人。",
         "ru": "Даже машины смерти не могут превзойти меня!  Я нахожусь на вершине своего могущества, и не осталось ничего, что могло бы встать у меня на пути.  Все, что мне теперь нужно сделать, это обойти этого сломанного робота, и я знаю, что найду своего любимого прямо за углом.",

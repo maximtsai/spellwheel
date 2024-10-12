@@ -149,14 +149,14 @@
                  globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level1_tut_z'), 'center');
 
                  this.addTimeout(() => {
-                     this.playerSpellCastSub = messageBus.subscribe('recordSpell', (id, spellName) => {
+                     this.playerSpellCastSub = this.addSubscription('recordSpell', (id, spellName) => {
                          if (id === 'matterEnhance') {
                              this.playerSpellCastSub.unsubscribe();
                              this.playerSpellCastSub2.unsubscribe();
                              this.createEnhancePopup();
                          }
                      });
-                     this.playerSpellCastSub2 = messageBus.subscribe('recordSpellAttack', (id, spellName) => {
+                     this.playerSpellCastSub2 = this.addSubscription('recordSpellAttack', (id, spellName) => {
                         if (globalObjects.player.getPlayerCastSpellsCount() >= 2) {
                              this.playerSpellCastSub.unsubscribe();
                              this.playerSpellCastSub2.unsubscribe();
@@ -185,7 +185,7 @@
         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 135, getLangText('level1_tut_a'), 'right');
         this.rune2 = this.addSprite(globalObjects.textPopupManager.getCenterPos(), globalObjects.textPopupManager.getBoxBottomPos() + 28, 'circle', 'rune_enhance_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
 
-        this.enhancePopupListener = messageBus.subscribe('recordSpell', (id, spellName) => {
+        this.enhancePopupListener = this.addSubscription('recordSpell', (id, spellName) => {
             if (this.firstEnhanceCast) {
                 this.enhancePopupListener.unsubscribe();
                 this.enhancePopupListener2.unsubscribe();
@@ -197,7 +197,7 @@
                 this.firstEnhanceCast = true;
             }
         });
-        this.enhancePopupListener2 = messageBus.subscribe('recordSpellAttack', (id, spellName) => {
+        this.enhancePopupListener2 = this.addSubscription('recordSpellAttack', (id, spellName) => {
             if (this.firstEnhanceCast) {
                 this.enhancePopupListener.unsubscribe();
                 this.enhancePopupListener2.unsubscribe();
@@ -302,7 +302,7 @@
                 }
             });
             this.addTimeout(() => {
-                let spellListener = messageBus.subscribe('spellClicked', () => {
+                let spellListener = this.addSubscription('spellClicked', () => {
                     if (!this.hasShownAttackWarning) {
                         this.hasShownAttackWarning = true;
                         messageBus.publish('setSlowMult', 0.99, 1);
@@ -384,7 +384,7 @@
             });
 
             this.addTimeout(() => {
-                let spellListener = messageBus.subscribe('spellClicked', () => {
+                let spellListener = this.addSubscription('spellClicked', () => {
                     spellListener.unsubscribe();
                     this.addTween({
                         targets: [this.rune3, this.rune4],
@@ -788,7 +788,7 @@
                          this.addTimeout(() => {
                              globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 23, getLangText('watch_health'), 'center');
                              this.addTimeout(() => {
-                                 this.playerSpellCastAny = messageBus.subscribe('playerCastedSpell', () => {
+                                 this.playerSpellCastAny = this.addSubscription('playerCastedSpell', () => {
                                      this.addTimeout(() => {
                                          globalObjects.textPopupManager.hideInfoText();
                                      }, 1200);
@@ -865,7 +865,7 @@
                          this.addTimeout(() => {
                              globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 23, getLangText('watch_health'), 'center');
                              this.addTimeout(() => {
-                                 this.playerSpellCastAny = messageBus.subscribe('playerCastedSpell', () => {
+                                 this.playerSpellCastAny = this.addSubscription('playerCastedSpell', () => {
                                      this.addTimeout(() => {
                                          globalObjects.textPopupManager.hideInfoText();
                                      }, 1200);

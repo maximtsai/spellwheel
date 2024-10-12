@@ -13,7 +13,7 @@
      }
 
     initTutorial() {
-        this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+        this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
             this.spellsCastCount++;
             if (this.spellsCastCount >= 2) {
                 this.playerSpellCastSub.unsubscribe();
@@ -212,8 +212,8 @@
                                     });
                                 }
                             });
-                            this.playerSpellShieldTrack = messageBus.subscribe('recordSpell', (spellId) => {
-                                if (spellId == 'timeProtect') {
+                            this.playerSpellShieldTrack = this.addSubscription('recordSpell', (spellId) => {
+                                if (spellId === 'timeProtect') {
                                     this.playerSpellShieldTrack.unsubscribe();
                                     this.playerSpellShieldTrack = null;
                                     globalObjects.textPopupManager.hideInfoText();
@@ -283,8 +283,8 @@
                          if (this.playerSpellShieldTrack) {
                              this.playerSpellShieldTrack.unsubscribe();
                          }
-                         this.playerSpellBodyTrack = messageBus.subscribe('recordSpell', (spellId) => {
-                             if (spellId == 'timeReinforce') {
+                         this.playerSpellBodyTrack = this.addSubscription('recordSpell', (spellId) => {
+                             if (spellId === 'timeReinforce') {
                                  this.playerSpellBodyTrack.unsubscribe();
                                  this.playerSpellBodyTrack = null;
                                  globalObjects.textPopupManager.hideInfoText();
@@ -364,8 +364,8 @@
                                  if (this.playerSpellBodyTrack) {
                                      this.playerSpellBodyTrack.unsubscribe();
                                  }
-                                 this.playerSpellBodyTrack2 = messageBus.subscribe('recordSpell', (spellId) => {
-                                     if (spellId == 'timeEnhance' || spellId == 'matterEnhance') {
+                                 this.playerSpellBodyTrack2 = this.addSubscription('recordSpell', (spellId) => {
+                                     if (spellId === 'timeEnhance' || spellId === 'matterEnhance') {
                                          this.playerSpellBodyTrack2.unsubscribe();
                                          this.playerSpellBodyTrack2 = null;
                                          globalObjects.textPopupManager.hideInfoText();

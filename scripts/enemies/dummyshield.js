@@ -21,6 +21,7 @@
              this.spellsCastCount++;
              if (this.spellsCastCount == 5) {
                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText('shield_dummy_overwrite'), 'right');
+                 this.playerSpellCastSub.unsubscribe();
              }
              if (this.spellsCastCount >= 3 && this.spellsCastCount % 2 == 1) {
                  this.picketButton.setScale(1.02, 1.05);
@@ -47,6 +48,7 @@
 
              }
          });
+         this.subscriptions.push(this.playerSpellCastSub);
     }
 
     showGoal() {

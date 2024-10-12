@@ -13,7 +13,7 @@
         }, 1500)
 
 
-        this.magicianReaped = messageBus.subscribe('reapedEnemyGong', () => {
+        this.addSubscription('reapedEnemyGong', () => {
             this.zoomAwayClocks();
         });
 
@@ -247,11 +247,12 @@
             this.playerSpellCastSub.unsubscribe();
             this.playerSpellCastSub = null;
         }
-        messageBus.publish("closeCombatText")
+        messageBus.publish("closeCombatText");
         globalObjects.magicCircle.cancelTimeSlow();
         if (this.lifeOne) {
             this.interruptCurrentAttack();
             this.setAsleep();
+            playSound('time_hard');
 
             this.invincible = true;
             this.lifeOne = false;
@@ -338,9 +339,7 @@
         if (this.customBgMusic) {
             this.customBgMusic.stop();
         }
-        if (this.magicianReaped) {
-            this.magicianReaped.unsubscribe();
-        }
+
          if (this.playerSpellCastSub) {
              this.playerSpellCastSub.unsubscribe();
              this.playerSpellCastSub = null;
@@ -909,7 +908,7 @@
 
     beginPhaseTwo() {
         globalObjects.bannerTextManager.setDialog([getLangText('magician_c'), getLangText('magician_d')]);
-        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 10, 0);
         globalObjects.bannerTextManager.showBanner(0.5);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
             this.addTween({
@@ -1034,7 +1033,7 @@
         }
         messageBus.publish("showCombatText", getLangText('magician_e'), 20);
         this.addTimeout(() => {
-            this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+            this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
                 clearTimeout(this.spellCastTimeout);
                 this.showTiredText2();
@@ -1053,7 +1052,7 @@
         }
         messageBus.publish("showCombatText", getLangText('magician_f'), 20);
         this.addTimeout(() => {
-            this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+            this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
                 clearTimeout(this.spellCastTimeout);
                 this.showTiredText3();
@@ -1071,7 +1070,7 @@
         }
         messageBus.publish("showCombatText", getLangText('magician_g'), 20);
         this.addTimeout(() => {
-            this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+            this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
                 clearTimeout(this.spellCastTimeout);
                 messageBus.publish("closeCombatText")
@@ -1167,7 +1166,7 @@
                             onComplete: () => {
                                 if (this.numTimesHealed === 2) {
                                     globalObjects.bannerTextManager.setDialog([getLangText('magician_a'), getLangText('magician_b')]);
-                                    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                                    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 5, 0);
                                     globalObjects.bannerTextManager.showBanner(0.5);
                                 }
                             }

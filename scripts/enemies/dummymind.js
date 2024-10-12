@@ -3,9 +3,10 @@
         super(scene, x, y, level);
 
         this.addTimeout(() => {
-            this.playerSpellCastSub = messageBus.subscribe('resetCircle', () => {
+            this.resetCast = messageBus.subscribe('resetCircle', () => {
                 this.healAnim();
             });
+            this.subscriptions.push(this.resetCast);
         }, 100)
     }
 
@@ -61,6 +62,8 @@
                             this.playerSpellCastSub.unsubscribe();
                             globalObjects.textPopupManager.hideInfoText();
                         });
+                        this.subscriptions.push(this.playerSpellCastSub);
+
                         this.glowCirc2.currAnim = this.addTween({
                             targets: this.glowCirc2,
                             alpha: 0.3,
@@ -130,6 +133,9 @@
     }
 
     healAnim() {
+        if (this.dead) {
+            return;
+        }
         this.currDummyAnim = this.addTween({
             delay: 2300,
             targets: this.sprite,
@@ -220,8 +226,8 @@
                      duration: 200,
                      completeDelay: 1000,
                      onComplete: () => {
-                        this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
-                            this.playerSpellCastSub.unsubscribe();
+                        this.playerSpellCastSub2 = messageBus.subscribe('playerCastedSpell', () => {
+                            this.playerSpellCastSub2.unsubscribe();
                             this.addTimeout(() => {
                                  this.addTween({
                                      targets: [this.rune3, this.rune4],
@@ -235,6 +241,7 @@
                                 globalObjects.textPopupManager.hideInfoText();
                             }, 1000);
                         });
+                        this.subscriptions.push(this.playerSpellCastSub2);
                      }
                  });
              }, 500)
@@ -253,7 +260,12 @@
          if (this.currDummyAnim) {
             this.currDummyAnim.stop()
          }
-        this.playerSpellCastSub.unsubscribe();
+         if (this.playerSpellCastSub) {
+             this.playerSpellCastSub.unsubscribe();
+         }
+         if (this.playerSpellCastSub2) {
+             this.playerSpellCastSub.unsubscribe();
+         }
 
          if (this.backingBox) {
              this.addTween({

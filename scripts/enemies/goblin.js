@@ -11,10 +11,8 @@
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3000)
-         let sub1 = messageBus.subscribe("clearMindBurn", this.clearMindBurn.bind(this))
-         let sub2 = messageBus.subscribe("enemyOnFire", this.setOnFire.bind(this))
-         this.subscriptions.push(sub1);
-         this.subscriptions.push(sub2);
+         this.addSubscription("clearMindBurn", this.clearMindBurn.bind(this))
+         this.addSubscription("enemyOnFire", this.setOnFire.bind(this))
 
      }
 
@@ -320,7 +318,7 @@
                                     duration: 200,
                                     completeDelay: 1000,
                                     onComplete: () => {
-                                        this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                                        this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                                             this.playerSpellCastSub.unsubscribe();
                                             this.addTimeout(() => {
                                                 this.addTween({

@@ -1544,12 +1544,11 @@
         if (this.currAnim) {
             this.currAnim.stop();
         }
-         this.boomListener = messageBus.subscribe('robotExplosion', () => {
+         this.boomListener = this.addSubscription('robotExplosion', () => {
              this.animateBoomEyeshine();
              this.animateSelfDestructText();
          });
         globalObjects.bannerTextManager.closeBanner();
-        this.subscriptions.push(this.boomListener);
         if (this.currBGAnim) {
             this.currBGAnim.stop();
         }

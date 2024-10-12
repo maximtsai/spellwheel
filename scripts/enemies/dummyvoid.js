@@ -17,7 +17,7 @@ class Dummyvoid extends Dummypractice {
     }
 
     initTutorial() {
-        this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+        this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
             this.spellsCastCount++;
             if (this.spellsCastCount >= 2) {
                 this.playerSpellCastSub.unsubscribe();
@@ -167,8 +167,8 @@ class Dummyvoid extends Dummypractice {
                                 });
                             }
                         });
-                        this.playerSpellBodyTrack = messageBus.subscribe('recordSpell', (spellId) => {
-                            if (spellId == 'voidReinforce') {
+                        this.playerSpellBodyTrack = this.addSubscription('recordSpell', (spellId) => {
+                            if (spellId === 'voidReinforce') {
                                 this.playerSpellBodyTrack.unsubscribe();
                                 this.playerSpellBodyTrack = null;
                                 this.addDelay(() => {
@@ -230,8 +230,8 @@ class Dummyvoid extends Dummypractice {
                         if (this.playerSpellBodyTrack) {
                             this.playerSpellBodyTrack.unsubscribe();
                         }
-                        this.playerSpellShieldTrack = messageBus.subscribe('recordSpell', (spellId) => {
-                            if (spellId == 'voidProtect') {
+                        this.playerSpellShieldTrack = this.addSubscription('recordSpell', (spellId) => {
+                            if (spellId === 'voidProtect') {
                                 this.playerSpellShieldTrack.unsubscribe();
                                 this.playerSpellShieldTrack = null;
                                 globalObjects.textPopupManager.hideInfoText();

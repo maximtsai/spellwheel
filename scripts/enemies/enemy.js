@@ -2,6 +2,7 @@ class Enemy {
     constructor(scene, x, y, level = 1) {
         this.scene = scene;
         this.level = level;
+        gameVars.currLevel = level;
         this.initPreStats();
         this.initStats();
         this.initAttacks();
@@ -2211,6 +2212,12 @@ class Enemy {
         let newText = this.scene.add.text(x, y, text, param1, param2)
         this.addToDestructibles(newText);
         return newText;
+    }
+
+    addSubscription(topic, callback, target) {
+        let sub = messageBus.subscribe(topic, callback, target);
+        this.subscriptions.push(sub);
+        return sub;
     }
 
     addTimeout(func, delay) {

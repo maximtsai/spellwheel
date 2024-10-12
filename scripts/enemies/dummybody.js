@@ -3,7 +3,7 @@
         super(scene, x, y, level);
         this.numBodySpellsCast = 0;
         this.numNonBodySpellsCast = 0;
-        this.spellHoverListener = messageBus.subscribe('recordSpell', (id, spellName) => {
+        this.spellHoverListener = this.addSubscription('recordSpell', (id, spellName) => {
             if (id === 'matterReinforce' || id == 'mindReinforce') {
                 this.numBodySpellsCast++;
                 if (this.numBodySpellsCast >= 2) {
@@ -14,7 +14,7 @@
             }
         });
 
-        this.attackHoverListener = messageBus.subscribe('recordSpellAttack', (id, spellName) => {
+        this.attackHoverListener = this.addSubscription('recordSpellAttack', (id, spellName) => {
             this.numNonBodySpellsCast++;
             if (this.numNonBodySpellsCast >= 4) {
                 this.showThornsTutorial();
@@ -38,7 +38,8 @@
 
     showBodyTutorial() {
         this.addTimeout(() => {
-            this.spellHoverListener = messageBus.subscribe('playerCastedSpell', (id, spellName) => {
+            this.spellHoverListener = this.addSubscription('playerCastedSpell', (id, spellName) => {
+                this.spellHoverListener.unsubscribe();
                 globalObjects.textPopupManager.hideInfoText();
             });
         }, 2000)
@@ -77,7 +78,7 @@
                  completeDelay: 1000,
                  onComplete: () => {
                     this.addTimeout(() => {
-                        this.spellHoverListener = messageBus.subscribe('playerCastedSpell', (id, spellName) => {
+                        this.spellHoverListener = this.addSubscription('playerCastedSpell', (id, spellName) => {
                             this.spellHoverListener.unsubscribe();
                             this.addTimeout(() => {
                                 globalObjects.textPopupManager.hideInfoText();
@@ -123,8 +124,12 @@
          if (this.dead) {
              return;
          }
-        this.spellHoverListener.unsubscribe();
-        this.attackHoverListener.unsubscribe();
+         if (this.spellHoverListener) {
+             this.spellHoverListener.unsubscribe();
+         }
+         if (this.attackHoverListener) {
+             this.attackHoverListener.unsubscribe();
+         }
          if (this.malfunctionTween) {
             this.malfunctionTween.stop();
          }

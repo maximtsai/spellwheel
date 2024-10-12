@@ -5,7 +5,7 @@
 			"format": "RGBA5555",
 			"size": {
 				"w": 1566,
-				"h": 1765
+				"h": 1786
 			},
 			"scale": 1,
 			"frames": [
@@ -169,15 +169,15 @@
 					},
 					"spriteSourceSize": {
 						"x": 85,
-						"y": 439,
+						"y": 453,
 						"w": 439,
-						"h": 173
+						"h": 150
 					},
 					"frame": {
 						"x": 1,
 						"y": 1587,
 						"w": 439,
-						"h": 173
+						"h": 150
 					},
 					"anchor": {
 						"x": 0.5,
@@ -424,8 +424,8 @@
 						"h": 46
 					},
 					"frame": {
-						"x": 1246,
-						"y": 1460,
+						"x": 1,
+						"y": 1739,
 						"w": 305,
 						"h": 46
 					},
@@ -585,6 +585,31 @@
 					}
 				},
 				{
+					"filename": "nextLevel_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 35
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 35
+					},
+					"frame": {
+						"x": 1246,
+						"y": 1460,
+						"w": 200,
+						"h": 35
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "paperTab_press_sideways.png",
 					"rotated": false,
 					"trimmed": true,
@@ -599,8 +624,8 @@
 						"h": 99
 					},
 					"frame": {
-						"x": 1309,
-						"y": 1508,
+						"x": 442,
+						"y": 1668,
 						"w": 163,
 						"h": 99
 					},
@@ -610,24 +635,24 @@
 					}
 				},
 				{
-					"filename": "paperTab_sideways.png",
+					"filename": "nextLevel_press.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 180,
-						"h": 97
+						"w": 200,
+						"h": 35
 					},
 					"spriteSourceSize": {
-						"x": 17,
+						"x": 0,
 						"y": 0,
-						"w": 163,
-						"h": 97
+						"w": 200,
+						"h": 35
 					},
 					"frame": {
-						"x": 1291,
-						"y": 1609,
-						"w": 163,
-						"h": 97
+						"x": 607,
+						"y": 1695,
+						"w": 200,
+						"h": 35
 					},
 					"anchor": {
 						"x": 0.5,
@@ -660,6 +685,56 @@
 					}
 				},
 				{
+					"filename": "paperTab_sideways.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 97
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 0,
+						"w": 163,
+						"h": 97
+					},
+					"frame": {
+						"x": 1309,
+						"y": 1497,
+						"w": 163,
+						"h": 97
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "paperTab_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 105,
+						"h": 162
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 8,
+						"w": 102,
+						"h": 154
+					},
+					"frame": {
+						"x": 1291,
+						"y": 1596,
+						"w": 102,
+						"h": 154
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "retry.png",
 					"rotated": false,
 					"trimmed": false,
@@ -674,8 +749,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 442,
-						"y": 1668,
+						"x": 809,
+						"y": 1695,
 						"w": 139,
 						"h": 51
 					},
@@ -699,8 +774,8 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 442,
-						"y": 1668,
+						"x": 809,
+						"y": 1695,
 						"w": 139,
 						"h": 51
 					},
@@ -724,85 +799,10 @@
 						"h": 51
 					},
 					"frame": {
-						"x": 442,
-						"y": 1668,
+						"x": 809,
+						"y": 1695,
 						"w": 139,
 						"h": 51
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "nextLevel_hover.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 200,
-						"h": 35
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 200,
-						"h": 35
-					},
-					"frame": {
-						"x": 583,
-						"y": 1695,
-						"w": 200,
-						"h": 35
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "sound_mute.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 59,
-						"h": 51
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 4,
-						"w": 56,
-						"h": 43
-					},
-					"frame": {
-						"x": 442,
-						"y": 1721,
-						"w": 56,
-						"h": 43
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "sound_most.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 59,
-						"h": 51
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 4,
-						"w": 49,
-						"h": 43
-					},
-					"frame": {
-						"x": 500,
-						"y": 1721,
-						"w": 49,
-						"h": 43
 					},
 					"anchor": {
 						"x": 0.5,
@@ -849,8 +849,8 @@
 						"h": 64
 					},
 					"frame": {
-						"x": 1474,
-						"y": 1508,
+						"x": 1477,
+						"y": 1110,
 						"w": 58,
 						"h": 64
 					},
@@ -874,8 +874,8 @@
 						"h": 62
 					},
 					"frame": {
-						"x": 1477,
-						"y": 1110,
+						"x": 1395,
+						"y": 1596,
 						"w": 58,
 						"h": 62
 					},
@@ -924,8 +924,8 @@
 						"h": 57
 					},
 					"frame": {
-						"x": 494,
-						"y": 756,
+						"x": 1395,
+						"y": 1660,
 						"w": 57,
 						"h": 57
 					},
@@ -935,24 +935,24 @@
 					}
 				},
 				{
-					"filename": "paperTab_glow.png",
+					"filename": "play_btn_press.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 105,
-						"h": 162
+						"w": 65,
+						"h": 65
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 8,
-						"w": 102,
-						"h": 154
+						"x": 4,
+						"y": 4,
+						"w": 57,
+						"h": 57
 					},
 					"frame": {
-						"x": 1456,
-						"y": 1609,
-						"w": 102,
-						"h": 154
+						"x": 494,
+						"y": 756,
+						"w": 57,
+						"h": 57
 					},
 					"anchor": {
 						"x": 0.5,
@@ -985,6 +985,31 @@
 					}
 				},
 				{
+					"filename": "sound_mute.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 51
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 4,
+						"w": 56,
+						"h": 43
+					},
+					"frame": {
+						"x": 308,
+						"y": 1739,
+						"w": 56,
+						"h": 43
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "sound_full.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1010,49 +1035,24 @@
 					}
 				},
 				{
-					"filename": "play_btn_press.png",
+					"filename": "sound_most.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 65,
-						"h": 65
+						"w": 59,
+						"h": 51
 					},
 					"spriteSourceSize": {
-						"x": 4,
+						"x": 2,
 						"y": 4,
-						"w": 57,
-						"h": 57
+						"w": 49,
+						"h": 43
 					},
 					"frame": {
-						"x": 785,
-						"y": 1695,
-						"w": 57,
-						"h": 57
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "nextLevel_press.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 200,
-						"h": 35
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 200,
-						"h": 35
-					},
-					"frame": {
-						"x": 844,
-						"y": 1706,
-						"w": 200,
-						"h": 35
+						"x": 366,
+						"y": 1739,
+						"w": 49,
+						"h": 43
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1099,8 +1099,8 @@
 						"h": 45
 					},
 					"frame": {
-						"x": 1046,
-						"y": 1706,
+						"x": 607,
+						"y": 1732,
 						"w": 45,
 						"h": 45
 					},
@@ -1124,8 +1124,8 @@
 						"h": 44
 					},
 					"frame": {
-						"x": 1093,
-						"y": 1706,
+						"x": 654,
+						"y": 1732,
 						"w": 44,
 						"h": 44
 					},
@@ -1149,8 +1149,8 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 1139,
-						"y": 1706,
+						"x": 700,
+						"y": 1732,
 						"w": 44,
 						"h": 43
 					},
@@ -1265,6 +1265,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:ce23de6decd1c3211b63a372a46cb412:4dc8f24913dd3db365135a022a0053a2:6af6d199855d1c5980a61db04791f8fb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:715c245a0ce3343c1177aa043ec656c0:9bfbef64beca513811e95f6ed91e84a2:6af6d199855d1c5980a61db04791f8fb$"
 	}
 }

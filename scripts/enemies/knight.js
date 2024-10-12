@@ -59,7 +59,7 @@
                  this.setAwake();
              }, 0.6);
              this.addTimeout(() => {
-                 this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                 this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                      this.playerSpellCastSub.unsubscribe();
                      messageBus.publish("closeCombatText");
                  });

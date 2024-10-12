@@ -535,7 +535,7 @@ function showLoverApproach(demonsfx) {
         targets: lover,
         scaleX: 0.73,
         scaleY: 0.73,
-        duration: 5000,
+        duration: 5100,
         onComplete: () => {
             lover.setFrame('ending2_b.png').setOrigin(0.5, 0.3);
             blotter.setAlpha(0.6).setScale(2.4);
@@ -586,7 +586,7 @@ function showLoverApproach(demonsfx) {
                 scaleX: 1,
                 scaleY: 1,
                 ease: 'Quad.easeOut',
-                duration: 5000,
+                duration: 5700,
                 onComplete: () => {
                     stopHorror = true;
                     lover.destroy();

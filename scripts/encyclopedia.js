@@ -464,15 +464,25 @@ class Encyclopedia {
     }
 
     createDescLong(action, element) {
-        if (action == 'unload' && element == 'time') {
+        if (action === 'unload' && element === 'time') {
             return 'time_unload_desc_long_full';
         }
-        return element + "_" + action + "_desc_long";
+        let plusText = '';//'_plus'
+        if (gameVars.latestLevel > 8 && element === 'matter') {
+            if (action === 'strike' || action === 'protect') {
+                plusText = '_plus';
+            }
+        }
+        if (gameVars.latestLevel > 9 && element === 'mind' && action === 'enhance') {
+            plusText = '_plus';
+        }
+
+        return element + "_" + action + plusText + "_desc_long";
     }
 
     removeNewlinesIfLong(str) {
         let strToReturn = str;
-        if (language == 'zh_cn' || language == 'zh_tw' || language == 'jp') {
+        if (language === 'zh_cn' || language === 'zh_tw' || language === 'jp') {
             strToReturn = str.replace('\n', '');
             let textLim = 29;
             let numSpaces = 0;
@@ -530,15 +540,15 @@ class Encyclopedia {
         });
 
 
-        let listOfRunes = ["rune_matter_large.png",
-            "rune_strike_large.png",
-            "rune_enhance_large.png",
-            "rune_energy_large.png",
-            "rune_protect_large.png",
-            "rune_reinforce_large.png",
-            "rune_time_large.png",
-            "rune_void_large.png",
-            "rune_unload_large.png"];
+        // let listOfRunes = ["rune_matter_large.png",
+        //     "rune_strike_large.png",
+        //     "rune_enhance_large.png",
+        //     "rune_energy_large.png",
+        //     "rune_protect_large.png",
+        //     "rune_reinforce_large.png",
+        //     "rune_time_large.png",
+        //     "rune_void_large.png",
+        //     "rune_unload_large.png"];
         let allRunes = [
             "enhance",
             "energy",

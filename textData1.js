@@ -364,7 +364,7 @@ let textData = {
     },
     "mind_enhance_desc": {
         "en_us": "Your next attack\nburns enemy for 2\nTrue damage/sec\nfor 5 seconds",
-        "fr": "Votre prochaine attaque\nbrûle l'ennemi pour 2\ndégâts véritables par seconde\npendant 5 secondes.",
+        "fr": "Votre prochaine\nattaque brûle l'ennemi\npour 2 dégâts\nvéritables par seconde\npendant 5 secondes.",
         "zh_tw": "你的下一次攻擊對敵人\n造成每秒 2 點真實\n傷害，持續 5 秒",
         "zh_cn": "你的下一次攻击对敌人\n造成每秒 2 点真实\n伤害，持续 5 秒",
         "ru": "Следующая атака\nподжигает врага,\nнанося 3 истинного\nурона в секунду\nв течение 5 секунд",
@@ -399,7 +399,7 @@ let textData = {
         "jp": ""
     },
     "mind_protect_desc": {
-        "en_us": "Create a shield\nthat reflects 50%\nof the next\enemy nattack",
+        "en_us": "Create a shield\nthat reflects 50%\nof the next\nenemy nattack",
         "fr": "Créez un bouclier\nqui reflète 50%\nde la prochaine\nattaque ennemie.",
         "zh_tw": "創建一個盾牌，\n反射50% 的下\n一次敵人攻擊",
         "zh_cn": "创建一个盾牌，\n反射50% 的下\n一次敌人攻击",

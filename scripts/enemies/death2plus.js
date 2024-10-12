@@ -32,7 +32,7 @@
              targets: this.whiteoutTemp,
              scaleX: 21,
              scaleY: 21,
-             duration: 575,
+             duration: 560,
              ease: "Cubic.easeInOut",
              onComplete: () => {
                  this.whiteoutTemp.destroy();
@@ -42,8 +42,8 @@
          this.addTween({
              targets: this.whiteoutTemp,
              alpha: 0,
-             duration: 575,
-             ease: "Quad.easeIn"
+             duration: 560,
+             ease: "Cubic.easeIn"
          })
          this.addTimeout(() => {
              this.initMisc();
@@ -399,20 +399,24 @@
              yoyo: true,
              onRepeat: () => {
                  if (this.pulseFinalEnabled) {
-                     let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 1600);
-                     tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(0.65);
+                     let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 1750);
+                     tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(0.65).setRotation(0);
                      this.addTween({
                          targets: tempPulse,
-                         scaleX: 7.5,
-                         scaleY: 7.5,
-                         ease: 'Quad.easeIn',
-                         duration: 1500,
+                         scaleX: 8,
+                         scaleY: 8,
+                         duration: 1700,
                      })
                      this.addTween({
                          targets: tempPulse,
                          ease: 'Cubic.easeIn',
-                         duration: 1510,
+                         duration: 1710,
                          alpha: 0,
+                     });
+                     this.addTween({
+                         targets: tempPulse,
+                         rotation: "+=20",
+                         duration: 1710,
                      })
                  }
 

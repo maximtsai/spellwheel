@@ -217,7 +217,7 @@ let textData4 = {
     },
     "deathFight2plusending2": {
         "en_us": "IT SHOULD BE IMPOSSIBLE,\nYET I SENSE NO FOUL PLAY...",
-        "fr": "Cela devrait être impossible, mais je\nn’ai pas l’impression que vous trichez...",
+        "fr": "CELA DEVRAIT ÊTRE IMPOSSIBLE,\nMAIS JE NE SENS AUCUNE TRICHERIE...",
         "zh_tw": "這應該是不可能的，但我\n並沒感到任何作弊行為...",
         "zh_cn": "这应该是不可能的，但我\n并没感到任何作弊行为...",
         "ru": "ЭТО ДОЛЖНО БЫТЬ НЕВОЗМОЖНО, НО Я НЕ ЧУВСТВУЮ НИКАКОЙ НЕЧЕСТНОЙ ИГРЫ...",
@@ -750,8 +750,8 @@ let textData4 = {
         "jp": ""
     },
     "death3_talk": {
-        "en_us": "Talk to her.",
-        "fr": "Parle-lui.",
+        "en_us": "Here she is.",
+        "fr": "La voici.",
         "zh_tw": "她在這裡。",
         "zh_cn": "她在这里。",
         "ru": "",
@@ -759,7 +759,7 @@ let textData4 = {
         "jp": ""
     },
     "death3_talk2": {
-        "en_us": "Speak what your heart yearns to say.",
+        "en_us": "Tell her what your heart yearns to say.",
         "fr": "Dis-lui ce que ton cœur désire dire.",
         "zh_tw": "說出你心裡渴望說的話。",
         "zh_cn": "说出你心里渴望说的话。",

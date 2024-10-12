@@ -605,7 +605,7 @@ class Player {
     }
 
     getSelfHealAmt(percent = 0.5) {
-        let maxHealAmt = this.lastInjuryHealth - this.health;
+        let maxHealAmt = Math.max(0, this.lastInjuryHealth - this.health);
         let healAmt = Math.ceil(percent * (this.recentlyTakenDamageAmt + this.recentlyTakenDelayedDamageAmt));
         let overflowHeal = 0;
         if (healAmt > maxHealAmt) {
@@ -618,7 +618,7 @@ class Player {
     }
 
     selfHealRecent(percent = 0.5) {
-        let maxHealAmt = this.lastInjuryHealth - this.health;
+        let maxHealAmt = Math.max(0, this.lastInjuryHealth - this.health);
         let healAmt = Math.ceil(percent * (this.recentlyTakenDamageAmt + this.recentlyTakenDelayedDamageAmt));
         console.log("healAmt Initial: ", healAmt);
         this.recentlyTakenDamageAmt = this.recentlyTakenDamageAmt - healAmt;

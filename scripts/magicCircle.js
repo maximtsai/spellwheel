@@ -2180,7 +2180,7 @@ const ENABLE_KEYBOARD = true;
 
     getDelayedDamageClockScale() {
         let multAmt = Math.floor(this.delayedDamage / this.delayedDamageBase);
-        return 0.5 + 0.1 * (Math.sqrt(multAmt * 0.4) + multAmt * 0.4);
+        return 0.5 + 0.1 * (Math.sqrt(multAmt * 0.5) + multAmt * 0.2);
     }
 
     plainUpdateDelayedDamageVisual(scale) {
@@ -3093,7 +3093,7 @@ const ENABLE_KEYBOARD = true;
              this.spellActionText.y = this.y - 249;
          } else if (gameOptions.infoBoxAlign == 'left') {
              this.spellDescriptor.setOrigin(0, 1);
-             this.spellDescriptor.setPosition(0, gameConsts.height - 305);
+             this.spellDescriptor.setPosition(0, gameConsts.height - 310);
              this.spellDescriptor.setAlign('left');
              this.spellDescriptor.setAlpha(0.98);
              this.spellElementText.y = this.y - 249;

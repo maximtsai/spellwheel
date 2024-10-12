@@ -267,6 +267,8 @@ class Player {
         if (emergency && !this.recentlyGasped) {
             this.recentlyGasped = true;
             playSound('emergency');
+            playSound('death_cast', 0.08);
+
             setTimeout(() => {
                 this.recentlyGasped = false;
             }, 20000);

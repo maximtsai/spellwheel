@@ -641,6 +641,8 @@ function showLoverApproach(demonsfx) {
                                                                     let clickBlocker = createGlobalClickBlocker(true);
                                                                     clickBlocker.setOnMouseUpFunc(() => {
                                                                         hideGlobalClickBlocker();
+                                                                        let darkBG = getBackgroundBlackout();
+                                                                        darkBG.setAlpha(1).setDepth(CUTSCENE_DEPTH);
                                                                         PhaserScene.tweens.add({
                                                                             targets: [closeText, closeText2, closeText3, closeText4, closeText5, closeText6, globalObjects.cutsceneBack],
                                                                             alpha: 0,
@@ -654,11 +656,9 @@ function showLoverApproach(demonsfx) {
                                                                                 closeText6.destroy();
                                                                                 demonsfx.destroy();
                                                                                 gotoMainMenu();
-                                                                                let darkBG = getBackgroundBlackout();
-                                                                                darkBG.setAlpha(1).setDepth(CUTSCENE_DEPTH);
                                                                                 setTimeout(() => {
                                                                                     playSound('emergency', 1.5)
-                                                                                    playSound('death_cast', 0.1);
+                                                                                    playSound('death_cast', 0.15);
                                                                                 }, 500)
                                                                                 PhaserScene.tweens.add({
                                                                                     targets: [darkBG],

@@ -554,7 +554,7 @@ function showLoverApproach(demonsfx) {
             horror.setAlpha(0.6);
             horror.setFrame('static2.png')
             animateStatic(horror, 1, 1.72, 1.6,4500);
-            PhaserScene.time.delayedCall(2000, () => {
+            PhaserScene.time.delayedCall(2400, () => {
                 lover.setFrame('ending2_b.png').setOrigin(0.5, 0.1);
                 blotter.setAlpha(0.3);
                 animateStatic(blotter, 1, 1.65, 1.7,3500);
@@ -572,7 +572,7 @@ function showLoverApproach(demonsfx) {
                                     PhaserScene.tweens.add({
                                         targets: lover,
                                         alpha: 0.75,
-                                        duration: 2500,
+                                        duration: 2700,
                                     })
                                 }, 1700)
                             }, 100)

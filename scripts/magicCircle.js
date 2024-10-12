@@ -2179,7 +2179,7 @@ const ENABLE_KEYBOARD = true;
     }
 
     getDelayedDamageClockScale() {
-        let multAmt = Math.floor(this.delayedDamage / this.delayedDamageBase);
+        let multAmt = Math.max(0, Math.floor((this.delayedDamage + 1) / this.delayedDamageBase));
         return 0.5 + 0.1 * (Math.sqrt(multAmt * 0.5) + multAmt * 0.2);
     }
 
@@ -2969,7 +2969,6 @@ const ENABLE_KEYBOARD = true;
          gameVars.playerNotMoved = false;
         this.disableSpellDescDisplay = true;
          this.removeDelayedDamage();
-
      }
 
      clearVoidForm() {

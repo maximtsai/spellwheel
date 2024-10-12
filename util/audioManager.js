@@ -120,8 +120,7 @@ function fadeInSound(sound, volume = 1, duration = 1000) {
     let globalToUse = sound.isMusic ? globalMusicVol : globalVolume;
     sound.fullVolume = volume;
     let goalVol = sound.fullVolume * globalToUse;
-    console.log(sound.volume, goalVol);
-    PhaserScene.tweens.add({
+    return PhaserScene.tweens.add({
         delay: 100,
         targets: sound,
         volume: goalVol,

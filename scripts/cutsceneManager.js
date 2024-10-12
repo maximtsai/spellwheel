@@ -182,6 +182,8 @@ function showCutscene2() {
     globalObjects.cutsceneBarTop.y = gameConsts.height;
     globalObjects.cutsceneBarTop.alpha = 0;
     globalObjects.cutsceneBack.alpha = 0;
+    let demon = playSound('deepdemon', 0.02, true);
+    demon.currSfx = fadeInSound(demon, 0.4, 4000);
 
     let bansheeGlow = PhaserScene.add.image(gameConsts.halfWidth, 200, 'deathfinal', 'max_death_3_banshee.png').setAlpha(0).setScale(0.6).setDepth(CUTSCENE_DEPTH+3);
     let banshee = PhaserScene.add.image(gameConsts.halfWidth, 200, 'deathfinal', 'max_death_3_banshee.png').setAlpha(0).setScale(0.6).setDepth(CUTSCENE_DEPTH+3);
@@ -234,6 +236,8 @@ function showCutscene2() {
                 });
             }]);
             globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                demon.currSfx.stop();
+                demon.currSfx = fadeInSound(demon, 0.1, 1200);
                 let whiteDoor = PhaserScene.add.image(gameConsts.halfWidth, 385, 'whitePixel').setDepth(CUTSCENE_DEPTH+3).setAlpha(0.1).setOrigin(0.5, 1);
                 PhaserScene.tweens.add({
                     targets: whiteDoor,
@@ -249,7 +253,7 @@ function showCutscene2() {
                             ease: 'Quint.easeOut',
                             duration: 600,
                             onComplete: () => {
-                                showLoverApproach();
+                                showLoverApproach(demon);
                                 PhaserScene.tweens.add({
                                     delay: 500,
                                     targets: whiteDoor,
@@ -453,11 +457,14 @@ function showCutscene3() {
     });
 }
 
-function showLoverApproach() {
+function showLoverApproach(demonsfx) {
     let star = PhaserScene.add.image(gameConsts.halfWidth, 225, 'blurry', 'star_blur.png').setAlpha(1).setScale(0.4).setDepth(CUTSCENE_DEPTH+2).setOrigin(0.5, 0.5);
     let lover = PhaserScene.add.image(gameConsts.halfWidth, 150, 'ending', 'ending2_a.png').setAlpha(0).setScale(0.4).setDepth(CUTSCENE_DEPTH+3).setOrigin(0.5, 0.1);
     let horror = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blurry', 'static0.png').setAlpha(0).setScale(1.85, 3.6).setDepth(CUTSCENE_DEPTH+3);
     let blotter = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blurry', 'static7.png').setAlpha(0).setScale(5.2).setDepth(CUTSCENE_DEPTH+3);
+    //let sleepless = playSound('sleepless');
+    playSound('locket_open');
+    playSound('water_drop', 0.25);
     PhaserScene.tweens.add({
         targets: star,
         scaleX: 0.8,
@@ -465,6 +472,7 @@ function showLoverApproach() {
         ease: 'Cubic.easeIn',
         duration: 700,
         onComplete: () => {
+            //fadeAwaySound(sleepless, 5500, 'Quad.easeOut');
             PhaserScene.tweens.add({
                 targets: star,
                 scaleX: 0.4,
@@ -477,6 +485,7 @@ function showLoverApproach() {
             })
         }
     })
+
     PhaserScene.tweens.add({
         targets: lover,
         alpha: 1,
@@ -518,6 +527,10 @@ function showLoverApproach() {
         });
     });
     animateStatic(horror, 0.3, 1.75, 2.4, 5000);
+    setTimeout(() => {
+        demonsfx.currSfx = fadeInSound(demonsfx, 1, 5000)
+    }, 2500)
+
     PhaserScene.tweens.add({
         targets: lover,
         scaleX: 0.73,
@@ -580,6 +593,7 @@ function showLoverApproach() {
                     blotter.destroy();
                     horror.destroy();
                     globalObjects.cutsceneBack.setDepth(CUTSCENE_DEPTH + 4);
+                    playSound('click')
 
                     // ', yet no longer able to die,\nyou and your lover live the rest of\neternity without ever '
                     let closeText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 320, getLangText('badend_1'), {fontFamily: 'garamondmax', fontSize: 26, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 0);
@@ -638,10 +652,15 @@ function showLoverApproach() {
                                                                                 closeText4.destroy();
                                                                                 closeText5.destroy();
                                                                                 closeText6.destroy();
+                                                                                demonsfx.destroy();
                                                                                 gotoMainMenu();
                                                                                 let darkBG = getBackgroundBlackout();
+                                                                                darkBG.setAlpha(1).setDepth(CUTSCENE_DEPTH);
+                                                                                setTimeout(() => {
+                                                                                    playSound('emergency', 1.5)
+                                                                                    playSound('death_cast', 0.1);
+                                                                                }, 500)
                                                                                 PhaserScene.tweens.add({
-                                                                                    delay: 250,
                                                                                     targets: [darkBG],
                                                                                     alpha: 0,
                                                                                     ease: 'Cubic.easeIn',

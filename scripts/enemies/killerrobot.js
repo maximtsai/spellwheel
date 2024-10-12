@@ -321,7 +321,7 @@
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 500 : 425;
          this.criticalThreshold = 70;
-         this.nextShieldHealth = gameVars.isHardMode ? 100 : 80;
+         this.nextShieldHealth = gameVars.isHardMode ? 100 : 90;
          this.shieldsBroken = 0;
          this.missileObjects = [];
          this.attackEase = "Quad.easeOut";
@@ -714,7 +714,7 @@
                      startFunction: () => {
                          this.pullbackDurMult = 1;
                         if (this.health >= this.criticalThreshold) {
-                            this.nextShieldHealth += 40;
+                            this.nextShieldHealth += gameVars.isHardMode ? 40 : 30;
                             // this.setDefaultSprite('robot1.png', undefined, true);
                             playSound('robot_sfx_1');
                             this.shieldAdded = false;
@@ -752,7 +752,7 @@
                      block: this.nextShieldHealth,
                      isPassive: true,
                      transitionFast: true,
-                     chargeMult: 6,
+                     chargeMult: 7,
                      damage: -1,
                      startFunction: () => {
                          this.isRecharging = true;

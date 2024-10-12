@@ -399,20 +399,19 @@
              yoyo: true,
              onRepeat: () => {
                  if (this.pulseFinalEnabled) {
-                     let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 900);
+                     let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 1600);
                      tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(0.65);
                      this.addTween({
                          targets: tempPulse,
-                         scaleX: 6.5,
-                         scaleY: 6.5,
+                         scaleX: 7.5,
+                         scaleY: 7.5,
                          ease: 'Quad.easeIn',
-                         duration: 800,
-                         alpha: 0,
+                         duration: 1500,
                      })
                      this.addTween({
                          targets: tempPulse,
                          ease: 'Cubic.easeIn',
-                         duration: 810,
+                         duration: 1510,
                          alpha: 0,
                      })
                  }
@@ -1929,7 +1928,7 @@
 
      firePalm(damage, palmHand, shields = 1) {
          let isExtraLarge = damage > 80;
-         palmHand.setDepth(22);
+         palmHand.setDepth(40);
          this.addTween({
              targets: palmHand,
              duration: 400,
@@ -2014,7 +2013,7 @@
 
 
      fireTwoPokes(damage, pokeHand, hasExtraPoke = false) {
-         pokeHand.setDepth(22);
+         pokeHand.setDepth(40);
          this.addTween({
              targets: pokeHand,
              duration: 400,
@@ -3116,6 +3115,7 @@
             }, () => {
                 globalObjects.bannerTextManager.setForcePause(true);
                 this.deathFallTemp.currAnim.stop();
+                console.log("first end");
                 if (this.deathFallTemp.currAnim2) {
                     this.deathFallTemp.currAnim2.stop();
                 }
@@ -3305,11 +3305,12 @@
 
                         globalObjects.bannerTextManager.setDialogFunc([
                             null,
-                            () => {playSound('whoosh', 0.6).detune = -100},
-                            () => {playSound('whoosh', 0.5).detune = -250},
-                            () => {playSound('whoosh', 0.45).detune = -350},
+                            () => {playSound('whoosh', 0.65).detune = -100},
+                            () => {playSound('whoosh', 0.6).detune = -250},
+                            () => {playSound('whoosh', 0.5).detune = -350},
                             , () => {
                                  playSound("whoosh");
+                                 console.log("second end")
                                 globalObjects.bannerTextManager.setForcePause(true);
                                 deathFallTemp.currAnim.stop();
                                 this.deathFallTempWhite = this.addImage(deathFallTemp.x, deathFallTemp.y, "deathfinal", 'death2fall_white.png').setScale(deathFallTemp.scaleX).setAlpha(0).setDepth(deathFallTemp.depth);
@@ -3368,8 +3369,7 @@
                                     }
                                 })
                             }
-                            ]);
-
+                        ]);
 
                     }
                 })

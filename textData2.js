@@ -538,10 +538,10 @@ let textData2 = {
         "jp": ""
     },
     "pre_fight_4a": {
-        "en_us": "You: \"Halt! Are you friend or foe?\"\nKnight: ...\nYou: \"Do you mock me with your silence?\"\nKnight: ...\nYou: \"Enough, fight me now!\"",
-        "fr": "Toi : « Halte ! Es-tu ami ou ennemi ? »\nChevalier : ...\nToi : « Tu te moques de moi avec ton silence ? »\nChevalier : ...\nToi : « Assez, combats-moi maintenant ! »",
-        "zh_tw": '你："停下！你是朋友還是敵人？"\n騎士：…\n你："你在用沉默嘲笑我嗎？"\n騎士：…\n你："夠了，立刻跟我打！',
-        "zh_cn": '你："停下！你是朋友还是敌人？"\n骑士：…\n你："你在用沉默嘲笑我吗？"\n骑士：…\n你："够了，立刻跟我打！"',
+        "en_us": "You: \"You in the armor, state your business!\"\nKnight: ...\nYou: \"Are you friend or foe?\"\nKnight: ...\nYou: \"So you too are an enemy, fight me!\"",
+        "fr": "Toi : « Toi dans l'armure, déclare ton affaire ! »\nChevalier : ...\nToi : « Es-tu ami ou ennemi ? »\nChevalier : ...\nToi : « C'est un ennemi, combattez-moi ! »",
+        "zh_tw": '你："鎧甲騎士，說出你的事？"\n騎士：…\n你："你是朋友還是敵人？"\n騎士：…\n你："原來是敵人，立刻跟我打！',
+        "zh_cn": '你："铠甲骑士，说出你的事！"\n骑士：…\n你："你是朋友还是敌人？"\n骑士：…\n你："原来是敌人，立刻跟我打！"',
         "ru": "",
         "es": "",
         "jp": ""

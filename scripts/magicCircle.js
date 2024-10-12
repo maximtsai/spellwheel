@@ -2179,7 +2179,8 @@ const ENABLE_KEYBOARD = true;
     }
 
     getDelayedDamageClockScale() {
-        return 0.5 + 0.1 * Math.sqrt(Math.floor(this.delayedDamage / this.delayedDamageBase) * 0.5) * 2;
+        let multAmt = Math.floor(this.delayedDamage / this.delayedDamageBase);
+        return 0.5 + 0.1 * (Math.sqrt(multAmt * 0.4) + multAmt * 0.4);
     }
 
     plainUpdateDelayedDamageVisual(scale) {
@@ -2247,6 +2248,11 @@ const ENABLE_KEYBOARD = true;
             return;
         }
          this.delayedDamage -= amt;
+        if (globalObjects.player.recentlyTakenDelayedDamageAmt > 0) {
+            globalObjects.player.recentlyTakenDelayedDamageAmt -= amt;
+            globalObjects.player.recentlyTakenDamageAmt += amt;
+        }
+
          this.delayDamageText.setText(this.delayedDamage);
          // this.delayDamageSandFull.setScale(0.03 + Math.min(1, this.delayedDamage / this.delayedDamageBase));
          messageBus.publish('selfTakeTrueDamage', amt);
@@ -2322,12 +2328,10 @@ const ENABLE_KEYBOARD = true;
          this.delayedDamageRecentlyAdded = true;
 
         if (globalObjects.player.canResetRecentDamage) {
-
             globalObjects.player.canResetRecentDamage = false;
             globalObjects.player.resetRecentDamage();
             globalObjects.player.recentlyTakenDelayedDamageAmt = 0;
             globalObjects.player.lastInjuryHealth = globalObjects.player.health;
-
         }
         globalObjects.player.addRecentlyTakenDelayedDamage(amt);
 
@@ -2381,16 +2385,6 @@ const ENABLE_KEYBOARD = true;
                      }
                  });
              } else {
-                 // just animate scale
-                 // this.scene.tweens.add({
-                 //     targets: [this.delayDamageHourglass],
-                 //     ease: 'Cubic.easeOut',
-                 //     rotation: 0,
-                 //     scaleX: scaleAmtTotal,
-                 //     scaleY: scaleAmtTotal,
-                 //     duration: gameVars.gameManualSlowSpeed * 250,
-                 //     alpha: 1
-                 // });
                  this.scene.tweens.add({
                      targets: [this.delayDamageText],
                      ease: 'Cubic.easeOut',
@@ -2402,10 +2396,7 @@ const ENABLE_KEYBOARD = true;
                  });
                 let scale = this.getDelayedDamageClockScale();
                 this.plainUpdateDelayedDamageVisual(scale)
-
-
              }
-
 
              // if (this.delayedDamage > 60) {
              //     this.delayDamageSandFull.setAlpha(1);
@@ -2416,7 +2407,6 @@ const ENABLE_KEYBOARD = true;
 
      reduceDelayedDamage(amt) {
          this.delayedDamage = Math.max(0, this.delayedDamage - amt);
-        // globalObjects.player.recentlyTakenDelayedDamageAmt = Math.max(0, globalObjects.player.recentlyTakenDelayedDamageAmt - amt);
         if (amt > 0) {
             let textScale = Math.min(1.25, 0.5 + (0.2 * Math.sqrt(Math.abs(amt))));
 

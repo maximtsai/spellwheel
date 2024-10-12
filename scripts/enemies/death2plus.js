@@ -399,14 +399,20 @@
              yoyo: true,
              onRepeat: () => {
                  if (this.pulseFinalEnabled) {
-                     let tempPulse = getTempPoolObject('blurry', 'spellcircle_pulse.png', 'spellcircle_pulse', 900);
-                     tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(1);
+                     let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 900);
+                     tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(0.65);
                      this.addTween({
                          targets: tempPulse,
-                         scaleX: 5,
-                         scaleY: 5,
+                         scaleX: 6.5,
+                         scaleY: 6.5,
                          ease: 'Quad.easeIn',
                          duration: 800,
+                         alpha: 0,
+                     })
+                     this.addTween({
+                         targets: tempPulse,
+                         ease: 'Cubic.easeIn',
+                         duration: 810,
                          alpha: 0,
                      })
                  }
@@ -458,7 +464,7 @@
     }
 
     showImpatienceFinale() {
-         console.log("show impatience finale")
+        this.shownFinale = true;
         this.currentAttackSetIndex = 5;
         this.nextAttackIndex = 0;
         this.showFinalPrelude();
@@ -1229,7 +1235,7 @@
                  },
                  {
                      name: "}20x3",
-                     chargeAmt: 700,
+                     chargeAmt: 750,
                      finishDelay: 5000,
                      damage: -1,
                      isBigMove: true,
@@ -1280,7 +1286,7 @@
                  },
                  {
                      name: "|4x12",
-                     chargeAmt: 950,
+                     chargeAmt: 1000,
                      finishDelay: 6000,
                      chargeMult: 1.5,
                      damage: -1,
@@ -1308,9 +1314,9 @@
              [
                  //5
                  {
-                     name: gameVars.isHardMode ? ";;;99x9;;;" : ";;;88x8;;;",
+                     name: ";;;99x9;;;",
                      chargeAmt: 1380,
-                     chargeMult: 1.05,
+                     chargeMult: 1.03,
                      finishDelay: 10000,
                      damage: -1,
                      isBigMove: true,
@@ -1565,7 +1571,7 @@
                      scaleY: 1.03 * scaleMult,
                      ease: 'Quart.easeIn',
                      onComplete: () => {
-                         messageBus.publish("selfTakeDamage", gameVars.isHardMode ? 99 : 88);
+                         messageBus.publish("selfTakeDamage", 99);
                          if (isHeavy) {
                              let glowName = nextHand.frame.name.substring(0, nextHand.frame.name.length - 4) + "_glow" + ".png";
                              let glowScale = nextHand.scaleX * 2;
@@ -2890,7 +2896,7 @@
          if (this.shieldAmts <= 0) {
              this.shieldText.visible = false;
          }
-         this.shieldText.setText(this.shieldAmts);
+         this.shieldText.setText(this.shieldAmts).setAlpha(1);
          let startLeft = Math.random() < 0.5;
          this.addTween({
              targets: this.shieldText,

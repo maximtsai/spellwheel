@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>86</uint>
+        <uint>85</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -510,6 +510,7 @@
             <key type="filename">deathfinal/max_death_2.png</key>
             <key type="filename">deathfinal/max_death_2_full.png</key>
             <key type="filename">deathfinal/max_death_2_shoulder.png</key>
+            <key type="filename">deathfinal/max_death_2_spikes.png</key>
             <key type="filename">deathfinal/max_death_2_white.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

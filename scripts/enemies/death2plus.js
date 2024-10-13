@@ -27,6 +27,27 @@
                  })
              }
          })
+         let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 600);
+         tempPulse.setDepth(-2).setPosition(x, y + 15).setScale(0.2).setAlpha(1).setRotation(0);
+         this.addTween({
+             targets: tempPulse,
+             scaleX: 8,
+             scaleY: 8,
+             duration: 560,
+         })
+         this.addTween({
+             targets: tempPulse,
+             ease: 'Cubic.easeIn',
+             duration: 560,
+             alpha: 0,
+         });
+         this.addTween({
+             targets: tempPulse,
+             rotation: "+=10",
+             duration: 560,
+         })
+
+
          this.whiteoutTemp = this.addImage(x, y + 15, 'spells', 'whiteout_circle.png').setScale(2.55)
          this.addTween({
              targets: this.whiteoutTemp,

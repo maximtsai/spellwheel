@@ -29,7 +29,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 90 : 80;
+         this.health = gameVars.isHardMode ? 90 : 75;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
         this.attackScale = 1.25;
@@ -751,7 +751,7 @@
                  },
                  {
                      name: "HEAL\\30",
-                     chargeAmt: 320,
+                     chargeAmt: 300,
                      damage: 0,
                      startFunction: () => {
                          this.addTimeout(() => {

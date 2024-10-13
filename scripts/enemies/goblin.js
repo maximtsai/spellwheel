@@ -17,7 +17,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 150 : 100;
+         this.health = gameVars.isHardMode ? 150 : 90;
          this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 54, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.22;
@@ -224,7 +224,7 @@
                  {
                      name: gameVars.isHardMode ? "}8 " : "}4 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
-                     chargeAmt: 250,
+                     chargeAmt: 230,
                      damage: gameVars.isHardMode ? 8 : 4,
                      attackSprites: ['gobbo0_atk.png'],
                      attackFinishFunction: () => {
@@ -278,10 +278,10 @@
              [
                  // 2 - attacks from behind shield
                  {
-                     name: gameVars.isHardMode ? "}12 " : "}6 ",
+                     name: gameVars.isHardMode ? "}12 " : "}7 ",
                      desc: "Goblin rams you with\nhis shield",
-                     chargeAmt: 500,
-                     damage: gameVars.isHardMode ? 12 : 6,
+                     chargeAmt: 450,
+                     damage: gameVars.isHardMode ? 12 : 7,
                      startFunction: () => {
                         this.pullbackScale = 0.85;
                         this.attackScale = 1.3;
@@ -350,9 +350,10 @@
                  {
                      name: "MY SHIELD!",
                      isPassive: true,
-                     chargeAmt: 350,
+                     chargeAmt: 330,
                      chargeMult: 5,
                      customCall: " ",
+                     transitionFast: true,
                      damage: 0,
                      startFunction: () => {
                         messageBus.publish("closeCombatText")

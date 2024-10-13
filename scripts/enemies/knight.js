@@ -729,14 +729,14 @@
      pulseCircleInward(x, y) {
          this.isPulsing = true;
          if (!this.pulseCircle) {
-             this.pulseCircle = this.addImage(x, y, 'misc', 'black_circle_2.png');
+             this.pulseCircle = this.addImage(x, y, 'blurry', 'voidcirclelarge.png');
          }
-         this.pulseCircle.setScale(1.6).setDepth(10).setAlpha(0).setPosition(x, y).setRotation(Math.random() * 6);
+         this.pulseCircle.setScale(1).setDepth(10).setAlpha(0).setPosition(x, y).setRotation(Math.random() * 6);
          this.addTween({
              delay: 500,
              targets: [this.pulseCircle],
-             scaleX: 0.8,
-             scaleY: 0.8,
+             scaleX: 0.5,
+             scaleY: 0.5,
              duration: 450,
              ease: 'Cubic.easeIn',
              alpha: 1.2,

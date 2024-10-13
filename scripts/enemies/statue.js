@@ -318,14 +318,14 @@
                  targets: this.secondTempShield,
                  scaleX: this.handShieldTemp.startScale * 1.8,
                  scaleY: this.handShieldTemp.startScale * 1.7,
-                 duration: 400,
+                 duration: 550,
                  ease: 'Quart.easeOut',
                  onComplete: () => {
                      this.addTween({
                          targets: this.secondTempShield,
                          scaleX: this.handShieldTemp.scaleX,
                          scaleY: this.handShieldTemp.scaleX,
-                         duration: 280,
+                         duration: 320,
                          ease: 'Quint.easeIn',
                          onComplete: () => {
                              screenShake(7);
@@ -349,7 +349,7 @@
                      })
                  }
              });
-         }, 1150)
+         }, 900)
      }
 
      createHandShield(amt) {

@@ -2,6 +2,7 @@
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
          this.initSprite('max_death_2.png', 0.85, 0, 0, 'deathfinal');
+         this.baseSprite = 'max_death_2.png';
          this.sprite.setOrigin(0.5, 0.2);
          this.forcedOriginY = 0.2;
          this.blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(550).setAlpha(0.05).setDepth(-2);
@@ -39,7 +40,7 @@
 
     introSpeech() {
         globalObjects.bannerTextManager.setDialog([getLangText('deathFight2a')]);
-        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
         globalObjects.bannerTextManager.showBanner(0);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
             this.setAwake();
@@ -181,6 +182,7 @@
                      repeat: isRepeat ? -1 : 0,
                      duration: 2000
                  }));
+
                  if (this.leftFire) {
                      let xOffset = -122;
                      let yOffset = -28;
@@ -355,7 +357,7 @@
                  if (prevHealthPercent > 0.4 && currHealthPercent <= 0.4 && !this.thornForm) {
                     this.emergencyShield();
                      globalObjects.bannerTextManager.setDialog([getLangText('deathFight2cx')]);
-                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
                      globalObjects.bannerTextManager.showBanner(0);
                      globalObjects.bannerTextManager.setOnFinishFunc(() => {
                          this.setAwake();
@@ -365,7 +367,7 @@
                  if (prevHealthPercent > 0.6 && currHealthPercent <= 0.6 && !this.thornForm) {
                      this.emergencyShield();
                      globalObjects.bannerTextManager.setDialog([getLangText('deathFight2c')]);
-                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
                      globalObjects.bannerTextManager.showBanner(0);
                      globalObjects.bannerTextManager.setOnFinishFunc(() => {
                          this.setAwake();
@@ -453,7 +455,7 @@
 
                  if (!globalObjects.player.isDead()) {
                      globalObjects.bannerTextManager.setDialog([usedLangText]);
-                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
                      globalObjects.bannerTextManager.showBanner(0);
                      globalObjects.bannerTextManager.setOnFinishFunc(() => {
                          this.setAwake();
@@ -530,7 +532,7 @@
                     },
                     finaleFunction: () => {
                         this.pullbackInitialDelay = 0;
-                        // this.setDefaultSprite('max_death_2.png', null, true)
+                        // this.setDefaultSprite(this.baseSprite, null, true)
                         this.setArmsVisible(true);
                         this.pullbackHoldRatio = 0.5;
                         globalObjects.encyclopedia.showButton();
@@ -539,7 +541,7 @@
                     attackStartFunction: () => {
                         this.setSpriteIfNotInactive('max_death_2_full.png', undefined, true)
                         // this.setDefaultSprite('death2charge.png', null, true)
-                        // this.sprite.setFrame('max_death_2.png')
+                        // this.sprite.setFrame(this.baseSprite)
                         globalObjects.encyclopedia.hideButton();
                         globalObjects.options.hideButton();
                     },
@@ -598,7 +600,7 @@
                         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 185).setDepth(998).setScale(1.45);
                     },
                     finaleFunction: () => {
-                        this.setDefaultSprite('max_death_2.png');
+                        this.setDefaultSprite(this.baseSprite);
                         this.setArmsVisible(true);
                     },
                 },
@@ -644,13 +646,15 @@
 
                         messageBus.publish('animateArmorNum', gameConsts.halfWidth, this.y + 120, "+4 THORNS", goalScale, param, param2);
                         this.thornsAmt = 4;
+                        this.baseSprite = 'max_death_2_spikes.png';
+                        this.setDefaultSprite(this.baseSprite);
                         this.setDefense(4);
                         this.hasThorns = true;
                     },
                     finaleFunction: () => {
                         this.preventArmsVisible = false;
                         this.forceOverrideSprite = null;
-                        this.setDefaultSprite('max_death_2.png');
+                        this.setDefaultSprite(this.baseSprite);
                         this.setArmsVisible(true);
                     },
                 },
@@ -719,7 +723,7 @@
                     },
                     finaleFunction: () => {
                         this.pullbackInitialDelay = 0;
-                        // this.setDefaultSprite('max_death_2.png', null, true)
+                        // this.setDefaultSprite(this.baseSprite, null, true)
                         this.setArmsVisible(true);
                         this.pullbackHoldRatio = 0.5;
                         globalObjects.encyclopedia.showButton();
@@ -728,7 +732,7 @@
                     attackStartFunction: () => {
                         this.setSpriteIfNotInactive('max_death_2_full.png', undefined, true)
                         // this.setDefaultSprite('death2charge.png', null, true)
-                        // this.sprite.setFrame('max_death_2.png')
+                        // this.sprite.setFrame(this.baseSprite)
                         globalObjects.encyclopedia.hideButton();
                         globalObjects.options.hideButton();
                     },
@@ -788,7 +792,7 @@
                         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 185).setDepth(998).setScale(1.45);
                     },
                     finaleFunction: () => {
-                        this.setDefaultSprite('max_death_2.png');
+                        this.setDefaultSprite(this.baseSprite);
                         this.setArmsVisible(true);
                     },
                 },
@@ -1185,7 +1189,7 @@
                 duration: 450,
             });
         }])
-        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
         globalObjects.bannerTextManager.showBanner(0);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
             playSound("whoosh")

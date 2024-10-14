@@ -4,13 +4,13 @@
 			"image": "sprites/pixels.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 40,
+				"w": 44,
 				"h": 4
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "blue_pixel.png",
+					"filename": "black_blue_pixel.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "gloom_pixel.png",
+					"filename": "blue_pixel.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "green_pixel.png",
+					"filename": "gloom_pixel.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "grey_pixel.png",
+					"filename": "green_pixel.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "purple_pixel.png",
+					"filename": "grey_pixel.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "red_pixel.png",
+					"filename": "purple_pixel.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "semiblack_pixel.png",
+					"filename": "red_pixel.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "soft_blue_pixel.png",
+					"filename": "semiblack_pixel.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "white_pixel.png",
+					"filename": "soft_blue_pixel.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "yellow_pixel.png",
+					"filename": "white_pixel.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -218,6 +218,27 @@
 						"w": 2,
 						"h": 2
 					}
+				},
+				{
+					"filename": "yellow_pixel.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 2,
+						"h": 2
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 2,
+						"h": 2
+					},
+					"frame": {
+						"x": 41,
+						"y": 1,
+						"w": 2,
+						"h": 2
+					}
 				}
 			]
 		}
@@ -225,6 +246,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:60493c8aaa42d4cfcb45990abe268b8b:baa9ed12a2dc165eecf1d00c424172d2:1b79fc7d42966befa1016d29f4ccadf3$"
+		"smartupdate": "$TexturePacker:SmartUpdate:55da90a3bb2bcca4f2dadf1ffacf2b82:4a5c4f281523490e31443fed49ee2b83:1b79fc7d42966befa1016d29f4ccadf3$"
 	}
 }

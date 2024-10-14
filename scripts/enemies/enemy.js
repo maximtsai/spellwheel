@@ -225,7 +225,7 @@ class Enemy {
         this.chargeBarOutline.alpha = 0.4;
         this.chargeBarOutline.setDepth(9);
 
-        this.chargeBarMax = this.scene.add.image(x, isMobile ? 339 : 326, 'blackPixel');
+        this.chargeBarMax = this.scene.add.image(x, isMobile ? 339 : 326, 'pixels', 'black_blue_pixel.png');
         this.chargeBarMax.setScale(chargeBarLength + 2, isMobile ? 13 : 11);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;

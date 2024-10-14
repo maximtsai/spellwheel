@@ -1874,6 +1874,7 @@ const ENABLE_KEYBOARD = true;
             sprite.setDepth(119);
             sprite.shouldDelete = hasDelete;
         }
+        sprite.canUse = false;
 
         let castCircle = poolManager.getItemFromPool('castCircle');
         if (!castCircle) {
@@ -2047,24 +2048,19 @@ const ENABLE_KEYBOARD = true;
                     alpha: 0.5
                 });
                 let stopForceAlignmentDelay = this.keyboardCasted ? 100 : 0;
+                let reEnableDelay = this.keyboardCasted ? 200 : 0;
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * stopForceAlignmentDelay, () => {
                     this.forcingAlignment = false;
                 });
                 this.scene.tweens.add({
-                    targets: [sprite, castCircle],
-                    ease: 'Quart.easeInOut',
+                    targets: sprite,
                     delay: 60,
-                    duration: gameVars.gameManualSlowSpeed * 800,
-                    x: this.x + 28,
-                    y: this.y - 224,
+                    rotation: 0,
+                    duration: gameVars.gameManualSlowSpeed * 750,
                     onComplete: () => {
-                        castFunc();
-                        PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 230, () => {
-                            this.bufferedCastAvailable = true;
-                        });
-                        let reEnableDelay = this.keyboardCasted ? 200 : 0;
+                        let rotateDelay = this.outerDragDisabled ? 650 : 0;
                         this.focusLinesOn.currAnim = this.scene.tweens.add({
-                            delay: reEnableDelay,
+                            delay: reEnableDelay + rotateDelay,
                             targets: this.focusLinesOn,
                             duration: gameVars.gameManualSlowSpeed * 150,
                             alpha: 0.65,
@@ -2081,8 +2077,21 @@ const ENABLE_KEYBOARD = true;
                                 });
                             }
                         });
-
-                        PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * (10 + reEnableDelay), () => {
+                    }
+                });
+                this.scene.tweens.add({
+                    targets: [sprite, castCircle],
+                    ease: 'Quart.easeInOut',
+                    delay: 60,
+                    duration: gameVars.gameManualSlowSpeed * 800,
+                    x: this.x + 28,
+                    y: this.y - 224,
+                    onComplete: () => {
+                        castFunc();
+                        PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 230, () => {
+                            this.bufferedCastAvailable = true;
+                        });
+                        PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * (25 + reEnableDelay), () => {
                             if (!this.outerDragDisabled) {
                                 this.castDisabled = false;
                             }

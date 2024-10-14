@@ -406,6 +406,7 @@ class PostFightScreen {
         PhaserScene.tweens.add({
             targets: [this.bgShade],
             alpha: 0.4,
+            duration: 1000
         });
 
         PhaserScene.tweens.add({
@@ -414,7 +415,7 @@ class PostFightScreen {
             scaleY: 1,
             alpha: 1,
             ease: 'Back.easeOut',
-            duration: 300,
+            duration: 450,
             onComplete: () => {
 
                 PhaserScene.tweens.add({

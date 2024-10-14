@@ -29,7 +29,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 90 : 75;
+         this.health = gameVars.isHardMode ? 90 : 65;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
         this.attackScale = 1.25;
@@ -88,7 +88,7 @@
             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
             globalObjects.bannerTextManager.closeBanner();
                  globalObjects.magicCircle.enableMovement();
-                 this.shadow = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(14).setDepth(9999).setAlpha(0);
+                 this.shadow = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(14).setDepth(9999).setAlpha(0);
                  this.shadowSmall = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'greyed.png').setAlpha(0.05).setDepth(104).setScale(0.71);
 
                  this.shadow.currAnim = this.addTween({
@@ -281,7 +281,7 @@
 
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 261, getLangText('level1_tut_b'), 'right');
             messageBus.publish('setSlowMult', 0.25, 15);
-            let glowBar = this.addSprite(gameConsts.halfWidth, 320, 'misc', 'shadow_bar.png').setDepth(9999).setAlpha(0).setScale(7);
+            let glowBar = this.addSprite(gameConsts.halfWidth, 320, 'misc', 'shadow_bar.png').setDepth(9980).setAlpha(0).setScale(7);
             this.addTween({
                 targets: glowBar,
                 alpha: 0.4,
@@ -411,7 +411,7 @@
 
          if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.999) {
              this.angryEyes = true;
-             this.flash = this.addSprite(this.x + 3, this.y - 65, 'blurry', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
+             this.flash = this.addImage(this.x + 3, this.y - 50, 'blurry', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
             fadeAwaySound(this.bgMusic, 200);
              this.addTween({
                  targets: this.flash,
@@ -453,7 +453,7 @@
                              this.setAwake();
                              this.currentAttackSetIndex = 0;
                              this.nextAttackIndex = 0;
-                             this.brows = this.addSprite(this.x , this.y - 32, 'dummyenemy', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(999);
+                             this.brows = this.addImage(this.x , this.y - 32, 'dummyenemy', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(999);
                              this.addTween({
                                  targets: this.brows,
                                  scaleX: this.sprite.startScale * 2.2,
@@ -480,7 +480,7 @@
                                  }
                              });
 
-                             this.snort = this.addSprite(this.x - 3, this.y - 71, 'dummyenemy', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(999);
+                             this.snort = this.addImage(this.x - 3, this.y - 71, 'dummyenemy', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(999);
                              this.destructibles.push(this.snort);
 
                              this.addTween({
@@ -521,7 +521,7 @@
          if (prevHealthPercent >= 0.95) {
              if (currHealthPercent < 0.95) {
                  this.canAngryEyes = true;
-                 let angrySymbol = this.scene.add.sprite(this.x + 35, this.y - 52, 'misc', 'angry1.png').play('angry').setScale(0.3).setDepth(3);
+                 let angrySymbol = this.scene.add.sprite(this.x + 35, this.y - 52, 'misc', 'angry1.png').play('angry').setScale(0.3).setDepth(9999);
                  this.addTween({
                      targets: angrySymbol,
                      scaleX: 0.9,
@@ -543,7 +543,7 @@
                          });
                      }
                  });
-                 this.eyes = this.addSprite(this.x + 1 , this.y - 41, 'dummyenemy', 'dummyeyes.png').setOrigin(0.5, 0.75).setScale(this.sprite.startScale, 0);
+                 this.eyes = this.addImage(this.x + 1 , this.y - 41, 'dummyenemy', 'dummyeyes.png').setOrigin(0.5, 0.75).setScale(this.sprite.startScale, 0);
                  this.addExtraSprite(this.eyes, 1, -40)
                  this.addTween({
                      targets: this.eyes,
@@ -637,7 +637,7 @@
 
                  this.showFlash(this.x, this.y - 75);
 
-                 let rune = this.addSprite(this.x, this.y - 75, 'tutorial', 'rune_energy_large.png').setScale(0.5).setDepth(10001);
+                 let rune = this.addImage(this.x, this.y - 75, 'tutorial', 'rune_energy_large.png').setScale(0.5).setDepth(10001);
                  this.addTween({
                      targets: rune,
                      x: gameConsts.halfWidth,
@@ -718,7 +718,7 @@
                  // 0
                  {
                      name: gameVars.isHardMode ? "}10 " : "}8 ",
-                     chargeAmt: 420,
+                     chargeAmt: 425,
                      damage: gameVars.isHardMode ? 10 : 8,
                      attackFinishFunction: () => {
                          screenShake(5);

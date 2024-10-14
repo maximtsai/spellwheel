@@ -433,8 +433,10 @@ function playReaperAnim(enemy, customFinFunc) {
                                                             if (customFinFunc) {
                                                                 customFinFunc();
                                                             } else {
-                                                                globalObjects.magicCircle.enableMovement();
-                                                                globalObjects.postFightScreen.createWinScreen(level);
+                                                                setTimeout(() => {
+                                                                    globalObjects.magicCircle.enableMovement();
+                                                                    globalObjects.postFightScreen.createWinScreen(level);
+                                                                }, 200)
                                                             }
                                                         }
                                                     });

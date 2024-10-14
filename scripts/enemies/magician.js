@@ -418,8 +418,10 @@
                          duration: 400,
                          onComplete: () => {
                              rune.destroy();
-                             globalObjects.magicCircle.enableMovement();
-                             globalObjects.postFightScreen.createWinScreen(this.level);
+                             setTimeout(() => {
+                                 globalObjects.magicCircle.enableMovement();
+                                 globalObjects.postFightScreen.createWinScreen(this.level);
+                             }, 50)
                          }
                      });
                      PhaserScene.tweens.add({

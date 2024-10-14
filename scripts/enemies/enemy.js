@@ -485,7 +485,7 @@ class Enemy {
                 this.attackCharge += timeChange * increaseMult * this.slowMult;
                 this.castAggravateCharge = 0;
             } else {
-                let almostDone = this.attackCharge > this.nextAttackChargeNeeded - 65;
+                let almostDone = this.attackCharge > this.nextAttackChargeNeeded - 67;
                 if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone && this.castAggravateCharge <= 0) {
                     // this.attackCharge += timeChange * 0.02 * this.slowMult;
                     this.chargeBarCurr.alpha = 0.62;
@@ -503,11 +503,15 @@ class Enemy {
                             }
                         }
                         if (!(chargeMult > 1) && !almostDone) {
-                            this.chargeBarCurr.alpha = 0.83;
+                            this.chargeBarCurr.alpha = 0.84;
                         } else {
-                            this.chargeBarCurr.alpha = 0.9;
+                            this.chargeBarCurr.alpha = 0.98;
                         }
-                        this.attackCharge += timeChange * 0.5 * this.slowMult * chargeMult;
+                        if (chargeMult > 1) {
+                            this.attackCharge += timeChange * 0.5 * this.slowMult * chargeMult;
+                        } else {
+                            this.attackCharge += timeChange * this.slowMult * chargeMult;
+                        }
                         this.attackCharge += castAggravateBonus * 3.3;
 
                     } else {

@@ -2330,7 +2330,7 @@ class SpellManager {
                             let damageDealt = Math.ceil(healthPercent)
                             playSound('void_strike_hit');
                             messageBus.publish('enemyTakeDamage', damageDealt, true, undefined, 'void');
-                            messageBus.publish('setPauseDur', 25);
+                            messageBus.publish('setPauseDur', 29);
                             messageBus.publish('inflictVoidBurn', damageDealt, 2, isPowerful);
                             currStrikeObj.setScale(currStrikeObj.scaleX * 1.03, currStrikeObj.scaleY * 1.03);
                             this.scene.tweens.add({

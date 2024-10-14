@@ -217,8 +217,8 @@ const ENABLE_KEYBOARD = true;
                 }
             } else if (gameVars.mouseJustUpped) {
                 // this.draggedDuration = -2;
-                if (this.draggedDuration < 12) {
-                    this.preventRotDecay = (12 - this.draggedDuration) * 0.4;
+                if (this.draggedDuration < 13) {
+                    this.preventRotDecay = (13 - this.draggedDuration) * 0.4;
                 }
                 // let go
                 if (totalDist < this.castButtonSize && this.draggedObj == this.castButton) {
@@ -1224,7 +1224,7 @@ const ENABLE_KEYBOARD = true;
                 this.castButton.setTexture(key, (this.altString + 'cast_disabled.png'));
             }
         } else if (this.castButton.frame.customData.filename !== this.castButton.lazyFrame) {
-            if (this.castButton.frame.customData.filename == (this.altString + 'cast_disabled.png') && this.castButton.lazyFrame == (this.altString + 'cast_normal.png')) {
+            if (this.castButton.frame.customData.filename === (this.altString + 'cast_disabled.png') && this.castButton.lazyFrame === (this.altString + 'cast_normal.png')) {
                 this.castButtonSpare.alpha = 0.6;
                 this.scene.tweens.add({
                     targets: this.castButtonSpare,
@@ -1617,8 +1617,8 @@ const ENABLE_KEYBOARD = true;
 
         } else {
             // failed cast
-            let retryDelay = this.keyboardCasted ? 700 : 450;
-            PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * (retryDelay - 250), () => {
+            let retryDelay = this.keyboardCasted ? 150 : 0;
+            PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * retryDelay, () => {
                 this.bufferedCastAvailable = true;
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 250, () => {
                     this.castDisabled = false;
@@ -1662,7 +1662,6 @@ const ENABLE_KEYBOARD = true;
             messageBus.publish("resetCircle")
             this.scene.tweens.add({
                 targets: this.innerCircle,
-                delay: 0,
                 ease: 'Back.easeIn',
                 easeParams: [1.1],
                 onComplete: () => {
@@ -1864,17 +1863,22 @@ const ENABLE_KEYBOARD = true;
     createElementCast(elem) {
         let elemName = elem.runeName;
         let sprite = this.elementsAnimArray[elemName];
-        if (!sprite) {
+        if (!sprite || sprite.canUse === false) {
+            // If cannot reuse, then make new. potentially mark for later deletion
+            let hasDelete = sprite && sprite.canUse;
             sprite = this.scene.add.sprite(0, -999, 'circle', "bright_" + elemName + '.png');
             sprite.setOrigin(0.5, 0.14);
-            this.elementsAnimArray[elemName] = sprite;
+            if (!hasDelete) {
+                this.elementsAnimArray[elemName] = sprite;
+            }
             sprite.setDepth(119);
+            sprite.shouldDelete = hasDelete;
         }
 
         let castCircle = poolManager.getItemFromPool('castCircle');
         if (!castCircle) {
             castCircle = this.scene.add.sprite(this.x, this.y - 100, 'circle', 'cast_circle.png');
-            castCircle.setDepth(120);
+            castCircle.setDepth(130);
         }
         castCircle.alpha = 0;
         castCircle.setScale(1.25);
@@ -1884,6 +1888,7 @@ const ENABLE_KEYBOARD = true;
         sprite.setAlpha(1);
         castCircle.setPosition(sprite.x, sprite.y);
         sprite.setScale(1.2);
+
         this.scene.tweens.add({
             targets: sprite,
             duration: gameVars.gameManualSlowSpeed * 100,
@@ -1911,6 +1916,9 @@ const ENABLE_KEYBOARD = true;
         this.scene.tweens.add({
             targets: castCircle,
             ease: 'Cubic.easeIn',
+            duration: gameVars.gameManualSlowSpeed * 250,
+            scaleX: 1,
+            scaleY: 1,
             onComplete: () =>
             {
                 castCircle.alpha = 1;
@@ -1927,44 +1935,52 @@ const ENABLE_KEYBOARD = true;
                     targets: [sprite, castCircle],
                     ease: 'Quart.easeInOut',
                     delay: 60,
+                    duration: gameVars.gameManualSlowSpeed * 800,
+                    x: this.x - 28,
+                    y: this.y - 224,
                     onComplete: () => {
+
                         this.scene.tweens.add({
                             targets: [sprite, castCircle],
                             alpha: 0,
                             scaleX: 1.5,
                             scaleY: 1.5,
-                            duration: gameVars.gameManualSlowSpeed * 500,
+                            duration: gameVars.gameManualSlowSpeed * 550,
                             onComplete: () => {
                                 poolManager.returnItemToPool(castCircle, 'castCircle');
-
-                                sprite.setScale(1, 1);
+                                if (sprite.shouldDelete) {
+                                    sprite.destroy();
+                                } else {
+                                    sprite.setScale(1);
+                                    sprite.canUse = true;
+                                }
                             }
                         });
-                    },
-                    duration: gameVars.gameManualSlowSpeed * 840,
-                    x: this.x - 28,
-                    y: this.y - 224
+                    }
                 });
-            },
-            duration: gameVars.gameManualSlowSpeed * 250,
-            scaleX: 1,
-            scaleY: 1
+            }
         });
     }
 
     createEmbodimentCast(elem, castFunc) {
         let elemName = elem.runeName;
         let sprite = this.embodimentsAnimArray[elemName];
-        if (!sprite) {
+        if (!sprite || sprite.canUse === false) {
+            // If cannot reuse, then make new. potentially mark for later deletion
+            let hasDelete = sprite && sprite.canUse;
             sprite = this.scene.add.sprite(0, -999, 'circle', "bright_" + elemName + '.png');
             sprite.setOrigin(0.5, 0.14);
-            this.elementsAnimArray[elemName] = sprite;
+            if (!hasDelete) {
+                this.embodimentsAnimArray[elemName] = sprite;
+            }
             sprite.setDepth(119);
+            sprite.shouldDelete = hasDelete;
         }
+        sprite.canUse = false;
         let castCircle = poolManager.getItemFromPool('castCircle');
         if (!castCircle) {
             castCircle = this.scene.add.sprite(this.x, this.y - 100, 'circle', 'cast_circle.png');
-            castCircle.setDepth(120);
+            castCircle.setDepth(130);
         }
         castCircle.alpha = 0;
         castCircle.setScale(1.25);
@@ -1973,8 +1989,8 @@ const ENABLE_KEYBOARD = true;
         sprite.setPosition(this.x + Math.sin(elem.rotation) * 175, this.y - Math.cos(elem.rotation) * 176);
         sprite.setAlpha(1);
         castCircle.setPosition(sprite.x, sprite.y + 5);
-
         sprite.setScale(1.2);
+
         this.scene.tweens.add({
             targets: sprite,
             y: "-=6",
@@ -2006,7 +2022,7 @@ const ENABLE_KEYBOARD = true;
         this.focusLinesOn.alpha = 1;
         this.scene.tweens.add({
             targets: this.focusLinesOn,
-            duration: gameVars.gameManualSlowSpeed * 350,
+            duration: gameVars.gameManualSlowSpeed * 325,
             ease: 'Quart.easeIn',
             alpha: 0,
             onComplete: () => {
@@ -2030,82 +2046,92 @@ const ENABLE_KEYBOARD = true;
                     rotation: 1.57,
                     alpha: 0.5
                 });
+                let stopForceAlignmentDelay = this.keyboardCasted ? 100 : 0;
+                PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * stopForceAlignmentDelay, () => {
+                    this.forcingAlignment = false;
+                });
                 this.scene.tweens.add({
                     targets: [sprite, castCircle],
                     ease: 'Quart.easeInOut',
                     delay: 60,
-                    duration: gameVars.gameManualSlowSpeed * 840,
+                    duration: gameVars.gameManualSlowSpeed * 800,
                     x: this.x + 28,
                     y: this.y - 224,
-                    onStart: () => {
-                        let stopForceAlignmentDelay = this.keyboardCasted ? 350 : 0;
-                        PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * stopForceAlignmentDelay, () => {
-                            this.forcingAlignment = false;
-                        });
-                    },
                     onComplete: () => {
                         castFunc();
-                        PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 250, () => {
+                        PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 230, () => {
                             this.bufferedCastAvailable = true;
                         });
-                        let reEnableDelay = this.keyboardCasted ? 250 : 0;
+                        let reEnableDelay = this.keyboardCasted ? 200 : 0;
                         this.focusLinesOn.currAnim = this.scene.tweens.add({
-                            delay: 250 + reEnableDelay,
+                            delay: reEnableDelay,
                             targets: this.focusLinesOn,
-                            duration: gameVars.gameManualSlowSpeed * 300,
-                            alpha: 0.7,
+                            duration: gameVars.gameManualSlowSpeed * 150,
+                            alpha: 0.65,
                             ease: 'Cubic.easeIn',
                             onComplete: () => {
-                                this.focusLinesOn.currAnim = null;
-                                this.focusLinesOn.setAlpha(0.9);
+                                this.focusLinesOn.setAlpha(1);
+                                this.focusLinesOn.currAnim = this.scene.tweens.add({
+                                    targets: this.focusLinesOn,
+                                    duration: gameVars.gameManualSlowSpeed * 200,
+                                    alpha: 0.94,
+                                    onComplete: () => {
+                                        this.focusLinesOn.currAnim = null;
+                                    }
+                                });
                             }
                         });
+
+                        PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * (10 + reEnableDelay), () => {
+                            if (!this.outerDragDisabled) {
+                                this.castDisabled = false;
+                            }
+                            if (gameOptions.infoBoxAlign === 'center') {
+                                this.disableSpellDescDisplay = true;
+                            }
+
+                            if (this.spellNameTextAnim) {
+                                this.spellNameTextAnim.stop();
+                            }
+                            let extraDur = 0;
+                            if (elemName === "rune_strike" || elemName === "rune_ultimate") {
+                                extraDur = 400;
+                            }
+                            this.spellNameTextAnim = this.scene.tweens.add({
+                                targets: [this.spellNameText, this.spellActionText, this.spellElementText],
+                                delay: 1000 + extraDur,
+                                alpha: 0.55,
+                                duration: gameVars.gameManualSlowSpeed * 150,
+                                onStart: () => {
+                                    this.disableSpellDescDisplay = false;
+                                    this.spellDescriptor.addTween({
+                                        ease: 'Cubic.easeInOut',
+                                        alpha: gameOptions.infoBoxAlign == 'center' ? 0.9 : 0.98,
+                                        duration: gameVars.gameManualSlowSpeed * 150,
+                                    });
+                                }
+                            });
+
+                            this.bufferedCastAvailable = false;
+                            if (this.useBufferedSpellCast) {
+                                this.castSpell(true);
+                            }
+                        });
+
                         this.scene.tweens.add({
                             targets: [sprite, castCircle],
                             alpha: 0,
                             scaleX: 1.5,
                             scaleY: 1.5,
-                            duration: gameVars.gameManualSlowSpeed * 500,
+                            duration: gameVars.gameManualSlowSpeed * 550,
                             onComplete: () => {
                                 poolManager.returnItemToPool(castCircle, 'castCircle');
-                                sprite.setScale(1);
-
-                                PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * reEnableDelay, () => {
-
-                                    if (!this.outerDragDisabled) {
-                                        this.castDisabled = false;
-                                    }
-                                    if (gameOptions.infoBoxAlign == 'center') {
-                                        this.disableSpellDescDisplay = true;
-                                    }
-
-                                    if (this.spellNameTextAnim) {
-                                        this.spellNameTextAnim.stop();
-                                    }
-                                    let extraDur = 0;
-                                    if (elemName == "rune_strike" || elemName == "rune_ultimate") {
-                                        extraDur = 400;
-                                    }
-                                    this.spellNameTextAnim = this.scene.tweens.add({
-                                        targets: [this.spellNameText, this.spellActionText, this.spellElementText],
-                                        delay: 1000 + extraDur,
-                                        alpha: 0.55,
-                                        duration: gameVars.gameManualSlowSpeed * 150,
-                                        onStart: () => {
-                                            this.disableSpellDescDisplay = false;
-                                            this.spellDescriptor.addTween({
-                                                ease: 'Cubic.easeInOut',
-                                                alpha: gameOptions.infoBoxAlign == 'center' ? 0.9 : 0.98,
-                                                duration: gameVars.gameManualSlowSpeed * 150,
-                                            });
-                                        }
-                                    });
-
-                                    this.bufferedCastAvailable = false;
-                                    if (this.useBufferedSpellCast) {
-                                        this.castSpell(true);
-                                    }
-                                });
+                                if (sprite.shouldDelete) {
+                                    sprite.destroy();
+                                } else {
+                                    sprite.setScale(1);
+                                    sprite.canUse = true;
+                                }
                             }
                         });
                     }
@@ -2177,7 +2203,7 @@ const ENABLE_KEYBOARD = true;
     }
 
     getDelayedDamageClockScale() {
-        let multAmt = Math.max(0, Math.floor((this.delayedDamage + 1) / this.delayedDamageBase));
+        let multAmt = Math.max(0, Math.floor((this.delayedDamage - 1) / this.delayedDamageBase));
         return 0.5 + 0.1 * (Math.sqrt(multAmt * 0.5) + multAmt * 0.2);
     }
 
@@ -2346,7 +2372,6 @@ const ENABLE_KEYBOARD = true;
                  this.delayDamageHourglass.setRotation(0.5);
                  this.delayDamageHourglass.setAlpha(0.5);
                  this.delayDamageText.setAlpha(0.5);
-
 
                 let rotateAmt = this.delayedDamage / this.delayedDamageBase * 6.283 - 1.5708;
                 let xPos = this.delayDamageHourglass.x;
@@ -2687,7 +2712,7 @@ const ENABLE_KEYBOARD = true;
 
              } else if (embodimentText == 'STRIKE') {
                  if (closestElement.runeName == RUNE_VOID) {
-                     globalObjects.currentEnemy.setPredictScale(34);
+                     globalObjects.currentEnemy.setPredictScale(37);
                  } else {
                      globalObjects.currentEnemy.setPredictScale(24);
                  }

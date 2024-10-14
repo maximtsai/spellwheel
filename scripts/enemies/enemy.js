@@ -476,7 +476,7 @@ class Enemy {
             }
             this.chargeBarShow = false;
             if (this.isAngry) {
-                let increaseMult = Math.max(5.3, 0.34 * chargeMult);
+                let increaseMult = Math.max(8, 0.34 * chargeMult);
                 if (challenges.angryEnemies) {
                     increaseMult = 1 * 1.2;
                 } else if (cheats.calmEnemies) {
@@ -643,7 +643,7 @@ class Enemy {
         if (this.isAsleep) {
             this.chargeBarAngry.visible = false;
             this.chargeBarCurr.visible = false;
-        } else if (this.timeSinceLastAttacked < 30) {
+        } else if (this.timeSinceLastAttacked < 18) {
             if (!this.isAngry) {
                 this.isAngry = true;
                 if (!this.isAsleep) {

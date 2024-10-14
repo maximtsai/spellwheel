@@ -55,7 +55,7 @@ let textData4 = {
     },
     "deathFight2c": {
         "en_us": "GOOD OFFENSE! BUT THINK\nTWICE BEFORE ATTACKING.",
-        "fr": "BONNE ATTAQUE ! MAIS RÉFLÉCHISSEZ-Y À DEUX FOIS AVANT D’ATTAQUER.",
+        "fr": "BONNE ATTAQUE ! MAIS RÉFLÉCHISSEZ-Y\nÀ DEUX FOIS AVANT D’ATTAQUER.",
         "zh_tw": "好進攻！但在攻擊\n之前要三思而後行。",
         "zh_cn": "好进攻！但在攻击\n之前要三思而后行。",
         "ru": "ХОРОШЕЕ НАПАДЕНИЕ! НО ПОДУМАЙТЕ ДВАЖДЫ, ПРЕЖДЕ ЧЕМ АТАКОВАТЬ.",

@@ -193,7 +193,7 @@ let textData = {
     },
     "time_reinforce_desc": {
         "en_us": "Heal 50% of your\nlast injury and\n50% of your\ndeferred damage",
-        "fr": "Soigne 50 % de votre\ndernière blessure\net 50 % de vos\ndégâts retardés",
+        "fr": "Soigne 50 % de votre\ndernière blessure\net 50 % de vos\ndégâts différés",
         "zh_tw": "治療50%的末次傷害\n和50%的延遲傷害",
         "zh_cn": "治疗50%的末次伤害\n和50%的延迟伤害",
         "ru": "Исцелите 50%\nпоследнего ранения\nи 50%\nотложенного урона",
@@ -202,7 +202,7 @@ let textData = {
     },
     "time_reinforce_desc_long": {
         "en_us": "Heal 50% of your last injury\nand 50% of your deferred damage",
-        "fr": "Soigne 50 % de votre dernière blessure\net 50 % de vos dégâts retardés.",
+        "fr": "Soigne 50 % de votre dernière blessure\net 50 % de vos dégâts différés.",
         "zh_tw": "治療50%的末次傷害\n和50%的延遲傷害",
         "zh_cn": "治疗50%的末次伤害\n和50%的延迟伤害",
         "ru": "Исцелите 50% последнего ранения\nи 50% отложенного урона.",

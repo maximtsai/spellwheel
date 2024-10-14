@@ -2326,7 +2326,7 @@ class SpellManager {
                         duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.02 + additionalDamage;
+                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.025 + additionalDamage;
                             let damageDealt = Math.ceil(healthPercent)
                             playSound('void_strike_hit');
                             messageBus.publish('enemyTakeDamage', damageDealt, true, undefined, 'void');
@@ -2953,8 +2953,8 @@ class SpellManager {
         // });
         this.scene.tweens.add({
             targets: voidObj,
-            delay: initialDelay,
-            duration: voidDuration,
+            delay: gameVars.gameManualSlowSpeed * initialDelay,
+            duration: gameVars.gameManualSlowSpeed * voidDuration,
             rotation: 5 + numTotalAttacks,
             ease: 'Cubic.easeInOut',
             onComplete: () => {
@@ -2963,10 +2963,10 @@ class SpellManager {
         });
         this.scene.tweens.add({
             targets: voidObj,
-            delay: initialDelay + voidDuration - 500,
+            delay: gameVars.gameManualSlowSpeed * (initialDelay + voidDuration - 500),
             scaleY: voidScale * 1.5,
             scaleX: voidScale * 1.5,
-            duration: 500,
+            duration: gameVars.gameManualSlowSpeed * 500,
             ease: 'Cubic.easeOut',
             alpha: 0,
             onStart: () => {

@@ -311,7 +311,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">misc/credits - Copy.png</key>
             <key type="filename">misc/credits.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

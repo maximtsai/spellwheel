@@ -805,7 +805,7 @@ function showMainMenuButtons() {
                 "Small_Swoosh - 1.wav by SoundFlakes\n-- https://freesound.org/s/416468/\n- License: Attribution 4.0";
             let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'paper.png').setDepth(100000).setScale(0.975);
             let creditsPaper =PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 1, 'misc', 'credits.png').setDepth(100000).setScale(0.975);
-            let discoverText = PhaserScene.add.text(gameConsts.halfWidth - 38, gameConsts.halfHeight + 206, "DISCOVER MORE IN OUR\nEXCLUSIVE DIGITAL ARTBOOK!", {fontFamily: 'germania', fontSize: 23.5, color: '#452127', align: 'center', lineSpacing: -5}).setOrigin(0.5, 0.25).setDepth(100000).setAlpha(0.3).setScale(0.975);
+            let discoverText = PhaserScene.add.text(gameConsts.halfWidth - 38, gameConsts.halfHeight + 142, "DISCOVER MORE IN OUR\nEXCLUSIVE DIGITAL ARTBOOK!", {fontFamily: 'germania', fontSize: 23.5, color: '#452127', align: 'center', lineSpacing: -5}).setOrigin(0.5, -1).setDepth(100000).setAlpha(0.3).setScale(1.03);
             // let maximText = PhaserScene.add.text(gameConsts.halfWidth - 270, gameConsts.halfHeight - 206, "Programming & Game Design", {fontFamily: 'Arial', fontSize: 18, color: '#452127', align: 'left', lineSpacing: -5}).setOrigin(0, 0.25).setDepth(100000).setAlpha(0.3).setScale(0.975);
             // maximText.setFontStyle('bold');
 
@@ -939,7 +939,7 @@ function showMainMenuButtons() {
                         scaleX: 1.8,
                         scaleY: 1.8,
                         ease: 'Quad.easeOut',
-                        alpha: 0.5,
+                        alpha: 0,
                     });
                 }
             });

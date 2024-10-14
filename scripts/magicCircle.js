@@ -681,13 +681,11 @@ const ENABLE_KEYBOARD = true;
 
      manualSetTimeSlowRatio(slowRatio = 1, multiplier = 1) {
         this.setTimeSlowRatio(slowRatio / multiplier, true);
-        ////
-         console.log("manualSetTimeSlowRatio ", slowRatio);
          if (slowRatio > 0.999) {
              messageBus.publish('clearGameSlow');
          } else {
              // messageBus.publish('setGameSlow', 0.2 + 0.8 * slowRatio);
-             let slowAmt = 0.4;
+             let slowAmt = 0.46;
              gameVars.gameManualSlowSpeed = slowAmt;
              gameVars.gameManualSlowSpeedInverse = 1 / gameVars.gameManualSlowSpeed;
              PhaserScene.tweens.timeScale = slowAmt;
@@ -2264,11 +2262,12 @@ const ENABLE_KEYBOARD = true;
 
      enableVoidArm(delay, duration, scale) {
         let useBig = scale > 1.3;
+        let delayAdjusted = gameVars.gameManualSlowSpeed * delay;
          this.voidArm.setScale(useBig ? scale * 0.95 : scale * 1.15);
          this.scene.tweens.add({
              targets: this.voidArm,
-             delay: delay,
-             duration: gameVars.gameManualSlowSpeed * duration - 900,
+             delay: delayAdjusted,
+             duration: gameVars.gameManualSlowSpeed * (duration - 900),
              y: 210,
              onComplete: () => {
                  this.scene.tweens.add({
@@ -2281,7 +2280,7 @@ const ENABLE_KEYBOARD = true;
          });
          this.scene.tweens.add({
              targets: this.voidArm,
-             delay: delay,
+             delay: delayAdjusted,
              duration: gameVars.gameManualSlowSpeed * 350,
              ease: useBig ? 'Back.easeOut' : 'Quad.easeOut',
              easeParams: [5],
@@ -2294,8 +2293,8 @@ const ENABLE_KEYBOARD = true;
              this.voidArm2.setScale(useBig ? scale * 0.95 : scale * 1.15);
              this.scene.tweens.add({
                  targets: this.voidArm2,
-                 delay: delay,
-                 duration: gameVars.gameManualSlowSpeed * duration - 900,
+                 delay: delayAdjusted,
+                 duration: gameVars.gameManualSlowSpeed * (duration - 900),
                  y: 210,
                  onComplete: () => {
                      this.scene.tweens.add({
@@ -2308,7 +2307,7 @@ const ENABLE_KEYBOARD = true;
              });
              this.scene.tweens.add({
                  targets: this.voidArm2,
-                 delay: delay,
+                 delay: delayAdjusted,
                  duration: gameVars.gameManualSlowSpeed * 350,
                  ease: 'Back.easeOut',
                  easeParams: [5],

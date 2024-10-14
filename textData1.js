@@ -13,7 +13,7 @@ let textData = {
 
     "matter_strike_desc": {
         "en_us": "Deal 12 damage",
-        "fr": "Inflige 12 points de dégâts",
+        "fr": "Inflige 12 points\nde dégâts",
         "zh_tw": "造成12點傷害",
         "zh_cn": "造成 12 点伤害",
         "ru": "Наносит 12 ед. урона",
@@ -255,22 +255,22 @@ let textData = {
         "jp": "次の7つの呪文の凍結時間。\n繰り返し使用すると弱くなります。"
     },
     "void_strike_desc": {
-        "en_us": "Attack 3 times\nafter a delay,\neach attack\ndeals 2% enemy\ncurrent HP",
-        "fr": "Attaque 3 fois après\nun délai, chaque\nattaque infligeant 2%\ndes PV actuels\nde l’ennemi.",
-        "zh_tw": "延遲後攻擊 3 次，\n每次攻擊造成 2%\n敵人當前生命值",
-        "zh_cn": "延迟后再攻击 3 次，\n每次攻伤害 2%\n敌人当前生命值",
-        "ru": "Атаковать 3 раза\nпосле задержки.\nКаждая атака забирает\n2% от текущего\nздоровья врага.",
-        "es": "Ataca 3 veces después\nde un retraso, cada\nataque inflige un\n2% de los PS\nactuales del enemigo",
-        "jp": "遅延後に3回攻撃し、\n各攻撃で敵の現在のHP\nの2%にダメージを与える"
+        "en_us": "Attack 3 times\nafter a delay,\neach attack deals\n2.5% enemy\ncurrent HP",
+        "fr": "Attaque 3 fois après\nun délai, chaque\nattaque infligeant\n2.5% des PV\nactuels de l’ennemi.",
+        "zh_tw": "延遲後攻擊 3 次，\n每次攻擊造成 2.5%\n敵人當前生命值",
+        "zh_cn": "延迟后再攻击 3 次，\n每次攻伤害 2.5%\n敌人当前生命值",
+        "ru": "Атаковать 3 раза\nпосле задержки.\nКаждая атака забирает\n2.5% от текущего\nздоровья врага.",
+        "es": "Ataca 3 veces después\nde un retraso, cada\nataque inflige un\n2.5% de los PS\nactuales del enemigo",
+        "jp": "遅延後に3回攻撃し、\n各攻撃で敵の現在のHP\nの2.5%にダメージを与える"
     },
     "void_strike_desc_long": {
-        "en_us": "Attack 3 times after a delay,\neach attack deals 2% enemy current HP",
-        "fr": "Attaque 3 fois après un délai, chaque\nattaque infligeant 2% des PV actuels de l’ennemi.",
-        "zh_tw": "延遲後攻擊 3 次，每次攻擊\n造成 2%敵人當前生命值",
-        "zh_cn": "延迟后攻击 3 次，每次攻击\n造成 2%敌人当前生命值",
-        "ru": "Атаковать 3 раза после задержки. Каждая атака\nзабирает 2% от текущего здоровья врага.",
-        "es": "Ataca 3 veces después de un retraso, cada ataque\ninflige un 2% de los PS actuales del enemigo",
-        "jp": "遅延後に3回攻撃し、各攻撃で敵の\n現在のHPの2%にダメージを与える"
+        "en_us": "Attack 3 times after a delay,\neach attack deals 2.5% enemy current HP",
+        "fr": "Attaque 3 fois après un délai, chaque attaque\ninfligeant 2.5% des PV actuels de l’ennemi.",
+        "zh_tw": "延遲後攻擊 3 次，每次攻擊\n造成 2.5%敵人當前生命值",
+        "zh_cn": "延迟后攻击 3 次，每次攻击\n造成 2.5%敌人当前生命值",
+        "ru": "Атаковать 3 раза после задержки. Каждая атака\nзабирает 2.5% от текущего здоровья врага.",
+        "es": "Ataca 3 veces después de un retraso, cada ataque\ninflige un 2.5% de los PS actuales del enemigo",
+        "jp": "遅延後に3回攻撃し、各攻撃で敵の\n現在のHPの2.5%にダメージを与える"
     },
     "void_enhance_desc": {
         "en_us": "Your attacks\npermanently gain\n+1 damage",

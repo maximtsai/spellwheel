@@ -777,6 +777,7 @@ function showMainMenuButtons() {
             }
         },
         onMouseUp: () => {
+            globalObjects.magicCircle.disableMovement();
             //showCutscene1();
             // clearOnlyMenuButtons()
             // rollCredits();
@@ -792,12 +793,7 @@ function showMainMenuButtons() {
             let tab2 = PhaserScene.add.image(gameConsts.halfWidth - 90, gameConsts.halfHeight - 278, 'ui', 'paperTab.png').setDepth(99999).setAlpha(0);
             let tab2Icon = PhaserScene.add.text(tab2.x, tab2.y - 55, "PAGE 2", {fontFamily: 'germania', fontSize: 18, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(99999).setAlpha(0);
 
-            let text1 = "Game by Maxim Tsai\n" +
-                "Character art by Theresa Kao\n@mothmeatstore\n" +
-                "Background and wheel art by Alex Volchek\n@love_sickening\n" +
-                "SFX and Battle Music by Chandler G\n@rocad_guitar\n" +
-                "Robot Voice and Music by @eidendalion\n" +
-                "Special thanks to @hby, Victor Kao,\nand Alex Arango";
+
             let text2 = "Additional Credits:\n\n\"Magic Escape Room\" by Kevin MacLeod\n(incompetech.com)\n" +
                 "Licensed under Creative Commons:\nBy Attribution 4.0 License\n\n" +
                 "Rocks - Effects - Source Recordings\n- 05 by GregorQuendel\n- https://freesound.org/s/424997/\n- License: Attribution 4.0\n\n" +
@@ -805,36 +801,19 @@ function showMainMenuButtons() {
                 "R4_00328-2_EXP.wav by kevp888\n- https://freesound.org/s/636777/\n- License: Attribution 4.0\n\n"+
                 "Big Bell_4.wav by eardeer\n- https://freesound.org/s/337565/\n- License: Attribution 4.0\n\n"+
                 "Unlocking lock.wav by Stefan21100190\n- https://freesound.org/s/593112/\n- License: Attribution 4.0\n\n"+
-                "Sound Effects by Lara Sluyter\n(LARA’S HORROR SOUNDS on YouTube)";
+                "Sound Effects by Lara Sluyter\n(LARA’S HORROR SOUNDS on YouTube)\n\n"+
+                "Small_Swoosh - 1.wav by SoundFlakes\n-- https://freesound.org/s/416468/\n- License: Attribution 4.0";
             let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'paper.png').setDepth(100000).setScale(0.975);
-            let creditsText = PhaserScene.add.text(gameConsts.halfWidth, creditsUI.y - 285, text1, {fontFamily: 'germania', fontSize: 21, color: '#000000', align: 'center'}).setOrigin(0.5, 0).setDepth(100000).setAlpha(0.1);
-            let artbook = PhaserScene.add.image(gameConsts.halfWidth, creditsUI.y + 124, 'misc', 'artbook.png').setDepth(100000).setScale(0.94).setAlpha(0.9);
+            let creditsPaper =PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 1, 'misc', 'credits.png').setDepth(100000).setScale(0.975);
+            let discoverText = PhaserScene.add.text(gameConsts.halfWidth - 38, gameConsts.halfHeight + 206, "DISCOVER MORE IN OUR\nEXCLUSIVE DIGITAL ARTBOOK!", {fontFamily: 'germania', fontSize: 23.5, color: '#452127', align: 'center', lineSpacing: -5}).setOrigin(0.5, 0.25).setDepth(100000).setAlpha(0.3).setScale(0.975);
+            let maximText = PhaserScene.add.text(gameConsts.halfWidth - 270, gameConsts.halfHeight - 206, "Programming & Game Design", {fontFamily: 'Arial', fontSize: 18, color: '#452127', align: 'left', lineSpacing: -5}).setOrigin(0, 0.25).setDepth(100000).setAlpha(0.3).setScale(0.975);
+            maximText.setFontStyle('bold');
 
-            let creditsText2 = PhaserScene.add.text(gameConsts.halfWidth - 260, creditsUI.y - 285, text2, {fontSize: 18, color: '#000000', align: 'left'}).setOrigin(0, 0).setDepth(100000).setAlpha(0);
-            PhaserScene.tweens.add({
-                targets: [creditsUI, creditsText, tab1, tab1Icon, tab2, tab2Icon],
-                duration: 180,
-                scaleX: 1,
-                scaleY: 1,
-                alpha: 1,
-            });
+            let artbook = PhaserScene.add.image(gameConsts.halfWidth + 191, creditsPaper.y + 203, 'misc', 'artbook.png').setDepth(100002).setScale(0.31).setAlpha(0.2);
 
-            PhaserScene.tweens.add({
-                targets: [artbook],
-                duration: 180,
-                alpha: 1,
-            });
-            PhaserScene.tweens.add({
-                targets: [artbook],
-                duration: 250,
-                scaleX: 1,
-                scaleY: 1,
-                easeParams: [3],
-                ease: 'Back.easeOut'
-            });
-            page1Content.push(artbook, creditsText)
-            page2Content.push(creditsText2)
-
+            let artbookGlow = PhaserScene.add.image(artbook.x - 4, artbook.y, 'blurry', 'icon_glow.png').setDepth(100001).setAlpha(1).setScale(1.8);
+            artbook.origX = artbook.x;
+            artbook.origY = artbook.y;
             let clickBlock;
             clickBlock = new Button({
                 normal: {
@@ -846,7 +825,7 @@ function showMainMenuButtons() {
                     y: gameConsts.halfHeight,
                 },
                 disable: {
-                    alpha: 0.1
+                    alpha: 0
                 },
 
                 onMouseUp: () => {
@@ -854,6 +833,144 @@ function showMainMenuButtons() {
                 }
             });
             clickBlock.setDepth(1000);
+
+            let bookButton = new Button({
+                normal: {
+                    ref: "blackPixel",
+                    x: artbook.x,
+                    y: artbook.y,
+                    alpha: 0,
+                    scaleX: 90,
+                    scaleY: 110
+                },
+                onHover: () => {
+                    artbook.setScale(0.335)
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                },
+                onHoverOut: () => {
+                    artbook.setScale(0.326)
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: () => {
+                    playSound('flip2');
+                    artbookGlow.visible = false;
+                    bookButton.setState(DISABLE);
+                    let clickBlock;
+                    clickBlock = new Button({
+                        normal: {
+                            ref: "blackPixel",
+                            scaleX: 1000,
+                            scaleY: 1000,
+                            alpha: 0.6,
+                            x: gameConsts.halfWidth,
+                            y: gameConsts.halfHeight,
+                        },
+                        disable: {
+                            alpha: 0
+                        },
+                        onMouseUp: () => {
+
+                        }
+                    });
+                    clickBlock.setDepth(100001);
+                    let actionText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 300, "<Work in Progress>\nCheck us out later!", {fontFamily: 'germania', fontSize: 30, color: '#FFFFFF', align: 'center'}).setOrigin(0.5, 0).setDepth(100001).setAlpha(0);
+                    PhaserScene.tweens.add({
+                        targets: [actionText],
+                        duration: 250,
+                        alpha: 1,
+                    });
+
+                    PhaserScene.tweens.add({
+                        targets: [artbook],
+                        duration: 220,
+                        ease: 'Back.easeOut',
+                        scaleX: 1,
+                        scaleY: 1,
+                        x: gameConsts.halfWidth,
+                        y: gameConsts.halfHeight,
+                        onComplete: () => {
+                            clickBlock.setOnMouseUpFunc(() => {
+                                bookButton.setState(NORMAL)
+                                clickBlock.destroy();
+                                actionText.destroy();
+                                PhaserScene.tweens.add({
+                                    targets: [artbook],
+                                    duration: 180,
+                                    ease: 'Cubic.easeOut',
+                                    scaleX: 0.326,
+                                    scaleY: 0.326,
+                                    x: artbook.origX,
+                                    y: artbook.origY,
+                                });
+                                if (canvas) {
+                                    canvas.style.cursor = 'default';
+                                }
+                            })
+                        }
+                    });
+                }
+            });
+            bookButton.setDepth(100000)
+
+            let creditsText2 = PhaserScene.add.text(gameConsts.halfWidth - 255, creditsUI.y - 284, text2, {fontSize: 16, color: '#000000', align: 'left'}).setOrigin(0, 0).setDepth(100000).setAlpha(0);
+            PhaserScene.tweens.add({
+                targets: [creditsUI, tab1, tab1Icon, tab2, tab2Icon, discoverText],
+                duration: 180,
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 1,
+            });
+
+            PhaserScene.tweens.add({
+                targets: [artbookGlow],
+                duration: 1500,
+                scaleX: 4.1,
+                scaleY: 4.1,
+                ease: 'Quad.easeIn',
+                alpha: 1,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        targets: [artbookGlow],
+                        duration: 1500,
+                        scaleX: 1.8,
+                        scaleY: 1.8,
+                        ease: 'Quad.easeOut',
+                        alpha: 0.5,
+                    });
+                }
+            });
+            PhaserScene.tweens.add({
+                targets: [artbookGlow],
+                duration: 3000,
+                rotation: "+=6.281",
+            });
+            PhaserScene.tweens.add({
+                targets: [creditsPaper],
+                duration: 180,
+                scaleX: 0.958,
+                scaleY: 0.958,
+                alpha: 1,
+            });
+
+            PhaserScene.tweens.add({
+                targets: [artbook],
+                duration: 180,
+                alpha: 1,
+            });
+            PhaserScene.tweens.add({
+                targets: [artbook],
+                duration: 250,
+                scaleX: 0.326,
+                scaleY: 0.326,
+                easeParams: [3],
+                ease: 'Back.easeOut'
+            });
+            page1Content.push(artbook, creditsPaper, discoverText, artbookGlow)
+            page2Content.push(creditsText2)
 
             let page1Btn = new Button({
                 normal: {
@@ -889,6 +1006,7 @@ function showMainMenuButtons() {
                 },
                 onMouseUp: () => {
                     playSound('flip1');
+                    bookButton.setState(NORMAL);
                     PhaserScene.tweens.add({
                         targets: tab1,
                         y: gameConsts.halfHeight - 305,
@@ -964,6 +1082,7 @@ function showMainMenuButtons() {
                 },
                 onMouseUp: () => {
                     playSound('flip2');
+                    bookButton.setState(DISABLE);
                     PhaserScene.tweens.add({
                         targets: tab1,
                         y: gameConsts.halfHeight - 278,
@@ -1009,14 +1128,19 @@ function showMainMenuButtons() {
                 globalObjects.options.showButton();
                 clickBlock.destroy();
                 creditsUI.destroy();
-                creditsText.destroy();
+                discoverText.destroy();
+                artbook.destroy();
+                creditsPaper.destroy();
+                bookButton.destroy();
                 creditsText2.destroy();
                 artbook.destroy();
                 tab1.destroy();
                 tab2.destroy();
                 tab1Icon.destroy();
                 tab2Icon.destroy();
+                artbookGlow.destroy();
                 sub.unsubscribe();
+                globalObjects.magicCircle.enableMovement();
                 this.closeButton.destroy();
                 if (canvas) {
                     canvas.style.cursor = 'default';
@@ -1061,14 +1185,19 @@ function showMainMenuButtons() {
                     globalObjects.options.showButton();
                     clickBlock.destroy();
                     creditsUI.destroy();
-                    creditsText.destroy();
+                    discoverText.destroy();
+                    artbook.destroy();
+                    creditsPaper.destroy();
+                    bookButton.destroy();
                     creditsText2.destroy();
                     artbook.destroy();
                     tab1.destroy();
                     tab2.destroy();
                     tab1Icon.destroy();
                     tab2Icon.destroy();
+                    artbookGlow.destroy();
                     sub.unsubscribe();
+                    globalObjects.magicCircle.enableMovement();
                     this.closeButton.destroy();
                     if (canvas) {
                         canvas.style.cursor = 'default';

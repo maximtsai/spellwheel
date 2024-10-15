@@ -2163,7 +2163,7 @@ class SpellManager {
         if (existingMultiplier > 1) {
             playSound('mind_ultimate_2', 0.95);
             newMultiplier = existingMultiplier + 2;
-            magicObj = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'mind_boost_2.png');
+            magicObj = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'mind_boost_2.png').setDepth(40);
             PhaserScene.tweens.add({
                 targets: PhaserScene.cameras.main,
                 zoom: 0.95,
@@ -2181,7 +2181,7 @@ class SpellManager {
         } else {
             playSound('mind_ultimate_1', 0.7);
 
-            magicObj = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'mind_boost.png');
+            magicObj = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'mind_boost.png').setDepth(40);
             PhaserScene.tweens.add({
                 targets: PhaserScene.cameras.main,
                 zoom: 0.988,

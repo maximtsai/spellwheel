@@ -161,7 +161,7 @@ function stopFloatingDeathTween() {
 function tweenFloatingDeath(scale = 0.75, alpha = 1, duration = 1200, ease = "Cubic.easeInOut", onComplete) {
     let fakeAlphaAdjusted = alpha < 0.15 ? alpha - 0.15 : alpha;
     stopFloatingDeathTween();
-
+    setFloatingDeathVisible(true)
     globalObjects.floatingDeath.currAnim1 = PhaserScene.tweens.add({
         targets: [globalObjects.floatingDeath, globalObjects.floatingDeath2, globalObjects.deathLeftHand, globalObjects.deathRightHand],
         scaleX: scale,

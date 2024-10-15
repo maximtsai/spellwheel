@@ -1116,6 +1116,8 @@ class Player {
         messageBus.publish("closeCombatText");
         globalObjects.textPopupManager.hideInfoText();
         globalObjects.bannerTextManager.closeBanner();
+        globalObjects.encyclopedia.hideButton();
+        globalObjects.options.hideButton();
         this.dead = true;
         this.clearAllEffects();
         messageBus.publish("playerDied");
@@ -1163,16 +1165,15 @@ class Player {
             alpha: 0.5,
             ease: 'Cubic.easeOut',
             onComplete: () => {
-                if (globalObjects.floatingDeath) {
-                    globalObjects.floatingDeath.visible = false;
-                }
-
                 this.deadBGAnim = this.scene.tweens.add({
                     targets: this.deadBG,
                     duration: 1500,
                     alpha: 1,
                     ease: 'Cubic.easeIn',
                     onComplete: () => {
+                        if (globalObjects.floatingDeath) {
+                            setFloatingDeathVisible(false)
+                        }
                         // let cheatsDisplay = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 95, getLangText('cheat_code'), {fontFamily: 'germania', fontSize: 28, color: '#EEEEEE', align: 'center'}).setDepth(1000).setStroke('#000000', 4).setVisible(false).setOrigin(0.5, 0.5);
                         this.cheatIcons = [];
                         // let levelToGet = globalObjects.currentEnemy ? globalObjects.currentEnemy.level : 2;

@@ -190,18 +190,17 @@ class SpellManager {
                         playSound('matter_strike_alt', strikeVol * 0.55).detune = detuneAmt - 150;
                         setTimeout(() => {
                             playSound('matter_strike', strikeVol).detune = detuneAmt + 50;
-                        }, 100)
-
+                        }, 100);
                     } else {
                         let sfx = playSound(useMainStrike ? 'matter_strike' : 'matter_strike_alt', strikeVol);
                         sfx.detune = detuneAmt;
                     }
-
                 },
                 onComplete: () => {
                     if (isExtraBuff) {
                         if (i == 0) {
                             let sfx2 = playSound('matter_strike_heavy', strikeVol);
+                            zoomTempSlow(0.996);
                             sfx2.detune = detuneSqrtMult * -100;
                         }
                         let rockGlow = getTempPoolObject('spells', 'rockglow.png', 'rockglow', 400);
@@ -286,7 +285,7 @@ class SpellManager {
                     // })
                 },
                 onComplete: () => {
-                    let detuneAmt = Math.floor(Math.sqrt(additionalDamage * 0.75)) * -80;
+                    let detuneAmt = Math.floor(Math.sqrt(additionalDamage * 0.65)) * -80;
                     let additionalVol = additionalDamage * 0.005;
                     if (i === 0) {
                         let randNum = Math.random()
@@ -370,6 +369,10 @@ class SpellManager {
 
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     let baseDamage = gameVars.matterPlus ? 14 : 12;
+                    if (isExtraBuff) {
+                        zoomTempSlow(0.997 - additionalDamage * 0.0001);
+                        screenShake(0.5 + additionalDamage * 0.001)
+                    }
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage, true, undefined, 'matter');
                     messageBus.publish('setPauseDur', isExtraBuff ? 25 : 15);
                     rockObj.bg.visible = false;
@@ -1080,6 +1083,8 @@ class SpellManager {
                         onStart: () => {
                             if (i === 0 && !hasSecondBuff) {
                                 setTimeout(() => {
+                                    zoomTempSlow(1.005);
+                                    screenShake(0.3 + additionalDamage * 0.0008);
                                     playSound('time_strike_buff', 0.9).detune = Math.floor(Math.random() * 50) - 100;
                                 }, 100)
                             }
@@ -1211,6 +1216,12 @@ class SpellManager {
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', spellDamage, true, undefined, 'time');
                     messageBus.publish('setPauseDur', 20);
+                    if (isPowerful) {
+                        zoomTempSlow(0.998 - additionalDamage * 0.0001);
+                        screenShake(0.35 + additionalDamage * 0.001)
+                    }
+
+
 
                     if (isPowerful && parseInt(i) === strikeObjects.length - 1) {
                         let powerfulEffect = getTempPoolObject('tutorial', 'rune_time_large.png', 'specialAttack', 1300);
@@ -2329,6 +2340,11 @@ class SpellManager {
                             let healthPercent = globalObjects.currentEnemy.getHealth() * 0.025 + additionalDamage;
                             let damageDealt = Math.ceil(healthPercent)
                             playSound('void_strike_hit');
+                            if (damageDealt > 12) {
+                                zoomTempSlow(1.007);
+                                screenShake(0.5 + damageDealt * 0.0008);
+                            }
+
                             messageBus.publish('enemyTakeDamage', damageDealt, true, undefined, 'void');
                             messageBus.publish('setPauseDur', 29);
                             messageBus.publish('inflictVoidBurn', damageDealt, 2, isPowerful);

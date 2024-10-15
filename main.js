@@ -353,3 +353,20 @@ function zoomTemp(zoomAmt) {
         duration: 200
     });
 }
+
+function zoomTempSlow(zoomAmt) {
+    PhaserScene.tweens.add({
+        targets: PhaserScene.cameras.main,
+        zoom: zoomAmt,
+        ease: "Cubic.easeIn",
+        duration: 40,
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                targets: PhaserScene.cameras.main,
+                zoom: 1,
+                ease: "Cubic.easeOut",
+                duration: 300
+            });
+        }
+    });
+}

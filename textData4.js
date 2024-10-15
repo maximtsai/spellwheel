@@ -552,7 +552,7 @@ let textData4 = {
     },
     "superdummy_void": {
         "en_us": "Deals lots of\n%health damage\n             +",
-        "fr": "Inflige beaucoup\nde %dégâts de\nsanté\n              +",
+        "fr": "Inflige beaucoup\nde %dégâts de\nsanté\n             +",
         "zh_tw": "造成大量\n%生命值傷害\n          +",
         "zh_cn": "造成大量\n%生命值伤害\n          +",
         "ru": "Наносит много % урона от здоровья +",

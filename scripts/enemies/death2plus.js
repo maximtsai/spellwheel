@@ -28,23 +28,23 @@
              }
          })
          let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 600);
-         tempPulse.setDepth(-2).setPosition(x, y + 15).setScale(0.2).setAlpha(1).setRotation(0);
+         tempPulse.setDepth(-2).setPosition(x, y + 15).setScale(0).setAlpha(1).setRotation(0);
          this.addTween({
              targets: tempPulse,
              scaleX: 8,
              scaleY: 8,
-             duration: 560,
+             duration: 540,
          })
          this.addTween({
              targets: tempPulse,
              ease: 'Cubic.easeIn',
-             duration: 560,
+             duration: 540,
              alpha: 0,
          });
          this.addTween({
              targets: tempPulse,
              rotation: "+=10",
-             duration: 560,
+             duration: 540,
          })
 
 
@@ -53,7 +53,7 @@
              targets: this.whiteoutTemp,
              scaleX: 21,
              scaleY: 21,
-             duration: 560,
+             duration: 540,
              ease: "Cubic.easeInOut",
              onComplete: () => {
                  this.whiteoutTemp.destroy();
@@ -61,9 +61,10 @@
          });
 
          this.addTween({
+             delay: 50,
              targets: this.whiteoutTemp,
              alpha: 0,
-             duration: 560,
+             duration: 490,
              ease: "Cubic.easeIn"
          })
          this.addTimeout(() => {
@@ -235,25 +236,25 @@
         this.quickZoom(img_now, 1.1)
         screenShake(3);
         zoomTemp(1.02);
-        playSound('stomp', 0.5);
+        playSound('stomp', 0.6);
         this.addDelay(() => {
             let img_give = this.addImage(gameConsts.halfWidth + 145, 150, 'deathfinal', 'x_give.png').setDepth(9999).setScale(1.16);
             this.quickZoom(img_give, 1.1)
             screenShake(4);
             zoomTemp(1.02);
-            playSound('stomp', 0.6);
+            playSound('stomp', 0.7);
             this.addDelay(() => {
                 let img_me = this.addImage(gameConsts.halfWidth - 145, isMobile ? 360 : 348, 'deathfinal', 'x_me.png').setDepth(9999).setScale(1.16);
                 this.quickZoom(img_me, 1.1)
                 screenShake(5);
                 zoomTemp(1.02);
-                playSound('stomp', 0.7);
+                playSound('stomp', 0.8);
                 this.addDelay(() => {
                     let img_your = this.addImage(gameConsts.halfWidth + 145, isMobile ? 360 : 348, 'deathfinal', 'x_your.png').setDepth(9999).setScale(1.16);
                     this.quickZoom(img_your, 1.1)
                     screenShake(6);
                     zoomTemp(1.02);
-                    playSound('stomp', 0.8);
+                    playSound('stomp', 0.85);
                     this.addDelay(() => {
                         let img_all = this.addSprite(gameConsts.halfWidth, isMobile ? 625 : 600, 'deathfinal', 'x_all2.png').setDepth(9999).setScale(1.22);
                         this.quickZoom(img_all, 1.1)
@@ -1882,7 +1883,9 @@
      }
 
      emergencyShield() {
-         this.currentPowerText.visible = false;
+         if (this.currentPowerText) {
+             this.currentPowerText.visible = false;
+         }
          this.healFromAttacks = false;
          this.interruptCurrentAttack();
          this.clearHandObjects();
@@ -3140,7 +3143,6 @@
             }, () => {
                 globalObjects.bannerTextManager.setForcePause(true);
                 this.deathFallTemp.currAnim.stop();
-                console.log("first end");
                 if (this.deathFallTemp.currAnim2) {
                     this.deathFallTemp.currAnim2.stop();
                 }
@@ -3327,15 +3329,15 @@
                         ]);
                         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 20, 0);
                         globalObjects.bannerTextManager.showBanner(0);
-
                         globalObjects.bannerTextManager.setDialogFunc([
-                            null,
+                            () => {},
                             () => {playSound('whoosh', 0.65).detune = -100},
                             () => {playSound('whoosh', 0.6).detune = -250},
-                            () => {playSound('whoosh', 0.5).detune = -350},
-                            , () => {
+                            () => {
+                                playSound('whoosh', 0.5).detune = -350
+                            },
+                            () => {
                                  playSound("whoosh");
-                                 console.log("second end")
                                 globalObjects.bannerTextManager.setForcePause(true);
                                 deathFallTemp.currAnim.stop();
                                 this.deathFallTempWhite = this.addImage(deathFallTemp.x, deathFallTemp.y, "deathfinal", 'death2fall_white.png').setScale(deathFallTemp.scaleX).setAlpha(0).setDepth(deathFallTemp.depth);

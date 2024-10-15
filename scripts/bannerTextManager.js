@@ -36,6 +36,7 @@ class BannerTextManager {
 
     showBanner(haveBGDarken = 0.5, isSmall = false, pauseTime) {
         this.isShowing = true;
+        this.dialogIndex = 0;
         this.setText(this.dialog[this.dialogIndex]);
         if (this.funcArray[this.dialogIndex]) {
             this.funcArray[this.dialogIndex]();
@@ -165,7 +166,7 @@ class BannerTextManager {
                         targets: [this.text],
                         alpha: 1,
                         duration: 250,
-                        completeDelay: 150,
+                        completeDelay: 200,
                         onComplete: () => {
                             this.continuePause = false;
                         }

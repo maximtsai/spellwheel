@@ -1977,6 +1977,7 @@ const ENABLE_KEYBOARD = true;
             sprite.setDepth(119);
             sprite.shouldDelete = hasDelete;
         }
+        let isAttack = elemName === 'rune_strike';
         sprite.canUse = false;
         let castCircle = poolManager.getItemFromPool('castCircle');
         if (!castCircle) {
@@ -2048,6 +2049,7 @@ const ENABLE_KEYBOARD = true;
                     alpha: 0.5
                 });
                 let stopForceAlignmentDelay = this.keyboardCasted ? 100 : 0;
+                let attackAlignDelay = isAttack ? 100 : 0;
                 let reEnableDelay = this.keyboardCasted ? 200 : 0;
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * stopForceAlignmentDelay, () => {
                     this.forcingAlignment = false;
@@ -2060,7 +2062,7 @@ const ENABLE_KEYBOARD = true;
                     onComplete: () => {
                         let rotateDelay = this.outerDragDisabled ? 650 : 0;
                         this.focusLinesOn.currAnim = this.scene.tweens.add({
-                            delay: reEnableDelay + rotateDelay,
+                            delay: reEnableDelay + rotateDelay + attackAlignDelay,
                             targets: this.focusLinesOn,
                             duration: gameVars.gameManualSlowSpeed * 150,
                             alpha: 0.65,
@@ -2091,7 +2093,7 @@ const ENABLE_KEYBOARD = true;
                         PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 230, () => {
                             this.bufferedCastAvailable = true;
                         });
-                        PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * (25 + reEnableDelay), () => {
+                        PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * (25 + reEnableDelay + attackAlignDelay), () => {
                             if (!this.outerDragDisabled) {
                                 this.castDisabled = false;
                             }

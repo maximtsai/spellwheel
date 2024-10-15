@@ -333,7 +333,7 @@
                              playSound('rock_crumble', 0.35)
                              this.handShieldTemp.currAnim.stop();
                              this.handShieldTemp.alpha = 1;
-                             this.createHandShield(gameVars.isHardMode ? 10 : 9);
+                             this.createHandShield(gameVars.isHardMode ? 10 : 8);
 
                              this.addTween({
                                  delay: 400,
@@ -614,7 +614,7 @@
              [
                  // 0
                  {
-                     name: gameVars.isHardMode ? "VOID SHIELD? #10" : "VOID SHIELD? #9",
+                     name: gameVars.isHardMode ? "VOID SHIELD? #10" : "VOID SHIELD? #8",
                      chargeAmt: 888,
                      chargeMult: 20,
                      finishDelay: 2300,
@@ -633,7 +633,7 @@
              [
                  {
                      name: "CHARGING...",
-                     chargeAmt: gameVars.isHardMode ? 300 : 700,
+                     chargeAmt: gameVars.isHardMode ? 350 : 700,
                      damage: 0,
                  },
                  {

@@ -3,8 +3,6 @@ class Enemy {
         this.scene = scene;
         this.level = level;
         gameVars.currLevel = level;
-        globalObjects.textPopupManager.hideInfoText();
-        globalObjects.bannerTextManager.closeBanner();
         this.initPreStats();
         this.initStats();
         this.initAttacks();

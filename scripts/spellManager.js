@@ -200,7 +200,9 @@ class SpellManager {
                     if (isExtraBuff) {
                         if (i == 0) {
                             let sfx2 = playSound('matter_strike_heavy', strikeVol);
-                            zoomTempSlow(0.996);
+                            if (additionalDamage >= 12) {
+                                zoomTempSlow(0.996);
+                            }
                             sfx2.detune = detuneSqrtMult * -100;
                         }
                         let rockGlow = getTempPoolObject('spells', 'rockglow.png', 'rockglow', 400);
@@ -1083,8 +1085,6 @@ class SpellManager {
                         onStart: () => {
                             if (i === 0 && !hasSecondBuff) {
                                 setTimeout(() => {
-                                    zoomTempSlow(1.005);
-                                    screenShake(0.3 + additionalDamage * 0.0008);
                                     playSound('time_strike_buff', 0.9).detune = Math.floor(Math.random() * 50) - 100;
                                 }, 100)
                             }
@@ -1094,6 +1094,8 @@ class SpellManager {
                                 return;
                             }
                             if (i === 0) {
+                                zoomTempSlow(1.005);
+                                screenShake(0.3 + additionalDamage * 0.0008);
                                 playSound('time_strike_buff', 1).detune = -Math.floor(Math.random() * 50) - 375;
                             }
                             let randRotMultiplied = randRotAmt * 1.8;

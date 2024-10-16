@@ -1871,7 +1871,7 @@ const ENABLE_KEYBOARD = true;
             if (!hasDelete) {
                 this.elementsAnimArray[elemName] = sprite;
             }
-            sprite.setDepth(119);
+            sprite.setDepth(130);
             sprite.shouldDelete = hasDelete;
         }
         sprite.canUse = false;
@@ -1974,7 +1974,7 @@ const ENABLE_KEYBOARD = true;
             if (!hasDelete) {
                 this.embodimentsAnimArray[elemName] = sprite;
             }
-            sprite.setDepth(119);
+            sprite.setDepth(130);
             sprite.shouldDelete = hasDelete;
         }
         let isAttack = elemName === 'rune_strike';

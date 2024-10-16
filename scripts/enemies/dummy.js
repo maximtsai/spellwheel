@@ -604,6 +604,9 @@
         if (this.glowHealth) {
             this.glowHealth.destroy();
         }
+        if (this.currDummyAnim) {
+            this.currDummyAnim.stop();
+        }
         globalObjects.textPopupManager.hideInfoText();
 
         this.x += 10;
@@ -629,7 +632,14 @@
              duration: 1000,
              onComplete: () => {
                  this.x -= 80;
-                 this.y += 39;
+                 this.y = 268;
+                 this.sprite.y = this.y;
+                 this.addTween({
+                     targets: this.sprite,
+                     y: 268,
+                     ease: 'Cubic.easeOut',
+                     duration: 100,
+                 });
                  this.setSprite('dummy_broken.png', this.sprite.scaleX);
                  this.sprite.setRotation(0);
                  this.sprite.setOrigin(0.85, 0.78);
@@ -807,9 +817,9 @@
                      }
                  },
                  {
-                     name: ";50",
+                     name: gameVars.isHardMode ? ";50" : ";40",
                      chargeAmt: 700,
-                     damage: 50,
+                     damage: gameVars.isHardMode ? 50 : 40,
                      isBigMove: true,
                      attackFinishFunction: () => {
                          playSound('punch');

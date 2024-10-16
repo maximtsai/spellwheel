@@ -907,7 +907,7 @@
                  {
                      name: "|6x3 ",
                      announceName: "ASSAULT",
-                     chargeAmt: 550,
+                     chargeAmt: 500,
                      damage: 6,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_pullback.png',

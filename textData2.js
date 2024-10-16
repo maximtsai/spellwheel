@@ -736,13 +736,13 @@ let textData2 = {
         "jp": "呪文をどの順番で使うかは\n慎重に考える必要があります。"
     },
     "level1_train_diag_c": {
-        "en_us": "I can do more damage if I follow up\nMind+Strike with Matter+Strike.",
-        "fr": "Je peux faire plus de\ndégâts si je fais suivre\nEsprit+Frappe avec Matière+Frappe.",
-        "zh_tw": "如果我用 Matter+Strike 跟進\nMind+Strike，我可以造成更多傷害。",
-        "zh_cn": "如果我用 Matter+Strike 跟进\nMind+Strike，我可以造成更多伤害。",
-        "ru": "Я могу нанести больше урона, если\nпосле Mind+Strike нажму Matter+Strike.",
-        "es": "Puedo hacer más daño si sigo\nMente+Golpe con Materia+Golpe.",
-        "jp": "マインド+ストライクにマター+\nストライクを付与すれば、\nより多くのダメージを与えることができます。"
+        "en_us": "I can do more damage if I follow up\nEnergy Strike with Matter Strike.",
+        "fr": "Je peux faire plus de\ndégâts si je fais suivre\nEnergy Strike avec Matter Strike.",
+        "zh_tw": "如果我先用 Energy Strike，其次用\nMatter Strike，我可以造成更多伤害。",
+        "zh_cn": "如果我先用 Energy Strike，其次用\nMatter Strike，我可以造成更多伤害。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "level1_train_tut_a": {
         "en_us": "Goal: Defeat the\nenemy in just\n4 spells",

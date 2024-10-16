@@ -156,6 +156,7 @@
                     onComplete: () => {
                         playSound('magic', 0.6);
                         this.heal(this.healthMax);
+                        this.clearEffects();
                         this.numTimesHealed++
                         messageBus.publish('animateHealNum', this.x, this.y - 50, '+' + this.healthMax, 0.5 + Math.sqrt(this.healthMax) * 0.2);
                         if (!this.healSprite) {

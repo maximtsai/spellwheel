@@ -630,7 +630,7 @@ class Encyclopedia {
 
     hideEncyclopedia() {
         if (!this.canClose) {
-            return;
+            return false;
         }
         this.canClose = false;
 
@@ -649,6 +649,7 @@ class Encyclopedia {
         for (let i = 0; i < this.listOfButtonsToDisable.length; i++) {
             this.listOfButtonsToDisable[i].setState(DISABLE);
         }
+        return true;
     }
 
     showButton() {

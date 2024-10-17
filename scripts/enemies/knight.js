@@ -1006,20 +1006,16 @@
                 {
                      name: "PREPARING... ",
                     isPassive: true,
-                     chargeAmt: 500,
-                     damage: -1,
-                     attackStartFunction: () => {
-                         this.voidTentacleFront.visible = true;
-                         this.voidTentacleBack.visible = true;
-                     },
-                     attackFinishFunction: () => {
-                         this.currentAttackSetIndex = 6;
-                         this.nextAttackIndex = 0;
-                         this.voidTentacleFront.visible = true;
-                         this.voidTentacleBack.visible = true;
-                     },
+                     chargeAmt: 450,
+                    startFunction: () => {
+                        this.currentAttackSetIndex = 6;
+                        this.nextAttackIndex = 0;
+                    },
+                    finaleFunction: () => {
+                        this.voidTentacleFront.visible = true;
+                        this.voidTentacleBack.visible = true;
+                    }
                  },
-
              ],
              [
                  {
@@ -1144,8 +1140,6 @@
                      name: "ENRAGED",
                      chargeAmt: 500,
                      chargeMult: 12,
-                     damage: -1,
-
                      transitionFast: true,
                      prepareSprite: 'void_knight_3.png',
                      startFunction: () => {

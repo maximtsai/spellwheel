@@ -665,7 +665,7 @@ function cleanupIntro() {
         globalObjects.encyclopedia.hideButton();
         globalObjects.options.hideButton();
     }
-
+    handleGlobalKeyPresses();
 }
 
 function locketFlash() {
@@ -856,8 +856,30 @@ function setupPlayer() {
     globalObjects.options = new Options(PhaserScene, gameConsts.width - 27, 27);
 }
 
-function onCreditsButtonClicked() {
-    globalObjects.creditsText.visible = true;
+function handleGlobalKeyPresses() {
+    globalObjects.currentOpenedPopups = [];
+    messageBus.subscribe('toggleCancelScreen', () => {
+        if (globalObjects.currentOpenedPopups.length > 0) {
+            let topFunc = globalObjects.currentOpenedPopups[globalObjects.currentOpenedPopups.length - 1];
+            let success = topFunc(false);
+            if (success) {
+                globalObjects.currentOpenedPopups.pop();
+            }
+        } else {
+            globalObjects.options.showOptions();
+        }
+    });
+}
+
+function addPopup(closeFunc) {
+    globalObjects.currentOpenedPopups.push(closeFunc);
+    if (globalObjects.length === 4) {
+        console.warn("unexpected number of popups");
+    }
+}
+
+function removePopup() {
+    globalObjects.currentOpenedPopups.pop();
 }
 
 // function repeatFlash() {

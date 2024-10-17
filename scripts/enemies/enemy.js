@@ -259,6 +259,11 @@ class Enemy {
         this.chargeBarAngry.setDepth(9);
         this.chargeBarAngry.visible = false;
 
+        this.chargeBarFlash1 = this.scene.add.image(x, this.chargeBarMax.y, 'whitePixel').setAlpha(0).setDepth(9);
+        this.chargeBarFlash2 = this.scene.add.image(x, this.chargeBarMax.y, 'whitePixel').setAlpha(0).setDepth(9);
+        this.chargeBarFlash1.scaleY = this.chargeBarMax.scaleY;
+        this.chargeBarFlash2.scaleY = this.chargeBarMax.scaleY;
+
         this.chargeBarEst1 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'soft_blue_pixel.png');
         this.chargeBarEst1.setScale(6.9, this.chargeBarMax.scaleY - 2);
         this.chargeBarEst1.setOrigin(1, 0.5);
@@ -482,8 +487,17 @@ class Enemy {
                 } else if (cheats.calmEnemies) {
                     increaseMult = 1 + increaseMult * 0.6;
                 }
-                this.attackCharge += timeChange * increaseMult * this.slowMult;
-                this.castAggravateCharge = 0;
+                let castAggravateBonus = 0;
+                if (this.castAggravateCharge > 0) {
+                    this.castAggravateCharge -= timeChange;
+                    if (this.castAggravateCharge >= 0) {
+                        castAggravateBonus = timeChange;
+                    } else {
+                        castAggravateBonus = timeChange + this.castAggravateCharge;
+                    }
+                }
+                this.attackCharge += timeChange * increaseMult * this.slowMult + castAggravateBonus;
+
             } else {
                 let almostDone = this.attackCharge > this.nextAttackChargeNeeded - 67;
                 if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone && this.castAggravateCharge <= 0) {
@@ -568,8 +582,8 @@ class Enemy {
                 if (this.nextAttack.damage !== undefined && this.nextAttack.damage !== 0) {
                     this.chargeBarReady1.setAlpha(1).setScale(0.9, 0.5);
                     this.chargeBarReady2.setAlpha(1).setScale(0.9, 0.5);
-                    this.chargeBarReady1.x = this.chargeBarMax.x - this.chargeBarMax.scaleX * 1;
-                    this.chargeBarReady2.x = this.chargeBarMax.x + this.chargeBarMax.scaleX * 1;
+                    this.chargeBarReady1.x = this.chargeBarMax.x - this.chargeBarMax.scaleX;
+                    this.chargeBarReady2.x = this.chargeBarMax.x + this.chargeBarMax.scaleX;
                     this.chargeBarReadyAnim = this.scene.tweens.add({
                         targets: [this.chargeBarReady1, this.chargeBarReady2],
                         scaleX: 1.25,
@@ -603,6 +617,91 @@ class Enemy {
                             });
                         }
                     });
+
+                    if (this.nextAttack.isBigMove) {
+                        this.chargeBarFlash1.setAlpha(1).setScale(0, this.chargeBarMax.scaleY);
+                        this.chargeBarFlash1.x = this.chargeBarMax.x;
+                        this.chargeBarFlash2.setAlpha(1).setScale(0, this.chargeBarMax.scaleY);
+                        this.chargeBarFlash2.x = this.chargeBarMax.x;
+                        let goalPos1X = this.chargeBarMax.x - this.chargeBarMax.scaleX;
+                        let goalPos2X = this.chargeBarMax.x + this.chargeBarMax.scaleX;
+                        let totalDur = 150 + Math.floor(this.chargeBarMax.scaleX);
+                        this.scene.tweens.add({
+                            targets: this.chargeBarFlash1,
+                            x: this.chargeBarMax.x - this.chargeBarMax.scaleX * 0.5,
+                            scaleX: this.chargeBarMax.scaleX * 0.5,
+                            ease: 'Quart.easeOut',
+                            duration: totalDur - 20,
+                            completeDelay: 150,
+                            onComplete: () => {
+                                this.chargeBarFlash1.scaleY = this.chargeBarMax.scaleY + 6;
+                                this.chargeBarFlash2.scaleY = this.chargeBarFlash1.scaleY;
+                                this.scene.tweens.add({
+                                    delay: 20,
+                                    targets: [this.chargeBarFlash1, this.chargeBarFlash2],
+                                    scaleY: this.chargeBarMax.scaleY,
+                                    ease: 'Cubic.easeOut',
+                                    duration: 150,
+                                })
+                                this.scene.tweens.add({
+                                    targets: this.chargeBarFlash1,
+                                    x: goalPos1X,
+                                    scaleX: 0,
+                                    ease: 'Quart.easeOut',
+                                    duration: totalDur,
+                                    onComplete: () => {
+                                        this.chargeBarFlash1.setAlpha(0);
+                                    }
+                                })
+                            }
+                        });
+                        this.scene.tweens.add({
+                            targets: this.chargeBarFlash2,
+                            x: this.chargeBarMax.x + this.chargeBarMax.scaleX * 0.5,
+                            scaleX: this.chargeBarMax.scaleX * 0.5,
+                            ease: 'Quart.easeOut',
+                            duration: totalDur - 20,
+                            completeDelay: 130,
+                            onComplete: () => {
+                                this.scene.tweens.add({
+                                    targets: this.chargeBarFlash2,
+                                    x: goalPos2X,
+                                    scaleX: 0,
+                                    ease: 'Quart.easeOut',
+                                    duration: totalDur,
+                                    onComplete: () => {
+                                        this.chargeBarFlash2.setAlpha(0);
+                                    }
+                                })
+                            }
+                        });
+                    } else {
+                        this.chargeBarFlash1.setAlpha(1).setScale(0, this.chargeBarMax.scaleY);
+                        this.chargeBarFlash1.x = this.chargeBarMax.x - this.chargeBarMax.scaleX;
+                        let goalPosX = this.chargeBarMax.x + this.chargeBarMax.scaleX;
+                        let totalDur = 100 + Math.floor(this.chargeBarMax.scaleX);
+
+                        this.scene.tweens.add({
+                            targets: this.chargeBarFlash1,
+                            x: this.chargeBarMax.x,
+                            scaleX: this.chargeBarMax.scaleX,
+                            ease: 'Cubic.easeOut',
+                            duration: totalDur,
+                            completeDelay: 120,
+                            onComplete: () => {
+                                this.scene.tweens.add({
+                                    targets: this.chargeBarFlash1,
+                                    x: goalPosX,
+                                    scaleX: 0,
+                                    ease: 'Cubic.easeOut',
+                                    duration: totalDur,
+                                    onComplete: () => {
+                                        this.chargeBarFlash1.setAlpha(0);
+                                    }
+                                })
+                            }
+                        })
+                    }
                 }
 
                 this.chargeBarWarning.visible = true;
@@ -711,7 +810,7 @@ class Enemy {
         if (isAttack && this.statuses['mindStrike']) {
             // let xPos = this.statuses['mindStrike'].x; let yPos = this.statuses['mindStrike'].y;
             let damageToTake = Math.max(0, Math.ceil(amt));
-            this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake);
+            this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake, true);
             let damageSqrt = Math.sqrt(damageToTake);
             setTimeout(() => {
                 messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, 265, 'X2', 0.7 + damageSqrt * 0.14);

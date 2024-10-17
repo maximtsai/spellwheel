@@ -141,7 +141,7 @@ class BannerTextManager {
 
     continueDialog() {
         if (this.pauseForced || this.continuePause || !this.isShowing) {
-            return;
+            return false;
         }
 
         this.continuePause = true;
@@ -179,5 +179,6 @@ class BannerTextManager {
                 }
             });
         }
+        return true;
     }
 }

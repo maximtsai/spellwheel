@@ -488,7 +488,7 @@ let textData4 = {
         "jp": "1つのスポットでアクティブにできるシールドは1つだけです。"
     },
     "pre_fight_3a": {
-        "en_us": "\"Your skill in battle is\nquite a feat, but press on\nfurther and doom you'll meet!\"",
+        "en_us": "\"Your skill in battle is quite\na feat, but press on further\nand doom you'll meet!\"",
         "fr": "\"Ton skill au combat est\nbien, mais continue\net tu verras la fin!\"",
         "zh_tw": "\"你的戰鬥技藝非凡驚艷，\n但繼續前行會厄運將現!\"",
         "zh_cn": "\"你的战斗技艺非凡惊艳，\n但继续前行会厄运将现!\"",

@@ -421,24 +421,24 @@
              yoyo: true,
              onRepeat: () => {
                  if (this.pulseFinalEnabled) {
-                     let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 1750);
-                     tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(0.65).setRotation(0);
+                     let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 1550);
+                     tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(0.6).setRotation(0);
                      this.addTween({
                          targets: tempPulse,
                          scaleX: 8,
                          scaleY: 8,
-                         duration: 1700,
+                         duration: 1500,
                      })
                      this.addTween({
                          targets: tempPulse,
                          ease: 'Cubic.easeIn',
-                         duration: 1710,
+                         duration: 1510,
                          alpha: 0,
                      });
                      this.addTween({
                          targets: tempPulse,
                          rotation: "+=20",
-                         duration: 1710,
+                         duration: 1510,
                      })
                  }
 

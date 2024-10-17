@@ -543,12 +543,23 @@ function createAnimations(scene) {
         frames: scene.anims.generateFrameNames('spells', {
             prefix: 'energyTarget',
             suffix: '.png',
-            start: 1,
-            end: 2,
+            start: 7,
+            end: 8,
             zeroPad: 1,
         }),
         frameRate: 2,
         repeat: -1
+    });
+    scene.anims.create({
+        key: 'energyTargetExplode',
+        frames: scene.anims.generateFrameNames('spells', {
+            prefix: 'energyTarget',
+            suffix: '.png',
+            start: 5,
+            end: 8,
+            zeroPad: 1,
+        }),
+        frameRate: 20,
     });
     scene.anims.create({
         key: 'runeHighlight',

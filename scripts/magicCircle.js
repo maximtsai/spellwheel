@@ -70,6 +70,7 @@ const ENABLE_KEYBOARD = true;
         this.keyD = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         this.keyQ = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
         this.keyE = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        this.keyP = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
 
         this.keyLeft = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         this.keyRight = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
@@ -118,12 +119,13 @@ const ENABLE_KEYBOARD = true;
         }
 
         if (!this.recentSkipped && (this.keyEnter.isDown || this.keySpace.isDown || this.keyEscape.isDown)) {
-            messageBus.publish("continueDialog");
+            let hasDoneStuff = globalObjects.bannerTextManager.continueDialog();
             // click through victory
             if (globalObjects.currentEnemy) {
                 if (globalObjects.currentEnemy.dieClickBlocker && !globalObjects.currentEnemy.dieClickBlocker.isDestroyed) {
                     if (globalObjects.currentEnemy.dieClickBlocker.onMouseUpFunc) {
                         globalObjects.currentEnemy.dieClickBlocker.clickMouseUp();
+                        hasDoneStuff = true;
                     }
                 }
             }
@@ -131,14 +133,29 @@ const ENABLE_KEYBOARD = true;
             if (globalObjects.lvlCloseButton && !globalObjects.lvlCloseButton.isDestroyed) {
                 if (globalObjects.lvlCloseButton.onMouseUpFunc) {
                     globalObjects.lvlCloseButton.clickMouseUp();
+                    hasDoneStuff = true;
                 }
             }
 
             this.recentSkipped = true;
             if (this.keyEscape.isDown) {
-                messageBus.publish("cancelScreen");
+                if (globalObjects.encyclopedia.canClose) {
+                    hasDoneStuff = true;
+                    messageBus.publish("cancelScreen"); // cancelScreen
+                }
+                if (globalObjects.options.canClose) {
+                    messageBus.publish("cancelScreen");
+                } else if (!hasDoneStuff) {
+                    messageBus.publish("toggleCancelScreen");
+                } else {
+                    messageBus.publish("cancelScreen");
+                }
             }
-        } else if (this.recentSkipped && !this.keyEnter.isDown && !this.keySpace.isDown && !this.keyEscape.isDown) {
+        } else if (!this.recentSkipped && this.keyP.isDown) {
+            this.recentSkipped = true;
+            messageBus.publish("toggleCancelScreen");
+
+        } else if (this.recentSkipped && !this.keyEnter.isDown && !this.keySpace.isDown && !this.keyEscape.isDown && !this.keyP.isDown) {
             this.recentSkipped = false;
         }
 
@@ -2919,6 +2936,8 @@ const ENABLE_KEYBOARD = true;
                          scaleY: 3.2,
                          ease: "Quint.easeIn",
                          onComplete: () => {
+                             zoomTemp(1.02);
+                             screenShake(3);
                              messageBus.publish('setSlowMult', 0.25, 15);
                              this.scene.tweens.add({
                                  delay: 200,

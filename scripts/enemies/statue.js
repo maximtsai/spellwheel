@@ -204,7 +204,7 @@
              messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y - 15, '-BROKE-', 1.2, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.25, scaleY: 1.25, ease: 'Back.easeOut'});
              this.clearHandShield(true);
          } else {
-            if (this.shieldAmts == 4 || (this.canShowEarlyInfo && this.shieldAmts <= 7)) {
+            if (this.shieldAmts == 4 || (this.canShowEarlyInfo && this.shieldAmts <= (gameVars.isHardMode ? 8 : 6))) {
                 if (!this.shownInfo) {
                     this.shownInfo = true;
                     globalObjects.bannerTextManager.setDialog([getLangText('statue_info_a'), getLangText('statue_info_b')]);
@@ -609,7 +609,7 @@
 
 
      initAttacks() {
-        let hardModeCharge = gameVars.isHardMode ? -50 : 0;
+        let hardModeCharge = gameVars.isHardMode ? -40 : 0;
          this.attacks = [
              [
                  // 0
@@ -624,7 +624,6 @@
                          this.animateCreateHandShield();
                          this.currentAttackSetIndex = 1;
                          this.nextAttackIndex = 0;
-
                          // uncomment to try and fix some bugs
                          // this.hideCurrentAttack();
                      }
@@ -650,7 +649,7 @@
                  },
                  {
                      name: "}3x4}",
-                     chargeAmt: 550 + hardModeCharge,
+                     chargeAmt: 540 + hardModeCharge,
                      finishDelay: 1600,
                      damage: -1,
                      startFunction: () => {
@@ -662,7 +661,7 @@
                  },
                  {
                      name: "}3x6}",
-                     chargeAmt: 600 + hardModeCharge,
+                     chargeAmt: 580 + hardModeCharge,
                      finishDelay: 2200,
                      damage: -1,
                      startFunction: () => {
@@ -674,7 +673,7 @@
                  },
                  {
                      name: "}}3x8}}",
-                     chargeAmt: 650 + hardModeCharge,
+                     chargeAmt: 620 + hardModeCharge,
                      finishDelay: 2800,
                      damage: -1,
                      startFunction: () => {
@@ -686,7 +685,7 @@
                  },
                  {
                      name: "}}3x10}}",
-                     chargeAmt: 700 + hardModeCharge,
+                     chargeAmt: 660 + hardModeCharge,
                      finishDelay: 3250,
                      damage: -1,
                      startFunction: () => {
@@ -698,7 +697,7 @@
                  },
                  {
                      name: "}}3x12}}",
-                     chargeAmt: 750 + hardModeCharge,
+                     chargeAmt: 700 + hardModeCharge,
                      finishDelay: 3750,
                      damage: -1,
                      startFunction: () => {
@@ -710,7 +709,7 @@
                  },
                  {
                      name: "}}}3x14}}}",
-                     chargeAmt: 800 + hardModeCharge,
+                     chargeAmt: 740 + hardModeCharge,
                      finishDelay: 4200,
                      isBigMove: true,
                      damage: -1,
@@ -723,7 +722,7 @@
                  },
                  {
                      name: "}}}3x16}}}",
-                     chargeAmt: 850 + hardModeCharge,
+                     chargeAmt: 780 + hardModeCharge,
                      finishDelay: 4600,
                      isBigMove: true,
                      damage: -1,
@@ -736,7 +735,7 @@
                  },
                  {
                      name: "}}}3x18}}}",
-                     chargeAmt: 900 + hardModeCharge,
+                     chargeAmt: 820 + hardModeCharge,
                      finishDelay: 5000,
                      isBigMove: true,
                      damage: -1,

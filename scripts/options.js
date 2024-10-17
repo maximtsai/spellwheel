@@ -2,6 +2,7 @@ class Options {
     constructor(scene, x, y) {
         this.startX = x;
         this.startY = y;
+        this.canBeClicked = true;
         this.baseDepth = 101000;
         this.langTextToUpdate = [];
         this.listOfThingsToHide = [];
@@ -67,6 +68,12 @@ class Options {
     }
 
     showOptions() {
+        if (!this.canBeClicked || this.opened || this.canClose) {
+            console.log("fail open because", this.canBeClicked, this.opened, this.canClose);
+            return;
+        }
+        this.opened = true;
+        addPopup(this.hideOptions.bind(this));
         globalObjects.encyclopedia.hideButton();
         globalObjects.options.hideButton();
         playSound('flip2')
@@ -87,7 +94,9 @@ class Options {
             this.listOfThingsToHide.push(this.bgPage);
         }
 
-        this.settingsTitle = PhaserScene.add.text(gameConsts.halfWidth - 230, isMobile ? gameConsts.halfWidth - 195 : gameConsts.halfWidth - 212, getLangText('settings'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
+        if (!this.settingsTitle) {
+            this.settingsTitle = PhaserScene.add.text(gameConsts.halfWidth - 230, isMobile ? gameConsts.halfWidth - 195 : gameConsts.halfWidth - 212, getLangText('settings'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
+        }
         this.listOfThingsToHideSemiAlpha.push(this.settingsTitle);
         this.addLangTextUpdateable(this.settingsTitle, 'settings')
 
@@ -1378,10 +1387,14 @@ class Options {
         return closestIndex;
     }
 
-    hideOptions() {
-        if (!this.canClose) {
-            return;
+    hideOptions(shouldPop = true) {
+        if (!this.opened || !this.canClose) {
+            return false;
         }
+        if (shouldPop) {
+            removePopup();
+        }
+        this.opened = false;
         this.canClose = false;
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
@@ -1402,13 +1415,16 @@ class Options {
             this.listOfButtonsToDisable[i].setState(DISABLE);
             this.listOfButtonsToDisable[i].setAlpha(0);
         }
+        return true;
     }
 
     showButton() {
+        this.canBeClicked = true;
         this.button.setPos(this.startX, this.startY);
     }
 
     hideButton() {
+        this.canBeClicked = false;
         this.button.setPos(this.startX, -100);
     }
 }

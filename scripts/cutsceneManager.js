@@ -936,10 +936,10 @@ function rollCredits() {
         "Game by Maxim Tsai",
         "Character art by Theresa Kao @mothmeatstore",
         "Background and wheel art by Alex Volchek @love_sickening",
-        "SFX and Battle Music by Chandler G @rocad_guitar",
-        "Robot Voice and Music by @eidendalion",
+        "SFX and battle music by Chandler G @rocad_guitar",
+        "Robot voice and music by @eidendalion",
         "Special thanks to @hby, Victor Kao, and Alex Arango",
-        " \nRandom Stats:\n- Game Engine: Phaser 3\n- Sprites: +1000\n- Audio files: +155\n- Lines of code: Approx. 40,000\n- Development time: Approx 9 months",
+        " \nRandom Stats:\n- Game Engine: Phaser 3\n- Sprites: +1000\n- Audio files: +155\n- Lines of code: Approx. 40,000\n- Development time: Approx 10 months",
     ];
     let textObjects = [];
     let textAnims = [];

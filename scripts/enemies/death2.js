@@ -1526,11 +1526,12 @@
                  ease: 'Quart.easeIn',
                  onComplete: () => {
 
-                     this.whiteBG.alpha = 0.15;
+                     this.whiteBG.alpha = 0.43;
                      this.addTween({
                          targets: [this.whiteBG],
                          alpha: 0,
-                         duration: 1100,
+                         ease: 'Quad.easeOut',
+                         duration: 1200,
                      })
                      this.addTween({
                          targets: [this.leftFire, this.rightFire],

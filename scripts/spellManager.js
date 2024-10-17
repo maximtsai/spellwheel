@@ -201,7 +201,7 @@ class SpellManager {
                         if (i == 0) {
                             let sfx2 = playSound('matter_strike_heavy', strikeVol);
                             if (additionalDamage >= 12) {
-                                zoomTempSlow(0.996);
+                                zoomTempSlow(1.004);
                             }
                             sfx2.detune = detuneSqrtMult * -100;
                         }
@@ -337,6 +337,8 @@ class SpellManager {
                                 duration: 110,
                                 alpha: 1,
                                 onComplete: () => {
+                                    zoomTemp(1.06);
+                                    screenShake(6);
                                     messageBus.publish('tempPause', 250, 0.05);
                                 }
                             });
@@ -344,8 +346,8 @@ class SpellManager {
                                 targets: powerfulEffect,
                                 duration: 125,
                                 y: "+=16",
-                                scaleX: 3.5,
-                                scaleY: 3.5,
+                                scaleX: 3.3,
+                                scaleY: 3.3,
                                 ease: "Quint.easeIn",
                                 onComplete: () => {
                                     messageBus.publish('setSlowMult', 0.25, 15);
@@ -360,21 +362,20 @@ class SpellManager {
                                         delay: 200,
                                         targets: powerfulEffect,
                                         duration: 900,
-                                        scaleX: 4,
-                                        scaleY: 4,
+                                        scaleX: 3.8,
+                                        scaleY: 3.8,
                                         ease: 'Cubic.easeIn'
                                     });
                                 }
                             });
+                        } else if (!isPowerful) {
+                            zoomTempSlow(1.003 + additionalDamage * 0.0001);
+                            screenShake(0.5 + additionalDamage * 0.001)
                         }
                     }
 
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     let baseDamage = gameVars.matterPlus ? 14 : 12;
-                    if (isExtraBuff) {
-                        zoomTempSlow(0.997 - additionalDamage * 0.0001);
-                        screenShake(0.5 + additionalDamage * 0.001)
-                    }
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage, true, undefined, 'matter');
                     messageBus.publish('setPauseDur', isExtraBuff ? 25 : 15);
                     rockObj.bg.visible = false;
@@ -967,6 +968,8 @@ class SpellManager {
                             duration: 110,
                             alpha: 1,
                             onComplete: () => {
+                                zoomTemp(1.06);
+                                screenShake(7);
                                 messageBus.publish('tempPause', 250, 0.05);
                             }
                         });
@@ -974,8 +977,8 @@ class SpellManager {
                             targets: powerfulEffect,
                             duration: 125,
                             y: "+=16",
-                            scaleX: 3.5,
-                            scaleY: 3.5,
+                            scaleX: 3.3,
+                            scaleY: 3.3,
                             ease: "Quint.easeIn",
                             onComplete: () => {
                                 messageBus.publish('setSlowMult', 0.25, 15);
@@ -990,12 +993,15 @@ class SpellManager {
                                     delay: 200,
                                     targets: powerfulEffect,
                                     duration: 900,
-                                    scaleX: 4,
-                                    scaleY: 4,
+                                    scaleX: 3.8,
+                                    scaleY: 3.8,
                                     ease: 'Cubic.easeIn'
                                 });
                             }
                         });
+                    } else if (!isPowerful) {
+                        zoomTempSlow(1.002 + additionalDamage * 0.0001);
+                        screenShake(0.35 + additionalDamage * 0.001)
                     }
 
                     this.scene.tweens.add({
@@ -1218,13 +1224,6 @@ class SpellManager {
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', spellDamage, true, undefined, 'time');
                     messageBus.publish('setPauseDur', 20);
-                    if (isPowerful) {
-                        zoomTempSlow(0.998 - additionalDamage * 0.0001);
-                        screenShake(0.35 + additionalDamage * 0.001)
-                    }
-
-
-
                     if (isPowerful && parseInt(i) === strikeObjects.length - 1) {
                         let powerfulEffect = getTempPoolObject('tutorial', 'rune_time_large.png', 'specialAttack', 1300);
                         powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5).setPosition(gameConsts.halfWidth, strikeObject.y + 33);
@@ -1234,14 +1233,16 @@ class SpellManager {
                             duration: 110,
                             alpha: 1,
                             onComplete: () => {
+                                zoomTemp(1.06);
+                                screenShake(6);
                                 messageBus.publish('tempPause', 250, 0.05);
                             }
                         });
                         this.scene.tweens.add({
                             targets: powerfulEffect,
                             duration: 125,
-                            scaleX: 3.2,
-                            scaleY: 3.2,
+                            scaleX: 3.15,
+                            scaleY: 3.15,
                             ease: "Quint.easeIn",
                             onComplete: () => {
                                 messageBus.publish('setSlowMult', 0.25, 15);
@@ -1256,15 +1257,16 @@ class SpellManager {
                                     delay: 200,
                                     targets: powerfulEffect,
                                     duration: 900,
-                                    scaleX: 4,
-                                    scaleY: 4,
+                                    scaleX: 3.8,
+                                    scaleY: 3.8,
                                     ease: 'Cubic.easeIn'
                                 });
                             }
                         });
+                    } else if (!isPowerful) {
+                        zoomTempSlow(1.002 + additionalDamage * 0.0001);
+                        screenShake(0.35 + additionalDamage * 0.001)
                     }
-
-
                 }
             });
             this.scene.tweens.add({
@@ -1718,6 +1720,8 @@ class SpellManager {
                             duration: 110,
                             alpha: 1,
                             onComplete: () => {
+                                zoomTemp(1.06);
+                                screenShake(6);
                                 messageBus.publish('tempPause', 250, 0.05);
                             }
                         });
@@ -1758,10 +1762,12 @@ class SpellManager {
                                 });
                             }
                         });
+                    } else if (additionalDamage >= 12) {
+                        screenShake(0.25 + additionalDamage * 0.0025)
                     }
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead && !globalObjects.player.dead) {
-                        let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 14, 'spells', 'energyTarget1.png').play('energyTarget').setAlpha(1).setScale(0.96);
+                        let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 14, 'spells', 'energyTarget7.png').play('energyTarget').setAlpha(1).setScale(0.96);
                         animation1.setDepth(30);
                         animation1.setOrigin(0.5, 0.5);
                         this.scene.tweens.add({
@@ -1772,11 +1778,13 @@ class SpellManager {
                             scaleY: 0.9,
                             ease: 'Quad.easeOut',
                         });
+                        messageBus.publish('animateTrueDamageNum', attackObj.x + 12 - Math.random() * 24, attackObj.y - 28 - Math.random() * 5, 'VULNERABLE', isMobile ? 0.9 : 0.85);
+
                         messageBus.publish('enemyTakeEffect', {
                             name: spellID,
                             x: animation1.x,
                             y: animation1.y,
-                            cleanUp: (statuses, damage) => {
+                            cleanUp: (statuses, damage, explode) => {
                                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
                                     if (!globalObjects.currentEnemy.isDestroyed) {
                                         let damageCircle = getTempPoolObject('lowq', 'circle_blue4.png', 'circle_blue', 1800).setDepth(100).setScale(0.65).setAlpha(0.85 + Math.sqrt(damage) * 0.025).setPosition(attackObj.x, attackObj.y - 14);
@@ -1794,19 +1802,26 @@ class SpellManager {
                                             duration: 500 + damage * 10,
                                             alpha: 0,
                                         });
+                                        if (explode) {
+                                            animation1.setScale(1.2);
+                                            animation1.stop();
+                                            animation1.alpha = 1;
+                                            animation1.play('energyTargetExplode');
+                                        }
                                     }
-
+                                    let explodeDur = explode ? 100 : 0;
                                     this.scene.tweens.add({
                                         targets: [animation1],
-                                        duration: 200,
-                                        scaleX: 1.15,
-                                        scaleY: 1.15,
+                                        duration: 200 + explodeDur,
+                                        scaleX: explode ? 1.1 : 1.15,
+                                        scaleY: explode ? 1.1 : 1.15,
                                         ease: 'Cubic.easeOut',
                                     });
                                     statuses[spellID].currentAnim = this.scene.tweens.add({
                                         targets: [animation1],
-                                        duration: 200,
+                                        duration: 200 + explodeDur,
                                         alpha: 0,
+                                        ease: explode ? 'Quad.easeIn' : '',
                                         onComplete: () => {
                                             animation1.destroy();
                                         }
@@ -3031,13 +3046,15 @@ class SpellManager {
 
                     if (isPowerful && i === numTotalAttacks - 1) {
                         let powerfulEffect = getTempPoolObject('tutorial', 'rune_void_large.png', 'specialAttack', 1300);
-                        powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5.2).setPosition(gameConsts.halfWidth, 235).setRotation(-3);
+                        powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5).setPosition(gameConsts.halfWidth, 235).setRotation(-3);
                         playSound('void_body');
                         this.scene.tweens.add({
                             targets: powerfulEffect,
                             duration: 110,
                             alpha: 1,
                             onComplete: () => {
+                                zoomTemp(1.08);
+                                screenShake(3);
                                 messageBus.publish('tempPause', 250, 0.05);
                             }
                         });
@@ -3050,8 +3067,8 @@ class SpellManager {
                         this.scene.tweens.add({
                             targets: powerfulEffect,
                             duration: 125,
-                            scaleX: 3.2,
-                            scaleY: 3.2,
+                            scaleX: 3,
+                            scaleY: 3,
                             ease: "Quint.easeIn",
                             onComplete: () => {
                                 messageBus.publish('setSlowMult', 0.25, 15);
@@ -3066,8 +3083,8 @@ class SpellManager {
                                     delay: 200,
                                     targets: powerfulEffect,
                                     duration: 900,
-                                    scaleX: 4,
-                                    scaleY: 4,
+                                    scaleX: 3.75,
+                                    scaleY: 3.75,
                                     ease: 'Cubic.easeIn'
                                 });
                             }

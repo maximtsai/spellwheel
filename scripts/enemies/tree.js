@@ -746,12 +746,11 @@
                  {
                      name: " STARE...",
                      chargeAmt: 350,
-                     damage: -1,
                      isPassive: true,
                      attackStartFunction: () => {
 
                      },
-                     attackFinishFunction: () => {
+                     finaleFunction: () => {
                          let currHealthPercent = this.health / this.healthMax;
                          if (currHealthPercent <= 0.6 && !this.hasCrushed) {
                              this.currentAttackSetIndex = 3;

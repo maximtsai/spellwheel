@@ -281,7 +281,7 @@ let textData3 = {
     },
     "death_statue2": {
         "en_us": "CHILD, THIS IS A DANGEROUS\nINSTRUMENT OF COMBAT.",
-        "fr": "ENFANT, CECI EST UN\nINSTRUMENT DE COMBAT DANGEREUX.",
+        "fr": "ENFANT, C'EST UN OUTIL\nDE COMBAT DANGEREUX.",
         "zh_tw": "孩子，這是一座\n危險的作戰武器。",
         "zh_cn": "孩子，这是一座\n危险的作战工具。",
         "ru": "",

@@ -260,6 +260,9 @@ class Button {
         this.hover.rotation = rot;
         this.press.rotation = rot;
         this.disable.rotation = rot;
+        if (this.text) {
+            this.text.setRotation(rot);
+        }
     }
 
     getPosX() {

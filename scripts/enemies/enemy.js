@@ -98,7 +98,7 @@ class Enemy {
         this.extraRepeatDelay = 0;
         this.attackSlownessMult = 1;
         this.pullbackHoldRatio = 0.5;
-        this.chargeBarAlphaOffset = isMobile ? 0 : -0.12;
+        this.chargeBarAlphaOffset = isMobile ? -0.01 : -0.12;
         this.accumulatedDamageReaction = 0;
 
         this.initStatsCustom();
@@ -287,6 +287,7 @@ class Enemy {
 
         this.attackNameHighlight = this.scene.add.image(x, attackNameYPos - 13, 'blurry', 'glow_flat_red.webp').setAlpha(0).setDepth(9);
         this.attackGlow = this.scene.add.image(x, attackNameYPos - 10, 'blurry', 'glow_flat.webp').setAlpha(0).setDepth(9).setVisible(false);
+        this.attackDarken = this.scene.add.image(x, this.chargeBarMax.y - 1, 'blurry', 'attack_dark.png').setAlpha(0).setDepth(this.attackGlow.depth - 1).setScale(0, 1).setVisible(false);
 
         this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', isMobile ? 38 : 36);
         this.attackName.setDepth(9);
@@ -439,7 +440,7 @@ class Enemy {
                     chargeMult = chargeMult * 0.5 + 1;
                 }
             }
-            let almostIshDone = this.attackCharge > this.nextAttackChargeNeeded - 145;
+            let almostIshDone = this.attackCharge > this.nextAttackChargeNeeded - 150;
             if (almostIshDone) {
                 if (!this.attackName.hasWarned && !this.nextAttack.isPassive && this.attackName.active) {
                     this.attackName.hasWarned = true;
@@ -447,13 +448,19 @@ class Enemy {
                     if (this.attackName.currAnim) {
                         this.attackName.currAnim.stop();
                     }
+
                     if (this.attackGlow.currAnim) {
                         this.attackGlow.currAnim.stop();
                     }
+                    if (this.attackDarken.currAnim) {
+                        this.attackDarken.currAnim.stop();
+                    }
                     this.attackGlow.visible = true;
+                    this.attackDarken.visible = true;
                     if (this.attackName.width) {
                         this.attackGlow.setScale(this.attackName.width * 0.009, 1.4);
                     }
+
                     this.attackName.setAlpha(0.95);
                     let isShortName = this.nextAttack.name.length <= 7;
                     this.attackName.currAnim = PhaserScene.tweens.add({
@@ -476,7 +483,12 @@ class Enemy {
                         scaleX: this.attackName.width * 0.014,
                         scaleY: 1.55,
                     });
-
+                    this.attackDarken.currAnim = PhaserScene.tweens.add({
+                        targets: this.attackDarken,
+                        duration: gameVars.gameManualSlowSpeedInverse * 500,
+                        alpha: 0.85,
+                        ease: 'Quad.easeInOut',
+                    });
                 }
             }
             this.chargeBarShow = false;
@@ -568,11 +580,13 @@ class Enemy {
             this.chargeBarEst2.scaleX = trueScale;
             // this.setPredictScale();
 
-            let goalAlpha = 1 * this.chargeBarCurr.scaleX / (this.chargeBarMax.scaleX + 1) + this.chargeBarAlphaOffset;
+            let goalAlpha = 1 * (this.chargeBarCurr.scaleX + 1) / (this.chargeBarMax.scaleX + 1) + this.chargeBarAlphaOffset;
 
             let changeSpd = 0.06 * dt;
             this.chargeBarOutline.alpha = goalAlpha * changeSpd + this.chargeBarOutline.alpha * (1-changeSpd);
-
+            if (this.attackDarken) {
+                this.attackDarken.scaleX = this.chargeBarMax.scaleX * 0.009 + 0.1;
+            }
             this.chargeBarAngry.scaleX = this.chargeBarCurr.scaleX;
             if (this.attackPaused) {
                 // doNothing
@@ -998,6 +1012,19 @@ class Enemy {
                 alpha: 0,
             });
         }
+        if (this.attackDarken.currAnim) {
+            this.attackDarken.currAnim.stop();
+            this.attackDarken.isAnimating = true;
+            PhaserScene.tweens.add({
+                targets: this.attackDarken,
+                duration: gameVars.gameManualSlowSpeedInverse * 200,
+                alpha: 0,
+                onComplete: () => {
+                    this.attackDarken.isAnimating = false;
+                }
+            });
+        }
+
         this.attackName.origScale = finalScale;
         PhaserScene.tweens.add({
             targets: this.attackName,
@@ -1115,6 +1142,17 @@ class Enemy {
         this.chargeBarCurr.alpha = 0.9;
         this.chargeBarAngry.scaleX = 0;
         this.chargeBarAngry.alpha = 0.9;
+
+        this.attackDarken.isAnimating = true;
+        this.attackDarken.alpha *= 0.6;
+        this.scene.tweens.add({
+            targets: this.attackDarken,
+            alpha: 0,
+            duration: 500,
+            onComplete: () => {
+                this.attackDarken.isAnimating = false;
+            }
+        });
         let extraTimeMult = 2 - gameVars.timeSlowRatio;
         if (animate) {
             if (customCall) {
@@ -1133,6 +1171,7 @@ class Enemy {
                     this.enemyAttackSfxFlip = !this.enemyAttackSfxFlip;
                 }
             }
+
             this.scene.tweens.add({
                 targets: this.chargeBarMax,
                 scaleX: chargeBarLength + 2,
@@ -1524,6 +1563,7 @@ class Enemy {
         if (this.attackName) {
             this.attackName.visible = false;
             this.attackGlow.visible = false;
+            this.attackDarken.visible = false;
         }
     }
 
@@ -1536,7 +1576,10 @@ class Enemy {
         // this.timeSinceLastAttacked = 9999;
         this.castAggravateCharge += 20;
         this.isAsleep = false;
-        this.attackName.visible = true;
+        if (this.attackName) {
+            this.attackName.visible = true;
+            this.attackDarken.visible = true;
+        }
         this.chargeBarEst1.visible = true;
         this.chargeBarEst2.visible = true;
         this.attackPaused = false;
@@ -1657,6 +1700,9 @@ class Enemy {
         if (this.attackGlow.currAnim) {
             this.attackGlow.currAnim.stop();
         }
+        if (this.attackDarken.currAnim) {
+            this.attackDarken.currAnim.stop();
+        }
         globalObjects.textPopupManager.hideInfoText();
         messageBus.publish("closeCombatText");
 
@@ -1689,6 +1735,7 @@ class Enemy {
         this.chargeBarAngry.destroy();
         this.chargeBarCurr.destroy();
         this.attackGlow.destroy();
+        this.attackDarken.destroy();
         this.attackNameHighlight.destroy();
 
         if (this.chargeBarEst1.currAnim) {
@@ -1700,6 +1747,8 @@ class Enemy {
         this.voidPause.destroy();
         this.attackName.destroy();
         this.angrySymbol.destroy();
+        this.chargeBarFlash1.destroy();
+        this.chargeBarFlash2.destroy();
 
         this.sprite.destroy();
 
@@ -1741,6 +1790,12 @@ class Enemy {
             }
             this.attackGlow.visible = false;
         }
+        if (this.attackDarken) {
+            if (this.attackDarken.currAnim) {
+                this.attackDarken.currAnim.stop();
+            }
+            this.attackDarken.visible = false;
+        }
         messageBus.publish("closeCombatText");
 
         this.clearEffects();
@@ -1770,6 +1825,7 @@ class Enemy {
 
         this.attackName.visible = false;
         this.attackGlow.visible = false;
+        this.attackDarken.visible = false;
         messageBus.publish('enemyHasDied');
 
         for (let i in this.statuses) {

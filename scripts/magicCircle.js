@@ -1051,7 +1051,7 @@ const ENABLE_KEYBOARD = true;
             this.outerCircle.rotVel *= 0.98;
         }
 
-        const torqueReleaseThreshold = 0.003; // if torque on release is higher, then full speed ahead
+        const torqueReleaseThreshold = 0.005; // if torque on release is higher, then full speed ahead
         let lagMultReducer = 1;// Math.max(0, Math.min(1, 2 - dt * 0.5));
         if (this.innerCircle.torque === 0 && Math.abs(this.innerCircle.torqueOnRelease) > 0.001) {
             let isTorqueOpposing = this.innerCircle.torqueOnRelease * this.innerCircle.rotVel < 0;
@@ -1060,14 +1060,14 @@ const ENABLE_KEYBOARD = true;
             } else if (Math.abs(this.innerCircle.torqueOnRelease) > torqueReleaseThreshold) {
                 let slowOnRelease = Math.min(1.6, Math.max(1, Math.abs(this.innerCircle.torqueOnRelease) * lagMultReducer / torqueReleaseThreshold));
                 this.innerCircle.rotVel *= slowOnRelease;
-                if (this.innerCircle.rotVel > -0.042 && this.innerCircle.rotVel < -0.012) {
-                    this.innerCircle.rotVel = -0.042;
-                } else if (this.innerCircle.rotVel < 0.042 && this.innerCircle.rotVel > 0.012) {
-                    this.innerCircle.rotVel = 0.042;
+                if (this.innerCircle.rotVel > -0.043 && this.innerCircle.rotVel < -0.012) {
+                    this.innerCircle.rotVel = -0.043;
+                } else if (this.innerCircle.rotVel < 0.043 && this.innerCircle.rotVel > 0.012) {
+                    this.innerCircle.rotVel = 0.043;
                 }
-                console.log(this.innerCircle.rotVel)
-
                 this.innerCircle.nextRotation += this.innerCircle.rotVel;
+            } else {
+                this.innerCircle.rotVel = 0;
             }
             this.innerCircle.torqueOnRelease = 0;
         }
@@ -1078,13 +1078,14 @@ const ENABLE_KEYBOARD = true;
             } else if (Math.abs(this.outerCircle.torqueOnRelease) > torqueReleaseThreshold) {
                 let slowOnRelease = Math.min(1.6, Math.max(1, Math.abs(this.outerCircle.torqueOnRelease) * lagMultReducer / torqueReleaseThreshold));
                 this.outerCircle.rotVel *= slowOnRelease;
-                if (this.outerCircle.rotVel > -0.033 && this.outerCircle.rotVel < -0.008) {
-                    this.outerCircle.rotVel = -0.033;
-                } else if (this.outerCircle.rotVel < 0.033 && this.outerCircle.rotVel > 0.008) {
-                    this.outerCircle.rotVel = 0.033;
+                if (this.outerCircle.rotVel > -0.038 && this.outerCircle.rotVel < -0.009) {
+                    this.outerCircle.rotVel = -0.038;
+                } else if (this.outerCircle.rotVel < 0.038 && this.outerCircle.rotVel > 0.009) {
+                    this.outerCircle.rotVel = 0.038;
                 }
-
                 this.outerCircle.nextRotation += this.outerCircle.rotVel;
+            } else {
+                this.outerCircle.rotVel = 0;
             }
             this.outerCircle.torqueOnRelease = 0;
         }

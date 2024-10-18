@@ -98,7 +98,7 @@ class Enemy {
         this.extraRepeatDelay = 0;
         this.attackSlownessMult = 1;
         this.pullbackHoldRatio = 0.5;
-        this.chargeBarAlphaOffset = isMobile ? -0.01 : -0.12;
+        this.chargeBarAlphaOffset = isMobile ? -0.1 : -0.18;
         this.accumulatedDamageReaction = 0;
 
         this.initStatsCustom();
@@ -219,7 +219,7 @@ class Enemy {
         this.chargeBarReady2 = this.scene.add.image(x, isMobile ? 339 : 326, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
 
         this.chargeBarOutline = this.scene.add.image(x, isMobile ? 339 : 326, 'whitePixel');
-        this.chargeBarOutline.setScale(chargeBarLength + 4, isMobile ? 16 : 13);
+        this.chargeBarOutline.setScale(chargeBarLength + 4, isMobile ? 15 : 12);
         this.chargeBarOutline.setOrigin(0.5, 0.5);
         this.chargeBarOutline.visible = false;
         this.chargeBarOutline.alpha = 0.4;
@@ -580,7 +580,7 @@ class Enemy {
             this.chargeBarEst2.scaleX = trueScale;
             // this.setPredictScale();
 
-            let goalAlpha = 1 * (this.chargeBarCurr.scaleX + 1) / (this.chargeBarMax.scaleX + 1) + this.chargeBarAlphaOffset;
+            let goalAlpha = 1.18 * (this.chargeBarCurr.scaleX) / (this.chargeBarMax.scaleX + 1) + this.chargeBarAlphaOffset;
 
             let changeSpd = 0.06 * dt;
             this.chargeBarOutline.alpha = goalAlpha * changeSpd + this.chargeBarOutline.alpha * (1-changeSpd);
@@ -1132,7 +1132,7 @@ class Enemy {
         this.chargeBarOutline.visible = true;
         let chargeBarLength = Math.floor(this.nextAttackChargeNeeded * 0.2);
         this.chargeBarMax.scaleX = chargeBarLength * 0.6 + 2;
-        this.chargeBarOutline.scaleX = this.chargeBarMax.scaleX + 2 + (isMobile ? 1 : 0);
+        this.chargeBarOutline.scaleX = this.chargeBarMax.scaleX + 3 + (isMobile ? 1 : 0);
         this.chargeBarOutline.alpha = 3;
         this.chargeBarOutline.isAnimating = true;
 

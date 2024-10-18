@@ -1060,10 +1060,10 @@ const ENABLE_KEYBOARD = true;
             } else if (Math.abs(this.innerCircle.torqueOnRelease) > torqueReleaseThreshold) {
                 let slowOnRelease = Math.min(1.6, Math.max(1, Math.abs(this.innerCircle.torqueOnRelease) * lagMultReducer / torqueReleaseThreshold));
                 this.innerCircle.rotVel *= slowOnRelease;
-                if (this.innerCircle.rotVel > -0.041 && this.innerCircle.rotVel < -0.012) {
-                    this.innerCircle.rotVel = -0.041;
-                } else if (this.innerCircle.rotVel < 0.041 && this.innerCircle.rotVel > 0.012) {
-                    this.innerCircle.rotVel = 0.041;
+                if (this.innerCircle.rotVel > -0.042 && this.innerCircle.rotVel < -0.012) {
+                    this.innerCircle.rotVel = -0.042;
+                } else if (this.innerCircle.rotVel < 0.042 && this.innerCircle.rotVel > 0.012) {
+                    this.innerCircle.rotVel = 0.042;
                 }
                 console.log(this.innerCircle.rotVel)
 
@@ -1078,10 +1078,10 @@ const ENABLE_KEYBOARD = true;
             } else if (Math.abs(this.outerCircle.torqueOnRelease) > torqueReleaseThreshold) {
                 let slowOnRelease = Math.min(1.6, Math.max(1, Math.abs(this.outerCircle.torqueOnRelease) * lagMultReducer / torqueReleaseThreshold));
                 this.outerCircle.rotVel *= slowOnRelease;
-                if (this.outerCircle.rotVel > -0.031 && this.outerCircle.rotVel < -0.008) {
-                    this.outerCircle.rotVel = -0.031;
-                } else if (this.outerCircle.rotVel < 0.031 && this.outerCircle.rotVel > 0.008) {
-                    this.outerCircle.rotVel = 0.031;
+                if (this.outerCircle.rotVel > -0.033 && this.outerCircle.rotVel < -0.008) {
+                    this.outerCircle.rotVel = -0.033;
+                } else if (this.outerCircle.rotVel < 0.033 && this.outerCircle.rotVel > 0.008) {
+                    this.outerCircle.rotVel = 0.033;
                 }
 
                 this.outerCircle.nextRotation += this.outerCircle.rotVel;

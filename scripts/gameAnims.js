@@ -572,4 +572,15 @@ function createAnimations(scene) {
         }),
         frameRate: 15000,
     });
+    scene.anims.create({
+        key: 'stalagfight',
+        frames: scene.anims.generateFrameNames('spells', {
+            prefix: 'stalagmite',
+            suffix: '.png',
+            start: 2,
+            end: 5,
+            zeroPad: 1,
+        }),
+        frameRate: 12,
+    });
 }

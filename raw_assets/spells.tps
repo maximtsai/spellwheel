@@ -835,7 +835,10 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">spells/stalagmite.png</key>
+            <key type="filename">spells/stalagmite2.png</key>
+            <key type="filename">spells/stalagmite3.png</key>
+            <key type="filename">spells/stalagmite4.png</key>
+            <key type="filename">spells/stalagmite5.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -844,9 +847,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>33,81,65,163</rect>
+                <rect>49,122,97,244</rect>
                 <key>scale9Paddings</key>
-                <rect>33,81,65,163</rect>
+                <rect>49,122,97,244</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -207,7 +207,7 @@ class TextPopupManager {
         this.damageNum.y = this.damageNum.startY + offsetY;
         this.damageNum.alpha = 1;
 
-        let extraDur = Math.floor(shakeMult * shakeMult * 40);
+        let extraDur = Math.floor(shakeMult * shakeMult * 36);
         let tweenParams = {
             targets: this.damageNum,
             scaleX: newScale * (1 + shakeMult),
@@ -225,7 +225,7 @@ class TextPopupManager {
                     ease: 'Bounce.easeOut',
                     onComplete: () => {
                         this.damageTween = this.scene.tweens.add({
-                            delay: 850 + Math.floor(this.damageNumber * 4),
+                            delay: 850 + Math.floor(this.damageNumber),
                             targets: this.damageNum,
                             scaleX: 0,
                             scaleY: 0,

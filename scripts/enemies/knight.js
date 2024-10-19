@@ -701,6 +701,7 @@
      }
 
      makeSlashEffect() {
+         zoomTemp(1.007);
          if (this.slashEffectAnim) {
              this.slashEffectAnim.stop();
          }
@@ -802,6 +803,9 @@
                      damage: gameVars.isHardMode ? 10 : 8,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
+                     attackStartFunction: () => {
+                         playSound('slice_in', 0.7);
+                     },
                      attackFinishFunction: () => {
                          this.currentAttackSetIndex = 1;
                          this.nextAttackIndex = 0;
@@ -913,6 +917,9 @@
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
                      isBigMove: true,
+                     attackStartFunction: () => {
+                         playSound('slice_in', 0.7);
+                     },
                      attackFinishFunction: () => {
                          this.makeSlashEffect();
                          playSound('sword_hit', 0.7);

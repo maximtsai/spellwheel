@@ -818,10 +818,9 @@ class SpellManager {
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -separationAmtX + separationAmtX * 2 * i;
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
-            let yPos = gameConsts.height - 330 + Math.abs(halfwayIdx - i) * 10;
-            let rockObj = this.scene.add.sprite(xPos, yPos, 'spells', 'stalagmite.png');
+            let yPos = gameConsts.halfHeight + 30 + Math.abs(halfwayIdx - i) * 10;
+            let rockObj = this.scene.add.sprite(xPos, yPos, 'spells', 'stalagmite5.png');
             rockObj.setDepth(9);
-            rockObj.setOrigin(0.5, 0.98);
             rockObj.rotation = 0;
             attackObjects.push(rockObj);
             rockObj.setScale(0.8 + bonusScaleX, 0);
@@ -938,11 +937,11 @@ class SpellManager {
             let rockObj = attackObjects[i];
             this.scene.tweens.add({
                 targets: rockObj,
-                delay: 300 + i * (200 - i * delayInterval),
+                delay: 275 + i * (180 - i * delayInterval),
                 scaleY: 0.68 + bonusScaleY,
                 scaleX: 0.85 + bonusScaleX,
                 duration: 200,
-                ease: 'Cubic.easeIn',
+                ease: 'Quint.easeIn',
                 onStart: () => {
                     PhaserScene.time.delayedCall( 50, () => {
                         for (let i = 0; i < 6; i++) {
@@ -954,6 +953,7 @@ class SpellManager {
                     });
                 },
                 onComplete: () => {
+                    rockObj.play('stalagfight')
                     messageBus.publish('enemyTakeDamage', basePower + additionalDamage, true, undefined, 'matter');
                     screenShake(5);
                     zoomTemp(1.01 + additionalDamage * 0.00025);

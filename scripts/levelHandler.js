@@ -510,7 +510,7 @@ function createMenuCloseButton(items) {
 function switchLevelBackground(lvl) {
     switch(lvl) {
         case -7:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case -6:
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
@@ -532,7 +532,7 @@ function switchLevelBackground(lvl) {
         case 0:
             // zoomInCurrBackground(1500, 2, 'Cubic.easeIn');
             minorZoomMenu()
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1.25, 1.17, 1.22,'Quart.easeIn', 0, false, -55);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1.25, 1.17, 1.22,'Quart.easeIn', 0, false, -55);
             break;
         case 1:
             clearOnlyMenuBack();
@@ -548,16 +548,16 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case 5:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
         case 6:
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
         case 7:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 1, 0.94, 0.94,'Quart.easeIn', 0, false);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 0.94, 0.94,'Quart.easeIn', 0, false);
             break;
         case 8:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back.png', 1500, 0.92, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 0.92, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case 9:
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 1, 1, 1,'Quart.easeIn', 0, false);

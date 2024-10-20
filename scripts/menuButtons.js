@@ -1,6 +1,6 @@
 function setupMainMenuBG() {
     if (!globalObjects.menuBack) {
-        globalObjects.menuBack = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-9).setScale(0.85);
+        globalObjects.menuBack = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-9).setScale(0.95);
         globalObjects.menuBack.startScale = globalObjects.menuBack.scaleX;
         globalObjects.menuTop = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9).setScale(0.85);
         globalObjects.menuTop.startScale = globalObjects.menuTop.scaleX;
@@ -46,16 +46,16 @@ function minorZoomMenu() {
     if (globalObjects.menuBack) {
         PhaserScene.tweens.add({
              targets: [globalObjects.menuBack],
-             scaleX: 0.91,
-             scaleY: 0.91,
+             scaleX: globalObjects.menuBack.startScale * 1.19,
+             scaleY: globalObjects.menuBack.startScale * 1.2,
              y: gameConsts.halfHeight - 110,
              ease: 'Quint.easeInOut',
              duration: 1500,
          });
         PhaserScene.tweens.add({
              targets: [globalObjects.menuTop],
-             scaleX: 0.91,
-             scaleY: 0.91,
+             scaleX: globalObjects.menuTop.startScale * 1.19,
+             scaleY: globalObjects.menuTop.startScale * 1.2,
              y: gameConsts.halfHeight - 110,
              ease: 'Quint.easeInOut',
              duration: 1500,
@@ -83,17 +83,17 @@ function clearOnlyMenuBack() {
     if (globalObjects.menuBack) {
         PhaserScene.tweens.add({
              targets: [globalObjects.menuBack],
-             scaleX: 1.26,
-             scaleY: 1.26,
-             x: gameConsts.halfWidth - 1,
-             y: gameConsts.halfHeight + 15,
+             scaleX: globalObjects.menuBack.startScale * 1.6,
+             scaleY: globalObjects.menuBack.startScale * 1.6,
+             x: gameConsts.halfWidth,
+             y: gameConsts.halfHeight + 20,
              ease: 'Cubic.easeInOut',
              duration: 2500,
          });
         PhaserScene.tweens.add({
              targets: [globalObjects.menuTop],
-             scaleX: 2,
-             scaleY: 2,
+             scaleX: globalObjects.menuTop.startScale * 1.6,
+             scaleY: globalObjects.menuTop.startScale * 1.6,
              y: gameConsts.halfHeight + 20,
              ease: 'Cubic.easeInOut',
              duration: 2500,

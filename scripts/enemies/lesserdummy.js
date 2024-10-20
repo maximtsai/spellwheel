@@ -23,8 +23,8 @@
 
     initSpriteAnim(scale) {
         let origY = this.sprite.y;
-        this.sprite.setScale(scale * 0.82, scale * 0.82).setAlpha(0.01);
-        this.sprite.y += 75;
+        this.sprite.setScale(scale * 0.78, scale * 0.78).setAlpha(0.01);
+        this.sprite.y += 96;
         this.addTween({
             targets: this.sprite,
             alpha: 1,

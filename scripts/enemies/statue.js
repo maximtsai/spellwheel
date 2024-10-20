@@ -47,7 +47,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 300 : 275;
+         this.health = gameVars.isHardMode ? 300 : 280;
          this.isAsleep = true;
          this.attackScale = 1;
          this.pullbackScale = 1;
@@ -633,7 +633,7 @@
              ],
              [
                  {
-                     name: "CHARGING...",
+                     name: "WARMING UP...",
                      chargeAmt: gameVars.isHardMode ? 350 : 750,
                      damage: 0,
                  },
@@ -688,7 +688,7 @@
                  {
                      name: "}}3x10}}",
                      chargeAmt: 660 + hardModeCharge,
-                     finishDelay: 3250,
+                     finishDelay: 3200,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
@@ -700,7 +700,7 @@
                  {
                      name: "}}3x12}}",
                      chargeAmt: 700 + hardModeCharge,
-                     finishDelay: 3750,
+                     finishDelay: 3700,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
@@ -712,7 +712,7 @@
                  {
                      name: "}}}3x14}}}",
                      chargeAmt: 740 + hardModeCharge,
-                     finishDelay: 4200,
+                     finishDelay: 4150,
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
@@ -725,7 +725,7 @@
                  {
                      name: "}}}3x16}}}",
                      chargeAmt: 780 + hardModeCharge,
-                     finishDelay: 4600,
+                     finishDelay: 4500,
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
@@ -738,7 +738,7 @@
                  {
                      name: "}}}3x18}}}",
                      chargeAmt: 820 + hardModeCharge,
-                     finishDelay: 5000,
+                     finishDelay: 4800,
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {

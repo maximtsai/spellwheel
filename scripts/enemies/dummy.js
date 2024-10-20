@@ -581,6 +581,10 @@
                 this.extrasOnDie[i].destroy();
             }
          }
+         if (this.spaceTween) {
+             this.spaceTween.stop();
+             this.spaceTween.destroy();
+         }
 
          if (this.playerSpellCastSub) {
              this.playerSpellCastSub.unsubscribe();
@@ -847,21 +851,32 @@
                      chargeAmt: 300,
                      damage: 0,
                      chargeMult: 1.5,
+                     isBigMove: true,
                      startFunction: () => {
                          this.currentAttackSetIndex = 1;
                          this.nextAttackIndex = 0;
                      },
                      finaleFunction: () => {
+                         globalObjects.encyclopedia.hideButton();
+                         globalObjects.options.hideButton();
                         this.setAsleep();
                         this.interruptCurrentAttack();
                         fadeAwaySound(this.bgMusic, 3500);
                         let blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(-5).setAlpha(0);
-                        let spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(10).setAlpha(0);
-                        let ascendedDummy = this.addImage(this.sprite.x, this.sprite.y, 'dummyenemy', 'dummy.png').setDepth(10).setAlpha(0).setScale(this.sprite.scaleX);
+                        let spaceBG = this.addImage(gameConsts.halfWidth, this.sprite.y, 'backgrounds', 'star.png').setDepth(10).setAlpha(0).setScale(2.2).setOrigin(0.5, 0.53);
+                        let ascendedDummy = this.addImage(this.sprite.x, this.sprite.y, 'dummyenemy', 'dummy_ascended.png').setDepth(10).setAlpha(0).setScale(this.sprite.scaleX);
+                         let ascendedDummyEyes = this.addImage(this.sprite.x, this.sprite.y - 27, 'dummyenemy', 'scary_eyes2.png').setDepth(10).setAlpha(0).setScale(this.sprite.scaleX * 0.5).setOrigin(0.5, 0.48);
+                         this.spaceTween = this.addTween({
+                             targets: spaceBG,
+                             rotation: "+=6.281",
+                             duration: 18000,
+                             repeat: 1000
+                         });
 
                         this.extrasOnDie.push(blackBG);
                         this.extrasOnDie.push(spaceBG);
                         this.extrasOnDie.push(ascendedDummy);
+                         this.extrasOnDie.push(ascendedDummyEyes);
                         this.addTween({
                             targets: [blackBG, ascendedDummy],
                             alpha: 1,
@@ -871,14 +886,15 @@
                                 playFakeBGMusic('but_never_forgotten_metal_prelude');
                                 this.addTween({
                                     delay: 20,
-                                    targets: ascendedDummy,
-                                    duration: 750,
+                                    targets: [ascendedDummy],
+                                    duration: 700,
                                     scaleX: 1.2,
                                     scaleY: 1.2,
                                     ease: 'Quint.easeOut',
+                                    completeDelay: 50,
                                     onComplete: () => {
                                         this.addTween({
-                                            targets: ascendedDummy,
+                                            targets: [ascendedDummy],
                                             duration: 1250,
                                             scaleX: 0.62,
                                             scaleY: 0.62,
@@ -887,6 +903,35 @@
                                                 if (this.dead) {
                                                     return;
                                                 }
+                                                this.addTween({
+                                                    targets: [ascendedDummyEyes],
+                                                    alpha: 1,
+                                                    ease: 'Cubic.easeOut',
+                                                    duration: 150,
+                                                });
+                                                this.addTween({
+                                                    targets: [ascendedDummyEyes],
+                                                    scaleX: this.sprite.scaleX * 2,
+                                                    scaleY: this.sprite.scaleX * 2,
+                                                    ease: 'Quart.easeIn',
+                                                    duration: 150,
+                                                    onComplete: () => {
+                                                        this.addTween({
+                                                            targets: [ascendedDummyEyes],
+                                                            scaleX: this.sprite.scaleX * 0.75,
+                                                            scaleY: this.sprite.scaleX * 0.75,
+                                                            ease: 'Quint.easeOut',
+                                                            duration: 400,
+                                                        });
+                                                    }
+                                                });
+                                                this.addTween({
+                                                    targets: [ascendedDummy],
+                                                    duration: 500,
+                                                    scaleX: 0.73,
+                                                    scaleY: 0.73,
+                                                    ease: 'Quart.easeOut',
+                                                });
                                                 blackBG.setVisible(true);
                                                 spaceBG.setAlpha(1);
                                                 this.bgMusic = playMusic('but_never_forgotten_metal', 0.85, true);
@@ -896,20 +941,22 @@
                                                      scaleX: 8,
                                                      scaleY: 8,
                                                      rotation: "+=10",
-                                                     duration: 520,
+                                                     ease: 'Quad.easeOut',
+                                                     duration: 550,
                                                  })
 
-                                                let dummyShadow = this.addImage(this.sprite.x, this.sprite.y, 'misc', 'shadow_circle.png').setScale(3.5).setDepth(11);
+                                                let dummyShadow = this.addImage(this.sprite.x, this.sprite.y, 'misc', 'shadow_circle.png').setScale(3.5).setDepth(10);
                                                  this.addTween({
                                                      targets: dummyShadow,
-                                                     duration: 520,
+                                                     duration: 550,
                                                     scaleX: 50,
                                                     scaleY: 50,
+                                                     ease: 'Quad.easeOut',
                                                  });
 
                                                  this.addTween({
                                                      targets: [blackpulse1, dummyShadow],
-                                                     duration: 520,
+                                                     duration: 550,
                                                      alpha: 0,
                                                      onComplete: () => {
                                                         this.setAwake();

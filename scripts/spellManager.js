@@ -555,7 +555,7 @@ class SpellManager {
         }
         let itemsToAnimate = [];
         for (let i = 0; i < globalObjects.player.spellMultiplier(); i++) {
-            newSpike = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'matter_boost.png');
+            newSpike = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'matter_boost.png').setDepth(11);
             let thisSpikeIndex = multiplier + i;
             newSpike.rotation = 0.6 + thisSpikeIndex * 0.18;
             newSpike.setScale(-1, 0.75);

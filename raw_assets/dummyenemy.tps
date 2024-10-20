@@ -220,6 +220,7 @@
             </struct>
             <key type="filename">dummyenemy/dummy.png</key>
             <key type="filename">dummyenemy/dummy_angry.png</key>
+            <key type="filename">dummyenemy/dummy_ascended.png</key>
             <key type="filename">dummyenemy/dummy_fake_face.png</key>
             <key type="filename">dummyenemy/dummy_tired.png</key>
             <key type="filename">dummyenemy/dummy_w_eyes.png</key>
@@ -349,6 +350,7 @@
                 <false/>
             </struct>
             <key type="filename">dummyenemy/scary_eyes.png</key>
+            <key type="filename">dummyenemy/scary_eyes2.png</key>
             <key type="filename">dummyenemy/super_dummy_tpose.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

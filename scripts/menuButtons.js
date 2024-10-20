@@ -70,8 +70,8 @@ function minorZoomMenu() {
          });
         PhaserScene.tweens.add({
              targets: [globalObjects.menuButtons],
-             ease: 'Quart.easeOut',
-             duration: 1250,
+             ease: 'Cubic.easeOut',
+             duration: 700,
              alpha: 0
          });
 
@@ -108,8 +108,9 @@ function clearOnlyMenuBack() {
          });
         PhaserScene.tweens.add({
              targets: [globalObjects.menuButtons],
+            ease: 'Cubic.easeOut',
              alpha: 0,
-             duration: 1400,
+             duration: 700,
          });
 
 

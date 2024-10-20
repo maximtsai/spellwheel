@@ -362,13 +362,13 @@ let textData4 = {
         "jp": "ステージの照明は目がくらむほどです。"
     },
     "killer_robot_b": {
-        "en_us": "-4 damage to your attacks.",
-        "fr": "-4 dégâts à vos attaques.",
-        "zh_tw": "你的攻擊威力 -4。",
-        "zh_cn": "你的攻击威力 -4。",
-        "ru": "Урон от ваших атак: -4.",
-        "es": "-4 de daño a tus ataques.",
-        "jp": "自身の攻撃に-4ダメージ。"
+        "en_us": "-5 damage to your attacks.",
+        "fr": "-5 dégâts à vos attaques.",
+        "zh_tw": "你的攻擊威力 -5。",
+        "zh_cn": "你的攻击威力 -5。",
+        "ru": "Урон от ваших атак: -5.",
+        "es": "-5 de daño a tus ataques.",
+        "jp": "自身の攻撃に-5ダメージ。"
     },
     "killer_robot_c": {
         "en_us": "The stage lights\nturn back on",

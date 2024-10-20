@@ -585,6 +585,10 @@
              this.spaceTween.stop();
              this.spaceTween.destroy();
          }
+         if (this.eyesTween) {
+             this.eyesTween.stop();
+             this.eyesTween.destroy();
+         }
 
          if (this.playerSpellCastSub) {
              this.playerSpellCastSub.unsubscribe();
@@ -642,11 +646,11 @@
              duration: 1000,
              onComplete: () => {
                  this.x -= 80;
-                 this.y = 268;
+                 this.y = 262;
                  this.sprite.y = this.y;
                  this.addTween({
                      targets: this.sprite,
-                     y: 268,
+                     y: 262,
                      ease: 'Cubic.easeOut',
                      duration: 100,
                  });
@@ -863,9 +867,9 @@
                         this.interruptCurrentAttack();
                         fadeAwaySound(this.bgMusic, 3500);
                         let blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(-5).setAlpha(0);
-                        let spaceBG = this.addImage(gameConsts.halfWidth, this.sprite.y, 'backgrounds', 'star.png').setDepth(10).setAlpha(0).setScale(2.2).setOrigin(0.5, 0.53);
-                        let ascendedDummy = this.addImage(this.sprite.x, this.sprite.y, 'dummyenemy', 'dummy_ascended.png').setDepth(10).setAlpha(0).setScale(this.sprite.scaleX);
-                         let ascendedDummyEyes = this.addImage(this.sprite.x, this.sprite.y - 27, 'dummyenemy', 'scary_eyes2.png').setDepth(10).setAlpha(0).setScale(this.sprite.scaleX * 0.5).setOrigin(0.5, 0.48);
+                        let spaceBG = this.addImage(gameConsts.halfWidth, this.sprite.y, 'backgrounds', 'star.png').setDepth(5).setAlpha(0).setScale(2.2).setOrigin(0.5, 0.53);
+                        let ascendedDummy = this.addImage(this.sprite.x, this.sprite.y, 'dummyenemy', 'dummy_ascended.png').setDepth(5).setAlpha(0).setScale(this.sprite.scaleX);
+                         let ascendedDummyEyes = this.addImage(this.sprite.x, this.sprite.y - 27, 'dummyenemy', 'scary_eyes2.png').setDepth(5).setAlpha(0).setScale(this.sprite.scaleX * 0.5).setOrigin(0.5, 0.48);
                          this.spaceTween = this.addTween({
                              targets: spaceBG,
                              rotation: "+=6.281",
@@ -877,12 +881,18 @@
                         this.extrasOnDie.push(spaceBG);
                         this.extrasOnDie.push(ascendedDummy);
                          this.extrasOnDie.push(ascendedDummyEyes);
+                         this.addTween({
+                             targets: [blackBG, ascendedDummy],
+                             alpha: 1,
+                             ease: 'Quad.easeIn',
+                             duration: 4000,
+                         });
                         this.addTween({
-                            targets: [blackBG, ascendedDummy],
+                            targets: [blackBG],
                             alpha: 1,
-                            duration: 3500,
+                            duration: 4000,
                             onComplete: () => {
-                                blackBG.setDepth(10);
+                                blackBG.setDepth(5);
                                 playFakeBGMusic('but_never_forgotten_metal_prelude');
                                 this.addTween({
                                     delay: 20,
@@ -922,6 +932,17 @@
                                                             scaleY: this.sprite.scaleX * 0.75,
                                                             ease: 'Quint.easeOut',
                                                             duration: 400,
+                                                            onComplete: () => {
+                                                                this.eyesTween = this.addTween({
+                                                                    targets: [ascendedDummyEyes],
+                                                                    scaleX: this.sprite.scaleX * 0.77,
+                                                                    scaleY: this.sprite.scaleX * 0.77,
+                                                                    ease: 'Cubic.easeIn',
+                                                                    duration: 1500,
+                                                                    repeat: 10000,
+                                                                    yoyo: true
+                                                                });
+                                                            }
                                                         });
                                                     }
                                                 });
@@ -935,7 +956,7 @@
                                                 blackBG.setVisible(true);
                                                 spaceBG.setAlpha(1);
                                                 this.bgMusic = playMusic('but_never_forgotten_metal', 0.85, true);
-                                                let blackpulse1 = this.addImage(this.sprite.x, this.sprite.y, 'blurry', 'black_pulse.png').setDepth(10).setAlpha(1).setScale(0);
+                                                let blackpulse1 = this.addImage(this.sprite.x, this.sprite.y, 'blurry', 'black_pulse.png').setDepth(5).setAlpha(1).setScale(0);
                                                  this.addTween({
                                                      targets: blackpulse1,
                                                      scaleX: 8,
@@ -945,7 +966,7 @@
                                                      duration: 550,
                                                  })
 
-                                                let dummyShadow = this.addImage(this.sprite.x, this.sprite.y, 'misc', 'shadow_circle.png').setScale(3.5).setDepth(10);
+                                                let dummyShadow = this.addImage(this.sprite.x, this.sprite.y, 'misc', 'shadow_circle.png').setScale(3.5).setDepth(5);
                                                  this.addTween({
                                                      targets: dummyShadow,
                                                      duration: 550,
@@ -953,13 +974,12 @@
                                                     scaleY: 50,
                                                      ease: 'Quad.easeOut',
                                                  });
-
+                                                this.setAwake();
                                                  this.addTween({
                                                      targets: [blackpulse1, dummyShadow],
                                                      duration: 550,
                                                      alpha: 0,
                                                      onComplete: () => {
-                                                        this.setAwake();
                                                      }
                                                  });
                                             }

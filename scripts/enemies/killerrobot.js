@@ -89,10 +89,10 @@
         this.lightShineRight = this.addSprite(gameConsts.halfWidth + 220, gameConsts.halfHeight - 320, 'blurry', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(0.5);
         this.lightShineRightTop = this.addSprite(this.lightShineRight.x, this.lightShineRight.y, 'blurry', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineRight.rotation);
 
-        this.minusDamage1 = this.addBitmapText(this.lightShineLeft.x, this.lightShineLeft.y + 5, 'block', '-4 DMG', 32, 1);
+        this.minusDamage1 = this.addBitmapText(this.lightShineLeft.x, this.lightShineLeft.y + 5, 'block', '-5 DMG', 32, 1);
         this.minusDamage1.setOrigin(0.5, -0.2).setAlpha(0).setDepth(12);
 
-        this.minusDamage2 = this.addBitmapText(this.lightShineRight.x, this.lightShineRight.y + 5, 'block', '-4 DMG', 32, 1);
+        this.minusDamage2 = this.addBitmapText(this.lightShineRight.x, this.lightShineRight.y + 5, 'block', '-5 DMG', 32, 1);
         this.minusDamage2.setOrigin(0.5, -0.2).setAlpha(0).setDepth(12);
 
         this.laserCharge = this.addSprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_charge.png').setDepth(11).setAlpha(0);
@@ -319,7 +319,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 500 : 425;
+         this.health = gameVars.isHardMode ? 480 : 425;
          this.criticalThreshold = 70;
          this.nextShieldHealth = gameVars.isHardMode ? 100 : 90;
          this.shieldsBroken = 0;
@@ -675,7 +675,7 @@
                             scaleY: 2,
                             onComplete: () => {
                                 messageBus.publish('showCircleShadow', 0.6);
-                                this.setDefense(4);
+                                this.setDefense(5);
                                 this.addTimeout(() => {
                                     globalObjects.bannerTextManager.setDialog([getLangText("killer_robot_a"), getLangText("killer_robot_b")]);
                                     this.minusDamage1.setAlpha(0.5).setRotation(-0.12);
@@ -866,7 +866,6 @@
                                             return;
                                         }
                                         messageBus.publish('showCircleShadow', 0.7);
-                                        //let dialogToSet = ["The stage lights shine\neven brighter.", "-4 damage to your attacks."];
                                         if (!this.isShiningBrighter) {
                                             globalObjects.bannerTextManager.setDialog([getLangText('killer_robot_c'), getLangText('killer_robot_b')]);
                                             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
@@ -875,7 +874,7 @@
                                         } else {
                                             // dialogToSet = ["The stage lights are\nalready at max brightness."];
                                         }
-                                        this.setDefense(4);
+                                        this.setDefense(5);
 
                                         this.minusDamage1.setAlpha(0.55).setRotation(0.14);
                                         this.minusDamage2.setAlpha(0.55).setRotation(-0.14);
@@ -1313,7 +1312,7 @@
                          }
                      },
                      attackFinishFunction: () => {
-                         this.shootBullets(4);
+                         this.shootBullets(5);
                      }
                  },
                  {

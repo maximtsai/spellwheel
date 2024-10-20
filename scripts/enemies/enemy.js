@@ -1545,6 +1545,7 @@ class Enemy {
         this.chargeBarWarningBig.visible = false;
         this.chargeBarAngry.visible = false;
         this.chargeBarWarning.visible = false;
+        this.attackDarken.visible = false;
         this.hideAngrySymbol()
         PhaserScene.tweens.add({
             targets: [this.chargeBarCurr],
@@ -1563,7 +1564,6 @@ class Enemy {
         if (this.attackName) {
             this.attackName.visible = false;
             this.attackGlow.visible = false;
-            this.attackDarken.visible = false;
         }
     }
 
@@ -1578,7 +1578,6 @@ class Enemy {
         this.isAsleep = false;
         if (this.attackName) {
             this.attackName.visible = true;
-            this.attackDarken.visible = true;
         }
         this.chargeBarEst1.visible = true;
         this.chargeBarEst2.visible = true;

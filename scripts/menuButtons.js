@@ -805,10 +805,10 @@ function showMainMenuButtons() {
         normal: {
             atlas: "pixels",
             ref: "blank_pixel.png",
-            x: gameConsts.width - 88,
-            y: gameConsts.halfHeight - 7,
+            x: gameConsts.width - 80,
+            y: gameConsts.halfHeight - 5,
             alpha: 0.9,
-            scaleX: 85,
+            scaleX: 95,
             scaleY: 36
         },
         hover: {
@@ -1261,8 +1261,8 @@ function showMainMenuButtons() {
             this.closeButton.setDepth(100000);
         }
     });
-    globalObjects.creditsButton.addText("CREDITS", {fontFamily: 'germania', fontSize: 24, color: '#FFFFFF', align: 'left'});
-    globalObjects.creditsButton.setStroke('#301010', 5)
+    globalObjects.creditsButton.addText(getLangText('credits'), {fontFamily: 'germania', fontSize: 18, color: '#FFFFFF', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5);
+    globalObjects.creditsButton.setStroke('#301010', 6)
     globalObjects.creditsButton.setRotation(-0.03)
 }
 
@@ -1276,7 +1276,9 @@ function updateMenuLanguage() {
     if (globalObjects.lvlPickButton && !globalObjects.lvlPickButton.isDestroyed) {
         globalObjects.lvlPickButton.setText(getLangText('lvl_select'))
     }
-
+    if (globalObjects.creditsButton && !globalObjects.creditsButton.isDestroyed) {
+        globalObjects.creditsButton.setText(getLangText('credits'))
+    }
 
 }
 

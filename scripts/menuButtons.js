@@ -115,7 +115,7 @@ function clearOnlyMenuBack() {
 
 
         PhaserScene.tweens.add({
-            delay: 1000,
+            delay: 850,
              targets: [globalObjects.menuTop],
              alpha: 0,
              duration: 1500,

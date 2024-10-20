@@ -192,7 +192,7 @@
 
      launchAttack(attackTimes = 1, prepareSprite, preAttackSprite, attackSprites, isRepeatedAttack, finishDelay, transitionFast = false) {
          this.sigilEffect.visible = false;
-         if (this.voidTentacleFront) {
+         if (this.voidTentacleFront && !this.nextAttack.isPassive) {
              this.voidTentacleFront.visible = false;
              this.voidTentacleBack.visible = false;
              // this.setSprite('void_knight_3.png');
@@ -804,7 +804,7 @@
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
                      attackStartFunction: () => {
-                         playSound('slice_in', 0.7);
+                         playSound('slice_in', 0.6);
                      },
                      attackFinishFunction: () => {
                          this.currentAttackSetIndex = 1;
@@ -918,7 +918,7 @@
                      attackSprites: ['void_knight_attack.png'],
                      isBigMove: true,
                      attackStartFunction: () => {
-                         playSound('slice_in', 0.7);
+                         playSound('slice_in', 0.55);
                      },
                      attackFinishFunction: () => {
                          this.makeSlashEffect();
@@ -1017,6 +1017,8 @@
                     startFunction: () => {
                         this.currentAttackSetIndex = 6;
                         this.nextAttackIndex = 0;
+                        this.voidTentacleFront.visible = true;
+                        this.voidTentacleBack.visible = true;
                     },
                     finaleFunction: () => {
                         this.voidTentacleFront.visible = true;
@@ -1359,6 +1361,24 @@
                  y: "+=1",
                  duration: 50,
              });
+             this.voidTentaEye.visible = true;
+             this.voidTentaEye.setAlpha(0);
+             this.voidTentaEye.y = this.sprite.y - 10;
+             this.addTween({
+                 targets: this.voidTentaEye,
+                 duration: 1000,
+                 ease: 'Cubic.easeInOut',
+                 alpha: 1,
+                 onComplete: () => {
+                     this.addTween({
+                         targets: this.voidTentaEye,
+                         duration: 550,
+                         ease: 'Back.easeOut',
+                         y: "-=44",
+                     })
+                 }
+             })
+
              this.addTween({
                  delay: 950,
                  targets: helmet,
@@ -1366,7 +1386,7 @@
                  duration: 350,
                  ease: 'Cubic.easeIn',
                  onStart: () => {
-                     this.voidTentaEye.visible = true;
+
                      this.addTween({
                          delay: 300,
                          targets: this.voidTentaEye,

@@ -72,7 +72,6 @@
         this.handShield.startScale = this.handShield.scaleX;
         this.statueSubscribe = messageBus.subscribe('lift_statue', () => {
             this.statueSubscribe.unsubscribe();
-            playSound('matter_enhance').detune = -800;
             this.addTween({
                 targets: this.sprite,
                 rotation: 0,
@@ -82,7 +81,7 @@
                 duration: 400,
                 completeDelay: 250,
                 onComplete: () => {
-                    playSound('rock_crumble', 0.2);
+                    playSound('matter_enhance', 0.45);
                     playSound("whoosh");
                     this.addTween({
                         targets: this.sprite,

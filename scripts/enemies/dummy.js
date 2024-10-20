@@ -33,6 +33,7 @@
          this.isAsleep = true;
          this.pullbackScale = 0.78;
         this.attackScale = 1.25;
+        this.extrasOnDie = [];
      }
 
      initSpriteAnim(scale) {
@@ -453,7 +454,7 @@
                              this.setAwake();
                              this.currentAttackSetIndex = 0;
                              this.nextAttackIndex = 0;
-                             this.brows = this.addImage(this.x , this.y - 32, 'dummyenemy', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(999);
+                             this.brows = this.addImage(this.x , this.y - 32, 'dummyenemy', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(99);
                              this.addTween({
                                  targets: this.brows,
                                  scaleX: this.sprite.startScale * 2.2,
@@ -480,7 +481,7 @@
                                  }
                              });
 
-                             this.snort = this.addImage(this.x - 3, this.y - 71, 'dummyenemy', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(999);
+                             this.snort = this.addImage(this.x - 3, this.y - 71, 'dummyenemy', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(99);
                              this.destructibles.push(this.snort);
 
                              this.addTween({
@@ -574,6 +575,11 @@
          if (this.rune3) {
              this.rune3.destroy();
              this.rune4.destroy();
+         }
+         if (this.extrasOnDie) {
+            for (let i = 0; i < this.extrasOnDie.length; i++) {
+                this.extrasOnDie[i].destroy();
+            }
          }
 
          if (this.playerSpellCastSub) {
@@ -689,7 +695,7 @@
                          this.heal(amt);
                          messageBus.publish('animateHealNum', this.x, this.y, '+' + amt, 0.5 + Math.sqrt(this.healthMax) * 0.2);
                          if (!this.healSprite) {
-                             this.healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(0.9).setDepth(999).setAlpha(1);
+                             this.healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(0.9).setDepth(99).setAlpha(1);
                          }
                          this.healSprite.setAlpha(1).setPosition(gameConsts.halfWidth, this.y - 90);
                          this.scene.tweens.add({
@@ -728,7 +734,7 @@
                  // 0
                  {
                      name: gameVars.isHardMode ? "}10 " : "}8 ",
-                     chargeAmt: 425,
+                     chargeAmt: 435,
                      damage: gameVars.isHardMode ? 10 : 8,
                      attackFinishFunction: () => {
                          screenShake(5);
@@ -761,7 +767,7 @@
                  },
                  {
                      name: "HEAL\\30",
-                     chargeAmt: 300,
+                     chargeAmt: 325,
                      damage: 0,
                      startFunction: () => {
                          this.addTimeout(() => {
@@ -810,16 +816,16 @@
                  },
                  {
                      name: "HEAL\\30",
-                     chargeAmt: 320,
+                     chargeAmt: 325,
                      damage: 0,
                      finaleFunction: () => {
                          this.healAnim(30);
                      }
                  },
                  {
-                     name: gameVars.isHardMode ? ";50" : ";40",
-                     chargeAmt: 700,
-                     damage: gameVars.isHardMode ? 50 : 40,
+                     name: gameVars.isHardMode ? ";30" : ";25",
+                     chargeAmt: 685,
+                     damage: gameVars.isHardMode ? 30 : 25,
                      isBigMove: true,
                      attackFinishFunction: () => {
                          playSound('punch');
@@ -837,26 +843,97 @@
                      }
                  },
                  {
-                     name: "\\30",
-                     chargeAmt: 320,
+                     name: "ASCENSION",
+                     chargeAmt: 300,
                      damage: 0,
+                     chargeMult: 1.5,
                      startFunction: () => {
-                         this.addTimeout(() => {
-                             this.tryInitTutorial5();
-                         }, 800);
+                         this.currentAttackSetIndex = 1;
+                         this.nextAttackIndex = 0;
                      },
                      finaleFunction: () => {
-                         this.healAnim(30);
+                        this.setAsleep();
+                        this.interruptCurrentAttack();
+                        fadeAwaySound(this.bgMusic, 3500);
+                        let blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(-5).setAlpha(0);
+                        let spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(10).setAlpha(0);
+                        let ascendedDummy = this.addImage(this.sprite.x, this.sprite.y, 'dummyenemy', 'dummy.png').setDepth(10).setAlpha(0).setScale(this.sprite.scaleX);
+
+                        this.extrasOnDie.push(blackBG);
+                        this.extrasOnDie.push(spaceBG);
+                        this.extrasOnDie.push(ascendedDummy);
+                        this.addTween({
+                            targets: [blackBG, ascendedDummy],
+                            alpha: 1,
+                            duration: 3500,
+                            onComplete: () => {
+                                blackBG.setDepth(10);
+                                playFakeBGMusic('but_never_forgotten_metal_prelude');
+                                this.addTween({
+                                    delay: 20,
+                                    targets: ascendedDummy,
+                                    duration: 750,
+                                    scaleX: 1.2,
+                                    scaleY: 1.2,
+                                    ease: 'Quint.easeOut',
+                                    onComplete: () => {
+                                        this.addTween({
+                                            targets: ascendedDummy,
+                                            duration: 1250,
+                                            scaleX: 0.62,
+                                            scaleY: 0.62,
+                                            ease: 'Quint.easeIn',
+                                            onComplete: () => {
+                                                if (this.dead) {
+                                                    return;
+                                                }
+                                                blackBG.setVisible(true);
+                                                spaceBG.setAlpha(1);
+                                                this.bgMusic = playMusic('but_never_forgotten_metal', 0.85, true);
+                                                let blackpulse1 = this.addImage(this.sprite.x, this.sprite.y, 'blurry', 'black_pulse.png').setDepth(10).setAlpha(1).setScale(0);
+                                                 this.addTween({
+                                                     targets: blackpulse1,
+                                                     scaleX: 8,
+                                                     scaleY: 8,
+                                                     rotation: "+=10",
+                                                     duration: 520,
+                                                 })
+
+                                                let dummyShadow = this.addImage(this.sprite.x, this.sprite.y, 'misc', 'shadow_circle.png').setScale(3.5).setDepth(11);
+                                                 this.addTween({
+                                                     targets: dummyShadow,
+                                                     duration: 520,
+                                                    scaleX: 50,
+                                                    scaleY: 50,
+                                                 });
+
+                                                 this.addTween({
+                                                     targets: [blackpulse1, dummyShadow],
+                                                     duration: 520,
+                                                     alpha: 0,
+                                                     onComplete: () => {
+                                                        this.setAwake();
+                                                     }
+                                                 });
+                                            }
+                                        });
+                                    }
+                                });
+
+
+                            }
+                        });
                      }
                  },
+             ], [
                  {
-                     name: "|12 ",
-                     chargeAmt: 400,
-                     damage: 12,
+                     name: ";999",
+                     chargeAmt: 800,
+                     damage: 999,
                      isBigMove: true,
                      attackFinishFunction: () => {
-                         screenShake(5);
-                         zoomTemp(1.015)
+                         screenShake(9);
+                         zoomTemp(1.04)
                          playSound('body_slam')
                          let dmgEffect = poolManager.getItemFromPool('brickPattern2')
                          if (!dmgEffect) {
@@ -885,6 +962,7 @@
                          }, 1000)
                      }
                  },
+
              ]
          ];
      }

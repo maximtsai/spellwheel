@@ -23,8 +23,14 @@
 
     initSpriteAnim(scale) {
         let origY = this.sprite.y;
-        this.sprite.setScale(scale * 0.85, scale * 0.85).setAlpha(1);
-        this.sprite.y += 94;
+        this.sprite.setScale(scale * 0.82, scale * 0.82).setAlpha(0.01);
+        this.sprite.y += 75;
+        this.addTween({
+            targets: this.sprite,
+            alpha: 1,
+            ease: 'Quart.easeOut',
+            duration: 1250
+        })
         this.addTween({
             targets: this.sprite,
             duration: 1500,
@@ -53,7 +59,7 @@
      }
 
      initTutorial(x, y) {
-        let dummyShadow = this.addSprite(x - 6, y - 50, 'misc', 'shadow_circle.png').setScale(13).setDepth(9999).setAlpha(0);
+        let dummyShadow = this.addImage(x - 6, y - 50, 'misc', 'shadow_circle.png').setScale(13).setDepth(9999).setAlpha(0);
         this.addTween({
             targets: dummyShadow,
             alpha: 0.4,

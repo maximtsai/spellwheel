@@ -47,7 +47,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 300 : 280;
+         this.health = gameVars.isHardMode ? 300 : 275;
          this.isAsleep = true;
          this.attackScale = 1;
          this.pullbackScale = 1;
@@ -72,6 +72,7 @@
         this.handShield.startScale = this.handShield.scaleX;
         this.statueSubscribe = messageBus.subscribe('lift_statue', () => {
             this.statueSubscribe.unsubscribe();
+            playSound('matter_enhance').detune = -800;
             this.addTween({
                 targets: this.sprite,
                 rotation: 0,
@@ -79,8 +80,9 @@
                 easeParams: [2],
                 ease: 'Back.easeOut',
                 duration: 400,
-                completeDelay: 400,
+                completeDelay: 250,
                 onComplete: () => {
+                    playSound('rock_crumble', 0.2);
                     playSound("whoosh");
                     this.addTween({
                         targets: this.sprite,
@@ -89,7 +91,7 @@
                         alpha: 0,
                         y: "-=300",
                         ease: 'Quart.easeIn',
-                        duration: 1500,
+                        duration: 1200,
                     })
                 }
             })
@@ -263,7 +265,7 @@
          if (currHealthPercent == 0) {
              // dead, can't do anything
              return;
-         } else if (currHealthPercent <= 0.95 && !this.gainedShield) {
+         } else if (currHealthPercent < 0.99999 && !this.gainedShield) {
              this.gainedShield = true;
              this.flash = this.addSprite(this.x + 3, this.y - 75, 'blurry', 'flash.webp').setOrigin(0.5, 0.5).setScale(0.8).setDepth(-1).setRotation(0.2);
              this.addTween({
@@ -510,7 +512,7 @@
          }
         super.die();
 
-         gameVars.latestLevel = this.level - 1;
+         gameVars.latestLevel = this.level;
          localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
          gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
          localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
@@ -632,7 +634,7 @@
              [
                  {
                      name: "CHARGING...",
-                     chargeAmt: gameVars.isHardMode ? 350 : 700,
+                     chargeAmt: gameVars.isHardMode ? 350 : 750,
                      damage: 0,
                  },
                  {

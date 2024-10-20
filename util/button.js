@@ -100,16 +100,25 @@ class Button {
             this.imageRefs[stateData.ref].x = oldImage.x || 0;
         } else {
             this.imageRefs[stateData.ref].x = stateData.x;
+            if (this.text) {
+                this.text.x = this.imageRefs[stateData.ref].x;
+            }
         }
         if (stateData.y === undefined) {
             this.imageRefs[stateData.ref].y = oldImage.y || 0;
         } else {
             this.imageRefs[stateData.ref].y = stateData.y;
+            if (this.text) {
+                this.text.y = this.imageRefs[stateData.ref].y;
+            }
         }
         if (stateData.alpha === undefined) {
             this.imageRefs[stateData.ref].alpha = oldImage.alpha || 1;
         } else {
             this.imageRefs[stateData.ref].alpha = stateData.alpha;
+            if (this.text) {
+                this.text.alpha = this.imageRefs[stateData.ref].alpha;
+            }
         }
         if (stateData.scaleX === undefined) {
             this.imageRefs[stateData.ref].scaleX = oldImage.scaleX || 1;
@@ -445,6 +454,12 @@ class Button {
         let depth = this.normal.depth ? this.normal.depth + 1 : 1;
         this.text = this.scene.add.text(this.normal.x, this.normal.y, text, font).setAlpha(this.normal.alpha).setOrigin(0.5, 0.5).setDepth(depth);
         return this;
+    }
+
+    setStroke(color, width) {
+        if (this.text) {
+            this.text.setStroke(color, width);
+        }
     }
 
     getText() {

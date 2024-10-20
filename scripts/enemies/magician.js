@@ -1091,7 +1091,7 @@
                  {
                      name: "}4x3 ",
                      desc: "An advanced magic attack.",
-                     chargeAmt: gameVars.isHardMode ? 400 : 500,
+                     chargeAmt: gameVars.isHardMode ? 400 : 525,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -1113,7 +1113,7 @@
                  {
                      name: "}3x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: gameVars.isHardMode ? 300 : 350,
+                     chargeAmt: gameVars.isHardMode ? 300 : 365,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {

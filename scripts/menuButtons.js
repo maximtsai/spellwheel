@@ -4,7 +4,7 @@ function setupMainMenuBG() {
         globalObjects.menuBack.startScale = globalObjects.menuBack.scaleX;
         globalObjects.menuTop = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9).setScale(0.85);
         globalObjects.menuTop.startScale = globalObjects.menuTop.scaleX;
-        globalObjects.menuButtons = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_buttons.png').setDepth(-9).setScale(0.84);
+        globalObjects.menuButtons = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_buttons.png').setDepth(-9).setScale(1);
     }
 }
 
@@ -46,20 +46,36 @@ function minorZoomMenu() {
     if (globalObjects.menuBack) {
         PhaserScene.tweens.add({
              targets: [globalObjects.menuBack],
-             scaleX: 0.9,
-             scaleY: 0.9,
-             y: gameConsts.halfHeight - 100,
+             scaleX: 0.91,
+             scaleY: 0.91,
+             y: gameConsts.halfHeight - 110,
              ease: 'Quint.easeInOut',
              duration: 1500,
          });
         PhaserScene.tweens.add({
              targets: [globalObjects.menuTop],
-             scaleX: 0.9,
-             scaleY: 0.9,
-             y: gameConsts.halfHeight - 100,
+             scaleX: 0.91,
+             scaleY: 0.91,
+             y: gameConsts.halfHeight - 110,
              ease: 'Quint.easeInOut',
              duration: 1500,
          });
+        PhaserScene.tweens.add({
+             targets: [globalObjects.menuButtons],
+             scaleX: 1.12,
+             scaleY: 1.12,
+             y: gameConsts.halfHeight - 93,
+             ease: 'Quint.easeInOut',
+             duration: 1500,
+         });
+        PhaserScene.tweens.add({
+             targets: [globalObjects.menuButtons],
+             ease: 'Quart.easeOut',
+             duration: 1250,
+             alpha: 0
+         });
+
+
     }
 }
 
@@ -82,6 +98,20 @@ function clearOnlyMenuBack() {
              ease: 'Cubic.easeInOut',
              duration: 2500,
          });
+        PhaserScene.tweens.add({
+             targets: [globalObjects.menuButtons],
+             scaleX: 2.15,
+             scaleY: 2.15,
+             y: gameConsts.halfHeight + 30,
+             ease: 'Cubic.easeInOut',
+             duration: 2500,
+         });
+        PhaserScene.tweens.add({
+             targets: [globalObjects.menuButtons],
+             alpha: 0,
+             duration: 1400,
+         });
+
 
         PhaserScene.tweens.add({
             delay: 1000,
@@ -137,6 +167,7 @@ function gotoMainMenuNoButtons() {
 
     globalObjects.menuBack.setAlpha(1).setScale(globalObjects.menuBack.startScale).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
     globalObjects.menuTop.setAlpha(1).setScale(globalObjects.menuTop.startScale).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
+    globalObjects.menuButtons.setAlpha(1).setScale(globalObjects.menuButtons.startScale).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
 
     if (globalObjects.startButton && !globalObjects.startButton.isDestroyed) {
         return;
@@ -150,15 +181,23 @@ function showMainMenuButtons() {
     if (hasContinue) {
         globalObjects.continueButton = new Button({
             normal: {
-                ref: "blackPixel",
+                atlas: "pixels",
+                ref: "blank_pixel.png",
                 x: gameConsts.halfWidth - 173,
                 y: gameConsts.halfHeight - 151,
+                alpha: 0.9,
+                scaleX: 130,
+                scaleY: 40
             },
             hover: {
-                ref: "blackPixel",
+                atlas: "pixels",
+                ref: "blank_pixel.png",
+                alpha: 1
             },
             press: {
-                ref: "blackPixel",
+                atlas: "pixels",
+                ref: "blank_pixel.png",
+                alpha: 0.7
             },
             disable: {
                 alpha: 0
@@ -182,21 +221,30 @@ function showMainMenuButtons() {
         });
         globalObjects.continueButton.setOrigin(0.5, 0.5);
         globalObjects.continueButton.addText(getLangText('cont_ui'), {fontFamily: 'germania', fontSize: 30, color: '#FFFFFF', align: 'left'})
+        globalObjects.continueButton.setStroke('#301010', 5)
         // globalObjects.continueButton.setScale(0.9);
     }
 
     if (hasLvlSelect) {
         globalObjects.lvlPickButton = new Button({
             normal: {
-                ref: "blackPixel",
-                x: gameConsts.halfWidth - 175,
-                y: gameConsts.halfHeight - 65,
+                atlas: "pixels",
+                ref: "blank_pixel.png",
+                x: gameConsts.halfWidth - 181,
+                y: gameConsts.halfHeight - 67,
+                alpha: 0.9,
+                scaleX: 130,
+                scaleY: 37
             },
             hover: {
-                ref: "blackPixel",
+                atlas: "pixels",
+                ref: "blank_pixel.png",
+                alpha: 1
             },
             press: {
-                ref: "blackPixel",
+                atlas: "pixels",
+                ref: "blank_pixel.png",
+                alpha: 0.7
             },
             disable: {
                 alpha: 0
@@ -219,21 +267,29 @@ function showMainMenuButtons() {
         });
         globalObjects.lvlPickButton.setOrigin(0.5, 0.5);
         globalObjects.lvlPickButton.addText(getLangText('lvl_select'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'left'})
-        // globalObjects.lvlPickButton.setScale(0.95, 0.9);
-        globalObjects.lvlPickButton.setRotation(0.28)
+        globalObjects.lvlPickButton.setStroke('#301010', 5)
+        globalObjects.lvlPickButton.setRotation(0.27)
     }
     let yPos = (hasLvlSelect || hasContinue) ? gameConsts.halfHeight - 260 : gameConsts.halfHeight - 132;
     globalObjects.startButton = new Button({
         normal: {
-            ref: "blackPixel",
+            atlas: "pixels",
+            ref: "blank_pixel.png",
             x: gameConsts.halfWidth - 176,
             y: yPos + 32,
+            scaleX: 130,
+            scaleY: 40,
+            alpha: 0.9
         },
         hover: {
-            ref: "blackPixel",
+            atlas: "pixels",
+            ref: "blank_pixel.png",
+            alpha: 1,
         },
         press: {
-            ref: "blackPixel",
+            atlas: "pixels",
+            ref: "blank_pixel.png",
+            alpha: 0.7
         },
         disable: {
             alpha: 0
@@ -264,7 +320,8 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.startButton.setOrigin(0.5, 0.5);
-    globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'germania', fontSize: 30, color: '#FFFFFF', align: 'left'})
+    globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'germania', fontSize: 30, color: '#FFFFFF', align: 'left'});
+    globalObjects.startButton.setStroke('#301010', 5)
     globalObjects.startButton.setRotation(-0.05)
     // globalObjects.startButton.setScale(0.9);
     globalObjects.startButton.isSolo = !hasLvlSelect && !hasContinue;
@@ -745,15 +802,19 @@ function showMainMenuButtons() {
 
     globalObjects.creditsButton = new Button({
         normal: {
-            ref: "blackPixel",
+            atlas: "pixels",
+            ref: "blank_pixel.png",
             x: gameConsts.width - 88,
             y: gameConsts.halfHeight - 7,
+            alpha: 0.9,
+            scaleX: 85,
+            scaleY: 36
         },
         hover: {
-            ref: "blackPixel",
+            alpha: 1,
         },
         press: {
-            ref: "blackPixel",
+            alpha: 0.7,
         },
         disable: {
         },
@@ -1199,8 +1260,8 @@ function showMainMenuButtons() {
             this.closeButton.setDepth(100000);
         }
     });
-    globalObjects.creditsButton.setScale(0.5, 0.5);
-    globalObjects.creditsButton.addText("CREDITS", {fontFamily: 'germania', fontSize: 24, color: '#FFFFFF', align: 'left'})
+    globalObjects.creditsButton.addText("CREDITS", {fontFamily: 'germania', fontSize: 24, color: '#FFFFFF', align: 'left'});
+    globalObjects.creditsButton.setStroke('#301010', 5)
     globalObjects.creditsButton.setRotation(-0.03)
 }
 

@@ -33,6 +33,7 @@
              targets: tempPulse,
              scaleX: 8,
              scaleY: 8,
+             rotation: "+=10",
              duration: 540,
          })
          this.addTween({
@@ -41,11 +42,6 @@
              duration: 540,
              alpha: 0,
          });
-         this.addTween({
-             targets: tempPulse,
-             rotation: "+=10",
-             duration: 540,
-         })
 
 
          this.whiteoutTemp = this.addImage(x, y + 15, 'spells', 'whiteout_circle.png').setScale(2.55)

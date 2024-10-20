@@ -23,7 +23,7 @@ function createEnemy(num) {
         globalObjects.currentEnemy = new Dummymind(PhaserScene, gameConsts.halfWidth, 310, num);
         break;
     case 0:
-        globalObjects.currentEnemy = new LesserDummy(PhaserScene, gameConsts.halfWidth, 318, num);
+        globalObjects.currentEnemy = new LesserDummy(PhaserScene, gameConsts.halfWidth, 333, num);
         break;
     case 1:
         globalObjects.currentEnemy = new Dummy(PhaserScene, gameConsts.halfWidth, 125, num);

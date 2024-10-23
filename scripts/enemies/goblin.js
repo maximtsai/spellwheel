@@ -340,7 +340,7 @@
                      },
                      attackFinishFunction: () => {
                          playSound('body_slam')
-                         let dmgEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 450);
+                         let dmgEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 450);
                          dmgEffect.setPosition(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185).setDepth(998).setScale(1.35)
                      }
                  },

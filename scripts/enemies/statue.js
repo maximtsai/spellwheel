@@ -812,13 +812,15 @@
                 })
                 this.addDelayIfAlive(() => {
                     messageBus.publish("selfTakeDamage", damage);
-                    let dmgEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 200);
+                    let dmgEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 200);
+                    dmgEffect.play('damageEffect')
                     dmgEffect.setPosition(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 195).setDepth(998).setScale(1.25)
                     this.addTimeout(() => {
                         messageBus.publish("selfTakeDamage", damage);
                         let slamSfx = playSound('body_slam', vol);
                         slamSfx.detune = 50 + Math.floor(Math.random() * 100);
-                        let dmgEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 200);
+                        let dmgEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 200);
+                        dmgEffect.play('damageEffect');
                         dmgEffect.setPosition(gameConsts.halfWidth + (Math.random() - 0.5) * 25, globalObjects.player.getY() - 180).setDepth(998).setScale(1.35)
                     }, 150)
                     let isLast = i == times - 1;

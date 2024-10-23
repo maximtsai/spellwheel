@@ -99,6 +99,7 @@ class SpellManager {
         let extraDur = 0;
         if (sprite === null) {
             dmgEffect = this.scene.add.sprite(x, y, 'spells').play('damageEffect');
+            dmgEffect.setRotation((Math.random() - 0.5) * 0.15)
             extraDur = 100;
         } else if (isAnim) {
             dmgEffect = this.scene.add.sprite(x, y, 'spells').play(sprite);

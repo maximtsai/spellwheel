@@ -625,7 +625,7 @@
                      chargeAmt: 999,
                      damage: 999,
                     attackFinishFunction: () => {
-                        let dmgEffect = this.addSprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.5);
+                        let dmgEffect = this.addSprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect3.png').setDepth(998).setScale(1.5);
                         this.addTimeout(() => {
                             dmgEffect.destroy();
                         }, 150)

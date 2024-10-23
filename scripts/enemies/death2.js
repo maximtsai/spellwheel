@@ -596,7 +596,7 @@
                     attackFinishFunction: () => {
                         // this.makeSlashEffect();
                         playSound('punch');
-                        let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 400);
+                        let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 400);
                         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 185).setDepth(998).setScale(1.45);
                     },
                     finaleFunction: () => {
@@ -788,7 +788,7 @@
                     attackFinishFunction: () => {
                         // this.makeSlashEffect();
                         playSound('punch');
-                        let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 400);
+                        let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 400);
                         powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 185).setDepth(998).setScale(1.45);
                     },
                     finaleFunction: () => {
@@ -1007,7 +1007,7 @@
                          punchFist.setFrame('puncharm.png');
                          punchFist.setOrigin(0.6, 0.5);
                          messageBus.publish("selfTakeDamage", 6);
-                         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 130);
+                         let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 130);
                          powEffect.setPosition(gameConsts.halfWidth * 0.4 + 0.6 * punchPortal.x, globalObjects.player.getY() - 185).setDepth(998).setScale(1.4);
                          screenShake(2);
                          playSound(isLeft ? 'punch' : 'punch2').detune = detuneAmt + 150;
@@ -1047,7 +1047,7 @@
         let isSwingingLeft = this.sprite.attackNum % 2 == 0;
         playSound(isSwingingLeft ? 'punch' : 'punch2');
         screenShake(2);
-         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 400);
+         let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 400);
          let xOffset = isSwingingLeft ? -30 : 30;
          powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 185).setDepth(998).setScale(1.5);
 

@@ -944,7 +944,7 @@
                                  this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
                              }
                          }, 80);
-                         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
+                         let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 150);
                          let xOffset = this.claw1Attacked ? -30 : 30;
                          powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 180).setDepth(998).setScale(1.45);
                      },
@@ -1005,7 +1005,7 @@
                                 this.sprite.setDepth(10);
                              }
                          }, 80);
-                         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
+                         let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 150);
                          powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 180).setDepth(998).setScale(1.6);
                      },
                      finaleFunction: () => {
@@ -1042,7 +1042,7 @@
                                  this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
                              }
                          }, 80);
-                         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
+                         let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 150)
                          let xOffset = this.claw1Attacked ? -30 : 30;
                          powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 180).setDepth(998).setScale(1.5);
                      },
@@ -1096,7 +1096,7 @@
                                  this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
                              }
                          }, 80);
-                         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
+                         let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 150)
                          let xOffset = this.claw1Attacked ? -30 : 30;
                          powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 180).setDepth(998).setScale(1.5);
                      },
@@ -1341,7 +1341,7 @@
                                  this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
                              }
                          }, 80);
-                         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150);
+                         let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 150);
                          powEffect.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 180).setDepth(998).setScale(1.6);
                      },
                      finaleFunction: () => {
@@ -1374,7 +1374,7 @@
                                  this.sprite.setFrame(this.claw1Attacked ? 'robot_claw_2.png' : 'robot_claw_1.png')
                              }
                          }, 80);
-                         let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
+                         let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 150)
                          let xOffset = this.claw1Attacked ? -30 : 30;
                          powEffect.setPosition(gameConsts.halfWidth + xOffset, globalObjects.player.getY() - 180).setDepth(998).setScale(1.5);
                      },
@@ -1983,7 +1983,7 @@
                              currObj.setDepth(90);
                          },
                          onComplete: () => {
-                             let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 200);
+                             let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 200);
                              powEffect.setPosition(currObj.x, currObj.y).setDepth(999).setScale(1.5).setAlpha(1.2).setRotation(Math.random() - 0.5);
                              this.addTween({
                                  targets: powEffect,

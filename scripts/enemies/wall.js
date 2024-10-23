@@ -363,7 +363,7 @@
                      onComplete: () => {
                          let hitEffect2 = this.addImage(wallChunk.x, wallChunk.y, 'spells', 'rockCircle.png').setScale(0.2).setRotation(Math.random() * 6).setDepth(195);
 
-                         let hitEffect = this.addImage(wallChunk.x, wallChunk.y, 'spells', damage > 50 ? 'brickPattern2.png' : 'damageEffect4.png').setScale(0.95).setRotation(Math.random()).setDepth(195);
+                         let hitEffect = this.addImage(wallChunk.x, wallChunk.y, 'spells', damage > 50 ? 'brickPattern2.png' : 'damageEffect3.png').setScale(0.95).setRotation(Math.random()).setDepth(195);
 
                          this.scene.tweens.add({
                              targets: hitEffect,
@@ -502,7 +502,7 @@
 
                                         rock.destroy();
 
-                                        let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
+                                        let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 150)
                                         powEffect.setPosition(rock.x, rock.y).setDepth(9999).setScale(hasBigRock ? 2 : 1.25);
                                     }
                                 });
@@ -549,12 +549,12 @@
                             duration: isBigPoop ? 1000 : 600,
                             onComplete: () => {
                                 if (isBigPoop) {
-                                    messageBus.publish('playerAddDelayedDamage', 5);
+                                    messageBus.publish('playerAddDelayedDamage', 6);
 
                                     playSound('punch', 0.5);
                                     playSound('squish');
-                                    let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
-                                    powEffect.setPosition(poop.x, poop.y).setDepth(9999).setScale(1.4);
+                                    let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 150)
+                                    powEffect.setPosition(poop.x, poop.y).setDepth(9999).setScale(1.4).play('damageEffectSimple');
                                     let startScale = poop.scaleX;
                                     poop.setScale(startScale * 1.25);
                                     this.addTween({
@@ -568,7 +568,7 @@
                                 } else {
                                     poop.destroy();
                                     messageBus.publish("selfTakeDamage", 2);
-                                    let powEffect = getTempPoolObject('spells', 'damageEffect1.png', 'damageEffect1', 150)
+                                    let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 150)
                                     powEffect.setPosition(poop.x, poop.y).setDepth(9999);
                                     playSound('squish');
                                 }

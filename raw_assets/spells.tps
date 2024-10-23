@@ -352,35 +352,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">spells/burnParticle1.png</key>
-            <key type="filename">spells/burnParticle10.png</key>
-            <key type="filename">spells/burnParticle11.png</key>
-            <key type="filename">spells/burnParticle12.png</key>
-            <key type="filename">spells/burnParticle13.png</key>
-            <key type="filename">spells/burnParticle2.png</key>
-            <key type="filename">spells/burnParticle3.png</key>
-            <key type="filename">spells/burnParticle4.png</key>
-            <key type="filename">spells/burnParticle5.png</key>
-            <key type="filename">spells/burnParticle6.png</key>
-            <key type="filename">spells/burnParticle7.png</key>
-            <key type="filename">spells/burnParticle8.png</key>
-            <key type="filename">spells/burnParticle9.png</key>
-            <key type="filename">spells/clock_redStrike.png</key>
-            <key type="filename">spells/timeRed1.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>50,50,100,100</rect>
-                <key>scale9Paddings</key>
-                <rect>50,50,100,100</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">spells/clock.png</key>
             <key type="filename">spells/clockStrike.png</key>
             <key type="filename">spells/rock.png</key>
@@ -486,6 +457,24 @@
                 <rect>16,16,33,33</rect>
                 <key>scale9Paddings</key>
                 <rect>16,16,33,33</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spells/clock_redStrike.png</key>
+            <key type="filename">spells/damageEffect6.png</key>
+            <key type="filename">spells/damageEffect7.png</key>
+            <key type="filename">spells/timeRed1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,50,100,100</rect>
+                <key>scale9Paddings</key>
+                <rect>50,50,100,100</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

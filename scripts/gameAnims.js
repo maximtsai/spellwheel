@@ -251,11 +251,22 @@ function createAnimations(scene) {
         frames: scene.anims.generateFrameNames('spells', {
             prefix: 'damageEffect',
             suffix: '.png',
-            start: 2,
-            end: 5,
+            start: 0,
+            end: 7,
             zeroPad: 0,
         }),
-        frameRate: 20
+        frameRate: 30
+    });
+    scene.anims.create({
+        key: 'damageEffectSimple',
+        frames: scene.anims.generateFrameNames('spells', {
+            prefix: 'damageEffect',
+            suffix: '.png',
+            start: 3,
+            end: 4,
+            zeroPad: 0,
+        }),
+        frameRate: 10
     });
     scene.anims.create({
         key: 'shockEffect',

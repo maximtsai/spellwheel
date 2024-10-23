@@ -747,7 +747,7 @@
                      attackFinishFunction: () => {
                          screenShake(5);
                          zoomTemp(1.015)
-                         let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.4);
+                         let dmgEffect = this.addSprite(gameConsts.halfWidth - 15, globalObjects.player.getY() - 185, 'spells', 'damageEffect3.png').setDepth(998).setScale(1.4);
                          this.addTimeout(() => {
                              dmgEffect.x += 30;
                              dmgEffect.y += 10;

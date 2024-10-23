@@ -18,7 +18,7 @@
 
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 150 : 90;
-         this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 54, 'misc', 'slash1.png').setScale(0.9).setDepth(130).setAlpha(0);
+         this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 54, 'misc', 'slash1.png').setScale(0.9).setDepth(995).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.22;
         this.isAnimating = false;
@@ -356,6 +356,9 @@
                      transitionFast: true,
                      damage: 0,
                      startFunction: () => {
+                         if (this.accumTween) {
+                             this.accumTween.stop();
+                         }
                         messageBus.publish("closeCombatText")
                          this.sprite.x = gameConsts.halfWidth + (Math.random() < 0.5 ? 15 : -15);
                          this.addTween({

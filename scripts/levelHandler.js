@@ -565,13 +565,13 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case 5:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
         case 6:
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
         case 7:
-            fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 0.94, 0.94,'Quart.easeIn', 0, false);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, -1, -0.94, 0.94,'Quart.easeIn', 0, false);
             break;
         case 8:
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 0.92, 0.935, 0.935,'Quart.easeIn', 0, true, -1);

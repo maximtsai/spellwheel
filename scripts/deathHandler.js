@@ -208,11 +208,16 @@ function repeatDeathHandsRotate() {
     });
 }
 
-function setFloatingDeathVisible(visible) {
+function setFloatingDeathVisible(visible, hideHands = false) {
     globalObjects.deathLeftHand.visible = visible;
     globalObjects.deathRightHand.visible = visible;
-    globalObjects.floatingDeath.visible = visible;
-    globalObjects.floatingDeath2.visible = visible;
+    if (hideHands) {
+        globalObjects.floatingDeath.visible = false;
+        globalObjects.floatingDeath2.visible = false;
+    } else {
+        globalObjects.floatingDeath.visible = visible;
+        globalObjects.floatingDeath2.visible = visible;
+    }
 }
 
 function playReaperAnim(enemy, customFinFunc) {
@@ -552,8 +557,6 @@ function clearReaper() {
         globalObjects.deathLeftHand.currAnim.stop();
         globalObjects.deathRightHand.currAnim.stop();
     }
-    // globalObjects.deathLeftHand.visible = visible;
-    // globalObjects.deathRightHand.visible = visible;
     globalObjects.floatingDeath.visible = true;
     globalObjects.floatingDeath2.visible = true;
     tweenObjectRotationTo(globalObjects.deathLeftHand, -0.38, 1100, "Cubic.easeIn");
@@ -710,6 +713,8 @@ function handleReaperDialog(level = 0, onComplete) {
                 gameVars.deathFlutterDelay = 350;
                 repeatDeathFlutterAnimation(0);
             });
+            setFloatingDeathVisible(true, true)
+
         }, undefined]
         break;
     case 8:

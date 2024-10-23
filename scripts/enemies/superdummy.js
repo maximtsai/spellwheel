@@ -982,7 +982,7 @@
                  },
                  {
                      name: "T-POSE",
-                     chargeAmt: 400,
+                     chargeAmt: 450,
                      damage: -1,
                      chargeMult: 2,
                      startFunction: () => {
@@ -1059,7 +1059,7 @@
                  },
                  {
                      name: ";8x8;",
-                     chargeAmt: 600,
+                     chargeAmt: 700,
                     finishDelay: 6000,
                      damage: -1,
                      isBigMove: true,

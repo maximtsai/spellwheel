@@ -2870,7 +2870,7 @@ const ENABLE_KEYBOARD = true;
                  duration: 500,
                  scaleX: 0.65 + 0.05 * damage,
                  scaleY: 0.65 + 0.05 * damage,
-                 completeDelay: 1000,
+                 completeDelay: 500,
                  onComplete: () => {
                      this.animateMindBurn(duration - 1, damage)
                  }

@@ -44,35 +44,38 @@ function fadeInBackground(name, duration = 15000, scale = 1) {
     return nextObj;
 }
 
-function fadeInBackgroundAtlas(atlas, name, duration = 15000, scale = 1.1, endScaleX, endScaleY, ease, delay, extra, yOffset = 0) {
+function fadeInBackgroundAtlas(atlas, name, duration = 15000, scale = 1.1, endScaleX, endScaleY, ease, delay, extra, yOffset = 0, noAnim = false) {
     let nextObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight * 0.7 + yOffset, atlas, name).setDepth(-10).setScale(scale).setAlpha(0).setOrigin(0.5, 0.35);
 
-    PhaserScene.tweens.add({
-        delay: delay,
-        targets: nextObj,
-        alpha: 1,
-        ease: ease,
-        duration: duration
-    });
-    if (endScaleX !== undefined) {
+    if (!noAnim) {
         PhaserScene.tweens.add({
             delay: delay,
             targets: nextObj,
-            scaleX: extra ? endScaleX + 0.1 : endScaleX,
-            scaleY: extra ? endScaleY + 0.1 : endScaleY,
-            ease: ease ? ease : 'Cubic.easeOut',
-            duration: duration + 1000,
-            onComplete: () => {
-                PhaserScene.tweens.add({
-                    targets: nextObj,
-                    scaleX: endScaleX,
-                    scaleY: endScaleY,
-                    ease: 'Cubic.easeOut',
-                    duration: 500
-                });
-            }
+            alpha: 1,
+            ease: ease,
+            duration: duration
         });
+        if (endScaleX !== undefined) {
+            PhaserScene.tweens.add({
+                delay: delay,
+                targets: nextObj,
+                scaleX: extra ? endScaleX + 0.1 : endScaleX,
+                scaleY: extra ? endScaleY + 0.1 : endScaleY,
+                ease: ease ? ease : 'Cubic.easeOut',
+                duration: duration + 1000,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        targets: nextObj,
+                        scaleX: endScaleX,
+                        scaleY: endScaleY,
+                        ease: 'Cubic.easeOut',
+                        duration: 500
+                    });
+                }
+            });
+        }
     }
+
 
 
     if (useFirstBG) {

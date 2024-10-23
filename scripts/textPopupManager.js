@@ -2,7 +2,7 @@ class TextPopupManager {
     constructor(scene) {
         this.scene = scene;
         this.damageNums = []; // Depreciated, currently just using one damage num
-        this.damageNum = this.scene.add.bitmapText(gameConsts.halfWidth, 200, 'damage', '', isMobile ? 34 : 32).setDepth(99900).setOrigin(0.5, 0.65);
+        this.damageNum = this.scene.add.bitmapText(gameConsts.halfWidth, 200, 'damage', '', isMobile ? 34 : 32).setDepth(9991).setOrigin(0.5, 0.65);
         this.damageNum.startY = this.damageNum.y;
         this.damageTween = null;
         this.damageNumber = 0;
@@ -301,7 +301,7 @@ class TextPopupManager {
         let textObj = array.pop();
         if (!textObj) {
             textObj = this.scene.add.bitmapText(x, y, fontName, text, 32);
-            textObj.setDepth(99999);
+            textObj.setDepth(9981);
             textObj.setOrigin(0.5, 0.5);
             textObj.setCenterAlign();
         }

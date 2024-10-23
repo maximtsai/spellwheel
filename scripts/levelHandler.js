@@ -527,13 +527,14 @@ function switchLevelBackground(lvl) {
             break;
         case -1:
             // mind dummy
-            fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeIn', 0, false, 0);
+            fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeOut', 0, false, 0);
             break;
         case 0:
             // zoomInCurrBackground(1500, 2, 'Cubic.easeIn');
             let bgObj = fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 100, globalObjects.menuBack.scaleX, globalObjects.menuBack.startScale * 1.19, globalObjects.menuBack.startScale * 1.2,'Quint.easeInOut', 0, false, 0, true);
-            bgObj.setOrigin(0.5, 0.5).setPosition(globalObjects.menuBack.x, globalObjects.menuBack.y).setScale(globalObjects.menuBack.scaleX, globalObjects.menuBack.scaleY);
-            minorZoomMenu()
+            bgObj.setOrigin(0.5, 0.5).setPosition(globalObjects.menuBack.x, globalObjects.menuBack.y).setScale(globalObjects.menuBack.scaleX, globalObjects.menuBack.scaleY).setDepth(-8);
+            minorZoomMenu();
+            globalObjects.menuTop.setDepth(-7);
 
             PhaserScene.tweens.add({
                 targets: bgObj,
@@ -544,6 +545,7 @@ function switchLevelBackground(lvl) {
                 alpha: 1,
                 duration: 1500,
                 onComplete: () => {
+                    globalObjects.menuTop.setDepth(-9);
                     globalObjects.menuBack.setFrame('menu_back_battle.png');
                     bgObj.visible = false;
                 }
@@ -551,7 +553,7 @@ function switchLevelBackground(lvl) {
             break;
         case 1:
             clearOnlyMenuBack();
-            fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeIn', 0, false, 0);
+            fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeOut', 0, false, 0);
             break;
         case 2:
             fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);

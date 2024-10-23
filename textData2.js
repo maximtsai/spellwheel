@@ -664,10 +664,10 @@ let textData2 = {
         "jp": "もう一つの障害は?"
     },
     "level1_diag_b": {
-        "en_us": "Time to try my\nmore advanced spells",
-        "fr": "Je devrais utiliser mes\nsorts les plus avancés",
-        "zh_tw": "我應該使用我的更高級的法術",
-        "zh_cn": "我应该使用我的更高级的法术",
+        "en_us": "Another obstacle. Time to use\nmy more advanced spells.",
+        "fr": "Un autre obstacle. Je devrais utiliser\nmes sorts les plus avancés",
+        "zh_tw": "另一个障碍。我應該使用\n我的更高級的法術。",
+        "zh_cn": "另一个障碍。我应该使用\n我的更高级的法术。",
         "ru": "Мне следует использовать\nболее продвинутые заклинания",
         "es": "¡Debería usar mis\nhechizos más avanzados",
         "jp": "もっと高度な呪文を使うべきだ"

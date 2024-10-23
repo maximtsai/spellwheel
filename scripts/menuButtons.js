@@ -1,6 +1,6 @@
 function setupMainMenuBG() {
     if (!globalObjects.menuBack) {
-        globalObjects.menuBack = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-19).setScale(0.95);
+        globalObjects.menuBack = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_back.png').setDepth(-9).setScale(0.95);
         globalObjects.menuBack.startScale = globalObjects.menuBack.scaleX;
         globalObjects.menuTop = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9).setScale(0.85);
         globalObjects.menuTop.startScale = globalObjects.menuTop.scaleX;
@@ -115,10 +115,11 @@ function clearOnlyMenuBack() {
 
 
         PhaserScene.tweens.add({
-            delay: 850,
+            delay: 450,
              targets: [globalObjects.menuTop],
              alpha: 0,
-             duration: 1500,
+             duration: 900,
+            ease: 'Quad.easeInOut',
              onComplete: () => {
              }
          });

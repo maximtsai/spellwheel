@@ -211,11 +211,11 @@ class Player {
         this.injureBarRecent = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_seg_red.png').setDepth(130);
         this.injureBarRecentFlash = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_seg_red_half_flash.png').setDepth(130).setAlpha(0);
 
-        this.healthBarPartial = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_partial.png').setDepth(999).setVisible(false);
-        this.healthBarMain = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_full.png').setDepth(999);
+        this.healthBarPartial = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_partial.png').setDepth(991).setVisible(false);
+        this.healthBarMain = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_full.png').setDepth(991);
 
         for (let i = 0; i < 5; i++) {
-            let healthBar = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_sliver.png').setDepth(998);
+            let healthBar = this.scene.add.sprite(x, y - 0.5, 'circle', 'healthbar_sliver.png').setDepth(990);
             healthBar.rotation = 0;
             healthBar.visible = false;
             this.barAssetsSmall.push(healthBar);
@@ -227,7 +227,7 @@ class Player {
         // this.healthBarPeak.setScale(1, 1);
         // this.healthBarPeak.visible = true;
 
-        this.castText = this.scene.add.text(x, y, "CAST", {fontFamily: 'germania', fontSize: 30, color: '#040404', align: 'center'}).setOrigin(0.5, 0.5).setDepth(9998);
+        this.castText = this.scene.add.text(x, y, "CAST", {fontFamily: 'germania', fontSize: 30, color: '#040404', align: 'center'}).setOrigin(0.5, 0.5).setDepth(9900);
         this.castText.setAlpha(0.5);
 
         this.healthText = this.scene.add.text(x, y + 38, 'HP ' + this.health + '/' + this.healthMax, {fontFamily: 'germania', fontSize: isMobile ? 24 : 21, color: '#040404', align: 'left'});
@@ -235,7 +235,7 @@ class Player {
         this.healthText.setFontStyle('bold')
         this.healthText.setTint(0x000000);
         this.healthText.setOrigin(0.5, 0.5);
-        this.healthText.setDepth(9998);
+        this.healthText.setDepth(9900);
     }
 
     setCastTextAlpha(amt = 0.65) {

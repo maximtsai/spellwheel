@@ -2478,7 +2478,7 @@ class Enemy {
         this.castAggravateCharge += amt;
     }
 
-    setPredictScale(amt = 6.9) {
+    setPredictScale(amt = 8) {
         if (this.lastChargeEstScale != this.chargeBarEstScale) {
             this.lastChargeEstScale = this.chargeBarEstScale;
             if (this.chargeBarEst1.currAnim) {

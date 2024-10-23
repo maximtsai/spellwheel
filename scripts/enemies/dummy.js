@@ -895,9 +895,9 @@
                                 blackBG.setDepth(5);
                                 playFakeBGMusic('but_never_forgotten_metal_prelude');
                                 this.addTween({
-                                    delay: 20,
+                                    delay: 120,
                                     targets: [ascendedDummy],
-                                    duration: 700,
+                                    duration: 600,
                                     scaleX: 1.2,
                                     scaleY: 1.2,
                                     ease: 'Quint.easeOut',

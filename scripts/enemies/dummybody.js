@@ -228,13 +228,13 @@
                      }
                  },
                  {
-                     name: "HEAL \\30",
-                     chargeAmt: 500,
+                     name: "HEAL \\40",
+                     chargeAmt: 650,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(30);
+                         this.healAnim(40);
                      }
                  },
                  {
@@ -255,13 +255,13 @@
                     }
                  },
                  {
-                     name: "HEAL \\30",
-                     chargeAmt: 550,
+                     name: "HEAL \\40",
+                     chargeAmt: 700,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(30);
+                         this.healAnim(40);
                      }
                  },
                  // 0
@@ -284,13 +284,13 @@
                  },
                  // 0
                  {
-                     name: "HEAL \\30",
-                     chargeAmt: 600,
+                     name: "HEAL \\40",
+                     chargeAmt: 750,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(30);
+                         this.healAnim(40);
                      }
                  },
                  {
@@ -353,7 +353,7 @@
                      },
                      attackStartFunction: () => {
                          this.addTimeout(() => {
-                             this.takeDamage(50, false);
+                             this.takeDamage(999, false);
                          }, 10);
                          playSound('clunk');
                          this.runSfxLoop.detune = 0;

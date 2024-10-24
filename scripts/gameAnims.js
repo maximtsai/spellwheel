@@ -258,7 +258,7 @@ function createAnimations(scene) {
         frameRate: 40
     });
     scene.anims.create({
-        key: 'damageEffectSimple',
+        key: 'damageEffectShort',
         frames: scene.anims.generateFrameNames('spells', {
             prefix: 'damageEffectShort',
             suffix: '.png',

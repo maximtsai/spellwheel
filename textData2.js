@@ -295,17 +295,17 @@ let textData2 = {
        "zh_cn": "亡灵之地"
     },
     "post_fight_story3": {
-        "en_us": "Though this is the land of the dead,\nthe foes I face seem oddly... alive.\n\nBut each victory also grants me strength,\nand I must take as much power as I can get\nfor this journey.",
-        "fr": "Les ennemis que j’ai affrontés au\nPays des Morts semblaient… vivants.\n\nMais chaque victoire me donne aussi du\npouvoir. Je dois acquérir autant de force\nque possible pour sauver ma bien-aimée.",
-        "zh_tw": "我在亡靈之地所面對的敵人\n看起來就像…活著一樣.\n\n但每一次勝利也賦予我力量。\n我必須獲得盡可能多的力量來拯救我心愛的。",
-        "zh_cn": "我在亡灵之地所面对的敌人\n看起来就像…活着一样.\n\n但每一次胜利也赋予我力量。\n我必须获得尽可能多的力量来拯救我心爱的。",
+        "en_us": "Though this is the land of the dead,\nthe foes I face seem oddly... alive.\n\nBut I know what I must do, for the journey\nis long and I must gather as much power\nas possible.",
+        "fr": "Les ennemis que j’ai affrontés au\nPays des Morts semblaient… vivants.\n\nMais je sais ce que je dois faire, car le voyage\nest long et je dois rassembler autant de\npuissance que possible.",
+        "zh_tw": "我在亡靈之地所面對的敵人\n看起來就像…活著一樣.\n\n但我必須繼續前進。道路漫長而\n艱難，所以我必要獲得一切能得\n到的力量。",
+        "zh_cn": "我在亡灵之地所面对的敌人\n看起来就像…活着一样.\n\n但我必须继续前进。道路漫长而\n艰难，所以我必要获得一切能得\n到的力量。",
         "ru": "Кажется, я получаю силу каждого врага, которого побеждаю!  Путешествие может быть долгим, но если я победлю достаточное количество противников, я смогу однажды противостоять самой Смерти!",
         "es": "¡Parece que obtengo la fuerza de cada enemigo al que venzo!  El viaje puede ser largo, pero si conquisto suficientes adversarios, ¡algún día podré enfrentarme a la muerte misma!",
         "jp": "どうやら私は倒すすべての敵の力を手に入れたようだ! 旅は長いかもしれないが、十分な数の敵を倒せば、いつの日か死そのものに立ち向かえるようになるかもしれない!"
     },
     "post_fight_story4": {
-        "en_us": "The nagging Reaper once again comes\nto sow doubt in my mind.\n\nBut when I close my eyes and think of your\nsmile, I am sure that every sacrifice will be\nworth it in the end.",
-        "fr": "Le Reaper lancinant essaie encore une\nfois de me faire douter de mon chemin.\n\nMais quand je ferme les yeux et pense à\nton sourire, j’ai l’impression que tous les\nsacrifices en valaient la peine au final.",
+        "en_us": "The nagging Reaper once again comes\nto sow doubt in my mind.\n\nBut when I close my eyes and think of\nyour smile, I feel my purpose is rekindled.\nI will be together with you again, no\nmatter the cost.",
+        "fr": "Le Reaper lancinant essaie encore une\nfois de me faire douter de mon chemin.\n\nMais quand je ferme les yeux et que je pense\nà ton sourire, je ressens un sentiment de\ndétermination renouvelé. Je serai à nouveau\navec toi, quel qu'en soit le prix.",
         "zh_tw": "嘮叨的死神再次試圖讓我\n懷疑我的道路。\n\n但只要我閉上眼睛，想起你的笑容時，\n我相信最終所有的犧牲都是值得的。",
         "zh_cn": "唠叨的死神再次试图让我\n怀疑我的道路。\n\n但只要我闭上眼睛，想起你的笑容时，\n我相信最终所有的牺牲都是值得的。",
         "ru": "Как же я жажду снова ощутить твои объятия, моя дорогая возлюбленная.  Твоя смерть была слишком поспешной, слишком несправедливой, и я исправлю эту ошибку, даже если мне придется опрокинуть всю страну.",
@@ -313,10 +313,10 @@ let textData2 = {
         "jp": "あなたの抱擁をもう一度感じたいと切望しています、私の最愛の人。 あなたの死はあまりにも早く、あまりにも不当であり、たとえ私が国全体を覆さなければならないとしても、私はこの間違いを正します。"
     },
     "post_fight_story5": {
-        "en_us": "The Reaper appears every time to sour my\nvictories. Is my quest to reclaim my loved\none so wrong?\n\nSurely not, so perhaps it's actually the\nReaper themselves who is setting up all\nthese obstacles!",
-        "fr": "Le Faucheur apparaît à chaque fois pour\ngâcher mes victoires. Ma quête pour\nrécupérer un être cher est-elle si mauvaise?\n\nCertainement pas, ce qui signifie que c'est\nle Faucheur lui-même qui met en place tous\nces obstacles!",
-        "zh_tw": "死神每次出現都會讓我的勝利灰飛煙滅。\n我找回愛人的任務難道就這麼錯嗎？\n\n當然不是，這意味著一定是死神自己在\n設置所有這些障礙！",
-        "zh_cn": "死神每次出现都会让我的胜利灰飞烟灭。\n我找回爱人的任务难道就这么错误吗？\n\n当然不是，这意味着一定是死神自己在\n设置所有这些障碍！",
+        "en_us": "Every time I achieve victory, the\nReaper finds a way to dampen my spirits.\nIs my quest to reclaim a loved one\nso wrong?\n\nSurely not, so perhaps it's actually the\nReaper themselves who is setting up all\nthese obstacles!",
+        "fr": "À chaque fois que je remporte une\nvictoire, le Faucheur trouve un moyen de\nme décourager. Ma quête pour récupérer un\nêtre cher est-elle si mauvais?\n\nCertainement pas, ce qui signifie que c'est\nle Faucheur lui-même qui met en place tous\nces obstacles!",
+        "zh_tw": "每當我取得勝利，死神就會想辦法挫傷我\n的士氣。難道找回愛人的任務是錯的嗎？\n\n當然不是，這意味著一定是死神自己在\n設置所有這些障礙！",
+        "zh_cn": "每当我取得胜利，死神就会想方设法挫伤\n我的士气。难道找回爱人的任务是错的吗？\n\n当然不是，这意味着一定是死神自己在\n设置所有这些障碍！",
         "ru": "Моя сила растет, но растет и сопротивление, которое оказывает эта земля.  Неужели мое благородное стремление вернуть любимого человека так неправильно?  Конечно, нет, и я сделаю все, что потребуется, независимо от цены.",
         "es": "Mi poder crece, pero también lo hace la resistencia que opone esta tierra.  ¿Está tan equivocada mi noble búsqueda de recuperar a un ser querido?  Seguramente no, y haré lo que sea necesario, sin importar el costo.",
         "jp": "私の力は増すが、この土地が耐える抵抗も大きくなる。 愛する人を取り戻すという私の崇高な探求は、それほど間違っているのでしょうか? もちろん、そうではないし、どんな犠牲を払おうとも、必要なことは何でもする。"

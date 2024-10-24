@@ -632,7 +632,7 @@
              ],
              [
                  {
-                     name: "WARMING UP...",
+                     name: "BOOTING UP...",
                      chargeAmt: gameVars.isHardMode ? 350 : 750,
                      damage: 0,
                  },
@@ -763,6 +763,7 @@
                      name: "DEACTIVATING...",
                      chargeAmt: 888,
                      chargeMult: 20,
+                     finishDelay: 1500,
                      damage: 0,
                      finaleFunction: () => {
                          this.bgMusic = playMusic('wind', 0.01, true);
@@ -813,7 +814,7 @@
                 this.addDelayIfAlive(() => {
                     messageBus.publish("selfTakeDamage", damage);
                     let dmgEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 200);
-                    dmgEffect.play('damageEffect')
+                    dmgEffect.play('damageEffectShort')
                     dmgEffect.setPosition(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 195).setDepth(998).setScale(1.25)
                     this.addTimeout(() => {
                         messageBus.publish("selfTakeDamage", damage);

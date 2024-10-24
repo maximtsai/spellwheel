@@ -270,6 +270,14 @@
                  }
              });
         }
+        if (this.rune3) {
+            this.addTween({
+                targets: [this.rune3, this.rune4],
+                alpha: 0,
+                ease: 'Cubic.easeIn',
+                duration: 1300,
+            });
+        }
         globalObjects.textPopupManager.hideInfoText();
     }
 
@@ -278,7 +286,6 @@
             this.shownTut4 = true;
             this.timeSinceLastAttacked = -15;
             this.clearEnhancePopup();
-            this.clearStartShadow();
 
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 261, getLangText('level1_tut_b'), 'right');
             messageBus.publish('setSlowMult', 0.25, 15);
@@ -326,6 +333,14 @@
                     spellListener.unsubscribe();
                     this.addTimeout(() => {
                         globalObjects.textPopupManager.hideInfoText();
+                        if (this.rune3) {
+                            this.addTween({
+                                targets: [this.rune3, this.rune4],
+                                alpha: 0,
+                                ease: 'Cubic.easeIn',
+                                duration: 1300,
+                            });
+                        }
                     }, 1200);
                 });
                 this.addTimeout(() => {
@@ -1016,17 +1031,6 @@
                                  poolManager.returnItemToPool(dmgEffect, 'brickPattern2');
                              }
                          });
-                         this.addTimeout(() => {
-                             globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 23, getLangText('watch_health'), 'center');
-                             this.addTimeout(() => {
-                                 this.playerSpellCastAny = this.addSubscription('playerCastedSpell', () => {
-                                     this.addTimeout(() => {
-                                         globalObjects.textPopupManager.hideInfoText();
-                                     }, 1200);
-                                     this.playerSpellCastAny.unsubscribe();
-                                 });
-                             }, 1200)
-                         }, 1000)
                      }
                  },
 

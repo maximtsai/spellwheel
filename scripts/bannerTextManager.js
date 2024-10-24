@@ -139,6 +139,10 @@ class BannerTextManager {
         this.pauseForced = val;
     }
 
+    speedUpText() {
+        this.speedUpNextText = true;
+    }
+
     continueDialog() {
         if (this.pauseForced || this.continuePause || !this.isShowing) {
             return false;
@@ -153,19 +157,34 @@ class BannerTextManager {
             this.continuePause = false;
             this.closeBanner();
         } else {
+            let durMult = 1;
+            if (this.speedUpNextText) {
+                durMult = 0.001;
+                this.speedUpNextText = false;
+            }
             this.currAnim = PhaserScene.tweens.add({
                 targets: [this.text],
                 alpha: 0,
-                duration: 250,
+                duration: 250 * durMult,
                 onComplete: () => {
                     this.setText(this.dialog[this.dialogIndex]);
                     if (this.funcArray[this.dialogIndex]) {
                         this.funcArray[this.dialogIndex]();
                     }
+                    if (durMult < 0.1) {
+                        this.text.setScale(1.04);
+                        PhaserScene.tweens.add({
+                            targets: this.text,
+                            scaleX: 1,
+                            scaleY: 1,
+                            duration: 250,
+                            ease: 'Cubic.easeOut',
+                        });
+                    }
                     this.currAnim = PhaserScene.tweens.add({
                         targets: [this.text],
                         alpha: 1,
-                        duration: 250,
+                        duration: 250 * durMult,
                         completeDelay: 200,
                         onComplete: () => {
                             this.continuePause = false;

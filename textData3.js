@@ -336,6 +336,60 @@ let textData3 = {
         "jp": "私が片付けなければならない混乱。"
     },
     "death7a": {
+        "en_us": "CHILD, ONCE AGAIN YOU-",
+        "fr": "ENFANT, ENCORE UNE FOIS TOI-",
+        "zh_tw": "孩子，你仍然繼續－",
+        "zh_cn": "孩子，你仍然继续－",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death7b": {
+        "en_us": "Enough Reaper! Your attempts\nat stopping me have failed.",
+        "fr": "Assez Faucheur ! Vos tentatives pour m'arrêter ont échoué.",
+        "zh_tw": "夠了死神！\n你阻止不了我的前進。",
+        "zh_cn": "够了死神！\n你阻止不了我的前行。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death7c": {
+        "en_us": "I challenge you to\nfight me now!",
+        "fr": "Je vous mets au défi de\nme combattre maintenant !",
+        "zh_tw": "我挑戰你現在就跟我打！",
+        "zh_cn": "我挑战你现在就跟我打！",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death7d": {
+        "en_us": "... IT SADDENS ME THAT YOU\nCONTINUE YOUR REBELLION.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death7e": {
+        "en_us": "BUT NOW IS NOT THE MOMENT\nFOR YOUR FATE TO END.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death7f": {
+        "en_us": "WE WILL CONFRONT EACH\nOTHER, IN DUE TIME.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death7ax": {
         "en_us": "ALAS, IT IS NOT WITHIN\nMY AUTHORITY TO STOP YOU.",
         "fr": "HÉLAS, IL N’EST PAS DANS\nMON AUTORITÉ DE VOUS ARRÊTER.",
         "zh_tw": "唉，阻止你不在我的許可權之內。",
@@ -344,7 +398,7 @@ let textData3 = {
         "es": "POR DESGRACIA, NO ESTÁ DENTRO DE MI AUTORIDAD DETENERTE.",
         "jp": "悲しいかな、あなたを止めるのは私の権限ではありません。"
     },
-    "death7b": {
+    "death7bx": {
         "en_us": "SO I CAN ONLY GIVE YOU\nA WORD OF CAUTION",
         "fr": "JE NE PEUX DONC QUE VOUS\nDONNER UN MOT D’AVERTISSEMENT",
         "zh_tw": "所以我只能告誡你一句",
@@ -353,7 +407,7 @@ let textData3 = {
         "es": "ASÍ QUE SOLO PUEDO DARLE UNA PALABRA DE PRECAUCIÓN",
         "jp": "だから、私はあなたに一言注意することしかできません"
     },
-    "death7c": {
+    "death7cx": {
         "en_us": "DANGEROUS FOES LIE AHEAD.",
         "fr": "QUE DE DANGEREUX ENNEMIS\nSE TROUVENT DEVANT VOUS.",
         "zh_tw": "危險的敵人就在前方。",

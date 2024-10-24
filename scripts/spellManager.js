@@ -97,10 +97,16 @@ class SpellManager {
     createDamageEffect(x, y, depth, sprite = null, customTween = {}, isAnim) {
         let dmgEffect;
         let extraDur = 0;
+        let skipTween = false;
         if (sprite === null) {
-            dmgEffect = this.scene.add.sprite(x, y, 'spells').play('damageEffect');
-            dmgEffect.setRotation((Math.random() - 0.5) * 0.15)
-            extraDur = 100;
+
+            dmgEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 300);
+            dmgEffect.setPosition(x, y).setAlpha(1);
+
+            dmgEffect.play('damageEffect');
+            dmgEffect.setRotation((Math.random() - 0.5) * 0.35)
+
+            skipTween = true;
         } else if (isAnim) {
             dmgEffect = this.scene.add.sprite(x, y, 'spells').play(sprite);
             extraDur = 150;
@@ -109,17 +115,20 @@ class SpellManager {
         }
 
         dmgEffect.setDepth(depth);
-        let defaultTweenObj = {
-            targets: dmgEffect,
-            scaleY: 1.005,
-            duration: 150 + extraDur,
-            ease: 'Cubic.easeOut',
-            onComplete: () => {
-                dmgEffect.destroy();
+        if (!skipTween) {
+            let defaultTweenObj = {
+                targets: dmgEffect,
+                scaleY: 1.005,
+                duration: 150 + extraDur,
+                ease: 'Cubic.easeOut',
+                onComplete: () => {
+                    dmgEffect.destroy();
+                }
             }
+            let actualTweenObj = Object.assign({}, defaultTweenObj, customTween);
+            this.scene.tweens.add(actualTweenObj);
         }
-        let actualTweenObj = Object.assign({}, defaultTweenObj, customTween);
-        this.scene.tweens.add(actualTweenObj);
+
         return dmgEffect;
     }
 

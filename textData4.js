@@ -922,7 +922,7 @@ let textData4 = {
     },
     "badend_3": {
         "en_us": "You age and wither, yet cannot find rest.",
-        "fr": "Vous vieillissez et vous vous fanez,\nmais vous ne trouvez pas le repos.",
+        "fr": "Tu vieillis et dépérit,\nmais tu ne peux pas trouver de repos.",
         "zh_tw": "你年老、枯萎，卻無法得到安息。",
         "zh_cn": "你年老、枯萎，却无法得到安息。",
         "ru": "",
@@ -930,19 +930,19 @@ let textData4 = {
         "jp": ""
     },
     "badend_4": {
-        "en_us": "Death has truly forsaken the two of you",
-        "fr": " \nLa mort vous a vraiment abandonnés tous les deux",
-        "zh_tw": "死神確實永久的拋棄了你們兩個。",
-        "zh_cn": "死神确实永久的抛弃了你们两个。",
+        "en_us": "You cry out for mercy, for an end to the torment.",
+        "fr": " \nVous criez pour la miséricorde, pour la fin du tourment.",
+        "zh_tw": "你微弱呼喊，祈求憐憫，祈求結束這個折磨。",
+        "zh_cn": "你微弱呼喊，祈求怜悯，祈求结束这个折磨。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "badend_5": {
-        "en_us": "Forever.",
-        "fr": " \nPour toujours.",
-        "zh_tw": "",
-        "zh_cn": "",
+        "en_us": "But nobody answered.",
+        "fr": " \nMais personne n'a répondu.",
+        "zh_tw": "但無人回應。",
+        "zh_cn": "但无人回应。",
         "ru": "",
         "es": "",
         "jp": ""

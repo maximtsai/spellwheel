@@ -68,7 +68,7 @@
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
-        <uint>5</uint>
+        <uint>3</uint>
         <key>webpQualityLevel</key>
         <uint>88</uint>
         <key>textureSubPath</key>
@@ -461,8 +461,15 @@
                 <false/>
             </struct>
             <key type="filename">spells/clock_redStrike.png</key>
+            <key type="filename">spells/damageEffect0.png</key>
             <key type="filename">spells/damageEffect6.png</key>
             <key type="filename">spells/damageEffect7.png</key>
+            <key type="filename">spells/damageEffect8.png</key>
+            <key type="filename">spells/damageEffectShort0.png</key>
+            <key type="filename">spells/damageEffectShort1.png</key>
+            <key type="filename">spells/damageEffectShort3.png</key>
+            <key type="filename">spells/damageEffectShort4.png</key>
+            <key type="filename">spells/damageEffectShort5.png</key>
             <key type="filename">spells/timeRed1.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

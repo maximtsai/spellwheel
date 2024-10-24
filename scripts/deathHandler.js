@@ -722,7 +722,38 @@ function handleReaperDialog(level = 0, onComplete) {
             getLangText('death7a'),
             getLangText('death7b'),
             getLangText('death7c'),
+            getLangText('death7d'),
+            getLangText('death7e'),
+            getLangText('death7f'),
         ];
+        reaperFuncList = [() => {
+            globalObjects.bannerTextManager.speedUpText();
+        }, () => {
+            let darkBG = getBackgroundBlackout();
+            darkBG.setDepth(100).setAlpha(0.5).setVisible(true);
+            screenShakeLong(2);
+            PhaserScene.tweens.add({
+                targets: darkBG,
+                alpha: 0,
+                duration: 3000,
+                ease: 'Quart.easeOut'
+            })
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130);
+
+        },
+            undefined,
+            () => {
+                let darkBG = getBackgroundBlackout();
+                darkBG.setDepth(100).setAlpha(0.4).setVisible(true);
+                PhaserScene.tweens.add({
+                    targets: darkBG,
+                    alpha: 0,
+                    duration: 4000,
+                })
+                globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10);
+            },
+
+        ]
         break;
     case 9:
         reaperDialog = [

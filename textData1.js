@@ -725,8 +725,8 @@ let textData = {
     "reinforce_tut_desc": {
         "en_us": "The Body Rune grants effects\nthat persist until you cast a new\nbody spell. Some Body rune spells can\neven heal you.",
         "fr": "La Rune Corps confère des effets\nqui persistent jusqu’à ce que vous\nlanciez un nouveau sort corporel. Certains\ncombos rune Corps peuvent même\nvous soigner.",
-        "zh_tw": "身體符文賦予的效果會\n一直持續到你施放新的\n體法術。\n某些身體符文組合甚至可以治癒你。",
-        "zh_cn": "身体符文赋予的效果会\n一直持续到你施放新的\n身体法术。\n某些身体符文组合甚至可以治愈你。",
+        "zh_tw": "身體符文賦予的效果會\n一直持續到你施放新的\n體法術。某些身體符文\n組合甚至可以治癒你。",
+        "zh_cn": "身体符文赋予的效果会\n一直持续到你施放新的\n身体法术。某些身体符\n文组合甚至可以治愈你。",
         "ru": "Руна Тела дает эффекты, которые сохраняются до тех пор, пока вы не разыграете новое заклинание тела. Некоторые комбинации Тело+Руна могут даже исцелить вас.",
         "es": "La runa Cuerpo otorga efectos que persisten hasta que lanzas un nuevo hechizo de cuerpo. Algunos combos de Cuerpo + Runa pueden incluso curarte.",
         "jp": "身体のルーンは、あなたが新しい身体呪文を唱えるまで持続する効果を付与する。一部のボディ+ルーンコンボはあなたを癒すことさえできます。"
@@ -734,8 +734,8 @@ let textData = {
     "reinforce_tut_desc_sh": {
         "en_us": "The Body Rune grants effects\nthat persist until you cast a new\nbody spell. Some Body rune\nspells can even heal you.",
         "fr": "La Rune Corps confère des effets\nqui persistent jusqu’à ce que\nvous lanciez un nouveau sort\ncorporel. Certains combos rune\nCorps peuvent même vous soigner.",
-        "zh_tw": "身體符文賦予的效果會\n一直持續到你施放新的\n體法術。\n某些身體符文組合甚至可以治癒你。",
-        "zh_cn": "身体符文赋予的效果会\n一直持续到你施放新的\n身体法术。\n某些身体符文组合甚至可以治愈你。",
+        "zh_tw": "身體符文賦予的效果會\n一直持續到你施放新的\n身體法術。某些身體符\n文組合甚至可以治癒你。",
+        "zh_cn": "身体符文赋予的效果会\n一直持续到你施放新的\n身体法术。某些身体符\n文组合甚至可以治愈你。",
         "ru": "Руна Тела дает эффекты, которые сохраняются до тех пор, пока вы не разыграете новое заклинание тела. Некоторые комбинации Тело+Руна могут даже исцелить вас.",
         "es": "La runa Cuerpo otorga efectos que persisten hasta que lanzas un nuevo hechizo de cuerpo. Algunos combos de Cuerpo + Runa pueden incluso curarte.",
         "jp": "身体のルーンは、あなたが新しい身体呪文を唱えるまで持続する効果を付与する。一部のボディ+ルーンコンボはあなたを癒すことさえできます。"

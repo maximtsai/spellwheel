@@ -297,8 +297,8 @@ let textData2 = {
     "post_fight_story3": {
         "en_us": "Though this is the land of the dead,\nthe foes I face seem oddly... alive.\n\nBut I know what I must do, for the journey\nis long and I must gather as much power\nas possible.",
         "fr": "Les ennemis que j’ai affrontés au\nPays des Morts semblaient… vivants.\n\nMais je sais ce que je dois faire, car le voyage\nest long et je dois rassembler autant de\npuissance que possible.",
-        "zh_tw": "我在亡靈之地所面對的敵人\n看起來就像…活著一樣.\n\n但我必須繼續前進。道路漫長而\n艱難，所以我必要獲得一切能得\n到的力量。",
-        "zh_cn": "我在亡灵之地所面对的敌人\n看起来就像…活着一样.\n\n但我必须继续前进。道路漫长而\n艰难，所以我必要获得一切能得\n到的力量。",
+        "zh_tw": "我在亡靈之地所面對的敵人\n看起來就像…活著一樣.\n\n但我必須繼續前進。道路漫長而\n艱難，所以我需要獲得一切能得\n到的力量。",
+        "zh_cn": "我在亡灵之地所面对的敌人\n看起来就像…活着一样.\n\n但我必须继续前进。道路漫长而\n艰难，所以我需要获得一切能得\n到的力量。",
         "ru": "Кажется, я получаю силу каждого врага, которого побеждаю!  Путешествие может быть долгим, но если я победлю достаточное количество противников, я смогу однажды противостоять самой Смерти!",
         "es": "¡Parece que obtengo la fuerza de cada enemigo al que venzo!  El viaje puede ser largo, pero si conquisto suficientes adversarios, ¡algún día podré enfrentarme a la muerte misma!",
         "jp": "どうやら私は倒すすべての敵の力を手に入れたようだ! 旅は長いかもしれないが、十分な数の敵を倒せば、いつの日か死そのものに立ち向かえるようになるかもしれない!"

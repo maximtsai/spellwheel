@@ -711,6 +711,11 @@ class PostFightScreen {
 
         this.healthLeftText.setText(getLangText('post_fight_health') + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
         this.spellsCastText.setText(getLangText('post_fight_spells') + globalObjects.player.getPlayerCastSpellsCount());
+        if (gameVars.currLevel <= 6 && gameVars.currLevel >= 0) {
+            this.continueButton.setText(getLangText('post_fight_skip_training'));
+        } else {
+            this.continueButton.setText(getLangText('post_fight_continue'));
+        }
         this.locketDialog.setText(this.getStoryDialog(level));
         this.titleText.setText(getLangText('post_fight_day') + level + getLangText('post_fight_day2'));
     }

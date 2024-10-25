@@ -827,7 +827,7 @@ class Enemy {
             this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake, true);
             let damageSqrt = Math.sqrt(damageToTake);
             setTimeout(() => {
-                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, 265, 'X2', 0.7 + damageSqrt * 0.14);
+                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, 265, 'X2', 0.5 + damageSqrt * 0.2);
             }, Math.floor(damageSqrt) * 15)
 
             amt += damageToTake;

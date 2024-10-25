@@ -72,6 +72,15 @@ let textData3 = {
         "es": "idioma",
         "jp": "言語"
     },
+    "skip_intro": {
+        "en_us": "SKIP INTRO",
+        "fr": "SAUTER L'INTRODUCTION",
+        "zh_tw": "跳過開頭",
+        "zh_cn": "跳过开头",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "left": {
         "en_us": "LEFT",
         "fr": "GAUCHE",

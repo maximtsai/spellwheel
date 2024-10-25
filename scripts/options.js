@@ -316,6 +316,7 @@ class Options {
         }
 
         this.createInfoBoxPosText();
+        this.createSkipIntroToggle();
 
         createGlobalClickBlocker();
         if (!this.closeButton) {
@@ -407,7 +408,7 @@ class Options {
     createInfoBoxPosText() {
 
         if (!this.infoBoxPosText) {
-            let startPos = gameConsts.halfHeight - 0;
+            let startPos = gameConsts.halfHeight - 10;
             this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 23, getLangText('spell_info_position'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosText);
 
@@ -582,7 +583,7 @@ class Options {
         let listOfLanguages = ['English', '简体中文', '繁体中文', 'Français'];
         let listOfLanguageCodes = ['en_us', 'zh_cn', 'zh_tw', 'fr'];
         if (!this.langSelectText) {
-            let startPos = gameConsts.halfHeight + 100;
+            let startPos = gameConsts.halfHeight + 80;
             this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 43, getLangText('language_text'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
             this.addLangTextUpdateable(this.langSelectText, 'language_text')
 
@@ -854,6 +855,15 @@ class Options {
                 this.listOfThingsToHideSemiAlpha.push(rune3);
             }
              */
+        }
+    }
+
+    createSkipIntroToggle() {
+        if (!this.introText) {
+            let startPos = gameConsts.halfHeight + 130;
+            this.introText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos, getLangText('skip_intro'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
+            this.addLangTextUpdateable(this.introText, 'skip_intro')
+            this.listOfThingsToHideSemiAlpha.push(this.introText);
         }
     }
 

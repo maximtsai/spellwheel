@@ -350,8 +350,8 @@
                  {
                      name: "MY SHIELD!",
                      isPassive: true,
-                     chargeAmt: 330,
-                     chargeMult: 5,
+                     chargeAmt: 300,
+                     chargeMult: 6,
                      customCall: " ",
                      transitionFast: true,
                      damage: 0,

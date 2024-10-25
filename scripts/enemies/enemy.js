@@ -1161,12 +1161,12 @@ class Enemy {
                 }
             } else {
                 if (isBigMove) {
-                    playSound('enemy_attack_major', 0.6);
+                    playSound('enemy_attack_major', 0.65);
                 } else {
                     if (this.enemyAttackSfxFlip) {
-                        playSound('enemy_attack_2', 0.53);
+                        playSound('enemy_attack_2', 0.58);
                     } else {
-                        playSound('enemy_attack', 0.63);
+                        playSound('enemy_attack', 0.67);
                     }
                     this.enemyAttackSfxFlip = !this.enemyAttackSfxFlip;
                 }

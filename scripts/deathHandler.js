@@ -743,6 +743,8 @@ function handleReaperDialog(level = 0, onComplete) {
         reaperFuncList = [() => {
             globalObjects.bannerTextManager.speedUpText();
         }, () => {
+            playSound('slice_in');
+            playSound('enemy_attack', 0.68)
             let darkBG = getBackgroundBlackout();
             darkBG.setDepth(100).setAlpha(0.5).setVisible(true);
             screenShakeLong(2);
@@ -755,7 +757,9 @@ function handleReaperDialog(level = 0, onComplete) {
             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130);
 
         },
-            undefined,
+            () => {
+                playSound('enemy_attack_2', 0.68);
+            },
             () => {
                 let darkBG = getBackgroundBlackout();
                 darkBG.setDepth(100).setAlpha(0.4).setVisible(true);

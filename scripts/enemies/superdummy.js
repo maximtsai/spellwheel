@@ -19,7 +19,7 @@
 
      initStatsCustom() {
          this.health = 24;
-        this.secondHealth = gameVars.isHardMode ? 650 : 600;
+        this.secondHealth = gameVars.isHardMode ? 650 : 5;
          this.isAsleep = true;
          this.isFirstMode = true;
         this.attackScale = 1.23;
@@ -123,7 +123,6 @@
                 globalObjects.tempBG.alpha = 0;
             }
 
-
             this.dummyLeftArm.visible = false;
             this.dummyRightArm.visible = false;
             this.setSprite('super_dummy_angry.png', this.sprite.startScale);
@@ -151,8 +150,9 @@
                  duration: 1500,
                  onComplete: () => {
                      this.setSprite('super_dummy_broken.png', this.sprite.scaleX);
-                     this.x -= 80;
-                     this.y += 92;
+                     this.sprite.y += 20;
+                     this.x -= 70;
+                     this.y += 60;
                      this.sprite.setRotation(0);
                      this.sprite.setOrigin(0.85, 0.78);
 

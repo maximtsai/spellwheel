@@ -619,7 +619,7 @@
                      name: " STARE... ",
                      isPassive: true,
                      desc: "A pair of eyes watch you",
-                     chargeAmt: 225,
+                     chargeAmt: gameVars.isHardMode ? 220 : 250,
                      transitionFast: true,
                      damage: -1,
                      attackFinishFunction: () => {
@@ -633,7 +633,7 @@
                  // 1
                  {
                      name: ";40",
-                     chargeAmt: 1100,
+                     chargeAmt: gameVars.isHardMode ? 1000 : 1100,
                      damage: -1,
                      chargeMult: 1.5,
                      isBigMove: true,
@@ -655,8 +655,8 @@
              [
                  // 2
                  {
-                     name: ";60",
-                     chargeAmt: 1150,
+                     name: gameVars.isHardMode ? ";60" : ";50",
+                     chargeAmt: gameVars.isHardMode ? 1050 : 1150,
                      damage: -1,
                      chargeMult: 1.5,
                      isBigMove: true,
@@ -664,7 +664,7 @@
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.04;
                         this.addTimeout(() => {
-                            this.throwWallChunk('wall_chunk_2.png', 60);
+                            this.throwWallChunk('wall_chunk_2.png', gameVars.isHardMode ? 60 : 50);
                         }, 300);
                      },
                      attackFinishFunction: () => {
@@ -678,8 +678,8 @@
              [
                  // 3
                  {
-                     name: ";80",
-                     chargeAmt: 1200,
+                     name: gameVars.isHardMode ? ";80" : ";60",
+                     chargeAmt: gameVars.isHardMode ? 1100 : 1200,
                      damage: -1,
                      chargeMult: 1.5,
                      isBigMove: true,
@@ -687,7 +687,7 @@
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.04;
                          this.addTimeout(() => {
-                             this.throwWallChunk('wall_chunk_2.png', 80, 1.25);
+                             this.throwWallChunk('wall_chunk_2.png', gameVars.isHardMode ? 80 : 60, 1.25);
                          }, 300);
                      },
                      attackFinishFunction: () => {
@@ -723,19 +723,19 @@
                      }
                  },
                  {
-                     name: "}2x4",
+                     name: gameVars.isHardMode ? "}2x5" : "}2x4",
                      chargeAmt: 400,
                      finishDelay: 800,
                      damage: -1,
                      attackFinishFunction: () => {
                          playSound('chirpmany', 1);
-                         this.birdPoops(4);
+                         this.birdPoops(gameVars.isHardMode ? 5 : 4);
                          this.nextBirdIndex = 3;
                          this.checkCrumble();
                      }
                  },
                  {
-                     name: "$5",
+                     name: "$6",
                      chargeAmt: 450,
                      finishDelay: 3000,
                      damage: -1,
@@ -758,19 +758,19 @@
                      }
                  },
                  {
-                     name: gameVars.isHardMode ? "}2x8" : "}2x7",
+                     name: gameVars.isHardMode ? "}2x9" : "}2x7",
                      finishDelay: 1300,
                      chargeAmt: 450,
                      damage: -1,
                      attackFinishFunction: () => {
                          playSound('chirpmany', 1);
-                         this.birdPoops(gameVars.isHardMode ? 8 : 7);
+                         this.birdPoops(gameVars.isHardMode ? 9 : 7);
                          this.nextBirdIndex = 5;
                          this.checkCrumble();
                      }
                  },
                  {
-                     name: gameVars.isHardMode ? "}5x2+$5" : "}5+$5",
+                     name: gameVars.isHardMode ? "}5x2+$6" : "}5+$6",
                      chargeAmt: 450,
                      finishDelay: 2000,
                      damage: -1,
@@ -783,7 +783,7 @@
                  },
                  {
                      name: "}20",
-                     chargeAmt: 500,
+                     chargeAmt: gameVars.isHardMode ? 450 : 500,
                      damage: -1,
                      attackFinishFunction: () => {
                          this.birdPoops(1, true, true);
@@ -793,7 +793,7 @@
                  },
                  {
                      name: "}2x12",
-                     chargeAmt: 500,
+                     chargeAmt: gameVars.isHardMode ? 450 : 500,
                      finishDelay: 3000,
                      damage: -1,
                      attackFinishFunction: () => {
@@ -805,7 +805,7 @@
                  },
                  {
                      name: "}5x6",
-                     chargeAmt: 500,
+                     chargeAmt: gameVars.isHardMode ? 450 : 500,
                      finishDelay: 2000,
                      damage: -1,
                      attackFinishFunction: () => {

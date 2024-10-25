@@ -90,12 +90,12 @@ class Options {
             this.listOfThingsToHide.push(this.darkenBG);
         }
         if (!this.bgPage) {
-            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 10, 'ui', 'paper.png').setDepth(this.baseDepth).setScale(1, 1.1);
+            this.bgPage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 2, 'ui', 'paper.png').setDepth(this.baseDepth).setScale(1, 0.9);
             this.listOfThingsToHide.push(this.bgPage);
         }
 
         if (!this.settingsTitle) {
-            this.settingsTitle = PhaserScene.add.text(gameConsts.halfWidth - 230, isMobile ? gameConsts.halfWidth - 195 : gameConsts.halfWidth - 212, getLangText('settings'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
+            this.settingsTitle = PhaserScene.add.text(gameConsts.halfWidth - 230, isMobile ? gameConsts.halfWidth - 115 : gameConsts.halfWidth - 132, getLangText('settings'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
         }
         this.listOfThingsToHideSemiAlpha.push(this.settingsTitle);
         this.addLangTextUpdateable(this.settingsTitle, 'settings')
@@ -105,8 +105,8 @@ class Options {
                 normal: {
                     ref: "menu_btn_normal.png",
                     atlas: 'buttons',
-                    x: gameConsts.halfWidth - 125,
-                    y: gameConsts.halfHeight + 275,
+                    x: gameConsts.halfWidth - 135,
+                    y: gameConsts.halfHeight + 220,
                     alpha: 1,
                 },
                 hover: {
@@ -180,8 +180,8 @@ class Options {
                 normal: {
                     ref: "menu_btn2_normal.png",
                     atlas: 'buttons',
-                    x: gameConsts.halfWidth + 125,
-                    y: gameConsts.halfHeight + 275,
+                    x: gameConsts.halfWidth + 135,
+                    y: gameConsts.halfHeight + 220,
                     alpha: 1,
                 },
                 hover: {
@@ -227,8 +227,8 @@ class Options {
             this.draggerSFX;
 
             let startX = gameConsts.halfWidth + 15;
-            this.BGMIcon = PhaserScene.add.image(gameConsts.halfWidth - 200, gameConsts.halfHeight - 260, 'ui', 'music.png').setDepth(this.baseDepth);
-            this.SFXIcon = PhaserScene.add.image(gameConsts.halfWidth - 200, gameConsts.halfHeight - 194, 'ui', 'sound_full.png').setDepth(this.baseDepth);
+            this.BGMIcon = PhaserScene.add.image(gameConsts.halfWidth - 200, gameConsts.halfHeight - 179, 'ui', 'music.png').setDepth(this.baseDepth);
+            this.SFXIcon = PhaserScene.add.image(gameConsts.halfWidth - 200, gameConsts.halfHeight - 113, 'ui', 'sound_full.png').setDepth(this.baseDepth);
 
             this.sliderBGM = new Button({
                 isDraggable: true,
@@ -325,7 +325,7 @@ class Options {
                     ref: "closebtn.png",
                     alpha: 0.95,
                     x: gameConsts.halfWidth + 240,
-                    y: gameConsts.halfHeight - 315,
+                    y: gameConsts.halfHeight - 241,
                 },
                 hover: {
                     alpha: 1,
@@ -407,8 +407,8 @@ class Options {
     createInfoBoxPosText() {
 
         if (!this.infoBoxPosText) {
-            let startPos = gameConsts.halfHeight - 95;
-            this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 18, getLangText('spell_info_position'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
+            let startPos = gameConsts.halfHeight - 0;
+            this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 23, getLangText('spell_info_position'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosText);
 
             this.infoBoxPosTextLeft = PhaserScene.add.text(gameConsts.halfWidth - 193, startPos, getLangText('left'), {fontFamily: 'germania', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
@@ -582,8 +582,8 @@ class Options {
         let listOfLanguages = ['English', '简体中文', '繁体中文', 'Français'];
         let listOfLanguageCodes = ['en_us', 'zh_cn', 'zh_tw', 'fr'];
         if (!this.langSelectText) {
-            let startPos = gameConsts.halfHeight - 10;
-            this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 33, getLangText('language_text'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
+            let startPos = gameConsts.halfHeight + 100;
+            this.langSelectText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 43, getLangText('language_text'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
             this.addLangTextUpdateable(this.langSelectText, 'language_text')
 
             this.langWarningText = PhaserScene.add.text(gameConsts.halfWidth + 215, startPos - 31, getLangText('translate_warn'), {fontFamily: 'germania', fontSize: 16, color: '#604A4A', align: 'right'}).setOrigin(1, 0.6).setDepth(this.baseDepth).setAlpha(0.82);
@@ -672,63 +672,70 @@ class Options {
     }
 
     createCodeItem() {
-        if (!this.codeItem) {
+        if (!this.codeAnnounce) {
+            return;
             // let startPos = gameConsts.halfHeight + 100;
-            this.codeItem = PhaserScene.add.image(gameConsts.halfWidth, this.bgPage.y + 20, 'ui', 'secretcode.png').setDepth(this.baseDepth + 1);
-            this.codeItem.startX = this.codeItem.x;
-            this.listOfThingsToHide.push(this.codeItem);
-            let arrowStartX = gameConsts.halfWidth - 125;
-            let spacing = 62;
-            let arrowUpY = this.bgPage.y + 90 + 20;
-            let arrowDownY = this.bgPage.y + 206 + 20;
-            let centerPos = (arrowUpY + arrowDownY) * 0.5;
-            this.codeAnnounce = PhaserScene.add.text(gameConsts.halfWidth, arrowDownY + 26, "HELLO!", {fontFamily: 'germania', fontSize: 30, color: '#00FF33', align: 'center'}).setOrigin(0.5, 0.4).setDepth(this.baseDepth + 2).setStroke('#200000', 5);
-            this.listOfThingsToHide.push(this.codeAnnounce);
+            let leftMostX = gameConsts.halfWidth - 200;
+            let topMostY = this.bgPage.y + 100;
+            let spacingX = 160;
+            let spacingY = 45;
+
+            this.codeAnnounce = PhaserScene.add.text(gameConsts.halfWidth, topMostY + spacingY * 3, "HELLO!", {fontFamily: 'germania', fontSize: 30, color: '#00FF33', align: 'center'}).setOrigin(0.5, 0.4).setDepth(this.baseDepth + 2).setStroke('#200000', 5);
             this.codeAnnounce.visible = false;
+            this.listOfThingsToHide.push(this.codeAnnounce);
 
             this.codeItemText = PhaserScene.add.text(gameConsts.halfWidth - 230, gameConsts.halfHeight + 45, getLangText('access_code'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth + 1);
             this.listOfThingsToHideSemiAlpha.push(this.codeItemText);
+            this.addLangTextUpdateable(this.codeItemText, 'access_code')
 
+            let order = [
+                'energy',
+                'shield',
+                'void'
+            ];
+            for (let i = 0; i < 3; i++) {
+                let nextBtn = new Button({
+                    normal: {
+                        ref: order[i] + "_btn.png",
+                        atlas: 'ui',
+                        x: leftMostX + i * spacingX,
+                        y: topMostY,
+                        alpha: 0.95,
+                    },
+                    hover: {
+                        ref: order[i] + "_btn_hover.png",
+                        atlas: 'ui',
+                        alpha: 1,
+                    },
+                    press: {
+                        ref: order[i] + "_btn_press.png",
+                        atlas: 'ui',
+                        alpha: 1,
+                    },
+                    disable: {
+                        ref: order[i] + "_btn_disable.png",
+                        atlas: 'ui',
+                        alpha: 0.95
+                    },
+                    onHover: () => {
+                        if (canvas) {
+                            canvas.style.cursor = 'pointer';
+                        }
+                    },
+                    onHoverOut: () => {
+                        if (canvas) {
+                            canvas.style.cursor = 'default';
+                        }
+                    },
+                    onMouseUp: () => {
+                        this.activateCode(i);
+                    }
+                });
+                nextBtn.setDepth(this.baseDepth + 1);
+                this.listOfButtonsToDisable.push(nextBtn);
+            }
             /*
-            this.playButton = new Button({
-                normal: {
-                    ref: "play_btn.png",
-                    atlas: 'ui',
-                    x: arrowStartX + 5 * spacing,
-                    y: centerPos,
-                    alpha: 1,
-                },
-                hover: {
-                    ref: "play_btn_hover.png",
-                    atlas: 'ui',
-                    alpha: 1,
-                },
-                press: {
-                    ref: "play_btn_press.png",
-                    atlas: 'ui',
-                    alpha: 1,
-                },
-                disable: {
-                    ref: "play_btn.png",
-                    atlas: 'ui',
-                    alpha: 0
-                },
-                onHover: () => {
-                    if (canvas) {
-                        canvas.style.cursor = 'pointer';
-                    }
-                },
-                onHoverOut: () => {
-                    if (canvas) {
-                        canvas.style.cursor = 'default';
-                    }
-                },
-                onMouseUp: () => {
-                    this.activateCode();
-                }
-            });
-            this.playButton.setDepth(this.baseDepth + 1);
-            this.listOfButtonsToDisable.push(this.playButton);
+
 
             this.addLangTextUpdateable(this.codeItemText, 'access_code')
             for (let i = 0; i < 5; i++) {
@@ -1306,22 +1313,6 @@ class Options {
                 this.codeAnnounce.setText(getLangText('unknown_code'))
                 this.codeAnnounce.setColor('#E01010');
                 this.codeAnnounce.setScale(0.9);
-                this.codeItem.x = this.codeItem.startX + 4;
-                PhaserScene.tweens.add({
-                    targets: this.codeItem,
-                    x: this.codeItem.startX - 5,
-                    ease: 'Back.easeIn',
-                    duration: 0.15,
-                    onComplete: () => {
-                        PhaserScene.tweens.add({
-                            targets: this.codeItem,
-                            x: this.codeItem.startX,
-                            ease: 'Bounce.easeOut',
-                            easeParams: [3],
-                            duration: 0.45,
-                        });
-                    }
-                });
                 break;
         }
 

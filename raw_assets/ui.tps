@@ -190,7 +190,17 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">ui/credits.png</key>
+            <key type="filename">ui/energy_btn.png</key>
+            <key type="filename">ui/energy_btn_disable.png</key>
+            <key type="filename">ui/energy_btn_hover.png</key>
+            <key type="filename">ui/energy_btn_press.png</key>
+            <key type="filename">ui/play_btn.png</key>
+            <key type="filename">ui/shield_btn_hover.png</key>
+            <key type="filename">ui/shield_btn_press.png</key>
+            <key type="filename">ui/void_btn.png</key>
+            <key type="filename">ui/void_btn_disable.png</key>
+            <key type="filename">ui/void_btn_hover.png</key>
+            <key type="filename">ui/void_btn_press.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -199,9 +209,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>113,138,225,275</rect>
+                <rect>16,16,31,31</rect>
                 <key>scale9Paddings</key>
-                <rect>113,138,225,275</rect>
+                <rect>16,16,31,31</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -391,21 +401,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">ui/play_btn.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>16,16,31,31</rect>
-                <key>scale9Paddings</key>
-                <rect>16,16,31,31</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">ui/play_btn_hover.png</key>
             <key type="filename">ui/play_btn_press.png</key>
             <struct type="IndividualSpriteSettings">
@@ -451,6 +446,22 @@
                 <rect>154,194,307,387</rect>
                 <key>scale9Paddings</key>
                 <rect>154,194,307,387</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ui/shield_btn.png</key>
+            <key type="filename">ui/shield_btn_disable.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>15,15,29,29</rect>
+                <key>scale9Paddings</key>
+                <rect>15,15,29,29</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

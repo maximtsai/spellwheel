@@ -92,6 +92,16 @@ function tweenObjectRotationTo(obj, rotation, duration = 250, ease, onComplete) 
     })
 }
 
+// Hacky way to hide hands
+function hideHandsTemp() {
+    globalObjects.deathLeftHand.setOrigin(0, 1000);
+    globalObjects.deathRightHand.setOrigin(0, 1000);
+}
+function showHandsTemp() {
+    globalObjects.deathLeftHand.setOrigin(0.5, 0.5);
+    globalObjects.deathRightHand.setOrigin(0.5, 0.5);
+}
+
 function getFloatingDeath() {
     if (!globalObjects.floatingDeath) {
         globalObjects.floatingDeath = PhaserScene.add.image(gameConsts.halfWidth, 95, 'enemies', 'max_death_1a.png').setDepth(-1);
@@ -101,6 +111,9 @@ function getFloatingDeath() {
         let rightHandOffsetX = 189; rightHandOffsetY = -50;
         globalObjects.deathLeftHand = PhaserScene.add.image(gameConsts.halfWidth + leftHandOffsetX, globalObjects.floatingDeath.y + leftHandOffsetY, 'enemies', 'max_death_left_arm.png');
         globalObjects.deathRightHand = PhaserScene.add.image(gameConsts.halfWidth + rightHandOffsetX, globalObjects.floatingDeath.y + rightHandOffsetY, 'enemies', 'max_death_right_hand.png');
+        globalObjects.deathLeftHand.startY = globalObjects.deathLeftHand.y;
+        globalObjects.deathRightHand.startY = globalObjects.deathRightHand.y;
+
 
         globalObjects.deathLeftHand.offsetX = leftHandOffsetX; globalObjects.deathLeftHand.offsetY = leftHandOffsetY;
         globalObjects.deathRightHand.offsetX = rightHandOffsetX; globalObjects.deathRightHand.offsetY = rightHandOffsetY;
@@ -209,14 +222,14 @@ function repeatDeathHandsRotate() {
 }
 
 function setFloatingDeathVisible(visible, hideHands = false) {
-    globalObjects.deathLeftHand.visible = visible;
-    globalObjects.deathRightHand.visible = visible;
+    globalObjects.floatingDeath.visible = visible;
+    globalObjects.floatingDeath2.visible = visible;
     if (hideHands) {
-        globalObjects.floatingDeath.visible = false;
-        globalObjects.floatingDeath2.visible = false;
+        globalObjects.deathLeftHand.visible = false;
+        globalObjects.deathRightHand.visible = false;
     } else {
-        globalObjects.floatingDeath.visible = visible;
-        globalObjects.floatingDeath2.visible = visible;
+        globalObjects.deathLeftHand.visible = visible;
+        globalObjects.deathRightHand.visible = visible;
     }
 }
 
@@ -224,7 +237,6 @@ function playReaperAnim(enemy, customFinFunc) {
     let level = enemy.getLevel();
 
     setupReaperArrival();
-
     tweenFloatingDeath(0.75, 1, 1200, "Cubic.easeInOut", () => {
         gameVars.deathFlutterDelay = 450;
         // repeatDeathFlutterAnimation();
@@ -498,9 +510,11 @@ function playReaperPassiveAnim(enemy, customFinFunc) {
 
 function setupReaperArrival() {
     playSound('sound_of_death');
-    messageBus.publish('reapedEnemyGong')
+    messageBus.publish('reapedEnemyGong');
+
     globalObjects.magicCircle.disableMovement();
     getFloatingDeath();
+    showHandsTemp();
     if (globalObjects.fogSwirl) {
         globalObjects.fogSwirl.currAnim.stop();
         globalObjects.fogSwirl.currAnimScale.stop();
@@ -697,8 +711,8 @@ function handleReaperDialog(level = 0, onComplete) {
         ];
         reaperFuncList = [() => {
             stopDeathFlutterAnim();
-
-            tweenFloatingDeath(0.75, 0, 400, undefined, () => {
+            tweenFloatingDeath(0.75, 0, 400, 'Quad.easeOut', () => {
+                hideHandsTemp();
                 // setFloatingDeathVisible(false);
                 globalObjects.floatingDeath.visible = true;
                 globalObjects.floatingDeath2.visible = true;
@@ -713,7 +727,7 @@ function handleReaperDialog(level = 0, onComplete) {
                 gameVars.deathFlutterDelay = 350;
                 repeatDeathFlutterAnimation(0);
             });
-            setFloatingDeathVisible(true, true)
+            // setFloatingDeathVisible(true, false)
 
         }, undefined]
         break;

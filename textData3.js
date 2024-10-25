@@ -318,22 +318,22 @@ let textData3 = {
         "jp": "この旅から高貴なものは何も生まれません。"
     },
     "death6a": {
-        "en_us": "YOU ARE TRULY MAKING\nA MESS OF THINGS.",
-        "fr": "TU ES VRAIMENT EN TRAIN DE\nMETTRE LES CHOSES EN DÉSORDRE.",
-        "zh_tw": "你確實把一切搞得一團糟。",
-        "zh_cn": "你确实把一切搞得一团糟。",
-        "ru": "ВЫ ДЕЙСТВИТЕЛЬНО ВСЕ ПОРТИТЕ.",
-        "es": "REALMENTE ESTÁS HACIENDO UN LÍO CON LAS COSAS.",
-        "jp": "あなたは本当に物事をめちゃくちゃにしています。"
+        "en_us": "EVERYWHERE YOU GO YOU\nMAKE A MESS OF THINGS.",
+        "fr": "PARTOUT OÙ TU VAS,\nTU FAIS DU DÉSORDRE.",
+        "zh_tw": "你走到哪裡就在哪裡製造混亂。",
+        "zh_cn": "你走到哪里就在哪里制造混乱。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "death6b": {
-        "en_us": "A MESS OF THIS LAND,\nAND OF YOUR VERY SOUL.",
-        "fr": "UN DÉSORDRE DE CETTE TERRE,\nET DE VOTRE ÂME MÊME.",
-        "zh_tw": "讓這個世界陷入混亂，\n也讓你的心靈陷入混亂。",
-        "zh_cn": "让这个世界陷入混乱，\n也让你的心灵陷入混乱。",
-        "ru": "БЕСПОРЯДОК, КОТОРЫЙ Я ДОЛЖЕН УБРАТЬ.",
-        "es": "UN DESASTRE QUE TENGO QUE LIMPIAR.",
-        "jp": "私が片付けなければならない混乱。"
+        "en_us": "A MESS THAT FALLS TO\nME TO CLEAN UP.",
+        "fr": "UN DÉSORDRE QU'IL\nM'INCOMBE DE NETTOYER.",
+        "zh_tw": "每次我都必須來恢復秩序。",
+        "zh_cn": "每次我都必须来恢复秩序。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "death7a": {
         "en_us": "CHILD, ONCE AGAIN YOU-",

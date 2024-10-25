@@ -850,7 +850,7 @@ function setupPlayer() {
     });
     globalObjects.magicCircle = new MagicCircle(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
     globalObjects.player = new Player(PhaserScene, gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT);
-    let encycX = isMobile ? gameConsts.width - 27 : gameConsts.width - 72;
+    let encycX = isMobile ? gameConsts.width - 27 : gameConsts.width - 73;
     let encycY = isMobile ? 77 : 27;
     globalObjects.encyclopedia = new Encyclopedia(PhaserScene, encycX, encycY);
     globalObjects.options = new Options(PhaserScene, gameConsts.width - 27, 27);

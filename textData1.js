@@ -462,10 +462,10 @@ let textData = {
         "jp": ""
     },
     "matter_plus_tut_desc": {
-        "en_us": "Your mastery over the\nMatter element strengthens\nsome of your existing Matter spells.",
-        "fr": "Votre maîtrise de l’élément\nMatière renforce certains\nde vos sorts de Matière existants.",
-        "zh_tw": "你對物質元素的掌握加強\n了你現有的一些物質法術。",
-        "zh_cn": "你对物质元素的掌握加强\n了你现有的一些物质法术。",
+        "en_us": "Your mastery over the\nMatter element strengthens\nsome of your existing Matter spells.\n\nMatter+Strike Damage 12 -> 14\nMatter+Shield Amount 12 -> 14",
+        "fr": "Votre maîtrise de l’élément\nMatière renforce certains\nde vos sorts de Matière existants.\n\nMatter+Strike dégâts 12 -> 14\nMatter+Shield Protection 12 -> 14",
+        "zh_tw": "你對物質元素的掌握加強\n了你現有的一些物質法術。\nMatter+Strike 傷害 12->14\nMatter+Shield 保護 12->14",
+        "zh_cn": "你对物质元素的掌握加强\n了你现有的一些物质法术。\nMatter+Strike 伤害 12->14\nMatter+Shield 保护 12->14",
         "ru": "Ваше мастерство в элементе\nМатерии усиливает некоторые\nиз ваших текущих заклинаний\nМатерии.",
         "es": "Tu maestría sobre el elemento Materia fortalece algunos de tus hechizos de Materia existentes.",
         "jp": "物質元素をマスターすると、既存の物質呪文の一部が強化されます。"

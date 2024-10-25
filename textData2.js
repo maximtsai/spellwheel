@@ -275,7 +275,7 @@ let textData2 = {
     },
     "post_fight_story2": {
         "en_us": "The fabled Reaper has taken notice\nof me, but I don't fear it at all.\n\nThey remind me more of my nagging\nparents than an underworld spectre.\n\nPerhaps I'll grab this shield before they\nstart chastising me further.",
-        "fr": "Le légendaire Faucheur m'a remarqué,\nmais je n'ai guère peur.\n\nIls me rappellent plus mes parents harcelants\nqu'un spectre des enfers.\n\nJe devrais lui retirer ce bouclier avant qu'il\ncontinue à me harceler.",
+        "fr": "Le légendaire Faucheur m'a remarqué,\nmais je n'ai guère peur.\n\nIls me rappellent plus mes parents\nharcelants qu'un spectre des enfers.\n\nJe devrais lui retirer ce bouclier avant qu'il\ncontinue à me harceler.",
         "zh_tw": "傳說中的死神已經注意到我了，\n但我幾乎不覺得害怕。\n\n" +
             "在我看來，他們更像是個嘮叨的父母，\n而不是地獄裡可怕的幽靈。\n\n我該在他繼續嘮叨前拿走這面盾牌。",
         "zh_cn": "传说中的死神已经注意到我了，\n但我几乎不觉得害怕。\n\n" +
@@ -322,19 +322,19 @@ let textData2 = {
         "jp": "私の力は増すが、この土地が耐える抵抗も大きくなる。 愛する人を取り戻すという私の崇高な探求は、それほど間違っているのでしょうか? もちろん、そうではないし、どんな犠牲を払おうとも、必要なことは何でもする。"
     },
     "post_fight_story6": {
-        "en_us": "The land of the dead is a labyrinth\nof dangers, but steadily I am forcing my\nway through its walls.\n\nI bet Death is growing desperate knowing\nI am near my destination.",
-        "fr": "Le pays des morts est un labyrinthe de\ndangers,mais je me fraye un chemin à\ntravers ses murs.\n\nLa Mort doit sûrement être désespérée\nsachant que je m'approche de ma\ndestination.",
-        "zh_tw": "亡靈之地是一個危險的迷宮，\n但我正穩定地衝破它的圍牆。\n\n當死神知道我即將到達目的地時，\n他一定越來越絕望。",
-        "zh_cn": "亡灵之地是一个危险的迷宫，\n但我正稳步地冲破它的围墙。\n\n当死神知道我即将到达目的地时，\n他一定越来越绝望。",
-        "ru": "Земля мертвых — это\nлабиринт опасностей,\nно я неуклонно\nпрокладываю себе\nпуть сквозь его стены.\n\nНаверняка Смерть отчаивается, зная,\nчто я приближаюсь к своей цели.",
-        "es": "La tierra de los\nmuertos es un\nlaberinto de peligros,\npero constantemente me\nabro paso a través de sus muros.\n\nSeguramente la Muerte debe estar cada vez más desesperada\nal saber que me acerco a mi destino.",
-        "jp": "死者の国は危険\nに満ちた迷宮だが、\n私はゆっくりと着\n実にその壁を突破している。\n\n私が目的地に近づいていることを知って、\n死神はきっと絶望しているに違いない。"
+        "en_us": "The Reaper treats me like a kid\nthrowing a tantrum, but I think I can\nchange that perspective soon.\n\nThis last rune I got feels particularly\npowerful and may be just the key for a\nfinal victory.",
+        "fr": "Le Faucheur me traite comme un enfant\nqui pique une crise de colère, mais je\npense que je pourrai bientôt changer\ncette perspective.\n\nCette dernière rune que j'ai obtenue semble\nparticulièrement puissante et pourrait\nbien être la clé d'une victoire finale.",
+        "zh_tw": "死神把我當成發脾氣的小孩，\n但我認為我很快就能改變他的看法。\n\n我得到的最後一個符文感覺特別\n強大，可能是獲得最終勝利的關鍵。",
+        "zh_cn": "死神把我当成发脾气的小孩，\n但我认为我很快就能改变他的看法。\n\n我得到的最后一个符文感觉特别\n强大，可能是获得最终胜利的关键。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "post_fight_story7": {
-        "en_us": "The opponents I encounter are formidable,\nbut my own strength is greater still.\n\nMy magic feels complete. All that's left\nis to use it well.",
-        "fr": "Les adversaires que je rencontre sont redoutables,\nmais ma propre force est encore plus grande.\n\nMa magie semble complète. Il ne me reste plus\nqu'à l'utiliser à bon escient.",
-        "zh_tw": "我遇到的對手很強大，但我自己\n的實力更厲害!\n\n我的魔法感覺很完整。剩下的就是好好\n利用它。",
-        "zh_cn": "我遇到的对手很强大，但我自己\n的实力更厉害!\n\n我的魔法感觉很完整。剩下的就是好好\n利用它。",
+        "en_us": "My magic feels complete. I think\nthe Reaper must have noticed and is scared\nto face me in battle!\n\nBut I'm sure my chance will come as\nlong as I keep pressing on.",
+        "fr": "Ma magie semble complète. Je pense\nque le Faucheur a dû le remarquer et qu'elle\na peur de m'affronter au combat !\n\nJe suis sûr que nous nous battrons\nbientôt tant que je continuerai d'avancer.",
+        "zh_tw": "我感覺我的魔法已經圓滿了。\n我想死神一定注意到了這一點，並\n害怕與我面對面戰鬥！\n\n但我相信，只要我繼續前進，機會\n很快就會到來。",
+        "zh_cn": "我感觉我的魔法已经圆满了。\n我想死神一定注意到了这一点，并\n害怕与我面对面战斗！\n\n但我相信，只要我继续前进，机会\n很快就会到来。",
         "ru": "Противники, с которыми я сталкиваюсь, грозны, но моя собственная сила еще больше.  Может быть, еще есть место для роста, но теперь моей магии должно быть более чем достаточно, чтобы спасти тебя, моя дорогая возлюбленная.",
         "es": "Los oponentes con los que me encuentro son formidables, pero mi propia fuerza es aún mayor.  Puede que todavía haya espacio para el crecimiento, pero mi magia debería ser ahora más que suficiente para rescatarte, mi querida amada.",
         "jp": "私が遭遇する相手は手ごわいですが、私自身の強さはさらに大きいです。 まだ成長の余地はあるかもしれないが、私の魔法は今や、私の最愛の愛するあなたを救うには十分すぎるほどのはずだ。"

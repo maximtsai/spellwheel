@@ -19,7 +19,7 @@
 
      initStatsCustom() {
          this.health = 24;
-        this.secondHealth = gameVars.isHardMode ? 650 : 5;
+        this.secondHealth = gameVars.isHardMode ? 650 : 600;
          this.isAsleep = true;
          this.isFirstMode = true;
         this.attackScale = 1.23;
@@ -150,7 +150,7 @@
                  duration: 1500,
                  onComplete: () => {
                      this.setSprite('super_dummy_broken.png', this.sprite.scaleX);
-                     this.sprite.y += 20;
+                     this.sprite.y += 25;
                      this.x -= 70;
                      this.y += 60;
                      this.sprite.setRotation(0);

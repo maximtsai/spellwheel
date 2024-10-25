@@ -743,7 +743,7 @@ function handleReaperDialog(level = 0, onComplete) {
         reaperFuncList = [() => {
             globalObjects.bannerTextManager.speedUpText();
         }, () => {
-            playSound('slice_in');
+            playSound('slice_in', 0.4);
             playSound('enemy_attack', 0.68)
             let darkBG = getBackgroundBlackout();
             darkBG.setDepth(100).setAlpha(0.5).setVisible(true);

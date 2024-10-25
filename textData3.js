@@ -327,8 +327,8 @@ let textData3 = {
         "jp": ""
     },
     "death6b": {
-        "en_us": "A MESS THAT FALLS TO\nME TO CLEAN UP.",
-        "fr": "UN DÉSORDRE QU'IL\nM'INCOMBE DE NETTOYER.",
+        "en_us": "A MESS THAT FALLS TO ME\nTO CLEAN UP.",
+        "fr": "UN DÉSORDRE QU'IL M'INCOMBE\nDE NETTOYER.",
         "zh_tw": "每次我都必須來恢復秩序。",
         "zh_cn": "每次我都必须来恢复秩序。",
         "ru": "",
@@ -363,28 +363,28 @@ let textData3 = {
         "jp": ""
     },
     "death7d": {
-        "en_us": "... IT SADDENS ME THAT YOU\nCONTINUE YOUR REBELLION.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "en_us": "...IT SADDENS ME THAT YOU\nCONTINUE YOUR REBELLION.",
+        "fr": "...CELA M'ATTRIME QUE VOUS\nCONTINUIEZ VOTRE RÉBELLION.",
+        "zh_tw": "…你的繼續反叛令我感到悲傷。",
+        "zh_cn": "…你的继续反叛令我感到悲伤。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death7e": {
         "en_us": "BUT NOW IS NOT THE MOMENT\nFOR YOUR FATE TO END.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "MAIS IL N'EST PAS ENCORE TEMPS\nQUE VOTRE DESTIN SE TERMINE.",
+        "zh_tw": "但現在還沒到你的命運結束的時刻。",
+        "zh_cn": "但现在还没到你的命运\n结束的时刻。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "death7f": {
         "en_us": "WE WILL CONFRONT EACH\nOTHER, IN DUE TIME.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "NOUS NOUS AFFRONTERONS,\nEN TEMPS LURCILE.",
+        "zh_tw": "在適當的時候，\n我們將會再次對面。",
+        "zh_cn": "在适当的时候，\n我们将会再次对面。",
         "ru": "",
         "es": "",
         "jp": ""

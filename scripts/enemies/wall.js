@@ -554,7 +554,7 @@
                                     playSound('punch', 0.5);
                                     playSound('squish');
                                     let powEffect = getTempPoolObject('spells', 'damageEffect3.png', 'damageEffect3', 150)
-                                    powEffect.setPosition(poop.x, poop.y).setDepth(9999).setScale(1.4).play('damageEffectSimple');
+                                    powEffect.setPosition(poop.x, poop.y).setDepth(9999).setScale(1.4).play('damageEffectShort');
                                     let startScale = poop.scaleX;
                                     poop.setScale(startScale * 1.25);
                                     this.addTween({

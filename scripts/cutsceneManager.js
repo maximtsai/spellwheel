@@ -284,6 +284,7 @@ function showCutscene3() {
         targets: globalObjects.cutsceneBack,
         alpha: 1,
         duration: 3800,
+        ease: 'Quad.easeInOut',
         onComplete: () => {
             if (globalObjects.currentEnemy) {
                 globalObjects.currentEnemy.destroy();
@@ -939,7 +940,7 @@ function rollCredits() {
         "SFX and battle music by Chandler G @rocad_guitar",
         "Robot voice and music by @eidendalion",
         "Special thanks to @hby, Victor Kao, and Alex Arango",
-        " \nRandom Stats:\n- Game Engine: Phaser 3\n- Sprites: +1000\n- Audio files: +155\n- Lines of code: Approx. 40,000\n- Development time: Approx 10 months",
+        " \nRandom Stats:\n- Game Engine: Phaser 3\n- Sprites: +1000\n- Audio files: +160\n- Lines of code: ~40,000\n- Development time: 10 months",
     ];
     let textObjects = [];
     let textAnims = [];

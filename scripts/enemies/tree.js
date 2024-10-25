@@ -480,7 +480,7 @@
                  playSound('tree_hit');
                  messageBus.publish("selfTakeDamage", damage);
                  let xPos = gameConsts.halfWidth * 0.5 + currObj.x * 0.5;
-                 let hitEffect = this.addSprite(xPos, currObj.y + Math.random() * 8, 'spells').play('damageEffectSimple').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
+                 let hitEffect = this.addSprite(xPos, currObj.y + Math.random() * 8, 'spells').play('damageEffectShort').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
                  this.addTween({
                      targets: hitEffect,
                      scaleX: 1.25,

@@ -768,6 +768,15 @@ let textData = {
         "jp": "。"
     },
     "credits": {
+        "en_us": "CREDITS",
+        "fr": "CRÉDITS",
+        "zh_tw": "制作名单",
+        "zh_cn": "制作名单",
+        "ru": "",
+        "es": "",
+        "jp": "。"
+    },
+    "credits2": {
         "en_us": "CREDITS AND\nARTBOOK!",
         "fr": "CRÉDITS ET\nARTBOOK !",
         "zh_tw": "制作名单\n+ 艺术书！",

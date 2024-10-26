@@ -179,6 +179,15 @@ function onLoadComplete(scene) {
 function initializeMiscLocalstorage() {
     language = localStorage.getItem("language") || 'en_us';
     gameOptions.infoBoxAlign = localStorage.getItem("info_align") || 'center';
+
+    let storedSkipIntro = localStorage.getItem("skip_intro");
+    if (storedSkipIntro) {
+        gameOptions.skipIntro = localStorage.getItem("skip_intro") === 'true';
+    } else {
+        gameOptions.skipIntro = true;
+        gameOptions.isFirstTime = true;
+        localStorage.setItem("skip_intro", 'true');
+    }
 }
 
 let lastUpdateValues = [1, 1, 1, 1, 1];

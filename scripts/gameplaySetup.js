@@ -258,11 +258,18 @@ function setupLoadingBar(scene) {
             }
         });
         swirlInReaperFog(1.15, 75, 1000);
+        if (gameOptions.skipIntro && !gameOptions.isFirstTime && !gameVars.runningIntro) {
+            gameOptions.skipIntroFull = true;
+            this.clickIntro();
+        }
         scene.tweens.add({
             targets: [loadObjects.loadingText],
             alpha: 0,
             duration: 300,
             onComplete: () => {
+                if (gameOptions.skipIntroFull) {
+                    return;
+                }
                 loadObjects.loadingText.setText(getLangText('start')).setScale(1).setPosition(loadObjects.loadingText.x, loadObjects.loadingText.y - 20);
                 loadObjects.loadingText.alpha = 1;
 
@@ -461,8 +468,8 @@ function clickIntro() {
     });
 
     if (loadObjects.loadingText2 && loadObjects.loadingText2.currAnim) {
-    loadObjects.loadingText2.currAnim.stop();
-    loadObjects.loadingText3.currAnim.stop();
+        loadObjects.loadingText2.currAnim.stop();
+        loadObjects.loadingText3.currAnim.stop();
     }
     PhaserScene.tweens.add({
         targets: [loadObjects.loadingText2, loadObjects.loadingText3],
@@ -478,6 +485,7 @@ function clickIntro() {
 
     loadObjects.sharpStar.setRotation(0.01);
     loadObjects.sharpStar2.setRotation(-0.02);
+
     PhaserScene.tweens.add({
         targets: loadObjects.glowStar,
         alpha: 1.05,
@@ -501,6 +509,9 @@ function clickIntro() {
                         scaleY: 3.7,
                         ease: 'Quart.easeIn',
                         duration: 1500,
+                        onComplete: () => {
+
+                        }
                     });
                 }
             });
@@ -549,18 +560,34 @@ function clickIntro() {
         }
     });
 
-    PhaserScene.tweens.add({
-        delay: 1500,
-        targets: loadObjects.glowBG,
-        alpha: 1.25,
-        scaleX: 14,
-        scaleY: 14,
-        duration: 500,
-        ease: 'Quart.easeIn',
-        onComplete: () => {
-            cleanupIntro(PhaserScene);
-        }
-    });
+    if (gameOptions.skipIntroFull) {
+        loadObjects.glowBG.alpha = 0;
+        PhaserScene.tweens.add({
+            targets: loadObjects.glowBG,
+            alpha: 1,
+            duration: 900,
+            ease: 'Quart.easeIn',
+            onComplete: () => {
+                this.skipIntro();
+            }
+        });
+        loadObjects.glowBG.setScale(14);
+
+    } else {
+        PhaserScene.tweens.add({
+            delay: 1500,
+            targets: loadObjects.glowBG,
+            alpha: 1.25,
+            scaleX: 14,
+            scaleY: 14,
+            duration: 500,
+            ease: 'Quart.easeIn',
+            onComplete: () => {
+                cleanupIntro(PhaserScene);
+            }
+        });
+    }
+
     loadObjects.skipIntroText = PhaserScene.add.text(gameConsts.width - 5, gameConsts.height - 5, getLangText('click_to_skip'), {fontFamily: 'verdana', fontSize: 18, color: '#FFFFFF', align: 'right'}).setDepth(1005).setAlpha(0).setOrigin(1, 1);
     loadObjects.loadingText.setText(" ").setAlpha(0).setScale(0.75).y -= 18;
     loadObjects.whiteOverall = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setDepth(2000).setAlpha(0).setScale(1000);

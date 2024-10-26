@@ -860,10 +860,51 @@ class Options {
 
     createSkipIntroToggle() {
         if (!this.introText) {
-            let startPos = gameConsts.halfHeight + 130;
-            this.introText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos, getLangText('skip_intro'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
+            let startPos = gameConsts.halfHeight + 150;
+            // this.introText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos, getLangText('skip_intro'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
+            this.introText = PhaserScene.add.text(gameConsts.halfWidth - 193, startPos, getLangText('skip_intro'), {fontFamily: 'germania', fontSize: 20, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
             this.addLangTextUpdateable(this.introText, 'skip_intro')
             this.listOfThingsToHideSemiAlpha.push(this.introText);
+
+
+            this.introToggleVisual = PhaserScene.add.sprite(gameConsts.halfWidth - 153, startPos, 'buttons', gameOptions.skipIntro ? 'check_box_on.png' : 'check_box_normal.png')
+            this.introToggleVisual.setDepth(this.baseDepth + 1);
+            this.listOfThingsToHide.push(this.introToggleVisual);
+
+            this.introButton = new Button({
+                normal: {
+                    atlas: 'buttons',
+                    ref: "check_box_normal.png",
+                    alpha: 0,
+                    x: this.introToggleVisual.x,
+                    y: startPos,
+                },
+                onHover: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                    if (gameOptions.skipIntro) {
+                        this.introToggleVisual.setFrame('check_box_hover2.png');
+                    } else {
+                        this.introToggleVisual.setFrame('check_box_hover.png');
+                    }
+                },
+                onHoverOut: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                    this.introToggleVisual.setFrame(gameOptions.skipIntro ? 'check_box_on.png' : 'check_box_normal.png');
+
+                },
+                onMouseUp: (x, y) => {
+                    gameOptions.skipIntro = !gameOptions.skipIntro;
+                    this.introToggleVisual.setFrame(gameOptions.skipIntro ? 'check_box_on.png' : 'check_box_normal.png');
+
+                    localStorage.setItem("skip_intro", gameOptions.skipIntro.toString());
+                },
+            });
+            this.introButton.setDepth(this.baseDepth + 10);
+            this.listOfButtonsToDisable.push(this.introButton);
         }
     }
 

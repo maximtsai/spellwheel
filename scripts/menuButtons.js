@@ -1262,7 +1262,7 @@ function showMainMenuButtons() {
             this.closeButton.setDepth(100000);
         }
     });
-    globalObjects.creditsButton.addText(getLangText('credits'), {fontFamily: 'germania', fontSize: 18, color: '#FFFFFF', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5);
+    globalObjects.creditsButton.addText(getLangText('credits'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5);
     globalObjects.creditsButton.setStroke('#301010', 6)
     globalObjects.creditsButton.setRotation(-0.03)
 }

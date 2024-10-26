@@ -32,7 +32,6 @@ const imageAtlases = [
     {name: 'blurry', src: 'sprites/blurry.json'},
     {name: 'misc', src: 'sprites/misc.json'},
     {name: 'deathfin', src: 'sprites/deathfin.json'},
-    {name: 'deathfinal', src: 'sprites/deathfinal.json'},
     {name: 'shields', src: 'sprites/shields.json'},
     {name: 'ending', src: 'sprites/ending.json'},
 ];

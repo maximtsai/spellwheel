@@ -691,88 +691,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/mantis_a.png</key>
-            <key type="filename">enemies/mantis_b.png</key>
-            <key type="filename">enemies/mantis_dead.png</key>
-            <key type="filename">enemies/mantis_preparing.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.59</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>133,138,265,275</rect>
-                <key>scale9Paddings</key>
-                <rect>133,138,265,275</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/mantis_head_1.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.59</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>37,55,73,111</rect>
-                <key>scale9Paddings</key>
-                <rect>37,55,73,111</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/mantis_head_2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.59</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>28,19,55,37</rect>
-                <key>scale9Paddings</key>
-                <rect>28,19,55,37</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/mantis_head_3.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.59</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>26,20,51,40</rect>
-                <key>scale9Paddings</key>
-                <rect>26,20,51,40</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/mantis_reveal.png</key>
-            <key type="filename">enemies/mantis_shoot_headless.png</key>
-            <key type="filename">enemies/mantis_shoot_left.png</key>
-            <key type="filename">enemies/mantis_shoot_right.png</key>
-            <key type="filename">enemies/mantis_unveiled.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.59</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>153,138,305,275</rect>
-                <key>scale9Paddings</key>
-                <rect>153,138,305,275</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">enemies/max_death_1_cast.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -897,6 +815,21 @@
                 <rect>65,143,129,285</rect>
                 <key>scale9Paddings</key>
                 <rect>65,143,129,285</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/palm_glow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.47</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>106,228,213,455</rect>
+                <key>scale9Paddings</key>
+                <rect>106,228,213,455</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

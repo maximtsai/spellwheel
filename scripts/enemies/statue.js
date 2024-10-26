@@ -295,7 +295,7 @@
         //     duration: 800,
         //     ease: 'Quad.easeInOut'
         // })
-         this.handShieldTemp = this.addSprite(this.x, this.y - 72, 'deathfinal', 'palm_glow.png').setScale(this.sprite.startScale * 1.355).setDepth(3).setAlpha(0).setOrigin(0.5, 0.373);
+         this.handShieldTemp = this.addSprite(this.x, this.y - 72, 'enemies', 'palm_glow.png').setScale(this.sprite.startScale * 1.355).setDepth(3).setAlpha(0).setOrigin(0.5, 0.373);
          this.handShieldTemp.startScale = this.handShieldTemp.scaleX;
 
          this.handShieldTemp.currAnim = this.addTween({
@@ -307,7 +307,7 @@
          // playFakeBGMusic('but_never_forgotten_metal_prelude');
          this.addDelayIfAlive(() => {
              playSound('ringknell')
-             this.secondTempShield = this.addSprite(this.handShieldTemp.x, this.handShieldTemp.y + 99, 'deathfinal', 'palm_glow.png').setScale(this.handShieldTemp.startScale * 1.2, this.handShieldTemp.startScale * 1.15).setDepth(3).setAlpha(0).setOrigin(0.5, 0.55);
+             this.secondTempShield = this.addSprite(this.handShieldTemp.x, this.handShieldTemp.y + 99, 'enemies', 'palm_glow.png').setScale(this.handShieldTemp.startScale * 1.2, this.handShieldTemp.startScale * 1.15).setDepth(3).setAlpha(0).setOrigin(0.5, 0.55);
 
              this.addTween({
                  targets: this.secondTempShield,

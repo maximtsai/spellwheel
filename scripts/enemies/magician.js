@@ -391,7 +391,7 @@
              targets: rune,
              y: gameConsts.halfHeight - 110,
              ease: 'Cubic.easeOut',
-             duration: 450,
+             duration: 500,
              onComplete: () => {
                  if (canvas) {
                      canvas.style.cursor = 'pointer';
@@ -447,7 +447,7 @@
                 playReaperAnim(this, () => {
                     setTimeout(() => {
                         this.showRune();
-                    }, 500);
+                    }, 900);
                 });
             });
         }, 500);

@@ -256,9 +256,13 @@ const ENABLE_KEYBOARD = true;
                 }
             } else {
                 // plain ol hovering
+                canvas.style.cursor = 'default';
                 if (totalDist < this.castButtonSize) {
                     this.setFrameLazy(this.castButton,this.altString + 'cast_hover.png');
                     globalObjects.player.setCastTextAlpha(0.7);
+                    if (!this.innerDragDisabled && !this.outerDragDisabled && !this.recharging && !this.castDisabled && canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
                 } else if (!this.innerDragDisabled && totalDist < this.innerCircleSize) {
                     this.setFrameLazy(this.innerCircle, this.altString + 'element_hover.png');
                 } else if (!this.outerDragDisabled) {

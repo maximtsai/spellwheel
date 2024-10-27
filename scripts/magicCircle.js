@@ -1979,7 +1979,10 @@ const ENABLE_KEYBOARD = true;
                             alpha: 0,
                             scaleX: 1.5,
                             scaleY: 1.5,
-                            duration: gameVars.gameManualSlowSpeed * 550,
+                            y: "-=2",
+                            x: "-=2",
+                            ease: 'Cubic.easeOut',
+                            duration: gameVars.gameManualSlowSpeed * 600,
                             onComplete: () => {
                                 poolManager.returnItemToPool(castCircle, 'castCircle');
                                 if (sprite.shouldDelete) {
@@ -2167,7 +2170,10 @@ const ENABLE_KEYBOARD = true;
                             alpha: 0,
                             scaleX: 1.5,
                             scaleY: 1.5,
-                            duration: gameVars.gameManualSlowSpeed * 550,
+                            y: "-=2",
+                            x: "+=2",
+                            ease: 'Cubic.easeOut',
+                            duration: gameVars.gameManualSlowSpeed * 600,
                             onComplete: () => {
                                 poolManager.returnItemToPool(castCircle, 'castCircle');
                                 if (sprite.shouldDelete) {

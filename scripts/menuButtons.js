@@ -12,8 +12,8 @@ function clearOnlyMenuButtons() {
     if (globalObjects.continueButton) {
         globalObjects.continueButton.destroy();
     }
-    if (globalObjects.lvlPickButton) {
-        globalObjects.lvlPickButton.destroy();
+    if (globalObjects.levelSelectButton) {
+        globalObjects.levelSelectButton.destroy();
     }
     globalObjects.startButton.destroy();
     // globalObjects.cheatButton.destroy();
@@ -183,23 +183,21 @@ function showMainMenuButtons() {
     if (hasContinue) {
         globalObjects.continueButton = new Button({
             normal: {
-                atlas: "pixels",
-                ref: "blank_pixel.png",
-                x: gameConsts.halfWidth - 173,
-                y: gameConsts.halfHeight - 151,
-                alpha: 0.9,
-                scaleX: 130,
-                scaleY: 40
+                atlas: "misc",
+                ref: "continuegame.webp",
+                x: gameConsts.halfWidth - 175,
+                y: gameConsts.halfHeight - 132,
+                alpha: 1
             },
             hover: {
-                atlas: "pixels",
-                ref: "blank_pixel.png",
+                atlas: "misc",
+                ref: "continuegame_hover.webp",
                 alpha: 1
             },
             press: {
-                atlas: "pixels",
-                ref: "blank_pixel.png",
-                alpha: 0.7
+                atlas: "misc",
+                ref: "continuegame_press.webp",
+                alpha: 1
             },
             disable: {
                 alpha: 0
@@ -222,31 +220,31 @@ function showMainMenuButtons() {
             }
         });
         globalObjects.continueButton.setOrigin(0.5, 0.5);
-        globalObjects.continueButton.addText(getLangText('cont_ui'), {fontFamily: 'germania', fontSize: 30, color: '#FFFFFF', align: 'left'})
+        let textObj = globalObjects.continueButton.addText(getLangText('cont_ui'), {fontFamily: 'germania', fontSize: 30, color: '#FFFFFF', align: 'left'})
+        globalObjects.continueButton.setTextOffset(0, -5);
         globalObjects.continueButton.setStroke('#301010', 5)
+        globalObjects.continueButton.setRotation(-0.02)
         // globalObjects.continueButton.setScale(0.9);
     }
 
     if (hasLvlSelect) {
-        globalObjects.lvlPickButton = new Button({
+        globalObjects.levelSelectButton = new Button({
             normal: {
-                atlas: "pixels",
-                ref: "blank_pixel.png",
-                x: gameConsts.halfWidth - 181,
-                y: gameConsts.halfHeight - 67,
-                alpha: 0.9,
-                scaleX: 130,
-                scaleY: 37
+                atlas: "misc",
+                ref: "selectgame.webp",
+                x: gameConsts.halfWidth - 183,
+                y: gameConsts.halfHeight - 43,
+                alpha: 1
             },
             hover: {
-                atlas: "pixels",
-                ref: "blank_pixel.png",
+                atlas: "misc",
+                ref: "selectgame_hover.webp",
                 alpha: 1
             },
             press: {
-                atlas: "pixels",
-                ref: "blank_pixel.png",
-                alpha: 0.7
+                atlas: "misc",
+                ref: "selectgame_press.webp",
+                alpha: 1
             },
             disable: {
                 alpha: 0
@@ -267,31 +265,30 @@ function showMainMenuButtons() {
                 showLevelSelectScreen();
             }
         });
-        globalObjects.lvlPickButton.setOrigin(0.5, 0.5);
-        globalObjects.lvlPickButton.addText(getLangText('lvl_select'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'left'})
-        globalObjects.lvlPickButton.setStroke('#301010', 5)
-        globalObjects.lvlPickButton.setRotation(0.27)
+        globalObjects.levelSelectButton.setOrigin(0.5, 0.5);
+        globalObjects.levelSelectButton.addText(getLangText('lvl_select'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'left'})
+        globalObjects.levelSelectButton.setStroke('#301010', 5)
+        globalObjects.levelSelectButton.setTextOffset(-6, -8);
+        globalObjects.levelSelectButton.setRotation(0.14)
     }
     let yPos = (hasLvlSelect || hasContinue) ? gameConsts.halfHeight - 260 : gameConsts.halfHeight - 132;
     globalObjects.startButton = new Button({
         normal: {
-            atlas: "pixels",
-            ref: "blank_pixel.png",
+            atlas: "misc",
+            ref: "newgame.webp",
             x: gameConsts.halfWidth - 176,
-            y: yPos + 32,
-            scaleX: 130,
-            scaleY: 40,
-            alpha: 0.9
-        },
-        hover: {
-            atlas: "pixels",
-            ref: "blank_pixel.png",
+            y: yPos + 38,
             alpha: 1,
         },
+        hover: {
+            atlas: "misc",
+            ref: "newgame_hover.webp",
+            alpha: 1
+        },
         press: {
-            atlas: "pixels",
-            ref: "blank_pixel.png",
-            alpha: 0.7
+            atlas: "misc",
+            ref: "newgame_press.webp",
+            alpha: 1
         },
         disable: {
             alpha: 0
@@ -322,8 +319,9 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.startButton.setOrigin(0.5, 0.5);
-    globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'germania', fontSize: 30, color: '#FFFFFF', align: 'left'});
-    globalObjects.startButton.setStroke('#301010', 5)
+    let textObj = globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'germania', fontSize: 30, color: '#FFFF9F', align: 'left'});
+    // globalObjects.startButton.setStroke('#301010', 5)
+    textObj.setBlendMode(Phaser.BlendModes.SCREEN);
     globalObjects.startButton.setRotation(-0.05)
     // globalObjects.startButton.setScale(0.9);
     globalObjects.startButton.isSolo = !hasLvlSelect && !hasContinue;
@@ -335,83 +333,6 @@ function showMainMenuButtons() {
     }
 
     let hideCheatConst = 0;
-
-    /*
-    globalObjects.cheatButton = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: gameConsts.width - 100 + hideCheatConst,
-            y: 180,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            toggleCheat('dd')
-        }
-    });
-    globalObjects.cheatButton.setScale(0.5);
-    globalObjects.cheatButton.addText("2X DAMAGE CHEAT", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
-
-    globalObjects.cheatButton2 = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: gameConsts.width - 100 + hideCheatConst,
-            y: 220,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            toggleCheat('edd')
-        }
-    });
-    globalObjects.cheatButton2.setScale(0.5);
-    globalObjects.cheatButton2.addText("2X DAMAGE CHEAT", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
-
-    globalObjects.cheatButton3 = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: gameConsts.width - 100 + hideCheatConst,
-            y: 260,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            toggleCheat('hpx')
-        }
-    });
-    globalObjects.cheatButton3.setScale(0.5);
-    globalObjects.cheatButton3.addText("+20 HP CHEAT", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
-    */
 
     globalObjects.cheatButton4 = new Button({
         normal: {
@@ -438,61 +359,6 @@ function showMainMenuButtons() {
     });
     globalObjects.cheatButton4.setScale(0.5);
     globalObjects.cheatButton4.addText("INFINITE AMMO", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
-    /*
-    globalObjects.cheatButton5 = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: gameConsts.width - 100 + hideCheatConst,
-            y: 340,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            challenges.lowHealth = !challenges.lowHealth;
-            globalObjects.player.reInitStats();
-            globalObjects.player.resetStats();
-        }
-    });
-    globalObjects.cheatButton5.setScale(0.5);
-    globalObjects.cheatButton5.addText("LOW HEALTH", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
-*/
-
-
-    // globalObjects.levelSelectButton = new Button({
-    //     normal: {
-    //         ref: "menu_btn_normal.png",
-    //         atlas: 'buttons',
-    //         x: 100,
-    //         y: 100,
-    //     },
-    //     hover: {
-    //         ref: "menu_btn_hover.png",
-    //         atlas: 'buttons',
-    //     },
-    //     press: {
-    //         ref: "menu_btn_press.png",
-    //         atlas: 'buttons',
-    //     },
-    //     disable: {
-    //         alpha: 0.001
-    //     },
-    //     onMouseUp: () => {
-    //         clearMenuButtons();
-    //         beginPreLevel(2);
-    //     }
-    // });
-    // globalObjects.levelSelectButton.setScale(0.5);
-    // globalObjects.levelSelectButton.addText("LEVEL GOBLIN", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
     /*
     globalObjects.level3Button = new Button({
@@ -1265,6 +1131,44 @@ function showMainMenuButtons() {
     globalObjects.creditsButton.addText(getLangText('credits'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5);
     globalObjects.creditsButton.setStroke('#301010', 6)
     globalObjects.creditsButton.setRotation(-0.03)
+
+
+    globalObjects.extrasButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blank_pixel.png",
+            x: gameConsts.width - 82,
+            y: gameConsts.halfHeight - 65,
+            alpha: 0.9,
+            scaleX: 95,
+            scaleY: 36
+        },
+        hover: {
+            alpha: 1,
+        },
+        press: {
+            alpha: 0.7,
+        },
+        disable: {
+        },
+        onHover: () => {
+            if (canvas) {
+                playSound('button_hover', 0.5).detune = 200;
+                canvas.style.cursor = 'pointer';
+            }
+        },
+        onHoverOut: () => {
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        },
+        onMouseUp: () => {
+            openUnlocks();
+        }
+    });
+    globalObjects.extrasButton.addText(getLangText('extras'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5);
+    globalObjects.extrasButton.setStroke('#301010', 6)
+    globalObjects.extrasButton.setRotation(-0.14)
 }
 
 function updateMenuLanguage() {
@@ -1274,8 +1178,8 @@ function updateMenuLanguage() {
     if (globalObjects.continueButton && !globalObjects.continueButton.isDestroyed) {
         globalObjects.continueButton.setText(getLangText('cont_ui'))
     }
-    if (globalObjects.lvlPickButton && !globalObjects.lvlPickButton.isDestroyed) {
-        globalObjects.lvlPickButton.setText(getLangText('lvl_select'))
+    if (globalObjects.levelSelectButton && !globalObjects.levelSelectButton.isDestroyed) {
+        globalObjects.levelSelectButton.setText(getLangText('lvl_select'))
     }
     if (globalObjects.creditsButton && !globalObjects.creditsButton.isDestroyed) {
         globalObjects.creditsButton.setText(getLangText('credits'))
@@ -1456,4 +1360,13 @@ function closeLevelSelectScreen() {
     hideGlobalClickBlocker();
     globalObjects.encyclopedia.showButton();
     globalObjects.options.showButton();
+}
+
+function openWishlist() {
+    window.open('https://store.steampowered.com/app/3170660/Spellwheel/?beta=1', '_blank').focus();
+
+}
+
+function openUnlocks() {
+
 }

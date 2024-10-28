@@ -784,7 +784,25 @@ let textData = {
         "ru": "",
         "es": "",
         "jp": "。"
-    }
+    },
+    "extras": {
+        "en_us": "UNLOCKS",
+        "fr": "CRÉDITS",
+        "zh_tw": "制作名单",
+        "zh_cn": "制作名单",
+        "ru": "",
+        "es": "",
+        "jp": "。"
+    },
+    "wishlist": {
+        "en_us": "WISHLIST!",
+        "fr": "Liste de\nSouhaits!",
+        "zh_tw": "心願單",
+        "zh_cn": "心愿单!",
+        "ru": "",
+        "es": "",
+        "jp": "。"
+    },
 }
 
 function setLanguage(lang) {

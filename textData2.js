@@ -891,8 +891,8 @@ let textData2 = {
     "new_game": {
         "en_us": "NEW GAME",
         "fr": "NOUVEAU JEU",
-        "zh_tw": "開始遊戲",
-        "zh_cn": "开始游戏",
+        "zh_tw": "新遊戲",
+        "zh_cn": "新游戏",
         "ru": "НОВАЯ ИГРА",
         "es": "NUEVO JUEGO",
         "jp": "新しいゲーム"

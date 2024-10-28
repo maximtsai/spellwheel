@@ -102,6 +102,9 @@ class Button {
             this.imageRefs[stateData.ref].x = stateData.x;
             if (this.text) {
                 this.text.x = this.imageRefs[stateData.ref].x;
+                if (this.text.offsetX) {
+                    this.text.x += this.text.offsetX;
+                }
             }
         }
         if (stateData.y === undefined) {
@@ -110,6 +113,9 @@ class Button {
             this.imageRefs[stateData.ref].y = stateData.y;
             if (this.text) {
                 this.text.y = this.imageRefs[stateData.ref].y;
+                if (this.text.offsetY) {
+                    this.text.y += this.text.offsetY;
+                }
             }
         }
         if (stateData.alpha === undefined) {
@@ -453,7 +459,14 @@ class Button {
     addText(text, font) {
         let depth = this.normal.depth ? this.normal.depth + 1 : 1;
         this.text = this.scene.add.text(this.normal.x, this.normal.y, text, font).setAlpha(this.normal.alpha).setOrigin(0.5, 0.5).setDepth(depth);
-        return this;
+        return this.text;
+    }
+
+    setTextOffset(x, y) {
+        this.text.offsetX = x;
+        this.text.offsetY = y;
+        this.text.x = this.imageRefs[this.currImageRef].x + this.text.offsetX;
+        this.text.y = this.imageRefs[this.currImageRef].y + this.text.offsetY;
     }
 
     setStroke(color, width) {

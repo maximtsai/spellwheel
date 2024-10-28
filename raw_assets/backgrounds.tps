@@ -391,11 +391,12 @@
                 <false/>
             </struct>
             <key type="filename">backgrounds/menu_buttons.png</key>
+            <key type="filename">backgrounds/menu_buttons_old.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.84</double>
+                <double>1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>

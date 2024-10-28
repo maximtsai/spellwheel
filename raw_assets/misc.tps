@@ -311,6 +311,23 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">misc/continuegame.webp</key>
+            <key type="filename">misc/continuegame_hover.webp</key>
+            <key type="filename">misc/continuegame_press.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>61,21,121,41</rect>
+                <key>scale9Paddings</key>
+                <rect>61,21,121,41</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/credits.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -323,6 +340,23 @@
                 <rect>154,167,307,333</rect>
                 <key>scale9Paddings</key>
                 <rect>154,167,307,333</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/creditsgame.webp</key>
+            <key type="filename">misc/creditsgame_hover.webp</key>
+            <key type="filename">misc/creditsgame_press.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>37,19,75,39</rect>
+                <key>scale9Paddings</key>
+                <rect>37,19,75,39</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -510,6 +544,40 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">misc/newgame.webp</key>
+            <key type="filename">misc/newgame_hover.webp</key>
+            <key type="filename">misc/newgame_press.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>66,27,132,53</rect>
+                <key>scale9Paddings</key>
+                <rect>66,27,132,53</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/newgame_solo.webp</key>
+            <key type="filename">misc/newgame_solo_hover.webp</key>
+            <key type="filename">misc/newgame_solo_press.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>66,24,131,49</rect>
+                <key>scale9Paddings</key>
+                <rect>66,24,131,49</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/scythe1.png</key>
             <key type="filename">misc/scythe2.png</key>
             <key type="filename">misc/scythe3.png</key>
@@ -612,6 +680,23 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">misc/selectgame.webp</key>
+            <key type="filename">misc/selectgame_hover.webp</key>
+            <key type="filename">misc/selectgame_press.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>55,38,110,77</rect>
+                <key>scale9Paddings</key>
+                <rect>55,38,110,77</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/shadow_bar.png</key>
             <key type="filename">misc/shadow_circle.png</key>
             <struct type="IndividualSpriteSettings">
@@ -685,6 +770,23 @@
                 <rect>74,14,149,27</rect>
                 <key>scale9Paddings</key>
                 <rect>74,14,149,27</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/wishlistgame.webp</key>
+            <key type="filename">misc/wishlistgame_hover.webp</key>
+            <key type="filename">misc/wishlistgame_press.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>35,23,69,46</rect>
+                <key>scale9Paddings</key>
+                <rect>35,23,69,46</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

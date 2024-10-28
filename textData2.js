@@ -265,13 +265,13 @@ let textData2 = {
         "jp": "日目"
     },
     "post_fight_story1": {
-        "en_us": "I have arrived at the gates to\nthe forbidden land of the departed.\n\nImmediately, this realm resists my entry.\nBut I know I will find you here, dear beloved,\nand nothing will stop me from reaching you.",
-        "fr": "Je suis arrivé aux portes de la\nterre interdite des défunts.\n\nImmédiatement, ce royaume résiste à mon\nentrée. Mais je sais que je vous trouverai ici,\nchers bien-aimés, et rien ne m’empêchera de\nvous atteindre.",
-        "zh_tw": "我已經到達了通往逝者禁地的大門。 \n\n立刻，這個境界就抵擋住了我的進入。\n但我知道我會在這裡找到你，親愛的。\n沒有什麼能阻止我接近你。",
-        "zh_cn": "我已经到达了通往逝者禁地的大门。 \n\n立刻，这个境界就抵挡住了我的进入。\n但我知道我会在这里找到你，亲爱的。\n没有什么能阻止我接近你。",
-        "ru": "Я прибыл к воротам запретной земли усопших.  Этот мир сразу же сопротивляется моему входу. Но я знаю, что найду тебя здесь, дорогая возлюбленная, и ничто не помешает мне добраться до тебя.",
-        "es": "He llegado a las puertas de la tierra prohibida de los difuntos.  Inmediatamente, este reino se resiste a mi entrada. Pero sé que te encontraré aquí, querido amado, y nada me impedirá llegar a ti.",
-        "jp": "私は死者の禁じられた土地への門に到着しました。 すぐに、この領域は私の立ち入りに抵抗します。しかし、私はここであなたを見つけるでしょう、親愛なる最愛の人、そして私があなたに連絡を取るのを妨げるものは何もありません。"
+        "en_us": "I have arrived at the gates to\nthe forbidden land of the departed.\n\nRight away, this realm tries to resist my\npassage, throwing obstacles at my every\nstep. But I will push through, for I know\nI will find you here, dear beloved.",
+        "fr": "Je suis arrivé aux portes de la\nterre interdite des défunts.\n\nCette terre tente de résister à mon passage,\ndressant des obstacles à chacun de mes pas.\nMais je trouverai un moyen de passer, car\nje sais que je te trouverai ici, ma chère\nbien-aimée.",
+        "zh_tw": "我已經到達了通往逝者禁地的大門。 \n\n立刻，這個境界就試圖阻止我前進。\n但我會找到通往你的路，因為我知道\n你就在這裡，親愛的。",
+        "zh_cn": "我已经到达了通往逝者禁地的大门。 \n\n顷刻间，这个境界就试图阻止我前进。\n但我会找到通往你的路，因为我知道\n你就在这里，亲爱的。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "post_fight_story2": {
         "en_us": "The fabled Reaper has taken notice\nof me, but I don't fear it at all.\n\nThey remind me more of my nagging\nparents than an underworld spectre.\n\nPerhaps I'll grab this shield before they\nstart chastising me further.",

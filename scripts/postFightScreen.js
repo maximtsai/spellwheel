@@ -389,7 +389,11 @@ class PostFightScreen {
                     if (gameVars.currLevel < gameVars.maxLevel) {
                         text.alpha = 0.7;
                     } else {
-                        text.alpha = 0;
+                        if (gameVars.currLevel <= 2) {
+                            text.alpha = 0;
+                        } else {
+                            text.alpha = 0.25;
+                        }
                     }
                     this.continueButton.setState(NORMAL);
                 }

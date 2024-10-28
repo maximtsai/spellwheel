@@ -29,7 +29,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 90 : 65;
+         this.health = gameVars.isHardMode ? 90 : 70;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
         this.attackScale = 1.25;

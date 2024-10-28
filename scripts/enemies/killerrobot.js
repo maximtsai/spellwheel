@@ -956,30 +956,6 @@
                      }
                  },
                  {
-                     name: "|4x6",
-                     chargeAmt: 450,
-                     damage: -1,
-                     startFunction: () => {
-                         this.pullbackScale = 0.99;
-                         this.attackScale = 1.03;
-                     },
-                     attackStartFunction: () => {
-                         if (!this.dead && this.shieldAdded) {
-                             this.addTimeout(() => {
-                                 if (!this.dead && this.shieldAdded) {
-                                     playSound('voca_gun');
-                                 }
-                             }, 500);
-                             this.setDefaultSprite('robot_shoot.png');
-                             this.sprite.y = this.sprite.startY;
-                             this.refreshAnimateBG(2, 0.1);
-                         }
-                     },
-                     attackFinishFunction: () => {
-                        this.shootBullets(4, 500);
-                     }
-                 },
-                 {
                      name: "|12",
                      chargeAmt: 350,
                      damage: 12,
@@ -1295,30 +1271,6 @@
              ],
              [
                  // 7
-                 {
-                     name: "}4x6 ",
-                     chargeAmt: 450,
-                     damage: -1,
-                     startFunction: () => {
-                         this.pullbackScale = 0.99;
-                         this.attackScale = 1.03;
-                     },
-                     attackStartFunction: () => {
-                         if (!this.dead && this.shieldAdded) {
-                             this.addTimeout(() => {
-                                 if (!this.dead && this.shieldAdded) {
-                                     playSound('voca_gun');
-                                 }
-                             }, 200);
-                             this.setDefaultSprite('robot_shoot.png');
-                             this.sprite.y = this.sprite.startY;
-                             this.refreshAnimateBG(2, 0.1);
-                         }
-                     },
-                     attackFinishFunction: () => {
-                         this.shootBullets(5);
-                     }
-                 },
                  {
                      name: "}14",
                      chargeAmt: 350,
@@ -2036,58 +1988,6 @@
 
      }
 
-     shootBullets(damage = 4, initDelay = 150) {
-        this.addDelay(() => {
-             if (!this.dead && this.shieldAdded) {
-                 if (!this.fireEffect) {
-                     this.fireEffect = this.addSprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_fire_1.png').setDepth(11);
-                 }
-                 let fireDelay = 120;
-                 this.fireEffect.setVisible(true);
-                 this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
-                 this.addDelayedCall(fireDelay, () => {
-                     if (!this.dead && this.shieldAdded) {
-                         this.fireEffect.setFrame('robot_fire_2.png');
-                         this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage);
-                         this.addDelayedCall(fireDelay, () => {
-                             if (!this.dead && this.shieldAdded) {
-                                 this.fireEffect.setFrame('robot_fire_1.png')
-                                 this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
-                                 this.addDelayedCall(fireDelay, () => {
-                                     if (!this.dead && this.shieldAdded) {
-                                         this.fireEffect.setFrame('robot_fire_2.png');
-                                         this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage)
-                                         this.addDelayedCall(fireDelay, () => {
-                                             if (!this.dead && this.shieldAdded) {
-                                                 this.fireEffect.setFrame('robot_fire_1.png');
-                                                 this.flashBullet(this.fireEffect, 'big_gun_pow_1', damage)
-                                                 this.addDelayedCall(fireDelay, () => {
-                                                     if (!this.dead && this.shieldAdded) {
-                                                         this.fireEffect.setFrame('robot_fire_2.png');
-                                                         this.flashBullet(this.fireEffect, 'big_gun_pow_2', damage)
-                                                         this.addDelayedCall(fireDelay, () => {
-                                                           this.fireEffect.setVisible(false);
-                                                            this.addDelay(() => {
-                                                                 if (!this.dead && this.shieldAdded) {
-                                                                     this.setDefaultSprite('robot1.png');
-                                                                     this.sprite.y = this.sprite.startY;
-                                                                     this.setSprite('robot1.png');
-                                                                 }
-                                                            }, 800);
-                                                        });
-                                                     }
-                                                 });
-                                             }
-                                         });
-                                     }
-                                 });
-                             }
-                         });
-                     }
-                 });
-             }
-        }, initDelay);
-     }
 
      fireLaser(damage = 16) {
          if (!this.dead) {

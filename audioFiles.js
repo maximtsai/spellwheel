@@ -44,7 +44,6 @@ const audioFiles = [
 
     {name: 'bite_down', src: 'audio/bite_down.mp3'},
     {name: 'bite_down_simplified', src: 'audio/bite_down_simplified.mp3'},
-    {name: 'bite_down_complex', src: 'audio/bite_down_complex.mp3'},
     {name: 'and_into_the_void', src: 'audio/and_into_the_void.mp3'},
     {name: 'into_the_void', src: 'audio/into_the_void.mp3'},
     {name: 'echos_of_time', src: 'audio/echos_of_time.mp3'},
@@ -56,10 +55,8 @@ const audioFiles = [
     {name: 'heartbeat', src: 'audio/heartbeat.mp3'},
     {name: 'but_never_forgotten_metal', src: 'audio/but_never_forgotten_metal.mp3'},
     {name: 'but_never_forgotten_metal_prelude', src: 'audio/but_never_forgotten_metal_prelude.mp3'},
-    {name: 'but_never_forgotten_epicchoir', src: 'audio/but_never_forgotten_epicchoir.mp3'},
     {name: 'but_never_forgotten_gameover', src: 'audio/butneverforgotten_gameover.mp3'},
     {name: 'but_never_forgotten', src: 'audio/but_never_forgotten.mp3'},
-    {name: 'but_never_forgotten_afterthought', src: 'audio/but_never_forgotten_afterthought.mp3'},
     {name: 'sleepless', src: 'audio/sleepless.mp3'},
     {name: 'sleepless_long', src: 'audio/sleepless_long.mp3'},
 
@@ -129,8 +126,6 @@ const audioFiles = [
     {name: 'voca_laser_broken', src: 'audio/voca_laser_broken.mp3'},
     {name: 'voca_claw_1', src: 'audio/voca_claw_1.mp3'},
     {name: 'voca_claw_2', src: 'audio/voca_claw_2.mp3'},
-    {name: 'big_gun_pow_1', src: 'audio/big_gun_pow_1.mp3'},
-    {name: 'big_gun_pow_2', src: 'audio/big_gun_pow_2.mp3'},
     {name: 'robot_sfx_1', src: 'audio/robot_sfx_1.mp3'},
     {name: 'robot_sfx_2', src: 'audio/robot_sfx_2.mp3'},
     {name: 'robot_laser', src: 'audio/robot_laser.mp3'},
@@ -166,11 +161,9 @@ const audioFiles = [
     {name: 'stomp', src: 'audio/stomp.mp3'},
     {name: 'deep_swish', src: 'audio/deep_swish.mp3'},
     {name: 'ringknell', src: 'audio/ringknell.mp3'},
-    {name: 'roar', src: 'audio/roar.mp3'},
     {name: 'click', src: 'audio/click.mp3'},
     {name: 'chirp1', src: 'audio/chirp1.mp3'},
     {name: 'chirpmany', src: 'audio/chirp_many.mp3'},
     {name: 'deepdemon', src: 'audio/deepdemon.mp3'},
-    {name: 'lowbell', src: 'audio/lowbell.mp3'},
 
 ]

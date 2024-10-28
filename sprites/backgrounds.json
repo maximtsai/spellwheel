@@ -512,7 +512,7 @@
 			"image": "sprites/backgrounds-3.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2016,
+				"w": 2006,
 				"h": 1697
 			},
 			"scale": 1,
@@ -601,15 +601,15 @@
 						"h": 755
 					},
 					"spriteSourceSize": {
-						"x": 11,
+						"x": 21,
 						"y": 71,
-						"w": 599,
+						"w": 589,
 						"h": 425
 					},
 					"frame": {
 						"x": 1416,
 						"y": 1,
-						"w": 599,
+						"w": 589,
 						"h": 425
 					},
 					"anchor": {
@@ -870,6 +870,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:bbf29949859c2af186e6ff81facd896c:37b39c4d077885eab46ba8bf36d60c38:78d9df4e1197d3677727ae92cf39d227$"
+		"smartupdate": "$TexturePacker:SmartUpdate:8547d4cc33182f9fd7891f2a634b732c:bb8c21bcbc2d6e1acb3173559f73521d:78d9df4e1197d3677727ae92cf39d227$"
 	}
 }

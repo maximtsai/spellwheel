@@ -11,11 +11,15 @@ function setupMainMenuBG() {
 function clearOnlyMenuButtons() {
     if (globalObjects.continueButton) {
         globalObjects.continueButton.destroy();
+        globalObjects.continueButtonSprite.destroy();
     }
+
     if (globalObjects.levelSelectButton) {
         globalObjects.levelSelectButton.destroy();
+        globalObjects.levelButtonSprite.destroy();
     }
     globalObjects.startButton.destroy();
+    globalObjects.startButtonSprite.destroy();
     // globalObjects.cheatButton.destroy();
     // globalObjects.cheatButton2.destroy();
     // globalObjects.cheatButton3.destroy();
@@ -25,6 +29,11 @@ function clearOnlyMenuButtons() {
 
 
     globalObjects.creditsButton.destroy();
+    globalObjects.creditsButtonSprite.destroy();
+    globalObjects.extrasButton.destroy();
+    globalObjects.extrasButtonSprite.destroy();
+
+
     /*
     globalObjects.lvlButton.destroy();
     globalObjects.level3Button.destroy();
@@ -181,23 +190,22 @@ function showMainMenuButtons() {
     let hasLvlSelect = gameVars.maxLevel >= 1;
 
     if (hasContinue) {
+        globalObjects.continueButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 175, gameConsts.halfHeight - 132, 'misc', 'continuegame.webp')
         globalObjects.continueButton = new Button({
             normal: {
-                atlas: "misc",
-                ref: "continuegame.webp",
+                atlas:"pixels",
+                ref: "blank_pixel.png",
                 x: gameConsts.halfWidth - 175,
                 y: gameConsts.halfHeight - 132,
-                alpha: 1
+                alpha: 1,
+                scaleX: 115,
+                scaleY: 40
             },
             hover: {
-                atlas: "misc",
-                ref: "continuegame_hover.webp",
-                alpha: 1
+                scaleX: 120,
+                scaleY: 45
             },
             press: {
-                atlas: "misc",
-                ref: "continuegame_press.webp",
-                alpha: 1
             },
             disable: {
                 alpha: 0
@@ -207,11 +215,23 @@ function showMainMenuButtons() {
                     playSound('button_hover').detune = -75;
                     canvas.style.cursor = 'pointer';
                 }
+                globalObjects.continueButtonSprite.setScale(1.025);
+                globalObjects.continueButtonSprite.setRotation(-0.03);
             },
             onHoverOut: () => {
                 if (canvas) {
                     canvas.style.cursor = 'default';
                 }
+                globalObjects.continueButtonSprite.setRotation(0.045);
+                PhaserScene.tweens.add({
+                    targets: globalObjects.continueButtonSprite,
+                    duration: 100,
+                    scaleX: 1,
+                    scaleY: 1,
+                    easeParams: [3],
+                    rotation: 0,
+                    ease: 'Bounce.easeOut',
+                });
             },
             onMouseUp: () => {
                 playSound('click')
@@ -228,23 +248,22 @@ function showMainMenuButtons() {
     }
 
     if (hasLvlSelect) {
+        globalObjects.levelButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 183, gameConsts.halfHeight - 43, 'misc', 'selectgame.webp')
         globalObjects.levelSelectButton = new Button({
             normal: {
-                atlas: "misc",
-                ref: "selectgame.webp",
+                atlas: "pixels",
+                ref: "blank_pixel.png",
                 x: gameConsts.halfWidth - 183,
                 y: gameConsts.halfHeight - 43,
-                alpha: 1
+                alpha: 1,
+                scaleX: 135,
+                scaleY: 40
             },
             hover: {
-                atlas: "misc",
-                ref: "selectgame_hover.webp",
-                alpha: 1
+                scaleX: 140,
+                scaleY: 45,
             },
             press: {
-                atlas: "misc",
-                ref: "selectgame_press.webp",
-                alpha: 1
             },
             disable: {
                 alpha: 0
@@ -254,11 +273,23 @@ function showMainMenuButtons() {
                     playSound('button_hover').detune = -150;
                     canvas.style.cursor = 'pointer';
                 }
+                globalObjects.levelButtonSprite.setScale(1.025);
+                globalObjects.levelButtonSprite.setRotation(-0.03);
             },
             onHoverOut: () => {
                 if (canvas) {
                     canvas.style.cursor = 'default';
                 }
+                globalObjects.levelButtonSprite.setRotation(0.045);
+                PhaserScene.tweens.add({
+                    targets: globalObjects.levelButtonSprite,
+                    duration: 100,
+                    scaleX: 1,
+                    scaleY: 1,
+                    easeParams: [3],
+                    rotation: 0,
+                    ease: 'Bounce.easeOut',
+                });
             },
             onMouseUp: () => {
                 playSound('click')
@@ -269,26 +300,26 @@ function showMainMenuButtons() {
         globalObjects.levelSelectButton.addText(getLangText('lvl_select'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'left'})
         globalObjects.levelSelectButton.setStroke('#301010', 5)
         globalObjects.levelSelectButton.setTextOffset(-6, -8);
-        globalObjects.levelSelectButton.setRotation(0.14)
+        globalObjects.levelSelectButton.setRotation(0.03)
     }
     let yPos = (hasLvlSelect || hasContinue) ? gameConsts.halfHeight - 260 : gameConsts.halfHeight - 132;
+    globalObjects.startButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 176, yPos + 38, 'misc', 'newgame.webp')
     globalObjects.startButton = new Button({
         normal: {
-            atlas: "misc",
-            ref: "newgame.webp",
-            x: gameConsts.halfWidth - 176,
-            y: yPos + 38,
+            atlas: "pixels",
+            ref: "blank_pixel.png",
+            x: globalObjects.startButtonSprite.x,
+            y: globalObjects.startButtonSprite.y,
             alpha: 1,
+            scaleX: 120,
+            scaleY: 40,
         },
         hover: {
-            atlas: "misc",
-            ref: "newgame_hover.webp",
-            alpha: 1
+            scaleX: 125,
+            scaleY: 45,
         },
         press: {
-            atlas: "misc",
-            ref: "newgame_press.webp",
-            alpha: 1
+
         },
         disable: {
             alpha: 0
@@ -298,11 +329,23 @@ function showMainMenuButtons() {
                 playSound('button_hover').detune = 0;
                 canvas.style.cursor = 'pointer';
             }
+            globalObjects.startButtonSprite.setScale(1.025);
+            globalObjects.startButtonSprite.setRotation(-0.03);
         },
         onHoverOut: () => {
             if (canvas) {
                 canvas.style.cursor = 'default';
             }
+            globalObjects.startButtonSprite.setRotation(0.045);
+            PhaserScene.tweens.add({
+                targets: globalObjects.startButtonSprite,
+                duration: 100,
+                scaleX: 1,
+                scaleY: 1,
+                easeParams: [3],
+                rotation: 0,
+                ease: 'Bounce.easeOut',
+            });
         },
         onMouseUp: () => {
             playSound('click')
@@ -667,12 +710,12 @@ function showMainMenuButtons() {
     // globalObjects.lvl11Button.destroy();
     // globalObjects.lvl12Button.destroy();
     // globalObjects.lvl13Button.destroy();
-
+    globalObjects.creditsButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 225, gameConsts.halfHeight - 5, 'misc', 'newgame.webp');
     globalObjects.creditsButton = new Button({
         normal: {
             atlas: "pixels",
             ref: "blank_pixel.png",
-            x: gameConsts.width - 80,
+            x: gameConsts.halfWidth + 225,
             y: gameConsts.halfHeight - 5,
             alpha: 0.9,
             scaleX: 95,
@@ -691,11 +734,23 @@ function showMainMenuButtons() {
                 playSound('button_hover', 0.5).detune = 200;
                 canvas.style.cursor = 'pointer';
             }
+            globalObjects.creditsButtonSprite.setScale(1.025);
+            globalObjects.creditsButtonSprite.setRotation(0.03);
         },
         onHoverOut: () => {
             if (canvas) {
                 canvas.style.cursor = 'default';
             }
+            globalObjects.creditsButtonSprite.setRotation(-0.045);
+            PhaserScene.tweens.add({
+                targets: globalObjects.creditsButtonSprite,
+                duration: 100,
+                scaleX: 1,
+                scaleY: 1,
+                easeParams: [3],
+                rotation: 0,
+                ease: 'Bounce.easeOut',
+            });
         },
         onMouseUp: () => {
             globalObjects.magicCircle.disableMovement();
@@ -1132,12 +1187,12 @@ function showMainMenuButtons() {
     globalObjects.creditsButton.setStroke('#301010', 6)
     globalObjects.creditsButton.setRotation(-0.03)
 
-
+    globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 205, gameConsts.halfHeight - 65, 'misc', 'newgame.webp')
     globalObjects.extrasButton = new Button({
         normal: {
             atlas: "pixels",
             ref: "blank_pixel.png",
-            x: gameConsts.width - 82,
+            x: gameConsts.halfWidth + 205,
             y: gameConsts.halfHeight - 65,
             alpha: 0.9,
             scaleX: 95,
@@ -1156,11 +1211,23 @@ function showMainMenuButtons() {
                 playSound('button_hover', 0.5).detune = 200;
                 canvas.style.cursor = 'pointer';
             }
+            globalObjects.extrasButtonSprite.setScale(1.025);
+            globalObjects.extrasButtonSprite.setRotation(0.03);
         },
         onHoverOut: () => {
             if (canvas) {
                 canvas.style.cursor = 'default';
             }
+            globalObjects.extrasButtonSprite.setRotation(-0.045);
+            PhaserScene.tweens.add({
+                targets: globalObjects.extrasButtonSprite,
+                duration: 100,
+                scaleX: 1,
+                scaleY: 1,
+                easeParams: [3],
+                rotation: 0,
+                ease: 'Bounce.easeOut',
+            });
         },
         onMouseUp: () => {
             openUnlocks();
@@ -1184,7 +1251,9 @@ function updateMenuLanguage() {
     if (globalObjects.creditsButton && !globalObjects.creditsButton.isDestroyed) {
         globalObjects.creditsButton.setText(getLangText('credits'))
     }
-
+    if (globalObjects.extrasButton && !globalObjects.extrasButton.isDestroyed) {
+        globalObjects.extrasButton.setText(getLangText('extras'))
+    }
 }
 
 

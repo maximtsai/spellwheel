@@ -1361,6 +1361,9 @@ function showLevelSelectScreen(){
 
     let listOfBtns = [];
     let maxLevel = Math.min(gameVars.maxLevel + 1, 14);
+    if (maxLevel >= 6) {
+        maxLevel = 14;
+    }
     for (let i = 1; i <= maxLevel; i++) {
         let xPos = positionsX[i - 1];
         let yPos = positionsY[i - 1];
@@ -1401,17 +1404,22 @@ function showLevelSelectScreen(){
                 }
             },
             onMouseUp: () => {
-                closeLevelSelectScreen();
-                clearMenuButtons();
-                beginPreLevel(i);
-                blackBG.setAlpha(0);
-                title.destroy();
-                levelSelectBG.destroy();
-                closeButton.destroy();
-                sub.unsubscribe();
-                for (let i in listOfBtns) {
-                    listOfBtns[i].destroy();
+                if (i >= 6) {
+                    showWishlistPage();
+                } else {
+                    closeLevelSelectScreen();
+                    clearMenuButtons();
+                    beginPreLevel(i);
+                    blackBG.setAlpha(0);
+                    title.destroy();
+                    levelSelectBG.destroy();
+                    closeButton.destroy();
+                    sub.unsubscribe();
+                    for (let i in listOfBtns) {
+                        listOfBtns[i].destroy();
+                    }
                 }
+
             }
         });
         newBtn.setDepth(10000);
@@ -1423,6 +1431,170 @@ function showLevelSelectScreen(){
     //     setupCreditsReturnMainMenu(textObjects);
     //     fadeAwaySound(bgMusic, 2000);
     // });
+}
+
+function showWishlistPage() {
+    // globalObjects.encyclopedia.hideButton();
+    // globalObjects.options.hideButton();
+    globalObjects.magicCircle.disableMovement();
+    let clickBlock = new Button({
+        normal: {
+            ref: "blackPixel",
+            x: gameConsts.halfWidth,
+            y: gameConsts.halfHeight,
+            alpha: 0.15,
+            scaleX: 1000,
+            scaleY: 1000
+        },
+        onMouseUp: () => {
+
+        }
+    });
+    clickBlock.setDepth(99999)
+    let bg = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'paper.png').setDepth(99999).setAlpha(0).setScale(0.95, 1.08);
+    let poster = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 172, 'ending', 'poster.png').setDepth(99999).setAlpha(0).setScale(0.77)
+    let text1 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight - 300, getLangText('wishlist_title'), {fontFamily: 'germania', fontSize: 42, color: '#200000', align: 'center'});
+    text1.setDepth(99999).setOrigin(0.5, 0.5).setAlpha(0);
+    let text2 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight - 274, getLangText('wishlist_subtitle'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'center'});
+    text2.setDepth(99999).setOrigin(0.5, 0).setAlpha(0);
+    let text3 = PhaserScene.add.text(gameConsts.halfWidth - 240, gameConsts.halfHeight - 238, getLangText('wishlist_body'), {fontFamily: 'germania', fontSize: 24, color: '#200000', align: 'left'});
+    text3.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+
+    PhaserScene.tweens.add({
+        targets: [bg],
+        scaleX: 0.965,
+        scaleY: 1.1,
+        ease: 'Back.easeOut',
+        duration: 250,
+    })
+    PhaserScene.tweens.add({
+        targets: [poster],
+        scaleX: 0.79,
+        scaleY: 0.79,
+        ease: 'Back.easeOut',
+        duration: 300,
+    })
+
+
+    this.wishlistButton = new Button({
+        normal: {
+            atlas: 'ending',
+            ref: "wishlist.png",
+            alpha: 0.95,
+            scaleX: 0.99,
+            scaleY: 0.99,
+            x: gameConsts.halfWidth,
+            y: gameConsts.halfHeight - 35,
+        },
+        hover: {
+            alpha: 1,
+            atlas: 'ending',
+            ref: "wishlist.png",
+        },
+        press: {
+            atlas: 'ending',
+            ref: "wishlist.png",
+            alpha: 1
+        },
+        disable: {
+            atlas: 'endings',
+            ref: "wishlist.png",
+            alpha: 0
+        },
+        onHover: () => {
+            if (canvas) {
+                canvas.style.cursor = 'pointer';
+            }
+        },
+        onHoverOut: () => {
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        },
+        onMouseUp: () => {
+            openWishlist()
+        }
+    });
+    this.wishlistButton.setDepth(100000);
+
+    let text4 = PhaserScene.add.text(gameConsts.halfWidth - 50, this.wishlistButton.getYPos(), getLangText('wishlist_on_steam'), {fontFamily: 'germania', fontSize: language === 'fr' ? 24 : 32, color: '#200000', align: 'left'});
+    text4.setDepth(99999).setOrigin(0, 0.5).setAlpha(0);
+
+    PhaserScene.tweens.add({
+        targets: [bg, poster, text1, text2, text3, text4],
+        alpha: 1,
+        ease: 'Cubic.easeOut',
+        duration: 250,
+        onComplete: () => {
+            bg.canDelete = true;
+        }
+    })
+
+    this.closeButton = new Button({
+        normal: {
+            atlas: 'buttons',
+            ref: "closebtn.png",
+            alpha: 0.95,
+            x: gameConsts.halfWidth + 234,
+            y: gameConsts.halfHeight - 305,
+        },
+        hover: {
+            alpha: 1,
+            atlas: 'buttons',
+            ref: "closebtn_hover.png",
+        },
+        press: {
+            atlas: 'buttons',
+            ref: "closebtn_press.png",
+            alpha: 1
+        },
+        disable: {
+            atlas: 'buttons',
+            ref: "closebtn.png",
+            alpha: 0
+        },
+        onHover: () => {
+            if (canvas) {
+                canvas.style.cursor = 'pointer';
+            }
+        },
+        onHoverOut: () => {
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        },
+        onMouseUp: () => {
+            if (!bg.canDelete) {
+                return;
+            }
+            playSound('flip1', 0.7).detune = -200;
+            clickBlock.destroy();
+
+            // globalObjects.encyclopedia.showButton();
+            // globalObjects.options.showButton();
+            globalObjects.magicCircle.enableMovement();
+            this.closeButton.destroy();
+            this.wishlistButton.destroy();
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+            PhaserScene.tweens.add({
+                targets: [bg, poster, text1, text2, text3, text4],
+                alpha: 0,
+                duration: 250,
+                ease: 'Quad.easeOut',
+                onComplete: () => {
+                    bg.destroy();
+                    poster.destroy();
+                    text1.destroy();
+                    text2.destroy();
+                    text3.destroy();
+                    text4.destroy();
+                }
+            })
+        }
+    });
+    this.closeButton.setDepth(100000);
 }
 
 function closeLevelSelectScreen() {

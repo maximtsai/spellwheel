@@ -764,7 +764,7 @@ function showLocket() {
         });
 
         if (gameVars.latestLevel > 1 && Math.random() > 0.75) {
-            let ladyImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 90, 'ending', 'ending2_a.png').setAlpha(0.2).setDepth(200).setScale(0.5);
+            let ladyImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 90, 'ending', 'ending2_a.png').setAlpha(0.2).setDepth(200);
             PhaserScene.tweens.add({
                 targets: ladyImage,
                 ease: 'Cubic.easeOut',

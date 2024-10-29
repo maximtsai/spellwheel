@@ -803,6 +803,42 @@ let textData = {
         "es": "",
         "jp": "。"
     },
+    "wishlist_title": {
+        "en_us": "END OF DEMO",
+        "fr": "FIN DE LA DÉMO",
+        "zh_tw": "遊戲示範結束",
+        "zh_cn": "游戏演示结束",
+        "ru": "",
+        "es": "",
+        "jp": "。"
+    },
+    "wishlist_subtitle": {
+        "en_us": "Thank you for trying out Spellwheel!",
+        "fr": "Merci d'avoir essayé Spellwheel !",
+        "zh_tw": "感謝您玩 Spellwheel 示範！",
+        "zh_cn": "感谢您玩 Spellwheel 演示！",
+        "ru": "",
+        "es": "",
+        "jp": "。"
+    },
+    "wishlist_body": {
+        "en_us": "The full version on Steam includes: \n- 14 levels of hand-drawn opponents\n- 20 unique spells cast from powerful new runes\n- A multi-ending conclusion to this journey\n- Our gratitude for your support!",
+        "fr": "La version complète sur Steam comprend :\n- 14 niveaux d'adversaires dessinés à la main\n- 20 sorts uniques dans votre arsenal magique\n- Une conclusion à plusieurs fins pour ce voyage\n- Notre gratitude pour votre soutien !",
+        "zh_tw": "Steam 上的完整版本包括：\n- 14 個手繪角色關卡\n- 20 種獨特的法術，由強大的新符文施放\n- 多個結局來結束這旅行程\n- 我們的永久感謝！",
+        "zh_cn": "Steam 上的完整版本包括：\n- 14 个手绘角色关卡\n- 20 种独特的法术，由强大的新符文施放\n- 多个结局来结束这旅个程\n- 我们的永久感谢！",
+        "ru": "",
+        "es": "",
+        "jp": "。"
+    },
+    "wishlist_on_steam": {
+        "en_us": "WISHLIST\nON STEAM",
+        "fr": "LISTE DE SOUHAITS\nSUR STEAM",
+        "zh_tw": "STEAM\n心願清單",
+        "zh_cn": "STEAM 心愿单",
+        "ru": "",
+        "es": "",
+        "jp": "。"
+    }
 }
 
 function setLanguage(lang) {

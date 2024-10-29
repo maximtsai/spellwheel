@@ -252,10 +252,10 @@ function createAnimations(scene) {
             prefix: 'damageEffect',
             suffix: '.png',
             start: 0,
-            end: 8,
+            end: 9,
             zeroPad: 0,
         }),
-        frameRate: 40
+        frameRate: 60
     });
     scene.anims.create({
         key: 'damageEffectShort',
@@ -266,7 +266,7 @@ function createAnimations(scene) {
             end: 4,
             zeroPad: 0,
         }),
-        frameRate: 40
+        frameRate: 45
     });
     scene.anims.create({
         key: 'shockEffect',

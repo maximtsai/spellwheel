@@ -254,7 +254,7 @@ function showMainMenuButtons() {
                 atlas: "pixels",
                 ref: "blank_pixel.png",
                 x: gameConsts.halfWidth - 183,
-                y: gameConsts.halfHeight - 43,
+                y: gameConsts.halfHeight - 38,
                 alpha: 1,
                 scaleX: 135,
                 scaleY: 40
@@ -300,7 +300,7 @@ function showMainMenuButtons() {
         let textObjSelect = globalObjects.levelSelectButton.addText(getLangText('lvl_select'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'left'})
         globalObjects.levelSelectButton.setStroke('#301010', 5)
         globalObjects.levelSelectButton.setTextOffset(-6, -8);
-        globalObjects.levelSelectButton.setRotation(0.03)
+        globalObjects.levelSelectButton.setRotation(-0.22)
         if (language === 'fr') {
             textObjSelect.setFontSize(23);
         }
@@ -1191,7 +1191,7 @@ function showMainMenuButtons() {
     globalObjects.creditsButton.setStroke('#301010', 6)
     globalObjects.creditsButton.setRotation(-0.03)
 
-    globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 217, gameConsts.halfHeight - 70, 'misc', 'wishlistgame.webp')
+    globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
     globalObjects.extrasButton = new Button({
         normal: {
             atlas: "pixels",

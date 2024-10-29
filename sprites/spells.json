@@ -885,31 +885,6 @@
 					}
 				},
 				{
-					"filename": "blackCirclePlain.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 44,
-						"h": 44
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 44,
-						"h": 44
-					},
-					"frame": {
-						"x": 881,
-						"y": 1911,
-						"w": 44,
-						"h": 44
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "whiteCircle.png",
 					"rotated": false,
 					"trimmed": false,
@@ -924,8 +899,8 @@
 						"h": 40
 					},
 					"frame": {
-						"x": 1997,
-						"y": 1,
+						"x": 881,
+						"y": 1911,
 						"w": 40,
 						"h": 40
 					},
@@ -974,8 +949,8 @@
 						"h": 34
 					},
 					"frame": {
-						"x": 1993,
-						"y": 1812,
+						"x": 1997,
+						"y": 1,
 						"w": 34,
 						"h": 34
 					},
@@ -1085,7 +1060,7 @@
 					}
 				},
 				{
-					"filename": "damageEffect8.png",
+					"filename": "damageEffect9.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1140,8 +1115,8 @@
 			"image": "sprites/spells-1.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 982,
-				"h": 1298
+				"w": 974,
+				"h": 1301
 			},
 			"scale": 1,
 			"frames": [
@@ -1271,6 +1246,31 @@
 					}
 				},
 				{
+					"filename": "spikeout.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 236,
+						"h": 236
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 233,
+						"h": 119
+					},
+					"frame": {
+						"x": 740,
+						"y": 1,
+						"w": 233,
+						"h": 119
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "timeRed1.png",
 					"rotated": false,
 					"trimmed": false,
@@ -1339,31 +1339,6 @@
 						"y": 1095,
 						"w": 184,
 						"h": 185
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "spikeout.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 236,
-						"h": 236
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 233,
-						"h": 119
-					},
-					"frame": {
-						"x": 740,
-						"y": 1,
-						"w": 233,
-						"h": 119
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1721,6 +1696,31 @@
 					}
 				},
 				{
+					"filename": "damageEffect3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 19,
+						"w": 162,
+						"h": 162
+					},
+					"frame": {
+						"x": 383,
+						"y": 637,
+						"w": 162,
+						"h": 162
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "damageEffectShort1.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1821,7 +1821,7 @@
 					}
 				},
 				{
-					"filename": "damageEffect3.png",
+					"filename": "damageEffect4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1896,7 +1896,7 @@
 					}
 				},
 				{
-					"filename": "damageEffect4.png",
+					"filename": "damageEffect5.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1921,7 +1921,7 @@
 					}
 				},
 				{
-					"filename": "damageEffect5.png",
+					"filename": "damageEffect6.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1971,24 +1971,24 @@
 					}
 				},
 				{
-					"filename": "rock.png",
+					"filename": "blackPulse.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 150,
-						"h": 150
+						"w": 125,
+						"h": 125
 					},
 					"spriteSourceSize": {
-						"x": 7,
-						"y": 7,
-						"w": 136,
-						"h": 138
+						"x": 0,
+						"y": 0,
+						"w": 125,
+						"h": 125
 					},
 					"frame": {
 						"x": 845,
 						"y": 492,
-						"w": 136,
-						"h": 138
+						"w": 125,
+						"h": 125
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1996,7 +1996,7 @@
 					}
 				},
 				{
-					"filename": "damageEffect6.png",
+					"filename": "damageEffect7.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -2021,7 +2021,7 @@
 					}
 				},
 				{
-					"filename": "damageEffect7.png",
+					"filename": "damageEffect8.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -2029,41 +2029,16 @@
 						"h": 200
 					},
 					"spriteSourceSize": {
-						"x": 29,
-						"y": 29,
-						"w": 142,
-						"h": 142
+						"x": 31,
+						"y": 31,
+						"w": 138,
+						"h": 138
 					},
 					"frame": {
 						"x": 701,
 						"y": 636,
-						"w": 142,
-						"h": 142
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "blackPulse.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 125,
-						"h": 125
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 125,
-						"h": 125
-					},
-					"frame": {
-						"x": 845,
-						"y": 632,
-						"w": 125,
-						"h": 125
+						"w": 138,
+						"h": 138
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2196,6 +2171,156 @@
 					}
 				},
 				{
+					"filename": "rock.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 7,
+						"w": 136,
+						"h": 138
+					},
+					"frame": {
+						"x": 547,
+						"y": 761,
+						"w": 136,
+						"h": 138
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shockEffect2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 125,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 125,
+						"h": 125
+					},
+					"frame": {
+						"x": 685,
+						"y": 776,
+						"w": 125,
+						"h": 125
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shockEffect3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 125,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 125,
+						"h": 125
+					},
+					"frame": {
+						"x": 656,
+						"y": 903,
+						"w": 125,
+						"h": 125
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shockEffect4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 125,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 125,
+						"h": 125
+					},
+					"frame": {
+						"x": 659,
+						"y": 1030,
+						"w": 125,
+						"h": 125
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shockEffect.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 125,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 5,
+						"w": 111,
+						"h": 113
+					},
+					"frame": {
+						"x": 550,
+						"y": 1187,
+						"w": 111,
+						"h": 113
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "shockEffect5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 125,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 125,
+						"h": 125
+					},
+					"frame": {
+						"x": 663,
+						"y": 1157,
+						"w": 125,
+						"h": 125
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "blackCircle.png",
 					"rotated": false,
 					"trimmed": true,
@@ -2221,106 +2346,6 @@
 					}
 				},
 				{
-					"filename": "shockEffect2.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 125,
-						"h": 125
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 125,
-						"h": 125
-					},
-					"frame": {
-						"x": 547,
-						"y": 761,
-						"w": 125,
-						"h": 125
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "shockEffect3.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 125,
-						"h": 125
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 125,
-						"h": 125
-					},
-					"frame": {
-						"x": 674,
-						"y": 780,
-						"w": 125,
-						"h": 125
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "shockEffect4.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 125,
-						"h": 125
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 125,
-						"h": 125
-					},
-					"frame": {
-						"x": 656,
-						"y": 907,
-						"w": 125,
-						"h": 125
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "shockEffect5.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 125,
-						"h": 125
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 125,
-						"h": 125
-					},
-					"frame": {
-						"x": 659,
-						"y": 1034,
-						"w": 125,
-						"h": 125
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "shockEffect6.png",
 					"rotated": false,
 					"trimmed": false,
@@ -2335,8 +2360,8 @@
 						"h": 125
 					},
 					"frame": {
-						"x": 801,
-						"y": 780,
+						"x": 783,
+						"y": 903,
 						"w": 125,
 						"h": 125
 					},
@@ -2360,8 +2385,8 @@
 						"h": 121
 					},
 					"frame": {
-						"x": 783,
-						"y": 907,
+						"x": 786,
+						"y": 1030,
 						"w": 121,
 						"h": 121
 					},
@@ -2385,60 +2410,10 @@
 						"h": 121
 					},
 					"frame": {
-						"x": 786,
-						"y": 1030,
+						"x": 790,
+						"y": 1153,
 						"w": 120,
 						"h": 121
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "shockEffect.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 125,
-						"h": 125
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 5,
-						"w": 111,
-						"h": 113
-					},
-					"frame": {
-						"x": 659,
-						"y": 1161,
-						"w": 111,
-						"h": 113
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "timeEffect.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 126,
-						"h": 126
-					},
-					"spriteSourceSize": {
-						"x": 19,
-						"y": 19,
-						"w": 88,
-						"h": 88
-					},
-					"frame": {
-						"x": 550,
-						"y": 1187,
-						"w": 88,
-						"h": 88
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2460,10 +2435,60 @@
 						"h": 97
 					},
 					"frame": {
-						"x": 906,
-						"y": 907,
+						"x": 812,
+						"y": 776,
 						"w": 71,
 						"h": 97
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "timeEffect.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 126,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 19,
+						"w": 88,
+						"h": 88
+					},
+					"frame": {
+						"x": 885,
+						"y": 619,
+						"w": 88,
+						"h": 88
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "blackCirclePlain.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 44,
+						"h": 44
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 44,
+						"h": 44
+					},
+					"frame": {
+						"x": 701,
+						"y": 446,
+						"w": 44,
+						"h": 44
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2485,8 +2510,8 @@
 						"h": 97
 					},
 					"frame": {
-						"x": 908,
-						"y": 1006,
+						"x": 885,
+						"y": 709,
 						"w": 71,
 						"h": 97
 					},
@@ -2510,8 +2535,8 @@
 						"h": 70
 					},
 					"frame": {
-						"x": 786,
-						"y": 1153,
+						"x": 885,
+						"y": 808,
 						"w": 81,
 						"h": 70
 					},
@@ -2526,6 +2551,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:65d8d60aa48410296054078fd7c5fce1:1a267b305daf63beb8e99f527e47fb29:c357989966e3ba71c701d894923dde60$"
+		"smartupdate": "$TexturePacker:SmartUpdate:3eba95af0af6fd44dcfc24625ac81356:34159105bd93d4cc7da841c5f28ede88:c357989966e3ba71c701d894923dde60$"
 	}
 }

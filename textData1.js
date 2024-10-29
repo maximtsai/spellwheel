@@ -787,9 +787,9 @@ let textData = {
     },
     "extras": {
         "en_us": "UNLOCKS",
-        "fr": "CRÉDITS",
-        "zh_tw": "制作名单",
-        "zh_cn": "制作名单",
+        "fr": "RÉALISATIONS",
+        "zh_tw": "成就",
+        "zh_cn": "成就",
         "ru": "",
         "es": "",
         "jp": "。"

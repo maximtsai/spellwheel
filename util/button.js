@@ -483,6 +483,7 @@ class Button {
         if (this.text) {
             this.text.setText(text);
         }
+        return this.text;
     }
 
     tweenToPos(x, y, duration, ease, onUpdate) {

@@ -297,10 +297,13 @@ function showMainMenuButtons() {
             }
         });
         globalObjects.levelSelectButton.setOrigin(0.5, 0.5);
-        globalObjects.levelSelectButton.addText(getLangText('lvl_select'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'left'})
+        let textObjSelect = globalObjects.levelSelectButton.addText(getLangText('lvl_select'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'left'})
         globalObjects.levelSelectButton.setStroke('#301010', 5)
         globalObjects.levelSelectButton.setTextOffset(-6, -8);
         globalObjects.levelSelectButton.setRotation(0.03)
+        if (language === 'fr') {
+            textObjSelect.setFontSize(23);
+        }
     }
     let yPos = (hasLvlSelect || hasContinue) ? gameConsts.halfHeight - 260 : gameConsts.halfHeight - 132;
     globalObjects.startButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 176, yPos + 38, 'misc', 'newgame.webp')
@@ -362,9 +365,10 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.startButton.setOrigin(0.5, 0.5);
-    let textObj = globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'germania', fontSize: 30, color: '#FFFF9F', align: 'left'});
-    // globalObjects.startButton.setStroke('#301010', 5)
-    textObj.setBlendMode(Phaser.BlendModes.SCREEN);
+    let textObj = globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'germania', fontSize: 30, color: '#FFFFFF', align: 'left'});
+    globalObjects.startButton.setTextOffset(-6, -2)
+    globalObjects.startButton.setStroke('#301010', 5)
+    // textObj.setBlendMode(Phaser.BlendModes.SCREEN);
     globalObjects.startButton.setRotation(-0.05)
     // globalObjects.startButton.setScale(0.9);
     globalObjects.startButton.isSolo = !hasLvlSelect && !hasContinue;
@@ -710,7 +714,7 @@ function showMainMenuButtons() {
     // globalObjects.lvl11Button.destroy();
     // globalObjects.lvl12Button.destroy();
     // globalObjects.lvl13Button.destroy();
-    globalObjects.creditsButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 225, gameConsts.halfHeight - 5, 'misc', 'newgame.webp');
+    globalObjects.creditsButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 225, gameConsts.halfHeight - 5, 'misc', 'creditsgame.webp');
     globalObjects.creditsButton = new Button({
         normal: {
             atlas: "pixels",
@@ -1187,13 +1191,13 @@ function showMainMenuButtons() {
     globalObjects.creditsButton.setStroke('#301010', 6)
     globalObjects.creditsButton.setRotation(-0.03)
 
-    globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 205, gameConsts.halfHeight - 65, 'misc', 'newgame.webp')
+    globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 217, gameConsts.halfHeight - 70, 'misc', 'wishlistgame.webp')
     globalObjects.extrasButton = new Button({
         normal: {
             atlas: "pixels",
             ref: "blank_pixel.png",
-            x: gameConsts.halfWidth + 205,
-            y: gameConsts.halfHeight - 65,
+            x: globalObjects.extrasButtonSprite.x,
+            y: globalObjects.extrasButtonSprite.y,
             alpha: 0.9,
             scaleX: 95,
             scaleY: 36
@@ -1233,8 +1237,11 @@ function showMainMenuButtons() {
             openUnlocks();
         }
     });
-    globalObjects.extrasButton.addText(getLangText('extras'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5);
-    globalObjects.extrasButton.setStroke('#301010', 6)
+    let textObjExtras = globalObjects.extrasButton.addText(getLangText('extras'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5);
+    globalObjects.extrasButton.setStroke('#301010', 6);
+    if (language === 'fr') {
+        textObjExtras.setFontSize(20);
+    }
     globalObjects.extrasButton.setRotation(-0.14)
 }
 
@@ -1246,13 +1253,27 @@ function updateMenuLanguage() {
         globalObjects.continueButton.setText(getLangText('cont_ui'))
     }
     if (globalObjects.levelSelectButton && !globalObjects.levelSelectButton.isDestroyed) {
-        globalObjects.levelSelectButton.setText(getLangText('lvl_select'))
+        let textObj = globalObjects.levelSelectButton.setText(getLangText('lvl_select'))
+        if (textObj) {
+            if (language === 'fr') {
+                textObj.setFontSize(23);
+            } else {
+                textObj.setFontSize(26);
+            }
+        }
     }
     if (globalObjects.creditsButton && !globalObjects.creditsButton.isDestroyed) {
         globalObjects.creditsButton.setText(getLangText('credits'))
     }
     if (globalObjects.extrasButton && !globalObjects.extrasButton.isDestroyed) {
-        globalObjects.extrasButton.setText(getLangText('extras'))
+        let textObj2 = globalObjects.extrasButton.setText(getLangText('extras'));
+        if (textObj2) {
+            if (language === 'fr') {
+                textObj2.setFontSize(20);
+            } else {
+                textObj2.setFontSize(26);
+            }
+        }
     }
 }
 
@@ -1604,7 +1625,7 @@ function closeLevelSelectScreen() {
 }
 
 function openWishlist() {
-    window.open('https://store.steampowered.com/app/3170660/Spellwheel/?beta=1', '_blank').focus();
+    window.open('https://store.steampowered.com/app/3170660/Spellwheel/', '_blank').focus();
 
 }
 

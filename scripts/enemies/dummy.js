@@ -79,6 +79,11 @@
      }
 
      initTutorial() {
+         gameVars.latestLevel = this.level - 1;
+         localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
+         gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
+         localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
+
         this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
         globalObjects.magicCircle.disableMovement();
         globalObjects.bannerTextManager.setDialog([getLangText('level1_diag_b')]);

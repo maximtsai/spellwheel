@@ -41,6 +41,10 @@ class Death3 extends Enemy {
             this.tweenHourglass();
             this.pullbackScale = 1;
             this.attackScale = 1;
+            // gameVars.latestLevel = this.level - 1;
+            // localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
+            gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
+            localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
         }, 10)
     }
 

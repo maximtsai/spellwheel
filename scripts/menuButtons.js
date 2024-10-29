@@ -4,7 +4,8 @@ function setupMainMenuBG() {
         globalObjects.menuBack.startScale = globalObjects.menuBack.scaleX;
         globalObjects.menuTop = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9).setScale(0.85);
         globalObjects.menuTop.startScale = globalObjects.menuTop.scaleX;
-        globalObjects.menuButtons = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_buttons.png').setDepth(-9).setScale(1);
+        let hasLvlSelect = gameVars.maxLevel >= 1;
+        globalObjects.menuButtons = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', hasLvlSelect ? 'menu_buttons_start.png' : 'menu_buttons.png').setDepth(-5).setScale(1);
     }
 }
 
@@ -186,10 +187,9 @@ function gotoMainMenuNoButtons() {
 }
 
 function showMainMenuButtons() {
-    let hasContinue = gameVars.latestLevel >= 1;
     let hasLvlSelect = gameVars.maxLevel >= 1;
 
-    if (hasContinue) {
+    if (hasLvlSelect) {
         globalObjects.continueButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 175, gameConsts.halfHeight - 132, 'misc', 'continuegame.webp')
         globalObjects.continueButton = new Button({
             normal: {
@@ -305,8 +305,21 @@ function showMainMenuButtons() {
             textObjSelect.setFontSize(23);
         }
     }
-    let yPos = (hasLvlSelect || hasContinue) ? gameConsts.halfHeight - 260 : gameConsts.halfHeight - 132;
-    globalObjects.startButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 176, yPos + 38, 'misc', 'newgame.webp')
+
+    let isSolo = !(hasLvlSelect);
+    let yPos = isSolo ? gameConsts.halfHeight - 122 : gameConsts.halfHeight - 260;
+    let xPos = isSolo ? gameConsts.halfWidth - 160 : gameConsts.halfWidth - 176;
+    globalObjects.startButtonSprite = PhaserScene.add.sprite(xPos, yPos + 38, 'misc', 'newgame.webp');
+    globalObjects.startButtonSprite.setScale(isSolo ? 1.1 : 1);
+    if (isSolo) {
+        globalObjects.startButtonSprite.setRotation(-0.14);
+        globalObjects.startButtonSprite.rotationOffset = -0.14;
+    } else {
+        globalObjects.startButtonSprite.setRotation(0);
+        globalObjects.startButtonSprite.rotationOffset = 0;
+    }
+
+
     globalObjects.startButton = new Button({
         normal: {
             atlas: "pixels",
@@ -332,21 +345,21 @@ function showMainMenuButtons() {
                 playSound('button_hover').detune = 0;
                 canvas.style.cursor = 'pointer';
             }
-            globalObjects.startButtonSprite.setScale(1.025);
-            globalObjects.startButtonSprite.setRotation(-0.03);
+            globalObjects.startButtonSprite.setScale(isSolo ? 1.125 : 1.025);
+            globalObjects.startButtonSprite.setRotation(-0.03 + globalObjects.startButtonSprite.rotationOffset);
         },
         onHoverOut: () => {
             if (canvas) {
                 canvas.style.cursor = 'default';
             }
-            globalObjects.startButtonSprite.setRotation(0.045);
+            globalObjects.startButtonSprite.setRotation(0.045 + globalObjects.startButtonSprite.rotationOffset);
             PhaserScene.tweens.add({
                 targets: globalObjects.startButtonSprite,
                 duration: 100,
-                scaleX: 1,
-                scaleY: 1,
+                scaleX: isSolo ? 1.1 : 1,
+                scaleY: isSolo ? 1.1 : 1,
                 easeParams: [3],
-                rotation: 0,
+                rotation: globalObjects.startButtonSprite.rotationOffset,
                 ease: 'Bounce.easeOut',
             });
         },
@@ -369,14 +382,18 @@ function showMainMenuButtons() {
     globalObjects.startButton.setTextOffset(-6, -2)
     globalObjects.startButton.setStroke('#301010', 5)
     // textObj.setBlendMode(Phaser.BlendModes.SCREEN);
-    globalObjects.startButton.setRotation(-0.05)
+    globalObjects.startButton.setRotation(-0.05 + (isSolo ? -0.14 : 0))
     // globalObjects.startButton.setScale(0.9);
-    globalObjects.startButton.isSolo = !hasLvlSelect && !hasContinue;
-    if (globalObjects.startButton.isSolo) {
+    globalObjects.startButton.isSolo = isSolo;
+
+    if (isSolo) {
+        globalObjects.menuButtons.setFrame('menu_buttons_start.png')
         setTimeout(() => {
-            let flash = PhaserScene.add.sprite(gameConsts.halfWidth, globalObjects.startButton.getYPos(), 'shields', 'btnFlash12.png').setScale(1.12).setDepth(100).play('btnFlash');
-            globalObjects.startButton.addToDestructibles(flash)
+            // let flash = PhaserScene.add.sprite(gameConsts.halfWidth, globalObjects.startButton.getYPos(), 'shields', 'btnFlash12.png').setScale(1.12).setDepth(100).play('btnFlash');
+            // globalObjects.startButton.addToDestructibles(flash)
         }, 850)
+    } else {
+        globalObjects.menuButtons.setFrame('menu_buttons.png')
     }
 
     let hideCheatConst = 0;
@@ -1381,7 +1398,8 @@ function showLevelSelectScreen(){
     })
 
     let listOfBtns = [];
-    let maxLevel = Math.min(gameVars.maxLevel + 1, 14);
+
+    let maxLevel = Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel , 14));
     for (let i = 1; i <= maxLevel; i++) {
         let xPos = positionsX[i - 1];
         let yPos = positionsY[i - 1];

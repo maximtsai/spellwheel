@@ -418,6 +418,9 @@
              onRepeat: () => {
                  if (this.pulseFinalEnabled) {
                      let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 1550);
+                     setTimeout(() => {
+                         playSound('heartbeatfast', 0.8).seek(0.28).detune = -750;
+                     }, 10)
                      tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(0.53).setRotation(0);
                      this.addTween({
                          targets: tempPulse,

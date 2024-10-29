@@ -2363,7 +2363,11 @@ class Enemy {
                 }
             }
         }
-        return PhaserScene.tweens.add(param);
+        let tweenObj = PhaserScene.tweens.add(param);
+        if (param.repeat === -1 || param.repeat > 20) {
+            this.addToDestructibles(tweenObj)
+        }
+        return tweenObj;
     }
 
     addText(x, y, text, param1, param2) {

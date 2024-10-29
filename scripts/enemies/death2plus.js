@@ -17,7 +17,7 @@
              onComplete: () => {
                  this.bgBlur.currAnim = this.addTween({
                      targets: this.bgBlur,
-                     alpha: 0.24,
+                     alpha: 0.38,
                      scaleX: 2.64,
                      scaleY: 2.64,
                      ease: 'Quad.easeInOut',
@@ -271,7 +271,7 @@
                              onComplete: () => {
                                  this.bgBlur.currAnim = this.addTween({
                                      targets: this.bgBlur,
-                                     alpha: 0.24,
+                                     alpha: 0.3,
                                      scaleX: 2.64,
                                      scaleY: 2.64,
                                      ease: 'Quad.easeInOut',
@@ -418,7 +418,7 @@
              onRepeat: () => {
                  if (this.pulseFinalEnabled) {
                      let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 1550);
-                     tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(0.6).setRotation(0);
+                     tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(0.53).setRotation(0);
                      this.addTween({
                          targets: tempPulse,
                          scaleX: 8,
@@ -1882,6 +1882,19 @@
          if (this.currentPowerText) {
              this.currentPowerText.visible = false;
          }
+         if (this.playerSpellCastSub) {
+             this.playerSpellCastSub.unsubscribe();
+             this.playerSpellCastSub = null;
+             messageBus.publish("closeCombatText")
+         }
+         if (this.spellAbsorber) {
+             this.spellAbsorber.unsubscribe();
+             this.spellAbsorber = null;
+         }
+        if (this.currentPowerHand) {
+            this.currentPowerHand.visible = false;
+        }
+
          this.healFromAttacks = false;
          this.interruptCurrentAttack();
          this.clearHandObjects();
@@ -3596,6 +3609,9 @@
              playSound('void_strike_hit', 0.4)
          }, 150)
          this.currentPowerHand = this.addImage(gameConsts.halfWidth + 35, this.y - 52, 'deathfinal', 'okay_glow.png').setAlpha(0).setScale(0.7);
+         if (this.currentPowerText) {
+             this.currentPowerText.destroy();
+         }
          this.currentPowerText = this.addBitmapText(gameConsts.halfWidth, this.currentPowerHand.y - 31, 'heal', "", 40, 1).setAlpha(0).setDepth(50).setOrigin(0.5, 0.5);
          this.currentPowerText.startY = this.currentPowerText.y;
          this.currentPowerExtra = this.addImage(gameConsts.halfWidth, this.y + 10, 'blurry', 'green_star.webp').setAlpha(0).setRotation(Math.PI * 0.25);

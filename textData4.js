@@ -515,10 +515,28 @@ let textData4 = {
         "jp": ""
     },
     "statue_info_b": {
-        "en_us": "It fully blocks strong attacks, yet\nbreaks after multiple weak hits.",
+        "en_us": "It can block strong attacks, yet\nbreaks with multiple weak hits.",
         "fr": "Il bloque les attaques puissantes, mais\nse brise sous de faibles coups répétés",
         "zh_tw": "它能完全阻擋強力的攻擊，\n但卻容易多次弱勢攻擊擊破。",
         "zh_cn": "它能完全阻挡强力的攻击，\n但却容易多次弱势攻击击破。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "statue_info_a2": {
+        "en_us": "What a weak shield.",
+        "fr": "Quel bouclier faible.",
+        "zh_tw": "多麼脆弱的護盾。",
+        "zh_cn": "多么脆弱的护盾。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "statue_info_b2": {
+        "en_us": "It is already crumbling from just\na single flurry of my attacks.",
+        "fr": "Il est déjà en train de s'effondrer\nà cause d'une seule de mes attaques.",
+        "zh_tw": "從我的一次猛烈攻擊下，\n它就快崩塌了。",
+        "zh_cn": "从我的一次猛烈攻击下，\n它就快崩塌了。",
         "ru": "",
         "es": "",
         "jp": ""

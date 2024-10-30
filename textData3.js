@@ -280,7 +280,7 @@ let textData3 = {
         "jp": ""
     },
     "death_statue1": {
-        "en_us": "AH, SO THIS IS WHERE\nI LEFT THIS OLD BOULDER...",
+        "en_us": "AH, SO THIS IS WHERE\nI LEFT THE OLD BOULDER...",
         "fr": "AH, ALORS C'EST LÀ QUE\nJ'AI LAISSÉ CE VIEUX ROCHER...",
         "zh_tw": "啊，原來我把這塊\n老石頭留在這裡。",
         "zh_cn": "啊，原来我把这块\n老石头留在这里。",

@@ -1389,7 +1389,6 @@ function showLevelSelectScreen(){
 function showWishlistPage() {
     // globalObjects.encyclopedia.hideButton();
     // globalObjects.options.hideButton();
-    globalObjects.magicCircle.disableMovement();
     let clickBlock = new Button({
         normal: {
             ref: "blackPixel",
@@ -1434,13 +1433,15 @@ function showWishlistPage() {
             atlas: 'ending',
             ref: "wishlist.png",
             alpha: 0.95,
-            scaleX: 0.99,
-            scaleY: 0.99,
+            scaleX: 1,
+            scaleY: 1,
             x: gameConsts.halfWidth,
             y: gameConsts.halfHeight - 35,
         },
         hover: {
             alpha: 1,
+            scaleX: 1.01,
+            scaleY: 1.01,
             atlas: 'ending',
             ref: "wishlist.png",
         },
@@ -1525,7 +1526,6 @@ function showWishlistPage() {
 
             // globalObjects.encyclopedia.showButton();
             // globalObjects.options.showButton();
-            globalObjects.magicCircle.enableMovement();
             this.closeButton.destroy();
             this.wishlistButton.destroy();
             if (canvas) {

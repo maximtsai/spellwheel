@@ -4,8 +4,8 @@
 			"image": "sprites/misc-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2033,
-				"h": 2021
+				"w": 2039,
+				"h": 2032
 			},
 			"scale": 1,
 			"frames": [
@@ -110,31 +110,6 @@
 					}
 				},
 				{
-					"filename": "scythebroke.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 850,
-						"h": 900
-					},
-					"spriteSourceSize": {
-						"x": 165,
-						"y": 0,
-						"w": 256,
-						"h": 505
-					},
-					"frame": {
-						"x": 1776,
-						"y": 1,
-						"w": 256,
-						"h": 505
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "locket_broken.png",
 					"rotated": false,
 					"trimmed": true,
@@ -160,6 +135,31 @@
 					}
 				},
 				{
+					"filename": "locketwhite.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 547,
+						"h": 423
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 37,
+						"w": 407,
+						"h": 356
+					},
+					"frame": {
+						"x": 1,
+						"y": 1675,
+						"w": 407,
+						"h": 356
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "announceBg.png",
 					"rotated": false,
 					"trimmed": true,
@@ -174,8 +174,8 @@
 						"h": 167
 					},
 					"frame": {
-						"x": 1,
-						"y": 1675,
+						"x": 1189,
+						"y": 433,
 						"w": 600,
 						"h": 167
 					},
@@ -185,24 +185,24 @@
 					}
 				},
 				{
-					"filename": "shadow_bar.png",
+					"filename": "scythebroke.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 250,
-						"h": 550
+						"w": 850,
+						"h": 900
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 49,
-						"w": 250,
-						"h": 501
+						"x": 165,
+						"y": 0,
+						"w": 256,
+						"h": 505
 					},
 					"frame": {
 						"x": 490,
 						"y": 650,
-						"w": 250,
-						"h": 501
+						"w": 256,
+						"h": 505
 					},
 					"anchor": {
 						"x": 0.5,
@@ -224,35 +224,10 @@
 						"h": 417
 					},
 					"frame": {
-						"x": 742,
+						"x": 748,
 						"y": 590,
 						"w": 406,
 						"h": 417
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "locketwhite.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 547,
-						"h": 423
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 37,
-						"w": 407,
-						"h": 356
-					},
-					"frame": {
-						"x": 1189,
-						"y": 433,
-						"w": 407,
-						"h": 356
 					},
 					"anchor": {
 						"x": 0.5,
@@ -274,8 +249,8 @@
 						"h": 407
 					},
 					"frame": {
-						"x": 1150,
-						"y": 791,
+						"x": 1156,
+						"y": 602,
 						"w": 352,
 						"h": 407
 					},
@@ -299,8 +274,8 @@
 						"h": 407
 					},
 					"frame": {
-						"x": 1504,
-						"y": 791,
+						"x": 1510,
+						"y": 602,
 						"w": 352,
 						"h": 407
 					},
@@ -310,24 +285,24 @@
 					}
 				},
 				{
-					"filename": "battletext_border_bot.png",
+					"filename": "shadow_bar.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 480,
-						"h": 15
+						"w": 250,
+						"h": 550
 					},
 					"spriteSourceSize": {
-						"x": 3,
-						"y": 7,
-						"w": 474,
-						"h": 8
+						"x": 0,
+						"y": 49,
+						"w": 250,
+						"h": 501
 					},
 					"frame": {
-						"x": 1,
-						"y": 1844,
-						"w": 474,
-						"h": 8
+						"x": 547,
+						"y": 1157,
+						"w": 250,
+						"h": 501
 					},
 					"anchor": {
 						"x": 0.5,
@@ -335,149 +310,24 @@
 					}
 				},
 				{
-					"filename": "battletext_border_top.png",
+					"filename": "shadow_circle.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 480,
-						"h": 15
+						"w": 250,
+						"h": 300
 					},
 					"spriteSourceSize": {
-						"x": 3,
+						"x": 0,
 						"y": 0,
-						"w": 474,
-						"h": 8
+						"w": 250,
+						"h": 300
 					},
 					"frame": {
-						"x": 1,
-						"y": 1854,
-						"w": 474,
-						"h": 8
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "swipe.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 328,
-						"h": 350
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 9,
-						"w": 327,
-						"h": 341
-					},
-					"frame": {
-						"x": 742,
-						"y": 1009,
-						"w": 327,
-						"h": 341
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "complete.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 365,
-						"h": 58
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 0,
-						"w": 357,
-						"h": 58
-					},
-					"frame": {
-						"x": 1,
-						"y": 1864,
-						"w": 357,
-						"h": 58
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "scythe4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 638,
-						"h": 675
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 5,
-						"w": 313,
-						"h": 362
-					},
-					"frame": {
-						"x": 1071,
-						"y": 1200,
-						"w": 313,
-						"h": 362
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "scythe5.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 638,
-						"h": 675
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 5,
-						"w": 313,
-						"h": 362
-					},
-					"frame": {
-						"x": 1071,
-						"y": 1200,
-						"w": 313,
-						"h": 362
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "scythe6.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 638,
-						"h": 675
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 5,
-						"w": 313,
-						"h": 362
-					},
-					"frame": {
-						"x": 1071,
-						"y": 1200,
-						"w": 313,
-						"h": 362
+						"x": 1776,
+						"y": 1,
+						"w": 250,
+						"h": 300
 					},
 					"anchor": {
 						"x": 0.5,
@@ -499,8 +349,8 @@
 						"h": 366
 					},
 					"frame": {
-						"x": 1386,
-						"y": 1200,
+						"x": 799,
+						"y": 1009,
 						"w": 311,
 						"h": 366
 					},
@@ -524,8 +374,8 @@
 						"h": 366
 					},
 					"frame": {
-						"x": 1386,
-						"y": 1200,
+						"x": 799,
+						"y": 1009,
 						"w": 311,
 						"h": 366
 					},
@@ -549,35 +399,10 @@
 						"h": 366
 					},
 					"frame": {
-						"x": 1699,
-						"y": 1200,
+						"x": 1112,
+						"y": 1011,
 						"w": 311,
 						"h": 366
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "shadow_circle.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 250,
-						"h": 300
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 250,
-						"h": 300
-					},
-					"frame": {
-						"x": 547,
-						"y": 1352,
-						"w": 250,
-						"h": 300
 					},
 					"anchor": {
 						"x": 0.5,
@@ -599,35 +424,10 @@
 						"h": 366
 					},
 					"frame": {
-						"x": 603,
-						"y": 1654,
+						"x": 1425,
+						"y": 1011,
 						"w": 311,
 						"h": 366
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "scythepiece.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 290,
-						"h": 303
-					},
-					"spriteSourceSize": {
-						"x": 10,
-						"y": 36,
-						"w": 237,
-						"h": 257
-					},
-					"frame": {
-						"x": 799,
-						"y": 1352,
-						"w": 237,
-						"h": 257
 					},
 					"anchor": {
 						"x": 0.5,
@@ -649,10 +449,110 @@
 						"h": 356
 					},
 					"frame": {
-						"x": 916,
-						"y": 1611,
+						"x": 799,
+						"y": 1377,
 						"w": 304,
 						"h": 356
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "swipe.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 328,
+						"h": 350
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 9,
+						"w": 327,
+						"h": 341
+					},
+					"frame": {
+						"x": 1105,
+						"y": 1379,
+						"w": 327,
+						"h": 341
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "scythe4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 638,
+						"h": 675
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 313,
+						"h": 362
+					},
+					"frame": {
+						"x": 1434,
+						"y": 1379,
+						"w": 313,
+						"h": 362
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "scythe5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 638,
+						"h": 675
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 313,
+						"h": 362
+					},
+					"frame": {
+						"x": 1434,
+						"y": 1379,
+						"w": 313,
+						"h": 362
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "scythe6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 638,
+						"h": 675
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 313,
+						"h": 362
+					},
+					"frame": {
+						"x": 1434,
+						"y": 1379,
+						"w": 313,
+						"h": 362
 					},
 					"anchor": {
 						"x": 0.5,
@@ -674,8 +574,8 @@
 						"h": 355
 					},
 					"frame": {
-						"x": 1222,
-						"y": 1568,
+						"x": 410,
+						"y": 1675,
 						"w": 300,
 						"h": 355
 					},
@@ -699,8 +599,8 @@
 						"h": 355
 					},
 					"frame": {
-						"x": 1524,
-						"y": 1568,
+						"x": 1738,
+						"y": 1011,
 						"w": 295,
 						"h": 355
 					},
@@ -710,74 +610,24 @@
 					}
 				},
 				{
-					"filename": "black_circle.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 180,
-						"h": 180
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 180,
-						"h": 180
-					},
-					"frame": {
-						"x": 1821,
-						"y": 1568,
-						"w": 180,
-						"h": 180
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "victory_text.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 297,
-						"h": 54
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 297,
-						"h": 54
-					},
-					"frame": {
-						"x": 1,
-						"y": 1924,
-						"w": 297,
-						"h": 54
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "newgame_hover.webp",
+					"filename": "scythepiece.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 264,
-						"h": 110
+						"w": 290,
+						"h": 303
 					},
 					"spriteSourceSize": {
-						"x": 14,
-						"y": 18,
-						"w": 242,
-						"h": 89
+						"x": 10,
+						"y": 36,
+						"w": 237,
+						"h": 257
 					},
 					"frame": {
-						"x": 490,
-						"y": 1153,
-						"w": 242,
-						"h": 89
+						"x": 1749,
+						"y": 1368,
+						"w": 237,
+						"h": 257
 					},
 					"anchor": {
 						"x": 0.5,
@@ -785,49 +635,24 @@
 					}
 				},
 				{
-					"filename": "newgame_press.webp",
+					"filename": "heal.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 264,
-						"h": 110
+						"w": 290,
+						"h": 204
 					},
 					"spriteSourceSize": {
-						"x": 14,
-						"y": 18,
-						"w": 242,
-						"h": 89
+						"x": 4,
+						"y": 21,
+						"w": 279,
+						"h": 175
 					},
 					"frame": {
-						"x": 490,
-						"y": 1153,
-						"w": 242,
-						"h": 89
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "selectgame.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 229,
-						"h": 102
-					},
-					"spriteSourceSize": {
-						"x": 11,
-						"y": 15,
-						"w": 211,
-						"h": 63
-					},
-					"frame": {
-						"x": 1821,
-						"y": 1750,
-						"w": 211,
-						"h": 63
+						"x": 712,
+						"y": 1735,
+						"w": 279,
+						"h": 175
 					},
 					"anchor": {
 						"x": 0.5,
@@ -849,8 +674,8 @@
 						"h": 89
 					},
 					"frame": {
-						"x": 1222,
-						"y": 1925,
+						"x": 712,
+						"y": 1912,
 						"w": 251,
 						"h": 89
 					},
@@ -874,8 +699,8 @@
 						"h": 89
 					},
 					"frame": {
-						"x": 1222,
-						"y": 1925,
+						"x": 712,
+						"y": 1912,
 						"w": 251,
 						"h": 89
 					},
@@ -899,10 +724,85 @@
 						"h": 89
 					},
 					"frame": {
-						"x": 1222,
-						"y": 1925,
+						"x": 712,
+						"y": 1912,
 						"w": 251,
 						"h": 89
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "newgame_hover.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 264,
+						"h": 110
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 18,
+						"w": 242,
+						"h": 89
+					},
+					"frame": {
+						"x": 1776,
+						"y": 303,
+						"w": 242,
+						"h": 89
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "newgame_press.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 264,
+						"h": 110
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 18,
+						"w": 242,
+						"h": 89
+					},
+					"frame": {
+						"x": 1776,
+						"y": 303,
+						"w": 242,
+						"h": 89
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "black_circle.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 180,
+						"h": 180
+					},
+					"frame": {
+						"x": 1791,
+						"y": 394,
+						"w": 180,
+						"h": 180
 					},
 					"anchor": {
 						"x": 0.5,
@@ -924,8 +824,8 @@
 						"h": 94
 					},
 					"frame": {
-						"x": 1475,
-						"y": 1925,
+						"x": 1749,
+						"y": 1627,
 						"w": 221,
 						"h": 94
 					},
@@ -949,8 +849,8 @@
 						"h": 94
 					},
 					"frame": {
-						"x": 1475,
-						"y": 1925,
+						"x": 1749,
+						"y": 1627,
 						"w": 221,
 						"h": 94
 					},
@@ -960,24 +860,24 @@
 					}
 				},
 				{
-					"filename": "newgame.webp",
+					"filename": "victory_text.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 264,
-						"h": 110
+						"w": 297,
+						"h": 54
 					},
 					"spriteSourceSize": {
-						"x": 28,
-						"y": 17,
-						"w": 201,
-						"h": 81
+						"x": 0,
+						"y": 0,
+						"w": 297,
+						"h": 54
 					},
 					"frame": {
-						"x": 1821,
-						"y": 1815,
-						"w": 201,
-						"h": 81
+						"x": 1105,
+						"y": 1722,
+						"w": 297,
+						"h": 54
 					},
 					"anchor": {
 						"x": 0.5,
@@ -985,24 +885,74 @@
 					}
 				},
 				{
-					"filename": "heal.png",
+					"filename": "complete.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 290,
-						"h": 204
+						"w": 365,
+						"h": 58
 					},
 					"spriteSourceSize": {
-						"x": 4,
-						"y": 21,
-						"w": 279,
-						"h": 175
+						"x": 3,
+						"y": 0,
+						"w": 357,
+						"h": 58
 					},
 					"frame": {
-						"x": 1598,
-						"y": 508,
-						"w": 279,
-						"h": 175
+						"x": 1404,
+						"y": 1743,
+						"w": 357,
+						"h": 58
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "battletext_border_bot.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 480,
+						"h": 15
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 7,
+						"w": 474,
+						"h": 8
+					},
+					"frame": {
+						"x": 712,
+						"y": 2003,
+						"w": 474,
+						"h": 8
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "battletext_border_top.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 480,
+						"h": 15
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 0,
+						"w": 474,
+						"h": 8
+					},
+					"frame": {
+						"x": 712,
+						"y": 2013,
+						"w": 474,
+						"h": 8
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1024,235 +974,10 @@
 						"h": 72
 					},
 					"frame": {
-						"x": 1598,
-						"y": 685,
+						"x": 1763,
+						"y": 1723,
 						"w": 228,
 						"h": 72
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "miniscythe.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 119,
-						"h": 122
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 119,
-						"h": 118
-					},
-					"frame": {
-						"x": 1879,
-						"y": 508,
-						"w": 119,
-						"h": 118
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "creditsgame.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 149,
-						"h": 77
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 3,
-						"w": 144,
-						"h": 72
-					},
-					"frame": {
-						"x": 1598,
-						"y": 433,
-						"w": 144,
-						"h": 72
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "victory_banner.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 10,
-						"h": 200
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 3,
-						"w": 10,
-						"h": 197
-					},
-					"frame": {
-						"x": 1150,
-						"y": 590,
-						"w": 10,
-						"h": 197
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "wishlistgame.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 139,
-						"h": 92
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 4,
-						"w": 129,
-						"h": 84
-					},
-					"frame": {
-						"x": 1698,
-						"y": 1925,
-						"w": 129,
-						"h": 84
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "green_circle.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 120,
-						"h": 120
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 118,
-						"h": 118
-					},
-					"frame": {
-						"x": 1829,
-						"y": 1898,
-						"w": 118,
-						"h": 118
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "creditsgame_hover.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 149,
-						"h": 77
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 3,
-						"w": 144,
-						"h": 72
-					},
-					"frame": {
-						"x": 547,
-						"y": 1244,
-						"w": 144,
-						"h": 72
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "creditsgame_press.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 149,
-						"h": 77
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 3,
-						"w": 144,
-						"h": 72
-					},
-					"frame": {
-						"x": 547,
-						"y": 1244,
-						"w": 144,
-						"h": 72
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "wishlistgame_hover.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 139,
-						"h": 92
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 4,
-						"w": 129,
-						"h": 84
-					},
-					"frame": {
-						"x": 1879,
-						"y": 628,
-						"w": 129,
-						"h": 84
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "wishlistgame_press.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 139,
-						"h": 92
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 4,
-						"w": 129,
-						"h": 84
-					},
-					"frame": {
-						"x": 1879,
-						"y": 628,
-						"w": 129,
-						"h": 84
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1274,8 +999,8 @@
 						"h": 72
 					},
 					"frame": {
-						"x": 360,
-						"y": 1864,
+						"x": 1763,
+						"y": 1797,
 						"w": 228,
 						"h": 72
 					},
@@ -1299,8 +1024,8 @@
 						"h": 72
 					},
 					"frame": {
-						"x": 360,
-						"y": 1864,
+						"x": 1763,
+						"y": 1797,
 						"w": 228,
 						"h": 72
 					},
@@ -1310,24 +1035,24 @@
 					}
 				},
 				{
-					"filename": "dizzy_3.png",
+					"filename": "victory_banner.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 95,
-						"h": 94
+						"w": 10,
+						"h": 200
 					},
 					"spriteSourceSize": {
-						"x": 5,
-						"y": 5,
-						"w": 80,
-						"h": 86
+						"x": 0,
+						"y": 3,
+						"w": 10,
+						"h": 197
 					},
 					"frame": {
-						"x": 1949,
-						"y": 1898,
-						"w": 80,
-						"h": 86
+						"x": 2028,
+						"y": 1,
+						"w": 10,
+						"h": 197
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1335,24 +1060,49 @@
 					}
 				},
 				{
-					"filename": "angrybig1.png",
+					"filename": "miniscythe.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 76,
-						"h": 80
+						"w": 119,
+						"h": 122
 					},
 					"spriteSourceSize": {
-						"x": 5,
-						"y": 2,
-						"w": 70,
-						"h": 77
+						"x": 0,
+						"y": 0,
+						"w": 119,
+						"h": 118
 					},
 					"frame": {
-						"x": 1071,
-						"y": 1009,
-						"w": 70,
-						"h": 77
+						"x": 1864,
+						"y": 576,
+						"w": 119,
+						"h": 118
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "green_circle.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 120,
+						"h": 120
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 118,
+						"h": 118
+					},
+					"frame": {
+						"x": 1864,
+						"y": 696,
+						"w": 118,
+						"h": 118
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1374,10 +1124,85 @@
 						"h": 118
 					},
 					"frame": {
-						"x": 1858,
-						"y": 714,
+						"x": 1864,
+						"y": 816,
 						"w": 118,
 						"h": 118
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "selectgame.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 229,
+						"h": 102
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 4,
+						"w": 201,
+						"h": 93
+					},
+					"frame": {
+						"x": 1188,
+						"y": 1778,
+						"w": 201,
+						"h": 93
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "newgame.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 264,
+						"h": 110
+					},
+					"spriteSourceSize": {
+						"x": 28,
+						"y": 17,
+						"w": 201,
+						"h": 81
+					},
+					"frame": {
+						"x": 1391,
+						"y": 1803,
+						"w": 201,
+						"h": 81
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "creditsgame.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 149,
+						"h": 77
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 3,
+						"w": 144,
+						"h": 72
+					},
+					"frame": {
+						"x": 1594,
+						"y": 1803,
+						"w": 144,
+						"h": 72
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1399,8 +1224,8 @@
 						"h": 93
 					},
 					"frame": {
-						"x": 1858,
-						"y": 834,
+						"x": 993,
+						"y": 1735,
 						"w": 102,
 						"h": 93
 					},
@@ -1410,24 +1235,24 @@
 					}
 				},
 				{
-					"filename": "dizzy_1.png",
+					"filename": "creditsgame_hover.webp",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 87,
-						"h": 85
+						"w": 149,
+						"h": 77
 					},
 					"spriteSourceSize": {
-						"x": 4,
-						"y": 1,
-						"w": 80,
-						"h": 81
+						"x": 2,
+						"y": 3,
+						"w": 144,
+						"h": 72
 					},
 					"frame": {
-						"x": 1858,
-						"y": 929,
-						"w": 80,
-						"h": 81
+						"x": 1864,
+						"y": 936,
+						"w": 144,
+						"h": 72
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1435,24 +1260,99 @@
 					}
 				},
 				{
-					"filename": "bone2.png",
+					"filename": "creditsgame_press.webp",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 50,
-						"h": 46
+						"w": 149,
+						"h": 77
 					},
 					"spriteSourceSize": {
-						"x": 3,
-						"y": 1,
-						"w": 47,
-						"h": 45
+						"x": 2,
+						"y": 3,
+						"w": 144,
+						"h": 72
 					},
 					"frame": {
-						"x": 693,
-						"y": 1244,
-						"w": 47,
-						"h": 45
+						"x": 1864,
+						"y": 936,
+						"w": 144,
+						"h": 72
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "wishlistgame.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 139,
+						"h": 92
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 4,
+						"w": 129,
+						"h": 84
+					},
+					"frame": {
+						"x": 993,
+						"y": 1830,
+						"w": 129,
+						"h": 84
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "wishlistgame_hover.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 139,
+						"h": 92
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 4,
+						"w": 129,
+						"h": 84
+					},
+					"frame": {
+						"x": 965,
+						"y": 1916,
+						"w": 129,
+						"h": 84
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "wishlistgame_press.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 139,
+						"h": 92
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 4,
+						"w": 129,
+						"h": 84
+					},
+					"frame": {
+						"x": 965,
+						"y": 1916,
+						"w": 129,
+						"h": 84
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1524,10 +1424,110 @@
 						"h": 4
 					},
 					"frame": {
-						"x": 799,
-						"y": 1611,
+						"x": 547,
+						"y": 1660,
 						"w": 106,
 						"h": 4
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dizzy_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 87,
+						"h": 85
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 1,
+						"w": 80,
+						"h": 81
+					},
+					"frame": {
+						"x": 1096,
+						"y": 1916,
+						"w": 80,
+						"h": 81
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dizzy_3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 95,
+						"h": 94
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 5,
+						"w": 80,
+						"h": 86
+					},
+					"frame": {
+						"x": 1178,
+						"y": 1873,
+						"w": 80,
+						"h": 86
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "angrybig1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 76,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 2,
+						"w": 70,
+						"h": 77
+					},
+					"frame": {
+						"x": 1260,
+						"y": 1873,
+						"w": 70,
+						"h": 77
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bone2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 46
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 1,
+						"w": 47,
+						"h": 45
+					},
+					"frame": {
+						"x": 490,
+						"y": 1157,
+						"w": 47,
+						"h": 45
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1549,8 +1549,8 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 916,
-						"y": 1969,
+						"x": 748,
+						"y": 1009,
 						"w": 46,
 						"h": 43
 					},
@@ -1574,8 +1574,8 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 300,
-						"y": 1924,
+						"x": 1988,
+						"y": 1368,
 						"w": 44,
 						"h": 42
 					},
@@ -1599,8 +1599,8 @@
 						"h": 48
 					},
 					"frame": {
-						"x": 1038,
-						"y": 1352,
+						"x": 1973,
+						"y": 394,
 						"w": 24,
 						"h": 48
 					},
@@ -1624,8 +1624,8 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 2012,
-						"y": 508,
+						"x": 1740,
+						"y": 1803,
 						"w": 20,
 						"h": 42
 					},
@@ -1801,6 +1801,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:1a50a989797913bb837679db70ea1c7c:7b3bab7319364067530585d3782fa7ca:71b7deba37d49c4a400e3c6826b292e5$"
+		"smartupdate": "$TexturePacker:SmartUpdate:e3b29f6bf035464b6f26e78b3e88811d:7f451c1c9d835ab56d93dc0f6d8c8087:71b7deba37d49c4a400e3c6826b292e5$"
 	}
 }

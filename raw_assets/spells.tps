@@ -465,6 +465,7 @@
             <key type="filename">spells/damageEffect6.png</key>
             <key type="filename">spells/damageEffect7.png</key>
             <key type="filename">spells/damageEffect8.png</key>
+            <key type="filename">spells/damageEffect9.png</key>
             <key type="filename">spells/damageEffectShort0.png</key>
             <key type="filename">spells/damageEffectShort1.png</key>
             <key type="filename">spells/damageEffectShort2.png</key>

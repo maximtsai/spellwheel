@@ -47,7 +47,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 300 : 280;
+         this.health = gameVars.isHardMode ? 300 : 275;
          this.isAsleep = true;
          this.attackScale = 1;
          this.pullbackScale = 1;
@@ -81,7 +81,7 @@
                 duration: 400,
                 completeDelay: 250,
                 onComplete: () => {
-                    playSound('matter_enhance', 0.45);
+                    playSound('matter_enhance_2', 0.3).detune = -750;
                     playSound("whoosh");
                     this.addTween({
                         targets: this.sprite,
@@ -205,10 +205,14 @@
              messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y - 15, '-BROKE-', 1.2, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.25, scaleY: 1.25, ease: 'Back.easeOut'});
              this.clearHandShield(true);
          } else {
-            if (this.shieldAmts == 4 || (this.canShowEarlyInfo && this.shieldAmts <= (gameVars.isHardMode ? 8 : 6))) {
+            if (this.shieldAmts === 2 || (this.canShowEarlyInfo && this.shieldAmts <= (gameVars.isHardMode ? 8 : 6))) {
                 if (!this.shownInfo) {
                     this.shownInfo = true;
-                    globalObjects.bannerTextManager.setDialog([getLangText('statue_info_a'), getLangText('statue_info_b')]);
+                    if (this.shieldAmts === 2) {
+                        globalObjects.bannerTextManager.setDialog([getLangText('statue_info_a2'), getLangText('statue_info_b2')]);
+                    } else {
+                        globalObjects.bannerTextManager.setDialog([getLangText('statue_info_a'), getLangText('statue_info_b')]);
+                    }
                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
                     globalObjects.bannerTextManager.showBanner(0.5);
                     globalObjects.bannerTextManager.setOnFinishFunc(() => {

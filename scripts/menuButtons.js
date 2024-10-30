@@ -1130,7 +1130,6 @@ function showMainMenuButtons() {
                 creditsPaper.destroy();
                 bookButton.destroy();
                 creditsText2.destroy();
-                artbook.destroy();
                 tab1.destroy();
                 tab2.destroy();
                 tab1Icon.destroy();
@@ -1187,7 +1186,6 @@ function showMainMenuButtons() {
                     creditsPaper.destroy();
                     bookButton.destroy();
                     creditsText2.destroy();
-                    artbook.destroy();
                     tab1.destroy();
                     tab2.destroy();
                     tab1Icon.destroy();

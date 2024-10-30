@@ -4,7 +4,7 @@
 			"image": "sprites/misc-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2039,
+				"w": 2034,
 				"h": 2032
 			},
 			"scale": 1,
@@ -152,6 +152,31 @@
 						"x": 1,
 						"y": 1675,
 						"w": 407,
+						"h": 356
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "scythe3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 638,
+						"h": 675
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 11,
+						"w": 304,
+						"h": 356
+					},
+					"frame": {
+						"x": 410,
+						"y": 1675,
+						"w": 304,
 						"h": 356
 					},
 					"anchor": {
@@ -435,7 +460,7 @@
 					}
 				},
 				{
-					"filename": "scythe3.png",
+					"filename": "scytheflash4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -443,16 +468,16 @@
 						"h": 675
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 11,
-						"w": 304,
-						"h": 356
+						"x": 4,
+						"y": 12,
+						"w": 300,
+						"h": 355
 					},
 					"frame": {
 						"x": 799,
 						"y": 1377,
-						"w": 304,
-						"h": 356
+						"w": 300,
+						"h": 355
 					},
 					"anchor": {
 						"x": 0.5,
@@ -474,7 +499,7 @@
 						"h": 341
 					},
 					"frame": {
-						"x": 1105,
+						"x": 1101,
 						"y": 1379,
 						"w": 327,
 						"h": 341
@@ -499,7 +524,7 @@
 						"h": 362
 					},
 					"frame": {
-						"x": 1434,
+						"x": 1430,
 						"y": 1379,
 						"w": 313,
 						"h": 362
@@ -524,7 +549,7 @@
 						"h": 362
 					},
 					"frame": {
-						"x": 1434,
+						"x": 1430,
 						"y": 1379,
 						"w": 313,
 						"h": 362
@@ -549,35 +574,10 @@
 						"h": 362
 					},
 					"frame": {
-						"x": 1434,
+						"x": 1430,
 						"y": 1379,
 						"w": 313,
 						"h": 362
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "scytheflash4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 638,
-						"h": 675
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 12,
-						"w": 300,
-						"h": 355
-					},
-					"frame": {
-						"x": 410,
-						"y": 1675,
-						"w": 300,
-						"h": 355
 					},
 					"anchor": {
 						"x": 0.5,
@@ -624,7 +624,7 @@
 						"h": 257
 					},
 					"frame": {
-						"x": 1749,
+						"x": 1745,
 						"y": 1368,
 						"w": 237,
 						"h": 257
@@ -649,8 +649,8 @@
 						"h": 175
 					},
 					"frame": {
-						"x": 712,
-						"y": 1735,
+						"x": 716,
+						"y": 1734,
 						"w": 279,
 						"h": 175
 					},
@@ -660,24 +660,24 @@
 					}
 				},
 				{
-					"filename": "newgame_solo.webp",
+					"filename": "complete.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 263,
-						"h": 97
+						"w": 365,
+						"h": 58
 					},
 					"spriteSourceSize": {
-						"x": 9,
-						"y": 4,
-						"w": 251,
-						"h": 89
+						"x": 3,
+						"y": 0,
+						"w": 357,
+						"h": 58
 					},
 					"frame": {
-						"x": 712,
-						"y": 1912,
-						"w": 251,
-						"h": 89
+						"x": 716,
+						"y": 1911,
+						"w": 357,
+						"h": 58
 					},
 					"anchor": {
 						"x": 0.5,
@@ -685,24 +685,24 @@
 					}
 				},
 				{
-					"filename": "newgame_solo_hover.webp",
+					"filename": "battletext_border_bot.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 263,
-						"h": 97
+						"w": 480,
+						"h": 15
 					},
 					"spriteSourceSize": {
-						"x": 9,
-						"y": 4,
-						"w": 251,
-						"h": 89
+						"x": 3,
+						"y": 7,
+						"w": 474,
+						"h": 8
 					},
 					"frame": {
-						"x": 712,
-						"y": 1912,
-						"w": 251,
-						"h": 89
+						"x": 716,
+						"y": 1971,
+						"w": 474,
+						"h": 8
 					},
 					"anchor": {
 						"x": 0.5,
@@ -710,49 +710,24 @@
 					}
 				},
 				{
-					"filename": "newgame_solo_press.webp",
+					"filename": "battletext_border_top.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 263,
-						"h": 97
+						"w": 480,
+						"h": 15
 					},
 					"spriteSourceSize": {
-						"x": 9,
-						"y": 4,
-						"w": 251,
-						"h": 89
+						"x": 3,
+						"y": 0,
+						"w": 474,
+						"h": 8
 					},
 					"frame": {
-						"x": 712,
-						"y": 1912,
-						"w": 251,
-						"h": 89
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "newgame_hover.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 264,
-						"h": 110
-					},
-					"spriteSourceSize": {
-						"x": 14,
-						"y": 18,
-						"w": 242,
-						"h": 89
-					},
-					"frame": {
-						"x": 1776,
-						"y": 303,
-						"w": 242,
-						"h": 89
+						"x": 716,
+						"y": 1981,
+						"w": 474,
+						"h": 8
 					},
 					"anchor": {
 						"x": 0.5,
@@ -810,31 +785,6 @@
 					}
 				},
 				{
-					"filename": "selectgame_hover.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 229,
-						"h": 102
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 4,
-						"w": 221,
-						"h": 94
-					},
-					"frame": {
-						"x": 1749,
-						"y": 1627,
-						"w": 221,
-						"h": 94
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "selectgame_press.webp",
 					"rotated": false,
 					"trimmed": true,
@@ -849,7 +799,7 @@
 						"h": 94
 					},
 					"frame": {
-						"x": 1749,
+						"x": 1745,
 						"y": 1627,
 						"w": 221,
 						"h": 94
@@ -874,85 +824,10 @@
 						"h": 54
 					},
 					"frame": {
-						"x": 1105,
+						"x": 1101,
 						"y": 1722,
 						"w": 297,
 						"h": 54
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "complete.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 365,
-						"h": 58
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 0,
-						"w": 357,
-						"h": 58
-					},
-					"frame": {
-						"x": 1404,
-						"y": 1743,
-						"w": 357,
-						"h": 58
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "battletext_border_bot.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 480,
-						"h": 15
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 7,
-						"w": 474,
-						"h": 8
-					},
-					"frame": {
-						"x": 712,
-						"y": 2003,
-						"w": 474,
-						"h": 8
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "battletext_border_top.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 480,
-						"h": 15
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 0,
-						"w": 474,
-						"h": 8
-					},
-					"frame": {
-						"x": 712,
-						"y": 2013,
-						"w": 474,
-						"h": 8
 					},
 					"anchor": {
 						"x": 0.5,
@@ -964,20 +839,45 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 242,
-						"h": 77
+						"w": 252,
+						"h": 93
 					},
 					"spriteSourceSize": {
-						"x": 7,
-						"y": 3,
+						"x": 12,
+						"y": 11,
 						"w": 228,
-						"h": 72
+						"h": 73
 					},
 					"frame": {
-						"x": 1763,
+						"x": 1745,
 						"y": 1723,
 						"w": 228,
-						"h": 72
+						"h": 73
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dizzy_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 109,
+						"h": 101
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 102,
+						"h": 93
+					},
+					"frame": {
+						"x": 997,
+						"y": 1734,
+						"w": 102,
+						"h": 93
 					},
 					"anchor": {
 						"x": 0.5,
@@ -989,20 +889,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 242,
-						"h": 77
+						"w": 252,
+						"h": 93
 					},
 					"spriteSourceSize": {
-						"x": 7,
-						"y": 3,
+						"x": 12,
+						"y": 11,
 						"w": 228,
-						"h": 72
+						"h": 73
 					},
 					"frame": {
-						"x": 1763,
-						"y": 1797,
+						"x": 1101,
+						"y": 1778,
 						"w": 228,
-						"h": 72
+						"h": 73
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1015,19 +915,44 @@
 					"trimmed": true,
 					"sourceSize": {
 						"w": 242,
-						"h": 77
+						"h": 83
 					},
 					"spriteSourceSize": {
 						"x": 7,
-						"y": 3,
+						"y": 6,
 						"w": 228,
-						"h": 72
+						"h": 73
 					},
 					"frame": {
-						"x": 1763,
-						"y": 1797,
+						"x": 1400,
+						"y": 1743,
 						"w": 228,
-						"h": 72
+						"h": 73
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "newgame.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 264,
+						"h": 110
+					},
+					"spriteSourceSize": {
+						"x": 23,
+						"y": 11,
+						"w": 221,
+						"h": 89
+					},
+					"frame": {
+						"x": 1075,
+						"y": 1853,
+						"w": 221,
+						"h": 89
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1049,8 +974,8 @@
 						"h": 197
 					},
 					"frame": {
-						"x": 2028,
-						"y": 1,
+						"x": 1984,
+						"y": 1368,
 						"w": 10,
 						"h": 197
 					},
@@ -1135,131 +1060,6 @@
 					}
 				},
 				{
-					"filename": "selectgame.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 229,
-						"h": 102
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 4,
-						"w": 201,
-						"h": 93
-					},
-					"frame": {
-						"x": 1188,
-						"y": 1778,
-						"w": 201,
-						"h": 93
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "newgame.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 264,
-						"h": 110
-					},
-					"spriteSourceSize": {
-						"x": 28,
-						"y": 17,
-						"w": 201,
-						"h": 81
-					},
-					"frame": {
-						"x": 1391,
-						"y": 1803,
-						"w": 201,
-						"h": 81
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "creditsgame.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 149,
-						"h": 77
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 3,
-						"w": 144,
-						"h": 72
-					},
-					"frame": {
-						"x": 1594,
-						"y": 1803,
-						"w": 144,
-						"h": 72
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dizzy_2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 109,
-						"h": 101
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 0,
-						"w": 102,
-						"h": 93
-					},
-					"frame": {
-						"x": 993,
-						"y": 1735,
-						"w": 102,
-						"h": 93
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "creditsgame_hover.webp",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 149,
-						"h": 77
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 3,
-						"w": 144,
-						"h": 72
-					},
-					"frame": {
-						"x": 1864,
-						"y": 936,
-						"w": 144,
-						"h": 72
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "creditsgame_press.webp",
 					"rotated": false,
 					"trimmed": true,
@@ -1285,23 +1085,98 @@
 					}
 				},
 				{
+					"filename": "newgame_hover.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 264,
+						"h": 110
+					},
+					"spriteSourceSize": {
+						"x": 23,
+						"y": 11,
+						"w": 221,
+						"h": 89
+					},
+					"frame": {
+						"x": 1331,
+						"y": 1818,
+						"w": 221,
+						"h": 89
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "selectgame.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 229,
+						"h": 124
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 15,
+						"w": 201,
+						"h": 93
+					},
+					"frame": {
+						"x": 1298,
+						"y": 1909,
+						"w": 201,
+						"h": 93
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "selectgame_hover.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 229,
+						"h": 124
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 15,
+						"w": 201,
+						"h": 93
+					},
+					"frame": {
+						"x": 1554,
+						"y": 1818,
+						"w": 201,
+						"h": 93
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "wishlistgame.webp",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 139,
-						"h": 92
+						"w": 159,
+						"h": 112
 					},
 					"spriteSourceSize": {
-						"x": 5,
-						"y": 4,
-						"w": 129,
+						"x": 15,
+						"y": 14,
+						"w": 130,
 						"h": 84
 					},
 					"frame": {
-						"x": 993,
-						"y": 1830,
-						"w": 129,
+						"x": 1757,
+						"y": 1798,
+						"w": 130,
 						"h": 84
 					},
 					"anchor": {
@@ -1314,19 +1189,19 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 139,
-						"h": 92
+						"w": 159,
+						"h": 112
 					},
 					"spriteSourceSize": {
-						"x": 5,
-						"y": 4,
-						"w": 129,
+						"x": 15,
+						"y": 14,
+						"w": 130,
 						"h": 84
 					},
 					"frame": {
-						"x": 965,
-						"y": 1916,
-						"w": 129,
+						"x": 1889,
+						"y": 1798,
+						"w": 130,
 						"h": 84
 					},
 					"anchor": {
@@ -1335,24 +1210,149 @@
 					}
 				},
 				{
-					"filename": "wishlistgame_press.webp",
+					"filename": "creditsgame.webp",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 139,
-						"h": 92
+						"w": 169,
+						"h": 97
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 14,
+						"w": 144,
+						"h": 70
+					},
+					"frame": {
+						"x": 1757,
+						"y": 1884,
+						"w": 144,
+						"h": 70
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "creditsgame_hover.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 169,
+						"h": 97
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 14,
+						"w": 144,
+						"h": 70
+					},
+					"frame": {
+						"x": 1501,
+						"y": 1913,
+						"w": 144,
+						"h": 70
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dizzy_3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 95,
+						"h": 94
 					},
 					"spriteSourceSize": {
 						"x": 5,
-						"y": 4,
-						"w": 129,
-						"h": 84
+						"y": 5,
+						"w": 80,
+						"h": 86
 					},
 					"frame": {
-						"x": 965,
-						"y": 1916,
-						"w": 129,
-						"h": 84
+						"x": 1903,
+						"y": 1884,
+						"w": 80,
+						"h": 86
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dizzy_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 87,
+						"h": 85
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 1,
+						"w": 80,
+						"h": 81
+					},
+					"frame": {
+						"x": 1647,
+						"y": 1913,
+						"w": 80,
+						"h": 81
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "angrybig1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 76,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 2,
+						"w": 70,
+						"h": 77
+					},
+					"frame": {
+						"x": 997,
+						"y": 1829,
+						"w": 70,
+						"h": 77
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "angry2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 46,
+						"h": 46
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 46,
+						"h": 46
+					},
+					"frame": {
+						"x": 1501,
+						"y": 1985,
+						"w": 46,
+						"h": 46
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1385,31 +1385,6 @@
 					}
 				},
 				{
-					"filename": "angry2.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 46,
-						"h": 46
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 46,
-						"h": 46
-					},
-					"frame": {
-						"x": 589,
-						"y": 602,
-						"w": 46,
-						"h": 46
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "lowline.png",
 					"rotated": false,
 					"trimmed": false,
@@ -1428,81 +1403,6 @@
 						"y": 1660,
 						"w": 106,
 						"h": 4
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dizzy_1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 87,
-						"h": 85
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 1,
-						"w": 80,
-						"h": 81
-					},
-					"frame": {
-						"x": 1096,
-						"y": 1916,
-						"w": 80,
-						"h": 81
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dizzy_3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 95,
-						"h": 94
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 5,
-						"w": 80,
-						"h": 86
-					},
-					"frame": {
-						"x": 1178,
-						"y": 1873,
-						"w": 80,
-						"h": 86
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "angrybig1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 76,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 2,
-						"w": 70,
-						"h": 77
-					},
-					"frame": {
-						"x": 1260,
-						"y": 1873,
-						"w": 70,
-						"h": 77
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1574,8 +1474,8 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1988,
-						"y": 1368,
+						"x": 1973,
+						"y": 394,
 						"w": 44,
 						"h": 42
 					},
@@ -1599,8 +1499,8 @@
 						"h": 48
 					},
 					"frame": {
-						"x": 1973,
-						"y": 394,
+						"x": 1298,
+						"y": 1853,
 						"w": 24,
 						"h": 48
 					},
@@ -1624,8 +1524,8 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1740,
-						"y": 1803,
+						"x": 1630,
+						"y": 1743,
 						"w": 20,
 						"h": 42
 					},
@@ -1640,30 +1540,30 @@
 			"image": "sprites/misc-1.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 303,
-				"h": 1760
+				"w": 1638,
+				"h": 355
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "scytheflash3.png",
+					"filename": "wishlistgame_press.webp",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 638,
-						"h": 675
+						"w": 139,
+						"h": 92
 					},
 					"spriteSourceSize": {
-						"x": 3,
-						"y": 14,
-						"w": 301,
-						"h": 353
+						"x": 5,
+						"y": 4,
+						"w": 129,
+						"h": 84
 					},
 					"frame": {
 						"x": 1,
 						"y": 1,
-						"w": 301,
-						"h": 353
+						"w": 129,
+						"h": 84
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1685,8 +1585,8 @@
 						"h": 349
 					},
 					"frame": {
-						"x": 1,
-						"y": 356,
+						"x": 132,
+						"y": 1,
 						"w": 301,
 						"h": 349
 					},
@@ -1710,9 +1610,34 @@
 						"h": 349
 					},
 					"frame": {
-						"x": 1,
-						"y": 707,
+						"x": 435,
+						"y": 1,
 						"w": 301,
+						"h": 349
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "scytheflash2png.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 638,
+						"h": 675
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 18,
+						"w": 295,
+						"h": 349
+					},
+					"frame": {
+						"x": 738,
+						"y": 1,
+						"w": 295,
 						"h": 349
 					},
 					"anchor": {
@@ -1735,8 +1660,8 @@
 						"h": 350
 					},
 					"frame": {
-						"x": 1,
-						"y": 1058,
+						"x": 1035,
+						"y": 1,
 						"w": 299,
 						"h": 350
 					},
@@ -1760,8 +1685,8 @@
 						"h": 350
 					},
 					"frame": {
-						"x": 1,
-						"y": 1058,
+						"x": 1035,
+						"y": 1,
 						"w": 299,
 						"h": 350
 					},
@@ -1771,7 +1696,7 @@
 					}
 				},
 				{
-					"filename": "scytheflash2png.png",
+					"filename": "scytheflash3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1779,16 +1704,16 @@
 						"h": 675
 					},
 					"spriteSourceSize": {
-						"x": 9,
-						"y": 18,
-						"w": 295,
-						"h": 349
+						"x": 3,
+						"y": 14,
+						"w": 301,
+						"h": 353
 					},
 					"frame": {
-						"x": 1,
-						"y": 1410,
-						"w": 295,
-						"h": 349
+						"x": 1336,
+						"y": 1,
+						"w": 301,
+						"h": 353
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1801,6 +1726,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:e3b29f6bf035464b6f26e78b3e88811d:7f451c1c9d835ab56d93dc0f6d8c8087:71b7deba37d49c4a400e3c6826b292e5$"
+		"smartupdate": "$TexturePacker:SmartUpdate:11540b41d92f46047236d3a3c5416042:af5a0da459aa9b1402c74c7e3400268d:71b7deba37d49c4a400e3c6826b292e5$"
 	}
 }

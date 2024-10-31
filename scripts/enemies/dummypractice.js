@@ -39,7 +39,94 @@
         this.damageCanEmit = true;
      }
 
+     showPoster(startImg = 'dummy_paper_hit.png', finalRot = 0) {
+         this.poster = this.addSprite(this.sprite.x, this.sprite.y, 'dummyenemy', startImg).setDepth(this.sprite.depth - 1).setScale(this.sprite.startScale*0.1);
+         this.addExtraSprite(this.poster);
+         this.poster.setRotation(-0.7);
+         this.addTween({
+             targets: this.poster,
+             scaleX: this.sprite.startScale,
+             scaleY: this.sprite.startScale,
+             duration: 600,
+             onComplete: () => {
+                 playSound('boing');
+                 this.addTween({
+                     targets: this.poster,
+                     scaleX: this.sprite.startScale,
+                     scaleY: this.sprite.startScale,
+                     rotation: finalRot,
+                     ease: 'Bounce.easeOut',
+                     duration: 400
+                 })
+             }
+         })
+         this.addTween({
+             delay: 400,
+             targets: this.poster,
+             rotation: 0,
+             ease: 'Bounce.easeOut',
+             easeParams: [0.5],
+             duration: 600
+         })
+     }
 
+     hidePosterFast() {
+         if (!this.poster) {
+             return;
+         }
+         if (this.posterTween) {
+             this.posterTween.stop();
+         }
+
+         playSound('balloon', 0.4)
+         this.addTween({
+             targets: this.poster,
+             scaleX: this.sprite.startScale * 1.03,
+             scaleY: this.sprite.startScale * 1.03,
+             ease: 'Quint.easeOut',
+             duration: 150,
+             onComplete: () => {
+                 this.addTween({
+                     targets: this.poster,
+                     rotation: -0.8,
+                     scaleX: 0,
+                     scaleY: 0,
+                     ease: 'Cubic.easeIn',
+                     duration: 700
+                 })
+             }
+         })
+     }
+
+     hidePoster() {
+        if (!this.poster) {
+            return;
+        }
+        if (this.posterTween) {
+            this.posterTween.stop();
+        }
+
+         this.poster.setScale(this.sprite.startScale * 1.09);
+         this.addTween({
+             targets: this.poster,
+             scaleX: this.sprite.startScale * 0.96,
+             scaleY: this.sprite.startScale * 0.96,
+             rotation: -0.07,
+             ease: 'Bounce.easeOut',
+             duration: 230,
+             completeDelay: 20,
+             onComplete: () => {
+                 this.addTween({
+                     targets: this.poster,
+                     rotation: -0.9,
+                     scaleX: 0,
+                     scaleY: 0,
+                     ease: 'Cubic.easeIn',
+                     duration: 750
+                 })
+             }
+         })
+     }
 
      initTutorial() {
         this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
@@ -100,6 +187,7 @@
                     duration: 600,
                     onComplete: () => {
                         this.setDefaultSprite('dummy_paper_face.png');
+                        this.showPoster('dummy_paper_rawr.png', 0.02);
                         this.currDummyAnim = this.addTween({
                             targets: this.sprite,
                             scaleX: this.sprite.startScale,
@@ -111,12 +199,21 @@
                             onComplete: () => {
                                 this.runSfxLoop = playSound('tractor_loop', 0, true);
                                 this.currDummyAnim = this.runTween = this.addTween({
-                                    targets: this.sprite,
+                                    targets: [this.sprite, this.poster],
                                     rotation: 0.02,
                                     ease: "Quart.easeInOut",
                                     duration: 500,
                                     repeat: -1,
-                                    yoyo: true
+                                    yoyo: true,
+                                });
+                                this.posterTween = this.addTween({
+                                    delay: 500,
+                                    targets: this.poster,
+                                    rotation: -0.02,
+                                    ease: "Quart.easeInOut",
+                                    duration: 500,
+                                    repeat: -1,
+                                    yoyo: true,
                                 });
                             }
                         });

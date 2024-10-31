@@ -165,8 +165,8 @@ let textData3 = {
     "death2b": {
         "en_us": "LOST CHILD, TURN BACK.\nYOU DO NOT YET BELONG HERE,",
         "fr": "ENFANT PERDU, RETOURNE EN\nARRIÈRE. TU N'ES PAS ENCORE À ICI",
-        "zh_tw": "迷路的孩子，回頭吧。\n還沒到你來這裡的時候,",
-        "zh_cn": "迷路的孩子，回头吧。\n还没到你来这里的时候,",
+        "zh_tw": "迷路的孩子，回頭吧。\n現在還沒輪到你的時間,",
+        "zh_cn": "迷路的孩子，回头吧。\n现在还没轮到你的时间,",
         "ru": "",
         "es": "",
         "jp": ""
@@ -174,8 +174,8 @@ let textData3 = {
     "death2c": {
         "en_us": "IN THE LAND OF THE DEAD.",
         "fr": "AU PAYS DES MORTS.",
-        "zh_tw": "來到亡靈之地。",
-        "zh_cn": "来到亡灵之地。",
+        "zh_tw": "進入亡靈之地裡。",
+        "zh_cn": "进入亡灵之地里。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -608,8 +608,8 @@ let textData3 = {
     "epilogue2e": {
         "en_us": "I WILL GIVE YOU BACK\nYOUR BELOVED",
         "fr": "JE TE RENDRAI TON BIEN-AIMÉ",
-        "zh_tw": "我會把你心愛的還給你",
-        "zh_cn": "我会把你心爱的还给你",
+        "zh_tw": "我會把你心愛的人還給你",
+        "zh_cn": "我会把你心爱的人还给你",
         "ru": "Я ВЕРНУ ТЕБЕ ЛЮБИМОГО",
         "es": "TE DEVOLVERÉ A TU AMADO",
         "jp": "愛する人を返す"

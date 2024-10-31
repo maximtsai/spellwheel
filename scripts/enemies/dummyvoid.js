@@ -127,6 +127,7 @@ class Dummyvoid extends Dummypractice {
 
                     },
                     attackStartFunction: () => {
+                        this.hidePosterFast();
 
                     },
                     attackFinishFunction: () => {

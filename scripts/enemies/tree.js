@@ -829,12 +829,12 @@
                      startFunction: () => {
                          this.addTimeout(() => {
                              if (!this.dead) {
-                                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 142, getLangText('level2_tut_a'), 'right', true);
+                                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 116, getLangText('level2_tut_a'), 'right', true);
                                  setTimeout(() => {
                                      globalObjects.textPopupManager.hideInfoText();
                                  }, 11000);
                              }
-                         }, 2500)
+                         }, 1500)
                      },
                      attackStartFunction: () => {
                         this.glowGreen();

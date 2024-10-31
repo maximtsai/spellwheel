@@ -79,7 +79,7 @@
          this.currDelay = this.addTween({
              targets: this.sprite,
              alpha: 1,
-             duration: duration * 1500 - 1500,
+             duration: duration * 1000 - 1000,
              onComplete: () => {
                  this.clearMindBurn();
              }
@@ -201,7 +201,7 @@
              }
          }
          if (this.shieldAdded && this.currentAttackSetIndex == 2) {
-             if (this.shield == 0) {
+             if (this.shield === 0) {
                  // shield must have broke
                  if (this.breatheTween) {
                      this.breatheTween.stop();
@@ -211,7 +211,7 @@
                  this.interruptCurrentAttack();
                  this.currentAttackSetIndex = 3;
                  this.nextAttackIndex = 0;
-                 playSound('goblin_grunt').detune = 0;
+                 playSound('goblin_grunt', 0.95).detune = 0;
                  playSound('clunk');
              }
          }
@@ -240,7 +240,7 @@
                      block: 60,
                      isPassive: true,
                      customCall: " ",
-                     chargeAmt: 250,
+                     chargeAmt: 260,
                     transitionFast: true,
                      startFunction: () => {
                         this.attackScale = 1;
@@ -347,6 +347,13 @@
                              dmgEffect.x += 10;
                              dmgEffect.y += 10;
                          }, 100)
+
+                     },
+                     finaleFunction: () => {
+                         if (this.isBurning && !this.dead && this.shield > 0) {
+                             this.burnAnim.stop();
+                             this.burnAnim = this.sprite.play('gobboshieldfire');
+                         }
                      }
                  },
              ],
@@ -381,8 +388,8 @@
                      chargeMult: 5,
                      isBigMove: true,
                      startFunction: () => {
-                        this.pullbackScale = 0.88;
-                        this.attackScale = 1.18;
+                        this.pullbackScale = 0.91;
+                        this.attackScale = 1.16;
                          this.setDefaultSprite('gobbo3.png', 0.92);
                      },
                      attackFinishFunction: () => {
@@ -607,7 +614,7 @@
              ease: "Cubic.easeIn",
              duration: 25,
              onComplete: () => {
-                 playSound('goblin_grunt').detune = 0;
+                 playSound('goblin_grunt', 0.8).detune = -150;
                  this.setDefaultSprite('gobboDead.png');
                  this.sprite.setRotation(0);
                  this.x -= 5;

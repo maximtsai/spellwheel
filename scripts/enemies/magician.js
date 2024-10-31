@@ -964,8 +964,8 @@
 
     startChargingUltimate() {
         let damageAmt = gameVars.isHardMode ? 3 : 2;
-        let totalAmt = gameVars.isHardMode ? 20 : 22;
-        let angleDivider = gameVars.isHardMode ? 10 : 11;
+        let totalAmt = gameVars.isHardMode ? 20 : 20;
+        let angleDivider = gameVars.isHardMode ? 10 : 10;
         for (let i = 0; i < totalAmt; i++) {
             this.addTween({
                 delay: i * 180,

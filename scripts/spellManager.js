@@ -583,16 +583,18 @@ class SpellManager {
                 onStart: () => {
                     if (i === 0) {
                         let sfx = playSound('matter_enhance', 0.9);
-                        if (Math.random() < 0.25) {
-                            sfx.detune = -50;
+                        if (Math.random() < 0.55) {
+                            sfx.detune = -60;
+                        } else {
+                            sfx.detune = 60;
                         }
-                        sfx.detune + Math.floor(Math.random() * 100) - 50;
+                        sfx.detune += Math.floor(Math.random() * 120) - 60;
                     } else if (i === itemsToAnimate.length - 1) {
                         if (itemsToAnimate.length < 4) {
                             PhaserScene.time.delayedCall( 50, () => {
                                 let sfx = playSound('matter_enhance_2', 1);
                                 if (Math.random() < 0.25) {
-                                    sfx.detune = -50;
+                                    sfx.detune = -70;
                                 }
                                 else {
                                     sfx.detune = 0;

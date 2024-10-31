@@ -6,6 +6,7 @@
         this.defaultRotation = -0.045;
         this.sprite.setAlpha(0.2)
         this.initMisc();
+        this.initBird();
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
         this.addTimeout(() => {
@@ -62,6 +63,19 @@
          this.bgMusic = playMusic('wind', 0.01, true);
          fadeInSound(this.bgMusic, 0.7, 2000);
     }
+
+     initBird() {
+         this.bird = this.addImage(this.x - 80, this.y - 179, 'wallenemy', 'bird_1.png').setAlpha(0).setDepth(25);
+         this.addTween({
+             delay: 150,
+             targets: [this.bird],
+             scaleX: 1,
+             scaleY: 1,
+             alpha: 1,
+             ease: 'Quad.easeIn',
+             duration: 500,
+         });
+     }
 
     initMisc() {
         this.shieldExtraText = this.addBitmapText(gameConsts.halfWidth, this.y + this.shieldTextOffsetY + 24, 'void', 'SHIELDED', 52).setOrigin(0.5).setDepth(18).setVisible(false);
@@ -270,6 +284,8 @@
              return;
          } else if (currHealthPercent < 0.99999 && !this.gainedShield) {
              this.gainedShield = true;
+             this.birdFalls();
+
              this.flash = this.addSprite(this.x + 3, this.y - 75, 'blurry', 'flash.webp').setOrigin(0.5, 0.5).setScale(0.8).setDepth(-1).setRotation(0.2);
              this.addTween({
                  targets: this.flash,
@@ -288,6 +304,10 @@
              });
              this.setAwake();
          }
+     }
+
+     birdFalls() {
+
      }
 
      animateCreateHandShield() {

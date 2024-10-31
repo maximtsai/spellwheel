@@ -212,7 +212,7 @@
                     startFunction: () => {
                     },
                     attackStartFunction: () => {
-
+                        this.hidePosterFast();
                     },
                     attackFinishFunction: () => {
                         this.tempShiftSFX();

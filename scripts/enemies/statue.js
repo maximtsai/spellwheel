@@ -65,12 +65,11 @@
     }
 
      initBird() {
-         this.bird = this.addImage(this.x - 80, this.y - 179, 'wallenemy', 'bird_1.png').setAlpha(0).setDepth(25);
+         this.bird = this.addImage(this.x - 87, this.y - 193, 'wallenemy', 'bird_1.png').setAlpha(0).setDepth(-1);
+         this.bird.scaleX = -1
          this.addTween({
              delay: 150,
              targets: [this.bird],
-             scaleX: 1,
-             scaleY: 1,
              alpha: 1,
              ease: 'Quad.easeIn',
              duration: 500,
@@ -307,7 +306,44 @@
      }
 
      birdFalls() {
-
+         setTimeout(() => {
+             playSound('chirp1', 0.75);
+         }, 750)
+         this.bird.setDepth(20);
+         this.bird.y -= 2;
+         this.addTween({
+             targets: [this.bird],
+             x: "-=40",
+             rotation: "-=5.9",
+             duration: 1250,
+         });
+         this.addTween({
+             targets: [this.bird],
+             y: "+=140",
+             duration: 1250,
+             ease: 'Back.easeIn',
+             onComplete: () => {
+                 this.bird.setFrame('bird_2.png')
+                 this.bird.setRotation(-0.4);
+                 this.addTween({
+                     targets: [this.bird],
+                     y: -40,
+                     duration: 1000,
+                     easeParams: [1.4],
+                     ease: 'Back.easeIn',
+                 });
+                 this.addTween({
+                     targets: [this.bird],
+                     x: "-=360",
+                     rotation: 0,
+                     duration: 1000,
+                     ease: 'Quad.easeIn',
+                     onComplete: () => {
+                         this.bird.destroy();
+                     }
+                 });
+             }
+         });
      }
 
      animateCreateHandShield() {
@@ -634,7 +670,7 @@
 
 
      initAttacks() {
-        let hardModeCharge = gameVars.isHardMode ? -40 : 0;
+        let hardModeCharge = gameVars.isHardMode ? -40 : 10;
          this.attacks = [
              [
                  // 0
@@ -657,7 +693,7 @@
              [
                  {
                      name: "BOOTING UP...",
-                     chargeAmt: gameVars.isHardMode ? 350 : 750,
+                     chargeAmt: gameVars.isHardMode ? 350 : 800,
                      damage: 0,
                  },
                  {

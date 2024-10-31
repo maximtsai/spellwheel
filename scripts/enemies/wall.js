@@ -281,6 +281,7 @@
      }
 
      birdFalls() {
+         this.bird.y -= 1;
         setTimeout(() => {
             playSound('chirp1', 0.75);
         }, 750)

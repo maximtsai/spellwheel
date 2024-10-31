@@ -428,8 +428,8 @@ let textData3 = {
     "death8a": {
         "en_us": "YOU ARE INDEED CLOSE TO\nREACHING YOUR BELOVED.",
         "fr": "VOUS ÊTES EN EFFET SUR LE POINT\nD’ATTEINDRE VOTRE BIEN-AIMÉ.",
-        "zh_tw": "您確實已經接近您所愛的人了。",
-        "zh_cn": "您确实已经接近您所爱的人了。",
+        "zh_tw": "你確實快接近你的愛人。",
+        "zh_cn": "你确实快接近你的爱人。",
         "ru": "",
         "es": "",
         "jp": ""

@@ -91,24 +91,7 @@ function minorZoomMenu() {
 
 function clearOnlyMenuBack() {
     if (globalObjects.menuBack) {
-        PhaserScene.tweens.add({
-             targets: [globalObjects.menuBack],
-             scaleX: globalObjects.menuBack.startScale * 1.6,
-             scaleY: globalObjects.menuBack.startScale * 1.6,
-             x: gameConsts.halfWidth,
-             y: gameConsts.halfHeight + 20,
-             ease: 'Cubic.easeInOut',
-             duration: 2500,
-         });
-        PhaserScene.tweens.add({
-             targets: [globalObjects.menuTop],
-             scaleX: globalObjects.menuTop.startScale * 1.6,
-             scaleY: globalObjects.menuTop.startScale * 1.6,
-             y: gameConsts.halfHeight + 20,
-             ease: 'Cubic.easeInOut',
-             duration: 2500,
-         });
-        PhaserScene.tweens.add({
+        globalObjects.menuButtons.currAnim1 = PhaserScene.tweens.add({
              targets: [globalObjects.menuButtons],
              scaleX: 2.15,
              scaleY: 2.15,
@@ -116,15 +99,22 @@ function clearOnlyMenuBack() {
              ease: 'Cubic.easeInOut',
              duration: 2500,
          });
-        PhaserScene.tweens.add({
+        globalObjects.menuButtons.currAnim2 = PhaserScene.tweens.add({
              targets: [globalObjects.menuButtons],
             ease: 'Cubic.easeOut',
              alpha: 0,
              duration: 700,
          });
 
-
-        PhaserScene.tweens.add({
+        globalObjects.menuTop.currAnim1 = PhaserScene.tweens.add({
+            targets: [globalObjects.menuTop],
+            scaleX: globalObjects.menuTop.startScale * 1.6,
+            scaleY: globalObjects.menuTop.startScale * 1.6,
+            y: gameConsts.halfHeight + 20,
+            ease: 'Cubic.easeInOut',
+            duration: 2500,
+        });
+        globalObjects.menuTop.currAnim2 = PhaserScene.tweens.add({
             delay: 450,
              targets: [globalObjects.menuTop],
              alpha: 0,
@@ -132,9 +122,17 @@ function clearOnlyMenuBack() {
             ease: 'Quad.easeInOut',
              onComplete: () => {
              }
-         });
-
-        PhaserScene.tweens.add({
+        });
+        globalObjects.menuBack.currAnim1 = PhaserScene.tweens.add({
+            targets: [globalObjects.menuBack],
+            scaleX: globalObjects.menuBack.startScale * 1.6,
+            scaleY: globalObjects.menuBack.startScale * 1.6,
+            x: gameConsts.halfWidth,
+            y: gameConsts.halfHeight + 20,
+            ease: 'Cubic.easeInOut',
+            duration: 2500,
+        });
+        globalObjects.menuBack.currAnim2 = PhaserScene.tweens.add({
             delay: 1800,
              targets: [globalObjects.menuBack],
              alpha: 0,
@@ -176,14 +174,30 @@ function gotoMainMenuNoButtons() {
     if (globalObjects.player) {
         globalObjects.player.resetStats();
     }
-
-    globalObjects.menuBack.setAlpha(1).setScale(globalObjects.menuBack.startScale).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
-    globalObjects.menuTop.setAlpha(1).setScale(globalObjects.menuTop.startScale).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
-    globalObjects.menuButtons.setAlpha(1).setScale(globalObjects.menuButtons.startScale).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
-
-    if (globalObjects.startButton && !globalObjects.startButton.isDestroyed) {
-        return;
+    if (globalObjects.menuBack.currAnim1) {
+        globalObjects.menuBack.currAnim1.stop();
+        globalObjects.menuBack.currAnim2.stop();
     }
+    if (globalObjects.menuTop.currAnim1) {
+        globalObjects.menuTop.currAnim1.stop();
+        globalObjects.menuTop.currAnim2.stop();
+    }
+    if (globalObjects.menuButtons.currAnim1) {
+        globalObjects.menuButtons.currAnim1.stop();
+        globalObjects.menuButtons.currAnim2.stop();
+    }
+
+    globalObjects.menuBack.setAlpha(Math.max(0.2, globalObjects.menuBack.alpha)).setScale(globalObjects.menuBack.startScale).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
+    globalObjects.menuTop.setAlpha(Math.max(0.2, globalObjects.menuTop.alpha)).setScale(globalObjects.menuTop.startScale).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
+    globalObjects.menuButtons.setAlpha(Math.max(0.2, globalObjects.menuButtons.alpha)).setScale(globalObjects.menuButtons.startScale).setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
+
+    PhaserScene.tweens.add({
+        targets: [globalObjects.menuBack, globalObjects.menuTop, globalObjects.menuButtons],
+        alpha: 1,
+        ease: 'Quart.easeOut',
+        duration: 400,
+    });
+
 }
 
 function showMainMenuButtons() {
@@ -215,6 +229,7 @@ function showMainMenuButtons() {
                     playSound('button_hover').detune = -75;
                     canvas.style.cursor = 'pointer';
                 }
+                globalObjects.continueButtonSprite.setFrame('continuegame_hover.webp');
                 globalObjects.continueButtonSprite.setScale(1.025);
                 globalObjects.continueButtonSprite.setRotation(-0.03);
             },
@@ -222,6 +237,7 @@ function showMainMenuButtons() {
                 if (canvas) {
                     canvas.style.cursor = 'default';
                 }
+                globalObjects.continueButtonSprite.setFrame('continuegame.webp');
                 globalObjects.continueButtonSprite.setRotation(0.045);
                 PhaserScene.tweens.add({
                     targets: globalObjects.continueButtonSprite,
@@ -273,6 +289,7 @@ function showMainMenuButtons() {
                     playSound('button_hover').detune = -150;
                     canvas.style.cursor = 'pointer';
                 }
+                globalObjects.levelButtonSprite.setFrame('selectgame_hover.webp');
                 globalObjects.levelButtonSprite.setScale(1.025);
                 globalObjects.levelButtonSprite.setRotation(-0.03);
             },
@@ -280,6 +297,7 @@ function showMainMenuButtons() {
                 if (canvas) {
                     canvas.style.cursor = 'default';
                 }
+                globalObjects.levelButtonSprite.setFrame('selectgame.webp');
                 globalObjects.levelButtonSprite.setRotation(0.045);
                 PhaserScene.tweens.add({
                     targets: globalObjects.levelButtonSprite,
@@ -310,13 +328,13 @@ function showMainMenuButtons() {
     let yPos = isSolo ? gameConsts.halfHeight - 122 : gameConsts.halfHeight - 260;
     let xPos = isSolo ? gameConsts.halfWidth - 160 : gameConsts.halfWidth - 176;
     globalObjects.startButtonSprite = PhaserScene.add.sprite(xPos, yPos + 38, 'misc', 'newgame.webp');
-    globalObjects.startButtonSprite.setScale(isSolo ? 1.1 : 1);
+    globalObjects.startButtonSprite.setScale(isSolo ? 1.02 : 0.9);
     if (isSolo) {
         globalObjects.startButtonSprite.setRotation(-0.14);
         globalObjects.startButtonSprite.rotationOffset = -0.14;
     } else {
-        globalObjects.startButtonSprite.setRotation(0);
-        globalObjects.startButtonSprite.rotationOffset = 0;
+        globalObjects.startButtonSprite.setRotation(0.17);
+        globalObjects.startButtonSprite.rotationOffset = 0.17;
     }
 
     globalObjects.startButton = new Button({
@@ -324,7 +342,7 @@ function showMainMenuButtons() {
             atlas: "pixels",
             ref: "blank_pixel.png",
             x: globalObjects.startButtonSprite.x,
-            y: globalObjects.startButtonSprite.y,
+            y: globalObjects.startButtonSprite.y - 5,
             alpha: 1,
             scaleX: 120,
             scaleY: 40,
@@ -344,19 +362,21 @@ function showMainMenuButtons() {
                 playSound('button_hover').detune = 0;
                 canvas.style.cursor = 'pointer';
             }
-            globalObjects.startButtonSprite.setScale(isSolo ? 1.125 : 1.025);
+            globalObjects.startButtonSprite.setFrame('newgame_hover.webp');
+            globalObjects.startButtonSprite.setScale(isSolo ? 1.03 : 0.91);
             globalObjects.startButtonSprite.setRotation(-0.03 + globalObjects.startButtonSprite.rotationOffset);
         },
         onHoverOut: () => {
             if (canvas) {
                 canvas.style.cursor = 'default';
             }
+            globalObjects.startButtonSprite.setFrame('newgame.webp');
             globalObjects.startButtonSprite.setRotation(0.045 + globalObjects.startButtonSprite.rotationOffset);
             PhaserScene.tweens.add({
                 targets: globalObjects.startButtonSprite,
                 duration: 100,
-                scaleX: isSolo ? 1.1 : 1,
-                scaleY: isSolo ? 1.1 : 1,
+                scaleX: isSolo ? 1.02 : 0.9,
+                scaleY: isSolo ? 1.02 : 0.9,
                 easeParams: [3],
                 rotation: globalObjects.startButtonSprite.rotationOffset,
                 ease: 'Bounce.easeOut',
@@ -381,7 +401,9 @@ function showMainMenuButtons() {
     globalObjects.startButton.setTextOffset(-6, -2)
     globalObjects.startButton.setStroke('#301010', 5)
     // textObj.setBlendMode(Phaser.BlendModes.SCREEN);
-    globalObjects.startButton.setRotation(-0.05 + (isSolo ? -0.14 : 0))
+    globalObjects.startButton.setRotation(-0.05 + globalObjects.startButtonSprite.rotationOffset)
+    // globalObjects.startButton.setScale(0.9);
+    globalObjects.startButton.isSolo = isSolo;
 
 
     globalObjects.startButton.isSolo = isSolo;
@@ -736,7 +758,7 @@ function showMainMenuButtons() {
             atlas: "pixels",
             ref: "blank_pixel.png",
             x: gameConsts.halfWidth + 225,
-            y: gameConsts.halfHeight - 5,
+            y: gameConsts.halfHeight - 2,
             alpha: 0.9,
             scaleX: 95,
             scaleY: 36
@@ -754,6 +776,7 @@ function showMainMenuButtons() {
                 playSound('button_hover', 0.5).detune = 200;
                 canvas.style.cursor = 'pointer';
             }
+            globalObjects.creditsButtonSprite.setFrame('creditsgame_hover.webp');
             globalObjects.creditsButtonSprite.setScale(1.025);
             globalObjects.creditsButtonSprite.setRotation(0.03);
         },
@@ -761,6 +784,7 @@ function showMainMenuButtons() {
             if (canvas) {
                 canvas.style.cursor = 'default';
             }
+            globalObjects.creditsButtonSprite.setFrame('creditsgame.webp');
             globalObjects.creditsButtonSprite.setRotation(-0.045);
             PhaserScene.tweens.add({
                 targets: globalObjects.creditsButtonSprite,
@@ -1147,6 +1171,7 @@ function showMainMenuButtons() {
                 playSound('button_hover', 0.5).detune = 200;
                 canvas.style.cursor = 'pointer';
             }
+            globalObjects.extrasButtonSprite.setFrame('wishlistgame_hover.webp');
             globalObjects.extrasButtonSprite.setScale(1.025);
             globalObjects.extrasButtonSprite.setRotation(0.03);
         },
@@ -1154,6 +1179,7 @@ function showMainMenuButtons() {
             if (canvas) {
                 canvas.style.cursor = 'default';
             }
+            globalObjects.extrasButtonSprite.setFrame('wishlistgame.webp');
             globalObjects.extrasButtonSprite.setRotation(-0.045);
             PhaserScene.tweens.add({
                 targets: globalObjects.extrasButtonSprite,
@@ -1174,7 +1200,7 @@ function showMainMenuButtons() {
     if (language === 'fr') {
         textObjExtras.setFontSize(20);
     }
-    globalObjects.extrasButton.setRotation(-0.14)
+    globalObjects.extrasButton.setRotation(-0.145)
 }
 
 function updateMenuLanguage() {

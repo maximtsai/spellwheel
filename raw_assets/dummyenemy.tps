@@ -221,7 +221,6 @@
             <key type="filename">dummyenemy/dummy.png</key>
             <key type="filename">dummyenemy/dummy_angry.png</key>
             <key type="filename">dummyenemy/dummy_ascended.png</key>
-            <key type="filename">dummyenemy/dummy_fake_face.png</key>
             <key type="filename">dummyenemy/dummy_tired.png</key>
             <key type="filename">dummyenemy/dummy_w_eyes.png</key>
             <struct type="IndividualSpriteSettings">
@@ -250,21 +249,6 @@
                 <rect>82,69,165,137</rect>
                 <key>scale9Paddings</key>
                 <rect>82,69,165,137</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">dummyenemy/dummy_fake.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.75</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>51,100,102,200</rect>
-                <key>scale9Paddings</key>
-                <rect>51,100,102,200</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -298,6 +282,24 @@
                 <rect>59,158,117,315</rect>
                 <key>scale9Paddings</key>
                 <rect>59,158,117,315</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">dummyenemy/dummy_paper_haha.png</key>
+            <key type="filename">dummyenemy/dummy_paper_hit.png</key>
+            <key type="filename">dummyenemy/dummy_paper_ouch.png</key>
+            <key type="filename">dummyenemy/dummy_paper_rawr.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.75</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>152,234,304,469</rect>
+                <key>scale9Paddings</key>
+                <rect>152,234,304,469</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

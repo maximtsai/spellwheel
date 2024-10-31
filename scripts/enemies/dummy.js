@@ -32,8 +32,8 @@
          this.health = gameVars.isHardMode ? 90 : 70;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
-        this.attackScale = 1.25;
-        this.extrasOnDie = [];
+         this.attackScale = 1.25;
+         this.extrasOnDie = [];
      }
 
      initSpriteAnim(scale) {
@@ -762,7 +762,7 @@
                  // 0
                  {
                      name: gameVars.isHardMode ? "}10 " : "}8 ",
-                     chargeAmt: 435,
+                     chargeAmt: 425,
                      damage: gameVars.isHardMode ? 10 : 8,
                      attackFinishFunction: () => {
                          screenShake(5);
@@ -852,7 +852,7 @@
                  },
                  {
                      name: gameVars.isHardMode ? ";30" : ";25",
-                     chargeAmt: 685,
+                     chargeAmt: 600,
                      damage: gameVars.isHardMode ? 30 : 25,
                      isBigMove: true,
                      attackFinishFunction: () => {
@@ -872,9 +872,9 @@
                  },
                  {
                      name: "ASCENSION",
-                     chargeAmt: 300,
+                     chargeAmt: 600,
                      damage: 0,
-                     chargeMult: 1.5,
+                     chargeMult: 3.25,
                      isBigMove: true,
                      startFunction: () => {
                          this.currentAttackSetIndex = 1;
@@ -893,7 +893,7 @@
                          this.spaceTween = this.addTween({
                              targets: spaceBG,
                              rotation: "+=6.281",
-                             duration: 18000,
+                             duration: 20000,
                              repeat: 1000
                          });
 

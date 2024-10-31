@@ -80,7 +80,8 @@
                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
                 globalObjects.bannerTextManager.showBanner(false);
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                    this.bgMusic = playMusic('bite_down_simplified', 0.6, true);
+                    this.bgMusic = playMusic('bite_down_simplified', 0.9, true);
+                    fadeInSound(this.bgMusic, 0.6);
 
                     this.glowCirc = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'circle_highlight_outer.png').setAlpha(0).setDepth(9980);
                     this.glowCirc.currAnim = this.addTween({

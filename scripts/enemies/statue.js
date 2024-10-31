@@ -6,6 +6,7 @@
         this.defaultRotation = -0.045;
         this.sprite.setAlpha(0.2)
         this.initMisc();
+        this.initBird();
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
         this.addTimeout(() => {
@@ -62,6 +63,18 @@
          this.bgMusic = playMusic('wind', 0.01, true);
          fadeInSound(this.bgMusic, 0.7, 2000);
     }
+
+     initBird() {
+         this.bird = this.addImage(this.x - 87, this.y - 193, 'wallenemy', 'bird_1.png').setAlpha(0).setDepth(-1);
+         this.bird.scaleX = -1
+         this.addTween({
+             delay: 150,
+             targets: [this.bird],
+             alpha: 1,
+             ease: 'Quad.easeIn',
+             duration: 500,
+         });
+     }
 
     initMisc() {
         this.shieldExtraText = this.addBitmapText(gameConsts.halfWidth, this.y + this.shieldTextOffsetY + 24, 'void', 'SHIELDED', 52).setOrigin(0.5).setDepth(18).setVisible(false);
@@ -270,6 +283,8 @@
              return;
          } else if (currHealthPercent < 0.99999 && !this.gainedShield) {
              this.gainedShield = true;
+             this.birdFalls();
+
              this.flash = this.addSprite(this.x + 3, this.y - 75, 'blurry', 'flash.webp').setOrigin(0.5, 0.5).setScale(0.8).setDepth(-1).setRotation(0.2);
              this.addTween({
                  targets: this.flash,
@@ -288,6 +303,47 @@
              });
              this.setAwake();
          }
+     }
+
+     birdFalls() {
+         setTimeout(() => {
+             playSound('chirp1', 0.75);
+         }, 750)
+         this.bird.setDepth(20);
+         this.bird.y -= 2;
+         this.addTween({
+             targets: [this.bird],
+             x: "-=40",
+             rotation: "-=5.9",
+             duration: 1250,
+         });
+         this.addTween({
+             targets: [this.bird],
+             y: "+=140",
+             duration: 1250,
+             ease: 'Back.easeIn',
+             onComplete: () => {
+                 this.bird.setFrame('bird_2.png')
+                 this.bird.setRotation(-0.4);
+                 this.addTween({
+                     targets: [this.bird],
+                     y: -40,
+                     duration: 1000,
+                     easeParams: [1.4],
+                     ease: 'Back.easeIn',
+                 });
+                 this.addTween({
+                     targets: [this.bird],
+                     x: "-=360",
+                     rotation: 0,
+                     duration: 1000,
+                     ease: 'Quad.easeIn',
+                     onComplete: () => {
+                         this.bird.destroy();
+                     }
+                 });
+             }
+         });
      }
 
      animateCreateHandShield() {
@@ -614,7 +670,7 @@
 
 
      initAttacks() {
-        let hardModeCharge = gameVars.isHardMode ? -40 : 0;
+        let hardModeCharge = gameVars.isHardMode ? -40 : 10;
          this.attacks = [
              [
                  // 0
@@ -637,7 +693,7 @@
              [
                  {
                      name: "BOOTING UP...",
-                     chargeAmt: gameVars.isHardMode ? 350 : 750,
+                     chargeAmt: gameVars.isHardMode ? 350 : 800,
                      damage: 0,
                  },
                  {

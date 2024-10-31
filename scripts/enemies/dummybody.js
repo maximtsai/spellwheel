@@ -25,7 +25,7 @@
     }
 
      initStatsCustom() {
-        this.health = 180;
+        this.health = 160;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -221,6 +221,7 @@
 
                      },
                      attackStartFunction: () => {
+                         this.hidePosterFast();
 
                      },
                      attackFinishFunction: () => {
@@ -228,13 +229,13 @@
                      }
                  },
                  {
-                     name: "HEAL \\40",
-                     chargeAmt: 650,
+                     name: "HEAL \\50",
+                     chargeAmt: 700,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(40);
+                         this.healAnim(50);
                      }
                  },
                  {
@@ -255,13 +256,13 @@
                     }
                  },
                  {
-                     name: "HEAL \\40",
-                     chargeAmt: 700,
+                     name: "HEAL \\50",
+                     chargeAmt: 750,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(40);
+                         this.healAnim(50);
                      }
                  },
                  // 0
@@ -284,13 +285,13 @@
                  },
                  // 0
                  {
-                     name: "HEAL \\40",
-                     chargeAmt: 750,
+                     name: "HEAL \\50",
+                     chargeAmt: 800,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(40);
+                         this.healAnim(50);
                      }
                  },
                  {

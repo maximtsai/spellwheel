@@ -233,6 +233,7 @@
 
                     },
                     attackStartFunction: () => {
+                        this.hidePosterFast();
 
                     },
                     attackFinishFunction: () => {

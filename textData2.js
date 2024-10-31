@@ -267,8 +267,8 @@ let textData2 = {
     "post_fight_story1": {
         "en_us": "I have arrived at the gates to\nthe forbidden land of the departed.\n\nRight away, this realm tries to resist my\npassage, throwing obstacles at my every\nstep. But I will push through, for I know\nI will find you here, dear beloved.",
         "fr": "Je suis arrivé aux portes de la\nterre interdite des défunts.\n\nCette terre tente de résister à mon passage,\ndressant des obstacles à chacun de mes pas.\nMais je trouverai un moyen de passer, car\nje sais que je te trouverai ici, ma chère\nbien-aimée.",
-        "zh_tw": "我已經到達了通往逝者禁地的大門。 \n\n立刻，這個境界就試圖阻止我前進。\n但我會找到通往你的路，因為我知道\n你就在這裡，親愛的。",
-        "zh_cn": "我已经到达了通往逝者禁地的大门。 \n\n顷刻间，这个境界就试图阻止我前进。\n但我会找到通往你的路，因为我知道\n你就在这里，亲爱的。",
+        "zh_tw": "我已經到達了通往逝者禁地的大門。 \n\n立刻，這個境界就試圖阻止我前進。\n但我會克服一切困難，因為我知道\n我會在這裡找到你，親愛的。",
+        "zh_cn": "我已经到达了通往逝者禁地的大门。 \n\n顷刻间，这个境界就试图阻止我前进。\n但我会克服一切困难，因为我知道\n我会在这里找到你，亲爱的。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -729,8 +729,8 @@ let textData2 = {
     "level1_train_diag_b": {
         "en_us": "I should carefully consider\nwhat order I use my spells in.",
         "fr": "Je devrais bien réfléchir à l’ordre\ndans lequel j’utilise mes sorts.",
-        "zh_tw": "我應該仔細考慮我使用法術的順序。",
-        "zh_cn": "我应该仔细考虑我使用法术的顺序。",
+        "zh_tw": "我應該仔細考慮\n法術使用的順序。",
+        "zh_cn": "我应该仔细考虑\n法术使用的顺序。",
         "ru": "Я должен тщательно обдумать, в каком\nпорядке я использую свои заклинания.",
         "es": "Debería considerar cuidadosamente\nen qué orden uso mis hechizos.",
         "jp": "呪文をどの順番で使うかは\n慎重に考える必要があります。"
@@ -745,7 +745,7 @@ let textData2 = {
         "jp": ""
     },
     "level1_train_tut_a": {
-        "en_us": "Goal: Defeat\nenemy in\n4 spells",
+        "en_us": "Goal: Defeat\nenemy in\n4 hits",
         "fr": "Objectif : Vaincre\nl’ennemi en\nseulement 4 sorts",
         "zh_tw": "目標：使用4 個\n法術擊敗敵人",
         "zh_cn": "目标：使用4 个\n法术击败敌人",
@@ -835,10 +835,10 @@ let textData2 = {
         "jp": "ボイドシールドは\n1回の攻撃を完全\nにブロックできる\n         +"
     },
     "dummy_mind_tut": {
-        "en_us": "Energy Strike\nmakes your\nnext attack\nhit X2 as hard\n           +",
-        "fr": "La frappe\nénergétique rend\nvotre prochaine\nattaque deux fois\nplus forte.\n              +",
-        "zh_tw": "你的下一次攻擊\n造成兩倍的傷害\n           +",
-        "zh_cn": "你的下一次攻击\n造成双倍伤害\n           +",
+        "en_us": "1 damage, but\nyour next attack\nhits X2 as hard\n             +",
+        "fr": "1 dégât, mais\nvotre prochaine\nattaque frappe\nX2 aussi fort\n            +",
+        "zh_tw": "1 点伤害，但\n你的下一次攻擊\n会造成兩倍傷害\n           +",
+        "zh_cn": "1 点伤害，但\n你的下一次攻击\n会造成双倍伤害\n           +",
         "ru": "Энергетический удар делает вашу следующую атаку в два раза сильнее.\n             +",
         "es": "Golpe de energía hace que tu próximo ataque golpee el doble de fuerte.\n             +",
         "jp": "「エナジーストライク」は、次の攻撃のヒットを2倍にする。\n            +"
@@ -974,6 +974,15 @@ let textData2 = {
         "fr": "LANCER",
         "zh_tw": "施放",
         "zh_cn": "施放",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "HP": {
+        "en_us": "HP: ",
+        "fr": "HP: ",
+        "zh_tw": "生命: ",
+        "zh_cn": "生命: ",
         "ru": "",
         "es": "",
         "jp": ""

@@ -309,8 +309,8 @@ let textData4 = {
     "energy_tut_goblin": {
         "en_us": "Energy spells\nbypass all\nenemy defenses.\n             +",
         "fr": "Les sorts d'énergie\ncontournent toutes\nles défenses ennemies.\n                  +",
-        "zh_tw": "能量法術可以\n繞過所有敵\n人的防禦。\n         +",
-        "zh_cn": "能量法术可以\n绕过所有敌\n人的防御。\n         +",
+        "zh_tw": "能量法術可以\n無視所有敵人\n的防禦。\n         +",
+        "zh_cn": "能量法术可以\n无视所有敌人\n的防御。\n         +",
         "ru": "Энергетические заклинания обходят любую защиту противника.               +",
         "es": "Los hechizos de energía eluden todas las defensas enemigas.               +",
         "jp": "エネルギー呪文は敵の防御を無視したトゥルーダメージを与える。              +"

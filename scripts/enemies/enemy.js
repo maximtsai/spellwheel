@@ -440,7 +440,7 @@ class Enemy {
                     chargeMult = chargeMult * 0.5 + 1;
                 }
             }
-            let almostIshDone = this.attackCharge > this.nextAttackChargeNeeded - 150;
+            let almostIshDone = this.attackCharge > this.nextAttackChargeNeeded - 145;
             if (almostIshDone) {
                 if (!this.attackName.hasWarned && !this.nextAttack.isPassive && this.attackName.active) {
                     this.attackName.hasWarned = true;

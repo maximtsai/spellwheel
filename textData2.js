@@ -745,19 +745,19 @@ let textData2 = {
         "jp": ""
     },
     "level1_train_tut_a": {
-        "en_us": "Goal: Defeat the\nenemy in just\n4 spells",
+        "en_us": "Goal: Defeat\nenemy in\n4 spells",
         "fr": "Objectif : Vaincre\nl’ennemi en\nseulement 4 sorts",
-        "zh_tw": "目標：使用少于\n4 個法術擊敗敵人",
-        "zh_cn": "目标：使用少于\n4 个法术击败敌人",
+        "zh_tw": "目標：使用4 個\n法術擊敗敵人",
+        "zh_cn": "目标：使用4 个\n法术击败敌人",
         "ru": "Цель: победить\nврага всего за\n4 заклинания",
         "es": "Objetivo: Derrota\nal enemigo en\nsolo 4 hechizos",
         "jp": "方法:わずか\n4つの呪文で\n敵を倒す"
     },
     "level2_tut_a": {
-        "en_us": "Choose which\nshield to\nuse carefully!",
-        "fr": "Certains boucliers\nsont plus utiles\ncontre certaines\nattaques",
-        "zh_tw": "不同的盾牌適合\n抵禦不同的攻擊",
-        "zh_cn": "不同的盾牌适合\n抵御不同的攻击",
+        "en_us": "Some enemy attacks\ncharge up\nautomatically!",
+        "fr": "certaines attaques\nennemies se chargent\nautomatiquement !",
+        "zh_tw": "有些敌人攻擊會\n自行發動！",
+        "zh_cn": "有些敌人攻击会\n自行发动！",
         "ru": "Разные щиты подходят\nдля сопротивления\nразным атакам.",
         "es": "Diferentes escudos\nson adecuados\npara resistir\ndiferentes ataques.",
         "jp": "さまざまな攻撃に抵抗\nするために、さまざまなシ\nールドが適しています"

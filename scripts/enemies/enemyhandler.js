@@ -41,7 +41,7 @@ function createEnemy(num) {
          globalObjects.currentEnemy = new Statue(PhaserScene, gameConsts.halfWidth + 7, 260, num);
          break;
     case 6:
-        globalObjects.currentEnemy = new Knight(PhaserScene, gameConsts.halfWidth, 163, num);
+        globalObjects.currentEnemy = new KnightDemo(PhaserScene, gameConsts.halfWidth, 163, num);
         break;
     case 7:
     case 8:

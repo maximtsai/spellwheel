@@ -234,52 +234,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">backgrounds/fake_death_bg.png</key>
-            <key type="filename">backgrounds/fake_death_punch.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>88,113,175,225</rect>
-                <key>scale9Paddings</key>
-                <rect>88,113,175,225</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/firebg0.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.9</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>175,213,350,425</rect>
-                <key>scale9Paddings</key>
-                <rect>175,213,350,425</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/firebg1.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.9</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>175,200,350,400</rect>
-                <key>scale9Paddings</key>
-                <rect>175,200,350,400</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">backgrounds/fog_slice.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -342,8 +296,6 @@
                 <false/>
             </struct>
             <key type="filename">backgrounds/graves.png</key>
-            <key type="filename">backgrounds/waterfall.png</key>
-            <key type="filename">backgrounds/waterfallrocks.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -359,7 +311,6 @@
                 <false/>
             </struct>
             <key type="filename">backgrounds/menu_back.png</key>
-            <key type="filename">backgrounds/menu_bot.png</key>
             <key type="filename">backgrounds/menu_top.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -436,21 +387,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">backgrounds/settingsScreen.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.98</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>169,205,338,410</rect>
-                <key>scale9Paddings</key>
-                <rect>169,205,338,410</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">backgrounds/star.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -463,51 +399,6 @@
                 <rect>175,225,350,450</rect>
                 <key>scale9Paddings</key>
                 <rect>175,225,350,450</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/star_blur.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.8</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>92,103,183,206</rect>
-                <key>scale9Paddings</key>
-                <rect>92,103,183,206</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/star_red.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>146,165,293,329</rect>
-                <key>scale9Paddings</key>
-                <rect>146,165,293,329</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/star_shatter.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>182,208,363,415</rect>
-                <key>scale9Paddings</key>
-                <rect>182,208,363,415</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

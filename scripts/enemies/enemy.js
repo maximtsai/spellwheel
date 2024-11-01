@@ -840,7 +840,7 @@ class Enemy {
             if (amt < this.shield) {
                 let randX = (Math.random() - 0.5) * 60;
                 let randY = (Math.random() - 0.5) * 50;
-                messageBus.publish('animateBlockNum', this.shieldText.x + 1 + randX, this.shieldText.y - 15 + randY, -amt, 0.65 + Math.sqrt(amt) * 0.09);
+                messageBus.publish('animateBlockNum', this.shieldText.x + 1 + randX, this.shieldText.y - 30 + randY, -amt, 0.65 + Math.sqrt(amt) * 0.09);
                 this.shield -= amt;
                 amt = 0;
                 this.playShieldHitAnim();

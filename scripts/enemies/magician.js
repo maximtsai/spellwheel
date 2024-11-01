@@ -234,6 +234,22 @@
         });
      }
 
+     manaulClearTimeObjects() {
+         while (this.timeObjects.length > 0) {
+             let currObj = this.timeObjects.shift();
+             this.addTween({
+                 targets: currObj,
+                 scaleX: 0,
+                 scaleY: 0,
+                 ease: 'Back.easeIn',
+                 duration: 600,
+                 onComplete: () => {
+                     currObj.destroy();
+                 }
+             })
+         }
+     }
+
      die() {
          if (this.dead || this.invincible) {
              return;
@@ -250,6 +266,7 @@
         messageBus.publish("closeCombatText");
         globalObjects.magicCircle.cancelTimeSlow();
         if (this.lifeOne) {
+            this.manaulClearTimeObjects();
             this.interruptCurrentAttack();
             this.setAsleep();
             playSound('time_hard');
@@ -448,7 +465,7 @@
                     setTimeout(() => {
                         this.showRune();
                     }, 900);
-                });
+                }, false);
             });
         }, 500);
      }
@@ -968,7 +985,7 @@
         let angleDivider = gameVars.isHardMode ? 10 : 10;
         for (let i = 0; i < totalAmt; i++) {
             this.addTween({
-                delay: i * 180,
+                delay: i * 190,
                 duration: 300,
                 targets: this.sprite,
                 scaleX: this.sprite.startScale,
@@ -1009,12 +1026,12 @@
                             ease: 'Quart.easeOut'
                         });
                         let numAttacks = (i + 1) * 2;
-                        if (i < (gameVars.isHardMode ? 8 : 7)) {
+                        if (i < 6) {
                             this.attackName.setText("}" + damageAmt + "x" + numAttacks + "}");
-                        } else if (i < (gameVars.isHardMode ? 17 : 15)) {
+                        } else if (i < 12) {
                             this.attackName.setText("}}" + damageAmt + "x" + numAttacks + "}}");
                             this.repositionAngrySymbol();
-                        } else if (i < (gameVars.isHardMode ? 25 : 21)) {
+                        } else if (i < 19) {
                             this.attackName.setText("}}}" + damageAmt + "x" + numAttacks + "}}}");
                             this.repositionAngrySymbol();
                         } else {
@@ -1113,7 +1130,7 @@
                  {
                      name: "}3x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: gameVars.isHardMode ? 300 : 365,
+                     chargeAmt: gameVars.isHardMode ? 350 : 385,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {

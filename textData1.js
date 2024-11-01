@@ -589,7 +589,7 @@ let textData = {
     },
     "time_tut_desc": {
         "en_us": "The Time Rune grants control\nover time itself. Time spells let\nyou attack multiple times, defer damage,\nor slow your enemies to a crawl.",
-        "fr": "La Rune du Temps accorde le\ncontrôle du temporel. Les sorts de\ntemps vous permettent d'attaquer plusieurs\nfois, de retarder les blessures, voire\nde ralentir vos ennemis jusqu'à l'immobilité.",
+        "fr": "La Rune du Temps accorde le\ncontrôle du temporel. Les sorts de\ntemps vous permettent d'attaquer plusieurs\nfois, de retarder les blessures, voire de\nralentir vos ennemis jusqu'à l'immobilité.",
         "zh_tw": "時間符文授予對時間的控\n制權。時間法術讓你能多次\n攻擊，延緩受傷時間，甚至\n凍結時間來減慢敵人的行動。",
         "zh_cn": "时间符文授予对时间的控\n制权。时间法术让你能多次\n攻击，延缓受伤时间，甚至\n冻结时间来减慢敌人的行动。",
         "ru": "Руна Времени предоставляет\nконтроль над самим временем.\nЗаклинания Времени позволяют вам атаковать\nнесколько раз, откладывать урон или\nзамедлять ваших врагов до предела.",

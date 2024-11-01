@@ -304,7 +304,7 @@ let textData2 = {
         "jp": "どうやら私は倒すすべての敵の力を手に入れたようだ! 旅は長いかもしれないが、十分な数の敵を倒せば、いつの日か死そのものに立ち向かえるようになるかもしれない!"
     },
     "post_fight_story4": {
-        "en_us": "The nagging Reaper once again comes\nto sow doubt in my mind.\n\nBut when I close my eyes and think of\nyour smile, I feel my purpose is rekindled.\nI will be together with you again, no\nmatter the cost.",
+        "en_us": "The nagging Reaper once again\ncomes to sow doubt in my mind.\n\nBut when I close my eyes and think of\nyour smile, I feel my purpose is rekindled.\nI will be together with you again, no\nmatter the cost.",
         "fr": "Le Reaper lancinant essaie encore une\nfois de me faire douter de mon chemin.\n\nMais quand je ferme les yeux et que je pense\nà ton sourire, je ressens un sentiment de\ndétermination renouvelé. Je serai à nouveau\navec toi, quel qu'en soit le prix.",
         "zh_tw": "嘮叨的死神再次試圖讓我\n懷疑我的道路。\n\n但只要我閉上眼睛，想起你的笑容時，\n我相信最終所有的犧牲都是值得的。",
         "zh_cn": "唠叨的死神再次试图让我\n怀疑我的道路。\n\n但只要我闭上眼睛，想起你的笑容时，\n我相信最终所有的牺牲都是值得的。",

@@ -199,57 +199,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">shields/forceBreak1.png</key>
-            <key type="filename">shields/forceBreak2.png</key>
-            <key type="filename">shields/forceBreak3.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.75</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>125,125,250,250</rect>
-                <key>scale9Paddings</key>
-                <rect>125,125,250,250</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">shields/forceField1.png</key>
-            <key type="filename">shields/forceField10.png</key>
-            <key type="filename">shields/forceField11.png</key>
-            <key type="filename">shields/forceField12.png</key>
-            <key type="filename">shields/forceField2.png</key>
-            <key type="filename">shields/forceField3.png</key>
-            <key type="filename">shields/forceField4.png</key>
-            <key type="filename">shields/forceField5.png</key>
-            <key type="filename">shields/forceField6.png</key>
-            <key type="filename">shields/forceField7.png</key>
-            <key type="filename">shields/forceField8.png</key>
-            <key type="filename">shields/forceField9.png</key>
-            <key type="filename">shields/forceFieldShort1.png</key>
-            <key type="filename">shields/forceFieldShort2.png</key>
-            <key type="filename">shields/forceFieldShort3.png</key>
-            <key type="filename">shields/forceFieldShort4.png</key>
-            <key type="filename">shields/forceFieldShort5.png</key>
-            <key type="filename">shields/forceFieldShort6.png</key>
-            <key type="filename">shields/forceFieldShort7.png</key>
-            <key type="filename">shields/forceFieldShort8.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.82</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>95,95,190,190</rect>
-                <key>scale9Paddings</key>
-                <rect>95,95,190,190</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">shields/frame0000.png</key>
             <key type="filename">shields/frame0001.png</key>
             <key type="filename">shields/frame0002.png</key>

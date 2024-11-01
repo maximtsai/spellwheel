@@ -596,7 +596,6 @@
             <key type="filename">enemies/gunflash_3.png</key>
             <key type="filename">enemies/gunflash_4.png</key>
             <key type="filename">enemies/gunflash_5.png</key>
-            <key type="filename">enemies/missile.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -878,51 +877,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/robot0.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.625</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>125,121,250,242</rect>
-                <key>scale9Paddings</key>
-                <rect>125,121,250,242</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot1.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.6</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>125,121,250,242</rect>
-                <key>scale9Paddings</key>
-                <rect>125,121,250,242</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.6</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>125,125,250,250</rect>
-                <key>scale9Paddings</key>
-                <rect>125,125,250,250</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">enemies/robot_blast.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -954,70 +908,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/robot_blush.png</key>
-            <key type="filename">enemies/roboteye.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>125,121,250,242</rect>
-                <key>scale9Paddings</key>
-                <rect>125,121,250,242</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_broken.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.57</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>143,138,285,275</rect>
-                <key>scale9Paddings</key>
-                <rect>143,138,285,275</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_charge.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>75,75,150,150</rect>
-                <key>scale9Paddings</key>
-                <rect>75,75,150,150</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_claw_1.png</key>
-            <key type="filename">enemies/robot_claw_2.png</key>
-            <key type="filename">enemies/robot_claw_b1.png</key>
-            <key type="filename">enemies/robot_claw_b2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.64</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>154,137,309,275</rect>
-                <key>scale9Paddings</key>
-                <rect>154,137,309,275</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">enemies/robot_dead.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -1030,21 +920,6 @@
                 <rect>68,36,136,71</rect>
                 <key>scale9Paddings</key>
                 <rect>68,36,136,71</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_dead_left.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.625</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>57,50,113,100</rect>
-                <key>scale9Paddings</key>
-                <rect>57,50,113,100</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1063,39 +938,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/robot_energy1.png</key>
-            <key type="filename">enemies/robot_energy2.png</key>
-            <key type="filename">enemies/robot_energy3.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.37</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>205,149,409,299</rect>
-                <key>scale9Paddings</key>
-                <rect>205,149,409,299</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_fire_1.png</key>
-            <key type="filename">enemies/robot_fire_2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.625</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>162,68,323,136</rect>
-                <key>scale9Paddings</key>
-                <rect>162,68,323,136</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">enemies/robot_flutter.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -1111,67 +953,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/robot_heart.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.6</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>130,145,260,289</rect>
-                <key>scale9Paddings</key>
-                <rect>130,145,260,289</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_hide.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.55</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>84,88,167,175</rect>
-                <key>scale9Paddings</key>
-                <rect>84,88,167,175</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_hide_2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.55</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>85,88,171,176</rect>
-                <key>scale9Paddings</key>
-                <rect>85,88,171,176</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_laser.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.59</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>144,121,287,242</rect>
-                <key>scale9Paddings</key>
-                <rect>144,121,287,242</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_laser_fire.png</key>
+            <key type="filename">enemies/roboteye.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -1180,70 +962,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>75,118,150,235</rect>
+                <rect>125,121,250,242</rect>
                 <key>scale9Paddings</key>
-                <rect>75,118,150,235</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_matter.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.59</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>143,138,285,275</rect>
-                <key>scale9Paddings</key>
-                <rect>143,138,285,275</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_shoot.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.65</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>151,91,301,182</rect>
-                <key>scale9Paddings</key>
-                <rect>151,91,301,182</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_time1.png</key>
-            <key type="filename">enemies/robot_time2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.59</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>125,125,250,250</rect>
-                <key>scale9Paddings</key>
-                <rect>125,125,250,250</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_void.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.58</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>125,125,250,250</rect>
-                <key>scale9Paddings</key>
-                <rect>125,125,250,250</rect>
+                <rect>125,121,250,242</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1259,21 +980,6 @@
                 <rect>55,24,110,48</rect>
                 <key>scale9Paddings</key>
                 <rect>55,24,110,48</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/thorns2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>138,63,275,125</rect>
-                <key>scale9Paddings</key>
-                <rect>138,63,275,125</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

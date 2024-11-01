@@ -41,9 +41,10 @@
 
      showPoster(startImg = 'dummy_paper_hit.png', finalRot = 0) {
          this.poster = this.addSprite(this.sprite.x, this.sprite.y, 'dummyenemy', startImg).setDepth(this.sprite.depth - 1).setScale(this.sprite.startScale*0.1);
-         this.addExtraSprite(this.poster);
          this.poster.setRotation(-0.7);
+         this.addExtraSprite(this.poster);
          this.addTween({
+             delay: 100,
              targets: this.poster,
              scaleX: this.sprite.startScale,
              scaleY: this.sprite.startScale,
@@ -60,6 +61,7 @@
              }
          })
          this.addTween({
+             delay: 100,
              targets: this.poster,
              rotation: 0,
              ease: 'Quint.easeIn',
@@ -68,15 +70,16 @@
                  playSound('boing');
                  this.addTween({
                      targets: this.poster,
-                     rotation: -0.15,
+                     rotation: -0.2,
                      ease: 'Quart.easeOut',
-                     duration: 60,
+                     duration: 100,
                      onComplete: () => {
                          this.addTween({
                              targets: this.poster,
-                             rotation: 0,
+                             rotation: -0.02,
                              ease: 'Bounce.easeOut',
-                             duration: 250,
+                             duration: 260,
+
                          })
                      }
                  })
@@ -95,8 +98,9 @@
              targets: this.poster,
              scaleX: currScale * 1.03,
              scaleY: currScale * 1.03,
+             rotation: -0.04,
              ease: 'Quint.easeOut',
-             duration: 150,
+             duration: 135,
              onComplete: () => {
                  if (this.posterTween) {
                      this.posterTween.stop();
@@ -108,12 +112,11 @@
                      ease: 'Quart.easeIn',
                      duration: 700
                  })
-                 this.poster.rotation -= 0.05;
                  this.addTween({
                      targets: this.poster,
-                     rotation: -0.6,
+                     rotation: -0.7,
                      ease: 'Quad.easeIn',
-                     duration: 700
+                     duration: 600
                  })
              }
          })
@@ -220,7 +223,7 @@
                             onComplete: () => {
                                 this.runSfxLoop = playSound('tractor_loop', 0, true);
                                 this.currDummyAnim = this.runTween = this.addTween({
-                                    targets: [this.sprite, this.poster],
+                                    targets: [this.sprite],
                                     rotation: 0.02,
                                     ease: "Quart.easeInOut",
                                     duration: 500,
@@ -228,13 +231,16 @@
                                     yoyo: true,
                                 });
                                 this.posterTween = this.addTween({
-                                    delay: 500,
+                                    delay: 1000,
                                     targets: this.poster,
-                                    rotation: -0.02,
+                                    rotation: 0.02,
                                     ease: "Quart.easeInOut",
                                     duration: 500,
                                     repeat: -1,
                                     yoyo: true,
+                                    onStart: () => {
+                                        this.poster.rotation = -0.02;
+                                    }
                                 });
                             }
                         });

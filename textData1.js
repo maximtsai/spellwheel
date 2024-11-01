@@ -138,26 +138,26 @@ let textData = {
         "jp": "24ダメージを与える。\n24個の一時的な保護を得る。"
     },
     "time_strike_desc": {
-        "en_us": "Hits twice.\nFirst hit deals\n6 damage, second\nhit deals 50%\nof the first.",
-        "fr": "Attaque deux fois.\nLa première attaque\ninflige 6 dégâts,\nla seconde inflige\n50% des dégâts de\nla première.",
-        "zh_tw": "攻擊兩次。第一次\n造成 6 點傷害，\n第二次造成第一次\n攻擊傷害的 50%。",
-        "zh_cn": "攻击两次。第一次\n造成 6 点伤害，\n第二次造成第一次\n攻擊伤害的 50%。",
+        "en_us": "Deal 6 damage,\nfollowed by a\nsecond additional\nattack at half\npower",
+        "fr": "Inflige 6 points\nde dégâts, suivi\nd'une deuxième\nattaque supplémentaire\nà moitié puissance.",
+        "zh_tw": "打擊兩次。第一次\n造成 6 點傷害，\n第二次造成第一次\n攻擊傷害的 50%。",
+        "zh_cn": "打击两次。第一次\n造成 6 点伤害，\n第二次造成第一次\n攻擊伤害的 50%。",
         "ru": "Атаковать дважды.\nПервая атака наносит\n6 урона, вторая\nнаносит 50% урона\nот первой атаки.",
         "es": "Ataca dos veces.\nEl primer ataque\ninflige 6 de daño,\nel segundo ataque\ninflige el 50%\ndel primero.",
         "jp": "2回攻撃する。最初の\n攻撃は6ダメージを与え、\n2回目の攻撃は最初の\n攻撃の50%を与えます。"
     },
     "time_strike_desc_long": {
-        "en_us": "Hits twice. First hit deals 6 damage,\nsecond hit deals 50% of the first.",
-        "fr": "Attaque deux fois. La première attaque inflige 6 dégâts,\nla seconde inflige 50% des dégâts de la première.",
-        "zh_tw": "攻擊兩次。第一次造成 6 點傷害，\n第二次造成第一次攻擊傷害的 50%。",
-        "zh_cn": "攻击两次。第一次造成 6 点伤害，\n第二次造成第一次攻擊伤害的 50%。",
+        "en_us": "Deal 6 damage, followed by a second\nadditional attack at half power",
+        "fr": "Inflige 6 points de dégâts, suivi d'une\ndeuxième attaque supplémentaire à moitié puissance.",
+        "zh_tw": "打擊兩次。第一次造成 6 點傷害，\n第二次造成第一次攻擊傷害的 50%。",
+        "zh_cn": "打击两次。第一次造成 6 点伤害，\n第二次造成第一次攻擊伤害的 50%。",
         "ru": "Атаковать дважды. Первая атака наносит 6 урона,\nвторая наносит 50% урона от первой атаки.",
         "es": "Ataca dos veces. El primer ataque inflige 6 de\ndaño, el segundo ataque inflige el 50% del primero.",
         "jp": "2回攻撃する。最初の攻撃は6ダメージを与え、\n2回目の攻撃は最初の攻撃の50%を与えます。"
     },
     "time_enhance_desc": {
         "en_us": "Your next attack\nis fired an\nadditional time",
-        "fr": "Votre prochaine\nattaque est lancée\nune fois de plus.",
+        "fr": "Votre prochaine\nattaque est lancée\nune fois de plus",
         "zh_tw": "你的下一次攻擊\n將額外發射一次",
         "zh_cn": "你的下一次攻击\n将多发射一次",
         "ru": "Ваша следующая\nатака будет\nвыполнена дважды",

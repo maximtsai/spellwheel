@@ -245,14 +245,14 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
             globalObjects.reaperDarkFlashTop3 = PhaserScene.add.image(-150, gameConsts.halfHeight, 'pixels', 'black_blue_pixel.png').setOrigin(1, 0.5).setDepth(60);
         }
         globalObjects.reaperDarkFlashBot.setScale(700).setAlpha(0).setVisible(true);
-        globalObjects.reaperDarkFlashTop.setScale(500, 750).setRotation(0.35).setPosition(-160, gameConsts.halfHeight).setAlpha(0.05).setVisible(true);
-        globalObjects.reaperDarkFlashTop2.setScale(21, 700).setRotation(0.28).setPosition(-140, gameConsts.halfHeight).setAlpha(0.65).setVisible(true);
-        globalObjects.reaperDarkFlashTop3.setScale(55, 700).setRotation(0.22).setPosition(-120, gameConsts.halfHeight).setAlpha(1).setVisible(true);
+        globalObjects.reaperDarkFlashTop.setScale(500, 750).setRotation(0.38).setPosition(-160, gameConsts.halfHeight).setAlpha(0.05).setVisible(true);
+        globalObjects.reaperDarkFlashTop2.setScale(30 + Math.random() * 80, 700).setRotation(0.3).setPosition(-140, gameConsts.halfHeight).setAlpha(0.65).setVisible(true);
+        globalObjects.reaperDarkFlashTop3.setScale(500, 750).setRotation(0.26).setPosition(-120, gameConsts.halfHeight).setAlpha(0.25).setVisible(true);
 
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop,
             scaleY: 750,
-            duration: 150,
+            duration: 350,
             onComplete: () => {
                 setupReaperArrival();
                 tweenFloatingDeath(0.75, 1, 1200, "Cubic.easeInOut", () => {
@@ -496,47 +496,50 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
 
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop3,
-            duration: 370,
+            duration: 340 + Math.floor(Math.random() * 30),
+            rotation: 0.15,
             ease: 'Quad.easeIn',
-            x: gameConsts.width + 300,
+            x: gameConsts.width + 160,
             onComplete: () => {
                 globalObjects.reaperDarkFlashTop3.visible = false;
             }
         })
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop3,
-            alpha: 0,
-            duration: 410,
+            alpha: 1,
+            duration: 610,
             ease: 'Cubic.easeIn',
-            scaleX: 130,
         })
 
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop2,
             alpha: 1,
-            duration: 375,
-            ease: 'Quart.easeIn',
+            duration: 420,
+            ease: 'Quad.easeIn',
+            rotation: 0.23,
             x: gameConsts.width + 140,
+            completeDelay: 30,
             onComplete: () => {
-                setFloatingDeathVisible(true);
-
                 globalObjects.reaperDarkFlashTop2.visible = false;
             }
         })
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop2,
             alpha: 1,
-            duration: 400,
-            ease: 'Quart.easeIn',
+            duration: 450,
+            ease: 'Cubic.easeIn',
             scaleX: 0,
         })
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop,
             alpha: 1.05,
-            duration: 450,
-            ease: 'Quart.easeIn',
+            duration: 550,
+            ease: 'Cubic.easeIn',
+            rotation: 0.33,
             x: gameConsts.width + 180,
+            completeDelay: 100,
             onComplete: () => {
+                setFloatingDeathVisible(true);
                 globalObjects.reaperDarkFlashTop.setAlpha(1);
                 globalObjects.reaperDarkFlashBot.setAlpha(1);
                 PhaserScene.tweens.add({
@@ -553,8 +556,8 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
                     targets: globalObjects.reaperDarkFlashTop,
                     scaleX: 0,
                     alpha: 0,
-                    duration: 450,
-                    ease: 'Quart.easeIn',
+                    duration: 500,
+                    ease: 'Cubic.easeOut',
                     onComplete: () => {
                         globalObjects.reaperDarkFlashTop2.visible = false;
                     }

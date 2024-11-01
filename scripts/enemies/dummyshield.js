@@ -204,7 +204,7 @@
                  // 0
                  {
                      name: "}6",
-                     chargeAmt: 500,
+                     chargeAmt: 550,
                      finishDelay: 800,
                      transitionFast: true,
                      chargeMult: 8,
@@ -221,7 +221,7 @@
                  },
                  {
                      name: "}10",
-                     chargeAmt: 500,
+                     chargeAmt: 550,
                      chargeMult: 8,
                      finishDelay: 800,
                      transitionFast: true,

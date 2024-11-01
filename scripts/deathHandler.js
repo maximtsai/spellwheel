@@ -246,8 +246,8 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
         }
         globalObjects.reaperDarkFlashBot.setScale(700).setAlpha(0).setVisible(true);
         globalObjects.reaperDarkFlashTop.setScale(500, 750).setRotation(0.38).setPosition(-160, gameConsts.halfHeight).setAlpha(0.05).setVisible(true);
-        globalObjects.reaperDarkFlashTop2.setScale(30 + Math.random() * 80, 700).setRotation(0.3).setPosition(-140, gameConsts.halfHeight).setAlpha(0.65).setVisible(true);
-        globalObjects.reaperDarkFlashTop3.setScale(500, 750).setRotation(0.26).setPosition(-120, gameConsts.halfHeight).setAlpha(0.25).setVisible(true);
+        globalObjects.reaperDarkFlashTop2.setScale(50 + Math.random() * 80, 700).setRotation(0.3).setPosition(-140, gameConsts.halfHeight).setAlpha(0.65).setVisible(true);
+        globalObjects.reaperDarkFlashTop3.setScale(500, 750).setRotation(0.26).setPosition(-120, gameConsts.halfHeight).setAlpha(0.3).setVisible(true);
 
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop,
@@ -496,8 +496,8 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
 
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop3,
-            duration: 340 + Math.floor(Math.random() * 30),
-            rotation: 0.15,
+            duration: 320 + Math.floor(Math.random() * 30),
+            rotation: 0.12,
             ease: 'Quad.easeIn',
             x: gameConsts.width + 160,
             onComplete: () => {
@@ -507,14 +507,15 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop3,
             alpha: 1,
-            duration: 610,
+            duration: 450,
             ease: 'Cubic.easeIn',
         })
 
         PhaserScene.tweens.add({
+            delay: 10,
             targets: globalObjects.reaperDarkFlashTop2,
             alpha: 1,
-            duration: 420,
+            duration: 465 + Math.random() * 30,
             ease: 'Quad.easeIn',
             rotation: 0.23,
             x: gameConsts.width + 140,
@@ -526,16 +527,24 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop2,
             alpha: 1,
-            duration: 450,
+            duration: 480,
             ease: 'Cubic.easeIn',
-            scaleX: 0,
+            scaleX: 40,
         })
+        let durAmt = 570 + Math.random() * 50;
         PhaserScene.tweens.add({
+            delay: 10,
             targets: globalObjects.reaperDarkFlashTop,
-            alpha: 1.05,
-            duration: 550,
+            alpha: 1,
+            duration: durAmt,
+            ease: 'Quint.easeIn',
+        });
+        PhaserScene.tweens.add({
+            delay: 20,
+            targets: globalObjects.reaperDarkFlashTop,
+            duration: durAmt,
             ease: 'Cubic.easeIn',
-            rotation: 0.33,
+            rotation: 0.32,
             x: gameConsts.width + 180,
             completeDelay: 100,
             onComplete: () => {

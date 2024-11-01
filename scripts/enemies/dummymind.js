@@ -112,7 +112,7 @@
                  }, 400)
                  globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level1_train_popup'), 'center');
 
-             }, 1200);
+             }, 1500);
 
              // messageBus.publish('enemyAddShield', 500)
         });
@@ -164,13 +164,13 @@
             return;
         }
         this.currDummyAnim = this.addTween({
-            delay: 900,
+            delay: 1900,
             targets: [this.sprite, this.poster],
             scaleX: this.sprite.startScale * 0.82,
             scaleY: this.sprite.startScale * 0.82,
             rotation: -0.25,
             ease: "Quint.easeOut",
-            duration: 600,
+            duration: 500,
             onComplete: () => {
                 this.currDummyAnim = this.addTween({
                     targets: [this.sprite, this.poster],
@@ -178,7 +178,7 @@
                     scaleY: this.sprite.startScale * 1.2,
                     rotation: 0.07,
                     ease: "Quart.easeIn",
-                    duration: 500,
+                    duration: 480,
                     onComplete: () => {
                         playSound('magic', 0.6);
                         this.isFacingFront = !this.isFacingFront;

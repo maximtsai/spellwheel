@@ -240,7 +240,7 @@
                      block: 60,
                      isPassive: true,
                      customCall: " ",
-                     chargeAmt: 260,
+                     chargeAmt: 290,
                     transitionFast: true,
                      startFunction: () => {
                         this.attackScale = 1;

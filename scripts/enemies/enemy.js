@@ -1799,6 +1799,7 @@ class Enemy {
                 this.attackGlow.currAnim.stop();
             }
             this.attackGlow.visible = false;
+            this.attackGlow.y = -100;
         }
         if (this.attackDarken) {
             if (this.attackDarken.currAnim) {

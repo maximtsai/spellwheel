@@ -47,7 +47,7 @@ function createEnemy(num) {
     case 8:
     case 9:
     case 10:
-        globalObjects.currentEnemy = new KillerRobot(PhaserScene, gameConsts.halfWidth, 158, num);
+        globalObjects.currentEnemy = new KillerRobotDemo(PhaserScene, gameConsts.halfWidth, 158, num);
         break;
     default:
         globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 185);

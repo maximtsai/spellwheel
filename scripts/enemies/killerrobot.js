@@ -614,7 +614,6 @@
                  if (isWeak) {
 
                  } else {
-                     playSound('metaljpop_short', metalVol).detune = 0;
                  }
 
                  messageBus.publish('playerAddDelayedDamage', damage);
@@ -1720,7 +1719,6 @@
                         y: 3,
                         duration: 50,
                         onComplete: () => {
-                            playSound('explosion');
                             soundToKill.volume = 0.1;
                             this.addTween({
                                 targets: PhaserScene.cameras.main,

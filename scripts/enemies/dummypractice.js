@@ -47,26 +47,40 @@
              targets: this.poster,
              scaleX: this.sprite.startScale,
              scaleY: this.sprite.startScale,
-             duration: 600,
+             duration: 500,
+             onComplete: () => {
+                 // this.addTween({
+                 //     targets: this.poster,
+                 //     scaleX: this.sprite.startScale,
+                 //     scaleY: this.sprite.startScale,
+                 //     rotation: finalRot,
+                 //     ease: 'Bounce.easeOut',
+                 //     duration: 400
+                 // })
+             }
+         })
+         this.addTween({
+             targets: this.poster,
+             rotation: 0,
+             ease: 'Quint.easeIn',
+             duration: 500,
              onComplete: () => {
                  playSound('boing');
                  this.addTween({
                      targets: this.poster,
-                     scaleX: this.sprite.startScale,
-                     scaleY: this.sprite.startScale,
-                     rotation: finalRot,
-                     ease: 'Bounce.easeOut',
-                     duration: 400
+                     rotation: -0.15,
+                     ease: 'Quart.easeOut',
+                     duration: 60,
+                     onComplete: () => {
+                         this.addTween({
+                             targets: this.poster,
+                             rotation: 0,
+                             ease: 'Bounce.easeOut',
+                             duration: 250,
+                         })
+                     }
                  })
              }
-         })
-         this.addTween({
-             delay: 400,
-             targets: this.poster,
-             rotation: 0,
-             ease: 'Bounce.easeOut',
-             easeParams: [0.5],
-             duration: 600
          })
      }
 
@@ -74,24 +88,31 @@
          if (!this.poster) {
              return;
          }
-         if (this.posterTween) {
-             this.posterTween.stop();
-         }
 
-         playSound('balloon', 0.4)
+         playSound('balloon', 0.4);
+         let currScale = this.poster.scaleX;
          this.addTween({
              targets: this.poster,
-             scaleX: this.sprite.startScale * 1.03,
-             scaleY: this.sprite.startScale * 1.03,
+             scaleX: currScale * 1.03,
+             scaleY: currScale * 1.03,
              ease: 'Quint.easeOut',
              duration: 150,
              onComplete: () => {
+                 if (this.posterTween) {
+                     this.posterTween.stop();
+                 }
                  this.addTween({
                      targets: this.poster,
-                     rotation: -0.8,
                      scaleX: 0,
                      scaleY: 0,
-                     ease: 'Cubic.easeIn',
+                     ease: 'Quart.easeIn',
+                     duration: 700
+                 })
+                 this.poster.rotation -= 0.05;
+                 this.addTween({
+                     targets: this.poster,
+                     rotation: -0.6,
+                     ease: 'Quad.easeIn',
                      duration: 700
                  })
              }

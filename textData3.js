@@ -271,7 +271,7 @@ let textData3 = {
         "jp": ""
     },
     "death4d": {
-        "en_us": "ONE DAY, THESE ACTIONS\nWILL REAP CONSEQUENCES.",
+        "en_us": "ONE DAY, THESE ACTIONS\nSHALL REAP CONSEQUENCES.",
         "fr": "UN JOUR, CES ACTIONS\nAURONT DES CONSÉQUENCES.",
         "zh_tw": "有一天，這些行為\n必將帶來後果。",
         "zh_cn": "有一天，这些行为\n必将带来后果。",

@@ -65,7 +65,7 @@
     }
 
      initBird() {
-         this.bird = this.addImage(this.x - 87, this.y - 193, 'enemies', 'bird_1.png').setAlpha(0).setDepth(-1);
+         this.bird = this.addImage(this.x - 87, this.y - 194, 'enemies', 'bird_1.png').setAlpha(0).setDepth(-1);
          this.bird.scaleX = -1
          this.addTween({
              delay: 150,
@@ -73,6 +73,24 @@
              alpha: 1,
              ease: 'Quad.easeIn',
              duration: 500,
+             onStart: () => {
+                 this.addTween({
+                     delay: 350,
+                     targets: [this.bird],
+                     scaleY: 1.27,
+                     ease: 'Quad.easeIn',
+                     duration: 300,
+                     onComplete: () => {
+                         playSound('chirp1', 0.4).detune = 50;
+                         this.addTween({
+                             targets: [this.bird],
+                             scaleY: 1,
+                             ease: 'Back.easeOut',
+                             duration: 300,
+                         });
+                     }
+                 });
+            }
          });
      }
 
@@ -306,9 +324,6 @@
      }
 
      birdFalls() {
-         setTimeout(() => {
-             playSound('chirp1', 0.75);
-         }, 750)
          this.bird.setDepth(20);
          this.bird.y -= 2;
          this.addTween({
@@ -323,6 +338,7 @@
              duration: 1250,
              ease: 'Back.easeIn',
              onComplete: () => {
+                 playSound('chirp1', 0.75).detune = -300;
                  this.bird.setFrame('bird_2.png')
                  this.bird.setRotation(-0.4);
                  this.addTween({

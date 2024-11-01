@@ -164,13 +164,13 @@
             return;
         }
         this.currDummyAnim = this.addTween({
-            delay: 1600,
+            delay: 900,
             targets: [this.sprite, this.poster],
             scaleX: this.sprite.startScale * 0.82,
             scaleY: this.sprite.startScale * 0.82,
             rotation: -0.25,
             ease: "Quint.easeOut",
-            duration: 650,
+            duration: 600,
             onComplete: () => {
                 this.currDummyAnim = this.addTween({
                     targets: [this.sprite, this.poster],
@@ -178,7 +178,7 @@
                     scaleY: this.sprite.startScale * 1.2,
                     rotation: 0.07,
                     ease: "Quart.easeIn",
-                    duration: 550,
+                    duration: 500,
                     onComplete: () => {
                         playSound('magic', 0.6);
                         this.isFacingFront = !this.isFacingFront;

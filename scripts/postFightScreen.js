@@ -589,10 +589,11 @@ class PostFightScreen {
         fadeInSound(this.windSfx, 0.85, 2000);
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
+        gameVars.maxLevel = Math.max(gameVars.maxLevel, level + 1);
+
         if (level > gameVars.latestLevel) {
             gameVars.latestLevel = level;
             localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
-            gameVars.maxLevel = Math.max(gameVars.maxLevel, level);
             localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
         }
 

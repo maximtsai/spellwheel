@@ -762,7 +762,7 @@
                  // 0
                  {
                      name: gameVars.isHardMode ? "}10 " : "}8 ",
-                     chargeAmt: 425,
+                     chargeAmt: 415,
                      damage: gameVars.isHardMode ? 10 : 8,
                      attackFinishFunction: () => {
                          screenShake(5);
@@ -795,7 +795,7 @@
                  },
                  {
                      name: "HEAL\\30",
-                     chargeAmt: 325,
+                     chargeAmt: 315,
                      damage: 0,
                      startFunction: () => {
                          this.addTimeout(() => {
@@ -808,7 +808,7 @@
                  },
                  {
                      name: gameVars.isHardMode ? "|15" : "|12 ",
-                     chargeAmt: 350,
+                     chargeAmt: 340,
                      damage: gameVars.isHardMode ? 15 : 12,
                      isBigMove: true,
                      attackFinishFunction: () => {
@@ -844,7 +844,7 @@
                  },
                  {
                      name: "HEAL\\30",
-                     chargeAmt: 325,
+                     chargeAmt: 315,
                      damage: 0,
                      finaleFunction: () => {
                          this.healAnim(30);
@@ -852,7 +852,7 @@
                  },
                  {
                      name: gameVars.isHardMode ? ";30" : ";25",
-                     chargeAmt: 600,
+                     chargeAmt: 580,
                      damage: gameVars.isHardMode ? 30 : 25,
                      isBigMove: true,
                      attackFinishFunction: () => {

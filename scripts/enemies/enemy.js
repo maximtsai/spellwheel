@@ -265,15 +265,15 @@ class Enemy {
         this.chargeBarFlash2.scaleY = this.chargeBarMax.scaleY;
 
         this.chargeBarEst1 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'soft_blue_pixel.png');
-        this.chargeBarEst1.setScale(6.9, this.chargeBarMax.scaleY - 2);
+        this.chargeBarEst1.setScale(8.5, this.chargeBarMax.scaleY - 2);
         this.chargeBarEst1.setOrigin(1, 0.5);
         this.chargeBarEst1.alpha = 0;
         this.chargeBarEst1.setDepth(9);
         this.chargeBarShow = false;
-        this.chargeBarEstScale = 6.9;
+        this.chargeBarEstScale = 8.5;
 
         this.chargeBarEst2 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'soft_blue_pixel.png');
-        this.chargeBarEst2.setScale(6.9, this.chargeBarMax.scaleY - 2);
+        this.chargeBarEst2.setScale(8.5, this.chargeBarMax.scaleY - 2);
         this.chargeBarEst2.setOrigin(0, 0.5);
         this.chargeBarEst2.alpha = 0;
         this.chargeBarEst2.setDepth(9);
@@ -442,7 +442,7 @@ class Enemy {
             }
             let almostIshDone = this.attackCharge > this.nextAttackChargeNeeded - 145;
             if (almostIshDone) {
-                if (!this.attackName.hasWarned && !this.nextAttack.isPassive && this.attackName.active) {
+                if (!this.attackName.hasWarned && !this.nextAttack.isPassive && this.attackName.active && !this.dead) {
                     this.attackName.hasWarned = true;
                     let origScale = this.attackName.origScale;
                     if (this.attackName.currAnim) {
@@ -511,7 +511,8 @@ class Enemy {
                 this.attackCharge += timeChange * increaseMult * this.slowMult + castAggravateBonus;
 
             } else {
-                let almostDone = this.attackCharge > this.nextAttackChargeNeeded - 67;
+                let almostDone = this.attackCharge > this.nextAttackChargeNeeded - 45;
+
                 if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone && this.castAggravateCharge <= 0) {
                     // this.attackCharge += timeChange * 0.02 * this.slowMult;
                     this.chargeBarCurr.alpha = 0.62;
@@ -575,7 +576,17 @@ class Enemy {
                     });
                 }
             }
-            let trueScale = Math.min(this.chargeBarEstScale, (this.chargeBarMax.scaleX - this.chargeBarCurr.scaleX) * 0.5 - 1)
+
+            let estScale = this.chargeBarEstScale;
+            if (this.chargeBarCurr.scaleX + estScale * 2 + 10.05 > this.chargeBarMax.scaleX) {
+                estScale = 99;
+            }
+            let willBeAlmostDone = this.attackCharge > this.nextAttackChargeNeeded - 50;
+            // if () {
+            //
+            // }
+
+            let trueScale = Math.min(estScale, (this.chargeBarMax.scaleX - this.chargeBarCurr.scaleX) * 0.5 - 1)
             this.chargeBarEst1.scaleX = trueScale;
             this.chargeBarEst2.scaleX = trueScale;
             // this.setPredictScale();
@@ -1682,7 +1693,6 @@ class Enemy {
         if (this.isDestroyed) {
             return;
         }
-        console.log("destrororor");
         this.dead = true;
         this.isDestroyed = true;
         this.clearEffects()
@@ -1783,6 +1793,7 @@ class Enemy {
         if (this.breatheTween) {
             this.breatheTween.stop();
         }
+
         if (this.attackGlow) {
             if (this.attackGlow.currAnim) {
                 this.attackGlow.currAnim.stop();
@@ -2482,7 +2493,7 @@ class Enemy {
         this.castAggravateCharge += amt;
     }
 
-    setPredictScale(amt = 8) {
+    setPredictScale(amt = 8.3) {
         if (this.lastChargeEstScale != this.chargeBarEstScale) {
             this.lastChargeEstScale = this.chargeBarEstScale;
             if (this.chargeBarEst1.currAnim) {

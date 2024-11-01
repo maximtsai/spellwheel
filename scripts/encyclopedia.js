@@ -560,7 +560,8 @@ class Encyclopedia {
             "unload"];
         let availableRunes = ["strike",
             "matter"];
-        for (let i = 0; i < Math.min(allRunes.length, gameVars.maxLevel); i++) {
+        let targetLevel = Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel , 14));
+        for (let i = 0; i < Math.min(allRunes.length, targetLevel); i++) {
             availableRunes.push(allRunes[i]);
         }
         //rune_question_large.png
@@ -592,8 +593,8 @@ class Encyclopedia {
         for (let i = 0; i < listOfText.length; i++) {
             let action = listOfText[i][0];
             let element = listOfText[i][1];
-            let actionAvailable = availableRunes.indexOf(action) != -1;
-            let elementAvailable = availableRunes.indexOf(element) != -1;
+            let actionAvailable = availableRunes.indexOf(action) !== -1;
+            let elementAvailable = availableRunes.indexOf(element) !== -1;
 
             let actionRuneName = "rune_" + (actionAvailable ? action : 'question') + "_large.png"
             let actionRune = PhaserScene.add.image(gameConsts.halfWidth - 240, startPos1 + i * offset, 'tutorial', actionRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
@@ -604,7 +605,7 @@ class Encyclopedia {
             this.currentPageItems.push(elementRune);
 
             if (actionAvailable && elementAvailable) {
-                if (element == 'energy') {
+                if (element === 'energy') {
                     element = 'mind'
                 }
                 let descText = PhaserScene.add.text(gameConsts.halfWidth - 168, startPos1 + i * offset, this.removeNewlinesIfLong(getLangText(this.createDescLong(action, element))), {fontFamily: 'robotomedium', fontSize: 16, color: '#200000', align: 'left', lineSpacing: -3}).setAlpha(0).setDepth(this.baseDepth).setScale(0.95, 1);

@@ -65,7 +65,7 @@
     }
 
      initBird() {
-         this.bird = this.addImage(this.x - 87, this.y - 193, 'wallenemy', 'bird_1.png').setAlpha(0).setDepth(-1);
+         this.bird = this.addImage(this.x - 87, this.y - 193, 'enemies', 'bird_1.png').setAlpha(0).setDepth(-1);
          this.bird.scaleX = -1
          this.addTween({
              delay: 150,

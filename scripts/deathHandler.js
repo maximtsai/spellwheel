@@ -249,10 +249,11 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
         globalObjects.reaperDarkFlashTop2.setScale(50 + Math.random() * 80, 700).setRotation(0.3).setPosition(-140, gameConsts.halfHeight).setAlpha(0.65).setVisible(true);
         globalObjects.reaperDarkFlashTop3.setScale(500, 750).setRotation(0.26).setPosition(-120, gameConsts.halfHeight).setAlpha(0.3).setVisible(true);
 
+        let randExtraTime = Math.floor(Math.random() * 50);
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop,
             scaleY: 750,
-            duration: 350,
+            duration: 350 + randExtraTime,
             onComplete: () => {
                 setupReaperArrival();
                 tweenFloatingDeath(0.75, 1, 1200, "Cubic.easeInOut", () => {
@@ -531,7 +532,7 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
             ease: 'Cubic.easeIn',
             scaleX: 40,
         })
-        let durAmt = 570 + Math.random() * 50;
+        let durAmt = 570 + randExtraTime;
         PhaserScene.tweens.add({
             delay: 10,
             targets: globalObjects.reaperDarkFlashTop,

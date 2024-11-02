@@ -443,7 +443,7 @@ let textData4 = {
         "jp": "あなたは勝ったと思っていますが、私はまだ終わっていません。"
     },
     "magician_d": {
-        "en_us": "I'll fight once more\nin my invincible prime!",
+        "en_us": "I'll fight once more in\nmy invincible prime!",
         "fr": "Laisse-moi te montrer\nun vrai ennemi !",
         "zh_tw": "讓你來瞧瞧時間的厲害！",
         "zh_cn": "让你来瞧瞧时间的厉害！",

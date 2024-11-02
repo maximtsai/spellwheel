@@ -808,40 +808,180 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
 }
 
 // Currently this is customized for the statue hand level
-function playReaperPassiveAnim(enemy, customFinFunc) {
+function playReaperPassiveAnim(enemy, customFinFunc, showDarkScreen = true) {
     let level = enemy.getLevel();
 
-    setupReaperArrival();
-    setFloatingDeathDepth(100010);
+    if (showDarkScreen) {
+        playSound('whoosh').detune = -500;
+        if (!globalObjects.reaperDarkFlashTop) {
+            globalObjects.reaperDarkFlashBot = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel')
+            globalObjects.reaperDarkFlashTop = PhaserScene.add.image(-150, gameConsts.halfHeight, 'pixels', 'black_blue_pixel.png').setOrigin(1, 0.5).setDepth(60)
+            globalObjects.reaperDarkFlashTop2 = PhaserScene.add.image(-150, gameConsts.halfHeight, 'pixels', 'black_blue_pixel.png').setOrigin(1, 0.5).setDepth(60);
+            globalObjects.reaperDarkFlashTop3 = PhaserScene.add.image(-150, gameConsts.halfHeight, 'pixels', 'black_blue_pixel.png').setOrigin(1, 0.5).setDepth(60);
+        }
+        globalObjects.reaperDarkFlashBot.setScale(700).setAlpha(0).setVisible(true);
+        globalObjects.reaperDarkFlashTop.setScale(500, 750).setRotation(0.38).setPosition(-160, gameConsts.halfHeight).setAlpha(0.05).setVisible(true);
+        globalObjects.reaperDarkFlashTop2.setScale(50 + Math.random() * 80, 700).setRotation(0.3).setPosition(-140, gameConsts.halfHeight).setAlpha(0.65).setVisible(true);
+        globalObjects.reaperDarkFlashTop3.setScale(500, 750).setRotation(0.26).setPosition(-120, gameConsts.halfHeight).setAlpha(0.3).setVisible(true);
 
-    tweenFloatingDeath(0.75, 1, 1200, "Cubic.easeInOut", () => {
-        gameVars.deathFlutterDelay = 450;
-        repeatDeathHandsRotate();
+        let randExtraTime = Math.floor(Math.random() * 50);
+        PhaserScene.tweens.add({
+            targets: globalObjects.reaperDarkFlashTop,
+            scaleY: 750,
+            duration: 500 + randExtraTime,
+            onComplete: () => {
+                setupReaperArrival();
+                setFloatingDeathDepth(100010);
 
-        // repeatDeathFlutterAnimation();
-        setFloatingDeathDepth(100010);
-        repeatDeathFlutterAnimation(-0.25);
-        handleReaperDialog(level, () => {
-            gameVars.deathFlutterDelay = 10;
-            clearReaper();
-            PhaserScene.tweens.add({
-                targets: [globalObjects.fogSliceDarken],
-                alpha: 0,
-                duration: 1000,
-                onComplete: () => {
-                    globalObjects.fogSliceDarken.destroy();
+                tweenFloatingDeath(0.75, 1, 1250, "Cubic.easeInOut", () => {
+                    gameVars.deathFlutterDelay = 450;
+                    repeatDeathHandsRotate();
+
+                    // repeatDeathFlutterAnimation();
+                    setFloatingDeathDepth(100010);
+                    repeatDeathFlutterAnimation(-0.25);
+                    handleReaperDialog(level, () => {
+                        gameVars.deathFlutterDelay = 10;
+                        clearReaper();
+                        PhaserScene.tweens.add({
+                            targets: [globalObjects.fogSliceDarken],
+                            alpha: 0,
+                            duration: 1000,
+                            onComplete: () => {
+                                globalObjects.fogSliceDarken.destroy();
+                            }
+                        });
+                        if (customFinFunc) {
+                            customFinFunc();
+                        } else {
+                            //globalObjects.magicCircle.enableMovement();
+                            //globalObjects.postFightScreen.createWinScreen(level);
+                        }
+
+                    })
+
+                })
+                if (globalObjects.reaperDarkFlashTop2.visible) {
+                    setFloatingDeathVisible(false)
                 }
-            });
-            if (customFinFunc) {
-                customFinFunc();
-            } else {
-                //globalObjects.magicCircle.enableMovement();
-                //globalObjects.postFightScreen.createWinScreen(level);
             }
-
         })
 
-    })
+
+        PhaserScene.tweens.add({
+            targets: globalObjects.reaperDarkFlashTop3,
+            duration: 320 + Math.floor(Math.random() * 30),
+            rotation: 0.12,
+            ease: 'Quad.easeIn',
+            x: gameConsts.width + 160,
+            onComplete: () => {
+                globalObjects.reaperDarkFlashTop3.visible = false;
+            }
+        })
+        PhaserScene.tweens.add({
+            targets: globalObjects.reaperDarkFlashTop3,
+            alpha: 1,
+            duration: 450,
+            ease: 'Cubic.easeIn',
+        })
+
+        PhaserScene.tweens.add({
+            delay: 10,
+            targets: globalObjects.reaperDarkFlashTop2,
+            alpha: 1,
+            duration: 465 + Math.random() * 30,
+            ease: 'Quad.easeIn',
+            rotation: 0.23,
+            x: gameConsts.width + 140,
+            completeDelay: 30,
+            onComplete: () => {
+                globalObjects.reaperDarkFlashTop2.visible = false;
+            }
+        })
+        PhaserScene.tweens.add({
+            targets: globalObjects.reaperDarkFlashTop2,
+            alpha: 1,
+            duration: 480,
+            ease: 'Cubic.easeIn',
+            scaleX: 40,
+        })
+        let durAmt = 570 + randExtraTime;
+        PhaserScene.tweens.add({
+            delay: 10,
+            targets: globalObjects.reaperDarkFlashTop,
+            alpha: 1,
+            duration: durAmt,
+            ease: 'Quint.easeIn',
+        });
+        PhaserScene.tweens.add({
+            delay: 20,
+            targets: globalObjects.reaperDarkFlashTop,
+            duration: durAmt,
+            ease: 'Cubic.easeIn',
+            rotation: 0.32,
+            x: gameConsts.width + 180,
+            completeDelay: 100,
+            onComplete: () => {
+                setFloatingDeathVisible(true);
+                globalObjects.reaperDarkFlashTop.setAlpha(1);
+                globalObjects.reaperDarkFlashBot.setAlpha(1);
+                PhaserScene.tweens.add({
+                    targets: globalObjects.reaperDarkFlashBot,
+                    alpha: 0,
+                    duration: 1500,
+                    ease: 'Cubic.easeOut',
+                    onComplete: () => {
+                        globalObjects.reaperDarkFlashBot.visible = false;
+                    }
+                })
+                globalObjects.reaperDarkFlashBot.setRotation(0.15);
+                PhaserScene.tweens.add({
+                    targets: globalObjects.reaperDarkFlashTop,
+                    scaleX: 0,
+                    alpha: 0,
+                    duration: 500,
+                    ease: 'Cubic.easeOut',
+                    onComplete: () => {
+                        globalObjects.reaperDarkFlashTop2.visible = false;
+                    }
+                })
+            }
+        })
+    } else {
+        setupReaperArrival();
+        setFloatingDeathDepth(100010);
+
+        tweenFloatingDeath(0.75, 1, 1200, "Cubic.easeInOut", () => {
+            gameVars.deathFlutterDelay = 450;
+            repeatDeathHandsRotate();
+
+            // repeatDeathFlutterAnimation();
+            setFloatingDeathDepth(100010);
+            repeatDeathFlutterAnimation(-0.25);
+            handleReaperDialog(level, () => {
+                gameVars.deathFlutterDelay = 10;
+                clearReaper();
+                PhaserScene.tweens.add({
+                    targets: [globalObjects.fogSliceDarken],
+                    alpha: 0,
+                    duration: 1000,
+                    onComplete: () => {
+                        globalObjects.fogSliceDarken.destroy();
+                    }
+                });
+                if (customFinFunc) {
+                    customFinFunc();
+                } else {
+                    //globalObjects.magicCircle.enableMovement();
+                    //globalObjects.postFightScreen.createWinScreen(level);
+                }
+
+            })
+
+        })
+    }
+
+
 }
 
 function setupReaperArrival() {

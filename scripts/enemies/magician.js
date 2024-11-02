@@ -475,6 +475,7 @@
         this.blackBackground = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setAlpha(0).setDepth(-1)
          this.floatingDeath = getFloatingDeath();
          this.floatingDeath.alpha = 0;
+         globalObjects.floatingDeath2.alpha = 0;
          globalObjects.deathLeftHand.alpha = 0;
          globalObjects.deathRightHand.alpha = 0;
          gameVars.deathFlutterDelay = 600;
@@ -629,7 +630,7 @@
                      }
 
                      if (!this.isTerrified) {
-                        if (this.health < 12) {
+                        if (this.health < 13) {
                             this.pullbackScale = 1;
                             this.attackScale = 1;
                             this.isTerrified = true;
@@ -938,7 +939,7 @@
 
     beginPhaseTwo() {
         globalObjects.bannerTextManager.setDialog([getLangText('magician_c'), getLangText('magician_d')]);
-        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 10, 0);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 20, 0);
         globalObjects.bannerTextManager.showBanner(0.5);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
             this.addTween({
@@ -948,15 +949,24 @@
                 duration: 250,
                 ease: 'Cubic.easeOut',
                 onComplete: () => {
-                    this.halo = this.addImage(this.sprite.x, 189, 'blurry', 'spellcircle_pulse.png').setScale(0.3).setAlpha(0).setDepth(189);
+                    this.halo = this.addImage(this.sprite.x, 189, 'blurry', 'spellcircle_pulse.png').setScale(0.45).setAlpha(0).setDepth(189);
                     this.addTween({
+                        delay: 50,
                         targets: this.halo,
                         scaleX: 1.52,
                         scaleY: 1.52,
-                        alpha: 1,
+                        alpha: 0.96,
                         ease: 'Quart.easeIn',
-                        duration: 500,
+                        duration: 400,
                         onComplete: () => {
+                            this.halo.setScale(1.55).setAlpha(1);
+                            this.addTween({
+                                targets: this.halo,
+                                scaleX: 1.52,
+                                scaleY: 1.52,
+                                ease: 'Back.easeIn',
+                                duration: 150,
+                            })
                             messageBus.publish('animateHealNum', gameConsts.halfWidth, this.sprite.y + 90, 'INVINCIBLE', 1.55, {}, {duration: 1000, ease: 'Quint.easeIn'});
                         }
                     })
@@ -1300,9 +1310,8 @@
                                 this.addTween({
                                     targets: this.halo,
                                     alpha: 0.67,
-                                    scaleX: 1.35,
-                                    scaleY: 1.35,
-                                    y: this.y,
+                                    scaleX: 1.31,
+                                    scaleY: 1.31,
                                     ease: 'Quart.easeOut',
                                     duration: 450
                                 })

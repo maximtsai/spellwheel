@@ -16,7 +16,6 @@ class PostFightScreen {
     }
 
     startGloom() {
-        console.log("start gloom");
         if (!this.gloom) {
             this.gloom = this.scene.add.image(gameConsts.width + 600, gameConsts.halfHeight - 160, 'blurry', 'gloom.webp').setScale(5.4, 6).setDepth(100002).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY)
         }

@@ -1,5 +1,6 @@
-const DECAY = 0.00006;
-const STATIC = 0.007;
+const DECAY = 0.000045;
+const STATIC = 0.005;
+const MIN_VEL = 0.0001;
 const ENABLE_KEYBOARD = true;
 
  class MagicCircle {
@@ -953,7 +954,6 @@ const ENABLE_KEYBOARD = true;
         let decayAltered = DECAY;
 
         let innerDecayMult = 1;
-        let outerDecayMult = 1;
         let distToClosestRuneElement = 999;
         let distToClosestRuneEmbodiment = 999;
         let distToRuneElem = 999;
@@ -1011,10 +1011,10 @@ const ENABLE_KEYBOARD = true;
 
         // higher decayAltered = more friction
         let decayAmtInner = 1 - decayAltered * dt * innerDecayMult * torqueMultInner * velMultInner;
-        let decayAmtOuter = 1 - decayAltered * dt * outerDecayMult * torqueMultOuter * velMultOuter;
+        let decayAmtOuter = 1 - decayAltered * dt * 0.9 * torqueMultOuter * velMultOuter;
         // higher static = more friction
         let staticAmtInner = STATIC * dt * innerDecayMult * torqueMultInner;
-        let staticAmtOuter = STATIC * dt * outerDecayMult * torqueMultOuter;
+        let staticAmtOuter = STATIC * dt * 0.84 * torqueMultOuter;
 
         // keyboard torque
         if (this.keyboardRotateInner !== 0 && !this.innerDragDisabled) {
@@ -1055,16 +1055,38 @@ const ENABLE_KEYBOARD = true;
         if (this.preventRotDecay > 0) {
             this.preventRotDecay -= dt;
         } else {
-            if (this.innerCircle.rotVel < 0) {
+            if (this.innerCircle.rotVel < -MIN_VEL) {
+                if (this.innerCircle !== this.draggedObj && this.keyboardRotateInner === 0 && distToClosestRuneElement > 0 && this.innerCircle.rotVel > -0.1 && this.innerCircle.rotVel < -0.028) {
+                    staticAmtInner *= 3.1;
+                    decayAmtInner *= 0.98;
+                }
                 this.innerCircle.rotVel = Math.min(0, this.innerCircle.rotVel * decayAmtInner + staticAmtInner);
-            } else {
+            } else if (this.innerCircle.rotVel > MIN_VEL) {
+                if (this.innerCircle !== this.draggedObj && this.keyboardRotateInner === 0 && distToClosestRuneElement < 0 && this.innerCircle.rotVel < 0.1 && this.innerCircle.rotVel > 0.028) {
+                    staticAmtInner *= 3.1;
+                    decayAmtInner *= 0.98;
+                }
                 this.innerCircle.rotVel = Math.max(0, this.innerCircle.rotVel * decayAmtInner - staticAmtInner);
+            } else {
+                this.innerCircle.rotVel = 0;
             }
 
-            if (this.outerCircle.rotVel < 0) {
+            if (this.outerCircle.rotVel < -MIN_VEL) {
+                if (this.outerCircle !== this.draggedObj && this.keyboardRotateOuter === 0 && distToClosestRuneEmbodiment > 0 && this.outerCircle.rotVel < -0.024) {
+                    if (this.outerCircle.rotVel > -0.09)  {
+                        staticAmtOuter *= 3.5;
+                        decayAmtOuter *= 0.98;
+                    }
+                }
                 this.outerCircle.rotVel = Math.min(0, this.outerCircle.rotVel * decayAmtOuter + staticAmtOuter);
-            } else {
+            } else if (this.outerCircle.rotVel > MIN_VEL) {
+                if (this.outerCircle !== this.draggedObj && this.keyboardRotateOuter === 0 && distToClosestRuneEmbodiment < 0 && this.outerCircle.rotVel < 0.09 && this.outerCircle.rotVel > 0.024) {
+                    staticAmtOuter *= 3.5;
+                    decayAmtOuter *= 0.98;
+                }
                 this.outerCircle.rotVel = Math.max(0, this.outerCircle.rotVel * decayAmtOuter - staticAmtOuter);
+            } else {
+                this.outerCircle.rotVel = 0;
             }
         }
 

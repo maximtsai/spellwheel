@@ -49,7 +49,6 @@ const audioFiles = [
     {name: 'echos_of_time_finale', src: 'audio/echos_of_time_finale.mp3'},
     {name: 'metaljpop', src: 'audio/metaljpop.mp3'},
     {name: 'jpop', src: 'audio/jpop.mp3'},
-    {name: 'jpop_intro', src: 'audio/jpop_intro.mp3'},
     {name: 'but_never_forgotten_metal', src: 'audio/but_never_forgotten_metal.mp3'},
     {name: 'but_never_forgotten_metal_prelude', src: 'audio/but_never_forgotten_metal_prelude.mp3'},
     {name: 'but_never_forgotten', src: 'audio/but_never_forgotten.mp3'},

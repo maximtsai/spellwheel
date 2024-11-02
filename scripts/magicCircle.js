@@ -161,14 +161,22 @@ const ENABLE_KEYBOARD = true;
 
         if (ENABLE_KEYBOARD && !this.outerDragDisabled && !this.innerDragDisabled && !this.manualDisabled) {
             if (this.keyA.isDown || this.keyDown.isDown) {
-                if (this.keyboardRotateInner > -1) {
-                    this.keyboardRotateInner = -1.4;
+                if (this.keyboardRotateInner > -0.25) {
+                    this.keyboardRotateInner = -1.46;
+                    this.keyboardRotateInnerDeadTime = this.defaultDeadTime;
+                } else if (this.keyboardRotateInnerDeadTime > 0) {
+                    this.keyboardRotateInnerDeadTime -= dScale;
+                    this.keyboardRotateInner = -0.4;
                 } else {
                     this.keyboardRotateInner = -1;
                 }
             } else if (this.keyD.isDown || this.keyUp.isDown) {
-                if (this.keyboardRotateInner < 1) {
-                    this.keyboardRotateInner = 1.4;
+                if (this.keyboardRotateInner < 0.25) {
+                    this.keyboardRotateInner = 1.46;
+                    this.keyboardRotateInnerDeadTime = this.defaultDeadTime;
+                } else if (this.keyboardRotateInnerDeadTime > 0) {
+                    this.keyboardRotateInnerDeadTime -= dScale;
+                    this.keyboardRotateInner = 0.4;
                 } else {
                     this.keyboardRotateInner = 1;
                 }
@@ -177,14 +185,23 @@ const ENABLE_KEYBOARD = true;
             }
 
             if (this.keyW.isDown || this.keyRight.isDown || this.keyE.isDown) {
-                if (this.keyboardRotateOuter < 1) {
-                    this.keyboardRotateOuter = 1.4;
+                if (this.keyboardRotateOuter < 0.25) {
+                    this.keyboardRotateOuter = 1.41;
+                    this.keyboardRotateOuterDeadTime = this.defaultDeadTime;
+                } else if (this.keyboardRotateOuterDeadTime > 0) {
+                    this.keyboardRotateOuterDeadTime -= dScale;
+                    this.keyboardRotateOuter = 0.3;
                 } else {
                     this.keyboardRotateOuter = 1;
                 }
             } else if (this.keyS.isDown || this.keyLeft.isDown || this.keyQ.isDown) {
-                if (this.keyboardRotateOuter > -1) {
-                    this.keyboardRotateOuter = -1.4;
+                if (this.keyboardRotateOuter > -0.25) {
+                    this.keyboardRotateOuter = -1.41;
+                    this.keyboardRotateOuterDeadTime = this.defaultDeadTime;
+
+                } else if (this.keyboardRotateOuterDeadTime > 0) {
+                    this.keyboardRotateOuterDeadTime -= dScale;
+                    this.keyboardRotateOuter = -0.3;
                 } else {
                     this.keyboardRotateOuter = -1;
                 }
@@ -238,7 +255,7 @@ const ENABLE_KEYBOARD = true;
                     this.preventRotDecay = (12 - this.draggedDuration) * 0.4;
                 }
                 // let go
-                if (totalDist < this.castButtonSize && this.draggedObj == this.castButton) {
+                if (totalDist < this.castButtonSize && this.draggedObj === this.castButton) {
                     if (!this.castDisabled && !this.recharging) {
                         // BOOM
                         this.castSpell();
@@ -250,7 +267,7 @@ const ENABLE_KEYBOARD = true;
                 }
             } else if (gameVars.mousedown) {
                 this.draggedDuration += dScale;
-                if (totalDist < this.castButtonSize && this.draggedObj == this.castButton) {
+                if (totalDist < this.castButtonSize && this.draggedObj === this.castButton) {
                     this.setFrameLazy(this.castButton,this.altString + 'cast_press.png');
                     globalObjects.player.setCastTextAlpha(0.6);
                 }
@@ -447,6 +464,9 @@ const ENABLE_KEYBOARD = true;
         this.dragPointDist = 100;
         this.keyboardRotateOuter = 0;
         this.keyboardRotateInner = 0;
+        this.defaultDeadTime = 8;
+        this.keyboardRotateOuterDeadTime = 5;
+        this.keyboardRotateInnerDeadTime = 5;
         this.keyboardCasted = false;
         this.delayedDamage = 0;
         this.delayedDamageBase = 60;
@@ -523,10 +543,10 @@ const ENABLE_KEYBOARD = true;
         this.greyed = scene.add.sprite(x, y, 'circle', 'greyed.png').setVisible(false).setDepth(122).setVisible(false).setScale(1.01);
 
         this.errorBoxElement = scene.add.sprite(x, y - 115, 'circle', 'error_box.png');
-        this.errorBoxElement.setDepth(121);
+        this.errorBoxElement.setDepth(131);
         this.errorBoxElement.alpha = 0;
         this.errorBoxEmbodiment = scene.add.sprite(x, y - 175, 'circle', 'error_box.png');
-        this.errorBoxEmbodiment.setDepth(121);
+        this.errorBoxEmbodiment.setDepth(131);
         this.errorBoxEmbodiment.alpha = 0;
 
         this.spellElementText = this.scene.add.bitmapText(this.x - 11, this.y - 283, 'normal', 'MATTER', isMobile ? 30 : 28, 1);
@@ -613,7 +633,7 @@ const ENABLE_KEYBOARD = true;
      }
 
     handleTimeSlow(dt) {
-        if (gameVars.timeSlowRatio == 1) {
+        if (gameVars.timeSlowRatio === 1) {
             // passive time slowdown
             this.gearBonusSpeed = Math.min(10, this.gearBonusSpeed + dt);
             if (this.gearBonusSpeed < 10) {
@@ -654,7 +674,7 @@ const ENABLE_KEYBOARD = true;
             duration: gameVars.gameManualSlowSpeed * 250,
         });
         this.gear1.setPosition(gameConsts.halfWidth, 190).setScale(1.13);
-        this.gear2.setPosition(gameConsts.halfWidth, 190).setScale(0.88)
+        this.gear2.setPosition(gameConsts.halfWidth, 190).setScale(0.88);
         this.gear3.setPosition(gameConsts.halfWidth, 190).setScale(2.09);
         this.scene.tweens.add({
             targets: [this.gear1, this.gear2, this.gear3],
@@ -733,9 +753,9 @@ const ENABLE_KEYBOARD = true;
              scaleY: 1.3,
              duration: gameVars.gameManualSlowSpeed * 250,
          });
-         this.gear1.setPosition(this.gear1.startX, this.gear1.startY).setScale(1);
-         this.gear2.setPosition(this.gear2.startX, this.gear2.startY).setScale(1);
-         this.gear3.setPosition(this.gear3.startX, this.gear3.startY).setScale(1);
+         this.gear1.setPosition(this.gear1.startX, this.gear1.startY).setScale(1).setDepth(1);
+         this.gear2.setPosition(this.gear2.startX, this.gear2.startY).setScale(1).setDepth(1);
+         this.gear3.setPosition(this.gear3.startX, this.gear3.startY).setScale(1).setDepth(1);
          this.gear4.setPosition(this.gear4.startX, this.gear4.startY);
          this.scene.tweens.add({
              targets: [this.gear1, this.gear2, this.gear3, this.gear4],
@@ -997,19 +1017,19 @@ const ENABLE_KEYBOARD = true;
         let staticAmtOuter = STATIC * dt * outerDecayMult * torqueMultOuter;
 
         // keyboard torque
-        if (this.keyboardRotateInner != 0 && !this.innerDragDisabled) {
+        if (this.keyboardRotateInner !== 0 && !this.innerDragDisabled) {
             this.usedKeyboardInner = true;
             let rotMult = 0.005/(0.005+Math.abs(this.innerCircle.rotVel));
-            this.innerCircle.torque = this.keyboardRotateInner * 0.048 * rotMult;
+            this.innerCircle.torque = this.keyboardRotateInner * 0.05 * rotMult;
         } else if (this.usedKeyboardInner) {
             this.usedKeyboardInner = false;
             this.innerCircle.rotVel *= 0.7;
         }
 
-        if (this.keyboardRotateOuter != 0 && !this.outerDragDisabled) {
+        if (this.keyboardRotateOuter !== 0 && !this.outerDragDisabled) {
             this.usedKeyboardOuter = true;
             let rotMult = 0.005/(0.005+Math.abs(this.outerCircle.rotVel));
-            this.outerCircle.torque = this.keyboardRotateOuter * 0.048 * rotMult;
+            this.outerCircle.torque = this.keyboardRotateOuter * 0.05 * rotMult;
         } else if (this.usedKeyboardOuter) {
             this.usedKeyboardOuter = false;
             this.outerCircle.rotVel *= 0.7;
@@ -2571,7 +2591,7 @@ const ENABLE_KEYBOARD = true;
             multText = " X" + multiplier;
         }
         let hideSpellDescriptor = false;
-         if (gameOptions.infoBoxAlign == 'left') {
+         if (gameOptions.infoBoxAlign === 'left') {
              if (this.disableSpellDescDisplay || this.manualDisabled || globalObjects.bannerTextManager.isShowing) {
                  this.clearSpellDescriptorText();
                  this.spellDescriptor.stopNextAudio();

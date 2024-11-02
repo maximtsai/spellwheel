@@ -59,7 +59,7 @@
          }
          super.setHealth(newHealth);
          if (this.invulnHealthBar) {
-             this.healthBarText.setText("INVULNERABLE");
+             this.healthBarText.setText("INVINCIBLE");
          }
         // if (this.invincible) {
         //     messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random()*150, this.sprite.y + 50 - Math.random() * 100, 'DELAYED', 0.75);
@@ -184,6 +184,7 @@
              this.magicianTimeEpicTheme.stop();
          }
          globalObjects.magicCircle.cancelTimeSlow();
+
          if (this.clockShield) {
             if (this.clockShield.hitTween) {
                 this.clockShield.hitTween.stop();
@@ -519,7 +520,7 @@
         }
          this.specialDamageAbsorptionActive = true;
 
-         this.clockShield = this.addSprite(gameConsts.halfWidth, this.y, 'enemies', 'red_clock_back_large_red.png').setDepth(1).setAlpha(0.75);
+         this.clockShield = this.addSprite(gameConsts.halfWidth, 190, 'enemies', 'red_clock_back_large_red.png').setDepth(1).setAlpha(0.75);
         this.clockShieldArm = this.addImage(this.clockShield.x, this.clockShield.y, 'enemies', 'red_clock_arm_large.png').setDepth(-1).setOrigin(0.5, 1).setRotation(-0.4).setAlpha(0);
 
          this.clockShield.currAnim = this.addTween({
@@ -583,7 +584,7 @@
                      ease: 'Cubic.easeInOut',
                  });
 
-                 if (this.health == 0) {
+                 if (this.health === 0) {
                      // drag out last second
                      healthText.setText(0);
 
@@ -610,7 +611,17 @@
                          }
                      });
                      this.clockShield.setAlpha(0.4 + (this.health / this.healthMax) * 0.6);
-                     if (this.health == 0) {
+                     if (this.health === 0) {
+                         if (this.halo) {
+                             this.addTween({
+                                 targets: this.halo,
+                                 alpha: 0,
+                                 scaleX: 0,
+                                 scaleY: 0,
+                                 ease: 'Back.easeIn',
+                                 duration: 350,
+                             })
+                         }
                         this.addTimeout(() => {
                             this.invincible = false;
                              this.die();
@@ -672,10 +683,10 @@
      }
 
      handleSpecialDamageAbsorption(amt) {
-        if (amt == 1) {
-            messageBus.publish('animateBlockNum', gameConsts.halfWidth + 25 - Math.random()*50, this.sprite.y - Math.random() * 50, 'INVULNERABLE', 0.75);
+        if (amt === 1) {
+            messageBus.publish('animateBlockNum', gameConsts.halfWidth + 25 - Math.random()*50, this.sprite.y - Math.random() * 50, 'INVINCIBLE', 0.75);
         } else {
-            messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 20, 'INVULNERABLE', 1.25);
+            messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y + 20, 'INVINCIBLE', 1.25);
         }
 
          if (this.clockShield.alpha < 0.3) {
@@ -937,6 +948,18 @@
                 duration: 250,
                 ease: 'Cubic.easeOut',
                 onComplete: () => {
+                    this.halo = this.addImage(this.sprite.x, 189, 'blurry', 'spellcircle_pulse.png').setScale(0.3).setAlpha(0).setDepth(189);
+                    this.addTween({
+                        targets: this.halo,
+                        scaleX: 1.52,
+                        scaleY: 1.52,
+                        alpha: 1,
+                        ease: 'Quart.easeIn',
+                        duration: 500,
+                        onComplete: () => {
+                            messageBus.publish('animateHealNum', gameConsts.halfWidth, this.sprite.y + 90, 'INVINCIBLE', 1.55, {}, {duration: 1000, ease: 'Quint.easeIn'});
+                        }
+                    })
                     this.addTween({
                         targets: this.sprite,
                         scaleX: this.sprite.startScale + 0.2,
@@ -948,7 +971,8 @@
                             this.heal(this.healthMax);
                             this.invulnHealthBar = true;
                             this.healthBarCurr.setFrame('yellow_pixel.png');
-                            this.healthBarText.setText("INVULNERABLE");
+                            this.healthBarText.setText("INVINCIBLE");
+                            this.setDepth(200);
 
                             this.setAwake();
                             this.setupTimeShield();
@@ -991,16 +1015,16 @@
                 scaleX: this.sprite.startScale,
                 scaleY: this.sprite.startScale,
                 rotation: 0,
-                ease: 'Cubic.easeOut',
+                ease: 'Cubic.easeInOut',
                 onStart: () => {
                     if (!this.finishedChargingUltimate) {
                         if (i % 2 == 0) {
                             this.sprite.setScale(this.sprite.startScale * 1.03);
-                            this.sprite.setRotation(0.07);
+                            this.sprite.setRotation(0.06);
                         }
 
                         let startX = this.x;
-                        let startY = this.y;
+                        let startY = this.y + 10;
                         let dirAngle = i * Math.PI / angleDivider;
                         let offsetX = Math.sin(dirAngle) * 90;
                         let offsetY = -Math.cos(dirAngle) * 80;
@@ -1017,7 +1041,7 @@
 
                         let xPos = startX + offsetX; let yPos = startY + offsetY;
                         let timeObj = this.createTimeObject(clockName, xPos, yPos, 0, 2, -300 + i * 30);
-                        timeObj.setDepth(3);
+                        timeObj.setDepth(199);
                         this.addTween({
                             duration: 400,
                             targets: timeObj,
@@ -1130,7 +1154,7 @@
                  {
                      name: "}3x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: gameVars.isHardMode ? 350 : 385,
+                     chargeAmt: gameVars.isHardMode ? 350 : 435,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
@@ -1154,7 +1178,7 @@
                 // 1
                  {
                      name: "\\50% MISSING HEALTH",
-                     chargeAmt: gameVars.isHardMode ? 250 : 300,
+                     chargeAmt: gameVars.isHardMode ? 280 : 345,
                      isPassive: true,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
@@ -1271,6 +1295,18 @@
                             rotation: Math.PI * 2,
                             alpha: 0.75,
                             ease: 'Cubic.easeIn',
+                            onStart: () => {
+                                this.halo.setDepth(-8)
+                                this.addTween({
+                                    targets: this.halo,
+                                    alpha: 0.67,
+                                    scaleX: 1.35,
+                                    scaleY: 1.35,
+                                    y: this.y,
+                                    ease: 'Quart.easeOut',
+                                    duration: 450
+                                })
+                            },
                             onComplete: () => {
                                 this.statuses[0].animObj.setScale(0.8);
                                 this.clockShield.alpha = 1;
@@ -1348,7 +1384,7 @@
                  {
                      name: "}4x3 ",
                      desc: "An advanced magic attack.",
-                     chargeAmt: 450,
+                     chargeAmt: 480,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -1630,6 +1666,11 @@
                  ease: 'Quad.easeIn',
                  duration: projDur,
                  rotation: (Math.random() - 0.5) * 3,
+                 onStart: () => {
+                     this.addDelay(() => {
+                         currObj.depth = 3;
+                     }, projDur * 0.9);
+                 },
                  onComplete: () => {
                      let dur = 280 - Math.sqrt(totalTimeObjects) * 40;
                      let rot = dur * 0.004;

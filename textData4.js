@@ -434,7 +434,7 @@ let textData4 = {
         "jp": "さあ、私の大きな大きな時計を味わってください!"
     },
     "magician_c": {
-        "en_us": "You think you've won,\nbut I'm not done yet.",
+        "en_us": "You think you've won,\nbut I still have time.",
         "fr": "Tu crois avoir gagné,\nmais je n’ai pas fini.",
         "zh_tw": "你以為你贏了，但我還沒被擊敗。",
         "zh_cn": "你以为你赢了，但我还没被击败。",
@@ -443,7 +443,7 @@ let textData4 = {
         "jp": "あなたは勝ったと思っていますが、私はまだ終わっていません。"
     },
     "magician_d": {
-        "en_us": "Let me show you\nmy Time Attack Threat!",
+        "en_us": "Now witness me at\nmy invincible prime!",
         "fr": "Laisse-moi te montrer\nun vrai ennemi !",
         "zh_tw": "讓你來瞧瞧時間的厲害！",
         "zh_cn": "让你来瞧瞧时间的厉害！",

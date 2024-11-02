@@ -17,6 +17,10 @@
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
      }
 
+     initSpriteAnim() {
+
+     }
+
      initPreBattleLogic() {
          this.lightShineLeft = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 320, 'blurry', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(-0.5);
          this.lightShineLeftTop = this.addSprite(this.lightShineLeft.x, this.lightShineLeft.y, 'blurry', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineLeft.rotation);
@@ -24,7 +28,7 @@
          this.musicNote = this.addImage(-100, 0, 'blurry', 'note.png').setScale(0).setDepth();
 
          this.addTween({
-             delay: 500,
+             delay: 450,
              targets: this.sprite,
              duration: 800,
              alpha: 1,
@@ -72,10 +76,10 @@
                              duration: 500,
                              y: "+=7",
                              ease: 'Bounce.easeOut',
-                             completeDelay: 500,
+                             completeDelay: 1300,
                              onComplete: () => {
-                                 this.bgMusic = playMusic('jpop', 0.5, true);
-                                 fadeInSound(this.bgMusic, 0.85);
+                                 this.bgMusic = playMusic('jpop', 0.3, true);
+                                 fadeInSound(this.bgMusic, 0.85, 1200);
                                  this.playMusicNoteRepeat();
                              }
                          });

@@ -55,7 +55,7 @@ function clearDeathFog() {
 
 function getFogSlice() {
     if (!globalObjects.fogSlice) {
-        globalObjects.fogSlice = PhaserScene.add.image(gameConsts.halfWidth + 8, -45, 'backgrounds', 'fog_slice.png').setDepth(-2).setOrigin(0.68, 0.29);
+        globalObjects.fogSlice = PhaserScene.add.image(gameConsts.halfWidth + 8, -44, 'backgrounds', 'fog_slice.png').setDepth(-2).setOrigin(0.68, 0.29);
     }
     globalObjects.fogSlice.setAlpha(0.2).setScale(1.01).setRotation(-0.8).setPosition(gameConsts.halfWidth + 8, -45);
     return globalObjects.fogSlice;
@@ -363,8 +363,8 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
                                                 onComplete: () => {
                                                     PhaserScene.tweens.add({
                                                         targets: [fogSlice],
-                                                        scaleX: 1.09,
-                                                        scaleY: 1.09,
+                                                        scaleX: 1.1,
+                                                        scaleY: 1.1,
                                                         duration: 1500,
                                                     });
                                                 }
@@ -372,8 +372,6 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
                                             PhaserScene.tweens.add({
                                                 delay: 50,
                                                 targets: fogSlice,
-                                                scaleX: 1.06,
-                                                scaleY: 1.06,
                                                 rotation: -0.85,
                                                 ease: 'Quad.easeOut',
                                                 duration: 1500,
@@ -692,8 +690,6 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
                                     PhaserScene.tweens.add({
                                         delay: 50,
                                         targets: fogSlice,
-                                        scaleX: 1.06,
-                                        scaleY: 1.06,
                                         rotation: -0.85,
                                         ease: 'Quad.easeOut',
                                         duration: 1500,

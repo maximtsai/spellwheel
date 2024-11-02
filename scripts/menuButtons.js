@@ -1324,13 +1324,13 @@ function showMainMenuButtons() {
 }
 
 function updateMenuLanguage() {
-    if (globalObjects.startButton && !globalObjects.startButton.isDestroyed()) {
+    if (globalObjects.startButton && !globalObjects.startButton.isDestroyed) {
         globalObjects.startButton.setText(getLangText('new_game'))
     }
-    if (globalObjects.continueButton && !globalObjects.continueButton.isDestroyed()) {
+    if (globalObjects.continueButton && !globalObjects.continueButton.isDestroyed) {
         globalObjects.continueButton.setText(getLangText('cont_ui'))
     }
-    if (globalObjects.levelSelectButton && !globalObjects.levelSelectButton.isDestroyed()) {
+    if (globalObjects.levelSelectButton && !globalObjects.levelSelectButton.isDestroyed) {
         let textObj = globalObjects.levelSelectButton.setText(getLangText('lvl_select'))
         if (textObj) {
             if (language === 'fr') {
@@ -1340,10 +1340,10 @@ function updateMenuLanguage() {
             }
         }
     }
-    if (globalObjects.creditsButton && !globalObjects.creditsButton.isDestroyed()) {
+    if (globalObjects.creditsButton && !globalObjects.creditsButton.isDestroyed) {
         globalObjects.creditsButton.setText(getLangText('credits'))
     }
-    if (globalObjects.extrasButton && !globalObjects.extrasButton.isDestroyed()) {
+    if (globalObjects.extrasButton && !globalObjects.extrasButton.isDestroyed) {
         let textObj2 = globalObjects.extrasButton.setText(getLangText('extras'));
         if (textObj2) {
             if (language === 'fr') {

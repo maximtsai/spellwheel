@@ -1,5 +1,5 @@
-const DECAY = 0.00006;
-const STATIC = 0.007;
+const DECAY = 0.00005;
+const STATIC = 0.005;
 const ENABLE_KEYBOARD = true;
 
  class MagicCircle {
@@ -1056,14 +1056,30 @@ const ENABLE_KEYBOARD = true;
             this.preventRotDecay -= dt;
         } else {
             if (this.innerCircle.rotVel < 0) {
+                if (distToClosestRuneElement > 0 && this.innerCircle.rotVel > -0.1 && this.innerCircle.rotVel < -0.028) {
+                    staticAmtInner *= 3;
+                    decayAmtInner *= 0.98;
+                }
                 this.innerCircle.rotVel = Math.min(0, this.innerCircle.rotVel * decayAmtInner + staticAmtInner);
             } else {
+                if (distToClosestRuneElement < 0 && this.innerCircle.rotVel < 0.1 && this.innerCircle.rotVel > 0.028) {
+                    staticAmtInner *= 3;
+                    decayAmtInner *= 0.98;
+                }
                 this.innerCircle.rotVel = Math.max(0, this.innerCircle.rotVel * decayAmtInner - staticAmtInner);
             }
 
             if (this.outerCircle.rotVel < 0) {
+                if (distToClosestRuneEmbodiment > 0 && this.outerCircle.rotVel > -0.084 && this.outerCircle.rotVel < -0.024) {
+                    staticAmtOuter *= 3;
+                    decayAmtOuter *= 0.98;
+                }
                 this.outerCircle.rotVel = Math.min(0, this.outerCircle.rotVel * decayAmtOuter + staticAmtOuter);
             } else {
+                if (distToClosestRuneEmbodiment < 0 && this.outerCircle.rotVel < 0.084 && this.outerCircle.rotVel > 0.024) {
+                    staticAmtOuter *= 3;
+                    decayAmtOuter *= 0.98;
+                }
                 this.outerCircle.rotVel = Math.max(0, this.outerCircle.rotVel * decayAmtOuter - staticAmtOuter);
             }
         }

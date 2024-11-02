@@ -754,10 +754,10 @@ let textData2 = {
         "jp": "方法:わずか\n4つの呪文で\n敵を倒す"
     },
     "level2_tut_a": {
-        "en_us": "Some enemy attacks\ncharge up\nautomatically!",
+        "en_us": "Some attacks\ncharge up\nautomatically!",
         "fr": "certaines attaques\nennemies se chargent\nautomatiquement !",
-        "zh_tw": "有些敌人攻擊會\n自行發動！",
-        "zh_cn": "有些敌人攻击会\n自行发动！",
+        "zh_tw": "有些敌人攻擊\n會自行發動！",
+        "zh_cn": "有些敌人攻击\n会自行发动！",
         "ru": "Разные щиты подходят\nдля сопротивления\nразным атакам.",
         "es": "Diferentes escudos\nson adecuados\npara resistir\ndiferentes ataques.",
         "jp": "さまざまな攻撃に抵抗\nするために、さまざまなシ\nールドが適しています"

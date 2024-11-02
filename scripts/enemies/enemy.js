@@ -294,6 +294,27 @@ class Enemy {
         this.attackName.setOrigin(0.5, 0.85);
     }
 
+    setDepth(depth) {
+        this.sprite.depth = depth - 5;
+        this.chargeBarReady1.depth = depth;
+        this.chargeBarReady2.depth = depth;
+        this.chargeBarOutline.depth = depth;
+        this.chargeBarMax.depth = depth;
+        this.voidPause.depth = depth;
+        this.chargeBarWarning.depth = depth;
+        this.chargeBarCurr.depth = depth;
+        this.chargeBarAngry.depth = depth;
+        this.chargeBarFlash1.depth = depth;
+        this.chargeBarFlash2.depth = depth;
+        this.chargeBarEst1.depth = depth;
+        this.chargeBarEst2.depth = depth;
+        this.angrySymbol.depth = depth;
+        this.attackNameHighlight.depth = depth;
+        this.attackGlow.depth = depth;
+        this.attackDarken.depth = depth;
+        this.attackName.depth = depth;
+    }
+
     resetStats(x, y) {
         this.x = x;
         this.y = y;
@@ -838,7 +859,7 @@ class Enemy {
             this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake, true);
             let damageSqrt = Math.sqrt(damageToTake);
             setTimeout(() => {
-                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, 265, 'X2', 0.5 + damageSqrt * 0.2);
+                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth - 50, 250, 'X2', 0.5 + damageSqrt * 0.2);
             }, Math.floor(damageSqrt) * 15)
 
             amt += damageToTake;

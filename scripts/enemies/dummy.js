@@ -762,7 +762,7 @@
                  // 0
                  {
                      name: gameVars.isHardMode ? "}10 " : "}8 ",
-                     chargeAmt: 415,
+                     chargeAmt: 420,
                      damage: gameVars.isHardMode ? 10 : 8,
                      attackFinishFunction: () => {
                          screenShake(5);

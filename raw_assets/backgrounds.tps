@@ -403,8 +403,6 @@
                 <false/>
             </struct>
             <key type="filename">backgrounds/tunnel.png</key>
-            <key type="filename">backgrounds/tunnel2.png</key>
-            <key type="filename">backgrounds/tunnel3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

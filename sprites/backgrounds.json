@@ -543,72 +543,11 @@
 					}
 				}
 			]
-		},
-		{
-			"image": "sprites/backgrounds-4.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 1354,
-				"h": 859
-			},
-			"scale": 1,
-			"frames": [
-				{
-					"filename": "tunnel2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 675,
-						"h": 878
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 675,
-						"h": 857
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 675,
-						"h": 857
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "tunnel3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 675,
-						"h": 878
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 675,
-						"h": 857
-					},
-					"frame": {
-						"x": 678,
-						"y": 1,
-						"w": 675,
-						"h": 857
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				}
-			]
 		}
 	],
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:0cd2a5022738e951d6c27aa5ece397d8:373325f2ec02b0ec286e8ce0c30e3aa8:d36b2d12f94c3c84864533b00704d5ae$"
+		"smartupdate": "$TexturePacker:SmartUpdate:eeb9113e4b9f419263cfd4784c972e3c:22768a12e1f8b0b4f52983272bbf7570:4b9228cae45da4734de02858f02ab1c0$"
 	}
 }

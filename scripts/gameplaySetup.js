@@ -156,10 +156,10 @@ function setupLoadingBar(scene) {
                     loadObjects.loadingText.setText('LOADED\nBODY RUNE');
                     break;
                 case 8:
-                    loadObjects.loadingText.setText('LOADED\nULTIMATE RUNE');
+                    loadObjects.loadingText.setText('LOADING\nFINAL ASSETS...');
                     break;
                 case 9:
-                    loadObjects.loadingText.setText('RECALLING\nPRECIOUS MEMORIES');
+                    loadObjects.loadingText.setText('LOADING\nFINAL ASSETS...');
                     break;
             }
 

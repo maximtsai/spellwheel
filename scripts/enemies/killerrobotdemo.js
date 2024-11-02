@@ -4,19 +4,16 @@
          this.initSprite('robot_dead.png', 1);
          this.shieldAdded = false;
          this.sprite.startY = y;
-        this.bgMusic = playMusic('jpop', 0.85, true);
 
         this.addTimeout(() => {
             this.setAsleep();
         }, 10)
-         this.addTimeout(() => {
-             globalObjects.magicCircle.disableMovement();
-         }, 900);
+
          this.sprite.alpha = 0;
          this.sprite.rotation = -0.2;
          this.addTimeout(() => {
              this.initPreBattleLogic();
-         }, 300);
+         }, 10);
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
      }
 
@@ -24,21 +21,67 @@
          this.lightShineLeft = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 320, 'blurry', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(-0.5);
          this.lightShineLeftTop = this.addSprite(this.lightShineLeft.x, this.lightShineLeft.y, 'blurry', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineLeft.rotation);
 
+         this.musicNote = this.addImage(-100, 0, 'blurry', 'note.png').setScale(0).setDepth();
+
          this.addTween({
+             delay: 500,
              targets: this.sprite,
-             duration: 1250,
+             duration: 800,
              alpha: 1,
              ease: 'Quad.easeIn',
+         });
+         this.addTween({
+             delay: 500,
+             targets: this.sprite,
+             duration: 800,
+             rotation: "-=0.1",
+         });
+         this.addTween({
+             delay: 500,
+             targets: this.sprite,
+             duration: 800,
+             y: "+=70",
+             ease: 'Cubic.easeIn',
              onComplete: () => {
+                 playSound('clunk');
                  this.addTween({
                      targets: this.sprite,
-                     duration: 500,
-                     y: "+=40",
-                     ease: 'Cubic.easeIn',
+                     duration: 650,
+                     rotation: 0.15,
                      onComplete: () => {
-
+                         playSound('clunk', 0.5).detune = 400;
+                         this.addDelayIfAlive(() => {
+                             playSound('clunk2', 0.4).detune = 400;
+                         }, 100)
+                         this.addTween({
+                             targets: this.sprite,
+                             duration: 250,
+                             rotation: 0,
+                             ease: 'Bounce.easeOut',
+                         });
                      }
                  });
+                 this.addTween({
+                     targets: this.sprite,
+                     duration: 400,
+                     y: "-=5",
+                     ease: 'Cubic.easeOut',
+                     onComplete: () => {
+                         this.addTween({
+                             targets: this.sprite,
+                             duration: 500,
+                             y: "+=7",
+                             ease: 'Bounce.easeOut',
+                             completeDelay: 500,
+                             onComplete: () => {
+                                 this.bgMusic = playMusic('jpop', 0.5, true);
+                                 fadeInSound(this.bgMusic, 0.85);
+                                 this.playMusicNoteRepeat();
+                             }
+                         });
+                     }
+                 });
+
              }
          });
 
@@ -52,6 +95,44 @@
          this.health = 2;
      }
 
+
+     playMusicNoteRepeat() {
+         if (this.dead) {
+             return;
+         }
+         this.musicNote.x = this.sprite.x;
+         this.musicNote.y = this.sprite.y;
+         let xShift = Math.floor(Math.random() * 100 - 50);
+         let yShift = Math.floor(Math.random() * 40 + 100);
+
+         this.addTween({
+             targets: this.musicNote,
+             scaleX: 1,
+             scaleY: 1,
+             ease: 'Quart.easeOut',
+             duration: 400,
+             onComplete: () => {
+                 this.addTween({
+                     delay: 700,
+                     targets: this.musicNote,
+                     scaleX: 0,
+                     scaleY: 0,
+                     ease: 'Quart.easeIn',
+                     duration: 400,
+                 })
+             }
+         })
+         this.addTween({
+             targets: this.musicNote,
+             x: "-=" + xShift,
+             y: "-=" + yShift,
+             ease: 'Quart.easeOut',
+             duration: 1500,
+             onComplete: () => {
+                 this.playMusicNoteRepeat()
+             }
+         })
+     }
 
      setHealth(newHealth) {
          super.setHealth(newHealth);

@@ -1383,7 +1383,20 @@ function showLevelSelectScreen(){
                 }
             },
             onMouseUp: () => {
-                if (i >= 6) {
+                if (i === 10) {
+                    closeLevelSelectScreen();
+                    clearMenuButtons();
+                    beginLevel(i);
+                    switchLevelBackground(i)
+                    blackBG.setAlpha(0);
+                    title.destroy();
+                    levelSelectBG.destroy();
+                    closeButton.destroy();
+                    sub.unsubscribe();
+                    for (let i in listOfBtns) {
+                        listOfBtns[i].destroy();
+                    }
+                } else if (i >= 6) {
                     showWishlistPage();
                 } else {
                     closeLevelSelectScreen();

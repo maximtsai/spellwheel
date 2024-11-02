@@ -22,26 +22,55 @@
      }
 
      initPreBattleLogic() {
-         this.lightShineLeft = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 320, 'blurry', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(-0.5);
+         this.lightShineLeft = this.addSprite(this.sprite.x, this.sprite.y, 'blurry', 'star_blur.png').setDepth(-1).setAlpha(0).setRotation(-0.9).setScale(0.2);
          this.lightShineLeftTop = this.addSprite(this.lightShineLeft.x, this.lightShineLeft.y, 'blurry', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineLeft.rotation);
 
          this.musicNote = this.addImage(-100, 0, 'blurry', 'note.png').setScale(0).setDepth();
 
+        this.addTween({
+            delay: 500,
+            targets: this.lightShineLeft,
+            alpha: 0.9,
+            duration: 400,
+        })
          this.addTween({
-             delay: 450,
+             delay: 500,
+             targets: this.lightShineLeft,
+             scaleX: 0.75,
+             scaleY: 0.75,
+             duration: 400,
+             ease: 'Cubic.easeIn',
+             onComplete: () => {
+                 this.addTween({
+                     targets: this.lightShineLeft,
+                     scaleX: 0,
+                     scaleY: 0,
+                     duration: 450,
+                     ease: 'Cubic.easeOut',
+                 })
+             }
+         })
+         this.addTween({
+             delay: 500,
+             targets: this.lightShineLeft,
+             rotation: "+=0.2",
+             duration: 1250,
+         })
+         this.addTween({
+             delay: 650,
              targets: this.sprite,
              duration: 800,
              alpha: 1,
              ease: 'Quad.easeIn',
          });
          this.addTween({
-             delay: 500,
+             delay: 700,
              targets: this.sprite,
              duration: 800,
              rotation: "-=0.1",
          });
          this.addTween({
-             delay: 500,
+             delay: 700,
              targets: this.sprite,
              duration: 800,
              y: "+=70",
@@ -96,7 +125,7 @@
      }
 
      initStatsCustom() {
-         this.health = 2;
+         this.health = 10;
      }
 
 
@@ -104,9 +133,9 @@
          if (this.dead) {
              return;
          }
-         this.musicNote.x = this.sprite.x;
-         this.musicNote.y = this.sprite.y;
          let xShift = Math.floor(Math.random() * 100 - 50);
+         this.musicNote.x = this.sprite.x - xShift * 0.7;
+         this.musicNote.y = this.sprite.y;
          let yShift = Math.floor(Math.random() * 40 + 100);
 
          this.addTween({
@@ -142,9 +171,14 @@
          super.setHealth(newHealth);
          let prevHealthPercent = this.prevHealth / this.healthMax;
          let currHealthPercent = this.health / this.healthMax;
-         if (currHealthPercent == 0) {
+         if (currHealthPercent === 0) {
              // dead, can't do anything
              return;
+         }
+         if (currHealthPercent < 0.99) {
+             this.addDelayIfAlive(() => {
+                 this.bgMusic.detune = -1200 + this.health * 60;
+             }, 100)
          }
      }
 
@@ -175,29 +209,22 @@
 
         super.die();
 
-         this.disco.destroy();
         if (this.currAnim) {
             this.currAnim.stop();
         }
 
         globalObjects.bannerTextManager.closeBanner();
-         playSound('voca_kya_damaged', 0.85);
+         playSound('voca_kya_damaged', 0.25).seek = 0.85;
 
 
         this.lightShineLeft.visible = false;
         this.lightShineLeftTop.visible = false;
 
-         this.addTween({
-             targets: this.tunnelBG,
-             duration: 700,
-             alpha: 0,
-             ease: 'Quint.easeOut',
-         });
-         let deathBoom = this.addSprite(this.sprite.x, this.sprite.y, 'enemies', 'robot_blast.png').setDepth(0).setOrigin(0.5, 0.65).setScale(0.25, -0.25);
+         let deathBoom = this.addSprite(this.sprite.x, this.sprite.y, 'enemies', 'robot_blast.png').setDepth(0).setOrigin(0.5, 0.65).setScale(0.2).setAlpha(0.5);
          this.addTween({
              targets: deathBoom,
              alpha: 0,
-             duration: 900,
+             duration: 700,
              ease: 'Quad.easeIn',
              onComplete: () => {
                  deathBoom.destroy();
@@ -205,13 +232,14 @@
          });
          this.addTween({
              targets: deathBoom,
-             scaleX: 1,
-             scaleY: -1,
-             duration: 900,
+             scaleX: 0.6,
+             scaleY: 0.6,
+             duration: 700,
              ease: 'Cubic.easeOut',
          });
          globalObjects.textPopupManager.hideInfoText();
-
+         globalObjects.encyclopedia.hideButton();
+         globalObjects.options.hideButton();
          this.dieClickBlocker = new Button({
              normal: {
                  ref: "blackPixel",
@@ -225,7 +253,7 @@
 
              }
          });
-
+         globalObjects.magicCircle.disableMovement();
          playSound('clunk');
 
          this.sprite.setRotation(0.2);
@@ -236,6 +264,7 @@
              ease: 'Quart.easeIn',
              duration: 1500
          })
+         this.sprite.alpha = 0.5;
          this.addTween({
              targets: this.sprite,
 
@@ -252,7 +281,7 @@
                      scaleX: 1,
                      scaleY: 1,
                      ease: "Cubic.easeOut",
-                     duration: 1500,
+                     duration: 3000,
                      onComplete: () => {
                          this.showVictory(rune);
                      }

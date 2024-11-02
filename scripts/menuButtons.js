@@ -1551,7 +1551,7 @@ function showWishlistPage() {
     this.wishlistButton.setDepth(100000);
 
     let text4 = PhaserScene.add.text(gameConsts.halfWidth - 50, this.wishlistButton.getYPos(), getLangText('wishlist_on_steam'), {fontFamily: 'germania', fontSize: language === 'fr' ? 24 : 32, color: '#200000', align: 'left'});
-    text4.setDepth(99999).setOrigin(0, 0.5).setAlpha(0);
+    text4.setDepth(100000).setOrigin(0, 0.5).setAlpha(0);
 
     PhaserScene.tweens.add({
         targets: [bg, poster, text1, text2, text3, text4],

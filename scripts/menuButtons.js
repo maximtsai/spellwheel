@@ -1244,13 +1244,13 @@ function showMainMenuButtons() {
 }
 
 function updateMenuLanguage() {
-    if (globalObjects.startButton && !globalObjects.startButton.isDestroyed()) {
+    if (globalObjects.startButton && !globalObjects.startButton.isDestroyed) {
         globalObjects.startButton.setText(getLangText('new_game'))
     }
-    if (globalObjects.continueButton && !globalObjects.continueButton.isDestroyed()) {
+    if (globalObjects.continueButton && !globalObjects.continueButton.isDestroyed) {
         globalObjects.continueButton.setText(getLangText('cont_ui'))
     }
-    if (globalObjects.levelSelectButton && !globalObjects.levelSelectButton.isDestroyed()) {
+    if (globalObjects.levelSelectButton && !globalObjects.levelSelectButton.isDestroyed) {
         let textObj = globalObjects.levelSelectButton.setText(getLangText('lvl_select'))
         if (textObj) {
             if (language === 'fr') {

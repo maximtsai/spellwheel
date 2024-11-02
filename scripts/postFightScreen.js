@@ -383,10 +383,10 @@ class PostFightScreen {
             this.trainingButton.setState(NORMAL);
             setTimeout(() => {
                 if (this.trainingButton.getState() !== DISABLE) {
-                    this.continueButton.setText(getLangText('post_fight_skip_training'));
-                    let text = this.continueButton.getText();
+                    let text = this.continueButton.setText(getLangText('post_fight_skip_training'));
+                    this.continueButton.setState(NORMAL);
 
-                    if (gameVars.currLevel < gameVars.maxLevel) {
+                    if (gameVars.currLevel + 1 < gameVars.maxLevel) {
                         text.alpha = 0.7;
                     } else {
                         if (gameVars.currLevel <= 2) {
@@ -395,7 +395,6 @@ class PostFightScreen {
                             text.alpha = 0.25;
                         }
                     }
-                    this.continueButton.setState(NORMAL);
                 }
             }, 3000);
         } else {

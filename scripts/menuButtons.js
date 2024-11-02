@@ -5,7 +5,33 @@ function setupMainMenuBG() {
         globalObjects.menuTop = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'menu_top.png').setDepth(-9).setScale(0.85);
         globalObjects.menuTop.startScale = globalObjects.menuTop.scaleX;
         let hasLvlSelect = gameVars.maxLevel >= 1;
-        globalObjects.menuButtons = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', hasLvlSelect ? 'menu_buttons_start.png' : 'menu_buttons.png').setDepth(-5).setScale(1);
+        globalObjects.menuButtons = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', hasLvlSelect ? 'menu_buttons.png' : 'menu_buttons_start.png').setDepth(-5).setScale(1);
+
+        if (hasLvlSelect) {
+            if (!globalObjects.continueButtonSprite) {
+                globalObjects.continueButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 175, gameConsts.halfHeight - 132, 'misc', 'continuegame.webp')
+                globalObjects.levelButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 183, gameConsts.halfHeight - 43, 'misc', 'selectgame.webp');
+            }
+
+        }
+
+        let isSolo = !hasLvlSelect;
+        let yPos = isSolo ? gameConsts.halfHeight - 122 : gameConsts.halfHeight - 260;
+        let xPos = isSolo ? gameConsts.halfWidth - 160 : gameConsts.halfWidth - 176;
+        if (!globalObjects.startButtonSprite) {
+            globalObjects.startButtonSprite = PhaserScene.add.sprite(xPos, yPos + 38, 'misc', 'newgame.webp');
+        }
+        globalObjects.startButtonSprite.setScale(isSolo ? 1.02 : 0.9);
+
+        if (hasLvlSelect) {
+            globalObjects.startButtonSprite.setRotation(0.17);
+            globalObjects.startButtonSprite.rotationOffset = 0.17;
+        } else {
+            globalObjects.startButtonSprite.setRotation(-0.14);
+            globalObjects.startButtonSprite.rotationOffset = -0.14;
+        }
+        globalObjects.creditsButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 225, gameConsts.halfHeight - 5, 'misc', 'creditsgame.webp');
+        globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
     }
 }
 
@@ -204,7 +230,9 @@ function showMainMenuButtons() {
     let hasLvlSelect = gameVars.maxLevel >= 1;
 
     if (hasLvlSelect) {
-        globalObjects.continueButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 175, gameConsts.halfHeight - 132, 'misc', 'continuegame.webp')
+        if (!globalObjects.continueButtonSprite || !globalObjects.continueButtonSprite.active) {
+            globalObjects.continueButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 175, gameConsts.halfHeight - 132, 'misc', 'continuegame.webp')
+        }
         globalObjects.continueButton = new Button({
             normal: {
                 atlas:"pixels",
@@ -226,7 +254,7 @@ function showMainMenuButtons() {
             },
             onHover: () => {
                 if (canvas) {
-                    playSound('button_hover').detune = -75;
+                    playSound('button_hover', 1.5).detune = -75;
                     canvas.style.cursor = 'pointer';
                 }
                 globalObjects.continueButtonSprite.setFrame('continuegame_hover.webp');
@@ -252,7 +280,11 @@ function showMainMenuButtons() {
             onMouseUp: () => {
                 playSound('click')
                 clearMenuButtons();
-                beginPreLevel(gameVars.latestLevel + 1);
+                if (gameVars.currLevel) {
+                    beginPreLevel(gameVars.currLevel);
+                } else {
+                    beginPreLevel(gameVars.latestLevel + 1);
+                }
             }
         });
         globalObjects.continueButton.setOrigin(0.5, 0.5);
@@ -264,7 +296,9 @@ function showMainMenuButtons() {
     }
 
     if (hasLvlSelect) {
-        globalObjects.levelButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 183, gameConsts.halfHeight - 43, 'misc', 'selectgame.webp')
+        if (!globalObjects.levelButtonSprite || !globalObjects.levelButtonSprite.active) {
+            globalObjects.levelButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 183, gameConsts.halfHeight - 43, 'misc', 'selectgame.webp')
+        }
         globalObjects.levelSelectButton = new Button({
             normal: {
                 atlas: "pixels",
@@ -286,7 +320,7 @@ function showMainMenuButtons() {
             },
             onHover: () => {
                 if (canvas) {
-                    playSound('button_hover').detune = -150;
+                    playSound('button_hover', 1.5).detune = -150;
                     canvas.style.cursor = 'pointer';
                 }
                 globalObjects.levelButtonSprite.setFrame('selectgame_hover.webp');
@@ -327,7 +361,9 @@ function showMainMenuButtons() {
     let isSolo = !(hasLvlSelect);
     let yPos = isSolo ? gameConsts.halfHeight - 122 : gameConsts.halfHeight - 260;
     let xPos = isSolo ? gameConsts.halfWidth - 160 : gameConsts.halfWidth - 176;
-    globalObjects.startButtonSprite = PhaserScene.add.sprite(xPos, yPos + 38, 'misc', 'newgame.webp');
+    if (!globalObjects.startButtonSprite || !globalObjects.startButtonSprite.active) {
+        globalObjects.startButtonSprite = PhaserScene.add.sprite(xPos, yPos + 38, 'misc', 'newgame.webp');
+    }
     globalObjects.startButtonSprite.setScale(isSolo ? 1.02 : 0.9);
     if (isSolo) {
         globalObjects.startButtonSprite.setRotation(-0.14);
@@ -336,7 +372,6 @@ function showMainMenuButtons() {
         globalObjects.startButtonSprite.setRotation(0.17);
         globalObjects.startButtonSprite.rotationOffset = 0.17;
     }
-
 
     globalObjects.startButton = new Button({
         normal: {
@@ -360,7 +395,7 @@ function showMainMenuButtons() {
         },
         onHover: () => {
             if (canvas) {
-                playSound('button_hover').detune = 0;
+                playSound('button_hover', 1.5).detune = 0;
                 canvas.style.cursor = 'pointer';
             }
             globalObjects.startButtonSprite.setFrame('newgame_hover.webp');
@@ -407,13 +442,13 @@ function showMainMenuButtons() {
     globalObjects.startButton.isSolo = isSolo;
 
     if (isSolo) {
-        globalObjects.menuButtons.setFrame('menu_buttons_start.png')
+        globalObjects.menuButtons.setFrame('menu_buttons_start.png');
         setTimeout(() => {
             // let flash = PhaserScene.add.sprite(gameConsts.halfWidth, globalObjects.startButton.getYPos(), 'shields', 'btnFlash12.png').setScale(1.12).setDepth(100).play('btnFlash');
             // globalObjects.startButton.addToDestructibles(flash)
         }, 850)
     } else {
-        globalObjects.menuButtons.setFrame('menu_buttons.png')
+        globalObjects.menuButtons.setFrame('menu_buttons.png');
     }
 
     let hideCheatConst = 0;
@@ -751,7 +786,9 @@ function showMainMenuButtons() {
     // globalObjects.lvl11Button.destroy();
     // globalObjects.lvl12Button.destroy();
     // globalObjects.lvl13Button.destroy();
-    globalObjects.creditsButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 225, gameConsts.halfHeight - 5, 'misc', 'creditsgame.webp');
+    if (!globalObjects.creditsButtonSprite || !globalObjects.creditsButtonSprite.active) {
+        globalObjects.creditsButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 225, gameConsts.halfHeight - 5, 'misc', 'creditsgame.webp');
+    }
     globalObjects.creditsButton = new Button({
         normal: {
             atlas: "pixels",
@@ -772,7 +809,7 @@ function showMainMenuButtons() {
         },
         onHover: () => {
             if (canvas) {
-                playSound('button_hover', 0.5).detune = 200;
+                playSound('button_hover', 1).detune = 200;
                 canvas.style.cursor = 'pointer';
             }
             globalObjects.creditsButtonSprite.setFrame('creditsgame_hover.webp');
@@ -1228,7 +1265,9 @@ function showMainMenuButtons() {
     globalObjects.creditsButton.setStroke('#301010', 6)
     globalObjects.creditsButton.setRotation(-0.03)
 
-    globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
+    if (!globalObjects.extrasButtonSprite || !globalObjects.extrasButtonSprite.active) {
+        globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
+    }
     globalObjects.extrasButton = new Button({
         normal: {
             atlas: "pixels",
@@ -1249,7 +1288,7 @@ function showMainMenuButtons() {
         },
         onHover: () => {
             if (canvas) {
-                playSound('button_hover', 0.5).detune = 200;
+                playSound('button_hover', 1).detune = 200;
                 canvas.style.cursor = 'pointer';
             }
             globalObjects.extrasButtonSprite.setFrame('wishlistgame_hover.webp');
@@ -1285,13 +1324,13 @@ function showMainMenuButtons() {
 }
 
 function updateMenuLanguage() {
-    if (globalObjects.startButton && !globalObjects.startButton.isDestroyed) {
+    if (globalObjects.startButton && !globalObjects.startButton.isDestroyed()) {
         globalObjects.startButton.setText(getLangText('new_game'))
     }
-    if (globalObjects.continueButton && !globalObjects.continueButton.isDestroyed) {
+    if (globalObjects.continueButton && !globalObjects.continueButton.isDestroyed()) {
         globalObjects.continueButton.setText(getLangText('cont_ui'))
     }
-    if (globalObjects.levelSelectButton && !globalObjects.levelSelectButton.isDestroyed) {
+    if (globalObjects.levelSelectButton && !globalObjects.levelSelectButton.isDestroyed()) {
         let textObj = globalObjects.levelSelectButton.setText(getLangText('lvl_select'))
         if (textObj) {
             if (language === 'fr') {
@@ -1301,10 +1340,10 @@ function updateMenuLanguage() {
             }
         }
     }
-    if (globalObjects.creditsButton && !globalObjects.creditsButton.isDestroyed) {
+    if (globalObjects.creditsButton && !globalObjects.creditsButton.isDestroyed()) {
         globalObjects.creditsButton.setText(getLangText('credits'))
     }
-    if (globalObjects.extrasButton && !globalObjects.extrasButton.isDestroyed) {
+    if (globalObjects.extrasButton && !globalObjects.extrasButton.isDestroyed()) {
         let textObj2 = globalObjects.extrasButton.setText(getLangText('extras'));
         if (textObj2) {
             if (language === 'fr') {

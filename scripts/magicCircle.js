@@ -1,5 +1,5 @@
 const DECAY = 0.00006;
-const STATIC = 0.006;
+const STATIC = 0.007;
 const ENABLE_KEYBOARD = true;
 
  class MagicCircle {
@@ -292,10 +292,10 @@ const ENABLE_KEYBOARD = true;
             this.draggedObj = null;
         }
 
-        if (this.innerDragDisabled && this.innerCircle == this.draggedObj) {
+        if (this.innerDragDisabled && this.innerCircle === this.draggedObj) {
             this.draggedObj = null;
         }
-        if (this.outerDragDisabled && this.outerCircle == this.draggedObj) {
+        if (this.outerDragDisabled && this.outerCircle === this.draggedObj) {
             this.draggedObj = null;
         }
 
@@ -1084,9 +1084,9 @@ const ENABLE_KEYBOARD = true;
             } else if (Math.abs(this.innerCircle.torqueOnRelease) > torqueReleaseThreshold) {
                 let slowOnRelease = Math.min(1.6, Math.max(1, Math.abs(this.innerCircle.torqueOnRelease) * lagMultReducer / torqueReleaseThreshold));
                 this.innerCircle.rotVel *= slowOnRelease;
-                if (this.innerCircle.rotVel > -0.043 && this.innerCircle.rotVel < -0.012) {
+                if (this.innerCircle.rotVel > -0.043 && this.innerCircle.rotVel < -0.009) {
                     this.innerCircle.rotVel = -0.043;
-                } else if (this.innerCircle.rotVel < 0.043 && this.innerCircle.rotVel > 0.012) {
+                } else if (this.innerCircle.rotVel < 0.043 && this.innerCircle.rotVel > 0.009) {
                     this.innerCircle.rotVel = 0.043;
                 }
                 this.innerCircle.nextRotation += this.innerCircle.rotVel;
@@ -1102,9 +1102,9 @@ const ENABLE_KEYBOARD = true;
             } else if (Math.abs(this.outerCircle.torqueOnRelease) > torqueReleaseThreshold) {
                 let slowOnRelease = Math.min(1.6, Math.max(1, Math.abs(this.outerCircle.torqueOnRelease) * lagMultReducer / torqueReleaseThreshold));
                 this.outerCircle.rotVel *= slowOnRelease;
-                if (this.outerCircle.rotVel > -0.038 && this.outerCircle.rotVel < -0.009) {
+                if (this.outerCircle.rotVel > -0.038 && this.outerCircle.rotVel < -0.006) {
                     this.outerCircle.rotVel = -0.038;
-                } else if (this.outerCircle.rotVel < 0.038 && this.outerCircle.rotVel > 0.009) {
+                } else if (this.outerCircle.rotVel < 0.038 && this.outerCircle.rotVel > 0.006) {
                     this.outerCircle.rotVel = 0.038;
                 }
                 this.outerCircle.nextRotation += this.outerCircle.rotVel;

@@ -449,7 +449,7 @@ class Encyclopedia {
             startPos2 + offset * 4,
         ]
         for (let i = 0; i < listOfRunes.length; i++) {
-            if (i > gameVars.maxLevel + 2) {
+            if (i > gameVars.maxLevel + 1) {
                 break;
             }
             let newIcon = PhaserScene.add.image(gameConsts.halfWidth - 212, listOfPositions[i], 'tutorial', listOfRunes[i]).setAlpha(0).setDepth(this.baseDepth).setScale(0.6);

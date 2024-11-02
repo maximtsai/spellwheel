@@ -363,7 +363,7 @@
                      name: "MY SHIELD!",
                      isPassive: true,
                      chargeAmt: 300,
-                     chargeMult: 6,
+                     chargeMult: 8,
                      customCall: " ",
                      transitionFast: true,
                      damage: 0,

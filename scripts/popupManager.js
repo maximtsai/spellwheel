@@ -46,7 +46,7 @@ function showYesNoPopup(yesText, noText, titleText = '...', bodyText = "...", on
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.halfWidth + 118,
+            x: gameConsts.halfWidth + 128,
             y: popupBG.y + 55,
         },
         hover: {
@@ -144,17 +144,17 @@ function showYesNoPopup(yesText, noText, titleText = '...', bodyText = "...", on
 
     noBtn = new Button({
         normal: {
-            ref: "menu_btn_normal.png",
+            ref: "menu_btn2_normal.png",
             atlas: 'buttons',
-            x: gameConsts.halfWidth - 118,
+            x: gameConsts.halfWidth - 128,
             y: popupBG.y + 55,
         },
         hover: {
-            ref: "menu_btn_hover.png",
+            ref: "menu_btn2_hover.png",
             atlas: 'buttons',
         },
         press: {
-            ref: "menu_btn_hover.png",
+            ref: "menu_btn2_hover.png",
             atlas: 'buttons',
         },
         disable: {

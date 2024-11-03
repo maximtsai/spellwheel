@@ -547,7 +547,16 @@ let textData2 = {
         "jp": ""
     },
     "pre_fight_4b": {
-        "en_us": " ",
+        "en_us": "The silhouette of a knight stands\neerily still in the distance.\n\n\"Hail! Are you friend or foe?\"\n\nSilence was the only answer it gave.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "pre_fight_4c": {
+        "en_us": "",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

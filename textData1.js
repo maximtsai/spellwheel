@@ -75,7 +75,7 @@ let textData = {
         "jp": "12ダメージをブロ\nックするシール\nドを作成する"
     },
     "matter_protect_desc_long": {
-        "en_us": "Create a shield that blocks 12 damage",
+        "en_us": "Create a shield that\nblocks 12 damage",
         "fr": "Crée un bouclier qui bloque\n12 points de dégâts",
         "zh_tw": "創建一個可以阻擋 12 點傷害的盾牌",
         "zh_cn": "打造一个可以阻挡 12 点伤害的盾牌",
@@ -84,7 +84,7 @@ let textData = {
         "jp": "12ダメージをブロックす\nるシールドを作成する"
     },
     "matter_protect_plus_desc": {
-        "en_us": "Create shield\nthat blocks 14\ndamage",
+        "en_us": "Create a shield\nthat blocks 14\ndamage",
         "fr": "Crée un bouclier\nqui bloque 14\npoints de dégâts",
         "zh_tw": "創建一個可以阻擋\n14 點傷害的盾牌",
         "zh_cn": "打造一个可以阻挡\n14 点伤害的盾牌",
@@ -93,7 +93,7 @@ let textData = {
         "jp": "14ダメージをブロ\nックするシール\nドを作成する"
     },
     "matter_protect_plus_desc_long": {
-        "en_us": "Create shield that blocks 14 damage",
+        "en_us": "Create a shield that\nblocks 14 damage",
         "fr": "Crée un bouclier qui bloque\n14 points de dégâts",
         "zh_tw": "創建一個可以阻擋 14 點傷害的盾牌",
         "zh_cn": "打造一个可以阻挡 14 点伤害的盾牌",

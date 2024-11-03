@@ -1436,7 +1436,7 @@ function showLevelSelectScreen(){
                     for (let i in listOfBtns) {
                         listOfBtns[i].destroy();
                     }
-                } else if (i >= 6) {
+                } else if (i >= 7) {
                     showWishlistPage();
                 } else {
                     closeLevelSelectScreen();

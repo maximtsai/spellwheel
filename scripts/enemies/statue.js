@@ -233,7 +233,8 @@
          this.shakeShieldText();
 
          if (this.shieldAmts <= 0) {
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y - 15, '-BROKE-', 1.2, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.25, scaleY: 1.25, ease: 'Back.easeOut'});
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y - 15, '-=BROKE=-', 1.8, {y: "+=1", ease: 'Cubic.easeIn'}, {alpha: 0, scaleX: 1.7, scaleY: 1.7, ease: 'Back.easeOut'});
+             playSound('rock_crumble', 0.35).detune = 200;
              this.clearHandShield(true);
          } else {
             if (this.shieldAmts === 2 || (this.canShowEarlyInfo && this.shieldAmts <= (gameVars.isHardMode ? 8 : 6))) {
@@ -324,6 +325,7 @@
      }
 
      birdFalls() {
+        playSound('clunk', 0.3).detune = 500;
          this.bird.setDepth(20);
          this.bird.y -= 2;
          this.addTween({

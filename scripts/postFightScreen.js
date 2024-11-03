@@ -30,7 +30,7 @@ class PostFightScreen {
         })
     }
 
-    initAssets(isWin = true, isPractice = false) {
+    initAssets(isWin = true, isPractice = false, initLocket = true) {
         this.locketIsOpen = false;
         this.locketIsClosable = false;
         if (!this.bgShade) {
@@ -48,7 +48,7 @@ class PostFightScreen {
         if (!this.spellsCastText) {
             this.spellsCastText = this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 184, getLangText('post_fight_spells'), {fontFamily: 'garamondmax', fontSize: 26, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0.5).setDepth(100000);
         }
-        if (!this.locketSprite) {
+        if (initLocket && !this.locketSprite) {
             this.locketSprite = this.scene.add.sprite(gameConsts.width + 300, gameConsts.halfHeight - 120, 'misc', 'locket1.png').setScale(0.75).setDepth(100003).setAlpha(0).setOrigin(0.5, 0.5);
         }
         if (!this.locketDialogImage) {
@@ -70,72 +70,6 @@ class PostFightScreen {
             this.flashObj = this.scene.add.image(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'blurry', 'flash.webp').setScale(0).setDepth(100002).setAlpha(0.5);
         }
 
-        // if (!this.showCodeBtn) {
-        //     this.showCodeBtn = new Button({
-        //         normal: {
-        //             atlas: "ui",
-        //             ref: "more.png",
-        //             visible: true,
-        //             alpha: 0.85,
-        //             x: gameConsts.halfWidth,
-        //             y: gameConsts.halfHeight + 67,
-        //         },
-        //         hover: {
-        //             atlas: "ui",
-        //             alpha: 1,
-        //             ref: "more_hover.png",
-        //         },
-        //         press: {
-        //             atlas: "ui",
-        //             alpha: 0.8,
-        //             ref: "more_press.png",
-        //         },
-        //         disable: {
-        //             atlas: "ui",
-        //             ref: "more_press.png",
-        //             alpha: 0
-        //         },
-        //         onHover: () => {
-        //             if (canvas) {
-        //                 canvas.style.cursor = 'pointer';
-        //             }
-        //         },
-        //         onHoverOut: () => {
-        //             if (canvas) {
-        //                 canvas.style.cursor = 'default';
-        //             }
-        //         },
-        //         onMouseUp: () => {
-        //             this.showCodeBtn.setState(DISABLE);
-        //             if (canvas) {
-        //                 canvas.style.cursor = 'default';
-        //             }
-        //             for (let i = 0; i < this.listOfCodes.length; i++) {
-        //                 this.listOfCodes[i].visible = true;
-        //             }
-        //             PhaserScene.tweens.add({
-        //                 targets: this.listOfCodes,
-        //                 alpha: 1,
-        //                 ease: 'Cubic.easeOut',
-        //                 duration: 250,
-        //             });
-        //         }
-        //     });
-        //     this.showCodeBtn.setDepth(100000);
-        //     this.showCodeBtn.setState(DISABLE)
-        // }
-
-        // if (!this.codeText) {
-        //     this.codeText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 80, 'placeholder code: ', {fontFamily: 'garamondmax', fontSize: 24, color: '#000000', align: 'center'}).setAlpha(0).setOrigin(0.5, 1).setDepth(100000);
-        // }
-        // if (!this.listOfCodes) {
-        //     this.listOfCodes = [];
-        //     for (let i = 0; i < 5; i++) {
-        //         let newImage = this.scene.add.sprite(gameConsts.halfWidth - 100 + i * 50, this.codeText.y + 76, 'circle', 'bright_rune_matter.png').setScale(0.92).setAlpha(0).setDepth(100000);
-        //         //newImage.setVisible(false);
-        //         this.listOfCodes.push(newImage);
-        //     }
-        // }
         if (!this.continueButton) {
             this.continueButton = new Button({
                 normal: {
@@ -352,7 +286,7 @@ class PostFightScreen {
         this.newRuneIcon.setScale(0.4);
         this.trainingRuneIcon.setScale(0.4).setVisible(true);
         if (isWin) {
-            if (!this.locketRecentlyClicked) {
+            if (initLocket && !this.locketRecentlyClicked) {
                 this.locketSprite.visible = true;
                 this.locketSprite.x = gameConsts.width + 300;
                 this.locketSprite.y = gameConsts.halfHeight - 105;
@@ -450,7 +384,7 @@ class PostFightScreen {
                 //     alpha: 1,
                 //     duration: 250,
                 // });
-                if (isWin) {
+                if (initLocket && isWin) {
                     this.locketSprite.visible = !this.locketRecentlyClicked;
                     PhaserScene.tweens.add({
                         delay: 400,
@@ -585,8 +519,7 @@ class PostFightScreen {
         this.windSfx = playSound('wind', 0.01, true);
         this.windSfx.detune = -700;
         fadeInSound(this.windSfx, 0.85, 2000);
-        globalObjects.encyclopedia.showButton();
-        globalObjects.options.showButton();
+
         gameVars.maxLevel = Math.max(gameVars.maxLevel, level + 1);
 
         if (level > gameVars.latestLevel) {
@@ -596,30 +529,35 @@ class PostFightScreen {
         }
 
         gameVars.currLevel = level;
-        this.createWinScreenUI(level);
-        this.continueButton.setOnMouseUpFunc(() => {
-            this.locketRecentlyClicked = false;
-            if (this.trainingButton.getState() !== DISABLE) {
-                this.moveToNextLevel(level);
-                // messageBus.publish("showConfirmPopup", () => {
-                //     this.moveToNextLevel(level);
-                // })
-            } else {
-                this.moveToNextLevel(level);
-            }
-        });
-        this.trainingButton.setOnMouseUpFunc(() => {
-            playSound('button_click');
-            this.clearPostFightScreen();
-            if (level < 7) {
-                beginPreLevel(-level);
-            } else {
-                beginPreLevel(level + 1);
-            }
-            if (canvas) {
-                canvas.style.cursor = 'default';
-            }
-        });
+        if (level === 1 || level === 4) {
+            this.createWinScreenUIAlt(level);
+        } else {
+            this.createWinScreenUI(level);
+            this.continueButton.setOnMouseUpFunc(() => {
+                this.locketRecentlyClicked = false;
+                if (this.trainingButton.getState() !== DISABLE) {
+                    this.moveToNextLevel(level);
+                    // messageBus.publish("showConfirmPopup", () => {
+                    //     this.moveToNextLevel(level);
+                    // })
+                } else {
+                    this.moveToNextLevel(level);
+                }
+            });
+            this.trainingButton.setOnMouseUpFunc(() => {
+                playSound('button_click');
+                this.clearPostFightScreen();
+                if (level < 7) {
+                    beginPreLevel(-level);
+                } else {
+                    beginPreLevel(level + 1);
+                }
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
+            });
+        }
+
 
     }
 
@@ -664,15 +602,17 @@ class PostFightScreen {
     }
 
     createWinScreenUI(level = 0) {
+        globalObjects.encyclopedia.showButton();
+        globalObjects.options.showButton();
         this.isMin = false;
         this.isCreated = true;
+        this.locketRecentlyClicked = false;
+        globalObjects.magicCircle.disableMovement();
         if (this.trainingRuneIcon) {
             this.trainingRuneIcon.visible = true;
         }
-        this.locketRecentlyClicked = false;
 
         this.initAssets(true);
-        globalObjects.magicCircle.disableMovement();
 
         this.newRuneDesc.alpha = 0;
         this.newRuneIcon.visible = true;
@@ -684,6 +624,143 @@ class PostFightScreen {
         this.setTextUI(level);
         this.locketDialogImage.setFrame('story_img_' + level + ".png");
         globalObjects.bannerTextManager.setDialog(this.locketDialog);
+    }
+
+
+    createWinScreenUIAlt(level = 0) {
+        this.isMin = false;
+        this.isCreated = true;
+        this.locketRecentlyClicked = false;
+        globalObjects.magicCircle.disableMovement();
+
+        if (this.trainingRuneIcon) {
+            this.trainingRuneIcon.visible = true;
+        }
+
+        if (!this.locketSprite) {
+            this.locketSprite = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 60, 'misc', 'locket1.png')
+        }
+
+        this.locketSprite.setRotation(-0.25).setScale(0.75).setDepth(100003).setAlpha(0).setVisible(true).setFrame('locket1.png').setOrigin(0.5, 0.8);
+        PhaserScene.tweens.add({
+            targets: this.locketSprite,
+            alpha: 1,
+            ease: 'Cubic.easeOut',
+            duration: 1100,
+        });
+        PhaserScene.tweens.add({
+            targets: this.locketSprite,
+            ease: 'Cubic.easeOut',
+            scaleX: 0.85,
+            scaleY: 0.85,
+            duration: 650,
+            onComplete: () => {
+                PhaserScene.tweens.add({
+                    targets: this.locketSprite,
+                    ease: 'Cubic.easeOut',
+                    scaleX: 0.75,
+                    scaleY: 0.75,
+                    duration: 900,
+                });
+            }
+        });
+        PhaserScene.tweens.add({
+            delay: 700,
+            targets: this.locketSprite,
+            x: gameConsts.width * 0.76,
+            y: gameConsts.halfHeight - 105,
+            ease: 'Cubic.easeInOut',
+            duration: 1050,
+            onComplete: () => {
+
+            }
+        });
+        PhaserScene.tweens.add({
+            targets: this.locketSprite,
+            rotation: 0,
+            ease: 'Cubic.easeInOut',
+            duration: 1600,
+            onComplete: () => {
+                globalObjects.encyclopedia.showButton();
+                globalObjects.options.showButton();
+                this.initAssets(true, undefined, false);
+                playSound('flip3');
+
+                this.newRuneDesc.alpha = 0;
+                this.newRuneIcon.visible = true;
+                this.gloom.alpha = 0;
+
+                this.newRuneIcon.setFrame(this.getNewRuneFrame(level));
+                this.trainingRuneIcon.setFrame(this.getNewRuneFrame(level));
+
+                this.setTextUI(level);
+                this.locketDialogImage.setFrame('story_img_' + level + ".png");
+                globalObjects.bannerTextManager.setDialog(this.locketDialog);
+                this.continueButton.setOnMouseUpFunc(() => {
+                    this.locketRecentlyClicked = false;
+                    if (this.trainingButton.getState() !== DISABLE) {
+                        this.moveToNextLevel(level);
+                        // messageBus.publish("showConfirmPopup", () => {
+                        //     this.moveToNextLevel(level);
+                        // })
+                    } else {
+                        this.moveToNextLevel(level);
+                    }
+                });
+                this.trainingButton.setOnMouseUpFunc(() => {
+                    playSound('button_click');
+                    this.clearPostFightScreen();
+                    if (level < 7) {
+                        beginPreLevel(-level);
+                    } else {
+                        beginPreLevel(level + 1);
+                    }
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                });
+
+                setTimeout(() => {
+                    this.locketButton.setState(NORMAL);
+                    this.gloom.x = gameConsts.width * 0.76;
+                    let oldScale = this.locketSprite.scaleX;
+                    this.locketSprite.setFrame('locket2.png').setOrigin(0.5, 0.8).setScale(oldScale * 1.05)
+                    playSound('locket_open');
+                    PhaserScene.tweens.add({
+                        targets: this.locketSprite,
+                        scaleY: oldScale,
+                        scaleX: oldScale,
+                        ease: 'Back.easeOut',
+                        duration: 300,
+                    });
+
+                    this.flashObj.alpha = 0.5;
+                    this.scene.tweens.add({
+                        targets: this.flashObj,
+                        scaleX: 1.7,
+                        scaleY: 1.7,
+                        ease: 'Cubic.easeIn',
+                        rotation: "+=0.1",
+                        duration: 300,
+                        alpha: 1,
+                        onComplete: () => {
+                            this.scene.tweens.add({
+                                targets: this.flashObj,
+                                scaleX: 0,
+                                scaleY: 0,
+                                ease: 'Cubic.easeOut',
+                                rotation: "+=0.15",
+                                duration: 500,
+                                onComplete: () => {
+                                    this.flashObj.alpha = 0;
+                                    this.flashObj.rotation = -0.2;
+                                }
+                            });
+                        }
+                    });
+                }, 150)
+            }
+        });
     }
 
     setTextUI(level = gameVars.currLevel) {
@@ -722,78 +799,32 @@ class PostFightScreen {
         this.locketDialog.setText(this.getStoryDialog(level));
         this.titleText.setText(getLangText('post_fight_day') + level + getLangText('post_fight_day2'));
     }
-/*
-    getLevelCodes(level) {
-        let listOfCodes = [
-            ["bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png"],
-            ["bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_strike.png"],
-            ["bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_protect.png"],
-            ["bright_rune_reinforce.png", "bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_protect.png"],
-            ["bright_rune_time.png", "bright_rune_time.png", "bright_rune_time.png", "bright_rune_time.png", "bright_rune_reinforce.png"],
-            ["bright_rune_void.png", "bright_rune_void.png", "bright_rune_void.png", "bright_rune_void.png", "bright_rune_enhance.png"],
-            ["bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_time.png", "bright_rune_void.png", "bright_rune_strike.png"],
-            ["bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_unload.png", "bright_rune_unload.png"],
-            ["bright_rune_mind.png", "bright_rune_strike.png", "bright_rune_mind.png", "bright_rune_unload.png", "bright_rune_mind.png"],
-            ["bright_rune_unload.png", "bright_rune_protect.png", "bright_rune_protect.png", "bright_rune_protect.png", "bright_rune_protect.png"],
-            ["bright_rune_reinforce.png", "bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_time.png", "bright_rune_void.png"],
-            ["bright_rune_unload.png", "bright_rune_unload.png", "bright_rune_unload.png", "bright_rune_unload.png", "bright_rune_reinforce.png"],
-            ["bright_rune_reinforce.png", "bright_rune_time.png", "bright_rune_protect.png", "bright_rune_unload.png", "bright_rune_void.png"],
-            ["bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png"],
+    /*
+        getLevelCodes(level) {
+            let listOfCodes = [
+                ["bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png"],
+                ["bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_strike.png"],
+                ["bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_matter.png", "bright_rune_protect.png"],
+                ["bright_rune_reinforce.png", "bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_protect.png"],
+                ["bright_rune_time.png", "bright_rune_time.png", "bright_rune_time.png", "bright_rune_time.png", "bright_rune_reinforce.png"],
+                ["bright_rune_void.png", "bright_rune_void.png", "bright_rune_void.png", "bright_rune_void.png", "bright_rune_enhance.png"],
+                ["bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_time.png", "bright_rune_void.png", "bright_rune_strike.png"],
+                ["bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_enhance.png", "bright_rune_unload.png", "bright_rune_unload.png"],
+                ["bright_rune_mind.png", "bright_rune_strike.png", "bright_rune_mind.png", "bright_rune_unload.png", "bright_rune_mind.png"],
+                ["bright_rune_unload.png", "bright_rune_protect.png", "bright_rune_protect.png", "bright_rune_protect.png", "bright_rune_protect.png"],
+                ["bright_rune_reinforce.png", "bright_rune_matter.png", "bright_rune_mind.png", "bright_rune_time.png", "bright_rune_void.png"],
+                ["bright_rune_unload.png", "bright_rune_unload.png", "bright_rune_unload.png", "bright_rune_unload.png", "bright_rune_reinforce.png"],
+                ["bright_rune_reinforce.png", "bright_rune_time.png", "bright_rune_protect.png", "bright_rune_unload.png", "bright_rune_void.png"],
+                ["bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png", "bright_rune_matter.png"],
 
-        ];
-        for (let i in this.listOfCodes) {
-            this.listOfCodes[i].setFrame(listOfCodes[level][i]);
+            ];
+            for (let i in this.listOfCodes) {
+                this.listOfCodes[i].setFrame(listOfCodes[level][i]);
+            }
         }
-    }
 
-    createWinScreenUIMin(level = 0) {
-        this.isMin = true;
-        this.isCreated = true;
-        this.initAssets(true, true);
-        globalObjects.magicCircle.disableMovement();
-        this.newRuneIcon.visible = false;
-        this.trainingRuneIcon.visible = false;
-        // this.newRuneIcon.setFrame(' ');
-        this.locketDialogImage.setFrame('story_img_' + level + ".png");
 
-        this.continueButton.setState(DISABLE);
-
-        this.setTextUI(level);
-        this.trainingButton.setState(NORMAL);
-        this.trainingButton.setOnMouseUpFunc(() => {
-            this.locketRecentlyClicked = false;
-            this.clearPostFightScreen();
-            beginPreLevel(level + 1);
-            if (canvas) {
-                canvas.style.cursor = 'default';
-            }
-        });
-        globalObjects.bannerTextManager.setDialog(this.locketDialog);
-    }
-
-    createLoseScreen(level) {
-        this.initAssets(false);
-        this.titleText.setText("You Have Fallen");
-        // healthLeftText
-        // this.codeText.setText("CHEAT CODE: ABCDE");
-        this.continueButton.setOnMouseUpFunc(() => {
-            this.locketRecentlyClicked = false;
-            this.clearPostFightScreen();
-            beginPreLevel(level);
-            if (canvas) {
-                canvas.style.cursor = 'default';
-            }
-        });
-        this.trainingButton.setOnMouseUpFunc(() => {
-            this.clearPostFightScreen();
-            let trainLevel = -level - 1;
-            beginPreLevel(trainLevel);
-            if (canvas) {
-                canvas.style.cursor = 'default';
-            }
-        });
-    }
-*/
+    */
     showStoryText(level) {
         let objectsToFade = [this.spellsCastText, this.healthLeftText, this.newRuneAnnounce, this.newRuneDesc, this.newRuneIcon];
         // objectsToFade = objectsToFade.concat(this.listOfCodes);

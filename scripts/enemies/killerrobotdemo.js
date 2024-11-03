@@ -176,9 +176,13 @@
              return;
          }
          if (currHealthPercent < 0.99) {
+             if (!this.playedSound) {
+                 this.playedSound = true;
+                 playSound('voca_short_pain')
+             }
              this.addDelayIfAlive(() => {
                  this.bgMusic.detune = -1200 + this.health * 60;
-             }, 100)
+             }, 150)
          }
      }
 
@@ -214,8 +218,8 @@
         }
 
         globalObjects.bannerTextManager.closeBanner();
-         playSound('voca_kya_damaged', 0.25).seek = 0.85;
-
+         playSound('voca_kya_damaged', 0.15).seek = 0.85;
+        playSound('cutesy_down', 0.8)
 
         this.lightShineLeft.visible = false;
         this.lightShineLeftTop.visible = false;

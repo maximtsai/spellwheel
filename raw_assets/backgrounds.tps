@@ -204,21 +204,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">backgrounds/background8.webp</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>175,202,350,404</rect>
-                <key>scale9Paddings</key>
-                <rect>175,202,350,404</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">backgrounds/battleOverScreen.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -292,21 +277,6 @@
                 <rect>178,218,355,435</rect>
                 <key>scale9Paddings</key>
                 <rect>178,218,355,435</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/graves.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>175,200,350,400</rect>
-                <key>scale9Paddings</key>
-                <rect>175,200,350,400</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

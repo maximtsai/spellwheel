@@ -4,8 +4,8 @@
 			"image": "sprites/backgrounds-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2024,
-				"h": 2046
+				"w": 2014,
+				"h": 1962
 			},
 			"scale": 1,
 			"frames": [
@@ -28,192 +28,6 @@
 						"y": 1,
 						"w": 1080,
 						"h": 1335
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "menu_buttons_old.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 769,
-						"h": 910
-					},
-					"spriteSourceSize": {
-						"x": 31,
-						"y": 91,
-						"w": 711,
-						"h": 707
-					},
-					"frame": {
-						"x": 1,
-						"y": 1338,
-						"w": 711,
-						"h": 707
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "battleOverScreen.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 629,
-						"h": 770
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 83,
-						"w": 606,
-						"h": 682
-					},
-					"frame": {
-						"x": 714,
-						"y": 1338,
-						"w": 606,
-						"h": 682
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "background8.webp",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 710,
-						"h": 870
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 710,
-						"h": 870
-					},
-					"frame": {
-						"x": 1083,
-						"y": 1,
-						"w": 710,
-						"h": 870
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "gravedark.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 710,
-						"h": 870
-					},
-					"spriteSourceSize": {
-						"x": 9,
-						"y": 36,
-						"w": 701,
-						"h": 834
-					},
-					"frame": {
-						"x": 1322,
-						"y": 873,
-						"w": 701,
-						"h": 834
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "menu_buttons_start.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 638,
-						"h": 755
-					},
-					"spriteSourceSize": {
-						"x": 71,
-						"y": 202,
-						"w": 538,
-						"h": 296
-					},
-					"frame": {
-						"x": 1322,
-						"y": 1709,
-						"w": 538,
-						"h": 296
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				}
-			]
-		},
-		{
-			"image": "sprites/backgrounds-1.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 1891,
-				"h": 1885
-			},
-			"scale": 1,
-			"frames": [
-				{
-					"filename": "fog_swirl_glow.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 1080,
-						"h": 1335
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 1080,
-						"h": 1335
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 1080,
-						"h": 1335
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "star.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 731,
-						"h": 823
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 731,
-						"h": 823
-					},
-					"frame": {
-						"x": 1083,
-						"y": 1,
-						"w": 731,
-						"h": 823
 					},
 					"anchor": {
 						"x": 0.5,
@@ -246,24 +60,160 @@
 					}
 				},
 				{
-					"filename": "graves.png",
+					"filename": "glass_break.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 700,
-						"h": 800
+						"w": 533,
+						"h": 623
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 381,
-						"w": 700,
-						"h": 419
+						"y": 0,
+						"w": 533,
+						"h": 623
+					},
+					"frame": {
+						"x": 767,
+						"y": 1338,
+						"w": 533,
+						"h": 623
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "fog_slice.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 820,
+						"h": 970
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 9,
+						"w": 796,
+						"h": 950
 					},
 					"frame": {
 						"x": 1083,
-						"y": 826,
-						"w": 700,
-						"h": 419
+						"y": 1,
+						"w": 796,
+						"h": 950
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "menu_buttons_start.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 638,
+						"h": 755
+					},
+					"spriteSourceSize": {
+						"x": 71,
+						"y": 202,
+						"w": 538,
+						"h": 296
+					},
+					"frame": {
+						"x": 1083,
+						"y": 953,
+						"w": 538,
+						"h": 296
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "menu_buttons_old.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 769,
+						"h": 910
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 91,
+						"w": 711,
+						"h": 707
+					},
+					"frame": {
+						"x": 1302,
+						"y": 1251,
+						"w": 711,
+						"h": 707
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/backgrounds-1.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1950,
+				"h": 2021
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "fog_swirl_glow.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1080,
+						"h": 1335
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1080,
+						"h": 1335
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 1080,
+						"h": 1335
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "battleOverScreen.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 629,
+						"h": 770
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 83,
+						"w": 606,
+						"h": 682
+					},
+					"frame": {
+						"x": 1,
+						"y": 1338,
+						"w": 606,
+						"h": 682
 					},
 					"anchor": {
 						"x": 0.5,
@@ -285,71 +235,10 @@
 						"h": 433
 					},
 					"frame": {
-						"x": 767,
+						"x": 609,
 						"y": 1338,
 						"w": 588,
 						"h": 433
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "glass_break.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 533,
-						"h": 623
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 533,
-						"h": 623
-					},
-					"frame": {
-						"x": 1357,
-						"y": 1247,
-						"w": 533,
-						"h": 623
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				}
-			]
-		},
-		{
-			"image": "sprites/backgrounds-2.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 1550,
-				"h": 1904
-			},
-			"scale": 1,
-			"frames": [
-				{
-					"filename": "fog_slice.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 820,
-						"h": 970
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 9,
-						"w": 796,
-						"h": 950
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 796,
-						"h": 950
 					},
 					"anchor": {
 						"x": 0.5,
@@ -371,8 +260,8 @@
 						"h": 950
 					},
 					"frame": {
-						"x": 1,
-						"y": 953,
+						"x": 1083,
+						"y": 1,
 						"w": 769,
 						"h": 950
 					},
@@ -396,8 +285,8 @@
 						"h": 950
 					},
 					"frame": {
-						"x": 799,
-						"y": 1,
+						"x": 1199,
+						"y": 953,
 						"w": 750,
 						"h": 950
 					},
@@ -405,7 +294,18 @@
 						"x": 0.5,
 						"y": 0.5
 					}
-				},
+				}
+			]
+		},
+		{
+			"image": "sprites/backgrounds-2.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1523,
+				"h": 1804
+			},
+			"scale": 1,
+			"frames": [
 				{
 					"filename": "path.png",
 					"rotated": false,
@@ -421,46 +321,10 @@
 						"h": 900
 					},
 					"frame": {
-						"x": 772,
-						"y": 953,
-						"w": 769,
-						"h": 900
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				}
-			]
-		},
-		{
-			"image": "sprites/backgrounds-3.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 1504,
-				"h": 1791
-			},
-			"scale": 1,
-			"frames": [
-				{
-					"filename": "menu_back.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 769,
-						"h": 887
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 769,
-						"h": 887
-					},
-					"frame": {
 						"x": 1,
 						"y": 1,
 						"w": 769,
-						"h": 887
+						"h": 900
 					},
 					"anchor": {
 						"x": 0.5,
@@ -482,10 +346,35 @@
 						"h": 900
 					},
 					"frame": {
-						"x": 1,
-						"y": 890,
+						"x": 772,
+						"y": 1,
 						"w": 750,
 						"h": 900
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "menu_back.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 769,
+						"h": 887
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 769,
+						"h": 887
+					},
+					"frame": {
+						"x": 1,
+						"y": 903,
+						"w": 769,
+						"h": 887
 					},
 					"anchor": {
 						"x": 0.5,
@@ -507,10 +396,71 @@
 						"h": 900
 					},
 					"frame": {
-						"x": 753,
-						"y": 890,
+						"x": 772,
+						"y": 903,
 						"w": 750,
 						"h": 900
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/backgrounds-3.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1380,
+				"h": 1684
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "star.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 731,
+						"h": 823
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 731,
+						"h": 823
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 731,
+						"h": 823
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "gravedark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 710,
+						"h": 870
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 36,
+						"w": 701,
+						"h": 834
+					},
+					"frame": {
+						"x": 1,
+						"y": 826,
+						"w": 701,
+						"h": 834
 					},
 					"anchor": {
 						"x": 0.5,
@@ -532,8 +482,8 @@
 						"h": 857
 					},
 					"frame": {
-						"x": 772,
-						"y": 1,
+						"x": 704,
+						"y": 826,
 						"w": 675,
 						"h": 857
 					},
@@ -548,6 +498,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:eeb9113e4b9f419263cfd4784c972e3c:22768a12e1f8b0b4f52983272bbf7570:4b9228cae45da4734de02858f02ab1c0$"
+		"smartupdate": "$TexturePacker:SmartUpdate:33c5715b7a3d800d13b4cd79ee38b791:cdbd757d0e3d837aa82d8455675e3ca8:4b9228cae45da4734de02858f02ab1c0$"
 	}
 }

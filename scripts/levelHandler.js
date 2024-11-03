@@ -513,8 +513,6 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case -6:
-            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
-            break;
         case -5:
         case -4:
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
@@ -568,7 +566,7 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
         case 6:
-            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
+            fadeInBackgroundAtlas('backgrounds', 'gravedark.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false, -20);
             break;
         case 7:
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, -1, -0.94, 0.94,'Quart.easeIn', 0, false);
@@ -577,8 +575,6 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 0.92, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case 9:
-            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
-            break;
         case 10:
             fadeInBackgroundAtlas('backgrounds', 'tunnel.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;

@@ -412,13 +412,13 @@ class Options {
             this.infoBoxPosText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos - 23, getLangText('spell_info_position'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 1).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosText);
 
-            this.infoBoxPosTextLeft = PhaserScene.add.text(gameConsts.halfWidth - 193, startPos, getLangText('left'), {fontFamily: 'germania', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.infoBoxPosTextLeft = PhaserScene.add.text(gameConsts.halfWidth - 193, startPos, getLangText('left'), {fontFamily: 'germania', fontSize: 20, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosTextLeft);
 
-            this.infoBoxPosTextCenter = PhaserScene.add.text(gameConsts.halfWidth - 18, startPos, getLangText('center'), {fontFamily: 'germania', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.infoBoxPosTextCenter = PhaserScene.add.text(gameConsts.halfWidth - 18, startPos, getLangText('center'), {fontFamily: 'germania', fontSize: 20, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosTextCenter);
 
-            this.infoBoxPosTextNone = PhaserScene.add.text(gameConsts.halfWidth + 157, startPos, getLangText('hidden'), {fontFamily: 'germania', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+            this.infoBoxPosTextNone = PhaserScene.add.text(gameConsts.halfWidth + 157, startPos, getLangText('hidden'), {fontFamily: 'germania', fontSize: 20, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
             this.listOfThingsToHideSemiAlpha.push(this.infoBoxPosTextNone);
 
 
@@ -603,7 +603,7 @@ class Options {
                 let furthestRight = gameConsts.halfWidth + 157;
                 let totalDist = furthestRight - furthestLeft;
                 let intervalDist = totalDist / (listOfLanguages.length - 1)
-                let newLangText = PhaserScene.add.text(furthestLeft + intervalDist * i, startPos, language, {fontFamily: 'germania', fontSize: 18, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
+                let newLangText = PhaserScene.add.text(furthestLeft + intervalDist * i - 4, startPos, language, {fontFamily: 'germania', fontSize: 20, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth);
                 this.listOfThingsToHideSemiAlpha.push(newLangText);
 
                 let newBtn = new Button({

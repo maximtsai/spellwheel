@@ -91,31 +91,43 @@
                                      this.addTween({
                                          targets: this.voidTentaEye,
                                          rotation: -0.38,
-                                         y: "-=17",
-                                         x: "+=9",
+                                         y: "-=20",
+                                         x: "+=10",
                                          ease: 'Quad.easeInOut',
                                          duration: 250,
                                          yoyo: true,
                                          repeat: 1,
                                          onComplete: () => {
+
                                              this.addTween({
-                                                 delay: 450,
                                                  targets: this.voidTentaEye,
-                                                 rotation: -1.1,
-                                                 x: "-=38",
-                                                 ease: 'Back.easeIn',
-                                                 scaleX: 1,
-                                                 scaleY: 1,
+                                                 rotation: -0.19,
+                                                 y: "-=10",
+                                                 x: "+=5",
+                                                 ease: 'Back.easeOut',
                                                  duration: 350,
-                                                 onStart: () => {
-                                                     playSound('meat_click_right', 0.2);
-                                                     playSound('void_body', 0.35);
-                                                     globalObjects.encyclopedia.showButton();
-                                                     globalObjects.options.showButton();
-                                                 },
                                                  onComplete: () => {
-                                                     this.voidTentaEye.x += 12;
-                                                     this.voidTentaEye.visible = false;
+                                                     this.addTween({
+                                                         delay: 100,
+                                                         targets: this.voidTentaEye,
+                                                         rotation: -1.1,
+                                                         x: "-=42",
+                                                         ease: 'Back.easeIn',
+                                                         scaleX: 1,
+                                                         scaleY: 1,
+                                                         duration: 350,
+                                                         onStart: () => {
+                                                             playSound('meat_click_right', 0.2);
+                                                             playSound('void_body', 0.35);
+                                                             globalObjects.encyclopedia.showButton();
+                                                             globalObjects.options.showButton();
+                                                         },
+                                                         onComplete: () => {
+                                                             this.voidTentaEye.x += 12;
+                                                             this.voidTentaEye.visible = false;
+                                                         }
+                                                     });
+
                                                  }
                                              });
                                          }
@@ -139,8 +151,8 @@
                                  messageBus.publish("showCombatText", "!!!", -2, undefined, 0.6);
                                  this.addDelayIfAlive(() => {
                                      messageBus.publish("closeCombatText");
-                                 }, 1500)
-                             }, 450)
+                                 }, 2000)
+                             }, 500)
 
 
                          }
@@ -388,8 +400,8 @@
                      messageBus.publish("showCombatText", "!!!", -2, undefined, 0.6);
                      this.addDelayIfAlive(() => {
                          messageBus.publish("closeCombatText");
-                     }, 1500)
-                 }, 450)
+                     }, 2000)
+                 }, 500)
              }
          }
      }
@@ -479,7 +491,7 @@
          } else {
              messageBus.publish('animateBlockNum', gameConsts.halfWidth + 75 - Math.random()*150, this.sprite.y + 50 - Math.random() * 100, 'NEGATED', 0.75, {alpha: 0.8}, {alpha: 0});
 
-             if (this.shieldsActive == 1) {
+             if (this.shieldsActive === 1) {
                  this.voidShield1b.setScale(this.voidShield1b.startScale * 1.12);
                  this.addTween({
                      targets: [this.voidShield1b],
@@ -595,6 +607,18 @@
                  })
              }
          })
+
+         let darkBG = getBackgroundBlackout();
+         darkBG.setDepth(-3).setAlpha(0.35);
+         this.spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.7).setScale(1.2);
+         this.scene.tweens.add({
+             targets: [this.spaceBG, darkBG],
+             alpha: 0,
+             ease: 'Cubic.easeOut',
+             duration: 2200,
+             onComplete: () => {
+             }
+         });
 
          this.shieldText.visible = true;
          this.shieldText.setText(amt);

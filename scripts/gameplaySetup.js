@@ -86,7 +86,7 @@ function setupLoadingBar(scene) {
 
     // Setup loading bar logic
     scene.load.on('progress', function (value) {
-        while (loadLevel <= value * 8.5) {
+        while (loadLevel <= value * 8.85) {
             loadObjects.loadingSpinner.goalRot = loadLevel * -Math.PI/4.5;//value * Math.PI * -1;
             let iconToEdit = icons[loadLevel];
             let loadingIconToEdit = loadingIcons[loadLevel];

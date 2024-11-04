@@ -769,7 +769,6 @@ const ENABLE_KEYBOARD = true;
     setTimeSlowRatio(ratio = 1, manual = false) {
         let oldRatio = gameVars.timeSlowRatio;
         gameVars.timeSlowRatio = ratio;
-        console.log("set time slow ratio: ", ratio);
         if (ratio < 0.99) {
             playSound('timeSlow');
             if (globalObjects.currentEnemy && globalObjects.currentEnemy.bgMusic) {

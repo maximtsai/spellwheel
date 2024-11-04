@@ -3245,7 +3245,6 @@ class SpellManager {
         let existingBuff = globalObjects.player.getStatuses()[shieldID];
         if (existingBuff) {
             // already got a shield in place
-            console.log("clear effect", shieldID);
             messageBus.publish('selfClearEffect', shieldID);
         }
     }

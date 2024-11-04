@@ -508,7 +508,6 @@ class Player {
 
     addRecentlyTakenDelayedDamage(amt) {
         this.recentlyTakenDelayedDamageAmt += amt;
-        console.log("recently taken delayed damage:", this.recentlyTakenDelayedDamageAmt);
     }
 
     getRecentlyTakenDamageAmt() {
@@ -622,7 +621,6 @@ class Player {
     selfHealRecent(percent = 0.5) {
         let maxHealAmt = Math.max(0, this.lastInjuryHealth - this.health);
         let healAmt = Math.ceil(percent * (this.recentlyTakenDamageAmt + this.recentlyTakenDelayedDamageAmt));
-        console.log("healAmt Initial: ", healAmt);
         this.recentlyTakenDamageAmt = this.recentlyTakenDamageAmt - healAmt;
         if (this.recentlyTakenDamageAmt < 0) {
             this.recentlyTakenDelayedDamageAmt = Math.max(0, this.recentlyTakenDelayedDamageAmt - Math.abs(this.recentlyTakenDamageAmt));
@@ -650,7 +648,6 @@ class Player {
 
         // let delayedDamageHealed = overflowHeal + Math.max(0, Math.ceil((healableDelayedDamage) * percent))
         if (overflowHeal > 0) {
-            console.log("overflow heal: ", overflowHeal);
             messageBus.publish('playerReduceDelayedDamage', overflowHeal);
         }
         setTimeout(() => {

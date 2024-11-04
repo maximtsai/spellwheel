@@ -639,7 +639,6 @@
                              // TODO: maybe just skip straight to enemy
                             // globalObjects.postFightScreen.createWinScreenMin();
                              let goalLevel = this.targetLevel ? this.targetLevel : -this.level + 1;
-                             console.log("practice dummy goal level: ", goalLevel)
                              beginPreLevel(goalLevel);
                         }
                     });

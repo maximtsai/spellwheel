@@ -33,8 +33,6 @@ class InternalMouseManager {
 
     onPointerDownAlt(pointer) {
         let handPos = mouseToHand(pointer.x, pointer.y, true);
-        console.log("pointer down alt", handPos.x, handPos.y)
-        console.log(pointer.wasTouch);
         gameVars.wasTouch = pointer.wasTouch || (pointer.wasTouch === undefined);
         gameVars.mousedown = true;
         gameVars.mouseJustDowned = true;
@@ -110,7 +108,6 @@ function setupMouseInteraction(scene) {
         mouseManager.onPointerUpAlt(pointer);
     };
 
-    console.log(globalObjects.input2.href)
 
     // doesn't quite work for some reason
     // window.onpointerdown = (pointer) => {

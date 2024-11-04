@@ -412,8 +412,8 @@ class SpellManager {
             statusObj = existingBuff.statusObj;
         } else {
             this.cleanseForms();
-            brickObj = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'brickPattern1.png');
             brickObj2 = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'brickPattern2.png');
+            brickObj = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'brickPattern1.png');
         }
 
         let spellMult = globalObjects.player.spellMultiplier();
@@ -425,7 +425,7 @@ class SpellManager {
         brickObj.alpha = 0.02;
         brickObj2.alpha = 0.02;
         brickObj.setScale(0.8);
-        brickObj2.setScale(0.8);
+        brickObj2.setScale(1.25 + Math.sqrt(spellMult) * 0.1);
 
         let protectionAmt = 1;
         let damageAmt = 1;
@@ -447,10 +447,10 @@ class SpellManager {
                     targets: brickObj,
                     delay: 500,
                     duration: 1000,
-                    alpha: 0.5,
+                    alpha: 0.7,
                     ease: 'Quad.easeOut'
                 });
-                let scaleAmt = 1.03 + 0.006 * Math.sqrt(spellMult);
+                let scaleAmt = 0.994 + 0.006 * Math.sqrt(spellMult);
                 brickObj.origScale = scaleAmt;
                 this.scene.tweens.add({
                     targets: brickObj,
@@ -464,30 +464,13 @@ class SpellManager {
 
         this.scene.tweens.add({
             targets: brickObj2,
-            delay: 200,
-            duration: 400,
-            scaleX: 1.08,
-            scaleY: 1.08,
-            alpha: 0.7,
+            duration: 300,
+            scaleX: 0.8,
+            scaleY: 0.8,
+            alpha: 1.1,
             ease: 'Quart.easeIn',
             onComplete: () => {
-                brickObj2.alpha = 1;
-                this.scene.tweens.add({
-                    targets: brickObj2,
-                    delay: 500,
-                    duration: 1000,
-                    alpha: 0.5,
-                    ease: 'Quad.easeOut'
-                });
-                let scaleAmt = 0.975 + 0.085 * Math.sqrt(spellMult);
-                brickObj2.origScale = scaleAmt;
-                this.scene.tweens.add({
-                    targets: brickObj2,
-                    scaleX: scaleAmt,
-                    scaleY: scaleAmt,
-                    duration: 500,
-                    ease: 'Cubic.easeOut'
-                });
+
             }
         });
         let totalProtection = spellMult * protectionAmt;
@@ -520,6 +503,7 @@ class SpellManager {
             statusObj: statusObj,
             cleanUp: (statuses) => {
                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
+
                     statuses[spellID].currentAnim = this.scene.tweens.add({
                         targets: statuses[spellID].animObj,
                         duration: 300,
@@ -531,7 +515,7 @@ class SpellManager {
                             while (statuses[spellID] && statuses[spellID].animObj.length > 0) {
                                 let item = statuses[spellID].animObj.pop()
                                 item.destroy();
-                                if (statuses[spellID].animObj.length == 0) {
+                                if (statuses[spellID].animObj.length === 0) {
                                     statuses[spellID] = null;
                                 }
                             }
@@ -2151,7 +2135,6 @@ class SpellManager {
         let existingBuff = globalObjects.player.getStatuses()[shieldID];
         if (existingBuff) {
             // already got a shield in place
-            console.log("clear effect", shieldID);
             messageBus.publish('selfClearEffect', shieldID);
         }
     }

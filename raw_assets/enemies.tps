@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>85</uint>
+        <uint>80</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -691,12 +691,11 @@
                 <false/>
             </struct>
             <key type="filename">enemies/max_death_1_cast.png</key>
-            <key type="filename">enemies/max_death_1b_angry_white.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.01</double>
+                <double>0.9</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -726,6 +725,7 @@
             <key type="filename">enemies/max_death_1a_angry.png</key>
             <key type="filename">enemies/max_death_1b.png</key>
             <key type="filename">enemies/max_death_1b_angry.png</key>
+            <key type="filename">enemies/max_death_1b_angry_white.png</key>
             <key type="filename">enemies/max_death_left_sleeve_a.png</key>
             <key type="filename">enemies/max_death_left_sleeve_b.png</key>
             <struct type="IndividualSpriteSettings">
@@ -792,7 +792,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.47</double>
+                <double>1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -1150,18 +1150,18 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/void_knight_3.png</key>
+            <key type="filename">enemies/void_knight_fog.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.5</double>
+                <double>0.54</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>185,170,370,340</rect>
+                <rect>100,125,200,250</rect>
                 <key>scale9Paddings</key>
-                <rect>185,170,370,340</rect>
+                <rect>100,125,200,250</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

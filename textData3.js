@@ -309,7 +309,7 @@ let textData3 = {
 
 
     "death5a": {
-        "en_us": "PERHAPS YOU THINK YOURSELF\nA HERO, BUT UNDERSTAND THIS:",
+        "en_us": "THOUGH EVERYONE HERE MAY\nAPPEAR TO YOU AS ENEMIES,",
         "fr": "VVOUS POUVEZ VOUS VOIR COMME\nUN HÉROS, MAIS COMPRENEZ CECI:",
         "zh_tw": "你認為自己是英雄，\n但要明白這一點:",
         "zh_cn": "你认为自己是英雄，\n但要明白这一点:",
@@ -318,7 +318,7 @@ let textData3 = {
         "jp": "あなたは自分のことをヒーローだと思うかもしれませんが、これを理解してください"
     },
     "death5b": {
-        "en_us": "NOTHING NOBLE CAN COME\nFROM THIS JOURNEY.",
+        "en_us": "IT IS ONLY YOU\nALONE WHO SEEK CONFLICT.",
         "fr": "RIEN DE NOBLE NE PEUT\nSORTIR DE CE VOYAGE.",
         "zh_tw": "這個旅程不會有任何高尚的結尾。",
         "zh_cn": "这个旅程不会有任何高尚的结尾。",

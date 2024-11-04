@@ -285,7 +285,7 @@ function beginPreLevel(lvl) {
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
-            fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
+            fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay], true)
             break;
 
         case 7:
@@ -346,7 +346,7 @@ function beginPreLevel(lvl) {
     }
 }
 
-function fadeInPreFightStuff(lvl, texts, introbgs) {
+function fadeInPreFightStuff(lvl, texts, introbgs, startDisabled) {
     playSound('flip2')
     PhaserScene.tweens.add({
         targets: texts,
@@ -370,13 +370,13 @@ function fadeInPreFightStuff(lvl, texts, introbgs) {
         y: "-=60",
         onComplete: () => {
             let itemsToClear = texts.concat(introbgs);
-            createLvlCloseButton(lvl, itemsToClear);
+            createLvlCloseButton(lvl, itemsToClear, undefined, undefined, undefined, startDisabled);
             createMenuCloseButton(itemsToClear)
         }
     });
 }
 
-function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose = []) {
+function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose = [], startDisabled = false) {
     let lvlCloseButton = new Button({
         normal: {
             ref: "menu_btn_normal.png",
@@ -432,6 +432,9 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose =
             }
             hideGlobalClickBlocker();
             beginLevel(lvl);
+            if (startDisabled) {
+                globalObjects.magicCircle.disableMovement();
+            }
         }
     });
     lvlCloseButton.setOrigin(0.5, 0.5);
@@ -566,7 +569,7 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
         case 6:
-            fadeInBackgroundAtlas('backgrounds', 'gravedark.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false, -20);
+            fadeInBackgroundAtlas('backgrounds', 'background7.webp', 1500, 1.2, 1.25, 1.25,'Quart.easeIn', 0, false, 1);
             break;
         case 7:
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, -1, -0.94, 0.94,'Quart.easeIn', 0, false);

@@ -538,16 +538,16 @@ let textData2 = {
         "jp": ""
     },
     "pre_fight_4a": {
-        "en_us": "You: \"You in the armor, state your business!\"\nKnight: ...\nYou: \"Are you friend or foe?\"\nKnight: ...\nYou: \"So you too are an enemy, fight me!\"",
-        "fr": "Toi : « Toi dans l'armure, déclare ton affaire ! »\nChevalier : ...\nToi : « Es-tu ami ou ennemi ? »\nChevalier : ...\nToi : « C'est un ennemi, combattez-moi ! »",
-        "zh_tw": '你："鎧甲騎士，說出你的事？"\n騎士：…\n你："你是朋友還是敵人？"\n騎士：…\n你："原來是敵人，立刻跟我打！',
-        "zh_cn": '你："铠甲骑士，说出你的事！"\n骑士：…\n你："你是朋友还是敌人？"\n骑士：…\n你："原来是敌人，立刻跟我打！"',
+        "en_us": "You: \"You there, are you friend or foe?\"\n...\nYou: \"Answer me or face my wrath!\"\n\nSilence was the only answer I received.",
+        "fr": "Toi : « Toi là, es-tu ami ou ennemi ? »\n...\nToi : « Réponds-moi ou affronte ma colère ! »\n\nLe silence fut la seule réponse que je reçus.",
+        "zh_tw": '你："你是朋友還是敵人？"\n…\n你："回答我，否則將面臨我的憤怒！"\n\n沉默是我唯一得到的答案。',
+        "zh_cn": '你："你是朋友还是敌人？"\n…\n你："回答我，否则将面临我的愤怒！"\n\n沉默是我唯一得到的回答。',
         "ru": "",
         "es": "",
         "jp": ""
     },
     "pre_fight_4b": {
-        "en_us": "The silhouette of a knight stands\neerily still in the distance.\n\n\"Hail! Are you friend or foe?\"\n\nSilence was the only answer it gave.",
+        "en_us": "",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

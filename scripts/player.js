@@ -869,7 +869,7 @@ class Player {
                                     scaleX: wallObj.origScale,
                                     scaleY: wallObj.origScale,
                                     ease: 'Quad.easeOut',
-                                    alpha: 0.5,
+                                    alpha: 0.7,
 
                                 });
                             }

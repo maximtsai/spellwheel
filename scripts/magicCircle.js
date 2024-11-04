@@ -897,7 +897,7 @@ const ENABLE_KEYBOARD = true;
 
             this.elements[i].glow = this.scene.add.sprite(x, y, 'circle', ELEMENT_ARRAY[i] + '_glow.png');
             this.elements[i].glow.setOrigin(0.5, 0.84);
-            this.elements[i].glow.setDepth(103).setAlpha(0.98);
+            this.elements[i].glow.setDepth(103).setAlpha(0.85);
             this.elements[i].glow.rotation = this.elements[i].rotation;
         }
         for (let i = 0; i < EMBODIMENT_ARRAY.length; i++) {
@@ -911,7 +911,7 @@ const ENABLE_KEYBOARD = true;
 
             this.embodiments[i].glow = this.scene.add.sprite(x, y, 'circle', EMBODIMENT_ARRAY[i] + '_glow.png');
             this.embodiments[i].glow.setOrigin(0.5, 1.22);
-            this.embodiments[i].glow.setDepth(103).setAlpha(0.98);
+            this.embodiments[i].glow.setDepth(103).setAlpha(0.85);
             this.embodiments[i].glow.rotation = this.embodiments[i].rotation;
         }
          //blastEffect6.png
@@ -1336,6 +1336,13 @@ const ENABLE_KEYBOARD = true;
          if (matterBlock) {
              let fullShield = matterBlock.animObj[0];
              fullShield.rotation = this.outerCircle.rotation;
+         }
+         let matterThorns = playerStatuses['matterReinforce'];
+         if (matterThorns) {
+             let thorns1 = matterThorns.animObj[0];
+             let thorns2 = matterThorns.animObj[1];
+             thorns1.rotation = this.outerCircle.rotation;
+             thorns2.rotation = this.outerCircle.rotation;
          }
          for (let i = 0; i < 10; i++) {
              if (playerStatuses['shield' + i]) {

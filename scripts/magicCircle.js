@@ -897,7 +897,7 @@ const ENABLE_KEYBOARD = true;
 
             this.elements[i].glow = this.scene.add.sprite(x, y, 'circle', ELEMENT_ARRAY[i] + '_glow.png');
             this.elements[i].glow.setOrigin(0.5, 0.866);
-            this.elements[i].glow.setDepth(103).setAlpha(0.94);
+            this.elements[i].glow.setDepth(103).setAlpha(0.99);
             this.elements[i].glow.rotation = this.elements[i].rotation;
         }
         for (let i = 0; i < EMBODIMENT_ARRAY.length; i++) {
@@ -911,7 +911,7 @@ const ENABLE_KEYBOARD = true;
 
             this.embodiments[i].glow = this.scene.add.sprite(x, y, 'circle', EMBODIMENT_ARRAY[i] + '_glow.png');
             this.embodiments[i].glow.setOrigin(0.5, 1.22);
-            this.embodiments[i].glow.setDepth(103).setAlpha(0.94);
+            this.embodiments[i].glow.setDepth(103).setAlpha(0.99);
             this.embodiments[i].glow.rotation = this.embodiments[i].rotation;
         }
          //blastEffect6.png
@@ -1630,7 +1630,7 @@ const ENABLE_KEYBOARD = true;
                 distToClosestRuneElement = distToRune;
                 // I messed up and inversed
                 let idx = this.elements.length - i;
-                if (i == 0) {
+                if (i === 0) {
                     idx = 0;
                 }
                 closestElement = this.elements[idx];
@@ -1647,7 +1647,7 @@ const ENABLE_KEYBOARD = true;
             if (Math.abs(distToRune) < Math.abs(distToClosestRuneEmbodiment)) {
                 distToClosestRuneEmbodiment = distToRune;
                 let idx = this.embodiments.length - i;
-                if (i == 0) {
+                if (i === 0) {
                     idx = 0;
                 }
                 closestEmbodiment = this.embodiments[idx];
@@ -1967,9 +1967,9 @@ const ENABLE_KEYBOARD = true;
         castCircle.setScale(1.25);
         castCircle.rotation = 0;
 
-        sprite.setPosition(this.x + Math.sin(elem.rotation) * 128, this.y - Math.cos(elem.rotation) * 128);
+        sprite.setPosition(this.x + Math.sin(elem.rotation) * 133, this.y - Math.cos(elem.rotation) * 133);
         sprite.setAlpha(1);
-        castCircle.setPosition(sprite.x, sprite.y);
+        castCircle.setPosition(sprite.x, sprite.y + 21);
         sprite.setScale(1.2);
 
         this.scene.tweens.add({
@@ -1978,10 +1978,12 @@ const ENABLE_KEYBOARD = true;
             ease: 'Cubic.easeOut',
             scaleX: isMobile ? 1.5 : 1.4,
             scaleY: isMobile ? 1.5 : 1.4,
+            y: "-=6",
             onComplete: () => {
                 this.scene.tweens.add({
                     targets: sprite,
                     ease: 'Cubic.easeOut',
+                    y: "+=9",
                     duration: gameVars.gameManualSlowSpeed * 350,
                     scaleX: isMobile ? 1.075 : 1.05,
                     scaleY: isMobile ? 1.075 : 1.05
@@ -1993,7 +1995,7 @@ const ENABLE_KEYBOARD = true;
         this.scene.tweens.add({
             targets: castCircle,
             duration: gameVars.gameManualSlowSpeed * 250,
-            alpha: 0.85
+            alpha: 0.95
         });
 
         this.scene.tweens.add({
@@ -2011,18 +2013,25 @@ const ENABLE_KEYBOARD = true;
                     delay: 30,
                     ease: 'Quart.easeInOut',
                     rotation: -1.57,
-                    alpha: 0.5
+                    alpha: 0.55
                 });
-
                 this.scene.tweens.add({
-                    targets: [sprite, castCircle],
+                    targets: [castCircle],
                     ease: 'Quart.easeInOut',
                     delay: 60,
                     duration: gameVars.gameManualSlowSpeed * 800,
                     x: this.x - 28,
                     y: this.y - 246,
-                    onComplete: () => {
+                });
 
+                this.scene.tweens.add({
+                    targets: [sprite],
+                    ease: 'Quart.easeInOut',
+                    delay: 60,
+                    duration: gameVars.gameManualSlowSpeed * 800,
+                    x: this.x - 28,
+                    y: this.y - 262,
+                    onComplete: () => {
                         this.scene.tweens.add({
                             targets: [sprite, castCircle],
                             alpha: 0,
@@ -2075,7 +2084,7 @@ const ENABLE_KEYBOARD = true;
 
         sprite.setPosition(this.x + Math.sin(elem.rotation) * 194, this.y - Math.cos(elem.rotation) * 195);
         sprite.setAlpha(1);
-        castCircle.setPosition(sprite.x, sprite.y + 5);
+        castCircle.setPosition(sprite.x, sprite.y + 18);
         sprite.setScale(1.2);
 
         this.scene.tweens.add({
@@ -2100,7 +2109,7 @@ const ENABLE_KEYBOARD = true;
         this.scene.tweens.add({
             targets: castCircle,
             duration: gameVars.gameManualSlowSpeed * 250,
-            alpha: 0.85,
+            alpha: 0.95,
         });
         if (this.focusLinesOn.currAnim) {
             this.focusLinesOn.currAnim.stop();
@@ -2131,7 +2140,7 @@ const ENABLE_KEYBOARD = true;
                     delay: 30,
                     ease: 'Quart.easeInOut',
                     rotation: 1.57,
-                    alpha: 0.5
+                    alpha: 0.55
                 });
                 let stopForceAlignmentDelay = this.keyboardCasted ? 100 : 0;
                 let attackAlignDelay = isAttack ? 100 : 0;
@@ -2168,12 +2177,20 @@ const ENABLE_KEYBOARD = true;
                 });
 
                 this.scene.tweens.add({
-                    targets: [sprite, castCircle],
+                    targets: [castCircle],
                     ease: 'Quart.easeInOut',
                     delay: 60,
                     duration: gameVars.gameManualSlowSpeed * 800,
                     x: this.x + 28,
                     y: this.y - 246,
+                });
+                this.scene.tweens.add({
+                    targets: [sprite],
+                    ease: 'Quart.easeInOut',
+                    delay: 60,
+                    duration: gameVars.gameManualSlowSpeed * 800,
+                    x: this.x + 28,
+                    y: this.y - 262,
                     onComplete: () => {
                         castFunc();
                         PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 230, () => {

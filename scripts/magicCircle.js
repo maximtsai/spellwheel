@@ -598,7 +598,7 @@ const ENABLE_KEYBOARD = true;
         this.dragArrow.setOrigin(0.2, 0.5);
         this.dragArrow.visible = false;
 
-        this.elementHighlight = this.scene.add.sprite(x, y, 'circle', 'bright_rune_matter.png').setOrigin(0.5, 0.84).setDepth(104);
+        this.elementHighlight = this.scene.add.sprite(x, y, 'circle', 'bright_rune_matter.png').setOrigin(0.5, 0.866).setDepth(104);
         this.embodimentHighlight = this.scene.add.sprite(x, y, 'circle', 'bright_rune_strike.png').setOrigin(0.5, 1.22).setDepth(104);
         this.buildRunes();
     }
@@ -888,16 +888,16 @@ const ENABLE_KEYBOARD = true;
         this.embodiments = [];
         for (let i = 0; i < ELEMENT_ARRAY.length; i++) {
             this.elements[i] = this.scene.add.sprite(x, y, 'circle', ELEMENT_ARRAY[i] + '.png');
-            this.elements[i].setOrigin(0.5, 0.84);
+            this.elements[i].setOrigin(0.5, 0.866);
             this.elements[i].setDepth(103);
             this.elements[i].rotation = (Math.PI * 2)/ELEMENT_ARRAY.length * i;
             this.elements[i].startRotation = this.elements[i].rotation
             this.elements[i].runeName = ELEMENT_ARRAY[i];
-            this.elements[i].alpha = 0.5;
+            this.elements[i].alpha = 0.44;
 
             this.elements[i].glow = this.scene.add.sprite(x, y, 'circle', ELEMENT_ARRAY[i] + '_glow.png');
-            this.elements[i].glow.setOrigin(0.5, 0.84);
-            this.elements[i].glow.setDepth(103).setAlpha(0.85);
+            this.elements[i].glow.setOrigin(0.5, 0.866);
+            this.elements[i].glow.setDepth(103).setAlpha(0.94);
             this.elements[i].glow.rotation = this.elements[i].rotation;
         }
         for (let i = 0; i < EMBODIMENT_ARRAY.length; i++) {
@@ -907,11 +907,11 @@ const ENABLE_KEYBOARD = true;
             this.embodiments[i].rotation = (Math.PI * 2)/EMBODIMENT_ARRAY.length * i;
             this.embodiments[i].startRotation = this.embodiments[i].rotation;
             this.embodiments[i].runeName = EMBODIMENT_ARRAY[i];
-            this.embodiments[i].alpha = 0.5;
+            this.embodiments[i].alpha = 0.44;
 
             this.embodiments[i].glow = this.scene.add.sprite(x, y, 'circle', EMBODIMENT_ARRAY[i] + '_glow.png');
             this.embodiments[i].glow.setOrigin(0.5, 1.22);
-            this.embodiments[i].glow.setDepth(103).setAlpha(0.85);
+            this.embodiments[i].glow.setDepth(103).setAlpha(0.94);
             this.embodiments[i].glow.rotation = this.embodiments[i].rotation;
         }
          //blastEffect6.png
@@ -982,7 +982,7 @@ const ENABLE_KEYBOARD = true;
             if (closestElement.glow.visible) {
                 this.elementHighlight.closest = closestElement;
                 this.elementHighlight.visible = true;
-                this.elementHighlight.setRotation(closestElement.rotation).setFrame("bright_" + closestElement.frame.name).setOrigin(0.5, 0.84);
+                this.elementHighlight.setRotation(closestElement.rotation).setFrame("bright_" + closestElement.frame.name).setOrigin(0.5, 0.866);
             } else {
                 this.elementHighlight.visible = false;
             }
@@ -1967,7 +1967,7 @@ const ENABLE_KEYBOARD = true;
         castCircle.setScale(1.25);
         castCircle.rotation = 0;
 
-        sprite.setPosition(this.x + Math.sin(elem.rotation) * 115, this.y - Math.cos(elem.rotation) * 115);
+        sprite.setPosition(this.x + Math.sin(elem.rotation) * 128, this.y - Math.cos(elem.rotation) * 128);
         sprite.setAlpha(1);
         castCircle.setPosition(sprite.x, sprite.y);
         sprite.setScale(1.2);
@@ -2020,7 +2020,7 @@ const ENABLE_KEYBOARD = true;
                     delay: 60,
                     duration: gameVars.gameManualSlowSpeed * 800,
                     x: this.x - 28,
-                    y: this.y - 224,
+                    y: this.y - 246,
                     onComplete: () => {
 
                         this.scene.tweens.add({
@@ -2073,7 +2073,7 @@ const ENABLE_KEYBOARD = true;
         castCircle.setScale(1.25);
         castCircle.rotation = 0;
 
-        sprite.setPosition(this.x + Math.sin(elem.rotation) * 175, this.y - Math.cos(elem.rotation) * 176);
+        sprite.setPosition(this.x + Math.sin(elem.rotation) * 194, this.y - Math.cos(elem.rotation) * 195);
         sprite.setAlpha(1);
         castCircle.setPosition(sprite.x, sprite.y + 5);
         sprite.setScale(1.2);
@@ -2166,13 +2166,14 @@ const ENABLE_KEYBOARD = true;
                         });
                     }
                 });
+
                 this.scene.tweens.add({
                     targets: [sprite, castCircle],
                     ease: 'Quart.easeInOut',
                     delay: 60,
                     duration: gameVars.gameManualSlowSpeed * 800,
                     x: this.x + 28,
-                    y: this.y - 224,
+                    y: this.y - 246,
                     onComplete: () => {
                         castFunc();
                         PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 230, () => {
@@ -2213,18 +2214,36 @@ const ENABLE_KEYBOARD = true;
                                 this.castSpell(true);
                             }
                         });
-
                         this.scene.tweens.add({
-                            targets: [sprite, castCircle],
+                            targets: [castCircle],
                             alpha: 0,
                             scaleX: 1.5,
                             scaleY: 1.5,
-                            y: "-=2",
                             x: "+=2",
+                            y: "-=2",
                             ease: 'Cubic.easeOut',
                             duration: gameVars.gameManualSlowSpeed * 600,
                             onComplete: () => {
                                 poolManager.returnItemToPool(castCircle, 'castCircle');
+                                if (sprite.shouldDelete) {
+                                    sprite.destroy();
+                                } else {
+                                    sprite.setScale(1);
+                                    sprite.canUse = true;
+                                }
+                            }
+                        });
+
+                        this.scene.tweens.add({
+                            targets: [sprite],
+                            alpha: 0,
+                            scaleX: 1.5,
+                            scaleY: 1.5,
+                            x: "+=2",
+                            y: "-=6",
+                            ease: 'Cubic.easeOut',
+                            duration: gameVars.gameManualSlowSpeed * 600,
+                            onComplete: () => {
                                 if (sprite.shouldDelete) {
                                     sprite.destroy();
                                 } else {

@@ -2082,14 +2082,14 @@ const ENABLE_KEYBOARD = true;
         castCircle.setScale(1.25);
         castCircle.rotation = 0;
 
-        sprite.setPosition(this.x + Math.sin(elem.rotation) * 194, this.y - Math.cos(elem.rotation) * 195);
+        sprite.setPosition(this.x + Math.sin(elem.rotation) * 196, this.y - Math.cos(elem.rotation) * 197);
         sprite.setAlpha(1);
         castCircle.setPosition(sprite.x, sprite.y + 18);
         sprite.setScale(1.2);
 
         this.scene.tweens.add({
             targets: sprite,
-            y: "-=6",
+            y: "-=9",
             duration: gameVars.gameManualSlowSpeed * 100,
             ease: 'Cubic.easeOut',
             scaleX: isMobile ? 1.55 : 1.44,
@@ -2099,6 +2099,7 @@ const ENABLE_KEYBOARD = true;
                 this.scene.tweens.add({
                     targets: sprite,
                     ease: 'Cubic.easeOut',
+                    y: "+=9",
                     duration: gameVars.gameManualSlowSpeed * 350,
                     scaleX: isMobile ? 1.075 : 1.05,
                     scaleY: isMobile ? 1.075 : 1.05

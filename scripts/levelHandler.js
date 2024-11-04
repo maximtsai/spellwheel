@@ -389,14 +389,14 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose =
             atlas: 'buttons',
         },
         press: {
-            ref: "menu_btn_hover.png",
+            ref: "menu_btn_press.png",
             atlas: 'buttons',
         },
         disable: {
             alpha: 0
         },
         onHover: () => {
-            playSound('button_hover');
+            playSound('click');
             if (canvas) {
                 canvas.style.cursor = 'pointer';
             }

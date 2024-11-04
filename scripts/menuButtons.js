@@ -344,7 +344,7 @@ function showMainMenuButtons() {
                 });
             },
             onMouseUp: () => {
-                playSound('click')
+                playSound('flip1')
                 showLevelSelectScreen();
             }
         });
@@ -419,8 +419,8 @@ function showMainMenuButtons() {
             });
         },
         onMouseUp: () => {
-            playSound('click')
-            if (gameVars.latestLevel >= 1) {
+            // playSound('button_hover', 1).detune = -250;
+            if (!isSolo) {
                 let titleText = getLangText('new_game') + "?";
                 showYesNoPopup(getLangText('cont_ui'), getLangText('back'), titleText, getLangText('new_game_long'), () => {
                     clearOnlyMenuButtons();

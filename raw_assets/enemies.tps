@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>80</uint>
+        <uint>85</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -691,11 +691,12 @@
                 <false/>
             </struct>
             <key type="filename">enemies/max_death_1_cast.png</key>
+            <key type="filename">enemies/max_death_1b_angry_white.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.9</double>
+                <double>0.01</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -725,7 +726,6 @@
             <key type="filename">enemies/max_death_1a_angry.png</key>
             <key type="filename">enemies/max_death_1b.png</key>
             <key type="filename">enemies/max_death_1b_angry.png</key>
-            <key type="filename">enemies/max_death_1b_angry_white.png</key>
             <key type="filename">enemies/max_death_left_sleeve_a.png</key>
             <key type="filename">enemies/max_death_left_sleeve_b.png</key>
             <struct type="IndividualSpriteSettings">
@@ -769,36 +769,6 @@
                 <rect>63,38,125,75</rect>
                 <key>scale9Paddings</key>
                 <rect>63,38,125,75</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/music_note.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>55,55,110,110</rect>
-                <key>scale9Paddings</key>
-                <rect>55,55,110,110</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/music_note_blue.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.5</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>55,55,110,110</rect>
-                <key>scale9Paddings</key>
-                <rect>55,55,110,110</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -892,22 +862,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemies/robot_blast_small1.png</key>
-            <key type="filename">enemies/robot_blast_small2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>53,43,107,85</rect>
-                <key>scale9Paddings</key>
-                <rect>53,43,107,85</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">enemies/robot_dead.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -935,36 +889,6 @@
                 <rect>60,49,120,98</rect>
                 <key>scale9Paddings</key>
                 <rect>60,49,120,98</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/robot_flutter.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.7</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>153,136,305,272</rect>
-                <key>scale9Paddings</key>
-                <rect>153,136,305,272</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">enemies/roboteye.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>125,121,250,242</rect>
-                <key>scale9Paddings</key>
-                <rect>125,121,250,242</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

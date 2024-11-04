@@ -282,13 +282,20 @@
              scaleY: 3.5,
              duration: 3500,
          });
+         let fakeBGMusic = false;
          setTimeout(() => {
-             playFakeBGMusic('zoomin');
+             fakeBGMusic = playFakeBGMusic('zoomin');
          }, 500)
          this.addTween({
              targets: backImage,
-             alpha: 1,
-             duration: 8500,
+             alpha: 1.2,
+             duration: 6800,
+             onComplete: () => {
+                 if (fakeBGMusic) {
+                     fakeBGMusic.destroy();
+                 }
+                 this.destroy();
+             }
          });
          this.addTween({
              targets: backImage,

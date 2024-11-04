@@ -1195,7 +1195,7 @@ class Player {
                                 ref: "menu_btn_normal.png",
                                 atlas: 'buttons',
                                 x: gameConsts.halfWidth,
-                                y: gameConsts.height - 385,
+                                y: gameConsts.height - 389,
                             },
                             hover: {
                                 ref: "menu_btn_hover.png",
@@ -1243,8 +1243,8 @@ class Player {
                             normal: {
                                 ref: "menu_btn_normal.png",
                                 atlas: 'buttons',
-                                x: gameConsts.halfWidth + 155,
-                                y: gameConsts.height - 385,
+                                x: gameConsts.halfWidth + 145,
+                                y: gameConsts.height - 389,
                             },
                             hover: {
                                 ref: "menu_btn_hover.png",
@@ -1298,8 +1298,8 @@ class Player {
                         if (CURRENT_LEVEL >= 7 || CURRENT_LEVEL < 0) {
                             deathTrainingButton.setState(DISABLE);
                         } else {
-                            deathMenuButton.setPos(gameConsts.halfWidth - 155, gameConsts.height - 385);
-                            menuText.setPosition(gameConsts.halfWidth - 155, gameConsts.height - 385)
+                            deathMenuButton.setPos(gameConsts.halfWidth - 145, gameConsts.height - 389);
+                            menuText.setPosition(gameConsts.halfWidth - 145, gameConsts.height - 389)
                         }
 
                         deathRetryButton = new Button({

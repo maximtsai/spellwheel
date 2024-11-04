@@ -814,10 +814,10 @@ class Enemy {
         } else {
             if (almostDone) {
                 this.chargeBarAngry.visible = true;
-                this.chargeBarAngry.alpha = this.chargeBarAngry.midAlpha + completePercent * 0.5;
+                this.chargeBarAngry.alpha = 1;
             } else {
                 this.chargeBarAngry.visible = true;
-                this.chargeBarAngry.alpha = completePercent * 0.6;
+                this.chargeBarAngry.alpha = completePercent * 0.7;
             }
             this.isAngry = false;
             this.chargeBarCurr.visible = true;

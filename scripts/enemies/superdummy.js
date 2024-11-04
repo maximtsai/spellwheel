@@ -156,7 +156,7 @@
                      this.sprite.setRotation(0);
                      this.sprite.setOrigin(0.85, 0.78);
 
-                     let rune = this.addSprite(this.x, this.y - 75, 'circle', 'rune_mind_glow.png').setOrigin(0.5, 0.15).setScale(0).setDepth(9999).setVisible(false);
+                     let rune = this.addSprite(this.x, this.y - 85, 'circle', 'bright_rune_mind.png').setOrigin(0.5, 0.15).setScale(0).setDepth(9999).setVisible(false);
                      this.addTween({
                          targets: rune,
                          x: gameConsts.halfWidth,
@@ -588,7 +588,7 @@
                         this.attackScale = 1.2;
                         // this.createTutSolo(getLangText('superdummy_ult'), 'rune_unload_glow.png');
                          if (!this.showTut1) {
-                             this.createTutIcon(getLangText('superdummy_void'), 'rune_unload_glow.png', 'rune_void_glow.png')
+                             this.createTutIcon(getLangText('superdummy_void'), 'bright_rune_unload.png', 'bright_rune_void.png')
                          }
                      },
                     attackFinishFunction: () => {
@@ -682,7 +682,7 @@
                         this.pullbackScale = 0.9;
                         this.attackScale = 1.2;
                          if (this.showTut1) {
-                             this.createTutIcon(getLangText('superdummy_mind'), 'rune_unload_glow.png', 'rune_mind_glow.png')
+                             this.createTutIcon(getLangText('superdummy_mind'), 'bright_rune_unload.png', 'bright_rune_mind.png')
                          }
                      },
                     attackFinishFunction: () => {
@@ -895,7 +895,7 @@
                      attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
                      startFunction: () => {
                          if (!this.showTut1) {
-                             this.createTutIcon(getLangText('superdummy_matter'), 'rune_unload_glow.png', 'rune_matter_glow.png')
+                             this.createTutIcon(getLangText('superdummy_matter'), 'bright_rune_unload.png', 'bright_rune_matter.png')
                          }
                      },
                     attackFinishFunction: () => {

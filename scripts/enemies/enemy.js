@@ -541,7 +541,7 @@ class Enemy {
 
                 if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone && this.castAggravateCharge <= 0) {
                     // this.attackCharge += timeChange * 0.02 * this.slowMult;
-                    this.chargeBarCurr.alpha = 0.67;
+                    this.chargeBarCurr.alpha = 0.7;
                     this.chargeBarShow = true;
                 } else {
                     // Normal slow chargin
@@ -558,7 +558,7 @@ class Enemy {
                         if (!(chargeMult > 1) && !almostDone) {
                             this.chargeBarCurr.alpha = 0.85;
                         } else {
-                            this.chargeBarCurr.alpha = 0.98;
+                            this.chargeBarCurr.alpha = 0.99;
                         }
                         if (chargeMult > 1) {
                             this.attackCharge += timeChange * 0.5 * this.slowMult * chargeMult;
@@ -568,7 +568,7 @@ class Enemy {
                         this.attackCharge += castAggravateBonus * 3.3;
 
                     } else {
-                        this.chargeBarCurr.alpha = 0.67;
+                        this.chargeBarCurr.alpha = 0.7;
                         this.chargeBarShow = true;
                     }
 
@@ -817,7 +817,7 @@ class Enemy {
                 this.chargeBarAngry.alpha = 1;
             } else {
                 this.chargeBarAngry.visible = true;
-                this.chargeBarAngry.alpha = completePercent * 0.7;
+                this.chargeBarAngry.alpha = completePercent * 0.63;
             }
             this.isAngry = false;
             this.chargeBarCurr.visible = true;
@@ -829,7 +829,7 @@ class Enemy {
             // slow multiplier expired
             this.slowMultDuration -= timeChange;
             this.chargeBarAngry.alpha = this.chargeBarAngry.midAlpha + 0.05;
-            this.chargeBarCurr.alpha = 0.65;
+            this.chargeBarCurr.alpha = 0.7;
             if (this.slowMultDuration <= 0) {
                 this.slowMult = 1;
                 this.chargeBarAngry.alpha = this.chargeBarAngry.midAlpha * 1.63;
@@ -1199,7 +1199,7 @@ class Enemy {
         let extraTimeMult = 2 - gameVars.timeSlowRatio;
         if (animate) {
             if (customCall) {
-                if (customCall != "" && customCall != " ") {
+                if (customCall !== "" && customCall !== " ") {
                     playSound(customCall, 0.7);
                 }
             } else {

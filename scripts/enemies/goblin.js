@@ -293,8 +293,8 @@
                                 let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                                 let centerXPos = globalObjects.textPopupManager.getCenterPos();
                                 let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
-                                this.rune3 = this.addImage(centerXPos - 32, runeYPos + 27, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
-                                this.rune4 = this.addImage(centerXPos + 38, runeYPos + 27, 'circle', 'rune_enhance_glow.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+                                this.rune3 = this.addImage(centerXPos - 32, runeYPos + 17, 'circle', 'bright_rune_mind.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+                                this.rune4 = this.addImage(centerXPos + 38, runeYPos + 17, 'circle', 'bright_rune_enhance.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
                                 this.addTween({
                                     targets: [this.rune3, this.rune4],
                                     scaleX: 1,

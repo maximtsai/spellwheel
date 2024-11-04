@@ -78,7 +78,7 @@ function buildTutorialMind() {
     });
     globalObjects.runePicture.setFrame(startFrame);
 
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, getLangText('energy_rune_spells'), {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
+    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, getLangText('energy_rune_spells'), {fontFamily: 'germania', fontSize: 26, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
     let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 205, gameConsts.halfHeight - 200, 'tutorial', startFrame).setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
         tutText.setText(initTutText);
@@ -127,7 +127,7 @@ function buildTutorialTime() {
     });
     globalObjects.runePicture.setFrame(startFrame);
 
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, getLangText('time_rune_spells'), {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
+    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, getLangText('time_rune_spells'), {fontFamily: 'germania', fontSize: 26, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
     let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 205, gameConsts.halfHeight - 200, 'tutorial', startFrame).setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
         tutText.setText(initTutText);
@@ -186,7 +186,7 @@ function buildTutorialVoid() {
     });
     globalObjects.runePicture.setFrame(startFrame);
 
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, getLangText('void_rune_spells'), {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
+    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, getLangText('void_rune_spells'), {fontFamily: 'germania', fontSize: 26, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
     let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 205, gameConsts.halfHeight - 200, 'tutorial', startFrame).setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
         tutText.setText(initTutText);
@@ -244,7 +244,7 @@ function buildTutorialProtect() {
     let startFrame = 'rune_protect_large.png'
     globalObjects.runePicture.setFrame(startFrame);
 
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, getLangText('shield_rune_spells'), {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
+    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, getLangText('shield_rune_spells'), {fontFamily: 'germania', fontSize: 26, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
     let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 205, gameConsts.halfHeight - 200, 'tutorial', startFrame).setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
         tutText.setText(initTutText);
@@ -290,7 +290,7 @@ function buildTutorialReinforce() {
     let startFrame = 'rune_reinforce_large.png'
     globalObjects.runePicture.setFrame(startFrame);
 
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, getLangText('body_rune_spells'), {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
+    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, getLangText('body_rune_spells'), {fontFamily: 'germania', fontSize: 26, color: '#2A1122', align: 'left'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
     let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 205, gameConsts.halfHeight - 200, 'tutorial', startFrame).setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
         tutText.setText(initTutText);
@@ -338,7 +338,7 @@ function buildTutorialUnload() {
     let startFrame = 'rune_unload_large.png'
     globalObjects.runePicture.setFrame(startFrame);
 
-    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, getLangText('ultimate_rune_spells'), {fontFamily: 'Verdana', fontSize: 23, color: '#2A1122', align: 'center'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
+    let tutTitleText = PhaserScene.add.text(gameConsts.halfWidth - 143, gameConsts.halfHeight - 285, getLangText('ultimate_rune_spells'), {fontFamily: 'germania', fontSize: 26, color: '#2A1122', align: 'center'}).setScale(1).setDepth(10001).setOrigin(0.5, 0.5);
     let tutRune = PhaserScene.add.sprite(gameConsts.halfWidth - 205, gameConsts.halfHeight - 200, 'tutorial', startFrame).setScale(0.96).setAlpha(0.5).setDepth(10001);
     let runeClicker1 = buildRuneclicker(tutRune.x, tutRune.y, () => {
         tutText.setText(initTutText);

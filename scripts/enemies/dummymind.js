@@ -164,7 +164,7 @@
             return;
         }
         this.currDummyAnim = this.addTween({
-            delay: 1900,
+            delay: 1980,
             targets: [this.sprite, this.poster],
             scaleX: this.sprite.startScale * 0.82,
             scaleY: this.sprite.startScale * 0.82,
@@ -191,8 +191,12 @@
                             playSound('balloon', 0.6);
                         }
                         this.heal(this.healthMax);
+
                         if (!this.hpBG) {
                             this.showHPGauge();
+                        } else {
+                            this.highlightGoal();
+
                         }
                         if (this.hpText) {
                             this.hpText.setText(getLangText('HP') + this.health);
@@ -306,7 +310,7 @@
 
          }
 
-         if (currHealthPercent == 0) {
+         if (currHealthPercent === 0) {
              // dead, can't do anything
              return;
          }
@@ -318,8 +322,8 @@
                  globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 110, getLangText('dummy_mind_tut'), 'right');
                  let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                  let centerXPos = globalObjects.textPopupManager.getCenterPos();
-                 this.rune3 = this.addImage(centerXPos - 32, runeYPos + 26, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
-                 this.rune4 = this.addImage(centerXPos + 37, runeYPos + 26, 'circle', 'rune_strike_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+                 this.rune3 = this.addImage(centerXPos - 32, runeYPos + 16, 'circle', 'rune_mind_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+                 this.rune4 = this.addImage(centerXPos + 37, runeYPos + 16, 'circle', 'rune_strike_glow.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
 
                  this.addTween({
                      targets: [this.rune3, this.rune4],

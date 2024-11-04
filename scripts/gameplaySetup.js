@@ -97,6 +97,14 @@ function setupLoadingBar(scene) {
                 alpha: 1,
                 ease: 'Quint.easeOut',
                 duration: 200,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        targets: iconToEdit,
+                        alpha: 0.8,
+                        ease: 'Quint.easeInOut',
+                        duration: 300,
+                    });
+                }
             });
             PhaserScene.tweens.add({
                 targets: iconToEdit,
@@ -105,7 +113,7 @@ function setupLoadingBar(scene) {
                 scaleY: 1,
                 duration: 250,
             });
-            loadingIconToEdit.alpha = 1;
+            loadingIconToEdit.alpha = 1.05;
             loadingIconToEdit.setScale(0.75);
             loadingIconFlashToEdit.alpha = 1;
             PhaserScene.tweens.add({
@@ -113,6 +121,7 @@ function setupLoadingBar(scene) {
                 ease: 'Back.easeOut',
                 scaleX: 1,
                 scaleY: 1,
+                alpha: 0.98,
                 duration: 200,
             });
             PhaserScene.tweens.add({

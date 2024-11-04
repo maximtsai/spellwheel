@@ -313,7 +313,7 @@ let textData2 = {
         "jp": "あなたの抱擁をもう一度感じたいと切望しています、私の最愛の人。 あなたの死はあまりにも早く、あまりにも不当であり、たとえ私が国全体を覆さなければならないとしても、私はこの間違いを正します。"
     },
     "post_fight_story5": {
-        "en_us": "Every time I achieve victory, the\nReaper finds a way to dampen my spirits.\nIs my quest to reclaim a loved one\nso wrong?\n\nSurely not, so perhaps it's actually the\nReaper themselves who is setting up all\nthese obstacles!",
+        "en_us": "Every time I achieve victory, the\nReaper finds a way to dampen my spirits.\nIs my quest to reclaim a loved one so\nwrong?\n\nSurely not, so perhaps it's actually the\nReaper themselves who is setting up all\nthese obstacles!",
         "fr": "À chaque fois que je remporte une\nvictoire, le Faucheur trouve un moyen de\nme décourager. Ma quête pour récupérer un\nêtre cher est-elle si mauvais?\n\nCertainement pas, ce qui signifie que c'est\nle Faucheur lui-même qui met en place tous\nces obstacles!",
         "zh_tw": "每當我取得勝利，死神就會想辦法挫傷我\n的士氣。難道找回愛人的任務是錯的嗎？\n\n當然不是，這意味著一定是死神自己在\n設置所有這些障礙！",
         "zh_cn": "每当我取得胜利，死神就会想方设法挫伤\n我的士气。难道找回爱人的任务是错的吗？\n\n当然不是，这意味着一定是死神自己在\n设置所有这些障碍！",

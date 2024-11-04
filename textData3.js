@@ -318,7 +318,7 @@ let textData3 = {
         "jp": "あなたは自分のことをヒーローだと思うかもしれませんが、これを理解してください"
     },
     "death5b": {
-        "en_us": "IT IS ONLY YOU\nALONE WHO SEEK CONFLICT.",
+        "en_us": "IT IS ONLY YOU ALONE\nWHO SEEK CONFLICT.",
         "fr": "RIEN DE NOBLE NE PEUT\nSORTIR DE CE VOYAGE.",
         "zh_tw": "這個旅程不會有任何高尚的結尾。",
         "zh_cn": "这个旅程不会有任何高尚的结尾。",

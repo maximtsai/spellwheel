@@ -610,7 +610,7 @@
 
          let darkBG = getBackgroundBlackout();
          darkBG.setDepth(-3).setAlpha(0.35);
-         this.spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.7).setScale(1.2);
+         this.spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.5).setScale(1.2);
          this.scene.tweens.add({
              targets: [this.spaceBG, darkBG],
              alpha: 0,
@@ -1605,8 +1605,8 @@
              this.addTween({
                  targets: this.bg2,
                  alpha: 0,
-                 duration: 800,
-                 ease: 'Quad.easeIn'
+                 duration: 900,
+                 ease: 'Quad.easeOut'
              })
          }
 

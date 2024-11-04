@@ -444,9 +444,14 @@ class Enemy {
         }
         let timeChange = dt * gameVars.timeSlowRatio;
 
+        let almostDone = false;
         let chargeMult = 1;
         if (this.isAsleep) {
             return;
+        }
+        let completePercent = 0;
+        if (this.attackCharge) {
+            completePercent = this.attackCharge / (this.nextAttackChargeNeeded + 0.01);
         }
         if (this.attackCooldown <= 0) {
             if (this.pauseMultDuration > 0) {
@@ -516,7 +521,7 @@ class Enemy {
             if (this.isAngry) {
                 let increaseMult = Math.max(8, 0.34 * chargeMult);
                 if (challenges.angryEnemies) {
-                    increaseMult = 1 * 1.2;
+                    increaseMult = 1.2;
                 } else if (cheats.calmEnemies) {
                     increaseMult = 1 + increaseMult * 0.6;
                 }
@@ -532,11 +537,11 @@ class Enemy {
                 this.attackCharge += timeChange * increaseMult * this.slowMult + castAggravateBonus;
 
             } else {
-                let almostDone = this.attackCharge > this.nextAttackChargeNeeded - 45;
+                almostDone = this.attackCharge > this.nextAttackChargeNeeded - 45;
 
                 if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone && this.castAggravateCharge <= 0) {
                     // this.attackCharge += timeChange * 0.02 * this.slowMult;
-                    this.chargeBarCurr.alpha = 0.62;
+                    this.chargeBarCurr.alpha = 0.7;
                     this.chargeBarShow = true;
                 } else {
                     // Normal slow chargin
@@ -551,9 +556,9 @@ class Enemy {
                             }
                         }
                         if (!(chargeMult > 1) && !almostDone) {
-                            this.chargeBarCurr.alpha = 0.84;
+                            this.chargeBarCurr.alpha = 0.85;
                         } else {
-                            this.chargeBarCurr.alpha = 0.98;
+                            this.chargeBarCurr.alpha = 0.99;
                         }
                         if (chargeMult > 1) {
                             this.attackCharge += timeChange * 0.5 * this.slowMult * chargeMult;
@@ -563,7 +568,7 @@ class Enemy {
                         this.attackCharge += castAggravateBonus * 3.3;
 
                     } else {
-                        this.chargeBarCurr.alpha = 0.62;
+                        this.chargeBarCurr.alpha = 0.7;
                         this.chargeBarShow = true;
                     }
 
@@ -807,8 +812,14 @@ class Enemy {
                 this.showAngrySymbol('exclamation');
             }
         } else {
+            if (almostDone) {
+                this.chargeBarAngry.visible = true;
+                this.chargeBarAngry.alpha = 1;
+            } else {
+                this.chargeBarAngry.visible = true;
+                this.chargeBarAngry.alpha = completePercent * 0.63;
+            }
             this.isAngry = false;
-            this.chargeBarAngry.visible = false;
             this.chargeBarCurr.visible = true;
             this.hideAngrySymbol()
         }
@@ -818,7 +829,7 @@ class Enemy {
             // slow multiplier expired
             this.slowMultDuration -= timeChange;
             this.chargeBarAngry.alpha = this.chargeBarAngry.midAlpha + 0.05;
-            this.chargeBarCurr.alpha = 0.58;
+            this.chargeBarCurr.alpha = 0.7;
             if (this.slowMultDuration <= 0) {
                 this.slowMult = 1;
                 this.chargeBarAngry.alpha = this.chargeBarAngry.midAlpha * 1.63;
@@ -1188,7 +1199,7 @@ class Enemy {
         let extraTimeMult = 2 - gameVars.timeSlowRatio;
         if (animate) {
             if (customCall) {
-                if (customCall != "" && customCall != " ") {
+                if (customCall !== "" && customCall !== " ") {
                     playSound(customCall, 0.7);
                 }
             } else {
@@ -1698,6 +1709,9 @@ class Enemy {
         }
         if (this.bgMusic3) {
             fadeAwaySound(this.bgMusic3, 350);
+        }
+        if (this.tutorialButton) {
+            this.tutorialButton.destroy();
         }
         this.setAsleep();
         for (let i = 0; i < this.subscriptions.length; i++) {

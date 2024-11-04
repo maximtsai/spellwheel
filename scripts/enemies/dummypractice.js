@@ -362,7 +362,7 @@
         });
     }
 
-    throwTriple(name, damage, numTimes = 1) {
+    throwTriple(name, damage, numTimes = 1, hasBird = false) {
         if (this.dead || this.isDestroyed || globalObjects.player.isDead()) {
             return;
         }
@@ -371,16 +371,23 @@
             targets: this.sprite,
             scaleX: this.sprite.startScale * 0.85,
             scaleY: this.sprite.startScale * 0.85,
-            rotation: (numTimes % 2 == 1) ? -0.25 : 0.25,
+            rotation: (numTimes % 2 === 1) ? -0.25 : 0.25,
             ease: "Quart.easeOut",
             duration: 600,
             onComplete: () => {
-                if (numTimes % 2 == 1) {
+                let trueName = name;
+                if (numTimes === 1 && hasBird) {
+                    trueName = 'bird.png';
+                    setTimeout(() => {
+                        playSound('chirp1');
+                    }, 400)
+                }
+                if (numTimes % 2 === 1) {
                     this.tweenWeaponToPlayer(name, damage, this.x - 100, this.y - 280, this.x - 10, globalObjects.player.getY() - 220, 0, -120)
                     this.tweenWeaponToPlayer(name, damage, this.x, this.y - 295, this.x, globalObjects.player.getY() - 220, 175, 0)
                     this.tweenWeaponToPlayer(name, damage, this.x + 100, this.y - 280, this.x + 10, globalObjects.player.getY() - 220, 350, 120)
                 } else {
-                    this.tweenWeaponToPlayer(name, damage, this.x + 100, this.y - 280, this.x + 10, globalObjects.player.getY() - 220, 0, -120)
+                    this.tweenWeaponToPlayer(trueName, damage, this.x + 100, this.y - 280, this.x + 10, globalObjects.player.getY() - 220, 0, -120)
                     this.tweenWeaponToPlayer(name, damage, this.x, this.y - 295, this.x, globalObjects.player.getY() - 220, 175, 0)
                     this.tweenWeaponToPlayer(name, damage, this.x - 100, this.y - 280, this.x - 10, globalObjects.player.getY() - 220, 350, 120)
                 }
@@ -389,7 +396,7 @@
                     targets: this.sprite,
                     scaleX: this.sprite.startScale * 1.1,
                     scaleY: this.sprite.startScale * 1.1,
-                    rotation: numTimes % 2 == 1 ? 0.05 : -0.05,
+                    rotation: numTimes % 2 === 1 ? 0.05 : -0.05,
                     ease: "Quart.easeIn",
                     duration: 400,
                     onComplete: () => {

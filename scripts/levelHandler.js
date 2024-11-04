@@ -817,7 +817,7 @@ function buildTutorialBasic(scalingDestructibles, nonscalingDestructibles) {
             });
         }
     });
-    closeButton.addText(getLangText('got_it'), {fontFamily: 'germania', fontSize: 26, color: '#000000', align: 'center'})
+    closeButton.addText(getLangText('got_it'), {fontFamily: 'germania', fontSize: 30, color: '#000000', align: 'center'})
     closeButton.setDepth(10002);
 
     PhaserScene.tweens.add({

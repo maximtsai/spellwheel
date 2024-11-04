@@ -370,10 +370,7 @@
 
                     },
                     attackFinishFunction: () => {
-                        let throwSprite = 'super_dummy_tpose.png';
-                        if (gameVars.maxLevel > 4 || Math.random() < 0.96) {
-                            throwSprite = 'scythe.png';
-                        }
+                        let throwSprite = 'dummy_dead.png';
                         this.tempShiftSFX();
                         this.throwWeapon(throwSprite, 30, 1);
                     }
@@ -395,10 +392,7 @@
 
                      },
                     attackFinishFunction: () => {
-                        let throwSprite = 'super_dummy_tpose.png';
-                        if (gameVars.maxLevel > 4 || Math.random() < 0.96) {
-                            throwSprite = 'sword.png';
-                        }
+                        let throwSprite = 'sword.png';
                         this.tempShiftSFX();
                         this.throwWeapon(throwSprite, 12, 3);
                     }
@@ -419,7 +413,10 @@
                     },
                     attackFinishFunction: () => {
                         this.tempShiftSFX();
-                        this.throwWeapon('dagger.png', 6, 1);
+                        this.throwWeapon('bird.png', 6, 1);
+                        setTimeout(() => {
+                            playSound('chirp1')
+                        }, 1000)
                     }
                  },
                  {

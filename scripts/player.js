@@ -1162,6 +1162,18 @@ class Player {
             alpha: 0.5,
             ease: 'Cubic.easeOut',
             onComplete: () => {
+                let locket = PhaserScene.add.image(gameConsts.halfWidth - 32, gameConsts.halfHeight - 190, 'misc', 'locket_broken.png').setOrigin(0.45, 0.5).setDepth(200).setAlpha(0).setRotation(0.25).setScale(0.6);
+                locket.currAnim = this.scene.tweens.add({
+                    delay: 400,
+                    targets: locket,
+                    scaleX: 0.75,
+                    scaleY: 0.75,
+                    alpha: 0.95,
+                    ease: 'Cubic.easeInOut',
+                    rotation: 0,
+                    y: "-=15",
+                    duration: 2000,
+                })
                 this.deadBGAnim = this.scene.tweens.add({
                     targets: this.deadBG,
                     duration: 1500,
@@ -1183,7 +1195,7 @@ class Player {
                                 ref: "menu_btn_normal.png",
                                 atlas: 'buttons',
                                 x: gameConsts.halfWidth,
-                                y: gameConsts.height - 385,
+                                y: gameConsts.height - 389,
                             },
                             hover: {
                                 ref: "menu_btn_hover.png",
@@ -1196,28 +1208,43 @@ class Player {
                             disable: {
                                 alpha: 0
                             },
+                            onHover: () => {
+                                playSound('click',1.1).detune = -100;
+                                if (canvas) {
+                                    canvas.style.cursor = 'pointer';
+                                }
+                            },
+                            onHoverOut: () => {
+                                if (canvas) {
+                                    canvas.style.cursor = 'default';
+                                }
+                            },
                             onMouseUp: () => {
+                                if (canvas) {
+                                    canvas.style.cursor = 'default';
+                                }
                                 this.revive();
                                 gotoMainMenu();
                                 // cheatsDisplay.destroy();
                                 deathRetryButton.destroy();
                                 deathMenuButton.destroy();
                                 deathTrainingButton.destroy();
+                                this.hideLocket(locket)
                                 // for (let i in this.cheatIcons) {
                                 //     this.cheatIcons[i].destroy();
                                 // }
                                 // this.cheatIcons = [];
                             }
                         });
-                        deathMenuButton.addText(getLangText('menu'), {fontFamily: 'germania', fontSize: 34, color: '#000000', align: 'center'});
+                        let menuText = deathMenuButton.addText(getLangText('menu'), {fontFamily: 'germania', fontSize: 34, color: '#000000', align: 'center'});
                         deathMenuButton.setDepth(200);
 
                         deathTrainingButton = new Button({
                             normal: {
                                 ref: "menu_btn_normal.png",
                                 atlas: 'buttons',
-                                x: gameConsts.halfWidth,
-                                y: gameConsts.height - 555,
+                                x: gameConsts.halfWidth + 145,
+                                y: gameConsts.height - 389,
                             },
                             hover: {
                                 ref: "menu_btn_hover.png",
@@ -1230,7 +1257,21 @@ class Player {
                             disable: {
                                 alpha: 0
                             },
+                            onHover: () => {
+                                playSound('click',1.1);
+                                if (canvas) {
+                                    canvas.style.cursor = 'pointer';
+                                }
+                            },
+                            onHoverOut: () => {
+                                if (canvas) {
+                                    canvas.style.cursor = 'default';
+                                }
+                            },
                             onMouseUp: () => {
+                                if (canvas) {
+                                    canvas.style.cursor = 'default';
+                                }
                                 this.revive();
                                 globalObjects.encyclopedia.showButton();
                                 globalObjects.options.showButton();
@@ -1245,6 +1286,7 @@ class Player {
                                 deathMenuButton.destroy();
                                 deathRetryButton.destroy();
                                 deathTrainingButton.destroy();
+                                this.hideLocket(locket);
                                 // for (let i in this.cheatIcons) {
                                 //     this.cheatIcons[i].destroy();
                                 // }
@@ -1255,28 +1297,53 @@ class Player {
                         deathTrainingButton.setDepth(200);
                         if (CURRENT_LEVEL >= 7 || CURRENT_LEVEL < 0) {
                             deathTrainingButton.setState(DISABLE);
+                        } else {
+                            deathMenuButton.setPos(gameConsts.halfWidth - 145, gameConsts.height - 389);
+                            menuText.setPosition(gameConsts.halfWidth - 145, gameConsts.height - 389)
                         }
 
                         deathRetryButton = new Button({
                             normal: {
-                                ref: "menu_btn_normal.png",
-                                atlas: 'buttons',
+                                ref: "blackPixel",
                                 x: gameConsts.halfWidth,
-                                y: gameConsts.height - 470,
+                                y: locket.y + 22,
+                                alpha: 0.9,
+                                scaleX: 190,
+                                scaleY: 95
                             },
                             hover: {
-                                ref: "menu_btn_hover.png",
-                                atlas: 'buttons',
+                                ref: "blackPixel",
+                                scaleX: 210,
+                                scaleY: 105,
+                                alpha: 1
                             },
                             press: {
-                                ref: "menu_btn_hover.png",
-                                atlas: 'buttons',
+                                ref: "blackPixel",
+                                alpha: 0.8
                             },
                             disable: {
                                 alpha: 0
                             },
+                            onHover: () => {
+                                playSound('click',1.1);
+                                if (canvas) {
+                                    canvas.style.cursor = 'pointer';
+                                }
+                                locket.alpha = 1;
+                                locket.setScale(0.765);
+                            },
+                            onHoverOut: () => {
+                                locket.alpha = 0.95;
+                                locket.setScale(0.75);
+                                if (canvas) {
+                                    canvas.style.cursor = 'default';
+                                }
+                            },
                             onMouseUp: () => {
                                 this.revive();
+                                if (canvas) {
+                                    canvas.style.cursor = 'default';
+                                }
                                 globalObjects.encyclopedia.showButton();
                                 globalObjects.options.showButton();
                                 if (globalObjects.currentEnemy) {
@@ -1292,18 +1359,52 @@ class Player {
                                 deathMenuButton.destroy();
                                 deathRetryButton.destroy();
                                 deathTrainingButton.destroy();
+                                this.hideLocket(locket);
                                 // for (let i in this.cheatIcons) {
                                 //     this.cheatIcons[i].destroy();
                                 // }
                                 // this.cheatIcons = [];
                             }
                         });
-                        deathRetryButton.addText(getLangText('retry'), {fontFamily: 'germania', fontSize: 34, color: '#000000', align: 'center'});
-                        deathRetryButton.setDepth(200);
+                        let textObj = deathRetryButton.addText(getLangText('retry'), {fontFamily: 'germania', fontSize: 40, color: '#FFFFFF', align: 'center'});
+                        deathRetryButton.setDepth(-15);
+                        textObj.setDepth(200).setStroke('#000000', 4);
                     }
                 });
             }
         });
+    }
+
+    hideLocket(locket) {
+        if (locket.currAnim) {
+            locket.currAnim.stop();
+        }
+        locket.setFrame('locket1.png');
+        locket.setScale(0.78);
+        locket.y -= 2;
+        playSound('locket_close');
+        this.scene.tweens.add({
+            targets: locket,
+            scaleX: 0.75,
+            scaleY: 0.75,
+            ease: 'Back.easeOut',
+            y: "+=1",
+            duration: 100,
+            onComplete: () => {
+                this.scene.tweens.add({
+                    targets: locket,
+                    scaleX: 0.98,
+                    scaleY: 0.98,
+                    alpha: 0,
+                    ease: 'Cubic.easeIn',
+                    y: "+=30",
+                    duration: 500,
+                    onComplete: () => {
+                        locket.destroy();
+                    }
+                })
+            }
+        })
     }
 
     createCheatCode(currLevel, cheatsDisplay) {

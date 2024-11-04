@@ -145,8 +145,8 @@ class Dummyvoid extends Dummypractice {
                         let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                         let centerXPos = globalObjects.textPopupManager.getCenterPos();
 
-                        this.rune1 = this.addSprite(centerXPos - 28, runeYPos + 28, 'circle', 'rune_reinforce_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
-                        this.rune2 = this.addSprite(centerXPos + 30, runeYPos + 27, 'circle', 'rune_void_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
+                        this.rune1 = this.addSprite(centerXPos - 28, runeYPos + 18, 'circle', 'bright_rune_reinforce.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
+                        this.rune2 = this.addSprite(centerXPos + 30, runeYPos + 17, 'circle', 'bright_rune_void.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
                         this.addTween({
                             targets: [this.rune1, this.rune2],
                             alpha: 1,
@@ -205,8 +205,8 @@ class Dummyvoid extends Dummypractice {
                         }
 
 
-                        this.rune3 = this.addSprite(centerXPos - 35, runeYPos + 27, 'circle', 'rune_protect_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
-                        this.rune4 = this.addSprite(centerXPos + 28, runeYPos + 28, 'circle', 'rune_void_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
+                        this.rune3 = this.addSprite(centerXPos - 35, runeYPos + 17, 'circle', 'bright_rune_protect.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
+                        this.rune4 = this.addSprite(centerXPos + 28, runeYPos + 18, 'circle', 'bright_rune_void.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
                         this.addTween({
                             targets: [this.rune3, this.rune4],
                             alpha: 1,

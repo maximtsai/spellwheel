@@ -112,10 +112,10 @@ function toggleCheat(code) {
 }
 
 function updateCheatsDisplay() {
-    let cheatsText = "CHEATS:";
+    let cheatsText = "C:";
     if (!cheatsDisplay) {
         cheatsDisplay = PhaserScene.add.text(gameConsts.width - 7, gameConsts.height , ' ', {fontFamily: 'robotomedium', fontSize: 15, color: '#FF0000', align: 'right'}).setOrigin(1, 1);
-        cheatsDisplay.setDepth(500);
+        cheatsDisplay.setDepth(500).setAlpha(0.5);
     }
     let hasCheats = false;
     for (let i in cheats) {

@@ -204,6 +204,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">backgrounds/background7.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.8</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>178,218,355,435</rect>
+                <key>scale9Paddings</key>
+                <rect>178,218,355,435</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">backgrounds/background8.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

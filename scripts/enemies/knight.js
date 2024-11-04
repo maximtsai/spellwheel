@@ -11,60 +11,12 @@
              this.addToDestructibles(this.tutorialButton);
          }, 3000);
          this.addTimeout(() => {
+             globalObjects.magicCircle.disableMovement();
             this.initFog();
             this.setAsleep();
          }, 0);
-         this.voidTentaEye = this.addImage(this.x + 50, this.y - 30, 'enemies', 'void_tentacle_eye.png').setDepth(-1).setRotation(-1.2).setScale(1.3).setVisible(false);
-         this.addDelay(() => {
-             this.voidTentaEye.visible = true;
-             this.addTween({
-                 targets: this.voidTentaEye,
-                 rotation: 0,
-                 ease: 'Back.easeOut',
-                 scaleX: 1.2,
-                 x: "+=25",
-                 y: "-=20",
-                 scaleY: 1.2,
-                 duration: 750,
-                 onComplete: () => {
-                     this.addTween({
-                         targets: this.voidTentaEye,
-                         rotation: -0.05,
-                         ease: 'Back.easeOut',
-                         scaleX: 1.15,
-                         scaleY: 1.15,
-                         duration: 1200,
-                         onComplete: () => {
-                             playSound('meat_click_right', 0.2);
-                             playSound('void_body', 0.35);
-                             this.addTween({
-                                 targets: this.voidTentaEye,
-                                 rotation: -1.1,
-                                 x: "-=38",
-                                 ease: 'Back.easeIn',
-                                 scaleX: 1,
-                                 scaleY: 1,
-                                 duration: 400,
-                                 onComplete: () => {
-                                     this.voidTentaEye.x += 12;
-                                     this.voidTentaEye.visible = false;
-                                 }
-                             });
-                         }
-                     })
-
-                 }
-             });
-             messageBus.publish("showCombatText", "...", -2, () => {
-                 this.setAwake();
-             }, 0.6);
-             this.addTimeout(() => {
-                 this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
-                     this.playerSpellCastSub.unsubscribe();
-                     messageBus.publish("closeCombatText");
-                 });
-             }, 200)
-         }, 750)
+         globalObjects.encyclopedia.hideButton();
+         globalObjects.options.hideButton();
 
      }
 
@@ -90,6 +42,122 @@
 
      }
 
+     initSpriteAnim(scale) {
+         this.sprite.setScale(scale);
+         this.sprite.setAlpha(0)
+         let shadowSprite = this.addImage(this.sprite.x, this.sprite.y - 2, 'enemies', 'void_knight_fog.png').setDepth(this.sprite.depth + 1).setOrigin(this.sprite.originX, this.sprite.originY).setAlpha(0);
+         shadowSprite.setScale(scale * 0.96);
+         this.scene.tweens.add({
+             targets: shadowSprite,
+             duration: 1200,
+             scaleX: scale,
+             scaleY: scale,
+             y: "+=2",
+             ease: 'Cubic.easeOut',
+             alpha: 1,
+             onComplete: () => {
+                 this.sprite.alpha = 1;
+                 this.scene.tweens.add({
+                     delay: 250,
+                     targets: shadowSprite,
+                     duration: 2500,
+                     ease: 'Cubic.easeInOut',
+                     alpha: 0,
+                     onStart: () => {
+                         globalObjects.magicCircle.enableMovement();
+
+                     }
+                 });
+                 this.voidTentaEye = this.addImage(this.x + 50, this.y - 30, 'enemies', 'void_tentacle_eye.png').setDepth(this.sprite.depth - 1).setRotation(-1.2).setScale(1.3).setVisible(false);
+                     this.voidTentaEye.visible = true;
+                     this.addTween({
+                         targets: this.voidTentaEye,
+                         rotation: 0,
+                         ease: 'Back.easeOut',
+                         scaleX: 1.2,
+                         x: "+=25",
+                         y: "-=20",
+                         scaleY: 1.2,
+                         duration: 650,
+                         onComplete: () => {
+                             this.addTween({
+                                 targets: this.voidTentaEye,
+                                 rotation: -0.05,
+                                 ease: 'Back.easeOut',
+                                 scaleX: 1.15,
+                                 scaleY: 1.15,
+                                 duration: 400,
+                                 onComplete: () => {
+                                     this.addTween({
+                                         targets: this.voidTentaEye,
+                                         rotation: -0.38,
+                                         y: "-=17",
+                                         x: "+=9",
+                                         ease: 'Quad.easeInOut',
+                                         duration: 250,
+                                         yoyo: true,
+                                         repeat: 1,
+                                         onComplete: () => {
+                                             this.addTween({
+                                                 delay: 450,
+                                                 targets: this.voidTentaEye,
+                                                 rotation: -1.1,
+                                                 x: "-=38",
+                                                 ease: 'Back.easeIn',
+                                                 scaleX: 1,
+                                                 scaleY: 1,
+                                                 duration: 350,
+                                                 onStart: () => {
+                                                     playSound('meat_click_right', 0.2);
+                                                     playSound('void_body', 0.35);
+                                                     globalObjects.encyclopedia.showButton();
+                                                     globalObjects.options.showButton();
+                                                 },
+                                                 onComplete: () => {
+                                                     this.voidTentaEye.x += 12;
+                                                     this.voidTentaEye.visible = false;
+                                                 }
+                                             });
+                                         }
+                                     });
+                                 }
+                             })
+
+                         }
+                     });
+                     messageBus.publish("showCombatText", "...", -2, () => {
+                         this.setAwake();
+                     }, 0.6);
+                     this.spellCastCount = 0;
+                     this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
+                         this.spellCastCount++;
+                         if (this.spellCastCount >= 2) {
+                             this.playerSpellCastSub.unsubscribe();
+                             this.playerSpellCastSub = null;
+                             messageBus.publish("closeCombatText");
+                             this.addDelayIfAlive(() => {
+                                 messageBus.publish("showCombatText", "!!!", -2, undefined, 0.6);
+                                 this.addDelayIfAlive(() => {
+                                     messageBus.publish("closeCombatText");
+                                 }, 1500)
+                             }, 450)
+
+
+                         }
+                     });
+             }
+         });
+         this.repeatTweenBreathe();
+
+         // this.scene.tweens.add({
+         //     delay: 750,
+         //     targets: this.sprite,
+         //     duration: gameVars.gameManualSlowSpeedInverse * 750,
+         //     ease: 'Quad.easeOut',
+         //     alpha: 1
+         // });
+     }
+
      initMisc() {
          this.voidShield1b = this.addImage(this.sprite.x, this.sprite.y, 'enemies', 'void_knight_shield_2.png').setScale(1.04).setDepth(3).setAlpha(0);
          this.voidShield1b.startScale = this.voidShield1b.scaleX;
@@ -103,9 +171,18 @@
      }
 
      initFog() {
+         this.bg1 = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight * 0.7 + 1, 'backgrounds', 'background8.webp').setDepth(-10).setScale(1).setAlpha(0).setOrigin(0.5, 0.35);
+
         this.fogThick = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'blurry', 'fogthick.png').setDepth(9).setAlpha(0).setOrigin(0.5, 0.25).setScale(2);
         this.graves = this.addImage(gameConsts.halfWidth, gameConsts.height + 8, 'backgrounds', 'graves.png').setDepth(9).setScale(1.25, 1).setAlpha(0).setOrigin(0.5, 1);
 
+         this.addTween({
+             delay: 500,
+             targets: [this.bg1],
+             duration: 3500,
+             alpha: 1,
+             ease: 'Cubic.easeInOut',
+         });
         this.addTween({
              targets: [this.fogThick],
              duration: 1000,
@@ -116,9 +193,9 @@
         this.addTween({
              targets: [this.graves],
              alpha: 1,
-             duration: 1200,
+             duration: 1500,
              scaleX: 0.98,
-             ease: 'Cubic.easeInOut',
+             ease: 'Cubic.easeIn',
 
          });
      }
@@ -198,11 +275,6 @@
              // this.setSprite('void_knight_3.png');
          }
          super.launchAttack(attackTimes, prepareSprite, preAttackSprite, attackSprites, isRepeatedAttack, finishDelay, transitionFast);
-     }
-
-     initSpriteAnim(scale) {
-         super.initSpriteAnim(scale);
-         this.repeatTweenBreathe();
      }
 
      repeatTweenBreathe(fogExpand = true) {
@@ -304,9 +376,21 @@
          }
          let prevHealthPercent = this.prevHealth / this.healthMax;
          let currHealthPercent = this.health / this.healthMax;
-         if (currHealthPercent == 0) {
+         if (currHealthPercent === 0) {
              // dead, can't do anything
              return;
+         } else if (currHealthPercent < 0.9999) {
+             if (this.playerSpellCastSub) {
+                 this.playerSpellCastSub.unsubscribe();
+                 this.playerSpellCastSub = null;
+                 messageBus.publish("closeCombatText");
+                 this.addDelayIfAlive(() => {
+                     messageBus.publish("showCombatText", "!!!", -2, undefined, 0.6);
+                     this.addDelayIfAlive(() => {
+                         messageBus.publish("closeCombatText");
+                     }, 1500)
+                 }, 450)
+             }
          }
      }
 

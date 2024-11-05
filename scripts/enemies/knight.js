@@ -3,17 +3,18 @@
          super(scene, x, y, level);
          this.initSprite('void_knight.png', 1);// 0.7
          this.sprite.setOrigin(0.5, 0.5); // 0.9
-         this.bgMusic = playMusic('into_the_void', 0.8, true);
          this.shieldAdded = false;
          this.initMisc();
          this.popupTimeout = this.addTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3000);
-         this.addTimeout(() => {
+         this.addTimeoutIfAlive(() => {
              globalObjects.magicCircle.disableMovement();
             this.initFog();
             this.setAsleep();
+             this.bgMusic = playMusic('into_the_void', 0, true);
+            fadeInSound(this.bgMusic, 0.8, 400);
          }, 0);
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();

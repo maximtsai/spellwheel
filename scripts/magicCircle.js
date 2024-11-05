@@ -2844,16 +2844,16 @@ const ENABLE_KEYBOARD = true;
          if (globalObjects.currentEnemy && !globalObjects.currentEnemy.isDestroyed && !globalObjects.currentEnemy.dead) {
              if (!this.spellNameText.visible) {
                  globalObjects.currentEnemy.setPredictScale(0);
-             } else if (embodimentText == '' || !closestElement.runeName) {
+             } else if (embodimentText === '' || !closestElement.runeName) {
 
-             } else if (embodimentText == 'STRIKE') {
-                 if (closestElement.runeName == RUNE_VOID) {
+             } else if (embodimentText === 'STRIKE') {
+                 if (closestElement.runeName === RUNE_VOID) {
                      globalObjects.currentEnemy.setPredictScale(37.5);
                  } else {
                      globalObjects.currentEnemy.setPredictScale(23);
                  }
-             } else if (embodimentText == 'ULTIMATE') {
-                 if (closestElement.runeName == RUNE_MATTER) {
+             } else if (embodimentText === 'ULTIMATE') {
+                 if (closestElement.runeName === RUNE_MATTER) {
                      globalObjects.currentEnemy.setPredictScale(23);
                  }
              } else {

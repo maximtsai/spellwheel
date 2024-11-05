@@ -1,12 +1,12 @@
 const RUNE_TIME = 'rune_time';
 const RUNE_MIND = 'rune_mind';
 const RUNE_MATTER = 'rune_matter';
-const RUNE_VOID = 'rune_matter';
+const RUNE_VOID = 'rune_void';
 const RUNE_ENHANCE = 'rune_enhance';
 const RUNE_PROTECT = 'rune_protect';
 const RUNE_REINFORCE = 'rune_reinforce';
 const RUNE_STRIKE = 'rune_strike';
-const RUNE_UNLOAD = 'rune_strike';
+const RUNE_UNLOAD = 'rune_unload';
 
 let highestLevel = 0;
 

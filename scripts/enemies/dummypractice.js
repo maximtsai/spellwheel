@@ -275,19 +275,21 @@
             targets: this.sprite,
             scaleX: this.sprite.startScale * 0.85,
             scaleY: this.sprite.startScale * 0.85,
-            rotation: (numTimes % 2 == 1) ? -0.25 : 0.25,
+            rotation: (numTimes % 2 === 1) ? -0.25 : 0.25,
             ease: "Quart.easeOut",
             duration: 650,
             onComplete: () => {
                 let weapon = this.addImage(this.x, this.y - 105, 'dummyenemy', name).setDepth(0).setScale(0.2);
                 this.addTween({
                     targets: weapon,
-                    rotation: Math.random() < 0.5 ? -12.566 : 12.566,
+                    rotation: (Math.random() < 0.5 ? -12.566 : 12.566) + Math.random() * 0.2 - 0.1,
                     duration: 1300,
                 });
+                let randX = Math.random() * 6 - 3;
                 this.addTween({
                     targets: weapon,
                     y: this.y - 310,
+                    x: "+=" + randX,
                     scaleX: 0.8,
                     scaleY: 0.8,
                     ease: "Cubic.easeOut",

@@ -515,7 +515,7 @@ let textData4 = {
         "jp": ""
     },
     "statue_info_b": {
-        "en_us": "It can block strong attacks, yet\nbreaks with multiple weak hits.",
+        "en_us": "It easily blocks strong attacks, yet\nbreaks with multiple weak hits.",
         "fr": "Il bloque les attaques puissantes, mais\nse brise sous de faibles coups répétés",
         "zh_tw": "它能完全阻擋強力的攻擊，\n但卻容易多次弱勢攻擊擊破。",
         "zh_cn": "它能完全阻挡强力的攻击，\n但却容易多次弱势攻击击破。",

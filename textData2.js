@@ -529,7 +529,7 @@ let textData2 = {
         "jp": "森は不安を感じさせます。\n何かが私を監視しているのでしょうか？"
     },
     "pre_fight_3_5a": {
-        "en_us": "I've come across a statue by the roadside that\nis radiating a strange aura.\nSomething about its design taunts me.\nPerhaps I should test my newly acquired\nmagic on it.",
+        "en_us": "I've come across a statue by the roadside\nthat is radiating a strange aura.\nSomething about its design taunts me.\nPerhaps I should test my newly acquired\nmagic on it.",
         "fr": "Je suis tombé sur une statue au bord de la\nroute qui dégage une aura étrange.\nQuelque chose dans sa conception me nargue.\nPeut-être devrais-je tester ma magie\nnouvellement acquise dessus.",
         "zh_tw": '我在路邊看到一座雕像。這雕像好像在\n散發一個奇異的氣息，讓我感到不适。\n\n也許我該在它身上測試我新獲得的法術。',
         "zh_cn": '我在路边看到一座雕像。这雕像好像在\n散发一个奇异的气息，让我感到不适。\n\n也许我该在它身上测试我新获得的法术。',
@@ -538,7 +538,7 @@ let textData2 = {
         "jp": ""
     },
     "pre_fight_4a": {
-        "en_us": "You: \"You there, are you friend or foe?\"\n...\nYou: \"Answer me or face my wrath!\"\n\nSilence was the only answer I received.",
+        "en_us": "You: \"You there, are you friend or foe?\"\n...\nYou: \"Answer me or face my wrath!\"\n\nSilence was the only answer it gave.",
         "fr": "Toi : « Toi là, es-tu ami ou ennemi ? »\n...\nToi : « Réponds-moi ou affronte ma colère ! »\n\nLe silence fut la seule réponse que je reçus.",
         "zh_tw": '你："你是朋友還是敵人？"\n…\n你："回答我，否則將面臨我的憤怒！"\n\n沉默是我唯一得到的答案。',
         "zh_cn": '你："你是朋友还是敌人？"\n…\n你："回答我，否则将面临我的愤怒！"\n\n沉默是我唯一得到的回答。',

@@ -4,7 +4,7 @@
     }
 
      initStatsCustom() {
-        this.health = 125;
+        this.health = 120;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -178,7 +178,7 @@
                  // 0
                  {
                      name: ";15x5;",
-                     chargeAmt: 550,
+                     chargeAmt: 5150,
                      finishDelay: 2800,
                      isBigMove: true,
                      transitionFast: true,
@@ -189,8 +189,8 @@
                             let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
                             let centerXPos = globalObjects.textPopupManager.getCenterPos();
 
-                            this.runea = this.addSprite(centerXPos - 31, runeYPos + 17, 'circle', 'rune_protect_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
-                            this.runeb = this.addSprite(centerXPos + 29, runeYPos + 17, 'circle', 'rune_time_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
+                            this.runea = this.addSprite(centerXPos - 31, runeYPos + 17, 'circle', 'bright_rune_protect.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
+                            this.runeb = this.addSprite(centerXPos + 29, runeYPos + 17, 'circle', 'bright_rune_time.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
                             this.addTween({
                                 targets: [this.runea, this.runeb],
                                 alpha: 1,
@@ -242,7 +242,7 @@
                  },
                  {
                      name: "OUT OF AMMO...",
-                     chargeAmt: 350,
+                     chargeAmt: 220,
                      transitionFast: true,
                      isPassive: true,
                      damage: -1,
@@ -258,8 +258,8 @@
                              });
                          }
 
-                         this.rune1 = this.addSprite(centerXPos - 31, runeYPos + 18, 'circle', 'rune_reinforce_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
-                         this.rune2 = this.addSprite(centerXPos + 28, runeYPos + 18, 'circle', 'rune_time_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
+                         this.rune1 = this.addSprite(centerXPos - 31, runeYPos + 18, 'circle', 'bright_rune_reinforce.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
+                         this.rune2 = this.addSprite(centerXPos + 28, runeYPos + 18, 'circle', 'bright_rune_time.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
                          this.addTween({
                              targets: [this.rune1, this.rune2],
                              alpha: 1,
@@ -317,10 +317,11 @@
              ],
              [
                  {
-                     name: "HEAL \\40",
-                     chargeAmt: 550,
+                     name: "FULL HEAL! \\100%",
+                     chargeAmt: 780,
                      finishDelay: 2000,
                      transitionFast: true,
+                     isBigMove: true,
                      damage: -1,
                      startFunction: () => {
                         if (this.health > 30) {
@@ -336,9 +337,9 @@
                             }
 
                             if (!this.rune3) {
-                                 this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 85, 'circle', 'rune_enhance_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
-                                 this.rune4 = this.addSprite(centerXPos - 0, runeYPos + 85, 'circle', 'rune_enhance_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
-                                 this.rune5 = this.addSprite(centerXPos + 48, runeYPos + 85, 'circle', 'rune_enhance_glow.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
+                                 this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 85, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
+                                 this.rune4 = this.addSprite(centerXPos - 0, runeYPos + 85, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
+                                 this.rune5 = this.addSprite(centerXPos + 48, runeYPos + 85, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
                             }
                              this.addTween({
                                  targets: [this.rune3, this.rune4, this.rune5],
@@ -381,12 +382,12 @@
                         }
                      },
                      attackStartFunction: () => {
-                         this.healAnim(40);
+                         this.healAnim(120);
                      }
                  },
                  {
-                     name: "}6",
-                     chargeAmt: 400,
+                     name: "}4",
+                     chargeAmt: 270,
                      finishDelay: 1000,
                      transitionFast: true,
                      damage: -1,
@@ -397,33 +398,7 @@
 
                      },
                      attackFinishFunction: () => {
-                         this.throwWeapon('sword.png', 6, 1);
-                     }
-                 },
-                 {
-                     name: "HEAL \\40",
-                     chargeAmt: 550,
-                     finishDelay: 2000,
-                     transitionFast: true,
-                     damage: -1,
-                     attackStartFunction: () => {
-                         this.healAnim(40);
-                     }
-                 },
-                 {
-                     name: "}6",
-                     chargeAmt: 400,
-                     finishDelay: 1000,
-                     transitionFast: true,
-                     damage: -1,
-                     startFunction: () => {
-
-                     },
-                     attackStartFunction: () => {
-
-                     },
-                     attackFinishFunction: () => {
-                         this.throwWeapon('sword.png', 6, 1);
+                         this.throwWeapon('dagger.png', 4, 1);
                      }
                  },
              ]

@@ -1067,7 +1067,7 @@
                      chargeMult: 2,
                      startFunction: () => {
                          if (this.showTut1) {
-                             this.createTutIcon(getLangText('superdummy_time'), 'rune_unload_glow.png', 'rune_time_glow.png')
+                             this.createTutIcon(getLangText('superdummy_time'), 'bright_rune_unload.png', 'bright_rune_time.png')
                          }
                         this.pullbackDurMult = 0;
                         this.disableAnimateShake = true;

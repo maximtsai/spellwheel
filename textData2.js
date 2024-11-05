@@ -538,7 +538,7 @@ let textData2 = {
         "jp": ""
     },
     "pre_fight_4a": {
-        "en_us": "You: \"You there, are you friend or foe?\"\n...\nYou: \"Answer me or face my wrath!\"\n\nSilence was the only answer I received.",
+        "en_us": "You: \"You there, are you friend or foe?\"\n...\nYou: \"Answer me or face my wrath!\"\n\nSilence was the only answer it gave.",
         "fr": "Toi : « Toi là, es-tu ami ou ennemi ? »\n...\nToi : « Réponds-moi ou affronte ma colère ! »\n\nLe silence fut la seule réponse que je reçus.",
         "zh_tw": '你："你是朋友還是敵人？"\n…\n你："回答我，否則將面臨我的憤怒！"\n\n沉默是我唯一得到的答案。',
         "zh_cn": '你："你是朋友还是敌人？"\n…\n你："回答我，否则将面临我的愤怒！"\n\n沉默是我唯一得到的回答。',

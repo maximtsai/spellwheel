@@ -9,10 +9,12 @@
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3000);
-         this.addTimeout(() => {
+         this.addTimeoutIfAlive(() => {
              globalObjects.magicCircle.disableMovement();
             this.initFog();
             this.setAsleep();
+             this.bgMusic = playMusic('into_the_void', 0, true);
+            fadeInSound(this.bgMusic, 0.8, 400);
          }, 0);
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();

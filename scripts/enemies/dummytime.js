@@ -178,7 +178,7 @@
                  // 0
                  {
                      name: ";15x5;",
-                     chargeAmt: 5150,
+                     chargeAmt: 515,
                      finishDelay: 2800,
                      isBigMove: true,
                      transitionFast: true,

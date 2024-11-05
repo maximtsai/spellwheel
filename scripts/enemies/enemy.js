@@ -817,7 +817,7 @@ class Enemy {
                 this.chargeBarAngry.alpha = 1;
             } else {
                 this.chargeBarAngry.visible = true;
-                this.chargeBarAngry.alpha = completePercent * 0.63;
+                this.chargeBarAngry.alpha = (completePercent - 0.15) * 0.8;
             }
             this.isAngry = false;
             this.chargeBarCurr.visible = true;

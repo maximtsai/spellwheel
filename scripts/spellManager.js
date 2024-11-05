@@ -2893,10 +2893,10 @@ class SpellManager {
         });
 
 
-        let spellName = "SHIELD OF NEGATION";
+        let spellName = "ONE USE SHIELD";
         let bonusSize = spellMultiplier * 0.04;
         if (spellMultiplier > 1) {
-            spellName += " +" + spellMultiplier;
+            spellName += " X" + spellMultiplier;
         }
         this.postNonAttackCast(spellID, spellName, bonusSize);
     }

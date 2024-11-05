@@ -417,8 +417,8 @@ let textData = {
         "jp": "受けるダメージの50%を吸収し、\n反射するシールドを作成する"
     },
     "mind_reinforce_desc": {
-        "en_us": "All damage you\ndeal is increased\nby +3",
-        "fr": "Tous les dégâts\nque vous infligez\naugmentent de +3",
+        "en_us": "Increase all damage\nyou deal by +3",
+        "fr": "Augmente tous les dégâts\nque vous infligez de +3",
         "zh_tw": "你造成的所有傷害\n增加 +3",
         "zh_cn": "你造成的所有伤害\n增加 +3",
         "ru": "Весь наносимый\nвами урон\nувеличивается\nна +3.",
@@ -426,8 +426,8 @@ let textData = {
         "jp": "与えるダメージ\nはすべて +3\n増加します"
     },
     "mind_reinforce_desc_long": {
-        "en_us": "All damage you deal is increased by +3",
-        "fr": "Tous les dégâts que vous\ninfligez augmentent de +3",
+        "en_us": "Increase all damage you deal by +3",
+        "fr": "Augmente tous les dégâts\nque vous infligez de +3",
         "zh_tw": "你造成的所有傷害增加 +3",
         "zh_cn": "你造成的所有伤害增加 +3",
         "ru": "Весь наносимый вами урон увеличивается на +3.",

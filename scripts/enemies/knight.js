@@ -42,17 +42,17 @@
      }
 
      customReaperAnim() {
-         let locket = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'misc', 'locket2.png').setOrigin(0.5, 0.5).setDepth(200).setAlpha(0).setRotation(0.25).setScale(0.6);
+         let locket = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 185, 'misc', 'locket2.png').setOrigin(0.5, 0.5).setDepth(200).setAlpha(0).setRotation(0.25).setScale(0.6);
          locket.currAnim = PhaserScene.tweens.add({
-             delay: 400,
+             delay: 500,
              targets: locket,
              scaleX: 0.8,
              scaleY: 0.8,
              alpha: 1,
              ease: 'Quart.easeOut',
              rotation: 0,
-             y: "+=28",
-             duration: 2700,
+             y: "+=12",
+             duration: 2300,
              onStart: () => {
                  playSound('whoosh');
                  let locketMusic = playSound('sleepless', 0.1);
@@ -60,7 +60,6 @@
 
              },
              onComplete: () => {
-                 locket.setFrame('locket3.png');
                  playSound('locket_open');
                  playSound('water_drop', 0.6);
                  let circle = PhaserScene.add.image(locket.x, locket.y, 'circle', 'circle.png').setDepth(99).setScale(0.3).setAlpha(1.1);
@@ -77,31 +76,50 @@
                      ease: 'Quad.easeOut',
                      duration: 1950,
                  });
-                 locket.setScale(locket.scaleX * 1.03);
-                 locket.y -= 2;
+                 locket.setScale(locket.scaleX * 0.98);
+                 locket.y += 3;
                  PhaserScene.tweens.add({
                      targets: locket,
-                     scaleX: locket.scaleX * 0.98,
-                     scaleY: locket.scaleX * 0.98,
-                     ease: 'Back.easeOut',
-                     y: "+=2",
-                     duration: 300,
+                     scaleX: locket.scaleX * 1.025,
+                     scaleY: locket.scaleX * 1.025,
+                     ease: 'Cubic.easeOut',
+                     y: "-=2",
+                     duration: 70,
                      onComplete: () => {
+                         locket.setFrame('locket3.png');
                          PhaserScene.tweens.add({
-                             delay: 110,
                              targets: locket,
-                             alpha: 0,
-                             scaleX: locket.scaleX * 0.94,
-                             scaleY: locket.scaleX * 0.94,
-                             ease: 'Back.easeIn',
-                             y: "+=35",
-                             duration: 2400,
+                             scaleX: locket.scaleX * 0.98,
+                             scaleY: locket.scaleX * 0.98,
+                             ease: 'Back.easeOut',
+                             y: "+=1",
+                             duration: 250,
+                             onComplete: () => {
+                                 PhaserScene.tweens.add({
+                                     delay: 110,
+                                     targets: locket,
+                                     alpha: 0,
+                                     scaleX: locket.scaleX * 0.94,
+                                     scaleY: locket.scaleX * 0.94,
+                                     ease: 'Back.easeIn',
+                                     y: "+=35",
+                                     duration: 2400,
+                                 })
+                             }
                          })
+
                      }
                  })
 
-
                  let whiteFlood = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'white_pixel.png').setScale(500, 500).setAlpha(0).setDepth(150000);
+                 PhaserScene.tweens.add({
+                     targets: whiteFlood,
+                     rotation: 0,
+                     duration: 2200,
+                     onComplete: () => {
+                         clearDeathFog();
+                     }
+                 })
                  PhaserScene.tweens.add({
                      targets: whiteFlood,
                      alpha: 1,
@@ -109,7 +127,6 @@
                      duration: 2500,
                      onComplete: () => {
                          locket.destroy();
-                         clearDeathFog();
                          gotoMainMenu();
                          let clickBlock = new Button({
                              normal: {
@@ -124,6 +141,7 @@
 
                              }
                          });
+                         globalObjects.postFightScreen.clearGloom();
                          PhaserScene.tweens.add({
                              targets: whiteFlood,
                              alpha: 0,
@@ -132,7 +150,6 @@
                              onComplete: () => {
                                  clickBlock.destroy();
                                  showWishlistPage();
-                                 globalObjects.postFightScreen.clearGloom();
                              }
                          })
                      }

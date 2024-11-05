@@ -214,18 +214,19 @@ class Enemy {
         this.chargeBarWarningBig.setScale(gameConsts.width * 0.1, 0.65);
         this.chargeBarWarningBig.alpha = 0
         this.chargeBarWarningBig.setDepth(1);
+        let mobileY = isMobile ? 330 : 312;
 
-        this.chargeBarReady1 = this.scene.add.image(x, isMobile ? 339 : 326, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
-        this.chargeBarReady2 = this.scene.add.image(x, isMobile ? 339 : 326, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
+        this.chargeBarReady1 = this.scene.add.image(x, mobileY, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
+        this.chargeBarReady2 = this.scene.add.image(x, mobileY, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
 
-        this.chargeBarOutline = this.scene.add.image(x, isMobile ? 339 : 326, 'whitePixel');
+        this.chargeBarOutline = this.scene.add.image(x, mobileY, 'whitePixel');
         this.chargeBarOutline.setScale(chargeBarLength + 4, isMobile ? 15 : 12);
         this.chargeBarOutline.setOrigin(0.5, 0.5);
         this.chargeBarOutline.visible = false;
         this.chargeBarOutline.alpha = 0.4;
         this.chargeBarOutline.setDepth(9);
 
-        this.chargeBarMax = this.scene.add.image(x, isMobile ? 339 : 326, 'pixels', 'black_blue_pixel.png');
+        this.chargeBarMax = this.scene.add.image(x, mobileY, 'pixels', 'black_blue_pixel.png');
         this.chargeBarMax.setScale(chargeBarLength + 2, isMobile ? 13 : 11);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;

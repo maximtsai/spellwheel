@@ -12,7 +12,7 @@ let textData = {
     },
 
     "matter_strike_desc": {
-        "en_us": "Deal 12 damage",
+        "en_us": "Deal 12 DMG",
         "fr": "Inflige 12 points\nde dégâts",
         "zh_tw": "造成12點傷害",
         "zh_cn": "造成 12 点伤害",
@@ -21,7 +21,7 @@ let textData = {
         "jp": "12ダメージを与える"
     },
     "matter_strike_desc_long": {
-        "en_us": "Deal 12 damage",
+        "en_us": "Deal 12 DMG",
         "fr": "Inflige 12 points de dégâts",
         "zh_tw": "造成12點傷害",
         "zh_cn": "造成 12 点伤害",
@@ -30,7 +30,7 @@ let textData = {
         "jp": "12ダメージを与える"
     },
     "matter_strike_plus_desc": {
-        "en_us": "Deal 14 damage",
+        "en_us": "Deal 14 DMG",
         "fr": "Inflige 14 points\nde dégâts",
         "zh_tw": "造成14點傷害",
         "zh_cn": "造成 14 点伤害",
@@ -39,7 +39,7 @@ let textData = {
         "jp": "14ダメージを与える"
     },
     "matter_strike_plus_desc_long": {
-        "en_us": "Deal 14 damage",
+        "en_us": "Deal 14 DMG",
         "fr": "Inflige 14 points de dégâts",
         "zh_tw": "造成14點傷害",
         "zh_cn": "造成 14 点伤害",
@@ -48,7 +48,7 @@ let textData = {
         "jp": "14ダメージを与える"
     },
     "matter_enhance_desc": {
-        "en_us": "Next attack\ngains +6 damage",
+        "en_us": "Next attack\ngains +6 DMG",
         "fr": "Prochaine\nattaque gagne\n+6 dégâts.",
         "zh_tw": "下一次攻擊\n獲得 +6 傷害",
         "zh_cn": "下一次攻击\n获得 +6 伤害",
@@ -57,7 +57,7 @@ let textData = {
         "jp": "次の通常攻撃は\n+6ダメージを獲得"
     },
     "matter_enhance_desc_long": {
-        "en_us": "Next attack gains +6 damage",
+        "en_us": "Next attack gains +6 DMG",
         "fr": "Prochaine attaque gagne +6 dégâts.",
         "zh_tw": "下一次攻擊獲得 +6 傷害",
         "zh_cn": "下一次攻击获得 +6 伤害",
@@ -102,7 +102,7 @@ let textData = {
         "jp": "14ダメージをブロックす\nるシールドを作成する"
     },
     "matter_reinforce_desc": {
-        "en_us": "Gain thorns that\nreflect 1 damage\nwhen hit",
+        "en_us": "Gain thorns that\nreflect 1 DMG\nwhen hit",
         "fr": "Gagnez des épines\nqui renvoient 1\npoint de dégâts",
         "zh_tw": "獲得荊棘來保護\n你並反射 1 點傷害",
         "zh_cn": "获得荆棘来保护\n你并反射 1 点伤害",
@@ -111,7 +111,7 @@ let textData = {
         "jp": "とげを獲得してあな\nたを守り、1ダメ\nージを反射します"
     },
     "matter_reinforce_desc_long": {
-        "en_us": "Gain thorns that\nreflect 1 damage when hit",
+        "en_us": "Gain thorns that\nreflect 1 DMG when hit",
         "fr": "Gagnez des épines qui\nrenvoient 1 point de dégâts",
         "zh_tw": "獲得荊棘來保護\n你並反射 1 點傷害",
         "zh_cn": "获得荆棘来保护\n你并反射 1 点伤害",
@@ -120,7 +120,7 @@ let textData = {
         "jp": "とげを獲得してあなたを守り、\n1ダメージを反射します"
     },
     "matter_unload_desc": {
-        "en_us": "Deal 24 damage.\nGain 24\ntemporary protection.",
+        "en_us": "Deal 24 DMG.\nGain 24\ntemporary protection.",
         "fr": "Inflige 24 points\nde dégâts et confère\n24 points de\nprotection temporaire",
         "zh_tw": "造成 24 點傷害。\n獲得 24 點臨時保護。",
         "zh_cn": "造成 24 点伤害。\n获得 24 点临时保护。",
@@ -129,7 +129,7 @@ let textData = {
         "jp": "24ダメージを\n与える。24個の一時\n的な保護を得る。"
     },
     "matter_unload_desc_long": {
-        "en_us": "Deal 24 damage. Gain\n24 temporary protection.",
+        "en_us": "Deal 24 DMG. Gain\n24 temporary protection.",
         "fr": "Inflige 24 points de dégâts et confère\n24 points de protection temporaire",
         "zh_tw": "造成 24 點傷害。\n獲得 24 點臨時保護。",
         "zh_cn": "造成 24 点伤害。\n获得 24 点临时保护。",
@@ -138,7 +138,7 @@ let textData = {
         "jp": "24ダメージを与える。\n24個の一時的な保護を得る。"
     },
     "time_strike_desc": {
-        "en_us": "Deal 6 damage,\nfollowed by a\nsecond attack\nat half power",
+        "en_us": "Deal 6 DMG,\nfollowed by a\nsecond attack\nat half power",
         "fr": "Inflige 6 points\nde dégâts, suivi\nd'une deuxième\nattaque à moitié\npuissance.",
         "zh_tw": "打擊兩次。第一次\n造成 6 點傷害，\n第二次造成第一次\n攻擊傷害的 50%。",
         "zh_cn": "打击两次。第一次\n造成 6 点伤害，\n第二次造成第一次\n攻擊伤害的 50%。",
@@ -147,7 +147,7 @@ let textData = {
         "jp": "2回攻撃する。最初の\n攻撃は6ダメージを与え、\n2回目の攻撃は最初の\n攻撃の50%を与えます。"
     },
     "time_strike_desc_long": {
-        "en_us": "Deal 6 damage, followed by a\nsecond attack at half power",
+        "en_us": "Deal 6 DMG, followed by a\nsecond attack at half power",
         "fr": "Inflige 6 points de dégâts, suivi d'une\ndeuxième attaque supplémentaire à moitié puissance.",
         "zh_tw": "打擊兩次。第一次造成 6 點傷害，\n第二次造成第一次攻擊傷害的 50%。",
         "zh_cn": "打击两次。第一次造成 6 点伤害，\n第二次造成第一次攻擊伤害的 50%。",
@@ -174,7 +174,7 @@ let textData = {
         "jp": "次の攻撃は追加で発射されます"
     },
     "time_protect_desc": {
-        "en_us": "Create shield\nthat defers up\nto 60 damage",
+        "en_us": "Create shield\nthat defers up\nto 60 DMG",
         "fr": "Crée bouclier\nqui retarde jusqu’à\n60 points de dégâts",
         "zh_tw": "打造一個能延遲\n多達 60 點傷害的盾牌",
         "zh_cn": "打造一个能延迟\n多达 60 点伤害的盾牌",
@@ -183,7 +183,7 @@ let textData = {
         "jp": "最大60ダメージ\nを遅らせるシール\nドを作成"
     },
     "time_protect_desc_long": {
-        "en_us": "Create shield that\ndefers up to 60 damage",
+        "en_us": "Create shield that\ndefers up to 60 DMG",
         "fr": "Crée bouclier qui retarde\njusqu’à 60 points de dégâts",
         "zh_tw": "打造一個能延遲多達 60 點傷害的盾牌",
         "zh_cn": "打造一个能延迟多达 60 点伤害的盾牌",
@@ -192,7 +192,7 @@ let textData = {
         "jp": "最大60ダメージを遅らせるシールドを作成"
     },
     "time_reinforce_desc": {
-        "en_us": "Heal 50% of your\nlast injury and\n50% of your\ndeferred damage",
+        "en_us": "HEAL 50% of \nlast injury.\nHEAL 50% of\ndeferred DMG",
         "fr": "Soigne 50 % de votre\ndernière blessure\net 50 % de vos\ndégâts différés",
         "zh_tw": "治療50%的末次傷害\n和50%的延遲傷害",
         "zh_cn": "治疗50%的末次伤害\n和50%的延迟伤害",
@@ -201,7 +201,7 @@ let textData = {
         "jp": "直近の負傷の50%と遅延\nダメージの50%を回復"
     },
     "time_reinforce_desc_long": {
-        "en_us": "Heal 50% of last injury\nand 50% of deferred damage",
+        "en_us": "HEAL 50% of last injury.\nHEAL 50% of deferred DMG",
         "fr": "Soigne 50 % de dernière blessure\net 50 % de dégâts différés.",
         "zh_tw": "治療50%末次傷害\n和50%延遲傷害",
         "zh_cn": "治疗50%末次伤害\n和50%延迟伤害",
@@ -255,7 +255,7 @@ let textData = {
         "jp": "次の7つの呪文の凍結時間。\n繰り返し使用すると弱くなります。"
     },
     "void_strike_desc": {
-        "en_us": "Attack 3 times\nafter a delay,\neach attack deals\n2.5% enemy\ncurrent HP",
+        "en_us": "Fire 3 delayed\nattacks that each\ndamages 2.5% enemy\ncurrent HP",
         "fr": "Attaque 3 fois après\nun délai, chaque\nattaque infligeant\n2.5% des PV\nactuels de l’ennemi.",
         "zh_tw": "延遲後攻擊 3 次，\n每次攻擊造成 2.5%\n敵人當前生命值",
         "zh_cn": "延迟后再攻击 3 次，\n每次攻伤害 2.5%\n敌人当前生命值",
@@ -264,7 +264,7 @@ let textData = {
         "jp": "遅延後に3回攻撃し、\n各攻撃で敵の現在のHP\nの2.5%にダメージを与える"
     },
     "void_strike_desc_long": {
-        "en_us": "Attack 3 times after a delay,\neach attack deals 2.5% enemy current HP",
+        "en_us": "Fire 3 delayed attacks that each\ndamages 2.5% enemy current HP",
         "fr": "Attaque 3 fois après un délai, chaque attaque\ninfligeant 2.5% des PV actuels de l’ennemi.",
         "zh_tw": "延遲後攻擊 3 次，每次攻擊\n造成 2.5%敵人當前生命值",
         "zh_cn": "延迟后攻击 3 次，每次攻击\n造成 2.5%敌人当前生命值",
@@ -273,8 +273,8 @@ let textData = {
         "jp": "遅延後に3回攻撃し、各攻撃で敵の\n現在のHPの2.5%にダメージを与える"
     },
     "void_enhance_desc": {
-        "en_us": "Your attacks\npermanently gain\n+1 damage",
-        "fr": "Vos attaques\ngagnent définitivement\n+1 dégâts.",
+        "en_us": "Permanently increase\nattack damage\nby 1",
+        "fr": "Augmente de\nmanière permanente\nles dégâts\nd'attaque de 1",
         "zh_tw": "你的攻擊永久獲得\n+1 傷害",
         "zh_cn": "你的攻击永久获得\n+1 伤害",
         "ru": "Ваши атаки\nнавсегда получают\n+1 к урону",
@@ -282,16 +282,16 @@ let textData = {
         "jp": "あなたの攻撃力は\n永続的に増加します\n+1ダメージ"
     },
     "void_enhance_desc_long": {
-        "en_us": "Your attacks permanently gain +1 damage",
-        "fr": "Vos attaques gagnent définitivement +1 dégâts.",
-        "zh_tw": "你的攻擊永久獲得 +1 傷害",
-        "zh_cn": "你的攻击永久获得 +1 伤害",
+        "en_us": "Permanently increase\nattack damage by 1",
+        "fr": "Augmente de manière permanente\nles dégâts d'attaque de 1",
+        "zh_tw": "攻擊永久增加 +1 傷害",
+        "zh_cn": "攻击永久增加 +1 伤害",
         "ru": "Ваши атаки навсегда получают +1 к урону",
         "es": "Tu ataque gana permanentemente +1 daño",
         "jp": "あなたの攻撃力は永続的に増加します+1ダメージ"
     },
     "void_protect_desc": {
-        "en_us": "Create shield\nthat completely\nnegates one attack",
+        "en_us": "Create shield\nthat completely\nblocks one attack",
         "fr": "Crée bouclier\nqui annule\ncomplètement\nune attaque",
         "zh_tw": "創建一個完全抵消\n一次攻擊的盾牌",
         "zh_cn": "打造一个完全抵消\n一次攻击的盾牌",
@@ -300,7 +300,7 @@ let textData = {
         "jp": "1回の攻撃を完全\nに無効にするシ\nールドを作る"
     },
     "void_protect_desc_long": {
-        "en_us": "Create shield that\ncompletely negates one attack",
+        "en_us": "Create shield that\ncompletely blocks one attack",
         "fr": "Crée bouclier qui annule\ncomplètement une attaque",
         "zh_tw": "創建一個完全抵消一次攻擊的盾牌",
         "zh_cn": "打造一个完全抵消一次攻击的盾牌",
@@ -309,7 +309,7 @@ let textData = {
         "jp": "1回の攻撃を完全に無効に\nするシールドを作る"
     },
     "void_reinforce_desc": {
-        "en_us": "Heal to full,\nbut lose 10\nmax hp",
+        "en_us": "HEAL to full,\nbut lose 10\nmax HP",
         "fr": "Soignez-vous\ncomplètement, mais\nperdez 10 PV max",
         "zh_tw": "完全治癒自己，但失去\n10 點總生命值",
         "zh_cn": "完全治愈自己，但失去\n10 点总生命值",
@@ -318,7 +318,7 @@ let textData = {
         "jp": "完全に回復するが、\n最大HPの10を失う"
     },
     "void_reinforce_desc_long": {
-        "en_us": "Heal to full, but lose 10 max hp",
+        "en_us": "HEAL to full, but lose 10 max HP",
         "fr": "Soignez-vous complètement,\nmais perdez 10 PV max",
         "zh_tw": "完全治癒自己，但失去 10 點总生命值",
         "zh_cn": "完全治愈自己，但失去 10 点总生命值",
@@ -327,7 +327,7 @@ let textData = {
         "jp": "完全に回復するが、最大HPの10を失う"
     },
     "void_unload_desc": {
-        "en_us": "Damage 9% of enemy's\ncurrent HP and\ndisrupt their action",
+        "en_us": "DMG 9% of enemy's\ncurrent HP and\ndisrupt their action",
         "fr": "Inflige des dégâts\néquivalant à 9% des\nPV actuels de\nl'ennemi et perturbe\nson action",
         "zh_tw": "傷害敵人當前生命\n值 9% 並打断他們\n的行動",
         "zh_cn": "伤害敌人当前生命\n值 9% 并打断他们\n的行动",
@@ -336,7 +336,7 @@ let textData = {
         "jp": "敵の現在HPの9%にダ\nメージを与え、敵の\n行動を妨害する"
     },
     "void_unload_desc_long": {
-        "en_us": "Damage 9% of enemy's\ncurrent HP and disrupt their action",
+        "en_us": "DMG 9% of enemy's\ncurrent HP and disrupt their action",
         "fr": "Inflige des dégâts équivalant à 9% des PV\nactuels de l'ennemi et perturbe son action",
         "zh_tw": "傷害敵人當前生命值 9% 並打断他們的行動",
         "zh_cn": "伤害敌人当前生命值 9% 并打断他们的行动",
@@ -345,7 +345,7 @@ let textData = {
         "jp": "敵の現在HPの9%にダメージを\n与え、敵の行動を妨害する"
     },
     "mind_strike_desc": {
-        "en_us": "Deal 1 True\ndamage. Enemy\ntakes x2 damage\nfrom next\nattack.",
+        "en_us": "Deal 1 True\nDMG. Enemy\ntakes x2 DMG\nfrom next\nattack.",
         "fr": "Inflige 1 dégât\nvéritable. L'ennemi\nsubit x2 dégâts\nlors de prochaine\nattaque.",
         "zh_tw": "造成 1 點真實傷害。\n敵人將在你下一次\n攻擊中受到 2 倍傷害。",
         "zh_cn": "造成 1 点真实伤害。\n敌人从你下一次\n攻击中受到 2 倍伤害。",
@@ -354,7 +354,7 @@ let textData = {
         "jp": "1の真のダメージを\n与える。敵は次の\n攻撃で2倍のダメー\nジを受ける"
     },
     "mind_strike_desc_long": {
-        "en_us": "Deal 1 True damage. Enemy takes\nx2 damage from next attack.",
+        "en_us": "Deal 1 True DMG. Enemy takes\nx2 DMG from next attack.",
         "fr": "Inflige 1 dégât véritable. L'ennemi subit\nx2 dégâts lors de prochaine attaque.",
         "zh_tw": "造成 1 點真實傷害。\n你下一次攻擊造成 2 倍傷害。",
         "zh_cn": "造成 1 点真实伤害。\n你下一次攻击造成 2 倍伤害。",
@@ -363,7 +363,7 @@ let textData = {
         "jp": "1の真のダメージを与える。敵は次の\n攻撃で2倍のダメージを受ける"
     },
     "mind_enhance_desc": {
-        "en_us": "Next attack\nburns enemy for 2\nTrue damage/sec\nfor 5 seconds",
+        "en_us": "Next attack\nburns enemy for 2\nTrue DMG/sec\nfor 5 seconds",
         "fr": "Prochaine attaque\nbrûle l'ennemi\npour 2 dégâts\nvéritables par seconde\npendant 5 secondes.",
         "zh_tw": "下一次攻擊造成\n每秒 2 點真實\n傷害，持續 5 秒",
         "zh_cn": "下一次攻击造成\n每秒 2 点真实\n伤害，持续 5 秒",
@@ -372,7 +372,7 @@ let textData = {
         "jp": ""
     },
     "mind_enhance_desc_long": {
-        "en_us": "Next attack burns enemy for\n2 True damage/sec for 5 seconds",
+        "en_us": "Next attack burns enemy for\n2 True DMG/sec for 5 seconds",
         "fr": "Prochaine attaque brûle l'ennemi pour\n2 dégâts véritables par seconde pendant 5 secondes.",
         "zh_tw": "下一次攻擊造成每秒\n2 點真實傷害，持續 5 秒",
         "zh_cn": "下一次攻击造成每秒\n2 点真实伤害，持续 5 秒",
@@ -381,7 +381,7 @@ let textData = {
         "jp": ""
     },
     "mind_enhance_plus_desc": {
-        "en_us": "Next attack burns\nenemy for 3\nTrue damage/sec\nfor 5 seconds",
+        "en_us": "Next attack burns\nenemy for 3\nTrue DMG/sec\nfor 5 seconds",
         "fr": "Prochaine attaque\nbrûle l'ennemi pour 3\ndégâts véritables par seconde\npendant 5 secondes.",
         "zh_tw": "下一次攻擊對敵人\n造成每秒 3 點真實\n傷害，持續 5 秒",
         "zh_cn": "下一次攻击对敌人\n造成每秒 3 点真实\n伤害，持续 5 秒",
@@ -390,7 +390,7 @@ let textData = {
         "jp": ""
     },
     "mind_enhance_plus_desc_long": {
-        "en_us": "Next attack burns enemy for\n3 True damage/sec for 5 seconds",
+        "en_us": "Next attack burns enemy for\n3 True DMG/sec for 5 seconds",
         "fr": "Prochaine attaque brûle l'ennemi pour\n2 dégâts véritables par seconde pendant 5 secondes.",
         "zh_tw": "下一次攻擊造成每秒\n3 點真實傷害，持續 5 秒",
         "zh_cn": "下一次攻击造成每秒\n3 点真实伤害，持续 5 秒",
@@ -435,7 +435,7 @@ let textData = {
         "jp": "与えるダメージは\nすべて +3増加します"
     },
     "mind_unload_desc": {
-        "en_us": "Next non-attack\nspell has +200%\neffectiveness",
+        "en_us": "Amplify next\nnon-attack spell\nby +200%",
         "fr": "Prochain sort\nnon-offensif bénéficie\nde +200% d'efficacité",
         "zh_tw": "下一個非攻擊法術\n有+200%的有效性",
         "zh_cn": "下一个非攻击法术\n有+200%的有效性",
@@ -444,7 +444,7 @@ let textData = {
         "jp": "次の非攻撃呪文の\n有効性は+200%です"
     },
     "mind_unload_desc_long": {
-        "en_us": "Next non-attack spell\nhas +200% effectiveness",
+        "en_us": "Amplify next non-attack\nspell by +200%",
         "fr": "Prochain sort non-offensif\nbénéficie de +200% d'efficacité",
         "zh_tw": "下一個非攻擊法術有+200%的有效性",
         "zh_cn": "下一个非攻击法术有+200%的有效性",

@@ -985,6 +985,31 @@
 					}
 				},
 				{
+					"filename": "estbar.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 2
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 2
+					},
+					"frame": {
+						"x": 547,
+						"y": 1660,
+						"w": 200,
+						"h": 2
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "miniscythe.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1400,7 +1425,7 @@
 					},
 					"frame": {
 						"x": 547,
-						"y": 1660,
+						"y": 1664,
 						"w": 106,
 						"h": 4
 					},
@@ -1726,6 +1751,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:821a5e830deee304112f884fc802aa2e:c43532c6157536d3f9e06297fce298dc:71b7deba37d49c4a400e3c6826b292e5$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1c1a4262a1c86446c8c6fd59c9ef5d7f:c88144381ae56a7a03215a0a3f3b0095:71b7deba37d49c4a400e3c6826b292e5$"
 	}
 }

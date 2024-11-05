@@ -663,7 +663,7 @@ function createTutorialBtn(lvl) {
 }
 
 function buildTutorialButton(icon = "rune_matter_large.png", popup) {
-    let buttonX = gameConsts.width - 45; let buttonY = 140;
+    let buttonX = gameConsts.width - 45; let buttonY = isMobile ? 140 : 130;
     let btnPopBack = PhaserScene.add.sprite(buttonX + 90, buttonY, 'buttons', 'btn_small.png').setScale(0.5, 1).setDepth(130).setOrigin(0.5, 0.5);
     let iconGlow = PhaserScene.add.sprite(buttonX, buttonY, 'blurry', 'icon_glow.png').setScale(0.1).setDepth(130).setAlpha(0);
     let btnIcon = PhaserScene.add.sprite(buttonX, buttonY, 'tutorial', icon).setScale(0.05).setDepth(130);

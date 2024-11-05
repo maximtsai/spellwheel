@@ -374,7 +374,7 @@ class Enemy {
         this.shieldSprite.visible = false;
         this.shieldSprite.startScale = this.shieldSprite.scaleX;
 
-        let textOffsetY = 85 * this.shieldSprite.startScale + (this.shieldTextOffsetY || 0);
+        let textOffsetY = 68 * this.shieldSprite.startScale + (this.shieldTextOffsetY || 0);
         this.shieldText = this.scene.add.bitmapText(gameConsts.halfWidth, this.y + textOffsetY + this.shieldOffsetY, this.shieldTextFont || 'armor', '', this.shieldTextSize || 48);
         this.shieldText.alpha = 1;
         this.shieldText.setOrigin(0.5, 0.55);
@@ -871,7 +871,7 @@ class Enemy {
             this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake, true);
             let damageSqrt = Math.sqrt(damageToTake);
             setTimeout(() => {
-                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth - 50, 250, 'X2', 0.5 + damageSqrt * 0.2);
+                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth - 60, 182 - damageSqrt * 2, 'X2', 0.5 + damageSqrt * 0.1);
             }, Math.floor(damageSqrt) * 15)
 
             amt += damageToTake;

@@ -70,7 +70,6 @@ class Player {
     }
 
     resetRecentDamage() {
-        console.log("reset recent damage");
         this.recentlyTakenDamageAmt = 0;
     }
 
@@ -503,7 +502,6 @@ class Player {
 
     addRecentlyTakenDamage(amt) {
         this.recentlyTakenDamageAmt += amt;
-        console.log("recently taken damage:", this.recentlyTakenDamageAmt);
     }
 
     addRecentlyTakenDelayedDamage(amt) {

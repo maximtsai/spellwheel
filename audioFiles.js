@@ -37,6 +37,8 @@ const audioFiles = [
     {name: 'death_attack', src: 'audio/death_attack.mp3'},
     {name: 'death_cast', src: 'audio/death_cast.mp3'},
 
+    {name: 'into_the_void', src: 'audio/into_the_void.mp3'},
+    {name: 'and_into_the_void', src: 'audio/and_into_the_void.mp3'},
     {name: 'bite_down', src: 'audio/bite_down.mp3'},
     {name: 'bite_down_simplified', src: 'audio/bite_down_simplified.mp3'},
     {name: 'echos_of_time', src: 'audio/echos_of_time.mp3'},

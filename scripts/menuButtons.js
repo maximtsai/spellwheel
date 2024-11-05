@@ -1468,6 +1468,7 @@ function showLevelSelectScreen(){
 function showWishlistPage() {
     // globalObjects.encyclopedia.hideButton();
     // globalObjects.options.hideButton();
+    playSound('flip2')
     let clickBlock = new Button({
         normal: {
             ref: "blackPixel",

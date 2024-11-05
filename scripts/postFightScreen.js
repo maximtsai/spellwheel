@@ -1003,11 +1003,10 @@ class PostFightScreen {
         }
     }
 
-    clearPostFightScreen(clearFog = true) {
-        if (!this.isCreated) {
+    clearGloom() {
+        if (!this.gloom) {
             return;
         }
-        this.clearWindSound();
         if (this.gloom.currAnim) {
             this.gloom.currAnim.stop();
         }
@@ -1017,6 +1016,15 @@ class PostFightScreen {
             ease: 'Cubic.easeOut',
             duration: 500,
         })
+    }
+
+    clearPostFightScreen(clearFog = true) {
+        if (!this.isCreated) {
+            return;
+        }
+        this.clearWindSound();
+        this.clearGloom();
+
         PhaserScene.tweens.add({
             targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon, this.newRuneAnnounce, this.locketSprite, this.locketDialog, this.locketDialogImage],
             alpha: 0,

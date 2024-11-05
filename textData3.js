@@ -307,6 +307,42 @@ let textData3 = {
         "jp": ""
     },
 
+    "death5demoa": {
+        "en_us": "THERE IS STILL FAR TO GO\nIN THIS JOURNEY,",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death5demob": {
+        "en_us": "BUT FOR NOW THINGS\nWILL HAVE TO END HERE.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death5democ": {
+        "en_us": "PERHAPS WE'LL ENCOUNTER\nEACH OTHER ONCE AGAIN,",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "death5demod": {
+        "en_us": "IN THE FULL VERSION.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
 
     "death5a": {
         "en_us": "THOUGH EVERYONE HERE MAY\nAPPEAR TO YOU AS ENEMIES,",

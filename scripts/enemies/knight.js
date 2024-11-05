@@ -3,7 +3,6 @@
          super(scene, x, y, level);
          this.initSprite('void_knight.png', 1);// 0.7
          this.sprite.setOrigin(0.5, 0.5); // 0.9
-         this.bgMusic = playMusic('into_the_void', 0.8, true);
          this.shieldAdded = false;
          this.initMisc();
          this.popupTimeout = this.addTimeout(() => {
@@ -21,7 +20,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 160 : 130;
+         this.health = gameVars.isHardMode ? 150 : 130;
          this.eyeObjects = [];
          this.pullbackScale = 0.92;
          this.attackScale = 1.11;
@@ -42,11 +41,117 @@
 
      }
 
+     customReaperAnim() {
+         let locket = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 200, 'misc', 'locket2.png').setOrigin(0.5, 0.5).setDepth(200).setAlpha(0).setRotation(0.25).setScale(0.6);
+         locket.currAnim = PhaserScene.tweens.add({
+             delay: 400,
+             targets: locket,
+             scaleX: 0.8,
+             scaleY: 0.8,
+             alpha: 1,
+             ease: 'Quart.easeOut',
+             rotation: 0,
+             y: "+=28",
+             duration: 2700,
+             onStart: () => {
+                 playSound('whoosh');
+                 let locketMusic = playSound('sleepless', 0.1);
+                 fadeInSound(locketMusic, 0.8, 750)
+
+             },
+             onComplete: () => {
+                 locket.setFrame('locket3.png');
+                 playSound('locket_open');
+                 playSound('water_drop', 0.6);
+                 let circle = PhaserScene.add.image(locket.x, locket.y, 'circle', 'circle.png').setDepth(99).setScale(0.3).setAlpha(1.1);
+                 PhaserScene.tweens.add({
+                     targets: circle,
+                     scaleX: 1.5,
+                     scaleY: 1.5,
+                     ease: 'Quart.easeOut',
+                     duration: 2000,
+                 });
+                 PhaserScene.tweens.add({
+                     targets: circle,
+                     alpha: 0,
+                     ease: 'Quad.easeOut',
+                     duration: 1950,
+                 });
+                 locket.setScale(locket.scaleX * 1.03);
+                 locket.y -= 2;
+                 PhaserScene.tweens.add({
+                     targets: locket,
+                     scaleX: locket.scaleX * 0.98,
+                     scaleY: locket.scaleX * 0.98,
+                     ease: 'Back.easeOut',
+                     y: "+=2",
+                     duration: 300,
+                     onComplete: () => {
+                         PhaserScene.tweens.add({
+                             delay: 110,
+                             targets: locket,
+                             alpha: 0,
+                             scaleX: locket.scaleX * 0.94,
+                             scaleY: locket.scaleX * 0.94,
+                             ease: 'Back.easeIn',
+                             y: "+=35",
+                             duration: 2400,
+                         })
+                     }
+                 })
+
+
+                 let whiteFlood = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'white_pixel.png').setScale(500, 500).setAlpha(0).setDepth(150000);
+                 PhaserScene.tweens.add({
+                     targets: whiteFlood,
+                     alpha: 1,
+                     ease: 'Quad.easeIn',
+                     duration: 2500,
+                     onComplete: () => {
+                         locket.destroy();
+                         clearDeathFog();
+                         gotoMainMenu();
+                         let clickBlock = new Button({
+                             normal: {
+                                 ref: "blackPixel",
+                                 x: gameConsts.halfWidth,
+                                 y: gameConsts.halfHeight,
+                                 alpha: 0.15,
+                                 scaleX: 1000,
+                                 scaleY: 1000
+                             },
+                             onMouseUp: () => {
+
+                             }
+                         });
+                         PhaserScene.tweens.add({
+                             targets: whiteFlood,
+                             alpha: 0,
+                             ease: 'Cubic.easeOut',
+                             duration: 750,
+                             onComplete: () => {
+                                 clickBlock.destroy();
+                                 showWishlistPage();
+                                 globalObjects.postFightScreen.clearGloom();
+                             }
+                         })
+                     }
+                 })
+
+             }
+         })
+     }
+
      initSpriteAnim(scale) {
          this.sprite.setScale(scale);
          this.sprite.setAlpha(0)
          let shadowSprite = this.addImage(this.sprite.x, this.sprite.y - 2, 'enemies', 'void_knight_fog.png').setDepth(this.sprite.depth + 1).setOrigin(this.sprite.originX, this.sprite.originY).setAlpha(0);
          shadowSprite.setScale(scale * 0.96);
+         setTimeout(() => {
+             this.bgMusic = playMusic('into_the_void', 0.05, true);
+             fadeInSound(this.bgMusic, 0.89, 400);
+         }, 100)
+
          this.scene.tweens.add({
              targets: shadowSprite,
              duration: 1200,
@@ -610,12 +715,12 @@
 
          let darkBG = getBackgroundBlackout();
          darkBG.setDepth(-3).setAlpha(0.35);
-         this.spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.5).setScale(1.2);
+         this.spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.45).setScale(1.2);
          this.scene.tweens.add({
              targets: [this.spaceBG, darkBG],
              alpha: 0,
              ease: 'Cubic.easeOut',
-             duration: 2200,
+             duration: 1800,
              onComplete: () => {
              }
          });
@@ -1271,7 +1376,7 @@
                  {
                      name: ";10x3 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 1100,
+                     chargeAmt: 1000,
                      chargeMult: 1.6,
                      damage: 10,
                      attackTimes: 3,
@@ -1292,7 +1397,7 @@
                  {
                      name: ";20 ",
                      announceName: "ASSAIL",
-                     chargeAmt: 900,
+                     chargeAmt: 850,
                      chargeMult: 1.6,
                      damage: 20,
                      isBigMove: true,
@@ -1383,7 +1488,7 @@
      }
 
      createShout() {
-         playSound('void_enhance', 0.9);
+         playSound('void_enhance', 0.9).detune = -50;
          zoomTemp(1.02);
          this.shoutSprite.setScale(0.15).setAlpha(1);
          this.addTween({
@@ -1625,6 +1730,8 @@
              this.createDeathEffect(7, 0.75, 90);
 
          } else {
+             playSound('meat_click_left')
+            playSound('void_body')
              super.die();
              this.addTween({
                  targets: [this.voidTentacleFront, this.voidTentacleBack],

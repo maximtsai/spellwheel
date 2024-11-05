@@ -396,7 +396,7 @@ class SpellManager {
             });
         }
 
-        let spellName = 'MATTER STRIKE';
+        let spellName = 'HEAVY ATTACK';
         this.postAttackCast(spellID, 0, spellName, additionalDamage, numAdditionalAttacks);
     }
     castMatterReinforce() {
@@ -1109,7 +1109,7 @@ class SpellManager {
             });
         }
 
-        let spellName = "TIME STRIKE";
+        let spellName = "TWIN ATTACK";
         this.postAttackCast(spellID, 300, spellName, additionalDamage, numAdditionalAttacks);
     }
     castTimeReinforce() {
@@ -1580,7 +1580,7 @@ class SpellManager {
             });
         }
 
-        let spellName = "ENERGY STRIKE";
+        let spellName = "SHOCK ATTACK";
         this.postAttackCast(spellID, 0, spellName, additionalDamage, numAdditionalAttacks);
 
     }

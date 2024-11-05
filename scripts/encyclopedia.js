@@ -597,11 +597,11 @@ class Encyclopedia {
             let elementAvailable = availableRunes.indexOf(element) !== -1;
 
             let actionRuneName = "rune_" + (actionAvailable ? action : 'question') + "_large.png"
-            let actionRune = PhaserScene.add.image(gameConsts.halfWidth - 240, startPos1 + i * offset, 'tutorial', actionRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
+            let actionRune = PhaserScene.add.image(gameConsts.halfWidth - 244, startPos1 + i * offset, 'tutorial', actionRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
             this.currentPageItems.push(actionRune);
 
             let elementRuneName = "rune_" + (elementAvailable ? element : 'question') + "_large.png"
-            let elementRune = PhaserScene.add.image(gameConsts.halfWidth - 195, startPos1 + i * offset, 'tutorial', elementRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
+            let elementRune = PhaserScene.add.image(gameConsts.halfWidth - 199, startPos1 + i * offset, 'tutorial', elementRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
             this.currentPageItems.push(elementRune);
 
             if (actionAvailable && elementAvailable) {

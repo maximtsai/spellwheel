@@ -209,7 +209,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.01</double>
+                <double>1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -275,9 +275,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>13,12,25,23</rect>
+                <rect>12,12,24,23</rect>
                 <key>scale9Paddings</key>
-                <rect>13,12,25,23</rect>
+                <rect>12,12,24,23</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -340,6 +340,21 @@
                 <rect>37,19,75,39</rect>
                 <key>scale9Paddings</key>
                 <rect>37,19,75,39</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">misc/estbar.webp</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,1,100,1</rect>
+                <key>scale9Paddings</key>
+                <rect>50,1,100,1</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

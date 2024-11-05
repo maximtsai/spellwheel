@@ -206,7 +206,8 @@ class PostFightScreen {
                         alpha: 0.23,
                         duration: 800,
                         ease: 'Cubic.easeOut',
-                    })
+                    });
+                    this.locketSprite.setScale(0.77);
                 },
                 onHoverOut: () => {
                     if (canvas) {
@@ -215,6 +216,7 @@ class PostFightScreen {
                     if (this.gloom.currAnim) {
                         this.gloom.currAnim.stop();
                     }
+                    this.locketSprite.setScale(0.75);
                     this.gloom.currAnim = PhaserScene.tweens.add({
                         targets: this.gloom,
                         scaleX: 5,

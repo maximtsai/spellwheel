@@ -364,7 +364,7 @@
         });
     }
 
-    throwTriple(name, damage, numTimes = 1, hasBird = false) {
+    throwTriple(name, damage, numTimes = 1, isFast, hasBird = false) {
         if (this.dead || this.isDestroyed || globalObjects.player.isDead()) {
             return;
         }
@@ -375,7 +375,7 @@
             scaleY: this.sprite.startScale * 0.85,
             rotation: (numTimes % 2 === 1) ? -0.25 : 0.25,
             ease: "Quart.easeOut",
-            duration: 600,
+            duration: isFast ? 500 : 600,
             onComplete: () => {
                 let trueName = name;
                 if (numTimes === 1 && hasBird) {
@@ -400,7 +400,7 @@
                     scaleY: this.sprite.startScale * 1.1,
                     rotation: numTimes % 2 === 1 ? 0.05 : -0.05,
                     ease: "Quart.easeIn",
-                    duration: 400,
+                    duration: isFast ? 350 : 400,
                     onComplete: () => {
                         if (numTimes <= 1) {
                             this.currDummyAnim = this.addTween({
@@ -417,7 +417,7 @@
                 if (numTimes > 1) {
                     this.addTimeout(() => {
                         this.throwTriple(name, damage, numTimes - 1);
-                    }, 400)
+                    }, (isFast ? 350 : 400))
                 }
 
             }

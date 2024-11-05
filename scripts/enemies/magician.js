@@ -611,6 +611,16 @@
                              });
                          }
                      });
+
+                     let isLeft = this.health % 2 === 0;
+                     this.clockShield.x = gameConsts.halfWidth + isLeft ? 3 : -3;
+                     this.addTween({
+                         targets: this.clockShield,
+                         x: gameConsts.halfWidth,
+                         ease: 'Bounce.easeOut',
+                         duration: 300,
+                     })
+
                      this.clockShield.setAlpha(0.4 + (this.health / this.healthMax) * 0.6);
                      if (this.health === 0) {
                          if (this.halo) {
@@ -1404,37 +1414,6 @@
                              this.fireTimeObjects(4);
                          }, 800);
                      },
-                 },
-                 {
-                     name: "CURSE OF TIME (20?)",
-                     desc: "A deadly spell that\nslowly drains your life.",
-                     chargeAmt: 450,
-                     damage: -1,
-                     prepareSprite: 'time_magi_cast_big.png',
-                     attackFinishFunction: () => {
-                         playSound('time_body');
-                         this.currentAttackSetIndex = 3;
-                         this.nextAttackIndex = 0;
-                         messageBus.publish('playerAddDelayedDamage', 20);
-                         let hitEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'red_clock_back_large_red.png').setDepth(110).setScale(1.2);
-                         this.addTween({
-                             targets: hitEffect,
-                             rotation: "-=1",
-                             ease: 'Cubic.easeOut',
-                             duration: 900,
-                             onComplete: () => {
-                                 hitEffect.destroy();
-                             }
-                         });
-                         this.addTween({
-                             targets: hitEffect,
-                             alpha: 0,
-                             scaleX: 1,
-                             scaleY: 1,
-                             duration: 900
-                         });
-                         this.usedTimeCurse = true;
-                     }
                  },
              ],
              [

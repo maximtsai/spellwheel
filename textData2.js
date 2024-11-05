@@ -943,8 +943,8 @@ let textData2 = {
         "jp": ""
     },
     "ultimate_rune_spells": {
-        "en_us": "ULTIMATE\nRUNE SPELLS",
-        "fr": "SORT DE RUNE\nULTIME",
+        "en_us": "ULTIMATE RUNE SPELLS",
+        "fr": "SORT DE RUNE ULTIME",
         "zh_tw": "究極符文法術",
         "zh_cn": "究极符文法术",
         "ru": "",

@@ -214,18 +214,19 @@ class Enemy {
         this.chargeBarWarningBig.setScale(gameConsts.width * 0.1, 0.65);
         this.chargeBarWarningBig.alpha = 0
         this.chargeBarWarningBig.setDepth(1);
+        let mobileY = isMobile ? 330 : 312;
 
-        this.chargeBarReady1 = this.scene.add.image(x, isMobile ? 339 : 326, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
-        this.chargeBarReady2 = this.scene.add.image(x, isMobile ? 339 : 326, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
+        this.chargeBarReady1 = this.scene.add.image(x, mobileY, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
+        this.chargeBarReady2 = this.scene.add.image(x, mobileY, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
 
-        this.chargeBarOutline = this.scene.add.image(x, isMobile ? 339 : 326, 'whitePixel');
+        this.chargeBarOutline = this.scene.add.image(x, mobileY, 'whitePixel');
         this.chargeBarOutline.setScale(chargeBarLength + 4, isMobile ? 15 : 12);
         this.chargeBarOutline.setOrigin(0.5, 0.5);
         this.chargeBarOutline.visible = false;
         this.chargeBarOutline.alpha = 0.4;
         this.chargeBarOutline.setDepth(9);
 
-        this.chargeBarMax = this.scene.add.image(x, isMobile ? 339 : 326, 'pixels', 'black_blue_pixel.png');
+        this.chargeBarMax = this.scene.add.image(x, mobileY, 'pixels', 'black_blue_pixel.png');
         this.chargeBarMax.setScale(chargeBarLength + 2, isMobile ? 13 : 11);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;
@@ -373,7 +374,7 @@ class Enemy {
         this.shieldSprite.visible = false;
         this.shieldSprite.startScale = this.shieldSprite.scaleX;
 
-        let textOffsetY = 85 * this.shieldSprite.startScale + (this.shieldTextOffsetY || 0);
+        let textOffsetY = 68 * this.shieldSprite.startScale + (this.shieldTextOffsetY || 0);
         this.shieldText = this.scene.add.bitmapText(gameConsts.halfWidth, this.y + textOffsetY + this.shieldOffsetY, this.shieldTextFont || 'armor', '', this.shieldTextSize || 48);
         this.shieldText.alpha = 1;
         this.shieldText.setOrigin(0.5, 0.55);
@@ -817,7 +818,7 @@ class Enemy {
                 this.chargeBarAngry.alpha = 1;
             } else {
                 this.chargeBarAngry.visible = true;
-                this.chargeBarAngry.alpha = completePercent * 0.63;
+                this.chargeBarAngry.alpha = (completePercent - 0.15) * 0.8;
             }
             this.isAngry = false;
             this.chargeBarCurr.visible = true;
@@ -870,7 +871,7 @@ class Enemy {
             this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake, true);
             let damageSqrt = Math.sqrt(damageToTake);
             setTimeout(() => {
-                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth - 50, 250, 'X2', 0.5 + damageSqrt * 0.2);
+                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth - 60, 182 - damageSqrt * 2, 'X2', 0.5 + damageSqrt * 0.1);
             }, Math.floor(damageSqrt) * 15)
 
             amt += damageToTake;

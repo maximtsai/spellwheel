@@ -280,7 +280,7 @@
 
                      },
                      attackFinishFunction: () => {
-                         this.throwTriple('star.png', 2, 5);
+                         this.throwTriple('star.png', 2, 5, true);
                      }
                  },
                  // 0
@@ -295,7 +295,7 @@
                      }
                  },
                  {
-                     name: "}}}2x18}}}",
+                     name: "}}}2x30}}}",
                      chargeAmt: 900,
                      finishDelay: 4500,
                      transitionFast: true,
@@ -308,7 +308,7 @@
 
                      },
                      attackFinishFunction: () => {
-                         this.throwTriple('star.png', 2, 6);
+                         this.throwTriple('star.png', 2, 10, true);
                      }
                  },
                  {

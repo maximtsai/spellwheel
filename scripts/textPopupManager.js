@@ -244,6 +244,7 @@ class TextPopupManager {
 
     animateTrueDamageNum(x, y, text, scale, param, param2) {
         let textObj = this.getTextObjFromArray(x, y, text, this.bonusNums, 'bonus');
+        textObj.depth = 9992;
         let mobileScale = isMobile ? 1.15 : 1;
         textObj.setScale(scale * mobileScale).setAlpha(1);
         this.animateNum(textObj, this.bonusNums, param, param2);
@@ -314,7 +315,7 @@ class TextPopupManager {
     animateNum(textObj, originArray, param = {}, param2 = {}) {
         let tweenParams = {
             targets: textObj,
-            y: "-=20",
+            y: "-=18",
             duration: 700,
             ease: 'Cubic.easeOut',
             onComplete: () => {

@@ -128,7 +128,7 @@ class SpellRecorder {
         this.animateBonusText(bonusText1, bonusText2, extraScale)
 
         this.currAnim = this.scene.tweens.add({
-            delay: 750 + spellName.length * 3 + extraDuration,
+            delay: 760 + spellName.length * 20 + extraDuration,
             targets: [textObj, this.spellAnnounceBG, this.attackBonusText, this.attackMultText],
             ease: 'Cubic.easeIn',
             alpha: 0,

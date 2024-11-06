@@ -337,9 +337,9 @@
                             }
 
                             if (!this.rune3) {
-                                 this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 85, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
-                                 this.rune4 = this.addSprite(centerXPos - 0, runeYPos + 85, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
-                                 this.rune5 = this.addSprite(centerXPos + 48, runeYPos + 85, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
+                                 this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 83, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
+                                 this.rune4 = this.addSprite(centerXPos - 0, runeYPos + 83, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
+                                 this.rune5 = this.addSprite(centerXPos + 48, runeYPos + 83, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
                             }
                              this.addTween({
                                  targets: [this.rune3, this.rune4, this.rune5],

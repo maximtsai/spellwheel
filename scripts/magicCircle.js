@@ -2707,8 +2707,13 @@ const ENABLE_KEYBOARD = true;
          let postPendTextName = gameOptions.infoBoxAlign === 'center' ? "_long" : "";
          // let displayText = "+";
          if (!hideSpellDescriptor) {
-             let nameId = closestElement.runeName + "_" + closestEmbodiment.runeName;
-             this.spellNameText.setText(getBasicText(nameId))
+             if (closestElement.runeName && closestEmbodiment.runeName) {
+                 let nameId = closestElement.runeName + "_" + closestEmbodiment.runeName;
+                 this.spellNameText.setText(getBasicText(nameId))
+             } else {
+                 this.spellNameText.setText('')
+             }
+
              switch (closestElement.runeName) {
                  case RUNE_MATTER:
                      this.spellElementText.setText('MATTER');

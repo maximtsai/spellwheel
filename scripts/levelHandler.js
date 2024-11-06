@@ -2,6 +2,39 @@ let CURRENT_LEVEL = null;
 let levelTimeoutID = null;
 
 function beginPreLevel(lvl) {
+    if (lvl > 2 || (lvl > 1 && gameVars.maxLevel)) {
+        let clickBlocker;
+        let hasFinished = false;
+
+        sdkShowMidgameAd(() => {
+            clickBlocker = createGlobalClickBlocker(false);
+            setTimeout(() => {
+                if (!hasFinished) {
+                    hasFinished = true;
+                    hideGlobalClickBlocker();
+                    beginPreLevelTrue(lvl)
+                }
+            }, 15000)
+        }, () => {
+            if (!hasFinished) {
+                hasFinished = true;
+                hideGlobalClickBlocker();
+                beginPreLevelTrue(lvl)
+            }
+        }, () => {
+            if (!hasFinished) {
+                hasFinished = true;
+                hideGlobalClickBlocker();
+                beginPreLevelTrue(lvl)
+            }
+        })
+    } else {
+        beginPreLevelTrue(lvl)
+    }
+
+}
+
+function beginPreLevelTrue(lvl) {
     gameVars.isInMainMenu = false;
     gameVars.hasCheated = isUsingCheats();
     updateCheatsDisplay();
@@ -18,7 +51,7 @@ function beginPreLevel(lvl) {
     let text8;
     let text9;
     let introOverlay;
-    if (lvl != 0) {
+    if (lvl !== 0) {
         switchLevelBackground(lvl);
     }
     switch(lvl) {
@@ -339,9 +372,9 @@ function beginPreLevel(lvl) {
             createGlobalClickBlocker();
             fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
             break;
-    default:
-        beginLevel(lvl);
-        break;
+        default:
+            beginLevel(lvl);
+            break;
 
     }
 }

@@ -10,6 +10,7 @@ function sdkShowMidgameAd(onStart, onFinish, onError) {
     // };
     //
     // window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
+    onFinish();
 }
 
 function sdkShowHappyTime() {

@@ -1835,6 +1835,7 @@
                              }
                          });
                         playSound('victory_2');
+                        sdkShowHappyTime()
                         this.addTween({
                             delay: 10,
                             targets: rune,

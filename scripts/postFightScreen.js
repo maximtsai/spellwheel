@@ -572,22 +572,7 @@ class PostFightScreen {
         }
     }
 
-    // createWinScreenMin(level = 0) {
-    //     globalObjects.encyclopedia.showButton();
-    //     globalObjects.options.showButton();
-    //     this.createWinScreenUIMin(level);
-    //
-    //     this.continueButton.setState(DISABLE);
-    //     this.trainingButton.setState(NORMAL);
-    //     this.trainingButton.setOnMouseUpFunc(() => {
-    //         this.locketRecentlyClicked = false;
-    //         this.clearPostFightScreen();
-    //         beginPreLevel(level + 1);
-    //         if (canvas) {
-    //             canvas.style.cursor = 'default';
-    //         }
-    //     });
-    // }
+
 
     createWinScreenBoom(level = 0) {
         this.createWinScreenUI(level);

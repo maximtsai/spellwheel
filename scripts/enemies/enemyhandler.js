@@ -52,6 +52,7 @@ function createEnemy(num) {
     default:
         globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 185);
         break;
-
     }
+
+    sdkGameplayStart();
 }

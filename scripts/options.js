@@ -72,6 +72,7 @@ class Options {
             console.log("fail open because", this.canBeClicked, this.opened, this.canClose);
             return;
         }
+        sdkGameplayStop();
         this.opened = true;
         addPopup(this.hideOptions.bind(this));
         globalObjects.encyclopedia.hideButton();
@@ -210,6 +211,7 @@ class Options {
                     }
                 },
                 onMouseUp: () => {
+                    sdkGameplayStart()
                     this.hideOptions();
                 }
             });
@@ -354,6 +356,7 @@ class Options {
                     }
                 },
                 onMouseUp: () => {
+                    sdkGameplayStart()
                     this.hideOptions()
                 }
             });
@@ -466,7 +469,7 @@ class Options {
                     this.infoCenterButton.setState(NORMAL);
                     this.infoNoneButton.setState(NORMAL);
                     gameOptions.infoBoxAlign = "left";
-                    localStorage.setItem("info_align", gameOptions.infoBoxAlign);
+                    sdkSetItem("info_align", gameOptions.infoBoxAlign);
                     messageBus.publish('refreshHoverDisplay');
                     if (canvas) {
                         canvas.style.cursor = 'default';
@@ -514,7 +517,7 @@ class Options {
                     this.infoCenterButton.setState(DISABLE);
                     this.infoNoneButton.setState(NORMAL);
                     gameOptions.infoBoxAlign = "center";
-                    localStorage.setItem("info_align", gameOptions.infoBoxAlign);
+                    sdkSetItem("info_align", gameOptions.infoBoxAlign);
                     messageBus.publish('refreshHoverDisplay');
                     if (canvas) {
                         canvas.style.cursor = 'default';
@@ -562,7 +565,7 @@ class Options {
                     this.infoCenterButton.setState(NORMAL);
                     this.infoNoneButton.setState(DISABLE);
                     gameOptions.infoBoxAlign = "none";
-                    localStorage.setItem("info_align", gameOptions.infoBoxAlign);
+                    sdkSetItem("info_align", gameOptions.infoBoxAlign);
                     messageBus.publish('refreshHoverDisplay');
                     if (canvas) {
                         canvas.style.cursor = 'default';
@@ -900,7 +903,7 @@ class Options {
                     gameOptions.skipIntro = !gameOptions.skipIntro;
                     this.introToggleVisual.setFrame(gameOptions.skipIntro ? 'check_box_on.png' : 'check_box_normal.png');
 
-                    localStorage.setItem("skip_intro", gameOptions.skipIntro.toString());
+                    sdkSetItem("skip_intro", gameOptions.skipIntro.toString());
                 },
             });
             this.introButton.setDepth(this.baseDepth + 10);

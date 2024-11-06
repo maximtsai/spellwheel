@@ -31,6 +31,8 @@ class PostFightScreen {
     }
 
     initAssets(isWin = true, isPractice = false, initLocket = true) {
+        sdkGameplayStop();
+        sdkShowBannerAd();
         this.locketIsOpen = false;
         this.locketIsClosable = false;
         if (!this.bgShade) {
@@ -526,11 +528,12 @@ class PostFightScreen {
 
         if (level > gameVars.latestLevel) {
             gameVars.latestLevel = level;
-            localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
-            localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
+            sdkSetItem("latestLevel", gameVars.latestLevel.toString());
+            sdkSetItem("maxLevel", gameVars.maxLevel.toString());
         }
 
         gameVars.currLevel = level;
+
         if (level === 1 || level === 4) {
             this.createWinScreenUIAlt(level);
         } else {

@@ -2,6 +2,14 @@ function sdkShowRewardAd(onStart, onFinish, onError) {
 
 }
 
+function sdkLoadingStart() {
+    window.CrazyGames.SDK.game.loadingStart();
+}
+
+function sdkLoadingStop() {
+    window.CrazyGames.SDK.game.loadingStop();
+}
+
 function sdkShowMidgameAd(onStart, onFinish, onError) {
     // Crazygames
     // const callbacks = {
@@ -35,7 +43,31 @@ function displayBanner() {
     }
 }
 
+function sdkGetItem(key) {
+    return localStorage.getItem(key);
+}
+
+function sdkSetItem(key, val) {
+    localStorage.setItem(key, val);
+}
+
+function sdkHasAdBlock() {
+
+}
+
 function sdkShowBannerAd() {
+
+}
+
+function sdkGameplayStart() {
+    if (globalObjects && globalObjects.currentEnemy && !globalObjects.currentEnemy.isDestroyed) {
+        window.CrazyGames.SDK.game.gameplayStart();
+    }
+
+}
+
+function sdkGameplayStop() {
+    window.CrazyGames.SDK.game.gameplayStop();
 
 }
 

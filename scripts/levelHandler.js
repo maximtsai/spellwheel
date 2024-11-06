@@ -2,7 +2,7 @@ let CURRENT_LEVEL = null;
 let levelTimeoutID = null;
 
 function beginPreLevel(lvl) {
-    if (lvl > 2 || (lvl > 1 && gameVars.maxLevel)) {
+    if (window.CrazyGames.SDK.environment !== 'disabled' && lvl > 2 || (lvl > 1 && gameVars.maxLevel)) {
         let clickBlocker;
         let hasFinished = false;
 
@@ -622,7 +622,8 @@ function switchLevelBackground(lvl) {
 
 function beginLevel(lvl, instant = false) {
     CURRENT_LEVEL = lvl;
-    updateSpellState(lvl)
+    updateSpellState(lvl);
+
     globalObjects.player.resetStats();
     messageBus.publish('manualResetElements', undefined, true);
     messageBus.publish('manualResetEmbodiments', undefined, true); // with long delay

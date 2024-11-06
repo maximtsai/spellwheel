@@ -590,9 +590,9 @@
         super.die();
 
          gameVars.latestLevel = this.level;
-         localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
+         sdkSetItem("latestLevel", gameVars.latestLevel.toString());
          gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
-         localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
+         sdkSetItem("maxLevel", gameVars.maxLevel.toString());
         playSound('rock_crumble', 0.4).detune = -300;
         playSound('shield_break', 0.6).detune = -800;
         globalObjects.textPopupManager.hideInfoText();

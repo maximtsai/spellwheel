@@ -115,11 +115,15 @@ let url1 = 'localhost';// 'crazygames';
 let url2 = 'maximtsai';// 'localhost';
 let url3 = 'adayofjoy';// '1001juegos';
 let url4 = 'classic.itch';// '1001juegos';
+window.CrazyGames.SDK.user.getUser()
+    .then((user) => console.log(user))
+    .catch((e) => console.log("Get user error: ", e));
 
 function preload ()
 {
-    gameVars.latestLevel = parseInt(localStorage.getItem("latestLevel"));
-    gameVars.maxLevel = parseInt(localStorage.getItem("maxLevel"));
+    sdkLoadingStart();
+    gameVars.latestLevel = parseInt(sdkGetItem("latestLevel"));
+    gameVars.maxLevel = parseInt(sdkGetItem("maxLevel"));
     if (!gameVars.latestLevel) {
         gameVars.latestLevel = 0;
     }
@@ -147,7 +151,8 @@ function preload ()
 
 function create ()
 {
-    if (!document.location.href.includes(url1) && !document.location.href.includes(url2) && !document.location.href.includes(url4)) {
+    sdkLoadingStop()
+    if ((!document.location.href.includes(url1) && !document.location.href.includes(url2) && !document.location.href.includes(url4))) {
         // Stops execution of rest of game
         let gameDiv = document.getElementById('preload-notice');
         let invalidSite = document.location.href.substring(0, 25);
@@ -182,16 +187,16 @@ function onLoadComplete(scene) {
 }
 
 function initializeMiscLocalstorage() {
-    language = localStorage.getItem("language") || 'en_us';
-    gameOptions.infoBoxAlign = localStorage.getItem("info_align") || 'center';
+    language = sdkGetItem("language") || 'en_us';
+    gameOptions.infoBoxAlign = sdkGetItem("info_align") || 'center';
 
-    let storedSkipIntro = localStorage.getItem("skip_intro");
+    let storedSkipIntro = sdkGetItem("skip_intro");
     if (storedSkipIntro) {
-        gameOptions.skipIntro = localStorage.getItem("skip_intro") === 'true';
+        gameOptions.skipIntro = sdkGetItem("skip_intro") === 'true';
     } else {
         gameOptions.skipIntro = true;
         gameOptions.isFirstTime = true;
-        localStorage.setItem("skip_intro", 'true');
+        sdkSetItem("skip_intro", 'true');
     }
 }
 

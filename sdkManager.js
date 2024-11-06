@@ -42,9 +42,11 @@ function displayBanner() {
 }
 
 function sdkGetItem(key) {
+    localStorage.getItem(key);
 }
 
 function sdkSetItem(key, val) {
+    localStorage.setItem(key, val);
 }
 
 function sdkHasAdBlock() {

@@ -220,14 +220,14 @@ class Enemy {
         this.chargeBarReady2 = this.scene.add.image(x, mobileY, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
 
         this.chargeBarOutline = this.scene.add.image(x, mobileY, 'whitePixel');
-        this.chargeBarOutline.setScale(chargeBarLength + 4, isMobile ? 15 : 12);
+        this.chargeBarOutline.setScale(chargeBarLength + 4, isMobile ? 14 : 11);
         this.chargeBarOutline.setOrigin(0.5, 0.5);
         this.chargeBarOutline.visible = false;
         this.chargeBarOutline.alpha = 0.4;
         this.chargeBarOutline.setDepth(9);
 
         this.chargeBarMax = this.scene.add.image(x, mobileY, 'pixels', 'black_blue_pixel.png');
-        this.chargeBarMax.setScale(chargeBarLength + 2, isMobile ? 13 : 11);
+        this.chargeBarMax.setScale(chargeBarLength + 2, isMobile ? 12 : 10);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;
         this.chargeBarMax.setDepth(9);
@@ -265,17 +265,17 @@ class Enemy {
         this.chargeBarFlash1.scaleY = this.chargeBarMax.scaleY;
         this.chargeBarFlash2.scaleY = this.chargeBarMax.scaleY;
 
-        this.chargeBarEst1 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'soft_blue_pixel.png');
-        this.chargeBarEst1.setScale(8.5, this.chargeBarMax.scaleY - 2);
+        this.chargeBarEst1 = this.scene.add.image(x, this.chargeBarMax.y, 'misc', 'estbar.webp');
+        this.chargeBarEst1.setScale(0.085, this.chargeBarMax.scaleY - 2);
         this.chargeBarEst1.setOrigin(1, 0.5);
         this.chargeBarEst1.alpha = 0;
         this.chargeBarEst1.setDepth(9);
         this.chargeBarShow = false;
         this.chargeBarEstScale = 8.5;
 
-        this.chargeBarEst2 = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'soft_blue_pixel.png');
-        this.chargeBarEst2.setScale(8.5, this.chargeBarMax.scaleY - 2);
-        this.chargeBarEst2.setOrigin(0, 0.5);
+        this.chargeBarEst2 = this.scene.add.image(x, this.chargeBarMax.y, 'misc', 'estbar.webp');
+        this.chargeBarEst2.setScale(-0.085, this.chargeBarMax.scaleY - 2);
+        this.chargeBarEst2.setOrigin(1, 0.5);
         this.chargeBarEst2.alpha = 0;
         this.chargeBarEst2.setDepth(9);
 
@@ -613,9 +613,9 @@ class Enemy {
             //
             // }
 
-            let trueScale = Math.min(estScale, (this.chargeBarMax.scaleX - this.chargeBarCurr.scaleX) * 0.5 - 1)
+            let trueScale = Math.min(estScale, (this.chargeBarMax.scaleX - this.chargeBarCurr.scaleX) * 0.5 - 1) * 0.01;
             this.chargeBarEst1.scaleX = trueScale;
-            this.chargeBarEst2.scaleX = trueScale;
+            this.chargeBarEst2.scaleX = -trueScale;
             // this.setPredictScale();
 
             let goalAlpha = 1.18 * (this.chargeBarCurr.scaleX) / (this.chargeBarMax.scaleX + 1) + this.chargeBarAlphaOffset;
@@ -2535,8 +2535,8 @@ class Enemy {
             this.lastChargeEstScale = this.chargeBarEstScale;
             if (this.chargeBarEst1.currAnim) {
                 this.chargeBarEst1.currAnim.stop();
-                this.chargeBarEst1.alpha = this.level < 4 ? 0.5 : 0.43;
-                this.chargeBarEst2.alpha = this.level < 4 ? 0.5 : 0.43;
+                this.chargeBarEst1.alpha = 0.65;
+                this.chargeBarEst2.alpha = 0.65;
                 this.chargeBarEst1.currAnim = PhaserScene.tweens.add({
                     delay: 250,
                     targets: [this.chargeBarEst1, this.chargeBarEst2],
@@ -2547,7 +2547,7 @@ class Enemy {
                             delay: 250,
                             targets: [this.chargeBarEst1, this.chargeBarEst2],
                             duration: 1250,
-                            alpha: 0.375,
+                            alpha: 0.44,
                             yoyo: true,
                             repeat: -1,
                         });

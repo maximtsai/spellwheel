@@ -499,8 +499,8 @@ let textData4 = {
     "pre_fight_3b": {
         "en_us": "My magic hums ready as\nI prepare to teach this\n\"Magician\" that neither\nriddles nor force will\nstop my journey.",
         "fr": "Ma magie vibre, prête,\nalors que je me prépare à\napprendre à ce 'Magicien'\nque ni les énigmes ni\nla force n'arrêteront\nmon voyage.",
-        "zh_tw": "我的魔法已蓄勢待發，準\n備讓這位『魔術師』明白，\n無論是謎題還是力量，都\n無法阻止我的旅程。",
-        "zh_cn": "我的魔法已蓄势待发，准\n备让这位‘魔术师’明白，\n无论是谜题还是力量，都\n无法阻止我的旅程。",
+        "zh_tw": "我的魔法已蓄勢待發，\n準備讓這位『魔術師』\n明白，無論是謎題還是\n實力，都無法阻止我的\n旅程。",
+        "zh_cn": "我的魔法已蓄势待发，\n准备让这位‘魔术师’\n明白，无论是谜题还是\n实力，都无法阻止我的\n旅程。",
         "ru": "Этот \"Волшебник\" меня достаточно насолил. Моя магия жаждет драки.",
         "es": "Este \"Mago\" me ha molestado bastante. Mi magia tiene ganas de pelear.",
         "jp": "この「マジシャン」は私を十分に苛立たせました。私の魔法は戦いを欲しがる。"

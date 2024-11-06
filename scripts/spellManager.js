@@ -2386,7 +2386,7 @@ class SpellManager {
             });
         }
 
-        let spellName = 'TENTACLE ATTACK';
+        let spellName = 'VOID ATTACK';
         this.postAttackCast(spellID, 0, spellName, additionalDamage, numAdditionalAttacks);
     }
 

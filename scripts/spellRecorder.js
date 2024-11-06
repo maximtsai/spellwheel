@@ -7,28 +7,28 @@ class SpellRecorder {
         this.castHistory = [];
         this.castCount = {};
 
-        this.spellAnnounceBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 13, 'misc', 'announceBg.png');
+        this.spellAnnounceBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 18, 'misc', 'announceBg.png');
         this.spellAnnounceBG.setOrigin(0.5);
         this.spellAnnounceBG.setDepth(9991);
         this.spellAnnounceBG.alpha = 0;
         this.spellAnnounceBG.setScale(2, 1.1);
 
-        this.spellAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight - 7, 'bonus', 'dfbfdb', 32, 1);
+        this.spellAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight - 12, 'bonus', 'dfbfdb', 32, 1);
         this.spellAnnounceText.setOrigin(0.5, 0.5);
         this.spellAnnounceText.setDepth(9991);
         this.spellAnnounceText.alpha = 0;
 
-        this.attackAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight - 12, 'damage', 'dfbfdb', 36, 1);
+        this.attackAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight - 17, 'damage', 'dfbfdb', 36, 1);
         this.attackAnnounceText.setOrigin(0.5, 0.5);
         this.attackAnnounceText.setDepth(9991);
         this.attackAnnounceText.alpha = 0;
 
-        this.attackBonusText = this.scene.add.bitmapText(gameConsts.halfWidth, this.attackAnnounceText.y + 12, 'damage', 'dfbfdb', 33, 1);
+        this.attackBonusText = this.scene.add.bitmapText(gameConsts.halfWidth, this.attackAnnounceText.y + 11, 'damage', 'dfbfdb', 33, 1);
         this.attackBonusText.setOrigin(0.5, 0);
         this.attackBonusText.setDepth(9991);
         this.attackBonusText.alpha = 0;
 
-        this.attackMultText = this.scene.add.bitmapText(gameConsts.halfWidth, this.attackAnnounceText.y + 12, 'damage', 'dfbfdb', 33, 1);
+        this.attackMultText = this.scene.add.bitmapText(gameConsts.halfWidth, this.attackAnnounceText.y + 11, 'damage', 'dfbfdb', 31, 1);
         this.attackMultText.setOrigin(0.5, 0);
         this.attackMultText.setDepth(9991);
         this.attackMultText.alpha = 0;

@@ -138,7 +138,7 @@
 
                          }
                      });
-                     messageBus.publish("showCombatText", "...", -2, () => {
+                     messageBus.publish("showCombatText", "...", -15, () => {
                          this.setAwake();
                      }, 0.6);
                      this.spellCastCount = 0;
@@ -149,7 +149,7 @@
                              this.playerSpellCastSub = null;
                              messageBus.publish("closeCombatText");
                              this.addDelayIfAlive(() => {
-                                 messageBus.publish("showCombatText", "!!!", -2, undefined, 0.6);
+                                 messageBus.publish("showCombatText", "!!!", -20, undefined, 0.6);
                                  this.addDelayIfAlive(() => {
                                      messageBus.publish("closeCombatText");
                                  }, 2000)
@@ -398,7 +398,7 @@
                  this.playerSpellCastSub = null;
                  messageBus.publish("closeCombatText");
                  this.addDelayIfAlive(() => {
-                     messageBus.publish("showCombatText", "!!!", -2, undefined, 0.6);
+                     messageBus.publish("showCombatText", "!!!", -20, undefined, 0.6);
                      this.addDelayIfAlive(() => {
                          messageBus.publish("closeCombatText");
                      }, 2000)

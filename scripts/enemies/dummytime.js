@@ -105,6 +105,9 @@
             this.rune3.destroy();
             this.rune4.destroy();
             this.rune5.destroy();
+            if (this.rune6) {
+                this.rune6.destroy();
+            }
          }
 
         playSound('clunk2');
@@ -139,7 +142,7 @@
                      onComplete: () => {
                          playSound('magic', 0.6);
                          this.heal(healAmt);
-                         messageBus.publish('animateHealNum', this.x, this.y - 50, '+' + healAmt, 0.5 + Math.sqrt(this.healthMax) * 0.2);
+                         messageBus.publish('animateHealNum', this.x, this.y - 70, '+' + healAmt, 0.5 + Math.sqrt(this.healthMax) * 0.2);
                          if (!this.healSprite) {
                              this.healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(0.9).setDepth(999).setAlpha(1);
                          }
@@ -178,7 +181,7 @@
                  // 0
                  {
                      name: ";15x5;",
-                     chargeAmt: 550,
+                     chargeAmt: 620,
                      finishDelay: 2800,
                      isBigMove: true,
                      transitionFast: true,
@@ -395,13 +398,14 @@
              [
                  {
                      name: "FULL HEAL! \\100",
-                     chargeAmt: 720,
+                     chargeAmt: 850,
                      finishDelay: 2000,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
-                         if (this.health > 30) {
+                         if (this.health > 30 && !this.justShown) {
+                             this.justShown = true;
                              globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 187, getLangText('level4_train_tut_c'), 'right');
                              let runeYPos = globalObjects.textPopupManager.getBoxTopPos();
                              let centerXPos = globalObjects.textPopupManager.getCenterPos();
@@ -414,24 +418,25 @@
                              }
 
                              if (!this.rune3) {
-                                 this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 83, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
-                                 this.rune4 = this.addSprite(centerXPos - 0, runeYPos + 83, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
-                                 this.rune5 = this.addSprite(centerXPos + 48, runeYPos + 83, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
+                                 this.rune3 = this.addSprite(centerXPos - 60, runeYPos + 83, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
+                                 this.rune4 = this.addSprite(centerXPos - 20, runeYPos + 83, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
+                                 this.rune5 = this.addSprite(centerXPos + 20, runeYPos + 83, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
+                                 this.rune6 = this.addSprite(centerXPos + 60, runeYPos + 83, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
                              }
                              this.addTween({
-                                 targets: [this.rune3, this.rune4, this.rune5],
+                                 targets: [this.rune3, this.rune4, this.rune5, this.rune6],
                                  alpha: 1,
                                  duration: 200,
                              });
                              this.addTween({
-                                 targets: [this.rune3, this.rune4, this.rune5],
+                                 targets: [this.rune3, this.rune4, this.rune5, this.rune6],
                                  scaleX: 1,
                                  scaleY: 1,
                                  ease: 'Quart.easeOut',
                                  duration: 600,
                                  onComplete: () => {
                                      this.addTween({
-                                         targets: [this.rune3, this.rune4, this.rune5],
+                                         targets: [this.rune3, this.rune4, this.rune5, this.rune6],
                                          scaleX: 0.78,
                                          scaleY: 0.78,
                                          ease: 'Back.easeOut',
@@ -449,13 +454,15 @@
                                          this.playerSpellBodyTrack2 = null;
                                          globalObjects.textPopupManager.hideInfoText();
                                          this.addTween({
-                                             targets: [this.rune3, this.rune4, this.rune5],
+                                             targets: [this.rune3, this.rune4, this.rune5, this.rune6],
                                              alpha: 0,
                                              duration: 200,
                                          });
                                      }
                                  })
                              }, 2000)
+                         } else {
+                             this.justShown = false;
                          }
                      },
                      attackStartFunction: () => {

@@ -470,7 +470,7 @@ let textData4 = {
         "jp": "私の時間は短いです、私は恐れています。"
     },
     "magician_g": {
-        "en_us": "Have mercy please?",
+        "en_us": "Have mercy please, my dear?",
         "fr": "Ayez pitié s’il vous plaît ?",
         "zh_tw": "能饒恕我嗎？",
         "zh_cn": "能饶恕我吗？",

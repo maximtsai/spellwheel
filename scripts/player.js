@@ -32,10 +32,6 @@ class Player {
                 this.refreshRecentInjuryBar(true);
             }),
 
-            messageBus.subscribe("wheelReloaded", this.incrementMindReinforceStatus.bind(this)),
-
-
-
         ];
         updateManager.addFunction(this.update.bind(this));
         // Handles weird phaser initial lag issue.
@@ -160,22 +156,12 @@ class Player {
         return addedAmt;
     }
 
-    incrementMindReinforceStatus() {
-        // let mindReinforceStatus = this.statuses['mindReinforce'];
-        // if (mindReinforceStatus) {
-        //     mindReinforceStatus.displayAmt += mindReinforceStatus.multiplier;
-        //     messageBus.publish('selfTakeEffect', mindReinforceStatus);
-        //     let param = {
-        //         duration: 1000,
-        //     }
-        //     let param2 = {
-        //         alpha: 0,
-        //         scaleX: 1,
-        //         scaleY: 1
-        //     }
-        //     messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + mindReinforceStatus.displayAmt + " DAMAGE", 1 + mindReinforceStatus.displayAmt * 0.15, param, param2);
-        //
-        // }
+    trueDamageAdder() {
+        let mindReinforceStatus = this.getStatuses()['mindReinforce'];
+        if (mindReinforceStatus) {
+            return mindReinforceStatus.displayAmt;
+        }
+        return 0;
     }
 
     clearSpellMultiplier() {

@@ -3,50 +3,36 @@ class SpellRecorder {
         this.scene = scene;
         messageBus.subscribe('recordSpell', this.handleRecordNonAttack.bind(this));
         messageBus.subscribe('recordSpellAttack', this.handleRecordAttack.bind(this));
-        // messageBus.subscribe('boostAttackDamageName', this.boostAttackDamageName.bind(this));
         this.castHistory = [];
         this.castCount = {};
 
-        this.spellAnnounceBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 18, 'misc', 'announceBg.png');
+        this.spellAnnounceBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 17, 'misc', 'announceBg.png');
         this.spellAnnounceBG.setOrigin(0.5);
         this.spellAnnounceBG.setDepth(9991);
         this.spellAnnounceBG.alpha = 0;
         this.spellAnnounceBG.setScale(2, 1.1);
 
-        this.spellAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight - 12, 'bonus', 'dfbfdb', 32, 1);
+        this.spellAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight - 11, 'bonus', 'dfbfdb', 32, 1);
         this.spellAnnounceText.setOrigin(0.5, 0.5);
         this.spellAnnounceText.setDepth(9991);
         this.spellAnnounceText.alpha = 0;
 
-        this.attackAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight - 17, 'damage', 'dfbfdb', 36, 1);
+        this.attackAnnounceText = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight - 16, 'damage', 'dfbfdb', 36, 1);
         this.attackAnnounceText.setOrigin(0.5, 0.5);
         this.attackAnnounceText.setDepth(9991);
         this.attackAnnounceText.alpha = 0;
 
-        this.attackBonusText = this.scene.add.bitmapText(gameConsts.halfWidth, this.attackAnnounceText.y + 11, 'damage', 'dfbfdb', 33, 1);
+        this.attackBonusText = this.scene.add.bitmapText(gameConsts.halfWidth, this.attackAnnounceText.y + 18, 'damage', 'dfbfdb', 33, 1);
         this.attackBonusText.setOrigin(0.5, 0);
         this.attackBonusText.setDepth(9991);
         this.attackBonusText.alpha = 0;
 
-        this.attackMultText = this.scene.add.bitmapText(gameConsts.halfWidth, this.attackAnnounceText.y + 11, 'damage', 'dfbfdb', 31, 1);
+        this.attackMultText = this.scene.add.bitmapText(gameConsts.halfWidth, this.attackAnnounceText.y + 18, 'damage', 'dfbfdb', 31, 1);
         this.attackMultText.setOrigin(0.5, 0);
         this.attackMultText.setDepth(9991);
         this.attackMultText.alpha = 0;
 
     }
-
-    // boostAttackDamageName(isFirstBoost, boostAmt) {
-    //     let newTextObj = this.attackAnnounceText.text
-    //     if (isFirstBoost) {
-    //         newTextObj += " +" + boostAmt;
-    //     } else {
-    //         let plusIndex = newTextObj.lastIndexOf("+");
-    //         newTextObj = newTextObj.substring(0, plusIndex + 1);
-    //         newTextObj += boostAmt;
-    //     }
-
-    //     this.attackAnnounceText.setText(newTextObj)
-    // }
 
     handleRecordAttack(spellID, spellName, bonusSize = 0, additionalDamage, multiplier) {
         // console.log("handle attack",spellID);
@@ -77,14 +63,14 @@ class SpellRecorder {
         let origSpellAnnounceBGScale = this.spellAnnounceBG.scaleX;
         textObj.setAlpha(0.5);
         if (hasBonusText) {
-            textObj.setOrigin(0.5, 1.1)
+            textObj.setOrigin(0.5, 0.75)
         } else {
             textObj.setOrigin(0.5, 0.5)
         }
         this.spellAnnounceBG.setAlpha(0.7);
         if (this.currAnim) {
             this.currAnim.stop();
-            if (this.currAnimObj != textObj) {
+            if (this.currAnimObj !== textObj) {
                 let objectsToFade = [this.currAnimObj];
                 if (!bonusText1) {
                     objectsToFade.push(this.attackBonusText)

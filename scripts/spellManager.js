@@ -397,7 +397,7 @@ class SpellManager {
             });
         }
 
-        let spellName = 'HEAVY ATTACK';
+        let spellName = getBasicText('rune_matter_rune_strike');
         this.postAttackCast(spellID, 0, spellName, additionalDamage, numAdditionalAttacks);
     }
 
@@ -527,14 +527,13 @@ class SpellManager {
             }
         });
 
-        let spellName = "THORN FORM";
-        if (spellMult >= 6) {
-            spellName = "THORN FORM x6"
-        } else if (spellMult >= 3) {
-            spellName = "THORN FORM x3";
+        let spellName = getBasicText('rune_matter_rune_reinforce');
+        if (spellMult >= 3) {
+            spellName = spellName + " x" + spellMult;
         }
         this.postNonAttackCast(spellID, spellName)
     }
+
     castMatterEnhance() {
         let newSpike;
         const spellID = 'matterEnhance';
@@ -641,7 +640,7 @@ class SpellManager {
                 }
             }
         });
-        let spellName = "STRENGTHEN NEXT ATTACK\n+" + globalObjects.player.attackDamageAdder();
+        let spellName = getBasicText('rune_matter_rune_enhance')+"\n+" + globalObjects.player.attackDamageAdder();
 
         // if (itemsToAnimate.length > 1) {
         //     spellName += " X" + itemsToAnimate.length;
@@ -788,14 +787,15 @@ class SpellManager {
             }
         });
 
-        let spellName = "SHIELD OF STONE";
+        let spellName = getBasicText('rune_time_rune_protect');
         let bonusSize = 0;
         if (spellMultiplier >= 3) {
-            spellName = "SHIELD OF STONE X" + spellMultiplier;
+            spellName = spellName + " X" + spellMultiplier;
             bonusSize = 0.1;
         }
         if (isSuper) {
-            spellName = "SUPER STONE SHIELD"
+            spellName = "SUPER STONE SHIELD";
+            bonusSize = 0.1;
         }
         this.postNonAttackCast(spellID, spellName, bonusSize);
     }
@@ -1113,7 +1113,7 @@ class SpellManager {
             });
         }
 
-        let spellName = "TWIN ATTACK";
+        let spellName = getBasicText('rune_time_rune_strike');
         this.postAttackCast(spellID, 300, spellName, additionalDamage, numAdditionalAttacks);
     }
 
@@ -1175,7 +1175,7 @@ class SpellManager {
             alpha: 0
         });
 
-        let spellName = "UNDO WOUNDS";
+        let spellName = getBasicText('rune_time_rune_reinforce');
         if (multiplier > 1) {
             spellName += " X" + multiplier;
         }
@@ -1292,7 +1292,7 @@ class SpellManager {
             }
         });
 
-        let spellName = "DUPLICATE NEXT ATTACK +"+addedActualAttacks;
+        let spellName = getBasicText('rune_time_rune_enhance')+" +"+addedActualAttacks;
 
         this.postNonAttackCast(spellID, spellName);
     }
@@ -1377,7 +1377,10 @@ class SpellManager {
         });
 
         let boost = 0;
-        let spellName = "SHIELD OF DELAY";
+        let spellName = getBasicText('rune_time_rune_protect');
+        if (multiplier > 1.1) {
+            spellName = spellName + " X"+multiplier;
+        }
         this.postNonAttackCast(spellID, spellName, boost);
     }
     castTimeUltimate() {
@@ -1587,7 +1590,7 @@ class SpellManager {
             });
         }
 
-        let spellName = "SHOCK ATTACK";
+        let spellName = getBasicText('rune_mind_rune_strike');
         this.postAttackCast(spellID, 0, spellName, additionalDamage, numAdditionalAttacks);
 
     }
@@ -1739,7 +1742,7 @@ class SpellManager {
         });
 
 
-        let spellName = "ENERGY FORM";
+        let spellName = getBasicText('rune_mind_rune_reinforce');
         if (multiplier >= 2) {
             spellName += " X" + multiplier;
         }
@@ -1801,7 +1804,7 @@ class SpellManager {
         });
 
 
-        let spellName = "IGNITE NEXT ATTACK";
+        let spellName = getBasicText('rune_mind_rune_enhance');
         if (multiplier > 1) {
             spellName += " X" + multiplier;
         }
@@ -1900,10 +1903,10 @@ class SpellManager {
             }
         });
 
-        let spellName = "REFLECT DAMAGE";
+        let spellName = getBasicText('rune_mind_rune_protect');
         let bonusSize = 0;
         if (spellMultiplier >= 2) {
-            spellName = "REFLECT DAMAGE X" + spellMultiplier;
+            spellName = spellName + " X" + spellMultiplier;
             bonusSize = 0.15;
         }
         this.postNonAttackCast(spellID, spellName, bonusSize);
@@ -2026,7 +2029,7 @@ class SpellManager {
         });
 
         let newMultiplierDisplay = newMultiplier - 1;
-        let spellName = "AMPLIFY MAGIC +" + newMultiplierDisplay + "00%";
+        let spellName = getBasicText('rune_mind_rune_unload') + " +" + newMultiplierDisplay + "00%";
         let bonusSize = 0.15;
         if (newMultiplier > 4) {
             bonusSize = 0.25;
@@ -2053,6 +2056,54 @@ class SpellManager {
     }
     castVoidUltimate() {
         this.castMindStrike();
+    }
+
+
+    createRockParticle(x, y, velX, velY, duration) {
+        let particle = this.particlesRock.pop();
+        if (!particle) {
+            particle = this.scene.add.image(x, y, 'spells', 'rock_chip.png');
+            particle.setDepth(15);
+        }
+        particle.setScale(1.25);
+        particle.visible = true;
+        particle.rotation = Math.random() * 3.14;
+        let travelAmtX = velX * duration;
+        let direction = "+=";
+        let travelString = direction+travelAmtX;
+        let travelAmtY = velY * duration;
+        this.scene.tweens.add({
+            targets: particle,
+            x: travelString,
+            y: "+="+travelAmtY,
+            duration: duration,
+            rotation: (Math.random() - 0.5) * 10
+        });
+        // fake gravity
+        this.scene.tweens.add({
+            targets: particle,
+            y: "+="+travelAmtY,
+            duration: duration,
+            easeParams: [4],
+            ease: 'Back.easeOut',
+        });
+
+        this.scene.tweens.add({
+            targets: particle,
+            ease: 'Cubic.easeIn',
+            scaleX: 0,
+            scaleY: 0,
+            duration: duration - 150,
+            completeDelay: 150,
+            onComplete: () => {
+                this.recycleRockParticle(particle);
+            }
+        });
+    }
+
+    recycleRockParticle(particle) {
+        particle.visible = false;
+        this.particlesRock.push(particle);
     }
 
     postAttackCast(spellID, delayAmt = 0, spellName = "UNNAMED ATTACK", additionalDamage, numAdditionalAttacks) {

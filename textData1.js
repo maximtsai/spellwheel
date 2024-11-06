@@ -803,6 +803,26 @@ let textData = {
         "es": "",
         "jp": "。"
     },
+    "rune_matter_rune_strike": "HEAVY STRIKE",
+    "rune_matter_rune_enhance": "STRENGTHEN ATTACK",
+    "rune_matter_rune_protect": "STONE SHIELD",
+    "rune_matter_rune_reinforce": "THORN BODY",
+    "rune_matter_rune_unload": "EARTH FORCE",
+    "rune_mind_rune_strike": "SHOCK STRIKE",
+    "rune_mind_rune_enhance": "IGNITE ATTACK",
+    "rune_mind_rune_protect": "REFLECT SHIELD",
+    "rune_mind_rune_reinforce": "POWER BODY",
+    "rune_mind_rune_unload": "AMPLIFY MAGIC",
+    "rune_time_rune_strike": "TWIN STRIKE",
+    "rune_time_rune_enhance": "DUPLICATE ATTACK",
+    "rune_time_rune_protect": "DELAY SHIELD",
+    "rune_time_rune_reinforce": "UNDO WOUNDS",
+    "rune_time_rune_unload": "TIME FREEZE",
+    "rune_void_rune_strike": "DARK STRIKE",
+    "rune_void_rune_enhance": "DARK STRENGTH",
+    "rune_void_rune_protect": "NEGATION SHIELD",
+    "rune_void_rune_reinforce": "REMAKE SELF",
+    "rune_void_rune_unload": "UN-MAKE",
 }
 
 function setLanguage(lang) {
@@ -818,4 +838,12 @@ function getLangText(textName) {
         return "MISSING TEXT";
     }
     return textData[textName][language];
+}
+
+function getBasicText(textName) {
+    if (!textData[textName]) {
+        console.error("Missing text name ", textName);
+        return "MISSING TEXT";
+    }
+    return textData[textName];
 }

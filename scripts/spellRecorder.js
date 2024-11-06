@@ -22,12 +22,12 @@ class SpellRecorder {
         this.attackAnnounceText.setDepth(9991);
         this.attackAnnounceText.alpha = 0;
 
-        this.attackBonusText = this.scene.add.bitmapText(gameConsts.halfWidth, this.attackAnnounceText.y + 18, 'damage', 'dfbfdb', 33, 1);
+        this.attackBonusText = this.scene.add.bitmapText(gameConsts.halfWidth, this.attackAnnounceText.y + 19, 'damage', 'dfbfdb', 33, 1);
         this.attackBonusText.setOrigin(0.5, 0);
         this.attackBonusText.setDepth(9991);
         this.attackBonusText.alpha = 0;
 
-        this.attackMultText = this.scene.add.bitmapText(gameConsts.halfWidth, this.attackAnnounceText.y + 18, 'damage', 'dfbfdb', 31, 1);
+        this.attackMultText = this.scene.add.bitmapText(gameConsts.halfWidth, this.attackAnnounceText.y + 19, 'damage', 'dfbfdb', 31, 1);
         this.attackMultText.setOrigin(0.5, 0);
         this.attackMultText.setDepth(9991);
         this.attackMultText.alpha = 0;

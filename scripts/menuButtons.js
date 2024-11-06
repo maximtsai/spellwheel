@@ -10,7 +10,7 @@ function setupMainMenuBG() {
         if (hasLvlSelect) {
             if (!globalObjects.continueButtonSprite) {
                 globalObjects.continueButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 175, gameConsts.halfHeight - 132, 'misc', 'continuegame.webp')
-                globalObjects.levelButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 183, gameConsts.halfHeight - 43, 'misc', 'selectgame.webp');
+                globalObjects.levelButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 183, gameConsts.halfHeight - 43, 'misc', 'selectgame.webp').setScale(0.85);
             }
 
         }
@@ -297,7 +297,7 @@ function showMainMenuButtons() {
 
     if (hasLvlSelect) {
         if (!globalObjects.levelButtonSprite || !globalObjects.levelButtonSprite.active) {
-            globalObjects.levelButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 183, gameConsts.halfHeight - 43, 'misc', 'selectgame.webp')
+            globalObjects.levelButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth - 183, gameConsts.halfHeight - 43, 'misc', 'selectgame.webp').setScale(0.85)
         }
         globalObjects.levelSelectButton = new Button({
             normal: {
@@ -324,7 +324,7 @@ function showMainMenuButtons() {
                     canvas.style.cursor = 'pointer';
                 }
                 globalObjects.levelButtonSprite.setFrame('selectgame_hover.webp');
-                globalObjects.levelButtonSprite.setScale(1.025);
+                globalObjects.levelButtonSprite.setScale(0.855);
                 globalObjects.levelButtonSprite.setRotation(-0.03);
             },
             onHoverOut: () => {
@@ -336,8 +336,8 @@ function showMainMenuButtons() {
                 PhaserScene.tweens.add({
                     targets: globalObjects.levelButtonSprite,
                     duration: 100,
-                    scaleX: 1,
-                    scaleY: 1,
+                    scaleX: 0.85,
+                    scaleY: 0.85,
                     easeParams: [3],
                     rotation: 0,
                     ease: 'Bounce.easeOut',
@@ -457,7 +457,7 @@ function showMainMenuButtons() {
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.width + 150,
+            x: gameConsts.width - 150,
             y: 270,
         },
         hover: {

@@ -4,7 +4,7 @@
     }
 
      initStatsCustom() {
-        this.health = 120;
+        this.health = 105;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -178,7 +178,7 @@
                  // 0
                  {
                      name: ";15x5;",
-                     chargeAmt: 515,
+                     chargeAmt: 550,
                      finishDelay: 2800,
                      isBigMove: true,
                      transitionFast: true,
@@ -317,14 +317,15 @@
              ],
              [
                  {
-                     name: "FULL HEAL! \\100%",
-                     chargeAmt: 780,
+                     name: "FULL HEAL! \\100",
+                     chargeAmt: 480,
                      finishDelay: 2000,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
-                        if (this.health > 30) {
+                        if (this.health > 30 && !this.flipShow) {
+                            this.flipShow = true;
                             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 187, getLangText('level4_train_tut_c'), 'right');
                              let runeYPos = globalObjects.textPopupManager.getBoxTopPos();
                              let centerXPos = globalObjects.textPopupManager.getCenterPos();
@@ -379,26 +380,88 @@
                                      }
                                  })
                              }, 2000)
+                        } else {
+                            this.flipShow = false;
                         }
+
                      },
                      attackStartFunction: () => {
-                         this.healAnim(120);
+                         this.healAnim(100);
+                         this.currentAttackSetIndex = 2;
+                         this.nextAttackIndex = 0;
                      }
                  },
+             ],
+             [
                  {
-                     name: "}4",
-                     chargeAmt: 270,
-                     finishDelay: 1000,
+                     name: "FULL HEAL! \\100",
+                     chargeAmt: 720,
+                     finishDelay: 2000,
                      transitionFast: true,
+                     isBigMove: true,
                      damage: -1,
                      startFunction: () => {
+                         if (this.health > 30) {
+                             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 187, getLangText('level4_train_tut_c'), 'right');
+                             let runeYPos = globalObjects.textPopupManager.getBoxTopPos();
+                             let centerXPos = globalObjects.textPopupManager.getCenterPos();
+                             if (this.rune1) {
+                                 this.addTween({
+                                     targets: [this.rune1, this.rune2],
+                                     alpha: 0,
+                                     duration: 200,
+                                 });
+                             }
 
+                             if (!this.rune3) {
+                                 this.rune3 = this.addSprite(centerXPos - 48, runeYPos + 83, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
+                                 this.rune4 = this.addSprite(centerXPos - 0, runeYPos + 83, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
+                                 this.rune5 = this.addSprite(centerXPos + 48, runeYPos + 83, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.71).setAlpha(0);
+                             }
+                             this.addTween({
+                                 targets: [this.rune3, this.rune4, this.rune5],
+                                 alpha: 1,
+                                 duration: 200,
+                             });
+                             this.addTween({
+                                 targets: [this.rune3, this.rune4, this.rune5],
+                                 scaleX: 1,
+                                 scaleY: 1,
+                                 ease: 'Quart.easeOut',
+                                 duration: 600,
+                                 onComplete: () => {
+                                     this.addTween({
+                                         targets: [this.rune3, this.rune4, this.rune5],
+                                         scaleX: 0.78,
+                                         scaleY: 0.78,
+                                         ease: 'Back.easeOut',
+                                         duration: 400,
+                                     });
+                                 }
+                             });
+                             this.addDelay(() => {
+                                 if (this.playerSpellBodyTrack) {
+                                     this.playerSpellBodyTrack.unsubscribe();
+                                 }
+                                 this.playerSpellBodyTrack2 = this.addSubscription('recordSpell', (spellId) => {
+                                     if (spellId === 'timeEnhance' || spellId === 'matterEnhance') {
+                                         this.playerSpellBodyTrack2.unsubscribe();
+                                         this.playerSpellBodyTrack2 = null;
+                                         globalObjects.textPopupManager.hideInfoText();
+                                         this.addTween({
+                                             targets: [this.rune3, this.rune4, this.rune5],
+                                             alpha: 0,
+                                             duration: 200,
+                                         });
+                                     }
+                                 })
+                             }, 2000)
+                         }
                      },
                      attackStartFunction: () => {
-
-                     },
-                     attackFinishFunction: () => {
-                         this.throwWeapon('dagger.png', 4, 1);
+                         this.healAnim(100);
+                         this.currentAttackSetIndex = 2;
+                         this.nextAttackIndex = 0;
                      }
                  },
              ]

@@ -762,7 +762,7 @@
                  // 0
                  {
                      name: gameVars.isHardMode ? "}10 " : "}8 ",
-                     chargeAmt: 420,
+                     chargeAmt: 410,
                      damage: gameVars.isHardMode ? 10 : 8,
                      attackFinishFunction: () => {
                          screenShake(5);
@@ -808,7 +808,7 @@
                  },
                  {
                      name: gameVars.isHardMode ? "|15" : "|12 ",
-                     chargeAmt: 340,
+                     chargeAmt: 335,
                      damage: gameVars.isHardMode ? 15 : 12,
                      isBigMove: true,
                      attackFinishFunction: () => {
@@ -852,7 +852,7 @@
                  },
                  {
                      name: gameVars.isHardMode ? ";30" : ";25",
-                     chargeAmt: 580,
+                     chargeAmt: 565,
                      damage: gameVars.isHardMode ? 30 : 25,
                      isBigMove: true,
                      attackFinishFunction: () => {

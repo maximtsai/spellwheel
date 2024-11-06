@@ -95,9 +95,9 @@ function setupMouseInteraction(scene) {
     // baseTouchLayer.on('pointerup', mouseManager.onPointerUp, scene);
     // baseTouchLayer.on('pointermove', mouseManager.onPointerDown, scene); // doesn't work outside
 
-    let hagVar1 = "b25wb2ludGVybW92ZQ==";
-    let hagVar2 = "bG9jYXRpb24=";
-    let hagVar3 = "b25wb2ludGVydXA="
+    // let hagVar1 = "b25wb2ludGVybW92ZQ==";
+    // let hagVar2 = "bG9jYXRpb24=";
+    // let hagVar3 = "b25wb2ludGVydXA="
     // const body = document.querySelector('body');
 
     globalObjects.input1 = window[ajaxzig("b25wb2ludGVybW92ZQ==")] = (pointer) => {
@@ -115,35 +115,5 @@ function setupMouseInteraction(scene) {
     // };
 }
 
-function resizeGame() {
-    if (!canResizeGame) {
-        return;
-    }
-    if (!game) {
-        return;
-    }
-    if (!game.canvas) {
-        return;
-    }
-    var canvas = game.canvas; //document.querySelector("canvas");
-    var windowWidth = window.innerWidth;
-    var windowHeight = window.innerHeight;
-    var windowRatio = windowWidth / windowHeight;
-    var gameRatio = game.config.width / game.config.height;
-    var gameScale = 1;
-    if (windowRatio < gameRatio) {
-        canvas.style.width = windowWidth + "px";
-        canvas.style.height = windowWidth / gameRatio + "px";
-        gameScale = windowWidth / game.config.width;
-        gameVars.canvasXOffset = 0;
-        gameVars.canvasYOffset = (windowHeight - game.config.height * gameScale) * 0.5;
-    } else {
-        canvas.style.width = windowHeight * gameRatio + "px";
-        canvas.style.height = windowHeight + "px";
-        gameScale = windowHeight / game.config.height;
-        gameVars.canvasYOffset = 0;
-        gameVars.canvasXOffset = (windowWidth - game.config.width * gameScale) * 0.5;
-    }
-    gameVars.gameScale = gameScale;
-}
+function resizeGame(){if(canResizeGame&&game&&game.canvas){var i=game.canvas,e=window.innerWidth,t=window.innerHeight,n=game.config.width/game.config.height,h=1;e/t<n?(i.style.width=e+"px",i.style.height=e/n+"px",h=e/game.config.width,gameVars.canvasXOffset=0,gameVars.canvasYOffset=(t-game.config.height*h)*.5):(i.style.width=t*n+"px",i.style.height=t+"px",h=t/game.config.height,gameVars.canvasYOffset=0,gameVars.canvasXOffset=(e-game.config.width*h)*.5),gameVars.gameScale=h}}
 

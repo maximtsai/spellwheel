@@ -57,7 +57,7 @@ class SpellRecorder {
         textObj.setText(spellName);
         let extraScale = bonusSize;
         let hasBonusText = bonusText1 || bonusText2;
-        let extraDuration = bonusSize * 1000 + (hasBonusText ? 250 : 0);
+        let extraDuration = bonusSize * 900 + (hasBonusText ? 220 : 0);
         textObj.setScale(0.78 + extraScale, 0.82 + extraScale);
         this.spellAnnounceBG.setScale(textObj.width / 350 + 0.1, 0.5 + extraScale * 0.25);
         let origSpellAnnounceBGScale = this.spellAnnounceBG.scaleX;
@@ -108,12 +108,12 @@ class SpellRecorder {
         this.animateBonusText(bonusText1, bonusText2, extraScale)
 
         this.currAnim = this.scene.tweens.add({
-            delay: 850 + spellName.length * 35 + extraDuration,
+            delay: 750 + spellName.length * 3 + extraDuration,
             targets: [textObj, this.spellAnnounceBG, this.attackBonusText, this.attackMultText],
             ease: 'Cubic.easeIn',
             alpha: 0,
             scaleY: 0.95,
-            duration: 400,
+            duration: 350,
         });
         this.currAnimObj = textObj;
         if (this.castCount[spellID]) {

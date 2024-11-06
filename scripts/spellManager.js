@@ -141,13 +141,14 @@ class SpellManager {
         let rockObjects = [];
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let additionalDamage = globalObjects.player.attackDamageAdder();
+        let bonusTrueDamage = globalObjects.player.trueDamageAdder();
         let isExtraBuff = additionalDamage >= 6;
 
         let pebbles = getTempPoolObject('spells', 'rockCircle.png', 'rockCircle', 800);
         pebbles.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 240);
         let additionalScale = Math.sqrt(additionalDamage) * 0.022;
         let finalAdditionaScale = additionalScale * 5;
-        let isPowerful = numAdditionalAttacks * (12 + additionalDamage) > 70;
+        let isPowerful = numAdditionalAttacks * (12 + additionalDamage + bonusTrueDamage) > 75;
         pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalScale).setRotation(Math.random() * 3)
         this.scene.tweens.add({
             targets: pebbles,
@@ -399,6 +400,7 @@ class SpellManager {
         let spellName = 'HEAVY ATTACK';
         this.postAttackCast(spellID, 0, spellName, additionalDamage, numAdditionalAttacks);
     }
+
     castMatterReinforce() {
         const spellID = 'matterReinforce';
         let brickObj;
@@ -1033,10 +1035,12 @@ class SpellManager {
     castTimeStrike() {
         const spellID = 'timeStrike';
         let additionalDamage = globalObjects.player.attackDamageAdder();
+        let bonusTrueDamage = globalObjects.player.trueDamageAdder();
+
         let hasFirstBuff = additionalDamage >= 6;
         let hasSecondBuff = additionalDamage >= 14;
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
-        let isPowerful = numAdditionalAttacks * (6 + additionalDamage) > 50;
+        let isPowerful = numAdditionalAttacks * (6 + (additionalDamage + bonusTrueDamage) * 1.5) > 95;
 
         let strikeObjects = [];
         let finalStrikeScale = 0.5 + Math.sqrt(additionalDamage) * 0.075 + additionalDamage * 0.02;
@@ -1340,6 +1344,7 @@ class SpellManager {
         let spellName = "TWIN ATTACK";
         this.postAttackCast(spellID, 300, spellName, additionalDamage, numAdditionalAttacks);
     }
+
     castTimeReinforce() {
         const spellID = 'timeReinforce';
         let multiplier = globalObjects.player.spellMultiplier();
@@ -1647,7 +1652,9 @@ class SpellManager {
         let attackObjects = [];
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let additionalDamage = globalObjects.player.attackDamageAdder();
-        let isPowerful = numAdditionalAttacks * (1 + additionalDamage) > 36;
+        let bonusTrueDamage = globalObjects.player.trueDamageAdder();
+
+        let isPowerful = numAdditionalAttacks * (1 + (additionalDamage + bonusTrueDamage) * 2) > 70;
 
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
@@ -1846,6 +1853,7 @@ class SpellManager {
         this.postAttackCast(spellID, 0, spellName, additionalDamage, numAdditionalAttacks);
 
     }
+
     castMindReinforce() {
         const spellID = 'mindReinforce';
         let multiplier = globalObjects.player.spellMultiplier();

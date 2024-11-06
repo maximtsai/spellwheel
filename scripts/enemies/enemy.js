@@ -2535,19 +2535,19 @@ class Enemy {
             this.lastChargeEstScale = this.chargeBarEstScale;
             if (this.chargeBarEst1.currAnim) {
                 this.chargeBarEst1.currAnim.stop();
-                this.chargeBarEst1.alpha = 0.65;
-                this.chargeBarEst2.alpha = 0.65;
+                this.chargeBarEst1.alpha = 0.6;
+                this.chargeBarEst2.alpha = 0.6;
                 this.chargeBarEst1.currAnim = PhaserScene.tweens.add({
                     delay: 250,
                     targets: [this.chargeBarEst1, this.chargeBarEst2],
                     duration: 1250,
-                    alpha: 0,
+                    alpha: 0.08,
                     onComplete: () => {
                         this.chargeBarEst1.currAnim = PhaserScene.tweens.add({
                             delay: 250,
                             targets: [this.chargeBarEst1, this.chargeBarEst2],
                             duration: 1250,
-                            alpha: 0.44,
+                            alpha: 0.39,
                             yoyo: true,
                             repeat: -1,
                         });

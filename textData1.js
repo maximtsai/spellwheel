@@ -139,18 +139,18 @@ let textData = {
     },
     "time_strike_desc": {
         "en_us": "Deal 6 DMG,\nfollowed by a\nsecond attack\nat half power",
-        "fr": "Inflige 6 points\nde dégâts, suivi\nd'une deuxième\nattaque à moitié\npuissance.",
-        "zh_tw": "打擊兩次。第一次\n造成 6 點傷害，\n第二次造成第一次\n攻擊傷害的 50%。",
-        "zh_cn": "打击两次。第一次\n造成 6 点伤害，\n第二次造成第一次\n攻擊伤害的 50%。",
+        "fr": "Inflige 6 points\nde dégâts, suivi\nd'une deuxième\nattaque à moitié\npuissance",
+        "zh_tw": "造成 6 點傷害，\n隨後以一半的威力\n發動第二次攻擊",
+        "zh_cn": "造成 6 点伤害，\n随后以一半的威力\n发动第二次攻击",
         "ru": "Атаковать дважды.\nПервая атака наносит\n6 урона, вторая\nнаносит 50% урона\nот первой атаки.",
         "es": "Ataca dos veces.\nEl primer ataque\ninflige 6 de daño,\nel segundo ataque\ninflige el 50%\ndel primero.",
         "jp": "2回攻撃する。最初の\n攻撃は6ダメージを与え、\n2回目の攻撃は最初の\n攻撃の50%を与えます。"
     },
     "time_strike_desc_long": {
         "en_us": "Deal 6 DMG, followed by a\nsecond attack at half power",
-        "fr": "Inflige 6 points de dégâts, suivi d'une\ndeuxième attaque supplémentaire à moitié puissance.",
-        "zh_tw": "打擊兩次。第一次造成 6 點傷害，\n第二次造成第一次攻擊傷害的 50%。",
-        "zh_cn": "打击两次。第一次造成 6 点伤害，\n第二次造成第一次攻擊伤害的 50%。",
+        "fr": "Inflige 6 points de dégâts, suivi d'une\ndeuxième attaque supplémentaire à moitié puissance",
+        "zh_tw": "造成 6 點傷害，隨後以\n一半的威力發動第二次攻擊",
+        "zh_cn": "造成 6 点伤害，随后以\n一半的威力发动第二次攻击",
         "ru": "Атаковать дважды. Первая атака наносит 6 урона,\nвторая наносит 50% урона от первой атаки.",
         "es": "Ataca dos veces. El primer ataque inflige 6 de\ndaño, el segundo ataque inflige el 50% del primero.",
         "jp": "2回攻撃する。最初の攻撃は6ダメージを与え、\n2回目の攻撃は最初の攻撃の50%を与えます。"
@@ -347,8 +347,8 @@ let textData = {
     "mind_strike_desc": {
         "en_us": "Deal 1 True\nDMG. Enemy\ntakes x2 DMG\nfrom next\nattack.",
         "fr": "Inflige 1 dégât\nvéritable. L'ennemi\nsubit x2 dégâts\nlors de prochaine\nattaque.",
-        "zh_tw": "造成 1 點真實傷害。\n敵人將在你下一次\n攻擊中受到 2 倍傷害。",
-        "zh_cn": "造成 1 点真实伤害。\n敌人从你下一次\n攻击中受到 2 倍伤害。",
+        "zh_tw": "造成 1 點真實\n傷害。下一次攻擊\n造成 2 倍傷害。",
+        "zh_cn": "造成 1 点真实\n伤害。下一次攻击\n造成 2 倍伤害。",
         "ru": "Нанести 1 истинный\nурон. Враг получает\nдвойной урон от\nвашей следующей атаки.",
         "es": "Inflige 1 daño\nverdadero. El\nenemigo recibe x2\nde daño de tu\npróximo ataque",
         "jp": "1の真のダメージを\n与える。敵は次の\n攻撃で2倍のダメー\nジを受ける"
@@ -356,8 +356,8 @@ let textData = {
     "mind_strike_desc_long": {
         "en_us": "Deal 1 True DMG. Enemy takes\nx2 DMG from next attack.",
         "fr": "Inflige 1 dégât véritable. L'ennemi subit\nx2 dégâts lors de prochaine attaque.",
-        "zh_tw": "造成 1 點真實傷害。\n你下一次攻擊造成 2 倍傷害。",
-        "zh_cn": "造成 1 点真实伤害。\n你下一次攻击造成 2 倍伤害。",
+        "zh_tw": "造成 1 點真實傷害。\n下一次攻擊造成 2 倍傷害。",
+        "zh_cn": "造成 1 点真实伤害。\n下一次攻击造成 2 倍伤害。",
         "ru": "Нанести 1 истинный урон. Враг получает\nдвойной урон от вашей следующей атаки.",
         "es": "Inflige 1 daño verdadero. El enemigo\nrecibe x2 de daño de tu próximo ataque",
         "jp": "1の真のダメージを与える。敵は次の\n攻撃で2倍のダメージを受ける"
@@ -419,8 +419,8 @@ let textData = {
     "mind_reinforce_desc": {
         "en_us": "Increase all damage\nyou deal by +3",
         "fr": "Augmente tous les dégâts\nque vous infligez de +3",
-        "zh_tw": "你造成的所有傷害\n增加 +3",
-        "zh_cn": "你造成的所有伤害\n增加 +3",
+        "zh_tw": "你造成的所有\n傷害增加 +3",
+        "zh_cn": "你造成的所有\n伤害增加 +3",
         "ru": "Весь наносимый\nвами урон\nувеличивается\nна +3.",
         "es": "Todo el daño\nque infliges\naumenta en +3",
         "jp": "与えるダメージ\nはすべて +3\n増加します"

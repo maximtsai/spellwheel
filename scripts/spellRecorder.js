@@ -45,23 +45,27 @@ class SpellRecorder {
         if (multiplier && multiplier > 1.01) {
             bonusText2 = "X" + multiplier;
         }
-        this.handleRecordSpell(this.attackAnnounceText, spellID, spellName, bonusSize, bonusText1, bonusText2);
+        this.handleRecordSpell(this.attackAnnounceText, spellID, spellName, bonusSize, bonusText1, bonusText2, true);
     }
 
     handleRecordNonAttack(spellID, spellName, bonusSize = 0) {
         this.handleRecordSpell(this.spellAnnounceText, spellID, spellName, bonusSize);
     }
 
-    handleRecordSpell(textObj, spellID, spellName, bonusSize = 0, bonusText1, bonusText2) {
+    handleRecordSpell(textObj, spellID, spellName, bonusSize = 0, bonusText1, bonusText2, isAttack = false) {
         // this.castHistory.push(spellName);
         textObj.setText(spellName);
         let extraScale = bonusSize;
         let hasBonusText = bonusText1 || bonusText2;
         let extraDuration = bonusSize * 900 + (hasBonusText ? 220 : 0);
-        textObj.setScale(0.78 + extraScale, 0.82 + extraScale);
+        if (isAttack) {
+            textObj.setScale(1.05 + extraScale * 1.01);
+        } else {
+            textObj.setScale(0.8 + extraScale, 0.82 + extraScale);
+        }
         this.spellAnnounceBG.setScale(textObj.width / 350 + 0.1, 0.5 + extraScale * 0.25);
         let origSpellAnnounceBGScale = this.spellAnnounceBG.scaleX;
-        textObj.setAlpha(0.5);
+        textObj.setAlpha(isAttack ? 0.75 : 0.45);
         if (hasBonusText) {
             textObj.setOrigin(0.5, 0.75)
         } else {
@@ -95,15 +99,31 @@ class SpellRecorder {
             duration: 300,
             ease: 'Quad.easeOut'
         });
-        this.scene.tweens.add({
-            targets: textObj,
-            scaleX: 0.9 + extraScale,
-            scaleY: 0.9 + extraScale,
-            alpha: 1,
-            duration: 300,
-            easeParams: [3],
-            ease: 'Back.easeOut'
-        });
+        if (isAttack) {
+            this.scene.tweens.add({
+                targets: textObj,
+                scaleX: 0.9 + extraScale,
+                scaleY: 0.9 + extraScale,
+                duration: 220,
+                ease: 'Back.easeOut'
+            });
+            this.scene.tweens.add({
+                targets: textObj,
+                alpha: 1,
+                duration: 180,
+                ease: 'Cubic.easeOut'
+            });
+        } else {
+            this.scene.tweens.add({
+                targets: textObj,
+                scaleX: 0.9 + extraScale,
+                scaleY: 0.9 + extraScale,
+                alpha: 1,
+                duration: 280,
+                easeParams: [3],
+                ease: 'Back.easeOut'
+            });
+        }
 
         this.animateBonusText(bonusText1, bonusText2, extraScale)
 

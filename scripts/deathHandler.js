@@ -1276,7 +1276,7 @@ function playReaperDialog(dialog, funcList, onComplete) {
         duration: 500,
     });
     globalObjects.bannerTextManager.showBanner();
-    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10);
+    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
     globalObjects.bannerTextManager.setOnFinishFunc(onComplete, 100)
     // if (!globalObjects.reaperText) {
     //     globalObjects.reaperTextBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 25, 'misc', 'victory_banner.png').setScale(100, 1).setDepth(100002).setAlpha(0);

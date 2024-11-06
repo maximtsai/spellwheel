@@ -645,12 +645,14 @@ class PostFightScreen {
 
         this.locketSprite.setRotation(-0.25).setScale(0.75).setDepth(100003).setAlpha(0).setVisible(true).setFrame('locket1.png').setOrigin(0.5, 0.8);
         PhaserScene.tweens.add({
+            delay: 200,
             targets: this.locketSprite,
             alpha: 1,
             ease: 'Cubic.easeOut',
-            duration: 1100,
+            duration: 1150,
         });
         PhaserScene.tweens.add({
+            delay: 250,
             targets: this.locketSprite,
             ease: 'Cubic.easeOut',
             scaleX: 0.85,
@@ -667,7 +669,7 @@ class PostFightScreen {
             }
         });
         PhaserScene.tweens.add({
-            delay: 700,
+            delay: 950,
             targets: this.locketSprite,
             x: gameConsts.width * 0.76,
             y: gameConsts.halfHeight - 105,
@@ -678,6 +680,7 @@ class PostFightScreen {
             }
         });
         PhaserScene.tweens.add({
+            delay: 250,
             targets: this.locketSprite,
             rotation: 0,
             ease: 'Cubic.easeInOut',

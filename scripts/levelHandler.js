@@ -2,7 +2,7 @@ let CURRENT_LEVEL = null;
 let levelTimeoutID = null;
 
 function beginPreLevel(lvl) {
-    if (window.CrazyGames.SDK.environment !== 'disabled' && lvl > 2 || (lvl > 1 && gameVars.maxLevel)) {
+    if (!gameVars.ignoreNextAd && window.CrazyGames.SDK.environment !== 'disabled' && lvl > 2 || (lvl > 1 && gameVars.maxLevel)) {
         let clickBlocker;
         let hasFinished = false;
 
@@ -31,6 +31,7 @@ function beginPreLevel(lvl) {
     } else {
         beginPreLevelTrue(lvl)
     }
+    gameVars.ignoreNextAd = false;
 
 }
 

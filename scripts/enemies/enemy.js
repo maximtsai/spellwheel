@@ -214,7 +214,7 @@ class Enemy {
         this.chargeBarWarningBig.setScale(gameConsts.width * 0.1, 0.65);
         this.chargeBarWarningBig.alpha = 0
         this.chargeBarWarningBig.setDepth(1);
-        let mobileY = isMobile ? 330 : 312;
+        let mobileY = isMobile ? 333 : 315;
 
         this.chargeBarReady1 = this.scene.add.image(x, mobileY, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
         this.chargeBarReady2 = this.scene.add.image(x, mobileY, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);

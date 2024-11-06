@@ -812,7 +812,7 @@ class SpellManager {
         let hasFirstBuff = additionalDamage >= 6;
         let hasSecondBuff = additionalDamage >= 14;
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
-        let isPowerful = numAdditionalAttacks * (6 + (additionalDamage + bonusTrueDamage) * 1.5) > 95;
+        let isPowerful = numAdditionalAttacks * (6 + (additionalDamage + bonusTrueDamage) * 1.5) > 85;
 
         let strikeObjects = [];
         let finalStrikeScale = 0.5 + Math.sqrt(additionalDamage) * 0.075 + additionalDamage * 0.02;

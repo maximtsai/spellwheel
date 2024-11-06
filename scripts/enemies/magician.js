@@ -613,7 +613,7 @@
                      });
 
                      let isLeft = this.health % 2 === 0;
-                     this.clockShield.x = gameConsts.halfWidth + isLeft ? 3 : -3;
+                     this.clockShield.x = gameConsts.halfWidth + (isLeft ? 4 : -4);
                      this.addTween({
                          targets: this.clockShield,
                          x: gameConsts.halfWidth,
@@ -1038,7 +1038,7 @@
                 ease: 'Cubic.easeInOut',
                 onStart: () => {
                     if (!this.finishedChargingUltimate) {
-                        if (i % 2 == 0) {
+                        if (i % 2 === 0) {
                             this.sprite.setScale(this.sprite.startScale * 1.03);
                             this.sprite.setRotation(0.06);
                         }
@@ -1052,7 +1052,7 @@
                         if (gameVars.isHardMode) {
                             isExtraLarge = i % 5 === 0;
                         } else {
-                            isExtraLarge = i === 0 || i === 11 || i === 6 || i === 16;
+                            isExtraLarge = i === 0 || i === 10 || i === 5 || i === 15;
                         }
                         let clockName = 'clock2.png';
                         if (isExtraLarge) {
@@ -1094,7 +1094,7 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_e'), 20);
+        messageBus.publish("showCombatText", getLangText('magician_e'), 10);
         this.addTimeout(() => {
             this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1113,7 +1113,7 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_f'), 20);
+        messageBus.publish("showCombatText", getLangText('magician_f'), 10);
         this.addTimeout(() => {
             this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1131,7 +1131,7 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_g'), 20);
+        messageBus.publish("showCombatText", getLangText('magician_g'), 10);
         this.addTimeout(() => {
             this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1152,7 +1152,7 @@
                  {
                      name: "}4x3 ",
                      desc: "An advanced magic attack.",
-                     chargeAmt: gameVars.isHardMode ? 400 : 525,
+                     chargeAmt: gameVars.isHardMode ? 400 : 495,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {

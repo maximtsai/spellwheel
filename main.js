@@ -126,6 +126,10 @@ function preload ()
     if (!gameVars.maxLevel) {
         gameVars.maxLevel = gameVars.latestLevel;
     }
+    if (gameVars.maxLevel >= 6) {
+        gameVars.maxLevel = 14;
+        gameVars.hideCheatConst = -230;
+    }
 
     if (isMobile && screen && screen.orientation && screen.orientation.lock) {
         var myScreenOrientation = window.screen.orientation;

@@ -459,7 +459,7 @@ function showMainMenuButtons() {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
             x: gameConsts.width + 150 + gameVars.hideCheatConst,
-            y: 260,
+            y: 245,
         },
         hover: {
             ref: "menu_btn_hover.png",

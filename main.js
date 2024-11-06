@@ -115,6 +115,9 @@ let url1 = 'localhost';// 'crazygames';
 let url2 = 'maximtsai';// 'localhost';
 let url3 = 'adayofjoy';// '1001juegos';
 let url4 = 'classic.itch';// '1001juegos';
+window.CrazyGames.SDK.user.getUser()
+    .then((user) => console.log(user))
+    .catch((e) => console.log("Get user error: ", e));
 
 function preload ()
 {

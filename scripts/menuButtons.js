@@ -453,14 +453,13 @@ function showMainMenuButtons() {
         globalObjects.menuButtons.setFrame('menu_buttons.png');
     }
 
-    let hideCheatConst = 0;
 
     globalObjects.cheatButton4 = new Button({
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.width + 150,
-            y: 270,
+            x: gameConsts.width + 150 + gameVars.hideCheatConst,
+            y: 260,
         },
         hover: {
             ref: "menu_btn_hover.png",

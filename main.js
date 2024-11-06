@@ -100,7 +100,8 @@ let gameVars = {
     gameManualSlowSpeedInverse: 1,
     gameScale: 1,
     canvasXOffset: 0,
-    canvasYOffset: 0
+    canvasYOffset: 0,
+    hideCheatConst: 0
 };
 let globalObjects = {};
 let updateFunctions = {};

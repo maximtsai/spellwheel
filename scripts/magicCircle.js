@@ -1158,9 +1158,9 @@ const ENABLE_KEYBOARD = true;
         } else if (this.storedDragAngleDiff < -angleCutoff) {
             this.storedDragAngleDiff = -angleCutoff;
         }
-        if (this.draggedObj == this.innerCircle) {
+        if (this.draggedObj === this.innerCircle) {
             flatMoveInner = this.storedDragAngleDiff * (gameVars.wasTouch ? 0.06 : 0.05) * multDT;
-        } else if (this.draggedObj == this.outerCircle) {
+        } else if (this.draggedObj === this.outerCircle) {
             flatMoveOuter = this.storedDragAngleDiff * (gameVars.wasTouch ? 0.06 : 0.05) * multDT;
         }
         this.storedDragAngleDiff = 0;

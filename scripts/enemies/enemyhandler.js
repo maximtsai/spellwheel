@@ -4,11 +4,7 @@ function createEnemy(num) {
     }
     switch(num) {
     case -7:
-        globalObjects.currentEnemy = new SuperDummy(PhaserScene, gameConsts.halfWidth, 170, 7, true);
-        break;
     case -6:
-        globalObjects.currentEnemy = new Dummyvoid(PhaserScene, gameConsts.halfWidth, 310, num);
-        break;
     case -5:
     case -4:
         globalObjects.currentEnemy = new Dummytime(PhaserScene, gameConsts.halfWidth, 310, num);

@@ -1031,7 +1031,7 @@
                      name: gameVars.isHardMode ? "|10" : "|8",
                      announceName: "INITIAL STRIKE",
                      desc: "The mysterious knight charges at you!",
-                     chargeAmt: 400,
+                     chargeAmt: 415,
                      damage: gameVars.isHardMode ? 10 : 8,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],

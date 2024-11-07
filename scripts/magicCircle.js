@@ -1061,14 +1061,14 @@ const ENABLE_KEYBOARD = true;
             this.preventRotDecay -= dt;
         } else {
             if (this.innerCircle.rotVel < -MIN_VEL) {
-                if (this.innerCircle !== this.draggedObj && this.keyboardRotateInner === 0 && distToClosestRuneElement > 0 && this.innerCircle.rotVel > -0.1 && this.innerCircle.rotVel < -0.028) {
-                    staticAmtInner *= 3.1;
+                if (this.innerCircle !== this.draggedObj && this.keyboardRotateInner === 0 && distToClosestRuneElement > 0 && this.innerCircle.rotVel > -0.105 && this.innerCircle.rotVel < -0.028) {
+                    staticAmtInner *= 3.2;
                     decayAmtInner *= 0.98;
                 }
                 this.innerCircle.rotVel = Math.min(0, this.innerCircle.rotVel * decayAmtInner + staticAmtInner);
             } else if (this.innerCircle.rotVel > MIN_VEL) {
-                if (this.innerCircle !== this.draggedObj && this.keyboardRotateInner === 0 && distToClosestRuneElement < 0 && this.innerCircle.rotVel < 0.1 && this.innerCircle.rotVel > 0.028) {
-                    staticAmtInner *= 3.1;
+                if (this.innerCircle !== this.draggedObj && this.keyboardRotateInner === 0 && distToClosestRuneElement < 0 && this.innerCircle.rotVel < 0.105 && this.innerCircle.rotVel > 0.028) {
+                    staticAmtInner *= 3.2;
                     decayAmtInner *= 0.98;
                 }
                 this.innerCircle.rotVel = Math.max(0, this.innerCircle.rotVel * decayAmtInner - staticAmtInner);
@@ -1078,15 +1078,15 @@ const ENABLE_KEYBOARD = true;
 
             if (this.outerCircle.rotVel < -MIN_VEL) {
                 if (this.outerCircle !== this.draggedObj && this.keyboardRotateOuter === 0 && distToClosestRuneEmbodiment > 0 && this.outerCircle.rotVel < -0.024) {
-                    if (this.outerCircle.rotVel > -0.09)  {
-                        staticAmtOuter *= 3.5;
+                    if (this.outerCircle.rotVel > -0.094)  {
+                        staticAmtOuter *= 3.55;
                         decayAmtOuter *= 0.98;
                     }
                 }
                 this.outerCircle.rotVel = Math.min(0, this.outerCircle.rotVel * decayAmtOuter + staticAmtOuter);
             } else if (this.outerCircle.rotVel > MIN_VEL) {
-                if (this.outerCircle !== this.draggedObj && this.keyboardRotateOuter === 0 && distToClosestRuneEmbodiment < 0 && this.outerCircle.rotVel < 0.09 && this.outerCircle.rotVel > 0.024) {
-                    staticAmtOuter *= 3.5;
+                if (this.outerCircle !== this.draggedObj && this.keyboardRotateOuter === 0 && distToClosestRuneEmbodiment < 0 && this.outerCircle.rotVel < 0.094 && this.outerCircle.rotVel > 0.024) {
+                    staticAmtOuter *= 3.55;
                     decayAmtOuter *= 0.98;
                 }
                 this.outerCircle.rotVel = Math.max(0, this.outerCircle.rotVel * decayAmtOuter - staticAmtOuter);

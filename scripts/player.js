@@ -736,7 +736,7 @@ class Player {
                             shieldObj.shakeAmt = 0.05 + hurtAmt * 0.005;
                             shieldObj.impactVisibleTime = 6;
                             shieldObj.animObj[2].rotateOffset = -shieldObj.animObj[0].rotation * 0.92;
-                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y + 35, 'BLOCKED', 0.9, {y: "-=5", ease: 'Quart.easeOut'}, {scaleX: 0.85, scaleY: 0.85, alpha: 0, });
+                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y + 25, 'BLOCKED', 0.9, {y: "-=5", ease: 'Quart.easeOut'}, {scaleX: 0.85, scaleY: 0.85, alpha: 0, });
                         } else {
                             playSound('shield_break', 0.6);
                             hurtAmt = hurtAmt - shieldObj.health;
@@ -758,7 +758,7 @@ class Player {
                                     rockAnim.destroy();
                                 }
                             });
-                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y + 10, '-BROKE-', 1, {y: "+=10", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1, scaleY: 1});
+                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y + 5, '-BROKE-', 1, {y: "+=10", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1, scaleY: 1});
                             shieldObj.cleanUp(this.statuses);
                         }
                         shieldObj.animObj[1].setText(shieldObj.health);
@@ -825,7 +825,7 @@ class Player {
                     if (!this.statuses['matterReinforce'].animObj[i].origScale) {
                         this.statuses['matterReinforce'].animObj[i].origScale = this.statuses['matterReinforce'].animObj[i].scaleX;
                     }
-                    if (i == 1) {
+                    if (i === 1) {
                         wallObj.setScale(wallObj.origScale * 1.12);
                         this.scene.tweens.add({
                             targets: wallObj,
@@ -919,11 +919,26 @@ class Player {
                             messageBus.publish('tempPause', 100);
 
                             shieldObj.animObj[0].setScale(shieldObj.animObj[0].origScaleX * 2.2, shieldObj.animObj[0].scaleY);
+                            shieldObj.animObj[0].y = shieldObj.animObj[0].startY + 4;
                             this.scene.tweens.add({
                                 targets: shieldObj.animObj[0],
                                 duration: 300,
                                 scaleX: shieldObj.animObj[0].origScaleX,
                                 ease: 'Quad.easeOut',
+                            });
+                            this.scene.tweens.add({
+                                targets: shieldObj.animObj[0],
+                                duration: 75,
+                                y: shieldObj.animObj[0].y + 1,
+                                ease: 'Cubic.easeOut',
+                                onComplete: () => {
+                                    this.scene.tweens.add({
+                                        targets: shieldObj.animObj[0],
+                                        duration: 450,
+                                        y: shieldObj.animObj[0].startY,
+                                        ease: 'Quint.easeOut',
+                                    });
+                                }
                             });
 
                             shieldObj.animObj[2].setAlpha(0).setScale(0.9);

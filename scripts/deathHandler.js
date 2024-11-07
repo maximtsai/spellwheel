@@ -828,12 +828,12 @@ function playReaperPassiveAnim(enemy, customFinFunc, showDarkScreen = true) {
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop,
             scaleY: 750,
-            duration: 500 + randExtraTime,
+            duration: 495 + randExtraTime,
             onComplete: () => {
                 setupReaperArrival();
                 setFloatingDeathDepth(100010);
 
-                tweenFloatingDeath(0.75, 1, 1250, "Cubic.easeInOut", () => {
+                tweenFloatingDeath(0.75, 1, 1350, "Cubic.easeOut", () => {
                     gameVars.deathFlutterDelay = 450;
                     repeatDeathHandsRotate();
 
@@ -870,7 +870,7 @@ function playReaperPassiveAnim(enemy, customFinFunc, showDarkScreen = true) {
 
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop3,
-            duration: 320 + Math.floor(Math.random() * 30),
+            duration: 335 + Math.floor(Math.random() * 30),
             rotation: 0.12,
             ease: 'Quad.easeIn',
             x: gameConsts.width + 160,
@@ -881,7 +881,7 @@ function playReaperPassiveAnim(enemy, customFinFunc, showDarkScreen = true) {
         PhaserScene.tweens.add({
             targets: globalObjects.reaperDarkFlashTop3,
             alpha: 1,
-            duration: 450,
+            duration: 460,
             ease: 'Cubic.easeIn',
         })
 
@@ -905,7 +905,7 @@ function playReaperPassiveAnim(enemy, customFinFunc, showDarkScreen = true) {
             ease: 'Cubic.easeIn',
             scaleX: 40,
         })
-        let durAmt = 570 + randExtraTime;
+        let durAmt = 580 + randExtraTime;
         PhaserScene.tweens.add({
             delay: 10,
             targets: globalObjects.reaperDarkFlashTop,

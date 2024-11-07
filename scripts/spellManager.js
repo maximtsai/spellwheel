@@ -1832,6 +1832,7 @@ class SpellManager {
         animation1.origScaleX =  0.95 + spellMultiplier * 0.05;
         animation1.rotation = 0;
         animation1.alpha = 0;
+        animation1.startY = animation1.y;
 
         let animation2 =  this.scene.add.sprite(gameConsts.halfWidth, 175, 'spells', 'reticle.png').setScale(0.95);
         animation2.setDepth(110);

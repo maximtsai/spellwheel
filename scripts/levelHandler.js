@@ -260,7 +260,7 @@ function beginPreLevel(lvl) {
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 40, 'ui', 'magician_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 248, gameConsts.halfHeight - 180, getLangText('pre_fight_3a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth - 40, gameConsts.halfHeight +67, getLangText('pre_fight_3b'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth - 36, gameConsts.halfHeight + 80, getLangText('pre_fight_3b'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();

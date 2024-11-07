@@ -489,7 +489,7 @@ let textData4 = {
     },
     "pre_fight_3a": {
         "en_us": "\"Your skill in battle is quite\na feat, but press on further\nand doom you'll meet!\"",
-        "fr": "\"Ton skill au combat est\nbien, mais continue\net tu verras la fin!\"",
+        "fr": "\"Ton skill au combat est\nbien, mais continue et tu\nverras la fin!\"",
         "zh_tw": "\"你的戰鬥技藝非凡驚艷，\n但繼續前行會厄運將現!\"",
         "zh_cn": "\"你的战斗技艺非凡惊艳，\n但继续前行会厄运将现!\"",
         "ru": "",
@@ -497,10 +497,10 @@ let textData4 = {
         "jp": ""
     },
     "pre_fight_3b": {
-        "en_us": "My magic hums ready as\nI prepare to teach this\n\"Magician\" that neither\nriddles nor force will\nstop my journey.",
-        "fr": "Ma magie vibre, prête,\nalors que je me prépare à\napprendre à ce 'Magicien'\nque ni les énigmes ni\nla force n'arrêteront\nmon voyage.",
-        "zh_tw": "我的魔法已蓄勢待發，\n準備讓這位『魔術師』\n明白，無論是謎題還是\n實力，都無法阻止我的\n旅程。",
-        "zh_cn": "我的魔法已蓄势待发，\n准备让这位‘魔术师’\n明白，无论是谜题还是\n实力，都无法阻止我的\n旅程。",
+        "en_us": "Neither riddles nor force\nwill stop my journey.\nIt's time I teach this\n\"Magician\" a lesson.",
+        "fr": "Ni les énigmes ni la force\nn'arrêteront mon voyage.\nIl est temps que je donne\nune leçon à ce magicien.",
+        "zh_tw": "謎語和武力都無法阻止\n我的旅程，是時候給這\n個「魔術師」一點教訓了。",
+        "zh_cn": "谜语和武力都无法阻止\n我的旅程，是时候给这\n个“魔术师”一点教训了。",
         "ru": "Этот \"Волшебник\" меня достаточно насолил. Моя магия жаждет драки.",
         "es": "Este \"Mago\" me ha molestado bastante. Mi magia tiene ganas de pelear.",
         "jp": "この「マジシャン」は私を十分に苛立たせました。私の魔法は戦いを欲しがる。"

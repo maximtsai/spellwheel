@@ -12,12 +12,13 @@ function sdkLoadingStop() {
 
 function sdkShowMidgameAd(onStart, onFinish, onError) {
     // Crazygames
-    // const callbacks = {
-    //     adFinished: () => {displayBanner()},
-    //     adStarted: () => console.log("Start midgame ad (callback)"),
-    // };
+    const callbacks = {
+        adFinished: () => onFinish,
+        adError: (error) => onError,
+        adStarted: () => onStart,
+    };
     //
-    // window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
+    window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
     onFinish();
 }
 

@@ -29,7 +29,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 90 : 70;
+         this.health = gameVars.isHardMode ? 80 : 65;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
          this.attackScale = 1.25;
@@ -453,19 +453,19 @@
                  }
              });
              this.currAnim = this.addTween({
-                 delay: 400,
+                 delay: 350,
                  targets: this.sprite,
-                 scaleX: this.sprite.startScale + 0.2,
-                 scaleY: this.sprite.startScale + 0.2,
-                 duration: 600,
-                 completeDelay: 50,
+                 scaleX: this.sprite.startScale + 0.24,
+                 scaleY: this.sprite.startScale + 0.24,
+                 duration: 580,
+                 completeDelay: 20,
                  ease: 'Quart.easeOut',
                  onComplete: () => {
                      this.currAnim = this.addTween({
                          targets: this.sprite,
                          scaleX: this.sprite.startScale,
                          scaleY: this.sprite.startScale,
-                         duration: 400,
+                         duration: 350,
                          ease: 'Quart.easeIn',
                          onComplete: () => {
                              zoomTemp(1.03);
@@ -814,53 +814,9 @@
                      }
                  },
                  {
-                     name: gameVars.isHardMode ? "|15" : "|12 ",
-                     chargeAmt: 335,
-                     damage: gameVars.isHardMode ? 15 : 12,
-                     isBigMove: true,
-                     attackFinishFunction: () => {
-                         screenShake(5);
-                         zoomTemp(1.015)
-                         playSound('body_slam')
-                         let dmgEffect = poolManager.getItemFromPool('brickPattern2')
-                         if (!dmgEffect) {
-                             dmgEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
-                         }
-                         dmgEffect.setDepth(998).setScale(0.75).setAlpha(1).setVisible(true);
-                         this.addTween({
-                             targets: dmgEffect,
-                             rotation: 1,
-                             alpha: 0,
-                             duration: 800,
-                             onComplete: () => {
-                                 poolManager.returnItemToPool(dmgEffect, 'brickPattern2');
-                             }
-                         });
-                         this.addTimeout(() => {
-                             globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 23, getLangText('watch_health'), 'center');
-                             this.addTimeout(() => {
-                                 this.playerSpellCastAny = this.addSubscription('playerCastedSpell', () => {
-                                     this.addTimeout(() => {
-                                         globalObjects.textPopupManager.hideInfoText();
-                                     }, 1200);
-                                     this.playerSpellCastAny.unsubscribe();
-                                 });
-                             }, 1200)
-                         }, 1000)
-                     }
-                 },
-                 {
-                     name: "HEAL\\30",
-                     chargeAmt: 315,
-                     damage: 0,
-                     finaleFunction: () => {
-                         this.healAnim(30);
-                     }
-                 },
-                 {
-                     name: gameVars.isHardMode ? ";30" : ";25",
-                     chargeAmt: 565,
-                     damage: gameVars.isHardMode ? 30 : 25,
+                     name: gameVars.isHardMode ? ";25" : ";20",
+                     chargeAmt: 415,
+                     damage: gameVars.isHardMode ? 25 : 20,
                      isBigMove: true,
                      attackFinishFunction: () => {
                          playSound('punch');
@@ -875,6 +831,14 @@
                                  dmgEffect.destroy();
                              }
                          });
+                     }
+                 },
+                 {
+                     name: "HEAL\\25",
+                     chargeAmt: 245,
+                     damage: 0,
+                     finaleFunction: () => {
+                         this.healAnim(25);
                      }
                  },
                  {
@@ -1066,10 +1030,47 @@
                         });
                      }
                  },
+                 {
+                     name: gameVars.isHardMode ? "|15" : "|12 ",
+                     chargeAmt: 335,
+                     damage: gameVars.isHardMode ? 15 : 12,
+                     isBigMove: true,
+                     attackFinishFunction: () => {
+                         screenShake(5);
+                         zoomTemp(1.015)
+                         playSound('body_slam')
+                         let dmgEffect = poolManager.getItemFromPool('brickPattern2')
+                         if (!dmgEffect) {
+                             dmgEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY() - 120, 'spells', 'brickPattern2.png').setDepth(998).setScale(0.75);
+                         }
+                         dmgEffect.setDepth(998).setScale(0.75).setAlpha(1).setVisible(true);
+                         this.addTween({
+                             targets: dmgEffect,
+                             rotation: 1,
+                             alpha: 0,
+                             duration: 800,
+                             onComplete: () => {
+                                 poolManager.returnItemToPool(dmgEffect, 'brickPattern2');
+                             }
+                         });
+                         this.addTimeout(() => {
+                             globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 23, getLangText('watch_health'), 'center');
+                             this.addTimeout(() => {
+                                 this.playerSpellCastAny = this.addSubscription('playerCastedSpell', () => {
+                                     this.addTimeout(() => {
+                                         globalObjects.textPopupManager.hideInfoText();
+                                     }, 1200);
+                                     this.playerSpellCastAny.unsubscribe();
+                                 });
+                             }, 1200)
+                         }, 1000)
+                     }
+                 },
+
              ], [
                  {
                      name: ";999",
-                     chargeAmt: 800,
+                     chargeAmt: 950,
                      damage: 999,
                      isBigMove: true,
                      attackFinishFunction: () => {

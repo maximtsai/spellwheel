@@ -397,7 +397,7 @@ const ENABLE_KEYBOARD = true;
 
             let dragForceSqr = horizForce + vertForce;
 
-            let torqueConst = gameVars.wasTouch ? 0.0465 : 0.043;
+            let torqueConst = gameVars.wasTouch ? 0.047 : 0.0445;
             // castDisable
 
             // Using both rotation diff and mult val to calculate

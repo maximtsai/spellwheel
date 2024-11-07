@@ -29,7 +29,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 80 : 65;
+         this.health = gameVars.isHardMode ? 80 : 70;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
          this.attackScale = 1.25;
@@ -591,6 +591,8 @@
              return;
          }
         super.die();
+         globalObjects.encyclopedia.hideButton();
+         globalObjects.options.hideButton();
          if (this.rune2) {
              this.rune2.destroy();
          }
@@ -983,8 +985,8 @@
                                                                  targets: longArm,
                                                                  duration: 250,
                                                                  ease: 'Cubic.easeOut',
-                                                                 scaleX: 0.75,
-                                                                 scaleY: 0.75,
+                                                                 scaleX: 0.78,
+                                                                 scaleY: 0.78,
                                                                  alpha: 1
                                                              })
                                                              this.addTween({
@@ -1006,8 +1008,8 @@
                                                                  targets: longArm,
                                                                  duration: 250,
                                                                  ease: 'Cubic.easeOut',
-                                                                 scaleX: -0.75,
-                                                                 scaleY: 0.75,
+                                                                 scaleX: -0.78,
+                                                                 scaleY: 0.78,
                                                                  alpha: 1
                                                              })
                                                              this.addTween({

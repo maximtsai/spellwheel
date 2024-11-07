@@ -293,7 +293,7 @@
             this.timeSinceLastAttacked = -15;
             this.clearEnhancePopup();
 
-            globalObjects.textPopupManager.setInfoText(gameConsts.width, 255, getLangText('level1_tut_b'), 'right');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, 253, getLangText('level1_tut_b'), 'right');
             messageBus.publish('setSlowMult', 0.25, 15);
             let glowBar = this.addSprite(gameConsts.halfWidth, 320, 'misc', 'shadow_bar.png').setDepth(9980).setAlpha(0).setScale(7);
             this.addTween({
@@ -426,9 +426,54 @@
          super.setHealth(newHealth);
          let prevHealthPercent = this.prevHealth / this.healthMax;
          let currHealthPercent = this.health / this.healthMax;
-         if (currHealthPercent == 0) {
+         if (currHealthPercent === 0) {
              // dead, can't do anything
              return;
+         }
+
+         if (currHealthPercent <= 0.5 && this.fighting && !this.tilted) {
+             this.tilted = true;
+             this.setDefaultSprite('dummy_angry_tilted.png', null, true);
+             let ouch1 = this.addImage(this.sprite.x + 10, this.sprite.y - 10, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(0.7);
+             let ouch2 = this.addImage(this.sprite.x + 10, this.sprite.y - 5, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(1.1);
+             this.addTween({
+                 targets: ouch1,
+                 x: "+=55",
+                 y: "-=60",
+                 ease: 'Quart.easeOut',
+                 duration: 700
+             })
+             this.addTween({
+                 targets: ouch1,
+                 scaleX: 0,
+                 scaleY: 0,
+                 ease: 'Quad.easeIn',
+                 duration: 700
+             })
+             this.addTween({
+                 targets: ouch1,
+                 rotation: "-=5",
+                 duration: 700
+             })
+             this.addTween({
+                 targets: ouch2,
+                 x: "+=110",
+                 y: "-=5",
+                 ease: 'Quart.easeOut',
+                 duration: 850
+             })
+             this.addTween({
+                 targets: ouch2,
+                 scaleX: 0,
+                 scaleY: 0,
+                 ease: 'Quad.easeIn',
+                 duration: 850
+             })
+             this.addTween({
+                 targets: ouch2,
+                 rotation: "+=5.5",
+                 duration: 850
+             })
          }
 
          if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.999) {
@@ -497,6 +542,7 @@
                                              this.setDefaultSprite('dummy_angry.png', 0.95);
                                              this.brows.destroy();
                                              this.brows = null;
+                                             this.fighting = true;
                                          }
                                      });
                                  }
@@ -728,9 +774,11 @@
                      ease: "Quart.easeIn",
                      duration: 550,
                      onComplete: () => {
+                         this.tilted = false;
+                         this.setDefaultSprite('dummy_angry.png', null, true);
                          playSound('magic', 0.6);
                          this.heal(amt);
-                         messageBus.publish('animateHealNum', this.x, this.y, '+' + amt, 0.5 + Math.sqrt(this.healthMax) * 0.2);
+                         messageBus.publish('animateHealNum', this.x, this.y + 30, '+' + amt, 0.5 + Math.sqrt(this.healthMax) * 0.2);
                          if (!this.healSprite) {
                              this.healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(0.9).setDepth(99).setAlpha(1);
                          }
@@ -803,7 +851,7 @@
                      }
                  },
                  {
-                     name: "HEAL\\30",
+                     name: "HEAL\\35",
                      chargeAmt: 315,
                      damage: 0,
                      startFunction: () => {
@@ -836,8 +884,8 @@
                      }
                  },
                  {
-                     name: "HEAL\\25",
-                     chargeAmt: 245,
+                     name: "HEAL\\20",
+                     chargeAmt: 205,
                      damage: 0,
                      finaleFunction: () => {
                          this.healAnim(25);
@@ -1072,7 +1120,7 @@
              ], [
                  {
                      name: ";999",
-                     chargeAmt: 950,
+                     chargeAmt: 999,
                      damage: 999,
                      isBigMove: true,
                      attackFinishFunction: () => {

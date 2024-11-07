@@ -73,18 +73,7 @@
     }
 
     reset() {
-        this.marketHistory = [];
-        this.money = 0;
-        this.income = 1;
-        this.stocks = 0;
-        this.debt = 0;
-        this.interest = 0;
-        this.upgrades = {};
-        this.title = "Junior Money Printer Operator";
-        this.sentimentShort = 25;
-        this.sentimentLong = 25;
-
-        this.totalStocksSold = 0;
+        // gameVars.timeScale
     }
 
 }

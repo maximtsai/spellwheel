@@ -293,7 +293,7 @@
             this.timeSinceLastAttacked = -15;
             this.clearEnhancePopup();
 
-            globalObjects.textPopupManager.setInfoText(gameConsts.width, 261, getLangText('level1_tut_b'), 'right');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, 255, getLangText('level1_tut_b'), 'right');
             messageBus.publish('setSlowMult', 0.25, 15);
             let glowBar = this.addSprite(gameConsts.halfWidth, 320, 'misc', 'shadow_bar.png').setDepth(9980).setAlpha(0).setScale(7);
             this.addTween({

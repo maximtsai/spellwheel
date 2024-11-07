@@ -778,7 +778,7 @@
                          this.setDefaultSprite('dummy_angry.png', null, true);
                          playSound('magic', 0.6);
                          this.heal(amt);
-                         messageBus.publish('animateHealNum', this.x, this.y, '+' + amt, 0.5 + Math.sqrt(this.healthMax) * 0.2);
+                         messageBus.publish('animateHealNum', this.x, this.y + 30, '+' + amt, 0.5 + Math.sqrt(this.healthMax) * 0.2);
                          if (!this.healSprite) {
                              this.healSprite = this.addImage(gameConsts.halfWidth, this.y - 90, 'misc', 'heal.png').setScale(0.9).setDepth(99).setAlpha(1);
                          }
@@ -851,7 +851,7 @@
                      }
                  },
                  {
-                     name: "HEAL\\30",
+                     name: "HEAL\\35",
                      chargeAmt: 315,
                      damage: 0,
                      startFunction: () => {
@@ -884,8 +884,8 @@
                      }
                  },
                  {
-                     name: "HEAL\\25",
-                     chargeAmt: 245,
+                     name: "HEAL\\20",
+                     chargeAmt: 205,
                      damage: 0,
                      finaleFunction: () => {
                          this.healAnim(25);
@@ -1120,7 +1120,7 @@
              ], [
                  {
                      name: ";999",
-                     chargeAmt: 950,
+                     chargeAmt: 999,
                      damage: 999,
                      isBigMove: true,
                      attackFinishFunction: () => {

@@ -511,8 +511,8 @@ let textData2 = {
         "jp": "「これは私の盾、私の盾です! 父の兄の叔母の祖父のいとこの友人の隣人からの家宝ですか!!」"
     },
     "pre_fight_1b": {
-        "en_us": "I have no time to barter\nwith this creature, and I\nmust take every resource\nI can get.",
-        "fr": "Je n'ai pas le temps de\nnégocier avec ce monstre, je\ndois prendre toutes les\nressources que je peux obtenir.",
+        "en_us": "I can't waste time bartering\nwith this creature, but I\nstill need that shield of his\nfor the journey.",
+        "fr": "Je ne peux pas perdre de\ntemps à marchander avec\ncette créature, mais j'ai\ntoujours besoin de son bouclier\npour le voyage.",
         "zh_tw": "我沒有時間與這個怪物進\n行討價還價。我必須拿走\n一切能得到的資源。",
         "zh_cn": "我没有时间与这个怪物进\n行讨价还价。我必須拿走\n一切能得到的資源。",
         "ru": "Нет времени на торг, и я должен использовать все ресурсы, которые я могу достать.",
@@ -520,17 +520,17 @@ let textData2 = {
         "jp": "物々交換する時間はないし、手に入る限りの資源を奪わなければならない。"
     },
     "pre_fight_2a": {
-        "en_us": "The forest makes me feel uneasy.\nIs something watching me?",
-        "fr": "La forêt me met mal à l'aise.\nQuelque chose m'observe-t-il ?",
-        "zh_tw": "森林讓我感到不安。\n有什麼東西在看著我嗎？",
-        "zh_cn": "这片森林让我感到不安。\n有什么东西在看着我吗？",
+        "en_us": "This creaking forest leaves me restless.\nIs something watching me?",
+        "fr": "Cette forêt grinçante me laisse agité.\nQuelque chose m'observe-t-il ?",
+        "zh_tw": "這片森林讓我心神不寧。\n有什麼東西在看著我嗎？",
+        "zh_cn": "这片森林让我心神不宁。\n有什么东西在看着我吗？",
         "ru": "Лес заставляет меня чувствовать себя неуютно.\nЧто-то наблюдает за мной?",
         "es": "El bosque me inquieta.\n¿Hay algo observándome?",
         "jp": "森は不安を感じさせます。\n何かが私を監視しているのでしょうか？"
     },
     "pre_fight_3_5a": {
-        "en_us": "I've come across a statue by the roadside\nthat is radiating a strange aura.\nSomething about its design taunts me.\nPerhaps I should test my newly acquired\nmagic on it.",
-        "fr": "Je suis tombé sur une statue au bord de la\nroute qui dégage une aura étrange.\nQuelque chose dans sa conception me nargue.\nPeut-être devrais-je tester ma magie\nnouvellement acquise dessus.",
+        "en_us": "I've come across a statue with a strange aura.\nSomething about it taunts me.\n\nPerhaps I should test my newly acquired\nmagic on it.",
+        "fr": "Je suis tombé sur une statue avec une aura\nétrange. Quelque chose en elle me nargue.\n\nJe devrais peut-être tester ma magie\nnouvellement acquise sur elle.",
         "zh_tw": '我在路邊看到一座雕像。這雕像好像在\n散發一個奇異的氣息，讓我感到不适。\n\n也許我該在它身上測試我新獲得的法術。',
         "zh_cn": '我在路边看到一座雕像。这雕像好像在\n散发一个奇异的气息，让我感到不适。\n\n也许我该在它身上测试我新获得的法术。',
         "ru": "",
@@ -565,7 +565,7 @@ let textData2 = {
         "jp": ""
     },
     "pre_fight_5a": {
-        "en_us": "No matter where I go, this wall always\nseems to be blocking the way.",
+        "en_us": "No matter where I go, this wall always\nseems to be in the way.",
         "fr": "Où que j’aille, ce mur semble toujours\nme barrer la route.",
         "zh_tw": "無論我走到哪裡，這堵牆似乎總是擋住了\n去路。",
         "zh_cn": "无论我走到哪里，这堵墙似乎总是挡住了\n去路。",

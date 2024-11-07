@@ -34,6 +34,7 @@
          this.pullbackScale = 0.78;
          this.attackScale = 1.25;
          this.extrasOnDie = [];
+         this.finalArms = [];
      }
 
      initSpriteAnim(scale) {
@@ -522,10 +523,11 @@
                              shinePattern.setPosition(this.x, this.y).setScale(this.sprite.startScale + 0.25).setDepth(-1);
                              this.addTween({
                                  targets: shinePattern,
-                                 scaleX: this.sprite.startScale * 0.5,
-                                 scaleY: this.sprite.startScale * 0.5,
+                                 scaleX: this.sprite.startScale * 0.7,
+                                 scaleY: this.sprite.startScale * 0.7,
                                  duration: 1000,
-                                 ease: 'Cubic.easeIn'
+                                 easeParams: [0.5],
+                                 ease: 'Back.easeIn'
                              });
                              this.addTween({
                                  targets: shinePattern,
@@ -600,6 +602,11 @@
             for (let i = 0; i < this.extrasOnDie.length; i++) {
                 this.extrasOnDie[i].destroy();
             }
+         }
+         if (this.finalArms) {
+             for (let i = 0; i < this.finalArms.length; i++) {
+                 this.finalArms[i].destroy();
+             }
          }
          if (this.spaceTween) {
              this.spaceTween.stop();
@@ -888,8 +895,8 @@
                         fadeAwaySound(this.bgMusic, 3500);
                         let blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(-5).setAlpha(0);
                         let spaceBG = this.addImage(gameConsts.halfWidth, this.sprite.y, 'backgrounds', 'star.png').setDepth(5).setAlpha(0).setScale(2.2).setOrigin(0.5, 0.53);
-                        let ascendedDummy = this.addImage(this.sprite.x, this.sprite.y, 'dummyenemy', 'dummy_ascended.png').setDepth(5).setAlpha(0).setScale(this.sprite.scaleX);
-                         let ascendedDummyEyes = this.addImage(this.sprite.x, this.sprite.y - 27, 'dummyenemy', 'scary_eyes2.png').setDepth(5).setAlpha(0).setScale(this.sprite.scaleX * 0.5).setOrigin(0.5, 0.48);
+                        let ascendedDummy = this.addImage(this.sprite.x, this.sprite.y, 'dummyenemy', 'dummy_ascended.png').setDepth(8).setAlpha(0).setScale(this.sprite.scaleX);
+                         let ascendedDummyEyes = this.addImage(this.sprite.x, this.sprite.y - 27, 'dummyenemy', 'scary_eyes2.png').setDepth(8).setAlpha(0).setScale(this.sprite.scaleX * 0.5).setOrigin(0.5, 0.48);
                          this.spaceTween = this.addTween({
                              targets: spaceBG,
                              rotation: "+=6.281",
@@ -986,7 +993,7 @@
                                                      duration: 550,
                                                  })
 
-                                                let dummyShadow = this.addImage(this.sprite.x, this.sprite.y, 'misc', 'shadow_circle.png').setScale(3.5).setDepth(5);
+                                                let dummyShadow = this.addImage(this.sprite.x, this.sprite.y, 'misc', 'shadow_circle.png').setScale(3.5).setDepth(7);
                                                  this.addTween({
                                                      targets: dummyShadow,
                                                      duration: 550,
@@ -999,7 +1006,54 @@
                                                      targets: [blackpulse1, dummyShadow],
                                                      duration: 550,
                                                      alpha: 0,
+                                                     completeDelay: 500,
                                                      onComplete: () => {
+                                                         playSound('ringknell', 0.9)
+                                                         for (let i = 0; i < 4; i++) {
+                                                             let startRot = 0.5;
+                                                             let goalRot = 1.0 + 0.43 * i;
+                                                             let longArm = this.addImage(this.x, this.y + 24, 'deathfinal', 'long_arm.png').setRotation(startRot).setOrigin(0.5, 0.92).setAlpha(0.2).setDepth(ascendedDummy.depth - 1);
+                                                             this.finalArms.push(longArm);
+                                                             longArm.goalRot = goalRot;
+                                                             this.addTween({
+                                                                 targets: longArm,
+                                                                 duration: 250,
+                                                                 ease: 'Cubic.easeOut',
+                                                                 scaleX: 0.75,
+                                                                 scaleY: 0.75,
+                                                                 alpha: 1
+                                                             })
+                                                             this.addTween({
+                                                                 delay: 150 - i * 50,
+                                                                 targets: longArm,
+                                                                 duration: 900 + i * 280,
+                                                                 rotation: goalRot,
+                                                                 ease: 'Cubic.easeInOut'
+                                                             })
+                                                         }
+
+                                                         for (let i = 0; i < 4; i++) {
+                                                             let startRot = -0.5;
+                                                             let goalRot = -1.0 - 0.43 * i;
+                                                             let longArm = this.addImage(this.x, this.y + 24, 'deathfinal', 'long_arm.png').setRotation(startRot).setOrigin(0.5, 0.92).setScale(-0.3, 0.3).setAlpha(0.2).setDepth(ascendedDummy.depth - 1);
+                                                             this.finalArms.push(longArm);
+                                                             longArm.goalRot = goalRot;
+                                                             this.addTween({
+                                                                 targets: longArm,
+                                                                 duration: 250,
+                                                                 ease: 'Cubic.easeOut',
+                                                                 scaleX: -0.75,
+                                                                 scaleY: 0.75,
+                                                                 alpha: 1
+                                                             })
+                                                             this.addTween({
+                                                                 delay: 150 - i * 50,
+                                                                 targets: longArm,
+                                                                 duration: 900 + i * 280,
+                                                                 rotation: goalRot,
+                                                                 ease: 'Cubic.easeInOut'
+                                                             })
+                                                         }
                                                      }
                                                  });
                                             }

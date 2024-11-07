@@ -673,7 +673,6 @@
                                     onComplete: () => {
                                         victoryText.destroy();
                                         banner.destroy();
-                                        gameVars.ignoreNextAd = true;
                                         beginPreLevel(this.level + 1);
                                         this.destroy();
                                     }

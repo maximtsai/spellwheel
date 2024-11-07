@@ -1137,132 +1137,132 @@ function handleReaperDialog(level = 0, onComplete) {
     let reaperDialog = [];
     let reaperFuncList = [];
     switch(level) {
-        case 1:
-            if (onComplete) {
-                onComplete();
-            }
-            return;
-            break;
-        case 2:
-            reaperDialog = [
-                getLangText('death2a'),
-                getLangText('death2b'),
-                getLangText('death2c'),
+    case 1:
+        if (onComplete) {
+            onComplete();
+        }
+        return;
+        break;
+    case 2:
+        reaperDialog = [
+            getLangText('death2a'),
+            getLangText('death2b'),
+            getLangText('death2c'),
             ];
-            break;
-        case 3:
-            reaperDialog = [
-                getLangText('death3a'),
-                getLangText('death3b'),
-                getLangText('death3c'),
-            ];
-            break;
-        case 4:
-            reaperDialog = [
-                getLangText('death4b'),
-                getLangText('death4c'),
-                getLangText('death4d'),
-            ];
-            break;
-        case 5:
-            reaperDialog = [
-                getLangText('death_statue1'),
-                getLangText('death_statue2'),
-                getLangText('death_statue3'),
-            ];
-            reaperFuncList = [null, null, () => {
-                messageBus.publish('lift_statue');
-            }]
-            break;
-        case 6:
-            reaperDialog = [
-                getLangText('death5demoa'),
-                getLangText('death5demob'),
-                getLangText('death5democ'),
-                getLangText('death5demod'),
-            ];
-            break;
-        case 7:
-            reaperDialog = [
-                getLangText('death6a'),
-                getLangText('death6b'),
-            ];
-            reaperFuncList = [() => {
-                stopDeathFlutterAnim();
-                tweenFloatingDeath(0.75, 0, 400, 'Quad.easeOut', () => {
-                    hideHandsTemp();
-                    // setFloatingDeathVisible(false);
-                    globalObjects.floatingDeath.visible = true;
-                    globalObjects.floatingDeath2.visible = true;
-                    globalObjects.deathLeftHand.visible = false;
-                    globalObjects.deathRightHand.visible = false;
-                    globalObjects.floatingDeath.alpha = 0.15;
-                    globalObjects.floatingDeath2.alpha = 0.15;
-                    globalObjects.floatingDeath.setFrame('max_death_1a_angry.png');
-                    globalObjects.floatingDeath2.setFrame('max_death_1b_angry.png');
-                    globalObjects.floatingDeath.fakeAlpha = 1;
-                    globalObjects.floatingDeath2.fakeAlpha = 1;
-                    gameVars.deathFlutterDelay = 350;
-                    repeatDeathFlutterAnimation(0);
-                });
-                // setFloatingDeathVisible(true, false)
+        break;
+    case 3:
+        reaperDialog = [
+            getLangText('death3a'),
+            getLangText('death3b'),
+            getLangText('death3c'),
+        ];
+        break;
+    case 4:
+        reaperDialog = [
+            getLangText('death4b'),
+            getLangText('death4c'),
+            getLangText('death4d'),
+        ];
+        break;
+    case 5:
+        reaperDialog = [
+            getLangText('death_statue1'),
+            getLangText('death_statue2'),
+            getLangText('death_statue3'),
+        ];
+        reaperFuncList = [null, null, () => {
+            messageBus.publish('lift_statue');
+        }]
+        break;
+    case 6:
+        reaperDialog = [
+            getLangText('death5demoa'),
+            getLangText('death5demob'),
+            getLangText('death5democ'),
+            getLangText('death5demod'),
+        ];
+        break;
+    case 7:
+        reaperDialog = [
+            getLangText('death6a'),
+            getLangText('death6b'),
+        ];
+        reaperFuncList = [() => {
+            stopDeathFlutterAnim();
+            tweenFloatingDeath(0.75, 0, 400, 'Quad.easeOut', () => {
+                hideHandsTemp();
+                // setFloatingDeathVisible(false);
+                globalObjects.floatingDeath.visible = true;
+                globalObjects.floatingDeath2.visible = true;
+                globalObjects.deathLeftHand.visible = false;
+                globalObjects.deathRightHand.visible = false;
+                globalObjects.floatingDeath.alpha = 0.15;
+                globalObjects.floatingDeath2.alpha = 0.15;
+                globalObjects.floatingDeath.setFrame('max_death_1a_angry.png');
+                globalObjects.floatingDeath2.setFrame('max_death_1b_angry.png');
+                globalObjects.floatingDeath.fakeAlpha = 1;
+                globalObjects.floatingDeath2.fakeAlpha = 1;
+                gameVars.deathFlutterDelay = 350;
+                repeatDeathFlutterAnimation(0);
+            });
+            // setFloatingDeathVisible(true, false)
 
-            }, undefined]
-            break;
-        case 8:
-            reaperDialog = [
-                getLangText('death7a'),
-                getLangText('death7b'),
-                getLangText('death7c'),
-                getLangText('death7d'),
-                getLangText('death7e'),
-                getLangText('death7f'),
-            ];
-            reaperFuncList = [() => {
-                globalObjects.bannerTextManager.speedUpText();
-            }, () => {
-                playSound('slice_in', 0.4);
-                playSound('enemy_attack', 0.68)
+        }, undefined]
+        break;
+    case 8:
+        reaperDialog = [
+            getLangText('death7a'),
+            getLangText('death7b'),
+            getLangText('death7c'),
+            getLangText('death7d'),
+            getLangText('death7e'),
+            getLangText('death7f'),
+        ];
+        reaperFuncList = [() => {
+            globalObjects.bannerTextManager.speedUpText();
+        }, () => {
+            playSound('slice_in', 0.4);
+            playSound('enemy_attack', 0.68)
+            let darkBG = getBackgroundBlackout();
+            darkBG.setDepth(100).setAlpha(0.5).setVisible(true);
+            screenShakeLong(2);
+            PhaserScene.tweens.add({
+                targets: darkBG,
+                alpha: 0,
+                duration: 3000,
+                ease: 'Quart.easeOut'
+            })
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130);
+
+        },
+            () => {
+                playSound('enemy_attack_2', 0.68);
+            },
+            () => {
                 let darkBG = getBackgroundBlackout();
-                darkBG.setDepth(100).setAlpha(0.5).setVisible(true);
-                screenShakeLong(2);
+                darkBG.setDepth(100).setAlpha(0.4).setVisible(true);
                 PhaserScene.tweens.add({
                     targets: darkBG,
                     alpha: 0,
-                    duration: 3000,
-                    ease: 'Quart.easeOut'
+                    duration: 4000,
                 })
-                globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130);
-
+                globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10);
             },
-                () => {
-                    playSound('enemy_attack_2', 0.68);
-                },
-                () => {
-                    let darkBG = getBackgroundBlackout();
-                    darkBG.setDepth(100).setAlpha(0.4).setVisible(true);
-                    PhaserScene.tweens.add({
-                        targets: darkBG,
-                        alpha: 0,
-                        duration: 4000,
-                    })
-                    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10);
-                },
 
-            ]
-            break;
-        case 9:
-            reaperDialog = [
-                getLangText('death8a'),
-                getLangText('death8b'),
-            ];
-            break;
+        ]
+        break;
+    case 9:
+        reaperDialog = [
+            getLangText('death8a'),
+            getLangText('death8b'),
+        ];
+        break;
 
-        default:
-            if (onComplete) {
-                onComplete();
-            }
-            return;
+    default:
+        if (onComplete) {
+            onComplete();
+        }
+        return;
     }
     playReaperDialog(reaperDialog, reaperFuncList, onComplete);
 }

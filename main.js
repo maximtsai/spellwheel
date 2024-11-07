@@ -115,23 +115,10 @@ let url1 = 'localhost';// 'crazygames';
 let url2 = 'maximtsai';// 'localhost';
 let url3 = 'adayofjoy';// '1001juegos';
 let url4 = 'classic.itch';// '1001juegos';
-let sdkIsLoaded = false;
-let preloadCompleted = false;
-
-async function loadSDK() {
-    await window.CrazyGames.SDK.init().then(() => {
-        sdkIsLoaded = true;
-        if (preloadCompleted) {
-            PhaserScene.load.start();
-            sdkLoadingStart();
-        }
-    });
-}
-loadSDK();
 
 function preload ()
 {
-    PhaserScene = this;
+    sdkLoadingStart();
     gameVars.latestLevel = parseInt(sdkGetItem("latestLevel"));
     gameVars.maxLevel = parseInt(sdkGetItem("maxLevel"));
     if (!gameVars.latestLevel) {
@@ -159,7 +146,9 @@ function preload ()
     }, 100)
 }
 
-function create() {
+function create ()
+{
+    sdkLoadingStop()
     if ((!document.location.href.includes(url1) && !document.location.href.includes(url2) && !document.location.href.includes(url4))) {
         // Stops execution of rest of game
         let gameDiv = document.getElementById('preload-notice');
@@ -174,7 +163,6 @@ function create() {
 
 function onPreloadComplete (scene)
 {
-    preloadCompleted = true;
     globalObjects.tempBG = scene.add.sprite(0, 0, 'blackPixel').setScale(1000, 1000).setDepth(-1);
 
     setupMouseInteraction(scene);
@@ -186,14 +174,10 @@ function onPreloadComplete (scene)
     loadFileList(scene, fontFiles, 'bitmap_font');
     loadFileList(scene, videoFiles, 'video');
 
-    if (sdkIsLoaded) {
-        scene.load.start();
-        sdkLoadingStart();
-    }
+    scene.load.start();
 }
 
 function onLoadComplete(scene) {
-    sdkLoadingStop();
     initializeSounds(scene);
     initializeMiscLocalstorage();
     setupGame(scene);

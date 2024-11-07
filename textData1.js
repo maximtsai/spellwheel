@@ -823,6 +823,87 @@ let textData = {
     "rune_void_rune_protect": "NEGATION SHIELD",
     "rune_void_rune_reinforce": "REMAKE SELF",
     "rune_void_rune_unload": "UN-MAKE",
+    "matter_short": {
+        "en_us": "CONTROLS HEAVY MATTER",
+        "fr": "CONTRÔLE LA MATIÈRE LOURDE.",
+        "zh_tw": "控制重物質",
+        "zh_cn": "控制重物质",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "energy_short": {
+        "en_us": "CONTROLS RAW ENERGY",
+        "fr": "CONTRÔLE DE L'ÉNERGIE BRUTE",
+        "zh_tw": "控制原始能量",
+        "zh_cn": "控制原始能量",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "time_short": {
+        "en_us": "CONTROLS TEMPORAL POWER",
+        "fr": "CONTRÔLE PUISSANCE TEMPORELLE",
+        "zh_tw": "控制時間威力",
+        "zh_cn": "控制时间威力",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "void_short": {
+        "en_us": "CONTROLS DARK EMPTY SPACE",
+        "fr": "CONTROLS ESPACE VIDE SOMBRE",
+        "zh_tw": "控制黑暗空曠的空間",
+        "zh_cn": "控制黑暗空旷的空间",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "strike_short": {
+        "en_us": "ATTACKS THE ENEMY",
+        "fr": "ATTAQUE L'ENNEMI",
+        "zh_tw": "攻擊敵人",
+        "zh_cn": "攻击敌人",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "enhance_short": {
+        "en_us": "BOOSTS YOUR NEXT ATTACK",
+        "fr": "AMÉLIORE LA PROCHAINE ATTAQUE",
+        "zh_tw": "增強你的下一次攻擊",
+        "zh_cn": "增强你的下一次攻击",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "shield_short": {
+        "en_us": "BLOCKS ENEMY ATTACKS",
+        "fr": "BLOQUE LES ATTAQUES ENNEMIS",
+        "zh_tw": "擋住敵人攻擊",
+        "zh_cn": "挡住敌人攻击",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "body_short": {
+        "en_us": "CHANGES YOUR BODY",
+        "fr": "CHANGE VOTRE CORPS",
+        "zh_tw": "改變你的身體",
+        "zh_cn": "改变你的身体",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "ultimate_short": {
+        "en_us": "BIG FANCY SPELLS",
+        "fr": "GRANDS SORTS PUISSANTS",
+        "zh_tw": "強大的法術",
+        "zh_cn": "强大的法术",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
 }
 
 function setLanguage(lang) {

@@ -177,7 +177,7 @@ function clearMenuButtons() {
 }
 
 function gotoMainMenu() {
-    sdkGameplayStop();
+    sdkGameplayStart();
     globalObjects.magicCircle.enableMovement();
     if (gameVars.isInMainMenu) {
         return;
@@ -1277,6 +1277,7 @@ function updateMenuLanguage() {
 
 
 function showLevelSelectScreen(){
+    sdkGameplayStop();
     globalObjects.encyclopedia.hideButton();
     globalObjects.options.hideButton();
     let clickBlocker = createGlobalClickBlocker(false);
@@ -1631,6 +1632,7 @@ function showWishlistPage() {
 }
 
 function closeLevelSelectScreen() {
+    sdkGameplayStart();
     hideGlobalClickBlocker();
     globalObjects.encyclopedia.showButton();
     globalObjects.options.showButton();

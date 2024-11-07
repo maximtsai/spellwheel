@@ -19,11 +19,11 @@ function sdkShowMidgameAd(onStart, onFinish, onError) {
     };
     //
     window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
-    onFinish();
+    // onFinish();
 }
 
 function sdkShowHappyTime() {
-
+    window.CrazyGames.SDK.game.happytime();
 }
 
 let canCallBanner = false;

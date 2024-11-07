@@ -669,7 +669,7 @@
                                     targets: [victoryText, banner],
                                     alpha: 0,
                                     duration: 800,
-                                    completeDelay: 200,
+                                    completeDelay: 400,
                                     onComplete: () => {
                                         victoryText.destroy();
                                         banner.destroy();

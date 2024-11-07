@@ -293,7 +293,7 @@
             this.timeSinceLastAttacked = -15;
             this.clearEnhancePopup();
 
-            globalObjects.textPopupManager.setInfoText(gameConsts.width, 255, getLangText('level1_tut_b'), 'right');
+            globalObjects.textPopupManager.setInfoText(gameConsts.width, 253, getLangText('level1_tut_b'), 'right');
             messageBus.publish('setSlowMult', 0.25, 15);
             let glowBar = this.addSprite(gameConsts.halfWidth, 320, 'misc', 'shadow_bar.png').setDepth(9980).setAlpha(0).setScale(7);
             this.addTween({
@@ -426,9 +426,54 @@
          super.setHealth(newHealth);
          let prevHealthPercent = this.prevHealth / this.healthMax;
          let currHealthPercent = this.health / this.healthMax;
-         if (currHealthPercent == 0) {
+         if (currHealthPercent === 0) {
              // dead, can't do anything
              return;
+         }
+
+         if (currHealthPercent <= 0.5 && this.fighting && !this.tilted) {
+             this.tilted = true;
+             this.setDefaultSprite('dummy_angry_tilted.png', null, true);
+             let ouch1 = this.addImage(this.sprite.x + 10, this.sprite.y - 10, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(0.7);
+             let ouch2 = this.addImage(this.sprite.x + 10, this.sprite.y - 5, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(1.1);
+             this.addTween({
+                 targets: ouch1,
+                 x: "+=55",
+                 y: "-=60",
+                 ease: 'Quart.easeOut',
+                 duration: 700
+             })
+             this.addTween({
+                 targets: ouch1,
+                 scaleX: 0,
+                 scaleY: 0,
+                 ease: 'Quad.easeIn',
+                 duration: 700
+             })
+             this.addTween({
+                 targets: ouch1,
+                 rotation: "-=5",
+                 duration: 700
+             })
+             this.addTween({
+                 targets: ouch2,
+                 x: "+=110",
+                 y: "-=5",
+                 ease: 'Quart.easeOut',
+                 duration: 850
+             })
+             this.addTween({
+                 targets: ouch2,
+                 scaleX: 0,
+                 scaleY: 0,
+                 ease: 'Quad.easeIn',
+                 duration: 850
+             })
+             this.addTween({
+                 targets: ouch2,
+                 rotation: "+=5.5",
+                 duration: 850
+             })
          }
 
          if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.999) {
@@ -497,6 +542,7 @@
                                              this.setDefaultSprite('dummy_angry.png', 0.95);
                                              this.brows.destroy();
                                              this.brows = null;
+                                             this.fighting = true;
                                          }
                                      });
                                  }
@@ -728,6 +774,8 @@
                      ease: "Quart.easeIn",
                      duration: 550,
                      onComplete: () => {
+                         this.tilted = false;
+                         this.setDefaultSprite('dummy_angry.png', null, true);
                          playSound('magic', 0.6);
                          this.heal(amt);
                          messageBus.publish('animateHealNum', this.x, this.y, '+' + amt, 0.5 + Math.sqrt(this.healthMax) * 0.2);

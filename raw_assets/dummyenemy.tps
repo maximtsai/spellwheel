@@ -235,6 +235,7 @@
             </struct>
             <key type="filename">dummyenemy/dummy.png</key>
             <key type="filename">dummyenemy/dummy_angry.png</key>
+            <key type="filename">dummyenemy/dummy_angry_tilted.png</key>
             <key type="filename">dummyenemy/dummy_ascended.png</key>
             <key type="filename">dummyenemy/dummy_tired.png</key>
             <key type="filename">dummyenemy/dummy_w_eyes.png</key>

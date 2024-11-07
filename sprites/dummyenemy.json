@@ -4,8 +4,8 @@
 			"image": "sprites/dummyenemy-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 982,
-				"h": 1122
+				"w": 1008,
+				"h": 1121
 			},
 			"scale": 1,
 			"frames": [
@@ -35,56 +35,6 @@
 					}
 				},
 				{
-					"filename": "dummy_fist_lines.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 363,
-						"h": 300
-					},
-					"spriteSourceSize": {
-						"x": 61,
-						"y": 47,
-						"w": 241,
-						"h": 20
-					},
-					"frame": {
-						"x": 549,
-						"y": 1,
-						"w": 241,
-						"h": 20
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "picketsign_hover.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 197,
-						"h": 260
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 7,
-						"w": 189,
-						"h": 252
-					},
-					"frame": {
-						"x": 792,
-						"y": 1,
-						"w": 189,
-						"h": 252
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "dummy_broken.png",
 					"rotated": false,
 					"trimmed": true,
@@ -100,9 +50,34 @@
 					},
 					"frame": {
 						"x": 549,
-						"y": 23,
+						"y": 1,
 						"w": 239,
 						"h": 219
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "picketsign_press.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 197,
+						"h": 260
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 6,
+						"w": 197,
+						"h": 253
+					},
+					"frame": {
+						"x": 790,
+						"y": 1,
+						"w": 197,
+						"h": 253
 					},
 					"anchor": {
 						"x": 0.5,
@@ -135,32 +110,7 @@
 					}
 				},
 				{
-					"filename": "scythe.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 210,
-						"h": 210
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 4,
-						"w": 205,
-						"h": 206
-					},
-					"frame": {
-						"x": 537,
-						"y": 244,
-						"w": 205,
-						"h": 206
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "picketsign_press.png",
+					"filename": "picketsign_hover.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -168,41 +118,16 @@
 						"h": 260
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 6,
-						"w": 197,
-						"h": 253
+						"x": 6,
+						"y": 7,
+						"w": 189,
+						"h": 252
 					},
 					"frame": {
-						"x": 744,
-						"y": 255,
-						"w": 197,
-						"h": 253
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "cloud1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 195,
-						"h": 164
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 1,
+						"x": 537,
+						"y": 222,
 						"w": 189,
-						"h": 162
-					},
-					"frame": {
-						"x": 1,
-						"y": 294,
-						"w": 189,
-						"h": 162
+						"h": 252
 					},
 					"anchor": {
 						"x": 0.5,
@@ -224,8 +149,8 @@
 						"h": 252
 					},
 					"frame": {
-						"x": 192,
-						"y": 294,
+						"x": 728,
+						"y": 256,
 						"w": 180,
 						"h": 252
 					},
@@ -235,24 +160,24 @@
 					}
 				},
 				{
-					"filename": "dummy_tired.png",
+					"filename": "dagger.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 163,
-						"h": 320
+						"w": 111,
+						"h": 176
 					},
 					"spriteSourceSize": {
 						"x": 7,
-						"y": 74,
-						"w": 156,
-						"h": 246
+						"y": 0,
+						"w": 96,
+						"h": 176
 					},
 					"frame": {
-						"x": 374,
-						"y": 294,
-						"w": 156,
-						"h": 246
+						"x": 910,
+						"y": 256,
+						"w": 96,
+						"h": 176
 					},
 					"anchor": {
 						"x": 0.5,
@@ -260,24 +185,24 @@
 					}
 				},
 				{
-					"filename": "super_dummy_rightarm_stretch.png",
+					"filename": "bird.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 295,
-						"h": 305
+						"w": 84,
+						"h": 75
 					},
 					"spriteSourceSize": {
-						"x": 127,
+						"x": 9,
 						"y": 0,
-						"w": 168,
-						"h": 177
+						"w": 70,
+						"h": 66
 					},
 					"frame": {
-						"x": 1,
-						"y": 458,
-						"w": 168,
-						"h": 177
+						"x": 910,
+						"y": 434,
+						"w": 70,
+						"h": 66
 					},
 					"anchor": {
 						"x": 0.5,
@@ -285,49 +210,49 @@
 					}
 				},
 				{
-					"filename": "super_dummy_leftarm_stretch.png",
+					"filename": "dummybrows.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 295,
-						"h": 305
+						"w": 68,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 66,
+						"h": 30
+					},
+					"frame": {
+						"x": 910,
+						"y": 502,
+						"w": 66,
+						"h": 30
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "scythe.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 210,
+						"h": 210
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 0,
-						"w": 168,
-						"h": 176
+						"y": 4,
+						"w": 205,
+						"h": 206
 					},
 					"frame": {
-						"x": 532,
-						"y": 452,
-						"w": 168,
-						"h": 176
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dummy.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 163,
-						"h": 320
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 83,
-						"w": 156,
-						"h": 237
-					},
-					"frame": {
-						"x": 374,
-						"y": 542,
-						"w": 156,
-						"h": 237
+						"x": 1,
+						"y": 294,
+						"w": 205,
+						"h": 206
 					},
 					"anchor": {
 						"x": 0.5,
@@ -349,8 +274,8 @@
 						"h": 241
 					},
 					"frame": {
-						"x": 171,
-						"y": 548,
+						"x": 208,
+						"y": 294,
 						"w": 166,
 						"h": 241
 					},
@@ -375,9 +300,34 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 637,
+						"y": 502,
 						"w": 166,
 						"h": 241
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummy_tired.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 163,
+						"h": 320
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 74,
+						"w": 156,
+						"h": 246
+					},
+					"frame": {
+						"x": 376,
+						"y": 294,
+						"w": 156,
+						"h": 246
 					},
 					"anchor": {
 						"x": 0.5,
@@ -399,8 +349,8 @@
 						"h": 241
 					},
 					"frame": {
-						"x": 1,
-						"y": 880,
+						"x": 169,
+						"y": 537,
 						"w": 166,
 						"h": 241
 					},
@@ -424,8 +374,8 @@
 						"h": 241
 					},
 					"frame": {
-						"x": 169,
-						"y": 791,
+						"x": 1,
+						"y": 745,
 						"w": 166,
 						"h": 241
 					},
@@ -435,24 +385,24 @@
 					}
 				},
 				{
-					"filename": "cloud2.png",
+					"filename": "dummy_angry_tilted.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 105,
-						"h": 88
+						"w": 163,
+						"h": 320
 					},
 					"spriteSourceSize": {
-						"x": 4,
-						"y": 2,
-						"w": 99,
-						"h": 84
+						"x": 5,
+						"y": 84,
+						"w": 157,
+						"h": 236
 					},
 					"frame": {
-						"x": 169,
-						"y": 1034,
-						"w": 99,
-						"h": 84
+						"x": 534,
+						"y": 476,
+						"w": 157,
+						"h": 236
 					},
 					"anchor": {
 						"x": 0.5,
@@ -460,49 +410,24 @@
 					}
 				},
 				{
-					"filename": "bird.png",
+					"filename": "dummy.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 84,
-						"h": 75
+						"w": 163,
+						"h": 320
 					},
 					"spriteSourceSize": {
-						"x": 9,
-						"y": 0,
-						"w": 70,
-						"h": 66
+						"x": 7,
+						"y": 83,
+						"w": 156,
+						"h": 237
 					},
 					"frame": {
-						"x": 270,
-						"y": 1034,
-						"w": 70,
-						"h": 66
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dummyeyes.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 68,
-						"h": 30
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 12,
-						"w": 67,
-						"h": 18
-					},
-					"frame": {
-						"x": 270,
-						"y": 1102,
-						"w": 67,
-						"h": 18
+						"x": 337,
+						"y": 542,
+						"w": 156,
+						"h": 237
 					},
 					"anchor": {
 						"x": 0.5,
@@ -524,8 +449,8 @@
 						"h": 237
 					},
 					"frame": {
-						"x": 337,
-						"y": 791,
+						"x": 169,
+						"y": 780,
 						"w": 156,
 						"h": 237
 					},
@@ -535,74 +460,24 @@
 					}
 				},
 				{
-					"filename": "dummybrows.png",
+					"filename": "star.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 68,
-						"h": 30
+						"w": 135,
+						"h": 135
 					},
 					"spriteSourceSize": {
 						"x": 2,
-						"y": 0,
-						"w": 66,
-						"h": 30
+						"y": 2,
+						"w": 132,
+						"h": 132
 					},
 					"frame": {
-						"x": 342,
-						"y": 1030,
-						"w": 66,
-						"h": 30
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dummysnort.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 141,
-						"h": 72
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 43,
-						"w": 135,
-						"h": 29
-					},
-					"frame": {
-						"x": 342,
-						"y": 1062,
-						"w": 135,
-						"h": 29
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dummy_ascended.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 163,
-						"h": 320
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 83,
-						"w": 156,
-						"h": 237
-					},
-					"frame": {
-						"x": 495,
-						"y": 781,
-						"w": 156,
-						"h": 237
+						"x": 1,
+						"y": 988,
+						"w": 132,
+						"h": 132
 					},
 					"anchor": {
 						"x": 0.5,
@@ -624,8 +499,8 @@
 						"h": 94
 					},
 					"frame": {
-						"x": 495,
-						"y": 1020,
+						"x": 135,
+						"y": 1019,
 						"w": 124,
 						"h": 94
 					},
@@ -649,8 +524,8 @@
 						"h": 94
 					},
 					"frame": {
-						"x": 621,
-						"y": 1020,
+						"x": 261,
+						"y": 1019,
 						"w": 117,
 						"h": 94
 					},
@@ -660,24 +535,24 @@
 					}
 				},
 				{
-					"filename": "star.png",
+					"filename": "dummy_ascended.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 135,
-						"h": 135
+						"w": 163,
+						"h": 320
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
-						"w": 132,
-						"h": 132
+						"x": 7,
+						"y": 83,
+						"w": 156,
+						"h": 237
 					},
 					"frame": {
-						"x": 532,
-						"y": 630,
-						"w": 132,
-						"h": 132
+						"x": 693,
+						"y": 510,
+						"w": 156,
+						"h": 237
 					},
 					"anchor": {
 						"x": 0.5,
@@ -699,33 +574,8 @@
 						"h": 237
 					},
 					"frame": {
-						"x": 653,
-						"y": 764,
-						"w": 156,
-						"h": 237
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dummy_w_eyes.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 163,
-						"h": 320
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 83,
-						"w": 156,
-						"h": 237
-					},
-					"frame": {
-						"x": 702,
-						"y": 510,
+						"x": 495,
+						"y": 714,
 						"w": 156,
 						"h": 237
 					},
@@ -749,10 +599,185 @@
 						"h": 220
 					},
 					"frame": {
-						"x": 860,
-						"y": 510,
+						"x": 327,
+						"y": 781,
 						"w": 119,
 						"h": 220
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummy_w_eyes.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 163,
+						"h": 320
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 83,
+						"w": 156,
+						"h": 237
+					},
+					"frame": {
+						"x": 851,
+						"y": 534,
+						"w": 156,
+						"h": 237
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "cloud1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 195,
+						"h": 164
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 1,
+						"w": 189,
+						"h": 162
+					},
+					"frame": {
+						"x": 653,
+						"y": 749,
+						"w": 189,
+						"h": 162
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "super_dummy_rightarm_stretch.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 295,
+						"h": 305
+					},
+					"spriteSourceSize": {
+						"x": 127,
+						"y": 0,
+						"w": 168,
+						"h": 177
+					},
+					"frame": {
+						"x": 653,
+						"y": 913,
+						"w": 168,
+						"h": 177
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "super_dummy_leftarm_stretch.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 295,
+						"h": 305
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 168,
+						"h": 176
+					},
+					"frame": {
+						"x": 823,
+						"y": 913,
+						"w": 168,
+						"h": 176
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummysnort.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 141,
+						"h": 72
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 43,
+						"w": 135,
+						"h": 29
+					},
+					"frame": {
+						"x": 823,
+						"y": 1091,
+						"w": 135,
+						"h": 29
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummy_fist_lines.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 363,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 61,
+						"y": 47,
+						"w": 241,
+						"h": 20
+					},
+					"frame": {
+						"x": 380,
+						"y": 1092,
+						"w": 241,
+						"h": 20
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "dummyeyes.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 68,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 12,
+						"w": 67,
+						"h": 18
+					},
+					"frame": {
+						"x": 623,
+						"y": 1092,
+						"w": 67,
+						"h": 18
 					},
 					"anchor": {
 						"x": 0.5,
@@ -774,10 +799,35 @@
 						"h": 94
 					},
 					"frame": {
-						"x": 860,
-						"y": 732,
+						"x": 844,
+						"y": 773,
 						"w": 117,
 						"h": 94
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "cloud2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 105,
+						"h": 88
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 2,
+						"w": 99,
+						"h": 84
+					},
+					"frame": {
+						"x": 380,
+						"y": 1003,
+						"w": 99,
+						"h": 84
 					},
 					"anchor": {
 						"x": 0.5,
@@ -799,35 +849,10 @@
 						"h": 94
 					},
 					"frame": {
-						"x": 740,
-						"y": 1003,
+						"x": 481,
+						"y": 953,
 						"w": 117,
 						"h": 94
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dagger.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 111,
-						"h": 176
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 0,
-						"w": 96,
-						"h": 176
-					},
-					"frame": {
-						"x": 859,
-						"y": 828,
-						"w": 96,
-						"h": 176
 					},
 					"anchor": {
 						"x": 0.5,
@@ -840,6 +865,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:82ef8624091edab8097d6e647537c02b:e231edbf866ed5177cd0f5b67d862553:54bf8bea0d39745f04810f264e648deb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:0f2b6d52fad6e02b0cbcc2369d298c33:eb6d458429bf7f4bc501e9b6f9c79459:54bf8bea0d39745f04810f264e648deb$"
 	}
 }

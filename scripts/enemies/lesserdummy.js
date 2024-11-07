@@ -445,6 +445,46 @@
                  let oldOriginY = this.sprite.originY;
                  this.setDefaultSprite('lesser_dummy_hurt.png').setOrigin(oldOriginX, oldOriginY);
                  // this.eyeSprite.destroy();
+                 let ouch1 = this.addImage(this.sprite.x + 6, this.sprite.y - 148, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(0.6);
+                 let ouch2 = this.addImage(this.sprite.x + 6, this.sprite.y - 144, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(1);
+                 this.addTween({
+                     targets: ouch1,
+                     x: "+=45",
+                     y: "-=50",
+                     ease: 'Quart.easeOut',
+                     duration: 660
+                 })
+                 this.addTween({
+                     targets: ouch1,
+                     scaleX: 0,
+                     scaleY: 0,
+                     ease: 'Quad.easeIn',
+                     duration: 660
+                 })
+                 this.addTween({
+                     targets: ouch1,
+                     rotation: "-=5",
+                     duration: 660
+                 })
+                 this.addTween({
+                     targets: ouch2,
+                     x: "+=85",
+                     y: "+=45",
+                     ease: 'Quart.easeOut',
+                     duration: 800
+                 })
+                 this.addTween({
+                     targets: ouch2,
+                     scaleX: 0,
+                     scaleY: 0,
+                     ease: 'Quad.easeIn',
+                     duration: 800
+                 })
+                 this.addTween({
+                     targets: ouch2,
+                     rotation: "+=5.5",
+                     duration: 800
+                 })
              }
 
              this.addTween({

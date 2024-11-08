@@ -787,7 +787,7 @@ class SpellManager {
             }
         });
 
-        let spellName = getBasicText('rune_time_rune_protect');
+        let spellName = getBasicText('rune_matter_rune_protect');
         let bonusSize = 0;
         if (spellMultiplier >= 3) {
             spellName = spellName + " X" + spellMultiplier;

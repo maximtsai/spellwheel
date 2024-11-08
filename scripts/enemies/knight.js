@@ -152,7 +152,6 @@
                              onComplete: () => {
                                  clickBlock.destroy();
                                  showWishlistPage();
-                                 sdkShowHappyTime()
                              }
                          })
                      }

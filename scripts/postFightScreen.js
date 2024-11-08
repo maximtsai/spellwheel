@@ -32,7 +32,8 @@ class PostFightScreen {
 
     initAssets(isWin = true, isPractice = false, initLocket = true) {
         sdkGameplayStop();
-        sdkShowBannerAd();
+        displayBanner();
+
         this.locketIsOpen = false;
         this.locketIsClosable = false;
         if (!this.bgShade) {
@@ -1017,7 +1018,7 @@ class PostFightScreen {
         }
         this.clearWindSound();
         this.clearGloom();
-
+        sdkClearBanner();
         PhaserScene.tweens.add({
             targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon, this.newRuneAnnounce, this.locketSprite, this.locketDialog, this.locketDialogImage],
             alpha: 0,

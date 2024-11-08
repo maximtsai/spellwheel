@@ -45,6 +45,14 @@
             vertical-align: middle;
             white-space: pre-line
         }
+        #banner-container {
+            background-color: #FFFFFF;
+            transform: translate(-50%, 0);
+            margin-bottom: 0;
+            position: absolute;
+            left: 50%;
+            bottom: -10000px;
+        }
         @font-face {
             font-family: robotomedium;
             src: local('robotomedium'), url('fonts/robotomedium.ttf')  format('truetype');
@@ -74,6 +82,7 @@
             font-weight:800;
             font-weight:bold;
         }
+
     </style>
     <script src="../spellwheelcrazy/main.js"></script>
 </head>
@@ -92,6 +101,8 @@
     <div style="font-family:germania; position:absolute; left:-1000px; visibility:hidden;">.</div>
     <div style="font-family:germania_italics; position:absolute; left:-1000px; visibility:hidden;">.</div>
     <div id="preload-notice">Loading Preloader ...</div>
+    <div id="spellwheel"></div>
+    <div id="banner-container" style="width: 468px; height: 60px"></div>
     <script src="main.js"></script>
 </body>
 </html>

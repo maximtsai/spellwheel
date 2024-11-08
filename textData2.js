@@ -58,7 +58,7 @@ let textData2 = {
     },
     "encyc_time": {
         "en_us": "TIME",
-        "fr": "HEURE",
+        "fr": "TEMPS",
         "zh_tw": "時間",
         "zh_cn": "时间",
         "ru": "Время",
@@ -94,7 +94,7 @@ let textData2 = {
     },
     "encyc_enhance": {
         "en_us": "ENHANCE",
-        "fr": "RENFORCEMENT",
+        "fr": "RENFORCER",
         "zh_tw": "強化",
         "zh_cn": "强化",
         "ru": "Увеличивать",
@@ -619,7 +619,7 @@ let textData2 = {
         "jp": "でも、私は何でもできると確信しています。"
     },
     "level0_diag_a": {
-        "en_us": "My beloved is just beyond\nthe gate.",
+        "en_us": "My beloved is just\nbeyond the gate.",
         "fr": "Mon bien-aimé est juste\nau-delà de cette porte.",
         "zh_tw": "我的愛人就在這扇門外。",
         "zh_cn": "我的爱人就在这门外。",
@@ -628,7 +628,7 @@ let textData2 = {
         "jp": "私の愛する人はこの\n門の向こうにいる。"
     },
     "level0_diag_b": {
-        "en_us": "But this stick dummy\nis blocking the entrance.",
+        "en_us": "But this stick dummy\nis in the way.",
         "fr": "Mais ce mannequin en forme\nde bâton bloque l'entrée.",
         "zh_tw": "但這個木棍人偶擋住了入口。",
         "zh_cn": "但这个木棍人偶挡住了入口。",
@@ -683,7 +683,7 @@ let textData2 = {
     },
     "level1_tut_a": {
         "en_us": "Enhance rune\nmakes your\nattacks stronger\n ",
-        "fr": "La rune Renforcement\nrend vos attaques\nplus fortes\n ",
+        "fr": "La rune Renforcer\nrend vos attaques\nplus fortes\n ",
         "zh_tw": "强化符文使你的\n攻擊更加強大\n ",
         "zh_cn": "强化符文使你的\n攻击更加强大\n ",
         "ru": "Руна усиления\nусиливает вашу\nследующую атаку\n ",

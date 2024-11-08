@@ -406,7 +406,7 @@ class Encyclopedia {
         playSound('flip2');
         this.title.setText(" ")
         let text1 = PhaserScene.add.text(gameConsts.halfWidth - 252, gameConsts.halfHeight - 290, getLangText('encyclopedia_rune_element'), {fontFamily: 'germania', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
-        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 252, gameConsts.halfHeight - 15, getLangText('encyclopedia_rune_action'), {fontFamily: 'germania', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
+        let text2 = PhaserScene.add.text(gameConsts.halfWidth - 252, gameConsts.halfHeight - 12, getLangText('encyclopedia_rune_action'), {fontFamily: 'germania', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth);
         this.currentPageItems.push(text1);
         this.currentPageItems.push(text2);
         this.closeButton.tweenToPos(this.closeButton.getXPos(), gameConsts.halfHeight - 275, 0.5, 'Cubic.easeOut')
@@ -431,16 +431,16 @@ class Encyclopedia {
             getLangText('encyc_shield'), getLangText('encyc_body'),
             getLangText("encyc_time"), getLangText("encyc_void"),
             getLangText('encyc_ultimate')];
-        let listOfDesc = [getLangText("pre_fight_0f"),
-            getLangText("pre_fight_0e"), getLangText("encyc_desc_enhance"),
-            getLangText("encyc_desc_energy"),
-            getLangText('encyc_desc_shield'), getLangText('encyc_desc_body'),
-            getLangText("encyc_desc_time"), getLangText("encyc_desc_void"),
-            getLangText('encyc_desc_ultimate')
+        let listOfDesc = [getLangText("matter_short"),
+            getLangText("strike_short"), getLangText("enhance_short"),
+            getLangText("energy_short"),
+            getLangText('shield_short'), getLangText('body_short'),
+            getLangText("time_short"), getLangText("void_short"),
+            getLangText('ultimate_short')
         ];
         let startPos1 = gameConsts.halfHeight - 226;
         let offset = 56;
-        let startPos2 = gameConsts.halfHeight + 49;
+        let startPos2 = gameConsts.halfHeight + 55;
         let listOfPositions = [startPos1,
             startPos2, startPos2 + offset,
             startPos1 + offset,
@@ -448,14 +448,18 @@ class Encyclopedia {
             startPos1 + offset * 2, startPos1 + offset * 3,
             startPos2 + offset * 4,
         ]
+        let fontSizeToUse = language === 'fr' ? 22 : 24;
         for (let i = 0; i < listOfRunes.length; i++) {
             if (i > Math.min(gameVars.maxLevel + 1, 6)) {
                 break;
             }
-            let newIcon = PhaserScene.add.image(gameConsts.halfWidth - 212, listOfPositions[i], 'tutorial', listOfRunes[i]).setAlpha(0).setDepth(this.baseDepth).setScale(0.6);
-            let newText = PhaserScene.add.text(gameConsts.halfWidth - 170, listOfPositions[i], listOfText[i], {fontFamily: 'germania', fontSize: 24, color: '#200000', align: 'left'}).setDepth(this.baseDepth).setOrigin(0, 0.5);
+
+            let newIcon = PhaserScene.add.image(gameConsts.halfWidth - 219, listOfPositions[i], 'tutorial', listOfRunes[i]).setAlpha(0).setDepth(this.baseDepth).setScale(0.6);
+            let newText = PhaserScene.add.text(gameConsts.halfWidth - 180, listOfPositions[i], listOfText[i], {fontFamily: 'germania', fontSize: fontSizeToUse, color: '#200000', align: 'left'}).setDepth(this.baseDepth).setOrigin(0, 0.5);
+            let descText = PhaserScene.add.text(gameConsts.halfWidth - 63, listOfPositions[i], "| "+listOfDesc[i], {fontFamily: 'germania', fontSize: fontSizeToUse, color: '#200000', align: 'left'}).setDepth(this.baseDepth).setOrigin(0, 0.5);
             this.currentPageItems.push(newIcon);
             this.currentPageItems.push(newText);
+            this.currentPageItems.push(descText);
 
         }
 

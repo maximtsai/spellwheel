@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>96</uint>
+        <uint>95</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -365,21 +365,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">circle/cast_normalx.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>44,44,87,87</rect>
-                <key>scale9Paddings</key>
-                <rect>44,44,87,87</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">circle/cast_triangle.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -559,21 +544,6 @@
                 <rect>76,76,152,152</rect>
                 <key>scale9Paddings</key>
                 <rect>76,76,152,152</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">circle/element_normal2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>76,76,152,153</rect>
-                <key>scale9Paddings</key>
-                <rect>76,76,152,153</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -818,21 +788,6 @@
                 <rect>101,101,202,202</rect>
                 <key>scale9Paddings</key>
                 <rect>101,101,202,202</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">circle/usage_normalx.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>109,109,217,217</rect>
-                <key>scale9Paddings</key>
-                <rect>109,109,217,217</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -98,14 +98,14 @@
                              duration: 250,
                              onComplete: () => {
                                  PhaserScene.tweens.add({
-                                     delay: 110,
+                                     delay: 50,
                                      targets: locket,
                                      alpha: 0,
-                                     scaleX: locket.scaleX * 0.94,
-                                     scaleY: locket.scaleX * 0.94,
+                                     scaleX: locket.scaleX * 0.91,
+                                     scaleY: locket.scaleX * 0.91,
                                      ease: 'Back.easeIn',
-                                     y: "+=35",
-                                     duration: 2400,
+                                     y: "+=44",
+                                     duration: 2500,
                                  })
                              }
                          })
@@ -117,7 +117,7 @@
                  PhaserScene.tweens.add({
                      targets: whiteFlood,
                      rotation: 0,
-                     duration: 2200,
+                     duration: 2500,
                      onComplete: () => {
                          clearDeathFog();
                      }
@@ -126,7 +126,7 @@
                      targets: whiteFlood,
                      alpha: 1,
                      ease: 'Quad.easeIn',
-                     duration: 2500,
+                     duration: 2900,
                      onComplete: () => {
                          locket.destroy();
                          gotoMainMenu();
@@ -147,8 +147,8 @@
                          PhaserScene.tweens.add({
                              targets: whiteFlood,
                              alpha: 0,
-                             ease: 'Cubic.easeOut',
-                             duration: 750,
+                             ease: 'Quad.easeOut',
+                             duration: 800,
                              onComplete: () => {
                                  clickBlock.destroy();
                                  showWishlistPage();

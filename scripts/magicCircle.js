@@ -618,9 +618,9 @@ const ENABLE_KEYBOARD = true;
         this.buildRunes();
     }
 
-    setWheelTint(darkAlpha, colorAlpha, color) {
-        this.tintDark.setAlpha(darkAlpha);
+    setWheelTint(darkAlpha = 0.06, colorAlpha = 0.03, color) {
         this.tintColor.setAlpha(colorAlpha);
+        this.tintDark.setAlpha(darkAlpha);
         if (color) {
             this.tintColor.setFrame('usage_tint_y.png');
         }

@@ -246,6 +246,10 @@ class Enemy {
         this.chargeBarWarning.setDepth(9);
         this.chargeBarWarning.setAlpha(0.35);
 
+        this.chargeVertical = this.scene.add.image(x, this.chargeBarMax.y + 5, 'blurry', 'yellow_vertical.webp').setScale(1.5, 1.2).setAlpha(0).setOrigin(0, 0.5);
+        this.chargeVertical2 = this.scene.add.image(x, this.chargeBarMax.y + 5, 'blurry', 'yellow_vertical.webp').setScale(-1.5, 1.2).setAlpha(0).setOrigin(0, 0.5);
+
+
         this.chargeBarCurr = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'yellow_pixel.png');
         this.chargeBarCurr.setScale(0, this.chargeBarMax.scaleY - 2);
         this.chargeBarCurr.setOrigin(0.5, 0.5);
@@ -536,8 +540,12 @@ class Enemy {
                     }
                 }
                 this.attackCharge += timeChange * increaseMult * this.slowMult + castAggravateBonus;
+                this.chargeVertical.alpha = Math.min(1, this.chargeVertical.alpha + timeChange * 0.14);
+                this.chargeVertical2.alpha = this.chargeVertical.alpha;
 
             } else {
+                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.01) * 0.98;
+                this.chargeVertical2.alpha = this.chargeVertical.alpha;
                 almostDone = this.attackCharge > this.nextAttackChargeNeeded - 45;
 
                 if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone && this.castAggravateCharge <= 0) {
@@ -547,6 +555,11 @@ class Enemy {
                 } else {
                     // Normal slow chargin
                     if (almostDone || chargeMult > 1 || this.castAggravateCharge > 0) {
+                        if (!this.isUsingAttack) {
+                            this.chargeVertical.alpha = Math.min(0.55, this.chargeVertical.alpha + timeChange * 0.15);
+                            this.chargeVertical2.alpha = this.chargeVertical.alpha;
+                        }
+
                         let castAggravateBonus = 0; // if recently casted a spell, that speeds up opponent charge
                         if (this.castAggravateCharge > 0) {
                             this.castAggravateCharge -= timeChange;
@@ -576,6 +589,8 @@ class Enemy {
                 }
             }
             this.chargeBarCurr.scaleX = Math.min(this.nextAttackChargeNeeded * 0.2, this.attackCharge * 0.2 + 1);
+            this.chargeVertical.x = gameConsts.halfWidth - this.chargeBarCurr.scaleX - 1.5;
+            this.chargeVertical2.x = gameConsts.halfWidth + this.chargeBarCurr.scaleX + 1.5;
             if (this.chargeBarShow) {
                 this.chargeBarEst1.x = gameConsts.halfWidth - this.chargeBarCurr.scaleX;
                 this.chargeBarEst2.x = gameConsts.halfWidth + this.chargeBarCurr.scaleX;
@@ -628,10 +643,14 @@ class Enemy {
             this.chargeBarAngry.scaleX = this.chargeBarCurr.scaleX;
             if (this.attackPaused) {
                 // doNothing
+                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.25);
+                this.chargeVertical2.alpha = this.chargeVertical.alpha;
             } else if (this.isUsingAttack) {
-                // doNothing
+                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.25);
+                this.chargeVertical2.alpha = this.chargeVertical.alpha;
             } else if (this.attackCharge >= this.nextAttackChargeNeeded) {
                 if (this.nextAttack.damage !== undefined && this.nextAttack.damage !== 0) {
+
                     this.chargeBarReady1.setAlpha(1).setScale(0.9, 0.5);
                     this.chargeBarReady2.setAlpha(1).setScale(0.9, 0.5);
                     this.chargeBarReady1.x = this.chargeBarMax.x - this.chargeBarMax.scaleX;
@@ -757,8 +776,14 @@ class Enemy {
                 }
 
                 this.chargeBarWarning.visible = true;
-                this.chargeBarWarning.alpha = 0.83;
+                this.chargeBarWarning.alpha = 0.34;
                 this.chargeBarWarningBig.alpha = Math.min(0.5, this.chargeBarWarningBig.alpha + timeChange * 0.05);
+                this.addTween({
+                    targets: [this.chargeVertical, this.chargeVertical2],
+                    alpha: 0,
+                    duration: 500,
+                    ease: 'Cubic.easeOut'
+                })
                 this.useMove();
             } else if (this.attackCharge >= this.nextAttackChargeNeeded * 0.9 - 30) {
                 this.chargeBarWarning.visible = true;
@@ -1454,7 +1479,7 @@ class Enemy {
         }
 
         this.healthBarFlash.scaleX = this.healthBarCurr.scaleX + 2;
-        if (this.healthBarCurr.scaleX == 0) {
+        if (this.healthBarCurr.scaleX === 0) {
             this.healthBarFlash.scaleX = 0;
         }
         this.healthBarFlash.scaleY = this.healthBarMax.scaleY;
@@ -1463,19 +1488,21 @@ class Enemy {
             this.healthBarFlashTween.stop();
         }
         this.healthBarFlashTween = PhaserScene.tweens.add({
+            delay: 50,
             targets: this.healthBarFlash,
             alpha: 0,
-            ease: "Cubic.easeOut",
-            duration: gameVars.gameManualSlowSpeedInverse * 600 * mult + 150
+            ease: "Quad.easeOut",
+            duration: gameVars.gameManualSlowSpeedInverse * 500 * mult + 150
         });
         if (this.healthBarRedTween) {
             this.healthBarRedTween.stop();
         }
         this.healthBarRedTween = PhaserScene.tweens.add({
             targets: this.healthBarRed,
+            delay: 50,
             alpha: 0,
             ease: "Cubic.easeOut",
-            duration: gameVars.gameManualSlowSpeedInverse * 600 * mult + 100
+            duration: gameVars.gameManualSlowSpeedInverse * 550 * mult + 100
         })
     }
 

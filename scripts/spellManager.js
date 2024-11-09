@@ -146,7 +146,7 @@ class SpellManager {
 
         let pebbles = getTempPoolObject('spells', 'rockCircle.png', 'rockCircle', 800);
         pebbles.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 240);
-        let additionalScale = Math.sqrt(additionalDamage) * 0.022;
+        let additionalScale = Math.sqrt(additionalDamage) * 0.025;
         let finalAdditionaScale = additionalScale * 5;
         let isPowerful = numAdditionalAttacks * (12 + additionalDamage + bonusTrueDamage) > 75;
         pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalScale).setRotation(Math.random() * 3)
@@ -209,7 +209,7 @@ class SpellManager {
                 },
                 onComplete: () => {
                     if (isExtraBuff) {
-                        if (i == 0) {
+                        if (i === 0) {
                             let sfx2 = playSound('matter_strike_heavy', strikeVol);
                             if (additionalDamage >= 12) {
                                 zoomTempSlow(1.004);

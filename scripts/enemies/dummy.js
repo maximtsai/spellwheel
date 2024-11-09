@@ -118,7 +118,7 @@
                  });
                  this.shadowSmall.currAnim = this.addTween({
                      targets: [this.shadowSmall],
-                     alpha: 0.5,
+                     alpha: 0.75,
                      ease: "Back.easeOut",
                      duration: 750,
                      easeParams: [2]
@@ -860,7 +860,7 @@
                          }, 800);
                      },
                      finaleFunction: () => {
-                        this.healAnim(30);
+                        this.healAnim(35);
                      }
                  },
                  {
@@ -888,7 +888,7 @@
                      chargeAmt: 205,
                      damage: 0,
                      finaleFunction: () => {
-                         this.healAnim(25);
+                         this.healAnim(20);
                      }
                  },
                  {
@@ -914,7 +914,7 @@
                          this.spaceTween = this.addTween({
                              targets: spaceBG,
                              rotation: "+=6.281",
-                             duration: 20000,
+                             duration: 22000,
                              repeat: 1000
                          });
 

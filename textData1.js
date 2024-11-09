@@ -417,19 +417,19 @@ let textData = {
         "jp": "受けるダメージの50%を吸収し、\n反射するシールドを作成する"
     },
     "mind_reinforce_desc": {
-        "en_us": "Increase all damage\nyou deal by +3",
-        "fr": "Augmente tous les dégâts\nque vous infligez de +3",
-        "zh_tw": "你造成的所有\n傷害增加 +3",
-        "zh_cn": "你造成的所有\n伤害增加 +3",
+        "en_us": "Increase all damage\nyou deal by +3.\nRefresh your\nelement runes.",
+        "fr": "Augmente tous les\ndégâts que vous\ninfligez de +3.\nRafraîchissez vos\néléments.",
+        "zh_tw": "你造成的所有傷害\n增加 +3。刷新你的\n元素。",
+        "zh_cn": "你造成的所有伤害\n增加 +3。刷新你的\n元素。",
         "ru": "Весь наносимый\nвами урон\nувеличивается\nна +3.",
         "es": "Todo el daño\nque infliges\naumenta en +3",
         "jp": "与えるダメージ\nはすべて +3\n増加します"
     },
     "mind_reinforce_desc_long": {
-        "en_us": "Increase all damage you deal by +3",
-        "fr": "Augmente tous les dégâts\nque vous infligez de +3",
-        "zh_tw": "你造成的所有傷害增加 +3",
-        "zh_cn": "你造成的所有伤害增加 +3",
+        "en_us": "Increase all damage you deal by +3.\nRefresh your element runes.",
+        "fr": "Augmente tous les dégâts que vous infligez\nde +3. Rafraîchissez vos éléments.",
+        "zh_tw": "你造成的所有傷害增加 +3。\n刷新你的元素。",
+        "zh_cn": "你造成的所有伤害增加 +3。\n刷新你的元素。",
         "ru": "Весь наносимый вами урон увеличивается на +3.",
         "es": "Todo el daño que infliges aumenta en +3",
         "jp": "与えるダメージは\nすべて +3増加します"
@@ -570,10 +570,10 @@ let textData = {
         "jp": "ダメージの半分をブロックし、受けたダメージを溜め込んで報復するシールドを作成します。"
     },
     "mind_tut_reinforce_desc": {
-        "en_us": "Energize yourself to increase all\ndamage you deal.",
-        "fr": "Dynamisez-vous pour augmenter\ntous les dégâts que vous\ninfligez.",
-        "zh_tw": "增加你造成的所有傷害。",
-        "zh_cn": "增加你造成的所有伤害。",
+        "en_us": "Energize yourself to refresh your\nelemental runes and increase all\ndamage you deal.",
+        "fr": "Dynamisez-vous pour rafraîchir vos\nrunes élémentaires et augmenter\ntous les dégâts que vous infligez.",
+        "zh_tw": "補充能量來刷新你的元素符文\n並增加你造成的所有傷害。",
+        "zh_cn": "补充能量来刷新你的元素符文\n并增加你造成的所有伤害。",
         "ru": "Энергизируйте себя, чтобы увеличить\nвесь наносимый вами урон",
         "es": "",
         "jp": ""

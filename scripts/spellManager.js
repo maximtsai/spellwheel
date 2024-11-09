@@ -1880,6 +1880,7 @@ class SpellManager {
         let electricCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells').play('powerEffect').setScale(3.4).setDepth(117);
 
         playSound('power_surge');
+        globalObjects.magicCircle.resetElements();
 
         this.scene.tweens.add({
             targets: energyCircle1,

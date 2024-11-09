@@ -546,7 +546,7 @@ const ENABLE_KEYBOARD = true;
         this.castGlow = scene.add.sprite(x, y, 'circle', 'cast_glow.png').setDepth(121).setAlpha(0);
 
         this.tintColor = scene.add.sprite(x, y, 'misc', 'usage_tint_y.png').setDepth(121).setAlpha(0.03).setBlendMode(Phaser.BlendModes.MULTIPLY);
-        this.tintDark = scene.add.image(x, y, 'misc', 'usage_tint_k.png').setDepth(121).setAlpha(0.09).setBlendMode(Phaser.BlendModes.MULTIPLY);
+        this.tintDark = scene.add.image(x, y, 'misc', 'usage_tint_k.png').setDepth(121).setAlpha(0.06).setBlendMode(Phaser.BlendModes.MULTIPLY);
 
         this.greyedDead = scene.add.sprite(x, y, 'circle', 'greyed_dead.png').setVisible(false).setDepth(135);
 

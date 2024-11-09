@@ -184,7 +184,6 @@ function initializeMiscLocalstorage() {
     if (storedSkipIntro) {
         gameOptions.skipIntro = localStorage.getItem("skip_intro") === 'true';
     } else {
-        gameOptions.skipIntro = true;
         gameOptions.isFirstTime = true;
         localStorage.setItem("skip_intro", 'true');
     }

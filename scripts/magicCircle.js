@@ -397,7 +397,12 @@ const ENABLE_KEYBOARD = true;
 
             let dragForceSqr = horizForce + vertForce;
 
-            let torqueConst = gameVars.wasTouch ? 0.047 : 0.0445;
+            let torqueConst = gameVars.wasTouch ? 0.045 : 0.0429;
+            if (gameVars.maxLevel >= 5) {
+                torqueConst += 0.014;
+            }  else if (gameVars.maxLevel >= 2) {
+                torqueConst += 0.01;
+            }
             // castDisable
 
             // Using both rotation diff and mult val to calculate
@@ -458,7 +463,7 @@ const ENABLE_KEYBOARD = true;
         this.x = x;
         this.y = y;
         this.trueSize = 205;
-        this.size = isMobile ? 252 : 230;
+        this.size = isMobile ? 259 : 237;
         this.draggedObj = null;
         this.dragPointAngle = 0;
         this.dragPointAngleVisual = this.dragPointAngle;
@@ -539,6 +544,10 @@ const ENABLE_KEYBOARD = true;
         this.castButtonSpare = scene.add.sprite(x, y, 'circle', this.altString + 'cast_press.png').setDepth(121).setAlpha(0);
         this.castHoverTemp = scene.add.sprite(x, y, 'circle', this.altString + 'cast_press.png').setDepth(121).setAlpha(0);
         this.castGlow = scene.add.sprite(x, y, 'circle', 'cast_glow.png').setDepth(121).setAlpha(0);
+
+        this.tintColor = scene.add.sprite(x, y, 'misc', 'usage_tint_y.png').setDepth(121).setAlpha(0.03).setBlendMode(Phaser.BlendModes.MULTIPLY);
+        this.tintDark = scene.add.image(x, y, 'misc', 'usage_tint_k.png').setDepth(121).setAlpha(0.09).setBlendMode(Phaser.BlendModes.MULTIPLY);
+
         this.greyedDead = scene.add.sprite(x, y, 'circle', 'greyed_dead.png').setVisible(false).setDepth(135);
 
 
@@ -607,6 +616,14 @@ const ENABLE_KEYBOARD = true;
         this.elementHighlight = this.scene.add.sprite(x, y, 'circle', 'bright_rune_matter.png').setOrigin(0.5, 0.866).setDepth(104);
         this.embodimentHighlight = this.scene.add.sprite(x, y, 'circle', 'bright_rune_strike.png').setOrigin(0.5, 1.22).setDepth(104);
         this.buildRunes();
+    }
+
+    setWheelTint(darkAlpha, colorAlpha, color) {
+        this.tintDark.setAlpha(darkAlpha);
+        this.tintColor.setAlpha(colorAlpha);
+        if (color) {
+            this.tintColor.setFrame('usage_tint_y.png');
+        }
     }
 
     createTimeStopObjs() {
@@ -1198,7 +1215,8 @@ const ENABLE_KEYBOARD = true;
 
         this.innerCircle.rotation = (this.innerCircle.nextRotation + this.innerCircle.prevRotation) * 0.5;
         this.outerCircle.rotation = (this.outerCircle.nextRotation + this.outerCircle.prevRotation) * 0.5;
-
+        this.tintColor.rotation = this.outerCircle.rotation;
+        this.tintDark.rotation = this.outerCircle.rotation;
         this.autolockRune(1);
 
         this.innerCircle.torqueDecay = (this.innerCircle.torqueDecay / (1+dt)) + this.innerCircle.torque;
@@ -1293,7 +1311,7 @@ const ENABLE_KEYBOARD = true;
     updateFramesLazy() {
         const key = 'circle';
         if (this.castDisabled) {
-            if (this.castButton.frame.name !== (this.altString + 'cast_disabled.png')) {
+            if (this.castButton.frame.name !== (this.altString + 'cast_disable.png')) {
                 this.castGlow.alpha = 0.5;
                 this.scene.tweens.add({
                     targets: this.castGlow,
@@ -1301,10 +1319,10 @@ const ENABLE_KEYBOARD = true;
                     ease: 'Quint.easeOut',
                     alpha: 0,
                 });
-                this.castButton.setTexture(key, (this.altString + 'cast_disabled.png'));
+                this.castButton.setTexture(key, (this.altString + 'cast_disable.png'));
             }
         } else if (this.castButton.frame.customData.filename !== this.castButton.lazyFrame) {
-            if (this.castButton.frame.customData.filename === (this.altString + 'cast_disabled.png') && this.castButton.lazyFrame === (this.altString + 'cast_normal.png')) {
+            if (this.castButton.frame.customData.filename === (this.altString + 'cast_disable.png') && this.castButton.lazyFrame === (this.altString + 'cast_normal.png')) {
                 this.castButtonSpare.alpha = 0.6;
                 this.scene.tweens.add({
                     targets: this.castButtonSpare,

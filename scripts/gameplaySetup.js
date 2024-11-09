@@ -267,14 +267,15 @@ function setupLoadingBar(scene) {
             }
         });
         swirlInReaperFog(1.15, 75, 1000);
-        if (gameOptions.skipIntro && !gameOptions.isFirstTime && !gameVars.runningIntro) {
+        // gameOptions.skipIntro && !gameOptions.isFirstTime &&
+        if (!gameVars.runningIntro) {
             gameOptions.skipIntroFull = true;
             this.clickIntro();
         }
         scene.tweens.add({
             targets: [loadObjects.loadingText],
             alpha: 0,
-            duration: 300,
+            duration: 200,
             onComplete: () => {
                 if (gameOptions.skipIntroFull) {
                     return;
@@ -517,7 +518,7 @@ function clickIntro() {
                         scaleX: 3.7,
                         scaleY: 3.7,
                         ease: 'Quart.easeIn',
-                        duration: 1500,
+                        duration: 1450,
                         onComplete: () => {
 
                         }

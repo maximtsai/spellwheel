@@ -741,6 +741,24 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">misc/usage_tint_b.png</key>
+            <key type="filename">misc/usage_tint_k.png</key>
+            <key type="filename">misc/usage_tint_r.png</key>
+            <key type="filename">misc/usage_tint_y.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.395</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>270,270,540,540</rect>
+                <key>scale9Paddings</key>
+                <rect>270,270,540,540</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/victory_banner.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

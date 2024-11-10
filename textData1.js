@@ -140,17 +140,17 @@ let textData = {
     "time_strike_desc": {
         "en_us": "Deal 6 DMG,\nfollowed by a\nsecond attack\nat half power",
         "fr": "Inflige 6 points\nde dégâts, suivi\nd'une deuxième\nattaque à moitié\npuissance",
-        "zh_tw": "造成 6 點傷害，\n隨後以一半的威力\n發動第二次攻擊",
-        "zh_cn": "造成 6 点伤害，\n随后以一半的威力\n发动第二次攻击",
+        "zh_tw": "造成 6 點傷害，\n然後進行半威力\n的第二次攻擊",
+        "zh_cn": "造成 6 点伤害，\n然后进行半威力\n的第二次攻击",
         "ru": "Атаковать дважды.\nПервая атака наносит\n6 урона, вторая\nнаносит 50% урона\nот первой атаки.",
         "es": "Ataca dos veces.\nEl primer ataque\ninflige 6 de daño,\nel segundo ataque\ninflige el 50%\ndel primero.",
         "jp": "2回攻撃する。最初の\n攻撃は6ダメージを与え、\n2回目の攻撃は最初の\n攻撃の50%を与えます。"
     },
     "time_strike_desc_long": {
-        "en_us": "Deal 6 DMG, followed by a\nsecond attack at half power",
-        "fr": "Inflige 6 points de dégâts, suivi d'une\ndeuxième attaque supplémentaire à moitié puissance",
-        "zh_tw": "造成 6 點傷害，隨後以\n一半的威力發動第二次攻擊",
-        "zh_cn": "造成 6 点伤害，随后以\n一半的威力发动第二次攻击",
+        "en_us": "Deal 6 DMG, followed by a\nsecond attack with half power",
+        "fr": "Inflige 6 points de dégâts, suivi d'une\ndeuxième attaque à moitié puissance",
+        "zh_tw": "造成 6 點傷害，然後\n進行半威力的第二次攻擊",
+        "zh_cn": "造成 6 点伤害，然后\n进行半威力的第二次攻击",
         "ru": "Атаковать дважды. Первая атака наносит 6 урона,\nвторая наносит 50% урона от первой атаки.",
         "es": "Ataca dos veces. El primer ataque inflige 6 de\ndaño, el segundo ataque inflige el 50% del primero.",
         "jp": "2回攻撃する。最初の攻撃は6ダメージを与え、\n2回目の攻撃は最初の攻撃の50%を与えます。"
@@ -417,19 +417,19 @@ let textData = {
         "jp": "受けるダメージの50%を吸収し、\n反射するシールドを作成する"
     },
     "mind_reinforce_desc": {
-        "en_us": "Increase all damage\nyou deal by +3",
-        "fr": "Augmente tous les dégâts\nque vous infligez de +3",
-        "zh_tw": "你造成的所有\n傷害增加 +3",
-        "zh_cn": "你造成的所有\n伤害增加 +3",
+        "en_us": "Increase all damage\nyou deal by +3.\nRefresh your\nelement runes.",
+        "fr": "Augmente tous les\ndégâts que vous\ninfligez de +3.\nRafraîchissez vos\néléments.",
+        "zh_tw": "你造成的所有傷害\n增加 +3。刷新你的\n元素。",
+        "zh_cn": "你造成的所有伤害\n增加 +3。刷新你的\n元素。",
         "ru": "Весь наносимый\nвами урон\nувеличивается\nна +3.",
         "es": "Todo el daño\nque infliges\naumenta en +3",
         "jp": "与えるダメージ\nはすべて +3\n増加します"
     },
     "mind_reinforce_desc_long": {
-        "en_us": "Increase all damage you deal by +3",
-        "fr": "Augmente tous les dégâts\nque vous infligez de +3",
-        "zh_tw": "你造成的所有傷害增加 +3",
-        "zh_cn": "你造成的所有伤害增加 +3",
+        "en_us": "Increase all damage you deal by +3.\nRefresh your element runes.",
+        "fr": "Augmente tous les dégâts que vous infligez\nde +3. Rafraîchissez vos éléments.",
+        "zh_tw": "你造成的所有傷害增加 +3。\n刷新你的元素。",
+        "zh_cn": "你造成的所有伤害增加 +3。\n刷新你的元素。",
         "ru": "Весь наносимый вами урон увеличивается на +3.",
         "es": "Todo el daño que infliges aumenta en +3",
         "jp": "与えるダメージは\nすべて +3増加します"
@@ -489,7 +489,7 @@ let textData = {
         "jp": ""
     },
     "matter_tut_protect_desc": {
-        "en_us": "Creates a shield that blocks\na flat amount of damage.",
+        "en_us": "Create a shield that blocks\na flat amount of damage.",
         "fr": "Crée un bouclier qui bloque\nun certain montant de dégâts.",
         "zh_tw": "創建一個盾牌，\n阻擋一定量的傷害。",
         "zh_cn": "打造一个盾牌，\n阻挡一定量的伤害。",
@@ -543,7 +543,7 @@ let textData = {
         "jp": "元素をマスターすると、既存のエネルギー呪文の一部が強化されます。"
     },
     "mind_tut_strike_desc": {
-        "en_us": "Fires a bolt of energy that\ndeals little damage by itself,\nbut makes your next attack\ndeal double (x2) damage.",
+        "en_us": "Shocks the enemy. This deals\nlittle damage by itself, but\ndoubles (x2) your next instance\nof attack damage.",
         "fr": "Tire un éclair d'énergie qui\ninflige peu de dégâts en soi,\nmais amplifie votre prochaine\nattaque pour doubler (x2)\nde dégâts.",
         "zh_tw": "發射一道能量彈，本身造成的\n傷害很少，但會讓你的下一個\n攻擊造成雙倍（x2）傷害。",
         "zh_cn": "发射一道能量弹，本身造成的\n伤害很少，但会使你的下一次\n攻击造成双倍（x2）伤害。",
@@ -561,7 +561,7 @@ let textData = {
         "jp": "次の通常攻撃で敵に火をつけ、防御を無視して継続ダメージを与える。"
     },
     "mind_tut_protect_desc": {
-        "en_us": "Creates a shield that blocks\n50% of the next attack, and\nretaliates with damage equal\nto the amount blocked.",
+        "en_us": "Create a shield that blocks\n50% of the next attack, and\nretaliates with damage equal\nto the amount blocked.",
         "fr": "Créer un bouclier qui bloque\n50 % de la prochaine attaque\net riposte avec des dégâts\négaux au montant bloqué.",
         "zh_tw": "打造一個盾牌，阻擋下一次\n攻擊的 50%，並以等於阻擋量\n的傷害進行反擊。",
         "zh_cn": "打造一个盾牌，阻挡下一次\n攻击的 50%，并以等于阻挡量\n的伤害进行反击。",
@@ -570,10 +570,10 @@ let textData = {
         "jp": "ダメージの半分をブロックし、受けたダメージを溜め込んで報復するシールドを作成します。"
     },
     "mind_tut_reinforce_desc": {
-        "en_us": "Energize yourself to increase all\ndamage you deal.",
-        "fr": "Dynamisez-vous pour augmenter\ntous les dégâts que vous\ninfligez.",
-        "zh_tw": "增加你造成的所有傷害。",
-        "zh_cn": "增加你造成的所有伤害。",
+        "en_us": "Refresh your elemental runes\nand increase all damage you\ndeal. This includes damage from\nnon-attack sources like shields\nand fire.",
+        "fr": "Rafraîchissez vos runes\nélémentaires et augmentez tous\nvos dégâts, y compris ceux des\nsources non liées à l'attaque\ncomme les boucliers et le feu.",
+        "zh_tw": "刷新你的元素符文並增加你造成\n的所有傷害，包括來自盾牌和火\n焰等非攻擊來源的傷害。",
+        "zh_cn": "刷新你的元素符文并增加你造成\n的所有伤害，包括来自盾牌和火\n焰等非攻击来源的伤害。",
         "ru": "Энергизируйте себя, чтобы увеличить\nвесь наносимый вами урон",
         "es": "",
         "jp": ""
@@ -624,7 +624,7 @@ let textData = {
         "jp": ""
     },
     "time_tut_protect_desc": {
-        "en_us": "Creates a shield that defers\nthe damage you take so that\nyou lose health gradually\nrather than all at once.",
+        "en_us": "Create a shield that defers\nthe damage you take so that\nyou lose health gradually\nrather than all at once.",
         "fr": "Crée un bouclier qui reporte les\ndégâts que vous subissez pour\nque vous les subissiez\nprogressivement au lieu de tout\nd’un coup.",
         "zh_tw": "打造一個盾牌，可以延遲\n你受到的傷害，讓你的生命值\n緩慢減少。",
         "zh_cn": "打造一个盾牌，可以延迟\n你受到的伤害，让你的生命值\n缓慢减少。",

@@ -391,7 +391,7 @@ let textData3 = {
     },
     "death7b": {
         "en_us": "Enough Reaper! Your attempts\nat stopping me have failed.",
-        "fr": "Assez Faucheur ! Vos tentatives pour m'arrêter ont échoué.",
+        "fr": "Assez Faucheur ! Vos tentatives\npour m'arrêter ont échoué.",
         "zh_tw": "夠了死神！\n你阻止不了我的前進。",
         "zh_cn": "够了死神！\n你阻止不了我的前行。",
         "ru": "",
@@ -434,33 +434,6 @@ let textData3 = {
         "es": "",
         "jp": ""
     },
-    "death7ax": {
-        "en_us": "ALAS, IT IS NOT WITHIN\nMY AUTHORITY TO STOP YOU.",
-        "fr": "HÉLAS, IL N’EST PAS DANS\nMON AUTORITÉ DE VOUS ARRÊTER.",
-        "zh_tw": "唉，阻止你不在我的許可權之內。",
-        "zh_cn": "唉，阻止你不在我的权限之内。",
-        "ru": "УВЫ, НЕ В МОИХ СИЛАХ ОСТАНОВИТЬ ВАС.",
-        "es": "POR DESGRACIA, NO ESTÁ DENTRO DE MI AUTORIDAD DETENERTE.",
-        "jp": "悲しいかな、あなたを止めるのは私の権限ではありません。"
-    },
-    "death7bx": {
-        "en_us": "SO I CAN ONLY GIVE YOU\nA WORD OF CAUTION",
-        "fr": "JE NE PEUX DONC QUE VOUS\nDONNER UN MOT D’AVERTISSEMENT",
-        "zh_tw": "所以我只能告誡你一句",
-        "zh_cn": "所以我只能告诫你一句",
-        "ru": "ПОЭТОМУ Я МОГУ ТОЛЬКО ПРЕДОСТЕРЕЧЬ ВАС",
-        "es": "ASÍ QUE SOLO PUEDO DARLE UNA PALABRA DE PRECAUCIÓN",
-        "jp": "だから、私はあなたに一言注意することしかできません"
-    },
-    "death7cx": {
-        "en_us": "DANGEROUS FOES LIE AHEAD.",
-        "fr": "QUE DE DANGEREUX ENNEMIS\nSE TROUVENT DEVANT VOUS.",
-        "zh_tw": "危險的敵人就在前方。",
-        "zh_cn": "危险的敌人就在前方。",
-        "ru": "ЧТО ВПЕРЕДИ НАС ЖДУТ ОПАСНЫЕ ВРАГИ.",
-        "es": "QUE SE AVECINAN ENEMIGOS PELIGROSOS.",
-        "jp": "危険な敵が待ち受けていること。"
-    },
     "death8a": {
         "en_us": "YOU ARE INDEED CLOSE TO\nREACHING YOUR BELOVED.",
         "fr": "VOUS ÊTES EN EFFET SUR LE POINT\nD’ATTEINDRE VOTRE BIEN-AIMÉ.",
@@ -497,168 +470,7 @@ let textData3 = {
         "es": "DESPEDIDA",
         "jp": "お別れ"
     },
-    "deathFight1c": {
-        "en_us": "YOU'VE LEARNED SOME\nNEW TRICKS. NOT BAD.",
-        "fr": "VOUS AVEZ APPRIS DE\nNOUVELLES ASTUCES. PAS MAL.",
-        "zh_tw": "你學會了一些新技巧。不錯。",
-        "zh_cn": "你学会了一些新技巧。不错。",
-        "ru": "ВЫ УЗНАЛИ НЕСКОЛЬКО\nНОВЫХ ТРЮКОВ. НЕПЛОХО.",
-        "es": "HAS APRENDIDO ALGUNOS\nTRUCOS NUEVOS. BIEN.",
-        "jp": "新しいトリックを学びましたね。悪くありません。"
-    },
-    "deathFight1d": {
-        "en_us": "BUT YOU WILL NOT\nESCAPE YOUR FATE.",
-        "fr": "MAIS CELA NE VOUS DISPENSE\nPAS DE VOTRE DESTIN.",
-        "zh_tw": "但這並不能免除你的命運。",
-        "zh_cn": "但这并不能免除你的命运。",
-        "ru": "НО ЭТО НЕ ОСВОБОЖДАЕТ\nВАС ОТ ВАШЕЙ СУДЬБЫ.",
-        "es": "PERO ESO NO TE ABSUELVE\nDE TU DESTINO.",
-        "jp": "しかし、それはあなたの運命を免除するものではありません。"
-    },
-    "deathFight1e": {
-        "en_us": "DEATH BY A THOUSAND CUTS",
-        "fr": "LA MORT PAR MILLE COUPURES",
-        "zh_tw": "千刀萬剮致死",
-        "zh_cn": "千刀万剐致死",
-        "ru": "СМЕРТЬ ОТ ТЫСЯЧИ ПОРЕЗОВ",
-        "es": "MUERTE POR MIL CORTES",
-        "jp": "千の切り傷による死"
-    },
-    "deathFight1f": {
-        "en_us": "STILL ALIVE?",
-        "fr": "TOUJOURS VIVANT?",
-        "zh_tw": "仍然活著？",
-        "zh_cn": "仍然活着？",
-        "ru": "ВСЕ ЕЩЁ ЖИВ?",
-        "es": "¿SIGO VIVO?",
-        "jp": "まだ生きています。"
-    },
-    "deathFight1g": {
-        "en_us": "NO MORE MESSING AROUND",
-        "fr": "ON NE VA PLUS JOUER",
-        "zh_tw": "我不會再胡鬧了",
-        "zh_cn": "我不会再胡闹了",
-        "ru": "БОЛЬШЕ НЕ НУЖНО БЕЗДЕЛЬНИЧАТЬ",
-        "es": "NO MÁS LÍOS",
-        "jp": "もういじくり回す必要はありません"
-    },
-    "deathFight1h": {
-        "en_us": "...HMPH, SHODDY EQUIPMENT",
-        "fr": "... HMPH, ÉQUIPEMENT\nDE MAUVAISE QUALITÉ",
-        "zh_tw": "...哼，以次充好的設備",
-        "zh_cn": "...哼，以次充好的设备",
-        "ru": "... HMPH, НИЗКОПРОБНОЕ ОБОРУДОВАНИЕ",
-        "es": "... HMPH, EQUIPO DE MALA CALIDAD",
-        "jp": "...ふんふん、粗悪な機器"
-    },
-    "deathFight1i": {
-        "en_us": "SEEMS I HAVE TO BE\nMORE HANDS ON.",
-        "fr": "On dirait que je dois\nme salir les mains.",
-        "zh_tw": "看來我需要親自動手。",
-        "zh_cn": "看来我需要亲自动手。",
-        "ru": "КАЖЕТСЯ, МНЕ НУЖНО БЫТЬ БОЛЕЕ ПРАКТИЧНЫМ.",
-        "es": "PARECE QUE TENGO QUE SER MÁS PRÁCTICO.",
-        "jp": "もっと手を動かさなければならないようです。"
-    },
-    "deathFight2a": {
-        "en_us": "PREPARE YOURSELF!",
-        "fr": "PRÉPAREZ-VOUS!",
-        "zh_tw": "做好準備！",
-        "zh_cn": "做好准备！",
-        "ru": "ПРИГОТОВЬТЕСЬ!",
-        "es": "¡PREPARARSE!",
-        "jp": "準備してください!"
-    },
-    "epilogue1a": {
-        "en_us": "DEAR ME, I WASN'T QUITE\nEXPECTING THIS OUTCOME.",
-        "fr": "CHER MOI, JE NE M'ATTENDAIS\nPAS VRAIMENT À CE RÉSULTAT.",
-        "zh_tw": "唉，我並沒預料到會出現這樣的結果。",
-        "zh_cn": "唉，我并没预料到会出现这样的结果。",
-        "ru": "ДОРОГОЙ МЕНЯ, Я НЕ СОВЕРШЕННО\nОЖИДАЛ ТАКОГО РЕЗУЛЬТАТА.",
-        "es": "QUERIDO YO, NO ESPERABA\nESTE RESULTADO.",
-        "jp": "親愛なる私、この結果はまったく予想していませんでした。"
-    },
-    "epilogue1b": {
-        "en_us": "BUT AS PROMISED, I WILL\nSTILL GRANT YOU YOUR DESIRE...",
-        "fr": "MAIS COMME PROMIS, JE\nT'ACCORDERAI TOUJOURS TON DÉSIR...",
-        "zh_tw": "但按照先前的承諾，\n我仍然會滿足你的願望。。。",
-        "zh_cn": "但按照之前的承诺，\n我仍然会满足你的愿望。。。",
-        "ru": "НО, КАК ОБЕЩАНО, Я ВСЕ\nЕЩЕ ВЫПОЛНЮ ВАМ ВАШЕ ЖЕЛАНИЕ...",
-        "es": "PERO COMO LO PROMETÍ,\nAÚN TE CONCEDERÉ TU DESEO...",
-        "jp": "でも約束通り、あなたの\n望みは必ず叶えます..."
-    },
-    "epilogue1c": {
-        "en_us": "TO BE WITH YOUR BELOVED.",
-        "fr": "ÊTRE AVEC VOTRE BIEN-AIMÉ.",
-        "zh_tw": "讓你陪伴在你心愛的人身邊。",
-        "zh_cn": "让你陪伴在你心爱的人身边。",
-        "ru": "БЫТЬ С ЛЮБИМЫМ.",
-        "es": "PARA ESTAR CON TU AMADO.",
-        "jp": "愛する人と一緒にいること。"
-    },
-    "epilogue1d": {
-        "en_us": "MAY YOU FIND PEACE\nIN ETERNAL SLUMBER.",
-        "fr": "PUISSIEZ-VOUS TROUVER LA\nPAIX DANS LE SOMMEIL ÉTERNEL.",
-        "zh_tw": "願你在永恆的沉睡中找到平安。",
-        "zh_cn": "愿你在永恒的沉睡中找到平安。",
-        "ru": "ПУСТЬ ТЫ НАЙДЕШЬ ПОКОЙ В ВЕЧНОМ СНЕ.",
-        "es": "QUE ENCUENTRES PAZ EN EL SUEÑO ETERNO.",
-        "jp": "永遠の眠りの中で安らぎを見いだせますように。"
-    },
-    "epilogue1e": {
-        "en_us": "Ending 3\nEternal Rest",
-        "fr": "Fin 3 :\nLe Repos Éternel",
-        "zh_tw": "結束 3\n永恆的安息",
-        "zh_cn": "结束 3\n永恒的安息",
-        "ru": "Концовка 3\nВечный покой",
-        "es": "Final 3\nDescanso eterno",
-        "jp": "エンディング3\n永遠の休息"
-    },
-    "epilogue2a": {
-        "en_us": "I SEE YOUR DESIRE TO\nSEEK VICTORY REMAINS INSATIABLE.",
-        "fr": "JE VOIS QUE VOTRE DÉSIR DE\nCHERCHER LA VICTOIRE RESTE INSATIABLE.",
-        "zh_tw": "看来你尋求勝利的慾望仍然永不滿足。",
-        "zh_cn": "看来你寻求胜利的欲望仍然永不满足。",
-        "ru": "Я ВИЖУ, ЧТО ВАШЕ ЖЕЛАНИЕ ДОБИВАТЬСЯ\nПОБЕДЫ ОСТАЕТСЯ НЕНАСЫТНЫМ.",
-        "es": "VEO QUE TU DESEO DE BUSCAR LA VICTORIA SIGUE SIENDO INSACIABLE.",
-        "jp": "あなたの勝利を求める欲望は飽くなきままです。"
-    },
-    "epilogue2b": {
-        "en_us": "SHOULD I WISH, IT WOULD BE\nTRIVIAL TO SIMPLY...",
-        "fr": "SI JE LE SOUHAITAIS, IL SERAIT\nTRIVIAL DE SIMPLEMENT...",
-        "zh_tw": "如果我願意，簡單地說是微不足道的......",
-        "zh_cn": "如果我愿意，简单地说是微不足道的......",
-        "ru": "ЕСЛИ БЫ Я ЗАХОТЕЛ, БЫЛО БЫ ТРИВИАЛЬНО ПРОСТО...",
-        "es": "SI QUISIERA, SERÍA TRIVIAL SIMPLEMENTE...",
-        "jp": "私が望むなら、それは単に..."
-    },
-    "epilogue2c": {
-        "en_us": "END YOUR LIFE BY FORCE.",
-        "fr": "METTEZ FIN À VOS JOURS PAR LA FORCE.",
-        "zh_tw": "用武力結束你的生命。",
-        "zh_cn": "用武力结束你的生命。",
-        "ru": "ПОКОНЧИТЕ С ЖИЗНЬЮ СИЛОЙ.",
-        "es": "ACABA CON TU VIDA POR LA FUERZA.",
-        "jp": "力ずくで命を終わらせる。"
-    },
-    "epilogue2e": {
-        "en_us": "I WILL GIVE YOU BACK\nYOUR BELOVED",
-        "fr": "JE TE RENDRAI TON BIEN-AIMÉ",
-        "zh_tw": "我會把你心愛的人還給你",
-        "zh_cn": "我会把你心爱的人还给你",
-        "ru": "Я ВЕРНУ ТЕБЕ ЛЮБИМОГО",
-        "es": "TE DEVOLVERÉ A TU AMADO",
-        "jp": "愛する人を返す"
-    },
-    "epilogue2f": {
-        "en_us": "AND YOU SHALL WANDER THE\nWORLD ETERNALLY WITHOUT REST.",
-        "fr": "ET TU ERRERAS ÉTERNELLEMENT\nDANS LE MONDE SANS REPOS.",
-        "zh_tw": "你將永遠在世界上流浪，沒有休息。",
-        "zh_cn": "你将永远在世界上流浪，没有休息。",
-        "ru": "И ТЫ БУДЕШЬ ВЕЧНО СКИТАТЬСЯ ПО МИРУ БЕЗ ОТДЫХА.",
-        "es": "Y VAGARÁS POR EL MUNDO ETERNAMENTE SIN DESCANSO.",
-        "jp": "そして、あなたは休むことなく永遠に世界をさまようでしょう。"
-    },
+
 
     "magician_death": {
         "en_us": "TIME'S UP",

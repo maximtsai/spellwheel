@@ -521,6 +521,13 @@ class Player {
             this.addRecentlyTakenDamage(damageTaken);
 
             this.bleedObj.alpha = Math.sqrt(damageTaken) * 0.04;
+            if (!this.restrictShake) {
+                this.restrictShake = true;
+                screenShake(2);
+                setTimeout(() => {
+                    this.restrictShake = false;
+                }, 100)
+            }
             this.scene.tweens.add({
                 targets: this.bleedObj,
                 duration: 250,
@@ -736,7 +743,7 @@ class Player {
                             shieldObj.shakeAmt = 0.05 + hurtAmt * 0.005;
                             shieldObj.impactVisibleTime = 6;
                             shieldObj.animObj[2].rotateOffset = -shieldObj.animObj[0].rotation * 0.92;
-                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y + 25, 'BLOCKED', 0.9, {y: "-=5", ease: 'Quart.easeOut'}, {scaleX: 0.85, scaleY: 0.85, alpha: 0, });
+                            messageBus.publish('animateBlockNum', shieldObj.animObj[1].x + 1, shieldObj.animObj[1].y + 31, 'BLOCKED', 0.9, {y: "-=5", ease: 'Quart.easeOut'}, {scaleX: 0.85, scaleY: 0.85, alpha: 0, });
                         } else {
                             playSound('shield_break', 0.6);
                             hurtAmt = hurtAmt - shieldObj.health;

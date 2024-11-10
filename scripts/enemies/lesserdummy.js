@@ -445,12 +445,12 @@
                  let oldOriginY = this.sprite.originY;
                  this.setDefaultSprite('lesser_dummy_hurt.png').setOrigin(oldOriginX, oldOriginY);
                  // this.eyeSprite.destroy();
-                 let ouch1 = this.addImage(this.sprite.x + 6, this.sprite.y - 148, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(0.6);
-                 let ouch2 = this.addImage(this.sprite.x + 6, this.sprite.y - 144, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(1);
+                 let ouch1 = this.addImage(this.sprite.x + 8, this.sprite.y - 151, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(0.6);
+                 let ouch2 = this.addImage(this.sprite.x + 8, this.sprite.y - 144, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(1);
                  this.addTween({
                      targets: ouch1,
-                     x: "+=45",
-                     y: "-=50",
+                     x: "+=55",
+                     y: "-=60",
                      ease: 'Quart.easeOut',
                      duration: 660
                  })
@@ -468,8 +468,8 @@
                  })
                  this.addTween({
                      targets: ouch2,
-                     x: "+=85",
-                     y: "+=45",
+                     x: "+=90",
+                     y: "+=50",
                      ease: 'Quart.easeOut',
                      duration: 800
                  })
@@ -591,7 +591,7 @@
          globalObjects.magicCircle.disableMovement();
          let banner = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
          let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let continueText = this.addText(gameConsts.width - 15, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 20}).setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998);
+         let continueText = this.addText(gameConsts.halfWidth, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 18}).setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998);
 
          this.addTween({
              targets: banner,

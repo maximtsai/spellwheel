@@ -25,7 +25,6 @@ function updateSpellState(level) {
     highestLevel = level;
     gameVars.matterPlus = false;
     gameVars.mindPlus = false;
-    console.log("updateSpellState: ", level)
     switch(level) {
         case -6:
             // void dummy

@@ -398,7 +398,7 @@ let textData4 = {
         "jp": "一部の攻撃はブロックできません。"
     },
     "tree_a": {
-        "en_us": "The spiky thorns on the tree\nredirects 2 damage back onto you!",
+        "en_us": "Spiky thorns from the tree will\nreflect 2 damage back onto you!",
         "fr": "Les épines hérissées sur l’arbre\nredirigent 2 dégâts sur vous !",
         "zh_tw": "樹上的尖刺會將 2 點傷害\n反弹回你身上！",
         "zh_cn": "树上的尖刺会将 2 点伤害\n反弹回你身上！",
@@ -407,16 +407,16 @@ let textData4 = {
         "jp": "木のとがったとげは、2ダメ\nージをあなたに戻してくれます!"
     },
     "tree_b": {
-        "en_us": "Attack and defend carefully!",
-        "fr": "Attaquez et défendez-vous prudemment !",
-        "zh_tw": "謹慎的進攻並防守！",
-        "zh_cn": "谨慎的进攻并防守！",
+        "en_us": "Attack and defend carefully",
+        "fr": "Attaquez et défendez-vous prudemment",
+        "zh_tw": "謹慎的進攻並防守",
+        "zh_cn": "谨慎的进攻并防守",
         "ru": "Атакуйте и защищайтесь осторожно!",
         "es": "¡Ataca y defiende con cuidado!",
         "jp": "丁寧に攻めと守りを!"
     },
     "magician_a": {
-        "en_us": "Nice try, but your\nattacks have no shock.",
+        "en_us": "Nice try, but your\nattacks lack shock.",
         "fr": "Bien tenté, mais tes\ncoups n'ont aucun choc.",
         "zh_tw": "打得不錯，但你攻擊缺威力。",
         "zh_cn": "打得不错，但你攻击缺威力。",

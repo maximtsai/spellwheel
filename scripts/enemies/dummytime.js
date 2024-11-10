@@ -182,7 +182,7 @@
                  {
                      name: ";15x5;",
                      chargeAmt: 620,
-                     finishDelay: 2800,
+                     finishDelay: 3400,
                      isBigMove: true,
                      transitionFast: true,
                      damage: -1,

@@ -4,6 +4,42 @@ globalVolume = 0.9;
 globalMusicVol = 0.9;
 globalMusic = null;
 globalTempMusic = null;
+let lastLongSound = null;
+let lastLongSound2 = null;
+let useSecondLongSound = false;
+let isMuted = false;
+
+function muteAll() {
+    isMuted = true;
+    if (globalMusic) {
+        globalMusic.setVolume(0);
+    }
+    if (globalTempMusic) {
+        globalTempMusic.setVolume(0);
+    }
+    if (lastLongSound) {
+        lastLongSound.setVolume(0);
+    }
+    if (lastLongSound2) {
+        lastLongSound2.setVolume(0);
+    }
+}
+
+function unmuteAll() {
+    isMuted = false;
+    if (globalMusic) {
+        globalMusic.volume = globalMusic.fullVolume * globalMusicVol;
+    }
+    if (globalTempMusic) {
+        globalTempMusic.volume = globalTempMusic.fullVolume * globalMusicVol;
+    }
+    if (lastLongSound) {
+        lastLongSound.volume = lastLongSound.fullVolume * globalMusicVol;
+    }
+    if (lastLongSound2) {
+        lastLongSound2.volume = lastLongSound2.fullVolume * globalMusicVol;
+    }
+}
 
 function initializeSounds(scene) {
     // for (let i in audioFiles) {
@@ -33,6 +69,17 @@ function playSound(name, volume = 1, loop = false, isMusic = false) {
         soundList[name].volume = volume * globalMusicVol;
         globalMusic = soundList[name];
     }
+    if (!isMusic && soundList[name].duration > 3.5) {
+        if (useSecondLongSound) {
+            lastLongSound2 = soundList[name];
+        } else {
+            lastLongSound = soundList[name];
+        }
+        useSecondLongSound = !useSecondLongSound;
+    }
+    if (isMuted) {
+        soundList[name].volume = 0;
+    }
     soundList[name].detune = 0;
     soundList[name].pan = 0;
     soundList[name].play();
@@ -56,6 +103,9 @@ function playFakeBGMusic(name, volume = 1, loop = false) {
     if (soundList[name].currTween) {
         soundList[name].currTween.stop();
         soundList[name].currTween = null;
+    }
+    if (isMuted) {
+        soundList[name].volume = 0;
     }
     soundList[name].isMusic = true;
     soundList[name].play();

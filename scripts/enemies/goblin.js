@@ -24,7 +24,7 @@
         this.isAnimating = false;
          this.attackEase = "Quart.easeIn";
          this.accumulatedAnimDamage = 0;
-         this.shieldTextOffsetY = -5;
+         this.shieldTextOffsetY = -1;
      }
 
      // update(dt) {}
@@ -271,7 +271,7 @@
                          this.repeatTweenBreathe()
                          this.shieldAdded = true;
 
-                         messageBus.publish("showCombatText", getLangText('goblin_shield'), -22);
+                         messageBus.publish("showCombatText", getLangText('goblin_shield'), -41);
                      }
                  }
              ],
@@ -295,6 +295,7 @@
                                 let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
                                 this.rune3 = this.addImage(centerXPos - 32, runeYPos + 17, 'circle', 'bright_rune_mind.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
                                 this.rune4 = this.addImage(centerXPos + 38, runeYPos + 17, 'circle', 'bright_rune_enhance.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+                                messageBus.publish("closeCombatText")
                                 this.addTween({
                                     targets: [this.rune3, this.rune4],
                                     scaleX: 1,
@@ -302,7 +303,6 @@
                                     ease: 'Quart.easeOut',
                                     duration: 500,
                                     onComplete: () => {
-                                        messageBus.publish("closeCombatText")
                                         this.addTween({
                                             targets: [this.rune3, this.rune4],
                                             scaleX: 0.8,

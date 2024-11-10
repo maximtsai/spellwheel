@@ -1784,7 +1784,7 @@ class SpellManager {
                             scaleY: 0.9,
                             ease: 'Quad.easeOut',
                         });
-                        messageBus.publish('animateTrueDamageNum', attackObj.x + 12 - Math.random() * 24, attackObj.y - 28 - Math.random() * 5, 'VULNERABLE', isMobile ? 0.9 : 0.85);
+                        messageBus.publish('animateTrueDamageNum', attackObj.x + 12 - Math.random() * 24, attackObj.y - 30 - Math.random() * 5, 'VULNERABLE', isMobile ? 0.9 : 0.85);
 
                         messageBus.publish('enemyTakeEffect', {
                             name: spellID,
@@ -1970,7 +1970,7 @@ class SpellManager {
             scaleX: 1,
             scaleY: 1
         }
-        messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + buffAmt + " ALL\nDAMAGE", 0.9 + Math.sqrt(buffAmt) * 0.15, param, param2);
+        messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 25, "+" + buffAmt + " ALL\nDAMAGE", 0.9 + Math.sqrt(buffAmt) * 0.15, param, param2);
 
         messageBus.publish('selfTakeEffect', {
             name: spellID,

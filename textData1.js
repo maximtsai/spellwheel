@@ -543,7 +543,7 @@ let textData = {
         "jp": "元素をマスターすると、既存のエネルギー呪文の一部が強化されます。"
     },
     "mind_tut_strike_desc": {
-        "en_us": "Fires a bolt of energy that\ndeals little damage by itself,\nbut makes your next attack\ndeal double (x2) damage.",
+        "en_us": "Shocks the enemy. This deals\nlittle damage by itself, but\ndoubles (x2) your next instance\nof attack damage.",
         "fr": "Tire un éclair d'énergie qui\ninflige peu de dégâts en soi,\nmais amplifie votre prochaine\nattaque pour doubler (x2)\nde dégâts.",
         "zh_tw": "發射一道能量彈，本身造成的\n傷害很少，但會讓你的下一個\n攻擊造成雙倍（x2）傷害。",
         "zh_cn": "发射一道能量弹，本身造成的\n伤害很少，但会使你的下一次\n攻击造成双倍（x2）伤害。",
@@ -570,7 +570,7 @@ let textData = {
         "jp": "ダメージの半分をブロックし、受けたダメージを溜め込んで報復するシールドを作成します。"
     },
     "mind_tut_reinforce_desc": {
-        "en_us": "Energize yourself to refresh your\nelemental runes and increase all\ndamage you deal.",
+        "en_us": "Refreshes your elemental runes\nand increase all damage you deal,\neven from non-attack sources.",
         "fr": "Dynamisez-vous pour rafraîchir vos\nrunes élémentaires et augmenter\ntous les dégâts que vous infligez.",
         "zh_tw": "補充能量來刷新你的元素符文\n並增加你造成的所有傷害。",
         "zh_cn": "补充能量来刷新你的元素符文\n并增加你造成的所有伤害。",

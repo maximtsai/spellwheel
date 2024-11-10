@@ -835,8 +835,8 @@ let textData2 = {
         "jp": "ボイドシールドは\n1回の攻撃を完全\nにブロックできる\n         +"
     },
     "dummy_mind_tut": {
-        "en_us": "1 damage, but\nyour next attack\nhits X2 as hard\n             +",
-        "fr": "1 dégât, mais\nvotre prochaine\nattaque frappe\nX2 aussi fort\n            +",
+        "en_us": "1 damage, but\nyour next attack\nhits x2 as hard\n             +",
+        "fr": "1 dégât, mais\nvotre prochaine\nattaque frappe\nx2 aussi fort\n            +",
         "zh_tw": "1 点伤害，但\n你的下一次攻擊\n会造成兩倍傷害\n           +",
         "zh_cn": "1 点伤害，但\n你的下一次攻击\n会造成双倍伤害\n           +",
         "ru": "Энергетический удар делает вашу следующую атаку в два раза сильнее.\n             +",

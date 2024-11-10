@@ -307,6 +307,8 @@ class Enemy {
         this.chargeBarMax.depth = depth;
         this.voidPause.depth = depth;
         this.chargeBarWarning.depth = depth;
+        this.chargeVertical.depth = depth;
+        this.chargeVertical2.depth = depth;
         this.chargeBarCurr.depth = depth;
         this.chargeBarAngry.depth = depth;
         this.chargeBarFlash1.depth = depth;
@@ -819,6 +821,8 @@ class Enemy {
         if (this.isAsleep) {
             this.chargeBarAngry.visible = false;
             this.chargeBarCurr.visible = false;
+            this.chargeVertical.alpha = 0;
+            this.chargeVertical2.alpha = 0;
         } else if (this.timeSinceLastAttacked < 18) {
             if (!this.isAngry) {
                 this.isAngry = true;
@@ -828,6 +832,8 @@ class Enemy {
                     this.showAngrySymbol(this.customAngry || 'angry');
                 }
                 this.chargeBarCurr.visible = false;
+                this.chargeVertical.alpha = 0;
+                this.chargeVertical2.alpha = 0;
             }
         } else if (chargeMult > 1) {
             this.isAngry = false;
@@ -896,7 +902,7 @@ class Enemy {
             this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake, true);
             let damageSqrt = Math.sqrt(damageToTake);
             setTimeout(() => {
-                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth - 60, 182 - damageSqrt * 2, 'X2', 0.5 + damageSqrt * 0.1);
+                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth - 45, 218 - damageSqrt * 2.2, 'X2', 0.5 + damageSqrt * 0.1);
             }, Math.floor(damageSqrt) * 15)
 
             amt += damageToTake;
@@ -1626,6 +1632,13 @@ class Enemy {
         this.chargeBarEst1.visible = false;
         this.chargeBarEst2.visible = false;
 
+        this.addTween({
+            targets: [this.chargeVertical, this.chargeVertical2],
+            alpha: 0,
+            duration: 500,
+            ease: 'Cubic.easeOut'
+        });
+
         PhaserScene.tweens.add({
             targets: [this.chargeBarMax, this.chargeBarCurr, this.chargeBarOutline],
             scaleX: 0,
@@ -1809,6 +1822,8 @@ class Enemy {
         this.attackGlow.destroy();
         this.attackDarken.destroy();
         this.attackNameHighlight.destroy();
+        this.chargeVertical.destroy();
+        this.chargeVertical2.destroy();
 
         if (this.chargeBarEst1.currAnim) {
             this.chargeBarEst1.currAnim.stop();
@@ -1896,6 +1911,8 @@ class Enemy {
         this.chargeBarEst2.visible = false;
         this.hideAngrySymbol()
         this.voidPause.visible = false;
+        this.chargeVertical.visible = false;
+        this.chargeVertical2.visible = false;
 
         this.attackName.visible = false;
         this.attackGlow.visible = false;
@@ -2145,7 +2162,7 @@ class Enemy {
         globalObjects.magicCircle.disableMovement();
          let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
          let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 20}).setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998);
+         let continueText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 20}).setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998);
          swirlInReaperFog();
 
          PhaserScene.tweens.add({

@@ -120,6 +120,7 @@ let url4 = 'classic.itch';// '1001juegos';
 
 function preload ()
 {
+    showBackground();
     gameVars.latestLevel = parseInt(localStorage.getItem("latestLevel"));
     gameVars.maxLevel = parseInt(localStorage.getItem("maxLevel"));
     if (!gameVars.latestLevel) {
@@ -402,4 +403,19 @@ function handleBorders() {
     let shiftAmt = pixelWidth * gameScale * 0.5 + widthAmt;
     leftBorder.style.left = 'calc(50% - ' + shiftAmt + 'px)'
     rightBorder.style.right = 'calc(50% - ' + shiftAmt + 'px)'
+}
+
+function showBackground() {
+    let leftBorder = document.getElementById('leftborder');
+    let rightBorder = document.getElementById('rightborder');
+    let background = document.getElementById('background');
+    background.style['animation-name'] = 'changeShadow';
+    background.style.opacity = '0.3';
+
+    leftBorder.style['animation-name'] = 'changeFull';
+    leftBorder.style.opacity = '1';
+    rightBorder.style['animation-name'] = 'changeFull';
+    rightBorder.style.opacity = '1';
+
+    
 }

@@ -23,6 +23,7 @@ function beginPreLevel(lvl) {
     }
     switch(lvl) {
         case 0:
+            globalObjects.magicCircle.setWheelTint();
             gameVars.latestLevel = 0;
             // lesser dummy
             let bgDim = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(-1).setAlpha(0).setScale(500);
@@ -230,6 +231,7 @@ function beginPreLevel(lvl) {
             break;
         case 2:
             // goblin
+            globalObjects.magicCircle.setWheelTint(0.09, 0.02, 'usage_tint_b.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'gobbo_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth - 40, gameConsts.halfHeight - 205, getLangText('pre_fight_1a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -244,6 +246,7 @@ function beginPreLevel(lvl) {
             break;
         case 3:
             // tree
+            globalObjects.magicCircle.setWheelTint(0.11, 0.06, 'usage_tint_b.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'tree_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +165, getLangText('pre_fight_2a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -256,6 +259,7 @@ function beginPreLevel(lvl) {
             break;
         case 4:
             // magician
+            globalObjects.magicCircle.setWheelTint(0.06, 0.03, 'usage_tint_b.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 40, 'ui', 'magician_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 248, gameConsts.halfHeight - 180, getLangText('pre_fight_3a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -268,6 +272,7 @@ function beginPreLevel(lvl) {
             break;
         case 5:
             // statue
+            globalObjects.magicCircle.setWheelTint();
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'statue_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 120, getLangText('pre_fight_3_5a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -277,6 +282,7 @@ function beginPreLevel(lvl) {
             break;
         case 6:
             // knight
+            globalObjects.magicCircle.setWheelTint(0.07, 0.05);
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'knight_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 130, getLangText('pre_fight_4a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -290,6 +296,7 @@ function beginPreLevel(lvl) {
 
         case 7:
             // wall
+            globalObjects.magicCircle.setWheelTint();
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'wall_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 55, getLangText('pre_fight_5a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -312,11 +319,13 @@ function beginPreLevel(lvl) {
             //
             // createGlobalClickBlocker();
             // fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
+            globalObjects.magicCircle.setWheelTint();
             beginLevel(lvl);
             break;
 
         case 9:
             // mantis
+            globalObjects.magicCircle.setWheelTint(0.07, 0.05);
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'mantis_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 65, getLangText('pre_fight_7a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -329,6 +338,7 @@ function beginPreLevel(lvl) {
             break;
         case 10:
             // robot
+            globalObjects.magicCircle.setWheelTint(0.03, 0.08, 'usage_tint_r.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'robot_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 140, getLangText('pre_fight_8a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -586,6 +596,7 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'tunnel.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case 11:
+            globalObjects.magicCircle.setWheelTint(0.03, 0.07, 'usage_tint_b.png');
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 2500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
     }
@@ -601,6 +612,12 @@ function beginLevel(lvl, instant = false) {
     globalObjects.magicCircle.buildRunes();
     if (lvl <= 1) {
         switchLevelBackground(lvl)
+    } else if (lvl === 12) {
+        // death levels
+        globalObjects.magicCircle.setWheelTint(0.05, 0.07, 'usage_tint_r.png');
+    } else if (lvl === 13) {
+        // death levels
+        globalObjects.magicCircle.setWheelTint(0.06, 0.02, 'usage_tint_b.png');
     }
 
     playSound('whoosh');

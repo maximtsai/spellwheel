@@ -177,6 +177,7 @@ function clearMenuButtons() {
 }
 
 function gotoMainMenu() {
+    globalObjects.magicCircle.setWheelTint();
     globalObjects.magicCircle.enableMovement();
     if (gameVars.isInMainMenu) {
         return;

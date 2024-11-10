@@ -545,8 +545,8 @@ const ENABLE_KEYBOARD = true;
         this.castHoverTemp = scene.add.sprite(x, y, 'circle', this.altString + 'cast_press.png').setDepth(121).setAlpha(0);
         this.castGlow = scene.add.sprite(x, y, 'circle', 'cast_glow.png').setDepth(121).setAlpha(0);
 
-        this.tintColor = scene.add.sprite(x, y, 'misc', 'usage_tint_y.png').setDepth(121).setAlpha(0.03).setBlendMode(Phaser.BlendModes.MULTIPLY);
         this.tintDark = scene.add.image(x, y, 'misc', 'usage_tint_k.png').setDepth(121).setAlpha(0.06).setBlendMode(Phaser.BlendModes.MULTIPLY);
+        this.tintColor = scene.add.sprite(x, y, 'misc', 'usage_tint_y.png').setDepth(121).setAlpha(0.03).setBlendMode(Phaser.BlendModes.MULTIPLY);
 
         this.greyedDead = scene.add.sprite(x, y, 'circle', 'greyed_dead.png').setVisible(false).setDepth(135);
 
@@ -618,11 +618,11 @@ const ENABLE_KEYBOARD = true;
         this.buildRunes();
     }
 
-    setWheelTint(darkAlpha = 0.06, colorAlpha = 0.03, color) {
-        this.tintColor.setAlpha(colorAlpha);
+    setWheelTint(darkAlpha = 0.06, colorAlpha = 0.03, color = 'usage_tint_y.png') {
         this.tintDark.setAlpha(darkAlpha);
+        this.tintColor.setAlpha(colorAlpha);
         if (color) {
-            this.tintColor.setFrame('usage_tint_y.png');
+            this.tintColor.setFrame(color);
         }
     }
 
@@ -1722,7 +1722,7 @@ const ENABLE_KEYBOARD = true;
 
         } else {
             // failed cast
-            let retryDelay = this.keyboardCasted ? 150 : 0;
+            let retryDelay = this.keyboardCasted ? 50 : 0;
             PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * retryDelay, () => {
                 this.bufferedCastAvailable = true;
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 250, () => {
@@ -2166,7 +2166,7 @@ const ENABLE_KEYBOARD = true;
                     rotation: 1.57,
                     alpha: 0.55
                 });
-                let stopForceAlignmentDelay = this.keyboardCasted ? 100 : 0;
+                let stopForceAlignmentDelay = 0;
                 let attackAlignDelay = isAttack ? 100 : 0;
                 let reEnableDelay = this.keyboardCasted ? 200 : 0;
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * stopForceAlignmentDelay, () => {

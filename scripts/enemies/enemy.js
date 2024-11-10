@@ -525,6 +525,8 @@ class Enemy {
                 }
             }
             this.chargeBarShow = false;
+            this.chargeVertical.scaleY = 1.28;
+            this.chargeVertical2.scaleY = 1.28;
             if (this.isAngry) {
                 let increaseMult = Math.max(8, 0.34 * chargeMult);
                 if (challenges.angryEnemies) {
@@ -542,12 +544,14 @@ class Enemy {
                     }
                 }
                 this.attackCharge += timeChange * increaseMult * this.slowMult + castAggravateBonus;
-                this.chargeVertical.alpha = Math.min(1, this.chargeVertical.alpha + timeChange * 0.2 * dt);
+                this.chargeVertical.alpha = Math.min(1, this.chargeVertical.alpha + timeChange * 0.3 * dt);
+                this.chargeVertical2.alpha = this.chargeVertical.alpha;
+                this.chargeVertical.scaleY = 1.4;
+                this.chargeVertical2.scaleY = 1.4;
+            } else {
+                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.04 * dt) * (1 - 0.08 * dt);
                 this.chargeVertical2.alpha = this.chargeVertical.alpha;
 
-            } else {
-                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.03 * dt) * (1 - 0.07 * dt);
-                this.chargeVertical2.alpha = this.chargeVertical.alpha;
                 almostDone = this.attackCharge > this.nextAttackChargeNeeded - 45;
 
                 if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone && this.castAggravateCharge <= 0) {
@@ -558,7 +562,7 @@ class Enemy {
                     // Normal slow chargin
                     if (almostDone || chargeMult > 1 || this.castAggravateCharge > 0) {
                         if (!this.isUsingAttack) {
-                            this.chargeVertical.alpha = Math.min(0.55, this.chargeVertical.alpha + timeChange * 0.21 * dt);
+                            this.chargeVertical.alpha = Math.min(0.65, this.chargeVertical.alpha + timeChange * 0.29 * dt);
                             this.chargeVertical2.alpha = this.chargeVertical.alpha;
                         }
 
@@ -645,10 +649,10 @@ class Enemy {
             this.chargeBarAngry.scaleX = this.chargeBarCurr.scaleX;
             if (this.attackPaused) {
                 // doNothing
-                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.33 * dt);
+                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.35 * dt);
                 this.chargeVertical2.alpha = this.chargeVertical.alpha;
             } else if (this.isUsingAttack) {
-                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.33 * dt);
+                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.35 * dt);
                 this.chargeVertical2.alpha = this.chargeVertical.alpha;
             } else if (this.attackCharge >= this.nextAttackChargeNeeded) {
                 if (this.nextAttack.damage !== undefined && this.nextAttack.damage !== 0) {

@@ -246,7 +246,7 @@ function beginPreLevel(lvl) {
             break;
         case 3:
             // tree
-            globalObjects.magicCircle.setWheelTint(0.11, 0.06, 'usage_tint_b.png');
+            globalObjects.magicCircle.setWheelTint(0.08, 0.07, 'usage_tint_b.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'tree_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +165, getLangText('pre_fight_2a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});

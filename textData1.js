@@ -489,7 +489,7 @@ let textData = {
         "jp": ""
     },
     "matter_tut_protect_desc": {
-        "en_us": "Creates a shield that blocks\na flat amount of damage.",
+        "en_us": "Create a shield that blocks\na flat amount of damage.",
         "fr": "Crée un bouclier qui bloque\nun certain montant de dégâts.",
         "zh_tw": "創建一個盾牌，\n阻擋一定量的傷害。",
         "zh_cn": "打造一个盾牌，\n阻挡一定量的伤害。",
@@ -561,7 +561,7 @@ let textData = {
         "jp": "次の通常攻撃で敵に火をつけ、防御を無視して継続ダメージを与える。"
     },
     "mind_tut_protect_desc": {
-        "en_us": "Creates a shield that blocks\n50% of the next attack, and\nretaliates with damage equal\nto the amount blocked.",
+        "en_us": "Create a shield that blocks\n50% of the next attack, and\nretaliates with damage equal\nto the amount blocked.",
         "fr": "Créer un bouclier qui bloque\n50 % de la prochaine attaque\net riposte avec des dégâts\négaux au montant bloqué.",
         "zh_tw": "打造一個盾牌，阻擋下一次\n攻擊的 50%，並以等於阻擋量\n的傷害進行反擊。",
         "zh_cn": "打造一个盾牌，阻挡下一次\n攻击的 50%，并以等于阻挡量\n的伤害进行反击。",
@@ -570,10 +570,10 @@ let textData = {
         "jp": "ダメージの半分をブロックし、受けたダメージを溜め込んで報復するシールドを作成します。"
     },
     "mind_tut_reinforce_desc": {
-        "en_us": "Refreshes your elemental runes\nand increase all damage you deal,\neven from non-attack sources.",
-        "fr": "Dynamisez-vous pour rafraîchir vos\nrunes élémentaires et augmenter\ntous les dégâts que vous infligez.",
-        "zh_tw": "補充能量來刷新你的元素符文\n並增加你造成的所有傷害。",
-        "zh_cn": "补充能量来刷新你的元素符文\n并增加你造成的所有伤害。",
+        "en_us": "Refresh your elemental runes\nand increase all damage you\ndeal. This includes damage from\nnon-attack sources like shields\nand fire.",
+        "fr": "Rafraîchissez vos runes\nélémentaires et augmentez tous\nvos dégâts, y compris ceux des\nsources non liées à l'attaque\ncomme les boucliers et le feu.",
+        "zh_tw": "刷新你的元素符文並增加你造成\n的所有傷害，包括來自盾牌和火\n焰等非攻擊來源的傷害。",
+        "zh_cn": "刷新你的元素符文并增加你造成\n的所有伤害，包括来自盾牌和火\n焰等非攻击来源的伤害。",
         "ru": "Энергизируйте себя, чтобы увеличить\nвесь наносимый вами урон",
         "es": "",
         "jp": ""
@@ -624,7 +624,7 @@ let textData = {
         "jp": ""
     },
     "time_tut_protect_desc": {
-        "en_us": "Creates a shield that defers\nthe damage you take so that\nyou lose health gradually\nrather than all at once.",
+        "en_us": "Create a shield that defers\nthe damage you take so that\nyou lose health gradually\nrather than all at once.",
         "fr": "Crée un bouclier qui reporte les\ndégâts que vous subissez pour\nque vous les subissiez\nprogressivement au lieu de tout\nd’un coup.",
         "zh_tw": "打造一個盾牌，可以延遲\n你受到的傷害，讓你的生命值\n緩慢減少。",
         "zh_cn": "打造一个盾牌，可以延迟\n你受到的伤害，让你的生命值\n缓慢减少。",

@@ -1810,31 +1810,6 @@
 					}
 				},
 				{
-					"filename": "bright_rune_strike.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 74,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 18,
-						"w": 42,
-						"h": 48
-					},
-					"frame": {
-						"x": 1932,
-						"y": 291,
-						"w": 42,
-						"h": 48
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "rune_protect.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1849,8 +1824,8 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1525,
-						"y": 825,
+						"x": 1932,
+						"y": 291,
 						"w": 47,
 						"h": 42
 					},
@@ -1875,7 +1850,32 @@
 					},
 					"frame": {
 						"x": 1525,
-						"y": 869,
+						"y": 825,
+						"w": 43,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_void.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 76,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 19,
+						"w": 43,
+						"h": 46
+					},
+					"frame": {
+						"x": 1525,
+						"y": 873,
 						"w": 43,
 						"h": 46
 					},
@@ -1935,7 +1935,7 @@
 					}
 				},
 				{
-					"filename": "rune_void.png",
+					"filename": "rune_void_glow.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -2024,35 +2024,10 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1574,
+						"x": 1570,
 						"y": 833,
 						"w": 44,
 						"h": 42
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_void_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 76,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 19,
-						"w": 43,
-						"h": 46
-					},
-					"frame": {
-						"x": 1620,
-						"y": 829,
-						"w": 43,
-						"h": 46
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2078,31 +2053,6 @@
 						"y": 877,
 						"w": 44,
 						"h": 42
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_strike.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 74,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 17,
-						"y": 19,
-						"w": 40,
-						"h": 45
-					},
-					"frame": {
-						"x": 1616,
-						"y": 877,
-						"w": 40,
-						"h": 45
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2160,7 +2110,7 @@
 					}
 				},
 				{
-					"filename": "rune_strike_glow.png",
+					"filename": "bright_rune_strike.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -2185,6 +2135,56 @@
 					}
 				},
 				{
+					"filename": "rune_strike.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 74,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 19,
+						"w": 40,
+						"h": 45
+					},
+					"frame": {
+						"x": 312,
+						"y": 1932,
+						"w": 40,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_strike_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 74,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 19,
+						"w": 40,
+						"h": 45
+					},
+					"frame": {
+						"x": 1880,
+						"y": 1607,
+						"w": 40,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "bright_rune_time.png",
 					"rotated": false,
 					"trimmed": true,
@@ -2199,35 +2199,10 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 312,
-						"y": 1932,
+						"x": 1922,
+						"y": 1607,
 						"w": 38,
 						"h": 42
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "cast_triangle.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 13,
-						"h": 25
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 13,
-						"h": 25
-					},
-					"frame": {
-						"x": 1658,
-						"y": 877,
-						"w": 13,
-						"h": 25
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2249,32 +2224,7 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1880,
-						"y": 1607,
-						"w": 38,
-						"h": 42
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_time_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 77,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 19,
-						"y": 22,
-						"w": 38,
-						"h": 42
-					},
-					"frame": {
-						"x": 1920,
+						"x": 1962,
 						"y": 1607,
 						"w": 38,
 						"h": 42
@@ -2360,6 +2310,31 @@
 					}
 				},
 				{
+					"filename": "rune_time_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 77,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 22,
+						"w": 38,
+						"h": 42
+					},
+					"frame": {
+						"x": 1616,
+						"y": 833,
+						"w": 38,
+						"h": 42
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "healthbar_partial_sliver.png",
 					"rotated": false,
 					"trimmed": true,
@@ -2410,6 +2385,31 @@
 					}
 				},
 				{
+					"filename": "cast_triangle.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 13,
+						"h": 25
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 25
+					},
+					"frame": {
+						"x": 1276,
+						"y": 830,
+						"w": 13,
+						"h": 25
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "healthbar_sliver.png",
 					"rotated": false,
 					"trimmed": true,
@@ -2424,8 +2424,8 @@
 						"h": 18
 					},
 					"frame": {
-						"x": 1276,
-						"y": 830,
+						"x": 1787,
+						"y": 1252,
 						"w": 17,
 						"h": 18
 					},
@@ -2826,6 +2826,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:ebbf42f8c4d596d7774d5f1bd7439409:87148856f88792217d40ce922cdb1851:1e6d99c7ebe83c9d4df22481bc2c00de$"
+		"smartupdate": "$TexturePacker:SmartUpdate:9d1bdfecd45a25e273d135af35935c43:4d2b12d6d4492235f1f334c0b8e349b4:1e6d99c7ebe83c9d4df22481bc2c00de$"
 	}
 }

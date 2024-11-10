@@ -10,12 +10,20 @@ function sdkLoadingStop() {
     window.CrazyGames.SDK.game.loadingStop();
 }
 
-function sdkShowMidgameAd(onStart, onFinish, onError) {
-    console.log("show mid game ad")
+function sdkShowMidgameAd(onStart = () => {}, onFinish = () => {}, onError = () => {}) {
+    muteAll();
     const callbacks = {
-        adStarted: () => {onStart()},
-        adFinished: () => {onFinish()},
-        adError: () => {onError()},
+        adStarted: () => {
+            onStart();
+        },
+        adFinished: () => {
+            unmuteAll();
+            onFinish();
+        },
+        adError: () => {
+            unmuteAll();
+            onError();
+        },
     };
     window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
     // onFinish();

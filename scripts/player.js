@@ -521,6 +521,7 @@ class Player {
             this.addRecentlyTakenDamage(damageTaken);
 
             this.bleedObj.alpha = Math.sqrt(damageTaken) * 0.04;
+            screenShake(3);
             this.scene.tweens.add({
                 targets: this.bleedObj,
                 duration: 250,

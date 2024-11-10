@@ -588,7 +588,7 @@ let textData4 = {
     },
     "superdummy_matter": {
         "en_us": "Deals damage\nand defends\n           +",
-        "fr": "Inflige des dégâts et défend +",
+        "fr": "Inflige des\ndégâts et défend\n             +",
         "zh_tw": "同時進行攻擊\n和防禦\n         +",
         "zh_cn": "同时进行攻击\n和防御\n         +",
         "ru": "Наносит урон и защищается +",

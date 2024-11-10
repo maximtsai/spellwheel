@@ -88,7 +88,7 @@
 
      takeEffect(newEffect) {
          if (this.sprite) {
-            if (newEffect.name == 'mindStrike' && this.shield <= 0 && !this.dead) {
+            if (newEffect.name === 'mindStrike' && this.shield <= 0 && !this.dead) {
                 this.sprite.stop();
                 this.isAnimating = false;
                  // let oldSprite = this.sprite.frame.name;
@@ -224,7 +224,7 @@
                  {
                      name: gameVars.isHardMode ? "}8 " : "}4 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
-                     chargeAmt: 235,
+                     chargeAmt: 250,
                      damage: gameVars.isHardMode ? 8 : 4,
                      attackSprites: ['gobbo0_atk.png'],
                      attackFinishFunction: () => {
@@ -464,6 +464,7 @@
      }
 
      makeSlashEffect() {
+         screenShake(4);
          playSound('sword_slice', 0.7).detune = Math.floor(Math.random() * 200 - 100);
          if (this.slashEffectAnim) {
              this.slashEffectAnim.stop();
@@ -472,16 +473,16 @@
          this.slashEffect.setAlpha(1.2).setScale(isFlipped ? -0.5 : 0.5, 0.4);
          this.slashEffectAnim = this.addTween({
              targets: this.slashEffect,
-             delay: 20,
-             duration: 300,
+             delay: 25,
+             duration: 330,
              ease: 'Quart.easeIn',
              alpha: 0,
          });
          this.addTween({
              targets: this.slashEffect,
-             scaleX: isFlipped ? -1 : 1,
-             scaleY: 0.6,
-             duration: 320,
+             scaleX: isFlipped ? -1.05 : 1.05,
+             scaleY: 0.65,
+             duration: 340,
              ease: 'Quart.easeOut',
              alpha: 0,
          });

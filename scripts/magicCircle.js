@@ -366,13 +366,13 @@ const ENABLE_KEYBOARD = true;
                 this.prevDragAngleDiff = dragAngleDiff;
             }
             this.storedDragAngleDiff = dragAngleDiff;
-            let dragAngleDiffDiff = (dragAngleDiff - this.prevDragAngleDiff) * Math.abs(dragAngleDiff);
+            // let dragAngleDiffDiff = (dragAngleDiff - this.prevDragAngleDiff) * Math.abs(dragAngleDiff);
 
-            if (dragAngleDiffDiff < -0.24) {
-                dragAngleDiffDiff = -0.24;
-            } else if (dragAngleDiffDiff > 0.24) {
-                dragAngleDiffDiff = 0.24;
-            }
+            // if (dragAngleDiffDiff < -0.24) {
+            //     dragAngleDiffDiff = -0.24;
+            // } else if (dragAngleDiffDiff > 0.24) {
+            //     dragAngleDiffDiff = 0.24;
+            // }
             // alt method of calculating torque
             let dragPointX = Math.cos(this.dragPointAngle) * this.dragPointDist;
             let dragPointY = Math.sin(this.dragPointAngle) * this.dragPointDist;
@@ -405,6 +405,12 @@ const ENABLE_KEYBOARD = true;
             }
             // castDisable
 
+            // if angle diff is minimal, reduce torque, GREATLY REDUCES JITTER
+            let torqueCloseMult = 1;
+            if (Math.abs(dragAngleDiff) < 0.025) {
+                torqueCloseMult = Math.abs(dragAngleDiff) * 38;
+            }
+
             // Using both rotation diff and mult val to calculate
             if (dragForceSqr < 0) {
                 this.draggedObj.torque = dragForce * -Math.sqrt(-dragForceSqr) * torqueConst * (1 + dScale * 0.01);
@@ -413,6 +419,7 @@ const ENABLE_KEYBOARD = true;
             }
             // TODO: Remove if not needed
             this.draggedObj.torque += dragAngleDiff * torqueConst - this.draggedObj.rotVel * 0.38;
+            this.draggedObj.torque *= torqueCloseMult;
             // this.draggedObj.torque = this.draggedObj.torque + (this.draggedObj.torque * this.draggedObj.torque) * minusMult * 150;
             //this.draggedObj.torque += this.draggedObj.torqueOnRelease * 0.5;
 

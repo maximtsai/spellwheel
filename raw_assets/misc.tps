@@ -209,7 +209,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.01</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -363,7 +363,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>1.05</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -378,7 +378,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>1.05</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -482,21 +482,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">misc/miniscythe.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.5</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>49,51,99,102</rect>
-                <key>scale9Paddings</key>
-                <rect>49,51,99,102</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">misc/newgame.webp</key>
             <key type="filename">misc/newgame_hover.webp</key>
             <struct type="IndividualSpriteSettings">
@@ -560,21 +545,6 @@
                 <rect>200,129,400,258</rect>
                 <key>scale9Paddings</key>
                 <rect>200,129,400,258</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">misc/scythebroke.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>213,225,425,450</rect>
-                <key>scale9Paddings</key>
-                <rect>213,225,425,450</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -58,16 +58,14 @@
              alpha: 1,
              onComplete: () => {
                  this.sprite.alpha = 1;
+                 globalObjects.magicCircle.enableMovement();
+
                  this.scene.tweens.add({
                      delay: 250,
                      targets: shadowSprite,
                      duration: 2500,
                      ease: 'Cubic.easeInOut',
                      alpha: 0,
-                     onStart: () => {
-                         globalObjects.magicCircle.enableMovement();
-
-                     }
                  });
                  this.voidTentaEye = this.addImage(this.x + 50, this.y - 30, 'enemies', 'void_tentacle_eye.png').setDepth(this.sprite.depth - 1).setRotation(-1.2).setScale(1.3).setVisible(false);
                      this.voidTentaEye.visible = true;
@@ -1140,7 +1138,7 @@
                      name: "|4x3 ",
                      announceName: "ASSAIL",
                      chargeAmt: 600,
-                     chargeMult: 1.6,
+                     chargeMult: 1.65,
                      damage: 4,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_3.png',
@@ -1161,7 +1159,7 @@
                      name: "|10 ",
                      announceName: "ASSAIL",
                      chargeAmt: 500,
-                     chargeMult: 1.6,
+                     chargeMult: 1.65,
                      damage: 10,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -1180,7 +1178,7 @@
                      name: "|5x3 ",
                      announceName: "ASSAIL",
                      chargeAmt: 650,
-                     chargeMult: 1.6,
+                     chargeMult: 1.65,
                      damage: 5,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_3.png',
@@ -1200,7 +1198,7 @@
                      name: "|13 ",
                      announceName: "ASSAIL",
                      chargeAmt: 550,
-                     chargeMult: 1.6,
+                     chargeMult: 1.65,
                      damage: 13,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -1219,7 +1217,7 @@
                      name: "|6x3 ",
                      announceName: "ASSAIL",
                      chargeAmt: 700,
-                     chargeMult: 1.6,
+                     chargeMult: 1.65,
                      damage: 6,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_3.png',
@@ -1239,7 +1237,7 @@
                      name: "|16 ",
                      announceName: "ASSAIL",
                      chargeAmt: 600,
-                     chargeMult: 1.6,
+                     chargeMult: 1.65,
                      damage: 16,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
@@ -1273,7 +1271,7 @@
                      name: ";10x3 ",
                      announceName: "ASSAIL",
                      chargeAmt: 1100,
-                     chargeMult: 1.6,
+                     chargeMult: 1.65,
                      damage: 10,
                      attackTimes: 3,
                      isBigMove: true,
@@ -1294,7 +1292,7 @@
                      name: ";20 ",
                      announceName: "ASSAIL",
                      chargeAmt: 900,
-                     chargeMult: 1.6,
+                     chargeMult: 1.65,
                      damage: 20,
                      isBigMove: true,
                      prepareSprite: 'void_knight_3.png',

@@ -391,13 +391,25 @@ function handleBorders() {
     var windowRatio = windowWidth / windowHeight;
     var gameRatio = pixelWidth / pixelHeight;
     var gameScale = 1;
+    let isNarrow = false;
     if (windowRatio < gameRatio) {
         gameScale = windowWidth / pixelWidth;
+        isNarrow = true;
     } else {
         gameScale = windowHeight / pixelHeight;
+
     }
-    let widthAmt = 150;
-    widthAmt = 150 * gameScale
+    if (isNarrow) {
+        rightBorder.style.display = 'none';
+        leftBorder.style.display = 'none';
+    } else {
+        rightBorder.style.display = 'block';
+        leftBorder.style.display = 'block';
+    }
+    //block
+
+
+    let widthAmt = 150 * gameScale
     leftBorder.style.width = widthAmt + 'px';
     rightBorder.style.width = widthAmt + 'px';
     let shiftAmt = pixelWidth * gameScale * 0.5 + widthAmt;
@@ -417,5 +429,5 @@ function showBackground() {
     rightBorder.style['animation-name'] = 'changeFull';
     rightBorder.style.opacity = '1';
 
-    
+
 }

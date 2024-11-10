@@ -68,7 +68,7 @@
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
-        <uint>3</uint>
+        <uint>2</uint>
         <key>webpQualityLevel</key>
         <uint>88</uint>
         <key>textureSubPath</key>
@@ -430,6 +430,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">spells/clock_attack_bg.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.5</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>188,188,375,375</rect>
+                <key>scale9Paddings</key>
+                <rect>188,188,375,375</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">spells/clock_back_large.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -445,7 +460,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">spells/clock_red.png</key>
+            <key type="filename">spells/clock_stab.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -454,13 +469,12 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>16,16,33,33</rect>
+                <rect>65,16,130,31</rect>
                 <key>scale9Paddings</key>
-                <rect>16,16,33,33</rect>
+                <rect>65,16,130,31</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">spells/clock_redStrike.png</key>
             <key type="filename">spells/damageEffect0.png</key>
             <key type="filename">spells/damageEffect6.png</key>
             <key type="filename">spells/damageEffect7.png</key>

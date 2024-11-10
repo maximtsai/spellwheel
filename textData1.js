@@ -140,17 +140,17 @@ let textData = {
     "time_strike_desc": {
         "en_us": "Deal 6 DMG,\nfollowed by a\nsecond attack\nat half power",
         "fr": "Inflige 6 points\nde dégâts, suivi\nd'une deuxième\nattaque à moitié\npuissance",
-        "zh_tw": "造成 6 點傷害，\n隨後以一半的威力\n發動第二次攻擊",
-        "zh_cn": "造成 6 点伤害，\n随后以一半的威力\n发动第二次攻击",
+        "zh_tw": "造成 6 點傷害，\n然後進行半威力\n的第二次攻擊",
+        "zh_cn": "造成 6 点伤害，\n然后进行半威力\n的第二次攻击",
         "ru": "Атаковать дважды.\nПервая атака наносит\n6 урона, вторая\nнаносит 50% урона\nот первой атаки.",
         "es": "Ataca dos veces.\nEl primer ataque\ninflige 6 de daño,\nel segundo ataque\ninflige el 50%\ndel primero.",
         "jp": "2回攻撃する。最初の\n攻撃は6ダメージを与え、\n2回目の攻撃は最初の\n攻撃の50%を与えます。"
     },
     "time_strike_desc_long": {
-        "en_us": "Deal 6 DMG, followed by a\nsecond attack at half power",
-        "fr": "Inflige 6 points de dégâts, suivi d'une\ndeuxième attaque supplémentaire à moitié puissance",
-        "zh_tw": "造成 6 點傷害，隨後以\n一半的威力發動第二次攻擊",
-        "zh_cn": "造成 6 点伤害，随后以\n一半的威力发动第二次攻击",
+        "en_us": "Deal 6 DMG, followed by a\nsecond attack with half power",
+        "fr": "Inflige 6 points de dégâts, suivi d'une\ndeuxième attaque à moitié puissance",
+        "zh_tw": "造成 6 點傷害，然後\n進行半威力的第二次攻擊",
+        "zh_cn": "造成 6 点伤害，然后\n进行半威力的第二次攻击",
         "ru": "Атаковать дважды. Первая атака наносит 6 урона,\nвторая наносит 50% урона от первой атаки.",
         "es": "Ataca dos veces. El primer ataque inflige 6 de\ndaño, el segundo ataque inflige el 50% del primero.",
         "jp": "2回攻撃する。最初の攻撃は6ダメージを与え、\n2回目の攻撃は最初の攻撃の50%を与えます。"

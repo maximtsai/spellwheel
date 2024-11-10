@@ -1,11 +1,14 @@
 let isMobile = testMobile();
 let gameVersion = "v1.00";
+let pixelWidth = isMobile ? 594 : 604
+let pixelHeight = isMobile ? 810 : 775
+handleBorders();
 let config = {
     type: Phaser.AUTO,
     scale: {
         parent: 'spellwheel',
         autoRound: true,
-        width: isMobile ? 594 : 604,
+        width: pixelWidth,
         height: isMobile ? 810 : 775,
         orientation: 'landscape',
         mode: Phaser.Scale.FIT,
@@ -118,9 +121,11 @@ let url4 = 'classic.itch';// '1001juegos';
 
 function preload ()
 {
+    showBackground();
     sdkLoadingStart();
     gameVars.latestLevel = parseInt(sdkGetItem("latestLevel"));
     gameVars.maxLevel = parseInt(sdkGetItem("maxLevel"));
+
     if (!gameVars.latestLevel) {
         gameVars.latestLevel = 0;
     }
@@ -191,7 +196,6 @@ function initializeMiscLocalstorage() {
     if (storedSkipIntro) {
         gameOptions.skipIntro = sdkGetItem("skip_intro") === 'true';
     } else {
-        gameOptions.skipIntro = true;
         gameOptions.isFirstTime = true;
         sdkSetItem("skip_intro", 'true');
     }
@@ -385,4 +389,41 @@ function zoomTempSlow(zoomAmt) {
             });
         }
     });
+}
+
+function handleBorders() {
+    let leftBorder = document.getElementById('leftborder');
+    let rightBorder = document.getElementById('rightborder');
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+    var windowRatio = windowWidth / windowHeight;
+    var gameRatio = pixelWidth / pixelHeight;
+    var gameScale = 1;
+    if (windowRatio < gameRatio) {
+        gameScale = windowWidth / pixelWidth;
+    } else {
+        gameScale = windowHeight / pixelHeight;
+    }
+    let widthAmt = 150;
+    widthAmt = 150 * gameScale
+    leftBorder.style.width = widthAmt + 'px';
+    rightBorder.style.width = widthAmt + 'px';
+    let shiftAmt = pixelWidth * gameScale * 0.5 + widthAmt;
+    leftBorder.style.left = 'calc(50% - ' + shiftAmt + 'px)'
+    rightBorder.style.right = 'calc(50% - ' + shiftAmt + 'px)'
+}
+
+function showBackground() {
+    let leftBorder = document.getElementById('leftborder');
+    let rightBorder = document.getElementById('rightborder');
+    let background = document.getElementById('background');
+    background.style['animation-name'] = 'changeShadow';
+    background.style.opacity = '0.3';
+
+    leftBorder.style['animation-name'] = 'changeFull';
+    leftBorder.style.opacity = '1';
+    rightBorder.style['animation-name'] = 'changeFull';
+    rightBorder.style.opacity = '1';
+
+
 }

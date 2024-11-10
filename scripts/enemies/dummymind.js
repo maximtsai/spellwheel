@@ -164,7 +164,7 @@
             return;
         }
         this.currDummyAnim = this.addTween({
-            delay: 1980,
+            delay: 2040,
             targets: [this.sprite, this.poster],
             scaleX: this.sprite.startScale * 0.82,
             scaleY: this.sprite.startScale * 0.82,

@@ -391,7 +391,7 @@ let textData3 = {
     },
     "death7b": {
         "en_us": "Enough Reaper! Your attempts\nat stopping me have failed.",
-        "fr": "Assez Faucheur ! Vos tentatives pour m'arrêter ont échoué.",
+        "fr": "Assez Faucheur ! Vos tentatives\npour m'arrêter ont échoué.",
         "zh_tw": "夠了死神！\n你阻止不了我的前進。",
         "zh_cn": "够了死神！\n你阻止不了我的前行。",
         "ru": "",

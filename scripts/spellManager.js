@@ -146,7 +146,7 @@ class SpellManager {
 
         let pebbles = getTempPoolObject('spells', 'rockCircle.png', 'rockCircle', 800);
         pebbles.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 240);
-        let additionalScale = Math.sqrt(additionalDamage) * 0.022;
+        let additionalScale = Math.sqrt(additionalDamage) * 0.025;
         let finalAdditionaScale = additionalScale * 5;
         let isPowerful = numAdditionalAttacks * (12 + additionalDamage + bonusTrueDamage) > 75;
         pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalScale).setRotation(Math.random() * 3)
@@ -209,7 +209,7 @@ class SpellManager {
                 },
                 onComplete: () => {
                     if (isExtraBuff) {
-                        if (i == 0) {
+                        if (i === 0) {
                             let sfx2 = playSound('matter_strike_heavy', strikeVol);
                             if (additionalDamage >= 12) {
                                 zoomTempSlow(1.004);
@@ -1522,7 +1522,7 @@ class SpellManager {
                             scaleY: 0.9,
                             ease: 'Quad.easeOut',
                         });
-                        messageBus.publish('animateTrueDamageNum', attackObj.x + 12 - Math.random() * 24, attackObj.y - 28 - Math.random() * 5, 'VULNERABLE', isMobile ? 0.9 : 0.85);
+                        messageBus.publish('animateTrueDamageNum', attackObj.x + 12 - Math.random() * 24, attackObj.y - 30 - Math.random() * 5, 'VULNERABLE', isMobile ? 0.9 : 0.85);
 
                         messageBus.publish('enemyTakeEffect', {
                             name: spellID,
@@ -1618,6 +1618,7 @@ class SpellManager {
         let electricCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells').play('powerEffect').setScale(3.4).setDepth(117);
 
         playSound('power_surge');
+        globalObjects.magicCircle.resetElements();
 
         this.scene.tweens.add({
             targets: energyCircle1,
@@ -1707,7 +1708,7 @@ class SpellManager {
             scaleX: 1,
             scaleY: 1
         }
-        messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + buffAmt + " ALL\nDAMAGE", 0.9 + Math.sqrt(buffAmt) * 0.15, param, param2);
+        messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth, globalObjects.player.getY() - 25, "+" + buffAmt + " ALL\nDAMAGE", 0.9 + Math.sqrt(buffAmt) * 0.15, param, param2);
 
         messageBus.publish('selfTakeEffect', {
             name: spellID,

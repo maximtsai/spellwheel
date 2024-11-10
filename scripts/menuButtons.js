@@ -178,6 +178,7 @@ function clearMenuButtons() {
 
 function gotoMainMenu() {
     sdkGameplayStop();
+    globalObjects.magicCircle.setWheelTint();
     globalObjects.magicCircle.enableMovement();
     if (gameVars.isInMainMenu) {
         return;

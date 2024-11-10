@@ -145,5 +145,8 @@ function resizeGame() {
         gameVars.canvasXOffset = (windowWidth - game.config.width * gameScale) * 0.5;
     }
     gameVars.gameScale = gameScale;
+
+    handleBorders();
+
 }
 

@@ -246,8 +246,8 @@ class Enemy {
         this.chargeBarWarning.setDepth(9);
         this.chargeBarWarning.setAlpha(0.35);
 
-        this.chargeVertical = this.scene.add.image(x, this.chargeBarMax.y + 5, 'blurry', 'yellow_vertical.webp').setScale(1.5, 1.2).setAlpha(0).setOrigin(0, 0.5);
-        this.chargeVertical2 = this.scene.add.image(x, this.chargeBarMax.y + 5, 'blurry', 'yellow_vertical.webp').setScale(-1.5, 1.2).setAlpha(0).setOrigin(0, 0.5);
+        this.chargeVertical = this.scene.add.image(x, this.chargeBarMax.y, 'blurry', 'yellow_vertical.webp').setScale(1.5, 1.35).setAlpha(0).setOrigin(0, 0.5);
+        this.chargeVertical2 = this.scene.add.image(x, this.chargeBarMax.y, 'blurry', 'yellow_vertical.webp').setScale(-1.5, 1.35).setAlpha(0).setOrigin(0, 0.5);
 
 
         this.chargeBarCurr = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'yellow_pixel.png');
@@ -542,11 +542,11 @@ class Enemy {
                     }
                 }
                 this.attackCharge += timeChange * increaseMult * this.slowMult + castAggravateBonus;
-                this.chargeVertical.alpha = Math.min(1, this.chargeVertical.alpha + timeChange * 0.14);
+                this.chargeVertical.alpha = Math.min(1, this.chargeVertical.alpha + timeChange * 0.2 * dt);
                 this.chargeVertical2.alpha = this.chargeVertical.alpha;
 
             } else {
-                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.01) * 0.98;
+                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.03 * dt) * (1 - 0.07 * dt);
                 this.chargeVertical2.alpha = this.chargeVertical.alpha;
                 almostDone = this.attackCharge > this.nextAttackChargeNeeded - 45;
 
@@ -558,7 +558,7 @@ class Enemy {
                     // Normal slow chargin
                     if (almostDone || chargeMult > 1 || this.castAggravateCharge > 0) {
                         if (!this.isUsingAttack) {
-                            this.chargeVertical.alpha = Math.min(0.55, this.chargeVertical.alpha + timeChange * 0.15);
+                            this.chargeVertical.alpha = Math.min(0.55, this.chargeVertical.alpha + timeChange * 0.21 * dt);
                             this.chargeVertical2.alpha = this.chargeVertical.alpha;
                         }
 
@@ -645,10 +645,10 @@ class Enemy {
             this.chargeBarAngry.scaleX = this.chargeBarCurr.scaleX;
             if (this.attackPaused) {
                 // doNothing
-                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.25);
+                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.33 * dt);
                 this.chargeVertical2.alpha = this.chargeVertical.alpha;
             } else if (this.isUsingAttack) {
-                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.25);
+                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.33 * dt);
                 this.chargeVertical2.alpha = this.chargeVertical.alpha;
             } else if (this.attackCharge >= this.nextAttackChargeNeeded) {
                 if (this.nextAttack.damage !== undefined && this.nextAttack.damage !== 0) {

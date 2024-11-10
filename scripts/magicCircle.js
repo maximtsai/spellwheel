@@ -397,11 +397,11 @@ const ENABLE_KEYBOARD = true;
 
             let dragForceSqr = horizForce + vertForce;
 
-            let torqueConst = gameVars.wasTouch ? 0.045 : 0.0429;
+            let torqueConst = gameVars.wasTouch ? 0.0445 : 0.0422;
             if (gameVars.maxLevel >= 5) {
                 torqueConst += 0.014;
             }  else if (gameVars.maxLevel >= 2) {
-                torqueConst += 0.01;
+                torqueConst += 0.008;
             }
             // castDisable
 

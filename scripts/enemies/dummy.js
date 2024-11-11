@@ -660,6 +660,12 @@
              this.spaceTween.stop();
              this.spaceTween.destroy();
          }
+         if (this.isUsingSpaceBG) {
+             switchBackgroundInstant('star_shatter.webp');
+             setTimeout(() => {
+                 switchBackground('grass_bg.webp');
+             }, 50)
+         }
          if (this.eyesTween) {
              this.eyesTween.stop();
              this.eyesTween.destroy();
@@ -1002,6 +1008,8 @@
                                                 });
                                                 blackBG.setVisible(true);
                                                 spaceBG.setAlpha(1);
+                                                this.isUsingSpaceBG = true;
+                                                switchBackgroundInstant('star_bg.webp')
                                                 this.bgMusic = playMusic('but_never_forgotten_metal', 0.93, true);
                                                 let blackpulse1 = this.addImage(this.sprite.x, this.sprite.y, 'blurry', 'black_pulse.png').setDepth(5).setAlpha(1).setScale(0);
                                                  this.addTween({

@@ -449,5 +449,13 @@ function switchBackground(newBG) {
         background.style['background-image'] = 'url("sprites/preload/' + newBG + '")';
         background.style.opacity = '1';
     }, 1000)
+}
+
+function switchBackgroundInstant(newBG) {
+    if (currBackground === newBG) {
+        return;
+    }
+    let background = document.getElementById('background');
+    background.style['background-image'] = 'url("sprites/preload/' + newBG + '")';
 
 }

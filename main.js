@@ -122,7 +122,6 @@ let url4 = 'classic.itch';// '1001juegos';
 function preload ()
 {
     handleBorders();
-    showBackground();
     sdkLoadingStart();
     gameVars.latestLevel = parseInt(sdkGetItem("latestLevel"));
     gameVars.maxLevel = parseInt(sdkGetItem("maxLevel"));
@@ -169,6 +168,7 @@ function create ()
 
 function onPreloadComplete (scene)
 {
+    showBackground();
     globalObjects.tempBG = scene.add.sprite(0, 0, 'blackPixel').setScale(1000, 1000).setDepth(-1);
 
     setupMouseInteraction(scene);

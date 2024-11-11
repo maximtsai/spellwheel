@@ -1041,7 +1041,7 @@
                                                          for (let i = 0; i < 4; i++) {
                                                              let startRot = 0.5;
                                                              let goalRot = 1.0 + 0.43 * i;
-                                                             let longArm = this.addImage(this.x, this.y + 24, 'deathfinal', 'long_arm.png').setRotation(startRot).setOrigin(0.5, 0.92).setAlpha(0.2).setDepth(ascendedDummy.depth - 1);
+                                                             let longArm = this.addImage(this.x, this.y + 24, 'enemies', 'long_arm.png').setRotation(startRot).setOrigin(0.5, 0.92).setAlpha(0.2).setDepth(ascendedDummy.depth - 1);
                                                              this.finalArms.push(longArm);
                                                              longArm.goalRot = goalRot;
                                                              this.addTween({
@@ -1064,7 +1064,7 @@
                                                          for (let i = 0; i < 4; i++) {
                                                              let startRot = -0.5;
                                                              let goalRot = -1.0 - 0.43 * i;
-                                                             let longArm = this.addImage(this.x, this.y + 24, 'deathfinal', 'long_arm.png').setRotation(startRot).setOrigin(0.5, 0.92).setScale(-0.3, 0.3).setAlpha(0.2).setDepth(ascendedDummy.depth - 1);
+                                                             let longArm = this.addImage(this.x, this.y + 24, 'enemies', 'long_arm.png').setRotation(startRot).setOrigin(0.5, 0.92).setScale(-0.3, 0.3).setAlpha(0.2).setDepth(ascendedDummy.depth - 1);
                                                              this.finalArms.push(longArm);
                                                              longArm.goalRot = goalRot;
                                                              this.addTween({

@@ -779,7 +779,10 @@ function showLocket() {
             }
         });
 
-        if (gameVars.latestLevel > 1 && Math.random() > 0.75) {
+        let isntFirstGame = gameVars.maxLevel > 1;
+        console.log("asdf");
+        console.log(isntFirstGame);
+        if (isntFirstGame && Math.random() > 0.75) {
             let ladyImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 90, 'ending', 'ending2_a.png').setAlpha(0.2).setDepth(200);
             PhaserScene.tweens.add({
                 targets: ladyImage,
@@ -806,12 +809,13 @@ function showLocket() {
                 fadeOutLocketDisplay();
             }, 400);
         } else {
-            fadeOutLocketDisplay();
+            fadeOutLocketDisplay(!isntFirstGame);
         }
     })
 }
 
-function fadeOutLocketDisplay() {
+function fadeOutLocketDisplay(isFirstGame) {
+    console.log("fade out locket is first game", isFirstGame)
     globalObjects.magicCircle.enableMovement();
     globalObjects.gameLocketOpen.setFrame('locket4.png');
 
@@ -830,9 +834,15 @@ function fadeOutLocketDisplay() {
         ease: 'Cubic.easeOut',
         duration: 250,
         onComplete: () => {
-            globalObjects.encyclopedia.showButton();
-            globalObjects.options.showButton();
-            showMainMenuButtons();
+            if (isFirstGame) {
+                clearOnlyMenuButtonSprites();
+                beginPreLevel(0)
+            } else {
+                globalObjects.encyclopedia.showButton();
+                globalObjects.options.showButton();
+                showMainMenuButtons();
+            }
+
             PhaserScene.tweens.add({
                 delay: 150,
                 targets: globalObjects.gameLocketOpen,

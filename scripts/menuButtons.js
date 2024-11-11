@@ -38,44 +38,55 @@ function setupMainMenuBG() {
 function clearOnlyMenuButtons() {
     if (globalObjects.continueButton) {
         globalObjects.continueButton.destroy();
-        globalObjects.continueButtonSprite.destroy();
     }
 
     if (globalObjects.levelSelectButton) {
         globalObjects.levelSelectButton.destroy();
-        globalObjects.levelButtonSprite.destroy();
     }
     globalObjects.startButton.destroy();
-    globalObjects.startButtonSprite.destroy();
     // globalObjects.cheatButton.destroy();
     // globalObjects.cheatButton2.destroy();
     // globalObjects.cheatButton3.destroy();
     globalObjects.cheatButton4.destroy();
     // globalObjects.cheatButton5.destroy();
 
-
-
     globalObjects.creditsButton.destroy();
-    globalObjects.creditsButtonSprite.destroy();
     globalObjects.extrasButton.destroy();
-    globalObjects.extrasButtonSprite.destroy();
 
+    clearOnlyMenuButtonSprites();
+}
 
-    /*
-    globalObjects.lvlButton.destroy();
-    globalObjects.level3Button.destroy();
-    globalObjects.lvl5Button.destroy();
-    globalObjects.lvl6Button.destroy();
-    globalObjects.lvl7Button.destroy();
-    globalObjects.lvl8Button.destroy();
-    globalObjects.lvl9Button.destroy();
-    globalObjects.lvl10Button.destroy();
-    globalObjects.lvl11Button.destroy();
-    globalObjects.lvl12Button.destroy();
-    globalObjects.lvl13Button.destroy();
-     */
+function clearOnlyMenuButtonSprites() {
+    let spritesToClear = [];
+    if (globalObjects.continueButtonSprite) {
+        spritesToClear.push(globalObjects.continueButtonSprite);
+    }
 
+    if (globalObjects.levelButtonSprite) {
+        spritesToClear.push(globalObjects.levelButtonSprite);
+    }
 
+    if (globalObjects.startButtonSprite) {
+        spritesToClear.push(globalObjects.startButtonSprite);
+    }
+
+    if (globalObjects.creditsButtonSprite) {
+        spritesToClear.push(globalObjects.creditsButtonSprite);
+    }
+    if (globalObjects.extrasButtonSprite) {
+        spritesToClear.push(globalObjects.extrasButtonSprite);
+    }
+    PhaserScene.tweens.add({
+        targets: spritesToClear,
+        alpha: 0,
+        duration: 500,
+        ease: 'Quad.easeOut',
+        onComplete: () => {
+            for (let i in spritesToClear) {
+                spritesToClear[i].destroy();
+            }
+        }
+    })
 }
 
 function minorZoomMenu() {

@@ -125,29 +125,36 @@ async function loadSDK() {
     await window.CrazyGames.SDK.init().then(() => {
         console.log("sdk inited, preloadcompleted: ",preloadCompleted)
         sdkIsLoaded = true;
-        beginLoadIfAllReady()
+        beginLoadIfAllReady();
+        initUser();
     });
 }
 loadSDK();
+
+let user = null;
+async function initUser() {
+    try {
+        user = await window.CrazyGames.SDK.user.getUser();
+        console.log(user);
+    } catch (e) {
+        console.log("Get user error: ", e);
+    }
+}
+
+function getUser() {
+    const available = window.CrazyGames.SDK.user.isUserAccountAvailable;
+    if (available) {
+        return user;
+    } else {
+        return null;
+    }
+}
 
 function preload ()
 {
     console.log("preload started")
     PhaserScene = this;
     handleBorders();
-    gameVars.latestLevel = parseInt(sdkGetItem("latestLevel"));
-    gameVars.maxLevel = parseInt(sdkGetItem("maxLevel"));
-
-    if (!gameVars.latestLevel) {
-        gameVars.latestLevel = 0;
-    }
-    if (!gameVars.maxLevel) {
-        gameVars.maxLevel = gameVars.latestLevel;
-    }
-    if (gameVars.maxLevel >= 6) {
-        gameVars.maxLevel = 14;
-        gameVars.hideCheatConst = -230;
-    }
 
     if (isMobile && screen && screen.orientation && screen.orientation.lock) {
         var myScreenOrientation = window.screen.orientation;
@@ -178,7 +185,6 @@ function create() {
 
 function onPreloadComplete (scene)
 {
-    console.log("preloadCompleted, sdk inited: ",sdkIsLoaded)
     preloadCompleted = true;
     showBackground();
     globalObjects.tempBG = scene.add.sprite(0, 0, 'blackPixel').setScale(1000, 1000).setDepth(-1);
@@ -197,6 +203,19 @@ function onPreloadComplete (scene)
 
 function beginLoadIfAllReady() {
     if (sdkIsLoaded && preloadCompleted) {
+        gameVars.latestLevel = parseInt(sdkGetItem("latestLevel"));
+        gameVars.maxLevel = parseInt(sdkGetItem("maxLevel"));
+
+        if (!gameVars.latestLevel) {
+            gameVars.latestLevel = 0;
+        }
+        if (!gameVars.maxLevel) {
+            gameVars.maxLevel = gameVars.latestLevel;
+        }
+        if (gameVars.maxLevel >= 6) {
+            gameVars.maxLevel = 14;
+            gameVars.hideCheatConst = -230;
+        }
         PhaserScene.load.start();
         sdkLoadingStart();
     }

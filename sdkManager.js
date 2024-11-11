@@ -68,11 +68,21 @@ function sdkClearBanner() {
 }
 
 function sdkGetItem(key) {
-    return localStorage.getItem(key);
+    if (sdkIsLoaded) {
+        window.CrazyGames.SDK.data.getItem(key);
+    } else {
+        return localStorage.getItem(key);
+    }
+
 }
 
 function sdkSetItem(key, val) {
-    localStorage.setItem(key, val);
+    if (sdkIsLoaded) {
+        window.CrazyGames.SDK.data.setItem(key, val);
+    } else {
+        localStorage.setItem(key, val);
+    }
+
 }
 
 function sdkHasAdBlock() {

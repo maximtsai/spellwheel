@@ -930,21 +930,18 @@
                         this.extrasOnDie.push(ascendedDummy);
                          this.extrasOnDie.push(ascendedDummyEyes);
                          this.addTween({
-                             targets: [blackBG],
-                             alpha: 1,
-                             ease: 'Quad.easeInOut',
-                             duration: 3850,
-                         });
-                         this.addTween({
                              targets: [ascendedDummy],
                              alpha: 1,
                              ease: 'Quad.easeIn',
                              duration: 4000,
                          });
+                         fadeBackground();
+
                         this.addTween({
                             targets: [blackBG],
                             alpha: 1,
-                            duration: 4000,
+                            duration: 3850,
+                            ease: 'Quad.easeInOut',
                             onComplete: () => {
                                 preloadImage('star_bg.webp')
                                 blackBG.setDepth(5);

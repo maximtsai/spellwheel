@@ -464,3 +464,10 @@ function preloadImage(newBG) {
     let preload = document.getElementById('preload');
     preload.style['content'] = 'url("sprites/preload/' + newBG + '.webp")'
 }
+
+function fadeBackground() {
+    let background = document.getElementById('background');
+    background.style.opacity = '0';
+    background.style['animation-name'] = 'fadeAway';
+    background.style['animation-duration'] = '3s';
+}

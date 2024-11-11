@@ -137,6 +137,7 @@ loadSDK();
 function preload ()
 {
     PhaserScene = this;
+    handleBorders();
     showBackground();
     sdkLoadingStart();
     gameVars.latestLevel = parseInt(sdkGetItem("latestLevel"));
@@ -416,6 +417,9 @@ function zoomTempSlow(zoomAmt) {
 function handleBorders() {
     let leftBorder = document.getElementById('leftborder');
     let rightBorder = document.getElementById('rightborder');
+    if (!leftBorder || !rightBorder) {
+        return;
+    }
     var windowWidth = window.innerWidth;
     var windowHeight = window.innerHeight;
     var windowRatio = windowWidth / windowHeight;

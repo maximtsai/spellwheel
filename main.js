@@ -136,10 +136,10 @@ loadSDK();
 
 function preload ()
 {
+    console.log("preload started")
     PhaserScene = this;
     handleBorders();
     showBackground();
-    sdkLoadingStart();
     gameVars.latestLevel = parseInt(sdkGetItem("latestLevel"));
     gameVars.maxLevel = parseInt(sdkGetItem("maxLevel"));
 

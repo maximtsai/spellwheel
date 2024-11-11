@@ -487,10 +487,18 @@ function switchBackgroundInstant(newBG) {
     }
     currBackground = newBG;
     let background = document.getElementById('background');
+    background.style.opacity = '1';
     background.style['background-image'] = 'url("sprites/preload/' + newBG + '")';
 }
 
 function preloadImage(newBG) {
     let preload = document.getElementById('preload');
-    preload.style['content'] = 'url("sprites/preload/' + newBG + '.webp")'
+    preload.style['content'] = 'url("sprites/preload/' + newBG + '")'
+}
+
+function fadeBackground() {
+    let background = document.getElementById('background');
+    background.style.opacity = '0';
+    background.style['animation-name'] = 'fadeAway';
+    background.style['animation-duration'] = '3s';
 }

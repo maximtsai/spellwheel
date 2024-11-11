@@ -125,11 +125,7 @@ async function loadSDK() {
     await window.CrazyGames.SDK.init().then(() => {
         console.log("sdk inited, preloadcompleted: ",preloadCompleted)
         sdkIsLoaded = true;
-        if (preloadCompleted) {
-            console.log("real load");
-            PhaserScene.load.start();
-            sdkLoadingStart();
-        }
+        beginLoadIfAllReady()
     });
 }
 loadSDK();
@@ -139,7 +135,6 @@ function preload ()
     console.log("preload started")
     PhaserScene = this;
     handleBorders();
-    showBackground();
     gameVars.latestLevel = parseInt(sdkGetItem("latestLevel"));
     gameVars.maxLevel = parseInt(sdkGetItem("maxLevel"));
 
@@ -184,8 +179,8 @@ function create() {
 function onPreloadComplete (scene)
 {
     console.log("preloadCompleted, sdk inited: ",sdkIsLoaded)
-
     preloadCompleted = true;
+    showBackground();
     globalObjects.tempBG = scene.add.sprite(0, 0, 'blackPixel').setScale(1000, 1000).setDepth(-1);
 
     setupMouseInteraction(scene);
@@ -197,8 +192,12 @@ function onPreloadComplete (scene)
     loadFileList(scene, fontFiles, 'bitmap_font');
     loadFileList(scene, videoFiles, 'video');
 
-    if (sdkIsLoaded) {
-        scene.load.start();
+    beginLoadIfAllReady();
+}
+
+function beginLoadIfAllReady() {
+    if (sdkIsLoaded && preloadCompleted) {
+        PhaserScene.load.start();
         sdkLoadingStart();
     }
 }

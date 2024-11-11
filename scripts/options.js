@@ -211,7 +211,6 @@ class Options {
                     }
                 },
                 onMouseUp: () => {
-                    sdkGameplayStart()
                     this.hideOptions();
                 }
             });
@@ -356,7 +355,6 @@ class Options {
                     }
                 },
                 onMouseUp: () => {
-                    sdkGameplayStart()
                     this.hideOptions()
                 }
             });
@@ -1443,6 +1441,7 @@ class Options {
         this.canClose = false;
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
+
         messageBus.publish('unpauseGame');
         hideGlobalClickBlocker();
         this.hidingAnim1 = PhaserScene.tweens.add({

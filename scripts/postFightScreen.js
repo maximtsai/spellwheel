@@ -31,9 +31,7 @@ class PostFightScreen {
     }
 
     initAssets(isWin = true, isPractice = false, initLocket = true) {
-        sdkGameplayStop();
         displayBanner();
-
         this.locketIsOpen = false;
         this.locketIsClosable = false;
         if (!this.bgShade) {

@@ -472,7 +472,7 @@ function switchBackgroundInstant(newBG) {
 
 function preloadImage(newBG) {
     let preload = document.getElementById('preload');
-    preload.style['content'] = 'url("sprites/preload/' + newBG + '.webp")'
+    preload.style['content'] = 'url("sprites/preload/' + newBG + '")'
 }
 
 function fadeBackground() {

@@ -123,8 +123,10 @@ let preloadCompleted = false;
 
 async function loadSDK() {
     await window.CrazyGames.SDK.init().then(() => {
+        console.log("sdk inited, preloadcompleted: ",preloadCompleted)
         sdkIsLoaded = true;
         if (preloadCompleted) {
+            console.log("real load");
             PhaserScene.load.start();
             sdkLoadingStart();
         }
@@ -180,6 +182,8 @@ function create() {
 
 function onPreloadComplete (scene)
 {
+    console.log("preloadCompleted, sdk inited: ",sdkIsLoaded)
+
     preloadCompleted = true;
     globalObjects.tempBG = scene.add.sprite(0, 0, 'blackPixel').setScale(1000, 1000).setDepth(-1);
 
@@ -203,6 +207,7 @@ function onLoadComplete(scene) {
     initializeSounds(scene);
     initializeMiscLocalstorage();
     setupGame(scene);
+    console.log("on load complete");
 }
 
 function initializeMiscLocalstorage() {

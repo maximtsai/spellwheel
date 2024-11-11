@@ -2161,6 +2161,7 @@ class Enemy {
     }
 
      showVictory(rune) {
+         sdkGameplayStop();
         globalObjects.encyclopedia.hideButton();
         globalObjects.options.hideButton();
         globalObjects.magicCircle.disableMovement();

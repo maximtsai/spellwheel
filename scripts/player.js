@@ -1115,7 +1115,7 @@ class Player {
             return;
         }
         globalObjects.magicCircle.setAuraAlpha(0);
-
+        sdkGameplayStop();
         messageBus.publish("closeCombatText");
         globalObjects.textPopupManager.hideInfoText();
         globalObjects.bannerTextManager.closeBanner();

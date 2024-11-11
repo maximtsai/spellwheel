@@ -619,6 +619,7 @@
      }
 
     customVictory() {
+        sdkGameplayStop();
         playReaperPassiveAnim(this, () => {
             clearDeathFog();
             this.addDelay(() => {

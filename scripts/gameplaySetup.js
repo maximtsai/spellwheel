@@ -603,8 +603,8 @@ function clickIntro() {
     loadObjects.whiteOverall = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setDepth(2000).setAlpha(0).setScale(1000);
     PhaserScene.tweens.add({
         targets: loadObjects.whiteOverall,
-        alpha: 1,
-        ease: 'Cubic.easeIn',
+        alpha: 0.75,
+        ease: 'Quad.easeIn',
         duration: 2100
     });
     PhaserScene.time.delayedCall(1800, () => {
@@ -692,7 +692,7 @@ function cleanupIntro() {
         globalObjects.tempIntroText[i].destroy();
     }
     setupPlayer();
-    if (gameVars.introSkipped) {
+    if (gameVars.introSkipped && gameVars.maxLevel >= 1) {
         gotoMainMenu();
     } else {
 
@@ -735,29 +735,35 @@ function locketFlash() {
 }
 
 function showLocket() {
-    globalObjects.gameLocketOpen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 119, 'misc', 'locket3.png').setScale(0.8).setDepth(100003);
-    globalObjects.gameLocketOpenLight = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 119, 'misc', 'locketwhite.png').setScale(0.8).setDepth(100003).setAlpha(0);
-    let closeText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 160, 'Put away locket', {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'center'}).setDepth(100003).setOrigin(0.5, 0).setAlpha(0);
+    globalObjects.gameLocketOpen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 129, 'misc', 'locket3.png').setScale(0.69).setDepth(100003);
+    globalObjects.gameLocketOpenLight = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 129, 'misc', 'locketwhite.png').setScale(0.69).setDepth(100003).setAlpha(0);
+    let closeText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 105, 'Put away locket', {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'center'}).setDepth(100003).setOrigin(0.5, 0).setAlpha(0);
     PhaserScene.tweens.add({
         targets: [globalObjects.gameLocketOpen, globalObjects.gameLocketOpenLight],
-        y: "+=25",
-        ease: 'Quint.easeOut',
+        y: "+=35",
+        ease: 'Quart.easeOut',
         scaleX: 0.95, scaleY: 0.95,
-        duration: 700,
-        onComplete: () => {
-            updateManager.addFunction(locketFlash);
-
-            closeText.currAnim = PhaserScene.tweens.add({
-                targets: closeText,
-                alpha: 0.9,
-                duration: 1000,
-            });
-        }
+        duration: 900,
     });
+    updateManager.addFunction(locketFlash);
+
+    let isClosingLocket = false;
+    setTimeout(() => {
+        if (isClosingLocket) {
+            return;
+        }
+        closeText.currAnim = PhaserScene.tweens.add({
+            targets: closeText,
+            alpha: 0.9,
+            ease: 'Quad.easeOut',
+            duration: 1000,
+        });
+    }, 500)
     globalObjects.bannerTextManager.setDialog([getLangText('beginLocket1')]);
     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height + 230, 0);
     globalObjects.bannerTextManager.showBanner(0.75);
     globalObjects.bannerTextManager.setOnFinishFunc(() => {
+        isClosingLocket = true;
         updateManager.removeFunction(locketFlash);
         globalObjects.gameLocketOpenLight.destroy();
         playSound('locket_close');

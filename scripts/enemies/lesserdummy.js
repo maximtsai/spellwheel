@@ -4,6 +4,8 @@
         this.initSprite('lesser_dummy_blank.png', 0.9, 0, undefined, undefined, 0);
         this.sprite.setOrigin(0.5, 0.98);
         globalObjects.encyclopedia.hideButton();
+        this.bgMusic2 = playMusic('wind', 0.01, true);
+        fadeInSound(this.bgMusic2, 0.5, 1200);
         globalObjects.options.hideButton();
         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1) {
@@ -80,6 +82,8 @@
                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
                 globalObjects.bannerTextManager.showBanner(false);
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                    fadeAwaySound(this.bgMusic2,  600);
+
                     this.bgMusic = playMusic('bite_down_simplified', 0.9, true);
                     fadeInSound(this.bgMusic, 0.6);
 

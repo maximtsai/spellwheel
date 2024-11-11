@@ -177,6 +177,7 @@ function clearMenuButtons() {
 }
 
 function gotoMainMenu() {
+    switchBackground('grass_bg.webp')
     globalObjects.magicCircle.setWheelTint();
     globalObjects.magicCircle.enableMovement();
     if (gameVars.isInMainMenu) {

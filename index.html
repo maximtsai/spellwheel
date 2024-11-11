@@ -81,7 +81,7 @@
     <style media='screen' type="text/css">
         #background {
             margin: 0;
-            background-image: url("sprites/preload/runebg.jpg");
+            background-image: url("sprites/preload/grass_bg.webp");
             background-color: #111010;
             background-position: center;
             background-size: cover;
@@ -96,10 +96,10 @@
         }
         #leftborder {
             margin: 0;
-            background-image: url("sprites/preload/handshield_back.png");
+            background-image: url("sprites/preload/handshield_back.webp");
             background-size: cover;
             height: 100%;
-            width: 150px;
+            width: 86px;
             opacity: 0;
             max-height: 100%;
             left: calc(50% - 453px);
@@ -108,10 +108,10 @@
         }
         #rightborder {
             margin: 0;
-            background-image: url("sprites/preload/handshield_back.png");
+            background-image: url("sprites/preload/handshield_back.webp");
             background-size: cover;
             height: 100%;
-            width: 150px;
+            width: 86px;
             opacity: 0;
             max-height: 100%;
             right: calc(50% - 453px);
@@ -129,7 +129,15 @@
                 opacity: 0;
             }
             to {
-                opacity: 0.3;
+                opacity: 1;
+            }
+        }
+        @keyframes fadeAway {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
             }
         }
         @keyframes changeFull {

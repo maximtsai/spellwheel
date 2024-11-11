@@ -1213,8 +1213,8 @@ class SpellManager {
                     if (!clockHand) {
                         clockHand = this.scene.add.sprite(clockBGAttack.x, clockBGAttack.y, 'spells', 'clock_stab.png').setDepth(33);
                     }
-                    clockHand.setVisible(true).setAlpha(1.25).setFrame('clock_stab.png').setScale(0.5).setOrigin(0.12, 0.5);
-                    clockHand.rotation = 0.4 + Math.random() * 2.4;
+                    clockHand.setVisible(true).setAlpha(1.25).setFrame('clock_stab.png').setScale(clockBGAttack.scaleX * 0.9).setOrigin(0.12, 0.5);
+                    clockHand.rotation = Math.random() * 2.4 - 1.2;
                     if (Math.random() < 0.5) {
                         clockHand.rotation = -clockHand.rotation;
                     }
@@ -1238,10 +1238,10 @@ class SpellManager {
                     }
                     this.scene.tweens.add({
                         targets: clockHand,
-                        duration: 500,
-                        scaleX: clockBGAttack.scaleX * 0.87,
-                        scaleY: clockBGAttack.scaleX * 0.87,
-                        ease: 'Cubic.easeOut',
+                        duration: 200,
+                        scaleX: clockBGAttack.scaleX * 0.78,
+                        scaleY: clockBGAttack.scaleX * 0.78,
+                        ease: 'Back.easeOut',
                         alpha: 0.7,
                     });
                     clockHandsList.push(clockHand);
@@ -1272,14 +1272,14 @@ class SpellManager {
                                         let idxNum = listLength - clockHandsList.length;
 
                                         let fireHand = clockHandsList.pop();
-                                        let goalScale = clockBGAttack.scaleX * 1.3 + 0.1
+                                        let goalScale = clockBGAttack.scaleX * 1.25 + 0.1;
 
                                         let delayAmt = clockHandsList.length * delayInterval;
                                         this.scene.tweens.add({
                                             delay: delayAmt,
                                             targets: fireHand,
-                                            scaleX: goalScale * 1.05 + 0.25,
-                                            scaleY: goalScale * 1.15 + 0.3,
+                                            scaleX: goalScale * 1.12 + 0.28,
+                                            scaleY: goalScale * 1.25 + 0.34,
                                             ease: 'Quart.easeIn',
                                             duration: 60,
                                             onStart: () => {

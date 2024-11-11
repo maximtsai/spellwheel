@@ -806,7 +806,7 @@ let textData = {
     "rune_matter_rune_strike": "HEAVY STRIKE",
     "rune_matter_rune_enhance": "STRENGTHEN ATTACK",
     "rune_matter_rune_protect": "STONE SHIELD",
-    "rune_matter_rune_reinforce": "HARD SKIN",
+    "rune_matter_rune_reinforce": "THORN SKIN",
     "rune_matter_rune_unload": "EARTH FORCE",
     "rune_mind_rune_strike": "SHOCK STRIKE",
     "rune_mind_rune_enhance": "IGNITE ATTACK",

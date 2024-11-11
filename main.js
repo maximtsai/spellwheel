@@ -409,7 +409,7 @@ function handleBorders() {
     //block
 
 
-    let widthAmt = 150 * gameScale
+    let widthAmt = 86 * gameScale
     leftBorder.style.width = widthAmt + 'px';
     rightBorder.style.width = widthAmt + 'px';
     let shiftAmt = pixelWidth * gameScale * 0.5 + widthAmt - 1;
@@ -422,12 +422,28 @@ function showBackground() {
     let rightBorder = document.getElementById('rightborder');
     let background = document.getElementById('background');
     background.style['animation-name'] = 'changeShadow';
-    background.style.opacity = '0.3';
+    background.style.opacity = '1';
 
     leftBorder.style['animation-name'] = 'changeFull';
     leftBorder.style.opacity = '1';
     rightBorder.style['animation-name'] = 'changeFull';
     rightBorder.style.opacity = '1';
+}
 
+let currBackground = 'grass_bg.webp';
+function switchBackground(newBG) {
+    if (currBackground === newBG) {
+        return;
+    }
+    let background = document.getElementById('background');
+    background.style.opacity = '0';
+    background.style['animation-name'] = 'fadeAway';
+    background.style['animation-duration'] = '1.5s';
+    setTimeout(() => {
+        currBackground = newBG;
+        background.style['animation-name'] = 'changeShadow';
+        background.style['background-image'] = 'url("sprites/preload/' + newBG + '")';
+        background.style.opacity = '1';
+    }, 1000)
 
 }

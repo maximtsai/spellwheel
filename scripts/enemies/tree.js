@@ -835,7 +835,7 @@
                                      globalObjects.textPopupManager.hideInfoText();
                                  }, 9800);
                              }
-                         }, 1500)
+                         }, 1900)
                      },
                      attackStartFunction: () => {
                         this.glowGreen();

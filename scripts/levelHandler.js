@@ -556,25 +556,34 @@ function createMenuCloseButton(items) {
 function switchLevelBackground(lvl) {
     switch(lvl) {
         case -7:
+            switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case -6:
+            switchBackground('grave_bg.webp');
+            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
+            break;
         case -5:
         case -4:
+            switchBackground('clock_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case -3:
+            switchBackground('forest_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 0.95, 0.95, 0.95,'Quart.easeIn', 0, false, -10);
             break;
         case -2:
+            switchBackground('forest_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
             break;
         case -1:
             // mind dummy
+            switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeOut', 0, false, 0);
             break;
         case 0:
             // zoomInCurrBackground(1500, 2, 'Cubic.easeIn');
+            // switchBackground('grass_bg.webp');
             let bgObj = fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 100, globalObjects.menuBack.scaleX, globalObjects.menuBack.startScale * 1.19, globalObjects.menuBack.startScale * 1.2,'Quint.easeInOut', 0, false, 0, true);
             bgObj.setOrigin(0.5, 0.5).setPosition(globalObjects.menuBack.x, globalObjects.menuBack.y).setScale(globalObjects.menuBack.scaleX, globalObjects.menuBack.scaleY).setDepth(-8);
             minorZoomMenu();
@@ -597,36 +606,49 @@ function switchLevelBackground(lvl) {
             break;
         case 1:
             clearOnlyMenuBack();
+            // switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeOut', 0, false, 0);
             break;
         case 2:
+            switchBackground('forest_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
             break;
         case 3:
+            switchBackground('forest_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 0.95, 0.95, 0.95,'Quart.easeIn', 0, false, -10);
             break;
         case 4:
+            switchBackground('clock.webp');
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case 5:
+            switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
         case 6:
+            switchBackground('grave_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background7.webp', 1500, 1.2, 1.25, 1.25,'Quart.easeIn', 0, false, 1);
             break;
         case 7:
+            switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, -1, -0.94, 0.94,'Quart.easeIn', 0, false);
             break;
         case 8:
+            switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 0.92, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case 9:
         case 10:
+            switchBackground('clock_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'tunnel.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case 11:
+            switchBackground('clock_bg.webp');
             globalObjects.magicCircle.setWheelTint(0.03, 0.07, 'usage_tint_b.png');
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 2500, 1, 1, 1,'Quart.easeIn', 0, false);
+            break;
+        default:
+            switchBackground('clock_bg.webp');
             break;
     }
 }

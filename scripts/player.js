@@ -538,7 +538,7 @@ class Player {
                 let damageSpike = getTempPoolObject('lowq', 'sharpflashred.webp', 'sharpflashred', 450);
                 let distFromCenter = gameConsts.halfWidth - xPos;
                 let newScale = 0.55 + Math.sqrt(damageTaken) * 0.25;
-                damageSpike.setScale(newScale, newScale*1.2).setPosition(xPos, globalObjects.player.getY() - 191 + Math.abs(distFromCenter * 0.1)).setDepth(1);
+                damageSpike.setScale(newScale, newScale*1.2).setPosition(xPos, globalObjects.player.getY() - 191 + Math.abs(distFromCenter * 0.1)).setDepth(1).setAlpha(1);
                 damageSpike.setRotation(distFromCenter * 0.002);
                 this.scene.tweens.add({
                     targets: damageSpike,

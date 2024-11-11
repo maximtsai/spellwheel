@@ -881,7 +881,7 @@
                      }, 1500)
                  }
                  let hitEffect = getTempPoolObject('lowq', 'sharpflashred.webp', 'sharpflashred', 400);
-                 hitEffect.setPosition(currObj.x + 10 - Math.random() * 20, currObj.y - 10 - Math.random() * 15).setDepth(195).setScale(0.25, 0.1).setVisible(true);
+                 hitEffect.setPosition(currObj.x + 10 - Math.random() * 20, currObj.y - 10 - Math.random() * 15).setDepth(195).setScale(0.25, 0.1).setVisible(true).setAlpha(1);
                  hitEffect.setRotation((currObj.x - gameConsts.halfWidth) * 0.01);
                  let extraScale = Math.random() * 0.45;
                  this.addTween({

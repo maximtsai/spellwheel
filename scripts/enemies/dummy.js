@@ -378,8 +378,9 @@
         if (!this.dead && !this.isAsleep && !this.shownTut5) {
             this.shownTut5 = true;
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 262, getLangText('level1_tut_c'), 'right');
-            this.rune3 = this.addSprite(globalObjects.textPopupManager.getCenterPos() - 24, globalObjects.textPopupManager.getBoxCenterPos() + 26, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
-            this.rune4 = this.addSprite(globalObjects.textPopupManager.getCenterPos() + 24, globalObjects.textPopupManager.getBoxCenterPos() + 26, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
+            let yOffset = (language === 'zh_cn' || language === 'zh_tw') ? globalObjects.textPopupManager.getBoxCenterPos() + 24 : globalObjects.textPopupManager.getBoxCenterPos() + 25;
+            this.rune3 = this.addSprite(globalObjects.textPopupManager.getCenterPos() - 24, yOffset, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
+            this.rune4 = this.addSprite(globalObjects.textPopupManager.getCenterPos() + 24, yOffset, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
             this.addTween({
                 targets: [this.rune3, this.rune4],
                 alpha: 1,
@@ -660,6 +661,12 @@
              this.spaceTween.stop();
              this.spaceTween.destroy();
          }
+         if (this.isUsingSpaceBG) {
+             switchBackgroundInstant('star_shatter.webp');
+             setTimeout(() => {
+                 switchBackground('grass_bg.webp');
+             }, 50)
+         }
          if (this.eyesTween) {
              this.eyesTween.stop();
              this.eyesTween.destroy();
@@ -939,6 +946,7 @@
                             alpha: 1,
                             duration: 4000,
                             onComplete: () => {
+                                preloadImage('star_bg.webp')
                                 blackBG.setDepth(5);
                                 playFakeBGMusic('but_never_forgotten_metal_prelude');
                                 this.addTween({
@@ -1002,6 +1010,10 @@
                                                 });
                                                 blackBG.setVisible(true);
                                                 spaceBG.setAlpha(1);
+                                                this.isUsingSpaceBG = true;
+                                                switchBackgroundInstant('star_bg.webp');
+                                                preloadImage('star_shatter.webp')
+
                                                 this.bgMusic = playMusic('but_never_forgotten_metal', 0.93, true);
                                                 let blackpulse1 = this.addImage(this.sprite.x, this.sprite.y, 'blurry', 'black_pulse.png').setDepth(5).setAlpha(1).setScale(0);
                                                  this.addTween({

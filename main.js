@@ -459,3 +459,17 @@ function switchBackground(newBG) {
         background.style.opacity = '1';
     }, 1000)
 }
+
+function switchBackgroundInstant(newBG) {
+    if (currBackground === newBG) {
+        return;
+    }
+    currBackground = newBG;
+    let background = document.getElementById('background');
+    background.style['background-image'] = 'url("sprites/preload/' + newBG + '")';
+}
+
+function preloadImage(newBG) {
+    let preload = document.getElementById('preload');
+    preload.style['content'] = 'url("sprites/preload/' + newBG + '.webp")'
+}

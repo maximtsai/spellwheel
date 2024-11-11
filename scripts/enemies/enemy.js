@@ -2161,6 +2161,7 @@ class Enemy {
     }
 
      showVictory(rune) {
+         sdkGameplayStop();
         globalObjects.encyclopedia.hideButton();
         globalObjects.options.hideButton();
         globalObjects.magicCircle.disableMovement();
@@ -2197,7 +2198,7 @@ class Enemy {
              y: gameConsts.halfHeight - 110,
              ease: 'Cubic.easeOut',
              duration: gameVars.gameManualSlowSpeedInverse * 400,
-             completeDelay: 300,
+             completeDelay: 400,
              onComplete: () => {
                 if (this.dieClickBlocker) {
                     if (canvas) {
@@ -2215,7 +2216,7 @@ class Enemy {
                              onComplete: () => {
                                  victoryText.destroy();
                                  banner.destroy();
-                                 playReaperAnim(this);
+                                 playReaperAnim(this, this.customReaperAnim);
                              }
                          });
                         continueText.destroy();
@@ -2245,7 +2246,7 @@ class Enemy {
                              onComplete: () => {
                                  victoryText.destroy();
                                  banner.destroy();
-                                 playReaperAnim(this);
+                                 playReaperAnim(this, this.customReaperAnim);
                              }
                          });
                         continueText.destroy();

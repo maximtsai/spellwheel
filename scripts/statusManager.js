@@ -142,7 +142,6 @@ class StatusManager {
                 let statuses = globalObjects.player.getStatuses();
                 this.recycleStatusObj(statusDisplayObj);
                 if (status.cleanUp && !skipCleanup) {
-                    console.log("cleanuped ", i)
                     status.cleanUp(statuses);
                 }
             }

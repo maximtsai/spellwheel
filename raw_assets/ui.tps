@@ -219,7 +219,6 @@
             <key type="filename">ui/knight_paper.png</key>
             <key type="filename">ui/magician_paper.png</key>
             <key type="filename">ui/mantis_paper.png</key>
-            <key type="filename">ui/robot_paper.png</key>
             <key type="filename">ui/statue_paper.png</key>
             <key type="filename">ui/tree_paper.png</key>
             <key type="filename">ui/wall_paper.png</key>
@@ -431,6 +430,21 @@
                 <rect>35,13,69,25</rect>
                 <key>scale9Paddings</key>
                 <rect>35,13,69,25</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ui/robot_paper.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.9</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>154,167,307,333</rect>
+                <key>scale9Paddings</key>
+                <rect>154,167,307,333</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -125,66 +125,8 @@ function createAnimations(scene) {
         }),
         frameRate: 10,
     });
-    scene.anims.create({
-        key: 'death2laugh',
-        frames: scene.anims.generateFrameNames('deathfinal', {
-            prefix: 'death2laugh',
-            suffix: '.png',
-            start: 1,
-            end: 2,
-            zeroPad: 0,
-        }),
-        frameRate: 3,
-        repeat: -1,
-    });
-    scene.anims.create({
-        key: 'death2laughtext',
-        frames: scene.anims.generateFrameNames('deathfinal', {
-            prefix: 'death2laughtext',
-            suffix: '.png',
-            start: 1,
-            end: 2,
-            zeroPad: 0,
-        }),
-        frameRate: 6,
-        repeat: -1,
-    });
 
-    scene.anims.create({
-        key: 'robottime',
-        frames: scene.anims.generateFrameNames('enemies', {
-            prefix: 'robot_time',
-            suffix: '.png',
-            start: 1,
-            end: 2,
-            zeroPad: 0,
-        }),
-        frameRate: 10,
-        repeat: -1
-    });
-    scene.anims.create({
-        key: 'robotmind',
-        frames: scene.anims.generateFrameNames('enemies', {
-            prefix: 'robot_energy',
-            suffix: '.png',
-            start: 1,
-            end: 3,
-            zeroPad: 0,
-        }),
-        frameRate: 12,
-    });
-    scene.anims.create({
-        key: 'robotheart',
-        frames: scene.anims.generateFrameNames('enemies', {
-            prefix: 'robot_blast_small',
-            suffix: '.png',
-            start: 1,
-            end: 2,
-            zeroPad: 0,
-        }),
-        frameRate: 20,
-        repeat: -1
-    });
+
     scene.anims.create({
         key: 'lightningbolt',
         frames: scene.anims.generateFrameNames('spells', {
@@ -313,39 +255,9 @@ function createAnimations(scene) {
         repeat: -1,
         frameRate: 30
     });
-    scene.anims.create({
-        key: 'forceFieldHit',
-        frames: scene.anims.generateFrameNames('shields', {
-            prefix: 'forceField',
-            suffix: '.png',
-            start: 2,
-            end: 12,
-            zeroPad: 0,
-        }),
-        frameRate: 30
-    });
-    scene.anims.create({
-        key: 'forceFieldHitShort',
-        frames: scene.anims.generateFrameNames('shields', {
-            prefix: 'forceFieldShort',
-            suffix: '.png',
-            start: 1,
-            end: 8,
-            zeroPad: 0,
-        }),
-        frameRate: 30
-    });
-    scene.anims.create({
-        key: 'forceFieldFlash',
-        frames: scene.anims.generateFrameNames('shields', {
-            prefix: 'forceField',
-            suffix: '.png',
-            start: 1,
-            end: 12,
-            zeroPad: 0,
-        }),
-        frameRate: 15
-    });
+
+
+
     scene.anims.create({
         key: 'btnFlash',
         frames: scene.anims.generateFrameNames('shields', {
@@ -357,17 +269,7 @@ function createAnimations(scene) {
         }),
         frameRate: 24
     });
-    scene.anims.create({
-        key: 'forceBreak',
-        frames: scene.anims.generateFrameNames('shields', {
-            prefix: 'forceBreak',
-            suffix: '.png',
-            start: 1,
-            end: 3,
-            zeroPad: 0,
-        }),
-        frameRate: 10
-    });
+
     scene.anims.create({
         key: 'handShieldFull',
         frames: scene.anims.generateFrameNames('shields', {
@@ -512,30 +414,6 @@ function createAnimations(scene) {
             zeroPad: 0,
         }),
         frameRate: 15
-    });
-    scene.anims.create({
-        key: 'ladydeathcape',
-        frames: scene.anims.generateFrameNames('deathfin', {
-            prefix: 'frame00',
-            suffix: '.png',
-            start: 0,
-            end: 74,
-            zeroPad: 2,
-        }),
-        repeat: -1,
-        frameRate: 20
-    });
-    scene.anims.create({
-        key: 'ladydeathhood',
-        frames: scene.anims.generateFrameNames('deathfin', {
-            prefix: 'hood00',
-            suffix: '.png',
-            start: 1,
-            end: 75,
-            zeroPad: 2,
-        }),
-        repeat: -1,
-        frameRate: 20
     });
     scene.anims.create({
         key: 'weaken',

@@ -189,21 +189,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">misc/angrybig1.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>19,20,38,40</rect>
-                <key>scale9Paddings</key>
-                <rect>19,20,38,40</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">misc/announceBg.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -224,7 +209,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.01</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -313,7 +298,6 @@
             </struct>
             <key type="filename">misc/continuegame.webp</key>
             <key type="filename">misc/continuegame_hover.webp</key>
-            <key type="filename">misc/continuegame_press.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -345,7 +329,6 @@
             </struct>
             <key type="filename">misc/creditsgame.webp</key>
             <key type="filename">misc/creditsgame_hover.webp</key>
-            <key type="filename">misc/creditsgame_press.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -357,51 +340,6 @@
                 <rect>37,19,75,39</rect>
                 <key>scale9Paddings</key>
                 <rect>37,19,75,39</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">misc/dizzy_1.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>22,21,43,43</rect>
-                <key>scale9Paddings</key>
-                <rect>22,21,43,43</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">misc/dizzy_2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>27,25,55,51</rect>
-                <key>scale9Paddings</key>
-                <rect>27,25,55,51</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">misc/dizzy_3.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>24,24,47,47</rect>
-                <key>scale9Paddings</key>
-                <rect>24,24,47,47</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -425,7 +363,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>1.05</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -440,7 +378,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>1.05</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -544,24 +482,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">misc/miniscythe.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.5</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>49,51,99,102</rect>
-                <key>scale9Paddings</key>
-                <rect>49,51,99,102</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">misc/newgame.webp</key>
             <key type="filename">misc/newgame_hover.webp</key>
-            <key type="filename">misc/newgame_press.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -626,21 +548,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">misc/scythebroke.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>213,225,425,450</rect>
-                <key>scale9Paddings</key>
-                <rect>213,225,425,450</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">misc/scytheflash1.png</key>
             <key type="filename">misc/scytheflash2.png</key>
             <key type="filename">misc/scytheflash2png.png</key>
@@ -680,7 +587,6 @@
             </struct>
             <key type="filename">misc/selectgame.webp</key>
             <key type="filename">misc/selectgame_hover.webp</key>
-            <key type="filename">misc/selectgame_press.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -791,7 +697,6 @@
             </struct>
             <key type="filename">misc/wishlistgame.webp</key>
             <key type="filename">misc/wishlistgame_hover.webp</key>
-            <key type="filename">misc/wishlistgame_press.webp</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>72</uint>
+        <uint>90</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -132,7 +132,7 @@
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
-        <enum type="SettingsBase::OutputFormat">RGBA5555</enum>
+        <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
         <key>alphaHandling</key>
         <enum type="SettingsBase::AlphaHandling">ClearTransparentPixels</enum>
         <key>contentProtection</key>
@@ -174,12 +174,11 @@
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">ending/ending2_a.png</key>
-            <key type="filename">ending/ending2_b.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.5</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -189,8 +188,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">ending/ending_1_blue.png</key>
-            <key type="filename">ending/ending_1_pink.png</key>
+            <key type="filename">ending/poster.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -199,27 +197,39 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>205,175,410,350</rect>
+                <rect>154,88,308,177</rect>
                 <key>scale9Paddings</key>
-                <rect>205,175,410,350</rect>
+                <rect>154,88,308,177</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">ending/ending_3a.png</key>
-            <key type="filename">ending/ending_3b.png</key>
-            <key type="filename">ending/ending_3c.png</key>
-            <key type="filename">ending/ending_3d.png</key>
+            <key type="filename">ending/temp.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.91</double>
+                <double>0.01</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>175,205,350,410</rect>
+                <rect>128,128,256,256</rect>
                 <key>scale9Paddings</key>
-                <rect>175,205,350,410</rect>
+                <rect>128,128,256,256</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ending/wishlist.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>85,35,170,70</rect>
+                <key>scale9Paddings</key>
+                <rect>85,35,170,70</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -65,7 +65,7 @@
     }
 
      initBird() {
-         this.bird = this.addImage(this.x - 87, this.y - 194, 'wallenemy', 'bird_1.png').setAlpha(0).setDepth(-1);
+         this.bird = this.addImage(this.x - 87, this.y - 194, 'enemies', 'bird_1.png').setAlpha(0).setDepth(-1);
          this.bird.scaleX = -1
          this.addTween({
              delay: 150,
@@ -233,7 +233,8 @@
          this.shakeShieldText();
 
          if (this.shieldAmts <= 0) {
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y - 15, '-BROKE-', 1.2, {y: "+=5", ease: 'Quart.easeOut'}, {alpha: 0, scaleX: 1.25, scaleY: 1.25, ease: 'Back.easeOut'});
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth, this.sprite.y - 15, '-=BROKE=-', 1.8, {y: "+=1", ease: 'Cubic.easeIn'}, {alpha: 0, scaleX: 1.7, scaleY: 1.7, ease: 'Back.easeOut'});
+             playSound('rock_crumble', 0.35).detune = 200;
              this.clearHandShield(true);
          } else {
             if (this.shieldAmts === 2 || (this.canShowEarlyInfo && this.shieldAmts <= (gameVars.isHardMode ? 8 : 6))) {
@@ -324,6 +325,7 @@
      }
 
      birdFalls() {
+        playSound('clunk', 0.3).detune = 500;
          this.bird.setDepth(20);
          this.bird.y -= 2;
          this.addTween({
@@ -371,7 +373,7 @@
         //     duration: 800,
         //     ease: 'Quad.easeInOut'
         // })
-         this.handShieldTemp = this.addSprite(this.x, this.y - 72, 'deathfinal', 'palm_glow.png').setScale(this.sprite.startScale * 1.355).setDepth(3).setAlpha(0).setOrigin(0.5, 0.373);
+         this.handShieldTemp = this.addSprite(this.x, this.y - 72, 'enemies', 'palm_glow.png').setScale(this.sprite.startScale * 1.355).setDepth(3).setAlpha(0).setOrigin(0.5, 0.373);
          this.handShieldTemp.startScale = this.handShieldTemp.scaleX;
 
          this.handShieldTemp.currAnim = this.addTween({
@@ -383,7 +385,7 @@
          // playFakeBGMusic('but_never_forgotten_metal_prelude');
          this.addDelayIfAlive(() => {
              playSound('ringknell')
-             this.secondTempShield = this.addSprite(this.handShieldTemp.x, this.handShieldTemp.y + 99, 'deathfinal', 'palm_glow.png').setScale(this.handShieldTemp.startScale * 1.2, this.handShieldTemp.startScale * 1.15).setDepth(3).setAlpha(0).setOrigin(0.5, 0.55);
+             this.secondTempShield = this.addSprite(this.handShieldTemp.x, this.handShieldTemp.y + 99, 'enemies', 'palm_glow.png').setScale(this.handShieldTemp.startScale * 1.2, this.handShieldTemp.startScale * 1.15).setDepth(3).setAlpha(0).setOrigin(0.5, 0.55);
 
              this.addTween({
                  targets: this.secondTempShield,
@@ -588,9 +590,9 @@
         super.die();
 
          gameVars.latestLevel = this.level;
-         localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
+         sdkSetItem("latestLevel", gameVars.latestLevel.toString());
          gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
-         localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
+         sdkSetItem("maxLevel", gameVars.maxLevel.toString());
         playSound('rock_crumble', 0.4).detune = -300;
         playSound('shield_break', 0.6).detune = -800;
         globalObjects.textPopupManager.hideInfoText();
@@ -617,6 +619,7 @@
      }
 
     customVictory() {
+        sdkGameplayStop();
         playReaperPassiveAnim(this, () => {
             clearDeathFog();
             this.addDelay(() => {
@@ -774,7 +777,7 @@
                  },
                  {
                      name: "}}3x12}}",
-                     chargeAmt: 700 + hardModeCharge,
+                     chargeAmt: 720 + hardModeCharge,
                      finishDelay: 3700,
                      damage: -1,
                      startFunction: () => {
@@ -786,7 +789,7 @@
                  },
                  {
                      name: "}}}3x14}}}",
-                     chargeAmt: 740 + hardModeCharge,
+                     chargeAmt: 840 + hardModeCharge,
                      finishDelay: 4150,
                      isBigMove: true,
                      damage: -1,
@@ -799,7 +802,7 @@
                  },
                  {
                      name: "}}}3x16}}}",
-                     chargeAmt: 780 + hardModeCharge,
+                     chargeAmt: 980 + hardModeCharge,
                      finishDelay: 4500,
                      isBigMove: true,
                      damage: -1,
@@ -812,7 +815,7 @@
                  },
                  {
                      name: "}}}3x18}}}",
-                     chargeAmt: 820 + hardModeCharge,
+                     chargeAmt: 1160 + hardModeCharge,
                      finishDelay: 4800,
                      isBigMove: true,
                      damage: -1,

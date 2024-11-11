@@ -555,6 +555,15 @@ let textData2 = {
         "es": "",
         "jp": ""
     },
+    "pre_fight_4c": {
+        "en_us": "",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "pre_fight_5a": {
         "en_us": "No matter where I go, this wall always\nseems to be in the way.",
         "fr": "Où que j’aille, ce mur semble toujours\nme barrer la route.",

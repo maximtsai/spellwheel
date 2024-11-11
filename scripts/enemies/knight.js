@@ -22,7 +22,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 160 : 130;
+         this.health = gameVars.isHardMode ? 150 : 130;
          this.eyeObjects = [];
          this.pullbackScale = 0.92;
          this.attackScale = 1.11;
@@ -43,11 +43,134 @@
 
      }
 
+     customReaperAnim() {
+         let locket = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 185, 'misc', 'locket2.png').setOrigin(0.5, 0.5).setDepth(200).setAlpha(0).setRotation(0.25).setScale(0.6);
+         locket.currAnim = PhaserScene.tweens.add({
+             delay: 500,
+             targets: locket,
+             scaleX: 0.8,
+             scaleY: 0.8,
+             alpha: 1,
+             ease: 'Quart.easeOut',
+             rotation: 0,
+             y: "+=12",
+             duration: 2300,
+             onStart: () => {
+                 playSound('whoosh');
+                 let locketMusic = playSound('sleepless', 0.1);
+                 fadeInSound(locketMusic, 0.8, 750)
+
+             },
+             onComplete: () => {
+                 playSound('locket_open');
+                 playSound('water_drop', 0.6);
+                 let circle = PhaserScene.add.image(locket.x, locket.y, 'circle', 'circle.png').setDepth(99).setScale(0.3).setAlpha(1.1);
+                 PhaserScene.tweens.add({
+                     targets: circle,
+                     scaleX: 1.5,
+                     scaleY: 1.5,
+                     ease: 'Quart.easeOut',
+                     duration: 2000,
+                 });
+                 PhaserScene.tweens.add({
+                     targets: circle,
+                     alpha: 0,
+                     ease: 'Quad.easeOut',
+                     duration: 1950,
+                 });
+                 locket.setScale(locket.scaleX * 0.98);
+                 locket.y += 3;
+                 PhaserScene.tweens.add({
+                     targets: locket,
+                     scaleX: locket.scaleX * 1.025,
+                     scaleY: locket.scaleX * 1.025,
+                     ease: 'Cubic.easeOut',
+                     y: "-=2",
+                     duration: 70,
+                     onComplete: () => {
+                         locket.setFrame('locket3.png');
+                         PhaserScene.tweens.add({
+                             targets: locket,
+                             scaleX: locket.scaleX * 0.98,
+                             scaleY: locket.scaleX * 0.98,
+                             ease: 'Back.easeOut',
+                             y: "+=1",
+                             duration: 250,
+                             onComplete: () => {
+                                 PhaserScene.tweens.add({
+                                     delay: 50,
+                                     targets: locket,
+                                     alpha: 0,
+                                     scaleX: locket.scaleX * 0.91,
+                                     scaleY: locket.scaleX * 0.91,
+                                     ease: 'Back.easeIn',
+                                     y: "+=44",
+                                     duration: 2500,
+                                 })
+                             }
+                         })
+
+                     }
+                 })
+
+                 let whiteFlood = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'white_pixel.png').setScale(500, 500).setAlpha(0).setDepth(150000);
+                 PhaserScene.tweens.add({
+                     targets: whiteFlood,
+                     rotation: 0,
+                     duration: 2500,
+                     onComplete: () => {
+                         clearDeathFog();
+                     }
+                 })
+                 PhaserScene.tweens.add({
+                     targets: whiteFlood,
+                     alpha: 1,
+                     ease: 'Quad.easeIn',
+                     duration: 2900,
+                     onComplete: () => {
+                         locket.destroy();
+                         gotoMainMenu();
+                         let clickBlock = new Button({
+                             normal: {
+                                 ref: "blackPixel",
+                                 x: gameConsts.halfWidth,
+                                 y: gameConsts.halfHeight,
+                                 alpha: 0.15,
+                                 scaleX: 1000,
+                                 scaleY: 1000
+                             },
+                             onMouseUp: () => {
+
+                             }
+                         });
+                         globalObjects.postFightScreen.clearGloom();
+                         PhaserScene.tweens.add({
+                             targets: whiteFlood,
+                             alpha: 0,
+                             ease: 'Quad.easeOut',
+                             duration: 800,
+                             onComplete: () => {
+                                 clickBlock.destroy();
+                                 showWishlistPage();
+                             }
+                         })
+                     }
+                 })
+
+             }
+         })
+     }
+
      initSpriteAnim(scale) {
          this.sprite.setScale(scale);
          this.sprite.setAlpha(0)
          let shadowSprite = this.addImage(this.sprite.x, this.sprite.y - 2, 'enemies', 'void_knight_fog.png').setDepth(this.sprite.depth + 1).setOrigin(this.sprite.originX, this.sprite.originY).setAlpha(0);
          shadowSprite.setScale(scale * 0.96);
+         setTimeout(() => {
+             this.bgMusic = playMusic('into_the_void', 0.05, true);
+             fadeInSound(this.bgMusic, 0.89, 400);
+         }, 100)
+
          this.scene.tweens.add({
              targets: shadowSprite,
              duration: 1200,
@@ -609,12 +732,12 @@
 
          let darkBG = getBackgroundBlackout();
          darkBG.setDepth(-3).setAlpha(0.35);
-         this.spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.5).setScale(1.2);
+         this.spaceBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-3).setAlpha(0.45).setScale(1.2);
          this.scene.tweens.add({
              targets: [this.spaceBG, darkBG],
              alpha: 0,
              ease: 'Cubic.easeOut',
-             duration: 2200,
+             duration: 1800,
              onComplete: () => {
              }
          });
@@ -1382,7 +1505,7 @@
      }
 
      createShout() {
-         playSound('void_enhance', 0.9);
+         playSound('void_enhance', 0.9).detune = -50;
          zoomTemp(1.02);
          this.shoutSprite.setScale(0.15).setAlpha(1);
          this.addTween({
@@ -1624,6 +1747,8 @@
              this.createDeathEffect(7, 0.75, 90);
 
          } else {
+             playSound('meat_click_left')
+            playSound('void_body')
              super.die();
              this.addTween({
                  targets: [this.voidTentacleFront, this.voidTentacleBack],
@@ -1708,6 +1833,7 @@
                              }
                          });
                         playSound('victory_2');
+                        sdkShowHappyTime()
                         this.addTween({
                             delay: 10,
                             targets: rune,

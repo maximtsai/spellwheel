@@ -165,10 +165,10 @@ function setupLoadingBar(scene) {
                     loadObjects.loadingText.setText('LOADED\nBODY RUNE');
                     break;
                 case 8:
-                    loadObjects.loadingText.setText('LOADED\nULTIMATE RUNE');
+                    loadObjects.loadingText.setText('LOADING\nFINAL ASSETS...');
                     break;
                 case 9:
-                    loadObjects.loadingText.setText('RECALLING\nPRECIOUS MEMORIES');
+                    loadObjects.loadingText.setText('LOADING\nFINAL ASSETS...');
                     break;
             }
 
@@ -774,7 +774,7 @@ function showLocket() {
         });
 
         if (gameVars.latestLevel > 1 && Math.random() > 0.75) {
-            let ladyImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 90, 'ending', 'ending2_a.png').setAlpha(0.2).setDepth(200).setScale(0.5);
+            let ladyImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 90, 'ending', 'ending2_a.png').setAlpha(0.2).setDepth(200);
             PhaserScene.tweens.add({
                 targets: ladyImage,
                 ease: 'Cubic.easeOut',

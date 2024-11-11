@@ -450,7 +450,7 @@ class Encyclopedia {
         ]
         let fontSizeToUse = language === 'fr' ? 22 : 24;
         for (let i = 0; i < listOfRunes.length; i++) {
-            if (i > gameVars.maxLevel + 1) {
+            if (i > Math.min(gameVars.maxLevel + 1, 6)) {
                 break;
             }
 
@@ -564,7 +564,7 @@ class Encyclopedia {
             "unload"];
         let availableRunes = ["strike",
             "matter"];
-        let targetLevel = Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel , 14));
+        let targetLevel = Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel, 5));
         for (let i = 0; i < Math.min(allRunes.length, targetLevel); i++) {
             availableRunes.push(allRunes[i]);
         }

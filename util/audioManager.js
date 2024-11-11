@@ -49,8 +49,8 @@ function initializeSounds(scene) {
     //     }
     //     soundList[audioData.name] = scene.sound.add(audioData.name);
     // }
-    globalVolume = localStorage.getItem("globalVolume") || 0.9;
-    globalMusicVol = localStorage.getItem("globalMusicVol") || 0.9;
+    globalVolume = sdkGetItem("globalVolume") || 0.9;
+    globalMusicVol = sdkGetItem("globalMusicVol") || 0.9;
 }
 
 function playSound(name, volume = 1, loop = false, isMusic = false) {
@@ -114,7 +114,7 @@ function playFakeBGMusic(name, volume = 1, loop = false) {
 
 function updateGlobalVolume(newVol = 1) {
     globalVolume = newVol;
-    localStorage.setItem("globalVolume", newVol.toString());
+    sdkSetItem("globalVolume", newVol.toString());
     for (let i in soundList) {
         if (soundList[i].isPlaying) {
             if (soundList[i] !== globalMusic) {
@@ -126,7 +126,7 @@ function updateGlobalVolume(newVol = 1) {
 
 function updateGlobalMusicVolume(newVol = 1) {
     globalMusicVol = newVol;
-    localStorage.setItem("globalMusicVol", newVol.toString());
+    sdkSetItem("globalMusicVol", newVol.toString());
     if (globalMusic) {
         globalMusic.volume = globalMusic.fullVolume * newVol;
     }

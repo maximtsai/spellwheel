@@ -31,6 +31,7 @@ class PostFightScreen {
     }
 
     initAssets(isWin = true, isPractice = false, initLocket = true) {
+        sdkShowBannerAd();
         this.locketIsOpen = false;
         this.locketIsClosable = false;
         if (!this.bgShade) {
@@ -526,11 +527,12 @@ class PostFightScreen {
 
         if (level > gameVars.latestLevel) {
             gameVars.latestLevel = level;
-            localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
-            localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
+            sdkSetItem("latestLevel", gameVars.latestLevel.toString());
+            sdkSetItem("maxLevel", gameVars.maxLevel.toString());
         }
 
         gameVars.currLevel = level;
+
         if (level === 1 || level === 4) {
             this.createWinScreenUIAlt(level);
         } else {
@@ -572,22 +574,7 @@ class PostFightScreen {
         }
     }
 
-    // createWinScreenMin(level = 0) {
-    //     globalObjects.encyclopedia.showButton();
-    //     globalObjects.options.showButton();
-    //     this.createWinScreenUIMin(level);
-    //
-    //     this.continueButton.setState(DISABLE);
-    //     this.trainingButton.setState(NORMAL);
-    //     this.trainingButton.setOnMouseUpFunc(() => {
-    //         this.locketRecentlyClicked = false;
-    //         this.clearPostFightScreen();
-    //         beginPreLevel(level + 1);
-    //         if (canvas) {
-    //             canvas.style.cursor = 'default';
-    //         }
-    //     });
-    // }
+
 
     createWinScreenBoom(level = 0) {
         this.createWinScreenUI(level);
@@ -1008,11 +995,10 @@ class PostFightScreen {
         }
     }
 
-    clearPostFightScreen(clearFog = true) {
-        if (!this.isCreated) {
+    clearGloom() {
+        if (!this.gloom) {
             return;
         }
-        this.clearWindSound();
         if (this.gloom.currAnim) {
             this.gloom.currAnim.stop();
         }
@@ -1022,6 +1008,15 @@ class PostFightScreen {
             ease: 'Cubic.easeOut',
             duration: 500,
         })
+    }
+
+    clearPostFightScreen(clearFog = true) {
+        if (!this.isCreated) {
+            return;
+        }
+        this.clearWindSound();
+        this.clearGloom();
+
         PhaserScene.tweens.add({
             targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon, this.newRuneAnnounce, this.locketSprite, this.locketDialog, this.locketDialogImage],
             alpha: 0,

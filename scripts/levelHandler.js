@@ -2,6 +2,39 @@ let CURRENT_LEVEL = null;
 let levelTimeoutID = null;
 
 function beginPreLevel(lvl) {
+    if (lvl > 2 || (lvl > 1 && gameVars.maxLevel)) {
+        let clickBlocker;
+        let hasFinished = false;
+
+        sdkShowMidgameAd(() => {
+            clickBlocker = createGlobalClickBlocker(false);
+            setTimeout(() => {
+                if (!hasFinished) {
+                    hasFinished = true;
+                    hideGlobalClickBlocker();
+                    beginPreLevelTrue(lvl)
+                }
+            }, 15000)
+        }, () => {
+            if (!hasFinished) {
+                hasFinished = true;
+                hideGlobalClickBlocker();
+                beginPreLevelTrue(lvl)
+            }
+        }, () => {
+            if (!hasFinished) {
+                hasFinished = true;
+                hideGlobalClickBlocker();
+                beginPreLevelTrue(lvl)
+            }
+        })
+    } else {
+        beginPreLevelTrue(lvl)
+    }
+
+}
+
+function beginPreLevelTrue(lvl) {
     gameVars.isInMainMenu = false;
     gameVars.hasCheated = isUsingCheats();
     updateCheatsDisplay();
@@ -18,7 +51,7 @@ function beginPreLevel(lvl) {
     let text8;
     let text9;
     let introOverlay;
-    if (lvl != 0) {
+    if (lvl !== 0) {
         switchLevelBackground(lvl);
     }
     switch(lvl) {
@@ -285,9 +318,9 @@ function beginPreLevel(lvl) {
             globalObjects.magicCircle.setWheelTint(0.07, 0.05);
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'knight_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 130, getLangText('pre_fight_4a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 115, getLangText('pre_fight_4a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
-            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, getLangText('pre_fight_4b'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
+            text2 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +200, getLangText('pre_fight_4c'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text2.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -349,9 +382,9 @@ function beginPreLevel(lvl) {
             createGlobalClickBlocker();
             fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
             break;
-    default:
-        beginLevel(lvl);
-        break;
+        default:
+            beginLevel(lvl);
+            break;
 
     }
 }
@@ -605,9 +638,6 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 0.92, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case 9:
-            switchBackground('grave_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
-            break;
         case 10:
             switchBackground('clock_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'tunnel.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
@@ -625,7 +655,8 @@ function switchLevelBackground(lvl) {
 
 function beginLevel(lvl, instant = false) {
     CURRENT_LEVEL = lvl;
-    updateSpellState(lvl)
+    updateSpellState(lvl);
+
     globalObjects.player.resetStats();
     messageBus.publish('manualResetElements', undefined, true);
     messageBus.publish('manualResetEmbodiments', undefined, true); // with long delay

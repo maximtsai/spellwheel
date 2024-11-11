@@ -2,6 +2,12 @@ function sdkShowRewardAd(onStart, onFinish, onError) {
 
 }
 
+function sdkLoadingStart() {
+}
+
+function sdkLoadingStop() {
+}
+
 function sdkShowMidgameAd(onStart, onFinish, onError) {
     // Crazygames
     // const callbacks = {
@@ -10,6 +16,7 @@ function sdkShowMidgameAd(onStart, onFinish, onError) {
     // };
     //
     // window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
+    onFinish();
 }
 
 function sdkShowHappyTime() {
@@ -34,7 +41,28 @@ function displayBanner() {
     }
 }
 
+function sdkGetItem(key) {
+    return localStorage.getItem(key);
+}
+
+function sdkSetItem(key, val) {
+    localStorage.setItem(key, val);
+}
+
+function sdkHasAdBlock() {
+
+}
+
 function sdkShowBannerAd() {
+
+}
+
+function sdkGameplayStart() {
+
+
+}
+
+function sdkGameplayStop() {
 
 }
 

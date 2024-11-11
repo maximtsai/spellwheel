@@ -384,7 +384,6 @@
             </struct>
             <key type="filename">dummyenemy/scary_eyes.png</key>
             <key type="filename">dummyenemy/scary_eyes2.png</key>
-            <key type="filename">dummyenemy/super_dummy_tpose.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -429,98 +428,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">dummyenemy/super_dummy_angry.png</key>
-            <key type="filename">dummyenemy/super_dummy_wide.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.8</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>121,100,242,200</rect>
-                <key>scale9Paddings</key>
-                <rect>121,100,242,200</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">dummyenemy/super_dummy_broken.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.8</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>83,92,166,183</rect>
-                <key>scale9Paddings</key>
-                <rect>83,92,166,183</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">dummyenemy/super_dummy_fist.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.8</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>56,48,112,97</rect>
-                <key>scale9Paddings</key>
-                <rect>56,48,112,97</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">dummyenemy/super_dummy_leftarm.png</key>
-            <key type="filename">dummyenemy/super_dummy_rightarm.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.8</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>70,73,139,146</rect>
-                <key>scale9Paddings</key>
-                <rect>70,73,139,146</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">dummyenemy/super_dummy_leftarm_fist.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.8</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>92,120,185,240</rect>
-                <key>scale9Paddings</key>
-                <rect>92,120,185,240</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">dummyenemy/super_dummy_leftarm_fist_large.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>92,138,185,275</rect>
-                <key>scale9Paddings</key>
-                <rect>92,138,185,275</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">dummyenemy/super_dummy_leftarm_stretch.png</key>
             <key type="filename">dummyenemy/super_dummy_rightarm_stretch.png</key>
             <struct type="IndividualSpriteSettings">
@@ -534,86 +441,6 @@
                 <rect>92,95,185,191</rect>
                 <key>scale9Paddings</key>
                 <rect>92,95,185,191</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">dummyenemy/super_dummy_leftarm_stretch_straight.png</key>
-            <key type="filename">dummyenemy/super_dummy_rightarm_stretch_straight.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.8</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>127,30,255,61</rect>
-                <key>scale9Paddings</key>
-                <rect>127,30,255,61</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">dummyenemy/super_dummy_pushup1.png</key>
-            <key type="filename">dummyenemy/super_dummy_pushup1_flip.png</key>
-            <key type="filename">dummyenemy/super_dummy_pushup2.png</key>
-            <key type="filename">dummyenemy/super_dummy_pushup2_flip.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.76</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>92,148,183,295</rect>
-                <key>scale9Paddings</key>
-                <rect>92,148,183,295</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">dummyenemy/super_dummy_stars.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.8</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>71,92,143,183</rect>
-                <key>scale9Paddings</key>
-                <rect>71,92,143,183</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">dummyenemy/super_dummy_swinging.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.8</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>101,100,202,200</rect>
-                <key>scale9Paddings</key>
-                <rect>101,100,202,200</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">dummyenemy/super_dummy_swinging_left.png</key>
-            <key type="filename">dummyenemy/super_dummy_swinging_right.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.8</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>118,95,235,191</rect>
-                <key>scale9Paddings</key>
-                <rect>118,95,235,191</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

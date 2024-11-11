@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>20</uint>
+        <uint>35</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -250,21 +250,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">blurry/deathhalo.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.65</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>150,150,300,300</rect>
-                <key>scale9Paddings</key>
-                <rect>150,150,300,300</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">blurry/display_backglow.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -418,7 +403,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">blurry/lantern_glow.png</key>
+            <key type="filename">blurry/note.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -427,9 +412,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>95,93,191,185</rect>
+                <rect>9,15,19,29</rect>
                 <key>scale9Paddings</key>
-                <rect>95,93,191,185</rect>
+                <rect>9,15,19,29</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -439,21 +424,6 @@
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
                 <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>57,57,113,113</rect>
-                <key>scale9Paddings</key>
-                <rect>57,57,113,113</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">blurry/pulser_green.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.75</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -687,21 +657,6 @@
                 <rect>10,3,20,6</rect>
                 <key>scale9Paddings</key>
                 <rect>10,3,20,6</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">blurry/void_spike_out.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>84,84,167,167</rect>
-                <key>scale9Paddings</key>
-                <rect>84,84,167,167</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

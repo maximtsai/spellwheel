@@ -1056,6 +1056,37 @@ class SpellManager {
                                             duration: 60,
                                             onStart: () => {
                                                 fireHand.setAlpha(1.1)
+                                                let flashRed = getTempPoolObject('lowq', 'sharpflashred.webp', 'sharpflashred', 250);
+                                                flashRed.setPosition(fireHand.x, fireHand.y).setScale(goalScale * 0.75, goalScale * 2).setDepth(fireHand.depth - 1).setAlpha(0.75);
+                                                flashRed.setOrigin(0.5, 0.78);
+                                                flashRed.rotation = fireHand.rotation + Math.PI * 0.5;
+                                                this.scene.tweens.add({
+                                                    targets: flashRed,
+                                                    scaleX: goalScale * 4.5,
+                                                    scaleY: goalScale * 11,
+                                                    ease: 'Quart.easeIn',
+                                                    alpha: 1.2,
+                                                    duration: 65,
+                                                    oncomplete: () => {
+                                                        this.scene.tweens.add({
+                                                            targets: flashRed,
+                                                            scaleX: goalScale * 0.75,
+                                                            scaleY: goalScale * 2,
+                                                            ease: 'Cubic.easeOut',
+                                                            duration: 150,
+                                                            onComplete: () => {
+                                                                flashRed.setOrigin(0.5, 0.5);
+                                                            }
+                                                        });
+                                                        this.scene.tweens.add({
+                                                            targets: flashRed,
+                                                            ease: 'Quad.easeIn',
+                                                            alpha: 0,
+                                                            duration: 110,
+                                                        });
+                                                    }
+                                                });
+
                                             },
                                             onComplete: () => {
                                                 let detuneAmt = 0;

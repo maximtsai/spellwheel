@@ -1174,7 +1174,7 @@
                  {
                      name: "}3x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: gameVars.isHardMode ? 350 : 435,
+                     chargeAmt: gameVars.isHardMode ? 350 : 445,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {

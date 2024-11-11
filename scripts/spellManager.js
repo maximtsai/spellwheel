@@ -177,7 +177,7 @@ class SpellManager {
             if (!rockObj.bg) {
                 rockObj.bg = this.scene.add.image(xPos, yPos, 'spells', 'rock_bg.png');
             }
-            rockObj.bg.alpha = isMobile ? 0.5 : 0.35;
+            rockObj.bg.alpha = isMobile ? 0.59 : 0.4;
             rockObj.bg.alpha += Math.min(0.24, numAdditionalAttacks * 0.04);
             rockObj.bg.visible = true;
 
@@ -1959,6 +1959,22 @@ class SpellManager {
         }
         let electricCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells').play('powerEffect').setScale(3.4).setDepth(117);
 
+        let glowCirc = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'shields', 'ring_flash0.png').setAlpha(0.5).setDepth(130).setScale(1.2);
+        glowCirc.setTint(0x00FFFF);
+        glowCirc.playReverse('ring_flash');
+        this.scene.tweens.add({
+            targets: glowCirc,
+            alpha: 1,
+            ease: 'Cubic.easeOut',
+            duration: 125,
+            scaleX: 1.37,
+            scaleY: 1.37,
+            completeDelay: 300,
+            onComplete: () => {
+                glowCirc.destroy();
+            }
+        });
+
         playSound('power_surge');
         globalObjects.magicCircle.resetElements();
 
@@ -1982,6 +1998,7 @@ class SpellManager {
                             targets: energyCircle1,
                             duration: 750,
                             alpha: 0.6,
+
                         });
                     }
                 });

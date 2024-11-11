@@ -267,7 +267,7 @@ function setupLoadingBar(scene) {
             }
         });
         swirlInReaperFog(1.15, 75, 1000);
-        // gameOptions.skipIntro && !gameOptions.isFirstTime &&
+
         if (!gameVars.runningIntro) {
             gameOptions.skipIntroFull = true;
             this.clickIntro();
@@ -692,7 +692,7 @@ function cleanupIntro() {
         globalObjects.tempIntroText[i].destroy();
     }
     setupPlayer();
-    if (gameVars.introSkipped && gameVars.maxLevel >= 1) {
+    if (gameVars.maxLevel >= 1 && gameOptions.skipIntro) {
         gotoMainMenu();
     } else {
 
@@ -735,8 +735,8 @@ function locketFlash() {
 }
 
 function showLocket() {
-    globalObjects.gameLocketOpen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 129, 'misc', 'locket3.png').setScale(0.69).setDepth(100003);
-    globalObjects.gameLocketOpenLight = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 129, 'misc', 'locketwhite.png').setScale(0.69).setDepth(100003).setAlpha(0);
+    globalObjects.gameLocketOpen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 129, 'misc', 'locket3.png').setScale(0.69, 0.75).setDepth(100003);
+    globalObjects.gameLocketOpenLight = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 129, 'misc', 'locketwhite.png').setScale(0.69, 0.75).setDepth(100003).setAlpha(0);
     let closeText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 105, 'Put away locket', {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'center'}).setDepth(100003).setOrigin(0.5, 0).setAlpha(0);
     PhaserScene.tweens.add({
         targets: [globalObjects.gameLocketOpen, globalObjects.gameLocketOpenLight],

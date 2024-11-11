@@ -177,7 +177,7 @@ class SpellManager {
             if (!rockObj.bg) {
                 rockObj.bg = this.scene.add.image(xPos, yPos, 'spells', 'rock_bg.png');
             }
-            rockObj.bg.alpha = isMobile ? 0.5 : 0.35;
+            rockObj.bg.alpha = isMobile ? 0.59 : 0.4;
             rockObj.bg.alpha += Math.min(0.24, numAdditionalAttacks * 0.04);
             rockObj.bg.visible = true;
 
@@ -427,7 +427,7 @@ class SpellManager {
         brickObj.alpha = 0.02;
         brickObj2.alpha = 0.02;
         brickObj.setScale(0.8);
-        brickObj2.setScale(1.25 + Math.sqrt(spellMult) * 0.1);
+        brickObj2.setScale(1.25 + Math.sqrt(spellMult) * 0.05);
 
         let protectionAmt = 1;
         let damageAmt = 1;
@@ -812,7 +812,7 @@ class SpellManager {
         let hasFirstBuff = additionalDamage >= 6;
         let hasSecondBuff = additionalDamage >= 14;
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
-        let isPowerful = numAdditionalAttacks * (6 + (additionalDamage + bonusTrueDamage) * 1.5) > 85;
+        let isPowerful = (numAdditionalAttacks * ((6 + additionalDamage + bonusTrueDamage) * 1.5)) > 89;
 
         let strikeObjects = [];
         let finalStrikeScale = 0.5 + Math.sqrt(additionalDamage) * 0.075 + additionalDamage * 0.02;
@@ -821,6 +821,9 @@ class SpellManager {
             playSound('time_strike_buff', hasFirstBuff ? 0.7 : 0.9).detune = Math.floor(Math.random() * 50) + 375;
         }
 
+        let clockHandsList = [];
+        let clockBGAttack = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 225, 'spells', 'clock_attack_bg.png').setDepth(-1).setAlpha(0).setTint(0xFF4444).setScale(0.5);
+        let clockBGAttackFront = this.scene.add.sprite(gameConsts.halfWidth, clockBGAttack.y, 'spells', 'clock_attack_bg.png').setDepth(30).setAlpha(0).setTint(0xDD0000).setScale(0.5);
         for (let i = 0; i < numAdditionalAttacks; i++) {
             let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -25 + 50 * i;
             let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
@@ -907,24 +910,28 @@ class SpellManager {
                 buffDelay += 470;
             }
         }
+        let delayInterval = 150;
+
+        let detunesList = [];
         for (let i in strikeObjects) {
+            let isFirst = i === '0';
+            let isLast = i == (strikeObjects.length - 1);
             let strikeObject = strikeObjects[i];
             strikeObject.finalRot = 0.2 - Math.random() * 0.4;
-            let delayedStrikeObject = this.scene.add.sprite(strikeObject.x, strikeObject.y, 'spells', 'clock_red.png').setDepth(10).setRotation(strikeObject.rotation).setScale(finalStrikeScale).setAlpha(0.75);
-            delayedStrikeObject.finalRot = strikeObject.finalRot;
-            delayedStrikeObject.visible = false;
-            let delayAmt = 270 + i * 150 + buffDelay;
+            let delayAmt = 270 + i * delayInterval + buffDelay;
             let offsetX = (Math.random() - 0.5) * 200;
 
             let randRotation = (offsetX < 0 ? 4 : -4) + (Math.random() - 0.5) * 2 - offsetX * 0.02;
 
             this.scene.tweens.add({
                 delay: delayAmt,
-                targets: [strikeObject, delayedStrikeObject],
+                targets: [strikeObject],
                 duration: 550,
                 rotation: randRotation,
                 onStart: () => {
-                    playSound('time_strike').detune = Math.floor(Math.random() * 250) - 125;
+                    let detuneAmt = Math.floor(Math.random() * 400) - 200;
+                    detunesList.push(detuneAmt);
+                    playSound('time_strike').detune = detuneAmt;
                 }
             });
 
@@ -942,8 +949,6 @@ class SpellManager {
                 ease: 'Back.easeOut',
                 easeParams: [0.25],
                 onStart: () => {
-                    delayedStrikeObject.visible = true;
-                    delayedStrikeObject.rotation = strikeObject.rotation;
                     this.scene.tweens.add({
                         targets: strikeObject,
                         x: offsetGoal,
@@ -969,6 +974,51 @@ class SpellManager {
                     });
                 },
                 onComplete: () => {
+                    if (isFirst) {
+                        clockBGAttack.setAlpha(0.5);
+                        clockBGAttackFront.setAlpha(0.5);
+                    }
+                    let bgScale = Math.sqrt(0.7 + i * 0.1 + (additionalDamage * 0.014)) - 0.3;
+                    clockBGAttack.setScale(bgScale)
+                    clockBGAttackFront.setScale(bgScale)
+                    let clockHand = poolManager.getItemFromPool('clockhand');
+                    if (!clockHand) {
+                        clockHand = this.scene.add.sprite(clockBGAttack.x, clockBGAttack.y, 'spells', 'clock_stab.png').setDepth(33);
+                    }
+                    clockHand.setVisible(true).setAlpha(1.25).setFrame('clock_stab.png').setScale(clockBGAttack.scaleX * 0.9).setOrigin(0.12, 0.5);
+                    clockHand.rotation = Math.random() * 2.4 - 1.2;
+                    if (Math.random() < 0.5) {
+                        clockHand.rotation = -clockHand.rotation;
+                    }
+                    for (let i = 0; i < clockHandsList.length; i++) {
+                        let currHand = clockHandsList[i];
+                        if (Math.abs(currHand.rotation - clockHand.rotation) < 0.2) {
+                            clockHand.rotation = 0.7 + Math.random() * 1.7;
+                            if (Math.random() < 0.5) {
+                                clockHand.rotation = -clockHand.rotation;
+                            }
+                        }
+                    }
+                    for (let i = 0; i < clockHandsList.length; i++) {
+                        let currHand = clockHandsList[i];
+                        if (Math.abs(currHand.rotation - clockHand.rotation) < 0.1) {
+                            clockHand.rotation = 0.7 + Math.random() * 1.7;
+                            if (Math.random() < 0.5) {
+                                clockHand.rotation = -clockHand.rotation;
+                            }
+                        }
+                    }
+                    this.scene.tweens.add({
+                        targets: clockHand,
+                        duration: 200,
+                        scaleX: clockBGAttack.scaleX * 0.78,
+                        scaleY: clockBGAttack.scaleX * 0.78,
+                        ease: 'Back.easeOut',
+                        alpha: 0.7,
+                    });
+                    clockHandsList.push(clockHand);
+
+
                     strikeObject.setFrame('clockStrike.png');
                     strikeObject.rotation = strikeObject.finalRot;
                     this.scene.tweens.add({
@@ -979,136 +1029,166 @@ class SpellManager {
                         alpha: 0,
                         onComplete: () => {
                             poolManager.returnItemToPool(strikeObject, 'clock');
+                            if (isLast) {
+                                this.scene.time.delayedCall(delayInterval, () => {
+                                    this.scene.tweens.add({
+                                        targets: [clockBGAttack, clockBGAttackFront],
+                                        alpha: 0.8,
+                                        ease: 'Cubic.easeIn',
+                                        duration: 150,
+                                    })
+                                    let listLength = clockHandsList.length;
+                                    let detuneIdx = 0;
+                                    while (clockHandsList.length > 0) {
+                                        let isLastHand = listLength == clockHandsList.length;
+                                        let idxNum = listLength - clockHandsList.length;
+
+                                        let fireHand = clockHandsList.pop();
+                                        let goalScale = clockBGAttack.scaleX * 1.25 + 0.1;
+
+                                        let delayAmt = clockHandsList.length * delayInterval;
+                                        this.scene.tweens.add({
+                                            delay: delayAmt,
+                                            targets: fireHand,
+                                            scaleX: goalScale * 1.12 + 0.28,
+                                            scaleY: goalScale * 1.25 + 0.34,
+                                            ease: 'Quart.easeIn',
+                                            duration: 60,
+                                            onStart: () => {
+                                                fireHand.setAlpha(1.1)
+                                            },
+                                            onComplete: () => {
+                                                let detuneAmt = 0;
+                                                if (detunesList.length === 0) {
+                                                    detuneAmt = Math.random() * 400 - 200;
+                                                } else {
+                                                    detuneAmt = detunesList[detuneIdx % detunesList.length];
+                                                    detuneIdx++;
+                                                }
+
+                                                if (idxNum === 0) {
+                                                    playSound('time_strike_hit', 0.92).detune = detuneAmt;
+                                                } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
+                                                    // last hit
+                                                    playSound('time_strike_hit', 0.85).detune = detuneAmt;
+                                                } else if (idxNum % 2 === 1) {
+                                                    playSound('time_strike_hit_2', 1).detune = detuneAmt;
+                                                } else if (idxNum % 2 === 0) {
+                                                    playSound('time_strike_hit_2', 0.75).detune = detuneAmt;
+                                                }
+
+
+                                                messageBus.publish('enemyTakeDamage', halfSpellDamage, true, undefined, 'time');
+                                                messageBus.publish('setPauseDur', 15);
+
+                                                if (isLastHand && isPowerful) {
+                                                    let powerfulEffect = getTempPoolObject('tutorial', 'rune_time_large.png', 'specialAttack', 1300);
+                                                    powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5).setPosition(gameConsts.halfWidth, strikeObject.y + 33);
+                                                    playSound('time_hard');
+                                                    this.scene.tweens.add({
+                                                        targets: powerfulEffect,
+                                                        duration: 110,
+                                                        alpha: 1,
+                                                        onComplete: () => {
+                                                            zoomTemp(1.06);
+                                                            screenShake(6);
+                                                            messageBus.publish('tempPause', 250, 0.05);
+                                                        }
+                                                    });
+                                                    this.scene.tweens.add({
+                                                        targets: powerfulEffect,
+                                                        duration: 125,
+                                                        scaleX: 3.15,
+                                                        scaleY: 3.15,
+                                                        ease: "Quint.easeIn",
+                                                        onComplete: () => {
+                                                            messageBus.publish('setSlowMult', 0.25, 15);
+                                                            this.scene.tweens.add({
+                                                                delay: 200,
+                                                                targets: powerfulEffect,
+                                                                duration: 900,
+                                                                alpha: 0,
+                                                                ease: "Cubic.easeOut"
+                                                            });
+                                                            this.scene.tweens.add({
+                                                                delay: 200,
+                                                                targets: powerfulEffect,
+                                                                duration: 900,
+                                                                scaleX: 3.8,
+                                                                scaleY: 3.8,
+                                                                ease: 'Cubic.easeIn'
+                                                            });
+                                                        }
+                                                    });
+                                                }
+
+                                                this.scene.tweens.add({
+                                                    delay: 20,
+                                                    targets: fireHand,
+                                                    scaleX: goalScale,
+                                                    scaleY: goalScale,
+                                                    alpha: 0.85,
+                                                    ease: 'Back.easeOut',
+                                                    duration: 240,
+                                                    completeDelay: 40,
+                                                    onComplete: () => {
+                                                        this.scene.tweens.add({
+                                                            targets: fireHand,
+                                                            alpha: 0,
+                                                            scaleX: goalScale * 0.95,
+                                                            scaleY: goalScale * 0.95,
+                                                            ease: 'Quad.easeOut',
+                                                            duration: 200,
+                                                            onStart: () => {
+                                                                if (isLastHand) {
+                                                                    this.scene.tweens.add({
+                                                                        delay: 100,
+                                                                        targets: [clockBGAttack, clockBGAttackFront],
+                                                                        alpha: 0,
+                                                                        scaleX: clockBGAttack.scaleX + 0.1,
+                                                                        scaleY: clockBGAttack.scaleX + 0.1,
+                                                                        ease: 'Cubic.easeOut',
+                                                                        duration: 300,
+                                                                        onComplete: () => {
+                                                                            clockBGAttack.destroy();
+                                                                            clockBGAttackFront.destroy();
+                                                                        }
+                                                                    })
+                                                                }
+                                                            },
+                                                            onComplete: () => {
+                                                                poolManager.returnItemToPool(fireHand, 'clockhand');
+
+                                                            }
+                                                        })
+                                                    }
+                                                })
+                                            }
+                                        })
+                                    }
+
+                                })
+
+                            }
                         }
                     });
                     let idxNum = parseInt(i);
                     if (idxNum === 0) {
-                        playSound('time_strike_hit', 0.92).detune = Math.floor(Math.random() * 100) - 50;
+                        playSound('time_strike_buff', 0.92).detune = Math.floor(Math.random() * 100) - 50;
                     } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
                         // last hit
-                        playSound('time_strike_hit', 0.85);
-                    } else if (idxNum % 2 == 1) {
-                        playSound('time_strike_hit_2', 1);
-                    } else if (idxNum % 2 == 0) {
-                        playSound('time_strike_hit_2', 0.75);
+                        playSound('time_strike_buff', 0.85);
+                    } else if (idxNum % 2 === 1) {
+                        playSound('time_strike_buff', 1).detune = -200;
+                    } else if (idxNum % 2 === 0) {
+                        playSound('time_strike_buff', 0.75).detune = -200;
                     }
 
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', spellDamage, true, undefined, 'time');
                     messageBus.publish('setPauseDur', 20);
-                    if (isPowerful && parseInt(i) === strikeObjects.length - 1) {
-                        let powerfulEffect = getTempPoolObject('tutorial', 'rune_time_large.png', 'specialAttack', 1300);
-                        powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5).setPosition(gameConsts.halfWidth, strikeObject.y + 33);
-                        playSound('time_hard');
-                        this.scene.tweens.add({
-                            targets: powerfulEffect,
-                            duration: 110,
-                            alpha: 1,
-                            onComplete: () => {
-                                zoomTemp(1.06);
-                                screenShake(6);
-                                messageBus.publish('tempPause', 250, 0.05);
-                            }
-                        });
-                        this.scene.tweens.add({
-                            targets: powerfulEffect,
-                            duration: 125,
-                            scaleX: 3.15,
-                            scaleY: 3.15,
-                            ease: "Quint.easeIn",
-                            onComplete: () => {
-                                messageBus.publish('setSlowMult', 0.25, 15);
-                                this.scene.tweens.add({
-                                    delay: 200,
-                                    targets: powerfulEffect,
-                                    duration: 900,
-                                    alpha: 0,
-                                    ease: "Cubic.easeOut"
-                                });
-                                this.scene.tweens.add({
-                                    delay: 200,
-                                    targets: powerfulEffect,
-                                    duration: 900,
-                                    scaleX: 3.8,
-                                    scaleY: 3.8,
-                                    ease: 'Cubic.easeIn'
-                                });
-                            }
-                        });
-                    } else if (!isPowerful) {
-                        zoomTempSlow(1.002 + additionalDamage * 0.0001);
-                        screenShake(0.35 + additionalDamage * 0.001)
-                    }
-                }
-            });
-            this.scene.tweens.add({
-                delay: delayAmt + 175,
-                targets: delayedStrikeObject,
-                y: randY,
-                duration: 550,
-                scaleX: goalScale,
-                scaleY: goalScale,
-                ease: 'Back.easeOut',
-                easeParams: [0.9],
-                onStart: () => {
-                    this.scene.tweens.add({
-                        targets: delayedStrikeObject,
-                        x: offsetGoal,
-                        duration: 200,
-                        ease: 'Quad.easeOut',
-                        onComplete: () => {
-                            this.scene.tweens.add({
-                                targets: delayedStrikeObject,
-                                x: gameConsts.halfWidth * 0.8 + offsetGoal * 0.2,
-                                duration: 200,
-                                ease: 'Quad.easeIn',
-                                onComplete: () => {
-                                    this.scene.tweens.add({
-                                        targets: delayedStrikeObject,
-                                        x: randXGoal,
-                                        duration: 150,
-                                        easeParams: [0.5],
-                                        ease: 'Back.easeOut'
-                                    });
-                                }
-                            });
-                        }
-                    });
-                },
-                onComplete: () => {
-                    delayedStrikeObject.setFrame('clock_redStrike.png');
-                    delayedStrikeObject.rotation = delayedStrikeObject.finalRot;
-
-                    this.scene.tweens.add({
-                        targets: delayedStrikeObject,
-                        duration: 250 + additionalDamage * 2,
-                        scaleX: goalScale + 0.4,
-                        scaleY: goalScale + 0.4,
-                        ease: 'Quad.easeOut',
-                        onComplete: () => {
-                            delayedStrikeObject.destroy();
-                        }
-                    });
-                    this.scene.tweens.add({
-                        targets: delayedStrikeObject,
-                        duration: 250 + additionalDamage * 2,
-                        alpha: 0,
-
-                    });
-                    let dmgBG = getTempPoolObject('spells', 'blackPulse.png', 'blackPulse', 200).setDepth(delayedStrikeObject.depth - 1).setScale(0.3).setAlpha(0.8).setPosition(delayedStrikeObject.x, delayedStrikeObject.y);
-
-                    let randScale = goalScale * 0.9 + 0.75 + Math.random() * 0.5;
-                    this.scene.tweens.add({
-                        targets: dmgBG,
-                        duration: 300,
-                        scaleX: randScale,
-                        scaleY: randScale,
-                        alpha: 0,
-                    });
-
-                    // messageBus.publish('enemyStartDamageCountdown');
-                    messageBus.publish('enemyTakeDamage', halfSpellDamage, true, undefined, 'time');
-                    messageBus.publish('setPauseDur', 15);
+                    zoomTempSlow(1.002 + additionalDamage * 0.0001);
+                    screenShake(0.35 + additionalDamage * 0.001)
                 }
             });
         }
@@ -1410,7 +1490,7 @@ class SpellManager {
             attackObj.setOrigin(0.5, 0.1);
         }
 
-        let yPos = 200;
+        let yPos = 195;
         for (let i = 0; i < attackObjects.length; i++) {
             let attackObj = attackObjects[i];
             let delayAmt = 50 + i * (190 - attackObjects.length * 6);
@@ -1511,7 +1591,7 @@ class SpellManager {
                     }
 
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead && !globalObjects.currentEnemy.invincible && !globalObjects.player.dead) {
-                        let animation1 = this.scene.add.sprite(attackObj.x, attackObj.y - 14, 'spells', 'energyTarget7.png').play('energyTarget').setAlpha(1).setScale(0.96);
+                        let animation1 = this.scene.add.sprite(attackObj.x, gameConsts.halfHeight - 215, 'spells', 'energyTarget7.png').play('energyTarget').setAlpha(1).setScale(0.96);
                         animation1.setDepth(30);
                         animation1.setOrigin(0.5, 0.5);
                         this.scene.tweens.add({
@@ -1617,6 +1697,22 @@ class SpellManager {
         }
         let electricCircle = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells').play('powerEffect').setScale(3.4).setDepth(117);
 
+        let glowCirc = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'shields', 'ring_flash0.png').setAlpha(0.5).setDepth(130).setScale(1.2);
+        glowCirc.setTint(0x00FFFF);
+        glowCirc.playReverse('ring_flash');
+        this.scene.tweens.add({
+            targets: glowCirc,
+            alpha: 1,
+            ease: 'Cubic.easeOut',
+            duration: 125,
+            scaleX: 1.37,
+            scaleY: 1.37,
+            completeDelay: 300,
+            onComplete: () => {
+                glowCirc.destroy();
+            }
+        });
+
         playSound('power_surge');
         globalObjects.magicCircle.resetElements();
 
@@ -1640,6 +1736,7 @@ class SpellManager {
                             targets: energyCircle1,
                             duration: 750,
                             alpha: 0.6,
+
                         });
                     }
                 });

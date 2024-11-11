@@ -405,10 +405,10 @@ const ENABLE_KEYBOARD = true;
             }
             // castDisable
 
-            // if angle diff is minimal, reduce torque, GREATLY REDUCES JITTER
+            // if angle diff is minimal, reduce torque, GREATLY REDUCES JITTER SHAKE STUTTER
             let torqueCloseMult = 1;
-            if (Math.abs(dragAngleDiff) < 0.025) {
-                torqueCloseMult = Math.abs(dragAngleDiff) * 38;
+            if (Math.abs(dragAngleDiff) < 0.03) {
+                torqueCloseMult = Math.abs(dragAngleDiff) * 30;
             }
 
             // Using both rotation diff and mult val to calculate

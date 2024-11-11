@@ -39,6 +39,22 @@
         this.damageCanEmit = true;
      }
 
+     initSpriteAnim(scale) {
+         this.sprite.setScale(scale * 0.98, scale * 0.3).setRotation(Math.random() * 0.4 - 0.2);
+         setTimeout(() => {
+             playSound('balloon', 0.4).detune = -50;
+         }, 50)
+         this.scene.tweens.add({
+             targets: this.sprite,
+             duration: 700,
+             ease: 'Quart.easeOut',
+             scaleX: scale,
+             scaleY: scale,
+             rotation: 0,
+             alpha: 1
+         });
+     }
+
      showPoster(startImg = 'dummy_paper_hit.png', finalRot = 0) {
          this.poster = this.addSprite(this.sprite.x, this.sprite.y, 'dummyenemy', startImg).setDepth(this.sprite.depth - 1).setScale(this.sprite.startScale*0.1);
          this.poster.setRotation(-0.7);

@@ -1,8 +1,8 @@
 const imageFilesPreload = [
     {name: 'whitePixel', src: 'sprites/preload/white_pixel.png'},
     {name: 'blackPixel', src: 'sprites/preload/black_pixel.png'},
-    {name: 'loadingSpinner', src: 'sprites/preload/loading_spinner.webp'},
-    {name: 'castNormal', src: 'sprites/preload/cast_normal.webp'},
+    {name: 'loadingSpinner', src: 'sprites/preload/loading_spinner.png'},
+    {name: 'castNormal', src: 'sprites/preload/cast_normal.png'},
     {name: 'introLocket', src: 'sprites/preload/locket.webp'},
 
     {name: 'runeEnhancePre', src: 'sprites/preload/rune_enhance_glow.png'},

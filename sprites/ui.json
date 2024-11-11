@@ -2,7 +2,7 @@
 	"textures": [
 		{
 			"image": "sprites/ui-0.webp",
-			"format": "RGBA5555",
+			"format": "RGBA8888",
 			"size": {
 				"w": 1318,
 				"h": 2009
@@ -1515,6 +1515,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:0360787ca9662a1bee193e5791b5ff4c:e2357ab61868a3ad3442c68d927a4b62:6af6d199855d1c5980a61db04791f8fb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:2bf1ff5053b29346715728539f91e908:e2357ab61868a3ad3442c68d927a4b62:6af6d199855d1c5980a61db04791f8fb$"
 	}
 }

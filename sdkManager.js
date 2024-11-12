@@ -36,17 +36,17 @@ function sdkShowHappyTime() {
 let canCallBanner = true;
 function displayBanner() {
     if (canCallBanner) {
-        // // Prevent banner from being called multiple times in high frequency
-        canCallBanner = false;
-        setTimeout(() => {
-            canCallBanner = true;
-        }, 65000);
-        const elem = document.getElementById("banner-container");
-        elem.style.bottom = "1px";
-
-        setTimeout(() => {
-            sdkShowBannerAd()
-        }, 0)
+        // // // Prevent banner from being called multiple times in high frequency
+        // canCallBanner = false;
+        // setTimeout(() => {
+        //     canCallBanner = true;
+        // }, 65000);
+        // const elem = document.getElementById("banner-container");
+        // elem.style.bottom = "1px";
+        //
+        // setTimeout(() => {
+        //     sdkShowBannerAd()
+        // }, 0)
     }
 }
 

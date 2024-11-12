@@ -1016,7 +1016,7 @@ class PostFightScreen {
         }
         this.clearWindSound();
         this.clearGloom();
-        sdkClearBanner();
+        // sdkClearBanner();
         PhaserScene.tweens.add({
             targets: [this.bgShade, this.backing, this.titleText, this.spellsCastText, this.healthLeftText, this.newRuneDesc, this.newRuneIcon, this.trainingRuneIcon, this.newRuneAnnounce, this.locketSprite, this.locketDialog, this.locketDialogImage],
             alpha: 0,

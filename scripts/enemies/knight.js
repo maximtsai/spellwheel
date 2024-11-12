@@ -1732,7 +1732,7 @@
              })
          }
 
-         gameVars.latestLevel = this.level;
+         gameVars.latestLevel = this.level + 2;
          sdkSetItem("latestLevel", gameVars.latestLevel.toString());
          gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
          sdkSetItem("maxLevel", gameVars.maxLevel.toString());

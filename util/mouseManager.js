@@ -131,18 +131,21 @@ function resizeGame() {
     var windowRatio = windowWidth / windowHeight;
     var gameRatio = game.config.width / game.config.height;
     var gameScale = 1;
+    let background = document.getElementById('background');
     if (windowRatio < gameRatio) {
         canvas.style.width = windowWidth + "px";
         canvas.style.height = windowWidth / gameRatio + "px";
         gameScale = windowWidth / game.config.width;
         gameVars.canvasXOffset = 0;
         gameVars.canvasYOffset = (windowHeight - game.config.height * gameScale) * 0.5;
+        background.style.opacity = '0';
     } else {
         canvas.style.width = windowHeight * gameRatio + "px";
         canvas.style.height = windowHeight + "px";
         gameScale = windowHeight / game.config.height;
         gameVars.canvasYOffset = 0;
         gameVars.canvasXOffset = (windowWidth - game.config.width * gameScale) * 0.5;
+        background.style.opacity = '1';
     }
     gameVars.gameScale = gameScale;
 

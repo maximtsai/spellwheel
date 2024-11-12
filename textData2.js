@@ -917,7 +917,7 @@ let textData2 = {
     },
     "shield_rune_spells": {
         "en_us": "SHIELD RUNE SPELLS",
-        "fr": "SORT DE RUNE\nBOUCLIER",
+        "fr": "SORT DE RUNE BOUCLIER",
         "zh_tw": "盾牌符文法術",
         "zh_cn": "盾牌符文法术",
         "ru": "",
@@ -926,7 +926,7 @@ let textData2 = {
     },
     "body_rune_spells": {
         "en_us": "BODY RUNE SPELLS",
-        "fr": "SORT DE RUNE\nCORPS",
+        "fr": "SORT DE RUNE CORPS",
         "zh_tw": "身體符文法術",
         "zh_cn": "身体符文法术",
         "ru": "",

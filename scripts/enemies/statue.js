@@ -709,12 +709,12 @@
              [
                  {
                      name: "BOOTING UP...",
-                     chargeAmt: gameVars.isHardMode ? 350 : 800,
+                     chargeAmt: gameVars.isHardMode ? 350 : 650,
                      damage: 0,
                  },
                  {
                      name: "}3x2}",
-                     chargeAmt: 500 + hardModeCharge,
+                     chargeAmt: 540 + hardModeCharge,
                      finishDelay: 1000,
                      damage: -1,
                      startFunction: () => {
@@ -726,7 +726,7 @@
                  },
                  {
                      name: "}3x4}",
-                     chargeAmt: 540 + hardModeCharge,
+                     chargeAmt: 580 + hardModeCharge,
                      finishDelay: 1600,
                      damage: -1,
                      startFunction: () => {
@@ -738,7 +738,7 @@
                  },
                  {
                      name: "}3x6}",
-                     chargeAmt: 580 + hardModeCharge,
+                     chargeAmt: 620 + hardModeCharge,
                      finishDelay: 2200,
                      damage: -1,
                      startFunction: () => {
@@ -750,7 +750,7 @@
                  },
                  {
                      name: "}}3x8}}",
-                     chargeAmt: 620 + hardModeCharge,
+                     chargeAmt: 660 + hardModeCharge,
                      finishDelay: 2800,
                      damage: -1,
                      startFunction: () => {
@@ -762,7 +762,7 @@
                  },
                  {
                      name: "}}3x10}}",
-                     chargeAmt: 660 + hardModeCharge,
+                     chargeAmt: 700 + hardModeCharge,
                      finishDelay: 3200,
                      damage: -1,
                      startFunction: () => {
@@ -774,7 +774,7 @@
                  },
                  {
                      name: "}}3x12}}",
-                     chargeAmt: 700 + hardModeCharge,
+                     chargeAmt: 740 + hardModeCharge,
                      finishDelay: 3700,
                      damage: -1,
                      startFunction: () => {
@@ -786,7 +786,7 @@
                  },
                  {
                      name: "}}}3x14}}}",
-                     chargeAmt: 740 + hardModeCharge,
+                     chargeAmt: 780 + hardModeCharge,
                      finishDelay: 4150,
                      isBigMove: true,
                      damage: -1,
@@ -799,7 +799,7 @@
                  },
                  {
                      name: "}}}3x16}}}",
-                     chargeAmt: 780 + hardModeCharge,
+                     chargeAmt: 820 + hardModeCharge,
                      finishDelay: 4500,
                      isBigMove: true,
                      damage: -1,
@@ -812,7 +812,7 @@
                  },
                  {
                      name: "}}}3x18}}}",
-                     chargeAmt: 820 + hardModeCharge,
+                     chargeAmt: 860 + hardModeCharge,
                      finishDelay: 4800,
                      isBigMove: true,
                      damage: -1,

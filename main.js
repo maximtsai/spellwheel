@@ -114,10 +114,10 @@ let deltaScale = 1;
 let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 3;
 let canResizeGame = true;
-let url1 = 'localhost';// 'crazygames';
-let url2 = 'maximtsai';// 'localhost';
-let url3 = 'adayofjoy';// '1001juegos';
-let url4 = 'classic.itch';// '1001juegos';
+let url1 = 'crazygames';// 'crazygames';
+let url2 = 'juegos';// '1001juegos';
+// let url3 = 'adayofjoy';// '1001juegos';
+// let url4 = 'classic.itch';// '1001juegos';
 let sdkIsLoaded = false;
 let preloadCompleted = false;
 
@@ -126,7 +126,7 @@ async function loadSDK() {
         console.log("sdk inited, preloadcompleted: ",preloadCompleted)
         sdkIsLoaded = true;
         beginLoadIfAllReady();
-        initUser();
+        // initUser();
     });
 }
 loadSDK();
@@ -171,7 +171,7 @@ function preload ()
 }
 
 function create() {
-    if ((!document.location.href.includes(url1) && !document.location.href.includes(url2) && !document.location.href.includes(url4))) {
+    if ((!document.location.href.includes(url1) && !document.location.href.includes(url2))) {
         // Stops execution of rest of game
         let gameDiv = document.getElementById('preload-notice');
         let invalidSite = document.location.href.substring(0, 25);

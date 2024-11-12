@@ -42,13 +42,18 @@ function displayBanner() {
             canCallBanner = true;
         }, 65000);
         const elem = document.getElementById("banner-container");
-        elem.style.bottom = "0px";
+        elem.style.bottom = "1px";
 
-        sdkShowBannerAd()
+        setTimeout(() => {
+            sdkShowBannerAd()
+        }, 60)
     }
 }
 
 async function sdkShowBannerAd() {
+    if (justClosedBanner) {
+        return;
+    }
     try {
         // await is not mandatory when requesting banners, but it will allow you to catch errors
         await window.CrazyGames.SDK.banner.requestBanner({
@@ -61,7 +66,13 @@ async function sdkShowBannerAd() {
     }
 }
 
+let justClosedBanner = false;
+
 function sdkClearBanner() {
+    justClosedBanner = true;
+    setTimeout(() => {
+        justClosedBanner = false;
+    }, 200)
     const elem = document.getElementById("banner-container");
     elem.style.bottom = "-10000px";
     window.CrazyGames.SDK.banner.clearAllBanners();
@@ -69,7 +80,8 @@ function sdkClearBanner() {
 
 function sdkGetItem(key) {
     if (sdkIsLoaded) {
-        window.CrazyGames.SDK.data.getItem(key);
+        return window.CrazyGames.SDK.data.getItem(key);
+
     } else {
         return localStorage.getItem(key);
     }

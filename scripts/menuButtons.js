@@ -1289,7 +1289,6 @@ function updateMenuLanguage() {
 
 
 function showLevelSelectScreen(){
-    sdkGameplayStop();
     globalObjects.encyclopedia.hideButton();
     globalObjects.options.hideButton();
     let clickBlocker = createGlobalClickBlocker(false);

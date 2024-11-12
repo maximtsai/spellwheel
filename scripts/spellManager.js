@@ -938,7 +938,7 @@ class SpellManager {
 
             let offsetGoal = gameConsts.halfWidth + offsetX;
             let randXGoal = gameConsts.halfWidth + (Math.random()) - 0.5 * 5;
-            let randY = 120 + (Math.random()) - 0.5 * 5;
+            let randY = 150 + (Math.random() - 0.5) * 10;
             this.scene.tweens.add({
                 delay: delayAmt,
                 targets: strikeObject,
@@ -1205,12 +1205,19 @@ class SpellManager {
                     });
                     let idxNum = parseInt(i);
                     if (idxNum === 0) {
-                        playSound('time_strike_buff', 0.92).detune = Math.floor(Math.random() * 100) - 50;
+                        let detuneHitAmt = Math.floor(Math.random() * 150) - 75;
+                        playSound('time_strike_buff', 0.92).detune = detuneHitAmt;
+                        playSound('time_strike_hit', 0.54).detune = detuneHitAmt - 250;
+
                     } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
                         // last hit
                         playSound('time_strike_buff', 0.85);
+                        playSound('time_strike_hit_2', 0.45).detune =  -250;
+
                     } else if (idxNum % 2 === 1) {
                         playSound('time_strike_buff', 1).detune = -200;
+                        playSound('time_strike_hit', 0.54).detune = 200;
+
                     } else if (idxNum % 2 === 0) {
                         playSound('time_strike_buff', 0.75).detune = -200;
                     }

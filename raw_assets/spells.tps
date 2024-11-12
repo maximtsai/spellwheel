@@ -353,7 +353,6 @@
                 <false/>
             </struct>
             <key type="filename">spells/clock.png</key>
-            <key type="filename">spells/clockStrike.png</key>
             <key type="filename">spells/rock.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

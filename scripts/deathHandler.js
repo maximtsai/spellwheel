@@ -1198,16 +1198,14 @@ function handleReaperDialog(level = 0, onComplete) {
                     globalObjects.deathRightHand.visible = false;
                     globalObjects.floatingDeath.alpha = 0.15;
                     globalObjects.floatingDeath2.alpha = 0.15;
-                    globalObjects.floatingDeath.setFrame('max_death_1a_angry.png');
-                    globalObjects.floatingDeath2.setFrame('max_death_1b_angry.png');
+                    // globalObjects.floatingDeath.setFrame('max_death_1a_angry.png');
+                    // globalObjects.floatingDeath2.setFrame('max_death_1b_angry.png');
                     globalObjects.floatingDeath.fakeAlpha = 1;
                     globalObjects.floatingDeath2.fakeAlpha = 1;
                     gameVars.deathFlutterDelay = 350;
                     repeatDeathFlutterAnimation(0);
                 });
-                // setFloatingDeathVisible(true, false)
-
-            }, undefined]
+            }]
             break;
         case 8:
             reaperDialog = [

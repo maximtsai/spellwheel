@@ -473,8 +473,16 @@ function showBackground() {
     let leftBorder = document.getElementById('leftborder');
     let rightBorder = document.getElementById('rightborder');
     let background = document.getElementById('background');
-    background.style['animation-name'] = 'changeShadow';
-    background.style.opacity = '1';
+
+
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+    var windowRatio = windowWidth / windowHeight;
+    var gameRatio = game.config.width / game.config.height;
+    if (windowRatio >= gameRatio) {
+        background.style['animation-name'] = 'changeShadow';
+        background.style.opacity = '1';
+    }
 
     leftBorder.style['animation-name'] = 'changeFull';
     leftBorder.style.opacity = '1';
@@ -494,9 +502,16 @@ function switchBackground(newBG) {
     background.style['animation-duration'] = '1.5s';
     setTimeout(() => {
         currBackground = newBG;
-        background.style['animation-name'] = 'changeShadow';
         background.style['background-image'] = 'url("sprites/preload/' + newBG + '")';
-        background.style.opacity = '1';
+
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+        var windowRatio = windowWidth / windowHeight;
+        var gameRatio = game.config.width / game.config.height;
+        if (windowRatio >= gameRatio) {
+            background.style['animation-name'] = 'changeShadow';
+            background.style.opacity = '1';
+        }
     }, 1000)
 }
 
@@ -506,8 +521,16 @@ function switchBackgroundInstant(newBG) {
     }
     currBackground = newBG;
     let background = document.getElementById('background');
-    background.style.opacity = '1';
     background.style['background-image'] = 'url("sprites/preload/' + newBG + '")';
+
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+    var windowRatio = windowWidth / windowHeight;
+    var gameRatio = game.config.width / game.config.height;
+    if (windowRatio >= gameRatio) {
+        background.style.opacity = '1';
+    }
+
 }
 
 function preloadImage(newBG) {

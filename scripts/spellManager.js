@@ -148,7 +148,7 @@ class SpellManager {
         pebbles.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 240);
         let additionalScale = Math.sqrt(additionalDamage) * 0.025;
         let finalAdditionaScale = additionalScale * 5;
-        let isPowerful = numAdditionalAttacks * (12 + additionalDamage + bonusTrueDamage) > 75;
+        let isPowerful = numAdditionalAttacks * (12 + additionalDamage + bonusTrueDamage) > 77;
         pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalScale).setRotation(Math.random() * 3)
         this.scene.tweens.add({
             targets: pebbles,
@@ -812,7 +812,7 @@ class SpellManager {
         let hasFirstBuff = additionalDamage >= 6;
         let hasSecondBuff = additionalDamage >= 14;
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
-        let isPowerful = (numAdditionalAttacks * ((6 + additionalDamage + bonusTrueDamage) * 1.5)) > 89;
+        let isPowerful = (numAdditionalAttacks * ((6 + additionalDamage + bonusTrueDamage) * 1.5)) > 80;
 
         let strikeObjects = [];
         let finalStrikeScale = 0.5 + Math.sqrt(additionalDamage) * 0.075 + additionalDamage * 0.02;
@@ -938,7 +938,7 @@ class SpellManager {
 
             let offsetGoal = gameConsts.halfWidth + offsetX;
             let randXGoal = gameConsts.halfWidth + (Math.random()) - 0.5 * 5;
-            let randY = 120 + (Math.random()) - 0.5 * 5;
+            let randY = 150 + (Math.random() - 0.5) * 10;
             this.scene.tweens.add({
                 delay: delayAmt,
                 targets: strikeObject,
@@ -1018,8 +1018,6 @@ class SpellManager {
                     });
                     clockHandsList.push(clockHand);
 
-
-                    strikeObject.setFrame('clockStrike.png');
                     strikeObject.rotation = strikeObject.finalRot;
                     this.scene.tweens.add({
                         targets: strikeObject,
@@ -1207,15 +1205,17 @@ class SpellManager {
                     if (idxNum === 0) {
                         let detuneHitAmt = Math.floor(Math.random() * 150) - 75;
                         playSound('time_strike_buff', 0.92).detune = detuneHitAmt;
-                        playSound('time_strike_hit', 0.45).detune = detuneHitAmt - 250;
+                        playSound('time_strike_hit', 0.54).detune = detuneHitAmt - 250;
 
                     } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
                         // last hit
                         playSound('time_strike_buff', 0.85);
-                        playSound('time_strike_hit_2', 0.38).detune =  -250;
+                        playSound('time_strike_hit_2', 0.45).detune =  -250;
 
                     } else if (idxNum % 2 === 1) {
                         playSound('time_strike_buff', 1).detune = -200;
+                        playSound('time_strike_hit', 0.54).detune = 200;
+
                     } else if (idxNum % 2 === 0) {
                         playSound('time_strike_buff', 0.75).detune = -200;
                     }

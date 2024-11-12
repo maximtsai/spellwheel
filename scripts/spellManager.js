@@ -1018,8 +1018,6 @@ class SpellManager {
                     });
                     clockHandsList.push(clockHand);
 
-
-                    strikeObject.setFrame('clockStrike.png');
                     strikeObject.rotation = strikeObject.finalRot;
                     this.scene.tweens.add({
                         targets: strikeObject,

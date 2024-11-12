@@ -82,7 +82,7 @@
                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
                 globalObjects.bannerTextManager.showBanner(false);
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                    fadeAwaySound(this.bgMusic2,  600);
+                    fadeAwaySound(this.bgMusic2,  1200);
 
                     this.bgMusic = playMusic('bite_down_simplified', 0.9, true);
                     fadeInSound(this.bgMusic, 0.6);

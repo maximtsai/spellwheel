@@ -1732,6 +1732,11 @@
              })
          }
 
+         gameVars.latestLevel = this.level;
+         sdkSetItem("latestLevel", gameVars.latestLevel.toString());
+         gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
+         sdkSetItem("maxLevel", gameVars.maxLevel.toString());
+
          this.graves.setVisible(true).setDepth(-4);
 
          this.sigilEffect.alpha = 0;

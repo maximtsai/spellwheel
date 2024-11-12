@@ -329,7 +329,7 @@
                      startFunction: () => {
                         if (this.health > 30 && !this.flipShow) {
                             this.flipShow = true;
-                            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 187, getLangText('level4_train_tut_c'), 'right');
+                            globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 197, getLangText('level4_train_tut_c'), 'right');
                              let runeYPos = globalObjects.textPopupManager.getBoxTopPos();
                              let centerXPos = globalObjects.textPopupManager.getCenterPos();
                             if (this.rune1) {
@@ -389,6 +389,7 @@
 
                      },
                      attackStartFunction: () => {
+                         this.justShown = true;
                          this.healAnim(100);
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
@@ -406,7 +407,7 @@
                      startFunction: () => {
                          if (this.health > 30 && !this.justShown) {
                              this.justShown = true;
-                             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 187, getLangText('level4_train_tut_c'), 'right');
+                             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 197, getLangText('level4_train_tut_c'), 'right');
                              let runeYPos = globalObjects.textPopupManager.getBoxTopPos();
                              let centerXPos = globalObjects.textPopupManager.getCenterPos();
                              if (this.rune1) {

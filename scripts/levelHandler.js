@@ -585,7 +585,7 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 0.95, 0.95, 0.95,'Quart.easeIn', 0, false, -10);
             break;
         case 4:
-            switchBackground('clock.webp');
+            switchBackground('clock_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case 5:

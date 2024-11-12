@@ -607,6 +607,7 @@
      }
 
     showComplete(darkDummy) {
+        sdkGameplayStop();
         globalObjects.encyclopedia.hideButton();
         globalObjects.options.hideButton();
         globalObjects.magicCircle.disableMovement();

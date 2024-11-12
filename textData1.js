@@ -606,7 +606,7 @@ let textData = {
         "jp": "タイムルーンは、時間的なものに対するコントロールを与える。時間呪文を使用すると、複数回攻撃したり、負傷を遅らせたり、敵の動きを鈍らせたりすることができます。"
     },
     "time_tut_strike_desc": {
-        "en_us": "An attack that hits twice.\nEach attack does medium\ndamage but can be powered up\ngreatly with damage\nenhancements.",
+        "en_us": "An attack that hits twice.\nDoes only medium damage but\nbenefits extra from +damage\nenhancements.",
         "fr": "Une attaque qui frappe deux\nfois. Chaque attaque inflige des\ndégâts modérés, mais peut être\nconsidérablement améliorée\navec des bonus de dégâts.",
         "zh_tw": "攻擊兩次。攻擊本身造成的\n傷害不高，但加強攻擊力的\n法術可以大量增加威力。",
         "zh_cn": "攻击两次。攻击本身造成的\n伤害不高，但加强攻击力的\n法术可以大量增加威力。",

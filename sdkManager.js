@@ -46,7 +46,7 @@ function displayBanner() {
 
         setTimeout(() => {
             sdkShowBannerAd()
-        }, 60)
+        }, 0)
     }
 }
 

@@ -366,13 +366,13 @@ const ENABLE_KEYBOARD = true;
                 this.prevDragAngleDiff = dragAngleDiff;
             }
             this.storedDragAngleDiff = dragAngleDiff;
-            let dragAngleDiffDiff = (dragAngleDiff - this.prevDragAngleDiff) * Math.abs(dragAngleDiff);
+            // let dragAngleDiffDiff = (dragAngleDiff - this.prevDragAngleDiff) * Math.abs(dragAngleDiff);
 
-            if (dragAngleDiffDiff < -0.24) {
-                dragAngleDiffDiff = -0.24;
-            } else if (dragAngleDiffDiff > 0.24) {
-                dragAngleDiffDiff = 0.24;
-            }
+            // if (dragAngleDiffDiff < -0.24) {
+            //     dragAngleDiffDiff = -0.24;
+            // } else if (dragAngleDiffDiff > 0.24) {
+            //     dragAngleDiffDiff = 0.24;
+            // }
             // alt method of calculating torque
             let dragPointX = Math.cos(this.dragPointAngle) * this.dragPointDist;
             let dragPointY = Math.sin(this.dragPointAngle) * this.dragPointDist;
@@ -397,8 +397,19 @@ const ENABLE_KEYBOARD = true;
 
             let dragForceSqr = horizForce + vertForce;
 
-            let torqueConst = gameVars.wasTouch ? 0.047 : 0.0445;
+            let torqueConst = gameVars.wasTouch ? 0.0445 : 0.0422;
+            if (gameVars.maxLevel >= 5) {
+                torqueConst += 0.014;
+            }  else if (gameVars.maxLevel >= 2) {
+                torqueConst += 0.008;
+            }
             // castDisable
+
+            // if angle diff is minimal, reduce torque, GREATLY REDUCES JITTER SHAKE STUTTER
+            let torqueCloseMult = 1;
+            if (Math.abs(dragAngleDiff) < 0.03) {
+                torqueCloseMult = Math.abs(dragAngleDiff) * 30;
+            }
 
             // Using both rotation diff and mult val to calculate
             if (dragForceSqr < 0) {
@@ -408,6 +419,7 @@ const ENABLE_KEYBOARD = true;
             }
             // TODO: Remove if not needed
             this.draggedObj.torque += dragAngleDiff * torqueConst - this.draggedObj.rotVel * 0.38;
+            this.draggedObj.torque *= torqueCloseMult;
             // this.draggedObj.torque = this.draggedObj.torque + (this.draggedObj.torque * this.draggedObj.torque) * minusMult * 150;
             //this.draggedObj.torque += this.draggedObj.torqueOnRelease * 0.5;
 
@@ -458,7 +470,7 @@ const ENABLE_KEYBOARD = true;
         this.x = x;
         this.y = y;
         this.trueSize = 205;
-        this.size = isMobile ? 252 : 230;
+        this.size = isMobile ? 259 : 237;
         this.draggedObj = null;
         this.dragPointAngle = 0;
         this.dragPointAngleVisual = this.dragPointAngle;
@@ -539,6 +551,10 @@ const ENABLE_KEYBOARD = true;
         this.castButtonSpare = scene.add.sprite(x, y, 'circle', this.altString + 'cast_press.png').setDepth(121).setAlpha(0);
         this.castHoverTemp = scene.add.sprite(x, y, 'circle', this.altString + 'cast_press.png').setDepth(121).setAlpha(0);
         this.castGlow = scene.add.sprite(x, y, 'circle', 'cast_glow.png').setDepth(121).setAlpha(0);
+
+        this.tintDark = scene.add.image(x, y, 'misc', 'usage_tint_k.png').setDepth(121).setAlpha(0.05).setBlendMode(Phaser.BlendModes.MULTIPLY);
+        this.tintColor = scene.add.sprite(x, y, 'misc', 'usage_tint_y.png').setDepth(121).setAlpha(0.02).setBlendMode(Phaser.BlendModes.MULTIPLY);
+
         this.greyedDead = scene.add.sprite(x, y, 'circle', 'greyed_dead.png').setVisible(false).setDepth(135);
 
 
@@ -607,6 +623,14 @@ const ENABLE_KEYBOARD = true;
         this.elementHighlight = this.scene.add.sprite(x, y, 'circle', 'bright_rune_matter.png').setOrigin(0.5, 0.866).setDepth(104);
         this.embodimentHighlight = this.scene.add.sprite(x, y, 'circle', 'bright_rune_strike.png').setOrigin(0.5, 1.22).setDepth(104);
         this.buildRunes();
+    }
+
+    setWheelTint(darkAlpha = 0.05, colorAlpha = 0.02, color = 'usage_tint_y.png') {
+        this.tintDark.setAlpha(darkAlpha);
+        this.tintColor.setAlpha(colorAlpha);
+        if (color) {
+            this.tintColor.setFrame(color);
+        }
     }
 
     createTimeStopObjs() {
@@ -1198,7 +1222,8 @@ const ENABLE_KEYBOARD = true;
 
         this.innerCircle.rotation = (this.innerCircle.nextRotation + this.innerCircle.prevRotation) * 0.5;
         this.outerCircle.rotation = (this.outerCircle.nextRotation + this.outerCircle.prevRotation) * 0.5;
-
+        this.tintColor.rotation = this.outerCircle.rotation;
+        this.tintDark.rotation = this.outerCircle.rotation;
         this.autolockRune(1);
 
         this.innerCircle.torqueDecay = (this.innerCircle.torqueDecay / (1+dt)) + this.innerCircle.torque;
@@ -1293,7 +1318,7 @@ const ENABLE_KEYBOARD = true;
     updateFramesLazy() {
         const key = 'circle';
         if (this.castDisabled) {
-            if (this.castButton.frame.name !== (this.altString + 'cast_disabled.png')) {
+            if (this.castButton.frame.name !== (this.altString + 'cast_disable.png')) {
                 this.castGlow.alpha = 0.5;
                 this.scene.tweens.add({
                     targets: this.castGlow,
@@ -1301,10 +1326,10 @@ const ENABLE_KEYBOARD = true;
                     ease: 'Quint.easeOut',
                     alpha: 0,
                 });
-                this.castButton.setTexture(key, (this.altString + 'cast_disabled.png'));
+                this.castButton.setTexture(key, (this.altString + 'cast_disable.png'));
             }
         } else if (this.castButton.frame.customData.filename !== this.castButton.lazyFrame) {
-            if (this.castButton.frame.customData.filename === (this.altString + 'cast_disabled.png') && this.castButton.lazyFrame === (this.altString + 'cast_normal.png')) {
+            if (this.castButton.frame.customData.filename === (this.altString + 'cast_disable.png') && this.castButton.lazyFrame === (this.altString + 'cast_normal.png')) {
                 this.castButtonSpare.alpha = 0.6;
                 this.scene.tweens.add({
                     targets: this.castButtonSpare,
@@ -1704,7 +1729,7 @@ const ENABLE_KEYBOARD = true;
 
         } else {
             // failed cast
-            let retryDelay = this.keyboardCasted ? 150 : 0;
+            let retryDelay = this.keyboardCasted ? 50 : 0;
             PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * retryDelay, () => {
                 this.bufferedCastAvailable = true;
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * 250, () => {
@@ -2148,7 +2173,7 @@ const ENABLE_KEYBOARD = true;
                     rotation: 1.57,
                     alpha: 0.55
                 });
-                let stopForceAlignmentDelay = this.keyboardCasted ? 100 : 0;
+                let stopForceAlignmentDelay = 0;
                 let attackAlignDelay = isAttack ? 100 : 0;
                 let reEnableDelay = this.keyboardCasted ? 200 : 0;
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * stopForceAlignmentDelay, () => {

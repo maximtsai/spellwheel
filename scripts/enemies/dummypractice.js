@@ -39,6 +39,22 @@
         this.damageCanEmit = true;
      }
 
+     initSpriteAnim(scale) {
+         this.sprite.setScale(scale * 0.98, scale * 0.3).setRotation(Math.random() * 0.4 - 0.2);
+         setTimeout(() => {
+             playSound('balloon', 0.4).detune = -50;
+         }, 50)
+         this.scene.tweens.add({
+             targets: this.sprite,
+             duration: 700,
+             ease: 'Quart.easeOut',
+             scaleX: scale,
+             scaleY: scale,
+             rotation: 0,
+             alpha: 1
+         });
+     }
+
      showPoster(startImg = 'dummy_paper_hit.png', finalRot = 0) {
          this.poster = this.addSprite(this.sprite.x, this.sprite.y, 'dummyenemy', startImg).setDepth(this.sprite.depth - 1).setScale(this.sprite.startScale*0.1);
          this.poster.setRotation(-0.7);
@@ -596,7 +612,7 @@
         globalObjects.magicCircle.disableMovement();
         let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
         let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'complete.png').setScale(0.95).setDepth(9998).setAlpha(0);
-        let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 20}).setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998);
+        let continueText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 18}).setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998);
 
         PhaserScene.tweens.add({
             targets: banner,

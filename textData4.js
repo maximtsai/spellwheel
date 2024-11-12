@@ -128,7 +128,7 @@ let textData4 = {
         "jp": "一部の攻撃はブロックできません。"
     },
     "tree_a": {
-        "en_us": "The spiky thorns on the tree\nredirects 2 damage back onto you!",
+        "en_us": "Spiky thorns from the tree will\nreflect 2 damage back onto you!",
         "fr": "Les épines hérissées sur l’arbre\nredirigent 2 dégâts sur vous !",
         "zh_tw": "樹上的尖刺會將 2 點傷害\n反弹回你身上！",
         "zh_cn": "树上的尖刺会将 2 点伤害\n反弹回你身上！",
@@ -137,16 +137,16 @@ let textData4 = {
         "jp": "木のとがったとげは、2ダメ\nージをあなたに戻してくれます!"
     },
     "tree_b": {
-        "en_us": "Attack and defend carefully!",
-        "fr": "Attaquez et défendez-vous prudemment !",
-        "zh_tw": "謹慎的進攻並防守！",
-        "zh_cn": "谨慎的进攻并防守！",
+        "en_us": "Attack and defend carefully",
+        "fr": "Attaquez et défendez-vous prudemment",
+        "zh_tw": "謹慎的進攻並防守",
+        "zh_cn": "谨慎的进攻并防守",
         "ru": "Атакуйте и защищайтесь осторожно!",
         "es": "¡Ataca y defiende con cuidado!",
         "jp": "丁寧に攻めと守りを!"
     },
     "magician_a": {
-        "en_us": "Nice try, but your\nattacks have no shock.",
+        "en_us": "Nice try, but your\nattacks lack shock.",
         "fr": "Bien tenté, mais tes\ncoups n'ont aucun choc.",
         "zh_tw": "打得不錯，但你攻擊缺威力。",
         "zh_cn": "打得不错，但你攻击缺威力。",
@@ -300,42 +300,6 @@ let textData4 = {
         "jp": ""
     },
 
-    "badend_1": {
-        "en_us": "At last, you are with your beloved.",
-        "fr": "Enfin, tu es avec ton bien-aimé.",
-        "zh_tw": "你終於和你所愛的人在一起了。",
-        "zh_cn": "你终于和你所爱的人在一起了。",
-        "ru": "",
-        "es": "",
-        "jp": ""
-    },
-    "badend_2": {
-        "en_us": "But your fates soon become apparent.",
-        "fr": "Mais vous n’avez pas tardé à réaliser votre destin.",
-        "zh_tw": "但不久後你就意識到你們的命運。",
-        "zh_cn": "但不久后你就意识到你们的命运。",
-        "ru": "",
-        "es": "",
-        "jp": ""
-    },
-    "badend_3": {
-        "en_us": "You age and wither, yet cannot find rest.",
-        "fr": "Tu vieillis et dépérit,\nmais tu ne peux pas trouver de repos.",
-        "zh_tw": "你年老、枯萎，卻無法得到安息。",
-        "zh_cn": "你年老、枯萎，却无法得到安息。",
-        "ru": "",
-        "es": "",
-        "jp": ""
-    },
-    "badend_4": {
-        "en_us": "You cry out for mercy, for an end to the torment.",
-        "fr": " \nVous criez pour la miséricorde, pour la fin du tourment.",
-        "zh_tw": "你微弱呼喊，祈求憐憫，祈求結束這個折磨。",
-        "zh_cn": "你微弱呼喊，祈求怜悯，祈求结束这个折磨。",
-        "ru": "",
-        "es": "",
-        "jp": ""
-    },
     "badend_5": {
         "en_us": "But nobody answered.",
         "fr": " \nMais personne n'a répondu.",

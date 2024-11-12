@@ -1,3 +1,7 @@
 *.log
 *.vs/
 *.name
+*.idea
+*.idea/.name
+.idea/
+*.idea/

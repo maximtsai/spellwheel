@@ -56,6 +56,7 @@ function beginPreLevelTrue(lvl) {
     }
     switch(lvl) {
         case 0:
+            globalObjects.magicCircle.setWheelTint();
             gameVars.latestLevel = 0;
             // lesser dummy
             let bgDim = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(-1).setAlpha(0).setScale(500);
@@ -263,6 +264,7 @@ function beginPreLevelTrue(lvl) {
             break;
         case 2:
             // goblin
+            globalObjects.magicCircle.setWheelTint(0.09, 0.02, 'usage_tint_b.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'gobbo_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth - 40, gameConsts.halfHeight - 205, getLangText('pre_fight_1a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -277,6 +279,7 @@ function beginPreLevelTrue(lvl) {
             break;
         case 3:
             // tree
+            globalObjects.magicCircle.setWheelTint(0.08, 0.07, 'usage_tint_b.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'tree_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight +165, getLangText('pre_fight_2a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -289,6 +292,7 @@ function beginPreLevelTrue(lvl) {
             break;
         case 4:
             // magician
+            globalObjects.magicCircle.setWheelTint(0.06, 0.03, 'usage_tint_b.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 40, 'ui', 'magician_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 248, gameConsts.halfHeight - 180, getLangText('pre_fight_3a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -301,6 +305,7 @@ function beginPreLevelTrue(lvl) {
             break;
         case 5:
             // statue
+            globalObjects.magicCircle.setWheelTint();
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'statue_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 120, getLangText('pre_fight_3_5a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -310,6 +315,7 @@ function beginPreLevelTrue(lvl) {
             break;
         case 6:
             // knight
+            globalObjects.magicCircle.setWheelTint(0.07, 0.05);
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'knight_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 115, getLangText('pre_fight_4a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -323,6 +329,7 @@ function beginPreLevelTrue(lvl) {
 
         case 7:
             // wall
+            globalObjects.magicCircle.setWheelTint();
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'wall_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 55, getLangText('pre_fight_5a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -345,11 +352,13 @@ function beginPreLevelTrue(lvl) {
             //
             // createGlobalClickBlocker();
             // fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
+            globalObjects.magicCircle.setWheelTint();
             beginLevel(lvl);
             break;
 
         case 9:
             // mantis
+            globalObjects.magicCircle.setWheelTint(0.07, 0.05);
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'mantis_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 65, getLangText('pre_fight_7a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -362,6 +371,7 @@ function beginPreLevelTrue(lvl) {
             break;
         case 10:
             // robot
+            globalObjects.magicCircle.setWheelTint(0.03, 0.08, 'usage_tint_r.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'robot_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth- 246, gameConsts.halfHeight + 140, getLangText('pre_fight_8a'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -546,25 +556,34 @@ function createMenuCloseButton(items) {
 function switchLevelBackground(lvl) {
     switch(lvl) {
         case -7:
+            switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case -6:
+            switchBackground('grave_bg.webp');
+            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
+            break;
         case -5:
         case -4:
+            switchBackground('clock_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case -3:
+            switchBackground('forest_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 0.95, 0.95, 0.95,'Quart.easeIn', 0, false, -10);
             break;
         case -2:
+            switchBackground('forest_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
             break;
         case -1:
             // mind dummy
+            switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeOut', 0, false, 0);
             break;
         case 0:
             // zoomInCurrBackground(1500, 2, 'Cubic.easeIn');
+            // switchBackground('grass_bg.webp');
             let bgObj = fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 100, globalObjects.menuBack.scaleX, globalObjects.menuBack.startScale * 1.19, globalObjects.menuBack.startScale * 1.2,'Quint.easeInOut', 0, false, 0, true);
             bgObj.setOrigin(0.5, 0.5).setPosition(globalObjects.menuBack.x, globalObjects.menuBack.y).setScale(globalObjects.menuBack.scaleX, globalObjects.menuBack.scaleY).setDepth(-8);
             minorZoomMenu();
@@ -587,35 +606,49 @@ function switchLevelBackground(lvl) {
             break;
         case 1:
             clearOnlyMenuBack();
+            // switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeOut', 0, false, 0);
             break;
         case 2:
+            switchBackground('forest_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
             break;
         case 3:
+            switchBackground('forest_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 0.95, 0.95, 0.95,'Quart.easeIn', 0, false, -10);
             break;
         case 4:
+            switchBackground('clock_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case 5:
+            switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
         case 6:
+            switchBackground('grave_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background7.webp', 1500, 1.2, 1.25, 1.25,'Quart.easeIn', 0, false, 1);
             break;
         case 7:
+            switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, -1, -0.94, 0.94,'Quart.easeIn', 0, false);
             break;
         case 8:
+            switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 0.92, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case 9:
         case 10:
+            switchBackground('clock_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'tunnel.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case 11:
+            switchBackground('clock_bg.webp');
+            globalObjects.magicCircle.setWheelTint(0.03, 0.07, 'usage_tint_b.png');
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 2500, 1, 1, 1,'Quart.easeIn', 0, false);
+            break;
+        default:
+            switchBackground('clock_bg.webp');
             break;
     }
 }
@@ -631,6 +664,12 @@ function beginLevel(lvl, instant = false) {
     globalObjects.magicCircle.buildRunes();
     if (lvl <= 1) {
         switchLevelBackground(lvl)
+    } else if (lvl === 12) {
+        // death levels
+        globalObjects.magicCircle.setWheelTint(0.05, 0.07, 'usage_tint_r.png');
+    } else if (lvl === 13) {
+        // death levels
+        globalObjects.magicCircle.setWheelTint(0.06, 0.02, 'usage_tint_b.png');
     }
 
     playSound('whoosh');

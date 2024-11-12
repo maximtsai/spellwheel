@@ -31,7 +31,7 @@
                  this.sprite.setVisible(false);
 
                  if (!this.tempOverlaySprite) {
-                     this.tempOverlaySprite = this.addSprite(this.x, this.y, 'enemies', 'tree_shock1.png').setScale(2.1).setDepth(8);
+                     this.tempOverlaySprite = this.addSprite(this.x, this.y, 'enemies', 'tree_shock1.png').setScale(2.1).setDepth(7);
                  }
                  this.tempOverlaySprite.setFrame('tree_shock1.png').setVisible(true);
                  this.tempOverlaySprite.x = this.x + 10;
@@ -471,11 +471,12 @@
          });
 
          this.addTween({
+            delay: 75,
              targets: currObj,
              x: gameConsts.halfWidth * 0.2 + currObj.x * 0.8,
              y: gameConsts.height - 320,
-             ease: 'Cubic.easeIn',
-             duration: 850,
+             ease: 'Quart.easeIn',
+             duration: 1000,
              onComplete: () => {
                  playSound('tree_hit');
                  messageBus.publish("selfTakeDamage", damage);
@@ -691,7 +692,7 @@
                      name: "}8 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 450,
+                     chargeAmt: 410,
                      damage: -1,
                      startFunction: () => {
 
@@ -832,9 +833,9 @@
                                  globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 130, getLangText('level2_tut_a'), 'right', true);
                                  setTimeout(() => {
                                      globalObjects.textPopupManager.hideInfoText();
-                                 }, 11000);
+                                 }, 9800);
                              }
-                         }, 1500)
+                         }, 1900)
                      },
                      attackStartFunction: () => {
                         this.glowGreen();

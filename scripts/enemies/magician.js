@@ -370,7 +370,7 @@
          this.showFlash(this.x, this.y);
          let banner = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
          let victoryText = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let continueText = PhaserScene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 20}).setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998);
+         let continueText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 20}).setAlpha(0).setOrigin(0.5, 0.5).setAlign('right').setDepth(9998);
 
          PhaserScene.tweens.add({
              targets: rune,
@@ -977,7 +977,7 @@
                                 ease: 'Back.easeIn',
                                 duration: 150,
                             })
-                            messageBus.publish('animateHealNum', gameConsts.halfWidth, this.sprite.y + 90, 'INVINCIBLE', 1.55, {}, {duration: 1000, ease: 'Quint.easeIn'});
+                            messageBus.publish('animateHealNum', gameConsts.halfWidth, this.sprite.y + 84, 'INVINCIBLE', 1.55, {}, {duration: 1000, ease: 'Quint.easeIn'});
                         }
                     })
                     this.addTween({
@@ -1174,7 +1174,7 @@
                  {
                      name: "}3x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: gameVars.isHardMode ? 350 : 435,
+                     chargeAmt: gameVars.isHardMode ? 350 : 445,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
@@ -1245,7 +1245,7 @@
                  {
                      name: ";20 ",
                      desc: "A devastating barrage\nof offensive magic.",
-                     chargeAmt: gameVars.isHardMode ? 550 : 600,
+                     chargeAmt: gameVars.isHardMode ? 550 : 580,
                      isBigMove: true,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -1344,7 +1344,7 @@
                      }
                  },
                  {
-                     name: "...",
+                     name: "TIRED...",
                      chargeAmt: 400,
                      damage: -1,
                      startFunction: () => {

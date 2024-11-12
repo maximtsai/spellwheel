@@ -246,6 +246,10 @@ class Enemy {
         this.chargeBarWarning.setDepth(9);
         this.chargeBarWarning.setAlpha(0.35);
 
+        this.chargeVertical = this.scene.add.image(x, this.chargeBarMax.y, 'blurry', 'yellow_vertical.webp').setScale(1.5, 1.35).setAlpha(0).setOrigin(0, 0.5);
+        this.chargeVertical2 = this.scene.add.image(x, this.chargeBarMax.y, 'blurry', 'yellow_vertical.webp').setScale(-1.5, 1.35).setAlpha(0).setOrigin(0, 0.5);
+
+
         this.chargeBarCurr = this.scene.add.image(x, this.chargeBarMax.y, 'pixels', 'yellow_pixel.png');
         this.chargeBarCurr.setScale(0, this.chargeBarMax.scaleY - 2);
         this.chargeBarCurr.setOrigin(0.5, 0.5);
@@ -303,6 +307,8 @@ class Enemy {
         this.chargeBarMax.depth = depth;
         this.voidPause.depth = depth;
         this.chargeBarWarning.depth = depth;
+        this.chargeVertical.depth = depth;
+        this.chargeVertical2.depth = depth;
         this.chargeBarCurr.depth = depth;
         this.chargeBarAngry.depth = depth;
         this.chargeBarFlash1.depth = depth;
@@ -519,6 +525,8 @@ class Enemy {
                 }
             }
             this.chargeBarShow = false;
+            this.chargeVertical.scaleY = 1.28;
+            this.chargeVertical2.scaleY = 1.28;
             if (this.isAngry) {
                 let increaseMult = Math.max(8, 0.34 * chargeMult);
                 if (challenges.angryEnemies) {
@@ -536,8 +544,14 @@ class Enemy {
                     }
                 }
                 this.attackCharge += timeChange * increaseMult * this.slowMult + castAggravateBonus;
-
+                this.chargeVertical.alpha = Math.min(1, this.chargeVertical.alpha + timeChange * 0.3 * dt);
+                this.chargeVertical2.alpha = this.chargeVertical.alpha;
+                this.chargeVertical.scaleY = 1.4;
+                this.chargeVertical2.scaleY = 1.4;
             } else {
+                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.04 * dt) * (1 - 0.08 * dt);
+                this.chargeVertical2.alpha = this.chargeVertical.alpha;
+
                 almostDone = this.attackCharge > this.nextAttackChargeNeeded - 45;
 
                 if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone && this.castAggravateCharge <= 0) {
@@ -547,6 +561,11 @@ class Enemy {
                 } else {
                     // Normal slow chargin
                     if (almostDone || chargeMult > 1 || this.castAggravateCharge > 0) {
+                        if (!this.isUsingAttack) {
+                            this.chargeVertical.alpha = Math.min(0.65, this.chargeVertical.alpha + timeChange * 0.29 * dt);
+                            this.chargeVertical2.alpha = this.chargeVertical.alpha;
+                        }
+
                         let castAggravateBonus = 0; // if recently casted a spell, that speeds up opponent charge
                         if (this.castAggravateCharge > 0) {
                             this.castAggravateCharge -= timeChange;
@@ -576,6 +595,8 @@ class Enemy {
                 }
             }
             this.chargeBarCurr.scaleX = Math.min(this.nextAttackChargeNeeded * 0.2, this.attackCharge * 0.2 + 1);
+            this.chargeVertical.x = gameConsts.halfWidth - this.chargeBarCurr.scaleX - 1.5;
+            this.chargeVertical2.x = gameConsts.halfWidth + this.chargeBarCurr.scaleX + 1.5;
             if (this.chargeBarShow) {
                 this.chargeBarEst1.x = gameConsts.halfWidth - this.chargeBarCurr.scaleX;
                 this.chargeBarEst2.x = gameConsts.halfWidth + this.chargeBarCurr.scaleX;
@@ -628,10 +649,14 @@ class Enemy {
             this.chargeBarAngry.scaleX = this.chargeBarCurr.scaleX;
             if (this.attackPaused) {
                 // doNothing
+                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.35 * dt);
+                this.chargeVertical2.alpha = this.chargeVertical.alpha;
             } else if (this.isUsingAttack) {
-                // doNothing
+                this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.35 * dt);
+                this.chargeVertical2.alpha = this.chargeVertical.alpha;
             } else if (this.attackCharge >= this.nextAttackChargeNeeded) {
                 if (this.nextAttack.damage !== undefined && this.nextAttack.damage !== 0) {
+
                     this.chargeBarReady1.setAlpha(1).setScale(0.9, 0.5);
                     this.chargeBarReady2.setAlpha(1).setScale(0.9, 0.5);
                     this.chargeBarReady1.x = this.chargeBarMax.x - this.chargeBarMax.scaleX;
@@ -757,8 +782,14 @@ class Enemy {
                 }
 
                 this.chargeBarWarning.visible = true;
-                this.chargeBarWarning.alpha = 0.83;
+                this.chargeBarWarning.alpha = 0.34;
                 this.chargeBarWarningBig.alpha = Math.min(0.5, this.chargeBarWarningBig.alpha + timeChange * 0.05);
+                this.addTween({
+                    targets: [this.chargeVertical, this.chargeVertical2],
+                    alpha: 0,
+                    duration: 500,
+                    ease: 'Cubic.easeOut'
+                })
                 this.useMove();
             } else if (this.attackCharge >= this.nextAttackChargeNeeded * 0.9 - 30) {
                 this.chargeBarWarning.visible = true;
@@ -794,6 +825,8 @@ class Enemy {
         if (this.isAsleep) {
             this.chargeBarAngry.visible = false;
             this.chargeBarCurr.visible = false;
+            this.chargeVertical.alpha = 0;
+            this.chargeVertical2.alpha = 0;
         } else if (this.timeSinceLastAttacked < 18) {
             if (!this.isAngry) {
                 this.isAngry = true;
@@ -803,6 +836,8 @@ class Enemy {
                     this.showAngrySymbol(this.customAngry || 'angry');
                 }
                 this.chargeBarCurr.visible = false;
+                this.chargeVertical.alpha = 0;
+                this.chargeVertical2.alpha = 0;
             }
         } else if (chargeMult > 1) {
             this.isAngry = false;
@@ -871,7 +906,7 @@ class Enemy {
             this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake, true);
             let damageSqrt = Math.sqrt(damageToTake);
             setTimeout(() => {
-                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth - 60, 182 - damageSqrt * 2, 'X2', 0.5 + damageSqrt * 0.1);
+                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth - 45, 218 - damageSqrt * 2.2, 'X2', 0.5 + damageSqrt * 0.1);
             }, Math.floor(damageSqrt) * 15)
 
             amt += damageToTake;
@@ -1454,7 +1489,7 @@ class Enemy {
         }
 
         this.healthBarFlash.scaleX = this.healthBarCurr.scaleX + 2;
-        if (this.healthBarCurr.scaleX == 0) {
+        if (this.healthBarCurr.scaleX === 0) {
             this.healthBarFlash.scaleX = 0;
         }
         this.healthBarFlash.scaleY = this.healthBarMax.scaleY;
@@ -1463,19 +1498,21 @@ class Enemy {
             this.healthBarFlashTween.stop();
         }
         this.healthBarFlashTween = PhaserScene.tweens.add({
+            delay: 50,
             targets: this.healthBarFlash,
             alpha: 0,
-            ease: "Cubic.easeOut",
-            duration: gameVars.gameManualSlowSpeedInverse * 600 * mult + 150
+            ease: "Quad.easeOut",
+            duration: gameVars.gameManualSlowSpeedInverse * 500 * mult + 150
         });
         if (this.healthBarRedTween) {
             this.healthBarRedTween.stop();
         }
         this.healthBarRedTween = PhaserScene.tweens.add({
             targets: this.healthBarRed,
+            delay: 50,
             alpha: 0,
             ease: "Cubic.easeOut",
-            duration: gameVars.gameManualSlowSpeedInverse * 600 * mult + 100
+            duration: gameVars.gameManualSlowSpeedInverse * 550 * mult + 100
         })
     }
 
@@ -1598,6 +1635,13 @@ class Enemy {
         });
         this.chargeBarEst1.visible = false;
         this.chargeBarEst2.visible = false;
+
+        this.addTween({
+            targets: [this.chargeVertical, this.chargeVertical2],
+            alpha: 0,
+            duration: 500,
+            ease: 'Cubic.easeOut'
+        });
 
         PhaserScene.tweens.add({
             targets: [this.chargeBarMax, this.chargeBarCurr, this.chargeBarOutline],
@@ -1782,6 +1826,8 @@ class Enemy {
         this.attackGlow.destroy();
         this.attackDarken.destroy();
         this.attackNameHighlight.destroy();
+        this.chargeVertical.destroy();
+        this.chargeVertical2.destroy();
 
         if (this.chargeBarEst1.currAnim) {
             this.chargeBarEst1.currAnim.stop();
@@ -1869,6 +1915,8 @@ class Enemy {
         this.chargeBarEst2.visible = false;
         this.hideAngrySymbol()
         this.voidPause.visible = false;
+        this.chargeVertical.visible = false;
+        this.chargeVertical2.visible = false;
 
         this.attackName.visible = false;
         this.attackGlow.visible = false;
@@ -2113,12 +2161,13 @@ class Enemy {
     }
 
      showVictory(rune) {
+         sdkGameplayStop();
         globalObjects.encyclopedia.hideButton();
         globalObjects.options.hideButton();
         globalObjects.magicCircle.disableMovement();
          let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
          let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let continueText = this.scene.add.text(gameConsts.width - 15, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 20}).setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998);
+         let continueText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 18}).setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998);
          swirlInReaperFog();
 
          PhaserScene.tweens.add({

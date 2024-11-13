@@ -797,7 +797,7 @@
                      name: "|2x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 550,
+                     chargeAmt: gameVars.isHardMode ? 450 : 500,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');
@@ -881,7 +881,7 @@
                      name: "|2x5 ",
                      announceName: "LEAF STORM",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: gameVars.isHardMode ? 500 : 550,
+                     chargeAmt: gameVars.isHardMode ? 450 : 500,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');

@@ -24,6 +24,7 @@
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 130 : 110;
          this.damageNumOffset = 45;
+         this.chargeBarOffsetY = 4;
          this.damageNumOffsetDefault = this.damageNumOffset;
          this.lifeOne = true;
          this.timeObjects = [];
@@ -1094,7 +1095,7 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_e'), 10);
+        messageBus.publish("showCombatText", getLangText('magician_e'), 8);
         this.addTimeout(() => {
             this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1113,7 +1114,7 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_f'), 10);
+        messageBus.publish("showCombatText", getLangText('magician_f'), 8);
         this.addTimeout(() => {
             this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1131,7 +1132,7 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_g'), 10);
+        messageBus.publish("showCombatText", getLangText('magician_g'), 8);
         this.addTimeout(() => {
             this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();

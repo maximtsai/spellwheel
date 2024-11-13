@@ -4,7 +4,7 @@
 			"image": "sprites/dummyenemy-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1008,
+				"w": 1020,
 				"h": 1121
 			},
 			"scale": 1,
@@ -64,19 +64,19 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 197,
+						"w": 198,
 						"h": 260
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 6,
-						"w": 197,
+						"w": 198,
 						"h": 253
 					},
 					"frame": {
 						"x": 790,
 						"y": 1,
-						"w": 197,
+						"w": 198,
 						"h": 253
 					},
 					"anchor": {
@@ -110,11 +110,36 @@
 					}
 				},
 				{
+					"filename": "picketsign.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 196,
+						"h": 255
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 193,
+						"h": 252
+					},
+					"frame": {
+						"x": 537,
+						"y": 222,
+						"w": 193,
+						"h": 252
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "picketsign_hover.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 197,
+						"w": 198,
 						"h": 260
 					},
 					"spriteSourceSize": {
@@ -124,34 +149,9 @@
 						"h": 252
 					},
 					"frame": {
-						"x": 537,
-						"y": 222,
-						"w": 189,
-						"h": 252
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "picketsign.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 183,
-						"h": 254
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 1,
-						"w": 180,
-						"h": 252
-					},
-					"frame": {
-						"x": 728,
+						"x": 732,
 						"y": 256,
-						"w": 180,
+						"w": 189,
 						"h": 252
 					},
 					"anchor": {
@@ -174,7 +174,7 @@
 						"h": 176
 					},
 					"frame": {
-						"x": 910,
+						"x": 923,
 						"y": 256,
 						"w": 96,
 						"h": 176
@@ -199,7 +199,7 @@
 						"h": 66
 					},
 					"frame": {
-						"x": 910,
+						"x": 923,
 						"y": 434,
 						"w": 70,
 						"h": 66
@@ -224,7 +224,7 @@
 						"h": 30
 					},
 					"frame": {
-						"x": 910,
+						"x": 923,
 						"y": 502,
 						"w": 66,
 						"h": 30
@@ -560,6 +560,31 @@
 					}
 				},
 				{
+					"filename": "dummyeyes.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 68,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 12,
+						"w": 67,
+						"h": 18
+					},
+					"frame": {
+						"x": 851,
+						"y": 510,
+						"w": 67,
+						"h": 18
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "dummy_dead.png",
 					"rotated": false,
 					"trimmed": true,
@@ -674,8 +699,8 @@
 						"h": 177
 					},
 					"frame": {
-						"x": 653,
-						"y": 913,
+						"x": 844,
+						"y": 773,
 						"w": 168,
 						"h": 177
 					},
@@ -699,35 +724,10 @@
 						"h": 176
 					},
 					"frame": {
-						"x": 823,
+						"x": 653,
 						"y": 913,
 						"w": 168,
 						"h": 176
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dummysnort.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 141,
-						"h": 72
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 43,
-						"w": 135,
-						"h": 29
-					},
-					"frame": {
-						"x": 823,
-						"y": 1091,
-						"w": 135,
-						"h": 29
 					},
 					"anchor": {
 						"x": 0.5,
@@ -750,7 +750,7 @@
 					},
 					"frame": {
 						"x": 380,
-						"y": 1092,
+						"y": 1091,
 						"w": 241,
 						"h": 20
 					},
@@ -760,49 +760,24 @@
 					}
 				},
 				{
-					"filename": "dummyeyes.png",
+					"filename": "dummysnort.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 68,
-						"h": 30
+						"w": 141,
+						"h": 72
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 12,
-						"w": 67,
-						"h": 18
+						"y": 43,
+						"w": 135,
+						"h": 29
 					},
 					"frame": {
 						"x": 623,
-						"y": 1092,
-						"w": 67,
-						"h": 18
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "dummy_paper_hit.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 456,
-						"h": 703
-					},
-					"spriteSourceSize": {
-						"x": 262,
-						"y": 72,
-						"w": 117,
-						"h": 94
-					},
-					"frame": {
-						"x": 844,
-						"y": 773,
-						"w": 117,
-						"h": 94
+						"y": 1091,
+						"w": 135,
+						"h": 29
 					},
 					"anchor": {
 						"x": 0.5,
@@ -835,7 +810,7 @@
 					}
 				},
 				{
-					"filename": "dummy_paper_ouch.png",
+					"filename": "dummy_paper_hit.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -843,7 +818,7 @@
 						"h": 703
 					},
 					"spriteSourceSize": {
-						"x": 261,
+						"x": 262,
 						"y": 72,
 						"w": 117,
 						"h": 94
@@ -858,6 +833,31 @@
 						"x": 0.5,
 						"y": 0.5
 					}
+				},
+				{
+					"filename": "dummy_paper_ouch.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 703
+					},
+					"spriteSourceSize": {
+						"x": 261,
+						"y": 72,
+						"w": 117,
+						"h": 94
+					},
+					"frame": {
+						"x": 823,
+						"y": 952,
+						"w": 117,
+						"h": 94
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
 				}
 			]
 		}
@@ -865,6 +865,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:0f2b6d52fad6e02b0cbcc2369d298c33:eb6d458429bf7f4bc501e9b6f9c79459:54bf8bea0d39745f04810f264e648deb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:ee4c0e227a423d4cd3fcb5f39f705d89:73d28371425e3800628e09adb89a9bc6:54bf8bea0d39745f04810f264e648deb$"
 	}
 }

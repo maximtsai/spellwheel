@@ -753,6 +753,15 @@ let textData2 = {
         "es": "Objetivo: Derrota\nal enemigo en\nsolo 4 hechizos",
         "jp": "方法:わずか\n4つの呪文で\n敵を倒す"
     },
+    "level1_dummy_mind_heal": {
+        "en_us": "HEALS IN:",
+        "fr": "RÉCUPÉRER EN:",
+        "zh_tw": "倒數恢復:",
+        "zh_cn": "倒计时恢复:",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "level2_tut_a": {
         "en_us": "Some attacks\ncharge up\nautomatically!",
         "fr": "certaines attaques\nennemies se chargent\nautomatiquement !",

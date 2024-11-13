@@ -1,4 +1,4 @@
- class LesserDummy extends Enemy {
+class LesserDummy extends Enemy {
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.initSprite('lesser_dummy_blank.png', 0.9, 0, undefined, undefined, 0);
@@ -20,7 +20,7 @@
                 this.playerSpellCastSub.unsubscribe()
             }
         });
-         this.initTutorial(x, y);
+        this.initTutorial(x, y);
     }
 
     initSpriteAnim(scale) {
@@ -55,12 +55,12 @@
         });
     }
 
-     initStatsCustom() {
-         this.health = 36;
-         this.isAsleep = true;
-     }
+    initStatsCustom() {
+        this.health = 36;
+        this.isAsleep = true;
+    }
 
-     initTutorial(x, y) {
+    initTutorial(x, y) {
         let dummyShadow = this.addImage(x - 6, y - 50, 'misc', 'shadow_circle.png').setScale(13).setDepth(9999).setAlpha(0);
         this.addTween({
             targets: dummyShadow,
@@ -72,7 +72,7 @@
             duration: 1500,
         });
 
-         this.shadow = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(6).setDepth(9975).setAlpha(0);
+        this.shadow = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY() - 1, 'misc', 'shadow_circle.png').setScale(6).setDepth(9975).setAlpha(0);
         this.addTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 0) {
                 globalObjects.magicCircle.disableMovement();
@@ -82,7 +82,7 @@
                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
                 globalObjects.bannerTextManager.showBanner(false);
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                    fadeAwaySound(this.bgMusic2,  600);
+                    fadeAwaySound(this.bgMusic2,  1200);
 
                     this.bgMusic = playMusic('bite_down_simplified', 0.9, true);
                     fadeInSound(this.bgMusic, 0.6);
@@ -200,56 +200,56 @@
         }, 1100)
     }
 
-     showArrowRotate() {
-         this.addTween({
-             targets: [this.arrowRotate1, this.arrowRotate2],
-             alpha: 0.8,
-             duration: 400,
-         });
+    showArrowRotate() {
+        this.addTween({
+            targets: [this.arrowRotate1, this.arrowRotate2],
+            alpha: 0.8,
+            duration: 400,
+        });
 
-         this.addTween({
-             targets: [this.arrowRotate1],
-             rotation: this.arrowRotate1.rotation * -1,
-             ease: 'Cubic.easeInOut',
-             duration: 1100,
-             completeDelay: 100,
-             onComplete: () => {
-                 this.addTween({
-                     delay: 900,
-                     targets: [this.arrowRotate1, this.arrowRotate2],
-                     alpha: 0,
-                     duration: 400,
-                 });
-                 this.addTween({
-                     targets: [this.arrowRotate1],
-                     rotation: this.arrowRotate1.rotation * -1,
-                     ease: 'Cubic.easeInOut',
-                     duration: 1100,
-                 });
-             }
-         });
-         this.addTween({
-             targets: [this.arrowRotate2],
-             rotation: this.arrowRotate2.rotation * -1,
-             ease: 'Cubic.easeInOut',
-             duration: 1100,
-             completeDelay: 100,
-             onComplete: () => {
-                 this.addTween({
-                     targets: [this.arrowRotate2],
-                     rotation: this.arrowRotate2.rotation * -1,
-                     ease: 'Cubic.easeInOut',
-                     duration: 1100,
-                     completeDelay: 3000,
-                     onComplete: () => {
-                         if (!this.dead && globalObjects.player.getPlayerCastSpellsCount() === 1) {
-                             this.showArrowRotate();
-                         }
-                     }
-                 });
-             }
-         });
-     }
+        this.addTween({
+            targets: [this.arrowRotate1],
+            rotation: this.arrowRotate1.rotation * -1,
+            ease: 'Cubic.easeInOut',
+            duration: 1100,
+            completeDelay: 100,
+            onComplete: () => {
+                this.addTween({
+                    delay: 900,
+                    targets: [this.arrowRotate1, this.arrowRotate2],
+                    alpha: 0,
+                    duration: 400,
+                });
+                this.addTween({
+                    targets: [this.arrowRotate1],
+                    rotation: this.arrowRotate1.rotation * -1,
+                    ease: 'Cubic.easeInOut',
+                    duration: 1100,
+                });
+            }
+        });
+        this.addTween({
+            targets: [this.arrowRotate2],
+            rotation: this.arrowRotate2.rotation * -1,
+            ease: 'Cubic.easeInOut',
+            duration: 1100,
+            completeDelay: 100,
+            onComplete: () => {
+                this.addTween({
+                    targets: [this.arrowRotate2],
+                    rotation: this.arrowRotate2.rotation * -1,
+                    ease: 'Cubic.easeInOut',
+                    duration: 1100,
+                    completeDelay: 3000,
+                    onComplete: () => {
+                        if (!this.dead && globalObjects.player.getPlayerCastSpellsCount() === 1) {
+                            this.showArrowRotate();
+                        }
+                    }
+                });
+            }
+        });
+    }
 
     initTutorial2() {
         this.addTimeout(() => {
@@ -352,8 +352,8 @@
                     return;
                 }
                 if (!this.dead) {
-                    this.healthShowText = this.addText(gameConsts.halfWidth, 41, getLangText('level0_tut_b'), {fontFamily: 'garamondbold', color: '#FFFAFA', fontSize: 20}).setOrigin(0.5, 0.5).setAlpha(0).setDepth(1001);
                     this.healthBack = this.addImage(gameConsts.halfWidth, 40, 'blurry', 'battletext_bg.png').setScale(this.healthShowText.width * 0.013, this.healthShowText.height * 0.11).setDepth(1000);
+                    this.healthShowText = this.addText(gameConsts.halfWidth, 41, getLangText('level0_tut_b'), {fontFamily: 'garamondbold', color: '#FFFAFA', fontSize: 20}).setOrigin(0.5, 0.5).setAlpha(0).setDepth(1001);
                     this.underline = this.addImage(gameConsts.halfWidth, this.healthBack.y - 11, 'blurry', 'box_length.png').setScale(0, -0.5).setDepth(-1002);
                     this.underline2 = this.addImage(gameConsts.halfWidth, this.healthBack.y + 11, 'blurry', 'box_length.png').setScale(0, 0.5).setDepth(-1002);
                     this.addTween({
@@ -439,244 +439,244 @@
         }
     }
 
-     setHealth(newHealth) {
-         super.setHealth(newHealth);
-         if (newHealth > 0) {
-             if (newHealth > 14) {
-                 this.eyeSprite.play('dummyblink');
-             } else {
-                 let oldOriginX = this.sprite.originX;
-                 let oldOriginY = this.sprite.originY;
-                 this.setDefaultSprite('lesser_dummy_hurt.png').setOrigin(oldOriginX, oldOriginY);
-                 // this.eyeSprite.destroy();
-                 let ouch1 = this.addImage(this.sprite.x + 8, this.sprite.y - 151, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(0.6);
-                 let ouch2 = this.addImage(this.sprite.x + 8, this.sprite.y - 144, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(1);
-                 this.addTween({
-                     targets: ouch1,
-                     x: "+=55",
-                     y: "-=60",
-                     ease: 'Quart.easeOut',
-                     duration: 660
-                 })
-                 this.addTween({
-                     targets: ouch1,
-                     scaleX: 0,
-                     scaleY: 0,
-                     ease: 'Quad.easeIn',
-                     duration: 660
-                 })
-                 this.addTween({
-                     targets: ouch1,
-                     rotation: "-=5",
-                     duration: 660
-                 })
-                 this.addTween({
-                     targets: ouch2,
-                     x: "+=90",
-                     y: "+=50",
-                     ease: 'Quart.easeOut',
-                     duration: 800
-                 })
-                 this.addTween({
-                     targets: ouch2,
-                     scaleX: 0,
-                     scaleY: 0,
-                     ease: 'Quad.easeIn',
-                     duration: 800
-                 })
-                 this.addTween({
-                     targets: ouch2,
-                     rotation: "+=5.5",
-                     duration: 800
-                 })
-             }
+    setHealth(newHealth) {
+        super.setHealth(newHealth);
+        if (newHealth > 0) {
+            if (newHealth > 14) {
+                this.eyeSprite.play('dummyblink');
+            } else {
+                let oldOriginX = this.sprite.originX;
+                let oldOriginY = this.sprite.originY;
+                this.setDefaultSprite('lesser_dummy_hurt.png').setOrigin(oldOriginX, oldOriginY);
+                // this.eyeSprite.destroy();
+                let ouch1 = this.addImage(this.sprite.x + 8, this.sprite.y - 151, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(0.6);
+                let ouch2 = this.addImage(this.sprite.x + 8, this.sprite.y - 144, 'enemies', 'dizzystar.png').setRotation(Math.random() * 3).setScale(1);
+                this.addTween({
+                    targets: ouch1,
+                    x: "+=55",
+                    y: "-=60",
+                    ease: 'Quart.easeOut',
+                    duration: 660
+                })
+                this.addTween({
+                    targets: ouch1,
+                    scaleX: 0,
+                    scaleY: 0,
+                    ease: 'Quad.easeIn',
+                    duration: 660
+                })
+                this.addTween({
+                    targets: ouch1,
+                    rotation: "-=5",
+                    duration: 660
+                })
+                this.addTween({
+                    targets: ouch2,
+                    x: "+=90",
+                    y: "+=50",
+                    ease: 'Quart.easeOut',
+                    duration: 800
+                })
+                this.addTween({
+                    targets: ouch2,
+                    scaleX: 0,
+                    scaleY: 0,
+                    ease: 'Quad.easeIn',
+                    duration: 800
+                })
+                this.addTween({
+                    targets: ouch2,
+                    rotation: "+=5.5",
+                    duration: 800
+                })
+            }
 
-             this.addTween({
-                 targets: [this.sprite, this.eyeSprite],
-                 rotation: -0.1,
-                 ease: "Quart.easeOut",
-                 duration: 50,
-                 onComplete: () => {
-                     this.addTween({
-                         targets: [this.sprite, this.eyeSprite],
-                         rotation: 0,
-                         ease: "Back.easeOut",
-                         duration: 400,
-                     });
-                 }
-             });
-             this.addTween({
-                 targets: [this.eyeSprite],
-                 x: "-=3",
-                 ease: "Quart.easeOut",
-                 duration: 50,
-                 onComplete: () => {
-                     this.addTween({
-                         targets: [this.eyeSprite],
-                         x: this.x,
-                         ease: "Back.easeOut",
-                         duration: 400,
-                     });
-                 }
-             });
-         }
-     }
+            this.addTween({
+                targets: [this.sprite, this.eyeSprite],
+                rotation: -0.1,
+                ease: "Quart.easeOut",
+                duration: 50,
+                onComplete: () => {
+                    this.addTween({
+                        targets: [this.sprite, this.eyeSprite],
+                        rotation: 0,
+                        ease: "Back.easeOut",
+                        duration: 400,
+                    });
+                }
+            });
+            this.addTween({
+                targets: [this.eyeSprite],
+                x: "-=3",
+                ease: "Quart.easeOut",
+                duration: 50,
+                onComplete: () => {
+                    this.addTween({
+                        targets: [this.eyeSprite],
+                        x: this.x,
+                        ease: "Back.easeOut",
+                        duration: 400,
+                    });
+                }
+            });
+        }
+    }
 
-     die() {
-         if (this.dead) {
-             return;
-         }
+    die() {
+        if (this.dead) {
+            return;
+        }
         super.die();
 
-         if (this.healthShowText) {
-             this.addTween({
-                 targets: [this.healthShowText, this.healthBack, this.underline, this.underline2],
-                 alpha: 0,
-                 ease: 'Cubic.easeOut',
-                 duration: 1000
-             })
-             this.addTween({
-                 targets: [this.underline, this.underline2],
-                 scaleX: 0,
-                 ease: 'Cubic.easeOut',
-                 duration: 1000
-             })
-         }
+        if (this.healthShowText) {
+            this.addTween({
+                targets: [this.healthShowText, this.healthBack, this.underline, this.underline2],
+                alpha: 0,
+                ease: 'Cubic.easeOut',
+                duration: 1000
+            })
+            this.addTween({
+                targets: [this.underline, this.underline2],
+                scaleX: 0,
+                ease: 'Cubic.easeOut',
+                duration: 1000
+            })
+        }
         globalObjects.textPopupManager.hideInfoText();
-         this.dieClickBlocker = new Button({
-             normal: {
-                 ref: "blackPixel",
-                 x: gameConsts.halfWidth,
-                 y: gameConsts.halfHeight,
-                 alpha: 0.001,
-                 scaleX: 1000,
-                 scaleY: 1000
-             },
-             onMouseUp: () => {
+        this.dieClickBlocker = new Button({
+            normal: {
+                ref: "blackPixel",
+                x: gameConsts.halfWidth,
+                y: gameConsts.halfHeight,
+                alpha: 0.001,
+                scaleX: 1000,
+                scaleY: 1000
+            },
+            onMouseUp: () => {
 
-             }
-         });
-         if (this.eyeSprite) {
-             this.eyeSprite.destroy();
-         }
-         if (this.glowCirc) {
+            }
+        });
+        if (this.eyeSprite) {
+            this.eyeSprite.destroy();
+        }
+        if (this.glowCirc) {
             this.glowCirc.destroy();
-         }
+        }
 
         this.setDefaultSprite('lesser_dummy_hurt.png', this.sprite.scaleX);
         this.sprite.setOrigin(0.5, 0.99);
 
-         this.addTween({
-             targets: this.sprite,
-             rotation: -1.25,
-             ease: "Cubic.easeIn",
-             duration: 900,
-             onComplete: () => {
-                 this.setSprite('lesser_dummy_dead.png', this.sprite.scaleX);
-                 this.sprite.rotation = 0;
-                 this.sprite.y += 54;
-                 this.sprite.x -= 81;
-                 this.showVictory();
-                 playSound('lesserfall', 0.75);
-             }
-         });
+        this.addTween({
+            targets: this.sprite,
+            rotation: -1.25,
+            ease: "Cubic.easeIn",
+            duration: 900,
+            onComplete: () => {
+                this.setSprite('lesser_dummy_dead.png', this.sprite.scaleX);
+                this.sprite.rotation = 0;
+                this.sprite.y += 54;
+                this.sprite.x -= 81;
+                this.showVictory();
+                playSound('lesserfall', 0.75);
+            }
+        });
 
-         this.addTween({
-             targets: this.sprite,
-             x: "+=35",
-             ease: "Cubic.easeOut",
-             duration: 400,
-         });
-     }
+        this.addTween({
+            targets: this.sprite,
+            x: "+=35",
+            ease: "Cubic.easeOut",
+            duration: 400,
+        });
+    }
 
-     showVictory() {
-         globalObjects.encyclopedia.hideButton();
-         globalObjects.options.hideButton();
-         globalObjects.magicCircle.disableMovement();
-         let banner = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
-         let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let continueText = this.addText(gameConsts.halfWidth, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 18}).setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998);
+    showVictory() {
+        globalObjects.encyclopedia.hideButton();
+        globalObjects.options.hideButton();
+        globalObjects.magicCircle.disableMovement();
+        let banner = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
+        let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
+        let continueText = this.addText(gameConsts.halfWidth, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 18}).setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998);
 
-         this.addTween({
-             targets: banner,
-             alpha: 0.8,
-             duration: 500,
-         });
+        this.addTween({
+            targets: banner,
+            alpha: 0.8,
+            duration: 500,
+        });
 
-         this.addTween({
-             targets: [victoryText],
-             alpha: 1,
-             ease: 'Quad.easeOut',
-             duration: 500,
-         });
+        this.addTween({
+            targets: [victoryText],
+            alpha: 1,
+            ease: 'Quad.easeOut',
+            duration: 500,
+        });
 
-         this.addTween({
-             targets: victoryText,
-             scaleX: 1,
-             scaleY: 1,
-             duration: 800,
-         });
-         this.addTimeout(() => {
-             continueText.alpha = 1;
-             if (canvas) {
-                 canvas.style.cursor = 'pointer';
-             }
-             this.dieClickBlocker.setOnMouseUpFunc(() => {
-                 if (canvas) {
-                     canvas.style.cursor = 'default';
-                 }
-                 this.dieClickBlocker.destroy();
+        this.addTween({
+            targets: victoryText,
+            scaleX: 1,
+            scaleY: 1,
+            duration: 800,
+        });
+        this.addTimeout(() => {
+            continueText.alpha = 1;
+            if (canvas) {
+                canvas.style.cursor = 'pointer';
+            }
+            this.dieClickBlocker.setOnMouseUpFunc(() => {
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
+                this.dieClickBlocker.destroy();
 
-                 this.addTween({
-                     targets: this.sprite,
-                     alpha: 0,
-                     duration: 800,
-                 });
-                 this.addTween({
-                     targets: this.sprite,
-                     alpha: 0,
-                     scaleX: this.sprite.startScale * 1.03,
-                     scaleY: this.sprite.startScale * 1.03,
-                     y: "+=5",
-                     ease: 'Quad.easeIn',
-                     duration: 800,
-                     onComplete: () => {
-                         this.destroy();
-                     }
-                 });
+                this.addTween({
+                    targets: this.sprite,
+                    alpha: 0,
+                    duration: 800,
+                });
+                this.addTween({
+                    targets: this.sprite,
+                    alpha: 0,
+                    scaleX: this.sprite.startScale * 1.03,
+                    scaleY: this.sprite.startScale * 1.03,
+                    y: "+=5",
+                    ease: 'Quad.easeIn',
+                    duration: 800,
+                    onComplete: () => {
+                        this.destroy();
+                    }
+                });
                 continueText.destroy();
-                 this.addTween({
-                     targets: [victoryText, banner],
-                     alpha: 0,
-                     duration: 400,
-                     completeDelay: 200,
-                     onComplete: () => {
-                         globalObjects.magicCircle.enableMovement();
-                         victoryText.destroy();
-                         banner.destroy();
-                         beginLevel(1);
-                     }
-                 });
-             })
-         }, 1000);
-     }
+                this.addTween({
+                    targets: [victoryText, banner],
+                    alpha: 0,
+                    duration: 400,
+                    completeDelay: 200,
+                    onComplete: () => {
+                        globalObjects.magicCircle.enableMovement();
+                        victoryText.destroy();
+                        banner.destroy();
+                        beginLevel(1);
+                    }
+                });
+            })
+        }, 1000);
+    }
 
-     initAttacks() {
-         this.attacks = [
-             [
-                 // 0
-                 {
-                     name: "}999 ",
-                     chargeAmt: 999,
-                     damage: 999,
+    initAttacks() {
+        this.attacks = [
+            [
+                // 0
+                {
+                    name: "}999 ",
+                    chargeAmt: 999,
+                    damage: 999,
                     attackFinishFunction: () => {
                         let dmgEffect = this.addSprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect3.png').setDepth(998).setScale(1.5);
                         this.addTimeout(() => {
                             dmgEffect.destroy();
                         }, 150)
                     }
-                 }
-             ]
-         ];
-     }
+                }
+            ]
+        ];
+    }
 }

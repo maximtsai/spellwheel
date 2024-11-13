@@ -388,7 +388,7 @@ class SpellManager {
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage, true, undefined, 'matter');
-                    messageBus.publish('setPauseDur', isExtraBuff ? 25 : 15);
+                    messageBus.publish('setPauseDur', isExtraBuff ? 24 : 14);
                     rockObj.bg.visible = false;
                     poolManager.returnItemToPool(rockObj, 'rock');
 

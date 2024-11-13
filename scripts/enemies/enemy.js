@@ -61,7 +61,8 @@ class Enemy {
     initStats() {
         this.destructibles = [];
         this.health = 1000;
-
+        this.chargeBarOffsetY = 0;
+        this.angerThreshold = 17;
         this.shield = 0;
         this.shieldOffsetY = 0;
         this.isAsleep = false;
@@ -214,7 +215,7 @@ class Enemy {
         this.chargeBarWarningBig.setScale(gameConsts.width * 0.1, 0.65);
         this.chargeBarWarningBig.alpha = 0
         this.chargeBarWarningBig.setDepth(1);
-        let mobileY = isMobile ? 333 : 315;
+        let mobileY = isMobile ? 333 : 315 + this.chargeBarOffsetY;
 
         this.chargeBarReady1 = this.scene.add.image(x, mobileY, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
         this.chargeBarReady2 = this.scene.add.image(x, mobileY, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
@@ -528,7 +529,7 @@ class Enemy {
             this.chargeVertical.scaleY = 1.28;
             this.chargeVertical2.scaleY = 1.28;
             if (this.isAngry) {
-                let increaseMult = Math.max(8, 0.34 * chargeMult);
+                let increaseMult = Math.max(8.3, 0.34 * chargeMult);
                 if (challenges.angryEnemies) {
                     increaseMult = 1.2;
                 } else if (cheats.calmEnemies) {
@@ -543,7 +544,8 @@ class Enemy {
                         castAggravateBonus = timeChange + this.castAggravateCharge;
                     }
                 }
-                this.attackCharge += timeChange * increaseMult * this.slowMult + castAggravateBonus;
+                // 1.02 is for players trying to rush things
+                this.attackCharge += timeChange * increaseMult * this.slowMult + castAggravateBonus * 1.02;
                 this.chargeVertical.alpha = Math.min(1, this.chargeVertical.alpha + timeChange * 0.3 * dt);
                 this.chargeVertical2.alpha = this.chargeVertical.alpha;
                 this.chargeVertical.scaleY = 1.4;
@@ -821,13 +823,17 @@ class Enemy {
                 this.readyNextAttack();
             }
         }
-        this.timeSinceLastAttacked += timeChange;
+        if (this.pauseMultDuration <= 0.001) {
+            this.timeSinceLastAttacked += timeChange;
+        }
+
+        // this.timeSinceLastAttacked += timeChange;
         if (this.isAsleep) {
             this.chargeBarAngry.visible = false;
             this.chargeBarCurr.visible = false;
             this.chargeVertical.alpha = 0;
             this.chargeVertical2.alpha = 0;
-        } else if (this.timeSinceLastAttacked < 18) {
+        } else if (this.timeSinceLastAttacked < this.angerThreshold) {
             if (!this.isAngry) {
                 this.isAngry = true;
                 if (!this.isAsleep) {
@@ -987,7 +993,7 @@ class Enemy {
         this.chargeBarCurr.alpha = 1;
         this.chargeBarAngry.alpha = 1;
 
-        this.timeSinceLastAttacked += 24;
+        this.timeSinceLastAttacked += 15;
         this.castAggravateCharge = 0;
         if (this.nextAttack.damage !== 0) {
             this.launchAttack(this.nextAttack.attackTimes, this.nextAttack.prepareSprite, this.nextAttack.preAttackSprite, this.nextAttack.attackSprites, undefined, this.nextAttack.finishDelay, this.nextAttack.transitionFast);
@@ -1445,7 +1451,7 @@ class Enemy {
             this.animateDamageNum(healthLoss, undefined, this.damageNumOffset + yOffset);
         }
         if (isAttack) {
-            this.timeSinceLastAttacked = 0;
+            this.timeSinceLastAttacked = Math.min(this.timeSinceLastAttacked, 0);
         }
 
         if (this.health <= 0) {
@@ -1584,7 +1590,7 @@ class Enemy {
             let offsetY = -damageTaken * 0.1 + extraOffsetY;
             this.animateDamageNum(healthLoss, true, offsetY);
             if (isAttack) {
-                this.timeSinceLastAttacked = 0;
+                this.timeSinceLastAttacked = Math.min(this.timeSinceLastAttacked, 0);
             }
         }
 
@@ -1662,7 +1668,7 @@ class Enemy {
         this.chargeBarAngry.scaleX = 0;
         this.chargeBarWarning.scaleX = 0;
         // this.timeSinceLastAttacked = 9999;
-        this.castAggravateCharge += 20;
+        // this.castAggravateCharge += 20;
         this.isAsleep = false;
         if (this.attackName) {
             this.attackName.visible = true;
@@ -2568,13 +2574,21 @@ class Enemy {
     }
 
     playerClickedSpell() {
-        this.castAggravateCharge = cheats.calmEnemies ? 16 : 20;
-        if (challenges.angryEnemies) {
-            this.castAggravateCharge = 24;
+        if (this.isAsleep) {
+            return;
         }
+        let incAmt = cheats.calmEnemies ? 16 : 20;
+        if (challenges.angryEnemies) {
+            incAmt = 24;
+        }
+        this.castAggravateCharge = Math.max(incAmt, this.castAggravateCharge + incAmt);
+
     }
 
     addCastAggravate(amt) {
+        if (this.isAsleep) {
+            return;
+        }
         this.castAggravateCharge += amt;
     }
 

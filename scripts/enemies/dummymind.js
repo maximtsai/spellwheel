@@ -13,7 +13,7 @@ class Dummymind extends Dummypractice {
     initStatsCustom() {
         this.health = 50;
         this.chargeBarOffsetY = 7;
-        this.chargeBarHeightOffset = -3;
+        this.chargeBarHeightOffset = -1;
         // this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;

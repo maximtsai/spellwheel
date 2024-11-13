@@ -382,8 +382,8 @@ class LesserDummy extends Enemy {
                     return;
                 }
                 if (!this.dead) {
-                    this.healthBack = this.addImage(gameConsts.halfWidth, 40, 'blurry', 'battletext_bg.png').setScale(this.healthShowText.width * 0.013, this.healthShowText.height * 0.11).setDepth(1000);
                     this.healthShowText = this.addText(gameConsts.halfWidth, 41, getLangText('level0_tut_b'), {fontFamily: 'garamondbold', color: '#FFFAFA', fontSize: 20}).setOrigin(0.5, 0.5).setAlpha(0).setDepth(1001);
+                    this.healthBack = this.addImage(gameConsts.halfWidth, 40, 'blurry', 'battletext_bg.png').setScale(this.healthShowText.width * 0.013, this.healthShowText.height * 0.11).setDepth(1000);
                     this.underline = this.addImage(gameConsts.halfWidth, this.healthBack.y - 11, 'blurry', 'box_length.png').setScale(0, -0.5).setDepth(-1002);
                     this.underline2 = this.addImage(gameConsts.halfWidth, this.healthBack.y + 11, 'blurry', 'box_length.png').setScale(0, 0.5).setDepth(-1002);
                     this.addTween({

@@ -438,8 +438,8 @@ class SpellManager {
         this.scene.tweens.add({
             targets: brickObj,
             duration: 400 + 50 * spellMult,
-            scaleX: 1.05 + 0.015 * spellMult,
-            scaleY: 1.05 + 0.015 * spellMult,
+            scaleX: 1.075 + 0.016 * spellMult,
+            scaleY: 1.075 + 0.016 * spellMult,
             alpha: 0.8,
             rotation: 0,
             ease: 'Cubic.easeIn',
@@ -452,7 +452,7 @@ class SpellManager {
                     alpha: 0.7,
                     ease: 'Quad.easeOut'
                 });
-                let scaleAmt = 0.994 + 0.006 * Math.sqrt(spellMult);
+                let scaleAmt = 1.01 + 0.0075 * Math.sqrt(spellMult);
                 brickObj.origScale = scaleAmt;
                 this.scene.tweens.add({
                     targets: brickObj,
@@ -476,7 +476,7 @@ class SpellManager {
             }
         });
         let totalProtection = spellMult * protectionAmt;
-        let goalScale = 1.15 + totalProtection * 0.1;
+        let goalScale = 1.15 + totalProtection * 0.05;
         let param = {
             duration: 400,
             ease: 'Quad.easeOut',
@@ -487,8 +487,8 @@ class SpellManager {
         let param2 = {
             alpha: 0,
             duration: 1600,
-            scaleX: goalScale * 0.95,
-            scaleY: goalScale * 0.95
+            scaleX: goalScale * 0.96,
+            scaleY: goalScale * 0.96
         }
 
         messageBus.publish('animateArmorNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + totalProtection + " THORNS", goalScale, param, param2);

@@ -100,6 +100,27 @@ class LesserDummy extends Enemy {
                                 alpha: 0.7,
                                 ease: "Quint.easeOut",
                                 duration: 3000,
+                                onComplete: () => {
+                                    this.hintArrow = this.addImage(gameConsts.halfWidth, globalObjects.player.getY(), 'circle', 'hint_arrows.png').setAlpha(0).setDepth(9981).setScale(1.5);
+                                    this.hintArrow.currAnim = this.addTween({
+                                        targets: [this.hintArrow],
+                                        alpha: 1,
+                                        ease: "Cubic.easeInOut",
+                                        scaleX: 0.93,
+                                        scaleY: 0.93,
+                                        duration: 1200,
+                                        completeDelay: 800,
+                                        onComplete: () => {
+                                            this.hintArrow.currAnim = this.addTween({
+                                                targets: [this.hintArrow],
+                                                alpha: 0,
+                                                ease: "Cubic.easeIn",
+                                                duration: 1100,
+                                            });
+                                        }
+                                    });
+
+                                }
                             });
                         }
                     });
@@ -127,6 +148,15 @@ class LesserDummy extends Enemy {
                         messageBus.publish("unhighlightRunes");
                         if (this.glowCirc.currAnim) {
                             this.glowCirc.currAnim.stop();
+                        }
+                        if (this.hintArrow && this.hintArrow.currAnim) {
+                            this.hintArrow.currAnim.stop();
+                            this.addTween({
+                                targets: [this.hintArrow],
+                                alpha: 0,
+                                ease: "Cubic.easeOut",
+                                duration: 500,
+                            });
                         }
                         this.glowCirc.currAnim = this.addTween({
                             targets: [this.glowCirc],

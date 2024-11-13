@@ -78,7 +78,9 @@
 
     createPicketSign() {
         this.picketVisual = this.addSprite(this.x - 170, this.y + 15, 'dummyenemy', 'picketsign.png').setScale(1, 0).setOrigin(0.5, 1).setDepth(11);
-        playSound('balloon', 0.6)
+        setTimeout(() => {
+            playSound('balloon', 0.5).detune = -250;
+        }, 150)
         this.addTween({
             targets: this.picketVisual,
             scaleY: 1,

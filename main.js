@@ -457,9 +457,9 @@ function switchBackground(newBG) {
         return;
     }
     let background = document.getElementById('background');
-    background.style.opacity = '0';
     background.style['animation-name'] = 'fadeAway';
     background.style['animation-duration'] = '1.5s';
+    background.style.opacity = '0';
     setTimeout(() => {
         currBackground = newBG;
         background.style['background-image'] = 'url("sprites/preload/' + newBG + '")';
@@ -472,7 +472,7 @@ function switchBackground(newBG) {
             background.style['animation-name'] = 'changeShadow';
             background.style.opacity = '1';
         }
-    }, 1000)
+    }, 1400)
 }
 
 function switchBackgroundInstant(newBG) {

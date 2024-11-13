@@ -290,7 +290,7 @@ function showMainMenuButtons() {
             }
         });
         globalObjects.continueButton.setOrigin(0.5, 0.5);
-        let textObj = globalObjects.continueButton.addText(getLangText('cont_ui'), {fontFamily: 'germania', fontSize: 30, color: '#FFFFFF', align: 'left'})
+        let textObj = globalObjects.continueButton.addText(getLangText('cont_ui'), {fontFamily: 'germania', fontSize: 30, color: '#FDF6F4', align: 'left'}).setAlpha(0.97);
         globalObjects.continueButton.setTextOffset(0, -5);
         globalObjects.continueButton.setStroke('#301010', 5)
         globalObjects.continueButton.setRotation(-0.02)
@@ -351,7 +351,8 @@ function showMainMenuButtons() {
             }
         });
         globalObjects.levelSelectButton.setOrigin(0.5, 0.5);
-        let textObjSelect = globalObjects.levelSelectButton.addText(getLangText('lvl_select'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'left'})
+        let textObjSelect = globalObjects.levelSelectButton.addText(getLangText('lvl_select'), {fontFamily: 'germania', fontSize: 26, color: '#FDF6F4', align: 'left'})
+        textObjSelect.setAlpha(0.97);
         globalObjects.levelSelectButton.setStroke('#301010', 5)
         globalObjects.levelSelectButton.setTextOffset(-6, -8);
         globalObjects.levelSelectButton.setRotation(-0.22)
@@ -435,7 +436,8 @@ function showMainMenuButtons() {
         }
     });
     globalObjects.startButton.setOrigin(0.5, 0.5);
-    let textObj = globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'germania', fontSize: 30, color: '#FFFFFF', align: 'left'});
+    let textObj = globalObjects.startButton.addText(getLangText('new_game'), {fontFamily: 'germania', fontSize: 30, color: '#FDF6F4', align: 'left'});
+    textObj.alpha = 0.96;
     globalObjects.startButton.setTextOffset(-6, -2)
     globalObjects.startButton.setStroke('#301010', 5)
     // textObj.setBlendMode(Phaser.BlendModes.SCREEN);
@@ -1182,7 +1184,7 @@ function showMainMenuButtons() {
             this.closeButton.setDepth(100000);
         }
     });
-    globalObjects.creditsButton.addText(getLangText('credits'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5);
+    globalObjects.creditsButton.addText(getLangText('credits'), {fontFamily: 'germania', fontSize: 26, color: '#FDF6F4', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5).setAlpha(0.96);
     globalObjects.creditsButton.setStroke('#301010', 6)
     globalObjects.creditsButton.setRotation(-0.03)
 
@@ -1236,7 +1238,8 @@ function showMainMenuButtons() {
             openWishlist();
         }
     });
-    let textObjExtras = globalObjects.extrasButton.addText(getLangText('wishlist'), {fontFamily: 'germania', fontSize: 26, color: '#FFFFFF', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5);
+    let textObjExtras = globalObjects.extrasButton.addText(getLangText('wishlist'), {fontFamily: 'germania', fontSize: 26, color: '#FDF6F4', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5)
+    textObjExtras.setAlpha(0.96);
     globalObjects.extrasButton.setStroke('#301010', 6);
     if (language === 'fr') {
         textObjExtras.setFontSize(20);

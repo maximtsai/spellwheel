@@ -19,24 +19,40 @@
 
          this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
              this.spellsCastCount++;
-             if (this.spellsCastCount == 5) {
+             if (this.spellsCastCount === 5) {
                 globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText('shield_dummy_overwrite'), 'right');
                  this.playerSpellCastSub.unsubscribe();
              }
-             if (this.spellsCastCount >= 3 && this.spellsCastCount % 2 == 1) {
+             if (this.spellsCastCount >= 3 && this.spellsCastCount % 2 === 1) {
                  this.picketButton.setScale(1.02, 1.05);
                  this.picketVisual.setScale(1.02, 1.05);
                  this.picketButton.tweenToScale(1.05, 1.15, 200, 'Cubic.easeOut', undefined, () => {
                      this.picketButton.tweenToScale(1, 1, 700, 'Back.easeOut');
                  });
-                 this.addTween({
+                 if (this.birdy && this.birdy.landed) {
+                     this.birdy.currAnim = this.addTween({
+                         targets: this.birdy,
+                         y: this.picketVisual.y - 264,
+                         ease: "Cubic.easeOut",
+                         duration: 205,
+                         onComplete: () => {
+                             this.birdy.currAnim = this.addTween({
+                                 targets: this.birdy,
+                                 y: this.picketVisual.y - 234,
+                                 ease: "Back.easeOut",
+                                 duration: 700,
+                             });
+                         }
+                     });
+                 }
+                 this.picketVisual.currAnim = this.addTween({
                      targets: this.picketVisual,
                      scaleX: 1.05,
                      scaleY: 1.15,
                      ease: "Cubic.easeOut",
                      duration: 200,
                      onComplete: () => {
-                         this.addTween({
+                         this.picketVisual.currAnim = this.addTween({
                              targets: this.picketVisual,
                              scaleX: 1,
                              scaleY: 1,
@@ -49,6 +65,64 @@
              }
          });
          this.subscriptions.push(this.playerSpellCastSub);
+    }
+
+    summonBird() {
+        this.birdy = this.addSprite(-25, 5, 'enemies', 'bird_2.png').setRotation(1.1).setDepth(12);
+        this.birdy.currAnim = this.addTween({
+            targets: this.birdy,
+            x: this.picketVisual.x + 50,
+            ease: 'Quad.easeOut',
+            duration: 1050,
+            onComplete: () => {
+                this.birdy.landed = true;
+            }
+        })
+        this.birdy.currAnim2 = this.addTween({
+            targets: this.birdy,
+            y: this.picketVisual.y - 234,
+            easeParams: [2],
+            ease: 'Back.easeOut',
+            rotation: 0.35,
+            duration: 1050,
+            onComplete: () => {
+                this.birdy.setDepth(5);
+                playSound('chirp1');
+                this.birdy.setFrame('bird_1.png');
+                this.birdy.setRotation(0).setScale(1, 1.15);
+                this.birdy.currAnim2 = this.addTween({
+                    targets: this.birdy,
+                    scaleY: 1,
+                    ease: 'Back.easeOut',
+                    duration: 400,
+                })
+            }
+        })
+    }
+
+    flyBird() {
+        if (this.birdy) {
+            if (this.birdy.currAnim) {
+                this.birdy.currAnim.stop();
+                this.birdy.currAnim2.stop();
+            }
+            this.birdy.setFrame('bird_2.png').setRotation(0.1);
+            this.addTween({
+                targets: this.birdy,
+                y: -25,
+                ease: 'Quart.easeIn',
+                duration: 800,
+            })
+            this.addTween({
+                targets: this.birdy,
+                x: "+=250",
+                ease: 'Quad.easeIn',
+                duration: 800,
+                onComplete: () => {
+                    this.birdy.destroy();
+                }
+            })
+        }
     }
 
     showGoal() {
@@ -77,14 +151,17 @@
     }
 
     createPicketSign() {
-        this.picketVisual = this.addSprite(this.x - 170, this.y + 15, 'dummyenemy', 'picketsign.png').setScale(1, 0).setOrigin(0.5, 1).setDepth(11);
-        playSound('balloon', 0.6)
+        this.picketVisual = this.addSprite(this.x - 170, this.y + 18, 'dummyenemy', 'picketsign.png').setScale(1, 0).setOrigin(0.5, 1).setDepth(11);
+        setTimeout(() => {
+            playSound('balloon', 0.5).detune = -250;
+        }, 150)
         this.addTween({
             targets: this.picketVisual,
             scaleY: 1,
             ease: "Back.easeOut",
             duration: 500,
             onComplete: () => {
+                this.summonBird();
                 this.addTimeout(() => {
                     this.showGoal()
                 }, 600)
@@ -134,6 +211,10 @@
         globalObjects.textPopupManager.hideInfoText();
         this.picketButton.destroy();
         playSound('balloon', 0.5).detune = -500;
+        this.flyBird();
+        if (this.picketVisual.currAnim) {
+            this.picketVisual.currAnim.stop();
+        }
         this.addTween({
             targets: this.picketVisual,
             scaleY: 0,

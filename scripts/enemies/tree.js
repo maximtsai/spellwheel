@@ -469,9 +469,9 @@
              rotation: -0.2,
              duration: 700
          });
-
+         playSound('tree_sfx', 0.75);
          this.addTween({
-            delay: 75,
+            delay: 125,
              targets: currObj,
              x: gameConsts.halfWidth * 0.2 + currObj.x * 0.8,
              y: gameConsts.height - 320,
@@ -747,7 +747,7 @@
                  // 2
                  {
                      name: " STARE...",
-                     chargeAmt: 350,
+                     chargeAmt: 300,
                      isPassive: true,
                      attackStartFunction: () => {
 
@@ -779,7 +779,7 @@
                  },
                  {
                      name: " STARE...",
-                     chargeAmt: 350,
+                     chargeAmt: 250,
                      damage: -1,
                      isPassive: true,
                      attackStartFunction: () => {
@@ -797,7 +797,7 @@
                      name: "|2x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: 550,
+                     chargeAmt: gameVars.isHardMode ? 450 : 500,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');
@@ -849,7 +849,7 @@
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.03;
                          let currHealthPercent = this.health / this.healthMax;
-                         if (this.health > 70) {
+                         if (this.health > 60) {
                              this.currentAttackSetIndex = 4;
                              this.nextAttackIndex = 0;
                          } else if (!this.hasTimbered) {
@@ -863,7 +863,7 @@
                  // 4
                  {
                      name: " STARE...",
-                     chargeAmt: gameVars.isHardMode ? 300 : 350,
+                     chargeAmt: gameVars.isHardMode ? 250 : 300,
                      damage: -1,
                      isPassive: true,
                      attackStartFunction: () => {
@@ -881,7 +881,7 @@
                      name: "|2x5 ",
                      announceName: "LEAF STORM",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: gameVars.isHardMode ? 500 : 550,
+                     chargeAmt: gameVars.isHardMode ? 450 : 500,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');

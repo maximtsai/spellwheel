@@ -41,10 +41,10 @@ class CombatTextManager {
         if (this.text.height > 50) {
             this.bg.scaleY = 8;
         } else {
-            this.bg.scaleY = 5;
+            this.bg.scaleY = 4.8;
         }
-        this.bgBorderTop.y = this.bg.y - this.bg.scaleY * 5 - 1;
-        this.bgBorderBot.y = this.bg.y + this.bg.scaleY * 5 + 1;
+        this.bgBorderTop.y = this.bg.y - this.bg.scaleY * 4.8 - 1;
+        this.bgBorderBot.y = this.bg.y + this.bg.scaleY * 4.8 + 1;
         if (this.currAnim) {
             this.currAnim.stop();
         }

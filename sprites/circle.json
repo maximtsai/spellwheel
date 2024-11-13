@@ -4,8 +4,8 @@
 			"image": "sprites/circle-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2039,
-				"h": 1645
+				"w": 1925,
+				"h": 1769
 			},
 			"scale": 1,
 			"frames": [
@@ -64,120 +64,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 442,
-						"h": 442
+						"w": 446,
+						"h": 446
 					},
 					"spriteSourceSize": {
 						"x": 3,
 						"y": 4,
-						"w": 436,
-						"h": 435
+						"w": 440,
+						"h": 439
 					},
 					"frame": {
 						"x": 606,
 						"y": 1,
-						"w": 436,
-						"h": 435
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "greyed.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 426,
-						"h": 426
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 426,
-						"h": 426
-					},
-					"frame": {
-						"x": 1,
-						"y": 1041,
-						"w": 426,
-						"h": 426
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "usage_disable.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 442,
-						"h": 442
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 9,
-						"w": 426,
-						"h": 424
-					},
-					"frame": {
-						"x": 1044,
-						"y": 1,
-						"w": 426,
-						"h": 424
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "usage_hover.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 442,
-						"h": 442
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 9,
-						"w": 426,
-						"h": 424
-					},
-					"frame": {
-						"x": 1472,
-						"y": 1,
-						"w": 426,
-						"h": 424
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "usage_normal.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 442,
-						"h": 442
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 9,
-						"w": 426,
-						"h": 424
-					},
-					"frame": {
-						"x": 458,
-						"y": 584,
-						"w": 426,
-						"h": 424
+						"w": 440,
+						"h": 439
 					},
 					"anchor": {
 						"x": 0.5,
@@ -189,20 +89,120 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 426,
-						"h": 426
+						"w": 434,
+						"h": 434
 					},
 					"spriteSourceSize": {
 						"x": 2,
 						"y": 1,
-						"w": 422,
-						"h": 423
+						"w": 430,
+						"h": 431
+					},
+					"frame": {
+						"x": 1,
+						"y": 1041,
+						"w": 430,
+						"h": 431
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "greyed.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 430,
+						"h": 430
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 430,
+						"h": 430
+					},
+					"frame": {
+						"x": 1048,
+						"y": 1,
+						"w": 430,
+						"h": 430
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "usage_disable.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 446,
+						"h": 446
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 9,
+						"w": 430,
+						"h": 428
+					},
+					"frame": {
+						"x": 1480,
+						"y": 1,
+						"w": 430,
+						"h": 428
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "usage_hover.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 446,
+						"h": 446
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 9,
+						"w": 430,
+						"h": 428
 					},
 					"frame": {
 						"x": 458,
-						"y": 1010,
-						"w": 422,
-						"h": 423
+						"y": 584,
+						"w": 430,
+						"h": 428
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "usage_normal.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 446,
+						"h": 446
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 9,
+						"w": 430,
+						"h": 428
+					},
+					"frame": {
+						"x": 458,
+						"y": 1014,
+						"w": 430,
+						"h": 428
 					},
 					"anchor": {
 						"x": 0.5,
@@ -224,8 +224,8 @@
 						"h": 422
 					},
 					"frame": {
-						"x": 886,
-						"y": 438,
+						"x": 890,
+						"y": 442,
 						"w": 419,
 						"h": 422
 					},
@@ -249,8 +249,8 @@
 						"h": 410
 					},
 					"frame": {
-						"x": 1307,
-						"y": 427,
+						"x": 890,
+						"y": 866,
 						"w": 410,
 						"h": 410
 					},
@@ -274,8 +274,8 @@
 						"h": 319
 					},
 					"frame": {
-						"x": 1719,
-						"y": 427,
+						"x": 890,
+						"y": 1278,
 						"w": 319,
 						"h": 319
 					},
@@ -289,20 +289,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 312,
-						"h": 312
+						"w": 315,
+						"h": 315
 					},
 					"spriteSourceSize": {
 						"x": 2,
 						"y": 2,
-						"w": 309,
-						"h": 309
+						"w": 311,
+						"h": 311
 					},
 					"frame": {
-						"x": 886,
-						"y": 862,
-						"w": 309,
-						"h": 309
+						"x": 1311,
+						"y": 433,
+						"w": 311,
+						"h": 311
 					},
 					"anchor": {
 						"x": 0.5,
@@ -314,20 +314,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 312,
-						"h": 312
+						"w": 315,
+						"h": 315
 					},
 					"spriteSourceSize": {
 						"x": 8,
 						"y": 8,
-						"w": 297,
-						"h": 297
+						"w": 300,
+						"h": 300
 					},
 					"frame": {
-						"x": 882,
-						"y": 1173,
-						"w": 297,
-						"h": 297
+						"x": 1624,
+						"y": 431,
+						"w": 300,
+						"h": 300
 					},
 					"anchor": {
 						"x": 0.5,
@@ -339,20 +339,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 312,
-						"h": 312
+						"w": 315,
+						"h": 315
 					},
 					"spriteSourceSize": {
 						"x": 8,
 						"y": 8,
-						"w": 297,
-						"h": 297
+						"w": 300,
+						"h": 300
 					},
 					"frame": {
-						"x": 1197,
-						"y": 862,
-						"w": 297,
-						"h": 297
+						"x": 1624,
+						"y": 733,
+						"w": 300,
+						"h": 300
 					},
 					"anchor": {
 						"x": 0.5,
@@ -364,95 +364,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 312,
-						"h": 312
+						"w": 315,
+						"h": 315
 					},
 					"spriteSourceSize": {
 						"x": 8,
 						"y": 8,
-						"w": 297,
-						"h": 297
+						"w": 300,
+						"h": 300
 					},
 					"frame": {
-						"x": 1496,
-						"y": 839,
-						"w": 297,
-						"h": 297
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "cast_disable.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 172,
-						"h": 172
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 172,
-						"h": 172
-					},
-					"frame": {
-						"x": 1,
-						"y": 1472,
-						"w": 172,
-						"h": 172
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "cast_hover.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 172,
-						"h": 172
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 172,
-						"h": 172
-					},
-					"frame": {
-						"x": 175,
-						"y": 1472,
-						"w": 172,
-						"h": 172
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "cast_normal.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 172,
-						"h": 172
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 172,
-						"h": 172
-					},
-					"frame": {
-						"x": 349,
-						"y": 1472,
-						"w": 172,
-						"h": 172
+						"x": 1311,
+						"y": 746,
+						"w": 300,
+						"h": 300
 					},
 					"anchor": {
 						"x": 0.5,
@@ -474,60 +399,10 @@
 						"h": 200
 					},
 					"frame": {
-						"x": 523,
-						"y": 1435,
+						"x": 1,
+						"y": 1474,
 						"w": 200,
 						"h": 200
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "cast_press.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 172,
-						"h": 172
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 172,
-						"h": 172
-					},
-					"frame": {
-						"x": 725,
-						"y": 1472,
-						"w": 172,
-						"h": 172
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "arrow_rotate.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 300,
-						"h": 300
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 14,
-						"w": 288,
-						"h": 37
-					},
-					"frame": {
-						"x": 1719,
-						"y": 748,
-						"w": 288,
-						"h": 37
 					},
 					"anchor": {
 						"x": 0.5,
@@ -549,8 +424,8 @@
 						"h": 198
 					},
 					"frame": {
-						"x": 1795,
-						"y": 787,
+						"x": 203,
+						"y": 1474,
 						"w": 198,
 						"h": 198
 					},
@@ -574,10 +449,160 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 1795,
-						"y": 987,
+						"x": 1302,
+						"y": 1048,
 						"w": 193,
 						"h": 202
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "energy_body.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 190,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 190,
+						"h": 190
+					},
+					"frame": {
+						"x": 1497,
+						"y": 1048,
+						"w": 190,
+						"h": 190
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "cast_disable.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 172,
+						"h": 172
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 172,
+						"h": 172
+					},
+					"frame": {
+						"x": 1689,
+						"y": 1035,
+						"w": 172,
+						"h": 172
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "arrow_rotate.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 14,
+						"w": 288,
+						"h": 37
+					},
+					"frame": {
+						"x": 433,
+						"y": 1444,
+						"w": 288,
+						"h": 37
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "cast_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 172,
+						"h": 172
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 172,
+						"h": 172
+					},
+					"frame": {
+						"x": 403,
+						"y": 1483,
+						"w": 172,
+						"h": 172
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "cast_normal.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 172,
+						"h": 172
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 172,
+						"h": 172
+					},
+					"frame": {
+						"x": 577,
+						"y": 1483,
+						"w": 172,
+						"h": 172
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "cast_press.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 172,
+						"h": 172
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 172,
+						"h": 172
+					},
+					"frame": {
+						"x": 1211,
+						"y": 1278,
+						"w": 172,
+						"h": 172
 					},
 					"anchor": {
 						"x": 0.5,
@@ -599,8 +624,8 @@
 						"h": 148
 					},
 					"frame": {
-						"x": 899,
-						"y": 1472,
+						"x": 1211,
+						"y": 1452,
 						"w": 172,
 						"h": 148
 					},
@@ -625,9 +650,59 @@
 					},
 					"frame": {
 						"x": 606,
-						"y": 438,
+						"y": 442,
 						"w": 155,
 						"h": 105
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "blastEffect2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 125,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 125,
+						"h": 125
+					},
+					"frame": {
+						"x": 763,
+						"y": 442,
+						"w": 125,
+						"h": 125
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "hint_arrows.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 222,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 222,
+						"h": 37
+					},
+					"frame": {
+						"x": 1,
+						"y": 1676,
+						"w": 222,
+						"h": 37
 					},
 					"anchor": {
 						"x": 0.5,
@@ -649,10 +724,60 @@
 						"h": 37
 					},
 					"frame": {
-						"x": 606,
-						"y": 545,
+						"x": 1,
+						"y": 1715,
 						"w": 218,
 						"h": 37
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "cast_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 179,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 12,
+						"w": 151,
+						"h": 151
+					},
+					"frame": {
+						"x": 1385,
+						"y": 1252,
+						"w": 151,
+						"h": 151
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "healthbar_2thirds.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 182,
+						"h": 182
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 5,
+						"w": 147,
+						"h": 148
+					},
+					"frame": {
+						"x": 1385,
+						"y": 1405,
+						"w": 147,
+						"h": 148
 					},
 					"anchor": {
 						"x": 0.5,
@@ -674,8 +799,8 @@
 						"h": 129
 					},
 					"frame": {
-						"x": 1900,
-						"y": 1,
+						"x": 1538,
+						"y": 1240,
 						"w": 129,
 						"h": 129
 					},
@@ -699,8 +824,8 @@
 						"h": 129
 					},
 					"frame": {
-						"x": 1900,
-						"y": 1,
+						"x": 1538,
+						"y": 1240,
 						"w": 129,
 						"h": 129
 					},
@@ -724,8 +849,8 @@
 						"h": 129
 					},
 					"frame": {
-						"x": 1900,
-						"y": 132,
+						"x": 751,
+						"y": 1444,
 						"w": 129,
 						"h": 129
 					},
@@ -749,260 +874,10 @@
 						"h": 129
 					},
 					"frame": {
-						"x": 1900,
-						"y": 263,
+						"x": 751,
+						"y": 1575,
 						"w": 128,
 						"h": 129
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "healthbar_2thirds.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 182,
-						"h": 182
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 5,
-						"w": 147,
-						"h": 148
-					},
-					"frame": {
-						"x": 1073,
-						"y": 1472,
-						"w": 147,
-						"h": 148
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "drag_arrow.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 88,
-						"h": 35
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 88,
-						"h": 35
-					},
-					"frame": {
-						"x": 725,
-						"y": 1435,
-						"w": 88,
-						"h": 35
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "energy_body.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 190,
-						"h": 190
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 190,
-						"h": 190
-					},
-					"frame": {
-						"x": 1496,
-						"y": 1138,
-						"w": 190,
-						"h": 190
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "focus_lines.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 113,
-						"h": 136
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 6,
-						"w": 96,
-						"h": 121
-					},
-					"frame": {
-						"x": 1688,
-						"y": 1138,
-						"w": 96,
-						"h": 121
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "cast_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 179,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 14,
-						"y": 12,
-						"w": 151,
-						"h": 151
-					},
-					"frame": {
-						"x": 1786,
-						"y": 1191,
-						"w": 151,
-						"h": 151
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "focus_lines_on.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 113,
-						"h": 136
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 6,
-						"w": 96,
-						"h": 121
-					},
-					"frame": {
-						"x": 1688,
-						"y": 1261,
-						"w": 96,
-						"h": 121
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "error_box.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 195,
-						"h": 71
-					},
-					"spriteSourceSize": {
-						"x": 39,
-						"y": 0,
-						"w": 117,
-						"h": 71
-					},
-					"frame": {
-						"x": 763,
-						"y": 438,
-						"w": 117,
-						"h": 71
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "cast_circle.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 75,
-						"h": 75
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 26,
-						"w": 75,
-						"h": 22
-					},
-					"frame": {
-						"x": 899,
-						"y": 1622,
-						"w": 75,
-						"h": 22
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "healthbar_1thirds.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 182,
-						"h": 182
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 29,
-						"w": 42,
-						"h": 124
-					},
-					"frame": {
-						"x": 1939,
-						"y": 1191,
-						"w": 42,
-						"h": 124
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "blastEffect2.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 125,
-						"h": 125
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 125,
-						"h": 125
-					},
-					"frame": {
-						"x": 1786,
-						"y": 1344,
-						"w": 125,
-						"h": 125
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1024,60 +899,10 @@
 						"h": 125
 					},
 					"frame": {
-						"x": 1913,
-						"y": 1344,
+						"x": 881,
+						"y": 1599,
 						"w": 125,
 						"h": 125
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "bright_rune_unload.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 76,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 18,
-						"w": 51,
-						"h": 50
-					},
-					"frame": {
-						"x": 1719,
-						"y": 787,
-						"w": 51,
-						"h": 50
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "descBox.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 110,
-						"h": 132
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 110,
-						"h": 132
-					},
-					"frame": {
-						"x": 1181,
-						"y": 1173,
-						"w": 110,
-						"h": 132
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1099,85 +924,10 @@
 						"h": 125
 					},
 					"frame": {
-						"x": 1293,
-						"y": 1161,
+						"x": 1008,
+						"y": 1599,
 						"w": 125,
 						"h": 125
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "focus_lines_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 113,
-						"h": 136
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 112,
-						"h": 127
-					},
-					"frame": {
-						"x": 1181,
-						"y": 1307,
-						"w": 112,
-						"h": 127
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "blastEffect4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 125,
-						"h": 125
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 124,
-						"h": 125
-					},
-					"frame": {
-						"x": 1295,
-						"y": 1288,
-						"w": 124,
-						"h": 125
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "healthbar_partial.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 182,
-						"h": 182
-					},
-					"spriteSourceSize": {
-						"x": 135,
-						"y": 29,
-						"w": 42,
-						"h": 124
-					},
-					"frame": {
-						"x": 1420,
-						"y": 1161,
-						"w": 42,
-						"h": 124
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1199,8 +949,8 @@
 						"h": 125
 					},
 					"frame": {
-						"x": 1222,
-						"y": 1436,
+						"x": 1135,
+						"y": 1602,
 						"w": 125,
 						"h": 125
 					},
@@ -1224,35 +974,10 @@
 						"h": 125
 					},
 					"frame": {
-						"x": 1349,
-						"y": 1415,
+						"x": 1262,
+						"y": 1602,
 						"w": 125,
 						"h": 125
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "healthbar_seg_red.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 182,
-						"h": 182
-					},
-					"spriteSourceSize": {
-						"x": 142,
-						"y": 29,
-						"w": 34,
-						"h": 123
-					},
-					"frame": {
-						"x": 1421,
-						"y": 1287,
-						"w": 34,
-						"h": 123
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1274,10 +999,60 @@
 						"h": 125
 					},
 					"frame": {
-						"x": 1476,
-						"y": 1330,
+						"x": 1389,
+						"y": 1555,
 						"w": 125,
 						"h": 125
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "healthbar_1thirds.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 182,
+						"h": 182
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 29,
+						"w": 42,
+						"h": 124
+					},
+					"frame": {
+						"x": 1863,
+						"y": 1035,
+						"w": 42,
+						"h": 124
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "error_box.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 195,
+						"h": 71
+					},
+					"spriteSourceSize": {
+						"x": 39,
+						"y": 0,
+						"w": 117,
+						"h": 71
+					},
+					"frame": {
+						"x": 1389,
+						"y": 1682,
+						"w": 117,
+						"h": 71
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1299,9 +1074,34 @@
 						"h": 125
 					},
 					"frame": {
-						"x": 1476,
-						"y": 1457,
+						"x": 1538,
+						"y": 1371,
 						"w": 125,
+						"h": 125
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "blastEffect4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 125,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 124,
+						"h": 125
+					},
+					"frame": {
+						"x": 1534,
+						"y": 1498,
+						"w": 124,
 						"h": 125
 					},
 					"anchor": {
@@ -1324,8 +1124,8 @@
 						"h": 124
 					},
 					"frame": {
-						"x": 1603,
-						"y": 1384,
+						"x": 1516,
+						"y": 1625,
 						"w": 124,
 						"h": 124
 					},
@@ -1349,10 +1149,60 @@
 						"h": 124
 					},
 					"frame": {
-						"x": 1603,
-						"y": 1510,
+						"x": 1689,
+						"y": 1209,
 						"w": 124,
 						"h": 124
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "focus_lines.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 113,
+						"h": 136
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 6,
+						"w": 96,
+						"h": 121
+					},
+					"frame": {
+						"x": 1815,
+						"y": 1209,
+						"w": 96,
+						"h": 121
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "descBox.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 110,
+						"h": 132
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 110,
+						"h": 132
+					},
+					"frame": {
+						"x": 1642,
+						"y": 1625,
+						"w": 110,
+						"h": 132
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1374,8 +1224,8 @@
 						"h": 124
 					},
 					"frame": {
-						"x": 1729,
-						"y": 1471,
+						"x": 1669,
+						"y": 1335,
 						"w": 124,
 						"h": 124
 					},
@@ -1399,10 +1249,160 @@
 						"h": 122
 					},
 					"frame": {
-						"x": 1855,
-						"y": 1471,
+						"x": 1665,
+						"y": 1461,
 						"w": 122,
 						"h": 122
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "healthbar_partial.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 182,
+						"h": 182
+					},
+					"spriteSourceSize": {
+						"x": 135,
+						"y": 29,
+						"w": 42,
+						"h": 124
+					},
+					"frame": {
+						"x": 1795,
+						"y": 1335,
+						"w": 42,
+						"h": 124
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "focus_lines_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 113,
+						"h": 136
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 112,
+						"h": 127
+					},
+					"frame": {
+						"x": 1789,
+						"y": 1461,
+						"w": 112,
+						"h": 127
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "healthbar_seg_red.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 182,
+						"h": 182
+					},
+					"spriteSourceSize": {
+						"x": 142,
+						"y": 29,
+						"w": 34,
+						"h": 123
+					},
+					"frame": {
+						"x": 1839,
+						"y": 1332,
+						"w": 34,
+						"h": 123
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "focus_lines_on.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 113,
+						"h": 136
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 6,
+						"w": 96,
+						"h": 121
+					},
+					"frame": {
+						"x": 1754,
+						"y": 1590,
+						"w": 96,
+						"h": 121
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bright_rune_void.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 76,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 19,
+						"w": 43,
+						"h": 46
+					},
+					"frame": {
+						"x": 1863,
+						"y": 1161,
+						"w": 43,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "drag_arrow.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 88,
+						"h": 35
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 88,
+						"h": 35
+					},
+					"frame": {
+						"x": 1754,
+						"y": 1713,
+						"w": 88,
+						"h": 35
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1424,8 +1424,8 @@
 						"h": 73
 					},
 					"frame": {
-						"x": 1729,
-						"y": 1384,
+						"x": 1852,
+						"y": 1590,
 						"w": 46,
 						"h": 73
 					},
@@ -1449,8 +1449,8 @@
 						"h": 64
 					},
 					"frame": {
-						"x": 1979,
-						"y": 1471,
+						"x": 1875,
+						"y": 1332,
 						"w": 42,
 						"h": 64
 					},
@@ -1460,124 +1460,24 @@
 					}
 				},
 				{
-					"filename": "bright_rune_void.png",
+					"filename": "cast_circle.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 76,
-						"h": 179
+						"w": 75,
+						"h": 75
 					},
 					"spriteSourceSize": {
-						"x": 16,
-						"y": 19,
-						"w": 43,
-						"h": 46
+						"x": 0,
+						"y": 26,
+						"w": 75,
+						"h": 22
 					},
 					"frame": {
-						"x": 1995,
-						"y": 787,
-						"w": 43,
-						"h": 46
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_void.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 76,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 19,
-						"w": 43,
-						"h": 46
-					},
-					"frame": {
-						"x": 1995,
-						"y": 835,
-						"w": 43,
-						"h": 46
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_void_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 76,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 19,
-						"w": 43,
-						"h": 46
-					},
-					"frame": {
-						"x": 1995,
-						"y": 883,
-						"w": 43,
-						"h": 46
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_unload.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 76,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 18,
-						"w": 51,
-						"h": 50
-					},
-					"frame": {
-						"x": 1222,
-						"y": 1563,
-						"w": 51,
-						"h": 50
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_unload_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 76,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 18,
-						"w": 51,
-						"h": 50
-					},
-					"frame": {
-						"x": 1603,
-						"y": 1330,
-						"w": 51,
-						"h": 50
+						"x": 606,
+						"y": 549,
+						"w": 75,
+						"h": 22
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1599,8 +1499,8 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1275,
-						"y": 1563,
+						"x": 225,
+						"y": 1674,
 						"w": 57,
 						"h": 42
 					},
@@ -1610,24 +1510,49 @@
 					}
 				},
 				{
-					"filename": "healthbar_partial_half.png",
+					"filename": "bright_rune_unload.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 182,
-						"h": 182
+						"w": 76,
+						"h": 179
 					},
 					"spriteSourceSize": {
-						"x": 135,
-						"y": 89,
-						"w": 42,
-						"h": 64
+						"x": 13,
+						"y": 18,
+						"w": 51,
+						"h": 50
 					},
 					"frame": {
-						"x": 1979,
-						"y": 1537,
-						"w": 42,
-						"h": 64
+						"x": 221,
+						"y": 1718,
+						"w": 51,
+						"h": 50
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_unload.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 76,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 18,
+						"w": 51,
+						"h": 50
+					},
+					"frame": {
+						"x": 274,
+						"y": 1718,
+						"w": 51,
+						"h": 50
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1649,10 +1574,35 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1729,
-						"y": 1597,
+						"x": 284,
+						"y": 1674,
 						"w": 57,
 						"h": 42
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_unload_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 76,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 18,
+						"w": 51,
+						"h": 50
+					},
+					"frame": {
+						"x": 327,
+						"y": 1718,
+						"w": 51,
+						"h": 50
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1674,184 +1624,9 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1788,
-						"y": 1597,
+						"x": 343,
+						"y": 1674,
 						"w": 57,
-						"h": 42
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "healthbar_seg_red_quarter.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 182,
-						"h": 182
-					},
-					"spriteSourceSize": {
-						"x": 143,
-						"y": 118,
-						"w": 28,
-						"h": 34
-					},
-					"frame": {
-						"x": 1181,
-						"y": 1436,
-						"w": 28,
-						"h": 34
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "healthbar_seg_red_half.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 182,
-						"h": 182
-					},
-					"spriteSourceSize": {
-						"x": 143,
-						"y": 89,
-						"w": 33,
-						"h": 63
-					},
-					"frame": {
-						"x": 1995,
-						"y": 931,
-						"w": 33,
-						"h": 63
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "healthbar_seg_red_eith_flash.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 182,
-						"h": 182
-					},
-					"spriteSourceSize": {
-						"x": 136,
-						"y": 122,
-						"w": 36,
-						"h": 37
-					},
-					"frame": {
-						"x": 1275,
-						"y": 1607,
-						"w": 36,
-						"h": 37
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "bright_rune_strike.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 74,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 17,
-						"y": 19,
-						"w": 40,
-						"h": 45
-					},
-					"frame": {
-						"x": 1990,
-						"y": 996,
-						"w": 40,
-						"h": 45
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_strike.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 74,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 17,
-						"y": 19,
-						"w": 40,
-						"h": 45
-					},
-					"frame": {
-						"x": 1990,
-						"y": 1043,
-						"w": 40,
-						"h": 45
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_strike_glow.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 74,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 17,
-						"y": 19,
-						"w": 40,
-						"h": 45
-					},
-					"frame": {
-						"x": 1990,
-						"y": 1090,
-						"w": 40,
-						"h": 45
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_protect.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 77,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 22,
-						"w": 47,
-						"h": 42
-					},
-					"frame": {
-						"x": 1990,
-						"y": 1137,
-						"w": 47,
 						"h": 42
 					},
 					"anchor": {
@@ -1874,85 +1649,10 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1349,
-						"y": 1542,
+						"x": 380,
+						"y": 1726,
 						"w": 51,
 						"h": 42
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "bright_rune_protect.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 77,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 21,
-						"w": 51,
-						"h": 45
-					},
-					"frame": {
-						"x": 1402,
-						"y": 1542,
-						"w": 51,
-						"h": 45
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "healthbar_seg_red_eighth.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 182,
-						"h": 182
-					},
-					"spriteSourceSize": {
-						"x": 143,
-						"y": 131,
-						"w": 20,
-						"h": 21
-					},
-					"frame": {
-						"x": 1307,
-						"y": 839,
-						"w": 20,
-						"h": 21
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "cast_triangle.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 13,
-						"h": 25
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 13,
-						"h": 25
-					},
-					"frame": {
-						"x": 1334,
-						"y": 1563,
-						"w": 13,
-						"h": 25
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1974,8 +1674,8 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 826,
-						"y": 511,
+						"x": 433,
+						"y": 1726,
 						"w": 51,
 						"h": 42
 					},
@@ -1999,9 +1699,59 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1349,
-						"y": 1586,
+						"x": 486,
+						"y": 1726,
 						"w": 51,
+						"h": 42
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bright_rune_protect.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 77,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 21,
+						"w": 51,
+						"h": 45
+					},
+					"frame": {
+						"x": 1852,
+						"y": 1665,
+						"w": 51,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_protect.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 77,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 22,
+						"w": 47,
+						"h": 42
+					},
+					"frame": {
+						"x": 539,
+						"y": 1726,
+						"w": 47,
 						"h": 42
 					},
 					"anchor": {
@@ -2024,10 +1774,35 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1402,
-						"y": 1589,
+						"x": 588,
+						"y": 1726,
 						"w": 47,
 						"h": 42
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_void.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 76,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 19,
+						"w": 43,
+						"h": 46
+					},
+					"frame": {
+						"x": 1875,
+						"y": 1398,
+						"w": 43,
+						"h": 46
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2049,8 +1824,8 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1990,
-						"y": 1181,
+						"x": 637,
+						"y": 1726,
 						"w": 44,
 						"h": 42
 					},
@@ -2074,8 +1849,8 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1983,
-						"y": 1225,
+						"x": 683,
+						"y": 1726,
 						"w": 44,
 						"h": 42
 					},
@@ -2099,60 +1874,10 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1983,
-						"y": 1269,
+						"x": 729,
+						"y": 1726,
 						"w": 44,
 						"h": 42
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "bright_rune_mind.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 76,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 22,
-						"y": 21,
-						"w": 33,
-						"h": 44
-					},
-					"frame": {
-						"x": 1847,
-						"y": 1597,
-						"w": 33,
-						"h": 44
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "drag_circle.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 40,
-						"h": 40
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 40,
-						"h": 40
-					},
-					"frame": {
-						"x": 1882,
-						"y": 1595,
-						"w": 40,
-						"h": 40
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2174,60 +1899,10 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1924,
-						"y": 1595,
+						"x": 775,
+						"y": 1726,
 						"w": 38,
 						"h": 42
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "border.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 15,
-						"h": 15
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 15,
-						"h": 14
-					},
-					"frame": {
-						"x": 2023,
-						"y": 1471,
-						"w": 15,
-						"h": 14
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "rune_mind.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 76,
-						"h": 179
-					},
-					"spriteSourceSize": {
-						"x": 22,
-						"y": 21,
-						"w": 33,
-						"h": 44
-					},
-					"frame": {
-						"x": 1451,
-						"y": 1589,
-						"w": 33,
-						"h": 44
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2249,8 +1924,8 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1486,
-						"y": 1584,
+						"x": 815,
+						"y": 1726,
 						"w": 38,
 						"h": 42
 					},
@@ -2274,8 +1949,8 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 1526,
-						"y": 1584,
+						"x": 855,
+						"y": 1726,
 						"w": 38,
 						"h": 42
 					},
@@ -2285,24 +1960,74 @@
 					}
 				},
 				{
-					"filename": "rune_mind_glow.png",
+					"filename": "drag_circle.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 40,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 40,
+						"h": 40
+					},
+					"frame": {
+						"x": 895,
+						"y": 1726,
+						"w": 40,
+						"h": 40
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "healthbar_seg_red_eith_flash.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 76,
-						"h": 179
+						"w": 182,
+						"h": 182
 					},
 					"spriteSourceSize": {
-						"x": 22,
-						"y": 21,
-						"w": 33,
-						"h": 44
+						"x": 136,
+						"y": 122,
+						"w": 36,
+						"h": 37
 					},
 					"frame": {
-						"x": 1566,
-						"y": 1584,
-						"w": 33,
-						"h": 44
+						"x": 937,
+						"y": 1726,
+						"w": 36,
+						"h": 37
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "healthbar_seg_red_quarter.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 182,
+						"h": 182
+					},
+					"spriteSourceSize": {
+						"x": 143,
+						"y": 118,
+						"w": 28,
+						"h": 34
+					},
+					"frame": {
+						"x": 975,
+						"y": 1726,
+						"w": 28,
+						"h": 34
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2324,9 +2049,234 @@
 						"h": 18
 					},
 					"frame": {
-						"x": 429,
+						"x": 433,
 						"y": 1041,
 						"w": 23,
+						"h": 18
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_void_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 76,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 19,
+						"w": 43,
+						"h": 46
+					},
+					"frame": {
+						"x": 403,
+						"y": 1657,
+						"w": 43,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "healthbar_partial_half.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 182,
+						"h": 182
+					},
+					"spriteSourceSize": {
+						"x": 135,
+						"y": 89,
+						"w": 42,
+						"h": 64
+					},
+					"frame": {
+						"x": 448,
+						"y": 1657,
+						"w": 42,
+						"h": 64
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "healthbar_seg_red_half.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 182,
+						"h": 182
+					},
+					"spriteSourceSize": {
+						"x": 143,
+						"y": 89,
+						"w": 33,
+						"h": 63
+					},
+					"frame": {
+						"x": 492,
+						"y": 1657,
+						"w": 33,
+						"h": 63
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bright_rune_strike.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 74,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 19,
+						"w": 40,
+						"h": 45
+					},
+					"frame": {
+						"x": 527,
+						"y": 1657,
+						"w": 40,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_strike.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 74,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 19,
+						"w": 40,
+						"h": 45
+					},
+					"frame": {
+						"x": 569,
+						"y": 1657,
+						"w": 40,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_strike_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 74,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 19,
+						"w": 40,
+						"h": 45
+					},
+					"frame": {
+						"x": 611,
+						"y": 1657,
+						"w": 40,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bright_rune_mind.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 76,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 21,
+						"w": 33,
+						"h": 44
+					},
+					"frame": {
+						"x": 653,
+						"y": 1657,
+						"w": 33,
+						"h": 44
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_mind.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 76,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 21,
+						"w": 33,
+						"h": 44
+					},
+					"frame": {
+						"x": 688,
+						"y": 1657,
+						"w": 33,
+						"h": 44
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "healthbar_sliver.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 182,
+						"h": 182
+					},
+					"spriteSourceSize": {
+						"x": 143,
+						"y": 135,
+						"w": 17,
+						"h": 18
+					},
+					"frame": {
+						"x": 1907,
+						"y": 1035,
+						"w": 17,
 						"h": 18
 					},
 					"anchor": {
@@ -2349,34 +2299,9 @@
 						"h": 18
 					},
 					"frame": {
-						"x": 1900,
-						"y": 394,
+						"x": 1754,
+						"y": 1750,
 						"w": 22,
-						"h": 18
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "healthbar_sliver.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 182,
-						"h": 182
-					},
-					"spriteSourceSize": {
-						"x": 143,
-						"y": 135,
-						"w": 17,
-						"h": 18
-					},
-					"frame": {
-						"x": 815,
-						"y": 1435,
-						"w": 17,
 						"h": 18
 					},
 					"anchor": {
@@ -2399,8 +2324,8 @@
 						"h": 15
 					},
 					"frame": {
-						"x": 815,
-						"y": 1455,
+						"x": 1516,
+						"y": 1555,
 						"w": 16,
 						"h": 15
 					},
@@ -2424,10 +2349,110 @@
 						"h": 15
 					},
 					"frame": {
-						"x": 815,
-						"y": 1455,
+						"x": 1516,
+						"y": 1555,
 						"w": 16,
 						"h": 15
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "border.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 15,
+						"h": 15
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 15,
+						"h": 14
+					},
+					"frame": {
+						"x": 1,
+						"y": 1754,
+						"w": 15,
+						"h": 14
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "healthbar_seg_red_eighth.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 182,
+						"h": 182
+					},
+					"spriteSourceSize": {
+						"x": 143,
+						"y": 131,
+						"w": 20,
+						"h": 21
+					},
+					"frame": {
+						"x": 1302,
+						"y": 1252,
+						"w": 20,
+						"h": 21
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rune_mind_glow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 76,
+						"h": 179
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 21,
+						"w": 33,
+						"h": 44
+					},
+					"frame": {
+						"x": 1844,
+						"y": 1713,
+						"w": 33,
+						"h": 44
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "cast_triangle.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 13,
+						"h": 25
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 25
+					},
+					"frame": {
+						"x": 723,
+						"y": 1444,
+						"w": 13,
+						"h": 25
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2449,8 +2474,8 @@
 						"h": 3
 					},
 					"frame": {
-						"x": 1990,
-						"y": 987,
+						"x": 1660,
+						"y": 1498,
 						"w": 3,
 						"h": 3
 					},
@@ -2474,8 +2499,8 @@
 						"h": 3
 					},
 					"frame": {
-						"x": 1990,
-						"y": 987,
+						"x": 1660,
+						"y": 1498,
 						"w": 3,
 						"h": 3
 					},
@@ -2499,110 +2524,10 @@
 						"h": 3
 					},
 					"frame": {
-						"x": 1990,
-						"y": 987,
+						"x": 1660,
+						"y": 1498,
 						"w": 3,
 						"h": 3
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "orig_cast_disabled.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 2,
-						"h": 2
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 2,
-						"h": 2
-					},
-					"frame": {
-						"x": 882,
-						"y": 1010,
-						"w": 2,
-						"h": 2
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "orig_cast_hover.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 2,
-						"h": 2
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 2,
-						"h": 2
-					},
-					"frame": {
-						"x": 882,
-						"y": 438,
-						"w": 2,
-						"h": 2
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "orig_cast_normal.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 2,
-						"h": 2
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 2,
-						"h": 2
-					},
-					"frame": {
-						"x": 454,
-						"y": 1041,
-						"w": 2,
-						"h": 2
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "orig_usage_disabled.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 4,
-						"h": 4
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 4,
-						"h": 4
-					},
-					"frame": {
-						"x": 1044,
-						"y": 427,
-						"w": 4,
-						"h": 4
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2624,110 +2549,10 @@
 						"h": 3
 					},
 					"frame": {
-						"x": 1044,
-						"y": 433,
+						"x": 1660,
+						"y": 1503,
 						"w": 3,
 						"h": 3
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "orig_usage_drag.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 4,
-						"h": 4
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 4,
-						"h": 4
-					},
-					"frame": {
-						"x": 523,
-						"y": 1637,
-						"w": 4,
-						"h": 4
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "orig_usage_hover.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 4,
-						"h": 4
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 4,
-						"h": 4
-					},
-					"frame": {
-						"x": 2031,
-						"y": 1,
-						"w": 4,
-						"h": 4
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "orig_usage_normal.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 4,
-						"h": 4
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 4,
-						"h": 4
-					},
-					"frame": {
-						"x": 1786,
-						"y": 1138,
-						"w": 4,
-						"h": 4
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "orig_cast_press.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 2,
-						"h": 2
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 2,
-						"h": 2
-					},
-					"frame": {
-						"x": 1990,
-						"y": 992,
-						"w": 2,
-						"h": 2
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2749,8 +2574,8 @@
 						"h": 3
 					},
 					"frame": {
-						"x": 1049,
-						"y": 433,
+						"x": 1660,
+						"y": 1508,
 						"w": 3,
 						"h": 3
 					},
@@ -2774,8 +2599,8 @@
 						"h": 3
 					},
 					"frame": {
-						"x": 1939,
-						"y": 1317,
+						"x": 1660,
+						"y": 1513,
 						"w": 3,
 						"h": 3
 					},
@@ -2799,10 +2624,210 @@
 						"h": 3
 					},
 					"frame": {
-						"x": 1772,
-						"y": 787,
+						"x": 1660,
+						"y": 1518,
 						"w": 3,
 						"h": 3
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "orig_usage_disabled.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 4,
+						"h": 4
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 4,
+						"h": 4
+					},
+					"frame": {
+						"x": 1048,
+						"y": 433,
+						"w": 4,
+						"h": 4
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "orig_usage_drag.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 4,
+						"h": 4
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 4,
+						"h": 4
+					},
+					"frame": {
+						"x": 1912,
+						"y": 1,
+						"w": 4,
+						"h": 4
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "orig_usage_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 4,
+						"h": 4
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 4,
+						"h": 4
+					},
+					"frame": {
+						"x": 1302,
+						"y": 866,
+						"w": 4,
+						"h": 4
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "orig_usage_normal.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 4,
+						"h": 4
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 4,
+						"h": 4
+					},
+					"frame": {
+						"x": 1613,
+						"y": 746,
+						"w": 4,
+						"h": 4
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "orig_cast_disabled.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 2,
+						"h": 2
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 2,
+						"h": 2
+					},
+					"frame": {
+						"x": 1385,
+						"y": 1555,
+						"w": 2,
+						"h": 2
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "orig_cast_hover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 2,
+						"h": 2
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 2,
+						"h": 2
+					},
+					"frame": {
+						"x": 1534,
+						"y": 1405,
+						"w": 2,
+						"h": 2
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "orig_cast_normal.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 2,
+						"h": 2
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 2,
+						"h": 2
+					},
+					"frame": {
+						"x": 1665,
+						"y": 1371,
+						"w": 2,
+						"h": 2
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "orig_cast_press.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 2,
+						"h": 2
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 2,
+						"h": 2
+					},
+					"frame": {
+						"x": 1839,
+						"y": 1457,
+						"w": 2,
+						"h": 2
 					},
 					"anchor": {
 						"x": 0.5,
@@ -2815,6 +2840,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:9ca3ae82f39a9cd0142b97d1141ea284:1cf16839d0c9e8cf90769f73afa67053:c8df78951edfca457722a32a56a2d448$"
+		"smartupdate": "$TexturePacker:SmartUpdate:c9f55fee6ad35095d803295f9b8534eb:51f54294872c36af236bf71f69571a95:c8df78951edfca457722a32a56a2d448$"
 	}
 }

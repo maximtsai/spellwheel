@@ -388,7 +388,7 @@ class SpellManager {
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage, true, undefined, 'matter');
-                    messageBus.publish('setPauseDur', isExtraBuff ? 25 : 15);
+                    messageBus.publish('setPauseDur', isExtraBuff ? 24 : 14);
                     rockObj.bg.visible = false;
                     poolManager.returnItemToPool(rockObj, 'rock');
 
@@ -438,8 +438,8 @@ class SpellManager {
         this.scene.tweens.add({
             targets: brickObj,
             duration: 400 + 50 * spellMult,
-            scaleX: 1.05 + 0.015 * spellMult,
-            scaleY: 1.05 + 0.015 * spellMult,
+            scaleX: 1.075 + 0.016 * spellMult,
+            scaleY: 1.075 + 0.016 * spellMult,
             alpha: 0.8,
             rotation: 0,
             ease: 'Cubic.easeIn',
@@ -452,7 +452,7 @@ class SpellManager {
                     alpha: 0.7,
                     ease: 'Quad.easeOut'
                 });
-                let scaleAmt = 0.994 + 0.006 * Math.sqrt(spellMult);
+                let scaleAmt = 1.01 + 0.0075 * Math.sqrt(spellMult);
                 brickObj.origScale = scaleAmt;
                 this.scene.tweens.add({
                     targets: brickObj,
@@ -476,7 +476,7 @@ class SpellManager {
             }
         });
         let totalProtection = spellMult * protectionAmt;
-        let goalScale = 1.15 + totalProtection * 0.1;
+        let goalScale = 1.15 + totalProtection * 0.05;
         let param = {
             duration: 400,
             ease: 'Quad.easeOut',
@@ -487,8 +487,8 @@ class SpellManager {
         let param2 = {
             alpha: 0,
             duration: 1600,
-            scaleX: goalScale * 0.95,
-            scaleY: goalScale * 0.95
+            scaleX: goalScale * 0.96,
+            scaleY: goalScale * 0.96
         }
 
         messageBus.publish('animateArmorNum', gameConsts.halfWidth, globalObjects.player.getY() - 50, "+" + totalProtection + " THORNS", goalScale, param, param2);
@@ -1042,7 +1042,7 @@ class SpellManager {
                                         let idxNum = listLength - clockHandsList.length;
 
                                         let fireHand = clockHandsList.pop();
-                                        let goalScale = clockBGAttack.scaleX * 1.25 + 0.1;
+                                        let goalScale = clockBGAttack.scaleX * 1.1 + 0.1;
 
                                         let delayAmt = clockHandsList.length * delayInterval;
                                         this.scene.tweens.add({
@@ -1060,16 +1060,16 @@ class SpellManager {
                                                 flashRed.rotation = fireHand.rotation + Math.PI * 0.5;
                                                 this.scene.tweens.add({
                                                     targets: flashRed,
-                                                    scaleX: goalScale * 4.5,
-                                                    scaleY: goalScale * 11,
+                                                    scaleX: goalScale * 5,
+                                                    scaleY: goalScale * 12.5,
                                                     ease: 'Quart.easeIn',
                                                     alpha: 1.2,
                                                     duration: 65,
                                                     oncomplete: () => {
                                                         this.scene.tweens.add({
                                                             targets: flashRed,
-                                                            scaleX: goalScale * 0.75,
-                                                            scaleY: goalScale * 2,
+                                                            scaleX: goalScale * 0.85,
+                                                            scaleY: goalScale * 2.25,
                                                             ease: 'Cubic.easeOut',
                                                             duration: 150,
                                                             onComplete: () => {

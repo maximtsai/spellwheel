@@ -388,7 +388,7 @@ class SpellManager {
                     this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage, true, undefined, 'matter');
-                    messageBus.publish('setPauseDur', isExtraBuff ? 25 : 15);
+                    messageBus.publish('setPauseDur', isExtraBuff ? 24 : 14);
                     rockObj.bg.visible = false;
                     poolManager.returnItemToPool(rockObj, 'rock');
 
@@ -1042,7 +1042,7 @@ class SpellManager {
                                         let idxNum = listLength - clockHandsList.length;
 
                                         let fireHand = clockHandsList.pop();
-                                        let goalScale = clockBGAttack.scaleX * 1.25 + 0.1;
+                                        let goalScale = clockBGAttack.scaleX * 1.1 + 0.1;
 
                                         let delayAmt = clockHandsList.length * delayInterval;
                                         this.scene.tweens.add({
@@ -1060,16 +1060,16 @@ class SpellManager {
                                                 flashRed.rotation = fireHand.rotation + Math.PI * 0.5;
                                                 this.scene.tweens.add({
                                                     targets: flashRed,
-                                                    scaleX: goalScale * 4.5,
-                                                    scaleY: goalScale * 11,
+                                                    scaleX: goalScale * 5,
+                                                    scaleY: goalScale * 12.5,
                                                     ease: 'Quart.easeIn',
                                                     alpha: 1.2,
                                                     duration: 65,
                                                     oncomplete: () => {
                                                         this.scene.tweens.add({
                                                             targets: flashRed,
-                                                            scaleX: goalScale * 0.75,
-                                                            scaleY: goalScale * 2,
+                                                            scaleX: goalScale * 0.85,
+                                                            scaleY: goalScale * 2.25,
                                                             ease: 'Cubic.easeOut',
                                                             duration: 150,
                                                             onComplete: () => {

@@ -122,6 +122,7 @@
                          clearDeathFog();
                      }
                  })
+                 gameVars.hideCheatConst = -230;
                  PhaserScene.tweens.add({
                      targets: whiteFlood,
                      alpha: 1,
@@ -144,6 +145,7 @@
                              }
                          });
                          globalObjects.postFightScreen.clearGloom();
+
                          PhaserScene.tweens.add({
                              targets: whiteFlood,
                              alpha: 0,

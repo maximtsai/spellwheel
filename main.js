@@ -1,5 +1,5 @@
 let isMobile = testMobile();
-let gameVersion = "v1.00";
+let gameVersion = "v1.01";
 let pixelWidth = isMobile ? 594 : 604
 let pixelHeight = isMobile ? 810 : 775
 handleBorders();

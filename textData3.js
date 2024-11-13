@@ -317,7 +317,7 @@ let textData3 = {
         "jp": ""
     },
     "death5demob": {
-        "en_us": "BUT FOR NOW THINGS\nWILL HAVE TO END HERE.",
+        "en_us": "BUT THINGS MUST END\nHERE, FOR NOW.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",

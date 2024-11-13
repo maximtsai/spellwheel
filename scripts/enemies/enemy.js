@@ -62,6 +62,7 @@ class Enemy {
         this.destructibles = [];
         this.health = 1000;
         this.chargeBarOffsetY = 0;
+        this.chargeBarHeightOffset = 0;
         this.angerThreshold = 17;
         this.shield = 0;
         this.shieldOffsetY = 0;
@@ -221,14 +222,14 @@ class Enemy {
         this.chargeBarReady2 = this.scene.add.image(x, mobileY, 'enemies', 'ready_glow.png').setAlpha(0).setDepth(9).setBlendMode(Phaser.BlendModes.ADD);
 
         this.chargeBarOutline = this.scene.add.image(x, mobileY, 'whitePixel');
-        this.chargeBarOutline.setScale(chargeBarLength + 4, isMobile ? 14 : 11);
+        this.chargeBarOutline.setScale(chargeBarLength + 4, (isMobile ? 14 : 11) + this.chargeBarHeightOffset);
         this.chargeBarOutline.setOrigin(0.5, 0.5);
         this.chargeBarOutline.visible = false;
         this.chargeBarOutline.alpha = 0.4;
         this.chargeBarOutline.setDepth(9);
 
         this.chargeBarMax = this.scene.add.image(x, mobileY, 'pixels', 'black_blue_pixel.png');
-        this.chargeBarMax.setScale(chargeBarLength + 2, isMobile ? 12 : 10);
+        this.chargeBarMax.setScale(chargeBarLength + 2, (isMobile ? 12 : 10) + this.chargeBarHeightOffset);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;
         this.chargeBarMax.setDepth(9);

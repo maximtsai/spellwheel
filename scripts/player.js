@@ -1374,7 +1374,7 @@ class Player {
                         });
                         let textObj = deathRetryButton.addText(getLangText('retry'), {fontFamily: 'germania', fontSize: 40, color: '#FFFFFF', align: 'center'});
                         deathRetryButton.setDepth(-15);
-                        textObj.setDepth(200).setStroke('#000000', 4);
+                        textObj.setDepth(200).setStroke('#000000', 5);
                     }
                 });
             }

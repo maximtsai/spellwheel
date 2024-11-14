@@ -678,7 +678,7 @@ let textData = {
         "jp": ""
     },
     "void_tut_strike_desc": {
-        "en_us": "An attack that hits 3 times\nafter a delay and deals\npercentage health damage.\nScales incredibly well with\ndamage enhancements.",
+        "en_us": "An attack that uses up all of\nyour strike runes to hit\nmultiple times. Each attack\ndamages a percent of the\nenemy's current health.",
         "fr": "Une attaque qui frappe trois\nfois après un délai et inflige\ndes dégâts en pourcentage\nde santé.",
         "zh_tw": "延遲後發動 3 次攻擊,每次攻擊\n造成百分比的生命傷害。\n\n加強攻擊力的法術會三倍增加\n攻擊威力。",
         "zh_cn": "延迟后发动 3 次攻击,每次攻击\n造成百分比的生命伤害。\n\n加强攻击力的法术会三倍增加\n攻击威力。",

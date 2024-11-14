@@ -299,8 +299,8 @@
          sdkGameplayStop();
          globalObjects.magicCircle.disableMovement();
          let banner = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
-         let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let continueText = this.addText(gameConsts.width - 15, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 20}).setAlpha(0).setOrigin(1, 0.5).setAlign('right').setDepth(9998);
+         let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'complete.png').setScale(0.95).setDepth(9998).setAlpha(0);
+         let continueText = this.addText(gameConsts.halfWidth, gameConsts.halfHeight + 1, 'FULL PERFORMANCE ON STEAM', {fontFamily: 'garamondmax', color: '#F0F0F0', fontSize: 18}).setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998);
 
          this.addTween({
              targets: banner,
@@ -315,9 +315,12 @@
              duration: 500,
          });
          playSound('victory_false');
-         this.addTimeout(() => {
-             continueText.alpha = 1;
-         }, 1000);
+         this.addTween({
+             delay: 500,
+             targets: continueText,
+             duration: 650,
+             alpha: 1
+         })
 
          this.addTween({
              targets: victoryText,

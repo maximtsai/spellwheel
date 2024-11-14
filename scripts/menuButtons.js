@@ -1655,7 +1655,6 @@ function showWishlistPage() {
 }
 
 function closeLevelSelectScreen() {
-    sdkGameplayStart();
     hideGlobalClickBlocker();
     globalObjects.encyclopedia.showButton();
     globalObjects.options.showButton();

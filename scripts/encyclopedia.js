@@ -56,6 +56,9 @@ class Encyclopedia {
         if (this.hidingAnim1) {
             this.hidingAnim1.stop();
         }
+        if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
+            sdkGameplayStop();
+        }
         if (!this.darkenBG) {
             this.darkenBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(this.baseDepth - 1);
             this.darkenBG.setScale(500, 500);
@@ -638,7 +641,9 @@ class Encyclopedia {
             return false;
         }
         this.canClose = false;
-
+        if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
+            sdkGameplayStart();
+        }
         globalObjects.encyclopedia.showButton();
         globalObjects.options.showButton();
         messageBus.publish('unpauseGame');

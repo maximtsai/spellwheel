@@ -72,7 +72,9 @@ class Options {
             console.log("fail open because", this.canBeClicked, this.opened, this.canClose);
             return;
         }
-        sdkGameplayStop();
+        if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
+            sdkGameplayStop();
+        }
         this.opened = true;
         addPopup(this.hideOptions.bind(this));
         globalObjects.encyclopedia.hideButton();
@@ -139,6 +141,7 @@ class Options {
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.isDestroyed) {
                         this.popupElements = showYesNoPopup(getLangText('exit'), getLangText('back'), getLangText('main_menu'), getLangText('exit_long'), () => {
                             this.hideOptions();
+                            sdkGameplayStop();
                             let bgBlackout = getBackgroundBlackout();
                             bgBlackout.alpha = 0;
                             globalObjects.player.revive();
@@ -212,6 +215,9 @@ class Options {
                 },
                 onMouseUp: () => {
                     this.hideOptions();
+                    if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
+                        sdkGameplayStart();
+                    }
                 }
             });
             this.resumeBtn.addText(getLangText('resume'), {fontFamily: 'germania', fontSize: 28, color: '#000000', align: 'center'});
@@ -355,7 +361,10 @@ class Options {
                     }
                 },
                 onMouseUp: () => {
-                    this.hideOptions()
+                    this.hideOptions();
+                    if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
+                        sdkGameplayStart();
+                    }
                 }
             });
             this.closeButton.setDepth(this.baseDepth + 10);

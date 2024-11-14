@@ -43,10 +43,6 @@
         PhaserScene.tweens.timeScale = amt;
         PhaserScene.time.timeScale = amt;
         PhaserScene.anims.globalTimeScale = amt;
-
-        if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
-            sdkGameplayStop()
-        }
     }
 
     setUnpause() {
@@ -56,10 +52,6 @@
         PhaserScene.tweens.timeScale = gameVars.gameManualSlowSpeed || 1;
         PhaserScene.time.timeScale = gameVars.gameManualSlowSpeed || 1;
         PhaserScene.anims.globalTimeScale = gameVars.gameManualSlowSpeed || 1;
-
-        if (globalObjects.currentEnemy && !globalObjects.currentEnemy.dead) {
-            sdkGameplayStart()
-        }
     }
 
     setGameSlow(amt) {

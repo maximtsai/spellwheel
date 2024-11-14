@@ -448,7 +448,6 @@
                              rotation: "+=0.5",
                              duration: 1000,
                          });
-                         this.timeSinceLastAttacked = -30;
                          this.addTween({
                              targets: shinePattern,
                              alpha: 0,
@@ -578,7 +577,7 @@
              [
                  {
                      name: "|6x2",
-                     chargeAmt: 400,
+                     chargeAmt: 500,
                      damage: 6,
                      attackTimes: 2,
                      prepareSprite: 'super_dummy_swinging.png',

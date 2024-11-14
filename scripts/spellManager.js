@@ -2445,8 +2445,127 @@ class SpellManager {
         let allStrikeObjects = [];
         let isNormalDir = Math.random() < 0.6 ? 0 : 1;
 
+        let voidSpot = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY() - 240, 'spells', 'voidspot.png').setDepth(9993).setScale(0.1);
+        voidSpot.currAnim = this.scene.tweens.add({
+            targets: voidSpot,
+            rotation: "+=1.5",
+            duration: 500,
+            scaleX: 0.45,
+            scaleY: 0.45,
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                voidSpot.currAnim = this.scene.tweens.add({
+                    targets: voidSpot,
+                    rotation: "+=6.2832",
+                    duration: 20000,
+                });
+            }
+        });
+        let voidText = PhaserScene.add.bitmapText(voidSpot.x, voidSpot.y - 4, 'void', '1', 66, 1).setDepth(voidSpot.depth).setOrigin(0.47, 0.5).setScale(0.1)
+        voidText.currAnim = this.scene.tweens.add({
+            targets: voidText,
+            duration: 500,
+            scaleX: 0.45,
+            scaleY: 0.45,
+            ease: 'Back.easeOut',
+        });
+        let mergeDur = 400 + Math.floor(Math.sqrt(numAdditionalAttacks * 20));
+        let delayAmt = mergeDur / numAdditionalAttacks;
+        let voidAttackCount = 1;
+
+        for (let i = 1; i < numAdditionalAttacks; i++) {
+            setTimeout(() => {
+                voidAttackCount++;
+                voidText.setText(voidAttackCount);
+                let goalScale = 0.4 + voidAttackCount * 0.03 + Math.sqrt(voidAttackCount) * 0.05;
+
+                PhaserScene.tweens.add({
+                    targets: voidSpot,
+                    scaleX: goalScale,
+                    scaleY: goalScale,
+                    duration: 300,
+                    ease: 'Quart.easeOut',
+                })
+
+                PhaserScene.tweens.add({
+                    targets: voidText,
+                    scaleX: goalScale + 0.15,
+                    scaleY: goalScale + 0.15,
+                    duration: 200,
+                    ease: 'Quart.easeOut',
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: voidText,
+                            easeParams: [1.5],
+                            scaleX: goalScale,
+                            scaleY: goalScale,
+                            duration: 150,
+                            ease: 'Back.easeOut',
+                            onComplete: () => {
+
+                            }
+                        })
+                    }
+                })
+            }, delayAmt * i)
+        }
+
+        let numStrikes = globalObjects.magicCircle.consumeAllStrikes((rune, idx) => {
+            let delayAmt = idx * 20;
+            let durAmt = 400 + 25 * idx;
+            PhaserScene.tweens.add({
+                delay: delayAmt,
+                targets: rune,
+                alpha: 0,
+                ease: 'Cubic.easeIn',
+                duration: durAmt,
+            })
+            PhaserScene.tweens.add({
+                delay: delayAmt,
+                targets: rune,
+                x: voidSpot.x,
+                y: voidSpot.y,
+                ease: 'Quad.easeIn',
+                duration: durAmt,
+                onComplete: () => {
+                    voidAttackCount++;
+                    voidText.setText(voidAttackCount)
+                    let goalScale = 0.4 + voidAttackCount * 0.03 + Math.sqrt(voidAttackCount) * 0.05;
+                    PhaserScene.tweens.add({
+                        targets: voidSpot,
+                        scaleX: goalScale,
+                        scaleY: goalScale,
+                        duration: 300,
+                        ease: 'Quart.easeOut',
+                    })
+                    PhaserScene.tweens.add({
+                        targets: voidText,
+                        easeParams: [4],
+                        scaleX: goalScale + 0.15,
+                        scaleY: goalScale + 0.15,
+                        duration: 200,
+                        ease: 'Quart.easeOut',
+                        onComplete: () => {
+                            PhaserScene.tweens.add({
+                                targets: voidText,
+                                easeParams: [1.5],
+                                scaleX: goalScale,
+                                scaleY: goalScale,
+                                duration: 150,
+                                ease: 'Back.easeOut',
+                            })
+                        }
+                    })
+                }
+            })
+        });
+
+        let waitDur = numStrikes * 50 + 415;
+        numStrikes += numAdditionalAttacks;
+
+
         // First build the strike objects
-        for (let i = 0; i < numAdditionalAttacks; i++) {
+        for (let i = 0; i < numStrikes; i++) {
             let isLeftStrike = i % 2 == isNormalDir;
             let xPos = gameConsts.halfWidth + (isLeftStrike ? -10 : 10);
             let yPos = globalObjects.player.getY() - 145;
@@ -2460,19 +2579,35 @@ class SpellManager {
         }
 
         let yOffset = Math.floor(additionalDamage * 0.25);
-        let isPowerful = additionalDamage * numAdditionalAttacks + additionalDamage * 3 > 58;
+        let isPowerful = additionalDamage * numStrikes + additionalDamage * 3 > 58;
         for (let i = 0; i < allStrikeObjects.length; i++) {
+            let individualStrikeDelay = waitDur + i * 165;
             let currStrikeObj = allStrikeObjects[i];
             let isLeftStrike = i % 2 == isNormalDir;
             let scaleXMult = isLeftStrike ? 1 : -1;
             this.scene.tweens.add({
-                delay: i * 165,
+                delay: individualStrikeDelay,
                 y: "+=" + yOffset,
                 targets: currStrikeObj,
                 rotation: currStrikeObj.rotation * 0.9,
                 duration: 500,
                 ease: 'Cubic.easeOut',
                 onStart: () => {
+                    if (i === 0) {
+                        PhaserScene.tweens.add({
+                            delay: 900,
+                            targets: [voidSpot, voidText],
+                            scaleX: 0,
+                            scaleY: 0,
+                            duration: 400,
+                            alpha: 0,
+                            ease: 'Quart.easeIn',
+                            onComplete: () => {
+                                voidSpot.destroy();
+                                voidText.destroy();
+                            }
+                        });
+                    }
                     if (isLeftStrike) {
                         playSound('meat_click_left');
                     } else {
@@ -2481,7 +2616,7 @@ class SpellManager {
                 }
             });
             this.scene.tweens.add({
-                delay: i * 165,
+                delay: individualStrikeDelay,
                 targets: currStrikeObj,
                 scaleX: (0.82 + additionalDamage * 0.0022) * scaleXMult,
                 scaleY: (0.82 + additionalDamage * 0.0022),
@@ -2505,8 +2640,8 @@ class SpellManager {
                             }
 
                             messageBus.publish('enemyTakeDamage', damageDealt, true, undefined, 'void');
-                            messageBus.publish('setPauseDur', 29);
-                            messageBus.publish('inflictVoidBurn', damageDealt, 2, isPowerful);
+                            messageBus.publish('setPauseDur', 20);
+                            // messageBus.publish('inflictVoidBurn', damageDealt, 2, isPowerful);
                             currStrikeObj.setScale(currStrikeObj.scaleX * 1.03, currStrikeObj.scaleY * 1.03);
                             this.scene.tweens.add({
                                 targets: currStrikeObj,
@@ -2533,7 +2668,7 @@ class SpellManager {
         }
 
         let spellName = getBasicText('rune_void_rune_strike');
-        this.postAttackCast(spellID, 0, spellName, additionalDamage, numAdditionalAttacks);
+        this.postAttackCast(spellID, 0, spellName, 0, 0);
     }
 
     castVoidReinforce(elem, embodi) {

@@ -66,8 +66,7 @@
 
      reactToDamageTypes(amt, isAttack, type) {
          super.reactToDamageTypes(amt, isAttack, type);
-        if (type == "void" && !this.thirdCanCrumble && !this.dead) {
-            console.log(this.accumulatedDamageReaction);
+        if (type === "void" && !this.thirdCanCrumble && !this.dead) {
             if (this.accumulatedDamageReaction > 34) {
                 this.voidedOutline.setAlpha(1);
                 this.voidedOutline.setFrame('wall_voided_outline.png')

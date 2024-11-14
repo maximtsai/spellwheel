@@ -892,16 +892,16 @@
                      }
                  },
                  {
-                     name: "HEAL\\20",
-                     chargeAmt: 215,
+                     name: "HEAL\\15",
+                     chargeAmt: 220,
                      damage: 0,
                      finaleFunction: () => {
-                         this.healAnim(20);
+                         this.healAnim(15);
                      }
                  },
                  {
                      name: "ASCENSION",
-                     chargeAmt: 600,
+                     chargeAmt: 725,
                      damage: 0,
                      chargeMult: 3.25,
                      isBigMove: true,

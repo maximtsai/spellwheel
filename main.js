@@ -190,6 +190,7 @@ function onPreloadComplete (scene)
     globalObjects.tempBG = scene.add.sprite(0, 0, 'blackPixel').setScale(1000, 1000).setDepth(-1);
 
     setupMouseInteraction(scene);
+    disableKeyboardMovement();
     setupLoadingBar(scene);
 
     loadFileList(scene, audioFiles, 'audio');

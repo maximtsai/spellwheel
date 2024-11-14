@@ -1049,7 +1049,7 @@ const ENABLE_KEYBOARD = true;
         if (this.keyboardRotateInner !== 0 && !this.innerDragDisabled) {
             this.usedKeyboardInner = true;
             let rotMult = 0.005/(0.005+Math.abs(this.innerCircle.rotVel));
-            this.innerCircle.torque = this.keyboardRotateInner * 0.05 * rotMult;
+            this.innerCircle.torque = this.keyboardRotateInner * 0.0535 * rotMult;
         } else if (this.usedKeyboardInner) {
             this.usedKeyboardInner = false;
             this.innerCircle.rotVel *= 0.7;
@@ -1058,7 +1058,7 @@ const ENABLE_KEYBOARD = true;
         if (this.keyboardRotateOuter !== 0 && !this.outerDragDisabled) {
             this.usedKeyboardOuter = true;
             let rotMult = 0.005/(0.005+Math.abs(this.outerCircle.rotVel));
-            this.outerCircle.torque = this.keyboardRotateOuter * 0.05 * rotMult;
+            this.outerCircle.torque = this.keyboardRotateOuter * 0.052 * rotMult;
         } else if (this.usedKeyboardOuter) {
             this.usedKeyboardOuter = false;
             this.outerCircle.rotVel *= 0.7;

@@ -115,6 +115,18 @@ function setupMouseInteraction(scene) {
     // };
 }
 
+function disableKeyboardMovement() {
+    window.addEventListener("wheel", (event) => event.preventDefault(), {
+        passive: false,
+    });
+
+    window.addEventListener("keydown", (event) => {
+        if (["ArrowUp", "ArrowDown", " "].includes(event.key)) {
+            event.preventDefault();
+        }
+    });
+}
+
 function resizeGame() {
     if (!canResizeGame) {
         return;

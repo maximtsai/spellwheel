@@ -255,15 +255,15 @@ let textData = {
         "jp": "次の7つの呪文の凍結時間。\n繰り返し使用すると弱くなります。"
     },
     "void_strike_desc": {
-        "en_us": "Fire 3 delayed\nattacks that each\ndamages 2.5% enemy\ncurrent HP",
-        "fr": "Attaque 3 fois après\nun délai, chaque\nattaque infligeant\n2.5% des PV\nactuels de l’ennemi.",
-        "zh_tw": "延遲後攻擊 3 次，\n每次攻擊造成 2.5%\n敵人當前生命值",
-        "zh_cn": "延迟后再攻击 3 次，\n每次攻伤害 2.5%\n敌人当前生命值",
-        "ru": "Атаковать 3 раза\nпосле задержки.\nКаждая атака забирает\n2.5% от текущего\nздоровья врага.",
-        "es": "Ataca 3 veces después\nde un retraso, cada\nataque inflige un\n2.5% de los PS\nactuales del enemigo",
-        "jp": "遅延後に3回攻撃し、\n各攻撃で敵の現在のHP\nの2.5%にダメージを与える"
+        "en_us": "Consume all Strike\nrunes. Each fires\nan attack dealing\n2% of enemy's\ncurrent HP.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "消耗所有打击符文，每个符文造成敌人当前生命值的 2% 伤害。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
-    "void_strike_desc_long": {
+    "void_strike_desc_longx": {
         "en_us": "Fire 3 delayed attacks that each\ndamages 2.5% enemy current HP",
         "fr": "Attaque 3 fois après un délai, chaque attaque\ninfligeant 2.5% des PV actuels de l’ennemi.",
         "zh_tw": "延遲後攻擊 3 次，每次攻擊\n造成 2.5%敵人當前生命值",
@@ -271,6 +271,15 @@ let textData = {
         "ru": "Атаковать 3 раза после задержки. Каждая атака\nзабирает 2.5% от текущего здоровья врага.",
         "es": "Ataca 3 veces después de un retraso, cada ataque\ninflige un 2.5% de los PS actuales del enemigo",
         "jp": "遅延後に3回攻撃し、各攻撃で敵の\n現在のHPの2.5%にダメージを与える"
+    },
+    "void_strike_desc_long": {
+        "en_us": "Consume all Strike runes. Each fires an\nattack dealing 2% of enemy's current HP.",
+        "fr": "Consume all Strike runes. Fire one attack per\nrune, each damaging 2% enemy's current HP",
+        "zh_tw": "Consume all Strike runes. Fire one attack per rune, each dealing 2% of enemy's current HP",
+        "zh_cn": "Consume all Strike runes. Each fires an\nattack dealing 2% of enemy's current HP.",
+        "ru": "Deal 2.5% enemy current HP DMG and consume all\nStrike runes. Extra runes grant additional attacks.",
+        "es": "",
+        "jp": ""
     },
     "void_enhance_desc": {
         "en_us": "Permanently increase\nattack damage\nby 1",
@@ -669,7 +678,7 @@ let textData = {
         "jp": ""
     },
     "void_tut_strike_desc": {
-        "en_us": "An attack that hits 3 times\nafter a delay and deals\npercentage health damage.\nScales incredibly well with\ndamage enhancements.",
+        "en_us": "An attack that uses up all of\nyour strike runes to hit\nmultiple times. Each attack\ndamages a percent of the\nenemy's current health.",
         "fr": "Une attaque qui frappe trois\nfois après un délai et inflige\ndes dégâts en pourcentage\nde santé.",
         "zh_tw": "延遲後發動 3 次攻擊,每次攻擊\n造成百分比的生命傷害。\n\n加強攻擊力的法術會三倍增加\n攻擊威力。",
         "zh_cn": "延迟后发动 3 次攻击,每次攻击\n造成百分比的生命伤害。\n\n加强攻击力的法术会三倍增加\n攻击威力。",
@@ -840,22 +849,22 @@ let textData = {
         "jp": "。"
     },
     "rune_matter_rune_strike": "HEAVY STRIKE",
-    "rune_matter_rune_enhance": "STRENGTHEN ATTACK",
+    "rune_matter_rune_enhance": "ADD DAMAGE",
     "rune_matter_rune_protect": "STONE SHIELD",
     "rune_matter_rune_reinforce": "THORN SKIN",
     "rune_matter_rune_unload": "EARTH FORCE",
     "rune_mind_rune_strike": "SHOCK STRIKE",
-    "rune_mind_rune_enhance": "IGNITE ATTACK",
+    "rune_mind_rune_enhance": "ADD FIRE",
     "rune_mind_rune_protect": "REFLECT SHIELD",
     "rune_mind_rune_reinforce": "ENERGIZE",
     "rune_mind_rune_unload": "AMPLIFY MAGIC",
     "rune_time_rune_strike": "TWIN STRIKE",
-    "rune_time_rune_enhance": "DUPLICATE ATTACK",
+    "rune_time_rune_enhance": "ADD MULTI-ATTACK",
     "rune_time_rune_protect": "DELAY SHIELD",
     "rune_time_rune_reinforce": "UNDO WOUNDS",
     "rune_time_rune_unload": "TIME FREEZE",
     "rune_void_rune_strike": "DARK STRIKE",
-    "rune_void_rune_enhance": "DARK STRENGTH",
+    "rune_void_rune_enhance": "ADD POWER",
     "rune_void_rune_protect": "NEGATION SHIELD",
     "rune_void_rune_reinforce": "REMAKE SELF",
     "rune_void_rune_unload": "UN-MAKE",

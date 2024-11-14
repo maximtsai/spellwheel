@@ -893,7 +893,7 @@
                  },
                  {
                      name: "HEAL\\15",
-                     chargeAmt: 220,
+                     chargeAmt: 250,
                      damage: 0,
                      finaleFunction: () => {
                          this.healAnim(15);

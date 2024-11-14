@@ -1359,7 +1359,30 @@ class Player {
                                     globalObjects.player.resetStats();
                                 }
                                 setTimeout(() => {
-                                    createEnemy(CURRENT_LEVEL);
+                                    let clickBlocker;
+                                    let hasFinished = false;
+                                    sdkShowMidgameAd(() => {
+                                        clickBlocker = createGlobalClickBlocker(false);
+                                        setTimeout(() => {
+                                            if (!hasFinished) {
+                                                hasFinished = true;
+                                                hideGlobalClickBlocker();
+                                                createEnemy(CURRENT_LEVEL);
+                                            }
+                                        }, 15000)
+                                    }, () => {
+                                        if (!hasFinished) {
+                                            hasFinished = true;
+                                            hideGlobalClickBlocker();
+                                            createEnemy(CURRENT_LEVEL);
+                                        }
+                                    }, () => {
+                                        if (!hasFinished) {
+                                            hasFinished = true;
+                                            hideGlobalClickBlocker();
+                                            createEnemy(CURRENT_LEVEL);
+                                        }
+                                    });
                                 }, 0)
                                 // cheatsDisplay.destroy();
                                 deathMenuButton.destroy();

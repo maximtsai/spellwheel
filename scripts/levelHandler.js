@@ -2,7 +2,7 @@ let CURRENT_LEVEL = null;
 let levelTimeoutID = null;
 
 function beginPreLevel(lvl) {
-    if (!gameVars.ignoreNextAd && window.CrazyGames.SDK.environment !== 'disabled' && (lvl >= 3 || (lvl >= 2 && gameVars.maxLevel) || lvl === 0)) {
+    if (!gameVars.ignoreNextAd && window.CrazyGames.SDK.environment !== 'disabled' && (lvl >= 2 || lvl === 0)) {
         let clickBlocker;
         let hasFinished = false;
 
@@ -12,7 +12,7 @@ function beginPreLevel(lvl) {
                 if (!hasFinished) {
                     hasFinished = true;
                     hideGlobalClickBlocker();
-                    beginPreLevelTrue(lvl)
+                    // beginPreLevelTrue(lvl)
                 }
             }, 15000)
         }, () => {

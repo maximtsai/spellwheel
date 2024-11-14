@@ -730,23 +730,9 @@ class SpellManager {
         }
         this.scene.tweens.add({
             targets: animation1,
-            duration: 240,
-            scaleX: 1.1,
-            scaleY: 1.1,
-            ease: 'Cubic.easeOut',
+            duration: 100,
+            alpha: 1,
             onComplete: () => {
-                animation2.setDepth(117);
-                animation1.setDepth(117);
-                animation1.currAnim = this.scene.tweens.add({
-                    targets: animation1,
-                    duration: 330,
-                    scaleX: 1,
-                    scaleY: 1,
-                    ease: 'Quart.easeIn',
-                    onComplete: () => {
-                        animation1.currAnim = null;
-                    }
-                });
                 messageBus.publish("selfTakeEffect", {
                     name: shieldID,
                     spellID: shieldID,
@@ -782,6 +768,28 @@ class SpellManager {
                             messageBus.publish('selfClearEffect', shieldID, true);
                             statuses[shieldID] = null;
                         }
+                    }
+                });
+
+            }
+        })
+        this.scene.tweens.add({
+            targets: animation1,
+            duration: 215,
+            scaleX: 1.1,
+            scaleY: 1.1,
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                animation2.setDepth(117);
+                animation1.setDepth(117);
+                animation1.currAnim = this.scene.tweens.add({
+                    targets: animation1,
+                    duration: 330,
+                    scaleX: 1,
+                    scaleY: 1,
+                    ease: 'Quart.easeIn',
+                    onComplete: () => {
+                        animation1.currAnim = null;
                     }
                 });
             }

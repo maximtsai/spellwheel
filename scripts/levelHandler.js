@@ -2,36 +2,16 @@ let CURRENT_LEVEL = null;
 let levelTimeoutID = null;
 
 function beginPreLevel(lvl) {
-    if (!gameVars.ignoreNextAd && window.CrazyGames.SDK.environment !== 'disabled' && (lvl >= 2 || lvl === 0)) {
-        let clickBlocker;
-        let hasFinished = false;
+    beginPreLevelTrue(lvl)
 
-        sdkShowMidgameAd(() => {
-            clickBlocker = createGlobalClickBlocker(false);
-            setTimeout(() => {
-                if (!hasFinished) {
-                    hasFinished = true;
-                    hideGlobalClickBlocker();
-                    // beginPreLevelTrue(lvl)
-                }
-            }, 15000)
-        }, () => {
-            if (!hasFinished) {
-                hasFinished = true;
-                hideGlobalClickBlocker();
-                beginPreLevelTrue(lvl)
-            }
-        }, () => {
-            if (!hasFinished) {
-                hasFinished = true;
-                hideGlobalClickBlocker();
-                beginPreLevelTrue(lvl)
-            }
-        })
-    } else {
-        beginPreLevelTrue(lvl)
-    }
-    gameVars.ignoreNextAd = false;
+    // if (!gameVars.ignoreNextAd && window.CrazyGames.SDK.environment !== 'disabled' && (lvl >= 2 || lvl === 0)) {
+    //     // crazyGamesMidgameAd(() => {
+    //     //     beginPreLevelTrue(lvl)
+    //     // })
+    // } else {
+    //     beginPreLevelTrue(lvl)
+    // }
+    // gameVars.ignoreNextAd = false;
 
 }
 

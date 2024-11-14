@@ -293,11 +293,13 @@ function showMainMenuButtons() {
             onMouseUp: () => {
                 playSound('click')
                 clearMenuButtons();
-                if (gameVars.currLevel) {
-                    beginPreLevel(gameVars.currLevel);
-                } else {
-                    beginPreLevel(gameVars.latestLevel + 1);
-                }
+                crazyGamesMidgameAd(() => {
+                    if (gameVars.currLevel) {
+                        beginPreLevel(gameVars.currLevel);
+                    } else {
+                        beginPreLevel(gameVars.latestLevel + 1);
+                    }
+                })
             }
         });
         globalObjects.continueButton.setOrigin(0.5, 0.5);
@@ -438,11 +440,15 @@ function showMainMenuButtons() {
                 let titleText = getLangText('new_game') + "?";
                 showYesNoPopup(getLangText('cont_ui'), getLangText('back'), titleText, getLangText('new_game_long'), () => {
                     clearOnlyMenuButtons();
-                    beginPreLevel(0)
+                    crazyGamesMidgameAd(() => {
+                        beginPreLevel(0)
+                    })
                 }, true)
             } else {
                 clearOnlyMenuButtons();
-                beginPreLevel(0)
+                crazyGamesMidgameAd(() => {
+                    beginPreLevel(0)
+                })
             }
         }
     });
@@ -1456,7 +1462,10 @@ function showLevelSelectScreen(){
                 } else {
                     closeLevelSelectScreen();
                     clearMenuButtons();
-                    beginPreLevel(i);
+                    crazyGamesMidgameAd(() => {
+                        beginPreLevel(i);
+                    })
+
                     blackBG.setAlpha(0);
                     title.destroy();
                     levelSelectBG.destroy();

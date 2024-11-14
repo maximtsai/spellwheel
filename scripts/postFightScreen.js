@@ -518,7 +518,14 @@ class PostFightScreen {
         }
     }
 
-    createWinScreen(level = 0) {
+    createWinScreen(level) {
+        crazyGamesMidgameAd(() => {
+            this.createWinScreenTrue(level);
+        })
+
+    }
+
+    createWinScreenTrue(level = 0) {
         this.windSfx = playSound('wind', 0.01, true);
         this.windSfx.detune = -700;
         fadeInSound(this.windSfx, 0.85, 2000);

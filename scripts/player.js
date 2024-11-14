@@ -1287,7 +1287,9 @@ class Player {
                                 if (globalObjects.player) {
                                     globalObjects.player.resetStats();
                                 }
-                                beginLevel(CURRENT_LEVEL * -1 + 1);
+                                crazyGamesMidgameAd(() => {
+                                    beginLevel(CURRENT_LEVEL * -1 + 1);
+                                })
                                 // cheatsDisplay.destroy();
                                 deathMenuButton.destroy();
                                 deathRetryButton.destroy();
@@ -1359,30 +1361,9 @@ class Player {
                                     globalObjects.player.resetStats();
                                 }
                                 setTimeout(() => {
-                                    let clickBlocker;
-                                    let hasFinished = false;
-                                    sdkShowMidgameAd(() => {
-                                        clickBlocker = createGlobalClickBlocker(false);
-                                        setTimeout(() => {
-                                            if (!hasFinished) {
-                                                hasFinished = true;
-                                                hideGlobalClickBlocker();
-                                                createEnemy(CURRENT_LEVEL);
-                                            }
-                                        }, 15000)
-                                    }, () => {
-                                        if (!hasFinished) {
-                                            hasFinished = true;
-                                            hideGlobalClickBlocker();
-                                            createEnemy(CURRENT_LEVEL);
-                                        }
-                                    }, () => {
-                                        if (!hasFinished) {
-                                            hasFinished = true;
-                                            hideGlobalClickBlocker();
-                                            createEnemy(CURRENT_LEVEL);
-                                        }
-                                    });
+                                    crazyGamesMidgameAd(() => {
+                                        createEnemy(CURRENT_LEVEL);
+                                    })
                                 }, 0)
                                 // cheatsDisplay.destroy();
                                 deathMenuButton.destroy();

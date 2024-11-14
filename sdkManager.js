@@ -10,6 +10,34 @@ function sdkLoadingStop() {
     window.CrazyGames.SDK.game.loadingStop();
 }
 
+function crazyGamesMidgameAd(func) {
+    let clickBlocker;
+    let hasFinished = false;
+
+    sdkShowMidgameAd(() => {
+        clickBlocker = createGlobalClickBlocker(false);
+        setTimeout(() => {
+            if (!hasFinished) {
+                hasFinished = true;
+                hideGlobalClickBlocker();
+                // func()
+            }
+        }, 15000)
+    }, () => {
+        if (!hasFinished) {
+            hasFinished = true;
+            hideGlobalClickBlocker();
+            func()
+        }
+    }, () => {
+        if (!hasFinished) {
+            hasFinished = true;
+            hideGlobalClickBlocker();
+            func()
+        }
+    })
+}
+
 function sdkShowMidgameAd(onStart = () => {}, onFinish = () => {}, onError = () => {}) {
     muteAll();
     const callbacks = {

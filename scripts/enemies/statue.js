@@ -670,11 +670,12 @@
                                     targets: [victoryText, banner],
                                     alpha: 0,
                                     duration: 800,
-                                    completeDelay: 350,
                                     onComplete: () => {
                                         victoryText.destroy();
                                         banner.destroy();
-                                        beginPreLevel(this.level + 1);
+                                        crazyGamesMidgameAd(() => {
+                                            beginPreLevel(this.level + 1);
+                                        })
                                         this.destroy();
                                     }
                                 });

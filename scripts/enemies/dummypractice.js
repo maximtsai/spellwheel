@@ -657,15 +657,16 @@
                          targets: [victoryText, banner],
                          alpha: 0,
                          duration: 800,
-                        completeDelay: 200,
+                        completeDelay: 150,
                          onComplete: () => {
                             victoryText.destroy();
                             banner.destroy();
                             // globalObjects.magicCircle.enableMovement();
-                             // TODO: maybe just skip straight to enemy
                             // globalObjects.postFightScreen.createWinScreenMin();
                              let goalLevel = this.targetLevel ? this.targetLevel : -this.level + 1;
-                             beginPreLevel(goalLevel);
+                             crazyGamesMidgameAd(() => {
+                                 beginPreLevel(goalLevel);
+                             })
                         }
                     });
                 });

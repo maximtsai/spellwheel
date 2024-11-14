@@ -367,6 +367,7 @@
 
      showRune() {
          let rune = PhaserScene.add.image(this.x, this.y - 45, 'tutorial', 'rune_time_large.png').setOrigin(0.5, 0.5).setScale(0.5).setDepth(9999);
+         sdkGameplayStop();
          playSound('victory_2');
          this.showFlash(this.x, this.y);
          let banner = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);

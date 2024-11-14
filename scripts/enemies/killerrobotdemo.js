@@ -343,6 +343,9 @@
                      }
                      this.dieClickBlocker.destroy();
                      continueText.destroy();
+                     crazyGamesMidgameAd(() => {
+                         gotoMainMenu();
+                     })
                      this.addTween({
                          targets: [victoryText, banner],
                          alpha: 0,
@@ -351,7 +354,6 @@
                              victoryText.destroy();
                              banner.destroy();
                              // go to main menu
-                             gotoMainMenu();
                          }
                      });
                      rune.destroy();

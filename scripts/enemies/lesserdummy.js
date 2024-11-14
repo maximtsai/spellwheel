@@ -676,6 +676,9 @@ class LesserDummy extends Enemy {
                     }
                 });
                 continueText.destroy();
+                crazyGamesMidgameAd(() => {
+                    beginLevel(1);
+                })
                 this.addTween({
                     targets: [victoryText, banner],
                     alpha: 0,
@@ -685,7 +688,6 @@ class LesserDummy extends Enemy {
                         globalObjects.magicCircle.enableMovement();
                         victoryText.destroy();
                         banner.destroy();
-                        beginLevel(1);
                     }
                 });
             })

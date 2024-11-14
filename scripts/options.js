@@ -141,7 +141,6 @@ class Options {
                     if (globalObjects.currentEnemy && !globalObjects.currentEnemy.isDestroyed) {
                         this.popupElements = showYesNoPopup(getLangText('exit'), getLangText('back'), getLangText('main_menu'), getLangText('exit_long'), () => {
                             this.hideOptions();
-                            sdkGameplayStop();
                             let bgBlackout = getBackgroundBlackout();
                             bgBlackout.alpha = 0;
                             globalObjects.player.revive();

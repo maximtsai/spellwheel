@@ -290,12 +290,11 @@
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
-            this.timeSinceLastAttacked = -7;
-            this.castAggravateCharge = 5;
+            this.castAggravateCharge = 3;
             this.clearEnhancePopup();
 
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 253, getLangText('level1_tut_b'), 'right');
-            messageBus.publish('setSlowMult', 0.5, 15);
+            // messageBus.publish('setSlowMult', 0.5, 15);
             let glowBar = this.addSprite(gameConsts.halfWidth, 320, 'misc', 'shadow_bar.png').setDepth(9980).setAlpha(0).setScale(7);
             this.addTween({
                 targets: glowBar,
@@ -666,7 +665,7 @@
              switchBackgroundInstant('star_shatter.webp');
              setTimeout(() => {
                  switchBackground('grass_bg.webp');
-             }, 90)
+             }, 110)
          }
          if (this.eyesTween) {
              this.eyesTween.stop();
@@ -826,8 +825,8 @@
              [
                  // 0
                  {
-                     name: gameVars.isHardMode ? "}10 " : "}8 ",
-                     chargeAmt: 415,
+                     name: gameVars.isHardMode ? "ANGRY}10 " : "ANGRY}8 ",
+                     chargeAmt: 325,
                      damage: gameVars.isHardMode ? 10 : 8,
                      attackFinishFunction: () => {
                          screenShake(5);
@@ -872,7 +871,7 @@
                      }
                  },
                  {
-                     name: gameVars.isHardMode ? ";25" : ";20",
+                     name: gameVars.isHardMode ? "VERY ANGRY;25" : "VERY ANGRY;20",
                      chargeAmt: 415,
                      damage: gameVars.isHardMode ? 25 : 20,
                      isBigMove: true,
@@ -893,17 +892,17 @@
                  },
                  {
                      name: "HEAL\\15",
-                     chargeAmt: 250,
+                     chargeAmt: 300,
                      damage: 0,
                      finaleFunction: () => {
                          this.healAnim(15);
                      }
                  },
                  {
-                     name: "ASCENSION",
+                     name: "ASCENDING FROM\nSHEER ANGRY",
                      chargeAmt: 725,
                      damage: 0,
-                     chargeMult: 3.25,
+                     chargeMult: 3,
                      isBigMove: true,
                      startFunction: () => {
                          this.currentAttackSetIndex = 1;

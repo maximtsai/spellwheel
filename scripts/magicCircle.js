@@ -2723,20 +2723,18 @@ const ENABLE_KEYBOARD = true;
 
 
          let postPendTextName = gameOptions.infoBoxAlign === 'center' ? "_long" : "";
+         let preNameText = "";
+         let extraNameText = "";
          // let displayText = "+";
          if (!hideSpellDescriptor) {
-             if (closestElement.runeName && closestEmbodiment.runeName) {
-                 let nameId = closestElement.runeName + "_" + closestEmbodiment.runeName;
-                 this.spellNameText.setText(getBasicText(nameId))
-             } else {
-                 this.spellNameText.setText('')
-             }
-
              switch (closestElement.runeName) {
                  case RUNE_MATTER:
                      this.spellElementText.setText('MATTER');
                      switch (closestEmbodiment.runeName) {
                          case RUNE_STRIKE:
+                             preNameText = "|";
+                             extraNameText = "|";
+
                              if (gameVars.matterPlus) {
                                  this.updateSpellDescriptorText(getLangText('matter_strike_plus_desc' + postPendTextName));
                              } else {
@@ -2756,6 +2754,8 @@ const ENABLE_KEYBOARD = true;
                              this.updateSpellDescriptorText(getLangText((gameVars.matterPlus ? 'matter_protect_plus_desc' : 'matter_protect_desc') + postPendTextName));
                              break;
                          case RUNE_UNLOAD:
+                             preNameText = "|";
+                             extraNameText = "|";
                              embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                              this.updateSpellDescriptorText(getLangText('matter_unload_desc' + postPendTextName));
                              break;
@@ -2768,6 +2768,8 @@ const ENABLE_KEYBOARD = true;
                      this.spellElementText.setText('TIME');
                      switch (closestEmbodiment.runeName) {
                          case RUNE_STRIKE:
+                             preNameText = "|";
+                             extraNameText = "|";
                              this.updateSpellDescriptorText(getLangText('time_strike_desc' + postPendTextName));
                              break;
                          case RUNE_REINFORCE:
@@ -2777,6 +2779,7 @@ const ENABLE_KEYBOARD = true;
                              let healToFlash = Math.min(maxHealAmt, globalObjects.player.recentlyTakenDamageAmt * healMult);
 
                              embodimentText += " (\\" + healToDisplay + ")";
+                             extraNameText = " (\\" + healToDisplay + ")";;
                              this.updateSpellDescriptorText(getLangText('time_reinforce_desc' + postPendTextName));
                             if (healToFlash > 1) {
                                 globalObjects.player.flashRecentInjury(false, healToFlash, true)
@@ -2789,6 +2792,7 @@ const ENABLE_KEYBOARD = true;
                              break;
                          case RUNE_PROTECT:
                              embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+
                              this.updateSpellDescriptorText(getLangText('time_protect_desc' + postPendTextName));
                              break;
                          case RUNE_UNLOAD:
@@ -2798,6 +2802,8 @@ const ENABLE_KEYBOARD = true;
                                  tempMult--;
                                  turnsAdded += Math.max(3, 7 - globalObjects.player.getPlayerTimeExhaustion() - tempMult);
                              }
+                             extraNameText = " (" + turnsAdded + " TURNS)";
+
                              this.updateSpellDescriptorText(getLangText('time_unload_desc' + postPendTextName) + turnsAdded + getLangText('time_unload_desc_2' + postPendTextName));
                              break;
                          default:
@@ -2809,6 +2815,8 @@ const ENABLE_KEYBOARD = true;
                      this.spellElementText.setText('ENERGY');
                      switch (closestEmbodiment.runeName) {
                          case RUNE_STRIKE:
+                             preNameText = "}";
+                             extraNameText = "}";
                              this.updateSpellDescriptorText(getLangText('mind_strike_desc' + postPendTextName));
                              break;
                          case RUNE_REINFORCE:
@@ -2840,6 +2848,8 @@ const ENABLE_KEYBOARD = true;
                      this.spellElementText.setText('VOID');
                      switch (closestEmbodiment.runeName) {
                          case RUNE_STRIKE:
+                             preNameText = "|";
+                             extraNameText = "|";
                              this.updateSpellDescriptorText(getLangText('void_strike_desc' + postPendTextName));
                              break;
                          case RUNE_ENHANCE:
@@ -2855,6 +2865,8 @@ const ENABLE_KEYBOARD = true;
                              this.updateSpellDescriptorText(getLangText('void_reinforce_desc' + postPendTextName));
                              break;
                          case RUNE_UNLOAD:
+                             preNameText = "|";
+                             extraNameText = "|";
                              this.updateSpellDescriptorText(getLangText('void_unload_desc' + postPendTextName));
                              break;
                          default:
@@ -2867,6 +2879,14 @@ const ENABLE_KEYBOARD = true;
                      this.clearSpellDescriptorText()
                      break;
              }
+
+             if (closestElement.runeName && closestEmbodiment.runeName) {
+                 let nameId = closestElement.runeName + "_" + closestEmbodiment.runeName;
+                 this.spellNameText.setText(preNameText + getBasicText(nameId) + extraNameText)
+             } else {
+                 this.spellNameText.setText('')
+             }
+
          }
 
 

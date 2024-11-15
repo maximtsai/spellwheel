@@ -2215,7 +2215,7 @@ class SpellManager {
             scaleY: 0.45,
             ease: 'Back.easeOut',
         });
-        let mergeDur = 400 + Math.floor(Math.sqrt(numAdditionalAttacks * 20));
+        let mergeDur = 240 + Math.floor(Math.sqrt(numAdditionalAttacks * 20));
         let delayAmt = mergeDur / numAdditionalAttacks;
         let voidAttackCount = 1;
 
@@ -2327,7 +2327,7 @@ class SpellManager {
         let yOffset = Math.floor(additionalDamage * 0.25);
         let isPowerful = additionalDamage * numStrikes + additionalDamage * 3 > 58;
         for (let i = 0; i < allStrikeObjects.length; i++) {
-            let individualStrikeDelay = waitDur + i * 165;
+            let individualStrikeDelay = waitDur + i * 175;
             let currStrikeObj = allStrikeObjects[i];
             let isLeftStrike = i % 2 == isNormalDir;
             let scaleXMult = isLeftStrike ? 1 : -1;

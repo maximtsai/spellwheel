@@ -368,12 +368,6 @@ const ENABLE_KEYBOARD = true;
             this.storedDragAngleDiff = dragAngleDiff;
             // let dragAngleDiffDiff = (dragAngleDiff - this.prevDragAngleDiff) * Math.abs(dragAngleDiff);
 
-            // if (dragAngleDiffDiff < -0.24) {
-            //     dragAngleDiffDiff = -0.24;
-            // } else if (dragAngleDiffDiff > 0.24) {
-            //     dragAngleDiffDiff = 0.24;
-            // }
-            // alt method of calculating torque
             let dragPointX = Math.cos(this.dragPointAngle) * this.dragPointDist;
             let dragPointY = Math.sin(this.dragPointAngle) * this.dragPointDist;
             let dragDistX = mouseDistX - dragPointX;
@@ -394,7 +388,6 @@ const ENABLE_KEYBOARD = true;
 
             let vertForce = dragPointXOrigin * dragDistYOrigin;
             let horizForce = -dragPointYOrigin * dragDistXOrigin;
-
             let dragForceSqr = horizForce + vertForce;
 
             let torqueConst = gameVars.wasTouch ? 0.0445 : 0.0422;
@@ -403,7 +396,6 @@ const ENABLE_KEYBOARD = true;
             }  else if (gameVars.maxLevel >= 2) {
                 torqueConst += 0.008;
             }
-            // castDisable
 
             // if angle diff is minimal, reduce torque, GREATLY REDUCES JITTER SHAKE STUTTER
             let torqueCloseMult = 1;
@@ -417,11 +409,8 @@ const ENABLE_KEYBOARD = true;
             } else {
                 this.draggedObj.torque = dragForce * Math.sqrt(dragForceSqr) * torqueConst * (1 + dScale * 0.01);
             }
-            // TODO: Remove if not needed
             this.draggedObj.torque += dragAngleDiff * torqueConst - this.draggedObj.rotVel * 0.38;
             this.draggedObj.torque *= torqueCloseMult;
-            // this.draggedObj.torque = this.draggedObj.torque + (this.draggedObj.torque * this.draggedObj.torque) * minusMult * 150;
-            //this.draggedObj.torque += this.draggedObj.torqueOnRelease * 0.5;
 
             this.draggedObj.torqueOnRelease = this.draggedObj.torque * 4; // there's some more oomph to when you sling out a spin
 
@@ -1763,50 +1752,54 @@ const ENABLE_KEYBOARD = true;
             }
         }
         if (!hasRemainingElement || !hasRemainingEmbodiment) {
-            this.elementHighlight.visible = false;
-            this.embodimentHighlight.visible = false;
-            this.innerDragDisabled = true;
-            this.outerDragDisabled = true;
-            this.castDisabled = true;
-            this.disableSpellDescDisplay = true;
-            this.recharging = true;
-            this.lastDragTime = -1000;
-            messageBus.publish("resetCircle")
-            this.scene.tweens.add({
-                targets: this.innerCircle,
-                ease: 'Back.easeIn',
-                easeParams: [1.1],
-                onComplete: () => {
-                    this.resetElements();
-                    this.innerDragDisabled = false;
-                    if (!this.innerDragDisabled && !this.outerDragDisabled) {
-                        this.castDisabled = false;
-                        this.recharging = false;
-                        this.bufferedCastAvailable = false;
-                    }
-                },
-                duration: gameVars.gameManualSlowSpeed * 1800,
-                rotation: "+=6.283"
-            });
-
-            this.scene.tweens.add({
-                targets: this.outerCircle,
-                delay: 0,
-                easeParams: [1.1],
-                ease: 'Back.easeIn',
-                onComplete: () => {
-                    this.resetEmbodiments();
-                    this.outerDragDisabled = false;
-                    if (!this.innerDragDisabled && !this.outerDragDisabled) {
-                        this.castDisabled = false;
-                        this.recharging = false;
-                        this.bufferedCastAvailable = false;
-                    }
-                },
-                duration: gameVars.gameManualSlowSpeed * 1800,
-                rotation: "-=6.283"
-            });
+            this.postCastResetWheel();
         }
+    }
+
+    postCastResetWheel() {
+        this.elementHighlight.visible = false;
+        this.embodimentHighlight.visible = false;
+        this.innerDragDisabled = true;
+        this.outerDragDisabled = true;
+        this.castDisabled = true;
+        this.disableSpellDescDisplay = true;
+        this.recharging = true;
+        this.lastDragTime = -1000;
+        messageBus.publish("resetCircle")
+        this.scene.tweens.add({
+            targets: this.innerCircle,
+            ease: 'Back.easeIn',
+            easeParams: [1.1],
+            onComplete: () => {
+                this.resetElements();
+                this.innerDragDisabled = false;
+                if (!this.innerDragDisabled && !this.outerDragDisabled) {
+                    this.castDisabled = false;
+                    this.recharging = false;
+                    this.bufferedCastAvailable = false;
+                }
+            },
+            duration: gameVars.gameManualSlowSpeed * 1800,
+            rotation: "+=6.283"
+        });
+
+        this.scene.tweens.add({
+            targets: this.outerCircle,
+            delay: 0,
+            easeParams: [1.1],
+            ease: 'Back.easeIn',
+            onComplete: () => {
+                this.resetEmbodiments();
+                this.outerDragDisabled = false;
+                if (!this.innerDragDisabled && !this.outerDragDisabled) {
+                    this.castDisabled = false;
+                    this.recharging = false;
+                    this.bufferedCastAvailable = false;
+                }
+            },
+            duration: gameVars.gameManualSlowSpeed * 1800,
+            rotation: "-=6.283"
+        });
     }
 
     manualResetElements(elemUsed, useLongDelay = false) {
@@ -2730,20 +2723,18 @@ const ENABLE_KEYBOARD = true;
 
 
          let postPendTextName = gameOptions.infoBoxAlign === 'center' ? "_long" : "";
+         let preNameText = "";
+         let extraNameText = "";
          // let displayText = "+";
          if (!hideSpellDescriptor) {
-             if (closestElement.runeName && closestEmbodiment.runeName) {
-                 let nameId = closestElement.runeName + "_" + closestEmbodiment.runeName;
-                 this.spellNameText.setText(getBasicText(nameId))
-             } else {
-                 this.spellNameText.setText('')
-             }
-
              switch (closestElement.runeName) {
                  case RUNE_MATTER:
                      this.spellElementText.setText('MATTER');
                      switch (closestEmbodiment.runeName) {
                          case RUNE_STRIKE:
+                             preNameText = "|";
+                             extraNameText = "|";
+
                              if (gameVars.matterPlus) {
                                  this.updateSpellDescriptorText(getLangText('matter_strike_plus_desc' + postPendTextName));
                              } else {
@@ -2763,6 +2754,8 @@ const ENABLE_KEYBOARD = true;
                              this.updateSpellDescriptorText(getLangText((gameVars.matterPlus ? 'matter_protect_plus_desc' : 'matter_protect_desc') + postPendTextName));
                              break;
                          case RUNE_UNLOAD:
+                             preNameText = "|";
+                             extraNameText = "|";
                              embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                              this.updateSpellDescriptorText(getLangText('matter_unload_desc' + postPendTextName));
                              break;
@@ -2775,6 +2768,8 @@ const ENABLE_KEYBOARD = true;
                      this.spellElementText.setText('TIME');
                      switch (closestEmbodiment.runeName) {
                          case RUNE_STRIKE:
+                             preNameText = "|";
+                             extraNameText = "|";
                              this.updateSpellDescriptorText(getLangText('time_strike_desc' + postPendTextName));
                              break;
                          case RUNE_REINFORCE:
@@ -2784,6 +2779,7 @@ const ENABLE_KEYBOARD = true;
                              let healToFlash = Math.min(maxHealAmt, globalObjects.player.recentlyTakenDamageAmt * healMult);
 
                              embodimentText += " (\\" + healToDisplay + ")";
+                             extraNameText = " (\\" + healToDisplay + ")";;
                              this.updateSpellDescriptorText(getLangText('time_reinforce_desc' + postPendTextName));
                             if (healToFlash > 1) {
                                 globalObjects.player.flashRecentInjury(false, healToFlash, true)
@@ -2796,6 +2792,7 @@ const ENABLE_KEYBOARD = true;
                              break;
                          case RUNE_PROTECT:
                              embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
+
                              this.updateSpellDescriptorText(getLangText('time_protect_desc' + postPendTextName));
                              break;
                          case RUNE_UNLOAD:
@@ -2805,6 +2802,8 @@ const ENABLE_KEYBOARD = true;
                                  tempMult--;
                                  turnsAdded += Math.max(3, 7 - globalObjects.player.getPlayerTimeExhaustion() - tempMult);
                              }
+                             extraNameText = " (" + turnsAdded + " TURNS)";
+
                              this.updateSpellDescriptorText(getLangText('time_unload_desc' + postPendTextName) + turnsAdded + getLangText('time_unload_desc_2' + postPendTextName));
                              break;
                          default:
@@ -2816,6 +2815,8 @@ const ENABLE_KEYBOARD = true;
                      this.spellElementText.setText('ENERGY');
                      switch (closestEmbodiment.runeName) {
                          case RUNE_STRIKE:
+                             preNameText = "}";
+                             extraNameText = "}";
                              this.updateSpellDescriptorText(getLangText('mind_strike_desc' + postPendTextName));
                              break;
                          case RUNE_REINFORCE:
@@ -2847,6 +2848,8 @@ const ENABLE_KEYBOARD = true;
                      this.spellElementText.setText('VOID');
                      switch (closestEmbodiment.runeName) {
                          case RUNE_STRIKE:
+                             preNameText = "|";
+                             extraNameText = "|";
                              this.updateSpellDescriptorText(getLangText('void_strike_desc' + postPendTextName));
                              break;
                          case RUNE_ENHANCE:
@@ -2862,6 +2865,8 @@ const ENABLE_KEYBOARD = true;
                              this.updateSpellDescriptorText(getLangText('void_reinforce_desc' + postPendTextName));
                              break;
                          case RUNE_UNLOAD:
+                             preNameText = "|";
+                             extraNameText = "|";
                              this.updateSpellDescriptorText(getLangText('void_unload_desc' + postPendTextName));
                              break;
                          default:
@@ -2874,6 +2879,14 @@ const ENABLE_KEYBOARD = true;
                      this.clearSpellDescriptorText()
                      break;
              }
+
+             if (closestElement.runeName && closestEmbodiment.runeName) {
+                 let nameId = closestElement.runeName + "_" + closestEmbodiment.runeName;
+                 this.spellNameText.setText(preNameText + getBasicText(nameId) + extraNameText)
+             } else {
+                 this.spellNameText.setText('')
+             }
+
          }
 
 
@@ -3290,6 +3303,53 @@ const ENABLE_KEYBOARD = true;
     setCircleShadow(intensity = 0.2) {
         this.shadowCircle.alpha = intensity;
     }
+
+     consumeAllStrikes(onConsumeFunc = () => {}) {
+        let strikeRuneIdx = 0;
+        for (let i in this.embodiments) {
+            let rune = this.embodiments[i];
+            if (rune.glow.visible && rune.runeName === RUNE_STRIKE) {
+                rune.glow.visible = false;
+                rune.burnedOut = true;
+                let dist = 180;
+                let xPos = rune.x + Math.sin(rune.rotation) * dist;
+                let yPos = rune.y - Math.cos(rune.rotation) * dist;
+                let runeImage = PhaserScene.add.image(xPos, yPos, 'circle', 'bright_rune_strike.png');
+                runeImage.setScale(1.05).setOrigin(0.5, 0.25).setDepth(rune.depth).setRotation(rune.rotation);
+                runeImage.strikeCount = strikeRuneIdx;
+                PhaserScene.tweens.add({
+                    targets: runeImage,
+                    duration: 450,
+                    rotation: 0,
+                    ease: 'Cubic.easeOut',
+                })
+                PhaserScene.tweens.add({
+                    targets: runeImage,
+                    duration: 250,
+                    scaleX: 1.2,
+                    scaleY: 1.2,
+                    easeParams: [3],
+                    ease: 'Back.easeOut',
+                    onComplete: () => {
+                        onConsumeFunc(runeImage, runeImage.strikeCount);
+                    }
+                })
+                strikeRuneIdx++;
+            }
+        }
+        let hasRemainingEmbodiment = false;
+         for (let i = 0; i < this.embodiments.length; i++) {
+             if (!this.embodiments[i].burnedOut && this.embodiments[i].runeName != null) {
+                 hasRemainingEmbodiment = true;
+                 break;
+             }
+         }
+         if (!hasRemainingEmbodiment) {
+             this.postCastResetWheel();
+         }
+
+         return strikeRuneIdx;
+     }
 
      refreshHoverText() {
          if (gameOptions.infoBoxAlign === 'center') {

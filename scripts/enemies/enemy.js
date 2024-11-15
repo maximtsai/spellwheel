@@ -296,7 +296,7 @@ class Enemy {
         this.attackGlow = this.scene.add.image(x, attackNameYPos - 10, 'blurry', 'glow_flat.webp').setAlpha(0).setDepth(9).setVisible(false);
         this.attackDarken = this.scene.add.image(x, this.chargeBarMax.y - 1, 'blurry', 'attack_dark.png').setAlpha(0).setDepth(this.attackGlow.depth - 1).setScale(0, 1).setVisible(false);
 
-        this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', isMobile ? 38 : 36);
+        this.attackName = this.scene.add.bitmapText(this.x, attackNameYPos, 'normal', '', isMobile ? 38 : 36, 1);
         this.attackName.setDepth(9);
         this.attackName.setOrigin(0.5, 0.85);
     }

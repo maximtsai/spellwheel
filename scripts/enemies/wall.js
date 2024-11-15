@@ -357,7 +357,7 @@
                  });
                  this.addTween({
                      targets: wallChunk,
-                     y: globalObjects.player.getY() - 210,
+                     y: globalObjects.player.getY() - 215,
                      ease: 'Cubic.easeIn',
                      duration: 800,
                      onComplete: () => {
@@ -475,10 +475,10 @@
                             x: goalX,
                             duration: duration,
                             onComplete: () => {
-                                let distToPlayer = Math.abs(globalObjects.player.getY() - 180 - rock.y);
+                                let distToPlayer = Math.abs(globalObjects.player.getY() - 190 - rock.y);
                                 this.addTween({
                                     targets: rock,
-                                    y: globalObjects.player.getY() - 180 - Math.random() * 15,
+                                    y: globalObjects.player.getY() - 190 - Math.random() * 15,
                                     ease: 'Quad.easeIn',
                                     duration: 550 + Math.floor(distToPlayer * 1.5),
                                     onComplete: () => {
@@ -538,7 +538,7 @@
                     });
                     if (!hasRock || isBigPoop) {
                         let poop = this.addImage(bird.x, bird.y + 10, 'wallenemy', isBigPoop ? 'poopbig.png' : 'poop.png').setDepth(999);
-                        let targetY = globalObjects.player.getY() - 215;
+                        let targetY = globalObjects.player.getY() - 225;
                         if (!isBigPoop) {
                             targetY += Math.random() * 15;
                         }

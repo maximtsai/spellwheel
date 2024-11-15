@@ -13,7 +13,7 @@ function setupLoadingBar(scene) {
     // fadeInBackground('backgroundPreload', 5000, 3.28);
 
     // Basic loading bar visual
-    let iconsHeight = gameConsts.height - (isMobile ? 134 : 124);
+    let iconsHeight = gameConsts.height - (isMobile ? 108 : 100);
     loadObjects.version = scene.add.text(4, gameConsts.height - 4, gameVersion).setOrigin(0, 1).setAlpha(0.7);
     loadObjects.loadingSpinner = scene.add.image(gameConsts.halfWidth, iconsHeight, 'loadingSpinner');
     loadObjects.castButton = scene.add.image(gameConsts.halfWidth, iconsHeight, 'castNormal');
@@ -42,15 +42,15 @@ function setupLoadingBar(scene) {
     icons.push(scene.add.image(gameConsts.halfWidth, iconsHeight, 'runeUnloadPre')); // ultimate
 
     let loadIconHeight = gameConsts.halfHeight + 20;
-    loadingIcons.push(scene.add.image(gameConsts.halfWidth - 200, loadIconHeight, 'runeMatterPre'));
-    loadingIcons.push(scene.add.image(gameConsts.halfWidth - 150, loadIconHeight, 'runeMindPre'));
-    loadingIcons.push(scene.add.image(gameConsts.halfWidth - 100, loadIconHeight, 'runeTimePre'));
-    loadingIcons.push(scene.add.image(gameConsts.halfWidth - 50, loadIconHeight, 'runeVoidPre'));
+    loadingIcons.push(scene.add.image(gameConsts.halfWidth - 160, loadIconHeight, 'runeMatterPre'));
+    loadingIcons.push(scene.add.image(gameConsts.halfWidth - 120, loadIconHeight, 'runeMindPre'));
+    loadingIcons.push(scene.add.image(gameConsts.halfWidth - 80, loadIconHeight, 'runeTimePre'));
+    loadingIcons.push(scene.add.image(gameConsts.halfWidth - 40, loadIconHeight, 'runeVoidPre'));
     loadingIcons.push(scene.add.image(gameConsts.halfWidth, loadIconHeight, 'runeStrikePre'));
-    loadingIcons.push(scene.add.image(gameConsts.halfWidth + 50, loadIconHeight, 'runeEnhancePre')); // prepare
-    loadingIcons.push(scene.add.image(gameConsts.halfWidth + 100, loadIconHeight, 'runeProtectPre')); // shield
-    loadingIcons.push(scene.add.image(gameConsts.halfWidth + 150, loadIconHeight, 'runeReinforcePre')); // body
-    loadingIcons.push(scene.add.image(gameConsts.halfWidth + 200, loadIconHeight, 'runeUnloadPre')); // ultimate
+    loadingIcons.push(scene.add.image(gameConsts.halfWidth + 40, loadIconHeight, 'runeEnhancePre')); // prepare
+    loadingIcons.push(scene.add.image(gameConsts.halfWidth + 80, loadIconHeight, 'runeProtectPre')); // shield
+    loadingIcons.push(scene.add.image(gameConsts.halfWidth + 120, loadIconHeight, 'runeReinforcePre')); // body
+    loadingIcons.push(scene.add.image(gameConsts.halfWidth + 160, loadIconHeight, 'runeUnloadPre')); // ultimate
 
 
     for (let i = 0; i < loadingIcons.length; i++) {
@@ -75,11 +75,46 @@ function setupLoadingBar(scene) {
         icons[i].scrollFactorX = 0.3; icons[i].scrollFactorY = 0.3;
     }
 
-    loadObjects.loadingText = scene.add.text(gameConsts.halfWidth, gameConsts.height - (isMobile ? 345 : 332), 'LOADING...', {fontFamily: 'germania', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
+    loadObjects.loadingText = scene.add.text(gameConsts.halfWidth, gameConsts.height - (isMobile ? 342 : 328), 'Loading...', {fontFamily: 'germania', fontSize: 36, color: '#FFFFFF', align: 'center'}).setDepth(1001);
     loadObjects.loadingText.setScale(0.6);
     loadObjects.loadingText.setAlign('center');
     loadObjects.loadingText.setOrigin(0.5, 0);
     loadObjects.loadingText.scrollFactorX = 0.3; loadObjects.loadingText.scrollFactorY = 0.3;
+
+    let listOfPossibleTexts = [
+        getLangText('Matter_rune_short'),
+        getLangText('Strike_rune_short'),
+        getLangText('Enhance_rune_short'),
+        getLangText('Energy_rune_short'),
+        getLangText('Shield_rune_short'),
+        getLangText('Body_rune_short'),
+        getLangText('Time_rune_short'),
+        getLangText('Void_rune_short'),
+        getLangText('Ultimate_rune_short'),
+        getLangText('Strike_rune_short'),
+    ];
+    let listOfPossibleRunes = [
+        'runeMatterPre',
+        'runeStrikePre',
+        'runeEnhancePre',
+        'runeMindPre',
+        'runeProtectPre',
+        'runeReinforcePre',
+        'runeTimePre',
+        'runeVoidPre',
+        'runeUnloadPre',
+        'runeStrikePre',
+    ];
+    let maxLevel = Math.min(listOfPossibleTexts.length - 1, gameVars.maxLevel) + 1;
+    let randLine = Math.floor(Math.random() * maxLevel);
+    loadObjects.loadingText.setText(listOfPossibleTexts[randLine]);
+
+    loadObjects.loadingIcon = scene.add.image(loadObjects.loadingText.x, loadObjects.loadingText.y + 40, listOfPossibleRunes[randLine]).setOrigin(0.5, 0.2);
+    loadObjects.loadingIcon2 = scene.add.image(loadObjects.loadingText.x, loadObjects.loadingText.y + 40, listOfPossibleRunes[randLine]).setOrigin(0.5, 0.2);
+    loadObjects.loadingIcon.x = loadObjects.loadingText.x - 0.25 * loadObjects.loadingText.width - 60;
+    loadObjects.loadingIcon2.x = loadObjects.loadingText.x + 0.25 * loadObjects.loadingText.width + 60;
+    loadObjects.loadingIcon.y = loadObjects.loadingText.y + loadObjects.loadingText.height * 0.5 - 4;
+    loadObjects.loadingIcon2.y = loadObjects.loadingText.y + loadObjects.loadingText.height * 0.5 - 4;
 
     loadObjects.loadingSpinner.setDepth(200);
     loadObjects.castButton.setDepth(200);
@@ -119,9 +154,9 @@ function setupLoadingBar(scene) {
             PhaserScene.tweens.add({
                 targets: loadingIconToEdit,
                 ease: 'Back.easeOut',
-                scaleX: 1,
-                scaleY: 1,
-                alpha: 0.98,
+                scaleX: 0.75,
+                scaleY: 0.75,
+                alpha: 0.75,
                 duration: 200,
             });
             PhaserScene.tweens.add({
@@ -142,35 +177,35 @@ function setupLoadingBar(scene) {
                     }
                 }
             });
-            switch(loadLevel) {
-                case 1:
-                    loadObjects.loadingText.setText('LOADED\nMIND RUNE');
-                    break;
-                case 2:
-                    loadObjects.loadingText.setText('LOADED\nTIME RUNE');
-                    break;
-                case 3:
-                    loadObjects.loadingText.setText('LOADED\nVOID RUNE');
-                    break;
-                case 4:
-                    loadObjects.loadingText.setText('LOADED\nSTRIKE RUNE');
-                    break;
-                case 5:
-                    loadObjects.loadingText.setText('LOADED\nENHANCE RUNE');
-                    break;
-                case 6:
-                    loadObjects.loadingText.setText('LOADED\nSHIELD RUNE');
-                    break;
-                case 7:
-                    loadObjects.loadingText.setText('LOADED\nBODY RUNE');
-                    break;
-                case 8:
-                    loadObjects.loadingText.setText('LOADED\nULTIMATE RUNE');
-                    break;
-                case 9:
-                    loadObjects.loadingText.setText('RECALLING\nPRECIOUS MEMORIES');
-                    break;
-            }
+            // switch(loadLevel) {
+            //     case 1:
+            //         // loadObjects.loadingText.setText('LOADED\nMIND RUNE');
+            //         break;
+            //     case 2:
+            //         // loadObjects.loadingText.setText('LOADED\nTIME RUNE');
+            //         break;
+            //     case 3:
+            //         // loadObjects.loadingText.setText('LOADED\nVOID RUNE');
+            //         break;
+            //     case 4:
+            //         // loadObjects.loadingText.setText('LOADED\nSTRIKE RUNE');
+            //         break;
+            //     case 5:
+            //         // loadObjects.loadingText.setText('LOADED\nENHANCE RUNE');
+            //         break;
+            //     case 6:
+            //         // loadObjects.loadingText.setText('LOADED\nSHIELD RUNE');
+            //         break;
+            //     case 7:
+            //         // loadObjects.loadingText.setText('LOADED\nBODY RUNE');
+            //         break;
+            //     case 8:
+            //         // loadObjects.loadingText.setText('LOADED\nULTIMATE RUNE');
+            //         break;
+            //     case 9:
+            //         // loadObjects.loadingText.setText('BEGINNING GAME');
+            //         break;
+            // }
 
             loadLevel++;
         }
@@ -179,7 +214,7 @@ function setupLoadingBar(scene) {
         onLoadComplete(scene);
 
         updateManager.addFunction(tempLoadFinFunc);
-        loadObjects.loadingText.setText('RECALLING\nPRECIOUS MEMORIES');
+
         for (let i = 0; i < loadingIcons.length; i++) {
             let loadIcon = loadingIcons[i];
             scene.tweens.add({
@@ -272,16 +307,23 @@ function setupLoadingBar(scene) {
             gameOptions.skipIntroFull = true;
             this.clickIntro();
         }
+
         scene.tweens.add({
             targets: [loadObjects.loadingText],
-            alpha: 0,
+            rotation: 0,
             duration: 200,
             onComplete: () => {
+                scene.tweens.add({
+                    targets: [loadObjects.loadingText],
+                    alpha: 0,
+                    ease: 'Quad.easeInOut',
+                    duration: 500
+                });
                 if (gameOptions.skipIntroFull) {
                     return;
                 }
                 loadObjects.loadingText.setText(getLangText('start')).setScale(1).setPosition(loadObjects.loadingText.x, loadObjects.loadingText.y - 20);
-                loadObjects.loadingText.alpha = 1;
+
 
                 loadObjects.loadingText2 = scene.add.text(loadObjects.loadingText.x, loadObjects.loadingText.y, getLangText('start'), {fontFamily: 'germania', fontSize: 42, color: '#FFFFFF', align: 'center'}).setDepth(1001);
                 loadObjects.loadingText2.setScale(1).setAlign('center').setOrigin(0.5, 0);
@@ -484,8 +526,8 @@ function clickIntro() {
     PhaserScene.tweens.add({
         targets: [loadObjects.loadingText2, loadObjects.loadingText3],
         alpha: 0,
-        duration: 500,
-        ease: 'Quint.easeOut'
+        duration: 800,
+        ease: 'Quad.easeOut'
     });
 
     loadObjects.glowBG = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'blurry', 'circle.webp').setDepth(2000).setAlpha(0.5).setScale(0);
@@ -599,7 +641,7 @@ function clickIntro() {
     }
 
     loadObjects.skipIntroText = PhaserScene.add.text(gameConsts.width - 5, gameConsts.height - 5, getLangText('click_to_skip'), {fontFamily: 'verdana', fontSize: 18, color: '#FFFFFF', align: 'right'}).setDepth(1005).setAlpha(0).setOrigin(1, 1);
-    loadObjects.loadingText.setText(" ").setAlpha(0).setScale(0.75).y -= 18;
+    // loadObjects.loadingText.setText(" ").setAlpha(0).setScale(0.75).y -= 18;
     loadObjects.whiteOverall = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setDepth(2000).setAlpha(0).setScale(1000);
     PhaserScene.tweens.add({
         targets: loadObjects.whiteOverall,
@@ -607,18 +649,6 @@ function clickIntro() {
         ease: 'Quad.easeIn',
         duration: 2100
     });
-    PhaserScene.time.delayedCall(1800, () => {
-        if (!gameVars.introFinished) {
-            loadObjects.loadingText.setAlpha(0).setText(getLangText('find_you')).setAlign('center');
-            PhaserScene.tweens.add({
-                targets: loadObjects.loadingText,
-                alpha: 1,
-                ease: 'Quad.easeIn',
-                duration: 500,
-            });
-        }
-    });
-
 
     if (!loadObjects.introLocketOpen) {
          loadObjects.introLocketOpen = PhaserScene.add.image(loadObjects.introLocket.x, loadObjects.introLocket.y, 'misc', 'locket3.png').setDepth(1001).setOrigin(0.5, 0.65);

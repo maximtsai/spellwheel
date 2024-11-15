@@ -995,6 +995,87 @@ let textData2 = {
         "ru": "",
         "es": "",
         "jp": ""
+    },
+    "Matter_rune_short": {
+        "en_us": "Matter Rune summons heavy rocks\nfor offense and defense",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Strike_rune_short": {
+        "en_us": "Strike Rune directly attacks the opponent",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Enhance_rune_short": {
+        "en_us": "Enhance Rune boosts the\npower of your attacks",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Energy_rune_short": {
+        "en_us": "Energy Rune controls lightning,\nfire and raw energy",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Shield_rune_short": {
+        "en_us": "Shield Rune creates protective barriers",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Body_rune_short": {
+        "en_us": "Body Rune modifies your wheel and health",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Time_rune_short": {
+        "en_us": "Time rune controls the flow of time, slowing\nenemy attacks or duplicating your own",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Void_rune_short": {
+        "en_us": "Void rune controls dark empty space",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Ultimate_rune_short": {
+        "en_us": "Ultimate rune grants you your\nmost powerful abilities",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
     }
 };
 

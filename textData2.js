@@ -691,10 +691,10 @@ let textData2 = {
         "jp": "外側のホイールがあな\nたの行動を決定します"
     },
     "level1_tut_b": {
-        "en_us": "Watch out!\nEnemies get angry\nwhen attacked!",
-        "fr": "Les ennemis se\nmettent en colère\nlorsqu’ils sont\nattaqués!",
-        "zh_tw": "敵人受到攻擊\n時會生氣！",
-        "zh_cn": "敌人受到攻击\n时会生气！",
+        "en_us": "Watch out!\nAttacking angers\nyour opponents!",
+        "fr": "Attaquer met en\ncolère vos\nadversaires !",
+        "zh_tw": "使用攻擊會激\n怒你的對手!",
+        "zh_cn": "使用攻击会激\n怒你的对手!",
         "ru": "Враги злятся,\nкогда на них\nнападают!",
         "es": "¡Los enemigos\nse enfadan cuando\nson atacados!",
         "jp": "攻撃されると\n敵が怒る!"

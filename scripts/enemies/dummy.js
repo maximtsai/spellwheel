@@ -591,9 +591,9 @@
          if (prevHealthPercent >= 0.95) {
              if (currHealthPercent < 0.95) {
                  this.canAngryEyes = true;
-                 let angrySymbol = this.scene.add.sprite(this.x + 35, this.y - 52, 'misc', 'angry1.png').play('angry').setScale(0.3).setDepth(9999);
+                 this.customAngrySymbol = this.scene.add.sprite(this.x + 35, this.y - 52, 'misc', 'angry1.png').play('angry').setScale(0.3).setDepth(9999);
                  this.addTween({
-                     targets: angrySymbol,
+                     targets: this.customAngrySymbol,
                      scaleX: 0.9,
                      scaleY: 0.9,
                      duration: 300,
@@ -602,14 +602,11 @@
                      onComplete: () => {
                          this.addTween({
                              delay: 1000,
-                             targets: angrySymbol,
+                             targets: this.customAngrySymbol,
                              scaleX: 0,
                              scaleY: 0,
                              duration: 300,
                              ease: 'Back.easeIn',
-                             onComplete: () => {
-                                 angrySymbol.destroy();
-                             }
                          });
                      }
                  });
@@ -875,6 +872,28 @@
                      chargeAmt: 415,
                      damage: gameVars.isHardMode ? 25 : 20,
                      isBigMove: true,
+                     startFunction: () => {
+                         this.customAngrySymbol.x -= 4;
+                         this.customAngrySymbol.y -= 5;
+                         this.addTween({
+                             targets: this.customAngrySymbol,
+                             scaleX: 1,
+                             scaleY: 1,
+                             duration: 400,
+                             easeParams: [3],
+                             ease: 'Back.easeOut',
+                             onComplete: () => {
+                                 this.addTween({
+                                     delay: 1000,
+                                     targets: this.customAngrySymbol,
+                                     scaleX: 0,
+                                     scaleY: 0,
+                                     duration: 300,
+                                     ease: 'Back.easeIn',
+                                 });
+                             }
+                         });
+                     },
                      attackFinishFunction: () => {
                          playSound('punch');
                          playSound('body_slam')
@@ -905,6 +924,24 @@
                      chargeMult: 3,
                      isBigMove: true,
                      startFunction: () => {
+                         this.addTween({
+                             targets: this.customAngrySymbol,
+                             scaleX: 1.2,
+                             scaleY: 1.2,
+                             duration: 400,
+                             easeParams: [3],
+                             ease: 'Back.easeOut',
+                             onComplete: () => {
+                                 this.addTween({
+                                     delay: 1000,
+                                     targets: this.customAngrySymbol,
+                                     scaleX: 0,
+                                     scaleY: 0,
+                                     duration: 300,
+                                     ease: 'Back.easeIn',
+                                 });
+                             }
+                         });
                          this.currentAttackSetIndex = 1;
                          this.nextAttackIndex = 0;
                      },

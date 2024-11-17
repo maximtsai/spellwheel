@@ -126,7 +126,7 @@ class Dummymind extends Dummypractice {
                 }, 400)
                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level1_train_popup'), 'center');
 
-            }, 1500);
+            }, 1900);
 
             // messageBus.publish('enemyAddShield', 500)
         });

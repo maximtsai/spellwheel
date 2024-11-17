@@ -352,10 +352,10 @@ function createAnimations(scene) {
             prefix: 'btnFlash',
             suffix: '.png',
             start: 1,
-            end: 12,
+            end: 13,
             zeroPad: 0,
         }),
-        frameRate: 24
+        frameRate: 30
     });
     scene.anims.create({
         key: 'forceBreak',

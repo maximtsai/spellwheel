@@ -17,7 +17,7 @@ function setupMainMenuBG() {
 
         let isSolo = !hasLvlSelect;
         let yPos = isSolo ? gameConsts.halfHeight - 122 : gameConsts.halfHeight - 260;
-        let xPos = isSolo ? gameConsts.halfWidth - 160 : gameConsts.halfWidth - 176;
+        let xPos = isSolo ? gameConsts.halfWidth - 150 : gameConsts.halfWidth - 176;
         if (!globalObjects.startButtonSprite) {
             globalObjects.startButtonSprite = PhaserScene.add.sprite(xPos, yPos + 38, 'misc', 'newgame.webp');
         }
@@ -29,9 +29,24 @@ function setupMainMenuBG() {
         } else {
             globalObjects.startButtonSprite.setRotation(-0.14);
             globalObjects.startButtonSprite.rotationOffset = -0.14;
+
         }
         globalObjects.creditsButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 225, gameConsts.halfHeight - 5, 'misc', 'creditsgame.webp');
         globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
+    }
+}
+
+function playNewGameFlash() {
+    let hasLvlSelect = gameVars.maxLevel >= 1;
+    if (!hasLvlSelect) {
+        setTimeout(() => {
+            if (globalObjects.startButtonSprite.visible) {
+                globalObjects.startButtonSpriteFlash = PhaserScene.add.sprite(globalObjects.startButtonSprite.x + 3, globalObjects.startButtonSprite.y, 'shields', 'btnFlash1.png');
+                globalObjects.startButtonSpriteFlash.play('btnFlash');
+                globalObjects.startButtonSpriteFlash.setScale(globalObjects.startButtonSprite.scaleX * 1.28).setRotation(globalObjects.startButtonSprite.rotation);
+            }
+        }, 250)
+
     }
 }
 
@@ -46,7 +61,9 @@ function clearOnlyMenuButtons() {
         globalObjects.levelButtonSprite.destroy();
     }
     globalObjects.startButton.destroy();
+    globalObjects.startButtonSprite.visible = false;
     globalObjects.startButtonSprite.destroy();
+    globalObjects.startButtonSpriteFlash.destroy();
     // globalObjects.cheatButton.destroy();
     // globalObjects.cheatButton2.destroy();
     // globalObjects.cheatButton3.destroy();

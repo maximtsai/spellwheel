@@ -76,7 +76,7 @@ function setupLoadingBar(scene) {
     }
 
     loadObjects.loadingText = scene.add.text(gameConsts.halfWidth, gameConsts.height - (isMobile ? 342 : 328), 'Loading...', {fontFamily: 'germania', fontSize: 36, color: '#FFFFFF', align: 'center'}).setDepth(1001);
-    loadObjects.loadingText.setScale(0.6);
+    loadObjects.loadingText.setScale(0.6).setAlpha(0.93);
     loadObjects.loadingText.setAlign('center');
     loadObjects.loadingText.setOrigin(0.5, 0);
     loadObjects.loadingText.scrollFactorX = 0.3; loadObjects.loadingText.scrollFactorY = 0.3;
@@ -109,12 +109,18 @@ function setupLoadingBar(scene) {
     let randLine = Math.floor(Math.random() * maxLevel);
     loadObjects.loadingText.setText(listOfPossibleTexts[randLine]);
 
-    loadObjects.loadingIcon = scene.add.image(loadObjects.loadingText.x, loadObjects.loadingText.y + 40, listOfPossibleRunes[randLine]).setOrigin(0.5, 0.2);
-    loadObjects.loadingIcon2 = scene.add.image(loadObjects.loadingText.x, loadObjects.loadingText.y + 40, listOfPossibleRunes[randLine]).setOrigin(0.5, 0.2);
+    loadObjects.loadingIcon = scene.add.image(loadObjects.loadingText.x, loadObjects.loadingText.y + 40, listOfPossibleRunes[randLine]).setOrigin(0.5, 0.2).setAlpha(0);
+    loadObjects.loadingIcon2 = scene.add.image(loadObjects.loadingText.x, loadObjects.loadingText.y + 40, listOfPossibleRunes[randLine]).setOrigin(0.5, 0.2).setAlpha(0);
     loadObjects.loadingIcon.x = loadObjects.loadingText.x - 0.25 * loadObjects.loadingText.width - 60;
     loadObjects.loadingIcon2.x = loadObjects.loadingText.x + 0.25 * loadObjects.loadingText.width + 60;
     loadObjects.loadingIcon.y = loadObjects.loadingText.y + loadObjects.loadingText.height * 0.5 - 4;
     loadObjects.loadingIcon2.y = loadObjects.loadingText.y + loadObjects.loadingText.height * 0.5 - 4;
+    PhaserScene.tweens.add({
+        targets: [loadObjects.loadingIcon, loadObjects.loadingIcon2],
+        alpha: 1,
+        duration: 300,
+    });
+
 
     loadObjects.loadingSpinner.setDepth(200);
     loadObjects.castButton.setDepth(200);
@@ -809,7 +815,7 @@ function showLocket() {
             }
         });
 
-        if (gameVars.latestLevel > 1 && Math.random() > 0.75) {
+        if (gameVars.latestLevel > 1 && Math.random() > 0.4) {
             let ladyImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 90, 'ending', 'ending2_a.png').setAlpha(0.2).setDepth(200).setScale(0.5);
             PhaserScene.tweens.add({
                 targets: ladyImage,
@@ -872,6 +878,10 @@ function fadeOutLocketDisplay() {
                 scaleY: 0.65,
                 ease: 'Quart.easeIn',
                 duration: 600,
+                onStart: () => {
+                    playNewGameFlash();
+
+                },
                 onComplete: () => {
                     globalObjects.gameLocketOpen.destroy();
                 }

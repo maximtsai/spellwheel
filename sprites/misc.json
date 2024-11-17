@@ -1160,24 +1160,24 @@
 					}
 				},
 				{
-					"filename": "angry2.png",
+					"filename": "exclamation_tri.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 46,
-						"h": 46
+						"w": 58,
+						"h": 54
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 46,
-						"h": 46
+						"x": 2,
+						"y": 4,
+						"w": 54,
+						"h": 48
 					},
 					"frame": {
 						"x": 490,
 						"y": 1157,
-						"w": 46,
-						"h": 46
+						"w": 54,
+						"h": 48
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1210,6 +1210,31 @@
 					}
 				},
 				{
+					"filename": "angry1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 46,
+						"h": 46
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 44,
+						"h": 42
+					},
+					"frame": {
+						"x": 748,
+						"y": 1009,
+						"w": 44,
+						"h": 42
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "exclamation1.png",
 					"rotated": false,
 					"trimmed": false,
@@ -1224,8 +1249,8 @@
 						"h": 48
 					},
 					"frame": {
-						"x": 748,
-						"y": 1009,
+						"x": 716,
+						"y": 1979,
 						"w": 24,
 						"h": 48
 					},
@@ -1796,6 +1821,31 @@
 					}
 				},
 				{
+					"filename": "angry2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 46,
+						"h": 46
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 46,
+						"h": 46
+					},
+					"frame": {
+						"x": 1228,
+						"y": 871,
+						"w": 46,
+						"h": 46
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "bone1.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1810,35 +1860,10 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 1228,
-						"y": 871,
-						"w": 46,
-						"h": 43
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "angry1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 46,
-						"h": 46
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 2,
-						"w": 44,
-						"h": 42
-					},
-					"frame": {
 						"x": 1416,
 						"y": 841,
-						"w": 44,
-						"h": 42
+						"w": 46,
+						"h": 43
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1851,6 +1876,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:5bdf3391cc65f1eb455e4cb7024843dc:c102710e993fbe9a5e6a44209c264bc5:71b7deba37d49c4a400e3c6826b292e5$"
+		"smartupdate": "$TexturePacker:SmartUpdate:5eab30290b2e9beef413a7afb40891dd:66634e98798151ea185c4695c3917a87:71b7deba37d49c4a400e3c6826b292e5$"
 	}
 }

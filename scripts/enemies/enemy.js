@@ -287,10 +287,17 @@ class Enemy {
 
         let attackNameYPos = isMobile ? this.chargeBarMax.y - 23 : this.chargeBarMax.y - 22
 
-        this.angrySymbol = this.scene.add.sprite(x, attackNameYPos - 8, 'misc', 'angry1.png');
+        this.angryAlert = this.addSprite(x, attackNameYPos - 8, 'misc', 'exclamation_tri.png').setAlpha(0).setDepth(9).setOrigin(0.46, 0.65);
+        this.angryAlert2 = this.addSprite(x, attackNameYPos - 8, 'misc', 'exclamation_tri.png').setAlpha(0).setDepth(9).setOrigin(0.54, 0.65);
+        this.angrySymbol = this.addSprite(x, attackNameYPos - 8, 'misc', 'angry1.png');
         this.angrySymbol.setDepth(9);
         this.angrySymbol.visible = false;
+        this.angrySymbol2 = this.addSprite(x, attackNameYPos - 8, 'misc', 'exclamation1.png');
+        this.angrySymbol2.setDepth(9);
+        this.angrySymbol2.visible = false;
+
         this.angrySymbolIsHiding = true;
+
 
         this.attackNameHighlight = this.scene.add.image(x, attackNameYPos - 13, 'blurry', 'glow_flat_red.webp').setAlpha(0).setDepth(9);
         this.attackGlow = this.scene.add.image(x, attackNameYPos - 10, 'blurry', 'glow_flat.webp').setAlpha(0).setDepth(9).setVisible(false);
@@ -317,7 +324,10 @@ class Enemy {
         this.chargeBarFlash2.depth = depth;
         this.chargeBarEst1.depth = depth;
         this.chargeBarEst2.depth = depth;
+        this.angryAlert.depth = depth;
+        this.angryAlert2.depth = depth;
         this.angrySymbol.depth = depth;
+        this.angrySymbol2.depth = depth;
         this.attackNameHighlight.depth = depth;
         this.attackGlow.depth = depth;
         this.attackDarken.depth = depth;
@@ -851,7 +861,7 @@ class Enemy {
             this.chargeBarAngry.visible = true;
             this.chargeBarCurr.visible = true;
             this.chargeBarAngry.alpha = this.chargeBarAngry.midAlpha;
-            if (chargeMult > 1.1) {
+            if (chargeMult > 1.001) {
                 this.showAngrySymbol('exclamation');
             }
         } else {
@@ -1016,7 +1026,11 @@ class Enemy {
     }
 
     repositionAngrySymbol() {
-        this.angrySymbol.x = this.attackName.x + this.attackName.width * 0.496 + 18;
+        let offsetConst = (this.nextAttack && this.nextAttack.isBigMove) ? 22 : 18
+        this.angrySymbol.x = this.attackName.x + this.attackName.width * 0.496 + offsetConst;
+        this.angrySymbol2.x = this.attackName.x - this.attackName.width * 0.496 - offsetConst;
+        this.angryAlert.x = this.angrySymbol.x - 1;
+        this.angryAlert2.x = this.angrySymbol2.x + 1;
     }
 
     readyNextAttack() {
@@ -1691,13 +1705,14 @@ class Enemy {
                 this.angrySymbolAnim.stop();
             }
             this.angrySymbolAnim = PhaserScene.tweens.add({
-                targets: [this.angrySymbol],
+                targets: [this.angrySymbol, this.angrySymbol2],
                 scaleX: 0,
                 scaleY: 0,
                 ease: "Cubic.easeIn",
                 duration: gameVars.gameManualSlowSpeedInverse * 200,
                 onComplete: () => {
                     this.angrySymbol.visible = false;
+                    this.angrySymbol2.visible = false;
                 }
             });
         }
@@ -1709,7 +1724,15 @@ class Enemy {
         }
         if (this.angrySymbol.currAnim !== state) {
             this.angrySymbol.currAnim = state;
+            this.angrySymbol.stop();
             this.angrySymbol.play(state);
+            if (state === 'exclamation') {
+                this.angrySymbol2.play(state);
+                this.angrySymbol2.alpha = 1;
+            } else {
+                this.angrySymbol2.stop();
+                this.angrySymbol2.alpha = 0;
+            }
         }
         if (this.angrySymbolIsHiding) {
             this.angrySymbolIsHiding = false;
@@ -1736,13 +1759,53 @@ class Enemy {
                     }
                 });
             } else {
+                this.angrySymbol2.visible = true;
                 this.angrySymbolAnim = this.scene.tweens.add({
-                    targets: this.angrySymbol,
+                    targets: [this.angrySymbol, this.angrySymbol2],
                     scaleX: 0.85,
                     scaleY: 0.85,
                     duration: gameVars.gameManualSlowSpeedInverse * 200,
                     ease: 'Back.easeOut',
                 });
+                if (!this.nextAttack.isPassive) {
+                    this.angryAlert.setAlpha(1).setScale(0.75);
+                    this.angryAlert2.setAlpha(1).setScale(0.75);
+                    playSound('swish',0.8).detune = -300;
+
+                    this.scene.tweens.add({
+                        targets: [this.angryAlert, this.angryAlert2],
+                        scaleX: 2.25,
+                        scaleY: 2.25,
+                        duration: gameVars.gameManualSlowSpeedInverse * 800,
+                        ease: 'Cubic.easeOut',
+                        completeDelay: 25,
+                        onComplete: () => {
+                            playSound('slice_in',0.3).detune = -600;
+
+                            this.angryAlert.setAlpha(1).setScale(0.75);
+                            this.angryAlert2.setAlpha(1).setScale(0.75);
+                            this.scene.tweens.add({
+                                targets: [this.angryAlert, this.angryAlert2],
+                                scaleX: 2.25,
+                                scaleY: 2.25,
+                                duration: gameVars.gameManualSlowSpeedInverse * 1200,
+                                ease: 'Cubic.easeOut',
+                            });
+                            this.scene.tweens.add({
+                                targets: [this.angryAlert, this.angryAlert2],
+                                alpha: 0,
+                                ease: 'Quad.easeOut',
+                                duration: gameVars.gameManualSlowSpeedInverse * 1200,
+                            });
+                        }
+                    });
+                    this.scene.tweens.add({
+                        targets: [this.angryAlert, this.angryAlert2],
+                        alpha: 0,
+                        ease: 'Cubic.easeOut',
+                        duration: gameVars.gameManualSlowSpeedInverse * 800,
+                    });
+                }
             }
 
             this.angrySymbol.visible = true;
@@ -1844,7 +1907,7 @@ class Enemy {
         this.chargeBarEst2.destroy();
         this.voidPause.destroy();
         this.attackName.destroy();
-        this.angrySymbol.destroy();
+        // this.angrySymbol.destroy(); // maybe no longer needed now that i have addsprite
         this.chargeBarFlash1.destroy();
         this.chargeBarFlash2.destroy();
 
@@ -2174,7 +2237,7 @@ class Enemy {
         globalObjects.magicCircle.disableMovement();
          let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
          let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let continueText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 18}).setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998);
+         let continueText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'garamondmax', color: '#F0F0F0', fontSize: 18}).setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998);
          swirlInReaperFog();
 
          PhaserScene.tweens.add({

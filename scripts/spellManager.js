@@ -1646,7 +1646,7 @@ class SpellManager {
                             scaleY: 0.9,
                             ease: 'Quad.easeOut',
                         });
-                        messageBus.publish('animateTrueDamageNum', attackObj.x + 12 - Math.random() * 24, attackObj.y - 30 - Math.random() * 5, 'VULNERABLE', isMobile ? 0.9 : 0.85);
+                        messageBus.publish('animateTrueDamageNum', attackObj.x + 12 - Math.random() * 24, attackObj.y - 30 - Math.random() * 5, 'VULNERABLE', isMobile ? 0.82 : 0.75);
 
                         messageBus.publish('enemyTakeEffect', {
                             name: spellID,

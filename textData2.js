@@ -700,10 +700,10 @@ let textData2 = {
         "jp": "外側のホイールがあな\nたの行動を決定します"
     },
     "level1_tut_b": {
-        "en_us": "Watch out!\nEnemies get angry\nwhen attacked!",
-        "fr": "Les ennemis se\nmettent en colère\nlorsqu’ils sont\nattaqués!",
-        "zh_tw": "敵人受到攻擊\n時會生氣！",
-        "zh_cn": "敌人受到攻击\n时会生气！",
+        "en_us": "Watch out!\nAttacking angers\nyour opponents!",
+        "fr": "Attaquer met en\ncolère vos\nadversaires !",
+        "zh_tw": "使用攻擊會激\n怒你的對手!",
+        "zh_cn": "使用攻击会激\n怒你的对手!",
         "ru": "Враги злятся,\nкогда на них\nнападают!",
         "es": "¡Los enemigos\nse enfadan cuando\nson atacados!",
         "jp": "攻撃されると\n敵が怒る!"
@@ -1001,6 +1001,87 @@ let textData2 = {
         "fr": "HP: ",
         "zh_tw": "生命: ",
         "zh_cn": "生命: ",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Matter_rune_short": {
+        "en_us": "Matter Rune summons heavy rocks\nfor offense and defense",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Strike_rune_short": {
+        "en_us": "Strike Rune directly attacks the opponent",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Enhance_rune_short": {
+        "en_us": "Enhance Rune boosts the\npower of your attacks",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Energy_rune_short": {
+        "en_us": "Energy Rune controls lightning,\nfire and raw energy",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Shield_rune_short": {
+        "en_us": "Shield Rune creates protective barriers",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Body_rune_short": {
+        "en_us": "Body Rune modifies your wheel and health",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Time_rune_short": {
+        "en_us": "Time rune controls the flow of time, slowing\nenemy attacks or duplicating your own",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Void_rune_short": {
+        "en_us": "Void rune controls dark empty space",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Ultimate_rune_short": {
+        "en_us": "Ultimate rune grants you your\nmost powerful abilities",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
         "ru": "",
         "es": "",
         "jp": ""

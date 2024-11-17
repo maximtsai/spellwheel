@@ -3209,6 +3209,20 @@ const ENABLE_KEYBOARD = true;
      }
 
 
+     hasRune(rune) {
+        for (let i in this.elements) {
+            if (this.elements[i].runeName === rune && !this.elements[i].burnedOut) {
+                return true;
+            }
+        }
+         for (let i in this.embodiments) {
+             if (this.embodiments[i].runeName === rune && !this.embodiments[i].burnedOut) {
+                 return true;
+             }
+         }
+         return false;
+     }
+
      clearEffects(specific) {
         if (specific) {
             return;

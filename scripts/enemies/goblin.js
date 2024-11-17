@@ -17,7 +17,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 150 : 95;
+         this.health = gameVars.isHardMode ? 150 : 100;
          this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 54, 'misc', 'slash1.png').setScale(0.9).setDepth(995).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.22;
@@ -193,8 +193,8 @@
                  }
              });
          }
-         if (prevHealthPercent >= 0.99) {
-             if (currHealthPercent < 0.99) {
+         if (prevHealthPercent >= 0.999) {
+             if (currHealthPercent < 0.999) {
                  this.currentAttackSetIndex = 1;
                  this.nextAttackIndex = 0;
                  // Going to shield
@@ -236,11 +236,11 @@
              [
                  // 1
                  {
-                     name: "FANCY SHIELD {60",
-                     block: 60,
+                     name: "FANCY SHIELD {50",
+                     block: 50,
                      isPassive: true,
                      customCall: " ",
-                     chargeAmt: 290,
+                     chargeAmt: 360,
                     transitionFast: true,
                      startFunction: () => {
                         this.attackScale = 1;
@@ -270,7 +270,6 @@
                          this.nextAttackIndex = 0;
                          this.repeatTweenBreathe()
                          this.shieldAdded = true;
-
                          messageBus.publish("showCombatText", getLangText('goblin_shield'), -41);
                      }
                  }
@@ -287,55 +286,16 @@
                         this.attackScale = 1.3;
 
                         if (!this.shownTut) {
-                            this.addDelay(() => {
-                                this.shownTut = true;
-                                globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 150, getLangText("energy_tut_goblin"), 'right');
-                                let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
-                                let centerXPos = globalObjects.textPopupManager.getCenterPos();
-                                let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
-                                this.rune3 = this.addImage(centerXPos - 32, runeYPos + 17, 'circle', 'bright_rune_mind.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
-                                this.rune4 = this.addImage(centerXPos + 38, runeYPos + 17, 'circle', 'bright_rune_enhance.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
-                                messageBus.publish("closeCombatText")
-                                this.addTween({
-                                    targets: [this.rune3, this.rune4],
-                                    scaleX: 1,
-                                    scaleY: 1,
-                                    ease: 'Quart.easeOut',
-                                    duration: 500,
-                                    onComplete: () => {
-                                        this.addTween({
-                                            targets: [this.rune3, this.rune4],
-                                            scaleX: 0.8,
-                                            scaleY: 0.8,
-                                            ease: 'Back.easeOut',
-                                            duration: 300,
-                                        });
-                                    }
+
+                            if (globalObjects.magicCircle.hasRune(RUNE_MIND) && globalObjects.magicCircle.hasRune(RUNE_ENHANCE)) {
+                                this.showEnergyTut();
+                            } else {
+                                this.resetCast = messageBus.subscribe('resetCircle', () => {
+                                    this.showEnergyTut();
+                                    this.resetCast.unsubscribe();
                                 });
-                                this.addTween({
-                                    targets: [this.rune3, this.rune4],
-                                    alpha: 1,
-                                    duration: 200,
-                                    completeDelay: 1000,
-                                    onComplete: () => {
-                                        this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
-                                            this.playerSpellCastSub.unsubscribe();
-                                            this.addTimeout(() => {
-                                                this.addTween({
-                                                    targets: [this.rune3, this.rune4],
-                                                    alpha: 0,
-                                                    duration: 300,
-                                                    onComplete: () => {
-                                                        this.rune3.visible = false;
-                                                        this.rune4.visible = false;
-                                                    }
-                                                });
-                                                globalObjects.textPopupManager.hideInfoText();
-                                            }, 300);
-                                        });
-                                    }
-                                });
-                            }, 1250)
+                                this.subscriptions.push(this.resetCast);
+                            }
                         }
                      },
                      attackFinishFunction: () => {
@@ -362,8 +322,7 @@
                  {
                      name: "MY SHIELD!",
                      isPassive: true,
-                     chargeAmt: 300,
-                     chargeMult: 8,
+                     chargeAmt: 150,
                      customCall: " ",
                      transitionFast: true,
                      damage: 0,
@@ -385,7 +344,7 @@
                      name: "GETTING KNIVES!",
                      isPassive: true,
                      chargeAmt: 300,
-                     chargeMult: 5,
+                     chargeMult: 4,
                      isBigMove: true,
                      startFunction: () => {
                         this.pullbackScale = 0.91;
@@ -461,6 +420,58 @@
                  }
              ],
          ];
+     }
+
+     showEnergyTut() {
+         this.addDelay(() => {
+             this.shownTut = true;
+             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 150, getLangText("energy_tut_goblin"), 'right');
+             let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+             let centerXPos = globalObjects.textPopupManager.getCenterPos();
+             let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
+             this.rune3 = this.addImage(centerXPos - 32, runeYPos + 17, 'circle', 'bright_rune_mind.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+             this.rune4 = this.addImage(centerXPos + 38, runeYPos + 17, 'circle', 'bright_rune_enhance.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+             messageBus.publish("closeCombatText")
+             this.addTween({
+                 targets: [this.rune3, this.rune4],
+                 scaleX: 1,
+                 scaleY: 1,
+                 ease: 'Quart.easeOut',
+                 duration: 500,
+                 onComplete: () => {
+                     this.addTween({
+                         targets: [this.rune3, this.rune4],
+                         scaleX: 0.8,
+                         scaleY: 0.8,
+                         ease: 'Back.easeOut',
+                         duration: 300,
+                     });
+                 }
+             });
+             this.addTween({
+                 targets: [this.rune3, this.rune4],
+                 alpha: 1,
+                 duration: 200,
+                 completeDelay: 1000,
+                 onComplete: () => {
+                     this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
+                         this.playerSpellCastSub.unsubscribe();
+                         this.addTimeout(() => {
+                             this.addTween({
+                                 targets: [this.rune3, this.rune4],
+                                 alpha: 0,
+                                 duration: 300,
+                                 onComplete: () => {
+                                     this.rune3.visible = false;
+                                     this.rune4.visible = false;
+                                 }
+                             });
+                             globalObjects.textPopupManager.hideInfoText();
+                         }, 300);
+                     });
+                 }
+             });
+         }, 1000)
      }
 
      makeSlashEffect() {

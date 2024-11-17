@@ -288,7 +288,7 @@
                      chargeAmt: 550,
                      finishDelay: 800,
                      transitionFast: true,
-                     chargeMult: 8,
+                     chargeMult: 6.5,
                      damage: -1,
                     startFunction: () => {
                     },
@@ -303,7 +303,7 @@
                  {
                      name: "}10",
                      chargeAmt: 550,
-                     chargeMult: 8,
+                     chargeMult: 6.5,
                      finishDelay: 800,
                      transitionFast: true,
                      damage: -1,
@@ -360,7 +360,7 @@
                  {
                      name: "}2x6",
                      chargeAmt: 500,
-                     chargeMult: 8,
+                     chargeMult: 6.5,
                      finishDelay: 1000,
                      transitionFast: true,
                      damage: -1,
@@ -382,7 +382,7 @@
                      chargeAmt: 700,
                      finishDelay: 1600,
                      transitionFast: true,
-                     chargeMult: 8,
+                     chargeMult: 6.5,
                      damage: -1,
                      isBigMove: true,
                     startFunction: () => {
@@ -401,7 +401,7 @@
                  {
                      name: "Malfunctioning...",
                      chargeAmt: 400,
-                     chargeMult: 7,
+                     chargeMult: 6.5,
                      damage: -1,
                      isPassive: true,
                      startFunction: () => {
@@ -439,7 +439,7 @@
                      chargeAmt: 1000,
                      finishDelay: 800,
                      transitionFast: true,
-                     chargeMult: 8,
+                     chargeMult: 6.5,
                      damage: -1,
                      isBigMove: true,
                     startFunction: () => {
@@ -461,7 +461,7 @@
                      chargeAmt: 1000,
                      finishDelay: 800,
                      transitionFast: true,
-                     chargeMult: 8,
+                     chargeMult: 6.5,
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
@@ -482,7 +482,7 @@
                      name: "}6",
                      chargeAmt: 550,
                      transitionFast: true,
-                     chargeMult: 8,
+                     chargeMult: 6.5,
                      damage: -1,
                     startFunction: () => {
                         this.addTimeout(() => {

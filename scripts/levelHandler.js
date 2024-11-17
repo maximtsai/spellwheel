@@ -231,7 +231,7 @@ function beginPreLevel(lvl) {
             break;
         case 2:
             // water
-            globalObjects.magicCircle.setWheelTint(0.09, 0.02, 'usage_tint_b.png');
+            globalObjects.magicCircle.setWheelTint(0.10, 0.05, 'usage_tint_b.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'water_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
             text1 = PhaserScene.add.text(gameConsts.halfWidth - 246, gameConsts.halfHeight + 120, getLangText('pre_fight_water'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
@@ -589,7 +589,7 @@ function switchLevelBackground(lvl) {
             break;
         case 2:
             switchBackground('forest_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'backgroundwater.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
+            fadeInBackgroundAtlas('backgrounds', 'backgroundwater.webp', 1500, 1.05, 1, 1,'Quart.easeIn', 0, false, -30);
             break;
         case 3:
             switchBackground('forest_bg.webp');

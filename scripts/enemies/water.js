@@ -16,7 +16,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 140 : 120;
+         this.health = gameVars.isHardMode ? 80 : 60;
         // this.pullbackScale = 1;
         // this.attackScale = 1;
          this.attackEase = "Quart.easeIn";

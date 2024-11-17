@@ -506,14 +506,14 @@
                 this.addTween({
                     targets: currObj,
                     x: gameConsts.halfWidth * 0.2 + currObj.x * 0.8,
-                    y: gameConsts.height - 320,
+                    y: gameConsts.height - 328,
                     ease: 'Quart.easeIn',
                     duration: 1100,
                     onComplete: () => {
                         playSound('tree_hit').detune = isLeft ? 50 : -200;
                         messageBus.publish("selfTakeDamage", damage);
                         let xPos = gameConsts.halfWidth * 0.5 + currObj.x * 0.5;
-                        let hitEffect = this.addSprite(xPos, currObj.y + Math.random() * 8, 'spells').play('damageEffectShort').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
+                        let hitEffect = this.addSprite(xPos, currObj.y - Math.random() * 8, 'spells').play('damageEffectShort').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
                         this.addTween({
                             targets: hitEffect,
                             scaleX: 1.25,

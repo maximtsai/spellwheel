@@ -64,8 +64,12 @@ function updateSpellState(level) {
             ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MATTER, RUNE_MATTER, null, null, null, null];
             break;
         case 2:
+            // fight water
+            EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_ENHANCE, null, null, null, null, RUNE_ENHANCE, RUNE_STRIKE];
+            ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, null, null, null, null, RUNE_MIND];
+            break;
         case 3:
-            // fight goblin, water
+            // fight goblin,
             EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_ENHANCE, null, null, null, null, RUNE_ENHANCE, RUNE_STRIKE];
             ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MATTER, null, null, null, RUNE_MIND];
             break;

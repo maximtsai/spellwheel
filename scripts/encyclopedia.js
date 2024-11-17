@@ -557,6 +557,7 @@ class Encyclopedia {
         let allRunes = [
             "enhance",
             "energy",
+            "",
             "protect",
             "reinforce",
             "time",
@@ -564,7 +565,7 @@ class Encyclopedia {
             "unload"];
         let availableRunes = ["strike",
             "matter"];
-        let targetLevel = Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel , 14));
+        let targetLevel = Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel , 15));
         for (let i = 0; i < Math.min(allRunes.length, targetLevel); i++) {
             availableRunes.push(allRunes[i]);
         }

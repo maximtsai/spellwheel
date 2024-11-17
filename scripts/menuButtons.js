@@ -1385,13 +1385,13 @@ function showLevelSelectScreen(){
     globalObjects.options.hideButton();
     let clickBlocker = createGlobalClickBlocker(false);
     let positionsX = [
-        gameConsts.halfWidth - 120, gameConsts.halfWidth, gameConsts.halfWidth + 120,
+        gameConsts.halfWidth - 180, gameConsts.halfWidth - 60, gameConsts.halfWidth + 60, gameConsts.halfWidth + 180,
         gameConsts.halfWidth - 180, gameConsts.halfWidth - 60, gameConsts.halfWidth + 60, gameConsts.halfWidth + 180,
         gameConsts.halfWidth - 120, gameConsts.halfWidth, gameConsts.halfWidth + 120,
         gameConsts.halfWidth - 180, gameConsts.halfWidth - 60, gameConsts.halfWidth + 60, gameConsts.halfWidth + 180,
     ]
     let positionsY = [
-        gameConsts.halfHeight - 180, gameConsts.halfHeight - 180, gameConsts.halfHeight - 180,
+        gameConsts.halfHeight - 180, gameConsts.halfHeight - 180, gameConsts.halfHeight - 180, gameConsts.halfHeight - 180,
         gameConsts.halfHeight - 60, gameConsts.halfHeight - 60, gameConsts.halfHeight - 60, gameConsts.halfHeight - 60,
         gameConsts.halfHeight + 60, gameConsts.halfHeight + 60, gameConsts.halfHeight + 60,
         gameConsts.halfHeight + 180, gameConsts.halfHeight + 180, gameConsts.halfHeight + 180, gameConsts.halfHeight + 180,
@@ -1484,7 +1484,7 @@ function showLevelSelectScreen(){
 
     let listOfBtns = [];
 
-    let maxLevel = Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel , 14));
+    let maxLevel = Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel, 15));
     for (let i = 1; i <= maxLevel; i++) {
         let xPos = positionsX[i - 1];
         let yPos = positionsY[i - 1];

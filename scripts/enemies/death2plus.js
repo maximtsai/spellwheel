@@ -82,7 +82,7 @@
          this.shieldScale = 1.5;
          this.shieldOffsetY = 40;
         this.lastAttackLingerMult = 2.5;
-         this.shieldTextOffsetY = -55;
+         this.shieldTextOffsetY = -42;
          this.shieldTextFont = "void";
          this.shieldTextSize = 56;
          this.pullbackScale = 0.97;
@@ -97,7 +97,7 @@
         this.deathhalo1 = this.addImage(this.x, this.y + 3, 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setBlendMode(Phaser.BlendModes.NORMAL);
         this.deathhalo2 = this.addImage(this.x, this.y + 3, 'blurry', 'deathhalo.png').setScale(0.1).setDepth(-1).setAlpha(0).setRotation(1).setBlendMode(Phaser.BlendModes.NORMAL);
         this.circleHalo = this.addImage(this.x, this.y - 4, 'blurry', 'spellcircle_pulse.png').setAlpha(0).setScale(0.5).setDepth(-1);
-         this.shieldExtraText = this.addBitmapText(this.x, this.y + this.shieldTextOffsetY + 108, 'void', 'SHIELDED', 60).setOrigin(0.5).setDepth(this.shieldText.depth).setVisible(false);
+         this.shieldExtraText = this.addBitmapText(this.x, this.y + this.shieldTextOffsetY + 80, 'void', 'SHIELDED', 60).setOrigin(0.5).setDepth(this.shieldText.depth).setVisible(false);
 
          this.handShieldBack = this.addImage(this.x, this.y + 2, 'blurry', 'handshield_back.png').setScale(2.4).setDepth(-5).setAlpha(0);
          this.handShieldBack.startScale = this.handShieldBack.scaleX;
@@ -422,7 +422,7 @@
                  if (this.pulseFinalEnabled) {
                      let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 1550);
                      setTimeout(() => {
-                         playSound('heartbeatfast', 0.8).seek(0.28).detune = -750;
+                         playSound('heartbeatfast', 0.8).setSeek(0.28).detune = -750;
                      }, 10)
                      tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(0.53).setRotation(0);
                      this.addTween({
@@ -486,6 +486,7 @@
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 10, 0);
         globalObjects.bannerTextManager.showBanner(0);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
+            messageBus.publish("closeCombatText");
             this.showActualFinale();
         })
     }
@@ -842,7 +843,7 @@
                                  // this.fadeOutCurrentHand();
                                  this.createPokePower();
                                  this.addDelayIfAlive(() => {
-                                     messageBus.publish("showCombatText", getLangText('deathFight2plusb'), -40);
+                                     messageBus.publish("showCombatText", getLangText('deathFight2plusb'), -30);
                                      this.addTimeout(() => {
                                          this.setAwake();
                                          this.spellAbsorber = messageBus.subscribe('playerCastedSpell', () => {
@@ -871,7 +872,7 @@
                  // 1
                  {
                      name: ";40+#1",
-                     chargeAmt: 700,
+                     chargeAmt: 750,
                      finishDelay: 2000,
                      damage: -1,
                      isBigMove: true,
@@ -973,7 +974,7 @@
                              this.rotateSpellCircleTo(2, true, () => {
                                  this.createOkayPower();
                                  this.addDelayIfAlive(() => {
-                                     messageBus.publish("showCombatText", getLangText('deathFight2plusc'), -40);
+                                     messageBus.publish("showCombatText", getLangText('deathFight2plusc'), -30);
                                      this.healFromAttacks = true;
                                      this.addTimeout(() => {
                                          this.setAwake();
@@ -1019,7 +1020,7 @@
                  },
                  {
                      name: ";40+#2",
-                     chargeAmt: 700,
+                     chargeAmt: 800,
                      finishDelay: 2000,
                      damage: -1,
                      startFunction: () => {
@@ -1076,6 +1077,9 @@
                          })
                      },
                      finaleFunction: () => {
+                         if (this.currentAttackSetIndex === 5) {
+                             return;
+                         }
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
                          this.interruptCurrentAttack();
@@ -1083,11 +1087,21 @@
                          this.addDelayIfAlive(() => {
                              this.healFromAttacks = false;
                              this.clearPower();
+                             if (this.currentAttackSetIndex === 5) {
+                                 return;
+                             }
                              this.rotateSpellCircleTo(3, true, () => {
                                  // this.fadeOutCurrentHand();
+                                 if (this.currentAttackSetIndex === 5) {
+                                     return;
+                                 }
                                  this.createClawPower();
                                  this.addDelayIfAlive(() => {
-                                     messageBus.publish("showCombatText", getLangText('deathFight2plusd'), -40);
+                                     if (this.currentAttackSetIndex === 5) {
+                                         this.clearPower();
+                                         return;
+                                     }
+                                     messageBus.publish("showCombatText", getLangText('deathFight2plusd'), -30);
                                      this.addTimeout(() => {
                                          this.setAwake();
                                          if (this.spellAbsorber) {
@@ -1114,7 +1128,7 @@
                  //3
                  {
                      name: ";40+#3",
-                     chargeAmt: 800,
+                     chargeAmt: 850,
                      chargeMult: 2,
                      finishDelay: 2000,
                      damage: -1,
@@ -1211,7 +1225,7 @@
                              this.clearPower();
                              this.addDelayIfAlive(() => {
                                  fadeAwaySound(this.bgMusic, 1500);
-                                 messageBus.publish("showCombatText", getLangText('deathFight2pluse'), -40);
+                                 messageBus.publish("showCombatText", getLangText('deathFight2pluse'), -30);
                                  this.addTimeout(() => {
                                      this.setAwake();
                                      this.spellsCastCounter = 0;
@@ -2830,7 +2844,7 @@
              ease: 'Back.easeOut',
              duration: durMut * 250,
          });
-         playSound('swish');
+         playSound('swish', 0.3).detune = -800;
          // playSound('slice_in');
 
          this.handShield.visible = true;
@@ -3981,8 +3995,8 @@
 
      beginDeathLast() {
          gameVars.fromDeath2Plus = true;
-         createEnemy(14)
          this.destroy();
+         createEnemy(this.level + 1)
      }
 
 }

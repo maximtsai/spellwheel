@@ -837,8 +837,8 @@ function showFinalLocket() {
                         PhaserScene.tweens.add({
                             targets: [closeText],
                             alpha: 0,
-                            duration: 150,
-                            completeDelay: 400,
+                            duration: 200,
+                            completeDelay: 800,
                             onComplete: () => {
                                 closeText.destroy();
                                 darkBG.alpha = 1;
@@ -958,7 +958,7 @@ function rollCredits() {
             alpha: 1,
             duration: 1200,
         }
-        if (i == textCredits.length - 1) {
+        if (i === textCredits.length - 1) {
             tweenObjData.onComplete = () => {
                 let menuText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 20, getLangText('return_menu'), {fontFamily: 'garamondmax', fontSize: 16, color: '#FFFFFF', align: 'riht'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(1, 1).setAlpha(0.6);
                 clickBlocker.setOnMouseUpFunc(() => {

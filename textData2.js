@@ -501,6 +501,15 @@ let textData2 = {
         "es": " ",
         "jp": " "
     },
+    "pre_fight_water": {
+        "en_us": "A strange creature of water disturbs me\nwhile I was refilling my supplies.\n\nRocks pass right through it, but perhaps\nlightning will have an effect?",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "pre_fight_1a": {
         "en_us": "\"This is my shield, mine!\n Is family treasure from\n father's brother's aunt's\n grandpa's cousin's\n friend's neighbor!!\"",
         "fr": "« Ceci est mon bouclier, le\nmien! C’est un trésor de\nfamille du frère du père,\nde la tante du grand-père,\ndu voisin de l’ami du\ncousin du grand-père!! »",

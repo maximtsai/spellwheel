@@ -338,14 +338,14 @@ class Death3 extends Enemy {
             [
                 {
                     name: " ",
-                    chargeAmt: 450,
+                    chargeAmt: 400,
                     chargeMult: 2,
                     transitionFast: true,
                     isPassive: true,
                     customCall: 'flip1',
                     startFunction: () => {
                         globalObjects.bannerTextManager.closeBanner();
-                        messageBus.publish("showCombatText", getLangText('death3_a'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_a'), 10);
                     },
                     finaleFunction: () => {
                     }
@@ -358,7 +358,7 @@ class Death3 extends Enemy {
                     transitionFast: true,
                     customCall: 'flip2',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_b'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_b'), 10);
 
                         this.addTween({
                             targets: this.hourglassdark,
@@ -463,7 +463,7 @@ class Death3 extends Enemy {
                     customCall: 'flip2',
                     startFunction: () => {
                         this.bgtemprocks.destroy();
-                        messageBus.publish("showCombatText", getLangText('death3_c'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_c'), 10);
                     },
                     finaleFunction: () => {
                     }
@@ -477,7 +477,7 @@ class Death3 extends Enemy {
                     customCall: 'flip1',
                     startFunction: () => {
                         this.setDeathFace('max_death_3b.png')
-                        messageBus.publish("showCombatText", getLangText('death3_understand'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_understand'), 10);
                     },
                     finaleFunction: () => {
                     }
@@ -491,7 +491,7 @@ class Death3 extends Enemy {
                     customCall: 'flip3',
                     startFunction: () => {
                         this.setDeathFace()
-                        messageBus.publish("showCombatText", getLangText('death3_obsess'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_obsess'), 10);
                         this.addTween({
                             targets: this.hourglassdark,
                             alpha: 0.8,
@@ -511,7 +511,7 @@ class Death3 extends Enemy {
                     customCall: 'flip1',
                     startFunction: () => {
                         this.setDeathFace('max_death_3b.png')
-                        messageBus.publish("showCombatText", getLangText('death3_odyssey'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_odyssey'), 10);
                     },
                 },
                 {
@@ -522,7 +522,7 @@ class Death3 extends Enemy {
                     transitionFast: true,
                     customCall: 'flip2',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_indulgence'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_indulgence'), 10);
                     },
                 },
                 {
@@ -533,7 +533,7 @@ class Death3 extends Enemy {
                     transitionFast: true,
                     customCall: 'flip1',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_yield'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_yield'), 10);
                     },
                 },
                 {
@@ -545,7 +545,7 @@ class Death3 extends Enemy {
                     customCall: 'flip3',
                     startFunction: () => {
                         this.setDeathFace()
-                        messageBus.publish("showCombatText", getLangText('death3_within'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_within'), 10);
                     },
                 },
                 {
@@ -557,7 +557,7 @@ class Death3 extends Enemy {
                     customCall: 'flip1',
                     startFunction: () => {
                         this.setDeathFace('max_death_3b.png')
-                        messageBus.publish("showCombatText", getLangText('death3_both'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_both'), 10);
                     },
                 },
                 {
@@ -568,7 +568,7 @@ class Death3 extends Enemy {
                     transitionFast: true,
                     customCall: 'flip2',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_strength'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_strength'), 10);
                     },
                 },
                 {
@@ -580,7 +580,7 @@ class Death3 extends Enemy {
                     customCall: 'flip1',
                     startFunction: () => {
                         this.setDeathFace()
-                        messageBus.publish("showCombatText", getLangText('death3_letting'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_letting'), 10);
                     },
                 },
                 {
@@ -591,7 +591,7 @@ class Death3 extends Enemy {
                     transitionFast: true,
                     customCall: 'flip3',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_memory'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_memory'), 10);
                     },
                 },
                 {
@@ -602,7 +602,7 @@ class Death3 extends Enemy {
                     transitionFast: true,
                     customCall: 'flip1',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('now...'), 15);
+                        messageBus.publish("showCombatText", getLangText('now...'), 10);
                     },
                 },
                 {
@@ -614,7 +614,7 @@ class Death3 extends Enemy {
                     customCall: 'flip2',
                     startFunction: () => {
                         this.setDeathFace('max_death_3c.png')
-                        messageBus.publish("showCombatText", getLangText('death3_calm'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_calm'), 10);
                         this.addTween({
                             targets: this.hourglassdark,
                             alpha: 0,
@@ -633,7 +633,7 @@ class Death3 extends Enemy {
                     transitionFast: true,
                     customCall: 'flip1',
                     startFunction: () => {
-                        messageBus.publish("showCombatText", getLangText('death3_patience'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_patience'), 10);
                     },
                 },
                 {
@@ -648,7 +648,7 @@ class Death3 extends Enemy {
                         this.addTimeout(() => {
                             showCutscene3();
                         }, 500)
-                        messageBus.publish("showCombatText", getLangText('death3_once'), 15);
+                        messageBus.publish("showCombatText", getLangText('death3_once'), 10);
                     },
                 },
                 {

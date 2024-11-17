@@ -1862,6 +1862,66 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/water_elec1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>136,165,271,330</rect>
+                <key>scale9Paddings</key>
+                <rect>136,165,271,330</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/water_elec2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>136,115,271,230</rect>
+                <key>scale9Paddings</key>
+                <rect>136,115,271,230</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/water_elemental.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>82,64,163,129</rect>
+                <key>scale9Paddings</key>
+                <rect>82,64,163,129</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/water_elemental_blast.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>82,164,163,329</rect>
+                <key>scale9Paddings</key>
+                <rect>82,164,163,329</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
         </map>
         <key>fileLists</key>
         <map type="SpriteSheetMap">

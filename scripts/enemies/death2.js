@@ -1773,7 +1773,7 @@
 
      beginDeath3() {
          gameVars.fromDeath2 = true;
-         createEnemy(13)
          this.destroy();
+         createEnemy(this.level + 1);
      }
 }

@@ -126,6 +126,18 @@ function createAnimations(scene) {
         frameRate: 10,
     });
     scene.anims.create({
+        key: 'waterelec',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'water_elec',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        repeat: 1,
+        frameRate: 12,
+    });
+    scene.anims.create({
         key: 'death2laugh',
         frames: scene.anims.generateFrameNames('deathfinal', {
             prefix: 'death2laugh',

@@ -109,12 +109,12 @@ function setupLoadingBar(scene) {
     let randLine = Math.floor(Math.random() * maxLevel);
     loadObjects.loadingText.setText(listOfPossibleTexts[randLine]);
 
-    loadObjects.loadingIcon = scene.add.image(loadObjects.loadingText.x, loadObjects.loadingText.y + 40, listOfPossibleRunes[randLine]).setOrigin(0.5, 0.2).setAlpha(0);
-    loadObjects.loadingIcon2 = scene.add.image(loadObjects.loadingText.x, loadObjects.loadingText.y + 40, listOfPossibleRunes[randLine]).setOrigin(0.5, 0.2).setAlpha(0);
+    loadObjects.loadingIcon = scene.add.image(loadObjects.loadingText.x, loadObjects.loadingText.y + 45, listOfPossibleRunes[randLine]).setOrigin(0.5, 0.25).setAlpha(0);
+    loadObjects.loadingIcon2 = scene.add.image(loadObjects.loadingText.x, loadObjects.loadingText.y + 45, listOfPossibleRunes[randLine]).setOrigin(0.5, 0.25).setAlpha(0);
     loadObjects.loadingIcon.x = loadObjects.loadingText.x - 0.25 * loadObjects.loadingText.width - 60;
     loadObjects.loadingIcon2.x = loadObjects.loadingText.x + 0.25 * loadObjects.loadingText.width + 60;
-    loadObjects.loadingIcon.y = loadObjects.loadingText.y + loadObjects.loadingText.height * 0.5 - 4;
-    loadObjects.loadingIcon2.y = loadObjects.loadingText.y + loadObjects.loadingText.height * 0.5 - 4;
+    loadObjects.loadingIcon.y = loadObjects.loadingText.y + loadObjects.loadingText.height * 0.4 + 9;
+    loadObjects.loadingIcon2.y = loadObjects.loadingIcon.y;
     PhaserScene.tweens.add({
         targets: [loadObjects.loadingIcon, loadObjects.loadingIcon2],
         alpha: 1,

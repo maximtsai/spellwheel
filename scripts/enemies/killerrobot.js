@@ -2490,7 +2490,7 @@
             alpha: 0,
             duration: 800,
             onStart: () => {
-                beginLevel(11)
+                beginLevel(this.level + 1)
             }
         })
      }

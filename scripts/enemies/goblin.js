@@ -17,7 +17,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 150 : 100;
+         this.health = gameVars.isHardMode ? 150 : 90;
          this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 54, 'misc', 'slash1.png').setScale(0.9).setDepth(995).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.22;
@@ -222,10 +222,10 @@
              [
                  // 0
                  {
-                     name: gameVars.isHardMode ? "}8 " : "}4 ",
+                     name: gameVars.isHardMode ? "}8 " : "}5 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
                      chargeAmt: 250,
-                     damage: gameVars.isHardMode ? 8 : 4,
+                     damage: gameVars.isHardMode ? 8 : 5,
                      attackSprites: ['gobbo0_atk.png'],
                      attackFinishFunction: () => {
                          this.makeSlashEffect();
@@ -343,7 +343,7 @@
                  {
                      name: "GETTING KNIVES!",
                      isPassive: true,
-                     chargeAmt: 300,
+                     chargeAmt: 250,
                      chargeMult: 4,
                      isBigMove: true,
                      startFunction: () => {
@@ -406,10 +406,10 @@
                      }
                  },
                  {
-                     name: "LAUGH IN YOUR FACE",
+                     name: "LAUGH",
                      isPassive: true,
-                     chargeAmt: 600,
-                     finishDelay: 1000,
+                     chargeAmt: 400,
+                     finishDelay: 700,
                      chargeMult: 5,
                      damage: -1,
                      tease: true,

@@ -373,21 +373,9 @@
                  }
              ],
              [
-                 // 4 - dual wield attacks
-                 {
-                     name: "}4x2 ",
-                     chargeAmt: gameVars.isHardMode ? 150 : 200,
-                     damage: 4,
-                     attackTimes: 2,
-                     prepareSprite: "",
-                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
-                     attackFinishFunction: () => {
-                         this.makeSlashEffect();
-                     }
-                 },
                  {
                      name: "}4x3 ",
-                     chargeAmt: gameVars.isHardMode ? 170 : 220,
+                     chargeAmt: gameVars.isHardMode ? 180 : 220,
                      damage: 4,
                      attackTimes: 3,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
@@ -397,9 +385,19 @@
                  },
                  {
                      name: "}4x4 ",
-                     chargeAmt: gameVars.isHardMode ? 190 : 240,
+                     chargeAmt: gameVars.isHardMode ? 200 : 240,
                      damage: 4,
                      attackTimes: 4,
+                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
+                     attackFinishFunction: () => {
+                         this.makeSlashEffect();
+                     }
+                 },
+                 {
+                     name: "}4x5 ",
+                     chargeAmt: gameVars.isHardMode ? 220 : 260,
+                     damage: 4,
+                     attackTimes: 5,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
                      attackFinishFunction: () => {
                          this.makeSlashEffect();

@@ -15,7 +15,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 250 : 225;
+         this.health = gameVars.isHardMode ? 250 : 230;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;
@@ -24,7 +24,7 @@
 
      takeEffect(newEffect) {
          if (this.sprite) {
-             if (newEffect.name == 'mindStrike' && !this.dead && !this.hasTimbered) {
+             if (newEffect.name === 'mindStrike' && !this.dead && !this.hasTimbered) {
                  if (this.breatheTween) {
                      this.breatheTween.stop();
                  }
@@ -72,7 +72,7 @@
          let prevHealthPercent = this.prevHealth / this.healthMax;
          let currHealthPercent = this.health / this.healthMax;
          let lastHealthLost = this.prevHealth - this.health;
-         if (currHealthPercent == 0) {
+         if (currHealthPercent <= 0) {
              // dead, can't do anything
              return;
          }
@@ -161,7 +161,7 @@
              }
              this.setNextAttack(3, 0);
              // Going to shield
-         } else if (this.health <= 70 && !this.hasTimbered) {
+         } else if (this.health <= 55 && !this.hasTimbered) {
              this.setNextAttack(5, 0);
              if (!this.hasPreparedFinal) {
                  this.dropBird();
@@ -468,20 +468,31 @@
          }
      }
 
-     attackWithBranch(damage = 12) {
+     attackWithBranch(damage = 12, isLeft = true) {
          let currObj;
-         if (!this.treeBranch) {
-             this.treeBranch = this.addImage(gameConsts.halfWidth, -50, 'enemies', 'tree_branch.webp').setRotation(-0.7 + Math.random()).setDepth(110).setOrigin(0.6, 0.6);
+         if (!isLeft) {
+             if (!this.treeBranch2) {
+                 this.treeBranch2 = this.addImage(gameConsts.halfWidth + 10, -50, 'enemies', 'tree_branch.webp').setRotation(0).setDepth(110).setOrigin(0.6, 0.6);
+             } else {
+                 this.treeBranch2.setPosition(gameConsts.halfWidth + 10, -50).setRotation(0).setAlpha(1);
+             }
+             this.treeBranch2.scaleX = -1
+             currObj = this.treeBranch2;
          } else {
-             this.treeBranch.setPosition(gameConsts.halfWidth, -50).setRotation(-0.7 + Math.random()).setAlpha(1);
+             if (!this.treeBranch) {
+                 this.treeBranch = this.addImage(gameConsts.halfWidth - 10, -50, 'enemies', 'tree_branch.webp').setRotation(0).setDepth(110).setOrigin(0.6, 0.6);
+             } else {
+                 this.treeBranch.setPosition(gameConsts.halfWidth - 10, -50).setRotation(0).setAlpha(1);
+             }
+             currObj = this.treeBranch;
          }
-         currObj = this.treeBranch;
+
         this.glowGreen()
-         playSound('tree_sfx', 0.75);
+         playSound('tree_sfx', 0.75).detune = isLeft ? 0 : -250;
 
         this.addTween({
             targets: currObj,
-            rotation: -0.5,
+            rotation: isLeft ? -0.5 : 0.5,
             duration: 600,
             y: -15,
             ease: 'Back.easeOut',
@@ -499,7 +510,7 @@
                     ease: 'Quart.easeIn',
                     duration: 1100,
                     onComplete: () => {
-                        playSound('tree_hit');
+                        playSound('tree_hit').detune = isLeft ? 50 : -200;
                         messageBus.publish("selfTakeDamage", damage);
                         let xPos = gameConsts.halfWidth * 0.5 + currObj.x * 0.5;
                         let hitEffect = this.addSprite(xPos, currObj.y + Math.random() * 8, 'spells').play('damageEffectShort').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
@@ -712,7 +723,7 @@
              [
                  // 0
                  {
-                     name: "}8 ",
+                     name: "}10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
                      chargeAmt: 410,
@@ -721,7 +732,7 @@
 
                      },
                      attackStartFunction: () => {
-                         this.attackWithBranch(8);
+                         this.attackWithBranch(10);
                      },
                      attackFinishFunction: () => {
                          let currHealthPercent = this.health / this.healthMax;
@@ -767,30 +778,17 @@
                  }
              ],
              [
-                 // 2
                  {
-                     name: " STARE...",
-                     chargeAmt: 300,
-                     isPassive: true,
-                     attackStartFunction: () => {
-
-                     },
-                     finaleFunction: () => {
-                         let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent <= 0.6 && !this.hasCrushed) {
-                             this.currentAttackSetIndex = 3;
-                             this.nextAttackIndex = 0;
-                         }
-                     }
-                 },
-                 {
-                     name: "|10 ",
+                     name: "|8x2 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 600,
+                     chargeAmt: 650,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.attackWithBranch(10);
+                         this.attackWithBranch(8);
+                         this.addTimeout(() => {
+                             this.attackWithBranch(8, false);
+                         }, 925)
                      },
                      attackFinishFunction: () => {
                          let currHealthPercent = this.health / this.healthMax;
@@ -872,7 +870,7 @@
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.03;
                          let currHealthPercent = this.health / this.healthMax;
-                         if (this.health > 60) {
+                         if (this.health > 55) {
                              this.currentAttackSetIndex = 4;
                              this.nextAttackIndex = 0;
                          } else if (!this.hasTimbered) {

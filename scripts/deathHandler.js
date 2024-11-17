@@ -1144,27 +1144,28 @@ function handleReaperDialog(level = 0, onComplete) {
         return;
         break;
     case 2:
+    case 3:
         reaperDialog = [
             getLangText('death2a'),
             getLangText('death2b'),
             getLangText('death2c'),
             ];
         break;
-    case 3:
+    case 4:
         reaperDialog = [
             getLangText('death3a'),
             getLangText('death3b'),
             getLangText('death3c'),
         ];
         break;
-    case 4:
+    case 5:
         reaperDialog = [
             getLangText('death4b'),
             getLangText('death4c'),
             getLangText('death4d'),
         ];
         break;
-    case 5:
+    case 6:
         reaperDialog = [
             getLangText('death_statue1'),
             getLangText('death_statue2'),
@@ -1174,13 +1175,13 @@ function handleReaperDialog(level = 0, onComplete) {
             messageBus.publish('lift_statue');
         }]
         break;
-    case 6:
+    case 7:
         reaperDialog = [
             getLangText('death5a'),
             getLangText('death5b'),
         ];
         break;
-    case 7:
+    case 8:
         reaperDialog = [
             getLangText('death6a'),
             getLangText('death6b'),
@@ -1207,7 +1208,7 @@ function handleReaperDialog(level = 0, onComplete) {
 
         }, undefined]
         break;
-    case 8:
+    case 9:
         reaperDialog = [
             getLangText('death7a'),
             getLangText('death7b'),
@@ -1249,7 +1250,7 @@ function handleReaperDialog(level = 0, onComplete) {
 
         ]
         break;
-    case 9:
+    case 10:
         reaperDialog = [
             getLangText('death8a'),
             getLangText('death8b'),

@@ -2295,11 +2295,7 @@ class Enemy {
                              onComplete: () => {
                                  victoryText.destroy();
                                  banner.destroy();
-<<<<<<< HEAD
-                                this.beginReaperAnim();
-=======
                                  this.beginReaperAnim();
->>>>>>> main
                              }
                          });
                         continueText.destroy();

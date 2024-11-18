@@ -267,7 +267,7 @@ function beginPreLevelTrue(lvl) {
             globalObjects.magicCircle.setWheelTint(0.10, 0.05, 'usage_tint_b.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'water_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth - 246, gameConsts.halfHeight + 120, getLangText('pre_fight_water'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth - 246, gameConsts.halfHeight + 110, getLangText('pre_fight_water'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();
@@ -731,19 +731,19 @@ function createTutorialBtn(lvl) {
         case 2:
             return buildTutorialButton('rune_energy_large.png', buildTutorialMind);
             break;
-        case 3:
+        case 4:
             return buildTutorialButton('rune_protect_large.png', buildTutorialProtect);
             break;
-        case 4:
+        case 5:
             return buildTutorialButton('rune_reinforce_large.png', buildTutorialReinforce);
             break;
-        case 5:
+        case 6:
             return buildTutorialButton('rune_time_large.png', buildTutorialTime);
             break;
-        case 7:
+        case 8:
             return buildTutorialButton('rune_void_large.png', buildTutorialVoid);
             break;
-        case 8:
+        case 9:
             return buildTutorialButton('rune_unload_large.png', buildTutorialUnload);
             break;
     }

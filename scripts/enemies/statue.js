@@ -245,7 +245,7 @@
                     } else {
                         globalObjects.bannerTextManager.setDialog([getLangText('statue_info_a'), getLangText('statue_info_b')]);
                     }
-                    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+                    globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
                     globalObjects.bannerTextManager.showBanner(0.5);
                     globalObjects.bannerTextManager.setOnFinishFunc(() => {
                         this.showTimeStrike();

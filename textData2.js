@@ -502,10 +502,10 @@ let textData2 = {
         "jp": " "
     },
     "pre_fight_water": {
-        "en_us": "A strange creature of water disturbs me\nwhile I was refilling my supplies.\n\nRocks pass right through it, but perhaps\nlightning will have an effect?",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "en_us": "A strange creature of water disturbed me\nwhile I was refilling my supplies.\n\nRocks pass right through it, but perhaps\nlightning will have an effect?",
+        "fr": "Une étrange créature aquatique m'a dérangé\nalors que je remplissais mes provisions.\n\nLes rochers la traversent, mais peut-être\nque la foudre aura un effet ?",
+        "zh_tw": "當我補充補給時，一個討厭的水生物打\n擾了我。\n\n岩石直接穿過它，但也許閃電會有作用？",
+        "zh_cn": "当我补充补给时，一个讨厌的水生物打\n扰了我。\n\n岩石直接穿过它，但也许闪电会有作用？",
         "ru": "",
         "es": "",
         "jp": ""
@@ -682,13 +682,13 @@ let textData2 = {
         "jp": "もう一つの障害は?"
     },
     "level1_diag_b": {
-        "en_us": "Another obstacle. Time to use\nmy more advanced spells.",
-        "fr": "Un autre obstacle. Je devrais utiliser\nmes sorts les plus avancés",
-        "zh_tw": "另一个障碍。我應該使用\n我的更高級的法術。",
-        "zh_cn": "另一个障碍。我应该使用\n我的更高级的法术。",
-        "ru": "Мне следует использовать\nболее продвинутые заклинания",
-        "es": "¡Debería usar mis\nhechizos más avanzados",
-        "jp": "もっと高度な呪文を使うべきだ"
+        "en_us": "Another obstacle. Enhancing my\nattacks will destroy it faster.",
+        "fr": "Un autre obstacle. Renforcer mes\nattaques le détruira plus vite.",
+        "zh_tw": "另一个障碍。強化法術\n能讓我更快摧毀敵人。",
+        "zh_cn": "另一个障碍。强化法术\n能让我更快摧毁敌人。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "level1_tut_a": {
         "en_us": "Enhance rune\nmakes your\nattacks stronger\n ",
@@ -709,7 +709,7 @@ let textData2 = {
         "jp": "外側のホイールがあな\nたの行動を決定します"
     },
     "level1_tut_b": {
-        "en_us": "Watch out!\nAttacking angers\nyour opponents!",
+        "en_us": "Attacking angers\nyour opponents!",
         "fr": "Attaquer met en\ncolère vos\nadversaires !",
         "zh_tw": "使用攻擊會激\n怒你的對手!",
         "zh_cn": "使用攻击会激\n怒你的对手!",
@@ -727,19 +727,37 @@ let textData2 = {
         "jp": ""
     },
     "level_water_nodamage": {
-        "en_us": "Physical attacks don't\naffect this creature",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "en_us": "Physical attacks can't\nharm this creature.",
+        "fr": "Les attaques physiques ne\nblessent pas cette créature.",
+        "zh_tw": "物理攻擊傷不了這個生物。",
+        "zh_cn": "物理攻击伤不了这个生物。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "level_water_nodamage2": {
-        "en_us": "But perhaps Energy spells do.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "en_us": "But perhaps Energy spells will.",
+        "fr": "Mais peut-être que les\nsorts d'énergie le feront.",
+        "zh_tw": "但能量法術也許可以。",
+        "zh_cn": "但能量法术也许可以。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "level_water_victory": {
+        "en_us": "(The water elemental runs away)",
+        "fr": "(La élémentaire d'eau s'est échappée)",
+        "zh_tw": "（水元素生物逃跑了）",
+        "zh_cn": "（水元素生物逃跑了）",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "level_water_victory_post": {
+        "en_us": "I need something to\ndefend myself with.",
+        "fr": "J'ai besoin de quelque\nchose pour me défendre.",
+        "zh_tw": "我必須找到方法来保護自己",
+        "zh_cn": "我必須找到方法来保護自己",
         "ru": "",
         "es": "",
         "jp": ""
@@ -809,7 +827,7 @@ let textData2 = {
         "jp": ""
     },
     "level_dummy_shield2": {
-        "en_us": "I rigged this dummy to\nattack when I click START.",
+        "en_us": "This dummy is rigged to\nattack when I click START.",
         "fr": "J'ai truqué ce mannequin pour\nattaquer au clic sur DÉMARRER.",
         "zh_tw": "當我單擊“START”時，\n這個假人會開始進行攻擊。",
         "zh_cn": "当我单击“START”时，\n这个假人会开始进行攻击。",

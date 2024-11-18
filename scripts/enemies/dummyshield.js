@@ -15,7 +15,7 @@
      initTutorial() {
          globalObjects.magicCircle.disableMovement();
          globalObjects.bannerTextManager.setDialog([getLangText('level_dummy_shield'), getLangText('level_dummy_shield2')]);
-         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
          globalObjects.bannerTextManager.showBanner(false, language === 'fr');
 
 
@@ -302,7 +302,7 @@
                      chargeAmt: 550,
                      finishDelay: 800,
                      transitionFast: true,
-                     chargeMult: 6.5,
+                     chargeMult: 7,
                      damage: -1,
                     startFunction: () => {
                     },
@@ -317,7 +317,7 @@
                  {
                      name: "}10",
                      chargeAmt: 550,
-                     chargeMult: 6.5,
+                     chargeMult: 7,
                      finishDelay: 800,
                      transitionFast: true,
                      damage: -1,
@@ -374,7 +374,7 @@
                  {
                      name: "}2x6",
                      chargeAmt: 500,
-                     chargeMult: 6.5,
+                     chargeMult: 7,
                      finishDelay: 1000,
                      transitionFast: true,
                      damage: -1,
@@ -396,7 +396,7 @@
                      chargeAmt: 700,
                      finishDelay: 1600,
                      transitionFast: true,
-                     chargeMult: 6.5,
+                     chargeMult: 7,
                      damage: -1,
                      isBigMove: true,
                     startFunction: () => {
@@ -415,7 +415,7 @@
                  {
                      name: "Malfunctioning...",
                      chargeAmt: 400,
-                     chargeMult: 6.5,
+                     chargeMult: 7,
                      damage: -1,
                      isPassive: true,
                      startFunction: () => {
@@ -453,7 +453,7 @@
                      chargeAmt: 1000,
                      finishDelay: 800,
                      transitionFast: true,
-                     chargeMult: 6.5,
+                     chargeMult: 7,
                      damage: -1,
                      isBigMove: true,
                     startFunction: () => {
@@ -475,7 +475,7 @@
                      chargeAmt: 1000,
                      finishDelay: 800,
                      transitionFast: true,
-                     chargeMult: 6.5,
+                     chargeMult: 7,
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
@@ -496,7 +496,7 @@
                      name: "}6",
                      chargeAmt: 550,
                      transitionFast: true,
-                     chargeMult: 6.5,
+                     chargeMult: 7,
                      damage: -1,
                     startFunction: () => {
                         this.addTimeout(() => {

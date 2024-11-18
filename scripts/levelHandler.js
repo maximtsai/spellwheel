@@ -234,7 +234,7 @@ function beginPreLevel(lvl) {
             globalObjects.magicCircle.setWheelTint(0.10, 0.05, 'usage_tint_b.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'water_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
-            text1 = PhaserScene.add.text(gameConsts.halfWidth - 246, gameConsts.halfHeight + 120, getLangText('pre_fight_water'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
+            text1 = PhaserScene.add.text(gameConsts.halfWidth - 246, gameConsts.halfHeight + 110, getLangText('pre_fight_water'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
             text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
 
             createGlobalClickBlocker();

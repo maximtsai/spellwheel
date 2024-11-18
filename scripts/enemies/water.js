@@ -288,7 +288,7 @@
                  },
                  {
                      name: "}7x2 ",
-                     chargeAmt: gameVars.isHardMode ? 550 : 600,
+                     chargeAmt: gameVars.isHardMode ? 500 : 550,
                      damage: -1,
                      attackTimes: 2,
                      isBigMove: true,
@@ -488,6 +488,9 @@
 
              }
          });
+         globalObjects.encyclopedia.hideButton();
+         globalObjects.options.hideButton();
+         globalObjects.magicCircle.disableMovement();
 
          this.sprite.setFrame('water_emerge1.png');
          this.sprite.setRotation(0);
@@ -506,9 +509,14 @@
                      duration: 800,
                      onComplete: () => {
                          this.addTimeout(() => {
-                             this.showFlash(this.x, this.y);
-                             this.addTimeout(() => {
-                                 let rune = this.addImage(this.x, this.y, 'tutorial', 'rune_protect_large.png').setScale(0.5).setDepth(9999);
+                             globalObjects.bannerTextManager.setDialog([getLangText('level_water_victory')]);
+                             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
+                             globalObjects.bannerTextManager.showBanner(false);
+                             globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                                 globalObjects.bannerTextManager.setOnFinishFunc(() => {});
+                                 globalObjects.bannerTextManager.closeBanner();
+
+                                 let rune = this.addImage(this.x, this.y, 'tutorial', 'rune_protect_large.png').setScale(0.5).setDepth(9999).setVisible(false);
                                  playSound('victory_2');
                                  this.addTween({
                                      targets: rune,
@@ -517,16 +525,107 @@
                                      scaleX: 1,
                                      scaleY: 1,
                                      ease: "Cubic.easeOut",
-                                     duration: 1500,
+                                     duration: 650,
                                      onComplete: () => {
                                          this.showVictory(rune);
                                      }
                                  });
-                             }, 250)
-                         }, 2300);
+
+                             });
+
+                         }, 1200);
                      }
                  });
              }
          });
     }
+
+     showVictory(rune) {
+
+         let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
+         let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
+         let continueText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'garamondmax', color: '#F0F0F0', fontSize: 18}).setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998);
+
+         PhaserScene.tweens.add({
+             targets: banner,
+             alpha: 0.75,
+             duration: gameVars.gameManualSlowSpeedInverse * 500,
+         });
+
+         PhaserScene.tweens.add({
+             targets: [victoryText],
+             alpha: 1,
+             ease: 'Quad.easeOut',
+             duration: gameVars.gameManualSlowSpeedInverse * 500,
+         });
+         setTimeout(() => {
+             continueText.alpha = 1;
+         }, 1000);
+
+         PhaserScene.tweens.add({
+             targets: victoryText,
+             scaleX: 1,
+             scaleY: 1,
+             duration: gameVars.gameManualSlowSpeedInverse * 800,
+         });
+         PhaserScene.tweens.add({
+             targets: rune,
+             y: gameConsts.halfHeight - 110,
+             ease: 'Cubic.easeOut',
+             duration: gameVars.gameManualSlowSpeedInverse * 400,
+             completeDelay: 300,
+             onComplete: () => {
+                 playSound('victory');
+
+                 if (this.dieClickBlocker) {
+                     if (canvas) {
+                         canvas.style.cursor = 'pointer';
+                     }
+                     this.dieClickBlocker.setOnMouseUpFunc(() => {
+                         if (canvas) {
+                             canvas.style.cursor = 'default';
+                         }
+                         this.dieClickBlocker.destroy();
+                         PhaserScene.tweens.add({
+                             targets: [victoryText, banner],
+                             alpha: 0,
+                             duration: gameVars.gameManualSlowSpeedInverse * 400,
+                             onComplete: () => {
+                                 victoryText.destroy();
+                                 banner.destroy();
+                                this.showPostFightMessage();
+                             }
+                         });
+                         continueText.destroy();
+                         rune.destroy();
+
+                     })
+                 } else {
+                     let clickBlocker = createGlobalClickBlocker(true);
+                     clickBlocker.setOnMouseUpFunc(() => {
+                         hideGlobalClickBlocker();
+                         PhaserScene.tweens.add({
+                             targets: [victoryText, banner],
+                             alpha: 0,
+                             duration: gameVars.gameManualSlowSpeedInverse * 400,
+                             onComplete: () => {
+                                 victoryText.destroy();
+                                 banner.destroy();
+                                 this.showPostFightMessage();
+
+                             }
+                         });
+                         continueText.destroy();
+                         rune.destroy();
+
+                     });
+                 }
+             }
+         });
+     }
+
+     showPostFightMessage() {
+        beginPreLevel(this.level + 1)
+     }
+
 }

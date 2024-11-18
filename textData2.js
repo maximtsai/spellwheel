@@ -502,7 +502,7 @@ let textData2 = {
         "jp": " "
     },
     "pre_fight_water": {
-        "en_us": "A strange creature of water disturbs me\nwhile I was refilling my supplies.\n\nRocks pass right through it, but perhaps\nlightning will have an effect?",
+        "en_us": "A strange creature of water disturbed me\nwhile I was refilling my supplies.\n\nRocks pass right through it, but perhaps\nlightning will have an effect?",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -700,7 +700,7 @@ let textData2 = {
         "jp": "外側のホイールがあな\nたの行動を決定します"
     },
     "level1_tut_b": {
-        "en_us": "Watch out!\nAttacking angers\nyour opponents!",
+        "en_us": "Attacking angers\nyour opponents!",
         "fr": "Attaquer met en\ncolère vos\nadversaires !",
         "zh_tw": "使用攻擊會激\n怒你的對手!",
         "zh_cn": "使用攻击会激\n怒你的对手!",
@@ -718,7 +718,7 @@ let textData2 = {
         "jp": ""
     },
     "level_water_nodamage": {
-        "en_us": "Physical attacks don't\naffect this creature,",
+        "en_us": "Physical attacks don't\naffect this creature.",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -727,7 +727,16 @@ let textData2 = {
         "jp": ""
     },
     "level_water_nodamage2": {
-        "en_us": "but perhaps Energy spells will.",
+        "en_us": "But perhaps Energy spells will.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "level_water_victory": {
+        "en_us": "(The water elemental runs away)",
         "fr": "",
         "zh_tw": "",
         "zh_cn": "",
@@ -800,7 +809,7 @@ let textData2 = {
         "jp": ""
     },
     "level_dummy_shield2": {
-        "en_us": "I rigged this dummy to\nattack when I click START.",
+        "en_us": "This dummy is rigged to\nattack when I click START.",
         "fr": "J'ai truqué ce mannequin pour\nattaquer au clic sur DÉMARRER.",
         "zh_tw": "當我單擊“START”時，\n這個假人會開始進行攻擊。",
         "zh_cn": "当我单击“START”时，\n这个假人会开始进行攻击。",

@@ -483,9 +483,9 @@
         }
         globalObjects.textPopupManager.hideInfoText();
          gameVars.latestLevel = this.level;
-         localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
+         sdkSetItem("latestLevel", gameVars.latestLevel.toString());
          gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
-         localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
+         sdkSetItem("maxLevel", gameVars.maxLevel.toString());
 
         if (this.rune3) {
             this.rune3.visible = false;
@@ -528,6 +528,7 @@
                      duration: 900,
                      onComplete: () => {
                          this.addTimeout(() => {
+                             sdkGameplayStop();
                              globalObjects.bannerTextManager.setDialog([getLangText('level_water_victory')]);
                              globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
                              globalObjects.bannerTextManager.showBanner(false);

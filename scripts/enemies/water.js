@@ -725,7 +725,9 @@
              this.destroy();
              globalObjects.bannerTextManager.setOnFinishFunc(() => {});
              globalObjects.bannerTextManager.closeBanner();
-             beginPreLevel(this.level + 1)
+             crazyGamesMidgameAd(() => {
+                 beginPreLevel(this.level + 1)
+             })
          })
      }
 

@@ -482,6 +482,10 @@
             this.accumTween.stop();
         }
         globalObjects.textPopupManager.hideInfoText();
+         gameVars.latestLevel = this.level;
+         localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
+         gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
+         localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
 
         if (this.rune3) {
             this.rune3.visible = false;

@@ -10,33 +10,44 @@
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3000)
-         // this.addSubscription("clearMindBurn", this.clearMindBurn.bind(this))
-         // this.addSubscription("enemyOnFire", this.setOnFire.bind(this))
+
+
+         this.addSubscription("enemyOnFire", this.setOnFire.bind(this))
 
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 80 : 70;
+         this.health = gameVars.isHardMode ? 75 : 60;
          this.isAsleep = true;
-
-        // this.pullbackScale = 1;
+         this.extraRepeatDelay = 230;
+         this.pullbackHoldRatio = 0.9;
+         this.pullbackScale = 0.86;
         // this.attackScale = 1;
          this.attackEase = "Quart.easeIn";
+         this.defaultAnim = 'wateranim';
          this.accumulatedAnimDamage = 0;
          this.setDefense(999);
      }
 
      idleAnim(){
-         if (this.currAnim) {
-             this.currAnim.stop();
-         }
-         if (!this.isUsingAttack && !this.dead) {
-             this.sprite.play('wateranim');
+         if (!this.isUsingAttack && !this.dead && !this.matterHitAnim) {
+             if (this.currAnim) {
+                 this.currAnim.stop();
+             }
+             this.sprite.play(this.defaultAnim);
+             this.currAnim = this.addTween({
+                 targets: this.sprite,
+                 ease: 'Cubic.easeOut',
+                 scaleX: 1,
+                 scaleY: 1,
+                 duration: 300,
+             });
          }
      }
 
      adjustDamageTaken(amt, isAttack, isTrue) {
          if (isAttack && !isTrue && !this.isUsingAttack) {
+             this.matterHitAnim = true;
              this.sprite.play('waterhole');
              this.sprite.setScale(0.85);
              playSound('water2');
@@ -45,92 +56,95 @@
                  scaleX: 1,
                  scaleY: 0.98,
                  ease: 'Quart.easeOut',
-                 duration: 200,
+                 duration: 125,
                  onComplete: () => {
                      this.currAnim = this.addTween({
                          targets: this.sprite,
                          scaleX: 0.95,
                          scaleY: 0.95,
                          ease: 'Back.easeOut',
-                         duration: 400,
+                         duration: 440,
                      })
                  }
              })
 
              this.addDelay(() => {
-                 if (this.currAnim) {
-                     this.currAnim.stop();
-                 }
-                 this.currAnim = this.addTween({
-                     targets: this.sprite,
-                     scaleX: 0.92,
-                     scaleY: 0.92,
-                     ease: 'Back.easeOut',
-                     duration: 200,
-                 })
                  if (!this.isUsingAttack) {
+                     if (this.currAnim) {
+                         this.currAnim.stop();
+                     }
+                     this.currAnim = this.addTween({
+                         targets: this.sprite,
+                         scaleX: 0.92,
+                         scaleY: 0.92,
+                         ease: 'Back.easeOut',
+                         duration: 200,
+                     })
                      this.sprite.play('waterhole2');
                      this.addDelay(() => {
+                         this.matterHitAnim = false;
                          this.idleAnim();
                      }, 150)
                  }
-
              }, 675)
          }
          if (amt > 10 && isAttack && !isTrue && !this.warnDamage) {
              this.warnDamage = true;
-             globalObjects.magicCircle.disableMovement();
-             globalObjects.bannerTextManager.setDialog([getLangText('level_water_nodamage'), getLangText('level_water_nodamage2')]);
-             globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
-             globalObjects.bannerTextManager.showBanner(false, language === 'fr');
-             globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                 globalObjects.magicCircle.enableMovement();
-                 // this.showEnergyTut();
+             this.addDelay(() => {
+                 globalObjects.magicCircle.disableMovement();
+                 globalObjects.bannerTextManager.setDialog([getLangText('level_water_nodamage'), getLangText('level_water_nodamage2')]);
+                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 25, 0);
+                 globalObjects.bannerTextManager.showBanner(false, language === 'fr');
+                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                     globalObjects.magicCircle.enableMovement();
+                     // this.showEnergyTut();
 
-                 globalObjects.bannerTextManager.setOnFinishFunc(() => {});
-                 globalObjects.bannerTextManager.closeBanner();
-                 this.glowCirc2 = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY(), 'shields', 'ring_flash0.png').setAlpha(0.3).setDepth(999).setScale(1.12);
-                 this.addDelay(() => {
-                     this.glowCirc2.playReverse('ring_flash');
-                     this.glowCirc2.currAnim = this.addTween({
-                         targets: this.glowCirc2,
-                         alpha: 1,
-                         ease: 'Cubic.easeOut',
-                         duration: 150,
-                         scaleX: 1.35,
-                         scaleY: 1.35,
-                         completeDelay: 1000,
-                         onComplete: () => {
-                             this.playerSpellCastSub = messageBus.subscribe('recordSpellAttack', (id, spellName) => {
-                                 this.playerSpellCastSub.unsubscribe();
-                                 globalObjects.textPopupManager.hideInfoText();
-                             });
-                             this.subscriptions.push(this.playerSpellCastSub);
+                     globalObjects.bannerTextManager.setOnFinishFunc(() => {});
+                     globalObjects.bannerTextManager.closeBanner();
+                     this.glowCirc2 = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY(), 'shields', 'ring_flash0.png').setAlpha(0.3).setDepth(999).setScale(1.12);
+                     this.addDelay(() => {
+                         this.glowCirc2.playReverse('ring_flash');
+                         this.glowCirc2.currAnim = this.addTween({
+                             targets: this.glowCirc2,
+                             alpha: 1,
+                             ease: 'Cubic.easeOut',
+                             duration: 150,
+                             scaleX: 1.35,
+                             scaleY: 1.35,
+                             completeDelay: 1000,
+                             onComplete: () => {
+                                 this.playerSpellCastSub = messageBus.subscribe('recordSpellAttack', (id, spellName) => {
+                                     this.playerSpellCastSub.unsubscribe();
+                                     globalObjects.textPopupManager.hideInfoText();
+                                 });
+                                 this.subscriptions.push(this.playerSpellCastSub);
 
-                             this.glowCirc2.currAnim = this.addTween({
-                                 targets: this.glowCirc2,
-                                 alpha: 0.3,
-                                 ease: 'Cubic.easeIn',
-                                 duration: 150,
-                                 onComplete: () => {
-                                     this.glowCirc2.setAlpha(0.6)
-                                     this.glowCirc2.currAnim = this.addTween({
-                                         targets: this.glowCirc2,
-                                         alpha: 1,
-                                         ease: 'Cubic.easeIn',
-                                         scaleX: 1.12,
-                                         scaleY: 1.12,
-                                         duration: 200,
-                                     })
-                                     this.glowCirc2.play('ring_flash')
-                                 }
-                             })
-                         }
-                     })
-                 }, 400)
-                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level1_train_popup'), 'center');
+                                 this.glowCirc2.currAnim = this.addTween({
+                                     targets: this.glowCirc2,
+                                     alpha: 0.3,
+                                     ease: 'Cubic.easeIn',
+                                     duration: 150,
+                                     onComplete: () => {
+                                         this.glowCirc2.setAlpha(0.6)
+                                         this.glowCirc2.currAnim = this.addTween({
+                                             targets: this.glowCirc2,
+                                             alpha: 1,
+                                             ease: 'Cubic.easeIn',
+                                             scaleX: 1.12,
+                                             scaleY: 1.12,
+                                             duration: 200,
+                                         })
+                                         this.glowCirc2.play('ring_flash')
+                                     }
+                                 })
+                             }
+                         })
+                     }, 400)
+                     globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level1_train_popup'), 'center');
 
-             });
+                 });
+             }, 750)
+
          }
          return super.adjustDamageTaken(amt, isAttack, isTrue)
      }
@@ -177,25 +191,26 @@
                  this.sprite.x = gameConsts.halfWidth + (Math.random() < 0.5 ? -13 : 13);
                  this.sprite.play('waterelec');
 
-                 this.currAnim = this.addTween({
+                 this.addTween({
                      targets: this.sprite,
                      x: gameConsts.halfWidth,
                      ease: 'Bounce.easeOut',
                      easeParams: [1, 2.5],
-                     duration: 260,
+                     duration: 300,
+                     completeDelay: 200,
+                     onComplete: () => {
+                         this.idleAnim();
+                     }
                  });
-                 this.sprite.once('animationcomplete', () => {
-                     this.goblinBeingShocked = false;
-                     this.idleAnim();
-
-                 })
+                this.sprite.setScale(1.13);
+                this.currAnim = this.addTween({
+                    targets: this.sprite,
+                    ease: 'Cubic.easeOut',
+                    scaleX: 0.85,
+                    scaleY: 0.85,
+                    duration: 310,
+                });
             }
-            // else if (newEffect.name === 'mindBurn') {
-            //     this.sprite.stop();
-            //     this.isAnimating = false;
-            //     this.burnAnim = this.sprite.play('gobboshieldfire');
-            //     this.isBurning = true;
-            // }
          }
          super.takeEffect(newEffect)
      }
@@ -205,7 +220,7 @@
          let prevHealthPercent = this.prevHealth / this.healthMax;
          let currHealthPercent = this.health / this.healthMax;
          let lastHealthLost = this.prevHealth - this.health;
-         if (currHealthPercent == 0) {
+         if (currHealthPercent === 0) {
              // dead, can't do anything
              return;
          }
@@ -215,12 +230,51 @@
          }
      }
 
+     setOnFire(duration) {
+         this.defaultAnim = 'wateranimfast';
+
+         if (!this.matterHitAnim && !this.isUsingAttack) {
+             this.sprite.stop();
+
+             this.burnAnim = this.sprite.play(this.defaultAnim);
+             this.isBurning = true;
+
+             // if (this.currDelay) {
+             //     this.currDelay.stop();
+             // }
+             this.currDelay = this.addTween({
+                 targets: this.sprite,
+                 rotation: 0,
+                 duration: duration * 1000 - 1000,
+                 onComplete: () => {
+                     this.clearMindBurn();
+                 }
+             });
+         }
+
+     }
+
+     clearMindBurn() {
+         if (this.burnAnim) {
+             this.sprite.stop();
+             this.burnAnim = null;
+         }
+         this.defaultAnim = 'wateranim';
+         this.isBurning = false;
+         if (this.dead) {
+             return;
+         } else {
+            playSound('water1');
+            this.idleAnim()
+         }
+     }
+
      initAttacks() {
          this.attacks = [
              [
                  {
                      name: "}10 ",
-                     chargeAmt: gameVars.isHardMode ? 450 : 500,
+                     chargeAmt: gameVars.isHardMode ? 450 : 400,
                      damage: -1,
                      prepareSprite: "water_emerge1.png",
                      attackSprites: ['water_attack.png'],
@@ -234,12 +288,12 @@
                  },
                  {
                      name: "}7x2 ",
-                     chargeAmt: gameVars.isHardMode ? 600 : 650,
+                     chargeAmt: gameVars.isHardMode ? 550 : 600,
                      damage: -1,
                      attackTimes: 2,
                      isBigMove: true,
                      prepareSprite: "water_emerge1.png",
-                     attackSprites: ['water_attack.png'],
+                     attackSprites: ['water_attack.png', 'water_attack2.png'],
                      attackFinishFunction: () => {
                          this.splashWater(7)
                      },
@@ -249,10 +303,16 @@
                  },
                  {
                      name: "STARE",
-                     chargeAmt: 300,
+                     chargeAmt: 250,
                      isPassive: true,
+                     startFunction: () => {
+                         this.pullbackScale = 1;
+                         this.attackScale = 1;
+                     },
                      finaleFunction: () => {
                          this.idleAnim();
+                         this.pullbackScale = 0.86;
+                         this.attackScale = 1.1;
                      }
                  },
              ],
@@ -431,18 +491,19 @@
 
          this.sprite.setFrame('water_emerge1.png');
          this.sprite.setRotation(0);
-         this.sprite.scaleY = 1.1;
+         this.sprite.scaleY = 1.2;
          this.addTween({
              targets: this.sprite,
-             scaleY: 1.15,
-             ease: "Cubic.easeOut",
-             duration: 25,
+             scaleY: 1,
+             ease: "Back.easeOut",
+             duration: 300,
+             completeDelay: 50,
              onComplete: () => {
                  this.addTween({
                      targets: this.sprite,
                      scaleY: 0,
-                     ease: "Cubic.easeIn",
-                     duration: 200,
+                     ease: "Quart.easeIn",
+                     duration: 800,
                      onComplete: () => {
                          this.addTimeout(() => {
                              this.showFlash(this.x, this.y);

@@ -195,7 +195,7 @@ function createAnimations(scene) {
             zeroPad: 0,
         }),
         repeat: 1,
-        frameRate: 8,
+        frameRate: 7,
     });
     scene.anims.create({
         key: 'death2laugh',

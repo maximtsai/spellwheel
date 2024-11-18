@@ -11,7 +11,7 @@
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 3000)
-         this.addSubscription("clearMindBurn", this.clearMindBurn.bind(this))
+         // this.addSubscription("clearMindBurn", this.clearMindBurn.bind(this))
          this.addSubscription("enemyOnFire", this.setOnFire.bind(this))
 
      }

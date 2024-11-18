@@ -40,11 +40,11 @@ function playNewGameFlash() {
     let hasLvlSelect = gameVars.maxLevel >= 1;
     if (!hasLvlSelect) {
         setTimeout(() => {
-            if (globalObjects.startButtonSprite.visible) {
-                globalObjects.startButtonSpriteFlash = PhaserScene.add.sprite(globalObjects.startButtonSprite.x + 3, globalObjects.startButtonSprite.y, 'shields', 'btnFlash1.png');
-                globalObjects.startButtonSpriteFlash.play('btnFlash');
-                globalObjects.startButtonSpriteFlash.setScale(globalObjects.startButtonSprite.scaleX * 1.28).setRotation(globalObjects.startButtonSprite.rotation);
-            }
+            // if (globalObjects.startButtonSprite.visible) {
+            //     globalObjects.startButtonSpriteFlash = PhaserScene.add.sprite(globalObjects.startButtonSprite.x + 3, globalObjects.startButtonSprite.y, 'shields', 'btnFlash1.png');
+            //     globalObjects.startButtonSpriteFlash.play('btnFlash');
+            //     globalObjects.startButtonSpriteFlash.setScale(globalObjects.startButtonSprite.scaleX * 1.28).setRotation(globalObjects.startButtonSprite.rotation);
+            // }
         }, 250)
 
     }
@@ -62,9 +62,9 @@ function clearOnlyMenuButtons() {
 
     globalObjects.startButtonSprite.visible = false;
     globalObjects.startButtonSprite.destroy();
-    if (globalObjects.startButtonSpriteFlash) {
-        globalObjects.startButtonSpriteFlash.destroy();
-    }
+    // if (globalObjects.startButtonSpriteFlash) {
+    //     globalObjects.startButtonSpriteFlash.destroy();
+    // }
     // globalObjects.cheatButton.destroy();
     // globalObjects.cheatButton2.destroy();
     // globalObjects.cheatButton3.destroy();

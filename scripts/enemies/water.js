@@ -85,12 +85,13 @@
                      })
                      this.sprite.play('waterhole2');
                      this.addDelay(() => {
+                         this.matterHitAnim = false;
                          this.idleAnim();
                      }, 150)
                  }
                  this.addDelay(() => {
                      this.matterHitAnim = false;
-                 }, 150)
+                 }, 140)
              }, 675)
          }
          if (amt > 10 && isAttack && !isTrue && !this.warnDamage) {
@@ -287,7 +288,7 @@
              [
                  {
                      name: "}10 ",
-                     chargeAmt: gameVars.isHardMode ? 450 : 400,
+                     chargeAmt: gameVars.isHardMode ? 400 : 400,
                      damage: -1,
                      prepareSprite: "water_emerge1.png",
                      attackSprites: ['water_attack.png'],
@@ -300,15 +301,14 @@
                      }
                  },
                  {
-                     name: "}8x2 ",
+                     name: "}7x2 ",
                      chargeAmt: gameVars.isHardMode ? 500 : 550,
                      damage: -1,
                      attackTimes: 2,
-                     isBigMove: true,
                      prepareSprite: "water_emerge1.png",
                      attackSprites: ['water_attack.png', 'water_attack2.png'],
                      attackFinishFunction: () => {
-                         this.splashWater(8)
+                         this.splashWater(7)
                      },
                      finaleFunction: () => {
                          this.idleAnim();
@@ -326,6 +326,79 @@
                          this.idleAnim();
                          this.pullbackScale = 0.86;
                          this.attackScale = 1.1;
+                     }
+                 },
+                 {
+                     name: "}12 ",
+                     chargeAmt: gameVars.isHardMode ? 450 : 450,
+                     damage: -1,
+                     prepareSprite: "water_emerge1.png",
+                     attackSprites: ['water_attack.png'],
+                     attackFinishFunction: () => {
+                         this.splashWater(12, -200);
+
+                     },
+                     finaleFunction: () => {
+                         this.idleAnim();
+                     }
+                 },
+                 {
+                     name: "}7x3 ",
+                     chargeAmt: gameVars.isHardMode ? 550 : 600,
+                     damage: -1,
+                     attackTimes: 3,
+                     isBigMove: true,
+                     prepareSprite: "water_emerge1.png",
+                     attackSprites: ['water_attack.png', 'water_attack2.png'],
+                     attackFinishFunction: () => {
+                         this.splashWater(7)
+                     },
+                     finaleFunction: () => {
+                         this.idleAnim();
+                     }
+                 },
+                 {
+                     name: "STARE",
+                     chargeAmt: 450,
+                     isPassive: true,
+                     startFunction: () => {
+                         this.pullbackScale = 1;
+                         this.attackScale = 1;
+                     },
+                     finaleFunction: () => {
+                         this.idleAnim();
+                         this.pullbackScale = 0.86;
+                         this.attackScale = 1.1;
+                     }
+                 },
+                 {
+                     name: "}14 ",
+                     chargeAmt: gameVars.isHardMode ? 550 : 600,
+                     damage: -1,
+                     isBigMove: true,
+                     prepareSprite: "water_emerge1.png",
+                     attackSprites: ['water_attack.png'],
+                     attackFinishFunction: () => {
+                         this.splashWater(14, -200);
+
+                     },
+                     finaleFunction: () => {
+                         this.idleAnim();
+                     }
+                 },
+                 {
+                     name: "}8x3 ",
+                     chargeAmt: gameVars.isHardMode ? 750 : 800,
+                     damage: -1,
+                     attackTimes: 3,
+                     isBigMove: true,
+                     prepareSprite: "water_emerge1.png",
+                     attackSprites: ['water_attack.png', 'water_attack2.png'],
+                     attackFinishFunction: () => {
+                         this.splashWater(8)
+                     },
+                     finaleFunction: () => {
+                         this.idleAnim();
                      }
                  },
              ],

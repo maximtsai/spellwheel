@@ -834,7 +834,7 @@
 			"image": "sprites/backgrounds-5.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1404,
+				"w": 1414,
 				"h": 1634
 			},
 			"scale": 1,
@@ -894,20 +894,20 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 675,
-						"h": 810
+						"w": 690,
+						"h": 828
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 675,
-						"h": 810
+						"w": 690,
+						"h": 828
 					},
 					"frame": {
 						"x": 1,
 						"y": 422,
-						"w": 675,
-						"h": 810
+						"w": 690,
+						"h": 828
 					},
 					"anchor": {
 						"x": 0.5,
@@ -929,7 +929,7 @@
 						"h": 830
 					},
 					"frame": {
-						"x": 678,
+						"x": 693,
 						"y": 803,
 						"w": 720,
 						"h": 830
@@ -945,6 +945,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:06454fc033d0eaabf55a953c7ac02278:c810c8b82507053374c24cc891552590:78d9df4e1197d3677727ae92cf39d227$"
+		"smartupdate": "$TexturePacker:SmartUpdate:95dd487119909d55b2954ec22408aa0d:c810c8b82507053374c24cc891552590:78d9df4e1197d3677727ae92cf39d227$"
 	}
 }

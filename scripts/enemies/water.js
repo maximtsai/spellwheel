@@ -159,7 +159,7 @@
      splashWater(damage, detuneOffset = 0) {
          messageBus.publish("selfTakeDamage", damage);
          if (!this.waterSplash) {
-             this.waterSplash = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 200, 'enemies', 'water_splash.png').setDepth(30);
+             this.waterSplash = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 200, 'water', 'water_splash.png').setDepth(30);
             this.detuneSplashUp = true;
          }
          let detuneAmtShift = this.detuneSplashUp ? 200 : -50;

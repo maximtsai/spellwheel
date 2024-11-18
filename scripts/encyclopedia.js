@@ -421,19 +421,19 @@ class Encyclopedia {
 
         let listOfRunes = ["rune_matter_large.png",
             "rune_strike_large.png", "rune_enhance_large.png",
-            "rune_energy_large.png",
+            "rune_energy_large.png", "blank.png",
             "rune_protect_large.png", "rune_reinforce_large.png",
             "rune_time_large.png", "rune_void_large.png",
             "rune_unload_large.png"];
         let listOfText = [getLangText("pre_fight_0d"),
             getLangText("pre_fight_0c"), getLangText("encyc_enhance"),
-            getLangText("encyc_energy"),
+            getLangText("encyc_energy"), '',
             getLangText('encyc_shield'), getLangText('encyc_body'),
             getLangText("encyc_time"), getLangText("encyc_void"),
             getLangText('encyc_ultimate')];
         let listOfDesc = [getLangText("matter_short"),
             getLangText("strike_short"), getLangText("enhance_short"),
-            getLangText("energy_short"),
+            getLangText("energy_short"), '',
             getLangText('shield_short'), getLangText('body_short'),
             getLangText("time_short"), getLangText("void_short"),
             getLangText('ultimate_short')
@@ -443,7 +443,7 @@ class Encyclopedia {
         let startPos2 = gameConsts.halfHeight + 55;
         let listOfPositions = [startPos1,
             startPos2, startPos2 + offset,
-            startPos1 + offset,
+            startPos1 + offset, startPos2,
             startPos2 + offset * 2, startPos2 + offset * 3,
             startPos1 + offset * 2, startPos1 + offset * 3,
             startPos2 + offset * 4,

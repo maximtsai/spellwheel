@@ -354,7 +354,7 @@ let textData = {
         "jp": "敵の現在HPの9%にダメージを\n与え、敵の行動を妨害する"
     },
     "mind_strike_desc": {
-        "en_us": "Deal 1 True\nDMG. Enemy\ntakes x2 DMG\nfrom next\nattack.",
+        "en_us": "Deal 1 True DMG.\nEnemy takes x2\nDMG from next\nattack.",
         "fr": "Inflige 1 dégât\nvéritable. L'ennemi\nsubit x2 dégâts\nlors de prochaine\nattaque.",
         "zh_tw": "造成 1 點真實\n傷害。下一次攻擊\n造成 2 倍傷害。",
         "zh_cn": "造成 1 点真实\n伤害。下一次攻击\n造成 2 倍伤害。",

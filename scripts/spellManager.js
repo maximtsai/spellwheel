@@ -324,6 +324,7 @@ class SpellManager {
                         } else if (i % 2 == 0) {
                             playSound('matter_strike_hit2', 0.6 + additionalVol).detune = detuneAmt;
                         }
+                        this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     }
 
                     if (isExtraBuff) {
@@ -390,7 +391,6 @@ class SpellManager {
                         }
                     }
 
-                    this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage, true, undefined, 'matter');
                     messageBus.publish('setPauseDur', isExtraBuff ? 24 : 14);

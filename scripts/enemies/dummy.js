@@ -29,7 +29,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 65 : 60;
+         this.health = gameVars.isHardMode ? 70 : 65;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
          this.attackScale = 1.25;
@@ -575,6 +575,10 @@
              return;
          }
         super.die();
+         if (this.breathTween) {
+             this.breathTween.stop();
+             this.sprite.x = gameConsts.halfWidth;
+         }
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();
          if (this.rune2) {
@@ -642,7 +646,8 @@
         }
         globalObjects.textPopupManager.hideInfoText();
 
-        this.x += 10;
+        this.x = gameConsts.halfWidth + 10;
+        this.sprite.rotation = 0;
          this.y += this.sprite.height * this.sprite.scaleY * 0.45; this.sprite.y = this.y;
          this.sprite.setOrigin(0.51, 0.96);
          this.dieClickBlocker = new Button({

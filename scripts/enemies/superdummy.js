@@ -11,7 +11,7 @@
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
             globalObjects.bannerTextManager.setDialog([getLangText('superdummy_start')]);
-            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 135, 0);
             globalObjects.bannerTextManager.showBanner(0.5);
         }, 1000)
         this.initMisc();

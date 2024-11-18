@@ -79,7 +79,7 @@ class LesserDummy extends Enemy {
 
                 // TODO Add for main dummy too
                 globalObjects.bannerTextManager.setDialog([getLangText('level0_diag_a'), getLangText('level0_diag_b')]);
-                globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+                globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 135, 0);
                 globalObjects.bannerTextManager.showBanner(false);
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
                     fadeAwaySound(this.bgMusic2,  1200);

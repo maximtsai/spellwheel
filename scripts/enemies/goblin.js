@@ -7,10 +7,6 @@
 
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
 
-         this.popupTimeout = this.addTimeout(() => {
-             this.tutorialButton = createTutorialBtn(this.level);
-             this.addToDestructibles(this.tutorialButton);
-         }, 3000)
          // this.addSubscription("clearMindBurn", this.clearMindBurn.bind(this))
          this.addSubscription("enemyOnFire", this.setOnFire.bind(this))
 
@@ -203,7 +199,7 @@
                  // Going to shield
              }
          }
-         if (this.shieldAdded && this.currentAttackSetIndex == 2) {
+         if (this.shieldAdded && this.currentAttackSetIndex === 2) {
              if (this.shield === 0) {
                  // shield must have broke
                  if (this.breatheTween) {
@@ -246,8 +242,8 @@
              [
                  // 1
                  {
-                     name: "FANCY SHIELD {50",
-                     block: 50,
+                     name: "FANCY SHIELD {45",
+                     block: 45,
                      isPassive: true,
                      customCall: " ",
                      chargeAmt: 360,
@@ -296,6 +292,9 @@
                         this.attackScale = 1.3;
 
                         if (!this.shownTut) {
+                            this.addDelay(() => {
+                                messageBus.publish("closeCombatText")
+                            }, 6500)
 
                             if (globalObjects.magicCircle.hasRune(RUNE_MIND) && globalObjects.magicCircle.hasRune(RUNE_ENHANCE)) {
                                 this.showEnergyTut();
@@ -359,6 +358,8 @@
                      startFunction: () => {
                         this.pullbackScale = 0.91;
                         this.attackScale = 1.16;
+                         this.extraRepeatDelay = 0;
+                         this.pullbackHoldRatio = 0.5;
                          this.setDefaultSprite('gobbo3.png', 0.92);
                      },
                      attackFinishFunction: () => {

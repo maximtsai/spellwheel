@@ -35,6 +35,49 @@
          this.attackScale = 1.25;
          this.extrasOnDie = [];
          this.finalArms = [];
+         this.angerMult = 1;
+     }
+
+     startBreathTween() {
+        this.breathTween = this.addTween({
+            targets: this.sprite,
+            rotation: -0.07,
+            x: gameConsts.halfWidth - 13,
+            duration: 320 * this.angerMult,
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                playSound('balloon', 0.25).detune = -100 - Math.random() * 500;
+                this.repeatBreathTween();
+            }
+        })
+     }
+
+     repeatBreathTween() {
+         this.breathTween = this.addTween({
+             targets: this.sprite,
+             rotation: 0.07,
+             x: gameConsts.halfWidth + 13,
+
+             duration: 650 * this.angerMult,
+             ease: 'Cubic.easeInOut',
+             yoyo: true,
+             repeat: -1,
+         })
+     }
+
+     stopBreathTween(rotateToZero = true) {
+         if (this.breathTween) {
+             this.breathTween.stop();
+         }
+         if (rotateToZero) {
+             this.addTween({
+                 targets: this.sprite,
+                 rotation: 0,
+                 x: gameConsts.halfWidth,
+                 duration: 300,
+                 ease: 'Cubic.easeOut',
+             })
+         }
      }
 
      initSpriteAnim(scale) {
@@ -88,7 +131,7 @@
         this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
         globalObjects.magicCircle.disableMovement();
         globalObjects.bannerTextManager.setDialog([getLangText('level1_diag_b')]);
-        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 135, 0);
         globalObjects.bannerTextManager.showBanner(false);
 
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -290,7 +333,6 @@
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
-            this.castAggravateCharge = 3;
             this.clearEnhancePopup();
 
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 253, getLangText('level1_tut_b'), 'right');
@@ -724,6 +766,7 @@
             onStart: () => {
             }
         });
+        playSound('slice_in');
         this.addTween({
             targets: this.flash,
             duration: 300,
@@ -775,6 +818,7 @@
                                         this.brows.destroy();
                                         this.brows = null;
                                         this.fighting = true;
+                                        this.startBreathTween();
                                     }
                                 });
                             }
@@ -829,6 +873,7 @@
                      damage: 0,
                      chargeMult: 18,
                      startFunction: () => {
+                         this.clearEnhancePopup();
                          this.customAngrySymbol = this.scene.add.sprite(this.x + 35, this.y - 52, 'misc', 'angry1.png').play('angry').setScale(0.3).setDepth(9999);
                          this.addTween({
                              targets: this.customAngrySymbol,
@@ -856,8 +901,11 @@
                              scaleY: this.sprite.startScale,
                              ease: "Back.easeOut",
                              duration: 450,
+                             onStart: () => {
+                                 fadeAwaySound(this.bgMusic, 2000);
+
+                             },
                              onComplete: () => {
-                                 fadeAwaySound(this.bgMusic, 2200);
                                  this.setDefaultSprite('dummy_w_eyes.png', 0.95);
                                  if (this.eyes) {
                                      this.removeExtraSprite(this.eyes);
@@ -875,6 +923,12 @@
                      name: gameVars.isHardMode ? "ANGRY}10 " : "ANGRY}8 ",
                      chargeAmt: 325,
                      damage: gameVars.isHardMode ? 10 : 8,
+                     startFunction: () => {
+                         this.timeSinceLastAttacked = 0;
+                     },
+                     attackStartFunction: () => {
+                         this.stopBreathTween();
+                     },
                      attackFinishFunction: () => {
                          screenShake(5);
                          zoomTemp(1.015)
@@ -909,6 +963,8 @@
                      chargeAmt: 315,
                      damage: 0,
                      startFunction: () => {
+                         this.startBreathTween();
+
                          // if (!this.hasShownEnhance) {
                          //     this.createEnhancePopup();
                          //
@@ -918,6 +974,7 @@
                          }, 800);
                      },
                      finaleFunction: () => {
+                         this.stopBreathTween(false);
                         this.healAnim(35);
                      }
                  },
@@ -927,6 +984,9 @@
                      damage: gameVars.isHardMode ? 25 : 20,
                      isBigMove: true,
                      startFunction: () => {
+                         this.angerMult = 0.86;
+                         this.startBreathTween();
+
                          this.customAngrySymbol.x -= 4;
                          this.customAngrySymbol.y -= 5;
                          this.addTween({
@@ -948,6 +1008,9 @@
                              }
                          });
                      },
+                     attackStartFunction: () => {
+                         this.stopBreathTween();
+                     },
                      attackFinishFunction: () => {
                          playSound('punch');
                          playSound('body_slam')
@@ -967,7 +1030,11 @@
                      name: "HEAL\\15",
                      chargeAmt: 300,
                      damage: 0,
+                     startFunction: () => {
+                         this.startBreathTween();
+                     },
                      finaleFunction: () => {
+                         this.stopBreathTween(false);
                          this.healAnim(15);
                      }
                  },
@@ -978,6 +1045,9 @@
                      chargeMult: 3,
                      isBigMove: true,
                      startFunction: () => {
+                         this.angerMult = 0.72;
+                         this.startBreathTween();
+
                          this.addTween({
                              targets: this.customAngrySymbol,
                              scaleX: 1.2,
@@ -1000,6 +1070,7 @@
                          this.nextAttackIndex = 0;
                      },
                      finaleFunction: () => {
+                         this.stopBreathTween();
                          globalObjects.encyclopedia.hideButton();
                          globalObjects.options.hideButton();
                         this.setAsleep();

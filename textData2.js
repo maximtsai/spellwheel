@@ -719,27 +719,36 @@ let textData2 = {
     },
     "level_water_nodamage": {
         "en_us": "Physical attacks don't\naffect this creature.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Les attaques physiques ne\nblessent pas cette créature.",
+        "zh_tw": "物理攻擊傷不了這個生物。",
+        "zh_cn": "物理攻击伤不了这个生物。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "level_water_nodamage2": {
         "en_us": "But perhaps Energy spells will.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Mais peut-être que les\nsorts d'énergie le feront.",
+        "zh_tw": "但能量法術也許會。",
+        "zh_cn": "但能量法术也许会。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "level_water_victory": {
         "en_us": "(The water elemental runs away)",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "(La élémentaire d'eau s'est échappée)",
+        "zh_tw": "（水元素生物逃跑了）",
+        "zh_cn": "（水元素生物逃跑了）",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "level_water_victory_post": {
+        "en_us": "I need something to\ndefend myself with.",
+        "fr": "J'ai besoin de quelque\nchose pour me défendre.",
+        "zh_tw": "我必須找到方法来保護自己",
+        "zh_cn": "我必須找到方法来保護自己",
         "ru": "",
         "es": "",
         "jp": ""

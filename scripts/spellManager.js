@@ -300,27 +300,32 @@ class SpellManager {
                 onComplete: () => {
                     let detuneAmt = Math.floor(Math.sqrt(additionalDamage * 0.65)) * -80;
                     let additionalVol = additionalDamage * 0.005;
-                    if (i === 0) {
-                        let randNum = Math.random()
-                        if (randNum < 0.3) {
-                            playSound('matter_strike_hit', 0.8 + additionalVol).detune = detuneAmt;
-                        } else if (randNum < 0.6) {
-                            playSound('matter_strike_hit_alt', 0.8 + additionalVol).detune = detuneAmt;
-                        } else {
-                            playSound('matter_strike_hit_alt_2', 0.85 + additionalVol).detune = detuneAmt;
+                    if (globalObjects.currentEnemy && (globalObjects.currentEnemy.immune || globalObjects.currentEnemy.invincible)) {
+                        playSound('swish', 1.4).detune = -600;
+                    } else {
+                        if (i === 0) {
+                            let randNum = Math.random();
+                            if (randNum < 0.3) {
+                                playSound('matter_strike_hit', 0.8 + additionalVol).detune = detuneAmt;
+                            } else if (randNum < 0.6) {
+                                playSound('matter_strike_hit_alt', 0.8 + additionalVol).detune = detuneAmt;
+                            } else {
+                                playSound('matter_strike_hit_alt_2', 0.85 + additionalVol).detune = detuneAmt;
+                            }
+                        } else if (rockObjects.length > 2 && i === rockObjects.length - 1) {
+                            // last hit
+                            if (Math.random() < 0.5) {
+                                playSound('matter_strike_hit', 0.7 + additionalVol).detune = detuneAmt;
+                            } else {
+                                playSound('matter_strike_hit_alt', 0.7 + additionalVol).detune = detuneAmt;
+                            }
+                        } else if (i % 2 == 1) {
+                            playSound('matter_strike_hit2', 0.95 + additionalVol).detune = detuneAmt;
+                        } else if (i % 2 == 0) {
+                            playSound('matter_strike_hit2', 0.6 + additionalVol).detune = detuneAmt;
                         }
-                    } else if (rockObjects.length > 2 && i === rockObjects.length - 1) {
-                        // last hit
-                        if (Math.random() < 0.5) {
-                            playSound('matter_strike_hit', 0.7 + additionalVol).detune = detuneAmt;
-                        } else {
-                            playSound('matter_strike_hit_alt', 0.7 + additionalVol).detune = detuneAmt;
-                        }
-                    } else if (i % 2 == 1) {
-                        playSound('matter_strike_hit2', 0.95 + additionalVol).detune = detuneAmt;
-                    } else if (i % 2 == 0) {
-                        playSound('matter_strike_hit2', 0.6 + additionalVol).detune = detuneAmt;
                     }
+
                     if (isExtraBuff) {
                         let rockHitEffect = getTempPoolObject('blurry', 'rock_rush.png', 'rockRush', 300);
                         rockHitEffect.setVisible(true).setAlpha(0.9 + additionalDamage * 0.003).setScale(0.25 + additionalDamage * 0.0025).setRotation(Math.random() * 6);

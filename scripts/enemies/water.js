@@ -19,14 +19,15 @@
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 75 : 60;
          this.isAsleep = true;
-         this.extraRepeatDelay = 230;
-         this.pullbackHoldRatio = 0.9;
+         this.extraRepeatDelay = 200;
+         this.pullbackHoldRatio = 0.75;
          this.pullbackScale = 0.86;
         // this.attackScale = 1;
          this.attackEase = "Quart.easeIn";
          this.defaultAnim = 'wateranim';
          this.accumulatedAnimDamage = 0;
          this.setDefense(999);
+         this.immune = true;
      }
 
      idleAnim(){
@@ -50,6 +51,8 @@
              this.matterHitAnim = true;
              this.sprite.play('waterhole');
              this.sprite.setScale(0.85);
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 40 - Math.random()*80, this.sprite.y - Math.random() * 40, 'IMMUNE', 1.25, {alpha: 0.9}, {alpha: 0});
+
              playSound('water2');
              this.currAnim = this.addTween({
                  targets: this.sprite,
@@ -93,7 +96,7 @@
              this.addDelay(() => {
                  globalObjects.magicCircle.disableMovement();
                  globalObjects.bannerTextManager.setDialog([getLangText('level_water_nodamage'), getLangText('level_water_nodamage2')]);
-                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 25, 0);
+                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                  globalObjects.bannerTextManager.showBanner(false, language === 'fr');
                  globalObjects.bannerTextManager.setOnFinishFunc(() => {
                      globalObjects.magicCircle.enableMovement();
@@ -103,6 +106,7 @@
                      globalObjects.bannerTextManager.closeBanner();
                      this.glowCirc2 = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY(), 'shields', 'ring_flash0.png').setAlpha(0.3).setDepth(999).setScale(1.12);
                      this.addDelay(() => {
+                         playSound('whoosh', 0.75).setSeek(0.4).detune = 400;
                          this.glowCirc2.playReverse('ring_flash');
                          this.glowCirc2.currAnim = this.addTween({
                              targets: this.glowCirc2,
@@ -143,19 +147,23 @@
                      globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level1_train_popup'), 'center');
 
                  });
-             }, 750)
+             }, 900)
 
          }
          return super.adjustDamageTaken(amt, isAttack, isTrue)
      }
 
-     splashWater(damage) {
+     splashWater(damage, detuneOffset = 0) {
          messageBus.publish("selfTakeDamage", damage);
-
          if (!this.waterSplash) {
-             this.waterSplash = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 200, 'enemies', 'water_splash.png');
+             this.waterSplash = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 200, 'enemies', 'water_splash.png').setDepth(30);
+            this.detuneSplashUp = true;
          }
-         this.waterSplash.setAlpha(0).setScale(0.35);
+         let detuneAmtShift = this.detuneSplashUp ? 200 : -50;
+         let vol = this.detuneSplashUp ? 1 : 0.8;
+         playSound('watersplash', vol).detune = detuneOffset + Math.random() * 100 + detuneAmtShift;
+
+         this.waterSplash.setAlpha(1).setScale(0.35);
          let goalScale = 0.9 + 0.035 * damage;
          this.addTween({
              targets: this.waterSplash,
@@ -279,7 +287,7 @@
                      prepareSprite: "water_emerge1.png",
                      attackSprites: ['water_attack.png'],
                      attackFinishFunction: () => {
-                         this.splashWater(10);
+                         this.splashWater(10, -200);
 
                      },
                      finaleFunction: () => {
@@ -491,6 +499,7 @@
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();
          globalObjects.magicCircle.disableMovement();
+         playSound('watersplash');
 
          this.sprite.setFrame('water_emerge1.png');
          this.sprite.setRotation(0);
@@ -499,14 +508,14 @@
              targets: this.sprite,
              scaleY: 1,
              ease: "Back.easeOut",
-             duration: 300,
-             completeDelay: 50,
+             duration: 350,
+             completeDelay: 100,
              onComplete: () => {
                  this.addTween({
                      targets: this.sprite,
                      scaleY: 0,
                      ease: "Quart.easeIn",
-                     duration: 800,
+                     duration: 900,
                      onComplete: () => {
                          this.addTimeout(() => {
                              globalObjects.bannerTextManager.setDialog([getLangText('level_water_victory')]);
@@ -625,7 +634,15 @@
      }
 
      showPostFightMessage() {
-        beginPreLevel(this.level + 1)
+         globalObjects.bannerTextManager.setDialog([getLangText('level_water_victory_post')]);
+         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
+         globalObjects.bannerTextManager.showBanner(false);
+         globalObjects.bannerTextManager.setOnFinishFunc(() => {
+             this.destroy();
+             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
+             globalObjects.bannerTextManager.closeBanner();
+             beginPreLevel(this.level + 1)
+         })
      }
 
 }

@@ -697,19 +697,19 @@ function createTutorialBtn(lvl) {
         case 2:
             return buildTutorialButton('rune_energy_large.png', buildTutorialMind);
             break;
-        case 3:
+        case 4:
             return buildTutorialButton('rune_protect_large.png', buildTutorialProtect);
             break;
-        case 4:
+        case 5:
             return buildTutorialButton('rune_reinforce_large.png', buildTutorialReinforce);
             break;
-        case 5:
+        case 6:
             return buildTutorialButton('rune_time_large.png', buildTutorialTime);
             break;
-        case 7:
+        case 8:
             return buildTutorialButton('rune_void_large.png', buildTutorialVoid);
             break;
-        case 8:
+        case 9:
             return buildTutorialButton('rune_unload_large.png', buildTutorialUnload);
             break;
     }

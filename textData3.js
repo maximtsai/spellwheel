@@ -1,5 +1,14 @@
 
 let textData3 = {
+    "infinite_ammo_unlocked": {
+        "en_us": "INFINITE AMMO CHEAT UNLOCKED",
+        "fr": "TRICHE INFINITE AMMO DÉBLOQUÉE",
+        "zh_tw": "無限彈藥作弊碼已解鎖",
+        "zh_cn": "无限弹药作弊码已解锁",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "unknown_code": {
         "en_us": "UNKNOWN CODE",
         "fr": "CODE INCONNU",

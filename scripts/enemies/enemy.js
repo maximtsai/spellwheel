@@ -2295,7 +2295,7 @@ class Enemy {
                              onComplete: () => {
                                  victoryText.destroy();
                                  banner.destroy();
-                                 playReaperAnim(this, this.customReaperAnim);
+                                this.beginReaperAnim();
                              }
                          });
                         continueText.destroy();
@@ -2325,7 +2325,7 @@ class Enemy {
                              onComplete: () => {
                                  victoryText.destroy();
                                  banner.destroy();
-                                 playReaperAnim(this, this.customReaperAnim);
+                                 this.beginReaperAnim();
                              }
                          });
                         continueText.destroy();
@@ -2348,6 +2348,11 @@ class Enemy {
              }
          });
      }
+
+     beginReaperAnim() {
+         playReaperAnim(this, this.customReaperAnim);
+     }
+
     launchAttack(attackTimes = 1, prepareSprite, preAttackSprite, attackSprites = [], isRepeatedAttack = false, finishDelay = 0, transitionFast = false) {
         if (this.dead || this.isDestroyed){
             return;

@@ -921,10 +921,13 @@ class Enemy {
             // let xPos = this.statuses['mindStrike'].x; let yPos = this.statuses['mindStrike'].y;
             let damageToTake = Math.max(0, Math.ceil(amt));
             this.statuses['mindStrike'].cleanUp(this.statuses, damageToTake, true);
-            let damageSqrt = Math.sqrt(damageToTake);
-            setTimeout(() => {
-                messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth - 45, 218 - damageSqrt * 2.2, 'X2', 0.5 + damageSqrt * 0.1);
-            }, Math.floor(damageSqrt) * 15)
+            if (damageToTake > 0) {
+                let damageSqrt = Math.sqrt(damageToTake);
+                setTimeout(() => {
+                    messageBus.publish('animateTrueDamageNum', gameConsts.halfWidth - 45, 218 - damageSqrt * 2.2, 'X2', 0.5 + damageSqrt * 0.1);
+                }, Math.floor(damageSqrt) * 15)
+            }
+
 
             amt += damageToTake;
             // setTimeout(() => {
@@ -1726,6 +1729,8 @@ class Enemy {
             this.angrySymbol.currAnim = state;
             this.angrySymbol.stop();
             this.angrySymbol.play(state);
+            this.angrySymbol.rotation = 0;
+            this.angrySymbol2.rotation = 0;
             if (state === 'exclamation') {
                 this.angrySymbol2.play(state);
                 this.angrySymbol2.alpha = 1;
@@ -1760,6 +1765,8 @@ class Enemy {
                 });
             } else {
                 this.angrySymbol2.visible = true;
+                this.angrySymbol.rotation = 0;
+                this.angrySymbol2.rotation = 0;
                 this.angrySymbolAnim = this.scene.tweens.add({
                     targets: [this.angrySymbol, this.angrySymbol2],
                     scaleX: 0.85,
@@ -1776,6 +1783,7 @@ class Enemy {
                         targets: [this.angryAlert, this.angryAlert2],
                         scaleX: 2.25,
                         scaleY: 2.25,
+                        rotation: 0,
                         duration: gameVars.gameManualSlowSpeedInverse * 800,
                         ease: 'Cubic.easeOut',
                         completeDelay: 25,
@@ -1794,6 +1802,7 @@ class Enemy {
                             this.scene.tweens.add({
                                 targets: [this.angryAlert, this.angryAlert2],
                                 alpha: 0,
+                                rotation: 0,
                                 ease: 'Quad.easeOut',
                                 duration: gameVars.gameManualSlowSpeedInverse * 1200,
                             });
@@ -2286,7 +2295,7 @@ class Enemy {
                              onComplete: () => {
                                  victoryText.destroy();
                                  banner.destroy();
-                                 playReaperAnim(this, this.customReaperAnim);
+                                 this.beginReaperAnim();
                              }
                          });
                         continueText.destroy();
@@ -2316,7 +2325,7 @@ class Enemy {
                              onComplete: () => {
                                  victoryText.destroy();
                                  banner.destroy();
-                                 playReaperAnim(this, this.customReaperAnim);
+                                 this.beginReaperAnim();
                              }
                          });
                         continueText.destroy();
@@ -2339,6 +2348,11 @@ class Enemy {
              }
          });
      }
+
+     beginReaperAnim() {
+         playReaperAnim(this, this.customReaperAnim);
+     }
+
     launchAttack(attackTimes = 1, prepareSprite, preAttackSprite, attackSprites = [], isRepeatedAttack = false, finishDelay = 0, transitionFast = false) {
         if (this.dead || this.isDestroyed){
             return;
@@ -2365,7 +2379,7 @@ class Enemy {
         pullbackDurMult *= this.pullbackDurMult ? this.pullbackDurMult : 1;
         let timeSlowMult = gameVars.timeSlowRatio < 0.9 ? 0.5 : 1;
 
-        let durationPullback = isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult + this.extraRepeatDelay : 300 * extraTimeMult * pullbackDurMult;
+        let durationPullback = isRepeatedAttack ? (200 * extraTimeMult * pullbackDurMult + this.extraRepeatDelay) : (400 * extraTimeMult * pullbackDurMult);
 
         if (prepareSprite) {
             let spriteToPrepare = prepareSprite;

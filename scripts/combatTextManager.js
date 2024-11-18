@@ -39,7 +39,7 @@ class CombatTextManager {
         this.bgBorderTop.scaleX = this.bg.scaleX * 0.25;
         this.bgBorderBot.scaleX = this.bg.scaleX * 0.25;
         if (this.text.height > 50) {
-            this.bg.scaleY = 8;
+            this.bg.scaleY = 7.6;
         } else {
             this.bg.scaleY = 4.8;
         }

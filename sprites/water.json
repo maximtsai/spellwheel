@@ -1,0 +1,1070 @@
+{
+	"textures": [
+		{
+			"image": "sprites/water-0.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1769,
+				"h": 1779
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "water_splash.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 8,
+						"w": 183,
+						"h": 178
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 183,
+						"h": 178
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "water_emerge1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 79,
+						"y": 166,
+						"w": 287,
+						"h": 190
+					},
+					"frame": {
+						"x": 186,
+						"y": 1,
+						"w": 287,
+						"h": 190
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "water_emerge2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 79,
+						"y": 117,
+						"w": 287,
+						"h": 240
+					},
+					"frame": {
+						"x": 475,
+						"y": 1,
+						"w": 287,
+						"h": 240
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 70,
+						"y": 113,
+						"w": 293,
+						"h": 241
+					},
+					"frame": {
+						"x": 764,
+						"y": 1,
+						"w": 293,
+						"h": 241
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 67,
+						"y": 113,
+						"w": 302,
+						"h": 243
+					},
+					"frame": {
+						"x": 1059,
+						"y": 1,
+						"w": 302,
+						"h": 243
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 67,
+						"y": 110,
+						"w": 302,
+						"h": 246
+					},
+					"frame": {
+						"x": 1363,
+						"y": 1,
+						"w": 302,
+						"h": 246
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0006.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 67,
+						"y": 110,
+						"w": 302,
+						"h": 246
+					},
+					"frame": {
+						"x": 1363,
+						"y": 1,
+						"w": 302,
+						"h": 246
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "water_hole1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 67,
+						"y": 110,
+						"w": 302,
+						"h": 246
+					},
+					"frame": {
+						"x": 1363,
+						"y": 1,
+						"w": 302,
+						"h": 246
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0005.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 67,
+						"y": 110,
+						"w": 302,
+						"h": 246
+					},
+					"frame": {
+						"x": 1,
+						"y": 193,
+						"w": 302,
+						"h": 246
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0007.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 72,
+						"y": 108,
+						"w": 297,
+						"h": 247
+					},
+					"frame": {
+						"x": 305,
+						"y": 243,
+						"w": 297,
+						"h": 247
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0009.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 72,
+						"y": 108,
+						"w": 297,
+						"h": 247
+					},
+					"frame": {
+						"x": 305,
+						"y": 243,
+						"w": 297,
+						"h": 247
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0008.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 72,
+						"y": 108,
+						"w": 297,
+						"h": 247
+					},
+					"frame": {
+						"x": 604,
+						"y": 244,
+						"w": 297,
+						"h": 247
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0010.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 72,
+						"y": 108,
+						"w": 297,
+						"h": 247
+					},
+					"frame": {
+						"x": 903,
+						"y": 246,
+						"w": 297,
+						"h": 247
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0020.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 83,
+						"y": 99,
+						"w": 282,
+						"h": 256
+					},
+					"frame": {
+						"x": 1202,
+						"y": 249,
+						"w": 282,
+						"h": 256
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0021.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 83,
+						"y": 91,
+						"w": 282,
+						"h": 264
+					},
+					"frame": {
+						"x": 1486,
+						"y": 249,
+						"w": 282,
+						"h": 264
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0011.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 86,
+						"y": 91,
+						"w": 287,
+						"h": 262
+					},
+					"frame": {
+						"x": 1,
+						"y": 441,
+						"w": 287,
+						"h": 262
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0012.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 86,
+						"y": 91,
+						"w": 287,
+						"h": 262
+					},
+					"frame": {
+						"x": 290,
+						"y": 492,
+						"w": 287,
+						"h": 262
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0013.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 86,
+						"y": 91,
+						"w": 287,
+						"h": 262
+					},
+					"frame": {
+						"x": 579,
+						"y": 493,
+						"w": 287,
+						"h": 262
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0022.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 83,
+						"y": 91,
+						"w": 282,
+						"h": 264
+					},
+					"frame": {
+						"x": 868,
+						"y": 495,
+						"w": 282,
+						"h": 264
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "water_hole3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 466,
+						"h": 628
+					},
+					"spriteSourceSize": {
+						"x": 83,
+						"y": 54,
+						"w": 288,
+						"h": 267
+					},
+					"frame": {
+						"x": 1152,
+						"y": 507,
+						"w": 288,
+						"h": 267
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 70,
+						"y": 86,
+						"w": 293,
+						"h": 268
+					},
+					"frame": {
+						"x": 1442,
+						"y": 515,
+						"w": 293,
+						"h": 268
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "water_emerge3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 70,
+						"y": 86,
+						"w": 293,
+						"h": 268
+					},
+					"frame": {
+						"x": 1442,
+						"y": 515,
+						"w": 293,
+						"h": 268
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0017.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 85,
+						"y": 86,
+						"w": 283,
+						"h": 269
+					},
+					"frame": {
+						"x": 1,
+						"y": 705,
+						"w": 283,
+						"h": 269
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0019.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 85,
+						"y": 86,
+						"w": 283,
+						"h": 269
+					},
+					"frame": {
+						"x": 1,
+						"y": 705,
+						"w": 283,
+						"h": 269
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 70,
+						"y": 86,
+						"w": 293,
+						"h": 268
+					},
+					"frame": {
+						"x": 286,
+						"y": 757,
+						"w": 293,
+						"h": 268
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0018.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 85,
+						"y": 86,
+						"w": 283,
+						"h": 269
+					},
+					"frame": {
+						"x": 581,
+						"y": 757,
+						"w": 283,
+						"h": 269
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0028.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 90,
+						"y": 58,
+						"w": 275,
+						"h": 297
+					},
+					"frame": {
+						"x": 866,
+						"y": 761,
+						"w": 275,
+						"h": 297
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0014.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 85,
+						"y": 68,
+						"w": 288,
+						"h": 285
+					},
+					"frame": {
+						"x": 1143,
+						"y": 776,
+						"w": 288,
+						"h": 285
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0016.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 85,
+						"y": 68,
+						"w": 288,
+						"h": 285
+					},
+					"frame": {
+						"x": 1143,
+						"y": 776,
+						"w": 288,
+						"h": 285
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0015.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 85,
+						"y": 68,
+						"w": 288,
+						"h": 285
+					},
+					"frame": {
+						"x": 1433,
+						"y": 785,
+						"w": 288,
+						"h": 285
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "water_attack2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 83,
+						"y": 50,
+						"w": 283,
+						"h": 305
+					},
+					"frame": {
+						"x": 1,
+						"y": 976,
+						"w": 283,
+						"h": 305
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0029.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 79,
+						"y": 58,
+						"w": 287,
+						"h": 299
+					},
+					"frame": {
+						"x": 286,
+						"y": 1027,
+						"w": 287,
+						"h": 299
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0030.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 79,
+						"y": 58,
+						"w": 287,
+						"h": 299
+					},
+					"frame": {
+						"x": 286,
+						"y": 1027,
+						"w": 287,
+						"h": 299
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0023.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 88,
+						"y": 38,
+						"w": 276,
+						"h": 318
+					},
+					"frame": {
+						"x": 575,
+						"y": 1028,
+						"w": 276,
+						"h": 318
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "water_attack.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 65,
+						"y": 52,
+						"w": 309,
+						"h": 302
+					},
+					"frame": {
+						"x": 853,
+						"y": 1063,
+						"w": 309,
+						"h": 302
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "water_hole2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 466,
+						"h": 628
+					},
+					"spriteSourceSize": {
+						"x": 72,
+						"y": 4,
+						"w": 309,
+						"h": 317
+					},
+					"frame": {
+						"x": 1164,
+						"y": 1072,
+						"w": 309,
+						"h": 317
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0024.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 88,
+						"y": 29,
+						"w": 276,
+						"h": 327
+					},
+					"frame": {
+						"x": 1475,
+						"y": 1072,
+						"w": 276,
+						"h": 327
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0025.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 88,
+						"y": 29,
+						"w": 276,
+						"h": 327
+					},
+					"frame": {
+						"x": 1,
+						"y": 1283,
+						"w": 276,
+						"h": 327
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0026.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 90,
+						"y": 26,
+						"w": 275,
+						"h": 329
+					},
+					"frame": {
+						"x": 279,
+						"y": 1328,
+						"w": 275,
+						"h": 329
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "frame0027.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 456,
+						"h": 700
+					},
+					"spriteSourceSize": {
+						"x": 90,
+						"y": 26,
+						"w": 275,
+						"h": 329
+					},
+					"frame": {
+						"x": 556,
+						"y": 1348,
+						"w": 275,
+						"h": 329
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "water_elec2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 740
+					},
+					"spriteSourceSize": {
+						"x": 75,
+						"y": 28,
+						"w": 433,
+						"h": 352
+					},
+					"frame": {
+						"x": 833,
+						"y": 1391,
+						"w": 433,
+						"h": 352
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "water_elec1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 740
+					},
+					"spriteSourceSize": {
+						"x": 70,
+						"y": 3,
+						"w": 438,
+						"h": 377
+					},
+					"frame": {
+						"x": 1268,
+						"y": 1401,
+						"w": 438,
+						"h": 377
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:1cf4a5729aa32368f2e2eb605227a2fb:dba9a5bad3cbee9ecf545b9b47ca0a14:01af871538960dfd536bc1b394e07fb8$"
+	}
+}

@@ -263,6 +263,17 @@ function beginPreLevelTrue(lvl) {
             });
             break;
         case 2:
+            // water
+            globalObjects.magicCircle.setWheelTint(0.10, 0.05, 'usage_tint_b.png');
+            introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
+            introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'water_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
+            text1 = PhaserScene.add.text(gameConsts.halfWidth - 246, gameConsts.halfHeight + 110, getLangText('pre_fight_water'), {fontFamily: 'garamondbold', fontSize: 26, color: '#200000', align: 'left'});
+            text1.setDepth(99999).setOrigin(0, 0).setAlpha(0);
+
+            createGlobalClickBlocker();
+            fadeInPreFightStuff(lvl, [text1], [introPaper, introOverlay])
+            break;
+        case 3:
             // goblin
             globalObjects.magicCircle.setWheelTint(0.09, 0.02, 'usage_tint_b.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
@@ -277,7 +288,7 @@ function beginPreLevelTrue(lvl) {
             createGlobalClickBlocker();
             fadeInPreFightStuff(lvl, [text1, text3], [introPaper, introOverlay])
             break;
-        case 3:
+        case 4:
             // tree
             globalObjects.magicCircle.setWheelTint(0.08, 0.07, 'usage_tint_b.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
@@ -290,7 +301,7 @@ function beginPreLevelTrue(lvl) {
             createGlobalClickBlocker();
             fadeInPreFightStuff(lvl, [text1], [introPaper, introOverlay])
             break;
-        case 4:
+        case 5:
             // magician
             globalObjects.magicCircle.setWheelTint(0.06, 0.03, 'usage_tint_b.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
@@ -303,7 +314,7 @@ function beginPreLevelTrue(lvl) {
             createGlobalClickBlocker();
             fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
             break;
-        case 5:
+        case 6:
             // statue
             globalObjects.magicCircle.setWheelTint();
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
@@ -313,7 +324,7 @@ function beginPreLevelTrue(lvl) {
             createGlobalClickBlocker();
             fadeInPreFightStuff(lvl, [text1], [introPaper, introOverlay])
             break;
-        case 6:
+        case 7:
             // knight
             globalObjects.magicCircle.setWheelTint(0.07, 0.05);
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
@@ -327,7 +338,7 @@ function beginPreLevelTrue(lvl) {
             fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay], true)
             break;
 
-        case 7:
+        case 8:
             // wall
             globalObjects.magicCircle.setWheelTint();
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
@@ -341,7 +352,7 @@ function beginPreLevelTrue(lvl) {
             fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
             break;
 
-        case 8:
+        case 9:
             // superdummy
             // introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
             // introOverlay = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'dummy_paper.png').setDepth(99999).setAlpha(0).setBlendMode(Phaser.BlendModes.MULTIPLY);
@@ -356,7 +367,7 @@ function beginPreLevelTrue(lvl) {
             beginLevel(lvl);
             break;
 
-        case 9:
+        case 10:
             // mantis
             globalObjects.magicCircle.setWheelTint(0.07, 0.05);
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
@@ -369,7 +380,7 @@ function beginPreLevelTrue(lvl) {
             createGlobalClickBlocker();
             fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
             break;
-        case 10:
+        case 11:
             // robot
             globalObjects.magicCircle.setWheelTint(0.03, 0.08, 'usage_tint_r.png');
             introPaper = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 35, 'ui', 'paper.png').setDepth(99999).setAlpha(0);
@@ -555,28 +566,28 @@ function createMenuCloseButton(items) {
 
 function switchLevelBackground(lvl) {
     switch(lvl) {
-        case -7:
+        case -8:
             switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
-        case -6:
+        case -7:
             switchBackground('grave_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
+        case -6:
         case -5:
-        case -4:
             switchBackground('clock_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
-        case -3:
+        case -4:
             switchBackground('forest_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 0.95, 0.95, 0.95,'Quart.easeIn', 0, false, -10);
             break;
-        case -2:
+        case -3:
             switchBackground('forest_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
             break;
-        case -1:
+        case -2:
             // mind dummy
             switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeOut', 0, false, 0);
@@ -611,38 +622,45 @@ function switchLevelBackground(lvl) {
             break;
         case 2:
             switchBackground('forest_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
+            fadeInBackgroundAtlas('backgrounds', 'backgroundwater.webp', 1500, 1.05, 1, 1,'Quart.easeIn', 0, false, -14);
             break;
         case 3:
             switchBackground('forest_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 0.95, 0.95, 0.95,'Quart.easeIn', 0, false, -10);
+            fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
             break;
         case 4:
+            switchBackground('forest_bg.webp');
+            fadeInBackgroundAtlas('backgrounds', 'background5.webp', 1500, 0.95, 0.95, 0.95,'Quart.easeIn', 0, false, -10);
+            break;
+        case 5:
             switchBackground('clock_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
-        case 5:
+        case 6:
             switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
-        case 6:
+        case 7:
             switchBackground('grave_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'background7.webp', 1500, 1.2, 1.25, 1.25,'Quart.easeIn', 0, false, 1);
             break;
-        case 7:
+        case 8:
             switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, -1, -0.94, 0.94,'Quart.easeIn', 0, false);
             break;
-        case 8:
+        case 9:
             switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 0.92, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
-        case 9:
         case 10:
+            switchBackground('grave_bg.webp');
+            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
+            break;
+        case 11:
             switchBackground('clock_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'tunnel.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
-        case 11:
+        case 12:
             switchBackground('clock_bg.webp');
             globalObjects.magicCircle.setWheelTint(0.03, 0.07, 'usage_tint_b.png');
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 2500, 1, 1, 1,'Quart.easeIn', 0, false);
@@ -664,10 +682,10 @@ function beginLevel(lvl, instant = false) {
     globalObjects.magicCircle.buildRunes();
     if (lvl <= 1) {
         switchLevelBackground(lvl)
-    } else if (lvl === 12) {
+    } else if (lvl === 13) {
         // death levels
         globalObjects.magicCircle.setWheelTint(0.05, 0.07, 'usage_tint_r.png');
-    } else if (lvl === 13) {
+    } else if (lvl >= 14) {
         // death levels
         globalObjects.magicCircle.setWheelTint(0.06, 0.02, 'usage_tint_b.png');
     }
@@ -713,19 +731,19 @@ function createTutorialBtn(lvl) {
         case 2:
             return buildTutorialButton('rune_energy_large.png', buildTutorialMind);
             break;
-        case 3:
+        case 4:
             return buildTutorialButton('rune_protect_large.png', buildTutorialProtect);
             break;
-        case 4:
+        case 5:
             return buildTutorialButton('rune_reinforce_large.png', buildTutorialReinforce);
             break;
-        case 5:
+        case 6:
             return buildTutorialButton('rune_time_large.png', buildTutorialTime);
             break;
-        case 7:
+        case 8:
             return buildTutorialButton('rune_void_large.png', buildTutorialVoid);
             break;
-        case 8:
+        case 9:
             return buildTutorialButton('rune_unload_large.png', buildTutorialUnload);
             break;
     }

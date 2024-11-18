@@ -1,1 +1,1 @@
-uglifyjs enemy.js enemyhandler.js dummy.js dummypractice.js dummybody.js dummymind.js dummyshield.js dummytime.js enemyhandler.js goblin.js killerrobotdemo.js knight.js lesserdummy.js magician.js statue.js tree.js -o allenemies.js -c -m
+uglifyjs enemy.js enemyhandler.js dummy.js dummypractice.js dummybody.js dummymind.js dummyshield.js dummytime.js enemyhandler.js goblin.js water.js killerrobotdemo.js knight.js lesserdummy.js magician.js statue.js tree.js -o allenemies.js -c -m

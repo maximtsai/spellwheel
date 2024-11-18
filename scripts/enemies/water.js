@@ -85,10 +85,12 @@
                      })
                      this.sprite.play('waterhole2');
                      this.addDelay(() => {
-                         this.matterHitAnim = false;
                          this.idleAnim();
                      }, 150)
                  }
+                 this.addDelay(() => {
+                     this.matterHitAnim = false;
+                 }, 150)
              }, 675)
          }
          if (amt > 10 && isAttack && !isTrue && !this.warnDamage) {
@@ -268,7 +270,9 @@
              this.sprite.stop();
              this.burnAnim = null;
          }
-         this.defaultAnim = 'wateranim';
+         if (this.health > 25) {
+             this.defaultAnim = 'wateranim';
+         }
          this.isBurning = false;
          if (this.dead) {
              return;
@@ -478,6 +482,10 @@
             this.accumTween.stop();
         }
         globalObjects.textPopupManager.hideInfoText();
+         gameVars.latestLevel = this.level;
+         localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
+         gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
+         localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
 
         if (this.rune3) {
             this.rune3.visible = false;
@@ -512,6 +520,7 @@
              duration: 350,
              completeDelay: 100,
              onComplete: () => {
+                 playSound('whoosh');
                  this.addTween({
                      targets: this.sprite,
                      scaleY: 0,

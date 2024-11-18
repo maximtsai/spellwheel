@@ -1447,7 +1447,7 @@ function showLevelSelectScreen(){
                 }
             },
             onMouseUp: () => {
-                if (i === 10) {
+                if (i === 11) {
                     closeLevelSelectScreen();
                     clearMenuButtons();
                     beginLevel(i);
@@ -1460,7 +1460,7 @@ function showLevelSelectScreen(){
                     for (let i in listOfBtns) {
                         listOfBtns[i].destroy();
                     }
-                } else if (i >= 7) {
+                } else if (i >= 8) {
                     showWishlistPage();
                 } else {
                     closeLevelSelectScreen();

@@ -197,30 +197,6 @@ function createAnimations(scene) {
         repeat: 0,
         frameRate: 7,
     });
-    scene.anims.create({
-        key: 'death2laugh',
-        frames: scene.anims.generateFrameNames('deathfinal', {
-            prefix: 'death2laugh',
-            suffix: '.png',
-            start: 1,
-            end: 2,
-            zeroPad: 0,
-        }),
-        frameRate: 3,
-        repeat: -1,
-    });
-    scene.anims.create({
-        key: 'death2laughtext',
-        frames: scene.anims.generateFrameNames('deathfinal', {
-            prefix: 'death2laughtext',
-            suffix: '.png',
-            start: 1,
-            end: 2,
-            zeroPad: 0,
-        }),
-        frameRate: 6,
-        repeat: -1,
-    });
 
     scene.anims.create({
         key: 'lightningbolt',

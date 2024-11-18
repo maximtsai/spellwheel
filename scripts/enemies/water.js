@@ -85,10 +85,12 @@
                      })
                      this.sprite.play('waterhole2');
                      this.addDelay(() => {
-                         this.matterHitAnim = false;
                          this.idleAnim();
                      }, 150)
                  }
+                 this.addDelay(() => {
+                     this.matterHitAnim = false;
+                 }, 150)
              }, 675)
          }
          if (amt > 10 && isAttack && !isTrue && !this.warnDamage) {
@@ -156,7 +158,7 @@
      splashWater(damage, detuneOffset = 0) {
          messageBus.publish("selfTakeDamage", damage);
          if (!this.waterSplash) {
-             this.waterSplash = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 200, 'enemies', 'water_splash.png').setDepth(30);
+             this.waterSplash = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 200, 'water', 'water_splash.png').setDepth(30);
             this.detuneSplashUp = true;
          }
          let detuneAmtShift = this.detuneSplashUp ? 200 : -50;
@@ -268,7 +270,9 @@
              this.sprite.stop();
              this.burnAnim = null;
          }
-         this.defaultAnim = 'wateranim';
+         if (this.health > 25) {
+             this.defaultAnim = 'wateranim';
+         }
          this.isBurning = false;
          if (this.dead) {
              return;
@@ -512,6 +516,7 @@
              duration: 350,
              completeDelay: 100,
              onComplete: () => {
+                 playSound('whoosh');
                  this.addTween({
                      targets: this.sprite,
                      scaleY: 0,

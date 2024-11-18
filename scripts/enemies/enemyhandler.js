@@ -29,7 +29,7 @@ function createEnemy(num) {
         globalObjects.currentEnemy = new Dummy(PhaserScene, gameConsts.halfWidth, 125, num);
         break;
     case 2:
-        globalObjects.currentEnemy = new Water(PhaserScene, gameConsts.halfWidth, 322, num);
+        globalObjects.currentEnemy = new Water(PhaserScene, gameConsts.halfWidth, 324, num);
         // globalObjects.currentEnemy = new Goblin(PhaserScene, gameConsts.halfWidth, 182, num);
         break;
     case 3:

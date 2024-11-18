@@ -717,6 +717,24 @@ let textData2 = {
         "es": "",
         "jp": ""
     },
+    "level_water_nodamage": {
+        "en_us": "Physical attacks don't\naffect this creature",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "level_water_nodamage2": {
+        "en_us": "But perhaps Energy spells do.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "level1_train_diag_a": {
         "en_us": "I've set up a training doll\nto test this new rune.",
         "fr": "Pour tester cette rune, j'ai\ninstallé un mannequin d'entraînement.",

@@ -550,7 +550,11 @@ class PostFightScreen {
                 playSound('button_click');
                 this.clearPostFightScreen();
                 if (level < 7) {
-                    beginPreLevel(-level);
+                    if (level === 1) {
+                        beginPreLevel(2);
+                    } else {
+                        beginPreLevel(-level);
+                    }
                 } else {
                     beginPreLevel(level + 1);
                 }

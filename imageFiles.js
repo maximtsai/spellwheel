@@ -35,6 +35,8 @@ const imageAtlases = [
     {name: 'deathfinal', src: 'sprites/deathfinal.json'},
     {name: 'shields', src: 'sprites/shields.json'},
     {name: 'ending', src: 'sprites/ending.json'},
+    {name: 'water', src: 'sprites/water.json'},
+
 ];
 
 const imageFiles = [

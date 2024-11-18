@@ -126,8 +126,68 @@ function createAnimations(scene) {
         frameRate: 10,
     });
     scene.anims.create({
+        key: 'waterhole',
+        frames: scene.anims.generateFrameNames('water', {
+            prefix: 'water_hole',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 1,
+        }),
+        repeat: 0,
+        frameRate: 20,
+    });
+    scene.anims.create({
+        key: 'waterhole2',
+        frames: scene.anims.generateFrameNames('water', {
+            prefix: 'water_hole',
+            suffix: '.png',
+            start: 2,
+            end: 3,
+            zeroPad: 1,
+        }),
+        repeat: 0,
+        frameRate: 15,
+    });
+    scene.anims.create({
+        key: 'wateremerge',
+        frames: scene.anims.generateFrameNames('water', {
+            prefix: 'water_emerge',
+            suffix: '.png',
+            start: 1,
+            end: 3,
+            zeroPad: 0,
+        }),
+        repeat: 0,
+        frameRate: 12,
+    });
+    scene.anims.create({
+        key: 'wateranim',
+        frames: scene.anims.generateFrameNames('water', {
+            prefix: 'frame',
+            suffix: '.png',
+            start: 0,
+            end: 30,
+            zeroPad: 4,
+        }),
+        repeat: -1,
+        frameRate: 10,
+    });
+    scene.anims.create({
+        key: 'wateranimfast',
+        frames: scene.anims.generateFrameNames('water', {
+            prefix: 'frame',
+            suffix: '.png',
+            start: 0,
+            end: 30,
+            zeroPad: 4,
+        }),
+        repeat: -1,
+        frameRate: 30,
+    });
+    scene.anims.create({
         key: 'waterelec',
-        frames: scene.anims.generateFrameNames('enemies', {
+        frames: scene.anims.generateFrameNames('water', {
             prefix: 'water_elec',
             suffix: '.png',
             start: 1,
@@ -135,7 +195,7 @@ function createAnimations(scene) {
             zeroPad: 0,
         }),
         repeat: 1,
-        frameRate: 12,
+        frameRate: 8,
     });
     scene.anims.create({
         key: 'death2laugh',

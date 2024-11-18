@@ -503,9 +503,9 @@ let textData2 = {
     },
     "pre_fight_water": {
         "en_us": "A strange creature of water disturbed me\nwhile I was refilling my supplies.\n\nRocks pass right through it, but perhaps\nlightning will have an effect?",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Une étrange créature aquatique m'a dérangé\nalors que je remplissais mes provisions.\n\nLes rochers la traversent, mais peut-être\nque la foudre aura un effet ?",
+        "zh_tw": "當我補充補給時，一個討厭的水生物打\n擾了我。\n\n岩石直接穿過它，但也許閃電會有作用？",
+        "zh_cn": "当我补充补给时，一个讨厌的水生物打\n扰了我。\n\n岩石直接穿过它，但也许闪电会有作用？",
         "ru": "",
         "es": "",
         "jp": ""
@@ -674,9 +674,9 @@ let textData2 = {
     },
     "level1_diag_b": {
         "en_us": "Another obstacle. Enhancing my\nattacks will destroy it faster.",
-        "fr": "Un autre obstacle. Améliorer mes\nattaques le détruira plus rapidement.",
-        "zh_tw": "另一个障碍。增強我的攻擊\n力能讓我更快地摧毀它。",
-        "zh_cn": "另一个障碍。增强我的攻击\n力能让我更快地摧毁它。",
+        "fr": "Un autre obstacle. Renforcer mes\nattaques le détruira plus vite.",
+        "zh_tw": "另一个障碍。強化法術\n能讓我更快摧毀敵人。",
+        "zh_cn": "另一个障碍。强化法术\n能让我更快摧毁敌人。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -718,7 +718,7 @@ let textData2 = {
         "jp": ""
     },
     "level_water_nodamage": {
-        "en_us": "Physical attacks don't\naffect this creature.",
+        "en_us": "Physical attacks can't\nharm this creature.",
         "fr": "Les attaques physiques ne\nblessent pas cette créature.",
         "zh_tw": "物理攻擊傷不了這個生物。",
         "zh_cn": "物理攻击伤不了这个生物。",
@@ -729,8 +729,8 @@ let textData2 = {
     "level_water_nodamage2": {
         "en_us": "But perhaps Energy spells will.",
         "fr": "Mais peut-être que les\nsorts d'énergie le feront.",
-        "zh_tw": "但能量法術也許會。",
-        "zh_cn": "但能量法术也许会。",
+        "zh_tw": "但能量法術也許可以。",
+        "zh_cn": "但能量法术也许可以。",
         "ru": "",
         "es": "",
         "jp": ""

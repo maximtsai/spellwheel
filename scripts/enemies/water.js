@@ -17,7 +17,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 75 : 60;
+         this.health = gameVars.isHardMode ? 75 : 55;
          this.isAsleep = true;
          this.extraRepeatDelay = 200;
          this.pullbackHoldRatio = 0.75;
@@ -51,7 +51,7 @@
              this.matterHitAnim = true;
              this.sprite.play('waterhole');
              this.sprite.setScale(0.85);
-             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 40 - Math.random()*80, this.sprite.y - Math.random() * 40, 'IMMUNE', 1.25, {alpha: 0.9}, {alpha: 0});
+             messageBus.publish('animateBlockNum', gameConsts.halfWidth + 40 - Math.random()*80, this.sprite.y - Math.random() * 40 - 80, 'IMMUNE', 1.25, {alpha: 0.9, duration: 1700}, {alpha: 0});
 
              playSound('water2');
              this.currAnim = this.addTween({
@@ -163,8 +163,8 @@
          let vol = this.detuneSplashUp ? 1 : 0.8;
          playSound('watersplash', vol).detune = detuneOffset + Math.random() * 100 + detuneAmtShift;
 
-         this.waterSplash.setAlpha(1).setScale(0.35);
-         let goalScale = 0.9 + 0.035 * damage;
+         this.waterSplash.setAlpha(1).setScale(0.7);
+         let goalScale = 1.7 + 0.085 * damage;
          this.addTween({
              targets: this.waterSplash,
              scaleX: goalScale,
@@ -194,7 +194,7 @@
                  // } else if (this.isUsingAttack) {
                  //     oldSprite = this.defaultSprite;
                  // }
-                 this.setSprite('water_elec1.png');
+                 this.setSprite('water_elec2.png');
 
                  this.sprite.x = gameConsts.halfWidth + (Math.random() < 0.5 ? -13 : 13);
                  this.sprite.play('waterelec');
@@ -205,18 +205,19 @@
                      ease: 'Bounce.easeOut',
                      easeParams: [1, 2.5],
                      duration: 300,
-                     completeDelay: 200,
+                     completeDelay: 250,
                      onComplete: () => {
                          this.idleAnim();
                      }
                  });
                 this.sprite.setScale(1.13);
                 this.currAnim = this.addTween({
+                    delay: 40,
                     targets: this.sprite,
                     ease: 'Cubic.easeOut',
                     scaleX: 0.85,
                     scaleY: 0.85,
-                    duration: 310,
+                    duration: 270,
                 });
             }
          }
@@ -295,7 +296,7 @@
                      }
                  },
                  {
-                     name: "}7x2 ",
+                     name: "}8x2 ",
                      chargeAmt: gameVars.isHardMode ? 500 : 550,
                      damage: -1,
                      attackTimes: 2,
@@ -303,7 +304,7 @@
                      prepareSprite: "water_emerge1.png",
                      attackSprites: ['water_attack.png', 'water_attack2.png'],
                      attackFinishFunction: () => {
-                         this.splashWater(7)
+                         this.splashWater(8)
                      },
                      finaleFunction: () => {
                          this.idleAnim();

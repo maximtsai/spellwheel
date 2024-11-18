@@ -1828,7 +1828,11 @@ class SpellManager {
                     let dmgBG = getTempPoolObject('spells', 'blackPulse.png', 'blackPulse', 310).setDepth(attackObj.depth).setScale(0.5).setAlpha(0.6).setPosition(attackObj.x, attackObj.y - 12);
                     let dmgEffect = getTempPoolObject('spells', 'shockEffect1.png', 'shockEffect', 310).play('shockEffect').setPosition(attackObj.x, attackObj.y - 12).setDepth(attackObj.depth).setScale(0.5).setRotation(Math.random() * 6);
                     let randScale = 1.3 + 0.1 * Math.random();
-                    playSound('mind_strike_hit');
+                    if (globalObjects.currentEnemy && globalObjects.currentEnemy.invincible) {
+                        playSound('clunk', 1).detune = 150;
+                    } else {
+                        playSound('mind_strike_hit');
+                    }
 
 
                     this.scene.tweens.add({

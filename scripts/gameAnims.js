@@ -194,7 +194,7 @@ function createAnimations(scene) {
             end: 2,
             zeroPad: 0,
         }),
-        repeat: 1,
+        repeat: 0,
         frameRate: 7,
     });
     scene.anims.create({

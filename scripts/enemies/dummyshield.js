@@ -15,7 +15,7 @@
      initTutorial() {
          globalObjects.magicCircle.disableMovement();
          globalObjects.bannerTextManager.setDialog([getLangText('level_dummy_shield'), getLangText('level_dummy_shield2')]);
-         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 100, 0);
+         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
          globalObjects.bannerTextManager.showBanner(false, language === 'fr');
 
 

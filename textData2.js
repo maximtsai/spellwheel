@@ -501,6 +501,15 @@ let textData2 = {
         "es": " ",
         "jp": " "
     },
+    "pre_fight_water": {
+        "en_us": "A strange creature of water disturbs me\nwhile I was refilling my supplies.\n\nRocks pass right through it, but perhaps\nlightning will have an effect?",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "pre_fight_1a": {
         "en_us": "\"This is my shield, mine!\n Is family treasure from\n father's brother's aunt's\n grandpa's cousin's\n friend's neighbor!!\"",
         "fr": "« Ceci est mon bouclier, le\nmien! C’est un trésor de\nfamille du frère du père,\nde la tante du grand-père,\ndu voisin de l’ami du\ncousin du grand-père!! »",
@@ -717,6 +726,24 @@ let textData2 = {
         "es": "",
         "jp": ""
     },
+    "level_water_nodamage": {
+        "en_us": "Physical attacks don't\naffect this creature",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "level_water_nodamage2": {
+        "en_us": "But perhaps Energy spells do.",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "level1_train_diag_a": {
         "en_us": "I've set up a training doll\nto test this new rune.",
         "fr": "Pour tester cette rune, j'ai\ninstallé un mannequin d'entraînement.",
@@ -771,6 +798,26 @@ let textData2 = {
         "es": "",
         "jp": ""
     },
+
+    "level_dummy_shield": {
+        "en_us": "Time to test this shield.",
+        "fr": "Il est temps de\ntester ce bouclier.",
+        "zh_tw": "是時候測試這個盾牌。",
+        "zh_cn": "是时候测试这个盾牌。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "level_dummy_shield2": {
+        "en_us": "I rigged this dummy to\nattack when I click START.",
+        "fr": "J'ai truqué ce mannequin pour\nattaquer au clic sur DÉMARRER.",
+        "zh_tw": "當我單擊“START”時，\n這個假人會開始進行攻擊。",
+        "zh_cn": "当我单击“START”时，\n这个假人会开始进行攻击。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+
     "level2_tut_a": {
         "en_us": "Some attacks\ncharge up\nautomatically!",
         "fr": "certaines attaques\nennemies se chargent\nautomatiquement !",
@@ -1007,45 +1054,45 @@ let textData2 = {
     },
     "Matter_rune_short": {
         "en_us": "Matter Rune summons heavy rocks\nfor offense and defense",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Matter Rune summons heavy rocks\nfor offense and defense",
+        "zh_tw": "Matter Rune summons heavy rocks\nfor offense and defense",
+        "zh_cn": "Matter Rune summons heavy rocks\nfor offense and defense",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "Strike_rune_short": {
         "en_us": "Strike Rune directly attacks the opponent",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Strike Rune directly attacks the opponent",
+        "zh_tw": "Strike Rune directly attacks the opponent",
+        "zh_cn": "Strike Rune directly attacks the opponent",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "Enhance_rune_short": {
         "en_us": "Enhance Rune boosts the\npower of your attacks",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Enhance Rune boosts the\npower of your attacks",
+        "zh_tw": "Enhance Rune boosts the\npower of your attacks",
+        "zh_cn": "Enhance Rune boosts the\npower of your attacks",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "Energy_rune_short": {
         "en_us": "Energy Rune controls lightning,\nfire and raw energy",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Energy Rune controls lightning,\nfire and raw energy",
+        "zh_tw": "Energy Rune controls lightning,\nfire and raw energy",
+        "zh_cn": "Energy Rune controls lightning,\nfire and raw energy",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "Shield_rune_short": {
         "en_us": "Shield Rune creates protective barriers",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Shield Rune creates protective barriers",
+        "zh_tw": "Shield Rune creates protective barriers",
+        "zh_cn": "Shield Rune creates protective barriers",
         "ru": "",
         "es": "",
         "jp": ""
@@ -1060,28 +1107,28 @@ let textData2 = {
         "jp": ""
     },
     "Time_rune_short": {
-        "en_us": "Time rune controls the flow of time, slowing\nenemy attacks or duplicating your own",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "en_us": "Time rune can slow enemy attacks\nor duplicate your own",
+        "fr": "Time rune can slow enemy attacks\nor duplicate your own",
+        "zh_tw": "Time rune can slow enemy attacks\nor duplicate your own",
+        "zh_cn": "Time rune can slow enemy attacks\nor duplicate your own",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "Void_rune_short": {
         "en_us": "Void rune controls dark empty space",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Void rune controls dark empty space",
+        "zh_tw": "Void rune controls dark empty space",
+        "zh_cn": "Void rune controls dark empty space",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "Ultimate_rune_short": {
         "en_us": "Ultimate rune grants you your\nmost powerful abilities",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "",
+        "fr": "Ultimate rune grants you your\nmost powerful abilities",
+        "zh_tw": "Ultimate rune grants you your\nmost powerful abilities",
+        "zh_cn": "Ultimate rune grants you your\nmost powerful abilities",
         "ru": "",
         "es": "",
         "jp": ""

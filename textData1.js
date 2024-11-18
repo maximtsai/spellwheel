@@ -732,19 +732,19 @@ let textData = {
         "jp": "シールドルーンは、あなたと敵の間に配置されている限り、あなたを保護するバリアを作成します。"
     },
     "reinforce_tut_desc": {
-        "en_us": "Body Rune grants effects\nthat persist until you cast a new\nbody spell. Some Body rune spells can\neven heal you.",
-        "fr": "La Rune Corps confère des effets\nqui persistent jusqu’à ce que vous\nlanciez un nouveau sort corporel. Certains\ncombos rune Corps peuvent même\nvous soigner.",
-        "zh_tw": "身體符文賦予的效果會\n一直持續到你施放新的\n體法術。某些身體符文\n組合甚至可以治癒你。",
-        "zh_cn": "身体符文赋予的效果会\n一直持续到你施放新的\n身体法术。某些身体符\n文组合甚至可以治愈你。",
+        "en_us": "Body Rune alters your wheel\nand health. Body Rune spells\nhave persistent effects that last\nuntil you cast a new body spell.",
+        "fr": "La Rune Corps modifie votre\nroue et votre santé. Ses effets\npersisteront jusqu'à ce que vous\nlanciez un nouveau sort corporel.",
+        "zh_tw": "身體符文能改變你的輪子\n和生命值。身體法術具有\n持久效果，直到你釋放新\n的身體法術為止。",
+        "zh_cn": "身体符文能改变你的轮子\n和生命值。身体法术具有\n持久效果，直到你释放新\n的身体法术为止。",
         "ru": "Руна Тела дает эффекты, которые сохраняются до тех пор, пока вы не разыграете новое заклинание тела. Некоторые комбинации Тело+Руна могут даже исцелить вас.",
         "es": "La runa Cuerpo otorga efectos que persisten hasta que lanzas un nuevo hechizo de cuerpo. Algunos combos de Cuerpo + Runa pueden incluso curarte.",
         "jp": "身体のルーンは、あなたが新しい身体呪文を唱えるまで持続する効果を付与する。一部のボディ+ルーンコンボはあなたを癒すことさえできます。"
     },
     "reinforce_tut_desc_sh": {
-        "en_us": "Body Rune grants effects\nthat persist until you cast a new\nbody spell. Some Body rune\nspells can even heal you.",
-        "fr": "La Rune Corps confère des effets\nqui persistent jusqu’à ce que\nvous lanciez un nouveau sort\ncorporel. Certains combos rune\nCorps peuvent même vous soigner.",
-        "zh_tw": "身體符文賦予的效果會\n一直持續到你施放新的\n身體法術。某些身體符\n文組合甚至可以治癒你。",
-        "zh_cn": "身体符文赋予的效果会\n一直持续到你施放新的\n身体法术。某些身体符\n文组合甚至可以治愈你。",
+        "en_us": "Body Rune alters your wheel\nand health. Body Rune spells\nhave persistent effects that last\nuntil you cast a new body spell.",
+        "fr": "La Rune Corps modifie votre\nroue et votre santé. Ses\neffets persisteront jusqu'à\nce que vous lanciez un nouveau\nsort corporel.",
+        "zh_tw": "身體符文能改變你的輪子\n和生命值。身體法術具有\n持久效果，直到你釋放新\n的身體法術為止。",
+        "zh_cn": "身体符文能改变你的轮子\n和生命值。身体法术具有\n持久效果，直到你释放新\n的身体法术为止。",
         "ru": "Руна Тела дает эффекты, которые сохраняются до тех пор, пока вы не разыграете новое заклинание тела. Некоторые комбинации Тело+Руна могут даже исцелить вас.",
         "es": "La runa Cuerpo otorga efectos que persisten hasta que lanzas un nuevo hechizo de cuerpo. Algunos combos de Cuerpo + Runa pueden incluso curarte.",
         "jp": "身体のルーンは、あなたが新しい身体呪文を唱えるまで持続する効果を付与する。一部のボディ+ルーンコンボはあなたを癒すことさえできます。"

@@ -1306,13 +1306,13 @@ function showLevelSelectScreen(){
     let positionsX = [
         gameConsts.halfWidth - 120, gameConsts.halfWidth, gameConsts.halfWidth + 120,
         gameConsts.halfWidth - 180, gameConsts.halfWidth - 60, gameConsts.halfWidth + 60, gameConsts.halfWidth + 180,
-        gameConsts.halfWidth - 120, gameConsts.halfWidth, gameConsts.halfWidth + 120,
+        gameConsts.halfWidth - 180, gameConsts.halfWidth - 60, gameConsts.halfWidth + 60, gameConsts.halfWidth + 180,
         gameConsts.halfWidth - 180, gameConsts.halfWidth - 60, gameConsts.halfWidth + 60, gameConsts.halfWidth + 180,
     ]
     let positionsY = [
         gameConsts.halfHeight - 180, gameConsts.halfHeight - 180, gameConsts.halfHeight - 180,
         gameConsts.halfHeight - 60, gameConsts.halfHeight - 60, gameConsts.halfHeight - 60, gameConsts.halfHeight - 60,
-        gameConsts.halfHeight + 60, gameConsts.halfHeight + 60, gameConsts.halfHeight + 60,
+        gameConsts.halfHeight + 60, gameConsts.halfHeight + 60, gameConsts.halfHeight + 60, gameConsts.halfHeight + 60,
         gameConsts.halfHeight + 180, gameConsts.halfHeight + 180, gameConsts.halfHeight + 180, gameConsts.halfHeight + 180,
     ]
     let levelSelectBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 22, 'ui', 'paper.png').setDepth(10000).setScale(0.92, 0.9);
@@ -1402,9 +1402,10 @@ function showLevelSelectScreen(){
     })
 
     let listOfBtns = [];
-    let maxLevel = Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel , 14));
-    if (maxLevel >= 7) {
-        maxLevel = 14;
+
+    let maxLevel = Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel, 15));
+    if (maxLevel >= 8) {
+        maxLevel = 15;
     }
     for (let i = 1; i <= maxLevel; i++) {
         let xPos = positionsX[i - 1];

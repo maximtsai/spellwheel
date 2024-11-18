@@ -679,7 +679,7 @@ class SpellManager {
         textHealth.startX = textHealth.x;
         textHealth.startY = textHealth.y;
         textHealth.setOrigin(0.5, 0.5);
-        textHealth.setDepth(120);
+        textHealth.setDepth(123);
         textHealth.setScale(0);
 
         for (let i = 0; i < spellMultiplier; i++) {
@@ -780,8 +780,8 @@ class SpellManager {
             scaleY: 1.1,
             ease: 'Cubic.easeOut',
             onComplete: () => {
-                animation2.setDepth(117);
-                animation1.setDepth(117);
+                animation2.setDepth(122);
+                animation1.setDepth(122);
                 animation1.currAnim = this.scene.tweens.add({
                     targets: animation1,
                     duration: 330,

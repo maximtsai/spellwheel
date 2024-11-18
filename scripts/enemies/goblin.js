@@ -17,7 +17,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 150 : 100;
+         this.health = gameVars.isHardMode ? 150 : 90;
          this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 54, 'misc', 'slash1.png').setScale(0.9).setDepth(995).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.22;
@@ -222,10 +222,10 @@
              [
                  // 0
                  {
-                     name: gameVars.isHardMode ? "}8 " : "}4 ",
+                     name: gameVars.isHardMode ? "}8 " : "}5 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
                      chargeAmt: 250,
-                     damage: gameVars.isHardMode ? 8 : 4,
+                     damage: gameVars.isHardMode ? 8 : 5,
                      attackSprites: ['gobbo0_atk.png'],
                      attackFinishFunction: () => {
                          this.makeSlashEffect();
@@ -343,7 +343,7 @@
                  {
                      name: "GETTING KNIVES!",
                      isPassive: true,
-                     chargeAmt: 300,
+                     chargeAmt: 250,
                      chargeMult: 4,
                      isBigMove: true,
                      startFunction: () => {
@@ -373,21 +373,9 @@
                  }
              ],
              [
-                 // 4 - dual wield attacks
-                 {
-                     name: "}4x2 ",
-                     chargeAmt: gameVars.isHardMode ? 150 : 200,
-                     damage: 4,
-                     attackTimes: 2,
-                     prepareSprite: "",
-                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
-                     attackFinishFunction: () => {
-                         this.makeSlashEffect();
-                     }
-                 },
                  {
                      name: "}4x3 ",
-                     chargeAmt: gameVars.isHardMode ? 170 : 220,
+                     chargeAmt: gameVars.isHardMode ? 180 : 220,
                      damage: 4,
                      attackTimes: 3,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
@@ -397,7 +385,7 @@
                  },
                  {
                      name: "}4x4 ",
-                     chargeAmt: gameVars.isHardMode ? 190 : 240,
+                     chargeAmt: gameVars.isHardMode ? 200 : 240,
                      damage: 4,
                      attackTimes: 4,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
@@ -406,10 +394,20 @@
                      }
                  },
                  {
-                     name: "LAUGH IN YOUR FACE",
+                     name: "}4x5 ",
+                     chargeAmt: gameVars.isHardMode ? 220 : 260,
+                     damage: 4,
+                     attackTimes: 5,
+                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
+                     attackFinishFunction: () => {
+                         this.makeSlashEffect();
+                     }
+                 },
+                 {
+                     name: "LAUGH",
                      isPassive: true,
-                     chargeAmt: 600,
-                     finishDelay: 1000,
+                     chargeAmt: 400,
+                     finishDelay: 700,
                      chargeMult: 5,
                      damage: -1,
                      tease: true,

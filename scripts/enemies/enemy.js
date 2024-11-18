@@ -1726,6 +1726,8 @@ class Enemy {
             this.angrySymbol.currAnim = state;
             this.angrySymbol.stop();
             this.angrySymbol.play(state);
+            this.angrySymbol.rotation = 0;
+            this.angrySymbol2.rotation = 0;
             if (state === 'exclamation') {
                 this.angrySymbol2.play(state);
                 this.angrySymbol2.alpha = 1;
@@ -1760,6 +1762,8 @@ class Enemy {
                 });
             } else {
                 this.angrySymbol2.visible = true;
+                this.angrySymbol.rotation = 0;
+                this.angrySymbol2.rotation = 0;
                 this.angrySymbolAnim = this.scene.tweens.add({
                     targets: [this.angrySymbol, this.angrySymbol2],
                     scaleX: 0.85,
@@ -1776,6 +1780,7 @@ class Enemy {
                         targets: [this.angryAlert, this.angryAlert2],
                         scaleX: 2.25,
                         scaleY: 2.25,
+                        rotation: 0,
                         duration: gameVars.gameManualSlowSpeedInverse * 800,
                         ease: 'Cubic.easeOut',
                         completeDelay: 25,
@@ -1794,6 +1799,7 @@ class Enemy {
                             this.scene.tweens.add({
                                 targets: [this.angryAlert, this.angryAlert2],
                                 alpha: 0,
+                                rotation: 0,
                                 ease: 'Quad.easeOut',
                                 duration: gameVars.gameManualSlowSpeedInverse * 1200,
                             });
@@ -2365,7 +2371,7 @@ class Enemy {
         pullbackDurMult *= this.pullbackDurMult ? this.pullbackDurMult : 1;
         let timeSlowMult = gameVars.timeSlowRatio < 0.9 ? 0.5 : 1;
 
-        let durationPullback = isRepeatedAttack ? 200 * extraTimeMult * pullbackDurMult + this.extraRepeatDelay : 300 * extraTimeMult * pullbackDurMult;
+        let durationPullback = isRepeatedAttack ? (200 * extraTimeMult * pullbackDurMult + this.extraRepeatDelay) : (400 * extraTimeMult * pullbackDurMult);
 
         if (prepareSprite) {
             let spriteToPrepare = prepareSprite;

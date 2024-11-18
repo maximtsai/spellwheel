@@ -270,7 +270,7 @@ class PostFightScreen {
 
         if (!this.subscription) {
             this.subscription = messageBus.subscribe("language_switch", () => {
-                if (gameVars.currLevel <= 6 && gameVars.currLevel >= 0) {
+                if (gameVars.currLevel <= 6 && gameVars.currLevel >= 0 && gameVars.currLevel !== 1) {
                     this.trainingButton.setText(getLangText('post_fight_training'))
                 } else {
                     this.trainingButton.setText(getLangText('post_fight_no_training'))
@@ -314,7 +314,7 @@ class PostFightScreen {
             }
         }
         this.continueButton.setState(DISABLE);
-        if (gameVars.currLevel <= 6 && gameVars.currLevel >= 0) {
+        if (gameVars.currLevel <= 6 && gameVars.currLevel >= 0 && gameVars.currLevel !== 1) {
             this.trainingButton.setText(getLangText('post_fight_training'))
             this.trainingButton.setState(NORMAL);
             setTimeout(() => {
@@ -559,7 +559,11 @@ class PostFightScreen {
                 playSound('button_click');
                 this.clearPostFightScreen();
                 if (level < 7) {
-                    beginPreLevel(-level);
+                    if (level === 1) {
+                        beginPreLevel(2);
+                    } else {
+                        beginPreLevel(-level);
+                    }
                 } else {
                     beginPreLevel(level + 1);
                 }
@@ -710,8 +714,12 @@ class PostFightScreen {
                     playSound('button_click');
                     this.clearPostFightScreen();
                     if (level < 7) {
-                        beginPreLevel(-level);
-                    } else {
+                        if (level === 1) {
+                            beginPreLevel(2);
+                        } else {
+                            beginPreLevel(-level);
+                        }
+                    }else {
                         beginPreLevel(level + 1);
                     }
                     if (canvas) {
@@ -790,7 +798,7 @@ class PostFightScreen {
 
         this.healthLeftText.setText(getLangText('post_fight_health') + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
         this.spellsCastText.setText(getLangText('post_fight_spells') + globalObjects.player.getPlayerCastSpellsCount());
-        if (gameVars.currLevel <= 6 && gameVars.currLevel >= 0) {
+        if (gameVars.currLevel <= 6 && gameVars.currLevel >= 0 && gameVars.currLevel !== 1) {
             this.continueButton.setText(getLangText('post_fight_skip_training'));
         } else {
             this.continueButton.setText(getLangText('post_fight_continue'));
@@ -891,9 +899,9 @@ class PostFightScreen {
     }
 
     getNewRuneAnnounce(level) {
-        if (level < 8) {
+        if (level < 9) {
             return getLangText('post_fight_newrune');
-        } else if (level >= 10) {
+        } else if (level >= 11) {
             return getLangText('post_fight_noupgrade');
         } else {
             return getLangText('post_fight_upgrade');
@@ -903,31 +911,32 @@ class PostFightScreen {
     getNewRuneDesc(level) {
         switch(level) {
             case 1:
+            case 2:
                 return getLangText('mind_tut_desc');
                 break;
-            case 2:
+            case 3:
                 return getLangText('protect_tut_desc');
                 break;
-            case 3:
+            case 4:
                 return getLangText('reinforce_tut_desc');
                 break;
-            case 4:
+            case 5:
                 return getLangText('time_tut_desc');
                 break
-            case 5:
             case 6:
+            case 7:
                 return getLangText('void_tut_desc');
                 break;
-            case 7:
+            case 8:
                 return getLangText('unload_tut_desc');
                 break
-            case 8:
+            case 9:
                 return getLangText('matter_plus_tut_desc');
                 break;
-            case 9:
+            case 10:
                 return getLangText('mind_plus_tut_desc');
                 break
-            case 10:
+            case 11:
                 return getLangText('no_improve_tut_desc');
                 break;
             default:
@@ -938,31 +947,32 @@ class PostFightScreen {
     getNewRuneFrame(level) {
         switch(level) {
             case 1:
-                return 'rune_energy_large.png';
-                break;
             case 2:
-                return 'rune_protect_large.png';
+                return 'rune_energy_large.png';
                 break;
             case 3:
-                return 'rune_reinforce_large.png';
+                return 'rune_protect_large.png';
                 break;
             case 4:
+                return 'rune_reinforce_large.png';
+                break;
+            case 5:
                 return 'rune_time_large.png';
                 break
-            case 5:
             case 6:
+            case 7:
                 return 'rune_void_large.png';
                 break;
-            case 7:
+            case 8:
                 return 'rune_unload_large.png';
                 break
-            case 8:
+            case 9:
                 return 'rune_matter_large.png';
                 break;
-            case 9:
+            case 10:
                 return 'rune_energy_large.png';
                 break
-            case 10:
+            case 11:
                 return 'blank.png';
                 break;
             default:
@@ -975,26 +985,27 @@ class PostFightScreen {
             case 0:
                 return "And so my journey begins.\nIt won't be long before\nI see you again, Rosemary."
             case 1:
-                return getLangText('post_fight_story1')
             case 2:
-                return getLangText('post_fight_story2');
+                return getLangText('post_fight_story1')
             case 3:
-                return getLangText('post_fight_story3');
+                return getLangText('post_fight_story2');
             case 4:
-                return getLangText('post_fight_story4');
+                return getLangText('post_fight_story3');
             case 5:
+                return getLangText('post_fight_story4');
             case 6:
-                return getLangText('post_fight_story5')
             case 7:
+                return getLangText('post_fight_story5')
+            case 8:
                 return getLangText("post_fight_story6");
 
-            case 8:
+            case 9:
                 return getLangText("post_fight_story7");
 
-            case 9:
+            case 10:
                 return getLangText("post_fight_story8");
 
-            case 10:
+            case 11:
                 return getLangText("post_fight_story9");
 
             default:

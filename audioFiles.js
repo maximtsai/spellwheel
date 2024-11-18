@@ -134,4 +134,8 @@ const audioFiles = [
     {name: 'deepdemon', src: 'audio/deepdemon.mp3'},
     {name: 'boing', src: 'audio/boing.mp3'},
 
+    {name: 'water1', src: 'audio/water1.mp3'},
+    {name: 'water2', src: 'audio/water2.mp3'},
+    {name: 'watersplash', src: 'audio/water_splash.mp3'},
+
 ]

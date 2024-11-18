@@ -24,7 +24,7 @@
 
      takeEffect(newEffect) {
          if (this.sprite) {
-             if (newEffect.name == 'mindStrike' && !this.dead && !this.hasTimbered) {
+             if (newEffect.name === 'mindStrike' && !this.dead && !this.hasTimbered) {
                  if (this.breatheTween) {
                      this.breatheTween.stop();
                  }
@@ -72,7 +72,7 @@
          let prevHealthPercent = this.prevHealth / this.healthMax;
          let currHealthPercent = this.health / this.healthMax;
          let lastHealthLost = this.prevHealth - this.health;
-         if (currHealthPercent == 0) {
+         if (currHealthPercent <= 0) {
              // dead, can't do anything
              return;
          }
@@ -161,7 +161,7 @@
              }
              this.setNextAttack(3, 0);
              // Going to shield
-         } else if (this.health <= 70 && !this.hasTimbered) {
+         } else if (this.health <= 55 && !this.hasTimbered) {
              this.setNextAttack(5, 0);
              if (!this.hasPreparedFinal) {
                  this.dropBird();
@@ -388,18 +388,31 @@
          this.addTween({
              delay: delay,
              targets: newObj,
-             scaleX: 1,
-             scaleY: 1,
+             scaleX: 0.6,
+             scaleY: 0.75,
              ease: 'Back.easeOut',
              easeParams: [2],
-             duration: 300
+             duration: 400,
+             onComplete: () =>{
+                 this.addTween({
+                     delay: 150 - delay,
+                     targets: newObj,
+                     scaleX: 1,
+                     scaleY: 1,
+                     ease: 'Back.easeOut',
+                     duration: 450,
+                     onStart: () => {
+                         newObj.scaleX = 0.36;
+                     }
+                 });
+             }
          });
          this.addTween({
              delay: delay,
              targets: newObj,
              ease: 'Cubic.easeOut',
              rotation: angleToPlayer,
-             duration: 500
+             duration: 900
          });
      }
 
@@ -455,65 +468,86 @@
          }
      }
 
-     attackWithBranch(damage = 12) {
+     attackWithBranch(damage = 12, isLeft = true) {
          let currObj;
-         if (!this.treeBranch) {
-             this.treeBranch = this.addImage(gameConsts.halfWidth - 35 + Math.random() * 100, -50, 'enemies', 'tree_branch.webp').setRotation(-0.7 + Math.random()).setDepth(110).setOrigin(0.6, 0.6);
-         } else {
-             this.treeBranch.setPosition(gameConsts.halfWidth - 75 + Math.random() * 150, -50).setRotation(-0.7 + Math.random()).setAlpha(1);
-         }
-         currObj = this.treeBranch;
-        this.glowGreen()
-         this.addTween({
-             targets: currObj,
-             rotation: -0.2,
-             duration: 700
-         });
-         playSound('tree_sfx', 0.75);
-         this.addTween({
-            delay: 125,
-             targets: currObj,
-             x: gameConsts.halfWidth * 0.2 + currObj.x * 0.8,
-             y: gameConsts.height - 320,
-             ease: 'Quart.easeIn',
-             duration: 1000,
-             onComplete: () => {
-                 playSound('tree_hit');
-                 messageBus.publish("selfTakeDamage", damage);
-                 let xPos = gameConsts.halfWidth * 0.5 + currObj.x * 0.5;
-                 let hitEffect = this.addSprite(xPos, currObj.y + Math.random() * 8, 'spells').play('damageEffectShort').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
-                 this.addTween({
-                     targets: hitEffect,
-                     scaleX: 1.25,
-                     scaleY: 1.25,
-                     ease: 'Cubic.easeOut',
-                     duration: 170,
-                     onComplete: () => {
-                         hitEffect.destroy();
-                     }
-                 });
-                 this.addTween({
-                     targets: hitEffect,
-                     alpha: 0,
-                     ease: 'Quad.easeIn',
-                     duration: 170
-                 });
-                 let horizShift = currObj.x - gameConsts.halfWidth;
-                 this.addTween({
-                     targets: currObj,
-                     alpha: 0,
-                     x: "+=" + horizShift * 4,
-                     rotation: horizShift * 0.05,
-                     duration: 600,
-                 });
-                 this.addTween({
-                     targets: currObj,
-                     y: "-=120",
-                     duration: 600,
-                     ease: 'Cubic.easeOut',
-                 });
+         if (!isLeft) {
+             if (!this.treeBranch2) {
+                 this.treeBranch2 = this.addImage(gameConsts.halfWidth + 10, -50, 'enemies', 'tree_branch.webp').setRotation(0).setDepth(110).setOrigin(0.6, 0.6);
+             } else {
+                 this.treeBranch2.setPosition(gameConsts.halfWidth + 10, -50).setRotation(0).setAlpha(1);
              }
-         });
+             this.treeBranch2.scaleX = -1
+             currObj = this.treeBranch2;
+         } else {
+             if (!this.treeBranch) {
+                 this.treeBranch = this.addImage(gameConsts.halfWidth - 10, -50, 'enemies', 'tree_branch.webp').setRotation(0).setDepth(110).setOrigin(0.6, 0.6);
+             } else {
+                 this.treeBranch.setPosition(gameConsts.halfWidth - 10, -50).setRotation(0).setAlpha(1);
+             }
+             currObj = this.treeBranch;
+         }
+
+        this.glowGreen()
+         playSound('tree_sfx', 0.75).detune = isLeft ? 0 : -250;
+
+        this.addTween({
+            targets: currObj,
+            rotation: isLeft ? -0.5 : 0.5,
+            duration: 600,
+            y: -15,
+            ease: 'Back.easeOut',
+            completeDelay: 150,
+            onComplete: () => {
+                this.addTween({
+                    targets: currObj,
+                    rotation: 0.1 - Math.random() * 0.2,
+                    duration: 1100
+                });
+                this.addTween({
+                    targets: currObj,
+                    x: gameConsts.halfWidth * 0.2 + currObj.x * 0.8,
+                    y: gameConsts.height - 328,
+                    ease: 'Quart.easeIn',
+                    duration: 1100,
+                    onComplete: () => {
+                        playSound('tree_hit').detune = isLeft ? 50 : -200;
+                        messageBus.publish("selfTakeDamage", damage);
+                        let xPos = gameConsts.halfWidth * 0.5 + currObj.x * 0.5;
+                        let hitEffect = this.addSprite(xPos, currObj.y - Math.random() * 8, 'spells').play('damageEffectShort').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
+                        this.addTween({
+                            targets: hitEffect,
+                            scaleX: 1.25,
+                            scaleY: 1.25,
+                            ease: 'Cubic.easeOut',
+                            duration: 170,
+                            onComplete: () => {
+                                hitEffect.destroy();
+                            }
+                        });
+                        this.addTween({
+                            targets: hitEffect,
+                            alpha: 0,
+                            ease: 'Quad.easeIn',
+                            duration: 170
+                        });
+                        let horizShift = currObj.x - gameConsts.halfWidth;
+                        this.addTween({
+                            targets: currObj,
+                            alpha: 0,
+                            x: "+=" + horizShift * 4,
+                            rotation: horizShift * 0.05,
+                            duration: 600,
+                        });
+                        this.addTween({
+                            targets: currObj,
+                            y: "-=120",
+                            duration: 600,
+                            ease: 'Cubic.easeOut',
+                        });
+                    }
+                });
+            }
+        })
      }
 
      clearThorns() {
@@ -689,7 +723,7 @@
              [
                  // 0
                  {
-                     name: "}8 ",
+                     name: "}10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
                      chargeAmt: 410,
@@ -698,7 +732,7 @@
 
                      },
                      attackStartFunction: () => {
-                         this.attackWithBranch(8);
+                         this.attackWithBranch(10);
                      },
                      attackFinishFunction: () => {
                          let currHealthPercent = this.health / this.healthMax;
@@ -716,7 +750,7 @@
                      name: "THORNS {2",
                      announceName: "THORNS",
                      desc: "The tree creates protective thorns!",
-                     chargeAmt: 400,
+                     chargeAmt: 385,
                      chargeMult: gameVars.isHardMode ? 2 : 1,
                      isPassive: true,
                      damage: -1,
@@ -744,30 +778,17 @@
                  }
              ],
              [
-                 // 2
                  {
-                     name: " STARE...",
-                     chargeAmt: 300,
-                     isPassive: true,
-                     attackStartFunction: () => {
-
-                     },
-                     finaleFunction: () => {
-                         let currHealthPercent = this.health / this.healthMax;
-                         if (currHealthPercent <= 0.6 && !this.hasCrushed) {
-                             this.currentAttackSetIndex = 3;
-                             this.nextAttackIndex = 0;
-                         }
-                     }
-                 },
-                 {
-                     name: "|10 ",
+                     name: "|8x2 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 600,
+                     chargeAmt: 650,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.attackWithBranch(10);
+                         this.attackWithBranch(8);
+                         this.addTimeout(() => {
+                             this.attackWithBranch(8, false);
+                         }, 925)
                      },
                      attackFinishFunction: () => {
                          let currHealthPercent = this.health / this.healthMax;
@@ -812,7 +833,7 @@
                          }
                          this.addTimeout(() => {
                              this.fireObjects(2);
-                         }, 250);
+                         }, 1000);
                      }
                  },
              ],
@@ -849,7 +870,7 @@
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.03;
                          let currHealthPercent = this.health / this.healthMax;
-                         if (this.health > 60) {
+                         if (this.health > 55) {
                              this.currentAttackSetIndex = 4;
                              this.nextAttackIndex = 0;
                          } else if (!this.hasTimbered) {
@@ -895,7 +916,7 @@
                          }
                          this.addTimeout(() => {
                              this.fireObjects(2);
-                         }, 300);
+                         }, 1000);
                      }
                  },
                  {
@@ -917,11 +938,12 @@
                      announceName: "TIMBER!!!",
                      desc: "The tree tries to crush you",
                      chargeAmt: 1250,
-                     chargeMult: 2.5,
+                     chargeMult: 2.35,
                      damage: gameVars.isHardMode ? 44 : 40,
                      isBigMove: true,
                      startFunction: () => {
-                         this.attackSlownessMult = 1.8;
+                         this.attackSlownessMult = 2.4;
+                         this.pullbackDurMult = 1.13;
 
                          if (!this.glowBG) {
                              this.glowBG = this.addImage(this.sprite.x, this.sprite.y, 'blurry', 'explod.webp').setDepth(-1).setAlpha(0.01).setScale(9).setBlendMode(Phaser.BlendModes.MULTIPLY);
@@ -935,6 +957,7 @@
                              ease: 'Quad.easeOut',
                              duration: 15000
                          })
+                         this.attackEase = "Quart.easeIn";
 
                         this.sprite.setOrigin(0.52, 0.7); // from 0.9 -> 0.75
                         this.sprite.y -= this.sprite.height * 0.125;
@@ -974,7 +997,10 @@
                          if (this.finalGlowTween) {
                              this.finalGlowTween.stop();
                          }
-                         playSound('tree_timber');
+                         this.addDelay(() => {
+                             playSound('tree_timber');
+
+                         }, 400)
                          this.pullbackScale = 0.97;
                          this.attackScale = 1.75;
                          this.hasTimbered = true;

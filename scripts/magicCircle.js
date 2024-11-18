@@ -2910,11 +2910,7 @@ const ENABLE_KEYBOARD = true;
              } else if (embodimentText === '' || !closestElement.runeName) {
 
              } else if (embodimentText === 'STRIKE') {
-                 if (closestElement.runeName === RUNE_VOID) {
-                     globalObjects.currentEnemy.setPredictScale(37.5);
-                 } else {
-                     globalObjects.currentEnemy.setPredictScale(23);
-                 }
+                 globalObjects.currentEnemy.setPredictScale(23);
              } else if (embodimentText === 'ULTIMATE') {
                  if (closestElement.runeName === RUNE_MATTER) {
                      globalObjects.currentEnemy.setPredictScale(23);
@@ -3208,6 +3204,20 @@ const ENABLE_KEYBOARD = true;
 
      }
 
+
+     hasRune(rune) {
+        for (let i in this.elements) {
+            if (this.elements[i].runeName === rune && !this.elements[i].burnedOut) {
+                return true;
+            }
+        }
+         for (let i in this.embodiments) {
+             if (this.embodiments[i].runeName === rune && !this.embodiments[i].burnedOut) {
+                 return true;
+             }
+         }
+         return false;
+     }
 
      clearEffects(specific) {
         if (specific) {

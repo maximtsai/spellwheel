@@ -79,7 +79,7 @@ class LesserDummy extends Enemy {
 
                 // TODO Add for main dummy too
                 globalObjects.bannerTextManager.setDialog([getLangText('level0_diag_a'), getLangText('level0_diag_b')]);
-                globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+                globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 135, 0);
                 globalObjects.bannerTextManager.showBanner(false);
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
                     fadeAwaySound(this.bgMusic2,  1200);
@@ -619,14 +619,13 @@ class LesserDummy extends Enemy {
         });
     }
 
-     showVictory() {
-         sdkGameplayStop();
-         globalObjects.encyclopedia.hideButton();
-         globalObjects.options.hideButton();
-         globalObjects.magicCircle.disableMovement();
-         let banner = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
-         let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
-         let continueText = this.addText(gameConsts.halfWidth, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'Verdana', color: '#F0F0F0', fontSize: 18}).setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998);
+    showVictory() {
+        globalObjects.encyclopedia.hideButton();
+        globalObjects.options.hideButton();
+        globalObjects.magicCircle.disableMovement();
+        let banner = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
+        let victoryText = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'victory_text.png').setScale(0.95).setDepth(9998).setAlpha(0);
+        let continueText = this.addText(gameConsts.halfWidth, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'garamondmax', color: '#F0F0F0', fontSize: 18}).setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998);
 
         this.addTween({
             targets: banner,

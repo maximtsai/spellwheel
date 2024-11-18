@@ -17,7 +17,7 @@ function setupMainMenuBG() {
 
         let isSolo = !hasLvlSelect;
         let yPos = isSolo ? gameConsts.halfHeight - 122 : gameConsts.halfHeight - 260;
-        let xPos = isSolo ? gameConsts.halfWidth - 160 : gameConsts.halfWidth - 176;
+        let xPos = isSolo ? gameConsts.halfWidth - 150 : gameConsts.halfWidth - 176;
         if (!globalObjects.startButtonSprite) {
             globalObjects.startButtonSprite = PhaserScene.add.sprite(xPos, yPos + 38, 'misc', 'newgame.webp');
         }
@@ -29,9 +29,24 @@ function setupMainMenuBG() {
         } else {
             globalObjects.startButtonSprite.setRotation(-0.14);
             globalObjects.startButtonSprite.rotationOffset = -0.14;
+
         }
         globalObjects.creditsButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 225, gameConsts.halfHeight - 5, 'misc', 'creditsgame.webp');
         globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
+    }
+}
+
+function playNewGameFlash() {
+    let hasLvlSelect = gameVars.maxLevel >= 1;
+    if (!hasLvlSelect) {
+        setTimeout(() => {
+            if (globalObjects.startButtonSprite.visible) {
+                globalObjects.startButtonSpriteFlash = PhaserScene.add.sprite(globalObjects.startButtonSprite.x + 3, globalObjects.startButtonSprite.y, 'shields', 'btnFlash1.png');
+                globalObjects.startButtonSpriteFlash.play('btnFlash');
+                globalObjects.startButtonSpriteFlash.setScale(globalObjects.startButtonSprite.scaleX * 1.28).setRotation(globalObjects.startButtonSprite.rotation);
+            }
+        }, 250)
+
     }
 }
 
@@ -44,6 +59,12 @@ function clearOnlyMenuButtons() {
         globalObjects.levelSelectButton.destroy();
     }
     globalObjects.startButton.destroy();
+
+    globalObjects.startButtonSprite.visible = false;
+    globalObjects.startButtonSprite.destroy();
+    if (globalObjects.startButtonSpriteFlash) {
+        globalObjects.startButtonSpriteFlash.destroy();
+    }
     // globalObjects.cheatButton.destroy();
     // globalObjects.cheatButton2.destroy();
     // globalObjects.cheatButton3.destroy();
@@ -1304,13 +1325,13 @@ function showLevelSelectScreen(){
     let positionsX = [
         gameConsts.halfWidth - 120, gameConsts.halfWidth, gameConsts.halfWidth + 120,
         gameConsts.halfWidth - 180, gameConsts.halfWidth - 60, gameConsts.halfWidth + 60, gameConsts.halfWidth + 180,
-        gameConsts.halfWidth - 120, gameConsts.halfWidth, gameConsts.halfWidth + 120,
+        gameConsts.halfWidth - 180, gameConsts.halfWidth - 60, gameConsts.halfWidth + 60, gameConsts.halfWidth + 180,
         gameConsts.halfWidth - 180, gameConsts.halfWidth - 60, gameConsts.halfWidth + 60, gameConsts.halfWidth + 180,
     ]
     let positionsY = [
         gameConsts.halfHeight - 180, gameConsts.halfHeight - 180, gameConsts.halfHeight - 180,
         gameConsts.halfHeight - 60, gameConsts.halfHeight - 60, gameConsts.halfHeight - 60, gameConsts.halfHeight - 60,
-        gameConsts.halfHeight + 60, gameConsts.halfHeight + 60, gameConsts.halfHeight + 60,
+        gameConsts.halfHeight + 60, gameConsts.halfHeight + 60, gameConsts.halfHeight + 60, gameConsts.halfHeight + 60,
         gameConsts.halfHeight + 180, gameConsts.halfHeight + 180, gameConsts.halfHeight + 180, gameConsts.halfHeight + 180,
     ]
     let levelSelectBG = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 22, 'ui', 'paper.png').setDepth(10000).setScale(0.92, 0.9);
@@ -1400,9 +1421,10 @@ function showLevelSelectScreen(){
     })
 
     let listOfBtns = [];
-    let maxLevel = Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel , 14));
-    if (maxLevel >= 7) {
-        maxLevel = 14;
+
+    let maxLevel = Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel, 15));
+    if (maxLevel >= 8) {
+        maxLevel = 15;
     }
     for (let i = 1; i <= maxLevel; i++) {
         let xPos = positionsX[i - 1];

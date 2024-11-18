@@ -222,6 +222,7 @@
             <key type="filename">ui/statue_paper.png</key>
             <key type="filename">ui/tree_paper.png</key>
             <key type="filename">ui/wall_paper.png</key>
+            <key type="filename">ui/water_paper.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

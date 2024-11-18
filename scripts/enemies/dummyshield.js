@@ -13,58 +13,72 @@
      }
 
      initTutorial() {
-         this.addTimeout(() => {
-            this.createPicketSign();
-        }, 1000);
+         globalObjects.magicCircle.disableMovement();
+         globalObjects.bannerTextManager.setDialog([getLangText('level_dummy_shield'), getLangText('level_dummy_shield2')]);
+         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+         globalObjects.bannerTextManager.showBanner(false, language === 'fr');
 
-         this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
-             this.spellsCastCount++;
-             if (this.spellsCastCount === 5) {
-                globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText('shield_dummy_overwrite'), 'right');
-                 this.playerSpellCastSub.unsubscribe();
-             }
-             if (this.spellsCastCount >= 3 && this.spellsCastCount % 2 === 1) {
-                 this.picketButton.setScale(1.02, 1.05);
-                 this.picketVisual.setScale(1.02, 1.05);
-                 this.picketButton.tweenToScale(1.05, 1.15, 200, 'Cubic.easeOut', undefined, () => {
-                     this.picketButton.tweenToScale(1, 1, 700, 'Back.easeOut');
-                 });
-                 if (this.birdy && this.birdy.landed) {
-                     this.birdy.currAnim = this.addTween({
-                         targets: this.birdy,
-                         y: this.picketVisual.y - 264,
+
+         globalObjects.bannerTextManager.setOnFinishFunc(() => {
+             globalObjects.magicCircle.enableMovement();
+             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
+             globalObjects.bannerTextManager.closeBanner();
+
+             this.addTimeout(() => {
+                 this.createPicketSign();
+             }, 100);
+
+             this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
+                 this.spellsCastCount++;
+                 if (this.spellsCastCount === 5) {
+                     globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 160, getLangText('shield_dummy_overwrite'), 'right');
+                     this.playerSpellCastSub.unsubscribe();
+                 }
+                 if (this.spellsCastCount >= 3 && this.spellsCastCount % 2 === 1) {
+                     this.picketButton.setScale(1.02, 1.05);
+                     this.picketVisual.setScale(1.02, 1.05);
+                     this.picketButton.tweenToScale(1.05, 1.15, 200, 'Cubic.easeOut', undefined, () => {
+                         this.picketButton.tweenToScale(1, 1, 700, 'Back.easeOut');
+                     });
+                     if (this.birdy && this.birdy.landed) {
+                         this.birdy.currAnim = this.addTween({
+                             targets: this.birdy,
+                             y: this.picketVisual.y - 264,
+                             ease: "Cubic.easeOut",
+                             duration: 205,
+                             onComplete: () => {
+                                 this.birdy.currAnim = this.addTween({
+                                     targets: this.birdy,
+                                     y: this.picketVisual.y - 234,
+                                     ease: "Back.easeOut",
+                                     duration: 700,
+                                 });
+                             }
+                         });
+                     }
+                     this.picketVisual.currAnim = this.addTween({
+                         targets: this.picketVisual,
+                         scaleX: 1.05,
+                         scaleY: 1.15,
                          ease: "Cubic.easeOut",
-                         duration: 205,
+                         duration: 200,
                          onComplete: () => {
-                             this.birdy.currAnim = this.addTween({
-                                 targets: this.birdy,
-                                 y: this.picketVisual.y - 234,
+                             this.picketVisual.currAnim = this.addTween({
+                                 targets: this.picketVisual,
+                                 scaleX: 1,
+                                 scaleY: 1,
                                  ease: "Back.easeOut",
                                  duration: 700,
                              });
                          }
                      });
-                 }
-                 this.picketVisual.currAnim = this.addTween({
-                     targets: this.picketVisual,
-                     scaleX: 1.05,
-                     scaleY: 1.15,
-                     ease: "Cubic.easeOut",
-                     duration: 200,
-                     onComplete: () => {
-                         this.picketVisual.currAnim = this.addTween({
-                             targets: this.picketVisual,
-                             scaleX: 1,
-                             scaleY: 1,
-                             ease: "Back.easeOut",
-                             duration: 700,
-                         });
-                     }
-                 });
 
-             }
+                 }
+             });
+             this.subscriptions.push(this.playerSpellCastSub);
+
+             // messageBus.publish('enemyAddShield', 500)
          });
-         this.subscriptions.push(this.playerSpellCastSub);
     }
 
     summonBird() {
@@ -288,7 +302,7 @@
                      chargeAmt: 550,
                      finishDelay: 800,
                      transitionFast: true,
-                     chargeMult: 8,
+                     chargeMult: 7,
                      damage: -1,
                     startFunction: () => {
                     },
@@ -303,7 +317,7 @@
                  {
                      name: "}10",
                      chargeAmt: 550,
-                     chargeMult: 8,
+                     chargeMult: 7,
                      finishDelay: 800,
                      transitionFast: true,
                      damage: -1,
@@ -360,7 +374,7 @@
                  {
                      name: "}2x6",
                      chargeAmt: 500,
-                     chargeMult: 8,
+                     chargeMult: 7,
                      finishDelay: 1000,
                      transitionFast: true,
                      damage: -1,
@@ -382,7 +396,7 @@
                      chargeAmt: 700,
                      finishDelay: 1600,
                      transitionFast: true,
-                     chargeMult: 8,
+                     chargeMult: 7,
                      damage: -1,
                      isBigMove: true,
                     startFunction: () => {
@@ -439,7 +453,7 @@
                      chargeAmt: 1000,
                      finishDelay: 800,
                      transitionFast: true,
-                     chargeMult: 8,
+                     chargeMult: 7,
                      damage: -1,
                      isBigMove: true,
                     startFunction: () => {
@@ -461,7 +475,7 @@
                      chargeAmt: 1000,
                      finishDelay: 800,
                      transitionFast: true,
-                     chargeMult: 8,
+                     chargeMult: 7,
                      damage: -1,
                      isBigMove: true,
                      startFunction: () => {
@@ -482,7 +496,7 @@
                      name: "}6",
                      chargeAmt: 550,
                      transitionFast: true,
-                     chargeMult: 8,
+                     chargeMult: 7,
                      damage: -1,
                     startFunction: () => {
                         this.addTimeout(() => {

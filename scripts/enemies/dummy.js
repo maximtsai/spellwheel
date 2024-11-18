@@ -29,12 +29,55 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 80 : 70;
+         this.health = gameVars.isHardMode ? 70 : 65;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
          this.attackScale = 1.25;
          this.extrasOnDie = [];
          this.finalArms = [];
+         this.angerMult = 1;
+     }
+
+     startBreathTween() {
+        this.breathTween = this.addTween({
+            targets: this.sprite,
+            rotation: -0.07,
+            x: gameConsts.halfWidth - 13,
+            duration: 320 * this.angerMult,
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                playSound('balloon', 0.25).detune = -100 - Math.random() * 500;
+                this.repeatBreathTween();
+            }
+        })
+     }
+
+     repeatBreathTween() {
+         this.breathTween = this.addTween({
+             targets: this.sprite,
+             rotation: 0.07,
+             x: gameConsts.halfWidth + 13,
+
+             duration: 650 * this.angerMult,
+             ease: 'Cubic.easeInOut',
+             yoyo: true,
+             repeat: -1,
+         })
+     }
+
+     stopBreathTween(rotateToZero = true) {
+         if (this.breathTween) {
+             this.breathTween.stop();
+         }
+         if (rotateToZero) {
+             this.addTween({
+                 targets: this.sprite,
+                 rotation: 0,
+                 x: gameConsts.halfWidth,
+                 duration: 300,
+                 ease: 'Cubic.easeOut',
+             })
+         }
      }
 
      initSpriteAnim(scale) {
@@ -88,7 +131,7 @@
         this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
         globalObjects.magicCircle.disableMovement();
         globalObjects.bannerTextManager.setDialog([getLangText('level1_diag_b')]);
-        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 135, 0);
         globalObjects.bannerTextManager.showBanner(false);
 
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
@@ -157,7 +200,8 @@
 
                  this.addTimeout(() => {
                      this.playerSpellCastSub = this.addSubscription('recordSpell', (id, spellName) => {
-                         if (id === 'matterEnhance') {
+                         if (id === 'matterEnhance' && !this.angryEyes) {
+                             this.hasShownEnhance = true
                              this.playerSpellCastSub.unsubscribe();
                              this.playerSpellCastSub2.unsubscribe();
                              this.createEnhancePopup();
@@ -165,7 +209,6 @@
                      });
                      this.playerSpellCastSub2 = this.addSubscription('recordSpellAttack', (id, spellName) => {
                         if (globalObjects.player.getPlayerCastSpellsCount() >= 2) {
-                             this.playerSpellCastSub.unsubscribe();
                              this.playerSpellCastSub2.unsubscribe();
                              this.clearStartShadow();
                          }
@@ -290,7 +333,6 @@
     tryInitTutorial4() {
         if (!this.dead && !this.isAsleep && !this.shownTut4) {
             this.shownTut4 = true;
-            this.castAggravateCharge = 3;
             this.clearEnhancePopup();
 
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 253, getLangText('level1_tut_b'), 'right');
@@ -477,123 +519,20 @@
              })
          }
 
-         if (this.canAngryEyes && !this.angryEyes && currHealthPercent < 0.999) {
+         if (!this.angryEyes && currHealthPercent < 0.999) {
              this.angryEyes = true;
-             this.flash = this.addImage(this.x + 3, this.y - 50, 'blurry', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
-            fadeAwaySound(this.bgMusic, 200);
-             this.addTween({
-                 targets: this.flash,
-                 scaleX: this.sprite.startScale * 3.5,
-                 scaleY: this.sprite.startScale * 0.05,
-                 duration: 300,
-                 onStart: () => {
-                 }
-             });
-             this.addTween({
-                 targets: this.flash,
-                 duration: 300,
-                 ease: 'Quad.easeIn',
-                 alpha: 0,
-                 onComplete: () => {
-                     this.flash.destroy();
-                 }
-             });
-             this.currAnim = this.addTween({
-                 delay: 350,
-                 targets: this.sprite,
-                 scaleX: this.sprite.startScale + 0.24,
-                 scaleY: this.sprite.startScale + 0.24,
-                 duration: 580,
-                 completeDelay: 20,
-                 ease: 'Quart.easeOut',
-                 onComplete: () => {
-                     this.currAnim = this.addTween({
-                         targets: this.sprite,
-                         scaleX: this.sprite.startScale,
-                         scaleY: this.sprite.startScale,
-                         duration: 350,
-                         ease: 'Quart.easeIn',
-                         onComplete: () => {
-                             zoomTemp(1.03);
-                             playSound('punch');
-                            this.bgMusic = playSound('bite_down', 0.75, true, true);
+            this.setAwake();
+             this.clearStartShadow();
 
-                             this.setAwake();
-                             this.currentAttackSetIndex = 0;
-                             this.nextAttackIndex = 0;
-                             this.brows = this.addImage(this.x , this.y - 32, 'dummyenemy', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(99);
-                             this.addTween({
-                                 targets: this.brows,
-                                 scaleX: this.sprite.startScale * 2.2,
-                                 scaleY: this.sprite.startScale * 2.2,
-                                 ease: 'Quart.easeOut',
-                                 duration: 200,
-                                 onComplete: () => {
-                                     this.addTween({
-                                         targets: this.brows,
-                                         scaleX: this.sprite.startScale,
-                                         scaleY: this.sprite.startScale,
-                                         ease: 'Quart.easeIn',
-                                         duration: 700,
-                                         onComplete: () => {
-                                             this.addTimeout(() => {
-                                                 this.tryInitTutorial4();
-                                             }, 800);
-
-                                             this.setDefaultSprite('dummy_angry.png', 0.95);
-                                             this.brows.destroy();
-                                             this.brows = null;
-                                             this.fighting = true;
-                                         }
-                                     });
-                                 }
-                             });
-
-                             this.snort = this.addImage(this.x - 3, this.y - 71, 'dummyenemy', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(99);
-                             this.destructibles.push(this.snort);
-
-                             this.addTween({
-                                 targets: this.snort,
-                                 scaleX: this.sprite.startScale * 1.1,
-                                 scaleY: this.sprite.startScale * 1.1,
-                                 duration: 500,
-                                 ease: 'Cubic.easeOut'
-                             });
-                             this.addTween({
-                                 targets: this.snort,
-                                 duration: 500,
-                                 alpha: 0,
-                                 ease: 'Quad.easeIn',
-                             });
-
-                             let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 1000);
-                             shinePattern.setPosition(this.x, this.y).setScale(this.sprite.startScale + 0.25).setDepth(-1);
-                             this.addTween({
-                                 targets: shinePattern,
-                                 scaleX: this.sprite.startScale * 0.7,
-                                 scaleY: this.sprite.startScale * 0.7,
-                                 duration: 1000,
-                                 easeParams: [0.5],
-                                 ease: 'Back.easeIn'
-                             });
-                             this.addTween({
-                                 targets: shinePattern,
-                                 alpha: 0,
-                                 ease: 'Cubic.easeIn',
-                                 duration: 1000,
-                             });
-                         }
-                     });
-                 }
-             });
          }
 
+         /*
          if (prevHealthPercent >= 0.95) {
              if (currHealthPercent < 0.95) {
                  this.canAngryEyes = true;
-                 let angrySymbol = this.scene.add.sprite(this.x + 35, this.y - 52, 'misc', 'angry1.png').play('angry').setScale(0.3).setDepth(9999);
+                 this.customAngrySymbol = this.scene.add.sprite(this.x + 35, this.y - 52, 'misc', 'angry1.png').play('angry').setScale(0.3).setDepth(9999);
                  this.addTween({
-                     targets: angrySymbol,
+                     targets: this.customAngrySymbol,
                      scaleX: 0.9,
                      scaleY: 0.9,
                      duration: 300,
@@ -602,14 +541,11 @@
                      onComplete: () => {
                          this.addTween({
                              delay: 1000,
-                             targets: angrySymbol,
+                             targets: this.customAngrySymbol,
                              scaleX: 0,
                              scaleY: 0,
                              duration: 300,
                              ease: 'Back.easeIn',
-                             onComplete: () => {
-                                 angrySymbol.destroy();
-                             }
                          });
                      }
                  });
@@ -631,6 +567,7 @@
                  });
              }
          }
+*/
      }
 
      die() {
@@ -638,6 +575,10 @@
              return;
          }
         super.die();
+         if (this.breathTween) {
+             this.breathTween.stop();
+             this.sprite.x = gameConsts.halfWidth;
+         }
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();
          if (this.rune2) {
@@ -705,7 +646,8 @@
         }
         globalObjects.textPopupManager.hideInfoText();
 
-        this.x += 10;
+        this.x = gameConsts.halfWidth + 10;
+        this.sprite.rotation = 0;
          this.y += this.sprite.height * this.sprite.scaleY * 0.45; this.sprite.y = this.y;
          this.sprite.setOrigin(0.51, 0.96);
          this.dieClickBlocker = new Button({
@@ -819,15 +761,179 @@
          });
      }
 
+    beginningFight() {
+        this.flash = this.addImage(this.x + 3, this.y - 50, 'blurry', 'flash.webp').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.9).setDepth(-1).setRotation(0.2);
+        this.addTween({
+            targets: this.flash,
+            scaleX: this.sprite.startScale * 3.5,
+            scaleY: this.sprite.startScale * 0.05,
+            duration: 300,
+            onStart: () => {
+            }
+        });
+        playSound('slice_in');
+        this.addTween({
+            targets: this.flash,
+            duration: 300,
+            ease: 'Quad.easeIn',
+            alpha: 0,
+            onComplete: () => {
+                this.flash.destroy();
+            }
+        });
+        this.currAnim = this.addTween({
+            delay: 350,
+            targets: this.sprite,
+            scaleX: this.sprite.startScale + 0.24,
+            scaleY: this.sprite.startScale + 0.24,
+            duration: 580,
+            completeDelay: 20,
+            ease: 'Quart.easeOut',
+            onComplete: () => {
+                this.currAnim = this.addTween({
+                    targets: this.sprite,
+                    scaleX: this.sprite.startScale,
+                    scaleY: this.sprite.startScale,
+                    duration: 350,
+                    ease: 'Quart.easeIn',
+                    onComplete: () => {
+                        zoomTemp(1.03);
+                        playSound('punch');
+                        this.bgMusic = playSound('bite_down', 0.82, true, true);
+                        this.brows = this.addImage(this.x , this.y - 32, 'dummyenemy', 'dummybrows.png').setOrigin(0.5, 1.15).setScale(this.sprite.startScale * 1.5).setDepth(99);
+                        this.addTween({
+                            targets: this.brows,
+                            scaleX: this.sprite.startScale * 2.2,
+                            scaleY: this.sprite.startScale * 2.2,
+                            ease: 'Quart.easeOut',
+                            duration: 200,
+                            onComplete: () => {
+                                this.addTween({
+                                    targets: this.brows,
+                                    scaleX: this.sprite.startScale,
+                                    scaleY: this.sprite.startScale,
+                                    ease: 'Quart.easeIn',
+                                    duration: 700,
+                                    onComplete: () => {
+                                        this.addTimeout(() => {
+                                            this.tryInitTutorial4();
+                                        }, 300);
+
+                                        this.setDefaultSprite('dummy_angry.png', 0.95);
+                                        this.brows.destroy();
+                                        this.brows = null;
+                                        this.fighting = true;
+                                        this.startBreathTween();
+                                    }
+                                });
+                            }
+                        });
+
+                        this.snort = this.addImage(this.x - 3, this.y - 71, 'dummyenemy', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(99);
+                        this.destructibles.push(this.snort);
+
+                        this.addTween({
+                            targets: this.snort,
+                            scaleX: this.sprite.startScale * 1.1,
+                            scaleY: this.sprite.startScale * 1.1,
+                            duration: 500,
+                            ease: 'Cubic.easeOut'
+                        });
+                        this.addTween({
+                            targets: this.snort,
+                            duration: 500,
+                            alpha: 0,
+                            ease: 'Quad.easeIn',
+                        });
+
+                        let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 1000);
+                        shinePattern.setPosition(this.x, this.y).setScale(this.sprite.startScale + 0.25).setDepth(-1);
+                        this.addTween({
+                            targets: shinePattern,
+                            scaleX: this.sprite.startScale * 0.7,
+                            scaleY: this.sprite.startScale * 0.7,
+                            duration: 1000,
+                            easeParams: [0.5],
+                            ease: 'Back.easeIn'
+                        });
+                        this.addTween({
+                            targets: shinePattern,
+                            alpha: 0,
+                            ease: 'Cubic.easeIn',
+                            duration: 1000,
+                        });
+                    }
+                });
+            }
+        });
+    }
 
      initAttacks() {
          this.attacks = [
              [
                  // 0
                  {
+                     name: "WAKING UP!",
+                     chargeAmt: 700,
+                     damage: 0,
+                     chargeMult: 18,
+                     startFunction: () => {
+                         this.clearEnhancePopup();
+                         this.customAngrySymbol = this.scene.add.sprite(this.x + 35, this.y - 52, 'misc', 'angry1.png').play('angry').setScale(0.3).setDepth(9999);
+                         this.addTween({
+                             targets: this.customAngrySymbol,
+                             scaleX: 0.9,
+                             scaleY: 0.9,
+                             duration: 300,
+                             easeParams: [3],
+                             ease: 'Back.easeOut',
+                             onComplete: () => {
+                                 this.addTween({
+                                     delay: 1000,
+                                     targets: this.customAngrySymbol,
+                                     scaleX: 0,
+                                     scaleY: 0,
+                                     duration: 300,
+                                     ease: 'Back.easeIn',
+                                 });
+                             }
+                         });
+                         this.eyes = this.addImage(this.x + 1 , this.y - 41, 'dummyenemy', 'dummyeyes.png').setOrigin(0.5, 0.75).setScale(this.sprite.startScale, 0);
+                         this.addExtraSprite(this.eyes, 1, -40)
+                         this.addTween({
+                             delay: 500,
+                             targets: this.eyes,
+                             scaleY: this.sprite.startScale,
+                             ease: "Back.easeOut",
+                             duration: 450,
+                             onStart: () => {
+                                 fadeAwaySound(this.bgMusic, 2000);
+
+                             },
+                             onComplete: () => {
+                                 this.setDefaultSprite('dummy_w_eyes.png', 0.95);
+                                 if (this.eyes) {
+                                     this.removeExtraSprite(this.eyes);
+                                     this.eyes.destroy();
+                                     this.eyes = null;
+                                 }
+                             }
+                         });
+                     },
+                     finaleFunction: () => {
+                        this.beginningFight();
+                     }
+                 },
+                 {
                      name: gameVars.isHardMode ? "ANGRY}10 " : "ANGRY}8 ",
                      chargeAmt: 325,
                      damage: gameVars.isHardMode ? 10 : 8,
+                     startFunction: () => {
+                         this.timeSinceLastAttacked = 0;
+                     },
+                     attackStartFunction: () => {
+                         this.stopBreathTween();
+                     },
                      attackFinishFunction: () => {
                          screenShake(5);
                          zoomTemp(1.015)
@@ -862,11 +968,18 @@
                      chargeAmt: 315,
                      damage: 0,
                      startFunction: () => {
+                         this.startBreathTween();
+
+                         // if (!this.hasShownEnhance) {
+                         //     this.createEnhancePopup();
+                         //
+                         // }
                          this.addTimeout(() => {
                              this.tryInitTutorial5();
                          }, 800);
                      },
                      finaleFunction: () => {
+                         this.stopBreathTween(false);
                         this.healAnim(35);
                      }
                  },
@@ -875,6 +988,34 @@
                      chargeAmt: 415,
                      damage: gameVars.isHardMode ? 25 : 20,
                      isBigMove: true,
+                     startFunction: () => {
+                         this.angerMult = 0.86;
+                         this.startBreathTween();
+
+                         this.customAngrySymbol.x -= 4;
+                         this.customAngrySymbol.y -= 5;
+                         this.addTween({
+                             targets: this.customAngrySymbol,
+                             scaleX: 1,
+                             scaleY: 1,
+                             duration: 400,
+                             easeParams: [3],
+                             ease: 'Back.easeOut',
+                             onComplete: () => {
+                                 this.addTween({
+                                     delay: 1000,
+                                     targets: this.customAngrySymbol,
+                                     scaleX: 0,
+                                     scaleY: 0,
+                                     duration: 300,
+                                     ease: 'Back.easeIn',
+                                 });
+                             }
+                         });
+                     },
+                     attackStartFunction: () => {
+                         this.stopBreathTween();
+                     },
                      attackFinishFunction: () => {
                          playSound('punch');
                          playSound('body_slam')
@@ -894,7 +1035,11 @@
                      name: "HEAL\\15",
                      chargeAmt: 300,
                      damage: 0,
+                     startFunction: () => {
+                         this.startBreathTween();
+                     },
                      finaleFunction: () => {
+                         this.stopBreathTween(false);
                          this.healAnim(15);
                      }
                  },
@@ -905,16 +1050,38 @@
                      chargeMult: 3,
                      isBigMove: true,
                      startFunction: () => {
+                         this.angerMult = 0.72;
+                         this.startBreathTween();
+
+                         this.addTween({
+                             targets: this.customAngrySymbol,
+                             scaleX: 1.2,
+                             scaleY: 1.2,
+                             duration: 400,
+                             easeParams: [3],
+                             ease: 'Back.easeOut',
+                             onComplete: () => {
+                                 this.addTween({
+                                     delay: 1000,
+                                     targets: this.customAngrySymbol,
+                                     scaleX: 0,
+                                     scaleY: 0,
+                                     duration: 300,
+                                     ease: 'Back.easeIn',
+                                 });
+                             }
+                         });
                          this.currentAttackSetIndex = 1;
                          this.nextAttackIndex = 0;
                      },
                      finaleFunction: () => {
+                         this.stopBreathTween();
                          globalObjects.encyclopedia.hideButton();
                          globalObjects.options.hideButton();
                         this.setAsleep();
                         this.interruptCurrentAttack();
                         fadeAwaySound(this.bgMusic, 3500);
-                        let blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(-5).setAlpha(0);
+                        let blackBG = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(4).setAlpha(0);
                         let spaceBG = this.addImage(gameConsts.halfWidth, this.sprite.y, 'backgrounds', 'star.png').setDepth(5).setAlpha(0).setScale(2.2).setOrigin(0.5, 0.53);
                         let ascendedDummy = this.addImage(this.sprite.x, this.sprite.y, 'dummyenemy', 'dummy_ascended.png').setDepth(9).setAlpha(0).setScale(this.sprite.scaleX);
                          let ascendedDummyEyes = this.addImage(this.sprite.x, this.sprite.y - 27, 'dummyenemy', 'scary_eyes2.png').setDepth(9).setAlpha(0).setScale(this.sprite.scaleX * 0.5).setOrigin(0.5, 0.48);

@@ -501,6 +501,15 @@ let textData2 = {
         "es": " ",
         "jp": " "
     },
+    "pre_fight_water": {
+        "en_us": "A strange creature of water disturbed me\nwhile I was refilling my supplies.\n\nRocks pass right through it, but perhaps\nlightning will have an effect?",
+        "fr": "Une étrange créature aquatique m'a dérangé\nalors que je remplissais mes provisions.\n\nLes rochers la traversent, mais peut-être\nque la foudre aura un effet ?",
+        "zh_tw": "當我補充補給時，一個討厭的水生物打\n擾了我。\n\n岩石直接穿過它，但也許閃電會有作用？",
+        "zh_cn": "当我补充补给时，一个讨厌的水生物打\n扰了我。\n\n岩石直接穿过它，但也许闪电会有作用？",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "pre_fight_1a": {
         "en_us": "\"This is my shield, mine!\n Is family treasure from\n father's brother's aunt's\n grandpa's cousin's\n friend's neighbor!!\"",
         "fr": "« Ceci est mon bouclier, le\nmien! C’est un trésor de\nfamille du frère du père,\nde la tante du grand-père,\ndu voisin de l’ami du\ncousin du grand-père!! »",
@@ -673,13 +682,13 @@ let textData2 = {
         "jp": "もう一つの障害は?"
     },
     "level1_diag_b": {
-        "en_us": "Another obstacle. Time to use\nmy more advanced spells.",
-        "fr": "Un autre obstacle. Je devrais utiliser\nmes sorts les plus avancés",
-        "zh_tw": "另一个障碍。我應該使用\n我的更高級的法術。",
-        "zh_cn": "另一个障碍。我应该使用\n我的更高级的法术。",
-        "ru": "Мне следует использовать\nболее продвинутые заклинания",
-        "es": "¡Debería usar mis\nhechizos más avanzados",
-        "jp": "もっと高度な呪文を使うべきだ"
+        "en_us": "Another obstacle. Enhancing my\nattacks will destroy it faster.",
+        "fr": "Un autre obstacle. Renforcer mes\nattaques le détruira plus vite.",
+        "zh_tw": "另一个障碍。強化法術\n能讓我更快摧毀敵人。",
+        "zh_cn": "另一个障碍。强化法术\n能让我更快摧毁敌人。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "level1_tut_a": {
         "en_us": "Enhance rune\nmakes your\nattacks stronger\n ",
@@ -700,10 +709,10 @@ let textData2 = {
         "jp": "外側のホイールがあな\nたの行動を決定します"
     },
     "level1_tut_b": {
-        "en_us": "Watch out!\nEnemies get angry\nwhen attacked!",
-        "fr": "Les ennemis se\nmettent en colère\nlorsqu’ils sont\nattaqués!",
-        "zh_tw": "敵人受到攻擊\n時會生氣！",
-        "zh_cn": "敌人受到攻击\n时会生气！",
+        "en_us": "Attacking angers\nyour opponents!",
+        "fr": "Attaquer met en\ncolère vos\nadversaires !",
+        "zh_tw": "使用攻擊會激\n怒你的對手!",
+        "zh_cn": "使用攻击会激\n怒你的对手!",
         "ru": "Враги злятся,\nкогда на них\nнападают!",
         "es": "¡Los enemigos\nse enfadan cuando\nson atacados!",
         "jp": "攻撃されると\n敵が怒る!"
@@ -713,6 +722,42 @@ let textData2 = {
         "fr": "Lancez plusieurs\n\npour une attaque\npuissante",
         "zh_tw": "施放多個\n\n以進行強\n力攻擊。",
         "zh_cn": "施放多个\n\n以进行强\n力攻击。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "level_water_nodamage": {
+        "en_us": "Physical attacks can't\nharm this creature.",
+        "fr": "Les attaques physiques ne\nblessent pas cette créature.",
+        "zh_tw": "物理攻擊傷不了這個生物。",
+        "zh_cn": "物理攻击伤不了这个生物。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "level_water_nodamage2": {
+        "en_us": "But perhaps Energy spells will.",
+        "fr": "Mais peut-être que les\nsorts d'énergie le feront.",
+        "zh_tw": "但能量法術也許可以。",
+        "zh_cn": "但能量法术也许可以。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "level_water_victory": {
+        "en_us": "(The water elemental runs away)",
+        "fr": "(La élémentaire d'eau s'est échappée)",
+        "zh_tw": "（水元素生物逃跑了）",
+        "zh_cn": "（水元素生物逃跑了）",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "level_water_victory_post": {
+        "en_us": "I need something to\ndefend myself with.",
+        "fr": "J'ai besoin de quelque\nchose pour me défendre.",
+        "zh_tw": "我必須找到方法来保護自己",
+        "zh_cn": "我必須找到方法来保護自己",
         "ru": "",
         "es": "",
         "jp": ""
@@ -771,6 +816,26 @@ let textData2 = {
         "es": "",
         "jp": ""
     },
+
+    "level_dummy_shield": {
+        "en_us": "Time to test this shield.",
+        "fr": "Il est temps de\ntester ce bouclier.",
+        "zh_tw": "是時候測試這個盾牌。",
+        "zh_cn": "是时候测试这个盾牌。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "level_dummy_shield2": {
+        "en_us": "This dummy is rigged to\nattack when I click START.",
+        "fr": "J'ai truqué ce mannequin pour\nattaquer au clic sur DÉMARRER.",
+        "zh_tw": "當我單擊“START”時，\n這個假人會開始進行攻擊。",
+        "zh_cn": "当我单击“START”时，\n这个假人会开始进行攻击。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+
     "level2_tut_a": {
         "en_us": "Some attacks\ncharge up\nautomatically!",
         "fr": "certaines attaques\nennemies se chargent\nautomatiquement !",
@@ -1001,6 +1066,87 @@ let textData2 = {
         "fr": "HP: ",
         "zh_tw": "生命: ",
         "zh_cn": "生命: ",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Matter_rune_short": {
+        "en_us": "Matter Rune summons heavy rocks\nfor offense and defense",
+        "fr": "Matter Rune summons heavy rocks\nfor offense and defense",
+        "zh_tw": "Matter Rune summons heavy rocks\nfor offense and defense",
+        "zh_cn": "Matter Rune summons heavy rocks\nfor offense and defense",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Strike_rune_short": {
+        "en_us": "Strike Rune directly attacks the opponent",
+        "fr": "Strike Rune directly attacks the opponent",
+        "zh_tw": "Strike Rune directly attacks the opponent",
+        "zh_cn": "Strike Rune directly attacks the opponent",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Enhance_rune_short": {
+        "en_us": "Enhance Rune boosts the\npower of your attacks",
+        "fr": "Enhance Rune boosts the\npower of your attacks",
+        "zh_tw": "Enhance Rune boosts the\npower of your attacks",
+        "zh_cn": "Enhance Rune boosts the\npower of your attacks",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Energy_rune_short": {
+        "en_us": "Energy Rune controls lightning,\nfire and raw energy",
+        "fr": "Energy Rune controls lightning,\nfire and raw energy",
+        "zh_tw": "Energy Rune controls lightning,\nfire and raw energy",
+        "zh_cn": "Energy Rune controls lightning,\nfire and raw energy",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Shield_rune_short": {
+        "en_us": "Shield Rune creates protective barriers",
+        "fr": "Shield Rune creates protective barriers",
+        "zh_tw": "Shield Rune creates protective barriers",
+        "zh_cn": "Shield Rune creates protective barriers",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Body_rune_short": {
+        "en_us": "Body Rune modifies your wheel and health",
+        "fr": "",
+        "zh_tw": "",
+        "zh_cn": "",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Time_rune_short": {
+        "en_us": "Time rune can slow enemy attacks\nor duplicate your own",
+        "fr": "Time rune can slow enemy attacks\nor duplicate your own",
+        "zh_tw": "Time rune can slow enemy attacks\nor duplicate your own",
+        "zh_cn": "Time rune can slow enemy attacks\nor duplicate your own",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Void_rune_short": {
+        "en_us": "Void rune controls dark empty space",
+        "fr": "Void rune controls dark empty space",
+        "zh_tw": "Void rune controls dark empty space",
+        "zh_cn": "Void rune controls dark empty space",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "Ultimate_rune_short": {
+        "en_us": "Ultimate rune grants you your\nmost powerful abilities",
+        "fr": "Ultimate rune grants you your\nmost powerful abilities",
+        "zh_tw": "Ultimate rune grants you your\nmost powerful abilities",
+        "zh_cn": "Ultimate rune grants you your\nmost powerful abilities",
         "ru": "",
         "es": "",
         "jp": ""

@@ -1862,6 +1862,17 @@
          }
      }
 
+     beginReaperAnim() {
+         globalObjects.bannerTextManager.setDialog([getLangText('infinite_ammo_unlocked')]);
+         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
+         globalObjects.bannerTextManager.showBanner(false);
+         globalObjects.bannerTextManager.setOnFinishFunc(() => {
+             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
+             globalObjects.bannerTextManager.closeBanner();
+             playReaperAnim(this, this.customReaperAnim);
+         })
+     }
+
      createDeathEffect(amt = 12, scale = 1, vel = 100) {
          for (let i = 0; i < amt; i++) {
              let particle = this.addImage(this.x, this.y, 'enemies', 'void_knight_shield_eye.png').setDepth(0).setScale(scale * (1 + Math.random()) );

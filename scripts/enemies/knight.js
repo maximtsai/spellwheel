@@ -5,10 +5,10 @@
          this.sprite.setOrigin(0.5, 0.5); // 0.9
          this.shieldAdded = false;
          this.initMisc();
-         this.popupTimeout = this.addTimeout(() => {
-             this.tutorialButton = createTutorialBtn(this.level);
-             this.addToDestructibles(this.tutorialButton);
-         }, 3000);
+         // this.popupTimeout = this.addTimeout(() => {
+         //     this.tutorialButton = createTutorialBtn(this.level);
+         //     this.addToDestructibles(this.tutorialButton);
+         // }, 3000);
          this.addTimeoutIfAlive(() => {
              globalObjects.magicCircle.disableMovement();
             this.initFog();

@@ -477,8 +477,8 @@ let textData2 = {
     "pre_fight_0h": {
         "en_us": "CAST:\nCLICK/SPACE",
         "fr": "LANCER:\nClic/barre\nd'espace",
-        "zh_tw": "法術施放:\n滑鼠點選/空白鍵",
-        "zh_cn": "法术施放:\n鼠标单击/空格键",
+        "zh_tw": "法術施放:\n點選/空白鍵",
+        "zh_cn": "法术施放:\n单击/空格键",
         "ru": "Щелчок мышью\nпробел",
         "es": "LANZAR HECHIZO:\nClic mouse\n/nespaciadora",
         "jp": "呪文の詠唱:\nマウスをクリック\n/スペースバー"

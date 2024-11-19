@@ -382,7 +382,7 @@ let textData3 = {
     },
     "death6b": {
         "en_us": "A MESS THAT FALLS TO ME\nTO CLEAN UP.",
-        "fr": "UN DÉSORDRE QU'IL M'INCOMBE\nDE NETTOYER.",
+        "fr": "UN DÉSORDRE QU'IL\nM'INCOMBE DE NETTOYER.",
         "zh_tw": "每次我都必須來恢復秩序。",
         "zh_cn": "每次我都必须来恢复秩序。",
         "ru": "",

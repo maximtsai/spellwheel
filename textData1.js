@@ -345,19 +345,19 @@ let textData = {
         "jp": "完全に回復するが、最大HPの10を失う"
     },
     "void_unload_desc": {
-        "en_us": "DMG 9% of enemy's\ncurrent HP and\ndisrupt their action",
+        "en_us": "9% enemy current\nHP DMG. Disrupt\nenemy action",
         "fr": "Inflige des dégâts\néquivalant à 9% des\nPV actuels de\nl'ennemi et perturbe\nson action",
-        "zh_tw": "傷害敵人當前生命\n值 9% 並打断他們\n的行動",
-        "zh_cn": "伤害敌人当前生命\n值 9% 并打断他们\n的行动",
+        "zh_tw": "9% 敵人當前生命\n值傷害。擾亂敵人\n行動。",
+        "zh_cn": "9% 敌人当前生命\n值伤害。扰乱敌人\n行动。",
         "ru": "Нанести урон равный\n9% от текущего\nздоровья врага и\nостанавливающи его\nдействие",
         "es": "Inflige daño al\n9% de los PS\nactuales del enemigo\ne interrumpe su acción",
         "jp": "敵の現在HPの9%にダ\nメージを与え、敵の\n行動を妨害する"
     },
     "void_unload_desc_long": {
-        "en_us": "DMG 9% of enemy's\ncurrent HP and disrupt their action",
-        "fr": "Inflige des dégâts équivalant à 9% des PV\nactuels de l'ennemi et perturbe son action",
-        "zh_tw": "傷害敵人當前生命值 9% 並打断他們的行動",
-        "zh_cn": "伤害敌人当前生命值 9% 并打断他们的行动",
+        "en_us": "9% enemy current HP DMG.\nDisrupt enemy action.",
+        "fr": "9% de dégâts HP actuels de l'ennemi.\nInterrompre l'action de l'ennemi.",
+        "zh_tw": "9% 敵人當前生命值傷害。\n擾亂敵人行動。",
+        "zh_cn": "9% 敌人当前生命值伤害。\n扰乱敌人行动。",
         "ru": "Нанести урон равный 9% от текущего\nздоровья врага и останавливающи его действие",
         "es": "Inflige daño al 9% de los PS actuales\ndel enemigo e interrumpe su acción",
         "jp": "敵の現在HPの9%にダメージを\n与え、敵の行動を妨害する"

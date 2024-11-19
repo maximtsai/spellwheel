@@ -1780,7 +1780,7 @@ const ENABLE_KEYBOARD = true;
                     this.bufferedCastAvailable = false;
                 }
             },
-            duration: gameVars.gameManualSlowSpeed * 1550,
+            duration: gameVars.gameManualSlowSpeed * 1650,
             rotation: "+=6.283"
         });
 
@@ -1798,7 +1798,7 @@ const ENABLE_KEYBOARD = true;
                     this.bufferedCastAvailable = false;
                 }
             },
-            duration: gameVars.gameManualSlowSpeed * 1550,
+            duration: gameVars.gameManualSlowSpeed * 1650,
             rotation: "-=6.283"
         });
     }

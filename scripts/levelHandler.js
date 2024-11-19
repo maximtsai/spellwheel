@@ -589,7 +589,7 @@ function switchLevelBackground(lvl) {
             break;
         case 2:
             switchBackground('forest_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'backgroundwater.webp', 1500, 1.05, 1, 1,'Quart.easeIn', 0, false, -10);
+            fadeInBackgroundAtlas('backgrounds', 'backgroundwater.webp', 1500, 1.05, 0.92, 0.92,'Quart.easeIn', 0, false, -10);
             break;
         case 3:
             switchBackground('forest_bg.webp');

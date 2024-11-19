@@ -306,7 +306,7 @@ let textData4 = {
         "jp": "練習に復帰"
     },
 
-    "energy_tut_goblin": {
+    "energy_tut_water": {
         "en_us": "Energy spells\nbypass all\nenemy defenses.\n             +",
         "fr": "Les sorts d'énergie\ncontournent toutes\nles défenses ennemies.\n                  +",
         "zh_tw": "能量法術可以\n無視所有敵人\n的防禦。\n         +",
@@ -314,6 +314,16 @@ let textData4 = {
         "ru": "Энергетические заклинания обходят любую защиту противника.               +",
         "es": "Los hechizos de energía eluden todas las defensas enemigas.               +",
         "jp": "エネルギー呪文は敵の防御を無視したトゥルーダメージを与える。              +"
+    },
+
+    "energy_tut_water_enhance": {
+        "en_us": "ADD DAMAGE\nalso boosts\nShock Strike\n           +",
+        "fr": "ADD DAMAGE\npeut renforcer\nShock Strike\n           +",
+        "zh_tw": "ADD DAMAGE\n也会強化\nShock Strike\n           +",
+        "zh_cn": "ADD DAMAGE\n也会强化\nShock Strike\n           +",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "shield_tut_knight": {
         "en_us": "Void shields will\nblock strong\nattacks! But\nbreak after X hits.\n              +",

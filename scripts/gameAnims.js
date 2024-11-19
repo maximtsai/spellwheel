@@ -190,20 +190,20 @@ function createAnimations(scene) {
         frames: scene.anims.generateFrameNames('water', {
             prefix: 'water_elec',
             suffix: '.png',
-            start: 1,
-            end: 2,
+            start: 0,
+            end: 4,
             zeroPad: 0,
         }),
         repeat: 0,
-        frameRate: 7,
+        frameRate: 16,
     });
     scene.anims.create({
         key: 'waterelecsmall',
         frames: scene.anims.generateFrameNames('water', {
             prefix: 'water_elec',
             suffix: '.png',
-            start: 2,
-            end: 3,
+            start: 4,
+            end: 5,
             zeroPad: 0,
         }),
         repeat: 0,

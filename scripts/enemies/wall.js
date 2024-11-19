@@ -13,7 +13,7 @@
      }
 
      initStatsCustom() {
-         this.health = 750;
+         this.health = 700;
          this.pullbackScale = 0.9999;
          this.attackScale = 1;
          this.isAsleep = true;
@@ -137,7 +137,7 @@
              // this.setDefaultSprite('wall_2.png');
              this.initEye1();
              this.birdFalls();
-         } else if (this.health <= 550 && !this.firstCanCrumble) {
+         } else if (this.health <= 500 && !this.firstCanCrumble) {
              this.firstCanCrumble = true;
              this.setDefaultSprite('wall_3.png');
              this.closeEyes(0, () => {
@@ -154,7 +154,7 @@
                  this.eyes2.setFrame('wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1);
                  this.reOpenEyes()
              });
-         } else if (this.health <= 350 && !this.secondCanCrumble) {
+         } else if (this.health <= 300 && !this.secondCanCrumble) {
              this.secondCanCrumble = true;
              this.setDefaultSprite('wall_4.png');
              this.closeEyes(0, () => {
@@ -167,7 +167,7 @@
                  this.eyes2.startOffsetY = -4 * this.trueStartScale;
                  this.reOpenEyes()
              })
-         } else if (this.health <= 150 && !this.thirdCanCrumble) {
+         } else if (this.health <= 100 && !this.thirdCanCrumble) {
              this.setDefaultSprite('wall_5.png');
              this.thirdCanCrumble = true;
              this.eyes1.setVisible(false);
@@ -440,12 +440,12 @@
                     rock.scaleX *= -1;
                 }
             }
-            let duration = hasRock ? 1100 : 900;
+            let duration = hasRock ? 1200 : 1000;
             if (hasBigRock) {
                 duration *= 1.8;
             }
             if (isBigPoop) {
-                duration *= 1.8;
+                duration *= 1.75;
             }
             let goalX = isLeft ? gameConsts.halfWidth + 15 - Math.random() * 45 : gameConsts.halfWidth + Math.random() * 45 - 15;
             this.addTween({
@@ -706,23 +706,13 @@
                  {
                      name: "}2",
                      chargeAmt: 300,
+                     finishDelay: 100,
                      damage: -1,
                      attackFinishFunction: () => {
                          playSound('chirp1', 0.5).detune = -150;
                          this.birdPoops(1);
                          this.nextBirdIndex = 1;
                         this.checkCrumble();
-                     }
-                 },
-                 {
-                     name: "}5",
-                     chargeAmt: 350,
-                     damage: -1,
-                     attackFinishFunction: () => {
-                         playSound('chirp1', 0.65).detune = 0;
-                         this.birdPoops(1, true);
-                         this.nextBirdIndex = 2;
-                         this.checkCrumble(true);
                      }
                  },
                  {
@@ -733,13 +723,24 @@
                      attackFinishFunction: () => {
                          playSound('chirpmany', 1);
                          this.birdPoops(gameVars.isHardMode ? 5 : 4);
-                         this.nextBirdIndex = 3;
+                         this.nextBirdIndex = 2;
                          this.checkCrumble();
                      }
                  },
                  {
+                     name: "}5",
+                     chargeAmt: 350,
+                     damage: -1,
+                     attackFinishFunction: () => {
+                         playSound('chirp1', 0.65).detune = 0;
+                         this.birdPoops(1, true);
+                         this.nextBirdIndex = 3;
+                         this.checkCrumble(true);
+                     }
+                 },
+                 {
                      name: "$6",
-                     chargeAmt: 450,
+                     chargeAmt: 400,
                      finishDelay: 3000,
                      damage: -1,
                      startFunction: () => {
@@ -761,13 +762,13 @@
                      }
                  },
                  {
-                     name: gameVars.isHardMode ? "}2x9" : "}2x7",
-                     finishDelay: 1300,
-                     chargeAmt: 450,
+                     name: gameVars.isHardMode ? "}5x4" : "}5x3",
+                     finishDelay: 900,
+                     chargeAmt: 400,
                      damage: -1,
                      attackFinishFunction: () => {
                          playSound('chirpmany', 1);
-                         this.birdPoops(gameVars.isHardMode ? 9 : 7);
+                         this.birdPoops(gameVars.isHardMode ? 4 : 3, true);
                          this.nextBirdIndex = 5;
                          this.checkCrumble();
                      }

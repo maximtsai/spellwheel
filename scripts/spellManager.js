@@ -433,6 +433,7 @@ class SpellManager {
         brickObj2.alpha = 0.02;
         brickObj.setScale(0.8);
         brickObj2.setScale(1.25 + Math.sqrt(spellMult) * 0.05);
+        brickObj2.origScale = 0.8;
 
         let protectionAmt = 1;
         let damageAmt = 1;
@@ -477,7 +478,8 @@ class SpellManager {
             alpha: 1.1,
             ease: 'Quart.easeIn',
             onComplete: () => {
-
+                brickObj2.setScale(0.8);
+                brickObj2.visible = false;
             }
         });
         let totalProtection = spellMult * protectionAmt;
@@ -2556,6 +2558,21 @@ class SpellManager {
                     voidAttackCount++;
                     voidText.setText(voidAttackCount)
                     let goalScale = 0.4 + voidAttackCount * 0.03 + Math.sqrt(voidAttackCount) * 0.05;
+                    let voidpulse = getTempPoolObject('spells', 'voidpulse.png', 'voidpulse', durAmt * 2 + 100);
+                    voidpulse.setAlpha(1).setScale(goalScale * 0.85).setDepth(voidSpot.depth - 1).setPosition(voidSpot.x, voidSpot.y);
+                    PhaserScene.tweens.add({
+                        targets: voidpulse,
+                        scaleX: goalScale * 2,
+                        scaleY: goalScale * 2,
+                        duration: 500 + idx * 200,
+                        ease: 'Quart.easeOut',
+                    })
+                    PhaserScene.tweens.add({
+                        targets: voidpulse,
+                        duration: 500 + idx * 200,
+                        alpha: 0,
+                        ease: 'Quad.easeOut',
+                    })
                     PhaserScene.tweens.add({
                         targets: voidSpot,
                         scaleX: goalScale,
@@ -2591,7 +2608,7 @@ class SpellManager {
 
         // First build the strike objects
         for (let i = 0; i < numStrikes; i++) {
-            let isLeftStrike = i % 2 == isNormalDir;
+            let isLeftStrike = i % 2 === isNormalDir;
             let xPos = gameConsts.halfWidth + (isLeftStrike ? -10 : 10);
             let yPos = globalObjects.player.getY() - 145;
 
@@ -2608,7 +2625,7 @@ class SpellManager {
         for (let i = 0; i < allStrikeObjects.length; i++) {
             let individualStrikeDelay = waitDur + i * 175;
             let currStrikeObj = allStrikeObjects[i];
-            let isLeftStrike = i % 2 == isNormalDir;
+            let isLeftStrike = i % 2 === isNormalDir;
             let scaleXMult = isLeftStrike ? 1 : -1;
             this.scene.tweens.add({
                 delay: individualStrikeDelay,
@@ -2648,11 +2665,12 @@ class SpellManager {
                 duration: 600,
                 ease: 'Back.easeOut',
                 onComplete: () => {
+                    let goalScaleStick = 1.085 + additionalDamage * 0.009;
                     this.scene.tweens.add({
                         targets: currStrikeObj,
                         rotation: isLeftStrike ? 0.13 : -0.13,
-                        scaleX: (1 + additionalDamage * 0.01) * scaleXMult,
-                        scaleY: 1.08 + additionalDamage * 0.01,
+                        scaleX: (1.005 + additionalDamage * 0.009) * scaleXMult,
+                        scaleY: goalScaleStick,
                         duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
@@ -2663,10 +2681,36 @@ class SpellManager {
                                 playSound('swish', 1.4).detune = -680;
                             } else {
                                 playSound('void_strike_hit');
+                                let hitVol = 0.13;
+                                let detuneAmt = -200;
+                                if (i === 0) {
+                                    detuneAmt = 0;
+                                    hitVol = 0.25;
+                                } else if (i === allStrikeObjects.length - 1) {
+                                    detuneAmt = -50;
+                                    hitVol = 0.2;
+                                }
+                                playSound('void_strike', hitVol).detune = detuneAmt;
                                 if (damageDealt > 12) {
                                     zoomTempSlow(1.007);
                                     screenShake(0.5 + damageDealt * 0.0008);
                                 }
+                                let sliceEffect = getTempPoolObject('spells', 'darkSlice.png', 'darkSlice', 500);
+                                sliceEffect.setScale(goalScaleStick * 1.7, goalScaleStick * 0.7).setRotation(isLeftStrike ? -0.85 : (Math.PI + 0.85)).setAlpha(1).setOrigin(-0.05, 0.5);
+                                sliceEffect.setPosition(gameConsts.halfWidth + (isLeftStrike ? -105 : 105) + (Math.random() * 24) - 12, gameConsts.halfHeight - 106 - Math.random() * 10).setDepth(currStrikeObj.depth - 1);
+                                sliceEffect.rotat += Math.random() * 0.1 - 0.05;
+                                this.scene.tweens.add({
+                                    targets: sliceEffect,
+                                    alpha: 0,
+                                    duration: 350,
+                                });
+                                this.scene.tweens.add({
+                                    targets: sliceEffect,
+                                    scaleX: goalScaleStick * 1.2,
+                                    scaleY: goalScaleStick * 0.75,
+                                    duration: 200,
+                                    ease: 'Back.easeIn',
+                                });
                             }
 
                             messageBus.publish('enemyTakeDamage', damageDealt, true, undefined, 'void');

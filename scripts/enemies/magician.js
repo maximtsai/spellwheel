@@ -1162,7 +1162,7 @@
                          this.createTimeObject('clock4.png', this.x + 40, this.y - 80, 300);
                          this.addTimeout(() => {
                              this.fireTimeObjects(4);
-                         }, 800);
+                         }, 900);
                      },
                      attackFinishFunction: () => {
                         if (this.health < this.healthMax - 20) {
@@ -1184,7 +1184,7 @@
                          this.createTimeObject('clock2.png', this.x + 40, this.y - 80, 300);
                          this.addTimeout(() => {
                              this.fireTimeObjects(3);
-                         }, 800);
+                         }, 900);
                      },
                      attackFinishFunction: () => {
                         if (this.health < this.healthMax - 20) {
@@ -1246,7 +1246,7 @@
                  {
                      name: ";20 ",
                      desc: "A devastating barrage\nof offensive magic.",
-                     chargeAmt: gameVars.isHardMode ? 550 : 520,
+                     chargeAmt: gameVars.isHardMode ? 520 : 555,
                      isBigMove: true,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -1642,7 +1642,7 @@
 
      fireTimeObjects(damage = 10, durBonus = 0, interval = 175, hitTwice = false) {
          let totalTimeObjects = this.timeObjects.length;
-         let projDur = 600 - Math.floor(Math.sqrt(totalTimeObjects) * 50) + durBonus;
+         let projDur = 700 - Math.floor(Math.sqrt(totalTimeObjects) * 50) + durBonus;
          let timeObjectsFired = 0;
          while (this.timeObjects.length > 0) {
              let currObj = this.timeObjects.shift();
@@ -1652,7 +1652,8 @@
                  targets: currObj,
                  delay: delayAmt,
                  y: globalObjects.player.getY() - 170 + Math.random() * 10 - currObj.width * 0.5,
-                 ease: 'Quad.easeIn',
+                 ease: (damage > 11 || totalTimeObjects > 10) ? 'Quad.easeIn' : 'Back.easeIn',
+                 easeParams: [0.5],
                  duration: projDur,
                  rotation: (Math.random() - 0.5) * 3,
                  onStart: () => {
@@ -1704,7 +1705,7 @@
                  delay: delayAmt,
                  x: gameConsts.halfWidth * 0.92 + currObj.x * 0.15,
                  ease: 'Back.easeIn',
-                 easeParams: [3],
+                 easeParams: [3.2],
                  duration: projDur
              });
          }

@@ -788,7 +788,7 @@
                          this.attackWithBranch(8);
                          this.addTimeout(() => {
                              this.attackWithBranch(8, false);
-                         }, 925)
+                         }, 1000)
                      },
                      attackFinishFunction: () => {
                          let currHealthPercent = this.health / this.healthMax;
@@ -1362,7 +1362,7 @@
                         targets: glowSpike,
                         ease: 'Cubic.easeIn',
                         x: gameConsts.halfWidth,
-                        duration: 1100,
+                        duration: 1250,
                     });
                 }
             });
@@ -1391,8 +1391,8 @@
                 targets: glowSpike,
                 y: globalObjects.player.getY() - 270,
                 alpha: 1.2,
-                duration: 1300,
-                easeParams: [2.5],
+                duration: 1450,
+                easeParams: [2.65],
                 ease: 'Back.easeIn',
                 onComplete: () => {
                     glowSpike.setDepth(20);

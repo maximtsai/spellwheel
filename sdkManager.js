@@ -18,11 +18,11 @@ function crazyGamesMidgameAd(func) {
         clickBlocker = createGlobalClickBlocker(false);
         setTimeout(() => {
             if (!hasFinished) {
-                hasFinished = true;
+                // hasFinished = true;
                 hideGlobalClickBlocker();
                 // func()
             }
-        }, 15000)
+        }, 20000)
     }, () => {
         if (!hasFinished) {
             hasFinished = true;

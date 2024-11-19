@@ -354,7 +354,7 @@ let textData = {
         "jp": "敵の現在HPの9%にダメージを\n与え、敵の行動を妨害する"
     },
     "mind_strike_desc": {
-        "en_us": "Deal 1 True DMG.\nEnemy takes x2\nDMG from next\nattack.",
+        "en_us": "Deal 1 TRUE DMG.\nEnemy takes x2\nDMG from next\nattack.",
         "fr": "Inflige 1 dégât\nvéritable. L'ennemi\nsubit x2 dégâts\nlors de prochaine\nattaque.",
         "zh_tw": "造成 1 點真實\n傷害。下一次攻擊\n造成 2 倍傷害。",
         "zh_cn": "造成 1 点真实\n伤害。下一次攻击\n造成 2 倍伤害。",
@@ -363,7 +363,7 @@ let textData = {
         "jp": "1の真のダメージを\n与える。敵は次の\n攻撃で2倍のダメー\nジを受ける"
     },
     "mind_strike_desc_long": {
-        "en_us": "Deal 1 True DMG. Enemy takes\nx2 DMG from next attack.",
+        "en_us": "Deal 1 TRUE DMG. Enemy takes\nx2 DMG from next attack.",
         "fr": "Inflige 1 dégât véritable. L'ennemi subit\nx2 dégâts lors de prochaine attaque.",
         "zh_tw": "造成 1 點真實傷害。\n下一次攻擊造成 2 倍傷害。",
         "zh_cn": "造成 1 点真实伤害。\n下一次攻击造成 2 倍伤害。",
@@ -372,7 +372,7 @@ let textData = {
         "jp": "1の真のダメージを与える。敵は次の\n攻撃で2倍のダメージを受ける"
     },
     "mind_enhance_desc": {
-        "en_us": "Next attack\nburns enemy for 2\nTrue DMG/sec\nfor 5 seconds",
+        "en_us": "Next attack\nburns enemy for 2\nTRUE DMG/sec\nfor 5 seconds",
         "fr": "Prochaine attaque\nbrûle l'ennemi\npour 2 dégâts\nvéritables par seconde\npendant 5 secondes.",
         "zh_tw": "下一次攻擊造成\n每秒 2 點真實\n傷害，持續 5 秒",
         "zh_cn": "下一次攻击造成\n每秒 2 点真实\n伤害，持续 5 秒",
@@ -381,7 +381,7 @@ let textData = {
         "jp": ""
     },
     "mind_enhance_desc_long": {
-        "en_us": "Next attack burns enemy for\n2 True DMG/sec for 5 seconds",
+        "en_us": "Next attack burns enemy for\n2 TRUE DMG/sec for 5 seconds",
         "fr": "Prochaine attaque brûle l'ennemi pour\n2 dégâts véritables par seconde pendant 5 secondes.",
         "zh_tw": "下一次攻擊造成每秒\n2 點真實傷害，持續 5 秒",
         "zh_cn": "下一次攻击造成每秒\n2 点真实伤害，持续 5 秒",
@@ -390,7 +390,7 @@ let textData = {
         "jp": ""
     },
     "mind_enhance_plus_desc": {
-        "en_us": "Next attack burns\nenemy for 3\nTrue DMG/sec\nfor 5 seconds",
+        "en_us": "Next attack burns\nenemy for 3\nTRUE DMG/sec\nfor 5 seconds",
         "fr": "Prochaine attaque\nbrûle l'ennemi pour 3\ndégâts véritables par seconde\npendant 5 secondes.",
         "zh_tw": "下一次攻擊對敵人\n造成每秒 3 點真實\n傷害，持續 5 秒",
         "zh_cn": "下一次攻击对敌人\n造成每秒 3 点真实\n伤害，持续 5 秒",
@@ -399,7 +399,7 @@ let textData = {
         "jp": ""
     },
     "mind_enhance_plus_desc_long": {
-        "en_us": "Next attack burns enemy for\n3 True DMG/sec for 5 seconds",
+        "en_us": "Next attack burns enemy for\n3 TRUE DMG/sec for 5 seconds",
         "fr": "Prochaine attaque brûle l'ennemi pour\n2 dégâts véritables par seconde pendant 5 secondes.",
         "zh_tw": "下一次攻擊造成每秒\n3 點真實傷害，持續 5 秒",
         "zh_cn": "下一次攻击造成每秒\n3 点真实伤害，持续 5 秒",
@@ -525,7 +525,7 @@ let textData = {
         "jp": ""
     },
     "mind_tut_desc": {
-        "en_us": "Energy rune controls raw energy.\nEnergy spells have powerful utility\neffects and deal True damage that\nbypasses enemy defenses.",
+        "en_us": "Energy rune controls raw energy.\nEnergy spells have powerful utility\neffects and deal TRUE damage that\nbypasses enemy defenses.",
         "fr": "La rune Énergie permet de\ncontrôler l'énergie brute, avec des\nsorts qui offrent un soutien puissant\net infligent des dégâts bruts contournant\nles défenses ennemies.",
         "zh_tw": "能量符文授予對原始能量的\n控制權。能量法術具有強大\n的支援效果，可以造成繞過\n敵人防禦的真實傷害。",
         "zh_cn": "能量符文授予对原始能量的\n控制权。能量法术具有强大\n的支持效果，可以造成绕过\n敌人防御的真实伤害。",
@@ -534,7 +534,7 @@ let textData = {
         "jp": "エネルギーのルーンは、生のエネルギーをコントロールすることを可能にします。エネルギー呪文は強力なサポート効果を持ち、敵の防御を迂回するトゥルーダメージを与えることができます。"
     },
     "mind_tut_desc_sh": {
-        "en_us": "Energy rune controls raw energy.\nEnergy spells have powerful\nutility effects and deal\nTrue damage that bypasses\nenemy defenses.",
+        "en_us": "Energy rune controls raw energy.\nEnergy spells have powerful\nutility effects and deal\nTRUE damage that bypasses\nenemy defenses.",
         "fr": "La rune Énergie permet de\ncontrôler l'énergie brute, avec\ndes sorts qui offrent un soutien\npuissant et infligent des dégâts\nbruts contournant les défenses\nennemies.",
         "zh_tw": "能量符文授予對原始能量的\n控制權。能量法術具有強大\n的支援效果，可以造成繞過\n敵人防禦的真實傷害。",
         "zh_cn": "能量符文授予对原始能量的\n控制权。能量法术具有强大\n的支持效果，可以造成绕过\n敌人防御的真实伤害。",
@@ -561,7 +561,7 @@ let textData = {
         "jp": "それ自体はほとんどダメージを与えないエネルギーの稲妻を発射しますが、次の攻撃を増幅して2倍(x2)のダメージを与えます。"
     },
     "mind_tut_enhance_desc": {
-        "en_us": "Your next attack sets the\nenemy on fire, which deals\nTrue damage over time that\ncannot be blocked.",
+        "en_us": "Your next attack sets the\nenemy on fire, which deals\nTRUE damage over time that\ncannot be blocked.",
         "fr": "Votre prochaine attaque met\nle feu à l’ennemi, ce qui\nlui inflige des dégâts réels\nau fil du temps qui ne\npeuvent pas être bloqués.",
         "zh_tw": "你的下一次攻擊會讓敵人著火，\n在一段时间内造成挡不住的真实\n伤害。",
         "zh_cn": "你的下一次攻击会让敌人着火，\n在一段时间内造成挡不住的真实\n伤害。",

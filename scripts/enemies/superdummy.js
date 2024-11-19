@@ -19,7 +19,7 @@
 
      initStatsCustom() {
          this.health = 24;
-        this.secondHealth = gameVars.isHardMode ? 650 : 600;
+        this.secondHealth = gameVars.isHardMode ? 600 : 550;
          this.isAsleep = true;
          this.isFirstMode = true;
         this.attackScale = 1.23;
@@ -577,7 +577,7 @@
              [
                  {
                      name: "|6x2",
-                     chargeAmt: 500,
+                     chargeAmt: 450,
                      damage: 6,
                      attackTimes: 2,
                      prepareSprite: 'super_dummy_swinging.png',
@@ -600,7 +600,7 @@
                  },
                  {
                      name: "}20",
-                     chargeAmt: 600,
+                     chargeAmt: 550,
                      damage: 20,
                      prepareSprite: 'super_dummy_wide.png',
                      startFunction: () => {
@@ -646,7 +646,7 @@
                  },
                  {
                      name: "BUFF UP",
-                     chargeAmt: 800,
+                     chargeAmt: 700,
                      isPassive: true,
                      damage: -1,
                      chargeMult: 2,
@@ -696,7 +696,7 @@
                      name: "|22",
                      damage: -1,
                     finishDelay: 2200,
-                     chargeAmt: 600,
+                     chargeAmt: 550,
                      startFunction: () => {
                         this.pullbackScale = 0.99;
                         this.attackScale = 1.01;
@@ -864,7 +864,7 @@
                  {
                      name: "BUFF UP",
                      isPassive: true,
-                     chargeAmt: 800,
+                     chargeAmt: 700,
                      damage: -1,
                      chargeMult: 2,
                      startFunction: () => {
@@ -982,7 +982,7 @@
                  },
                  {
                      name: "T-POSE",
-                     chargeAmt: 450,
+                     chargeAmt: 400,
                      damage: -1,
                      chargeMult: 2,
                      startFunction: () => {

@@ -322,7 +322,7 @@ const ENABLE_KEYBOARD = true;
         if (this.voidArm.alpha > 0) {
             this.voidArm.bonusRotation += (Math.random() - 0.5) * 0.05;
             this.voidArm.bonusRotation *= 0.98;
-            this.voidArm.rotation = this.voidArm.bonusRotation + rotationOffset;
+            this.voidArm.rotation = this.voidArm.bonusRotation + rotationOffset - 0.1;
             if (this.voidArm.alpha > 0.92) {
                 this.voidArm.alpha = 0.92 + Math.random() * 0.08;
             }
@@ -330,7 +330,7 @@ const ENABLE_KEYBOARD = true;
         if (this.voidArm2.alpha > 0) {
             this.voidArm2.bonusRotation += (Math.random() - 0.5) * 0.05;
             this.voidArm2.bonusRotation *= 0.97;
-            this.voidArm2.rotation = Math.PI * 0.5 + this.voidArm2.bonusRotation + rotationOffset;
+            this.voidArm2.rotation = Math.PI * 0.5 + this.voidArm2.bonusRotation + rotationOffset - 0.1;
             if (this.voidArm2.alpha > 0.92) {
                 this.voidArm2.alpha = 0.92 + Math.random() * 0.08;
             }

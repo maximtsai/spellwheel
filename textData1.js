@@ -156,7 +156,7 @@ let textData = {
         "jp": "2回攻撃する。最初の攻撃は6ダメージを与え、\n2回目の攻撃は最初の攻撃の50%を与えます。"
     },
     "time_enhance_desc": {
-        "en_us": "Next attack\nis fired an\nadditional time",
+        "en_us": "Next attack\nis cast an\nadditional time",
         "fr": "Prochaine\nattaque est lancée\nune fois de plus",
         "zh_tw": "下一次攻擊\n將額外發射一次",
         "zh_cn": "下一次攻击\n将多发射一次",
@@ -165,7 +165,7 @@ let textData = {
         "jp": "次の攻撃は追加\nで発射されます"
     },
     "time_enhance_desc_long": {
-        "en_us": "Next attack is\nfired an additional time",
+        "en_us": "Next attack is\ncast an additional time",
         "fr": "Prochaine attaque est\nlancée une fois de plus.",
         "zh_tw": "下一次攻擊將額外發射一次",
         "zh_cn": "下一次攻击将多发射一次",
@@ -255,7 +255,7 @@ let textData = {
         "jp": "次の7つの呪文の凍結時間。\n繰り返し使用すると弱くなります。"
     },
     "void_strike_desc": {
-        "en_us": "Consume all Strike\nrunes. Each fires\nan attack dealing\n2% of enemy's\ncurrent HP.",
+        "en_us": "Consume all Strike\nrunes. Each casts\nan attack dealing\n2% of enemy's\ncurrent HP.",
         "fr": "Consommez toutes\nles runes de frappe.\nChaque tire une attaque\ninfligeant 2 % PV\nactuels ennemis.",
         "zh_tw": "消耗所有打擊符文，\n每個符文造成敵人\n目前生命值的 2%\n傷害。",
         "zh_cn": "消耗所有打击符文，\n每个符文造成敌人\n当前生命值的 2%\n伤害。",
@@ -273,7 +273,7 @@ let textData = {
         "jp": "遅延後に3回攻撃し、各攻撃で敵の\n現在のHPの2.5%にダメージを与える"
     },
     "void_strike_desc_long": {
-        "en_us": "Consume all Strike runes. Each fires an\nattack dealing 2% of enemy's current HP.",
+        "en_us": "Consume all Strike runes. Each casts an\nattack dealing 2% of enemy's current HP.",
         "fr": "Consommez toutes les runes de frappe. Chaque\ntire une attaque infligeant 2 % PV actuels ennemis.",
         "zh_tw": "消耗所有打擊符文，每個符文造成\n敵人目前生命值的 2% 傷害。",
         "zh_cn": "消耗所有打击符文，每个符文造成\n敌人当前生命值的 2% 伤害。",
@@ -624,7 +624,7 @@ let textData = {
         "jp": ""
     },
     "time_tut_enhance_desc": {
-        "en_us": "Your next attack is duplicated\nallowing you to fire multiple\nattacks at the same time.",
+        "en_us": "Your next attack is duplicated\nallowing you to cast multiple\nattacks at the same time.",
         "fr": "Votre prochaine attaque est\ndupliquée, vous permettant de\nlancer plusieurs attaques en\nmême temps.",
         "zh_tw": "複製你的下一次攻擊，\n使你能同時發射多次攻擊。",
         "zh_cn": "复制你的下一次攻击，\n使你能同时发射多次攻击。",
@@ -858,7 +858,7 @@ let textData = {
     "rune_mind_rune_protect": "REFLECT SHIELD",
     "rune_mind_rune_reinforce": "ENERGIZE",
     "rune_mind_rune_unload": "AMPLIFY MAGIC",
-    "rune_time_rune_strike": "TWIN STRIKE",
+    "rune_time_rune_strike": "DOUBLE STRIKE",
     "rune_time_rune_enhance": "ADD MULTI-ATTACK",
     "rune_time_rune_protect": "DELAY SHIELD",
     "rune_time_rune_reinforce": "UNDO WOUNDS",

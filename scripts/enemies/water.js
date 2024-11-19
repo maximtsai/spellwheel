@@ -115,13 +115,38 @@
          if (amt > 10 && isAttack && !isTrue && !this.warnDamage) {
              this.warnDamage = true;
              this.addDelay(() => {
+                 let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
+
+                 this.rune1 = this.addImage(gameConsts.halfWidth - 245, gameConsts.halfHeight + 10, 'tutorial', 'rune_energy_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+                 this.rune2 = this.addImage(gameConsts.halfWidth + 245, gameConsts.halfHeight + 10, 'tutorial', 'rune_energy_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+
                  globalObjects.magicCircle.disableMovement();
                  globalObjects.bannerTextManager.setDialog([getLangText('level_water_nodamage'), getLangText('level_water_nodamage2')]);
                  globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
                  globalObjects.bannerTextManager.showBanner(false, language === 'fr');
+                 globalObjects.bannerTextManager.setDialogFunc([() => {}, () => {
+                     this.rune1.alpha = 0.15;
+                     this.rune2.alpha = 0.15;
+                     this.rune1.currAnim = this.addTween({
+                         targets: [this.rune1, this.rune2],
+                         alpha: 1,
+                         scaleX: 1,
+                         scaleY: 1,
+                         ease: 'Back.easeOut',
+                         duration: 250,
+                     });
+                 }])
                  globalObjects.bannerTextManager.setOnFinishFunc(() => {
                      globalObjects.magicCircle.enableMovement();
                      // this.showEnergyTut();
+                     if (this.rune1.currAnim) {
+                         this.rune1.currAnim.stop();
+                     }
+                     this.addTween({
+                         targets: [this.rune1, this.rune2],
+                         alpha: 0,
+                         duration: 400,
+                     });
 
                      globalObjects.bannerTextManager.setOnFinishFunc(() => {});
                      globalObjects.bannerTextManager.closeBanner();
@@ -224,7 +249,7 @@
                  if (newEffect.damage && newEffect.damage > 4) {
                      this.sprite.play('waterelec');
                  } else {
-                     this.sprite.play('waterelecsmall');
+                     this.sprite.play('waterelec');
                  }
 
                  this.addTween({

@@ -1039,10 +1039,9 @@ class SpellManager {
             });
         }
 
-        let spellName = getBasicText('rune_time_rune_unload');
+        let spellName = getBasicText('rune_matter_rune_unload');
         messageBus.publish('clearSpellMultiplier');
         this.postAttackCast(spellID, 300, spellName, additionalDamage, numAdditionalAttacks);
-
     }
 
     castTimeStrike() {
@@ -1336,17 +1335,20 @@ class SpellManager {
                                                     detuneIdx++;
                                                 }
 
-                                                if (idxNum === 0) {
-                                                    playSound('time_strike_hit', 0.92).detune = detuneAmt;
-                                                } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
-                                                    // last hit
-                                                    playSound('time_strike_hit', 0.85).detune = detuneAmt;
-                                                } else if (idxNum % 2 === 1) {
-                                                    playSound('time_strike_hit_2', 1).detune = detuneAmt;
-                                                } else if (idxNum % 2 === 0) {
-                                                    playSound('time_strike_hit_2', 0.75).detune = detuneAmt;
+                                                if (globalObjects.currentEnemy && (globalObjects.currentEnemy.immune || globalObjects.currentEnemy.invincible)) {
+                                                    playSound('swish', 1).detune = Math.random() * 250;
+                                                } else {
+                                                    if (idxNum === 0) {
+                                                        playSound('time_strike_hit', 0.92).detune = detuneAmt;
+                                                    } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
+                                                        // last hit
+                                                        playSound('time_strike_hit', 0.85).detune = detuneAmt;
+                                                    } else if (idxNum % 2 === 1) {
+                                                        playSound('time_strike_hit_2', 1).detune = detuneAmt;
+                                                    } else if (idxNum % 2 === 0) {
+                                                        playSound('time_strike_hit_2', 0.75).detune = detuneAmt;
+                                                    }
                                                 }
-
 
                                                 messageBus.publish('enemyTakeDamage', halfSpellDamage, true, undefined, 'time');
                                                 messageBus.publish('setPauseDur', 15);
@@ -1443,29 +1445,33 @@ class SpellManager {
                         }
                     });
                     let idxNum = parseInt(i);
-                    if (idxNum === 0) {
-                        let detuneHitAmt = Math.floor(Math.random() * 150) - 75;
-                        playSound('time_strike_buff', 0.92).detune = detuneHitAmt;
-                        playSound('time_strike_hit', 0.54).detune = detuneHitAmt - 250;
 
-                    } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
-                        // last hit
-                        playSound('time_strike_buff', 0.85);
-                        playSound('time_strike_hit_2', 0.45).detune =  -250;
-
-                    } else if (idxNum % 2 === 1) {
-                        playSound('time_strike_buff', 1).detune = -200;
-                        playSound('time_strike_hit', 0.54).detune = 200;
-
-                    } else if (idxNum % 2 === 0) {
-                        playSound('time_strike_buff', 0.75).detune = -200;
+                    if (globalObjects.currentEnemy && (globalObjects.currentEnemy.immune || globalObjects.currentEnemy.invincible)) {
+                        playSound('time_strike_buff', 0.5).detune = -500 + Math.random() * 250;
+                    } else {
+                        if (idxNum === 0) {
+                            let detuneHitAmt = Math.floor(Math.random() * 150) - 75;
+                            playSound('time_strike_buff', 0.92).detune = detuneHitAmt;
+                            playSound('time_strike_hit', 0.54).detune = detuneHitAmt - 250;
+                        } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
+                            // last hit
+                            playSound('time_strike_buff', 0.85);
+                            playSound('time_strike_hit_2', 0.45).detune =  -250;
+                        } else if (idxNum % 2 === 1) {
+                            playSound('time_strike_buff', 1).detune = -200;
+                            playSound('time_strike_hit', 0.54).detune = 200;
+                        } else if (idxNum % 2 === 0) {
+                            playSound('time_strike_buff', 0.75).detune = -200;
+                        }
+                        zoomTempSlow(1.002 + additionalDamage * 0.0001);
+                        screenShake(0.35 + additionalDamage * 0.001)
                     }
+
 
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', spellDamage, true, undefined, 'time');
                     messageBus.publish('setPauseDur', 20);
-                    zoomTempSlow(1.002 + additionalDamage * 0.0001);
-                    screenShake(0.35 + additionalDamage * 0.001)
+
                 }
             });
         }
@@ -1829,11 +1835,11 @@ class SpellManager {
                     let dmgEffect = getTempPoolObject('spells', 'shockEffect1.png', 'shockEffect', 310).play('shockEffect').setPosition(attackObj.x, attackObj.y - 12).setDepth(attackObj.depth).setScale(0.5).setRotation(Math.random() * 6);
                     let randScale = 1.3 + 0.1 * Math.random();
                     if (globalObjects.currentEnemy && globalObjects.currentEnemy.invincible) {
-                        playSound('clunk', 1).detune = 150;
+                        playSound('clunk', 0.4).detune = Math.random() * 200;
+                        playSound('fizzle', 1).detune = Math.random() * 200;
                     } else {
                         playSound('mind_strike_hit');
                     }
-
 
                     this.scene.tweens.add({
                         targets: [dmgBG],
@@ -1848,7 +1854,8 @@ class SpellManager {
                         ease: 'Quart.easeOut',
                     });
 
-                    messageBus.publish('enemyTakeTrueDamage', 1 + additionalDamage, true, undefined, true, 'mind');
+                    let damageDealt = 1 + additionalDamage;
+                    messageBus.publish('enemyTakeTrueDamage', damageDealt, true, undefined, true, 'mind');
 
                     if (isPowerful && i === attackObjects.length - 1) {
                         let powerfulEffect = getTempPoolObject('tutorial', 'rune_energy_large.png', 'specialAttack', 1300);
@@ -1923,6 +1930,7 @@ class SpellManager {
                             name: spellID,
                             x: animation1.x,
                             y: animation1.y,
+                            damage: damageDealt,
                             cleanUp: (statuses, damage, explode) => {
                                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
                                     if (!globalObjects.currentEnemy.isDestroyed) {
@@ -2648,12 +2656,17 @@ class SpellManager {
                         duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.025 + additionalDamage;
-                            let damageDealt = Math.ceil(healthPercent)
-                            playSound('void_strike_hit');
-                            if (damageDealt > 12) {
-                                zoomTempSlow(1.007);
-                                screenShake(0.5 + damageDealt * 0.0008);
+                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.02 + additionalDamage;
+                            let damageDealt = Math.ceil(healthPercent);
+
+                            if (globalObjects.currentEnemy && (globalObjects.currentEnemy.immune || globalObjects.currentEnemy.invincible)) {
+                                playSound('swish', 1.4).detune = -680;
+                            } else {
+                                playSound('void_strike_hit');
+                                if (damageDealt > 12) {
+                                    zoomTempSlow(1.007);
+                                    screenShake(0.5 + damageDealt * 0.0008);
+                                }
                             }
 
                             messageBus.publish('enemyTakeDamage', damageDealt, true, undefined, 'void');

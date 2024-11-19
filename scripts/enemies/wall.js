@@ -9,11 +9,11 @@
          this.popupTimeout = this.addTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
-         }, 3000)
+         }, 2500)
      }
 
      initStatsCustom() {
-         this.health = 800;
+         this.health = 750;
          this.pullbackScale = 0.9999;
          this.attackScale = 1;
          this.isAsleep = true;
@@ -137,7 +137,7 @@
              // this.setDefaultSprite('wall_2.png');
              this.initEye1();
              this.birdFalls();
-         } else if (currHealthPercent < 0.8 && !this.firstCanCrumble) {
+         } else if (this.health <= 550 && !this.firstCanCrumble) {
              this.firstCanCrumble = true;
              this.setDefaultSprite('wall_3.png');
              this.closeEyes(0, () => {
@@ -154,7 +154,7 @@
                  this.eyes2.setFrame('wall_eyes_3_b.png').setDepth(8).setScale(this.trueStartScale, this.trueStartScale * 0.1);
                  this.reOpenEyes()
              });
-         } else if (currHealthPercent < 0.55 && !this.secondCanCrumble) {
+         } else if (this.health <= 350 && !this.secondCanCrumble) {
              this.secondCanCrumble = true;
              this.setDefaultSprite('wall_4.png');
              this.closeEyes(0, () => {
@@ -167,7 +167,7 @@
                  this.eyes2.startOffsetY = -4 * this.trueStartScale;
                  this.reOpenEyes()
              })
-         } else if (currHealthPercent < 0.3 && !this.thirdCanCrumble) {
+         } else if (this.health <= 150 && !this.thirdCanCrumble) {
              this.setDefaultSprite('wall_5.png');
              this.thirdCanCrumble = true;
              this.eyes1.setVisible(false);
@@ -407,21 +407,24 @@
             if (hasBigPoop && i == numBirds - 1) {
                 delay += 500;
                 isBigPoop = true;
-                bird = this.addImage(-999, 0, 'wallenemy', 'bird_2_fat.png').setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
+                bird = this.addSprite(-999, 0, 'wallenemy', 'bird_2_fat.png');
             } else {
                 bird = poolManager.getItemFromPool('bird');
                 if (!bird) {
-                    bird = this.addImage(-999, 0, 'wallenemy', 'bird_2.png').setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
+                    bird = this.addSprite(-999, 0, 'wallenemy', 'bird_2.png');
                 }
             }
             bird.alpha = 1;
             bird.visible = true;
-            bird.setDepth(12).setScale(this.trueStartScale * 0.25 + 0.55);
+            bird.setDepth(13).setScale(this.trueStartScale * 0.25 + 0.55);
             if (!isBigPoop) {
                 bird.setFrame('bird_2.png');
+            } else {
+                bird.scaleX += 0.08;
+                bird.scaleY += 0.08;
             }
             bird.y = 10 + Math.random() * 120;
-            let isLeft = i % 2 == 0;
+            let isLeft = i % 2 === 0;
             if (!isLeft) {
                 bird.rotation = -0.8;
                 bird.scaleX *= -1;

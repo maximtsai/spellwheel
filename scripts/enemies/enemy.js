@@ -114,7 +114,7 @@ class Enemy {
     }
 
     createHealthBar(x, y) {
-        this.healthBarLengthMax = 65 + Math.floor(Math.sqrt(this.healthMax) * 5);
+        this.healthBarLengthMax = 66 + Math.floor(Math.sqrt(this.healthMax) * 4.86);
         this.healthBarMax = this.scene.add.sprite(x, isMobile ? 16 : 14, 'blackPixel');
         this.healthBarMaxGoalScale = this.healthBarLengthMax + 3;
         this.healthBarMax.setScale(0, 11);
@@ -565,7 +565,7 @@ class Enemy {
                 this.chargeVertical.alpha = Math.max(0, this.chargeVertical.alpha - timeChange * 0.04 * dt) * (1 - 0.08 * dt);
                 this.chargeVertical2.alpha = this.chargeVertical.alpha;
 
-                almostDone = this.attackCharge > this.nextAttackChargeNeeded - 45;
+                almostDone = this.attackCharge > this.nextAttackChargeNeeded - 50;
 
                 if (gameVars.playerNotMoved && chargeMult === 1 && !almostDone && this.castAggravateCharge <= 0) {
                     // this.attackCharge += timeChange * 0.02 * this.slowMult;
@@ -639,10 +639,10 @@ class Enemy {
             }
 
             let estScale = this.chargeBarEstScale;
-            if (this.chargeBarCurr.scaleX + estScale * 2 + 10.05 > this.chargeBarMax.scaleX) {
+            if (this.chargeBarCurr.scaleX + estScale * 1.99 + 11 > this.chargeBarMax.scaleX) {
                 estScale = 99;
             }
-            let willBeAlmostDone = this.attackCharge > this.nextAttackChargeNeeded - 50;
+            // let willBeAlmostDone = this.attackCharge > this.nextAttackChargeNeeded - 50;
             // if () {
             //
             // }
@@ -1685,7 +1685,7 @@ class Enemy {
         }
         this.chargeBarAngry.scaleX = 0;
         this.chargeBarWarning.scaleX = 0;
-        // this.timeSinceLastAttacked = 9999;
+        this.timeSinceLastAttacked = 0;
         // this.castAggravateCharge += 20;
         this.isAsleep = false;
         if (this.attackName) {

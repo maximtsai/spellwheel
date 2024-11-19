@@ -9,7 +9,7 @@
          this.popupTimeout = this.addTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
-         }, 3000)
+         }, 2500)
 
 
          this.addSubscription("enemyOnFire", this.setOnFire.bind(this))
@@ -200,7 +200,12 @@
                  this.setSprite('water_elec2.png');
 
                  this.sprite.x = gameConsts.halfWidth + (Math.random() < 0.5 ? -13 : 13);
-                 this.sprite.play('waterelec');
+
+                 if (newEffect.damage && newEffect.damage > 4) {
+                     this.sprite.play('waterelec');
+                 } else {
+                     this.sprite.play('waterelecsmall');
+                 }
 
                  this.addTween({
                      targets: this.sprite,
@@ -243,6 +248,7 @@
      }
 
      setOnFire(duration) {
+         console.log("set on fire");
          this.defaultAnim = 'wateranimfast';
 
          if (!this.matterHitAnim && !this.isUsingAttack) {
@@ -250,20 +256,18 @@
 
              this.burnAnim = this.sprite.play(this.defaultAnim);
              this.isBurning = true;
-
-             // if (this.currDelay) {
-             //     this.currDelay.stop();
-             // }
-             this.currDelay = this.addTween({
-                 targets: this.sprite,
-                 rotation: 0,
-                 duration: duration * 1000 - 1000,
-                 onComplete: () => {
-                     this.clearMindBurn();
-                 }
-             });
          }
-
+         if (this.currDelay) {
+             this.currDelay.stop();
+         }
+         this.currDelay = this.addTween({
+             targets: this.sprite,
+             rotation: 0,
+             duration: duration * 1000 - 1000,
+             onComplete: () => {
+                 this.clearMindBurn();
+             }
+         });
      }
 
      clearMindBurn() {
@@ -271,15 +275,13 @@
              this.sprite.stop();
              this.burnAnim = null;
          }
-         if (this.health > 25) {
+         if (this.health > 15) {
              this.defaultAnim = 'wateranim';
          }
          this.isBurning = false;
-         if (this.dead) {
-             return;
-         } else {
-            playSound('water1');
-            this.idleAnim()
+         if (!this.dead) {
+             playSound('water1');
+             this.idleAnim()
          }
      }
 

@@ -586,7 +586,8 @@ const ENABLE_KEYBOARD = true;
         this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(21).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);
         this.voidSliceImage3 = scene.add.sprite(gameConsts.halfWidth + 100, 255, 'spells', 'darkSlice.png').setDepth(21).setRotation(-Math.PI * 0.5 - 0.6).setAlpha(0).setOrigin(0.17, 0.5);
 
-        this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0).setDepth(10).setBlendMode(Phaser.BlendModes.ADD);
+        this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setAlpha(0).setDepth(10).setBlendMode(Phaser.BlendModes.ADD);
+        this.mindBurnAnimBack = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setAlpha(0).setDepth(-1);
 
 
         // this.spellDescText = this.scene.add.bitmapText(this.x + 204, this.y + 2, 'plain', '', 15);
@@ -1769,7 +1770,7 @@ const ENABLE_KEYBOARD = true;
         this.scene.tweens.add({
             targets: this.innerCircle,
             ease: 'Back.easeIn',
-            easeParams: [1.1],
+            easeParams: [1.04],
             onComplete: () => {
                 this.resetElements();
                 this.innerDragDisabled = false;
@@ -1779,14 +1780,14 @@ const ENABLE_KEYBOARD = true;
                     this.bufferedCastAvailable = false;
                 }
             },
-            duration: gameVars.gameManualSlowSpeed * 1800,
+            duration: gameVars.gameManualSlowSpeed * 1550,
             rotation: "+=6.283"
         });
 
         this.scene.tweens.add({
             targets: this.outerCircle,
             delay: 0,
-            easeParams: [1.1],
+            easeParams: [1.04],
             ease: 'Back.easeIn',
             onComplete: () => {
                 this.resetEmbodiments();
@@ -1797,7 +1798,7 @@ const ENABLE_KEYBOARD = true;
                     this.bufferedCastAvailable = false;
                 }
             },
-            duration: gameVars.gameManualSlowSpeed * 1800,
+            duration: gameVars.gameManualSlowSpeed * 1550,
             rotation: "-=6.283"
         });
     }
@@ -2938,9 +2939,11 @@ const ENABLE_KEYBOARD = true;
          if (this.mindBurnTween) {
              this.mindBurnTween.stop();
          }
-         this.mindBurnAnim.alpha = 0.5;
+         this.mindBurnAnim.alpha = 0.35;
+         this.mindBurnAnimBack.alpha = 0.35;
          let damageDealt = (gameVars.mindPlus ? 3 : 2) * multiplier;
          this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * damageDealt);
+         this.mindBurnAnimBack.setScale(this.mindBurnAnim.scaleX);
         if (!this.flashBGWhite) {
             this.flashBGWhite = PhaserScene.add.image(gameConsts.halfWidth,gameConsts.halfHeight - 200,'blurry', 'circle.webp').setDepth(-1).setAlpha(0);
         }
@@ -3004,14 +3007,16 @@ const ENABLE_KEYBOARD = true;
 
      animateMindBurn(duration, damage) {
          this.mindBurnAnim.setScale(0.75 + 0.052 * damage);
-         this.mindBurnAnim.alpha = 0.9;
+         this.mindBurnAnimBack.setScale(this.mindBurnAnim.scaleX)
+         this.mindBurnAnim.alpha = 0.62;
+         this.mindBurnAnimBack.alpha = 0.62;
          messageBus.publish('enemyTakeTrueDamage', damage, false, 0, true);
          let aggAmt = Math.max(0, damage + 1) * 0.85
          messageBus.publish('addCastAggravate', aggAmt, false, 0, true);
 
          if (duration <= 1) {
              this.mindBurnAnim.currAnim = PhaserScene.tweens.add({
-                 targets: [this.mindBurnAnim],
+                 targets: [this.mindBurnAnim, this.mindBurnAnimBack],
                  alpha: 0,
                  scaleX: 1 + 0.05 * damage,
                  scaleY: 1 + 0.05 * damage,
@@ -3020,8 +3025,8 @@ const ENABLE_KEYBOARD = true;
              });
          } else {
              this.mindBurnAnim.currAnim = this.scene.tweens.add({
-                 targets: this.mindBurnAnim,
-                 alpha: 0.42,
+                 targets: [this.mindBurnAnim, this.mindBurnAnimBack],
+                 alpha: 0.3,
                  duration: 500,
                  scaleX: 0.65 + 0.05 * damage,
                  scaleY: 0.65 + 0.05 * damage,
@@ -3226,6 +3231,7 @@ const ENABLE_KEYBOARD = true;
         this.voidSliceImage1.visible = false;
         this.voidSliceImage3.visible = false;
          this.mindBurnAnim.alpha = 0;
+         this.mindBurnAnimBack.alpha = 0;
          this.removeDelayedDamage();
      }
 

@@ -2,7 +2,7 @@ let isMobile = testMobile();
 let pixelWidth = isMobile ? 594 : 604
 let pixelHeight = isMobile ? 810 : 775
 handleBorders();
-let gameVersion = "version 1.00";
+let gameVersion = "version 1.04";
 let config = {
     type: Phaser.AUTO,
     scale: {

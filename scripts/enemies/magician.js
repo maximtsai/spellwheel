@@ -5,7 +5,7 @@
         this.popupTimeout = this.addTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
-        }, 3000)
+        }, 2500)
         this.addTimeout(() => {
             if (!this.isDestroyed) {
                 this.customBgMusic = playMusic('magician_theme_1', 0.95, true);
@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 130 : 110;
+         this.health = gameVars.isHardMode ? 120 : 100;
          this.damageNumOffset = 45;
          this.chargeBarOffsetY = 4;
          this.damageNumOffsetDefault = this.damageNumOffset;
@@ -1153,7 +1153,7 @@
                  {
                      name: "}4x3 ",
                      desc: "An advanced magic attack.",
-                     chargeAmt: gameVars.isHardMode ? 400 : 495,
+                     chargeAmt: gameVars.isHardMode ? 400 : 445,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -1175,7 +1175,7 @@
                  {
                      name: "}3x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: gameVars.isHardMode ? 350 : 445,
+                     chargeAmt: gameVars.isHardMode ? 350 : 405,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
@@ -1199,7 +1199,7 @@
                 // 1
                  {
                      name: "\\50% MISSING HEALTH",
-                     chargeAmt: gameVars.isHardMode ? 280 : 345,
+                     chargeAmt: gameVars.isHardMode ? 280 : 305,
                      isPassive: true,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
@@ -1246,7 +1246,7 @@
                  {
                      name: ";20 ",
                      desc: "A devastating barrage\nof offensive magic.",
-                     chargeAmt: gameVars.isHardMode ? 550 : 580,
+                     chargeAmt: gameVars.isHardMode ? 550 : 520,
                      isBigMove: true,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {

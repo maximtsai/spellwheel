@@ -1035,6 +1035,31 @@
 					}
 				},
 				{
+					"filename": "water_elec3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 600,
+						"h": 740
+					},
+					"spriteSourceSize": {
+						"x": 75,
+						"y": 28,
+						"w": 433,
+						"h": 352
+					},
+					"frame": {
+						"x": 833,
+						"y": 1391,
+						"w": 433,
+						"h": 352
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "water_elec1.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1065,6 +1090,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:1cf4a5729aa32368f2e2eb605227a2fb:dba9a5bad3cbee9ecf545b9b47ca0a14:01af871538960dfd536bc1b394e07fb8$"
+		"smartupdate": "$TexturePacker:SmartUpdate:b1ad39aa14ebb783fcb71f1bf1c371f4:af837f685defcc6473a1dd2d0876aa1c:01af871538960dfd536bc1b394e07fb8$"
 	}
 }

@@ -12,37 +12,37 @@ let textData = {
     },
 
     "matter_strike_desc": {
-        "en_us": "Deal 12 DMG",
-        "fr": "Inflige 12 points\nde dégâts",
-        "zh_tw": "造成12點傷害",
-        "zh_cn": "造成 12 点伤害",
+        "en_us": "12 DMG",
+        "fr": "12 points\nde dégâts",
+        "zh_tw": "12點傷害",
+        "zh_cn": "12 点伤害",
         "ru": "Наносит 12 ед. урона",
         "es": "Inflige 12 de daño",
         "jp": "12ダメージを与える"
     },
     "matter_strike_desc_long": {
-        "en_us": "Deal 12 DMG",
-        "fr": "Inflige 12 points de dégâts",
-        "zh_tw": "造成12點傷害",
-        "zh_cn": "造成 12 点伤害",
+        "en_us": "12 DMG",
+        "fr": "12 points de dégâts",
+        "zh_tw": "12點傷害",
+        "zh_cn": "12 点伤害",
         "ru": "Наносит 12 ед. урона",
         "es": "Inflige 12 de daño",
         "jp": "12ダメージを与える"
     },
     "matter_strike_plus_desc": {
-        "en_us": "Deal 14 DMG",
-        "fr": "Inflige 14 points\nde dégâts",
-        "zh_tw": "造成14點傷害",
-        "zh_cn": "造成 14 点伤害",
+        "en_us": "14 DMG",
+        "fr": "14 points\nde dégâts",
+        "zh_tw": "14點傷害",
+        "zh_cn": "14 点伤害",
         "ru": "Наносит 14 ед. урона",
         "es": "Inflige 14 de daño",
         "jp": "14ダメージを与える"
     },
     "matter_strike_plus_desc_long": {
-        "en_us": "Deal 14 DMG",
-        "fr": "Inflige 14 points de dégâts",
-        "zh_tw": "造成14點傷害",
-        "zh_cn": "造成 14 点伤害",
+        "en_us": "14 DMG",
+        "fr": "14 points de dégâts",
+        "zh_tw": "14點傷害",
+        "zh_cn": "14 点伤害",
         "ru": "Наносит 14 ед. урона",
         "es": "Inflige 14 de daño",
         "jp": "14ダメージを与える"
@@ -138,25 +138,25 @@ let textData = {
         "jp": "24ダメージを与える。\n24個の一時的な保護を得る。"
     },
     "time_strike_desc": {
-        "en_us": "Deal 6 DMG,\nfollowed by a\nsecond attack\nat half power",
-        "fr": "Inflige 6 points\nde dégâts, suivi\nd'une deuxième\nattaque à moitié\npuissance",
-        "zh_tw": "造成 6 點傷害，\n然後進行半威力\n的第二次攻擊",
-        "zh_cn": "造成 6 点伤害，\n然后进行半威力\n的第二次攻击",
+        "en_us": "6 DMG. Hits a\nsecond time at\nhalf power.",
+        "fr": "6 DMG. Frappe\nune seconde fois\nà mi-puissance.",
+        "zh_tw": "6 點傷害。稍後\n以半威力進行第\n二次打擊。",
+        "zh_cn": "6 点伤害。稍后\n以半威力进行第\n二次打击。",
         "ru": "Атаковать дважды.\nПервая атака наносит\n6 урона, вторая\nнаносит 50% урона\nот первой атаки.",
         "es": "Ataca dos veces.\nEl primer ataque\ninflige 6 de daño,\nel segundo ataque\ninflige el 50%\ndel primero.",
         "jp": "2回攻撃する。最初の\n攻撃は6ダメージを与え、\n2回目の攻撃は最初の\n攻撃の50%を与えます。"
     },
     "time_strike_desc_long": {
-        "en_us": "Deal 6 DMG, followed by a\nsecond attack with half power",
-        "fr": "Inflige 6 points de dégâts, suivi d'une\ndeuxième attaque à moitié puissance",
-        "zh_tw": "造成 6 點傷害，然後\n進行半威力的第二次攻擊",
-        "zh_cn": "造成 6 点伤害，然后\n进行半威力的第二次攻击",
+        "en_us": "6 DMG. Hits a second\ntime at half power.",
+        "fr": "6 DMG. Frappe une\nseconde fois à mi-puissance.",
+        "zh_tw": "6 點傷害。稍後以\n半威力進行第二次打擊。",
+        "zh_cn": "6 点伤害。稍后以\n半威力进行第二次打击。",
         "ru": "Атаковать дважды. Первая атака наносит 6 урона,\nвторая наносит 50% урона от первой атаки.",
         "es": "Ataca dos veces. El primer ataque inflige 6 de\ndaño, el segundo ataque inflige el 50% del primero.",
         "jp": "2回攻撃する。最初の攻撃は6ダメージを与え、\n2回目の攻撃は最初の攻撃の50%を与えます。"
     },
     "time_enhance_desc": {
-        "en_us": "Next attack\nis fired an\nadditional time",
+        "en_us": "Next attack\nis cast an\nadditional time",
         "fr": "Prochaine\nattaque est lancée\nune fois de plus",
         "zh_tw": "下一次攻擊\n將額外發射一次",
         "zh_cn": "下一次攻击\n将多发射一次",
@@ -165,7 +165,7 @@ let textData = {
         "jp": "次の攻撃は追加\nで発射されます"
     },
     "time_enhance_desc_long": {
-        "en_us": "Next attack is\nfired an additional time",
+        "en_us": "Next attack is\ncast an additional time",
         "fr": "Prochaine attaque est\nlancée une fois de plus.",
         "zh_tw": "下一次攻擊將額外發射一次",
         "zh_cn": "下一次攻击将多发射一次",
@@ -255,29 +255,38 @@ let textData = {
         "jp": "次の7つの呪文の凍結時間。\n繰り返し使用すると弱くなります。"
     },
     "void_strike_desc": {
-        "en_us": "Consume all Strike\nrunes. Each fires\nan attack dealing\n2% of enemy's\ncurrent HP.",
-        "fr": "",
-        "zh_tw": "",
-        "zh_cn": "消耗所有打击符文，每个符文造成敌人当前生命值的 2% 伤害。",
+        "en_us": "2% enemy current\nHP DMG. Consumes\nall Strike runes\nfor extra attacks.",
+        "fr": "Consommez toutes\nles runes de frappe.\nChaque tire une attaque\ninfligeant 2 % PV\nactuels ennemis.",
+        "zh_tw": "2% 敵人當前生命值傷害。消耗所有攻擊符文進行多倍攻擊。",
+        "zh_cn": "2% 敌人当前生命值伤害。消耗所有攻击符文进行多倍攻击。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "void_strike_desc_longx": {
-        "en_us": "Fire 3 delayed attacks that each\ndamages 2.5% enemy current HP",
-        "fr": "Attaque 3 fois après un délai, chaque attaque\ninfligeant 2.5% des PV actuels de l’ennemi.",
+        "en_us": "Fire 3 delayed attacks that each\ndamages 2% enemy current HP",
+        "fr": "Attaque 3 fois après un délai,\nchaque attaque infligeant 2%\ndes PV actuels de l’ennemi.",
         "zh_tw": "延遲後攻擊 3 次，每次攻擊\n造成 2.5%敵人當前生命值",
         "zh_cn": "延迟后攻击 3 次，每次攻击\n造成 2.5%敌人当前生命值",
-        "ru": "Атаковать 3 раза после задержки. Каждая атака\nзабирает 2.5% от текущего здоровья врага.",
-        "es": "Ataca 3 veces después de un retraso, cada ataque\ninflige un 2.5% de los PS actuales del enemigo",
+        "ru": "Атаковать 3 раза после задержки. Каждая атака\nзабирает 2% от текущего здоровья врага.",
+        "es": "Ataca 3 veces después de un retraso, cada ataque\ninflige un 2% de los PS actuales del enemigo",
         "jp": "遅延後に3回攻撃し、各攻撃で敵の\n現在のHPの2.5%にダメージを与える"
     },
     "void_strike_desc_long": {
-        "en_us": "Consume all Strike runes. Each fires an\nattack dealing 2% of enemy's current HP.",
-        "fr": "Consume all Strike runes. Fire one attack per\nrune, each damaging 2% enemy's current HP",
-        "zh_tw": "Consume all Strike runes. Fire one attack per rune, each dealing 2% of enemy's current HP",
-        "zh_cn": "Consume all Strike runes. Each fires an\nattack dealing 2% of enemy's current HP.",
-        "ru": "Deal 2.5% enemy current HP DMG and consume all\nStrike runes. Extra runes grant additional attacks.",
+        "en_us": "2% enemy current HP DMG.\nConsumes all Strike runes for extra attacks.",
+        "fr": "Consommez toutes les runes de frappe. Chaque\ntire une attaque infligeant 2 % PV actuels ennemis.",
+        "zh_tw": "2% 敵人當前生命值傷害。\n消耗所有攻擊符文進行多倍攻擊。",
+        "zh_cn": "2% 敌人当前生命值伤害。\n消耗所有攻击符文进行多倍攻击。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
+    "void_strike_desc_long_old": {
+        "en_us": "Consume all Strike runes. Each casts an\nattack dealing 2% of enemy's current HP.",
+        "fr": "Consommez toutes les runes de frappe. Chaque\ntire une attaque infligeant 2 % PV actuels ennemis.",
+        "zh_tw": "消耗所有打擊符文，每個符文造成\n敵人目前生命值的 2% 傷害。",
+        "zh_cn": "消耗所有打击符文，每个符文造成\n敌人当前生命值的 2% 伤害。",
+        "ru": "",
         "es": "",
         "jp": ""
     },
@@ -336,44 +345,44 @@ let textData = {
         "jp": "完全に回復するが、最大HPの10を失う"
     },
     "void_unload_desc": {
-        "en_us": "DMG 9% of enemy's\ncurrent HP and\ndisrupt their action",
+        "en_us": "9% enemy current\nHP DMG. Disrupt\nenemy action",
         "fr": "Inflige des dégâts\néquivalant à 9% des\nPV actuels de\nl'ennemi et perturbe\nson action",
-        "zh_tw": "傷害敵人當前生命\n值 9% 並打断他們\n的行動",
-        "zh_cn": "伤害敌人当前生命\n值 9% 并打断他们\n的行动",
+        "zh_tw": "9% 敵人當前生命\n值傷害。擾亂敵人\n行動。",
+        "zh_cn": "9% 敌人当前生命\n值伤害。扰乱敌人\n行动。",
         "ru": "Нанести урон равный\n9% от текущего\nздоровья врага и\nостанавливающи его\nдействие",
         "es": "Inflige daño al\n9% de los PS\nactuales del enemigo\ne interrumpe su acción",
         "jp": "敵の現在HPの9%にダ\nメージを与え、敵の\n行動を妨害する"
     },
     "void_unload_desc_long": {
-        "en_us": "DMG 9% of enemy's\ncurrent HP and disrupt their action",
-        "fr": "Inflige des dégâts équivalant à 9% des PV\nactuels de l'ennemi et perturbe son action",
-        "zh_tw": "傷害敵人當前生命值 9% 並打断他們的行動",
-        "zh_cn": "伤害敌人当前生命值 9% 并打断他们的行动",
+        "en_us": "9% enemy current HP DMG.\nDisrupt enemy action.",
+        "fr": "9% de dégâts HP actuels de l'ennemi.\nInterrompre l'action de l'ennemi.",
+        "zh_tw": "9% 敵人當前生命值傷害。\n擾亂敵人行動。",
+        "zh_cn": "9% 敌人当前生命值伤害。\n扰乱敌人行动。",
         "ru": "Нанести урон равный 9% от текущего\nздоровья врага и останавливающи его действие",
         "es": "Inflige daño al 9% de los PS actuales\ndel enemigo e interrumpe su acción",
         "jp": "敵の現在HPの9%にダメージを\n与え、敵の行動を妨害する"
     },
     "mind_strike_desc": {
-        "en_us": "Deal 1 TRUE DMG.\nEnemy takes x2\nDMG from next\nattack.",
-        "fr": "Inflige 1 dégât\nvéritable. L'ennemi\nsubit x2 dégâts\nlors de prochaine\nattaque.",
-        "zh_tw": "造成 1 點真實\n傷害。下一次攻擊\n造成 2 倍傷害。",
-        "zh_cn": "造成 1 点真实\n伤害。下一次攻击\n造成 2 倍伤害。",
+        "en_us": "1 TRUE DMG.\nEnemy takes x2\nDMG from next\nattack.",
+        "fr": "1 dégât vrai.\nL'ennemi subit\nx2 dégâts lors\nde prochaine\nattaque.",
+        "zh_tw": "1 點真實\n傷害。下一次攻擊\n造成 2 倍傷害。",
+        "zh_cn": "1 点真实\n伤害。下一次攻击\n造成 2 倍伤害。",
         "ru": "Нанести 1 истинный\nурон. Враг получает\nдвойной урон от\nвашей следующей атаки.",
         "es": "Inflige 1 daño\nverdadero. El\nenemigo recibe x2\nde daño de tu\npróximo ataque",
         "jp": "1の真のダメージを\n与える。敵は次の\n攻撃で2倍のダメー\nジを受ける"
     },
     "mind_strike_desc_long": {
-        "en_us": "Deal 1 TRUE DMG. Enemy takes\nx2 DMG from next attack.",
-        "fr": "Inflige 1 dégât véritable. L'ennemi subit\nx2 dégâts lors de prochaine attaque.",
-        "zh_tw": "造成 1 點真實傷害。\n下一次攻擊造成 2 倍傷害。",
-        "zh_cn": "造成 1 点真实伤害。\n下一次攻击造成 2 倍伤害。",
+        "en_us": "1 TRUE DMG. Enemy takes\nx2 DMG from next attack.",
+        "fr": "1 dégât vrai. L'ennemi subit\nx2 dégâts lors de prochaine attaque.",
+        "zh_tw": "1 點真實傷害。\n下一次攻擊造成 2 倍傷害。",
+        "zh_cn": "1 点真实伤害。\n下一次攻击造成 2 倍伤害。",
         "ru": "Нанести 1 истинный урон. Враг получает\nдвойной урон от вашей следующей атаки.",
         "es": "Inflige 1 daño verdadero. El enemigo\nrecibe x2 de daño de tu próximo ataque",
         "jp": "1の真のダメージを与える。敵は次の\n攻撃で2倍のダメージを受ける"
     },
     "mind_enhance_desc": {
         "en_us": "Next attack\nburns enemy for 2\nTRUE DMG/sec\nfor 5 seconds",
-        "fr": "Prochaine attaque\nbrûle l'ennemi\npour 2 dégâts\nvéritables par seconde\npendant 5 secondes.",
+        "fr": "Prochaine attaque\nbrûle l'ennemi\npour 2 dégâts\nvrais par seconde\npendant 5 secondes.",
         "zh_tw": "下一次攻擊造成\n每秒 2 點真實\n傷害，持續 5 秒",
         "zh_cn": "下一次攻击造成\n每秒 2 点真实\n伤害，持续 5 秒",
         "ru": "Следующая атака\nподжигает врага,\nнанося 3 истинного\nурона в секунду\nв течение 5 секунд",
@@ -382,7 +391,7 @@ let textData = {
     },
     "mind_enhance_desc_long": {
         "en_us": "Next attack burns enemy for\n2 TRUE DMG/sec for 5 seconds",
-        "fr": "Prochaine attaque brûle l'ennemi pour\n2 dégâts véritables par seconde pendant 5 secondes.",
+        "fr": "Prochaine attaque brûle l'ennemi pour\n2 dégâts vrais par seconde pendant 5 secondes.",
         "zh_tw": "下一次攻擊造成每秒\n2 點真實傷害，持續 5 秒",
         "zh_cn": "下一次攻击造成每秒\n2 点真实伤害，持续 5 秒",
         "ru": "Следующая атака поджигает врага, нанося 3\nистинного урона в секунду в течение 5 секунд",
@@ -391,7 +400,7 @@ let textData = {
     },
     "mind_enhance_plus_desc": {
         "en_us": "Next attack burns\nenemy for 3\nTRUE DMG/sec\nfor 5 seconds",
-        "fr": "Prochaine attaque\nbrûle l'ennemi pour 3\ndégâts véritables par seconde\npendant 5 secondes.",
+        "fr": "Prochaine attaque\nbrûle l'ennemi pour 3\ndégâts vrais par seconde\npendant 5 secondes.",
         "zh_tw": "下一次攻擊對敵人\n造成每秒 3 點真實\n傷害，持續 5 秒",
         "zh_cn": "下一次攻击对敌人\n造成每秒 3 点真实\n伤害，持续 5 秒",
         "ru": "Следующая атака\nподжигает врага,\nнанося 3 истинного\nурона в секунду\nв течение 5 секунд",
@@ -400,7 +409,7 @@ let textData = {
     },
     "mind_enhance_plus_desc_long": {
         "en_us": "Next attack burns enemy for\n3 TRUE DMG/sec for 5 seconds",
-        "fr": "Prochaine attaque brûle l'ennemi pour\n2 dégâts véritables par seconde pendant 5 secondes.",
+        "fr": "Prochaine attaque brûle l'ennemi pour\n2 dégâts vrais par seconde pendant 5 secondes.",
         "zh_tw": "下一次攻擊造成每秒\n3 點真實傷害，持續 5 秒",
         "zh_cn": "下一次攻击造成每秒\n3 点真实伤害，持续 5 秒",
         "ru": "Следующая атака поджигает врага, нанося 3\nистинного урона в секунду в течение 5 секунд",
@@ -624,7 +633,7 @@ let textData = {
         "jp": ""
     },
     "time_tut_enhance_desc": {
-        "en_us": "Your next attack is duplicated\nallowing you to fire multiple\nattacks at the same time.",
+        "en_us": "Your next attack is duplicated\nallowing you to cast multiple\nattacks at the same time.",
         "fr": "Votre prochaine attaque est\ndupliquée, vous permettant de\nlancer plusieurs attaques en\nmême temps.",
         "zh_tw": "複製你的下一次攻擊，\n使你能同時發射多次攻擊。",
         "zh_cn": "复制你的下一次攻击，\n使你能同时发射多次攻击。",
@@ -678,7 +687,7 @@ let textData = {
         "jp": ""
     },
     "void_tut_strike_desc": {
-        "en_us": "An attack that uses up all of\nyour strike runes to hit\nmultiple times. Each attack\ndamages a percent of the\nenemy's current health.",
+        "en_us": "An attack that uses up all of\nyour strike runes to hit\nmultiple times. Each attack\ndamages a percent of the\nenemy's remaining health.",
         "fr": "Une attaque qui frappe trois\nfois après un délai et inflige\ndes dégâts en pourcentage\nde santé.",
         "zh_tw": "延遲後發動 3 次攻擊,每次攻擊\n造成百分比的生命傷害。\n\n加強攻擊力的法術會三倍增加\n攻擊威力。",
         "zh_cn": "延迟后发动 3 次攻击,每次攻击\n造成百分比的生命伤害。\n\n加强攻击力的法术会三倍增加\n攻击威力。",
@@ -697,7 +706,7 @@ let textData = {
     },
     "void_tut_protect_desc": {
         "en_us": "Fully protects you from a\nsingle attack.",
-        "fr": "Vous protège entièrement contre\nune seule attaque.",
+        "fr": "Vous protège entièrement\ncontre une seule attaque.",
         "zh_tw": "完全保護你免遭一次攻擊。",
         "zh_cn": "完全保护你免遭一次攻击。",
         "ru": "Полностью защищает вас от одной атаки.",
@@ -706,7 +715,7 @@ let textData = {
     },
     "void_tut_reinforce_desc": {
         "en_us": "Heals you to full, but at the\ncost of reducing your\nmax health.",
-        "fr": "Vous soigne entièrement, mais\nréduit définitivement votre santé\nmaximale.",
+        "fr": "Vous soigne entièrement, mais\nréduit définitivement votre\nsanté maximale.",
         "zh_tw": "完全恢复生命值，但以一些\n总生命值為代價。",
         "zh_cn": "完全恢复生命值，但以一些\n总生命值为代价。",
         "ru": "Полностью исцеляет вас, но навсегда\nуменьшает ваше максимальное здоровье.",
@@ -858,7 +867,7 @@ let textData = {
     "rune_mind_rune_protect": "REFLECT SHIELD",
     "rune_mind_rune_reinforce": "ENERGIZE",
     "rune_mind_rune_unload": "AMPLIFY MAGIC",
-    "rune_time_rune_strike": "TWIN STRIKE",
+    "rune_time_rune_strike": "DOUBLE STRIKE",
     "rune_time_rune_enhance": "ADD MULTI-ATTACK",
     "rune_time_rune_protect": "DELAY SHIELD",
     "rune_time_rune_reinforce": "UNDO WOUNDS",

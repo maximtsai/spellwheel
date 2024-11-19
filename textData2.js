@@ -477,8 +477,8 @@ let textData2 = {
     "pre_fight_0h": {
         "en_us": "CAST:\nCLICK/SPACE",
         "fr": "LANCER:\nClic/barre\nd'espace",
-        "zh_tw": "法術施放:\n滑鼠點選/空白鍵",
-        "zh_cn": "法术施放:\n鼠标单击/空格键",
+        "zh_tw": "法術施放:\n點選/空白鍵",
+        "zh_cn": "法术施放:\n单击/空格键",
         "ru": "Щелчок мышью\nпробел",
         "es": "LANZAR HECHIZO:\nClic mouse\n/nespaciadora",
         "jp": "呪文の詠唱:\nマウスをクリック\n/スペースバー"
@@ -592,16 +592,16 @@ let textData2 = {
         "jp": "しかし、入り口がない場合は、単に入り口\nを作ります。"
     },
     "pre_fight_7a": {
-        "en_us": "The sound of skittering legs cuts\nthrough the fog.",
-        "fr": "Le bruit des jambes qui s'agitent\ntraverse le brouillard",
-        "zh_tw": "輕微腳步的聲音劃破了迷霧。",
-        "zh_cn": "轻微脚步的声音划破了迷雾。",
+        "en_us": "I sense the sound of skittering legs in\nthe fog.",
+        "fr": "Je sens le bruit des jambes qui trottent\ndans le brouillard.",
+        "zh_tw": "我聽到了霧中傳來的腳步聲。",
+        "zh_cn": "我听到了雾中传来的脚步声。",
         "ru": "Звук бегущих ног прорезает туман.",
         "es": "El sonido de las piernas resbaladizas\natraviesa la niebla.",
         "jp": "足を小刻みに動かす\n音が霧を切り裂く。"
     },
     "pre_fight_7b": {
-        "en_us": "Something is hunting me, but not\nif I hunt it first.",
+        "en_us": "Something is hunting me, but not if\nI hunt it first.",
         "fr": "Quelque chose me chasse, mais pas\nsi je le chasse en premier.",
         "zh_tw": "有什麼東西在追捕我，\n但我也可以反過來追捕它。",
         "zh_cn": "有什么东西在追捕我，\n但我也可以反过来追捕它。",

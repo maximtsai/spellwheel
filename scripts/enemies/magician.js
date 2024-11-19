@@ -5,7 +5,7 @@
         this.popupTimeout = this.addTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
-        }, 3000)
+        }, 2500)
         this.addTimeout(() => {
             if (!this.isDestroyed) {
                 this.customBgMusic = playMusic('magician_theme_1', 0.95, true);
@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 130 : 110;
+         this.health = gameVars.isHardMode ? 120 : 100;
          this.damageNumOffset = 45;
          this.chargeBarOffsetY = 4;
          this.damageNumOffsetDefault = this.damageNumOffset;
@@ -1154,7 +1154,7 @@
                  {
                      name: "}4x3 ",
                      desc: "An advanced magic attack.",
-                     chargeAmt: gameVars.isHardMode ? 400 : 495,
+                     chargeAmt: gameVars.isHardMode ? 400 : 445,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -1163,7 +1163,7 @@
                          this.createTimeObject('clock4.png', this.x + 40, this.y - 80, 300);
                          this.addTimeout(() => {
                              this.fireTimeObjects(4);
-                         }, 800);
+                         }, 900);
                      },
                      attackFinishFunction: () => {
                         if (this.health < this.healthMax - 20) {
@@ -1176,7 +1176,7 @@
                  {
                      name: "}3x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: gameVars.isHardMode ? 350 : 445,
+                     chargeAmt: gameVars.isHardMode ? 350 : 405,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
@@ -1185,7 +1185,7 @@
                          this.createTimeObject('clock2.png', this.x + 40, this.y - 80, 300);
                          this.addTimeout(() => {
                              this.fireTimeObjects(3);
-                         }, 800);
+                         }, 900);
                      },
                      attackFinishFunction: () => {
                         if (this.health < this.healthMax - 20) {
@@ -1200,7 +1200,7 @@
                 // 1
                  {
                      name: "\\50% MISSING HEALTH",
-                     chargeAmt: gameVars.isHardMode ? 280 : 345,
+                     chargeAmt: gameVars.isHardMode ? 280 : 305,
                      isPassive: true,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
@@ -1247,7 +1247,7 @@
                  {
                      name: ";20 ",
                      desc: "A devastating barrage\nof offensive magic.",
-                     chargeAmt: gameVars.isHardMode ? 550 : 580,
+                     chargeAmt: gameVars.isHardMode ? 520 : 555,
                      isBigMove: true,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {
@@ -1643,7 +1643,7 @@
 
      fireTimeObjects(damage = 10, durBonus = 0, interval = 175, hitTwice = false) {
          let totalTimeObjects = this.timeObjects.length;
-         let projDur = 600 - Math.floor(Math.sqrt(totalTimeObjects) * 50) + durBonus;
+         let projDur = 700 - Math.floor(Math.sqrt(totalTimeObjects) * 50) + durBonus;
          let timeObjectsFired = 0;
          while (this.timeObjects.length > 0) {
              let currObj = this.timeObjects.shift();
@@ -1653,7 +1653,8 @@
                  targets: currObj,
                  delay: delayAmt,
                  y: globalObjects.player.getY() - 170 + Math.random() * 10 - currObj.width * 0.5,
-                 ease: 'Quad.easeIn',
+                 ease: (damage > 11 || totalTimeObjects > 10) ? 'Quad.easeIn' : 'Back.easeIn',
+                 easeParams: [0.5],
                  duration: projDur,
                  rotation: (Math.random() - 0.5) * 3,
                  onStart: () => {
@@ -1705,7 +1706,7 @@
                  delay: delayAmt,
                  x: gameConsts.halfWidth * 0.92 + currObj.x * 0.15,
                  ease: 'Back.easeIn',
-                 easeParams: [3],
+                 easeParams: [3.2],
                  duration: projDur
              });
          }

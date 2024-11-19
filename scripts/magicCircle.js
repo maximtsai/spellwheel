@@ -162,22 +162,26 @@ const ENABLE_KEYBOARD = true;
 
         if (ENABLE_KEYBOARD && !this.outerDragDisabled && !this.innerDragDisabled && !this.manualDisabled) {
             if (this.keyA.isDown || this.keyDown.isDown) {
-                if (this.keyboardRotateInner > -0.25) {
+                if (this.keyboardRotateInner > -0.0001) {
                     this.keyboardRotateInner = -1.46;
                     this.keyboardRotateInnerDeadTime = this.defaultDeadTime;
+                    this.innerCircle.rotVel = Math.max(0, this.innerCircle.rotVel)
+
                 } else if (this.keyboardRotateInnerDeadTime > 0) {
                     this.keyboardRotateInnerDeadTime -= dScale;
-                    this.keyboardRotateInner = -0.4;
+                    this.keyboardRotateInner = -0.001;
                 } else {
                     this.keyboardRotateInner = -1;
                 }
             } else if (this.keyD.isDown || this.keyUp.isDown) {
-                if (this.keyboardRotateInner < 0.25) {
+                if (this.keyboardRotateInner < 0.0001) {
                     this.keyboardRotateInner = 1.46;
                     this.keyboardRotateInnerDeadTime = this.defaultDeadTime;
+                    this.innerCircle.rotVel = Math.min(0, this.innerCircle.rotVel)
+
                 } else if (this.keyboardRotateInnerDeadTime > 0) {
                     this.keyboardRotateInnerDeadTime -= dScale;
-                    this.keyboardRotateInner = 0.4;
+                    this.keyboardRotateInner = 0.001;
                 } else {
                     this.keyboardRotateInner = 1;
                 }
@@ -186,23 +190,25 @@ const ENABLE_KEYBOARD = true;
             }
 
             if (this.keyW.isDown || this.keyRight.isDown || this.keyE.isDown) {
-                if (this.keyboardRotateOuter < 0.25) {
-                    this.keyboardRotateOuter = 1.41;
+                if (this.keyboardRotateOuter < 0.0001) {
+                    this.keyboardRotateOuter = 1.35;
+                    this.outerCircle.rotVel = Math.max(0, this.outerCircle.rotVel)
                     this.keyboardRotateOuterDeadTime = this.defaultDeadTime;
                 } else if (this.keyboardRotateOuterDeadTime > 0) {
                     this.keyboardRotateOuterDeadTime -= dScale;
-                    this.keyboardRotateOuter = 0.3;
+                    this.keyboardRotateOuter = 0.001;
                 } else {
                     this.keyboardRotateOuter = 1;
                 }
             } else if (this.keyS.isDown || this.keyLeft.isDown || this.keyQ.isDown) {
-                if (this.keyboardRotateOuter > -0.25) {
-                    this.keyboardRotateOuter = -1.41;
+                if (this.keyboardRotateOuter > -0.0001) {
+                    this.keyboardRotateOuter = -1.35;
                     this.keyboardRotateOuterDeadTime = this.defaultDeadTime;
+                    this.outerCircle.rotVel = Math.min(0, this.outerCircle.rotVel)
 
                 } else if (this.keyboardRotateOuterDeadTime > 0) {
                     this.keyboardRotateOuterDeadTime -= dScale;
-                    this.keyboardRotateOuter = -0.3;
+                    this.keyboardRotateOuter = -0.001;
                 } else {
                     this.keyboardRotateOuter = -1;
                 }
@@ -322,7 +328,7 @@ const ENABLE_KEYBOARD = true;
         if (this.voidArm.alpha > 0) {
             this.voidArm.bonusRotation += (Math.random() - 0.5) * 0.05;
             this.voidArm.bonusRotation *= 0.98;
-            this.voidArm.rotation = this.voidArm.bonusRotation + rotationOffset;
+            this.voidArm.rotation = this.voidArm.bonusRotation + rotationOffset - 0.1;
             if (this.voidArm.alpha > 0.92) {
                 this.voidArm.alpha = 0.92 + Math.random() * 0.08;
             }
@@ -330,7 +336,7 @@ const ENABLE_KEYBOARD = true;
         if (this.voidArm2.alpha > 0) {
             this.voidArm2.bonusRotation += (Math.random() - 0.5) * 0.05;
             this.voidArm2.bonusRotation *= 0.97;
-            this.voidArm2.rotation = Math.PI * 0.5 + this.voidArm2.bonusRotation + rotationOffset;
+            this.voidArm2.rotation = Math.PI * 0.5 + this.voidArm2.bonusRotation + rotationOffset - 0.1;
             if (this.voidArm2.alpha > 0.92) {
                 this.voidArm2.alpha = 0.92 + Math.random() * 0.08;
             }
@@ -466,7 +472,7 @@ const ENABLE_KEYBOARD = true;
         this.dragPointDist = 100;
         this.keyboardRotateOuter = 0;
         this.keyboardRotateInner = 0;
-        this.defaultDeadTime = 8;
+        this.defaultDeadTime = 11.5;
         this.keyboardRotateOuterDeadTime = 5;
         this.keyboardRotateInnerDeadTime = 5;
         this.keyboardCasted = false;
@@ -586,7 +592,8 @@ const ENABLE_KEYBOARD = true;
         this.voidSliceImage1 = scene.add.sprite(gameConsts.halfWidth - 100, 255, 'spells', 'darkSlice.png').setDepth(21).setRotation(-Math.PI * 0.5 + 0.6).setAlpha(0).setOrigin(0.17, 0.5);
         this.voidSliceImage3 = scene.add.sprite(gameConsts.halfWidth + 100, 255, 'spells', 'darkSlice.png').setDepth(21).setRotation(-Math.PI * 0.5 - 0.6).setAlpha(0).setOrigin(0.17, 0.5);
 
-        this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setDepth(1).setAlpha(0).setDepth(10).setBlendMode(Phaser.BlendModes.ADD);
+        this.mindBurnAnim = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setAlpha(0).setDepth(10).setBlendMode(Phaser.BlendModes.ADD);
+        this.mindBurnAnimBack = this.scene.add.sprite(gameConsts.halfWidth, 150, 'spells').play('mindBurn').setAlpha(0).setDepth(-1);
 
 
         // this.spellDescText = this.scene.add.bitmapText(this.x + 204, this.y + 2, 'plain', '', 15);
@@ -1038,7 +1045,7 @@ const ENABLE_KEYBOARD = true;
         if (this.keyboardRotateInner !== 0 && !this.innerDragDisabled) {
             this.usedKeyboardInner = true;
             let rotMult = 0.005/(0.005+Math.abs(this.innerCircle.rotVel));
-            this.innerCircle.torque = this.keyboardRotateInner * 0.0535 * rotMult;
+            this.innerCircle.torque = this.keyboardRotateInner * 0.056 * rotMult;
         } else if (this.usedKeyboardInner) {
             this.usedKeyboardInner = false;
             this.innerCircle.rotVel *= 0.7;
@@ -1047,7 +1054,7 @@ const ENABLE_KEYBOARD = true;
         if (this.keyboardRotateOuter !== 0 && !this.outerDragDisabled) {
             this.usedKeyboardOuter = true;
             let rotMult = 0.005/(0.005+Math.abs(this.outerCircle.rotVel));
-            this.outerCircle.torque = this.keyboardRotateOuter * 0.052 * rotMult;
+            this.outerCircle.torque = this.keyboardRotateOuter * 0.0555 * rotMult;
         } else if (this.usedKeyboardOuter) {
             this.usedKeyboardOuter = false;
             this.outerCircle.rotVel *= 0.7;
@@ -1769,7 +1776,7 @@ const ENABLE_KEYBOARD = true;
         this.scene.tweens.add({
             targets: this.innerCircle,
             ease: 'Back.easeIn',
-            easeParams: [1.1],
+            easeParams: [1.04],
             onComplete: () => {
                 this.resetElements();
                 this.innerDragDisabled = false;
@@ -1779,14 +1786,14 @@ const ENABLE_KEYBOARD = true;
                     this.bufferedCastAvailable = false;
                 }
             },
-            duration: gameVars.gameManualSlowSpeed * 1800,
+            duration: gameVars.gameManualSlowSpeed * 1650,
             rotation: "+=6.283"
         });
 
         this.scene.tweens.add({
             targets: this.outerCircle,
             delay: 0,
-            easeParams: [1.1],
+            easeParams: [1.04],
             ease: 'Back.easeIn',
             onComplete: () => {
                 this.resetEmbodiments();
@@ -1797,7 +1804,7 @@ const ENABLE_KEYBOARD = true;
                     this.bufferedCastAvailable = false;
                 }
             },
-            duration: gameVars.gameManualSlowSpeed * 1800,
+            duration: gameVars.gameManualSlowSpeed * 1650,
             rotation: "-=6.283"
         });
     }
@@ -2938,9 +2945,11 @@ const ENABLE_KEYBOARD = true;
          if (this.mindBurnTween) {
              this.mindBurnTween.stop();
          }
-         this.mindBurnAnim.alpha = 0.5;
+         this.mindBurnAnim.alpha = 0.35;
+         this.mindBurnAnimBack.alpha = 0.35;
          let damageDealt = (gameVars.mindPlus ? 3 : 2) * multiplier;
          this.mindBurnAnim.setScale(0.55 + 0.05 * Math.sqrt(duration) + 0.05 * damageDealt);
+         this.mindBurnAnimBack.setScale(this.mindBurnAnim.scaleX);
         if (!this.flashBGWhite) {
             this.flashBGWhite = PhaserScene.add.image(gameConsts.halfWidth,gameConsts.halfHeight - 200,'blurry', 'circle.webp').setDepth(-1).setAlpha(0);
         }
@@ -3004,14 +3013,16 @@ const ENABLE_KEYBOARD = true;
 
      animateMindBurn(duration, damage) {
          this.mindBurnAnim.setScale(0.75 + 0.052 * damage);
-         this.mindBurnAnim.alpha = 0.9;
+         this.mindBurnAnimBack.setScale(this.mindBurnAnim.scaleX)
+         this.mindBurnAnim.alpha = 0.62;
+         this.mindBurnAnimBack.alpha = 0.62;
          messageBus.publish('enemyTakeTrueDamage', damage, false, 0, true);
          let aggAmt = Math.max(0, damage + 1) * 0.85
          messageBus.publish('addCastAggravate', aggAmt, false, 0, true);
 
          if (duration <= 1) {
              this.mindBurnAnim.currAnim = PhaserScene.tweens.add({
-                 targets: [this.mindBurnAnim],
+                 targets: [this.mindBurnAnim, this.mindBurnAnimBack],
                  alpha: 0,
                  scaleX: 1 + 0.05 * damage,
                  scaleY: 1 + 0.05 * damage,
@@ -3020,8 +3031,8 @@ const ENABLE_KEYBOARD = true;
              });
          } else {
              this.mindBurnAnim.currAnim = this.scene.tweens.add({
-                 targets: this.mindBurnAnim,
-                 alpha: 0.42,
+                 targets: [this.mindBurnAnim, this.mindBurnAnimBack],
+                 alpha: 0.3,
                  duration: 500,
                  scaleX: 0.65 + 0.05 * damage,
                  scaleY: 0.65 + 0.05 * damage,
@@ -3226,6 +3237,7 @@ const ENABLE_KEYBOARD = true;
         this.voidSliceImage1.visible = false;
         this.voidSliceImage3.visible = false;
          this.mindBurnAnim.alpha = 0;
+         this.mindBurnAnimBack.alpha = 0;
          this.removeDelayedDamage();
      }
 

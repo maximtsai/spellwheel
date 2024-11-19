@@ -238,6 +238,24 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">water/water_elec0.png</key>
+            <key type="filename">water/water_elec3.png</key>
+            <key type="filename">water/water_elec4.png</key>
+            <key type="filename">water/water_elec5.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>150,185,300,370</rect>
+                <key>scale9Paddings</key>
+                <rect>150,185,300,370</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">water/water_elec1.png</key>
             <key type="filename">water/water_elec2.png</key>
             <struct type="IndividualSpriteSettings">
@@ -254,13 +272,28 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">water/water_gloop.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>92,120,185,239</rect>
+                <key>scale9Paddings</key>
+                <rect>92,120,185,239</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">water/water_hole2.png</key>
             <key type="filename">water/water_hole3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.86</double>
+                <double>0.82</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>

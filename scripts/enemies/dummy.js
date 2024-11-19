@@ -985,7 +985,7 @@
                  },
                  {
                      name: gameVars.isHardMode ? "VERY ANGRY;25" : "VERY ANGRY;20",
-                     chargeAmt: 415,
+                     chargeAmt: 405,
                      damage: gameVars.isHardMode ? 25 : 20,
                      isBigMove: true,
                      startFunction: () => {

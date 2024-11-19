@@ -15,7 +15,7 @@
         this.popupTimeout = this.addTimeout(() => {
             this.tutorialButton = createTutorialBtn(this.level);
             this.addToDestructibles(this.tutorialButton);
-        }, 3000)
+        }, 2500)
     }
 
      initSpriteAnim(scale) {
@@ -48,7 +48,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 300 : 270;
+         this.health = gameVars.isHardMode ? 280 : 265;
          this.isAsleep = true;
          this.attackScale = 1;
          this.pullbackScale = 1;
@@ -689,7 +689,7 @@
 
 
      initAttacks() {
-        let hardModeCharge = gameVars.isHardMode ? -40 : 10;
+        let hardModeCharge = gameVars.isHardMode ? -40 : 0;
          this.attacks = [
              [
                  // 0

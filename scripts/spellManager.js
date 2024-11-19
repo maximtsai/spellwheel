@@ -324,6 +324,7 @@ class SpellManager {
                         } else if (i % 2 == 0) {
                             playSound('matter_strike_hit2', 0.6 + additionalVol).detune = detuneAmt;
                         }
+                        this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     }
 
                     if (isExtraBuff) {
@@ -390,7 +391,6 @@ class SpellManager {
                         }
                     }
 
-                    this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);
                     let baseDamage = gameVars.matterPlus ? 14 : 12;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage, true, undefined, 'matter');
                     messageBus.publish('setPauseDur', isExtraBuff ? 24 : 14);
@@ -814,7 +814,234 @@ class SpellManager {
     }
 
     castMatterUltimate() {
-        this.castMatterStrike();
+        const spellID = 'matterUnload';
+        let attackObjects = [];
+        let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
+        let additionalDamage = globalObjects.player.attackDamageAdder();
+        let multiplier = globalObjects.player.spellMultiplier();
+
+        let separationAmtX = Math.max(5, 30 - numAdditionalAttacks);
+        let bonusScaleX = additionalDamage * 0.007;
+        let bonusScaleY = additionalDamage * 0.0025;
+
+        let isPowerful = numAdditionalAttacks * (24 + additionalDamage) > 74;
+
+        for (let i = 0; i < numAdditionalAttacks; i++) {
+            let xPos = gameConsts.halfWidth + (numAdditionalAttacks - 1) * -separationAmtX + separationAmtX * 2 * i;
+            let halfwayIdx = (numAdditionalAttacks - 1) * 0.5;
+            let yPos = gameConsts.halfHeight + 30 + Math.abs(halfwayIdx - i) * 10;
+            let rockObj = this.scene.add.sprite(xPos, yPos, 'spells', 'stalagmite5.png');
+            rockObj.setDepth(9);
+            rockObj.rotation = 0;
+            attackObjects.push(rockObj);
+            rockObj.setScale(0.8 + bonusScaleX, 0);
+        }
+
+        let delayInterval = Math.max(5, 15 - numAdditionalAttacks);
+        let existingBuff = globalObjects.player.getStatuses()[spellID];
+        let stoneCircle;
+        let textHealth;
+
+        let statusObj;
+        if (existingBuff) {
+            // already got a buff in place
+            stoneCircle = existingBuff.animObj[0];
+            textHealth = existingBuff.animObj[1];
+            statusObj = existingBuff.statusObj;
+            this.scene.tweens.add({
+                targets: stoneCircle,
+                alpha: 0.5,
+                scaleX: 0.61,
+                scaleY: 0.61,
+                duration: 200
+            });
+        } else {
+            stoneCircle = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'stoneCircle.png');
+            stoneCircle.setAlpha(0.5).setScale(0.9).setRotation(-0.3);
+
+            textHealth = this.scene.add.bitmapText(gameConsts.halfWidth, globalObjects.player.getY() - 46, 'armor', '0', 48, 1);
+            textHealth.startX = textHealth.x;
+            textHealth.startY = textHealth.y;
+        }
+        // messageBus.publish('setTempRotObjs', [stoneCircle], rotation);
+
+        textHealth.setDepth(125).setOrigin(0.5, 0.5).setScale(0).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 46);
+        stoneCircle.setDepth(10);
+        let basePower = 24;
+        let shieldHealth = basePower * multiplier;
+        this.scene.tweens.add({
+            targets: stoneCircle,
+            delay: 250,
+            scaleX: 1.04,
+            scaleY: 1.04,
+            alpha: 1,
+            rotation: 0,
+            duration: 300,
+            ease: 'Cubic.easeOut',
+            onStart: () => {
+                playSound('matter_ultimate', 1.4);
+                stoneCircle.setAlpha(0.5);
+                textHealth.setText(shieldHealth);
+                this.scene.tweens.add({
+                    targets: textHealth,
+                    duration: 250,
+                    scaleX: 1,
+                    scaleY: 1,
+                    ease: 'Quad.easeIn',
+                });
+            },
+            onComplete: () => {
+                stoneCircle.setDepth(118);
+                this.scene.tweens.add({
+                    targets: stoneCircle,
+                    scaleX: 1,
+                    scaleY: 1,
+                    duration: 300,
+                    ease: 'Cubic.easeIn',
+                });
+            }
+        });
+
+        messageBus.publish("selfTakeEffect", {
+            name: spellID,
+            spellID: spellID,
+            type: 'matter',
+            animObj: [stoneCircle, textHealth],
+            spriteSrc1: 'rune_unload_glow.png',
+            spriteSrc2: 'rune_matter_glow.png',
+            multiplier: multiplier,
+            health: shieldHealth,
+            displayAmt: shieldHealth,
+            statusObj: statusObj,
+            shakeAmt: 0,
+            impactVisibleTime: 0,
+            duration: 6,
+            active: true,
+            cleanUp: (statuses) => {
+                if (statuses[spellID] && !statuses[spellID].currentAnim) {
+                    stoneCircle.setDepth(0);
+                    statuses[spellID].currentAnim = this.scene.tweens.add({
+                        targets: [stoneCircle, textHealth],
+                        duration: 240,
+                        y: "+=10",
+                        scaleX: "-=0.24",
+                        scaleY: "-=0.24",
+                        ease: 'Quad.easeIn',
+                        onComplete: () => {
+                            stoneCircle.destroy();
+                            textHealth.destroy();
+                        }
+                    });
+                    this.scene.tweens.add({
+                        targets: [stoneCircle, textHealth],
+                        duration: 240,
+                        alpha: 0,
+                        ease: 'Quad.easeOut',
+                    });
+                    messageBus.publish('selfClearEffect', spellID, true);
+                    statuses[spellID] = null;
+                }
+            }
+        });
+
+        for (let i = 0; i < attackObjects.length; i++) {
+            let rockObj = attackObjects[i];
+            this.scene.tweens.add({
+                targets: rockObj,
+                delay: 275 + i * (180 - i * delayInterval),
+                scaleY: 0.68 + bonusScaleY,
+                scaleX: 0.85 + bonusScaleX,
+                duration: 200,
+                ease: 'Quint.easeIn',
+                onStart: () => {
+                    PhaserScene.time.delayedCall( 50, () => {
+                        for (let i = 0; i < 6; i++) {
+                            let velX = (Math.random() - 0.5) * 1;
+                            let velY = -0.05 -Math.random() * 0.2;
+                            let duration = 250 + Math.random() * 500;
+                            this.createRockParticle(rockObj.x + (Math.random() - 0.5) * 25, rockObj.y - Math.random() * 5, velX, velY, duration)
+                        }
+                    });
+                },
+                onComplete: () => {
+                    rockObj.play('stalagfight')
+                    messageBus.publish('enemyTakeDamage', basePower + additionalDamage, true, undefined, 'matter');
+                    screenShake(5);
+                    zoomTemp(1.01 + additionalDamage * 0.00025);
+                    this.createDamageEffect(gameConsts.halfWidth, 140, rockObj.depth);
+
+                    if (isPowerful && i === attackObjects.length - 1) {
+                        let powerfulEffect = getTempPoolObject('tutorial', 'rune_matter_large.png', 'specialAttack', 1300);
+                        powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5.2).setPosition(gameConsts.halfWidth, 190);
+                        playSound('rock_crumble');
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 110,
+                            alpha: 1,
+                            onComplete: () => {
+                                zoomTemp(1.06);
+                                screenShake(7);
+                                messageBus.publish('tempPause', 250, 0.05);
+                            }
+                        });
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 125,
+                            y: "+=16",
+                            scaleX: 3.3,
+                            scaleY: 3.3,
+                            ease: "Quint.easeIn",
+                            onComplete: () => {
+                                messageBus.publish('setSlowMult', 0.25, 15);
+                                this.scene.tweens.add({
+                                    delay: 200,
+                                    targets: powerfulEffect,
+                                    duration: 900,
+                                    alpha: 0,
+                                    ease: "Cubic.easeOut"
+                                });
+                                this.scene.tweens.add({
+                                    delay: 200,
+                                    targets: powerfulEffect,
+                                    duration: 900,
+                                    scaleX: 3.8,
+                                    scaleY: 3.8,
+                                    ease: 'Cubic.easeIn'
+                                });
+                            }
+                        });
+                    } else if (!isPowerful) {
+                        zoomTempSlow(1.002 + additionalDamage * 0.0001);
+                        screenShake(0.35 + additionalDamage * 0.001)
+                    }
+
+                    this.scene.tweens.add({
+                        targets: rockObj,
+                        scaleY: 0.65 + bonusScaleY,
+                        scaleX: 0.8 + bonusScaleX,
+                        duration: 250,
+                        ease: 'Cubic.easeOut',
+                        onComplete: () => {
+                            this.scene.tweens.add({
+                                targets: rockObj,
+                                delay: 300,
+                                scaleY: 0,
+                                duration: 300,
+                                alpha: 0,
+                                ease: 'Cubic.easeIn',
+                                onComplete: () => {
+                                    rockObj.destroy();
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        let spellName = getBasicText('rune_matter_rune_unload');
+        messageBus.publish('clearSpellMultiplier');
+        this.postAttackCast(spellID, 300, spellName, additionalDamage, numAdditionalAttacks);
     }
 
     castTimeStrike() {
@@ -1108,17 +1335,20 @@ class SpellManager {
                                                     detuneIdx++;
                                                 }
 
-                                                if (idxNum === 0) {
-                                                    playSound('time_strike_hit', 0.92).detune = detuneAmt;
-                                                } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
-                                                    // last hit
-                                                    playSound('time_strike_hit', 0.85).detune = detuneAmt;
-                                                } else if (idxNum % 2 === 1) {
-                                                    playSound('time_strike_hit_2', 1).detune = detuneAmt;
-                                                } else if (idxNum % 2 === 0) {
-                                                    playSound('time_strike_hit_2', 0.75).detune = detuneAmt;
+                                                if (globalObjects.currentEnemy && (globalObjects.currentEnemy.immune || globalObjects.currentEnemy.invincible)) {
+                                                    playSound('swish', 1).detune = Math.random() * 250;
+                                                } else {
+                                                    if (idxNum === 0) {
+                                                        playSound('time_strike_hit', 0.92).detune = detuneAmt;
+                                                    } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
+                                                        // last hit
+                                                        playSound('time_strike_hit', 0.85).detune = detuneAmt;
+                                                    } else if (idxNum % 2 === 1) {
+                                                        playSound('time_strike_hit_2', 1).detune = detuneAmt;
+                                                    } else if (idxNum % 2 === 0) {
+                                                        playSound('time_strike_hit_2', 0.75).detune = detuneAmt;
+                                                    }
                                                 }
-
 
                                                 messageBus.publish('enemyTakeDamage', halfSpellDamage, true, undefined, 'time');
                                                 messageBus.publish('setPauseDur', 15);
@@ -1215,29 +1445,33 @@ class SpellManager {
                         }
                     });
                     let idxNum = parseInt(i);
-                    if (idxNum === 0) {
-                        let detuneHitAmt = Math.floor(Math.random() * 150) - 75;
-                        playSound('time_strike_buff', 0.92).detune = detuneHitAmt;
-                        playSound('time_strike_hit', 0.54).detune = detuneHitAmt - 250;
 
-                    } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
-                        // last hit
-                        playSound('time_strike_buff', 0.85);
-                        playSound('time_strike_hit_2', 0.45).detune =  -250;
-
-                    } else if (idxNum % 2 === 1) {
-                        playSound('time_strike_buff', 1).detune = -200;
-                        playSound('time_strike_hit', 0.54).detune = 200;
-
-                    } else if (idxNum % 2 === 0) {
-                        playSound('time_strike_buff', 0.75).detune = -200;
+                    if (globalObjects.currentEnemy && (globalObjects.currentEnemy.immune || globalObjects.currentEnemy.invincible)) {
+                        playSound('time_strike_buff', 0.5).detune = -500 + Math.random() * 250;
+                    } else {
+                        if (idxNum === 0) {
+                            let detuneHitAmt = Math.floor(Math.random() * 150) - 75;
+                            playSound('time_strike_buff', 0.92).detune = detuneHitAmt;
+                            playSound('time_strike_hit', 0.54).detune = detuneHitAmt - 250;
+                        } else if (strikeObjects.length > 2 && idxNum === strikeObjects.length - 1) {
+                            // last hit
+                            playSound('time_strike_buff', 0.85);
+                            playSound('time_strike_hit_2', 0.45).detune =  -250;
+                        } else if (idxNum % 2 === 1) {
+                            playSound('time_strike_buff', 1).detune = -200;
+                            playSound('time_strike_hit', 0.54).detune = 200;
+                        } else if (idxNum % 2 === 0) {
+                            playSound('time_strike_buff', 0.75).detune = -200;
+                        }
+                        zoomTempSlow(1.002 + additionalDamage * 0.0001);
+                        screenShake(0.35 + additionalDamage * 0.001)
                     }
+
 
                     // messageBus.publish('enemyStartDamageCountdown');
                     messageBus.publish('enemyTakeDamage', spellDamage, true, undefined, 'time');
                     messageBus.publish('setPauseDur', 20);
-                    zoomTempSlow(1.002 + additionalDamage * 0.0001);
-                    screenShake(0.35 + additionalDamage * 0.001)
+
                 }
             });
         }
@@ -1567,11 +1801,11 @@ class SpellManager {
                     let dmgEffect = getTempPoolObject('spells', 'shockEffect1.png', 'shockEffect', 310).play('shockEffect').setPosition(attackObj.x, attackObj.y - 12).setDepth(attackObj.depth).setScale(0.5).setRotation(Math.random() * 6);
                     let randScale = 1.3 + 0.1 * Math.random();
                     if (globalObjects.currentEnemy && globalObjects.currentEnemy.invincible) {
-                        playSound('clunk', 1).detune = 150;
+                        playSound('clunk', 0.4).detune = Math.random() * 200;
+                        playSound('fizzle', 1).detune = Math.random() * 200;
                     } else {
                         playSound('mind_strike_hit');
                     }
-
 
                     this.scene.tweens.add({
                         targets: [dmgBG],
@@ -1586,7 +1820,8 @@ class SpellManager {
                         ease: 'Quart.easeOut',
                     });
 
-                    messageBus.publish('enemyTakeTrueDamage', 1 + additionalDamage, true, undefined, true, 'mind');
+                    let damageDealt = 1 + additionalDamage;
+                    messageBus.publish('enemyTakeTrueDamage', damageDealt, true, undefined, true, 'mind');
 
                     if (isPowerful && i === attackObjects.length - 1) {
                         let powerfulEffect = getTempPoolObject('tutorial', 'rune_energy_large.png', 'specialAttack', 1300);
@@ -1661,6 +1896,7 @@ class SpellManager {
                             name: spellID,
                             x: animation1.x,
                             y: animation1.y,
+                            damage: damageDealt,
                             cleanUp: (statuses, damage, explode) => {
                                 if (statuses[spellID] && !statuses[spellID].currentAnim) {
                                     if (!globalObjects.currentEnemy.isDestroyed) {
@@ -2386,12 +2622,17 @@ class SpellManager {
                         duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.025 + additionalDamage;
-                            let damageDealt = Math.ceil(healthPercent)
-                            playSound('void_strike_hit');
-                            if (damageDealt > 12) {
-                                zoomTempSlow(1.007);
-                                screenShake(0.5 + damageDealt * 0.0008);
+                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.02 + additionalDamage;
+                            let damageDealt = Math.ceil(healthPercent);
+
+                            if (globalObjects.currentEnemy && (globalObjects.currentEnemy.immune || globalObjects.currentEnemy.invincible)) {
+                                playSound('swish', 1.4).detune = -680;
+                            } else {
+                                playSound('void_strike_hit');
+                                if (damageDealt > 12) {
+                                    zoomTempSlow(1.007);
+                                    screenShake(0.5 + damageDealt * 0.0008);
+                                }
                             }
 
                             messageBus.publish('enemyTakeDamage', damageDealt, true, undefined, 'void');

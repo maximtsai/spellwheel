@@ -13,8 +13,8 @@ let textData2 = {
     "encyclopedia_rune_action": {
         "en_us": "Action Runes: ",
         "fr": "Runes d’action: ",
-        "zh_tw": "作用符文：",
-        "zh_cn": "作用符文：",
+        "zh_tw": "行動符文：",
+        "zh_cn": "行动符文：",
         "ru": "Руны действия: ",
         "es": "Runas de acción: ",
         "jp": "アクションルーン: "
@@ -397,7 +397,7 @@ let textData2 = {
         "en_us": "ACTIONS",
         "fr": "ACTIONS",
         "zh_tw": "行動",
-        "zh_cn": "作用",
+        "zh_cn": "行动",
         "ru": "ДЕЙСТВИЯ",
         "es": "COMPORTAMIENTO",
         "jp": "アクション"
@@ -477,8 +477,8 @@ let textData2 = {
     "pre_fight_0h": {
         "en_us": "CAST:\nCLICK/SPACE",
         "fr": "LANCER:\nClic/barre\nd'espace",
-        "zh_tw": "法術施放:\n滑鼠點選/空白鍵",
-        "zh_cn": "法术施放:\n鼠标单击/空格键",
+        "zh_tw": "法術施放:\n點選/空白鍵",
+        "zh_cn": "法术施放:\n单击/空格键",
         "ru": "Щелчок мышью\nпробел",
         "es": "LANZAR HECHIZO:\nClic mouse\n/nespaciadora",
         "jp": "呪文の詠唱:\nマウスをクリック\n/スペースバー"
@@ -736,7 +736,7 @@ let textData2 = {
         "jp": ""
     },
     "level_water_nodamage2": {
-        "en_us": "But perhaps Energy spells will.",
+        "en_us": "But Energy spells might work.",
         "fr": "Mais peut-être que les\nsorts d'énergie le feront.",
         "zh_tw": "但能量法術也許可以。",
         "zh_cn": "但能量法术也许可以。",

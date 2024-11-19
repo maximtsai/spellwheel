@@ -622,7 +622,7 @@ function switchLevelBackground(lvl) {
             break;
         case 2:
             switchBackground('forest_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'backgroundwater.webp', 1500, 1.05, 1, 1,'Quart.easeIn', 0, false, -14);
+            fadeInBackgroundAtlas('backgrounds', 'backgroundwater.webp', 1500, 1.05, 0.92, 0.92,'Quart.easeIn', 0, false, -10);
             break;
         case 3:
             switchBackground('forest_bg.webp');
@@ -720,7 +720,7 @@ function createTutorialBtn(lvl) {
         globalObjects.runeHighlightRune = PhaserScene.add.sprite(gameConsts.halfWidth - 206, gameConsts.halfHeight - 200, 'tutorial', 'rune_highlight8.png').setDepth(10001).setVisible(false).setAlpha(0.76);
         globalObjects.runeHighlightTemp = PhaserScene.add.image(0, 0, 'tutorial', 'rune_highlight8.png').setDepth(10002).setAlpha(0);
         globalObjects.runePictureFrame = PhaserScene.add.image(gameConsts.halfWidth - 210, gameConsts.halfHeight - 40, 'tutorial', 'tut_border.png').setDepth(10002).setVisible(false).setRotation(-0.08);
-        globalObjects.runePicture = PhaserScene.add.sprite(gameConsts.halfWidth - 210, gameConsts.halfHeight - 40, 'tutorial', 'blank.png').setDepth(10002).setVisible(false).setRotation(-0.08);
+        globalObjects.runePicture = PhaserScene.add.sprite(gameConsts.halfWidth - 210, gameConsts.halfHeight - 40, 'tutorial', 'blank.png').setDepth(10002).setVisible(false).setRotation(-0.08).setScale(0.856);
     }
     switch(lvl) {
         case 0:

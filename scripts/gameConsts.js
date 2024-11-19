@@ -60,7 +60,7 @@ function updateSpellState(level) {
             break;
         case 1:
             // start, fight dummy
-            EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_ENHANCE, null, null, null, null, null, RUNE_ENHANCE];
+            EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_ENHANCE, RUNE_ENHANCE, null, null, null, null, null, RUNE_ENHANCE];
             ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MATTER, RUNE_MATTER, null, null, null, null];
             break;
         case 2:

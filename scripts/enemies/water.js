@@ -9,7 +9,7 @@
          this.popupTimeout = this.addTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
-         }, 3000)
+         }, 2500)
 
 
          this.addSubscription("enemyOnFire", this.setOnFire.bind(this))
@@ -22,12 +22,14 @@
          this.extraRepeatDelay = 200;
          this.pullbackHoldRatio = 0.75;
          this.pullbackScale = 0.86;
+         this.missCount = 0;
         // this.attackScale = 1;
          this.attackEase = "Quart.easeIn";
          this.defaultAnim = 'wateranim';
          this.accumulatedAnimDamage = 0;
          this.setDefense(999);
          this.immune = true;
+         this.weakHitCount = 0;
      }
 
      idleAnim(){
@@ -47,7 +49,23 @@
      }
 
      adjustDamageTaken(amt, isAttack, isTrue) {
+         if (isAttack && isTrue) {
+             if (amt > 4) {
+                 this.weakHitCount -= 1;
+             } else if (this.statuses['mindStrike']) {
+                 this.weakHitCount++;
+                 if (this.weakHitCount >= 2) {
+                     this.weakHitCount = -999;
+                     this.showEnhanceTut();
+                 }
+             }
+         }
          if (isAttack && !isTrue && !this.isUsingAttack) {
+             this.missCount++;
+             if (this.missCount === 2) {
+                 this.showEnergyTut()
+                 this.weakHitCount--;
+             }
              this.matterHitAnim = true;
              this.sprite.play('waterhole');
              this.sprite.setScale(0.85);
@@ -158,6 +176,7 @@
 
      splashWater(damage, detuneOffset = 0) {
          messageBus.publish("selfTakeDamage", damage);
+         let isFlippedConst = Math.random() < 0.5 ? 1 : -1;
          if (!this.waterSplash) {
              this.waterSplash = this.addImage(gameConsts.halfWidth, globalObjects.player.getY() - 200, 'water', 'water_splash.png').setDepth(30);
             this.detuneSplashUp = true;
@@ -166,11 +185,11 @@
          let vol = this.detuneSplashUp ? 1 : 0.8;
          playSound('watersplash', vol).detune = detuneOffset + Math.random() * 100 + detuneAmtShift;
 
-         this.waterSplash.setAlpha(1).setScale(0.7);
+         this.waterSplash.setAlpha(1).setScale(isFlippedConst * 0.7, 0.7);
          let goalScale = 1.7 + 0.085 * damage;
          this.addTween({
              targets: this.waterSplash,
-             scaleX: goalScale,
+             scaleX: isFlippedConst * goalScale,
              scaleY: goalScale,
              ease: 'Cubic.easeOut',
              duration: 250,
@@ -178,6 +197,7 @@
          this.addTween({
              targets: this.waterSplash,
              alpha: 0,
+             ease: 'Quad.easeIn',
              duration: 250,
          });
          playSound('water2');
@@ -200,7 +220,12 @@
                  this.setSprite('water_elec2.png');
 
                  this.sprite.x = gameConsts.halfWidth + (Math.random() < 0.5 ? -13 : 13);
-                 this.sprite.play('waterelec');
+
+                 if (newEffect.damage && newEffect.damage > 4) {
+                     this.sprite.play('waterelec');
+                 } else {
+                     this.sprite.play('waterelecsmall');
+                 }
 
                  this.addTween({
                      targets: this.sprite,
@@ -243,6 +268,7 @@
      }
 
      setOnFire(duration) {
+         console.log("set on fire");
          this.defaultAnim = 'wateranimfast';
 
          if (!this.matterHitAnim && !this.isUsingAttack) {
@@ -250,20 +276,18 @@
 
              this.burnAnim = this.sprite.play(this.defaultAnim);
              this.isBurning = true;
-
-             // if (this.currDelay) {
-             //     this.currDelay.stop();
-             // }
-             this.currDelay = this.addTween({
-                 targets: this.sprite,
-                 rotation: 0,
-                 duration: duration * 1000 - 1000,
-                 onComplete: () => {
-                     this.clearMindBurn();
-                 }
-             });
          }
-
+         if (this.currDelay) {
+             this.currDelay.stop();
+         }
+         this.currDelay = this.addTween({
+             targets: this.sprite,
+             rotation: 0,
+             duration: duration * 1000 - 1000,
+             onComplete: () => {
+                 this.clearMindBurn();
+             }
+         });
      }
 
      clearMindBurn() {
@@ -271,15 +295,13 @@
              this.sprite.stop();
              this.burnAnim = null;
          }
-         if (this.health > 25) {
+         if (this.health > 15) {
              this.defaultAnim = 'wateranim';
          }
          this.isBurning = false;
-         if (this.dead) {
-             return;
-         } else {
-            playSound('water1');
-            this.idleAnim()
+         if (!this.dead) {
+             playSound('water1');
+             this.idleAnim()
          }
      }
 
@@ -405,25 +427,23 @@
          ];
      }
 
-     showEnergyTut() {
+     showEnhanceTut() {
          this.addDelay(() => {
-             this.shownTut = true;
-             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 150, getLangText("energy_tut_goblin"), 'right');
+             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 150, getLangText("energy_tut_water_enhance"), 'right');
              let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
              let centerXPos = globalObjects.textPopupManager.getCenterPos();
              let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
-             this.rune3 = this.addImage(centerXPos - 32, runeYPos + 17, 'circle', 'bright_rune_mind.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
-             this.rune4 = this.addImage(centerXPos + 38, runeYPos + 17, 'circle', 'bright_rune_enhance.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
-             messageBus.publish("closeCombatText")
+             this.rune1 = this.addImage(centerXPos - 34, runeYPos + 17, 'circle', 'bright_rune_matter.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+             this.rune2 = this.addImage(centerXPos + 36, runeYPos + 17, 'circle', 'bright_rune_enhance.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
              this.addTween({
-                 targets: [this.rune3, this.rune4],
+                 targets: [this.rune1, this.rune2],
                  scaleX: 1,
                  scaleY: 1,
                  ease: 'Quart.easeOut',
                  duration: 500,
                  onComplete: () => {
                      this.addTween({
-                         targets: [this.rune3, this.rune4],
+                         targets: [this.rune1, this.rune2],
                          scaleX: 0.8,
                          scaleY: 0.8,
                          ease: 'Back.easeOut',
@@ -432,7 +452,7 @@
                  }
              });
              this.addTween({
-                 targets: [this.rune3, this.rune4],
+                 targets: [this.rune1, this.rune2],
                  alpha: 1,
                  duration: 200,
                  completeDelay: 1000,
@@ -441,12 +461,12 @@
                          this.playerSpellCastSub.unsubscribe();
                          this.addTimeout(() => {
                              this.addTween({
-                                 targets: [this.rune3, this.rune4],
+                                 targets: [this.rune1, this.rune2],
                                  alpha: 0,
                                  duration: 300,
                                  onComplete: () => {
-                                     this.rune3.visible = false;
-                                     this.rune4.visible = false;
+                                     this.rune1.visible = false;
+                                     this.rune2.visible = false;
                                  }
                              });
                              globalObjects.textPopupManager.hideInfoText();
@@ -502,7 +522,7 @@
          });
      }
 
-     repeatTweenBreathe(duration = 1500, magnitude = 1, isRepeat = false) {
+     repeatTweenBreathe(duration = 1600, magnitude = 1, isRepeat = false) {
         if (this.dead || this.isDestroyed) {
             return;
         }
@@ -515,19 +535,17 @@
          this.breatheTween = this.addTween({
              targets: this.sprite,
              duration: duration * (Math.random() * 0.5 + 1) * burningMult,
-             rotation: this.isKnocked ? 0 : -0.005 * magnitude,
              x: this.sprite.startX - horizMove,
-             ease: 'Cubic.easeInOut',
-             completeDelay: 150,
+             ease: 'Quart.easeInOut',
+             completeDelay: 100,
              onComplete: () => {
                  let burningMult2 = this.isBurning ? 0.2 : 1;
                  this.breatheTween = this.addTween({
                      targets: this.sprite,
                      duration: duration * (Math.random() * 0.5 + 1) * burningMult2,
-                     rotation: this.isKnocked ? 0 : 0.005 * magnitude,
                      x: this.sprite.startX + horizMove,
-                     ease: 'Cubic.easeInOut',
-                     completeDelay: 150,
+                     ease: 'Quart.easeInOut',
+                     completeDelay: 100,
                      onComplete: () => {
                          this.repeatTweenBreathe(duration, magnitude, true);
                      }
@@ -541,7 +559,6 @@
              return;
         }
         super.die();
-        messageBus.publish("closeCombatText")
         if (this.burnAnim) {
             this.burnAnim.stop();
         }
@@ -562,7 +579,11 @@
 
         if (this.rune3) {
             this.rune3.visible = false;
-            this.rune4.visible = false;
+        }
+
+        if (this.rune1) {
+            this.rune1.visible = false;
+            this.rune2.visible = false;
         }
 
          this.dieClickBlocker = new Button({
@@ -726,6 +747,58 @@
              globalObjects.bannerTextManager.closeBanner();
              beginPreLevel(this.level + 1)
          })
+     }
+
+     showEnergyTut() {
+         if (this.shownTut) {
+             return;
+         }
+         this.shownTut = true;
+         this.addDelay(() => {
+             globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 150, getLangText("energy_tut_water"), 'right');
+             let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+             let centerXPos = globalObjects.textPopupManager.getCenterPos();
+             let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
+             this.rune3 = this.addImage(centerXPos, runeYPos + 17, 'circle', 'bright_rune_mind.png').setDepth(runeDepth).setScale(0.78, 0.78).setAlpha(0);
+             this.addTween({
+                 targets: [this.rune3],
+                 scaleX: 1,
+                 scaleY: 1,
+                 ease: 'Quart.easeOut',
+                 duration: 500,
+                 onComplete: () => {
+                     this.addTween({
+                         targets: [this.rune3],
+                         scaleX: 0.8,
+                         scaleY: 0.8,
+                         ease: 'Back.easeOut',
+                         duration: 300,
+                     });
+                 }
+             });
+             this.addTween({
+                 targets: [this.rune3],
+                 alpha: 1,
+                 duration: 200,
+                 completeDelay: 1000,
+                 onComplete: () => {
+                     this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
+                         this.playerSpellCastSub.unsubscribe();
+                         this.addTimeout(() => {
+                             this.addTween({
+                                 targets: [this.rune3],
+                                 alpha: 0,
+                                 duration: 300,
+                                 onComplete: () => {
+                                     this.rune3.visible = false;
+                                 }
+                             });
+                             globalObjects.textPopupManager.hideInfoText();
+                         }, 300);
+                     });
+                 }
+             });
+         }, 500)
      }
 
 }

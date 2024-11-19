@@ -13,7 +13,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 150 : 95;
+         this.health = gameVars.isHardMode ? 150 : 90;
          this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 54, 'misc', 'slash1.png').setScale(0.9).setDepth(995).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.22;
@@ -389,6 +389,7 @@
                      chargeAmt: gameVars.isHardMode ? 180 : 220,
                      damage: 4,
                      attackTimes: 3,
+                     finishDelay: 300,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
                      attackFinishFunction: () => {
                          this.makeSlashEffect();
@@ -399,6 +400,7 @@
                      chargeAmt: gameVars.isHardMode ? 200 : 240,
                      damage: 4,
                      attackTimes: 4,
+                     finishDelay: 400,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
                      attackFinishFunction: () => {
                          this.makeSlashEffect();
@@ -409,6 +411,8 @@
                      chargeAmt: gameVars.isHardMode ? 220 : 260,
                      damage: 4,
                      attackTimes: 5,
+                     finishDelay: 500,
+                     isBigMove: true,
                      attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
                      attackFinishFunction: () => {
                          this.makeSlashEffect();
@@ -418,7 +422,53 @@
                      name: "LAUGH",
                      isPassive: true,
                      chargeAmt: 400,
-                     finishDelay: 700,
+                     finishDelay: 900,
+                     chargeMult: 5,
+                     damage: -1,
+                     tease: true,
+                     attackSprites: ['gobbo4.png'],
+                     attackFinishFunction: () => {
+                         playSound('goblin_aha');
+                     }
+                 },
+                 {
+                     name: "}4x3 ",
+                     chargeAmt: 250,
+                     damage: 4,
+                     attackTimes: 3,
+                     finishDelay: 1000,
+                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
+                     attackFinishFunction: () => {
+                         this.makeSlashEffect();
+                     }
+                 },
+                 {
+                     name: "}4x4 ",
+                     chargeAmt: 275,
+                     damage: 4,
+                     attackTimes: 4,
+                     finishDelay: 1200,
+                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
+                     attackFinishFunction: () => {
+                         this.makeSlashEffect();
+                     }
+                 },
+                 {
+                     name: "}4x5 ",
+                     chargeAmt: 300,
+                     damage: 4,
+                     attackTimes: 5,
+                     finishDelay: 1500,
+                     attackSprites: ['gobboAttack1.png', 'gobboAttack2.png'],
+                     attackFinishFunction: () => {
+                         this.makeSlashEffect();
+                     }
+                 },
+                 {
+                     name: "LAUGH",
+                     isPassive: true,
+                     chargeAmt: 400,
+                     finishDelay: 1200,
                      chargeMult: 5,
                      damage: -1,
                      tease: true,

@@ -11,11 +11,11 @@
          this.popupTimeout = this.addTimeout(() => {
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
-         }, 3000)
+         }, 2500)
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 250 : 230;
+         this.health = gameVars.isHardMode ? 240 : 220;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;

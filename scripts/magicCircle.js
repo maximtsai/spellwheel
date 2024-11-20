@@ -1385,7 +1385,7 @@ const ENABLE_KEYBOARD = true;
          for (let i in this.stalagmites) {
              let stalag = this.stalagmites[i];
              stalag.rotation = stalag.startRotation + this.outerCircle.rotation;
-             if (stalag.lastRotation * stalag.rotation < 0) {
+             if (stalag.lastRotation * stalag.rotation < 0 && !this.recharging) {
                  // crossed
                  if ((Math.abs(stalag.rotation) + Math.abs(stalag.lastRotation)) < 1) {
                      // Fire!

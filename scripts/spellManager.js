@@ -862,9 +862,9 @@ class SpellManager {
             duration: 250,
             ease: 'Cubic.easeOut',
             onStart: () => {
-                playSound('matter_ultimate', 0.25);
-                playSound('matter_shield', 0.95).detune = -400;
-                playSound('matter_enhance', 0.3).detune = -1000;
+                playSound('matter_ultimate', 0.35);
+                playSound('matter_shield', 0.95).detune = -250;
+                playSound('matter_enhance', 0.35).detune = -1000;
                 stoneCircle.setAlpha(0.5);
                 textHealth.setText(shieldHealth);
                 this.scene.tweens.add({

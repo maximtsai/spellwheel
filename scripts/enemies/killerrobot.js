@@ -163,6 +163,8 @@
                      scaleY: this.sprite.startScale * 0.98,
                      ease: 'Cubic.easeIn',
                      onComplete: () => {
+                         switchBackgroundInstant('tunnel2.webp');
+
                          globalObjects.magicCircle.enableMovement();
                         this.bgMusic.stop();
                          playSound('voca_hello', 0.8);
@@ -257,7 +259,7 @@
                              scaleY: this.sprite.startScale * 0.985,
                              onStart: () => {
                                  playSound('robot_sfx_1');
-                                 this.setAwake();
+                                 this.setAwake(false);
                              },
                              onComplete: () => {
                                  playFakeBGMusic('jpop_intro', 0.9);
@@ -1540,6 +1542,7 @@
         if (this.dead) {
              return;
         }
+         switchBackground('tunnel1.webp');
 
         super.die();
         if (this.blush) {

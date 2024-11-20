@@ -624,13 +624,19 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case 11:
-            switchBackground('clock_bg.webp');
+            switchBackground('tunnel.webp');
             fadeInBackgroundAtlas('backgrounds', 'tunnel.png', 1500, 1, 1, 1,'Quart.easeIn', 0, false);
             break;
         case 12:
             switchBackground('clock_bg.webp');
-            globalObjects.magicCircle.setWheelTint(0.03, 0.07, 'usage_tint_b.png');
+            globalObjects.magicCircle.setWheelTint(0.03, 0.06, 'usage_tint_b.png');
             fadeInBackgroundAtlas('backgrounds', 'background4.png', 2500, 1, 1, 1,'Quart.easeIn', 0, false);
+            break;
+        case 13:
+            break;
+        case 14:
+            break;
+        case 15:
             break;
         default:
             switchBackground('clock_bg.webp');
@@ -650,10 +656,13 @@ function beginLevel(lvl, instant = false) {
         switchLevelBackground(lvl)
     } else if (lvl === 13) {
         // death levels
-        globalObjects.magicCircle.setWheelTint(0.05, 0.07, 'usage_tint_r.png');
-    } else if (lvl >= 14) {
+        globalObjects.magicCircle.setWheelTint(0.05, 0.06, 'usage_tint_r.png');
+    } else if (lvl === 14) {
         // death levels
-        globalObjects.magicCircle.setWheelTint(0.06, 0.02, 'usage_tint_b.png');
+        globalObjects.magicCircle.setWheelTint(0.05, 0.02, 'usage_tint_b.png');
+    } else if (lvl >= 15) {
+        // death levels
+        globalObjects.magicCircle.setWheelTint(0.05, 0.04, 'usage_tint_b.png');
     }
 
     playSound('whoosh');

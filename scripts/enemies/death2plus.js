@@ -3,6 +3,8 @@
          super(scene, x, y, level);
          this.initSprite('death2final.png', 0.92, 0, -15, 'deathfinal');
          this.bgMusic = playMusic('but_never_forgotten_metal', 1, true);
+         switchBackgroundInstant('star_bg.webp');
+
          this.bgMain = this.addSprite(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star.png').setDepth(-5).setScale(1.04, 1.05)
          this.bgBlur = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'star_blur.png').setDepth(-5).setScale(2.63).setAlpha(1.5);
          globalObjects.player.reInitStats();
@@ -162,7 +164,7 @@
              });
 
              this.addDelayIfAlive(() => {
-                 this.setAwake();
+                 this.setAwake(false);
              }, 4000)
 
 
@@ -3072,6 +3074,11 @@
 
      sharedDie() {
          globalObjects.magicCircle.removeDelayedDamage();
+         switchBackgroundInstant('star_shatter.webp');
+
+         setTimeout(() => {
+             switchBackground('black_pixel.png');
+         }, 70)
          this.isDefeated = true;
          gameVars.latestLevel = this.level;
          localStorage.setItem("latestLevel", (gameVars.latestLevel).toString());

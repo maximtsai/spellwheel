@@ -1,6 +1,7 @@
  class Death2 extends Enemy {
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
+         switchBackground('fire_bg.webp');
          this.initSprite('max_death_2.png', 0.85, 0, 0, 'deathfinal');
          this.baseSprite = 'max_death_2.png';
          this.sprite.setOrigin(0.5, 0.2);
@@ -43,7 +44,7 @@
         globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
         globalObjects.bannerTextManager.showBanner(0);
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
-            this.setAwake();
+            this.setAwake(false);
             globalObjects.magicCircle.enableMovement();
             globalObjects.encyclopedia.showButton();
             globalObjects.options.showButton();
@@ -225,7 +226,7 @@
     }
 
     initStatsCustom() {
-        this.health = 525;
+        this.health = 555;
         this.punchCycleCount = 0;
         this.customAngry = "angrybone";
         this.firstLaugh = false;
@@ -354,7 +355,7 @@
          } else {
              let prevHealthPercent = this.prevHealth / this.healthMax;
              if (this.fireForm) {
-                 if (prevHealthPercent > 0.4 && currHealthPercent <= 0.4 && !this.thornForm) {
+                 if (this.prevHealth > 200 && this.health <= 200 && !this.thornForm) {
                     this.emergencyShield();
                      globalObjects.bannerTextManager.setDialog([getLangText('deathFight2cx')]);
                      globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
@@ -364,7 +365,7 @@
                      })
                  }
              } else {
-                 if (prevHealthPercent > 0.6 && currHealthPercent <= 0.6 && !this.thornForm) {
+                 if (this.prevHealth > 300 && this.health <= 300 && !this.thornForm) {
                      this.emergencyShield();
                      globalObjects.bannerTextManager.setDialog([getLangText('deathFight2c')]);
                      globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);

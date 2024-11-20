@@ -869,13 +869,13 @@ function showMainMenuButtons() {
                 "Small_Swoosh - 1.wav by SoundFlakes\n-- https://freesound.org/s/416468/\n- License: Attribution 4.0";
             let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'paper.png').setDepth(100000).setScale(0.975);
             let creditsPaper =PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 1, 'misc', 'credits.png').setDepth(100000).setScale(0.975);
-            let discoverText = PhaserScene.add.text(gameConsts.halfWidth - 38, gameConsts.halfHeight + 142, "DISCOVER MORE IN OUR\nEXCLUSIVE DIGITAL ARTBOOK!", {fontFamily: 'germania', fontSize: 23.5, color: '#452127', align: 'center', lineSpacing: -5}).setOrigin(0.5, -1).setDepth(100000).setAlpha(0.3).setScale(1.03);
+            let discoverText = PhaserScene.add.text(gameConsts.halfWidth - 38, gameConsts.halfHeight + 142, "DIGITAL ARTBOOK WITH BEHIND\nTHE SCENES COMING SOON!", {fontFamily: 'germania', fontSize: 23.5, color: '#452127', align: 'center', lineSpacing: -5}).setOrigin(0.5, -1).setDepth(100000).setAlpha(0.3).setScale(1.03);
             // let maximText = PhaserScene.add.text(gameConsts.halfWidth - 270, gameConsts.halfHeight - 206, "Programming & Game Design", {fontFamily: 'Arial', fontSize: 18, color: '#452127', align: 'left', lineSpacing: -5}).setOrigin(0, 0.25).setDepth(100000).setAlpha(0.3).setScale(0.975);
             // maximText.setFontStyle('bold');
 
             let artbook = PhaserScene.add.image(gameConsts.halfWidth + 191, creditsPaper.y + 203, 'misc', 'artbook.png').setDepth(100002).setScale(0.31).setAlpha(0.2);
 
-            let artbookGlow = PhaserScene.add.image(artbook.x - 4, artbook.y, 'blurry', 'icon_glow.png').setDepth(100001).setAlpha(1).setScale(1.8);
+            let artbookGlow = PhaserScene.add.image(artbook.x - 4, artbook.y, 'blurry', 'icon_glow.png').setDepth(100001).setAlpha(0).setScale(1.8);
             artbook.origX = artbook.x;
             artbook.origY = artbook.y;
             let clickBlock;
@@ -989,29 +989,29 @@ function showMainMenuButtons() {
                 alpha: 1,
             });
 
-            PhaserScene.tweens.add({
-                targets: [artbookGlow],
-                duration: 1500,
-                scaleX: 4.1,
-                scaleY: 4.1,
-                ease: 'Quad.easeIn',
-                alpha: 1,
-                onComplete: () => {
-                    PhaserScene.tweens.add({
-                        targets: [artbookGlow],
-                        duration: 1500,
-                        scaleX: 1.8,
-                        scaleY: 1.8,
-                        ease: 'Quad.easeOut',
-                        alpha: 0,
-                    });
-                }
-            });
-            PhaserScene.tweens.add({
-                targets: [artbookGlow],
-                duration: 3000,
-                rotation: "+=6.281",
-            });
+            // PhaserScene.tweens.add({
+            //     targets: [artbookGlow],
+            //     duration: 1500,
+            //     scaleX: 4.1,
+            //     scaleY: 4.1,
+            //     ease: 'Quad.easeIn',
+            //     alpha: 1,
+            //     onComplete: () => {
+            //         PhaserScene.tweens.add({
+            //             targets: [artbookGlow],
+            //             duration: 1500,
+            //             scaleX: 1.8,
+            //             scaleY: 1.8,
+            //             ease: 'Quad.easeOut',
+            //             alpha: 0,
+            //         });
+            //     }
+            // });
+            // PhaserScene.tweens.add({
+            //     targets: [artbookGlow],
+            //     duration: 3000,
+            //     rotation: "+=6.281",
+            // });
             PhaserScene.tweens.add({
                 targets: [creditsPaper],
                 duration: 180,

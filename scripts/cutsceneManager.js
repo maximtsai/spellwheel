@@ -76,6 +76,7 @@ function tryRunCutscene1End(bgMusic, wind) {
 }
 
 function showCutscene1() {
+    switchBackground('black_pixel.png');
     readyShowCutsceneLogic();
     globalObjects.cutsceneBarTop.y = gameConsts.height;
     globalObjects.cutsceneBarTop.alpha = 0;
@@ -179,6 +180,7 @@ function showCutscene1() {
 }
 let bansheeCanTween = false;
 function showCutscene2() {
+    switchBackground('black_pixel.png');
     readyShowCutsceneLogic();
     globalObjects.cutsceneBarTop.y = gameConsts.height;
     globalObjects.cutsceneBarTop.alpha = 0;
@@ -277,6 +279,7 @@ function showCutscene2() {
 }
 
 function showCutscene3() {
+    switchBackground('black_pixel.png');
     readyShowCutsceneLogic();
     globalObjects.cutsceneBarTop.y = gameConsts.height;
     globalObjects.cutsceneBarTop.alpha = 0;

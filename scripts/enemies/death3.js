@@ -5,6 +5,8 @@ class Death3 extends Enemy {
         playSound("whoosh")
         globalObjects.encyclopedia.hideButton();
         globalObjects.options.hideButton();
+        switchBackground('water.webp');
+
         this.initSprite('max_death_3_white.png', 1, 0, 0, 'deathfinal');
         this.bgtemp = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfall.png').setDepth(-6).setScale(1, 1.03);
         this.bgtemprocks = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'waterfallrocks.png').setDepth(-4).setScale(1,1.03);
@@ -756,6 +758,8 @@ class Death3 extends Enemy {
             return;
         }
         super.die();
+        switchBackground('black_pixel.png');
+
         globalObjects.encyclopedia.hideButton();
         globalObjects.options.hideButton();
         globalObjects.magicCircle.disableMovement();

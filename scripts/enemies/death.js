@@ -30,6 +30,7 @@
          this.spellsCastCounter = 0;
          this.customAngry = "angrybone";
          this.scytheObjects = [];
+         this.invincible = true;
          this.listOfAngryPopups = [];
      }
 
@@ -288,7 +289,7 @@
                 gameVars.showFinaleDeathSpeech = false;
 
                 globalObjects.bannerTextManager.setDialog([getLangText('deathFight1a'), getLangText('deathFight1b')]);
-                globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 5, 0);
                 globalObjects.bannerTextManager.showBanner(0.5);
                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
                     this.beginFightReal();
@@ -495,7 +496,7 @@
                                  this.setAsleep();
                                  super.setHealth(3);
                                  globalObjects.bannerTextManager.setDialog([getLangText('deathFight1c'), getLangText('deathFight1d')]);
-                                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 5, 0);
                                  globalObjects.bannerTextManager.showBanner(0.5);
                                  globalObjects.bannerTextManager.setOnFinishFunc(() => {
                                      this.interruptCurrentAttack();
@@ -557,7 +558,7 @@
                              if (!globalObjects.player.dead) {
                                  super.setHealth(2);
                                  globalObjects.bannerTextManager.setDialog([getLangText('deathFight1f'), getLangText('deathFight1g')]);
-                                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 5, 0);
                                  globalObjects.bannerTextManager.showBanner(0.5);
                                  globalObjects.bannerTextManager.setOnFinishFunc(() => {
                                      this.interruptCurrentAttack();
@@ -568,7 +569,7 @@
                      },
                  },
                  {
-                     name: ";20x5",
+                     name: ";16x5",
                      chargeAmt: 1300,
                      chargeMult: 1.35,
                      finishDelay: 5000,
@@ -576,11 +577,11 @@
                      isBigMove: true,
                      attackStartFunction: () => {
                          // this.hideCurrentAttack();
-                         this.swingScytheFastIntro(20, false, false,() => {
-                             this.swingScytheFast(20, false, true,() => {
-                                 this.swingScytheFast(20, false, false,() => {
-                                     this.swingScytheFast(20, false, true,() => {
-                                         this.swingScytheFast(20, false, false,() => {
+                         this.swingScytheFastIntro(16, false, false,() => {
+                             this.swingScytheFast(16, false, true,() => {
+                                 this.swingScytheFast(16, false, false,() => {
+                                     this.swingScytheFast(16, false, true,() => {
+                                         this.swingScytheFast(16, false, false,() => {
                                              super.setHealth(1);
                                              PhaserScene.tweens.add({
                                                  targets: this.mainScythe,
@@ -754,7 +755,7 @@
                                 }
                             });
                         }]);
-                        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 5, 0);
                         globalObjects.bannerTextManager.showBanner(0.5);
                         globalObjects.bannerTextManager.setOnFinishFunc(() => {
                             this.reaperHidden = true;

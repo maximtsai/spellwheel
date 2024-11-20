@@ -225,7 +225,7 @@
     }
 
     initStatsCustom() {
-        this.health = 555;
+        this.health = 525;
         this.punchCycleCount = 0;
         this.customAngry = "angrybone";
         this.firstLaugh = false;

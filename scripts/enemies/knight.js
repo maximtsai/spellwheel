@@ -22,7 +22,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 160 : 130;
+         this.health = gameVars.isHardMode ? 160 : 125;
          this.eyeObjects = [];
          this.pullbackScale = 0.92;
          this.attackScale = 1.11;

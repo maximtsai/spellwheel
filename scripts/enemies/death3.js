@@ -241,30 +241,34 @@ class Death3 extends Enemy {
     }
 
     startFightLogic() {
+        this.setAwake();
+        this.repeatEffect();
+    }
+
+    repeatEffect() {
         if (!this.redEffect) {
             this.redEffect = this.addImage(this.sprite.x, this.sprite.y + 130, 'lowq', 'circle_blue2.png').setScale(0.4, 0.09).setOrigin(0.5, 0.45).setDepth(-4).setBlendMode(Phaser.BlendModes.MULTIPLY);
         } else {
             this.redEffect.setAlpha(0.65).setScale(0.4, 0.09);
         }
-        this.setAwake();
 
-         this.addTween({
-             targets: this.redEffect,
-             scaleX: 3,
-             scaleY: 0.7,
-             duration: 3500,
-             ease: "Cubic.easeOut",
-             onComplete: () => {
-             }
-         });
-         this.addTween({
-             targets: this.redEffect,
-             alpha: 0,
-             duration: 3500,
-             onComplete: () => {
-                this.startFightLogic();
-             }
-         });
+        this.addTween({
+            targets: this.redEffect,
+            scaleX: 3,
+            scaleY: 0.7,
+            duration: 3500,
+            ease: "Cubic.easeOut",
+            onComplete: () => {
+            }
+        });
+        this.addTween({
+            targets: this.redEffect,
+            alpha: 0,
+            duration: 3500,
+            onComplete: () => {
+                this.repeatEffect();
+            }
+        });
     }
 
     initStatsCustom() {
@@ -338,8 +342,8 @@ class Death3 extends Enemy {
             [
                 {
                     name: " ",
-                    chargeAmt: 400,
-                    chargeMult: 2,
+                    chargeAmt: 425,
+                    chargeMult: 2.5,
                     transitionFast: true,
                     isPassive: true,
                     customCall: 'flip1',
@@ -353,7 +357,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 350,
-                    chargeMult: 3.5,
+                    chargeMult: 3.75,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip2',
@@ -457,7 +461,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 3.5,
+                    chargeMult: 3.75,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip2',
@@ -471,7 +475,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 3.5,
+                    chargeMult: 3.75,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
@@ -485,7 +489,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 300,
-                    chargeMult: 3.5,
+                    chargeMult: 3.75,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip3',
@@ -505,7 +509,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 300,
-                    chargeMult: 3.5,
+                    chargeMult: 3.75,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
@@ -517,7 +521,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 3.5,
+                    chargeMult: 3.75,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip2',
@@ -528,7 +532,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 400,
-                    chargeMult: 3.5,
+                    chargeMult: 3.75,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
@@ -539,7 +543,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 550,
-                    chargeMult: 3.5,
+                    chargeMult: 3.75,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip3',
@@ -551,7 +555,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 300,
-                    chargeMult: 3.5,
+                    chargeMult: 3.75,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
@@ -563,7 +567,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 450,
-                    chargeMult: 3.5,
+                    chargeMult: 3.75,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip2',
@@ -574,7 +578,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 300,
-                    chargeMult: 3.5,
+                    chargeMult: 3.75,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',
@@ -586,7 +590,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 475,
-                    chargeMult: 3.5,
+                    chargeMult: 3.75,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip3',
@@ -597,7 +601,7 @@ class Death3 extends Enemy {
                 {
                     name: " ",
                     chargeAmt: 200,
-                    chargeMult: 3.5,
+                    chargeMult: 3.75,
                     isPassive: true,
                     transitionFast: true,
                     customCall: 'flip1',

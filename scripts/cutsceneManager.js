@@ -55,6 +55,7 @@ function tryRunCutscene1End(bgMusic, wind) {
                     alpha: 1,
                     ease: 'Quad.easeInOut',
                     duration: 2500,
+                    completeDelay: 300,
                     onComplete: () => {
                         rollCredits();
                     }
@@ -838,7 +839,7 @@ function showFinalLocket() {
                             targets: [closeText],
                             alpha: 0,
                             duration: 200,
-                            completeDelay: 800,
+                            completeDelay: 600,
                             onComplete: () => {
                                 closeText.destroy();
                                 darkBG.alpha = 1;
@@ -846,7 +847,9 @@ function showFinalLocket() {
                                 globalObjects.menuBack.setDepth(globalObjects.menuBack.origDepth);
                                 globalObjects.menuTop.setDepth(globalObjects.menuTop.origDepth);
                                 globalObjects.gameLocketOpen.destroy();
-                                this.rollCredits();
+                                setTimeout(() => {
+                                    this.rollCredits();
+                                }, 900)
                                 fadeAwaySound(windSFX, 350);
                             }
                         });
@@ -940,7 +943,7 @@ function rollCredits() {
         "SFX and battle music by Chandler G @rocad_guitar",
         "Robot voice and music by @eidendalion",
         "Special thanks to @hby, Victor Kao, and Alex Arango",
-        " \nRandom Stats:\n- Game Engine: Phaser 3\n- Sprites: +1000\n- Audio files: +160\n- Lines of code: ~40,000\n- Development time: 10 months",
+        " \nRandom Stats:\n- Game Engine: Phaser 3\n- Sprites: +1000\n- Audio files: +170\n- Lines of code: ~42,000\n- Development time: 11 months",
     ];
     let textObjects = [];
     let textAnims = [];
@@ -953,29 +956,63 @@ function rollCredits() {
         nextText.scaleX = 0.95;
         textObjects.push(nextText);
         let tweenObjData = {
-            delay: 100 + i * 2800,
+            delay: 100 + i * 2500,
             targets: nextText,
             alpha: 1,
             duration: 1200,
         }
         if (i === textCredits.length - 1) {
             tweenObjData.onComplete = () => {
-                let menuText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 20, getLangText('return_menu'), {fontFamily: 'garamondmax', fontSize: 16, color: '#FFFFFF', align: 'riht'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(1, 1).setAlpha(0.6);
-                clickBlocker.setOnMouseUpFunc(() => {
-                    menuText.destroy();
-                    cleanupCutscene()
-                    hideGlobalClickBlocker();
-                    setupCreditsReturnMainMenu(textObjects);
-                    fadeAwaySound(bgMusic, 2000);
-                    PhaserScene.tweens.add({
-                        targets: darkBG,
-                        alpha: 0,
-                        duration: 2000,
-                        onComplete: () => {
-                            darkBG.destroy();
-                        }
-                    })
+                let thankyou = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 120, "THANK YOU FOR PLAYING!", {fontFamily: 'garamondmax', fontSize: 30, color: '#FFFFFF', align: 'left'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(0.5, 1).setAlpha(0);
+                PhaserScene.tweens.add({
+                    targets: thankyou,
+                    alpha: 1,
+                    duration: 400,
                 });
+
+                let menuText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 20, getLangText('return_menu'), {fontFamily: 'garamondmax', fontSize: 16, color: '#FFFFFF', align: 'right'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(1, 1).setAlpha(0.6);
+                hideGlobalClickBlocker();
+
+                let menuBtnTemp = new Button({
+                    normal: {
+                        ref: "whitePixel",
+                        x: menuText.x,
+                        y: menuText.y,
+                        alpha: 0.05,
+                        scaleX: 140,
+                        scaleY: 80
+                    },
+                    onHover: () => {
+                        menuText.alpha = 1;
+                        if (canvas) {
+                            canvas.style.cursor = 'pointer';
+                        }
+                    },
+                    onHoverOut: () => {
+                        menuText.alpha = 0.6;
+                        if (canvas) {
+                            canvas.style.cursor = 'default';
+                        }
+                    },
+                    onMouseUp: () => {
+                        menuText.destroy();
+                        thankyou.destroy();
+                        cleanupCutscene()
+                        setupCreditsReturnMainMenu(textObjects);
+                        fadeAwaySound(bgMusic, 2000);
+                        PhaserScene.tweens.add({
+                            targets: darkBG,
+                            alpha: 0,
+                            duration: 2500,
+                            onComplete: () => {
+                                darkBG.destroy();
+                            }
+                        });
+                        menuBtnTemp.destroy();
+                    }
+                });
+
+
             }
         }
         let tweenObj = PhaserScene.tweens.add(tweenObjData);
@@ -991,21 +1028,47 @@ function rollCredits() {
             duration: 750,
         });
         setTimeout(() => {
-            let menuText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 20, getLangText('return_menu'), {fontFamily: 'garamondmax', fontSize: 16, color: '#FFFFFF', align: 'riht'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(1, 1).setAlpha(0.6);
-            clickBlocker.setOnMouseUpFunc(() => {
-                menuText.destroy();
-                cleanupCutscene()
-                hideGlobalClickBlocker();
-                setupCreditsReturnMainMenu(textObjects);
-                fadeAwaySound(bgMusic, 2000);
-                PhaserScene.tweens.add({
-                    targets: darkBG,
-                    alpha: 0,
-                    duration: 2000,
-                    onComplete: () => {
-                        darkBG.destroy();
+            let thankyou = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 120, "THANK YOU FOR PLAYING!", {fontFamily: 'garamondmax', fontSize: 30, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(0.5, 1).setAlpha(1);
+            let menuText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 20, getLangText('return_menu'), {fontFamily: 'garamondmax', fontSize: 16, color: '#FFFFFF', align: 'right'}).setDepth(CUTSCENE_DEPTH+6).setOrigin(1, 1).setAlpha(0.6);
+            hideGlobalClickBlocker();
+
+            let menuBtnTemp = new Button({
+                normal: {
+                    ref: "whitePixel",
+                    x: menuText.x,
+                    y: menuText.y,
+                    alpha: 0.05,
+                    scaleX: 140,
+                    scaleY: 80
+                },
+                onHover: () => {
+                    menuText.alpha = 1;
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
                     }
-                })
+                },
+                onHoverOut: () => {
+                    menuText.alpha = 0.6;
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                },
+                onMouseUp: () => {
+                    menuText.destroy();
+                    thankyou.destroy();
+                    cleanupCutscene()
+                    setupCreditsReturnMainMenu(textObjects);
+                    fadeAwaySound(bgMusic, 2000);
+                    PhaserScene.tweens.add({
+                        targets: darkBG,
+                        alpha: 0,
+                        duration: 2500,
+                        onComplete: () => {
+                            darkBG.destroy();
+                        }
+                    });
+                    menuBtnTemp.destroy();
+                }
             });
         }, 450)
         clickBlocker.setOnMouseUpFunc(() => {});

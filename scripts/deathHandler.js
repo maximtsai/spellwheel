@@ -1231,7 +1231,7 @@ function handleReaperDialog(level = 0, onComplete) {
                 duration: 3000,
                 ease: 'Quart.easeOut'
             })
-            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130);
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 160);
 
         },
             () => {

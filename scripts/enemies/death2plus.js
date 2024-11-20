@@ -31,6 +31,9 @@
              }
          })
          let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 600);
+         zoomTempSlow(1.01);
+         playSound('heartbeatfast');
+
          tempPulse.setDepth(-2).setPosition(x, y + 15).setScale(0).setAlpha(1).setRotation(0);
          this.addTween({
              targets: tempPulse,
@@ -420,9 +423,10 @@
              yoyo: true,
              onRepeat: () => {
                  if (this.pulseFinalEnabled) {
+                     zoomTempSlow(1.005);
                      let tempPulse = getTempPoolObject('blurry', 'black_pulse.png', 'blackpulse', 1550);
                      setTimeout(() => {
-                         playSound('heartbeatfast', 0.8).setSeek(0.28).detune = -750;
+                         playSound('heartbeatfast', 0.85).setSeek(0.28).detune = -650;
                      }, 10)
                      tempPulse.setDepth(-2).setPosition(this.x, this.circleHalo.y).setScale(0).setAlpha(0.53).setRotation(0);
                      this.addTween({
@@ -839,12 +843,24 @@
                          this.interruptCurrentAttack();
                          this.setAsleep();
                          this.addDelayIfAlive(() => {
+                             if (this.currentAttackSetIndex === 5) {
+                                 return;
+                             }
                              this.rotateSpellCircleTo(1, true, () => {
+                                 if (this.currentAttackSetIndex === 5) {
+                                     return;
+                                 }
                                  // this.fadeOutCurrentHand();
                                  this.createPokePower();
                                  this.addDelayIfAlive(() => {
+                                     if (this.currentAttackSetIndex === 5) {
+                                         return;
+                                     }
                                      messageBus.publish("showCombatText", getLangText('deathFight2plusb'), -30);
                                      this.addTimeout(() => {
+                                         if (this.currentAttackSetIndex === 5) {
+                                             return;
+                                         }
                                          this.setAwake();
                                          this.spellAbsorber = messageBus.subscribe('playerCastedSpell', () => {
                                              this.addExtraDamage();
@@ -971,12 +987,24 @@
                          this.currentPowerText.visible = false;
 
                          this.addDelayIfAlive(() => {
+                             if (this.currentAttackSetIndex === 5) {
+                                 return;
+                             }
                              this.rotateSpellCircleTo(2, true, () => {
+                                 if (this.currentAttackSetIndex === 5) {
+                                     return;
+                                 }
                                  this.createOkayPower();
                                  this.addDelayIfAlive(() => {
+                                     if (this.currentAttackSetIndex === 5) {
+                                         return;
+                                     }
                                      messageBus.publish("showCombatText", getLangText('deathFight2plusc'), -30);
                                      this.healFromAttacks = true;
                                      this.addTimeout(() => {
+                                         if (this.currentAttackSetIndex === 5) {
+                                             return;
+                                         }
                                          this.setAwake();
                                          if (this.spellAbsorber) {
                                              this.spellAbsorber.unsubscribe();
@@ -3043,6 +3071,7 @@
      }
 
      sharedDie() {
+         globalObjects.magicCircle.removeDelayedDamage();
          this.isDefeated = true;
          gameVars.latestLevel = this.level;
          localStorage.setItem("latestLevel", (gameVars.latestLevel).toString());

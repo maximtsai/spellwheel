@@ -2200,7 +2200,7 @@ const ENABLE_KEYBOARD = true;
                 });
                 let stopForceAlignmentDelay = 0;
                 let attackAlignDelay = isAttack ? 100 : 0;
-                let reEnableDelay = this.keyboardCasted ? 200 : 0;
+                let reEnableDelay = this.keyboardCasted ? 100 : 0;
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * stopForceAlignmentDelay, () => {
                     this.forcingAlignment = false;
                 });
@@ -3358,8 +3358,10 @@ const ENABLE_KEYBOARD = true;
         for (let i in this.embodiments) {
             let rune = this.embodiments[i];
             if (rune.glow.visible && rune.runeName === RUNE_STRIKE) {
-                rune.glow.visible = false;
-                rune.burnedOut = true;
+                if (!cheats.infiniteAmmo) {
+                    rune.glow.visible = false;
+                    rune.burnedOut = true;
+                }
                 let dist = 180;
                 let xPos = rune.x + Math.sin(rune.rotation) * dist;
                 let yPos = rune.y - Math.cos(rune.rotation) * dist;

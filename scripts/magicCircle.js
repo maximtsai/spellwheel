@@ -3507,7 +3507,6 @@ const ENABLE_KEYBOARD = true;
 
             pillarLeft.fire = () => {this.firePillar(pillarLeft)};
             pillarRight.fire = () => {this.firePillar(pillarRight)};
-
             pillarLeft.setScale(0.76, 0.5);
             pillarRight.setScale(0.76, 0.5);
 

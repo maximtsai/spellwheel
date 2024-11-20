@@ -166,7 +166,7 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 1853,
-				"h": 2046
+				"h": 1854
 			},
 			"scale": 1,
 			"frames": [
@@ -189,31 +189,6 @@
 						"y": 1,
 						"w": 1080,
 						"h": 1335
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "menu_buttons_old.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 769,
-						"h": 910
-					},
-					"spriteSourceSize": {
-						"x": 31,
-						"y": 91,
-						"w": 711,
-						"h": 707
-					},
-					"frame": {
-						"x": 1,
-						"y": 1338,
-						"w": 711,
-						"h": 707
 					},
 					"anchor": {
 						"x": 0.5,
@@ -285,10 +260,35 @@
 						"h": 450
 					},
 					"frame": {
-						"x": 714,
+						"x": 1,
 						"y": 1338,
 						"w": 350,
 						"h": 450
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "graves.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 700,
+						"h": 800
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 381,
+						"w": 700,
+						"h": 419
+					},
+					"frame": {
+						"x": 353,
+						"y": 1338,
+						"w": 700,
+						"h": 419
 					},
 					"anchor": {
 						"x": 0.5,
@@ -859,36 +859,11 @@
 			"image": "sprites/backgrounds-5.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 702,
-				"h": 1765
+				"w": 608,
+				"h": 1344
 			},
 			"scale": 1,
 			"frames": [
-				{
-					"filename": "graves.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 700,
-						"h": 800
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 381,
-						"w": 700,
-						"h": 419
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 700,
-						"h": 419
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
 				{
 					"filename": "battleOverScreen.png",
 					"rotated": false,
@@ -905,7 +880,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 422,
+						"y": 1,
 						"w": 606,
 						"h": 682
 					},
@@ -930,7 +905,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 1106,
+						"y": 685,
 						"w": 585,
 						"h": 658
 					},
@@ -945,6 +920,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:f1bac6e3b87d68bd2e84fb47ff5b5a86:c810c8b82507053374c24cc891552590:78d9df4e1197d3677727ae92cf39d227$"
+		"smartupdate": "$TexturePacker:SmartUpdate:fafe77591894b013f2042cbf352d6ace:ce15886ab3a32fd171a9c97f90f6e598:78d9df4e1197d3677727ae92cf39d227$"
 	}
 }

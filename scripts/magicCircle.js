@@ -2786,8 +2786,6 @@ const ENABLE_KEYBOARD = true;
                              this.updateSpellDescriptorText(getLangText((gameVars.matterPlus ? 'matter_protect_plus_desc' : 'matter_protect_desc') + postPendTextName));
                              break;
                          case RUNE_UNLOAD:
-                             preNameText = "|";
-                             extraNameText = "|";
                              embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                              this.updateSpellDescriptorText(getLangText('matter_unload_desc' + postPendTextName));
                              break;
@@ -2897,8 +2895,8 @@ const ENABLE_KEYBOARD = true;
                              this.updateSpellDescriptorText(getLangText('void_reinforce_desc' + postPendTextName));
                              break;
                          case RUNE_UNLOAD:
-                             preNameText = "|";
-                             extraNameText = "|";
+                             preNameText = ";";
+                             extraNameText = ";";
                              this.updateSpellDescriptorText(getLangText('void_unload_desc' + postPendTextName));
                              break;
                          default:
@@ -3264,6 +3262,10 @@ const ENABLE_KEYBOARD = true;
          this.mindBurnAnim.alpha = 0;
          this.mindBurnAnimBack.alpha = 0;
          this.removeDelayedDamage();
+         while (this.stalagmites.length > 0) {
+             let stalag = this.stalagmites.pop();
+             poolManager.returnItemToPool(stalag, 'stalagmite');
+         }
      }
 
      disableMovement() {
@@ -3465,7 +3467,7 @@ const ENABLE_KEYBOARD = true;
                      onComplete: () => {
                          pillar.setDepth(60);
                          PhaserScene.tweens.add({
-                             delay: 600,
+                             delay: 500,
                              targets: pillar,
                              alpha: 0,
                              scaleY: 0.8,

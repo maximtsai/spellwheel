@@ -120,22 +120,22 @@ let textData = {
         "jp": "とげを獲得してあなたを守り、\n1ダメージを反射します"
     },
     "matter_unload_desc": {
-        "en_us": "Deal 24 DMG.\nGain 24\ntemporary protection.",
-        "fr": "Inflige 24 points\nde dégâts et confère\n24 points de\nprotection temporaire",
-        "zh_tw": "造成 24 點傷害。\n獲得 24 點臨時保護。",
-        "zh_cn": "造成 24 点伤害。\n获得 24 点临时保护。",
-        "ru": "Нанести 24 урона.\nПолучить 24 единицы\nвременной защиты.",
-        "es": "Inflige 24 de\ndaño. Obtén 24 de\nprotección temporal.",
-        "jp": "24ダメージを\n与える。24個の一時\n的な保護を得る。"
+        "en_us": "Gain 20 temporary\nprotection. Grow\ntwo 20 DMG pillars.",
+        "fr": "+20 PV temporaires.\nFaites pousser deux\npiliers de 20 DMG.",
+        "zh_tw": "+20 臨時生命值。\n打造兩支 20 點\n傷害的柱子。",
+        "zh_cn": "+20 临时生命值。\n打造两个 20 点\n伤害的柱子。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "matter_unload_desc_long": {
-        "en_us": "Deal 24 DMG. Gain\n24 temporary protection.",
-        "fr": "Inflige 24 points de dégâts et confère\n24 points de protection temporaire",
-        "zh_tw": "造成 24 點傷害。\n獲得 24 點臨時保護。",
-        "zh_cn": "造成 24 点伤害。\n获得 24 点临时保护。",
-        "ru": "Нанести 24 урона. Получить\n24 единицы временной защиты.",
-        "es": "Inflige 24 de daño.\nObtén 24 de protección temporal.",
-        "jp": "24ダメージを与える。\n24個の一時的な保護を得る。"
+        "en_us": "+20 temporary HP.\nGrow two 20 DMG pillars.",
+        "fr": "+20 PV temporaires.\nFaites pousser deux piliers de 20 DMG.",
+        "zh_tw": "+20 臨時生命值。\n打造兩支 20 點傷害的柱子。",
+        "zh_cn": "+20 临时生命值。\n打造两个 20 点伤害的柱子。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "time_strike_desc": {
         "en_us": "6 DMG. Hits a\nsecond time at\nhalf power.",
@@ -525,11 +525,11 @@ let textData = {
         "jp": ""
     },
     "matter_tut_unload_desc": {
-        "en_us": "Deals heavy damage while\nkeeping yourself protected.",
-        "fr": "Inflige de lourds dégâts\ntout en vous protégeant.",
-        "zh_tw": "造成重大傷害，同時保護自己。",
-        "zh_cn": "造成重大伤害，同时保护自己。",
-        "ru": "Наносит сильный урон, сохраняя\nпри этом свою защиту.",
+        "en_us": "Gain powerful temporary\nprotection and conjure two\ndamage-dealing pillars on\nthe sides of your wheel.",
+        "fr": "Obtenez un puissant bouclier\ntemporaire et invoquez deux\npiliers infligeant des\ndégâts sur les côtés de\nvotre roue.",
+        "zh_tw": "獲得強大的臨時保護，\n並在車輪兩側召喚出\n兩根造成傷害的柱子。",
+        "zh_cn": "获得强大的临时保护，\n并在车轮两侧召唤出\n两根造成伤害的柱子。",
+        "ru": "",
         "es": "",
         "jp": ""
     },
@@ -597,7 +597,7 @@ let textData = {
         "jp": ""
     },
     "mind_tut_unload_desc": {
-        "en_us": "Multiplies the effectiveness\nof your next non-attack spell.\nThose clever enough to cast\nthis spell twice in a row can\nattain immense spell-\namplifying power.",
+        "en_us": "Multiplies the effectiveness\nof your next non-attack spell.\nCasting this spell twice in\na row will grant immense spell\namplifying power.",
         "fr": "Multiplie l'efficacité de votre\nprochain sort non offensif.\nLancer ce sort deux fois de suite\npeut donner un incroyable\npouvoir d'amplification des sorts.",
         "zh_tw": "使你的下一個非攻擊法術的效果\n成倍增加。\n連續施放此法術兩次可以獲得驚\n人的法術增強力量。",
         "zh_cn": "使你的下一个非攻击法术的效果\n成倍增加。\n连续施放此法术两次可以获得惊\n人的法术增强力量。",
@@ -660,7 +660,7 @@ let textData = {
         "jp": ""
     },
     "time_tut_unload_desc": {
-        "en_us": "Freeze time temporarily\nletting you cast multiple\nspells without any time passing.\nRepeated use of this spell\nmakes it weaker.",
+        "en_us": "Freeze time temporarily\nletting you cast multiple spells\nwhile the enemy cannot move.\nRepeated use of this spell\nmakes it weaker.",
         "fr": "Gèle temporairement le temps.\nPendant cette période, vous\npouvez lancer plusieurs sorts\nsans que le temps ne passe, bien\nque l'utilisation répétée de ce\nsort l'affaiblisse.",
         "zh_tw": "暫時凍結時間。在凍結期間，\n你可以施展多個法術而不產\n生時間流逝，但重複使用此法\n術會使法術變弱。",
         "zh_cn": "暂时冻结时间。冻结期间，\n你可以施展多个法术而不产生\n时间流逝，但重复使用此法术\n会使法术变弱。",

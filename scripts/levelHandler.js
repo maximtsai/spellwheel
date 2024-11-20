@@ -617,7 +617,7 @@ function switchLevelBackground(lvl) {
             break;
         case 9:
             switchBackground('grass_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 0.92, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
+            fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1100, 0.935, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
             break;
         case 10:
             switchBackground('grave_bg.webp');

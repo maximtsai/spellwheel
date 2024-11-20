@@ -32,7 +32,7 @@ function setupMainMenuBG() {
 
         }
         globalObjects.creditsButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 225, gameConsts.halfHeight - 5, 'misc', 'creditsgame.webp');
-        globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
+        // globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
     }
 }
 
@@ -76,23 +76,8 @@ function clearOnlyMenuButtons() {
 
     globalObjects.creditsButton.destroy();
     globalObjects.creditsButtonSprite.destroy();
-    globalObjects.extrasButton.destroy();
-    globalObjects.extrasButtonSprite.destroy();
-
-
-    /*
-    globalObjects.lvlButton.destroy();
-    globalObjects.level3Button.destroy();
-    globalObjects.lvl5Button.destroy();
-    globalObjects.lvl6Button.destroy();
-    globalObjects.lvl7Button.destroy();
-    globalObjects.lvl8Button.destroy();
-    globalObjects.lvl9Button.destroy();
-    globalObjects.lvl10Button.destroy();
-    globalObjects.lvl11Button.destroy();
-    globalObjects.lvl12Button.destroy();
-    globalObjects.lvl13Button.destroy();
-     */
+    // globalObjects.extrasButton.destroy();
+    // globalObjects.extrasButtonSprite.destroy();
 
 
 }
@@ -1288,63 +1273,63 @@ function showMainMenuButtons() {
     globalObjects.creditsButton.setStroke('#301010', 6)
     globalObjects.creditsButton.setRotation(-0.03)
 
-    if (!globalObjects.extrasButtonSprite || !globalObjects.extrasButtonSprite.active) {
-        globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
-    }
-    globalObjects.extrasButton = new Button({
-        normal: {
-            atlas: "pixels",
-            ref: "blank_pixel.png",
-            x: globalObjects.extrasButtonSprite.x,
-            y: globalObjects.extrasButtonSprite.y,
-            alpha: 0.9,
-            scaleX: 95,
-            scaleY: 36
-        },
-        hover: {
-            alpha: 1,
-        },
-        press: {
-            alpha: 0.7,
-        },
-        disable: {
-        },
-        onHover: () => {
-            if (canvas) {
-                playSound('button_hover', 1).detune = 200;
-                canvas.style.cursor = 'pointer';
-            }
-            globalObjects.extrasButtonSprite.setFrame('wishlistgame_hover.webp');
-            globalObjects.extrasButtonSprite.setScale(1.025);
-            globalObjects.extrasButtonSprite.setRotation(0.03);
-        },
-        onHoverOut: () => {
-            if (canvas) {
-                canvas.style.cursor = 'default';
-            }
-            globalObjects.extrasButtonSprite.setFrame('wishlistgame.webp');
-            globalObjects.extrasButtonSprite.setRotation(-0.045);
-            PhaserScene.tweens.add({
-                targets: globalObjects.extrasButtonSprite,
-                duration: 100,
-                scaleX: 1,
-                scaleY: 1,
-                easeParams: [3],
-                rotation: 0,
-                ease: 'Bounce.easeOut',
-            });
-        },
-        onMouseUp: () => {
-            openUnlocks();
-        }
-    });
-    let textObjExtras = globalObjects.extrasButton.addText(getLangText('extras'), {fontFamily: 'germania', fontSize: 26, color: '#FDF6F4', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5)
-    textObjExtras.setAlpha(0.96);
-    globalObjects.extrasButton.setStroke('#301010', 6);
-    if (language === 'fr') {
-        textObjExtras.setFontSize(20);
-    }
-    globalObjects.extrasButton.setRotation(-0.145)
+    // if (!globalObjects.extrasButtonSprite || !globalObjects.extrasButtonSprite.active) {
+    //     globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
+    // }
+    // globalObjects.extrasButton = new Button({
+    //     normal: {
+    //         atlas: "pixels",
+    //         ref: "blank_pixel.png",
+    //         x: globalObjects.extrasButtonSprite.x,
+    //         y: globalObjects.extrasButtonSprite.y,
+    //         alpha: 0.9,
+    //         scaleX: 95,
+    //         scaleY: 36
+    //     },
+    //     hover: {
+    //         alpha: 1,
+    //     },
+    //     press: {
+    //         alpha: 0.7,
+    //     },
+    //     disable: {
+    //     },
+    //     onHover: () => {
+    //         if (canvas) {
+    //             playSound('button_hover', 1).detune = 200;
+    //             canvas.style.cursor = 'pointer';
+    //         }
+    //         globalObjects.extrasButtonSprite.setFrame('wishlistgame_hover.webp');
+    //         globalObjects.extrasButtonSprite.setScale(1.025);
+    //         globalObjects.extrasButtonSprite.setRotation(0.03);
+    //     },
+    //     onHoverOut: () => {
+    //         if (canvas) {
+    //             canvas.style.cursor = 'default';
+    //         }
+    //         globalObjects.extrasButtonSprite.setFrame('wishlistgame.webp');
+    //         globalObjects.extrasButtonSprite.setRotation(-0.045);
+    //         PhaserScene.tweens.add({
+    //             targets: globalObjects.extrasButtonSprite,
+    //             duration: 100,
+    //             scaleX: 1,
+    //             scaleY: 1,
+    //             easeParams: [3],
+    //             rotation: 0,
+    //             ease: 'Bounce.easeOut',
+    //         });
+    //     },
+    //     onMouseUp: () => {
+    //         openUnlocks();
+    //     }
+    // });
+    // let textObjExtras = globalObjects.extrasButton.addText(getLangText('extras'), {fontFamily: 'germania', fontSize: 26, color: '#FDF6F4', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5)
+    // textObjExtras.setAlpha(0.96);
+    // globalObjects.extrasButton.setStroke('#301010', 6);
+    // if (language === 'fr') {
+    //     textObjExtras.setFontSize(20);
+    // }
+    // globalObjects.extrasButton.setRotation(-0.145)
 }
 
 function updateMenuLanguage() {

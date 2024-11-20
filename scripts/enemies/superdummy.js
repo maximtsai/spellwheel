@@ -17,6 +17,30 @@
         this.initMisc();
     }
 
+    initSpriteAnim(scale) {
+        this.sprite.setScale(scale * 0.98, scale * 0.9).setRotation(-0.25).setPosition(gameConsts.halfWidth - 30, this.sprite.y);
+        this.scene.tweens.add({
+            delay: 500,
+            rotation: 0.05,
+            x: gameConsts.halfWidth + 6,
+            targets: this.sprite,
+            duration: gameVars.gameManualSlowSpeedInverse * 650,
+            ease: 'Cubic.easeIn',
+            scaleX: scale,
+            scaleY: scale,
+            alpha: 1,
+            onComplete: () => {
+                this.scene.tweens.add({
+                    rotation: 0,
+                    x: gameConsts.halfWidth,
+                    targets: this.sprite,
+                    duration: gameVars.gameManualSlowSpeedInverse * 350,
+                    ease: 'Back.easeOut',
+                });
+            }
+        });
+    }
+
      initStatsCustom() {
          this.health = 24;
         this.secondHealth = gameVars.isHardMode ? 600 : 550;

@@ -92,6 +92,9 @@ class Player {
     setHealth(amt = 80) {
         this.health = amt;
         this.refreshHealthBar();
+        if (this.health <= 0) {
+            this.die();
+        }
     }
 
     setHealthMaxTemp(amt = 80) {

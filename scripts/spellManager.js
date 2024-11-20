@@ -3058,6 +3058,12 @@ class SpellManager {
             ease: 'Cubic.easeOut',
             alpha: 1,
             onComplete: () => {
+                let healthLost = 3 * multiplier;
+                let newMaxHealth = Math.ceil(globalObjects.player.getHealthMax() - healthLost);
+                let newHealth = globalObjects.player.getHealth() - healthLost;
+                globalObjects.player.setHealth(newHealth);
+                globalObjects.player.setHealthMaxTemp(newMaxHealth);
+
                 PhaserScene.tweens.add({
                     targets: [this.pulseCircle],
                     duration: 300,

@@ -221,8 +221,8 @@ let textData = {
     "time_unload_desc_2": {
         "en_us": " spells.\nGets weaker\nwith repeat use.",
         "fr": " prochains\nsorts. Cet effet\ns'affaiblit avec\nl'utilisation répétée.",
-        "zh_tw": " 個法術\n凍結時間。重複使用\n會變弱。",
-        "zh_cn": " 个法术\n冻结时间。重复使用\n会变弱。",
+        "zh_tw": " 個法術\n凍結時間。重複使\n用會變弱。",
+        "zh_cn": " 个法术\n冻结时间。重复使\n用会变弱。",
         "ru": "\nзаклинаний. Слабеет\nпри повторном\nиспользовании.",
         "es": " hechizos.\nSe debilita con\nel uso repetido.",
         "jp": "つの呪文の凍結\n時間。繰り返し使用\nすると弱くなります。"
@@ -257,8 +257,8 @@ let textData = {
     "void_strike_desc": {
         "en_us": "2.5% enemy current\nHP DMG. Consumes\nall Strike runes\nfor extra attacks.",
         "fr": "Consommez toutes\nles runes de frappe.\nChaque tire une attaque\ninfligeant 2.5 % PV\nactuels ennemis.",
-        "zh_tw": "2.5% 敵人當前生命值傷害。消耗所有攻擊符文進行多倍攻擊。",
-        "zh_cn": "2.5% 敌人当前生命值伤害。消耗所有攻击符文进行多倍攻击。",
+        "zh_tw": "2.5% 敵人當前\n生命值傷害。消\n耗所有攻擊符文\n進行多倍攻擊。",
+        "zh_cn": "2.5% 敌人当前\n生命值伤害。消\n耗所有攻击符文\n进行多倍攻击。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -291,19 +291,19 @@ let textData = {
         "jp": ""
     },
     "void_enhance_desc": {
-        "en_us": "Permanently increase\nattack damage\nby 2",
-        "fr": "Augmente de\nmanière permanente\nles dégâts\nd'attaque de 2",
-        "zh_tw": "你的攻擊永久獲得\n+2 傷害",
-        "zh_cn": "你的攻击永久获得\n+2 伤害",
+        "en_us": "Lose 3 max\nhealth. Permanently\nincrease attack\ndamage by 2.",
+        "fr": "Perdez 3 points de\nvie max. Augmentez\ndéfinitivement les\ndégâts d'attaque\nde 2.",
+        "zh_tw": "犧牲 3 點總生命\n值。攻擊永久獲\n得+2 傷害。",
+        "zh_cn": "牺牲 3 点总生命\n值。攻击永久获\n得+2 伤害。",
         "ru": "Ваши атаки\nнавсегда получают\n+1 к урону",
         "es": "Tu ataque gana\npermanentemente\n+1 daño",
         "jp": "あなたの攻撃力は\n永続的に増加します\n+1ダメージ"
     },
     "void_enhance_desc_long": {
-        "en_us": "Permanently increase\nattack damage by 2",
-        "fr": "Augmente de manière permanente\nles dégâts d'attaque de 2",
-        "zh_tw": "攻擊永久增加 +2 傷害",
-        "zh_cn": "攻击永久增加 +2 伤害",
+        "en_us": "Lose 3 max health. Permanently\nincrease attack damage by 2.",
+        "fr": "Perdez 3 points de vie max. Augmentez\ndéfinitivement les dégâts d'attaque de 2.",
+        "zh_tw": "犧牲 3 點總生命值。\n攻擊永久獲得+2 傷害。",
+        "zh_cn": "牺牲 3 点总生命值。\n攻击永久获得+2 伤害。",
         "ru": "Ваши атаки навсегда получают +1 к урону",
         "es": "Tu ataque gana permanentemente +1 daño",
         "jp": "あなたの攻撃力は永続的に増加します+1ダメージ"
@@ -329,8 +329,8 @@ let textData = {
     "void_reinforce_desc": {
         "en_us": "HEAL to full,\nbut lose 10\nmax HP",
         "fr": "Soignez-vous\ncomplètement, mais\nperdez 10 PV max",
-        "zh_tw": "完全治癒自己，但失去\n10 點總生命值",
-        "zh_cn": "完全治愈自己，但失去\n10 点总生命值",
+        "zh_tw": "完全治癒自己，但\n失去10 點總生命值",
+        "zh_cn": "完全治愈自己，但\n失去10 点总生命值",
         "ru": "Полностью восстановите\nздоровье, но потеряйте\n10 единиц максимального\nздоровья",
         "es": "Se cura por\ncompleto, pero\npierde 10 puntos\nde salud máximos.",
         "jp": "完全に回復するが、\n最大HPの10を失う"
@@ -437,8 +437,8 @@ let textData = {
     "mind_reinforce_desc": {
         "en_us": "Increase all damage\nyou deal by +3.\nRefresh your\nelement runes.",
         "fr": "Augmente tous les\ndégâts que vous\ninfligez de +3.\nRafraîchissez vos\néléments.",
-        "zh_tw": "你造成的所有傷害\n增加 +3。刷新你的\n元素。",
-        "zh_cn": "你造成的所有伤害\n增加 +3。刷新你的\n元素。",
+        "zh_tw": "你造成的所有傷害\n增加 +3。刷新你\n的元素。",
+        "zh_cn": "你造成的所有伤害\n增加 +3。刷新你\n的元素。",
         "ru": "Весь наносимый\nвами урон\nувеличивается\nна +3.",
         "es": "Todo el daño\nque infliges\naumenta en +3",
         "jp": "与えるダメージ\nはすべて +3\n増加します"
@@ -696,10 +696,10 @@ let textData = {
         "jp": ""
     },
     "void_tut_enhance_desc": {
-        "en_us": "Increase your attack damage\nfor the rest of the fight. Good\nfor long battles.",
-        "fr": "Augmente les dégâts de votre\nattaque pour le reste du combat.\nIdéal pour les longues batailles.",
-        "zh_tw": "永久增加你的攻擊力。\n适合长时间战斗。",
-        "zh_cn": "永久增加你的攻击力。\n适合长时间战斗。",
+        "en_us": "Sacrifice some health to\nincrease your attack damage\nfor the rest of the fight. Good\nfor long battles.",
+        "fr": "Sacrifiez un peu de santé\npour augmenter les dégâts de\nvotre attaque pour le reste du\ncombat. Idéal pour les longues\nbatailles.",
+        "zh_tw": "牺牲一些生命值来永\n久增加你的攻擊力。\n适合长时间战斗。",
+        "zh_cn": "牺牲一些生命值来永\n久增加你的攻击力。\n适合长时间战斗。",
         "ru": "Увеличьте свой урон от атаки\nдо конца боя.",
         "es": ".",
         "jp": ""

@@ -817,6 +817,127 @@ class SpellManager {
 
     castMatterUltimate() {
         const spellID = 'matterUnload';
+        let multiplier = globalObjects.player.spellMultiplier();
+
+        messageBus.publish("addStalagmites", multiplier)
+
+        let existingBuff = globalObjects.player.getStatuses()[spellID];
+        let stoneCircle;
+        let textHealth;
+
+        let statusObj;
+        if (existingBuff) {
+            // already got a buff in place
+            stoneCircle = existingBuff.animObj[0];
+            textHealth = existingBuff.animObj[1];
+            statusObj = existingBuff.statusObj;
+            this.scene.tweens.add({
+                targets: stoneCircle,
+                alpha: 0.5,
+                scaleX: 0.61,
+                scaleY: 0.61,
+                duration: 200
+            });
+        } else {
+            stoneCircle = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'stoneCircle.png');
+            stoneCircle.setAlpha(0.5).setScale(0.9).setRotation(-0.3);
+
+            textHealth = this.scene.add.bitmapText(gameConsts.halfWidth, globalObjects.player.getY() - 46, 'armor', '0', 48, 1);
+            textHealth.startX = textHealth.x;
+            textHealth.startY = textHealth.y;
+        }
+        // messageBus.publish('setTempRotObjs', [stoneCircle], rotation);
+
+        textHealth.setDepth(125).setOrigin(0.5, 0.5).setScale(0).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 46);
+        stoneCircle.setDepth(10);
+        let basePower = 20;
+        let shieldHealth = basePower * multiplier;
+        this.scene.tweens.add({
+            targets: stoneCircle,
+            delay: 100,
+            scaleX: 1.04,
+            scaleY: 1.04,
+            alpha: 1,
+            rotation: 0,
+            duration: 250,
+            ease: 'Cubic.easeOut',
+            onStart: () => {
+                playSound('matter_ultimate', 0.25);
+                playSound('matter_shield', 0.95).detune = -400;
+                playSound('matter_enhance', 0.3).detune = -1000;
+                stoneCircle.setAlpha(0.5);
+                textHealth.setText(shieldHealth);
+                this.scene.tweens.add({
+                    targets: textHealth,
+                    duration: 250,
+                    scaleX: 1,
+                    scaleY: 1,
+                    ease: 'Quad.easeIn',
+                });
+            },
+            onComplete: () => {
+                stoneCircle.setDepth(118);
+                this.scene.tweens.add({
+                    targets: stoneCircle,
+                    scaleX: 1,
+                    scaleY: 1,
+                    duration: 300,
+                    ease: 'Cubic.easeIn',
+                });
+            }
+        });
+
+        messageBus.publish("selfTakeEffect", {
+            name: spellID,
+            spellID: spellID,
+            type: 'matter',
+            animObj: [stoneCircle, textHealth],
+            spriteSrc1: 'rune_unload_glow.png',
+            spriteSrc2: 'rune_matter_glow.png',
+            multiplier: multiplier,
+            health: shieldHealth,
+            displayAmt: shieldHealth,
+            statusObj: statusObj,
+            shakeAmt: 0,
+            impactVisibleTime: 0,
+            duration: 10,
+            active: true,
+            cleanUp: (statuses) => {
+                if (statuses[spellID] && !statuses[spellID].currentAnim) {
+                    stoneCircle.setDepth(0);
+                    statuses[spellID].currentAnim = this.scene.tweens.add({
+                        targets: [stoneCircle, textHealth],
+                        duration: 240,
+                        y: "+=10",
+                        scaleX: "-=0.24",
+                        scaleY: "-=0.24",
+                        ease: 'Quad.easeIn',
+                        onComplete: () => {
+                            stoneCircle.destroy();
+                            textHealth.destroy();
+                        }
+                    });
+                    this.scene.tweens.add({
+                        targets: [stoneCircle, textHealth],
+                        duration: 240,
+                        alpha: 0,
+                        ease: 'Quad.easeOut',
+                    });
+                    messageBus.publish('selfClearEffect', spellID, true);
+                    statuses[spellID] = null;
+                }
+            }
+        });
+
+        let spellName = getBasicText('rune_matter_rune_unload');
+        messageBus.publish('clearSpellMultiplier');
+        this.postNonAttackCast(spellID, spellName);
+    }
+
+
+
+    castMatterUltimatex() {
+        const spellID = 'matterUnload';
         let attackObjects = [];
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let additionalDamage = globalObjects.player.attackDamageAdder();
@@ -966,7 +1087,6 @@ class SpellManager {
                     });
                 },
                 onComplete: () => {
-                    rockObj.play('stalagfight')
                     messageBus.publish('enemyTakeDamage', basePower + additionalDamage, true, undefined, 'matter');
                     screenShake(5);
                     zoomTemp(1.01 + additionalDamage * 0.00025);

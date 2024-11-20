@@ -480,7 +480,7 @@ function showMainMenuButtons() {
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.width + 150,
+            x: gameConsts.width - 150,
             y: 270,
         },
         hover: {

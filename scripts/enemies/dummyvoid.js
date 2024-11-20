@@ -4,7 +4,7 @@ class Dummyvoid extends Dummypractice {
     }
 
     initStatsCustom() {
-        this.health = 300;
+        this.health = 350;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;

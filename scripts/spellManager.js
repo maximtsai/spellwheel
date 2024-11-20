@@ -3022,7 +3022,7 @@ class SpellManager {
         let multiplier = globalObjects.player.spellMultiplier();
         playSound('void_enhance', 0.55);
         let statusObj;
-        let buffAmt = multiplier;
+        let buffAmt = multiplier * 2;
         if (existingBuff) {
             statusObj = existingBuff.statusObj;
             buffAmt += existingBuff.multiplier;

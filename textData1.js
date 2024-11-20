@@ -291,19 +291,19 @@ let textData = {
         "jp": ""
     },
     "void_enhance_desc": {
-        "en_us": "Permanently increase\nattack damage\nby 1",
-        "fr": "Augmente de\nmanière permanente\nles dégâts\nd'attaque de 1",
-        "zh_tw": "你的攻擊永久獲得\n+1 傷害",
-        "zh_cn": "你的攻击永久获得\n+1 伤害",
+        "en_us": "Permanently increase\nattack damage\nby 2",
+        "fr": "Augmente de\nmanière permanente\nles dégâts\nd'attaque de 2",
+        "zh_tw": "你的攻擊永久獲得\n+2 傷害",
+        "zh_cn": "你的攻击永久获得\n+2 伤害",
         "ru": "Ваши атаки\nнавсегда получают\n+1 к урону",
         "es": "Tu ataque gana\npermanentemente\n+1 daño",
         "jp": "あなたの攻撃力は\n永続的に増加します\n+1ダメージ"
     },
     "void_enhance_desc_long": {
-        "en_us": "Permanently increase\nattack damage by 1",
-        "fr": "Augmente de manière permanente\nles dégâts d'attaque de 1",
-        "zh_tw": "攻擊永久增加 +1 傷害",
-        "zh_cn": "攻击永久增加 +1 伤害",
+        "en_us": "Permanently increase\nattack damage by 2",
+        "fr": "Augmente de manière permanente\nles dégâts d'attaque de 2",
+        "zh_tw": "攻擊永久增加 +2 傷害",
+        "zh_cn": "攻击永久增加 +2 伤害",
         "ru": "Ваши атаки навсегда получают +1 к урону",
         "es": "Tu ataque gana permanentemente +1 daño",
         "jp": "あなたの攻撃力は永続的に増加します+1ダメージ"

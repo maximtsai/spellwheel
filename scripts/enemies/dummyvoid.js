@@ -4,7 +4,7 @@ class Dummyvoid extends Dummypractice {
     }
 
     initStatsCustom() {
-        this.health = 400;
+        this.health = 300;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -253,7 +253,7 @@ class Dummyvoid extends Dummypractice {
             [
                 {
                     name: ";20",
-                    chargeAmt: 550,
+                    chargeAmt: 600,
                     finishDelay: 300,
                     transitionFast: true,
                     damage: -1,
@@ -297,7 +297,7 @@ class Dummyvoid extends Dummypractice {
                 },
                 {
                     name: ";25",
-                    chargeAmt: 550,
+                    chargeAmt: 650,
                     finishDelay: 300,
                     transitionFast: true,
                     damage: -1,
@@ -319,7 +319,7 @@ class Dummyvoid extends Dummypractice {
                 },
                 {
                     name: "|2x9",
-                    chargeAmt: 600,
+                    chargeAmt: 650,
                     finishDelay: 2000,
                     transitionFast: true,
                     damage: -1,
@@ -341,7 +341,7 @@ class Dummyvoid extends Dummypractice {
                 },
                 {
                     name: ";30",
-                    chargeAmt: 550,
+                    chargeAmt: 600,
                     finishDelay: 300,
                     transitionFast: true,
                     damage: -1,

@@ -2794,8 +2794,8 @@ class SpellManager {
                         duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.02 + additionalDamage;
-                            let damageDealt = Math.ceil(healthPercent);
+                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.025 + additionalDamage;
+                            let damageDealt = Math.round(healthPercent);
 
                             if (globalObjects.currentEnemy && (globalObjects.currentEnemy.immune || globalObjects.currentEnemy.invincible)) {
                                 playSound('swish', 1.4).detune = -680;

@@ -539,7 +539,7 @@ function switchLevelBackground(lvl) {
             break;
         case -7:
             switchBackground('grave_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 0.9, 1, 1,'Quart.easeIn', 0, false, 1);
+            fadeInBackgroundAtlas('backgrounds', 'background8.webp', 1500, 1.01, 1, 1,'Quart.easeIn', 0, false, 1);
             break;
         case -6:
         case -5:

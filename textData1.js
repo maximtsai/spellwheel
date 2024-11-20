@@ -255,10 +255,10 @@ let textData = {
         "jp": "次の7つの呪文の凍結時間。\n繰り返し使用すると弱くなります。"
     },
     "void_strike_desc": {
-        "en_us": "2% enemy current\nHP DMG. Consumes\nall Strike runes\nfor extra attacks.",
-        "fr": "Consommez toutes\nles runes de frappe.\nChaque tire une attaque\ninfligeant 2 % PV\nactuels ennemis.",
-        "zh_tw": "2% 敵人當前生命值傷害。消耗所有攻擊符文進行多倍攻擊。",
-        "zh_cn": "2% 敌人当前生命值伤害。消耗所有攻击符文进行多倍攻击。",
+        "en_us": "2.5% enemy current\nHP DMG. Consumes\nall Strike runes\nfor extra attacks.",
+        "fr": "Consommez toutes\nles runes de frappe.\nChaque tire une attaque\ninfligeant 2.5 % PV\nactuels ennemis.",
+        "zh_tw": "2.5% 敵人當前生命值傷害。消耗所有攻擊符文進行多倍攻擊。",
+        "zh_cn": "2.5% 敌人当前生命值伤害。消耗所有攻击符文进行多倍攻击。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -273,10 +273,10 @@ let textData = {
         "jp": "遅延後に3回攻撃し、各攻撃で敵の\n現在のHPの2.5%にダメージを与える"
     },
     "void_strike_desc_long": {
-        "en_us": "2% enemy current HP DMG.\nConsumes all Strike runes for extra attacks.",
-        "fr": "Consommez toutes les runes de frappe. Chaque\ntire une attaque infligeant 2 % PV actuels ennemis.",
-        "zh_tw": "2% 敵人當前生命值傷害。\n消耗所有攻擊符文進行多倍攻擊。",
-        "zh_cn": "2% 敌人当前生命值伤害。\n消耗所有攻击符文进行多倍攻击。",
+        "en_us": "2.5% enemy current HP DMG.\nConsumes all Strike runes for extra attacks.",
+        "fr": "Consommez toutes les runes de frappe. Chaque\ntire une attaque infligeant 2.5 % PV actuels ennemis.",
+        "zh_tw": "2.5% 敵人當前生命值傷害。\n消耗所有攻擊符文進行多倍攻擊。",
+        "zh_cn": "2.5% 敌人当前生命值伤害。\n消耗所有攻击符文进行多倍攻击。",
         "ru": "",
         "es": "",
         "jp": ""

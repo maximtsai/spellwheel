@@ -891,7 +891,7 @@ let textData2 = {
         "jp": "解除方法:\nダミーを倒す"
     },
     "level5_train_tut_b": {
-        "en_us": "Fully heal\nyourself\n      +",
+        "en_us": "Fully heal\nyourself\n       +",
         "fr": "Soignez-vous\ncomplètement\n ",
         "zh_tw": "完全治癒自己\n ",
         "zh_cn": "完全治愈自己\n ",

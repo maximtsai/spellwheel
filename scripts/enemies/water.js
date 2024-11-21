@@ -780,7 +780,9 @@
              this.destroy();
              globalObjects.bannerTextManager.setOnFinishFunc(() => {});
              globalObjects.bannerTextManager.closeBanner();
-             beginPreLevel(this.level + 1)
+             setTimeout(() => {
+                 beginPreLevel(this.level + 1)
+             }, 400)
          })
      }
 

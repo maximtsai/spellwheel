@@ -291,7 +291,7 @@ let textData = {
         "jp": ""
     },
     "void_enhance_desc": {
-        "en_us": "Lose 3 max\nhealth. Permanently\nincrease attack\ndamage by 2.",
+        "en_us": "Lose 3 max health.\nPermanently\nincrease attack\ndamage by 2.",
         "fr": "Perdez 3 points de\nvie max. Augmentez\ndéfinitivement les\ndégâts d'attaque\nde 2.",
         "zh_tw": "犧牲 3 點總生命\n值。攻擊永久獲\n得+2 傷害。",
         "zh_cn": "牺牲 3 点总生命\n值。攻击永久获\n得+2 伤害。",

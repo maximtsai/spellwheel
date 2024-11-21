@@ -300,6 +300,7 @@
             </struct>
             <key type="filename">lowq/story_img_10.png</key>
             <key type="filename">lowq/story_img_11.png</key>
+            <key type="filename">lowq/story_img_12.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -314,7 +315,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">lowq/story_img_2.png</key>
             <key type="filename">lowq/story_img_3.png</key>
             <key type="filename">lowq/story_img_4.png</key>
             <key type="filename">lowq/story_img_5.png</key>

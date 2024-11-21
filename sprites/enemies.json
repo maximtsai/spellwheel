@@ -1410,6 +1410,31 @@
 					}
 				},
 				{
+					"filename": "healthbar_long2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 100,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 25
+					},
+					"frame": {
+						"x": 1393,
+						"y": 1731,
+						"w": 100,
+						"h": 25
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "max_death_left_sleeve_a.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1453,6 +1478,31 @@
 						"y": 776,
 						"w": 58,
 						"h": 58
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "healthbar_long.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 100,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 13
+					},
+					"frame": {
+						"x": 949,
+						"y": 382,
+						"w": 100,
+						"h": 13
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1760,6 +1810,31 @@
 					}
 				},
 				{
+					"filename": "healthbar_edge.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 0,
+						"w": 27,
+						"h": 28
+					},
+					"frame": {
+						"x": 752,
+						"y": 1355,
+						"w": 27,
+						"h": 28
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "clock2.png",
 					"rotated": false,
 					"trimmed": false,
@@ -1824,8 +1899,8 @@
 						"h": 26
 					},
 					"frame": {
-						"x": 752,
-						"y": 1355,
+						"x": 1109,
+						"y": 1958,
 						"w": 29,
 						"h": 26
 					},
@@ -1849,8 +1924,8 @@
 						"h": 26
 					},
 					"frame": {
-						"x": 752,
-						"y": 1355,
+						"x": 1109,
+						"y": 1958,
 						"w": 29,
 						"h": 26
 					},
@@ -1874,8 +1949,8 @@
 						"h": 26
 					},
 					"frame": {
-						"x": 752,
-						"y": 1355,
+						"x": 1109,
+						"y": 1958,
 						"w": 29,
 						"h": 26
 					},
@@ -1899,8 +1974,8 @@
 						"h": 26
 					},
 					"frame": {
-						"x": 1109,
-						"y": 1958,
+						"x": 915,
+						"y": 1676,
 						"w": 29,
 						"h": 26
 					},
@@ -3176,6 +3251,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:d482164682cccc1b592f84dfb46ea0e2:dd58bb2d317d3611a789591ed3e4c03c:b46d94f51ab09644cd324819ab72f7d7$"
+		"smartupdate": "$TexturePacker:SmartUpdate:dfc552b47eb4894da6e79836c3ded0e8:2478ef99d76d6dc69dcbf7a6f0c9ed9a:b46d94f51ab09644cd324819ab72f7d7$"
 	}
 }

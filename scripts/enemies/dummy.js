@@ -29,7 +29,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 70 : 65;
+         this.health = gameVars.isHardMode ? 70 : 60;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
          this.attackScale = 1.25;
@@ -196,7 +196,7 @@
                     })
                 }, 400)
 
-                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level1_tut_z'), 'center');
+                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 36, getLangText('level1_tut_z'), 'center');
 
                  this.addTimeout(() => {
                      this.playerSpellCastSub = this.addSubscription('recordSpell', (id, spellName) => {
@@ -417,6 +417,7 @@
 
 
     tryInitTutorial5() {
+        return;
         if (!this.dead && !this.isAsleep && !this.shownTut5) {
             this.shownTut5 = true;
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 262, getLangText('level1_tut_c'), 'right');
@@ -1045,7 +1046,7 @@
                  },
                  {
                      name: "ASCENDING FROM\nSHEER ANGRY",
-                     chargeAmt: 725,
+                     chargeAmt: 775,
                      damage: 0,
                      chargeMult: 3,
                      isBigMove: true,

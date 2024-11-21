@@ -817,6 +817,127 @@ class SpellManager {
 
     castMatterUltimate() {
         const spellID = 'matterUnload';
+        let multiplier = globalObjects.player.spellMultiplier();
+
+        messageBus.publish("addStalagmites", multiplier)
+
+        let existingBuff = globalObjects.player.getStatuses()[spellID];
+        let stoneCircle;
+        let textHealth;
+
+        let statusObj;
+        if (existingBuff) {
+            // already got a buff in place
+            stoneCircle = existingBuff.animObj[0];
+            textHealth = existingBuff.animObj[1];
+            statusObj = existingBuff.statusObj;
+            this.scene.tweens.add({
+                targets: stoneCircle,
+                alpha: 0.5,
+                scaleX: 0.61,
+                scaleY: 0.61,
+                duration: 200
+            });
+        } else {
+            stoneCircle = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'stoneCircle.png');
+            stoneCircle.setAlpha(0.5).setScale(0.9).setRotation(-0.3);
+
+            textHealth = this.scene.add.bitmapText(gameConsts.halfWidth, globalObjects.player.getY() - 46, 'armor', '0', 48, 1);
+            textHealth.startX = textHealth.x;
+            textHealth.startY = textHealth.y;
+        }
+        // messageBus.publish('setTempRotObjs', [stoneCircle], rotation);
+
+        textHealth.setDepth(125).setOrigin(0.5, 0.5).setScale(0).setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 46);
+        stoneCircle.setDepth(10);
+        let basePower = 20;
+        let shieldHealth = basePower * multiplier;
+        this.scene.tweens.add({
+            targets: stoneCircle,
+            delay: 100,
+            scaleX: 1.04,
+            scaleY: 1.04,
+            alpha: 1,
+            rotation: 0,
+            duration: 250,
+            ease: 'Cubic.easeOut',
+            onStart: () => {
+                playSound('matter_ultimate', 0.35);
+                playSound('matter_shield', 0.95).detune = -250;
+                playSound('matter_enhance', 0.35).detune = -1000;
+                stoneCircle.setAlpha(0.5);
+                textHealth.setText(shieldHealth);
+                this.scene.tweens.add({
+                    targets: textHealth,
+                    duration: 250,
+                    scaleX: 1,
+                    scaleY: 1,
+                    ease: 'Quad.easeIn',
+                });
+            },
+            onComplete: () => {
+                stoneCircle.setDepth(118);
+                this.scene.tweens.add({
+                    targets: stoneCircle,
+                    scaleX: 1,
+                    scaleY: 1,
+                    duration: 300,
+                    ease: 'Cubic.easeIn',
+                });
+            }
+        });
+
+        messageBus.publish("selfTakeEffect", {
+            name: spellID,
+            spellID: spellID,
+            type: 'matter',
+            animObj: [stoneCircle, textHealth],
+            spriteSrc1: 'rune_unload_glow.png',
+            spriteSrc2: 'rune_matter_glow.png',
+            multiplier: multiplier,
+            health: shieldHealth,
+            displayAmt: shieldHealth,
+            statusObj: statusObj,
+            shakeAmt: 0,
+            impactVisibleTime: 0,
+            duration: 10,
+            active: true,
+            cleanUp: (statuses) => {
+                if (statuses[spellID] && !statuses[spellID].currentAnim) {
+                    stoneCircle.setDepth(0);
+                    statuses[spellID].currentAnim = this.scene.tweens.add({
+                        targets: [stoneCircle, textHealth],
+                        duration: 240,
+                        y: "+=10",
+                        scaleX: "-=0.24",
+                        scaleY: "-=0.24",
+                        ease: 'Quad.easeIn',
+                        onComplete: () => {
+                            stoneCircle.destroy();
+                            textHealth.destroy();
+                        }
+                    });
+                    this.scene.tweens.add({
+                        targets: [stoneCircle, textHealth],
+                        duration: 240,
+                        alpha: 0,
+                        ease: 'Quad.easeOut',
+                    });
+                    messageBus.publish('selfClearEffect', spellID, true);
+                    statuses[spellID] = null;
+                }
+            }
+        });
+
+        let spellName = getBasicText('rune_matter_rune_unload');
+        messageBus.publish('clearSpellMultiplier');
+        this.postNonAttackCast(spellID, spellName);
+    }
+
+
+
+    castMatterUltimatex() {
+        const spellID = 'matterUnload';
         let attackObjects = [];
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let additionalDamage = globalObjects.player.attackDamageAdder();
@@ -966,7 +1087,6 @@ class SpellManager {
                     });
                 },
                 onComplete: () => {
-                    rockObj.play('stalagfight')
                     messageBus.publish('enemyTakeDamage', basePower + additionalDamage, true, undefined, 'matter');
                     screenShake(5);
                     zoomTemp(1.01 + additionalDamage * 0.00025);
@@ -2640,8 +2760,8 @@ class SpellManager {
                         duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.02 + additionalDamage;
-                            let damageDealt = Math.ceil(healthPercent);
+                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.025 + additionalDamage;
+                            let damageDealt = Math.round(healthPercent);
 
                             if (globalObjects.currentEnemy && (globalObjects.currentEnemy.immune || globalObjects.currentEnemy.invincible)) {
                                 playSound('swish', 1.4).detune = -680;
@@ -2715,8 +2835,155 @@ class SpellManager {
         this.castMatterReinforce(elem, embodi);
     }
     castVoidEnhance() {
-        this.castMatterEnhance();
+        const spellID = 'voidEnhance';
+        let existingBuff = globalObjects.player.getStatuses()[spellID];
+        let multiplier = globalObjects.player.spellMultiplier();
+        playSound('void_enhance', 0.55);
+        let statusObj;
+        let buffAmt = multiplier * 2;
+        if (existingBuff) {
+            statusObj = existingBuff.statusObj;
+            buffAmt += existingBuff.multiplier;
+        }
+
+        if (!this.pulseCircle) {
+            this.pulseCircle = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'blurry', 'voidcirclelarge.png');
+        }
+        if (!this.voidSpikeOutButton) {
+            this.voidSpikeOutOuter = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'blurry', 'void_spike_out.png');
+            this.voidSpikeOutInner = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'blurry', 'void_spike_out.png');
+            this.voidSpikeOutButton = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'blurry', 'void_spike_out.png');
+        }
+        this.pulseCircle.setScale(1.5).setDepth(210).setAlpha(0.05).setPosition(gameConsts.halfWidth, globalObjects.player.getY()).setRotation(Math.random() * 6);
+
+        if (this.voidSpikeOutOuter.currAnim) {
+            this.voidSpikeOutOuter.currAnim.stop();
+        }
+        this.voidSpikeOutOuter.setScale(1.6).setDepth(99).setRotation(Math.random() * 6).setVisible(true);
+        this.voidSpikeOutInner.setScale(1.2).setDepth(101).setRotation(this.voidSpikeOutOuter.rotation + 0.15).setVisible(true);
+        this.voidSpikeOutButton.setScale(0.6).setDepth(104).setRotation(this.voidSpikeOutOuter.rotation + 0.3).setVisible(true);
+
+        PhaserScene.tweens.add({
+            targets: [this.pulseCircle],
+            scaleX: 0.5,
+            scaleY: 0.5,
+            duration: 500,
+            ease: 'Cubic.easeInOut',
+        });
+        PhaserScene.tweens.add({
+            targets: [this.pulseCircle],
+            duration: 200,
+            ease: 'Cubic.easeOut',
+            alpha: 1,
+            onComplete: () => {
+                let healthLost = 3 * multiplier;
+                let newMaxHealth = Math.ceil(globalObjects.player.getHealthMax() - healthLost);
+                let newHealth = globalObjects.player.getHealth() - healthLost;
+                globalObjects.player.setHealth(newHealth);
+                globalObjects.player.setHealthMaxTemp(newMaxHealth);
+
+                PhaserScene.tweens.add({
+                    targets: [this.pulseCircle],
+                    duration: 300,
+                    alpha: 0,
+                });
+                let holdDelay = 200 + Math.floor(Math.sqrt(multiplier) * 20);
+                PhaserScene.tweens.add({
+                    targets: [this.voidSpikeOutButton],
+                    duration: 160,
+                    scaleX: 0.95 + multiplier * 0.04,
+                    scaleY: 0.95 + multiplier * 0.04,
+                    ease: 'Back.easeOut',
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: [this.voidSpikeOutButton],
+                            delay: holdDelay,
+                            duration: 400,
+                            scaleX: 0.6,
+                            scaleY: 0.6,
+                            ease: 'Quad.easeIn',
+                        });
+                    }
+                });
+                PhaserScene.tweens.add({
+                    delay: 10,
+                    targets: [this.voidSpikeOutInner],
+                    duration: 160,
+                    scaleX: 1.55 + multiplier * 0.06,
+                    scaleY: 1.55 + multiplier * 0.06,
+                    ease: 'Back.easeOut',
+                    completeDelay: 90,
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: [this.voidSpikeOutInner],
+                            delay: holdDelay,
+                            duration: 400,
+                            scaleX: 1.2,
+                            scaleY: 1.2,
+                            ease: 'Quad.easeIn',
+                        });
+                    }
+                });
+                this.voidSpikeOutOuter.currAnim = PhaserScene.tweens.add({
+                    delay: 20,
+                    targets: [this.voidSpikeOutOuter],
+                    duration: 160,
+                    scaleX: 1.95 + multiplier * 0.08,
+                    scaleY: 1.95 + multiplier * 0.08,
+                    ease: 'Back.easeOut',
+                    completeDelay: 180,
+                    onComplete: () => {
+                        this.voidSpikeOutOuter.curranim = PhaserScene.tweens.add({
+                            targets: [this.voidSpikeOutOuter],
+                            delay: holdDelay,
+                            duration: 400,
+                            scaleX: 1.56,
+                            scaleY: 1.56,
+                            ease: 'Quad.easeIn',
+                            onComplete: () => {
+                                this.voidSpikeOutOuter.visible = false;
+                                this.voidSpikeOutInner.visible = false;
+                                this.voidSpikeOutButton.visible = false;
+
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+
+        let param = {
+            duration: 1650,
+        }
+        let param2 = {
+            alpha: 0,
+            scaleX: 1,
+            scaleY: 1
+        }
+        messageBus.publish('animateVoidNum', gameConsts.halfWidth, globalObjects.player.getY() - 40, "+" + buffAmt + " ATK\nDAMAGE", 1 + Math.sqrt(buffAmt) * 0.18, param, param2);
+
+        messageBus.publish('selfTakeEffect', {
+            name: spellID,
+            spellID: spellID,
+            multiplier: buffAmt,
+            statusObj: statusObj,
+            spriteSrc1: 'rune_enhance_glow.png',
+            spriteSrc2: 'rune_void_glow.png',
+            displayAmt: buffAmt,
+            cleanUp: (statuses) => {
+                statuses[spellID] = null;
+            }
+        });
+
+
+        let spellName = getBasicText('rune_void_rune_enhance');
+        if (multiplier > 1) {
+            spellName += " X" + multiplier;
+        }
+        this.postNonAttackCast(spellID, spellName);
     }
+
     castVoidProtect(shieldID, rotation) {
         this.castMatterProtect(shieldID, rotation);
     }

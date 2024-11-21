@@ -10,6 +10,9 @@
              this.tutorialButton = createTutorialBtn(this.level);
              this.addToDestructibles(this.tutorialButton);
          }, 2500)
+         this.addTimeout(() => {
+             this.showElementCircle()
+         }, 900)
 
 
          this.addSubscription("enemyOnFire", this.setOnFire.bind(this))
@@ -49,6 +52,7 @@
      }
 
      adjustDamageTaken(amt, isAttack, isTrue) {
+
          if (isAttack && isTrue) {
              if (amt > 4) {
                  this.weakHitCount -= 1;
@@ -62,7 +66,7 @@
          }
          if (isAttack && !isTrue && !this.isUsingAttack) {
              this.missCount++;
-             if (this.missCount === 2) {
+             if (this.missCount === 3) {
                  this.showEnergyTut()
                  this.weakHitCount--;
              }
@@ -113,88 +117,48 @@
              }, 675)
          }
          if (amt > 10 && isAttack && !isTrue && !this.warnDamage) {
-             this.warnDamage = true;
-             this.addDelay(() => {
-                 let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
+             if (this.firstRockThrown) {
+                 this.warnDamage = true;
+                 this.addDelay(() => {
+                     let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
 
-                 this.rune1 = this.addImage(gameConsts.halfWidth - 245, gameConsts.halfHeight + 10, 'tutorial', 'rune_energy_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
-                 this.rune2 = this.addImage(gameConsts.halfWidth + 245, gameConsts.halfHeight + 10, 'tutorial', 'rune_energy_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+                     this.rune1 = this.addImage(gameConsts.halfWidth - 245, gameConsts.halfHeight + 10, 'tutorial', 'rune_energy_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+                     this.rune2 = this.addImage(gameConsts.halfWidth + 245, gameConsts.halfHeight + 10, 'tutorial', 'rune_energy_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
 
-                 globalObjects.magicCircle.disableMovement();
-                 globalObjects.bannerTextManager.setDialog([getLangText('level_water_nodamage'), getLangText('level_water_nodamage2')]);
-                 globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
-                 globalObjects.bannerTextManager.showBanner(false, language === 'fr');
-                 globalObjects.bannerTextManager.setDialogFunc([() => {}, () => {
-                     this.rune1.alpha = 0.15;
-                     this.rune2.alpha = 0.15;
-                     this.rune1.currAnim = this.addTween({
-                         targets: [this.rune1, this.rune2],
-                         alpha: 1,
-                         scaleX: 1,
-                         scaleY: 1,
-                         ease: 'Back.easeOut',
-                         duration: 250,
-                     });
-                 }])
-                 globalObjects.bannerTextManager.setOnFinishFunc(() => {
-                     globalObjects.magicCircle.enableMovement();
-                     // this.showEnergyTut();
-                     if (this.rune1.currAnim) {
-                         this.rune1.currAnim.stop();
-                     }
-                     this.addTween({
-                         targets: [this.rune1, this.rune2],
-                         alpha: 0,
-                         duration: 400,
-                     });
-
-                     globalObjects.bannerTextManager.setOnFinishFunc(() => {});
-                     globalObjects.bannerTextManager.closeBanner();
-                     this.glowCirc2 = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY(), 'shields', 'ring_flash0.png').setAlpha(0.3).setDepth(999).setScale(1.12);
-                     this.addDelay(() => {
-                         playSound('whoosh', 0.75).setSeek(0.4).detune = 400;
-                         this.glowCirc2.playReverse('ring_flash');
-                         this.glowCirc2.currAnim = this.addTween({
-                             targets: this.glowCirc2,
+                     globalObjects.magicCircle.disableMovement();
+                     globalObjects.bannerTextManager.setDialog([getLangText('level_water_nodamage'), getLangText('level_water_nodamage2')]);
+                     globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 10, 0);
+                     globalObjects.bannerTextManager.showBanner(false, language === 'fr');
+                     globalObjects.bannerTextManager.setDialogFunc([() => {}, () => {
+                         this.rune1.alpha = 0.15;
+                         this.rune2.alpha = 0.15;
+                         this.rune1.currAnim = this.addTween({
+                             targets: [this.rune1, this.rune2],
                              alpha: 1,
-                             ease: 'Cubic.easeOut',
-                             duration: 150,
-                             scaleX: 1.35,
-                             scaleY: 1.35,
-                             completeDelay: 1000,
-                             onComplete: () => {
-                                 this.playerSpellCastSub = messageBus.subscribe('recordSpellAttack', (id, spellName) => {
-                                     this.playerSpellCastSub.unsubscribe();
-                                     globalObjects.textPopupManager.hideInfoText();
-                                 });
-                                 this.subscriptions.push(this.playerSpellCastSub);
+                             scaleX: 1,
+                             scaleY: 1,
+                             ease: 'Back.easeOut',
+                             duration: 250,
+                         });
+                     }])
+                     globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                         globalObjects.magicCircle.enableMovement();
+                         if (this.rune1.currAnim) {
+                             this.rune1.currAnim.stop();
+                         }
+                         this.addTween({
+                             targets: [this.rune1, this.rune2],
+                             alpha: 0,
+                             duration: 400,
+                         });
 
-                                 this.glowCirc2.currAnim = this.addTween({
-                                     targets: this.glowCirc2,
-                                     alpha: 0.3,
-                                     ease: 'Cubic.easeIn',
-                                     duration: 150,
-                                     onComplete: () => {
-                                         this.glowCirc2.setAlpha(0.6)
-                                         this.glowCirc2.currAnim = this.addTween({
-                                             targets: this.glowCirc2,
-                                             alpha: 1,
-                                             ease: 'Cubic.easeIn',
-                                             scaleX: 1.12,
-                                             scaleY: 1.12,
-                                             duration: 200,
-                                         })
-                                         this.glowCirc2.play('ring_flash')
-                                     }
-                                 })
-                             }
-                         })
-                     }, 400)
-                     globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level1_train_popup'), 'center');
-
-                 });
-             }, 900)
-
+                         globalObjects.bannerTextManager.setOnFinishFunc(() => {});
+                         globalObjects.bannerTextManager.closeBanner();
+                     });
+                 }, 950)
+             } else {
+                 this.firstRockThrown = true;
+             }
          }
          return super.adjustDamageTaken(amt, isAttack, isTrue)
      }
@@ -249,7 +213,7 @@
                  if (newEffect.damage && newEffect.damage > 4) {
                      this.sprite.play('waterelec');
                  } else {
-                     this.sprite.play('waterelec');
+                     this.sprite.play('waterelecsmall');
                  }
 
                  this.addTween({
@@ -279,6 +243,7 @@
 
      setHealth(newHealth) {
          super.setHealth(newHealth);
+
          let prevHealthPercent = this.prevHealth / this.healthMax;
          let currHealthPercent = this.health / this.healthMax;
          let lastHealthLost = this.prevHealth - this.health;
@@ -315,6 +280,51 @@
          });
      }
 
+     showElementCircle() {
+         this.glowCirc2 = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY(), 'shields', 'ring_flash0.png').setAlpha(0.3).setDepth(999).setScale(1.12);
+         this.addDelay(() => {
+             playSound('whoosh', 0.75).setSeek(0.4).detune = 400;
+             this.glowCirc2.playReverse('ring_flash');
+             this.glowCirc2.currAnim = this.addTween({
+                 targets: this.glowCirc2,
+                 alpha: 1,
+                 ease: 'Cubic.easeOut',
+                 duration: 150,
+                 scaleX: 1.35,
+                 scaleY: 1.35,
+                 completeDelay: 1000,
+                 onComplete: () => {
+                     this.playerSpellCastSub = messageBus.subscribe('recordSpellAttack', (id, spellName) => {
+                         this.playerSpellCastSub.unsubscribe();
+                         globalObjects.textPopupManager.hideInfoText();
+                     });
+                     this.subscriptions.push(this.playerSpellCastSub);
+
+                     this.glowCirc2.currAnim = this.addTween({
+                         targets: this.glowCirc2,
+                         alpha: 0.3,
+                         ease: 'Cubic.easeIn',
+                         duration: 150,
+                         onComplete: () => {
+                             this.glowCirc2.setAlpha(0.6)
+                             this.glowCirc2.currAnim = this.addTween({
+                                 targets: this.glowCirc2,
+                                 alpha: 1,
+                                 ease: 'Cubic.easeIn',
+                                 scaleX: 1.12,
+                                 scaleY: 1.12,
+                                 duration: 200,
+                             })
+                             this.glowCirc2.play('ring_flash')
+                         }
+                     })
+                 }
+             })
+         }, 400)
+         globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level1_train_popup'), 'center');
+     }
+
+
      clearMindBurn() {
          if (this.burnAnim) {
              this.sprite.stop();
@@ -335,7 +345,7 @@
              [
                  {
                      name: "}10 ",
-                     chargeAmt: gameVars.isHardMode ? 400 : 400,
+                     chargeAmt: gameVars.isHardMode ? 400 : 350,
                      damage: -1,
                      prepareSprite: "water_emerge1.png",
                      attackSprites: ['water_attack.png'],
@@ -349,7 +359,7 @@
                  },
                  {
                      name: "}7x2 ",
-                     chargeAmt: gameVars.isHardMode ? 500 : 550,
+                     chargeAmt: gameVars.isHardMode ? 450 : 500,
                      damage: -1,
                      attackTimes: 2,
                      prepareSprite: "water_emerge1.png",
@@ -391,7 +401,7 @@
                  },
                  {
                      name: "}7x3 ",
-                     chargeAmt: gameVars.isHardMode ? 550 : 600,
+                     chargeAmt: gameVars.isHardMode ? 500 : 550,
                      damage: -1,
                      attackTimes: 3,
                      isBigMove: true,
@@ -598,6 +608,7 @@
         }
         globalObjects.textPopupManager.hideInfoText();
          gameVars.latestLevel = this.level;
+         gameVars.currLevel = this.level + 1;
          localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
          gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
          localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
@@ -770,7 +781,9 @@
              this.destroy();
              globalObjects.bannerTextManager.setOnFinishFunc(() => {});
              globalObjects.bannerTextManager.closeBanner();
-             beginPreLevel(this.level + 1)
+             setTimeout(() => {
+                 beginPreLevel(this.level + 1)
+             }, 750)
          })
      }
 

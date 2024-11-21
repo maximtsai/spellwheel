@@ -32,7 +32,7 @@ function setupMainMenuBG() {
 
         }
         globalObjects.creditsButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 225, gameConsts.halfHeight - 5, 'misc', 'creditsgame.webp');
-        globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
+        // globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
     }
 }
 
@@ -78,21 +78,6 @@ function clearOnlyMenuButtons() {
     globalObjects.creditsButtonSprite.destroy();
     globalObjects.extrasButton.destroy();
     globalObjects.extrasButtonSprite.destroy();
-
-
-    /*
-    globalObjects.lvlButton.destroy();
-    globalObjects.level3Button.destroy();
-    globalObjects.lvl5Button.destroy();
-    globalObjects.lvl6Button.destroy();
-    globalObjects.lvl7Button.destroy();
-    globalObjects.lvl8Button.destroy();
-    globalObjects.lvl9Button.destroy();
-    globalObjects.lvl10Button.destroy();
-    globalObjects.lvl11Button.destroy();
-    globalObjects.lvl12Button.destroy();
-    globalObjects.lvl13Button.destroy();
-     */
 
 
 }
@@ -889,6 +874,7 @@ function showMainMenuButtons() {
             // let maximText = PhaserScene.add.text(gameConsts.halfWidth - 270, gameConsts.halfHeight - 206, "Programming & Game Design", {fontFamily: 'Arial', fontSize: 18, color: '#452127', align: 'left', lineSpacing: -5}).setOrigin(0, 0.25).setDepth(100000).setAlpha(0.3).setScale(0.975);
             // maximText.setFontStyle('bold');
 
+
             let clickBlock;
             clickBlock = new Button({
                 normal: {
@@ -962,6 +948,7 @@ function showMainMenuButtons() {
                 scaleY: 1,
                 alpha: 1,
             });
+
 
             PhaserScene.tweens.add({
                 targets: [creditsPaper],
@@ -1264,6 +1251,7 @@ function showMainMenuButtons() {
         textObjExtras.setFontSize(20);
     }
     globalObjects.extrasButton.setRotation(-0.145)
+
 }
 
 function updateMenuLanguage() {

@@ -1281,11 +1281,11 @@
                      }
                  },
                  {
-                     name: "|10 ",
+                     name: "|12 ",
                      announceName: "ASSAIL",
                      chargeAmt: 500,
                      chargeMult: 1.65,
-                     damage: 10,
+                     damage: 12,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
                      attackFinishFunction: () => {
@@ -1320,11 +1320,11 @@
                      }
                  },
                  {
-                     name: "|13 ",
+                     name: "|14 ",
                      announceName: "ASSAIL",
                      chargeAmt: 550,
                      chargeMult: 1.65,
-                     damage: 13,
+                     damage: 14,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
                      attackFinishFunction: () => {

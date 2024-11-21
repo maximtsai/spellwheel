@@ -76,8 +76,8 @@ function clearOnlyMenuButtons() {
 
     globalObjects.creditsButton.destroy();
     globalObjects.creditsButtonSprite.destroy();
-    // globalObjects.extrasButton.destroy();
-    // globalObjects.extrasButtonSprite.destroy();
+    globalObjects.extrasButton.destroy();
+    globalObjects.extrasButtonSprite.destroy();
 
 
 }

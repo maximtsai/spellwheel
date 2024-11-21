@@ -417,6 +417,7 @@
 
 
     tryInitTutorial5() {
+        return;
         if (!this.dead && !this.isAsleep && !this.shownTut5) {
             this.shownTut5 = true;
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 262, getLangText('level1_tut_c'), 'right');

@@ -427,7 +427,7 @@ function handleBorders() {
     let widthAmt = 86 * gameScale
     leftBorder.style.width = widthAmt + 'px';
     rightBorder.style.width = widthAmt + 'px';
-    let shiftAmt = pixelWidth * gameScale * 0.5 + widthAmt - 1;
+    let shiftAmt = pixelWidth * gameScale * 0.5 + widthAmt - 2;
     leftBorder.style.left = 'calc(50% - ' + shiftAmt + 'px)'
     rightBorder.style.right = 'calc(50% - ' + shiftAmt + 'px)'
 }

@@ -12,7 +12,7 @@
          }, 2500)
          this.addTimeout(() => {
              this.showElementCircle()
-         }, 400)
+         }, 900)
 
 
          this.addSubscription("enemyOnFire", this.setOnFire.bind(this))
@@ -213,7 +213,7 @@
                  if (newEffect.damage && newEffect.damage > 4) {
                      this.sprite.play('waterelec');
                  } else {
-                     this.sprite.play('waterelec');
+                     this.sprite.play('waterelecsmall');
                  }
 
                  this.addTween({
@@ -608,6 +608,7 @@
         }
         globalObjects.textPopupManager.hideInfoText();
          gameVars.latestLevel = this.level;
+         gameVars.currLevel = this.level + 1;
          localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
          gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
          localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
@@ -780,7 +781,9 @@
              this.destroy();
              globalObjects.bannerTextManager.setOnFinishFunc(() => {});
              globalObjects.bannerTextManager.closeBanner();
-             beginPreLevel(this.level + 1)
+             setTimeout(() => {
+                 beginPreLevel(this.level + 1)
+             }, 750)
          })
      }
 

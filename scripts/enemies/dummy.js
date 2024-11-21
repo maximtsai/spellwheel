@@ -196,7 +196,7 @@
                     })
                 }, 400)
 
-                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level1_tut_z'), 'center');
+                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 36, getLangText('level1_tut_z'), 'center');
 
                  this.addTimeout(() => {
                      this.playerSpellCastSub = this.addSubscription('recordSpell', (id, spellName) => {
@@ -1046,7 +1046,7 @@
                  },
                  {
                      name: "ASCENDING FROM\nSHEER ANGRY",
-                     chargeAmt: 725,
+                     chargeAmt: 775,
                      damage: 0,
                      chargeMult: 3,
                      isBigMove: true,

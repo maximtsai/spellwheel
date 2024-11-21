@@ -285,7 +285,7 @@ class LesserDummy extends Enemy {
         this.addTimeout(() => {
             if (globalObjects.player.getPlayerCastSpellsCount() === 1 && !this.dead) {
                 // player only casted 1 spell so far
-                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 36, getLangText('level0_tut_a'));
+                globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 35, getLangText('level0_tut_a'));
                 this.arrowRotate1 = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate.png').setOrigin(0.5, 0.5).setDepth(777).setRotation(0.15).setAlpha(0);
                 this.arrowRotate2 = this.addSprite(globalObjects.player.getX(), globalObjects.player.getY(), 'circle', 'arrow_rotate_small.png').setOrigin(0.5, 0.5).setDepth(777).setScale(0.96).setRotation(-0.15).setAlpha(0);
                 this.destructibles.push(this.arrowRotate1);
@@ -382,8 +382,8 @@ class LesserDummy extends Enemy {
                     return;
                 }
                 if (!this.dead) {
-                    this.healthShowText = this.addText(gameConsts.halfWidth, 41, getLangText('level0_tut_b'), {fontFamily: 'garamondbold', color: '#FFFAFA', fontSize: 20}).setOrigin(0.5, 0.5).setAlpha(0).setDepth(1001);
-                    this.healthBack = this.addImage(gameConsts.halfWidth, 40, 'blurry', 'battletext_bg.png').setScale(this.healthShowText.width * 0.013, this.healthShowText.height * 0.11).setDepth(1000);
+                    this.healthShowText = this.addText(gameConsts.halfWidth, 40, getLangText('level0_tut_b'), {fontFamily: 'garamondbold', color: '#FFFAFA', fontSize: 20}).setOrigin(0.5, 0.5).setAlpha(0).setDepth(1001);
+                    this.healthBack = this.addImage(gameConsts.halfWidth, 39, 'blurry', 'battletext_bg.png').setScale(this.healthShowText.width * 0.013, this.healthShowText.height * 0.11).setDepth(1000);
                     this.underline = this.addImage(gameConsts.halfWidth, this.healthBack.y - 11, 'blurry', 'box_length.png').setScale(0, -0.5).setDepth(-1002);
                     this.underline2 = this.addImage(gameConsts.halfWidth, this.healthBack.y + 11, 'blurry', 'box_length.png').setScale(0, 0.5).setDepth(-1002);
                     this.addTween({

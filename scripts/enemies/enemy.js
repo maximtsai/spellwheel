@@ -1679,13 +1679,15 @@ class Enemy {
         }
     }
 
-    setAwake() {
+    setAwake(autoAggro = true) {
         if (this.isDestroyed) {
             return;
         }
         this.chargeBarAngry.scaleX = 0;
         this.chargeBarWarning.scaleX = 0;
-        this.timeSinceLastAttacked = 0;
+        if (autoAggro) {
+            this.timeSinceLastAttacked = 0;
+        }
         // this.castAggravateCharge += 20;
         this.isAsleep = false;
         if (this.attackName) {

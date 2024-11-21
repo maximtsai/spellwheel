@@ -4,8 +4,8 @@
 			"image": "sprites/backgrounds-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2014,
-				"h": 1962
+				"w": 1880,
+				"h": 1885
 			},
 			"scale": 1,
 			"frames": [
@@ -60,31 +60,6 @@
 					}
 				},
 				{
-					"filename": "glass_break.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 533,
-						"h": 623
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 533,
-						"h": 623
-					},
-					"frame": {
-						"x": 767,
-						"y": 1338,
-						"w": 533,
-						"h": 623
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "fog_slice.png",
 					"rotated": false,
 					"trimmed": true,
@@ -110,49 +85,24 @@
 					}
 				},
 				{
-					"filename": "menu_buttons_start.png",
+					"filename": "menu_back.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 638,
-						"h": 755
+						"w": 769,
+						"h": 887
 					},
 					"spriteSourceSize": {
-						"x": 79,
-						"y": 202,
-						"w": 530,
-						"h": 296
+						"x": 0,
+						"y": 0,
+						"w": 769,
+						"h": 887
 					},
 					"frame": {
 						"x": 1083,
 						"y": 953,
-						"w": 530,
-						"h": 296
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "menu_buttons_old.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
 						"w": 769,
-						"h": 910
-					},
-					"spriteSourceSize": {
-						"x": 31,
-						"y": 91,
-						"w": 711,
-						"h": 707
-					},
-					"frame": {
-						"x": 1302,
-						"y": 1251,
-						"w": 711,
-						"h": 707
+						"h": 887
 					},
 					"anchor": {
 						"x": 0.5,
@@ -165,8 +115,8 @@
 			"image": "sprites/backgrounds-1.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1930,
-				"h": 2035
+				"w": 1853,
+				"h": 1854
 			},
 			"scale": 1,
 			"frames": [
@@ -189,56 +139,6 @@
 						"y": 1,
 						"w": 1080,
 						"h": 1335
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "battleOverScreen.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 629,
-						"h": 770
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 83,
-						"w": 606,
-						"h": 682
-					},
-					"frame": {
-						"x": 1,
-						"y": 1338,
-						"w": 606,
-						"h": 682
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "background7.webp",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 568,
-						"h": 696
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 568,
-						"h": 696
-					},
-					"frame": {
-						"x": 609,
-						"y": 1338,
-						"w": 568,
-						"h": 696
 					},
 					"anchor": {
 						"x": 0.5,
@@ -271,42 +171,6 @@
 					}
 				},
 				{
-					"filename": "background4.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 750,
-						"h": 950
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 750,
-						"h": 950
-					},
-					"frame": {
-						"x": 1179,
-						"y": 953,
-						"w": 750,
-						"h": 950
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				}
-			]
-		},
-		{
-			"image": "sprites/backgrounds-2.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 1523,
-				"h": 1804
-			},
-			"scale": 1,
-			"frames": [
-				{
 					"filename": "path.png",
 					"rotated": false,
 					"trimmed": false,
@@ -321,10 +185,71 @@
 						"h": 900
 					},
 					"frame": {
-						"x": 1,
-						"y": 1,
+						"x": 1083,
+						"y": 953,
 						"w": 769,
 						"h": 900
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "graves.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 700,
+						"h": 800
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 381,
+						"w": 700,
+						"h": 419
+					},
+					"frame": {
+						"x": 1,
+						"y": 1338,
+						"w": 700,
+						"h": 419
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/backgrounds-2.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 2039,
+				"h": 1854
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "background4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 750,
+						"h": 950
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 750,
+						"h": 950
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 750,
+						"h": 950
 					},
 					"anchor": {
 						"x": 0.5,
@@ -346,35 +271,10 @@
 						"h": 900
 					},
 					"frame": {
-						"x": 772,
-						"y": 1,
+						"x": 1,
+						"y": 953,
 						"w": 750,
 						"h": 900
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "menu_back.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 769,
-						"h": 887
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 769,
-						"h": 887
-					},
-					"frame": {
-						"x": 1,
-						"y": 903,
-						"w": 769,
-						"h": 887
 					},
 					"anchor": {
 						"x": 0.5,
@@ -396,8 +296,8 @@
 						"h": 900
 					},
 					"frame": {
-						"x": 772,
-						"y": 903,
+						"x": 753,
+						"y": 1,
 						"w": 750,
 						"h": 900
 					},
@@ -405,18 +305,57 @@
 						"x": 0.5,
 						"y": 0.5
 					}
-				}
-			]
-		},
-		{
-			"image": "sprites/backgrounds-3.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 2026,
-				"h": 1727
-			},
-			"scale": 1,
-			"frames": [
+				},
+				{
+					"filename": "glass_break.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 533,
+						"h": 623
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 533,
+						"h": 623
+					},
+					"frame": {
+						"x": 1505,
+						"y": 1,
+						"w": 533,
+						"h": 623
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "menu_buttons_start.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 638,
+						"h": 755
+					},
+					"spriteSourceSize": {
+						"x": 79,
+						"y": 202,
+						"w": 530,
+						"h": 296
+					},
+					"frame": {
+						"x": 1505,
+						"y": 626,
+						"w": 530,
+						"h": 296
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
 				{
 					"filename": "backgroundwater.webp",
 					"rotated": false,
@@ -432,10 +371,46 @@
 						"h": 900
 					},
 					"frame": {
-						"x": 1,
-						"y": 1,
+						"x": 753,
+						"y": 903,
 						"w": 750,
 						"h": 900
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/backgrounds-3.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 2023,
+				"h": 1817
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "background8.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 710,
+						"h": 870
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 710,
+						"h": 870
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 710,
+						"h": 870
 					},
 					"anchor": {
 						"x": 0.5,
@@ -458,59 +433,9 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 903,
+						"y": 873,
 						"w": 731,
 						"h": 823
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "menu_buttons.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 638,
-						"h": 755
-					},
-					"spriteSourceSize": {
-						"x": 21,
-						"y": 69,
-						"w": 588,
-						"h": 433
-					},
-					"frame": {
-						"x": 734,
-						"y": 903,
-						"w": 588,
-						"h": 433
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "background8.webp",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 710,
-						"h": 870
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 710,
-						"h": 870
-					},
-					"frame": {
-						"x": 753,
-						"y": 1,
-						"w": 710,
-						"h": 870
 					},
 					"anchor": {
 						"x": 0.5,
@@ -532,8 +457,8 @@
 						"h": 834
 					},
 					"frame": {
-						"x": 1324,
-						"y": 873,
+						"x": 713,
+						"y": 1,
 						"w": 701,
 						"h": 834
 					},
@@ -541,37 +466,51 @@
 						"x": 0.5,
 						"y": 0.5
 					}
-				}
-			]
-		},
-		{
-			"image": "sprites/backgrounds-4.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 702,
-				"h": 1280
-			},
-			"scale": 1,
-			"frames": [
+				},
 				{
-					"filename": "graves.png",
+					"filename": "battleOverScreen.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 700,
-						"h": 800
+						"w": 629,
+						"h": 770
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 381,
-						"w": 700,
-						"h": 419
+						"y": 83,
+						"w": 606,
+						"h": 682
 					},
 					"frame": {
-						"x": 1,
+						"x": 1416,
 						"y": 1,
-						"w": 700,
-						"h": 419
+						"w": 606,
+						"h": 682
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "background7.webp",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 568,
+						"h": 696
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 568,
+						"h": 696
+					},
+					"frame": {
+						"x": 1416,
+						"y": 685,
+						"w": 568,
+						"h": 696
 					},
 					"anchor": {
 						"x": 0.5,
@@ -593,10 +532,35 @@
 						"h": 857
 					},
 					"frame": {
-						"x": 1,
-						"y": 422,
+						"x": 734,
+						"y": 837,
 						"w": 675,
 						"h": 857
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "menu_buttons.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 638,
+						"h": 755
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 69,
+						"w": 588,
+						"h": 433
+					},
+					"frame": {
+						"x": 1411,
+						"y": 1383,
+						"w": 588,
+						"h": 433
 					},
 					"anchor": {
 						"x": 0.5,
@@ -609,6 +573,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:56fdd80e79df0aa0fa5291a409e5ba9c:bc3beea61769cb0d6e2630fe74f57eec:d36b2d12f94c3c84864533b00704d5ae$"
+		"smartupdate": "$TexturePacker:SmartUpdate:98004a9dafd26df8fbc327d62b324ac9:3685ddf369801d8aed0fbd829270ca7f:4b9228cae45da4734de02858f02ab1c0$"
 	}
 }

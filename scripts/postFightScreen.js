@@ -270,7 +270,7 @@ class PostFightScreen {
 
         if (!this.subscription) {
             this.subscription = messageBus.subscribe("language_switch", () => {
-                if (gameVars.currLevel <= 7 && gameVars.currLevel >= 0 && gameVars.currLevel !== 1) {
+                if (gameVars.currLevel <= 8 && gameVars.currLevel >= 0 && gameVars.currLevel !== 1) {
                     this.trainingButton.setText(getLangText('post_fight_training'))
                 } else {
                     this.trainingButton.setText(getLangText('post_fight_no_training'))
@@ -314,7 +314,7 @@ class PostFightScreen {
             }
         }
         this.continueButton.setState(DISABLE);
-        if (gameVars.currLevel <= 7 && gameVars.currLevel >= 0 && gameVars.currLevel !== 1) {
+        if (gameVars.currLevel <= 8 && gameVars.currLevel >= 0 && gameVars.currLevel !== 1) {
             this.trainingButton.setText(getLangText('post_fight_training'))
             this.trainingButton.setState(NORMAL);
             setTimeout(() => {
@@ -551,7 +551,7 @@ class PostFightScreen {
             this.trainingButton.setOnMouseUpFunc(() => {
                 playSound('button_click');
                 this.clearPostFightScreen();
-                if (level < 7) {
+                if (level < 8) {
                     if (level === 1) {
                         beginPreLevel(2);
                     } else {
@@ -706,7 +706,7 @@ class PostFightScreen {
                 this.trainingButton.setOnMouseUpFunc(() => {
                     playSound('button_click');
                     this.clearPostFightScreen();
-                    if (level < 7) {
+                    if (level < 8) {
                         if (level === 1) {
                             beginPreLevel(2);
                         } else {
@@ -791,7 +791,7 @@ class PostFightScreen {
 
         this.healthLeftText.setText(getLangText('post_fight_health') + globalObjects.player.getHealth() + "/" + globalObjects.player.getHealthMax());
         this.spellsCastText.setText(getLangText('post_fight_spells') + globalObjects.player.getPlayerCastSpellsCount());
-        if (gameVars.currLevel <= 7 && gameVars.currLevel >= 0 && gameVars.currLevel !== 1) {
+        if (gameVars.currLevel <= 8 && gameVars.currLevel >= 0 && gameVars.currLevel !== 1) {
             this.continueButton.setText(getLangText('post_fight_skip_training'));
         } else {
             this.continueButton.setText(getLangText('post_fight_continue'));

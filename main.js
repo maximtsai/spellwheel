@@ -1,9 +1,9 @@
 let isMobile = testMobile();
-let gameVersion = "v1.01";
 let pixelWidth = isMobile ? 594 : 604
 let pixelHeight = isMobile ? 810 : 775
 handleBorders();
 
+let gameVersion = "v.1.10";
 let config = {
     type: Phaser.AUTO,
     scale: {
@@ -89,6 +89,7 @@ let gameOptions = {
     infoBoxAlign: 'center',
 };
 let gameVars = {
+    hideCheatVal: 0,
     latestLevel: 0,
     maxLevel: 0,
     isHardMode: false,

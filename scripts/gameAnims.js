@@ -439,7 +439,7 @@ function createAnimations(scene) {
             end: 13,
             zeroPad: 0,
         }),
-        frameRate: 30
+        frameRate: 24
     });
     scene.anims.create({
         key: 'forceBreak',

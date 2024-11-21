@@ -586,7 +586,7 @@
              this.secondTempShield.destroy();
          }
         super.die();
-
+        gameVars.currLevel = this.level + 1;
          gameVars.latestLevel = this.level;
          localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
          gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);

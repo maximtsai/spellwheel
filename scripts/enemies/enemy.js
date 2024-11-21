@@ -148,10 +148,15 @@ class Enemy {
 
         this.healthBarFlash = this.scene.add.sprite(x - this.healthBarLengthMax - 3, this.healthBarMax.y, 'pixels', 'white_pixel.png');
         this.healthBarFlash.setScale(this.healthBarLengthMax + 3, this.healthBarMax.scaleY - 2);
-        this.healthBarFlash.setOrigin(0, 0.5);
-        this.healthBarFlash.alpha = 0;
-        this.healthBarFlash.setDepth(this.healthBarMax.depth + 1);
+        this.healthBarFlash.setOrigin(0, 0.5).setAlpha(0);
+        this.healthBarFlash.setDepth(this.healthBarMax.depth);
         this.healthBarAssets.push(this.healthBarFlash);
+
+        this.healthBar2Flash = this.scene.add.sprite(x - this.healthBarLengthMax - 3, this.healthBarMax.y, 'pixels', 'white_pixel.png');
+        this.healthBar2Flash.setScale(this.healthBarLengthMax + 3, this.healthBarMax.scaleY - 2);
+        this.healthBar2Flash.setOrigin(0, 0.5).setAlpha(0);
+        this.healthBar2Flash.setDepth(this.healthBarMax.depth + 1);
+        this.healthBarAssets.push(this.healthBar2Flash);
 
         this.healthBarCurr = this.scene.add.sprite(x - this.healthBarLengthMax - 1, this.healthBarMax.y, 'pixels', 'green_pixel.png');
         this.healthBarCurr.setScale(this.healthBarLengthMax + 1, this.healthBarMax.scaleY - 2);
@@ -266,6 +271,10 @@ class Enemy {
             x: gameConsts.halfWidth - this.healthBarLengthMax - 3,
             scaleX: flashLength,
             ease: 'Quint.easeInOut',
+            onComplete: () => {
+                this.healthBar2Flash.x = this.healthBarFlash.x;
+                this.healthBar2Flash.scaleX = flashLength;
+            }
         });
 
         this.scene.tweens.add({
@@ -1590,17 +1599,31 @@ class Enemy {
         if (this.healthBarCurr.scaleX === 0) {
             this.healthBarFlash.scaleX = 0;
         }
+        this.healthBar2Flash.scaleX = this.healthBarFlash.scaleX;
         this.healthBarFlash.scaleY = this.healthBarMax.scaleY - 2;
         this.healthBarFlash.alpha = 1 + 0.2 * mult;
+        this.healthBar2Flash.scaleY = this.healthBarFlash.scaleY;
+        this.healthBar2Flash.alpha = 0.65 + 0.15 * mult;
+
+
         if (this.healthBarFlashTween) {
             this.healthBarFlashTween.stop();
         }
+        if (this.healthBar2FlashTween) {
+            this.healthBar2FlashTween.stop();
+        }
         this.healthBarFlashTween = PhaserScene.tweens.add({
-            delay: 20,
+            delay: 50,
             targets: this.healthBarFlash,
             alpha: 0,
             ease: "Quad.easeOut",
-            duration: gameVars.gameManualSlowSpeedInverse * 450 * mult + 120
+            duration: gameVars.gameManualSlowSpeedInverse * 525 * mult + 150
+        });
+        this.healthBar2FlashTween = PhaserScene.tweens.add({
+            targets: this.healthBar2Flash,
+            alpha: 0,
+            ease: "Cubic.easeOut",
+            duration: gameVars.gameManualSlowSpeedInverse * 300 * mult + 60
         });
         if (this.healthBarRedTween) {
             this.healthBarRedTween.stop();

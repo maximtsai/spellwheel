@@ -846,6 +846,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">spells/stalagmite0.png</key>
             <key type="filename">spells/stalagmite1.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -858,24 +859,6 @@
                 <rect>49,250,97,500</rect>
                 <key>scale9Paddings</key>
                 <rect>49,250,97,500</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">spells/stalagmite2.png</key>
-            <key type="filename">spells/stalagmite3.png</key>
-            <key type="filename">spells/stalagmite4.png</key>
-            <key type="filename">spells/stalagmite5.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>49,122,97,244</rect>
-                <key>scale9Paddings</key>
-                <rect>49,122,97,244</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -996,36 +979,6 @@
                 <rect>4,4,7,7</rect>
                 <key>scale9Paddings</key>
                 <rect>4,4,7,7</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">spells/voidpulse.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>38,38,75,75</rect>
-                <key>scale9Paddings</key>
-                <rect>38,38,75,75</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">spells/voidspot.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>50,50,100,101</rect>
-                <key>scale9Paddings</key>
-                <rect>50,50,100,101</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

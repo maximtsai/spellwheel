@@ -22,8 +22,11 @@ const ENABLE_KEYBOARD = true;
         this.disableSpellDescDisplay = false;
         this.elementsAnimArray = [];
         this.embodimentsAnimArray = [];
+        this.stalagmites = [];
         this.tempRotObjs = [];
+        this.pillarFireDelay = 0;
         this.tempLockRot = 0;
+        this.stalagIdx = 0;
         this.lastDragTime = 0;
         this.prevDragAngleDiff = null;
         this.storedDragAngleDiff = 0;
@@ -57,8 +60,9 @@ const ENABLE_KEYBOARD = true;
             messageBus.subscribe("showCircleShadow", this.showCircleShadow.bind(this)),
 
             messageBus.subscribe("setCircleShadow", this.setCircleShadow.bind(this)),
-            messageBus.subscribe("refreshHoverDisplay", this.refreshHoverText.bind(this))
+            messageBus.subscribe("refreshHoverDisplay", this.refreshHoverText.bind(this)),
 
+            messageBus.subscribe("addStalagmites", this.addStalagmites.bind(this))
         ];
 
         updateManager.addFunction(this.update.bind(this));
@@ -1041,6 +1045,13 @@ const ENABLE_KEYBOARD = true;
         let staticAmtInner = STATIC * dt * innerDecayMult * torqueMultInner;
         let staticAmtOuter = STATIC * dt * 0.84 * torqueMultOuter;
 
+
+        if (this.stalagmites.length > 0) {
+            this.outerCircle.torque *= 0.8;
+            staticAmtOuter *= 2;
+        }
+
+
         // keyboard torque
         if (this.keyboardRotateInner !== 0 && !this.innerDragDisabled) {
             this.usedKeyboardInner = true;
@@ -1353,6 +1364,7 @@ const ENABLE_KEYBOARD = true;
 
 
      updateShields(dScale) {
+         this.pillarFireDelay = Math.max(0, this.pillarFireDelay - dScale * 100);
          let playerStatuses = globalObjects.player.getStatuses();
          let shieldObjects = [];
          for (let i = 0; i < this.tempRotObjs.length; i++) {
@@ -1370,6 +1382,19 @@ const ENABLE_KEYBOARD = true;
              thorns1.rotation = this.outerCircle.rotation;
              thorns2.rotation = this.outerCircle.rotation;
          }
+         for (let i in this.stalagmites) {
+             let stalag = this.stalagmites[i];
+             stalag.rotation = stalag.startRotation + this.outerCircle.rotation;
+             if (stalag.lastRotation * stalag.rotation < 0 && !this.recharging) {
+                 // crossed
+                 if ((Math.abs(stalag.rotation) + Math.abs(stalag.lastRotation)) < 1) {
+                     // Fire!
+                     stalag.fire();
+                 }
+             }
+             stalag.lastRotation = stalag.rotation;
+         }
+
          for (let i = 0; i < 10; i++) {
              if (playerStatuses['shield' + i]) {
                  shieldObjects.push(playerStatuses['shield' + i]);
@@ -2175,7 +2200,7 @@ const ENABLE_KEYBOARD = true;
                 });
                 let stopForceAlignmentDelay = 0;
                 let attackAlignDelay = isAttack ? 100 : 0;
-                let reEnableDelay = this.keyboardCasted ? 200 : 0;
+                let reEnableDelay = this.keyboardCasted ? 100 : 0;
                 PhaserScene.time.delayedCall(gameVars.gameManualSlowSpeed * stopForceAlignmentDelay, () => {
                     this.forcingAlignment = false;
                 });
@@ -2761,8 +2786,6 @@ const ENABLE_KEYBOARD = true;
                              this.updateSpellDescriptorText(getLangText((gameVars.matterPlus ? 'matter_protect_plus_desc' : 'matter_protect_desc') + postPendTextName));
                              break;
                          case RUNE_UNLOAD:
-                             preNameText = "|";
-                             extraNameText = "|";
                              embodimentText += multiplier > 1.1 ? (" X" + multiplier) : "";
                              this.updateSpellDescriptorText(getLangText('matter_unload_desc' + postPendTextName));
                              break;
@@ -2872,8 +2895,8 @@ const ENABLE_KEYBOARD = true;
                              this.updateSpellDescriptorText(getLangText('void_reinforce_desc' + postPendTextName));
                              break;
                          case RUNE_UNLOAD:
-                             preNameText = "|";
-                             extraNameText = "|";
+                             preNameText = ";";
+                             extraNameText = ";";
                              this.updateSpellDescriptorText(getLangText('void_unload_desc' + postPendTextName));
                              break;
                          default:
@@ -3239,6 +3262,10 @@ const ENABLE_KEYBOARD = true;
          this.mindBurnAnim.alpha = 0;
          this.mindBurnAnimBack.alpha = 0;
          this.removeDelayedDamage();
+         while (this.stalagmites.length > 0) {
+             let stalag = this.stalagmites.pop();
+             poolManager.returnItemToPool(stalag, 'stalagmite');
+         }
      }
 
      disableMovement() {
@@ -3331,8 +3358,10 @@ const ENABLE_KEYBOARD = true;
         for (let i in this.embodiments) {
             let rune = this.embodiments[i];
             if (rune.glow.visible && rune.runeName === RUNE_STRIKE) {
-                rune.glow.visible = false;
-                rune.burnedOut = true;
+                if (!cheats.infiniteAmmo) {
+                    rune.glow.visible = false;
+                    rune.burnedOut = true;
+                }
                 let dist = 180;
                 let xPos = rune.x + Math.sin(rune.rotation) * dist;
                 let yPos = rune.y - Math.cos(rune.rotation) * dist;
@@ -3398,4 +3427,148 @@ const ENABLE_KEYBOARD = true;
              this.spellActionText.y = this.y - 249;
          }
      }
-}
+
+     firePillar(pillar) {
+        this.outerCircle.rotVel = 0;
+         pillar.rotation = 0.06 - Math.random() * 0.12 + (0.2 * pillar.rotation);
+        let idx = this.stalagmites.findIndex((item) => item.stalagIdx === pillar.stalagIdx);
+        if (idx !== -1) {
+            this.stalagmites.splice(idx, 1)
+        }
+
+
+         this.pillarFireDelay += 180;
+         PhaserScene.tweens.add({
+             delay: this.pillarFireDelay - 180,
+             targets: pillar,
+             scaleX: 1,
+             scaleY: 1.12,
+             ease: 'Quart.easeIn',
+             duration: 100,
+             onStart: () => {
+                 this.stalagFlipFlop = !this.stalagFlipFlop;
+
+                 pillar.setAlpha(1).setDepth(62);
+                 playSound('matter_ultimate', 1.1).detune = (this.stalagFlipFlop ? 100 : -300) + Math.random() * 200;
+                 playSound('rock_crumble', this.stalagFlipFlop ? 0.25 : 0.45).detune = Math.random() * 200 - 100;
+             },
+             onComplete: () => {
+                 pillar.setFrame('stalagmite1.png');
+                 pillar.setScale(1, 1.13);
+                 pillar.setDepth(61);
+                 messageBus.publish('enemyTakeDamage', 20, false);
+                 messageBus.publish('addCastAggravate', 20);
+                 screenShake(4);
+                 zoomTemp(1.015);
+                 PhaserScene.tweens.add({
+                     targets: pillar,
+                     scaleX: 1,
+                     scaleY: 1,
+                     ease: 'Quart.easeOut',
+                     duration: 300,
+                     onComplete: () => {
+                         pillar.setDepth(60);
+                         PhaserScene.tweens.add({
+                             delay: 500,
+                             targets: pillar,
+                             alpha: 0,
+                             scaleY: 0.8,
+                             ease: 'Quart.easeIn',
+                             duration: 300,
+                             onComplete: () => {
+                                 poolManager.returnItemToPool(pillar, 'stalagmite');
+                             }
+                         });
+                     }
+                 });
+
+             }
+         });
+     }
+
+    addStalagmites(multiplier = 1) {
+        for (let i = 0; i < multiplier; i++) {
+            let xPos = gameConsts.halfWidth ;
+            let yPos = globalObjects.player.getY();
+            let pillarLeft = poolManager.getItemFromPool('stalagmite');
+            let pillarRight = poolManager.getItemFromPool('stalagmite');
+            if (!pillarLeft) {
+                pillarLeft = PhaserScene.add.sprite(xPos, yPos, 'spells', 'stalagmite0.png').setDepth(60);
+            }
+            if (!pillarRight) {
+                pillarRight = PhaserScene.add.sprite(xPos, yPos, 'spells', 'stalagmite0.png').setDepth(60);
+            }
+
+            pillarLeft.setRotation(-1.57).setAlpha(0.8).setDepth(61);
+            pillarLeft.lastRotation = pillarLeft.rotation;
+            pillarLeft.startRotation = pillarLeft.rotation - this.outerCircle.rotation;
+            pillarLeft.stalagIdx = this.stalagIdx++;
+
+            pillarRight.setRotation(1.57).setAlpha(0.8).setDepth(61);
+            pillarRight.lastRotation = pillarRight.rotation;
+            pillarRight.startRotation = pillarRight.rotation - this.outerCircle.rotation;
+            pillarRight.stalagIdx = this.stalagIdx++;
+
+            pillarLeft.fire = () => {this.firePillar(pillarLeft)};
+            pillarRight.fire = () => {this.firePillar(pillarRight)};
+            pillarLeft.setScale(0.76, 0.5);
+            pillarRight.setScale(0.76, 0.5);
+
+            for (let i in this.stalagmites) {
+                this.stalagmites[i].setDepth(60);
+            }
+            this.shiftAroundPillar(pillarLeft);
+            this.shiftAroundPillar(pillarRight);
+
+
+            this.stalagmites.push(pillarLeft);
+            this.stalagmites.push(pillarRight);
+            PhaserScene.tweens.add({
+                targets: [pillarLeft, pillarRight],
+                scaleX: 0.78,
+                scaleY: 0.61,
+                ease: 'Cubic.easeIn',
+                duration: 200,
+            });
+
+
+            PhaserScene.time.delayedCall( 50, () => {
+                for (let i = 0; i < 6; i++) {
+                    let velX = -0.15 -Math.random() * 0.2;
+                    let velX2 = 0.15 +Math.random() * 0.2;
+
+                    let velY = (Math.random() - 0.5) * 0.75;
+
+                    let duration = 250 + Math.random() * 500;
+                    globalObjects.spellManager.createRockParticle(gameConsts.halfWidth - 150, yPos, velX, velY, duration)
+                    globalObjects.spellManager.createRockParticle(gameConsts.halfWidth + 150, yPos, velX2, velY, duration)
+                }
+            });
+        }
+    }
+
+    shiftAroundPillar(pillar) {
+        let listOfOffsets = [0, 0.1, -0.1, 0.2, -0.2, 0.3, -0.3];
+        for (let x = 0; x < listOfOffsets.length; x++) {
+            let offset = listOfOffsets[x];
+            let canFit = true;
+            for (let i in this.stalagmites) {
+                let otherpillar = this.stalagmites[i];
+                let rotDiff = otherpillar.startRotation - pillar.startRotation - offset;
+
+                if (rotDiff < 0.05 && rotDiff > -0.05) {
+                    // oops too close
+                    canFit = false;
+                    break;
+                }
+            }
+            if (canFit) {
+                pillar.startRotation += offset;
+                return;
+            }
+        }
+
+        pillar.startRotation += 0.3 - Math.random() * 0.6;
+    }
+
+ }

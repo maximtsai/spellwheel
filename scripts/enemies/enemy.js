@@ -114,37 +114,63 @@ class Enemy {
     }
 
     createHealthBar(x, y) {
-        this.healthBarLengthMax = 66 + Math.floor(Math.sqrt(this.healthMax) * 4.95);
+        this.healthBarAssets = [];
+        this.healthBarLengthMax = 67 + Math.floor(Math.sqrt(this.healthMax) * 4.3);
         this.healthBarMax = this.scene.add.sprite(x, isMobile ? 16 : 14, 'blackPixel');
         this.healthBarMaxGoalScale = this.healthBarLengthMax + 3;
-        this.healthBarMax.setScale(0, 11);
+        this.healthBarMax.setScale(0, 10);
         this.healthBarMax.startScaleY = this.healthBarMax.scaleY;
         this.healthBarMax.setOrigin(0.5, 0.5);
         this.healthBarMax.setDepth(10);
+        this.healthBarAssets.push(this.healthBarMax);
+
+        this.healthBarTop = this.scene.add.image(x, this.healthBarMax.y - 13, 'enemies', 'healthbar_long.png');
+        this.healthBarTop.setOrigin(0.5, 0).setScale(0, 1).setDepth(this.healthBarMax.depth + 1);
+        this.healthBarBot = this.scene.add.image(x, this.healthBarMax.y + 13, 'enemies', 'healthbar_long2.png');
+        this.healthBarBot.setOrigin(0.5, 0).setScale(0, -1).setDepth(this.healthBarMax.depth + 1);
+        this.healthBarBorderLeft = this.scene.add.image(x, this.healthBarMax.y - 13, 'enemies', 'healthbar_edge.png');
+        this.healthBarBorderRight = this.scene.add.image(x, this.healthBarMax.y - 13, 'enemies', 'healthbar_edge.png');
+        this.healthBarBorderLeft.setOrigin(1, 0).setScale(0, 1).setDepth(this.healthBarMax.depth + 1);
+        this.healthBarBorderRight.setOrigin(1, 0).setScale(0, 1).setDepth(this.healthBarMax.depth + 1);
+        this.healthBarAssets.push(this.healthBarTop);
+        this.healthBarAssets.push(this.healthBarBot);
+        this.healthBarAssets.push(this.healthBarBorderLeft);
+        this.healthBarAssets.push(this.healthBarBorderRight);
+
 
         this.healthBarRed = this.scene.add.sprite(x - this.healthBarLengthMax - 3, this.healthBarMax.y, 'pixels', 'red_pixel.png');
-        this.healthBarRed.setScale(this.healthBarLengthMax + 3, this.healthBarMax.scaleY);
+        this.healthBarRed.setScale(this.healthBarLengthMax + 3, this.healthBarMax.scaleY - 1);
         this.healthBarRed.setOrigin(0, 0.5);
         this.healthBarRed.alpha = 0;
         this.healthBarRed.setDepth(10);
+        this.healthBarAssets.push(this.healthBarRed);
+
 
         this.healthBarFlash = this.scene.add.sprite(x - this.healthBarLengthMax - 3, this.healthBarMax.y, 'pixels', 'white_pixel.png');
         this.healthBarFlash.setScale(this.healthBarLengthMax + 3, this.healthBarMax.scaleY - 2);
-        this.healthBarFlash.setOrigin(0, 0.5);
-        this.healthBarFlash.alpha = 0;
-        this.healthBarFlash.setDepth(10);
+        this.healthBarFlash.setOrigin(0, 0.5).setAlpha(0);
+        this.healthBarFlash.setDepth(this.healthBarMax.depth);
+        this.healthBarAssets.push(this.healthBarFlash);
+
+        this.healthBar2Flash = this.scene.add.sprite(x - this.healthBarLengthMax - 3, this.healthBarMax.y, 'pixels', 'white_pixel.png');
+        this.healthBar2Flash.setScale(this.healthBarLengthMax + 3, this.healthBarMax.scaleY - 2);
+        this.healthBar2Flash.setOrigin(0, 0.5).setAlpha(0);
+        this.healthBar2Flash.setDepth(this.healthBarMax.depth + 1);
+        this.healthBarAssets.push(this.healthBar2Flash);
 
         this.healthBarCurr = this.scene.add.sprite(x - this.healthBarLengthMax - 1, this.healthBarMax.y, 'pixels', 'green_pixel.png');
         this.healthBarCurr.setScale(this.healthBarLengthMax + 1, this.healthBarMax.scaleY - 2);
         this.healthBarCurr.setOrigin(0, 0.5);
         this.healthBarCurr.alpha = 0;
-        this.healthBarCurr.setDepth(10);
+        this.healthBarCurr.setDepth(this.healthBarMax.depth);
+        this.healthBarAssets.push(this.healthBarCurr);
 
         this.healthBarText = this.scene.add.bitmapText(x, this.healthBarMax.y - 3, 'plainBold', 'zxcv', 20);
-        this.healthBarText.setDepth(10);
+        this.healthBarText.setDepth(this.healthBarMax.depth + 1);
         this.healthBarText.setOrigin(0.5, 0.5);
         this.healthBarText.alpha = 0;
         this.healthBarText.setText(this.health);
+        this.healthBarAssets.push(this.healthBarText);
 
         if (!this.delayLoad) {
             this.loadUpHealthBar();
@@ -153,13 +179,48 @@ class Enemy {
 
     loadUpHealthBar() {
         this.delayLoad = false;
+        let durAmt = gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5;
         this.scene.tweens.add({
             targets: [this.healthBarMax],
             delay: 200,
-            duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
+            duration: durAmt,
             scaleX: this.healthBarMaxGoalScale,
             ease: 'Quint.easeInOut'
         });
+        this.scene.tweens.add({
+            targets: [this.healthBarTop, this.healthBarBot],
+            delay: 200,
+            duration: durAmt,
+            scaleX: this.healthBarMaxGoalScale * 0.02,
+            ease: 'Quint.easeInOut'
+        });
+        this.scene.tweens.add({
+            targets: [this.healthBarBorderLeft],
+            duration: 250,
+            scaleX: 1,
+            ease: 'Quint.easeInOut'
+        });
+        this.scene.tweens.add({
+            targets: [this.healthBarBorderRight],
+            duration: 250,
+            scaleX: -1,
+            ease: 'Quint.easeInOut'
+        });
+        this.scene.tweens.add({
+            targets: [this.healthBarBorderLeft],
+            delay: 200,
+            duration: durAmt,
+            x: gameConsts.halfWidth - this.healthBarMaxGoalScale + 1,
+            ease: 'Quint.easeInOut'
+        });
+        this.scene.tweens.add({
+            targets: [this.healthBarBorderRight],
+            delay: 200,
+            duration: durAmt,
+            x: gameConsts.halfWidth + this.healthBarMaxGoalScale - 1,
+            ease: 'Quint.easeInOut'
+        });
+
         this.scene.tweens.add({
             delay: this.healthBarLengthMax * 5 + 150,
             targets: [this.healthBarCurr, this.healthBarText],
@@ -177,6 +238,24 @@ class Enemy {
             scaleX: this.healthBarMaxGoalScale,
             ease: 'Quint.easeInOut',
         });
+        this.scene.tweens.add({
+            targets: [this.healthBarTop, this.healthBarBot],
+            duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
+            scaleX: this.healthBarMaxGoalScale * 0.02,
+            ease: 'Quint.easeInOut',
+        });
+        this.scene.tweens.add({
+            targets: [this.healthBarBorderLeft],
+            duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
+            x: gameConsts.halfWidth - this.healthBarMaxGoalScale + 1,
+            ease: 'Quint.easeInOut',
+        });
+        this.scene.tweens.add({
+            targets: [this.healthBarBorderRight],
+            duration: gameVars.gameManualSlowSpeedInverse * 100 + this.healthBarLengthMax * 5,
+            x: gameConsts.halfWidth + this.healthBarMaxGoalScale - 1,
+            ease: 'Quint.easeInOut',
+        });
 
         this.scene.tweens.add({
             targets: [this.healthBarCurr],
@@ -192,6 +271,10 @@ class Enemy {
             x: gameConsts.halfWidth - this.healthBarLengthMax - 3,
             scaleX: flashLength,
             ease: 'Quint.easeInOut',
+            onComplete: () => {
+                this.healthBar2Flash.x = this.healthBarFlash.x;
+                this.healthBar2Flash.scaleX = flashLength;
+            }
         });
 
         this.scene.tweens.add({
@@ -229,7 +312,7 @@ class Enemy {
         this.chargeBarOutline.setDepth(9);
 
         this.chargeBarMax = this.scene.add.image(x, mobileY, 'pixels', 'black_blue_pixel.png');
-        this.chargeBarMax.setScale(chargeBarLength + 2, (isMobile ? 12 : 10) + this.chargeBarHeightOffset);
+        this.chargeBarMax.setScale(chargeBarLength + 2, (isMobile ? 11 : 9) + this.chargeBarHeightOffset);
         this.chargeBarMax.setOrigin(0.5, 0.5);
         this.chargeBarMax.visible = false;
         this.chargeBarMax.setDepth(9);
@@ -1516,17 +1599,31 @@ class Enemy {
         if (this.healthBarCurr.scaleX === 0) {
             this.healthBarFlash.scaleX = 0;
         }
-        this.healthBarFlash.scaleY = this.healthBarMax.scaleY;
+        this.healthBar2Flash.scaleX = this.healthBarFlash.scaleX;
+        this.healthBarFlash.scaleY = this.healthBarMax.scaleY - 2;
         this.healthBarFlash.alpha = 1 + 0.2 * mult;
+        this.healthBar2Flash.scaleY = this.healthBarFlash.scaleY;
+        this.healthBar2Flash.alpha = 0.65 + 0.15 * mult;
+
+
         if (this.healthBarFlashTween) {
             this.healthBarFlashTween.stop();
+        }
+        if (this.healthBar2FlashTween) {
+            this.healthBar2FlashTween.stop();
         }
         this.healthBarFlashTween = PhaserScene.tweens.add({
             delay: 50,
             targets: this.healthBarFlash,
             alpha: 0,
             ease: "Quad.easeOut",
-            duration: gameVars.gameManualSlowSpeedInverse * 500 * mult + 150
+            duration: gameVars.gameManualSlowSpeedInverse * 525 * mult + 150
+        });
+        this.healthBar2FlashTween = PhaserScene.tweens.add({
+            targets: this.healthBar2Flash,
+            alpha: 0,
+            ease: "Cubic.easeOut",
+            duration: gameVars.gameManualSlowSpeedInverse * 300 * mult + 60
         });
         if (this.healthBarRedTween) {
             this.healthBarRedTween.stop();
@@ -1679,13 +1776,15 @@ class Enemy {
         }
     }
 
-    setAwake() {
+    setAwake(autoAggro = true) {
         if (this.isDestroyed) {
             return;
         }
         this.chargeBarAngry.scaleX = 0;
         this.chargeBarWarning.scaleX = 0;
-        this.timeSinceLastAttacked = 0;
+        if (autoAggro) {
+            this.timeSinceLastAttacked = 0;
+        }
         // this.castAggravateCharge += 20;
         this.isAsleep = false;
         if (this.attackName) {
@@ -1892,9 +1991,10 @@ class Enemy {
             clearTimeout(this.popupTimeout);
         }
 
-        this.healthBarMax.destroy();
-        this.healthBarCurr.destroy();
-        this.healthBarText.destroy();
+
+        for (let i in this.healthBarAssets) {
+            this.healthBarAssets[i].destroy();
+        }
 
         this.chargeBarWarningBig.destroy();
         this.chargeBarMax.destroy();
@@ -2049,9 +2149,20 @@ class Enemy {
                          ease: "Cubic.easeOut",
                          duration: gameVars.gameManualSlowSpeedInverse * 400,
                          onComplete: () => {
+
+                             this.healthBarTop.destroy();
+                             this.healthBarBot.destroy();
+                             this.healthBarBorderLeft.destroy();
+                             this.healthBarBorderRight.destroy();
+
                              PhaserScene.tweens.add({
-                                 targets: [this.healthBarMax],
+                                 targets: [this.healthBarMax, this.healthBarTop, this.healthBarBot, this.healthBarBorderLeft, this.healthBarBorderRight],
                                  scaleX: 0,
+                                 duration: gameVars.gameManualSlowSpeedInverse * 1000
+                             });
+                             PhaserScene.tweens.add({
+                                 targets: [this.healthBarBorderLeft, this.healthBarBorderRight],
+                                 x: gameConsts.halfWidth,
                                  duration: gameVars.gameManualSlowSpeedInverse * 1000
                              });
                              PhaserScene.tweens.add({

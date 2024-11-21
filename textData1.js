@@ -120,22 +120,22 @@ let textData = {
         "jp": "とげを獲得してあなたを守り、\n1ダメージを反射します"
     },
     "matter_unload_desc": {
-        "en_us": "Deal 24 DMG.\nGain 24\ntemporary protection.",
-        "fr": "Inflige 24 points\nde dégâts et confère\n24 points de\nprotection temporaire",
-        "zh_tw": "造成 24 點傷害。\n獲得 24 點臨時保護。",
-        "zh_cn": "造成 24 点伤害。\n获得 24 点临时保护。",
-        "ru": "Нанести 24 урона.\nПолучить 24 единицы\nвременной защиты.",
-        "es": "Inflige 24 de\ndaño. Obtén 24 de\nprotección temporal.",
-        "jp": "24ダメージを\n与える。24個の一時\n的な保護を得る。"
+        "en_us": "Gain 20 temporary\nprotection. Grow\ntwo 20 DMG pillars.",
+        "fr": "+20 PV temporaires.\nFaites pousser deux\npiliers de 20 DMG.",
+        "zh_tw": "+20 臨時生命值。\n打造兩支 20 點\n傷害的柱子。",
+        "zh_cn": "+20 临时生命值。\n打造两个 20 点\n伤害的柱子。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "matter_unload_desc_long": {
-        "en_us": "Deal 24 DMG. Gain\n24 temporary protection.",
-        "fr": "Inflige 24 points de dégâts et confère\n24 points de protection temporaire",
-        "zh_tw": "造成 24 點傷害。\n獲得 24 點臨時保護。",
-        "zh_cn": "造成 24 点伤害。\n获得 24 点临时保护。",
-        "ru": "Нанести 24 урона. Получить\n24 единицы временной защиты.",
-        "es": "Inflige 24 de daño.\nObtén 24 de protección temporal.",
-        "jp": "24ダメージを与える。\n24個の一時的な保護を得る。"
+        "en_us": "+20 temporary HP.\nGrow two 20 DMG pillars.",
+        "fr": "+20 PV temporaires.\nFaites pousser deux piliers de 20 DMG.",
+        "zh_tw": "+20 臨時生命值。\n打造兩支 20 點傷害的柱子。",
+        "zh_cn": "+20 临时生命值。\n打造两个 20 点伤害的柱子。",
+        "ru": "",
+        "es": "",
+        "jp": ""
     },
     "time_strike_desc": {
         "en_us": "6 DMG. Hits a\nsecond time at\nhalf power.",
@@ -221,8 +221,8 @@ let textData = {
     "time_unload_desc_2": {
         "en_us": " spells.\nGets weaker\nwith repeat use.",
         "fr": " prochains\nsorts. Cet effet\ns'affaiblit avec\nl'utilisation répétée.",
-        "zh_tw": " 個法術\n凍結時間。重複使用\n會變弱。",
-        "zh_cn": " 个法术\n冻结时间。重复使用\n会变弱。",
+        "zh_tw": " 個法術\n凍結時間。重複使\n用會變弱。",
+        "zh_cn": " 个法术\n冻结时间。重复使\n用会变弱。",
         "ru": "\nзаклинаний. Слабеет\nпри повторном\nиспользовании.",
         "es": " hechizos.\nSe debilita con\nel uso repetido.",
         "jp": "つの呪文の凍結\n時間。繰り返し使用\nすると弱くなります。"
@@ -255,10 +255,10 @@ let textData = {
         "jp": "次の7つの呪文の凍結時間。\n繰り返し使用すると弱くなります。"
     },
     "void_strike_desc": {
-        "en_us": "2% enemy current\nHP DMG. Consumes\nall Strike runes\nfor extra attacks.",
-        "fr": "Consommez toutes\nles runes de frappe.\nChaque tire une attaque\ninfligeant 2 % PV\nactuels ennemis.",
-        "zh_tw": "2% 敵人當前生命值傷害。消耗所有攻擊符文進行多倍攻擊。",
-        "zh_cn": "2% 敌人当前生命值伤害。消耗所有攻击符文进行多倍攻击。",
+        "en_us": "2.5% enemy current\nHP DMG. Consumes\nall Strike runes\nfor extra attacks.",
+        "fr": "Consommez toutes\nles runes de frappe.\nChaque tire une attaque\ninfligeant 2.5 % PV\nactuels ennemis.",
+        "zh_tw": "2.5% 敵人當前\n生命值傷害。消\n耗所有攻擊符文\n進行多倍攻擊。",
+        "zh_cn": "2.5% 敌人当前\n生命值伤害。消\n耗所有攻击符文\n进行多倍攻击。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -273,10 +273,10 @@ let textData = {
         "jp": "遅延後に3回攻撃し、各攻撃で敵の\n現在のHPの2.5%にダメージを与える"
     },
     "void_strike_desc_long": {
-        "en_us": "2% enemy current HP DMG.\nConsumes all Strike runes for extra attacks.",
-        "fr": "Consommez toutes les runes de frappe. Chaque\ntire une attaque infligeant 2 % PV actuels ennemis.",
-        "zh_tw": "2% 敵人當前生命值傷害。\n消耗所有攻擊符文進行多倍攻擊。",
-        "zh_cn": "2% 敌人当前生命值伤害。\n消耗所有攻击符文进行多倍攻击。",
+        "en_us": "2.5% enemy current HP DMG.\nConsumes all Strike runes for extra attacks.",
+        "fr": "Consommez toutes les runes de frappe. Chaque\ntire une attaque infligeant 2.5 % PV actuels ennemis.",
+        "zh_tw": "2.5% 敵人當前生命值傷害。\n消耗所有攻擊符文進行多倍攻擊。",
+        "zh_cn": "2.5% 敌人当前生命值伤害。\n消耗所有攻击符文进行多倍攻击。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -291,19 +291,19 @@ let textData = {
         "jp": ""
     },
     "void_enhance_desc": {
-        "en_us": "Permanently increase\nattack damage\nby 1",
-        "fr": "Augmente de\nmanière permanente\nles dégâts\nd'attaque de 1",
-        "zh_tw": "你的攻擊永久獲得\n+1 傷害",
-        "zh_cn": "你的攻击永久获得\n+1 伤害",
+        "en_us": "Lose 3 max health.\nPermanently\nincrease attack\ndamage by 2.",
+        "fr": "Perdez 3 points de\nvie max. Augmentez\ndéfinitivement les\ndégâts d'attaque\nde 2.",
+        "zh_tw": "犧牲 3 點總生命\n值。攻擊永久獲\n得+2 傷害。",
+        "zh_cn": "牺牲 3 点总生命\n值。攻击永久获\n得+2 伤害。",
         "ru": "Ваши атаки\nнавсегда получают\n+1 к урону",
         "es": "Tu ataque gana\npermanentemente\n+1 daño",
         "jp": "あなたの攻撃力は\n永続的に増加します\n+1ダメージ"
     },
     "void_enhance_desc_long": {
-        "en_us": "Permanently increase\nattack damage by 1",
-        "fr": "Augmente de manière permanente\nles dégâts d'attaque de 1",
-        "zh_tw": "攻擊永久增加 +1 傷害",
-        "zh_cn": "攻击永久增加 +1 伤害",
+        "en_us": "Lose 3 max health. Permanently\nincrease attack damage by 2.",
+        "fr": "Perdez 3 points de vie max. Augmentez\ndéfinitivement les dégâts d'attaque de 2.",
+        "zh_tw": "犧牲 3 點總生命值。\n攻擊永久獲得+2 傷害。",
+        "zh_cn": "牺牲 3 点总生命值。\n攻击永久获得+2 伤害。",
         "ru": "Ваши атаки навсегда получают +1 к урону",
         "es": "Tu ataque gana permanentemente +1 daño",
         "jp": "あなたの攻撃力は永続的に増加します+1ダメージ"
@@ -329,8 +329,8 @@ let textData = {
     "void_reinforce_desc": {
         "en_us": "HEAL to full,\nbut lose 10\nmax HP",
         "fr": "Soignez-vous\ncomplètement, mais\nperdez 10 PV max",
-        "zh_tw": "完全治癒自己，但失去\n10 點總生命值",
-        "zh_cn": "完全治愈自己，但失去\n10 点总生命值",
+        "zh_tw": "完全治癒自己，但\n失去10 點總生命值",
+        "zh_cn": "完全治愈自己，但\n失去10 点总生命值",
         "ru": "Полностью восстановите\nздоровье, но потеряйте\n10 единиц максимального\nздоровья",
         "es": "Se cura por\ncompleto, pero\npierde 10 puntos\nde salud máximos.",
         "jp": "完全に回復するが、\n最大HPの10を失う"
@@ -437,8 +437,8 @@ let textData = {
     "mind_reinforce_desc": {
         "en_us": "Increase all damage\nyou deal by +3.\nRefresh your\nelement runes.",
         "fr": "Augmente tous les\ndégâts que vous\ninfligez de +3.\nRafraîchissez vos\néléments.",
-        "zh_tw": "你造成的所有傷害\n增加 +3。刷新你的\n元素。",
-        "zh_cn": "你造成的所有伤害\n增加 +3。刷新你的\n元素。",
+        "zh_tw": "你造成的所有傷害\n增加 +3。刷新你\n的元素。",
+        "zh_cn": "你造成的所有伤害\n增加 +3。刷新你\n的元素。",
         "ru": "Весь наносимый\nвами урон\nувеличивается\nна +3.",
         "es": "Todo el daño\nque infliges\naumenta en +3",
         "jp": "与えるダメージ\nはすべて +3\n増加します"
@@ -480,7 +480,7 @@ let textData = {
         "jp": ""
     },
     "matter_plus_tut_desc": {
-        "en_us": "Your mastery over the\nMatter element strengthens\nsome of your existing Matter spells.\n\nMatter+Strike Damage 12 -> 14\nMatter+Shield Amount 12 -> 14",
+        "en_us": "Your mastery over the\nMatter element strengthens\nsome of your existing Matter spells.\n\nMatter+Strike Damage 12 -> 14\nMatter+Shield Block 12 -> 14",
         "fr": "Votre maîtrise de l’élément\nMatière renforce certains\nde vos sorts de Matière existants.\n\nMatter+Strike dégâts 12 -> 14\nMatter+Shield Protection 12 -> 14",
         "zh_tw": "你對物質元素的掌握加強\n了你現有的一些物質法術。\nMatter+Strike 傷害 12->14\nMatter+Shield 保護 12->14",
         "zh_cn": "你对物质元素的掌握加强\n了你现有的一些物质法术。\nMatter+Strike 伤害 12->14\nMatter+Shield 保护 12->14",
@@ -525,11 +525,11 @@ let textData = {
         "jp": ""
     },
     "matter_tut_unload_desc": {
-        "en_us": "Deals heavy damage while\nkeeping yourself protected.",
-        "fr": "Inflige de lourds dégâts\ntout en vous protégeant.",
-        "zh_tw": "造成重大傷害，同時保護自己。",
-        "zh_cn": "造成重大伤害，同时保护自己。",
-        "ru": "Наносит сильный урон, сохраняя\nпри этом свою защиту.",
+        "en_us": "Gain powerful temporary\nprotection and conjure two\ndamage-dealing pillars on\nthe sides of your wheel.",
+        "fr": "Obtenez un puissant bouclier\ntemporaire et invoquez deux\npiliers infligeant des\ndégâts sur les côtés de\nvotre roue.",
+        "zh_tw": "獲得強大的臨時保護，\n並在車輪兩側召喚出\n兩根造成傷害的柱子。",
+        "zh_cn": "获得强大的临时保护，\n并在车轮两侧召唤出\n两根造成伤害的柱子。",
+        "ru": "",
         "es": "",
         "jp": ""
     },
@@ -597,7 +597,7 @@ let textData = {
         "jp": ""
     },
     "mind_tut_unload_desc": {
-        "en_us": "Multiplies the effectiveness\nof your next non-attack spell.\nThose clever enough to cast\nthis spell twice in a row can\nattain immense spell-\namplifying power.",
+        "en_us": "Multiplies the effectiveness\nof your next non-attack spell.\nCasting this spell twice in\na row will grant immense spell\namplifying power.",
         "fr": "Multiplie l'efficacité de votre\nprochain sort non offensif.\nLancer ce sort deux fois de suite\npeut donner un incroyable\npouvoir d'amplification des sorts.",
         "zh_tw": "使你的下一個非攻擊法術的效果\n成倍增加。\n連續施放此法術兩次可以獲得驚\n人的法術增強力量。",
         "zh_cn": "使你的下一个非攻击法术的效果\n成倍增加。\n连续施放此法术两次可以获得惊\n人的法术增强力量。",
@@ -660,7 +660,7 @@ let textData = {
         "jp": ""
     },
     "time_tut_unload_desc": {
-        "en_us": "Freeze time temporarily\nletting you cast multiple\nspells without any time passing.\nRepeated use of this spell\nmakes it weaker.",
+        "en_us": "Freeze time temporarily\nletting you cast multiple spells\nwhile the enemy cannot move.\nRepeated use of this spell\nmakes it weaker.",
         "fr": "Gèle temporairement le temps.\nPendant cette période, vous\npouvez lancer plusieurs sorts\nsans que le temps ne passe, bien\nque l'utilisation répétée de ce\nsort l'affaiblisse.",
         "zh_tw": "暫時凍結時間。在凍結期間，\n你可以施展多個法術而不產\n生時間流逝，但重複使用此法\n術會使法術變弱。",
         "zh_cn": "暂时冻结时间。冻结期间，\n你可以施展多个法术而不产生\n时间流逝，但重复使用此法术\n会使法术变弱。",
@@ -696,10 +696,10 @@ let textData = {
         "jp": ""
     },
     "void_tut_enhance_desc": {
-        "en_us": "Increase your attack damage\nfor the rest of the fight. Good\nfor long battles.",
-        "fr": "Augmente les dégâts de votre\nattaque pour le reste du combat.\nIdéal pour les longues batailles.",
-        "zh_tw": "永久增加你的攻擊力。\n适合长时间战斗。",
-        "zh_cn": "永久增加你的攻击力。\n适合长时间战斗。",
+        "en_us": "Sacrifice some health to\nincrease your attack damage\nfor the rest of the fight. Good\nfor long battles.",
+        "fr": "Sacrifiez un peu de santé\npour augmenter les dégâts de\nvotre attaque pour le reste du\ncombat. Idéal pour les longues\nbatailles.",
+        "zh_tw": "牺牲一些生命值来永\n久增加你的攻擊力。\n适合长时间战斗。",
+        "zh_cn": "牺牲一些生命值来永\n久增加你的攻击力。\n适合长时间战斗。",
         "ru": "Увеличьте свой урон от атаки\nдо конца боя.",
         "es": ".",
         "jp": ""

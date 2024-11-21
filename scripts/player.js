@@ -92,6 +92,9 @@ class Player {
     setHealth(amt = 80) {
         this.health = amt;
         this.refreshHealthBar();
+        if (this.health <= 0) {
+            this.die();
+        }
     }
 
     setHealthMaxTemp(amt = 80) {
@@ -1303,7 +1306,7 @@ class Player {
                         });
                         deathTrainingButton.addText(getLangText('back_to_training'), {fontFamily: 'germania', fontSize: 24, color: '#000000', align: 'center'});
                         deathTrainingButton.setDepth(200);
-                        if (CURRENT_LEVEL >= 7 || CURRENT_LEVEL < 0) {
+                        if (CURRENT_LEVEL >= 8 || CURRENT_LEVEL <= 3) {
                             deathTrainingButton.setState(DISABLE);
                         } else {
                             deathMenuButton.setPos(gameConsts.halfWidth - 145, gameConsts.height - 389);

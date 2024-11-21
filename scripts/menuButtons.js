@@ -32,20 +32,14 @@ function setupMainMenuBG() {
 
         }
         globalObjects.creditsButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 225, gameConsts.halfHeight - 5, 'misc', 'creditsgame.webp');
-        globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
+        // globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
     }
 }
 
 function playNewGameFlash() {
     let hasLvlSelect = gameVars.maxLevel >= 1;
     if (!hasLvlSelect) {
-        setTimeout(() => {
-            // if (globalObjects.startButtonSprite.visible) {
-            //     globalObjects.startButtonSpriteFlash = PhaserScene.add.sprite(globalObjects.startButtonSprite.x + 3, globalObjects.startButtonSprite.y, 'shields', 'btnFlash1.png');
-            //     globalObjects.startButtonSpriteFlash.play('btnFlash');
-            //     globalObjects.startButtonSpriteFlash.setScale(globalObjects.startButtonSprite.scaleX * 1.28).setRotation(globalObjects.startButtonSprite.rotation);
-            // }
-        }, 250)
+
 
     }
 }
@@ -908,6 +902,7 @@ function showMainMenuButtons() {
             // let maximText = PhaserScene.add.text(gameConsts.halfWidth - 270, gameConsts.halfHeight - 206, "Programming & Game Design", {fontFamily: 'Arial', fontSize: 18, color: '#452127', align: 'left', lineSpacing: -5}).setOrigin(0, 0.25).setDepth(100000).setAlpha(0.3).setScale(0.975);
             // maximText.setFontStyle('bold');
 
+
             let clickBlock;
             clickBlock = new Button({
                 normal: {
@@ -981,6 +976,7 @@ function showMainMenuButtons() {
                 scaleY: 1,
                 alpha: 1,
             });
+
 
             PhaserScene.tweens.add({
                 targets: [creditsPaper],
@@ -1283,6 +1279,7 @@ function showMainMenuButtons() {
         textObjExtras.setFontSize(20);
     }
     globalObjects.extrasButton.setRotation(-0.145)
+
 }
 
 function updateMenuLanguage() {

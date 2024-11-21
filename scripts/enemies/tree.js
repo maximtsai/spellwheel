@@ -15,7 +15,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 240 : 220;
+         this.health = gameVars.isHardMode ? 230 : 210;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;
@@ -397,12 +397,18 @@
                  this.addTween({
                      delay: 150 - delay,
                      targets: newObj,
-                     scaleX: 1,
-                     scaleY: 1,
-                     ease: 'Back.easeOut',
-                     duration: 450,
-                     onStart: () => {
-                         newObj.scaleX = 0.36;
+                     scaleX: 1.3,
+                     scaleY: 1.2,
+                     ease: 'Cubic.easeIn',
+                     duration: 350,
+                     onComplete: () => {
+                         this.addTween({
+                             targets: newObj,
+                             scaleX: 1,
+                             scaleY: 1,
+                             ease: 'Back.easeOut',
+                             duration: 200,
+                         });
                      }
                  });
              }
@@ -418,11 +424,11 @@
 
      fireObjects(damage = 10) {
          let totalObjects = this.leafObjects.length;
-         let projDur = 550 - Math.floor(Math.sqrt(totalObjects) * 50);
+         let projDur = 600 - Math.floor(Math.sqrt(totalObjects) * 50);
          let leafObjectsFired = 0;
          while (this.leafObjects.length > 0) {
              let currObj = this.leafObjects.shift();
-             let delayAmt = leafObjectsFired * 100;
+             let delayAmt = leafObjectsFired * 100 + 50;
              this.addTween({
                  delay: delayAmt,
                  targets: currObj,
@@ -437,7 +443,7 @@
                  delay: delayAmt,
                  y: globalObjects.player.getY() - 190,
                  x: gameConsts.halfWidth * 0.9 + currObj.x * 0.1,
-                 ease: 'Quad.easeIn',
+                 ease: 'Cubic.easeIn',
                  duration: projDur,
                  onStart: () => {
                      currObj.setScale(1);
@@ -815,10 +821,10 @@
                      }
                  },
                  {
-                     name: "|2x5 ",
+                     name: "|3x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: gameVars.isHardMode ? 450 : 500,
+                     chargeAmt: gameVars.isHardMode ? 500 : 550,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');
@@ -832,8 +838,8 @@
                              this.createLeafObject('tree_leaf.webp', xPos, yPos, i * 25);
                          }
                          this.addTimeout(() => {
-                             this.fireObjects(2);
-                         }, 1000);
+                             this.fireObjects(3);
+                         }, 1100);
                      }
                  },
              ],
@@ -899,10 +905,10 @@
                      }
                  },
                  {
-                     name: "|2x5 ",
+                     name: "|3x5 ",
                      announceName: "LEAF STORM",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: gameVars.isHardMode ? 450 : 500,
+                     chargeAmt: gameVars.isHardMode ? 500 : 550,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');
@@ -915,15 +921,15 @@
                              this.createLeafObject('tree_leaf.webp', xPos, yPos, i * 25);
                          }
                          this.addTimeout(() => {
-                             this.fireObjects(2);
-                         }, 1000);
+                             this.fireObjects(3);
+                         }, 1100);
                      }
                  },
                  {
                      name: "|10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 600,
+                     chargeAmt: 450,
                      damage: -1,
                      attackStartFunction: () => {
 

@@ -17,8 +17,8 @@
          this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 54, 'misc', 'slash1.png').setScale(0.9).setDepth(995).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.22;
-         this.extraRepeatDelay = 100;
-         this.pullbackHoldRatio = 0.65;
+         this.extraRepeatDelay = 40;
+         this.pullbackHoldRatio = 0.6;
 
         this.isAnimating = false;
          this.attackEase = "Quart.easeIn";

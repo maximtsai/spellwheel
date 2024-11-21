@@ -43,7 +43,7 @@ function playNewGameFlash() {
             if (globalObjects.startButtonSprite.visible) {
                 globalObjects.startButtonSpriteFlash = PhaserScene.add.sprite(globalObjects.startButtonSprite.x + 3, globalObjects.startButtonSprite.y, 'shields', 'btnFlash1.png');
                 globalObjects.startButtonSpriteFlash.play('btnFlash');
-                globalObjects.startButtonSpriteFlash.setScale(globalObjects.startButtonSprite.scaleX * 1.28).setRotation(globalObjects.startButtonSprite.rotation);
+                globalObjects.startButtonSpriteFlash.setScale(globalObjects.startButtonSprite.scaleX * 2.55).setRotation(globalObjects.startButtonSprite.rotation);
             }
         }, 250)
 

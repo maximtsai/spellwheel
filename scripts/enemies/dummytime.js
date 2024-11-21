@@ -399,13 +399,13 @@
              [
                  {
                      name: "FULL HEAL! \\100",
-                     chargeAmt: 850,
+                     chargeAmt: 920,
                      finishDelay: 2000,
                      transitionFast: true,
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
-                         if (this.health > 30 && !this.justShown) {
+                         if (this.health > 40 && !this.justShown) {
                              this.justShown = true;
                              globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 197, getLangText('level4_train_tut_c'), 'right');
                              let runeYPos = globalObjects.textPopupManager.getBoxTopPos();

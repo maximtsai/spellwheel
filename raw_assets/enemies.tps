@@ -642,6 +642,7 @@
                 <false/>
             </struct>
             <key type="filename">enemies/healthbar_long.png</key>
+            <key type="filename">enemies/healthbar_long2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

@@ -1036,10 +1036,10 @@
                      }
                  },
                  {
-                     name: "|6 ",
+                     name: "|7 ",
                      announceName: "void strike",
                      chargeAmt: 750,
-                     damage: 6,
+                     damage: 7,
                      chargeMult: 1.5,
                      attackSprites: ['void_knight_attack.png'],
                      startFunction: () => {
@@ -1057,7 +1057,7 @@
                          playSound('sword_hit', 0.2);
                      },
                      finaleFunction: () => {
-                        this.nextAttack.damage = 6;
+                        this.nextAttack.damage = 7;
                          this.setDefaultSprite('void_knight.png');
                          this.sigilEffect.visible = true;
                      }
@@ -1156,7 +1156,7 @@
                      }
                  },
                  {
-                     name: "|10 ",
+                     name: "|12 ",
                      announceName: "ASSAIL",
                      chargeAmt: 500,
                      chargeMult: 1.65,
@@ -1195,7 +1195,7 @@
                      }
                  },
                  {
-                     name: "|13 ",
+                     name: "|14 ",
                      announceName: "ASSAIL",
                      chargeAmt: 550,
                      chargeMult: 1.65,

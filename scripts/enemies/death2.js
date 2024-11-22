@@ -1097,7 +1097,7 @@
 
      clearFistObjects() {
          if (this.fistObjects.length > 0) {
-             PhaserScene.add.tween({
+             PhaserScene.tweens.add({
                  targets: this.fistObjects,
                  duration: 500,
                  ease: 'Back.easeIn',
@@ -1117,6 +1117,7 @@
          super.die();
          this.stopIdleAnim();
         gameVars.latestLevel = this.level;
+        gameVars.currLevel = this.level;
         localStorage.setItem("latestLevel", (gameVars.latestLevel).toString());
         gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
         localStorage.setItem("maxLevel", gameVars.maxLevel.toString());

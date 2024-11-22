@@ -533,6 +533,27 @@ function createMenuCloseButton(items) {
 
 function switchLevelBackground(lvl) {
     switch(lvl) {
+        case -99:
+            let bgObjx = fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 100, globalObjects.menuBack.scaleX, globalObjects.menuBack.startScale * 1.19, globalObjects.menuBack.startScale * 1.2,'Quint.easeInOut', 0, false, 0, true);
+            bgObjx.setOrigin(0.5, 0.5).setPosition(globalObjects.menuBack.x, globalObjects.menuBack.y).setScale(globalObjects.menuBack.scaleX, globalObjects.menuBack.scaleY).setDepth(-8);
+            minorZoomMenu();
+            globalObjects.menuTop.setDepth(-7);
+
+            PhaserScene.tweens.add({
+                targets: bgObjx,
+                scaleX: globalObjects.menuBack.startScale * 1.19,
+                scaleY: globalObjects.menuBack.startScale * 1.2,
+                y: gameConsts.halfHeight - 110,
+                ease: 'Quint.easeInOut',
+                alpha: 1,
+                duration: 1500,
+                onComplete: () => {
+                    globalObjects.menuTop.setDepth(-9);
+                    globalObjects.menuBack.setFrame('menu_back_battle.png');
+                    bgObjx.visible = false;
+                }
+            });
+            break;
         case -8:
             switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
@@ -675,7 +696,7 @@ function beginLevel(lvl, instant = false) {
 
 function createEnemyAfterDelay(lvl) {
     let delayAmt = 1200;
-    if (lvl == 0) {
+    if (lvl === 0 || lvl === -99) {
         delayAmt = 0;
     }
     levelTimeoutID = setTimeout(() => {

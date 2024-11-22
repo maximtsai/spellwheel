@@ -3081,6 +3081,7 @@
          }, 70)
          this.isDefeated = true;
          gameVars.latestLevel = this.level;
+         gameVars.currLevel = this.level;
          localStorage.setItem("latestLevel", (gameVars.latestLevel).toString());
          gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
          localStorage.setItem("maxLevel", gameVars.maxLevel.toString());

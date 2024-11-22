@@ -10,6 +10,7 @@
         setTimeout(() => {
             this.windSfx = playSound('wind', 0.01, true);
             gameVars.latestLevel = this.level - 1;
+            gameVars.currLevel = this.level - 1;
             localStorage.setItem("latestLevel", gameVars.latestLevel.toString());
             gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
             localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
@@ -685,6 +686,7 @@
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();
          gameVars.latestLevel = this.level;
+         gameVars.currLevel = this.level;
          localStorage.setItem("latestLevel", (gameVars.latestLevel).toString());
          gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
          localStorage.setItem("maxLevel", gameVars.maxLevel.toString());

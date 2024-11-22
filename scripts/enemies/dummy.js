@@ -521,7 +521,7 @@
 
          if (!this.angryEyes && currHealthPercent < 0.999) {
              this.angryEyes = true;
-            this.setAwake();
+            this.setAwake(false);
              this.clearStartShadow();
 
          }
@@ -1197,7 +1197,7 @@
                                                     scaleY: 50,
                                                      ease: 'Quad.easeOut',
                                                  });
-                                                this.setAwake();
+                                                this.setAwake(false);
                                                  this.addTween({
                                                      targets: [blackpulse1, dummyShadow],
                                                      duration: 550,

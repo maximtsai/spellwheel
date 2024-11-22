@@ -375,6 +375,8 @@
                      name: "STARE",
                      chargeAmt: 250,
                      isPassive: true,
+                     damage: 0,
+                     transitionFast: true,
                      startFunction: () => {
                          this.pullbackScale = 1;
                          this.attackScale = 1;

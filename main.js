@@ -129,6 +129,8 @@ function preload ()
     }
     if (!gameVars.maxLevel) {
         gameVars.maxLevel = gameVars.latestLevel;
+    } else {
+        updateSpellState(gameVars.maxLevel)
     }
 
     if (isMobile && screen && screen.orientation && screen.orientation.lock) {

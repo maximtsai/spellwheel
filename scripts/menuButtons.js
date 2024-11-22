@@ -33,6 +33,10 @@ function setupMainMenuBG() {
         }
         globalObjects.creditsButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 225, gameConsts.halfHeight - 5, 'misc', 'creditsgame.webp');
         // globalObjects.extrasButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 222, gameConsts.halfHeight - 72, 'misc', 'wishlistgame.webp')
+        if (gameVars.maxLevel >= 2) {
+            globalObjects.protectedDummySprite = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 8, 'enemies', 'lesser_dummy_shield_smal.png').setDepth(-1).setAlpha(0.95);
+        }
+
     }
 }
 
@@ -76,6 +80,18 @@ function clearOnlyMenuButtons() {
 
     globalObjects.creditsButton.destroy();
     globalObjects.creditsButtonSprite.destroy();
+    if (globalObjects.protectedDummySprite) {
+        PhaserScene.tweens.add({
+            targets: globalObjects.protectedDummySprite,
+            alpha: 0,
+            ease: 'Cubic.easeOut',
+            duration: 400,
+            onComplete: () => {
+                globalObjects.protectedDummySprite.destroy();
+            }
+        });
+    }
+
     // globalObjects.extrasButton.destroy();
     // globalObjects.extrasButtonSprite.destroy();
 
@@ -312,12 +328,12 @@ function showMainMenuButtons() {
                 x: gameConsts.halfWidth - 183,
                 y: gameConsts.halfHeight - 38,
                 alpha: 1,
-                scaleX: 135,
+                scaleX: 115,
                 scaleY: 40
             },
             hover: {
-                scaleX: 140,
-                scaleY: 45,
+                scaleX: 120,
+                scaleY: 43,
             },
             press: {
             },
@@ -487,313 +503,47 @@ function showMainMenuButtons() {
     globalObjects.cheatButton4.setScale(0.5);
     globalObjects.cheatButton4.addText("INFINITE AMMO", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
-    /*
-    globalObjects.level3Button = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: 100,
-            y: 140,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            clearMenuButtons();
-            beginPreLevel(3);
+
+    if (gameVars.maxLevel >= 2) {
+        if (!globalObjects.protectedDummySprite || !globalObjects.protectedDummySprite.active) {
+            globalObjects.protectedDummySprite = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 8, 'enemies', 'lesser_dummy_shield_smal.png').setDepth(-1).setAlpha(0.95);
         }
-    });
-    globalObjects.level3Button.setScale(0.5);
-    globalObjects.level3Button.addText("LEVEL TREE", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
+        globalObjects.protectedDummyButton = new Button({
+            normal: {
+                ref: "blackPixel",
+                alpha: 0,
+                x: gameConsts.halfWidth + 15,
+                y: gameConsts.halfHeight - 80,
+                scaleX: 65,
+                scaleY: 90
+            },
 
-    globalObjects.lvlButton = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: 100,
-            y: 180,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            clearMenuButtons();
-            beginPreLevel(4);
-        }
-    });
-    globalObjects.lvlButton.setScale(0.5);
-    globalObjects.lvlButton.addText("LEVEL MAGICIAN", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
+            onHover: () => {
+                if (canvas) {
+                    playSound('button_hover', 1).detune = 200;
+                    canvas.style.cursor = 'pointer';
+                }
+                globalObjects.protectedDummySprite.setFrame('lesser_dummy_shield_smal_hover.png');
+            },
+            onHoverOut: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
+                globalObjects.protectedDummySprite.setFrame('lesser_dummy_shield_smal.png');
+            },
+            onMouseUp: () => {
+                clearOnlyMenuButtons();
 
-    globalObjects.lvl5Button = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: 100,
-            y: 220,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            clearMenuButtons();
-            beginPreLevel(5);
-        }
-    });
-    globalObjects.lvl5Button.setScale(0.5);
-    globalObjects.lvl5Button.addText("LEVEL KNIGHT", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
+                beginPreLevel(-99) // -99
+            }
+        });
 
-    globalObjects.lvl6Button = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: 100,
-            y: 260,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            clearMenuButtons();
-            beginPreLevel(6);
-        }
-    });
-    globalObjects.lvl6Button.setScale(0.5);
-    globalObjects.lvl6Button.addText("LEVEL WALL", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
-
-    globalObjects.lvl7Button = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: 100,
-            y: 300,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            clearMenuButtons();
-            beginPreLevel(7);
-        }
-    });
-    globalObjects.lvl7Button.setScale(0.5);
-    globalObjects.lvl7Button.addText("LEVEL SUPER DUMMY", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
-
-    globalObjects.lvl8Button = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: 100,
-            y: 340,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            clearMenuButtons();
-            beginPreLevel(8);
-        }
-    });
-    globalObjects.lvl8Button.setScale(0.5);
-    globalObjects.lvl8Button.addText("LEVEL ASSASSIN", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
-
-    globalObjects.lvl9Button = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: 100,
-            y: 380,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            clearMenuButtons();
-            beginPreLevel(9);
-        }
-    });
-    globalObjects.lvl9Button.setScale(0.5);
-    globalObjects.lvl9Button.addText("LEVEL ROBOT", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
-
-    globalObjects.lvl10Button = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: 100,
-            y: 420,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            clearMenuButtons();
-            beginPreLevel(10);
-        }
-    });
-    globalObjects.lvl10Button.setScale(0.5);
-    globalObjects.lvl10Button.addText("LEVEL DEATH", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
+    }
 
 
-    globalObjects.lvl11Button = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: 100 - hideCheatConst,
-            y: 460,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            clearMenuButtons();
-            beginPreLevel(11);
-        }
-    });
-    globalObjects.lvl11Button.setScale(0.5);
-    globalObjects.lvl11Button.addText("LEVEL 11", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'})
 
-    globalObjects.lvl12Button = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: 100 - hideCheatConst,
-            y: 490,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            clearMenuButtons();
-            beginPreLevel(12);
-        }
-    });
-    globalObjects.lvl12Button.setScale(0.5);
-    globalObjects.lvl12Button.addText("LEVEL 11.5", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'});
 
-    globalObjects.lvl13Button = new Button({
-        normal: {
-            ref: "menu_btn_normal.png",
-            atlas: 'buttons',
-            x: 100 - hideCheatConst,
-            y: 520,
-        },
-        hover: {
-            ref: "menu_btn_hover.png",
-            atlas: 'buttons',
-        },
-        press: {
-            ref: "menu_btn_press.png",
-            atlas: 'buttons',
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp: () => {
-            clearMenuButtons();
-            beginPreLevel(13);
-        }
-    });
-    globalObjects.lvl13Button.setScale(0.5);
-    globalObjects.lvl13Button.addText("LEVEL 13", {fontFamily: 'germania', fontSize: 20, color: '#000000', align: 'left'});
-    */
 
-    // globalObjects.lvlButton.destroy();
-    // globalObjects.cheatButton.destroy();
-    // globalObjects.cheatButton2.destroy();
-    // globalObjects.cheatButton3.destroy();
-    // globalObjects.cheatButton4.destroy();
-    // globalObjects.cheatButton5.destroy();
-    //
-    // globalObjects.level3Button.destroy();
-    // globalObjects.lvl5Button.destroy();
-    // globalObjects.lvl6Button.destroy();
-    //
-    // globalObjects.lvl7Button.destroy();
-    // globalObjects.lvl8Button.destroy();
-    // globalObjects.lvl9Button.destroy();
-    // globalObjects.lvl10Button.destroy();
-    // globalObjects.lvl11Button.destroy();
-    // globalObjects.lvl12Button.destroy();
-    // globalObjects.lvl13Button.destroy();
     if (!globalObjects.creditsButtonSprite || !globalObjects.creditsButtonSprite.active) {
         globalObjects.creditsButtonSprite = PhaserScene.add.sprite(gameConsts.halfWidth + 225, gameConsts.halfHeight - 5, 'misc', 'creditsgame.webp');
     }

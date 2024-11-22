@@ -736,7 +736,7 @@ let textData2 = {
         "jp": ""
     },
     "level_water_victory": {
-        "en_us": "(The water elemental runs away)",
+        "en_us": "(The water elemental flows away)",
         "fr": "(La élémentaire d'eau s'est échappée)",
         "zh_tw": "（水元素生物逃跑了）",
         "zh_cn": "（水元素生物逃跑了）",

@@ -34,6 +34,7 @@ function clearDeathFog() {
     if (globalObjects.fogSwirl.currAnimScale) {
         globalObjects.fogSwirl.currAnimScale.stop();
     }
+    console.log("clear death fog");
     PhaserScene.tweens.add({
         targets: [globalObjects.fogSwirl],
         scaleX: 2.25,

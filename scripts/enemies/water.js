@@ -2,8 +2,10 @@
      constructor(scene, x, y, level) {
          super(scene, x, y, level);
          this.initSprite('water_emerge1.png', 1, undefined, undefined, 'water');
-         this.bgMusic = playMusic('echos_of_time', 0.8, true);
+         this.bgMusic = playMusic('bite_down', 0.8, true);
 
+         globalObjects.encyclopedia.showButton();
+         globalObjects.options.showButton();
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
 
          this.popupTimeout = this.addTimeout(() => {
@@ -11,7 +13,7 @@
              this.addToDestructibles(this.tutorialButton);
          }, 2500)
          this.addTimeout(() => {
-             this.showElementCircle()
+             // this.showElementCircle()
          }, 900)
 
 
@@ -21,7 +23,7 @@
 
      initStatsCustom() {
          this.health = gameVars.isHardMode ? 75 : 55;
-         this.isAsleep = true;
+         this.isAsleep = false;
          this.extraRepeatDelay = 200;
          this.pullbackHoldRatio = 0.75;
          this.pullbackScale = 0.86;
@@ -253,7 +255,7 @@
          }
          if (this.isAsleep && currHealthPercent < 1) {
              playSound('water1');
-             this.setAwake();
+             // this.setAwake();
          }
      }
 
@@ -345,7 +347,7 @@
              [
                  {
                      name: "}10 ",
-                     chargeAmt: gameVars.isHardMode ? 400 : 350,
+                     chargeAmt: gameVars.isHardMode ? 600 : 650,
                      damage: -1,
                      prepareSprite: "water_emerge1.png",
                      attackSprites: ['water_attack.png'],
@@ -375,6 +377,8 @@
                      name: "STARE",
                      chargeAmt: 250,
                      isPassive: true,
+                     damage: 0,
+                     transitionFast: true,
                      startFunction: () => {
                          this.pullbackScale = 1;
                          this.attackScale = 1;

@@ -1161,10 +1161,10 @@
                      }
                  },
                  {
-                     name: "|6 ",
+                     name: "|7 ",
                      announceName: "void strike",
                      chargeAmt: 750,
-                     damage: 6,
+                     damage: 7,
                      chargeMult: 1.5,
                      attackSprites: ['void_knight_attack.png'],
                      startFunction: () => {
@@ -1182,7 +1182,7 @@
                          playSound('sword_hit', 0.2);
                      },
                      finaleFunction: () => {
-                        this.nextAttack.damage = 6;
+                        this.nextAttack.damage = 7;
                          this.setDefaultSprite('void_knight.png');
                          this.sigilEffect.visible = true;
                      }

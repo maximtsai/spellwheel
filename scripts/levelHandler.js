@@ -390,9 +390,10 @@ function fadeInPreFightStuff(lvl, texts, introbgs, startDisabled) {
         y: "-=60",
     })
     PhaserScene.tweens.add({
+        delay: 200,
         targets: texts,
         alpha: 0.65,
-        duration: 650,
+        duration: 450,
     })
 
     PhaserScene.tweens.add({
@@ -476,6 +477,7 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose =
     lvlCloseButton.addText(getLangText('cont_ui'), {fontFamily: 'germania', fontSize: 28, color: '#000000', align: 'left'})
     lvlCloseButton.setScale(0.78);
     lvlCloseButton.setDepth(99999);
+    lvlCloseButton.level = lvl;
     globalObjects.lvlCloseButton = lvlCloseButton;
 
     return lvlCloseButton;
@@ -547,6 +549,27 @@ function createMenuCloseButton(items) {
 
 function switchLevelBackground(lvl) {
     switch(lvl) {
+        case -99:
+            let bgObjx = fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 100, globalObjects.menuBack.scaleX, globalObjects.menuBack.startScale * 1.19, globalObjects.menuBack.startScale * 1.2,'Quint.easeInOut', 0, false, 0, true);
+            bgObjx.setOrigin(0.5, 0.5).setPosition(globalObjects.menuBack.x, globalObjects.menuBack.y).setScale(globalObjects.menuBack.scaleX, globalObjects.menuBack.scaleY).setDepth(-8);
+            minorZoomMenu();
+            globalObjects.menuTop.setDepth(-7);
+
+            PhaserScene.tweens.add({
+                targets: bgObjx,
+                scaleX: globalObjects.menuBack.startScale * 1.19,
+                scaleY: globalObjects.menuBack.startScale * 1.2,
+                y: gameConsts.halfHeight - 110,
+                ease: 'Quint.easeInOut',
+                alpha: 1,
+                duration: 1500,
+                onComplete: () => {
+                    globalObjects.menuTop.setDepth(-9);
+                    globalObjects.menuBack.setFrame('menu_back_battle.png');
+                    bgObjx.visible = false;
+                }
+            });
+            break;
         case -8:
             switchBackground('grass_bg.webp');
             fadeInBackgroundAtlas('backgrounds', 'menu_back_battle.png', 1500, 1, 0.935, 0.935,'Quart.easeIn', 0, true, -1);
@@ -569,9 +592,10 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
             break;
         case -2:
+        case -1:
             // mind dummy
-            switchBackground('grass_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeOut', 0, false, 0);
+            switchBackground('forest_bg.webp');
+            fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeOut', 0, false, -12);
             break;
         case 0:
             // zoomInCurrBackground(1500, 2, 'Cubic.easeIn');
@@ -603,11 +627,11 @@ function switchLevelBackground(lvl) {
             break;
         case 2:
             switchBackground('forest_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'backgroundwater.webp', 1500, 1.05, 0.92, 0.92,'Quart.easeIn', 0, false, -10);
+            fadeInBackgroundAtlas('backgrounds', 'backgroundwater.webp', 1500, 0.92, 0.92, 0.92,'Quart.easeIn', 0, false, -10);
             break;
         case 3:
             switchBackground('forest_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
+            fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.03, 1.045, 1.045,'Quart.easeIn', 0, false, -65);
             break;
         case 4:
             switchBackground('forest_bg.webp');
@@ -690,7 +714,7 @@ function beginLevel(lvl, instant = false) {
 
 function createEnemyAfterDelay(lvl) {
     let delayAmt = 1200;
-    if (lvl == 0) {
+    if (lvl === 0 || lvl === -99) {
         delayAmt = 0;
     }
     levelTimeoutID = setTimeout(() => {

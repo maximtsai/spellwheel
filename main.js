@@ -158,6 +158,23 @@ function preload ()
     PhaserScene = this;
     handleBorders();
 
+    sdkLoadingStart();
+    gameVars.latestLevel = parseInt(sdkGetItem("latestLevel"));
+    gameVars.maxLevel = parseInt(sdkGetItem("maxLevel"));
+
+    if (!gameVars.latestLevel) {
+        gameVars.latestLevel = 0;
+    }
+    if (!gameVars.maxLevel) {
+        gameVars.maxLevel = gameVars.latestLevel;
+    } else {
+        updateSpellState(gameVars.maxLevel)
+    }
+    if (gameVars.maxLevel >= 7) {
+        gameVars.maxLevel = 15;
+        gameVars.hideCheatConst = -230;
+    }
+
     if (isMobile && screen && screen.orientation && screen.orientation.lock) {
         var myScreenOrientation = window.screen.orientation;
         myScreenOrientation.lock('portrait')
@@ -215,8 +232,8 @@ function beginLoadIfAllReady() {
         if (!gameVars.maxLevel) {
             gameVars.maxLevel = gameVars.latestLevel;
         }
-        if (gameVars.maxLevel >= 6) {
-            gameVars.maxLevel = 14;
+        if (gameVars.maxLevel >= 7) {
+            gameVars.maxLevel = 15;
             gameVars.hideCheatConst = -230;
         }
         PhaserScene.load.start();
@@ -232,13 +249,34 @@ function onLoadComplete(scene) {
     console.log("on load complete");
 }
 
+function openFullscreen() {
+    var elem = document.body;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+    }
+}
+
+document.addEventListener('fullscreenchange', (event) => {
+    if (!document.fullscreenElement) {
+        gameOptions.fullscreen = false;
+    } else {
+        gameOptions.fullscreen = true;
+    }
+    globalObjects.options.fullscreenToggleVisual.setFrame(gameOptions.fullscreen ? 'check_box_on.png' : 'check_box_normal.png');
+
+});
+
 function initializeMiscLocalstorage() {
     language = sdkGetItem("language") || 'en_us';
     gameOptions.infoBoxAlign = sdkGetItem("info_align") || 'center';
 
     let storedSkipIntro = sdkGetItem("skip_intro");
     if (storedSkipIntro) {
-        gameOptions.skipIntro = sdkGetItem("skip_intro") === 'true';
+        gameOptions.skipIntro = storedSkipIntro === 'true';
     } else {
         gameOptions.isFirstTime = true;
         sdkSetItem("skip_intro", 'true');

@@ -543,9 +543,9 @@ class Dummymind extends Dummypractice {
                                                 let splash = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'water', 'water_gloop.png').setAlpha(0.5).setDepth(200);
                                                 PhaserScene.tweens.add({
                                                     targets: splash,
-                                                    scaleY: 2,
-                                                    scaleX: 2,
-                                                    alpha: 1,
+                                                    scaleY: 1.75,
+                                                    scaleX: 1.75,
+                                                    alpha: 0.95,
                                                     ease: 'Quart.easeOut',
                                                     duration: 400,
                                                     onComplete: () => {

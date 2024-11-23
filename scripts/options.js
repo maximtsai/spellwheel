@@ -136,7 +136,7 @@ class Options {
                     }
                 },
                 onMouseUp: () => {
-                    if (globalObjects.currentEnemy && !globalObjects.currentEnemy.isDestroyed) {
+                    if (globalObjects.currentEnemy && !globalObjects.currentEnemy.isDestroyed && globalObjects.currentEnemy.level !== -99) {
                         this.popupElements = showYesNoPopup(getLangText('exit'), getLangText('back'), getLangText('main_menu'), getLangText('exit_long'), () => {
                             this.hideOptions();
                             let bgBlackout = getBackgroundBlackout();

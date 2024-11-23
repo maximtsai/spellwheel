@@ -133,6 +133,8 @@ function preload ()
     }
     if (!gameVars.maxLevel) {
         gameVars.maxLevel = gameVars.latestLevel;
+    } else {
+        updateSpellState(gameVars.maxLevel)
     }
     if (gameVars.maxLevel >= 6) {
         gameVars.maxLevel = 14;

@@ -3,6 +3,9 @@ function createEnemy(num) {
         globalObjects.currentEnemy.destroy();
     }
     switch(num) {
+    case -99:
+        globalObjects.currentEnemy = new ArmorDummy(PhaserScene, gameConsts.halfWidth, 310, num);
+        break;
     case -8:
     case -7:
     case -6:

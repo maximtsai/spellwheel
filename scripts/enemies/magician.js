@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 120 : 100;
+         this.health = gameVars.isHardMode ? 120 : 105;
          this.damageNumOffset = 45;
          this.chargeBarOffsetY = 4;
          this.damageNumOffsetDefault = this.damageNumOffset;
@@ -546,7 +546,7 @@
          statusObj = {
              animObj: healthText,
              glowObj: glow,
-             duration: this.healthMax,
+             duration: this.healthMax - 1,
              onUpdate: () => {
                 if (this.usingTimeFreeze) {
                     statusObj.duration++;
@@ -593,7 +593,7 @@
 
                  } else {
                      healthText.setText(Math.max(0, statusObj.duration - 1));
-                     this.setHealth(this.health - 1);
+                     this.setHealth(statusObj.duration - 1);
                      let goalRotArm = (this.health / this.healthMax) * Math.PI * 2;
                      this.clockShieldArm.setRotation(goalRotArm - 0.06);
                      this.addTween({
@@ -1083,7 +1083,7 @@
                         } else {
                             this.attackName.setText("}}}}" + damageAmt + "x" + numAttacks + "}}}}");
                             this.repositionAngrySymbol();
-                            this.nextAttack.chargeMult = 7.5;
+                            this.nextAttack.chargeMult = 7;
                             this.setDefaultSprite('time_magi.png');
                         }
                     }
@@ -1163,7 +1163,7 @@
                          this.createTimeObject('clock4.png', this.x + 40, this.y - 80, 300);
                          this.addTimeout(() => {
                              this.fireTimeObjects(4);
-                         }, 900);
+                         }, 950);
                      },
                      attackFinishFunction: () => {
                         if (this.health < this.healthMax - 20) {
@@ -1176,7 +1176,7 @@
                  {
                      name: "}3x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: gameVars.isHardMode ? 345 : 370,
+                     chargeAmt: gameVars.isHardMode ? 365 : 405,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
@@ -1185,7 +1185,7 @@
                          this.createTimeObject('clock2.png', this.x + 40, this.y - 80, 300);
                          this.addTimeout(() => {
                              this.fireTimeObjects(3);
-                         }, 900);
+                         }, 950);
                      },
                      attackFinishFunction: () => {
                         if (this.health < this.healthMax - 20) {
@@ -1200,7 +1200,7 @@
                 // 1
                  {
                      name: "\\50% MISSING HEALTH",
-                     chargeAmt: 280,
+                     chargeAmt: 315,
                      isPassive: true,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',

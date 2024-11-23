@@ -507,6 +507,9 @@ function showMainMenuButtons() {
     if (gameVars.maxLevel >= 2) {
         if (!globalObjects.protectedDummySprite || !globalObjects.protectedDummySprite.active) {
             globalObjects.protectedDummySprite = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 8, 'enemies', 'lesser_dummy_shield_smal.png').setDepth(-1).setAlpha(0.95);
+            if (gameVars.dummyDied) {
+                globalObjects.protectedDummySprite.setFrame('lesser_dummy_dead_far.png');
+            }
         }
         globalObjects.protectedDummyButton = new Button({
             normal: {
@@ -523,18 +526,40 @@ function showMainMenuButtons() {
                     playSound('button_hover', 1).detune = 200;
                     canvas.style.cursor = 'pointer';
                 }
-                globalObjects.protectedDummySprite.setFrame('lesser_dummy_shield_smal_hover.png');
+                if (gameVars.dummyDied) {
+
+                    globalObjects.protectedDummySprite.setFrame('lesser_dummy_dead_far_glow.png');
+                } else {
+                    globalObjects.protectedDummySprite.setFrame('lesser_dummy_shield_smal_hover.png');
+                }
             },
             onHoverOut: () => {
                 if (canvas) {
                     canvas.style.cursor = 'default';
                 }
-                globalObjects.protectedDummySprite.setFrame('lesser_dummy_shield_smal.png');
+                if (gameVars.dummyDied) {
+                    globalObjects.protectedDummySprite.setFrame('lesser_dummy_dead_far.png');
+                } else {
+                    globalObjects.protectedDummySprite.setFrame('lesser_dummy_shield_smal.png');
+                }
             },
             onMouseUp: () => {
-                clearOnlyMenuButtons();
+                if (gameVars.dummyDied) {
+                    gameVars.dummyDied = false;
+                    playSound('lesserfall', 0.55);
+                    globalObjects.protectedDummySprite.setFrame('lesser_dummy_shield_smal_hover.png');
+                    globalObjects.protectedDummySprite.setRotation(-0.1);
+                    PhaserScene.tweens.add({
+                        targets: globalObjects.protectedDummySprite,
+                        rotation: 0,
+                        ease: 'Bounce.easeOut',
+                        duration: 700
+                    })
+                } else {
+                    clearOnlyMenuButtons();
+                    beginPreLevel(-99) // -99
+                }
 
-                beginPreLevel(-99) // -99
             }
         });
 

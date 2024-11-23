@@ -34,7 +34,13 @@ class ArmorDummy extends Enemy {
     }
 
     initStatsCustom() {
-        this.health = 200;
+        this.health = 100;
+        if (gameVars.maxLevel >= 4) {
+            this.health = 130;
+            if (gameVars.maxLevel >= 5) {
+                this.health = 150;
+            }
+        };
         this.isAsleep = true;
     }
 
@@ -331,6 +337,12 @@ class ArmorDummy extends Enemy {
 
     setHealth(newHealth) {
         super.setHealth(newHealth);
+        if (!this.bgMusic) {
+            fadeAwaySound(this.bgMusic2,  1200);
+
+            this.bgMusic = playMusic('bite_down_simplified', 0.75, true);
+            fadeInSound(this.bgMusic, 0.6);
+        }
         if (newHealth > 0 && !this.justOuched) {
             this.justOuched = true;
 
@@ -486,6 +498,7 @@ class ArmorDummy extends Enemy {
     }
 
     showVictory() {
+        gameVars.dummyDied = true;
         globalObjects.encyclopedia.hideButton();
         globalObjects.options.hideButton();
         globalObjects.magicCircle.disableMovement();
@@ -526,14 +539,6 @@ class ArmorDummy extends Enemy {
                 this.addTween({
                     targets: this.sprite,
                     alpha: 0,
-                    duration: 800,
-                });
-                this.addTween({
-                    targets: this.sprite,
-                    alpha: 0,
-                    scaleX: this.sprite.startScale * 1.03,
-                    scaleY: this.sprite.startScale * 1.03,
-                    y: "+=5",
                     ease: 'Quad.easeIn',
                     duration: 800,
                     onComplete: () => {
@@ -541,6 +546,7 @@ class ArmorDummy extends Enemy {
                     }
                 });
                 continueText.destroy();
+                playSound('whoosh');
                 this.addTween({
                     targets: [victoryText, banner],
                     alpha: 0,

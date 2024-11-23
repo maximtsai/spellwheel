@@ -136,7 +136,7 @@ const ENABLE_KEYBOARD = true;
             }
 
             if (globalObjects.lvlCloseButton && !globalObjects.lvlCloseButton.isDestroyed) {
-                if (globalObjects.lvlCloseButton.onMouseUpFunc) {
+                if (globalObjects.lvlCloseButton.onMouseUpFunc && globalObjects.lvlCloseButton.level !== 0) {
                     globalObjects.lvlCloseButton.clickMouseUp();
                     hasDoneStuff = true;
                 }

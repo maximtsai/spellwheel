@@ -64,6 +64,7 @@ function clearOnlyMenuButtons() {
         globalObjects.levelSelectButton.destroy();
         globalObjects.levelButtonSprite.destroy();
     }
+
     globalObjects.startButton.destroy();
     globalObjects.startButtonSprite.visible = false;
     globalObjects.startButtonSprite.destroy();
@@ -91,7 +92,9 @@ function clearOnlyMenuButtons() {
             }
         });
     }
-
+    if (globalObjects.protectedDummyButton) {
+        globalObjects.protectedDummyButton.destroy();
+    }
     // globalObjects.extrasButton.destroy();
     // globalObjects.extrasButtonSprite.destroy();
 

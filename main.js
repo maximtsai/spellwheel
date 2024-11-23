@@ -184,13 +184,41 @@ function onLoadComplete(scene) {
     setupGame(scene);
 }
 
+function openFullscreen() {
+    var elem = document.body;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+    }
+}
+
+document.addEventListener('fullscreenchange', (event) => {
+    if (!document.fullscreenElement) {
+        gameOptions.fullscreen = false;
+    } else {
+        gameOptions.fullscreen = true;
+    }
+    globalObjects.options.fullscreenToggleVisual.setFrame(gameOptions.fullscreen ? 'check_box_on.png' : 'check_box_normal.png');
+
+});
+
 function initializeMiscLocalstorage() {
     language = localStorage.getItem("language") || 'en_us';
     gameOptions.infoBoxAlign = localStorage.getItem("info_align") || 'center';
 
     let storedSkipIntro = localStorage.getItem("skip_intro");
+    // let storedFullscreen = localStorage.getItem("fullscreen");
+    // if (storedFullscreen) {
+    //     gameOptions.fullscreen = storedFullscreen === 'true';
+    //     if (gameOptions.fullscreen) {
+    //         openFullscreen();
+    //     }
+    // }
     if (storedSkipIntro) {
-        gameOptions.skipIntro = localStorage.getItem("skip_intro") === 'true';
+        gameOptions.skipIntro = storedSkipIntro === 'true';
     } else {
         gameOptions.isFirstTime = true;
         localStorage.setItem("skip_intro", 'true');

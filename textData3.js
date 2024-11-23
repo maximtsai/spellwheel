@@ -81,6 +81,15 @@ let textData3 = {
         "es": "",
         "jp": ""
     },
+    "fullscreen": {
+        "en_us": "FULLSCREEN",
+        "fr": "PLEIN ÉCRAN",
+        "zh_tw": "全螢幕",
+        "zh_cn": "全屏",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "left": {
         "en_us": "LEFT",
         "fr": "GAUCHE",

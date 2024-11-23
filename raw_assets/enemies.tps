@@ -721,6 +721,22 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/lesser_dummy_dead_far.png</key>
+            <key type="filename">enemies/lesser_dummy_dead_far_glow.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>61,31,122,62</rect>
+                <key>scale9Paddings</key>
+                <rect>61,31,122,62</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/lesser_dummy_hurt.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -733,6 +749,51 @@
                 <rect>62,80,125,160</rect>
                 <key>scale9Paddings</key>
                 <rect>62,80,125,160</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/lesser_dummy_shield.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.73</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>87,160,175,320</rect>
+                <key>scale9Paddings</key>
+                <rect>87,160,175,320</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/lesser_dummy_shield_smal.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>44,80,87,160</rect>
+                <key>scale9Paddings</key>
+                <rect>44,80,87,160</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/lesser_dummy_shield_smal_hover.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>44,81,87,161</rect>
+                <key>scale9Paddings</key>
+                <rect>44,81,87,161</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

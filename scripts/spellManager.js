@@ -2794,7 +2794,11 @@ class SpellManager {
                         duration: 700 + additionalDamage,
                         ease: 'Cubic.easeIn',
                         onComplete: () => {
-                            let healthPercent = globalObjects.currentEnemy.getHealth() * 0.025 + additionalDamage;
+                            let healthPercent = 10;
+                            if (globalObjects.currentEnemy) {
+                                healthPercent = globalObjects.currentEnemy.getHealth() * 0.025 + additionalDamage;
+                            }
+
                             let damageDealt = Math.round(healthPercent);
 
                             if (globalObjects.currentEnemy && (globalObjects.currentEnemy.immune || globalObjects.currentEnemy.invincible)) {

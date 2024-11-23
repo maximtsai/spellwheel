@@ -204,7 +204,9 @@
                              this.hasShownEnhance = true
                              this.playerSpellCastSub.unsubscribe();
                              this.playerSpellCastSub2.unsubscribe();
-                             this.createEnhancePopup();
+                             setTimeout(() => {
+                                 this.createEnhancePopup();
+                             }, 500)
                          }
                      });
                      this.playerSpellCastSub2 = this.addSubscription('recordSpellAttack', (id, spellName) => {
@@ -337,9 +339,9 @@
 
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 253, getLangText('level1_tut_b'), 'right');
             // messageBus.publish('setSlowMult', 0.5, 15);
-            let glowBar = this.addSprite(gameConsts.halfWidth, 320, 'misc', 'shadow_bar.png').setDepth(9980).setAlpha(0).setScale(7);
+            this.glowBar = this.addSprite(gameConsts.halfWidth, 320, 'misc', 'shadow_bar.png').setDepth(9980).setAlpha(0).setScale(7);
             this.addTween({
-                targets: glowBar,
+                targets: this.glowBar,
                 alpha: 0.4,
                 scaleY: 4.2,
                 scaleX: 5,
@@ -348,7 +350,7 @@
                 onComplete: () => {
                     this.glowBarAnim = this.addTween({
                         delay: 2750,
-                        targets: glowBar,
+                        targets: this.glowBar,
                         alpha: 0,
                         scaleY: 5.2,
                         scaleX: 6,
@@ -367,14 +369,14 @@
                             this.glowBarAnim.stop();
                         }
                         this.addTween({
-                            targets: glowBar,
+                            targets: this.glowBar,
                             alpha: 0,
                             scaleY: 5.2,
                             scaleX: 6,
                             ease: 'Quad.easeInOut',
                             duration: 1000,
                             onComplete: () => {
-                                glowBar.destroy();
+                                this.glowBar.destroy();
                             }
                         });
                     }
@@ -399,14 +401,14 @@
                             this.glowBarAnim.stop();
                         }
                         this.addTween({
-                            targets: glowBar,
+                            targets: this.glowBar,
                             alpha: 0,
                             scaleY: 5.2,
                             scaleX: 6,
                             ease: 'Quad.easeInOut',
                             duration: 1000,
                             onComplete: () => {
-                                glowBar.destroy();
+                                this.glowBar.destroy();
                             }
                         });
                     }
@@ -578,6 +580,13 @@
          if (this.breathTween) {
              this.breathTween.stop();
              this.sprite.x = gameConsts.halfWidth;
+         }
+         if (this.glowBar) {
+             this.addTween({
+                 targets: this.glowBar,
+                 alpha: 0,
+                 duration: 500,
+             });
          }
          globalObjects.encyclopedia.hideButton();
          globalObjects.options.hideButton();

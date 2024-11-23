@@ -381,7 +381,7 @@ let textData = {
         "jp": "1の真のダメージを与える。敵は次の\n攻撃で2倍のダメージを受ける"
     },
     "mind_enhance_desc": {
-        "en_us": "Next attack\nburns enemy for 2\nTRUE DMG/sec\nfor 5 seconds",
+        "en_us": "Next attack\nburns enemy for\n2 TRUE DMG/sec\nfor 5 seconds",
         "fr": "Prochaine attaque\nbrûle l'ennemi\npour 2 dégâts\nvéritables par seconde\npendant 5 secondes.",
         "zh_tw": "下一次攻擊造成\n每秒 2 點真實\n傷害，持續 5 秒",
         "zh_cn": "下一次攻击造成\n每秒 2 点真实\n伤害，持续 5 秒",

@@ -376,9 +376,10 @@ function fadeInPreFightStuff(lvl, texts, introbgs, startDisabled) {
         y: "-=60",
     })
     PhaserScene.tweens.add({
+        delay: 200,
         targets: texts,
         alpha: 0.65,
-        duration: 650,
+        duration: 450,
     })
 
     PhaserScene.tweens.add({
@@ -576,9 +577,10 @@ function switchLevelBackground(lvl) {
             fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
             break;
         case -2:
+        case -1:
             // mind dummy
-            switchBackground('grass_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'path.png', 1500, 0.92, 0.91, 0.91,'Quart.easeOut', 0, false, 0);
+            switchBackground('forest_bg.webp');
+            fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeOut', 0, false, -12);
             break;
         case 0:
             // zoomInCurrBackground(1500, 2, 'Cubic.easeIn');
@@ -610,11 +612,11 @@ function switchLevelBackground(lvl) {
             break;
         case 2:
             switchBackground('forest_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'backgroundwater.webp', 1500, 1.05, 0.92, 0.92,'Quart.easeIn', 0, false, -10);
+            fadeInBackgroundAtlas('backgrounds', 'backgroundwater.webp', 1500, 0.92, 0.92, 0.92,'Quart.easeIn', 0, false, -10);
             break;
         case 3:
             switchBackground('forest_bg.webp');
-            fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeIn', 0, false, -65);
+            fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.03, 1.045, 1.045,'Quart.easeIn', 0, false, -65);
             break;
         case 4:
             switchBackground('forest_bg.webp');

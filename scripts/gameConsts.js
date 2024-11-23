@@ -50,8 +50,8 @@ function updateSpellState(level) {
         case -2:
         case -1:
             // mind dummy
-            EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, null, null, null, null, null, RUNE_STRIKE, RUNE_STRIKE];
-            ELEMENT_ARRAY = [RUNE_MIND, RUNE_MATTER, RUNE_MATTER, RUNE_MATTER, RUNE_MATTER, RUNE_MIND, RUNE_MIND, RUNE_MIND];
+            EMBODIMENT_ARRAY = [RUNE_STRIKE, RUNE_STRIKE, RUNE_ENHANCE, null, null, null, null, RUNE_ENHANCE, RUNE_STRIKE];
+            ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, null, null, null, null, RUNE_MIND];
             break;
         case 0:
             // start, fight lesser dummy

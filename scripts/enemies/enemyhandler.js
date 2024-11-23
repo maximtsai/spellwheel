@@ -3,6 +3,9 @@ function createEnemy(num) {
         globalObjects.currentEnemy.destroy();
     }
     switch(num) {
+    case -99:
+        globalObjects.currentEnemy = new ArmorDummy(PhaserScene, gameConsts.halfWidth, 310, num);
+        break;
     case -8:
     case -7:
     case -6:
@@ -16,7 +19,7 @@ function createEnemy(num) {
         globalObjects.currentEnemy = new Dummyshield(PhaserScene, gameConsts.halfWidth, 310, num);
         break;
     case -1:
-        globalObjects.currentEnemy = new Dummymind(PhaserScene, gameConsts.halfWidth, 310, num);
+        globalObjects.currentEnemy = new Dummymind(PhaserScene, gameConsts.halfWidth, 328, num);
         break;
     case 0:
         globalObjects.currentEnemy = new LesserDummy(PhaserScene, gameConsts.halfWidth, 329, num);

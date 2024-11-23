@@ -1175,7 +1175,7 @@
                  {
                      name: "}3x2 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
-                     chargeAmt: gameVars.isHardMode ? 350 : 405,
+                     chargeAmt: gameVars.isHardMode ? 345 : 370,
                      damage: -1,
                      prepareSprite: 'time_magi_cast.png',
                      attackStartFunction: () => {
@@ -1199,7 +1199,7 @@
                 // 1
                  {
                      name: "\\50% MISSING HEALTH",
-                     chargeAmt: gameVars.isHardMode ? 280 : 305,
+                     chargeAmt: 280,
                      isPassive: true,
                      damage: -1,
                      prepareSprite: 'time_magi_cast_big.png',
@@ -1209,7 +1209,7 @@
                      attackFinishFunction: () => {
                         this.numTimesHealed++;
                         let lostHealth = this.healthMax - this.health;
-                        let healedAmt = Math.floor(lostHealth * 0.5);
+                        let healedAmt = Math.ceil(lostHealth * 0.5);
                         this.heal(healedAmt);
                         playSound('magic', 0.6);
                         messageBus.publish('animateHealNum', this.x, this.y - 50, '+' + healedAmt, 0.5 + Math.sqrt(healedAmt) * 0.2);
@@ -1246,7 +1246,7 @@
                  {
                      name: ";20 ",
                      desc: "A devastating barrage\nof offensive magic.",
-                     chargeAmt: gameVars.isHardMode ? 520 : 555,
+                     chargeAmt: 520,
                      isBigMove: true,
                      prepareSprite: 'time_magi_cast_big.png',
                      attackStartFunction: () => {

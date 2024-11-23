@@ -8,29 +8,20 @@ class Dummymind extends Dummypractice {
             });
             this.subscriptions.push(this.resetCast);
         }, 100)
+        switchBackground('forest_bg.webp');
+        fadeInBackgroundAtlas('backgrounds', 'background6.webp', 1500, 1.05, 1.05, 1.05,'Quart.easeOut', 0, false, -12);
     }
 
     initStatsCustom() {
-        this.health = 50;
+        this.health = 30;
         this.chargeBarOffsetY = 7;
         this.chargeBarHeightOffset = -1;
-        // this.isAsleep = true;
+        this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
         this.numTimesHealed = 0;
     }
 
-    showHealCounter() {
-        this.healthBack = this.addImage(gameConsts.halfWidth, 44, 'blurry', 'battletext_bg.png').setScale(0.2, 1).setDepth(1000).setOrigin(0, 0.5);
-        this.healWarn = this.addText(gameConsts.halfWidth, 44, getLangText('level1_dummy_mind_heal'), {fontFamily: 'garamondbold', color: '#FAFAFA', fontSize: 24}).setOrigin(0.25, 0.5).setAlpha(0).setDepth(1001);
-
-        this.underline = this.addImage(gameConsts.halfWidth, this.healthBack.y - 1, 'blurry', 'box_length.png').setScale(0, -0.5).setDepth(1002);
-        this.underline2 = this.addImage(gameConsts.halfWidth, this.healthBack.y + this.healthBack.height, 'blurry', 'box_length.png').setScale(0, 0.5).setDepth(1002);
-    }
-
-    tickHealCounter() {
-
-    }
 
     showHPGauge() {
         this.hpBG = this.addImage(gameConsts.halfWidth - 160 - getLangText('HP').length * 10, gameConsts.halfHeight - 165, 'blackPixel').setScale(getLangText('HP').length * 23 - 10, 30).setAlpha(0).setDepth(-1);
@@ -60,30 +51,32 @@ class Dummymind extends Dummypractice {
         this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
         globalObjects.magicCircle.disableMovement();
         globalObjects.bannerTextManager.setDialog([getLangText('level1_train_diag_a')]);
-        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 130, 0);
+        globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.halfHeight, 0);
         globalObjects.bannerTextManager.showBanner(false, language === 'fr');
         let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
-        this.rune1 = this.addImage(gameConsts.halfWidth - 260, gameConsts.height - 130, 'tutorial', 'rune_energy_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
-        this.rune2 = this.addImage(gameConsts.halfWidth + 260, gameConsts.height - 130, 'tutorial', 'rune_energy_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+        this.rune1 = this.addImage(gameConsts.halfWidth - 260, gameConsts.halfHeight, 'tutorial', 'rune_energy_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+        this.rune2 = this.addImage(gameConsts.halfWidth + 260, gameConsts.halfHeight, 'tutorial', 'rune_energy_large.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
         this.addTween({
             targets: [this.rune1, this.rune2],
             alpha: 1,
             scaleX: 1,
             scaleY: 1,
             duration: 400,
+            onComplete: () => {
+                this.showPoster();
+            }
         });
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
             globalObjects.magicCircle.enableMovement();
             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
             globalObjects.bannerTextManager.closeBanner();
-            this.showPoster();
             this.addTween({
                 targets: [this.rune1, this.rune2],
                 alpha: 0,
                 duration: 200,
             });
             this.canShowShieldTip = true;
-            this.showGoal();
+            // this.showGoal();
             this.addDelay(() => {
                 this.glowCirc2 = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY(), 'shields', 'ring_flash0.png').setAlpha(0.3).setDepth(999).setScale(1.12);
                 this.addDelay(() => {
@@ -126,7 +119,7 @@ class Dummymind extends Dummypractice {
                 }, 400)
                 globalObjects.textPopupManager.setInfoText(gameConsts.halfWidth, gameConsts.height - 37, getLangText('level1_train_popup'), 'center');
 
-            }, 1900);
+            }, 400);
 
             // messageBus.publish('enemyAddShield', 500)
         });
@@ -282,6 +275,7 @@ class Dummymind extends Dummypractice {
         let prevHealthPercent = this.prevHealth / this.healthMax;
         let currHealthPercent = this.health / this.healthMax;
         let healthLost = this.prevHealth - this.health;
+        /*
         if (this.canAccelerate) {
             console.log("acceleration")
             // ensures this gets across the finish line
@@ -330,48 +324,48 @@ class Dummymind extends Dummypractice {
             }
 
         }
-
+*/
         if (currHealthPercent === 0) {
             // dead, can't do anything
             return;
         }
-        if (this.canShowShieldTip) {
-            this.canShowShieldTip = false;
-            this.addTimeout(() => {
-                let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
-
-                globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 180, getLangText('dummy_mind_tut'), 'right');
-                let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
-                let centerXPos = globalObjects.textPopupManager.getCenterPos();
-                this.rune3 = this.addImage(centerXPos - 32, runeYPos + 16, 'circle', 'bright_rune_mind.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
-                this.rune4 = this.addImage(centerXPos + 37, runeYPos + 16, 'circle', 'bright_rune_strike.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
-
-                this.addTween({
-                    targets: [this.rune3, this.rune4],
-                    alpha: 1,
-                    duration: 200,
-                    completeDelay: 1000,
-                    onComplete: () => {
-                        this.playerSpellCastSub2 = messageBus.subscribe('playerCastedSpell', () => {
-                            this.playerSpellCastSub2.unsubscribe();
-                            this.addTimeout(() => {
-                                this.addTween({
-                                    targets: [this.rune3, this.rune4],
-                                    alpha: 0,
-                                    duration: 300,
-                                    onComplete: () => {
-                                        this.rune3.visible = false;
-                                        this.rune4.visible = false;
-                                    }
-                                });
-                                globalObjects.textPopupManager.hideInfoText();
-                            }, 1000);
-                        });
-                        this.subscriptions.push(this.playerSpellCastSub2);
-                    }
-                });
-            }, 900)
-        }
+        // if (this.canShowShieldTip) {
+        //     this.canShowShieldTip = false;
+        //     this.addTimeout(() => {
+        //         let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
+        //
+        //         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 180, getLangText('dummy_mind_tut'), 'right');
+        //         let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+        //         let centerXPos = globalObjects.textPopupManager.getCenterPos();
+        //         this.rune3 = this.addImage(centerXPos - 32, runeYPos + 16, 'circle', 'bright_rune_mind.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+        //         this.rune4 = this.addImage(centerXPos + 37, runeYPos + 16, 'circle', 'bright_rune_strike.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+        //
+        //         this.addTween({
+        //             targets: [this.rune3, this.rune4],
+        //             alpha: 1,
+        //             duration: 200,
+        //             completeDelay: 1000,
+        //             onComplete: () => {
+        //                 this.playerSpellCastSub2 = messageBus.subscribe('playerCastedSpell', () => {
+        //                     this.playerSpellCastSub2.unsubscribe();
+        //                     this.addTimeout(() => {
+        //                         this.addTween({
+        //                             targets: [this.rune3, this.rune4],
+        //                             alpha: 0,
+        //                             duration: 300,
+        //                             onComplete: () => {
+        //                                 this.rune3.visible = false;
+        //                                 this.rune4.visible = false;
+        //                             }
+        //                         });
+        //                         globalObjects.textPopupManager.hideInfoText();
+        //                     }, 1000);
+        //                 });
+        //                 this.subscriptions.push(this.playerSpellCastSub2);
+        //             }
+        //         });
+        //     }, 900)
+        // }
     }
 
     die() {
@@ -442,4 +436,200 @@ class Dummymind extends Dummypractice {
             ]
         ];
     }
+
+
+    showComplete(darkDummy) {
+        globalObjects.encyclopedia.hideButton();
+        globalObjects.options.hideButton();
+        globalObjects.magicCircle.disableMovement();
+        let banner = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 35, 'misc', 'victory_banner.png').setScale(100, 1.2).setDepth(9998).setAlpha(0);
+        let victoryText = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 44, 'misc', 'complete.png').setScale(0.95).setDepth(9998).setAlpha(0);
+        // let continueText = this.scene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 2, getLangText('cont_ui'), {fontFamily: 'garamondmax', color: '#F0F0F0', fontSize: 18}).setAlpha(0).setOrigin(0.5, 0.5).setAlign('center').setDepth(9998);
+
+        PhaserScene.tweens.add({
+            targets: banner,
+            alpha: 0.75,
+            duration: 500,
+        });
+
+        PhaserScene.tweens.add({
+            targets: [victoryText],
+            alpha: 1,
+            ease: 'Quad.easeOut',
+            duration: 500,
+        });
+        playSound('victory');
+        // this.addTimeout(() => {
+        //     continueText.alpha = 1;
+        // }, 1000);
+
+        PhaserScene.tweens.add({
+            targets: victoryText,
+            scaleX: 1,
+            scaleY: 1,
+            duration: 800,
+            onComplete: () => {
+                PhaserScene.tweens.add({
+                    delay: 500,
+                    targets: [victoryText, banner],
+                    alpha: 0,
+                    duration: 500,
+                })
+                playSound('water1');
+                let waterEnemy = this.addSprite(gameConsts.halfWidth, 335, 'water', 'water_emerge2.png').setScale(1, 0).setAlpha(0.5).setDepth(10);
+
+
+                PhaserScene.tweens.add({
+                    targets: waterEnemy,
+                    rotation: 0,
+                    duration: 1200,
+                    oncomplete: () => {
+                        waterEnemy.setFrame('water_emerge1.png');
+                    }
+                });
+                PhaserScene.tweens.add({
+                    targets: waterEnemy,
+                    scaleY: 1.7,
+                    scaleX: 1.5,
+                    ease: 'Quart.easeOut',
+                    duration: 1600,
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: waterEnemy,
+                            scaleY: 1.4,
+                            scaleX: 1.4,
+                            ease: 'Back.easeOut',
+                            duration: 400,
+                            onComplete: () => {
+                                PhaserScene.tweens.add({
+                                    targets: [this.sprite],
+                                    y: "-=20",
+                                    ease: 'Cubic.easeInOut',
+                                    duration: 400,
+                                });
+                                setTimeout(() => {
+                                    waterEnemy.setFrame('water_emerge2.png');
+                                }, 100)
+
+                                PhaserScene.tweens.add({
+                                    targets: waterEnemy,
+                                    scaleY: 1.65,
+                                    scaleX: 1.5,
+                                    ease: 'Cubic.easeInOut',
+                                    duration: 300,
+                                    onComplete: () => {
+                                        PhaserScene.tweens.add({
+                                            targets: [this.sprite],
+                                            scaleY: 0,
+                                            y: "+=70",
+                                            ease: 'Cubic.easeIn',
+                                            duration: 600,
+                                        });
+                                        switchLevelBackground(2);
+                                        PhaserScene.tweens.add({
+                                            targets: waterEnemy,
+                                            scaleY: 0.1,
+                                            scaleX: 1.2,
+                                            ease: 'Cubic.easeIn',
+                                            duration: 650,
+                                            onComplete: () => {
+                                                playSound('watersplashbig');
+                                                let whitebg = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setAlpha(0.15);
+                                                PhaserScene.tweens.add({
+                                                    targets: whitebg,
+                                                    alpha: 0,
+                                                    duration: 1500,
+                                                })
+                                                let splash = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'water', 'water_gloop.png').setAlpha(0.5).setDepth(200);
+                                                PhaserScene.tweens.add({
+                                                    targets: splash,
+                                                    scaleY: 2,
+                                                    scaleX: 2,
+                                                    alpha: 1,
+                                                    ease: 'Quart.easeOut',
+                                                    duration: 400,
+                                                    onComplete: () => {
+                                                        PhaserScene.tweens.add({
+                                                            targets: splash,
+                                                            alpha: 0,
+                                                            y: "+=15",
+                                                            duration: 1000,
+                                                        })
+                                                    }
+                                                })
+                                                globalObjects.magicCircle.enableMovement();
+                                                beginLevel(2, true);
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+                PhaserScene.tweens.add({
+                    targets: [darkDummy],
+                    alpha: 0,
+                    duration: 400,
+
+                });
+                PhaserScene.tweens.add({
+                    targets: [this.sprite],
+                    alpha: 0.75,
+                    ease: 'Quart.easeOut',
+                    duration: 1000,
+                });
+                this.sprite.setOrigin(0.5, 0.2);
+                darkDummy.setOrigin(0.5, 0.2);
+                PhaserScene.tweens.add({
+                    targets: [this.sprite, darkDummy],
+                    scaleY: 0.75,
+                    scaleX: 0.8,
+                    y: "-=110",
+                    ease: 'Quart.easeOut',
+                    duration: 1650,
+                });
+                PhaserScene.tweens.add({
+                    targets: [this.sprite, darkDummy],
+                    rotation: "+=4",
+                    x: "-=10",
+                    ease: 'Quart.easeOut',
+                    duration: 6000,
+                });
+
+                PhaserScene.tweens.add({
+                    delay: 1000,
+                    targets: [victoryText, banner],
+                    alpha: 0,
+                    duration: 800,
+                    onComplete: () => {
+                        victoryText.destroy();
+                        banner.destroy();
+
+                        // TODO: maybe just skip straight to enemy
+                        // globalObjects.postFightScreen.createWinScreenMin();
+
+                    }
+                });
+                // if (canvas) {
+                //     canvas.style.cursor = 'pointer';
+                // }
+                // this.dieClickBlocker.setOnMouseUpFunc(() => {
+                //     if (canvas) {
+                //         canvas.style.cursor = 'default';
+                //     }
+                //     PhaserScene.tweens.add({
+                //         targets: [this.sprite, darkDummy],
+                //         alpha: 0,
+                //         duration: 800,
+                //     });
+                //
+                //     hideGlobalClickBlocker();
+                //     continueText.destroy();
+                //
+                // });
+            }
+        });
+    }
+
 }

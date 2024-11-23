@@ -496,6 +496,7 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose =
     lvlCloseButton.addText(getLangText('cont_ui'), {fontFamily: 'germania', fontSize: 28, color: '#000000', align: 'left'})
     lvlCloseButton.setScale(0.78);
     lvlCloseButton.setDepth(99999);
+    lvlCloseButton.level = lvl;
     globalObjects.lvlCloseButton = lvlCloseButton;
 
     return lvlCloseButton;

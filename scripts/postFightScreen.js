@@ -552,11 +552,7 @@ class PostFightScreen {
                 playSound('button_click');
                 this.clearPostFightScreen();
                 if (level < 8) {
-                    if (level === 1) {
-                        beginPreLevel(2);
-                    } else {
-                        beginPreLevel(-level);
-                    }
+                    beginPreLevel(-level);
                 } else {
                     beginPreLevel(level + 1);
                 }
@@ -707,11 +703,7 @@ class PostFightScreen {
                     playSound('button_click');
                     this.clearPostFightScreen();
                     if (level < 8) {
-                        if (level === 1) {
-                            beginPreLevel(2);
-                        } else {
-                            beginPreLevel(-level);
-                        }
+                        beginPreLevel(-level);
                     }else {
                         beginPreLevel(level + 1);
                     }

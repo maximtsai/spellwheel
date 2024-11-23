@@ -194,13 +194,34 @@ function onLoadComplete(scene) {
     setupGame(scene);
 }
 
+function openFullscreen() {
+    var elem = document.body;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+    }
+}
+
+document.addEventListener('fullscreenchange', (event) => {
+    if (!document.fullscreenElement) {
+        gameOptions.fullscreen = false;
+    } else {
+        gameOptions.fullscreen = true;
+    }
+    globalObjects.options.fullscreenToggleVisual.setFrame(gameOptions.fullscreen ? 'check_box_on.png' : 'check_box_normal.png');
+
+});
+
 function initializeMiscLocalstorage() {
     language = sdkGetItem("language") || 'en_us';
     gameOptions.infoBoxAlign = sdkGetItem("info_align") || 'center';
 
     let storedSkipIntro = sdkGetItem("skip_intro");
     if (storedSkipIntro) {
-        gameOptions.skipIntro = sdkGetItem("skip_intro") === 'true';
+        gameOptions.skipIntro = storedSkipIntro === 'true';
     } else {
         gameOptions.isFirstTime = true;
         sdkSetItem("skip_intro", 'true');

@@ -318,6 +318,7 @@ class Options {
 
         this.createInfoBoxPosText();
         this.createSkipIntroToggle();
+        this.createFullScreenToggle();
 
         createGlobalClickBlocker();
         if (!this.closeButton) {
@@ -906,6 +907,60 @@ class Options {
             });
             this.introButton.setDepth(this.baseDepth + 10);
             this.listOfButtonsToDisable.push(this.introButton);
+        }
+    }
+
+    createFullScreenToggle() {
+        if (!this.fullscreenText) {
+            let startPos = gameConsts.halfHeight + 150;
+            // this.introText = PhaserScene.add.text(gameConsts.halfWidth - 230, startPos, getLangText('skip_intro'), {fontFamily: 'germania', fontSize: 28, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
+            this.fullscreenText = PhaserScene.add.text(gameConsts.halfWidth + 83, startPos, getLangText('fullscreen'), {fontFamily: 'germania', fontSize: 20, color: '#200000', align: 'left'}).setOrigin(0, 0.5).setDepth(this.baseDepth).setAlpha(0.82);
+            this.addLangTextUpdateable(this.fullscreenText, 'fullscreen')
+            this.listOfThingsToHideSemiAlpha.push(this.fullscreenText);
+
+            this.fullscreenToggleVisual = PhaserScene.add.sprite(this.fullscreenText.x + 40, startPos, 'buttons', gameOptions.fullscreen ? 'check_box_on.png' : 'check_box_normal.png')
+            this.fullscreenToggleVisual.setDepth(this.baseDepth + 1);
+            this.listOfThingsToHide.push(this.fullscreenToggleVisual);
+
+            this.fullscreenButton = new Button({
+                normal: {
+                    atlas: 'buttons',
+                    ref: "check_box_normal.png",
+                    alpha: 0,
+                    x: this.fullscreenToggleVisual.x,
+                    y: startPos,
+                },
+                onHover: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                    if (gameOptions.fullscreen) {
+                        this.fullscreenToggleVisual.setFrame('check_box_hover2.png');
+                    } else {
+                        this.fullscreenToggleVisual.setFrame('check_box_hover.png');
+                    }
+                },
+                onHoverOut: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                    this.fullscreenToggleVisual.setFrame(gameOptions.fullscreen ? 'check_box_on.png' : 'check_box_normal.png');
+
+                },
+                onMouseUp: (x, y) => {
+                    gameOptions.fullscreen = !gameOptions.fullscreen;
+                    if (gameOptions.fullscreen) {
+                        openFullscreen()
+                    } else {
+                        document.exitFullscreen();
+                    }
+                    this.fullscreenToggleVisual.setFrame(gameOptions.fullscreen ? 'check_box_on.png' : 'check_box_normal.png');
+
+                    localStorage.setItem("fullscreen", gameOptions.fullscreen.toString());
+                },
+            });
+            this.fullscreenButton.setDepth(this.baseDepth + 10);
+            this.listOfButtonsToDisable.push(this.fullscreenButton);
         }
     }
 

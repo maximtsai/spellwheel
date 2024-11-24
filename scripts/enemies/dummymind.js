@@ -545,7 +545,7 @@ class Dummymind extends Dummypractice {
                                             ease: 'Cubic.easeIn',
                                             duration: 650,
                                             onComplete: () => {
-                                                playSound('watersplashbig');
+                                                playSound('watersplashbig', 0.76);
                                                 let whitebg = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setAlpha(0.15);
                                                 PhaserScene.tweens.add({
                                                     targets: whitebg,
